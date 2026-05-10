@@ -19,7 +19,7 @@ name: Update cycle
 # Step order:
 #   1. ``actions/checkout`` (full history for clean rebase later)
 #   2. Python + dependencies
-#   3. WL / ÖBB / Baustellen cache fetchers (sequential; free APIs)
+#   3. WL / ÖBB / Baustellen cache fetchers (parallel via bash; free APIs)
 #   4. VAO quota pre-flight + Stammstrecke poll (gated on counter)
 #   5. ``feed build`` reads all caches + the freshly-appended CSV
 #      ledger and writes ``docs/feed.xml`` + ``data/first_seen.json``
@@ -85,17 +85,55 @@ jobs:
 
       # ----- Cache fetchers (free APIs, no quota gate) ---------------------
 
-      - name: Refresh Wiener Linien cache
-        run: python scripts/update_wl_cache.py
-        continue-on-error: true
+      # Parallel free-API fetchers (replaces three sequential
+      # ``continue-on-error: true`` steps). Wiener Linien, ÖBB and the
+      # Stadt-Wien-OGD Baustellen API are independent upstreams — no
+      # shared rate limit, no shared connection pool — and each script
+      # writes to its own ``cache/<provider>_<hash>/events.json`` so
+      # concurrent execution is race-free. Wall-clock ~30 s vs ~90 s
+      # sequential; preserves the same best-effort semantics (a failed
+      # fetcher leaves the last committed cache in place and the
+      # downstream ``feed build`` reads what is on disk). Per-fetcher
+      # exit codes surface as ``::warning::`` annotations so a silent
+      # upstream outage stays operator-visible — the previous
+      # ``continue-on-error: true`` raised an orange badge per failed
+      # step; the warning emits the same operator-visible signal here.
+      - name: Refresh free-API caches in parallel
+        run: |
+          set +e
 
-      - name: Refresh ÖBB cache
-        run: python scripts/update_oebb_cache.py
-        continue-on-error: true
+          log_dir="$RUNNER_TEMP/fetcher-logs"
+          mkdir -p "$log_dir"
 
-      - name: Refresh Baustellen cache
-        run: python scripts/update_baustellen_cache.py
-        continue-on-error: true
+          python scripts/update_wl_cache.py         > "$log_dir/wl.log"         2>&1 &
+          pid_wl=$!
+          python scripts/update_oebb_cache.py       > "$log_dir/oebb.log"       2>&1 &
+          pid_oebb=$!
+          python scripts/update_baustellen_cache.py > "$log_dir/baustellen.log" 2>&1 &
+          pid_baustellen=$!
+
+          wait "$pid_wl";         rc_wl=$?
+          wait "$pid_oebb";       rc_oebb=$?
+          wait "$pid_baustellen"; rc_baustellen=$?
+
+          report() {
+            local name=$1
+            local rc=$2
+            echo "::group::${name} fetcher (exit ${rc})"
+            cat "$log_dir/${name}.log"
+            echo "::endgroup::"
+            if [ "$rc" -ne 0 ]; then
+              echo "::warning title=${name} cache fetcher::non-zero exit (${rc}) — last committed cache will be used by feed build."
+            fi
+          }
+
+          report wl         "$rc_wl"
+          report oebb       "$rc_oebb"
+          report baustellen "$rc_baustellen"
+
+          # Best-effort: never fail the workflow on individual fetcher
+          # errors. Mirrors the previous per-step ``continue-on-error: true``.
+          exit 0
 
       # ----- Stammstrecke (VOR /trip — the single quota-gated API) --------
 
