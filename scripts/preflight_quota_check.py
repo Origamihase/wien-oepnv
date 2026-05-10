@@ -40,16 +40,25 @@ the preflight code paths exercised here.
 from __future__ import annotations
 
 import argparse
-import json
 import logging
 import os
 import sys
 from pathlib import Path
-from typing import Final
+from typing import Final, cast
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
+
+# Project import: ``read_capped_json`` is the canonical on-disk JSON
+# loader that combines the byte-size cap (open-then-fstat the open
+# fd, defeating the stat/open TOCTOU) with the depth-bomb catch
+# tuple. ``src.utils.files`` itself imports only stdlib modules
+# (json, logging, os, pathlib, typing, contextlib, hashlib, secrets,
+# zipfile, re), so this preserves the script's invariant of zero
+# non-stdlib runtime dependencies — the helper is reachable BEFORE
+# ``install-deps`` has run, exactly like the rest of this script.
+from src.utils.files import read_capped_json  # noqa: E402
 
 LOGGER = logging.getLogger("preflight_quota_check")
 
@@ -66,33 +75,47 @@ VOR_QUOTA_FILE: Final[Path] = REPO_ROOT / "data" / "vor_request_count.json"
 PLACES_QUOTA_FILE: Final[Path] = REPO_ROOT / "data" / "places_quota.json"
 PLACES_DEFAULT_MONTHLY: Final[int] = 4000
 
+# Security: defense-in-depth byte-size cap on the persisted quota
+# state files. The state shape is tiny in production
+# (``{"date": "YYYY-MM-DD", "requests": N}`` is a few dozen bytes;
+# the Places state ``{"month": "YYYY-MM", "counts": {...}, "total":
+# N, "daily_key": "...", "daily_total": N}`` is well under 1 KiB).
+# 1 MiB is ~5000x the largest legitimate state shape and matches
+# ``src/places/quota.py:MAX_QUOTA_FILE_BYTES``. The pre-fix shape
+# (``json.load(handle)`` with no cap) was a JSON-size-bomb sibling
+# missed by the 2026-05-08 *Round 3* sweep — the script was added
+# AFTER Round 3 closed sixteen siblings in ``scripts/`` and the
+# auto-discoverable inventory test
+# (``test_no_direct_json_load_in_scripts``) is the closing-checklist
+# anchor that catches any future re-introduction.
+MAX_PREFLIGHT_QUOTA_FILE_BYTES: Final[int] = 1 * 1024 * 1024
+
 
 def _read_json_file(path: Path) -> dict[str, object]:
     """Return the parsed JSON object at *path* or an empty dict.
 
     Defensive: a missing file is treated as "fresh state" (count = 0).
-    A malformed file is treated as the same — the daily reset logic
-    in the consumer modules will rewrite it on the next save.
+    A malformed / oversized file is treated as the same — the daily
+    reset logic in the consumer modules will rewrite it on the next
+    save.
+
+    Security: a planted-huge state file at the documented path
+    (compromised CI runner / corrupted previous run / partial flush
+    + power loss) is rejected at the ``MAX_PREFLIGHT_QUOTA_FILE_BYTES``
+    cap so a ``MemoryError`` (``BaseException``, NOT in the
+    ``read_capped_json`` catch tuple) cannot crash the pre-flight
+    gate. Mirrors the canonical defence pinned by the eight prior
+    rounds of the JSON size-bomb family.
     """
-    if not path.exists():
-        return {}
-    try:
-        with path.open("r", encoding="utf-8") as handle:
-            data = json.load(handle)
-    except (OSError, json.JSONDecodeError, RecursionError) as exc:
-        # ``RecursionError`` (a subclass of ``Exception``-but-not-OSError)
-        # is the standard library's signal for a JSON depth-bomb;
-        # treating it as "unreadable state" matches the project-wide
-        # pattern enforced by ``tests/test_sentinel_json_audit_walker``.
-        LOGGER.warning(
-            "preflight: %s ist nicht lesbar oder kein gueltiges JSON: %s",
-            path,
-            exc.__class__.__name__,
-        )
-        return {}
+    data = read_capped_json(
+        path,
+        MAX_PREFLIGHT_QUOTA_FILE_BYTES,
+        label="preflight quota state",
+        logger=LOGGER,
+    )
     if not isinstance(data, dict):
         return {}
-    return data
+    return cast(dict[str, object], data)
 
 
 def _today_vienna_iso() -> str:

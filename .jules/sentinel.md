@@ -1,3 +1,121 @@
+## 2026-05-10 - JSON Size-Bomb Drift Round 9: `scripts/preflight_quota_check.py:_read_json_file` Was Added After the Round 3 `scripts/` Sweep
+
+**Vulnerability:** The 2026-05-08 *JSON Size-Bomb Round 3* round
+canonicalised `read_capped_json` for sixteen on-disk JSON loaders
+across eight scripts in `scripts/`. The prevention rule named the
+audit grep:
+
+    grep -rn 'json\.load(\b' src/ scripts/ | grep -v 'json.loads\|test_'
+
+But `scripts/preflight_quota_check.py` was added LATER as a
+defense-in-depth pre-flight gate for the VAO daily / Places monthly
+quotas. Re-running the post-Round-3 grep against the current
+`scripts/` tree returned a single open site:
+
+    scripts/preflight_quota_check.py:81: data = json.load(handle)
+
+The shape was the documented Round-1-through-7 anti-pattern: `with
+path.open("r") as handle: data = json.load(handle)` wrapped in
+`except (OSError, json.JSONDecodeError, RecursionError)`. The catch
+tuple is structurally insufficient against `MemoryError` because:
+
+* `MemoryError` is a `BaseException` subclass — not in the tuple.
+* `json.load(handle)` buffers the entire file into a Python object
+  before returning, so a planted-huge state file (1 GB of
+  `{"k0":0,"k1":0,...,"kN":0}`) raises `MemoryError` at parse time.
+* `RecursionError` covers the depth-bomb axis (deeply-nested JSON),
+  not the wide-but-flat size-bomb axis.
+
+**Threat model:** The pre-flight is a gate for two automated cron
+workflows:
+
+1. `update-stammstrecke-status.yml` — runs every ~30 min via the
+   `update-cycle.yml` DAG; gates the VAO `/trip` quota check.
+2. `update-google-places-stations.yml` — operator-triggered; gates
+   the Places API call against the monthly cap.
+
+The two state files (`data/vor_request_count.json` and
+`data/places_quota.json`) are committed by previous cron runs and
+read by every subsequent run. A planted-huge state file
+(compromised CI runner / corrupted previous run / partial flush +
+power loss / accidental commit landing oversized state) crashes the
+pre-flight with `MemoryError` — propagating past the catch tuple,
+exiting the script with a non-zero status, and zeroing-out the
+GitHub Actions `quota_ok` output. The downstream conditional
+`if: steps.preflight.outputs.quota_ok == 'true'` is *accidentally*
+fail-closed (an empty output is not `'true'`), so the API step is
+skipped, but the operator sees a confusing `MemoryError` traceback
+at the top of the workflow log instead of the documented
+`"quota EXHAUSTED — projected=N, limit=M"` message, and the cron
+pipeline cannot refresh the Stammstrecke status / Places stations
+until the poisoned state file is manually deleted.
+
+**Severity:** LOW-MEDIUM — DoS on the cron pipeline. No
+credential leak, no fail-OPEN behaviour. But the project has fixed
+eight prior rounds of the same drift family at this severity, and
+the canonical contract is that EVERY on-disk JSON loader carries a
+`read_capped_json` cap so a future caller / a future workflow / a
+future operator script inheriting this code path cannot regress to
+fail-open.
+
+**Fix:** Mirror Round 3 — replace the bare `open + json.load(handle)`
+shape with `read_capped_json(path,
+MAX_PREFLIGHT_QUOTA_FILE_BYTES, ...)` from the canonical helper
+(`src/utils/files.py`). Cap sized at 1 MiB, ~5000x typical state
+shape, matching `src/places/quota.py:MAX_QUOTA_FILE_BYTES`. The
+script's stated invariant of zero non-stdlib runtime dependencies
+is preserved — `src.utils.files` itself only imports stdlib modules
+(`json`, `logging`, `os`, `pathlib`, `typing`, `contextlib`,
+`hashlib`, `secrets`, `zipfile`, `re`), so the helper remains
+reachable BEFORE the cron runner's `install-deps` step has run.
+
+The PoC test
+`tests/test_sentinel_preflight_quota_size_bomb.py` enumerates 8
+cases:
+
+* 2 precondition tests pinning the canonical helper import + the
+  new `MAX_PREFLIGHT_QUOTA_FILE_BYTES` constant.
+* 1 oversized-file rejection test (the cap is monkey-patched to
+  1 KiB, a 4 KiB state file is planted, the loader returns `{}`
+  instead of crashing).
+* 1 happy-path under-cap regression test.
+* 3 missing-path / invalid-JSON / non-dict regression tests
+  preserving the existing `{}`-fallback contract.
+* 1 closing-checklist invariant: walks every `*.py` in `scripts/`
+  and asserts no remaining `json.load(handle)` shape (the canonical
+  helper's docstring in `src/utils/files.py` is correctly excluded
+  by the comment-stripping pass).
+
+**Learning:** The audit-walker pattern works WHEN it walks the
+current state. Round 3's grep was correct at the time, but a script
+added LATER carries the same drift undetected. The closing-
+checklist for this round is the auto-discoverable inventory test —
+NOT a one-time grep. The walker test
+(`test_no_direct_json_load_in_scripts`) re-runs on every PR and
+fails immediately when a future contributor introduces a new
+`json.load(handle)` site in `scripts/`. This pattern is the
+canonical anchor for the size-bomb family going forward.
+
+The same lesson generalises: the 2026-05-10 *HTTPS-only Provider
+URL Drift Round 2* (PR #1416) closed `_validated_baustellen_data_url`
+because the closing-checklist grep was scoped to `src/` only and
+missed the `scripts/` sibling. Both rounds illustrate the same
+meta-rule: a one-time grep is a snapshot; an inventory test is the
+ratchet that catches future regressions.
+
+**Prevention:** The closing-checklist amendment is the
+auto-discoverable inventory test
+`test_no_direct_json_load_in_scripts`. Its scope is `scripts/`
+only (the `src/` tree is covered by the canonical helper itself
+plus the existing
+`tests/test_sentinel_json_audit_walker.py` shape). A future tenth-
+round drift would manifest as either (a) a new `scripts/*.py` site
+that bypasses the helper (caught by the inventory test), or (b) a
+new tree (e.g. `maintenance/`) the inventory test doesn't walk
+(caught by extending the test's `scripts_dir` glob). The canonical
+helper itself remains the single point of audit for the size-bomb
+contract.
+
 ## 2026-05-10 - HTTPS-only Provider URL Drift Round 2: `_validated_baustellen_data_url` in `scripts/` Was the Closing-Checklist's Own Blind Spot
 
 **Vulnerability:** PR #1415 (HTTPS-only Provider URL Drift) closed
