@@ -1,3 +1,243 @@
+## 2026-05-10 - Log-Injection Drift Round 4: ASCII C0 Controls Were the Last Canonical-Floor Sibling `_INVISIBLE_DANGEROUS_RE` Did Not Cover
+
+**Vulnerability:** The 2026-05-10 *8-bit C1 Terminal-Escape Drift*
+round (PR #1414, Round 3 of the *Log-Injection Drift* family)
+widened `src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` to include
+`\x7f-\x9f` (DEL + 32 ECMA-48 C1 controls) so every
+`strip_control_chars=False` sibling sink inherits the 8-bit
+terminal-escape defence. The closing-checklist enumerated the
+sibling regexes pinned to the canonical floor:
+
+* `src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE`
+* `src/utils/stats.py:_CSV_CONTROL_CHARS_RE`
+* `src/build_feed.py:_CONTROL_RE`
+
+All three already cover the canonical floor:
+
+    [\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f؜​-‏
+      -‮⁦-⁩﻿]
+
+— C0 controls (except readable whitespace TAB/LF/CR) + DEL + C1 +
+ALM + zero-width + LSEP/PSEP + LRO/RLO + isolates + BOM.
+
+But `_INVISIBLE_DANGEROUS_RE` post-Round-3 was:
+
+    [\x7f-\x9f؜​-‏ -‮⁦-⁩﻿]
+
+— covers DEL + C1 + BiDi + zero-width + LSEP/PSEP + BOM but NOT C0.
+The narrow `_CONTROL_CHARS_RE` step that DOES strip C0 is gated by
+`strip_control_chars=True` so every `strip_control_chars=False`
+sibling sink lets C0 controls through:
+
+* `src/feed/reporting.py:clean_message` — canonical sanitiser for
+  every provider detail / warning / error / exception text rendered
+  into the public `docs/feed-health.md` artefact and the GitHub
+  Issue body submitted by `submit_auto_issue`.
+* `src/feed/reporting.py:_sanitize_log_detail` — provider
+  diagnostic strings posted to the issue body.
+* `src/utils/http.py:_sanitize_exception_msg` — rewrites
+  `RequestException.args[0]` for every network-level error caught
+  by `request_safe`; the exception text is then routed through
+  every WARNING/ERROR site that logs `str(exc)`.
+* `src/feed/logging_safe.py:SafeFormatter.formatException` —
+  renders the traceback for every `log.exception(...)` call.
+* `src/feed/logging_safe.py:SafeJSONFormatter.formatException` —
+  same drift on the JSON log channel.
+
+**Threat model:** A hostile upstream (compromised provider, MITM,
+DNS hijack, planted cache file) returns an error response carrying
+ASCII C0 primitives:
+
+* **`\x00` (NUL)** — many command-line tools (`cat`, `less`, `cut`
+  with default delimiter, several JSON pretty-printers) treat NUL
+  as terminator and truncate the rendered output. An attacker who
+  plants `\x00` after the first error line **hides** all subsequent
+  warnings / errors / details from operators reading the artefact
+  via these tools. The "content-truncation primitive" is the
+  highest-impact C0 vector — it defeats the operator-visibility
+  contract of the feed-health artefact and the GitHub Issue body.
+* **`\x07` (BEL)** — terminal-bell trigger. `cat docs/feed-health.md`
+  on a TTY beeps for every `\x07` byte; an upstream that floods
+  the error log with `\x07` turns the operator's terminal into a
+  denial-of-attention vector.
+* **`\x08` (BS)** — backspace. `cat` on a TTY moves the cursor back
+  one position; combined with replacement bytes (`ERROR\x08\x08\x08\x08\x08OK   `),
+  an attacker spoofs what the operator sees — the documented "FAKE
+  OK" terminal-spoof primitive.
+* **`\x0c` (FF)** — form feed. Some terminals clear the screen on
+  FF; `\x0c` flooding lets the attacker hide the rest of the
+  output.
+* **`\x1b` (ESC)** — bare-ESC primitive. `_ANSI_ESCAPE_RE` matches
+  `\x1b` followed by specific patterns (`[`, `]`, Fe, two-byte). A
+  bare `\x1b` not followed by any of these patterns survives the
+  regex but still triggers terminal mode changes on legacy
+  terminals.
+* **`\x0e`-`\x0f` (SO/SI)** — Shift Out / Shift In. Switches the
+  terminal to an alternate character set on legacy terminals (DEC
+  VT-100 G1 charset). An attacker plants `\x0e` to make subsequent
+  text render as line-drawing characters, garbling log output.
+
+The flow:
+
+    HTTP fetch → request_safe.RequestException →
+    _sanitize_exception_msg → exc.args[0] →
+    log.error("... %s ...", str(exc)) → SafeFormatter →
+    operator log stream / docs/feed-health.md / GitHub Issue body
+
+If the operator's terminal interprets these bytes (`cat
+docs/feed-health.md`, `less` without `-r`/`-R` configured to strip
+control chars, `tail -f log/diagnostics.log` on any TTY,
+`journalctl --no-pager`), the byte sequence triggers terminal
+behaviour — content hiding via NUL, denial-of-attention via BEL,
+visual spoofing via BS, screen wipe via FF, legacy charset switch
+via SO/SI.
+
+The published `docs/feed-health.md` artefact (served by GitHub
+Pages from `https://origamihase.github.io/wien-oepnv/feed-health.md`)
+emits warnings and errors via `escape_markdown` which does NOT
+strip control chars (it only escapes HTML and Markdown special
+chars `[]()*_`@<>`). The GitHub Issue body submitted by
+`submit_auto_issue` uses the same `escape_markdown` shape — same
+gap. JSON-encoded `feed_health.json` is incidentally protected by
+JSON's own `\u00xx` escape rules (RFC 8259 disallows raw C0 in JSON
+strings), but the markdown / GitHub Issue body sinks are vulnerable.
+
+**Severity:** MEDIUM — real exploit shape against terminal renderers
+and against the documented `cat docs/feed-health.md` artefact-
+inspection workflow. The C0 set was the LAST canonical-floor
+character family that `_INVISIBLE_DANGEROUS_RE` did not cover while
+every other canonical sibling regex (markdown / CSV / build_feed)
+already did. Closes the four-round drift on the canonical-floor
+invariant in one cut.
+
+**Fix:** Widen `_INVISIBLE_DANGEROUS_RE` from:
+
+    [\x7f-\x9f؜​-‏ -‮⁦-⁩﻿]
+
+to:
+
+    [\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f؜​-‏
+      -‮⁦-⁩﻿]
+
+— byte-exact mirror of `_MARKDOWN_NORMALISE_UNSAFE_RE` /
+`_CSV_CONTROL_CHARS_RE` / `_CONTROL_RE` (the three canonical
+sibling regexes that already cover the floor). `\x09` (TAB),
+`\x0A` (LF), `\x0D` (CR) remain outside the always-strip floor so
+the readability contract for traceback formatting is preserved.
+
+The widening is **additive-only**: every code point the pre-fix
+regex matched still matches post-fix; the only delta is the
+addition of the 26 C0 control bytes (`\x00-\x08, \x0B, \x0C,
+\x0E-\x1F`). All five sibling sinks inherit the defence in one
+cut without any callsite change.
+
+The PoC test
+`tests/test_sentinel_log_injection_c0_drift.py` enumerates 183
+cases:
+
+* 26 × 5 = 130 per-code-point sibling-sink tests parametrised over
+  the C0-minus-readable-whitespace set, asserting each sibling sink
+  strips every C0 control:
+  - `sanitize_log_message(strip_control_chars=False)`
+  - `clean_message`
+  - `_sanitize_log_detail`
+  - `_sanitize_exception_msg`
+  - `SafeFormatter.formatException`
+  - `SafeJSONFormatter.formatException`
+* 3 end-to-end PoCs (NUL content-truncation in warning, BEL
+  denial-of-attention in error, BS visual-spoof in provider
+  detail) verifying the public `docs/feed-health.md` artefact
+  carries no raw C0 byte.
+* 2 inventory invariants
+  (`test_invisible_dangerous_re_covers_c0_minus_readable_whitespace`
+  and `test_invisible_dangerous_re_matches_canonical_sibling_regexes`)
+  pinning the canonical-floor coverage rule against
+  `_MARKDOWN_NORMALISE_UNSAFE_RE` / `_CSV_CONTROL_CHARS_RE` /
+  `_CONTROL_RE`.
+* 3 regression tests (TAB/LF/CR survive `strip_control_chars=False`,
+  Round 2 BiDi/zero-width set still stripped, Round 3 8-bit C1 /
+  DEL set still stripped) confirming the additive-only contract.
+* 1 cooperation sanity check that the JSON-encoding path's `\u00xx`
+  escape continues to produce the same protected output even after
+  the always-strip floor strips the byte earlier in the pipeline.
+
+**Learning:** The four-round drift on the canonical-floor invariant
+is a textbook example of incremental regex widening: each round
+named ONE narrow class (BiDi marks → BiDi+zero-width →
+LSEP/PSEP+ALM → C1+DEL → C0) but the audit walker did not
+programmatically pin the canonical floor as a single invariant.
+Round 3 added the 8-bit-C1 inventory invariant
+(`test_invisible_dangerous_re_covers_8bit_c1_and_del`) which
+catches narrowing of the `\x7f-\x9f` set, but not narrowing of any
+other axis (C0, BiDi, zero-width).
+
+The structural fix-shape pattern: when a canonical floor exists
+across multiple sibling regexes, the closing-checklist must pin
+the floor as a SINGLE invariant — every sibling regex MUST be at
+least as wide as every other on the same axis. The Round 4
+inventory test
+(`test_invisible_dangerous_re_matches_canonical_sibling_regexes`)
+walks every C0 control and asserts that if ANY sibling matches it,
+`_INVISIBLE_DANGEROUS_RE` must too. This catches narrowing of
+`_INVISIBLE_DANGEROUS_RE` regardless of which axis (C0, BiDi,
+zero-width, LSEP/PSEP, C1, BOM) drifts in the future.
+
+The recursive meta-pattern across the *Log-Injection Drift* family
+is now four rounds deep:
+
+1. Round 1 (PR #1363): widened `_CONTROL_CHARS_RE` to cover BiDi /
+   zero-width / line-terminator on `strip_control_chars=True`.
+2. Round 2: lifted the union into `_INVISIBLE_DANGEROUS_RE` so
+   `strip_control_chars=False` siblings inherit the defence.
+3. Round 3 (PR #1414): widened `_INVISIBLE_DANGEROUS_RE` to add
+   `\x7f-\x9f` (DEL + 32 C1 controls) — the 8-bit terminal-escape
+   sibling.
+4. Round 4 (this PR): widened `_INVISIBLE_DANGEROUS_RE` to add
+   `\x00-\x08\x0b\x0c\x0e-\x1f` (C0 controls except readable
+   whitespace) — the LAST canonical-floor sibling. The four
+   canonical sibling regexes
+   (`_INVISIBLE_DANGEROUS_RE`, `_MARKDOWN_NORMALISE_UNSAFE_RE`,
+   `_CSV_CONTROL_CHARS_RE`, `_CONTROL_RE`) now agree byte-exact on
+   the C0 + C1 + BiDi + zero-width + LSEP/PSEP + BOM floor.
+
+**Prevention:** The auto-discoverable inventory invariant
+`test_invisible_dangerous_re_matches_canonical_sibling_regexes`
+walks every C0 control and asserts the always-strip floor is at
+least as wide as every canonical sibling regex. A future regression
+that narrows the always-strip floor below any sibling's coverage
+fails the test at PR-review time. Combined with the existing
+`test_invisible_dangerous_re_covers_8bit_c1_and_del` (Round 3) and
+`test_invisible_dangerous_re_subset_of_control_chars_re` (Round 3),
+the always-strip floor is now contractually pinned against three
+canonical floor invariants:
+
+1. The C1 / DEL set (`\x7f-\x9f`) — Round 3 invariant.
+2. The C0-minus-readable-whitespace set
+   (`\x00-\x08\x0b\x0c\x0e-\x1f`) — Round 4 invariant (this round).
+3. The full strip set (`_CONTROL_CHARS_RE` superset) — Round 3
+   invariant.
+
+The companion regexes `_UNSAFE_URL_CHARS` (URL boundary) and
+`_UNSAFE_CHARS_RE` (stations validation boundary) already cover
+the C0 set (`_UNSAFE_URL_CHARS` includes `\s` plus `\x00-\x1f`;
+`_UNSAFE_CHARS_RE` includes `\x00-\x08\x0b\x0c\x0e-\x1f`) so no
+widening is needed at those boundaries — the existing inventory
+tests
+(`test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set`
+and `test_unsafe_chars_regex_covers_canonical_invisible_dangerous_set`)
+continue to pass post-fix.
+
+The closing-checklist grep for the *Log-Injection Drift* family is
+now:
+
+```
+grep -n "_INVISIBLE_DANGEROUS_RE\|_MARKDOWN_NORMALISE_UNSAFE_RE\|_CSV_CONTROL_CHARS_RE\|_CONTROL_RE\b" src/
+```
+
+— every site that defines a canonical-floor regex MUST cover the
+C0+C1+BiDi+zero-width+LSEP/PSEP+BOM set; the inventory test
+programmatically enforces the invariant.
+
 ## 2026-05-10 - Trojan-Source RSS Drift Round 8: Channel-Level `<title>` and `<description>` Were the Sibling Sinks the Per-Item Audit Walker Did Not Enumerate
 
 **Vulnerability:** The 2026-05-10 *Trojan-Source RSS Drift Round 7*
