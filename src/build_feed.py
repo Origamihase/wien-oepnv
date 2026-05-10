@@ -1771,7 +1771,20 @@ def _format_item_content(
     link = _resolve_item_link(it.get("link"), ident)
 
     raw_guid = it.get("guid") or ident
-    guid = str(raw_guid).strip() if raw_guid is not None else ident
+    # Security: route the upstream-supplied guid through ``_sanitize_text``
+    # (canonical ``_CONTROL_RE`` strip — C0/C1 controls + DEL + BiDi format
+    # controls + zero-width chars + line separators + BOM) before it lands
+    # in the published RSS XML's ``<guid>`` element. The pre-fix
+    # ``str.strip()``-only path let upstream-controlled BiDi marks (CVE-
+    # 2021-42574 Trojan-Source primitive), zero-width characters, and
+    # line/paragraph separators flow into ``docs/feed.xml`` verbatim —
+    # XML serialisation escapes ``<>&`` but does NOT strip Unicode BiDi
+    # / zero-width / control chars. Mirrors the canonical sanitisation
+    # already applied to the title (line ~1812: ``title_out =
+    # _sanitize_text(title_out)``) and summary (line ~1782:
+    # ``summary = _sanitize_text(summary).strip()``) — closes the LAST
+    # per-item RSS sink that still routed through ``str.strip()``-only.
+    guid = _sanitize_text(str(raw_guid)).strip() if raw_guid is not None else ident
     if not guid:
         guid = ident
 
