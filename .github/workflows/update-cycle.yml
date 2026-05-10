@@ -35,8 +35,6 @@ name: Update cycle
 # API-fetching cycles in flight.
 
 on:
-  schedule:
-    - cron: '0,30 * * * *'
   workflow_dispatch:
   repository_dispatch:
     types: [ifttt_feed_trigger]
