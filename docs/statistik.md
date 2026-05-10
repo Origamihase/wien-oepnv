@@ -1,15 +1,15 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-05-10T12:21+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-05-10T12:45+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
 | Kennzahl | Wert |
 | --- | ---: |
-| Stammstrecke-Beobachtungen (2026) | 21 |
+| Stammstrecke-Beobachtungen (2026) | 22 |
 | Davon über 9-min-Schwelle | 0 |
-| ⌀ Verspätung (alle Tage) | 0.3 min |
-| Erfasste Störungen (2026) | 32 |
+| ⌀ Verspätung (alle Tage) | 0.4 min |
+| Erfasste Störungen (2026) | 38 |
 
 ## Stammstrecke
 
@@ -17,7 +17,7 @@ _Automatisch erzeugt am 2026-05-10T12:21+02:00 (Europe/Vienna)._
 
 | Richtung | Anzahl |
 | --- | ---: |
-| Meidling | 11 |
+| Meidling | 12 |
 | Floridsdorf | 10 |
 
 ### Beobachtungen je Wochentag
@@ -29,7 +29,7 @@ _Automatisch erzeugt am 2026-05-10T12:21+02:00 (Europe/Vienna)._
 `Do  ` │ ························  0
 `Fr  ` │ ························  0
 `Sa  ` │ 🟦🟦🟦🟦····················  3
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  18
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  19
 ```
 
 ### Beobachtungen je Stunde
@@ -47,7 +47,7 @@ _Automatisch erzeugt am 2026-05-10T12:21+02:00 (Europe/Vienna)._
 `09h ` │ 🟧🟧🟧🟧····················  1
 `10h ` │ 🟧🟧🟧🟧····················  1
 `11h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧················  2
-`12h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧················  2
+`12h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧············  3
 `13h ` │ ························  0
 `14h ` │ ························  0
 `15h ` │ ························  0
@@ -70,7 +70,7 @@ _Automatisch erzeugt am 2026-05-10T12:21+02:00 (Europe/Vienna)._
 `Do  ` │ ························   0.0 min
 `Fr  ` │ ························   0.0 min
 `Sa  ` │ 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥    0.7 min
-`So  ` │ ························   0.0 min
+`So  ` │ 🟥🟥······················    0.1 min
 ```
 
 ### Verspätungen ⌀ Minuten je Stunde
@@ -88,7 +88,7 @@ _Automatisch erzeugt am 2026-05-10T12:21+02:00 (Europe/Vienna)._
 `09h ` │ ························   0.0 min
 `10h ` │ ························   0.0 min
 `11h ` │ ························   0.0 min
-`12h ` │ ························   0.0 min
+`12h ` │ 🟨🟨🟨🟨····················    0.3 min
 `13h ` │ ························   0.0 min
 `14h ` │ ························   0.0 min
 `15h ` │ ························   0.0 min
@@ -108,7 +108,7 @@ _Automatisch erzeugt am 2026-05-10T12:21+02:00 (Europe/Vienna)._
 
 | Quelle | Anzahl |
 | --- | ---: |
-| Wiener Linien | 32 |
+| Wiener Linien | 38 |
 
 ### Störungen je Wochentag
 
@@ -118,8 +118,8 @@ _Automatisch erzeugt am 2026-05-10T12:21+02:00 (Europe/Vienna)._
 `Mi  ` │ ························  0
 `Do  ` │ ························  0
 `Fr  ` │ ························  0
-`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·············  10
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  22
+`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦···············  10
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  28
 ```
 
 ### Störungen je Stunde
@@ -137,7 +137,7 @@ _Automatisch erzeugt am 2026-05-10T12:21+02:00 (Europe/Vienna)._
 `09h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·········  5
 `10h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·········  5
 `11h ` │ ························  0
-`12h ` │ 🟧🟧🟧🟧🟧🟧··················  2
+`12h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  8
 `13h ` │ ························  0
 `14h ` │ ························  0
 `15h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  8
