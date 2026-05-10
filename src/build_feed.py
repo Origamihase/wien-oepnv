@@ -2156,9 +2156,25 @@ def _make_rss(
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
 
-    ET.SubElement(channel, "title").text = feed_config.FEED_TITLE
+    # Security: route the env-controlled FEED_TITLE / FEED_DESC through
+    # the canonical ``_sanitize_text`` (``_CONTROL_RE`` strip — C0/C1
+    # controls + DEL + BiDi format controls + zero-width chars + line
+    # separators + BOM) before they land in the channel-level RSS XML.
+    # Pre-fix the env vars flowed verbatim into ``<title>`` / ``<description>``,
+    # letting a leaked CI env / compromised secret store / intentional
+    # misconfig plant CVE-2021-42574 Trojan-Source primitives (RLO, LSEP,
+    # ZWSP, …) into the published ``docs/feed.xml`` channel metadata —
+    # the prominent "feed name" displayed by every subscriber's RSS
+    # reader. Mirrors the per-item sinks already routed through the
+    # helper (title / description / time-line / guid) so the closing-
+    # checklist of the *Trojan-Source RSS Drift* family covers BOTH
+    # per-item AND channel-level RSS sinks. ``FEED_LINK`` is already
+    # pinned by ``validate_public_feed_url`` (HTTPS-only + GitHub host
+    # allow-list + ``_UNSAFE_URL_CHARS`` strip) so its emission needs
+    # no additional sanitisation.
+    ET.SubElement(channel, "title").text = _sanitize_text(feed_config.FEED_TITLE)
     ET.SubElement(channel, "link").text = feed_config.FEED_LINK
-    ET.SubElement(channel, "description").text = feed_config.FEED_DESC
+    ET.SubElement(channel, "description").text = _sanitize_text(feed_config.FEED_DESC)
 
     # Atom self/alternate-Links + Sprache. Diese drei Tags wurden früher
     # vom Perl-basierten "Normalize feed metadata (SEO)"-Step in

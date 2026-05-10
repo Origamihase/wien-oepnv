@@ -1,3 +1,194 @@
+## 2026-05-10 - Trojan-Source RSS Drift Round 8: Channel-Level `<title>` and `<description>` Were the Sibling Sinks the Per-Item Audit Walker Did Not Enumerate
+
+**Vulnerability:** The 2026-05-10 *Trojan-Source RSS Drift Round 7*
+round (PR #1420, journal entry below this one) closed the per-item
+`<guid>` element — the LAST per-item RSS sink that still routed
+through `str.strip()`-only instead of the canonical `_sanitize_text`
+helper. The Round 7 closing-checklist explicitly walked every
+per-item RSS element emitted in `_emit_item`:
+
+```
+title, link, guid, pubDate, description, content:encoded,
+<ext:first_seen>, <ext:starts_at>, <ext:ends_at>
+```
+
+— and asserted each routed through `_sanitize_text` (or another
+canonical sanitiser). But the audit walker did NOT extend to the
+**channel-level metadata** in `_make_rss`:
+
+```python
+ET.SubElement(channel, "title").text = feed_config.FEED_TITLE
+ET.SubElement(channel, "link").text = feed_config.FEED_LINK
+ET.SubElement(channel, "description").text = feed_config.FEED_DESC
+```
+
+`FEED_LINK` is HTTPS-pinned + GitHub-host-pinned + `_UNSAFE_URL_CHARS`-
+stripped via `validate_public_feed_url` (the canonical
+publishing-surface helper). But `FEED_TITLE` and `FEED_DESC` are read
+verbatim from the env via `os.getenv("FEED_TITLE", DEFAULT_FEED_TITLE)`
+and flow directly into the channel-level RSS XML — no control-char /
+BiDi / zero-width strip. An env override containing CVE-2021-42574
+Trojan-Source primitives flows into `docs/feed.xml` verbatim.
+
+**Threat model:** The published `docs/feed.xml` (served from
+`https://origamihase.github.io/wien-oepnv/feed.xml`) is fetched by
+every subscriber's RSS reader. The channel-level `<title>` and
+`<description>` are MORE prominent than per-item fields:
+
+* `<title>` is the "feed name" displayed in every reader's feed list
+  — typically the FIRST thing a subscriber sees when adding the
+  feed. Inverted-text via U+202E (RLO) is a phishing primitive on
+  every subscriber.
+* `<description>` is shown in feed-management UIs (Feedly's "About
+  this feed" sidebar, NetNewsWire's feed inspector) and feed-
+  discovery aggregators.
+
+When the env-controlled FEED_TITLE / FEED_DESC contains:
+
+* **U+202E (RLO).** A `FEED_TITLE` like `Wien ÖPNV ‮evil-channel-title`
+  renders as `Wien ÖPNV eltit-lennahc-live` in any Unicode-aware
+  reader — CVE-2021-42574 Trojan-Source on the channel metadata.
+* **U+200B-U+200D (ZWSP/ZWNJ/ZWJ).** Cache-key collisions and
+  Unicode-equality disagreements in subscriber readers' dedup
+  logic — an attacker churning FEED_TITLE between byte-different
+  but visually-identical variants triggers re-fetch on every
+  subscriber update.
+* **U+2028 / U+2029 (LSEP/PSEP).** Line/paragraph separators that
+  Unicode-aware RSS parsers honour as line breaks, splitting the
+  channel title/description into multiple visual lines.
+* **U+FEFF (BOM).** Parser divergence; some readers skip it,
+  others store it, leading to identifier mismatch between caches.
+* **\x80-\x9F (8-bit C1 controls).** ECMA-48 8-bit equivalents of
+  ANSI escapes — `\x9B` is 8-bit CSI (`cat docs/feed.xml` on xterm
+  with `eightBitInput` triggers attacker-controlled colour /
+  cursor-move sequences).
+* **\x00-\x08, \x0B-\x0C, \x0E-\x1F, \x7F.** Most are invalid in
+  XML 1.0; downstream RSS parsers may emit parse exceptions on
+  these bytes, breaking feed availability for affected subscribers.
+
+The env-override surface is realistic: a leaked CI env (the project
+owner's GitHub Actions secrets), a compromised secret store, an
+intentional misconfig copy-pasted from old documentation, or a
+typo that introduces an invisible BiDi mark all reach this code
+path.
+
+**Severity:** LOW-MEDIUM — Trojan-Source primitive on a public
+artefact, contingent on env-override behaviour. No current
+vulnerability surface (the project's `DEFAULT_FEED_TITLE` /
+`DEFAULT_FEED_DESCRIPTION` carry no control characters) but a
+structural drift candidate that mirrors the exact shape closed for
+every per-item RSS sink across Rounds 1-7 of the *Trojan-Source RSS
+Drift* family. The channel-level surface is MORE prominent than
+the per-item fields (every subscriber sees the channel title in
+their reader's feed list), and the fix is a 2-line change at the
+publishing surface — additive-only and risk-free for the legitimate
+case.
+
+**Fix:** Two-line change inside `src/build_feed.py:_make_rss`:
+
+```python
+ET.SubElement(channel, "title").text = _sanitize_text(feed_config.FEED_TITLE)
+ET.SubElement(channel, "description").text = _sanitize_text(feed_config.FEED_DESC)
+```
+
+Mirrors the per-item sinks already routed through `_sanitize_text`.
+Sanitising at the publishing surface (channel-emit site) rather
+than at config-load time avoids a circular import between
+`src/feed/config.py` and `src/build_feed.py` (the latter imports
+the former).
+
+The PoC test
+`tests/test_sentinel_channel_title_desc_trojan_source.py` enumerates
+58 cases:
+
+* 26 per-code-point tests parametrised over the canonical
+  Trojan-Source / control character set, asserting each is stripped
+  from the channel `<title>` element.
+* 26 parallel per-code-point tests for the channel `<description>`
+  element.
+* 2 happy-path regression tests (legitimate German-language values
+  preserved verbatim, including German umlauts).
+* 2 end-to-end PoCs (RLO Trojan-Source on FEED_TITLE, ZWSP dedup-
+  evasion on FEED_DESC).
+* 1 inventory invariant
+  (`test_inventory_no_dangerous_chars_in_channel_title_desc`) that
+  plants every canonical dangerous char into a single FEED_TITLE /
+  FEED_DESC pair and asserts the rendered RSS XML carries none of
+  them — fires on any future regression that re-introduces a
+  channel-level metadata path bypassing `_sanitize_text`.
+* 1 default-value round-trip sanity check.
+
+**Learning:** The Round 7 audit walker enumerated every per-item
+RSS element in `_emit_item` but stopped there. The closing-checklist
+verdict said "the family is closed across all six per-item sinks"
+— but the channel-level RSS elements emitted in `_make_rss` are a
+parallel surface that shares the same sanitisation contract. Same
+shape as the 2026-05-10 *HTTPS-only Provider URL Drift Round 2*
+(scripts/ sibling missed by Round 1's src/-only grep) and the
+*BiDi-Mark Drift Round 7* (sitemap sibling deferred from Round 6):
+**the audit walker's scope is the audit walker's own blind spot**.
+
+The structural fix-shape pattern: when a canonical sanitiser exists
+(`_sanitize_text`, `escape_markdown`, etc.), the closing-checklist
+must walk EVERY surface that emits the relevant data type into a
+public sink — not just the per-item subset, not just the
+`grep helper_name` callsite enumeration. The walker for the
+Trojan-Source RSS Drift family is now amended to cover both
+`_emit_item` (per-item sinks) AND `_make_rss` (channel-level sinks).
+
+The recursive meta-pattern across the Trojan-Source RSS Drift family
+is now eight rounds deep:
+
+1. Round 1-5 (PR #1413): per-item `<title>` / `<description>` /
+   time-line via `_sanitize_text` + canonical `_CONTROL_RE`.
+2. Round 6 (PR #1418): widened `_CONTROL_RE` to canonical
+   `_INVISIBLE_DANGEROUS_RE` floor (BiDi + zero-width + LSEP/PSEP +
+   C1 + DEL + BOM).
+3. Round 7 (PR #1420): per-item `<guid>` sink — the LAST per-item
+   RSS sink routing through `str.strip()`-only.
+4. Round 8 (this PR): channel-level `<title>` / `<description>`
+   sinks — the LAST RSS sinks at the publishing surface.
+
+**Prevention:** The auto-discoverable inventory invariant
+`test_inventory_no_dangerous_chars_in_channel_title_desc` plants
+every canonical dangerous char into a single FEED_TITLE / FEED_DESC
+pair and asserts the published RSS XML carries none of them. A
+future PR that re-introduces a channel-level metadata path
+bypassing `_sanitize_text` (e.g. a new env-controlled element
+emitted directly without the helper, or a refactor that moves the
+emission without preserving the helper call) fails the test at
+PR-review time.
+
+The closing-checklist grep for the *Trojan-Source RSS Drift* family
+is now amended to walk BOTH per-item AND channel-level RSS element
+emissions:
+
+```
+grep -nE 'ET\.SubElement\([^,]+,\s*"(title|description|guid|link)"\)\.text' \
+  src/build_feed.py
+```
+
+— every site that emits a text-typed element into the RSS XML MUST
+route the upstream-or-env-controlled value through `_sanitize_text`
+(or another canonical sanitiser documented in the journal). The
+two channel-level `<link>` cases (line 2161 + atom self/alternate)
+are exempted because `feed_config.FEED_LINK` and
+`feed_config.PAGES_BASE_URL` are already pinned by
+`validate_public_feed_url` (HTTPS-only + GitHub host allow-list +
+`_UNSAFE_URL_CHARS` strip — the canonical publishing-surface
+helper).
+
+The Trojan-Source RSS Drift family is now closed across all RSS
+sinks (per-item AND channel-level). Future drift would manifest
+as either (a) a new RSS element emission site that bypasses
+`_sanitize_text` (caught by the inventory test plus the grep), or
+(b) a future widening of the canonical `_CONTROL_RE` floor that
+isn't reflected in the canonical sibling regexes (caught by the
+existing inventory tests in `tests/test_sentinel_http_url_chars_bidi_gap.py`,
+`tests/test_sentinel_feed_xml_invisible_prefix.py`,
+`tests/test_sentinel_csv_formula_injection_invisible_prefix.py`,
+and `tests/test_sentinel_sitemap_unsafe_chars_canonical_drift.py`).
+
 ## 2026-05-10 - Trojan-Source RSS Drift Round 7: Per-Item `<guid>` Element Was the Last RSS Sink Routing Through `str.strip()`-Only
 
 **Vulnerability:** The 2026-05-10 *Trojan-Source RSS via build_feed
