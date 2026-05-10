@@ -482,6 +482,84 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])nfp_[A-Za-z0-9]{40,}(?![A-Za-z0-9])"),
         "Netlify Personal Access Token gefunden",
     ),
+    # Render Personal Access Token (``rnd_<40+ alphanumeric body>``).
+    # Issued via dashboard.render.com/u/settings#api-keys for full
+    # Render REST-API access (the modern Render-platform token
+    # format). Total length 44+ chars (4-char prefix + 40+ char
+    # body). The ``rnd_`` prefix is unambiguous (no other major
+    # issuer uses it), and the body lies entirely inside the
+    # entropy fallback's ``[A-Za-z0-9+/=_-]`` alphabet — so the
+    # entropy regex matches the full ``rnd_<body>`` span as one
+    # generic finding, losing the Render-specific attribution that
+    # incident-response keys off. A leak grants the issuing user's
+    # full Render API scope: read/write every owned service's
+    # deploys, environment variables, persistent disks, custom
+    # domains, build hooks and webhook configuration; a malicious
+    # deploy can replace the live application (web service, static
+    # site, cron job, background worker) with arbitrary code,
+    # bypassing every downstream gate. The revocation flow lives at
+    # dashboard.render.com/u/settings#api-keys and is distinct from
+    # any other vendor's. Render closes the named-but-deferred
+    # Round-6/Round-7 hosting-platform sibling alongside Netlify
+    # (Round 7) on the CI/CD hosting tier.
+    (
+        re.compile(r"(?<![A-Za-z0-9])rnd_[A-Za-z0-9_\-]{40,}(?![A-Za-z0-9])"),
+        "Render API Key gefunden",
+    ),
+    # Buildkite User Access Token (``bkua_<40+ alphanumeric body>``).
+    # Issued via buildkite.com/user/api-access-tokens for user-scoped
+    # REST-API access (issue queries, build retries, pipeline
+    # manipulation, agent management). Distinct from the Round-7
+    # Buildkite Agent Token (``bkat_``): agent tokens register CI
+    # workers, user tokens act on behalf of a human user. The two
+    # patterns are mutually exclusive at the prefix level (``bkat_``
+    # vs ``bkua_`` differ at the fourth character). The ``bkua_``
+    # prefix is unambiguous, and the body lies entirely inside the
+    # entropy alphabet — same generic-only attribution gap as
+    # ``bkat_``. A leak grants the issuing user's full Buildkite
+    # API scope across every accessible organisation: read pipeline
+    # definitions (which often embed secrets in env references),
+    # retry historical builds with attacker-controlled env
+    # overrides, manage agents, and exfiltrate access logs. The
+    # revocation flow lives at buildkite.com/user/api-access-tokens
+    # (distinct from agent-token revocation), so issuer-specific
+    # attribution accelerates IR triage.
+    (
+        re.compile(r"(?<![A-Za-z0-9])bkua_[A-Za-z0-9]{40,}(?![A-Za-z0-9])"),
+        "Buildkite User Access Token gefunden",
+    ),
+    # Fly.io API Token (``FlyV1 fm[12]_<base64 body>`` or
+    # ``FlyV1 fo1_<base64 body>``). Issued via the ``fly auth token``
+    # CLI or fly.io/dashboard/<org>/tokens for full Fly.io platform
+    # API access (deploy apps, read secrets, manipulate Wireguard
+    # peers, manage organisations). The canonical leak surface is the
+    # Authorization-header form ``FlyV1 <token>``: the ``FlyV1 ``
+    # scheme prefix (with literal space) anchors against fly.io
+    # specifically. Modern macaroon tokens use ``fm2_`` (current
+    # default) or ``fm1_`` (legacy macaroon), and the oldest opaque
+    # tokens use ``fo1_``. Total length 200+ chars in practice
+    # (the macaroon body encodes embedded JSON capability
+    # descriptions plus organisation / app scope). The literal
+    # space in ``FlyV1 `` and the body alphabet
+    # ``[A-Za-z0-9_=\-]`` (base64url + ``=`` padding) place the
+    # prefix outside the entropy fallback's contiguous-match span —
+    # pre-fix the entropy regex matches only the body span after
+    # the underscore, losing both the ``FlyV1 fm2_`` prefix AND the
+    # Fly.io-specific issuer attribution. The 50+ body lower bound
+    # rejects short ``FlyV1 fm2_``-prefixed fragments while
+    # accepting every legitimate token (real Fly.io macaroons are
+    # always >150 chars). A leak grants the issuing principal's
+    # full Fly.io organisation scope: deploy arbitrary container
+    # images (which can exfiltrate every secret in the org's apps),
+    # modify networking (Wireguard peers, IP allocations, Anycast
+    # routes), and rotate billing credentials. The revocation flow
+    # lives at fly.io/dashboard/<org>/tokens and is distinct from
+    # any other vendor's. Fly.io is the canonical PaaS / edge-
+    # runtime sibling not previously covered.
+    (
+        re.compile(r"(?<![A-Za-z0-9])FlyV1 (?:fm[12]|fo1)_[A-Za-z0-9_=\-]{50,}(?![A-Za-z0-9])"),
+        "Fly.io API Token gefunden",
+    ),
 ]
 
 
