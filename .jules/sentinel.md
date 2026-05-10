@@ -1,3 +1,208 @@
+## 2026-05-10 - Secret Scanner Drift Round 6: Brevo / Postman / HCP Vault Secrets — Three Sub-Landscapes Round 5's Modern-Python Audit Did Not Enumerate
+
+**Vulnerability:** The 2026-05-09 Round 5 entry (PR #1395, Atlassian /
+Sentry / Linear) re-stated the prevention rule:
+
+> "Treat `_KNOWN_TOKENS` as an issuer-keyed table — walk the modern
+> Python-project credential landscape (config files, infra-as-code,
+> observability stacks, project-management integrations) and add every
+> variant whose canonical prefix is unambiguous and whose body matches
+> the entropy fallback's alphabet."
+
+Round 5 enumerated four sub-landscapes (Cloud SaaS API tokens,
+multi-segment dot-separated tokens, strict-format excluded-alphabet
+tokens, and the named-but-deferred set) but stopped at three issuer
+prefixes. Re-running the audit against three additional sub-landscapes
+that Round 5 did not explicitly enumerate — **transactional email**,
+**API testing**, and **secrets management** — surfaces three still-
+missing issuer classes whose canonical formats sail past `_KNOWN_TOKENS`
+into the generic `_HIGH_ENTROPY_RE` fallback or `_SENSITIVE_ASSIGN_RE`,
+losing the issuer attribution that incident-response triage keys off:
+
+  1. **Brevo (formerly Sendinblue) v3 API Keys**
+     (`xkeysib-<64 hex>-<16 alphanumeric>`) — issued via
+     app.brevo.com/settings/keys/api for transactional-email,
+     marketing-automation, contacts, SMS-API, and webhook configuration
+     access. Total length 89 chars (8-char unique prefix + 64-char
+     lowercase-hex secret + 1 dash + 16-char alphanumeric request-id-
+     like suffix). The `xkeysib-` prefix is unique to Brevo (no other
+     major issuer uses it) and the strict 64-hex + 16-alphanumeric body
+     matches the documented canonical format. The hyphens AND the body
+     alphabet `[a-f0-9]+[A-Za-z0-9]` live entirely INSIDE the entropy
+     fallback's alphabet `[A-Za-z0-9+/=_-]`, so the entropy regex
+     matches the full 89-char span as one finding and reports
+     "Hochentropischer Token-String" — without the Brevo issuer name.
+     A leak grants the attacker:
+     * Send mail FROM the project's domain via the transactional-email
+       API (phishing amplification leveraging existing SPF / DKIM
+       authentication, since the receiving server validates only the
+       envelope-from / DKIM signature against Brevo's authorised IP
+       range).
+     * Read/exfiltrate the full contact list and segment metadata.
+     * Register webhooks redirecting delivery events to attacker-
+       controlled endpoints.
+     * Create / modify / delete campaign templates and automation flows.
+
+  2. **Postman API Keys** (`PMAK-<24 hex>-<34 hex>`) — issued via
+     postman.com/settings/me/api-keys. Total length 64 chars (5-char
+     prefix + 24-char hex + 1 dash + 34-char hex). The `PMAK-` prefix
+     is unambiguous (no other major issuer uses uppercase `PMAK-`),
+     but the strict-hex body lies entirely inside the entropy
+     fallback's alphabet — same generic-only attribution gap as Brevo.
+     A leak grants the issuing user's full Postman REST-API scope
+     across every workspace they belong to, including private API
+     definitions and mock-server URLs that may carry embedded
+     credentials.
+
+  3. **HashiCorp Cloud Platform (HCP) Vault Secrets tokens**
+     (`hvs.<base64 body>`) — issued via portal.cloud.hashicorp.com
+     for HCP Vault Secrets API access (the managed-Vault offering;
+     introduced 2023; replaces the legacy `hvb.` admin-tokens). Total
+     length 95-110 chars (4-char prefix incl. dot + 90+ char base64url
+     body). The `hvs.` prefix is unique to HashiCorp's modern HCP
+     token format. The literal `.` is OUTSIDE the entropy alphabet
+     `[A-Za-z0-9+/=_-]`, so the entropy regex matches only the body
+     span — losing both the `hvs.` prefix AND the HashiCorp issuer
+     attribution. A leak grants whoever holds the token full read-
+     access to every secret the issuing service principal / human
+     user can see — the highest blast-radius credential class in the
+     modern infra stack (database creds, third-party API keys,
+     OAuth client secrets, signing keys are all routinely stored in
+     HCP Vault Secrets namespaces).
+
+**Threat model:** Each issuer's revocation flow lives at a distinct
+vendor URL (app.brevo.com / postman.com / portal.cloud.hashicorp.com),
+so a generic-only attribution slows IR (operator chases the wrong
+rotation playbook, can't estimate blast radius without knowing which
+vendor is involved). The three issuers cover three distinct
+sub-landscapes that Round 5's named set
+(JWT / HF / DO / GitLab variants / Twilio / Datadog / Cloudflare /
+Atlassian / Notion / Sentry / Linear) did not include:
+
+* **Transactional email** — Brevo / Mailgun / Mailchimp / SendGrid /
+  Postmark. SendGrid was closed pre-Round-1 (`SG.` prefix). Brevo is
+  the next-largest player with an unambiguous prefix and is widely
+  used by Python web projects (Flask-Mail, Django-Anymail, FastAPI
+  starter templates).
+* **API testing** — Postman / Insomnia / Hoppscotch. Postman is the
+  market leader and has a unique unambiguous prefix.
+* **Secrets management** — HashiCorp Cloud Platform / Doppler /
+  Infisical / 1Password. HCP Vault Secrets is HashiCorp's managed
+  offering with an unambiguous prefix and the highest blast-radius
+  per single-token leak (every secret in the namespace).
+
+The PoC in `tests/test_sentinel_secret_scanner_drift_round6.py` plants
+each token shape into a synthetic file under `KEY = "..."` shape
+(plus a `.env` `KEY=VALUE` shape for Brevo and a mutual-exclusion
+test for HCP-vs-SendGrid) and asserts the issuer-specific reason
+appears in the scan findings. Pre-fix, every test failed because
+either the generic entropy / assignment fallback was the only finding,
+OR the prefix was treated as opaque text and only the body was
+flagged generically.
+
+**Severity:** MEDIUM — defense-in-depth + IR-attribution. No
+current vulnerability surface (the entropy / sensitive-assign
+fallbacks already flag the tokens generically) but the issuer-
+specific attribution accelerates the IR rotation playbook for any
+project that ever leaks one of these tokens. Same severity profile
+as Round 5 (Atlassian / Sentry / Linear) and Round 2 (Twilio / Notion).
+
+**Fix:** Append three new entries to `_KNOWN_TOKENS` in
+`src/utils/secret_scanner.py`, AFTER the Round-5 Linear entry so
+`is_covered` correctly anchors on more specific issuer-prefixed
+tokens first:
+
+```python
+(
+    re.compile(r"(?<![A-Za-z0-9])xkeysib-[a-f0-9]{64}-[A-Za-z0-9]{16}(?![A-Za-z0-9])"),
+    "Brevo (Sendinblue) API Key gefunden",
+),
+(
+    re.compile(r"(?<![A-Za-z0-9])PMAK-[a-fA-F0-9]{24}-[a-fA-F0-9]{34}(?![A-Za-z0-9])"),
+    "Postman API Key gefunden",
+),
+(
+    re.compile(r"(?<![A-Za-z0-9])hvs\.[A-Za-z0-9_\-]{30,}(?![A-Za-z0-9])"),
+    "HCP Vault Secrets Token gefunden",
+),
+```
+
+Boundary lookbehind/lookahead `(?<![A-Za-z0-9])` /
+`(?![A-Za-z0-9])` matches the rest of `_KNOWN_TOKENS` so accidental
+sub-string matches (e.g. `myxkeysib-` or `PMAK-foo` in a long
+identifier) cannot trigger false positives. Each pattern's body
+length is strict enough to reject short fragments while accepting
+every legitimate token's documented format.
+
+The PoC test file enumerates 9 cases across 3 issuers:
+
+* 3 PoC tests (one per issuer) planting a realistic synthetic token
+  and asserting the issuer-specific reason appears.
+* 1 environment-config variant (Brevo in `.env` `KEY=VALUE` shape)
+  proving the detector works regardless of surrounding context.
+* 3 negative-case tests (one per issuer) proving short prefixes
+  with insufficient body length MUST NOT match.
+* 1 mutual-exclusion regression test (HCP `hvs.` MUST NOT
+  misattribute as SendGrid `SG.`).
+* 1 inventory invariant
+  (`test_known_tokens_round6_taxonomy`) pinning the three new
+  issuer reasons against `src/utils/secret_scanner.py` so a future
+  PR that drops one of the patterns fails at PR-review time.
+
+**Learning:** The issuer-keyed taxonomy is recursive — every Round-N
+prevention rule names a SUBSET of the modern Python-project
+credential landscape (Round 4 named JWT/HF/DO/GitLab-variants/Twilio/
+Datadog/Cloudflare/Atlassian/Notion; Round 5 closed three of them
+but did not enumerate transactional-email / API-testing / secrets-
+management as their own sub-landscapes). The right closure shape is
+"every audit round that adds a new issuer MUST also enumerate THREE
+adjacent sub-landscapes the round did NOT cover" so the next round's
+audit walker has a written-down starting point. This Round 6
+enumerates Brevo (transactional-email) / Postman (API-testing) /
+HCP Vault Secrets (secrets-management) and the next round can pick
+up:
+
+* **Transactional email continued** — Mailgun (`key-<32 hex>`),
+  Mailchimp (`<32 hex>-<dc>`), Postmark (UUID-format, no prefix —
+  bucket-(b)).
+* **API testing continued** — Insomnia, Hoppscotch (no canonical
+  prefix observed in the wild; bucket-(b)).
+* **Secrets management continued** — Doppler (`dp.pt.<token>` /
+  `dp.st.<token>`), Infisical (`<32 hex>:<32 hex>`-shape, no
+  prefix — bucket-(b)).
+* **CI/CD platforms** — CircleCI Personal API tokens (40-char
+  base64-ish, no prefix — bucket-(b)), Buildkite agent tokens
+  (`bkat_<UUID>` — UNAMBIGUOUS), Render API tokens
+  (`rnd_<base64>` — UNAMBIGUOUS), Netlify PATs (`nfp_<base64>` —
+  UNAMBIGUOUS), Vercel tokens (no canonical prefix; bucket-(b)).
+* **Payments continued** — Square (`EAAA<base64>` overlaps with
+  Facebook Graph token shape — disambiguator needed).
+* **CDN / DNS** — Cloudflare (40-char `[A-Za-z0-9_-]` no prefix —
+  permanent bucket-(b) per Round 4).
+
+**Prevention:** The auto-discoverable inventory invariant
+`test_known_tokens_round6_taxonomy` pins the three new issuer
+reasons against `src/utils/secret_scanner.py`. Combined with the
+Round-1, Round-2, Round-3, Round-4, and Round-5 invariants (each
+pins its own subset of `_KNOWN_TOKENS`), the closing-checklist grep:
+
+```
+grep -E "Brevo|Postman|HCP Vault|Atlassian|Sentry|Linear|Twilio|Notion|Discord|JWT|Hugging|DigitalOcean|GitLab Pipeline|SendGrid|Slack|Stripe|GitHub|Google|Telegram|NPM|PyPI|OpenAI|Anthropic|AWS|Bearer" src/utils/secret_scanner.py
+```
+
+— enumerates every issuer-specific reason currently in
+`_KNOWN_TOKENS`. A future PR that drops any of these reasons fails
+the corresponding round's invariant test at PR-review time. Total
+specific-issuer pattern count post-Round-6: **41** (up from 38 at
+end of Round 5) plus the generic high-entropy and bearer fallbacks.
+
+The order rule from Round 4 still applies: each new entry must be
+placed AFTER more specific issuer-prefixed tokens so `is_covered`
+correctly anchors on the most specific issuer first. Round 6
+entries sit at the end of the list — `xkeysib-` / `PMAK-` /
+`hvs.` are mutually exclusive with every preceding pattern so the
+end-of-list position is correct.
+
 ## 2026-05-10 - Log-Injection Drift Round 5: `src/feed/reporting.py:_CONTROL_CHARS_RE` Was the Last Name-Collision Sibling Drifted Narrower Than the Canonical Floor
 
 **Vulnerability:** Round 4 (PR #1422, journaled 2026-05-10) widened

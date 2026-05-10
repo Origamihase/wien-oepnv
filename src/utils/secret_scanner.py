@@ -347,6 +347,72 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])lin_api_[A-Za-z0-9]{32,}(?![A-Za-z0-9])"),
         "Linear API Key gefunden",
     ),
+    # Brevo (formerly Sendinblue) v3 API Key
+    # (``xkeysib-<64 lowercase hex>-<16 alphanumeric>``). Issued via
+    # app.brevo.com/settings/keys/api for transactional email,
+    # marketing-automation, contacts, SMS-API and webhook configuration
+    # access. Total length 89 chars (8-char prefix + 64-char hex secret
+    # + 1 dash + 16-char alphanumeric request-id-like suffix). The
+    # ``xkeysib-`` prefix is unambiguous (no other major issuer uses
+    # it), and the strict 64-hex secret + 16-alphanumeric suffix matches
+    # Brevo's documented canonical format. A leak grants the issuing
+    # account's full transactional-mail / contacts API scope: the
+    # attacker can send mail FROM the project's domain (phishing
+    # amplification leveraging existing SPF / DKIM authentication),
+    # exfiltrate the contact list, register webhooks redirecting
+    # delivery events to attacker-controlled endpoints, or modify
+    # campaign templates. The revocation flow lives at
+    # https://app.brevo.com/settings/keys/api and is distinct from
+    # any other vendor's, so issuer-specific attribution accelerates
+    # IR triage. Pre-fix the entropy fallback's
+    # ``[A-Za-z0-9+/=_-]{24,}`` regex matches the full token span as a
+    # single "Hochentropischer Token-String" finding (hyphen is in the
+    # alphabet) WITHOUT preserving the Brevo-specific issuer name.
+    (
+        re.compile(r"(?<![A-Za-z0-9])xkeysib-[a-f0-9]{64}-[A-Za-z0-9]{16}(?![A-Za-z0-9])"),
+        "Brevo (Sendinblue) API Key gefunden",
+    ),
+    # Postman API Key (``PMAK-<24 hex>-<34 hex>``). Issued via
+    # postman.com/settings/me/api-keys for full Postman REST-API access:
+    # read/write every accessible workspace's collections, environments,
+    # mocks, monitors, and team membership. Total length 64 chars
+    # (5-char prefix + 24-char hex + 1 dash + 34-char hex). The ``PMAK-``
+    # prefix is unambiguous (no other major issuer uses uppercase
+    # ``PMAK-``), and the strict hex body avoids overlap with the
+    # entropy fallback's broader alphabet. A leak grants the issuing
+    # user's full Postman API scope across every workspace they belong
+    # to, including private API definitions and mock-server URLs that
+    # may carry embedded credentials. The revocation flow lives at
+    # postman.com/settings/me/api-keys and is distinct from any other
+    # vendor's. Pre-fix the entropy fallback flagged the body+suffix
+    # as a generic high-entropy span, losing the Postman attribution.
+    (
+        re.compile(r"(?<![A-Za-z0-9])PMAK-[a-fA-F0-9]{24}-[a-fA-F0-9]{34}(?![A-Za-z0-9])"),
+        "Postman API Key gefunden",
+    ),
+    # HashiCorp Cloud Platform (HCP) Vault Secrets token (``hvs.<base64
+    # body>``). Issued via portal.cloud.hashicorp.com for HCP Vault
+    # Secrets API access (the managed-Vault offering — read every
+    # secret stored in the namespace's apps and integrations). Total
+    # length typically 95-110 chars (4-char prefix incl. dot + 90+ char
+    # base64url body). The ``hvs.`` prefix is unique to HashiCorp's
+    # modern HCP token format (introduced 2023; replaces the legacy
+    # ``hvb.`` admin tokens) and the literal ``.`` separator
+    # disambiguates from any alphanumeric-prefixed token already in the
+    # table. A leak grants whoever holds the token full read-access to
+    # every secret the issuing service principal / human user can see —
+    # the highest blast-radius credential class in the modern infra
+    # stack. The revocation flow lives at portal.cloud.hashicorp.com
+    # and is distinct from any other vendor's, so issuer-specific
+    # attribution is critical for IR triage. Pre-fix the entropy
+    # fallback flagged the body as a generic high-entropy span (the
+    # ``.`` is OUTSIDE the entropy alphabet ``[A-Za-z0-9+/=_-]``, so
+    # only the body span after ``hvs.`` matched), losing the
+    # HCP-specific issuer attribution.
+    (
+        re.compile(r"(?<![A-Za-z0-9])hvs\.[A-Za-z0-9_\-]{30,}(?![A-Za-z0-9])"),
+        "HCP Vault Secrets Token gefunden",
+    ),
 ]
 
 
