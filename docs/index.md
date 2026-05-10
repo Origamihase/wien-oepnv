@@ -25,7 +25,7 @@ Der gesamte Code steht als Open Source zur Verfügung, sodass du jederzeit nachv
 1. **Repository klonen** und ein virtuelles Environment anlegen (`python -m venv .venv`).
 2. **Abhängigkeiten installieren** mit `pip install -r requirements.txt`.
 3. **Caches aktualisieren** via `python -m src.cli cache update`.
-4. **Feed bauen** mit `python -m src.cli feed build`, um `docs/feed.xml` zu generieren (anschließend steht der Gesundheitsbericht unter `docs/feed-health.md` bereit).
+4. **Feed bauen** mit `python -m src.cli feed build`, um `docs/feed.xml` zu generieren (anschließend steht der Gesundheitsbericht lokal unter `docs/feed-health.md` bereit – die Datei ist nicht im Repository versioniert).
 5. **Qualitätscheck** vor dem nächsten Build optional mit `python -m src.cli feed lint` durchführen.
 6. **Statische Analysen** optional mit `scripts/run_static_checks.py` ausführen.
 
@@ -37,7 +37,7 @@ Weitere Details findest du in der [ausführlichen Projektdokumentation](../READM
 |-------------|--------|----------------|
 | Wiener Linien (WL) | Störungs- und Echtzeitmeldungen für U-Bahn, Straßenbahn und Bus | Mehrmals täglich |
 | ÖBB | Informationen zum regionalen und nationalen Bahnverkehr im Großraum Wien | Nach Fahrplanänderungen und Ereignissen |
-| Verkehrsverbund Ost-Region (VOR) | Verbundweite Meldungen und VAO/VAO-API-Dokumentation | Kontinuierlich |
+| Verkehrsverbund Ost-Region (VOR) | Verbundweite Meldungen und VOR/VAO-API-Dokumentation | Kontinuierlich |
 | Stadt Wien (OGD) | Baustellen- und Ereignisdaten als Fallback | Täglich |
 
 Alle Datenquellen werden revisionssicher versioniert, inklusive Lizenzhinweisen. Informiere dich vor der Weiterverwendung über die jeweiligen Nutzungsbedingungen.
@@ -81,7 +81,7 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
 
 - [Projektübersicht im README](../README.md)
 - [API-Referenzen und Audits](reference/)
-- [Feed Health Report](feed-health.md)
+- Feed-Health-Report: `docs/feed-health.md` (lokal nach jedem Build erzeugt)
 - [Eventschema für Integrationen](schema/events.schema.json)
 - [Feed als RSS-Dokument](feed.xml)
 

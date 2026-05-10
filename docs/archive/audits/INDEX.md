@@ -38,4 +38,5 @@ Chronologische Übersicht aller archivierten Audits dieses Projekts.
 Der periodisch regenerierte Validator-Report liegt nicht hier im Archiv,
 sondern direkt unter
 [`docs/stations_validation_report.md`](../../stations_validation_report.md)
-(wird vom monatlichen `update-stations.yml`-Workflow überschrieben).
+(wird vom wöchentlichen `update-stations.yml`-Workflow überschrieben,
+Cron `0 1 * * 0`).

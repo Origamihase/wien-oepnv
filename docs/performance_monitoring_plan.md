@@ -1,64 +1,91 @@
-# Performance- & Monitoring-Konzept für den Wien ÖPNV Feed
+# Performance- & Monitoring-Konzept (Vorschlag)
 
-Dieses Dokument beschreibt die Ergänzungen, mit denen das Projekt um
-regelmäßige Performance-Analysen und Monitoring-Dashboards erweitert
-wurde. Ziel ist es, Auffälligkeiten bei Latenzen oder Feed-Generierung
-frühzeitig zu erkennen und datenbasiert zu optimieren.
+> ⚠️ **Status: Konzeptpapier / Roadmap.** Dieses Dokument skizziert
+> einen vorgeschlagenen Ausbau der Performance-Telemetrie für den
+> Wien ÖPNV Feed. Die hier genannten Artefakte
+> (`log/performance-metrics.jsonl`, `log/performance-warnings.log`,
+> ein `make profile-feed`-Target, ein eigenes `docs/how-to/profiling.md`)
+> sind **noch nicht implementiert** und dürfen nicht als beschriebene
+> Features verwechselt werden. Der aktuelle Beobachtbarkeits-Stack
+> beschränkt sich auf:
+>
+> * `log/errors.log` und `log/diagnostics.log` (rotierende Textlogs;
+>   konfigurierbar über `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`,
+>   `LOG_FORMAT`),
+> * `docs/feed-health.md` (Markdown-Bericht nach jedem Feed-Build,
+>   lokal, **nicht** committed) und
+> * die statistischen CSV-Ledger unter `data/stats/`, aus denen
+>   `scripts/generate_markdown_stats.py` täglich `docs/statistik.md`
+>   regeneriert.
+>
+> Bevor weitere Performance-Features implementiert werden, sollte
+> dieses Dokument vom Hauptprojekt aktualisiert oder durch eine
+> realisierte Variante ersetzt werden.
 
-## 1. Metrik-Erfassung
+Ziel des Konzepts: Auffälligkeiten bei Latenzen oder Feed-
+Generierung frühzeitig erkennen und datenbasiert optimieren.
 
-- **Feed-Laufzeiten**: Jeder Aufruf von `build_feed.py` protokolliert die
-  Gesamtdauer sowie Zeiten der Provider-Abschnitte in einer neuen
-  Metrik-Datei `log/performance-metrics.jsonl`. Die Datei verwendet
-  JSON-Lines, damit sie leicht ingestiert werden kann.
-- **Provider-Sicht**: Zusätzlich zu den bisherigen Warn-Logs werden die
-  Wartezeiten einzelner API-Anfragen erfasst. Daraus lässt sich erkennen,
-  ob Timeouts oder Retries zunehmen.
-- **Cache-Trefferquote**: Die `cache`-Utilities loggen, ob Datensätze aus
-  dem Cache oder von der Quelle stammen. Dadurch bleibt sichtbar, wie gut
-  die konfigurierten Cache-Laufzeiten greifen.
+## 1. Geplante Metrik-Erfassung
 
-## 2. Alarmierung
+- **Feed-Laufzeiten**: Jeder Aufruf von `python -m src.cli feed build`
+  protokolliert die Gesamtdauer sowie Zeiten der Provider-Abschnitte
+  in einer geplanten Metrik-Datei `log/performance-metrics.jsonl`. Die
+  Datei verwendet JSON-Lines, damit sie leicht ingestiert werden kann.
+- **Provider-Sicht**: Zusätzlich zu den bisherigen Warn-Logs sollen
+  die Wartezeiten einzelner API-Anfragen erfasst werden. Daraus
+  ließe sich erkennen, ob Timeouts oder Retries zunehmen.
+- **Cache-Trefferquote**: Die `cache`-Utilities sollen loggen, ob
+  Datensätze aus dem Cache oder von der Quelle stammen. Dadurch
+  bliebe sichtbar, wie gut die konfigurierten Cache-Laufzeiten
+  greifen.
 
-- **Warnschwellen**: Überschreiten die Feed-Laufzeiten einen konfigurier-
-  baren Schwellenwert (`FEED_RUN_WARN_THRESHOLD`), wird ein dedizierter
-  Log-Eintrag unter `log/performance-warnings.log` erzeugt. Dieser kann
-  von gängigen Log-Monitoring-Lösungen (z. B. Loki, ELK) verarbeitet
-  werden.
-- **Hook-System**: Für kritische Abweichungen lässt sich ein eigener
-  Callback registrieren (`PERFORMANCE_ALERT_HOOK`). Sobald die Laufzeit
-  den definierten Höchstwert überschreitet, ruft die Anwendung den Hook
-  auf (z. B. zur Versendung eines Webhooks oder einer ChatOps-Nachricht).
+## 2. Geplante Alarmierung
 
-## 3. Dashboards
+- **Warnschwellen**: Überschreiten die Feed-Laufzeiten einen
+  konfigurierbaren Schwellenwert (`FEED_RUN_WARN_THRESHOLD`), würde
+  ein dedizierter Log-Eintrag unter `log/performance-warnings.log`
+  erzeugt. Dieser könnte von gängigen Log-Monitoring-Lösungen
+  (z. B. Loki, ELK) verarbeitet werden.
+- **Hook-System**: Für kritische Abweichungen sollte sich ein eigener
+  Callback registrieren lassen (`PERFORMANCE_ALERT_HOOK`). Sobald die
+  Laufzeit den definierten Höchstwert überschritte, ruft die
+  Anwendung den Hook auf (z. B. zur Versendung eines Webhooks oder
+  einer ChatOps-Nachricht).
 
-- **Zeitreihen**: Aus den JSON-Lines lassen sich Dashboards in Grafana
-  oder einer ähnlichen Lösung aufbauen. Empfohlene Panels: Feed-Gesamt-
-  dauer, Provider-Dauern, Anzahl der Cache-Treffer, Anzahl der Warnungen.
-- **Fehlerverfolgung**: In `log/errors.log` erfasste Fehler lassen sich
-  mit den Performance-Kurven kombinieren, um Korrelationen zwischen
-  Ausfällen und Latenzspitzen zu finden.
+## 3. Geplante Dashboards
 
-## 4. Profiling-Workflows
+- **Zeitreihen**: Aus den JSON-Lines ließen sich Dashboards in
+  Grafana oder einer ähnlichen Lösung aufbauen. Empfohlene Panels:
+  Feed-Gesamt­dauer, Provider-Dauern, Anzahl der Cache-Treffer,
+  Anzahl der Warnungen.
+- **Fehlerverfolgung**: In `log/errors.log` erfasste Fehler ließen
+  sich mit den Performance-Kurven kombinieren, um Korrelationen
+  zwischen Ausfällen und Latenzspitzen zu finden.
 
-- **Lokale Analysen**: Für tiefergehende Profiling-Sessions steht ein
-  Makefile-Target `make profile-feed` zur Verfügung, das `python -m
-  cProfile` mit aussagekräftigen Parametern ausführt und die Auswertung
-  in `log/profile/latest.pstat` ablegt.
-- **Vergleichsläufe**: Die Ergebnisse können mit `snakeviz` oder `pyprof2calltree`
-  visualisiert werden. Eine Anleitung zum Aufruf befindet sich in
-  `docs/how-to/profiling.md`.
+## 4. Geplante Profiling-Workflows
 
-## 5. Betriebliches Vorgehen
+- **Lokale Analysen**: Für tiefergehende Profiling-Sessions soll
+  ein Makefile-Target `make profile-feed` zur Verfügung stehen,
+  das `python -m cProfile` mit aussagekräftigen Parametern ausführt
+  und die Auswertung in `log/profile/latest.pstat` ablegt.
+- **Vergleichsläufe**: Die Ergebnisse sollen mit `snakeviz` oder
+  `pyprof2calltree` visualisiert werden. Eine separate Anleitung
+  (geplant: `docs/how-to/profiling.md`) würde die Aufrufe
+  beschreiben.
 
-1. **Regelmäßige Überprüfung**: Performance-Dashboards täglich prüfen und
-   Warnungen automatisieren.
-2. **Incident-Response**: Bei Alarmen zunächst die betroffenen Provider
-   prüfen. Erhöhte Latenzen werden in der JSONL-Datei mit konkretem
-   Zeitstempel dokumentiert.
+## 5. Betriebliches Vorgehen (Zielzustand)
+
+1. **Regelmäßige Überprüfung**: Performance-Dashboards täglich
+   prüfen und Warnungen automatisieren.
+2. **Incident-Response**: Bei Alarmen zunächst die betroffenen
+   Provider prüfen. Erhöhte Latenzen würden in der JSONL-Datei mit
+   konkretem Zeitstempel dokumentiert.
 3. **Kontinuierliche Anpassung**: Schwellenwerte und Cache-Strategie
    mindestens vierteljährlich evaluieren und bei Bedarf anpassen.
 
-Mit diesen Ergänzungen existiert nun ein belastbares Fundament, um die
+Mit diesem Ausbau entstünde ein belastbares Fundament, um die
 Feed-Erzeugung nicht nur funktional, sondern auch hinsichtlich
 Performance und Zuverlässigkeit kontinuierlich zu überwachen.
+Bis zur Umsetzung sind die unter `log/`, `docs/feed-health.md`
+und `data/stats/` verfügbaren Artefakte die Basis für
+Performance-Untersuchungen.

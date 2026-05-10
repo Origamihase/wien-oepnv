@@ -82,7 +82,7 @@ gh run watch
 
 Der Workflow führt `curl`-Abfragen sowie die vollständige Test-Suite (`pytest`) aus.
 
-*   **Smoke test VOR endpoint**: Prüft, ob ein einfacher Abruf (z.B. nach "Wien Hauptbahnhof") mit den hinterlegten Secrets einen HTTP 200 Status liefert.
+*   **Smoke test VOR endpoint**: Prüft, ob ein einfacher Abruf (z. B. nach "Wien Hauptbahnhof") mit den hinterlegten Secrets einen HTTP 200 Status liefert.
 *   **Run pytest**: Validiert die gesamte Integrationslogik.
 
 Schlägt der "Smoke test" fehl, sind meist die Secrets ungültig oder abgelaufen.

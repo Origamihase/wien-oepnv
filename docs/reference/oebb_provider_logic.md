@@ -4,9 +4,9 @@
 Der ÖBB Provider hat die Aufgabe, Störungsmeldungen des österreichischen Zugverkehrs (ÖBB) abzurufen und sie einer strengen Filterung zu unterziehen. Ziel ist es, ausschließlich Meldungen in den Feed aufzunehmen, die einen **strikten Wien-Bezug** aufweisen oder für Pendler in und um Wien relevant sind. Irrelevante Meldungen aus dem reinen Fern- oder Auslandsverkehr werden frühzeitig verworfen.
 
 ## Die Herausforderung der ÖBB-Rohdaten
-Die von der ÖBB bereitgestellten RSS-Feeds weisen oft komplexe, mutierte Titel auf, die sowohl Kategorien, Liniencodes als auch Streckenabschnitte vermischen (z.B. `"REX 51: Störung: Wien Hbf ↔ Wr. Neustadt"`).
+Die von der ÖBB bereitgestellten RSS-Feeds weisen oft komplexe, mutierte Titel auf, die sowohl Kategorien, Liniencodes als auch Streckenabschnitte vermischen (z. B. `"REX 51: Störung: Wien Hbf ↔ Wr. Neustadt"`).
 
-Ein simples Splitten (z.B. beim ersten oder letzten Doppelpunkt) ist unzureichend und fehleranfällig, da echte Stationsnamen selbst Doppelpunkte enthalten können (wie etwa `"Wien 10.: Favoriten"`). Ein naiver Split würde diese gültigen Stationsnamen zerstören.
+Ein simples Splitten (z. B. beim ersten oder letzten Doppelpunkt) ist unzureichend und fehleranfällig, da echte Stationsnamen selbst Doppelpunkte enthalten können (wie etwa `"Wien 10.: Favoriten"`). Ein naiver Split würde diese gültigen Stationsnamen zerstören.
 
 Daher erfolgt das Parsing der Präfixe **iterativ**. In einer `while`-Schleife wird mittels regulärer Ausdrücke jeweils von vorne geprüft, ob der Anfang des Textes ein bekanntes Präfix (wie `"Störung:"` oder `"REX 51:"`) ist. Ist das der Fall, wird es abgeschnitten und die Prüfung wiederholt, bis kein bekanntes Präfix mehr gefunden wird. Dadurch bleiben reguläre Bestandteile des Titels, die Doppelpunkte enthalten, geschützt.
 
@@ -17,7 +17,7 @@ Die folgende Matrix veranschaulicht, wann eine Verbindung als "Wien-relevant" ei
 
 | Endpunkt 1 (A) | Endpunkt 2 (B) | Ergebnis | Begründung / Bedingung |
 | :--- | :--- | :--- | :--- |
-| **Unbekannt** | **Unbekannt** | ❌ **Verworfen** | Komplett unbekannte Strecke, typischerweise reiner Fern-/Auslandsverkehr (z.B. Budapest ↔ Bratislava). |
+| **Unbekannt** | **Unbekannt** | ❌ **Verworfen** | Komplett unbekannte Strecke, typischerweise reiner Fern-/Auslandsverkehr (z. B. Budapest ↔ Bratislava). |
 | **Wien** | **Wien** | ✅ **Behalten** | Innerstädtische Verbindung. |
 | **Wien** | **Pendlerbahnhof** | ✅ **Behalten** | Relevante Pendelstrecke. |
 | **Wien** | **Unbekannt** | ✅ **Behalten** | Mindestens ein Endpunkt ist bekannt und liegt in Wien. |
