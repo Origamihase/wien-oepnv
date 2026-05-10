@@ -10,7 +10,6 @@ _Automatisch erzeugt am 2026-05-10T02:11+02:00 (Europe/Vienna)._
 | Davon über 9-min-Schwelle | 0 |
 | ⌀ Verspätung (alle Tage) | 0.3 min |
 | Erfasste Störungen (2026) | 16 |
-| Verschiedene Hotspots | 0 |
 
 ## Stammstrecke
 
@@ -151,10 +150,6 @@ _Automatisch erzeugt am 2026-05-10T02:11+02:00 (Europe/Vienna)._
 `22h ` │ ························  0
 `23h ` │ ························  0
 ```
-
-### Top 5 Hotspots
-
-_Noch keine Störungen mit Stationszuordnung erfasst._
 
 ---
 
