@@ -242,74 +242,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: WINGS for Life Busse halten Johnstraße 71",
-    "description": "WINGS for Life\nBusse halten Johnstraße 71",
+    "title": "10A/47A/51A/56A/56B/71: Laufveranstaltung",
+    "description": "Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Die Linie 56B fährt derzeit nur zwischen Lainzer Tor und Am Platz. Linie 10A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Johnstraße U, Schuselkagasse. Die Linie 47A fährt derzeit nur zwischen Klinik Penzing und Zehetnergasse. Die Linie 51A fährt derzeit nur zwischen Ottakringer Bad und Cumberlandstraße. Die Linie 56A fährt derzeit nur zwischen Bhf. Atzgersdorf S und Am Platz. Voraussichtliche Dauer: 15:00 Uhr. Grund: Laufveranstaltung im Bereich Ringstrasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "21fd1520c75d7b114295de52061f5a4f8b0f5e0ab204449baf5077591be61506",
-    "pubDate": "2026-05-10T09:15:02+02:00",
-    "starts_at": "2026-05-10T09:15:02+02:00",
-    "ends_at": "2026-05-10T15:00:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-05-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10A: Fahrtbehinderung WINGS for Life",
-    "description": "Fahrtbehinderung\nWINGS for Life",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6399a67c6bfadd61e3315ea6904a6c3758bffd41577bea051d02908452502b8d",
-    "pubDate": "2026-05-10T09:15:00+02:00",
-    "starts_at": "2026-05-10T09:15:25+02:00",
-    "ends_at": "2026-05-10T15:00:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-05-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10A: WINGS for Life Busse halten Linie 48A",
-    "description": "WINGS for Life\nBusse halten Linie 48A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6ea4f23d016f3394b2bc4fa35fd84eee6b6d44399878db6fc0a51b03a4f8b8ae",
-    "pubDate": "2026-05-10T09:15:02+02:00",
-    "starts_at": "2026-05-10T09:15:02+02:00",
-    "ends_at": "2026-05-10T15:00:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-05-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10A: WINGS for Life Betrieb ab Johnstraße",
-    "description": "WINGS for Life\nBetrieb ab Johnstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "89f9ed8e970d4560dfa003eb997c18dcf26f9581adcb8b23468116a8d530f27a",
-    "pubDate": "2026-05-10T09:15:11+02:00",
-    "starts_at": "2026-05-10T09:15:25+02:00",
-    "ends_at": "2026-05-10T15:00:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-05-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Schadhaftes Fahrzeug",
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "899bf6038c3a38ee5193e2d6c7398a8b95520941bd268edc5b6be3fa4cd67f49",
-    "pubDate": "2026-05-10T09:08:00+02:00",
-    "starts_at": "2026-05-10T09:08:00+02:00",
+    "guid": "17b0c933f112bfc4137b39447dd775aa64b582360aa1686b5df3259404b1ba51",
+    "pubDate": "2026-05-10T07:40:00+02:00",
+    "starts_at": "2026-05-10T07:40:00+02:00",
     "ends_at": "2026-05-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=31|D=2026-05-10"
+    "_identity": "wl|störung|L=10A,47A,51A,56A,56B,71|D=2026-05-10"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "title": "26: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fab64d37b33153d652781bdf655a1bb8c2906198e754bcbf5ac1af5236584df6",
-    "pubDate": "2026-05-10T09:08:15+02:00",
-    "starts_at": "2026-05-10T09:08:15+02:00",
-    "ends_at": "2026-05-10T10:08:00+02:00",
-    "_identity": "wl|störung|L=31|D=2026-05-10"
+    "guid": "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac",
+    "pubDate": "2026-05-10T10:09:00+02:00",
+    "starts_at": "2026-05-10T10:15:03+02:00",
+    "ends_at": "2026-05-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-05-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "06ce993d4521983bd6b681492c64487991a39c88ae158c2b651de50a40457063",
+    "pubDate": "2026-05-10T10:09:00+02:00",
+    "starts_at": "2026-05-10T10:19:37+02:00",
+    "ends_at": "2026-05-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-05-10"
   },
   {
     "source": "Wiener Linien",
@@ -410,18 +374,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
-    "pubDate": "2026-05-10T08:52:00+02:00",
-    "starts_at": "2026-05-10T08:54:36+02:00",
-    "ends_at": "2026-05-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=43|D=2026-05-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "44A: Busse halten Alszeile gegenüber 93",
     "description": "Bauarbeiten\nBusse halten Alszeile gegenüber 93",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -470,14 +422,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Rettungseinsatz",
-    "description": "Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "58A: WINGS for Life Betrieb ab Am Platz",
+    "description": "WINGS for Life\nBetrieb ab Am Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
-    "pubDate": "2026-05-10T05:45:00+02:00",
-    "starts_at": "2026-05-10T05:45:00+02:00",
-    "ends_at": "2026-05-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-05-10"
+    "guid": "7efc870bd0c1da8f60c7087ec7e0aa78cd141f1610901c4ca0c3f972989799cc",
+    "pubDate": "2026-05-10T10:19:20+02:00",
+    "starts_at": "2026-05-10T10:19:20+02:00",
+    "ends_at": "2026-05-10T14:00:00+02:00",
+    "_identity": "wl|störung|L=58A|D=2026-05-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "58B: WINGS for Life Betrieb ab Am Platz",
+    "description": "WINGS for Life\nBetrieb ab Am Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3e725adea1ac7791b30d4218d622c79a696a3e1469066f7547e0dc53c0e03edd",
+    "pubDate": "2026-05-10T10:20:39+02:00",
+    "starts_at": "2026-05-10T10:20:39+02:00",
+    "ends_at": "2026-05-10T14:00:00+02:00",
+    "_identity": "wl|störung|L=58B|D=2026-05-10"
   },
   {
     "source": "Wiener Linien",
@@ -506,30 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Fahrtbehinderung WINGS for Life",
-    "description": "Fahrtbehinderung\nWINGS for Life",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "28392340bff25848706ed52997a49b756f67081c198a05bef9d3ea569d94c55a",
-    "pubDate": "2026-05-10T09:00:07+02:00",
-    "starts_at": "2026-05-10T09:00:07+02:00",
-    "ends_at": "2026-05-10T15:00:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-05-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: WINGS for Life Betrieb ab Schwarzenbergplatz",
-    "description": "WINGS for Life\nBetrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bf277386cea7f92a2b84c486846d17c82658639e5b1b3dfd8d3a465fe1511336",
-    "pubDate": "2026-05-10T09:00:07+02:00",
-    "starts_at": "2026-05-10T09:00:07+02:00",
-    "ends_at": "2026-05-10T15:00:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-05-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "80A: Bauarbeiten",
     "description": "Die Linie 80A wird in Richtung Neu Marx zwischen Friedensgasse und Stadionbrücke über die Wittelsbachstraße, Erdberger Lände und Schlachthausgasse umgeleitet. Die Haltestellen Friedensgasse, Lukschgasse, Rustenschacherallee, Klaschkaweg und Stadionbrücke können dadurch nicht eingehalten werden. Voraussichtliche Dauer: Ende Mai 2026. Grund: Bauarbeiten im Bereich Stadionallee.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -538,17 +478,5 @@
     "starts_at": "2025-11-10T06:00:00+01:00",
     "ends_at": "2026-06-01T00:56:00+02:00",
     "_identity": "wl|störung|L=80A|D=2025-11-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2026-05-10T09:00:00+02:00",
-    "starts_at": "2026-05-10T09:00:00+02:00",
-    "ends_at": "2026-05-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-05-10"
   }
 ]

@@ -1,15 +1,15 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-05-10T09:25+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-05-10T10:49+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
 | Kennzahl | Wert |
 | --- | ---: |
-| Stammstrecke-Beobachtungen (2026) | 16 |
+| Stammstrecke-Beobachtungen (2026) | 17 |
 | Davon über 9-min-Schwelle | 0 |
 | ⌀ Verspätung (alle Tage) | 0.3 min |
-| Erfasste Störungen (2026) | 25 |
+| Erfasste Störungen (2026) | 30 |
 
 ## Stammstrecke
 
@@ -17,8 +17,8 @@ _Automatisch erzeugt am 2026-05-10T09:25+02:00 (Europe/Vienna)._
 
 | Richtung | Anzahl |
 | --- | ---: |
+| Meidling | 9 |
 | Floridsdorf | 8 |
-| Meidling | 8 |
 
 ### Beobachtungen je Wochentag
 
@@ -28,8 +28,8 @@ _Automatisch erzeugt am 2026-05-10T09:25+02:00 (Europe/Vienna)._
 `Mi  ` │ ························  0
 `Do  ` │ ························  0
 `Fr  ` │ ························  0
-`Sa  ` │ 🟦🟦🟦🟦🟦🟦··················  3
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  13
+`Sa  ` │ 🟦🟦🟦🟦🟦···················  3
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  14
 ```
 
 ### Beobachtungen je Stunde
@@ -45,7 +45,7 @@ _Automatisch erzeugt am 2026-05-10T09:25+02:00 (Europe/Vienna)._
 `07h ` │ ························  0
 `08h ` │ ························  0
 `09h ` │ 🟧🟧🟧🟧····················  1
-`10h ` │ ························  0
+`10h ` │ 🟧🟧🟧🟧····················  1
 `11h ` │ ························  0
 `12h ` │ ························  0
 `13h ` │ ························  0
@@ -108,7 +108,7 @@ _Automatisch erzeugt am 2026-05-10T09:25+02:00 (Europe/Vienna)._
 
 | Quelle | Anzahl |
 | --- | ---: |
-| Wiener Linien | 25 |
+| Wiener Linien | 30 |
 
 ### Störungen je Wochentag
 
@@ -118,8 +118,8 @@ _Automatisch erzeugt am 2026-05-10T09:25+02:00 (Europe/Vienna)._
 `Mi  ` │ ························  0
 `Do  ` │ ························  0
 `Fr  ` │ ························  0
-`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦········  10
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  15
+`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦············  10
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  20
 ```
 
 ### Störungen je Stunde
@@ -135,7 +135,7 @@ _Automatisch erzeugt am 2026-05-10T09:25+02:00 (Europe/Vienna)._
 `07h ` │ ························  0
 `08h ` │ ························  0
 `09h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·········  5
-`10h ` │ ························  0
+`10h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·········  5
 `11h ` │ ························  0
 `12h ` │ ························  0
 `13h ` │ ························  0
