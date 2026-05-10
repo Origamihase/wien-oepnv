@@ -8,7 +8,7 @@ _Automatisch erzeugt am 2026-05-10T16:35+02:00 (Europe/Vienna)._
 | --- | ---: |
 | Stammstrecke-Beobachtungen (2026) | 26 |
 | Davon über 9-min-Schwelle | 0 |
-| ⌀ Verspätung (alle Tage) | 0.4 min |
+| ⌀ Verspätung (alle Tage) | 0.2 min |
 | Erfasste Störungen (2026) | 53 |
 
 ## Stammstrecke

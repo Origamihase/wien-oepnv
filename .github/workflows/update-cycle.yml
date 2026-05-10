@@ -217,8 +217,31 @@ jobs:
 
       # ----- README + dashboard render (no API call) ----------------------
 
+      # Cadence split: the README STATS markers refresh on every 30-min
+      # cron tick (the snapshot covers the trailing 30 days, so a
+      # half-hour staleness window is the operator-visible budget).
+      # ``docs/statistik.md`` is the *yearly* dashboard — its values
+      # only meaningfully change once per day, so writing it 48× a day
+      # was pure churn (each tick refreshed the
+      # ``_Automatisch erzeugt am ..._`` timestamp at the top of the
+      # file and triggered a commit). The gate below pins the dashboard
+      # write to the first cron tick after midnight Europe/Vienna:
+      # ``TZ=Europe/Vienna date +%H%M`` is DST-correct (the env var
+      # rebinds the active zone for that single ``date`` invocation),
+      # and the ``-lt 30`` window absorbs up to ~29 min of GH Actions
+      # cron jitter on the 00:00 Vienna tick. If a tick is delayed
+      # beyond that window the dashboard misses one day; the next
+      # day's tick catches up. The README markers are unaffected.
       - name: Refresh statistics dashboard and README snapshot
-        run: python scripts/generate_markdown_stats.py
+        run: |
+          vienna_hhmm=$(TZ=Europe/Vienna date +%H%M)
+          if [ "$vienna_hhmm" -lt 30 ]; then
+            echo "Vienna-local $vienna_hhmm — refreshing dashboard + README markers."
+            python scripts/generate_markdown_stats.py
+          else
+            echo "Vienna-local $vienna_hhmm — README-only tick (dashboard skipped)."
+            python scripts/generate_markdown_stats.py --skip-dashboard
+          fi
 
       # ----- Single atomic commit -----------------------------------------
 
