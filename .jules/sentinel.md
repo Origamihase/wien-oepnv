@@ -1,3 +1,129 @@
+## 2026-05-10 - BiDi-Mark Drift Round 7: `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS` Was the Documented Bucket-(b) Deferred Sibling From Round 6
+
+**Vulnerability:** The 2026-05-10 *BiDi-Mark Drift Round 6* round
+(``.jules/sentinel.md``, journal entry above this one) closed the
+feed-XML writer regex (`src/build_feed.py:_CONTROL_RE`) and explicitly
+enumerated the post-fix state of every sibling regex against the
+canonical `src/utils/http.py:_UNSAFE_URL_CHARS` set:
+
+    grep -rn '_CONTROL_RE\b\|_CONTROL_CHARS\b\|_UNSAFE_URL_CHARS\b\|_UNSAFE_CHARS_RE\b' src/ scripts/
+
+The closing verdict left exactly one open hit: the narrow regex in
+`scripts/generate_sitemap.py:39` (`[\s\x00-\x1f\x7f]`). Round 6's
+prevention rule explicitly bucketed this as **bucket-(b) "deferred
+with no-specific-exploit-shape because the second-layer gate covers
+it"**: a candidate URL with BiDi / zero-width / structural-injection
+characters survives the narrow check and is then rejected by the
+canonical regex inside `validate_public_feed_url` →
+`validate_http_url` (called on the next line in
+`_is_valid_base_url`).
+
+Round 6's prevention rule named the structural risk explicitly:
+
+> A future PR that adds a callsite of `_UNSAFE_URL_CHARS` in
+> `scripts/generate_sitemap.py` without the second-layer gate would
+> re-enable the BiDi/zero-width issue.
+
+**Threat model:** Today the structural risk is dormant — the only
+caller (`_is_valid_base_url`) routes every accepted candidate
+through `validate_public_feed_url` which catches BiDi / zero-width
+/ structural-injection chars at the second layer. But the bucket-(b)
+status is fragile: a future PR that (a) adds a new caller of
+`_UNSAFE_URL_CHARS` in this module without the second-layer gate, or
+(b) refactors `_is_valid_base_url` to stop calling
+`validate_public_feed_url`, would re-enable the BiDi/zero-width
+issue documented in Round 6's threat model — the published
+`sitemap.xml` `<loc>` element with a U+202E (RLO) character would
+render-invert in any Unicode-aware sitemap viewer (search-engine
+crawler, IDE, GitHub Pages preview), turning the sitemap into a
+phishing-redirect amplifier. Same shape as the
+`scripts/generate_sitemap.py:SITE_BASE_URL` env-override threat
+documented in the 2026-05-07 *Phishing-Redirect Drift Round 2*
+entry.
+
+**Severity:** LOW — defense-in-depth. No current vulnerability
+surface (per the Round 6 verdict) but a structural drift candidate
+with a documented future-regression shape.
+
+**Fix:** Widen `_UNSAFE_URL_CHARS` in `scripts/generate_sitemap.py`
+to byte-exact-mirror the canonical `src/utils/http.py:_UNSAFE_URL_CHARS`
+set:
+
+    [\s\x00-\x1f\x7f-\x9f<>"\\^`{|}؜​-‏‪-‮⁦-⁩﻿]
+
+Adds:
+* `\x80-\x9f` — 8-bit C1 controls (CSI / OSC / DCS / PM / APC).
+* `<>"\\^`{|}` — structural URL-injection chars per RFC 3986.
+* `؜` — Arabic Letter Mark (post-Unicode-6.3 BiDi control).
+* `​-‏` — ZWSP / ZWNJ / ZWJ + LRM / RLM.
+* `‪-‮` — LRE / RLE / PDF / LRO / RLO BiDi formatting
+  controls (CVE-2021-42574 first half).
+* `⁦-⁩` — LRI / RLI / FSI / PDI BiDi isolates
+  (CVE-2021-42574 second half).
+* `﻿` — BOM / ZWNBSP.
+
+The widening is **additive-only**: every character the narrow regex
+matched (`\s\x00-\x1f\x7f`) still matches post-fix. The observable
+behaviour of `_is_valid_base_url` is unchanged for every URL the
+narrow OR canonical regex would have rejected — the ratchet point
+is the structural invariant, not the acceptance set.
+
+The Unicode escape form (`؜` etc.) keeps Bandit B613
+(``trojansource``) happy — the canonical regex in
+`src/utils/http.py` uses the same form, and a literal-character form
+fires B613 as a HIGH severity issue.
+
+The PoC test
+`tests/test_sentinel_sitemap_unsafe_chars_canonical_drift.py`
+enumerates 50 cases:
+
+* 38 per-code-point coverage tests (one per character in the
+  canonical set, parametrised with descriptive labels).
+* 6 end-to-end `_is_valid_base_url` tests proving each canonical
+  dangerous-char family is rejected at the FIRST gate post-fix
+  (defending against a future PR that removes the second-layer call).
+* 5 happy-path regression tests for legitimate GitHub-hosted URLs.
+* 1 inventory invariant test that pins both the canonical regex AND
+  the sitemap sibling against the same canonical character set —
+  fires on any future widening of either side without the other.
+
+**Learning:** The bucket-(b) deferred-sibling status is a *correct*
+verdict for the current threat model but a *fragile* one for the
+project's future. Round 6's prevention rule explicitly named the
+structural risk; this round closes it proactively before a future
+refactor re-enables it. The pattern generalises: every bucket-(b)
+"deferred with no-specific-exploit-shape because second-layer gate
+covers it" item in the journal is a structural drift candidate that
+SHOULD be closed in the round following the one that named it,
+unless the journal has explicitly classified it as permanent
+bucket-(b) (the secret-scanner Datadog/Cloudflare/Atlassian shape,
+which has no canonical pattern feasible in principle).
+
+Three layers of inventory invariant now pin the sibling regex sync
+contract across the whole repo:
+
+1. `tests/test_sentinel_http_url_chars_bidi_gap.py:test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set`
+   — pins `src/utils/http.py:_UNSAFE_URL_CHARS` against
+   `src/utils/logging.py:_INVISIBLE_DANGEROUS_RE`.
+2. `tests/test_sentinel_feed_xml_invisible_prefix.py` — pins
+   `src/build_feed.py:_CONTROL_RE`.
+3. `tests/test_sentinel_sitemap_unsafe_chars_canonical_drift.py`
+   (this round) — pins
+   `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS` against the
+   canonical set in `src/utils/http.py:_UNSAFE_URL_CHARS`.
+
+A future widening of any canonical floor (e.g. a Unicode 17 BiDi
+format control) fails ALL THREE inventory tests until every sibling
+regex is widened too.
+
+**Prevention:** The closing-checklist grep
+`grep -rn '_CONTROL_RE\b\|_CONTROL_CHARS\b\|_UNSAFE_URL_CHARS\b\|_UNSAFE_CHARS_RE\b' src/ scripts/`
+now returns ZERO open hits — the bucket-(b) sibling is closed and
+the bucket-(a) "added in this round" set is empty (no new sibling
+discovered post-Round-6). The BiDi-Mark Drift family is now closed
+across all six known sibling regexes. Future drift will be caught
+by the three layered inventory tests above.
+
 ## 2026-05-10 - JSON Size-Bomb Drift Round 9: `scripts/preflight_quota_check.py:_read_json_file` Was Added After the Round 3 `scripts/` Sweep
 
 **Vulnerability:** The 2026-05-08 *JSON Size-Bomb Round 3* round
