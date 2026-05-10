@@ -1,3 +1,188 @@
+## 2026-05-10 - Log-Injection Drift Round 5: `src/feed/reporting.py:_CONTROL_CHARS_RE` Was the Last Name-Collision Sibling Drifted Narrower Than the Canonical Floor
+
+**Vulnerability:** Round 4 (PR #1422, journaled 2026-05-10) widened
+`src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` to byte-exact mirror
+the canonical floor and pinned the four canonical sibling regexes:
+
+* `src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` — always-strip floor
+* `src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE`
+* `src/utils/stats.py:_CSV_CONTROL_CHARS_RE`
+* `src/build_feed.py:_CONTROL_RE` (the RSS-XML writer)
+
+But `src/feed/reporting.py` declares its OWN `_CONTROL_CHARS_RE` at
+module level (line 30) — a **name-collision sibling** of the
+canonical `src/utils/logging.py:_CONTROL_CHARS_RE`. Pre-fix the
+reporting one was narrowed to:
+
+```python
+_CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f]")
+```
+
+— covers ASCII C0 + DEL only. The canonical sibling covers the full
+floor:
+
+```
+[\x00-\x1f\x7f-\x9f؜​-‏ -‮⁦-⁩﻿]
+```
+
+— C0 + DEL + 32 C1 controls + ALM + zero-width + LSEP/PSEP +
+LRO/RLO + isolates + BOM. The two regexes share a name across modules
+but their character classes drifted apart — 50 code points covered
+by the canonical sibling were missing from the reporting sibling.
+
+The reporting regex is used in `_sanitize_log_detail` (line 100):
+
+```python
+def _sanitize_log_detail(detail: str) -> str:
+    if not detail:
+        return ""
+    sanitized = _CONTROL_CHARS_RE.sub(" ", detail)
+    return clean_message(sanitized)
+```
+
+Currently the drift is **transitively closed** by the immediate
+`clean_message` delegation — `clean_message` calls
+`sanitize_log_message(strip_control_chars=False)` which routes
+through the canonical `_INVISIBLE_DANGEROUS_RE` always-strip floor,
+so C1 / BiDi / zero-width chars that the narrow first-layer regex
+misses ARE caught at the second layer.
+
+**Threat model:** Bucket-(b) deferred — same shape as the 2026-05-10
+*BiDi-Mark Drift Round 7* (sitemap deferred sibling) which closed
+proactively before a future refactor re-enabled the issue. The
+deferred status is fragile:
+
+* A future PR that adds a NEW caller of `_CONTROL_CHARS_RE` in
+  `feed/reporting.py` without delegating to `clean_message` would
+  re-open the C1 / BiDi / zero-width hole.
+* A future refactor that drops the `clean_message` second layer
+  (intentionally or accidentally) leaves only the narrow first-
+  layer regex defending the GitHub-Issue-body / feed-health.md
+  sinks against the canonical-floor primitives.
+* The **name-collision** with the canonical sibling invites copy-
+  paste mistakes: a contributor reading `_CONTROL_CHARS_RE` in
+  feed/reporting.py and assuming it has the same coverage as the
+  identically-named canonical sibling silently re-introduces the
+  gap. Same shape as the 2026-05-10 *HTTPS-only Provider URL Drift
+  Round 2* (scripts/ sibling missed because of name-scope
+  ambiguity).
+
+**Severity:** LOW — defence-in-depth. No current vulnerability
+surface (the `clean_message` second layer covers the gap) but a
+structural drift candidate with a documented future-regression
+shape. Closes the LAST name-collision sibling of the canonical
+control-char regex family across the *Log-Injection Drift* rounds.
+
+**Fix:** Widen `src/feed/reporting.py:_CONTROL_CHARS_RE` to byte-
+exact mirror `src/utils/logging.py:_CONTROL_CHARS_RE`:
+
+```python
+_CONTROL_CHARS_RE = re.compile(
+    r"[\x00-\x1f\x7f-\x9f؜​-‏ -‮⁦-⁩﻿]"
+)
+```
+
+The widening is **additive-only**: every code point the pre-fix
+regex matched (full ASCII C0 + DEL) still matches post-fix; the
+only delta is the addition of the 50 non-ASCII code points (32 C1
+controls + 18 BiDi / zero-width / LSEP / PSEP / BOM / ALM
+characters).
+
+The replacement semantics (`_CONTROL_CHARS_RE.sub(" ", detail)` —
+replace with SPACE to preserve token boundaries) are preserved: the
+post-fix regex matches more characters but still replaces them with
+SPACE, and the downstream `clean_message` whitespace-collapse step
+folds multiple spaces back to one. End-to-end behaviour for
+existing callers is observably equivalent.
+
+The Bandit B613 (`trojansource`) check is satisfied by using the
+`\uXXXX` escape form (matching the canonical sibling's source) so
+no literal BiDi / zero-width characters appear in the source file.
+
+The PoC test
+`tests/test_sentinel_reporting_control_chars_re_canonical_drift.py`
+enumerates 68 cases:
+
+* 35 per-code-point coverage tests parametrised over the canonical
+  floor, asserting `_CONTROL_CHARS_RE` matches each one.
+* 1 byte-exact equivalence inventory invariant pinning the two
+  regexes to share the same code-point set.
+* 1 inventory invariant pinning `_CONTROL_CHARS_RE` against
+  `_INVISIBLE_DANGEROUS_RE` (every always-strip-floor code point
+  must be matched by the strip-with-space layer).
+* 8 regression tests pinning the C0 + DEL coverage post-fix.
+* 14 regression tests pinning that legitimate text characters
+  (letters, digits, space, German umlauts, arrows, emoji) are NOT
+  matched.
+* 8 end-to-end `_sanitize_log_detail` tests pinning the public-
+  artefact strip contract for the canonical-floor primitives.
+* 1 lexical pattern-source invariant pinning the regex pattern
+  string byte-exact to the canonical sibling — forces a future
+  contributor editing one regex to edit the other in the same PR.
+
+**Learning:** The four canonical sibling regexes pinned in Round 4
+(`_INVISIBLE_DANGEROUS_RE`, `_MARKDOWN_NORMALISE_UNSAFE_RE`,
+`_CSV_CONTROL_CHARS_RE`, `_CONTROL_RE`) are NOT the only canonical-
+floor regexes in the project. The closing-checklist grep
+`grep -rn '_CONTROL_RE\b\|_CONTROL_CHARS\b\|_UNSAFE_URL_CHARS\b\|_UNSAFE_CHARS_RE\b' src/`
+documented in Round 4 was one character short — `\b` word-boundary
+semantics in the trailing position do NOT match `_CONTROL_CHARS_RE`
+(which has `_RE` suffix making the boundary appear AFTER `_RE`,
+matching the symbol). But it DID match the symbol. The symbol was
+listed; the regex coverage check was the gap.
+
+The structural lesson: **a one-time grep that lists symbol names is
+not the same as a programmatic invariant that asserts coverage
+equivalence**. Round 4 named the four sibling regexes but did not
+assert that the LOCAL `_CONTROL_CHARS_RE` in feed/reporting.py
+agrees with the CANONICAL `_CONTROL_CHARS_RE` in utils/logging.py.
+Round 5 closes that gap with a programmatic byte-exact-equivalence
+inventory test — the lexical pattern-source pin
+(`_CONTROL_CHARS_RE.pattern == CANONICAL_LOGGING_RE.pattern`) is
+the strongest form of the invariant.
+
+The recursive meta-pattern across the *Log-Injection Drift* family
+is now five rounds deep:
+
+1. Round 1 (PR #1363): widened `_CONTROL_CHARS_RE` (utils/logging) to
+   cover BiDi / zero-width / line-terminator on the
+   `strip_control_chars=True` path.
+2. Round 2: lifted the union into `_INVISIBLE_DANGEROUS_RE` so
+   `strip_control_chars=False` siblings inherit the defence.
+3. Round 3 (PR #1414): widened `_INVISIBLE_DANGEROUS_RE` to add
+   `\x7f-\x9f` (the 8-bit terminal-escape sibling).
+4. Round 4 (PR #1422): widened `_INVISIBLE_DANGEROUS_RE` to add
+   `\x00-\x08\x0b\x0c\x0e-\x1f` (the C0-controls sibling).
+5. Round 5 (this PR): widened the **name-collision sibling**
+   `_CONTROL_CHARS_RE` in `feed/reporting.py` to byte-exact mirror
+   the canonical `_CONTROL_CHARS_RE` in `utils/logging.py` —
+   closes the LAST canonical-floor sibling drift.
+
+**Prevention:** The auto-discoverable inventory invariants
+`test_reporting_control_chars_re_byte_exact_matches_canonical_logging`
+and `test_reporting_control_chars_re_pattern_matches_canonical_pattern`
+pin the byte-exact equivalence between the two `_CONTROL_CHARS_RE`
+symbols. A future regression that narrows either side fails both
+tests at PR-review time.
+
+The closing-checklist grep for the *Log-Injection Drift* family is
+now amended to walk EVERY tree where canonical-floor regexes can
+live AND assert programmatic equivalence:
+
+```
+grep -rn '_CONTROL_RE\b\|_CONTROL_CHARS\b\|_INVISIBLE_DANGEROUS_RE\|_UNSAFE_URL_CHARS\b\|_UNSAFE_CHARS_RE\b\|_MARKDOWN_NORMALISE_UNSAFE_RE\|_CSV_CONTROL_CHARS_RE' src/ scripts/
+```
+
+— every site that defines a canonical-floor regex MUST be pinned by
+an inventory test asserting agreement with the canonical floor.
+
+The Log-Injection Drift family is now closed across five canonical
+sibling regexes (the four pinned in Round 4 plus the name-collision
+sibling pinned in this round). Future drift would manifest as a NEW
+canonical-floor regex symbol that is not yet enumerated in the
+inventory tests; the closing-checklist grep above remains the
+discovery tool.
+
 ## 2026-05-10 - Log-Injection Drift Round 4: ASCII C0 Controls Were the Last Canonical-Floor Sibling `_INVISIBLE_DANGEROUS_RE` Did Not Cover
 
 **Vulnerability:** The 2026-05-10 *8-bit C1 Terminal-Escape Drift*
