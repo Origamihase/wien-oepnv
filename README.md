@@ -41,24 +41,24 @@ Die S-Bahn-Stammstrecke ist das Rückgrat des Pendlerverkehrs. Wir erfassen und 
 ### Aktueller Schnappschuss
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
-> _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`generate-stats.yml`](.github/workflows/generate-stats.yml).
+> _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 1 |
-| Median-Verspätung | 2.0 min |
+| Beobachtungen (gesamt) | 11 |
+| Median-Verspätung | 0.0 min |
 | Kritische Verspätungen (> 9 min) | 0 |
-| Letzte Aktualisierung | 2026-05-09 21:09 CEST |
+| Letzte Aktualisierung | 2026-05-10 02:11 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
 
 ### Häufigste Störungsorte
 
 <!-- STATS:DISRUPTIONS:BEGIN -->
-> _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`generate-stats.yml`](.github/workflows/generate-stats.yml).
+> _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
 
 | Rang | Station / Ort | Vorfälle |
 | ---- | ------------- | -------- |
-| – | _Keine Vorfälle mit Stationszuordnung im Zeitraum (10 ohne Stationsbezug)._ | – |
+| – | _Keine Vorfälle mit Stationszuordnung im Zeitraum (16 ohne Stationsbezug)._ | – |
 | 2. | – | – |
 | 3. | – | – |
 <!-- STATS:DISRUPTIONS:END -->
