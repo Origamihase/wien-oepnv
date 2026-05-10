@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 10 May 2026 19:51:52 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2026 21:02:35 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[52: Fahrtbehinderung Veranstaltung]]></title>
+      <title><![CDATA[31: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4fc09fe17b6df04c3877cdf0a6341bddd51ad34a22119f9824fb0386b44a8e1e</guid>
-      <pubDate>Sun, 10 May 2026 19:51:15 +0200</pubDate>
-      <ext:first_seen>Sun, 10 May 2026 19:51:52 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 10 May 2026 19:51:37 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 10 May 2026 20:51:00 +0200</ext:ends_at>
+      <guid isPermaLink="false">899bf6038c3a38ee5193e2d6c7398a8b95520941bd268edc5b6be3fa4cd67f49</guid>
+      <pubDate>Sun, 10 May 2026 20:55:00 +0200</pubDate>
+      <ext:first_seen>Sun, 10 May 2026 09:25:16 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 10 May 2026 20:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 10 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 31: Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz. [Am 10.05.2026]</description>
+      <content:encoded><![CDATA[Linie 31: Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz.<br/>[Am 10.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[32A: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61</guid>
+      <pubDate>Sun, 10 May 2026 20:51:29 +0200</pubDate>
+      <ext:first_seen>Sun, 10 May 2026 21:02:35 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 10 May 2026 20:51:32 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 10 May 2026 21:51:00 +0200</ext:ends_at>
       <description>[Am 10.05.2026]</description>
       <content:encoded><![CDATA[[Am 10.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Veranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2ec2a1eba2c458e67512fa670ea85f4060eb74f4d12d17856517f7afbd598149</guid>
+      <pubDate>Sun, 10 May 2026 19:41:00 +0200</pubDate>
+      <ext:first_seen>Sun, 10 May 2026 19:51:52 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 10 May 2026 19:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 10 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 10.05.2026]</description>
+      <content:encoded><![CDATA[Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 10.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[49: Veranstaltung]]></title>
@@ -28,8 +50,8 @@
       <ext:first_seen>Sun, 10 May 2026 15:16:50 +0200</ext:first_seen>
       <ext:starts_at>Sun, 10 May 2026 19:41:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 10 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 49: Betrieb nur zwischen Ring, Volkstheater U und Breitensee S. Voraussichtliche Dauer: 20:30 Uhr. Grund: Veranstaltung im Haltestellenbereich Deutschordenstraße. [Am 10.05.2026]</description>
-      <content:encoded><![CDATA[Linie 49: Betrieb nur zwischen Ring, Volkstheater U und Breitensee S. Voraussichtliche Dauer: 20:30 Uhr. Grund: Veranstaltung im Haltestellenbereich Deutschordenstraße.<br/>[Am 10.05.2026]]]></content:encoded>
+      <description>Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 10.05.2026]</description>
+      <content:encoded><![CDATA[Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 10.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Rettungseinsatz]]></title>
@@ -80,7 +102,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8b1e2f187f18995bbf65eba67f26d4902602640fca1243e0baf4e442d8812f93</guid>
       <pubDate>Sun, 10 May 2026 09:00:07 +0200</pubDate>
-      <ext:first_seen>Sun, 10 May 2026 09:25:16 +0200</ext:first_seen>
+      <ext:first_seen>Sun, 10 May 2026 21:02:35 +0200</ext:first_seen>
       <ext:starts_at>Sun, 10 May 2026 09:00:07 +0200</ext:starts_at>
       <ext:ends_at>Sun, 10 May 2026 22:00:00 +0200</ext:ends_at>
       <description>Betrieb ab Schwarzenbergplatz [Am 10.05.2026]</description>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 11 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[10.05.2026 – 11.05.2026]</description>
       <content:encoded><![CDATA[[10.05.2026 – 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Sat, 09 May 2026 00:00:22 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 00:00:22 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 10 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[09.05.2026 – 10.05.2026]</description>
-      <content:encoded><![CDATA[[09.05.2026 – 10.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
-      <pubDate>Sat, 09 May 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 10 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[09.05.2026 – 10.05.2026]</description>
-      <content:encoded><![CDATA[[09.05.2026 – 10.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
