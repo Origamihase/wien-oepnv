@@ -62,6 +62,16 @@ _OEBB_DEFAULT_URL = (
 # attacker host weaponises the public RSS feed as a phishing redirector and
 # lets the attacker inject arbitrary feed content. ``validate_http_url()``
 # only checks SSRF/DNS-rebinding properties, not host identity.
+#
+# 2026-05-10 (HTTPS-only Provider URL Drift): the validator additionally
+# pins the scheme to ``https``. ``validate_http_url`` accepts both ``http``
+# and ``https``; without this pin, an env override such as
+# ``OEBB_RSS_URL=http://fahrplan.oebb.at/...`` would be accepted, the
+# fetcher would issue a plaintext request, and an MITM (compromised
+# network, BGP hijack, hostile public WiFi gateway) could substitute
+# arbitrary RSS items that flow verbatim into the public ``docs/feed.xml``
+# artefact. Mirrors the canonical ``validate_public_feed_url`` HTTPS-only
+# pin (``src/utils/http.py``) and the VOR / WL sibling validators.
 _OEBB_TRUSTED_HOSTS = frozenset({"fahrplan.oebb.at"})
 
 
@@ -69,7 +79,11 @@ def _validated_oebb_url(raw: str) -> str | None:
     safe = validate_http_url(raw)
     if not safe:
         return None
-    host = (urlparse(safe).hostname or "").lower()
+    parsed = urlparse(safe)
+    # Security: refuse plaintext HTTP — see header above.
+    if parsed.scheme.lower() != "https":
+        return None
+    host = (parsed.hostname or "").lower()
     if host not in _OEBB_TRUSTED_HOSTS:
         return None
     return safe
