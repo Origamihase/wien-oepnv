@@ -3,14 +3,17 @@
 
 Stellt sicher, dass:
 1. Bei erfolgreicher Validation `data/stations.json` aktualisiert wird.
-2. Bei fehlgeschlagener Validation `data/stations.json` unverändert bleibt.
+2. Bei einer Validation, deren Issues auf keine reale Station passen,
+   die Pipeline (auto-quarantine) den Working Tree unverändert lässt
+   und erfolgreich exitet.
+3. Bei einem Fehler im finalen atomic_write die Bytes von
+   `data/stations.json` unverändert bleiben.
 
 Hintergrund: Vor diesem Wrapper konnte ein update-Sub-Skript einen
 Konflikt direkt in den Working Tree schreiben. Der separate
 Validator-Step bemerkte den Fehler erst nach dem Schreiben (siehe
 PR #1102, 900100-Aspern-Nord-Regression). Der Wrapper schreibt
-gegen ein Temp-File und kopiert nur bei erfolgreicher Validation
-zurück.
+gegen ein Temp-File und kopiert nur nach Auto-Quarantine zurück.
 
 Janitor PR #1321: file-level S603 suppression. The single
 subprocess.run(...) in this file invokes sys.executable against a
@@ -30,18 +33,17 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_wrapper_preserves_stations_json_on_validation_failure(
+def test_wrapper_proceeds_when_no_quarantineable_match(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
-    """Bei Validation-Fehler bleibt data/stations.json bytewise unverändert.
+    """Auto-Quarantine ohne passende Station: bytewise unverändert + exit 0.
 
     Verfahren: sub-scripts werden zu no-ops gemockt (subprocess.run gibt
     None zurück), validate_stations liefert einen Report mit einem
-    provider_issue. Wrapper.main() läuft in-process, damit die Mocks
-    greifen. Der initiale shutil.copy2 hat tmp_stations_path bereits
-    mit dem unveränderten Original gefüllt; ohne erfolgreiche Validation
-    findet das abschließende shutil.copy zurück nie statt, das Original
-    bleibt bytewise erhalten.
+    provider_issue, dessen Identifier auf keine reale Station passt.
+    Die Auto-Quarantine-Logik findet keinen Match und proceedet mit dem
+    unveränderten Merge-Set. Erwartung: exit 0 und Bytes unverändert.
+    Pinst die "no-match = no-modification"-Garantie der Auto-Quarantine.
     """
     from src.utils.stations_validation import ProviderIssue, ValidationReport
     from scripts import update_all_stations as wrapper
@@ -57,7 +59,9 @@ def test_wrapper_preserves_stations_json_on_validation_failure(
         "scripts.update_all_stations.subprocess.run", lambda *a, **kw: None
     )
 
-    # Force validation to fail with a provider_issue.
+    # The identifier ``<test>`` matches no station, so auto-quarantine
+    # cannot isolate any entry and the pipeline falls back to the
+    # unmodified merged set.
     failing_report = ValidationReport(
         total_stations=0,
         duplicates=(),
@@ -80,10 +84,12 @@ def test_wrapper_preserves_stations_json_on_validation_failure(
 
     exit_code = wrapper.main([])
 
-    assert exit_code == 1, f"Wrapper should return 1 on validation failure, got {exit_code}"
+    assert exit_code == 0, (
+        f"Wrapper should auto-quarantine and exit 0 on validation failure, got {exit_code}"
+    )
     assert real_stations.read_bytes() == original_bytes, (
-        "Wrapper modified data/stations.json on validation failure — "
-        "copy-on-write contract violated"
+        "Wrapper modified data/stations.json on auto-quarantine no-match — "
+        "the unchanged-bytes contract for the no-match path was violated"
     )
 
 

@@ -7,7 +7,11 @@ Pipeline:
   2. Run every script in :data:`_SCRIPT_ORDER` against the temp file.
   3. Validate the merged result. ``provider_issues``,
      ``cross_station_id_issues``, ``naming_issues`` and ``security_issues``
-     are hard gates — the working tree is left untouched on any of them.
+     trigger the *auto-quarantine* path: instead of aborting the run, the
+     offending entries are partitioned out of the merged file, persisted
+     to ``data/quarantine.json`` for operator review, and the pipeline
+     proceeds with the remaining valid stations. This soft-fail
+     behaviour lets the feed survive partial upstream data corruption.
   4. Compute the before/after diff (added/removed/renamed/coord-shifted)
      and write ``data/stations_last_run.json`` (heartbeat) plus
      ``docs/stations_diff.md`` (human-readable diff report).
@@ -40,6 +44,7 @@ from src.utils.files import atomic_write, read_capped_json  # noqa: E402  (impor
 from src.utils.stations_validation import (  # noqa: E402
     StationValidationError,
     ValidationReport,
+    _format_identifier,
     validate_stations,
 )
 
@@ -68,7 +73,15 @@ _SCRIPT_OUTPUT_FLAG = {
 _DEFAULT_HEARTBEAT_PATH = REPO_ROOT / "data" / "stations_last_run.json"
 _DEFAULT_DIFF_REPORT_PATH = REPO_ROOT / "docs" / "stations_diff.md"
 _DEFAULT_POLYGON_PATH = REPO_ROOT / "data" / "LANDESGRENZEOGD.json"
+_DEFAULT_QUARANTINE_PATH = REPO_ROOT / "data" / "quarantine.json"
 _COORD_SHIFT_THRESHOLD_M = 100.0
+
+# Sentinel identifier the validator emits for directory-wide provider
+# issues (e.g. "Need at least two VOR entries") that cannot be tied to
+# a single station. The auto-quarantine logic skips this marker — no
+# entry's ``_format_identifier`` ever matches it, and removing
+# arbitrary stations would not repair the global condition.
+_GLOBAL_ISSUE_SENTINEL = "<global>"
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
@@ -323,7 +336,7 @@ def _build_heartbeat(
 
 
 def _collect_blocking_issues(report: ValidationReport) -> list[tuple[str, str]]:
-    """Return (category, message) tuples for issues that must block the commit."""
+    """Return (category, message) tuples for issues that trigger auto-quarantine."""
     blocking: list[tuple[str, str]] = []
     for provider in report.provider_issues:
         blocking.append(("provider", provider.reason))
@@ -345,6 +358,148 @@ def _collect_blocking_issues(report: ValidationReport) -> list[tuple[str, str]]:
             f"{security.name} ({security.identifier}): {security.reason}",
         ))
     return blocking
+
+
+def _collect_quarantine_identifiers(report: ValidationReport) -> set[str]:
+    """Return the identifiers of stations that should be auto-quarantined.
+
+    The string format mirrors :func:`stations_validation._format_identifier`
+    so a downstream caller can match each entry deterministically. The
+    ``<global>`` sentinel emitted by ``_find_provider_issues`` for
+    directory-wide conditions is filtered out — no individual station
+    matches it and removing one would not repair the underlying issue.
+    """
+    identifiers: set[str] = set()
+    for provider in report.provider_issues:
+        identifier = provider.identifier
+        if identifier and identifier != _GLOBAL_ISSUE_SENTINEL:
+            identifiers.add(identifier)
+    for cross in report.cross_station_id_issues:
+        if cross.identifier:
+            identifiers.add(cross.identifier)
+    for naming in report.naming_issues:
+        if naming.identifier:
+            identifiers.add(naming.identifier)
+    for security in report.security_issues:
+        if security.identifier:
+            identifiers.add(security.identifier)
+    return identifiers
+
+
+def _collect_quarantine_reasons(
+    report: ValidationReport,
+) -> dict[str, list[dict[str, str]]]:
+    """Map quarantineable identifier → list of ``{category, reason}`` dicts.
+
+    The returned mapping powers the per-station ``issues`` array in
+    ``data/quarantine.json`` so operators can review *why* each entry
+    was removed without correlating against the run log.
+    """
+    reasons: dict[str, list[dict[str, str]]] = {}
+    for provider in report.provider_issues:
+        identifier = provider.identifier
+        if not identifier or identifier == _GLOBAL_ISSUE_SENTINEL:
+            continue
+        reasons.setdefault(identifier, []).append({
+            "category": "provider",
+            "reason": provider.reason,
+        })
+    for cross in report.cross_station_id_issues:
+        if not cross.identifier:
+            continue
+        reasons.setdefault(cross.identifier, []).append({
+            "category": "cross-station",
+            "reason": (
+                f"alias '{cross.alias}' collides with {cross.colliding_field} "
+                f"of '{cross.colliding_name}' ({cross.colliding_identifier})"
+            ),
+        })
+    for naming in report.naming_issues:
+        if not naming.identifier:
+            continue
+        reasons.setdefault(naming.identifier, []).append({
+            "category": "naming",
+            "reason": naming.reason,
+        })
+    for security in report.security_issues:
+        if not security.identifier:
+            continue
+        reasons.setdefault(security.identifier, []).append({
+            "category": "security",
+            "reason": security.reason,
+        })
+    return reasons
+
+
+def _partition_stations(
+    stations: Sequence[Mapping[str, Any]],
+    quarantine_identifiers: set[str],
+) -> tuple[list[Mapping[str, Any]], list[Mapping[str, Any]]]:
+    """Split *stations* into ``(valid, quarantined)`` by identifier match.
+
+    Each station's identifier is recomputed with
+    :func:`stations_validation._format_identifier` so the match honours
+    the exact format the validator emitted into the report.
+    """
+    valid: list[Mapping[str, Any]] = []
+    quarantined: list[Mapping[str, Any]] = []
+    for entry in stations:
+        if _format_identifier(entry) in quarantine_identifiers:
+            quarantined.append(entry)
+        else:
+            valid.append(entry)
+    return valid, quarantined
+
+
+def _write_stations_payload(
+    path: Path, stations: Sequence[Mapping[str, Any]]
+) -> None:
+    """Atomically rewrite *path* with the canonical wrapped JSON shape.
+
+    Mirrors the ``{"stations": [...]}`` envelope written by
+    ``scripts/update_station_directory.py:write_json`` so a downstream
+    consumer reading the merged temp file (and the final copy-back to
+    ``data/stations.json``) sees the same format as a clean run.
+    """
+    payload = {"stations": [dict(entry) for entry in stations]}
+    with atomic_write(path, mode="w", encoding="utf-8") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+
+
+def _write_quarantine_file(
+    path: Path,
+    quarantined: Sequence[Mapping[str, Any]],
+    reasons_by_identifier: Mapping[str, Sequence[Mapping[str, str]]],
+    timestamp: str,
+) -> None:
+    """Atomically write the auto-quarantine sidecar at *path*.
+
+    The file is operator-facing diagnostic state — keep the schema
+    forwards-compatible by emitting a wrapped object with an explicit
+    ``count``, the original ``entry`` payload, and the validator's
+    ``issues`` so a future drift in either side is auditable.
+    """
+    entries: list[dict[str, Any]] = []
+    for entry in quarantined:
+        identifier = _format_identifier(entry)
+        name_obj = entry.get("name")
+        name = name_obj.strip() if isinstance(name_obj, str) else ""
+        entries.append({
+            "identifier": identifier,
+            "name": name or "<unknown>",
+            "issues": [dict(reason) for reason in reasons_by_identifier.get(identifier, ())],
+            "entry": dict(entry),
+        })
+    payload: dict[str, Any] = {
+        "timestamp": timestamp,
+        "count": len(entries),
+        "stations": entries,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with atomic_write(path, mode="w", encoding="utf-8") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -407,20 +562,59 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
             return 1
 
+        # Auto-quarantine path (replaces the previous hard-fail return).
+        # Blocking issues no longer halt the pipeline. Instead, the
+        # offending entries are partitioned out of the merged file,
+        # persisted to data/quarantine.json for operator review, and
+        # the remainder of the run proceeds with the valid set so a
+        # partial upstream corruption does not stop the feed update.
         blocking = _collect_blocking_issues(report)
+        timestamp = datetime.now(UTC).isoformat(timespec="seconds")
         if blocking:
             for category, message in blocking:
-                logging.error("%s issue: %s", category, message)
-            logging.error(
-                "Validation failed on the new stations data. Working tree left unmodified."
+                logging.warning("validation issue (%s): %s", category, message)
+
+            quarantine_identifiers = _collect_quarantine_identifiers(report)
+            merged_stations = _load_stations(tmp_stations_path)
+            valid_stations, quarantined_stations = _partition_stations(
+                merged_stations, quarantine_identifiers
             )
-            return 1
+
+            if quarantined_stations:
+                _write_stations_payload(tmp_stations_path, valid_stations)
+                _write_quarantine_file(
+                    _DEFAULT_QUARANTINE_PATH,
+                    quarantined_stations,
+                    _collect_quarantine_reasons(report),
+                    timestamp,
+                )
+                quarantined_names = [
+                    str(entry.get("name") or "<unknown>")
+                    for entry in quarantined_stations
+                ]
+                logging.warning(
+                    "Auto-quarantined %d station(s) with blocking validation issues; "
+                    "details written to %s. Affected: %s",
+                    len(quarantined_stations),
+                    _DEFAULT_QUARANTINE_PATH,
+                    ", ".join(quarantined_names),
+                )
+            else:
+                # Either every blocking issue was the ``<global>`` sentinel
+                # or the validator's identifiers did not match any merged
+                # entry. Without a target to remove, auto-quarantine cannot
+                # repair the directory — log the gap and proceed with the
+                # full set so the pipeline survives.
+                logging.warning(
+                    "Auto-quarantine could not isolate the failing stations "
+                    "(no entry matched the validator's identifiers); proceeding "
+                    "with the unmodified merged set."
+                )
 
         # Compute the diff between the pre-update snapshot and the merged file
         # before atomic copy-back so the heartbeat reflects what is about to land.
         after_snapshot = _load_stations(tmp_stations_path)
         diff = _compute_diff(before_snapshot, after_snapshot)
-        timestamp = datetime.now(UTC).isoformat(timespec="seconds")
         polygon_vertices = _count_polygon_vertices(_DEFAULT_POLYGON_PATH)
         heartbeat = _build_heartbeat(
             report=report,
