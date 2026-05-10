@@ -528,6 +528,65 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])bkua_[A-Za-z0-9]{40,}(?![A-Za-z0-9])"),
         "Buildkite User Access Token gefunden",
     ),
+    # New Relic User API Key (``NRAK-<27 uppercase alphanumeric body>``).
+    # Issued via one.newrelic.com > API Keys > Create key (User key
+    # type) for full New Relic platform API access (NerdGraph
+    # queries, account configuration, alert policy / notification
+    # channel management, dashboard create/update/delete, user
+    # management). Total length 32 chars (5-char ``NRAK-`` prefix +
+    # 27-char alphanumeric body). The ``NRAK-`` prefix is unambiguous
+    # (no other major issuer uses it), and the strict alphanumeric
+    # body lies entirely inside the entropy fallback's
+    # ``[A-Za-z0-9+/=_-]`` alphabet — so the entropy regex matches
+    # the full ``NRAK-<body>`` span as one generic finding, losing
+    # the New-Relic-specific issuer attribution that incident-
+    # response keys off. A leak grants the issuing user's full New
+    # Relic API scope across every accessible account: query every
+    # ingested metric / log / trace, modify alert routing
+    # (suppressing real incidents), exfiltrate dashboard contents
+    # (which often embed business metric names that reveal product
+    # telemetry), and create new API keys to maintain persistence.
+    # The revocation flow lives at one.newrelic.com/api-keys and is
+    # distinct from any other vendor's. New Relic closes the
+    # named-but-deferred Round-8 observability sub-landscape.
+    (
+        re.compile(r"(?<![A-Za-z0-9])NRAK-[A-Z0-9]{27}(?![A-Za-z0-9])"),
+        "New Relic User API Key gefunden",
+    ),
+    # New Relic REST API Key (``NRRA-<40 lowercase hex body>``). The
+    # legacy REST API v2 credential format (deprecated in favour of
+    # NRAK since 2021 but still issued and accepted for backward
+    # compatibility). Total length 45 chars (5-char ``NRRA-`` prefix
+    # + 40-char lowercase hex body). The ``NRRA-`` prefix is
+    # unambiguous, and the strict hex body lies entirely inside the
+    # entropy fallback's alphabet. A leak grants the issuing
+    # account's REST API v2 scope: read application performance
+    # data, browser monitoring data, mobile monitoring data, and
+    # synthetic monitoring data. The legacy key format has fewer
+    # scoping controls than NRAK, so leak surfaces are typically
+    # wider. Distinct revocation flow at one.newrelic.com/api-keys
+    # under the "REST API Keys" tab.
+    (
+        re.compile(r"(?<![A-Za-z0-9])NRRA-[a-fA-F0-9]{40}(?![A-Za-z0-9])"),
+        "New Relic REST API Key gefunden",
+    ),
+    # New Relic Insights Insert Key (``NRII-<32 lowercase hex body>``).
+    # Issued via one.newrelic.com > API Keys > Create key (Insights
+    # Insert key type) for ingestion-only access to the New Relic
+    # Events / Insights API. Total length 37 chars (5-char ``NRII-``
+    # prefix + 32-char lowercase hex body). The ``NRII-`` prefix is
+    # unambiguous, and the strict hex body lies entirely inside the
+    # entropy fallback's alphabet. A leak grants the issuing
+    # account's event-ingestion scope: an attacker can spam the
+    # account's event stream with fabricated metrics, polluting
+    # dashboards, triggering false-positive alerts, and consuming
+    # the account's data ingestion quota. Distinct revocation flow
+    # at one.newrelic.com/api-keys under the "Insights Insert Keys"
+    # tab.
+    (
+        re.compile(r"(?<![A-Za-z0-9])NRII-[a-fA-F0-9]{32}(?![A-Za-z0-9])"),
+        "New Relic Insights Insert Key gefunden",
+    ),
     # Fly.io API Token (``FlyV1 fm[12]_<base64 body>`` or
     # ``FlyV1 fo1_<base64 body>``). Issued via the ``fly auth token``
     # CLI or fly.io/dashboard/<org>/tokens for full Fly.io platform
