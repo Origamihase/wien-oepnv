@@ -62,7 +62,7 @@ Die S-Bahn-Stammstrecke ist das Rückgrat des Pendlerverkehrs. Wir erfassen und 
 - **RSS-Feed abonnieren:** [`https://origamihase.github.io/wien-oepnv/feed.xml`](https://origamihase.github.io/wien-oepnv/feed.xml)
 - **Projekt-Website:** <https://origamihase.github.io/wien-oepnv/>
 - **JSON-Schema der Events:** [`docs/schema/events.schema.json`](docs/schema/events.schema.json)
-- **Feed-Health-Report:** [`docs/feed-health.md`](docs/feed-health.md) _(automatischer Report nach jedem Build)_
+- **Feed-Health-Report:** `docs/feed-health.md` _(wird lokal nach jedem Feed-Build erzeugt; nicht im Repository versioniert)_
 
 ### 💻 Für Entwickler & Mitwirkende
 

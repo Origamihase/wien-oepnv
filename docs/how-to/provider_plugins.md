@@ -53,7 +53,9 @@ python -m src.cli feed build
 ```
 
 Während des Builds erscheinen der Providerstatus und mögliche Warnungen im
-Feed-Health-Report (`docs/feed-health.md`).
+Feed-Health-Report. Dieser wird lokal nach jedem Lauf unter
+`docs/feed-health.md` (Markdown) und `docs/feed-health.json` (JSON)
+abgelegt; beide Dateien sind **nicht** im Repository versioniert.
 
 ## 4. Tests
 

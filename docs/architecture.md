@@ -13,10 +13,11 @@ also expressed prose-first under each diagram.
 
 ## 1. The Transit Data Fetching Pipeline
 
-The headline workflow: a cron job (or GitHub Action) launches
-`python -m src.build_feed`, which orchestrates 4–5 transit-data
-providers in parallel, deduplicates the merged events, and writes a
-single RSS feed.
+The headline workflow: a cron job (or the `update-cycle.yml` GitHub
+Action) launches `python -m src.cli feed build` (which calls
+`build_feed.main()`), orchestrating 4–5 transit-data providers in
+parallel, deduplicating the merged events, and writing a single RSS
+feed.
 
 ```mermaid
 sequenceDiagram
@@ -365,28 +366,34 @@ The relevant CLI flags / env vars:
 
 ## 6. Statistics & Dashboard Pipeline
 
-Operational metrics live entirely outside the RSS pipeline. Two
-append-only CSV ledgers under `data/stats/` capture every relevant
-observation as it happens; a separate daily GitHub Actions job
-aggregates them into a static Markdown dashboard at
-`docs/statistik.md`. The hot-path build never blocks on
-observability I/O.
+Two append-only CSV ledgers under `data/stats/` capture every relevant
+observation as it happens. They serve **two consumers** with
+different windows: the daily Markdown dashboard
+(`docs/statistik.md`, 30-day window) and the RSS feed itself
+(Stammstrecke section, 1-hour window — see
+[`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)).
+The hot-path build never blocks on observability I/O — both
+consumers tolerate missing or malformed rows gracefully.
 
 ```mermaid
 flowchart LR
     subgraph "Producers (every cron tick)"
-        SS[update_stammstrecke_status.py<br/><i>after median calc</i>]
+        SS[update_stammstrecke_status.py<br/><i>writes one row per direction</i>]
         BF[build_feed.main<br/><i>_update_item_state strict-new branch</i>]
     end
     subgraph "Append-only ledgers (data/stats/)"
         SCSV[stammstrecke_YYYY.csv<br/><i>timestamp, weekday, hour, direction, delay_minutes</i>]
         DCSV[stoerungen_YYYY.csv<br/><i>timestamp, weekday, hour, provider, location_name</i>]
     end
-    subgraph "Aggregator (daily 00:15 UTC)"
-        AGG[generate_markdown_stats.py<br/><i>stdlib only</i>]
+    subgraph "Daily aggregator (cron 15 0 * * *)"
+        AGG[generate_markdown_stats.py<br/><i>stdlib only, 30-day window</i>]
     end
-    subgraph "Output"
+    subgraph "Feed-build consumer"
+        FRP[src/feed/stammstrecke.py<br/><i>1-hour window, 9-min median trigger</i>]
+    end
+    subgraph "Outputs"
         MD[docs/statistik.md<br/><i>ASCII / Emoji bars</i>]
+        RSS[docs/feed.xml<br/><i>0..2 Stammstrecke items</i>]
     end
 
     SS -- append --> SCSV
@@ -394,13 +401,15 @@ flowchart LR
     SCSV --> AGG
     DCSV --> AGG
     AGG --> MD
+    SCSV --> FRP
+    FRP --> RSS
 ```
 
 ### Architectural goals
 
 | Goal | Embodied by |
 | --- | --- |
-| **CI/CD decoupling** — the daily aggregator job runs on its own cron, never blocks `build-feed.yml` | `.github/workflows/generate-stats.yml` (cron `15 0 * * *`, `concurrency: generate-stats-${{ github.ref }}`) |
+| **CI/CD decoupling** — the daily aggregator job runs on its own cron, never blocks `update-cycle.yml` | `.github/workflows/generate-stats.yml` (cron `15 0 * * *`, `concurrency: generate-stats-${{ github.ref }}`) |
 | **Strictly zero data-science dependencies** — no `numpy`, `pandas`, `matplotlib`; CI install stays sub-second | `scripts/generate_markdown_stats.py` imports only `csv`, `collections`, `datetime`, `statistics`, `pathlib`, `zoneinfo`, `argparse` |
 | **Append-only, lock-free producers** — single-line writes on POSIX are atomic below `PIPE_BUF` (4 KiB), so concurrent cron ticks cannot interleave bytes mid-line | `src/utils/stats.py:_append_row` (mode `"a"`, no `flock`) |
 | **Strict-new gating for disruptions** — long-lived events recorded once, not once per build | `src/build_feed.py:_update_item_state` records only on the *strict* state-cache miss (neither `_identity` nor `guid` had a prior entry) |
@@ -474,8 +483,8 @@ Tagesbudget:
 
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
-| **Stammstrecke `/trip`** (`*/30` × 2 Richtungen) | 96 | `cron`-Plan in `build-feed.yml`, `MAX_TRIPS_PER_QUERY` |
-| **Station-Enrichment `location.name`** (monatlich, Stammstrecke-Whitelist) | ~10 (1× pro Monat) | `STAMMSTRECKE_VOR_IDS` in `scripts/update_vor_stations.py` |
+| **Stammstrecke `/trip`** (`0,30 * * * *` × 2 Richtungen) | 96 | `cron`-Plan in `update-cycle.yml` (bzw. `update-stammstrecke-status.yml`), `MAX_TRIPS_PER_QUERY` |
+| **Station-Enrichment `location.name`** (wöchentlich, Stammstrecke-Whitelist) | ~10 (1× pro Woche) | `STAMMSTRECKE_VOR_IDS` in `scripts/update_vor_stations.py` |
 | **Disruption-Polling `departureBoard`** | **0** (default) | `VOR_MONITOR_STATIONS_WHITELIST` env (default: leerer String) |
 | **Tagesbudget gesamt** | **96 / 100** | — |
 
@@ -498,15 +507,16 @@ Drei zusammenwirkende Mechanismen schützen das Budget:
    Tagesbudget reißen würde, raised `_QuotaExceeded` *vor* dem
    Network Call und schreibt einen leeren Cache.
 
-Die monatliche Burst durch das Stations-Enrichment fällt nur auf den
-1. eines Monats (Cron `0 1 1 * *`); selbst mit voller Stammstrecke-
-Aktivität an diesem Tag bleiben 4 Calls Puffer. Sollte das Budget in
-Zukunft enger werden, sind die niedrig-hängenden Hebel:
+Der Burst durch das Stations-Enrichment fällt nur auf den wöchentlichen
+Sonntag-Lauf (Cron `0 1 * * 0` in `.github/workflows/update-stations.yml`);
+selbst mit voller Stammstrecke-Aktivität an diesem Tag bleiben mindestens
+4 Calls Puffer. Sollte das Budget in Zukunft enger werden, sind die
+niedrig-hängenden Hebel:
 
-* Cron `*/30` → `*/60` (halbiert Stammstrecke auf 48 Calls/Tag).
-* `MAX_TRIPS_PER_QUERY = 5` → `3` (kein API-Effekt, da `numF` ein
+* Cron `0,30 * * * *` → `0 * * * *` (halbiert Stammstrecke auf 48 Calls/Tag).
+* `MAX_TRIPS_PER_QUERY = 6` → `3` (kein API-Effekt, da `numF` ein
   Server-side-Cap ist und VAO mehrere Trips pro Call erlaubt).
-* Operating-Hours-Cron (`0,30 4-23 * * *` statt `*/30 * * * *`) — die
+* Operating-Hours-Cron (`0,30 4-23 * * *` statt `0,30 * * * *`) — die
   Stammstrecke fährt zwischen 00:30 und 04:00 nur ausgedünnt, das
   Monitoring liefert dort kaum Signal.
 
