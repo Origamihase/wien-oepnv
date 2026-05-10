@@ -74,8 +74,28 @@ _CONTROL_CHARS_RE = re.compile(
 # ``feed_health.json`` artefact and the GitHub Issue body submitted by
 # ``submit_auto_issue`` while preserving the readable newline contract
 # every ``strip_control_chars=False`` caller relies on.
+# 2026-05-10 (ASCII C0 / Log-Injection Drift Round 4): widened to
+# include ``\x00-\x08\x0b\x0c\x0e-\x1f`` (the ASCII C0 control set
+# MINUS readable whitespace ``\x09``/``\x0a``/``\x0d``). Three of the
+# four canonical sibling regexes already cover this set:
+#   * ``src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE``
+#   * ``src/utils/stats.py:_CSV_CONTROL_CHARS_RE``
+#   * ``src/build_feed.py:_CONTROL_RE``
+# Only ``_INVISIBLE_DANGEROUS_RE`` was narrower. The C0 hole leaked
+# NUL (content truncation), BEL (terminal-bell denial-of-attention),
+# BS (visual-spoof primitive), FF (terminal-screen-wipe), bare ESC,
+# SO/SI (legacy charset switch), and DC1-4 / SUB / FS / GS / RS / US
+# into every ``strip_control_chars=False`` sibling sink
+# (``clean_message``, ``_sanitize_log_detail``,
+# ``_sanitize_exception_msg``, ``SafeFormatter.formatException``,
+# ``SafeJSONFormatter.formatException``) and from there into the
+# public ``docs/feed-health.md`` artefact + GitHub Issue body
+# submitted by ``submit_auto_issue``. ``\x09`` (TAB), ``\x0a`` (LF),
+# ``\x0d`` (CR) remain outside the always-strip floor so the
+# readability contract for traceback formatting is preserved.
 _INVISIBLE_DANGEROUS_RE = re.compile(
-    r"[\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
+    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
 )
 _LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
 # ANSI escape codes: comprehensive matching for CSI, OSC, Fe, and 2-byte sequences
