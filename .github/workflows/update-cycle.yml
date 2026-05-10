@@ -18,7 +18,8 @@ name: Update cycle
 #
 # Step order:
 #   1. ``actions/checkout`` (full history for clean rebase later)
-#   2. Python + dependencies
+#   2. ``actions/setup-python`` + venv-cache restore + conditional
+#      ``pip install`` on cache miss + prepend ``.venv/bin`` to PATH
 #   3. WL / ÖBB / Baustellen cache fetchers (parallel via bash; free APIs)
 #   4. VAO quota pre-flight + Stammstrecke poll (gated on counter)
 #   5. ``feed build`` reads all caches + the freshly-appended CSV
@@ -53,7 +54,6 @@ jobs:
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src
-      PIP_CACHE_DIR: /tmp/pip-cache
       # VOR/VAO API credentials — required by ``scripts/update_stammstrecke_
       # status.py``. Without these env vars VAO rejects every request
       # with HTTP 400 (errorText="Missing value for required param accessId").
@@ -71,17 +71,59 @@ jobs:
           # ``update-stations.yml`` (Sundays) pushed during this run.
           fetch-depth: 0
 
-      - name: Ensure pip cache directory exists
-        run: mkdir -p "$PIP_CACHE_DIR"
-
       - name: Set up Python
+        id: setup_python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: '3.11'
-          cache: 'pip'
 
-      - name: Install dependencies
-        uses: ./.github/actions/install-deps
+      # Cache the entire installed virtual environment instead of the
+      # pip download cache. ``setup-python``'s ``cache: 'pip'`` only
+      # speeds up wheel resolution; pip still spends ~30 s rebuilding
+      # the site-packages on every cron tick. A venv cache lets us
+      # skip the install step entirely on the common path (deps
+      # unchanged), shaving ~20 s off each of the 48 daily runs.
+      #
+      # Cache key includes the resolved Python version (so a runner-
+      # image bump from 3.11.10 → 3.11.11 invalidates correctly), a
+      # content hash of ``requirements.txt`` AND of
+      # ``install-deps/action.yml``. Any of these changing — adding
+      # a dep, bumping a pinned version, modifying the install
+      # procedure, the runner upgrading the base interpreter —
+      # invalidates the cache so we never run with a venv that does
+      # not match the current contract. NO ``restore-keys`` fallback:
+      # a partial-match restore would land us on a stale venv that
+      # could shadow a pinned upgrade silently.
+      #
+      # Security: actions/cache scopes caches per branch; a cache
+      # written by a PR run cannot poison the ``main`` cache scope
+      # (the cache-poisoning class described in
+      # https://adnanthekhan.com/2024/05/06/the-monsters-in-your-build-cache-github-actions-cache-poisoning/
+      # is mitigated by GitHub's branch isolation — caches created
+      # on PR refs cannot be read from base-branch runs).
+      - name: Restore Python virtual environment
+        id: venv_cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-py${{ steps.setup_python.outputs.python-version }}-${{ hashFiles('requirements.txt', '.github/actions/install-deps/action.yml') }}
+
+      - name: Install dependencies (cache miss)
+        if: steps.venv_cache.outputs.cache-hit != 'true'
+        # Mirrors the ``install-deps`` composite action's pip cap
+        # (<27, see ``.github/actions/install-deps/action.yml``); we
+        # inline it here so the cached path produces a venv whose
+        # interpreter + pip version match what the composite would
+        # have built. Other workflows continue to use the composite.
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install "pip<27"
+          .venv/bin/pip install -r requirements.txt
+
+      - name: Prepend venv to PATH
+        # Persists across subsequent steps; ``$GITHUB_PATH`` is the
+        # documented mechanism for cross-step PATH mutation.
+        run: echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
 
       # ----- Cache fetchers (free APIs, no quota gate) ---------------------
 
