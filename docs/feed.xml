@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 08:30:34 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 09:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52</guid>
+      <pubDate>Mon, 11 May 2026 08:47:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 09:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 08:47:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[48A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +27,7 @@
       <pubDate>Mon, 11 May 2026 08:28:00 +0200</pubDate>
       <ext:first_seen>Mon, 11 May 2026 08:30:34 +0200</ext:first_seen>
       <ext:starts_at>Mon, 11 May 2026 08:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 11 May 2026 09:17:00 +0200</ext:ends_at>
       <description>Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 11.05.2026]</description>
       <content:encoded><![CDATA[Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
@@ -106,17 +117,6 @@
       <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 11.05.2026]</description>
       <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Sat, 09 May 2026 00:00:22 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 00:00:22 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[09.05.2026 – 11.05.2026]</description>
-      <content:encoded><![CDATA[[09.05.2026 – 11.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

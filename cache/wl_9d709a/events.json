@@ -326,6 +326,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Verkehrsüberlastung",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52",
+    "pubDate": "2026-05-11T08:47:00+02:00",
+    "starts_at": "2026-05-11T08:47:00+02:00",
+    "ends_at": "2026-05-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-05-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "16A: Verkehrsüberlastung",
     "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -464,7 +476,7 @@
     "guid": "00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033",
     "pubDate": "2026-05-11T08:28:00+02:00",
     "starts_at": "2026-05-11T08:28:00+02:00",
-    "ends_at": "2026-05-11T23:55:00+02:00",
+    "ends_at": "2026-05-11T09:17:00+02:00",
     "_identity": "wl|störung|L=48A|D=2026-05-11"
   },
   {
