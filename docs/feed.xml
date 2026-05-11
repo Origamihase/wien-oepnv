@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 08:00:43 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 08:30:34 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[48A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033</guid>
+      <pubDate>Mon, 11 May 2026 08:28:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 08:30:34 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 08:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0c324aeb68aff0a13a99697bafb1720b1552500ec06ceef7ada487c69aa2ddcf</guid>
+      <pubDate>Mon, 11 May 2026 08:14:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 08:30:34 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 08:14:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[16A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7</guid>
+      <pubDate>Mon, 11 May 2026 08:13:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 08:30:34 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 08:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hütteldorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -29,28 +62,6 @@
       <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 11.05.2026]</description>
       <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[73A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aeb0b84ae5e8a62af5d84641c15f91257543dc2b7569bb960589eb875b2fd4cc</guid>
-      <pubDate>Mon, 11 May 2026 07:06:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 07:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 07:06:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 73A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 73A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
-      <pubDate>Mon, 11 May 2026 06:58:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 01:00:33 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 06:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 08:00:00 +0200</ext:ends_at>
-      <description>Linie U3: Unregelmäßige Intervalle in Richtung Ottakring. Grund: Schadhaftes Fahrzeug. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Unregelmäßige Intervalle in Richtung Ottakring. Grund: Schadhaftes Fahrzeug.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Verspätungen]]></title>
@@ -103,17 +114,6 @@
       <pubDate>Sat, 09 May 2026 00:00:22 +0200</pubDate>
       <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
       <ext:starts_at>Sat, 09 May 2026 00:00:22 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[09.05.2026 – 11.05.2026]</description>
-      <content:encoded><![CDATA[[09.05.2026 – 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
-      <pubDate>Sat, 09 May 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 00:00:20 +0200</ext:starts_at>
       <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[09.05.2026 – 11.05.2026]</description>
       <content:encoded><![CDATA[[09.05.2026 – 11.05.2026]]]></content:encoded>
