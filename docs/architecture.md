@@ -362,6 +362,76 @@ The relevant CLI flags / env vars:
 | `OVERPASS_URL` | `overpass-api.de` | Trusted-mirror override; rejected unless on the allow-list |
 | `MERGE_MAX_DIST_M` | `150` | Distance threshold for the dedup match in `merge_places` |
 
+### 5a. Wiener Linien OGD merge (the fourth source)
+
+After the OSM / Google Places enrichment writes the ÖBB-rooted
+`stations.json`, the wrapper orchestrator runs
+`scripts/update_wl_stations.py` as a separate stage. This step folds
+Wiener Linien's OGD-Echtzeit station and stop data into the directory
+so the published feed knows about U-Bahn, Tram and Bus stops that
+have no ÖBB counterpart.
+
+**Source endpoint** (post-PR #1442): the canonical
+`www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-{halte
+stellen,haltepunkte}.csv`. The historical `data.wien.gv.at/csv/`
+proxy was retired during the 60th Wien OGD phase (September 2025)
+and `haltepunkte.csv` started returning HTTP 404 on the proxy host —
+the migration is documented in
+`scripts/update_wl_stations.py:OGD_HALTESTELLEN_URL`. Both files are
+downloaded fresh on every cron tick (`--download` default-on) and
+atomic-written to `data/wienerlinien-ogd-{haltestellen,haltepunkte}.
+csv`; on download failure the pipeline keeps the pinned local
+snapshot and continues.
+
+**Entry construction** (`build_wl_entries`):
+
+1. Group haltepunkte by their haltestelle DIVA.
+2. Per group, derive the canonical name via `_derive_station_label`:
+   if the haltestelle `PlatformText` is a generic transport-typed
+   token (`Bahnhof`, `Lokalbahn`, `Hauptbahnhof`, `Station`, `Halt`,
+   `Bf`, `Hbf`, `Bahn`, `U-Bahn`) and the haltepunkte produce a
+   single cleaned `StopText`, use the `StopText`. Otherwise keep
+   the `PlatformText`. This rule (PR #1453) turns operator-useless
+   labels like `Wien Bahnhof (WL)` into informative ones like
+   `Wien Tribuswinkel - Josefsthal (WL)`, while preserving the
+   common case (`Karlsplatz`, `Stephansplatz`, …).
+3. Resolve `in_vienna` from the aggregate (mean) haltepunkt
+   coordinates so the flag stays coherent with the persisted
+   `latitude`/`longitude` (invariant pinned by
+   `test_coordinates_match_in_vienna_flag` after PR #1449).
+4. Set `pendler = not in_vienna` to mirror the legacy WL-auto-
+   promote heuristic for border-area stops (PR #1443).
+5. Build the entry with `wl_diva`, `wl_stops`, `aliases` — but
+   without synthetic `bst_id` / `bst_code` (PR #1446 redesign).
+
+**Co-located haltestelle merge** (PR #1451): a post-build pass
+`_merge_colocated_duplicates` folds groups that share a canonical
+name **and** lie within 150 m of each other into a single entry.
+Wiener Linien's OGD-Echtzeit lists some physical stops twice
+(opposing-direction bahnsteige with distinct DIVAs); the merge
+collects all haltepunkte under one entry with the lexicographically
+lowest DIVA as `wl_diva`. Groups with at least one pair ≥150 m
+apart remain separate — they are multi-modal stops at one venue
+(Bus + Tram pair) or generic-PlatformText coincidences, and the
+shared display name is semantically correct.
+
+**Name uniqueness contract** (PR #1452): the stations validator no
+longer enforces canonical-name uniqueness. `name` is an
+operator-facing display label; structural uniqueness lives in
+`wl_diva` / `bst_id` / `vor_id` / `bst_code`. Wiener Linien
+legitimately ships duplicate `PlatformText` values across non-
+mergeable multi-DIVA groups (10 such groups on the May 2026 CSV
+snapshot, including `Lokalbahn` × 4 spread across 5.6 km and
+`Bahnhof` × 2 at 9.4 km separation) — the older
+`_disambiguate_duplicate_names` DIVA-suffix workaround
+(`Wien Bahnhof (WL 60205022)` etc.) cluttered the RSS feed and was
+retired together with the validator gate.
+
+**Resilience**: same `session_with_retries` + `fetch_content_safe`
+stack as the other sources, plus pinned snapshot fallback. Unlike
+the ÖBB workbook (until PR #1450) the WL CSVs have had a soft-fail
+path since the original `_download_ogd_csv` shape.
+
 ---
 
 ## 6. Statistics & Dashboard Pipeline
