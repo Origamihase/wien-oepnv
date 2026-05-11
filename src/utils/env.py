@@ -19,6 +19,7 @@ available.
 
 from __future__ import annotations
 
+import hashlib
 import logging
 import os
 import re
@@ -27,6 +28,27 @@ from collections.abc import Iterable, Mapping, MutableMapping
 
 from .files import read_capped_text
 from .logging import sanitize_log_message
+
+
+def _path_fingerprint(path: Path) -> str:
+    """Return a one-way SHA-256 fingerprint of ``str(path)`` (12 hex chars).
+
+    Security (Path-Log Sibling Drift, sibling of PR #1456): mirrors the
+    canonical sanitisation shape pinned in :func:`src.utils.files.read_capped_json`
+    / :func:`src.utils.files.read_capped_text`. The env-file candidate paths
+    are env-controlled (``WIEN_OEPNV_ENV_FILES``); interpolating the raw
+    path bytes into a WARNING log line lets a hostile path carrying
+    Trojan-Source primitives (BiDi RLO, zero-width, 8-bit C1 CSI/OSC,
+    Tag block, Variation Selectors, newline log-forgery, ANSI ESC)
+    flow verbatim into the public ``docs/feed_health.json`` artefact +
+    the GitHub-Issue auto-submission. The fingerprint is hex-only,
+    Trojan-Source-clean, and a CodeQL-recognised barrier (``hashlib``
+    is a documented sanitiser sink for the clear-text-logging taint).
+    Operators correlate by re-hashing a candidate path locally.
+    """
+    return hashlib.sha256(
+        str(path).encode("utf-8", errors="replace")
+    ).hexdigest()[:12]
 
 __all__ = [
     "get_int_env",
@@ -383,12 +405,17 @@ def _warn_if_world_readable(path: Path) -> None:
     except OSError:
         return
     if mode & 0o077:
+        # Security (Path-Log Sibling Drift, sibling of PR #1456): the
+        # path bytes are fingerprinted via SHA-256 (see _path_fingerprint
+        # module docstring) so Trojan-Source primitives carried in the
+        # candidate path cannot leak into the operator log + the public
+        # ``docs/feed_health.json`` artefact.
         logging.getLogger("build_feed").warning(
-            ".env-Datei %s ist gruppen-/welt-lesbar (Modus 0o%03o); "
-            "Secrets können geleakt werden – `chmod 600 %s` empfohlen.",
-            path,
+            ".env-Datei [path-sha256=%s] ist gruppen-/welt-lesbar "
+            "(Modus 0o%03o); Secrets können geleakt werden – "
+            "`chmod 600` auf der entsprechenden Datei empfohlen.",
+            _path_fingerprint(path),
             mode,
-            path,
         )
 
 
@@ -433,10 +460,13 @@ def load_env_file(
         logger=log,
     )
     if content is None:
+        # Security (Path-Log Sibling Drift, sibling of PR #1456): see
+        # ``_path_fingerprint`` module docstring for the rationale of
+        # fingerprinting the path bytes instead of interpolating them.
         log.warning(
-            "Kann .env-Datei %s nicht lesen – überspringe sie (zu groß / "
-            "ungültiges UTF-8 / I/O-Fehler).",
-            path,
+            "Kann .env-Datei [path-sha256=%s] nicht lesen – überspringe sie "
+            "(zu groß / ungültiges UTF-8 / I/O-Fehler).",
+            _path_fingerprint(path),
         )
         return {}
     parsed = _parse_env_file(content)

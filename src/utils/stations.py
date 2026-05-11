@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import math
@@ -293,20 +294,38 @@ def _read_capped_json(
     (``_station_entries``, ``_vienna_polygons``) — a successful bypass
     crashes every feed-build path that touches a station name or a
     Vienna geo-fence check.
+
+    Security (Path-Log Sibling Drift, sibling of PR #1456): the WARNING
+    log lines below fingerprint ``path`` via SHA-256 (truncated to 12
+    hex chars) rather than interpolating the raw path bytes. Pre-fix
+    a hostile path name carrying Trojan-Source primitives (BiDi RLO,
+    zero-width, 8-bit C1 CSI/OSC, Tag block, Variation Selectors,
+    newline log-forgery, ANSI ESC) would flow into the operator-facing
+    log + ``docs/feed_health.json`` + the GitHub-Issue auto-submission
+    verbatim. Post-fix the hex fingerprint replaces the path bytes at
+    the interpolation boundary — Trojan-Source-clean and CodeQL-
+    recognised as a barrier for any clear-text-logging taint (the
+    duplicate-code shape mirrors :func:`src.utils.files.read_capped_json`
+    which closed the same drift at the canonical helper boundary).
     """
+    path_fingerprint = hashlib.sha256(
+        str(path).encode("utf-8", errors="replace")
+    ).hexdigest()[:12]
     try:
         with path.open("rb") as handle:
             if os.fstat(handle.fileno()).st_size > max_bytes:
                 logger.warning(
-                    "%s file at %s is too large (> %d bytes); treating as missing.",
-                    label, path, max_bytes,
+                    "%s file [path-sha256=%s] is too large (> %d bytes); "
+                    "treating as missing.",
+                    label, path_fingerprint, max_bytes,
                 )
                 return None
             raw = handle.read(max_bytes + 1)
             if len(raw) > max_bytes:
                 logger.warning(
-                    "%s file at %s exceeded %d bytes during read; treating as missing.",
-                    label, path, max_bytes,
+                    "%s file [path-sha256=%s] exceeded %d bytes during read; "
+                    "treating as missing.",
+                    label, path_fingerprint, max_bytes,
                 )
                 return None
             payload: object = json.loads(raw)

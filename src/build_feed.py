@@ -753,20 +753,37 @@ def _load_state() -> dict[str, dict[str, Any]]:
                 # symlink swap bypass the cap.
                 # ``read(MAX_STATE_FILE_BYTES + 1)`` defends against
                 # zero-st_size special files.
+                # Security (Path-Log Sibling Drift, sibling of PR #1456):
+                # ``feed_config.STATE_FILE`` is operator-controlled via
+                # the ``STATE_PATH`` environment variable. Pre-fix the
+                # WARNING log lines below interpolated ``path`` verbatim
+                # via the bare ``%s`` format spec; a hostile path name
+                # (Trojan-Source RLO, zero-width, 8-bit C1, Tag block,
+                # Variation Selectors, newline log-forgery, ANSI ESC)
+                # flowed into the operator log + the public
+                # ``docs/feed_health.json`` artefact + the GitHub-Issue
+                # auto-submission. Post-fix the SHA-256 fingerprint
+                # (truncated to 12 hex chars, Trojan-Source-clean,
+                # CodeQL-recognised barrier) replaces the path bytes
+                # at the interpolation boundary. Mirrors the canonical
+                # fix shape pinned in :func:`src.utils.files.read_capped_json`.
+                path_fingerprint = hashlib.sha256(
+                    str(path).encode("utf-8", errors="replace")
+                ).hexdigest()[:12]
                 with path.open("rb") as f:
                     if os.fstat(f.fileno()).st_size > MAX_STATE_FILE_BYTES:
                         log.warning(
-                            "State-Datei %s ist zu groß (> %d Bytes); "
-                            "starte mit leerem State.",
-                            path, MAX_STATE_FILE_BYTES,
+                            "State-Datei [path-sha256=%s] ist zu groß "
+                            "(> %d Bytes); starte mit leerem State.",
+                            path_fingerprint, MAX_STATE_FILE_BYTES,
                         )
                         return {}
                     raw_bytes = f.read(MAX_STATE_FILE_BYTES + 1)
                     if len(raw_bytes) > MAX_STATE_FILE_BYTES:
                         log.warning(
-                            "State-Datei %s überschreitet %d Bytes beim Lesen; "
-                            "starte mit leerem State.",
-                            path, MAX_STATE_FILE_BYTES,
+                            "State-Datei [path-sha256=%s] überschreitet "
+                            "%d Bytes beim Lesen; starte mit leerem State.",
+                            path_fingerprint, MAX_STATE_FILE_BYTES,
                         )
                         return {}
                     data = json.loads(raw_bytes)
@@ -828,19 +845,28 @@ def _read_state_capped(path: Path) -> dict[str, dict[str, Any]]:
     or a symlink swap bypass the cap mid-merge. ``read(MAX + 1)``
     defends against zero-st_size special files (FIFOs, ``/dev/zero``).
     """
+    # Security (Path-Log Sibling Drift, sibling of PR #1456): see
+    # ``_load_state`` for the rationale of fingerprinting the path
+    # bytes rather than interpolating them verbatim into the WARNING
+    # log lines below.
+    path_fingerprint = hashlib.sha256(
+        str(path).encode("utf-8", errors="replace")
+    ).hexdigest()[:12]
     try:
         with path.open("rb") as f:
             if os.fstat(f.fileno()).st_size > MAX_STATE_FILE_BYTES:
                 log.warning(
-                    "State-Datei %s ist zu groß (> %d Bytes); überschreibe State.",
-                    path, MAX_STATE_FILE_BYTES,
+                    "State-Datei [path-sha256=%s] ist zu groß "
+                    "(> %d Bytes); überschreibe State.",
+                    path_fingerprint, MAX_STATE_FILE_BYTES,
                 )
                 return {}
             raw_bytes = f.read(MAX_STATE_FILE_BYTES + 1)
             if len(raw_bytes) > MAX_STATE_FILE_BYTES:
                 log.warning(
-                    "State-Datei %s überschreitet %d Bytes; überschreibe State.",
-                    path, MAX_STATE_FILE_BYTES,
+                    "State-Datei [path-sha256=%s] überschreitet "
+                    "%d Bytes; überschreibe State.",
+                    path_fingerprint, MAX_STATE_FILE_BYTES,
                 )
                 return {}
             existing = json.loads(raw_bytes)
@@ -916,10 +942,16 @@ def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = N
         # Security (Clear-Text-Logging Drift): the bound exception (an
         # OSError or TimeoutError from the lock helper) may surface a
         # custom ``__str__`` carrying control bytes — sanitise.
+        # Security (Path-Log Sibling Drift, sibling of PR #1456): see
+        # ``_load_state`` for the rationale of fingerprinting the path
+        # bytes rather than interpolating them verbatim.
+        path_fingerprint = hashlib.sha256(
+            str(path).encode("utf-8", errors="replace")
+        ).hexdigest()[:12]
         log.warning(
-            "State-Datei %s konnte nicht gesperrt werden (%s) – "
-            "Update wird übersprungen, nächster Lauf merged frisch.",
-            path,
+            "State-Datei [path-sha256=%s] konnte nicht gesperrt werden "
+            "(%s) – Update wird übersprungen, nächster Lauf merged frisch.",
+            path_fingerprint,
             sanitize_log_arg(str(exc)),
         )
 
