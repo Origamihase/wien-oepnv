@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 18:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 18:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a</guid>
+      <pubDate>Mon, 11 May 2026 18:01:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 06:30:26 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 18:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,23 +32,12 @@
       <content:encoded><![CDATA[Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[24A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">16fcbbe3aabe5a1378dc06ea696db0d79196145330594b3b91659557e6d58a03</guid>
-      <pubDate>Mon, 11 May 2026 17:16:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 17:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 17:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 17:59:00 +0200</ext:ends_at>
-      <description>Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[92A: Rettungseinsatz Betrieb bis Donaustadtbrücke]]></title>
+      <title><![CDATA[92A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">d61b08eab1d6336e031e6fff05f3742e04ec50ddf3227e346d7cbefc36c7b8a6</guid>
       <pubDate>Mon, 11 May 2026 17:16:00 +0200</pubDate>
       <ext:first_seen>Mon, 11 May 2026 17:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 17:18:25 +0200</ext:starts_at>
+      <ext:starts_at>Mon, 11 May 2026 17:16:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 92A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
       <content:encoded><![CDATA[Linie 92A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
@@ -63,17 +63,6 @@
       <ext:ends_at>Thu, 04 Jun 2026 11:35:00 +0200</ext:ends_at>
       <description>Veranstaltung Wegen Abhaltung eines christlichen Umzuges müssen die Busse der Linien 27A, 28A und 29A in beiden Richtungen umgeleitet werden. [11.05.2026 – 04.06.2026]</description>
       <content:encoded><![CDATA[Veranstaltung Wegen Abhaltung eines christlichen Umzuges müssen die Busse der Linien 27A, 28A und 29A in beiden Richtungen umgeleitet werden.<br/>[11.05.2026 – 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
-      <pubDate>Mon, 11 May 2026 16:02:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 16:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 16:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Gasrohrgebrechen]]></title>
@@ -115,6 +104,17 @@
       <ext:starts_at>Mon, 11 May 2026 07:39:18 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge … [Seit 11.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge …<br/>[Seit 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
+      <pubDate>Mon, 11 May 2026 07:25:40 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 07:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 07:25:40 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 11.05.2026]</description>
+      <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
