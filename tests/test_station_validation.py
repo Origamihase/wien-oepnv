@@ -292,6 +292,52 @@ def test_naming_validation_detects_duplicate_canonical_names(tmp_path: Path) -> 
     }
 
 
+def test_format_identifier_distinguishes_wl_only_entries() -> None:
+    """WL-only entries (no ÖBB ``bst_id`` / ``bst_code`` after the
+    PR #1446 redesign) must still produce distinct ``_format_identifier``
+    values so the orchestrator's auto-quarantine path can isolate
+    individual entries instead of collapsing every ``source="wl"``
+    station onto the same identifier.
+
+    Regression for the post-PR #1446 cron tick (``a23a2a7``) where 30
+    genuine ``canonical name not unique`` issues fanned out into 1759
+    auto-quarantined WL entries because ``_format_identifier`` collapsed
+    them all to ``"source:wl"``.
+    """
+    from src.utils.stations_validation import _format_identifier
+
+    entry_a: dict[str, object] = {
+        "name": "Wien Bahnhof (WL)",
+        "wl_diva": "60201234",
+        "source": "wl",
+    }
+    entry_b: dict[str, object] = {
+        "name": "Wien Bahnhof (WL)",
+        "wl_diva": "60205678",
+        "source": "wl",
+    }
+    entry_c: dict[str, object] = {
+        "name": "Wien Karlsplatz (WL)",
+        "wl_diva": "60200657",
+        "source": "wl",
+    }
+
+    id_a = _format_identifier(entry_a)
+    id_b = _format_identifier(entry_b)
+    id_c = _format_identifier(entry_c)
+
+    assert id_a != id_b, (
+        "Two WL-only entries sharing a canonical name must still have "
+        "distinct identifiers — the wl_diva component is the source of "
+        "uniqueness post-PR #1446 (synthetic bst_id was removed)."
+    )
+    assert id_a != id_c
+    assert id_b != id_c
+    assert "wl_diva:60201234" in id_a
+    assert "wl_diva:60205678" in id_b
+    assert "wl_diva:60200657" in id_c
+
+
 def test_naming_validation_detects_whitespace_in_source(tmp_path: Path) -> None:
     """Comma-separated source tokens must not carry whitespace."""
     stations = [
