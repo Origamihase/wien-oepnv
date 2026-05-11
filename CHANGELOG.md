@@ -5,6 +5,88 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Changed (WL OGD reactivation chain, PR #1441-#1453)**: thirteen
+  consolidated PRs fully reactivate the Wiener-Linien OGD merge path
+  against the canonical `www.wienerlinien.at/ogd_realtime/doku/ogd/`
+  endpoint (the previous `data.wien.gv.at/csv/` proxy was retired in
+  the 60th OGD phase, September 2025).
+  * **Endpoint + workflow (#1441, #1442)** — removed the redundant
+    inline curl step from `update-stations.yml`, migrated both
+    `OGD_HALTESTELLEN_URL` / `OGD_HALTEPUNKTE_URL` constants to the
+    canonical Wiener Linien host. Soft-fail to pinned local CSVs on
+    upstream outage.
+  * **Schema fuzzy-keys (#1444)** — added column aliases so the
+    loader parses both the legacy proxy CSV
+    (`HALTESTELLEN_ID`/`NAME`/`WGS84_*`) and the canonical
+    OGD-Echtzeit CSV (`DIVA`/`PlatformText`/`StopText`/`Latitude`).
+  * **WL-only entries im `wl_diva`-Namensraum (#1446)** — removed
+    synthetic `bst_id` (`9{DIVA}`) and synthetic `bst_code`
+    (`WL-{name[:3]}`) on WL-only entries; the canonical `wl_diva`
+    field is the sole structural identifier and cross-station-id
+    collisions / `WL-ABS`-style code duplicates are gone.
+  * **Pendler-Default für Border-Stops (#1443)** — unmatched WL
+    haltestellen outside the Wien polygon auto-promote to
+    `pendler=True`.
+  * **Validator identifier (#1447)** — `_format_identifier` now
+    includes `wl_diva` so WL-only entries get distinct keys instead
+    of collapsing onto `"source:wl"` (which had pulled 1759 stations
+    into auto-quarantine over 30 genuine naming groups).
+  * **StopID + direction-marker sanitisation (#1445)** — short
+    `StopID` counter values are filtered out of `aliases` (legacy
+    8-digit RBL stays); `<` and `>` direction markers in `StopText`
+    are replaced with `←` / `→` so they no longer hit
+    `_UNSAFE_CHARS_RE`.
+  * **`in_vienna` consistency (#1449)** — `build_wl_entries` now
+    derives `in_vienna` from the aggregate haltepunkt coordinates
+    instead of any-stop-wins, so boundary stations no longer carry
+    a flag that contradicts their persisted coords. Pinned by
+    `test_coordinates_match_in_vienna_flag`.
+  * **ÖBB workbook soft-fail (#1450)** — `download_workbook` atomic-
+    writes a snapshot to `data/oebb-verkehrsstationen.xlsx` on every
+    successful run and reads from the snapshot when `data.oebb.at`
+    returns a network error. Closes the asymmetric failure mode
+    where ÖBB was the only fail-fast upstream source. CodeQL config
+    (`.github/codeql/codeql-config.yml`) excludes the
+    `py/clear-text-storage-sensitive-data` false-positive that
+    matches every public-data cache writer in this project.
+  * **Multi-DIVA-Merge <150 m (#1451)** — `_merge_colocated_dupli
+    cates` folds same-name haltestellen with haltepunkte-mean
+    coordinates within 150 m of each other into a single entry
+    (lexicographically lowest DIVA wins, all haltepunkte and
+    aliases unioned). Removes 4 doublings from the current
+    `stations.json` (Stock im Weg, Vorgartenstraße, Lieblgasse,
+    Altmannsdorfer Straße).
+  * **`name` ist Display-Label, kein PK (#1452)** — the validator's
+    canonical-name uniqueness check is removed. Structural
+    uniqueness lives in `wl_diva` / `bst_id` / `vor_id` /
+    `bst_code`; `name` is operator-facing. The
+    `_disambiguate_duplicate_names` DIVA-suffix workaround
+    (`Wien Bahnhof (WL 60205022)`) is retired — duplicate display
+    labels are now legal and the RSS feed shows the clean
+    `Wien Bahnhof (WL)` form.
+  * **Aussagekräftige Display-Namen aus `StopText` (#1453)** —
+    `_derive_station_label` overrides generic transport-typed
+    haltestelle `PlatformText` tokens (`Bahnhof`, `Lokalbahn`,
+    `Hauptbahnhof`, `Station`, `Halt`, `Bf`, `Hbf`, `Bahn`,
+    `U-Bahn`) with the haltepunkte `StopText` when one is
+    available. Six entries got a real toponym:
+    `Wien Bahnhof (WL)` × 2 → `Wien Tribuswinkel - Josefsthal
+    (WL)`, `Wiener Neudorf (WL)`; `Wien Lokalbahn (WL)` × 4 →
+    `Wien Guntramsdorf Lokalbahn (WL)`, `Wien Möllersdorf (WL)`,
+    `Wien Neu Guntramsdorf (WL)`, `Wien Traiskirchen Lokalbahn
+    (WL)`. Non-generic PlatformText values stay untouched so
+    ÖBB / VOR name-based joins remain stable.
+  * **Test data refresh (#1449)** — three station-directory tests
+    hard-coded legacy DIVAs that Wiener Linien has since renumbered
+    (`60201076` was Karlsplatz pre-PR #1442 and is now
+    Ratzenhofergasse; `60201002` was Schottentor and is now
+    Pensionsversicherungsanstalt). Updated to current DIVAs.
+  * **Outcome on production data**: `stations.json` grew from 196
+    to 1951 entries (4 co-located doublings merged out of 1803 WL
+    entries), 0 DIVA suffixes in canonical names, 0 generic
+    `Wien Bahnhof (WL)` / `Wien Lokalbahn (WL)` labels, validator
+    reports 0 alias / naming / security issues, `quarantine.json`
+    stays empty across cron ticks.
 * **Changed (Auto-Quarantine für `update_all_stations.py`)**: Blockierende
   Validation-Issues (`provider_issues`, `cross_station_id_issues`,
   `naming_issues`, `security_issues`) brechen die Pipeline nicht mehr ab.

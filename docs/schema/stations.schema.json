@@ -25,7 +25,7 @@
         "name": {
           "type": "string",
           "minLength": 1,
-          "description": "Kanonischer, eindeutiger Anzeige-Name. Wird im Feed verwendet. Muss über alle Einträge unique sein (validator-erzwungen)."
+          "description": "Operator-facing display label. Wird im Feed verwendet. Darf zwischen Einträgen wiederholt vorkommen — die Eindeutigkeits-Garantie liegt bei den strukturierten Identifier-Feldern (bst_id, bst_code, vor_id, wl_diva), nicht bei name. Bis PR #1452 (2026-05-12) hat _find_naming_issues Duplikate als blocking gewertet; seither ist diese Prüfung entfallen, weil Wiener Linien-PlatformText legitim über mehrere DIVAs geteilt wird (multi-modal venues mit Bus + Tram am gleichen Knoten)."
         },
         "in_vienna": {
           "type": "boolean",
@@ -75,11 +75,11 @@
         "wl_diva": {
           "type": "string",
           "pattern": "^[0-9]+$",
-          "description": "Wiener Linien DIVA-Nummer aus data/wienerlinien-ogd-haltestellen.csv (data.wien.gv.at, CC BY 4.0). Wird für WL-Provider-Lookups als IDENTITY-Alias geführt."
+          "description": "Wiener Linien DIVA-Nummer aus data/wienerlinien-ogd-haltestellen.csv (Wiener Linien OGD, www.wienerlinien.at/ogd_realtime/doku/ogd/, CC BY 4.0). Wird für WL-Provider-Lookups als IDENTITY-Alias geführt und trägt — gemeinsam mit bst_id/bst_code/vor_id — die strukturelle Eindeutigkeits-Garantie der Station."
         },
         "wl_stops": {
           "type": "array",
-          "description": "WL-Einzelhaltepunkte (Bahnsteige/Richtungen) aus data/wienerlinien-ogd-haltepunkte.csv.",
+          "description": "WL-Einzelhaltepunkte (Bahnsteige/Richtungen) aus data/wienerlinien-ogd-haltepunkte.csv (Wiener Linien OGD, www.wienerlinien.at/ogd_realtime/doku/ogd/).",
           "items": {
             "type": "object",
             "required": ["stop_id"],

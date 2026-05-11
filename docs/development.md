@@ -313,7 +313,7 @@ verhindert Drift.
 
 | Feld | Pflicht | Beschreibung |
 | ---- | ------- | ------------ |
-| `name` | ✓ | Kanonischer Anzeige-Name (eindeutig, wird im Feed verwendet). |
+| `name` | ✓ | Operator-facing Anzeige-Name (wird im Feed verwendet). **Nicht unique**: zwischen mehreren Einträgen kann derselbe Name vorkommen, etwa bei multi-modalen Knoten, wo Bus- und Tram-Bahnsteige unter zwei DIVAs am selben Knoten geführt werden. Die strukturelle Eindeutigkeits-Garantie tragen `bst_id`/`bst_code`/`vor_id`/`wl_diva`; siehe PR #1452. |
 | `in_vienna` | ✓ | `true` wenn die Koordinaten innerhalb des LANDESGRENZEOGD-Polygons liegen. |
 | `pendler` | ✓ | `true` für Pendler-Knoten **außerhalb** Wiens (siehe `data/pendler_bst_ids.json`). **Exklusiv zu `in_vienna`**: jede Station ist entweder Wien-Station ODER Pendler, niemals beides. Ausnahmen sind manuell gepflegte Knoten außerhalb des Pendlergürtels: `type: manual_foreign_city` (z. B. München Hauptbahnhof, Roma Termini, Bratislava hl.st.) und `type: manual_distant_at` (z. B. Salzburg Hbf, Graz Hbf, Linz Hbf, Innsbruck Hbf) — bei beiden Sondertypen sind beide Flags `false`. Verstöße werden vom Validator als NamingIssue gemeldet und vom Updater automatisch korrigiert (in_vienna gewinnt). |
 | `aliases` | ✓ | Schreibvarianten und IDs zur Erkennung in Provider-Texten. |
@@ -333,8 +333,8 @@ damit kurze Stellencodes wie `Sue`/`Su` distinkt bleiben).
 
 | Quelle | Datei(en) | Lizenz | Pflicht-Attribution |
 |---|---|---|---|
-| **ÖBB-Verkehrsstationen** (`data.oebb.at`) | extrahiert aus dem Excel „Verzeichnis der Verkehrsstationen" + `data/gtfs/stops.txt` | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/) | „Datenquelle: ÖBB-Infrastruktur AG" |
-| **Wiener Linien OGD** | `data/wienerlinien-ogd-haltestellen.csv`, `data/wienerlinien-ogd-haltepunkte.csv` | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | „Datenquelle: Stadt Wien – data.wien.gv.at" |
+| **ÖBB-Verkehrsstationen** (`data.oebb.at`) | extrahiert aus dem Excel „Verzeichnis der Verkehrsstationen"; eine atomar-geschriebene Cache-Kopie liegt unter `data/oebb-verkehrsstationen.xlsx` (Soft-Fail-Snapshot seit PR #1450 — wird bei `data.oebb.at`-Outage automatisch verwendet). Zusätzlich `data/gtfs/stops.txt`. | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/) | „Datenquelle: ÖBB-Infrastruktur AG" |
+| **Wiener Linien OGD** | `data/wienerlinien-ogd-haltestellen.csv`, `data/wienerlinien-ogd-haltepunkte.csv` (Quelle: `www.wienerlinien.at/ogd_realtime/doku/ogd/`, seit PR #1442; der vorherige `data.wien.gv.at/csv/`-Proxy wurde in der 60. OGD-Phase im September 2025 retired) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | „Datenquelle: Wiener Linien" |
 | **VOR (Verkehrsverbund Ost-Region)** | `data/vor-haltestellen.csv`, `data/vor-haltestellen.mapping.json` | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | „Datenquelle: VOR Verkehrsverbund Ost-Region" |
 | **Wien-Stadtgrenzen-Polygon** | `data/LANDESGRENZEOGD.json` (Layer `ogdwien:LANDESGRENZEOGD` der MA 41 – Stadtvermessung, WFS-API von data.wien.gv.at, `srsName=EPSG:4326`, `outputFormat=json`) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | **„Datenquelle: Stadt Wien – data.wien.gv.at"** |
 | **Google Places** (optional) | Enrichment | [Maps Platform-AGB](https://cloud.google.com/maps-platform/terms/) | – |
@@ -345,7 +345,7 @@ damit kurze Stellencodes wie `Sue`/`Su` distinkt bleiben).
 | ------ | -------- |
 | `python -m src.cli stations update all --verbose` | Führt alle Teilaktualisierungen (ÖBB, WL, VOR) in einem Lauf aus. |
 | `python -m src.cli stations update directory --verbose` | Aktualisiert das ÖBB-Basisverzeichnis und setzt `in_vienna`/`pendler`. |
-| `python scripts/update_wl_stations.py [--no-download] -v` | Lädt die WL-OGD-CSVs von `data.wien.gv.at` und führt sie zusammen. `--no-download` nutzt die lokalen Dateien (Sandbox/Offline-Modus). |
+| `python scripts/update_wl_stations.py [--no-download] -v` | Lädt die WL-OGD-CSVs vom kanonischen Wiener-Linien-OGD-Endpoint `www.wienerlinien.at/ogd_realtime/doku/ogd/` und führt sie mit `data/stations.json` zusammen. `--no-download` nutzt die lokal gepinnten CSVs (Sandbox/Offline-Modus). Beim Download-Erfolg wird die jeweilige CSV atomar geschrieben; bei Netzwerk-Fehlern wird das gepinnte Snapshot beibehalten. |
 | `python -m src.cli stations update vor --verbose` | Importiert VOR-Daten aus CSV oder API und reichert Stationen an. |
 
 
@@ -463,7 +463,7 @@ benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
 | `update_all_stations.py` | Wrapper für den vollständigen Stationsverzeichnis-Refresh; ruft die folgenden Sub-Skripte gegen ein Temp-File auf und committet erst nach erfolgreicher Validierung. CLI: `python -m src.cli stations update all`. |
 | `update_station_directory.py` | Lädt das ÖBB-Excel und ergänzt OSM-/Google-Places-Koordinaten (OSM-First, siehe `docs/architecture.md` §5). |
 | `update_vor_stations.py` | Importiert VOR-Daten aus CSV oder API; live-Anreicherung via `location.name` ist auf `STAMMSTRECKE_VOR_IDS` begrenzt. |
-| `update_wl_stations.py` | Lädt `wienerlinien-ogd-haltestellen.csv` und `wienerlinien-ogd-haltepunkte.csv` von `data.wien.gv.at`. Mit `--no-download` werden die lokal gepinnten CSVs verwendet. |
+| `update_wl_stations.py` | Lädt `wienerlinien-ogd-haltestellen.csv` und `wienerlinien-ogd-haltepunkte.csv` vom kanonischen Endpoint `www.wienerlinien.at/ogd_realtime/doku/ogd/` und merged sie in `data/stations.json`. Soft-fail mit den gepinnten lokalen CSVs bei Upstream-Outage. Mit `--no-download` werden ausschließlich die lokal gepinnten CSVs verwendet. |
 | `enrich_station_aliases.py` | Sucht alternative Schreibweisen pro Station und schreibt sie ins Verzeichnis. |
 | `fetch_vor_haltestellen.py` | Holt die aktuelle Liste vom HAFAS-Endpoint `anachb.vor.at` und überschreibt `data/vor-haltestellen.csv`. |
 | `fetch_google_places_stations.py` | Optionaler Sekundär-Fallback für Stationen ohne OSM-Koordinaten; manueller Direktaufruf, nutzt das Quota-Stateful-Modul aus `src/places/`. Der OSM-first/Google-Fallback wird auch automatisch in `update-stations.yml` ausgeführt. |
