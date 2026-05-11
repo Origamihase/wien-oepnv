@@ -159,6 +159,115 @@ def test_unmatched_wl_entry_is_appended(stations_path: Path) -> None:
     assert entry["aliases"] == ["Neue Station"]
 
 
+def test_load_haltestellen_parses_legacy_proxy_schema(tmp_path: Path) -> None:
+    """The pre-2026-05 ``data.wien.gv.at`` proxy CSV used the
+    ``HALTESTELLEN_ID;TYP;DIVA;NAME;…WGS84_LAT;WGS84_LON`` column
+    layout. The fuzzy-key loader must keep parsing it so a future
+    operator can still feed a pinned legacy snapshot through the
+    pipeline without modification.
+    """
+    csv_path = tmp_path / "haltestellen-legacy.csv"
+    csv_path.write_text(
+        "﻿\"HALTESTELLEN_ID\";\"TYP\";\"DIVA\";\"NAME\";"
+        "\"GEMEINDE\";\"WGS84_LAT\";\"WGS84_LON\"\n"
+        "1085613576;\"stop\";60200120;\"Belvederegasse\";\"Wien\";"
+        "48.1901468;16.3719577\n",
+        encoding="utf-8",
+    )
+
+    haltestellen = update_wl_stations.load_haltestellen(csv_path)
+
+    assert len(haltestellen) == 1
+    halt = haltestellen["1085613576"]
+    assert halt.name == "Belvederegasse"
+    assert halt.diva == "60200120"
+
+
+def test_load_haltestellen_parses_realtime_ogd_schema(tmp_path: Path) -> None:
+    """The canonical ``wienerlinien.at/ogd_realtime/doku/ogd/`` CSV
+    (post PR #1442) collapses station_id and diva onto a single
+    ``DIVA`` column and renames ``NAME`` → ``PlatformText``. Without
+    this lookup path, the production cron run on 2026-05-11 logged
+    ``Found 0 haltestellen`` and emitted zero WL entries despite a
+    successful 126 KiB download.
+    """
+    csv_path = tmp_path / "haltestellen-realtime.csv"
+    csv_path.write_text(
+        "DIVA;PlatformText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "60200001;Schrankenberggasse;Wien;49000001;16.3898073;48.1738011\n",
+        encoding="utf-8",
+    )
+
+    haltestellen = update_wl_stations.load_haltestellen(csv_path)
+
+    assert len(haltestellen) == 1
+    halt = haltestellen["60200001"]
+    assert halt.name == "Schrankenberggasse"
+    assert halt.diva == "60200001"
+
+
+def test_load_haltepunkte_parses_realtime_ogd_schema(tmp_path: Path) -> None:
+    """The canonical OGD-Echtzeit haltepunkte CSV exposes
+    ``StopID;DIVA;StopText;…;Longitude;Latitude`` instead of the
+    legacy ``HALTESTELLEN_ID;…;STOP_ID;NAME;…;WGS84_*`` layout. The
+    fuzzy-key fallback wires ``StopText`` → ``name`` and ``DIVA`` →
+    ``station_id`` so build_wl_entries can join against
+    ``load_haltestellen`` on the new canonical key.
+    """
+    csv_path = tmp_path / "haltepunkte-realtime.csv"
+    csv_path.write_text(
+        "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "2;60201421;Venediger Au;Wien;49000001;16.3965357;48.2179090\n",
+        encoding="utf-8",
+    )
+
+    haltepunkte = update_wl_stations.load_haltepunkte(csv_path)
+
+    assert len(haltepunkte) == 1
+    halt = haltepunkte[0]
+    assert halt.station_id == "60201421"
+    assert halt.stop_id == "2"
+    assert halt.name == "Venediger Au"
+    assert halt.latitude == pytest.approx(48.2179090)
+    assert halt.longitude == pytest.approx(16.3965357)
+
+
+def test_build_wl_entries_joins_realtime_schema(tmp_path: Path) -> None:
+    """End-to-end smoke: hand the realtime schema to load_haltestellen
+    and load_haltepunkte, then call build_wl_entries with the resulting
+    dataclasses. The DIVA-on-DIVA join must produce a real entry —
+    pre-fix this returned 0 because the legacy
+    ``HALTESTELLEN_ID``-only lookup failed silently on the new schema.
+    """
+    haltestellen_path = tmp_path / "haltestellen.csv"
+    haltestellen_path.write_text(
+        "DIVA;PlatformText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "60201076;Karlsplatz;Wien;49000001;16.369450;48.198680\n",
+        encoding="utf-8",
+    )
+    haltepunkte_path = tmp_path / "haltepunkte.csv"
+    haltepunkte_path.write_text(
+        "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "1;60201076;Karlsplatz U (Richtung Reumannplatz);Wien;49000001;"
+        "16.369450;48.198680\n",
+        encoding="utf-8",
+    )
+
+    haltestellen = update_wl_stations.load_haltestellen(haltestellen_path)
+    haltepunkte = update_wl_stations.load_haltepunkte(haltepunkte_path)
+    entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
+
+    assert len(entries) == 1
+    entry = entries[0]
+    assert entry["wl_diva"] == "60201076"
+    assert entry["in_vienna"] is True
+    assert entry["pendler"] is False
+    from typing import cast
+    stops = cast(list[dict[str, object]], entry["wl_stops"])
+    assert len(stops) == 1
+    assert stops[0]["stop_id"] == "1"
+
+
 def test_build_wl_entries_auto_promotes_outside_station_to_pendler() -> None:
     """An unmatched WL station outside the Vienna polygon must reach the
     merge step with ``pendler=True`` so it does not trip

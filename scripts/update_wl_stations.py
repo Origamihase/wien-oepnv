@@ -288,8 +288,14 @@ def _dict_reader(path: Path) -> Iterator[NormalizedRow]:
 def load_haltestellen(path: Path) -> dict[str, Haltestelle]:
     mapping: dict[str, Haltestelle] = {}
     for row in _dict_reader(path):
-        station_id = row.get("HALTESTELLEN_ID", "ID")
-        name = row.get("NAME")
+        # The legacy data.wien.gv.at proxy CSV used HALTESTELLEN_ID /
+        # NAME; the canonical wienerlinien.at OGD-Echtzeit CSV that
+        # replaced it (post PR #1442) collapses station_id and diva
+        # onto a single DIVA column and renames NAME → PlatformText.
+        # Accept both via the fuzzy-key lookup so the loader survives
+        # either upstream shape.
+        station_id = row.get("HALTESTELLEN_ID", "ID", "DIVA")
+        name = row.get("NAME", "PlatformText")
         diva = row.get("DIVA", "DIVANR") or None
         if not station_id or not name:
             continue
@@ -304,11 +310,17 @@ def load_haltestellen(path: Path) -> dict[str, Haltestelle]:
 def load_haltepunkte(path: Path) -> list[Haltepunkt]:
     haltepunkt_records: list[Haltepunkt] = []
     for row in _dict_reader(path):
-        station_id = row.get("HALTESTELLEN_ID", "ID")
-        stop_id = row.get("STOP_ID", "STOPID", "RBL_NUMMER", "RBLNR")
-        name = row.get("NAME", "HALTEPUNKTNAME")
-        lat = _coerce_float(row.get("WGS84_LAT", "LAT", "GEO_LAT"))
-        lon = _coerce_float(row.get("WGS84_LON", "LON", "GEO_LON", "LONG"))
+        # Legacy proxy CSV joined on HALTESTELLEN_ID with a separate
+        # STOP_ID / RBL_NUMMER per platform. The canonical
+        # wienerlinien.at OGD-Echtzeit CSV exposes a StopID primary
+        # key, joins haltestellen via DIVA, names the platform via
+        # StopText, and uses Longitude / Latitude column headers.
+        # Accept both shapes via fuzzy-key fallback.
+        station_id = row.get("HALTESTELLEN_ID", "ID", "DIVA")
+        stop_id = row.get("STOP_ID", "STOPID", "RBL_NUMMER", "RBLNR", "StopID")
+        name = row.get("NAME", "HALTEPUNKTNAME", "StopText")
+        lat = _coerce_float(row.get("WGS84_LAT", "LAT", "GEO_LAT", "Latitude"))
+        lon = _coerce_float(row.get("WGS84_LON", "LON", "GEO_LON", "LONG", "Longitude"))
         if not station_id or not stop_id:
             continue
         haltepunkt_records.append(
