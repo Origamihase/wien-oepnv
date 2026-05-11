@@ -36,7 +36,7 @@ Dieses Projekt bündelt Störungs- und Baustellenmeldungen der Wiener Linien (WL
 
 Die S-Bahn-Stammstrecke ist das Rückgrat des Pendlerverkehrs. Wir erfassen und werten reale Verspätungen und Störungen kontinuierlich aus.
 
-Die vollständige Auswertung inkl. Heatmaps und Trend-Linien findest du hier:
+Mehr Statistiken findest du hier:
 [**📊 Zum detaillierten Dashboard**](docs/statistik.md)
 
 ### Verspätungen auf der S-Bahn Stammstrecke
