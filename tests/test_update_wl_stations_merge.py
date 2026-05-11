@@ -268,6 +268,115 @@ def test_build_wl_entries_joins_realtime_schema(tmp_path: Path) -> None:
     assert stops[0]["stop_id"] == "1"
 
 
+def test_build_wl_entries_skips_short_stop_ids_to_avoid_oebb_collision(
+    tmp_path: Path,
+) -> None:
+    """The canonical wienerlinien.at OGD-Echtzeit ``StopID`` column
+    collapsed from an 8-digit RBL-Nummer (legacy proxy) to a small
+    in-CSV row counter (1, 2, 3, …, 1660, …). Adding those tiny values
+    as aliases collides with ÖBB ``bst_id`` values like 1660 (Parndorf)
+    and trips ``_find_cross_station_id_conflicts`` → auto-quarantine.
+    The 2026-05-11 cron tick after PR #1444 confirmed 1442 such
+    collisions out of 1449 quarantined stations. The length filter
+    (``≥6``) keeps the legacy 8-digit RBL alias contract intact while
+    suppressing the new schema's row-counter values.
+    """
+    haltestellen_path = tmp_path / "haltestellen.csv"
+    haltestellen_path.write_text(
+        "DIVA;PlatformText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "60200788;Liesing;Wien;49000001;16.290;48.137\n",
+        encoding="utf-8",
+    )
+    haltepunkte_path = tmp_path / "haltepunkte.csv"
+    haltepunkte_path.write_text(
+        "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "1660;60200788;Liesing;Wien;49000001;16.290;48.137\n",
+        encoding="utf-8",
+    )
+
+    haltestellen = update_wl_stations.load_haltestellen(haltestellen_path)
+    haltepunkte = update_wl_stations.load_haltepunkte(haltepunkte_path)
+    entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
+
+    assert len(entries) == 1
+    aliases = entries[0]["aliases"]
+    assert "1660" not in aliases, (
+        "Short StopID counter values must not leak into aliases — they "
+        "would collide with ÖBB bst_id values."
+    )
+
+
+def test_build_wl_entries_keeps_legacy_rbl_alias(tmp_path: Path) -> None:
+    """The legacy ``data.wien.gv.at`` proxy CSV used STOP_ID == RBL-Nummer
+    (8-digit), which is a semantically valuable cross-system identifier.
+    The length-based filter (``≥6 chars``) must keep these long IDs in
+    the alias set so existing realtime-anchor lookups continue to work.
+    """
+    haltestellen_path = tmp_path / "haltestellen.csv"
+    haltestellen_path.write_text(
+        "\"HALTESTELLEN_ID\";\"NAME\";\"DIVA\"\n"
+        "\"1001\";\"Karlsplatz\";\"60201076\"\n",
+        encoding="utf-8",
+    )
+    haltepunkte_path = tmp_path / "haltepunkte.csv"
+    haltepunkte_path.write_text(
+        "\"HALTEPUNKT_ID\";\"HALTESTELLEN_ID\";\"STOP_ID\";\"NAME\";"
+        "\"WGS84_LAT\";\"WGS84_LON\"\n"
+        "\"1\";\"1001\";\"60201076\";\"Karlsplatz U\";\"48.198680\";\"16.369450\"\n",
+        encoding="utf-8",
+    )
+
+    haltestellen = update_wl_stations.load_haltestellen(haltestellen_path)
+    haltepunkte = update_wl_stations.load_haltepunkte(haltepunkte_path)
+    entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
+
+    assert len(entries) == 1
+    aliases = entries[0]["aliases"]
+    assert "60201076" in aliases, (
+        "Long stop_id values (legacy 8-digit RBL-Nummer) must remain "
+        "in the alias set — they are valuable cross-system identifiers."
+    )
+
+
+def test_build_wl_entries_replaces_unsafe_direction_marker(tmp_path: Path) -> None:
+    """WL ``StopText`` direction markers like 'Karlsplatz U > Reumannplatz'
+    contain '>', which is in the stations validator's
+    ``_UNSAFE_CHARS_RE`` (XSS / HTML metacharacter set). Without
+    sanitisation, ``_alias_variants`` propagates the '>' into every
+    alias permutation ('Bf Seestadt >', 'Seestadt > Bahnhof', …) and
+    each one trips ``_find_security_issues`` → auto-quarantine. The
+    fix replaces '>' with U+2192 (→), which is typographically correct
+    for "Richtung" and outside the unsafe-char regex.
+    """
+    haltestellen_path = tmp_path / "haltestellen.csv"
+    haltestellen_path.write_text(
+        "DIVA;PlatformText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "60201076;Karlsplatz;Wien;49000001;16.369450;48.198680\n",
+        encoding="utf-8",
+    )
+    haltepunkte_path = tmp_path / "haltepunkte.csv"
+    haltepunkte_path.write_text(
+        "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "60201076;60201076;Karlsplatz U > Reumannplatz;Wien;49000001;"
+        "16.369450;48.198680\n",
+        encoding="utf-8",
+    )
+
+    haltestellen = update_wl_stations.load_haltestellen(haltestellen_path)
+    haltepunkte = update_wl_stations.load_haltepunkte(haltepunkte_path)
+    entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
+
+    assert len(entries) == 1
+    entry = entries[0]
+    aliases = entry["aliases"]
+    assert not any(">" in str(a) for a in aliases), (
+        "No alias may contain '>' — it is in the validator's unsafe-char regex."
+    )
+    assert any("→" in str(a) for a in aliases), (
+        "The direction marker must be replaced with U+2192 (→), not stripped."
+    )
+
+
 def test_build_wl_entries_auto_promotes_outside_station_to_pendler() -> None:
     """An unmatched WL station outside the Vienna polygon must reach the
     merge step with ``pendler=True`` so it does not trip
