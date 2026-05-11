@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 17:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 17:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[24A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">16fcbbe3aabe5a1378dc06ea696db0d79196145330594b3b91659557e6d58a03</guid>
+      <pubDate>Mon, 11 May 2026 17:16:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 17:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 17:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[92A: Rettungseinsatz Betrieb bis Donaustadtbrücke]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d61b08eab1d6336e031e6fff05f3742e04ec50ddf3227e346d7cbefc36c7b8a6</guid>
+      <pubDate>Mon, 11 May 2026 17:16:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 17:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 17:18:25 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 92A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 92A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b</guid>
+      <pubDate>Mon, 11 May 2026 17:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 07:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 17:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[27A/28A/29A: Fronleichnamsumzug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -79,39 +112,6 @@
       <pubDate>Mon, 11 May 2026 07:25:40 +0200</pubDate>
       <ext:first_seen>Mon, 11 May 2026 07:30:39 +0200</ext:first_seen>
       <ext:starts_at>Mon, 11 May 2026 07:25:40 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 11.05.2026]</description>
-      <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2348e4c6c8c41f78b8d12eb667cf03af7acccea5299ceb0012bfbc50beea227</guid>
-      <pubDate>Mon, 11 May 2026 04:50:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 05:00:31 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 04:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 01:00:00 +0200</ext:ends_at>
-      <description>Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Frödenplatz. [11.05.2026 – 30.05.2026]</description>
-      <content:encoded><![CDATA[Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Frödenplatz.<br/>[11.05.2026 – 30.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Mon, 11 May 2026 04:45:07 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 05:00:31 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 04:45:07 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 00:35:00 +0200</ext:ends_at>
-      <description>[11.05.2026 – 12.05.2026]</description>
-      <content:encoded><![CDATA[[11.05.2026 – 12.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N65: Betrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0af8e48c5c63c0818b4662d59227417ee430c0b1befb39c7dcdd7a316ece5e82</guid>
-      <pubDate>Mon, 11 May 2026 00:50:09 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 01:00:33 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 00:50:09 +0200</ext:starts_at>
       <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 11.05.2026]</description>
       <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>

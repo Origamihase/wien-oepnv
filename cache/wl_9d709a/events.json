@@ -326,6 +326,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Verkehrsüberlastung",
+    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b",
+    "pubDate": "2026-05-11T17:15:00+02:00",
+    "starts_at": "2026-05-11T17:15:00+02:00",
+    "ends_at": "2026-05-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-05-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11: Betrieb ab Frödenplatz",
     "description": "Gleisbauarbeiten\nBetrieb ab Frödenplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,6 +358,18 @@
     "starts_at": "2026-05-11T04:50:00+02:00",
     "ends_at": "2026-05-30T01:00:00+02:00",
     "_identity": "wl|störung|L=11|D=2026-05-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "24A: Verkehrsüberlastung",
+    "description": "Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "16fcbbe3aabe5a1378dc06ea696db0d79196145330594b3b91659557e6d58a03",
+    "pubDate": "2026-05-11T17:16:00+02:00",
+    "starts_at": "2026-05-11T17:16:00+02:00",
+    "ends_at": "2026-05-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=24A|D=2026-05-11"
   },
   {
     "source": "Wiener Linien",
@@ -526,6 +550,18 @@
     "starts_at": "2025-11-10T06:00:00+01:00",
     "ends_at": "2026-06-01T00:56:00+02:00",
     "_identity": "wl|störung|L=80A|D=2025-11-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "92A: Rettungseinsatz Betrieb bis Donaustadtbrücke",
+    "description": "Linie 92A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d61b08eab1d6336e031e6fff05f3742e04ec50ddf3227e346d7cbefc36c7b8a6",
+    "pubDate": "2026-05-11T17:16:00+02:00",
+    "starts_at": "2026-05-11T17:18:25+02:00",
+    "ends_at": "2026-05-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=92A|D=2026-05-11"
   },
   {
     "source": "Wiener Linien",
