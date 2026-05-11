@@ -472,6 +472,18 @@ def _format_identifier(entry: Mapping[str, object]) -> str:
     bst_code = entry.get("bst_code")
     if isinstance(bst_code, str) and bst_code.strip():
         parts.append(f"code:{bst_code.strip()}")
+    # WL-only entries (no ÖBB bst_id / bst_code) need a distinct
+    # identifier — otherwise ``_partition_stations`` collapses every
+    # source="wl" entry to the same ``"source:wl"`` key, and the
+    # naming-issue auto-quarantine path matches and removes the entire
+    # WL set instead of just the entries with a real naming collision.
+    # Post-PR #1446 cron tick a23a2a7 confirmed this exact failure mode:
+    # 30 genuine "canonical name not unique" issues fanned out into 1759
+    # quarantined WL entries because all of them shared the identifier
+    # ``source:wl``.
+    wl_diva = entry.get("wl_diva")
+    if isinstance(wl_diva, str) and wl_diva.strip():
+        parts.append(f"wl_diva:{wl_diva.strip()}")
     source = entry.get("source")
     if isinstance(source, str) and source.strip():
         parts.append(f"source:{source.strip()}")
