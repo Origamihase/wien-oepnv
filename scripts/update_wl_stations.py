@@ -528,10 +528,19 @@ def build_wl_entries(
                     latitude = round(float(lat_val), 6)
                     longitude = round(float(lon_val), 6)
         aliases.update(_alias_variants(station.name, canonical, resolved_name or None))
+        # Mirror the legacy WL-auto-promote heuristic from
+        # ``update_station_directory._annotate_station_flags`` (a WL-sourced
+        # station outside Vienna becomes pendler=True; see the regression
+        # test ``test_wl_outside_station_becomes_pendler``). Without this,
+        # unmatched WL entries from ``build_wl_entries`` reach
+        # ``merge_into_stations`` with ``in_vienna=False, pendler=False``
+        # and trip ``_find_naming_issues`` → auto-quarantine. ÖBB-mirrored
+        # WL stations are unaffected because ``_merge_wl_payload`` does
+        # not overwrite the existing entry's flag pair.
         entry = {
             "name": canonical,
             "in_vienna": in_vienna,
-            "pendler": False,
+            "pendler": not in_vienna,
             "wl_diva": station_identifier,
             "wl_stops": sorted(
                 stops_payload,

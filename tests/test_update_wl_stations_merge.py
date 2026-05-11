@@ -159,6 +159,63 @@ def test_unmatched_wl_entry_is_appended(stations_path: Path) -> None:
     assert entry["aliases"] == ["Neue Station"]
 
 
+def test_build_wl_entries_auto_promotes_outside_station_to_pendler() -> None:
+    """An unmatched WL station outside the Vienna polygon must reach the
+    merge step with ``pendler=True`` so it does not trip
+    ``_find_naming_issues`` → auto-quarantine. Mirrors the legacy
+    ``test_wl_outside_station_becomes_pendler`` heuristic from
+    ``test_update_station_directory_flags`` for the
+    ``build_wl_entries`` boundary.
+    """
+    haltestellen = {
+        "9999": update_wl_stations.Haltestelle(
+            station_id="9999", name="Eisenstadt Domplatz", diva="60299999"
+        )
+    }
+    haltepunkte = [
+        update_wl_stations.Haltepunkt(
+            station_id="9999",
+            stop_id="60299999",
+            name="Eisenstadt Domplatz",
+            latitude=47.846,
+            longitude=16.522,
+        )
+    ]
+
+    entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
+
+    assert len(entries) == 1
+    entry = entries[0]
+    assert entry["in_vienna"] is False
+    assert entry["pendler"] is True
+
+
+def test_build_wl_entries_keeps_vienna_station_as_non_pendler() -> None:
+    """Inside-Vienna WL stations stay ``pendler=False`` — the auto-promote
+    only fires when the polygon check says ``in_vienna=False``."""
+    haltestellen = {
+        "1001": update_wl_stations.Haltestelle(
+            station_id="1001", name="Karlsplatz", diva="60201076"
+        )
+    }
+    haltepunkte = [
+        update_wl_stations.Haltepunkt(
+            station_id="1001",
+            stop_id="60201076",
+            name="Karlsplatz U (Richtung Reumannplatz)",
+            latitude=48.200888,
+            longitude=16.368907,
+        )
+    ]
+
+    entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
+
+    assert len(entries) == 1
+    entry = entries[0]
+    assert entry["in_vienna"] is True
+    assert entry["pendler"] is False
+
+
 def test_merge_sources_emits_alphabetical_order() -> None:
     """``_merge_sources`` must produce a deterministic alphabetical
     ordering so two callers with the same set of providers (in any
