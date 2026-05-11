@@ -190,10 +190,6 @@ def read_cache_oebb() -> list[Any]:
     return _post_filter_oebb(list(read_cache("oebb") or []))
 
 
-def read_cache_vor() -> list[Any]:
-    return list(read_cache("vor") or [])
-
-
 def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen") or [])
 
@@ -221,8 +217,12 @@ def read_cache_stammstrecke() -> list[Any]:
 DEFAULT_PROVIDERS: tuple[tuple[str, Any], ...] = (
     ("WL_ENABLE", read_cache_wl),
     ("OEBB_ENABLE", read_cache_oebb),
-    ("VOR_ENABLE", read_cache_vor),
     ("BAUSTELLEN_ENABLE", read_cache_baustellen),
+    # VOR is intentionally absent — VOR API access is scoped to the
+    # S-Bahn-Stammstrecke delay monitor only (operator policy
+    # 2026-05-11). Stammstrecke feed entries derive from the CSV
+    # ledger via :mod:`src.feed.stammstrecke`, not from a VOR
+    # disruption cache.
     ("STAMMSTRECKE_ENABLE", read_cache_stammstrecke),
 )
 

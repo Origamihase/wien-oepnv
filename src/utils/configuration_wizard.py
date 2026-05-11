@@ -217,14 +217,6 @@ CONFIG_OPTIONS: tuple[ConfigOption, ...] = (
         required=True,
     ),
     ConfigOption(
-        key="VOR_ENABLE",
-        label="VOR Provider aktivieren",
-        help="Steuert, ob der VOR-Cache in den Feed einfließt.",
-        kind="bool",
-        default=DEFAULT_PROVIDER_FLAGS["VOR_ENABLE"],
-        required=True,
-    ),
-    ConfigOption(
         key="BAUSTELLEN_ENABLE",
         label="Baustellen Provider aktivieren",
         help="Steuert, ob Baustellenmeldungen berücksichtigt werden.",

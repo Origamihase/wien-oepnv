@@ -116,11 +116,9 @@ def test_canonical_size_cap_constants_inventory_round3() -> None:
     ``Round 3`` coverage map auditable from a single test."""
     inventory: list[str] = [
         "scripts.enrich_station_aliases",
-        "scripts.fetch_vor_haltestellen",
         "scripts.update_all_stations",
         "scripts.update_baustellen_cache",
         "scripts.update_station_directory",
-        "scripts.update_vor_stations",
         "scripts.update_wl_stations",
         "scripts.validate_vor_mapping",
     ]
@@ -226,59 +224,6 @@ def test_enrich_main_rejects_oversized_stations(
 
     mock_load.assert_not_called()
     assert rc == 1
-
-
-# ============================================================================
-# Site 4: scripts/fetch_vor_haltestellen.py:load_stations
-# ============================================================================
-
-
-def test_fetch_vor_load_stations_rejects_oversized(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """Pre-fix: ``load_stations`` did NOT catch FileNotFoundError so
-    a missing file already crashed the script — the size-bomb axis
-    additionally surfaces ``MemoryError`` past the depth-bomb catch.
-    Post-fix: ``read_capped_json`` returns None and the loader yields
-    the empty list fallback."""
-    from scripts import fetch_vor_haltestellen as fvh
-
-    fake_stations = tmp_path / "stations.json"
-    _write_oversized(fake_stations, 4096)
-
-    monkeypatch.setattr(fvh, "MAX_JSON_FILE_BYTES", 1024)
-
-    with patch("src.utils.files.json.load") as mock_load:
-        result = fvh.load_stations(fake_stations)
-
-    mock_load.assert_not_called()
-    assert result == []
-
-
-# ============================================================================
-# Site 5: scripts/fetch_vor_haltestellen.py:load_pendler_candidate_names
-# ============================================================================
-
-
-def test_fetch_vor_load_pendler_rejects_oversized(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """Pre-fix shape mirror; planted-huge pendler-candidates file
-    propagated ``MemoryError`` past the depth-bomb catch."""
-    from scripts import fetch_vor_haltestellen as fvh
-
-    fake_pendler = tmp_path / "pendler_candidates.json"
-    _write_oversized(fake_pendler, 4096)
-
-    monkeypatch.setattr(fvh, "MAX_JSON_FILE_BYTES", 1024)
-
-    with patch("src.utils.files.json.load") as mock_load:
-        result = fvh.load_pendler_candidate_names(fake_pendler)
-
-    mock_load.assert_not_called()
-    assert result == []
 
 
 # ============================================================================
@@ -465,38 +410,6 @@ def test_usd_load_pendler_name_candidates_rejects_oversized(
 
 
 # ============================================================================
-# Site 13: scripts/update_vor_stations.py:merge_into_stations
-# ============================================================================
-
-
-def test_update_vor_merge_rejects_oversized(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """Pre-fix: planted-huge stations.json crashed the VOR merge with
-    ``MemoryError`` after the merge had partially started. Post-fix:
-    the merge starts fresh from an empty state, restoring the
-    canonical schema for the next run."""
-    from scripts import update_vor_stations as uvs
-
-    fake_stations = tmp_path / "stations.json"
-    _write_oversized(fake_stations, 4096)
-
-    monkeypatch.setattr(uvs, "MAX_JSON_FILE_BYTES", 1024)
-
-    # The merge writes back over the file; supply at least one VOR
-    # entry so the merge has something to write. We don't assert on
-    # the file content — only that the loader did not crash and
-    # ``json.load`` was never invoked on the oversized file.
-    vor_entries: list[dict[str, object]] = []
-
-    with patch("src.utils.files.json.load") as mock_load:
-        uvs.merge_into_stations(fake_stations, vor_entries)
-
-    mock_load.assert_not_called()
-
-
-# ============================================================================
 # Site 14: scripts/update_wl_stations.py:load_vor_mapping
 # ============================================================================
 
@@ -597,20 +510,6 @@ def test_enrich_load_vor_mapping_normal_unaffected(tmp_path: Path) -> None:
 
     result = eas._load_vor_mapping(mapping)
     assert result == {1: "Wien Hbf"}
-
-
-def test_fetch_vor_load_stations_normal_unaffected(tmp_path: Path) -> None:
-    from scripts import fetch_vor_haltestellen as fvh
-
-    stations = tmp_path / "stations.json"
-    stations.write_text(
-        json.dumps([{"name": "Wien Hbf", "bst_id": "8100002"}]),
-        encoding="utf-8",
-    )
-
-    result = fvh.load_stations(stations)
-    assert len(result) == 1
-    assert result[0].name == "Wien Hbf"
 
 
 def test_update_wl_load_vor_mapping_normal_unaffected(tmp_path: Path) -> None:

@@ -40,7 +40,6 @@ def test_cli_cache_update_defaults_to_all(monkeypatch: pytest.MonkeyPatch) -> No
     assert calls == [
         "update_wl_cache.py",
         "update_oebb_cache.py",
-        "update_vor_cache.py",
         "update_baustellen_cache.py",
     ]
 

@@ -51,7 +51,8 @@ DEFAULT_STATE_RETENTION_DAYS = 60
 DEFAULT_PROVIDER_FLAGS = {
     "WL_ENABLE": True,
     "OEBB_ENABLE": True,
-    "VOR_ENABLE": True,
     "BAUSTELLEN_ENABLE": True,
     "STAMMSTRECKE_ENABLE": True,
+    # VOR_ENABLE intentionally absent — VOR API access scoped to the
+    # Stammstrecke delay monitor only (operator policy 2026-05-11).
 }
