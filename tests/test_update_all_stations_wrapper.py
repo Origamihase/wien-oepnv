@@ -153,15 +153,24 @@ def test_wrapper_preserves_stations_json_on_atomic_write_failure(
     )
 
 
+@pytest.mark.timeout(180)
 def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
     """Bei Erfolg ist data/stations.json nach dem Lauf valide."""
     # Mock the OSM Overpass call by env-disabling it inside the
     # subprocess: the wrapper test exists to verify atomicity of the
     # update pipeline, NOT to exercise real network round-trips. The
     # surrounding pytest run carries a 60-second per-test timeout
-    # (``pyproject.toml [tool.pytest.ini_options].addopts``); a real
-    # Overpass round-trip from a GitHub-hosted runner regularly burns
-    # 10-30 seconds and tips the whole orchestrator over the budget.
+    # (``pyproject.toml [tool.pytest.ini_options].addopts``) — bumped
+    # to 180 s for this test specifically because the WL OGD merge
+    # path now produces ~1800 entries (post PR #1442 reactivation) and
+    # the resulting atomic_write + validate cycle can tip a slow CI
+    # runner over the global 60 s budget. Pre-#1442 the merge was a
+    # no-op (6-row stub haltepunkte.csv → 0 WL entries) so the global
+    # budget was sufficient; the bump is only to absorb the legitimate
+    # cost of the now-active merge, not to mask any real slowdown.
+    # A real Overpass round-trip from a GitHub-hosted runner regularly
+    # burns 10-30 seconds and tips the whole orchestrator over even
+    # the bumped budget — keep the env-disable.
     # ``WIEN_OEPNV_OSM_ENRICH=0`` is honoured by
     # ``scripts/update_station_directory.py`` and skips the OSM client
     # without touching production timeouts or retry counts.
