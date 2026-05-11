@@ -1,3 +1,163 @@
+## 2026-05-11 - Trojan-Source BiDi Drift Round 10 (Build-Feed State Cache + Stations Heartbeat): `_save_state` (`data/first_seen.json`) and `_build_heartbeat` Writer (`data/stations_last_run.json`) Were the Sibling-Writer Pair the Round-9 Closing-Checklist Named But Deferred
+
+**Vulnerability:** Round 9 (PR #1434) closed the auto-quarantine
+writer (`_write_quarantine_file` → `data/quarantine.json`) and the
+stations-diff markdown writer (`_render_diff_markdown` →
+`docs/stations_diff.md`). The closing checklist explicitly named two
+deferred siblings in the same `data/*.json` operator-facing sidecar
+family — both still using `ensure_ascii=False`:
+
+  1. `src/build_feed.py:_save_state` → `data/first_seen.json`. The
+     state dict KEYS carry feed-item identities computed by
+     `_identity_for_item`. The WL / non-OEBB fallback branches at
+     `src/build_feed.py:935` and `:944` interpolate
+     `item['title']` verbatim into the identity:
+     ```python
+     result = f"{base}|T={item['title']}|F={fuzzy_hash}"
+     ```
+     A planted upstream title carrying U+202E (RIGHT-TO-LEFT
+     OVERRIDE) — e.g. `Westbahnhof‮moc.live` displays as
+     `Westbahnhofevil.com` — reaches the state-cache identity
+     verbatim. `_save_state` then writes the dict via
+     `json.dump(merged_state, f, ensure_ascii=False, indent=2,
+     sort_keys=True)`. `ensure_ascii=False` emits U+202E as its raw
+     UTF-8 byte triplet `\xe2\x80\xae`, so the on-disk
+     `data/first_seen.json` carries the BiDi-reversal trigger.
+     **`data/first_seen.json` is committed to `main` by
+     `build-feed.yml`** (its `file_pattern` lists this exact path —
+     line 116 of `.github/workflows/build-feed.yml`). Operators
+     viewing the file via `cat` / `less` / `git diff` / the GitHub
+     web UI / IDE preview see the BiDi-reversed display of the
+     planted title key, hiding the attack from review.
+
+  2. `scripts/update_all_stations.py` inline heartbeat write (line
+     702-704 pre-fix). Used
+     `json.dump(heartbeat, handle, ensure_ascii=False, ...)`.
+     The current heartbeat payload schema only carries safe scalar
+     values (integers, ISO timestamps, hard-coded `_SCRIPT_ORDER`
+     names), but the `ensure_ascii=False` choice was structurally
+     identical to the quarantine writer fixed in Round 9 — schema
+     is dictionary-shaped, forward-compatible, and the Round-9
+     closing checklist explicitly named it as the next drift target.
+     Any future field carrying station- / provider- / environment-
+     derived content would leak the canonical CVE-2021-42574
+     Trojan-Source / zero-width / Unicode-line-terminator / 8-bit
+     C1 union verbatim to `cat` / `less` / the GitHub web UI / IDE
+     preview. **`data/stations_last_run.json` is committed to
+     `main` by the `update-cycle.yml` cron DAG** that runs
+     `update_all_stations.py`.
+
+**Threat model:**
+
+  1. Attacker compromises an upstream provider (WL / OEBB / VOR
+     cache poisoning, malicious station name flowing through the
+     feed builder, DNS hijack of an unpinned upstream, leaked CI
+     secret store).
+  2. Attacker plants a feed-item title carrying U+202E or any other
+     primitive in the canonical union (BiDi formatting controls
+     U+202A-U+202E / U+2066-U+2069, zero-width primitives
+     U+200B-U+200F, Unicode line/paragraph separators U+2028-U+2029,
+     BOM U+FEFF, 8-bit C1 controls including `\x9b` CSI / `\x9d`
+     OSC / `\x90` DCS).
+  3. `_identity_for_item` computes an identity that interpolates the
+     raw title verbatim (the `T={item['title']}` fallback branches).
+     The identity becomes a top-level KEY in the state dict.
+  4. `_save_state` writes the dict to `data/first_seen.json` with
+     `ensure_ascii=False`. The raw UTF-8 bytes for U+202E (and every
+     sibling primitive) survive into the on-disk file.
+  5. `build-feed.yml` commits `data/first_seen.json` to `main`. The
+     malicious key is now visible in the GitHub web UI / `git
+     log -p` / `git show` rendering of the commit.
+  6. Operator opens the file or commit for review — BiDi-reversed
+     display hides the attack from human-eye verification.
+
+The heartbeat sibling closes the same structural drift on the
+`data/stations_last_run.json` file even though no live exploit
+exists today (the schema currently has no station-controlled
+field). The fix-shape pair to mirror in future rounds: every
+operator-facing JSON sidecar writer that lands in a committed file
+MUST use `ensure_ascii=True` regardless of whether the current
+payload carries attacker-controlled content — the defence is
+forward-compatible against future schema-drift additions.
+
+**Reproduced:** `tests/test_sentinel_state_heartbeat_trojan_source.py`
+contains 47 PoC tests:
+
+  * 1 test demonstrates the state writer's raw-byte leak
+    (`\xe2\x80\xae` in raw on-disk bytes pre-fix).
+  * 21 parametrised tests pin the full canonical union for the
+    state writer (every primitive's UTF-8 byte sequence MUST be
+    absent from the file).
+  * 1 test demonstrates the heartbeat writer's escape behaviour
+    against U+202E injected into a synthetic field.
+  * 21 parametrised tests pin the same canonical union for the
+    heartbeat writer.
+  * 1 regression test ensures legitimate German titles
+    (`München`, `Floridsdorf Schönbrunn`, `Westbahnhof`) round-trip
+    through `json.loads` unchanged via the literal `\uXXXX` escape.
+  * 1 regression test verifies the heartbeat schema (no
+    station-controlled strings) parses byte-stable against the
+    pre-fix payload structure.
+  * 1 regression test pins the `M\\u00fcnchen` escape form for the
+    heartbeat writer.
+
+End-to-end verification: the pre-fix `data/first_seen.json` body
+included the raw 3-byte sequence `E2 80 AE` for U+202E; the post-fix
+file holds the inert ASCII escape `‮` (12 ASCII bytes).
+Operators viewing the file in any terminal / web UI / IDE preview
+see the inert escape sequence rather than the trigger of BiDi
+rendering.
+
+**Fix:**
+
+  * `src/build_feed.py:_save_state`: switch the `json.dump` call at
+    the atomic-write site from `ensure_ascii=False` to
+    `ensure_ascii=True`. Forensic intent preserved (`json.loads`
+    recovers the original bytes from the literal escape sequence).
+  * `scripts/update_all_stations.py`: extract the inline heartbeat
+    write into a `_write_heartbeat_file(path, heartbeat)` helper
+    that uses `ensure_ascii=True`. The helper centralises the atomic
+    write + parent-mkdir + trailing-newline shape so the canonical
+    fix-shape lives in exactly one place per writer family.
+
+**Learning:** the Round 9 closing checklist's "Named but deferred"
+list is the single most reliable input to the next drift round.
+Both fixes in this round were named explicitly by the previous
+round's checklist as the sibling writers the Round 9 PR did not
+close. The drift-walker invariant for the `data/*.json` sidecar
+family is now uniform:
+
+  * **Closed in this round:** `_save_state` (`data/first_seen.json`),
+    `_write_heartbeat_file` (`data/stations_last_run.json`).
+  * **Already closed:** `_write_quarantine_file`
+    (`data/quarantine.json`, Round 9), `_render_diff_markdown`
+    (`docs/stations_diff.md`, Round 9),
+    `ValidationReport.to_markdown()` (Round 3),
+    `render_feed_health_markdown` / GitHub-Issue body (Round 2),
+    `docs/statistik.md` stats dashboard (Round 1),
+    `data/stats/*.csv` CSV writer, RSS XML writers, sitemap writer,
+    `_escape_env_value` `.env` writer.
+  * **Named but deferred** (out of scope for this round, queued for
+    the next drift sweep):
+    * `data/places_quota.json` (`src/places/quota.py:save_atomic`)
+      writes integers + month/day keys — currently safe but uses
+      `ensure_ascii=False` so should be normalised to the canonical
+      fix shape for forward-compat.
+    * `data/vor_request_count.json` (`src/providers/vor.py:1562`)
+      writes `{date_iso, integer}` — same shape, same defensive
+      widening.
+    * `cache/<provider>/last_run.json`
+      (`src/utils/cache.py:write_status`) writes hard-coded status
+      tokens + integers — same shape.
+    * `cache/<provider>/events.json` (`src/utils/cache.py:write_cache`)
+      carries legitimate provider-fetched German titles +
+      descriptions; switching to `ensure_ascii=True` would massively
+      bloat the committed cache diff and is a meaningfully harder
+      trade-off than the sidecar/heartbeat family — defer to a
+      dedicated provider-cache sanitisation round that pairs the
+      change with a normalisation step at the cache-ingestion
+      boundary instead.
+
 ## 2026-05-10 - Trojan-Source BiDi Drift Round 9 (Auto-Quarantine Sidecar + Stations-Diff Markdown Writers): `scripts/update_all_stations.py` Was the Sibling-Writer Pair the `feat(orchestrator): auto-quarantine failing stations` PR (#1432) Introduced *After* the Existing Trojan-Source Closing-Checklist
 
 **Vulnerability:** the 2026-05-10 PR #1432 (`feat(orchestrator):

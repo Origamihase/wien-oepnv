@@ -873,7 +873,25 @@ def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = N
                 with atomic_write(
                     path, mode="w", encoding="utf-8", permissions=0o600
                 ) as f:
-                    json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
+                    # Security (Trojan-Source / BiDi-Mark Drift Round 10):
+                    # ``ensure_ascii=True`` escapes every non-ASCII code
+                    # point as a literal ``\uXXXX`` sequence. The state
+                    # dict's KEYS carry feed-item identities computed by
+                    # ``_identity_for_item`` — the WL/non-OEBB fallback
+                    # branches (this file: the ``T={item['title']}``
+                    # interpolations) embed the raw provider title
+                    # verbatim. A planted upstream title carrying
+                    # U+202E (RIGHT-TO-LEFT OVERRIDE) / zero-width /
+                    # Unicode line-separator / 8-bit C1 bytes would
+                    # otherwise reach ``data/first_seen.json`` — a file
+                    # committed to ``main`` by ``build-feed.yml`` — as
+                    # raw UTF-8, triggering BiDi reversal in any
+                    # ``cat`` / ``less`` / GitHub web UI / IDE viewer.
+                    # Mirrors the canonical fix shape pinned in PR #1434
+                    # for ``_write_quarantine_file``. Forensic intent is
+                    # preserved (``json.loads`` recovers the original
+                    # bytes from the literal escape sequence).
+                    json.dump(merged_state, f, ensure_ascii=True, indent=2, sort_keys=True)
     except (OSError, TimeoutError) as exc:
         # Security: ``file_lock(..., exclusive=True)`` re-raises on
         # acquisition failure (timeout under contention, fcntl ENOLCK,
