@@ -1136,30 +1136,25 @@ def _process_direction(
         return "no_delays"
 
     mean_minutes = float(statistics.mean(delays))
-    over_threshold = sum(1 for d in delays if d > DELAY_THRESHOLD_MINUTES)
     LOGGER.info(
-        "Stammstrecke: Richtung %s — Mittel: %.2f Minuten, %d/%d Legs > %d min "
-        "(Schwelle).",
+        "Stammstrecke: Richtung %s — Mittel: %.2f Minuten (Schwelle: %d).",
         direction.target_label,
         mean_minutes,
-        over_threshold,
-        len(delays),
         DELAY_THRESHOLD_MINUTES,
     )
     # Persist every successful sample, regardless of whether it exceeds
-    # the feed-trigger threshold. The dashboard's 30-day value comes from
-    # the *full* distribution, and the feed's 1-hour window threshold-
-    # gates against the same rows at feed-build time (see
+    # the feed-trigger threshold. The full yearly distribution feeds the
+    # docs/statistik.md dashboard, the rolling 30-day window feeds the
+    # README snapshot, and the feed's 1-hour window threshold-gates
+    # against the same rows at feed-build time (see
     # :mod:`src.feed.stammstrecke`). Single source of truth = this CSV
-    # ledger.  The arithmetic mean over the per-cycle leg sample is
-    # used (was median until 2026-05-11) and the per-leg over-threshold
-    # count is persisted alongside so the dashboard / README can tally
-    # every individual delayed leg instead of only sample-level reductions.
+    # ledger.  One row per cycle per direction — the threshold counter
+    # at aggregation time treats every such row as a single observation
+    # so the same cron cycle is never multiplied across the count.
     append_stammstrecke_row(
         timestamp=when,
         direction=direction.target_label,
         delay_minutes=mean_minutes,
-        over_threshold=over_threshold,
     )
     return "ok"
 

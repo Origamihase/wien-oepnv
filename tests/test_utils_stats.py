@@ -64,42 +64,29 @@ def test_append_stammstrecke_row_writes_header_on_first_call(tmp_path: Path) -> 
         timestamp=when,
         direction="Meidling",
         delay_minutes=5.5,
-        over_threshold=0,
         stats_dir=tmp_path,
     )
     assert ok is True
     path = tmp_path / "stammstrecke_2026.csv"
     header, rows = _read_csv(path)
     assert tuple(header) == stats_utils.STAMMSTRECKE_HEADER
-    assert rows == [
-        ["2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "5.50", "0"]
-    ]
+    assert rows == [["2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "5.50"]]
 
 
 def test_append_stammstrecke_row_appends_without_rewriting_header(tmp_path: Path) -> None:
     when = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
     stats_utils.append_stammstrecke_row(
-        timestamp=when,
-        direction="Meidling",
-        delay_minutes=5.5,
-        over_threshold=0,
-        stats_dir=tmp_path,
+        timestamp=when, direction="Meidling", delay_minutes=5.5, stats_dir=tmp_path
     )
     stats_utils.append_stammstrecke_row(
-        timestamp=when,
-        direction="Floridsdorf",
-        delay_minutes=12.0,
-        over_threshold=2,
-        stats_dir=tmp_path,
+        timestamp=when, direction="Floridsdorf", delay_minutes=12.0, stats_dir=tmp_path
     )
     path = tmp_path / "stammstrecke_2026.csv"
     header, rows = _read_csv(path)
     assert tuple(header) == stats_utils.STAMMSTRECKE_HEADER
     assert len(rows) == 2
     assert rows[0][3] == "Meidling"
-    assert rows[0][5] == "0"
     assert rows[1][3] == "Floridsdorf"
-    assert rows[1][5] == "2"
 
 
 def test_append_stammstrecke_row_rolls_over_at_year_boundary(tmp_path: Path) -> None:
@@ -107,18 +94,10 @@ def test_append_stammstrecke_row_rolls_over_at_year_boundary(tmp_path: Path) -> 
     a = datetime(2026, 12, 31, 23, 59, tzinfo=VIENNA_TZ)
     b = datetime(2027, 1, 1, 0, 5, tzinfo=VIENNA_TZ)
     stats_utils.append_stammstrecke_row(
-        timestamp=a,
-        direction="Meidling",
-        delay_minutes=1.0,
-        over_threshold=0,
-        stats_dir=tmp_path,
+        timestamp=a, direction="Meidling", delay_minutes=1.0, stats_dir=tmp_path
     )
     stats_utils.append_stammstrecke_row(
-        timestamp=b,
-        direction="Meidling",
-        delay_minutes=2.0,
-        over_threshold=0,
-        stats_dir=tmp_path,
+        timestamp=b, direction="Meidling", delay_minutes=2.0, stats_dir=tmp_path
     )
     assert (tmp_path / "stammstrecke_2026.csv").exists()
     assert (tmp_path / "stammstrecke_2027.csv").exists()
@@ -137,24 +116,9 @@ def test_append_stammstrecke_row_returns_false_on_io_error(
         timestamp=datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ),
         direction="Meidling",
         delay_minutes=5.0,
-        over_threshold=0,
         stats_dir=tmp_path / "nope",
     )
     assert ok is False
-
-
-def test_append_stammstrecke_row_clamps_negative_over_threshold(tmp_path: Path) -> None:
-    """A negative ``over_threshold`` is clamped to zero, never persisted as-is."""
-    when = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
-    stats_utils.append_stammstrecke_row(
-        timestamp=when,
-        direction="Meidling",
-        delay_minutes=0.0,
-        over_threshold=-3,
-        stats_dir=tmp_path,
-    )
-    _, rows = _read_csv(tmp_path / "stammstrecke_2026.csv")
-    assert rows[0][5] == "0"
 
 
 # ---- Disruption writer ----------------------------------------------------
@@ -485,7 +449,6 @@ def test_append_stammstrecke_row_neutralises_formula_direction(
         timestamp=when,
         direction=payload,
         delay_minutes=5.5,
-        over_threshold=0,
         stats_dir=tmp_path,
     )
     _, rows = _read_csv(tmp_path / "stammstrecke_2026.csv")
@@ -561,11 +524,9 @@ def test_append_stammstrecke_row_does_not_modify_safe_text(tmp_path: Path) -> No
         timestamp=when,
         direction="Meidling",
         delay_minutes=5.5,
-        over_threshold=1,
         stats_dir=tmp_path,
     )
     _, rows = _read_csv(tmp_path / "stammstrecke_2026.csv")
     assert rows[0][3] == "Meidling"
     # Numeric formatting unchanged.
     assert rows[0][4] == "5.50"
-    assert rows[0][5] == "1"

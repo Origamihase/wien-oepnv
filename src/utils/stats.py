@@ -58,7 +58,6 @@ STAMMSTRECKE_HEADER: Final = (
     "hour",
     "direction",
     "delay_minutes",
-    "over_threshold",
 )
 STOERUNGEN_HEADER: Final = (
     "timestamp",
@@ -355,7 +354,6 @@ def append_stammstrecke_row(
     timestamp: datetime,
     direction: str,
     delay_minutes: float,
-    over_threshold: int,
     stats_dir: Path | None = None,
 ) -> bool:
     """Append a single observation to ``stammstrecke_YYYY.csv``.
@@ -365,27 +363,22 @@ def append_stammstrecke_row(
     departure delays observed across the sampled S-Bahn legs for
     that direction (legs without realtime signal are excluded
     upstream so the mean reflects only verified observations).
-    *over_threshold* is the count of individual S-Bahn legs in this
-    sample whose departure delay was strictly greater than the
-    project-wide threshold (currently 9 min, see
-    :data:`scripts.update_stammstrecke_status.DELAY_THRESHOLD_MINUTES`)
-    — persisting the per-sample leg-count lets the dashboard /
-    README counters tally every individual delayed leg instead of
-    only counting samples whose mean crossed the threshold.
+    Each row represents one cron-cycle sample for one direction —
+    threshold counters at aggregation time treat every such row as a
+    single observation, never multiplying it by the number of legs
+    within the sample.
 
     The function is best-effort: filesystem errors are logged and
     swallowed so the upstream cron pipeline always exits cleanly.
     """
     when = to_vienna(timestamp)
     path = stats_path("stammstrecke", when.year, base_dir=stats_dir)
-    over = max(0, int(over_threshold))
     row = (
         when.isoformat(timespec="seconds"),
         WEEKDAY_LABELS[when.weekday()],
         f"{when.hour:02d}",
         _sanitize_csv_text_field(direction),
         _format_delay(delay_minutes),
-        str(over),
     )
     return _append_row(path, STAMMSTRECKE_HEADER, row)
 
@@ -620,24 +613,19 @@ class StammstreckeObservation:
     timestamp: datetime
     direction: str
     delay_minutes: float
-    over_threshold: int
 
 
 def _parse_stammstrecke_row(row: dict[str, str]) -> StammstreckeObservation | None:
     """Best-effort parser for a CSV row dict — returns ``None`` on shape errors.
 
     The same row schema the writer guarantees (``timestamp,weekday,hour,
-    direction,delay_minutes,over_threshold``); we re-validate the fields
-    the feed-side reader consumes (timestamp + direction + delay_minutes)
-    plus the leg-count column. A row that lacks ``over_threshold`` (the
-    schema was extended 2026-05-11) is rejected — the old format is no
-    longer accepted, by design, after the existing ledger was cleared.
+    direction,delay_minutes``); we only re-validate the fields the
+    reader actually consumes (timestamp + direction + delay_minutes).
     """
     raw_ts = (row.get("timestamp") or "").strip()
     raw_dir = (row.get("direction") or "").strip()
     raw_delay = (row.get("delay_minutes") or "").strip()
-    raw_over = (row.get("over_threshold") or "").strip()
-    if not raw_ts or not raw_dir or not raw_delay or not raw_over:
+    if not raw_ts or not raw_dir or not raw_delay:
         return None
     try:
         ts = datetime.fromisoformat(raw_ts)
@@ -652,17 +640,8 @@ def _parse_stammstrecke_row(row: dict[str, str]) -> StammstreckeObservation | No
         delay = float(raw_delay)
     except ValueError:
         return None
-    try:
-        over = int(raw_over)
-    except ValueError:
-        return None
-    if over < 0:
-        return None
     return StammstreckeObservation(
-        timestamp=ts,
-        direction=raw_dir,
-        delay_minutes=delay,
-        over_threshold=over,
+        timestamp=ts, direction=raw_dir, delay_minutes=delay
     )
 
 

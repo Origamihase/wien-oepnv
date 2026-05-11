@@ -140,11 +140,10 @@ BAR_GLYPHS: Final = {
 class StammstreckeRow:
     """One Stammstrecke per-sample mean-delay observation.
 
-    ``over_threshold`` is the count of individual S-Bahn legs in this
-    sample whose departure delay was strictly greater than the
-    project-wide threshold (currently 9 min); it is summed by the
-    aggregator so the dashboard / README "Kritische Verspätungen"
-    counter tallies every individual delayed leg.
+    Each row represents one cron-cycle sample for one direction —
+    threshold counters at aggregation time treat the row as a single
+    observation so the same physical cycle is never multiplied across
+    the count.
     """
 
     timestamp: datetime
@@ -152,7 +151,6 @@ class StammstreckeRow:
     hour: int
     direction: str
     delay_minutes: float
-    over_threshold: int
 
 
 @dataclass(frozen=True)
@@ -248,12 +246,6 @@ def _parse_stammstrecke_rows(
             delay = float(row["delay_minutes"])
         except (KeyError, ValueError, TypeError):
             continue
-        try:
-            over_threshold = int(row["over_threshold"])
-        except (KeyError, ValueError, TypeError):
-            continue
-        if over_threshold < 0:
-            continue
         weekday = row.get("weekday") or WEEKDAY_LABELS[ts.weekday()]
         try:
             hour = int(row.get("hour") or ts.hour)
@@ -267,7 +259,6 @@ def _parse_stammstrecke_rows(
                 hour=max(0, min(23, hour)),
                 direction=direction,
                 delay_minutes=delay,
-                over_threshold=over_threshold,
             )
         )
     return parsed
@@ -313,11 +304,10 @@ def aggregate_stammstrecke(
     """Roll *rows* up into the dimensions the dashboard needs.
 
     *threshold_minutes* mirrors :data:`scripts.update_stammstrecke_status.
-    DELAY_THRESHOLD_MINUTES` and is rendered verbatim in the dashboard
-    label. ``threshold_exceedances`` is the sum of every per-sample
-    ``over_threshold`` count — i.e. the total number of individual
-    S-Bahn legs whose departure delay was strictly greater than the
-    threshold across all rows.
+    DELAY_THRESHOLD_MINUTES`. ``threshold_exceedances`` counts each
+    *row* whose persisted per-sample mean delay strictly exceeds the
+    threshold — never more than once per cron cycle, so the same
+    physical cycle is not multiplied into the count.
     """
     weekday_count: dict[str, int] = defaultdict(int)
     weekday_sum: dict[str, float] = defaultdict(float)
@@ -332,7 +322,8 @@ def aggregate_stammstrecke(
         hour_count[row.hour] += 1
         hour_sum[row.hour] += row.delay_minutes
         direction_count[row.direction] += 1
-        exceedances += row.over_threshold
+        if row.delay_minutes > threshold_minutes:
+            exceedances += 1
 
     weekday_avg = {
         wd: weekday_sum[wd] / weekday_count[wd]
@@ -508,25 +499,28 @@ def _format_summary_section(
     generated_at: datetime,
     stammstrecke: StammstreckeAggregate,
     stoerungen: StoerungAggregate,
-    readme_window_days: int,
-    readme_window_avg_delay: float | None,
 ) -> list[str]:
     """Render the top-of-report key metrics block.
 
-    ``readme_window_avg_delay`` is the arithmetic mean over the same
-    rolling window the README snapshot uses (``readme_window_days``
-    days back from "now"). Passing it in here keeps the dashboard's
-    "⌀ Verspätung" cell numerically identical to the README's
-    "Durchschnittliche Verspätung" cell — the alternative (computing
-    a year-wide average here) silently drifted from the README every
-    time the daily distribution wasn't uniform across the year, which
-    was confusing for readers cross-referencing the two views.
-    ``None`` (no window data) renders as ``"_keine Daten_"``.
+    Every cell in this block is scoped to the calendar *year*. The
+    rolling 30-day window only feeds the README snapshot — keeping
+    the two views distinct (year vs. 30 days) avoids the same data
+    point being summed into both numbers at once.
     """
-    if readme_window_avg_delay is None:
-        avg_cell = "_keine Daten_"
+    if stammstrecke.total_observations:
+        # Observation-weighted (micro) mean over all rows of *year*.
+        # Multiplying each per-weekday mean by its observation count
+        # recovers the original delay sum exactly without re-iterating
+        # the raw rows, which keeps the rendering side-effect-free on
+        # the aggregate input.
+        total = sum(
+            stammstrecke.by_weekday_avg[wd] * stammstrecke.by_weekday_count[wd]
+            for wd in stammstrecke.by_weekday_count
+        )
+        avg_cell = f"{total / stammstrecke.total_observations:.1f} min"
     else:
-        avg_cell = f"{readme_window_avg_delay:.1f} min"
+        avg_cell = "_keine Daten_"
+
     return [
         f"# Wien ÖPNV — Statistik {year}",
         "",
@@ -537,9 +531,9 @@ def _format_summary_section(
         "| Kennzahl | Wert |",
         "| --- | ---: |",
         f"| Stammstrecke-Beobachtungen ({year}) | {stammstrecke.total_observations} |",
-        f"| Verspätungen > {stammstrecke.threshold_minutes:g} min ({year}, Einzel-Legs) | "
+        f"| Verspätungen > {stammstrecke.threshold_minutes:g} min ({year}) | "
         f"{stammstrecke.threshold_exceedances} |",
-        f"| ⌀ Verspätung (letzte {readme_window_days} Tage) | {avg_cell} |",
+        f"| ⌀ Verspätung ({year}) | {avg_cell} |",
         f"| Erfasste Störungen ({year}) | {stoerungen.total_disruptions} |",
         "",
     ]
@@ -603,18 +597,8 @@ def render_markdown(
     generated_at: datetime,
     stammstrecke: StammstreckeAggregate,
     stoerungen: StoerungAggregate,
-    readme_window_days: int = DEFAULT_README_WINDOW_DAYS,
-    readme_window_avg_delay: float | None = None,
 ) -> str:
-    """Compose the full Markdown dashboard string from the aggregates.
-
-    ``readme_window_avg_delay`` is the arithmetic mean across the last
-    ``readme_window_days`` of Stammstrecke observations; passing it
-    through keeps the "⌀ Verspätung" cell numerically identical to the
-    README snapshot's "Durchschnittliche Verspätung". ``None`` is a
-    legitimate value for a brand-new repo / a window with no rows and
-    renders as ``"_keine Daten_"``.
-    """
+    """Compose the full Markdown dashboard string from the aggregates."""
     sections: list[str] = []
     sections.extend(
         _format_summary_section(
@@ -622,8 +606,6 @@ def render_markdown(
             generated_at=generated_at,
             stammstrecke=stammstrecke,
             stoerungen=stoerungen,
-            readme_window_days=readme_window_days,
-            readme_window_avg_delay=readme_window_avg_delay,
         )
     )
 
@@ -738,10 +720,10 @@ def render_readme_stammstrecke_block(
     the feed-event trigger uses the median over the same observations
     (defensive against single sample-level outliers) but the README
     cell shows the average, which is more intuitive for non-technical
-    readers. The "Kritische Verspätungen" counter sums the persisted
-    ``over_threshold`` column (count of individual S-Bahn legs whose
-    delay exceeded the threshold) so every delayed leg is counted,
-    not just samples whose mean crossed the threshold.
+    readers. The "Kritische Verspätungen" counter counts each *row*
+    whose persisted per-sample mean delay exceeds the threshold — at
+    most once per cron cycle, so the same physical cycle is never
+    multiplied into the count.
     """
     threshold_label = (
         f"{threshold_minutes:.0f}"
@@ -766,7 +748,7 @@ def render_readme_stammstrecke_block(
         )
     delays = [r.delay_minutes for r in rows]
     avg_delay = statistics.mean(delays)
-    exceedances = sum(r.over_threshold for r in rows)
+    exceedances = sum(1 for d in delays if d > threshold_minutes)
     return (
         header
         + f"| Beobachtungen (gesamt) | {_format_thousands(len(rows))} |\n"
@@ -1019,32 +1001,6 @@ def main(argv: list[str] | None = None) -> int:
         sanitize_log_arg(str(args.stats_dir)),
     )
 
-    # Load the cross-year Stammstrecke window once, up front. Both the
-    # dashboard summary (``⌀ Verspätung (letzte N Tage)``) and the
-    # README snapshot block consume the same window, so the cross-year
-    # join lives in one place — the alternative (recomputing per
-    # consumer) drifted between dashboard and README every time the
-    # window-load logic was touched. ``collect_year_data`` returns
-    # empty lists for missing files, so eagerly loading both years is
-    # safe even mid-year.
-    cutoff = now - timedelta(days=args.readme_window_days)
-    extra_years = sorted({cutoff.year, now.year} - {args.year})
-    window_sm: list[StammstreckeRow] = list(sm_rows)
-    for extra_year in extra_years:
-        extra_sm, _ = collect_year_data(
-            extra_year, stats_dir=args.stats_dir
-        )
-        window_sm.extend(extra_sm)
-    sm_window = _filter_rows_by_window(
-        window_sm, days=args.readme_window_days, now=now
-    )
-    if sm_window:
-        readme_window_avg_delay: float | None = statistics.mean(
-            r.delay_minutes for r in sm_window
-        )
-    else:
-        readme_window_avg_delay = None
-
     if args.skip_dashboard:
         # ``update-cycle.yml`` passes this flag on every 30-min tick
         # except the one that lands inside the 00:00 Europe/Vienna hour.
@@ -1065,8 +1021,6 @@ def main(argv: list[str] | None = None) -> int:
             generated_at=now,
             stammstrecke=sm_agg,
             stoerungen=st_agg,
-            readme_window_days=args.readme_window_days,
-            readme_window_avg_delay=readme_window_avg_delay,
         )
 
         try:
@@ -1087,6 +1041,23 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.skip_readme:
         return 0
+
+    # Load the cross-year Stammstrecke window for the README snapshot.
+    # The nightly workflow runs at 00:15 Europe/Vienna, so a 30-day
+    # cutoff in early January legitimately spans the previous calendar
+    # year. ``collect_year_data`` returns empty lists for missing files,
+    # so eagerly loading both years is safe even mid-year.
+    cutoff = now - timedelta(days=args.readme_window_days)
+    extra_years = sorted({cutoff.year, now.year} - {args.year})
+    window_sm: list[StammstreckeRow] = list(sm_rows)
+    for extra_year in extra_years:
+        extra_sm, _ = collect_year_data(
+            extra_year, stats_dir=args.stats_dir
+        )
+        window_sm.extend(extra_sm)
+    sm_window = _filter_rows_by_window(
+        window_sm, days=args.readme_window_days, now=now
+    )
     # Defense-in-depth: only patch the Stammstrecke marker when the
     # window actually carries rows. Without this gate, an unrelated
     # caller of ``main()`` that supplies a stats directory but forgets

@@ -48,7 +48,6 @@ def _make_stam(
     *,
     timestamp: datetime,
     direction: str = "Wien Hbf -> Floridsdorf",
-    over_threshold: int = 0,
 ) -> script.StammstreckeRow:
     return script.StammstreckeRow(
         timestamp=timestamp,
@@ -56,7 +55,6 @@ def _make_stam(
         hour=timestamp.hour,
         direction=direction,
         delay_minutes=delay_minutes,
-        over_threshold=over_threshold,
     )
 
 
@@ -111,15 +109,11 @@ def test_filter_rows_by_window_zero_or_negative_returns_empty() -> None:
 # ---- Stammstrecke render --------------------------------------------------
 
 
-def test_render_stammstrecke_block_with_data_uses_mean_and_per_leg_count() -> None:
+def test_render_stammstrecke_block_with_data_uses_mean_and_count() -> None:
     rows = [
-        # sample mean 10 (one leg over threshold)
-        _make_stam(10.0, timestamp=NOW, over_threshold=1),
-        # sample mean 5 (one leg over threshold despite the sample mean
-        # being below — this is the per-leg counting the user asked for)
-        _make_stam(5.0, timestamp=NOW, over_threshold=1),
-        # sample mean 12 (three legs over threshold)
-        _make_stam(12.0, timestamp=NOW, over_threshold=3),
+        _make_stam(10.0, timestamp=NOW),
+        _make_stam(5.0, timestamp=NOW),
+        _make_stam(12.0, timestamp=NOW),
     ]
     block = script.render_readme_stammstrecke_block(
         rows, now=NOW, window_days=30
@@ -128,11 +122,10 @@ def test_render_stammstrecke_block_with_data_uses_mean_and_per_leg_count() -> No
     # mean of [10, 5, 12] is 27/3 = 9.0 — README displays the
     # arithmetic mean across the window.
     assert "| Durchschnittliche Verspätung | 9.0 min |" in block
-    # Sum of per-sample ``over_threshold`` = 1 + 1 + 3 = 5 individual
-    # legs over 9 min. The middle sample contributes because its
-    # ``over_threshold`` counts an outlier leg even though the sample's
-    # mean was 5 min — this was the gap before the schema extension.
-    assert "| Kritische Verspätungen (> 9 min) | 5 |" in block
+    # Count of rows whose per-sample mean is > 9 min: [10, 12] = 2.
+    # Each row counts at most once — the same physical cron cycle is
+    # never multiplied into the threshold counter.
+    assert "| Kritische Verspätungen (> 9 min) | 2 |" in block
     assert "| Letzte Aktualisierung | 2026-05-09 12:00" in block
     # Closing newline so the END marker stays on its own line
     assert block.endswith("\n")
@@ -299,19 +292,10 @@ def _seed_csvs(stats_dir: Path, *, year: int = 2026) -> None:
     """
     stats_dir.mkdir(parents=True, exist_ok=True)
     (stats_dir / f"stammstrecke_{year}.csv").write_text(
-        ",".join(
-            (
-                "timestamp",
-                "weekday",
-                "hour",
-                "direction",
-                "delay_minutes",
-                "over_threshold",
-            )
-        )
+        ",".join(("timestamp", "weekday", "hour", "direction", "delay_minutes"))
         + "\n"
-        + "2026-05-09T08:00:00+02:00,Sa,8,Wien Hbf->Floridsdorf,12.0,2\n"
-        + "2026-05-09T08:30:00+02:00,Sa,8,Wien Hbf->Floridsdorf,5.0,0\n",
+        + "2026-05-09T08:00:00+02:00,Sa,8,Wien Hbf->Floridsdorf,12.0\n"
+        + "2026-05-09T08:30:00+02:00,Sa,8,Wien Hbf->Floridsdorf,5.0\n",
         encoding="utf-8",
     )
     (stats_dir / f"stoerungen_{year}.csv").write_text(
@@ -349,11 +333,10 @@ def test_main_writes_readme_with_30_day_window(tmp_path: Path) -> None:
     )
     assert rc == 0
     new_text = readme.read_text(encoding="utf-8")
-    # Stammstrecke: 2 observations, mean 8.5, 2 individual legs > 9 min
-    # (sum of per-row ``over_threshold`` from the seeded CSV: 2 + 0).
+    # Stammstrecke: 2 observations, mean 8.5, 1 row > 9 min (12.0).
     assert "| Beobachtungen (gesamt) | 2 |" in new_text
     assert "| Durchschnittliche Verspätung | 8.5 min |" in new_text
-    assert "| Kritische Verspätungen (> 9 min) | 2 |" in new_text
+    assert "| Kritische Verspätungen (> 9 min) | 1 |" in new_text
 
 
 def test_main_skips_readme_when_window_is_empty(
@@ -658,13 +641,13 @@ def test_main_loads_previous_year_when_cutoff_crosses_january(
     stats_dir = tmp_path / "stats"
     stats_dir.mkdir(parents=True, exist_ok=True)
     (stats_dir / "stammstrecke_2025.csv").write_text(
-        "timestamp,weekday,hour,direction,delay_minutes,over_threshold\n"
-        "2025-12-20T08:00:00+01:00,Sa,8,Wien Hbf->Floridsdorf,7.0,0\n",
+        "timestamp,weekday,hour,direction,delay_minutes\n"
+        "2025-12-20T08:00:00+01:00,Sa,8,Wien Hbf->Floridsdorf,7.0\n",
         encoding="utf-8",
     )
     (stats_dir / "stammstrecke_2026.csv").write_text(
-        "timestamp,weekday,hour,direction,delay_minutes,over_threshold\n"
-        "2026-01-02T08:00:00+01:00,Fr,8,Wien Hbf->Floridsdorf,3.0,0\n",
+        "timestamp,weekday,hour,direction,delay_minutes\n"
+        "2026-01-02T08:00:00+01:00,Fr,8,Wien Hbf->Floridsdorf,3.0\n",
         encoding="utf-8",
     )
     readme = tmp_path / "README.md"
