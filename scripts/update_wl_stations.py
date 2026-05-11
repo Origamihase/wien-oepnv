@@ -438,8 +438,6 @@ def _derive_station_label(platform_text: str, stops: Iterable[Haltepunkt]) -> st
 
     cleaned: set[str] = set()
     for stop in stops:
-        if not isinstance(stop.name, str):
-            continue
         normalized = _STOPTEXT_QUALIFIER_RE.sub("", stop.name).strip()
         if normalized:
             cleaned.add(normalized)

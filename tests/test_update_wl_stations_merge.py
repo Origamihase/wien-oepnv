@@ -583,10 +583,8 @@ def test_derive_station_label_overrides_generic_platform_text() -> None:
     when one is available. Non-generic PlatformText values are kept
     untouched so ÖBB / VOR name-based joins remain stable.
     """
-    Haltepunkt = update_wl_stations.Haltepunkt
-
-    def hp(name: str, stop_id: str = "1") -> object:
-        return Haltepunkt(
+    def hp(name: str, stop_id: str = "1") -> update_wl_stations.Haltepunkt:
+        return update_wl_stations.Haltepunkt(
             station_id="60200000",
             stop_id=stop_id,
             name=name,
