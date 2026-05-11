@@ -468,6 +468,78 @@ def test_merge_wl_payload_strips_stale_wl_diva_aliases() -> None:
     assert target["wl_diva"] == "60200657", "wl_diva must be updated to current."
 
 
+def test_build_wl_entries_merges_colocated_haltestellen(tmp_path: Path) -> None:
+    """Two haltestellen with the same canonical name AND haltepunkte
+    within 150 m of each other (same physical stop, two DIVAs for
+    opposing-direction bahnsteige) must fold into a single entry.
+    """
+    haltestellen_path = tmp_path / "haltestellen.csv"
+    haltestellen_path.write_text(
+        "DIVA;PlatformText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "60201433;Vorgartenstraße;Wien;49000001;16.4019;48.2241\n"
+        "60200752;Vorgartenstraße;Wien;49000001;16.4025;48.2236\n",
+        encoding="utf-8",
+    )
+    haltepunkte_path = tmp_path / "haltepunkte.csv"
+    haltepunkte_path.write_text(
+        "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "1;60201433;Vorgartenstraße A;Wien;49000001;16.4019;48.2241\n"
+        "2;60201433;Vorgartenstraße B;Wien;49000001;16.4018;48.2240\n"
+        "3;60200752;Vorgartenstraße C;Wien;49000001;16.4025;48.2236\n"
+        "4;60200752;Vorgartenstraße D;Wien;49000001;16.4023;48.2235\n",
+        encoding="utf-8",
+    )
+
+    haltestellen = update_wl_stations.load_haltestellen(haltestellen_path)
+    haltepunkte = update_wl_stations.load_haltepunkte(haltepunkte_path)
+    entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
+
+    assert len(entries) == 1, "Two haltestellen <150m apart must merge"
+    merged = entries[0]
+    # Lexicographically-lowest wl_diva wins
+    assert merged["wl_diva"] == "60200752"
+    # All four stops folded in
+    wl_stops = cast(list[dict[str, object]], merged["wl_stops"])
+    assert {s["stop_id"] for s in wl_stops} == {"1", "2", "3", "4"}
+    # Name stays unsuffixed (merge made it unique, disambiguation no-op)
+    assert "(WL 6" not in str(merged["name"])
+
+
+def test_build_wl_entries_keeps_disambiguated_far_apart_haltestellen(
+    tmp_path: Path,
+) -> None:
+    """Two haltestellen with the same canonical name but haltepunkte
+    >150 m apart stay as two entries (multi-modal at venue or
+    generic-name coincidence). The DIVA-suffix disambiguation kicks
+    in instead.
+    """
+    haltestellen_path = tmp_path / "haltestellen.csv"
+    haltestellen_path.write_text(
+        "DIVA;PlatformText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "60205022;Bahnhof;Wien;49000001;16.2697;48.0078\n"
+        "60205201;Bahnhof;Wien;49000001;16.3141;48.0870\n",
+        encoding="utf-8",
+    )
+    haltepunkte_path = tmp_path / "haltepunkte.csv"
+    haltepunkte_path.write_text(
+        "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "1;60205022;Bahnhof Süd;Wien;49000001;16.2697;48.0078\n"
+        "2;60205201;Bahnhof Nord;Wien;49000001;16.3141;48.0870\n",
+        encoding="utf-8",
+    )
+
+    haltestellen = update_wl_stations.load_haltestellen(haltestellen_path)
+    haltepunkte = update_wl_stations.load_haltepunkte(haltepunkte_path)
+    entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
+
+    assert len(entries) == 2
+    names = sorted(str(e["name"]) for e in entries)
+    assert names == [
+        "Wien Bahnhof (WL 60205022)",
+        "Wien Bahnhof (WL 60205201)",
+    ]
+
+
 def test_build_wl_entries_disambiguates_duplicate_canonical_names(
     tmp_path: Path,
 ) -> None:

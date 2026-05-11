@@ -660,8 +660,203 @@ def build_wl_entries(
                 entry["vor_id"] = vor_id
         entries.append(entry)
     entries.sort(key=lambda item: (str(item.get("name")), str(item.get("wl_diva"))))
+    entries = _merge_colocated_duplicates(entries)
     _disambiguate_duplicate_names(entries)
     return entries
+
+
+_COLOCATED_MERGE_DISTANCE_M = 150.0
+
+
+def _merge_colocated_duplicates(
+    entries: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    """Merge entries that share a canonical name AND are within 150 m
+    of each other.
+
+    Wiener Linien's OGD-Echtzeit ``haltestellen.csv`` lists some
+    physical stops twice: opposing-direction bahnsteige at the same
+    intersection get distinct DIVAs despite sharing a name and lying
+    a few dozen metres apart. Forensic analysis of the current CSV
+    surfaces six such groups (Soldanellenweg 27 m, Bhf. Atzgersdorf
+    57 m, Vorgartenstraße 71 m, Am Rosenhügel 88 m, Stock im Weg
+    121 m, Lieblgasse 122 m). Without this pass each one shows up
+    as two near-identical entries in ``data/stations.json``
+    (disambiguated by DIVA suffix downstream — see
+    ``_disambiguate_duplicate_names``).
+
+    Merging rules (all additive, no schema break):
+
+    * ``name``: unchanged base name (kept; the disambiguation pass
+      that runs next is a no-op because the group collapses to one).
+    * ``wl_diva``: the lexicographically lowest DIVA in the group
+      (deterministic).
+    * ``wl_stops``: union of ``wl_stops`` from every merged entry,
+      sorted by ``stop_id``.
+    * ``aliases``: union, sorted.
+    * ``latitude`` / ``longitude``: arithmetic mean across the
+      group's coordinates.
+    * ``in_vienna`` / ``pendler``: re-derived from the new mean
+      coordinates via the same polygon check
+      ``build_wl_entries`` uses for single-entry groups
+      (keeps the flag pair consistent with the persisted coords —
+      same invariant pinned by ``test_coordinates_match_in_vienna_
+      flag``).
+    * Other identity-class fields (``bst_id``, ``bst_code``,
+      ``vor_id`` if any picked up from the VOR mapping): primary's
+      values win; absent on every WL-only entry by construction
+      after PR #1446's redesign.
+
+    Multi-modal stops at the same venue (150-500 m apart — e.g.
+    tram + bus pair at one intersection) are NOT merged; they remain
+    separate entries with the existing DIVA-suffix disambiguation,
+    because operating-line-level disambiguation cannot be inferred
+    from the OGD-Echtzeit columns alone.
+    """
+    from collections import defaultdict
+
+    if not entries:
+        return entries
+
+    by_name: dict[str, list[dict[str, object]]] = defaultdict(list)
+    for entry in entries:
+        name = str(entry.get("name") or "")
+        if name:
+            by_name[name].append(entry)
+
+    merged_total = 0
+    out: list[dict[str, object]] = []
+    consumed_ids: set[int] = set()
+    for _name, group in by_name.items():
+        if len(group) < 2:
+            continue
+        if all(id(e) not in consumed_ids for e in group):
+            if _all_pairs_within(group, _COLOCATED_MERGE_DISTANCE_M):
+                merged = _merge_entry_group(group)
+                out.append(merged)
+                merged_total += len(group) - 1
+                for e in group:
+                    consumed_ids.add(id(e))
+
+    if not consumed_ids:
+        return entries
+
+    # Re-assemble: keep all entries that were NOT consumed by a merge,
+    # plus the merged primaries we just produced. Preserve the original
+    # sort order downstream by re-sorting at the end.
+    for entry in entries:
+        if id(entry) not in consumed_ids:
+            out.append(entry)
+    out.sort(key=lambda item: (str(item.get("name")), str(item.get("wl_diva"))))
+    log.info(
+        "Merged %d co-located WL haltestellen (≤%.0f m) into existing "
+        "neighbour entries",
+        merged_total,
+        _COLOCATED_MERGE_DISTANCE_M,
+    )
+    return out
+
+
+def _haversine_m(
+    lat1: float, lon1: float, lat2: float, lon2: float
+) -> float:
+    import math
+
+    radius = 6_371_000.0
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp = math.radians(lat2 - lat1)
+    dl = math.radians(lon2 - lon1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * radius * math.asin(math.sqrt(a))
+
+
+def _all_pairs_within(
+    group: list[dict[str, object]], max_distance_m: float
+) -> bool:
+    """Return True when every pair of entries in *group* sits within
+    *max_distance_m* of each other. Entries missing coordinates are
+    treated as "cannot merge" — return False so the group is left to
+    the downstream DIVA-suffix disambiguation.
+    """
+    coords: list[tuple[float, float]] = []
+    for entry in group:
+        lat = entry.get("latitude")
+        lon = entry.get("longitude")
+        if not isinstance(lat, int | float) or not isinstance(lon, int | float):
+            return False
+        coords.append((float(lat), float(lon)))
+
+    for i, (lat_i, lon_i) in enumerate(coords):
+        for lat_j, lon_j in coords[i + 1:]:
+            if _haversine_m(lat_i, lon_i, lat_j, lon_j) >= max_distance_m:
+                return False
+    return True
+
+
+def _merge_entry_group(group: list[dict[str, object]]) -> dict[str, object]:
+    """Fold a list of co-located duplicate entries into one.
+
+    See ``_merge_colocated_duplicates`` for the merge-rule rationale.
+    """
+    # Pick the primary by lexicographically lowest wl_diva so the
+    # output is deterministic across cron ticks.
+    primary = min(
+        group,
+        key=lambda e: str(e.get("wl_diva") or ""),
+    )
+    extras = [e for e in group if e is not primary]
+
+    merged: dict[str, object] = dict(primary)
+
+    # Union wl_stops, dedup by stop_id, sort
+    seen_stop_ids: set[str] = set()
+    combined_stops: list[dict[str, object]] = []
+    for entry in (primary, *extras):
+        stops = entry.get("wl_stops")
+        if not isinstance(stops, list):
+            continue
+        for stop in stops:
+            if not isinstance(stop, dict):
+                continue
+            sid = str(stop.get("stop_id") or "")
+            if sid and sid not in seen_stop_ids:
+                seen_stop_ids.add(sid)
+                combined_stops.append(dict(stop))
+    merged["wl_stops"] = sorted(
+        combined_stops, key=lambda item: str(item.get("stop_id") or "")
+    )
+
+    # Union aliases
+    combined_aliases: set[str] = set()
+    for entry in (primary, *extras):
+        aliases = entry.get("aliases")
+        if isinstance(aliases, list):
+            for alias in aliases:
+                if isinstance(alias, str) and alias.strip():
+                    combined_aliases.add(alias)
+    merged["aliases"] = sorted(combined_aliases)
+
+    # Mean coordinates (only over members that have them, all do by
+    # _all_pairs_within precondition)
+    lats: list[float] = []
+    lons: list[float] = []
+    for entry in (primary, *extras):
+        lat = entry.get("latitude")
+        lon = entry.get("longitude")
+        if isinstance(lat, int | float) and isinstance(lon, int | float):
+            lats.append(float(lat))
+            lons.append(float(lon))
+    if lats and lons:
+        mean_lat = round(sum(lats) / len(lats), 6)
+        mean_lon = round(sum(lons) / len(lons), 6)
+        merged["latitude"] = mean_lat
+        merged["longitude"] = mean_lon
+        # Re-derive in_vienna against the persisted mean — keeps the
+        # flag pair consistent with the coords.
+        merged["in_vienna"] = is_in_vienna(mean_lat, mean_lon)
+        merged["pendler"] = not bool(merged["in_vienna"])
+
+    return merged
 
 
 def _disambiguate_duplicate_names(entries: list[dict[str, object]]) -> None:
