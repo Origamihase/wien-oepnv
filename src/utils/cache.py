@@ -429,10 +429,26 @@ def write_status(provider: str, status: dict[str, Any]) -> None:
     status_file = _status_file(provider)
 
     try:
+        # Security (Trojan-Source / BiDi-Mark Drift Round 11): the file
+        # is operator-facing diagnostic state, committed to ``main`` by
+        # the cron pipeline (``update-vor-cache.yml`` line 96 lists
+        # ``cache/vor*/last_run.json`` in its ``file_pattern``) and
+        # reviewed via ``cat`` / ``less`` / the GitHub web UI / IDE
+        # preview. ``ensure_ascii=True`` escapes every non-ASCII code
+        # point as a literal ``\uXXXX`` sequence, so a future status
+        # payload field carrying station- / provider- / environment-
+        # controlled content (e.g. a provider-reported error fragment)
+        # cannot leak the canonical CVE-2021-42574 Trojan-Source /
+        # zero-width / Unicode-line-terminator / 8-bit C1 union as raw
+        # UTF-8 bytes. Mirrors the canonical fix shape pinned in PR
+        # #1434 / PR #1435 for the sibling ``data/*.json`` sidecar
+        # writers. Forensic intent is preserved (``read_status``
+        # recovers the original string from the literal escape via
+        # ``json.loads``).
         with atomic_write(
             status_file, mode="w", encoding="utf-8", permissions=0o600
         ) as fh:
-            json.dump(status, fh, ensure_ascii=False, indent=2, sort_keys=True)
+            json.dump(status, fh, ensure_ascii=True, indent=2, sort_keys=True)
             fh.write("\n")
     except Exception:
         log.exception(
