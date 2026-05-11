@@ -84,9 +84,8 @@ jobs:
       # to silently move the dashboard's ``_Automatisch erzeugt am ..._``
       # timestamp every time someone pushed to ``src/**``, breaking the
       # "exactly one dashboard refresh per Vienna day" contract. Operators
-      # who explicitly want a dashboard regen out-of-band run either
-      # ``generate-stats.yml`` (dedicated dashboard-only escape hatch)
-      # or ``manual-full-refresh.yml`` (the ``alles neu`` button that
+      # who explicitly want a dashboard regen out-of-band run
+      # ``manual-full-refresh.yml`` (the ``alles neu`` button that
       # also rebuilds caches, station directory and feed).
       - name: Refresh README snapshot (dashboard handled by update-cycle.yml)
         run: python scripts/generate_markdown_stats.py --skip-dashboard

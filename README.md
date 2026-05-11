@@ -2,7 +2,6 @@
 
 ### Status Badges
 [![Update VOR Cache](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-vor-cache.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-vor-cache.yml)
-[![Update ÖBB Cache](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-oebb-cache.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-oebb-cache.yml)
 [![Test VOR API](https://github.com/Origamihase/wien-oepnv/actions/workflows/test-vor-api.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/test-vor-api.yml)
 
 [![Feed Build](https://github.com/Origamihase/wien-oepnv/actions/workflows/build-feed.yml/badge.svg?branch=main)](https://github.com/Origamihase/wien-oepnv/actions/workflows/build-feed.yml)

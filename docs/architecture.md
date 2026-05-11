@@ -409,7 +409,7 @@ flowchart LR
 
 | Goal | Embodied by |
 | --- | --- |
-| **CI/CD decoupling** — the daily aggregator runs once per day at the first cycle tick after midnight Vienna, gated by an in-step `TZ=Europe/Vienna date +%H%M` check inside `update-cycle.yml`; the README STATS markers refresh on every ~30-min cycle tick | `.github/workflows/update-cycle.yml` "Refresh statistics dashboard and README snapshot" step + `.github/workflows/generate-stats.yml` (`workflow_dispatch`-only escape hatch for ad-hoc regenerations) |
+| **CI/CD decoupling** — the daily aggregator runs once per day at the first cycle tick after midnight Vienna, gated by an in-step `TZ=Europe/Vienna date +%H%M` check inside `update-cycle.yml`; the README STATS markers refresh on every ~30-min cycle tick | `.github/workflows/update-cycle.yml` "Refresh statistics dashboard and README snapshot" step (the dedicated `generate-stats.yml` workflow was retired alongside the per-provider escape hatches; ad-hoc regenerations now go through `manual-full-refresh.yml`) |
 | **Strictly zero data-science dependencies** — no `numpy`, `pandas`, `matplotlib`; CI install stays sub-second | `scripts/generate_markdown_stats.py` imports only `csv`, `collections`, `datetime`, `statistics`, `pathlib`, `zoneinfo`, `argparse` |
 | **Append-only, lock-free producers** — single-line writes on POSIX are atomic below `PIPE_BUF` (4 KiB), so concurrent cycle ticks cannot interleave bytes mid-line | `src/utils/stats.py:_append_row` (mode `"a"`, no `flock`) |
 | **Strict-new gating for disruptions** — long-lived events recorded once, not once per build | `src/build_feed.py:_update_item_state` records only on the *strict* state-cache miss (neither `_identity` nor `guid` had a prior entry) |
@@ -483,7 +483,7 @@ Tagesbudget:
 
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
-| **Stammstrecke `/trip`** (~alle 30 Min × 2 Richtungen) | 96 | IFTTT-Cadence des `update-cycle.yml`-Triggers (bzw. `workflow_dispatch` von `update-stammstrecke-status.yml`), `MAX_TRIPS_PER_QUERY` |
+| **Stammstrecke `/trip`** (~alle 30 Min × 2 Richtungen) | 96 | IFTTT-Cadence des `update-cycle.yml`-Triggers, `MAX_TRIPS_PER_QUERY` |
 | **Station-Enrichment `location.name`** (wöchentlich, Stammstrecke-Whitelist) | ~10 (1× pro Woche) | `STAMMSTRECKE_VOR_IDS` in `scripts/update_vor_stations.py` |
 | **Disruption-Polling `departureBoard`** | **0** (default) | `VOR_MONITOR_STATIONS_WHITELIST` env (default: leerer String) |
 | **Tagesbudget gesamt** | **96 / 100** | — |

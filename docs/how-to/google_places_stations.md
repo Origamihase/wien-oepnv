@@ -104,13 +104,13 @@ Das Skript lädt die Standard-Konfiguration, fragt eine einzelne Kachel ab und b
 
 ## Automatisierung
 
-Ein GitHub-Workflow (`.github/workflows/update-google-places-stations.yml`) führt regelmäßig einen Write-Run aus, nutzt das Secret `GOOGLE_ACCESS_ID` und lädt ein Artefakt mit den Änderungen (`--dump-new`).
+Der OSM-first / Google-Places-Fallback läuft automatisch als Schritt in `.github/workflows/update-stations.yml` (wöchentlich, Sonntag 01:00 UTC). Der Schritt nutzt das Secret `GOOGLE_ACCESS_ID` und ruft Google Places ausschließlich für Stationen ohne OSM-Koordinaten auf (`_stations_missing_coordinates`). Ein separater Standalone-Workflow existiert nicht mehr — für Out-of-Band-Refreshes der gesamten Places-Anreicherung steht `python scripts/fetch_google_places_stations.py --write` als lokaler/CI-Direktaufruf bereit; der Operator akzeptiert dann bewusst den Quota-Verbrauch.
 
-### Preflight
+### Preflight (historisch, Workflow entfernt 2026-05-11)
 
-Der Workflow führt vor dem eigentlichen Fetch einen minimalen `places:searchText`-Preflight aus. Damit wird schnell erkannt, ob der API-Key wegen Restriktionen oder fehlendem Billing blockiert ist. Die Anfrage setzt `X-Goog-FieldMask: places.id`, läuft mit einem Timeout von 20 Sekunden und versucht es bis zu drei Mal mit kurzen Backoffs. Sensible Daten werden nicht ausgegeben; der Key selbst erscheint nicht im Log.
+Der frühere Standalone-Workflow `update-google-places-stations.yml` führte vor dem eigentlichen Fetch einen minimalen `places:searchText`-Preflight aus. Damit wird schnell erkannt, ob der API-Key wegen Restriktionen oder fehlendem Billing blockiert ist. Die Anfrage setzt `X-Goog-FieldMask: places.id`, läuft mit einem Timeout von 20 Sekunden und versucht es bis zu drei Mal mit kurzen Backoffs. Sensible Daten werden nicht ausgegeben; der Key selbst erscheint nicht im Log.
 
-Zusätzlich validiert ein Nearby-Preflight (`places:searchNearby`) den Request-Body. Er sendet eine einzelne Kachel mit `includedTypes=["train_station"]`, `maxResultCount=1` und dem FieldMask-Header `places.id,places.displayName,places.location`. Dadurch erkennt der Workflow ungültige Typen oder Feldmasken, bevor der eigentliche Import startet. Für die Abfrage werden kompatible Place-Typen (`train_station, subway_station, bus_station`) via ENV erzwungen. Schlägt der Preflight fehl, liefert ein anschließender Debug-Step (`if: failure()`) einmalig die komprimierte Server-Antwort zur Analyse.
+Zusätzlich validierte ein Nearby-Preflight (`places:searchNearby`) den Request-Body — siehe die Historie von `update-google-places-stations.yml` vor der Entfernung 2026-05-11. Bei einem direkten Aufruf von `scripts/fetch_google_places_stations.py` werden ungültige Typen oder Field-Masks vom Python-Client beim ersten echten Request sichtbar; das Quota-Stateful-Modul (`src/places/quota.py`) schützt das Monatsbudget.
 
 ## Migration
 

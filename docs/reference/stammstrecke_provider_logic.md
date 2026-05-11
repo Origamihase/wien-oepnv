@@ -51,7 +51,7 @@ Build-Zeit auf den Ledger-Zeilen.
 | `maxChange` | `0` (nur direkte S-Bahn-Verbindungen) |
 | `numF` | `6` (`MAX_TRIPS_PER_QUERY`, VAO-Cap; eine möglichst große Median-Stichprobe pro Richtung) |
 | `rtMode` | `SERVER_DEFAULT` (Echtzeitdaten aktivieren) |
-| Refresh-Trigger | ~alle 30 Min auf :00/:30 — läuft als Schritt im IFTTT-getriggerten `update-cycle.yml` (`repository_dispatch: ifttt_feed_trigger`). `update-stammstrecke-status.yml` bleibt als `workflow_dispatch`-Escape-Hatch erhalten. |
+| Refresh-Trigger | ~alle 30 Min auf :00/:30 — läuft als Schritt im IFTTT-getriggerten `update-cycle.yml` (`repository_dispatch: ifttt_feed_trigger`). Für Operator-Reruns siehe `manual-full-refresh.yml` oder ein `workflow_dispatch` auf `update-cycle.yml` selbst. |
 
 **Beide Richtungen werden strikt getrennt ausgewertet.** Eine
 Zusammenlegung würde die Daten verfälschen — eine Störung in eine

@@ -70,8 +70,8 @@ LOGGER = logging.getLogger("preflight_quota_check")
 VOR_DAILY_LIMIT: Final[int] = 100
 VOR_QUOTA_FILE: Final[Path] = REPO_ROOT / "data" / "vor_request_count.json"
 
-# Google Places monthly + daily caps. Mirror the env defaults in
-# ``update-google-places-stations.yml``.
+# Google Places monthly + daily caps. Mirror the env defaults used by
+# the OSM-first / Google-Places-fallback step in ``update-stations.yml``.
 PLACES_QUOTA_FILE: Final[Path] = REPO_ROOT / "data" / "places_quota.json"
 PLACES_DEFAULT_MONTHLY: Final[int] = 4000
 
