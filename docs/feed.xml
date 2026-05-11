@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 12:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 12:30:24 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[30: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2079eed11fb52f3e5d3f26f767acfa075e513cdb0b512e1d46839b2866aa3029</guid>
+      <pubDate>Mon, 11 May 2026 12:27:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 12:30:24 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 12:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 30: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Franz-Jonas-Platz . [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 30: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Franz-Jonas-Platz .<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49: Fahrtbehinderung Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -64,26 +75,6 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Wien Hütteldorf (U) von 04.07.2026 (ca. 00:35 Uhr) bis 07.09.2026 (ca. 00:54 Uhr) keine Züge fahren.<br/>[Seit 11.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[Wien Mitte ↔ Flughafen Wien / Wien Mitte ↔ Wien Floridsdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;852582</guid>
-      <pubDate>Mon, 11 May 2026 09:33:18 +0200</pubDate>
-      <ext:first_seen>Tue, 05 May 2026 11:26:32 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 09:33:18 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof … [Seit 11.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof …<br/>[Seit 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Westbahnhof ↔ Wien Hütteldorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;872912</guid>
-      <pubDate>Mon, 11 May 2026 07:39:18 +0200</pubDate>
-      <ext:first_seen>Mon, 27 Apr 2026 11:06:33 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 07:39:18 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge … [Seit 11.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge …<br/>[Seit 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
@@ -115,6 +106,17 @@
       <ext:ends_at>Tue, 12 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[11.05.2026 – 12.05.2026]</description>
       <content:encoded><![CDATA[[11.05.2026 – 12.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N65: Betrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0af8e48c5c63c0818b4662d59227417ee430c0b1befb39c7dcdd7a316ece5e82</guid>
+      <pubDate>Mon, 11 May 2026 00:50:09 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 01:00:33 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 00:50:09 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 11.05.2026]</description>
+      <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
