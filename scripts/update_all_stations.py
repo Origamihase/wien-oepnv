@@ -41,6 +41,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.utils.files import atomic_write, read_capped_json  # noqa: E402  (import after path setup)
+from src.utils.serialize import scrub_trojan_source_primitives  # noqa: E402
 from src.utils.stations_validation import (  # noqa: E402
     StationValidationError,
     ValidationReport,
@@ -521,8 +522,18 @@ def _write_stations_payload(
     ``scripts/update_station_directory.py:write_json`` so a downstream
     consumer reading the merged temp file (and the final copy-back to
     ``data/stations.json``) sees the same format as a clean run.
+
+    Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
+    defence): strip the canonical CVE-2021-42574 attack-byte union BEFORE
+    ``json.dump`` so a poisoned upstream provider (OEBB Excel / OSM
+    Overpass / Wien OGD CSV) cannot leak raw BiDi marks into the
+    orchestrator's temp file. The temp file is copy-back'd to
+    ``data/stations.json`` and the weekly ``update-stations.yml`` cron
+    commits it to ``main`` with ``add_options: "-A"``. Mirrors
+    ``src/places/merge.py:write_stations`` (Round 13).
     """
-    payload = {"stations": [dict(entry) for entry in stations]}
+    raw_payload = {"stations": [dict(entry) for entry in stations]}
+    payload = scrub_trojan_source_primitives(raw_payload)
     with atomic_write(path, mode="w", encoding="utf-8") as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=2)
         handle.write("\n")

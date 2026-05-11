@@ -47,6 +47,7 @@ from src.places.merge import BoundingBox, MergeConfig, merge_places, load_statio
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
 from src.utils.env import load_default_env_files
 from src.utils.files import atomic_write, read_capped_text
+from src.utils.serialize import scrub_trojan_source_primitives
 from src.feed.config import InvalidPathError, validate_path
 
 LOGGER = logging.getLogger("places.cli")
@@ -270,11 +271,16 @@ def _dump_changes(
     new_entries: Sequence[Mapping[str, object]],
     updated_entries: Sequence[Mapping[str, object]],
 ) -> None:
+    # Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
+    # defence): strip the canonical CVE-2021-42574 attack-byte union from
+    # provider-fetched Google Places ``new`` / ``updated`` entries BEFORE
+    # ``json.dumps``. Mirrors ``src/places/merge.py:write_stations``
+    # (Round 13) so the canonical attack-byte union stays single-sourced.
+    scrubbed = scrub_trojan_source_primitives(
+        {"new": list(new_entries), "updated": list(updated_entries)}
+    )
     payload = json.dumps(
-        {
-            "new": list(new_entries),
-            "updated": list(updated_entries),
-        },
+        scrubbed,
         ensure_ascii=False,
         indent=2,
         sort_keys=True,
@@ -285,7 +291,20 @@ def _dump_changes(
 
 
 def _write_if_changed(path: Path, stations: Sequence[Mapping[str, object]]) -> None:
-    payload = json.dumps({"stations": list(stations)}, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    # Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
+    # defence): strip the canonical CVE-2021-42574 attack-byte union from
+    # the incoming stations BEFORE ``json.dumps``. This is the
+    # Google-Places-only manual escape hatch writer for
+    # ``data/stations.json`` — the file is pushed to ``main`` by
+    # ``update-google-places-stations.yml`` (line 154 ``git add
+    # data/stations.json``) so a planted U+202E in a provider-fetched
+    # ``name`` / ``aliases[]`` / ``_formatted_address`` field would
+    # otherwise leak into the operator-facing diff and the GitHub web
+    # UI rendering. ``ensure_ascii=False`` is preserved below so
+    # legitimate German station names stay compact in the diff.
+    scrubbed_stations = scrub_trojan_source_primitives(list(stations))
+    serialisable = scrubbed_stations if isinstance(scrubbed_stations, list) else list(stations)
+    payload = json.dumps({"stations": serialisable}, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     if path.exists():
         # Security: ``read_capped_text`` enforces a TOCTOU-safe size cap
         # so a planted huge ``stations.json`` cannot exhaust memory and

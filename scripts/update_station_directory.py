@@ -52,6 +52,7 @@ try:  # pragma: no cover - convenience for module execution
         use_cached_polygon_result,
     )
     from src.utils.http import fetch_content_safe, session_with_retries
+    from src.utils.serialize import scrub_trojan_source_primitives
     from src.utils.stations import is_in_vienna as _is_point_in_vienna
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from utils.files import (  # type: ignore[no-redef]
@@ -65,6 +66,7 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
         use_cached_polygon_result,
     )
     from utils.http import fetch_content_safe, session_with_retries  # type: ignore[no-redef]
+    from utils.serialize import scrub_trojan_source_primitives  # type: ignore[no-redef]
     from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore[no-redef]
 
 # Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
@@ -1764,7 +1766,19 @@ def load_pendler_name_candidates(path: Path) -> set[str]:
 
 
 def write_json(stations_list: list[dict[str, object]], output_path: Path) -> None:
-    payload = {"stations": stations_list}
+    # Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
+    # defence): strip the canonical CVE-2021-42574 attack-byte union from
+    # the incoming stations BEFORE ``json.dump``. The OEBB
+    # ``Verzeichnis der Verkehrsstationen`` Excel response is the
+    # primary delivery vector — a hijacked OGD portal (DNS rebind or
+    # cache poisoning) could plant U+202E in a station ``name`` /
+    # ``aliases[]`` / ``alternative_names`` field. The weekly
+    # ``update-stations.yml`` cron commits ``data/stations.json`` to
+    # ``main``. ``ensure_ascii=False`` preserves compact German diffs.
+    # Mirrors ``src/places/merge.py:write_stations`` (Round 13).
+    scrubbed = scrub_trojan_source_primitives(stations_list)
+    serialisable = scrubbed if isinstance(scrubbed, list) else stations_list
+    payload = {"stations": serialisable}
     # Use atomic_write to prevent partial writes and reduce race conditions.
     with atomic_write(output_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=2)

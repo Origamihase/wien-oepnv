@@ -60,11 +60,20 @@ def _load_read_capped_text() -> Callable[..., Any]:
     return cast(Callable[..., Any], module.read_capped_text)
 
 
+def _load_scrub_trojan_source_primitives() -> Callable[..., Any]:
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:
+        sys.path.insert(0, str(base_dir))
+    module = import_module("src.utils.serialize")
+    return cast(Callable[..., Any], module.scrub_trojan_source_primitives)
+
+
 BASE_DIR = _project_root()
 is_in_vienna = _load_is_in_vienna()
 atomic_write = _load_atomic_write()
 read_capped_json = _load_read_capped_json()
 read_capped_text = _load_read_capped_text()
+scrub_trojan_source_primitives = _load_scrub_trojan_source_primitives()
 
 # Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
 # canonical ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
@@ -731,8 +740,19 @@ def merge_into_stations(
 
     filtered.extend(unmatched)
 
+    # Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
+    # defence): strip the canonical CVE-2021-42574 attack-byte union from
+    # the merged stations BEFORE ``json.dump``. A planted Wien OGD CSV
+    # (or hijacked ``data.wien.gv.at`` response) could plant U+202E in a
+    # WL station ``name`` / ``aliases[]`` field — the file is committed
+    # to ``main`` by the weekly cron via the orchestrator. Mirrors
+    # ``src/places/merge.py:write_stations`` (Round 13). ``ensure_ascii=
+    # False`` is preserved so legitimate German station names stay
+    # compact in the commit diff.
+    scrubbed = scrub_trojan_source_primitives(filtered)
+    serialisable = scrubbed if isinstance(scrubbed, list) else filtered
     with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump({"stations": filtered}, handle, ensure_ascii=False, indent=2)
+        json.dump({"stations": serialisable}, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     log.info("Wrote %d total stations", len(filtered))
 
