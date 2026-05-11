@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 11:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 11:30:41 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5f34ffb95ca00ee307dddaa13ef057499c3642155e6eb52bbc863400c847fab6</guid>
+      <pubDate>Mon, 11 May 2026 11:17:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 11:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 11:17:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">938ac29fa057a3ddd67f86c556a2f4fea6b28f73f84d298ed3c0dbde81da7fcf</guid>
+      <pubDate>Mon, 11 May 2026 11:17:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 11:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 11:17:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +39,8 @@
       <ext:first_seen>Mon, 11 May 2026 11:00:51 +0200</ext:first_seen>
       <ext:starts_at>Mon, 11 May 2026 10:55:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 11:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Schwedenplatz. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie U1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 11:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Schwedenplatz.<br/>[Am 11.05.2026]]]></content:encoded>
+      <description>Die Linie U1 fährt derzeit nicht zwischen Karlsplatz und Praterstern. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Die Linie U1 fährt derzeit nicht zwischen Karlsplatz und Praterstern.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[3A: Verkehrsunfall]]></title>
@@ -93,28 +115,6 @@
       <ext:ends_at>Tue, 12 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[11.05.2026 – 12.05.2026]</description>
       <content:encoded><![CDATA[[11.05.2026 – 12.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N65: Betrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0af8e48c5c63c0818b4662d59227417ee430c0b1befb39c7dcdd7a316ece5e82</guid>
-      <pubDate>Mon, 11 May 2026 00:50:09 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 01:00:33 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 00:50:09 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 11.05.2026]</description>
-      <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Sat, 09 May 2026 00:00:22 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 00:00:22 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[09.05.2026 – 11.05.2026]</description>
-      <content:encoded><![CDATA[[09.05.2026 – 11.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
