@@ -1,3 +1,188 @@
+## 2026-05-11 - Path-Log Sibling Drift (Caller-Side): `_read_capped_json` Duplicate In `src/utils/stations.py` + Five Operator-Facing WARNING Sinks In `src/utils/env.py` (`_warn_if_world_readable`, `load_env_file`) And `src/build_feed.py` (`_load_state`, `_read_state_capped`, `_save_state`) — Sibling Drift Of PR #1456
+
+**Vulnerability:** PR #1456 (the most recent journal entry; canonical
+fix) closed the verbatim-path-logging drift at the
+:func:`src.utils.files.read_capped_json` /
+:func:`src.utils.files.read_capped_text` boundary by routing the
+``path`` argument through a truncated SHA-256 fingerprint
+(``hashlib.sha256(str(path).encode("utf-8", errors="replace")).hexdigest()[:12]``)
+at the WARNING log line. The closing-checklist grep was scoped to the
+``src/utils/files.py`` canonical helpers; SEVEN sibling WARNING sites
+in three modules continued to interpolate the path bytes through the
+bare ``%s`` format spec:
+
+  1. **`src/utils/stations.py:_read_capped_json`** — a LITERAL
+     duplicate of the canonical helper that was MISSED when PR #1456
+     fixed the ``src/utils/files.py`` original. Two WARNING log lines
+     (size-cap branch and read-cap branch) at lines 300-310 (pre-fix)
+     interpolated ``path`` via the bare ``%s`` format spec. Reached
+     via the two ``@lru_cache`` import-time loaders
+     ``_station_entries`` / ``_vienna_polygons`` — a successful
+     primitive-injection lands in EVERY feed-build path that touches
+     a station name or a Vienna geo-fence check.
+  2. **`src/utils/env.py:_warn_if_world_readable`** (line 386-392
+     pre-fix) — interpolates ``path`` TWICE via bare ``%s`` when an
+     ``.env`` candidate file has group-/world-readable bits. The
+     candidate paths are env-controlled via ``WIEN_OEPNV_ENV_FILES``.
+  3. **`src/utils/env.py:load_env_file`** (line 436-440 pre-fix) —
+     interpolates ``path`` via bare ``%s`` when ``read_capped_text``
+     returns ``None``. Same env-controlled candidate-list surface as
+     Site 2.
+  4. **`src/build_feed.py:_load_state`** (lines 758-769 pre-fix) —
+     orchestrator state file. The path is ``feed_config.STATE_FILE``
+     which is operator-controlled via the ``STATE_PATH`` environment
+     variable. Two WARNING log lines (size-cap and read-cap branches)
+     interpolate ``path`` verbatim.
+  5. **`src/build_feed.py:_read_state_capped`** (lines 833-844
+     pre-fix) — orchestrator state file's safe-merge sibling. Same
+     path surface and same two-WARNING log shape as Site 4.
+  6. **`src/build_feed.py:_save_state`** lock-failure branch (lines
+     919-924 pre-fix) — interpolates ``path`` verbatim into a
+     WARNING when the advisory file-lock cannot be acquired. Same
+     path surface as Sites 4 / 5.
+
+**Threat model:** mirrors the canonical PR #1456 surface — a hostile
+path string carries Trojan-Source primitives:
+
+  * ``‮`` U+202E RIGHT-TO-LEFT OVERRIDE — visually reverses
+    subsequent text. An operator skimming the log misreads
+    ``rm -rf /data/state.json`` as the inverse. Phishing primitive
+    in any artefact the log feeds into (``docs/feed_health.json``,
+    GitHub Issue auto-submission, RSS reader if the path lands in an
+    item description).
+  * ``​`` U+200B ZERO WIDTH SPACE — invisible cache-key / equality
+    poisoning. ``data/stations.json`` vs.
+    ``data/stations.json + U+200B`` look identical but diverge under
+    string equality, leading to subtle equality-check
+    disagreements in any downstream consumer.
+  * ``\x9b`` U+009B 8-bit CSI / ``\x9d`` U+009D 8-bit OSC — survive
+    the 7-bit ``_ANSI_ESCAPE_RE`` defence at every prior round, and
+    trigger SGR colour interpretation on every 8-bit-C1-honouring
+    terminal (xterm with eightBitInput, several BSD consoles, rxvt
+    in 8-bit mode).
+  * ``\x1b`` U+001B ESC — ANSI prefix; terminal-escape primitive.
+  * ``\x07`` U+0007 BEL — terminal-bell denial-of-attention.
+  * ``\n`` / ``\r`` — log-record forgery in any line-based consumer
+    (SIEM splitters, rsyslog, journald cursor-based readers,
+    Promtail).
+  * ``\U000e0020`` Unicode Tag SPACE — invisible-instruction
+    smuggling primitive (2024 OpenAI disclosure). Lands in the
+    GitHub Issue body that ``submit_auto_issue`` posts and reaches
+    any LLM that ingests the Issue text.
+  * ``︀`` U+FE00 VARIATION SELECTOR-1 — 4-bit-payload steganography.
+
+Pre-fix every primitive flows verbatim into the WARNING log line and
+from there into the public ``docs/feed_health.json`` artefact + the
+GitHub Issue body submitted by ``submit_auto_issue`` + any operator's
+8-bit-C1-honouring terminal. Post-fix the SHA-256 fingerprint
+(hex-only, ``[0-9a-f]{12}``) replaces the path string at the
+interpolation boundary so no primitive can survive.
+
+**Why PR #1456's closing-checklist grep missed these sites:**
+
+  * The canonical PR's grep walked ``read_capped_json`` and
+    ``read_capped_text`` BY NAME inside ``src/utils/files.py`` only.
+    Sites 1 (a literal duplicate of the canonical helper in
+    ``stations.py``) and 2-6 (caller-side WARNING sinks that
+    interpolate the path bytes INDEPENDENTLY of the canonical helper,
+    BEFORE the call to ``read_capped_text`` or AFTER the call
+    returns ``None``) all sit outside the canonical helper's name
+    scope.
+  * The canonical PR's CodeQL alert IDs (#1758, #1759) were filed
+    against the ``files.py`` log call sites specifically. CodeQL's
+    taint flow originated from ``read_secret(name=...)`` in
+    ``env.py``; the alerts terminated at the ``files.py`` line
+    numbers and did not enumerate the caller-side WARNING lines.
+
+**Reproduced:** ``tests/test_sentinel_path_log_sanitisation_caller_drift.py``
+contains 77 PoC tests:
+
+  * 7 modules × 10 primitives × 1 invariant
+    (per-primitive bypass test asserting the primitive does NOT
+    appear in the WARNING log) plus a fingerprint-presence /
+    operator-correlation invariant per site:
+    - Site 1: ``_station_entries`` (size-cap WARNING) +
+      fingerprint invariant.
+    - Site 2: ``_vienna_polygons`` (size-cap WARNING).
+    - Site 3: ``_warn_if_world_readable`` + fingerprint invariant.
+    - Site 4: ``load_env_file`` (oversize WARNING) + fingerprint
+      invariant.
+    - Site 5: ``_load_state`` (size-cap WARNING) + fingerprint
+      invariant.
+    - Site 6: ``_read_state_capped`` (size-cap WARNING) +
+      fingerprint invariant.
+    - Site 7: ``_save_state`` (lock-fail WARNING).
+  * 2 additive-regression invariants: legitimate German content
+    (umlauts ``Größe_Test_Wien``) survives the fingerprint shape
+    unchanged + fingerprint is deterministic across runs for the
+    same path (operator-correlation contract).
+
+**Fix shape:** mirrors the canonical PR #1456 byte-for-byte.
+
+  * **Site 1 (`stations.py:_read_capped_json`)** — added an inline
+    ``path_fingerprint = hashlib.sha256(...)`` at the top of the
+    function body and replaced the two ``%s ... path`` bindings with
+    ``%s ... path_fingerprint``. Pinned ``import hashlib`` at the
+    module head. The duplicate-helper shape (a code clone of
+    ``src.utils.files.read_capped_json``) is preserved deliberately
+    for now — eliminating the duplication is a larger refactor that
+    would touch the ``test_sentinel_json_size_bomb_ondisk_round2``
+    test mocks; closing the drift is the higher priority.
+  * **Site 2-3 (`env.py:_warn_if_world_readable` + `load_env_file`)**
+    — added a module-level ``_path_fingerprint`` helper at the top
+    of ``env.py`` (so future sibling drifts in the same module are
+    single-sourced via the helper). The two WARNING sinks now call
+    ``_path_fingerprint(path)`` instead of interpolating ``path``
+    directly. Pinned ``import hashlib`` at the module head.
+  * **Site 4-7 (`build_feed.py:_load_state` / `_read_state_capped` /
+    `_save_state`)** — each site now computes ``path_fingerprint``
+    inline (``build_feed.py`` already imports ``hashlib``) at the
+    top of the function body and uses the fingerprint in every
+    WARNING log line that previously interpolated ``path``.
+
+**Learning:**
+
+  1. **Sibling-drift propagation** is the canonical Sentinel pattern
+     for any fix at a single-helper boundary that has caller-side
+     log sinks downstream. The canonical fix MUST be paired with a
+     repo-wide grep of every CALLER (not just sibling helpers) that
+     interpolates the same operator-/env-/caller-controllable
+     argument into a WARNING log. The grep shape for path logs is
+     ``grep -rn ", path[,)]\\|%s.*path\\|%s.*Datei" src/``; the
+     grep shape for any other argument follows the same pattern.
+
+  2. **Code-clone drift** is a separate but related failure mode:
+     when a project carries TWO copies of the same canonical
+     helper (here ``files.py:read_capped_json`` and the duplicate
+     ``stations.py:_read_capped_json``), a fix at one site does
+     NOT propagate to the other. The clean closure is to
+     consolidate the canonical helper — but the priority is the
+     drift fix first, the consolidation second.
+
+  3. **Module-level `_path_fingerprint` helpers** mirror the
+     established sibling-helper pattern in the codebase (every
+     module that needs the canonical sanitiser shape exposes a
+     module-local helper that calls the canonical underlying
+     primitive). Pinning the helper at module head makes future
+     audits (``grep -rn "_path_fingerprint" src/``) trivial and
+     prevents the inline-fingerprint shape from drifting per-site.
+
+  4. **`hashlib.sha256(...)`-fingerprint logging** is the canonical
+     barrier shape recognised by CodeQL's
+     ``py/clear-text-logging-sensitive-data`` taint analysis. The
+     fingerprint is also Trojan-Source-clean (hex-only output),
+     operator-correlatable (re-hash candidate path locally), and
+     stable across runs for a given path.
+
+  5. **Closing-grep enumeration** of all sibling sites (now SEVEN
+     sites across THREE modules) should be the closing checklist
+     of the next Path-Log Drift Round — the inverse grep across
+     ``scripts/`` (currently ~14 sibling sites) is named-but-
+     deferred to a Round 2 that does not block the canonical
+     drift closure shipped here.
+
+---
+
 ## 2026-05-11 - CodeQL Triage Round: `read_capped_json` / `read_capped_text` Logged Operator-/Caller-Controlled Path Verbatim + `osm_client` NaN-Filter Used The `x != x` Idiom That CodeQL Cannot Statically Recognise
 
 **Vulnerability:** two real-fix items + multiple documented false
