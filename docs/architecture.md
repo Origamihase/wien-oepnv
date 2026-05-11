@@ -377,7 +377,7 @@ consumers tolerate missing or malformed rows gracefully.
 
 ```mermaid
 flowchart LR
-    subgraph "Producers (every cron tick)"
+    subgraph "Producers (every cycle tick — IFTTT-triggered update-cycle.yml, ~30 min)"
         SS[update_stammstrecke_status.py<br/><i>writes one row per direction</i>]
         BF[build_feed.main<br/><i>_update_item_state strict-new branch</i>]
     end
@@ -385,7 +385,7 @@ flowchart LR
         SCSV[stammstrecke_YYYY.csv<br/><i>timestamp, weekday, hour, direction, delay_minutes</i>]
         DCSV[stoerungen_YYYY.csv<br/><i>timestamp, weekday, hour, provider, location_name</i>]
     end
-    subgraph "Daily aggregator (cron 15 0 * * *)"
+    subgraph "Daily aggregator (update-cycle.yml, first cycle tick after midnight Vienna)"
         AGG[generate_markdown_stats.py<br/><i>stdlib only, 30-day window</i>]
     end
     subgraph "Feed-build consumer"
@@ -409,9 +409,9 @@ flowchart LR
 
 | Goal | Embodied by |
 | --- | --- |
-| **CI/CD decoupling** — the daily aggregator job runs on its own cron, never blocks `update-cycle.yml` | `.github/workflows/generate-stats.yml` (cron `15 0 * * *`, `concurrency: generate-stats-${{ github.ref }}`) |
+| **CI/CD decoupling** — the daily aggregator runs once per day at the first cycle tick after midnight Vienna, gated by an in-step `TZ=Europe/Vienna date +%H%M` check inside `update-cycle.yml`; the README STATS markers refresh on every ~30-min cycle tick | `.github/workflows/update-cycle.yml` "Refresh statistics dashboard and README snapshot" step (the dedicated `generate-stats.yml` workflow was retired alongside the per-provider escape hatches; ad-hoc regenerations now go through `manual-full-refresh.yml`) |
 | **Strictly zero data-science dependencies** — no `numpy`, `pandas`, `matplotlib`; CI install stays sub-second | `scripts/generate_markdown_stats.py` imports only `csv`, `collections`, `datetime`, `statistics`, `pathlib`, `zoneinfo`, `argparse` |
-| **Append-only, lock-free producers** — single-line writes on POSIX are atomic below `PIPE_BUF` (4 KiB), so concurrent cron ticks cannot interleave bytes mid-line | `src/utils/stats.py:_append_row` (mode `"a"`, no `flock`) |
+| **Append-only, lock-free producers** — single-line writes on POSIX are atomic below `PIPE_BUF` (4 KiB), so concurrent cycle ticks cannot interleave bytes mid-line | `src/utils/stats.py:_append_row` (mode `"a"`, no `flock`) |
 | **Strict-new gating for disruptions** — long-lived events recorded once, not once per build | `src/build_feed.py:_update_item_state` records only on the *strict* state-cache miss (neither `_identity` nor `guid` had a prior entry) |
 | **Idempotent, byte-stable output** — re-running the aggregator on identical input produces byte-identical Markdown so `git-auto-commit-action` is a no-op when nothing changed | Stable secondary sort (alphabetical) breaks every tie in `render_top_locations`; renderer never reads `now()` outside the timestamp shown in the header |
 | **Per-year file rotation** — individual ledger size stays bounded even over multi-year operation | Filename derived from the row's Vienna-local `timestamp.year`, not process clock |
@@ -471,54 +471,54 @@ provider input.
 
 ---
 
-## 7. VOR/VAO API Rate-Limit Optimization (2026-05-09)
+## 7. VOR/VAO API — Stammstrecke-only scope (2026-05-11)
 
 Die VOR/VAO ReST API erlaubt **100 Requests pro Tag** (`VAO Start`-
-Kontingent). Nach der Migration des Stammstrecken-Monitors von
-`pyhafas` auf die VOR `/trip`-API (siehe
-[`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md))
-ist der Monitor mit 96 Calls/Tag der dominante VOR-Konsument. Drei
-strikt aufeinander abgestimmte Limits halten das Projekt unter dem
-Tagesbudget:
+Kontingent). Seit 2026-05-11 (Operator-Policy "VOR nur noch für die
+Verspätungen der Stammstrecke") ist der Stammstrecken-Monitor der
+**einzige** automatisierte VOR-Konsument im Projekt. Der frühere
+wöchentliche Station-Enrichment-Pfad
+(`scripts/update_vor_stations.py` via `update-stations.yml`) und das
+optionale Disruption-Polling sind aus den automatisierten Pfaden
+entfernt; VOR-Stop-IDs kommen jetzt ausschließlich aus der gepinnten
+`data/vor-haltestellen.csv`-Snapshot. Siehe
+[`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)
+für Details des Stammstrecken-Monitors.
 
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
-| **Stammstrecke `/trip`** (`0,30 * * * *` × 2 Richtungen) | 96 | `cron`-Plan in `update-cycle.yml` (bzw. `update-stammstrecke-status.yml`), `MAX_TRIPS_PER_QUERY` |
-| **Station-Enrichment `location.name`** (wöchentlich, Stammstrecke-Whitelist) | ~10 (1× pro Woche) | `STAMMSTRECKE_VOR_IDS` in `scripts/update_vor_stations.py` |
-| **Disruption-Polling `departureBoard`** | **0** (default) | `VOR_MONITOR_STATIONS_WHITELIST` env (default: leerer String) |
+| **Stammstrecke `/trip`** (~alle 30 Min × 2 Richtungen) | 96 | IFTTT-Cadence des `update-cycle.yml`-Triggers, `MAX_TRIPS_PER_QUERY` |
+| **Station-Enrichment `location.name`** | **0** (Pfad entfernt 2026-05-11) | Operator kann `scripts/update_vor_stations.py` manuell aufrufen; kostet dann bewusst Quota |
+| **Disruption-Polling `departureBoard`** | **0** (default; Pfad nicht mehr automatisiert) | Operator kann `scripts/update_vor_cache.py` mit `VOR_MONITOR_STATIONS_WHITELIST` manuell aufrufen |
 | **Tagesbudget gesamt** | **96 / 100** | — |
 
-Drei zusammenwirkende Mechanismen schützen das Budget:
+Zwei zusammenwirkende Mechanismen schützen das Budget:
 
-1. **`DEFAULT_MONITOR_WHITELIST = ""`** (`src/providers/vor.py`).
-   Das Disruption-Polling über die VAO API ist standardmäßig
-   deaktiviert. Operatoren, die das Legacy-Verhalten brauchen,
-   setzen `VOR_MONITOR_STATIONS_WHITELIST` als Env-Variable.
+1. **Keine automatisierten Nicht-Stammstrecke-Pfade**: Weder
+   `update-cycle.yml`, noch `update-stations.yml`, noch
+   `manual-full-refresh.yml` rufen VOR-Disruption-Polling oder
+   VOR-Station-Enrichment auf. Helper-Scripts existieren noch unter
+   `scripts/`, werden aber nur durch explizite Operator-Aufrufe
+   getriggert.
 
-2. **`STAMMSTRECKE_VOR_IDS`** (`scripts/update_vor_stations.py`).
-   Live-`location.name`-Enrichment ist auf die 10 Stammstrecke-
-   S-Bahn-Stationen beschränkt; alle anderen Station-IDs fallen
-   beim Stations-Verzeichnis-Update auf die gepinnte
-   `data/vor-haltestellen.csv` zurück.
-
-3. **`_charge_one_request`** (`scripts/update_stammstrecke_status.py`).
+2. **`_charge_one_request`** (`scripts/update_stammstrecke_status.py`).
    Vor jedem `/trip`-Call wird ein Quota-Slot via
    `vor_provider.save_request_count` reserviert; ein Lauf, der das
    Tagesbudget reißen würde, raised `_QuotaExceeded` *vor* dem
    Network Call und schreibt einen leeren Cache.
 
-Der Burst durch das Stations-Enrichment fällt nur auf den wöchentlichen
-Sonntag-Lauf (Cron `0 1 * * 0` in `.github/workflows/update-stations.yml`);
-selbst mit voller Stammstrecke-Aktivität an diesem Tag bleiben mindestens
-4 Calls Puffer. Sollte das Budget in Zukunft enger werden, sind die
+Stammstrecke verbraucht damit 96 von 100 Calls/Tag; die restlichen
+4 Calls Puffer bleiben für gelegentliche Operator-Direktaufrufe
+verfügbar. Sollte das Budget in Zukunft enger werden, sind die
 niedrig-hängenden Hebel:
 
-* Cron `0,30 * * * *` → `0 * * * *` (halbiert Stammstrecke auf 48 Calls/Tag).
+* IFTTT-Applet von ~30-Min- auf Stunden-Cadence umstellen (halbiert
+  Stammstrecke auf 48 Calls/Tag).
 * `MAX_TRIPS_PER_QUERY = 6` → `3` (kein API-Effekt, da `numF` ein
   Server-side-Cap ist und VAO mehrere Trips pro Call erlaubt).
-* Operating-Hours-Cron (`0,30 4-23 * * *` statt `0,30 * * * *`) — die
-  Stammstrecke fährt zwischen 00:30 und 04:00 nur ausgedünnt, das
-  Monitoring liefert dort kaum Signal.
+* Operating-Hours-Cadence im IFTTT-Applet (nur 04-23 Uhr statt
+  ganztägig) — die Stammstrecke fährt zwischen 00:30 und 04:00 nur
+  ausgedünnt, das Monitoring liefert dort kaum Signal.
 
 ---
 

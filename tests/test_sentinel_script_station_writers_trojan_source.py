@@ -487,101 +487,6 @@ def test_update_station_directory_write_json_preserves_umlauts(tmp_path: Path) -
 
 
 # ---------------------------------------------------------------------
-# Sink 6: ``scripts/update_vor_stations.py:merge_into_stations``
-# ---------------------------------------------------------------------
-
-
-def test_update_vor_merge_into_stations_no_rlo_leak(tmp_path: Path) -> None:
-    """Integration test: a planted entry that already lives in
-    ``stations.json`` (e.g. inserted by a previous compromised cron
-    run) is read, processed, and re-written by ``merge_into_stations``.
-    The scrubber at the write boundary must strip the BiDi marks."""
-    from scripts.update_vor_stations import merge_into_stations
-
-    target = tmp_path / "stations.json"
-    poisoned = {
-        "stations": [
-            {
-                "name": "Wien Mitte‮moc.live",
-                "vor_id": "430001111",
-                "bst_id": "999000",
-                "bst_code": "WM",
-                "aliases": ["Hbf‮.evil", "999000", "WM"],
-                "source": "vor",
-                "latitude": 48.21,
-                "longitude": 16.38,
-            }
-        ]
-    }
-    target.write_text(json.dumps(poisoned, ensure_ascii=False), encoding="utf-8")
-    merge_into_stations(target, [])
-
-    raw = target.read_bytes()
-    assert _RLO_UTF8 not in raw, (
-        "U+202E from existing stations.json was not scrubbed at the "
-        "merge_into_stations write boundary."
-    )
-
-
-@pytest.mark.parametrize("primitive", _TROJAN_SOURCE_PRIMITIVES)
-def test_update_vor_merge_into_stations_strips_every_primitive(
-    tmp_path: Path, primitive: str
-) -> None:
-    from scripts.update_vor_stations import merge_into_stations
-
-    target = tmp_path / f"stations-{ord(primitive):04x}.json"
-    poisoned = {
-        "stations": [
-            {
-                "name": f"evil{primitive}.example",
-                "vor_id": "430001111",
-                "bst_id": "999000",
-                "bst_code": "WM",
-                "aliases": [f"alias{primitive}evil", "999000", "WM"],
-                "source": "vor",
-                "latitude": 48.21,
-                "longitude": 16.38,
-            }
-        ]
-    }
-    target.write_text(json.dumps(poisoned, ensure_ascii=False), encoding="utf-8")
-    merge_into_stations(target, [])
-
-    raw = target.read_bytes()
-    expected = _UTF8_BYTES[primitive]
-    assert expected not in raw, (
-        f"Trojan-Source primitive U+{ord(primitive):04X} leaked via "
-        f"update_vor_stations.merge_into_stations as raw UTF-8 bytes ({expected!r})."
-    )
-
-
-def test_update_vor_merge_into_stations_preserves_umlauts(tmp_path: Path) -> None:
-    from scripts.update_vor_stations import merge_into_stations
-
-    target = tmp_path / "stations.json"
-    payload = {
-        "stations": [
-            {
-                "name": "Wien Hütteldorf",
-                "vor_id": "430001111",
-                "bst_id": "999000",
-                "bst_code": "WHd",
-                "aliases": ["Floridsdorfer Brücke", "999000", "WHd"],
-                "source": "vor",
-                "latitude": 48.21,
-                "longitude": 16.38,
-            }
-        ]
-    }
-    target.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
-    merge_into_stations(target, [])
-
-    text = target.read_text(encoding="utf-8")
-    assert "Hütteldorf" in text
-    assert "\\u00fc" not in text
-
-
-# ---------------------------------------------------------------------
 # Sink 7: ``scripts/update_wl_stations.py:merge_into_stations``
 # ---------------------------------------------------------------------
 
@@ -658,90 +563,6 @@ def test_update_wl_merge_into_stations_preserves_umlauts(tmp_path: Path) -> None
     assert "\\u00fc" not in text
 
 
-# ---------------------------------------------------------------------
-# Sink 8: ``scripts/fetch_vor_haltestellen.py`` mapping writer
-# ---------------------------------------------------------------------
-
-
-def test_fetch_vor_haltestellen_mapping_no_rlo_leak() -> None:
-    """The VAO resolution mapping sidecar
-    ``data/vor-haltestellen.mapping.json`` is a sibling station-directory
-    artefact that gets committed by the same cron pipeline. Its scrubber
-    is extracted into a ``_scrub_mapping_for_serialisation`` helper so the
-    scrub-and-drop semantics can be unit-tested in isolation while the
-    actual ``json.dumps`` + ``atomic_write`` site stays inline at the
-    original location in ``main()``."""
-    from scripts.fetch_vor_haltestellen import _scrub_mapping_for_serialisation
-
-    mapping: list[dict[str, Any]] = [
-        {
-            "station_name": "Wien Mitte‮moc.live",
-            "bst_id": "100",
-            "vor_id": "430001234",
-            "resolved_name": "Wien Mitte‮.evil",
-            "latitude": 48.21,
-            "longitude": 16.38,
-        }
-    ]
-    scrubbed = _scrub_mapping_for_serialisation(mapping)
-    # The scrubbed payload must round-trip through json.dumps without
-    # emitting the RLO byte triplet — that is the exact data flow the
-    # main() function uses below the scrubber call.
-    raw = json.dumps(scrubbed, ensure_ascii=False, indent=2).encode("utf-8")
-    assert _RLO_UTF8 not in raw, (
-        "U+202E leaked via fetch_vor_haltestellen._scrub_mapping_for_serialisation."
-    )
-
-
-@pytest.mark.parametrize("primitive", _TROJAN_SOURCE_PRIMITIVES)
-def test_fetch_vor_haltestellen_mapping_strips_every_primitive(
-    primitive: str,
-) -> None:
-    from scripts.fetch_vor_haltestellen import _scrub_mapping_for_serialisation
-
-    mapping: list[dict[str, Any]] = [
-        {
-            "station_name": f"evil{primitive}.example",
-            "bst_id": "100",
-            "vor_id": "430001234",
-            "resolved_name": f"resolved{primitive}.evil",
-            "latitude": 48.21,
-            "longitude": 16.38,
-        }
-    ]
-    scrubbed = _scrub_mapping_for_serialisation(mapping)
-    raw = json.dumps(scrubbed, ensure_ascii=False, indent=2).encode("utf-8")
-    expected = _UTF8_BYTES[primitive]
-    assert expected not in raw, (
-        f"Trojan-Source primitive U+{ord(primitive):04X} leaked via "
-        f"fetch_vor_haltestellen._scrub_mapping_for_serialisation as raw "
-        f"UTF-8 bytes ({expected!r})."
-    )
-
-
-def test_fetch_vor_haltestellen_mapping_preserves_umlauts() -> None:
-    from scripts.fetch_vor_haltestellen import _scrub_mapping_for_serialisation
-
-    mapping: list[dict[str, Any]] = [
-        {
-            "station_name": "Wien Hütteldorf",
-            "bst_id": "100",
-            "vor_id": "430001234",
-            "resolved_name": "Hütteldorf Bahnhof",
-            "latitude": 48.20,
-            "longitude": 16.26,
-        }
-    ]
-    scrubbed = _scrub_mapping_for_serialisation(mapping)
-    text = json.dumps(scrubbed, ensure_ascii=False, indent=2)
-    assert "Hütteldorf" in text
-    assert "\\u00fc" not in text
-
-
-# ---------------------------------------------------------------------
-# Defensive invariants — single-sourced scrubber import
-# ---------------------------------------------------------------------
-
 
 def test_all_script_writers_use_shared_scrubber_helper() -> None:
     """Every script-level station writer must import
@@ -755,9 +576,7 @@ def test_all_script_writers_use_shared_scrubber_helper() -> None:
         "scripts/update_all_stations.py",
         "scripts/enrich_station_aliases.py",
         "scripts/update_station_directory.py",
-        "scripts/update_vor_stations.py",
         "scripts/update_wl_stations.py",
-        "scripts/fetch_vor_haltestellen.py",
     ]
     for rel in targets:
         path = REPO_ROOT / rel

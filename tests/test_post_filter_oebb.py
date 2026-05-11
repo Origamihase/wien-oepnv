@@ -1,9 +1,10 @@
 """Defence-in-depth: re-apply the ÖBB relevance filter to cache items.
 
 Audit-round-5 finding (bug P). The ÖBB cache is only refreshed by the
-`update-oebb-cache.yml` workflow, so a filter improvement does not reach
-the feed until the next cache refresh — meanwhile the live feed can
-carry items that the *current* spec considers irrelevant. The post-
+IFTTT-triggered ``update-cycle.yml`` (Cycle-Tick alle ~30 Min), so a
+filter improvement does not reach the feed until the next cache
+refresh — meanwhile the live feed can carry items that the *current*
+spec considers irrelevant. The post-
 filter in `build_feed.read_cache_oebb` re-runs `_is_relevant` against
 each cached item so the feed always reflects the latest filter state.
 """

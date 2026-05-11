@@ -189,9 +189,10 @@ class MonthlyQuota:
         # Explicitly set 0600 permissions.
         # Security (Trojan-Source / BiDi-Mark Drift Round 11): the file is
         # operator-facing diagnostic state, committed to ``main`` by the
-        # ``update-google-places-stations.yml`` cron job (see its line 160
-        # ``git add data/places_quota.json``) and reviewed via ``cat`` /
-        # ``less`` / the GitHub web UI / IDE preview. ``ensure_ascii=True``
+        # weekly ``update-stations.yml`` cron job (the OSM-first / Google-
+        # Places-fallback step inside ``update_all_stations.py`` charges
+        # against this quota) and reviewed via ``cat`` / ``less`` / the
+        # GitHub web UI / IDE preview. ``ensure_ascii=True``
         # escapes every non-ASCII code point as a literal ``\uXXXX``
         # sequence, so a future quota-state field carrying station- /
         # provider- / environment-controlled content cannot leak the

@@ -25,13 +25,14 @@ entire file into memory before parsing, so a planted-huge file at
 Threat model
 ------------
 
-The pre-flight is a *gate* for two automated workflows:
+The pre-flight is a *gate* for two automated paths:
 
-  1. ``update-stammstrecke-status.yml`` — runs every ~30 min via
-     ``update-cycle.yml`` DAG; fans out the VAO ``/trip`` quota
-     check.
-  2. ``update-google-places-stations.yml`` — operator-triggered;
-     gates the Places API call against the monthly cap.
+  1. Stammstrecke step inside the IFTTT-triggered
+     ``update-cycle.yml`` — runs every ~30 min on :00/:30 and fans
+     out the VAO ``/trip`` quota check.
+  2. OSM-first / Google-Places-fallback step inside the weekly
+     ``update-stations.yml`` cron job — gates the Places API call
+     against the monthly cap.
 
 The state files (``data/vor_request_count.json``,
 ``data/places_quota.json``) are committed by previous runs of the

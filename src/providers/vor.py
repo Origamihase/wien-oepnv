@@ -418,10 +418,11 @@ def _write_request_count_file(path: Path, payload: Mapping[str, Any]) -> None:
 
     Security (Trojan-Source / BiDi-Mark Drift Round 11): the file is
     operator-facing diagnostic state, committed to ``main`` by the
-    ``update-vor-cache.yml`` and ``update-stammstrecke-status.yml`` cron
-    jobs (both list ``data/vor_request_count.json`` in their
-    ``file_pattern``) and reviewed via ``cat`` / ``less`` / the GitHub
-    web UI / IDE preview. ``ensure_ascii=True`` escapes every non-ASCII
+    IFTTT-triggered ``update-cycle.yml`` (Stammstrecke step) and by
+    the ``update-vor-cache.yml`` operator-only escape hatch (both
+    list ``data/vor_request_count.json`` in their ``file_pattern``
+    or via ``add_options: -A``) and reviewed via ``cat`` / ``less``
+    / the GitHub web UI / IDE preview. ``ensure_ascii=True`` escapes every non-ASCII
     code point as a literal ``\\uXXXX`` sequence, so a future request-
     count payload field carrying station- / provider- / environment-
     controlled content cannot leak the canonical CVE-2021-42574

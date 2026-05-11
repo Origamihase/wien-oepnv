@@ -28,15 +28,18 @@ DEFAULT_GTFS_PATH = DATA_DIR / "gtfs" / "stops.txt"
 _PROVIDER_CACHE_SCRIPTS = {
     "wl": "update_wl_cache.py",
     "oebb": "update_oebb_cache.py",
-    "vor": "update_vor_cache.py",
     "baustellen": "update_baustellen_cache.py",
+    # VOR cache is no longer an automatable provider; VOR API access
+    # is scoped to the Stammstrecke delay monitor (operator policy
+    # 2026-05-11). See ``scripts/update_stammstrecke_status.py``.
 }
 
 _STATION_UPDATE_SCRIPTS = {
     "all": "update_all_stations.py",
     "directory": "update_station_directory.py",
-    "vor": "update_vor_stations.py",
     "wl": "update_wl_stations.py",
+    # VOR station enrichment removed 2026-05-11 — directory uses the
+    # pinned ``data/vor-haltestellen.csv`` snapshot.
 }
 
 _TOKEN_VERIFY_SCRIPTS = {

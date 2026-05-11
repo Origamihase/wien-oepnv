@@ -21,9 +21,9 @@ operator-facing JSON family with the SAME fix shape requirement:
     escape, ~4-6x the byte size, and bloat the weekly
     ``update-stations.yml`` commit diff.
   * The committed sidecar contract is unambiguous: the file is
-    pushed to ``main`` by ``update-stations.yml`` (weekly cron)
-    AND by ``update-google-places-stations.yml`` (manual escape
-    hatch).
+    pushed to ``main`` by the weekly ``update-stations.yml`` cron
+    job, whose OSM-first / Google-Places-fallback step writes the
+    enriched directory.
 
 The Round-12 "Named but deferred" entry pinned the fix shape:
 **pair an ingestion-boundary Trojan-Source primitive scrubber with

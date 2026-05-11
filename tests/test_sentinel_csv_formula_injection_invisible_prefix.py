@@ -36,9 +36,9 @@ The resulting drift opened a **formula-injection bypass**:
      ``False`` because the leading character is ZWSP, not ``=``. The
      defang step is skipped.
   5. ``data/stats/stoerungen_<YYYY>.csv`` lands the row
-     ``…,\\u200b=cmd|'/c calc'!A1`` verbatim. The cron pipeline commits
-     the file via ``generate-stats.yml``; the CSV is then a public
-     artefact in the repository.
+     ``…,\\u200b=cmd|'/c calc'!A1`` verbatim. The cycle pipeline commits
+     the file via ``update-cycle.yml`` (IFTTT-triggered); the CSV is
+     then a public artefact in the repository.
   6. An operator opens ``data/stats/stoerungen_2026.csv`` in Excel /
      LibreOffice Calc / Google Sheets to inspect indicators of
      compromise. Several spreadsheet engines collapse the leading
@@ -473,7 +473,8 @@ def test_csv_file_bytes_carry_no_invisible_prefix(tmp_path: Path) -> None:
     line-terminator code points carried over from the upstream payload.
 
     Threat model: the CSV file is committed to the repository via the
-    ``generate-stats.yml`` workflow and is therefore a public artefact.
+    IFTTT-triggered ``update-cycle.yml`` workflow and is therefore a
+    public artefact.
     A row that carries an invisible character may render identically
     to a benign row in a quick visual review (or in a SIEM dashboard's
     line-summary column) but exhibit different behaviour downstream

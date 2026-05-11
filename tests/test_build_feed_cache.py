@@ -67,7 +67,6 @@ def test_collect_items_missing_cache_logs_warning(
     assert cache_warnings == {
         "Cache für Provider 'wl' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
-        "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'baustellen' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'stammstrecke' leer – generiere Feed ohne aktuelle Daten.",
     }
@@ -121,7 +120,6 @@ def test_main_runs_without_network(
     assert set(cache_messages) == {
         "Cache für Provider 'wl' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
-        "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'baustellen' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'stammstrecke' leer – generiere Feed ohne aktuelle Daten.",
     }
@@ -139,22 +137,22 @@ def test_collect_items_reads_from_cache(monkeypatch: pytest.MonkeyPatch) -> None
     monkeypatch.setattr(build_feed, "read_cache", fake_read_cache)
     monkeypatch.setenv("WL_ENABLE", "1")
     monkeypatch.setenv("OEBB_ENABLE", "1")
-    monkeypatch.setenv("VOR_ENABLE", "1")
     # Stammstrecke uses a fixed-path cache (not via read_cache); disable
     # it here so this assertion only counts the read_cache-backed
-    # providers (wl/oebb/vor/baustellen).
+    # providers (wl/oebb/baustellen). VOR is no longer a Disruption-
+    # cache provider — VOR API access is scoped to the Stammstrecke
+    # delay monitor (operator policy 2026-05-11).
     monkeypatch.setenv("STAMMSTRECKE_ENABLE", "0")
     # Need to refresh config to pick up env vars because we removed auto-refresh
     build_feed.refresh_from_env()
 
     items = build_feed._collect_items()
 
-    assert len(calls) == 4
-    assert set(calls) == {"wl", "oebb", "vor", "baustellen"}
+    assert len(calls) == 3
+    assert set(calls) == {"wl", "oebb", "baustellen"}
     assert sorted(items, key=lambda item: item["provider"]) == [
         {"provider": "baustellen"},
         {"provider": "oebb"},
-        {"provider": "vor"},
         {"provider": "wl"},
     ]
 

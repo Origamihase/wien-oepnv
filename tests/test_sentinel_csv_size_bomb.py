@@ -107,14 +107,6 @@ def test_precondition_update_station_directory_cap_exists() -> None:
     assert usd.MAX_CSV_LOCATIONS_BYTES >= 1_000_000
 
 
-def test_precondition_update_vor_stations_cap_exists() -> None:
-    import scripts.update_vor_stations as uvs
-
-    assert isinstance(uvs.MAX_VOR_CSV_BYTES, int)
-    assert uvs.MAX_VOR_CSV_BYTES > 0
-    assert uvs.MAX_VOR_CSV_BYTES >= 1_000_000
-
-
 def test_precondition_update_wl_stations_cap_exists() -> None:
     import scripts.update_wl_stations as uws
 
@@ -303,24 +295,6 @@ def test_load_vor_stops_rejects_oversized_csv(
 
     stops = usd.load_vor_stops(csv_path)
     assert stops == []
-
-
-# ============================================================================
-# scripts/update_vor_stations.py — _dict_reader
-# ============================================================================
-
-
-def test_update_vor_stations_dict_reader_rejects_oversized_csv(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    import scripts.update_vor_stations as uvs
-
-    csv_path = tmp_path / "vor.csv"
-    monkeypatch.setattr(uvs, "MAX_VOR_CSV_BYTES", 1024)
-    _write_oversized_csv(csv_path, 4096)
-
-    rows = list(uvs._dict_reader(csv_path))
-    assert rows == []
 
 
 # ============================================================================

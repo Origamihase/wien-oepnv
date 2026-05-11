@@ -86,9 +86,7 @@ and threat-indexed-helper-routed.
 
 from __future__ import annotations
 
-import os
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 
@@ -402,134 +400,6 @@ def test_check_complexity_parse_baseline_accepts_normal(tmp_path: Path) -> None:
 
 
 # ============================================================================
-# scripts/update_vor_cache.py — _seed_station_ids_from_file
-# ============================================================================
-
-
-def test_update_vor_cache_seed_skips_oversized(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """Pre-fix: ``_seed_station_ids_from_file`` reads
-    ``data/vor_station_ids_wien.txt`` via
-    ``station_file.read_text(encoding="utf-8")`` with NO size cap. A
-    planted huge file at the seed path raises ``MemoryError`` at
-    startup of the daily VOR cache update.
-
-    Post-fix: ``read_capped_text`` returns ``None`` and the function
-    silently returns (no env var seeded)."""
-    import sys
-
-    repo_root = Path(__file__).resolve().parents[1]
-    sys.path.insert(0, str(repo_root))
-    try:
-        from scripts import update_vor_cache
-    finally:
-        sys.path.pop(0)
-
-    poisoned = tmp_path / "vor_station_ids_wien.txt"
-    _write_oversized_text(poisoned, 4096)
-
-    # Patch the resolved path to point to our poisoned fixture
-    fake_repo_root = tmp_path
-    fake_data = fake_repo_root / "data"
-    fake_data.mkdir(exist_ok=True)
-    seed_file = fake_data / "vor_station_ids_wien.txt"
-    _write_oversized_text(seed_file, 4096)
-
-    monkeypatch.setattr(update_vor_cache, "REPO_ROOT", fake_repo_root)
-    monkeypatch.setattr(update_vor_cache, "MAX_VOR_STATION_IDS_FILE_BYTES", 1024)
-    monkeypatch.delenv("VOR_STATION_IDS", raising=False)
-
-    # Mock ``vor_station_ids`` to return empty so the function falls
-    # through to the file read branch
-    with patch("src.utils.stations.vor_station_ids", return_value=()):
-        update_vor_cache._seed_station_ids_from_file()
-
-    # Oversized file → no env var seeded
-    assert "VOR_STATION_IDS" not in os.environ
-
-
-def test_update_vor_cache_seed_accepts_normal(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """Regression: normal seed files still populate the env var."""
-    import sys
-
-    repo_root = Path(__file__).resolve().parents[1]
-    sys.path.insert(0, str(repo_root))
-    try:
-        from scripts import update_vor_cache
-    finally:
-        sys.path.pop(0)
-
-    fake_repo_root = tmp_path
-    fake_data = fake_repo_root / "data"
-    fake_data.mkdir(exist_ok=True)
-    seed_file = fake_data / "vor_station_ids_wien.txt"
-    seed_file.write_text("123\n456\n789\n", encoding="utf-8")
-
-    monkeypatch.setattr(update_vor_cache, "REPO_ROOT", fake_repo_root)
-    monkeypatch.delenv("VOR_STATION_IDS", raising=False)
-
-    with patch("src.utils.stations.vor_station_ids", return_value=()):
-        update_vor_cache._seed_station_ids_from_file()
-
-    assert os.environ.get("VOR_STATION_IDS") == "123,456,789"
-    # Cleanup
-    monkeypatch.delenv("VOR_STATION_IDS", raising=False)
-
-
-# ============================================================================
-# scripts/update_vor_stations.py — _read_station_ids_from_file
-# ============================================================================
-
-
-def test_update_vor_stations_read_ids_rejects_oversized(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """Pre-fix: ``_read_station_ids_from_file`` reads operator-supplied
-    station ID files via ``path.read_text(encoding="utf-8")`` with NO
-    size cap.
-
-    Post-fix: ``read_capped_text`` returns ``None`` and the function
-    returns ``[]``."""
-    import sys
-
-    repo_root = Path(__file__).resolve().parents[1]
-    sys.path.insert(0, str(repo_root))
-    try:
-        from scripts import update_vor_stations
-    finally:
-        sys.path.pop(0)
-
-    poisoned = tmp_path / "ids.csv"
-    _write_oversized_text(poisoned, 4096)
-
-    monkeypatch.setattr(update_vor_stations, "MAX_VOR_STATION_IDS_FILE_BYTES", 1024)
-
-    result = update_vor_stations._read_station_ids_from_file(poisoned)
-    assert result == []
-
-
-def test_update_vor_stations_read_ids_accepts_normal(tmp_path: Path) -> None:
-    """Regression: normal CSV files still parse correctly."""
-    import sys
-
-    repo_root = Path(__file__).resolve().parents[1]
-    sys.path.insert(0, str(repo_root))
-    try:
-        from scripts import update_vor_stations
-    finally:
-        sys.path.pop(0)
-
-    ids_file = tmp_path / "ids.csv"
-    ids_file.write_text("123,456\n789\n", encoding="utf-8")
-
-    result = update_vor_stations._read_station_ids_from_file(ids_file)
-    assert sorted(result) == ["123", "456", "789"]
-
-
-# ============================================================================
 # scripts/fetch_google_places_stations.py — _write_if_changed
 # ============================================================================
 
@@ -595,13 +465,9 @@ def test_round7_inventory_constants() -> None:
         from scripts import (
             check_complexity,
             fetch_google_places_stations,
-            update_vor_cache,
-            update_vor_stations,
         )
 
         assert check_complexity.MAX_BASELINE_FILE_BYTES > 0
         assert fetch_google_places_stations.MAX_STATIONS_FILE_BYTES > 0
-        assert update_vor_cache.MAX_VOR_STATION_IDS_FILE_BYTES > 0
-        assert update_vor_stations.MAX_VOR_STATION_IDS_FILE_BYTES > 0
     finally:
         sys.path.pop(0)

@@ -140,9 +140,9 @@ def write_stations(path: Path, stations: Sequence[StationEntry]) -> None:
     # Unicode line / paragraph separators, the BOM / ZWNBSP, and the 8-bit
     # C1 terminal-escape primitives) from every reachable string in the
     # incoming stations BEFORE ``json.dumps``. ``data/stations.json`` is
-    # committed to ``main`` by the cron pipeline (``update-stations.yml``
-    # weekly + ``update-google-places-stations.yml`` manual escape hatch)
-    # and rendered via ``cat`` / ``less`` / the GitHub web UI / IDE preview.
+    # committed to ``main`` by the weekly ``update-stations.yml`` cron job
+    # (the OSM-first / Google-Places-fallback runs as a step there) and
+    # rendered via ``cat`` / ``less`` / the GitHub web UI / IDE preview.
     # ``ensure_ascii=False`` is preserved at the writer below so legitimate
     # German station names (umlauts ä/ö/ü/Ä/Ö/Ü + sharp s ß + every other
     # safe Unicode code point) stay compact in the weekly commit diff;

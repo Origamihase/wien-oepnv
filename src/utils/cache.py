@@ -362,9 +362,9 @@ def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) 
     # C1 terminal-escape primitives) from every reachable string in the
     # incoming items BEFORE the data-degradation guard count, sort, and
     # ``json.dump``. ``cache/<provider>/events.json`` is committed to ``main``
-    # by the cron pipeline (``update-vor-cache.yml``,
-    # ``update-wl-cache.yml``, ``update-oebb-cache.yml``,
-    # ``update-baustellen-cache.yml``) and rendered via ``cat`` / ``less`` /
+    # by the IFTTT-triggered ``update-cycle.yml`` (and by the
+    # ``update-vor-cache.yml`` / ``manual-full-refresh.yml`` operator-only
+    # escape hatches) and rendered via ``cat`` / ``less`` /
     # the GitHub web UI / IDE preview. ``ensure_ascii=False`` is preserved at
     # the writer below so legitimate German content (umlauts ä/ö/ü/Ä/Ö/Ü +
     # sharp s ß + every other safe Unicode code point) stays compact in the

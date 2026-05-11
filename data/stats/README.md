@@ -13,7 +13,10 @@ One file per calendar year. Files are opened in append mode; rotation
 on the year boundary is handled by the writers in
 [`src/utils/stats.py`](../../src/utils/stats.py).
 
-Files are committed automatically by the
-[`generate-stats.yml`](../../.github/workflows/generate-stats.yml)
-workflow (cron `15 0 * * *`) alongside the regenerated
-[`docs/statistik.md`](../../docs/statistik.md) dashboard.
+Files are committed automatically by
+[`update-cycle.yml`](../../.github/workflows/update-cycle.yml)
+(IFTTT-triggered ~30-min cadence) alongside the regenerated
+[`docs/statistik.md`](../../docs/statistik.md) dashboard. The
+dashboard refresh inside that workflow is gated to the first cycle
+tick after midnight Europe/Vienna; the underlying CSV ledger
+commits on every cycle tick.

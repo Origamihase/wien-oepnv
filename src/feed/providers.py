@@ -96,7 +96,8 @@ def resolve_provider_name(loader: ProviderLoader, env: str | None) -> str:
 def register_default_providers() -> None:
     register_provider("WL_ENABLE", read_cache_wl, cache_key="wl")
     register_provider("OEBB_ENABLE", read_cache_oebb, cache_key="oebb")
-    register_provider("VOR_ENABLE", read_cache_vor, cache_key="vor")
+    # VOR is intentionally absent — see DEFAULT_PROVIDERS in build_feed.py.
+    # VOR API is Stammstrecke-only since 2026-05-11.
     register_provider("BAUSTELLEN_ENABLE", read_cache_baustellen, cache_key="baustellen")
     register_provider(
         "STAMMSTRECKE_ENABLE", read_cache_stammstrecke, cache_key="stammstrecke"
@@ -228,10 +229,6 @@ def read_cache_oebb() -> list[Any]:
     return list(read_cache("oebb"))
 
 
-def read_cache_vor() -> list[Any]:
-    return list(read_cache("vor"))
-
-
 def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen"))
 
@@ -278,7 +275,6 @@ __all__ = [
     "read_cache_baustellen",
     "read_cache_oebb",
     "read_cache_stammstrecke",
-    "read_cache_vor",
     "read_cache_wl",
     "register_provider",
     "resolve_provider_name",

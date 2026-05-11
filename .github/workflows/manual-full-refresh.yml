@@ -5,15 +5,17 @@ name: Manual full refresh
 # einfacher "alles neu"-Trigger – die regulaer geplanten Einzel-Workflows
 # bleiben unveraendert bestehen.
 #
-# 2026-05-09: VOR-Cache und VOR-Haltestellen-Refresh wurden aus diesem
-# Workflow entfernt, damit der projektweite VOR-API-Verbrauch unter der
-# VAO-Start-Tier-Quota (100/Tag) bleibt. Der Stammstrecke-Monitor ist
-# der einzige zugelassene auto-laufende VOR-API-Konsument; das
-# Stationsverzeichnis nutzt die gepinnte ``data/vor-haltestellen.csv``.
-# Bei Bedarf koennen ``update-vor-cache.yml`` und
-# ``scripts/fetch_vor_haltestellen.py`` weiterhin manuell via
-# workflow_dispatch ausgefuehrt werden — der Operator akzeptiert dann
-# bewusst den Quota-Verbrauch.
+# 2026-05-11: VOR ist projektweit auf den Stammstrecken-Verspätungs-
+# Monitor beschränkt (Operator-Policy "VOR nur noch für die
+# Verspätungen der Stammstrecke"). Der Monitor läuft als Schritt
+# unten in diesem Workflow und in ``update-cycle.yml`` (~30 Min).
+# VOR-Cache- und VOR-Haltestellen-Refresh sind aus dem automatisierten
+# Stations-Pfad entfernt; das Stationsverzeichnis nutzt die gepinnte
+# ``data/vor-haltestellen.csv``. Bei Bedarf können die Helper-Scripts
+# (``scripts/update_vor_cache.py``, ``scripts/update_vor_stations.py``,
+# ``scripts/fetch_vor_haltestellen.py``) weiterhin als lokaler Direkt-
+# aufruf gestartet werden — der Operator akzeptiert dann bewusst den
+# Quota-Verbrauch außerhalb der 96 Stammstrecke-Calls/Tag.
 
 on:
   workflow_dispatch:
@@ -134,8 +136,9 @@ jobs:
       # vom Operator gestartet — das ist eine bewusste Override-Aktion,
       # die das gesamte Projekt frisch ziehen soll. Die einmal-pro-Tag-
       # Vereinbarung fuer ``docs/statistik.md`` ist ein Schutz vor der
-      # *automatischen* 30-min-Churn (cron in ``update-cycle.yml`` und
-      # push-getriggertes ``build-feed.yml``); ein expliziter Operator-
+      # *automatischen* 30-min-Churn (IFTTT-getriggertes
+      # ``update-cycle.yml`` und push-getriggertes ``build-feed.yml``);
+      # ein expliziter Operator-
       # Trigger soll daran nicht scheitern.
       - name: Refresh statistics dashboard and README snapshot
         run: python scripts/generate_markdown_stats.py

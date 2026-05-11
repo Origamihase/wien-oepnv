@@ -64,14 +64,12 @@ MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 
 _SCRIPT_ORDER = (
     "update_station_directory.py",
-    "update_vor_stations.py",
     "update_wl_stations.py",
     "enrich_station_aliases.py",
 )
 
 _SCRIPT_OUTPUT_FLAG = {
     "update_station_directory.py": "--output",
-    "update_vor_stations.py": "--stations",
     "update_wl_stations.py": "--stations",
     "enrich_station_aliases.py": "--stations",
 }

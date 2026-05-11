@@ -177,7 +177,11 @@ def _google_cache_args() -> tuple[str, ...]:
 
 _CACHE_REFRESH_TARGETS: tuple[CacheRefreshTarget, ...] = (
     CacheRefreshTarget("ÖBB", ("update_oebb_cache.py",)),
-    CacheRefreshTarget("VOR", ("update_vor_cache.py",)),
+    # VOR was removed from the station-directory refresh path on
+    # 2026-05-11 per operator policy: VOR is now used only for the
+    # Stammstrecke delay monitor (every 30 min, via update-cycle.yml).
+    # The station directory uses the pinned ``data/vor-haltestellen.csv``
+    # snapshot for VOR stop IDs.
     CacheRefreshTarget("Wiener Linien", ("update_wl_cache.py",)),
     CacheRefreshTarget(
         "Google Places",

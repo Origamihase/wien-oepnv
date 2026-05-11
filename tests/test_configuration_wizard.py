@@ -45,7 +45,6 @@ def test_format_env_document_includes_secret_placeholder(tmp_path: Path) -> None
         "STATE_RETENTION_DAYS": "60",
         "WL_ENABLE": "true",
         "OEBB_ENABLE": "true",
-        "VOR_ENABLE": "true",
         "BAUSTELLEN_ENABLE": "true",
     }
     document = wizard.format_env_document(managed, {})
@@ -69,7 +68,6 @@ def test_format_env_document_escapes_newlines() -> None:
         "STATE_RETENTION_DAYS": "60",
         "WL_ENABLE": "true",
         "OEBB_ENABLE": "true",
-        "VOR_ENABLE": "true",
         "BAUSTELLEN_ENABLE": "true",
     }
 

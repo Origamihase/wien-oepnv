@@ -6,14 +6,16 @@ Drift Round 10* closing-checklist named but deferred —
 (``data/vor_request_count.json``), and ``write_status``
 (``cache/<provider>/last_run.json``).
 
-All three files are committed to ``main`` by the cron pipeline:
+All three files are committed to ``main`` by the automated pipeline:
 
-  * ``data/places_quota.json`` — ``update-google-places-stations.yml``
-    line 160 (``git add data/places_quota.json``).
-  * ``data/vor_request_count.json`` — ``update-vor-cache.yml`` line 97
-    (``file_pattern: data/vor_request_count.json``) and
-    ``update-stammstrecke-status.yml`` line 96 (same file_pattern).
-  * ``cache/vor*/last_run.json`` — ``update-vor-cache.yml`` line 96
+  * ``data/places_quota.json`` — by the weekly ``update-stations.yml``
+    cron job (the OSM-first / Google-Places-fallback step charges
+    against this quota and writes the persisted counter).
+  * ``data/vor_request_count.json`` — by the IFTTT-triggered
+    ``update-cycle.yml`` (Stammstrecke step) and by the
+    ``update-vor-cache.yml`` operator-only escape hatch
+    (``file_pattern: data/vor_request_count.json``).
+  * ``cache/vor*/last_run.json`` — by ``update-vor-cache.yml``
     (``file_pattern: cache/vor*/last_run.json``).
 
 They are operator-facing artefacts — ``cat`` / ``less`` / the GitHub
@@ -46,9 +48,11 @@ populated from internal helpers (``current_month_key`` /
 accepts any string. A future schema-drift addition or an operator
 mis-edit of the on-disk file would slip a planted BiDi mark straight
 through to the next ``save_atomic`` write — the file is committed to
-``main`` by ``update-google-places-stations.yml`` and rendered via
-``cat`` / ``less`` / the GitHub web UI / IDE preview, where the BiDi
-reversal of the surrounding bytes hides the attack from review.
+``main`` by the weekly ``update-stations.yml`` cron job (the OSM-first
+/ Google-Places-fallback step charges against this quota and writes
+the persisted counter) and rendered via ``cat`` / ``less`` / the
+GitHub web UI / IDE preview, where the BiDi reversal of the
+surrounding bytes hides the attack from review.
 
 Attack path for ``save_request_count``'s writer
 ================================================
