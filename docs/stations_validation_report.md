@@ -13,16 +13,16 @@
 
 ## GTFS mismatches
 - code:Aw / source:oebb,osm (St.Andrä-Wördern) → missing stop_id 430482400
-- code:Ko  H2 / source:oebb,osm (Spillern) → missing stop_id 430481400
+- code:Ko H2 / source:oebb,osm (Spillern) → missing stop_id 430481400
 - code:Kr / source:oebb,osm (Krems a.d.Donau) → missing stop_id 430399300
 - code:Ach / source:oebb,osm (Achau) → missing stop_id 430300800
 - code:Kz / source:oebb,osm (Kritzendorf) → missing stop_id 430399500
 - code:Laa / source:oebb,osm (Laa a.d.Thaya) → missing stop_id 430401500
-- code:Lb  H1 / source:oebb,osm (Sollenau) → missing stop_id 430480100
+- code:Lb H1 / source:oebb,osm (Sollenau) → missing stop_id 430480100
 - code:Lx / source:oebb,osm (Laxenburg-Biedermannsdorf) → missing stop_id 430406200
 - code:Mae / source:oebb,osm (Maria Ellend) → missing stop_id 430414200
 - code:Mar / source:oebb,osm (Maria Lanzendorf) → missing stop_id 430416500
-- code:Md  H2 / source:oebb,osm (Gumpoldskirchen) → missing stop_id 430360200
+- code:Md H2 / source:oebb,osm (Gumpoldskirchen) → missing stop_id 430360200
 - code:Bde / source:oebb,osm (Bad Deutsch Altenburg) → missing stop_id 430307900
 - code:Beh / source:oebb,osm (Bernhardsthal) → missing stop_id 430316200
 - code:Mue / source:oebb,osm (Münchendorf) → missing stop_id 430423100
@@ -38,19 +38,19 @@
 - code:Reg / source:oebb,osm (Regelsbrunn) → missing stop_id 430463900
 - code:Reg H1 / source:oebb,osm (Wildungsmauer) → missing stop_id 430523500
 - code:Rw / source:oebb,osm (Rekawinkel) → missing stop_id 430465100
-- code:Mb  H1H / source:oebb,osm (Mistelbach Stadt) → missing stop_id 430420400
+- code:Mb H1H / source:oebb,osm (Mistelbach Stadt) → missing stop_id 430420400
 - code:Sbl / source:oebb,osm (Siebenbrunn-Leopoldsdorf) → missing stop_id 430476400
 - code:Sbl H1 / source:oebb,osm (Untersiebenbrunn) → missing stop_id 430509000
 - code:Sfl / source:oebb,osm (Schönfeld-Lassee) → missing stop_id 430474500
 - code:Tat / source:oebb,osm (Tattendorf) → missing stop_id 430497800
 - code:Tat H1 / source:oebb,osm (Teesdorf) → missing stop_id 430498300
 - code:Ti / source:oebb,osm (Traiskirchen Aspangbahn) → missing stop_id 430499500
-- code:Ti  K1 / source:oebb,osm (Trumau) → missing stop_id 430502300
-- code:Tn  H1 / source:oebb,osm (Pottschach) → missing stop_id 430876000
+- code:Ti K1 / source:oebb,osm (Trumau) → missing stop_id 430502300
+- code:Tn H1 / source:oebb,osm (Pottschach) → missing stop_id 430876000
 - code:Tus / source:oebb,osm (Tulln Stadt) → missing stop_id 430505700
-- code:Wg  H1 / source:oebb,osm (Helmahof) → missing stop_id 430329200
+- code:Wg H1 / source:oebb,osm (Helmahof) → missing stop_id 430329200
 - code:Wp / source:oebb,osm (Wampersdorf) → missing stop_id 430514700
-- code:Wp  H1 / source:oebb,osm (Pottendorf-Landegg) → missing stop_id 430456200
+- code:Wp H1 / source:oebb,osm (Pottendorf-Landegg) → missing stop_id 430456200
 - code:Bvs H1 / source:oebb,osm (Kottingbrunn) → missing stop_id 430398900
 - code:Zs / source:oebb,osm (Lanzendorf-Rannersdorf) → missing stop_id 430405400
 - code:Drg / source:oebb,osm (Drösing) → missing stop_id 430330900
@@ -70,10 +70,10 @@
 - code:Him / source:oebb,osm (Himberg) → missing stop_id 430374600
 - code:Hlu / source:oebb,osm (Haslau an der Donau) → missing stop_id 430370600
 - code:Hnd / source:oebb,osm (Hennersdorf) → missing stop_id 430372300
-- code:Hu  H2 / source:oebb,osm (Maria Anzbach) → missing stop_id 430414000
-- code:Hu  H4 / source:oebb,osm (Neulengbach Stadt) → missing stop_id 430433800
-- code:F   H2S / source:oebb,osm (Langenzersdorf) → missing stop_id 430404500
-- code:F   H3S / source:oebb,osm (Bisamberg) → missing stop_id 430317000
+- code:Hu H2 / source:oebb,osm (Maria Anzbach) → missing stop_id 430414000
+- code:Hu H4 / source:oebb,osm (Neulengbach Stadt) → missing stop_id 430433800
+- code:F H2S / source:oebb,osm (Langenzersdorf) → missing stop_id 430404500
+- code:F H3S / source:oebb,osm (Bisamberg) → missing stop_id 430317000
 - code:900106 / source:vor (Guntramsdorf Bahnhof) → missing stop_id 430361600
 - code:900107 / source:vor (Guntramsdorf-Kaiserau) → missing stop_id 430361700
 - code:900108 / source:vor (Hainburg Kulturfabrik) → missing stop_id 430368100
