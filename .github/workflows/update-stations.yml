@@ -9,9 +9,10 @@ name: Update station directory
 #   run; free open data, no auth.
 # * Wien OGD ``wienerlinien-ogd-haltestellen``/``-haltepunkte`` CSVs —
 #   ``update_wl_stations.py`` downloads the latest snapshot from
-#   data.wien.gv.at on every run (``--download`` default-on) with
-#   graceful fallback to the pinned local CSV on upstream outage;
-#   free open data, no auth.
+#   the canonical Wiener Linien OGD host
+#   (``www.wienerlinien.at/ogd_realtime/doku/ogd/``) on every run
+#   (``--download`` default-on) with graceful fallback to the pinned
+#   local CSV on upstream outage; free open data, no auth.
 # * OSM Overpass — ``_enrich_with_osm`` queries Overpass via the
 #   ``WIEN_OEPNV_OSM_ENRICH=1`` env (toggled below by the Overpass
 #   smoke check); free open data, retried.
