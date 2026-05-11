@@ -2,12 +2,13 @@
 """Monitor delays on the S-Bahn Stammstrecke (Wien Floridsdorf ↔ Wien Meidling).
 
 Queries direct S-Bahn connections via the VOR/VAO ReST ``/trip`` endpoint
-for **both directions** independently and emits up to two schema-compliant
-events into ``cache/stammstrecke/events.json`` — one per direction whose
-**median** departure delay exceeds :data:`DELAY_THRESHOLD_MINUTES`
-minutes. Directions are evaluated strictly separately because merging
-both into a single sample dilutes the signal — a station with a major
-incident in one direction often runs normally in the opposite direction.
+for **both directions** independently and appends one CSV row per
+direction whose **mean** departure delay over the queried S-Bahn legs
+exceeds :data:`DELAY_THRESHOLD_MINUTES` minutes (legs without realtime
+signal are skipped — status unknown ≠ on-time). Directions are
+evaluated strictly separately because merging both into a single sample
+dilutes the signal — a station with a major incident in one direction
+often runs normally in the opposite direction.
 
 Migration history
 -----------------
@@ -27,14 +28,14 @@ Design contract
 
 - **Two-direction split**: each cron tick runs two ``/trip`` calls — one
   ``Floridsdorf → Meidling`` and one ``Meidling → Floridsdorf``. Each
-  call's medians and events are computed independently. The cache
-  output contains 0, 1, or 2 events depending on which direction(s)
-  exceeded the threshold.
+  call's per-sample mean is computed independently and persisted to
+  the CSV ledger; the feed builder later reads those rows to emit at
+  most one event per direction.
 - **Direct-connection filter**: only single-ride-leg trips are eligible
-  for the median. The VAO ``maxChange=0`` query parameter gives the
-  upstream a hint, and a client-side leg-count check is the second
-  layer of defence — so a multi-stop trip the API still returns under
-  ``maxChange=0`` does not bleed into the signal.
+  for the per-sample mean. The VAO ``maxChange=0`` query parameter
+  gives the upstream a hint, and a client-side leg-count check is the
+  second layer of defence — so a multi-stop trip the API still returns
+  under ``maxChange=0`` does not bleed into the signal.
 - **S-Bahn product filter**: the eligible leg must carry an S-Bahn
   product label. We accept either ``leg.category in {"S","SB"}``,
   ``leg.name`` matching ``S\\d+``, or ``leg.Product[].catOut`` /
@@ -45,7 +46,8 @@ Design contract
 
       * the API is unreachable (``RequestException``,
         ``CircuitBreakerOpen``, JSON decode failure, malformed payload);
-      * the median for *all* monitored directions is ``≤ 9`` minutes.
+      * the per-sample mean for *all* monitored directions is
+        ``≤ 9`` minutes.
 
   This keeps the RSS feed free of stale warnings — a transient blip or
   recovery becomes invisible to feed readers within at most one cron
@@ -139,18 +141,18 @@ MEIDLING_VOR_ID = "490101500"
 FLORIDSDORF_CANONICAL_SEED = "Wien Floridsdorf"
 MEIDLING_CANONICAL_SEED = "Wien Meidling"
 
-# Threshold above which the median delay of a direction generates a feed
-# entry. The user-facing semantics are "more than 9 minutes" — a median
-# of exactly 9 minutes does NOT trigger the event.
+# Threshold above which the per-sample mean delay of a direction
+# generates a feed entry. The user-facing semantics are "more than 9
+# minutes" — a value of exactly 9 minutes does NOT trigger the event.
 DELAY_THRESHOLD_MINUTES = 9
 
 # Number of trips to fetch per direction in a single ``/trip`` call.
 # Pinned to ``6`` — the VAO contractual maximum (``numF`` accepts 1..6,
 # see ``docs/reference/trip.md``). The 30-minute cron tick combined
 # with ``maxChange=0`` typically yields 4-6 S-Bahn legs after the
-# product filter; pinning at the API ceiling maximises the median's
-# sample size without inflating the per-day quota cost (the VAO
-# response size is identical between numF=5 and numF=6).
+# product filter; pinning at the API ceiling maximises the sample's
+# size without inflating the per-day quota cost (the VAO response
+# size is identical between numF=5 and numF=6).
 MAX_TRIPS_PER_QUERY = 6
 
 # Per-call HTTP budget (seconds). Enforced at the ``fetch_content_safe``
@@ -280,8 +282,8 @@ def _format_minutes(value: float) -> str:
     """Format *value* as a German-readable minute count.
 
     ``round(x, 1)`` followed by ``:g`` strips trailing ``.0`` so a
-    whole-minute median renders as ``"12"`` rather than ``"12.0"``,
-    while a fractional median keeps its single decimal (``"12.5"``).
+    whole-minute value renders as ``"12"`` rather than ``"12.0"``,
+    while a fractional value keeps its single decimal (``"12.5"``).
     """
 
     rounded = round(value, 1)
@@ -377,7 +379,7 @@ def _query_trips(
         "numF": str(MAX_TRIPS_PER_QUERY),
         # Force direct connections — the only Stammstrecke-relevant
         # signal is the per-S-Bahn-leg delay, and a transfer would
-        # dilute the median with the (irrelevant) waiting time.
+        # dilute the sample with the (irrelevant) waiting time.
         "maxChange": "0",
         # Enable server-side realtime data so ``Origin.rtTime`` is
         # populated when available.
@@ -538,7 +540,7 @@ def _parse_vao_dt(date_str: Any, time_str: Any) -> datetime | None:
     time_txt = str(time_str or "").strip()
     if time_txt:
         # VAO returns either ``HH:MM:SS`` or ``HH:MM`` — accept both by
-        # truncating to ``HH:MM`` (the median-aggregation arithmetic
+        # truncating to ``HH:MM`` (the per-sample mean arithmetic
         # below operates on minutes, so dropping seconds is lossless
         # in practice and avoids strptime branching).
         time_txt = time_txt[:5]
@@ -557,28 +559,28 @@ def _leg_departure_delay_minutes(leg: Mapping[str, Any]) -> float | None:
     Computes ``Origin.rtTime - Origin.time`` (resp. ``rtDepTime -
     depTime`` on legacy peers) in minutes:
 
-    * **On-time (rtTime missing)** — VAO parsimoniously omits
-      ``rtTime`` when realtime data confirms an on-time departure
-      (echoing ``time`` would double the response size for the
-      majority of trips). The 2026-05-09 Senior-API-Integration audit
-      established that *missing* ``rtTime`` MUST be treated as
-      ``0.0`` minutes rather than skipped — skipping it would exclude
-      every on-time train from the median, biasing the result so far
-      upward that an off-peak window with a single delayed train would
-      cross the 9-minute threshold and emit a spurious feed event.
-    * **On-time (rtTime == time)** — falls through the same arithmetic
-      and yields exactly ``0.0`` minutes.
+    * **rtTime missing** — returns ``None`` (status *unknown*). VAO
+      omits ``rtTime`` both when realtime confirms on-time AND when
+      no realtime signal is available for the leg; without a way to
+      tell the two cases apart, coercing missing rtTime to ``0.0``
+      systematically biased the sample downward (the 2026-05 ledger
+      ran at ~88% exact zeros and 0.2 min mean over 30 days, masking
+      real delays). Treating the field as "no signal" excludes the
+      leg from the sample so the statistic reflects only legs whose
+      status was genuinely observed.
+    * **On-time (rtTime == time)** — yields exactly ``0.0`` minutes,
+      an explicit on-time signal from the upstream.
     * **Cancelled** — returns ``None`` (no signal; cancelled trains
       are not "delayed", they are "absent").
     * **Schedule unparseable** — returns ``None`` (the leg cannot
-      contribute a meaningful delay value to the median).
+      contribute a meaningful delay value).
     * **Realtime field present but unparseable** — returns ``None``
       (a malformed ``rtTime`` is treated like a missing schedule
       rather than silently coerced to zero).
 
     Negative delays (early departure) are possible at the timetable
-    level and contribute negative values to the median, which is
-    still meaningful — keep them.
+    level and contribute negative values, which is still meaningful
+    — keep them.
     """
 
     origin = leg.get("Origin")
@@ -595,8 +597,7 @@ def _leg_departure_delay_minutes(leg: Mapping[str, Any]) -> float | None:
 
     rt_time = origin.get("rtTime") or origin.get("rtDepTime")
     if not rt_time:
-        # On-time per VAO contract — see docstring.
-        return 0.0
+        return None
 
     rt_date = origin.get("rtDate") or origin.get("rtDepDate") or sched_date
     actual = _parse_vao_dt(rt_date, rt_time)
@@ -616,14 +617,13 @@ def _collect_sbahn_delays_minutes(
     * **Direct only** — exactly one ride leg in ``LegList.Leg``.
       Walk-only segments before/after the ride are tolerated; multi-ride
       trips (changes) are rejected because the change-waiting time would
-      dilute the median.
+      dilute the sample.
     * **S-Bahn only** — the single ride leg must pass
       :func:`_is_sbahn_leg`.
     * **Cancellation excluded** — a cancelled leg has no delay signal.
-    * **On-time legs counted** — :func:`_leg_departure_delay_minutes`
-      returns ``0.0`` (not ``None``) when ``rtTime`` is missing, so
-      on-time S-Bahn departures contribute to the median rather than
-      being silently dropped.
+    * **Missing realtime excluded** — a leg without ``rtTime`` returns
+      ``None`` from :func:`_leg_departure_delay_minutes` (status
+      unknown, not implicitly on-time) and is dropped here.
     """
 
     delays: list[float] = []
@@ -1021,7 +1021,7 @@ def _process_direction(
     Returns one of:
 
     * ``"ok"`` — direction succeeded, observation appended to the CSV
-      ledger (regardless of whether the median exceeds the feed
+      ledger (regardless of whether the sample mean exceeds the feed
       threshold; threshold-gating now happens in
       :mod:`src.feed.stammstrecke` at feed-build time);
     * ``"no_delays"`` — direction succeeded but emitted no S-Bahn legs
@@ -1135,23 +1135,26 @@ def _process_direction(
     if not delays:
         return "no_delays"
 
-    median_minutes = float(statistics.median(delays))
+    mean_minutes = float(statistics.mean(delays))
     LOGGER.info(
-        "Stammstrecke: Richtung %s — Median: %.2f Minuten (Schwelle: %d).",
+        "Stammstrecke: Richtung %s — Mittel: %.2f Minuten (Schwelle: %d).",
         direction.target_label,
-        median_minutes,
+        mean_minutes,
         DELAY_THRESHOLD_MINUTES,
     )
-    # Persist every successful median observation, regardless of whether
-    # it exceeds the feed-trigger threshold. The dashboard's 30-day
-    # value comes from the *full* distribution, and the feed's 1-hour
-    # window threshold-gates against the same rows at feed-build time
-    # (see :mod:`src.feed.stammstrecke`). Single source of truth = this
-    # CSV ledger.
+    # Persist every successful sample, regardless of whether it exceeds
+    # the feed-trigger threshold. The dashboard's 30-day value comes from
+    # the *full* distribution, and the feed's 1-hour window threshold-
+    # gates against the same rows at feed-build time (see
+    # :mod:`src.feed.stammstrecke`). Single source of truth = this CSV
+    # ledger.  The arithmetic mean over the per-cycle leg sample is
+    # used (was median until 2026-05-11): the median collapsed to 0.0
+    # whenever ≥50% of legs were on-time, hiding sample-internal
+    # outliers that real passengers do experience.
     append_stammstrecke_row(
         timestamp=when,
         direction=direction.target_label,
-        delay_minutes=median_minutes,
+        delay_minutes=mean_minutes,
     )
     return "ok"
 

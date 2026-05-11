@@ -138,7 +138,7 @@ BAR_GLYPHS: Final = {
 
 @dataclass(frozen=True)
 class StammstreckeRow:
-    """One Stammstrecke median-delay observation."""
+    """One Stammstrecke per-sample mean-delay observation."""
 
     timestamp: datetime
     weekday: str
@@ -299,8 +299,9 @@ def aggregate_stammstrecke(
 
     *threshold_minutes* mirrors :data:`scripts.update_stammstrecke_status.
     DELAY_THRESHOLD_MINUTES`. A "threshold exceedance" is a single
-    observation whose median delay is *strictly greater* than the
-    threshold — i.e. would have triggered an RSS event.
+    observation whose persisted per-sample mean delay is *strictly
+    greater* than the threshold — i.e. would have contributed to an
+    RSS event.
     """
     weekday_count: dict[str, int] = defaultdict(int)
     weekday_sum: dict[str, float] = defaultdict(float)
