@@ -7,18 +7,39 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 10:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 11:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[65A: Verkehrsunfall]]></title>
+      <title><![CDATA[U1: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">91604c6736684f0d22451554a67ed8dcf423dac3128aa0c83b7bcf4f50344a36</guid>
-      <pubDate>Mon, 11 May 2026 10:09:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 10:30:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 10:09:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">3e8dcb89490f474fe916c72c3536a6cefaf6a6d645b1d00dfac85cedc718d02b</guid>
+      <pubDate>Mon, 11 May 2026 10:55:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 11:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 10:55:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
+      <description>Linie U1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 11:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Schwedenplatz. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie U1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 11:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Schwedenplatz.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d0ca726f4f3064439e34273bfe62cd8cb00619d515176ac7f96f9e089a05e6ac</guid>
+      <pubDate>Mon, 11 May 2026 10:49:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 11:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 10:49:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: Wien Hauptbahnhof ↔ Wien Hütteldorf]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;875216</guid>
+      <pubDate>Mon, 11 May 2026 10:35:00 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 13:24:47 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 10:35:00 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Wien Hütteldorf (U) von 04.07.2026 (ca. 00:35 Uhr) bis 07.09.2026 (ca. 00:54 Uhr) keine Züge fahren. [Seit 11.05.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Wien Hütteldorf (U) von 04.07.2026 (ca. 00:35 Uhr) bis 07.09.2026 (ca. 00:54 Uhr) keine Züge fahren.<br/>[Seit 11.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Mitte ↔ Flughafen Wien / Wien Mitte ↔ Wien Floridsdorf]]></title>
@@ -94,27 +115,6 @@
       <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[09.05.2026 – 11.05.2026]</description>
       <content:encoded><![CDATA[[09.05.2026 – 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
-      <pubDate>Sat, 09 May 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[09.05.2026 – 11.05.2026]</description>
-      <content:encoded><![CDATA[[09.05.2026 – 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Westbahnhof ↔ Wien Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;875289</guid>
-      <pubDate>Fri, 08 May 2026 10:58:06 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 15:26:45 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 08 May 2026 10:58:06 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hbf (U) von 01.06.2026 bis 26.06.2026 die Züge D 347, D 50347 und D 40347 nicht fahren. [Seit 08.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hbf (U) von 01.06.2026 bis 26.06.2026 die Züge D 347, D 50347 und D 40347 nicht fahren.<br/>[Seit 08.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
