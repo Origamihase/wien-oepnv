@@ -352,15 +352,16 @@ damit kurze Stellencodes wie `Sue`/`Su` distinkt bleiben).
 Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert
 `data/stations.json` wöchentlich automatisch (Cron `0 1 * * 0`, Sonntag 01:00 UTC). Pipeline-Schritte:
 
-1. **VOR-Stop-Liste auffrischen** – `scripts/fetch_vor_haltestellen.py`
-   holt die aktuelle Liste vom HAFAS-Endpoint `anachb.vor.at` und
-   überschreibt `data/vor-haltestellen.csv`. Best-effort: bei Netzwerk-
-   oder Rate-Limit-Fehler wird die gepinnte CSV weitergenutzt
-   (`continue-on-error: true`, mit GitHub-`::warning::`).
+1. **VOR-Stop-Liste**: gepinnt in `data/vor-haltestellen.csv`. Seit
+   2026-05-11 wird `scripts/fetch_vor_haltestellen.py` **nicht mehr**
+   automatisch im Pipeline-Lauf aufgerufen (VOR-API ist auf den
+   Stammstrecken-Monitor beschränkt). VOR-Stop-IDs ändern sich nur
+   selten; ein manueller Refresh ist via lokalen Skript-Aufruf möglich.
 2. **Sub-Skripte** (`scripts/update_all_stations.py`) – `update_station_directory.py` →
-   `update_vor_stations.py` → `update_wl_stations.py` → `enrich_station_aliases.py`,
+   `update_wl_stations.py` → `enrich_station_aliases.py`,
    alle gegen ein Temp-File. Erst nach erfolgreicher Validierung wird per
-   `atomic_write` ins Repo zurückkopiert.
+   `atomic_write` ins Repo zurückkopiert. `update_vor_stations.py` wurde
+   2026-05-11 aus dem automatisierten Pfad entfernt.
 3. **Validation-Gate** – die Sub-Skript-Ausgabe wird vom selben Wrapper
    validiert. Vier Kategorien blockieren den Commit (Working Tree bleibt
    bytewise unverändert): `provider_issues`, `cross_station_id_issues`,
@@ -428,9 +429,9 @@ Nachnutzung zu gewährleisten.
 Die wichtigsten GitHub Actions:
 
 - `update-cycle.yml` – die zentrale Refresh-Pipeline. Trigger: `repository_dispatch: ifttt_feed_trigger` (ein externes IFTTT-Applet feuert ~alle 30 Minuten auf :00/:30 — zuverlässiger als der frühere GitHub-Cron `0,30 * * * *`, der am 2026-05-10 in Commit `55ca72f` entfernt wurde) sowie `workflow_dispatch` für manuelle Operator-Läufe. Einziger Job, der in einem Runner sequenziell die Provider-Cache-Fetcher (WL, ÖBB, Baustellen), den VAO-Pre-flight + die Stammstrecke-Abfrage, den Feed-Build (`docs/feed.xml`, `data/first_seen.json`, `data/stats/stoerungen_<YYYY>.csv`) sowie das README-/`docs/statistik.md`-Render ausführt und alles in einem Auto-Commit zusammenfasst. Hält die `external-api-fetch`-Concurrency-Lane, damit nie zwei API-Cycles parallel laufen.
-- `update-vor-cache.yml` – `workflow_dispatch`-only-Escape-Hatch für eine VOR-Cache-Aktualisierung mit explizitem Quota-Acknowledgement; die produktive Aktualisierung läuft im `update-cycle.yml`-Job (WL/ÖBB/Baustellen brauchen keinen Escape-Hatch — sie sind freie APIs ohne Quota).
+- VOR ist **ausschließlich** für den S-Bahn-Stammstrecke-Verspätungs-Monitor in `update-cycle.yml` eingesetzt (`/trip`-Endpunkt, ~96 Calls/Tag von 100 VAO-Start-Tier-Quota). Eine VOR-Disruption-Polling- bzw. Stations-Anreicherungs-Automatisierung gibt es nicht mehr (Entscheidung 2026-05-11). Operator-Direktaufrufe der Helper-Scripts (`scripts/update_vor_cache.py`, `scripts/update_vor_stations.py`, `scripts/fetch_vor_haltestellen.py`) bleiben verfügbar für gezielte manuelle Refreshes — kosten dann bewusst Quota.
 - `build-feed.yml` – Code-Change-Verifikationspfad. Der reguläre Cron wurde 2026-05-09 in `update-cycle.yml` migriert; dieser Workflow läuft nur noch auf `push` (für `src/**`, `requirements.txt`, `pyproject.toml`, `.github/workflows/build-feed.yml`) sowie auf `workflow_dispatch` und baut den Feed aus den vorhandenen Caches neu — ohne neue API-Abfrage.
-- `update-stations.yml` – pflegt wöchentlich (Sonntag 01:00 UTC, Cron `0 1 * * 0`) `data/stations.json`. Die Anreicherungs-Hierarchie ist **OSM-first**: OpenStreetMap (Overpass API) liefert die primären Koordinaten, der vorgeschaltete Smoke-Test (`scripts/check_overpass_status.py`) bricht den OSM-Schritt aber kontrolliert ab, falls der Mirror down ist (siehe `docs/architecture.md` §5). Google Places ist nur als Fallback für Stationen ohne OSM-Koordinaten aktiv. Die Stammstrecke-Abfrage und die tägliche `docs/statistik.md`-Regeneration laufen jeweils als Schritt in `update-cycle.yml`.
+- `update-stations.yml` – pflegt wöchentlich (Sonntag 01:00 UTC, Cron `0 1 * * 0`) `data/stations.json`. Die Anreicherungs-Hierarchie ist **OSM-first**: OpenStreetMap (Overpass API) liefert die primären Koordinaten, der vorgeschaltete Smoke-Test (`scripts/check_overpass_status.py`) bricht den OSM-Schritt aber kontrolliert ab, falls der Mirror down ist (siehe `docs/architecture.md` §5). Google Places ist nur als Fallback für Stationen ohne OSM-Koordinaten aktiv. VOR ist seit 2026-05-11 **nicht mehr** Teil des Stations-Refreshs (VOR-Stop-IDs aus gepinnter `data/vor-haltestellen.csv`). Die Stammstrecke-Abfrage und die tägliche `docs/statistik.md`-Regeneration laufen jeweils als Schritt in `update-cycle.yml`.
 - `manual-full-refresh.yml` – `workflow_dispatch`-only-Komplettlauf für Disaster-Recovery (führt alle Cache-Fetcher + Feed-Build hintereinander aus).
 - `test.yml` & `test-vor-api.yml` – führen die vollständige Test-Suite bzw. VOR-spezifische Integrationstests aus; `test.yml` läuft bei jedem Push sowie Pull Request und stellt die kontinuierliche Testabdeckung sicher.
 - `mypy-strict.yml`, `bandit.yml`, `codeql.yml`, `complexity-gate.yml`, `seo-guard.yml` – ergänzende Qualitäts-Gates (strikte Typprüfung, Security-Lint, CodeQL-Scan, Komplexitäts-Baseline, SEO/Sitemap-Pflege).

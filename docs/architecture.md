@@ -471,46 +471,45 @@ provider input.
 
 ---
 
-## 7. VOR/VAO API Rate-Limit Optimization (2026-05-09)
+## 7. VOR/VAO API — Stammstrecke-only scope (2026-05-11)
 
 Die VOR/VAO ReST API erlaubt **100 Requests pro Tag** (`VAO Start`-
-Kontingent). Nach der Migration des Stammstrecken-Monitors von
-`pyhafas` auf die VOR `/trip`-API (siehe
-[`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md))
-ist der Monitor mit 96 Calls/Tag der dominante VOR-Konsument. Drei
-strikt aufeinander abgestimmte Limits halten das Projekt unter dem
-Tagesbudget:
+Kontingent). Seit 2026-05-11 (Operator-Policy "VOR nur noch für die
+Verspätungen der Stammstrecke") ist der Stammstrecken-Monitor der
+**einzige** automatisierte VOR-Konsument im Projekt. Der frühere
+wöchentliche Station-Enrichment-Pfad
+(`scripts/update_vor_stations.py` via `update-stations.yml`) und das
+optionale Disruption-Polling sind aus den automatisierten Pfaden
+entfernt; VOR-Stop-IDs kommen jetzt ausschließlich aus der gepinnten
+`data/vor-haltestellen.csv`-Snapshot. Siehe
+[`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)
+für Details des Stammstrecken-Monitors.
 
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
 | **Stammstrecke `/trip`** (~alle 30 Min × 2 Richtungen) | 96 | IFTTT-Cadence des `update-cycle.yml`-Triggers, `MAX_TRIPS_PER_QUERY` |
-| **Station-Enrichment `location.name`** (wöchentlich, Stammstrecke-Whitelist) | ~10 (1× pro Woche) | `STAMMSTRECKE_VOR_IDS` in `scripts/update_vor_stations.py` |
-| **Disruption-Polling `departureBoard`** | **0** (default) | `VOR_MONITOR_STATIONS_WHITELIST` env (default: leerer String) |
+| **Station-Enrichment `location.name`** | **0** (Pfad entfernt 2026-05-11) | Operator kann `scripts/update_vor_stations.py` manuell aufrufen; kostet dann bewusst Quota |
+| **Disruption-Polling `departureBoard`** | **0** (default; Pfad nicht mehr automatisiert) | Operator kann `scripts/update_vor_cache.py` mit `VOR_MONITOR_STATIONS_WHITELIST` manuell aufrufen |
 | **Tagesbudget gesamt** | **96 / 100** | — |
 
-Drei zusammenwirkende Mechanismen schützen das Budget:
+Zwei zusammenwirkende Mechanismen schützen das Budget:
 
-1. **`DEFAULT_MONITOR_WHITELIST = ""`** (`src/providers/vor.py`).
-   Das Disruption-Polling über die VAO API ist standardmäßig
-   deaktiviert. Operatoren, die das Legacy-Verhalten brauchen,
-   setzen `VOR_MONITOR_STATIONS_WHITELIST` als Env-Variable.
+1. **Keine automatisierten Nicht-Stammstrecke-Pfade**: Weder
+   `update-cycle.yml`, noch `update-stations.yml`, noch
+   `manual-full-refresh.yml` rufen VOR-Disruption-Polling oder
+   VOR-Station-Enrichment auf. Helper-Scripts existieren noch unter
+   `scripts/`, werden aber nur durch explizite Operator-Aufrufe
+   getriggert.
 
-2. **`STAMMSTRECKE_VOR_IDS`** (`scripts/update_vor_stations.py`).
-   Live-`location.name`-Enrichment ist auf die 10 Stammstrecke-
-   S-Bahn-Stationen beschränkt; alle anderen Station-IDs fallen
-   beim Stations-Verzeichnis-Update auf die gepinnte
-   `data/vor-haltestellen.csv` zurück.
-
-3. **`_charge_one_request`** (`scripts/update_stammstrecke_status.py`).
+2. **`_charge_one_request`** (`scripts/update_stammstrecke_status.py`).
    Vor jedem `/trip`-Call wird ein Quota-Slot via
    `vor_provider.save_request_count` reserviert; ein Lauf, der das
    Tagesbudget reißen würde, raised `_QuotaExceeded` *vor* dem
    Network Call und schreibt einen leeren Cache.
 
-Der Burst durch das Stations-Enrichment fällt nur auf den wöchentlichen
-Sonntag-Lauf (Cron `0 1 * * 0` in `.github/workflows/update-stations.yml`);
-selbst mit voller Stammstrecke-Aktivität an diesem Tag bleiben mindestens
-4 Calls Puffer. Sollte das Budget in Zukunft enger werden, sind die
+Stammstrecke verbraucht damit 96 von 100 Calls/Tag; die restlichen
+4 Calls Puffer bleiben für gelegentliche Operator-Direktaufrufe
+verfügbar. Sollte das Budget in Zukunft enger werden, sind die
 niedrig-hängenden Hebel:
 
 * IFTTT-Applet von ~30-Min- auf Stunden-Cadence umstellen (halbiert
