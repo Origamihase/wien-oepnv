@@ -1,3 +1,185 @@
+## 2026-05-11 - Trojan-Source BiDi Drift Round 13 (Canonical Stations Directory Sidecar): `write_stations` / `load_stations` (`data/stations.json`) Was the Round-12 Closing-Checklist Named-But-Deferred Sidecar — Closed Via The Round-12 `scrub_trojan_source_primitives` Helper (Single-Sourced Defence Shape)
+
+**Vulnerability:** Round 12 (PR #1437) closed
+`write_cache` / `read_cache` (`cache/<provider>/events.json`) via
+the new `scrub_trojan_source_primitives` helper +
+`ensure_ascii=False` preservation. The Round-12 closing checklist's
+"Named but deferred" entry explicitly identified the SOLE remaining
+operator-facing JSON sidecar writer in the same family —
+`src/places/merge.py:write_stations` →
+`data/stations.json` — with the SAME fix shape requirement:
+
+  * `write_stations` serialises the canonical station directory
+    (`data/stations.json`) via
+    `json.dumps({"stations": ...}, ensure_ascii=False, indent=2,
+    sort_keys=True)`. The payload carries provider-fetched **German
+    station names + aliases + formatted addresses** from Google
+    Places, OSM Overpass, OEBB `Verzeichnis der
+    Verkehrsstationen` Excel, and Wien OGD CSVs.
+  * The committed sidecar contract is explicit: the file is pushed
+    to `main` by `update-stations.yml` (weekly cron, line ~152
+    `add_options: "-A"`) AND by
+    `update-google-places-stations.yml` (manual escape hatch,
+    line 154 `git add data/stations.json`).
+  * The fix shape MUST reuse the
+    `scrub_trojan_source_primitives` helper added in Round 12 so
+    the canonical CVE-2021-42574 attack-byte union stays
+    single-sourced across every operator-facing JSON sidecar
+    writer in the codebase.
+
+**Threat model:**
+
+  1. Attacker compromises an upstream provider (Google Places
+     hijack, OSM Overpass cache poisoning, OEBB `Verzeichnis der
+     Verkehrsstationen` Excel response tampering, Wien OGD CSV
+     poisoning, leaked CI secret store) or an operator mis-edits
+     `data/stations.json` directly.
+  2. A planted station entry carrying U+202E (RIGHT-TO-LEFT
+     OVERRIDE) in a `name`, `_formatted_address`, or `aliases[]`
+     field — e.g. `name="Hauptbahnhof‮moc.live"` displays as
+     `Hauptbahnhofevil.com` — reaches `write_stations` via one of
+     the upstream Google Places ingestion paths
+     (`scripts/fetch_google_places_stations.py` invoking
+     `merge_places` + `write_stations`,
+     `scripts/update_station_directory.py` invoking
+     `merge_places` from inside `update_all_stations.py`).
+  3. Pre-fix `write_stations` serialised the payload via
+     `json.dumps({"stations": ...}, ensure_ascii=False, indent=2,
+     sort_keys=True)`. `ensure_ascii=False` emits U+202E as its
+     raw UTF-8 byte triplet `\xe2\x80\xae` directly into the
+     on-disk `data/stations.json`.
+  4. The `update-stations.yml` cron commits the poisoned
+     `data/stations.json` to `main` (the workflow uses
+     `add_options: "-A"` so any change in `data/` gets staged).
+     The malicious name is now visible in `git log -p` /
+     `git show` / the GitHub web UI / `cat` / `less` / IDE
+     preview — every viewer honours BiDi reversal.
+  5. Operator reviewing the weekly commit / mis-edit alert
+     misreads the BiDi-reversed display as the inverse of the
+     actual planted bytes. The attack hides in the operator's own
+     review pass.
+
+**Reproduced:** `tests/test_sentinel_places_stations_trojan_source.py`
+contains 52 PoC tests (49 fail pre-fix, all 52 pass post-fix):
+
+  * 1 + 21 (parametrised) for the write boundary covering every
+    primitive in the canonical CVE-2021-42574 union.
+  * 4 for nested-shape coverage (dict KEY, `aliases` list,
+    `_formatted_address` string, `_types` list) so the recursive
+    walker is pinned over every plausible `StationEntry` field
+    type.
+  * 1 for the German-content compact-diff regression
+    (`ä`/`ü`/`ß` survive as raw UTF-8; the bloated `\u00XX` form
+    does NOT appear).
+  * 1 for the clean-payload round-trip regression
+    (`write_stations` → `load_stations` round-trips identically).
+  * 1 + 21 for the read-boundary defence-in-depth coverage
+    (every primitive is stripped from a planted on-disk
+    `data/stations.json`).
+  * 1 for the read-boundary German-content regression.
+  * 1 for the bare-list root shape (`load_stations` supports
+    both `{"stations": [...]}` and bare `[...]`).
+
+Pre-fix repro for the canonical write-boundary case:
+`name="Hauptbahnhof‮moc.live"` produced `data/stations.json`
+with raw bytes `...Hauptbahnhof\xe2\x80\xaemoc.live...`. Post-fix:
+the primitive is stripped at the ingestion boundary; the on-disk
+file reads `Hauptbahnhofmoc.live` (the malicious primitive is
+gone, the safe portion of the name remains).
+
+**Fix:**
+
+  * `src/places/merge.py`: import the shared
+    `scrub_trojan_source_primitives` helper from
+    `src.utils.serialize` (added in Round 12). No new helper —
+    reusing the single-sourced defence keeps the canonical
+    CVE-2021-42574 attack-byte union uniform across every
+    operator-facing JSON sidecar writer in the codebase.
+  * `src/places/merge.py:write_stations`: apply the scrubber to
+    the incoming `stations` BEFORE `json.dumps` —
+    ingestion-boundary defence so the dangerous bytes never reach
+    the writer. `ensure_ascii=False` is preserved at the writer
+    (compact German diff contract intact).
+  * `src/places/merge.py:load_stations`: apply the same scrubber
+    to the parsed payload BEFORE returning to callers —
+    defence-in-depth at the read boundary that retroactively
+    cleans any historic poisoned `data/stations.json` (planted
+    before this fix, surviving from a corrupted previous run, or
+    written by a future bypass of the write-side scrubber). The
+    scrubber sits AFTER the existing depth-bomb / size-bomb
+    guards so a malformed file still raises `ValueError`; only
+    well-formed but poisoned content reaches the cleanup pass.
+
+**Learning:** the Round-12 "Named but deferred" entry's prediction
+that `write_stations` was the next target AND that the
+single-sourced defence helper would carry the fix was correct.
+The drift family is now uniform across every committed
+operator-facing JSON sidecar in the project — eight rounds (Round
+3 ValidationReport → Round 13 stations) of cumulative coverage
+on top of the channel/title/feed-XML/CSV/markdown sinks closed
+earlier. The closing-checklist drift-walker invariant continues to
+hold: every fix shape adopted in a previous round is mechanically
+reusable by the next round IF the helper was placed in a
+provider-neutral utility module
+(`src/utils/serialize.py:scrub_trojan_source_primitives` here).
+
+  * **Closed in this round:** `write_stations` / `load_stations`
+    (`data/stations.json`) via scrubber-at-ingestion + flag
+    preservation. Both write and read boundaries carry the
+    defence so the in-memory payload handed to the merge /
+    validation step cannot carry raw BiDi marks regardless of
+    how the on-disk bytes got there.
+  * **Already closed (Round 12):** `write_cache` / `read_cache`
+    (`cache/<provider>/events.json`).
+  * **Already closed (Round 11):** `MonthlyQuota.save_atomic`
+    (`data/places_quota.json`), `_write_request_count_file`
+    (`data/vor_request_count.json`), `write_status`
+    (`cache/<provider>/last_run.json`) — all via
+    `ensure_ascii=True`.
+  * **Already closed (earlier rounds):** `_save_state`
+    (`data/first_seen.json`, Round 10), `_write_heartbeat_file`
+    (`data/stations_last_run.json`, Round 10),
+    `_write_quarantine_file` (`data/quarantine.json`, Round 9),
+    `_render_diff_markdown` (`docs/stations_diff.md`, Round 9),
+    `ValidationReport.to_markdown()` (Round 3),
+    `render_feed_health_markdown` / GitHub-Issue body (Round 2),
+    `docs/statistik.md` stats dashboard (Round 1),
+    `data/stats/*.csv` CSV writer, RSS XML writers, sitemap
+    writer, `_escape_env_value` `.env` writer.
+  * **Named but deferred** (out of scope for this round; queued
+    for follow-up sanitisation rounds): the script-level
+    stations-file writers that bypass the canonical
+    `src/places/merge.py` library function and write their own
+    payload via direct `json.dump(..., ensure_ascii=False, ...)`
+    calls:
+    * `scripts/fetch_google_places_stations.py:_write_if_changed`
+      (line 288, also `_dump_changes` line 273 for the
+      per-run change-dump sidecar) → writes
+      `data/stations.json` directly during the manual
+      Google-Places-only escape hatch path. Same fix shape:
+      apply `scrub_trojan_source_primitives` before
+      `json.dumps`.
+    * `scripts/update_all_stations.py:_write_stations_payload`
+      (line 529) → writes `data/stations.json` during the
+      weekly `update-stations.yml` cron. Same fix shape.
+    * `scripts/enrich_station_aliases.py` (line 821) and
+      `scripts/update_station_directory.py` (line 1766) —
+      both write to `data/stations.json` via direct
+      `json.dump(..., ensure_ascii=False)`. Same fix shape.
+    * `scripts/update_wl_stations.py` (line 735),
+      `scripts/update_vor_stations.py` (line 1210),
+      `scripts/fetch_vor_haltestellen.py` (line 665) — write
+      sibling station-directory CSV/JSON files via direct
+      `json.dump(..., ensure_ascii=False)` flows. Same fix
+      shape.
+
+The next round MUST close the script-level writers above by
+reusing the same `scrub_trojan_source_primitives` helper. The
+shape choice is dictated by cardinality and forensic-intent
+requirements (scrub-and-drop for high-cardinality content sinks,
+escape-and-preserve for low-cardinality state sinks) — see the
+Round-12 entry below for the full taxonomy.
+
 ## 2026-05-11 - Trojan-Source BiDi Drift Round 12 (Provider Cache Events Sidecar): `write_cache` (`cache/<provider>/events.json`) Was the Sole Round-11 Closing-Checklist Deferred Sidecar — Closed Via Scrubber-At-Ingestion (Not `ensure_ascii=True`) To Preserve Compact German Diffs
 
 **Vulnerability:** Round 11 (PR #1436) closed three sibling writers

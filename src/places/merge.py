@@ -11,6 +11,7 @@ from typing import TypedDict, cast
 from collections.abc import Iterable, MutableMapping, Sequence
 
 from ..utils.files import atomic_write
+from ..utils.serialize import scrub_trojan_source_primitives
 from ..utils.stations import MAX_STATIONS_FILE_BYTES
 
 from .client import Place
@@ -116,11 +117,41 @@ def load_stations(path: Path) -> list[StationEntry]:
         if not isinstance(raw, MutableMapping):
             raise ValueError("stations entries must be objects")
         stations.append(cast(StationEntry, deepcopy(raw)))
+    # Security (Trojan-Source / BiDi-Mark Drift Round 13, defence-in-depth at
+    # the read boundary): retroactively scrub the canonical CVE-2021-42574
+    # attack-byte union from any historic poisoned ``data/stations.json``
+    # (planted before this fix, surviving from a corrupted previous run, or
+    # written by a future bypass of ``write_stations``'s ingestion-boundary
+    # scrubber). Mirrors the write-side defence so the in-memory payload
+    # handed to the merge / validation step cannot carry raw BiDi marks
+    # regardless of how the on-disk bytes got there. See
+    # ``src/utils/serialize.py:scrub_trojan_source_primitives`` for the
+    # canonical attack-byte union.
+    scrubbed = scrub_trojan_source_primitives(stations)
+    if isinstance(scrubbed, list):
+        return scrubbed
     return stations
 
 
 def write_stations(path: Path, stations: Sequence[StationEntry]) -> None:
-    serialisable = list(stations)
+    # Security (Trojan-Source / BiDi-Mark Drift Round 13, ingestion-boundary
+    # defence): strip the canonical CVE-2021-42574 attack-byte union (BiDi
+    # formatting controls, BiDi isolates, zero-width primitives + LRM/RLM/ALM,
+    # Unicode line / paragraph separators, the BOM / ZWNBSP, and the 8-bit
+    # C1 terminal-escape primitives) from every reachable string in the
+    # incoming stations BEFORE ``json.dumps``. ``data/stations.json`` is
+    # committed to ``main`` by the cron pipeline (``update-stations.yml``
+    # weekly + ``update-google-places-stations.yml`` manual escape hatch)
+    # and rendered via ``cat`` / ``less`` / the GitHub web UI / IDE preview.
+    # ``ensure_ascii=False`` is preserved at the writer below so legitimate
+    # German station names (umlauts ä/ö/ü/Ä/Ö/Ü + sharp s ß + every other
+    # safe Unicode code point) stay compact in the weekly commit diff;
+    # pairing it with the scrubber rejects the canonical attack-byte union
+    # before it reaches the serialiser. See
+    # ``src/utils/serialize.py:scrub_trojan_source_primitives`` for the
+    # canonical attack-byte union and the scrub-and-drop semantics rationale.
+    scrubbed = scrub_trojan_source_primitives(list(stations))
+    serialisable = scrubbed if isinstance(scrubbed, list) else list(stations)
     payload = json.dumps({"stations": serialisable}, ensure_ascii=False, indent=2, sort_keys=True)
     # Security: use atomic_write to avoid partial writes on crashes/power loss.
     with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
