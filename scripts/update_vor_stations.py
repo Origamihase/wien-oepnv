@@ -23,6 +23,7 @@ from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers import vor as vor_provider  # noqa: E402
 from src.utils.files import atomic_write, read_capped_json, read_capped_text  # noqa: E402
 from src.utils.http import read_response_safe, session_with_retries  # noqa: E402
+from src.utils.serialize import scrub_trojan_source_primitives  # noqa: E402
 from src.utils.stations import is_in_vienna, is_pendler  # noqa: E402
 
 # Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
@@ -1205,8 +1206,19 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     new_vor_entries.sort(key=lambda item: (str(item.get("name")), str(item.get("vor_id"))))
     merged_entries = existing + new_vor_entries
 
+    # Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
+    # defence): strip the canonical CVE-2021-42574 attack-byte union from
+    # the merged stations BEFORE ``json.dump``. A planted VOR
+    # provider-fetched ``name`` / ``aliases[]`` field — e.g. via VAO
+    # ReST endpoint hijack or poisoned ``data/vor-haltestellen.csv``
+    # — would otherwise leak raw BiDi marks into ``data/stations.json``
+    # which the weekly cron commits to ``main``. ``ensure_ascii=False``
+    # is preserved so legitimate German station names stay compact.
+    # Mirrors ``src/places/merge.py:write_stations`` (Round 13).
+    scrubbed = scrub_trojan_source_primitives(merged_entries)
+    serialisable = scrubbed if isinstance(scrubbed, list) else merged_entries
     with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        output = {"stations": merged_entries}
+        output = {"stations": serialisable}
         json.dump(output, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     if skipped_unmerged_count:

@@ -38,8 +38,10 @@ if str(BASE_DIR) not in sys.path:
 
 try:
     from src.utils.files import atomic_write, read_capped_json, read_capped_text
+    from src.utils.serialize import scrub_trojan_source_primitives
 except ModuleNotFoundError:
     from utils.files import atomic_write, read_capped_json, read_capped_text  # type: ignore[no-redef]
+    from utils.serialize import scrub_trojan_source_primitives  # type: ignore[no-redef]
 
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_STOPS = BASE_DIR / "data" / "vor-haltestellen.csv"
@@ -731,6 +733,25 @@ def _alias_candidates(
     return safe_aliases
 
 
+def _write_stations_payload(path: Path, stations: list[dict[str, object]]) -> None:
+    """Atomically rewrite *path* with the enriched stations wrapped in
+    the canonical ``{"stations": [...]}`` envelope.
+
+    Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
+    defence): strip the canonical CVE-2021-42574 attack-byte union BEFORE
+    ``json.dump`` so a poisoned VOR / GTFS / pendler-alternative-names
+    source cannot leak raw BiDi marks into ``data/stations.json`` via
+    a planted alias. The file is committed to ``main`` by the weekly
+    ``update-stations.yml`` cron (when the orchestrator invokes this
+    script). Mirrors ``src/places/merge.py:write_stations`` (Round 13).
+    """
+    scrubbed = scrub_trojan_source_primitives(stations)
+    serialisable = scrubbed if isinstance(scrubbed, list) else stations
+    with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
+        json.dump({"stations": serialisable}, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+
+
 def _order_aliases(station: Mapping[str, object], aliases: Iterable[str]) -> list[str]:
     ordered: list[str] = []
 
@@ -817,9 +838,7 @@ def main() -> int:
         log.info("Dry run – not writing %s", args.stations)
         return 0
 
-    with atomic_write(args.stations, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump({"stations": stations}, handle, ensure_ascii=False, indent=2)
-        handle.write("\n")
+    _write_stations_payload(args.stations, stations)
     log.info("Wrote enriched aliases to %s", args.stations)
     return 0
 

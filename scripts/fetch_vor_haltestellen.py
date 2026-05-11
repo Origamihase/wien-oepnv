@@ -24,6 +24,7 @@ if str(BASE_DIR) not in sys.path:
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.utils.files import atomic_write, read_capped_json  # noqa: E402
 from src.utils.http import read_response_safe, session_with_retries  # noqa: E402
+from src.utils.serialize import scrub_trojan_source_primitives  # noqa: E402
 
 
 DEFAULT_STATIONS_PATH = BASE_DIR / "data" / "stations.json"
@@ -660,12 +661,31 @@ def main(argv: Sequence[str] | None = None) -> int:
         for pair in resolved_pairs
     ]
 
-    with atomic_write(mapping_path, mode="w", encoding="utf-8") as handle:
-        # codeql[py/clear-text-storage-sensitive-data] False Positive: Payload contains only public station data, no sensitive user data.
-        handle.write(json.dumps(mapping_payload, ensure_ascii=False, indent=2) + "\n")
+    _write_mapping_payload(mapping_path, mapping_payload)
 
     log.info("Wrote station mapping to %s", mapping_path)
     return 0
+
+
+def _write_mapping_payload(path: Path, mapping: list[dict[str, object]]) -> None:
+    """Atomically rewrite *path* with the VAO resolution mapping.
+
+    Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
+    defence): strip the canonical CVE-2021-42574 attack-byte union from
+    the mapping BEFORE ``json.dumps``. A poisoned VAO ReST
+    station-resolution endpoint could plant U+202E in a
+    ``station_name`` / ``resolved_name`` field —
+    ``data/vor-haltestellen.mapping.json`` is the sibling
+    station-directory sidecar that the cron pipeline commits to
+    ``main``. Mirrors ``src/places/merge.py:write_stations`` (Round 13).
+    ``ensure_ascii=False`` is preserved so legitimate German names
+    stay compact in the commit diff.
+    """
+    scrubbed = scrub_trojan_source_primitives(mapping)
+    serialisable = scrubbed if isinstance(scrubbed, list) else mapping
+    with atomic_write(path, mode="w", encoding="utf-8") as handle:
+        # codeql[py/clear-text-storage-sensitive-data] False Positive: Payload contains only public station data, no sensitive user data.
+        handle.write(json.dumps(serialisable, ensure_ascii=False, indent=2) + "\n")
 
 
 if __name__ == "__main__":  # pragma: no cover - CLI entry point
