@@ -2,7 +2,7 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "1/2/71/D: Aufbauarbeiten ESC am 16.05.2026",
+    "title": "D/1/2/71: Aufbauarbeiten ESC am 16.05.2026",
     "description": "<h2>Aufbauarbeiten ESC</h2> <p>Wegen Aufbauarbeiten f&uuml;r die Fanzone des Eurovision Song Contests wird die Ringstra&szlig;e f&uuml;r den Gesamtverkehr gesperrt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Samstag, 16. Mai 2026 ab 11:30 Uhr bis Betriebsschluss (ausgenommen Linie 71, diese bereits ab Betriebsbeginn).</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie D:</strong><br />Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und B&ouml;rse &uuml;ber Linien 2 - Stubentor - Schwedenplatz - Linie 1 - Schottenring.</p> <p><strong>Linie 1:</strong><br />Umleitung in beiden Richtungen zwischen Karlsplatz und Julius-Raab-Platz &uuml;ber Lothringer Stra&szlig;e - Schwarzenbergplatz - Linie 2 - Stubentor.</p> <p><strong>Linie 2:</strong><br />Geteilte Linienf&uuml;hrung: Kein Betrieb zwischen Ring, Volkstheater und Schwedenplatz.</p> <p><strong>Linie 71:</strong><br />Ab Betriebsbeginn Kurzf&uuml;hrung, kein Betrieb zwischen Schwarzenbergplatz und Schottenring.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Bitte auf die U-Bahn Linien ausweichen.</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "90a43c9318c1cd6e0115187f872aaee14afa261c992094e875b0f64cdf0762f3",
@@ -562,5 +562,17 @@
     "starts_at": "2026-05-11T00:50:02+02:00",
     "ends_at": "2026-05-11T23:59:59+02:00",
     "_identity": "wl|störung|L=N65|D=2026-05-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-05-11T22:13:00+02:00",
+    "starts_at": "2026-05-11T22:13:00+02:00",
+    "ends_at": "2026-05-12T01:30:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-05-11"
   }
 ]
