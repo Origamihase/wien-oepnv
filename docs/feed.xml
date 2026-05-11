@@ -7,40 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 19:00:43 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 19:30:38 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[D: Falschparker]]></title>
+      <title><![CDATA[5: Fahrtbehinderung Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">123c1792102bf603153d3f83b7ca1dab3ecf7f4872f15ae5c9c6e9e85e8f68ca</guid>
-      <pubDate>Mon, 11 May 2026 18:40:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 19:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 18:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 19:10:00 +0200</ext:ends_at>
-      <description>Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">3e79d6c90567f1c1a1a76d116fa315fb54794f1c95ef005e954a2d040b8edd24</guid>
+      <pubDate>Mon, 11 May 2026 19:10:52 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 19:30:38 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 19:10:57 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 20:06:00 +0200</ext:ends_at>
+      <description>[Am 11.05.2026]</description>
+      <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[13A: Verkehrsunfall]]></title>
+      <title><![CDATA[38A: Fahrtbehinderung wegen Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9</guid>
-      <pubDate>Mon, 11 May 2026 17:37:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 09:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 17:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 18:59:00 +0200</ext:ends_at>
-      <description>Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b</guid>
-      <pubDate>Mon, 11 May 2026 17:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 07:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 17:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 18:59:00 +0200</ext:ends_at>
-      <description>Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 11.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">dded550fba663cf534f9fd553a582a61f5261229fb6341636d30aa082e91657d</guid>
+      <pubDate>Mon, 11 May 2026 19:10:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 13:30:29 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 19:12:58 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 20:12:00 +0200</ext:ends_at>
+      <description>Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[27A/28A/29A: Fronleichnamsumzug]]></title>
@@ -115,6 +104,17 @@
       <ext:ends_at>Sat, 30 May 2026 01:00:00 +0200</ext:ends_at>
       <description>Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Frödenplatz. [11.05.2026 – 30.05.2026]</description>
       <content:encoded><![CDATA[Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Frödenplatz.<br/>[11.05.2026 – 30.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Mon, 11 May 2026 04:45:07 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 05:00:31 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 04:45:07 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 12 May 2026 00:35:00 +0200</ext:ends_at>
+      <description>[11.05.2026 – 12.05.2026]</description>
+      <content:encoded><![CDATA[[11.05.2026 – 12.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
