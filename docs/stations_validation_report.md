@@ -1,6 +1,6 @@
 # Stations Validation Report
 
-*Total stations analysed*: 536
+*Total stations analysed*: 196
 *GTFS stops loaded*: 99
 *Geographic duplicates*: 0
 *Alias issues*: 0
