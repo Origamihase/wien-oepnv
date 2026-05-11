@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 10:00:46 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 10:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[65A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91604c6736684f0d22451554a67ed8dcf423dac3128aa0c83b7bcf4f50344a36</guid>
+      <pubDate>Mon, 11 May 2026 10:09:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 10:30:43 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 10:09:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Mitte ↔ Flughafen Wien / Wien Mitte ↔ Wien Floridsdorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -39,17 +50,6 @@
       <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 11.05.2026]</description>
       <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Mon, 11 May 2026 06:26:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 06:30:26 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 06:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11: Gleisbauarbeiten]]></title>
