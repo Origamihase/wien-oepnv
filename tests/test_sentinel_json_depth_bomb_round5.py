@@ -49,7 +49,6 @@ sites without ``RecursionError`` coverage across both trees.
 from __future__ import annotations
 
 import json
-import logging
 from pathlib import Path
 
 import pytest
