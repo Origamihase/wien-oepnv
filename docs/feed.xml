@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 06:30:26 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 07:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Mon, 11 May 2026 06:58:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 01:00:33 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 06:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U3: Unregelmäßige Intervalle in Richtung Ottakring. Grund: Schadhaftes Fahrzeug. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Unregelmäßige Intervalle in Richtung Ottakring. Grund: Schadhaftes Fahrzeug.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0d7b621daa27479002dfb1acc83e23264254f1b919cfe7739280980d5578a23c</guid>
+      <pubDate>Mon, 11 May 2026 06:51:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 07:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 06:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6386a0a1443709a811da286faca3c110f82cb450fccefa41edfcc91b1f2e483b</guid>
+      <pubDate>Mon, 11 May 2026 06:31:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 07:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 06:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U4: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -84,37 +117,6 @@
       <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[09.05.2026 – 11.05.2026]</description>
       <content:encoded><![CDATA[[09.05.2026 – 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
-      <pubDate>Sat, 09 May 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[09.05.2026 – 11.05.2026]</description>
-      <content:encoded><![CDATA[[09.05.2026 – 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Westbahnhof ↔ Wien Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;875289</guid>
-      <pubDate>Fri, 08 May 2026 10:58:06 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 15:26:45 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 08 May 2026 10:58:06 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hbf (U) von 01.06.2026 bis 26.06.2026 die Züge D 347, D 50347 und D 40347 nicht fahren. [Seit 08.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hbf (U) von 01.06.2026 bis 26.06.2026 die Züge D 347, D 50347 und D 40347 nicht fahren.<br/>[Seit 08.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S 50: Wien Westbahnhof ↔ Wien Hütteldorf / Wien Hütteldorf ↔ Tullnerbach-Pressbaum / Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;872100</guid>
-      <pubDate>Thu, 07 May 2026 13:43:23 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Apr 2026 12:07:29 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 07 May 2026 13:43:23 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren. [Seit 07.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren.<br/>[Seit 07.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

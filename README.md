@@ -44,10 +44,10 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 63 |
+| Beobachtungen (gesamt) | 65 |
 | Durchschnittliche Verspätung | 0.1 min |
 | Kritische Verspätungen (> 9 min) | 0 |
-| Letzte Aktualisierung | 2026-05-11 06:30 CEST |
+| Letzte Aktualisierung | 2026-05-11 07:00 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
 
 > **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).
