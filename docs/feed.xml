@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 16:01:13 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 16:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
+      <pubDate>Mon, 11 May 2026 16:02:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 16:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 16:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,20 +27,9 @@
       <pubDate>Mon, 11 May 2026 15:09:00 +0200</pubDate>
       <ext:first_seen>Mon, 11 May 2026 07:30:39 +0200</ext:first_seen>
       <ext:starts_at>Mon, 11 May 2026 15:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 11 May 2026 16:50:00 +0200</ext:ends_at>
       <description>Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
       <content:encoded><![CDATA[Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37: Fahrtbehinderung Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f</guid>
-      <pubDate>Mon, 11 May 2026 15:04:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 15:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 15:08:24 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26A: Verkehrsunfall]]></title>
@@ -38,7 +38,7 @@
       <pubDate>Mon, 11 May 2026 14:57:00 +0200</pubDate>
       <ext:first_seen>Mon, 11 May 2026 15:00:48 +0200</ext:first_seen>
       <ext:starts_at>Mon, 11 May 2026 14:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 11 May 2026 16:35:00 +0200</ext:ends_at>
       <description>Linie 26A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
       <content:encoded><![CDATA[Linie 26A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
