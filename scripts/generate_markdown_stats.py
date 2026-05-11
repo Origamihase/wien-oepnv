@@ -138,7 +138,13 @@ BAR_GLYPHS: Final = {
 
 @dataclass(frozen=True)
 class StammstreckeRow:
-    """One Stammstrecke per-sample mean-delay observation."""
+    """One Stammstrecke per-sample mean-delay observation.
+
+    Each row represents one cron-cycle sample for one direction —
+    threshold counters at aggregation time treat the row as a single
+    observation so the same physical cycle is never multiplied across
+    the count.
+    """
 
     timestamp: datetime
     weekday: str
@@ -298,10 +304,10 @@ def aggregate_stammstrecke(
     """Roll *rows* up into the dimensions the dashboard needs.
 
     *threshold_minutes* mirrors :data:`scripts.update_stammstrecke_status.
-    DELAY_THRESHOLD_MINUTES`. A "threshold exceedance" is a single
-    observation whose persisted per-sample mean delay is *strictly
-    greater* than the threshold — i.e. would have contributed to an
-    RSS event.
+    DELAY_THRESHOLD_MINUTES`. ``threshold_exceedances`` counts each
+    *row* whose persisted per-sample mean delay strictly exceeds the
+    threshold — never more than once per cron cycle, so the same
+    physical cycle is not multiplied into the count.
     """
     weekday_count: dict[str, int] = defaultdict(int)
     weekday_sum: dict[str, float] = defaultdict(float)
@@ -494,23 +500,26 @@ def _format_summary_section(
     stammstrecke: StammstreckeAggregate,
     stoerungen: StoerungAggregate,
 ) -> list[str]:
-    """Render the top-of-report key metrics block."""
+    """Render the top-of-report key metrics block.
+
+    Every cell in this block is scoped to the calendar *year*. The
+    rolling 30-day window only feeds the README snapshot — keeping
+    the two views distinct (year vs. 30 days) avoids the same data
+    point being summed into both numbers at once.
+    """
     if stammstrecke.total_observations:
-        # Observation-weighted (micro) average so the headline matches
-        # the README's ``Durchschnittliche Verspätung`` cell. The earlier
-        # implementation took ``fmean`` over the per-weekday averages,
-        # which silently macro-averaged: a Saturday with 3 observations
-        # was weighted as heavily as a Sunday with 23, distorting the
-        # number any time the daily distribution was uneven. Multiplying
-        # each per-weekday mean by its observation count recovers the
-        # original delay sum exactly without re-iterating the raw rows.
+        # Observation-weighted (micro) mean over all rows of *year*.
+        # Multiplying each per-weekday mean by its observation count
+        # recovers the original delay sum exactly without re-iterating
+        # the raw rows, which keeps the rendering side-effect-free on
+        # the aggregate input.
         total = sum(
             stammstrecke.by_weekday_avg[wd] * stammstrecke.by_weekday_count[wd]
             for wd in stammstrecke.by_weekday_count
         )
-        global_avg = total / stammstrecke.total_observations
+        avg_cell = f"{total / stammstrecke.total_observations:.1f} min"
     else:
-        global_avg = 0.0
+        avg_cell = "_keine Daten_"
 
     return [
         f"# Wien ÖPNV — Statistik {year}",
@@ -522,8 +531,9 @@ def _format_summary_section(
         "| Kennzahl | Wert |",
         "| --- | ---: |",
         f"| Stammstrecke-Beobachtungen ({year}) | {stammstrecke.total_observations} |",
-        f"| Davon über {stammstrecke.threshold_minutes:g}-min-Schwelle | {stammstrecke.threshold_exceedances} |",
-        f"| ⌀ Verspätung (alle Tage) | {global_avg:.1f} min |",
+        f"| Verspätungen > {stammstrecke.threshold_minutes:g} min ({year}) | "
+        f"{stammstrecke.threshold_exceedances} |",
+        f"| ⌀ Verspätung ({year}) | {avg_cell} |",
         f"| Erfasste Störungen ({year}) | {stoerungen.total_disruptions} |",
         "",
     ]
@@ -707,9 +717,13 @@ def render_readme_stammstrecke_block(
     well-formed Markdown table.
 
     The displayed delay is the *arithmetic mean* across the window —
-    the feed-event trigger uses the median (defensive against single
-    outliers) but the README cell shows the average, which is more
-    intuitive for non-technical readers.
+    the feed-event trigger uses the median over the same observations
+    (defensive against single sample-level outliers) but the README
+    cell shows the average, which is more intuitive for non-technical
+    readers. The "Kritische Verspätungen" counter counts each *row*
+    whose persisted per-sample mean delay exceeds the threshold — at
+    most once per cron cycle, so the same physical cycle is never
+    multiplied into the count.
     """
     threshold_label = (
         f"{threshold_minutes:.0f}"

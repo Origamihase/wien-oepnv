@@ -120,10 +120,11 @@ def test_render_stammstrecke_block_with_data_uses_mean_and_count() -> None:
     )
     assert "| Beobachtungen (gesamt) | 3 |" in block
     # mean of [10, 5, 12] is 27/3 = 9.0 — README displays the
-    # arithmetic mean (intuitive for end users); the feed-event
-    # trigger uses the median (defensive against outliers).
+    # arithmetic mean across the window.
     assert "| Durchschnittliche Verspätung | 9.0 min |" in block
-    # threshold 9 min, exceedances = [10, 12] = 2
+    # Count of rows whose per-sample mean is > 9 min: [10, 12] = 2.
+    # Each row counts at most once — the same physical cron cycle is
+    # never multiplied into the threshold counter.
     assert "| Kritische Verspätungen (> 9 min) | 2 |" in block
     assert "| Letzte Aktualisierung | 2026-05-09 12:00" in block
     # Closing newline so the END marker stays on its own line
@@ -332,7 +333,7 @@ def test_main_writes_readme_with_30_day_window(tmp_path: Path) -> None:
     )
     assert rc == 0
     new_text = readme.read_text(encoding="utf-8")
-    # Stammstrecke: 2 observations, mean 8.5, 1 exceedance (12 > 9).
+    # Stammstrecke: 2 observations, mean 8.5, 1 row > 9 min (12.0).
     assert "| Beobachtungen (gesamt) | 2 |" in new_text
     assert "| Durchschnittliche Verspätung | 8.5 min |" in new_text
     assert "| Kritische Verspätungen (> 9 min) | 1 |" in new_text

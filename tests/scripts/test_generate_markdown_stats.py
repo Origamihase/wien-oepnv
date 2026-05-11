@@ -111,6 +111,11 @@ def test_render_weekday_bars_handles_empty_data() -> None:
 
 
 def test_aggregate_stammstrecke_counts_observations_and_threshold() -> None:
+    """``threshold_exceedances`` counts each *row* whose persisted
+    per-sample mean delay strictly exceeds the threshold — never more
+    than once per cron cycle, so the same physical cycle is not
+    multiplied into the count.
+    """
     rows = [
         script.StammstreckeRow(
             timestamp=datetime(2026, 5, 4, 7, 0, tzinfo=VIENNA_TZ),
@@ -351,15 +356,17 @@ def test_render_markdown_handles_empty_aggregates_gracefully() -> None:
 
 
 def test_render_markdown_global_avg_uses_observation_weighted_mean() -> None:
-    """``⌀ Verspätung (alle Tage)`` must equal the README's micro-average,
-    not an unweighted ``fmean`` over the per-weekday means.
+    """``⌀ Verspätung ({year})`` is the year-wide observation-weighted
+    micro-average over every persisted row of the calendar year.
 
-    The empirical distribution Sa(3 obs avg 2/3 min) and So(23 obs avg
-    4/23 min) is the regression that motivated the fix on branch
-    ``claude/fix-delay-statistics``: the broken macro-average rendered
-    ``0.4 min`` while the README cell — computed from the raw rows —
-    showed ``0.2 min``. Pinning both rendering paths to the same
-    observation-weighted mean closes that drift.
+    Multiplying the per-weekday mean by the per-weekday observation
+    count and dividing by the total recovers the original delay sum
+    exactly — no separate iteration over the raw rows is needed and
+    the same row never contributes twice. Anti-regression: the
+    earlier ``fmean``-over-per-weekday-means approach silently
+    macro-averaged (a Saturday with 3 obs counted as much as a Sunday
+    with 23), which produced visibly wrong values when the daily
+    distribution wasn't uniform.
     """
     sm_agg = script.StammstreckeAggregate(
         by_weekday_count={"Sa": 3, "So": 23},
@@ -378,9 +385,23 @@ def test_render_markdown_global_avg_uses_observation_weighted_mean() -> None:
         stoerungen=script.StoerungAggregate(),
     )
     # 3*(2/3) + 23*(4/23) = 6.0 → 6.0/26 ≈ 0.231 → "0.2 min"
-    assert "| ⌀ Verspätung (alle Tage) | 0.2 min |" in md
+    assert "| ⌀ Verspätung (2026) | 0.2 min |" in md
     # Anti-regression: the previous macro-average rendered "0.4 min".
-    assert "| ⌀ Verspätung (alle Tage) | 0.4 min |" not in md
+    assert "| ⌀ Verspätung (2026) | 0.4 min |" not in md
+
+
+def test_render_markdown_summary_avg_renders_placeholder_when_empty() -> None:
+    """An empty Stammstrecke aggregate must render the avg cell as
+    ``_keine Daten_`` rather than ``0.0 min`` — the misleading zero
+    would hide the data-absent state from operators eyeballing the
+    dashboard."""
+    md = script.render_markdown(
+        year=2026,
+        generated_at=datetime(2026, 5, 10, 16, 35, tzinfo=VIENNA_TZ),
+        stammstrecke=script.StammstreckeAggregate(),
+        stoerungen=script.StoerungAggregate(),
+    )
+    assert "| ⌀ Verspätung (2026) | _keine Daten_ |" in md
 
 
 # ---- write_dashboard ------------------------------------------------------

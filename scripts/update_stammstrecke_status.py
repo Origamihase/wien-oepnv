@@ -101,7 +101,7 @@ import sys
 from collections.abc import Iterable, Mapping
 from contextlib import ExitStack
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Final
 from zoneinfo import ZoneInfo
@@ -118,6 +118,7 @@ from src.utils.circuit_breaker import (  # noqa: E402
     CircuitBreaker,
     CircuitBreakerOpen,
 )
+from src.utils.files import atomic_write, read_capped_text  # noqa: E402
 from src.utils.http import request_safe, session_with_retries  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.stations import canonical_name, display_name  # noqa: E402
@@ -154,6 +155,62 @@ DELAY_THRESHOLD_MINUTES = 9
 # size without inflating the per-day quota cost (the VAO response
 # size is identical between numF=5 and numF=6).
 MAX_TRIPS_PER_QUERY = 6
+
+# ---- Pending-trip state (latest-observation dedup) -------------------------
+#
+# The cron lookahead (``numF=6``) returns 60-180 min of upcoming
+# departures while the cron itself ticks every ~30 min. Without
+# deduplication the same physical S-Bahn train would land in the
+# sample mean of several consecutive cron rows — inflating both the
+# persisted ``delay_minutes`` value and the threshold counter every
+# time the train was re-observed.
+#
+# Design: every observed leg is identified by
+# ``(direction, line_name, scheduled_origin_dt)`` and stored in a
+# tiny JSON ledger (:data:`PENDING_TRIPS_PATH`). The ledger keeps the
+# *latest* delay reading per train — re-observations overwrite older
+# ones, so the value that ultimately gets persisted reflects the
+# observation closest to the train's actual departure (10 min before
+# departure beats 40 min before departure for accuracy).
+#
+# A train is "finalised" when its scheduled departure has passed
+# (``scheduled <= now``); the latest reading then flows into the CSV
+# row for the cron tick that catches the departure boundary, and the
+# state entry is removed. Each train contributes to exactly one CSV
+# row over its entire observation history — there is no double
+# counting regardless of how many cron ticks saw the train.
+PENDING_TRIPS_PATH: Final = REPO_ROOT / "cache" / "stammstrecke" / "pending_trips.json"
+
+# Defense-in-depth size cap on the pending-trip ledger. A healthy
+# ledger holds at most ~2 directions × ~12 trains/hour × ~3 hours
+# = ~72 entries (~150 bytes each) ≈ 11 KiB; 1 MiB is ~90× headroom
+# while bounding the memory cost of a planted / corrupted state file.
+PENDING_TRIPS_MAX_BYTES: Final = 1 * 1024 * 1024
+
+# State TTL — entries last touched more than this long ago are
+# discarded. Wider than the longest plausible cron-tick gap (a
+# missed IFTTT trigger + manual catch-up rarely exceeds 2 h) so a
+# delayed but eventually-fired tick still finalises the entries it
+# would have processed earlier.
+PENDING_TTL: Final = timedelta(hours=6)
+
+
+@dataclass(frozen=True)
+class _PendingTrip:
+    """One observed but not-yet-finalised S-Bahn trip.
+
+    Fields mirror the JSON schema persisted to
+    :data:`PENDING_TRIPS_PATH`. ``scheduled`` and ``last_seen_at`` are
+    always timezone-aware (Europe/Vienna) — the loader normalises
+    naive timestamps defensively rather than dropping the entry.
+    """
+
+    direction: str
+    name: str
+    scheduled: datetime
+    latest_delay_minutes: float
+    last_seen_at: datetime
+
 
 # Per-call HTTP budget (seconds). Enforced at the ``fetch_content_safe``
 # layer (``src/utils/http.py``) which forwards the kwarg verbatim to
@@ -288,6 +345,173 @@ def _format_minutes(value: float) -> str:
 
     rounded = round(value, 1)
     return f"{rounded:g}"
+
+
+# ---- Pending-trip state persistence ---------------------------------------
+
+
+def _identity_key(direction: str, name: str, scheduled: datetime) -> str:
+    """Build the canonical state-key for one observed S-Bahn trip.
+
+    Composed of the three fields that uniquely identify a physical
+    train run in our use case: the monitored direction
+    (``Meidling``/``Floridsdorf``), the line designation (``S 1`` /
+    ``S 80`` / …) and the *scheduled* origin departure timestamp.
+    Two different trains of the same line cannot share a scheduled
+    departure from the same station at the same second, so the tuple
+    is collision-free for our scope without requiring a VAO-internal
+    journey reference.
+
+    The pipe (``|``) separator is chosen because neither the
+    direction label nor the line name contain it in practice, while
+    being unambiguous when the key is round-tripped through the
+    JSON ledger.
+    """
+
+    return f"{direction}|{name.strip()}|{scheduled.isoformat()}"
+
+
+def _coerce_aware(value: datetime) -> datetime:
+    """Force *value* to be timezone-aware in :data:`VIENNA_TZ`.
+
+    Naive datetimes can appear when a hand-edited state file omits
+    the offset; rather than rejecting the entry we localise it
+    defensively so the rest of the state survives.
+    """
+
+    if value.tzinfo is None:
+        return value.replace(tzinfo=VIENNA_TZ)
+    return value.astimezone(VIENNA_TZ)
+
+
+def _trip_to_json(trip: _PendingTrip) -> dict[str, Any]:
+    """Serialise a pending trip to its JSON-ledger form."""
+
+    return {
+        "direction": trip.direction,
+        "name": trip.name,
+        "scheduled": trip.scheduled.isoformat(),
+        "latest_delay_minutes": trip.latest_delay_minutes,
+        "last_seen_at": trip.last_seen_at.isoformat(),
+    }
+
+
+def _trip_from_json(data: Mapping[str, Any]) -> _PendingTrip | None:
+    """Best-effort parser for a single ledger entry; ``None`` on shape error."""
+
+    try:
+        direction = str(data["direction"]).strip()
+        name = str(data["name"]).strip()
+        scheduled = datetime.fromisoformat(str(data["scheduled"]))
+        latest_delay = float(data["latest_delay_minutes"])
+        last_seen = datetime.fromisoformat(str(data["last_seen_at"]))
+    except (KeyError, TypeError, ValueError):
+        return None
+    if not direction or not name:
+        return None
+    return _PendingTrip(
+        direction=direction,
+        name=name,
+        scheduled=_coerce_aware(scheduled),
+        latest_delay_minutes=latest_delay,
+        last_seen_at=_coerce_aware(last_seen),
+    )
+
+
+def _load_pending_trips(path: Path) -> dict[str, _PendingTrip]:
+    """Read the pending-trip ledger from *path*; corruption-tolerant.
+
+    Returns an empty dict on missing / oversize / unparseable input;
+    each diagnostic is logged at WARNING so an operator can spot the
+    fresh-start fallback without the script ever blocking the cron
+    pipeline.
+    """
+
+    raw = read_capped_text(
+        path,
+        max_bytes=PENDING_TRIPS_MAX_BYTES,
+        label="pending trips",
+        logger=LOGGER,
+    )
+    if raw is None:
+        return {}
+    if not raw.strip():
+        return {}
+    try:
+        payload = _json_lib.loads(raw)
+    except (ValueError, RecursionError) as exc:
+        LOGGER.warning(
+            "Pending-Trips-State korrupt (%s) — starte mit leerem Ledger.",
+            sanitize_log_arg(str(exc)),
+        )
+        return {}
+    if not isinstance(payload, Mapping):
+        LOGGER.warning(
+            "Pending-Trips-State hat unerwartetes Top-Level-Format — "
+            "starte mit leerem Ledger."
+        )
+        return {}
+    state: dict[str, _PendingTrip] = {}
+    for key, value in payload.items():
+        if not isinstance(value, Mapping):
+            continue
+        trip = _trip_from_json(value)
+        if trip is None:
+            continue
+        state[str(key)] = trip
+    return state
+
+
+def _save_pending_trips(path: Path, state: Mapping[str, _PendingTrip]) -> bool:
+    """Persist *state* atomically; best-effort.
+
+    Returns ``True`` on success, ``False`` if the write failed (and
+    was logged at WARNING). The caller is free to ignore the return
+    value — losing one tick's state update means the affected trips
+    keep their previous state on next load, which is the desired
+    safe-fallback shape.
+    """
+
+    payload = {key: _trip_to_json(trip) for key, trip in state.items()}
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with atomic_write(
+            path,
+            mode="w",
+            encoding="utf-8",
+            permissions=0o644,
+        ) as fh:
+            _json_lib.dump(
+                payload,
+                fh,
+                indent=2,
+                sort_keys=True,
+                ensure_ascii=False,
+            )
+            fh.write("\n")
+        return True
+    except OSError as exc:
+        LOGGER.warning(
+            "Pending-Trips-State konnte nicht geschrieben werden: %s",
+            sanitize_log_arg(str(exc)),
+        )
+        return False
+
+
+def _purge_stale_entries(
+    state: dict[str, _PendingTrip],
+    *,
+    cutoff: datetime,
+) -> int:
+    """Drop entries whose ``last_seen_at`` is strictly before *cutoff*.
+
+    Returns the number of entries removed. Mutates *state* in place.
+    """
+
+    stale = [key for key, trip in state.items() if trip.last_seen_at < cutoff]
+    for key in stale:
+        del state[key]
+    return len(stale)
 
 
 # ---- VAO ``/trip`` request + parse ----------------------------------------
@@ -607,10 +831,25 @@ def _leg_departure_delay_minutes(leg: Mapping[str, Any]) -> float | None:
     return (actual - scheduled).total_seconds() / 60.0
 
 
-def _collect_sbahn_delays_minutes(
+@dataclass(frozen=True)
+class _SbahnLegObservation:
+    """One filtered, parsed S-Bahn leg observation.
+
+    Produced by :func:`_collect_sbahn_leg_observations` and consumed
+    by :func:`_observe_legs` (state update + latest-wins dedup) and
+    :func:`_collect_sbahn_delays_minutes` (legacy thin wrapper for
+    tests that only care about the delay sequence).
+    """
+
+    name: str
+    scheduled: datetime
+    delay_minutes: float
+
+
+def _collect_sbahn_leg_observations(
     trips: Iterable[Mapping[str, Any]],
-) -> list[float]:
-    """Extract S-Bahn departure delays (in minutes) from *trips*.
+) -> list[_SbahnLegObservation]:
+    """Extract per-leg observations from a ``/trip`` response.
 
     Filters:
 
@@ -620,13 +859,16 @@ def _collect_sbahn_delays_minutes(
       dilute the sample.
     * **S-Bahn only** — the single ride leg must pass
       :func:`_is_sbahn_leg`.
+    * **Identifiable** — the leg must carry a non-empty ``name``
+      (line designation) and a parseable scheduled departure
+      timestamp; both feed the state-key for cross-tick dedup.
     * **Cancellation excluded** — a cancelled leg has no delay signal.
     * **Missing realtime excluded** — a leg without ``rtTime`` returns
       ``None`` from :func:`_leg_departure_delay_minutes` (status
       unknown, not implicitly on-time) and is dropped here.
     """
 
-    delays: list[float] = []
+    observations: list[_SbahnLegObservation] = []
     for trip in trips:
         leg_list = trip.get("LegList")
         if not isinstance(leg_list, Mapping):
@@ -651,10 +893,110 @@ def _collect_sbahn_delays_minutes(
         if not _is_sbahn_leg(leg):
             continue
 
+        name = str(leg.get("name") or "").strip()
+        if not name:
+            continue
+        origin = leg.get("Origin")
+        if not isinstance(origin, Mapping):
+            continue
+        scheduled = _parse_vao_dt(
+            origin.get("date") or origin.get("depDate"),
+            origin.get("time") or origin.get("depTime"),
+        )
+        if scheduled is None:
+            continue
+
         delay = _leg_departure_delay_minutes(leg)
         if delay is None:
             continue
-        delays.append(delay)
+        observations.append(
+            _SbahnLegObservation(
+                name=name,
+                scheduled=scheduled,
+                delay_minutes=delay,
+            )
+        )
+    return observations
+
+
+def _collect_sbahn_delays_minutes(
+    trips: Iterable[Mapping[str, Any]],
+) -> list[float]:
+    """Backward-compatible thin wrapper around
+    :func:`_collect_sbahn_leg_observations`.
+
+    Returns just the per-leg delays — the original signature retained
+    so leg-filtering regression tests continue to assert on a simple
+    sequence of floats without coupling to the observation record
+    shape.
+    """
+
+    return [obs.delay_minutes for obs in _collect_sbahn_leg_observations(trips)]
+
+
+def _observe_legs(
+    state: dict[str, _PendingTrip],
+    observations: Iterable[_SbahnLegObservation],
+    *,
+    direction: str,
+    now: datetime,
+) -> int:
+    """Insert / overwrite *observations* in *state* with latest-wins semantics.
+
+    Each observation produces or updates a state entry keyed by
+    :func:`_identity_key`. Re-observation of the same train (same
+    ``direction``, ``name``, ``scheduled``) overwrites
+    ``latest_delay_minutes`` and ``last_seen_at`` so the value that
+    eventually flows into the CSV row is the most recent reading —
+    typically the one taken closest to the train's actual departure,
+    which is most accurate.
+
+    Returns the number of state entries written this call (matches
+    ``len(observations)`` by construction; exposed for diagnostics).
+    """
+
+    written = 0
+    for obs in observations:
+        key = _identity_key(direction, obs.name, obs.scheduled)
+        state[key] = _PendingTrip(
+            direction=direction,
+            name=obs.name,
+            scheduled=obs.scheduled,
+            latest_delay_minutes=obs.delay_minutes,
+            last_seen_at=now,
+        )
+        written += 1
+    return written
+
+
+def _finalize_departed(
+    state: dict[str, _PendingTrip],
+    *,
+    direction: str,
+    now: datetime,
+) -> list[float]:
+    """Pop departed trips for *direction* and return their latest delays.
+
+    A trip is "departed" when ``scheduled <= now`` — the latest
+    reading we ever recorded for that train is then committed to the
+    caller (which writes it into the CSV row) and the entry is
+    removed from *state* so the same train cannot contribute to a
+    later cron tick. Sort order is ascending scheduled time so the
+    resulting CSV row's mean is computed over a deterministic sample.
+
+    Mutates *state* in place.
+    """
+
+    finalize_keys = [
+        key
+        for key, trip in state.items()
+        if trip.direction == direction and trip.scheduled <= now
+    ]
+    finalize_keys.sort(key=lambda k: state[k].scheduled)
+    delays: list[float] = []
+    for key in finalize_keys:
+        delays.append(state[key].latest_delay_minutes)
+        del state[key]
     return delays
 
 
@@ -1013,19 +1355,18 @@ def _extract_vao_request_id(exc: requests.HTTPError) -> str:
 def _process_direction(
     session: requests.Session,
     direction: _Direction,
+    state: dict[str, _PendingTrip],
     *,
     when: datetime,
 ) -> str:
-    """Query ``direction`` once and append a CSV observation.
+    """Query ``direction`` once and observe its legs into *state*.
 
     Returns one of:
 
-    * ``"ok"`` — direction succeeded, observation appended to the CSV
-      ledger (regardless of whether the sample mean exceeds the feed
-      threshold; threshold-gating now happens in
-      :mod:`src.feed.stammstrecke` at feed-build time);
-    * ``"no_delays"`` — direction succeeded but emitted no S-Bahn legs
-      with delay data (no CSV row written);
+    * ``"ok"`` — query succeeded and zero-or-more legs were observed
+      into the pending-trip ledger (the CSV row is *not* written
+      here — :func:`main` does that once finalisation runs across
+      all directions);
     * ``"error"`` — VAO/parse raised an exception (already logged);
     * ``"quota_exceeded"`` — the daily quota cap hit before the call;
       caller treats the same as ``"error"`` for self-healing purposes.
@@ -1034,11 +1375,15 @@ def _process_direction(
     catches it so it can break out of the per-direction loop instead
     of consuming further breaker-protected slots.
 
-    2026-05-09: dropped the in-script event-building branch. The cron
-    script now writes only to the CSV ledger
-    (``data/stats/stammstrecke_<YYYY>.csv``); feed events are computed
-    from that ledger by :mod:`src.feed.stammstrecke` so the README
-    snapshot and the RSS feed share a single source of truth.
+    2026-05-11: split CSV-write off into :func:`main` so the cron
+    tick can observe both directions before deciding which rows to
+    finalise. The latest-observation-wins ledger (see
+    :data:`PENDING_TRIPS_PATH`) records every seen leg by
+    ``(direction, line_name, scheduled)`` so a train re-observed
+    across multiple cron ticks contributes exactly one CSV row —
+    fixing the lookahead-overlap double-counting in which the same
+    physical train inflated the persisted mean of every tick that
+    saw it.
     """
 
     LOGGER.info(
@@ -1125,36 +1470,20 @@ def _process_direction(
         )
         return "error"
 
-    delays = _collect_sbahn_delays_minutes(trips)
-    LOGGER.info(
-        "Stammstrecke: Richtung %s — %d S-Bahn-Legs aus %d Trips analysiert.",
-        direction.target_label,
-        len(delays),
-        len(trips),
-    )
-    if not delays:
-        return "no_delays"
-
-    mean_minutes = float(statistics.mean(delays))
-    LOGGER.info(
-        "Stammstrecke: Richtung %s — Mittel: %.2f Minuten (Schwelle: %d).",
-        direction.target_label,
-        mean_minutes,
-        DELAY_THRESHOLD_MINUTES,
-    )
-    # Persist every successful sample, regardless of whether it exceeds
-    # the feed-trigger threshold. The dashboard's 30-day value comes from
-    # the *full* distribution, and the feed's 1-hour window threshold-
-    # gates against the same rows at feed-build time (see
-    # :mod:`src.feed.stammstrecke`). Single source of truth = this CSV
-    # ledger.  The arithmetic mean over the per-cycle leg sample is
-    # used (was median until 2026-05-11): the median collapsed to 0.0
-    # whenever ≥50% of legs were on-time, hiding sample-internal
-    # outliers that real passengers do experience.
-    append_stammstrecke_row(
-        timestamp=when,
+    observations = _collect_sbahn_leg_observations(trips)
+    written = _observe_legs(
+        state,
+        observations,
         direction=direction.target_label,
-        delay_minutes=mean_minutes,
+        now=when,
+    )
+    LOGGER.info(
+        "Stammstrecke: Richtung %s — %d S-Bahn-Legs aus %d Trips beobachtet "
+        "(Ledger-Updates: %d).",
+        direction.target_label,
+        len(observations),
+        len(trips),
+        written,
     )
     return "ok"
 
@@ -1181,6 +1510,21 @@ def main() -> int:
     successes = 0
     errors = 0
 
+    # Pending-trip ledger: latest-observation-wins dedup across cron
+    # ticks. Load up front, observe both directions into it, then
+    # finalise departed trains at the end of the tick. Load failures
+    # / corruption start the script with an empty ledger (logged at
+    # WARNING by ``_load_pending_trips``) so a one-off bad state file
+    # never blocks the cron pipeline.
+    state = _load_pending_trips(PENDING_TRIPS_PATH)
+    purged = _purge_stale_entries(state, cutoff=when - PENDING_TTL)
+    if purged:
+        LOGGER.info(
+            "Stammstrecke: %d veraltete Ledger-Einträge entfernt (TTL %s).",
+            purged,
+            PENDING_TTL,
+        )
+
     with ExitStack() as stack:
         try:
             session = _build_session(stack)
@@ -1193,7 +1537,9 @@ def main() -> int:
 
         for direction in DIRECTIONS:
             try:
-                status = _process_direction(session, direction, when=when)
+                status = _process_direction(
+                    session, direction, state, when=when
+                )
             except CircuitBreakerOpen:
                 LOGGER.warning(
                     "Stammstrecke: Circuit breaker offen (%d aufeinanderfolgende Fehler) — "
@@ -1207,11 +1553,50 @@ def main() -> int:
             else:
                 successes += 1
 
+    # Finalisation pass: every train whose scheduled departure is in
+    # the past (relative to this tick) is committed to the CSV with
+    # its latest observed delay and removed from the ledger. A train
+    # contributes to exactly one CSV row over its whole observation
+    # history regardless of how many cron ticks saw it in the
+    # lookahead.
+    csv_rows_written = 0
+    for direction in DIRECTIONS:
+        finalised = _finalize_departed(
+            state, direction=direction.target_label, now=when
+        )
+        if not finalised:
+            continue
+        mean_minutes = float(statistics.mean(finalised))
+        LOGGER.info(
+            "Stammstrecke: Richtung %s — %d Zug/Züge finalisiert, "
+            "⌀ %.2f Minuten (Schwelle %d).",
+            direction.target_label,
+            len(finalised),
+            mean_minutes,
+            DELAY_THRESHOLD_MINUTES,
+        )
+        append_stammstrecke_row(
+            timestamp=when,
+            direction=direction.target_label,
+            delay_minutes=mean_minutes,
+        )
+        csv_rows_written += 1
+
+    # Persist the ledger AFTER finalisation so a crash between
+    # finalise and save would, on the next tick, simply re-finalise
+    # the same trains (now with already-departed scheduled times, no
+    # new observations, but the old ``latest_delay_minutes`` still
+    # present) — i.e. degraded but not silent.
+    _save_pending_trips(PENDING_TRIPS_PATH, state)
+
     LOGGER.info(
-        "Stammstrecke: %d Beobachtung(en) angefügt (Erfolg=%d, Fehler=%d).",
+        "Stammstrecke: %d Beobachtung(en), %d CSV-Zeile(n) geschrieben "
+        "(Erfolg=%d, Fehler=%d, Ledger=%d offen).",
         successes,
+        csv_rows_written,
         successes,
         errors,
+        len(state),
     )
 
     # Exit 1 only if every direction failed AND at least one was attempted —

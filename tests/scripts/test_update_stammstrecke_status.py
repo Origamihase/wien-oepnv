@@ -882,8 +882,9 @@ def test_process_direction_logs_status_and_error_code_on_http_error(
 
     with caplog.at_level(logging.WARNING, logger="update_stammstrecke_status"):
         status = script._process_direction(
-            session=requests.Session(),
-            direction=script.DIRECTIONS[0],
+            requests.Session(),
+            script.DIRECTIONS[0],
+            {},  # empty pending-trip ledger — error path never touches it
             when=_stable_now,
         )
     assert status == "error"
@@ -1273,4 +1274,436 @@ def test_query_trips_propagates_quota_exceeded_without_fetching(
         )
     assert fetched["called"] is False
 
+
+# ---- Pending-trip state persistence ---------------------------------------
+
+
+def _make_pending(
+    *,
+    direction: str = "Meidling",
+    name: str = "S 1",
+    scheduled: datetime | None = None,
+    latest_delay_minutes: float = 0.0,
+    last_seen_at: datetime | None = None,
+) -> script._PendingTrip:
+    """Build a ``_PendingTrip`` with deterministic Vienna timestamps."""
+    base = datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ)
+    return script._PendingTrip(
+        direction=direction,
+        name=name,
+        scheduled=scheduled or base,
+        latest_delay_minutes=latest_delay_minutes,
+        last_seen_at=last_seen_at or base,
+    )
+
+
+def test_identity_key_is_deterministic_and_collision_free() -> None:
+    """Same fields → same key; differing in any field → different key."""
+    sched = datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ)
+    key_a = script._identity_key("Meidling", "S 1", sched)
+    key_b = script._identity_key("Meidling", "S 1", sched)
+    assert key_a == key_b
+    # Direction differs.
+    assert script._identity_key("Floridsdorf", "S 1", sched) != key_a
+    # Line name differs.
+    assert script._identity_key("Meidling", "S 80", sched) != key_a
+    # Scheduled differs.
+    other = sched + timedelta(minutes=15)
+    assert script._identity_key("Meidling", "S 1", other) != key_a
+
+
+def test_identity_key_trims_whitespace_in_line_name() -> None:
+    """Whitespace-only difference in line name must not produce a new key."""
+    sched = datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ)
+    assert script._identity_key("Meidling", "S 1", sched) == script._identity_key(
+        "Meidling", " S 1 ", sched
+    )
+
+
+def test_purge_stale_entries_drops_only_entries_older_than_cutoff() -> None:
+    """Entries with ``last_seen_at < cutoff`` are removed; others survive."""
+    now = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
+    cutoff = now - timedelta(hours=6)
+    fresh = _make_pending(name="S 1", last_seen_at=now - timedelta(hours=2))
+    stale = _make_pending(name="S 80", last_seen_at=now - timedelta(hours=12))
+    state: dict[str, script._PendingTrip] = {
+        "fresh-key": fresh,
+        "stale-key": stale,
+    }
+    removed = script._purge_stale_entries(state, cutoff=cutoff)
+    assert removed == 1
+    assert "fresh-key" in state
+    assert "stale-key" not in state
+
+
+def test_load_pending_trips_returns_empty_when_file_missing(tmp_path: Path) -> None:
+    """A non-existent state file MUST yield an empty dict, never raise."""
+    assert script._load_pending_trips(tmp_path / "missing.json") == {}
+
+
+def test_load_pending_trips_returns_empty_when_file_empty(tmp_path: Path) -> None:
+    """An empty state file is treated like a missing file (fresh start)."""
+    path = tmp_path / "empty.json"
+    path.write_text("", encoding="utf-8")
+    assert script._load_pending_trips(path) == {}
+
+
+def test_load_pending_trips_recovers_from_corrupt_json(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    """Corrupt JSON in the state file is logged at WARNING and recovered."""
+    path = tmp_path / "corrupt.json"
+    path.write_text("{not even close to json", encoding="utf-8")
+    with caplog.at_level(logging.WARNING, logger="update_stammstrecke_status"):
+        result = script._load_pending_trips(path)
+    assert result == {}
+    assert any("korrupt" in r.getMessage() for r in caplog.records)
+
+
+def test_load_pending_trips_drops_malformed_entries_but_keeps_valid_ones(
+    tmp_path: Path,
+) -> None:
+    """One malformed entry alongside a good one must not poison the loader."""
+    payload = {
+        "valid-key": {
+            "direction": "Meidling",
+            "name": "S 1",
+            "scheduled": "2026-05-09T08:00:00+02:00",
+            "latest_delay_minutes": 4.0,
+            "last_seen_at": "2026-05-09T08:00:00+02:00",
+        },
+        # Missing ``scheduled`` → dropped.
+        "bad-key": {
+            "direction": "Meidling",
+            "name": "S 80",
+            "latest_delay_minutes": 9.0,
+            "last_seen_at": "2026-05-09T08:00:00+02:00",
+        },
+        # Top-level value isn't a mapping → dropped.
+        "wrong-type": "not-a-mapping",
+    }
+    path = tmp_path / "mixed.json"
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    result = script._load_pending_trips(path)
+    assert set(result) == {"valid-key"}
+    assert result["valid-key"].name == "S 1"
+    assert result["valid-key"].latest_delay_minutes == 4.0
+
+
+def test_save_pending_trips_round_trips_through_load(tmp_path: Path) -> None:
+    """Save then load must reproduce the same in-memory state."""
+    path = tmp_path / "state.json"
+    state_in = {
+        script._identity_key(
+            "Meidling",
+            "S 1",
+            datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ),
+        ): _make_pending(latest_delay_minutes=4.5),
+    }
+    assert script._save_pending_trips(path, state_in) is True
+    state_out = script._load_pending_trips(path)
+    assert set(state_out) == set(state_in)
+    only_key = next(iter(state_in))
+    assert state_out[only_key].latest_delay_minutes == 4.5
+
+
+def test_save_pending_trips_uses_atomic_write(tmp_path: Path) -> None:
+    """A successful save replaces the target without leaving tmp files."""
+    path = tmp_path / "state.json"
+    state_in = {
+        "a-key": _make_pending(latest_delay_minutes=1.0),
+    }
+    assert script._save_pending_trips(path, state_in) is True
+    # No stray tmp files left behind in the directory.
+    files = sorted(p.name for p in tmp_path.iterdir())
+    assert files == ["state.json"]
+
+
+# ---- Per-leg observation flow ---------------------------------------------
+
+
+def test_collect_sbahn_leg_observations_returns_full_records() -> None:
+    """The new collector emits records with name + scheduled + delay."""
+    trips = [
+        _trip(leg_name="S 1", delay_minutes=4, leg_origin_time="08:00:00"),
+        _trip(leg_name="S 80", delay_minutes=12, leg_origin_time="08:15:00"),
+    ]
+    observations = script._collect_sbahn_leg_observations(trips)
+    assert [obs.name for obs in observations] == ["S 1", "S 80"]
+    assert [obs.delay_minutes for obs in observations] == [4.0, 12.0]
+    assert observations[0].scheduled == datetime(
+        2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ
+    )
+    assert observations[1].scheduled == datetime(
+        2026, 5, 9, 8, 15, tzinfo=VIENNA_TZ
+    )
+
+
+def test_collect_sbahn_leg_observations_skips_legs_without_name() -> None:
+    """A leg with an empty or whitespace-only ``name`` cannot be deduped → dropped."""
+    trip = _trip(leg_name="S 1", delay_minutes=4)
+    # Surgically blank the leg's ``name`` field.
+    trip["LegList"]["Leg"][0]["name"] = "   "
+    observations = script._collect_sbahn_leg_observations([trip])
+    assert observations == []
+
+
+def test_observe_legs_inserts_new_trip_with_now_as_last_seen() -> None:
+    """A fresh observation must land in state with ``last_seen_at = now``."""
+    now = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
+    state: dict[str, script._PendingTrip] = {}
+    obs = script._SbahnLegObservation(
+        name="S 1",
+        scheduled=datetime(2026, 5, 9, 8, 45, tzinfo=VIENNA_TZ),
+        delay_minutes=4.0,
+    )
+    written = script._observe_legs(
+        state, [obs], direction="Meidling", now=now
+    )
+    assert written == 1
+    assert len(state) == 1
+    only_entry = next(iter(state.values()))
+    assert only_entry.direction == "Meidling"
+    assert only_entry.name == "S 1"
+    assert only_entry.latest_delay_minutes == 4.0
+    assert only_entry.last_seen_at == now
+
+
+def test_observe_legs_overwrites_existing_with_latest_delay() -> None:
+    """The same train re-observed must yield the *latest* delay value.
+
+    Mirrors the user's scenario verbatim: at T=40min the train shows
+    5 min late; at T=10min the train shows 15 min late. We expect
+    the 15-min reading to survive in state.
+    """
+    state: dict[str, script._PendingTrip] = {}
+    scheduled = datetime(2026, 5, 9, 8, 45, tzinfo=VIENNA_TZ)
+
+    # First observation 40 min before departure: 5 min delay.
+    earlier = datetime(2026, 5, 9, 8, 5, tzinfo=VIENNA_TZ)
+    script._observe_legs(
+        state,
+        [
+            script._SbahnLegObservation(
+                name="S 1", scheduled=scheduled, delay_minutes=5.0
+            )
+        ],
+        direction="Meidling",
+        now=earlier,
+    )
+
+    # Second observation 10 min before departure: 15 min delay.
+    later = datetime(2026, 5, 9, 8, 35, tzinfo=VIENNA_TZ)
+    script._observe_legs(
+        state,
+        [
+            script._SbahnLegObservation(
+                name="S 1", scheduled=scheduled, delay_minutes=15.0
+            )
+        ],
+        direction="Meidling",
+        now=later,
+    )
+
+    assert len(state) == 1
+    only_entry = next(iter(state.values()))
+    assert only_entry.latest_delay_minutes == 15.0
+    assert only_entry.last_seen_at == later
+
+
+def test_finalize_departed_returns_only_past_scheduled_trips() -> None:
+    """Trips with ``scheduled > now`` stay in state; ``scheduled <= now`` finalise."""
+    now = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
+    past = _make_pending(
+        name="S 1",
+        scheduled=datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ),
+        latest_delay_minutes=5.0,
+    )
+    future = _make_pending(
+        name="S 80",
+        scheduled=datetime(2026, 5, 9, 9, 0, tzinfo=VIENNA_TZ),
+        latest_delay_minutes=2.0,
+    )
+    state = {"past-key": past, "future-key": future}
+    finalised = script._finalize_departed(
+        state, direction="Meidling", now=now
+    )
+    assert finalised == [5.0]
+    # Only the past entry was popped.
+    assert "past-key" not in state
+    assert "future-key" in state
+
+
+def test_finalize_departed_filters_by_direction() -> None:
+    """A departed train for the *other* direction is left untouched."""
+    now = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
+    meidling_trip = _make_pending(
+        direction="Meidling",
+        scheduled=datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ),
+        latest_delay_minutes=5.0,
+    )
+    floridsdorf_trip = _make_pending(
+        direction="Floridsdorf",
+        scheduled=datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ),
+        latest_delay_minutes=10.0,
+    )
+    state = {"m": meidling_trip, "f": floridsdorf_trip}
+    finalised = script._finalize_departed(
+        state, direction="Meidling", now=now
+    )
+    assert finalised == [5.0]
+    assert "m" not in state
+    assert "f" in state
+
+
+def test_finalize_departed_returns_delays_in_scheduled_order() -> None:
+    """Order of returned delays must follow scheduled time ascending.
+
+    A deterministic order keeps the resulting CSV row's mean
+    reproducible across runs and platforms.
+    """
+    now = datetime(2026, 5, 9, 9, 0, tzinfo=VIENNA_TZ)
+    later = _make_pending(
+        name="S 80",
+        scheduled=datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
+        latest_delay_minutes=10.0,
+    )
+    earlier = _make_pending(
+        name="S 1",
+        scheduled=datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ),
+        latest_delay_minutes=4.0,
+    )
+    # Insert in reverse-scheduled order so dict iteration order would
+    # produce the wrong sequence without explicit sort.
+    state = {"later-key": later, "earlier-key": earlier}
+    finalised = script._finalize_departed(
+        state, direction="Meidling", now=now
+    )
+    assert finalised == [4.0, 10.0]
+
+
+def test_finalize_departed_empty_state_returns_empty_list() -> None:
+    """Empty state must yield an empty finalisation list, never raise."""
+    now = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
+    state: dict[str, script._PendingTrip] = {}
+    assert script._finalize_departed(state, direction="Meidling", now=now) == []
+
+
+# ---- End-to-end: observe across two ticks, finalise the latest reading ----
+
+
+def test_main_end_to_end_finalises_with_latest_delay_across_two_ticks(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """The user's exact scenario, end-to-end.
+
+    Cron tick 1 (08:00): the lookahead reports train ``S 1`` scheduled
+    at 08:45 with a 5-min delay. The train has not departed yet, so
+    no CSV row is written; the ledger keeps the 5-min reading.
+
+    Cron tick 2 (08:35): the lookahead now reports the same train
+    with a 15-min delay (the delay grew as the actual departure
+    approached). The train is still in the future (scheduled 08:45 >
+    now 08:35), so the ledger overwrites the entry to 15 min. Still
+    no CSV row.
+
+    Cron tick 3 (08:50): the train has departed. The ledger entry
+    finalises; a CSV row is written with the *latest* delay of 15
+    min — NOT the stale 5-min reading from tick 1.
+    """
+    # Redirect every persistence target into tmp_path so the test
+    # never touches the developer's working copy.
+    state_path = tmp_path / "pending_trips.json"
+    monkeypatch.setattr(script, "PENDING_TRIPS_PATH", state_path)
+
+    # Capture every ``append_stammstrecke_row`` call instead of writing
+    # an actual CSV file — the test asserts on the captured records.
+    csv_calls: list[dict[str, Any]] = []
+
+    def fake_append(
+        *,
+        timestamp: datetime,
+        direction: str,
+        delay_minutes: float,
+        stats_dir: Path | None = None,
+    ) -> bool:
+        del stats_dir
+        csv_calls.append(
+            {
+                "timestamp": timestamp,
+                "direction": direction,
+                "delay_minutes": delay_minutes,
+            }
+        )
+        return True
+
+    monkeypatch.setattr(script, "append_stammstrecke_row", fake_append)
+
+    # The /trip endpoint stays mocked; we paint the leg's realtime
+    # delta differently across the three ticks.
+    delay_by_tick: dict[datetime, float] = {}
+
+    def fake_query(
+        session: Any, direction: Any, *, when: datetime, timeout: int = 0
+    ) -> list[dict[str, Any]]:
+        del session, timeout
+        # Only the Meidling direction's lookahead carries the test
+        # train; the opposite direction returns no trips so finalisation
+        # is exercised as direction-scoped.
+        if direction.target_label != "Meidling":
+            return []
+        # The train has departed; the API no longer returns it.
+        if when >= datetime(2026, 5, 9, 8, 45, tzinfo=VIENNA_TZ):
+            return []
+        return [
+            _trip(
+                leg_name="S 1",
+                delay_minutes=delay_by_tick.get(when, 0.0),
+                leg_origin_date="2026-05-09",
+                leg_origin_time="08:45:00",
+            )
+        ]
+
+    monkeypatch.setattr(script, "_query_trips", fake_query)
+
+    # --- Tick 1: 08:00, observed delay = 5 min ----------------------------
+    tick1 = datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ)
+    monkeypatch.setattr(script, "_now_vienna", lambda: tick1)
+    delay_by_tick[tick1] = 5.0
+    assert script.main() == 0
+    assert csv_calls == [], "Tick 1 must not write a CSV row (train still in future)"
+    state_after_tick1 = script._load_pending_trips(state_path)
+    assert len(state_after_tick1) == 1
+    only = next(iter(state_after_tick1.values()))
+    assert only.latest_delay_minutes == 5.0
+
+    # --- Tick 2: 08:35, observed delay = 15 min ---------------------------
+    tick2 = datetime(2026, 5, 9, 8, 35, tzinfo=VIENNA_TZ)
+    monkeypatch.setattr(script, "_now_vienna", lambda: tick2)
+    delay_by_tick[tick2] = 15.0
+    assert script.main() == 0
+    assert csv_calls == [], "Tick 2 must not write a CSV row (train still in future)"
+    state_after_tick2 = script._load_pending_trips(state_path)
+    assert len(state_after_tick2) == 1
+    only = next(iter(state_after_tick2.values()))
+    assert only.latest_delay_minutes == 15.0, (
+        "Latest observation must overwrite the earlier 5-min reading"
+    )
+
+    # --- Tick 3: 08:50, train has departed; finalise with 15 -------------
+    tick3 = datetime(2026, 5, 9, 8, 50, tzinfo=VIENNA_TZ)
+    monkeypatch.setattr(script, "_now_vienna", lambda: tick3)
+    assert script.main() == 0
+    assert len(csv_calls) == 1
+    persisted = csv_calls[0]
+    assert persisted["direction"] == "Meidling"
+    assert persisted["delay_minutes"] == 15.0, (
+        "Finalisation must use the latest (15 min) reading, not the "
+        "stale 5-min one"
+    )
+    assert persisted["timestamp"] == tick3
+    # Ledger emptied after finalisation.
+    state_after_tick3 = script._load_pending_trips(state_path)
+    assert state_after_tick3 == {}
 

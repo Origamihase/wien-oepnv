@@ -363,6 +363,10 @@ def append_stammstrecke_row(
     departure delays observed across the sampled S-Bahn legs for
     that direction (legs without realtime signal are excluded
     upstream so the mean reflects only verified observations).
+    Each row represents one cron-cycle sample for one direction —
+    threshold counters at aggregation time treat every such row as a
+    single observation, never multiplying it by the number of legs
+    within the sample.
 
     The function is best-effort: filesystem errors are logged and
     swallowed so the upstream cron pipeline always exits cleanly.
