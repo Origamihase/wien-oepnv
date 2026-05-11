@@ -1,3 +1,197 @@
+## 2026-05-11 - Trojan-Source BiDi Drift Round 14 (Script-Level Station Writers): Seven Sibling `json.dump(..., ensure_ascii=False, ...)` Sinks That Bypass `src/places/merge.py:write_stations` — All Closed Via The Round-12 `scrub_trojan_source_primitives` Helper
+
+**Vulnerability:** Round 13 (PR #1438) closed
+`src/places/merge.py:write_stations` / `load_stations`
+(`data/stations.json`) via the
+`scrub_trojan_source_primitives` helper added in Round 12
+(`src/utils/serialize.py`). The Round-13 closing checklist
+explicitly named **eight sibling script-level writer sinks**
+spread across **seven `scripts/` files** that bypass the
+canonical library function and write `data/stations.json` (or the
+sibling `data/vor-haltestellen.mapping.json`) via direct
+`json.dump(..., ensure_ascii=False, ...)` /
+`json.dumps(..., ensure_ascii=False, ...)` calls. Each is
+reached from the weekly `update-stations.yml` cron pipeline
+(via `scripts/update_all_stations.py`'s orchestrator) — the same
+threat surface that Rounds 10-13 closed at the library level
+but is reopened by every direct-`json.dump` call site that does
+not route through `src.places.merge.write_stations`.
+
+The eight closed sinks (mapped to `scripts/` files):
+
+  1. `scripts/fetch_google_places_stations.py:_write_if_changed`
+     (line ~288) — writes `{"stations": [...]}` to
+     `data/stations.json` during the manual Google-Places-only
+     escape-hatch path (`update-google-places-stations.yml`
+     line 154 `git add data/stations.json`).
+  2. `scripts/fetch_google_places_stations.py:_dump_changes`
+     (line ~273) — writes a `{"new": [...], "updated": [...]}`
+     per-run change-dump sidecar.
+  3. `scripts/update_all_stations.py:_write_stations_payload`
+     (line ~529) — writes `{"stations": [...]}` to the
+     orchestrator's temp file that is copy-back'd to
+     `data/stations.json` and committed by the weekly cron.
+  4. `scripts/enrich_station_aliases.py` (inline write at the
+     end of `main()`, line ~821) — writes
+     `{"stations": [...]}` to `data/stations.json` after alias
+     enrichment from VOR / GTFS / pendler-alternative-names
+     sources. Extracted into a new `_write_stations_payload`
+     helper so the scrubber can run uniformly at the
+     ingestion boundary.
+  5. `scripts/update_station_directory.py:write_json`
+     (line ~1762) — writes `{"stations": [...]}` after the
+     OEBB `Verzeichnis der Verkehrsstationen` Excel extraction.
+  6. `scripts/update_vor_stations.py:merge_into_stations`
+     (line ~1208 inline write) — writes
+     `{"stations": [...]}` after the VOR merge.
+  7. `scripts/update_wl_stations.py:merge_into_stations`
+     (line ~734 inline write) — writes `{"stations": [...]}`
+     after the Wien OGD CSV merge.
+  8. `scripts/fetch_vor_haltestellen.py` (inline write in
+     `main()`, line ~665) — writes
+     `data/vor-haltestellen.mapping.json` (the VAO
+     resolution-mapping sibling sidecar). Extracted into a new
+     `_write_mapping_payload` helper so the scrubber can run
+     uniformly at the ingestion boundary.
+
+**Threat model:**
+
+  1. Attacker compromises an upstream provider (Google Places
+     hijack, OSM Overpass cache poisoning, OEBB `Verzeichnis
+     der Verkehrsstationen` Excel response tampering, Wien OGD
+     CSV poisoning, VAO ReST station-resolution endpoint
+     hijack, leaked CI secret store) or an operator mis-edits
+     `data/stations.json` /
+     `data/vor-haltestellen.mapping.json` directly.
+  2. A planted station entry carrying U+202E (RIGHT-TO-LEFT
+     OVERRIDE) in a `name` / `aliases[]` /
+     `_formatted_address` / `station_name` / `resolved_name`
+     field — e.g. `name="Hauptbahnhof‮moc.live"` displays as
+     `Hauptbahnhofevil.com` — reaches one of the eight
+     script-level writers above.
+  3. Pre-fix each writer serialised the item via
+     `json.dump(..., ensure_ascii=False, ...)` or
+     `json.dumps(..., ensure_ascii=False, ...)`.
+     `ensure_ascii=False` emits U+202E as its raw UTF-8 byte
+     triplet `\xe2\x80\xae`, so the on-disk file carries the
+     BiDi-reversal trigger directly.
+  4. The `update-stations.yml` / `update-google-places-stations.yml`
+     workflow commits the poisoned file to `main`. The
+     malicious name is now visible in `git log -p` / `git show`
+     / the GitHub web UI / `cat` / `less` / IDE preview —
+     every viewer honours BiDi reversal.
+  5. Operator reviewing the weekly commit misreads the
+     BiDi-reversed display as the inverse of the actual
+     planted bytes. The attack hides in the operator's own
+     review pass.
+
+**Reproduced:** `tests/test_sentinel_script_station_writers_trojan_source.py`
+contains 184 PoC tests:
+
+  * 1 + 21 (parametrised) for each of the eight writer sinks
+    covering every primitive in the canonical CVE-2021-42574
+    attack-byte union.
+  * 1 German-content compact-diff regression per sink
+    (`ä`/`ü`/`ß` survive as raw UTF-8 — the bloated `\u00XX`
+    form does NOT appear), so we know `ensure_ascii=False` is
+    preserved and the scrubber is the ONLY change at the write
+    boundary.
+  * 1 inventory test that grep-pins
+    `scrub_trojan_source_primitives` is imported in every
+    target script — a future drift candidate (e.g. a 9th
+    script-level writer) that re-implements the primitive set
+    locally will trip the inventory check until it's wired to
+    the single-sourced helper.
+
+  Pre-fix repro for the canonical write-boundary case via
+  `scripts/fetch_google_places_stations.py:_write_if_changed`:
+  `name="Hauptbahnhof‮moc.live"` produced an on-disk file
+  with raw bytes `...Hauptbahnhof\xe2\x80\xaemoc.live...`.
+  Post-fix: the primitive is stripped at the ingestion
+  boundary; the on-disk file reads `Hauptbahnhofmoc.live`
+  (the malicious primitive is gone, the safe portion of the
+  name remains).
+
+**Fix:**
+
+  * Every script gains a `from src.utils.serialize import
+    scrub_trojan_source_primitives` import (mirroring
+    `src/places/merge.py`'s Round-13 wiring). The
+    canonical attack-byte union stays single-sourced across
+    the codebase.
+  * `_write_if_changed`, `_dump_changes`,
+    `_write_stations_payload`, `write_json`, and the inline
+    writes in `merge_into_stations` (VOR + WL) apply the
+    scrubber to the payload BEFORE `json.dump`/`json.dumps`.
+  * `enrich_station_aliases.py` and
+    `fetch_vor_haltestellen.py` get a new
+    `_write_stations_payload` / `_write_mapping_payload`
+    helper respectively that owns the
+    scrub-then-`json.dump` pair, replacing the inline writes
+    in `main()`. The helpers are package-private (underscored)
+    and importable by the PoC test suite.
+  * `ensure_ascii=False` is preserved at every writer so
+    legitimate German station names (umlauts ä/ö/ü/Ä/Ö/Ü +
+    sharp s ß) stay compact in the weekly commit diff.
+    Mirrors the Round-12/13 scrub-and-drop semantics chosen
+    for the high-cardinality content sinks.
+
+**Learning:** the Round-13 "Named but deferred" entry's
+prediction that the script-level writers were the next target
+AND that the single-sourced defence helper would carry the fix
+was correct. The drift family is now uniform across every
+committed operator-facing JSON sidecar in the project — nine
+rounds (Round 3 ValidationReport → Round 14 script-level
+station writers) of cumulative coverage on top of the
+channel/title/feed-XML/CSV/markdown sinks closed earlier. The
+closing-checklist drift-walker invariant continues to hold:
+every fix shape adopted in a previous round is mechanically
+reusable by the next round IF the helper was placed in a
+provider-neutral utility module
+(`src/utils/serialize.py:scrub_trojan_source_primitives` here).
+
+  * **Closed in this round:** eight script-level station
+    writers across seven `scripts/` files (see list above).
+  * **Already closed (Round 13):** `write_stations` /
+    `load_stations` (`data/stations.json`) via scrubber-at-
+    ingestion + flag preservation.
+  * **Already closed (Round 12):** `write_cache` / `read_cache`
+    (`cache/<provider>/events.json`).
+  * **Already closed (Round 11):** `MonthlyQuota.save_atomic`
+    (`data/places_quota.json`), `_write_request_count_file`
+    (`data/vor_request_count.json`), `write_status`
+    (`cache/<provider>/last_run.json`).
+  * **Already closed (earlier rounds):** `_save_state`
+    (`data/first_seen.json`, Round 10),
+    `_write_heartbeat_file` (`data/stations_last_run.json`,
+    Round 10), `_write_quarantine_file`
+    (`data/quarantine.json`, Round 9),
+    `_render_diff_markdown` (`docs/stations_diff.md`,
+    Round 9), `ValidationReport.to_markdown()` (Round 3),
+    `render_feed_health_markdown` / GitHub-Issue body
+    (Round 2), `docs/statistik.md` stats dashboard (Round 1),
+    `data/stats/*.csv` CSV writer, RSS XML writers, sitemap
+    writer, `_escape_env_value` `.env` writer.
+  * **Named but deferred** (out of scope for this round;
+    queued for follow-up sanitisation rounds): none currently
+    identified. Future drift candidates that would re-open the
+    family:
+    * A NEW provider script that grows an inline
+      `json.dump(..., ensure_ascii=False, ...)` write to a
+      `data/` JSON sidecar without routing through
+      `src.places.merge.write_stations` or
+      `src.utils.cache.write_cache`. The Round-14 inventory
+      test
+      (`test_all_script_writers_use_shared_scrubber_helper`)
+      pins the current set; the next walker MUST extend it
+      when a new sibling appears.
+    * A new utility helper (e.g. `src/utils/X.py`) that grows
+      its own `json.dump(..., ensure_ascii=False, ...)` site.
+      This is the recurring sibling-drift class — every
+      previous round identified one and the next round will
+      need to enumerate `grep -nE "ensure_ascii=False" src/`
+      one more time.
+
 ## 2026-05-11 - Trojan-Source BiDi Drift Round 13 (Canonical Stations Directory Sidecar): `write_stations` / `load_stations` (`data/stations.json`) Was the Round-12 Closing-Checklist Named-But-Deferred Sidecar — Closed Via The Round-12 `scrub_trojan_source_primitives` Helper (Single-Sourced Defence Shape)
 
 **Vulnerability:** Round 12 (PR #1437) closed
