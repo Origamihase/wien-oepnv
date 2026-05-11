@@ -374,6 +374,30 @@ def _build_heartbeat(
     }
 
 
+def _write_heartbeat_file(path: Path, heartbeat: Mapping[str, Any]) -> None:
+    """Atomically write the orchestrator heartbeat to *path*.
+
+    Security (Trojan-Source / BiDi-Mark Drift Round 10): the file is
+    operator-facing diagnostic state, committed to ``main`` by the
+    ``update-cycle.yml`` cron pipeline (``data/stations_last_run.json``)
+    and reviewed via ``cat`` / ``less`` / the GitHub web UI / IDE
+    preview. ``ensure_ascii=True`` escapes every non-ASCII code point
+    as a literal ``\\uXXXX`` sequence, so a future heartbeat field
+    carrying station- / provider- / environment-controlled content
+    cannot leak the canonical CVE-2021-42574 Trojan-Source / zero-width
+    / Unicode-line-terminator / 8-bit C1 union as raw UTF-8 bytes.
+    Mirrors the canonical fix shape pinned in PR #1434 for
+    ``_write_quarantine_file`` so the closing checklist's invariant is
+    uniform across the committed ``data/*.json`` sidecar writer family.
+    Forensic intent is preserved (``json.loads`` recovers the original
+    string from the literal escape sequence).
+    """
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with atomic_write(path, mode="w", encoding="utf-8") as handle:
+        json.dump(heartbeat, handle, ensure_ascii=True, indent=2, sort_keys=True)
+        handle.write("\n")
+
+
 def _collect_blocking_issues(report: ValidationReport) -> list[tuple[str, str]]:
     """Return (category, message) tuples for issues that trigger auto-quarantine."""
     blocking: list[tuple[str, str]] = []
@@ -698,10 +722,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         # Persist the heartbeat and diff report next to the data they describe.
         # Both files are atomic-written so a partial run never produces
         # half-written observability artefacts.
-        _DEFAULT_HEARTBEAT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        with atomic_write(_DEFAULT_HEARTBEAT_PATH, mode="w", encoding="utf-8") as handle:
-            json.dump(heartbeat, handle, ensure_ascii=False, indent=2, sort_keys=True)
-            handle.write("\n")
+        _write_heartbeat_file(_DEFAULT_HEARTBEAT_PATH, heartbeat)
         _DEFAULT_DIFF_REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
         with atomic_write(_DEFAULT_DIFF_REPORT_PATH, mode="w", encoding="utf-8") as handle:
             handle.write(_render_diff_markdown(
