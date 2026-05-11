@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 11:30:41 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 12:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[49: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4</guid>
+      <pubDate>Mon, 11 May 2026 11:48:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 12:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 11:49:51 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Gasrohrgebrechen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a8eb0b5720c261bbcf15dc0cc02a024bb6b05ac24ff4b5b945cae03d8b291ce6</guid>
+      <pubDate>Mon, 11 May 2026 11:25:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 07:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 11:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie 71 kann die Haltestelle Molitorgasse in Fahrtrichtung Kaiserebersdorf nicht einhalten. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Die Linie 71 kann die Haltestelle Molitorgasse in Fahrtrichtung Kaiserebersdorf nicht einhalten.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,17 +43,6 @@
       <content:encoded><![CDATA[Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">938ac29fa057a3ddd67f86c556a2f4fea6b28f73f84d298ed3c0dbde81da7fcf</guid>
-      <pubDate>Mon, 11 May 2026 11:17:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 11:30:41 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 11:17:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U1: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3e8dcb89490f474fe916c72c3536a6cefaf6a6d645b1d00dfac85cedc718d02b</guid>
@@ -39,19 +50,8 @@
       <ext:first_seen>Mon, 11 May 2026 11:00:51 +0200</ext:first_seen>
       <ext:starts_at>Mon, 11 May 2026 10:55:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U1 fährt derzeit nicht zwischen Karlsplatz und Praterstern. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Die Linie U1 fährt derzeit nicht zwischen Karlsplatz und Praterstern.<br/>[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[3A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d0ca726f4f3064439e34273bfe62cd8cb00619d515176ac7f96f9e089a05e6ac</guid>
-      <pubDate>Mon, 11 May 2026 10:49:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 11:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 10:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 11.05.2026]]]></content:encoded>
+      <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: Wien Hauptbahnhof ↔ Wien Hütteldorf]]></title>
