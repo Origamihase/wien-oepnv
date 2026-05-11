@@ -1,7 +1,7 @@
 {
   "diff": {
     "added": 0,
-    "coord_shifted": 0,
+    "coord_shifted": 2,
     "removed": 0,
     "renamed": 0
   },
@@ -13,22 +13,22 @@
   },
   "sub_scripts": [
     {
-      "duration_s": 23.18,
+      "duration_s": 26.15,
       "exit_code": 0,
       "name": "update_station_directory.py"
     },
     {
-      "duration_s": 6.23,
+      "duration_s": 6.83,
       "exit_code": 0,
       "name": "update_wl_stations.py"
     },
     {
-      "duration_s": 13.85,
+      "duration_s": 18.71,
       "exit_code": 0,
       "name": "enrich_station_aliases.py"
     }
   ],
-  "timestamp": "2026-05-11T15:31:29+00:00",
+  "timestamp": "2026-05-11T23:57:54+00:00",
   "validation": {
     "alias_issues": 0,
     "coordinate_issues": 2,
