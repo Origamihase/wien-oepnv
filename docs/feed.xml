@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 16:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 17:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[27A/28A/29A: Fronleichnamsumzug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ad708d66e9f43ae00d14c5be108ed1091d0f1d25715fcbaf1fe6c9f127355a5e</guid>
+      <pubDate>Mon, 11 May 2026 16:40:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 17:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 16:40:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 11:35:00 +0200</ext:ends_at>
+      <description>Veranstaltung Wegen Abhaltung eines christlichen Umzuges müssen die Busse der Linien 27A, 28A und 29A in beiden Richtungen umgeleitet werden. [11.05.2026 – 04.06.2026]</description>
+      <content:encoded><![CDATA[Veranstaltung Wegen Abhaltung eines christlichen Umzuges müssen die Busse der Linien 27A, 28A und 29A in beiden Richtungen umgeleitet werden.<br/>[11.05.2026 – 04.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,28 +30,6 @@
       <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
       <content:encoded><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">49173de64aa2215d87e8e544f1df8b7687c6e8172327e8cd9174b3c727005709</guid>
-      <pubDate>Mon, 11 May 2026 15:09:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 07:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 15:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 16:50:00 +0200</ext:ends_at>
-      <description>Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b3dcbbc6e19d96361d56bc3f3ee29d72b2f90f08ddab0ffb34e6788945fb613c</guid>
-      <pubDate>Mon, 11 May 2026 14:57:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 15:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 14:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 16:35:00 +0200</ext:ends_at>
-      <description>Linie 26A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 26A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Gasrohrgebrechen]]></title>
@@ -115,6 +104,17 @@
       <ext:ends_at>Tue, 12 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[11.05.2026 – 12.05.2026]</description>
       <content:encoded><![CDATA[[11.05.2026 – 12.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N65: Betrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0af8e48c5c63c0818b4662d59227417ee430c0b1befb39c7dcdd7a316ece5e82</guid>
+      <pubDate>Mon, 11 May 2026 00:50:09 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 01:00:33 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 00:50:09 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 11.05.2026]</description>
+      <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
