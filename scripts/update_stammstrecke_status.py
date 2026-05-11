@@ -1136,10 +1136,14 @@ def _process_direction(
         return "no_delays"
 
     mean_minutes = float(statistics.mean(delays))
+    over_threshold = sum(1 for d in delays if d > DELAY_THRESHOLD_MINUTES)
     LOGGER.info(
-        "Stammstrecke: Richtung %s — Mittel: %.2f Minuten (Schwelle: %d).",
+        "Stammstrecke: Richtung %s — Mittel: %.2f Minuten, %d/%d Legs > %d min "
+        "(Schwelle).",
         direction.target_label,
         mean_minutes,
+        over_threshold,
+        len(delays),
         DELAY_THRESHOLD_MINUTES,
     )
     # Persist every successful sample, regardless of whether it exceeds
@@ -1148,13 +1152,14 @@ def _process_direction(
     # gates against the same rows at feed-build time (see
     # :mod:`src.feed.stammstrecke`). Single source of truth = this CSV
     # ledger.  The arithmetic mean over the per-cycle leg sample is
-    # used (was median until 2026-05-11): the median collapsed to 0.0
-    # whenever ≥50% of legs were on-time, hiding sample-internal
-    # outliers that real passengers do experience.
+    # used (was median until 2026-05-11) and the per-leg over-threshold
+    # count is persisted alongside so the dashboard / README can tally
+    # every individual delayed leg instead of only sample-level reductions.
     append_stammstrecke_row(
         timestamp=when,
         direction=direction.target_label,
         delay_minutes=mean_minutes,
+        over_threshold=over_threshold,
     )
     return "ok"
 

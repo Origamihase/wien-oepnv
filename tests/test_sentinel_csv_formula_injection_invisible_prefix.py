@@ -294,6 +294,7 @@ def test_append_stammstrecke_row_neutralises_invisible_prefix_direction(
         timestamp=when,
         direction=payload,
         delay_minutes=5.5,
+        over_threshold=0,
         stats_dir=tmp_path,
     )
     written_direction = _read_first_data_row(tmp_path / "stammstrecke_2026.csv")[3]
@@ -456,11 +457,13 @@ def test_append_stammstrecke_row_safe_text_roundtrips_after_widening(
         timestamp=when,
         direction="Floridsdorf",
         delay_minutes=5.5,
+        over_threshold=0,
         stats_dir=tmp_path,
     )
     row = _read_first_data_row(tmp_path / "stammstrecke_2026.csv")
     assert row[3] == "Floridsdorf"
     assert row[4] == "5.50"
+    assert row[5] == "0"
 
 
 # ============================================================================

@@ -111,6 +111,10 @@ def test_render_weekday_bars_handles_empty_data() -> None:
 
 
 def test_aggregate_stammstrecke_counts_observations_and_threshold() -> None:
+    """``threshold_exceedances`` sums the per-sample ``over_threshold`` count
+    (number of S-Bahn legs whose individual delay crossed the threshold),
+    not the count of samples whose mean crossed it.
+    """
     rows = [
         script.StammstreckeRow(
             timestamp=datetime(2026, 5, 4, 7, 0, tzinfo=VIENNA_TZ),
@@ -118,25 +122,31 @@ def test_aggregate_stammstrecke_counts_observations_and_threshold() -> None:
             hour=7,
             direction="Meidling",
             delay_minutes=4.0,
+            over_threshold=0,
         ),
         script.StammstreckeRow(
             timestamp=datetime(2026, 5, 4, 8, 0, tzinfo=VIENNA_TZ),
             weekday="Mo",
             hour=8,
             direction="Meidling",
-            delay_minutes=12.0,  # over threshold
+            delay_minutes=12.0,  # sample mean over threshold; 3 legs over
+            over_threshold=3,
         ),
         script.StammstreckeRow(
             timestamp=datetime(2026, 5, 5, 8, 0, tzinfo=VIENNA_TZ),
             weekday="Di",
             hour=8,
             direction="Floridsdorf",
-            delay_minutes=11.0,  # over threshold
+            delay_minutes=2.0,  # sample mean *below* threshold, but…
+            over_threshold=1,   # …one leg in this sample was still > 9 min
         ),
     ]
     agg = script.aggregate_stammstrecke(rows, threshold_minutes=9.0)
     assert agg.total_observations == 3
-    assert agg.threshold_exceedances == 2
+    # 0 + 3 + 1 = 4 individual legs over threshold (note: the third row
+    # *would not* have counted under the old "row-level mean > threshold"
+    # contract — that's the exact regression this assertion locks in).
+    assert agg.threshold_exceedances == 4
     assert agg.by_weekday_count == {"Mo": 2, "Di": 1}
     assert agg.by_hour_count == {7: 1, 8: 2}
     # average for Mo is (4 + 12) / 2 = 8
@@ -181,8 +191,8 @@ def test_collect_year_data_reads_well_formed_files(tmp_path: Path) -> None:
         _stammstrecke_csv(tmp_path),
         stats_utils.STAMMSTRECKE_HEADER,
         [
-            ("2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "5.50"),
-            ("2026-05-04T08:00:00+02:00", "Mo", "08", "Meidling", "12.00"),
+            ("2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "5.50", "0"),
+            ("2026-05-04T08:00:00+02:00", "Mo", "08", "Meidling", "12.00", "2"),
         ],
     )
     _write_csv(
@@ -212,7 +222,7 @@ def test_collect_year_data_skips_oversized_file(
     """A planted-huge CSV must be skipped, not buffered into memory."""
     monkeypatch.setattr(script, "MAX_CSV_BYTES", 64)
     payload_rows = [
-        ("2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "5.50"),
+        ("2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "5.50", "0"),
     ] * 10
     _write_csv(_stammstrecke_csv(tmp_path), stats_utils.STAMMSTRECKE_HEADER, payload_rows)
     sm, _ = script.collect_year_data(2026, stats_dir=tmp_path)
@@ -238,6 +248,7 @@ def test_parse_stammstrecke_rows_skips_malformed_rows() -> None:
             "hour": "07",
             "direction": "Meidling",
             "delay_minutes": "5.0",
+            "over_threshold": "0",
         },
         # Bad delay value.
         {
@@ -246,6 +257,25 @@ def test_parse_stammstrecke_rows_skips_malformed_rows() -> None:
             "hour": "07",
             "direction": "Meidling",
             "delay_minutes": "not-a-number",
+            "over_threshold": "0",
+        },
+        # Bad over_threshold value.
+        {
+            "timestamp": "2026-05-04T07:30:00+02:00",
+            "weekday": "Mo",
+            "hour": "07",
+            "direction": "Meidling",
+            "delay_minutes": "5.0",
+            "over_threshold": "not-an-int",
+        },
+        # Negative over_threshold (impossible by writer contract).
+        {
+            "timestamp": "2026-05-04T07:30:00+02:00",
+            "weekday": "Mo",
+            "hour": "07",
+            "direction": "Meidling",
+            "delay_minutes": "5.0",
+            "over_threshold": "-1",
         },
         # Good row — the survivor.
         {
@@ -254,11 +284,13 @@ def test_parse_stammstrecke_rows_skips_malformed_rows() -> None:
             "hour": "07",
             "direction": "Meidling",
             "delay_minutes": "5.0",
+            "over_threshold": "0",
         },
     ]
     rows = script._parse_stammstrecke_rows(raw)
     assert len(rows) == 1
     assert rows[0].direction == "Meidling"
+    assert rows[0].over_threshold == 0
 
 
 def test_parse_stoerung_rows_uses_fallbacks_for_missing_fields() -> None:
@@ -350,16 +382,13 @@ def test_render_markdown_handles_empty_aggregates_gracefully() -> None:
     assert "_Keine Daten verfügbar._" in md
 
 
-def test_render_markdown_global_avg_uses_observation_weighted_mean() -> None:
-    """``⌀ Verspätung (alle Tage)`` must equal the README's micro-average,
-    not an unweighted ``fmean`` over the per-weekday means.
-
-    The empirical distribution Sa(3 obs avg 2/3 min) and So(23 obs avg
-    4/23 min) is the regression that motivated the fix on branch
-    ``claude/fix-delay-statistics``: the broken macro-average rendered
-    ``0.4 min`` while the README cell — computed from the raw rows —
-    showed ``0.2 min``. Pinning both rendering paths to the same
-    observation-weighted mean closes that drift.
+def test_render_markdown_summary_avg_uses_readme_window_value() -> None:
+    """The dashboard's ``⌀ Verspätung`` cell must render the value the
+    caller passes in via ``readme_window_avg_delay`` verbatim — so the
+    dashboard and the README snapshot show byte-identical averages
+    (the previous design re-computed a year-wide micro-average inside
+    the renderer, which silently drifted from the README's 30-day mean
+    every time the daily distribution wasn't uniform across the year).
     """
     sm_agg = script.StammstreckeAggregate(
         by_weekday_count={"Sa": 3, "So": 23},
@@ -376,11 +405,28 @@ def test_render_markdown_global_avg_uses_observation_weighted_mean() -> None:
         generated_at=datetime(2026, 5, 10, 16, 35, tzinfo=VIENNA_TZ),
         stammstrecke=sm_agg,
         stoerungen=script.StoerungAggregate(),
+        readme_window_days=30,
+        readme_window_avg_delay=4.7,
     )
-    # 3*(2/3) + 23*(4/23) = 6.0 → 6.0/26 ≈ 0.231 → "0.2 min"
-    assert "| ⌀ Verspätung (alle Tage) | 0.2 min |" in md
-    # Anti-regression: the previous macro-average rendered "0.4 min".
-    assert "| ⌀ Verspätung (alle Tage) | 0.4 min |" not in md
+    assert "| ⌀ Verspätung (letzte 30 Tage) | 4.7 min |" in md
+
+
+def test_render_markdown_summary_avg_renders_placeholder_when_none() -> None:
+    """An empty README window (no rows) must render as ``_keine Daten_``
+    rather than ``0.0 min`` — a misleading zero hides the data-absent
+    state from operators eyeballing the dashboard."""
+    md = script.render_markdown(
+        year=2026,
+        generated_at=datetime(2026, 5, 10, 16, 35, tzinfo=VIENNA_TZ),
+        stammstrecke=script.StammstreckeAggregate(),
+        stoerungen=script.StoerungAggregate(),
+        readme_window_days=30,
+        readme_window_avg_delay=None,
+    )
+    assert "| ⌀ Verspätung (letzte 30 Tage) | _keine Daten_ |" in md
+    assert "0.0 min" not in md.split("Kennzahlen auf einen Blick", 1)[1].split(
+        "## Stammstrecke", 1
+    )[0]
 
 
 # ---- write_dashboard ------------------------------------------------------
@@ -400,8 +446,8 @@ def test_main_writes_dashboard_for_well_formed_inputs(tmp_path: Path) -> None:
         _stammstrecke_csv(tmp_path),
         stats_utils.STAMMSTRECKE_HEADER,
         [
-            ("2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "5.50"),
-            ("2026-05-04T08:00:00+02:00", "Mo", "08", "Floridsdorf", "11.00"),
+            ("2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "5.50", "0"),
+            ("2026-05-04T08:00:00+02:00", "Mo", "08", "Floridsdorf", "11.00", "1"),
         ],
     )
     _write_csv(
