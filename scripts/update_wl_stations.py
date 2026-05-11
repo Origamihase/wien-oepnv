@@ -96,8 +96,14 @@ DEFAULT_HALTESTELLEN = BASE_DIR / "data" / "wienerlinien-ogd-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_MAPPING = BASE_DIR / "data" / "vor-haltestellen.mapping.json"
 
-OGD_HALTESTELLEN_URL = "https://data.wien.gv.at/csv/wienerlinien-ogd-haltestellen.csv"
-OGD_HALTEPUNKTE_URL = "https://data.wien.gv.at/csv/wienerlinien-ogd-haltepunkte.csv"
+# Canonical OGD endpoint hosted by Wiener Linien themselves (documented in
+# ``wienerlinien_ogd_Beschreibung.pdf``). The ``data.wien.gv.at/csv/...``
+# proxy that this project used previously was retired during the 60th OGD
+# phase (September 2025): haltepunkte.csv started returning HTTP 404 and
+# haltestellen.csv was the last surviving proxy CSV. The wienerlinien.at
+# host has served the same files under a URL pattern stable since 2022.
+OGD_HALTESTELLEN_URL = "https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-haltestellen.csv"
+OGD_HALTEPUNKTE_URL = "https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-haltepunkte.csv"
 OGD_DOWNLOAD_TIMEOUT_SECONDS = 30
 USER_AGENT = (
     "wien-oepnv station updater "
