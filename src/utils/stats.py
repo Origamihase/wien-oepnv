@@ -359,8 +359,10 @@ def append_stammstrecke_row(
     """Append a single observation to ``stammstrecke_YYYY.csv``.
 
     *direction* is the human-readable target station ("Meidling",
-    "Floridsdorf"). *delay_minutes* is the median delay over the
-    sampled S-Bahn legs for that direction.
+    "Floridsdorf"). *delay_minutes* is the arithmetic mean of the
+    departure delays observed across the sampled S-Bahn legs for
+    that direction (legs without realtime signal are excluded
+    upstream so the mean reflects only verified observations).
 
     The function is best-effort: filesystem errors are logged and
     swallowed so the upstream cron pipeline always exits cleanly.

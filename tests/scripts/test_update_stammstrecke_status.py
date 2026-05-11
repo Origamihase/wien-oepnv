@@ -3,7 +3,7 @@
 The 2026-05-09 architecture pivot replaced the pyhafas client with the
 VOR/VAO ReST ``/trip`` endpoint. These tests exercise the same decision
 tree as before — import-time failure, transport error, circuit-breaker
-open, median-below-threshold, median-above-threshold, no S-Bahn legs
+open, mean-below-threshold, mean-above-threshold, no S-Bahn legs
 found, ``first_seen`` persistence and recovery — but the upstream is
 mocked at the ``_query_trips`` boundary instead of the pyhafas client.
 
@@ -112,10 +112,10 @@ def _trip(
     ``S\\d+``; pass an explicit string (e.g. ``"REX"``) or ``None`` to
     override.
     *delay_minutes*: ``None`` → no ``rtTime`` field is emitted, which
-    the parser treats as an on-time S-Bahn departure (contributes
-    ``0.0`` to the median per the 2026-05-09 audit fix). Numeric →
-    realtime computed by adding *delay_minutes* to the scheduled
-    origin time.
+    the parser treats as "no realtime signal available" and skips the
+    leg entirely (rather than implicitly counting it as on-time).
+    Numeric → realtime computed by adding *delay_minutes* to the
+    scheduled origin time.
     """
 
     if category == "__auto__":
@@ -295,10 +295,10 @@ def test_is_sbahn_leg_rejects_unrelated_product_categories() -> None:
     assert not script._is_sbahn_leg({"Product": [{"line": "U1"}]})
 
 
-def test_collect_delays_includes_sbahn_and_treats_missing_rttime_as_on_time() -> None:
+def test_collect_delays_includes_sbahn_and_skips_legs_without_realtime() -> None:
     """End-to-end: S-Bahn ride legs with realtime contribute their
-    delta, S-Bahn legs without ``rtTime`` contribute ``0.0`` (on-time),
-    cancelled legs and non-S-Bahn legs are excluded.
+    delta; S-Bahn legs without ``rtTime`` (status unknown), cancelled
+    legs and non-S-Bahn legs are all excluded.
     """
 
     trips = [
@@ -308,24 +308,26 @@ def test_collect_delays_includes_sbahn_and_treats_missing_rttime_as_on_time() ->
         _trip(leg_name="REX 7", delay_minutes=20, category="REX"),
         # S-Bahn but cancelled — ignored (no signal at all).
         _trip(leg_name="S 3", delay_minutes=15, cancelled=True),
-        # S-Bahn without rtTime — counts as on-time (0.0) per
-        # 2026-05-09 Senior-API-Integration audit. The previous
-        # implementation skipped these, biasing the median upward.
+        # S-Bahn without rtTime — status unknown, dropped from the
+        # sample (was implicitly on-time / 0.0 until 2026-05-11; that
+        # contract pulled the 30-day mean to 0.2 min over a ~88%
+        # missing-rtTime population, masking real delays).
         _trip(leg_name="S 80", delay_minutes=None),
     ]
     delays = script._collect_sbahn_delays_minutes(trips)
-    assert delays == [4.0, 10.0, 0.0]
+    assert delays == [4.0, 10.0]
 
 
-def test_leg_departure_delay_returns_zero_when_rttime_missing() -> None:
-    """A scheduled-but-no-rtTime leg must yield ``0.0``, not ``None``.
+def test_leg_departure_delay_returns_none_when_rttime_missing() -> None:
+    """A scheduled-but-no-rtTime leg yields ``None`` (status unknown).
 
-    On the VAO contract, ``rtTime`` is omitted when realtime data
-    confirms an on-time departure (the field would otherwise duplicate
-    ``time``). Skipping such legs would exclude every on-time train
-    from the median, biasing the result high enough that a single
-    delayed train in an off-peak window could trip the 9-minute
-    threshold and emit a spurious feed event.
+    VAO omits ``rtTime`` both when realtime confirms on-time AND when
+    no realtime signal is available. With no way to tell the cases
+    apart at the leg level, the upstream contract changed (2026-05-11)
+    from "implicit on-time → 0.0" to "unknown → drop". Without the
+    drop, ~88% of stored samples were exact zeros and the 30-day
+    mean ran at 0.2 min — visibly disconnected from operator
+    experience.
     """
 
     leg = {
@@ -335,10 +337,11 @@ def test_leg_departure_delay_returns_zero_when_rttime_missing() -> None:
         "Origin": {
             "date": "2026-05-09",
             "time": "08:30:00",
-            # NO rtTime field — VAO's parsimonious "on-time" signal.
+            # NO rtTime field — VAO emits this both for "on-time" and
+            # for "no realtime data"; we cannot tell which, so we drop.
         },
     }
-    assert script._leg_departure_delay_minutes(leg) == 0.0
+    assert script._leg_departure_delay_minutes(leg) is None
 
 
 def test_leg_departure_delay_returns_zero_when_rttime_equals_time() -> None:
@@ -1044,11 +1047,11 @@ def test_max_trips_per_query_is_pinned_to_six() -> None:
 
     The VAO ``/trip`` endpoint accepts ``numF`` in the range 1..6.
     The 2026-05-09 Senior-API-Integration audit bumped the value from
-    five to six so the median is computed over the largest sample VAO
-    permits in a single quota slot — important because the
+    five to six so the per-sample mean is computed over the largest
+    sample VAO permits in a single quota slot — important because the
     ``maxChange=0`` filter typically yields 4-6 S-Bahn legs after the
     strict-S product filter, and one extra data point increases
-    median stability without inflating quota usage.
+    sample stability without inflating quota usage.
     """
 
     assert script.MAX_TRIPS_PER_QUERY == 6
