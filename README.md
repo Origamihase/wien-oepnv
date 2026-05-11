@@ -1,11 +1,8 @@
 # Wien ÖPNV Feed
 
 ### Status Badges
-[![Test VOR API](https://github.com/Origamihase/wien-oepnv/actions/workflows/test-vor-api.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/test-vor-api.yml)
 
 [![Feed Build](https://github.com/Origamihase/wien-oepnv/actions/workflows/build-feed.yml/badge.svg?branch=main)](https://github.com/Origamihase/wien-oepnv/actions/workflows/build-feed.yml)
-[![Tests](https://github.com/Origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/test.yml)
-[![SEO-Checks](https://github.com/Origamihase/wien-oepnv/actions/workflows/seo-guard.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/seo-guard.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Subscribe to Feed](https://img.shields.io/badge/RSS-Subscribe_to_Feed-orange?style=flat&logo=rss)](https://origamihase.github.io/wien-oepnv/feed.xml)
 
