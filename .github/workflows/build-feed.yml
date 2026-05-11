@@ -1,9 +1,12 @@
 name: Build feed
 
 # DISABLED CRON (2026-05-09): the regular ``15,45`` schedule was
-# replaced by the ``update-cycle.yml`` DAG workflow whose
-# ``build_feed`` job depends on every cache fetcher via ``needs:``
-# — the dependency graph (not a staggered cron) drives the timing.
+# replaced by ``update-cycle.yml``, a single-job sequential pipeline
+# whose ``feed build`` step runs after every cache fetcher in the
+# same runner — the in-runner step order (not a staggered cron)
+# drives the timing. The pipeline is triggered by the IFTTT
+# ``ifttt_feed_trigger`` repository_dispatch event (~30-min cadence;
+# see header of update-cycle.yml).
 #
 # This workflow remains as the code-change verification path: a push
 # to ``src/**`` etc. rebuilds the feed from whatever caches are

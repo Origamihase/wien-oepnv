@@ -377,7 +377,7 @@ consumers tolerate missing or malformed rows gracefully.
 
 ```mermaid
 flowchart LR
-    subgraph "Producers (every cron tick)"
+    subgraph "Producers (every cycle tick — IFTTT-triggered update-cycle.yml, ~30 min)"
         SS[update_stammstrecke_status.py<br/><i>writes one row per direction</i>]
         BF[build_feed.main<br/><i>_update_item_state strict-new branch</i>]
     end
@@ -385,7 +385,7 @@ flowchart LR
         SCSV[stammstrecke_YYYY.csv<br/><i>timestamp, weekday, hour, direction, delay_minutes</i>]
         DCSV[stoerungen_YYYY.csv<br/><i>timestamp, weekday, hour, provider, location_name</i>]
     end
-    subgraph "Daily aggregator (cron 15 0 * * *)"
+    subgraph "Daily aggregator (update-cycle.yml, first cycle tick after midnight Vienna)"
         AGG[generate_markdown_stats.py<br/><i>stdlib only, 30-day window</i>]
     end
     subgraph "Feed-build consumer"
@@ -409,9 +409,9 @@ flowchart LR
 
 | Goal | Embodied by |
 | --- | --- |
-| **CI/CD decoupling** — the daily aggregator job runs on its own cron, never blocks `update-cycle.yml` | `.github/workflows/generate-stats.yml` (cron `15 0 * * *`, `concurrency: generate-stats-${{ github.ref }}`) |
+| **CI/CD decoupling** — the daily aggregator runs once per day at the first cycle tick after midnight Vienna, gated by an in-step `TZ=Europe/Vienna date +%H%M` check inside `update-cycle.yml`; the README STATS markers refresh on every ~30-min cycle tick | `.github/workflows/update-cycle.yml` "Refresh statistics dashboard and README snapshot" step + `.github/workflows/generate-stats.yml` (`workflow_dispatch`-only escape hatch for ad-hoc regenerations) |
 | **Strictly zero data-science dependencies** — no `numpy`, `pandas`, `matplotlib`; CI install stays sub-second | `scripts/generate_markdown_stats.py` imports only `csv`, `collections`, `datetime`, `statistics`, `pathlib`, `zoneinfo`, `argparse` |
-| **Append-only, lock-free producers** — single-line writes on POSIX are atomic below `PIPE_BUF` (4 KiB), so concurrent cron ticks cannot interleave bytes mid-line | `src/utils/stats.py:_append_row` (mode `"a"`, no `flock`) |
+| **Append-only, lock-free producers** — single-line writes on POSIX are atomic below `PIPE_BUF` (4 KiB), so concurrent cycle ticks cannot interleave bytes mid-line | `src/utils/stats.py:_append_row` (mode `"a"`, no `flock`) |
 | **Strict-new gating for disruptions** — long-lived events recorded once, not once per build | `src/build_feed.py:_update_item_state` records only on the *strict* state-cache miss (neither `_identity` nor `guid` had a prior entry) |
 | **Idempotent, byte-stable output** — re-running the aggregator on identical input produces byte-identical Markdown so `git-auto-commit-action` is a no-op when nothing changed | Stable secondary sort (alphabetical) breaks every tie in `render_top_locations`; renderer never reads `now()` outside the timestamp shown in the header |
 | **Per-year file rotation** — individual ledger size stays bounded even over multi-year operation | Filename derived from the row's Vienna-local `timestamp.year`, not process clock |
@@ -483,7 +483,7 @@ Tagesbudget:
 
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
-| **Stammstrecke `/trip`** (`0,30 * * * *` × 2 Richtungen) | 96 | `cron`-Plan in `update-cycle.yml` (bzw. `update-stammstrecke-status.yml`), `MAX_TRIPS_PER_QUERY` |
+| **Stammstrecke `/trip`** (~alle 30 Min × 2 Richtungen) | 96 | IFTTT-Cadence des `update-cycle.yml`-Triggers (bzw. `workflow_dispatch` von `update-stammstrecke-status.yml`), `MAX_TRIPS_PER_QUERY` |
 | **Station-Enrichment `location.name`** (wöchentlich, Stammstrecke-Whitelist) | ~10 (1× pro Woche) | `STAMMSTRECKE_VOR_IDS` in `scripts/update_vor_stations.py` |
 | **Disruption-Polling `departureBoard`** | **0** (default) | `VOR_MONITOR_STATIONS_WHITELIST` env (default: leerer String) |
 | **Tagesbudget gesamt** | **96 / 100** | — |
@@ -513,12 +513,13 @@ selbst mit voller Stammstrecke-Aktivität an diesem Tag bleiben mindestens
 4 Calls Puffer. Sollte das Budget in Zukunft enger werden, sind die
 niedrig-hängenden Hebel:
 
-* Cron `0,30 * * * *` → `0 * * * *` (halbiert Stammstrecke auf 48 Calls/Tag).
+* IFTTT-Applet von ~30-Min- auf Stunden-Cadence umstellen (halbiert
+  Stammstrecke auf 48 Calls/Tag).
 * `MAX_TRIPS_PER_QUERY = 6` → `3` (kein API-Effekt, da `numF` ein
   Server-side-Cap ist und VAO mehrere Trips pro Call erlaubt).
-* Operating-Hours-Cron (`0,30 4-23 * * *` statt `0,30 * * * *`) — die
-  Stammstrecke fährt zwischen 00:30 und 04:00 nur ausgedünnt, das
-  Monitoring liefert dort kaum Signal.
+* Operating-Hours-Cadence im IFTTT-Applet (nur 04-23 Uhr statt
+  ganztägig) — die Stammstrecke fährt zwischen 00:30 und 04:00 nur
+  ausgedünnt, das Monitoring liefert dort kaum Signal.
 
 ---
 

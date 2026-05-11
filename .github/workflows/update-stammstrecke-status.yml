@@ -1,8 +1,11 @@
 name: Update Stammstrecke status
 
 # DISABLED CRON (2026-05-09): the regular ``0,30`` schedule was
-# replaced by the ``update-cycle.yml`` DAG workflow which now drives
-# the Stammstrecke poll as a job within a single-cron pipeline.
+# replaced by ``update-cycle.yml``, a single-job sequential pipeline
+# that drives the Stammstrecke poll as a step in the same runner
+# as the cache fetchers and feed builder. The pipeline is triggered
+# by the IFTTT ``ifttt_feed_trigger`` repository_dispatch event
+# (~30-min cadence; see header of update-cycle.yml).
 # This workflow remains as a ``workflow_dispatch``-only escape hatch
 # for manually re-running the Stammstrecke poll between regular
 # cycle runs (e.g. after fixing a transient VAO outage).

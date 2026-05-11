@@ -7,7 +7,7 @@ verteilt sich auf zwei Module:
 
 | Komponente | Verantwortlichkeit |
 | :--- | :--- |
-| `scripts/update_stammstrecke_status.py` | Cron-Producer: fragt alle 30 Min die VOR/VAO `/trip`-API ab und hängt eine Beobachtungs-Zeile an `data/stats/stammstrecke_<YYYY>.csv` (CSV-Ledger). |
+| `scripts/update_stammstrecke_status.py` | Refresh-Producer: wird vom IFTTT-getriggerten `update-cycle.yml` (~alle 30 Min auf :00/:30) als Pipeline-Schritt aufgerufen, fragt die VOR/VAO `/trip`-API ab und hängt eine Beobachtungs-Zeile an `data/stats/stammstrecke_<YYYY>.csv` (CSV-Ledger). |
 | `src/feed/stammstrecke.py` | Feed-Renderer: liest die zuletzt geschriebenen Zeilen, bestimmt für jede Richtung über ein 1-Stunden-Fenster den Median der Verspätung und erzeugt — ggf. — einen schema-konformen FeedItem. |
 
 Diese Trennung wurde am 2026-05-09 eingeführt (zuvor schrieb der
@@ -51,7 +51,7 @@ Build-Zeit auf den Ledger-Zeilen.
 | `maxChange` | `0` (nur direkte S-Bahn-Verbindungen) |
 | `numF` | `6` (`MAX_TRIPS_PER_QUERY`, VAO-Cap; eine möglichst große Median-Stichprobe pro Richtung) |
 | `rtMode` | `SERVER_DEFAULT` (Echtzeitdaten aktivieren) |
-| Cron | `0,30 * * * *` (alle 30 Minuten, läuft als Schritt im `update-cycle.yml` sowie eigenständig in `update-stammstrecke-status.yml`) |
+| Refresh-Trigger | ~alle 30 Min auf :00/:30 — läuft als Schritt im IFTTT-getriggerten `update-cycle.yml` (`repository_dispatch: ifttt_feed_trigger`). `update-stammstrecke-status.yml` bleibt als `workflow_dispatch`-Escape-Hatch erhalten. |
 
 **Beide Richtungen werden strikt getrennt ausgewertet.** Eine
 Zusammenlegung würde die Daten verfälschen — eine Störung in eine
@@ -102,7 +102,7 @@ Kontingent). Der Monitor ist mit Abstand der dominante VOR-Konsument:
 
 | Komponente | Calls/Tag |
 | :--- | ---: |
-| Stammstrecke (`0,30 * * * *` × 2 Richtungen) | 96 |
+| Stammstrecke (~alle 30 Min × 2 Richtungen, IFTTT-getriggert) | 96 |
 | Station-Enrichment (wöchentlich, Stammstrecke-Whitelist) | ~10 (1× pro Woche) |
 | Disruption-Polling (`DEFAULT_MONITOR_WHITELIST=""`) | 0 |
 | **Tagesbudget gesamt** | **96 / 100** |
@@ -118,8 +118,8 @@ Die Circuit-Breaker-Konfiguration deckelt zusätzlich:
 * `recovery_timeout = 3600.0` (1 Stunde) — der Breaker bleibt eine
   Stunde lang OPEN, bevor ein Probe-Call zugelassen wird.
 
-Im Normalbetrieb produziert die Pipeline durch den Cron-Plan
-(`0,30 * * * *` = 2 Ausführungen pro Stunde) und 2 Richtungen pro
+Im Normalbetrieb produziert die Pipeline durch die IFTTT-getriggerte
+~30-Min-Cadence (2 Ausführungen pro Stunde) und 2 Richtungen pro
 Ausführung **4 Calls pro Stunde** — komfortabel unter dem Limit.
 
 Weitere Schutzmechanismen:

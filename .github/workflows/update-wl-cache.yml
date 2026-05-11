@@ -1,9 +1,11 @@
 name: Update Wiener Linien cache
 
 # DISABLED CRON (2026-05-09): the regular ``10,40`` schedule was
-# replaced by the ``update-cycle.yml`` DAG workflow which fans out a
-# single cron tick (``0,30 * * * *``) into parallel cache fetcher
-# jobs and a feed-composer that runs after all fetchers complete.
+# replaced by ``update-cycle.yml``, a single-job sequential pipeline
+# that runs every cache fetcher + the feed composer in one runner.
+# The cycle is driven by the IFTTT ``ifttt_feed_trigger``
+# repository_dispatch event (~30-min cadence, lands on :00/:30) —
+# see the header of update-cycle.yml for the trigger model.
 # This workflow remains as a ``workflow_dispatch``-only escape hatch
 # for manually re-fetching the WL cache between regular cycle runs.
 on:

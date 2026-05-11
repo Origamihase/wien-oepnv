@@ -1,9 +1,11 @@
 name: Update Baustellen cache
 
 # DISABLED CRON (2026-05-09): the regular hourly schedule was
-# replaced by the ``update-cycle.yml`` DAG workflow which now picks
-# up the Baustellen refresh as a parallel job alongside WL/ÖBB/
-# Stammstrecke. This workflow remains as a ``workflow_dispatch``-
+# replaced by ``update-cycle.yml``, a single-job sequential pipeline
+# that runs the Baustellen refresh alongside WL/ÖBB/Stammstrecke in
+# one runner. Driven by the IFTTT ``ifttt_feed_trigger``
+# repository_dispatch event (~30-min cadence; see header of
+# update-cycle.yml). This workflow remains as a ``workflow_dispatch``-
 # only escape hatch for manually re-fetching the Baustellen cache
 # between regular cycle runs.
 on:

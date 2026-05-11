@@ -1,9 +1,23 @@
 name: Update cycle
 
-# Single-job sequential pipeline. One cron tick (``0,30 * * * *``)
-# runs every fetcher + the feed composer + the README/stats render
-# in a single runner with shared workspace, then emits ONE commit
-# covering every output.
+# Single-job sequential pipeline. One cycle tick runs every fetcher
+# + the feed composer + the README/stats render in a single runner
+# with shared workspace, then emits ONE commit covering every
+# output.
+#
+# Trigger model (since 2026-05-10, commit 55ca72f): the GitHub-
+# native ``schedule: cron '0,30 * * * *'`` was removed and the cycle
+# is now driven solely from outside GitHub Actions:
+#   * IFTTT fires ``repository_dispatch: ifttt_feed_trigger`` on the
+#     normal ~30-min cadence (lands close to :00/:30 with less drift
+#     than the GH Actions cron tick the project used previously).
+#   * Operators press ``Run workflow`` (``workflow_dispatch``) for
+#     out-of-band runs.
+# The 30-min cadence for "data + feed" therefore lives in the
+# external IFTTT applet, not in this file. The weekly station-
+# directory refresh is intentionally kept on a GitHub-native cron
+# in ``update-stations.yml`` (Sundays 01:00 UTC) — its weekly tick
+# is rotation-friendly and does not need IFTTT's :00/:30 precision.
 #
 # Why single-job (replaces the DAG-with-artifacts architecture from
 # 2026-05-09 which broke the README cadence): the artifact-based
@@ -14,7 +28,7 @@ name: Update cycle
 # single auto-commit at the end so the operator-visible state moves
 # atomically (or not at all). The trade-off is sequential runtime
 # (~3-5 min vs the DAG's ~2-3 min) and slightly less granular UI
-# observability — both acceptable for a 30-min cron.
+# observability — both acceptable for the 30-min cadence.
 #
 # Step order:
 #   1. ``actions/checkout`` (full history for clean rebase later)
@@ -80,7 +94,7 @@ jobs:
       # Cache the entire installed virtual environment instead of the
       # pip download cache. ``setup-python``'s ``cache: 'pip'`` only
       # speeds up wheel resolution; pip still spends ~30 s rebuilding
-      # the site-packages on every cron tick. A venv cache lets us
+      # the site-packages on every cycle tick. A venv cache lets us
       # skip the install step entirely on the common path (deps
       # unchanged), shaving ~20 s off each of the 48 daily runs.
       #
@@ -217,21 +231,22 @@ jobs:
 
       # ----- README + dashboard render (no API call) ----------------------
 
-      # Cadence split: the README STATS markers refresh on every 30-min
-      # cron tick (the snapshot covers the trailing 30 days, so a
-      # half-hour staleness window is the operator-visible budget).
-      # ``docs/statistik.md`` is the *yearly* dashboard — its values
-      # only meaningfully change once per day, so writing it 48× a day
-      # was pure churn (each tick refreshed the
+      # Cadence split: the README STATS markers refresh on every
+      # ~30-min cycle tick (the snapshot covers the trailing 30 days,
+      # so a half-hour staleness window is the operator-visible
+      # budget). ``docs/statistik.md`` is the *yearly* dashboard —
+      # its values only meaningfully change once per day, so writing
+      # it 48× a day was pure churn (each tick refreshed the
       # ``_Automatisch erzeugt am ..._`` timestamp at the top of the
-      # file and triggered a commit). The gate below pins the dashboard
-      # write to the first cron tick after midnight Europe/Vienna:
-      # ``TZ=Europe/Vienna date +%H%M`` is DST-correct (the env var
-      # rebinds the active zone for that single ``date`` invocation),
-      # and the ``-lt 30`` window absorbs up to ~29 min of GH Actions
-      # cron jitter on the 00:00 Vienna tick. If a tick is delayed
-      # beyond that window the dashboard misses one day; the next
-      # day's tick catches up. The README markers are unaffected.
+      # file and triggered a commit). The gate below pins the
+      # dashboard write to the first cycle tick after midnight
+      # Europe/Vienna: ``TZ=Europe/Vienna date +%H%M`` is DST-correct
+      # (the env var rebinds the active zone for that single ``date``
+      # invocation), and the ``-lt 30`` window absorbs up to ~29 min
+      # of IFTTT/dispatch trigger jitter on the 00:00 Vienna tick. If
+      # a tick is delayed beyond that window the dashboard misses
+      # one day; the next day's tick catches up. The README markers
+      # are unaffected.
       - name: Refresh statistics dashboard and README snapshot
         run: |
           vienna_hhmm=$(TZ=Europe/Vienna date +%H%M)
@@ -263,7 +278,7 @@ jobs:
           # never produced a ``chore: update cycle`` commit on main —
           # the auto-commit-action's ``git add ${pattern}`` shell-
           # interpolation interacts oddly with the multi-line YAML
-          # ``|`` block scalar on the cron-only runner image, so a
+          # ``|`` block scalar on the auto-cycle runner image, so a
           # legitimate workspace diff occasionally looked like
           # nothing-to-commit. ``-A`` makes that failure mode
           # impossible.

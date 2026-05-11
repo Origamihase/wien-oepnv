@@ -1,9 +1,11 @@
 name: Update ÖBB cache
 
 # DISABLED CRON (2026-05-09): the regular ``20,50`` schedule was
-# replaced by the ``update-cycle.yml`` DAG workflow. This workflow
-# remains as a ``workflow_dispatch``-only escape hatch for manually
-# re-fetching the ÖBB cache between regular cycle runs.
+# replaced by ``update-cycle.yml``, a single-job sequential pipeline
+# driven by the IFTTT ``ifttt_feed_trigger`` repository_dispatch
+# event (~30-min cadence; see header of update-cycle.yml). This
+# workflow remains as a ``workflow_dispatch``-only escape hatch for
+# manually re-fetching the ÖBB cache between regular cycle runs.
 on:
   workflow_dispatch:
 

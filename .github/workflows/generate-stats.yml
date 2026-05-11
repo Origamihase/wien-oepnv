@@ -1,11 +1,11 @@
 name: Generate statistics dashboard
 
 # DISABLED CRON: ``update-cycle.yml`` regenerates ``docs/statistik.md``
-# once per day at the first cron tick after midnight Europe/Vienna
-# (and patches the README ``<!-- STATS:* -->`` markers on every 30-min
-# tick). The push-triggered ``build-feed.yml`` passes
-# ``--skip-dashboard`` so a code-push during the day cannot move the
-# dashboard timestamp out-of-band. The operator-triggered
+# once per day at the first IFTTT-triggered cycle tick after midnight
+# Europe/Vienna (and patches the README ``<!-- STATS:* -->`` markers
+# on every ~30-min cycle tick). The push-triggered ``build-feed.yml``
+# passes ``--skip-dashboard`` so a code-push during the day cannot
+# move the dashboard timestamp out-of-band. The operator-triggered
 # ``manual-full-refresh.yml`` *does* regenerate the dashboard — it is
 # the explicit ``alles neu`` button and is expected to refresh every
 # project artefact in one go.

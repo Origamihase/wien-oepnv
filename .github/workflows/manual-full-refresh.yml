@@ -134,8 +134,9 @@ jobs:
       # vom Operator gestartet — das ist eine bewusste Override-Aktion,
       # die das gesamte Projekt frisch ziehen soll. Die einmal-pro-Tag-
       # Vereinbarung fuer ``docs/statistik.md`` ist ein Schutz vor der
-      # *automatischen* 30-min-Churn (cron in ``update-cycle.yml`` und
-      # push-getriggertes ``build-feed.yml``); ein expliziter Operator-
+      # *automatischen* 30-min-Churn (IFTTT-getriggertes
+      # ``update-cycle.yml`` und push-getriggertes ``build-feed.yml``);
+      # ein expliziter Operator-
       # Trigger soll daran nicht scheitern.
       - name: Refresh statistics dashboard and README snapshot
         run: python scripts/generate_markdown_stats.py
