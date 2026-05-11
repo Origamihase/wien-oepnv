@@ -457,7 +457,7 @@ def test_update_station_directory_write_json_strips_every_primitive(
     from scripts.update_station_directory import write_json
 
     target = tmp_path / f"stations-{ord(primitive):04x}.json"
-    stations_list = [
+    stations_list: list[dict[str, object]] = [
         {
             "name": f"evil{primitive}.example",
             "bst_id": "100",
@@ -478,7 +478,7 @@ def test_update_station_directory_write_json_preserves_umlauts(tmp_path: Path) -
     from scripts.update_station_directory import write_json
 
     target = tmp_path / "stations.json"
-    stations_list = [{"name": "Wien Hütteldorf", "bst_id": "1"}]
+    stations_list: list[dict[str, object]] = [{"name": "Wien Hütteldorf", "bst_id": "1"}]
     write_json(stations_list, target)
 
     text = target.read_text(encoding="utf-8")
@@ -663,15 +663,16 @@ def test_update_wl_merge_into_stations_preserves_umlauts(tmp_path: Path) -> None
 # ---------------------------------------------------------------------
 
 
-def test_fetch_vor_haltestellen_mapping_no_rlo_leak(tmp_path: Path) -> None:
+def test_fetch_vor_haltestellen_mapping_no_rlo_leak() -> None:
     """The VAO resolution mapping sidecar
     ``data/vor-haltestellen.mapping.json`` is a sibling station-directory
-    artefact that gets committed by the same cron pipeline. Its inline
-    write is extracted into a ``_write_mapping_payload`` helper so the
-    scrubber can run uniformly at the ingestion boundary."""
-    from scripts.fetch_vor_haltestellen import _write_mapping_payload
+    artefact that gets committed by the same cron pipeline. Its scrubber
+    is extracted into a ``_scrub_mapping_for_serialisation`` helper so the
+    scrub-and-drop semantics can be unit-tested in isolation while the
+    actual ``json.dumps`` + ``atomic_write`` site stays inline at the
+    original location in ``main()``."""
+    from scripts.fetch_vor_haltestellen import _scrub_mapping_for_serialisation
 
-    target = tmp_path / "vor-haltestellen.mapping.json"
     mapping: list[dict[str, Any]] = [
         {
             "station_name": "Wien Mitte‮moc.live",
@@ -682,21 +683,22 @@ def test_fetch_vor_haltestellen_mapping_no_rlo_leak(tmp_path: Path) -> None:
             "longitude": 16.38,
         }
     ]
-    _write_mapping_payload(target, mapping)
-
-    raw = target.read_bytes()
+    scrubbed = _scrub_mapping_for_serialisation(mapping)
+    # The scrubbed payload must round-trip through json.dumps without
+    # emitting the RLO byte triplet — that is the exact data flow the
+    # main() function uses below the scrubber call.
+    raw = json.dumps(scrubbed, ensure_ascii=False, indent=2).encode("utf-8")
     assert _RLO_UTF8 not in raw, (
-        "U+202E leaked via fetch_vor_haltestellen._write_mapping_payload."
+        "U+202E leaked via fetch_vor_haltestellen._scrub_mapping_for_serialisation."
     )
 
 
 @pytest.mark.parametrize("primitive", _TROJAN_SOURCE_PRIMITIVES)
 def test_fetch_vor_haltestellen_mapping_strips_every_primitive(
-    tmp_path: Path, primitive: str
+    primitive: str,
 ) -> None:
-    from scripts.fetch_vor_haltestellen import _write_mapping_payload
+    from scripts.fetch_vor_haltestellen import _scrub_mapping_for_serialisation
 
-    target = tmp_path / f"mapping-{ord(primitive):04x}.json"
     mapping: list[dict[str, Any]] = [
         {
             "station_name": f"evil{primitive}.example",
@@ -707,20 +709,19 @@ def test_fetch_vor_haltestellen_mapping_strips_every_primitive(
             "longitude": 16.38,
         }
     ]
-    _write_mapping_payload(target, mapping)
-
-    raw = target.read_bytes()
+    scrubbed = _scrub_mapping_for_serialisation(mapping)
+    raw = json.dumps(scrubbed, ensure_ascii=False, indent=2).encode("utf-8")
     expected = _UTF8_BYTES[primitive]
     assert expected not in raw, (
         f"Trojan-Source primitive U+{ord(primitive):04X} leaked via "
-        f"fetch_vor_haltestellen._write_mapping_payload as raw UTF-8 bytes ({expected!r})."
+        f"fetch_vor_haltestellen._scrub_mapping_for_serialisation as raw "
+        f"UTF-8 bytes ({expected!r})."
     )
 
 
-def test_fetch_vor_haltestellen_mapping_preserves_umlauts(tmp_path: Path) -> None:
-    from scripts.fetch_vor_haltestellen import _write_mapping_payload
+def test_fetch_vor_haltestellen_mapping_preserves_umlauts() -> None:
+    from scripts.fetch_vor_haltestellen import _scrub_mapping_for_serialisation
 
-    target = tmp_path / "vor-haltestellen.mapping.json"
     mapping: list[dict[str, Any]] = [
         {
             "station_name": "Wien Hütteldorf",
@@ -731,9 +732,8 @@ def test_fetch_vor_haltestellen_mapping_preserves_umlauts(tmp_path: Path) -> Non
             "longitude": 16.26,
         }
     ]
-    _write_mapping_payload(target, mapping)
-
-    text = target.read_text(encoding="utf-8")
+    scrubbed = _scrub_mapping_for_serialisation(mapping)
+    text = json.dumps(scrubbed, ensure_ascii=False, indent=2)
     assert "Hütteldorf" in text
     assert "\\u00fc" not in text
 
