@@ -1,3 +1,175 @@
+## 2026-05-11 - Trojan-Source BiDi Drift Round 12 (Provider Cache Events Sidecar): `write_cache` (`cache/<provider>/events.json`) Was the Sole Round-11 Closing-Checklist Deferred Sidecar — Closed Via Scrubber-At-Ingestion (Not `ensure_ascii=True`) To Preserve Compact German Diffs
+
+**Vulnerability:** Round 11 (PR #1436) closed three sibling writers
+(`MonthlyQuota.save_atomic` → `data/places_quota.json`,
+`_write_request_count_file` → `data/vor_request_count.json`,
+`write_status` → `cache/<provider>/last_run.json`). The Round-11
+closing checklist explicitly named `write_cache`
+(`src/utils/cache.py:335`) as the SOLE deferred sidecar in the same
+operator-facing JSON family — but with a DIFFERENT fix shape than
+the prior rounds:
+
+  * The sibling writers carried only safe scalar values (ISO dates,
+    integers, hard-coded status tokens). Switching to
+    `ensure_ascii=True` had a negligible diff cost.
+  * `write_cache` carries provider-fetched **German titles +
+    descriptions** — every cache update flushes ~hundreds of items
+    where each title averages 30-80 characters and the description
+    100-300 characters, with umlauts (`ä`/`ö`/`ü`/`Ä`/`Ö`/`Ü`) and
+    sharp s (`ß`) sprinkled through both. A blanket
+    `ensure_ascii=True` flip would have ballooned every umlaut from
+    its 2-byte UTF-8 form (e.g. `\xc3\xbc` for `ü`) to the 6-byte
+    `ü` literal, multiplying the on-disk byte size of every
+    German cache file by ~4-6x and bloating the cron commit diff
+    that `update-vor-cache.yml` / `update-wl-cache.yml` /
+    `update-oebb-cache.yml` / `update-baustellen-cache.yml`
+    publishes back to `main` after every refresh.
+
+The Round-11 "Named but deferred" entry pinned the fix shape:
+**pair an ingestion-boundary Trojan-Source primitive scrubber with
+the existing `ensure_ascii=False` flag** so the committed diff stays
+compact for legitimate German content while the canonical
+CVE-2021-42574 attack-byte union is rejected before reaching the
+serialiser.
+
+**Threat model:**
+
+  1. Attacker compromises an upstream provider (WL / OEBB / VOR
+     cache poisoning, malicious title flowing through the
+     `update_*_cache.py` scripts, DNS hijack of an unpinned upstream,
+     leaked CI secret store) or an operator mis-edits the on-disk
+     cache file.
+  2. A planted feed item carrying U+202E (RIGHT-TO-LEFT OVERRIDE)
+     — e.g. `Westbahnhof‮moc.live` displays as `Westbahnhofevil.com`
+     — reaches `write_cache` via one of the four `update_*_cache.py`
+     call sites:
+       * `scripts/update_wl_cache.py:59`
+       * `scripts/update_oebb_cache.py:67`
+       * `scripts/update_vor_cache.py:234`
+       * `scripts/update_baustellen_cache.py:570`
+  3. Pre-fix `write_cache` serialised the item via
+     `json.dump(items, fh, ensure_ascii=False, ...)`.
+     `ensure_ascii=False` emits U+202E as its raw UTF-8 byte triplet
+     `\xe2\x80\xae`, so the on-disk
+     `cache/<provider>/events.json` carries the BiDi-reversal trigger.
+  4. The respective workflow commits `cache/<provider>/events.json`
+     to `main` (`update-vor-cache.yml` lists `cache/vor/events.json`
+     in its `file_pattern`; the WL / OEBB / Baustellen workflows
+     mirror this contract). The malicious title is now visible in
+     `git log -p` / `git show` / the GitHub web UI / `cat` /
+     `less` / IDE preview — every viewer honours BiDi reversal.
+  5. Operator reviewing the commit / cache file for diff bloat /
+     suspicious upstream behaviour misreads the BiDi-reversed
+     display as the inverse of the actual planted bytes. The
+     attack hides in the operator's own review pass.
+
+**Reproduced:** `tests/test_sentinel_cache_events_trojan_source.py`
+contains 50 PoC tests:
+
+  * 1 + 21 (parametrised) for the write boundary covering every
+    primitive in the canonical CVE-2021-42574 union.
+  * 3 for nested-shape coverage (dict KEY, nested list element,
+    nested dict value) so the recursive walker is pinned.
+  * 1 for the German-content compact-diff regression
+    (`ä`/`ü`/`ß`/`Ö` survive as raw UTF-8, the bloated
+    `\u00XX` form does NOT appear).
+  * 1 for the clean-payload round-trip regression.
+  * 1 + 21 for the read-boundary defence-in-depth coverage
+    (every primitive is stripped from a planted on-disk file).
+  * 1 for the read-boundary German-content regression.
+
+Pre-fix repro for the canonical write-boundary case:
+`title="Westbahnhof‮moc.live"` produced
+`cache/<provider>/events.json` with raw bytes
+`...Westbahnhof\xe2\x80\xaemoc.live...`. Post-fix: the primitive is
+stripped at the ingestion boundary; the on-disk file reads
+`Westbahnhofmoc.live` (the malicious primitive is gone, the safe
+portion of the title remains).
+
+**Fix:**
+
+  * `src/utils/serialize.py`: add `scrub_trojan_source_primitives` —
+    a recursive walker over JSON-shaped structures
+    (`str` / `dict` / `list` / `tuple`) that strips the canonical
+    CVE-2021-42574 attack-byte union from every reachable string
+    AND every dict KEY. The regex `_TROJAN_SOURCE_PRIMITIVES_RE`
+    is byte-exact mirror of `_INVISIBLE_DANGEROUS_RE` in
+    `src/utils/logging.py` and `_MARKDOWN_NORMALISE_UNSAFE_RE` in
+    `src/utils/text.py`. The pattern is built from ASCII-only
+    `\xNN` / `\uNNNN` escape sequences so the source file itself
+    contains no Trojan-Source primitives — reviewing the regex via
+    `cat` / `less` / the GitHub web UI / IDE preview cannot itself
+    trigger BiDi reversal (a self-defeating implementation would
+    have leaked the attack into the defence). Recursion is
+    depth-limited (`max_depth=50`) — defence-in-depth against
+    pathological inputs that bypass the upstream JSON-parser
+    depth-bomb guard.
+  * `src/utils/cache.py:write_cache`: apply the scrubber to the
+    incoming `items` BEFORE the data-degradation guard count, sort,
+    and `json.dump` — ingestion-boundary defence so the dangerous
+    bytes never reach the writer. `ensure_ascii=False` is preserved
+    at the writer (compact German diff contract intact).
+  * `src/utils/cache.py:read_cache`: apply the same scrubber to the
+    parsed payload BEFORE returning to callers — defence-in-depth
+    at the read boundary that retroactively cleans any historic
+    poisoned cache file (planted before this fix, surviving from a
+    corrupted previous run, written by a future bypass of the
+    write-side scrubber, or persisted across the staging-window
+    while a poisoned commit is still on `main`).
+
+**Learning:** the Round-11 closing-checklist's "Named but deferred"
+entry correctly predicted the cache-events writer was the next
+target AND correctly identified that the fix shape diverged from
+the sibling-writer pattern. The drift family is now uniform across
+every committed operator-facing JSON sidecar in the project:
+
+  * **Closed in this round:** `write_cache`
+    (`cache/<provider>/events.json`) via scrubber-at-ingestion +
+    `ensure_ascii=False` preservation. `read_cache` carries the
+    same defence-in-depth at the read boundary.
+  * **Already closed (Round 11):** `MonthlyQuota.save_atomic`
+    (`data/places_quota.json`), `_write_request_count_file`
+    (`data/vor_request_count.json`), `write_status`
+    (`cache/<provider>/last_run.json`) — all via
+    `ensure_ascii=True`.
+  * **Already closed (earlier rounds):** `_save_state`
+    (`data/first_seen.json`, Round 10), `_write_heartbeat_file`
+    (`data/stations_last_run.json`, Round 10),
+    `_write_quarantine_file` (`data/quarantine.json`, Round 9),
+    `_render_diff_markdown` (`docs/stations_diff.md`, Round 9),
+    `ValidationReport.to_markdown()` (Round 3),
+    `render_feed_health_markdown` / GitHub-Issue body (Round 2),
+    `docs/statistik.md` stats dashboard (Round 1),
+    `data/stats/*.csv` CSV writer, RSS XML writers, sitemap
+    writer, `_escape_env_value` `.env` writer.
+  * **Named but deferred** (out of scope for this round; queued
+    for a dedicated stations-file sanitisation round):
+    * `src/places/merge.py:write_stations` →
+      `data/stations.json` (committed by
+      `update-google-places-stations.yml`). Same
+      `ensure_ascii=False` shape; the payload carries
+      provider-fetched German station names. Same fix shape as
+      this round (scrubber-at-ingestion + flag preservation). The
+      next round MUST reuse the
+      `scrub_trojan_source_primitives` helper added in this
+      round so the defence shape stays single-sourced.
+
+The two structural fix shapes are now codified:
+  * **Scrub-and-drop semantics** (`scrub_trojan_source_primitives`
+    + `ensure_ascii=False`): high-cardinality content sinks where
+    forensic re-construction would bloat the diff and the safe
+    portion of the value is meaningful (cache content, station
+    descriptions, log messages).
+  * **Escape-and-preserve semantics** (`ensure_ascii=True`):
+    low-cardinality state sinks where each row is a unique
+    sentinel and forensic re-construction matters (heartbeat,
+    quota, request count, first-seen state, quarantine entries).
+
+The drift-walker invariant: any future operator-facing JSON
+sidecar writer added to the codebase MUST adopt one of the two
+shapes above. The shape choice is dictated by cardinality and
+forensic-intent requirements, not by writer convenience.
+
 ## 2026-05-11 - Trojan-Source BiDi Drift Round 11 (Places Quota + VOR Request Count + Cache Heartbeat Sidecars): `MonthlyQuota.save_atomic` (`data/places_quota.json`), `save_request_count`'s Atomic Write (`data/vor_request_count.json`), and `write_status` (`cache/<provider>/last_run.json`) Were the Three Sibling Writers the Round-10 Closing-Checklist Named But Deferred
 
 **Vulnerability:** Round 10 (PR #1435) closed `_save_state`

@@ -2,16 +2,104 @@
 
 from __future__ import annotations
 
+import re
 from datetime import datetime
 from typing import Any
 
 
-__all__ = ["serialize_for_cache"]
+__all__ = ["scrub_trojan_source_primitives", "serialize_for_cache"]
 
 
 import logging
 
 log = logging.getLogger(__name__)
+
+
+# Security (Trojan-Source / BiDi-Mark Drift Round 12): canonical attack-byte
+# union covering the CVE-2021-42574 BiDi formatting controls, BiDi isolates,
+# zero-width primitives + LRM/RLM/ALM, Unicode line / paragraph separators,
+# the BOM / ZWNBSP, and the 8-bit C1 terminal-escape primitives (CSI, OSC,
+# DCS). Byte-exact mirror of ``_INVISIBLE_DANGEROUS_RE`` in
+# ``src/utils/logging.py`` and ``_MARKDOWN_NORMALISE_UNSAFE_RE`` in
+# ``src/utils/text.py`` so any future widening of the canonical floor stays
+# uniform across the codebase. See the comment at
+# ``_INVISIBLE_DANGEROUS_RE`` for the full threat-model narrative.
+#
+# The character-class union is built from ASCII-only escape sequences
+# (``\xNN`` / ``\uNNNN``) so the source file itself contains no
+# Trojan-Source primitives — reviewing this regex via ``cat`` / ``less``
+# / the GitHub web UI / IDE preview cannot itself trigger BiDi reversal.
+_TROJAN_SOURCE_PRIMITIVES_RE = re.compile(
+    r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
+    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+)
+
+
+def scrub_trojan_source_primitives(
+    value: Any,
+    *,
+    _depth: int = 0,
+    max_depth: int = 50,
+) -> Any:
+    """Recursively strip Trojan-Source / BiDi / zero-width / line-terminator
+    / 8-bit C1 primitives from a JSON-shaped structure.
+
+    Walks ``str`` / ``dict`` / ``list`` / ``tuple`` values and removes the
+    canonical CVE-2021-42574 attack-byte union from every reachable string
+    (values AND dict keys). Legitimate non-ASCII content - German umlauts,
+    CJK, emoji, every other Unicode code point that is NOT in the
+    Trojan-Source union - passes through unchanged.
+
+    This is the ingestion-boundary defence for operator-facing JSON sidecar
+    sinks (currently ``cache/<provider>/events.json`` via
+    :func:`src.utils.cache.write_cache`) where the on-disk file is committed
+    to ``main`` by the cron pipeline and rendered via ``cat`` / ``less`` /
+    the GitHub web UI / IDE preview. ``ensure_ascii=False`` is preserved at
+    the writer so legitimate German content stays compact in the diff;
+    pairing it with this scrubber rejects the canonical attack-byte union
+    before it reaches the serialiser.
+
+    The scrub-and-drop semantics deliberately differ from the
+    ``ensure_ascii=True`` escape-and-preserve semantics used by the sibling
+    state writers (``MonthlyQuota.save_atomic``,
+    ``_write_request_count_file``, ``write_status``,
+    ``_write_heartbeat_file``, ``_write_quarantine_file``, ``_save_state``).
+    Cache content is a forward-flowing data feed with high cardinality
+    (thousands of items per refresh); per-item forensic re-construction
+    would just bloat the diff. State sinks carry unique sentinels where
+    forensic re-construction matters.
+
+    A ``RecursionError`` is raised if the structure depth exceeds
+    ``max_depth`` - defence-in-depth against pathological inputs that
+    bypass the upstream depth-bomb guard at the JSON parser.
+    """
+    if _depth > max_depth:
+        raise RecursionError(f"Maximum recursion depth {max_depth} exceeded")
+    if isinstance(value, str):
+        return _TROJAN_SOURCE_PRIMITIVES_RE.sub("", value)
+    if isinstance(value, dict):
+        return {
+            (
+                _TROJAN_SOURCE_PRIMITIVES_RE.sub("", key)
+                if isinstance(key, str)
+                else key
+            ): scrub_trojan_source_primitives(
+                val, _depth=_depth + 1, max_depth=max_depth
+            )
+            for key, val in value.items()
+        }
+    if isinstance(value, list):
+        return [
+            scrub_trojan_source_primitives(item, _depth=_depth + 1, max_depth=max_depth)
+            for item in value
+        ]
+    if isinstance(value, tuple):
+        return tuple(
+            scrub_trojan_source_primitives(item, _depth=_depth + 1, max_depth=max_depth)
+            for item in value
+        )
+    return value
+
 
 def serialize_for_cache(
     value: Any,
