@@ -258,8 +258,20 @@ def test_markdown_rendering_contains_cross_station_id_section() -> None:
     assert "No issues detected." not in markdown
 
 
-def test_naming_validation_detects_duplicate_canonical_names(tmp_path: Path) -> None:
-    """Two entries with the same ``name`` field must trigger a NamingIssue."""
+def test_naming_validation_allows_duplicate_canonical_names(tmp_path: Path) -> None:
+    """Two entries sharing a ``name`` field must NOT trigger a naming
+    issue.
+
+    The canonical-name uniqueness check was removed on 2026-05-12.
+    Wiener Linien's OGD-Echtzeit ``PlatformText`` is legitimately
+    duplicated for non-mergeable multi-DIVA groups (``Lokalbahn`` × 4
+    spread across 5.6 km, ``Bahnhof`` × 2 at 9.4 km, …); structured
+    identifiers (``wl_diva``, ``bst_id``, ``vor_id``, ``bst_code``)
+    carry the project's eindeutigkeits-Garantie. Without this
+    relaxation the operator-facing display label has to carry a
+    disambiguating ``(WL <diva>)`` suffix that clutters the published
+    RSS feed.
+    """
     stations = [
         {
             "bst_id": 100,
@@ -284,12 +296,14 @@ def test_naming_validation_detects_duplicate_canonical_names(tmp_path: Path) -> 
     path.write_text(json.dumps(stations), encoding="utf-8")
 
     report = validate_stations(path)
-    naming_reasons = {issue.reason for issue in report.naming_issues}
-    assert any("not unique" in reason for reason in naming_reasons)
-    assert {issue.identifier for issue in report.naming_issues} == {
-        "bst:100 / code:X1 / source:oebb",
-        "bst:200 / code:X2 / source:wl",
-    }
+    duplicate_name_issues = [
+        issue for issue in report.naming_issues if "not unique" in issue.reason
+    ]
+    assert duplicate_name_issues == [], (
+        "Duplicate canonical names must no longer surface as naming "
+        "issues. Structured identifiers carry the eindeutigkeits-"
+        "Garantie; ``name`` is a display label only."
+    )
 
 
 def test_format_identifier_distinguishes_wl_only_entries() -> None:
