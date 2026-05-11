@@ -649,7 +649,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     log.info("Wrote %d VOR stops to %s", len(resolved_unique), args.output)
 
     mapping_path = args.output.with_suffix(".mapping.json")
-    mapping_payload = [
+    mapping_payload = _scrub_mapping_for_serialisation(
         {
             "station_name": pair[0].name,
             "bst_id": pair[0].bst_id,
@@ -659,42 +659,33 @@ def main(argv: Sequence[str] | None = None) -> int:
             "longitude": pair[1].longitude,
         }
         for pair in resolved_pairs
-    ]
-
-    # Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
-    # defence): scrub the canonical CVE-2021-42574 attack-byte union from the
-    # provider-fetched mapping BEFORE the json serialisation below. A poisoned
-    # VAO ReST station-resolution endpoint could plant U+202E in a
-    # ``station_name`` / ``resolved_name`` field —
-    # ``data/vor-haltestellen.mapping.json`` is the sibling station-directory
-    # sidecar that the cron pipeline commits to ``main``. Mirrors
-    # ``src/places/merge.py:write_stations`` (Round 13).
-    scrubbed_mapping = _scrub_mapping_for_serialisation(mapping_payload)
+    )
 
     with atomic_write(mapping_path, mode="w", encoding="utf-8") as handle:
         # codeql[py/clear-text-storage-sensitive-data] False Positive: Payload contains only public station data, no sensitive user data.
-        handle.write(json.dumps(scrubbed_mapping, ensure_ascii=False, indent=2) + "\n")
+        handle.write(json.dumps(mapping_payload, ensure_ascii=False, indent=2) + "\n")
 
     log.info("Wrote station mapping to %s", mapping_path)
     return 0
 
 
 def _scrub_mapping_for_serialisation(
-    mapping: Sequence[Mapping[str, object]],
+    mapping: Iterable[Mapping[str, object]],
 ) -> list[dict[str, object]]:
     """Apply the canonical Trojan-Source scrubber to the VAO resolution mapping.
 
-    Extracted as a helper so the scrub-and-drop semantics can be unit-tested
-    in isolation (the surrounding ``main()`` is hard to drive end-to-end).
-    Mirrors ``src/places/merge.py:write_stations`` (Round 13). The actual
-    ``json.dumps`` + ``atomic_write`` site stays inline at the original
-    location in ``main()`` so the data-flow shape (and the historical
-    CodeQL false-positive suppression for that line) does not move.
+    Wraps the call site's list-comprehension / generator so the on-disk
+    file cannot carry CVE-2021-42574 BiDi marks from a poisoned VAO
+    upstream. Mirrors ``src/places/merge.py:write_stations`` (Round 13).
+    The actual ``json.dumps`` + ``atomic_write`` site stays inline at the
+    original line position so CodeQL matches the historical
+    false-positive suppression for that location.
     """
-    scrubbed = scrub_trojan_source_primitives(list(mapping))
+    materialised = list(mapping)
+    scrubbed = scrub_trojan_source_primitives(materialised)
     if isinstance(scrubbed, list):
         return [dict(entry) if isinstance(entry, Mapping) else entry for entry in scrubbed]
-    return [dict(entry) for entry in mapping]
+    return [dict(entry) for entry in materialised]
 
 
 if __name__ == "__main__":  # pragma: no cover - CLI entry point
