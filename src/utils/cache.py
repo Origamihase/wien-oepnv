@@ -15,6 +15,7 @@ from collections.abc import Callable
 from .env import get_bool_env
 from .files import atomic_write, safe_path_join, sanitize_filename
 from .logging import sanitize_log_arg
+from .serialize import scrub_trojan_source_primitives
 
 _CACHE_DIR = Path("cache")
 _CACHE_FILENAME = "events.json"
@@ -244,7 +245,21 @@ def read_cache(provider: str) -> list[Any]:
         _emit_cache_alert(provider, f"Leseproblem ({sanitized_exc})")
     else:
         if isinstance(payload, list):
-            return payload
+            # Security (Trojan-Source / BiDi-Mark Drift Round 12,
+            # defence-in-depth at the read boundary): retroactively scrub
+            # the canonical CVE-2021-42574 attack-byte union from any
+            # historic poisoned cache file (planted before this fix,
+            # surviving from a corrupted previous run, or written by a
+            # future bypass of ``write_cache``'s ingestion-boundary
+            # scrubber). Mirrors the write-side defence so the in-memory
+            # payload handed to the feed builder cannot carry raw BiDi
+            # marks regardless of how the on-disk bytes got there. See
+            # ``src/utils/serialize.py:scrub_trojan_source_primitives``
+            # for the canonical attack-byte union.
+            scrubbed = scrub_trojan_source_primitives(payload)
+            if isinstance(scrubbed, list):
+                return scrubbed
+            return []
         log.warning(
             "Cache for provider '%s' at %s does not contain a JSON array (found %s)",
             provider,
@@ -339,6 +354,25 @@ def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) 
     reduce cache size for large datasets set ``pretty`` to ``False`` or define
     the environment variable ``WIEN_OEPNV_CACHE_PRETTY=0``.
     """
+
+    # Security (Trojan-Source / BiDi-Mark Drift Round 12, ingestion-boundary
+    # defence): strip the canonical CVE-2021-42574 attack-byte union (BiDi
+    # formatting controls, BiDi isolates, zero-width primitives + LRM/RLM/ALM,
+    # Unicode line / paragraph separators, the BOM / ZWNBSP, and the 8-bit
+    # C1 terminal-escape primitives) from every reachable string in the
+    # incoming items BEFORE the data-degradation guard count, sort, and
+    # ``json.dump``. ``cache/<provider>/events.json`` is committed to ``main``
+    # by the cron pipeline (``update-vor-cache.yml``,
+    # ``update-wl-cache.yml``, ``update-oebb-cache.yml``,
+    # ``update-baustellen-cache.yml``) and rendered via ``cat`` / ``less`` /
+    # the GitHub web UI / IDE preview. ``ensure_ascii=False`` is preserved at
+    # the writer below so legitimate German content (umlauts ä/ö/ü/Ä/Ö/Ü +
+    # sharp s ß + every other safe Unicode code point) stays compact in the
+    # diff; pairing it with the scrubber rejects the canonical attack-byte
+    # union before it reaches the serialiser. See
+    # ``src/utils/serialize.py:scrub_trojan_source_primitives`` for the
+    # canonical attack-byte union and the scrub-and-drop semantics rationale.
+    items = scrub_trojan_source_primitives(items)
 
     prune_cache()
 
