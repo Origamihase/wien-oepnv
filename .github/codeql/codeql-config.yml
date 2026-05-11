@@ -1,0 +1,36 @@
+# CodeQL custom configuration for wien-oepnv
+#
+# Exclude the ``py/clear-text-storage-sensitive-data`` query.
+#
+# The query flags any code path where bytes from a network response
+# reach a file-write API. The project has four cache writers that
+# match that shape by design:
+#
+# * ``data/oebb-verkehrsstationen.xlsx`` — public ÖBB
+#   ``Verzeichnis der Verkehrsstationen`` workbook (free open data,
+#   no auth, no PII).
+# * ``data/wienerlinien-ogd-haltestellen.csv`` /
+#   ``data/wienerlinien-ogd-haltepunkte.csv`` — public Wiener Linien
+#   OGD-Echtzeit CSVs (free open data, no auth, no PII).
+# * ``data/vor-haltestellen.csv`` — public VOR stop list (manually
+#   refreshed snapshot, free open data).
+#
+# Each file is intentionally committed to the repository by the
+# weekly ``update-stations.yml`` auto-commit step so the next cron
+# tick has a soft-fail snapshot if the live upstream is unavailable
+# — that is the documented architectural pattern and the whole
+# point of the cache writers. Secrets / PII leaks are guarded by
+# the project's separate ``scripts/scan_secrets.py`` step and by
+# bandit (both run before pytest in ``run_static_checks.py``).
+#
+# The other security-and-quality queries remain active. Only this
+# one query is filtered.
+
+name: "wien-oepnv CodeQL configuration"
+
+queries:
+  - uses: security-and-quality
+
+query-filters:
+  - exclude:
+      id: py/clear-text-storage-sensitive-data
