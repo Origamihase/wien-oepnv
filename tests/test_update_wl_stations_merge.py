@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from pathlib import Path
 from typing import cast
 
@@ -268,18 +269,14 @@ def test_build_wl_entries_joins_realtime_schema(tmp_path: Path) -> None:
     assert stops[0]["stop_id"] == "1"
 
 
-def test_build_wl_entries_skips_short_stop_ids_to_avoid_oebb_collision(
+def test_build_wl_entries_does_not_emit_stop_ids_as_aliases(
     tmp_path: Path,
 ) -> None:
-    """The canonical wienerlinien.at OGD-Echtzeit ``StopID`` column
-    collapsed from an 8-digit RBL-Nummer (legacy proxy) to a small
-    in-CSV row counter (1, 2, 3, …, 1660, …). Adding those tiny values
-    as aliases collides with ÖBB ``bst_id`` values like 1660 (Parndorf)
-    and trips ``_find_cross_station_id_conflicts`` → auto-quarantine.
-    The 2026-05-11 cron tick after PR #1444 confirmed 1442 such
-    collisions out of 1449 quarantined stations. The length filter
-    (``≥6``) keeps the legacy 8-digit RBL alias contract intact while
-    suppressing the new schema's row-counter values.
+    """``stop_id`` (a small in-CSV row counter in the canonical
+    OGD-Echtzeit schema, or an 8-digit RBL in the legacy proxy schema)
+    is reachable via the structured ``wl_stops[].stop_id`` field. It is
+    not added to ``aliases`` to avoid cross-station-id collisions with
+    other entries' ``bst_id`` / ``wl_diva``.
     """
     haltestellen_path = tmp_path / "haltestellen.csv"
     haltestellen_path.write_text(
@@ -300,29 +297,81 @@ def test_build_wl_entries_skips_short_stop_ids_to_avoid_oebb_collision(
 
     assert len(entries) == 1
     aliases = cast(list[str], entries[0]["aliases"])
-    assert "1660" not in aliases, (
-        "Short StopID counter values must not leak into aliases — they "
-        "would collide with ÖBB bst_id values."
+    assert "1660" not in aliases
+    from typing import cast as _cast
+    wl_stops = _cast(list[dict[str, object]], entries[0]["wl_stops"])
+    assert wl_stops[0]["stop_id"] == "1660", (
+        "stop_id must still be exposed via the structured wl_stops field."
     )
 
 
-def test_build_wl_entries_keeps_legacy_rbl_alias(tmp_path: Path) -> None:
-    """The legacy ``data.wien.gv.at`` proxy CSV used STOP_ID == RBL-Nummer
-    (8-digit), which is a semantically valuable cross-system identifier.
-    The length-based filter (``≥6 chars``) must keep these long IDs in
-    the alias set so existing realtime-anchor lookups continue to work.
+def test_build_wl_entries_does_not_emit_synthetic_bst_id_or_code(
+    tmp_path: Path,
+) -> None:
+    """WL-only entries no longer carry synthetic ``bst_id`` / ``bst_code``
+    derived from the DIVA (the prior ``9{DIVA}`` and ``WL-{tok[:3]}``
+    heuristics caused alias-collision and bst_code-uniqueness failures
+    at production scale). The canonical WL identifier is the
+    structured ``wl_diva`` field; downstream lookup via
+    ``src/utils/stations._station_lookup`` already adds wl_diva as an
+    identity-class alias on its own.
     """
     haltestellen_path = tmp_path / "haltestellen.csv"
     haltestellen_path.write_text(
-        "\"HALTESTELLEN_ID\";\"NAME\";\"DIVA\"\n"
-        "\"1001\";\"Karlsplatz\";\"60201076\"\n",
+        "DIVA;PlatformText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "60200657;Karlsplatz;Wien;49000001;16.369;48.201\n",
         encoding="utf-8",
     )
     haltepunkte_path = tmp_path / "haltepunkte.csv"
     haltepunkte_path.write_text(
-        "\"HALTEPUNKT_ID\";\"HALTESTELLEN_ID\";\"STOP_ID\";\"NAME\";"
-        "\"WGS84_LAT\";\"WGS84_LON\"\n"
-        "\"1\";\"1001\";\"60201076\";\"Karlsplatz U\";\"48.198680\";\"16.369450\"\n",
+        "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "1;60200657;Karlsplatz;Wien;49000001;16.369;48.201\n",
+        encoding="utf-8",
+    )
+
+    haltestellen = update_wl_stations.load_haltestellen(haltestellen_path)
+    haltepunkte = update_wl_stations.load_haltepunkte(haltepunkte_path)
+    entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
+
+    assert len(entries) == 1
+    entry = entries[0]
+    assert "bst_id" not in entry, (
+        "WL-only entries must not carry a synthetic bst_id — it would "
+        "collide with ÖBB bst_id values via cross-station-id checks."
+    )
+    assert "bst_code" not in entry, (
+        "WL-only entries must not carry a synthetic bst_code — the "
+        "first-3-letter truncation produced collisions at scale "
+        "(e.g. WL-ABS for both Absbergbrücke and Absberggasse)."
+    )
+    assert entry["wl_diva"] == "60200657", (
+        "The canonical WL identifier must still live in the wl_diva "
+        "field — only the synthetic bst_id / bst_code mirrors are gone."
+    )
+
+
+def test_build_wl_entries_does_not_duplicate_wl_diva_into_aliases(
+    tmp_path: Path,
+) -> None:
+    """The ``wl_diva`` value is the structured WL identifier and is
+    indexed as an identity-class alias by
+    ``src/utils/stations._station_lookup``. Duplicating it into the
+    ``aliases`` list is both redundant and dangerous: Wiener Linien has
+    renumbered DIVAs at least once (``60201076`` was Karlsplatz before
+    PR #1442 and is Ratzenhofergasse today), so a stale ``aliases``
+    copy from a prior cron tick collides with another entry's current
+    ``wl_diva`` via ``_find_cross_station_id_conflicts``.
+    """
+    haltestellen_path = tmp_path / "haltestellen.csv"
+    haltestellen_path.write_text(
+        "DIVA;PlatformText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "60200657;Karlsplatz;Wien;49000001;16.369;48.201\n",
+        encoding="utf-8",
+    )
+    haltepunkte_path = tmp_path / "haltepunkte.csv"
+    haltepunkte_path.write_text(
+        "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
+        "1;60200657;Karlsplatz;Wien;49000001;16.369;48.201\n",
         encoding="utf-8",
     )
 
@@ -332,21 +381,21 @@ def test_build_wl_entries_keeps_legacy_rbl_alias(tmp_path: Path) -> None:
 
     assert len(entries) == 1
     aliases = cast(list[str], entries[0]["aliases"])
-    assert "60201076" in aliases, (
-        "Long stop_id values (legacy 8-digit RBL-Nummer) must remain "
-        "in the alias set — they are valuable cross-system identifiers."
+    assert "60200657" not in aliases, (
+        "The wl_diva value must not appear verbatim in aliases — "
+        "the structured wl_diva field carries it instead."
     )
 
 
-def test_build_wl_entries_replaces_unsafe_direction_marker(tmp_path: Path) -> None:
-    """WL ``StopText`` direction markers like 'Karlsplatz U > Reumannplatz'
-    contain '>', which is in the stations validator's
-    ``_UNSAFE_CHARS_RE`` (XSS / HTML metacharacter set). Without
-    sanitisation, ``_alias_variants`` propagates the '>' into every
-    alias permutation ('Bf Seestadt >', 'Seestadt > Bahnhof', …) and
-    each one trips ``_find_security_issues`` → auto-quarantine. The
-    fix replaces '>' with U+2192 (→), which is typographically correct
-    for "Richtung" and outside the unsafe-char regex.
+def test_build_wl_entries_replaces_both_direction_markers(tmp_path: Path) -> None:
+    """WL ``StopText`` direction markers ('>' for "Richtung", '<' for
+    "Aus Richtung") are both in the stations validator's
+    ``_UNSAFE_CHARS_RE``. Without sanitisation, ``_alias_variants``
+    propagates them into every prefix/suffix permutation ('Bf Brünner
+    Str. <', 'Seestadt > Bahnhof', …) and each one trips
+    ``_find_security_issues`` → auto-quarantine. The fix replaces '>'
+    with U+2192 (→) and '<' with U+2190 (←); both are typographically
+    correct and outside the unsafe-char regex.
     """
     haltestellen_path = tmp_path / "haltestellen.csv"
     haltestellen_path.write_text(
@@ -357,7 +406,9 @@ def test_build_wl_entries_replaces_unsafe_direction_marker(tmp_path: Path) -> No
     haltepunkte_path = tmp_path / "haltepunkte.csv"
     haltepunkte_path.write_text(
         "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
-        "60201076;60201076;Karlsplatz U > Reumannplatz;Wien;49000001;"
+        "1;60201076;Karlsplatz U > Reumannplatz;Wien;49000001;"
+        "16.369450;48.198680\n"
+        "2;60201076;Karlsplatz U < Leopoldau;Wien;49000001;"
         "16.369450;48.198680\n",
         encoding="utf-8",
     )
@@ -367,14 +418,54 @@ def test_build_wl_entries_replaces_unsafe_direction_marker(tmp_path: Path) -> No
     entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
 
     assert len(entries) == 1
-    entry = entries[0]
-    aliases = cast(list[str], entry["aliases"])
+    aliases = cast(list[str], entries[0]["aliases"])
     assert not any(">" in a for a in aliases), (
         "No alias may contain '>' — it is in the validator's unsafe-char regex."
     )
-    assert any("→" in a for a in aliases), (
-        "The direction marker must be replaced with U+2192 (→), not stripped."
+    assert not any("<" in a for a in aliases), (
+        "No alias may contain '<' — it is in the validator's unsafe-char regex."
     )
+    assert any("→" in a for a in aliases), "U+2192 (→) replaces '>'."
+    assert any("←" in a for a in aliases), "U+2190 (←) replaces '<'."
+
+
+def test_merge_wl_payload_strips_stale_wl_diva_aliases() -> None:
+    """``_merge_wl_payload`` must remove ``aliases`` entries that look
+    like a Wiener Linien DIVA (8 digits, starting with ``60``) but no
+    longer match the entry's current ``wl_diva``. Without this, a stale
+    DIVA pinned by an earlier cron tick survives across runs and
+    trivially collides with another entry's current ``wl_diva`` via
+    the cross-station-id validator — exactly the post-PR #1445 failure
+    mode where Karlsplatz carried the legacy alias ``60201076`` which
+    Wiener Linien has since reassigned to Ratzenhofergasse.
+    """
+    target: dict[str, object] = {
+        "name": "Wien Karlsplatz",
+        "wl_diva": "60201076",  # stale, pre-renumbering
+        "aliases": [
+            "Wien Karlsplatz",
+            "490065700",  # legitimate vor_id — must be preserved
+            "60201076",   # stale WL DIVA — must be stripped (mismatch)
+            "60201077",   # stale WL alias — must be stripped (mismatch)
+            "Karlsplatz",
+        ],
+    }
+    payload: Mapping[str, object] = {
+        "wl_diva": "60200657",  # current, post-renumbering
+        "wl_stops": [],
+        "source": "wl",
+        "aliases": ["Wien Karlsplatz (WL)"],
+    }
+
+    update_wl_stations._merge_wl_payload(target, payload)
+
+    aliases = cast(list[str], target["aliases"])
+    assert "60201076" not in aliases, "Stale legacy WL DIVA must be stripped."
+    assert "60201077" not in aliases, "Stale legacy WL alias must be stripped."
+    assert "490065700" in aliases, "Real vor_id alias must be preserved."
+    assert "Wien Karlsplatz" in aliases, "Natural-name aliases must be preserved."
+    assert "Karlsplatz" in aliases
+    assert target["wl_diva"] == "60200657", "wl_diva must be updated to current."
 
 
 def test_build_wl_entries_auto_promotes_outside_station_to_pendler() -> None:

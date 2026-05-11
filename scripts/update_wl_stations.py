@@ -481,28 +481,25 @@ def build_wl_entries(
         aliases = {station.name}
         stops_payload = []
         for stop in stops:
-            # Sanitise the WL ``StopText`` direction marker ('>' is in
-            # ``_UNSAFE_CHARS_RE`` of the stations validator because it
-            # is an XSS-relevant character at HTML / Markdown render
-            # time). Replace with U+2192 (→) — typographically correct
-            # for "Richtung X", outside the unsafe-char regex, and it
-            # preserves direction information for the operator-facing
-            # alias permutations built downstream by ``_alias_variants``.
-            stop_name = stop.name.replace(">", "→") if isinstance(stop.name, str) else stop.name
+            # Sanitise both WL ``StopText`` direction markers — '>' and
+            # '<' are in the stations validator's ``_UNSAFE_CHARS_RE``
+            # (XSS / HTML metacharacters). Replace '>' with U+2192 (→)
+            # and '<' with U+2190 (←); both arrows are typographically
+            # correct for "Richtung X" / "Aus Richtung X", outside the
+            # unsafe-char regex, and preserve direction information for
+            # the operator-facing permutations built downstream by
+            # ``_alias_variants``.
+            stop_name = stop.name.replace(">", "→").replace("<", "←")
             aliases.add(stop_name)
-            # Skip short ``stop_id`` values: in the legacy
+            # Do NOT add ``stop.stop_id`` to ``aliases``. In the legacy
             # ``data.wien.gv.at`` proxy CSV ``STOP_ID`` was an 8-digit
-            # RBL-Nummer (semantic Echtzeit-Anker, useful as alias). In
-            # the canonical ``wienerlinien.at`` OGD-Echtzeit CSV
-            # ``StopID`` collapsed to a small in-CSV row counter (1, 2,
-            # 3, …) with no cross-system meaning. Adding those tiny
-            # values as aliases collides with ÖBB ``bst_id`` values
-            # like 1660 (Parndorf) / 1103 (Kittsee) / 400 (Wien Brünner
-            # Straße) and trips ``_find_cross_station_id_conflicts`` →
-            # auto-quarantine. Length cap keeps the legacy 8-digit RBL
-            # alias path working.
-            if isinstance(stop.stop_id, str) and len(stop.stop_id) >= 6:
-                aliases.add(stop.stop_id)
+            # RBL-Nummer (semantic Echtzeit-Anker). In the canonical
+            # ``wienerlinien.at`` OGD-Echtzeit CSV ``StopID`` collapsed
+            # to a small in-CSV row counter (1, 2, 3, …) with no
+            # cross-system meaning. Either way the per-platform RBL is
+            # reachable via the structured ``wl_stops[].stop_id`` field
+            # — adding it to ``aliases`` only invites cross-station-id
+            # collisions with other entries' ``bst_id`` / ``wl_diva``.
             stops_payload.append(
                 {
                     "stop_id": stop.stop_id,
@@ -511,8 +508,17 @@ def build_wl_entries(
                     "longitude": stop.longitude,
                 }
             )
-        if station.diva:
-            aliases.add(station.diva)
+        # Do NOT add ``station.diva`` to ``aliases``. The DIVA is the
+        # canonical WL identifier — it is exposed via the structured
+        # ``wl_diva`` field on the entry and recognised as an
+        # identity-class alias by ``src/utils/stations._station_lookup``
+        # at lookup time. Duplicating it into ``aliases`` is both
+        # redundant and dangerous: WL has renumbered DIVAs at least
+        # once between the data.wien.gv.at proxy era and the current
+        # wienerlinien.at OGD-Echtzeit era (e.g. ``60201076`` was
+        # Karlsplatz pre-PR #1442 and is Ratzenhofergasse today). A
+        # stale alias copy from a prior run trivially collides with
+        # another entry's current ``wl_diva``.
         aliases.add(f"Wien {station.name}")
         canonical = _canonical_name(station.name)
         aliases.add(canonical)
@@ -583,12 +589,25 @@ def build_wl_entries(
             ),
             "source": "wl",
         }
-        bst_id = _derive_bst_id(station_identifier)
-        if bst_id is not None:
-            entry["bst_id"] = bst_id
-        bst_code = _derive_bst_code(canonical, station_identifier)
-        if bst_code:
-            entry["bst_code"] = bst_code
+        # Do NOT synthesise ``bst_id`` / ``bst_code`` for WL-only
+        # entries. ``bst_id`` / ``bst_code`` are ÖBB's namespace
+        # ("Betriebsstellennummer" / Stellencode); reusing them for
+        # WL-only entries via the prior ``9{DIVA}`` / ``WL-{tok[:3]}``
+        # heuristics produced two failure modes at production scale:
+        #
+        #   (a) ``_find_cross_station_id_conflicts`` flagged
+        #       ``alias DIVA`` collisions against synthetic
+        #       ``bst_id = 9{DIVA}`` on other entries.
+        #   (b) ``_derive_bst_code`` truncated names to the first
+        #       three letters, producing hundreds of duplicates
+        #       (``WL-ABS`` for both Absbergbrücke and Absberggasse,
+        #       ``WL-ADA`` for Ada-Christen-Gasse and four others, …).
+        #
+        # The canonical WL identifier is ``wl_diva`` (already set
+        # above), which lives in its own namespace and never collides.
+        # Existing source="vor"/"google_places"/"manual" entries also
+        # carry no ``bst_id`` for similar reasons; downstream lookup
+        # is via the structured per-source fields, not bst_id-as-alias.
         if latitude is not None and longitude is not None:
             entry["latitude"] = latitude
             entry["longitude"] = longitude
@@ -656,6 +675,36 @@ def _ensure_sorted_aliases(entry: dict[str, object]) -> None:
     entry["aliases"] = cleaned
 
 
+_WL_DIVA_ALIAS_RE = re.compile(r"60\d{6}")
+
+
+def _is_stale_wl_diva_alias(alias: object, current_wl_diva: str) -> bool:
+    """Return True for aliases that look like a Wiener Linien DIVA value
+    but do not match the current ``wl_diva`` of the entry.
+
+    Wiener Linien renumbered DIVAs at least once between the
+    ``data.wien.gv.at`` proxy era and the current ``wienerlinien.at``
+    OGD-Echtzeit schema (e.g. ``60201076`` was Karlsplatz pre-PR #1442
+    and is Ratzenhofergasse today). Because ``merge_into_stations``
+    preserves existing aliases across runs, stale DIVA copies pinned by
+    an earlier cron tick survive and trivially collide with the current
+    ``wl_diva`` of a *different* entry, tripping
+    ``_find_cross_station_id_conflicts`` and the auto-quarantine path.
+
+    Heuristic: any alias matching the WL DIVA shape (``60`` + 6 digits,
+    yielding 8 digits total) that is *not* the entry's current
+    ``wl_diva`` value is treated as stale and dropped at merge time.
+    Real per-stop RBL identifiers remain available via the structured
+    ``wl_stops[].stop_id`` field.
+    """
+    if not isinstance(alias, str):
+        return False
+    stripped = alias.strip()
+    if not _WL_DIVA_ALIAS_RE.fullmatch(stripped):
+        return False
+    return stripped != current_wl_diva
+
+
 def _merge_wl_payload(target: dict[str, object], payload: Mapping[str, object]) -> None:
     if payload.get("wl_diva"):
         target["wl_diva"] = payload["wl_diva"]
@@ -667,10 +716,18 @@ def _merge_wl_payload(target: dict[str, object], payload: Mapping[str, object]) 
     target["source"] = _merge_sources(target.get("source"), payload.get("source"), "wl")
 
     from typing import cast
+    current_wl_diva = str(target.get("wl_diva") or "").strip()
     existing_aliases: list[str] = []
     raw_target_aliases = target.get("aliases")
     if isinstance(raw_target_aliases, list):
-        existing_aliases = cast(list[str], list(raw_target_aliases))
+        # Strip stale WL-DIVA aliases left over from prior runs against
+        # an older Wiener Linien numbering scheme — see
+        # ``_is_stale_wl_diva_alias`` for the renumbering rationale.
+        existing_aliases = [
+            cast(str, a)
+            for a in raw_target_aliases
+            if not _is_stale_wl_diva_alias(a, current_wl_diva)
+        ]
 
     incoming_aliases: list[str] = []
     raw_payload_aliases = payload.get("aliases")
