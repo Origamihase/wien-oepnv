@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 20:30:37 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 21:00:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U4: Verspätungen]]></title>
@@ -21,35 +21,13 @@
       <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[8A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1b9feb3521bf10053f40e6730c6cb1f4d8b79f2ab069b5767a7926e6f77fd041</guid>
-      <pubDate>Mon, 11 May 2026 20:20:00 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 20:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 20:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 20:50:00 +0200</ext:ends_at>
-      <description>Linie 8A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Linie 8A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[WLB: Fahrtbehinderung wegen Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">56efaa744b5e22f1d5dad5677bd92bf1e0741446907042c5d6b6d45b600f0857</guid>
-      <pubDate>Mon, 11 May 2026 19:50:24 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 20:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 19:50:24 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 20:49:00 +0200</ext:ends_at>
-      <description>[Am 11.05.2026]</description>
-      <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[5: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6</guid>
       <pubDate>Mon, 11 May 2026 19:35:00 +0200</pubDate>
       <ext:first_seen>Mon, 11 May 2026 19:30:38 +0200</ext:first_seen>
       <ext:starts_at>Mon, 11 May 2026 19:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 11 May 2026 21:48:00 +0200</ext:ends_at>
       <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
       <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
@@ -82,9 +60,9 @@
       <pubDate>Mon, 11 May 2026 11:25:00 +0200</pubDate>
       <ext:first_seen>Mon, 11 May 2026 07:00:55 +0200</ext:first_seen>
       <ext:starts_at>Mon, 11 May 2026 11:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 71 kann die Haltestelle Molitorgasse in Fahrtrichtung Kaiserebersdorf nicht einhalten. [Am 11.05.2026]</description>
-      <content:encoded><![CDATA[Die Linie 71 kann die Haltestelle Molitorgasse in Fahrtrichtung Kaiserebersdorf nicht einhalten.<br/>[Am 11.05.2026]]]></content:encoded>
+      <ext:ends_at>Tue, 12 May 2026 01:20:00 +0200</ext:ends_at>
+      <description>Die Linie 71 kann die Haltestelle Molitorgasse in Fahrtrichtung Kaiserebersdorf nicht einhalten. [11.05.2026 – 12.05.2026]</description>
+      <content:encoded><![CDATA[Die Linie 71 kann die Haltestelle Molitorgasse in Fahrtrichtung Kaiserebersdorf nicht einhalten.<br/>[11.05.2026 – 12.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: Wien Hauptbahnhof ↔ Wien Hütteldorf]]></title>
@@ -115,6 +93,28 @@
       <ext:starts_at>Mon, 11 May 2026 07:39:18 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge … [Seit 11.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge …<br/>[Seit 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
+      <pubDate>Mon, 11 May 2026 07:25:40 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 07:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 07:25:40 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 11.05.2026]</description>
+      <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2348e4c6c8c41f78b8d12eb667cf03af7acccea5299ceb0012bfbc50beea227</guid>
+      <pubDate>Mon, 11 May 2026 04:50:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 05:00:31 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 04:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 01:00:00 +0200</ext:ends_at>
+      <description>Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Frödenplatz. [11.05.2026 – 30.05.2026]</description>
+      <content:encoded><![CDATA[Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Frödenplatz.<br/>[11.05.2026 – 30.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
