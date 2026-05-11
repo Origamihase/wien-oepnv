@@ -6,7 +6,9 @@ name: Update station directory
 #
 # * ÖBB ``Verzeichnis der Verkehrsstationen`` Excel — ``update_station_
 #   directory.py`` downloads the workbook from data.oebb.at on every
-#   run; free open data, no auth.
+#   run, with atomic-write of a cached snapshot to
+#   ``data/oebb-verkehrsstationen.xlsx`` for soft-fail fallback on a
+#   transient outage; free open data, no auth.
 # * Wien OGD ``wienerlinien-ogd-haltestellen``/``-haltepunkte`` CSVs —
 #   ``update_wl_stations.py`` downloads the latest snapshot from
 #   the canonical Wiener Linien OGD host
