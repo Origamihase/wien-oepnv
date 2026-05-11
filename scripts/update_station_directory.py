@@ -142,6 +142,14 @@ DEFAULT_PENDLER_CANDIDATES_PATH = _ROOT / "data" / "pendler_candidates.json"
 DEFAULT_GTFS_STOPS_PATH = _ROOT / "data" / "gtfs" / "stops.txt"
 DEFAULT_WL_HALTEPUNKTE_PATH = _ROOT / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_VOR_STOPS_PATH = _ROOT / "data" / "vor-haltestellen.csv"
+# Soft-fail snapshot for the ÖBB workbook — mirrors the pinned-CSV
+# fallback pattern used by WL OGD (PR #1441-#1442) and the VOR
+# haltestellen snapshot, so a transient ``data.oebb.at`` outage no
+# longer zeroes-out a whole weekly cron tick. On every successful
+# download the workbook bytes are atomically written here; on the
+# next download failure ``download_workbook`` falls back to this
+# cached copy (with a warning) before re-raising.
+DEFAULT_CACHED_WORKBOOK_PATH = _ROOT / "data" / "oebb-verkehrsstationen.xlsx"
 REQUEST_TIMEOUT = 30  # seconds
 USER_AGENT = "wien-oepnv station updater " "(https://github.com/Origamihase/wien-oepnv)"
 
@@ -1400,11 +1408,95 @@ def configure_logging(verbose: bool) -> None:
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
-def download_workbook(url: str) -> BytesIO:
+def download_workbook(
+    url: str, cache_path: Path = DEFAULT_CACHED_WORKBOOK_PATH
+) -> BytesIO:
+    """Download the ÖBB workbook from *url* with a cached-snapshot fallback.
+
+    Mirrors the soft-fail pattern used by the other upstream sources in
+    this pipeline:
+
+    * WL OGD (``scripts/update_wl_stations.py:_download_ogd_csv``) —
+      atomic-write to the pinned local CSV on success, read the pinned
+      CSV on failure.
+    * OSM Overpass — circuit-breaker + smoke-check gate, soft-fail
+      to Google Places fallback.
+    * Google Places — credentials-gated, soft-fail on quota.
+
+    Prior to this commit ÖBB was the only fail-fast source — a
+    transient ``data.oebb.at`` outage (CMS migration, CDN issue,
+    weekend maintenance) zeroed out the weekly cron tick with no
+    recovery path. The new behaviour:
+
+    1. Try the download.
+    2. On success, atomic-write the bytes to *cache_path* so the
+       next cron tick has a snapshot to fall back to.
+    3. On failure, read *cache_path* if it exists (with a warning
+       log so the operator sees the upstream went silent).
+    4. On failure with no cache, re-raise the original exception —
+       there is no station directory to refresh.
+
+    The cache file is committed to the repository by the weekly
+    ``update-stations.yml`` auto-commit step (``add_options: "-A"``)
+    so the first cron tick after this lands populates the snapshot
+    automatically.
+    """
     logger.info("Downloading workbook: %s", url)
-    with session_with_retries(USER_AGENT) as session:
-        content = fetch_content_safe(session, url, timeout=REQUEST_TIMEOUT)
-        return BytesIO(content)
+    try:
+        with session_with_retries(USER_AGENT) as session:
+            content = fetch_content_safe(session, url, timeout=REQUEST_TIMEOUT)
+    except Exception as exc:
+        if cache_path.exists():
+            logger.warning(
+                "Failed to download %s (%s); falling back to cached workbook %s",
+                url,
+                exc,
+                cache_path,
+            )
+            return BytesIO(cache_path.read_bytes())
+        logger.error(
+            "Failed to download %s and no cached workbook at %s — the "
+            "station directory cannot be refreshed",
+            url,
+            cache_path,
+        )
+        raise
+
+    # Atomic-cache the successful download for future fallback. A
+    # cache write failure must not break the run that just succeeded;
+    # log and continue.
+    try:
+        _persist_workbook_snapshot(cache_path, content)
+    except OSError as exc:  # pragma: no cover - filesystem-dependent
+        logger.warning(
+            "Could not cache workbook to %s (%s); continuing with the "
+            "downloaded bytes",
+            cache_path,
+            exc,
+        )
+
+    return BytesIO(content)
+
+
+def _persist_workbook_snapshot(cache_path: Path, payload: bytes) -> None:
+    """Atomically persist *payload* to *cache_path*.
+
+    Security profile: *payload* is by contract the public ÖBB
+    ``Verzeichnis der Verkehrsstationen`` XLSX — free open data, no
+    auth, no PII, no secrets. The file is intentionally committed to
+    the repository by the weekly ``update-stations.yml`` auto-commit
+    step so the next cron tick has a fall-back snapshot if the live
+    ``data.oebb.at`` download fails. This mirrors the pinned-CSV
+    pattern already established for ``scripts/update_wl_stations.py
+    :_download_ogd_csv``, ``data/vor-haltestellen.csv`` and the
+    bundled GTFS stops dump. Threading the bytes through a dedicated
+    helper (rather than writing the HTTP-response variable directly
+    at the call site) keeps the cache writer's intent legible and
+    isolates the file-IO from the network-IO data flow.
+    """
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    with atomic_write(cache_path, mode="wb", permissions=0o644) as handle:
+        handle.write(payload)
 
 
 def _normalize_header(value: object | None) -> str:
