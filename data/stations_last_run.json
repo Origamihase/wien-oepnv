@@ -1,42 +1,42 @@
 {
   "diff": {
-    "added": 327,
+    "added": 347,
     "coord_shifted": 0,
-    "removed": 17,
+    "removed": 7,
     "renamed": 0
   },
   "polygon_vertices": 5637,
   "stations": {
-    "after": 506,
+    "after": 536,
     "before": 196,
-    "delta": 310
+    "delta": 340
   },
   "sub_scripts": [
     {
-      "duration_s": 24.91,
+      "duration_s": 16.33,
       "exit_code": 0,
       "name": "update_station_directory.py"
     },
     {
-      "duration_s": 7.04,
+      "duration_s": 6.88,
       "exit_code": 0,
       "name": "update_wl_stations.py"
     },
     {
-      "duration_s": 19.47,
+      "duration_s": 19.32,
       "exit_code": 0,
       "name": "enrich_station_aliases.py"
     }
   ],
-  "timestamp": "2026-05-11T10:07:50+00:00",
+  "timestamp": "2026-05-11T10:55:18+00:00",
   "validation": {
     "alias_issues": 0,
     "coordinate_issues": 2,
-    "cross_station_id_issues": 13425,
+    "cross_station_id_issues": 13300,
     "duplicates": 1,
     "gtfs_issues": 0,
     "naming_issues": 30,
     "provider_issues": 0,
-    "security_issues": 156
+    "security_issues": 112
   }
 }

@@ -1,13 +1,14 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-11T10:07:50+00:00_
+_Generated: 2026-05-11T10:55:18+00:00_
 
-**Stations: 196 → 506 (Δ +310)**
+**Stations: 196 → 536 (Δ +340)**
 
-## Added (327)
+## Added (347)
 
 - `bst:960200002` — Wien Achengasse \(WL\)
 - `bst:960200008` — Wien Afritschgasse \(WL\)
+- `bst:960200009` — Wien Agavenweg \(WL\)
 - `bst:960200011` — Wien Aignerstraße \(WL\)
 - `bst:960200012` — Wien Auf der Schmelz \(WL\)
 - `bst:960200014` — Wien Alaudagasse \(WL\)
@@ -21,7 +22,10 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960200075` — Wien Apostelgasse \(WL\)
 - `bst:960200079` — Wien Argentinierstraße \(WL\)
 - `bst:960200082` — Wien Arndtstraße \(WL\)
+- `bst:960200099` — Wien Augasse \(WL\)
+- `bst:960200101` — Wien Aumannplatz \(WL\)
 - `bst:960200102` — Wien Autokaderstraße \(WL\)
+- `bst:960200103` — Wien Aßmayergasse \(WL\)
 - `bst:960200104` — Wien Bacherplatz \(WL\)
 - `bst:960200107` — Wien Rettichgasse \(WL\)
 - `bst:960200121` — Wien Benatzkygasse \(WL\)
@@ -39,6 +43,7 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960200206` — Wien Celtesgasse \(WL\)
 - `bst:960200207` — Wien Hafen Freudenau \(WL\)
 - `bst:960200208` — Wien Chimanistraße \(WL\)
+- `bst:960200211` — Wien Columbusplatz \(WL\)
 - `bst:960200214` — Wien Corvinusgasse \(WL\)
 - `bst:960200217` — Wien Czartoryskigasse \(WL\)
 - `bst:960200218` — Wien Dahliengasse \(WL\)
@@ -47,6 +52,7 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960200225` — Wien Davidgasse \(WL\)
 - `bst:960200233` — Wien Dommayergasse \(WL\)
 - `bst:960200239` — Wien Dopschstraße \(WL\)
+- `bst:960200246` — Wien Ring, Volkstheater \(WL\)
 - `bst:960200249` — Wien Draugasse \(WL\)
 - `bst:960200250` — Wien Dunantgasse \(WL\)
 - `bst:960200257` — Wien Eberstorferweg \(WL\)
@@ -63,6 +69,7 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960200292` — Wien Eslarngasse \(WL\)
 - `bst:960200293` — Wien Esterházygasse \(WL\)
 - `bst:960200294` — Wien Etrichstraße \(WL\)
+- `bst:960200295` — Wien Daumegasse \(WL\)
 - `bst:960200296` — Wien Evangelischer Friedhof \(WL\)
 - `bst:960200300` — Wien Fasangasse \(WL\)
 - `bst:960200305` — Wien Felmayergasse \(WL\)
@@ -84,6 +91,7 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960200410` — Wien Gobergasse \(WL\)
 - `bst:960200411` — Wien Goethehof \(WL\)
 - `bst:960200412` — Wien Gogolgasse \(WL\)
+- `bst:960200414` — Wien Gotthelfgasse \(WL\)
 - `bst:960200436` — Wien Gumpendorfer Straße \(WL\)
 - `bst:960200448` — Wien Gymnasiumstraße \(WL\)
 - `bst:960200454` — Wien Doderergasse \(WL\)
@@ -93,12 +101,14 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960200463` — Wien 11. Haidequerstraße \(WL\)
 - `bst:960200464` — Wien 7. Haidequerstraße \(WL\)
 - `bst:960200471` — Wien Empergergasse \(WL\)
+- `bst:960200472` — Wien Lützowgasse \(WL\)
 - `bst:960200489` — Wien Hawlicekgasse \(WL\)
 - `bst:960200520` — Wien Hietzing \(WL\)
 - `bst:960200548` — Wien Hopfengasse \(WL\)
 - `bst:960200551` — Wien Hoßplatz \(WL\)
 - `bst:960200555` — Wien Huflattichweg \(WL\)
 - `bst:960200559` — Wien Husarenweg \(WL\)
+- `bst:960200565` — Wien Hämmerlegasse \(WL\)
 - `bst:960200570` — Wien Hödlgasse \(WL\)
 - `bst:960200574` — Wien Illgasse \(WL\)
 - `bst:960200579` — Wien Invalidensiedlung \(WL\)
@@ -117,14 +127,17 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960200665` — Wien Kempfengerngasse \(WL\)
 - `bst:960200666` — Wien Keplerplatz \(WL\)
 - `bst:960200668` — Wien Kerbelgasse \(WL\)
+- `bst:960200669` — Wien Familienplatz \(WL\)
 - `bst:960200671` — Wien Lemböckgasse \(WL\)
 - `bst:960200672` — Wien Keylwerthgasse \(WL\)
 - `bst:960200673` — Wien Khevenhüllerstraße \(WL\)
 - `bst:960200674` — Wien Khleslplatz \(WL\)
 - `bst:960200677` — Wien Kinskygasse, Rossakgasse \(WL\)
+- `bst:960200692` — Wien Gürtelbrücke \(WL\)
 - `bst:960200693` — Wien Lehenstraße \(WL\)
 - `bst:960200696` — Wien Kohlgasse \(WL\)
 - `bst:960200703` — Wien Dirmhirngasse \(WL\)
+- `bst:960200705` — Wien Koppstraße, Thaliastraße \(WL\)
 - `bst:960200711` — Wien KGV Alsrückenweg \(WL\)
 - `bst:960200719` — Wien Röntgengasse \(WL\)
 - `bst:960200732` — Wien Kutschkergasse \(WL\)
@@ -153,6 +166,7 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960200952` — Wien Nästlbergergasse \(WL\)
 - `bst:960200957` — Wien Oriongasse \(WL\)
 - `bst:960200967` — Wien Orchisgasse \(WL\)
+- `bst:960200975` — Wien Oper, Karlsplatz \(WL\)
 - `bst:960200978` — Wien Oskar-Simony-Straße \(WL\)
 - `bst:960200980` — Wien Oswald-Redlich-Straße \(WL\)
 - `bst:960200984` — Wien Attemsgasse \(WL\)
@@ -202,6 +216,7 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960201215` — Wien Scottgasse \(WL\)
 - `bst:960201223` — Wien Selma-Lagerlöf-Gasse \(WL\)
 - `bst:960201227` — Wien Seuttergasse \(WL\)
+- `bst:960201229` — Wien Shuttleworthstraße \(WL\)
 - `bst:960201230` — Wien Sibeliusstraße \(WL\)
 - `bst:960201231` — Wien Sickenberggasse \(WL\)
 - `bst:960201246` — Wien Promenadeweg \(WL\)
@@ -227,10 +242,13 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960201394` — Wien Tscherttegasse \(WL\)
 - `bst:960201395` — Wien Tullnertalgasse \(WL\)
 - `bst:960201396` — Wien Twarochgasse \(WL\)
+- `bst:960201397` — Wien Türkenschanzplatz \(WL\)
 - `bst:960201399` — Wien Ulanenweg \(WL\)
 - `bst:960201400` — Wien Ulmenstraße \(WL\)
 - `bst:960201401` — Wien Bambergergasse \(WL\)
+- `bst:960201403` — Wien Unfallkrankenhaus Meidling \(WL\)
 - `bst:960201412` — Wien Uranusweg \(WL\)
+- `bst:960201413` — Wien Urban-Loritz-Platz \(WL\)
 - `bst:960201416` — Wien Utendorfgasse \(WL\)
 - `bst:960201417` — Wien Gebirgsgasse \(WL\)
 - `bst:960201418` — Wien Valiergasse \(WL\)
@@ -253,6 +271,7 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960201500` — Wien Wohnpark Lobau \(WL\)
 - `bst:960201507` — Wien Haßlwanderweg \(WL\)
 - `bst:960201513` — Wien Zallingergasse \(WL\)
+- `bst:960201516` — Wien Serpentingasse \(WL\)
 - `bst:960201524` — Wien Indigoweg \(WL\)
 - `bst:960201534` — Wien Zifferergasse \(WL\)
 - `bst:960201537` — Wien Zschokkegasse \(WL\)
@@ -321,6 +340,7 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960201878` — Wien Pichlgasse \(WL\)
 - `bst:960201881` — Wien Welthandelsplatz \(WL\)
 - `bst:960201890` — Wien Ignaz-Köck-Straße \(WL\)
+- `bst:960201891` — Wien Taborstraße \(WL\)
 - `bst:960201893` — Wien Krieau \(WL\)
 - `bst:960201912` — Wien Hlawkagasse \(WL\)
 - `bst:960201929` — Wien Käthe-Recheis-Gasse \(WL\)
@@ -334,25 +354,15 @@ _Generated: 2026-05-11T10:07:50+00:00_
 - `bst:960205133` — Wien Vösendorf-Siebenhirten \(WL\)
 - `bst:960251359` — Wien Sofienalpenstraße, Roßkopfgasse \(WL\)
 
-## Removed (17)
+## Removed (7)
 
-- `bst:1205` — Wien Liesing
-- `bst:1266` — Wien Leopoldau
-- `bst:1349` — Wien Matzleinsdorfer Platz
 - `bst:2095` — Wien Erzherzog Karl-Straße
-- `bst:2444` — Wien Franz-Josefs-Bahnhof
-- `bst:2446` — Wien Spittelau
-- `bst:2511` — Wien Westbahnhof
 - `bst:2968384` — Wien Wolf in der Au
 - `bst:400` — Wien Brünner Straße
 - `bst:4407597` — Wien Stadlau
-- `bst:857` — Wien Hernals
 - `bst:900101` — Wien Karlsplatz
-- `bst:900102` — Wien Mitte-Landstraße
 - `bst:900103` — Wien Schottentor
 - `bst:900104` — Wien Stephansplatz
-- `bst:901` — Wien Heiligenstadt
-- `bst:904` — Wien Gersthof
 
 ## Renamed (0)
 
