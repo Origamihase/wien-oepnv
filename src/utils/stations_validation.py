@@ -762,44 +762,35 @@ def _find_provider_issues(
 def _find_naming_issues(
     stations: Sequence[Mapping[str, object]]
 ) -> Iterator[NamingIssue]:
-    """Validate canonical-name policy and flag-consistency invariants.
+    """Validate flag-consistency invariants.
 
-    Three checks:
+    Two checks (was three pre-2026-05-12):
 
-    1. **Uniqueness** – the ``name`` field is the canonical display label
-       for a station and must not be shared between two distinct entries.
-    2. **Source-field formatting** – the comma-separated provider source
+    1. **Source-field formatting** – the comma-separated provider source
        string must not contain whitespace inside tokens (e.g.
        ``"google_places, vor"``). Whitespace breaks naive ``==``-based
        lookup branches and signals an unnormalized write path.
-    3. **Vienna/pendler mutual exclusivity** – ``in_vienna`` and ``pendler``
+    2. **Vienna/pendler mutual exclusivity** – ``in_vienna`` and ``pendler``
        partition the directory: every entry is *either* inside the city
        limits *or* a commuter-belt station outside, never both. The
        exceptions are ``type: manual_foreign_city`` (München, Roma) and
        ``type: manual_distant_at`` (Salzburg, Graz, Linz etc.) where
        both flags may legitimately be ``false``.
-    """
-    name_to_identifiers: dict[str, list[str]] = defaultdict(list)
-    for entry in stations:
-        name_obj = entry.get("name")
-        if not isinstance(name_obj, str):
-            continue
-        name = name_obj.strip()
-        if not name:
-            continue
-        name_to_identifiers[name].append(_format_identifier(entry))
 
-    for name, identifiers in name_to_identifiers.items():
-        if len(identifiers) > 1:
-            for identifier in identifiers:
-                yield NamingIssue(
-                    identifier=identifier,
-                    name=name,
-                    reason=(
-                        f"canonical name {name!r} is not unique "
-                        f"(also used by {', '.join(other for other in identifiers if other != identifier)})"
-                    ),
-                )
+    The pre-2026-05-12 canonical-name uniqueness check has been
+    removed. ``name`` is the operator-facing display label, not a
+    primary key; structured identifiers (``wl_diva``, ``bst_id``,
+    ``vor_id``, ``bst_code``) carry the project's eindeutigkeits-
+    Garantie. Wiener Linien's OGD-Echtzeit ``PlatformText`` is
+    legitimately duplicated for the ten remaining non-mergeable
+    multi-DIVA groups (Lokalbahn × 4, Bahnhof × 2, etc.); blocking
+    them on name-uniqueness produced exactly the RSS feed clutter
+    (``Wien Bahnhof (WL 60205022)``) that the disambiguation work
+    in PR #1448 had to introduce. Removing the gate lets the
+    upstream ``_disambiguate_duplicate_names`` step retire too, so
+    the published feed shows ``Wien Bahnhof (WL)`` without a DIVA
+    suffix.
+    """
 
     for entry in stations:
         source = entry.get("source")

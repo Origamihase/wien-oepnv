@@ -505,13 +505,19 @@ def test_build_wl_entries_merges_colocated_haltestellen(tmp_path: Path) -> None:
     assert "(WL 6" not in str(merged["name"])
 
 
-def test_build_wl_entries_keeps_disambiguated_far_apart_haltestellen(
+def test_build_wl_entries_does_not_suffix_far_apart_duplicate_names(
     tmp_path: Path,
 ) -> None:
     """Two haltestellen with the same canonical name but haltepunkte
-    >150 m apart stay as two entries (multi-modal at venue or
-    generic-name coincidence). The DIVA-suffix disambiguation kicks
-    in instead.
+    >150 m apart stay as two SEPARATE entries — and (after 2026-05-12)
+    keep the un-suffixed ``Wien <PlatformText> (WL)`` display label.
+
+    The DIVA suffix disambiguation introduced by PR #1448 was retired
+    together with the validator's canonical-name uniqueness check:
+    structured identifiers (``wl_diva``) carry the eindeutigkeits-
+    Garantie, so the operator-facing display label can stay clean for
+    the RSS feed even when the same ``PlatformText`` legitimately
+    appears at two physical locations.
     """
     haltestellen_path = tmp_path / "haltestellen.csv"
     haltestellen_path.write_text(
@@ -534,56 +540,13 @@ def test_build_wl_entries_keeps_disambiguated_far_apart_haltestellen(
 
     assert len(entries) == 2
     names = sorted(str(e["name"]) for e in entries)
-    assert names == [
-        "Wien Bahnhof (WL 60205022)",
-        "Wien Bahnhof (WL 60205201)",
-    ]
-
-
-def test_build_wl_entries_disambiguates_duplicate_canonical_names(
-    tmp_path: Path,
-) -> None:
-    """When two WL haltestellen share the same ``PlatformText`` (real-world
-    Wiener Linien data shape — 21 such cases including ``Lokalbahn`` × 4,
-    ``Bahnhof`` × 2, ``Berggasse`` × 2 separated by 12.7 km), the canonical
-    name is disambiguated by appending the DIVA inside the ``(WL)`` suffix.
-    The un-disambiguated natural name stays in ``aliases`` so free-text
-    name lookups continue to work.
-    """
-    haltestellen_path = tmp_path / "haltestellen.csv"
-    haltestellen_path.write_text(
-        "DIVA;PlatformText;Municipality;MunicipalityID;Longitude;Latitude\n"
-        "60205022;Bahnhof;Wien;49000001;16.269738;48.007784\n"
-        "60205201;Bahnhof;Wien;49000001;16.314052;48.087007\n"
-        "60200657;Karlsplatz;Wien;49000001;16.368948;48.200955\n",
-        encoding="utf-8",
+    assert names == ["Wien Bahnhof (WL)", "Wien Bahnhof (WL)"], (
+        "Two physical stops sharing a PlatformText must keep the same "
+        "un-suffixed canonical display label. Their structured "
+        "wl_diva fields disambiguate them at the data layer."
     )
-    haltepunkte_path = tmp_path / "haltepunkte.csv"
-    haltepunkte_path.write_text(
-        "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
-        "1;60205022;Bahnhof;Wien;49000001;16.269738;48.007784\n"
-        "2;60205201;Bahnhof;Wien;49000001;16.314052;48.087007\n"
-        "3;60200657;Karlsplatz;Wien;49000001;16.368948;48.200955\n",
-        encoding="utf-8",
-    )
-
-    haltestellen = update_wl_stations.load_haltestellen(haltestellen_path)
-    haltepunkte = update_wl_stations.load_haltepunkte(haltepunkte_path)
-    entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
-
-    assert len(entries) == 3
-    by_diva = {str(e["wl_diva"]): e for e in entries}
-
-    # Both "Bahnhof" entries get disambiguated names containing their DIVA
-    assert by_diva["60205022"]["name"] == "Wien Bahnhof (WL 60205022)"
-    assert by_diva["60205201"]["name"] == "Wien Bahnhof (WL 60205201)"
-    # The un-disambiguated natural name is preserved in aliases for search
-    bahnhof_1_aliases = cast(list[str], by_diva["60205022"]["aliases"])
-    bahnhof_2_aliases = cast(list[str], by_diva["60205201"]["aliases"])
-    assert "Wien Bahnhof (WL)" in bahnhof_1_aliases
-    assert "Wien Bahnhof (WL)" in bahnhof_2_aliases
-    # Unique names (Karlsplatz) are left untouched
-    assert by_diva["60200657"]["name"] == "Wien Karlsplatz (WL)"
+    divas = sorted(str(e["wl_diva"]) for e in entries)
+    assert divas == ["60205022", "60205201"]
 
 
 def test_build_wl_entries_auto_promotes_outside_station_to_pendler() -> None:

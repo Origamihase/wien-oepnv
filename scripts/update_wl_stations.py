@@ -661,7 +661,15 @@ def build_wl_entries(
         entries.append(entry)
     entries.sort(key=lambda item: (str(item.get("name")), str(item.get("wl_diva"))))
     entries = _merge_colocated_duplicates(entries)
-    _disambiguate_duplicate_names(entries)
+    # ``_disambiguate_duplicate_names`` retired 2026-05-12. The
+    # stations validator no longer enforces canonical-name uniqueness
+    # (PR after #1451) — structured identifiers (``wl_diva``,
+    # ``bst_id``, ``vor_id``) carry the project's
+    # eindeutigkeits-Garantie. The canonical display name stays
+    # ``Wien <PlatformText> (WL)`` for every WL haltestelle, even when
+    # the same PlatformText is shared by another DIVA, so the RSS
+    # feed renders ``Wien Bahnhof (WL)`` cleanly instead of the
+    # ``Wien Bahnhof (WL 60205022)`` DIVA suffix that pre-existed.
     return entries
 
 
@@ -857,63 +865,6 @@ def _merge_entry_group(group: list[dict[str, object]]) -> dict[str, object]:
         merged["pendler"] = not bool(merged["in_vienna"])
 
     return merged
-
-
-def _disambiguate_duplicate_names(entries: list[dict[str, object]]) -> None:
-    """Append the wl_diva to ``name`` whenever two or more entries would
-    otherwise share the same canonical name.
-
-    Wiener Linien's OGD-Echtzeit ``PlatformText`` is not a globally
-    unique identifier: 21 names (e.g. ``Lokalbahn`` × 4, ``Bahnhof`` × 2,
-    ``Berggasse`` × 2 separated by 12.7 km) appear on more than one
-    haltestelle DIVA. The stations validator's
-    ``_find_naming_issues`` correctly flags these as canonical-name
-    duplicates and the auto-quarantine path would otherwise eject them
-    from ``data/stations.json`` — losing real Wiener Linien stops that
-    happen to share a generic PlatformText.
-
-    This pass disambiguates **in place** by appending the DIVA inside
-    the existing ``(WL)`` suffix (so the canonical name reads
-    ``Wien Bahnhof (WL 60205022)`` rather than the verbose
-    ``Wien Bahnhof (WL) [60205022]``). The original un-suffixed name is
-    preserved in the entry's ``aliases`` list so name-based lookups
-    (``station_info``, free-text extraction) continue to work — the
-    alias may legitimately match more than one station, and the
-    existing ``_station_lookup`` strength-resolution rules handle that.
-
-    The pass is a no-op for entries whose name is already unique, so
-    the common case (1782 of 1803 entries on the current OGD CSV) is
-    unaffected — only the 21 multi-DIVA names pick up the DIVA suffix.
-    """
-    from collections import Counter
-
-    name_counts = Counter(
-        str(entry.get("name") or "")
-        for entry in entries
-    )
-    for entry in entries:
-        original_name = str(entry.get("name") or "")
-        if not original_name or name_counts[original_name] <= 1:
-            continue
-        diva = str(entry.get("wl_diva") or "").strip()
-        if not diva:
-            continue
-        # Replace a trailing ``(WL)`` with ``(WL <diva>)``; if the
-        # suffix is absent (defensive: every WL canonical name carries
-        # it via ``_canonical_name``), append the disambiguator inline.
-        disambiguated = re.sub(
-            r"\s*\(WL\)\s*$", f" (WL {diva})", original_name
-        )
-        if disambiguated == original_name:
-            disambiguated = f"{original_name} (WL {diva})"
-        entry["name"] = disambiguated
-        # Preserve the un-disambiguated name in aliases so existing
-        # free-text and name-based lookups still resolve the entry.
-        aliases_obj = entry.get("aliases")
-        if isinstance(aliases_obj, list):
-            if original_name not in aliases_obj:
-                aliases_obj.append(original_name)
-            aliases_obj.sort()
 
 
 def _normalize_sources(value: object | None) -> list[str]:
