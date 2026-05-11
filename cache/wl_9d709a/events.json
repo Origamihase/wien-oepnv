@@ -338,18 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Verkehrsüberlastung",
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7",
-    "pubDate": "2026-05-11T08:13:00+02:00",
-    "starts_at": "2026-05-11T08:13:00+02:00",
-    "ends_at": "2026-05-11T23:55:00+02:00",
-    "_identity": "wl|störung|L=16A|D=2026-05-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -466,30 +454,6 @@
     "starts_at": "2026-05-09T00:00:22+02:00",
     "ends_at": "2026-05-11T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-05-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Verkehrsunfall",
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033",
-    "pubDate": "2026-05-11T08:28:00+02:00",
-    "starts_at": "2026-05-11T08:28:00+02:00",
-    "ends_at": "2026-05-11T09:17:00+02:00",
-    "_identity": "wl|störung|L=48A|D=2026-05-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60A: Verkehrsüberlastung",
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c324aeb68aff0a13a99697bafb1720b1552500ec06ceef7ada487c69aa2ddcf",
-    "pubDate": "2026-05-11T08:14:00+02:00",
-    "starts_at": "2026-05-11T08:14:00+02:00",
-    "ends_at": "2026-05-11T23:55:00+02:00",
-    "_identity": "wl|störung|L=60A|D=2026-05-11"
   },
   {
     "source": "Wiener Linien",
