@@ -481,12 +481,32 @@ def build_wl_entries(
         aliases = {station.name}
         stops_payload = []
         for stop in stops:
-            aliases.add(stop.name)
-            aliases.add(stop.stop_id)
+            # Sanitise the WL ``StopText`` direction marker ('>' is in
+            # ``_UNSAFE_CHARS_RE`` of the stations validator because it
+            # is an XSS-relevant character at HTML / Markdown render
+            # time). Replace with U+2192 (→) — typographically correct
+            # for "Richtung X", outside the unsafe-char regex, and it
+            # preserves direction information for the operator-facing
+            # alias permutations built downstream by ``_alias_variants``.
+            stop_name = stop.name.replace(">", "→") if isinstance(stop.name, str) else stop.name
+            aliases.add(stop_name)
+            # Skip short ``stop_id`` values: in the legacy
+            # ``data.wien.gv.at`` proxy CSV ``STOP_ID`` was an 8-digit
+            # RBL-Nummer (semantic Echtzeit-Anker, useful as alias). In
+            # the canonical ``wienerlinien.at`` OGD-Echtzeit CSV
+            # ``StopID`` collapsed to a small in-CSV row counter (1, 2,
+            # 3, …) with no cross-system meaning. Adding those tiny
+            # values as aliases collides with ÖBB ``bst_id`` values
+            # like 1660 (Parndorf) / 1103 (Kittsee) / 400 (Wien Brünner
+            # Straße) and trips ``_find_cross_station_id_conflicts`` →
+            # auto-quarantine. Length cap keeps the legacy 8-digit RBL
+            # alias path working.
+            if isinstance(stop.stop_id, str) and len(stop.stop_id) >= 6:
+                aliases.add(stop.stop_id)
             stops_payload.append(
                 {
                     "stop_id": stop.stop_id,
-                    "name": stop.name,
+                    "name": stop_name,
                     "latitude": stop.latitude,
                     "longitude": stop.longitude,
                 }
