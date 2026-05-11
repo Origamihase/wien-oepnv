@@ -1,3 +1,130 @@
+## 2026-05-11 - Trojan-Source BiDi Drift Round 11 (Places Quota + VOR Request Count + Cache Heartbeat Sidecars): `MonthlyQuota.save_atomic` (`data/places_quota.json`), `save_request_count`'s Atomic Write (`data/vor_request_count.json`), and `write_status` (`cache/<provider>/last_run.json`) Were the Three Sibling Writers the Round-10 Closing-Checklist Named But Deferred
+
+**Vulnerability:** Round 10 (PR #1435) closed `_save_state`
+(`data/first_seen.json`) and the orchestrator heartbeat
+(`data/stations_last_run.json`). The Round-10 closing checklist's
+"Named but deferred" list explicitly identified three sibling writers
+in the same operator-facing JSON sidecar family — all three still
+using `ensure_ascii=False`:
+
+  1. `src/places/quota.py:MonthlyQuota.save_atomic` →
+     `data/places_quota.json`. Committed to `main` by
+     `.github/workflows/update-google-places-stations.yml:160`
+     (`git add data/places_quota.json`). The dataclass serialises
+     `month_key`, `daily_key` (both `str` fields), `counts`, `total`
+     and `daily_total`. Today `daily_key` / `month_key` are populated
+     from internal helpers (`current_daily_key` /
+     `current_month_key` return safe ASCII), but the schema is
+     dictionary-shaped and forward-compatible.
+  2. `src/providers/vor.py:save_request_count` line 1562 (pre-fix) →
+     `data/vor_request_count.json`. Used
+     `json.dump(payload, handle, ensure_ascii=False)` inline. The
+     payload is `{"date": <ISO date>, "requests": <int>}` today, but
+     the file is committed by both `update-vor-cache.yml` (line 97)
+     and `update-stammstrecke-status.yml` (line 96).
+  3. `src/utils/cache.py:write_status` → `cache/<provider>/last_run.json`.
+     Committed by `update-vor-cache.yml` (line 96) via
+     `file_pattern: cache/vor*/last_run.json`. Used
+     `json.dump(status, fh, ensure_ascii=False, indent=2,
+     sort_keys=True)`. Callers (e.g.
+     `scripts/update_vor_cache.py:_record_status`) build the payload
+     from runtime state — a future provider-reported error fragment or
+     station name would flow through unchanged.
+
+**Threat model:**
+
+  1. Attacker compromises an upstream provider (cache poisoning, DNS
+     hijack of an unpinned upstream, leaked CI secret store) or an
+     operator mis-edits the on-disk sidecar.
+  2. A planted value carrying U+202E (RLO) or any other primitive in
+     the canonical CVE-2021-42574 union (BiDi controls
+     U+202A-U+202E / U+2066-U+2069, zero-width primitives
+     U+200B-U+200F, Unicode line/paragraph separators
+     U+2028-U+2029, BOM U+FEFF, C1 controls `\x9b` CSI / `\x9d`
+     OSC / `\x90` DCS) reaches the writer.
+  3. `ensure_ascii=False` emits the primitive as its raw UTF-8 byte
+     triplet — e.g. `\xe2\x80\xae` for U+202E — verbatim into the
+     on-disk file.
+  4. The respective workflow commits the file to `main`. Operator
+     reviewing via `cat` / `less` / `git diff` / GitHub web UI / IDE
+     preview sees the BiDi-reversed display, hiding the attack.
+
+Even though today's payloads carry only safe scalar values
+(integers + ISO dates + hard-coded status tokens), the writer-shape
+contract MUST be `ensure_ascii=True` regardless — the defence is
+forward-compatible against future schema-drift additions, mirroring
+the Round 9/10 invariant for `_write_quarantine_file`, `_save_state`
+and `_write_heartbeat_file`.
+
+**Reproduced:** `tests/test_sentinel_quota_status_trojan_source.py`
+contains 70 PoC tests:
+
+  * 1 + 21 (parametrised) + 1 for the quota writer
+    (`MonthlyQuota.save_atomic`).
+  * 1 + 21 + 1 for the extracted VOR writer
+    (`_write_request_count_file`).
+  * 1 + 21 + 1 + 1 for `write_status` (the extra is a German
+    round-trip via the `ü` escape).
+
+Pre-fix repro: `daily_key="2026-05-10‮moc.live"` produced an
+`data/places_quota.json` with raw bytes `... 0\xe2\x80\xaemoc.live ...`.
+Post-fix: `‮` (6 ASCII bytes) instead of `\xe2\x80\xae` (3 raw
+bytes), no BiDi trigger in any viewer.
+
+**Fix:**
+
+  * `src/places/quota.py:MonthlyQuota.save_atomic`: flip
+    `ensure_ascii=False` → `ensure_ascii=True` at the `json.dump`
+    site. The method already lived in a centralised helper shape so
+    no extraction was needed.
+  * `src/utils/cache.py:write_status`: same one-line flip; the
+    function was already a centralised helper.
+  * `src/providers/vor.py`: extract the inline `atomic_write` block
+    from `save_request_count` (lines 1582-1588 pre-fix) into a new
+    `_write_request_count_file(path, payload)` helper that uses
+    `ensure_ascii=True`. Mirrors the Round 10
+    `_write_heartbeat_file` extraction pattern so the canonical
+    fix-shape lives in exactly one place per writer family.
+
+**Learning:** the Round-10 closing-checklist's "Named but deferred"
+list correctly predicted every site that needed the next round's
+fix. The deferred set is the canonical seed for the next drift
+round — the `cache/<provider>/events.json` writer
+(`src/utils/cache.py:write_cache`) remains the sole deferred sidecar
+because of the diff-bloat trade-off (provider-fetched German titles
++ descriptions; switching to `ensure_ascii=True` would massively
+bloat the committed cache diff). That fix needs to pair with a
+normalisation step at the cache-ingestion boundary, not a blanket
+flag flip.
+
+The drift-walker invariant for the `data/*.json` and
+`cache/<provider>/*.json` sidecar family is now uniform:
+
+  * **Closed in this round:** `MonthlyQuota.save_atomic`
+    (`data/places_quota.json`), `_write_request_count_file`
+    (`data/vor_request_count.json`), `write_status`
+    (`cache/<provider>/last_run.json`).
+  * **Already closed:** `_save_state` (`data/first_seen.json`,
+    Round 10), `_write_heartbeat_file`
+    (`data/stations_last_run.json`, Round 10),
+    `_write_quarantine_file` (`data/quarantine.json`, Round 9),
+    `_render_diff_markdown` (`docs/stations_diff.md`, Round 9),
+    `ValidationReport.to_markdown()` (Round 3),
+    `render_feed_health_markdown` / GitHub-Issue body (Round 2),
+    `docs/statistik.md` stats dashboard (Round 1),
+    `data/stats/*.csv` CSV writer, RSS XML writers, sitemap writer,
+    `_escape_env_value` `.env` writer.
+  * **Named but deferred** (out of scope for this round, queued for
+    a dedicated provider-cache sanitisation round):
+    * `cache/<provider>/events.json`
+      (`src/utils/cache.py:write_cache`) — see "Learning" above.
+      The fix shape for this one is NOT a blanket
+      `ensure_ascii=True` flag flip; the next round MUST pair the
+      flag flip with a Trojan-Source primitive scrubber at the
+      ingestion boundary (`read_cache` / provider parsers) so the
+      committed diff stays compact for legitimate German titles
+      while still rejecting the canonical attack-byte union.
+
 ## 2026-05-11 - Trojan-Source BiDi Drift Round 10 (Build-Feed State Cache + Stations Heartbeat): `_save_state` (`data/first_seen.json`) and `_build_heartbeat` Writer (`data/stations_last_run.json`) Were the Sibling-Writer Pair the Round-9 Closing-Checklist Named But Deferred
 
 **Vulnerability:** Round 9 (PR #1434) closed the auto-quarantine

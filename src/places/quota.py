@@ -186,10 +186,25 @@ class MonthlyQuota:
             "daily_key": self.daily_key,
             "daily_total": int(self.daily_total),
         }
-        # Explicitly set 0600 permissions
+        # Explicitly set 0600 permissions.
+        # Security (Trojan-Source / BiDi-Mark Drift Round 11): the file is
+        # operator-facing diagnostic state, committed to ``main`` by the
+        # ``update-google-places-stations.yml`` cron job (see its line 160
+        # ``git add data/places_quota.json``) and reviewed via ``cat`` /
+        # ``less`` / the GitHub web UI / IDE preview. ``ensure_ascii=True``
+        # escapes every non-ASCII code point as a literal ``\uXXXX``
+        # sequence, so a future quota-state field carrying station- /
+        # provider- / environment-controlled content cannot leak the
+        # canonical CVE-2021-42574 Trojan-Source / zero-width / Unicode-
+        # line-terminator / 8-bit C1 union as raw UTF-8 bytes. Mirrors the
+        # canonical fix shape pinned in PR #1434 / PR #1435 for the
+        # sibling ``data/*.json`` sidecar writers (``_write_quarantine_file``,
+        # ``_save_state``, ``_write_heartbeat_file``). Forensic intent is
+        # preserved (``MonthlyQuota.load`` recovers the original string from
+        # the literal escape sequence via ``json.loads``).
         path.parent.mkdir(parents=True, exist_ok=True)
         with atomic_write(path, mode="w", encoding="utf-8", permissions=0o600) as handle:
-            json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)
+            json.dump(payload, handle, ensure_ascii=True, indent=2, sort_keys=True)
             handle.write("\n")
 
     def maybe_reset_month(self) -> bool:

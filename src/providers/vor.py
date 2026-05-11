@@ -413,6 +413,31 @@ REQUEST_COUNT_FILE = _resolve_path(
 )
 
 
+def _write_request_count_file(path: Path, payload: Mapping[str, Any]) -> None:
+    """Atomically write the VOR per-day request-count payload to *path*.
+
+    Security (Trojan-Source / BiDi-Mark Drift Round 11): the file is
+    operator-facing diagnostic state, committed to ``main`` by the
+    ``update-vor-cache.yml`` and ``update-stammstrecke-status.yml`` cron
+    jobs (both list ``data/vor_request_count.json`` in their
+    ``file_pattern``) and reviewed via ``cat`` / ``less`` / the GitHub
+    web UI / IDE preview. ``ensure_ascii=True`` escapes every non-ASCII
+    code point as a literal ``\\uXXXX`` sequence, so a future request-
+    count payload field carrying station- / provider- / environment-
+    controlled content cannot leak the canonical CVE-2021-42574
+    Trojan-Source / zero-width / Unicode-line-terminator / 8-bit C1
+    union as raw UTF-8 bytes. Mirrors the canonical fix shape pinned
+    in PR #1434 / PR #1435 for the sibling ``data/*.json`` sidecar
+    writers (``_write_quarantine_file``, ``_save_state``,
+    ``_write_heartbeat_file``). Forensic intent is preserved
+    (``load_request_count`` recovers the original string from the
+    literal escape via ``json.loads``).
+    """
+    with atomic_write(path, mode="w", encoding="utf-8", permissions=0o600) as handle:
+        json.dump(payload, handle, ensure_ascii=True)
+        handle.write("\n")
+
+
 MAPPING_FILE = _resolve_path(
     _get_env("VOR_STATION_NAME_MAP"), default=DATA_DIR / "vor-haltestellen.mapping.json"
 )
@@ -1555,12 +1580,10 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
 
                         payload = {"date": date_iso, "requests": new_total}
                         try:
-                            # Replaced custom atomic write logic with centralized utility
-                            with atomic_write(
-                                REQUEST_COUNT_FILE, mode="w", encoding="utf-8", permissions=0o600
-                            ) as handle:
-                                json.dump(payload, handle, ensure_ascii=False)
-                                handle.write("\n")
+                            # Centralised atomic + ASCII-safe write —
+                            # see ``_write_request_count_file`` for the
+                            # Trojan-Source threat model.
+                            _write_request_count_file(REQUEST_COUNT_FILE, payload)
                         except OSError:
                             log.critical("Failed to write to request count file. Quota mechanism poisoned.")
                             _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
