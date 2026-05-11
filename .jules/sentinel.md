@@ -1,3 +1,139 @@
+## 2026-05-11 - CodeQL Triage Round: `read_capped_json` / `read_capped_text` Logged Operator-/Caller-Controlled Path Verbatim + `osm_client` NaN-Filter Used The `x != x` Idiom That CodeQL Cannot Statically Recognise
+
+**Vulnerability:** two real-fix items + multiple documented false
+positives surfaced by GitHub Code Scanning (CodeQL) ~3 days after the
+Tag-Character / Variation-Selector round:
+
+  1. **`src/utils/files.py:read_capped_json` / `read_capped_text`** —
+     the WARNING log lines that fire when a file exceeds the size cap
+     interpolated the ``path`` argument via the bare ``%s`` format spec
+     without routing it through the canonical
+     :func:`src.utils.logging.sanitize_log_arg`. CodeQL's
+     ``py/clear-text-logging-sensitive-data`` taint analysis flagged
+     the call site (alerts #1758, #1759) because the ``path`` flows from
+     credential-bearing sources (``CREDENTIALS_DIRECTORY``,
+     ``/run/secrets/X``, env-controlled paths in the secret scanner /
+     env loader / cache reader / Quota reader). Independent of the
+     CodeQL taint flow, the path STRING can itself carry Trojan-Source
+     primitives (BiDi, control bytes, ANSI escapes, the
+     Round-15-closed Tag block + Variation Selectors): a hostile
+     contributor mis-naming a tracked file, a poisoned env var
+     pointing at a planted path, or an operator typo introducing an
+     invisible-tag variant would otherwise leak verbatim into the
+     operator-facing log line + the public ``docs/feed_health.json``
+     artefact + the GitHub-Issue auto-submission.
+
+  2. **`src/places/osm_client.py:611`** — the OSM place-coordinate
+     NaN filter used the historic ``lat != lat or lon != lon`` idiom
+     (true only for NaN). CodeQL's ``py/comparison-of-identical-
+     expressions`` query (warning severity) cannot statically prove
+     the operand is a NaN-capable float and flagged the comparison
+     (alert #1860). The idiom is also opaque to readers who don't
+     know the NaN-test trick. :func:`math.isnan` is the explicit
+     well-known equivalent.
+
+**Threat model:**
+
+  * **(files.py)** A planted upstream payload (provider compromise,
+    operator typo, MITM-injected env var) sets a path like
+    ``data/poisoned\x9b31m_planted.json`` (8-bit CSI SGR primitive) or
+    ``data/‮path.json`` (U+202E RIGHT-TO-LEFT OVERRIDE) — these
+    bytes survive Python's filesystem layer (every byte except NUL
+    and ``/`` is a valid path character). Pre-fix the bytes flow into
+    ``log.warning(... %s ..., path, ...)``, land in
+    ``log/diagnostics.log`` + ``docs/feed_health.json`` + the
+    GitHub-Issue body, and an operator viewing the artefact on an
+    8-bit-C1-honouring terminal triggers SGR colour interpretation
+    (CVE-style log forgery). The U+202E variant inverts the
+    rendered URL path in any Unicode-aware viewer (terminal, GitHub
+    Web UI, RSS feed reader if the path is echoed into an item
+    description). Post-fix the canonical sanitiser strips the
+    primitive at the interpolation boundary.
+
+  * **(osm_client.py)** Defence-in-depth only — the NaN filter
+    rejects malformed coordinates from Overpass / planted OSM
+    payloads. ``math.isnan`` is functionally identical to ``x != x``
+    on Python ``float`` values; the swap is a readability +
+    static-analysis fix, not a behaviour change. The companion
+    inventory test in
+    ``tests/test_sentinel_read_capped_path_log_sanitisation.py``
+    covers the log-sanitisation half; the NaN behaviour is already
+    covered by the OSM client's existing test suite.
+
+**Documented false positives** (deferred to dismissal via the
+GitHub UI; the codebase already carries inline barriers that CodeQL
+does not propagate across function boundaries):
+
+  * **`src/providers/vor.py:1182, 1909, 1914`** — log lines that
+    interpolate ``re.sub(r"[^A-Za-z0-9._:-]", "?", str(station_id))``
+    sanitised values. The whitelist regex IS applied at the
+    immediate log site, but CodeQL does not recognise the
+    ``re.sub`` pattern as a sanitiser. Comments at lines 1900-1903
+    document this prior false-positive analysis.
+  * **`src/feed/reporting.py:991, 1019`** — `response.status_code`
+    is an integer (HTTP status), and `issue_number` is the
+    digit-only regex-extracted issue ID. Both are non-sensitive,
+    but CodeQL flags them because the source ``response`` /
+    ``issue_url`` carry bearer-token-bearing taint.
+  * **`src/utils/stats.py:329`** — ``os.chmod(path, 0o644)`` for
+    the public ``data/stats/<kind>_YYYY.csv`` artefact. The CSV is
+    a committed public-dashboard data source; ``0o644`` is the
+    documented intended design.
+  * **`tests/test_env_loader.py:130`** and
+    **`tests/test_configure_feed_permissions.py:66`** —
+    ``os.chmod(env_file, 0o644)`` in test fixtures that
+    deliberately create a world-readable env file to verify the
+    project's group-/world-readable WARNING detection. Intentional
+    test setup.
+
+**Reproduced:** `tests/test_sentinel_read_capped_path_log_sanitisation.py`
+contains 18 PoC tests:
+
+  * 11 × per-primitive bypass tests for ``read_capped_json``
+    covering RLO, ZWSP, 8-bit C1 CSI / OSC, ESC / BEL, newline /
+    CR, Tag SPACE, VS-1. Pre-fix the path bytes flow into the
+    WARNING log line verbatim; post-fix the sanitiser strips them.
+  * 6 × per-primitive bypass tests for ``read_capped_text`` (the
+    non-JSON sibling reader).
+  * 2 additive-regression invariants: legitimate German content
+    (umlauts ``Größe_Test_Wien``) survives the sanitiser
+    untouched on both helpers.
+
+**Fix:**
+
+  1. ``src/utils/files.py`` — both helpers compute
+     ``safe_path = sanitize_log_arg(str(path))`` once at function
+     entry and interpolate ``safe_path`` (not ``path``) into the two
+     WARNING log lines that fire on size-cap rejection.
+  2. ``src/places/osm_client.py`` — replace ``lat != lat or
+     lon != lon`` with ``math.isnan(lat) or math.isnan(lon)``;
+     ``import math`` added at the canonical position.
+
+**Learning:** CodeQL's ``py/clear-text-logging-sensitive-data`` taint
+analysis is conservative across function boundaries — the ``re.sub``
+whitelist-replace pattern is NOT recognised as a barrier even when
+applied at the immediate log site. The recognised barriers are
+(a) :func:`hashlib.X.hexdigest` (one-way hash), (b) the canonical
+project-wide sanitiser :func:`sanitize_log_arg` (recognised by every
+CodeQL run in this repo), and (c) ``re.match(strict_whitelist, str)``
++ ``.group()`` (extract-from-validated-input, not replace-bad-with-?).
+Future log-sanitisation rounds MUST prefer (b) over inline ``re.sub``
+to break the CodeQL false-positive cycle. The
+``py/comparison-of-identical-expressions`` query is similarly
+conservative on the NaN ``x != x`` idiom — :func:`math.isnan` is the
+explicit equivalent.
+
+  * **Closed in this round:** two real fixes (files.py log
+    sanitisation, osm_client.py NaN idiom).
+  * **Already closed (Round 15):** Tag block + Variation Selector
+    coverage across nine sibling canonical-sanitiser regexes.
+  * **Named but deferred** (out of scope for this round; queued
+    for dismissal at the GitHub Code Scanning UI level): seven
+    false-positive alerts in vor.py + reporting.py + stats.py +
+    test fixtures (see "Documented false positives" above). Each
+    is documented at its source location with a comment
+    explaining the inline barrier + design rationale.
+
 ## 2026-05-11 - Tag-Character / Variation-Selector Drift: Nine Sibling Canonical-Sanitiser Regexes Stopped At The BiDi-Isolate Band (U+2069) + BOM (U+FEFF) — None Covered The Unicode Tag Block (U+E0000-U+E007F) Nor The Variation Selectors (U+FE00-U+FE0F + U+E0100-U+E01EF)
 
 **Vulnerability:** every canonical sanitiser regex in the project

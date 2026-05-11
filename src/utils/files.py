@@ -13,6 +13,8 @@ from pathlib import Path
 from typing import IO, Any
 from collections.abc import Iterator
 
+from .logging import sanitize_log_arg
+
 # Default per-loader byte cap for on-disk JSON files. Sized at ~100x the
 # largest legitimately-written stations.json (~175 KiB) and polygon
 # (~146 KiB) shapes, comfortably below any cron runner's 1 GiB cgroup
@@ -233,6 +235,16 @@ def read_capped_json(
     but yield unbounded bytes on read.
     """
     log = logger if logger is not None else logging.getLogger(__name__)
+    # Security: route the path through the canonical log sanitiser before
+    # interpolation. ``path`` is an operator-/caller-controlled value
+    # (env-resolved, subprocess-listed, or argv-derived) that CodeQL's
+    # ``py/clear-text-logging-sensitive-data`` taint analysis considers
+    # potentially-sensitive when the resolved source carries credentials
+    # (``/run/secrets/X``, ``CREDENTIALS_DIRECTORY``). The sanitiser also
+    # defangs any Trojan-Source / control-character / ANSI-escape primitive
+    # planted in the path name itself before it lands in the operator-facing
+    # log line + the public ``docs/feed_health.json`` artefact.
+    safe_path = sanitize_log_arg(str(path))
     try:
         # Open first so the size check is on the actual inode that
         # ``read()`` will consume — closes the stat/open TOCTOU.
@@ -240,7 +252,7 @@ def read_capped_json(
             if os.fstat(handle.fileno()).st_size > max_bytes:
                 log.warning(
                     "%s file at %s is too large (> %d bytes); treating as missing.",
-                    label, path, max_bytes,
+                    label, safe_path, max_bytes,
                 )
                 return None
             # Defense in depth: bound the read at ``max_bytes + 1`` so a
@@ -251,7 +263,7 @@ def read_capped_json(
             if len(raw) > max_bytes:
                 log.warning(
                     "%s file at %s exceeded %d bytes during read; treating as missing.",
-                    label, path, max_bytes,
+                    label, safe_path, max_bytes,
                 )
                 return None
             payload: object = json.loads(raw)
@@ -293,6 +305,11 @@ def read_capped_text(
     drop the whole file).
     """
     log = logger if logger is not None else logging.getLogger(__name__)
+    # Security: see ``read_capped_json`` for the rationale of routing
+    # ``path`` through ``sanitize_log_arg`` before interpolation. Same
+    # CodeQL clear-text-logging surface, same Trojan-Source defanging
+    # surface, same defence shape.
+    safe_path = sanitize_log_arg(str(path))
     try:
         # Open first so the size check is on the actual inode that
         # ``read()`` will consume — closes the stat/open TOCTOU.
@@ -300,7 +317,7 @@ def read_capped_text(
             if os.fstat(handle.fileno()).st_size > max_bytes:
                 log.warning(
                     "%s file at %s is too large (> %d bytes); treating as missing.",
-                    label, path, max_bytes,
+                    label, safe_path, max_bytes,
                 )
                 return None
             # Defense in depth: bound the read at ``max_bytes + 1`` so a
@@ -310,7 +327,7 @@ def read_capped_text(
             if len(raw) > max_bytes:
                 log.warning(
                     "%s file at %s exceeded %d bytes during read; treating as missing.",
-                    label, path, max_bytes,
+                    label, safe_path, max_bytes,
                 )
                 return None
             return raw.decode(encoding, errors=errors)
