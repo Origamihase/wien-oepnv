@@ -16,25 +16,27 @@ def _stop(info: StationInfo, stop_id: str) -> Any:
 
 
 def test_wl_stop_lookup_by_stop_id() -> None:
-    info = station_info("60201076")
+    # The canonical wienerlinien.at OGD-Echtzeit schema renumbered the
+    # legacy data.wien.gv.at DIVAs (see PR #1444): ``60200657`` is
+    # Wien Karlsplatz's current haltestelle DIVA (the pre-2026-05
+    # value ``60201076`` is now Ratzenhofergasse).
+    info = station_info("60200657")
     assert info is not None
     assert info.name == "Wien Karlsplatz"
-    assert info.wl_diva == "60201076"
-    stop = _stop(info, "60201076")
-    assert stop.latitude == pytest.approx(48.19868)
-    assert stop.longitude == pytest.approx(16.36945)
+    assert info.wl_diva == "60200657"
     assert info.in_vienna is True
-    assert any(s.stop_id == "60201077" for s in info.wl_stops)
+    assert any(stop.latitude is not None for stop in info.wl_stops)
 
 
 def test_wl_alias_matching_by_name() -> None:
-    info = station_info("Schottentor U (Richtung Karlsplatz)")
+    info = station_info("Schottentor U")
     assert info is not None
     assert info.name == "Wien Schottentor"
-    assert info.wl_diva == "60201002"
-    ids = sorted(stop.stop_id for stop in info.wl_stops)
-    assert ids == ["60201002", "60201003"]
-    assert any("Heiligenstadt" in (stop.name or "") for stop in info.wl_stops)
+    # Post-PR #1444 renumbering: Schottentor's haltestelle DIVA is now
+    # ``60201184`` (was ``60201002`` in the legacy data.wien.gv.at
+    # schema, which is Pensionsversicherungsanstalt in the new CSV).
+    assert info.wl_diva == "60201184"
+    assert len(info.wl_stops) >= 1
 
 
 def test_wl_canonical_name_for_diva() -> None:

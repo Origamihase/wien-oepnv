@@ -522,23 +522,28 @@ def build_wl_entries(
         aliases.add(f"Wien {station.name}")
         canonical = _canonical_name(station.name)
         aliases.add(canonical)
-        coords_checked = False
-        in_vienna = False
-        for stop in stops:
-            if stop.latitude is None or stop.longitude is None:
-                continue
-            coords_checked = True
-            if is_in_vienna(stop.latitude, stop.longitude):
-                in_vienna = True
-                break
-        if not coords_checked:
+        latitude, longitude = _aggregate_coordinates(stops)
+        # Compute ``in_vienna`` from the aggregate (mean) coordinates
+        # rather than any-stop-wins, so the flag stays consistent with
+        # the coordinates that will land in the stations.json entry.
+        # Pre-fix variant flipped to True the moment any haltepunkt
+        # fell inside Vienna's polygon, which produced false-positives
+        # for boundary stations: e.g. ``Wien Lohnergasse (WL)`` has
+        # one bahnsteig (8802) at (48.2821, 16.3692) just inside the
+        # polygon and another (8803) at (48.2821, 16.3690) just
+        # outside; the agg mean falls outside, so the entry's coords
+        # would say "outside Vienna" while the flag said "inside" —
+        # exactly the inconsistency that ``test_coordinates_match_in_
+        # vienna_flag`` regression-checks.
+        if latitude is not None and longitude is not None:
+            in_vienna = is_in_vienna(latitude, longitude)
+        else:
             log.warning(
                 "WL station %s (%s) lacks coordinates; falling back to name lookup",
                 station.name,
                 station_identifier,
             )
             in_vienna = is_in_vienna(station.name)
-        latitude, longitude = _aggregate_coordinates(stops)
         vor_entry: Mapping[str, object] | None = None
         if vor_mapping:
             for candidate in (

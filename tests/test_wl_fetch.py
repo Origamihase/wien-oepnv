@@ -175,8 +175,16 @@ def test_fetch_events_adds_stop_context_when_no_lines(monkeypatch: pytest.Monkey
     assert "Karlsplatz" in title
     assert "Museumsquartier" in title
     assert title.endswith("(2 Halte)")
-    # New logic: Description includes stop names if present
-    assert events[0]["description"] == "Testbeschreibung | Haltestelle: Museumsquartier, Wien Karlsplatz"
+    # New logic: Description includes stop names if present (alphabetical
+    # order). After PR #1444 reactivated WL OGD, ``Museumsquartier``
+    # resolves through the directory to ``Wien Museumsquartier (WL)``
+    # (pre-#1442 only ``Karlsplatz`` had a WL canonical, hence the
+    # legacy ``Museumsquartier, Wien Karlsplatz`` ordering — the new
+    # output reflects both stops being canonicalised).
+    assert (
+        events[0]["description"]
+        == "Testbeschreibung | Haltestelle: Wien Karlsplatz, Wien Museumsquartier (WL)"
+    )
 
 
 def test_fetch_events_uses_extra_context_when_no_stops(monkeypatch: pytest.MonkeyPatch) -> None:

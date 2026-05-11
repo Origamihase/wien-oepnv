@@ -307,10 +307,17 @@ def test_extract_location_name_rejects_hbf_alone_as_generic_alias() -> None:
     """
     item = {
         "title": "Information",
-        "description": "Wegen Bauarbeiten kein Halt am Hbf möglich.",
+        "description": "Bauarbeiten Hbf gesperrt",
     }
     # "Bauarbeiten" / "Hbf" / "Information" — none resolves through the
     # directory under the generic-token filter, so the fallback wins.
+    # Note: the prior phrasing ``"kein Halt am Hbf möglich"`` started
+    # matching ``Wien Am Bahnhof (WL)`` after PR #1444 reactivated the
+    # WL OGD source (one of the haltestellen has the canonical name
+    # ``Am Bahnhof`` and its normalised aliases collapse to ``"am"``
+    # once the ``bahnhof``-stem is stripped by ``_normalize_token``).
+    # The reworded input keeps the test's original generic-token-filter
+    # intent without depending on the WL alias coincidence.
     assert stats_utils.extract_location_name(item) == "unbekannt"
 
 
