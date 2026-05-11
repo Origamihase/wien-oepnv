@@ -299,7 +299,7 @@ def test_build_wl_entries_skips_short_stop_ids_to_avoid_oebb_collision(
     entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
 
     assert len(entries) == 1
-    aliases = entries[0]["aliases"]
+    aliases = cast(list[str], entries[0]["aliases"])
     assert "1660" not in aliases, (
         "Short StopID counter values must not leak into aliases — they "
         "would collide with ÖBB bst_id values."
@@ -331,7 +331,7 @@ def test_build_wl_entries_keeps_legacy_rbl_alias(tmp_path: Path) -> None:
     entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
 
     assert len(entries) == 1
-    aliases = entries[0]["aliases"]
+    aliases = cast(list[str], entries[0]["aliases"])
     assert "60201076" in aliases, (
         "Long stop_id values (legacy 8-digit RBL-Nummer) must remain "
         "in the alias set — they are valuable cross-system identifiers."
@@ -368,11 +368,11 @@ def test_build_wl_entries_replaces_unsafe_direction_marker(tmp_path: Path) -> No
 
     assert len(entries) == 1
     entry = entries[0]
-    aliases = entry["aliases"]
-    assert not any(">" in str(a) for a in aliases), (
+    aliases = cast(list[str], entry["aliases"])
+    assert not any(">" in a for a in aliases), (
         "No alias may contain '>' — it is in the validator's unsafe-char regex."
     )
-    assert any("→" in str(a) for a in aliases), (
+    assert any("→" in a for a in aliases), (
         "The direction marker must be replaced with U+2192 (→), not stripped."
     )
 
