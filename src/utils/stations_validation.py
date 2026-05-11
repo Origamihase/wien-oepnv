@@ -639,8 +639,19 @@ def _find_gtfs_issues(
 # ``aliases`` field would otherwise flow through to the GitHub Issue
 # body the directory validator emits and trigger SGR colour
 # interpretation in any 8-bit-C1-honouring terminal that views it.
+# 2026-05-11 "Tag-Character / Variation-Selector Drift": widened in
+# lockstep with the canonical _INVISIBLE_DANGEROUS_RE union to cover
+# the Unicode Tag block (U+E0000..U+E007F), the BMP Variation
+# Selectors (U+FE00..U+FE0F), and the supplementary Variation
+# Selectors (U+E0100..U+E01EF). Tag bytes smuggled into a station
+# name / aliases / bst_code / vor_id field by a compromised upstream
+# slip past the validator and reach the published feed item that
+# keys off the station name.
 _UNSAFE_CHARS_RE = re.compile(
-    r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
+    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\ufe00-\ufe0f\ufeff"
+    r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 
 # Pattern for the synthetic ``bst_id``/``bst_code`` values assigned to

@@ -1,3 +1,172 @@
+## 2026-05-11 - Tag-Character / Variation-Selector Drift: Nine Sibling Canonical-Sanitiser Regexes Stopped At The BiDi-Isolate Band (U+2069) + BOM (U+FEFF) — None Covered The Unicode Tag Block (U+E0000-U+E007F) Nor The Variation Selectors (U+FE00-U+FE0F + U+E0100-U+E01EF)
+
+**Vulnerability:** every canonical sanitiser regex in the project
+shared the same drift: the character class enumerated the
+CVE-2021-42574 BiDi-control family (`U+061C` ALM, `U+200B-U+200F`
+ZWSP-RLM, `U+2028-U+202E` LSEP-RLO, `U+2066-U+2069` LRI-PDI) plus
+the BOM (`U+FEFF`) but stopped there. None of the nine sibling
+regexes extended into plane 14 to cover the **Unicode Tag block**
+(`U+E0000-U+E007F`), and none covered the **Variation Selector**
+ranges (`U+FE00-U+FE0F` BMP + `U+E0100-U+E01EF` supplementary).
+
+The nine closed sites (lockstep widening + canonical inventory
+invariant):
+
+  1. `src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` — the documented
+     always-strip floor that every `strip_control_chars=False`
+     sibling sink inherits.
+  2. `src/utils/logging.py:_CONTROL_CHARS_RE` — the
+     `strip_control_chars=True` (default) path's strip set.
+  3. `src/utils/serialize.py:_TROJAN_SOURCE_PRIMITIVES_RE` — the
+     JSON-sidecar scrubber wired into every committed cache /
+     state / stations / quarantine / heartbeat / quota writer
+     (closed across Rounds 9-14).
+  4. `src/utils/http.py:_UNSAFE_URL_CHARS` — the URL boundary
+     validator that gates every URL flowing into the published RSS
+     feed (`<link>` element), the sitemap, the GitHub-Issue
+     auto-submission API URL, and every outbound
+     `fetch_content_safe` / `request_safe` call.
+  5. `src/utils/stats.py:_CSV_CONTROL_CHARS_RE` — the
+     CSV-formula-injection sanitiser feeding
+     `data/stats/<kind>_YYYY.csv`.
+  6. `src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE` — the
+     Markdown sink sanitiser feeding `data/feed_health.md`,
+     `docs/statistik.md`, and every GitHub-Issue body submitted by
+     `submit_auto_issue`.
+  7. `src/utils/stations_validation.py:_UNSAFE_CHARS_RE` — the
+     `data/stations.json` entry validator (name / aliases /
+     bst_code / vor_id fields).
+  8. `src/build_feed.py:_CONTROL_RE` — the LAST sanitiser before
+     every RSS feed item title / description / time-line + the
+     channel-level `FEED_TITLE` / `FEED_DESC` lands inside
+     `docs/feed.xml`.
+  9. `src/feed/reporting.py:_CONTROL_CHARS_RE` — the
+     reporting-layer mirror of the canonical floor (byte-exact
+     pinned by
+     `tests/test_sentinel_reporting_control_chars_re_canonical_drift.py`).
+
+**Threat model:**
+
+  1. **Unicode Tag block** (`U+E0000-U+E007F`, 128 codepoints) is
+     the canonical "ChatGPT invisible-instruction smuggling"
+     primitive (2024 OpenAI disclosure). Every printable ASCII
+     codepoint `\x20`-`\x7E` has a paired Tag character in
+     `\U000e0020`-`\U000e007E` that renders as **zero-width** in
+     every modern terminal / browser / PDF reader / GitHub Web
+     UI / IDE preview / RSS feed reader. `U+E007F` is CANCEL
+     TAG; `U+E0001` is the deprecated LANGUAGE TAG primitive. A
+     planted upstream payload like
+     `"name": "Hauptbahnhof\U000e0020\U000e0065\U000e0076\U000e0069\U000e006c"`
+     visually renders as `"Hauptbahnhof"` — the
+     tag-character `"·evil"` suffix is invisible — but the bytes
+     reach `cache/<provider>/events.json`,
+     `data/stations.json`, the weekly committed git diff, the
+     public RSS feed `<title>` / `<link>` / `<description>`, the
+     `docs/feed_health.json` artefact published to GitHub Pages,
+     the GitHub-Issue body auto-submitted on every failed run,
+     and the operator's `cat` / `less` / `git log -p` review.
+  2. **BMP Variation Selectors** (`U+FE00-U+FE0F`, 16 codepoints)
+     and **supplementary Variation Selectors**
+     (`U+E0100-U+E01EF`, 240 codepoints) are 4-bit-payload
+     steganographic primitives. The "Sneaky Text" technique
+     encodes 12 bits of hidden data per visible code point by
+     stacking up to three VS markers. Each marker is invisible
+     in every renderer. Apple's emoji renderer is the only
+     legitimate consumer of VS-15 (text presentation) /
+     VS-16 (emoji presentation); every other use is
+     steganographic data hiding. Planted in an exception text or
+     a station name, the markers survive the canonical sanitiser
+     and reach operator-facing log surface + the public
+     `feed_health.json` + every subscribed RSS reader.
+  3. **Public artefact + operator log surface:** the gap is
+     reachable on every committed sidecar, every public RSS
+     feed item, every GitHub-Issue auto-submission, and every
+     `log/diagnostics.log` line — the full set of public
+     artefacts and operator-facing reports that the prior 14
+     rounds closed at the per-character-class level.
+
+**Reproduced:** `tests/test_sentinel_tag_chars_variation_selectors_invisible_drift.py`
+contains 260 PoC tests:
+
+  * 8 × 15 per-code-point bypass tests (8 sibling regexes,
+    excluding the canonical floor itself, × 15 spot-check code
+    points covering the Tag block boundaries, VS-1/VS-16
+    boundaries, and VS-17/VS-256 boundaries).
+  * 7 × 15 end-to-end pipeline tests
+    (`sanitize_log_message` default + strip_disabled,
+    `scrub_trojan_source_primitives`, `_sanitize_text`,
+    `normalise_markdown_text`, `_sanitize_csv_text_field`).
+  * 2 end-to-end PoCs:
+    `test_feed_health_json_does_not_carry_tag_or_vs_primitives`
+    routes a planted tag-character + variation-selector payload
+    through `RunReport.record_exception` →
+    `build_feed_health_payload` → `json.dumps`;
+    `test_validate_http_url_rejects_planted_tag_char_url`
+    routes a tag-character URL through the validator.
+  * 7 inventory invariants enforcing the canonical-floor subset
+    relation for every sibling regex
+    (`test_sibling_regex_covers_canonical_invisible_dangerous_set`)
+    plus a self-pinning test on the canonical floor
+    (`test_canonical_invisible_dangerous_re_covers_full_tag_and_vs_set`).
+  * 2 additive-regression invariants: every pre-fix-covered
+    code point still matches post-fix, and legitimate German
+    content (umlauts + transit emoji) is untouched.
+
+  Pre-fix repro: a malicious station name like
+  `"Hauptbahnhof\U000e0020\U000e0065\U000e0076\U000e0069\U000e006c"`
+  (visible `"Hauptbahnhof"`, invisible `" evil"`) passed every
+  sibling sanitiser unchanged. Post-fix the bytes are stripped
+  at every boundary.
+
+**Fix:** widen each sibling regex to include the union
+`︀-️` (VS-1..VS-16) +
+`\U000e0000-\U000e007f` (Unicode Tag block) +
+`\U000e0100-\U000e01ef` (VS-17..VS-256). The widening is
+mechanically additive: every code point covered pre-fix still
+matches post-fix (regression invariants pinned), and German
+content (umlauts ä/ö/ü/Ä/Ö/Ü + sharp s ß + transit emoji 🚇)
+stays untouched (regression invariants pinned).
+
+**Learning:** the prior 14 rounds of BiDi-Mark Drift closed
+every BiDi-format-control / zero-width / line-terminator /
+8-bit-C1 / DEL primitive, but the canonical-floor union itself
+stopped at the BiDi-isolate band (`U+2069`) plus BOM (`U+FEFF`)
+and never extended into the supplementary planes. The Tag block
+is the canonical AI-era prompt-injection smuggling primitive
+documented by OpenAI in 2024; the Variation Selectors are the
+canonical 4-bit-payload steganographic primitive (Unicode TR50).
+Both classes are documented INVISIBLE in every modern renderer
+and have NO legitimate consumer in any operator-facing surface
+in this project. The inventory invariants pin the canonical-
+floor subset relation programmatically so a future widening of
+the canonical floor MUST be reflected in every sibling validator
+or the test fails until the drift is closed — the same
+closing-checklist invariant the 14 prior BiDi-Mark Drift rounds
+established.
+
+  * **Closed in this round:** nine sibling regexes (full
+    canonical-sanitiser union).
+  * **Already closed (Round 14):** eight script-level station
+    writers via `scrub_trojan_source_primitives`.
+  * **Already closed (Rounds 11-13):** every operator-facing
+    JSON sidecar writer.
+  * **Named but deferred** (out of scope for this round): none
+    in the canonical-sanitiser union. Future drift candidates:
+    * **Hangul Filler block** (`U+115F`, `U+1160`, `U+3164`,
+      `U+FFA0`) — four zero-width Hangul-filler codepoints that
+      render as invisible space. Less impactful than Tag chars
+      / VS (no Trojan-Source attack-shape with established
+      tooling), but every Unicode-15 Hangul-aware renderer
+      treats them as zero-width. Defer to a follow-up round.
+    * **Combining Grapheme Joiner** (`U+034F`) — a zero-width
+      combining mark sometimes abused for cluster-fingerprint
+      smuggling. Defer.
+    * A new sibling regex (new `src/utils/X.py` defence helper)
+      that grows its own char-class union. The Round-15
+      inventory test `test_sibling_regex_covers_canonical_invisible_dangerous_set`
+      pins the current set; the next walker MUST extend it when
+      a new sibling appears.
+
 ## 2026-05-11 - Trojan-Source BiDi Drift Round 14 (Script-Level Station Writers): Seven Sibling `json.dump(..., ensure_ascii=False, ...)` Sinks That Bypass `src/places/merge.py:write_stations` — All Closed Via The Round-12 `scrub_trojan_source_primitives` Helper
 
 **Vulnerability:** Round 13 (PR #1438) closed

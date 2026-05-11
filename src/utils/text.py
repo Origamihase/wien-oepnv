@@ -364,8 +364,21 @@ def html_to_text(s: str, *, collapse_newlines: bool = False) -> str:
 #   * U+2066-U+2069 — LRI / RLI / FSI / PDI BiDi isolates
 #     (CVE-2021-42574 second half).
 #   * U+FEFF — Byte Order Mark / ZWNBSP.
+# 2026-05-11 "Tag-Character / Variation-Selector Drift": widened in
+# lockstep with the canonical _INVISIBLE_DANGEROUS_RE union to cover
+# the Unicode Tag block (U+E0000..U+E007F), the BMP Variation
+# Selectors (U+FE00..U+FE0F), and the supplementary Variation
+# Selectors (U+E0100..U+E01EF). A planted upstream payload carrying
+# tag-character or variation-selector bytes in a station name, error
+# message, or stats field flows through every Markdown sink
+# (docs/feed_health.md, docs/statistik.md, GitHub Issue body) and
+# reaches the rendered Markdown verbatim - a Trojan-Source /
+# steganography / prompt-injection smuggling primitive on every
+# operator-facing report.
 _MARKDOWN_NORMALISE_UNSAFE_RE = re.compile(
-    r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
+    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\ufe00-\ufe0f\ufeff\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 _MARKDOWN_WHITESPACE_RE = re.compile(r"\s+")
 

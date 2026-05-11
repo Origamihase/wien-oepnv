@@ -47,7 +47,8 @@ log = logging.getLogger("build_feed")
 # invariant pinned by
 # ``tests/test_sentinel_reporting_control_chars_re_canonical_drift.py``.
 _CONTROL_CHARS_RE = re.compile(
-    r"[\x00-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"[\x00-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\ufe00-\ufe0f\ufeff\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 
 # Defence-in-depth bounds for error / warning collection. A misbehaving
