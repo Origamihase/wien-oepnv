@@ -32,11 +32,11 @@ def test_download_workbook_writes_cache_on_success(
 
     def fake_session_with_retries(_user_agent: str) -> Any:
         class _DummySession:
-            def __enter__(self) -> "_DummySession":
+            def __enter__(self) -> _DummySession:
                 return self
 
-            def __exit__(self, *_args: Any) -> bool:
-                return False
+            def __exit__(self, *_args: Any) -> None:
+                return None
 
         return _DummySession()
 
@@ -73,11 +73,11 @@ def test_download_workbook_falls_back_to_cache_on_network_failure(
 
     def fake_session_with_retries(_user_agent: str) -> Any:
         class _DummySession:
-            def __enter__(self) -> "_DummySession":
+            def __enter__(self) -> _DummySession:
                 return self
 
-            def __exit__(self, *_args: Any) -> bool:
-                return False
+            def __exit__(self, *_args: Any) -> None:
+                return None
 
         return _DummySession()
 
@@ -110,11 +110,11 @@ def test_download_workbook_raises_when_neither_url_nor_cache(
 
     def fake_session_with_retries(_user_agent: str) -> Any:
         class _DummySession:
-            def __enter__(self) -> "_DummySession":
+            def __enter__(self) -> _DummySession:
                 return self
 
-            def __exit__(self, *_args: Any) -> bool:
-                return False
+            def __exit__(self, *_args: Any) -> None:
+                return None
 
         return _DummySession()
 

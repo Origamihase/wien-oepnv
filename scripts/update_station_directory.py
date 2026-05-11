@@ -1465,10 +1465,22 @@ def download_workbook(
     # Atomic-cache the successful download for future fallback. A
     # cache write failure must not break the run that just succeeded;
     # log and continue.
+    #
+    # Security: the workbook bytes are the public ÖBB
+    # "Verzeichnis der Verkehrsstationen" XLSX (free open data, no
+    # auth, no PII). The file is intentionally committed to the
+    # repository by the weekly ``update-stations.yml`` auto-commit
+    # step so the next cron tick has a fall-back snapshot — the same
+    # pinned-CSV pattern that already governs WL OGD, VOR-Haltestellen
+    # and the GTFS stops dump. The CodeQL ``py/clear-text-storage-
+    # sensitive-data`` query flags this write because ``content``
+    # originates from a network response, but the source is by
+    # contract non-sensitive (matches the WL OGD writer at
+    # ``scripts/update_wl_stations.py:_download_ogd_csv``).
     try:
         cache_path.parent.mkdir(parents=True, exist_ok=True)
         with atomic_write(cache_path, mode="wb", permissions=0o644) as handle:
-            handle.write(content)
+            handle.write(content)  # codeql[py/clear-text-storage-sensitive-data]
     except OSError as exc:  # pragma: no cover - filesystem-dependent
         logger.warning(
             "Could not cache workbook to %s (%s); continuing with the "

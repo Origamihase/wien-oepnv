@@ -393,34 +393,72 @@ def _alias_variants(
     station_name: str, canonical: str, resolved: str | None
 ) -> set[str]:
     base = f"Wien {station_name}".strip()
-    variants = {
-        canonical,
-        base,
-        f"{base} (WL)",
-        f"{base} U",
-        f"{base} U (VOR)",
-        f"{base} Bahnhof",
-        f"Bahnhof {base}",
-        f"{base} Station",
-    }
+
+    # Skip the ``U`` / ``Bahnhof`` / ``Station`` augmentations when the
+    # base name is too generic. Wiener Linien's OGD has stations like
+    # ``Bahnhof`` (multiple DIVAs, disambiguated to ``Wien Bahnhof
+    # (WL 60205022)`` post-PR #1448) whose ``_normalize_token``
+    # already strips the ``bahnhof``/``hbf``/``bf`` stem and the
+    # ``(wl …)`` parenthetical to a single token (``"wien"``).
+    # Appending ``U`` to such a base yields ``Wien Bahnhof U`` which
+    # normalises to ``"wien u"`` — a catch-all key that shadowed every
+    # ``canonical_name("Wien X (U)")`` lookup, breaking the
+    # ``test_clean_title_expands_wien_hbf_abbreviation`` regression
+    # on ``main`` after the disambiguation landed.
+    # ``_is_generic_base`` keeps the standard variants for the common
+    # case (multi-token station names like ``Wien Karlsplatz``) and
+    # drops them only for the degenerate ``Wien <stem>`` shape.
+    is_generic = _is_generic_base(base)
+
+    variants = {canonical, base, f"{base} (WL)"}
+    if not is_generic:
+        variants.update(
+            {
+                f"{base} U",
+                f"{base} U (VOR)",
+                f"{base} Bahnhof",
+                f"Bahnhof {base}",
+                f"{base} Station",
+            }
+        )
     english_base = base
     if base.lower().startswith("wien "):
         english_base = f"Vienna {base[5:]}".strip()
-        variants.update(
-            {
-                english_base,
-                f"{english_base} (WL)",
-                f"{english_base} U",
-                f"{english_base} U (VOR)",
-                f"{english_base} Station",
-            }
-        )
+        variants.update({english_base, f"{english_base} (WL)"})
+        if not is_generic:
+            variants.update(
+                {
+                    f"{english_base} U",
+                    f"{english_base} U (VOR)",
+                    f"{english_base} Station",
+                }
+            )
     variants.add(base.replace(" ", "-"))
     variants.add(canonical.replace(" ", "-"))
     if resolved:
         variants.add(resolved)
         variants.add(f"{resolved} (VOR)")
     return {variant for variant in variants if variant.strip()}
+
+
+def _is_generic_base(base: str) -> bool:
+    """Return True when *base* normalises to a single token that would
+    collapse the ``U``/``Bahnhof``/``Station`` augmentations into
+    catch-all alias keys. The check imports the canonical normaliser
+    lazily so this module stays importable when the orchestrator
+    starts before ``src.utils.stations`` is on the path.
+    """
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:  # pragma: no cover - defensive
+        sys.path.insert(0, str(base_dir))
+    from src.utils.stations import _normalize_token
+
+    tokens = _normalize_token(base).split()
+    # ``_normalize_token`` strips ``bahnhof``/``hbf``/``bf``/``bahnhst``
+    # plus the parenthetical ``(WL <diva>)`` augmentations. If the
+    # base reduces to a single token (typically just ``"wien"``), the
+    # augmentations collide with every other Vienna lookup.
+    return len(tokens) <= 1
 
 
 def load_vor_mapping(path: Path) -> dict[str, Mapping[str, object]]:
