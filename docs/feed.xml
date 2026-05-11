@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 11 May 2026 17:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 18:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9</guid>
+      <pubDate>Mon, 11 May 2026 17:37:00 +0200</pubDate>
+      <ext:first_seen>Mon, 11 May 2026 09:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 17:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.05.2026]</description>
+      <content:encoded><![CDATA[Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[24A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +27,7 @@
       <pubDate>Mon, 11 May 2026 17:16:00 +0200</pubDate>
       <ext:first_seen>Mon, 11 May 2026 17:30:44 +0200</ext:first_seen>
       <ext:starts_at>Mon, 11 May 2026 17:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 11 May 2026 17:59:00 +0200</ext:ends_at>
       <description>Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 11.05.2026]</description>
       <content:encoded><![CDATA[Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 11.05.2026]]]></content:encoded>
     </item>
@@ -104,17 +115,6 @@
       <ext:starts_at>Mon, 11 May 2026 07:39:18 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge … [Seit 11.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge …<br/>[Seit 11.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
-      <pubDate>Mon, 11 May 2026 07:25:40 +0200</pubDate>
-      <ext:first_seen>Mon, 11 May 2026 07:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 11 May 2026 07:25:40 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 11 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 11.05.2026]</description>
-      <content:encoded><![CDATA[[Am 11.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
