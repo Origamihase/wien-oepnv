@@ -101,24 +101,39 @@ contains 18 PoC tests:
 
 **Fix:**
 
-  1. ``src/utils/files.py`` — both helpers compute
-     ``safe_path = sanitize_log_arg(str(path))`` once at function
-     entry and interpolate ``safe_path`` (not ``path``) into the two
-     WARNING log lines that fire on size-cap rejection.
+  1. ``src/utils/files.py`` — both helpers compute a one-way
+     SHA-256 fingerprint of the path bytes
+     (``hashlib.sha256(str(path).encode(...)).hexdigest()[:12]``)
+     and interpolate the fingerprint into the WARNING log lines.
+     **Initial attempt** used ``sanitize_log_arg(str(path))`` as
+     the barrier — but CodeQL's taint analysis does NOT recognise
+     project-local sanitiser helpers across function boundaries,
+     so the alert re-fired at the new line numbers (alerts #1861,
+     #1862 in the repo as of 2026-05-11). The hashlib-based
+     fingerprint IS recognised as a CodeQL barrier
+     (cryptographic-hash sinks are documented sanitisers). The
+     trade-off — operators see ``[path-sha256=abc123def456]``
+     instead of the human-readable path — is acceptable because
+     (a) the ``label`` (caller-provided category) and ``max_bytes``
+     remain in the log, (b) operators can rerun the hash locally
+     on a candidate path to confirm identity, and (c) the
+     surrounding cron-job / traceback context typically narrows
+     the candidate set to one or two files.
   2. ``src/places/osm_client.py`` — replace ``lat != lat or
      lon != lon`` with ``math.isnan(lat) or math.isnan(lon)``;
      ``import math`` added at the canonical position.
 
 **Learning:** CodeQL's ``py/clear-text-logging-sensitive-data`` taint
-analysis is conservative across function boundaries — the ``re.sub``
-whitelist-replace pattern is NOT recognised as a barrier even when
-applied at the immediate log site. The recognised barriers are
-(a) :func:`hashlib.X.hexdigest` (one-way hash), (b) the canonical
-project-wide sanitiser :func:`sanitize_log_arg` (recognised by every
-CodeQL run in this repo), and (c) ``re.match(strict_whitelist, str)``
-+ ``.group()`` (extract-from-validated-input, not replace-bad-with-?).
-Future log-sanitisation rounds MUST prefer (b) over inline ``re.sub``
-to break the CodeQL false-positive cycle. The
+analysis is conservative across function boundaries. The
+project-local ``sanitize_log_arg`` is NOT recognised as a barrier
+when the taint flows through a function-parameter ``path`` reachable
+from ``read_secret(name=...)`` — even though it correctly defangs
+Trojan-Source primitives at runtime. The robust CodeQL-recognised
+barrier shape is :func:`hashlib.sha256.hexdigest` (cryptographic-hash
+sinks are documented sanitisers). Future log-sanitisation rounds on
+paths / IDs reachable from credential-coded sources MUST prefer the
+hashlib fingerprint over project-local sanitiser delegation when the
+target is the CodeQL false-positive cycle. The
 ``py/comparison-of-identical-expressions`` query is similarly
 conservative on the NaN ``x != x`` idiom — :func:`math.isnan` is the
 explicit equivalent.

@@ -13,8 +13,6 @@ from pathlib import Path
 from typing import IO, Any
 from collections.abc import Iterator
 
-from .logging import sanitize_log_arg
-
 # Default per-loader byte cap for on-disk JSON files. Sized at ~100x the
 # largest legitimately-written stations.json (~175 KiB) and polygon
 # (~146 KiB) shapes, comfortably below any cron runner's 1 GiB cgroup
@@ -235,24 +233,31 @@ def read_capped_json(
     but yield unbounded bytes on read.
     """
     log = logger if logger is not None else logging.getLogger(__name__)
-    # Security: route the path through the canonical log sanitiser before
-    # interpolation. ``path`` is an operator-/caller-controlled value
-    # (env-resolved, subprocess-listed, or argv-derived) that CodeQL's
-    # ``py/clear-text-logging-sensitive-data`` taint analysis considers
-    # potentially-sensitive when the resolved source carries credentials
-    # (``/run/secrets/X``, ``CREDENTIALS_DIRECTORY``). The sanitiser also
-    # defangs any Trojan-Source / control-character / ANSI-escape primitive
-    # planted in the path name itself before it lands in the operator-facing
-    # log line + the public ``docs/feed_health.json`` artefact.
-    safe_path = sanitize_log_arg(str(path))
+    # Security: emit a fingerprint of the path rather than the path
+    # itself. ``path`` is a caller-controlled value reachable from
+    # ``read_secret(name=...)`` in ``src/utils/env.py``; CodeQL's
+    # ``py/clear-text-logging-sensitive-data`` taint analysis marks
+    # the entire dataflow as secret-bearing because the helper is
+    # transitively called with credential-coded parameter names.
+    # ``sanitize_log_arg(str(path))`` is NOT recognised as a barrier
+    # across the function boundary. Logging a one-way hash of the path
+    # bytes (a) keeps an operator-correlatable fingerprint without
+    # exposing the path string, (b) is recognised as a CodeQL barrier
+    # via ``hashlib`` taint sinks, and (c) avoids leaking
+    # Trojan-Source / control-character / ANSI-escape primitives a
+    # hostile path name might carry. Operators rerun the hash on a
+    # candidate path locally to verify identity.
+    path_fingerprint = hashlib.sha256(
+        str(path).encode("utf-8", errors="replace")
+    ).hexdigest()[:12]
     try:
         # Open first so the size check is on the actual inode that
         # ``read()`` will consume — closes the stat/open TOCTOU.
         with path.open("rb") as handle:
             if os.fstat(handle.fileno()).st_size > max_bytes:
                 log.warning(
-                    "%s file at %s is too large (> %d bytes); treating as missing.",
-                    label, safe_path, max_bytes,
+                    "%s file [path-sha256=%s] is too large (> %d bytes); treating as missing.",
+                    label, path_fingerprint, max_bytes,
                 )
                 return None
             # Defense in depth: bound the read at ``max_bytes + 1`` so a
@@ -262,8 +267,8 @@ def read_capped_json(
             raw = handle.read(max_bytes + 1)
             if len(raw) > max_bytes:
                 log.warning(
-                    "%s file at %s exceeded %d bytes during read; treating as missing.",
-                    label, safe_path, max_bytes,
+                    "%s file [path-sha256=%s] exceeded %d bytes during read; treating as missing.",
+                    label, path_fingerprint, max_bytes,
                 )
                 return None
             payload: object = json.loads(raw)
@@ -305,19 +310,21 @@ def read_capped_text(
     drop the whole file).
     """
     log = logger if logger is not None else logging.getLogger(__name__)
-    # Security: see ``read_capped_json`` for the rationale of routing
-    # ``path`` through ``sanitize_log_arg`` before interpolation. Same
-    # CodeQL clear-text-logging surface, same Trojan-Source defanging
-    # surface, same defence shape.
-    safe_path = sanitize_log_arg(str(path))
+    # Security: see ``read_capped_json`` for the rationale of fingerprinting
+    # ``path`` instead of interpolating it. Same CodeQL clear-text-logging
+    # surface, same Trojan-Source / control-character defanging surface,
+    # same hashlib-based barrier shape.
+    path_fingerprint = hashlib.sha256(
+        str(path).encode("utf-8", errors="replace")
+    ).hexdigest()[:12]
     try:
         # Open first so the size check is on the actual inode that
         # ``read()`` will consume — closes the stat/open TOCTOU.
         with path.open("rb") as handle:
             if os.fstat(handle.fileno()).st_size > max_bytes:
                 log.warning(
-                    "%s file at %s is too large (> %d bytes); treating as missing.",
-                    label, safe_path, max_bytes,
+                    "%s file [path-sha256=%s] is too large (> %d bytes); treating as missing.",
+                    label, path_fingerprint, max_bytes,
                 )
                 return None
             # Defense in depth: bound the read at ``max_bytes + 1`` so a
@@ -326,8 +333,8 @@ def read_capped_text(
             raw = handle.read(max_bytes + 1)
             if len(raw) > max_bytes:
                 log.warning(
-                    "%s file at %s exceeded %d bytes during read; treating as missing.",
-                    label, safe_path, max_bytes,
+                    "%s file [path-sha256=%s] exceeded %d bytes during read; treating as missing.",
+                    label, path_fingerprint, max_bytes,
                 )
                 return None
             return raw.decode(encoding, errors=errors)
