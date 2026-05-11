@@ -95,7 +95,7 @@ import hashlib
 import logging
 import os
 from pathlib import Path
-from typing import Any
+from typing import Any, NoReturn
 
 import pytest
 
@@ -540,6 +540,7 @@ def test_save_state_lock_fail_log_strips_path_primitives(
     acquired. The path string can carry Trojan-Source primitives.
     """
     import src.build_feed as build_feed_mod
+    from src.utils import locking as locking_module
 
     state_dir = tmp_path / f"dir{primitive}"
     state_dir.mkdir()
@@ -551,13 +552,18 @@ def test_save_state_lock_fail_log_strips_path_primitives(
         raising=False,
     )
 
-    def _raise_oserror(*args: Any, **kwargs: Any) -> Any:
+    # Force the lock-acquisition path into its OSError branch by patching
+    # ``file_lock`` (the helper that raises on contention). This is more
+    # targeted than patching ``Path.open`` globally — only the lock
+    # acquisition fails, not the surrounding I/O.
+    def _raise_oserror(*args: Any, **kwargs: Any) -> NoReturn:
         raise OSError("simulated lock acquisition failure")
 
-    # Force the lock-acquisition path into its OSError branch by
-    # monkeypatching the lock-file open() call.
     monkeypatch.setattr(
-        Path, "open", lambda self, *a, **k: _raise_oserror()
+        build_feed_mod, "file_lock", _raise_oserror, raising=False,
+    )
+    monkeypatch.setattr(
+        locking_module, "file_lock", _raise_oserror, raising=False,
     )
 
     caplog.set_level(logging.WARNING)
