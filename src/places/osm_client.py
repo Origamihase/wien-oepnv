@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import json
 import logging
+import math
 import os
 from dataclasses import dataclass
 from typing import Any, NotRequired, TypedDict, cast
@@ -608,7 +609,12 @@ def filter_complete_places(places: Iterable[Place]) -> list[Place]:
             lon = float(place.longitude)
         except (TypeError, ValueError):
             continue
-        if lat != lat or lon != lon:  # NaN check
+        # NaN check. The historic ``x != x`` idiom is the canonical Python
+        # NaN test but triggers CodeQL ``py/comparison-of-identical-expressions``
+        # because the analyser cannot statically prove the operand is a NaN-
+        # capable float. Use :func:`math.isnan` instead for an unambiguous
+        # NaN test that doubles as documentation of intent.
+        if math.isnan(lat) or math.isnan(lon):
             continue
         out.append(place)
     return out
