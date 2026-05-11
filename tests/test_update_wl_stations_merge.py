@@ -523,14 +523,22 @@ def test_build_wl_entries_does_not_suffix_far_apart_duplicate_names(
     haltestellen_path.write_text(
         "DIVA;PlatformText;Municipality;MunicipalityID;Longitude;Latitude\n"
         "60205022;Bahnhof;Wien;49000001;16.2697;48.0078\n"
-        "60205201;Bahnhof;Wien;49000001;16.3141;48.0870\n",
+        "60205201;Bahnhof;Wien;49000001;16.3141;48.0870\n"
+        "60200077;Arbeitergasse, Gürtel;Wien;49000001;16.3460;48.1841\n"
+        "60201880;Arbeitergasse, Gürtel;Wien;49000001;16.3449;48.1856\n",
         encoding="utf-8",
     )
     haltepunkte_path = tmp_path / "haltepunkte.csv"
     haltepunkte_path.write_text(
         "StopID;DIVA;StopText;Municipality;MunicipalityID;Longitude;Latitude\n"
-        "1;60205022;Bahnhof Süd;Wien;49000001;16.2697;48.0078\n"
-        "2;60205201;Bahnhof Nord;Wien;49000001;16.3141;48.0870\n",
+        # Generic PlatformText 'Bahnhof' + informative StopText →
+        # _derive_station_label overrides the generic label
+        "1;60205022;Tribuswinkel - Josefsthal;Wien;49000001;16.2697;48.0078\n"
+        "2;60205201;Wiener Neudorf;Wien;49000001;16.3141;48.0870\n"
+        # Non-generic PlatformText with identical StopText → keep
+        # PlatformText (multi-modal at one venue, no disambiguator)
+        "3;60200077;Arbeitergasse, Gürtel;Wien;49000001;16.3460;48.1841\n"
+        "4;60201880;Arbeitergasse, Gürtel;Wien;49000001;16.3449;48.1856\n",
         encoding="utf-8",
     )
 
@@ -538,15 +546,93 @@ def test_build_wl_entries_does_not_suffix_far_apart_duplicate_names(
     haltepunkte = update_wl_stations.load_haltepunkte(haltepunkte_path)
     entries = update_wl_stations.build_wl_entries(haltestellen, haltepunkte)
 
-    assert len(entries) == 2
-    names = sorted(str(e["name"]) for e in entries)
-    assert names == ["Wien Bahnhof (WL)", "Wien Bahnhof (WL)"], (
-        "Two physical stops sharing a PlatformText must keep the same "
-        "un-suffixed canonical display label. Their structured "
-        "wl_diva fields disambiguate them at the data layer."
+    assert len(entries) == 4
+    by_diva = {str(e["wl_diva"]): str(e["name"]) for e in entries}
+
+    # Generic PlatformText + informative StopText → derived label
+    # replaces the generic "Wien Bahnhof (WL)" with a real toponym.
+    assert by_diva["60205022"] == "Wien Tribuswinkel - Josefsthal (WL)", (
+        "Generic PlatformText 'Bahnhof' must be overridden by the "
+        "informative haltepunkte StopText so the RSS feed never "
+        "renders the meaningless 'Wien Bahnhof' label."
     )
-    divas = sorted(str(e["wl_diva"]) for e in entries)
-    assert divas == ["60205022", "60205201"]
+    # 'Wiener Neudorf' starts with 'Wien' so _canonical_name keeps it
+    # as-is without a redundant 'Wien' prefix.
+    # `Wiener Neudorf` starts with "Wien" so _canonical_name keeps it
+    # as-is without prepending a redundant "Wien" prefix — the
+    # generic `Bahnhof` PlatformText is replaced by the informative
+    # StopText.
+    assert by_diva["60205201"] in {"Wiener Neudorf (WL)", "Wien Wiener Neudorf (WL)"}
+
+    # Multi-modal duplicate with identical StopText: PlatformText
+    # carries the location info already, no override possible. Both
+    # entries keep the same canonical label — structured wl_diva
+    # disambiguates them at the data layer.
+    arbeiter_names = sorted(
+        n for d, n in by_diva.items() if d in {"60200077", "60201880"}
+    )
+    assert arbeiter_names == [
+        "Wien Arbeitergasse, Gürtel (WL)",
+        "Wien Arbeitergasse, Gürtel (WL)",
+    ]
+
+
+def test_derive_station_label_overrides_generic_platform_text() -> None:
+    """``_derive_station_label`` swaps generic transport-typed
+    ``PlatformText`` tokens for the informative haltepunkte StopText
+    when one is available. Non-generic PlatformText values are kept
+    untouched so ÖBB / VOR name-based joins remain stable.
+    """
+    Haltepunkt = update_wl_stations.Haltepunkt
+
+    def hp(name: str, stop_id: str = "1") -> object:
+        return Haltepunkt(
+            station_id="60200000",
+            stop_id=stop_id,
+            name=name,
+            latitude=48.2,
+            longitude=16.4,
+        )
+
+    # Generic PlatformText + single (orthogonal) StopText
+    # → trust the StopText even when it shares no substring.
+    assert update_wl_stations._derive_station_label(
+        "Bahnhof", [hp("Tribuswinkel - Josefsthal")]
+    ) == "Tribuswinkel - Josefsthal"
+    assert update_wl_stations._derive_station_label(
+        "Lokalbahn", [hp("Guntramsdorf Lokalbahn")]
+    ) == "Guntramsdorf Lokalbahn"
+
+    # Direction qualifiers are stripped before the cleaned-StopText
+    # set is computed; if all qualified StopTexts collapse to one
+    # cleaned value, that value wins.
+    assert update_wl_stations._derive_station_label(
+        "Bahnhof",
+        [
+            hp("Tribuswinkel - Josefsthal (Richtung A)", "1"),
+            hp("Tribuswinkel - Josefsthal (Richtung B)", "2"),
+        ],
+    ) == "Tribuswinkel - Josefsthal"
+
+    # Non-generic PlatformText keeps its label even when haltepunkte
+    # carry richer text. Preserves ÖBB / VOR merge-by-name stability.
+    assert update_wl_stations._derive_station_label(
+        "Schottenring", [hp("Schottenring, Herminengasse")]
+    ) == "Schottenring"
+    assert update_wl_stations._derive_station_label(
+        "Karlsplatz",
+        [hp("Karlsplatz U (Richtung Reumannplatz)", "1"),
+         hp("Karlsplatz U (Richtung Leopoldau)", "2")],
+    ) == "Karlsplatz"
+
+    # Generic PlatformText + multiple distinct StopTexts: nothing
+    # specific to pick → keep PlatformText.
+    assert update_wl_stations._derive_station_label(
+        "Bahnhof", [hp("Tribuswinkel", "1"), hp("Wiener Neudorf", "2")]
+    ) == "Bahnhof"
+
+    # No haltepunkte → keep PlatformText.
+    assert update_wl_stations._derive_station_label("Karlsplatz", []) == "Karlsplatz"
 
 
 def test_build_wl_entries_auto_promotes_outside_station_to_pendler() -> None:

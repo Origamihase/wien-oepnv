@@ -374,6 +374,81 @@ def _derive_bst_code(name: str, identifier: str | None) -> str | None:
     return None
 
 
+# Haltestelle PlatformText values that carry no location information
+# on their own and are routinely shared across far-apart stops in the
+# OGD-Echtzeit data (e.g. ``Lokalbahn`` × 4 across 5.6 km of greater
+# Vienna, ``Bahnhof`` × 2 across 9.4 km). Whenever a station's
+# PlatformText is in this set, ``_derive_station_label`` overrides
+# it with the more specific haltepunkte ``StopText`` even when the
+# StopText does not contain the PlatformText as a substring (e.g.
+# PlatformText ``Bahnhof`` → StopText ``Tribuswinkel - Josefsthal``).
+_GENERIC_PLATFORM_TEXTS: frozenset[str] = frozenset(
+    {
+        "bahnhof",
+        "bahn",
+        "hauptbahnhof",
+        "lokalbahn",
+        "station",
+        "halt",
+        "bf",
+        "hbf",
+        "u-bahn",
+    }
+)
+
+# Bahnsteig-direction-/Bedarfshalt-Markers that should be stripped
+# from haltepunkte StopText before deriving the canonical label.
+# ``(Richtung X)`` describes which way the platform faces; ``(Bedarf)``
+# marks request stops. Neither is part of the stop's identity.
+_STOPTEXT_QUALIFIER_RE = re.compile(
+    r"\s*(?:\([^)]*Richtung[^)]*\)|\([^)]*Bedarf[^)]*\)|→.*|←.*)$"
+)
+
+
+def _derive_station_label(platform_text: str, stops: Iterable[Haltepunkt]) -> str:
+    """Override generic haltestelle ``PlatformText`` labels with the
+    more informative haltepunkte ``StopText``.
+
+    Wiener Linien's OGD-Echtzeit ``haltestellen.csv`` ``PlatformText``
+    field is sometimes a generic transport-typed token
+    (``Bahnhof``, ``Lokalbahn``, …) that gives the operator no useful
+    location context. The corresponding haltepunkte carry a much more
+    specific ``StopText`` value (e.g. ``Bahnhof`` →
+    ``Tribuswinkel - Josefsthal``). This helper picks the more
+    informative label **only** when the PlatformText is one of those
+    generic tokens; the much-larger common case (named haltestellen
+    like ``Karlsplatz``, ``Stephansplatz``, ``Bhf. Atzgersdorf``)
+    keeps the PlatformText untouched so ÖBB / VOR name-based joins
+    in ``merge_into_stations`` remain stable and the displayed label
+    does not silently rotate to the first haltepunkte StopText (which
+    may carry idiosyncratic suffixes like ``Bhf. Atzgersdorf S``).
+
+    Strategy:
+
+    * Strip Bahnsteig direction / Bedarfshalt qualifiers from each
+      haltepunkte StopText (``Karlsplatz U (Richtung Reumannplatz)``
+      → ``Karlsplatz U``).
+    * If ``platform_text`` is in :data:`_GENERIC_PLATFORM_TEXTS` and
+      the haltepunkte produce a single cleaned StopText, return the
+      StopText (overrides ``Bahnhof`` / ``Lokalbahn`` / …).
+    * Otherwise return ``platform_text`` unchanged.
+    """
+    if platform_text.casefold() not in _GENERIC_PLATFORM_TEXTS:
+        return platform_text
+
+    cleaned: set[str] = set()
+    for stop in stops:
+        if not isinstance(stop.name, str):
+            continue
+        normalized = _STOPTEXT_QUALIFIER_RE.sub("", stop.name).strip()
+        if normalized:
+            cleaned.add(normalized)
+
+    if len(cleaned) == 1:
+        return next(iter(cleaned))
+    return platform_text
+
+
 def _aggregate_coordinates(stops: Iterable[Haltepunkt]) -> tuple[float | None, float | None]:
     latitudes: list[float] = []
     longitudes: list[float] = []
@@ -558,7 +633,22 @@ def build_wl_entries(
         # stale alias copy from a prior run trivially collides with
         # another entry's current ``wl_diva``.
         aliases.add(f"Wien {station.name}")
-        canonical = _canonical_name(station.name)
+        # The haltestelle ``PlatformText`` is sometimes a generic
+        # transport-typed label (``Bahnhof``, ``Lokalbahn``, …) that
+        # gives the operator no useful context — multiple haltestellen
+        # share it across all of Vienna's outskirts. The corresponding
+        # haltepunkte often carry a much more specific ``StopText``
+        # (e.g. ``Tribuswinkel - Josefsthal`` for one of the four
+        # WLB ``Lokalbahn`` stops). ``_derive_station_label`` picks
+        # the most informative label between PlatformText and the
+        # haltepunkte StopText, falling back to PlatformText when the
+        # StopText carries no additional information (Karlsplatz,
+        # Stephansplatz, … stay untouched so ÖBB / VOR name-based
+        # joins remain stable).
+        display_label = _derive_station_label(station.name, stops)
+        if display_label != station.name:
+            aliases.add(f"Wien {display_label}")
+        canonical = _canonical_name(display_label)
         aliases.add(canonical)
         latitude, longitude = _aggregate_coordinates(stops)
         # Compute ``in_vienna`` from the aggregate (mean) coordinates
