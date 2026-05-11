@@ -67,7 +67,6 @@ def test_collect_items_missing_cache_logs_warning(
     assert cache_warnings == {
         "Cache für Provider 'wl' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
-        "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'baustellen' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'stammstrecke' leer – generiere Feed ohne aktuelle Daten.",
     }
@@ -121,7 +120,6 @@ def test_main_runs_without_network(
     assert set(cache_messages) == {
         "Cache für Provider 'wl' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
-        "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'baustellen' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'stammstrecke' leer – generiere Feed ohne aktuelle Daten.",
     }
