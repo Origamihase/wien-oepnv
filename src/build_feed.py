@@ -591,9 +591,21 @@ def format_local_times(
 # normalises them). The Unicode escape form keeps Bandit B613 happy
 # and mirrors the regex shape established by the 2026-05-10 CSV writer
 # round in :data:`src.utils.stats._CSV_CONTROL_CHARS_RE`.
+# 2026-05-11 "Tag-Character / Variation-Selector Drift": widened in
+# lockstep with the canonical _INVISIBLE_DANGEROUS_RE union to cover
+# the Unicode Tag block (U+E0000..U+E007F), the BMP Variation
+# Selectors (U+FE00..U+FE0F), and the supplementary Variation
+# Selectors (U+E0100..U+E01EF). Tag bytes survive pre-fix into the
+# public RSS XML at docs/feed.xml - ElementTree XML serialisation
+# does NOT escape supplementary-plane code points (they are valid
+# Unicode characters, not XML metacharacters). The widening at this
+# LAST-sanitiser-boundary stops the invisible smuggling primitive
+# before it reaches every subscriber's RSS reader.
 _CONTROL_RE = re.compile(
     r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F"
-    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff"
+    r"\ufe00-\ufe0f"
+    r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 
 # Prefix pattern for line identifiers like "U1/U2: "

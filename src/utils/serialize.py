@@ -29,9 +29,20 @@ log = logging.getLogger(__name__)
 # (``\xNN`` / ``\uNNNN``) so the source file itself contains no
 # Trojan-Source primitives — reviewing this regex via ``cat`` / ``less``
 # / the GitHub web UI / IDE preview cannot itself trigger BiDi reversal.
+# 2026-05-11 "Tag-Character / Variation-Selector Drift": widened in
+# lockstep with ``src/utils/logging.py:_INVISIBLE_DANGEROUS_RE`` to
+# include the Unicode Tag block (U+E0000..U+E007F), the BMP Variation
+# Selectors (U+FE00..U+FE0F), and the supplementary Variation
+# Selectors (U+E0100..U+E01EF). Each is a documented invisible-
+# character primitive (Trojan-Source / steganography / prompt-
+# injection smuggling); a planted upstream payload carrying any of
+# them in a station name / cache event / quota state survives the
+# pre-fix scrubber and lands in the committed JSON sidecar.
 _TROJAN_SOURCE_PRIMITIVES_RE = re.compile(
     r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
-    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\ufe00-\ufe0f\ufeff"
+    r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 
 

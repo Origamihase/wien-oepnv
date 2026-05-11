@@ -145,9 +145,22 @@ _CSV_FORMULA_PREFIXES: Final = ("=", "+", "-", "@", "\t", "\r")
 # in ``tests/test_sentinel_csv_formula_injection_invisible_prefix.py``
 # pins the invariant programmatically — any future widening of the
 # canonical log-sanitiser fails the test until this regex widens too.
+# 2026-05-11 "Tag-Character / Variation-Selector Drift": widened in
+# lockstep with the canonical ``_INVISIBLE_DANGEROUS_RE`` union to
+# cover the Unicode Tag block (U+E0000..U+E007F), the BMP Variation
+# Selectors (U+FE00..U+FE0F), and the supplementary Variation
+# Selectors (U+E0100..U+E01EF). Tag-character variants of a provider
+# / location name silently fracture downstream pivot-table analytics:
+# Excel / LibreOffice Calc / Google Sheets render the invisible-tag
+# variant as visually-identical text but aggregate it as a distinct
+# cell from the visible cousin. Closing the variant gap at the CSV
+# writer keeps the operator's analytics view consistent with the
+# rendered cells.
 _CSV_CONTROL_CHARS_RE: Final = re.compile(
     r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F"
-    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\ufe00-\ufe0f\ufeff"
+    r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 # Hard cap on persisted text-field length. Generous enough that any
 # legitimate provider/location/direction string survives untouched;

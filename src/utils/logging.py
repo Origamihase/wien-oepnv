@@ -31,13 +31,34 @@ from typing import Any
 #   * ``\u2066-\u2069`` \u2014 LRI / RLI / FSI / PDI BiDi isolates (the second
 #     half of CVE-2021-42574).
 #   * ``\ufeff`` \u2014 Byte Order Mark (zero-width no-break space).
+#   * ``\ufe00-\ufe0f`` \u2014 VARIATION SELECTOR-1 \u2026 VARIATION SELECTOR-16.
+#     Each is a zero-width 4-bit-payload primitive used in the
+#     "Sneaky Text" steganography technique to smuggle hidden bytes
+#     through a visible string. Apple's emoji renderer is the only
+#     legitimate consumer (VS-15 text vs. VS-16 emoji presentation);
+#     every other use is steganographic.
+#   * ``\U000e0000-\U000e007f`` \u2014 Unicode **Tag** block. Every
+#     printable ASCII codepoint \x20-\x7E has a paired Tag character
+#     in this range that renders as zero-width in every modern
+#     terminal / browser / RSS reader / GitHub Web UI / IDE preview.
+#     The canonical "ChatGPT invisible-instruction smuggling"
+#     primitive (2024 OpenAI disclosure): an ASCII payload encoded
+#     in the Tag block flows verbatim through every clear-text
+#     sanitiser that stops at the BiDi-isolate band and lands in
+#     downstream LLM training / RAG ingestion / chat copy-paste
+#     loops. ``U+E007F`` is CANCEL TAG, the documented terminator.
+#     ``U+E0001`` is the deprecated LANGUAGE TAG primitive.
+#   * ``\U000e0100-\U000e01ef`` \u2014 VARIATION SELECTOR-17 \u2026
+#     VARIATION SELECTOR-256 (plane 14). The supplementary half of
+#     the Variation Selector steganography primitive.
 # The companion regex in ``src/utils/stations_validation.py`` uses
 # ``\u2028-\u202e``; this file pins the canonical UNION (incl. ALM, LRM,
 # RLM) so every WARNING/ERROR site routed through the audit walker
 # (``test_sentinel_clear_text_logging_drift_utils``) inherits the same
 # defence floor.
 _CONTROL_CHARS_RE = re.compile(
-    r"[\x00-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"[\x00-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\ufe00-\ufe0f\ufeff\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 # Always-strip set: invisible Unicode characters that have NO readability
 # value and are pure log-injection / Trojan-Source / terminal-escape
@@ -93,9 +114,32 @@ _CONTROL_CHARS_RE = re.compile(
 # submitted by ``submit_auto_issue``. ``\x09`` (TAB), ``\x0a`` (LF),
 # ``\x0d`` (CR) remain outside the always-strip floor so the
 # readability contract for traceback formatting is preserved.
+#
+# 2026-05-11 "Tag-Character / Variation-Selector Drift": widened to
+# include three orthogonal invisible-character ranges that the prior
+# BiDi-Mark Drift rounds left uncovered:
+#   * U+FE00..U+FE0F - VARIATION SELECTOR-1..16 (BMP, 4-bit-payload
+#     steganography primitive).
+#   * U+E0000..U+E007F - Unicode Tag block. The canonical
+#     "ChatGPT invisible-instruction smuggling" primitive (2024
+#     OpenAI disclosure). Every printable ASCII codepoint has a
+#     paired Tag character rendering as zero-width in every modern
+#     renderer.
+#   * U+E0100..U+E01EF - VARIATION SELECTOR-17..256 (plane 14).
+# Each range is documented invisible (no readability value), each
+# has documented attack shapes (Trojan-Source display confusion,
+# steganographic data smuggling, prompt-injection smuggling), and
+# none has any legitimate consumer in this codebase. German umlauts
+# (ae/oe/ue plus sharp s) and transit emoji are OUTSIDE the strip
+# ranges - the widening is additive only against the invisible-
+# character family. See
+# tests/test_sentinel_tag_chars_variation_selectors_invisible_drift.py
+# for the additive-regression invariant.
 _INVISIBLE_DANGEROUS_RE = re.compile(
     r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
-    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\ufe00-\ufe0f\ufeff"
+    r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 _LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
 # ANSI escape codes: comprehensive matching for CSI, OSC, Fe, and 2-byte sequences
