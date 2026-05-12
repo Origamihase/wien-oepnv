@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 12 May 2026 07:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 08:01:14 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U6: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab</guid>
+      <pubDate>Tue, 12 May 2026 07:53:00 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 08:01:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 07:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie U6 fährt derzeit zwischen den Stationen Tscherttegasse und Bahnhof Meidling in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 08:15 Uhr. Grund … [Am 12.05.2026]</description>
+      <content:encoded><![CDATA[Die Linie U6 fährt derzeit zwischen den Stationen Tscherttegasse und Bahnhof Meidling in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 08:15 Uhr. Grund …<br/>[Am 12.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[27: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -52,17 +63,6 @@
       <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.05.2026]</description>
       <content:encoded><![CDATA[Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71A: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a4b2f0980f7cf4caf430818d6a4cf61d5a1ff3afe1c0cc05e1d82dbc78e74388</guid>
-      <pubDate>Tue, 12 May 2026 06:44:00 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 07:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 06:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 71A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall. [Am 12.05.2026]</description>
-      <content:encoded><![CDATA[Linie 71A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall.<br/>[Am 12.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Schadhaftes Fahrzeug]]></title>
