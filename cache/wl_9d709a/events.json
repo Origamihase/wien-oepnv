@@ -374,14 +374,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "15A: Falschparker",
-    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "title": "2: Fahrtbehinderung Signalstörung",
+    "description": "Linie 2: Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Grund: Signalstörung im Haltestellenbereich Rathaus U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2ba7372ec735edb5799272fa3492b87c41610ae79a3ebd798228ea20ed7c6cb0",
-    "pubDate": "2026-05-12T21:14:00+02:00",
-    "starts_at": "2026-05-12T21:14:00+02:00",
+    "guid": "f6742e2e14a2e570249887c5b57afe641256f9d269c64df8e3fe64db025f2eea",
+    "pubDate": "2026-05-12T22:12:00+02:00",
+    "starts_at": "2026-05-12T22:22:39+02:00",
     "ends_at": "2026-05-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-05-12"
+    "_identity": "wl|störung|L=2|D=2026-05-12"
   },
   {
     "source": "Wiener Linien",
@@ -549,18 +549,6 @@
     "pubDate": "2026-05-12T15:12:43+02:00",
     "starts_at": "2026-05-12T15:13:39+02:00",
     "ends_at": "2026-05-12T23:45:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-05-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Veranstaltung",
-    "description": "Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Weichen Sie ersatzweise auf die Linien 1, 2, D aus. Voraussichtliche Dauer: Betriebsschluss. Grund: Veranstaltung im Bereich Ringstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8a7ee4dee20cefce7843136922dffe58bfc29538270636ec76cfbafe5384339d",
-    "pubDate": "2026-05-12T11:33:00+02:00",
-    "starts_at": "2026-05-12T11:33:00+02:00",
-    "ends_at": "2026-05-12T22:30:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-05-12"
   },
   {
