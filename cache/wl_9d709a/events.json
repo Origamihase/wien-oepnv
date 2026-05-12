@@ -326,6 +326,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Schadhaftes Fahrzeug",
+    "description": "Linie 11A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Sturgasse. Weichen Sie ersatzweise auf die Linie U2 aus. Voraussichtliche Dauer: 06:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadion U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9360dd62571149f3c66d4dc7049cd6c8f5718ab035b60027fbe1e936919aa8e0",
+    "pubDate": "2026-05-12T06:13:00+02:00",
+    "starts_at": "2026-05-12T06:13:00+02:00",
+    "ends_at": "2026-05-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-05-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11A: Schadhafter Bus Betrieb bis Sturgasse",
+    "description": "Schadhafter Bus\nBetrieb bis Sturgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f7b8a3a3c134c769920c793a3a5ae4e57fd9bd1841ebc3e581e010e2d909a830",
+    "pubDate": "2026-05-12T06:19:43+02:00",
+    "starts_at": "2026-05-12T06:27:42+02:00",
+    "ends_at": "2026-05-12T07:26:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-05-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11: Gleisbauarbeiten",
     "description": "Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Frödenplatz. Weichen Sie ersatzweise auf die Linien U1, 16A aus. Voraussichtliche Dauer: 30.05.2026 01:00 Uhr. Grund: Gleisbauarbeiten im Bereich Otto-Probst-Straße # Tesarekplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
