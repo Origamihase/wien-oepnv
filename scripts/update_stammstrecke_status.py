@@ -2,13 +2,26 @@
 """Monitor delays on the S-Bahn Stammstrecke (Wien Floridsdorf ↔ Wien Meidling).
 
 Queries direct S-Bahn connections via the VOR/VAO ReST ``/trip`` endpoint
-for **both directions** independently and appends one CSV row per
-direction whose **mean** departure delay over the queried S-Bahn legs
-exceeds :data:`DELAY_THRESHOLD_MINUTES` minutes (legs without realtime
-signal are skipped — status unknown ≠ on-time). Directions are
-evaluated strictly separately because merging both into a single sample
-dilutes the signal — a station with a major incident in one direction
-often runs normally in the opposite direction.
+for **both directions** independently. Per-cron tick, every observed
+S-Bahn leg is recorded into a small JSON ledger
+(``cache/stammstrecke/pending_trips.json``) keyed by
+``(direction, line_name, scheduled_origin_dt)``. Re-observations of the
+same train across multiple cron ticks *overwrite* the previous reading
+— the value that eventually flows into ``data/stats/stammstrecke_
+<YYYY>.csv`` is therefore the observation taken closest to the train's
+actual departure, which is the most accurate one. When the train's
+scheduled departure has passed, its identity key is moved to a sibling
+ledger (``cache/stammstrecke/recently_finalised.json``) so any
+anomalous VAO re-emission at the lookahead boundary cannot produce a
+duplicate CSV row.
+
+The CSV row's ``delay_minutes`` is the arithmetic mean of the
+finalised trains for that direction *in that calendar year* — legs
+without realtime signal are skipped (status unknown ≠ on-time) so the
+mean reflects only verified observations. Directions are evaluated
+strictly separately because merging both into a single sample dilutes
+the signal — a station with a major incident in one direction often
+runs normally in the opposite direction.
 
 Migration history
 -----------------
@@ -98,8 +111,8 @@ import logging
 import re
 import statistics
 import sys
-from collections.abc import Iterable, Mapping
-from contextlib import ExitStack
+from collections.abc import Iterable, Iterator, Mapping
+from contextlib import ExitStack, contextmanager
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -193,6 +206,30 @@ PENDING_TRIPS_MAX_BYTES: Final = 1 * 1024 * 1024
 # delayed but eventually-fired tick still finalises the entries it
 # would have processed earlier.
 PENDING_TTL: Final = timedelta(hours=6)
+
+# Companion ledger: identity keys of trains that have already been
+# finalised + the timestamp of finalisation. The cron observation
+# pass consults this ledger and skips legs whose key is present, so
+# anomalous VAO behaviour (re-emitting a just-finalised train at the
+# lookahead boundary) cannot produce a duplicate CSV row. Entries
+# inherit the same TTL as the pending ledger — once a finalised
+# train ages past it, any further re-emission is treated as a
+# new observation, which is the conservative choice for stale state.
+RECENTLY_FINALISED_PATH: Final = (
+    REPO_ROOT / "cache" / "stammstrecke" / "recently_finalised.json"
+)
+RECENTLY_FINALISED_MAX_BYTES: Final = 1 * 1024 * 1024
+
+# OS-level advisory lock around the load → modify → save sequence on
+# both ledger files. The cron workflow uses a concurrency group so
+# two scheduled runs cannot overlap, but ``workflow_dispatch`` /
+# manual triggers can bypass that gate. The lock turns concurrent
+# runs from "last-write-wins, loser's observations lost" into
+# "loser blocks briefly, then runs to completion against the
+# now-updated ledger" — at the cost of one syscall per cron tick.
+PENDING_TRIPS_LOCK_PATH: Final = (
+    REPO_ROOT / "cache" / "stammstrecke" / "pending_trips.lock"
+)
 
 
 @dataclass(frozen=True)
@@ -350,25 +387,56 @@ def _format_minutes(value: float) -> str:
 # ---- Pending-trip state persistence ---------------------------------------
 
 
+# Whitespace-runs and the pipe character are both removed from the
+# raw VAO ``leg.name`` field before it is used as a state key or
+# persisted to the ledger. Two motivations:
+#
+# 1. **Format drift.** Live ledger captures show VAO emitting
+#    ``"S2"`` / ``"S3"`` (no space) while older / sibling deployments
+#    use the spaced form ``"S 2"``. Without normalisation the same
+#    physical train observed across a format flip would split into
+#    two identity keys → both finalise → the train is counted twice
+#    (the exact failure mode the dedup is supposed to prevent).
+# 2. **Separator hardening.** :func:`_identity_key` joins the three
+#    identity fields with ``|``. A poisoned upstream value containing
+#    a literal pipe could collide with a different real key. Strip
+#    the character at canonicalisation time so the separator is
+#    invariant.
+_NAME_NORMALISE_RE: Final = re.compile(r"\s+")
+
+
+def _canonical_line_name(value: str) -> str:
+    """Strip whitespace runs + pipe characters, upper-case the rest.
+
+    ``"S 2"`` / ``"S2"`` / ``" s2 "`` → ``"S2"``. Empty / whitespace-
+    only input returns the empty string; callers reject such legs
+    upstream so the value never enters the ledger.
+    """
+
+    cleaned = _NAME_NORMALISE_RE.sub("", str(value or "")).replace("|", "")
+    return cleaned.upper()
+
+
 def _identity_key(direction: str, name: str, scheduled: datetime) -> str:
     """Build the canonical state-key for one observed S-Bahn trip.
 
     Composed of the three fields that uniquely identify a physical
     train run in our use case: the monitored direction
-    (``Meidling``/``Floridsdorf``), the line designation (``S 1`` /
-    ``S 80`` / …) and the *scheduled* origin departure timestamp.
+    (``Meidling``/``Floridsdorf``), the canonicalised line
+    designation (see :func:`_canonical_line_name`) and the
+    *scheduled* origin departure timestamp.
     Two different trains of the same line cannot share a scheduled
     departure from the same station at the same second, so the tuple
     is collision-free for our scope without requiring a VAO-internal
     journey reference.
 
     The pipe (``|``) separator is chosen because neither the
-    direction label nor the line name contain it in practice, while
-    being unambiguous when the key is round-tripped through the
-    JSON ledger.
+    direction label nor the canonicalised line name contain it (the
+    canonicaliser strips it). ``direction`` is one of two hardcoded
+    labels so no normalisation is required there.
     """
 
-    return f"{direction}|{name.strip()}|{scheduled.isoformat()}"
+    return f"{direction}|{_canonical_line_name(name)}|{scheduled.isoformat()}"
 
 
 def _coerce_aware(value: datetime) -> datetime:
@@ -397,11 +465,19 @@ def _trip_to_json(trip: _PendingTrip) -> dict[str, Any]:
 
 
 def _trip_from_json(data: Mapping[str, Any]) -> _PendingTrip | None:
-    """Best-effort parser for a single ledger entry; ``None`` on shape error."""
+    """Best-effort parser for a single ledger entry; ``None`` on shape error.
+
+    The ``name`` field flows through :func:`_canonical_line_name` so an
+    old ledger written before the H1 normalisation fix (which carried
+    spaced names like ``"S 2"``) is migrated to the canonical form on
+    next load — without that step, an entry stored as ``"S 2"`` would
+    fail to match a freshly-observed ``"S2"`` on the next tick and the
+    train would be tracked twice.
+    """
 
     try:
         direction = str(data["direction"]).strip()
-        name = str(data["name"]).strip()
+        name = _canonical_line_name(data.get("name"))
         scheduled = datetime.fromisoformat(str(data["scheduled"]))
         latest_delay = float(data["latest_delay_minutes"])
         last_seen = datetime.fromisoformat(str(data["last_seen_at"]))
@@ -512,6 +588,158 @@ def _purge_stale_entries(
     for key in stale:
         del state[key]
     return len(stale)
+
+
+def _load_recently_finalised(path: Path) -> dict[str, datetime]:
+    """Read the recently-finalised companion ledger from *path*.
+
+    Schema: ``{identity_key: iso-8601-timestamp}``. Returns an empty
+    dict on missing / oversize / unparseable input — the WARNING log
+    line distinguishes the silent fresh-start from a healthy first
+    run.
+    """
+
+    raw = read_capped_text(
+        path,
+        max_bytes=RECENTLY_FINALISED_MAX_BYTES,
+        label="recently finalised",
+        logger=LOGGER,
+    )
+    if raw is None:
+        return {}
+    if not raw.strip():
+        return {}
+    try:
+        payload = _json_lib.loads(raw)
+    except (ValueError, RecursionError) as exc:
+        LOGGER.warning(
+            "Recently-Finalised-Ledger korrupt (%s) — starte mit leerem Set.",
+            sanitize_log_arg(str(exc)),
+        )
+        return {}
+    if not isinstance(payload, Mapping):
+        LOGGER.warning(
+            "Recently-Finalised-Ledger hat unerwartetes Top-Level-Format — "
+            "starte mit leerem Set."
+        )
+        return {}
+    out: dict[str, datetime] = {}
+    for key, value in payload.items():
+        if not isinstance(value, str):
+            continue
+        try:
+            ts = datetime.fromisoformat(value)
+        except ValueError:
+            continue
+        out[str(key)] = _coerce_aware(ts)
+    return out
+
+
+def _save_recently_finalised(
+    path: Path, finalised: Mapping[str, datetime]
+) -> bool:
+    """Persist the recently-finalised companion ledger atomically."""
+
+    payload = {key: ts.isoformat() for key, ts in finalised.items()}
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with atomic_write(
+            path,
+            mode="w",
+            encoding="utf-8",
+            permissions=0o644,
+        ) as fh:
+            _json_lib.dump(
+                payload,
+                fh,
+                indent=2,
+                sort_keys=True,
+                ensure_ascii=False,
+            )
+            fh.write("\n")
+        return True
+    except OSError as exc:
+        LOGGER.warning(
+            "Recently-Finalised-Ledger konnte nicht geschrieben werden: %s",
+            sanitize_log_arg(str(exc)),
+        )
+        return False
+
+
+def _purge_finalised_entries(
+    finalised: dict[str, datetime],
+    *,
+    cutoff: datetime,
+) -> int:
+    """Drop finalisation records older than *cutoff*; in-place.
+
+    Once the TTL has elapsed, re-emission of a long-finalised train is
+    indistinguishable from a fresh observation — falling out of the
+    suppression set is the conservative choice (versus retaining
+    forever, which would also count as state-file rot).
+    """
+
+    stale = [key for key, ts in finalised.items() if ts < cutoff]
+    for key in stale:
+        del finalised[key]
+    return len(stale)
+
+
+@contextmanager
+def _ledger_lock(lock_path: Path) -> Iterator[None]:
+    """OS-level advisory lock around the load-modify-save ledger sequence.
+
+    Uses :mod:`fcntl` on POSIX runners (the production target). On
+    platforms without ``fcntl`` (Windows dev boxes) the lock degrades
+    to a no-op — same risk model as the pre-lock code, and the
+    project's production runners are all Linux.
+
+    The lock file is opened in append mode so the first caller
+    creates it without truncating any existing content (we only use
+    its file descriptor; the file body is irrelevant). A WARNING is
+    logged on lock-acquire failures so an operator sees the
+    degradation explicitly.
+    """
+
+    try:
+        import fcntl  # POSIX-only; fcntl is in the stdlib on Linux.
+    except ImportError:  # pragma: no cover - non-POSIX dev machines.
+        yield
+        return
+
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        fd = lock_path.open("a", encoding="utf-8")
+    except OSError as exc:
+        LOGGER.warning(
+            "Konnte Ledger-Lock-Datei nicht öffnen (%s) — fahre ohne Lock fort.",
+            sanitize_log_arg(str(exc)),
+        )
+        yield
+        return
+    try:
+        try:
+            fcntl.flock(fd.fileno(), fcntl.LOCK_EX)
+        except OSError as exc:
+            LOGGER.warning(
+                "Ledger-Lock konnte nicht erworben werden (%s) — fahre ohne "
+                "Lock fort.",
+                sanitize_log_arg(str(exc)),
+            )
+            yield
+            return
+        try:
+            yield
+        finally:
+            try:
+                fcntl.flock(fd.fileno(), fcntl.LOCK_UN)
+            except OSError:
+                pass
+    finally:
+        try:
+            fd.close()
+        except OSError:
+            pass
 
 
 # ---- VAO ``/trip`` request + parse ----------------------------------------
@@ -893,7 +1121,11 @@ def _collect_sbahn_leg_observations(
         if not _is_sbahn_leg(leg):
             continue
 
-        name = str(leg.get("name") or "").strip()
+        # Canonicalise the line designation at extraction time so the
+        # identity key + persisted ``_PendingTrip.name`` are stable
+        # against VAO format drift (``"S 2"`` ↔ ``"S2"``) and
+        # separator collisions (a ``|`` inside the raw name).
+        name = _canonical_line_name(leg.get("name") or "")
         if not name:
             continue
         origin = leg.get("Origin")
@@ -940,6 +1172,7 @@ def _observe_legs(
     *,
     direction: str,
     now: datetime,
+    recently_finalised: Mapping[str, datetime] | None = None,
 ) -> int:
     """Insert / overwrite *observations* in *state* with latest-wins semantics.
 
@@ -951,13 +1184,30 @@ def _observe_legs(
     typically the one taken closest to the train's actual departure,
     which is most accurate.
 
-    Returns the number of state entries written this call (matches
-    ``len(observations)`` by construction; exposed for diagnostics).
+    *recently_finalised* (M4 defence): keys present in this mapping
+    were already finalised on a prior tick. If VAO unexpectedly
+    returns one of them again (anomalous upstream behaviour at the
+    lookahead boundary), the observation is skipped — without this
+    gate, the rediscovered train would re-enter the ledger, get
+    finalised again on the next tick, and produce a second CSV row
+    for the same physical train. Pass ``None`` to disable the gate
+    (default for legacy unit tests).
+
+    Returns the number of state entries written this call.
     """
 
+    suppressed: Mapping[str, datetime] = recently_finalised or {}
     written = 0
     for obs in observations:
         key = _identity_key(direction, obs.name, obs.scheduled)
+        if key in suppressed:
+            LOGGER.info(
+                "Stammstrecke: bereits finalisierter Zug erneut beobachtet "
+                "(%s, scheduled=%s) — Beobachtung verworfen.",
+                sanitize_log_arg(direction),
+                sanitize_log_arg(obs.scheduled.isoformat()),
+            )
+            continue
         state[key] = _PendingTrip(
             direction=direction,
             name=obs.name,
@@ -974,8 +1224,9 @@ def _finalize_departed(
     *,
     direction: str,
     now: datetime,
-) -> list[float]:
-    """Pop departed trips for *direction* and return their latest delays.
+    recently_finalised: dict[str, datetime] | None = None,
+) -> list[_PendingTrip]:
+    """Pop departed trips for *direction* and return them as full records.
 
     A trip is "departed" when ``scheduled <= now`` — the latest
     reading we ever recorded for that train is then committed to the
@@ -984,7 +1235,18 @@ def _finalize_departed(
     later cron tick. Sort order is ascending scheduled time so the
     resulting CSV row's mean is computed over a deterministic sample.
 
-    Mutates *state* in place.
+    The returned list contains the full :class:`_PendingTrip` records
+    (not just the delay floats) so the caller can scope the CSV row
+    timestamp to the actual scheduled departure time — important at
+    the New-Year boundary, where the cron tick wall clock and the
+    train's scheduled year can differ.
+
+    When *recently_finalised* is supplied (the canonical production
+    path), each popped key is registered there with ``now`` as its
+    finalisation timestamp so a future re-observation can be
+    suppressed by :func:`_observe_legs`.
+
+    Mutates *state* (and, when supplied, *recently_finalised*) in place.
     """
 
     finalize_keys = [
@@ -993,11 +1255,13 @@ def _finalize_departed(
         if trip.direction == direction and trip.scheduled <= now
     ]
     finalize_keys.sort(key=lambda k: state[k].scheduled)
-    delays: list[float] = []
+    finalised: list[_PendingTrip] = []
     for key in finalize_keys:
-        delays.append(state[key].latest_delay_minutes)
+        finalised.append(state[key])
         del state[key]
-    return delays
+        if recently_finalised is not None:
+            recently_finalised[key] = now
+    return finalised
 
 
 # ---- Cache field-preservation validators ---------------------------------
@@ -1358,6 +1622,7 @@ def _process_direction(
     state: dict[str, _PendingTrip],
     *,
     when: datetime,
+    recently_finalised: Mapping[str, datetime] | None = None,
 ) -> str:
     """Query ``direction`` once and observe its legs into *state*.
 
@@ -1476,14 +1741,16 @@ def _process_direction(
         observations,
         direction=direction.target_label,
         now=when,
+        recently_finalised=recently_finalised,
     )
     LOGGER.info(
         "Stammstrecke: Richtung %s — %d S-Bahn-Legs aus %d Trips beobachtet "
-        "(Ledger-Updates: %d).",
+        "(Ledger-Updates: %d, Anti-Doppelzähl-Skips: %d).",
         direction.target_label,
         len(observations),
         len(trips),
         written,
+        len(observations) - written,
     )
     return "ok"
 
@@ -1510,93 +1777,135 @@ def main() -> int:
     successes = 0
     errors = 0
 
-    # Pending-trip ledger: latest-observation-wins dedup across cron
-    # ticks. Load up front, observe both directions into it, then
-    # finalise departed trains at the end of the tick. Load failures
-    # / corruption start the script with an empty ledger (logged at
-    # WARNING by ``_load_pending_trips``) so a one-off bad state file
-    # never blocks the cron pipeline.
-    state = _load_pending_trips(PENDING_TRIPS_PATH)
-    purged = _purge_stale_entries(state, cutoff=when - PENDING_TTL)
-    if purged:
-        LOGGER.info(
-            "Stammstrecke: %d veraltete Ledger-Einträge entfernt (TTL %s).",
-            purged,
-            PENDING_TTL,
-        )
+    # OS-level lock around the entire load-modify-save cycle: cron
+    # ticks are concurrency-grouped, but ``workflow_dispatch`` /
+    # manual triggers can bypass that gate. Without the lock, two
+    # concurrent runs would each load the same baseline ledger and
+    # the slower writer's observations would be silently dropped at
+    # save time.
+    with _ledger_lock(PENDING_TRIPS_LOCK_PATH):
+        # Pending-trip ledger: latest-observation-wins dedup across
+        # cron ticks. Load up front, observe both directions, then
+        # finalise departed trains. Load failures / corruption start
+        # the script with an empty ledger (logged at WARNING by the
+        # loader) so a one-off bad state file never blocks the cron.
+        state = _load_pending_trips(PENDING_TRIPS_PATH)
+        recently_finalised = _load_recently_finalised(RECENTLY_FINALISED_PATH)
 
-    with ExitStack() as stack:
-        try:
-            session = _build_session(stack)
-        except Exception as exc:  # pragma: no cover - defensive
-            LOGGER.error(
-                "Stammstrecke: VOR-Session konnte nicht erstellt werden: %s.",
-                type(exc).__name__,
+        cutoff = when - PENDING_TTL
+        purged_pending = _purge_stale_entries(state, cutoff=cutoff)
+        purged_finalised = _purge_finalised_entries(
+            recently_finalised, cutoff=cutoff
+        )
+        if purged_pending or purged_finalised:
+            LOGGER.info(
+                "Stammstrecke: %d veraltete Pending-Einträge, %d veraltete "
+                "Finalisiert-Einträge entfernt (TTL %s).",
+                purged_pending,
+                purged_finalised,
+                PENDING_TTL,
             )
-            return 1
 
-        for direction in DIRECTIONS:
+        with ExitStack() as stack:
             try:
-                status = _process_direction(
-                    session, direction, state, when=when
+                session = _build_session(stack)
+            except Exception as exc:  # pragma: no cover - defensive
+                LOGGER.error(
+                    "Stammstrecke: VOR-Session konnte nicht erstellt werden: %s.",
+                    type(exc).__name__,
                 )
-            except CircuitBreakerOpen:
-                LOGGER.warning(
-                    "Stammstrecke: Circuit breaker offen (%d aufeinanderfolgende Fehler) — "
-                    "weitere Richtungen werden übersprungen.",
-                    _BREAKER.consecutive_failures,
+                return 1
+
+            for direction in DIRECTIONS:
+                try:
+                    status = _process_direction(
+                        session,
+                        direction,
+                        state,
+                        when=when,
+                        recently_finalised=recently_finalised,
+                    )
+                except CircuitBreakerOpen:
+                    LOGGER.warning(
+                        "Stammstrecke: Circuit breaker offen (%d "
+                        "aufeinanderfolgende Fehler) — weitere "
+                        "Richtungen werden übersprungen.",
+                        _BREAKER.consecutive_failures,
+                    )
+                    break
+
+                if status in ("error", "quota_exceeded"):
+                    errors += 1
+                else:
+                    successes += 1
+
+        # Finalisation pass: every train whose scheduled departure
+        # is in the past (relative to this tick) is committed to the
+        # CSV with its latest observed delay and removed from the
+        # pending ledger; its identity key flows into the
+        # recently-finalised ledger so any VAO re-emission at the
+        # lookahead boundary cannot produce a second CSV row.
+        #
+        # Trains are grouped by their scheduled year so a cron tick
+        # straddling the New-Year boundary (e.g. tick at 00:05 on
+        # Jan 1 finalising a train scheduled at 23:55 on Dec 31)
+        # writes the row into the calendar year of the actual
+        # departure — preventing the year-wide dashboard counter
+        # from quietly losing the observation.
+        csv_rows_written = 0
+        for direction in DIRECTIONS:
+            finalised = _finalize_departed(
+                state,
+                direction=direction.target_label,
+                now=when,
+                recently_finalised=recently_finalised,
+            )
+            if not finalised:
+                continue
+            by_year: dict[int, list[_PendingTrip]] = {}
+            for trip in finalised:
+                by_year.setdefault(trip.scheduled.year, []).append(trip)
+            for year in sorted(by_year):
+                year_trips = by_year[year]
+                mean_minutes = float(
+                    statistics.mean(t.latest_delay_minutes for t in year_trips)
                 )
-                break
+                # Use the latest scheduled time in the year-group as
+                # the row timestamp — anchors the row to the actual
+                # departure window rather than the (potentially
+                # next-year) cron wall clock.
+                row_timestamp = max(t.scheduled for t in year_trips)
+                LOGGER.info(
+                    "Stammstrecke: Richtung %s, Jahr %d — %d Zug/Züge "
+                    "finalisiert, ⌀ %.2f Minuten (Schwelle %d).",
+                    direction.target_label,
+                    year,
+                    len(year_trips),
+                    mean_minutes,
+                    DELAY_THRESHOLD_MINUTES,
+                )
+                append_stammstrecke_row(
+                    timestamp=row_timestamp,
+                    direction=direction.target_label,
+                    delay_minutes=mean_minutes,
+                )
+                csv_rows_written += 1
 
-            if status in ("error", "quota_exceeded"):
-                errors += 1
-            else:
-                successes += 1
-
-    # Finalisation pass: every train whose scheduled departure is in
-    # the past (relative to this tick) is committed to the CSV with
-    # its latest observed delay and removed from the ledger. A train
-    # contributes to exactly one CSV row over its whole observation
-    # history regardless of how many cron ticks saw it in the
-    # lookahead.
-    csv_rows_written = 0
-    for direction in DIRECTIONS:
-        finalised = _finalize_departed(
-            state, direction=direction.target_label, now=when
-        )
-        if not finalised:
-            continue
-        mean_minutes = float(statistics.mean(finalised))
-        LOGGER.info(
-            "Stammstrecke: Richtung %s — %d Zug/Züge finalisiert, "
-            "⌀ %.2f Minuten (Schwelle %d).",
-            direction.target_label,
-            len(finalised),
-            mean_minutes,
-            DELAY_THRESHOLD_MINUTES,
-        )
-        append_stammstrecke_row(
-            timestamp=when,
-            direction=direction.target_label,
-            delay_minutes=mean_minutes,
-        )
-        csv_rows_written += 1
-
-    # Persist the ledger AFTER finalisation so a crash between
-    # finalise and save would, on the next tick, simply re-finalise
-    # the same trains (now with already-departed scheduled times, no
-    # new observations, but the old ``latest_delay_minutes`` still
-    # present) — i.e. degraded but not silent.
-    _save_pending_trips(PENDING_TRIPS_PATH, state)
+        # Persist both ledgers AFTER finalisation. A crash between
+        # finalise and save would, on the next tick, simply
+        # re-finalise the same trains — degraded but not silent.
+        _save_pending_trips(PENDING_TRIPS_PATH, state)
+        _save_recently_finalised(RECENTLY_FINALISED_PATH, recently_finalised)
 
     LOGGER.info(
         "Stammstrecke: %d Beobachtung(en), %d CSV-Zeile(n) geschrieben "
-        "(Erfolg=%d, Fehler=%d, Ledger=%d offen).",
+        "(Erfolg=%d, Fehler=%d, Pending=%d offen, Finalisiert=%d).",
         successes,
         csv_rows_written,
         successes,
         errors,
         len(state),
+        len(recently_finalised),
     )
 
     # Exit 1 only if every direction failed AND at least one was attempted —
