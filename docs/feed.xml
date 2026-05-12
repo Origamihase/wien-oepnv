@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 12 May 2026 23:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 00:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5718e5adfd8ff17a7b75efa1723cae5513a3a9e89e84929ae6d9338f8ba24e1d</guid>
+      <pubDate>Tue, 12 May 2026 23:35:00 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 00:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 23:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 01:00:00 +0200</ext:ends_at>
+      <description>Linie U4: Unregelmäßige Intervalle in Richtung Heiligenstadt. Grund: Verunreinigung im Haltestellenbereich Hütteldorf. [12.05.2026 – 13.05.2026]</description>
+      <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in Richtung Heiligenstadt. Grund: Verunreinigung im Haltestellenbereich Hütteldorf.<br/>[12.05.2026 – 13.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,37 +32,15 @@
       <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U6: Verunreinigung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515</guid>
-      <pubDate>Tue, 12 May 2026 22:57:00 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 08:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 22:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Verunreinigung. [Am 12.05.2026]</description>
-      <content:encoded><![CDATA[Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Verunreinigung.<br/>[Am 12.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Fahrtbehinderung Signalstörung]]></title>
+      <title><![CDATA[2: Signalstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f6742e2e14a2e570249887c5b57afe641256f9d269c64df8e3fe64db025f2eea</guid>
       <pubDate>Tue, 12 May 2026 22:12:00 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 09:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 22:32:42 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.05.2026]</description>
-      <content:encoded><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Veranstaltung Betrieb ab Schwarzenbergplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8b1e2f187f18995bbf65eba67f26d4902602640fca1243e0baf4e442d8812f93</guid>
-      <pubDate>Tue, 12 May 2026 15:12:41 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 12:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 15:12:41 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:59:00 +0200</ext:ends_at>
-      <description>Betrieb ab Schwarzenbergplatz [Am 12.05.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz<br/>[Am 12.05.2026]]]></content:encoded>
+      <ext:starts_at>Tue, 12 May 2026 22:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 00:50:00 +0200</ext:ends_at>
+      <description>Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [12.05.2026 – 13.05.2026]</description>
+      <content:encoded><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[12.05.2026 – 13.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Wien Westbahnhof ↔ Wien Hütteldorf / Wien Hütteldorf ↔ Tullnerbach-Pressbaum / Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
@@ -92,9 +81,9 @@
       <pubDate>Tue, 12 May 2026 00:00:20 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
       <ext:starts_at>Tue, 12 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 12.05.2026]</description>
-      <content:encoded><![CDATA[[Am 12.05.2026]]]></content:encoded>
+      <ext:ends_at>Wed, 13 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[12.05.2026 – 13.05.2026]</description>
+      <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11: Betrieb ab Frödenplatz]]></title>
@@ -103,9 +92,9 @@
       <pubDate>Tue, 12 May 2026 00:00:20 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
       <ext:starts_at>Tue, 12 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 12.05.2026]</description>
-      <content:encoded><![CDATA[[Am 12.05.2026]]]></content:encoded>
+      <ext:ends_at>Wed, 13 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[12.05.2026 – 13.05.2026]</description>
+      <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
@@ -114,9 +103,20 @@
       <pubDate>Tue, 12 May 2026 00:00:18 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
       <ext:starts_at>Tue, 12 May 2026 00:00:18 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 12.05.2026]</description>
-      <content:encoded><![CDATA[[Am 12.05.2026]]]></content:encoded>
+      <ext:ends_at>Wed, 13 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[12.05.2026 – 13.05.2026]</description>
+      <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
+      <pubDate>Tue, 12 May 2026 00:00:12 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 00:00:12 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[12.05.2026 – 13.05.2026]</description>
+      <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
