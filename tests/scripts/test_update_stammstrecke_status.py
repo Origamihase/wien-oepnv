@@ -1385,12 +1385,13 @@ def test_load_pending_trips_drops_malformed_entries_but_keeps_valid_ones(
     path = tmp_path / "mixed.json"
     path.write_text(json.dumps(payload), encoding="utf-8")
     result = script._load_pending_trips(path)
-    assert set(result) == {"valid-key"}
-    # H1 normalisation: the loader canonicalises the persisted ``name``
-    # so an older ledger written with the spaced form survives the
-    # round-trip as the no-space canonical form.
-    assert result["valid-key"].name == "S1"
-    assert result["valid-key"].latest_delay_minutes == 4.0
+    # After the HIGH-1 fix the loader rebuilds the key via _identity_key,
+    # so the raw disk key "valid-key" is replaced by the canonical form.
+    sched = datetime.fromisoformat("2026-05-09T08:00:00+02:00")
+    canonical_key = script._identity_key("Meidling", "S1", sched)
+    assert set(result) == {canonical_key}
+    assert result[canonical_key].name == "S1"
+    assert result[canonical_key].latest_delay_minutes == 4.0
 
 
 def test_save_pending_trips_round_trips_through_load(tmp_path: Path) -> None:
@@ -1818,18 +1819,17 @@ def test_load_pending_trips_normalises_legacy_spaced_names(
 ) -> None:
     """A ledger written before the H1 fix used ``"S 2"`` (with space).
 
-    On load, the parser canonicalises to ``"S2"`` so a subsequent
-    observation of the same train (in the no-space form VAO now
-    emits) hits the existing entry instead of creating a duplicate.
+    On load, the parser canonicalises the name to ``"S2"`` AND rebuilds
+    the dict key via ``_identity_key`` so a subsequent observation of the
+    same train (using the no-space form VAO now emits) hits the existing
+    entry instead of creating a duplicate.
     """
+    sched_iso = "2026-05-09T08:00:00+02:00"
     payload = {
-        # Note: the key still carries the old spaced form because
-        # nothing else is going to rebuild it — but the loaded record's
-        # ``name`` is canonicalised.
         "Meidling|S 2|2026-05-09T08:00:00+02:00": {
             "direction": "Meidling",
             "name": "S 2",
-            "scheduled": "2026-05-09T08:00:00+02:00",
+            "scheduled": sched_iso,
             "latest_delay_minutes": 3.0,
             "last_seen_at": "2026-05-09T07:30:00+02:00",
         },
@@ -1840,6 +1840,10 @@ def test_load_pending_trips_normalises_legacy_spaced_names(
     assert len(state) == 1
     only = next(iter(state.values()))
     assert only.name == "S2"
+    # The key must be the canonical form, not the old spaced form.
+    sched = datetime.fromisoformat(sched_iso)
+    assert script._identity_key("Meidling", "S2", sched) in state
+    assert "Meidling|S 2|2026-05-09T08:00:00+02:00" not in state
 
 
 def test_finalize_departed_splits_by_scheduled_year_at_year_boundary() -> None:
@@ -2100,5 +2104,201 @@ def test_main_suppresses_re_observation_of_finalised_train(
     assert len(csv_calls) == 1, (
         "Recently-finalised gate must suppress the duplicate — "
         "without it, the train would be counted twice."
+    )
+
+
+# ---- Post-merge audit follow-up tests (HIGH/MEDIUM) ----------------------
+
+
+def test_load_pending_trips_rebuilds_canonical_key_from_old_disk_key(
+    tmp_path: Path,
+) -> None:
+    """HIGH 1: legacy disk key ``"Meidling|S 2|…"`` must be replaced by the
+    canonical key ``"Meidling|S2|…"`` so that a subsequent observation of
+    the same train (using the no-space form) hits the existing entry
+    instead of inserting a duplicate.
+
+    Before the fix, ``_load_pending_trips`` kept the raw disk key via
+    ``state[str(key)] = trip``.  After the fix it calls ``_identity_key``
+    so the stored key always matches the key any observer would compute.
+    """
+    sched_iso = "2026-05-09T08:00:00+02:00"
+    payload = {
+        "Meidling|S 2|2026-05-09T08:00:00+02:00": {
+            "direction": "Meidling",
+            "name": "S 2",
+            "scheduled": sched_iso,
+            "latest_delay_minutes": 3.0,
+            "last_seen_at": "2026-05-09T07:30:00+02:00",
+        },
+    }
+    path = tmp_path / "legacy.json"
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    state = script._load_pending_trips(path)
+    assert len(state) == 1
+    sched = datetime.fromisoformat(sched_iso)
+    expected_key = script._identity_key("Meidling", "S2", sched)
+    assert expected_key in state, (
+        f"Expected canonical key {expected_key!r} in state; got {list(state.keys())}"
+    )
+    # The old spaced key must NOT survive in the dict.
+    assert "Meidling|S 2|2026-05-09T08:00:00+02:00" not in state
+
+
+def test_canonical_line_name_handles_none_and_falsy_values() -> None:
+    """MEDIUM 3: ``str(value or "")`` silently collapses falsy non-None
+    values such as ``0`` (``str(0 or "")`` → ``""``).  The corrected
+    form ``str(value) if value is not None else ""`` must return the
+    string representation for any non-None input.
+    """
+    # None → empty string (no change from old behaviour).
+    assert script._canonical_line_name(None) == ""
+    # 0 is falsy but not None; old code would return ""; new must return "0".
+    assert script._canonical_line_name(0) == "0"
+    # False is falsy but not None.
+    assert script._canonical_line_name(False) == "FALSE"
+    # Empty string → empty string (unchanged).
+    assert script._canonical_line_name("") == ""
+
+
+def test_save_order_recently_finalised_before_pending_trips(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """MEDIUM 1: ``_save_recently_finalised`` must be called BEFORE
+    ``_save_pending_trips`` in main().
+
+    If the process crashes between the two writes the safer failure mode
+    is:  recently_finalised durable + pending not yet removed  (train is
+    re-observed but silently suppressed by the gate on the next tick)
+    rather than:  pending removed + recently_finalised not yet written
+    (train is gone from pending but the gate doesn't know → it can be
+    double-finalised if VAO re-emits it).
+
+    This test verifies the call order by recording which save function
+    fires first.
+    """
+    state_path = tmp_path / "pending_trips.json"
+    finalised_path = tmp_path / "recently_finalised.json"
+    monkeypatch.setattr(script, "PENDING_TRIPS_PATH", state_path)
+    monkeypatch.setattr(script, "RECENTLY_FINALISED_PATH", finalised_path)
+    monkeypatch.setattr(
+        script, "PENDING_TRIPS_LOCK_PATH", tmp_path / "pending_trips.lock"
+    )
+
+    call_order: list[str] = []
+
+    real_save_finalised = script._save_recently_finalised
+    real_save_pending = script._save_pending_trips
+
+    def spy_save_recently_finalised(path: Any, data: Any) -> bool:
+        call_order.append("recently_finalised")
+        return real_save_finalised(path, data)
+
+    def spy_save_pending_trips(path: Any, state: Any) -> bool:
+        call_order.append("pending_trips")
+        return real_save_pending(path, state)
+
+    monkeypatch.setattr(script, "_save_recently_finalised", spy_save_recently_finalised)
+    monkeypatch.setattr(script, "_save_pending_trips", spy_save_pending_trips)
+
+    def fake_query(
+        session: Any, direction: Any, *, when: datetime, timeout: int = 0
+    ) -> list[dict[str, Any]]:
+        del session, timeout, when
+        return []
+
+    monkeypatch.setattr(script, "_query_trips", fake_query)
+
+    assert script.main() == 0
+    assert call_order == ["recently_finalised", "pending_trips"], (
+        f"Expected recently_finalised saved before pending_trips; got {call_order}"
+    )
+
+
+def test_format_drift_finalized_train_suppressed_on_respaced_reemission(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """HIGH 1 + M4 integration: a train finalised as ``"S1"`` must NOT
+    be double-finalised when the VAO re-emits it with the old
+    ``"S 1"`` spacing.
+
+    The recently-finalised gate stores canonical keys produced by
+    ``_identity_key``.  ``_identity_key`` calls ``_canonical_line_name``
+    which normalises ``"S 1"`` → ``"S1"``.  So the re-emitted ``"S 1"``
+    form maps to the same key as the already-recorded ``"S1"`` entry and
+    is silently suppressed.
+    """
+    state_path = tmp_path / "pending_trips.json"
+    finalised_path = tmp_path / "recently_finalised.json"
+    monkeypatch.setattr(script, "PENDING_TRIPS_PATH", state_path)
+    monkeypatch.setattr(script, "RECENTLY_FINALISED_PATH", finalised_path)
+    monkeypatch.setattr(
+        script, "PENDING_TRIPS_LOCK_PATH", tmp_path / "pending_trips.lock"
+    )
+
+    csv_calls: list[dict[str, Any]] = []
+
+    def fake_append(
+        *,
+        timestamp: datetime,
+        direction: str,
+        delay_minutes: float,
+        stats_dir: Path | None = None,
+    ) -> bool:
+        del stats_dir
+        csv_calls.append({"direction": direction, "delay_minutes": delay_minutes})
+        return True
+
+    monkeypatch.setattr(script, "append_stammstrecke_row", fake_append)
+
+    # Tick A: VAO emits the train with canonical name "S1" (no space).
+    # Train already past scheduled time → immediately finalised.
+    def query_tick_a(
+        session: Any, direction: Any, *, when: datetime, timeout: int = 0
+    ) -> list[dict[str, Any]]:
+        del session, timeout
+        if direction.target_label != "Meidling":
+            return []
+        return [
+            _trip(
+                leg_name="S1",
+                delay_minutes=5.0,
+                leg_origin_date="2026-05-09",
+                leg_origin_time="08:00:00",
+            )
+        ]
+
+    tick_a = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
+    monkeypatch.setattr(script, "_now_vienna", lambda: tick_a)
+    monkeypatch.setattr(script, "_query_trips", query_tick_a)
+    assert script.main() == 0
+    assert len(csv_calls) == 1
+
+    # Tick B: VAO re-emits the SAME train with the OLD spaced name "S 1".
+    # The canonical gate must recognise it as already finalised.
+    def query_tick_b(
+        session: Any, direction: Any, *, when: datetime, timeout: int = 0
+    ) -> list[dict[str, Any]]:
+        del session, timeout
+        if direction.target_label != "Meidling":
+            return []
+        return [
+            _trip(
+                leg_name="S 1",
+                delay_minutes=5.0,
+                leg_origin_date="2026-05-09",
+                leg_origin_time="08:00:00",
+            )
+        ]
+
+    tick_b = datetime(2026, 5, 9, 9, 0, tzinfo=VIENNA_TZ)
+    monkeypatch.setattr(script, "_now_vienna", lambda: tick_b)
+    monkeypatch.setattr(script, "_query_trips", query_tick_b)
+    assert script.main() == 0
+    assert len(csv_calls) == 1, (
+        "Re-emission with spaced name 'S 1' must be suppressed because "
+        "'S1' was already finalised in tick A."
     )
 

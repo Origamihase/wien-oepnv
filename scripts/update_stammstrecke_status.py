@@ -416,10 +416,13 @@ def _canonical_line_name(value: object) -> str:
     single canonicalisation point regardless of whether the caller
     has a guaranteed-``str`` value (``leg.get("name") or ""``) or a
     heterogeneous ``Mapping[str, Any]`` slot (``data.get("name")``)
-    — the body coerces via ``str(value or "")`` either way.
+    — the body coerces via ``str(value) if value is not None else ""``
+    to avoid the falsy-collapse of ``str(0 or "")`` returning ``""``.
     """
 
-    cleaned = _NAME_NORMALISE_RE.sub("", str(value or "")).replace("|", "")
+    cleaned = _NAME_NORMALISE_RE.sub(
+        "", str(value) if value is not None else ""
+    ).replace("|", "")
     return cleaned.upper()
 
 
@@ -540,7 +543,8 @@ def _load_pending_trips(path: Path) -> dict[str, _PendingTrip]:
         trip = _trip_from_json(value)
         if trip is None:
             continue
-        state[str(key)] = trip
+        canonical_key = _identity_key(trip.direction, trip.name, trip.scheduled)
+        state[canonical_key] = trip
     return state
 
 
@@ -739,13 +743,19 @@ def _ledger_lock(lock_path: Path) -> Iterator[None]:
         finally:
             try:
                 fcntl.flock(fd.fileno(), fcntl.LOCK_UN)
-            except OSError:
-                pass
+            except OSError as exc:
+                LOGGER.debug(
+                    "Ledger-Lock konnte nicht freigegeben werden: %s",
+                    sanitize_log_arg(str(exc)),
+                )
     finally:
         try:
             fd.close()
-        except OSError:
-            pass
+        except OSError as exc:
+            LOGGER.debug(
+                "Ledger-Lock-Datei konnte nicht geschlossen werden: %s",
+                sanitize_log_arg(str(exc)),
+            )
 
 
 # ---- VAO ``/trip`` request + parse ----------------------------------------
@@ -1897,11 +1907,13 @@ def main() -> int:
                 )
                 csv_rows_written += 1
 
-        # Persist both ledgers AFTER finalisation. A crash between
-        # finalise and save would, on the next tick, simply
-        # re-finalise the same trains — degraded but not silent.
-        _save_pending_trips(PENDING_TRIPS_PATH, state)
+        # Persist both ledgers AFTER finalisation. Save recently_finalised
+        # FIRST so that, on a crash between the two writes, the
+        # suppression set is already durable — the pending entry will
+        # be re-observed on the next tick but skipped by the
+        # recently_finalised guard instead of being double-finalised.
         _save_recently_finalised(RECENTLY_FINALISED_PATH, recently_finalised)
+        _save_pending_trips(PENDING_TRIPS_PATH, state)
 
     LOGGER.info(
         "Stammstrecke: %d Beobachtung(en), %d CSV-Zeile(n) geschrieben "
