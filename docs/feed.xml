@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 12 May 2026 17:30:35 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 18:00:46 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
+      <pubDate>Tue, 12 May 2026 17:58:00 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 11:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 17:59:58 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 13A: Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 18:20 Uhr. Grund: Falschparker im Bereich Piaristengasse. [Am 12.05.2026]</description>
+      <content:encoded><![CDATA[Linie 13A: Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 18:20 Uhr. Grund: Falschparker im Bereich Piaristengasse.<br/>[Am 12.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
+      <pubDate>Tue, 12 May 2026 17:41:00 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 13:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 17:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U3: Unregelmäßige Intervalle in Richtung Simmering. Grund: Polizeieinsatz. [Am 12.05.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Unregelmäßige Intervalle in Richtung Simmering. Grund: Polizeieinsatz.<br/>[Am 12.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[52: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -65,59 +87,37 @@
       <content:encoded><![CDATA[Linie 30A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[26: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <title><![CDATA[26: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5aaba97144ab1f9a110bad400e29c07d9fcca47c4b94a7b2a49b8438a1b01109</guid>
       <pubDate>Tue, 12 May 2026 15:58:00 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 07:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 16:57:21 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 12 May 2026 15:58:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.05.2026]</description>
       <content:encoded><![CDATA[Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[27: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <title><![CDATA[27: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">625312ff0a505ab67720d68ebb14aca83e0a6ed463920bd05b72da054c66ead9</guid>
       <pubDate>Tue, 12 May 2026 15:58:00 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 07:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 16:56:21 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 12 May 2026 15:58:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.05.2026]</description>
       <content:encoded><![CDATA[Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[25: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <title><![CDATA[25: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a366c32c65098559124d9098d458131cf3e677c92ae8069e81b721bb4295db1a</guid>
       <pubDate>Tue, 12 May 2026 15:58:00 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 17:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 16:50:01 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 12 May 2026 15:58:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.05.2026]</description>
       <content:encoded><![CDATA[Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Veranstaltung Betrieb ab Schwarzenbergplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8b1e2f187f18995bbf65eba67f26d4902602640fca1243e0baf4e442d8812f93</guid>
-      <pubDate>Tue, 12 May 2026 15:12:41 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 12:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 15:12:41 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:59:00 +0200</ext:ends_at>
-      <description>Betrieb ab Schwarzenbergplatz [Am 12.05.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz<br/>[Am 12.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9</guid>
-      <pubDate>Tue, 12 May 2026 14:40:00 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 11:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 14:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.05.2026]</description>
-      <content:encoded><![CDATA[Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
