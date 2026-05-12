@@ -52,7 +52,7 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 36 |
+| Beobachtungen (gesamt) | 44 |
 | Durchschnittliche Verspätung | 0.3 min |
 | Kritische Verspätungen (> 9 min) | 0 |
 | Letzte Aktualisierung | 2026-05-12 14:49 CEST |
