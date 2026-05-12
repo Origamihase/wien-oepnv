@@ -37,10 +37,10 @@ Mehr Statistiken findest du hier:
 ### Verspätungen auf der S-Bahn Stammstrecke
 
 <!-- STATS:STAMMSTRECKE_LIVE:BEGIN -->
-> Letzte 60 Minuten – automatisch aktualisiert vom Workflow update-cycle.yml.
+> _Letzte 60 Minuten – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
 
 | Kennzahl | Wert |
-| :--- | :--- |
+| -------- | ---- |
 | Beobachtungen (gesamt) | 2 |
 | Durchschnittliche Verspätung | 0.0 min |
 | Kritische Verspätungen (> 9 min) | 0 |
