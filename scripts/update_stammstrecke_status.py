@@ -537,7 +537,7 @@ def _load_pending_trips(path: Path) -> dict[str, _PendingTrip]:
         )
         return {}
     state: dict[str, _PendingTrip] = {}
-    for key, value in payload.items():
+    for value in payload.values():
         if not isinstance(value, Mapping):
             continue
         trip = _trip_from_json(value)
