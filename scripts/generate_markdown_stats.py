@@ -66,6 +66,7 @@ from src.utils.stats import (  # noqa: E402
     WEEKDAY_LABELS,
     stats_path,
 )
+from src.feed.stammstrecke import DELAY_THRESHOLD_MINUTES, FEED_WINDOW  # noqa: E402
 from src.utils.text import (  # noqa: E402
     escape_markdown_cell,
     normalise_markdown_text,
@@ -691,6 +692,20 @@ def _filter_rows_by_window(
     return [r for r in rows if r.timestamp >= cutoff]
 
 
+def _filter_rows_by_timedelta(
+    rows: Iterable[_TimestampedRow],
+    *,
+    delta: timedelta,
+    now: datetime,
+) -> list[_TimestampedRow]:
+    """Return the subset of *rows* whose ``timestamp`` is in the last *delta*.
+    """
+    if delta.total_seconds() <= 0:
+        return []
+    cutoff = now - delta
+    return [r for r in rows if r.timestamp >= cutoff]
+
+
 def _format_thousands(value: int) -> str:
     """Format *value* with German thousands separator ('.')."""
     return f"{value:,}".replace(",", ".")
@@ -699,6 +714,49 @@ def _format_thousands(value: int) -> str:
 def _format_window_timestamp(now: datetime) -> str:
     """Render the "Letzte Aktualisierung" cell as ``YYYY-MM-DD HH:MM TZ``."""
     return now.strftime("%Y-%m-%d %H:%M %Z").rstrip()
+
+
+def render_readme_stammstrecke_live_block(
+    rows: list[StammstreckeRow],
+    *,
+    now: datetime,
+) -> str:
+    """Render the inner content of the ``STATS:STAMMSTRECKE_LIVE`` README block.
+
+    Returns the body that goes *between* the two HTML-comment markers,
+    terminated by a newline so the closing marker stays on its own line.
+    """
+    threshold_label = (
+        f"{DELAY_THRESHOLD_MINUTES:.0f}"
+        if DELAY_THRESHOLD_MINUTES == int(DELAY_THRESHOLD_MINUTES)
+        else f"{DELAY_THRESHOLD_MINUTES:g}"
+    )
+    header = (
+        "> Letzte 60 Minuten – automatisch aktualisiert vom Workflow update-cycle.yml.\n"
+        "\n"
+        "| Kennzahl | Wert |\n"
+        "| :--- | :--- |\n"
+    )
+    if not rows:
+        return (
+            header
+            + "| Beobachtungen (gesamt) | 0 |\n"
+            + "| Durchschnittliche Verspätung | N/A |\n"
+            + f"| Kritische Verspätungen (> {threshold_label} min) | 0 |\n"
+            + f"| Letzte Aktualisierung | {now.strftime('%Y-%m-%d %H:%M %Z')} |\n"
+        )
+
+    count = len(rows)
+    mean_delay = statistics.mean(r.delay_minutes for r in rows)
+    critical_count = sum(1 for r in rows if r.delay_minutes > DELAY_THRESHOLD_MINUTES)
+
+    return (
+        header
+        + f"| Beobachtungen (gesamt) | {count} |\n"
+        + f"| Durchschnittliche Verspätung | {mean_delay:.1f} min |\n"
+        + f"| Kritische Verspätungen (> {threshold_label} min) | {critical_count} |\n"
+        + f"| Letzte Aktualisierung | {now.strftime('%Y-%m-%d %H:%M %Z')} |\n"
+    )
 
 
 def render_readme_stammstrecke_block(
@@ -1079,7 +1137,15 @@ def main(argv: list[str] | None = None) -> int:
             "STAMMSTRECKE README block skipped: 0 rows in %d-day window.",
             args.readme_window_days,
         )
-    if not sections:
+
+    sm_live_window = _filter_rows_by_timedelta(
+        window_sm, delta=FEED_WINDOW, now=now
+    )
+    sections["STAMMSTRECKE_LIVE"] = render_readme_stammstrecke_live_block(
+        sm_live_window,
+        now=now,
+    )
+    if not sm_window and not sm_live_window:
         LOGGER.info(
             "README patch skipped entirely: no data for any marker block in "
             "the %d-day window — existing README content preserved.",
