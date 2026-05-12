@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 12 May 2026 20:30:35 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 21:00:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
+      <pubDate>Tue, 12 May 2026 20:31:00 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 13:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 20:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.05.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Gesundheitszentrum Süd. [Am 12.05.2026]</description>
       <content:encoded><![CDATA[Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Gesundheitszentrum Süd.<br/>[Am 12.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
-      <pubDate>Tue, 12 May 2026 19:37:00 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 13:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 19:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.05.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Veranstaltung Betrieb ab Schwarzenbergplatz]]></title>
