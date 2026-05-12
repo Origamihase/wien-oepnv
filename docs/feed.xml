@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 12 May 2026 21:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 21:30:36 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U3: Betriebsstörung]]></title>
+      <title><![CDATA[15A: Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
-      <pubDate>Tue, 12 May 2026 20:31:00 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 13:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 20:31:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">2ba7372ec735edb5799272fa3492b87c41610ae79a3ebd798228ea20ed7c6cb0</guid>
+      <pubDate>Tue, 12 May 2026 21:14:00 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 21:30:36 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 21:14:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.05.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba</guid>
-      <pubDate>Tue, 12 May 2026 20:09:00 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 20:30:35 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 20:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Gesundheitszentrum Süd. [Am 12.05.2026]</description>
-      <content:encoded><![CDATA[Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Gesundheitszentrum Süd.<br/>[Am 12.05.2026]]]></content:encoded>
+      <description>Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker. [Am 12.05.2026]</description>
+      <content:encoded><![CDATA[Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.<br/>[Am 12.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Veranstaltung Betrieb ab Schwarzenbergplatz]]></title>
@@ -114,6 +103,17 @@
       <pubDate>Tue, 12 May 2026 00:00:12 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
       <ext:starts_at>Tue, 12 May 2026 00:00:12 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 12 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 12.05.2026]</description>
+      <content:encoded><![CDATA[[Am 12.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Tue, 12 May 2026 00:00:11 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 00:00:11 +0200</ext:starts_at>
       <ext:ends_at>Tue, 12 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 12.05.2026]</description>
       <content:encoded><![CDATA[[Am 12.05.2026]]]></content:encoded>
