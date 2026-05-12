@@ -40,5 +40,6 @@ htmlcov/
 # The Stammstrecke workflow commits this file alongside the cache and
 # CSV ledger so the next run reads a coherent count.
 data/*.lock
+cache/**/*.lock
 .hypothesis/
 patch_lines.patch
