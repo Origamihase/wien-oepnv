@@ -1386,7 +1386,10 @@ def test_load_pending_trips_drops_malformed_entries_but_keeps_valid_ones(
     path.write_text(json.dumps(payload), encoding="utf-8")
     result = script._load_pending_trips(path)
     assert set(result) == {"valid-key"}
-    assert result["valid-key"].name == "S 1"
+    # H1 normalisation: the loader canonicalises the persisted ``name``
+    # so an older ledger written with the spaced form survives the
+    # round-trip as the no-space canonical form.
+    assert result["valid-key"].name == "S1"
     assert result["valid-key"].latest_delay_minutes == 4.0
 
 
@@ -1423,13 +1426,19 @@ def test_save_pending_trips_uses_atomic_write(tmp_path: Path) -> None:
 
 
 def test_collect_sbahn_leg_observations_returns_full_records() -> None:
-    """The new collector emits records with name + scheduled + delay."""
+    """The collector emits records with canonical name + scheduled + delay.
+
+    H1 normalisation: the canonical form strips internal whitespace and
+    upper-cases the result, so ``"S 1"`` and ``"S1"`` both produce
+    ``"S1"`` here. This collapses VAO format drift before the value
+    can ever drive an identity key.
+    """
     trips = [
         _trip(leg_name="S 1", delay_minutes=4, leg_origin_time="08:00:00"),
         _trip(leg_name="S 80", delay_minutes=12, leg_origin_time="08:15:00"),
     ]
     observations = script._collect_sbahn_leg_observations(trips)
-    assert [obs.name for obs in observations] == ["S 1", "S 80"]
+    assert [obs.name for obs in observations] == ["S1", "S80"]
     assert [obs.delay_minutes for obs in observations] == [4.0, 12.0]
     assert observations[0].scheduled == datetime(
         2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ
@@ -1515,12 +1524,12 @@ def test_finalize_departed_returns_only_past_scheduled_trips() -> None:
     """Trips with ``scheduled > now`` stay in state; ``scheduled <= now`` finalise."""
     now = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
     past = _make_pending(
-        name="S 1",
+        name="S1",
         scheduled=datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ),
         latest_delay_minutes=5.0,
     )
     future = _make_pending(
-        name="S 80",
+        name="S80",
         scheduled=datetime(2026, 5, 9, 9, 0, tzinfo=VIENNA_TZ),
         latest_delay_minutes=2.0,
     )
@@ -1528,7 +1537,10 @@ def test_finalize_departed_returns_only_past_scheduled_trips() -> None:
     finalised = script._finalize_departed(
         state, direction="Meidling", now=now
     )
-    assert finalised == [5.0]
+    # Finaliser returns full ``_PendingTrip`` records so the caller
+    # can scope the CSV row timestamp to the actual scheduled
+    # departure (M2 — cross-year boundary).
+    assert [trip.latest_delay_minutes for trip in finalised] == [5.0]
     # Only the past entry was popped.
     assert "past-key" not in state
     assert "future-key" in state
@@ -1551,25 +1563,25 @@ def test_finalize_departed_filters_by_direction() -> None:
     finalised = script._finalize_departed(
         state, direction="Meidling", now=now
     )
-    assert finalised == [5.0]
+    assert [trip.latest_delay_minutes for trip in finalised] == [5.0]
     assert "m" not in state
     assert "f" in state
 
 
 def test_finalize_departed_returns_delays_in_scheduled_order() -> None:
-    """Order of returned delays must follow scheduled time ascending.
+    """Order of returned trips must follow scheduled time ascending.
 
     A deterministic order keeps the resulting CSV row's mean
     reproducible across runs and platforms.
     """
     now = datetime(2026, 5, 9, 9, 0, tzinfo=VIENNA_TZ)
     later = _make_pending(
-        name="S 80",
+        name="S80",
         scheduled=datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
         latest_delay_minutes=10.0,
     )
     earlier = _make_pending(
-        name="S 1",
+        name="S1",
         scheduled=datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ),
         latest_delay_minutes=4.0,
     )
@@ -1579,7 +1591,7 @@ def test_finalize_departed_returns_delays_in_scheduled_order() -> None:
     finalised = script._finalize_departed(
         state, direction="Meidling", now=now
     )
-    assert finalised == [4.0, 10.0]
+    assert [trip.latest_delay_minutes for trip in finalised] == [4.0, 10.0]
 
 
 def test_finalize_departed_empty_state_returns_empty_list() -> None:
@@ -1616,6 +1628,11 @@ def test_main_end_to_end_finalises_with_latest_delay_across_two_ticks(
     # never touches the developer's working copy.
     state_path = tmp_path / "pending_trips.json"
     monkeypatch.setattr(script, "PENDING_TRIPS_PATH", state_path)
+    finalised_path = tmp_path / "recently_finalised.json"
+    monkeypatch.setattr(script, "RECENTLY_FINALISED_PATH", finalised_path)
+    monkeypatch.setattr(
+        script, "PENDING_TRIPS_LOCK_PATH", tmp_path / "pending_trips.lock"
+    )
 
     # Capture every ``append_stammstrecke_row`` call instead of writing
     # an actual CSV file — the test asserts on the captured records.
@@ -1702,8 +1719,386 @@ def test_main_end_to_end_finalises_with_latest_delay_across_two_ticks(
         "Finalisation must use the latest (15 min) reading, not the "
         "stale 5-min one"
     )
-    assert persisted["timestamp"] == tick3
+    # M2: the CSV row's timestamp anchors to the train's scheduled
+    # departure (08:45), not the cron tick wall clock (08:50) — so
+    # a cron tick straddling a year boundary still writes the row
+    # into the correct calendar year of the actual departure.
+    assert persisted["timestamp"] == datetime(
+        2026, 5, 9, 8, 45, tzinfo=VIENNA_TZ
+    )
     # Ledger emptied after finalisation.
     state_after_tick3 = script._load_pending_trips(state_path)
     assert state_after_tick3 == {}
+    # M4: the recently-finalised ledger holds exactly the train we
+    # just committed so a stray VAO re-emission cannot resurrect it.
+    finalised_after_tick3 = script._load_recently_finalised(finalised_path)
+    assert len(finalised_after_tick3) == 1
+
+
+# ---- Hardening: H1 / M1 / M2 / M3 / M4 / L3 -------------------------------
+
+
+def test_canonical_line_name_collapses_whitespace_and_strips_pipe() -> None:
+    """H1 + M1 normalisation: VAO format drift + separator injection."""
+    assert script._canonical_line_name("S 2") == "S2"
+    assert script._canonical_line_name("S2") == "S2"
+    assert script._canonical_line_name("  s 80  ") == "S80"
+    # M1: a pipe inside ``name`` cannot escape into the identity key.
+    assert script._canonical_line_name("S 1|fake") == "S1FAKE"
+    assert script._canonical_line_name("") == ""
+    assert script._canonical_line_name("   ") == ""
+
+
+def test_identity_key_is_invariant_under_name_format_drift() -> None:
+    """H1: ``"S 2"`` and ``"S2"`` MUST produce the same identity key.
+
+    Without this, a VAO format flip between cron ticks would split
+    the same physical train into two ledger entries — the exact
+    double-counting the dedup pipeline is supposed to prevent.
+    """
+    sched = datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ)
+    assert script._identity_key("Meidling", "S 2", sched) == script._identity_key(
+        "Meidling", "S2", sched
+    )
+    assert script._identity_key("Meidling", " s 2 ", sched) == script._identity_key(
+        "Meidling", "S2", sched
+    )
+
+
+def test_identity_key_strips_pipe_to_prevent_separator_collision() -> None:
+    """M1: a literal pipe in ``name`` cannot collide with a real key."""
+    sched = datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ)
+    poisoned = script._identity_key("Meidling", "S 1|Floridsdorf", sched)
+    legitimate = script._identity_key(
+        "Floridsdorf",
+        "S 1",
+        sched,
+    )
+    assert poisoned != legitimate
+
+
+def test_collect_sbahn_leg_observations_canonicalises_name_at_extraction() -> None:
+    """H1: identical physical trains (spaced + no-space) produce ONE state entry."""
+    state: dict[str, script._PendingTrip] = {}
+
+    # Tick 1: VAO emits the spaced format.
+    trip_spaced = _trip(
+        leg_name="S 2", delay_minutes=4, leg_origin_time="08:00:00"
+    )
+    obs_spaced = script._collect_sbahn_leg_observations([trip_spaced])
+    script._observe_legs(
+        state,
+        obs_spaced,
+        direction="Meidling",
+        now=datetime(2026, 5, 9, 7, 30, tzinfo=VIENNA_TZ),
+    )
+
+    # Tick 2: VAO emits the no-space format for the SAME physical train
+    # (same scheduled departure).
+    trip_compact = _trip(
+        leg_name="S2", delay_minutes=10, leg_origin_time="08:00:00"
+    )
+    obs_compact = script._collect_sbahn_leg_observations([trip_compact])
+    script._observe_legs(
+        state,
+        obs_compact,
+        direction="Meidling",
+        now=datetime(2026, 5, 9, 7, 55, tzinfo=VIENNA_TZ),
+    )
+
+    # Both observations land under the same identity key — exactly one
+    # entry survives, and the latest reading wins.
+    assert len(state) == 1
+    only = next(iter(state.values()))
+    assert only.latest_delay_minutes == 10.0
+
+
+def test_load_pending_trips_normalises_legacy_spaced_names(
+    tmp_path: Path,
+) -> None:
+    """A ledger written before the H1 fix used ``"S 2"`` (with space).
+
+    On load, the parser canonicalises to ``"S2"`` so a subsequent
+    observation of the same train (in the no-space form VAO now
+    emits) hits the existing entry instead of creating a duplicate.
+    """
+    payload = {
+        # Note: the key still carries the old spaced form because
+        # nothing else is going to rebuild it — but the loaded record's
+        # ``name`` is canonicalised.
+        "Meidling|S 2|2026-05-09T08:00:00+02:00": {
+            "direction": "Meidling",
+            "name": "S 2",
+            "scheduled": "2026-05-09T08:00:00+02:00",
+            "latest_delay_minutes": 3.0,
+            "last_seen_at": "2026-05-09T07:30:00+02:00",
+        },
+    }
+    path = tmp_path / "legacy.json"
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    state = script._load_pending_trips(path)
+    assert len(state) == 1
+    only = next(iter(state.values()))
+    assert only.name == "S2"
+
+
+def test_finalize_departed_splits_by_scheduled_year_at_year_boundary() -> None:
+    """M2: trips scheduled in different years group into separate finalisations.
+
+    A cron tick at 00:05 on Jan 1 should produce one CSV row for each
+    scheduled year if it happens to finalise trains on both sides of
+    the boundary. The grouping itself is in ``main()`` — here we
+    verify that the finaliser returns full records the caller can
+    group on.
+    """
+    now = datetime(2027, 1, 1, 0, 5, tzinfo=VIENNA_TZ)
+    last_2026 = _make_pending(
+        direction="Meidling",
+        scheduled=datetime(2026, 12, 31, 23, 55, tzinfo=VIENNA_TZ),
+        latest_delay_minutes=2.0,
+    )
+    first_2027 = _make_pending(
+        direction="Meidling",
+        scheduled=datetime(2027, 1, 1, 0, 0, tzinfo=VIENNA_TZ),
+        latest_delay_minutes=5.0,
+    )
+    state = {"y2026": last_2026, "y2027": first_2027}
+    finalised = script._finalize_departed(state, direction="Meidling", now=now)
+    years = {trip.scheduled.year for trip in finalised}
+    assert years == {2026, 2027}
+
+
+def test_finalize_departed_registers_recently_finalised_keys() -> None:
+    """M4: keys popped here land in *recently_finalised* with timestamp *now*."""
+    now = datetime(2026, 5, 9, 9, 0, tzinfo=VIENNA_TZ)
+    departed = _make_pending(
+        direction="Meidling",
+        name="S2",
+        scheduled=datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
+        latest_delay_minutes=4.0,
+    )
+    key = script._identity_key(
+        "Meidling",
+        "S2",
+        datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
+    )
+    state = {key: departed}
+    recently_finalised: dict[str, datetime] = {}
+    script._finalize_departed(
+        state,
+        direction="Meidling",
+        now=now,
+        recently_finalised=recently_finalised,
+    )
+    assert recently_finalised == {key: now}
+
+
+def test_observe_legs_skips_keys_in_recently_finalised() -> None:
+    """M4: a recently-finalised key cannot be re-inserted into pending state.
+
+    Anomalous VAO re-emission (a finalised train re-appearing in the
+    lookahead) is silently dropped instead of producing a second CSV
+    row downstream.
+    """
+    sched = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
+    key = script._identity_key("Meidling", "S 2", sched)
+    recently_finalised = {
+        key: datetime(2026, 5, 9, 9, 0, tzinfo=VIENNA_TZ),
+    }
+    state: dict[str, script._PendingTrip] = {}
+    obs = script._SbahnLegObservation(
+        name="S2",
+        scheduled=sched,
+        delay_minutes=7.0,
+    )
+    written = script._observe_legs(
+        state,
+        [obs],
+        direction="Meidling",
+        now=datetime(2026, 5, 9, 9, 5, tzinfo=VIENNA_TZ),
+        recently_finalised=recently_finalised,
+    )
+    assert written == 0
+    assert state == {}
+
+
+def test_purge_finalised_entries_drops_only_old_keys() -> None:
+    """M4 TTL: the recently-finalised ledger evicts entries older than cutoff."""
+    now = datetime(2026, 5, 9, 9, 0, tzinfo=VIENNA_TZ)
+    cutoff = now - timedelta(hours=6)
+    finalised = {
+        "fresh": now - timedelta(hours=2),
+        "stale": now - timedelta(hours=12),
+    }
+    removed = script._purge_finalised_entries(finalised, cutoff=cutoff)
+    assert removed == 1
+    assert "fresh" in finalised
+    assert "stale" not in finalised
+
+
+def test_load_recently_finalised_returns_empty_when_missing(tmp_path: Path) -> None:
+    """A missing file is fresh-start, not an error."""
+    assert script._load_recently_finalised(tmp_path / "absent.json") == {}
+
+
+def test_save_recently_finalised_round_trips_through_load(tmp_path: Path) -> None:
+    """JSON persistence is lossless across save → load."""
+    path = tmp_path / "finalised.json"
+    state_in = {
+        "Meidling|S2|2026-05-09T08:30:00+02:00": datetime(
+            2026, 5, 9, 9, 0, tzinfo=VIENNA_TZ
+        )
+    }
+    assert script._save_recently_finalised(path, state_in) is True
+    state_out = script._load_recently_finalised(path)
+    assert set(state_out) == set(state_in)
+    only_key = next(iter(state_in))
+    assert state_out[only_key] == state_in[only_key]
+
+
+def test_load_recently_finalised_recovers_from_corrupt_json(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    """Corrupt JSON in the companion ledger logs WARNING and falls back to empty."""
+    path = tmp_path / "corrupt.json"
+    path.write_text("{not even json", encoding="utf-8")
+    with caplog.at_level(logging.WARNING, logger="update_stammstrecke_status"):
+        result = script._load_recently_finalised(path)
+    assert result == {}
+    assert any("korrupt" in r.getMessage() for r in caplog.records)
+
+
+def test_ledger_lock_is_a_context_manager_that_returns_to_caller(
+    tmp_path: Path,
+) -> None:
+    """M3: the lock context manager yields exactly once and releases on exit.
+
+    The actual mutual-exclusion is delegated to ``fcntl.flock`` on
+    POSIX — covered by an integration smoke test, not unit assertion
+    (file descriptors are notoriously hard to assert on across
+    Python versions).
+    """
+    lock_path = tmp_path / "lock"
+    entered = False
+    with script._ledger_lock(lock_path):
+        entered = True
+        assert lock_path.exists(), "lock file is created on first acquire"
+    assert entered is True
+
+
+def test_collect_sbahn_leg_observations_preserves_negative_delays() -> None:
+    """L3: VAO can report ``rtTime < time`` (early departure).
+
+    Negative delays are legitimate signal — they bring the running
+    mean down, which is what we want.  Locked here so a future
+    sanitiser-rewrite doesn't accidentally clamp them at zero.
+    """
+    trip = {
+        "LegList": {
+            "Leg": [
+                {
+                    "type": "JNY",
+                    "name": "S 1",
+                    "category": "S",
+                    "Origin": {
+                        "name": "Wien Floridsdorf",
+                        "date": "2026-05-09",
+                        "time": "08:00:00",
+                        # rtTime two minutes BEFORE time — early departure.
+                        "rtTime": "07:58:00",
+                    },
+                    "Destination": {
+                        "name": "Wien Meidling",
+                        "date": "2026-05-09",
+                        "time": "08:30:00",
+                    },
+                }
+            ]
+        }
+    }
+    observations = script._collect_sbahn_leg_observations([trip])
+    assert len(observations) == 1
+    assert observations[0].delay_minutes == -2.0
+
+
+def test_main_suppresses_re_observation_of_finalised_train(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """M4 end-to-end: a VAO re-emission of a finalised train doesn't
+    produce a second CSV row.
+
+    Anomalous-VAO scenario: the same physical S-Bahn appears in the
+    lookahead of TICK A (gets observed and finalised because already
+    departed) AND again in the lookahead of TICK B (because the VAO
+    upstream forgot to update its train list). Without the
+    recently-finalised gate, TICK B would re-observe and re-finalise
+    the train → second CSV row. With the gate, the train is
+    silently dropped on TICK B.
+    """
+    state_path = tmp_path / "pending_trips.json"
+    finalised_path = tmp_path / "recently_finalised.json"
+    monkeypatch.setattr(script, "PENDING_TRIPS_PATH", state_path)
+    monkeypatch.setattr(script, "RECENTLY_FINALISED_PATH", finalised_path)
+    monkeypatch.setattr(
+        script, "PENDING_TRIPS_LOCK_PATH", tmp_path / "pending_trips.lock"
+    )
+
+    csv_calls: list[dict[str, Any]] = []
+
+    def fake_append(
+        *,
+        timestamp: datetime,
+        direction: str,
+        delay_minutes: float,
+        stats_dir: Path | None = None,
+    ) -> bool:
+        del stats_dir
+        csv_calls.append(
+            {
+                "timestamp": timestamp,
+                "direction": direction,
+                "delay_minutes": delay_minutes,
+            }
+        )
+        return True
+
+    monkeypatch.setattr(script, "append_stammstrecke_row", fake_append)
+
+    def fake_query(
+        session: Any, direction: Any, *, when: datetime, timeout: int = 0
+    ) -> list[dict[str, Any]]:
+        del session, timeout
+        if direction.target_label != "Meidling":
+            return []
+        # The same train appears in every tick's lookahead — VAO bug
+        # / lookahead-boundary anomaly. Origin time stays fixed.
+        return [
+            _trip(
+                leg_name="S 1",
+                delay_minutes=10.0,
+                leg_origin_date="2026-05-09",
+                leg_origin_time="08:00:00",
+            )
+        ]
+
+    monkeypatch.setattr(script, "_query_trips", fake_query)
+
+    # Tick A: train has already departed at observation time; gets
+    # observed AND finalised in the same tick.
+    tick_a = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
+    monkeypatch.setattr(script, "_now_vienna", lambda: tick_a)
+    assert script.main() == 0
+    assert len(csv_calls) == 1
+
+    # Tick B: anomalous re-emission. Without the suppression gate
+    # this would produce a SECOND CSV row for the same physical
+    # train.
+    tick_b = datetime(2026, 5, 9, 9, 0, tzinfo=VIENNA_TZ)
+    monkeypatch.setattr(script, "_now_vienna", lambda: tick_b)
+    assert script.main() == 0
+    assert len(csv_calls) == 1, (
+        "Recently-finalised gate must suppress the duplicate — "
+        "without it, the train would be counted twice."
+    )
 
