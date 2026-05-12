@@ -732,10 +732,10 @@ def render_readme_stammstrecke_live_block(
         else f"{DELAY_THRESHOLD_MINUTES:g}"
     )
     header = (
-        "> Letzte 60 Minuten – automatisch aktualisiert vom Workflow update-cycle.yml.\n"
+        "> _Letzte 60 Minuten – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).\n"
         "\n"
         "| Kennzahl | Wert |\n"
-        "| :--- | :--- |\n"
+        "| -------- | ---- |\n"
     )
     if not rows:
         return (
