@@ -405,12 +405,18 @@ def _format_minutes(value: float) -> str:
 _NAME_NORMALISE_RE: Final = re.compile(r"\s+")
 
 
-def _canonical_line_name(value: str) -> str:
+def _canonical_line_name(value: object) -> str:
     """Strip whitespace runs + pipe characters, upper-case the rest.
 
     ``"S 2"`` / ``"S2"`` / ``" s2 "`` → ``"S2"``. Empty / whitespace-
-    only input returns the empty string; callers reject such legs
-    upstream so the value never enters the ledger.
+    only / ``None`` input returns the empty string; callers reject
+    such legs upstream so the value never enters the ledger.
+
+    *value* is typed as :class:`object` so the function can be the
+    single canonicalisation point regardless of whether the caller
+    has a guaranteed-``str`` value (``leg.get("name") or ""``) or a
+    heterogeneous ``Mapping[str, Any]`` slot (``data.get("name")``)
+    — the body coerces via ``str(value or "")`` either way.
     """
 
     cleaned = _NAME_NORMALISE_RE.sub("", str(value or "")).replace("|", "")
