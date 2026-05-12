@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 12 May 2026 22:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 23:00:30 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U6: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515</guid>
+      <pubDate>Tue, 12 May 2026 22:57:00 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 08:01:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 22:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Verunreinigung. [Am 12.05.2026]</description>
+      <content:encoded><![CDATA[Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Verunreinigung.<br/>[Am 12.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: Fahrtbehinderung Signalstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f6742e2e14a2e570249887c5b57afe641256f9d269c64df8e3fe64db025f2eea</guid>
       <pubDate>Tue, 12 May 2026 22:12:00 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 09:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 22:22:39 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 12 May 2026 22:32:42 +0200</ext:starts_at>
       <ext:ends_at>Tue, 12 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 2: Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Grund: Signalstörung im Haltestellenbereich Rathaus U. [Am 12.05.2026]</description>
-      <content:encoded><![CDATA[Linie 2: Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Grund: Signalstörung im Haltestellenbereich Rathaus U.<br/>[Am 12.05.2026]]]></content:encoded>
+      <description>Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.05.2026]</description>
+      <content:encoded><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Veranstaltung Betrieb ab Schwarzenbergplatz]]></title>
@@ -103,17 +114,6 @@
       <pubDate>Tue, 12 May 2026 00:00:12 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
       <ext:starts_at>Tue, 12 May 2026 00:00:12 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 12 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 12.05.2026]</description>
-      <content:encoded><![CDATA[[Am 12.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
-      <pubDate>Tue, 12 May 2026 00:00:11 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 00:00:11 +0200</ext:starts_at>
       <ext:ends_at>Tue, 12 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 12.05.2026]</description>
       <content:encoded><![CDATA[[Am 12.05.2026]]]></content:encoded>
