@@ -1,16 +1,23 @@
 {
-  "Floridsdorf|S1|2026-05-13T07:06:00+02:00": {
+  "Floridsdorf|S1|2026-05-13T07:36:00+02:00": {
     "direction": "Floridsdorf",
-    "last_seen_at": "2026-05-13T07:00:38.672328+02:00",
-    "latest_delay_minutes": 9.0,
+    "last_seen_at": "2026-05-13T07:30:30.117323+02:00",
+    "latest_delay_minutes": 0.0,
     "name": "S1",
-    "scheduled": "2026-05-13T07:06:00+02:00"
+    "scheduled": "2026-05-13T07:36:00+02:00"
   },
-  "Floridsdorf|S2|2026-05-13T07:09:00+02:00": {
+  "Floridsdorf|S2|2026-05-13T07:39:00+02:00": {
     "direction": "Floridsdorf",
-    "last_seen_at": "2026-05-13T07:00:38.672328+02:00",
+    "last_seen_at": "2026-05-13T07:30:30.117323+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
-    "scheduled": "2026-05-13T07:09:00+02:00"
+    "scheduled": "2026-05-13T07:39:00+02:00"
+  },
+  "Floridsdorf|S3|2026-05-13T07:33:00+02:00": {
+    "direction": "Floridsdorf",
+    "last_seen_at": "2026-05-13T07:30:30.117323+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S3",
+    "scheduled": "2026-05-13T07:33:00+02:00"
   }
 }

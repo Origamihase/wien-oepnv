@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 13 May 2026 07:00:44 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 07:30:33 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U4: Verspätungen]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 13.05.2026]</description>
       <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Fahrtbehinderung Schadhafter PKW]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0017825f1208e52af3890dd4507c2cc5e63f422333683b986e0879941ea11b44</guid>
-      <pubDate>Wed, 13 May 2026 06:11:34 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 06:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 06:11:50 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 07:11:00 +0200</ext:ends_at>
-      <description>[Am 13.05.2026]</description>
-      <content:encoded><![CDATA[[Am 13.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[39A: Schadhaftes Fahrzeug]]></title>
@@ -114,6 +103,17 @@
       <pubDate>Tue, 12 May 2026 00:00:18 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
       <ext:starts_at>Tue, 12 May 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[12.05.2026 – 13.05.2026]</description>
+      <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
+      <pubDate>Tue, 12 May 2026 00:00:12 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 00:00:12 +0200</ext:starts_at>
       <ext:ends_at>Wed, 13 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[12.05.2026 – 13.05.2026]</description>
       <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
