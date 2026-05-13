@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 13 May 2026 21:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 22:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6</guid>
+      <pubDate>Wed, 13 May 2026 21:52:00 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 08:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 21:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 21:59:00 +0200</ext:ends_at>
+      <description>Linie U3: Unregelmäßige Intervalle in Richtung Ottakring. Grund: Verunreinigung. [Am 13.05.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Unregelmäßige Intervalle in Richtung Ottakring. Grund: Verunreinigung.<br/>[Am 13.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[26A: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -31,35 +42,13 @@
       <content:encoded><![CDATA[Wegen Personen im Gleisbereich waren zwischen Wien Praterstern Bahnhof (U) und Wien Floridsdorf Bahnhof (U) bis 20:47 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 13.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[17A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c33e0268726f3c099001fd39f1a3ae248445339350a40fbdadbf46babaf4e386</guid>
-      <pubDate>Wed, 13 May 2026 18:36:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 21:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 18:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 21:33:00 +0200</ext:ends_at>
-      <description>Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Weichenstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">861eb589822612a9402ffcc15457641ff4cf74d6a9632da81a7b59b0d8e8dda0</guid>
-      <pubDate>Wed, 13 May 2026 17:40:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 08:00:39 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 17:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[16A: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">efb7fda2bee4851ff1b6c083ce7930fb0893897126569c8481a6cda2e1134d04</guid>
       <pubDate>Wed, 13 May 2026 17:30:00 +0200</pubDate>
       <ext:first_seen>Wed, 13 May 2026 18:00:49 +0200</ext:first_seen>
       <ext:starts_at>Wed, 13 May 2026 17:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Wed, 13 May 2026 21:58:00 +0200</ext:ends_at>
       <description>Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 13.05.2026]</description>
       <content:encoded><![CDATA[Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 13.05.2026]]]></content:encoded>
     </item>
@@ -115,6 +104,17 @@
       <ext:starts_at>Tue, 12 May 2026 13:39:06 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren. [Seit 12.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren.<br/>[Seit 12.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[47A: Filmaufnahmen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">15b426feb43dc2b416b80eb70aa75396a22ac3d1593bb7f3a236fe7b0e3f9714</guid>
+      <pubDate>Tue, 12 May 2026 10:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 10:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 10:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 00:30:00 +0200</ext:ends_at>
+      <description>Veranstaltung Wegen der Sperre der Zehetnergasse aufgrund von Filmaufnahmen kommt es zu einer Umleitung der Linie 47A. Zeitraum: Donnerstag, 28. Mai 2026, etwa 15:00 Uhr bis … [12.05.2026 – 30.05.2026]</description>
+      <content:encoded><![CDATA[Veranstaltung Wegen der Sperre der Zehetnergasse aufgrund von Filmaufnahmen kommt es zu einer Umleitung der Linie 47A. Zeitraum: Donnerstag, 28. Mai 2026, etwa 15:00 Uhr bis …<br/>[12.05.2026 – 30.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
