@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 13 May 2026 12:00:40 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 12:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[13A: Rettungseinsatz Betrieb ab Ledererstraße]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
       <content:encoded><![CDATA[Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bcf5e28438afd5f132c742c8c42153044a8dfa5ee88de4228d89212a67bdca71</guid>
-      <pubDate>Wed, 13 May 2026 11:27:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 11:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 60: Verspätungen in beiden Richtungen. Grund: Betriebsstörung. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie 60: Verspätungen in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 13.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[50A: Verkehrsunfall]]></title>
@@ -63,6 +52,17 @@
       <ext:ends_at>Thu, 14 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[13.05.2026 – 14.05.2026]</description>
       <content:encoded><![CDATA[[13.05.2026 – 14.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[56A/60A/N60: Maurer Kirtag 2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3a272435aaae38a8075d151af17edf90ec6bd2ba6e4546b3a3a5f233234153f6</guid>
+      <pubDate>Wed, 13 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 12:30:40 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 07 Jun 2026 20:00:00 +0200</ext:ends_at>
+      <description>Veranstaltung Wegen Abhaltung des Maurer Kirtages am Maurer Hauptplatz kommt es zu Umleitungen bei den dort verkehrenden Buslinien. [13.05.2026 – 07.06.2026]</description>
+      <content:encoded><![CDATA[Veranstaltung Wegen Abhaltung des Maurer Kirtages am Maurer Hauptplatz kommt es zu Umleitungen bei den dort verkehrenden Buslinien.<br/>[13.05.2026 – 07.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Wien Westbahnhof ↔ Wien Hütteldorf / Wien Hütteldorf ↔ Tullnerbach-Pressbaum / Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
