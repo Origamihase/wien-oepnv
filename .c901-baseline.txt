@@ -1,13 +1,10 @@
 _acquire_file_lock 16
 _clean_title_keep_places 26
 _dedupe_items 18
-_fetch_departure_board_for_station 20
 _format_error_message 18
-_format_item_content 33
-_iter_messages 46
+_format_item_content 31
 _normalise_access_token 16
 _parse_env_file 21
-_parse_value 16
 _post 28
 _scan_content 29
 _station_lookup 29
@@ -15,9 +12,7 @@ _title_has_unknown_endpoint 27
 _vienna_polygons 21
 deduplicate_fuzzy 21
 fetch_events 51
-fetch_vor_disruptions 17
 prune_log_file 17
-resolve_station_ids 21
 submit 18
 to_markdown 18
 validate_http_url 34
