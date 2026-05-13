@@ -1,10 +1,8 @@
-from unittest.mock import MagicMock, patch, ANY, call
+from unittest.mock import MagicMock, patch
 import requests
-from datetime import datetime, UTC
 from src.providers.vor import (
     VorAuth,
     apply_authentication,
-    _fetch_departure_board_for_station,
 )
 
 class TestVorAuth:
@@ -100,46 +98,3 @@ class TestApplyAuthentication:
             "https://global.com/"
         )
 
-class TestFetchDepartureBoard:
-    @patch("src.providers.vor.fetch_content_safe")
-    @patch("src.providers.vor.save_request_count")
-    @patch("src.providers.vor.load_request_count")
-    @patch("src.providers.vor._QUOTA_LOCK")
-    def test_fetch_departure_board_calls(
-        self,
-        mock_lock: MagicMock,
-        mock_load: MagicMock,
-        mock_save: MagicMock,
-        mock_fetch: MagicMock,
-    ) -> None:
-        """
-        Test _fetch_departure_board_for_station:
-        1. Calls save_request_count exactly once.
-        2. Calls save_request_count BEFORE fetch_content_safe.
-        3. Calls fetch_content_safe exactly once (no loop).
-        """
-        # Setup mocks
-        mock_load.return_value = (None, 0) # Not limit reached
-        mock_fetch.return_value = '{"test": "data"}'
-
-        # Track order of calls
-        manager = MagicMock()
-        manager.attach_mock(mock_save, 'save_request_count')
-        manager.attach_mock(mock_fetch, 'fetch_content_safe')
-
-        now = datetime.now(UTC)
-
-        _fetch_departure_board_for_station("station_id", now)
-
-        # Check call counts
-        assert mock_save.call_count == 1
-        assert mock_fetch.call_count == 1
-
-        # Check order
-        # We expect save_request_count to be called before fetch_content_safe
-        expected_calls = [
-            call.save_request_count(now),
-            call.fetch_content_safe(ANY, ANY, params=ANY, timeout=ANY, allowed_content_types=ANY)
-        ]
-
-        manager.assert_has_calls(expected_calls)

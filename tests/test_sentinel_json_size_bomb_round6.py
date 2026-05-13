@@ -62,7 +62,6 @@ but yield unbounded bytes).
 
 from __future__ import annotations
 
-import json
 import logging
 import os
 from datetime import datetime
@@ -135,26 +134,6 @@ class _LyingPath:
 # ============================================================================
 
 
-def test_precondition_vor_size_cap_constants_exist() -> None:
-    """Pin the canonical cap constants. If a future refactor renames or
-    removes them, every regression test below would silently pass on
-    unfixed code — so we pin the precondition first."""
-    from src.providers import vor
-    from src.feed import logging as feed_logging
-
-    assert isinstance(vor.MAX_VOR_MAPPING_FILE_BYTES, int)
-    assert vor.MAX_VOR_MAPPING_FILE_BYTES > 0
-    assert vor.MAX_VOR_MAPPING_FILE_BYTES >= 100_000  # > legitimate ~35 KiB
-
-    assert isinstance(vor.MAX_VOR_QUOTA_FILE_BYTES, int)
-    assert vor.MAX_VOR_QUOTA_FILE_BYTES > 0
-
-    assert isinstance(vor.MAX_VOR_STATIONS_CSV_FILE_BYTES, int)
-    assert vor.MAX_VOR_STATIONS_CSV_FILE_BYTES > 0
-    assert vor.MAX_VOR_STATIONS_CSV_FILE_BYTES >= 100_000  # > legitimate ~8 KiB
-
-    assert isinstance(feed_logging.MAX_LOG_PRUNE_FILE_BYTES, int)
-    assert feed_logging.MAX_LOG_PRUNE_FILE_BYTES > 0
 
 
 def test_precondition_read_capped_text_helper_exists() -> None:
@@ -270,58 +249,8 @@ def test_read_capped_text_returns_none_for_invalid_utf8(tmp_path: Path) -> None:
 # ============================================================================
 
 
-def test_vor_load_station_name_map_rejects_oversized_file(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """Pre-fix: ``_load_station_name_map`` called
-    ``json.loads(MAPPING_FILE.read_text(encoding=\"utf-8\"))`` with no
-    size cap. A planted huge file at ``data/vor-haltestellen.mapping.json``
-    buffers O(file_size) bytes, raises ``MemoryError`` at IMPORT TIME
-    (the call site ``STATION_NAME_MAP = _load_station_name_map()``
-    runs unconditionally on ``import src.providers.vor``), and crashes
-    the entire feed-build pipeline.
-
-    Post-fix: ``read_capped_json`` returns ``None`` for the oversized
-    file and the function returns the canonical empty mapping.
-    """
-    from src.providers import vor
-
-    poisoned = tmp_path / "vor-haltestellen.mapping.json"
-    _write_oversized_json(poisoned, 4096)
-
-    monkeypatch.setattr(vor, "MAPPING_FILE", poisoned)
-    monkeypatch.setattr(vor, "MAX_VOR_MAPPING_FILE_BYTES", 1024)
-
-    # Patch json.loads to confirm it was never reached: post-fix the
-    # size cap fires BEFORE the parser runs.
-    with patch("src.utils.files.json.loads") as mock_loads:
-        result = vor._load_station_name_map()
-
-    mock_loads.assert_not_called()
-    assert result == {}
 
 
-def test_vor_load_station_name_map_accepts_normal_file(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """Regression: normal-sized mapping files still load correctly."""
-    from src.providers import vor
-
-    legit = tmp_path / "vor-haltestellen.mapping.json"
-    legit.write_text(
-        json.dumps([
-            {"station_name": "Wien", "resolved_name": "Wien Hbf"},
-            {"station_name": "Graz", "resolved_name": "Graz Hbf"},
-        ]),
-        encoding="utf-8",
-    )
-
-    monkeypatch.setattr(vor, "MAPPING_FILE", legit)
-
-    result = vor._load_station_name_map()
-    assert result == {"Wien": "Wien Hbf", "Graz": "Graz Hbf"}
 
 
 # ============================================================================
@@ -408,47 +337,8 @@ def test_vor_save_request_count_rejects_oversized_file(
 # ============================================================================
 
 
-def test_vor_load_station_ids_from_file_rejects_oversized_file(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """Pre-fix: ``_load_station_ids_from_file`` called
-    ``path.read_text(encoding=\"utf-8\")`` with no size cap. Post-fix:
-    ``read_capped_text`` returns ``None`` for oversized files and the
-    canonical empty list is returned."""
-    from src.providers import vor
-
-    poisoned = tmp_path / "stations.csv"
-    _write_oversized_text(poisoned, 4096)
-
-    monkeypatch.setattr(vor, "MAX_VOR_STATIONS_CSV_FILE_BYTES", 1024)
-
-    result = vor._load_station_ids_from_file(poisoned)
-    assert result == []
 
 
-def test_vor_load_station_ids_default_rejects_oversized_file(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """Pre-fix: ``_load_station_ids_default`` called
-    ``DEFAULT_STATION_ID_FILE.read_text(encoding=\"utf-8\").splitlines()``
-    with no size cap. Post-fix: the cap rejects oversized files and the
-    canonical empty list is returned."""
-    from src.providers import vor
-
-    poisoned = tmp_path / "vor-haltestellen.csv"
-    _write_oversized_text(poisoned, 4096)
-
-    monkeypatch.setattr(vor, "DEFAULT_STATION_ID_FILE", poisoned)
-    monkeypatch.setattr(vor, "MAX_VOR_STATIONS_CSV_FILE_BYTES", 1024)
-
-    # ``vor_station_ids()`` may yield from the canonical store; force the
-    # fallback branch by patching it to return an empty iterator.
-    monkeypatch.setattr(vor, "vor_station_ids", lambda: iter(()))
-
-    result = vor._load_station_ids_default()
-    assert result == []
 
 
 # ============================================================================

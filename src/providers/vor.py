@@ -19,14 +19,11 @@ import base64
 import json
 import logging
 import os
-import random
-import re
 import threading
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, UTC
+from datetime import datetime
 from pathlib import Path
 from typing import Any, cast
-from collections.abc import Iterable, Iterator, Mapping, Sequence
+from collections.abc import Mapping
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 import requests
@@ -35,24 +32,13 @@ from requests.auth import AuthBase
 
 from zoneinfo import ZoneInfo
 
-from ..feed_types import FeedItem, VorMessage
 from ..utils.env import read_secret
-from ..utils.files import atomic_write, read_capped_json, read_capped_text
+from ..utils.files import atomic_write, read_capped_json
 from ..utils.http import (
-    fetch_content_safe,
-    parse_retry_after,
-    session_with_retries,
     validate_http_url,
 )
-from ..utils.ids import make_guid
 from ..utils.locking import file_lock
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
-from ..utils.stations import (
-    display_name,
-    station_info,
-    text_has_vienna_connection,
-    vor_station_ids,
-)
 
 log = logging.getLogger(__name__)
 
@@ -65,10 +51,7 @@ DEFAULT_BASE = "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
 DEFAULT_BASE_URL = f"{DEFAULT_BASE}/{DEFAULT_VERSION}/"
 DEFAULT_USER_AGENT = "wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv)"
 
-DEFAULT_BOARD_DURATION_MIN = 60
 DEFAULT_HTTP_TIMEOUT = 15
-DEFAULT_MAX_STATIONS_PER_RUN = 2
-DEFAULT_ROTATION_INTERVAL_SEC = 1800
 # "VAO Start" contract limit: 100 requests per day (hard limit).
 DEFAULT_MAX_REQUESTS_PER_DAY = 100
 # Default VOR Monitor whitelist — INTENTIONALLY EMPTY since the Stammstrecke
@@ -85,14 +68,10 @@ DEFAULT_MAX_REQUESTS_PER_DAY = 100
 # still set ``VOR_MONITOR_STATIONS_WHITELIST`` in the environment to
 # re-enable specific stations — but the project default is now "no
 # departure-board polling".
-DEFAULT_MONITOR_WHITELIST = ""
 RETRY_AFTER_MAX_SEC = 60.0
 
-DEFAULT_BUS_INCLUDE_PATTERN = r"(?i)^(?:Regionalbus|Bus|AST)"
-DEFAULT_BUS_EXCLUDE_PATTERN = r"(?i)Ersatzverkehr"
 
 # Limit concurrent station fetches to avoid thread exhaustion
-VOR_MAX_WORKERS = 10
 
 ZONE_VIENNA = ZoneInfo("Europe/Vienna")
 
@@ -234,36 +213,10 @@ def _load_int_env(name: str, default: int) -> int:
 # ``(a|aa)+`` slips through), but it blocks the patterns that have
 # historically caused real outages and falls back to the project's
 # pre-vetted defaults whenever a check fires.
-MAX_REGEX_PATTERN_LEN = 200
-_REDOS_NESTED_QUANTIFIER_RE = re.compile(r"[+*?][+*?]?\s*\)\s*[+*]")
 
 
-def _compile_regex(name: str, default_pattern: str) -> re.Pattern[Any]:
-    raw = _get_env(name)
-    if not raw:
-        return re.compile(default_pattern)
-    if len(raw) > MAX_REGEX_PATTERN_LEN:
-        _log_warning(
-            "Regex für %s ist zu lang (%d Zeichen, Limit %d) – verwende Standard",
-            name,
-            len(raw),
-            MAX_REGEX_PATTERN_LEN,
-        )
-        return re.compile(default_pattern)
-    if _REDOS_NESTED_QUANTIFIER_RE.search(raw):
-        _log_warning(
-            "Regex für %s enthält ein verschachteltes Quantor-Muster (ReDoS-Risiko) – verwende Standard",
-            name,
-        )
-        return re.compile(default_pattern)
-    try:
-        return re.compile(raw)
-    except re.error as exc:
-        _log_warning("Ungültiges Regex für %s (%s) – verwende Standard", name, exc)
-        return re.compile(default_pattern)
 
 
-BOARD_DURATION_MIN = _load_int_env("VOR_BOARD_DURATION_MIN", DEFAULT_BOARD_DURATION_MIN)
 # Security: ``DEFAULT_HTTP_TIMEOUT`` (15s) is the Slowloris-defence ceiling for
 # every VOR request — both the connect and read budget for ``fetch_content_safe``
 # at lines 1173 and 1436, plus the cache-update script at
@@ -303,32 +256,6 @@ HTTP_TIMEOUT = min(
 # rather than ``feed_config.MAX_PROVIDER_TIMEOUT`` (25s) because VOR has chosen
 # a tighter local Slowloris contract — orchestrator overrides at 25s are
 # already documented as needing to be tightened to VOR's 15s ceiling.
-MAX_VOR_FETCH_TIMEOUT = DEFAULT_HTTP_TIMEOUT
-# Security: ``MAX_STATIONS_PER_RUN`` controls the per-run fan-out of station
-# fetches. Each selected station consumes one VOR API quota slot, so a
-# benign-looking env override such as ``VOR_MAX_STATIONS_PER_RUN=99999``
-# (intentional misconfig, leaked CI env, or compromised secret store) would
-# let a single run blow through the entire daily quota
-# (``DEFAULT_MAX_REQUESTS_PER_DAY``, the contractual hard cap of 100/day for
-# the VAO Start tier) and then DoS the thread pool (``VOR_MAX_WORKERS=10``)
-# with pending station-fetch tasks while the round-robin distribution
-# collapses (every run picks the same large slice rather than rotating).
-# The cap can only TIGHTEN — env overrides may lower the fan-out (tests use
-# 1–3) but never raise it above the contract daily budget, since fanning out
-# more stations than the daily budget is by definition wasteful. Mirrors the
-# ``min(VOR_HTTP_TIMEOUT, DEFAULT_HTTP_TIMEOUT)`` and
-# ``min(VOR_MAX_REQUESTS_PER_DAY, DEFAULT_MAX_REQUESTS_PER_DAY)`` caps below;
-# explicitly identified as needing audit by the ``VOR_MAX_REQUESTS_PER_DAY``
-# journal entry on 2026-05-06.
-MAX_STATIONS_PER_RUN = min(
-    _load_int_env("VOR_MAX_STATIONS_PER_RUN", DEFAULT_MAX_STATIONS_PER_RUN),
-    DEFAULT_MAX_REQUESTS_PER_DAY,
-)
-if MAX_STATIONS_PER_RUN <= 0:
-    MAX_STATIONS_PER_RUN = DEFAULT_MAX_STATIONS_PER_RUN
-ROTATION_INTERVAL_SEC = _load_int_env(
-    "VOR_ROTATION_INTERVAL_SEC", DEFAULT_ROTATION_INTERVAL_SEC
-)
 # Security: ``DEFAULT_MAX_REQUESTS_PER_DAY`` (100) is the *contractual* hard
 # cap of the "VAO Start" tier — exceeding it risks suspension of the access
 # ID by the upstream provider. ``_load_int_env`` itself only enforces a
@@ -362,7 +289,7 @@ DEFAULT_QUOTA_FLUSH_BATCH_SIZE = 10
 # it to make another 100 requests before the quota gate kicks in — a
 # direct breach of the 100/day VAO contract that mirrors the same
 # threat model as the previously-fixed ``VOR_MAX_REQUESTS_PER_DAY`` and
-# ``VOR_MAX_STATIONS_PER_RUN`` caps. Buffering more than the daily cap
+# caps. Buffering more than the daily cap
 # in memory is by definition wasteful (the per-call fail-fast at
 # ``save_request_count`` already blocks at ``MAX_REQUESTS_PER_DAY``), so
 # capping at ``MAX_REQUESTS_PER_DAY`` keeps the env useful for tuning
@@ -376,9 +303,6 @@ QUOTA_FLUSH_BATCH_SIZE = max(
     ),
 )
 
-ALLOW_BUS = _get_env("VOR_ALLOW_BUS").lower() in {"1", "true", "yes"}
-BUS_INCLUDE_RE = _compile_regex("VOR_BUS_INCLUDE_REGEX", DEFAULT_BUS_INCLUDE_PATTERN)
-BUS_EXCLUDE_RE = _compile_regex("VOR_BUS_EXCLUDE_REGEX", DEFAULT_BUS_EXCLUDE_PATTERN)
 
 
 def _resolve_path(candidate: str | None, *, default: Path) -> Path:
@@ -439,12 +363,6 @@ def _write_request_count_file(path: Path, payload: Mapping[str, Any]) -> None:
         handle.write("\n")
 
 
-MAPPING_FILE = _resolve_path(
-    _get_env("VOR_STATION_NAME_MAP"), default=DATA_DIR / "vor-haltestellen.mapping.json"
-)
-DEFAULT_STATION_ID_FILE = _resolve_path(
-    _get_env("VOR_STATION_IDS_DEFAULT"), default=DATA_DIR / "vor-haltestellen.csv"
-)
 
 # Security: per-loader byte caps for the four on-disk parsers in this
 # module. Pre-fix every site used the unsafe ``Path.read_text()`` ->
@@ -471,137 +389,19 @@ DEFAULT_STATION_ID_FILE = _resolve_path(
 # (``MAX_QUOTA_FILE_BYTES``) / ``src/places/tiling.py``
 # (``MAX_TILE_FILE_BYTES``) — same threat-model bound applied to the
 # previously-uncapped VOR provider sites.
-MAX_VOR_MAPPING_FILE_BYTES = 5 * 1024 * 1024
 MAX_VOR_QUOTA_FILE_BYTES = 1 * 1024 * 1024
-MAX_VOR_STATIONS_CSV_FILE_BYTES = 5 * 1024 * 1024
 
 
-def _load_station_name_map() -> dict[str, str]:
-    # Security: ``read_capped_json`` enforces a TOCTOU-safe size cap via
-    # ``os.fstat`` on the open file descriptor + a defensive
-    # ``read(max_bytes + 1)`` budget, returning ``None`` for any of:
-    # missing / oversized / depth-bomb (RecursionError) / decode error
-    # (JSONDecodeError) / I/O error (OSError). The previous shape used
-    # ``MAPPING_FILE.read_text()`` -> ``json.loads()`` with no size cap,
-    # so a planted huge JSON file at ``data/vor-haltestellen.mapping.json``
-    # buffered O(file_size) bytes and raised ``MemoryError`` — a
-    # ``BaseException`` subclass NOT caught by the prior catch tuple,
-    # propagating past the import-time call site
-    # (``STATION_NAME_MAP = _load_station_name_map()``) and crashing the
-    # entire VOR provider import + every consumer.
-    data = read_capped_json(
-        MAPPING_FILE,
-        MAX_VOR_MAPPING_FILE_BYTES,
-        label="VOR mapping",
-        logger=log,
-    )
-    if data is None:
-        return {}
-    # Zero Trust: a successfully-decoded payload from disk may still be the wrong
-    # shape (corrupted file, hand-edited mapping, or upstream contract change).
-    # Without this guard, ``for entry in data`` raises ``TypeError`` on non-iterable
-    # JSON values (null, int, bool) at *module import time* — the call site below
-    # (``STATION_NAME_MAP = _load_station_name_map()``) runs unconditionally on
-    # ``import src.providers.vor``, so any uncaught exception kills the whole VOR
-    # provider and the feed-build pipeline that imports it. The sibling
-    # ``_load_vor_mapping`` in ``scripts/enrich_station_aliases.py`` and
-    # ``_load_vor_name_to_id_map`` in ``scripts/update_station_directory.py``
-    # both apply the same shape guard for the same on-disk file.
-    if not isinstance(data, list):
-        _log_warning(
-            "Stations-Mapping in %s ist kein JSON-Array (got %s); ignoriere",
-            MAPPING_FILE,
-            type(data).__name__,
-        )
-        return {}
-    mapping: dict[str, str] = {}
-    for entry in data:
-        if not isinstance(entry, dict):
-            continue
-        raw = str(entry.get("station_name") or "").strip()
-        resolved = str(entry.get("resolved_name") or "").strip() or raw
-        if raw:
-            mapping[raw] = resolved
-    return mapping
 
 
-STATION_NAME_MAP = _load_station_name_map()
 
 
-def _load_station_ids_from_file(path: Path) -> list[str]:
-    # Security: ``read_capped_text`` mirrors ``read_capped_json``'s
-    # TOCTOU-safe size cap for non-JSON payloads — closes the same
-    # ``Path.read_text()`` -> ``MemoryError`` propagation that would
-    # otherwise crash the VOR provider startup chain when a planted
-    # multi-MiB / multi-GiB CSV is dropped at the override path.
-    content = read_capped_text(
-        path,
-        MAX_VOR_STATIONS_CSV_FILE_BYTES,
-        label="VOR station IDs",
-        logger=log,
-    )
-    if content is None:
-        return []
-    entries = re.split(r"[\s,;]+", content)
-    result: list[str] = []
-    for entry in entries:
-        token = entry.strip()
-        if token and token not in result:
-            result.append(token)
-    return result
 
 
-def _load_station_ids_default() -> list[str]:
-    ids: list[str] = []
-    try:
-        ids = list(vor_station_ids())
-    except Exception as exc:  # pragma: no cover - defensive guard
-        _log_warning("Konnte Pendler-Stationsliste nicht laden: %s", exc)
-    if ids:
-        return ids
-
-    # Security: see ``_load_station_ids_from_file`` — same TOCTOU-safe
-    # size cap applied to the default catalogue CSV.
-    text = read_capped_text(
-        DEFAULT_STATION_ID_FILE,
-        MAX_VOR_STATIONS_CSV_FILE_BYTES,
-        label="VOR default stations",
-        logger=log,
-    )
-    if text is None:
-        return []
-    lines = text.splitlines()
-    result: list[str] = []
-    for line in lines[1:]:
-        parts = line.split(";")
-        if not parts:
-            continue
-        token = parts[0].strip()
-        if token and token not in result:
-            result.append(token)
-    return result
 
 
-def _load_station_ids_from_env() -> list[str]:
-    direct = _get_env("VOR_STATION_IDS")
-    if direct:
-        return [item.strip() for item in re.split(r",|\n", direct) if item.strip()]
-
-    ids_file = _get_env("VOR_STATION_IDS_FILE")
-    if ids_file:
-        return _load_station_ids_from_file(
-            _resolve_path(ids_file, default=DEFAULT_STATION_ID_FILE)
-        )
-
-    return _load_station_ids_default()
 
 
-VOR_STATION_IDS: list[str] = _load_station_ids_from_env()
-VOR_STATION_NAMES: list[str] = [
-    name.strip()
-    for name in re.split(r",|\n", _get_env("VOR_STATION_NAMES"))
-    if name.strip()
-]
 
 
 # Security: ``VOR_BASE_URL`` (and the legacy ``VOR_BASE`` alias) is the prefix
@@ -875,574 +675,26 @@ def apply_authentication(session: Session) -> None:
     session.auth = VorAuth(VOR_ACCESS_ID, _VOR_AUTHORIZATION_HEADER, VOR_BASE_URL)
 
 
-def _iter_products(message: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
-    container = message.get("products") or message.get("Products")
-    if isinstance(container, Mapping) and "Product" in container:
-        container = container["Product"]
-    if isinstance(container, list):
-        iterable = container
-    elif isinstance(container, Mapping):
-        iterable = [container]
-    else:
-        iterable = []
-    for entry in iterable:
-        if isinstance(entry, Mapping):
-            yield entry
 
 
-def _extract_lines(message: Mapping[str, Any]) -> list[str]:
-    lines: list[str] = []
-    for product in _iter_products(message):
-        cat = str(product.get("catOutS") or product.get("catOutL") or "").strip()
-        number = str(
-            product.get("displayNumber")
-            or product.get("name")
-            or product.get("line")
-            or ""
-        ).strip()
-        if not number and cat:
-            token = cat
-        elif cat:
-            if number.upper().startswith(cat.upper()):
-                token = number
-            else:
-                token = f"{cat}{number}"
-        else:
-            token = number
-        if token and token not in lines:
-            if (
-                not ALLOW_BUS
-                and BUS_INCLUDE_RE.match(token)
-                and not BUS_EXCLUDE_RE.search(token)
-            ):
-                continue
-            lines.append(token)
-    return lines
 
 
-def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
-    # 1. New generic keys (warnings, infos, himMessages) at root or inside DepartureBoard
-    roots = [payload]
-    if isinstance(payload, Mapping) and "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
-        roots.append(payload["DepartureBoard"])
 
-    for root in roots:
-        for key in ["warnings", "infos", "himMessages", "trafficInfos"]:
-            if key in root:
-                candidate_container = root[key]
-                if isinstance(candidate_container, list):
-                    for entry in candidate_container:
-                        if isinstance(entry, Mapping):
-                            yield entry
-                elif isinstance(candidate_container, Mapping):
-                    yield candidate_container
 
-    # 2. Legacy/Specific Board Structure (messages object)
-    container: Any = payload
-    if isinstance(payload, Mapping) and "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
-        container = payload["DepartureBoard"]
 
-    if isinstance(container, Mapping):
-        # Explicit "Message" or "messages"
-        possible_messages = []
-        for key, value in container.items():
-            if key.lower() == "messages":
-                possible_messages.append(value)
-        if "Message" in container:
-            possible_messages.append(container["Message"])
 
-        for value in possible_messages:
-            iterable = []
-            if isinstance(value, list):
-                iterable = value
-            elif isinstance(value, Mapping):
-                # Sometimes it's { "Message": ... } nested?
-                if "Message" in value:
-                    sub = value["Message"]
-                    if isinstance(sub, list):
-                        iterable = sub
-                    elif isinstance(sub, Mapping):
-                        iterable = [sub]
-                else:
-                    iterable = [value]
 
-            for entry in iterable:
-                if isinstance(entry, Mapping):
-                    act = str(entry.get("act", "true")).strip().lower()
-                    if act in {"0", "false", "nein", "no"}:
-                        continue
-                    yield entry
 
-    # 3. Departures (Detailed check for cancellations and embedded messages)
-    departures: list[Any] = []
-    if isinstance(payload, Mapping) and "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
-        board = payload["DepartureBoard"]
-        if "Departure" in board:
-            dep_container = board["Departure"]
-            if isinstance(dep_container, list):
-                departures = dep_container
-            elif isinstance(dep_container, Mapping):
-                departures = [dep_container]
 
-    for dep in departures:
-        if not isinstance(dep, Mapping):
-            continue
 
-        # 3a. Handle cancelled=True
-        cancelled_val = dep.get("cancelled")
-        is_cancelled = False
-        if isinstance(cancelled_val, bool) and cancelled_val:
-            is_cancelled = True
-        elif isinstance(cancelled_val, str) and cancelled_val.lower() == "true":
-            is_cancelled = True
 
-        if is_cancelled:
-            product_raw = dep.get("Product") or {}
-            product = product_raw[0] if isinstance(product_raw, list) and product_raw else product_raw
-            if not isinstance(product, dict):
-                product = {}
-            line_name = (
-                str(
-                    product.get("displayNumber")
-                    or product.get("name")
-                    or dep.get("name")
-                    or "Zug"
-                )
-                .strip()
-            )
-            direction = str(dep.get("direction") or "").strip()
 
-            head = f"Zugausfall: {line_name}"
-            if direction:
-                head += f" nach {direction}"
 
-            yield {
-                "head": head,
-                "text": "Fahrt fällt aus.",
-                "sDate": dep.get("date"),
-                "sTime": dep.get("time"),
-                # Pass product to help _extract_lines
-                "products": {"Product": [product]} if product else {},
-                # We assume no specific stops listed for cancellation unless expanded
-            }
 
-        # 3b. Handle rtMessages / warnings inside departure
-        for key in ["rtMessages", "warnings", "infos"]:
-            if key in dep:
-                dep_container = dep[key]
-                msg_iterable: list[Any] = []
-                if isinstance(dep_container, list):
-                    msg_iterable = dep_container
-                elif isinstance(dep_container, Mapping):
-                    if "Message" in dep_container:
-                        sub = dep_container["Message"]
-                        if isinstance(sub, list):
-                            msg_iterable = sub
-                        elif isinstance(sub, Mapping):
-                            msg_iterable = [sub]
-                    else:
-                        msg_iterable = [dep_container]
 
-                for msg in msg_iterable:
-                    if isinstance(msg, Mapping):
-                        # Avoid modifying original message in case it's reused
-                        msg_copy = dict(msg)
-                        # Inject product if missing, so _extract_lines works
-                        if "products" not in msg_copy and "Products" not in msg_copy:
-                            product = dep.get("Product")
-                            if product:
-                                if isinstance(product, list):
-                                    msg_copy["products"] = {"Product": product}
-                                else:
-                                    msg_copy["products"] = {"Product": [product]}
-                        yield msg_copy
 
 
-def _parse_dt(date_str: Any, time_str: Any) -> datetime | None:
-    date_txt = str(date_str or "").strip()
-    if not date_txt:
-        return None
-    time_txt = str(time_str or "").strip()
-    if time_txt:
-        time_txt = time_txt[:5]
-    else:
-        time_txt = "00:00"
-    try:
-        naive = datetime.strptime(f"{date_txt} {time_txt}", "%Y-%m-%d %H:%M")
-    except ValueError:
-        return None
-    # fold=0 resolves the once-a-year ambiguity at the CEST→CET transition
-    # (last Sunday of October, 02:00–02:59 local) to the *earlier* (CEST)
-    # interpretation. The VOR API delivers naive local timestamps without
-    # disambiguation, so we have to pick one consistently. Picking the
-    # earlier reading keeps event start/end ordering monotonic across the
-    # transition; the alternative (fold=1) would shift events one hour
-    # later for that single window each year.
-    local_dt = naive.replace(tzinfo=ZONE_VIENNA, fold=0)
-    return local_dt.astimezone(UTC)
 
-
-def _format_date_range(start: datetime | None, end: datetime | None) -> str:
-    start_local: datetime | None = None
-    end_local: datetime | None = None
-    if not start and not end:
-        return ""
-    if start:
-        start_local = start.astimezone(ZONE_VIENNA)
-    if end:
-        end_local = end.astimezone(ZONE_VIENNA)
-    if start and not end:
-        assert start_local is not None  # noqa: S101  # nosec B101
-        return f"Seit {start_local.strftime('%d.%m.%Y')}"
-    if start and end:
-        if end < start:
-            end = None
-            return _format_date_range(start, None)
-        assert start_local is not None and end_local is not None  # noqa: S101  # nosec B101
-        if start_local.date() == end_local.date():
-            return f"{start_local.strftime('%d.%m.%Y')} {start_local.strftime('%H:%M')}–{end_local.strftime('%H:%M')}"
-        return f"{start_local.strftime('%d.%m.%Y')}–{end_local.strftime('%d.%m.%Y')}"
-    if end:
-        assert end_local is not None  # noqa: S101  # nosec B101
-        return f"Bis {end_local.strftime('%d.%m.%Y')}"
-    return ""
-
-
-def _build_guid(station_id: str, message: VorMessage) -> str:
-    raw_id = str(message.get("id") or "").strip()
-    if raw_id:
-        # Security: Bound the length of external IDs to prevent DoS/memory issues
-        if len(raw_id) > 128:
-            hashed = make_guid(raw_id)
-            return f"vor:{station_id}:{hashed}"
-        return f"vor:{station_id}:{raw_id}"
-    key = json.dumps(
-        {
-            "station": station_id,
-            "head": message.get("head"),
-            "text": message.get("text"),
-        },
-        sort_keys=True,
-    )
-    # Use SHA256 hash instead of base64 to ensure bounded length
-    fallback = make_guid(key)
-    return f"vor:{station_id}:{fallback}"
-
-
-def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> list[FeedItem]:
-    """
-    Parse a StationBoard/TrafficInfo JSON response and extract event items.
-
-    Searches for 'Message' objects within the DepartureBoard or root structure.
-    Extracts title, lines, affected stops, and time ranges.
-    """
-    info = station_info(station_id)
-    station_name = display_name(info.name) if info else None
-    # Stations explicitly chosen for monitoring (Wien Hbf and Pendler nodes
-    # like Flughafen Wien) are inherently relevant — every disruption at
-    # the platform itself matters for Wien-Pendler. Only fall back to the
-    # text-based Wien check for stations that the directory classifies as
-    # neither in Vienna nor as a commuter hub. ``getattr`` keeps the check
-    # defensive against test fixtures that mock ``station_info`` with a
-    # narrower record type.
-    station_is_relevant = bool(
-        info
-        and (
-            getattr(info, "in_vienna", False)
-            or getattr(info, "pendler", False)
-        )
-    )
-
-    items: list[FeedItem] = []
-    for raw_msg in _iter_messages(root):
-        message = cast(VorMessage, raw_msg)
-        head = str(message.get("head") or message.get("name") or "").strip()
-        text = str(message.get("text") or message.get("description") or "").strip()
-
-        # Skip messages without any human-readable substance. Without head
-        # AND text, the only data we could expose are line/station tags,
-        # which on their own would surface as a generic "Hinweis" item with
-        # an empty description. That is never useful in the feed and would
-        # only add noise.
-        if not head and not text:
-            # Inline regex sanitiser doubles as a CodeQL barrier: ``station_id``
-            # is constructed alongside ``accessId`` in the VOR URL builder, so
-            # the dataflow tracker conservatively marks any string from this
-            # scope as carrying secret-like taint. Whitelisting station-ID
-            # characters here breaks that flow without losing diagnostic value.
-            safe_station = re.sub(r"[^A-Za-z0-9._:-]", "?", str(station_id))[:64]
-            raw_msg_id = message.get("id")
-            safe_msg_id = re.sub(
-                r"[^A-Za-z0-9._:-]",
-                "?",
-                str(raw_msg_id) if raw_msg_id is not None else "",
-            )[:64]
-            log.debug(
-                "VOR-Meldung ohne head/text übersprungen (station=%s id=%s)",
-                safe_station,
-                safe_msg_id,
-            )
-            continue
-
-        # FILTER: For stations not classified as in-Vienna or Pendler the
-        # message must explicitly mention a Wien station — otherwise we
-        # cannot tell whether a disruption at a randomly configured station
-        # affects Wien commuters. Whitelisted Pendler nodes (Flughafen Wien
-        # etc.) bypass this check; their disruptions are already considered
-        # relevant by the project specification.
-        if not station_is_relevant:
-            full_text = f"{head} {text}"
-            if not text_has_vienna_connection(full_text):
-                continue
-
-        lines = _extract_lines(message)
-        # stops removed (Task: Strict 2-line layout, not used anymore)
-        start_dt = _parse_dt(message.get("sDate"), message.get("sTime"))
-        end_dt = _parse_dt(message.get("eDate"), message.get("eTime"))
-        if end_dt and start_dt and end_dt < start_dt:
-            end_dt = None
-
-        description_lines: list[str] = []
-        if text:
-            description_lines.append(text)
-        elif head:
-            description_lines.append(head)
-
-        # Keine Linien, Stops oder DateRange mehr anhängen (Task: Strict 2-line Layout)
-
-        title = head or text or "Hinweis"
-        if lines:
-            title = f"{', '.join(lines)}: {title}" if title else ", ".join(lines)
-
-        # Ensure station context in title (Task: Title must indicate location)
-        if station_name and station_name not in title:
-            if lines:
-                title = f"{title} ({station_name})"
-            else:
-                title = f"{station_name}: {title}"
-
-        items.append(
-            {
-                "guid": _build_guid(station_id, message),
-                "source": "VOR/VAO",
-                "category": "Störung",
-                "title": title,
-                "description": "<br/>".join(description_lines),
-                "link": DEFAULT_INFO_LINK,
-                "pubDate": start_dt,
-                "starts_at": start_dt,
-                "ends_at": end_dt,
-            }
-        )
-    return items
-
-
-def _select_stations_round_robin(
-    ids: Sequence[str], chunk_size: int
-) -> list[str]:
-    if not ids or chunk_size <= 0:
-        return []
-
-    # Task 4: Stable rotation
-    # 1. Shuffle daily to ensure fairness over long term but stability within day
-    today = datetime.now(ZONE_VIENNA).strftime("%Y-%m-%d")
-    # Use local Random instance to avoid side effects on global random state
-    rng = random.Random(today)  # noqa: S311 # nosec B311
-    shuffled_ids = list(ids)
-    rng.shuffle(shuffled_ids)
-
-    # 2. Use persistent request count as index to rotate every run
-    _, request_count = load_request_count()
-    start_index = request_count % len(shuffled_ids)
-
-    ordered = shuffled_ids[start_index:] + shuffled_ids[:start_index]
-
-    chunk = min(len(ids), chunk_size)
-    selected: list[str] = []
-    seen: set[str] = set()
-    for sid in ordered:
-        if sid in seen:
-            continue
-        seen.add(sid)
-        selected.append(sid)
-        if len(selected) >= chunk:
-            break
-    return selected
-
-
-def get_configured_stations() -> list[str]:
-    """
-    Retrieve the list of configured station IDs.
-
-    Checks:
-    1. VOR_MONITOR_STATIONS_WHITELIST (names resolved to IDs)
-    2. VOR_STATION_IDS (IDs directly)
-    3. VOR_STATION_NAMES (names resolved to IDs)
-    """
-    monitor_whitelist_str = os.getenv(
-        "VOR_MONITOR_STATIONS_WHITELIST", DEFAULT_MONITOR_WHITELIST
-    ).strip()
-    whitelist_names = [
-        x.strip() for x in monitor_whitelist_str.split(",") if x.strip()
-    ]
-
-    if whitelist_names:
-        log.info("Nutze VOR Monitor-Whitelist: %s", ", ".join(whitelist_names))
-        return resolve_station_ids(whitelist_names)
-
-    # Legacy Fallback
-    station_ids = list(VOR_STATION_IDS)
-    if not station_ids and VOR_STATION_NAMES:
-        station_ids = resolve_station_ids(VOR_STATION_NAMES)
-
-    return station_ids
-
-
-def select_stations_for_run(available_stations: list[str]) -> list[str]:
-    """
-    Select a subset of stations for the current run based on round-robin logic
-    and MAX_STATIONS_PER_RUN limit.
-    """
-    if not available_stations:
-        return []
-
-    selected_ids = _select_stations_round_robin(
-        available_stations, MAX_STATIONS_PER_RUN
-    )
-    if not selected_ids:
-        # Fallback if round robin returns empty for some reason (shouldn't if input not empty)
-        # But _select_stations_round_robin returns chunk.
-        selected_ids = available_stations[: MAX_STATIONS_PER_RUN or 1]
-
-    return selected_ids
-
-
-def resolve_station_ids(names: Iterable[str]) -> list[str]:
-    """
-    Resolve station names to VOR station IDs (EVA-IDs).
-
-    Prioritizes local static data to save API quota ("VAO Start" limit).
-    Falls back to ``location.name`` API only if necessary and allowed.
-    """
-    resolved: list[str] = []
-    to_lookup: list[str] = []
-    seen: set[str] = set()
-
-    for raw in names:
-        text = str(raw or "").strip()
-        if not text:
-            continue
-
-        # 1. Check if it's already an ID (numeric)
-        if text.isdigit():
-            if text not in resolved:
-                resolved.append(text)
-            continue
-
-        # 2. Check static mapping via station_info (includes STATION_NAME_MAP and aliases)
-        info = station_info(text)
-        if info and info.vor_id:
-            if info.vor_id not in resolved:
-                resolved.append(info.vor_id)
-            continue
-
-        # 3. Queue for API lookup if not found locally
-        if text not in seen:
-            seen.add(text)
-            to_lookup.append(text)
-
-    if not to_lookup:
-        return resolved
-
-    # Fallback to API for unknown names
-    # Note: This consumes quota!
-    _log_warning(
-        "Stationsauflösung via API für %s Namen (%s). "
-        "Dies verbraucht das VAO-Start-Kontingent (100 Requests/Tag)!",
-        len(to_lookup), ", ".join(to_lookup[:3]) + ("..." if len(to_lookup) > 3 else "")
-    )
-
-    with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
-        apply_authentication(session)
-        for name in to_lookup:
-            vienna_tz = ZoneInfo("Europe/Vienna")
-            with _QUOTA_LOCK:
-                _, current_usage = load_request_count()
-                if current_usage >= MAX_REQUESTS_PER_DAY:
-                    _log_warning("Daily limit reached, station resolution aborted.")
-                    break
-                now_local = datetime.now(vienna_tz)
-                save_request_count(now_local)
-
-            params = {"format": "json", "input": name, "type": "stop"}
-            try:
-                content = fetch_content_safe(
-                    session,
-                    f"{VOR_BASE_URL}location.name",
-                    params=params,
-                    timeout=HTTP_TIMEOUT,
-                    allowed_content_types=("application/json",),
-                )
-                payload = json.loads(content)
-                if not isinstance(payload, dict):
-                    _log_warning(
-                        "VOR location.name für '%s' gab unerwartetes Format zurück (Zero Trust)", name
-                    )
-                    continue
-            except (ValueError, json.JSONDecodeError, RecursionError) as exc:
-                # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
-                # where the body is parseable up to Python's recursion limit
-                # and then crashes ``json.loads``. Without this catch the
-                # entire VOR fetch would terminate the process.
-                _log_warning(
-                    "VOR location.name für '%s' ungültig/zu groß: %s", name, exc
-                )
-                continue
-            except RequestException as exc:
-                # Check for HTTP error status if attached
-                if exc.response is not None and exc.response.status_code >= 400:
-                    _log_warning(
-                        "VOR location.name für '%s' -> HTTP %s",
-                        name,
-                        exc.response.status_code,
-                    )
-                else:
-                    _log_warning(
-                        "VOR location.name für '%s' fehlgeschlagen: %s", name, exc
-                    )
-                continue
-
-            # Zero Trust: even after the top-level dict guard above, the
-            # ``StopLocation`` / ``LocationList.Stop`` slots are still ``Any`` —
-            # a tampered or misbehaving VAO upstream could ship a truthy
-            # non-list / non-Mapping payload (``42``, ``True``, ``"x"``,
-            # ``[1, 2]``). The previous ``payload["StopLocation"]`` subscript
-            # and the chained ``... or []`` only collapse falsy shapes, so a
-            # truthy non-iterable would raise ``TypeError`` from the ``for stop
-            # in stops:`` loop and propagate out of this whole ``for name in
-            # to_lookup:`` batch — silently dropping every subsequent name's
-            # resolution after burning quota.
-            raw_stops: object = None
-            if "StopLocation" in payload:
-                raw_stops = payload.get("StopLocation")
-            else:
-                location_list = payload.get("LocationList")
-                if isinstance(location_list, Mapping):
-                    raw_stops = location_list.get("Stop")
-
-            if isinstance(raw_stops, Mapping):
-                stops = [raw_stops]
-            elif isinstance(raw_stops, list):
-                stops = [item for item in raw_stops if isinstance(item, Mapping)]
-            else:
-                stops = []
-
-            for stop in stops:
-                sid = str(stop.get("id") or stop.get("extId") or "").strip()
-                if sid and sid not in resolved:
-                    resolved.append(sid)
-                    break
-    return resolved
 
 
 def load_request_count(bypass_cache: bool = False) -> tuple[str | None, int]:
@@ -1605,359 +857,23 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
         return cast(int, current_total)
 
 
-def _parse_retry_after(response: requests.Response) -> float | None:
-    raw = response.headers.get("Retry-After")
-    if raw is None or not raw.strip():
-        _log_warning("Retry-After fehlt, verwende Fallback-Verzögerung")
-        return None
-    delay = parse_retry_after(raw, now=datetime.now(UTC))
-    if delay is None:
-        _log_warning("VOR lieferte ungültiges Retry-After: %s", raw.strip())
-    return delay
 
 
-def _log_retry_after_warning(response: requests.Response, station_id: str) -> None:
-    delay = _parse_retry_after(response)
-    if delay is None:
-        _log_warning(
-            "VOR (Station %s) lieferte %s ohne Retry-After. Überspringe Station (Fail-Fast).",
-            station_id,
-            response.status_code,
-        )
-    else:
-        _log_warning(
-            "VOR (Station %s) lieferte %s. Retry-After: %.1fs. Überspringe Station (Fail-Fast), um Thread nicht zu blockieren.",
-            station_id,
-            response.status_code,
-            delay,
-        )
 
 
-def _fetch_departure_board_for_station(
-    station_id: str,
-    now_local: datetime,
-    counter: Any = None,
-    session: requests.Session | None = None,
-    timeout: int | None = None,
-) -> Mapping[str, Any] | None:
-    """
-    Fetch Departure Board for a specific station and extract disruptions.
-
-    Uses the /departureBoard endpoint.
-    Passes accessId as a query parameter (mandatory).
-    """
-    params = {
-        "format": "json",
-        "id": station_id,
-    }
-
-    endpoint = f"{VOR_BASE_URL}departureBoard"
-
-    # Use provided session or create a temporary one
-    local_session = None
-    if session is None:
-        local_session = session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS)
-        apply_authentication(local_session)
-        active_session = local_session
-    else:
-        active_session = session
-
-    try:
-        # CIRCUIT BREAKER CHECK
-        if counter:
-            with counter["lock"]:
-                if counter.get("consecutive_5xx", 0) >= 5:
-                    raise RuntimeError("Emergency Stop: Circuit Breaker Open (too many consecutive 5xx errors)!")
-                counter["val"] += 1
-                if counter["val"] > counter.get("limit", 10):
-                    raise RuntimeError("Emergency Stop: Too many requests in single run!")
-
-        try:
-            # Logging request details (masked)
-            log.info(f"Requesting VOR DepartureBoard for {station_id}...")
-
-            # Enforce rate limit check and increment atomically
-            with _QUOTA_LOCK:
-                _, current_usage = load_request_count()
-                if current_usage >= MAX_REQUESTS_PER_DAY:
-                    _log_warning(
-                        "VOR Tageslimit erreicht (%s/%s) – Anfrage für %s abgebrochen.",
-                        current_usage,
-                        MAX_REQUESTS_PER_DAY,
-                        station_id,
-                    )
-                    return None
-
-                # Increment strictly BEFORE request
-                save_request_count(now_local)
-
-            content = fetch_content_safe(
-                active_session,
-                endpoint,
-                params=params,
-                timeout=timeout or HTTP_TIMEOUT,
-                allowed_content_types=("application/json",),
-            )
-
-            # Log raw length
-            log.debug(f"Received {len(content)} bytes from VOR.")
-
-            if counter:
-                with counter["lock"]:
-                    counter["consecutive_5xx"] = 0
-
-            data = json.loads(content)
-            if not isinstance(data, dict):
-                _log_warning(
-                    "VOR DepartureBoard %s gab unerwartetes Format zurück: dict erwartet (Zero Trust)", station_id
-                )
-                return None
-            return data
-
-        except (ValueError, json.JSONDecodeError, RecursionError) as exc:
-            # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
-            # where the body is parseable up to Python's recursion limit
-            # and then crashes ``json.loads``. Without this catch the
-            # entire VOR fetch would terminate the process.
-            _log_warning(
-                "VOR DepartureBoard %s ungültig/zu groß: %s", station_id, exc
-            )
-            return None
-
-        except requests.HTTPError as exc:
-            response = exc.response
-
-            # Record 5xx failures for circuit breaker
-            if response is not None and response.status_code >= 500:
-                if counter:
-                    with counter["lock"]:
-                        counter["consecutive_5xx"] = counter.get("consecutive_5xx", 0) + 1
-                        if counter["consecutive_5xx"] >= 5:
-                            raise RuntimeError("Emergency Stop: Circuit Breaker Open (too many consecutive 5xx errors)!") from exc
-
-            if response is not None:
-                _log_warning(
-                    "VOR DepartureBoard %s -> HTTP %s",
-                    station_id,
-                    response.status_code,
-                )
-                if response.status_code == 429:
-                    _log_retry_after_warning(response, station_id)
-                    return None
-
-                if response.status_code >= 500:
-                    if response.status_code == 503:
-                        _log_retry_after_warning(response, station_id)
-                        return None
-
-            _log_error(
-                "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
-            )
-            return None
-
-        except requests.exceptions.Timeout as exc:
-            _log_warning(
-                "VOR DepartureBoard %s Timeout: %s", station_id, exc
-            )
-            return None
-
-        except RequestException as exc:
-            _log_error(
-                "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
-            )
-            return None
-    finally:
-        if local_session:
-            local_session.close()
 
 
-def fetch_vor_disruptions(station_ids: list[str] | None = None, timeout: int | None = None) -> list[FeedItem]:
-    """
-    Fetch disruptions for the given stations using the departureBoard endpoint.
-    Iterates over the configured or provided stations and extracts warnings/infos.
-    """
-    # Security: clamp ``timeout`` at MAX_VOR_FETCH_TIMEOUT to defeat the
-    # Slowloris vector documented at the constant declaration above.
-    # ``min(timeout or MAX_VOR_FETCH_TIMEOUT, MAX_VOR_FETCH_TIMEOUT)`` preserves
-    # the existing ``timeout or HTTP_TIMEOUT`` fallback semantics for None/0 and
-    # additionally clamps any caller-provided value above the ceiling.
-    # ``min(...)`` instead of ``if ...:`` to avoid bumping the McCabe complexity
-    # of this baselined function (``.c901-baseline.txt``: ``fetch_vor_disruptions
-    # 17``). Covers the public ``fetch_events`` entry point too, since
-    # ``fetch_events`` delegates to ``fetch_vor_disruptions``.
-    timeout = min(timeout or MAX_VOR_FETCH_TIMEOUT, MAX_VOR_FETCH_TIMEOUT)
-    token = refresh_access_credentials()
-    if not token:
-        log.warning("Kein VOR Access Token konfiguriert – überspringe Abruf.")
-        return []
-
-    now_local = datetime.now(ZONE_VIENNA)
-    # Ensure consistent UTC check with load_request_count
-    # FIX: Use Vienna timezone for day boundaries
-    vienna_tz = ZoneInfo("Europe/Vienna")
-    today = datetime.now(vienna_tz).strftime("%Y-%m-%d")
-    stored_date, stored_count = load_request_count()
-    if stored_date == today and stored_count >= MAX_REQUESTS_PER_DAY:
-        log.info("Tageslimit von %s VOR-Anfragen erreicht", MAX_REQUESTS_PER_DAY)
-        raise RequestException(f"VOR Tageslimit erreicht ({MAX_REQUESTS_PER_DAY})")
-
-    remaining_requests = max(MAX_REQUESTS_PER_DAY - stored_count, 0)
-    if remaining_requests == 0:
-        log.info(
-            "Tageslimit von %s VOR-Anfragen bereits ausgeschöpft – überspringe Abruf.",
-            MAX_REQUESTS_PER_DAY,
-        )
-        raise RequestException(f"VOR Tageslimit erreicht ({MAX_REQUESTS_PER_DAY})")
-
-    if station_ids is None:
-        station_ids = get_configured_stations()
-
-    if not station_ids:
-        log.info("Keine VOR Stationen konfiguriert")
-        return []
-
-    # Limit stations based on requests
-    selected_ids = select_stations_for_run(station_ids)
-
-    if remaining_requests and len(selected_ids) > remaining_requests:
-        log.info(
-            "Begrenze Abruf auf %s von %s Station(en) wegen Request-Limit (%s übrig).",
-            remaining_requests,
-            len(selected_ids),
-            remaining_requests,
-        )
-        selected_ids = selected_ids[:remaining_requests]
-
-    log.info(
-        "Starte VOR-Abruf (DepartureBoard) für %s Station(en).",
-        len(selected_ids),
-    )
-
-    results: list[FeedItem] = []
-    failures = 0
-    successes = 0
-
-    # Thread-safe counter for circuit breaker
-    max_allowed_requests = max(
-        10, len(selected_ids) * (VOR_RETRY_OPTIONS.get("total", 3) + 1)
-    )
-    request_counter = {
-        "val": 0,
-        "limit": max_allowed_requests,
-        "lock": threading.Lock(),
-    }
-
-    seen_texts: set[tuple[str, str]] = set()
-
-    with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
-        apply_authentication(session)
-        # Limit max_workers to prevent thread explosion if many stations are selected
-        max_workers = min(len(selected_ids) or 1, VOR_MAX_WORKERS)
-        # ThreadPoolExecutor already uses context manager
-        with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            futures = {
-                executor.submit(_fetch_departure_board_for_station, sid, now_local, request_counter, session, timeout): sid
-                for sid in selected_ids
-            }
-            for future in as_completed(futures):
-                station_id = futures[future]
-                try:
-                    payload = future.result()
-                except RuntimeError as rte:
-                    # Catch Emergency Stop
-                    if "Emergency Stop" in str(rte):
-                        # Sentinel: ``rte`` text originated upstream of the
-                        # circuit breaker and may include hostile content.
-                        # Switch from f-string interpolation (which bypasses
-                        # the lazy %s formatter and cannot be sanitised) to
-                        # the canonical %s + sanitize_log_arg shape.
-                        log.critical(
-                            "ABORT: %s", sanitize_log_arg(str(rte))
-                        )
-                        # Cancel other futures if possible
-                        executor.shutdown(wait=False, cancel_futures=True)
-                        # Graceful Degradation: Do not raise, just break loop and return partial results
-                        break
-                    _log_error("VOR DepartureBoard %s Runtime Error: %s", station_id, rte)
-                    failures += 1
-                    continue
-                except Exception as exc:  # pragma: no cover - defensive guard
-                    _log_error("VOR DepartureBoard %s Fehler: %s", station_id, exc)
-                    failures += 1
-                    continue
-                if payload is None:
-                    failures += 1
-                    continue
-                try:
-                    items = _collect_from_board(station_id, payload)
-                    successes += 1
-                except Exception as exc:  # pragma: no cover - defensive guard
-                    _log_error("Fehler beim Verarbeiten der Station %s: %s", station_id, exc)
-                    failures += 1
-                    continue
-                message_count = len(items)
-                # Inline regex barrier: ``_sanitize_arg`` already scrubs the
-                # value, but CodeQL's clear-text-logging dataflow analysis is
-                # conservative across function boundaries and will not
-                # propagate the helper's ``re.sub`` as a sanitiser. The same
-                # whitelist applied directly is recognised as a barrier.
-                sanitized_id = re.sub(
-                    r"[^A-Za-z0-9._:-]", "?", str(station_id)
-                )[:64]
-                if message_count == 0:
-                    log.info(
-                        "VOR Station %s: Keine Störungsmeldungen.", sanitized_id
-                    )
-                else:
-                    log.info(
-                        "VOR Station %s: %s Meldung(en).",
-                        sanitized_id,
-                        message_count,
-                    )
-
-                # Deduplication
-                for item in items:
-                    title = str(item.get("title") or "").strip()
-                    description = str(item.get("description") or "").strip()
-                    # We use title and description as the unique key.
-                    # If both match, we consider it a duplicate.
-                    key = (title, description)
-                    if key not in seen_texts:
-                        seen_texts.add(key)
-                        results.append(item)
-
-    if successes == 0:
-        raise RequestException("Keine VOR Daten abrufbar")
-
-    log.info(
-        "VOR-Abruf abgeschlossen: %s Station(en) erfolgreich, %s ohne Ergebnis, %s Ereignis(se) gesammelt.",
-        successes,
-        failures,
-        len(results),
-    )
-
-    return results
 
 
-def fetch_events(station_ids: list[str] | None = None, timeout: int | None = None) -> list[FeedItem]:
-    """
-    Main entry point for VOR provider.
-    Delegates to fetch_vor_disruptions.
-    """
-    return fetch_vor_disruptions(station_ids, timeout=timeout)
 
 
 __all__ = [
     "VorAuth",
     "apply_authentication",
-    "fetch_events",
     "load_request_count",
-    "resolve_station_ids",
     "save_request_count",
     "refresh_access_credentials",
     "refresh_base_configuration",
-    "get_configured_stations",
-    "select_stations_for_run",
     "RequestException",
     "ZoneInfo",
 ]

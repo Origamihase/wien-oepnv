@@ -2,7 +2,7 @@
 import json
 import pytest
 from unittest.mock import MagicMock, patch
-from src.providers import vor, wl_fetch
+from src.providers import wl_fetch
 from src.places import client
 
 def test_wl_fetch_json_error_handling() -> None:
@@ -19,26 +19,6 @@ def test_wl_fetch_json_error_handling() -> None:
             args, _ = mock_log.call_args
             assert "ungültig oder kein JSON" in args[0]
 
-def test_vor_json_error_handling() -> None:
-    # Mock requests session
-    mock_session = MagicMock()
-    mock_response = MagicMock()
-    mock_response.content = b"Invalid JSON"
-    # mock_response.json.side_effect = json.JSONDecodeError("Expecting value", "Invalid JSON", 0)
-    # ^ fetch_content_safe returns bytes, and json.loads is called on it.
-
-    # We need to mock fetch_content_safe to return invalid json bytes
-    with patch("src.providers.vor.fetch_content_safe", return_value=b"Invalid JSON") as mock_fetch:
-        # Also need to mock load_request_count to allow request
-        with patch("src.providers.vor.load_request_count", return_value=(None, 0)):
-            with patch("src.providers.vor.save_request_count"):
-                # And mock log warning to verify it's called
-                with patch("src.providers.vor._log_warning") as mock_log:
-                    result = vor._fetch_departure_board_for_station("123", None, session=mock_session)  # type: ignore[arg-type]
-                    assert result is None
-                    assert mock_log.called
-                    args, _ = mock_log.call_args
-                    assert "ungültig/zu groß" in args[0]
 
 def test_places_client_json_error_handling() -> None:
     config = client.GooglePlacesConfig(

@@ -7,28 +7,28 @@
   },
   "polygon_vertices": 5637,
   "stations": {
-    "after": 1951,
-    "before": 1951,
+    "after": 1952,
+    "before": 1952,
     "delta": 0
   },
   "sub_scripts": [
     {
-      "duration_s": 14.64,
+      "duration_s": 36.9,
       "exit_code": 0,
       "name": "update_station_directory.py"
     },
     {
-      "duration_s": 31.89,
+      "duration_s": 12.99,
       "exit_code": 0,
       "name": "update_wl_stations.py"
     },
     {
-      "duration_s": 49.98,
+      "duration_s": 33.44,
       "exit_code": 0,
       "name": "enrich_station_aliases.py"
     }
   ],
-  "timestamp": "2026-05-12T01:53:33+00:00",
+  "timestamp": "2026-05-13T18:53:42+00:00",
   "validation": {
     "alias_issues": 0,
     "coordinate_issues": 2,
