@@ -107,6 +107,9 @@
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&876276": {
     "first_seen": "2026-05-11T12:30:44.521443+00:00"
   },
+  "stammstrecke_delay_meidling|2026-05-13T08:00:00+02:00": {
+    "first_seen": "2026-05-13T06:30:55.225141+00:00"
+  },
   "test-guid-123": {
     "first_seen": "2023-10-27T10:00:00+00:00"
   },
@@ -1690,6 +1693,9 @@
   },
   "wl|st\u00f6rung|L=U3|D=2026-05-12": {
     "first_seen": "2026-05-12T11:30:47.710030+00:00"
+  },
+  "wl|st\u00f6rung|L=U3|D=2026-05-13": {
+    "first_seen": "2026-05-13T06:30:55.225141+00:00"
   },
   "wl|st\u00f6rung|L=U4|D=2026-05-02": {
     "first_seen": "2026-05-02T11:53:40.732183+00:00"

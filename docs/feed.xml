@@ -7,8 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 13 May 2026 08:00:39 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 08:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[S-Bahn Stammstrecke Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/web/wienerlinien/oeffis-stoerungen-strecke</link>
+      <guid isPermaLink="false">edf6a038551f6e6edb47aa8bf417792afe6099d1e8adf54ed2befc66c1934b99</guid>
+      <pubDate>Wed, 13 May 2026 08:30:58 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 08:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 08:00:00 +0200</ext:starts_at>
+      <description>Durchschnittliche Verspätung von 16.5 Minuten in Richtung Meidling [Seit 13.05.2026] [Seit 13.05.2026]</description>
+      <content:encoded><![CDATA[Durchschnittliche Verspätung von 16.5 Minuten in Richtung Meidling [Seit 13.05.2026]<br/>[Seit 13.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
+      <pubDate>Wed, 13 May 2026 08:16:00 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 08:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 08:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +51,6 @@
       <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 39A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
       <content:encoded><![CDATA[Linie 39A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c16184b68509899faf02a65c374d8c059400404774e2da3970444c5b92e08600</guid>
-      <pubDate>Wed, 13 May 2026 05:43:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 07:00:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 05:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -103,17 +113,6 @@
       <pubDate>Tue, 12 May 2026 00:00:18 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
       <ext:starts_at>Tue, 12 May 2026 00:00:18 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[12.05.2026 – 13.05.2026]</description>
-      <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
-      <pubDate>Tue, 12 May 2026 00:00:12 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 00:00:12 +0200</ext:starts_at>
       <ext:ends_at>Wed, 13 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[12.05.2026 – 13.05.2026]</description>
       <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
