@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 13 May 2026 18:30:29 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 19:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[69A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">96f135154720252b723390157353648f6e722f3498310c762afbb7ad31588d1b</guid>
+      <pubDate>Wed, 13 May 2026 18:51:00 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 10:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 18:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz im Haltestellenbereich Simmering S U. [Am 13.05.2026]</description>
+      <content:encoded><![CDATA[Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz im Haltestellenbereich Simmering S U.<br/>[Am 13.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[17A/70A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">37c973b4f097fa0a1b07a509832ce1ce0be810014fcf6246c574dc49535c686e</guid>
+      <pubDate>Wed, 13 May 2026 18:36:00 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 19:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 18:36:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 17A: Unregelmäßige Intervalle in Richtung Oberlaa U. Linie 70A: Unregelmäßige Intervalle in beiden Richtungen. [Am 13.05.2026]</description>
+      <content:encoded><![CDATA[Linie 17A: Unregelmäßige Intervalle in Richtung Oberlaa U. Linie 70A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 13.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[65A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b297f7d65f9814b6aa243d2cc9947029b27b8a88d07f038b56c8e3b2dbac2c71</guid>
+      <pubDate>Wed, 13 May 2026 18:34:00 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 19:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 18:34:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsüberlastung. [Am 13.05.2026]</description>
+      <content:encoded><![CDATA[Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsüberlastung.<br/>[Am 13.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -85,39 +118,6 @@
       <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 13.05.2026]</description>
       <content:encoded><![CDATA[Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[22A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea</guid>
-      <pubDate>Wed, 13 May 2026 17:29:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 17:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 17:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[77A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d2fb78dfec0b3971d13e72314dc2efcdbccb60650daf7059b954d1bd1800e28b</guid>
-      <pubDate>Wed, 13 May 2026 17:28:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 17:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 17:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71A: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a4b2f0980f7cf4caf430818d6a4cf61d5a1ff3afe1c0cc05e1d82dbc78e74388</guid>
-      <pubDate>Wed, 13 May 2026 17:24:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 17:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 17:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 71A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie 71A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall.<br/>[Am 13.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
