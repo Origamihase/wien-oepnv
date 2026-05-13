@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Verspätungen",
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "efb7fda2bee4851ff1b6c083ce7930fb0893897126569c8481a6cda2e1134d04",
-    "pubDate": "2026-05-13T17:30:00+02:00",
-    "starts_at": "2026-05-13T17:30:00+02:00",
-    "ends_at": "2026-05-13T21:58:00+02:00",
-    "_identity": "wl|störung|L=16A|D=2026-05-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Bauarbeiten",
     "description": "Linie 26A: Unregelmäßige Intervalle in Richtung Groß-Enzersdorf. Grund: Bauarbeiten.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -574,17 +562,5 @@
     "starts_at": "2026-05-12T00:00:20+02:00",
     "ends_at": "2026-05-13T23:59:59+02:00",
     "_identity": "wl|störung|L=N65|D=2026-05-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verunreinigung",
-    "description": "Linie U3: Unregelmäßige Intervalle in Richtung Ottakring. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
-    "pubDate": "2026-05-13T21:52:00+02:00",
-    "starts_at": "2026-05-13T21:52:00+02:00",
-    "ends_at": "2026-05-13T21:59:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-05-13"
   }
 ]
