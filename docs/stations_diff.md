@@ -1,12 +1,12 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-12T01:53:33+00:00_
+_Generated: 2026-05-13T17:41:17+00:00_
 
-**Stations: 1951 → 1951 (Δ +0)**
+**Stations: 1951 → 1952 (Δ +1)**
 
-## Added (0)
+## Added (1)
 
-_None._
+- `name:Wien Unter St. Veit, Hummelgasse (WL)` — Wien Unter St. Veit, Hummelgasse \(WL\)
 
 ## Removed (0)
 
@@ -16,6 +16,7 @@ _None._
 
 _None._
 
-## Coordinates shifted (≥ 100 m) (0)
+## Coordinates shifted (≥ 100 m) (2)
 
-_None._
+- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
+- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)

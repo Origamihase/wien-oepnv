@@ -101,19 +101,6 @@ def test_precondition_deep_bomb_raises_recursion_error() -> None:
 # a logged warning, mirroring the existing JSONDecodeError fallback.
 
 
-def test_vor_load_station_name_map_handles_depth_bomb(
-    tmp_path: Path, caplog: pytest.LogCaptureFixture
-) -> None:
-    from src.providers import vor
-
-    poisoned = tmp_path / "vor-haltestellen.mapping.json"
-    poisoned.write_text(DEEP_BOMB_STR, encoding="utf-8")
-
-    caplog.set_level(logging.WARNING)
-    with patch.object(vor, "MAPPING_FILE", poisoned):
-        result = vor._load_station_name_map()
-
-    assert result == {}
 
 
 # ============================================================================

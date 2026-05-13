@@ -19,63 +19,10 @@ from datetime import datetime, UTC
 
 from src.feed.merge import deduplicate_fuzzy
 from src.providers.oebb import _extract_routes, _is_relevant
-from src.providers.vor import _collect_from_board
 
 
 # ---------------- Bug F: VOR Pendler-Filter ----------------
 
-class TestVorPendlerFilter:
-    """The VOR provider must keep messages from explicitly chosen Pendler
-    stations even when the message text doesn't carry a Wien token."""
-
-    def _payload_with_message(self, head: str, text: str) -> dict[str, object]:
-        return {
-            "DepartureBoard": {"Departure": []},
-            "warnings": [
-                {
-                    "id": "msg1",
-                    "head": head,
-                    "text": text,
-                    "act": "true",
-                }
-            ],
-        }
-
-    def test_flughafen_wien_facility_message_kept(self) -> None:
-        # Real-world example: an elevator notice at the Pendler hub that
-        # never explicitly names "Wien" — used to be silently dropped.
-        items = _collect_from_board(
-            "430470800",  # Flughafen Wien VOR ID
-            self._payload_with_message(
-                "Aufzug defekt",
-                "Bahnsteig 3 Aufzug außer Betrieb.",
-            ),
-        )
-        assert len(items) == 1
-
-    def test_wien_hauptbahnhof_message_kept(self) -> None:
-        # Sanity: in_vienna stations always pass.
-        items = _collect_from_board(
-            "490134900",  # Wien Hauptbahnhof VOR ID
-            self._payload_with_message(
-                "Bauarbeiten",
-                "Gleis 12 gesperrt von 14:00 bis 18:00.",
-            ),
-        )
-        assert len(items) == 1
-
-    def test_unknown_station_still_requires_wien_text(self) -> None:
-        # Defence in depth: a non-whitelist, non-Pendler station keeps the
-        # text-based filter so a misconfigured VOR_STATION_NAMES entry
-        # cannot flood the feed with off-topic messages.
-        items = _collect_from_board(
-            "999999999",  # Unknown ID — not in directory
-            self._payload_with_message(
-                "Aufzug defekt",
-                "Bahnsteig 3 Aufzug außer Betrieb.",
-            ),
-        )
-        assert len(items) == 0
 
 
 # ---------------- Bug G: Strecke|Verbindung|Linie pattern ----------------

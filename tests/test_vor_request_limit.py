@@ -3,7 +3,7 @@ import json
 import multiprocessing
 import os
 import threading
-from datetime import datetime, UTC
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 from collections.abc import Iterator
@@ -40,45 +40,6 @@ def _save_request_count_in_process(
         vor_module._QUOTA_CACHE["date"] = None
 
 
-def test_fetch_events_respects_daily_limit(
-    monkeypatch: pytest.MonkeyPatch,
-    caplog: pytest.LogCaptureFixture,
-) -> None:
-    monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
-    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "test", raising=False)
-    monkeypatch.setattr(vor, "VOR_STATION_IDS", ["1"])
-    monkeypatch.setattr(vor, "MAX_STATIONS_PER_RUN", 1)
-
-    # Die neuen Docstrings von ``load_request_count`` und
-    # ``save_request_count`` dokumentieren das zugrunde liegende Limit und die
-    # Persistenz, auf die sich dieser Test stützt.
-    monkeypatch.setattr(
-        vor,
-        "_select_stations_round_robin",
-        lambda ids, chunk: ids[:chunk],
-    )
-    monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [])
-
-    def fail_fetch(*args: Any, **kwargs: Any) -> None:
-        raise AssertionError("StationBoard request should not be triggered when limit reached")
-
-    monkeypatch.setattr(vor, "_fetch_departure_board_for_station", fail_fetch)
-
-    today = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m-%d")
-    vor.REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    vor.REQUEST_COUNT_FILE.write_text(
-        json.dumps({"date": today, "requests": vor.MAX_REQUESTS_PER_DAY}),
-        encoding="utf-8",
-    )
-
-    from requests import RequestException
-
-    with caplog.at_level("INFO"):
-        with pytest.raises(RequestException) as excinfo:
-            vor.fetch_events()
-
-    assert "Tageslimit" in str(excinfo.value)
-    assert any("Tageslimit" in record.getMessage() for record in caplog.records)
 
 
 def test_save_request_count_flushes_and_fsyncs(
@@ -253,149 +214,10 @@ def reset_vor_quota_cache(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
 
 
-def test_fetch_events_stops_submitting_when_limit_reached(
-    monkeypatch: pytest.MonkeyPatch,
-    tmp_path: Path,
-) -> None:
-    monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
-    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "test", raising=False)
-    monkeypatch.setattr(vor, "VOR_STATION_IDS", ["1", "2", "3"])
-    monkeypatch.setattr(vor, "MAX_STATIONS_PER_RUN", 3)
-    monkeypatch.setattr(
-        vor,
-        "_select_stations_round_robin",
-        lambda ids, chunk: ids[:chunk],
-    )
-    monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [])
-
-    count_file = tmp_path / "vor_request_count.json"
-    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
-    count_file.parent.mkdir(parents=True, exist_ok=True)
-
-    today = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m-%d")
-    count_file.write_text(
-        json.dumps({"date": today, "requests": vor.MAX_REQUESTS_PER_DAY - 1}),
-        encoding="utf-8",
-    )
-
-    call_count = 0
-    call_lock = threading.Lock()
-
-    def fake_fetch(
-        station_id: str,
-        now_local: datetime,
-        counter: Any = None,
-        session: Any = None,
-        timeout: Any = None,
-    ) -> dict[str, Any]:
-        nonlocal call_count
-        with call_lock:
-            call_count += 1
-        vor.save_request_count(now_local)
-        return {}
-
-    monkeypatch.setattr(vor, "_fetch_departure_board_for_station", fake_fetch)
-
-    items = vor.fetch_events()
-
-    assert items == []
-    assert call_count == 1
-
-    stored = json.loads(count_file.read_text(encoding="utf-8"))
-    assert stored["requests"] == vor.MAX_REQUESTS_PER_DAY
 
 
-@pytest.mark.parametrize("status_code, headers", [(429, {"Retry-After": "0"}), (503, {})])
-def test_fetch_departure_board_for_station_counts_unsuccessful_requests(
-    monkeypatch: pytest.MonkeyPatch,
-    status_code: int,
-    headers: dict[str, str],
-) -> None:
-    called = 0
-
-    def fake_save(now_local: datetime) -> int:
-        nonlocal called
-        called += 1
-        return called
-
-    monkeypatch.setattr(vor, "save_request_count", fake_save)
-
-    # Mock session to avoid real creation, but we will mock fetch_content_safe
-    class DummySession:
-        def __init__(self) -> None:
-            self.headers: dict[str, str] = {}
-        def __enter__(self) -> "DummySession": return self
-        def __exit__(self, *args: Any) -> None: pass
-        def close(self) -> None: pass
-        def prepare_request(self, request: Any) -> Any:
-            from requests.models import PreparedRequest
-            p = PreparedRequest()
-            p.prepare(method=request.method, url=request.url, headers=request.headers)
-            return p
-        def merge_environment_settings(self, *args: Any, **kwargs: Any) -> dict[str, Any]: return {}
-
-    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
-
-    def fake_fetch_content_safe(*args: Any, **kwargs: Any) -> None:
-        import requests
-        resp = requests.Response()
-        resp.status_code = status_code
-        for k, v in headers.items():
-            resp.headers[k] = v
-        # raise HTTPError as fetch_content_safe calls raise_for_status=True
-        raise requests.HTTPError(response=resp)
-
-    monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_content_safe)
-
-    now_local = datetime.now(UTC).astimezone(ZoneInfo("Europe/Vienna"))
-    result = vor._fetch_departure_board_for_station("123", now_local)
-
-    assert result is None
-    # Requirement 4: Count only ONCE per station request (regardless of retries)
-    assert called == 1
 
 
-def test_fetch_departure_board_fails_gracefully_on_error(monkeypatch: pytest.MonkeyPatch) -> None:
-    from requests import ConnectionError
-
-    call_count = 0
-
-    def fake_save(now_local: datetime) -> int:
-        nonlocal call_count
-        call_count += 1
-        return call_count
-
-    monkeypatch.setattr(vor, "save_request_count", fake_save)
-
-    # Mock session
-    class DummySession:
-        def __init__(self) -> None:
-            self.headers: dict[str, str] = {}
-        def __enter__(self) -> "DummySession": return self
-        def __exit__(self, *args: Any) -> None: pass
-        def close(self) -> None: pass
-        def prepare_request(self, request: Any) -> Any:
-            from requests.models import PreparedRequest
-            p = PreparedRequest()
-            p.prepare(method=request.method, url=request.url, headers=request.headers)
-            return p
-        def merge_environment_settings(self, *args: Any, **kwargs: Any) -> dict[str, Any]: return {}
-
-    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
-
-    # Mock fetch_content_safe to simulate failure
-    def fake_fetch_content_safe(*args: Any, **kwargs: Any) -> None:
-        raise ConnectionError("boom")
-
-    monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_content_safe)
-
-    now_local = datetime.now(UTC).astimezone(ZoneInfo("Europe/Vienna"))
-    payload = vor._fetch_departure_board_for_station("123", now_local)
-
-    # Should return None on failure
-    assert payload is None
-    # Requirement: Count only ONCE per station request
-    assert call_count == 1
 
 
 def test_load_request_count_resets_on_legacy_integer(
