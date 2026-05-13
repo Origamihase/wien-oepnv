@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 14 May 2026 00:00:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2026 00:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N46: Busse halten bei Linie 48A in Burggasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a751a157bea2c61bda9406b779159246c8d4f92aa8a9f6765523f38cb2bce878</guid>
+      <pubDate>Thu, 14 May 2026 00:30:16 +0200</pubDate>
+      <ext:first_seen>Thu, 14 May 2026 00:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 14 May 2026 00:30:16 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 14 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>[Am 14.05.2026]</description>
+      <content:encoded><![CDATA[[Am 14.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N41: Busse halten Währinger Straße ONr. 200-202]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">16c9b94f2a7dcc5c4072612af6c274662b6064c9cf044a66c34c0e242d3ba893</guid>
+      <pubDate>Thu, 14 May 2026 00:30:01 +0200</pubDate>
+      <ext:first_seen>Thu, 14 May 2026 00:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 14 May 2026 00:30:01 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 14 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>[Am 14.05.2026]</description>
+      <content:encoded><![CDATA[[Am 14.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722</guid>
+      <pubDate>Thu, 14 May 2026 00:09:00 +0200</pubDate>
+      <ext:first_seen>Thu, 14 May 2026 00:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 14 May 2026 00:16:18 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 14 May 2026 01:15:00 +0200</ext:ends_at>
+      <description>Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 14.05.2026]</description>
+      <content:encoded><![CDATA[Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 14.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -53,17 +86,6 @@
       <content:encoded><![CDATA[Veranstaltung Wegen Abhaltung des Maurer Kirtages am Maurer Hauptplatz kommt es zu Umleitungen bei den dort verkehrenden Buslinien.<br/>[13.05.2026 – 07.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[7A/N62: Straßenbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d12247b957e48908f8c972909646d98cb4aa95f4ead0c2d8a20bf7034ccb4d96</guid>
-      <pubDate>Wed, 13 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 14 May 2026 00:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 15:00:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Breitenfurter Straße # Wienerbergstraße werden die Linien 7A und N62 umgeleitet. [Ab 19.06.2026]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Breitenfurter Straße # Wienerbergstraße werden die Linien 7A und N62 umgeleitet.<br/>[Ab 19.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U3: Wien Westbahnhof ↔ Wien Hütteldorf / Wien Hütteldorf ↔ Tullnerbach-Pressbaum / Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;872100</guid>
@@ -91,28 +113,6 @@
       <pubDate>Tue, 12 May 2026 00:00:20 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
       <ext:starts_at>Tue, 12 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 14 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[12.05.2026 – 14.05.2026]</description>
-      <content:encoded><![CDATA[[12.05.2026 – 14.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Betrieb ab Frödenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0cc601b709f5e2e2bf853af2229533e03cb323563dfe0bebb6a3b9de6ceb2e16</guid>
-      <pubDate>Tue, 12 May 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 14 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[12.05.2026 – 14.05.2026]</description>
-      <content:encoded><![CDATA[[12.05.2026 – 14.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
-      <pubDate>Tue, 12 May 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 00:00:18 +0200</ext:starts_at>
       <ext:ends_at>Thu, 14 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[12.05.2026 – 14.05.2026]</description>
       <content:encoded><![CDATA[[12.05.2026 – 14.05.2026]]]></content:encoded>
