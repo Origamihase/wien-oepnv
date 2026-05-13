@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 13 May 2026 14:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 15:00:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U4: Polizeieinsatz]]></title>
+      <title><![CDATA[U2: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a</guid>
-      <pubDate>Wed, 13 May 2026 14:20:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 06:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 14:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 14:50:00 +0200</ext:ends_at>
-      <description>Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">3dd0ec36f6dc8594c9e37e23580bdcf5f82555521c07875e9f83c718912578fc</guid>
+      <pubDate>Wed, 13 May 2026 14:54:00 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 13:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 14:54:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U2: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: Nicht absehbar. [Am 13.05.2026]</description>
+      <content:encoded><![CDATA[Linie U2: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: Nicht absehbar.<br/>[Am 13.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[37: Verkehrsunfall]]></title>
+      <title><![CDATA[57A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">469b9778d4214dbbbd09d8ed008c51981bf9682b6a81d9e95d111392e71be734</guid>
-      <pubDate>Wed, 13 May 2026 13:17:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 13:17:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">d735177cc6e0c032bea05c9936fbbc2b7922b9a27c7090d9edb0f0dee69f67b3</guid>
+      <pubDate>Wed, 13 May 2026 14:54:00 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 15:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 14:54:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
+      <description>Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 13.05.2026]</description>
+      <content:encoded><![CDATA[Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 13.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29B: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">926698c2f961fc28e72bfea5a39121734c681178bdca0f0904afd2b0b22ae1d0</guid>
+      <pubDate>Wed, 13 May 2026 14:33:00 +0200</pubDate>
+      <ext:first_seen>Wed, 13 May 2026 15:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 14:33:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 13.05.2026]</description>
+      <content:encoded><![CDATA[Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 13.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Verkehrsunfall]]></title>
@@ -41,28 +52,6 @@
       <ext:ends_at>Wed, 13 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
       <content:encoded><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
-      <pubDate>Wed, 13 May 2026 13:05:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 13:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 14:40:00 +0200</ext:ends_at>
-      <description>Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
-      <pubDate>Wed, 13 May 2026 13:04:00 +0200</pubDate>
-      <ext:first_seen>Wed, 13 May 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 13:04:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 14:40:00 +0200</ext:ends_at>
-      <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.05.2026]</description>
-      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Rettungseinsatz]]></title>
@@ -116,6 +105,17 @@
       <ext:starts_at>Tue, 12 May 2026 13:39:06 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren. [Seit 12.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren.<br/>[Seit 12.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[47A: Filmaufnahmen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">15b426feb43dc2b416b80eb70aa75396a22ac3d1593bb7f3a236fe7b0e3f9714</guid>
+      <pubDate>Tue, 12 May 2026 10:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 10:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 10:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 00:30:00 +0200</ext:ends_at>
+      <description>Veranstaltung Wegen der Sperre der Zehetnergasse aufgrund von Filmaufnahmen kommt es zu einer Umleitung der Linie 47A. Zeitraum: Donnerstag, 28. Mai 2026, etwa 15:00 Uhr bis … [12.05.2026 – 30.05.2026]</description>
+      <content:encoded><![CDATA[Veranstaltung Wegen der Sperre der Zehetnergasse aufgrund von Filmaufnahmen kommt es zu einer Umleitung der Linie 47A. Zeitraum: Donnerstag, 28. Mai 2026, etwa 15:00 Uhr bis …<br/>[12.05.2026 – 30.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
