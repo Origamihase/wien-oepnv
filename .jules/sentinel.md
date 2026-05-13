@@ -1,3 +1,195 @@
+## 2026-05-13 - Path-Log Sibling Drift Round 2 (`scripts/` Closure): 28 Operator-Facing WARNING/INFO Sinks Across `scripts/enrich_station_aliases.py` (9), `scripts/update_station_directory.py` (17), `scripts/update_wl_stations.py` (3) — The Named-But-Deferred Inverse-Grep Sub-Landscape Of The 2026-05-11 Caller-Drift Round
+
+**Vulnerability:** the 2026-05-11 Caller-Drift Round (the previous
+journal entry) closed seven sibling WARNING sinks in three
+``src/`` modules but explicitly named-but-deferred the inverse grep
+across ``scripts/``: *"the inverse grep across ``scripts/`` (currently
+~14 sibling sites) is named-but-deferred to a Round 2 that does not
+block the canonical drift closure shipped here"*. The grep across
+``scripts/`` (refined: 28 caller-side sites, not 14 — the original
+estimate missed multi-line ``logger.warning(\n    "…",\n    path,\n)``
+forms and ``main()``-flow INFO sinks that interpolate
+``args.{stations,output,haltepunkte,…}``) interpolates an operator-
+controlled ``path`` argument via the bare ``%s`` format spec, mirroring
+the canonical drift shape closed in ``src/utils/files.py`` (PR #1456)
+and the seven sibling sites in ``src/utils/{stations,env}.py`` /
+``src/build_feed.py`` (the 2026-05-11 round):
+
+  * **scripts/enrich_station_aliases.py** (9 sites)
+    - ``_load_vor_names`` (L310) — ``--vor-stops`` FNF WARNING.
+    - ``_load_vor_mapping`` (L337) — ``--vor-mapping`` FNF WARNING.
+    - ``_load_vor_mapping`` (L349) — could-not-parse WARNING.
+    - ``_load_vor_mapping`` (L359-363) — shape-error WARNING
+      ("must contain a JSON array; got %s").
+    - ``_load_gtfs_index`` (L388) — ``--gtfs-stops`` FNF WARNING.
+    - ``_load_pendler_alternative_names`` (L425) — FNF INFO.
+    - ``_load_pendler_alternative_names`` (L434) — invalid-JSON WARNING.
+    - ``main`` (L824 / L834 / L842) — three ``--stations`` error sinks
+      (FNF, could-not-parse, shape-error).
+    - ``main`` (L890 / L894) — two ``--stations`` INFO sinks
+      (dry-run, wrote-aliases-to).
+  * **scripts/update_station_directory.py** (17 sites)
+    - ``_load_gtfs_locations`` (L442, L478) — ``--gtfs-stops`` FNF /
+      csv.Error WARNING.
+    - ``_load_wienerlinien_locations`` (L488, L516) — ``--wl-haltepunkte``
+      FNF / csv.Error WARNING.
+    - ``_load_vor_locations`` (L531, L561) — ``--vor-stops`` FNF /
+      csv.Error WARNING.
+    - ``_load_existing_station_entries`` (L607) — ``--output``
+      could-not-parse WARNING.
+    - ``_load_vor_name_to_id_map`` (L1259) — derived from
+      ``--vor-stops.with_suffix(".mapping.json")`` could-not-parse
+      WARNING.
+    - ``load_vor_stops`` (L1086, L1089, L1116, L1118) — four
+      ``--vor-stops`` log lines (FNF INFO, csv.Error WARNING,
+      no-rows INFO, load-summary INFO).
+    - ``load_pendler_station_ids`` (L1756) — ``--pendler`` FNF WARNING.
+    - ``load_pendler_name_candidates`` (L1807, L1821, L1827, L1832) —
+      four ``--pendler-candidates`` log lines (FNF INFO,
+      could-not-parse / two shape-error WARNINGs).
+    - ``write_json`` (L1878) — ``--output`` summary INFO.
+  * **scripts/update_wl_stations.py** (3 sites)
+    - ``_download_ogd_csv`` (L218) — ``--haltepunkte`` /
+      ``--haltestellen`` save summary INFO.
+    - ``load_vor_mapping`` (L539, L549) — ``--vor-mapping`` FNF INFO /
+      could-not-parse WARNING.
+    - ``main`` (L1235 / L1239) — two ``--haltestellen`` / ``--haltepunkte``
+      reading-from INFO sinks.
+
+**Threat model:** identical to the canonical PR #1456 / 2026-05-11
+round — a hostile path string carries Trojan-Source primitives:
+
+  * ``‮`` U+202E RIGHT-TO-LEFT OVERRIDE — visually reverses subsequent
+    text. An operator skimming the log misreads
+    ``rm -rf /data/state.json`` as the inverse. Phishing primitive
+    in any artefact the log feeds into.
+  * ``​`` U+200B ZERO WIDTH SPACE — invisible cache-key / equality
+    poisoning.
+  * ``\x9b`` U+009B 8-bit CSI / ``\x9d`` U+009D 8-bit OSC — bypass the
+    7-bit ``_ANSI_ESCAPE_RE`` defence at every prior round, trigger
+    SGR colour interpretation on every 8-bit-C1-honouring terminal
+    (xterm with eightBitInput, several BSD consoles, rxvt in 8-bit
+    mode).
+  * ``\x1b`` U+001B ESC — ANSI prefix; terminal-escape primitive.
+  * ``\x07`` U+0007 BEL — terminal-bell denial-of-attention.
+  * ``\n`` / ``\r`` — log-record forgery in any line-based consumer
+    (SIEM splitters, rsyslog, journald cursor-based readers,
+    Promtail).
+  * ``\U000e0020`` Unicode Tag SPACE — invisible-instruction
+    smuggling primitive (2024 OpenAI disclosure). Lands in any
+    artefact that aggregates the script's stderr.
+  * ``︀`` U+FE00 VARIATION SELECTOR-1 — 4-bit-payload steganography.
+
+The path bytes are operator-controlled at every site via the CLI
+arguments enumerated above. ``setup_script_logging`` installs a
+``SafeFormatter`` at the root logger so the formatted message reaches
+stderr sanitised, BUT (a) pytest's ``caplog`` captures the raw
+``LogRecord`` BEFORE the formatter runs — ``record.args[0]`` and
+``record.getMessage()`` expose the primitive; (b) any third-party
+handler attached to the same root logger (rsyslog Python adapter,
+structured JSON handler not routed through ``SafeJSONFormatter``,
+custom plugin) consumes the raw record; (c) the ``setup_script_logging``
+formatter is only installed once ``main()`` runs — any import-time
+log emission (transitive ``from src.X import Y`` inside the helper)
+fires before the formatter is attached. The defence-in-depth fix
+closes the drift at the SOURCE (the format args) so no downstream
+consumer can see the primitive regardless of formatter state.
+
+**Reproduced:**
+``tests/test_sentinel_path_log_sanitisation_scripts_round2.py`` contains
+255 PoC tests. Each of the 25 testable sites is exercised with all 10
+canonical primitives (U+202E, U+200B, U+009B, U+009D, U+001B, U+0007,
+``\n``, ``\r``, U+E0020, U+FE00), plus 5 additive-regression /
+fingerprint invariants:
+
+  * Fingerprint determinism across calls (operator-correlation contract).
+  * Fingerprint hex-only invariant (Trojan-Source-clean output).
+  * Legitimate German content (``Größe_Wien_Bahnhof.json``) survives
+    the fingerprint shape unchanged.
+  * Fingerprint-presence in the log for one canonical benign site
+    (operator-correlation contract).
+  * Sanity import of test-module helpers.
+
+**Fix shape:** mirrors the canonical PR #1456 + 2026-05-11 round
+byte-for-byte. Each of the three scripts gains:
+
+  1. ``import hashlib`` pinned at module head.
+  2. A module-level ``_path_fingerprint`` helper mirroring
+     :func:`src.utils.env._path_fingerprint`::
+
+         def _path_fingerprint(path: Path) -> str:
+             return hashlib.sha256(
+                 str(path).encode("utf-8", errors="replace")
+             ).hexdigest()[:12]
+
+  3. Every operator-controlled-path WARNING / INFO log line is
+     rewritten to use ``[path-sha256=%s]`` with
+     ``_path_fingerprint(path)`` in place of the raw ``path``
+     argument. The bracketed-token shape mirrors the canonical
+     :func:`src.utils.files.read_capped_json` /
+     :func:`src.utils.env._warn_if_world_readable` /
+     :func:`src.build_feed._load_state` log shapes pinned in prior
+     rounds, so the fingerprint format is uniformly grep-able
+     across the whole codebase.
+
+**Learning:**
+
+  1. **Sibling-drift propagation continues to be the canonical
+     Sentinel pattern** for any fix at a single-helper boundary.
+     PR #1456's closing checklist named the ``scripts/`` sub-landscape
+     as deferred work; the 2026-05-11 round's closing checklist
+     re-affirmed it. Closing the named-deferred work item in a
+     dedicated round (rather than letting it accumulate across
+     multiple drift cycles) keeps the journal honest and the
+     closing-checklist tractable.
+
+  2. **The initial "~14 sites" estimate was incomplete.** The actual
+     count is 28 sites — almost exactly 2x. The estimate undercounted
+     because the original grep (``%s.*path``) didn't catch:
+       * Multi-line ``logger.warning(\n    "fmt %s …",\n    path,\n)``
+         forms where the format string and the ``path`` arg are on
+         separate physical lines.
+       * ``main()``-flow INFO sinks that interpolate
+         ``args.{stations,output,…}`` directly (not via a local
+         ``path`` rebinding).
+       * ``_download_ogd_csv`` save-summary INFO ("Saved %s
+         (%d bytes)", target, …) where the operator-controlled path
+         comes through the ``target`` parameter.
+     Future closing-checklist greps for path-log drift should
+     enumerate ``args.\*``, ``target``, ``output_path``, ``cache_path``,
+     ``mapping_candidate``, etc. in addition to the bare ``path``
+     identifier — the threat surface tracks the *semantic* role
+     (operator-controlled filesystem path), not the variable name.
+
+  3. **Defence-in-depth at format args, not just formatter,** is
+     load-bearing. ``setup_script_logging`` installs a SafeFormatter
+     at the root logger BUT every test fixture, structured-log
+     handler, and third-party plugin that consumes
+     ``record.args``/``record.getMessage()`` BEFORE the formatter
+     runs would see the raw primitive bytes pre-fix. Closing the
+     drift at the format-arg interpolation boundary (via
+     ``_path_fingerprint``) is the single canonical defence layer
+     that holds regardless of whether the formatter is installed,
+     bypassed, or replaced.
+
+  4. **CodeQL recognition of the ``hashlib`` barrier** mirrors the
+     canonical files.py shape — ``py/clear-text-logging-sensitive-data``
+     terminates the taint at the cryptographic hash sink. The
+     ``[path-sha256=%s]`` bracketed-token shape is now uniform
+     across ``src/`` and ``scripts/``: a future audit can grep
+     ``"\[path-sha256=%s\]"`` and verify every operator-facing
+     path log is routed through the canonical fingerprint.
+
+  5. **Closing-checklist for the next Path-Log Drift Round:**
+       * ``grep -rn "%s.*path\|path,$\|args\.\(stations\|output\|haltepunkte\|haltestellen\|vor_stops\|gtfs_stops\|wl_haltepunkte\|pendler\|pendler_candidates\|places_tiles_file\|vor_mapping\)" scripts/``
+         on ``scripts/`` (closed by this round) and
+       * ``grep -rn "logger\.\(warning\|error\|info\)\(.*\(target\|output_path\|cache_path\|mapping_candidate\|state_path\)" scripts/ src/``
+         for the variable-name-broadening axis (the
+         ``_download_ogd_csv:target`` site found in this round) —
+         currently 0 outstanding occurrences after this closure.
+
+---
+
 ## 2026-05-11 - Path-Log Sibling Drift (Caller-Side): `_read_capped_json` Duplicate In `src/utils/stations.py` + Five Operator-Facing WARNING Sinks In `src/utils/env.py` (`_warn_if_world_readable`, `load_env_file`) And `src/build_feed.py` (`_load_state`, `_read_state_capped`, `_save_state`) — Sibling Drift Of PR #1456
 
 **Vulnerability:** PR #1456 (the most recent journal entry; canonical

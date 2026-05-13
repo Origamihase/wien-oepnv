@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import logging
 import re
@@ -66,6 +67,30 @@ MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 MAX_ALIAS_CSV_BYTES = 50 * 1024 * 1024
 
 log = logging.getLogger("enrich_station_aliases")
+
+
+def _path_fingerprint(path: Path) -> str:
+    """Return a one-way SHA-256 fingerprint of ``str(path)`` (12 hex chars).
+
+    Security (Path-Log Sibling Drift Round 2, ``scripts/`` closure):
+    mirrors the canonical sanitisation shape pinned in
+    :func:`src.utils.env._path_fingerprint` and the inline
+    :func:`src.utils.files.read_capped_json` fingerprint. The path
+    arguments at every caller-side WARNING / INFO log line in this
+    script come from operator-controlled CLI flags (``--vor-stops``,
+    ``--vor-mapping``, ``--gtfs-stops``, ``--pendler-candidates``,
+    ``--stations``). Interpolating the raw path bytes lets a hostile
+    path carrying Trojan-Source primitives (BiDi RLO, zero-width,
+    8-bit C1 CSI/OSC, Tag block, Variation Selectors, newline
+    log-forgery, ANSI ESC) flow verbatim into stderr / aggregated
+    cron logs / SIEM splitters. The hex-only fingerprint is
+    Trojan-Source-clean and a CodeQL-recognised barrier for the
+    ``py/clear-text-logging-sensitive-data`` taint. Operators
+    correlate by re-hashing the candidate path locally.
+    """
+    return hashlib.sha256(
+        str(path).encode("utf-8", errors="replace")
+    ).hexdigest()[:12]
 
 
 def parse_args() -> argparse.Namespace:
@@ -307,7 +332,10 @@ def _textual_variants(alias: str) -> set[str]:
 
 def _load_vor_names(path: Path) -> dict[str, str]:
     if not path.exists():
-        log.warning("VOR stops file %s not found", path)
+        log.warning(
+            "VOR stops file [path-sha256=%s] not found",
+            _path_fingerprint(path),
+        )
         return {}
     # Security: see ``MAX_ALIAS_CSV_BYTES`` for the canonical CSV
     # size-bomb defence shape (``read_capped_text`` -> ``io.StringIO``
@@ -334,7 +362,10 @@ def _load_vor_names(path: Path) -> dict[str, str]:
 
 def _load_vor_mapping(path: Path) -> dict[int, str]:
     if not path.exists():
-        log.warning("VOR mapping file %s not found", path)
+        log.warning(
+            "VOR mapping file [path-sha256=%s] not found",
+            _path_fingerprint(path),
+        )
         return {}
     # Security: ``read_capped_json`` enforces the byte-size cap (see
     # MAX_JSON_FILE_BYTES) BEFORE opening the file plus the depth-bomb
@@ -346,7 +377,10 @@ def _load_vor_mapping(path: Path) -> dict[int, str]:
         path, MAX_JSON_FILE_BYTES, label="VOR mapping", logger=log,
     )
     if payload is None:
-        log.warning("Could not parse %s (missing/invalid/oversized)", path)
+        log.warning(
+            "Could not parse VOR mapping [path-sha256=%s] (missing/invalid/oversized)",
+            _path_fingerprint(path),
+        )
         return {}
     # Zero-trust: a successfully-decoded payload from disk may still be the wrong shape
     # (corrupted file, hand-edited mapping, or upstream contract change). Without this
@@ -357,8 +391,8 @@ def _load_vor_mapping(path: Path) -> dict[int, str]:
     # `_load_pendler_alternative_names` above both apply the same shape guard.
     if not isinstance(payload, list):
         log.warning(
-            "VOR mapping %s must contain a JSON array; got %s",
-            path,
+            "VOR mapping [path-sha256=%s] must contain a JSON array; got %s",
+            _path_fingerprint(path),
             type(payload).__name__,
         )
         return {}
@@ -385,7 +419,10 @@ def _load_vor_mapping(path: Path) -> dict[int, str]:
 
 def _load_gtfs_index(path: Path) -> dict[str, set[str]]:
     if not path.exists():
-        log.warning("GTFS stops file %s not found", path)
+        log.warning(
+            "GTFS stops file [path-sha256=%s] not found",
+            _path_fingerprint(path),
+        )
         return {}
     # Security: see ``_load_vor_names`` / ``MAX_ALIAS_CSV_BYTES`` for
     # the canonical CSV size-bomb defence shape.
@@ -422,7 +459,10 @@ def _load_pendler_alternative_names(path: Path) -> dict[str, list[str]]:
     stored under.
     """
     if not path.exists():
-        log.info("Pendler candidates file %s not found", path)
+        log.info(
+            "Pendler candidates file [path-sha256=%s] not found",
+            _path_fingerprint(path),
+        )
         return {}
     # Security: ``read_capped_json`` enforces both the depth-bomb catch
     # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). Same
@@ -431,7 +471,10 @@ def _load_pendler_alternative_names(path: Path) -> dict[str, list[str]]:
         path, MAX_JSON_FILE_BYTES, label="Pendler candidates", logger=log,
     )
     if data is None:
-        log.warning("Invalid JSON in pendler candidates %s", path)
+        log.warning(
+            "Invalid JSON in pendler candidates [path-sha256=%s]",
+            _path_fingerprint(path),
+        )
         return {}
     if not isinstance(data, Mapping):
         return {}
@@ -778,7 +821,10 @@ def main() -> int:
     configure_logging(args.verbose)
 
     if not args.stations.exists():
-        log.error("Stations file %s not found", args.stations)
+        log.error(
+            "Stations file [path-sha256=%s] not found",
+            _path_fingerprint(args.stations),
+        )
         return 1
 
     # Security: ``read_capped_json`` enforces both the depth-bomb catch
@@ -788,7 +834,10 @@ def main() -> int:
         args.stations, MAX_JSON_FILE_BYTES, label="Stations", logger=log,
     )
     if raw_data is None:
-        log.error("Could not parse %s (missing/invalid/oversized)", args.stations)
+        log.error(
+            "Could not parse Stations file [path-sha256=%s] (missing/invalid/oversized)",
+            _path_fingerprint(args.stations),
+        )
         return 1
 
     if isinstance(raw_data, list):
@@ -796,7 +845,10 @@ def main() -> int:
     elif isinstance(raw_data, dict) and isinstance(raw_data.get("stations"), list):
         stations = raw_data["stations"]
     else:
-        log.error("Stations file %s must contain a JSON array or wrapped object", args.stations)
+        log.error(
+            "Stations file [path-sha256=%s] must contain a JSON array or wrapped object",
+            _path_fingerprint(args.stations),
+        )
         return 1
 
     vor_names = _load_vor_names(args.vor_stops)
@@ -835,11 +887,17 @@ def main() -> int:
 
     log.info("Updated aliases for %d stations", updated)
     if args.dry_run:
-        log.info("Dry run – not writing %s", args.stations)
+        log.info(
+            "Dry run – not writing [path-sha256=%s]",
+            _path_fingerprint(args.stations),
+        )
         return 0
 
     _write_stations_payload(args.stations, stations)
-    log.info("Wrote enriched aliases to %s", args.stations)
+    log.info(
+        "Wrote enriched aliases to [path-sha256=%s]",
+        _path_fingerprint(args.stations),
+    )
     return 0
 
 
