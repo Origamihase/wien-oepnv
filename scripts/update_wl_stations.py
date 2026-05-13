@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import logging
 import re
@@ -22,6 +23,27 @@ from importlib import import_module
 from pathlib import Path
 from typing import Any, cast
 from collections.abc import Callable, Iterable, Iterator, Mapping, Sequence
+
+
+def _path_fingerprint(path: Path) -> str:
+    """Return a one-way SHA-256 fingerprint of ``str(path)`` (12 hex chars).
+
+    Security (Path-Log Sibling Drift Round 2, ``scripts/`` closure):
+    mirrors :func:`src.utils.env._path_fingerprint`. The path arguments
+    at every caller-side WARNING / INFO log line in this script come
+    from operator-controlled CLI flags (``--haltepunkte``,
+    ``--haltestellen``, ``--stations``, ``--vor-mapping``).
+    Interpolating the raw path bytes lets a hostile path carrying
+    Trojan-Source primitives (BiDi RLO, zero-width, 8-bit C1 CSI/OSC,
+    Tag block, Variation Selectors, newline log-forgery, ANSI ESC)
+    flow verbatim into stderr / aggregated cron logs / SIEM splitters.
+    The hex-only fingerprint is Trojan-Source-clean and a
+    CodeQL-recognised barrier for the
+    ``py/clear-text-logging-sensitive-data`` taint.
+    """
+    return hashlib.sha256(
+        str(path).encode("utf-8", errors="replace")
+    ).hexdigest()[:12]
 
 
 def _project_root() -> Path:
@@ -193,7 +215,11 @@ def _download_ogd_csv(url: str, target: Path) -> bool:
     target.parent.mkdir(parents=True, exist_ok=True)
     with atomic_write(target, mode="wb", permissions=0o644) as handle:
         handle.write(content)
-    log.info("Saved %s (%d bytes)", target, len(content))
+    log.info(
+        "Saved [path-sha256=%s] (%d bytes)",
+        _path_fingerprint(target),
+        len(content),
+    )
     return True
 
 
@@ -536,7 +562,10 @@ def _is_generic_base(base: str) -> bool:
 
 def load_vor_mapping(path: Path) -> dict[str, Mapping[str, object]]:
     if not path.exists():
-        log.info("No VOR mapping found at %s", path)
+        log.info(
+            "No VOR mapping found at [path-sha256=%s]",
+            _path_fingerprint(path),
+        )
         return {}
     # Security: ``read_capped_json`` enforces both the depth-bomb catch
     # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). Same
@@ -546,7 +575,10 @@ def load_vor_mapping(path: Path) -> dict[str, Mapping[str, object]]:
         path, MAX_JSON_FILE_BYTES, label="VOR mapping", logger=log,
     )
     if raw is None:
-        log.warning("Could not parse VOR mapping %s (missing/invalid/oversized)", path)
+        log.warning(
+            "Could not parse VOR mapping [path-sha256=%s] (missing/invalid/oversized)",
+            _path_fingerprint(path),
+        )
         return {}
     mapping: dict[str, Mapping[str, object]] = {}
     if not isinstance(raw, list):
@@ -1204,11 +1236,17 @@ def main(argv: Sequence[str] | None = None) -> int:
         _download_ogd_csv(OGD_HALTESTELLEN_URL, args.haltestellen)
         _download_ogd_csv(OGD_HALTEPUNKTE_URL, args.haltepunkte)
 
-    log.info("Reading haltestellen: %s", args.haltestellen)
+    log.info(
+        "Reading haltestellen: [path-sha256=%s]",
+        _path_fingerprint(args.haltestellen),
+    )
     haltestellen = load_haltestellen(args.haltestellen)
     log.info("Found %d haltestellen", len(haltestellen))
 
-    log.info("Reading haltepunkte: %s", args.haltepunkte)
+    log.info(
+        "Reading haltepunkte: [path-sha256=%s]",
+        _path_fingerprint(args.haltepunkte),
+    )
     haltepunkte = load_haltepunkte(args.haltepunkte)
     log.info("Found %d haltepunkte", len(haltepunkte))
 

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import io
 import json
 import logging
@@ -160,6 +161,27 @@ HEADER_VARIANTS: dict[str, set[str]] = {
 }
 
 logger = logging.getLogger("update_station_directory")
+
+
+def _path_fingerprint(path: Path) -> str:
+    """Return a one-way SHA-256 fingerprint of ``str(path)`` (12 hex chars).
+
+    Security (Path-Log Sibling Drift Round 2, ``scripts/`` closure):
+    mirrors :func:`src.utils.env._path_fingerprint`. The path arguments
+    at every caller-side WARNING / INFO log line in this script come
+    from operator-controlled CLI flags (``--output``, ``--pendler``,
+    ``--pendler-candidates``, ``--vor-stops``, ``--gtfs-stops``,
+    ``--wl-haltepunkte``). Interpolating the raw path bytes lets a
+    hostile path carrying Trojan-Source primitives (BiDi RLO,
+    zero-width, 8-bit C1 CSI/OSC, Tag block, Variation Selectors,
+    newline log-forgery, ANSI ESC) flow verbatim into stderr /
+    aggregated cron logs / SIEM splitters. The hex-only fingerprint
+    is Trojan-Source-clean and a CodeQL-recognised barrier for the
+    ``py/clear-text-logging-sensitive-data`` taint.
+    """
+    return hashlib.sha256(
+        str(path).encode("utf-8", errors="replace")
+    ).hexdigest()[:12]
 
 
 def _empty_args() -> tuple[str, ...]:
@@ -439,7 +461,10 @@ def _store_location(
 def _load_gtfs_locations(path: Path) -> dict[str, LocationInfo]:
     locations: dict[str, LocationInfo] = {}
     if not path.exists():
-        logger.warning("GTFS stops file not found: %s", path)
+        logger.warning(
+            "GTFS stops file not found: [path-sha256=%s]",
+            _path_fingerprint(path),
+        )
         return locations
     # Security: route through ``read_capped_text`` to bound the
     # ``csv.DictReader`` -> ``readline()`` allocation against planted
@@ -475,7 +500,11 @@ def _load_gtfs_locations(path: Path) -> dict[str, LocationInfo]:
                 if is_station or key not in locations:
                     _store_location(locations, key, lat, lon, source="gtfs")
     except csv.Error as exc:
-        logger.warning("Could not parse GTFS stops file %s: %s", path, exc)
+        logger.warning(
+            "Could not parse GTFS stops file [path-sha256=%s]: %s",
+            _path_fingerprint(path),
+            exc,
+        )
     else:
         if locations:
             logger.info("Loaded %d GTFS stop coordinates", len(locations))
@@ -485,7 +514,10 @@ def _load_gtfs_locations(path: Path) -> dict[str, LocationInfo]:
 def _load_wienerlinien_locations(path: Path) -> dict[str, LocationInfo]:
     locations: dict[str, LocationInfo] = {}
     if not path.exists():
-        logger.warning("Wiener Linien haltepunkte file not found: %s", path)
+        logger.warning(
+            "Wiener Linien haltepunkte file not found: [path-sha256=%s]",
+            _path_fingerprint(path),
+        )
         return locations
     # Security: see _load_gtfs_locations for the canonical CSV
     # size-bomb defence shape (read_capped_text + io.StringIO).
@@ -513,7 +545,11 @@ def _load_wienerlinien_locations(path: Path) -> dict[str, LocationInfo]:
                     continue
                 _store_location(locations, key, lat, lon, source="wl")
     except csv.Error as exc:
-        logger.warning("Could not parse Wiener Linien haltepunkte file %s: %s", path, exc)
+        logger.warning(
+            "Could not parse Wiener Linien haltepunkte file [path-sha256=%s]: %s",
+            _path_fingerprint(path),
+            exc,
+        )
     else:
         if locations:
             logger.info("Loaded %d Wiener Linien coordinates", len(locations))
@@ -528,7 +564,10 @@ def _load_vor_locations(path: Path) -> dict[str, LocationInfo]:
     """
     locations: dict[str, LocationInfo] = {}
     if not path.exists():
-        logger.warning("VOR stops file not found: %s", path)
+        logger.warning(
+            "VOR stops file not found: [path-sha256=%s]",
+            _path_fingerprint(path),
+        )
         return locations
     # Security: see _load_gtfs_locations for the canonical CSV
     # size-bomb defence shape (read_capped_text + io.StringIO).
@@ -558,7 +597,11 @@ def _load_vor_locations(path: Path) -> dict[str, LocationInfo]:
                     continue
                 _store_location(locations, key, lat, lon, source="vor")
     except csv.Error as exc:
-        logger.warning("Could not parse VOR stops file %s: %s", path, exc)
+        logger.warning(
+            "Could not parse VOR stops file [path-sha256=%s]: %s",
+            _path_fingerprint(path),
+            exc,
+        )
     else:
         if locations:
             logger.info("Loaded %d VOR coordinates", len(locations))
@@ -604,8 +647,9 @@ def _load_existing_station_entries(
     )
     if payload is None:
         logger.warning(
-            "Could not parse existing station directory %s " "(missing/invalid/oversized)",
-            path,
+            "Could not parse existing station directory "
+            "[path-sha256=%s] (missing/invalid/oversized)",
+            _path_fingerprint(path),
         )
         return {}, []
 
@@ -1083,10 +1127,17 @@ def load_vor_stops(path: Path) -> list[VORStop]:
     try:
         rows = list(_iter_vor_rows(path))
     except FileNotFoundError:
-        logger.info("VOR stops file not found: %s", path)
+        logger.info(
+            "VOR stops file not found: [path-sha256=%s]",
+            _path_fingerprint(path),
+        )
         return []
     except csv.Error as exc:
-        logger.warning("Could not parse VOR stops file %s: %s", path, exc)
+        logger.warning(
+            "Could not parse VOR stops file [path-sha256=%s]: %s",
+            _path_fingerprint(path),
+            exc,
+        )
         return []
 
     stops: dict[str, VORStop] = {}
@@ -1113,9 +1164,16 @@ def load_vor_stops(path: Path) -> list[VORStop]:
         )
 
     if not stops:
-        logger.info("No VOR stops extracted from %s", path)
+        logger.info(
+            "No VOR stops extracted from [path-sha256=%s]",
+            _path_fingerprint(path),
+        )
     else:
-        logger.info("Loaded %d VOR stops from %s", len(stops), path)
+        logger.info(
+            "Loaded %d VOR stops from [path-sha256=%s]",
+            len(stops),
+            _path_fingerprint(path),
+        )
     return list(stops.values())
 
 
@@ -1199,8 +1257,8 @@ def _load_vor_name_to_id_map(path: Path | None) -> dict[str, str]:
     )
     if payload is None:
         logger.warning(
-            "Could not read VOR mapping %s (missing/invalid/oversized)",
-            path,
+            "Could not read VOR mapping [path-sha256=%s] (missing/invalid/oversized)",
+            _path_fingerprint(path),
         )
         return {}
     if not isinstance(payload, list):
@@ -1753,7 +1811,10 @@ def _filter_relevant_stations(stations: list[Station]) -> list[Station]:
 
 def load_pendler_station_ids(path: Path) -> set[str]:
     if not path.exists():
-        logger.warning("Pendler station list not found: %s", path)
+        logger.warning(
+            "Pendler station list not found: [path-sha256=%s]",
+            _path_fingerprint(path),
+        )
         return set()
     # Security: ``read_capped_json`` enforces both the depth-bomb catch
     # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). When the
@@ -1804,8 +1865,9 @@ def load_pendler_name_candidates(path: Path) -> set[str]:
     """
     if not path.exists():
         logger.info(
-            "Pendler candidates file not found: %s (using bst_id whitelist only)",
-            path,
+            "Pendler candidates file not found: [path-sha256=%s] "
+            "(using bst_id whitelist only)",
+            _path_fingerprint(path),
         )
         return set()
     # Security: ``read_capped_json`` enforces both the depth-bomb catch
@@ -1818,18 +1880,25 @@ def load_pendler_name_candidates(path: Path) -> set[str]:
     )
     if data is None:
         logger.warning(
-            "Invalid JSON in pendler candidates file %s " "(missing/invalid/oversized)",
-            path,
+            "Invalid JSON in pendler candidates file "
+            "[path-sha256=%s] (missing/invalid/oversized)",
+            _path_fingerprint(path),
         )
         return set()
 
     if not isinstance(data, dict):
-        logger.warning("Pendler candidates file %s must be a JSON object", path)
+        logger.warning(
+            "Pendler candidates file [path-sha256=%s] must be a JSON object",
+            _path_fingerprint(path),
+        )
         return set()
 
     raw = data.get("candidates", [])
     if not isinstance(raw, list):
-        logger.warning("Pendler candidates file %s: 'candidates' must be a list", path)
+        logger.warning(
+            "Pendler candidates file [path-sha256=%s]: 'candidates' must be a list",
+            _path_fingerprint(path),
+        )
         return set()
 
     keys: set[str] = set()
@@ -1875,7 +1944,7 @@ def write_json(stations_list: list[dict[str, object]], output_path: Path) -> Non
     with atomic_write(output_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
-    logger.info("Wrote %s", output_path)
+    logger.info("Wrote [path-sha256=%s]", _path_fingerprint(output_path))
 
 
 def main() -> None:
