@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 13 May 2026 05:00:40 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 05:30:39 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Thu, 14 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[13.05.2026 – 14.05.2026]</description>
       <content:encoded><![CDATA[[13.05.2026 – 14.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a</guid>
-      <pubDate>Tue, 12 May 2026 23:00:21 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 23:30:43 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 23:00:21 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 13 May 2026 05:30:00 +0200</ext:ends_at>
-      <description>[12.05.2026 – 13.05.2026]</description>
-      <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Wien Westbahnhof ↔ Wien Hütteldorf / Wien Hütteldorf ↔ Tullnerbach-Pressbaum / Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Wed, 13 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[12.05.2026 – 13.05.2026]</description>
       <content:encoded><![CDATA[[12.05.2026 – 13.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: Betrieb ab Thaliastraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18</guid>
+      <pubDate>Tue, 12 May 2026 00:00:11 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 00:00:11 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 13 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Betrieb ab Thaliastraße &gt; [12.05.2026 – 13.05.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Thaliastraße ><br/>[12.05.2026 – 13.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
