@@ -42,9 +42,9 @@ Mehr Statistiken findest du hier:
 | Kennzahl | Wert |
 | -------- | ---- |
 | Beobachtungen (gesamt) | 4 |
-| Durchschnittliche Verspätung | 0.4 min |
+| Durchschnittliche Verspätung | 0.9 min |
 | Kritische Verspätungen (> 9 min) | 0 |
-| Letzte Aktualisierung | 2026-05-13 11:30 CEST |
+| Letzte Aktualisierung | 2026-05-13 12:00 CEST |
 <!-- STATS:STAMMSTRECKE_LIVE:END -->
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
@@ -52,10 +52,10 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 78 |
+| Beobachtungen (gesamt) | 80 |
 | Durchschnittliche Verspätung | 0.7 min |
 | Kritische Verspätungen (> 9 min) | 2 |
-| Letzte Aktualisierung | 2026-05-13 11:30 CEST |
+| Letzte Aktualisierung | 2026-05-13 12:00 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
 
 > **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).
