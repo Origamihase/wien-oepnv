@@ -258,8 +258,7 @@ def test_is_sbahn_leg_matches_nested_product_field() -> None:
     assert script._is_sbahn_leg({"Product": {"catOut": "S"}})
 
 
-def test_is_sbahn_leg_rejects_non_sbahn() -> None:
-    assert not script._is_sbahn_leg({"category": "REX", "name": "REX 7"})
+def test_is_sbahn_leg_rejects_non_regional() -> None:
     assert not script._is_sbahn_leg({"category": "IC", "name": "IC 533"})
     assert not script._is_sbahn_leg(
         {"category": "RJ", "name": "Railjet 162"}
@@ -304,8 +303,10 @@ def test_collect_delays_includes_sbahn_and_skips_legs_without_realtime() -> None
     trips = [
         _trip(leg_name="S 1", delay_minutes=4),
         _trip(leg_name="S 2", delay_minutes=10),
-        # Non-S-Bahn — must be ignored.
+        # Regional train - included.
         _trip(leg_name="REX 7", delay_minutes=20, category="REX"),
+        # Long-distance train - must be ignored.
+        _trip(leg_name="RJ 1", delay_minutes=25, category="RJ"),
         # S-Bahn but cancelled — ignored (no signal at all).
         _trip(leg_name="S 3", delay_minutes=15, cancelled=True),
         # S-Bahn without rtTime — status unknown, dropped from the
@@ -315,7 +316,7 @@ def test_collect_delays_includes_sbahn_and_skips_legs_without_realtime() -> None
         _trip(leg_name="S 80", delay_minutes=None),
     ]
     delays = script._collect_sbahn_delays_minutes(trips)
-    assert delays == [4.0, 10.0]
+    assert delays == [4.0, 10.0, 20.0]
 
 
 def test_leg_departure_delay_returns_none_when_rttime_missing() -> None:

@@ -49,11 +49,13 @@ Design contract
   gives the upstream a hint, and a client-side leg-count check is the
   second layer of defence — so a multi-stop trip the API still returns
   under ``maxChange=0`` does not bleed into the signal.
-- **S-Bahn product filter**: the eligible leg must carry an S-Bahn
-  product label. We accept either ``leg.category in {"S","SB"}``,
-  ``leg.name`` matching ``S\\d+``, or ``leg.Product[].catOut`` /
+- **S-Bahn product filter**: the eligible leg must carry an S-Bahn or regional train
+  product label. The VAO `/trip` call uses `products=3` to pre-filter Train (1) + S-Bahn (2).
+  We accept either ``leg.category in {"S", "R", "REX"}``,
+  ``leg.name`` matching ``(S|R|REX)\\d+``, or ``leg.Product[].catOut`` /
   ``Product[].line`` matching the same — covering the known
-  upstream-shape variants without committing to a single one.
+  upstream-shape variants without committing to a single one. Long-distance
+  trains (Railjet, IC, etc.) are filtered out.
 - **Self-Healing on degradation**: if either condition holds the
   events file is *unconditionally* reset to ``[]``:
 
@@ -264,11 +266,11 @@ MAX_QUERY_TIMEOUT = 30
 BREAKER_FAILURE_THRESHOLD = 10
 BREAKER_RECOVERY_TIMEOUT = 3600.0
 
-# Pattern that identifies an S-Bahn line label (``S 1``, ``S 7``,
-# ``S 80`` …). Used as the secondary signal when the VAO ``category``
+# Pattern that identifies an S-Bahn, R, or REX line label (``S 1``, ``S 7``,
+# ``REX 3``, ``R 81`` …). Used as the secondary signal when the VAO ``category``
 # field is missing or non-canonical; primary signal is
-# ``category in {"S", "SB"}`` / ``Product.catOut in {"S", "SB"}``.
-_S_BAHN_LINE_RE = re.compile(r"^\s*S\s*\d+\s*$", re.IGNORECASE)
+# ``category in {"S", "R", "REX"}`` / ``Product.catOut in {"S", "R", "REX"}``.
+_S_BAHN_LINE_RE = re.compile(r"^\s*(S|REX|R)\s*\d+\s*$", re.IGNORECASE)
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
@@ -852,6 +854,8 @@ def _query_trips(
         # Enable server-side realtime data so ``Origin.rtTime`` is
         # populated when available.
         "rtMode": "SERVER_DEFAULT",
+        # Filter on product classes Train (1) + S-Bahn (2)
+        "products": "3",
     }
 
     endpoint = f"{vor_provider.VOR_BASE_URL}trip"
@@ -924,20 +928,20 @@ def _query_trips(
 
 
 def _is_sbahn_leg(leg: object) -> bool:
-    """Return ``True`` when *leg* represents a Vienna S-Bahn product.
+    """Return ``True`` when *leg* represents a Vienna S-Bahn or regional rail product.
 
-    The filter is **strict-S**: only the literal Vienna S-Bahn product
-    family (``S 1``, ``S 2``, ``S 7``, ``S 80`` …) is accepted.
-    Regional Express (``REX``), Regional (``R``), InterCity (``IC``),
-    Railjet (``RJ``), and any non-rail product is rejected.
+    The filter targets regional rail: the Vienna S-Bahn product
+    family (``S 1``, ``S 2``, ``S 7``, ``S 80`` …) as well as Regional (``R``)
+    and Regional Express (``REX``) trains are accepted. InterCity (``IC``),
+    Railjet (``RJ``), and any non-rail products are rejected.
 
     Checks (any single signal is sufficient):
 
-    * ``leg.category == "S"`` — VAO's preferred field;
-    * ``leg.name`` matching ``^\\s*S\\s*\\d+\\s*$`` — fallback for older
+    * ``leg.category in {"S", "R", "REX"}`` — VAO's preferred field;
+    * ``leg.name`` matching ``^\\s*(S|REX|R)\\s*\\d+\\s*$`` — fallback for older
       VAO peers that only set the human-readable label;
-    * ``leg.Product[].catOut == "S"`` or ``Product[].line`` matching
-      ``^\\s*S\\s*\\d+\\s*$`` — the JSON-RPC nested form some VAO
+    * ``leg.Product[].catOut in {"S", "R", "REX"}`` or ``Product[].line`` matching
+      ``^\\s*(S|REX|R)\\s*\\d+\\s*$`` — the JSON-RPC nested form some VAO
       releases use.
 
     The previous-generation matcher also accepted ``"SB"`` as category;
@@ -945,11 +949,7 @@ def _is_sbahn_leg(leg: object) -> bool:
     ``SB`` is ambiguous in the German-speaking ÖV space (it can denote
     *Schnellbahn* — a synonym for S-Bahn — but also *Schnellbus* in
     some VAO/ÖBB regional dialects, and there is no SB service on the
-    Stammstrecke). Strict ``"S"`` keeps the filter aligned with the
-    user-visible Vienna S-Bahn product mapping. A future legitimate
-    ``SB`` line would be picked up by the ``name``/``line`` regex
-    anyway (``"SB 1"`` does not match, but Vienna does not run that
-    line).
+    Stammstrecke).
 
     Accepts ``object`` (rather than ``Mapping``) so the defensive
     ``isinstance(leg, Mapping)`` gate is reachable at type-check time
@@ -962,7 +962,7 @@ def _is_sbahn_leg(leg: object) -> bool:
         return False
 
     category = (str(leg.get("category") or "")).strip().upper()
-    if category == "S":
+    if category in {"S", "R", "REX"}:
         return True
 
     name = str(leg.get("name") or "").strip()
@@ -981,7 +981,7 @@ def _is_sbahn_leg(leg: object) -> bool:
 
     for product in candidates:
         cat_out = str(product.get("catOut") or "").strip().upper()
-        if cat_out == "S":
+        if cat_out in {"S", "R", "REX"}:
             return True
         line = str(product.get("line") or "").strip()
         if _S_BAHN_LINE_RE.match(line):
