@@ -1,3 +1,85 @@
+## 2026-05-14 - Clear-Text-Logging Drift (Google Places `OUT_PATH_STATIONS` Resolver): `scripts/fetch_google_places_stations.py:_resolve_stations_out_path` Was the Last `LOGGER.warning(..., env_str)` Callsite In `scripts/` That Interpolated the Env-Controlled `OUT_PATH_STATIONS` Value Via Bare `%s` Without `sanitize_log_arg`
+
+**Vulnerability:** The InvalidPathError branch of
+``_resolve_stations_out_path`` in
+``scripts/fetch_google_places_stations.py`` (line 157-161 pre-fix)
+interpolated the operator-controlled ``OUT_PATH_STATIONS`` env value
+into the WARNING log line via the bare ``%s`` format spec::
+
+    except InvalidPathError:
+        LOGGER.warning(
+            "OUT_PATH_STATIONS %s is outside the allowed roots; using default %s.",
+            text,
+            _DEFAULT_STATIONS_PATH,
+        )
+
+``text`` is ``(candidate or "").strip()`` where ``candidate`` is the
+raw ``OUT_PATH_STATIONS`` env value. ``validate_path`` rejects paths
+outside ``ALLOWED_ROOTS`` (``docs/``, ``data/``, ``log/``) but does
+NOT strip Trojan-Source / ANSI / BiDi / control-character primitives
+from the path bytes — those primitives flow verbatim into the
+WARNING log line.
+
+**Sibling drift shape:** Identical to PR #1473
+(``src/feed/reporting.py``) and PR #1472 (``src/places/client.py``):
+canonical env-string-into-log shape that should mirror the canonical
+sanitiser. ``scripts/fetch_google_places_stations.py`` was the last
+script-level callsite of this shape that did not route through
+``sanitize_log_arg``.
+
+**Attack-surface narrowness pre-fix:** The script's
+``_configure_logging`` installs ``setup_script_logging`` which uses
+``SafeFormatter`` in production. However:
+
+  * **pytest's caplog** captures records BEFORE the formatter runs.
+    Any test that exercises the rejection branch sees the
+    pre-formatter message verbatim — including every primitive.
+  * **Non-SafeFormatter log handlers** (early-init plumbing before
+    ``_configure_logging`` runs, third-party log capturing, future
+    refactor that drops the safe formatter) consume the raw record.
+  * **Defense-in-depth.** Mirroring the canonical shape at every
+    env-controlled-string log boundary means a future refactor that
+    bypasses ``SafeFormatter`` doesn't silently re-expose every
+    drift site at once.
+
+**Fix shape:** Add ``from src.utils.logging import sanitize_log_arg``
+and route ``text`` through ``sanitize_log_arg(text)`` at the call
+boundary. Mirrors the canonical defence pinned at every other
+Trojan-Source-bearing log boundary in the codebase.
+
+**Reproduced:**
+``tests/test_sentinel_fetch_places_outpath_log_drift.py`` contains
+14 PoC tests:
+
+  * 10 parametrised PoC tests asserting each Trojan-Source primitive
+    (U+202E RLO, U+200B ZWSP, U+061C ALM, ESC, 8-bit CSI, BEL, NL,
+    CR, U+E0020 Tag SPACE, U+FE00 Variation Selector-1) is stripped
+    from the WARNING line.
+  * 1 full-attack-payload PoC asserting the canonical attack-fragment
+    union (ANSI SGR + RLO + ZWSP + ALM + 8-bit CSI + BEL + Tag SPACE
+    + Variation Selector + log-record forgery newline) does not
+    survive in the log line.
+  * 2 regression tests asserting the return value still falls back
+    to ``_DEFAULT_STATIONS_PATH`` on InvalidPathError / empty input.
+  * 1 AST inventory invariant
+    (``test_no_bare_text_log_in_resolve_outpath``) walking
+    ``scripts/fetch_google_places_stations.py`` and asserting no log
+    call inside ``_resolve_stations_out_path`` interpolates the
+    bare ``text`` local without ``sanitize_log_arg`` wrapping.
+
+Pre-fix: at least 11 of the 14 tests FAIL (the primitive / payload
+parametrised tests catch the leaked primitives; the AST walker
+catches the bare ``text`` arg). Post-fix: all 14 pass.
+
+**Learning:** The clear-text-logging drift family pinned by the
+canonical ``sanitize_log_arg`` shape extends past ``src/`` into
+``scripts/``. Each script-level rejection branch that logs an
+env-controlled value with bare ``%s`` is a sibling drift site of
+the canonical ÖBB Retry-After hardening — same threat model, same
+fix shape. The AST inventory walker is the forcing function: a
+future contributor who adds ``LOGGER.warning("…%s…", text)`` inside
+``_resolve_stations_out_path`` fails the walker at PR-review time.
+
 ## 2026-05-14 - Binary-Blob Size-Bomb Drift (ÖBB Workbook Cache Fallback): `scripts/update_station_directory.py:download_workbook` Was The Only `Path.read_bytes()` Callsite Under `src/`/`scripts/` That Did Not Route Through The Canonical Size-Cap Helper Family — Closed Via New `read_capped_bytes` Helper
 
 **Vulnerability:** The `download_workbook` soft-fail fallback in

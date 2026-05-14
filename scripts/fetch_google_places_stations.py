@@ -47,6 +47,7 @@ from src.places.merge import BoundingBox, MergeConfig, merge_places, load_statio
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
 from src.utils.env import load_default_env_files
 from src.utils.files import atomic_write, read_capped_text
+from src.utils.logging import sanitize_log_arg
 from src.utils.serialize import scrub_trojan_source_primitives
 from src.feed.config import InvalidPathError, validate_path
 
@@ -154,9 +155,18 @@ def _resolve_stations_out_path(candidate: str | None) -> Path:
     try:
         return validate_path(Path(text), "OUT_PATH_STATIONS")
     except InvalidPathError:
+        # Security (Clear-Text-Logging Drift, sibling of PRs #1472/#1473):
+        # ``text`` is the operator-controlled ``OUT_PATH_STATIONS`` env
+        # value. Pre-fix the WARNING line interpolated it verbatim via
+        # ``%s`` — Trojan-Source / ANSI / BiDi / control primitives flowed
+        # into the operator log, into pytest's caplog (which fires BEFORE
+        # ``SafeFormatter`` runs), and into any non-``SafeFormatter`` log
+        # handler. Route through ``sanitize_log_arg`` so a hostile env var
+        # cannot inject ANSI / BiDi / log-forging payloads into operator
+        # log streams.
         LOGGER.warning(
             "OUT_PATH_STATIONS %s is outside the allowed roots; using default %s.",
-            text,
+            sanitize_log_arg(text),
             _DEFAULT_STATIONS_PATH,
         )
         return validate_path(_DEFAULT_STATIONS_PATH, "OUT_PATH_STATIONS")
