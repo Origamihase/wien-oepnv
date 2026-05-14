@@ -750,13 +750,35 @@ def build_feed_health_payload(
     if report.exception_message and report.exception_message not in errors:
         errors.append(report.exception_message)
 
+    # Security (Trojan-Source / control-character drift at the JSON sink):
+    # ``report.feed_path`` is the POSIX form of ``OUT_PATH`` resolved by
+    # :func:`src.feed.config.resolve_env_path`. ``validate_path`` only
+    # checks that the path resolves under one of ``ALLOWED_ROOTS``
+    # (``docs/``, ``data/``, ``log/``); it does NOT strip the canonical
+    # CVE-2021-42574 attack-byte union (BiDi marks, ZWSP family, BOM,
+    # variation selectors, Tag block, C0/C1 controls) from the path
+    # bytes. With ``json.dump(..., ensure_ascii=False)`` the bytes
+    # would otherwise survive as raw UTF-8 in the published
+    # ``docs/feed-health.json`` artefact (committed to ``main`` by the
+    # ``update-cycle.yml`` cron tick, served on GitHub Pages, consumed
+    # by SIEMs / LLM-driven downstream services). The companion
+    # Markdown sink (``render_feed_health_markdown`` line 593) already
+    # routes ``feed_path`` through :func:`src.utils.text.safe_markdown_codespan`;
+    # this scrub mirrors the same defence at the JSON-sink boundary.
+    # Same regex as the duplicate-summary scrub above so a future
+    # widening of ``_CONTROL_CHARS_RE`` automatically covers both
+    # sinks.
+    feed_path_value: str | None = None
+    if report.feed_path is not None:
+        feed_path_value = _CONTROL_CHARS_RE.sub("", report.feed_path)
+
     return {
         "run": {
             "id": report.run_id,
             "status": "success" if report.build_successful else "error",
             "started_at": _format_timestamp_iso(report.started_at),
             "finished_at": _format_timestamp_iso(report.finished_at),
-            "feed_path": report.feed_path,
+            "feed_path": feed_path_value,
             "raw_item_count": report.raw_item_count,
             "final_item_count": report.final_item_count,
         },
