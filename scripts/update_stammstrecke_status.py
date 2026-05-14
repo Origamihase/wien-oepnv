@@ -558,6 +558,28 @@ def _save_pending_trips(path: Path, state: Mapping[str, _PendingTrip]) -> bool:
     value — losing one tick's state update means the affected trips
     keep their previous state on next load, which is the desired
     safe-fallback shape.
+
+    Security (Trojan-Source / BiDi-Mark Drift, sibling of PRs #1434 /
+    #1435 and Rounds 10–14): the file is operator-facing diagnostic
+    state, committed to ``main`` by ``update-cycle.yml``'s
+    ``add_options: '-A'`` auto-commit step, and reviewed via ``cat``
+    / ``less`` / the GitHub web UI / IDE preview. ``ensure_ascii=True``
+    escapes every non-ASCII code point as a literal ``\\uXXXX``
+    sequence so a VAO-upstream-controlled ``leg.name`` carrying the
+    canonical CVE-2021-42574 BiDi / zero-width / Unicode line-
+    terminator / 8-bit C1 union cannot leak as raw UTF-8 bytes:
+    ``_canonical_line_name`` only strips ``\\s+`` (which excludes
+    U+202E and the rest of category Cf) plus ``|``, so the
+    upstream-derived field reaches the dict KEY (via
+    ``_identity_key``) and the inner ``name`` value verbatim.
+    Mirrors the canonical fix shape pinned for the sibling
+    ``data/*.json`` / ``cache/<provider>/last_run.json`` state
+    writers; forensic intent is preserved
+    (``_load_pending_trips`` recovers the original string from the
+    literal escape via ``json.loads``). Legitimate payload content
+    is exclusively ASCII (hardcoded direction labels, short S-Bahn
+    / R / REX line designations, ISO-8601 timestamps), so the diff
+    shape is unchanged on the happy path.
     """
 
     payload = {key: _trip_to_json(trip) for key, trip in state.items()}
@@ -574,7 +596,7 @@ def _save_pending_trips(path: Path, state: Mapping[str, _PendingTrip]) -> bool:
                 fh,
                 indent=2,
                 sort_keys=True,
-                ensure_ascii=False,
+                ensure_ascii=True,
             )
             fh.write("\n")
         return True
@@ -650,7 +672,17 @@ def _load_recently_finalised(path: Path) -> dict[str, datetime]:
 def _save_recently_finalised(
     path: Path, finalised: Mapping[str, datetime]
 ) -> bool:
-    """Persist the recently-finalised companion ledger atomically."""
+    """Persist the recently-finalised companion ledger atomically.
+
+    Security: same Trojan-Source / BiDi-Mark threat model as
+    :func:`_save_pending_trips` — the keys are built via
+    :func:`_identity_key` which interpolates a VAO-upstream-controlled
+    leg-name segment, so a hostile / pathological upstream payload
+    surfaces here through the same path. ``ensure_ascii=True`` escapes
+    every non-ASCII code point so no raw byte in the canonical attack
+    union reaches the committed
+    ``cache/stammstrecke/recently_finalised.json``.
+    """
 
     payload = {key: ts.isoformat() for key, ts in finalised.items()}
     try:
@@ -666,7 +698,7 @@ def _save_recently_finalised(
                 fh,
                 indent=2,
                 sort_keys=True,
-                ensure_ascii=False,
+                ensure_ascii=True,
             )
             fh.write("\n")
         return True
