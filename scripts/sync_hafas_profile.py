@@ -41,10 +41,10 @@ from __future__ import annotations
 
 import argparse
 import json
-import logging
 import re
 import sys
 from collections.abc import Sequence
+from logging import DEBUG, INFO, getLogger
 from pathlib import Path
 from typing import Final
 
@@ -59,7 +59,7 @@ from src.utils.http import request_safe, session_with_retries
 from src.utils.logging import sanitize_log_arg
 from src.utils.serialize import scrub_trojan_source_primitives
 
-LOGGER = logging.getLogger("places.hafas.sync")
+LOGGER = getLogger("places.hafas.sync")
 
 _PROFILE_SOURCE_URL: Final[str] = (
     "https://raw.githubusercontent.com/public-transport/hafas-client/main/p/oebb/index.js"
@@ -145,7 +145,7 @@ def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
 
 
 def _configure_logging(verbose: bool) -> None:
-    level = logging.DEBUG if verbose else logging.INFO
+    level = DEBUG if verbose else INFO
     setup_script_logging(level)
 
 
@@ -352,10 +352,18 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
         return 1
 
+    # Security: log only byte-length metadata, never the parsed credential
+    # values themselves. The ``ver`` / ``aid`` strings reach this log line
+    # via ``_extract_profile``'s dict — a credential-coded dataflow that
+    # CodeQL's clear-text-logging-sensitive-data taint analysis marks as
+    # secret-bearing end-to-end. Lengths give operators the "did the
+    # extractor find non-empty values?" signal they need without surfacing
+    # the bytes themselves. ``--verbose`` operators can inspect the
+    # on-disk JSON directly when they need the literal values.
     salt_value = extracted.get("salt", "")
     LOGGER.info(
-        "HAFAS profile written (ver=%s, salt-bytes=%d, aid-bytes=%d)",
-        sanitize_log_arg(extracted["ver"]),
+        "HAFAS profile written (ver-bytes=%d, salt-bytes=%d, aid-bytes=%d)",
+        len(extracted["ver"]),
         len(salt_value),
         len(extracted["aid"]),
     )

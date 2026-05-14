@@ -35,12 +35,12 @@ from src.utils.circuit_breaker import CircuitBreakerOpen
 @pytest.fixture
 def reset_module() -> Iterator[None]:
     """Reset module-level cache + breaker so tests don't leak state."""
-    hafas_client._PROFILE_CACHE = None
-    hafas_client._PROFILE_LOAD_FAILED = False
+    hafas_client._ProfileState.cache = None
+    hafas_client._ProfileState.load_failed = False
     hafas_client._BREAKER.reset()
     yield
-    hafas_client._PROFILE_CACHE = None
-    hafas_client._PROFILE_LOAD_FAILED = False
+    hafas_client._ProfileState.cache = None
+    hafas_client._ProfileState.load_failed = False
     hafas_client._BREAKER.reset()
 
 

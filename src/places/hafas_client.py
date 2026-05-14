@@ -126,11 +126,24 @@ _BREAKER: Final[CircuitBreaker] = CircuitBreaker(
 )
 
 _PROFILE_LOCK: Final[threading.Lock] = threading.Lock()
-_PROFILE_CACHE: HafasProfile | None = None
-# Sentinel: a previous load attempt failed and the failure was logged.
-# We avoid spamming the cron log with the same warning on every
-# subsequent station lookup in the same process.
-_PROFILE_LOAD_FAILED: bool = False
+
+
+class _ProfileState:
+    """Module-level cache for the lazily-loaded HAFAS profile.
+
+    The state lives on a class instead of bare module globals so
+    CodeQL's ``py/unused-global-variable`` analysis (which treats
+    ``global``-statement reads/writes inside a single function as
+    self-use and flags the variable as unused) sees clear
+    attribute-level reads and writes across the public entry point.
+    The ``cache`` slot holds the parsed profile after a successful
+    first load; the ``load_failed`` slot pins the "do not retry in
+    this process" decision so the cron log isn't spammed with the
+    same diagnostic on every subsequent station lookup.
+    """
+
+    cache: HafasProfile | None = None
+    load_failed: bool = False
 
 
 def _load_profile(path: Path = _PROFILE_PATH) -> HafasProfile:
@@ -202,22 +215,21 @@ def _get_profile() -> HafasProfile | None:
     in the same process short-circuit silently. The cache is thread-
     safe so a multi-threaded enrichment pass cannot race the load.
     """
-    global _PROFILE_CACHE, _PROFILE_LOAD_FAILED
     with _PROFILE_LOCK:
-        if _PROFILE_CACHE is not None:
-            return _PROFILE_CACHE
-        if _PROFILE_LOAD_FAILED:
+        if _ProfileState.cache is not None:
+            return _ProfileState.cache
+        if _ProfileState.load_failed:
             return None
         try:
-            _PROFILE_CACHE = _load_profile()
+            _ProfileState.cache = _load_profile()
         except HafasProfileError as exc:
-            _PROFILE_LOAD_FAILED = True
+            _ProfileState.load_failed = True
             LOGGER.warning(
                 "HAFAS enrichment disabled: %s",
                 sanitize_log_arg(str(exc)),
             )
             return None
-        return _PROFILE_CACHE
+        return _ProfileState.cache
 
 
 def _build_loc_match_payload(profile: HafasProfile, station_name: str) -> dict[str, object]:
