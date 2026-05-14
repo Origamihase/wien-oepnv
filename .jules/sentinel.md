@@ -1,3 +1,186 @@
+## 2026-05-14 - Tag-Character / Variation-Selector Drift (Sitemap Sibling): `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS` Was the Only Canonical-Floor Sanitiser the 2026-05-11 Round-11 Widening Missed — a Comment-Asserted "Byte-Exact Mirror" That Quietly Diverged Three Code-Point Ranges (`︀-️`, `\U000e0000-\U000e007f`, `\U000e0100-\U000e01ef`) Below the Canonical `src/utils/http.py:_UNSAFE_URL_CHARS` Floor
+
+**Vulnerability:** `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS`
+(the first-layer gate inside `_is_valid_base_url` that validates
+`SITE_BASE_URL` before it lands in every `<loc>` element of the
+public `docs/sitemap.xml` artefact and `docs/robots.txt` 's
+`Sitemap:` directive) was added by the 2026-05-10 *BiDi-Mark Drift
+Round 6* closing round (#1452) as a proactive defence-in-depth
+sibling of `src/utils/http.py:_UNSAFE_URL_CHARS` — the source-file
+comment at line 39 documented it as **"byte-exact mirror of
+`src/utils/http.py:_UNSAFE_URL_CHARS`"**.
+
+The contract held through the 2026-05-10 *8-bit C1 / DEL Drift*
+round (which widened both regexes to `\x7f-\x9f`). But the
+2026-05-11 *Tag-Character / Variation-Selector Drift* round
+(`.jules/sentinel.md` line 1720) widened every canonical-floor
+sanitiser in lockstep to cover three additional invisible-character
+ranges:
+
+  * **BMP Variation Selectors** (`︀-️`) — U+FE00..U+FE0F.
+  * **Unicode Tag block** (`\U000e0000-\U000e007f`) — U+E0000..U+E007F.
+  * **Supplementary Variation Selectors** (`\U000e0100-\U000e01ef`)
+    — U+E0100..U+E01EF.
+
+The Round-11 closing inventory enumerated nine canonical-floor sites
+that were widened simultaneously:
+
+  * `src/utils/logging.py:_INVISIBLE_DANGEROUS_RE`
+  * `src/utils/logging.py:_CONTROL_CHARS_RE`
+  * `src/utils/http.py:_UNSAFE_URL_CHARS`         ← widened (canonical)
+  * `src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE`
+  * `src/utils/stats.py:_CSV_CONTROL_CHARS_RE`
+  * `src/utils/stations_validation.py:_UNSAFE_CHARS_RE`
+  * `src/utils/serialize.py:_TROJAN_SOURCE_PRIMITIVES_RE`
+  * `src/feed/reporting.py:_CONTROL_CHARS_RE`
+  * `src/build_feed.py:_CONTROL_RE`
+
+But the sibling `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS` was
+NOT widened in the same pass, so the "byte-exact mirror" contract
+pinned by the source-file comment quietly diverged three code-point
+ranges below the canonical floor. The drift slipped past the existing
+inventory invariant test
+`tests/test_sentinel_sitemap_unsafe_chars_canonical_drift.py::test_sitemap_unsafe_url_chars_covers_canonical_set_inventory`
+because that test's `CANONICAL_DANGEROUS_CHARS` enumeration was the
+pre-Round-11 set (BiDi + zero-width + ASCII control + structural
+URL-injection chars only) — the inventory invariant asserts that
+every regex matches every code point in the enumeration, so adding
+new canonical code points without extending the enumeration leaves
+the test passing while the drift exists.
+
+**Threat model:** `SITE_BASE_URL` is an environment-controlled string
+that the `update-cycle.yml` workflow interpolates into:
+
+  1. Every `<loc>` element of `docs/sitemap.xml` (committed to the
+     repository and served at the public GitHub Pages URL).
+  2. `docs/robots.txt` 's `Sitemap:` directive (also published).
+
+A planted `SITE_BASE_URL` like
+`https://forker.github.io/wien-oepnv\U000E0061\U000E0062` carries
+TAG LATIN SMALL LETTER A / TAG LATIN SMALL LETTER B bytes that are
+visually invisible (the canonical Tag-block use-case is encoding
+text inside emoji modifier sequences and per the
+`ConceptOfMind/USe-r-CR <https://arxiv.org/abs/2406.16066>`_ public
+exploit shape, modern LLMs decode Tag-character payloads as English
+text) but byte-distinct from a legitimate URL. The same shape with
+`︀`..`️` (BMP Variation Selectors) or
+`\U000E0100`..`\U000E01EF` (supplementary Variation Selectors) is
+equally invisible to a human reviewer and to URL display-conversion
+in modern terminals / browsers / IDE previews.
+
+Practical impact:
+
+  * **Steganography / data smuggling** — a Tag-character payload
+    encodes arbitrary text inside an otherwise-legitimate URL,
+    smuggling forensic / exfiltration markers into the public sitemap
+    that is indexed by every search engine crawling GitHub Pages.
+  * **Prompt-injection smuggling** — every LLM-driven downstream
+    service that consumes the sitemap (auto-summarisers,
+    RSS-to-prompt pipelines, search-engine snippet generation) sees
+    the Tag-character payload as part of the URL text and executes
+    the embedded instructions.
+  * **Cache-key / GUID collision** — Tag-character /
+    Variation-Selector bytes are byte-distinct but visually
+    identical, so a future cache consumer using the rendered URL as
+    a key sees a fresh entry for every variation-selector
+    permutation.
+
+**Defence-in-depth shape:** The drift exists at the *first layer* of
+validation in `_is_valid_base_url`:
+
+```python
+def _is_valid_base_url(candidate: str) -> bool:
+    if _UNSAFE_URL_CHARS.search(candidate):
+        return False
+    return validate_public_feed_url(candidate, check_dns=False) is not None
+```
+
+The *second layer* (`validate_public_feed_url` -> `validate_http_url`)
+uses the canonical `src/utils/http.py:_UNSAFE_URL_CHARS` which DOES
+match the Round-11 additions, so a candidate carrying Tag-character
+or Variation-Selector bytes is currently rejected at the second
+layer. But the *Round 6 prevention rule* explicitly named the
+structural risk:
+
+> A future PR that adds a callsite of `_UNSAFE_URL_CHARS` in
+> `scripts/generate_sitemap.py` without the second-layer gate would
+> re-enable the BiDi/zero-width issue.
+
+The same prevention rule applies to the Round-11 supplementary
+ranges. Widening the narrow regex restores the "byte-exact mirror"
+contract advertised by the source-file comment and closes the
+structural risk proactively, before a refactor of `_is_valid_base_url`
+or a third caller of `_UNSAFE_URL_CHARS` re-enables the smuggling
+primitive.
+
+**Fix:** Widen `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS` to mirror
+the post-Round-11 canonical `src/utils/http.py:_UNSAFE_URL_CHARS`:
+
+```python
+_UNSAFE_URL_CHARS = re.compile(
+    r"[\s\x00-\x1f\x7f-\x9f<>\"\\^`{|}"
+    r"؜​-‏‪-‮⁦-⁩"
+    r"︀-️﻿"
+    r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
+)
+```
+
+Updated the source-file comment to document the Round-11 widening.
+Added a dedicated PoC test
+`tests/test_sentinel_sitemap_tag_chars_variation_selectors_drift.py`
+that exercises per-code-point coverage of each of the three
+supplementary ranges, end-to-end rejection via `_is_valid_base_url`,
+and a sister inventory-invariant test that pins both regexes against
+the same enumeration. Extended the parent inventory test
+`tests/test_sentinel_sitemap_unsafe_chars_canonical_drift.py:CANONICAL_DANGEROUS_CHARS`
+with the Round-11 code points so a future widening of the canonical
+floor (e.g. a Unicode-17 invisible-character block) fires both tests
+until every sibling regex is widened too.
+
+**Prevention rule:** When the canonical sanitiser at
+`src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` is widened, every
+declared "byte-exact mirror" in the codebase MUST be widened in the
+SAME PR — including siblings under `scripts/`. The inventory-test
+list (`CANONICAL_DANGEROUS_CHARS` /
+`TAG_AND_VARIATION_SELECTOR_CHARS`) MUST be extended at the same time
+so the assertion stays a proper invariant against future drift.
+
+Inventory of every "byte-exact mirror" / `_UNSAFE_*` sibling regex
+that should match every code point in
+`src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` (verified
+programmatically by
+`tests/test_sentinel_tag_chars_variation_selectors_invisible_drift.py`
++ this PR's sibling):
+
+  * `src/utils/logging.py:_INVISIBLE_DANGEROUS_RE`  (canonical)
+  * `src/utils/logging.py:_CONTROL_CHARS_RE`
+  * `src/utils/http.py:_UNSAFE_URL_CHARS`
+  * `src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE`
+  * `src/utils/stats.py:_CSV_CONTROL_CHARS_RE`
+  * `src/utils/stations_validation.py:_UNSAFE_CHARS_RE`
+  * `src/utils/serialize.py:_TROJAN_SOURCE_PRIMITIVES_RE`
+  * `src/feed/reporting.py:_CONTROL_CHARS_RE`
+  * `src/build_feed.py:_CONTROL_RE`
+  * `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS`  ← closed by this PR
+
+**Learning:** A source-file comment that claims "byte-exact mirror"
+of a canonical regex IS a load-bearing invariant — but the invariant
+is only as durable as the inventory test pinning it. When the
+canonical floor gets widened (Round-11 added three supplementary
+code-point ranges), an inventory test that enumerates only the
+pre-widening code points stays GREEN against the post-widening
+canonical regex AND the unmodified sibling regex — silently
+masking the very drift the test was built to catch. Programmatic
+inventories (parametrised over `CANONICAL_DANGEROUS_CHARS`) only
+defend against the drift their enumeration covers; future canonical
+widenings MUST extend the enumeration in the same PR or the
+invariant is structurally meaningless. Mirrors the lesson from
+PR #1452 / #1471's Round-6 drift but extended to the inventory-list
+maintenance: a passing inventory test is necessary but not
+sufficient — the enumeration itself MUST track the canonical floor.
+
+---
+
 ## 2026-05-14 - Markdown Backslash-Precedence Bypass via `escape_markdown`: The Canonical Inline Markdown-Escape Helper Did Not Escape `\\` Itself, Letting a Hostile Warning/Error Carrying `\\*payload\\*` Re-Open Every Prior `[]()*_`@<>#~` Round Simultaneously and Render as `<em>payload</em>` / `<code>payload</code>` in `docs/feed-health.md` + the Auto-Submitted GitHub Issue Body + `docs/stations_validation_report.md`
 
 **Vulnerability:** :func:`src.utils.text.escape_markdown`
