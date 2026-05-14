@@ -28,6 +28,21 @@ DEFAULT_MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 # ``max_bytes``.
 DEFAULT_MAX_TEXT_FILE_BYTES = 50 * 1024 * 1024
 
+# Canonical default cap for binary blob payloads (XLSX workbooks, ZIP
+# archives, image / PDF caches) read into memory in one shot via
+# :func:`read_capped_bytes`. Sized identically to the JSON / text caps so
+# the three helpers share the same threat-model bound — a planted-huge
+# binary file (compromised CI runner / partial flush + power loss /
+# parallel orchestrator atomic state swap) buffered via
+# ``Path.read_bytes()`` allocates O(file_size) bytes and raises
+# ``MemoryError`` (a ``BaseException`` subclass NOT caught by
+# ``except OSError``) past the surrounding handler and crashes the cron
+# pipeline (the orchestrator runs every update script via
+# ``subprocess.run(check=True)``). Callers requiring a tighter ceiling
+# (XLSX cache pinned at the HTTP fetch cap, small binary blob) pass an
+# explicit ``max_bytes``.
+DEFAULT_MAX_BYTES_FILE_BYTES = 50 * 1024 * 1024
+
 # Canonical defaults for the ``zipfile.ZipFile`` validator. The four caps
 # below close the four orthogonal axes that the existing
 # ``sum(info.file_size)`` check does NOT catch:
@@ -339,6 +354,68 @@ def read_capped_text(
                 return None
             return raw.decode(encoding, errors=errors)
     except (OSError, UnicodeDecodeError):
+        return None
+
+
+def read_capped_bytes(
+    path: Path,
+    max_bytes: int = DEFAULT_MAX_BYTES_FILE_BYTES,
+    *,
+    label: str = "bytes",
+    logger: logging.Logger | None = None,
+) -> bytes | None:
+    """Read raw bytes from *path*, returning ``None`` if missing/oversized.
+
+    Mirrors :func:`read_capped_json` / :func:`read_capped_text` for binary
+    blob payloads (XLSX workbooks, ZIP archives, cached image / PDF blobs)
+    where ``Path.read_bytes()`` would buffer the entire file into memory
+    before any downstream defence layer can run — a ``BaseException``-
+    rooted ``MemoryError`` that propagates past surrounding
+    ``except OSError`` handlers and crashes the cron pipeline (the
+    orchestrator runs every update script via
+    ``subprocess.run(check=True)``).
+
+    Threat model: identical to :func:`read_capped_json`. A planted-huge
+    binary file at *path* (compromised CI runner / partial flush + power
+    loss / corrupted previous run / parallel orchestrator process
+    performing an atomic state swap mid-read) buffered into memory via
+    ``Path.read_bytes()`` allocates O(file_size) bytes and raises
+    ``MemoryError``. The fix shape mirrors :func:`read_capped_json`:
+    open first, fstat the open file descriptor (TOCTOU-safe), then bound
+    the read at ``max_bytes + 1`` (special-file safe — defends against
+    FIFOs, ``/dev/zero``, character devices that report
+    ``st_size == 0`` but yield unbounded bytes on read).
+    """
+    log = logger if logger is not None else logging.getLogger(__name__)
+    # Security: see ``read_capped_json`` for the rationale of fingerprinting
+    # ``path`` instead of interpolating it. Same CodeQL clear-text-logging
+    # surface, same Trojan-Source / control-character defanging surface,
+    # same hashlib-based barrier shape.
+    path_fingerprint = hashlib.sha256(
+        str(path).encode("utf-8", errors="replace")
+    ).hexdigest()[:12]
+    try:
+        # Open first so the size check is on the actual inode that
+        # ``read()`` will consume — closes the stat/open TOCTOU.
+        with path.open("rb") as handle:
+            if os.fstat(handle.fileno()).st_size > max_bytes:
+                log.warning(
+                    "%s file [path-sha256=%s] is too large (> %d bytes); treating as missing.",
+                    label, path_fingerprint, max_bytes,
+                )
+                return None
+            # Defense in depth: bound the read at ``max_bytes + 1`` so a
+            # special file with ``st_size == 0`` (FIFO, ``/dev/zero``,
+            # character device) cannot stream unbounded bytes.
+            raw = handle.read(max_bytes + 1)
+            if len(raw) > max_bytes:
+                log.warning(
+                    "%s file [path-sha256=%s] exceeded %d bytes during read; treating as missing.",
+                    label, path_fingerprint, max_bytes,
+                )
+                return None
+            return raw
+    except OSError:
         return None
 
 

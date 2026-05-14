@@ -44,6 +44,7 @@ if str(_ROOT) not in sys.path:
 try:  # pragma: no cover - convenience for module execution
     from src.utils.files import (
         atomic_write,
+        read_capped_bytes,
         read_capped_json,
         read_capped_text,
         validate_zip_archive_safe,
@@ -58,6 +59,7 @@ try:  # pragma: no cover - convenience for module execution
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from utils.files import (  # type: ignore[no-redef]
         atomic_write,
+        read_capped_bytes,
         read_capped_json,
         read_capped_text,
         validate_zip_archive_safe,
@@ -91,6 +93,29 @@ MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 # legitimate transit-network CSV (Austria-wide GTFS dumps stay well
 # under 50 MiB) and well below the runner's 1 GiB cgroup limit.
 MAX_CSV_LOCATIONS_BYTES = 50 * 1024 * 1024
+
+# Security cap against planted-huge binary cache payloads at the ÖBB
+# workbook fallback path (:data:`DEFAULT_CACHED_WORKBOOK_PATH`). The
+# fallback branch in :func:`download_workbook` is reached when the live
+# ``data.oebb.at`` fetch fails; ``read_capped_bytes`` is the canonical
+# defence shape (mirrors :data:`MAX_JSON_FILE_BYTES` /
+# :data:`MAX_CSV_LOCATIONS_BYTES` in this module and
+# :data:`MAX_LOG_PRUNE_FILE_BYTES` in :mod:`src.feed.logging`). Pinned
+# at 10 MiB — identical to :data:`src.utils.http.MAX_PAYLOAD_SIZE`, the
+# upper bound the HTTP-fetch path could have legitimately produced — so
+# a cache file larger than what HTTP could have stored is by definition
+# tampered (compromised CI runner / hostile PR / manual operator dump /
+# partial flush + power loss) and is rejected at the read boundary.
+# Production xlsx (~62 KiB) is ~169x under the cap, so legitimate state
+# is never rejected. Pre-fix: ``cache_path.read_bytes()`` allocates
+# O(file_size) bytes before the surrounding ``except`` (none) runs, so
+# a 10 GiB planted file at the cache path raises ``MemoryError`` past
+# the surrounding cron orchestrator (``subprocess.run(check=True)`` in
+# :mod:`scripts.update_all_stations`), aborting the WHOLE weekly cron
+# tick. Post-fix the file is treated as missing and the original
+# upstream ``Exception`` re-raised — mirrors the pre-fix shape on a
+# missing cache file.
+MAX_CACHED_WORKBOOK_BYTES = 10 * 1024 * 1024
 
 try:  # pragma: no cover - convenience for module execution
     from src.places.client import (
@@ -1504,14 +1529,35 @@ def download_workbook(
         with session_with_retries(USER_AGENT) as session:
             content = fetch_content_safe(session, url, timeout=REQUEST_TIMEOUT)
     except Exception as exc:
-        if cache_path.exists():
+        # Security: ``read_capped_bytes`` enforces the canonical
+        # TOCTOU-safe size cap (mirrors :func:`read_capped_json` /
+        # :func:`read_capped_text` in :mod:`src.utils.files`). The cap
+        # is :data:`MAX_CACHED_WORKBOOK_BYTES` — identical to the
+        # HTTP-fetch upper bound :data:`src.utils.http.MAX_PAYLOAD_SIZE`,
+        # so a cache file larger than what HTTP could have legitimately
+        # produced is rejected as tampered. Pre-fix
+        # ``cache_path.read_bytes()`` allocated O(file_size) bytes
+        # against a planted-huge cache file (compromised CI runner /
+        # partial flush + power loss / parallel orchestrator atomic
+        # state swap) and raised ``MemoryError`` past the surrounding
+        # cron orchestrator. Post-fix the file is treated as missing
+        # (``None`` return) and the fall-through error branch re-raises
+        # the original upstream ``exc`` — mirroring the pre-fix shape
+        # on a missing-cache miss.
+        cached_bytes = read_capped_bytes(
+            cache_path,
+            MAX_CACHED_WORKBOOK_BYTES,
+            label="ÖBB workbook cache",
+            logger=logger,
+        )
+        if cached_bytes is not None:
             logger.warning(
-                "Failed to download %s (%s); falling back to cached workbook %s",
+                "Failed to download %s (%s); falling back to cached workbook [path-sha256=%s]",
                 url,
                 exc,
-                cache_path,
+                _path_fingerprint(cache_path),
             )
-            return BytesIO(cache_path.read_bytes())
+            return BytesIO(cached_bytes)
         logger.error(
             "Failed to download %s and no cached workbook at %s — the "
             "station directory cannot be refreshed",
