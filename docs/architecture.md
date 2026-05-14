@@ -270,27 +270,31 @@ in the build log without any extra wiring.
 
 ---
 
-## 5. OSM-First Station-Directory Enrichment
+## 5. Three-Tier Station-Directory Enrichment (OSM → HAFAS → Google)
 
 Station coordinates and metadata are populated by a layered enrichment
 pipeline orchestrated by `scripts/update_station_directory.py`. The
-hierarchy is **strictly OSM-first**: OpenStreetMap (Overpass API) is
-the primary directory source, and Google Places is demoted to a
-**secondary fallback** that only ever processes stations OSM could not
-resolve.
+hierarchy is a **strictly tiered cascade**: OpenStreetMap (Overpass
+API) is the primary source, HAFAS (ÖBB Scotty) is the Level-2 fallback
+introduced 2026-05-14, and Google Places is the last-resort tier that
+only ever processes stations the first two could not resolve.
 
 ```mermaid
 flowchart LR
     A[ÖBB Verzeichnis<br/>(Excel)] --> B[Station list<br/>without coordinates]
     B --> C[CI gate:<br/>scripts/check_overpass_status.py]
-    C -- mirror up --> D[OSM Overpass<br/>(src/places/osm_client.py)]
+    C -- mirror up --> D[Tier 1: OSM Overpass<br/>(src/places/osm_client.py)]
     C -- mirror down --> E[Skip OSM<br/>via WIEN_OEPNV_OSM_ENRICH=0]
-    D --> F[CircuitBreaker<br/>5 fail / 5 min cool-off]
+    D --> F[OSM CircuitBreaker<br/>5 fail / 5 min cool-off]
     F --> G[merge_places<br/>(name + distance match)]
     G --> H[Stations missing coords?]
     E --> H
-    H -- yes --> I[Google Places fallback<br/>(strict missing subset only)]
-    H -- no --> J[stations.json]
+    H -- yes --> K[Tier 2: HAFAS Mgate<br/>(src/places/hafas_client.py)]
+    K --> L[HAFAS CircuitBreaker<br/>5 fail / 5 min cool-off]
+    L --> M[Residual missing?]
+    M -- yes --> I[Tier 3: Google Places<br/>(strict residual subset only)]
+    M -- no --> J[stations.json]
+    H -- no --> J
     I --> J
 ```
 
@@ -314,17 +318,60 @@ flowchart LR
   operator metadata) is enumerated with `NotRequired[str]`, so
   `mypy --strict` catches misspelled tag reads at every call site.
 
-**Why Google Places is the fallback only:**
+**Why HAFAS is the Level-2 fallback (and why Google moved to Level 3):**
 
-- After the OSM merge runs, `_stations_missing_coordinates` filters
-  the station list to exactly the entries that still lack `latitude`
-  / `longitude`. That subset — and **only** that subset — is passed
-  to `_enrich_with_google_places(..., missing_subset=...)`. Stations
-  OSM already resolved are never re-keyed by the fallback even when
-  a Google Place happens to share their name.
-- When OSM covers every station with coordinates the Google Places
-  call is skipped entirely. The free-tier quota (`PLACES_LIMIT_*`
-  env-vars) is preserved for genuinely missing entries.
+- **Operator-authoritative coordinates and EVA numbers.** HAFAS is
+  ÖBB's own routing backbone. A `LocMatch` query returns the canonical
+  station record together with the EVA-Nummer (`extId`, e.g.
+  `"8100353"` for Wien Hauptbahnhof) that the project persists as the
+  top-level `hafas_extId` field on every HAFAS-resolved station. The
+  coordinates carried by the response are quoted in microdegrees
+  (`x=16377778` → `16.377778°`) and are scaled to WGS84 floats by
+  `src/places/hafas_client.py:_extract_first_location`.
+- **No daily/monthly request budget.** Unlike the VAO ReST endpoint
+  (capped at 100 req/day, reserved for the Stammstrecke monitor —
+  see §7) and Google Places (monthly free-tier ceiling tracked in
+  `data/places_quota.json`), the HAFAS Mgate API has no published
+  per-consumer cap that the cron pipeline would routinely hit. Every
+  station HAFAS can resolve is one fewer station that consumes the
+  Google budget.
+- **Self-healing credential rotation.** ÖBB rotates the Mgate
+  `salt` / `ver` / `aid` triple without notice. The companion
+  `scripts/sync_hafas_profile.py` runs **before** the enrichment in
+  `update-stations.yml` and extracts the live values from the open-
+  source `public-transport/hafas-client` OEBB profile
+  (`p/oebb/index.js` + sibling `p/oebb/base.js`), persisting them
+  atomically to `data/hafas_profile.json`. A rotated upstream profile
+  flows into the next cron tick automatically — the cached profile
+  is rebuilt from the canonical source every run.
+- **Purist integration.** No external HAFAS client library is used.
+  The Mgate `LocMatch` request body is constructed directly,
+  serialised through `json.dumps(payload, separators=(',', ':'))` so
+  the on-the-wire bytes match the MAC input byte-for-byte, optionally
+  signed with `MD5(body + salt)` when the upstream profile carries a
+  salt (ÖBB currently does not), and dispatched through the same
+  `request_safe` security state machine (§2) every other provider
+  uses. A dedicated module-level `CircuitBreaker("hafas_enrichment",
+  failure_threshold=5, recovery_timeout=300.0)` cools the upstream
+  for five minutes after a failure streak so an ÖBB outage cannot
+  self-DDoS the cron pipeline and `CircuitBreakerOpen` is converted
+  to `None` at the public entry point — a HAFAS hiccup never crashes
+  the script and the Google Places fallback still runs for the
+  residual missing subset.
+
+**Why Google Places is the last-resort tier:**
+
+- After OSM and HAFAS have run, `_stations_missing_coordinates`
+  filters the station list to exactly the entries that *still* lack
+  `latitude`/`longitude`. That residual subset — and **only** that
+  subset — is passed to
+  `_enrich_with_google_places(..., missing_subset=...)`. Stations
+  resolved by OSM or HAFAS are never re-keyed even when a Google
+  Place happens to share their name.
+- When OSM + HAFAS cover every station with coordinates the Google
+  Places call is skipped entirely. The free-tier quota
+  (`PLACES_LIMIT_*` env-vars) is preserved for genuinely missing
+  entries.
 
 **Network resilience layers:**
 
@@ -333,24 +380,29 @@ flowchart LR
    the `update-stations.yml` workflow. If Overpass is unreachable the
    workflow flips `WIEN_OEPNV_OSM_ENRICH=0`, skipping the OSM run
    entirely instead of waiting on stalled urllib3 retries.
-2. **`urllib3` JitterRetry** (`session_with_retries`) handles
-   transient 5xx / connection-reset within a single OSM call.
-3. **`CircuitBreaker`** (`src/places/osm_client.py:_BREAKER`,
-   `failure_threshold=5`, `recovery_timeout=300s`) remembers failure
-   streaks across calls. Five consecutive failures park the breaker
-   in OPEN for five minutes, short-circuiting every subsequent call
-   to `OSMOverpassError` so the cron pipeline doesn't self-DDoS the
-   public mirror.
-4. **`request_safe`** wraps every OSM call in the security state
-   machine (§2): SSRF, redirect, content-type, slowloris, payload
-   cap.
-5. **Test-isolation** — `tests/conftest.py` registers an autouse
+2. **HAFAS profile sync** (`scripts/sync_hafas_profile.py`) runs in
+   the same workflow before `update_all_stations.py` and refreshes
+   `data/hafas_profile.json` from the upstream community profile via
+   `request_safe`, persisting the result through
+   `src.utils.files.atomic_write` so a partial fetch cannot leave a
+   corrupted JSON sidecar.
+3. **`urllib3` JitterRetry** (`session_with_retries`) handles
+   transient 5xx / connection-reset within a single OSM or HAFAS
+   call.
+4. **`CircuitBreaker` per tier** — `src/places/osm_client.py:_BREAKER`
+   and `src/places/hafas_client.py:_BREAKER` each open after five
+   consecutive failures and stay open for five minutes; both convert
+   `CircuitBreakerOpen` into a soft per-call `None`/empty result so
+   the cron pipeline keeps going with whatever tiers remain healthy.
+5. **`request_safe`** wraps every OSM and HAFAS call in the security
+   state machine (§2): SSRF, redirect, content-type, slowloris,
+   payload cap.
+6. **Test-isolation** — `tests/conftest.py` registers an autouse
    `reset_circuit_breakers` fixture that returns every known
-   project-owned breaker to CLOSED before each test. Tests that
-   intentionally trip a breaker (such as
-   `test_fetch_stations_breaker_opens_after_repeated_failures`)
-   no longer leak OPEN state to subsequent tests, eliminating an
-   entire class of order-dependent flakes.
+   project-owned breaker (including `hafas_enrichment`) to CLOSED
+   before each test. Tests that intentionally trip a breaker no
+   longer leak OPEN state to subsequent tests, eliminating an entire
+   class of order-dependent flakes.
 
 The relevant CLI flags / env vars:
 
@@ -361,6 +413,12 @@ The relevant CLI flags / env vars:
 | `--google-enrich` / `--no-google-enrich` | enabled | CLI toggle for the Google Places fallback |
 | `OVERPASS_URL` | `overpass-api.de` | Trusted-mirror override; rejected unless on the allow-list |
 | `MERGE_MAX_DIST_M` | `150` | Distance threshold for the dedup match in `merge_places` |
+
+HAFAS itself has no CLI toggle — the tier is active whenever the
+profile sidecar exists. Operators who want to bypass HAFAS for
+debugging can simply delete `data/hafas_profile.json` and the client
+short-circuits to `None` for every station after a single
+`HAFAS enrichment disabled: …` log line.
 
 ### 5a. Wiener Linien OGD merge (the fourth source)
 

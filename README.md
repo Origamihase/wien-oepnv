@@ -62,6 +62,33 @@ Mehr Statistiken findest du hier:
 
 ---
 
+## 🗺️ Datenquellen
+
+Das Projekt unterscheidet konsequent zwischen *Live-Verkehrsmeldungen* (treiben den RSS-Feed) und *Stationsverzeichnis-Anreicherung* (befüllt `data/stations.json`). Beide Pfade greifen auf disjunkte Upstream-Sets zu — die folgende Tabelle ist die transparente Inventarisierung.
+
+### Verkehrsmeldungen (Live-Feed)
+
+| Quelle | Zweck |
+| --- | --- |
+| **Wiener Linien (WL)** | Störungs- und Baustellenmeldungen für U-Bahn, Straßenbahn und Bus innerhalb des WL-Netzes. |
+| **ÖBB** | Bundesweite Bahnmeldungen mit Wien-Filter; Stammstrecken-Verspätungs-Snapshots fließen in die Statistik. |
+| **VOR/VAO** | Regionalverkehr Wien/Niederösterreich/Burgenland. Wird seit 2026-05-11 ausschließlich für den Stammstrecken-Monitor genutzt (siehe `docs/architecture.md` §7). |
+| **OGD Stadt Wien** | Offizielle Baustellendaten der Stadt Wien (Bezirk, Zeitraum, Geo-Infos). |
+
+### Stationsverzeichnis (Geokoordinaten & Metadaten)
+
+Die Koordinaten-Anreicherung läuft als geordnete Fallback-Kette mit drei Tiers, damit das Monatskontingent der kommerziellen Quelle (Google Places) nur als letzter Notausgang in Anspruch genommen wird.
+
+| Tier | Quelle | Zweck |
+| --- | --- | --- |
+| **1 (Primär)** | **OpenStreetMap (Overpass API)** | Offene Daten ohne API-Limit. Liefert Koordinaten, passagierfreundliche Namen und Klassifizierungs-Tags für jeden Stop innerhalb der Wiener Bounding-Box. |
+| **2 (Fallback)** | **HAFAS (ÖBB Scotty)** | Nativer Mgate-`LocMatch`-Client. Liefert hochpräzise Koordinaten und Metadaten (insb. EVA-Nummer / `extId`) für Stationen, die OSM nicht auflösen konnte. Kein Tagesbudget — schont das Google-Kontingent. |
+| **3 (Letzter Ausweg)** | **Google Places** | Wird nur für die strikte Restmenge aktiviert, die weder OSM noch HAFAS abdecken konnten. Persistenter Monats-Quota-Manager (`data/places_quota.json`). |
+
+Begleitende Stamm-/Identifier-Quellen: das **ÖBB-Excel** „Verzeichnis der Verkehrsstationen" (Pflicht-`bst_id`/`bst_code`), die **Wiener Linien OGD-CSVs** für DIVA-Subcodes und Bahnsteig-Stops sowie die gepinnte **VOR-Stop-Liste** (`data/vor-haltestellen.csv`). Details in [`docs/architecture.md`](docs/architecture.md) §5 und in [`docs/how-to/google_places_stations.md`](docs/how-to/google_places_stations.md).
+
+---
+
 ## 🔗 Weiterführende Links
 
 ### 📥 Feed & Daten nutzen
