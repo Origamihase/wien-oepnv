@@ -596,9 +596,10 @@ def fetch_osm_places(
 def filter_complete_places(places: Iterable[Place]) -> list[Place]:
     """Return only places that carry the minimum data set the merge needs.
 
-    A "complete" OSM result has a non-empty name and finite coordinates.
-    Anything else is dropped before the merger runs so the Google
-    fallback is responsible only for genuinely missing entries.
+    A "complete" OSM result has a non-empty name and finite, in-range
+    WGS84 coordinates. Anything else is dropped before the merger
+    runs so the Google fallback is responsible only for genuinely
+    missing entries.
     """
     out: list[Place] = []
     for place in places:
@@ -609,12 +610,24 @@ def filter_complete_places(places: Iterable[Place]) -> list[Place]:
             lon = float(place.longitude)
         except (TypeError, ValueError):
             continue
-        # NaN check. The historic ``x != x`` idiom is the canonical Python
-        # NaN test but triggers CodeQL ``py/comparison-of-identical-expressions``
-        # because the analyser cannot statically prove the operand is a NaN-
-        # capable float. Use :func:`math.isnan` instead for an unambiguous
-        # NaN test that doubles as documentation of intent.
-        if math.isnan(lat) or math.isnan(lon):
+        # Canonical-floor finite + WGS84-range check. ``math.isfinite``
+        # is the strict superset of ``not math.isnan`` — it catches
+        # ``NaN`` (the prior round's defence) AND ``±Inf``. The pre-
+        # 2026-05-14 ``isnan``-only check relied on the upstream
+        # :func:`_iter_stations` ``BoundingBox.contains`` gate to
+        # incidentally reject ``±Inf`` (every comparison with ``±inf``
+        # falls outside any finite envelope). Mirroring the HAFAS
+        # (:func:`src.places.hafas_client._is_valid_wgs84_coord`) and
+        # Google Places (:func:`src.places.client.GooglePlacesClient._parse_place`)
+        # parser-boundary defences here closes the third-tier
+        # structural drift so :func:`filter_complete_places` enforces
+        # the canonical floor independent of caller path — defence-in-
+        # depth against a future bounding-box relaxation, a third-
+        # party caller bypassing ``_iter_stations``, or a refactor
+        # that drops the upstream gate.
+        if not (math.isfinite(lat) and math.isfinite(lon)):
+            continue
+        if not (-90.0 <= lat <= 90.0 and -180.0 <= lon <= 180.0):
             continue
         out.append(place)
     return out
