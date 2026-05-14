@@ -145,11 +145,6 @@ def _extract_github_issue_number(url: str | None) -> str:
     return match.group(1)[:32] if match else ""
 
 
-def _sanitize_code_span(text: str) -> str:
-    """Sanitize text intended for inline code spans by replacing backticks."""
-    return text.replace("`", "'")
-
-
 @dataclass
 class ProviderReport:
     """Tracks the execution status and results of a single provider."""
@@ -620,11 +615,26 @@ def render_feed_health_markdown(
         lines.append("### Entfernte Duplikate im Detail")
         lines.append("")
         for dup in metrics.duplicates:
+            # Security (Trojan-Source / BiDi-mark drift at the inline-code-
+            # span sink): ``dup.titles`` and ``dup.dedupe_key`` are derived
+            # from provider items' ``title`` / ``guid`` fields — both are
+            # upstream-controlled. Pre-fix the local ``_sanitize_code_span``
+            # helper only replaced backticks with apostrophes; it did NOT
+            # strip the canonical floor (BiDi marks, ZWSP/ZWNJ/ZWJ, BOM,
+            # variation selectors, Tag block, C0/C1 controls) that every
+            # sibling sanitiser in the codebase covers. The canonical
+            # ``safe_markdown_codespan`` helper (a) strips the canonical
+            # floor pinned by ``_MARKDOWN_NORMALISE_UNSAFE_RE``,
+            # (b) collapses whitespace, (c) replaces backticks with
+            # apostrophes, and (d) caps length — the single-sourced
+            # inline-code-span helper used by every other sink in
+            # ``_build_body`` (``safe_markdown_codespan(report.feed_path)``,
+            # ``safe_markdown_codespan(str(error_log_path))``).
             titles = ", ".join(
-                f"`{_sanitize_code_span(title)}`" for title in dup.titles if title.strip()
+                f"`{safe_markdown_codespan(title)}`" for title in dup.titles if title.strip()
             )
             title_text = titles or "(keine Titelinformationen)"
-            dedupe_key_escaped = _sanitize_code_span(dup.dedupe_key)
+            dedupe_key_escaped = safe_markdown_codespan(dup.dedupe_key)
             lines.append(
                 f"- **{dup.count}×** Schlüssel `{dedupe_key_escaped}` – Beispiele: {title_text}"
             )
@@ -674,11 +684,28 @@ def build_feed_health_payload(
 ) -> dict[str, Any]:
     """Create a JSON-serialisable structure summarising the feed build."""
 
+    # Security (Trojan-Source / BiDi-mark drift at the JSON sink):
+    # ``summary.dedupe_key`` and each ``summary.titles`` element are
+    # derived from provider items' ``guid`` / ``title`` fields. With
+    # ``json.dump(..., ensure_ascii=False)`` (see ``write_feed_health_json``)
+    # the canonical-floor primitives (BiDi marks, ZWSP family, BOM,
+    # variation selectors, Tag block, C0/C1 controls) would otherwise
+    # land as raw UTF-8 bytes inside ``docs/feed-health.json`` — the
+    # public, GitHub-Pages-served, machine-readable companion of the
+    # Markdown sink. ``_CONTROL_CHARS_RE`` is the canonical sibling
+    # of ``_INVISIBLE_DANGEROUS_RE`` (covers C0/C1 controls + the BiDi /
+    # zero-width / variation-selector / Tag-block family) and is the
+    # same regex the existing sanitisation walker pins for every
+    # operator-facing sink in this module.
     duplicate_entries = [
         {
-            "dedupe_key": summary.dedupe_key,
+            "dedupe_key": _CONTROL_CHARS_RE.sub("", summary.dedupe_key),
             "count": summary.count,
-            "titles": [title for title in summary.titles if title.strip()],
+            "titles": [
+                _CONTROL_CHARS_RE.sub("", title)
+                for title in summary.titles
+                if title.strip()
+            ],
         }
         for summary in metrics.duplicates
     ]

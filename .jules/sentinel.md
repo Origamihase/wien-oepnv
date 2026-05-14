@@ -1,3 +1,202 @@
+## 2026-05-14 - Trojan-Source / BiDi-Mark Drift at the Duplicate-Summary Inline-Code-Span Sink (Markdown) AND the Duplicate-Summary JSON Sink: `src/feed/reporting.py:_sanitize_code_span` Only Replaced Backticks — Did NOT Strip the Canonical Floor (BiDi Marks, ZWSP/ZWNJ/ZWJ, BOM, Variation Selectors, Tag Block, C0/C1 Controls), AND `build_feed_health_payload` Wrote `summary.dedupe_key` / `summary.titles` VERBATIM Into `docs/feed-health.json` With `ensure_ascii=False` — Both Sinks Bypassed the Canonical-Floor Contract Pinned by Every Sibling Sanitiser in the Codebase
+
+**Vulnerability:** A two-sink Trojan-Source / BiDi-mark drift on the
+duplicate-summary fields (`dup.dedupe_key` and each entry of
+`dup.titles`) that originate from upstream provider responses:
+
+  1. **Markdown sink** (`docs/feed-health.md`):
+     :func:`src.feed.reporting.render_feed_health_markdown` interpolated
+     ``dup.dedupe_key`` (line 627) and each ``dup.titles`` element
+     (line 624) through the local helper
+     :func:`src.feed.reporting._sanitize_code_span`. That helper:
+
+     ```python
+     def _sanitize_code_span(text: str) -> str:
+         return text.replace("`", "'")
+     ```
+
+     ONLY replaced literal backticks with apostrophes — it did NOT
+     strip the canonical Trojan-Source family that every sibling
+     sanitiser in the codebase covers
+     (``_INVISIBLE_DANGEROUS_RE`` / ``_CONTROL_CHARS_RE`` /
+     ``_MARKDOWN_NORMALISE_UNSAFE_RE`` /
+     ``_TROJAN_SOURCE_PRIMITIVES_RE`` etc.). The canonical sibling
+     :func:`src.utils.text.safe_markdown_codespan` strips the
+     canonical floor + collapses whitespace + replaces backticks +
+     caps length — but the duplicate-summary render path bypassed it.
+
+  2. **JSON sink** (`docs/feed-health.json`):
+     :func:`src.feed.reporting.build_feed_health_payload` wrote
+     ``summary.dedupe_key`` (line 679) and each ``summary.titles``
+     element (line 681) VERBATIM into the JSON payload. The companion
+     writer :func:`src.feed.reporting.write_feed_health_json` (line 745)
+     dumps the payload with ``ensure_ascii=False``, so any BiDi /
+     Tag-character / variation-selector / C0/C1 bytes survive as
+     raw UTF-8 in the committed JSON file.
+
+**Threat model:** ``dup.dedupe_key`` and ``dup.titles`` are
+constructed by :func:`src.build_feed._summarize_duplicates` from
+the post-merge ``filtered_items`` list. The values are derived from
+each item's ``guid`` / ``_identity`` / ``link`` / ``title`` field —
+ALL upstream-controlled. A compromised provider (ÖBB, VOR, Wiener
+Linien), MITM, hostile DNS response, or any of the prior-round
+env-override leak surfaces can plant Trojan-Source primitives
+inside those fields:
+
+  * **BiDi RLO (U+202E)** — inverts displayed text after the mark
+    in the rendered HTML (both inside the ``<code>`` element AND,
+    for the JSON sink, in any UI that renders the JSON value).
+  * **Unicode Tag block (U+E0000-U+E007F)** — the canonical
+    "ChatGPT invisible-instruction smuggling" primitive
+    (2024 OpenAI disclosure). Every printable ASCII codepoint has a
+    paired Tag character rendering as zero-width. Smuggles
+    arbitrary text inside a code span / JSON value that is
+    invisible to a human reviewer but readable by LLM-driven
+    downstream consumers (auto-summarisers, RSS-to-prompt
+    pipelines, search-engine snippet generation).
+  * **Variation Selectors (U+FE00-U+FE0F, U+E0100-U+E01EF)** —
+    4-bit-payload steganography primitive.
+  * **Zero-width family (U+200B-U+200D), BOM (U+FEFF), ALM
+    (U+061C), LRM/RLM, BiDi formatting (U+202A-U+202E), BiDi
+    isolates (U+2066-U+2069)** — visual deception + cache-key /
+    GUID-collision primitive.
+  * **ASCII C0 controls (\\x00-\\x08, \\x0b, \\x0c, \\x0e-\\x1f),
+    C1 controls + DEL (\\x7f-\\x9f)** — terminal-escape /
+    log-injection primitive on the operator-facing stdout sink
+    (``src/build_feed.py:2352``) and the JSON sink consumed by
+    SIEMs / log shippers.
+
+**Sinks** (both PUBLIC artefacts):
+
+  1. ``docs/feed-health.md`` — committed by the ``update-cycle.yml``
+     cron workflow and rendered on GitHub Pages + the GitHub web UI
+     viewer. Inline code spans (`` `<code>` `` elements) render the
+     interior verbatim per CommonMark, so the embedded BiDi /
+     Tag-character bytes affect the rendered HTML page.
+  2. ``docs/feed-health.json`` — committed by the same workflow and
+     served via GitHub Pages, consumed by machine readers
+     (LLM-driven summarisers, RSS-to-prompt pipelines). With
+     ``ensure_ascii=False`` the raw UTF-8 bytes survive into the
+     committed JSON file.
+  3. (Operator-facing) ``src/build_feed.py:2352`` stdout — the
+     lint-report print of duplicate-group keys. CI logs / operator
+     consoles are BiDi-aware on modern terminals.
+
+Severity: MEDIUM. Visual deception + steganographic data smuggling +
+LLM prompt-injection smuggling + cache-key / GUID collision primitive.
+No JS execution (``<`` / ``>`` are HTML-entity-escaped earlier in
+the pipeline by `_sanitize_text`'s upstream callers).
+
+**Fix:** Three coordinated changes, mirroring the canonical-sanitiser-
+at-boundary pattern used in prior Trojan-Source rounds:
+
+ 1. **Removed the drift helper.** Deleted
+    :func:`src.feed.reporting._sanitize_code_span` (lines 148-150
+    pre-fix). The single-sourced inline-code-span helper for this
+    module is now :func:`src.utils.text.safe_markdown_codespan`,
+    matching every other code-span sink in ``_build_body``
+    (``safe_markdown_codespan(report.feed_path)``,
+    ``safe_markdown_codespan(str(error_log_path))``,
+    ``safe_markdown_codespan(diagnostics, max_len=50_000)``).
+ 2. **Routed both Markdown sink callsites through the canonical
+    helper.** :func:`render_feed_health_markdown` lines 624/627
+    (pre-fix) now call ``safe_markdown_codespan(title)`` and
+    ``safe_markdown_codespan(dup.dedupe_key)``.
+ 3. **Added a JSON-sink scrub.**
+    :func:`build_feed_health_payload` lines 679/681 (pre-fix) now
+    route both fields through ``_CONTROL_CHARS_RE.sub("", ...)``
+    so the JSON payload emits clean UTF-8.
+ 4. **Added a boundary scrub.**
+    :func:`src.build_feed._summarize_duplicates` (lines 1580-1586
+    pre-fix) now applies ``_sanitize_text`` to both the OUTPUT
+    ``key`` and each ``title`` before constructing the
+    :class:`DuplicateSummary`. The grouping above runs on the RAW
+    key so two items carrying the same poisoned guid still group
+    together; only the OUTPUT key handed to ``DuplicateSummary``
+    is scrubbed. Defence-in-depth: future construction sites of
+    ``DuplicateSummary`` that bypass either sink-level scrub
+    still inherit the canonical floor from the boundary.
+
+**Reproduced:** ``tests/test_sentinel_reporting_dup_summary_trojan_source.py``
+contains 189 PoC tests:
+
+  * **30 × 2 = 60 Markdown-sink PoCs** parametrised over the
+    canonical-floor inventory (NUL/BEL/ESC/DEL/CSI-8bit, ALM, ZWSP,
+    ZWNJ, ZWJ, LRM, RLM, LSEP, PSEP, LRE, RLE, PDF, LRO, RLO, LRI,
+    RLI, FSI, PDI, VS1, VS16, BOM, Tag block sample, supplementary
+    Variation Selectors) — one set for ``dup.dedupe_key``, one set
+    for ``dup.titles``.
+  * **30 × 2 = 60 JSON-sink PoCs** mirroring the same parametrisation
+    against ``build_feed_health_payload``.
+  * **30 × 2 = 60 boundary PoCs** mirroring the same parametrisation
+    against ``_summarize_duplicates``.
+  * **9 integration / regression tests** pinning legitimate-content
+    preservation (German umlauts, transit emoji), backtick-replacement
+    contract, combined BiDi + backtick attack, newline / whitespace
+    layout integrity, grouping-count preservation under attack,
+    end-to-end full-pipeline PoC across both sinks, inventory invariants
+    (helper removed, canonical helper referenced, JSON payload
+    defence-in-depth).
+
+Pre-fix: every PoC test fails — the canonical-floor primitive
+survives end-to-end into ``docs/feed-health.md`` / ``docs/feed-
+health.json``. Post-fix: all 189 pass.
+
+**Learning:** A LOCAL "sanitiser" helper that does ONLY part of the
+canonical contract is a structural drift — every callsite of the
+local helper bypasses the canonical floor. The fingerprints:
+
+  1. **A one-line helper that only handles ONE primitive
+     character** (here: ``return text.replace("`", "'")``). A
+     proper sanitiser at any sink boundary should strip the
+     CANONICAL FLOOR (Trojan-Source / BiDi / control-byte family)
+     in addition to the context-specific escape.
+  2. **A canonical sibling exists** but isn't referenced. Here:
+     :func:`src.utils.text.safe_markdown_codespan` covers the same
+     scenario (inline code spans) and applies the canonical floor.
+     Auditing every local-name helper against the canonical
+     sibling reveals the drift.
+  3. **A multi-sink data structure** (here: :class:`DuplicateSummary`)
+     consumed by BOTH a Markdown renderer AND a JSON renderer.
+     Either renderer can be the weak link. The boundary scrub
+     (at the dataclass construction site) defends both sinks in
+     one place AND survives future renderer additions.
+
+**Prevention rule:** When auditing a new sink for canonical-floor
+contract, walk the data flow back to the construction site. If the
+data structure is consumed by multiple sinks, apply the scrub at
+the boundary. If a per-sink local sanitiser helper exists with the
+fingerprint above (one-line, single-character handling), either
+replace it with the canonical sibling or extend it to mirror the
+canonical floor — never leave a "half-sanitiser" alive in the
+codebase. The inventory invariant tests
+``test_sanitize_code_span_helper_removed_or_canonical`` /
+``test_render_feed_health_markdown_uses_canonical_codespan_helper``
+/ ``test_build_feed_health_payload_scrubs_dup_summary_fields``
+pin the contract programmatically.
+
+Inventory of every operator-facing inline-code-span / JSON-value
+sink with upstream-controlled content (verified by the audit
+walker in ``tests/test_sentinel_reporting_dup_summary_trojan_source.py``
++ the canonical sibling ``tests/test_sentinel_tag_chars_variation_selectors_invisible_drift.py``):
+
+  * ``src/feed/reporting.py:render_feed_health_markdown``
+    inline-code-span at line 578 (``safe_markdown_codespan(report.feed_path)``)
+  * ``src/feed/reporting.py:render_feed_health_markdown``
+    inline-code-span at line 624 (``safe_markdown_codespan(title)``)        ← closed by this PR
+  * ``src/feed/reporting.py:render_feed_health_markdown``
+    inline-code-span at line 627 (``safe_markdown_codespan(dup.dedupe_key)``) ← closed by this PR
+  * ``src/feed/reporting.py:_GithubIssueReporter._build_body``
+    inline-code-span at line 1084 (``safe_markdown_codespan(report.feed_path)``)
+  * ``src/feed/reporting.py:_GithubIssueReporter._build_body``
+    fenced-code-block at line 1143 (``safe_markdown_codespan(diagnostics)``)
+  * ``src/feed/reporting.py:_GithubIssueReporter._build_body``
+    inline-code-span at line 1156 (``safe_markdown_codespan(error_log_path)``)
+  * ``src/feed/reporting.py:build_feed_health_payload``
+    JSON sink for ``dedupe_key`` / ``titles`` (``_CONTROL_CHARS_RE.sub``)    ← closed by this PR
+
+---
+
 ## 2026-05-14 - Tag-Character / Variation-Selector Drift (Sitemap Sibling): `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS` Was the Only Canonical-Floor Sanitiser the 2026-05-11 Round-11 Widening Missed — a Comment-Asserted "Byte-Exact Mirror" That Quietly Diverged Three Code-Point Ranges (`︀-️`, `\U000e0000-\U000e007f`, `\U000e0100-\U000e01ef`) Below the Canonical `src/utils/http.py:_UNSAFE_URL_CHARS` Floor
 
 **Vulnerability:** `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS`

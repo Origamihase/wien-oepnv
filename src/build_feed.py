@@ -1579,9 +1579,33 @@ def _summarize_duplicates(items: Sequence[FeedItem]) -> list[DuplicateSummary]:
     for key, group in groups.items():
         if len(group) <= 1:
             continue
-        titles = tuple(str(entry.get("title") or "") for entry in group[:3])
+        # Security (Trojan-Source canonical-floor scrub at the boundary):
+        # ``key`` (derived from each item's ``guid`` / ``_identity`` /
+        # ``link``) and each ``title`` are upstream-controlled — a
+        # compromised provider / MITM / DNS hijack / poisoned cache
+        # fallback can plant BiDi marks, Tag-block bytes, variation
+        # selectors, or C0/C1 controls inside them. ``_sanitize_text``
+        # strips the canonical-floor primitive family pinned by
+        # ``_CONTROL_RE`` (the byte-exact mirror of
+        # ``_INVISIBLE_DANGEROUS_RE``) so every downstream sink of
+        # ``DuplicateSummary`` — ``docs/feed-health.md`` inline code
+        # spans (via ``safe_markdown_codespan`` in
+        # ``render_feed_health_markdown``), ``docs/feed-health.json``
+        # (via ``_CONTROL_CHARS_RE`` scrub in
+        # ``build_feed_health_payload``), and the operator-facing
+        # lint-report stdout (line below) — inherits the canonical
+        # floor in one place. The grouping above runs on the RAW key
+        # so two items carrying the same poisoned guid still group
+        # together; only the OUTPUT key handed to ``DuplicateSummary``
+        # is scrubbed.
+        sanitised_key = _sanitize_text(key)
+        titles = tuple(
+            _sanitize_text(str(entry.get("title") or "")) for entry in group[:3]
+        )
         summaries.append(
-            DuplicateSummary(dedupe_key=key, count=len(group), titles=titles)
+            DuplicateSummary(
+                dedupe_key=sanitised_key, count=len(group), titles=titles
+            )
         )
     summaries.sort(key=lambda summary: summary.count, reverse=True)
     return summaries
