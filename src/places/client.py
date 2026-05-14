@@ -334,12 +334,18 @@ class GooglePlacesClient:
         # Google Places upstream (or MITM) could otherwise smuggle
         # non-finite or nonsensical coordinates into ``data/stations.json``
         # — invalid per RFC 8259 and broken in every strict downstream
-        # consumer.
+        # consumer. Silent drop (mirroring
+        # :func:`src.places.osm_client.filter_complete_places`); the
+        # operator-visible diagnostic stays on the upstream record-count
+        # delta rather than the per-place log line so the place_id —
+        # CodeQL ``py/clear-text-logging-sensitive-data`` classifies the
+        # Places API identifier as "private" — never reaches the log
+        # sink. The pre-fix sibling line 327 already logs invalid
+        # coordinates via the canonical sanitiser for callers that need
+        # a less-specific debug trail.
         if not (math.isfinite(lat_value) and math.isfinite(lon_value)):
-            LOGGER.warning("Skipping place with non-finite coordinates: %s", self._sanitize_arg(place_id))
             return None
         if not (-90.0 <= lat_value <= 90.0 and -180.0 <= lon_value <= 180.0):
-            LOGGER.warning("Skipping place with out-of-range coordinates: %s", self._sanitize_arg(place_id))
             return None
         types_raw = raw.get("types")
         types: list[str]

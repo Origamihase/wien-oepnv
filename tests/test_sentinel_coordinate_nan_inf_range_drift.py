@@ -137,7 +137,7 @@ from src.places import client as places_client
 from src.places import hafas_client
 from src.places.client import GooglePlacesClient, GooglePlacesConfig
 from src.places.hafas_client import HafasLocation
-from src.places.merge import write_stations
+from src.places.merge import StationEntry, write_stations
 
 
 # Sentinel marker shared by every PoC site so a future grep for
@@ -400,7 +400,7 @@ def test_write_stations_rejects_nan_or_infinity_in_payload(
     SENTINEL_COORD_FINITE_DRIFT.
     """
     stations_path = tmp_path / "stations.json"
-    poisoned: list[dict[str, object]] = [
+    poisoned: list[StationEntry] = [
         {
             "name": "Wien Hbf",
             "aliases": [],
@@ -411,7 +411,7 @@ def test_write_stations_rejects_nan_or_infinity_in_payload(
     with pytest.raises(ValueError):
         write_stations(stations_path, poisoned)
 
-    poisoned_inf: list[dict[str, object]] = [
+    poisoned_inf: list[StationEntry] = [
         {
             "name": "Wien Hbf",
             "aliases": [],
@@ -422,7 +422,7 @@ def test_write_stations_rejects_nan_or_infinity_in_payload(
     with pytest.raises(ValueError):
         write_stations(stations_path, poisoned_inf)
 
-    poisoned_neg_inf: list[dict[str, object]] = [
+    poisoned_neg_inf: list[StationEntry] = [
         {
             "name": "Wien Hbf",
             "aliases": [],
@@ -441,7 +441,7 @@ def test_write_stations_accepts_legitimate_stations(tmp_path: Path) -> None:
     NaN/Inf trap remains a safe reader posture for downstream code.
     """
     stations_path = tmp_path / "stations.json"
-    legit: list[dict[str, object]] = [
+    legit: list[StationEntry] = [
         {
             "name": "Wien Hauptbahnhof",
             "aliases": ["Wien Hbf"],
@@ -489,7 +489,7 @@ def test_end_to_end_nan_never_reaches_stations_file(tmp_path: Path) -> None:
         # bypass.  Construct the station shape the
         # ``_enrich_with_hafas`` writer would have produced.
         stations_path = tmp_path / "stations.json"
-        bypass_payload: list[dict[str, object]] = [
+        bypass_payload: list[StationEntry] = [
             {
                 "name": parser_out["name"],
                 "aliases": [],
