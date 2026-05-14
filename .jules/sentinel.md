@@ -1,3 +1,114 @@
+## 2026-05-14 - Binary-Blob Size-Bomb Drift (ÖBB Workbook Cache Fallback): `scripts/update_station_directory.py:download_workbook` Was The Only `Path.read_bytes()` Callsite Under `src/`/`scripts/` That Did Not Route Through The Canonical Size-Cap Helper Family — Closed Via New `read_capped_bytes` Helper
+
+**Vulnerability:** The `download_workbook` soft-fail fallback in
+``scripts/update_station_directory.py`` (line 1514 pre-fix) read the
+cached XLSX workbook snapshot at
+``data/oebb-verkehrsstationen.xlsx`` (committed to the repo via the
+weekly ``update-stations.yml`` auto-commit step) via the unbounded
+``Path.read_bytes()`` shape::
+
+    if cache_path.exists():
+        logger.warning(
+            "Failed to download %s (%s); falling back to cached workbook %s",
+            url, exc, cache_path,
+        )
+        return BytesIO(cache_path.read_bytes())
+
+``Path.read_bytes()`` buffers the WHOLE file into memory before any
+downstream defence layer (``BytesIO`` constructor, openpyxl loader,
+:func:`validate_zip_archive_safe`) can run. A planted-huge cache file
+(compromised CI runner, hostile PR landing a malformed snapshot,
+manual operator dump, partial flush + power loss leaving a giant
+tail-padded file) allocates O(file_size) bytes and raises
+``MemoryError`` past the surrounding ``except Exception``. The cron
+orchestrator (``scripts/update_all_stations.py`` runs every update
+script via ``subprocess.run(check=True)``) propagates the unhandled
+``MemoryError`` as ``CalledProcessError`` and aborts the WHOLE weekly
+station-directory cron tick.
+
+**Drift inventory:** ``Path.read_bytes()`` was the sole remaining
+unbounded read shape under ``src/`` and ``scripts/``. Every other
+binary/text/JSON parser in the codebase already routes through the
+canonical helper family:
+
+  * ``src/utils/files.py:read_capped_json`` — JSON parsers (closed
+    Rounds 1–7 of the JSON size-bomb family, 30+ covered parsers).
+  * ``src/utils/files.py:read_capped_text`` — CSV / log / .env text
+    parsers (closed Round 6).
+  * ``src/utils/files.py:validate_zip_archive_safe`` — ZIP metadata
+    validators.
+
+``Path.read_bytes()`` was structurally invisible to every prior
+audit walker because it is neither a JSON nor a text reader — it is
+the raw binary-blob shape that prior rounds did not name.
+
+**Fix shape:** Added new shared helper
+:func:`src.utils.files.read_capped_bytes` mirroring the TOCTOU +
+special-file defence of :func:`read_capped_json` /
+:func:`read_capped_text` for binary blob payloads. Open first,
+``os.fstat(handle.fileno())`` for the size check (immune to symlink
+swap mid-resolution — pre-fix ``Path.stat`` and ``Path.open``
+independently resolve and follow symlinks, so an attacker swapping
+the inode via ``os.replace`` between those syscalls bypasses any
+``stat().st_size`` cap), ``handle.read(max_bytes + 1)`` defensive
+read budget (catches special files like FIFOs, ``/dev/zero``,
+character devices that report ``st_size == 0`` but yield unbounded
+bytes on read).
+
+The ``download_workbook`` fallback branch routes through it with the
+new :data:`MAX_CACHED_WORKBOOK_BYTES = 10 * 1024 * 1024` cap —
+identical to :data:`src.utils.http.MAX_PAYLOAD_SIZE`, the upper
+bound HTTP could have legitimately produced. A cache file larger than
+what HTTP could have stored is by definition tampered. Production
+xlsx (~62 KiB) is ~169x under the cap. On oversized cache, the file
+is treated as missing and the original upstream exception is re-
+raised — mirroring the pre-fix shape on a missing-cache miss.
+
+**Reproduced:** ``tests/test_sentinel_workbook_cache_size_bomb.py``
+contains 11 PoC tests:
+
+  * 2 precondition tests asserting the new helper +
+    :data:`MAX_CACHED_WORKBOOK_BYTES` constant exist and are sized
+    against the production xlsx + HTTP payload cap.
+  * 1 PoC asserting an oversized cache file is treated as missing
+    and the original ``OSError`` is re-raised
+    (``test_download_workbook_rejects_oversized_cache``).
+  * 1 PoC asserting ``BytesIO`` is NEVER called with the unbounded
+    payload (``test_download_workbook_skips_bytesio_when_cache_oversized``).
+  * 1 regression PoC for the in-bound shape
+    (``test_download_workbook_serves_cache_under_cap``).
+  * 3 helper-level PoCs for the rejection / serving / missing branches
+    of :func:`read_capped_bytes` itself.
+  * 1 TOCTOU-safety PoC asserting ``os.fstat`` is used (not lying
+    ``Path.stat``).
+  * 1 special-file PoC asserting the ``max_bytes + 1`` read budget
+    bounds payloads that report ``st_size == 0``.
+  * 1 AST inventory invariant
+    (``test_no_unbounded_read_bytes_in_src_or_scripts``) — walks
+    every ``*.py`` in ``src/`` and ``scripts/`` and asserts no
+    ``<expr>.read_bytes()`` callsite survives. A future contributor
+    who adds ``cache.read_bytes()`` fails here at PR-review time,
+    mirroring the canonical audit walker shape pinned by
+    ``test_sentinel_json_audit_walker.py``.
+
+Pre-fix: 4 of the 11 tests FAIL (constant doesn't exist, oversized
+cache crashes with OOM/unbounded read, ``BytesIO`` IS called, audit
+walker finds the bare ``cache_path.read_bytes()`` callsite). Post-fix:
+all 11 pass.
+
+**Learning:** Prior audit rounds enumerated every ``.read_text()``,
+``Path.read_text()``, ``json.load``, ``response.json()``, and
+``json.loads`` callsite — but ``Path.read_bytes()`` is structurally
+adjacent (same ``BaseException``-rooted ``MemoryError`` propagation
+shape) and was not named in any prior closing-checklist. The new
+:func:`read_capped_bytes` helper + audit walker close the binary-blob
+axis with the canonical defence shape, so a future raw read of any
+cached binary payload (xlsx, pdf, image, font) inherits the same
+TOCTOU-safe + special-file-safe contract. Walker is the
+forcing-function: drift can only re-appear via a callable-name
+rename (``somefile.binary_load()`` etc.) which would be visible at
+code-review time on a separate axis.
+
 ## 2026-05-14 - Clear-Text-Logging Drift (Reporting GitHub-Issue Submitter + Error-Log-Path Hint): Two Sibling Sites In `src/feed/reporting.py` Logged Env-Controlled Strings Via Bare `%s` — The Last `log.warning(..., env_str)` / `log.info(..., env_path)` Call Shapes In `src/feed/` That Did Not Mirror The Canonical `sanitize_log_arg` Defence
 
 **Vulnerability:** Two sibling clear-text-logging drift sites in
