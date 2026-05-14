@@ -153,7 +153,7 @@ class _HostileDigitStr(str):
     runs with a hostile ``header`` value.
     """
 
-    def isdigit(self) -> bool:  # type: ignore[override]
+    def isdigit(self) -> bool:
         return True
 
 
@@ -178,7 +178,7 @@ def _build_poisoned_exception() -> requests.RequestException:
     response.headers = {"Retry-After": _HostileDigitStr(_ATTACK_BYTES)}
 
     exc = requests.RequestException("simulated network error")
-    exc.response = response  # type: ignore[assignment]
+    exc.response = response
     return exc
 
 
@@ -218,8 +218,13 @@ def test_places_client_retry_after_header_sanitises_attack_bytes(
     GooglePlacesConfig = _client_module.GooglePlacesConfig
     GooglePlacesError = _client_module.GooglePlacesError
 
-    # Avoid wall-clock sleep between retry attempts.
-    monkeypatch.setattr(_client_module.time, "sleep", lambda _seconds: None)
+    # Avoid wall-clock sleep between retry attempts. ``src.places.client``
+    # imports ``time`` at module top level and calls ``time.sleep(...)``;
+    # patching the stdlib ``time.sleep`` reaches the bound reference inside
+    # the module's ``time`` namespace.
+    import time as _time
+
+    monkeypatch.setattr(_time, "sleep", lambda _seconds: None)
 
     poisoned_exc = _build_poisoned_exception()
 
