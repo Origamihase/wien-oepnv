@@ -1,3 +1,130 @@
+## 2026-05-14 - GFM Strikethrough Injection via `escape_markdown`: The Canonical Inline Markdown-Escape Helper Did Not Cover `~`, Letting a Hostile Warning/Error Carrying `~~payload~~` Render as `<del>payload</del>` in `docs/feed-health.md` + the Auto-Submitted GitHub Issue Body + `docs/stations_validation_report.md`
+
+**Vulnerability:** :func:`src.utils.text.escape_markdown` escaped
+``[]()*_`@<>#`` after the immediately-prior ATX-heading-injection
+round, but ``~`` remained outside the escape set. GitHub Flavored
+Markdown (GFM) parses the bigram ``~~text~~`` as strikethrough
+(``<del>text</del>``); the extension is enabled on every renderer
+in the codebase's data path:
+
+ * github.com rendering of ``docs/feed-health.md`` /
+   ``docs/stations_validation_report.md`` (the file viewer always
+   uses GFM with strikethrough enabled).
+ * GitHub Pages serving the same files via the default Jekyll /
+   kramdown_GFM input mode (strikethrough is enabled out of the
+   box).
+ * The auto-submitted GitHub Issue body rendered by GitHub's own
+   GFM renderer (``submit_auto_issue``) — Issue comments always
+   render strikethrough.
+
+The helper is consumed by the bullet-list interpolation in
+:func:`src.feed.reporting.render_feed_health_markdown` and
+:func:`src.feed.reporting._build_github_issue_body`::
+
+    lines.append(f"- {escape_markdown(warning)}")
+    lines.append(f"- {escape_markdown(error)}")
+
+at lines 637/647/1091/1100/1107, and by every ``_safe_md`` callsite
+in :func:`src.utils.stations_validation.ValidationReport.to_markdown`.
+``escape_markdown_cell`` composes ``escape_markdown`` so the
+provider-overview table cells at lines 609/612/613/1116/1119/1120
+inherit the same gap.
+
+**Threat model:** Warning / error / exception strings originate from
+every provider's error path (``provider_error``, ``add_warning``,
+``add_error_message``), which forward upstream / network-derived
+text through :func:`src.feed.reporting.clean_message`.
+``clean_message`` collapses whitespace and strips invisible
+Trojan-Source primitives but does NOT strip ASCII ``~``. A
+compromised provider, MITM, hostile DNS response, or any of the
+prior-round env-override leak surfaces can plant a warning / error
+of the form ``"~~CRITICAL~~ — bereits behoben"`` and have GFM
+render ``<del>CRITICAL</del>`` inline on the public artefact and
+the auto-submitted GitHub Issue body.
+
+The attack shape is **visual deception of the operator** triaging
+off the rendered report: the attacker uses strikethrough to imply
+that a flagged problem is already resolved, suppress severity
+sentinels (``~~CRITICAL~~``), fake an acknowledgement
+(``~~RESOLVED~~``), or strike out a track / line / station name in
+an error message to deceive the operator about which asset is
+affected (``"Track ~~12~~ closed"``).
+
+Severity: MEDIUM. No JS execution (HTML metacharacters are entity-
+encoded by the leading ``html.escape``), no phishing
+(``[]()`` are already backslash-escaped, so ``[link](url)`` becomes
+literal text). The attack is purely visual deception + document-
+content tampering — the same threat class as PR #1474 / #1473 /
+#1472 / #1471 (heading / Markdown / clear-text-logging drifts).
+
+**Fix shape:** Add ``~`` to the escape set in :func:`escape_markdown`
+in ``src/utils/text.py``. Mirrors the canonical backslash-escape
+pattern (``\\[``, ``\\]``, ``\\(``, ``\\)``, ``\\*``, ``\\_``,
+``\\``\\``, ``\\@``, ``\\<``, ``\\>``, ``\\#``). The backslash-
+escaped ``\\~`` renders as literal ``~`` in CommonMark / GFM (``~``
+is ASCII punctuation per CommonMark 2.4, so backslash escapes
+apply) so legitimate text ("~/foo" path abbreviations, "~5 minutes"
+approximation symbols, transit field shorthand) is visually
+unchanged on the rendered page. ``escape_markdown_cell`` composes
+``escape_markdown`` and inherits the fix automatically.
+
+**Reproduced:** ``tests/test_sentinel_escape_markdown_strikethrough_injection.py``
+contains 14 PoC tests:
+
+ * 5 unit-level PoCs on the helpers themselves (tilde-pair bigram,
+   single tilde, subscript-like payload, legitimate-text
+   preservation, cell-variant inheritance via composition).
+ * 2 integration PoCs on ``render_feed_health_markdown`` (warning
+   path + error path) asserting the rendered Markdown source
+   contains the backslash-escaped form (``\\~\\~CRITICAL\\~\\~``)
+   and NOT the raw ``~~CRITICAL~~`` bigram that GFM parses as
+   ``<del>CRITICAL</del>``.
+ * 5 parametrised integration PoCs covering a range of plausible
+   attacker payloads (vanilla strikethrough, misinformation about
+   service state, link-text-wrapped strikethrough, track-number
+   deception, multi-run German content).
+ * 2 inventory invariants pinning the canonical escape set to
+   include ``~`` for both ``escape_markdown`` and
+   ``escape_markdown_cell``. The full minimum set after this round
+   is ``[]()*_`@<>#~``.
+
+Pre-fix: the first 13 PoCs (incl. all parametrised cases) fail —
+the bigram ``~~`` survives the helper byte-for-byte. Post-fix: all
+14 pass.
+
+Verified empirically with ``markdown-it-py`` + explicit
+``.enable('strikethrough')`` (GFM-equivalent): pre-fix
+``- ~~strikethrough~~ payload`` renders to
+``<ul><li><s>strikethrough</s> payload</li></ul>``; post-fix the
+backslash-escaped form ``- \\~\\~strikethrough\\~\\~ payload``
+renders to ``<ul><li>~~strikethrough~~ payload</li></ul>`` (literal
+tildes, no ``<s>``).
+
+**Learning:** Closes the inline-formatting half of the canonical
+inline escape contract. The structural-half closure (``#``) was
+the immediately-prior round; this round closes the **GFM
+extension** half. The pattern: every GFM extension that activates
+on a printable ASCII character at inline scope (strikethrough on
+``~``, autolinks on URLs, mentions on ``@``, task-list checkboxes
+on ``[ ]``) must be on the canonical defang set if it has any
+operator-facing renderer sink. ``@`` was already covered (mention
+suppression), ``[ ]`` are already covered (bracket-escape blocks
+both task-list and link), URL autolinks are blocked by the
+``html.escape`` of ``://`` separator characters — ``~`` was the
+last GFM-extension primitive uncovered.
+
+The prevention rule for future widening of the canonical inline
+escape set: any GFM extension that activates inline on a printable
+ASCII bigram (kramdown subscript ``~text~``, kramdown superscript
+``^text^``, pandoc-style highlight ``==text==``, CriticMarkup
+``{++...++}`` / ``{--...--}``) must be evaluated against the
+operator-facing renderer sinks. The inventory invariants
+``test_canonical_escape_set_includes_tilde`` /
+``test_canonical_escape_set_cell_includes_tilde`` pin the
+contract programmatically — a future regression that drops ``~``
+from the defang set fails the walker. Same closing-rule pattern
+as the heading-injection round.
+
 ## 2026-05-14 - Markdown ATX-Heading Injection via `escape_markdown`: The Canonical Inline Markdown-Escape Helper Did Not Cover `#`, Letting a Hostile Warning/Error Starting With `# evil` Promote a Bullet List Item to `<ul><li><h1>evil</h1></li></ul>` in `docs/feed-health.md` + the Auto-Submitted GitHub Issue Body
 
 **Vulnerability:** :func:`src.utils.text.escape_markdown` escaped only

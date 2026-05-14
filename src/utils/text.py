@@ -409,7 +409,7 @@ def escape_markdown(text: str) -> str:
     """Escape HTML and Markdown characters to prevent injection/XSS."""
     text = html.escape(text)
     # Escape Markdown characters that could create links or formatting.
-    # We backslash-escape: [ ] ( ) * _ ` @ < > #
+    # We backslash-escape: [ ] ( ) * _ ` @ < > # ~
     #
     # Security: ``#`` was missing pre-Sentinel ``escape_markdown`` ATX-
     # heading-injection round. Callers in :mod:`src.feed.reporting`
@@ -432,7 +432,28 @@ def escape_markdown(text: str) -> str:
     # legitimate text ("issue #123", "C# code") is visually
     # unchanged on the rendered page. Mirrors the canonical
     # backslash-escape shape pinned for ``[]()*_```@<>``.
-    for char in "[]()*_`@<>#":
+    #
+    # Security (GFM strikethrough injection round): ``~`` was the
+    # last inline-formatting metacharacter the canonical escape set
+    # left uncovered. GitHub Flavored Markdown (GFM) parses the
+    # bigram ``~~text~~`` as strikethrough (``<del>text</del>``);
+    # the extension is enabled on every renderer in this codebase's
+    # data path — github.com rendering of ``docs/feed-health.md``
+    # / ``docs/stations_validation_report.md``, GitHub Pages
+    # serving the same files via the default kramdown_GFM input
+    # mode, and the auto-submitted GitHub Issue body rendered by
+    # GitHub's own GFM renderer (``submit_auto_issue``). A hostile
+    # warning / error message ``"~~RESOLVED~~ still broken"`` lands
+    # ``<del>RESOLVED</del>`` inline in the operator-facing report
+    # — pure visual misinformation (no JS, no phishing), but the
+    # operator triaging off the rendered page cannot distinguish
+    # struck-through text from text that was never struck through.
+    # The backslash-escaped ``\\~`` renders as literal ``~`` in
+    # CommonMark / GFM (``~`` is ASCII punctuation per CommonMark
+    # 2.4, so backslash escapes apply), so legitimate text
+    # ("~/foo" path abbreviations, "~5 minutes" approximation
+    # symbols) is visually unchanged on the rendered page.
+    for char in "[]()*_`@<>#~":
         text = text.replace(char, f"\\{char}")
     return text
 
