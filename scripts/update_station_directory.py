@@ -129,6 +129,7 @@ try:  # pragma: no cover - convenience for module execution
         get_places_api_key,
     )
     from src.places.diagnostics import permission_hint
+    from src.places.hafas_client import enrich_station_with_hafas
     from src.places.merge import BoundingBox, MergeConfig, merge_places, StationEntry
     from src.places.osm_client import (
         OSMOverpassError,
@@ -151,6 +152,7 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
         get_places_api_key,
     )
     from places.diagnostics import permission_hint  # type: ignore[no-redef]
+    from places.hafas_client import enrich_station_with_hafas  # type: ignore[no-redef]
     from places.merge import BoundingBox, MergeConfig, merge_places, StationEntry  # type: ignore[no-redef]
     from places.osm_client import (  # type: ignore[no-redef]
         OSMOverpassError,
@@ -1018,6 +1020,54 @@ def _enrich_with_osm(
         len(outcome.skipped_places),
     )
     return True
+
+
+def _enrich_with_hafas(stations: list[Station]) -> list[Station]:
+    """Resolve coordinates for *stations* via the ÖBB HAFAS fallback.
+
+    Iterates over the strict subset of stations still missing
+    coordinates after the OSM pass and asks
+    :func:`src.places.hafas_client.enrich_station_with_hafas` for each.
+    The HAFAS hit is committed straight onto the station's extras —
+    matching the field shape produced by the OSM merge — and the
+    HAFAS ``extId`` is persisted as the top-level ``hafas_extId`` key
+    (parallel to ``vor_id`` / ``_google_place_id``) so downstream
+    consumers can resolve a station back to its HAFAS identifier
+    without re-querying the upstream.
+
+    Returns the residual list of stations *still* missing coordinates
+    after HAFAS ran, so the caller can hand only that subset to the
+    Google Places tier — protecting the monthly free-tier quota.
+    """
+    if not stations:
+        return []
+
+    updated = 0
+    residual: list[Station] = []
+    for station in stations:
+        hit = enrich_station_with_hafas(station.name)
+        if hit is None:
+            residual.append(station)
+            continue
+        station.extras["latitude"] = hit["lat"]
+        station.extras["longitude"] = hit["lon"]
+        station.extras["hafas_extId"] = hit["extId"]
+
+        existing_source = station.extras.get("source")
+        sources: set[str] = set()
+        if isinstance(existing_source, str):
+            sources.update(s.strip() for s in existing_source.split(",") if s.strip())
+        sources.add("hafas")
+        station.extras["source"] = ",".join(sorted(sources))
+        updated += 1
+
+    logger.info(
+        "HAFAS enrichment resolved coordinates for %d of %d stations; %d still missing",
+        updated,
+        len(stations),
+        len(residual),
+    )
+    return residual
 
 
 def _enrich_with_google_places(
@@ -2072,26 +2122,38 @@ def main() -> None:
                 len(stations),
             )
         else:
-            if osm_succeeded:
+            # HAFAS (ÖBB Scotty) is the second-tier fallback: it sits
+            # between the OSM Overpass primary and the Google Places
+            # last-resort. The HAFAS Mgate API has no per-month quota,
+            # so resolving coordinates here directly reduces the load
+            # on the Google free-tier budget tracked in
+            # data/places_quota.json.
+            missing = _enrich_with_hafas(missing)
+            if not missing:
                 logger.info(
-                    "Falling back to Google Places for %d stations still " "missing coordinates after OSM enrichment",
-                    len(missing),
+                    "HAFAS resolved every remaining station; skipping Google Places enrichment"
                 )
             else:
-                logger.info(
-                    "Falling back to Google Places for %d stations missing " "coordinates (OSM Overpass was unavailable)",
-                    len(missing),
+                if osm_succeeded:
+                    logger.info(
+                        "Falling back to Google Places for %d stations still " "missing coordinates after OSM + HAFAS enrichment",
+                        len(missing),
+                    )
+                else:
+                    logger.info(
+                        "Falling back to Google Places for %d stations missing " "coordinates (OSM Overpass was unavailable)",
+                        len(missing),
+                    )
+                # Pass the strict subset so Google never re-keys stations that
+                # OSM / HAFAS (or any earlier source) already resolved. The merge
+                # logic in src.places.merge would otherwise greedily match Google
+                # Places by name even when the existing entry is complete, giving
+                # the fallback authority it shouldn't have.
+                _enrich_with_google_places(
+                    stations,
+                    tiles_file=args.places_tiles_file,
+                    missing_subset=missing,
                 )
-            # Pass the strict subset so Google never re-keys stations that
-            # OSM (or any earlier source) already resolved. The merge logic
-            # in src.places.merge would otherwise greedily match Google
-            # Places by name even when the existing entry is complete,
-            # giving the fallback authority it shouldn't have.
-            _enrich_with_google_places(
-                stations,
-                tiles_file=args.places_tiles_file,
-                missing_subset=missing,
-            )
     else:
         logger.info("Skipping Google Places enrichment (--no-google-enrich)")
 
