@@ -1,3 +1,104 @@
+## 2026-05-14 - Markdown ATX-Heading Injection via `escape_markdown`: The Canonical Inline Markdown-Escape Helper Did Not Cover `#`, Letting a Hostile Warning/Error Starting With `# evil` Promote a Bullet List Item to `<ul><li><h1>evil</h1></li></ul>` in `docs/feed-health.md` + the Auto-Submitted GitHub Issue Body
+
+**Vulnerability:** :func:`src.utils.text.escape_markdown` escaped only
+``[]()*_`@<>`` pre-fix. The ``#`` character was missing from the escape
+set, so a string starting with ``# ...`` survived the helper unchanged.
+The helper is consumed by :func:`src.feed.reporting.render_feed_health_markdown`
+and :func:`src.feed.reporting._build_github_issue_body` via the
+bullet-list interpolation pattern::
+
+    lines.append(f"- {escape_markdown(warning)}")
+    lines.append(f"- {escape_markdown(error)}")
+
+CommonMark and GFM parse ``- # heading`` as a list item whose content
+is an ATX heading — ``<ul><li><h1>heading</h1></li></ul>`` (verified
+empirically via the ``commonmark`` Python reference parser). A hostile
+warning / error / exception message therefore landed a fresh ``<h1>``
+… ``<h6>`` inside the public ``docs/feed-health.md`` artefact and the
+auto-submitted GitHub Issue body.
+
+**Threat model:** Warning / error strings originate from every
+provider's error path (``provider_error``, ``add_warning``,
+``add_error_message``), which forward upstream / network-derived text
+through :func:`src.feed.reporting.clean_message`. ``clean_message``
+collapses whitespace and strips invisible Trojan-Source primitives but
+does **not** strip ASCII ``#``. A compromised provider, MITM, hostile
+DNS response, or any of the prior-round env-override leak surfaces can
+plant a warning / error starting with ``# evil heading payload`` and
+have it render as a heading in two public sinks:
+
+ 1. ``docs/feed-health.md`` — committed to the repo by the
+    ``update-cycle.yml`` cron job, rendered on the public GitHub
+    Pages site. Heading injection corrupts the document outline,
+    manipulates GitHub's auto-generated anchors (which feed
+    cross-linking and the TOC sidebar), and produces a misleading
+    large-font heading inside a bullet list.
+ 2. ``submit_auto_issue`` GitHub Issue body — opened on every failed
+    feed build, visible to every repo watcher.
+
+Severity: MEDIUM. No JS execution (HTML metacharacters are entity-
+encoded by the leading ``html.escape``), no phishing (``[]()`` are
+already backslash-escaped, so ``[link](url)`` becomes literal text).
+The attack is visual deception + document-structure manipulation +
+anchor spoofing — the same threat class as PR #1473 / #1472 / #1471
+which closed sibling Markdown / clear-text-logging drifts.
+
+**Fix shape:** Add ``#`` to the escape set in :func:`escape_markdown`
+in ``src/utils/text.py``. Mirrors the canonical backslash-escape
+pattern (``\\[``, ``\\]``, ``\\(``, ``\\)``, ``\\*``, ``\\_``,
+``\\``\\``, ``\\@``, ``\\<``, ``\\>``). The backslash-escaped ``\\#``
+renders as literal ``#`` in CommonMark / GFM so legitimate text
+("issue #123", "C# code", "Track #5") is visually unchanged on the
+rendered page. ``escape_markdown_cell`` composes ``escape_markdown``
+and inherits the fix automatically; the heading injection is not
+directly exploitable inside GFM table cells (cells parse inline-only
+content) but the cell helper's contract is documented as a superset
+of the inline contract.
+
+**Reproduced:** ``tests/test_sentinel_escape_markdown_heading_injection.py``
+contains 19 PoC tests:
+
+ * 4 unit-level PoCs on the helper itself (leading ``#``, every level
+   h1..h6, ``#`` anywhere, legitimate text preserved).
+ * 1 unit-level PoC on ``escape_markdown_cell`` (inheritance through
+   composition).
+ * 2 integration PoCs on ``render_feed_health_markdown`` (warning
+   path + error path) asserting the rendered Markdown source contains
+   the backslash-escaped form and **not** the raw ``- # …``
+   construction that CommonMark parses as a heading.
+ * 6 parametrised integration PoCs covering every heading depth
+   (h1..h6) at the renderer boundary.
+ * 1 inventory invariant asserting the canonical helper defangs the
+   full minimum escape set ``[]()*_`@<>#``, accepting either
+   backslash escape or HTML-entity encoding (the ``<``/``>`` chars
+   are handled via ``&lt;``/``&gt;`` from the leading
+   ``html.escape``).
+
+Pre-fix: at least the four unit-level PoCs + every parametrised
+integration PoC fail (the ``#`` survives ``escape_markdown``). Post-
+fix: all 19 pass.
+
+**Learning:** The Markdown-injection drift family pinned across
+Rounds 1-3 closed per-sink applications of the canonical helpers
+(``escape_markdown``, ``escape_markdown_cell``, ``safe_markdown_codespan``)
+at specific renderer boundaries (stats dashboard, code-span / fenced-
+code-block, stations-validation report). The structural gap the
+present round closes is **at the canonical helper itself**: the
+inline-escape contract documented as "Markdown specials" omitted
+``#``, which is **the** structural metacharacter that promotes
+inline content to block-level inside a bullet-list item — every
+caller pattern of the shape ``f"- {escape_markdown(x)}"`` therefore
+inherited a defence-in-depth gap. The prevention rule: any future
+widening of the ``# / + / - / ~ / !`` family at the canonical helper
+boundary must verify that **all** structural metacharacters that can
+appear at the start of a list-item content (and promote it block-
+level) are covered. The inventory invariant test
+``test_canonical_escape_set_includes_hash`` pins the contract
+programmatically — a future regression that drops ``#`` from the
+defang set fails the walker. Same closing-rule pattern as the
+``_INVISIBLE_DANGEROUS_RE`` widening rounds, applied to the inline
+escape contract.
+
 ## 2026-05-14 - Clear-Text-Logging Drift (Google Places `OUT_PATH_STATIONS` Resolver): `scripts/fetch_google_places_stations.py:_resolve_stations_out_path` Was the Last `LOGGER.warning(..., env_str)` Callsite In `scripts/` That Interpolated the Env-Controlled `OUT_PATH_STATIONS` Value Via Bare `%s` Without `sanitize_log_arg`
 
 **Vulnerability:** The InvalidPathError branch of

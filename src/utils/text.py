@@ -408,9 +408,31 @@ def normalise_markdown_text(text: str, *, max_len: int = 200) -> str:
 def escape_markdown(text: str) -> str:
     """Escape HTML and Markdown characters to prevent injection/XSS."""
     text = html.escape(text)
-    # Escape Markdown characters that could create links or formatting
-    # We backslash-escape: [ ] ( ) * _ ` @ < >
-    for char in "[]()*_`@<>":
+    # Escape Markdown characters that could create links or formatting.
+    # We backslash-escape: [ ] ( ) * _ ` @ < > #
+    #
+    # Security: ``#`` was missing pre-Sentinel ``escape_markdown`` ATX-
+    # heading-injection round. Callers in :mod:`src.feed.reporting`
+    # interpolate the result directly after a list-item marker
+    # (``f"- {escape_markdown(warning)}"`` /
+    # ``f"- {escape_markdown(error)}"`` at lines 637/647/1100/1107).
+    # A hostile warning / error string starting with ``# evil`` then
+    # produces ``- # evil`` in the rendered Markdown, which CommonMark
+    # and GFM parse as ``<ul><li><h1>evil</h1></li></ul>`` —
+    # a fresh ATX heading inside a bullet list. The same payload at
+    # ``## evil`` … ``###### evil`` reaches every heading level
+    # (h1..h6). Sinks: the public ``docs/feed-health.md`` artefact
+    # (committed by ``update-cycle.yml`` and rendered on GitHub
+    # Pages) and the auto-submitted GitHub Issue body
+    # (``submit_auto_issue`` — visible to every repo watcher).
+    # ``clean_message`` collapses whitespace before the value reaches
+    # here, but ``#`` is a printable ASCII character that survives
+    # every prior round of sanitisation. The backslash-escaped
+    # ``\\#`` renders as literal ``#`` in CommonMark / GFM so
+    # legitimate text ("issue #123", "C# code") is visually
+    # unchanged on the rendered page. Mirrors the canonical
+    # backslash-escape shape pinned for ``[]()*_```@<>``.
+    for char in "[]()*_`@<>#":
         text = text.replace(char, f"\\{char}")
     return text
 
