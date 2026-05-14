@@ -152,7 +152,22 @@ def write_stations(path: Path, stations: Sequence[StationEntry]) -> None:
     # canonical attack-byte union and the scrub-and-drop semantics rationale.
     scrubbed = scrub_trojan_source_primitives(list(stations))
     serialisable = scrubbed if isinstance(scrubbed, list) else list(stations)
-    payload = json.dumps({"stations": serialisable}, ensure_ascii=False, indent=2, sort_keys=True)
+    # Security (Coordinate finite/range drift, writer-level defence-in-depth):
+    # ``allow_nan=False`` makes ``json.dumps`` raise ``ValueError`` on any
+    # ``NaN`` / ``+Inf`` / ``-Inf`` float in the payload — RFC 8259 forbids
+    # those non-standard literals, and every strict downstream consumer
+    # (``JSON.parse``, ``serde_json``, ``encoding/json``) refuses them. A
+    # parser-level finite floor exists on every current ingest tier (OSM,
+    # HAFAS, Google Places); this pin surfaces a future bypass as a loud
+    # failure at write time rather than silently corrupting the committed
+    # ``data/stations.json`` artefact.
+    payload = json.dumps(
+        {"stations": serialisable},
+        ensure_ascii=False,
+        indent=2,
+        sort_keys=True,
+        allow_nan=False,
+    )
     # Security: use atomic_write to avoid partial writes on crashes/power loss.
     with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         handle.write(payload + "\n")
