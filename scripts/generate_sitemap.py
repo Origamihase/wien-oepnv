@@ -47,9 +47,27 @@ EXCLUDED_DIRS = {"_includes"}
 # would re-enable the BiDi/zero-width issue. Widening the regex to the
 # canonical set closes that risk and pins the inventory invariant
 # (``test_sentinel_sitemap_unsafe_chars_canonical_drift.py``).
+# 2026-05-14 "Tag-Character / Variation-Selector Drift (Sitemap
+# Sibling)": widened in lockstep with
+# ``src/utils/http.py:_UNSAFE_URL_CHARS`` to cover the BMP
+# Variation Selectors (U+FE00..U+FE0F), the Unicode Tag block
+# (U+E0000..U+E007F), and the supplementary Variation Selectors
+# (U+E0100..U+E01EF). The 2026-05-11 Round-11 canonical-floor
+# widening (.jules/sentinel.md "Tag-Character / Variation-Selector
+# Drift") updated every other sanitiser site but missed this
+# sibling — the source-file comment ("byte-exact mirror") quietly
+# diverged. A planted ``SITE_BASE_URL`` carrying Tag-character /
+# Variation-Selector bytes is byte-distinct but visually identical
+# to a legitimate URL; its presence in the public sitemap is a
+# steganography / prompt-injection / cache-key-collision primitive
+# against every search engine and LLM-driven downstream service
+# that consumes the sitemap. Inventory invariant pinned by
+# ``tests/test_sentinel_sitemap_tag_chars_variation_selectors_drift.py``.
 _UNSAFE_URL_CHARS = re.compile(
     r"[\s\x00-\x1f\x7f-\x9f<>\"\\^`{|}"
-    r"\u061c\u200b-\u200f\u202a-\u202e\u2066-\u2069\ufeff]"
+    r"\u061c\u200b-\u200f\u202a-\u202e\u2066-\u2069"
+    r"\ufe00-\ufe0f\ufeff"
+    r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 
 logger = logging.getLogger(__name__)

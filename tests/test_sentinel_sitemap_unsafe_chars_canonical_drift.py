@@ -120,6 +120,24 @@ CANONICAL_DANGEROUS_CHARS: tuple[tuple[str, str], ...] = (
     ("‎", "LRM"),
     ("‏", "RLM"),
     ("﻿", "BOM / ZWNBSP"),
+    # 2026-05-11 "Tag-Character / Variation-Selector Drift" — the
+    # post-Round-11 canonical floor in
+    # ``src/utils/http.py:_UNSAFE_URL_CHARS``. The sitemap regex MUST
+    # mirror this widening; the sister test in
+    # ``tests/test_sentinel_sitemap_tag_chars_variation_selectors_drift.py``
+    # pins the per-range coverage and the same code points are
+    # enumerated here so the canonical-set inventory invariant in
+    # ``test_sitemap_unsafe_url_chars_covers_canonical_set_inventory``
+    # fires on any future drift of either sibling.
+    ("︀", "VS1 BMP (Variation Selector)"),
+    ("︎", "VS15 BMP (text-style emoji selector)"),
+    ("️", "VS16 BMP (emoji-style selector)"),
+    ("\U000e0000", "TAG language tag"),
+    ("\U000e0041", "TAG LATIN CAPITAL LETTER A"),
+    ("\U000e0061", "TAG LATIN SMALL LETTER A"),
+    ("\U000e007f", "CANCEL TAG"),
+    ("\U000e0100", "VS17 (supplementary)"),
+    ("\U000e01ef", "VS256 (supplementary)"),
 )
 
 
