@@ -508,7 +508,23 @@ class GooglePlacesClient:
                     if header and header.isdigit():
                         retry_after_val = float(header)
             except ValueError:
-                LOGGER.warning("Failed to parse Retry-After header: %s", header)
+                # Sentinel (Clear-Text-Logging Drift, places-client sibling
+                # of the ÖBB ``src/providers/oebb.py`` Retry-After fix):
+                # ``header`` is fully upstream-controlled HTTP header text
+                # served by the Google Places API. Route through
+                # :func:`sanitize_log_arg` so a hostile peer (compromised
+                # CDN, DNS hijack, MITM, planted CI response, or a future
+                # refactor that relaxes the ``isdigit()`` precondition)
+                # cannot inject ANSI/BiDi/8-bit-C1/Tag-block/Variation-
+                # Selector/log-forging primitives via the Retry-After
+                # header. Mirrors the canonical defence pinned at
+                # :file:`src/providers/oebb.py` line 1313 (``log.warning
+                # ("ÖBB RSS Rate-Limit (Retry-After: %s)", sanitize_log_arg
+                # (str(header)))``).
+                LOGGER.warning(
+                    "Failed to parse Retry-After header: %s",
+                    sanitize_log_arg(header),
+                )
 
             if retry_after_val is not None:
                 sleep_for = max(sleep_for, retry_after_val)

@@ -1,3 +1,106 @@
+## 2026-05-14 - Clear-Text-Logging Drift (Places-Client Retry-After Sibling): The ÖBB Retry-After Hardening Was Never Mirrored In `src/places/client.py` — The Last `response.headers.get("Retry-After")` Site In `src/` That Logged The Header Via Bare `%s`
+
+**Vulnerability:** ``src/places/client.py:_post`` extracts the upstream
+``Retry-After`` HTTP response header on every retry tick and emits a
+WARNING log line when ``float(header)`` rejects the value::
+
+    header: str | None = None
+    try:
+        if isinstance(last_error, requests.RequestException) and last_error.response is not None:
+            header = last_error.response.headers.get("Retry-After")
+            if header and header.isdigit():
+                retry_after_val = float(header)
+    except ValueError:
+        LOGGER.warning("Failed to parse Retry-After header: %s", header)
+
+The pre-fix log line interpolated ``header`` via the bare ``%s`` format
+spec WITHOUT routing through :func:`sanitize_log_arg`. The header is
+fully upstream-controlled HTTP response text from the Google Places API
+— a compromised CDN, DNS hijack, MITM, or planted CI response can swap
+the response with one whose ``Retry-After`` header carries any of the
+canonical CVE-2021-42574 / log-injection / 8-bit-C1 / Tag-block /
+Variation-Selector / ANSI-ESC / log-forgery primitive bytes.
+
+**Sibling drift shape:** This is the exact same drift class as the ÖBB
+Retry-After hardening pinned at ``src/providers/oebb.py:1313-1315``::
+
+    log.warning(
+        "ÖBB RSS Rate-Limit (Retry-After: %s)",
+        sanitize_log_arg(str(header)),
+    )
+
+with the explicit Sentinel comment "``header`` is upstream-controlled
+HTTP header text; route through ``sanitize_log_arg`` so a hostile ÖBB
+peer cannot inject ANSI/BiDi/control characters into operator log
+streams via the Retry-After header." The places-client callsite was
+the only remaining ``response.headers.get("Retry-After")`` in ``src/``
+that did NOT mirror the canonical sanitisation shape — same drift
+shape, same threat model, same fix, never propagated.
+
+**Attack-vector narrowness pre-fix:** The pre-fix log line is gated by
+``header.isdigit()`` — only strings whose every character is a Unicode
+"digit" reach the ``ValueError`` branch (Arabic-Indic ٠-٩, Devanagari
+०-९, etc.; ``float()`` only accepts ASCII digits 0-9 so non-ASCII
+Unicode digits raise ``ValueError``). Today's wire-deliverable attack
+payload is therefore restricted to Unicode digit characters that don't
+carry log-injection primitives. The fix is defense-in-depth: a future
+refactor that relaxes the ``isdigit()`` precondition (a very common
+code-simplification — drop the precondition, rely on the
+``try/except ValueError`` to catch any invalid payload) would
+immediately expose the log line to arbitrary upstream HTTP header
+bytes. Routing through ``sanitize_log_arg`` makes the defence survive
+every future refactor, mirroring the canonical shape already pinned
+for the ÖBB sibling sink.
+
+**Reproduced:** ``tests/test_sentinel_places_client_retry_after_drift.py``
+contains 2 PoC tests:
+
+  * 1 unit-level PoC: ``_HostileDigitStr`` subclass that lies about
+    ``.isdigit()`` (returns ``True``) wrapping the canonical attack
+    payload — bypasses the ``isdigit()`` gate so ``float()`` raises
+    ``ValueError`` on the non-numeric attack bytes and the
+    ``LOGGER.warning`` site runs with a hostile header. Pre-fix:
+    every forbidden fragment (``\x1b[``, ``\x9b``, ``\r\n``, BiDi
+    RLO, ZWSP, Tag SPACE, Variation Selector-1) survives in
+    ``caplog.text`` verbatim. Post-fix: every fragment is sanitised.
+  * 1 AST inventory invariant: walks ``src/places/client.py`` for
+    ``LOGGER.warning(...,  header)`` calls whose format string
+    references ``Retry-After`` and asserts every interpolated
+    argument is wrapped in ``sanitize_log_arg`` /
+    ``sanitize_log_message`` / ``_sanitize_arg``. A regression here
+    means a future contributor unwrapped the sanitisation and
+    re-exposed the drift.
+
+**Test-isolation footgun encountered:** The PoC test originally
+imported ``GooglePlacesError`` at module top level. The full suite
+contains ``tests/places/test_nearby_env_params.py`` which calls
+``importlib.reload(src.places.client)`` to test env-driven module-
+level config evaluation. After that reload, the live module's
+``GooglePlacesError`` is a fresh class object — the test's
+module-top-level import still binds to the *pre-reload* class, and
+``pytest.raises(GooglePlacesError)`` fails to catch the
+*post-reload* class via ``isinstance`` (different class identity).
+The fix: import ``GooglePlacesError`` *inside* the test function so
+the binding always resolves against the currently-installed module.
+
+**Learning:** The "every `response.headers.get(X)` site that flows
+into a log call via bare ``%s`` MUST route through
+``sanitize_log_arg``" contract was implicit in the ÖBB Retry-After
+fix's Sentinel comment but never enumerated as an inventory test.
+Adding a per-module walker (mirroring
+``test_no_bare_exc_logging_in_clear_text_logging_modules``) that
+asserts every upstream-controlled-header log site routes through a
+sanitiser would FAIL-LOUD on the next sibling site at PR-review
+time, instead of waiting for a future Sentinel sweep to enumerate
+``grep -rn 'headers\.get(' src/`` and notice the gap. The
+test-isolation footgun (module reload + class identity) is the
+second-order rule: when a test class object is consumed by a
+context manager that checks identity (``pytest.raises``,
+``isinstance``), import the class *inside* the test function in
+any file whose suite might transitively reload the module.
+
+---
+
 ## 2026-05-14 - Clear-Text-Logging Drift (Preflight `basicConfig` Closure): Last Remaining `logging.basicConfig` Caller In `scripts/` — The Pre-Install-Deps Cron-Gate That Inherited The Unsanitised Root-Formatter
 
 **Vulnerability:** ``scripts/preflight_quota_check.py`` was the only
