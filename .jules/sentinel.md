@@ -1,3 +1,112 @@
+## 2026-05-14 - Path-Log Sibling Drift Round 3 (Cron-Pipeline `scripts/` Closure): 5 Operator-Facing ERROR/WARNING/INFO Sinks In `scripts/update_baustellen_cache.py` — The Named-But-Deferred Cron-Pipeline Sub-Landscape Of The 2026-05-13 Round 2 Closure
+
+**Vulnerability:** The 2026-05-13 Round 2 closure (PR #1468) enumerated 28
+caller-side WARNING/INFO/ERROR log sinks across three CLI-driven scripts
+(``scripts/enrich_station_aliases.py``, ``scripts/update_station_directory.py``,
+``scripts/update_wl_stations.py``) that interpolated the operator-controlled
+``path`` argument verbatim through the bare ``%s`` format spec. The
+closing-checklist grep for that round was scoped to those three CLI-driven
+scripts only — it did NOT enumerate the cron-pipeline sibling
+``scripts/update_baustellen_cache.py`` which carries the same drift shape
+against the env-controlled fallback path:
+
+  * ``_load_fallback``                       L235 (FNF ERROR)
+                                             L237 (use-fallback INFO)
+                                             L250 (parse-failure ERROR)
+                                             L263 (shape-error ERROR)
+  * ``_resolve_fallback_path``               L347 (path-traversal WARNING)
+
+All five sites interpolated either the ``path: Path`` argument or the raw
+``text`` env-string into the bare ``%s`` format spec. The script runs every
+30-minute cron tick inside ``.github/workflows/update-cycle.yml``::
+
+    python scripts/update_baustellen_cache.py > "$log_dir/baustellen.log" 2>&1 &
+
+so any Trojan-Source primitive that flows into one of the log lines lands
+inside ``$log_dir/baustellen.log`` (captured by the workflow run, visible in
+the GitHub Actions UI, and ingested by any downstream SIEM forwarder) and
+into any ``LogRecord`` consumer that reads ``record.args`` before
+:class:`src.feed.logging_safe.SafeFormatter` runs.
+
+**Threat model:** ``BAUSTELLEN_FALLBACK_PATH`` is an operator env-var
+(default ``data/samples/baustellen_sample.geojson``). A hostile env / CI
+runner / leaked secret store value carrying any of the canonical
+CVE-2021-42574 / log-injection / 8-bit-C1 / Tag-block / Variation-Selector
+/ ANSI-ESC / log-forgery primitive bytes flows verbatim into:
+
+  * ``‮`` (U+202E RIGHT-TO-LEFT OVERRIDE) — visually reverses subsequent
+    text on any Unicode-aware terminal, phishing primitive
+    (CVE-2021-42574).
+  * ``​`` (U+200B ZERO WIDTH SPACE) — invisible cache-key / equality
+    poisoning primitive.
+  * ``\x9b`` (U+009B 8-bit CSI) — survives the 7-bit ``_ANSI_ESCAPE_RE``
+    defence, triggers SGR colour interpretation on every 8-bit-C1-honouring
+    terminal (xterm with ``eightBitInput``, several BSD consoles, rxvt in
+    8-bit mode).
+  * ``\x9d`` (U+009D 8-bit OSC) — companion to CSI; same defence bypass.
+  * ``\x1b`` (U+001B ESC) — ANSI prefix, terminal-escape primitive.
+  * ``\x07`` (U+0007 BEL) — terminal-bell denial-of-attention.
+  * ``\n`` — newline (record terminator), log-record forgery in any
+    line-based consumer (SIEM splitters, rsyslog, journald, Promtail).
+  * ``\r`` — carriage return, log overwrite primitive (terminal redraws
+    over the prior line; the operator never sees the original ERROR).
+  * ``\U000e0020`` (U+E0020 Unicode Tag SPACE) — invisible-instruction
+    smuggling primitive (2024 OpenAI disclosure).
+  * ``︀`` (U+FE00 VARIATION SELECTOR-1) — 4-bit-payload steganography.
+
+**Reproduced:** ``tests/test_sentinel_path_log_sanitisation_scripts_round3.py``
+contains 54 PoC tests:
+
+  * 10 parametrised PoCs for ``_load_fallback`` L235 (FNF ERROR).
+  * 1 positive regression confirming the fingerprint is emitted at L235.
+  * 10 parametrised PoCs for ``_load_fallback`` L237 (INFO).
+  * 10 parametrised PoCs for ``_load_fallback`` L250 (parse-failure ERROR).
+  * 10 parametrised PoCs for ``_load_fallback`` L263 (shape-error ERROR).
+  * 10 parametrised PoCs for ``_resolve_fallback_path`` L347 (traversal
+    WARNING).
+  * 1 positive regression confirming the fingerprint is emitted at L347.
+  * 1 cross-module invariant pinning ``scripts.update_baustellen_cache.
+    _path_fingerprint`` ≡ :func:`src.utils.env._path_fingerprint`.
+  * 1 robustness regression confirming the helper survives lone surrogates.
+
+Pre-fix: every parametrised PoC fails (the primitive leaks verbatim into
+the captured log record's message and args). Post-fix: all 54 tests pass;
+the full 4391-test suite passes; static checks (ruff, mypy 1.10 against
+``.mypy-baseline.txt``, bandit, secret scanner, C901 gate, pip-audit) are
+clean.
+
+**Fix shape:** ``import hashlib`` + a module-level ``_path_fingerprint``
+helper mirroring :func:`src.utils.env._path_fingerprint` byte-for-byte.
+Every log line is rewritten to use ``[path-sha256=%s]`` with
+``_path_fingerprint(path)`` (or ``_path_fingerprint(raw_path)`` at L347)
+in place of the raw ``path`` argument. The helper signature
+(``path: Path -> str``), the implementation
+(``hashlib.sha256(str(path).encode("utf-8", errors="replace")).hexdigest()[:12]``)
+and the operator-correlation token shape (``[path-sha256=%s]``) all match
+the Round 2 canon so the cross-script defence stays single-sourced.
+
+**Learning:** The cron-pipeline ``scripts/`` sub-landscape is a distinct
+log-injection surface from the CLI-driven ``scripts/`` covered by Round 2.
+Round 2's closing-checklist grep was scoped to the 28 sites named in the
+journal entry; it did NOT enumerate the cron-pipeline cousins. Whenever a
+new round closes the drift in a set of script files, the closing checklist
+MUST audit the inverse grep across the rest of ``scripts/`` (sorted by
+deployment surface: cron-pipeline scripts in ``update-cycle.yml`` first,
+then weekly station-directory scripts in ``update-stations.yml``, then
+manual escape-hatch scripts in ``manual-full-refresh.yml``, then dev-only
+audit / verification scripts). Files reached from ``update-cycle.yml``
+have the highest operator-impact because their log output is captured to
+the canonical ``$log_dir/<provider>.log`` artefacts that the GitHub
+Actions UI surfaces directly. The Round 3 grep here confirms two remaining
+cron-pipeline log surfaces (``scripts/preflight_quota_check.py`` L218 —
+OSError exc when ``$GITHUB_OUTPUT`` write fails; ``scripts/check_overpass_status.py``
+L162 — HTTP status_code is int, already safe) are deferred to a future
+Round 4 (OSError exc carries the file path verbatim via ``str(exc)``;
+the threat model is narrow — only triggered on ``GITHUB_OUTPUT`` write
+failure — but the same fingerprint shape applies).
+
+---
+
 ## 2026-05-14 - Trojan-Source BiDi Drift Round 15 (Stammstrecke State Sidecars): `_save_pending_trips` (`cache/stammstrecke/pending_trips.json`) and `_save_recently_finalised` (`cache/stammstrecke/recently_finalised.json`) Were the Two Committed Operator-Facing JSON Writers Every Prior Round (10–14) Named But Did Not Enumerate
 
 **Vulnerability:** The 2026-05-09 Stammstrecke migration (PR #1356)

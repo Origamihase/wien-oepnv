@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import os
@@ -47,6 +48,32 @@ from utils.serialize import serialize_for_cache  # noqa: E402
 MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 
 LOGGER = logging.getLogger("update_baustellen_cache")
+
+
+def _path_fingerprint(path: Path) -> str:
+    """Return a one-way SHA-256 fingerprint of ``str(path)`` (12 hex chars).
+
+    Security (Path-Log Sibling Drift Round 3, cron-pipeline ``scripts/``
+    closure): mirrors :func:`src.utils.env._path_fingerprint` and the
+    Round-2 siblings in ``scripts/{enrich_station_aliases,
+    update_station_directory, update_wl_stations}.py``. The fallback-path
+    argument logged at every caller-side ERROR / WARNING / INFO line
+    below is derived from the operator-controlled
+    ``BAUSTELLEN_FALLBACK_PATH`` env var. Interpolating the raw path
+    bytes lets a hostile env value carrying Trojan-Source primitives
+    (BiDi RLO, zero-width, 8-bit C1 CSI/OSC, Tag block, Variation
+    Selectors, newline log-forgery, ANSI ESC) flow verbatim into the
+    aggregated cron log file ``$log_dir/baustellen.log`` (captured by
+    ``.github/workflows/update-cycle.yml`` and ingested by any SIEM
+    forwarder), and into any ``LogRecord`` consumer that reads
+    ``record.args`` before :class:`SafeFormatter` sanitisation. The
+    hex-only fingerprint is Trojan-Source-clean and a CodeQL-recognised
+    barrier for the ``py/clear-text-logging-sensitive-data`` taint.
+    Operators correlate by re-hashing the candidate path locally.
+    """
+    return hashlib.sha256(
+        str(path).encode("utf-8", errors="replace")
+    ).hexdigest()[:12]
 
 DEFAULT_DATA_URL = (
     "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0"
@@ -232,9 +259,15 @@ def _fetch_remote(url: str, timeout: int) -> dict[str, Any] | None:
 
 def _load_fallback(path: Path) -> dict[str, Any] | None:
     if not path.exists():
-        LOGGER.error("Baustellen: Fallback-Datei %s fehlt", path)
+        LOGGER.error(
+            "Baustellen: Fallback-Datei [path-sha256=%s] fehlt",
+            _path_fingerprint(path),
+        )
         return None
-    LOGGER.info("Baustellen: Verwende Fallback-Datei %s", path)
+    LOGGER.info(
+        "Baustellen: Verwende Fallback-Datei [path-sha256=%s]",
+        _path_fingerprint(path),
+    )
     # Defence-in-depth: the bundled fallback file lives in-tree, but a
     # compromised contributor (or accidental commit) could replace it
     # with a depth-bomb document or a wide-but-flat size-bomb that
@@ -247,8 +280,8 @@ def _load_fallback(path: Path) -> dict[str, Any] | None:
     )
     if payload is None:
         LOGGER.error(
-            "Baustellen: Fallback-Datei %s enthält ungültiges JSON oder ist unlesbar",
-            path,
+            "Baustellen: Fallback-Datei [path-sha256=%s] enthält ungültiges JSON oder ist unlesbar",
+            _path_fingerprint(path),
         )
         return None
     # Zero Trust: a JSON-decodable file does not guarantee a JSON object.
@@ -261,8 +294,8 @@ def _load_fallback(path: Path) -> dict[str, Any] | None:
     # ``_load_json_from_content`` guard above and fail securely instead.
     if not isinstance(payload, dict):
         LOGGER.error(
-            "Baustellen: Fallback-Datei %s enthält kein JSON-Objekt (got %s)",
-            path,
+            "Baustellen: Fallback-Datei [path-sha256=%s] enthält kein JSON-Objekt (got %s)",
+            _path_fingerprint(path),
             type(payload).__name__,
         )
         return None
@@ -345,9 +378,9 @@ def _resolve_fallback_path(candidate: str | None) -> Path:
         resolved.relative_to(REPO_ROOT)
     except ValueError:
         LOGGER.warning(
-            "Baustellen: Pfad-Traversal erkannt oder Pfad außerhalb von %s: %s. Nutze Standard.",
+            "Baustellen: Pfad-Traversal erkannt oder Pfad außerhalb von %s: [path-sha256=%s]. Nutze Standard.",
             REPO_ROOT,
-            text,
+            _path_fingerprint(raw_path),
         )
         return DEFAULT_FALLBACK_PATH
     return resolved
