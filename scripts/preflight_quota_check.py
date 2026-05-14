@@ -44,7 +44,7 @@ import logging
 import os
 import sys
 from pathlib import Path
-from typing import Final, cast
+from typing import Any, Final, cast
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
@@ -60,7 +60,95 @@ if str(REPO_ROOT) not in sys.path:
 # ``install-deps`` has run, exactly like the rest of this script.
 from src.utils.files import read_capped_json  # noqa: E402
 
+# Project import: ``sanitize_log_arg`` / ``sanitize_log_message`` are
+# the canonical log-injection / Trojan-Source defences. ``src.utils.
+# logging`` is stdlib-only (imports ``re`` + ``typing``) so the
+# preflight's "no non-stdlib runtime deps" invariant is preserved.
+# We avoid ``src.feed.logging_safe.setup_script_logging`` because its
+# transitive imports pull ``src.feed.config`` -> ``src.utils.http`` ->
+# ``requests``/``urllib3``/``dns.resolver`` which are third-party
+# packages installed AFTER this preflight runs in the workflow.
+from src.utils.logging import sanitize_log_arg, sanitize_log_message  # noqa: E402
+
 LOGGER = logging.getLogger("preflight_quota_check")
+
+
+class _PreflightSafeFormatter(logging.Formatter):
+    """Stdlib-only mirror of :class:`src.feed.logging_safe.SafeFormatter`.
+
+    Sentinel (Clear-Text-Logging Drift, preflight closure): the
+    historical ``logging.basicConfig(format=...)`` call installed a
+    default :class:`logging.Formatter` that does NOT sanitise the
+    rendered record. A hostile exception text (e.g. an :class:`OSError`
+    raised when ``open(GITHUB_OUTPUT, "a")`` rejects an env-poisoned
+    path carrying any of the canonical CVE-2021-42574 / log-injection
+    / 8-bit-C1 / ANSI-ESC / log-forgery primitives) leaks unmodified
+    into the workflow stdout/stderr captured by
+    ``.github/workflows/update-cycle.yml`` (visible in the GitHub
+    Actions UI and ingested by any downstream SIEM forwarder).
+
+    Mirrors the canonical SafeFormatter byte-for-byte but defined
+    inline so the preflight's docstring invariant ("zero non-stdlib
+    runtime dependencies so it works in the early Actions step ...
+    before ``install-deps`` has run") is preserved.
+    """
+
+    def format(self, record: logging.LogRecord) -> str:
+        # Clone the record so concurrent handlers don't see the
+        # mutated msg/args. ``logging.makeLogRecord`` is the
+        # canonical idiom (mirrors SafeFormatter.format).
+        record = logging.makeLogRecord(record.__dict__)
+        original_msg = record.getMessage()
+        sanitized_msg = sanitize_log_message(original_msg)
+        record.msg = sanitized_msg
+        record.args = ()
+        formatted = super().format(record)
+        return formatted.replace("\n", "\\n").replace("\r", "\\r")
+
+    def formatException(self, ei: Any) -> str:
+        # Sanitize the rendered traceback but preserve newlines for
+        # readability — same contract as SafeFormatter.formatException.
+        return sanitize_log_message(
+            super().formatException(ei), strip_control_chars=False
+        )
+
+
+def _build_safe_formatter() -> logging.Formatter:
+    """Factory for the inline SafeFormatter.
+
+    Exposed as a module-level helper so tests can round-trip an
+    attack payload through the formatter to verify the sanitiser
+    contract.
+    """
+    return _PreflightSafeFormatter(
+        "%(asctime)s %(levelname)s %(name)s: %(message)s"
+    )
+
+
+def _configure_safe_logging(level: int = logging.INFO) -> None:
+    """Install the inline SafeFormatter on the root logger.
+
+    Replaces the historical ``logging.basicConfig(format=...)`` call.
+    Idempotent: a sanitising handler is added exactly once per
+    process so repeated invocations from tests / re-entry don't
+    duplicate handlers. Mirrors the idempotency contract of
+    :func:`src.feed.logging_safe.setup_script_logging`.
+
+    Foreign handlers (most importantly pytest's ``caplog`` capture
+    handler) are preserved — they predate our installation and
+    clearing them would invalidate test fixtures that capture log
+    records via the standard pytest mechanism.
+    """
+    root = logging.getLogger()
+    has_safe = any(
+        isinstance(h.formatter, _PreflightSafeFormatter)
+        for h in root.handlers
+    )
+    if not has_safe:
+        handler = logging.StreamHandler()
+        handler.setFormatter(_build_safe_formatter())
+        root.addHandler(handler)
+    root.setLevel(level)
 
 # Hard-coded contractual ceilings. Mirrors the *defaults* in the
 # respective modules; the env-overridable ``MAX_*`` constants in
@@ -215,7 +303,21 @@ def _emit_outputs(quota_ok: bool, projected: int, limit: int, kind: str) -> None
                 for line in lines:
                     handle.write(line + "\n")
         except OSError as exc:
-            LOGGER.warning("preflight: konnte $GITHUB_OUTPUT nicht schreiben: %s", exc)
+            # Security (Clear-Text-Logging Drift, preflight closure):
+            # route the bound exception text through
+            # :func:`sanitize_log_arg` so a hostile ``GITHUB_OUTPUT``
+            # env value carrying any of the canonical CVE-2021-42574
+            # / log-injection / 8-bit-C1 / ANSI-ESC primitives cannot
+            # smuggle attack bytes into the workflow log captured by
+            # ``.github/workflows/update-cycle.yml``. The
+            # :class:`_PreflightSafeFormatter` on the root logger is
+            # the secondary defence layer; this call-site sanitiser
+            # is the primary one so a future maintainer who replaces
+            # the formatter cannot regress the contract silently.
+            LOGGER.warning(
+                "preflight: konnte $GITHUB_OUTPUT nicht schreiben: %s",
+                sanitize_log_arg(str(exc)),
+            )
     for line in lines:
         print(line)
 
@@ -255,7 +357,14 @@ def main(argv: list[str] | None = None) -> int:
         LOGGER.error("preflight: --margin muss >= 0 sein, war %d.", args.margin)
         return 2
 
-    logging.basicConfig(format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+    # Security (Clear-Text-Logging Drift, preflight closure): replace
+    # the pre-fix ``logging.basicConfig(...)`` call (which installed
+    # a default :class:`logging.Formatter` that does NOT sanitise the
+    # rendered record) with the inline :class:`_PreflightSafeFormatter`
+    # shim. Mirrors :func:`src.feed.logging_safe.setup_script_logging`
+    # but stays stdlib-only so the preflight's "no non-stdlib runtime
+    # deps" invariant is preserved.
+    _configure_safe_logging(logging.INFO)
     LOGGER.setLevel(logging.INFO)
 
     if args.check == "vor":

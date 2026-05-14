@@ -1,3 +1,112 @@
+## 2026-05-14 - Clear-Text-Logging Drift (Preflight `basicConfig` Closure): Last Remaining `logging.basicConfig` Caller In `scripts/` — The Pre-Install-Deps Cron-Gate That Inherited The Unsanitised Root-Formatter
+
+**Vulnerability:** ``scripts/preflight_quota_check.py`` was the only
+remaining script in ``scripts/`` that called ``logging.basicConfig(
+format=...)`` instead of routing through
+:func:`src.feed.logging_safe.setup_script_logging` (the Round-1 closure
+of the Clear-Text-Logging Drift family). ``basicConfig`` installs a
+default :class:`logging.Formatter` that does NOT sanitise the rendered
+record — meaning every ``%s`` interpolated value flows verbatim into
+the workflow stdout/stderr captured by
+``.github/workflows/update-cycle.yml`` (the cron tick that fires every
+~30 minutes on :00 / :30 and runs ``python scripts/
+preflight_quota_check.py --check vor --margin 2`` as the budget-gating
+preflight before any VAO ``/trip`` request).
+
+The deferred migration was deliberate: ``setup_script_logging``
+transitively imports ``src.feed.config`` -> ``src.utils.http`` ->
+``requests`` / ``urllib3`` / ``dns.resolver``, all third-party
+packages installed in the workflow AFTER this preflight runs. The
+preflight's docstring pins the contract: "zero non-stdlib runtime
+dependencies so it works in the early Actions step ... before
+``install-deps`` has run." The Round-1 closure named the script as a
+deferred sibling but left the gap open.
+
+**Attack surface:** The ``_emit_outputs`` helper writes the
+GitHub-Actions output file at the path declared by ``$GITHUB_OUTPUT``.
+When ``open(target, "a")`` fails an :class:`OSError` is raised whose
+``__str__`` echoes the path bytes back into a WARNING log line::
+
+    LOGGER.warning("preflight: konnte $GITHUB_OUTPUT nicht schreiben: %s", exc)
+
+A poisoned ``GITHUB_OUTPUT`` value (compromised CI runner, hostile
+third-party Action that pollutes the env, leaked secret store with
+non-ASCII bytes) carrying any of the canonical CVE-2021-42574 /
+log-injection / 8-bit-C1 / Tag-block / Variation-Selector / ANSI-ESC
+/ log-forgery primitives flows verbatim into the workflow log.
+
+**Threat model:** Same as the Path-Log Sibling Drift family — a
+single ``%s`` interpolation surface against an env-controlled path
+in a cron-pipeline script. The pre-fix WARNING line emits the raw
+OSError text via ``%s`` (no formatter-layer defence), so:
+
+  * ``‮`` (U+202E RIGHT-TO-LEFT OVERRIDE) — visually reverses
+    subsequent text on any Unicode-aware terminal / SIEM viewer.
+  * ``​`` (U+200B ZERO WIDTH SPACE) — invisible cache-key
+    poisoning primitive.
+  * ``\x9b`` (U+009B 8-bit CSI) — survives the 7-bit
+    ``_ANSI_ESCAPE_RE`` defence, triggers SGR colour
+    interpretation on 8-bit-C1-honouring terminals.
+  * ``\x1b`` (U+001B ESC) — ANSI prefix, terminal-escape
+    primitive.
+  * ``\r\n`` — log-record forgery into any line-based consumer
+    (SIEM splitters, journald, Promtail).
+
+**Reproduced:** ``tests/test_sentinel_preflight_basicconfig_drift.py``
+contains 6 PoC tests:
+
+  * 1 unit-level PoC against ``_emit_outputs`` ``OSError`` warning.
+  * 1 formatter-layer PoC: an attack payload round-tripped through
+    the inline ``_PreflightSafeFormatter`` must come out scrubbed.
+  * 2 structural invariants on the new ``_build_safe_formatter`` /
+    ``_configure_safe_logging`` helpers.
+  * 1 end-to-end PoC invoking ``main()`` with a hostile OSError
+    fault-injected into ``open()``.
+  * 1 closing-checklist invariant: walk every ``*.py`` in
+    ``scripts/`` and assert no remaining ``logging.basicConfig``
+    outside comments/docstrings.
+
+Pre-fix: every PoC fails (the attack bytes survive into ``caplog.text``
+verbatim). Post-fix: all 6 tests pass; the full 4397-test suite passes;
+static checks (ruff, mypy 1.10 against ``.mypy-baseline.txt``, bandit,
+secret scanner, C901 gate, pip-audit) are clean.
+
+**Fix shape:** Two defense-in-depth layers + auto-discoverable gate:
+
+  1. **Inline ``_PreflightSafeFormatter``** mirroring
+     :class:`src.feed.logging_safe.SafeFormatter` byte-for-byte but
+     defined inside the preflight script so its stdlib-only invariant
+     is preserved (``src.utils.logging.sanitize_log_message`` itself
+     imports only ``re`` and ``typing``).
+  2. **Call-site sanitiser** at the ``_emit_outputs`` ``OSError``
+     warning: route the bound ``exc`` through
+     :func:`src.utils.logging.sanitize_log_arg` so the log line is
+     sanitised even if a future maintainer drops the formatter-layer
+     defence.
+  3. **Closing-checklist invariant** (``test_no_basicconfig_in_
+     scripts``): walks every ``*.py`` in ``scripts/`` and asserts
+     ``logging.basicConfig`` does not appear outside comments /
+     docstrings. Any future regression — a new script being added
+     with ``logging.basicConfig``, an existing script regressing
+     from ``setup_script_logging`` — fails the test at PR-review
+     time.
+
+**Learning:** When a Round-1 (or any earlier) closure of a drift
+family is scoped to "most callers" with a deferred sibling, the
+deferred-list cell in the closing checklist MUST carry a
+self-discovering invariant test rather than relying on a future
+journal reader noticing the gap. The pre-flight script was named in
+the Round-1 deferred list (``src/feed/logging_safe.py``'s docstring
+explicitly calls out the third-party-deps constraint) but no
+inventory test pinned the eventual closure — only this Round-2
+closure added that gate. Whenever a future round defers a sibling
+for a structural reason (third-party deps, layering constraint, API
+back-compat) the gate MUST be added on the SAME PR as the deferred
+deferral, with the gate failing today (FAIL-LOUD) so the closure
+PR is auto-prompted when the constraint goes away.
+
+---
+
 ## 2026-05-14 - Path-Log Sibling Drift Round 3 (Cron-Pipeline `scripts/` Closure): 5 Operator-Facing ERROR/WARNING/INFO Sinks In `scripts/update_baustellen_cache.py` — The Named-But-Deferred Cron-Pipeline Sub-Landscape Of The 2026-05-13 Round 2 Closure
 
 **Vulnerability:** The 2026-05-13 Round 2 closure (PR #1468) enumerated 28
