@@ -531,11 +531,22 @@ def _write_stations_payload(
     ``data/stations.json`` and the weekly ``update-stations.yml`` cron
     commits it to ``main`` with ``add_options: "-A"``. Mirrors
     ``src/places/merge.py:write_stations`` (Round 13).
+
+    Security (Coordinate finite/range drift, companion-writer
+    defence-in-depth): ``allow_nan=False`` mirrors the canonical
+    writer-side pin established in Round 1485 at
+    ``src/places/merge.py:write_stations``. The orchestrator's temp
+    file is the LAST writer before the final copy-back to
+    ``data/stations.json`` — any poisoned ``NaN`` / ``Infinity``
+    coordinate that survived the per-script parser checks lands here
+    verbatim. Without this floor the temp file (and the
+    copy-back-destination committed to ``main``) silently carries
+    non-standard JSON literals (invalid per RFC 8259).
     """
     raw_payload = {"stations": [dict(entry) for entry in stations]}
     payload = scrub_trojan_source_primitives(raw_payload)
     with atomic_write(path, mode="w", encoding="utf-8") as handle:
-        json.dump(payload, handle, ensure_ascii=False, indent=2)
+        json.dump(payload, handle, ensure_ascii=False, indent=2, allow_nan=False)
         handle.write("\n")
 
 

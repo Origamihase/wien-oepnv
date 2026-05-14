@@ -1220,10 +1220,30 @@ def merge_into_stations(
     # ``src/places/merge.py:write_stations`` (Round 13). ``ensure_ascii=
     # False`` is preserved so legitimate German station names stay
     # compact in the commit diff.
+    #
+    # Security (Coordinate finite/range drift, companion-writer
+    # defence-in-depth): ``allow_nan=False`` mirrors the canonical
+    # writer-side pin established in Round 1485 at
+    # ``src/places/merge.py:write_stations``. The local
+    # ``_coerce_float`` parser (line 267 pre-fix) accepts the
+    # literal strings ``"nan"`` / ``"inf"`` / ``"infinity"`` via
+    # ``float(text)`` from a compromised Wien OGD CSV cell — the
+    # per-stop ``latitude`` / ``longitude`` fields flow into
+    # ``data/stations.json`` verbatim and Python's default
+    # ``json.dump`` emits non-standard JSON literals (invalid per
+    # RFC 8259). The pin surfaces such a bypass as a loud
+    # ``ValueError`` rather than silently corrupting the committed
+    # artefact.
     scrubbed = scrub_trojan_source_primitives(filtered)
     serialisable = scrubbed if isinstance(scrubbed, list) else filtered
     with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump({"stations": serialisable}, handle, ensure_ascii=False, indent=2)
+        json.dump(
+            {"stations": serialisable},
+            handle,
+            ensure_ascii=False,
+            indent=2,
+            allow_nan=False,
+        )
         handle.write("\n")
     log.info("Wrote %d total stations", len(filtered))
 

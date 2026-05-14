@@ -787,11 +787,29 @@ def _write_stations_payload(path: Path, stations: list[dict[str, object]]) -> No
     a planted alias. The file is committed to ``main`` by the weekly
     ``update-stations.yml`` cron (when the orchestrator invokes this
     script). Mirrors ``src/places/merge.py:write_stations`` (Round 13).
+
+    Security (Coordinate finite/range drift, companion-writer
+    defence-in-depth): ``allow_nan=False`` mirrors the canonical
+    writer-side pin established in Round 1485 at
+    ``src/places/merge.py:write_stations``. The alias-enrichment step
+    re-reads ``data/stations.json`` from the previous cron tick; a
+    poisoned ``NaN`` / ``Infinity`` coordinate value planted by an
+    upstream step (compromised OEBB Excel / Google Places / HAFAS /
+    WL OGD response) survives Python's ``json.loads`` (default
+    lenient mode) and flows verbatim through this rewrite. The pin
+    surfaces such a bypass as a loud ``ValueError`` rather than a
+    silent non-standard JSON literal in the committed artefact.
     """
     scrubbed = scrub_trojan_source_primitives(stations)
     serialisable = scrubbed if isinstance(scrubbed, list) else stations
     with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump({"stations": serialisable}, handle, ensure_ascii=False, indent=2)
+        json.dump(
+            {"stations": serialisable},
+            handle,
+            ensure_ascii=False,
+            indent=2,
+            allow_nan=False,
+        )
         handle.write("\n")
 
 
