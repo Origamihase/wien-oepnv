@@ -1,3 +1,137 @@
+## 2026-05-14 - Clear-Text-Logging Drift (Reporting GitHub-Issue Submitter + Error-Log-Path Hint): Two Sibling Sites In `src/feed/reporting.py` Logged Env-Controlled Strings Via Bare `%s` — The Last `log.warning(..., env_str)` / `log.info(..., env_path)` Call Shapes In `src/feed/` That Did Not Mirror The Canonical `sanitize_log_arg` Defence
+
+**Vulnerability:** Two sibling clear-text-logging drift sites in
+``src/feed/reporting.py`` interpolated env-controlled strings via the
+bare ``%s`` format spec WITHOUT routing through
+:func:`sanitize_log_arg`:
+
+  * ``_GithubIssueReporter.submit`` (line 873-877) — the rejection
+    branch reached when :func:`_is_trusted_github_api` rules the
+    operator-controlled ``FEED_GITHUB_API_URL`` (preferred) /
+    ``GITHUB_API_URL`` env var as a non-GitHub endpoint::
+
+        if not _is_trusted_github_api(self._config.api_url):
+            log.warning(
+                "Automatisches GitHub-Issue abgebrochen: API-URL %s ist kein "
+                "bekannter GitHub-Endpunkt; Token wird nicht gesendet.",
+                self._config.api_url,
+            )
+            return
+
+    The value has only been ``urlparse``'d at this point — the parser
+    accepts arbitrary bytes in path / fragment / query, so a hostile
+    env var carrying any Trojan-Source primitive (BiDi RLO, ZWSP,
+    ALM, 8-bit C1 CSI/OSC, ESC-prefixed ANSI SGR, Tag-block
+    invisible-instruction-smuggling, Variation Selectors, log-record-
+    forgery newline / CR) flows verbatim into the rejection-branch
+    WARNING. The branch fires BEFORE :func:`validate_http_url` (the
+    next defence layer) gets a chance to strip the value.
+
+  * ``RunReport.log_results`` (line 482-484) — the errors-detail-hint
+    INFO log line that points operators at the error log file::
+
+        if self.has_errors():
+            log.info(
+                "Hinweis: Fehler während des Feed-Laufs – Details siehe %s",
+                error_log_path,
+            )
+
+    ``error_log_path`` is :file:`Path(LOG_DIR) / "errors.log"` and
+    ``LOG_DIR`` is env-controlled via :func:`resolve_env_path`
+    (see ``src/feed/config.py:LOG_DIR_PATH = resolve_env_path
+    ("LOG_DIR", Path("log"), allow_fallback=True)``).
+    :func:`validate_path` only checks the path resolves under one of
+    ``ALLOWED_ROOTS = {"docs", "data", "log"}``; it does NOT reject
+    Trojan-Source / control-character / BiDi primitives embedded in
+    the path bytes (``Path.resolve()`` normalises ``..`` and symlinks
+    but does not strip non-printable characters). A hostile
+    ``LOG_DIR`` like ``log/sub<RLO>`` / ``log<ESC>[31m`` /
+    ``log<NEWLINE>[INJECTED]`` flows verbatim into the INFO line.
+
+**Sibling drift shape:** This is the exact same drift class as the
+ÖBB Retry-After hardening pinned at
+``src/providers/oebb.py:1313-1315`` and the places-client closure
+PR #1472 at ``src/places/client.py:524-527``::
+
+    log.warning(
+        "ÖBB RSS Rate-Limit (Retry-After: %s)",
+        sanitize_log_arg(str(header)),
+    )
+
+with the explicit Sentinel comment "the value is upstream/operator-
+controlled; route through ``sanitize_log_arg`` so a hostile peer
+cannot inject ANSI/BiDi/control characters into operator log
+streams." The ``src/feed/reporting.py`` callsites were the last
+remaining ``log.warning(..., env_str)`` / ``log.info(..., env_path)``
+log lines in ``src/feed/`` that did NOT mirror the canonical
+sanitisation shape — same drift shape, same threat model, same fix.
+
+**Attack-surface narrowness pre-fix:** Both sites are guarded by
+:class:`SafeFormatter` in production (which calls
+:func:`sanitize_log_message` on the formatted message before it
+reaches stderr / the rotating file handlers). However:
+
+  * **pytest's ``caplog``** fires BEFORE :class:`SafeFormatter` runs.
+    Tests that exercise the rejection branch (CI surface) see the
+    pre-formatter message verbatim — including every primitive.
+  * **Non-``SafeFormatter`` log handlers** (early-init plumbing
+    before :func:`configure_logging` runs, third-party log
+    capturing, future refactor that drops the safe formatter)
+    consume the raw record.
+  * **Defence-in-depth.** Mirroring the canonical shape at every
+    env-controlled-string log boundary in the codebase means a
+    future refactor that bypasses :class:`SafeFormatter` doesn't
+    silently re-expose every drift site at once.
+
+**Reproduced:**
+``tests/test_sentinel_reporting_clear_text_logging_drift.py``
+contains 23 PoC tests:
+
+  * 10 parametrised PoC tests on the api_url WARNING site, one per
+    canonical primitive (BiDi RLO, ZWSP, ALM, ESC, 8-bit CSI, BEL,
+    newline, carriage return, Tag SPACE, Variation Selector-1).
+    Pre-fix every primitive survives in ``caplog.text`` verbatim.
+    Post-fix every primitive is sanitised.
+  * 1 full-attack-payload PoC on the api_url WARNING site that
+    bundles every primitive plus an ANSI SGR colour escape and a
+    log-record-forgery newline. Pre-fix every fragment survives;
+    post-fix every fragment is stripped.
+  * 10 parametrised PoC tests on the error_log_path INFO site
+    (same primitive list).
+  * 1 full-attack-payload PoC on the error_log_path INFO site.
+  * 1 AST inventory invariant: walks ``src/feed/reporting.py`` for
+    ``log.<level>(..., self._config.api_url)`` AND
+    ``log.<level>(..., error_log_path)`` calls and asserts neither
+    bare-arg shape survives without being wrapped in
+    :func:`sanitize_log_arg`. A regression here means a future
+    contributor unwrapped the sanitisation and re-exposed the drift.
+
+**Test-isolation note:** The PoC tests import
+``_GithubIssueReporter`` / ``RunReport`` / ``error_log_path`` *inside*
+the test functions so any prior test that reloads
+:mod:`src.feed.reporting` (e.g. via ``importlib.reload``) does not
+break the PoC's class-identity assumptions. Mirrors the test-isolation
+discipline pinned in the 2026-05-14 places-client closure entry.
+
+**Learning:** The "every env-controlled string interpolated into a
+log line via bare ``%s`` MUST route through ``sanitize_log_arg``"
+contract was implicit in the ÖBB / places-client Retry-After fixes'
+Sentinel comments but never enumerated as a per-module audit walker
+for ``src/feed/reporting.py``. Adding the AST inventory
+test (mirroring the
+``test_no_bare_exc_logging_in_clear_text_logging_modules`` walker
+shape from the 2026-05-08 round) FAILS LOUD on the next sibling
+site at PR-review time, instead of waiting for a future Sentinel
+sweep to enumerate ``grep -rn 'log\\.warning\\b' src/feed/`` and
+notice the gap. The two-site sweep also confirms the
+``%r``-via-repr defence is the only other safe shape currently in
+use at line 887-890 (``self._config.repository``); :func:`repr`
+escapes BiDi marks / control chars / non-ASCII codepoints to
+``\\xNN`` / ``\\uNNNN`` literal sequences and is therefore a valid
+sibling-defence shape, but inconsistent with the canonical
+``sanitize_log_arg`` pattern — flagged for a future refactor that
+would consolidate every env-string log boundary on one shape.
+
 ## 2026-05-14 - Clear-Text-Logging Drift (Places-Client Retry-After Sibling): The ÖBB Retry-After Hardening Was Never Mirrored In `src/places/client.py` — The Last `response.headers.get("Retry-After")` Site In `src/` That Logged The Header Via Bare `%s`
 
 **Vulnerability:** ``src/places/client.py:_post`` extracts the upstream

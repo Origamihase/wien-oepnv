@@ -478,9 +478,23 @@ class RunReport:
             diagnostics = self.diagnostics_message()
             log.info(diagnostics)
             if self.has_errors():
+                # Sentinel (Clear-Text-Logging Drift, sibling of the
+                # ``src/utils/files.py`` SHA-256 path-fingerprint family
+                # and the ``src/utils/env.py`` ``_warn_if_world_readable``
+                # closure): ``error_log_path`` is ``Path(LOG_DIR) /
+                # "errors.log"`` and ``LOG_DIR`` is env-controlled via
+                # :func:`resolve_env_path`. :func:`validate_path` only
+                # checks the path resolves under one of ``ALLOWED_ROOTS``;
+                # it does NOT reject Trojan-Source / control-character /
+                # BiDi primitives embedded in the path bytes. Routing the
+                # value through :func:`sanitize_log_arg` at the call site
+                # mirrors the canonical defence shape and guarantees no
+                # primitive can reach pytest's ``caplog`` capture (which
+                # fires BEFORE :class:`SafeFormatter`) nor any non-
+                # ``SafeFormatter`` log handler that consumes the record.
                 log.info(
                     "Hinweis: Fehler während des Feed-Laufs – Details siehe %s",
-                    error_log_path,
+                    sanitize_log_arg(str(error_log_path)),
                 )
                 with self._lock:
                     if not self._issue_submitted:
@@ -870,10 +884,26 @@ class _GithubIssueReporter:
         # checked BEFORE constructing the request URL or attaching the
         # Authorization header so an env-var override can't leak credentials.
         if not _is_trusted_github_api(self._config.api_url):
+            # Sentinel (Clear-Text-Logging Drift, sibling of the ÖBB /
+            # places-client Retry-After family): ``self._config.api_url``
+            # is sourced from the operator-controlled
+            # ``FEED_GITHUB_API_URL`` (preferred) / ``GITHUB_API_URL``
+            # env vars in :meth:`_GithubIssueConfig.from_env`. The value
+            # has only been ``urlparse``'d at this point — the parser
+            # accepts arbitrary bytes in path/fragment, so a hostile env
+            # var carrying any Trojan-Source primitive (BiDi RLO,
+            # zero-width, ALM, 8-bit C1 CSI/OSC, ESC-prefixed ANSI SGR,
+            # Tag block, Variation Selectors, log-record-forgery
+            # newline) flows verbatim into the rejection-branch
+            # WARNING. Routing through :func:`sanitize_log_arg` at the
+            # call site mirrors the canonical defence shape pinned at
+            # every other env-controlled-string log boundary in the
+            # codebase (defense-in-depth — caplog and any non-
+            # ``SafeFormatter`` handler see the pre-formatter message).
             log.warning(
                 "Automatisches GitHub-Issue abgebrochen: API-URL %s ist kein "
                 "bekannter GitHub-Endpunkt; Token wird nicht gesendet.",
-                self._config.api_url,
+                sanitize_log_arg(self._config.api_url),
             )
             return
 
