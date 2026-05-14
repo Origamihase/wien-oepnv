@@ -1,19 +1,19 @@
 ---
 title: "Google Places Stations Import"
-description: "Anleitung zum sekundären Fallback-Abruf von Bahnhofs- und Haltestellendaten über die Google Places API in den lokalen Stationskatalog (OSM ist die primäre Quelle)."
+description: "Anleitung zum Tier-3-Fallback-Abruf von Bahnhofs- und Haltestellendaten über die Google Places API in den lokalen Stationskatalog (OSM primär, HAFAS als Tier-2-Fallback davor)."
 ---
 
 # Google Places Stations Import
 
-> ⚠️ **Status: sekundärer Fallback.** Google Places ist seit der OSM-First-Migration **nicht mehr die primäre Datenquelle** für `data/stations.json`. Die kanonische Anreicherungskette ist:
+> ⚠️ **Status: Tier-3-Fallback (Notausgang).** Google Places ist **nicht** die primäre Datenquelle für `data/stations.json` — und seit 2026-05-14 auch nicht mehr der einzige Fallback. Die kanonische Anreicherungskette ist drei-stufig:
 >
-> 1. OpenStreetMap (Overpass API) befüllt alle Stationen, die ohne Koordinaten aus dem ÖBB-Verzeichnis ankommen — siehe `docs/architecture.md` §5.
-> 2. Erst danach prüft `scripts/update_station_directory.py:_stations_missing_coordinates`, welche Einträge **noch immer** keine `latitude`/`longitude` tragen.
-> 3. Nur diese strikte Teilmenge wird über `_enrich_with_google_places(..., missing_subset=…)` an die Places API weitergereicht. Wenn OSM alle Stationen abdeckt, wird der Google-Aufruf vollständig übersprungen — das Monatskontingent bleibt unangetastet.
+> 1. **Tier 1 — OpenStreetMap (Overpass API).** Befüllt alle Stationen, die ohne Koordinaten aus dem ÖBB-Verzeichnis ankommen — siehe `docs/architecture.md` §5.
+> 2. **Tier 2 — HAFAS (ÖBB Scotty).** `scripts/update_station_directory.py:_enrich_with_hafas` läuft direkt im Anschluss über jede Station ohne OSM-Koordinaten. Liefert hochpräzise Koordinaten und die EVA-Nummer (`hafas_extId`); ist nicht durch ein Tagesbudget limitiert und schont damit das Google-Kontingent. Implementiert in `src/places/hafas_client.py`, abgesichert durch einen eigenen `CircuitBreaker` und eingebettet in `request_safe`.
+> 3. **Tier 3 — Google Places.** Erst danach prüft `_stations_missing_coordinates`, welche Einträge **noch immer** keine `latitude`/`longitude` tragen. Nur diese strikte Restmenge wird über `_enrich_with_google_places(..., missing_subset=…)` an die Places API weitergereicht. Decken OSM und HAFAS gemeinsam alles ab, wird der Google-Aufruf vollständig übersprungen — das Monatskontingent bleibt unangetastet.
 >
-> Stationen, deren Koordinaten OSM bereits aufgelöst hat, werden **nicht** neu verschlüsselt — selbst wenn ein Google Place denselben Namen trägt. Die Demotion ist absichtlich harsch: Open-Data-Erstanbieter (Overpass) kommt vor kommerziellem Anbieter (Google).
+> Stationen, deren Koordinaten OSM oder HAFAS bereits aufgelöst haben, werden **nicht** neu verschlüsselt — selbst wenn ein Google Place denselben Namen trägt. Die Demotion ist absichtlich harsch: Open-Data-Erstanbieter (Overpass), gefolgt vom kostenfreien Operator-Backend (HAFAS), kommen vor dem kommerziellen Anbieter (Google).
 
-Dieses Dokument beschreibt die *Mechanik* des Imports — den Quota-Manager, die Health-Checks und den Workflow. Wer einen reinen, vollständigen Stationskatalog mit Koordinaten benötigt, sollte zuerst den OSM-Pfad verifizieren (siehe `scripts/check_overpass_status.py`); Google Places wird nur dann ausgelöst, wenn OSM nachweislich Lücken hinterlässt.
+Dieses Dokument beschreibt die *Mechanik* des Tier-3-Imports — den Quota-Manager, die Health-Checks und den Workflow. Wer einen reinen, vollständigen Stationskatalog mit Koordinaten benötigt, sollte zuerst den OSM-Pfad verifizieren (siehe `scripts/check_overpass_status.py`) und das HAFAS-Profil prüfen (`data/hafas_profile.json`, befüllt durch `scripts/sync_hafas_profile.py`); Google Places wird nur dann ausgelöst, wenn beide vorgelagerten Tiers nachweislich Lücken hinterlassen.
 
 ## Voraussetzungen
 
@@ -104,7 +104,7 @@ Das Skript lädt die Standard-Konfiguration, fragt eine einzelne Kachel ab und b
 
 ## Automatisierung
 
-Der OSM-first / Google-Places-Fallback läuft automatisch als Schritt in `.github/workflows/update-stations.yml` (wöchentlich, Sonntag 01:00 UTC). Der Schritt nutzt das Secret `GOOGLE_ACCESS_ID` und ruft Google Places ausschließlich für Stationen ohne OSM-Koordinaten auf (`_stations_missing_coordinates`). Ein separater Standalone-Workflow existiert nicht mehr — für Out-of-Band-Refreshes der gesamten Places-Anreicherung steht `python scripts/fetch_google_places_stations.py --write` als lokaler/CI-Direktaufruf bereit; der Operator akzeptiert dann bewusst den Quota-Verbrauch.
+Die drei-stufige Kaskade (OSM → HAFAS → Google Places) läuft automatisch als Schritt in `.github/workflows/update-stations.yml` (wöchentlich, Sonntag 01:00 UTC). Direkt vor dem Stations-Refresh aktualisiert ein eigener Schritt `Synchronize HAFAS Profile` das Mgate-Profil-Sidecar `data/hafas_profile.json`, damit ÖBB-seitige Credential-Rotation transparent nachgezogen wird. Der Google-Schritt nutzt anschließend das Secret `GOOGLE_ACCESS_ID` und ruft Google Places ausschließlich für die Restmenge auf, die weder OSM noch HAFAS auflösen konnten (`_stations_missing_coordinates` nach beiden Tiers). Ein separater Standalone-Workflow existiert nicht mehr — für Out-of-Band-Refreshes der gesamten Places-Anreicherung steht `python scripts/fetch_google_places_stations.py --write` als lokaler/CI-Direktaufruf bereit; der Operator akzeptiert dann bewusst den Quota-Verbrauch.
 
 ### Preflight (historisch, Workflow entfernt 2026-05-11)
 
@@ -117,13 +117,14 @@ Zusätzlich validierte ein Nearby-Preflight (`places:searchNearby`) den Request-
 * Neue Setups sollten ausschließlich `GOOGLE_ACCESS_ID` pflegen.
 * Bestehende Installationen mit `GOOGLE_MAPS_API_KEY` funktionieren weiterhin, erzeugen jedoch eine Log-Warnung. Sobald `GOOGLE_ACCESS_ID` gesetzt ist, wird automatisch auf den neuen Schlüssel umgestellt.
 
-## OSM-First Fallback-Reihenfolge
+## Drei-Tier-Fallback-Reihenfolge
 
 Im Cron-Pfad `scripts/update_station_directory.py` läuft die Anreicherung in genau dieser Reihenfolge:
 
-1. `--osm-enrich` (Default an) ruft `fetch_osm_places()` auf. Ergebnisse werden über `merge_places()` mit Distanzschwelle `MERGE_MAX_DIST_M` (150 m Default) verschmolzen. Stationen erhalten `source="osm"`.
-2. Wenn `--google-enrich` aktiv ist, ermittelt das Skript `_stations_missing_coordinates(stations)`. Nur diese Liste wird an `_enrich_with_google_places(stations, tiles_file=…, missing_subset=missing)` übergeben.
-3. Ist die Liste leer, erscheint im Log `Skipping Google Places enrichment: OSM already covered all <N> stations with coordinates` — kein Outbound-Request, kein Quota-Verbrauch.
-4. Wenn der CI-Workflow den Overpass-Smoke-Check (`scripts/check_overpass_status.py`) als fehlgeschlagen meldet, wird `WIEN_OEPNV_OSM_ENRICH=0` gesetzt; Google Places übernimmt dann die Stationen, die das ÖBB-Excel ohne Koordinaten ausliefert (klassischer Notfall-Pfad).
+1. **Tier 1 — OSM.** `--osm-enrich` (Default an) ruft `fetch_osm_places()` auf. Ergebnisse werden über `merge_places()` mit Distanzschwelle `MERGE_MAX_DIST_M` (150 m Default) verschmolzen. Stationen erhalten `source="osm"`.
+2. **Tier 2 — HAFAS.** `_enrich_with_hafas` iteriert über die Restmenge ohne OSM-Koordinaten und ruft je Station `enrich_station_with_hafas()` aus `src/places/hafas_client.py` auf. Treffer setzen `latitude`/`longitude`, persistieren `hafas_extId` auf der Station und ergänzen `source` um den Token `hafas`. Ein Ausfall (Breaker offen, Netzwerkfehler, fehlendes Profil) liefert pro Station `None` zurück — das Skript läuft weiter.
+3. **Tier 3 — Google Places.** Wenn `--google-enrich` aktiv ist, ermittelt das Skript erneut `_stations_missing_coordinates(stations)` nach dem HAFAS-Lauf. Nur diese reduzierte Liste wird an `_enrich_with_google_places(stations, tiles_file=…, missing_subset=missing)` übergeben.
+4. Ist die Liste leer, erscheint im Log `HAFAS resolved every remaining station; skipping Google Places enrichment` bzw. `Skipping Google Places enrichment: OSM already covered all <N> stations with coordinates` — kein Outbound-Request, kein Quota-Verbrauch.
+5. Wenn der CI-Workflow den Overpass-Smoke-Check (`scripts/check_overpass_status.py`) als fehlgeschlagen meldet, wird `WIEN_OEPNV_OSM_ENRICH=0` gesetzt; HAFAS übernimmt dann zuerst alle Stationen aus dem ÖBB-Excel und Google Places kümmert sich nur um die Restmenge, die auch HAFAS nicht auflösen konnte (klassischer Notfall-Pfad).
 
-Damit ist garantiert, dass Google Places nie als „Hauptquelle" arbeitet, sondern ausschließlich Lücken stopft, die der primäre OSM-Pfad nicht schließen konnte.
+Damit ist garantiert, dass Google Places nie als „Hauptquelle" arbeitet, sondern ausschließlich Lücken stopft, die weder der primäre OSM-Pfad noch das HAFAS-Tier schließen konnten.
