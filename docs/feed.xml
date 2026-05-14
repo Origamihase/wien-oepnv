@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 14 May 2026 15:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2026 15:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1: Falschparker]]></title>
+      <title><![CDATA[57A: Fahrtbehinderung wegen Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1</guid>
-      <pubDate>Thu, 14 May 2026 13:45:00 +0200</pubDate>
-      <ext:first_seen>Thu, 14 May 2026 14:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 14 May 2026 13:45:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 14 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 14.05.2026]</description>
-      <content:encoded><![CDATA[Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 14.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8</guid>
-      <pubDate>Thu, 14 May 2026 13:45:00 +0200</pubDate>
-      <ext:first_seen>Thu, 14 May 2026 14:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 14 May 2026 13:45:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 14 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 14.05.2026]</description>
-      <content:encoded><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 14.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">1479d69628ad6774aff996064517e6a4ab864e04445cce50bdca7679b4465bb8</guid>
+      <pubDate>Thu, 14 May 2026 15:24:42 +0200</pubDate>
+      <ext:first_seen>Thu, 14 May 2026 15:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 14 May 2026 15:24:42 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 14 May 2026 16:24:00 +0200</ext:ends_at>
+      <description>[Am 14.05.2026]</description>
+      <content:encoded><![CDATA[[Am 14.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Fahrplan beachten !]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Sat, 30 May 2026 00:30:00 +0200</ext:ends_at>
       <description>Veranstaltung Wegen der Sperre der Zehetnergasse aufgrund von Filmaufnahmen kommt es zu einer Umleitung der Linie 47A. Zeitraum: Donnerstag, 28. Mai 2026, etwa 15:00 Uhr bis … [12.05.2026 – 30.05.2026]</description>
       <content:encoded><![CDATA[Veranstaltung Wegen der Sperre der Zehetnergasse aufgrund von Filmaufnahmen kommt es zu einer Umleitung der Linie 47A. Zeitraum: Donnerstag, 28. Mai 2026, etwa 15:00 Uhr bis …<br/>[12.05.2026 – 30.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N65: Betrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0af8e48c5c63c0818b4662d59227417ee430c0b1befb39c7dcdd7a316ece5e82</guid>
+      <pubDate>Tue, 12 May 2026 00:00:20 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 00:00:20 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 14 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[12.05.2026 – 14.05.2026]</description>
+      <content:encoded><![CDATA[[12.05.2026 – 14.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
