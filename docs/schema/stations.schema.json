@@ -77,6 +77,11 @@
           "pattern": "^[0-9]+$",
           "description": "Wiener Linien DIVA-Nummer aus data/wienerlinien-ogd-haltestellen.csv (Wiener Linien OGD, www.wienerlinien.at/ogd_realtime/doku/ogd/, CC BY 4.0). Wird für WL-Provider-Lookups als IDENTITY-Alias geführt und trägt — gemeinsam mit bst_id/bst_code/vor_id — die strukturelle Eindeutigkeits-Garantie der Station."
         },
+        "hafas_extId": {
+          "type": "string",
+          "pattern": "^[0-9A-Za-z._:@=-]+$",
+          "description": "HAFAS (ÖBB Scotty) extId aus der LocMatch-Anreicherung in src/places/hafas_client.py. Wird vom HAFAS-Fallback in scripts/update_station_directory.py gesetzt, wenn OSM Overpass keine Koordinaten liefert und HAFAS die Station auflöst. Typisch 7-9 Ziffern (z. B. '8100353' für Wien Hauptbahnhof); zulässig sind auch alphanumerische HAFAS-LIDs."
+        },
         "wl_stops": {
           "type": "array",
           "description": "WL-Einzelhaltepunkte (Bahnsteige/Richtungen) aus data/wienerlinien-ogd-haltepunkte.csv (Wiener Linien OGD, www.wienerlinien.at/ogd_realtime/doku/ogd/).",

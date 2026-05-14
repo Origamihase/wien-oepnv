@@ -86,6 +86,16 @@ jobs:
         run: python scripts/check_overpass_status.py --allow-skip --verbose
         continue-on-error: true
 
+      - name: Synchronize HAFAS Profile
+        # Refresh data/hafas_profile.json from the upstream
+        # public-transport/hafas-client OEBB profile so the HAFAS
+        # fallback inside ``src/places/hafas_client.py`` picks up the
+        # current ``salt`` / ``ver`` / ``aid`` triple. ÖBB rotates
+        # these without notice; running the sync right before the
+        # station-directory refresh keeps the cached profile fresh
+        # without bloating the job runtime.
+        run: python scripts/sync_hafas_profile.py
+
       - name: Refresh station directory
         env:
           WIEN_OEPNV_OSM_ENRICH: ${{ steps.overpass-smoke.outcome == 'success' && '1' || '0' }}
