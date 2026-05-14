@@ -601,9 +601,21 @@ def format_local_times(
 # Unicode characters, not XML metacharacters). The widening at this
 # LAST-sanitiser-boundary stops the invisible smuggling primitive
 # before it reaches every subscriber's RSS reader.
+# 2026-05-14 "Zero-Width Format Drift": widened in lockstep with the
+# canonical ``src/utils/logging.py:_INVISIBLE_DANGEROUS_RE`` to cover
+# U+180E (MONGOLIAN VOWEL SEPARATOR) and U+2060..U+2064 (WORD JOINER,
+# FUNCTION APPLICATION, INVISIBLE TIMES, INVISIBLE SEPARATOR,
+# INVISIBLE PLUS). Pre-fix the public RSS feed at docs/feed.xml could
+# carry these zero-width Cf primitives inside <title>/<description>/
+# <link>; they survive into every subscriber's reader as
+# steganography / prompt-injection smuggling primitives. The
+# U+2060..U+2069 expansion folds in the existing BiDi-isolate band;
+# reserved U+2065 has no defined meaning so the additive strip is
+# safe. Inventory invariant pinned by
+# ``tests/test_sentinel_zero_width_invisible_drift.py``.
 _CONTROL_RE = re.compile(
     r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F"
-    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff"
+    r"\u061c\u180e\u200b-\u200f\u2028-\u202e\u2060-\u2069\ufeff"
     r"\ufe00-\ufe0f"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )

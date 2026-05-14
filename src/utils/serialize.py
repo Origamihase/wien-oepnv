@@ -38,9 +38,22 @@ log = logging.getLogger(__name__)
 # injection smuggling); a planted upstream payload carrying any of
 # them in a station name / cache event / quota state survives the
 # pre-fix scrubber and lands in the committed JSON sidecar.
+# 2026-05-14 "Zero-Width Format Drift": widened in lockstep with the
+# canonical _INVISIBLE_DANGEROUS_RE union to cover U+180E (MONGOLIAN
+# VOWEL SEPARATOR) and U+2060..U+2064 (WORD JOINER, FUNCTION
+# APPLICATION, INVISIBLE TIMES, INVISIBLE SEPARATOR, INVISIBLE PLUS).
+# Pre-fix a planted upstream payload carrying any of these zero-width
+# Format primitives in a station name / cache event / quota state
+# survived this scrubber and landed in the committed JSON sidecar
+# (cache/<provider>/events.json, data/stations.json,
+# data/places_quota.json). The bytes are invisible in git diff /
+# GitHub web UI / IDE preview but break downstream byte-equality
+# dedup keying. The U+2060..U+2069 range folds in the existing
+# BiDi-isolate band; reserved U+2065 has no defined meaning so the
+# additive strip is safe.
 _TROJAN_SOURCE_PRIMITIVES_RE = re.compile(
     r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
-    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\u061c\u180e\u200b-\u200f\u2028-\u202e\u2060-\u2069"
     r"\ufe00-\ufe0f\ufeff"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )

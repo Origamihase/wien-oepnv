@@ -57,8 +57,9 @@ from typing import Any
 # (``test_sentinel_clear_text_logging_drift_utils``) inherits the same
 # defence floor.
 _CONTROL_CHARS_RE = re.compile(
-    r"[\x00-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
-    r"\ufe00-\ufe0f\ufeff\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
+    r"[\x00-\x1f\x7f-\x9f\u061c\u180e\u200b-\u200f\u2028-\u202e"
+    r"\u2060-\u2069\ufe00-\ufe0f\ufeff"
+    r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 # Always-strip set: invisible Unicode characters that have NO readability
 # value and are pure log-injection / Trojan-Source / terminal-escape
@@ -135,9 +136,38 @@ _CONTROL_CHARS_RE = re.compile(
 # character family. See
 # tests/test_sentinel_tag_chars_variation_selectors_invisible_drift.py
 # for the additive-regression invariant.
+#
+# 2026-05-14 "Zero-Width Format Drift": widened to close the gap
+# between U+202E (RLO) and U+2066 (LRI) plus the legacy U+180E:
+#   * U+180E - MONGOLIAN VOWEL SEPARATOR. Originally classified
+#     Zs (Space_Separator), reclassified Cf (Format) in Unicode
+#     6.3.0 but still rendered as zero-width by every conforming
+#     renderer. Defeats every "strip ZWSP family" filter that
+#     relies on the U+200x band.
+#   * U+2060 - WORD JOINER (zero-width no-break space, the
+#     non-deprecated successor of U+FEFF as a word-joining
+#     primitive). Glues two visible tokens without producing
+#     any visible separator.
+#   * U+2061 - FUNCTION APPLICATION (mathematical zero-width).
+#   * U+2062 - INVISIBLE TIMES (mathematical zero-width).
+#   * U+2063 - INVISIBLE SEPARATOR (mathematical zero-width).
+#   * U+2064 - INVISIBLE PLUS (mathematical zero-width).
+# Every code point above is in Unicode general category Cf
+# (Format) - the same category as ZWSP/ZWNJ/ZWJ already covered
+# by the floor. The U+2060..U+2064 band is the canonical
+# "invisible Unicode steganography" alphabet in published
+# research: combinations of WJ + INVISIBLE TIMES + INVISIBLE
+# SEPARATOR + INVISIBLE PLUS encode arbitrary bytes that
+# survive copy-paste from a log / RSS feed / GitHub Issue body
+# into an LLM context window - invisible to the human, fully
+# visible to the model. The expanded U+2060..U+2069 range
+# additionally folds in the existing U+2066..U+2069 BiDi
+# isolate band (LRI/RLI/FSI/PDI) plus reserved U+2065; the
+# unassigned slot has no defined meaning and the additive
+# strip is safe.
 _INVISIBLE_DANGEROUS_RE = re.compile(
     r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
-    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\u061c\u180e\u200b-\u200f\u2028-\u202e\u2060-\u2069"
     r"\ufe00-\ufe0f\ufeff"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )

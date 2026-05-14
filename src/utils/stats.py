@@ -156,9 +156,20 @@ _CSV_FORMULA_PREFIXES: Final = ("=", "+", "-", "@", "\t", "\r")
 # cell from the visible cousin. Closing the variant gap at the CSV
 # writer keeps the operator's analytics view consistent with the
 # rendered cells.
+# 2026-05-14 "Zero-Width Format Drift": widened in lockstep with the
+# canonical _INVISIBLE_DANGEROUS_RE union to cover U+180E (MONGOLIAN
+# VOWEL SEPARATOR) and U+2060..U+2064 (WORD JOINER, FUNCTION
+# APPLICATION, INVISIBLE TIMES, INVISIBLE SEPARATOR, INVISIBLE PLUS).
+# Pre-fix invisible-Format variants of a provider/location name
+# silently fractured pivot-table aggregation in the committed CSV
+# stats ledger (Excel/LibreOffice/Sheets render the bytes as zero
+# width, so operators see two visually identical cells aggregating
+# as distinct keys). The U+2060..U+2069 expansion folds the existing
+# BiDi-isolate band into the new range; reserved U+2065 has no
+# defined meaning so the additive strip is safe.
 _CSV_CONTROL_CHARS_RE: Final = re.compile(
     r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F"
-    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\u061c\u180e\u200b-\u200f\u2028-\u202e\u2060-\u2069"
     r"\ufe00-\ufe0f\ufeff"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
