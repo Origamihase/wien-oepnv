@@ -1,3 +1,155 @@
+## 2026-05-14 - Trojan-Source BiDi Drift Round 15 (Stammstrecke State Sidecars): `_save_pending_trips` (`cache/stammstrecke/pending_trips.json`) and `_save_recently_finalised` (`cache/stammstrecke/recently_finalised.json`) Were the Two Committed Operator-Facing JSON Writers Every Prior Round (10–14) Named But Did Not Enumerate
+
+**Vulnerability:** The 2026-05-09 Stammstrecke migration (PR #1356)
+introduced two persistent JSON ledgers in
+``scripts/update_stammstrecke_status.py``:
+
+  * ``_save_pending_trips`` writes
+    ``cache/stammstrecke/pending_trips.json`` — a dict keyed by
+    ``_identity_key(direction, name, scheduled)`` =
+    ``f"{direction}|{name}|{scheduled.isoformat()}"`` whose values
+    carry the same ``name`` field plus delay metadata.
+  * ``_save_recently_finalised`` writes
+    ``cache/stammstrecke/recently_finalised.json`` — a companion
+    suppression ledger keyed by the same identity-key shape.
+
+Both writers used ``json.dump(..., ensure_ascii=False, ...)``. The
+``name`` field reaches the writer via
+``_collect_sbahn_leg_observations`` which calls
+``_canonical_line_name(leg.get("name") or "")``. The canonicaliser
+strips only ``\s+`` (Python's regex whitespace class) and the ``|``
+separator, then uppercases — so every code point in the canonical
+CVE-2021-42574 attack union OTHER than U+2028 / U+2029 (which Python's
+``\s`` engine incidentally treats as whitespace) survives
+canonicalisation verbatim and reaches the on-disk file as raw UTF-8
+bytes:
+
+  * ``‮`` (RIGHT-TO-LEFT OVERRIDE) — visually reverses subsequent
+    text. ``S‮2evil`` renders as ``Slive2`` for any
+    ``cat`` / ``less`` / GitHub web UI / IDE preview consumer.
+  * ``‪``..``‭`` (LRE/RLE/PDF/LRO) — sibling BiDi formatting
+    controls.
+  * ``⁦``..``⁩`` (LRI/RLI/FSI/PDI) — BiDi isolates (second
+    half of CVE-2021-42574).
+  * ``​``..``‏`` (ZWSP/ZWNJ/ZWJ/LRM/RLM) — zero-width and
+    direction-mark primitives.
+  * ``؜`` (ALM Arabic Letter Mark).
+  * ``﻿`` (BOM / ZWNBSP).
+  * ``\xE0000``..``\xE007F`` (Unicode Tag block) — invisible-
+    instruction smuggling primitive (2024 OpenAI disclosure).
+  * ``︀``..``️`` / ``\xE0100``..``\xE01EF`` (Variation
+    Selectors) — 4-bit-per-codepoint steganography channel.
+  * ``\x9B`` (CSI), ``\x9D`` (OSC), ``\x90`` (DCS) — 8-bit C1
+    terminal-escape primitives that bypass 7-bit ``\x1B``-prefixed
+    ANSI guards on every C1-honouring terminal (xterm with
+    ``eightBitInput``, several BSD consoles, rxvt 8-bit mode).
+
+The threat model is identical to the canonical Round 9 / 10 / 11 / 12 /
+13 / 14 closures pinned for the sibling ``data/*.json`` and
+``cache/<provider>/*.json`` writer family. The
+``update-cycle.yml`` workflow's ``stefanzweifel/git-auto-commit-action``
+step uses ``add_options: '-A'`` so every modified file under
+``cache/stammstrecke/`` is staged and committed to ``main`` on each
+~30-min cron tick. An operator reviewing the diff (GitHub web UI,
+``git diff``, ``cat``, IDE preview) sees BiDi-reversed display of any
+planted name; a downstream operator-supplied diagnostic command
+interpolating the name into stderr / a copied error message / a SIEM
+re-flows the primitive into the next consumer.
+
+**Closing-checklist deferral chain:**
+
+  * Round 9 (2026-05-10) closed the auto-quarantine sidecar +
+    stations-diff markdown writers.
+  * Round 10 (2026-05-11) closed ``_save_state``
+    (``data/first_seen.json``) + the ``_build_heartbeat`` writer
+    (``data/stations_last_run.json``).
+  * Round 11 (2026-05-11) closed ``MonthlyQuota.save_atomic``
+    (``data/places_quota.json``), ``save_request_count``'s atomic
+    write (``data/vor_request_count.json``), and ``write_status``
+    (``cache/<provider>/last_run.json``).
+  * Round 12 (2026-05-11) closed ``write_cache``
+    (``cache/<provider>/events.json``) via the
+    ``scrub_trojan_source_primitives`` helper (preserves compact
+    German diffs).
+  * Round 13 (2026-05-11) closed ``write_stations`` / ``load_stations``
+    (``data/stations.json``).
+  * Round 14 (2026-05-11) closed seven script-level station-writer
+    sinks.
+
+None of those rounds enumerated the two ``cache/stammstrecke/``
+sidecar writers — the Stammstrecke pipeline was migrated AFTER the
+initial sidecar inventory was compiled, and every closing-checklist
+audit since then keyed off the existing ``write_status`` /
+``write_cache`` pattern in ``src/utils/cache.py`` which the
+Stammstrecke writers do NOT route through (they use bespoke
+``json.dump`` calls inline in the script).
+
+**Reproduced:** ``tests/test_sentinel_stammstrecke_state_trojan_source.py``
+contains 88 PoC tests:
+
+  * 1 smoking-gun PoC for ``_save_pending_trips`` proving U+202E
+    leaks verbatim into the on-disk file pre-fix.
+  * 21 parametrised PoCs (one per primitive in the canonical attack
+    union) for the ``name``-field path of ``_save_pending_trips``.
+  * 21 parametrised PoCs for the dict-KEY path of
+    ``_save_pending_trips`` (where the ``name`` segment of
+    ``_identity_key`` lands).
+  * 1 round-trip regression proving forensic intent is preserved
+    (``_load_pending_trips`` recovers the original string from the
+    literal ``\\uXXXX`` escape).
+  * 1 smoking-gun PoC for ``_save_recently_finalised`` (companion
+    ledger shares the identity-key shape).
+  * 21 parametrised PoCs for ``_save_recently_finalised``.
+  * 1 round-trip regression for ``_save_recently_finalised``.
+  * 1 invariant pinning ``_canonical_line_name``'s narrow scope
+    (negative invariant: U+202E specifically is NOT stripped).
+  * 19 parametrised invariants (one per non-``\s`` primitive)
+    confirming the canonicaliser is not the load-bearing barrier
+    and the writer-side ``ensure_ascii=True`` switch is the only
+    defence for those primitives.
+  * 1 happy-path regression (ASCII direction labels + S1/REX3 line
+    designations + ISO timestamps survive byte-stable through the
+    writer).
+
+Pre-fix: every PoC fails (raw UTF-8 bytes appear in the on-disk file).
+Post-fix: all 88 tests pass; the full 4337-test suite passes; static
+checks (ruff, mypy 1.10 against ``.mypy-baseline.txt``, bandit, secret
+scanner, C901 gate, pip-audit) are clean.
+
+**Fix shape:** Both writers switched from
+``ensure_ascii=False`` to ``ensure_ascii=True`` — the canonical
+"state-sink" defence shape pinned in PRs #1434 / #1435 and Rounds 10 /
+11. ``ensure_ascii=False`` + ``scrub_trojan_source_primitives`` (the
+Round 12 / 13 / 14 "cache-feed" defence shape) was rejected because
+the Stammstrecke ledger payload is exclusively ASCII on the happy
+path (hardcoded ``"Meidling"`` / ``"Floridsdorf"`` direction labels;
+``S1`` / ``S80`` / ``R8`` / ``REX3`` line designations canonicalised
+to upper-case ASCII; ISO-8601 numeric timestamps; float delays). With
+no legitimate German content to preserve, the simpler escape-and-
+preserve shape is the correct match — and ``json.loads`` recovers the
+original bytes verbatim so the load-modify-save cycle stays
+byte-equivalent at the parsed-Python level.
+
+**Learning:** When a NEW persistent JSON sidecar is introduced (here:
+the 2026-05-09 Stammstrecke pipeline migration that added two
+ledgers), audit the writer for ``ensure_ascii=False`` against the
+canonical defence shape pinned for the sibling ``data/*.json`` /
+``cache/<provider>/*.json`` family. The sidecar's commit-to-main path
+(via the workflow's auto-commit ``add_options: '-A'``) makes every
+operator-facing diagnostic file a Trojan-Source attack surface. The
+identity-key shape ``f"{a}|{b}|{c}"`` is particularly load-bearing
+because it lands in the JSON top-level KEY position, where any
+upstream-controlled segment ``b`` propagates the primitive twice (key
++ inner field) and where the dict-key encoding path is sometimes
+overlooked in favour of value-only audits. Audit the upstream
+canonicalisation chain — here ``_canonical_line_name`` strips only
+``\s+`` + ``|`` so most of the canonical attack union flows through
+unchanged. The writer-side defence is structurally simpler and more
+robust than relying on every upstream canonicaliser to widen its
+strip set; close the drift at the writer.
+
+---
+
 ## 2026-05-13 - Path-Log Sibling Drift Round 2 (`scripts/` Closure): 28 Operator-Facing WARNING/INFO Sinks Across `scripts/enrich_station_aliases.py` (9), `scripts/update_station_directory.py` (17), `scripts/update_wl_stations.py` (3) — The Named-But-Deferred Inverse-Grep Sub-Landscape Of The 2026-05-11 Caller-Drift Round
 
 **Vulnerability:** the 2026-05-11 Caller-Drift Round (the previous
