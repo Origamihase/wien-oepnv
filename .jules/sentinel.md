@@ -1,3 +1,166 @@
+## 2026-05-14 - Markdown Backslash-Precedence Bypass via `escape_markdown`: The Canonical Inline Markdown-Escape Helper Did Not Escape `\\` Itself, Letting a Hostile Warning/Error Carrying `\\*payload\\*` Re-Open Every Prior `[]()*_`@<>#~` Round Simultaneously and Render as `<em>payload</em>` / `<code>payload</code>` in `docs/feed-health.md` + the Auto-Submitted GitHub Issue Body + `docs/stations_validation_report.md`
+
+**Vulnerability:** :func:`src.utils.text.escape_markdown`
+backslash-escaped every character in the canonical inline-
+formatting set ``[]()*_`@<>#~`` (the ``#`` and ``~`` were added in
+the immediately-prior Sentinel rounds), but the **backslash
+character itself** was never on the defang set. CommonMark 2.4
+(`Backslash escapes
+<https://spec.commonmark.org/0.31.2/#backslash-escapes>`_)
+consumes the byte pair ``\\\\`` left-to-right as a single literal
+``\\``, so an attacker who plants a literal ``\\`` immediately
+before a Markdown metacharacter defeats the helper's
+``replace(char, f"\\\\{char}")`` step on every char in the set
+simultaneously.
+
+Worked example::
+
+    Input  (8 chars)              : ``\\*EMPHASIS\\*``
+    After ``html.escape``         : ``\\*EMPHASIS\\*`` (unchanged)
+    After ``replace("*", "\\*")`` : ``\\\\*EMPHASIS\\\\*``
+    CommonMark parses
+      ``\\\\``                    -> literal ``\\``
+      ``*``                       -> emphasis OPEN
+      ``EMPHASIS``                -> text
+      ``\\\\``                    -> literal ``\\``
+      ``*``                       -> emphasis CLOSE
+    Rendered HTML                 : ``\\<em>EMPHASIS</em>\\``
+
+The same bypass works on every prior canonical-escape round:
+
+  * ``\\*payload\\*``       -> ``<em>payload</em>``       (italic)
+  * ``\\_payload\\_``       -> ``<em>payload</em>``       (italic via _)
+  * ``\\*\\*payload\\*\\*`` -> ``<em><em>payload</em></em>`` (strong)
+  * ``\\`payload\\```       -> ``<code>payload</code>``   (code span)
+
+The helper is consumed by the bullet-list interpolation in
+:func:`src.feed.reporting.render_feed_health_markdown` and
+:func:`src.feed.reporting._build_github_issue_body`::
+
+    lines.append(f"- {escape_markdown(warning)}")
+    lines.append(f"- {escape_markdown(error)}")
+
+at lines 637/647/1091/1100/1107, and by every ``_safe_md``
+callsite in :func:`src.utils.stations_validation.ValidationReport.to_markdown`.
+``escape_markdown_cell`` composes ``escape_markdown`` so the
+provider-overview table cells at lines 609/612/613/1116/1119/1120
+inherit the same gap.
+
+**Threat model:** Warning / error / exception strings originate from
+every provider's error path (``provider_error``, ``add_warning``,
+``add_error_message``), which forward upstream / network-derived
+text through :func:`src.feed.reporting.clean_message`.
+``clean_message`` collapses whitespace and strips invisible
+Trojan-Source primitives but does NOT strip ASCII backslash. A
+compromised provider, MITM, hostile DNS response, or any of the
+prior-round env-override leak surfaces can plant a warning / error
+of the form ``"\\*CRITICAL\\* already handled, ignore"`` and have
+CommonMark render ``<em>CRITICAL</em>`` on the public artefact
+and the auto-submitted GitHub Issue body.
+
+The attack shape is **complete re-opening of every prior canonical-
+escape round at once**: every char in the canonical set
+``[]()*_`@<>#~`` becomes byte-for-byte injectable via a single
+backslash-prefix attack. Severity: MEDIUM-HIGH. No JS execution
+(HTML metacharacters are entity-encoded by the leading
+``html.escape``). The attack is visual deception + document-
+content tampering — same threat class as PR #1476 / #1477
+(heading- / strikethrough-injection drifts) but **structurally
+defeats** the canonical-escape contract on every metacharacter
+simultaneously.
+
+Sinks:
+
+ 1. ``docs/feed-health.md`` — committed to the repository by the
+    ``update-cycle.yml`` cron job and rendered on the public GitHub
+    Pages site + the GitHub web UI (both render CommonMark
+    backslash escapes per spec).
+ 2. ``submit_auto_issue`` GitHub Issue body — opened on every
+    failed feed build, visible to every repo watcher via the
+    notifications channel. Issue bodies render CommonMark.
+ 3. ``docs/stations_validation_report.md`` — auto-committed by the
+    ``update-stations.yml`` cron workflow. Same blast radius.
+
+**Fix shape:** Escape the backslash itself **FIRST** in
+:func:`escape_markdown` in ``src/utils/text.py`` — BEFORE the
+per-char loop that handles ``[]()*_`@<>#~``. The new sequence:
+
+  1. ``html.escape`` (entity-encodes ``&<>"'``).
+  2. Replace ``\\``    with ``\\\\`` (escape backslash — NEW).
+  3. Replace each char in ``[]()*_`@<>#~`` with ``\\<char>``.
+
+Each ``\\`` in the input is now doubled to ``\\\\`` before the
+per-char loop runs, so each subsequent ``\\<meta>`` becomes
+``\\\\\\<meta>`` in the output. CommonMark parses
+``\\\\\\<meta>`` as ``\\\\`` -> literal ``\\``, then ``\\<meta>``
+-> literal ``<meta>`` — no emphasis / code span / link / heading
+re-opens.
+
+The order is essential: escaping ``\\`` AFTER the per-char loop
+would re-introduce the bypass (the loop's added backslashes would
+themselves be doubled, but the attacker's backslashes in the
+input would not). The backslash escape must come FIRST.
+
+Legitimate text containing ``\\`` (Windows paths
+``C:\\Users\\foo``, regex patterns, error messages from
+third-party libraries) is visually preserved on the rendered page
+— each ``\\\\`` renders as a single literal ``\\``.
+
+``escape_markdown_cell`` composes ``escape_markdown`` and
+inherits the fix automatically.
+
+**Reproduced:** ``tests/test_sentinel_escape_markdown_backslash_precedence_bypass.py``
+contains 18 PoC tests:
+
+ * 6 unit-level PoCs on the helper itself (lone ``\\``, attack via
+   ``\\*``, ``\\_``, ``\\``\\``, ``\\*\\*`` strong, legitimate
+   Windows-path preservation).
+ * 1 unit-level PoC on ``escape_markdown_cell`` (inheritance through
+   composition).
+ * 2 integration PoCs on ``render_feed_health_markdown`` (warning
+   path + error path).
+ * 7 parametrised integration PoCs covering a range of plausible
+   attacker payloads (italic via ``*``/``_``, strong via ``**``,
+   code span, mixed payloads, realistic deception fragments).
+ * 2 inventory invariants pinning the canonical defang contract:
+   ``\\`` must be in the defang set (output of ``escape_markdown("\\")``
+   is ``\\\\``) AND the escape must produce an ODD-length backslash
+   run before every metacharacter in ``[]()*_`@<>#~``.
+
+Pre-fix: all 18 PoC tests fail — the attacker's ``\\`` in the
+input combined with the per-char-loop's added ``\\`` pair-collapses
+under CommonMark. Post-fix: all 18 pass.
+
+Verified empirically with the ``commonmark`` Python reference
+parser: pre-fix ``- \\\\*EMPHASIS\\\\*`` renders to
+``<ul><li>\\<em>EMPHASIS</em>\\</li></ul>``; post-fix the
+backslash-escaped form ``- \\\\\\*EMPHASIS\\\\\\*`` renders to
+``<ul><li>\\*EMPHASIS\\*</li></ul>`` (literal text, no
+``<em>``).
+
+**Learning:** The escape-helper contract closes a structurally
+different gap from the prior rounds. The ``#`` / ``~`` rounds
+widened the defang SET (added a new metacharacter to the per-char
+loop). This round closes the **ordering** gap of the helper's
+sequence: the per-char loop's own added backslashes are themselves
+Markdown-escape-relevant bytes, so an attacker who controls the
+input's backslash content can collapse the per-char-loop's escape
+work on every metacharacter at once. The fix is structurally
+analogous to the prior pattern (widen the defang set — adding
+``\\``) but with a STRICT ORDER requirement: the new char must be
+processed FIRST, before the rest of the loop runs.
+
+The prevention rule for future widening of the canonical defang
+set: any new char added to the per-char loop must be evaluated
+for whether the attacker can plant a backslash-prefix bypass on
+it. If so, the order of escape steps must be re-evaluated. The
+inventory invariants
+``test_canonical_escape_set_includes_backslash`` /
+``test_canonical_escape_set_cell_includes_backslash`` pin the
+contract programmatically — a future regression that drops the
+``\\`` escape or moves it after the per-char loop fails the
+walker.
+
 ## 2026-05-14 - GFM Strikethrough Injection via `escape_markdown`: The Canonical Inline Markdown-Escape Helper Did Not Cover `~`, Letting a Hostile Warning/Error Carrying `~~payload~~` Render as `<del>payload</del>` in `docs/feed-health.md` + the Auto-Submitted GitHub Issue Body + `docs/stations_validation_report.md`
 
 **Vulnerability:** :func:`src.utils.text.escape_markdown` escaped

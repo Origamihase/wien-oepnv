@@ -408,6 +408,25 @@ def normalise_markdown_text(text: str, *, max_len: int = 200) -> str:
 def escape_markdown(text: str) -> str:
     """Escape HTML and Markdown characters to prevent injection/XSS."""
     text = html.escape(text)
+    # Security (backslash-precedence-bypass round): escape ``\\``
+    # itself FIRST, before the per-char loop below. CommonMark 2.4
+    # consumes ``\\\\`` left-to-right as a single literal ``\\``, so
+    # without this step an attacker can plant a literal backslash
+    # in front of a Markdown metacharacter (``\\*EMPHASIS\\*``)
+    # and have the per-char loop append a SECOND backslash —
+    # producing ``\\\\*EMPHASIS\\\\*`` which CommonMark parses as
+    # ``\\\\`` -> literal ``\\``, ``*`` -> UNESCAPED emphasis
+    # delimiter -> ``<em>EMPHASIS</em>``. The bypass re-opens every
+    # prior canonical-escape round (#1471/1472/1476/1477) on every
+    # metacharacter at once. Doubling the backslash here means each
+    # per-char-loop ``\\<meta>`` becomes ``\\\\\\<meta>`` in the
+    # output, which CommonMark parses as ``\\\\`` -> ``\\`` then
+    # ``\\<meta>`` -> literal ``<meta>``. Legitimate text containing
+    # ``\\`` (Windows paths ``C:\\Users\\foo``, regex patterns,
+    # error messages from third-party libraries) is visually
+    # preserved on the rendered page — each ``\\\\`` renders as a
+    # single literal ``\\``.
+    text = text.replace("\\", "\\\\")
     # Escape Markdown characters that could create links or formatting.
     # We backslash-escape: [ ] ( ) * _ ` @ < > # ~
     #
