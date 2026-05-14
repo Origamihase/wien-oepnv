@@ -658,10 +658,28 @@ def _find_gtfs_issues(
 # would aggregate as DISTINCT entries downstream because the dedup
 # key is byte-equality. The U+2060..U+2069 range folds in the
 # existing BiDi-isolate band; reserved U+2065 has no defined meaning.
+# 2026-05-14 "Cf-Format Drift": widened in lockstep with the canonical
+# _INVISIBLE_DANGEROUS_RE union to cover the remaining 13 Unicode
+# Cf-class bands (44 code points): U+00AD SOFT HYPHEN (the most
+# impactful omission - rendered zero-width unconditionally in every
+# Markdown / RSS / terminal renderer), U+0600..U+0605 Arabic prefix
+# marks, U+06DD, U+070F, U+0890..U+0891, U+08E2, U+206A..U+206F
+# deprecated BiDi controls (folds the existing U+2060..U+2069 band
+# into U+2060..U+206F), U+FFF9..U+FFFB INTERLINEAR ANNOTATION,
+# U+110BD/U+110CD KAITHI, U+13430..U+13438 EGYPTIAN HIEROGLYPH,
+# U+1BCA0..U+1BCA3 SHORTHAND FORMAT, and U+1D173..U+1D17A MUSICAL
+# SYMBOL formatting. Pre-fix aliases like "Wien Hbf<U+00AD>" and
+# "Wien Hbf" aggregated as DISTINCT entries downstream - the SOFT
+# HYPHEN renders zero-width but the dedup key is byte-equality.
 _UNSAFE_CHARS_RE = re.compile(
     r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
-    r"\u061c\u180e\u200b-\u200f\u2028-\u202e\u2060-\u2069"
-    r"\ufe00-\ufe0f\ufeff"
+    r"\u00ad\u0600-\u0605\u061c\u06dd\u070f\u0890\u0891\u08e2\u180e"
+    r"\u200b-\u200f\u2028-\u202e\u2060-\u206f"
+    r"\ufe00-\ufe0f\ufeff\ufff9-\ufffb"
+    r"\U000110bd\U000110cd"
+    r"\U00013430-\U00013438"
+    r"\U0001bca0-\U0001bca3"
+    r"\U0001d173-\U0001d17a"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 
