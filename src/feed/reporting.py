@@ -46,9 +46,29 @@ log = logging.getLogger("build_feed")
 # collapse step folds multiple spaces back to one. Inventory
 # invariant pinned by
 # ``tests/test_sentinel_reporting_control_chars_re_canonical_drift.py``.
+# 2026-05-14 "Cf-Format Drift": widened in lockstep with the canonical
+# ``src/utils/logging.py:_CONTROL_CHARS_RE`` to cover the remaining
+# 13 Unicode Cf-class bands (44 code points): U+00AD SOFT HYPHEN,
+# U+0600..U+0605 Arabic prefix marks, U+06DD, U+070F, U+0890..U+0891,
+# U+08E2, U+206A..U+206F deprecated BiDi controls (folds the
+# existing U+2060..U+2069 band into U+2060..U+206F),
+# U+FFF9..U+FFFB INTERLINEAR ANNOTATION, U+110BD/U+110CD KAITHI,
+# U+13430..U+13438 EGYPTIAN HIEROGLYPH, U+1BCA0..U+1BCA3 SHORTHAND
+# FORMAT, and U+1D173..U+1D17A MUSICAL SYMBOL formatting. All 44
+# code points are Unicode general category Cf (Format) - same family
+# as ZWSP/ZWNJ/ZWJ already in the floor, with zero advance width
+# in every conforming renderer and no legitimate consumer in this
+# codebase's Vienna-OePNV data path.
 _CONTROL_CHARS_RE = re.compile(
-    r"[\x00-\x1f\x7f-\x9f\u061c\u180e\u200b-\u200f\u2028-\u202e\u2060-\u2069"
-    r"\ufe00-\ufe0f\ufeff\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
+    r"[\x00-\x1f\x7f-\x9f"
+    r"\u00ad\u0600-\u0605\u061c\u06dd\u070f\u0890\u0891\u08e2\u180e"
+    r"\u200b-\u200f\u2028-\u202e\u2060-\u206f"
+    r"\ufe00-\ufe0f\ufeff\ufff9-\ufffb"
+    r"\U000110bd\U000110cd"
+    r"\U00013430-\U00013438"
+    r"\U0001bca0-\U0001bca3"
+    r"\U0001d173-\U0001d17a"
+    r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 
 # Defence-in-depth bounds for error / warning collection. A misbehaving

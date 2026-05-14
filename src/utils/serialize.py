@@ -51,10 +51,30 @@ log = logging.getLogger(__name__)
 # dedup keying. The U+2060..U+2069 range folds in the existing
 # BiDi-isolate band; reserved U+2065 has no defined meaning so the
 # additive strip is safe.
+# 2026-05-14 "Cf-Format Drift": widened in lockstep with the canonical
+# _INVISIBLE_DANGEROUS_RE union to cover the remaining 13 Unicode
+# Cf-class bands (44 code points): U+00AD SOFT HYPHEN, U+0600..U+0605
+# Arabic prefix marks, U+06DD ARABIC END OF AYAH, U+070F SYRIAC
+# ABBREVIATION MARK, U+0890..U+0891 ARABIC POUND/PIASTRE MARK ABOVE,
+# U+08E2 ARABIC DISPUTED END OF AYAH, U+206A..U+206F deprecated BiDi
+# controls, U+FFF9..U+FFFB INTERLINEAR ANNOTATION, U+110BD/U+110CD
+# KAITHI NUMBER SIGN, U+13430..U+13438 EGYPTIAN HIEROGLYPH
+# formatting controls, U+1BCA0..U+1BCA3 SHORTHAND FORMAT, and
+# U+1D173..U+1D17A MUSICAL SYMBOL BEGIN/END BEAM/TIE/SLUR/PHRASE.
+# Pre-fix any of these Cf primitives planted in a cache event /
+# station name / quota state survived this scrubber and landed in
+# the committed JSON sidecar - SOFT HYPHEN especially is the
+# canonical "invisible-by-default" character used in real-world
+# IDN / package-name / dedup-key spoofing attacks since 2018.
 _TROJAN_SOURCE_PRIMITIVES_RE = re.compile(
     r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
-    r"\u061c\u180e\u200b-\u200f\u2028-\u202e\u2060-\u2069"
-    r"\ufe00-\ufe0f\ufeff"
+    r"\u00ad\u0600-\u0605\u061c\u06dd\u070f\u0890\u0891\u08e2\u180e"
+    r"\u200b-\u200f\u2028-\u202e\u2060-\u206f"
+    r"\ufe00-\ufe0f\ufeff\ufff9-\ufffb"
+    r"\U000110bd\U000110cd"
+    r"\U00013430-\U00013438"
+    r"\U0001bca0-\U0001bca3"
+    r"\U0001d173-\U0001d17a"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 

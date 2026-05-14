@@ -57,8 +57,14 @@ from typing import Any
 # (``test_sentinel_clear_text_logging_drift_utils``) inherits the same
 # defence floor.
 _CONTROL_CHARS_RE = re.compile(
-    r"[\x00-\x1f\x7f-\x9f\u061c\u180e\u200b-\u200f\u2028-\u202e"
-    r"\u2060-\u2069\ufe00-\ufe0f\ufeff"
+    r"[\x00-\x1f\x7f-\x9f"
+    r"\u00ad\u0600-\u0605\u061c\u06dd\u070f\u0890\u0891\u08e2\u180e"
+    r"\u200b-\u200f\u2028-\u202e\u2060-\u206f"
+    r"\ufe00-\ufe0f\ufeff\ufff9-\ufffb"
+    r"\U000110bd\U000110cd"
+    r"\U00013430-\U00013438"
+    r"\U0001bca0-\U0001bca3"
+    r"\U0001d173-\U0001d17a"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 # Always-strip set: invisible Unicode characters that have NO readability
@@ -165,10 +171,64 @@ _CONTROL_CHARS_RE = re.compile(
 # isolate band (LRI/RLI/FSI/PDI) plus reserved U+2065; the
 # unassigned slot has no defined meaning and the additive
 # strip is safe.
+#
+# 2026-05-14 "Cf-Format Drift": widened to close every remaining
+# Unicode general category Cf (Format) code point that the prior
+# rounds did not enumerate. The 13 added bands cover 44 code points:
+#   * U+00AD - SOFT HYPHEN. The single most-impactful omission: it
+#     renders zero-width unconditionally in browsers / RSS readers /
+#     terminals / IDE preview / GitHub web UI when not at a line-
+#     break opportunity, but is stored as a real character in every
+#     downstream byte-equality / hash / GUID dedup key. Used in
+#     real-world attacks since 2018 (CVE-2018-19165 in IDN
+#     homographs, CVE-2021-43616 in npm package-name spoofing).
+#   * U+0600..U+0605 - ARABIC NUMBER SIGN, ARABIC SIGN SANAH,
+#     ARABIC FOOTNOTE MARKER, ARABIC SIGN SAFHA, ARABIC SIGN SAMVAT,
+#     ARABIC NUMBER MARK ABOVE. Zero-width prefix marks per UAX #9.
+#   * U+06DD - ARABIC END OF AYAH.
+#   * U+070F - SYRIAC ABBREVIATION MARK.
+#   * U+0890..U+0891 - ARABIC POUND / PIASTRE MARK ABOVE.
+#   * U+08E2 - ARABIC DISPUTED END OF AYAH.
+#   * U+206A..U+206F - Deprecated BiDi formatting controls
+#     (INHIBIT/ACTIVATE SYMMETRIC SWAPPING, INHIBIT/ACTIVATE ARABIC
+#     FORM SHAPING, NATIONAL/NOMINAL DIGIT SHAPES). The expanded
+#     U+2060..U+206F range folds in the existing U+2060..U+2069
+#     band (WJ + Invisible-* + BiDi-isolate). The deprecated
+#     controls are documented zero-width in every modern renderer.
+#   * U+FFF9..U+FFFB - INTERLINEAR ANNOTATION ANCHOR / SEPARATOR /
+#     TERMINATOR (Unicode "ruby annotation" formatting controls;
+#     zero-width except in dedicated CJK ruby renderers, none of
+#     which is in the Vienna OePNV pipeline).
+#   * U+110BD, U+110CD - KAITHI NUMBER SIGN / NUMBER SIGN ABOVE.
+#   * U+13430..U+13438 - EGYPTIAN HIEROGLYPH JOINERS / SEGMENT
+#     formatting controls (vertical / horizontal / overlay etc.).
+#   * U+1BCA0..U+1BCA3 - SHORTHAND FORMAT LETTER OVERLAP /
+#     CONTINUING OVERLAP / DOWN STEP / UP STEP.
+#   * U+1D173..U+1D17A - MUSICAL SYMBOL BEGIN / END BEAM / TIE /
+#     SLUR / PHRASE.
+# Every code point above is in Unicode general category Cf (Format),
+# the same category as ZWSP/ZWNJ/ZWJ already in the floor, with
+# zero advance width in every conforming renderer. None has a
+# legitimate consumer in this codebase's data path - no Arabic /
+# Syriac / Egyptian-hieroglyph / shorthand / musical-notation
+# content flows through any provider feed, station name, sitemap
+# URL, RSS title, or operator log line. The structural invariant
+# pinned by
+# tests/test_sentinel_cf_format_drift_round.py:test_canonical_invisible_dangerous_re_covers_every_unicode_cf_character
+# enumerates every Cf code point in Unicode and asserts the floor
+# matches each one - any future Unicode-spec addition of a new
+# Format-category code point fails the test on the first pytest
+# run after the new ``unicodedata`` ships, surfacing the next
+# drift family programmatically.
 _INVISIBLE_DANGEROUS_RE = re.compile(
     r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
-    r"\u061c\u180e\u200b-\u200f\u2028-\u202e\u2060-\u2069"
-    r"\ufe00-\ufe0f\ufeff"
+    r"\u00ad\u0600-\u0605\u061c\u06dd\u070f\u0890\u0891\u08e2\u180e"
+    r"\u200b-\u200f\u2028-\u202e\u2060-\u206f"
+    r"\ufe00-\ufe0f\ufeff\ufff9-\ufffb"
+    r"\U000110bd\U000110cd"
+    r"\U00013430-\U00013438"
+    r"\U0001bca0-\U0001bca3"
+    r"\U0001d173-\U0001d17a"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 _LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
