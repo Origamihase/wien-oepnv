@@ -249,3 +249,56 @@ def test_load_request_count_resets_on_legacy_dict(
     date, count = vor.load_request_count()
     assert date is None
     assert count == 0
+
+
+def test_load_request_count_cache_hit_includes_unsaved_delta(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    # Regression: the cache-hit fast path used to return
+    # ``_QUOTA_CACHE["count"]`` and silently drop the in-memory
+    # ``unsaved_delta``. Mid-batch (default flush size 10) that
+    # understated the true daily total by up to nine requests, breaking
+    # any caller that gates on ``load_request_count() >= MAX``.
+    target_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
+    monkeypatch.setattr(vor, "QUOTA_FLUSH_BATCH_SIZE", 10)
+    monkeypatch.setattr(vor, "MAX_REQUESTS_PER_DAY", 100)
+
+    today = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m-%d")
+    monkeypatch.setitem(vor._QUOTA_CACHE, "date", today)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 1)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "unsaved_delta", 7)
+
+    date, count = vor.load_request_count()
+    assert date == today
+    assert count == 8  # 1 flushed + 7 unflushed
+
+
+def test_charge_pattern_blocks_at_max_without_overshoot(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    # Regression: simulate the ``load -> compare -> save`` charge
+    # pattern from ``scripts/update_stammstrecke_status._charge_one_request``.
+    # Before the fix, mid-batch buffering let ``load_request_count`` lag
+    # the in-memory total by up to ``QUOTA_FLUSH_BATCH_SIZE - 1`` and
+    # the gate could miss the cap. After the fix, the gate must observe
+    # the true count and stop exactly at ``MAX_REQUESTS_PER_DAY``.
+    target_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
+    monkeypatch.setattr(vor, "QUOTA_FLUSH_BATCH_SIZE", 10)
+    monkeypatch.setattr(vor, "MAX_REQUESTS_PER_DAY", 100)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "unsaved_delta", 0)
+
+    issued = 0
+    for _ in range(vor.MAX_REQUESTS_PER_DAY + 20):
+        _, observed = vor.load_request_count()
+        if observed >= vor.MAX_REQUESTS_PER_DAY:
+            break
+        vor.save_request_count(None)
+        issued += 1
+
+    assert issued == vor.MAX_REQUESTS_PER_DAY

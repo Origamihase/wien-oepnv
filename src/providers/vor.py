@@ -91,9 +91,9 @@ VOR_RETRY_OPTIONS: dict[str, Any] = {
     "raise_on_status": False,
 }
 
-VOR_ACCESS_ID = ""  # nosec B105
+VOR_ACCESS_ID = ""
 _VOR_ACCESS_TOKEN_RAW = ""  # nosec B105
-_VOR_AUTHORIZATION_HEADER = ""  # nosec B105
+_VOR_AUTHORIZATION_HEADER = ""
 
 # Global lock for thread-safe quota management within the process
 _QUOTA_LOCK = threading.RLock()
@@ -703,9 +703,19 @@ def load_request_count(bypass_cache: bool = False) -> tuple[str | None, int]:
     today_local = datetime.now(vienna_tz).strftime("%Y-%m-%d")
 
     if not bypass_cache and _QUOTA_CACHE["date"] == today_local:
-        # If we have a cached value for today, it might be stale but it's a lower bound.
-        # However, for accurate reading we fall through to file.
-        return (today_local, _QUOTA_CACHE["count"])
+        # Include the in-memory ``unsaved_delta`` that has not yet been
+        # flushed to disk. The disk-read branch below (after the file
+        # read) returns ``int_count + unsaved_delta``; this fast-path
+        # must do the same. Returning only ``_QUOTA_CACHE["count"]``
+        # understates the true daily total by up to
+        # ``QUOTA_FLUSH_BATCH_SIZE - 1`` whenever the in-memory buffer
+        # is mid-batch, and any caller gating on
+        # ``load_request_count() >= MAX_REQUESTS_PER_DAY`` would then
+        # mis-conclude there is still budget left while
+        # ``save_request_count`` has already silently refused further
+        # increments at the cap — a defense-in-depth gap for the
+        # contractually-strict VAO Start 100/day quota.
+        return (today_local, _QUOTA_CACHE["count"] + _QUOTA_CACHE.get("unsaved_delta", 0))
 
     # Security: ``read_capped_json`` enforces a TOCTOU-safe 1 MiB cap and
     # returns ``None`` for missing / oversized / depth-bombed / corrupt
