@@ -432,12 +432,27 @@ def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) 
             # Reihenfolge im Feed ändern (Items werden im Builder ohnehin neu sortiert).
             sorted_items = sorted(items, key=_stable_sort_key)
 
+            # Security (Coordinate finite/range drift, companion-writer
+            # defence-in-depth): ``allow_nan=False`` mirrors the canonical
+            # writer-side pin established in Round 1485 at
+            # ``src/places/merge.py:write_stations``. Cache events from
+            # the Baustellen feed (``scripts/update_baustellen_cache.py``)
+            # carry ``location.coordinates = {"lat": float, "lon": float}``;
+            # a compromised ``data.wien.gv.at`` upstream replying with
+            # GeoJSON ``coordinates: [NaN, Infinity]`` flows through the
+            # parser-level shape check (``float()`` accepts the
+            # non-standard literals) and lands as non-standard ``NaN`` /
+            # ``Infinity`` literals (invalid per RFC 8259) in the
+            # committed ``cache/baustellen/events.json``. The pin
+            # surfaces such a bypass as a loud ``ValueError`` rather
+            # than a silent on-disk corruption.
             json.dump(
                 sorted_items,
                 fh,
                 ensure_ascii=False,
                 indent=indent,
                 separators=separators,
+                allow_nan=False,
             )
     except Exception:
         log.exception(

@@ -2033,12 +2033,26 @@ def write_json(stations_list: list[dict[str, object]], output_path: Path) -> Non
     # ``update-stations.yml`` cron commits ``data/stations.json`` to
     # ``main``. ``ensure_ascii=False`` preserves compact German diffs.
     # Mirrors ``src/places/merge.py:write_stations`` (Round 13).
+    #
+    # Security (Coordinate finite/range drift, companion-writer
+    # defence-in-depth): ``allow_nan=False`` mirrors the canonical
+    # writer-side pin established in Round 1485 at
+    # ``src/places/merge.py:write_stations``. The local
+    # ``_coerce_float_value`` parser (line 455) accepts
+    # ``float('nan')`` / ``float('inf')`` from a compromised OGD
+    # Wien / GTFS / VOR upstream because the
+    # ``isinstance(value, int | float)`` shape check on JSON-decoded
+    # numeric values accepts the non-finite literals that
+    # ``json.loads`` parses by default. Without this writer-side
+    # floor a poisoned upstream silently lands non-standard ``NaN``
+    # / ``Infinity`` literals (invalid per RFC 8259) in the public
+    # ``data/stations.json`` artefact.
     scrubbed = scrub_trojan_source_primitives(stations_list)
     serialisable = scrubbed if isinstance(scrubbed, list) else stations_list
     payload = {"stations": serialisable}
     # Use atomic_write to prevent partial writes and reduce race conditions.
     with atomic_write(output_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump(payload, handle, ensure_ascii=False, indent=2)
+        json.dump(payload, handle, ensure_ascii=False, indent=2, allow_nan=False)
         handle.write("\n")
     logger.info("Wrote [path-sha256=%s]", _path_fingerprint(output_path))
 

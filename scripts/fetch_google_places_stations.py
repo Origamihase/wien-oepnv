@@ -286,6 +286,15 @@ def _dump_changes(
     # provider-fetched Google Places ``new`` / ``updated`` entries BEFORE
     # ``json.dumps``. Mirrors ``src/places/merge.py:write_stations``
     # (Round 13) so the canonical attack-byte union stays single-sourced.
+    #
+    # Security (Coordinate finite/range drift, companion-writer
+    # defence-in-depth): ``allow_nan=False`` mirrors the canonical
+    # writer-side pin established in Round 1485 at
+    # ``src/places/merge.py:write_stations``. The diff dump is
+    # reviewed by operators and shared via the workflow logs;
+    # without the pin a non-standard ``NaN`` / ``Infinity`` literal
+    # silently lands in the diff JSON if a future bypass of the
+    # parser-level finite floor at ``_parse_place`` leaks through.
     scrubbed = scrub_trojan_source_primitives(
         {"new": list(new_entries), "updated": list(updated_entries)}
     )
@@ -294,6 +303,7 @@ def _dump_changes(
         ensure_ascii=False,
         indent=2,
         sort_keys=True,
+        allow_nan=False,
     )
     with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         handle.write(payload + "\n")
@@ -312,9 +322,25 @@ def _write_if_changed(path: Path, stations: Sequence[Mapping[str, object]]) -> N
     # otherwise leak into the operator-facing diff and the GitHub web
     # UI rendering. ``ensure_ascii=False`` is preserved below so
     # legitimate German station names stay compact in the diff.
+    #
+    # Security (Coordinate finite/range drift, companion-writer
+    # defence-in-depth): ``allow_nan=False`` mirrors the canonical
+    # writer-side pin established in Round 1485 at
+    # ``src/places/merge.py:write_stations``. This is the
+    # Google-Places-only escape-hatch writer that bypasses the
+    # canonical ``write_stations`` (which already pins the contract)
+    # by emitting ``data/stations.json`` directly. Without this pin
+    # a poisoned Google Places coordinate (``NaN`` / ``Infinity``)
+    # silently lands in the committed artefact.
     scrubbed_stations = scrub_trojan_source_primitives(list(stations))
     serialisable = scrubbed_stations if isinstance(scrubbed_stations, list) else list(stations)
-    payload = json.dumps({"stations": serialisable}, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    payload = json.dumps(
+        {"stations": serialisable},
+        ensure_ascii=False,
+        indent=2,
+        sort_keys=True,
+        allow_nan=False,
+    ) + "\n"
     if path.exists():
         # Security: ``read_capped_text`` enforces a TOCTOU-safe size cap
         # so a planted huge ``stations.json`` cannot exhaust memory and

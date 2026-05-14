@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import math
 import os
 import sys
 from dataclasses import dataclass
@@ -510,7 +511,36 @@ def _build_location(properties: dict[str, Any], geometry: dict[str, Any]) -> dic
             except (TypeError, ValueError):
                 pass
             else:
-                location["coordinates"] = {"lat": lat, "lon": lon}
+                # Security (Coordinate finite/range drift, parser-level
+                # floor): mirror the canonical scrub pinned at
+                # ``src/places/hafas_client.py:_extract_first_location``,
+                # ``src/places/client.py:_parse_place`` and
+                # ``src/places/osm_client.py:filter_complete_places``
+                # (Round 1485 / Round 1486). A compromised
+                # ``data.wien.gv.at`` upstream (or MITM / DNS rebind)
+                # planting GeoJSON ``coordinates: [NaN, Infinity]``
+                # otherwise lands the poisoned float in
+                # ``location["coordinates"]`` — which propagates verbatim
+                # through ``write_cache`` into ``cache/baustellen/
+                # events.json`` (committed to ``main`` by
+                # ``update-cycle.yml``).
+                # ``math.isfinite`` is the strict superset of
+                # ``not math.isnan`` — it rejects ``NaN`` AND ``±Inf``
+                # in one check. The WGS84-range guard (-90 <= lat <= 90,
+                # -180 <= lon <= 180) rejects pathological integer-
+                # overflow shapes. Pairs failing either guard are
+                # silently dropped (the rest of the event's address /
+                # metadata is preserved); the writer-side
+                # ``allow_nan=False`` pin in
+                # ``src/utils/cache.py:write_cache`` is the
+                # defence-in-depth second layer.
+                if (
+                    math.isfinite(lat)
+                    and math.isfinite(lon)
+                    and -90.0 <= lat <= 90.0
+                    and -180.0 <= lon <= 180.0
+                ):
+                    location["coordinates"] = {"lat": lat, "lon": lon}
     return location
 
 
