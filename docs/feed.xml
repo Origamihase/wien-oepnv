@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 14 May 2026 13:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2026 13:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[62: Fahrtbehinderung Schadhafter Zug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">11dae11dafaf0878f07d1e1c010007790105e67c155ad06ba2cd6c87388c9e93</guid>
-      <pubDate>Thu, 14 May 2026 12:25:32 +0200</pubDate>
-      <ext:first_seen>Thu, 14 May 2026 12:30:42 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 14 May 2026 12:25:58 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 14 May 2026 13:25:00 +0200</ext:ends_at>
-      <description>[Am 14.05.2026]</description>
-      <content:encoded><![CDATA[[Am 14.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[71: Veranstaltung Kein Betrieb]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -113,6 +102,17 @@
       <pubDate>Tue, 12 May 2026 00:00:20 +0200</pubDate>
       <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
       <ext:starts_at>Tue, 12 May 2026 00:00:20 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 14 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[12.05.2026 – 14.05.2026]</description>
+      <content:encoded><![CDATA[[12.05.2026 – 14.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Tue, 12 May 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 00:00:18 +0200</ext:starts_at>
       <ext:ends_at>Thu, 14 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[12.05.2026 – 14.05.2026]</description>
       <content:encoded><![CDATA[[12.05.2026 – 14.05.2026]]]></content:encoded>
