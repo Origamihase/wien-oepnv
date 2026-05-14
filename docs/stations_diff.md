@@ -1,6 +1,6 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-14T00:35:29+00:00_
+_Generated: 2026-05-14T21:48:21+00:00_
 
 **Stations: 1952 → 1952 (Δ +0)**
 
@@ -16,6 +16,7 @@ _None._
 
 _None._
 
-## Coordinates shifted (≥ 100 m) (0)
+## Coordinates shifted (≥ 100 m) (2)
 
-_None._
+- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
+- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)
