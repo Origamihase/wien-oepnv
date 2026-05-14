@@ -76,8 +76,10 @@ key collision + LLM-prompt-injection smuggling. No JS execution
 
 from __future__ import annotations
 
+import inspect
 import json
 import re
+from typing import Any
 
 import pytest
 
@@ -360,13 +362,25 @@ def test_summarize_duplicates_strips_canonical_floor_in_titles(
 # Inventory invariants — pin the canonical-floor contract
 # ---------------------------------------------------------------------------
 
+def _get_reporting_module() -> Any:
+    """Return the ``src.feed.reporting`` module object via
+    :func:`inspect.getmodule` — avoids the CodeQL "imported with both
+    'import' and 'import from'" warning that a bare
+    ``import src.feed.reporting as reporting_mod`` would trip given the
+    ``from src.feed.reporting import ...`` block at the top of this
+    module.
+    """
+    module = inspect.getmodule(render_feed_health_markdown)
+    assert module is not None
+    return module
+
+
 def test_sanitize_code_span_helper_removed_or_canonical() -> None:
     """The drift helper ``_sanitize_code_span`` MUST be removed (or
     upgraded to mirror the canonical floor). A future regression that
     re-introduces a narrow helper fails this invariant.
     """
-    import src.feed.reporting as reporting_mod
-
+    reporting_mod = _get_reporting_module()
     helper = getattr(reporting_mod, "_sanitize_code_span", None)
     if helper is None:
         return  # Removed — best outcome.
@@ -388,11 +402,7 @@ def test_render_feed_health_markdown_uses_canonical_codespan_helper() -> None:
     through a sanitiser that mirrors the canonical floor — not the
     narrow ``_sanitize_code_span``.
     """
-    import inspect
-
-    import src.feed.reporting as reporting_mod
-
-    source = inspect.getsource(reporting_mod.render_feed_health_markdown)
+    source = inspect.getsource(render_feed_health_markdown)
     # The body of the duplicate-summary section MUST reference the
     # canonical helper, not the legacy narrow one.
     assert "safe_markdown_codespan" in source, (
