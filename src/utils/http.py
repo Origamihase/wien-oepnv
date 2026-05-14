@@ -150,9 +150,21 @@ DNS_TIMEOUT = 5.0
 # shapes, and a prompt-injection smuggling primitive against any
 # LLM-driven downstream service) would otherwise pass the validator
 # unmodified and reach <link> of docs/feed.xml.
+# 2026-05-14 "Zero-Width Format Drift": widened in lockstep with the
+# canonical _INVISIBLE_DANGEROUS_RE union to cover U+180E (MONGOLIAN
+# VOWEL SEPARATOR) and U+2060..U+2064 (WORD JOINER, FUNCTION
+# APPLICATION, INVISIBLE TIMES, INVISIBLE SEPARATOR, INVISIBLE PLUS).
+# Pre-fix a planted feed-item ``link`` carrying any of these zero-
+# width Format primitives in a path segment would pass the validator
+# unmodified - the bytes look identical to the legitimate URL but
+# carry distinct cache-key / GUID-collision shapes (and a prompt-
+# injection smuggling primitive against any LLM-driven downstream
+# service that ingests the published RSS feed). The U+2060..U+2069
+# range folds in the existing BiDi-isolate band; reserved U+2065 has
+# no defined meaning so the additive strip is safe.
 _UNSAFE_URL_CHARS = re.compile(
     r"[\s\x00-\x1f\x7f-\x9f<>\"\\^`{|}"
-    r"\u061c\u200b-\u200f\u202a-\u202e\u2066-\u2069"
+    r"\u061c\u180e\u200b-\u200f\u202a-\u202e\u2060-\u2069"
     r"\ufe00-\ufe0f\ufeff"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )

@@ -375,9 +375,21 @@ def html_to_text(s: str, *, collapse_newlines: bool = False) -> str:
 # reaches the rendered Markdown verbatim - a Trojan-Source /
 # steganography / prompt-injection smuggling primitive on every
 # operator-facing report.
+# 2026-05-14 "Zero-Width Format Drift": widened in lockstep with the
+# canonical _INVISIBLE_DANGEROUS_RE union to cover U+180E (MONGOLIAN
+# VOWEL SEPARATOR) and U+2060..U+2064 (WORD JOINER, FUNCTION
+# APPLICATION, INVISIBLE TIMES, INVISIBLE SEPARATOR, INVISIBLE PLUS).
+# Each is a Cf (Format) zero-width Unicode primitive in the same
+# family as ZWSP/ZWNJ/ZWJ; the U+2060..U+2064 band is the canonical
+# "invisible Unicode steganography" alphabet (combinations encode
+# arbitrary bytes that survive copy-paste from a Markdown sink into
+# an LLM context window). The expanded U+2060..U+2069 range folds
+# in the existing BiDi-isolate band (U+2066..U+2069) plus reserved
+# U+2065; the unassigned slot has no defined meaning so the additive
+# strip is safe.
 _MARKDOWN_NORMALISE_UNSAFE_RE = re.compile(
     r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
-    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\u061c\u180e\u200b-\u200f\u2028-\u202e\u2060-\u2069"
     r"\ufe00-\ufe0f\ufeff\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 _MARKDOWN_WHITESPACE_RE = re.compile(r"\s+")

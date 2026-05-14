@@ -63,9 +63,21 @@ EXCLUDED_DIRS = {"_includes"}
 # against every search engine and LLM-driven downstream service
 # that consumes the sitemap. Inventory invariant pinned by
 # ``tests/test_sentinel_sitemap_tag_chars_variation_selectors_drift.py``.
+# 2026-05-14 "Zero-Width Format Drift": widened in lockstep with the
+# canonical _INVISIBLE_DANGEROUS_RE union to cover U+180E (MONGOLIAN
+# VOWEL SEPARATOR) and U+2060..U+2064 (WORD JOINER, FUNCTION
+# APPLICATION, INVISIBLE TIMES, INVISIBLE SEPARATOR, INVISIBLE PLUS).
+# Pre-fix a planted feed/sitemap URL carrying any zero-width Format
+# primitive in a path segment would pass the validator unmodified -
+# the bytes are visually identical to a legitimate URL but distinct
+# for cache-key / GUID-collision shapes (and a prompt-injection
+# smuggling primitive against every search engine and LLM-driven
+# downstream service that consumes the sitemap). The U+2060..U+2069
+# range folds in the existing BiDi-isolate band; reserved U+2065
+# has no defined meaning so the additive strip is safe.
 _UNSAFE_URL_CHARS = re.compile(
     r"[\s\x00-\x1f\x7f-\x9f<>\"\\^`{|}"
-    r"\u061c\u200b-\u200f\u202a-\u202e\u2066-\u2069"
+    r"\u061c\u180e\u200b-\u200f\u202a-\u202e\u2060-\u2069"
     r"\ufe00-\ufe0f\ufeff"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )

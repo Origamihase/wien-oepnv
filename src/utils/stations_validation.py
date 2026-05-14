@@ -647,9 +647,20 @@ def _find_gtfs_issues(
 # name / aliases / bst_code / vor_id field by a compromised upstream
 # slip past the validator and reach the published feed item that
 # keys off the station name.
+# 2026-05-14 "Zero-Width Format Drift": widened in lockstep with the
+# canonical _INVISIBLE_DANGEROUS_RE union to cover U+180E (MONGOLIAN
+# VOWEL SEPARATOR) and U+2060..U+2064 (WORD JOINER, FUNCTION
+# APPLICATION, INVISIBLE TIMES, INVISIBLE SEPARATOR, INVISIBLE PLUS).
+# Pre-fix a planted stations.json carrying any zero-width Format
+# primitive in a name / aliases / bst_code / vor_id field would slip
+# past the validator and reach the published feed item that keys off
+# the station name. Aliases like "Wien Hbf<U+2060>" and "Wien Hbf"
+# would aggregate as DISTINCT entries downstream because the dedup
+# key is byte-equality. The U+2060..U+2069 range folds in the
+# existing BiDi-isolate band; reserved U+2065 has no defined meaning.
 _UNSAFE_CHARS_RE = re.compile(
     r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f"
-    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069"
+    r"\u061c\u180e\u200b-\u200f\u2028-\u202e\u2060-\u2069"
     r"\ufe00-\ufe0f\ufeff"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
