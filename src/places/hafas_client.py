@@ -36,6 +36,7 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import math
 import threading
 from pathlib import Path
 from typing import Any, Final, TypedDict, cast
@@ -306,6 +307,23 @@ def _build_request_url(mac: str) -> str:
     return f"{_HAFAS_ENDPOINT}?mac={mac}"
 
 
+def _is_valid_wgs84_coord(lat: float, lon: float) -> bool:
+    """Return True only for finite WGS84-range latitude/longitude pairs.
+
+    Rejects ``NaN`` / ``+Inf`` / ``-Inf`` (which ``json.loads`` accepts
+    in Python's default lenient mode from non-standard ``NaN`` /
+    ``Infinity`` literals) and any value outside the geodetic valid
+    ranges ``lat`` ∈ ``[-90, 90]``, ``lon`` ∈ ``[-180, 180]``. A
+    compromised HAFAS upstream (or MITM) that smuggles non-finite or
+    nonsensical coordinates is rejected at the parser boundary before
+    the value can land in ``data/stations.json`` — invalid per RFC
+    8259 and broken in every strict downstream consumer.
+    """
+    if not (math.isfinite(lat) and math.isfinite(lon)):
+        return False
+    return -90.0 <= lat <= 90.0 and -180.0 <= lon <= 180.0
+
+
 def _extract_first_location(payload: object) -> HafasLocation | None:
     """Walk the HAFAS response and return the first usable location.
 
@@ -370,6 +388,8 @@ def _extract_first_location(payload: object) -> HafasLocation | None:
 
     lon = float(x_raw) / _HAFAS_COORD_SCALE
     lat = float(y_raw) / _HAFAS_COORD_SCALE
+    if not _is_valid_wgs84_coord(lat, lon):
+        return None
     return HafasLocation(name=name, extId=ext_id, lon=lon, lat=lat)
 
 

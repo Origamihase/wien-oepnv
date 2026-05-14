@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import math
 import os
 import secrets
 import time
@@ -325,6 +326,27 @@ class GooglePlacesClient:
         if not isinstance(latitude, float | int) or not isinstance(longitude, float | int):
             LOGGER.warning("Skipping place with invalid coordinates: %s", self._sanitize_arg(place_id))
             return None
+        lat_value = float(latitude)
+        lon_value = float(longitude)
+        # Reject ``NaN`` / ``+Inf`` / ``-Inf`` and any value outside the
+        # WGS84 valid range. ``json.loads`` accepts ``NaN`` / ``Infinity``
+        # JSON literals in Python's default lenient mode, so a compromised
+        # Google Places upstream (or MITM) could otherwise smuggle
+        # non-finite or nonsensical coordinates into ``data/stations.json``
+        # — invalid per RFC 8259 and broken in every strict downstream
+        # consumer. Silent drop (mirroring
+        # :func:`src.places.osm_client.filter_complete_places`); the
+        # operator-visible diagnostic stays on the upstream record-count
+        # delta rather than the per-place log line so the place_id —
+        # CodeQL ``py/clear-text-logging-sensitive-data`` classifies the
+        # Places API identifier as "private" — never reaches the log
+        # sink. The pre-fix sibling line 327 already logs invalid
+        # coordinates via the canonical sanitiser for callers that need
+        # a less-specific debug trail.
+        if not (math.isfinite(lat_value) and math.isfinite(lon_value)):
+            return None
+        if not (-90.0 <= lat_value <= 90.0 and -180.0 <= lon_value <= 180.0):
+            return None
         types_raw = raw.get("types")
         types: list[str]
         if isinstance(types_raw, list):
@@ -337,8 +359,8 @@ class GooglePlacesClient:
         return Place(
             place_id=place_id,
             name=name,
-            latitude=float(latitude),
-            longitude=float(longitude),
+            latitude=lat_value,
+            longitude=lon_value,
             types=types,
             formatted_address=formatted_address,
         )
