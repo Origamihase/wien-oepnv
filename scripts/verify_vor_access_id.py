@@ -24,6 +24,7 @@ if __package__ in (None, ""):
 from src.feed.logging_safe import setup_script_logging
 from src.providers import vor as vor_module
 from src.utils.env import load_default_env_files
+from src.utils.files import loads_finite
 from src.utils.http import fetch_content_safe, session_with_retries
 
 LOGGER = logging.getLogger("vor.verify")
@@ -110,7 +111,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 1
 
     try:
-        payload = json.loads(content.decode("utf-8"))
+        # Security: ``loads_finite`` pins parse_constant + parse_float
+        # hooks (Round 1503 sibling) that reject NaN / Infinity /
+        # -Infinity literals AND scientific-notation overflow. A
+        # compromised VOR upstream / MITM / DNS-hijack serving crafted
+        # JSON would otherwise propagate ``float('nan')`` past the
+        # downstream ``_looks_like_stop`` shape check.
+        payload = loads_finite(content.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError, RecursionError) as exc:
         # Resilience: include ``RecursionError`` so a malicious or pathological
         # JSON document of nested arrays/objects (served by a compromised

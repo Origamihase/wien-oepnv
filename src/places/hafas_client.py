@@ -44,7 +44,11 @@ from typing import Any, Final, TypedDict, cast
 import requests
 
 from ..utils.circuit_breaker import CircuitBreaker, CircuitBreakerOpen
-from ..utils.files import read_capped_json
+from ..utils.files import (
+    _reject_non_finite_constant,
+    _reject_non_finite_float,
+    read_capped_json,
+)
 from ..utils.http import request_safe, session_with_retries
 from ..utils.logging import sanitize_log_arg
 
@@ -435,7 +439,18 @@ def _fetch_hafas_location(station_name: str) -> HafasLocation | None:
         session.close()
 
     try:
-        decoded = response.json()
+        # Security: pin parse_constant + parse_float hooks (Round 1503
+        # sibling). Without the hooks a compromised HAFAS upstream / MITM
+        # serving crafted JSON propagates ``float('nan')`` / ``float
+        # ('inf')`` into station coordinate parsing and round-trip-crashes
+        # the writer pin (Round 1485) — the canonical-floor coordinate
+        # validator at ``_extract_first_location`` (Round 2026-05-14)
+        # rejects NaN, but the rejection happens AFTER the planted float
+        # already poisoned in-memory comparison sites.
+        decoded = response.json(
+            parse_constant=_reject_non_finite_constant,
+            parse_float=_reject_non_finite_float,
+        )
     except (ValueError, RecursionError) as exc:
         # ``RecursionError`` defends against a JSON depth-bomb planted
         # in a compromised / MITM'd HAFAS response. Treat both shapes

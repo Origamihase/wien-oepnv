@@ -15,6 +15,7 @@ from collections.abc import Iterable, Iterator, Sequence
 import requests
 
 from ..utils.env import read_secret
+from ..utils.files import _reject_non_finite_constant, _reject_non_finite_float
 from ..utils.http import read_response_safe, session_with_retries, verify_response_ip
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
 
@@ -454,7 +455,19 @@ class GooglePlacesClient:
                     if response.status_code == 200:
                         self._consecutive_5xx_errors = 0
                         try:
-                            payload = response.json()
+                            # Security: pin parse_constant + parse_float hooks
+                            # that reject NaN / Infinity / -Infinity literals
+                            # AND scientific-notation overflow (``1e1000`` →
+                            # +inf). Closes the network-tainted sibling of
+                            # PR #1503: a compromised Google Places upstream
+                            # / MITM / DNS-hijack serving crafted JSON would
+                            # otherwise propagate ``float('nan')`` /
+                            # ``float('inf')`` into station coordinates and
+                            # round-trip-crash the writer pin (Round 1485).
+                            payload = response.json(
+                                parse_constant=_reject_non_finite_constant,
+                                parse_float=_reject_non_finite_float,
+                            )
                         except (
                             ValueError,
                             requests.exceptions.JSONDecodeError,
@@ -571,7 +584,14 @@ class GooglePlacesClient:
         detail = _sanitize_error_detail(response.text, secrets=[self._config.api_key])
         default = f"Request failed with status {status_code}: {detail}"
         try:
-            payload = response.json()
+            # Security: same parse_constant + parse_float hook pin as the
+            # 200-status branch — a compromised error-status response can
+            # also carry NaN / Infinity literals that round-trip-crash the
+            # writer pin if propagated into the in-memory error envelope.
+            payload = response.json(
+                parse_constant=_reject_non_finite_constant,
+                parse_float=_reject_non_finite_float,
+            )
         except (ValueError, requests.exceptions.JSONDecodeError, RecursionError):
             # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
             # — see the analogous catch in the 200-status branch above. The

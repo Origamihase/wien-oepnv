@@ -47,6 +47,7 @@ from src.places.osm_client import (
     DEFAULT_OVERPASS_ENDPOINTS,
     get_overpass_endpoint,
 )
+from src.utils.files import _reject_non_finite_constant, _reject_non_finite_float
 from src.utils.http import request_safe, session_with_retries
 from src.utils.logging import sanitize_log_arg
 
@@ -163,7 +164,15 @@ def _evaluate_response(endpoint: str, response: requests.Response) -> int:
         return 1
 
     try:
-        payload = response.json()
+        # Security: pin parse_constant + parse_float hooks (Round 1503
+        # sibling) so a compromised Overpass mirror serving NaN /
+        # Infinity / 1e1000 literals cannot mark the probe successful
+        # via silent ``float('nan')`` propagation that bypasses the
+        # downstream ``elements`` key / list check.
+        payload = response.json(
+            parse_constant=_reject_non_finite_constant,
+            parse_float=_reject_non_finite_float,
+        )
     except (ValueError, RecursionError):
         # ``RecursionError`` defends against a JSON depth-bomb planted in
         # a degraded Overpass response (see ``tests/test_sentinel_json_audit_walker.py``)

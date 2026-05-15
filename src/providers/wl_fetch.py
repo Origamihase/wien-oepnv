@@ -17,6 +17,7 @@ from urllib.parse import urlparse
 import requests
 from dateutil import parser as dtparser
 
+from ..utils.files import loads_finite
 from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
 from ..utils.ids import make_guid
 from ..utils.logging import sanitize_log_arg
@@ -412,7 +413,16 @@ def _get_json(
                     timeout=timeout,
                     allowed_content_types=("application/json",),
                 )
-                data = json.loads(content)
+                # Security: ``loads_finite`` pins parse_constant +
+                # parse_float hooks that reject NaN / Infinity / -Infinity
+                # literals AND scientific-notation overflow (``1e1000`` →
+                # +inf). Closes the network-tainted sibling of the
+                # writer-pin family (Round 1485 / 1487 / 1488) and the
+                # on-disk reader-pin family (Round 1503): a compromised
+                # Wiener Linien upstream / MITM / DNS-hijack serving
+                # crafted JSON would otherwise propagate ``float('nan')``
+                # / ``float('inf')`` into the live-events dedup pipeline.
+                data = loads_finite(content)
                 if not isinstance(data, dict):
                     log.warning(
                         "Unerwartetes Payload-Format von %s: %s erwartet, aber %s erhalten (Zero Trust)",

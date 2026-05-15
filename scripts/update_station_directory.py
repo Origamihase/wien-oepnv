@@ -44,6 +44,7 @@ if str(_ROOT) not in sys.path:
 try:  # pragma: no cover - convenience for module execution
     from src.utils.files import (
         atomic_write,
+        loads_finite,
         read_capped_bytes,
         read_capped_json,
         read_capped_text,
@@ -59,6 +60,7 @@ try:  # pragma: no cover - convenience for module execution
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from utils.files import (  # type: ignore[no-redef]
         atomic_write,
+        loads_finite,
         read_capped_bytes,
         read_capped_json,
         read_capped_text,
@@ -872,9 +874,17 @@ def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
     # this catch the unhandled error crashes the entire
     # ``update_station_directory.py`` cron pipeline.
     try:
-        data = json.loads(raw)
+        # Security: ``loads_finite`` pins parse_constant + parse_float
+        # hooks (Round 1503 sibling) that reject NaN / Infinity / 1e1000
+        # literals planted into the env-controlled ``BOUNDINGBOX_VIENNA``
+        # override (leaked CI env / compromised secret store / hostile
+        # operator). Mirrors the canonical defence pinned at
+        # ``scripts/fetch_google_places_stations.py:_parse_bounding_box``.
+        data = loads_finite(raw)
     except (json.JSONDecodeError, RecursionError) as exc:
         raise ValueError("BOUNDINGBOX_VIENNA must be valid JSON") from exc
+    if not isinstance(data, dict):
+        raise ValueError("BOUNDINGBOX_VIENNA must define min_lat/min_lng/max_lat/max_lng")
     try:
         return BoundingBox(
             min_lat=float(data["min_lat"]),
