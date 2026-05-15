@@ -114,7 +114,43 @@ def test_classify_hbf_direction_substring_at_any_position() -> None:
     """Match anywhere in the string (e.g., ``Wien Meidling Hauptbahnhof``)."""
 
     assert script.classify_hbf_direction("Wien Meidling Bahnhof") == "Meidling"
+    # Both substrings are southbound; either match yields the same label.
     assert script.classify_hbf_direction("via Meidling nach Mödling") == "Meidling"
+
+
+def test_classify_hbf_direction_resolves_mixed_via_to_rightmost() -> None:
+    """Conflicting north+south substrings → the right-most match wins.
+
+    Regression test for the pre-2026-05-15 first-list-wins bug. VAO's
+    ``direction`` field renders the *terminus* at the end of the
+    string; the right-most matching substring therefore identifies the
+    true terminus instead of an upstream "via" waypoint that happens to
+    belong to the opposite direction.
+    """
+
+    # Terminus = Floridsdorf (north); "Mödling" appears as a via stop.
+    assert (
+        script.classify_hbf_direction("via Mödling nach Floridsdorf")
+        == "Floridsdorf"
+    )
+    # Terminus = Mödling (south); "Floridsdorf" appears as a via stop.
+    assert (
+        script.classify_hbf_direction("via Floridsdorf nach Mödling")
+        == "Meidling"
+    )
+    # Variant with an explicit terminus suffix ("Bahnhof") after the
+    # terminus name keeps the right-most match alignment intact.
+    assert (
+        script.classify_hbf_direction("via Mödling nach Floridsdorf Bahnhof")
+        == "Floridsdorf"
+    )
+    # Mixed string with a southbound prefix and a multi-step northbound
+    # path — the right-most match (Praterstern, north) wins because it
+    # marks the terminus.
+    assert (
+        script.classify_hbf_direction("Meidling via Floridsdorf nach Praterstern")
+        == "Floridsdorf"
+    )
 
 
 # ---- _is_sbahn_line --------------------------------------------------------

@@ -5,6 +5,49 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stammstrecke-Monitor — Migration auf `/departureBoard` @ Wien Hbf
+  (2026-05-15)**:
+  * Der Cron-Pfad ruft seit dem Merge von PR #1496 das neue
+    `scripts/update_stammstrecke_hbf.py`-Skript auf, das die
+    `/departureBoard`-API einmal pro Tick am Wien Hauptbahnhof
+    befragt und die Abfahrten anhand der Endhaltestelle per
+    Substring-/Whitelist-Klassifikation in die bestehenden
+    Richtungs-Labels (`Meidling`, `Floridsdorf`) einsortiert. Im
+    Vergleich zum Vorgänger (`/trip` × 2 Richtungen mit hartem
+    `numF=6`-Cap) verdoppelt sich die Coverage bei gleichzeitiger
+    Halbierung des API-Budgets (1 statt 2 Requests/Tick).
+  * **Semantischer Bruch in der Verspätungs-Messung**: bis
+    2026-05-15 wurde die Verspätung **am Ursprungsbahnhof**
+    (Floridsdorf für Meidling-Bound-Züge, Meidling für
+    Floridsdorf-Bound-Züge) gemessen, ab 2026-05-15 **am Wien
+    Hauptbahnhof** — einem Stammstrecken-Mittelpunkt. Beide Zahlen
+    sind für denselben physischen Zug nicht identisch (Verspätung
+    kann zwischen Ursprung und Hbf akkumulieren oder eingeholt
+    werden). Die 30-Tage-Statistik im README überspannt den
+    Migrations-Tag und zeigt deshalb für einige Wochen eine
+    Diskontinuität, die ein Mess-Semantik-Wechsel ist, kein Bug
+    und keine realer Qualitäts-Veränderung. Wer Werte vor und
+    nach 2026-05-15 vergleicht, sollte diesen Stichtag im Auge
+    behalten.
+  * `data/stats/stammstrecke_<YYYY>.csv`-Schema und
+    `cache/stammstrecke/*.json`-Ledger-Format bleiben unverändert
+    (die README-Dashboard- und Feed-Event-Pipelines lesen byte-
+    weise identisch weiter). `manual-full-refresh.yml` ist
+    ebenfalls auf das neue Skript umgezogen, damit ein manueller
+    Refresh keine konkurrierenden Identity-Key-Formate in den
+    geteilten Pending-Trip-Ledger schreibt.
+* **Quota-Bug Fix (Phantom-Request pro Skript-Lauf, 2026-05-15)** —
+  `_flush_quota_cache` rief `save_request_count` auf, das jeden
+  Aufruf als neuen Request zählte: jeder Stammstrecke-Cron-Tick
+  buchte 3 Requests statt 2 auf den 100/Tag-VAO-Start-Counter. Bei
+  48 Ticks/Tag wurde die Quote nach ~33 Ticks (~16 h) erschöpft und
+  der Preflight-Gate übersprang die restlichen Ticks, wodurch sich
+  im Ledger eine ~8h-Lücke pro Tag ergab und die README-Statistik
+  "Letzte 60 Minuten" zeitweise auf 1-3 Beobachtungen abrutschte.
+  Fix in PR #1494: Persist-Logik aus `save_request_count` in einen
+  separaten `_persist_quota_to_disk`-Helper ausgegliedert, den der
+  atexit-Flush direkt aufruft ohne den Counter zu inkrementieren.
+  Regression-Tests pinnen das No-Inflation-Invariant.
 * **Docs/Cleanup (VOR-Stammstrecke-only consolidation follow-up)** —
   Doku- und Workflow-Drift nach der 2026-05-11-Konsolidierung (VOR
   ist nur noch für den Stammstrecken-Monitor zuständig) bereinigt:

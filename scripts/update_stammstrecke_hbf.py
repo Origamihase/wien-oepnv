@@ -70,6 +70,28 @@ ledger only finalises a train when its scheduled time has passed
 CSV row of the cron tick that catches the actual departure, never the
 one that first saw the future train.
 
+Semantic break vs the pre-2026-05-15 ``/trip`` pipeline
+-------------------------------------------------------
+
+The ``/trip`` predecessor measured delay **at the train's origin
+station** (Wien Floridsdorf for Meidling-bound trains, Wien Meidling
+for Floridsdorf-bound trains). This script measures delay **at Wien
+Hauptbahnhof** — a Stammstrecke midpoint. The two numbers are not
+interchangeable for the same physical train:
+
+* A delay that accumulates on the Stammstrecke between Floridsdorf and
+  Hbf shows up in the Hbf reading but not in the origin reading.
+* A delay that the train recovers on the way to Hbf (e.g., dwell-time
+  shortening at intermediate stops) shrinks in the Hbf reading.
+
+Operationally the Hbf measurement is the more representative
+``Stammstrecke delay`` signal — it samples IN the Stammstrecke rather
+than at its endpoints — but the README's 30-day average straddles the
+migration cutover, so trend comparisons across 2026-05-15 will show a
+discontinuity that is a measurement-semantic shift, not a real change
+in the underlying service quality. A CHANGELOG entry exists; readers
+of the dashboard who pre-date the migration should be aware.
+
 Reuse
 -----
 
@@ -78,6 +100,17 @@ ledger I/O, lock, quota charge, HTTP session) from
 ``scripts/update_stammstrecke_status.py`` rather than duplicating it.
 The legacy script remains importable so its tests stay green during the
 transition; it is no longer wired into the cron workflow.
+
+The :func:`_observe_legs` identity key uses ``(direction, name,
+scheduled)``. Because ``scheduled`` here is the **Hbf** departure time
+while the legacy script used the **origin** departure time, a legacy
+pending-trip entry surviving in the ledger at migration time has a
+different key shape than a freshly-observed Hbf entry for the same
+physical train — the legacy entry finalises into its own CSV row
+under its old timestamp once its ``scheduled`` time passes, while
+the Hbf entry finalises separately. This produces at most a handful
+of mixed-shape CSV rows during the one-shot transition window; the
+``PENDING_TTL`` purge (6 h) bounds the residual artefact.
 """
 
 from __future__ import annotations
@@ -166,6 +199,21 @@ HAUPTBAHNHOF_VOR_ID: Final = "490134900"
 # a longer window inflates JSON payload + parse cost + in-memory state
 # without giving us a more accurate observation (the train was already
 # covered in the prior window). 45 min is the 50%-overlap sweet spot.
+#
+# Effective coverage caveat: the 45-min window is what VAO RETURNS,
+# but the :func:`_departure_delay_minutes` filter drops every entry
+# without an ``rtTime`` field (see its docstring — coercing missing
+# realtime to 0.0 systematically biased the legacy sample). VAO only
+# populates ``rtTime`` once a train is roughly 20-25 min from its
+# scheduled departure, so the *effective* coverage per tick is the
+# intersection of the duration window and the rtTime forecast horizon
+# — empirically ~24 min from the cron tick. The 15-min cron-interval
+# overlap still holds because the next tick's rtTime horizon advances
+# 30 min while the duration window also advances 30 min; no train can
+# fall between two consecutive ticks' rtTime windows under normal
+# cron cadence. A SKIPPED tick (cron jitter >~30 min) is the only
+# shape that can lose trains, and that's a workflow-trigger issue,
+# not a script-tuning issue.
 DEPARTURE_BOARD_DURATION_MIN: Final = 45
 
 # Geographic-direction → CSV-label mapping. Pinned constants so a future
@@ -423,6 +471,18 @@ def classify_hbf_direction(direction_str: str) -> str | None:
        :data:`HBF_NORTHBOUND_TERMINI` — slower fallback for terminuses
        that contain none of the landmark substrings.
 
+    Conflict resolution: when substrings from BOTH lists match — e.g., a
+    descriptive direction string like ``"via Mödling nach Floridsdorf"``
+    (Mödling = south, Floridsdorf = north) — the match whose latest
+    occurrence sits *furthest right* in the string wins. The VAO
+    ``direction`` field renders the **terminus at the end** in
+    every shape observed in production; the right-most match
+    therefore identifies the true terminus instead of a "via" waypoint
+    that happens to belong to the opposite geographic direction.
+    Pre-2026-05-15 the substring loop returned ``SOUTHBOUND`` on first
+    hit, mis-classifying any such mixed string as southbound regardless
+    of terminus.
+
     ``None`` means the terminus is unrecognised; the caller logs and
     drops the departure.
     """
@@ -431,12 +491,31 @@ def classify_hbf_direction(direction_str: str) -> str | None:
     if not norm:
         return None
     lower = norm.lower()
+
+    south_pos = -1
     for needle in HBF_SOUTHBOUND_SUBSTRINGS:
-        if needle in lower:
-            return DIRECTION_LABEL_SOUTHBOUND
+        idx = lower.rfind(needle)
+        if idx > south_pos:
+            south_pos = idx
+    north_pos = -1
     for needle in HBF_NORTHBOUND_SUBSTRINGS:
-        if needle in lower:
-            return DIRECTION_LABEL_NORTHBOUND
+        idx = lower.rfind(needle)
+        if idx > north_pos:
+            north_pos = idx
+
+    if south_pos >= 0 and north_pos >= 0:
+        # Both matched — the terminus is whichever direction's needle
+        # sits furthest right (closest to the end of the string).
+        return (
+            DIRECTION_LABEL_SOUTHBOUND
+            if south_pos >= north_pos
+            else DIRECTION_LABEL_NORTHBOUND
+        )
+    if south_pos >= 0:
+        return DIRECTION_LABEL_SOUTHBOUND
+    if north_pos >= 0:
+        return DIRECTION_LABEL_NORTHBOUND
+
     if norm in HBF_SOUTHBOUND_TERMINI:
         return DIRECTION_LABEL_SOUTHBOUND
     if norm in HBF_NORTHBOUND_TERMINI:
