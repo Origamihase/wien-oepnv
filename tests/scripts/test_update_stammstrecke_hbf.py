@@ -413,15 +413,53 @@ def test_collect_skips_non_sbahn_lines() -> None:
     assert unrecognised == {}
 
 
-def test_collect_skips_cancelled_departures() -> None:
-    """Cancelled departures drop out before direction classification."""
+def test_collect_captures_cancelled_departures_as_cancelled_observations() -> None:
+    """Cancelled departures are surfaced as observations with ``cancelled=True``.
+
+    Pre-2026-05-15 the collector silently dropped cancelled departures
+    so they never appeared in any statistic. The cancellation-tracking
+    rework routes them through the same pending-trip dedup machinery as
+    delay observations and tags them so the finalise pass can split
+    them out into the dedicated cancellation CSV.
+    """
 
     departures = [
         _dep(name="S 1", direction="Wien Meidling", cancelled=True),
         _dep(name="S 2", direction="Wien Meidling"),
     ]
-    by_direction, _ = script._collect_hbf_observations(departures)
-    assert {obs.name for obs in by_direction[script.DIRECTION_LABEL_SOUTHBOUND]} == {"S2"}
+    by_direction, diag = script._collect_hbf_observations(departures)
+    south = by_direction[script.DIRECTION_LABEL_SOUTHBOUND]
+    by_name = {obs.name: obs for obs in south}
+    assert set(by_name) == {"S1", "S2"}
+    assert by_name["S1"].cancelled is True
+    # Cancelled observations carry a meaningless placeholder delay so
+    # the dataclass parses; the finalise pass MUST NOT fold it into a
+    # delay mean. Pin the value here so a future refactor cannot quietly
+    # surface a non-zero placeholder into the delay ledger.
+    assert by_name["S1"].delay_minutes == 0.0
+    assert by_name["S2"].cancelled is False
+    assert diag.cancelled_observed == 1
+
+
+def test_collect_cancelled_departure_without_rttime_still_captured() -> None:
+    """A cancelled departure with no ``rtTime`` MUST still be captured.
+
+    VAO routinely omits ``rtTime`` on cancelled trains (the train will
+    never depart, so there is no realtime forecast). Pre-fix the
+    rtTime gate ran BEFORE the cancellation check, so a cancelled
+    departure without realtime data was double-dropped — first
+    silently as "no rtTime", masking the cancellation signal entirely.
+    The new pipeline checks cancellation first.
+    """
+
+    departures = [
+        _dep(name="S 1", direction="Wien Meidling", cancelled=True, rt_time=None),
+    ]
+    by_direction, diag = script._collect_hbf_observations(departures)
+    south = by_direction[script.DIRECTION_LABEL_SOUTHBOUND]
+    assert len(south) == 1
+    assert south[0].cancelled is True
+    assert diag.cancelled_observed == 1
 
 
 def test_collect_skips_missing_rttime() -> None:
@@ -433,6 +471,28 @@ def test_collect_skips_missing_rttime() -> None:
     ]
     by_direction, _ = script._collect_hbf_observations(departures)
     assert {obs.name for obs in by_direction[script.DIRECTION_LABEL_SOUTHBOUND]} == {"S2"}
+
+
+def test_departure_is_cancelled_accepts_bool_and_string_true() -> None:
+    """Both ``True`` and the literal string ``"true"`` count as cancelled.
+
+    VAO serialises the cancellation flag in both shapes depending on
+    the response variant; both must reach the cancellation ledger.
+    Other truthy spellings (``"yes"``, ``"1"``, ``1``) are deliberately
+    refused — the field is a contracted boolean, and accepting fuzzy
+    strings would let a hand-edited / poisoned cache forge
+    cancellations to flood the dashboard.
+    """
+
+    assert script._departure_is_cancelled({"cancelled": True}) is True
+    assert script._departure_is_cancelled({"cancelled": "true"}) is True
+    assert script._departure_is_cancelled({"cancelled": "TRUE"}) is True
+    assert script._departure_is_cancelled({"cancelled": "  true  "}) is True
+    # Fuzzy spellings MUST NOT count.
+    assert script._departure_is_cancelled({"cancelled": "yes"}) is False
+    assert script._departure_is_cancelled({"cancelled": "1"}) is False
+    assert script._departure_is_cancelled({"cancelled": 1}) is False
+    assert script._departure_is_cancelled({}) is False
 
 
 def test_collect_counts_unrecognised_termini() -> None:

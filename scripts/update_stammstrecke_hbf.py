@@ -173,7 +173,10 @@ from src.utils.circuit_breaker import (  # noqa: E402
 )
 from src.utils.http import request_safe  # noqa: E402
 from src.utils import logging as utils_logging  # noqa: E402
-from src.utils.stats import append_stammstrecke_row  # noqa: E402
+from src.utils.stats import (  # noqa: E402
+    append_ausfall_row,
+    append_stammstrecke_row,
+)
 
 # Reuse pending-state + ledger infrastructure from the legacy /trip-
 # based monitor. The private prefix is intentional in that script;
@@ -733,6 +736,27 @@ def _departure_line_name(dep: Mapping[str, Any]) -> str:
     return ""
 
 
+def _departure_is_cancelled(dep: Mapping[str, Any]) -> bool:
+    """Return ``True`` when *dep* is flagged as cancelled.
+
+    VAO serialises the cancellation flag both as a JSON boolean and as
+    the literal string ``"true"`` depending on the response variant;
+    both shapes are observed in production payloads and both must
+    surface as cancellations in the statistics ledger. Other truthy
+    spellings (``"yes"``, ``"1"``, …) are deliberately refused — the
+    field is a contracted boolean, and accepting fuzzy strings would
+    open the door to false positives from a hand-edited / poisoned
+    cache.
+    """
+
+    cancelled = dep.get("cancelled")
+    if cancelled is True:
+        return True
+    if isinstance(cancelled, str) and cancelled.strip().lower() == "true":
+        return True
+    return False
+
+
 def _departure_delay_minutes(dep: Mapping[str, Any]) -> float | None:
     """Return the departure delay in fractional minutes, or ``None``.
 
@@ -751,10 +775,7 @@ def _departure_delay_minutes(dep: Mapping[str, Any]) -> float | None:
       (malformed entries are dropped, not silently coerced).
     """
 
-    cancelled = dep.get("cancelled")
-    if cancelled is True:
-        return None
-    if isinstance(cancelled, str) and cancelled.strip().lower() == "true":
+    if _departure_is_cancelled(dep):
         return None
 
     sched_date = dep.get("date")
@@ -820,11 +841,18 @@ class _CollectionDiagnostics:
       — they reflect long-distance Railjet / IC / EC / NJ services
       and eastward REX / S60 / S80 / Westbahn departures that pass
       through Hbf but never touch the Stammstrecke tunnel.
+    * ``cancelled_observed`` — count of Stammstrecke departures whose
+      ``cancelled`` flag was ``True`` and which were forwarded to the
+      pending-trip ledger for cancellation finalisation. Pre-fix the
+      collector silently dropped these, masking real outages from the
+      statistics dashboard; the counter is the observability hook so
+      operators can spot a sudden spike without reading the CSV.
     """
 
     unrecognised_terminus: dict[str, int]
     dropped_no_track: int
     dropped_non_stammstrecke_track: int
+    cancelled_observed: int = 0
 
 
 def _collect_hbf_observations(
@@ -858,15 +886,24 @@ def _collect_hbf_observations(
        rejected here, regardless of how their terminus string maps
        under the substring whitelist.
     4. Scheduled timestamp parses to a :class:`datetime`.
-    5. Realtime signal present (``rtTime`` populated) and not
-       cancelled — the conservative legacy rule, preserved verbatim.
-    6. Terminus resolves to ``Meidling`` or ``Praterstern`` via
+    5. **Cancellation captured** — a cancelled departure is emitted
+       as an observation with ``cancelled=True`` and a placeholder
+       ``delay_minutes=0.0``. The pending-trip ledger then routes the
+       train to ``data/stats/ausfaelle_<YYYY>.csv`` at finalise time
+       instead of folding it into the delay mean (which would
+       systematically bias the mean toward zero — a cancelled train
+       is *absent*, not *on-time*). Pre-fix the collector silently
+       dropped cancelled departures, hiding real outages from the
+       statistics dashboard.
+    6. Non-cancelled departures need a realtime signal (``rtTime``
+       populated) — the conservative legacy rule, preserved verbatim.
+    7. Terminus resolves to ``Meidling`` or ``Praterstern`` via
        :func:`classify_hbf_direction`.
 
     Compatible with :func:`_observe_legs` via the
     :class:`_SbahnLegObservation` shape (``name``, ``scheduled``,
-    ``delay_minutes``); the ``direction`` field of the observation is
-    implicit in which list it lives in.
+    ``delay_minutes``, ``cancelled``); the ``direction`` field of the
+    observation is implicit in which list it lives in.
     """
 
     by_direction: dict[str, list[_SbahnLegObservation]] = {
@@ -875,6 +912,7 @@ def _collect_hbf_observations(
     unrecognised: dict[str, int] = defaultdict(int)
     dropped_no_track = 0
     dropped_non_stammstrecke_track = 0
+    cancelled_observed = 0
 
     for dep in departures:
         if not isinstance(dep, Mapping):
@@ -909,9 +947,19 @@ def _collect_hbf_observations(
         if scheduled is None:
             continue
 
-        delay = _departure_delay_minutes(dep)
-        if delay is None:
-            continue
+        # Cancellation check BEFORE the rtTime gate: a cancelled
+        # departure typically has no ``rtTime`` (the train will never
+        # depart, so there is nothing to forecast), so the conservative
+        # rtTime filter would otherwise discard the cancellation signal
+        # alongside it. The direction classifier still runs so the
+        # cancelled train lands in the correct bucket.
+        cancelled = _departure_is_cancelled(dep)
+        if not cancelled:
+            delay_value = _departure_delay_minutes(dep)
+            if delay_value is None:
+                continue
+        else:
+            delay_value = 0.0
 
         direction_str = str(dep.get("direction") or "").strip()
         direction = classify_hbf_direction(direction_str)
@@ -922,9 +970,12 @@ def _collect_hbf_observations(
         observation = _SbahnLegObservation(
             name=name,
             scheduled=scheduled,
-            delay_minutes=delay,
+            delay_minutes=delay_value,
+            cancelled=cancelled,
         )
         by_direction[direction].append(observation)
+        if cancelled:
+            cancelled_observed += 1
 
     return (
         by_direction,
@@ -932,6 +983,7 @@ def _collect_hbf_observations(
             unrecognised_terminus=dict(unrecognised),
             dropped_no_track=dropped_no_track,
             dropped_non_stammstrecke_track=dropped_non_stammstrecke_track,
+            cancelled_observed=cancelled_observed,
         ),
     )
 
@@ -1081,12 +1133,13 @@ def _process_tick(
 
     LOGGER.info(
         "Stammstrecke (Hbf): %d Abfahrten gesamt — %s=%d, "
-        "%s=%d (Ledger-Updates).",
+        "%s=%d (Ledger-Updates), %d Ausfall-Beobachtung(en).",
         len(departures),
         DIRECTION_LABEL_SOUTHBOUND,
         written_per_dir.get(DIRECTION_LABEL_SOUTHBOUND, 0),
         DIRECTION_LABEL_NORTHBOUND,
         written_per_dir.get(DIRECTION_LABEL_NORTHBOUND, 0),
+        diagnostics.cancelled_observed,
     )
     return "ok"
 
@@ -1170,6 +1223,7 @@ def main() -> int:
         # row is still written under the canonical ``Praterstern``
         # label so the dashboard sees a single direction-stream.
         csv_rows_written = 0
+        ausfaelle_rows_written = 0
         for direction in DIRECTION_LABELS:
             finalised = _finalize_departed(
                 state,
@@ -1196,8 +1250,33 @@ def main() -> int:
                     finalised = list(finalised) + list(legacy_finalised)
             if not finalised:
                 continue
+            # Split finalised trains: cancellations go to a dedicated
+            # ledger (one CSV row per cancelled train so each shows up
+            # as a discrete event in the dashboard count), non-
+            # cancelled observations contribute to the per-tick mean-
+            # delay aggregate (one CSV row per direction per year).
+            # Both ledgers are appended atomically by ``src.utils.stats``;
+            # an IO failure on one side does not block the other.
+            cancelled_trips = [t for t in finalised if t.cancelled]
+            observed_trips = [t for t in finalised if not t.cancelled]
+            for trip in cancelled_trips:
+                LOGGER.info(
+                    "Stammstrecke (Hbf): Richtung %s — Zug %s (geplant %s) "
+                    "als Ausfall finalisiert.",
+                    direction,
+                    utils_logging.sanitize_log_arg(trip.name),
+                    utils_logging.sanitize_log_arg(trip.scheduled.isoformat()),
+                )
+                append_ausfall_row(
+                    timestamp=trip.scheduled,
+                    direction=direction,
+                    line=trip.name,
+                )
+                ausfaelle_rows_written += 1
+            if not observed_trips:
+                continue
             by_year: dict[int, list[Any]] = {}
-            for trip in finalised:
+            for trip in observed_trips:
                 by_year.setdefault(trip.scheduled.year, []).append(trip)
             for year in sorted(by_year):
                 year_trips = by_year[year]
@@ -1231,11 +1310,12 @@ def main() -> int:
         _save_pending_trips(PENDING_TRIPS_PATH, state)
 
     LOGGER.info(
-        "Stammstrecke (Hbf): %d Beobachtungs-Tick(s), %d CSV-Zeile(n) "
-        "geschrieben (Erfolg=%d, Fehler=%d, Pending=%d offen, "
-        "Finalisiert=%d).",
+        "Stammstrecke (Hbf): %d Beobachtungs-Tick(s), %d Delay-CSV-Zeile(n) "
+        "+ %d Ausfall-CSV-Zeile(n) geschrieben (Erfolg=%d, Fehler=%d, "
+        "Pending=%d offen, Finalisiert=%d).",
         1,
         csv_rows_written,
+        ausfaelle_rows_written,
         successes,
         errors,
         len(state),

@@ -137,7 +137,10 @@ from src.utils.files import atomic_write, read_capped_text  # noqa: E402
 from src.utils.http import request_safe, session_with_retries  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.stations import canonical_name, display_name  # noqa: E402
-from src.utils.stats import append_stammstrecke_row  # noqa: E402
+from src.utils.stats import (  # noqa: E402
+    append_ausfall_row,
+    append_stammstrecke_row,
+)
 
 LOGGER = logging.getLogger("update_stammstrecke_status")
 
@@ -242,6 +245,18 @@ class _PendingTrip:
     :data:`PENDING_TRIPS_PATH`. ``scheduled`` and ``last_seen_at`` are
     always timezone-aware (Europe/Vienna) — the loader normalises
     naive timestamps defensively rather than dropping the entry.
+
+    ``cancelled`` flags a train that the upstream reported as
+    cancelled (``Origin.cancelled`` / ``leg.cancelled`` / departure-
+    level ``cancelled``). For cancelled trips the
+    ``latest_delay_minutes`` field is meaningless (set to ``0.0`` as
+    a placeholder by the collectors) — the finalise pass routes the
+    trip to ``data/stats/ausfaelle_YYYY.csv`` instead of the delay
+    ledger, so the placeholder never reaches the CSV. The field
+    defaults to ``False`` so a ledger entry written by a pre-
+    cancellation-tracking script version loads cleanly under the
+    new schema (``_trip_from_json`` does the equivalent migration
+    via ``data.get("cancelled", False)``).
     """
 
     direction: str
@@ -249,6 +264,7 @@ class _PendingTrip:
     scheduled: datetime
     latest_delay_minutes: float
     last_seen_at: datetime
+    cancelled: bool = False
 
 
 # Per-call HTTP budget (seconds). Enforced at the ``fetch_content_safe``
@@ -481,7 +497,14 @@ def _coerce_aware(value: datetime) -> datetime:
 
 
 def _trip_to_json(trip: _PendingTrip) -> dict[str, Any]:
-    """Serialise a pending trip to its JSON-ledger form."""
+    """Serialise a pending trip to its JSON-ledger form.
+
+    The ``cancelled`` field is always emitted (even when ``False``) so a
+    grep over the committed ledger picks up the schema version
+    explicitly — reviewers do not have to infer the boolean from its
+    absence. Backwards-compat is enforced on the read side
+    (:func:`_trip_from_json` defaults missing values to ``False``).
+    """
 
     return {
         "direction": trip.direction,
@@ -489,6 +512,7 @@ def _trip_to_json(trip: _PendingTrip) -> dict[str, Any]:
         "scheduled": trip.scheduled.isoformat(),
         "latest_delay_minutes": trip.latest_delay_minutes,
         "last_seen_at": trip.last_seen_at.isoformat(),
+        "cancelled": trip.cancelled,
     }
 
 
@@ -513,12 +537,20 @@ def _trip_from_json(data: Mapping[str, Any]) -> _PendingTrip | None:
         return None
     if not direction or not name:
         return None
+    # Backwards-compat: a ledger entry written before the cancellation-
+    # tracking schema (commits prior to 2026-05-15) has no ``cancelled``
+    # key — default to ``False`` so the entry loads as a regular
+    # delay-bearing observation. Strict ``is True`` matches the upstream
+    # VAO contract for the boolean and refuses ``"true"`` / ``1`` from a
+    # hand-edited ledger (the writer always emits a Python bool).
+    cancelled = data.get("cancelled") is True
     return _PendingTrip(
         direction=direction,
         name=name,
         scheduled=_coerce_aware(scheduled),
         latest_delay_minutes=latest_delay,
         last_seen_at=_coerce_aware(last_seen),
+        cancelled=cancelled,
     )
 
 
@@ -1132,11 +1164,37 @@ class _SbahnLegObservation:
     by :func:`_observe_legs` (state update + latest-wins dedup) and
     :func:`_collect_sbahn_delays_minutes` (legacy thin wrapper for
     tests that only care about the delay sequence).
+
+    ``cancelled`` is ``True`` when the upstream marked the leg as
+    cancelled. For cancelled legs ``delay_minutes`` is a meaningless
+    placeholder (``0.0``) — the finalise pass downstream of
+    :func:`_observe_legs` routes cancelled trips to the dedicated
+    cancellation ledger instead of folding them into the delay mean.
+    Default ``False`` keeps the dataclass backwards-compatible with
+    tests that construct observations positionally.
     """
 
     name: str
     scheduled: datetime
     delay_minutes: float
+    cancelled: bool = False
+
+
+def _leg_is_cancelled(leg: Mapping[str, Any]) -> bool:
+    """Return ``True`` when the upstream flagged *leg* as cancelled.
+
+    Mirrors the cancellation branch inside
+    :func:`_leg_departure_delay_minutes`: either the leg itself or its
+    ``Origin`` substructure may carry the boolean. Both VAO
+    serialisations are observed in production payloads. Pure boolean
+    contract — refuses ``"true"`` / ``1`` / etc. so a hand-edited
+    cache cannot trick the collector by spelling the flag as a string.
+    """
+
+    origin = leg.get("Origin")
+    if isinstance(origin, Mapping) and origin.get("cancelled") is True:
+        return True
+    return leg.get("cancelled") is True
 
 
 def _collect_sbahn_leg_observations(
@@ -1155,10 +1213,20 @@ def _collect_sbahn_leg_observations(
     * **Identifiable** — the leg must carry a non-empty ``name``
       (line designation) and a parseable scheduled departure
       timestamp; both feed the state-key for cross-tick dedup.
-    * **Cancellation excluded** — a cancelled leg has no delay signal.
-    * **Missing realtime excluded** — a leg without ``rtTime`` returns
-      ``None`` from :func:`_leg_departure_delay_minutes` (status
-      unknown, not implicitly on-time) and is dropped here.
+    * **Cancellation captured** — a cancelled leg is emitted as an
+      observation with ``cancelled=True`` and a placeholder
+      ``delay_minutes=0.0``. Downstream :func:`_observe_legs` carries
+      the flag through the pending-trip ledger so the finalise pass
+      can route the train to the dedicated cancellation CSV. Pre-fix
+      behaviour silently dropped these legs, masking real outages
+      from the statistics dashboard.
+    * **Missing realtime excluded** — a non-cancelled leg without
+      ``rtTime`` returns ``None`` from
+      :func:`_leg_departure_delay_minutes` (status unknown, not
+      implicitly on-time) and is dropped here. Cancellations are
+      checked BEFORE the delay-minutes branch so a cancelled leg
+      that also lacks ``rtTime`` (the canonical shape) is still
+      captured.
     """
 
     observations: list[_SbahnLegObservation] = []
@@ -1203,6 +1271,17 @@ def _collect_sbahn_leg_observations(
         if scheduled is None:
             continue
 
+        if _leg_is_cancelled(leg):
+            observations.append(
+                _SbahnLegObservation(
+                    name=name,
+                    scheduled=scheduled,
+                    delay_minutes=0.0,
+                    cancelled=True,
+                )
+            )
+            continue
+
         delay = _leg_departure_delay_minutes(leg)
         if delay is None:
             continue
@@ -1225,10 +1304,17 @@ def _collect_sbahn_delays_minutes(
     Returns just the per-leg delays — the original signature retained
     so leg-filtering regression tests continue to assert on a simple
     sequence of floats without coupling to the observation record
-    shape.
+    shape. Cancelled observations carry a meaningless placeholder
+    ``delay_minutes=0.0`` (set so the dataclass still parses), so they
+    are filtered out here to preserve the pre-cancellation-tracking
+    semantics of "delays-only sequence".
     """
 
-    return [obs.delay_minutes for obs in _collect_sbahn_leg_observations(trips)]
+    return [
+        obs.delay_minutes
+        for obs in _collect_sbahn_leg_observations(trips)
+        if not obs.cancelled
+    ]
 
 
 def _observe_legs(
@@ -1279,6 +1365,7 @@ def _observe_legs(
             scheduled=obs.scheduled,
             latest_delay_minutes=obs.delay_minutes,
             last_seen_at=now,
+            cancelled=obs.cancelled,
         )
         written += 1
     return written
@@ -1918,6 +2005,7 @@ def main() -> int:
         # departure — preventing the year-wide dashboard counter
         # from quietly losing the observation.
         csv_rows_written = 0
+        ausfaelle_rows_written = 0
         for direction in DIRECTIONS:
             finalised = _finalize_departed(
                 state,
@@ -1927,8 +2015,34 @@ def main() -> int:
             )
             if not finalised:
                 continue
+            # Split finalised trains into cancellations (each gets one
+            # ``ausfaelle_<YYYY>.csv`` row keyed on the train's
+            # scheduled departure) and regular delay observations (one
+            # per-direction-per-year aggregate row with the mean delay).
+            # The split is performed AFTER ``_finalize_departed`` so
+            # cancelled trains still pass through the recently-finalised
+            # dedup guard — a VAO re-emission of a cancelled train at
+            # the lookahead boundary cannot double-count it.
+            cancelled_trips = [t for t in finalised if t.cancelled]
+            observed_trips = [t for t in finalised if not t.cancelled]
+            for trip in cancelled_trips:
+                LOGGER.info(
+                    "Stammstrecke: Richtung %s — Zug %s (geplant %s) "
+                    "als Ausfall finalisiert.",
+                    direction.target_label,
+                    sanitize_log_arg(trip.name),
+                    sanitize_log_arg(trip.scheduled.isoformat()),
+                )
+                append_ausfall_row(
+                    timestamp=trip.scheduled,
+                    direction=direction.target_label,
+                    line=trip.name,
+                )
+                ausfaelle_rows_written += 1
+            if not observed_trips:
+                continue
             by_year: dict[int, list[_PendingTrip]] = {}
-            for trip in finalised:
+            for trip in observed_trips:
                 by_year.setdefault(trip.scheduled.year, []).append(trip)
             for year in sorted(by_year):
                 year_trips = by_year[year]
@@ -1965,10 +2079,12 @@ def main() -> int:
         _save_pending_trips(PENDING_TRIPS_PATH, state)
 
     LOGGER.info(
-        "Stammstrecke: %d Beobachtung(en), %d CSV-Zeile(n) geschrieben "
-        "(Erfolg=%d, Fehler=%d, Pending=%d offen, Finalisiert=%d).",
+        "Stammstrecke: %d Beobachtung(en), %d Delay-CSV-Zeile(n) + "
+        "%d Ausfall-CSV-Zeile(n) geschrieben (Erfolg=%d, Fehler=%d, "
+        "Pending=%d offen, Finalisiert=%d).",
         successes,
         csv_rows_written,
+        ausfaelle_rows_written,
         successes,
         errors,
         len(state),

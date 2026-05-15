@@ -60,6 +60,7 @@ from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.utils.files import atomic_write, read_capped_text  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.stats import (  # noqa: E402
+    AUSFAELLE_HEADER,
     DEFAULT_STATS_DIR,
     STAMMSTRECKE_HEADER,
     STOERUNGEN_HEADER,
@@ -131,6 +132,8 @@ BAR_GLYPHS: Final = {
     "hour": "🟧",
     "delay_weekday": "🟥",
     "delay_hour": "🟨",
+    "ausfall_weekday": "🟪",
+    "ausfall_hour": "🟫",
 }
 
 
@@ -187,6 +190,37 @@ class StoerungAggregate:
     by_hour: dict[int, int] = field(default_factory=dict)
     by_provider: dict[str, int] = field(default_factory=dict)
     total_disruptions: int = 0
+
+
+@dataclass(frozen=True)
+class AusfallRow:
+    """One Stammstrecke cancellation observation.
+
+    Each row represents exactly one cancelled S-Bahn train (deduped
+    upstream by the pending-trip ledger's identity-key machinery — the
+    same train re-observed across multiple cron ticks contributes one
+    row regardless of how many ticks saw it). The dashboard counts
+    rows directly without further aggregation; per-direction and
+    per-line breakdowns surface the operational signal ("which line is
+    cancelling most often?").
+    """
+
+    timestamp: datetime
+    weekday: str
+    hour: int
+    direction: str
+    line: str
+
+
+@dataclass
+class AusfallAggregate:
+    """Aggregated Ausfälle data ready to render."""
+
+    by_weekday: dict[str, int] = field(default_factory=dict)
+    by_hour: dict[int, int] = field(default_factory=dict)
+    by_direction: dict[str, int] = field(default_factory=dict)
+    by_line: dict[str, int] = field(default_factory=dict)
+    total_cancellations: int = 0
 
 
 # ---- CSV reading -----------------------------------------------------------
@@ -294,6 +328,41 @@ def _parse_stoerung_rows(
     return parsed
 
 
+def _parse_ausfall_rows(
+    raw_rows: Iterable[dict[str, str]],
+) -> list[AusfallRow]:
+    """Convert raw CSV dict rows to typed Ausfall records.
+
+    Same corruption-tolerance contract as the other parsers: a row
+    with an unparseable timestamp or missing required field is silently
+    dropped (a single hand-edited bad row must never break the
+    dashboard regeneration).
+    """
+    parsed: list[AusfallRow] = []
+    for row in raw_rows:
+        try:
+            ts = datetime.fromisoformat(row["timestamp"])
+        except (KeyError, ValueError, TypeError):
+            continue
+        weekday = row.get("weekday") or WEEKDAY_LABELS[ts.weekday()]
+        try:
+            hour = int(row.get("hour") or ts.hour)
+        except ValueError:
+            hour = ts.hour
+        direction = (row.get("direction") or "unbekannt").strip() or "unbekannt"
+        line = (row.get("line") or "unbekannt").strip() or "unbekannt"
+        parsed.append(
+            AusfallRow(
+                timestamp=ts,
+                weekday=weekday,
+                hour=max(0, min(23, hour)),
+                direction=direction,
+                line=line,
+            )
+        )
+    return parsed
+
+
 # ---- Aggregation -----------------------------------------------------------
 
 
@@ -360,6 +429,28 @@ def aggregate_stoerungen(rows: list[StoerungRow]) -> StoerungAggregate:
         by_hour=dict(hour_count),
         by_provider=dict(provider_count),
         total_disruptions=len(rows),
+    )
+
+
+def aggregate_ausfaelle(rows: list[AusfallRow]) -> AusfallAggregate:
+    """Roll cancellation rows up into the dimensions the dashboard needs."""
+    weekday_count: dict[str, int] = defaultdict(int)
+    hour_count: dict[int, int] = defaultdict(int)
+    direction_count: dict[str, int] = defaultdict(int)
+    line_count: dict[str, int] = defaultdict(int)
+
+    for row in rows:
+        weekday_count[row.weekday] += 1
+        hour_count[row.hour] += 1
+        direction_count[row.direction] += 1
+        line_count[row.line] += 1
+
+    return AusfallAggregate(
+        by_weekday=dict(weekday_count),
+        by_hour=dict(hour_count),
+        by_direction=dict(direction_count),
+        by_line=dict(line_count),
+        total_cancellations=len(rows),
     )
 
 
@@ -500,6 +591,7 @@ def _format_summary_section(
     generated_at: datetime,
     stammstrecke: StammstreckeAggregate,
     stoerungen: StoerungAggregate,
+    ausfaelle: AusfallAggregate,
 ) -> list[str]:
     """Render the top-of-report key metrics block.
 
@@ -535,6 +627,7 @@ def _format_summary_section(
         f"| Verspätungen > {stammstrecke.threshold_minutes:g} min ({year}) | "
         f"{stammstrecke.threshold_exceedances} |",
         f"| ⌀ Verspätung ({year}) | {avg_cell} |",
+        f"| Stammstrecke-Ausfälle ({year}) | {ausfaelle.total_cancellations} |",
         f"| Erfasste Störungen ({year}) | {stoerungen.total_disruptions} |",
         "",
     ]
@@ -592,12 +685,75 @@ def _format_providers_section(stoerungen: StoerungAggregate) -> list[str]:
     return lines
 
 
+def _format_ausfall_directions_section(ausfaelle: AusfallAggregate) -> list[str]:
+    """Render the per-direction breakdown of cancellations.
+
+    Same threat model as :func:`_format_directions_section` — the
+    ``direction`` field flows from the CSV writer's
+    :func:`src.utils.stats._sanitize_csv_text_field` defence and then
+    through :func:`normalise_markdown_text` / :func:`escape_markdown_cell`
+    at the rendering boundary.
+    """
+    if not ausfaelle.by_direction:
+        return ["### Ausfälle je Richtung", "", "_Keine Ausfälle erfasst._", ""]
+    items = sorted(
+        ausfaelle.by_direction.items(),
+        key=lambda pair: (-pair[1], pair[0]),
+    )
+    lines: list[str] = [
+        "### Ausfälle je Richtung",
+        "",
+        "| Richtung | Anzahl |",
+        "| --- | ---: |",
+    ]
+    for direction, count in items:
+        cell = escape_markdown_cell(
+            normalise_markdown_text(direction, max_len=_DASHBOARD_FIELD_MAX_LEN)
+        )
+        lines.append(f"| {cell} | {count} |")
+    lines.append("")
+    return lines
+
+
+def _format_ausfall_lines_section(ausfaelle: AusfallAggregate) -> list[str]:
+    """Render the per-line breakdown of cancellations.
+
+    Surfaces "which S-Bahn / REX line cancels most often?" — the
+    primary operational signal for cancellations. The ``line`` field
+    is the canonicalised VAO line designation (``S1``, ``REX3`` …)
+    written by the collectors via
+    :func:`src.utils.stats._sanitize_csv_text_field`, so the rendering
+    boundary uses the same Markdown escaping pipeline as the direction
+    cells.
+    """
+    if not ausfaelle.by_line:
+        return ["### Ausfälle je Linie", "", "_Keine Ausfälle erfasst._", ""]
+    items = sorted(
+        ausfaelle.by_line.items(),
+        key=lambda pair: (-pair[1], pair[0]),
+    )
+    lines: list[str] = [
+        "### Ausfälle je Linie",
+        "",
+        "| Linie | Anzahl |",
+        "| --- | ---: |",
+    ]
+    for line, count in items:
+        cell = escape_markdown_cell(
+            normalise_markdown_text(line, max_len=_DASHBOARD_FIELD_MAX_LEN)
+        )
+        lines.append(f"| {cell} | {count} |")
+    lines.append("")
+    return lines
+
+
 def render_markdown(
     *,
     year: int,
     generated_at: datetime,
     stammstrecke: StammstreckeAggregate,
     stoerungen: StoerungAggregate,
+    ausfaelle: AusfallAggregate,
 ) -> str:
     """Compose the full Markdown dashboard string from the aggregates."""
     sections: list[str] = []
@@ -607,6 +763,7 @@ def render_markdown(
             generated_at=generated_at,
             stammstrecke=stammstrecke,
             stoerungen=stoerungen,
+            ausfaelle=ausfaelle,
         )
     )
 
@@ -635,6 +792,24 @@ def render_markdown(
         render_avg_delay_hour(stammstrecke.by_hour_avg, BAR_GLYPHS["delay_hour"])
     )
 
+    sections.extend(["## Ausfälle", ""])
+    sections.extend(_format_ausfall_directions_section(ausfaelle))
+    sections.extend(_format_ausfall_lines_section(ausfaelle))
+    sections.extend(
+        render_weekday_bars(
+            ausfaelle.by_weekday,
+            glyph=BAR_GLYPHS["ausfall_weekday"],
+            title="Ausfälle je Wochentag",
+        )
+    )
+    sections.extend(
+        render_hour_bars(
+            ausfaelle.by_hour,
+            glyph=BAR_GLYPHS["ausfall_hour"],
+            title="Ausfälle je Stunde",
+        )
+    )
+
     sections.extend(["## Störungen", ""])
     sections.extend(_format_providers_section(stoerungen))
     sections.extend(
@@ -656,7 +831,8 @@ def render_markdown(
         [
             "---",
             "",
-            "_Quellen_: `data/stats/stammstrecke_*.csv`, `data/stats/stoerungen_*.csv`. "
+            "_Quellen_: `data/stats/stammstrecke_*.csv`, "
+            "`data/stats/ausfaelle_*.csv`, `data/stats/stoerungen_*.csv`. "
             "Generiert von `scripts/generate_markdown_stats.py`.",
             "",
         ]
@@ -669,7 +845,7 @@ def render_markdown(
 
 
 _TimestampedRow = TypeVar(
-    "_TimestampedRow", StammstreckeRow, StoerungRow
+    "_TimestampedRow", StammstreckeRow, StoerungRow, AusfallRow
 )
 
 
@@ -817,6 +993,84 @@ def render_readme_stammstrecke_block(
     )
 
 
+def render_readme_ausfaelle_live_block(
+    rows: list[AusfallRow],
+    *,
+    now: datetime,
+) -> str:
+    """Render the inner content of the ``STATS:AUSFAELLE_LIVE`` README block.
+
+    The live block reflects the rolling 60-minute window — i.e., the
+    same :data:`FEED_WINDOW` the delay block uses — so the two
+    snapshots are scoped to the same observation horizon. Most ticks
+    will show ``0``; that explicit zero is the operational signal
+    "currently no cancellations on the Stammstrecke", which is more
+    useful than hiding the row entirely on a quiet day.
+    """
+
+    header = (
+        "> _Letzte 60 Minuten – automatisch aktualisiert vom Workflow_ "
+        "[`update-cycle.yml`](.github/workflows/update-cycle.yml).\n"
+        "\n"
+        "| Kennzahl | Wert |\n"
+        "| -------- | ---- |\n"
+    )
+    return (
+        header
+        + f"| Ausfälle (gesamt) | {len(rows)} |\n"
+        + f"| Letzte Aktualisierung | {now.strftime('%Y-%m-%d %H:%M %Z')} |\n"
+    )
+
+
+def render_readme_ausfaelle_block(
+    rows: list[AusfallRow],
+    *,
+    now: datetime,
+    window_days: int = DEFAULT_README_WINDOW_DAYS,
+) -> str:
+    """Render the inner content of the ``STATS:AUSFAELLE`` README block.
+
+    30-day rolling cancellation count for the README snapshot. Returns
+    the body that goes *between* the two HTML-comment markers,
+    terminated by a newline so the closing marker stays on its own
+    line. The block is always rendered (even at zero cancellations)
+    because an explicit ``0`` is the operationally-meaningful "stable
+    service" signal — hiding it would conflate "stable" with "data
+    missing".
+    """
+
+    header = (
+        f"> _Letzte {window_days} Tage – automatisch aktualisiert vom Workflow_ "
+        "[`update-cycle.yml`](.github/workflows/update-cycle.yml).\n"
+        "\n"
+        "| Kennzahl | Wert |\n"
+        "| -------- | ---- |\n"
+    )
+    # Sorted by count (descending) so the most-cancelled line surfaces
+    # first; the secondary sort by line name keeps the rendering
+    # stable when two lines tie. Limited to top 3 to keep the README
+    # block compact.
+    line_count: dict[str, int] = defaultdict(int)
+    for row in rows:
+        line_count[row.line] += 1
+    top_lines = sorted(
+        line_count.items(), key=lambda pair: (-pair[1], pair[0])
+    )[:3]
+    if top_lines:
+        top_lines_cell = ", ".join(
+            f"{escape_markdown_cell(normalise_markdown_text(line, max_len=_DASHBOARD_FIELD_MAX_LEN))} ({count})"
+            for line, count in top_lines
+        )
+    else:
+        top_lines_cell = "_keine_"
+    return (
+        header
+        + f"| Ausfälle (gesamt) | {_format_thousands(len(rows))} |\n"
+        + f"| Häufigste Linien | {top_lines_cell} |\n"
+        + f"| Letzte Aktualisierung | {_format_window_timestamp(now)} |\n"
+    )
+
+
 # Marker pair contract: the patcher rewrites whatever sits between
 # ``<!-- STATS:<NAME>:BEGIN -->`` and ``<!-- STATS:<NAME>:END -->``.
 # Both markers MUST appear verbatim and on their own logical line in
@@ -910,19 +1164,24 @@ def collect_year_data(
     year: int,
     *,
     stats_dir: Path | None = None,
-) -> tuple[list[StammstreckeRow], list[StoerungRow]]:
+) -> tuple[list[StammstreckeRow], list[StoerungRow], list[AusfallRow]]:
     """Load and parse all stats CSVs for *year*.
 
-    The two CSVs are read independently — a missing or malformed
-    Stammstrecke file does not prevent the Störungen file from loading,
-    and vice versa.
+    The CSVs are read independently — a missing or malformed file
+    does not prevent the others from loading. A repo that has never
+    seen a cancellation produces an empty ``ausfaelle_<YYYY>.csv``
+    (or no file at all); the parser returns ``[]`` in both shapes so
+    the dashboard renders a clean "_Keine Ausfälle erfasst._" row
+    instead of failing.
     """
     base = stats_dir if stats_dir is not None else DEFAULT_STATS_DIR
     sm_path = stats_path("stammstrecke", year, base_dir=base)
     st_path = stats_path("stoerungen", year, base_dir=base)
+    au_path = stats_path("ausfaelle", year, base_dir=base)
     sm_rows = _parse_stammstrecke_rows(_iter_csv_rows(sm_path, STAMMSTRECKE_HEADER))
     st_rows = _parse_stoerung_rows(_iter_csv_rows(st_path, STOERUNGEN_HEADER))
-    return sm_rows, st_rows
+    au_rows = _parse_ausfall_rows(_iter_csv_rows(au_path, AUSFAELLE_HEADER))
+    return sm_rows, st_rows, au_rows
 
 
 def write_dashboard(
@@ -1051,11 +1310,15 @@ def main(argv: list[str] | None = None) -> int:
     else:
         now = datetime.now(VIENNA_TZ)
 
-    sm_rows, st_rows = collect_year_data(args.year, stats_dir=args.stats_dir)
+    sm_rows, st_rows, au_rows = collect_year_data(
+        args.year, stats_dir=args.stats_dir
+    )
     LOGGER.info(
-        "Stats geladen: %d Stammstrecke-Zeilen, %d Störungs-Zeilen aus %s.",
+        "Stats geladen: %d Stammstrecke-Zeilen, %d Störungs-Zeilen, "
+        "%d Ausfall-Zeilen aus %s.",
         len(sm_rows),
         len(st_rows),
+        len(au_rows),
         sanitize_log_arg(str(args.stats_dir)),
     )
 
@@ -1073,12 +1336,14 @@ def main(argv: list[str] | None = None) -> int:
     else:
         sm_agg = aggregate_stammstrecke(sm_rows)
         st_agg = aggregate_stoerungen(st_rows)
+        au_agg = aggregate_ausfaelle(au_rows)
 
         markdown = render_markdown(
             year=args.year,
             generated_at=now,
             stammstrecke=sm_agg,
             stoerungen=st_agg,
+            ausfaelle=au_agg,
         )
 
         try:
@@ -1108,13 +1373,18 @@ def main(argv: list[str] | None = None) -> int:
     cutoff = now - timedelta(days=args.readme_window_days)
     extra_years = sorted({cutoff.year, now.year} - {args.year})
     window_sm: list[StammstreckeRow] = list(sm_rows)
+    window_au: list[AusfallRow] = list(au_rows)
     for extra_year in extra_years:
-        extra_sm, _ = collect_year_data(
+        extra_sm, _, extra_au = collect_year_data(
             extra_year, stats_dir=args.stats_dir
         )
         window_sm.extend(extra_sm)
+        window_au.extend(extra_au)
     sm_window = _filter_rows_by_window(
         window_sm, days=args.readme_window_days, now=now
+    )
+    au_window = _filter_rows_by_window(
+        window_au, days=args.readme_window_days, now=now
     )
     # Defense-in-depth: only patch the Stammstrecke marker when the
     # window actually carries rows. Without this gate, an unrelated
@@ -1144,6 +1414,24 @@ def main(argv: list[str] | None = None) -> int:
     sections["STAMMSTRECKE_LIVE"] = render_readme_stammstrecke_live_block(
         sm_live_window,
         now=now,
+    )
+    # Cancellation snapshots: always render — an explicit ``0`` is the
+    # operationally-meaningful "stable service" signal, so the README
+    # block is patched even when the window contains no cancellations.
+    # Gating on ``sm_window``/``sm_live_window`` (delay data present)
+    # ensures we still bail to "preserve existing README" when the
+    # repository has no statistics at all (fresh clone, missing CSVs).
+    au_live_window = _filter_rows_by_timedelta(
+        window_au, delta=FEED_WINDOW, now=now
+    )
+    sections["AUSFAELLE_LIVE"] = render_readme_ausfaelle_live_block(
+        au_live_window,
+        now=now,
+    )
+    sections["AUSFAELLE"] = render_readme_ausfaelle_block(
+        au_window,
+        now=now,
+        window_days=args.readme_window_days,
     )
     if not sm_window and not sm_live_window:
         LOGGER.info(
@@ -1179,10 +1467,13 @@ __all__ = [
     "README_MAX_BYTES",
     "README_PENDING_PLACEHOLDER",
     "STAMMSTRECKE_THRESHOLD_MINUTES",
+    "AusfallAggregate",
+    "AusfallRow",
     "StammstreckeAggregate",
     "StammstreckeRow",
     "StoerungAggregate",
     "StoerungRow",
+    "aggregate_ausfaelle",
     "aggregate_stammstrecke",
     "aggregate_stoerungen",
     "collect_year_data",
@@ -1190,6 +1481,8 @@ __all__ = [
     "patch_readme_stats",
     "render_hour_bars",
     "render_markdown",
+    "render_readme_ausfaelle_block",
+    "render_readme_ausfaelle_live_block",
     "render_readme_stammstrecke_block",
     "render_weekday_bars",
     "write_dashboard",

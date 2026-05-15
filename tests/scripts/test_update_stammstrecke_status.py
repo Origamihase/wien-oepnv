@@ -307,7 +307,11 @@ def test_collect_delays_includes_sbahn_and_skips_legs_without_realtime() -> None
         _trip(leg_name="REX 7", delay_minutes=20, category="REX"),
         # Long-distance train - must be ignored.
         _trip(leg_name="RJ 1", delay_minutes=25, category="RJ"),
-        # S-Bahn but cancelled — ignored (no signal at all).
+        # S-Bahn but cancelled — captured by the full observation
+        # collector (with ``cancelled=True``), but the legacy thin
+        # wrapper :func:`_collect_sbahn_delays_minutes` strips
+        # cancellations so the delay-only sequence stays consistent
+        # with its pre-cancellation-tracking contract.
         _trip(leg_name="S 3", delay_minutes=15, cancelled=True),
         # S-Bahn without rtTime — status unknown, dropped from the
         # sample (was implicitly on-time / 0.0 until 2026-05-11; that
@@ -1463,6 +1467,120 @@ def test_collect_sbahn_leg_observations_skips_legs_without_name() -> None:
     assert observations == []
 
 
+# ---- Cancellation capture --------------------------------------------------
+
+
+def test_collect_sbahn_leg_observations_captures_cancelled_legs() -> None:
+    """Cancelled legs are surfaced as observations with ``cancelled=True``.
+
+    Pre-2026-05-15 the collector silently dropped cancelled legs (they
+    have no usable delay signal, so the delay-only pipeline could not
+    consume them). The cancellation-tracking rework routes them through
+    the same pending-trip ledger so the finalise pass can split them
+    out into ``data/stats/ausfaelle_<YYYY>.csv``.
+    """
+
+    trips = [
+        _trip(leg_name="S 1", delay_minutes=4, leg_origin_time="08:00:00"),
+        _trip(leg_name="S 2", cancelled=True, leg_origin_time="08:15:00"),
+    ]
+    observations = script._collect_sbahn_leg_observations(trips)
+    assert len(observations) == 2
+    by_name = {obs.name: obs for obs in observations}
+    assert by_name["S1"].cancelled is False
+    assert by_name["S1"].delay_minutes == 4.0
+    assert by_name["S2"].cancelled is True
+    # Cancelled observations carry a placeholder ``0.0`` so the dataclass
+    # parses; the finalise pass MUST NOT fold this value into a delay
+    # mean. Pinning the value here protects against a future refactor
+    # surfacing a non-zero placeholder into the delay ledger.
+    assert by_name["S2"].delay_minutes == 0.0
+
+
+def test_collect_sbahn_leg_observations_captures_origin_cancelled() -> None:
+    """The ``Origin.cancelled`` flag also triggers a cancellation observation.
+
+    VAO splits the cancellation flag across two possible locations:
+    the leg itself (``leg.cancelled``) and the leg's origin
+    (``leg.Origin.cancelled``). Both shapes are observed in
+    production payloads; both must reach the cancellation ledger.
+    """
+
+    trip = _trip(leg_name="S 1", delay_minutes=4)
+    # Surgically mark only the Origin as cancelled (clear the leg-level
+    # flag the helper sets when ``cancelled=True``).
+    trip["LegList"]["Leg"][0]["Origin"]["cancelled"] = True
+    observations = script._collect_sbahn_leg_observations([trip])
+    assert len(observations) == 1
+    assert observations[0].cancelled is True
+
+
+def test_leg_is_cancelled_pins_strict_boolean_contract() -> None:
+    """The cancellation flag MUST be a strict Python ``True``.
+
+    Refusing fuzzy spellings (``"true"`` / ``1``) defends against a
+    poisoned cache file forging cancellations to flood the ledger.
+    """
+
+    assert script._leg_is_cancelled({"cancelled": True}) is True
+    assert script._leg_is_cancelled({"Origin": {"cancelled": True}}) is True
+    # Fuzzy strings / truthy numbers MUST NOT count as cancellations.
+    assert script._leg_is_cancelled({"cancelled": "true"}) is False
+    assert script._leg_is_cancelled({"cancelled": 1}) is False
+    assert script._leg_is_cancelled({}) is False
+
+
+def test_pending_trip_json_round_trip_preserves_cancelled() -> None:
+    """The pending-trip ledger round-trips the ``cancelled`` flag.
+
+    A cron tick that observes a cancellation, persists the ledger,
+    crashes, and resumes on the next tick MUST re-load the
+    cancellation flag — otherwise the train would silently demote to
+    a "regular delay observation" and end up in the wrong CSV at
+    finalisation time.
+    """
+
+    trip = script._PendingTrip(
+        direction="Meidling",
+        name="S1",
+        scheduled=datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
+        latest_delay_minutes=0.0,
+        last_seen_at=datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ),
+        cancelled=True,
+    )
+    payload = script._trip_to_json(trip)
+    assert payload["cancelled"] is True
+    parsed = script._trip_from_json(payload)
+    assert parsed is not None
+    assert parsed.cancelled is True
+
+
+def test_pending_trip_json_legacy_entry_loads_as_not_cancelled() -> None:
+    """Backwards-compat: a ledger entry without the ``cancelled`` key
+    loads as a regular (non-cancelled) observation.
+
+    The repo carries cached ``pending_trips.json`` files written before
+    the cancellation-tracking schema; on first start after the upgrade
+    the loader MUST accept those entries verbatim rather than discard
+    them. Discarding would force every in-flight train back to "fresh
+    observation" status, breaking the latest-wins delay-reading
+    contract.
+    """
+
+    legacy_payload = {
+        "direction": "Meidling",
+        "name": "S1",
+        "scheduled": "2026-05-09T08:30:00+02:00",
+        "latest_delay_minutes": 3.5,
+        "last_seen_at": "2026-05-09T08:00:00+02:00",
+        # NO ``cancelled`` key — pre-2026-05-15 ledger shape.
+    }
+    parsed = script._trip_from_json(legacy_payload)
+    assert parsed is not None
+    assert parsed.cancelled is False
+    assert parsed.latest_delay_minutes == 3.5
+
+
 def test_observe_legs_inserts_new_trip_with_now_as_last_seen() -> None:
     """A fresh observation must land in state with ``last_seen_at = now``."""
     now = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
@@ -1739,6 +1857,225 @@ def test_main_end_to_end_finalises_with_latest_delay_across_two_ticks(
     # just committed so a stray VAO re-emission cannot resurrect it.
     finalised_after_tick3 = script._load_recently_finalised(finalised_path)
     assert len(finalised_after_tick3) == 1
+
+
+def test_main_routes_cancelled_trains_to_ausfaelle_csv(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """A cancelled S-Bahn train is finalised into the cancellation CSV.
+
+    End-to-end: a cron tick observes a cancelled train scheduled in
+    the future. The pending-trip ledger carries the ``cancelled=True``
+    flag across ticks. A later tick (post-departure-time) finalises
+    the train; the finalise pass routes it to ``append_ausfall_row``
+    instead of ``append_stammstrecke_row`` so the delay CSV is NOT
+    polluted with a placeholder zero-delay row and the cancellation
+    CSV captures the discrete event.
+    """
+
+    state_path = tmp_path / "pending_trips.json"
+    monkeypatch.setattr(script, "PENDING_TRIPS_PATH", state_path)
+    finalised_path = tmp_path / "recently_finalised.json"
+    monkeypatch.setattr(script, "RECENTLY_FINALISED_PATH", finalised_path)
+    monkeypatch.setattr(
+        script, "PENDING_TRIPS_LOCK_PATH", tmp_path / "pending_trips.lock"
+    )
+
+    stammstrecke_calls: list[dict[str, Any]] = []
+    ausfaelle_calls: list[dict[str, Any]] = []
+
+    def fake_stammstrecke(
+        *,
+        timestamp: datetime,
+        direction: str,
+        delay_minutes: float,
+        stats_dir: Path | None = None,
+    ) -> bool:
+        del stats_dir
+        stammstrecke_calls.append(
+            {
+                "timestamp": timestamp,
+                "direction": direction,
+                "delay_minutes": delay_minutes,
+            }
+        )
+        return True
+
+    def fake_ausfall(
+        *,
+        timestamp: datetime,
+        direction: str,
+        line: str,
+        stats_dir: Path | None = None,
+    ) -> bool:
+        del stats_dir
+        ausfaelle_calls.append(
+            {
+                "timestamp": timestamp,
+                "direction": direction,
+                "line": line,
+            }
+        )
+        return True
+
+    monkeypatch.setattr(script, "append_stammstrecke_row", fake_stammstrecke)
+    monkeypatch.setattr(script, "append_ausfall_row", fake_ausfall)
+
+    def fake_query(
+        session: Any, direction: Any, *, when: datetime, timeout: int = 0
+    ) -> list[dict[str, Any]]:
+        del session, timeout
+        if direction.target_label != "Meidling":
+            return []
+        # Train is observed up to its scheduled departure; after that
+        # VAO no longer returns it.
+        if when >= datetime(2026, 5, 9, 8, 45, tzinfo=VIENNA_TZ):
+            return []
+        return [
+            _trip(
+                leg_name="S 1",
+                cancelled=True,
+                leg_origin_date="2026-05-09",
+                leg_origin_time="08:45:00",
+            )
+        ]
+
+    monkeypatch.setattr(script, "_query_trips", fake_query)
+
+    # --- Tick 1: observe the cancellation; not yet finalised ---------------
+    tick1 = datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ)
+    monkeypatch.setattr(script, "_now_vienna", lambda: tick1)
+    assert script.main() == 0
+    assert stammstrecke_calls == []
+    assert ausfaelle_calls == []
+    state_after_tick1 = script._load_pending_trips(state_path)
+    assert len(state_after_tick1) == 1
+    only = next(iter(state_after_tick1.values()))
+    assert only.cancelled is True
+
+    # --- Tick 2: post-departure-time; finalise to ausfaelle CSV ------------
+    tick2 = datetime(2026, 5, 9, 8, 50, tzinfo=VIENNA_TZ)
+    monkeypatch.setattr(script, "_now_vienna", lambda: tick2)
+    assert script.main() == 0
+    # The cancelled train MUST land in the ausfaelle ledger, NOT the
+    # delay ledger (which would otherwise be polluted with a placeholder
+    # ``delay_minutes=0.0`` row).
+    assert stammstrecke_calls == []
+    assert len(ausfaelle_calls) == 1
+    persisted = ausfaelle_calls[0]
+    assert persisted["direction"] == "Meidling"
+    assert persisted["line"] == "S1"
+    assert persisted["timestamp"] == datetime(
+        2026, 5, 9, 8, 45, tzinfo=VIENNA_TZ
+    )
+
+
+def test_main_mixed_finalisation_keeps_delay_and_cancellation_distinct(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """When the same tick finalises both a delayed train and a
+    cancelled train, each lands in its own CSV ledger.
+
+    Anti-regression: a naive "always write one stammstrecke row per
+    direction per tick (aggregating ALL trains)" would have folded
+    the cancelled train's placeholder ``0.0`` into the delay mean —
+    biasing it downward. The split MUST happen before the mean
+    computation.
+    """
+
+    state_path = tmp_path / "pending_trips.json"
+    monkeypatch.setattr(script, "PENDING_TRIPS_PATH", state_path)
+    finalised_path = tmp_path / "recently_finalised.json"
+    monkeypatch.setattr(script, "RECENTLY_FINALISED_PATH", finalised_path)
+    monkeypatch.setattr(
+        script, "PENDING_TRIPS_LOCK_PATH", tmp_path / "pending_trips.lock"
+    )
+
+    stammstrecke_calls: list[dict[str, Any]] = []
+    ausfaelle_calls: list[dict[str, Any]] = []
+
+    def fake_stammstrecke(
+        *,
+        timestamp: datetime,
+        direction: str,
+        delay_minutes: float,
+        stats_dir: Path | None = None,
+    ) -> bool:
+        del stats_dir
+        stammstrecke_calls.append(
+            {
+                "timestamp": timestamp,
+                "direction": direction,
+                "delay_minutes": delay_minutes,
+            }
+        )
+        return True
+
+    def fake_ausfall(
+        *,
+        timestamp: datetime,
+        direction: str,
+        line: str,
+        stats_dir: Path | None = None,
+    ) -> bool:
+        del stats_dir
+        ausfaelle_calls.append(
+            {"timestamp": timestamp, "direction": direction, "line": line}
+        )
+        return True
+
+    monkeypatch.setattr(script, "append_stammstrecke_row", fake_stammstrecke)
+    monkeypatch.setattr(script, "append_ausfall_row", fake_ausfall)
+
+    def fake_query(
+        session: Any, direction: Any, *, when: datetime, timeout: int = 0
+    ) -> list[dict[str, Any]]:
+        del session, timeout
+        if direction.target_label != "Meidling":
+            return []
+        # Past-departure tick → empty response (already-departed
+        # trains no longer surface in the lookahead).
+        if when >= datetime(2026, 5, 9, 8, 50, tzinfo=VIENNA_TZ):
+            return []
+        return [
+            _trip(
+                leg_name="S 1",
+                delay_minutes=6,
+                leg_origin_date="2026-05-09",
+                leg_origin_time="08:30:00",
+            ),
+            _trip(
+                leg_name="S 2",
+                cancelled=True,
+                leg_origin_date="2026-05-09",
+                leg_origin_time="08:45:00",
+            ),
+        ]
+
+    monkeypatch.setattr(script, "_query_trips", fake_query)
+
+    # Tick 1 → both trains land in the pending ledger.
+    monkeypatch.setattr(
+        script, "_now_vienna", lambda: datetime(2026, 5, 9, 8, 0, tzinfo=VIENNA_TZ)
+    )
+    assert script.main() == 0
+
+    # Tick 2 → both scheduled times are in the past; finalise.
+    monkeypatch.setattr(
+        script,
+        "_now_vienna",
+        lambda: datetime(2026, 5, 9, 8, 50, tzinfo=VIENNA_TZ),
+    )
+    assert script.main() == 0
+    # Delay CSV holds exactly one row for the delayed S1 — the
+    # cancelled S2's placeholder ``0.0`` MUST NOT contaminate the mean.
+    assert len(stammstrecke_calls) == 1
+    assert stammstrecke_calls[0]["delay_minutes"] == 6.0
+    # Cancellation CSV holds exactly one row for the cancelled S2.
+    assert len(ausfaelle_calls) == 1
+    assert ausfaelle_calls[0]["line"] == "S2"
 
 
 # ---- Hardening: H1 / M1 / M2 / M3 / M4 / L3 -------------------------------

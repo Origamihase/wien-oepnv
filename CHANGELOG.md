@@ -5,42 +5,56 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
-* **Security (Reader-side non-finite literal defence — symmetric
-  closure of the writer-pin family, 2026-05-15)**:
-  * Python's default ``json.loads`` lenient mode accepted three
-    non-standard literal tokens (``NaN`` / ``Infinity`` /
-    ``-Infinity``) AND silently IEEE-754-overflowed scientific-
-    notation tokens like ``1e1000`` to ``float('inf')`` via the
-    default ``parse_float=float`` hook. The 2026-05-14 / 2026-05-15
-    rounds pinned ``allow_nan=False`` on every committed-to-main
-    writer, but every reader's ``json.loads(raw)`` call was still
-    unprotected. A planted on-disk literal (compromised CI runner,
-    parallel orchestrator atomic state swap, partial flush + power
-    loss, hostile PR landing a tampered fixture) propagated
-    silently as ``float('nan')`` / ``float('inf')`` through
-    Python-level computation: ``nan != nan`` is ``True`` (breaks
-    every dedup invariant), ``nan + 5`` is ``nan`` (silent
-    arithmetic poisoning), AND the round-trip back to the writer
-    hits ``allow_nan=False`` and crashes the cron pipeline
-    mid-write with no recovery.
-  * Canonical helpers ``_reject_non_finite_constant`` /
-    ``_reject_non_finite_float`` in ``src/utils/files.py`` raise
-    ``json.JSONDecodeError`` on every non-finite literal at the
-    parse boundary (the ``parse_float`` hook closes the
-    scientific-notation-overflow bypass that ``parse_constant``
-    alone does not catch — ``1e1000`` is a JSON NUMBER token, not
-    a CONSTANT token, so ``parse_constant`` is never invoked for
-    it). Eleven committed-state-file readers in ``src/`` now pin
-    both hooks: ``read_capped_json``, ``_read_capped_json``
-    (stations / Vienna polygons), ``_load_state`` (first_seen),
-    ``read_cache`` + ``write_cache`` existing-check + ``read_status``
-    (provider caches), ``MonthlyQuota.load``, ``load_stations``,
-    ``load_tiles_from_env`` + ``load_tiles_from_file``,
-    ``_load_stations`` (validator).
-  * Companion ``tests/test_sentinel_committed_reader_non_finite_drift
-    .py`` (31 tests) enumerates the inventory + behavioural PoCs
-    proving the writer-pin + reader-pin together close the
-    round-trip at both ends.
+* **Stammstrecke-Ausfälle — Neue Statistik aus bestehenden VAO-Abfragen
+  (2026-05-15)**:
+  * Der Hbf-`/departureBoard`-Reader (`scripts/update_stammstrecke_hbf.py`)
+    und der Legacy-`/trip`-Reader (`scripts/update_stammstrecke_status.py`)
+    haben Abfahrten mit `cancelled: true` bislang **stillschweigend
+    verworfen**: das `delay_minutes`-Signal war `None`, und die
+    Sammelschicht filterte solche Beobachtungen vor dem Ledger
+    heraus. Folge: jeder tatsächliche Zugausfall auf der Stammstrecke
+    war für die Statistik unsichtbar.
+  * Neue Datei `data/stats/ausfaelle_<YYYY>.csv` mit Schema
+    `timestamp, weekday, hour, direction, line` — eine Zeile pro
+    ausgefallenem Zug. Beide Reader leiten Ausfälle nun durch die
+    bestehende Pending-Trip-Identity-Key-Dedup (`(direction, name,
+    scheduled)`) und durch den Recently-finalised-Schutz, sodass
+    derselbe physische Ausfall NIE über mehrere Cron-Ticks doppelt
+    gezählt wird. Der Cancellation-Check läuft jetzt VOR dem
+    `rtTime`-Filter, weil VAO bei ausgefallenen Zügen regelmäßig
+    keinen Realtime-Wert mehr ausliefert — der frühere Filter hat
+    die Cancellation-Signale gemeinsam mit den No-rtTime-
+    Beobachtungen verworfen.
+  * `_PendingTrip` trägt jetzt ein `cancelled: bool`-Flag, das
+    auch im Pending-Ledger (`cache/stammstrecke/pending_trips.json`)
+    serialisiert wird. Legacy-Einträge ohne das Feld laden als
+    `cancelled=False` (Backwards-Compat). Der Finalize-Pass teilt
+    pro Cron-Tick die ausgelaufenen Pending-Trips in zwei Buckets:
+    delay-tragende Beobachtungen fließen wie bisher in eine
+    aggregierte CSV-Zeile pro Richtung+Jahr
+    (`stammstrecke_<YYYY>.csv`); Ausfälle erzeugen jeweils eine
+    eigene Zeile in `ausfaelle_<YYYY>.csv`, damit der Dashboard-
+    Aggregator sie als diskrete Ereignisse zählen kann.
+  * **Dashboard** (`docs/statistik.md`): neue Sektion `## Ausfälle`
+    mit Tabellen pro Richtung und pro Linie sowie Wochentag-/
+    Stunde-Balken. Die `Kennzahlen auf einen Blick`-Tabelle zeigt
+    zusätzlich die Jahressumme. **README**: zwei neue Marker
+    `STATS:AUSFAELLE_LIVE` (60-Min-Fenster) und `STATS:AUSFAELLE`
+    (30-Tage-Fenster). Die Ausfälle-Marker werden bedingungslos
+    aktualisiert, auch bei `0` Beobachtungen — ein explizites
+    `0` ist das operationell wertvolle „stabiler Betrieb"-Signal
+    und unterscheidet sich klar von „Daten fehlen".
+  * **Tests**: neue Pin-Tests in `tests/test_utils_stats.py`
+    (Writer + CSV-Formula-Injection-Defang), `tests/scripts/
+    test_update_stammstrecke_status.py` (Collector + Pending-Trip-
+    JSON-Roundtrip + Backwards-Compat-Loader + End-to-End-Finalize-
+    Routing inkl. „mixed delay+cancellation in einem Tick"),
+    `tests/scripts/test_update_stammstrecke_hbf.py` (Collector +
+    Cancellation-Bool-vs.-String + No-rtTime-mit-Cancellation),
+    `tests/scripts/test_generate_markdown_stats.py` (Aggregator,
+    Renderer, README-Block) und
+    `tests/scripts/test_generate_markdown_stats_readme.py` (volle
+    Marker-Integration mit explizitem 0-Render).
 * **Stammstrecke-Feed-Trigger — Legacy-Label-Auflösung im
   Compute-Pfad (2026-05-15)**:
   * Der Trigger-Compute in `src.feed.stammstrecke.compute_

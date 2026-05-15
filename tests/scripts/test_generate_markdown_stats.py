@@ -149,6 +149,92 @@ def test_aggregate_stammstrecke_counts_observations_and_threshold() -> None:
     assert agg.by_direction == {"Meidling": 2, "Floridsdorf": 1}
 
 
+def test_aggregate_ausfaelle_counts_per_dimension() -> None:
+    """Cancellations aggregate by weekday, hour, direction, and line.
+
+    Each :class:`AusfallRow` represents exactly one cancelled train
+    (the writer deduplicates upstream via the pending-trip ledger),
+    so the per-dimension counts MUST equal the row count along each
+    axis. No averaging — cancellations are discrete events.
+    """
+    rows = [
+        script.AusfallRow(
+            timestamp=datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ),
+            weekday="Mo",
+            hour=7,
+            direction="Meidling",
+            line="S1",
+        ),
+        script.AusfallRow(
+            timestamp=datetime(2026, 5, 4, 8, 15, tzinfo=VIENNA_TZ),
+            weekday="Mo",
+            hour=8,
+            direction="Meidling",
+            line="S1",
+        ),
+        script.AusfallRow(
+            timestamp=datetime(2026, 5, 5, 14, 0, tzinfo=VIENNA_TZ),
+            weekday="Di",
+            hour=14,
+            direction="Praterstern",
+            line="S2",
+        ),
+    ]
+    agg = script.aggregate_ausfaelle(rows)
+    assert agg.total_cancellations == 3
+    assert agg.by_weekday == {"Mo": 2, "Di": 1}
+    assert agg.by_hour == {7: 1, 8: 1, 14: 1}
+    assert agg.by_direction == {"Meidling": 2, "Praterstern": 1}
+    assert agg.by_line == {"S1": 2, "S2": 1}
+
+
+def test_parse_ausfall_rows_skips_malformed_rows() -> None:
+    """A row with an unparseable timestamp is silently dropped.
+
+    Same corruption-tolerance contract as the other parsers: a single
+    hand-edited bad row must never break the dashboard regeneration.
+    """
+    raw = [
+        {
+            "timestamp": "not-a-timestamp",
+            "weekday": "Mo",
+            "hour": "07",
+            "direction": "Meidling",
+            "line": "S1",
+        },
+        {
+            "timestamp": "2026-05-04T07:30:00+02:00",
+            "weekday": "Mo",
+            "hour": "07",
+            "direction": "Meidling",
+            "line": "S1",
+        },
+    ]
+    rows = script._parse_ausfall_rows(raw)
+    assert len(rows) == 1
+    assert rows[0].direction == "Meidling"
+    assert rows[0].line == "S1"
+
+
+def test_parse_ausfall_rows_uses_fallbacks_for_missing_fields() -> None:
+    """Empty direction/line round-trip as the explicit ``unbekannt`` sentinel."""
+    raw = [
+        {
+            "timestamp": "2026-05-04T07:30:00+02:00",
+            "weekday": "",
+            "hour": "",
+            "direction": "",
+            "line": "",
+        },
+    ]
+    rows = script._parse_ausfall_rows(raw)
+    assert len(rows) == 1
+    assert rows[0].direction == "unbekannt"
+    assert rows[0].line == "unbekannt"
+    assert rows[0].weekday == "Mo"  # 2026-05-04 is a Monday
+    assert rows[0].hour == 7
+
+
 def test_aggregate_stoerungen_counts_per_dimension() -> None:
     rows = [
         script.StoerungRow(
@@ -198,17 +284,22 @@ def test_collect_year_data_reads_well_formed_files(tmp_path: Path) -> None:
             ("2026-05-04T08:00:00+02:00", "Mo", "08", "Wiener Linien", "Karlsplatz"),
         ],
     )
-    sm, st = script.collect_year_data(2026, stats_dir=tmp_path)
+    sm, st, au = script.collect_year_data(2026, stats_dir=tmp_path)
     assert len(sm) == 2
     assert len(st) == 2
+    # No ausfaelle CSV in this test → empty list (the parser tolerates
+    # a missing file the same way it tolerates a missing
+    # stammstrecke/stoerungen file).
+    assert au == []
     assert sm[0].direction == "Meidling"
     assert st[0].location_name == "Wien Floridsdorf"
 
 
 def test_collect_year_data_returns_empty_when_files_missing(tmp_path: Path) -> None:
-    sm, st = script.collect_year_data(2026, stats_dir=tmp_path / "nope")
+    sm, st, au = script.collect_year_data(2026, stats_dir=tmp_path / "nope")
     assert sm == []
     assert st == []
+    assert au == []
 
 
 def test_collect_year_data_skips_oversized_file(
@@ -220,7 +311,7 @@ def test_collect_year_data_skips_oversized_file(
         ("2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "5.50"),
     ] * 10
     _write_csv(_stammstrecke_csv(tmp_path), stats_utils.STAMMSTRECKE_HEADER, payload_rows)
-    sm, _ = script.collect_year_data(2026, stats_dir=tmp_path)
+    sm, _, _ = script.collect_year_data(2026, stats_dir=tmp_path)
     assert sm == []
 
 
@@ -230,7 +321,7 @@ def test_collect_year_data_rejects_unexpected_header(tmp_path: Path) -> None:
         ("not", "the", "expected", "header", "row"),
         [("a", "b", "c", "d", "e")],
     )
-    sm, _ = script.collect_year_data(2026, stats_dir=tmp_path)
+    sm, _, _ = script.collect_year_data(2026, stats_dir=tmp_path)
     assert sm == []
 
 
@@ -309,9 +400,11 @@ def test_render_markdown_includes_summary_table_and_sections() -> None:
         generated_at=datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
         stammstrecke=sm_agg,
         stoerungen=st_agg,
+        ausfaelle=script.AusfallAggregate(),
     )
     assert md.startswith("# Wien ÖPNV — Statistik 2026")
     assert "## Stammstrecke" in md
+    assert "## Ausfälle" in md
     assert "## Störungen" in md
     assert "ÖBB" in md
     assert md.endswith("\n")
@@ -340,8 +433,27 @@ def test_render_markdown_is_byte_stable_across_repeat_calls() -> None:
         total_disruptions=3,
     )
     when = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
-    a = script.render_markdown(year=2026, generated_at=when, stammstrecke=sm_agg, stoerungen=st_agg)
-    b = script.render_markdown(year=2026, generated_at=when, stammstrecke=sm_agg, stoerungen=st_agg)
+    au_agg = script.AusfallAggregate(
+        by_weekday={"Mo": 1},
+        by_hour={7: 1},
+        by_direction={"Meidling": 1},
+        by_line={"S1": 1},
+        total_cancellations=1,
+    )
+    a = script.render_markdown(
+        year=2026,
+        generated_at=when,
+        stammstrecke=sm_agg,
+        stoerungen=st_agg,
+        ausfaelle=au_agg,
+    )
+    b = script.render_markdown(
+        year=2026,
+        generated_at=when,
+        stammstrecke=sm_agg,
+        stoerungen=st_agg,
+        ausfaelle=au_agg,
+    )
     assert a == b
 
 
@@ -351,8 +463,13 @@ def test_render_markdown_handles_empty_aggregates_gracefully() -> None:
         generated_at=datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
         stammstrecke=script.StammstreckeAggregate(),
         stoerungen=script.StoerungAggregate(),
+        ausfaelle=script.AusfallAggregate(),
     )
     assert "_Keine Daten verfügbar._" in md
+    # The cancellations section renders explicit "_Keine Ausfälle erfasst._"
+    # placeholders for both the directions table and the lines table —
+    # an unconditional zero is the operationally-meaningful signal.
+    assert "_Keine Ausfälle erfasst._" in md
 
 
 def test_render_markdown_global_avg_uses_observation_weighted_mean() -> None:
@@ -383,11 +500,121 @@ def test_render_markdown_global_avg_uses_observation_weighted_mean() -> None:
         generated_at=datetime(2026, 5, 10, 16, 35, tzinfo=VIENNA_TZ),
         stammstrecke=sm_agg,
         stoerungen=script.StoerungAggregate(),
+        ausfaelle=script.AusfallAggregate(),
     )
     # 3*(2/3) + 23*(4/23) = 6.0 → 6.0/26 ≈ 0.231 → "0.2 min"
     assert "| ⌀ Verspätung (2026) | 0.2 min |" in md
     # Anti-regression: the previous macro-average rendered "0.4 min".
     assert "| ⌀ Verspätung (2026) | 0.4 min |" not in md
+
+
+def test_render_markdown_summary_includes_cancellation_count() -> None:
+    """The summary table surfaces the year-wide cancellation count.
+
+    Operators reading the top of the dashboard MUST see the number
+    of cancellations at a glance, side-by-side with the other
+    Stammstrecke headline metrics.
+    """
+    au_agg = script.AusfallAggregate(
+        by_weekday={"Mo": 1, "Di": 2},
+        by_hour={7: 1, 14: 2},
+        by_direction={"Meidling": 2, "Praterstern": 1},
+        by_line={"S1": 2, "S2": 1},
+        total_cancellations=3,
+    )
+    md = script.render_markdown(
+        year=2026,
+        generated_at=datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
+        stammstrecke=script.StammstreckeAggregate(),
+        stoerungen=script.StoerungAggregate(),
+        ausfaelle=au_agg,
+    )
+    assert "| Stammstrecke-Ausfälle (2026) | 3 |" in md
+
+
+def test_render_markdown_ausfalle_section_renders_direction_and_line_tables() -> None:
+    """The Ausfälle section lists per-direction and per-line counts.
+
+    Both breakdowns surface in the dashboard so operators can spot
+    "S1 fails twice as often as S2" or "Meidling-bound trains cancel
+    more often than Praterstern-bound" without needing to scrape the
+    raw CSV.
+    """
+    au_agg = script.AusfallAggregate(
+        by_weekday={"Mo": 1, "Di": 2},
+        by_hour={7: 1, 14: 2},
+        by_direction={"Meidling": 2, "Praterstern": 1},
+        by_line={"S1": 2, "S2": 1},
+        total_cancellations=3,
+    )
+    md = script.render_markdown(
+        year=2026,
+        generated_at=datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
+        stammstrecke=script.StammstreckeAggregate(),
+        stoerungen=script.StoerungAggregate(),
+        ausfaelle=au_agg,
+    )
+    assert "### Ausfälle je Richtung" in md
+    assert "### Ausfälle je Linie" in md
+    # The direction table renders both directions with their counts.
+    assert "| Meidling | 2 |" in md
+    assert "| Praterstern | 1 |" in md
+    # The line table renders both lines with their counts.
+    assert "| S1 | 2 |" in md
+    assert "| S2 | 1 |" in md
+
+
+def test_render_readme_ausfaelle_live_block_zero_renders_explicit_zero() -> None:
+    """The live block renders ``0`` (not a placeholder) when no cancellations.
+
+    Anti-regression: an empty-data branch that swallowed the row would
+    conflate "stable service" with "data missing" in the README. The
+    block must always show a definitive count so operators can tell
+    the two states apart at a glance.
+    """
+    now = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
+    body = script.render_readme_ausfaelle_live_block([], now=now)
+    assert "| Ausfälle (gesamt) | 0 |" in body
+    assert "Letzte Aktualisierung" in body
+
+
+def test_render_readme_ausfaelle_block_renders_top_lines() -> None:
+    """The 30-day block surfaces the top 3 most-cancelled lines.
+
+    Provides at-a-glance operator signal in the README without
+    requiring a click through to the full dashboard. Sorted by count
+    descending so the most-cancelled line shows first; tie-broken by
+    line name for a stable render.
+    """
+    now = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
+    rows = [
+        script.AusfallRow(
+            timestamp=datetime(2026, 5, 1, 7, 30, tzinfo=VIENNA_TZ),
+            weekday="Fr",
+            hour=7,
+            direction="Meidling",
+            line="S1",
+        ),
+        script.AusfallRow(
+            timestamp=datetime(2026, 5, 2, 7, 30, tzinfo=VIENNA_TZ),
+            weekday="Sa",
+            hour=7,
+            direction="Meidling",
+            line="S1",
+        ),
+        script.AusfallRow(
+            timestamp=datetime(2026, 5, 3, 7, 30, tzinfo=VIENNA_TZ),
+            weekday="So",
+            hour=7,
+            direction="Praterstern",
+            line="S2",
+        ),
+    ]
+    body = script.render_readme_ausfaelle_block(rows, now=now)
+    assert "| Ausfälle (gesamt) | 3 |" in body
+    # S1 appears twice, S2 once → S1 wins.
+    assert "S1 (2)" in body
+    assert "S2 (1)" in body
 
 
 def test_render_markdown_summary_avg_renders_placeholder_when_empty() -> None:
@@ -400,6 +627,7 @@ def test_render_markdown_summary_avg_renders_placeholder_when_empty() -> None:
         generated_at=datetime(2026, 5, 10, 16, 35, tzinfo=VIENNA_TZ),
         stammstrecke=script.StammstreckeAggregate(),
         stoerungen=script.StoerungAggregate(),
+        ausfaelle=script.AusfallAggregate(),
     )
     assert "| ⌀ Verspätung (2026) | _keine Daten_ |" in md
 

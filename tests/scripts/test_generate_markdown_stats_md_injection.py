@@ -156,7 +156,9 @@ def test_render_markdown_neutralises_poisoned_csv_row(tmp_path: Path) -> None:
     )
     csv_path.write_text(header + "\n" + row + "\n", encoding="utf-8")
 
-    sm_rows, st_rows = script.collect_year_data(2026, stats_dir=tmp_path)
+    sm_rows, st_rows, au_rows = script.collect_year_data(
+        2026, stats_dir=tmp_path
+    )
     assert len(st_rows) == 1, "PoC fixture row should round-trip"
     assert payload in st_rows[0].provider, "PoC: payload should reach the renderer"
 
@@ -165,6 +167,7 @@ def test_render_markdown_neutralises_poisoned_csv_row(tmp_path: Path) -> None:
         generated_at=datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
         stammstrecke=script.aggregate_stammstrecke(sm_rows),
         stoerungen=script.aggregate_stoerungen(st_rows),
+        ausfaelle=script.aggregate_ausfaelle(au_rows),
     )
 
     # 1. Markdown link syntax must not survive.

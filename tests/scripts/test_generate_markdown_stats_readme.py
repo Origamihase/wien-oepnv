@@ -308,6 +308,53 @@ def _seed_csvs(stats_dir: Path, *, year: int = 2026) -> None:
     )
 
 
+def _seed_ausfall_csv(stats_dir: Path, *, year: int = 2026) -> None:
+    """Write a minimal ``ausfaelle_<year>.csv`` to exercise the
+    cancellation rendering path.
+    """
+    stats_dir.mkdir(parents=True, exist_ok=True)
+    (stats_dir / f"ausfaelle_{year}.csv").write_text(
+        ",".join(("timestamp", "weekday", "hour", "direction", "line"))
+        + "\n"
+        + "2026-05-09T08:00:00+02:00,Sa,8,Meidling,S1\n"
+        + "2026-05-09T08:30:00+02:00,Sa,8,Praterstern,S2\n",
+        encoding="utf-8",
+    )
+
+
+def _readme_with_ausfaelle_markers() -> str:
+    """README scaffold with all four marker pairs the script emits.
+
+    The Ausfälle markers are unconditionally emitted by ``main()`` so
+    operators can distinguish "stable service" (0) from "data missing"
+    (placeholder). A README missing the Ausfälle markers logs a
+    warning but does not fail the dashboard regeneration.
+    """
+    return (
+        "# Wien ÖPNV Feed\n"
+        "\n"
+        "Some hand-authored intro paragraph that must not be touched.\n"
+        "\n"
+        "<!-- STATS:STAMMSTRECKE_LIVE:BEGIN -->\n"
+        "_Platzhalter Stammstrecke LIVE._\n"
+        "<!-- STATS:STAMMSTRECKE_LIVE:END -->\n"
+        "\n"
+        "<!-- STATS:STAMMSTRECKE:BEGIN -->\n"
+        "_Platzhalter Stammstrecke._\n"
+        "<!-- STATS:STAMMSTRECKE:END -->\n"
+        "\n"
+        "<!-- STATS:AUSFAELLE_LIVE:BEGIN -->\n"
+        "_Platzhalter Ausfälle LIVE._\n"
+        "<!-- STATS:AUSFAELLE_LIVE:END -->\n"
+        "\n"
+        "<!-- STATS:AUSFAELLE:BEGIN -->\n"
+        "_Platzhalter Ausfälle._\n"
+        "<!-- STATS:AUSFAELLE:END -->\n"
+        "\n"
+        "Trailing user-authored content.\n"
+    )
+
+
 def test_main_writes_readme_with_30_day_window(tmp_path: Path) -> None:
     stats_dir = tmp_path / "stats"
     _seed_csvs(stats_dir)
@@ -337,6 +384,84 @@ def test_main_writes_readme_with_30_day_window(tmp_path: Path) -> None:
     assert "| Beobachtungen (gesamt) | 2 |" in new_text
     assert "| Durchschnittliche Verspätung | 8.5 min |" in new_text
     assert "| Kritische Verspätungen (> 9 min) | 1 |" in new_text
+
+
+def test_main_writes_ausfaelle_readme_block(tmp_path: Path) -> None:
+    """Cancellations seeded in the CSV surface in the README ``AUSFAELLE``
+    markers.
+
+    Pins the full plumbing: CSV → collect_year_data → window filter →
+    render_readme_ausfaelle_block → patch_readme_stats. A change in
+    any link breaks this test.
+    """
+    stats_dir = tmp_path / "stats"
+    _seed_csvs(stats_dir)
+    _seed_ausfall_csv(stats_dir)
+    readme = tmp_path / "README.md"
+    readme.write_text(_readme_with_ausfaelle_markers(), encoding="utf-8")
+    output = tmp_path / "statistik.md"
+
+    rc = script.main(
+        [
+            "--year",
+            "2026",
+            "--stats-dir",
+            str(stats_dir),
+            "--output",
+            str(output),
+            "--readme-path",
+            str(readme),
+            "--readme-window-days",
+            "30",
+            "--now-iso",
+            "2026-05-09T12:00:00+02:00",
+        ]
+    )
+    assert rc == 0
+    new_text = readme.read_text(encoding="utf-8")
+    # Ausfälle: 2 cancellations (S1 + S2) in the window. The 30-day
+    # block displays the count and the most-frequent line(s).
+    assert "| Ausfälle (gesamt) | 2 |" in new_text
+    assert "S1 (1)" in new_text
+    assert "S2 (1)" in new_text
+
+
+def test_main_renders_zero_ausfaelle_explicitly_when_no_cancellations(
+    tmp_path: Path,
+) -> None:
+    """A run with zero cancellations still patches the AUSFAELLE
+    markers with an explicit ``0`` count.
+
+    Anti-regression: if the cancellation block were gated behind
+    "only patch when non-empty", an operator could not tell "0
+    cancellations" from "data missing" from the README. The explicit
+    zero is the operationally-meaningful "stable service" signal.
+    """
+    stats_dir = tmp_path / "stats"
+    _seed_csvs(stats_dir)  # delay data but NO ausfaelle CSV
+    readme = tmp_path / "README.md"
+    readme.write_text(_readme_with_ausfaelle_markers(), encoding="utf-8")
+    output = tmp_path / "statistik.md"
+
+    rc = script.main(
+        [
+            "--year",
+            "2026",
+            "--stats-dir",
+            str(stats_dir),
+            "--output",
+            str(output),
+            "--readme-path",
+            str(readme),
+            "--readme-window-days",
+            "30",
+            "--now-iso",
+            "2026-05-09T12:00:00+02:00",
+        ]
+    )
+    assert rc == 0
+    new_text = readme.read_text(encoding="utf-8")
+    assert "| Ausfälle (gesamt) | 0 |" in new_text
 
 
 def test_main_skips_readme_when_window_is_empty(
