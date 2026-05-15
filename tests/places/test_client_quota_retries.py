@@ -55,10 +55,13 @@ class _MockResponse:
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
         yield self._content
 
-    def json(self) -> Any:
+    def json(self, **kwargs: Any) -> Any:
+        # Forward parse_constant / parse_float kwargs to match the
+        # production response.json(**hooks) call shape (Round 1503
+        # sibling defence).
         import json
 
-        return json.loads(self._content)
+        return json.loads(self._content, **kwargs)
 
     def close(self) -> None:
         pass

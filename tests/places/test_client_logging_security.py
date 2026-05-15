@@ -26,7 +26,9 @@ class _MockResponse:
         self._content_consumed = True
         self._content = b""
 
-    def json(self) -> dict[str, Any]:
+    def json(self, **_kwargs: Any) -> dict[str, Any]:
+        # Accept parse_constant / parse_float kwargs that the
+        # production caller pins (Round 1503 sibling defence).
         return self._payload
 
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:

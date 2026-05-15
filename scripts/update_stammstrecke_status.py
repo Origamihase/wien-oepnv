@@ -133,7 +133,7 @@ from src.utils.circuit_breaker import (  # noqa: E402
     CircuitBreaker,
     CircuitBreakerOpen,
 )
-from src.utils.files import atomic_write, read_capped_text  # noqa: E402
+from src.utils.files import atomic_write, loads_finite, read_capped_text  # noqa: E402
 from src.utils.http import request_safe, session_with_retries  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.stations import canonical_name, display_name  # noqa: E402
@@ -574,7 +574,17 @@ def _load_pending_trips(path: Path) -> dict[str, _PendingTrip]:
     if not raw.strip():
         return {}
     try:
-        payload = _json_lib.loads(raw)
+        # Security: ``loads_finite`` pins parse_constant + parse_float
+        # hooks (Round 1503 sibling) that reject NaN / Infinity / 1e1000
+        # literals planted into a poisoned ``cache/stammstrecke/
+        # pending_trips.json`` (compromised CI runner / partial flush +
+        # power loss / parallel orchestrator atomic state swap). Without
+        # the hooks the planted literal propagates as ``float('nan')`` /
+        # ``float('inf')`` past the downstream ``_trip_from_json``
+        # validators (which use ``isinstance(value, (int, float))``
+        # checks that ``True`` on ``float('nan')``) and round-trip-
+        # crashes the writer pin (Round 1485) on next save.
+        payload = loads_finite(raw)
     except (ValueError, RecursionError) as exc:
         LOGGER.warning(
             "Pending-Trips-State korrupt (%s) — starte mit leerem Ledger.",
@@ -693,7 +703,15 @@ def _load_recently_finalised(path: Path) -> dict[str, datetime]:
     if not raw.strip():
         return {}
     try:
-        payload = _json_lib.loads(raw)
+        # Security: same parse_constant + parse_float hook pin as the
+        # pending-trips ledger above — both sidecars share the same
+        # disk-tainted threat model (Round 1503 sibling). A poisoned
+        # ``cache/stammstrecke/recently_finalised.json`` would otherwise
+        # land ``float('nan')`` in the timestamp field, breaking the
+        # subsequent ``datetime.fromisoformat`` shape check at the
+        # ``str`` instance test below but still leaking through the
+        # writer-pin round-trip the next time the ledger is rewritten.
+        payload = loads_finite(raw)
     except (ValueError, RecursionError) as exc:
         LOGGER.warning(
             "Recently-Finalised-Ledger korrupt (%s) — starte mit leerem Set.",
@@ -979,7 +997,13 @@ def _query_trips(
     content = response.content
 
     try:
-        payload = _json_lib.loads(content)
+        # Security: ``loads_finite`` pins parse_constant + parse_float
+        # hooks (Round 1503 sibling). A compromised HAFAS VAO upstream /
+        # MITM serving NaN / Infinity / 1e1000 literals in a trip
+        # payload would otherwise propagate ``float('nan')`` /
+        # ``float('inf')`` into delay-minute arithmetic and round-trip-
+        # crash the writer pin (Round 1485) on pending-trip persistence.
+        payload = loads_finite(content)
     except (ValueError, RecursionError) as exc:
         # Drift defence (JSON Depth-Bomb Round 5): a depth-bomb body
         # passes the size cap (it can be only a few KiB on the wire) but
@@ -1545,7 +1569,14 @@ def _decode_error_body(exc: requests.HTTPError) -> Mapping[str, Any] | None:
     if len(raw) == 0 or len(raw) > _ERROR_BODY_MAX_BYTES:
         return None
     try:
-        body = _json_lib.loads(raw)
+        # Security: ``loads_finite`` pins parse_constant + parse_float
+        # hooks (Round 1503 sibling). VAO error envelopes carry an
+        # ``errorCode`` field that the caller strict-matches against a
+        # short alphabet, but the broader envelope can carry additional
+        # numeric fields under a future schema — pin the canonical
+        # defence here too so a hostile error response does not seed
+        # non-finite floats into the diagnostic-logging surface.
+        body = loads_finite(raw)
     except (ValueError, RecursionError, UnicodeDecodeError):
         return None
     if not isinstance(body, Mapping):

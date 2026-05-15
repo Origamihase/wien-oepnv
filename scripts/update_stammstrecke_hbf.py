@@ -146,7 +146,6 @@ of mixed-shape CSV rows during the one-shot transition window; the
 
 from __future__ import annotations
 
-import json as _json_lib
 import logging
 import re
 import statistics
@@ -171,6 +170,7 @@ from src.utils.circuit_breaker import (  # noqa: E402
     CircuitBreaker,
     CircuitBreakerOpen,
 )
+from src.utils.files import loads_finite  # noqa: E402
 from src.utils.http import request_safe  # noqa: E402
 from src.utils import logging as utils_logging  # noqa: E402
 from src.utils.stats import (  # noqa: E402
@@ -527,7 +527,14 @@ def _query_departure_board(
     content = response.content
 
     try:
-        payload = _json_lib.loads(content)
+        # Security: ``loads_finite`` pins parse_constant + parse_float
+        # hooks (Round 1503 sibling) that reject NaN / Infinity / 1e1000
+        # literals from a compromised HAFAS VAO upstream / MITM. Without
+        # the hooks a planted non-finite literal in a departure-board
+        # payload propagates ``float('nan')`` / ``float('inf')`` into
+        # latency / delay arithmetic and round-trip-crashes the writer
+        # pin (Round 1485) on pending-trip state persistence.
+        payload = loads_finite(content)
     except (ValueError, RecursionError) as exc:
         # Drift defence (JSON Depth-Bomb): a depth-bomb body passes the
         # size cap but blows the recursion limit on parse. Re-raise as

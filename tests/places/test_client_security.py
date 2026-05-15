@@ -58,10 +58,12 @@ class InfiniteStreamResponse:
         while True:
             yield chunk
 
-    def json(self) -> Any:
+    def json(self, **_kwargs: Any) -> Any:
         # If the client calls .json() directly (vulnerable), it will hang or OOM.
         # But we can't easily simulate OOM in unit test without killing the runner.
         # So we raise a special exception to signal "tried to read all".
+        # Accept and ignore parse_constant / parse_float kwargs (Round 1503
+        # sibling defence).
         raise RuntimeError("VULNERABILITY: Client called .json() on infinite stream!")
 
     def close(self) -> None:
@@ -85,7 +87,7 @@ class PrivateIPResponse:
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
         yield self._content
 
-    def json(self) -> Any:
+    def json(self, **_kwargs: Any) -> Any:
         return {}
 
     def close(self) -> None:
@@ -108,7 +110,7 @@ class LargeHeaderResponse:
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
         yield b"{}"
 
-    def json(self) -> Any:
+    def json(self, **_kwargs: Any) -> Any:
         return {}
 
     def close(self) -> None:

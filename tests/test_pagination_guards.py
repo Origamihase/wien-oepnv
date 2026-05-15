@@ -36,9 +36,10 @@ def test_infinite_pagination_guard() -> None:
         raw._connection = MagicMock()
         raw._connection.__class__.__name__ = "MockConnection"
 
-        def json(self) -> Any:
+        def json(self, **kwargs: Any) -> Any:
+            # Forward parse_constant / parse_float kwargs (Round 1503 sibling).
             import json
-            return json.loads(self._content.decode())
+            return json.loads(self._content.decode(), **kwargs)
 
         def iter_content(self, chunk_size: int) -> Iterator[bytes]:
             yield self._content

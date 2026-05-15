@@ -37,6 +37,7 @@ from urllib.parse import urlparse
 import requests
 
 from ..utils.circuit_breaker import CircuitBreaker, CircuitBreakerOpen
+from ..utils.files import _reject_non_finite_constant, _reject_non_finite_float
 from ..utils.http import request_safe, session_with_retries
 from ..utils.logging import sanitize_log_arg
 
@@ -379,7 +380,16 @@ class OSMOverpassClient:
             raise OSMOverpassError(f"Overpass returned HTTP {response.status_code}")
 
         try:
-            payload = response.json()
+            # Security: pin parse_constant + parse_float hooks (Round 1503
+            # sibling). Without the hooks a compromised OSM Overpass
+            # upstream / MITM serving crafted JSON propagates
+            # ``float('nan')`` / ``float('inf')`` into element-coordinate
+            # parsing — the writer-pin round-trip (Round 1485) catches
+            # the corruption mid-write and crashes the cron pipeline.
+            payload = response.json(
+                parse_constant=_reject_non_finite_constant,
+                parse_float=_reject_non_finite_float,
+            )
         except (
             ValueError,
             json.JSONDecodeError,

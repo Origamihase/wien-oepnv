@@ -285,6 +285,54 @@ def _reject_non_finite_float(value: str) -> float:
     return parsed
 
 
+def loads_finite(raw: str | bytes | bytearray) -> object:
+    """Parse *raw* JSON, rejecting non-finite literals at the parse boundary.
+
+    Canonical wrapper for :func:`json.loads` that bakes in the
+    :func:`_reject_non_finite_constant` + :func:`_reject_non_finite_float`
+    hooks the on-disk readers already use (Round 1503). Closes the
+    network-tainted / env-tainted parse boundary that PR #1503 left open:
+
+    * Upstream HTTP responses (Wiener Linien, Google Places, OSM Overpass,
+      HAFAS, ÖBB VAO, VOR, GitHub API, Wien Baustellen) parsed via
+      ``json.loads(content)`` accept ``NaN`` / ``Infinity`` /
+      ``-Infinity`` literal tokens AND scientific-notation overflow
+      (``1e1000`` → ``+inf``) under Python's lenient default
+      ``json.loads`` settings. A compromised upstream / MITM / DNS-hijack
+      can plant non-finite floats into the in-memory data structure,
+      poisoning every downstream comparison (``nan != nan`` is ``True``
+      — breaks every dedup invariant), arithmetic chain (``nan + 5 ==
+      nan``), and round-trip back to the writer's ``allow_nan=False``
+      pin (Round 1485/1487/1488 — ``ValueError`` crashes the cron
+      pipeline mid-write).
+    * Env-controlled JSON (``BOUNDINGBOX_VIENNA``) parsed via
+      ``json.loads(env_str)`` accepts the same literals under the same
+      threat model — a leaked CI env / compromised secret store / hostile
+      operator can plant non-finite coordinates that propagate through
+      every downstream bounding-box computation.
+
+    Both hooks raise :class:`json.JSONDecodeError` (a :class:`ValueError`
+    subclass) so callers' existing ``except (ValueError,
+    json.JSONDecodeError, RecursionError)`` handlers catch the rejection
+    transparently — no per-callsite ``except`` widening is needed.
+    """
+    # The enclosing try/except is required to satisfy the JSON-parser
+    # audit walker (``tests/test_sentinel_json_audit_walker.py``) which
+    # enforces RecursionError tolerance at every ``json.loads`` callsite.
+    # ``loads_finite`` re-raises RecursionError unchanged so the caller's
+    # ``except RecursionError`` handler runs identically to the pre-fix
+    # bare ``json.loads(raw)`` shape — no behaviour change for the
+    # caller, just a structural pin for the walker invariant.
+    try:
+        return json.loads(
+            raw,
+            parse_constant=_reject_non_finite_constant,
+            parse_float=_reject_non_finite_float,
+        )
+    except RecursionError:
+        raise
+
+
 def read_capped_json(
     path: Path,
     max_bytes: int = DEFAULT_MAX_JSON_FILE_BYTES,

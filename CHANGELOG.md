@@ -5,6 +5,49 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Security: Network/Env/Sidecar Non-Finite Literal Drift Closure — 18 JSON
+  Parser Sites (2026-05-15)**:
+  * Closes the **symmetric companion** of PR #1503's committed-state-file
+    reader closure across three orthogonal taint channels:
+    13 network-tainted HTTP responses (`wl_fetch._get_json`,
+    `places.client._post`/`_format_error_message`,
+    `hafas_client._fetch_hafas_location`,
+    `osm_client.OSMOverpassClient._fetch_payload`,
+    `reporting._GithubIssueReporter.submit`,
+    `check_overpass_status._evaluate_response`,
+    `verify_vor_access_id`, `update_baustellen_cache._load_json_from_content`,
+    `update_stammstrecke_hbf` + `update_stammstrecke_status` VAO endpoints),
+    2 env-tainted `BOUNDINGBOX_VIENNA` parsers
+    (`fetch_google_places_stations._parse_bounding_box`,
+    `update_station_directory._parse_bounding_box`), and 3 disk-sidecar
+    state readers missed by PR #1503 (`build_feed._read_state_capped`,
+    `update_stammstrecke_status._load_pending_trips` /
+    `_load_recently_finalised`).
+  * Without these pins a compromised upstream / DNS-hijack / MITM /
+    leaked-CI-env / hostile-operator can plant `NaN` / `Infinity` /
+    `-Infinity` / `1e1000` literals at any of these parse boundaries.
+    The lenient-mode parser returns a Python structure with
+    `float('nan')` / `float('inf')` inside, poisoning comparisons
+    (`nan != nan` is True — breaks dedup invariants), arithmetic
+    (`nan + x` is nan — silently corrupts latency averages and delay
+    calculations), and round-tripping back to the writer pin
+    (`allow_nan=False` from Round 1485/1487/1488/1491) — the cron
+    pipeline crashes mid-write at the next persist.
+  * New canonical helper `loads_finite()` in `src/utils/files.py`
+    (thin shim over `json.loads` that bakes in the
+    `_reject_non_finite_constant` + `_reject_non_finite_float` hooks
+    PR #1503 established). New callsites should use `loads_finite()`
+    rather than calling `json.loads()` directly; `response.json()`
+    sites pass the hooks as kwargs.
+  * Comprehensive test coverage in
+    `tests/test_sentinel_network_tainted_non_finite_drift.py` (38
+    tests): 5 canonical-helper behavioural tests, 18 inventory pins
+    (source-grep each enumerated site for the hook), per-site
+    behavioural PoCs across NaN / Infinity / scientific-notation
+    overflow + finite-round-trip regression guards, plus the writer-
+    reader round-trip symmetry proof.
+  * Marker: SENTINEL_NETWORK_TAINTED_NON_FINITE_DRIFT.
+
 * **Stammstrecke-Ausfälle — Neue Statistik aus bestehenden VAO-Abfragen
   (2026-05-15)**:
   * Der Hbf-`/departureBoard`-Reader (`scripts/update_stammstrecke_hbf.py`)

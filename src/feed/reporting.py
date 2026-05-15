@@ -20,7 +20,11 @@ from .config import LOG_TIMEZONE
 from .logging import diagnostics_log_path, error_log_path, prune_log_file
 
 from ..utils.env import get_bool_env, read_secret
-from ..utils.files import atomic_write
+from ..utils.files import (
+    _reject_non_finite_constant,
+    _reject_non_finite_float,
+    atomic_write,
+)
 from ..utils.http import request_safe, session_with_retries, validate_http_url
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
 from ..utils.text import escape_markdown, escape_markdown_cell, safe_markdown_codespan
@@ -1081,7 +1085,17 @@ class _GithubIssueReporter:
         if response.status_code >= 400:
             detail: str = response.text
             try:
-                error_payload: object = response.json()
+                # Security: pin parse_constant + parse_float hooks (Round
+                # 1503 sibling). A compromised GitHub API response /
+                # MITM-redirected error envelope serving NaN / Infinity /
+                # 1e1000 literals would otherwise propagate ``float('nan')``
+                # / ``float('inf')`` into the error-detail processing
+                # pipeline; the writer-pin round-trip would crash any
+                # downstream code that ever serialises the payload.
+                error_payload: object = response.json(
+                    parse_constant=_reject_non_finite_constant,
+                    parse_float=_reject_non_finite_float,
+                )
             except (ValueError, RecursionError):
                 # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
                 # served by a compromised upstream / DNS-hijack / MITM.
@@ -1122,7 +1136,14 @@ class _GithubIssueReporter:
 
         issue_url: str | None = None
         try:
-            data: object = response.json()
+            # Security: same parse_constant + parse_float hook pin as the
+            # error-status branch above — the success-path issue payload
+            # could equally carry NaN / Infinity literals under a hostile
+            # GHE proxy / MITM threat model.
+            data: object = response.json(
+                parse_constant=_reject_non_finite_constant,
+                parse_float=_reject_non_finite_float,
+            )
         except (ValueError, RecursionError):
             # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
             # served by a compromised upstream — see the analogous fix on

@@ -46,7 +46,7 @@ from src.places.diagnostics import permission_hint
 from src.places.merge import BoundingBox, MergeConfig, merge_places, load_stations
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
 from src.utils.env import load_default_env_files
-from src.utils.files import atomic_write, read_capped_text
+from src.utils.files import atomic_write, loads_finite, read_capped_text
 from src.utils.logging import sanitize_log_arg
 from src.utils.serialize import scrub_trojan_source_primitives
 from src.feed.config import InvalidPathError, validate_path
@@ -183,9 +183,20 @@ def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
     # a clean "Configuration error"). Mirrors the canonical contract from
     # the sibling ``update_station_directory.py:_parse_bounding_box``.
     try:
-        data = json.loads(raw)
+        # Security: ``loads_finite`` pins parse_constant + parse_float
+        # hooks (Round 1503 sibling). An env-controlled
+        # ``BOUNDINGBOX_VIENNA`` planted via leaked CI env / compromised
+        # secret store / hostile operator could otherwise seed
+        # ``float('nan')`` / ``float('inf')`` into Google Places tile
+        # bounds via the downstream ``float(data["min_lat"])`` coercion
+        # — every place-fetch URL constructed from the bounds carries
+        # the non-finite value and the writer-pin round-trip (Round
+        # 1485) crashes the cron pipeline on first persist.
+        data = loads_finite(raw)
     except (json.JSONDecodeError, RecursionError) as exc:
         raise ValueError("BOUNDINGBOX_VIENNA must be valid JSON") from exc
+    if not isinstance(data, dict):
+        raise ValueError("BOUNDINGBOX_VIENNA must define min_lat/min_lng/max_lat/max_lng")
     try:
         return BoundingBox(
             min_lat=float(data["min_lat"]),

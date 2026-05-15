@@ -24,7 +24,10 @@ class _ErrorResponse:
         self.raw.connection = conn
         self.raw._connection = conn
 
-    def json(self) -> dict[str, Any]:
+    def json(self, **_kwargs: Any) -> dict[str, Any]:
+        # Accept and ignore parse_constant / parse_float kwargs the
+        # production callers pin (Round 1503 sibling defence). The
+        # test fixture's payload is finite by construction.
         return self._payload
 
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
@@ -67,7 +70,10 @@ class _TextErrorResponse:
         self.raw.connection = conn
         self.raw._connection = conn
 
-    def json(self) -> dict[str, Any]:
+    def json(self, **_kwargs: Any) -> dict[str, Any]:
+        # Accept and ignore parse_constant / parse_float kwargs (Round
+        # 1503 sibling defence). This fixture always raises to model
+        # the "non-JSON body" branch.
         raise ValueError("invalid json")
 
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:

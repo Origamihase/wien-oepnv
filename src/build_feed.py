@@ -968,7 +968,20 @@ def _read_state_capped(path: Path) -> dict[str, dict[str, Any]]:
                     path_fingerprint, MAX_STATE_FILE_BYTES,
                 )
                 return {}
-            existing = json.loads(raw_bytes)
+            # Security: mirror the parse_constant + parse_float hooks
+            # pinned at ``_load_state`` (Round 1503). The sibling reader
+            # ``_read_state_capped`` reads the SAME ``data/first_seen.json``
+            # state file on the save path (called from ``_save_state`` to
+            # merge with existing state) and faces the identical
+            # threat model — a planted NaN / Infinity / 1e1000 literal
+            # propagates as ``float('nan')`` / ``float('inf')`` through
+            # the merge logic and round-trip-crashes the writer pin
+            # (Round 1485) at the next ``allow_nan=False`` serialisation.
+            existing = json.loads(
+                raw_bytes,
+                parse_constant=_reject_non_finite_constant,
+                parse_float=_reject_non_finite_float,
+            )
             return existing if isinstance(existing, dict) else {}
     except FileNotFoundError:
         return {}

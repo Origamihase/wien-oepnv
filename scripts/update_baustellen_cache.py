@@ -33,7 +33,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from utils.cache import write_cache  # noqa: E402
-from utils.files import read_capped_json  # noqa: E402
+from utils.files import loads_finite, read_capped_json  # noqa: E402
 from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
 from utils.ids import make_guid  # noqa: E402
 from utils.logging import sanitize_log_arg  # noqa: E402
@@ -206,7 +206,15 @@ def configure_logging() -> None:
 
 def _load_json_from_content(content: bytes) -> dict[str, Any]:
     try:
-        payload = json.loads(content.decode("utf-8"))
+        # Security: ``loads_finite`` pins parse_constant + parse_float
+        # hooks (Round 1503 sibling) that reject NaN / Infinity / 1e1000
+        # literals from a compromised ``data.wien.gv.at`` upstream / MITM
+        # — the canonical-floor coordinate validator at
+        # ``_build_location`` (Round 2026-05-14) rejects NaN ONCE, but
+        # the rejection happens AFTER the planted float already poisoned
+        # in-memory comparison sites and any non-coordinate float fields
+        # (e.g. road-segment length, severity score) leak through.
+        payload = loads_finite(content.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError, RecursionError) as exc:
         # Resilience: include ``RecursionError`` so a malicious or pathological
         # upstream serving deeply-nested JSON cannot crash the cron job.
