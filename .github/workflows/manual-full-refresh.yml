@@ -83,18 +83,24 @@ jobs:
             exit 1
           fi
 
-      # Stammstrecke median-delay monitor: writes cache/stammstrecke/events.json
-      # consumed by the feed builder, AND appends a CSV row to
-      # data/stats/stammstrecke_<YYYY>.csv. After the 2026-05-09 pyhafas->VOR
-      # pivot the script issues 2 VOR /trip requests per run (one per
-      # direction); the only auto-running VOR-API consumer in the project
-      # since the 2026-05-09 quota-conservation pass that removed
-      # ``update_vor_cache.py`` from the cron lane.
-      # MUST run BEFORE the feed build below — the feed reads the cache file
-      # produced here, so a wrong-order full-refresh would publish stale
-      # Stammstrecke data and only converge on the *next* refresh.
+      # Stammstrecke delay monitor. Since 2026-05-15 this is the
+      # ``/departureBoard``-based ``update_stammstrecke_hbf.py`` which
+      # queries Wien Hauptbahnhof once per run and classifies each
+      # departure into the ``Meidling`` / ``Floridsdorf`` directions via
+      # terminus whitelists. Writes one CSV row per direction to
+      # ``data/stats/stammstrecke_<YYYY>.csv``; the feed builder reads
+      # the CSV directly (see ``src/feed/stammstrecke.py``) so this step
+      # has no separate cache-file dependency.
+      #
+      # MUST NOT be swapped back to ``update_stammstrecke_status.py``
+      # without first purging ``cache/stammstrecke/pending_trips.json``
+      # — the two scripts use different ``scheduled`` semantics in the
+      # identity key (Hbf departure time vs train origin departure time)
+      # and concurrent persistence would book the same physical train
+      # under two different ledger keys, producing duplicate CSV rows
+      # at finalisation.
       - name: Refresh Stammstrecke status
-        run: python scripts/update_stammstrecke_status.py
+        run: python scripts/update_stammstrecke_hbf.py
 
       # ----- 2) Stationsverzeichnis aktualisieren -----
       # Die VOR-Stop-Liste wurde 2026-05-11 vollständig auf die
