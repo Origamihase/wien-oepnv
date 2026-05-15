@@ -197,12 +197,16 @@ jobs:
       # counter (``data/vor_request_count.json``) and SKIP the
       # Stammstrecke poll when a fresh run would breach the
       # contractual 100/day cap. The in-script ``_charge_one_request``
-      # guard (``update_stammstrecke_status.py:331``) is still active
-      # as a second-layer enforcer; this preflight makes the
-      # budget-exhausted state explicit at the top of the workflow
-      # log so operators can spot it without scraping the script's
-      # DEBUG output. ``--margin 2`` mirrors the 2 ``/trip`` requests
-      # the monitor makes per run.
+      # guard is still active as a second-layer enforcer; this
+      # preflight makes the budget-exhausted state explicit at the
+      # top of the workflow log so operators can spot it without
+      # scraping the script's DEBUG output.
+      #
+      # ``--margin 1`` mirrors the SINGLE ``/departureBoard`` request
+      # the Hauptbahnhof-based monitor makes per cron tick. (Pre-2026-
+      # 05-15 the legacy ``update_stammstrecke_status.py`` made TWO
+      # ``/trip`` calls per tick — one per direction — and the margin
+      # was 2.)
       - name: VAO quota pre-flight
         id: vor_preflight
         # ``continue-on-error: true`` — the preflight script
@@ -211,12 +215,23 @@ jobs:
         # gate on ``steps.vor_preflight.outputs.quota_ok`` controls
         # the API step below.
         continue-on-error: true
-        run: python scripts/preflight_quota_check.py --check vor --margin 2
+        run: python scripts/preflight_quota_check.py --check vor --margin 1
 
+      # Stammstrecke delay monitor. Since 2026-05-15 uses
+      # ``/departureBoard`` at Wien Hauptbahnhof
+      # (``update_stammstrecke_hbf.py``) which lifts the ``numF=6``
+      # capture ceiling that the legacy ``/trip``-based
+      # ``update_stammstrecke_status.py`` inherited from the VAO API.
+      # One ``/departureBoard`` poll returns ALL Stammstrecke trains
+      # in the 45-min duration window — a single API call per tick
+      # covers both directions (south = Meidling, north = Floridsdorf),
+      # classified via terminus whitelists. Rollback path: swap the
+      # script name back to ``update_stammstrecke_status.py`` and
+      # bump ``--margin`` above to ``2``.
       - name: Refresh Stammstrecke status
         if: ${{ steps.vor_preflight.outputs.quota_ok == 'true' }}
         continue-on-error: true
-        run: python scripts/update_stammstrecke_status.py
+        run: python scripts/update_stammstrecke_hbf.py
 
       # ----- Feed build (no API call — pure consumer of caches) -----------
 
