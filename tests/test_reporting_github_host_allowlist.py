@@ -57,7 +57,12 @@ def test_is_trusted_github_api_accepts_ghe_with_allowlist(
         # Wrong path (not /api/v3 nor /api/graphql).
         "https://github.example.com/api/v4",
         "https://github.example.com/repos/x/y",
-        # Plain HTTP (not allowed for credential transport).
+        # Plaintext HTTP (TLS-strip credential leak — see
+        # tests/test_sentinel_github_api_url_https_drift.py for the
+        # full threat model).
+        "http://api.github.com",
+        "http://api.github.com/",
+        # Non-http/https schemes — rejected at the scheme-pin gate.
         "ftp://api.github.com",
         "",
         "not-a-url",

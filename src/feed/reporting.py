@@ -943,9 +943,28 @@ def _is_trusted_github_api(api_url: str) -> bool:
       means the public ``api.github.com`` endpoint is the only trusted one.
 
     Anything else is rejected so the token never leaves the process.
+
+    Security (HTTPS-only Validator Drift): the scheme is pinned to
+    ``https``. ``submit()`` attaches a ``Authorization: Bearer
+    <FEED_GITHUB_TOKEN>`` header on every request once the URL passes
+    this check; accepting ``http://`` would put the bearer token on the
+    wire in cleartext on the FIRST request (before the redirect-handler
+    in ``request_safe`` could strip the header on the cross-scheme
+    redirect), letting any on-path attacker — compromised network hop,
+    BGP hijack, hostile public WiFi, malicious transparent proxy, MITM
+    on the client's egress — capture the credential verbatim. The GitHub
+    REST API has been HTTPS-only since 2014 and ``api.github.com`` has
+    never accepted plaintext HTTP in production, so the tightening has
+    zero impact on real deployments. Mirrors the canonical HTTPS-only
+    pin established for the credential-bearing / content-publishing
+    siblings (``validate_public_feed_url`` in ``src/utils/http.py``,
+    ``_validated_vor_base_url`` / ``_validated_oebb_url`` /
+    ``_validated_wl_base`` in the provider modules).
     """
     parsed = urlparse(api_url)
-    if parsed.scheme.lower() not in ("http", "https"):
+    # Security: HTTPS only — see docstring above for the TLS-strip
+    # credential-leak threat model.
+    if parsed.scheme.lower() != "https":
         return False
     hostname = (parsed.hostname or "").lower()
     if not hostname:
