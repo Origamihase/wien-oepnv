@@ -25,6 +25,7 @@ This module pins:
 from __future__ import annotations
 
 from datetime import datetime, timedelta
+from typing import Any
 from unittest.mock import patch
 from zoneinfo import ZoneInfo
 
@@ -52,7 +53,7 @@ def _obs(
     )
 
 
-def _run(observations: list[StammstreckeObservation]) -> list[dict[str, object]]:
+def _run(observations: list[StammstreckeObservation]) -> list[dict[str, Any]]:
     with patch.object(
         feed_module,
         "read_recent_stammstrecke_observations",
