@@ -107,7 +107,7 @@ from src.utils.circuit_breaker import (  # noqa: E402
     CircuitBreakerOpen,
 )
 from src.utils.http import request_safe  # noqa: E402
-from src.utils.logging import sanitize_log_arg  # noqa: E402
+from src.utils import logging as utils_logging  # noqa: E402
 from src.utils.stats import append_stammstrecke_row  # noqa: E402
 
 # Reuse pending-state + ledger infrastructure from the legacy /trip-
