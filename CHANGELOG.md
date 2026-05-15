@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stammstrecke-Feed-Trigger — Legacy-Label-Auflösung im
+  Compute-Pfad (2026-05-15)**:
+  * Der Trigger-Compute in `src.feed.stammstrecke.compute_
+    stammstrecke_events` bucket'te Observations bisher nach
+    `obs.direction` (raw CSV value); der Backwards-Compat-Alias in
+    `DIRECTIONS_BY_LABEL` (Floridsdorf → Praterstern-`_Direction`)
+    war auf dem heißen Pfad nicht aktiv. Folge: CSV-Zeilen mit dem
+    Legacy-Label `"Floridsdorf"` (z.B. nach Backup-Restore, Partial-
+    Deploy oder Hand-Edit) wären silently im Loop ignoriert worden,
+    weil das Loop-Lookup `direction.target_label = "Praterstern"`
+    den `by_direction["Floridsdorf"]`-Bucket nicht aufsucht. Fix:
+    Observations werden via `DIRECTIONS_BY_LABEL` zur kanonischen
+    Direction aufgelöst, bevor sie in den Bucket landen.
+  * Neue Test-Suite `tests/test_feed_stammstrecke_trigger.py`
+    (9 Tests) pinnt die Trigger-Semantik: Happy-Path (2 Praterstern-
+    Zeilen > 9 min), Legacy-Compat (2 Floridsdorf-Zeilen fold-in),
+    Mixed (1+1), Threshold-Gate (Single-row + boundary-9.0),
+    Window-Cutoff (Beobachtung knapp außerhalb 1h), Empty-Input,
+    Direction-Isolation (beide Richtungen feuern parallel),
+    Constants-Pinning (`DELAY_THRESHOLD_MINUTES`, `FEED_WINDOW`).
 * **Stammstrecke-Monitor — Nord-Richtungs-Label umbenannt:
   "Floridsdorf" → "Praterstern" (2026-05-15)**:
   * Die CSV-Spalte `direction` und das `DIRECTION_LABEL_NORTHBOUND`
