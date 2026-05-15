@@ -40,7 +40,12 @@ KW_EXCLUDE = re.compile(
 )
 
 FACILITY_ONLY = re.compile(
-    r"\b(aufzug|aufzüge|aufzuege|lift|fahrstuhl|fahrtreppe|fahrtreppen|rolltreppe|rolltreppen|aufzugsinfo|fahrtreppeninfo)\b",
+    # Match the facility root anywhere inside a German compound noun
+    # (``Personenlift``, ``Aufzugsanlage``, ``Liftbetrieb`` etc.) —
+    # the bare-root pattern with ``\b`` on both sides misses real
+    # ÖBB titles like ``Technische Störung des Personenlift``.
+    r"\b\w*(?:aufzug|aufz(?:ü|ue)ge|lift|fahrstuhl|"
+    r"fahrtreppen?(?:info)?|rolltreppen?|aufzugsinfo)\w*\b",
     re.IGNORECASE,
 )
 
