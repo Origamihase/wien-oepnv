@@ -826,6 +826,13 @@ def _persist_quota_to_disk() -> int:
                     try:
                         disk_count = int(data["requests"])
                     except (ValueError, TypeError):
+                        # Unparseable ``requests`` field (string,
+                        # ``null``, malformed) → fall through to the
+                        # default ``disk_count = 0``. The next write
+                        # rewrites the file with the canonical schema
+                        # so the corruption self-heals on the next
+                        # cron tick. Mirrors the silent-bail shape of
+                        # ``load_request_count`` for the same field.
                         pass
 
             # Security: clamp at 0 to defeat negative-count quota-bypass
