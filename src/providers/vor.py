@@ -102,18 +102,23 @@ _QUOTA_CACHE: dict[str, Any] = {"date": None, "count": 0, "unsaved_delta": 0}
 
 
 def _flush_quota_cache() -> None:
-    """Flush any unsaved request counts to disk on exit."""
+    """Flush any unsaved request counts to disk on exit.
+
+    Persists the in-memory ``unsaved_delta`` to disk WITHOUT recording a
+    new request. Pre-fix this function called :func:`save_request_count`,
+    which always increments ``unsaved_delta`` by ``1`` before persisting
+    — every script invocation that made any VOR call therefore booked
+    one phantom request beyond the actual API traffic. With 48 cron
+    ticks/day and 2 real ``/trip`` calls per tick, the bug inflated the
+    persisted counter from ``96`` to ``144`` requests/day, exhausting
+    the contractual ``100``/day VAO Start cap after roughly 33 ticks
+    and leaving the remaining ~15 hours of the day without
+    Stammstrecke observations. The CSV ledger gap that bug produced
+    visibly degraded the README "Letzte 60 Minuten" snapshot when one
+    of the affected hours was the most recent one.
+    """
     with _QUOTA_LOCK:
-        if _QUOTA_CACHE.get("unsaved_delta", 0) > 0:
-            original_batch = os.environ.get("WIEN_OEPNV_TEST_QUOTA_BATCH")
-            try:
-                os.environ["WIEN_OEPNV_TEST_QUOTA_BATCH"] = "1"
-                save_request_count()
-            finally:
-                if original_batch is not None:
-                    os.environ["WIEN_OEPNV_TEST_QUOTA_BATCH"] = original_batch
-                else:
-                    os.environ.pop("WIEN_OEPNV_TEST_QUOTA_BATCH", None)
+        _persist_quota_to_disk()
 
 atexit.register(_flush_quota_cache)
 
@@ -770,6 +775,108 @@ def load_request_count(bypass_cache: bool = False) -> tuple[str | None, int]:
     return (None, 0)
 
 
+def _persist_quota_to_disk() -> int:
+    """Persist any pending ``unsaved_delta`` to disk; **does not increment**.
+
+    Caller MUST hold :data:`_QUOTA_LOCK`. Returns the new on-disk total
+    (or the unchanged in-memory total when there was nothing to flush).
+
+    Split off from :func:`save_request_count` 2026-05-15 to fix a
+    quota-inflation bug: the previous :func:`_flush_quota_cache` invoked
+    :func:`save_request_count`, which incremented ``unsaved_delta`` by
+    one before flushing — every script invocation that made any VOR
+    call therefore booked one phantom request beyond the actual API
+    traffic. The split makes the persist path callable without that
+    side effect while keeping :func:`save_request_count` semantically
+    identical for every existing caller (increment-then-conditionally-
+    flush). All security invariants (TOCTOU-safe capped read, negative-
+    count clamp, atomic write, lock-failure quota-poison sentinel) live
+    in this helper now and are exercised through both entry points.
+    """
+    if _QUOTA_CACHE.get("unsaved_delta", 0) <= 0:
+        return cast(int, _QUOTA_CACHE.get("count", 0))
+
+    vienna_tz = ZoneInfo("Europe/Vienna")
+    now_local = datetime.now(vienna_tz)
+    date_iso = now_local.strftime("%Y-%m-%d")
+
+    # Ensure the parent directory exists before attempting to open the lock file.
+    # This prevents FileNotFoundError if the directory structure is missing.
+    REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
+
+    lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
+
+    try:
+        with (
+            lock_path.open("a+", encoding="utf-8") as lock_file,
+            file_lock(lock_file, exclusive=True),
+        ):
+            # Security: TOCTOU-safe size cap via read_capped_json.
+            disk_date = None
+            disk_count = 0
+            data = read_capped_json(
+                REQUEST_COUNT_FILE,
+                MAX_VOR_QUOTA_FILE_BYTES,
+                label="VOR quota",
+                logger=log,
+            )
+            if isinstance(data, dict):
+                disk_date = data.get("date")
+                if "requests" in data:
+                    try:
+                        disk_count = int(data["requests"])
+                    except (ValueError, TypeError):
+                        # Unparseable ``requests`` field (string,
+                        # ``null``, malformed) → fall through to the
+                        # default ``disk_count = 0``. The next write
+                        # rewrites the file with the canonical schema
+                        # so the corruption self-heals on the next
+                        # cron tick. Mirrors the silent-bail shape of
+                        # ``load_request_count`` for the same field.
+                        pass
+
+            # Security: clamp at 0 to defeat negative-count quota-bypass
+            # (mirrors load_request_count's clamp; see its comment block).
+            disk_count = max(0, disk_count)
+
+            if disk_date != date_iso:
+                disk_count = 0
+                _QUOTA_CACHE["count"] = 0
+            else:
+                # Update our memory cache to reflect exactly what's on disk right now
+                _QUOTA_CACHE["count"] = disk_count
+
+            # Add our unsaved delta to what is on disk.
+            new_total = disk_count + _QUOTA_CACHE["unsaved_delta"]
+
+            _QUOTA_CACHE["count"] = new_total
+            _QUOTA_CACHE["date"] = date_iso
+            _QUOTA_CACHE["unsaved_delta"] = 0
+
+            payload = {"date": date_iso, "requests": new_total}
+            try:
+                # Centralised atomic + ASCII-safe write —
+                # see ``_write_request_count_file`` for the
+                # Trojan-Source threat model.
+                _write_request_count_file(REQUEST_COUNT_FILE, payload)
+            except OSError:
+                log.critical("Failed to write to request count file. Quota mechanism poisoned.")
+                _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
+                _QUOTA_CACHE["unsaved_delta"] = 0
+                return MAX_REQUESTS_PER_DAY + 1
+    except (OSError, TimeoutError) as e:
+        # Sentinel: file/lock errors can carry attacker-controlled
+        # path fragments from a planted lockfile name; sanitise
+        # before logging.
+        log.warning(
+            "Failed to save request count (lock error): %s",
+            sanitize_log_arg(str(e)),
+        )
+        return MAX_REQUESTS_PER_DAY + 1
+
+    return cast(int, new_total)
+
+
 def save_request_count(now_ignored: datetime | None = None) -> int:
     # We ignore the passed 'now' to enforce UTC consistency internally.
     # But keep the signature compatible if callers pass it.
@@ -797,73 +904,7 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
 
         # Only perform expensive file I/O periodically (every X requests) or on the first request
         if current_total == 1 or _QUOTA_CACHE["unsaved_delta"] >= batch_limit or current_total >= MAX_REQUESTS_PER_DAY:
-            # Ensure the parent directory exists before attempting to open the lock file.
-            # This prevents FileNotFoundError if the directory structure is missing.
-            REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
-
-            lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
-
-            try:
-                with (
-                    lock_path.open("a+", encoding="utf-8") as lock_file,
-                    file_lock(lock_file, exclusive=True),
-                ):
-                        # Security: TOCTOU-safe size cap via read_capped_json.
-                        disk_date = None
-                        disk_count = 0
-                        data = read_capped_json(
-                            REQUEST_COUNT_FILE,
-                            MAX_VOR_QUOTA_FILE_BYTES,
-                            label="VOR quota",
-                            logger=log,
-                        )
-                        if isinstance(data, dict):
-                            disk_date = data.get("date")
-                            if "requests" in data:
-                                try:
-                                    disk_count = int(data["requests"])
-                                except (ValueError, TypeError):
-                                    pass
-
-                        # Security: clamp at 0 to defeat negative-count quota-bypass
-                        # (mirrors load_request_count's clamp; see its comment block).
-                        disk_count = max(0, disk_count)
-
-                        if disk_date != date_iso:
-                            disk_count = 0
-                            _QUOTA_CACHE["count"] = 0
-                        else:
-                            # Update our memory cache to reflect exactly what's on disk right now
-                            _QUOTA_CACHE["count"] = disk_count
-
-                        # Add our unsaved delta to what is on disk.
-                        new_total = disk_count + _QUOTA_CACHE["unsaved_delta"]
-
-                        _QUOTA_CACHE["count"] = new_total
-                        _QUOTA_CACHE["unsaved_delta"] = 0
-
-                        payload = {"date": date_iso, "requests": new_total}
-                        try:
-                            # Centralised atomic + ASCII-safe write —
-                            # see ``_write_request_count_file`` for the
-                            # Trojan-Source threat model.
-                            _write_request_count_file(REQUEST_COUNT_FILE, payload)
-                        except OSError:
-                            log.critical("Failed to write to request count file. Quota mechanism poisoned.")
-                            _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
-                            _QUOTA_CACHE["unsaved_delta"] = 0
-                            return MAX_REQUESTS_PER_DAY + 1
-            except (OSError, TimeoutError) as e:
-                # Sentinel: file/lock errors can carry attacker-controlled
-                # path fragments from a planted lockfile name; sanitise
-                # before logging.
-                log.warning(
-                    "Failed to save request count (lock error): %s",
-                    sanitize_log_arg(str(e)),
-                )
-                return MAX_REQUESTS_PER_DAY + 1
-
-            return cast(int, new_total)
+            return _persist_quota_to_disk()
 
         return cast(int, current_total)
 
