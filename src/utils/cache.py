@@ -13,7 +13,13 @@ from typing import Any
 from collections.abc import Callable
 
 from .env import get_bool_env
-from .files import atomic_write, safe_path_join, sanitize_filename
+from .files import (
+    _reject_non_finite_constant,
+    _reject_non_finite_float,
+    atomic_write,
+    safe_path_join,
+    sanitize_filename,
+)
 from .logging import sanitize_log_arg
 from .serialize import scrub_trojan_source_primitives
 
@@ -208,7 +214,21 @@ def read_cache(provider: str) -> list[Any]:
                     f"Cache-Datei zu groß (> {MAX_CACHE_FILE_BYTES} Bytes)",
                 )
                 return []
-            payload = json.loads(raw)
+            # Security: ``parse_constant`` + ``parse_float`` reject the
+            # canonical non-finite literal family. Mirrors the canonical
+            # defence pinned at :func:`src.utils.files.read_capped_json`
+            # so a planted ``NaN`` / ``Infinity`` / ``1e1000`` in a
+            # poisoned ``cache/<provider>/events.json`` is treated as a
+            # JSONDecodeError (corrupt cache, alert + skip) rather than
+            # propagating as ``float('nan')`` / ``float('inf')`` into the
+            # feed-build dedup pipeline (silent comparison bugs) and
+            # round-tripping back to ``write_cache``'s ``allow_nan=False``
+            # writer (ValueError → cron crash).
+            payload = json.loads(
+                raw,
+                parse_constant=_reject_non_finite_constant,
+                parse_float=_reject_non_finite_float,
+            )
     except FileNotFoundError:
         log.warning("Cache for provider '%s' not found at %s", provider, cache_file)
         _emit_cache_alert(provider, f"Cache-Datei fehlt ({cache_file})")
@@ -392,7 +412,19 @@ def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) 
                 if os.fstat(fh.fileno()).st_size <= MAX_CACHE_FILE_BYTES:
                     raw = fh.read(MAX_CACHE_FILE_BYTES + 1)
                     if len(raw) <= MAX_CACHE_FILE_BYTES:
-                        existing_data = json.loads(raw)
+                        # Security: reader-side non-finite rejection,
+                        # mirrors :func:`read_cache` above. A poisoned
+                        # existing cache with ``NaN`` / ``1e1000`` would
+                        # otherwise be parsed as a list of ``float('nan')``
+                        # items whose ``len(existing_data)`` enters the
+                        # degradation comparison verbatim — the planted
+                        # values cannot, but the degradation-guard codepath
+                        # is the failure mode this hook protects against.
+                        existing_data = json.loads(
+                            raw,
+                            parse_constant=_reject_non_finite_constant,
+                            parse_float=_reject_non_finite_float,
+                        )
                         if isinstance(existing_data, list) and len(existing_data) > 0:
                             if len(items) == 0:
                                 raise DataDegradationError(
@@ -547,7 +579,17 @@ def read_status(provider: str) -> dict[str, Any] | None:
                     provider, status_file, MAX_CACHE_FILE_BYTES,
                 )
                 return None
-            payload = json.loads(raw)
+            # Security: reader-side non-finite rejection. A poisoned
+            # ``cache/<provider>/last_run.json`` heartbeat carrying a
+            # ``NaN`` latency / ``1e1000`` retry-after would otherwise
+            # propagate as ``float('nan')`` / ``float('inf')`` into the
+            # operator heartbeat read AND round-trip to the writer's
+            # ``allow_nan=False`` pin (Round 1488) and crash the cron.
+            payload = json.loads(
+                raw,
+                parse_constant=_reject_non_finite_constant,
+                parse_float=_reject_non_finite_float,
+            )
     except FileNotFoundError:
         return None
     except (json.JSONDecodeError, OSError, RecursionError, UnicodeDecodeError) as exc:

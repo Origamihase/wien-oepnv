@@ -8,6 +8,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from collections.abc import Iterable, Iterator, Mapping
 
+from ..utils.files import (
+    _reject_non_finite_constant,
+    _reject_non_finite_float,
+)
+
 __all__ = ["Tile", "load_tiles_from_env", "load_tiles_from_file", "iter_tiles"]
 
 
@@ -89,7 +94,20 @@ def load_tiles_from_env(raw_value: str | None) -> list[Tile]:
     # and crashes the cron pipeline. Same canonical defence as the
     # network-sourced parsers in ``src/places/client.py``.
     try:
-        data = json.loads(raw_value)
+        # Security (reader-side non-finite literal defence): tile
+        # configs carry float-typed ``latitude`` / ``longitude`` fields
+        # which are downstream-validated by :class:`Tile` (a frozen
+        # dataclass). A planted ``NaN`` / ``Infinity`` / ``-Infinity`` /
+        # ``1e1000`` in the ``PLACES_TILES`` env value (operator-
+        # controlled env / leaked CI env / compromised secret store) is
+        # rejected at the parse boundary so the in-memory tile list
+        # never contains a non-finite coordinate that would crash the
+        # bounding-box / haversine calculations downstream.
+        data = json.loads(
+            raw_value,
+            parse_constant=_reject_non_finite_constant,
+            parse_float=_reject_non_finite_float,
+        )
     except (json.JSONDecodeError, RecursionError) as exc:
         raise ValueError("PLACES_TILES is not valid JSON") from exc
     if not isinstance(data, list):
@@ -127,7 +145,17 @@ def load_tiles_from_file(path: Path) -> list[Tile]:
     except OSError as exc:
         raise ValueError("Tile file is not readable") from exc
     try:
-        data = json.loads(raw_bytes)
+        # Security (reader-side non-finite literal defence): mirrors
+        # the env-source defence in :func:`load_tiles_from_env`. The
+        # on-disk path inherits the same operator-supplied-config threat
+        # model — a non-finite ``latitude`` / ``longitude`` in the tile
+        # file would otherwise propagate as ``float('nan')`` /
+        # ``float('inf')`` into the bounding-box / haversine math.
+        data = json.loads(
+            raw_bytes,
+            parse_constant=_reject_non_finite_constant,
+            parse_float=_reject_non_finite_float,
+        )
     except (json.JSONDecodeError, RecursionError, UnicodeDecodeError) as exc:
         raise ValueError("Tile file is not valid JSON") from exc
     if not isinstance(data, list):

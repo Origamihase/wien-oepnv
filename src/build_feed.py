@@ -54,7 +54,11 @@ from .utils.cache import (
     read_cache as _core_read_cache,
     register_cache_alert_hook,
 )
-from .utils.files import atomic_write
+from .utils.files import (
+    _reject_non_finite_constant,
+    _reject_non_finite_float,
+    atomic_write,
+)
 from .utils.http import validate_http_url
 from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
@@ -857,7 +861,31 @@ def _load_state() -> dict[str, dict[str, Any]]:
                             path_fingerprint, MAX_STATE_FILE_BYTES,
                         )
                         return {}
-                    data = json.loads(raw_bytes)
+                    # Security (reader-side non-finite literal defence,
+                    # symmetric to the Round 1488 writer-side
+                    # ``allow_nan=False`` pin at ``_save_state``). A
+                    # planted ``NaN`` / ``Infinity`` / ``-Infinity`` /
+                    # ``1e1000`` in ``data/first_seen.json`` (compromised
+                    # CI runner, parallel orchestrator atomic state swap,
+                    # partial flush + power loss, hostile PR landing a
+                    # tampered fixture) would otherwise propagate silently
+                    # as ``float('nan')`` / ``float('inf')`` through the
+                    # state dict — every ``first_seen`` comparison against
+                    # ``retention_cutoff`` (``fs_utc < retention_cutoff``)
+                    # silently misbehaves on NaN (``False`` for every
+                    # comparison) AND the round-trip back to
+                    # ``_save_state`` hits the ``allow_nan=False`` pin
+                    # and crashes the cron mid-write. The hooks raise
+                    # ``json.JSONDecodeError`` which the ``except
+                    # (FileNotFoundError, json.JSONDecodeError)`` handler
+                    # below catches — fall through to the empty-state
+                    # recovery path, consistent with every other
+                    # corrupt-state recovery in this loader.
+                    data = json.loads(
+                        raw_bytes,
+                        parse_constant=_reject_non_finite_constant,
+                        parse_float=_reject_non_finite_float,
+                    )
         data = data if isinstance(data, dict) else {}
     except (FileNotFoundError, json.JSONDecodeError):
         return {}

@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Security (Reader-side non-finite literal defence — symmetric
+  closure of the writer-pin family, 2026-05-15)**:
+  * Python's default ``json.loads`` lenient mode accepted three
+    non-standard literal tokens (``NaN`` / ``Infinity`` /
+    ``-Infinity``) AND silently IEEE-754-overflowed scientific-
+    notation tokens like ``1e1000`` to ``float('inf')`` via the
+    default ``parse_float=float`` hook. The 2026-05-14 / 2026-05-15
+    rounds pinned ``allow_nan=False`` on every committed-to-main
+    writer, but every reader's ``json.loads(raw)`` call was still
+    unprotected. A planted on-disk literal (compromised CI runner,
+    parallel orchestrator atomic state swap, partial flush + power
+    loss, hostile PR landing a tampered fixture) propagated
+    silently as ``float('nan')`` / ``float('inf')`` through
+    Python-level computation: ``nan != nan`` is ``True`` (breaks
+    every dedup invariant), ``nan + 5`` is ``nan`` (silent
+    arithmetic poisoning), AND the round-trip back to the writer
+    hits ``allow_nan=False`` and crashes the cron pipeline
+    mid-write with no recovery.
+  * Canonical helpers ``_reject_non_finite_constant`` /
+    ``_reject_non_finite_float`` in ``src/utils/files.py`` raise
+    ``json.JSONDecodeError`` on every non-finite literal at the
+    parse boundary (the ``parse_float`` hook closes the
+    scientific-notation-overflow bypass that ``parse_constant``
+    alone does not catch — ``1e1000`` is a JSON NUMBER token, not
+    a CONSTANT token, so ``parse_constant`` is never invoked for
+    it). Eleven committed-state-file readers in ``src/`` now pin
+    both hooks: ``read_capped_json``, ``_read_capped_json``
+    (stations / Vienna polygons), ``_load_state`` (first_seen),
+    ``read_cache`` + ``write_cache`` existing-check + ``read_status``
+    (provider caches), ``MonthlyQuota.load``, ``load_stations``,
+    ``load_tiles_from_env`` + ``load_tiles_from_file``,
+    ``_load_stations`` (validator).
+  * Companion ``tests/test_sentinel_committed_reader_non_finite_drift
+    .py`` (31 tests) enumerates the inventory + behavioural PoCs
+    proving the writer-pin + reader-pin together close the
+    round-trip at both ends.
 * **Stammstrecke-Feed-Trigger — Legacy-Label-Auflösung im
   Compute-Pfad (2026-05-15)**:
   * Der Trigger-Compute in `src.feed.stammstrecke.compute_

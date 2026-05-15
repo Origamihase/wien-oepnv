@@ -11,7 +11,11 @@ from zoneinfo import ZoneInfo
 from pathlib import Path
 from collections.abc import Callable, Mapping
 
-from ..utils.files import atomic_write
+from ..utils.files import (
+    _reject_non_finite_constant,
+    _reject_non_finite_float,
+    atomic_write,
+)
 from ..feed.config import validate_path
 
 LOGGER = logging.getLogger("places.quota")
@@ -136,7 +140,22 @@ class MonthlyQuota:
         except OSError as exc:
             raise ValueError("Quota state is not readable") from exc
         try:
-            raw = json.loads(raw_bytes)
+            # Security (reader-side non-finite literal defence): mirrors
+            # the writer-side ``allow_nan=False`` pin at
+            # :meth:`MonthlyQuota.save_atomic` (Round 1488). The current
+            # writer casts every numeric field to ``int(...)`` so today's
+            # NaN risk is low, but a future float-typed quota field
+            # (fractional cost accounting, latency averages, daily-quota
+            # multiplier) reading back ``NaN`` / ``Infinity`` would
+            # propagate ``float('nan')`` / ``float('inf')`` past the
+            # subsequent ``isinstance(value, int)`` type-guards (which
+            # ``False`` on float) and crash the cron pipeline via the
+            # writer-side pin. Defense-in-depth at the parse boundary.
+            raw = json.loads(
+                raw_bytes,
+                parse_constant=_reject_non_finite_constant,
+                parse_float=_reject_non_finite_float,
+            )
         except (json.JSONDecodeError, RecursionError, UnicodeDecodeError) as exc:
             raise ValueError("Quota state is not valid JSON") from exc
         if not isinstance(raw, dict):
