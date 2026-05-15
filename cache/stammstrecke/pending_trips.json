@@ -1,65 +1,72 @@
 {
-  "Floridsdorf|S1|2026-05-15T08:06:00+02:00": {
+  "Floridsdorf|REX1|2026-05-15T08:54:00+02:00": {
     "direction": "Floridsdorf",
-    "last_seen_at": "2026-05-15T08:00:58.060886+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S1",
-    "scheduled": "2026-05-15T08:06:00+02:00"
-  },
-  "Floridsdorf|S1|2026-05-15T08:24:00+02:00": {
-    "direction": "Floridsdorf",
-    "last_seen_at": "2026-05-15T08:00:58.060886+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S1",
-    "scheduled": "2026-05-15T08:24:00+02:00"
-  },
-  "Floridsdorf|S2|2026-05-15T08:09:00+02:00": {
-    "direction": "Floridsdorf",
-    "last_seen_at": "2026-05-15T08:00:58.060886+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-05-15T08:09:00+02:00"
-  },
-  "Floridsdorf|S3|2026-05-15T08:03:00+02:00": {
-    "direction": "Floridsdorf",
-    "last_seen_at": "2026-05-15T08:00:58.060886+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S3",
-    "scheduled": "2026-05-15T08:03:00+02:00"
-  },
-  "Floridsdorf|S3|2026-05-15T08:21:00+02:00": {
-    "direction": "Floridsdorf",
-    "last_seen_at": "2026-05-15T08:00:58.060886+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S3",
-    "scheduled": "2026-05-15T08:21:00+02:00"
-  },
-  "Meidling|REX1|2026-05-15T08:09:00+02:00": {
-    "direction": "Meidling",
-    "last_seen_at": "2026-05-15T08:00:58.060886+02:00",
+    "last_seen_at": "2026-05-15T08:30:37.443953+02:00",
     "latest_delay_minutes": 0.0,
     "name": "REX1",
-    "scheduled": "2026-05-15T08:09:00+02:00"
+    "scheduled": "2026-05-15T08:54:00+02:00"
   },
-  "Meidling|REX3|2026-05-15T08:19:00+02:00": {
-    "direction": "Meidling",
-    "last_seen_at": "2026-05-15T08:00:58.060886+02:00",
+  "Floridsdorf|REX3|2026-05-15T08:44:00+02:00": {
+    "direction": "Floridsdorf",
+    "last_seen_at": "2026-05-15T08:30:37.443953+02:00",
     "latest_delay_minutes": 0.0,
     "name": "REX3",
-    "scheduled": "2026-05-15T08:19:00+02:00"
+    "scheduled": "2026-05-15T08:44:00+02:00"
   },
-  "Meidling|S2|2026-05-15T08:22:00+02:00": {
-    "direction": "Meidling",
-    "last_seen_at": "2026-05-15T08:00:58.060886+02:00",
+  "Floridsdorf|S1|2026-05-15T08:36:00+02:00": {
+    "direction": "Floridsdorf",
+    "last_seen_at": "2026-05-15T08:30:37.443953+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S1",
+    "scheduled": "2026-05-15T08:36:00+02:00"
+  },
+  "Floridsdorf|S2|2026-05-15T08:39:00+02:00": {
+    "direction": "Floridsdorf",
+    "last_seen_at": "2026-05-15T08:30:37.443953+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
-    "scheduled": "2026-05-15T08:22:00+02:00"
+    "scheduled": "2026-05-15T08:39:00+02:00"
   },
-  "Meidling|S3|2026-05-15T08:12:00+02:00": {
-    "direction": "Meidling",
-    "last_seen_at": "2026-05-15T08:00:58.060886+02:00",
+  "Floridsdorf|S3|2026-05-15T08:33:00+02:00": {
+    "direction": "Floridsdorf",
+    "last_seen_at": "2026-05-15T08:30:37.443953+02:00",
+    "latest_delay_minutes": 1.0,
+    "name": "S3",
+    "scheduled": "2026-05-15T08:33:00+02:00"
+  },
+  "Floridsdorf|S3|2026-05-15T08:51:00+02:00": {
+    "direction": "Floridsdorf",
+    "last_seen_at": "2026-05-15T08:30:37.443953+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S3",
-    "scheduled": "2026-05-15T08:12:00+02:00"
+    "scheduled": "2026-05-15T08:51:00+02:00"
+  },
+  "Meidling|REX1|2026-05-15T08:39:00+02:00": {
+    "direction": "Meidling",
+    "last_seen_at": "2026-05-15T08:30:37.443953+02:00",
+    "latest_delay_minutes": 4.0,
+    "name": "REX1",
+    "scheduled": "2026-05-15T08:39:00+02:00"
+  },
+  "Meidling|S1|2026-05-15T08:57:00+02:00": {
+    "direction": "Meidling",
+    "last_seen_at": "2026-05-15T08:30:37.443953+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S1",
+    "scheduled": "2026-05-15T08:57:00+02:00"
+  },
+  "Meidling|S2|2026-05-15T08:52:00+02:00": {
+    "direction": "Meidling",
+    "last_seen_at": "2026-05-15T08:30:37.443953+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-05-15T08:52:00+02:00"
+  },
+  "Meidling|S3|2026-05-15T08:42:00+02:00": {
+    "direction": "Meidling",
+    "last_seen_at": "2026-05-15T08:30:37.443953+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S3",
+    "scheduled": "2026-05-15T08:42:00+02:00"
   }
 }
