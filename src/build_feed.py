@@ -1000,7 +1000,23 @@ def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = N
                     # for ``_write_quarantine_file``. Forensic intent is
                     # preserved (``json.loads`` recovers the original
                     # bytes from the literal escape sequence).
-                    json.dump(merged_state, f, ensure_ascii=True, indent=2, sort_keys=True)
+                    #
+                    # Security (Coordinate finite/range drift, committed-
+                    # writer defence-in-depth): ``allow_nan=False`` mirrors
+                    # the canonical writer-side pin established in Round
+                    # 1485 at :func:`src.places.merge.write_stations` and
+                    # extended in Round 1487 to the sibling stations and
+                    # cache-events writers. ``merged_state`` is a
+                    # ``dict[str, Any]`` round-tripped via ``json.loads``
+                    # (Python's default lenient mode parses ``NaN`` /
+                    # ``Infinity`` literals as ``float('nan')`` /
+                    # ``float('inf')``); a planted non-standard literal
+                    # in a previous-run ``data/first_seen.json`` survives
+                    # the round-trip and re-writes verbatim without the
+                    # pin. ``ensure_ascii=True`` already blocks Trojan-
+                    # Source primitives; ``allow_nan=False`` closes the
+                    # sibling RFC-8259 non-conformance drift.
+                    json.dump(merged_state, f, ensure_ascii=True, indent=2, sort_keys=True, allow_nan=False)
     except (OSError, TimeoutError) as exc:
         # Security: ``file_lock(..., exclusive=True)`` re-raises on
         # acquisition failure (timeout under contention, fcntl ENOLCK,

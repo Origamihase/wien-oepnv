@@ -808,10 +808,38 @@ def write_feed_health_json(
     """Persist the feed health payload as JSON using an atomic write."""
 
     payload = build_feed_health_payload(report, metrics)
+    # Security (Coordinate finite/range drift, committed-writer
+    # defence-in-depth — non-coordinate sibling-writer landscape):
+    # ``allow_nan=False`` mirrors the canonical writer-side pin
+    # established in Round 1485 at
+    # :func:`src.places.merge.write_stations` and extended in
+    # Round 1487 to the five sibling ``data/stations.json``
+    # writers + :func:`src.utils.cache.write_cache`. This is the
+    # highest-impact sibling: ``docs/feed-health.json`` is the
+    # public, GitHub-Pages-served, machine-readable companion of
+    # the Markdown sink, consumed by external SIEM dashboards.
+    # The payload carries ``providers[i]["duration"]`` (the
+    # ``float | None`` value of :attr:`ProviderReport.duration`)
+    # and ``durations`` (the ``dict[str, float]`` slot of
+    # :attr:`RunReport.durations`) — both ``float``-typed slots
+    # that accept :func:`float`-NaN / -Inf from any caller of
+    # :meth:`ProviderReport.finish(duration=...)` /
+    # :meth:`RunReport.finish(durations={...})`. Without the pin
+    # a programmatic in-process injection (future provider plugin
+    # wrapping a third-party instrumentation SDK that surfaces
+    # ``NaN`` for a missing observation, manual diagnostic
+    # harness, poisoned previous-run state that round-trips
+    # through :func:`json.loads` lenient mode) lands non-standard
+    # ``NaN`` / ``Infinity`` / ``-Infinity`` literals (invalid
+    # per RFC 8259) in the committed artefact. Every conforming
+    # downstream parser refuses them (``JSON.parse`` in every
+    # modern browser, ``serde_json`` Rust strict mode,
+    # ``encoding/json`` Go), so a single NaN slip breaks the
+    # SIEM dashboards for the build cycle.
     with atomic_write(
         output_path, mode="w", encoding="utf-8", permissions=0o644
     ) as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True)
+        json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True, allow_nan=False)
         f.write("\n")
 
 

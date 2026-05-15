@@ -390,10 +390,21 @@ def _write_heartbeat_file(path: Path, heartbeat: Mapping[str, Any]) -> None:
     uniform across the committed ``data/*.json`` sidecar writer family.
     Forensic intent is preserved (``json.loads`` recovers the original
     string from the literal escape sequence).
+
+    Security (Coordinate finite/range drift, committed-writer
+    defence-in-depth): ``allow_nan=False`` mirrors the canonical
+    writer-side pin established in Round 1485 at
+    :func:`src.places.merge.write_stations` and extended in Round
+    1487 to the sibling stations / cache-events writers. The
+    heartbeat payload is a ``dict[str, Any]`` so any future field
+    (e.g. a fractional success-rate metric, average tick duration)
+    inherits the missing pin and could land non-standard
+    ``NaN`` / ``Infinity`` literals (invalid per RFC 8259) in
+    the committed ``data/stations_last_run.json`` sidecar.
     """
     path.parent.mkdir(parents=True, exist_ok=True)
     with atomic_write(path, mode="w", encoding="utf-8") as handle:
-        json.dump(heartbeat, handle, ensure_ascii=True, indent=2, sort_keys=True)
+        json.dump(heartbeat, handle, ensure_ascii=True, indent=2, sort_keys=True, allow_nan=False)
         handle.write("\n")
 
 
@@ -599,8 +610,21 @@ def _write_quarantine_file(
         "stations": entries,
     }
     path.parent.mkdir(parents=True, exist_ok=True)
+    # Security (Coordinate finite/range drift, committed-writer
+    # defence-in-depth): ``allow_nan=False`` mirrors the canonical
+    # writer-side pin established in Round 1485 at
+    # :func:`src.places.merge.write_stations` and extended in Round
+    # 1487 to the sibling stations / cache-events writers. The
+    # quarantined entries carry ``"entry": dict(entry)`` — a verbatim
+    # copy of the operator-facing station entry that was flagged
+    # *because* it carries unsafe content. A poisoned ``latitude`` /
+    # ``longitude`` (the same coordinate threat model that motivated
+    # Round 1485 / 1487) flows through this writer without the pin
+    # and lands non-standard ``NaN`` / ``Infinity`` literals
+    # (invalid per RFC 8259) in the committed
+    # ``data/quarantine.json`` sidecar.
     with atomic_write(path, mode="w", encoding="utf-8") as handle:
-        json.dump(payload, handle, ensure_ascii=True, indent=2)
+        json.dump(payload, handle, ensure_ascii=True, indent=2, allow_nan=False)
         handle.write("\n")
 
 

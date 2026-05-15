@@ -203,9 +203,22 @@ class MonthlyQuota:
         # ``_save_state``, ``_write_heartbeat_file``). Forensic intent is
         # preserved (``MonthlyQuota.load`` recovers the original string from
         # the literal escape sequence via ``json.loads``).
+        #
+        # Security (Coordinate finite/range drift, committed-writer
+        # defence-in-depth): ``allow_nan=False`` mirrors the canonical
+        # writer-side pin established in Round 1485 at
+        # :func:`src.places.merge.write_stations` and extended in
+        # Round 1487 to :func:`src.utils.cache.write_cache` (the
+        # sibling cache-events writer). The current payload casts
+        # every numeric to ``int(...)`` so present-day NaN risk is
+        # nil, but the pin surfaces a future ``float`` field (e.g.
+        # fractional cost accounting, latency averages) as a loud
+        # ``ValueError`` rather than silently landing non-standard
+        # ``NaN`` / ``Infinity`` literals (invalid per RFC 8259)
+        # in the committed ``data/places_quota.json`` sidecar.
         path.parent.mkdir(parents=True, exist_ok=True)
         with atomic_write(path, mode="w", encoding="utf-8", permissions=0o600) as handle:
-            json.dump(payload, handle, ensure_ascii=True, indent=2, sort_keys=True)
+            json.dump(payload, handle, ensure_ascii=True, indent=2, sort_keys=True, allow_nan=False)
             handle.write("\n")
 
     def maybe_reset_month(self) -> bool:

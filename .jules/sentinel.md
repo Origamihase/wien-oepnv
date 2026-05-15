@@ -1,3 +1,38 @@
+## 2026-05-15 - Committed-Writer `allow_nan=False` Drift: Eight Sibling Writers Outside the Round-1485 / Round-1487 Coordinate-Writer Inventory Land Non-Standard `NaN` / `Infinity` / `-Infinity` Literals (Invalid Per RFC 8259) Into Committed `docs/feed-health.json`, `data/*.json`, `cache/<provider>/last_run.json` — Breaking Every Conforming Downstream JSON Parser (`JSON.parse`, `serde_json`, `encoding/json`)
+
+**Vulnerability:** The 2026-05-14 coordinate finite/range rounds (Round 1485 / Round 1487 — PRs #1485 / #1486 / #1487) pinned `allow_nan=False` on every COORDINATE-emitting writer (the canonical `src/places/merge.py:write_stations`, the five sibling `data/stations.json` writers, the unified `src/utils/cache.py:write_cache`). Those rounds enumerated only the coordinate-writer landscape. Eight sibling COMMITTED-TO-MAIN writers — closed by PR #1434 / PR #1435 ("Trojan-Source / BiDi-Mark Drift Round 11") against the CVE-2021-42574 attack-byte union via `ensure_ascii=True` (or, for `write_feed_health_json`, via the matching `_CONTROL_CHARS_RE.sub("")` scrubs at the payload-build boundary) — never had the `allow_nan=False` pin added:
+
+  1. `src/feed/reporting.py:write_feed_health_json` (line 814 pre-fix) — `docs/feed-health.json`, the PUBLIC GitHub-Pages-served, machine-readable feed-health artefact consumed by external SIEM dashboards. The payload carries `providers[i]["duration"]` (`float | None` from `ProviderReport.duration`) and `durations` (`dict[str, float]` from `RunReport.durations`) — concrete float-typed slots that accept `float('nan')` / `float('inf')` from any caller of `ProviderReport.finish(duration=...)` / `RunReport.finish(durations={...})`. **Highest-impact site**: a single NaN slip breaks every SIEM dashboard for the build cycle (`SyntaxError: Unexpected token N in JSON` from `JSON.parse`).
+  2. `src/utils/cache.py:write_status` (line 504 pre-fix) — `cache/<provider>/last_run.json`. Status payload is `dict[str, Any]`; any future caller adding a float field (latency, response_size_ratio, error_rate) inherits the missing pin.
+  3. `src/places/quota.py:MonthlyQuota.save_atomic` (line 208 pre-fix) — `data/places_quota.json`. Current writer casts every numeric to `int(...)` but the defence-in-depth pin would surface a future `float` field (fractional cost accounting, latency averages) as a loud `ValueError`.
+  4. `src/build_feed.py:_save_state` (line 1003 pre-fix) — `data/first_seen.json`. The state dict round-trips through `json.loads` (Python's default lenient mode parses `NaN` / `Infinity` literals as `float('nan')` / `float('inf')`); a planted non-standard literal in a previous-run state file survives the round-trip and re-writes verbatim without the pin.
+  5. `src/providers/vor.py:_write_request_count_file` (line 362 pre-fix) — `data/vor_request_count.json`. `Mapping[str, Any]` payload, same `Any`-typed surface.
+  6. `scripts/update_all_stations.py:_write_heartbeat_file` (line 396 pre-fix) — `data/stations_last_run.json`. Orchestrator heartbeat with `dict[str, Any]` payload.
+  7. `scripts/update_all_stations.py:_write_quarantine_file` (line 603 pre-fix) — `data/quarantine.json`. Copies operator-facing entry content verbatim via `"entry": dict(entry)`; quarantined stations are flagged BECAUSE they carry unsafe content, so a poisoned `latitude` / `longitude` (the same coordinate threat model that motivated Round 1485 / 1487) flows through this writer without the pin.
+  8. `scripts/sync_hafas_profile.py:_write_profile` (line 323 pre-fix) — `data/hafas_profile.json`. HAFAS credentials sidecar. Today's NaN risk is low (input is regex-extracted from upstream JavaScript with `[0-9A-Za-z.\-_]` character classes) but the pin is the defensive line if a future extraction strategy widens the value surface.
+
+**Threat model:** Three distinct attacker positions plant `NaN` / `Infinity` / `-Infinity` literals into the cron pipeline:
+
+  1. **Programmatic in-process injection** (highest realism). Any caller of `ProviderReport.record(duration=...)` / `RunReport.finish(durations={...})` may pass `float('nan')` directly — and the call-graph for `report.durations.update(durations)` performs no validation. A future provider plugin that wraps a third-party instrumentation SDK (e.g. a Prometheus-style metrics library that surfaces `NaN` for missing observations) lands the bytes verbatim into the public `docs/feed-health.json`.
+
+  2. **Poisoned on-disk state file round-tripped.** `_save_state` reads `data/first_seen.json` via `json.loads` (default lenient mode), merges, writes back. A planted `Infinity` literal in a previous-run state file (compromised CI runner, parallel orchestrator's atomic state swap, partial flush + power loss, hostile PR landing tampered fixture) survives the round-trip pre-fix.
+
+  3. **Compromised upstream** (HAFAS profile case — low risk under current regex, but the pin is the defensive line).
+
+**Public sinks impacted:**
+
+  * `docs/feed-health.json` — committed to `main` by `build-feed.yml` on every cron tick, served on GitHub Pages, consumed by external monitoring dashboards. **A single NaN literal breaks every conforming JSON parser (`JSON.parse`, `serde_json` strict mode, `encoding/json`) — the SIEM dashboards go blind for that build cycle.**
+  * Six committed-to-main `data/*.json` sidecars reviewed via `cat` / GitHub web UI / IDE preview — operator confusion + downstream-consumer breakage.
+  * One `cache/<provider>/last_run.json` heartbeat (currently without active callers but pinned by sentinel coverage).
+
+**Severity:** **MEDIUM** — public-artefact data-integrity attack with an in-process programmatic path (no upstream control required). Same shape class as Round 1485 / Round 1487 but for the non-coordinate writer landscape.
+
+**Fix (8 sites, single-shape edit):** Add `allow_nan=False` to each `json.dump(...)` call. Identical to the Round 1485 / Round 1487 canonical pin. Companion `tests/test_sentinel_committed_writer_allow_nan_drift.py` enumerates all 8 writers + a behavioural PoC at `write_feed_health_json` (NaN in duration → `ValueError`; +Inf in durations dict → `ValueError`; finite round-trip preserved + parses cleanly under strict `parse_constant` hook) + a behavioural PoC at `write_status` (NaN in latency-style field → `ValueError`). 11 of 12 tests fail pre-fix; all 12 pass post-fix.
+
+**Learning:** The "Round 11" Trojan-Source defence (`ensure_ascii=True`) and the "Round 1485" coordinate defence (`allow_nan=False`) are ORTHOGONAL. A writer can carry one without the other. Every committed-to-main `json.dump(..., dict[str, Any] | list[Any], ...)` writer needs BOTH pins. The closing-checklist invariant for future writer additions is: `ensure_ascii=True` (or `_CONTROL_CHARS_RE` scrub if `ensure_ascii=False` is needed for compact German diffs) AND `allow_nan=False`. Source-grep tests over the inventory (one assertion per writer function) catch any future drift on the next pytest run.
+
+---
+
 ## 2026-05-15 - Env-Repr Drift: Eight `%r` Env-Controlled Logger Sinks Across `scripts/update_station_directory.py`, `scripts/update_baustellen_cache.py`, and `src/build_feed.py` Let All 256 Variation Selectors (U+FE00-U+FE0F + U+E0100-U+E01EF) Reach `record.args` / `record.getMessage()` Verbatim, Bypassing the Canonical `sanitize_log_arg` Contract for Every Non-`SafeFormatter` Handler (Caplog, Third-Party Log Shippers, Pre-`configure_logging` Failure Paths)
 
 **Vulnerability:** Eight sibling sites interpolated operator-controlled env values via the bare ``%r`` repr conversion in a ``logger.warning`` call:
