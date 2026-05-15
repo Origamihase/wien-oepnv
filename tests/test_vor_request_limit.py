@@ -220,6 +220,91 @@ def reset_vor_quota_cache(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 
+def test_flush_quota_cache_does_not_inflate_persisted_count(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """Regression: ``_flush_quota_cache`` MUST persist without recording.
+
+    Pre-fix, the atexit-registered flush invoked ``save_request_count``,
+    which always increments ``unsaved_delta`` by ``1`` before flushing.
+    Every script invocation that made any VOR call therefore booked one
+    *phantom* request beyond the actual API traffic. With the
+    Stammstrecke cron (2 ``/trip`` calls per tick × 48 ticks/day = 96
+    real requests) the bug inflated the persisted counter to ``144``
+    requests/day, breaching the contractual ``100``/day VAO Start cap
+    after roughly 33 ticks and leaving the remaining ~15 hours of the
+    day without Stammstrecke observations. The visible symptom on the
+    README dashboard was a "Letzte 60 Minuten" snapshot that bottomed
+    out at 1-3 observations whenever an affected hour was the most
+    recent one.
+
+    This test pins the invariant: after N real ``save_request_count``
+    calls plus a final ``_flush_quota_cache``, the persisted count is
+    exactly ``N`` — never ``N + 1``.
+    """
+    target_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
+
+    # Simulate a single Stammstrecke cron tick: 2 ``/trip`` requests
+    # (one per direction). The first call triggers an immediate flush
+    # via the ``current_total == 1`` branch; the second call only
+    # increments ``unsaved_delta`` because the batch limit is 10.
+    real_calls = 2
+    moment = datetime.now(ZoneInfo("Europe/Vienna"))
+    for _ in range(real_calls):
+        vor.save_request_count(moment)
+
+    # End-of-process flush — must NOT add another phantom request.
+    vor._flush_quota_cache()
+
+    stored = json.loads(target_file.read_text(encoding="utf-8"))
+    assert stored["requests"] == real_calls, (
+        f"Expected exactly {real_calls} persisted requests after "
+        f"{real_calls} actual API calls + flush, but found "
+        f"{stored['requests']}. The flush helper is double-counting."
+    )
+
+    # A second flush must be a strict no-op — the in-memory delta is
+    # zero so neither the cache nor the disk should change.
+    vor._flush_quota_cache()
+    stored_again = json.loads(target_file.read_text(encoding="utf-8"))
+    assert stored_again["requests"] == real_calls
+
+
+def test_flush_quota_cache_with_no_unsaved_delta_is_noop(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """Idempotent ``_flush_quota_cache`` — never writes when delta=0.
+
+    Belt-and-braces alongside the regression test above: if a future
+    refactor reintroduces an unconditional ``save_request_count`` call
+    inside the flush helper, this test catches it on the *no-call* code
+    path (where the prior test would still have recorded a real call to
+    mask the regression).
+    """
+    target_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
+
+    # Cache primed with date but zero unsaved delta — the canonical
+    # "nothing to flush" state.
+    today = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m-%d")
+    monkeypatch.setitem(vor._QUOTA_CACHE, "date", today)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "unsaved_delta", 0)
+
+    vor._flush_quota_cache()
+
+    # No write should have happened: the file must not exist (or, if
+    # it does, must reflect zero requests rather than the phantom +1
+    # the pre-fix code would have produced).
+    assert not target_file.exists(), (
+        "Expected no on-disk write when there is nothing to flush, but "
+        f"found {target_file.read_text(encoding='utf-8')!r}."
+    )
+
+
 def test_load_request_count_resets_on_legacy_integer(
     monkeypatch: pytest.MonkeyPatch,
     tmp_path: Path,
