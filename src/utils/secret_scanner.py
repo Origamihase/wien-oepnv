@@ -85,7 +85,29 @@ _SENSITIVE_ASSIGN_RE = re.compile(
 )
 
 _AWS_ID_RE = re.compile(r"(?<![A-Za-z0-9])(AKIA|ASIA|ACCA)[A-Z0-9]{16}(?![A-Za-z0-9])")
-_BEARER_RE = re.compile(r"Bearer\s+([A-Za-z0-9\-_.]{16,})")
+# Security: ``Bearer`` literal is matched case-insensitively per RFC 7235
+# §2.1 (HTTP auth-scheme is case-insensitive — ``Bearer`` / ``bearer`` /
+# ``BEARER`` / mixed-case are all canonical HTTP forms accepted by every
+# conforming server). Pre-fix the regex was case-sensitive on the
+# ``Bearer`` literal, so a leaked ``BEARER <body>`` / ``bearer <body>``
+# Authorization-header fragment bypassed this detector entirely. Two
+# downstream failure modes:
+#   1. **Attribution drift** — the body still matched the entropy
+#      fallback (``_HIGH_ENTROPY_RE``) as a generic
+#      ``Hochentropischer Token-String`` finding, losing the
+#      Bearer-Token-specific reason that incident-response triage keys
+#      off (which auth flow leaked, which revocation endpoint applies).
+#   2. **Silent undetection** — for uniform-character-class bodies
+#      (all-lowercase / all-uppercase / all-digit, common for legacy /
+#      hash-derived / poorly-seeded-RNG tokens), the entropy fallback's
+#      ``_looks_like_secret`` heuristic requires
+#      ``min_categories=2`` in non-assignment mode and returns
+#      ``False`` — the token slipped past BOTH detection branches and
+#      remained entirely undetected. The Bearer-detector path uses
+#      ``is_assignment=True`` which lowers ``min_categories`` to 1, so
+#      restoring case-insensitive matching also closes the entropy-
+#      bypass hole for the affected uniform-body shapes.
+_BEARER_RE = re.compile(r"(?i)Bearer\s+([A-Za-z0-9\-_.]{16,})")
 _PEM_RE = re.compile(r"(-----BEGIN [A-Z ]*PRIVATE KEY-----)(?:.|\n)*?(-----END [A-Z ]*PRIVATE KEY-----)")
 
 # Known high-value token patterns to detect specifically
