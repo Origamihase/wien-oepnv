@@ -479,10 +479,14 @@ def write_status(provider: str, status: dict[str, Any]) -> None:
 
     try:
         # Security (Trojan-Source / BiDi-Mark Drift Round 11): the file
-        # is operator-facing diagnostic state, committed to ``main`` by
-        # the cron pipeline (``update-vor-cache.yml`` line 96 lists
-        # ``cache/vor*/last_run.json`` in its ``file_pattern``) and
-        # reviewed via ``cat`` / ``less`` / the GitHub web UI / IDE
+        # is operator-facing diagnostic state. Historically committed
+        # to ``main`` by the per-provider cache cron pipelines (e.g.
+        # the former ``update-vor-cache.yml`` listed
+        # ``cache/vor*/last_run.json`` in its ``file_pattern`` until
+        # the 2026-05-11 VOR-Stammstrecke-only consolidation); the
+        # helper remains in the public surface for any future provider
+        # heartbeat that may again land in a committed cache dir.
+        # Reviewed via ``cat`` / ``less`` / the GitHub web UI / IDE
         # preview. ``ensure_ascii=True`` escapes every non-ASCII code
         # point as a literal ``\uXXXX`` sequence, so a future status
         # payload field carrying station- / provider- / environment-

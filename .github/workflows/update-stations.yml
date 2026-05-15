@@ -67,14 +67,14 @@ jobs:
 
       # VOR stop-list refresh removed 2026-05-09 to keep the project under
       # the VAO Start tier's 100/day quota — the Stammstrecke monitor
-      # (``build-feed.yml``) is the project's only
-      # auto-running VOR API consumer and already owns 96 reqs/day. The
-      # station directory update now relies on the pinned
-      # ``data/vor-haltestellen.csv`` snapshot. To refresh the snapshot,
-      # run ``python scripts/fetch_vor_haltestellen.py`` manually — the
-      # operator then explicitly accepts the quota cost (a few extra
-      # requests; VOR station IDs change rarely so a many-month-old
-      # snapshot is operationally equivalent to a fresh fetch).
+      # (``update-cycle.yml``) is the project's only auto-running VOR
+      # API consumer and already owns 96 reqs/day. The station
+      # directory update now relies on the pinned
+      # ``data/vor-haltestellen.csv`` snapshot, which is redaktionell
+      # gepflegt; the former ``fetch_vor_haltestellen.py`` helper was
+      # removed from ``scripts/`` in the same pass. VOR station IDs
+      # change rarely (years) so a many-month-old snapshot is
+      # operationally equivalent to a fresh fetch.
 
       - name: Overpass smoke check (fail-fast / skip-OSM gate)
         id: overpass-smoke

@@ -9,13 +9,10 @@ name: Manual full refresh
 # Monitor beschränkt (Operator-Policy "VOR nur noch für die
 # Verspätungen der Stammstrecke"). Der Monitor läuft als Schritt
 # unten in diesem Workflow und in ``update-cycle.yml`` (~30 Min).
-# VOR-Cache- und VOR-Haltestellen-Refresh sind aus dem automatisierten
-# Stations-Pfad entfernt; das Stationsverzeichnis nutzt die gepinnte
-# ``data/vor-haltestellen.csv``. Bei Bedarf können die Helper-Scripts
-# (``scripts/update_vor_cache.py``, ``scripts/update_vor_stations.py``,
-# ``scripts/fetch_vor_haltestellen.py``) weiterhin als lokaler Direkt-
-# aufruf gestartet werden — der Operator akzeptiert dann bewusst den
-# Quota-Verbrauch außerhalb der 96 Stammstrecke-Calls/Tag.
+# Die früheren VOR-Helper-Scripts (``update_vor_cache.py``,
+# ``update_vor_stations.py``, ``fetch_vor_haltestellen.py``) wurden
+# 2026-05-11 aus ``scripts/`` entfernt; das Stationsverzeichnis nutzt
+# die gepinnte ``data/vor-haltestellen.csv``.
 
 on:
   workflow_dispatch:
@@ -72,11 +69,10 @@ jobs:
       - name: Refresh ÖBB cache
         run: python scripts/update_oebb_cache.py
 
-      # ``update_vor_cache.py`` was removed from the manual-full-refresh
-      # 2026-05-09 to keep the project under the VAO Start tier's
-      # 100/day quota. Stammstrecke (below) is now the only VOR-API
-      # consumer this workflow triggers; emergency station-disruption
-      # refreshes go through ``update-vor-cache.yml`` (workflow_dispatch).
+      # VOR-Cache-Refresh entfällt seit 2026-05-11 vollständig
+      # (Operator-Policy "VOR nur noch für die Stammstrecke"). Der
+      # Stammstrecke-Step (unten) ist damit der einzige VOR-API-
+      # Konsument in diesem Workflow.
 
       - name: Validate VOR secrets
         shell: bash
@@ -101,11 +97,11 @@ jobs:
         run: python scripts/update_stammstrecke_status.py
 
       # ----- 2) Stationsverzeichnis aktualisieren -----
-      # ``fetch_vor_haltestellen.py`` was removed 2026-05-09 — the
-      # station directory now uses the pinned ``data/vor-haltestellen.csv``.
-      # VOR station IDs change rarely (years); operator can refresh the
-      # snapshot manually with ``python scripts/fetch_vor_haltestellen.py``
-      # if needed.
+      # Die VOR-Stop-Liste wurde 2026-05-11 vollständig auf die
+      # gepinnte ``data/vor-haltestellen.csv``-Snapshot umgestellt;
+      # ein Live-Refresh-Skript existiert nicht mehr. VOR-Stop-IDs
+      # ändern sich nur selten — bei Bedarf wird die CSV redaktionell
+      # neu eingespielt.
 
       - name: Refresh station directory
         run: python scripts/update_all_stations.py --verbose

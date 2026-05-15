@@ -158,7 +158,7 @@ def _configure_cache_commands(subparsers: argparse._SubParsersAction[argparse.Ar
         "providers",
         nargs="*",
         metavar="PROVIDER",
-        help="Provider identifiers (wl, oebb, vor, baustellen). Ohne Angabe werden alle Caches aktualisiert.",
+        help="Provider identifiers (wl, oebb, baustellen). Ohne Angabe werden alle Caches aktualisiert.",
     )
     update_parser.add_argument(
         "--all",

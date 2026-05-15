@@ -6,17 +6,22 @@ Drift Round 10* closing-checklist named but deferred —
 (``data/vor_request_count.json``), and ``write_status``
 (``cache/<provider>/last_run.json``).
 
-All three files are committed to ``main`` by the automated pipeline:
+These files are committed to ``main`` by the automated pipeline:
 
   * ``data/places_quota.json`` — by the weekly ``update-stations.yml``
     cron job (the OSM-first / Google-Places-fallback step charges
     against this quota and writes the persisted counter).
   * ``data/vor_request_count.json`` — by the IFTTT-triggered
-    ``update-cycle.yml`` (Stammstrecke step) and by the
-    ``update-vor-cache.yml`` operator-only escape hatch
-    (``file_pattern: data/vor_request_count.json``).
-  * ``cache/vor*/last_run.json`` — by ``update-vor-cache.yml``
-    (``file_pattern: cache/vor*/last_run.json``).
+    ``update-cycle.yml`` (Stammstrecke step). The former
+    ``update-vor-cache.yml`` operator-only escape hatch that also
+    persisted this counter was retired with the 2026-05-11
+    VOR-Stammstrecke-only consolidation.
+  * ``cache/<provider>/last_run.json`` — historically by the per-
+    provider cache crons (e.g. ``update-vor-cache.yml`` listed
+    ``cache/vor*/last_run.json`` in its ``file_pattern``); the
+    ``write_status`` helper remains in the public surface for any
+    future provider heartbeat that may again land in a committed
+    cache directory.
 
 They are operator-facing artefacts — ``cat`` / ``less`` / the GitHub
 web UI / IDE preview all honour BiDi formatting controls when
