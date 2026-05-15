@@ -236,9 +236,25 @@ def compute_stammstrecke_events(
     )
     if not observations:
         return []
+    # Bucket observations by their *canonical* direction label so a CSV
+    # row that still carries the legacy ``"Floridsdorf"`` value (from a
+    # backup restore, a partial deploy that skipped the migration
+    # commit, or a hand-edited row) folds into the same trigger
+    # evaluation as the post-rename ``"Praterstern"`` rows. Without
+    # this canonicalisation the loop below — which iterates over
+    # :data:`DIRECTIONS` and looks up ``direction.target_label`` —
+    # would silently ignore the legacy-label observations because
+    # the ``by_direction`` key would be ``"Floridsdorf"`` while the
+    # registered direction's ``target_label`` is ``"Praterstern"``.
     by_direction: defaultdict[str, list[StammstreckeObservation]] = defaultdict(list)
     for obs in observations:
-        by_direction[obs.direction].append(obs)
+        canonical = DIRECTIONS_BY_LABEL.get(obs.direction)
+        if canonical is None:
+            # Unknown / unrecognised direction value — silently dropped.
+            # Protects against a future writer that emits a direction
+            # outside the registry without updating this consumer.
+            continue
+        by_direction[canonical.target_label].append(obs)
     feed_window_start = current - feed_window
     events: list[dict[str, Any]] = []
     # Process directions in registry order so two simultaneous events
