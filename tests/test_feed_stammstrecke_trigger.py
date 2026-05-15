@@ -79,6 +79,34 @@ def test_two_praterstern_rows_above_threshold_fire_event() -> None:
     assert event["_identity"].startswith("stammstrecke_delay_praterstern|")
 
 
+def test_two_meidling_rows_above_threshold_fire_event() -> None:
+    """Two ``"Meidling"``-direction rows > 9 min within the window → 1 event.
+
+    Symmetry pin for the southbound direction. The trigger pipeline
+    is direction-agnostic (the same ``_episode_start``,
+    ``_build_event``, ``_observe_legs`` codepath serves both buckets),
+    but a dedicated test guards against an asymmetric regression
+    landing on only one direction — e.g., a future ``DIRECTIONS``
+    tuple reorder that inadvertently shadowed Meidling, or a typo
+    in the ``DIRECTIONS_BY_LABEL`` lookup that handled Praterstern
+    but mis-routed Meidling.
+    """
+
+    obs = [
+        _obs(when=NOW - timedelta(minutes=30), direction="Meidling", delay=10.5),
+        _obs(when=NOW - timedelta(minutes=5), direction="Meidling", delay=12.0),
+    ]
+    events = _run(obs)
+    assert len(events) == 1
+    event = events[0]
+    assert "in Richtung Meidling" in event["description"]
+    assert event["_identity"].startswith("stammstrecke_delay_meidling|")
+    # Meidling has no legacy alias (only the northbound label was
+    # renamed in 2026-05-15), so the identity_prefix is the original
+    # 2026-05-09 value.
+    assert "stammstrecke_delay_praterstern" not in event["_identity"]
+
+
 # ---- Backwards compat: legacy "Floridsdorf" rows fold into Praterstern --
 
 
