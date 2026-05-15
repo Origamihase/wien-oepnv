@@ -44,7 +44,7 @@ Mehr Statistiken findest du hier:
 | Beobachtungen (gesamt) | 0 |
 | Durchschnittliche Verspätung | N/A |
 | Kritische Verspätungen (> 9 min) | 0 |
-| Letzte Aktualisierung | 2026-05-15 03:00 CEST |
+| Letzte Aktualisierung | 2026-05-15 03:30 CEST |
 <!-- STATS:STAMMSTRECKE_LIVE:END -->
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
@@ -55,7 +55,7 @@ Mehr Statistiken findest du hier:
 | Beobachtungen (gesamt) | 70 |
 | Durchschnittliche Verspätung | 0.1 min |
 | Kritische Verspätungen (> 9 min) | 0 |
-| Letzte Aktualisierung | 2026-05-15 03:00 CEST |
+| Letzte Aktualisierung | 2026-05-15 03:30 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
 
 > **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).
