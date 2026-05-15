@@ -407,11 +407,15 @@ flowchart LR
    state machine (§2): SSRF, redirect, content-type, slowloris,
    payload cap.
 6. **Test-isolation** — `tests/conftest.py` registers an autouse
-   `reset_circuit_breakers` fixture that returns every known
-   project-owned breaker (including `hafas_enrichment`) to CLOSED
-   before each test. Tests that intentionally trip a breaker no
-   longer leak OPEN state to subsequent tests, eliminating an entire
-   class of order-dependent flakes.
+   `reset_circuit_breakers` fixture that walks `_iter_known_breakers()`
+   and calls `.reset()` on each entry before and after every test.
+   The list currently covers `src.places.osm_client._BREAKER`; the
+   HAFAS breaker (`hafas_enrichment`) and Stammstrecke-Hbf breaker
+   (`stammstrecke-hbf-vor`) aren't yet in the inventory, so tests
+   that intentionally trip them must call `breaker.reset()` themselves
+   or use a `monkeypatch` to rebuild the breaker. Extend
+   `_iter_known_breakers()` when adding a new breaker if you want
+   blanket isolation for its callers.
 
 The relevant CLI flags / env vars:
 
