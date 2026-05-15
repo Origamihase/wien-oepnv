@@ -5,6 +5,56 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stammstrecke-Ausfälle — Neue Statistik aus bestehenden VAO-Abfragen
+  (2026-05-15)**:
+  * Der Hbf-`/departureBoard`-Reader (`scripts/update_stammstrecke_hbf.py`)
+    und der Legacy-`/trip`-Reader (`scripts/update_stammstrecke_status.py`)
+    haben Abfahrten mit `cancelled: true` bislang **stillschweigend
+    verworfen**: das `delay_minutes`-Signal war `None`, und die
+    Sammelschicht filterte solche Beobachtungen vor dem Ledger
+    heraus. Folge: jeder tatsächliche Zugausfall auf der Stammstrecke
+    war für die Statistik unsichtbar.
+  * Neue Datei `data/stats/ausfaelle_<YYYY>.csv` mit Schema
+    `timestamp, weekday, hour, direction, line` — eine Zeile pro
+    ausgefallenem Zug. Beide Reader leiten Ausfälle nun durch die
+    bestehende Pending-Trip-Identity-Key-Dedup (`(direction, name,
+    scheduled)`) und durch den Recently-finalised-Schutz, sodass
+    derselbe physische Ausfall NIE über mehrere Cron-Ticks doppelt
+    gezählt wird. Der Cancellation-Check läuft jetzt VOR dem
+    `rtTime`-Filter, weil VAO bei ausgefallenen Zügen regelmäßig
+    keinen Realtime-Wert mehr ausliefert — der frühere Filter hat
+    die Cancellation-Signale gemeinsam mit den No-rtTime-
+    Beobachtungen verworfen.
+  * `_PendingTrip` trägt jetzt ein `cancelled: bool`-Flag, das
+    auch im Pending-Ledger (`cache/stammstrecke/pending_trips.json`)
+    serialisiert wird. Legacy-Einträge ohne das Feld laden als
+    `cancelled=False` (Backwards-Compat). Der Finalize-Pass teilt
+    pro Cron-Tick die ausgelaufenen Pending-Trips in zwei Buckets:
+    delay-tragende Beobachtungen fließen wie bisher in eine
+    aggregierte CSV-Zeile pro Richtung+Jahr
+    (`stammstrecke_<YYYY>.csv`); Ausfälle erzeugen jeweils eine
+    eigene Zeile in `ausfaelle_<YYYY>.csv`, damit der Dashboard-
+    Aggregator sie als diskrete Ereignisse zählen kann.
+  * **Dashboard** (`docs/statistik.md`): neue Sektion `## Ausfälle`
+    mit Tabellen pro Richtung und pro Linie sowie Wochentag-/
+    Stunde-Balken. Die `Kennzahlen auf einen Blick`-Tabelle zeigt
+    zusätzlich die Jahressumme. **README**: zwei neue Marker
+    `STATS:AUSFAELLE_LIVE` (60-Min-Fenster) und `STATS:AUSFAELLE`
+    (30-Tage-Fenster). Die Ausfälle-Marker werden bedingungslos
+    aktualisiert, auch bei `0` Beobachtungen — ein explizites
+    `0` ist das operationell wertvolle „stabiler Betrieb"-Signal
+    und unterscheidet sich klar von „Daten fehlen".
+  * **Tests**: neue Pin-Tests in `tests/test_utils_stats.py`
+    (Writer + CSV-Formula-Injection-Defang), `tests/scripts/
+    test_update_stammstrecke_status.py` (Collector + Pending-Trip-
+    JSON-Roundtrip + Backwards-Compat-Loader + End-to-End-Finalize-
+    Routing inkl. „mixed delay+cancellation in einem Tick"),
+    `tests/scripts/test_update_stammstrecke_hbf.py` (Collector +
+    Cancellation-Bool-vs.-String + No-rtTime-mit-Cancellation),
+    `tests/scripts/test_generate_markdown_stats.py` (Aggregator,
+    Renderer, README-Block) und
+    `tests/scripts/test_generate_markdown_stats_readme.py` (volle
+    Marker-Integration mit explizitem 0-Render).
 * **Stammstrecke-Feed-Trigger — Legacy-Label-Auflösung im
   Compute-Pfad (2026-05-15)**:
   * Der Trigger-Compute in `src.feed.stammstrecke.compute_

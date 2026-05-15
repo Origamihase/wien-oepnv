@@ -5,7 +5,8 @@ Append-only CSV ledgers consumed by
 
 | File | Producer | Schema |
 | --- | --- | --- |
-| `stammstrecke_YYYY.csv` | [`scripts/update_stammstrecke_status.py`](../../scripts/update_stammstrecke_status.py) — appends one row per successful HAFAS median calculation | `timestamp, weekday, hour, direction, delay_minutes` |
+| `stammstrecke_YYYY.csv` | [`scripts/update_stammstrecke_hbf.py`](../../scripts/update_stammstrecke_hbf.py) — one aggregate row per direction per cron tick (mean delay of all S-Bahn departures observed at Wien Hauptbahnhof in that tick) | `timestamp, weekday, hour, direction, delay_minutes` |
+| `ausfaelle_YYYY.csv` | [`scripts/update_stammstrecke_hbf.py`](../../scripts/update_stammstrecke_hbf.py) — one row per cancelled S-Bahn train (deduped via the pending-trip identity-key ledger so the same train is never counted twice across cron ticks) | `timestamp, weekday, hour, direction, line` |
 | `stoerungen_YYYY.csv` | [`src/build_feed.py:_update_item_state`](../../src/build_feed.py) — appends one row when a strictly new event identity is seen | `timestamp, weekday, hour, provider, location_name` |
 
 All timestamps are ISO 8601 with offset, anchored to `Europe/Vienna`.

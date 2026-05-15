@@ -153,6 +153,129 @@ def test_append_disruption_row_normalises_blank_fields(tmp_path: Path) -> None:
     assert rows[0][4] == "unbekannt"
 
 
+# ---- Cancellation writer --------------------------------------------------
+
+
+def test_append_ausfall_row_writes_header_on_first_call(tmp_path: Path) -> None:
+    when = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
+    ok = stats_utils.append_ausfall_row(
+        timestamp=when,
+        direction="Meidling",
+        line="S1",
+        stats_dir=tmp_path,
+    )
+    assert ok is True
+    path = tmp_path / "ausfaelle_2026.csv"
+    header, rows = _read_csv(path)
+    assert tuple(header) == stats_utils.AUSFAELLE_HEADER
+    assert rows == [["2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "S1"]]
+
+
+def test_append_ausfall_row_appends_without_rewriting_header(
+    tmp_path: Path,
+) -> None:
+    when_a = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
+    when_b = datetime(2026, 5, 4, 8, 0, tzinfo=VIENNA_TZ)
+    stats_utils.append_ausfall_row(
+        timestamp=when_a,
+        direction="Meidling",
+        line="S1",
+        stats_dir=tmp_path,
+    )
+    stats_utils.append_ausfall_row(
+        timestamp=when_b,
+        direction="Praterstern",
+        line="REX3",
+        stats_dir=tmp_path,
+    )
+    header, rows = _read_csv(tmp_path / "ausfaelle_2026.csv")
+    assert tuple(header) == stats_utils.AUSFAELLE_HEADER
+    assert len(rows) == 2
+    assert rows[0][3] == "Meidling"
+    assert rows[0][4] == "S1"
+    assert rows[1][3] == "Praterstern"
+    assert rows[1][4] == "REX3"
+
+
+def test_append_ausfall_row_rolls_over_at_year_boundary(tmp_path: Path) -> None:
+    """A timestamp in 2027 must land in ``ausfaelle_2027.csv``."""
+    a = datetime(2026, 12, 31, 23, 59, tzinfo=VIENNA_TZ)
+    b = datetime(2027, 1, 1, 0, 5, tzinfo=VIENNA_TZ)
+    stats_utils.append_ausfall_row(
+        timestamp=a,
+        direction="Meidling",
+        line="S1",
+        stats_dir=tmp_path,
+    )
+    stats_utils.append_ausfall_row(
+        timestamp=b,
+        direction="Meidling",
+        line="S2",
+        stats_dir=tmp_path,
+    )
+    assert (tmp_path / "ausfaelle_2026.csv").exists()
+    assert (tmp_path / "ausfaelle_2027.csv").exists()
+
+
+def test_append_ausfall_row_normalises_blank_fields(tmp_path: Path) -> None:
+    """Empty/whitespace direction or line → ``unbekannt`` sentinel.
+
+    Mirrors :func:`append_disruption_row`'s defensive shape — an
+    empty cell on the dashboard is more confusing than an explicit
+    ``unbekannt`` placeholder.
+    """
+    stats_utils.append_ausfall_row(
+        timestamp=datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ),
+        direction="   ",
+        line="",
+        stats_dir=tmp_path,
+    )
+    _, rows = _read_csv(tmp_path / "ausfaelle_2026.csv")
+    assert rows[0][3] == "unbekannt"
+    assert rows[0][4] == "unbekannt"
+
+
+def test_append_ausfall_row_defangs_csv_formula_injection(tmp_path: Path) -> None:
+    """A poisoned upstream ``line`` field cannot inject a spreadsheet
+    formula into the committed ``ausfaelle_*.csv``.
+
+    The writer routes both ``direction`` and ``line`` through
+    :func:`src.utils.stats._sanitize_csv_text_field`, which prepends a
+    leading apostrophe to any value beginning with ``=`` / ``+`` /
+    ``-`` / ``@`` / TAB / CR. The defang prevents Excel / LibreOffice
+    / Sheets from evaluating the cell as a formula on file open.
+    """
+    stats_utils.append_ausfall_row(
+        timestamp=datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ),
+        direction="Meidling",
+        line="=HYPERLINK(\"http://evil.example\",\"click\")",
+        stats_dir=tmp_path,
+    )
+    _, rows = _read_csv(tmp_path / "ausfaelle_2026.csv")
+    assert rows[0][4].startswith("'="), (
+        "Cancellation line field must be defanged with a leading "
+        f"apostrophe: got {rows[0][4]!r}"
+    )
+
+
+def test_append_ausfall_row_returns_false_on_io_error(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A simulated OSError must be swallowed (returns False), not raised."""
+
+    def _raise(*args: object, **kwargs: object) -> None:
+        raise OSError("disk on fire")
+
+    monkeypatch.setattr(Path, "mkdir", _raise)
+    ok = stats_utils.append_ausfall_row(
+        timestamp=datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ),
+        direction="Meidling",
+        line="S1",
+        stats_dir=tmp_path / "nope",
+    )
+    assert ok is False
+
+
 # ---- Location heuristic ---------------------------------------------------
 
 

@@ -27,9 +27,9 @@ Dieses Projekt bündelt Störungs- und Baustellenmeldungen der Wiener Linien (WL
 
 ---
 
-## 📈 Stammstrecke – Störungen & Verspätungen
+## 📈 Stammstrecke – Störungen, Verspätungen & Ausfälle
 
-Die S-Bahn-Stammstrecke ist das Rückgrat des Pendlerverkehrs. Wir erfassen und werten reale Verspätungen und Störungen kontinuierlich aus.
+Die S-Bahn-Stammstrecke ist das Rückgrat des Pendlerverkehrs. Wir erfassen und werten reale Verspätungen, Ausfälle und Störungen kontinuierlich aus. Ausfälle werden aus den bestehenden VAO-Abfahrtsmonitor-Abfragen extrahiert und im 30-Min-Zyklus deduplizierungssicher gezählt.
 
 Mehr Statistiken findest du hier:
 [**📊 Zum detaillierten Dashboard**](docs/statistik.md)
@@ -57,6 +57,27 @@ Mehr Statistiken findest du hier:
 | Kritische Verspätungen (> 9 min) | 0 |
 | Letzte Aktualisierung | 2026-05-15 18:30 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
+
+### Ausfälle auf der S-Bahn Stammstrecke
+
+<!-- STATS:AUSFAELLE_LIVE:BEGIN -->
+> _Letzte 60 Minuten – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
+
+| Kennzahl | Wert |
+| -------- | ---- |
+| Ausfälle (gesamt) | 0 |
+| Letzte Aktualisierung | 2026-05-15 18:30 CEST |
+<!-- STATS:AUSFAELLE_LIVE:END -->
+
+<!-- STATS:AUSFAELLE:BEGIN -->
+> _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
+
+| Kennzahl | Wert |
+| -------- | ---- |
+| Ausfälle (gesamt) | 0 |
+| Häufigste Linien | _keine_ |
+| Letzte Aktualisierung | 2026-05-15 18:30 CEST |
+<!-- STATS:AUSFAELLE:END -->
 
 > **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).
 

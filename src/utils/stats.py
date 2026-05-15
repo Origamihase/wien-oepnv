@@ -66,6 +66,13 @@ STOERUNGEN_HEADER: Final = (
     "provider",
     "location_name",
 )
+AUSFAELLE_HEADER: Final = (
+    "timestamp",
+    "weekday",
+    "hour",
+    "direction",
+    "line",
+)
 
 # German short weekday names (Mo, Di, Mi, …) keyed by ``datetime.weekday()``
 # (0 = Monday). The aggregator renders these verbatim, so any change here
@@ -441,6 +448,43 @@ def append_disruption_row(
     return _append_row(path, STOERUNGEN_HEADER, row)
 
 
+def append_ausfall_row(
+    *,
+    timestamp: datetime,
+    direction: str,
+    line: str,
+    stats_dir: Path | None = None,
+) -> bool:
+    """Append a single Stammstrecke cancellation to ``ausfaelle_YYYY.csv``.
+
+    Each row represents exactly one cancelled train (deduplicated upstream
+    by the pending-trip ledger's identity-key machinery so the same
+    physical cancelled train is never written twice across cron ticks).
+    *timestamp* is the train's *scheduled* departure time — anchoring the
+    row to the actual departure window rather than to the cron wall clock
+    keeps the calendar-year ledger correct at the New-Year boundary.
+
+    *direction* is the canonical Stammstrecke direction label
+    (``Meidling`` / ``Praterstern``); *line* is the canonicalised line
+    designation (``S1``, ``REX3``, …). Both fields flow through
+    :func:`_sanitize_csv_text_field` so a poisoned upstream payload
+    cannot inject a spreadsheet formula or invisible-format characters
+    into the committed CSV.
+
+    Best-effort; never raises.
+    """
+    when = to_vienna(timestamp)
+    path = stats_path("ausfaelle", when.year, base_dir=stats_dir)
+    row = (
+        when.isoformat(timespec="seconds"),
+        WEEKDAY_LABELS[when.weekday()],
+        f"{when.hour:02d}",
+        _sanitize_csv_text_field(direction) or "unbekannt",
+        _sanitize_csv_text_field(line) or "unbekannt",
+    )
+    return _append_row(path, AUSFAELLE_HEADER, row)
+
+
 def _normalise_location(value: str) -> str:
     """Trim, collapse whitespace, and cap *value* at a sensible length."""
     cleaned = " ".join(value.split())
@@ -732,6 +776,7 @@ def read_recent_stammstrecke_observations(
 
 
 __all__ = [
+    "AUSFAELLE_HEADER",
     "STAMMSTRECKE_HEADER",
     "STOERUNGEN_HEADER",
     "WEEKDAY_LABELS",
@@ -739,6 +784,7 @@ __all__ = [
     "MAX_STAMMSTRECKE_CSV_BYTES",
     "StammstreckeObservation",
     "VIENNA_TZ",
+    "append_ausfall_row",
     "append_stammstrecke_row",
     "append_disruption_row",
     "extract_location_name",
