@@ -619,6 +619,84 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])FlyV1 (?:fm[12]|fo1)_[A-Za-z0-9_=\-]{50,}(?![A-Za-z0-9])"),
         "Fly.io API Token gefunden",
     ),
+    # GitLab Runner Authentication Token (``glrt-<20 chars from
+    # [A-Za-z0-9_-]>``). Issued via project / group / instance Runner
+    # registration in GitLab 15.6+ (the post-16.0 default replacing the
+    # legacy unprefixed registration-token shape). Format mirrors
+    # ``glpat-``: 5-char prefix + 20-char ``[A-Za-z0-9_-]`` body. The
+    # ``glrt-`` prefix is unambiguous (no other major issuer uses it),
+    # and the body lies entirely inside the entropy fallback's
+    # ``[A-Za-z0-9+/=_-]`` alphabet — so the entropy regex would match
+    # the full ``glrt-<body>`` span as one generic
+    # ``Hochentropischer Token-String`` finding, losing the
+    # GitLab-Runner-specific issuer attribution that incident-response
+    # keys off. A leak grants whoever holds the token the ability to
+    # **register a rogue GitLab Runner** against the issuing project /
+    # group / instance scope: the rogue runner subsequently drains the
+    # CI job queue, and every CI job (with whatever build secrets the
+    # pipeline exposes — DEPLOYMENT_KEY, CONTAINER_REGISTRY_PASSWORD,
+    # every protected-branch-scoped CI variable) is delivered to
+    # attacker-controlled hardware. Blast radius = the entire CI
+    # estate's job-execution surface — structurally identical to the
+    # Buildkite Agent Token (``bkat_``, Round 7) covered earlier. The
+    # revocation flow lives at gitlab.com/<scope>/-/runners and is
+    # distinct from any other vendor's, so issuer-specific attribution
+    # accelerates IR triage.
+    (
+        re.compile(r"(?<![A-Za-z0-9])glrt-[A-Za-z0-9_\-]{20}(?![A-Za-z0-9])"),
+        "GitLab Runner Authentication Token gefunden",
+    ),
+    # GitLab Deploy Token (``gldt-<20 chars from [A-Za-z0-9_-]>``).
+    # Issued via project / group settings > Repository > Deploy Tokens
+    # in GitLab 16.0+ (the post-16.0 default with prefix; pre-16.0
+    # deploy tokens were unprefixed and fall into the permanent
+    # bucket-(b) shape). Format mirrors ``glpat-``: 5-char prefix +
+    # 20-char ``[A-Za-z0-9_-]`` body. The ``gldt-`` prefix is
+    # unambiguous, and the body lies entirely inside the entropy
+    # fallback's alphabet — same generic-only attribution gap as the
+    # ``glrt-`` case. A leak grants the issuing scope's **Deploy Token
+    # capabilities**: read/write Container Registry images, read/write
+    # Package Registry artefacts, and (for the ``write_repository``
+    # scope) push to protected branches. The Container Registry
+    # surface is especially dangerous: an attacker who can push a
+    # tampered image to the project's registry persists their
+    # compromise across every downstream deployment that pulls the
+    # image, bypassing the source-repository security gate entirely.
+    # The revocation flow lives at gitlab.com/<project>/-/settings/
+    # repository#js-deploy-tokens and is distinct from any other
+    # vendor's.
+    (
+        re.compile(r"(?<![A-Za-z0-9])gldt-[A-Za-z0-9_\-]{20}(?![A-Za-z0-9])"),
+        "GitLab Deploy Token gefunden",
+    ),
+    # GitLab Cluster Agent for Kubernetes Token
+    # (``glagent-<50+ chars from [A-Za-z0-9_-]>``). Issued via project
+    # / group settings > Operate > Kubernetes clusters > GitLab Agent
+    # in GitLab 14.0+ for registering a GitLab Agent for Kubernetes
+    # inside a target cluster. Format diverges from the ``glpat-``
+    # family: 8-char prefix + 50+ char body (the body is longer because
+    # the registered Agent uses the token for GraphQL-level mTLS
+    # handshake metadata and the extra entropy is needed for the
+    # agent's identity fingerprint). The ``glagent-`` prefix is
+    # unambiguous, and the body lies entirely inside the entropy
+    # fallback's alphabet — same generic-only attribution gap as the
+    # ``glrt-`` / ``gldt-`` cases. A leak grants whoever holds the
+    # token the ability to **register a rogue GitLab Agent for
+    # Kubernetes** against the issuing scope: the rogue agent
+    # subsequently runs ``kubectl`` commands inside the target
+    # cluster (via the configured impersonation account) and
+    # reads / mutates every Kubernetes resource the agent's RBAC
+    # binding permits. Blast radius = the entire connected cluster's
+    # resource surface — the highest leak surface in the GitLab
+    # GitOps stack, structurally analogous to the Buildkite / GitLab
+    # Runner registration tokens but acting at the in-cluster
+    # orchestrator boundary rather than the CI runner boundary. The
+    # revocation flow lives at gitlab.com/<project>/-/settings/
+    # cluster_agents and is distinct from every other vendor's.
+    (
+        re.compile(r"(?<![A-Za-z0-9])glagent-[A-Za-z0-9_\-]{50,}(?![A-Za-z0-9])"),
+        "GitLab Cluster Agent Token gefunden",
+    ),
 ]
 
 
