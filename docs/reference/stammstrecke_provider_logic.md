@@ -260,9 +260,11 @@ werden, übernimmt das CSV-Ledger das Self-Healing implizit:
 
 ### Stationsnamen-Auflösung
 
-Die in `description` angezeigten Ziel-Stationsnamen ("Meidling" /
-"Floridsdorf") werden **nicht hartcodiert**, sondern über das
-kanonische Stationsverzeichnis (`src.utils.stations`) aufgelöst. Der
+Die in `description` angezeigten Richtungs-Labels ("Meidling" für Süd,
+seit 2026-05-15 "Praterstern" für Nord; bis dahin war Nord "Floridsdorf")
+werden für die Süd-Richtung über das kanonische Stationsverzeichnis
+(`src.utils.stations`) aufgelöst, für die Nord-Richtung hartcodiert
+(siehe `DIRECTIONS` in `src/feed/stammstrecke.py`). Der
 Producer legt für jede Richtung ein Tupel `(_Direction)` an, das
 `target_label` aus `display_name(canonical_name(seed))` ableitet und
 mit dem `Wien `-Präfix-Strip eine kompakte Form für die `description`

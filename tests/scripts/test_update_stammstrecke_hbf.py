@@ -73,21 +73,21 @@ def _isolated_quota_counter(
         ("Wolfsthal", "Meidling"),
         ("Wien Flughafen", "Meidling"),
         # Northbound substring matches
-        ("Wien Floridsdorf", "Floridsdorf"),
-        ("Praterstern", "Floridsdorf"),
-        ("Stockerau", "Floridsdorf"),
-        ("Hollabrunn", "Floridsdorf"),
-        ("Retz", "Floridsdorf"),
-        ("Břeclav", "Floridsdorf"),
-        ("Breclav", "Floridsdorf"),
-        ("Wolkersdorf", "Floridsdorf"),
-        ("Mistelbach", "Floridsdorf"),
-        ("Laa an der Thaya", "Floridsdorf"),
-        ("Gänserndorf", "Floridsdorf"),
+        ("Wien Floridsdorf", "Praterstern"),
+        ("Praterstern", "Praterstern"),
+        ("Stockerau", "Praterstern"),
+        ("Hollabrunn", "Praterstern"),
+        ("Retz", "Praterstern"),
+        ("Břeclav", "Praterstern"),
+        ("Breclav", "Praterstern"),
+        ("Wolkersdorf", "Praterstern"),
+        ("Mistelbach", "Praterstern"),
+        ("Laa an der Thaya", "Praterstern"),
+        ("Gänserndorf", "Praterstern"),
         # Northbound exact-terminus matches (no substring hit)
-        ("Wien Mitte", "Floridsdorf"),
-        ("Wien Mitte-Landstraße", "Floridsdorf"),
-        ("Wien Mitte Bahnhof", "Floridsdorf"),
+        ("Wien Mitte", "Praterstern"),
+        ("Wien Mitte-Landstraße", "Praterstern"),
+        ("Wien Mitte Bahnhof", "Praterstern"),
         # Unrecognised — terminus AT Hbf is irrelevant; Westbahnhof is
         # a different corridor; Marchegg / Bratislava-Petržalka were
         # intentionally removed from the northbound substring list
@@ -111,7 +111,7 @@ def test_classify_hbf_direction_case_insensitive_substring() -> None:
 
     assert script.classify_hbf_direction("MÖDLING") == "Meidling"
     assert script.classify_hbf_direction("graz hbf") == "Meidling"
-    assert script.classify_hbf_direction("FLORIDSDORF") == "Floridsdorf"
+    assert script.classify_hbf_direction("FLORIDSDORF") == "Praterstern"
 
 
 def test_classify_hbf_direction_substring_at_any_position() -> None:
@@ -135,7 +135,7 @@ def test_classify_hbf_direction_resolves_mixed_via_to_rightmost() -> None:
     # Terminus = Floridsdorf (north); "Mödling" appears as a via stop.
     assert (
         script.classify_hbf_direction("via Mödling nach Floridsdorf")
-        == "Floridsdorf"
+        == "Praterstern"
     )
     # Terminus = Mödling (south); "Floridsdorf" appears as a via stop.
     assert (
@@ -146,14 +146,14 @@ def test_classify_hbf_direction_resolves_mixed_via_to_rightmost() -> None:
     # terminus name keeps the right-most match alignment intact.
     assert (
         script.classify_hbf_direction("via Mödling nach Floridsdorf Bahnhof")
-        == "Floridsdorf"
+        == "Praterstern"
     )
     # Mixed string with a southbound prefix and a multi-step northbound
     # path — the right-most match (Praterstern, north) wins because it
     # marks the terminus.
     assert (
         script.classify_hbf_direction("Meidling via Floridsdorf nach Praterstern")
-        == "Floridsdorf"
+        == "Praterstern"
     )
 
 
@@ -842,16 +842,20 @@ def test_hauptbahnhof_id_matches_stations_directory() -> None:
 
 
 def test_direction_labels_match_csv_convention() -> None:
-    """The direction labels match the historical CSV column values.
+    """The direction labels match the CSV column values.
 
     The README dashboard, feed event renderer, and any external analysis
-    keys on "Meidling" / "Floridsdorf" as the direction column values.
-    Drifting this constant would silently break those consumers.
+    key on "Meidling" / "Praterstern" as the direction column values
+    since the 2026-05-15 rename (the legacy ``Floridsdorf`` value is
+    accepted as an alias by the feed renderer's DIRECTIONS_BY_LABEL
+    lookup but never produced by the canonical write path). Drifting
+    these constants would silently break those consumers.
     """
 
     assert script.DIRECTION_LABEL_SOUTHBOUND == "Meidling"
-    assert script.DIRECTION_LABEL_NORTHBOUND == "Floridsdorf"
-    assert set(script.DIRECTION_LABELS) == {"Meidling", "Floridsdorf"}
+    assert script.DIRECTION_LABEL_NORTHBOUND == "Praterstern"
+    assert script.LEGACY_DIRECTION_LABEL_NORTHBOUND == "Floridsdorf"
+    assert set(script.DIRECTION_LABELS) == {"Meidling", "Praterstern"}
 
 
 def test_duration_window_covers_cron_interval_with_overlap() -> None:

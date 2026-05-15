@@ -984,10 +984,14 @@ def test_directions_table_covers_both_targets() -> None:
 
     targets = {d.target_label for d in script.DIRECTIONS}
     prefixes = {d.identity_prefix for d in script.DIRECTIONS}
-    assert targets == {"Meidling", "Floridsdorf"}
+    # Northbound label was renamed Floridsdorf → Praterstern on 2026-05-15
+    # to match the symmetric "next Stammstrecke stop after Hbf" naming
+    # (south = Meidling, north = Praterstern) and accommodate short-turn
+    # trains that terminate at Praterstern without reaching Floridsdorf.
+    assert targets == {"Meidling", "Praterstern"}
     assert prefixes == {
         "stammstrecke_delay_meidling",
-        "stammstrecke_delay_floridsdorf",
+        "stammstrecke_delay_praterstern",
     }
 
 

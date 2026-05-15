@@ -88,7 +88,7 @@ Both writers: switch from ``ensure_ascii=False`` to ``ensure_ascii=True``.
     is now uniform across every committed operator-facing JSON state
     sink in the project.
   * Legitimate content in these files is exclusively ASCII — direction
-    labels are hardcoded ``"Meidling"`` / ``"Floridsdorf"``, line
+    labels are hardcoded ``"Meidling"`` / ``"Praterstern"``, line
     names are short S-Bahn / R / REX designations
     (``S1`` / ``S80`` / ``R8`` / ``REX3``), timestamps are ISO-8601 —
     so the on-disk-byte change is invisible for the happy path.
@@ -249,11 +249,11 @@ def test_save_pending_trips_escapes_every_trojan_source_primitive_in_name(
     name = f"S{primitive}2"
     state = {
         script._identity_key(
-            "Floridsdorf",
+            "Praterstern",
             name,
             datetime(2026, 5, 13, 9, 0, tzinfo=VIENNA_TZ),
         ): _make_pending(
-            direction="Floridsdorf",
+            direction="Praterstern",
             name=name,
             latest_delay_minutes=1.0,
         ),
@@ -382,7 +382,7 @@ def test_save_recently_finalised_escapes_every_trojan_source_primitive(
     ledger writer.
     """
     key = script._identity_key(
-        "Floridsdorf",
+        "Praterstern",
         f"REX{primitive}3",
         datetime(2026, 5, 13, 9, 30, tzinfo=VIENNA_TZ),
     )
@@ -490,11 +490,11 @@ def test_save_pending_trips_preserves_legitimate_ascii_state(
             datetime(2026, 5, 13, 8, 0, tzinfo=VIENNA_TZ),
         ): _make_pending(name="S1", latest_delay_minutes=4.5),
         script._identity_key(
-            "Floridsdorf",
+            "Praterstern",
             "REX3",
             datetime(2026, 5, 13, 8, 15, tzinfo=VIENNA_TZ),
         ): _make_pending(
-            direction="Floridsdorf",
+            direction="Praterstern",
             name="REX3",
             latest_delay_minutes=2.0,
         ),

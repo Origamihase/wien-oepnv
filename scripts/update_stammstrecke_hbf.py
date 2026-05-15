@@ -40,16 +40,23 @@ Direction labelling
 -------------------
 
 Each departure's ``direction`` field (the train's terminus as displayed
-on the station board) is classified into the same ``"Meidling"`` /
-``"Floridsdorf"`` direction labels that the pre-2026-05-15 ``/trip``
-pipeline emitted, so:
+on the station board) is classified into the two direction labels
+``"Meidling"`` (south) and ``"Praterstern"`` (north). The labels are
+named after the **next major Stammstrecke stop after Hbf** in each
+direction — the symmetry lets a short-turn terminating at Praterstern
+(or even Wien Mitte) live in the same bucket as a long-runner that
+continues to Floridsdorf, Stockerau, or Břeclav. Pre-2026-05-15 the
+northbound label was ``"Floridsdorf"``; the rename is a measurement
+semantic, not a routing change. The CSV migration commit (sibling of
+this rename) rewrites all historical rows to the new label and the
+backwards-compatibility alias :data:`LEGACY_DIRECTION_LABEL_NORTHBOUND`
+keeps any externally-restored old ledger / CSV readable by the feed
+renderer.
 
-* ``data/stats/stammstrecke_<YYYY>.csv`` rows keep the exact same
-  schema and direction-column values — the README dashboard, feed
-  event renderer (``src/feed/stammstrecke.py``) and any external
-  analysis continue to work byte-for-byte.
-* The pending-trip ledger (``cache/stammstrecke/pending_trips.json``)
-  and the recently-finalised companion ledger remain compatible.
+The CSV schema is otherwise unchanged — the README dashboard, feed
+event renderer (``src/feed/stammstrecke.py``) and any external
+analysis continue to work byte-for-byte once they pick up the new
+direction value.
 
 Two-layer classification: substring match against well-known south/north
 landmark names first (fast path), then exact-terminus whitelist
@@ -285,11 +292,34 @@ STAMMSTRECKE_HBF_TRACK_TRUNKS: Final[frozenset[str]] = frozenset({"1", "2"})
 _TRACK_TRUNK_RE: Final = re.compile(r"^\s*0*([0-9]+)")
 
 # Geographic-direction → CSV-label mapping. Pinned constants so a future
-# rename here cannot silently drift the README dashboard column values
-# (which are pinned to "Meidling" / "Floridsdorf" since the 2026-05-09
-# Stammstrecke migration).
+# rename here cannot silently drift the README dashboard column values.
+#
+# Label history:
+# * 2026-05-09 (legacy ``/trip`` migration): the northbound label was
+#   "Floridsdorf" — the train's typical terminus on the Floridsdorf-
+#   to-Meidling ``/trip`` query.
+# * 2026-05-15 (this rename): the northbound label is "Praterstern".
+#   Rationale: not every northbound Stammstrecke train continues all
+#   the way to Floridsdorf — short-turns terminating at Praterstern
+#   (and even at Wien Mitte) appear in the live feed, and the
+#   southbound label "Meidling" already encodes the *next major
+#   Stammstrecke stop after Hbf* rather than the eventual far-end
+#   terminus. Using "Praterstern" for the symmetric northbound
+#   meaning gives both directions the same shape: "Stammstrecke
+#   trains heading toward <next Stammstrecke stop from Hbf>".
 DIRECTION_LABEL_SOUTHBOUND: Final = "Meidling"
-DIRECTION_LABEL_NORTHBOUND: Final = "Floridsdorf"
+DIRECTION_LABEL_NORTHBOUND: Final = "Praterstern"
+
+# Legacy CSV / ledger / first-seen labels that the 2026-05-09 pipeline
+# wrote. Read paths accept either label so historical rows under the
+# old name (data/stats/stammstrecke_2026.csv pre-rename + any in-flight
+# pending-trip-state entries observed before the rename commit) still
+# fold into the canonical "Praterstern" bucket on the next read. This
+# shim is checked in :func:`src.feed.stammstrecke.compute_stammstrecke_
+# events` and in :func:`scripts.update_stammstrecke_hbf.main`'s
+# finalise-loop key resolver so the in-flight ledger transition is
+# transparent to operators.
+LEGACY_DIRECTION_LABEL_NORTHBOUND: Final = "Floridsdorf"
 
 DIRECTION_LABELS: Final[tuple[str, ...]] = (
     DIRECTION_LABEL_SOUTHBOUND,
@@ -539,7 +569,7 @@ def _query_departure_board(
 
 
 def classify_hbf_direction(direction_str: str) -> str | None:
-    """Return ``"Meidling"`` (south), ``"Floridsdorf"`` (north) or ``None``.
+    """Return ``"Meidling"`` (south), ``"Praterstern"`` (north) or ``None``.
 
     Two-layer match against the direction string (the train's terminus
     as serialised by VAO):
@@ -757,7 +787,7 @@ class _HbfDepartureObservation:
     before invoking ``_observe_legs``).
     """
 
-    direction: str  # historical label: "Meidling" or "Floridsdorf"
+    direction: str  # label: "Meidling" or "Praterstern" (legacy: "Floridsdorf")
     name: str       # canonicalised line designation (e.g., "S1", "REX3")
     scheduled: datetime
     delay_minutes: float
@@ -830,7 +860,7 @@ def _collect_hbf_observations(
     4. Scheduled timestamp parses to a :class:`datetime`.
     5. Realtime signal present (``rtTime`` populated) and not
        cancelled — the conservative legacy rule, preserved verbatim.
-    6. Terminus resolves to ``Meidling`` or ``Floridsdorf`` via
+    6. Terminus resolves to ``Meidling`` or ``Praterstern`` via
        :func:`classify_hbf_direction`.
 
     Compatible with :func:`_observe_legs` via the
@@ -1050,10 +1080,12 @@ def _process_tick(
         )
 
     LOGGER.info(
-        "Stammstrecke (Hbf): %d Abfahrten gesamt — Meidling=%d, "
-        "Floridsdorf=%d (Ledger-Updates).",
+        "Stammstrecke (Hbf): %d Abfahrten gesamt — %s=%d, "
+        "%s=%d (Ledger-Updates).",
         len(departures),
+        DIRECTION_LABEL_SOUTHBOUND,
         written_per_dir.get(DIRECTION_LABEL_SOUTHBOUND, 0),
+        DIRECTION_LABEL_NORTHBOUND,
         written_per_dir.get(DIRECTION_LABEL_NORTHBOUND, 0),
     )
     return "ok"
@@ -1131,6 +1163,12 @@ def main() -> int:
         # written to the CSV, and their identity key is registered in
         # ``recently_finalised`` so a VAO re-emission at the lookahead
         # boundary cannot produce a duplicate CSV row.
+        #
+        # Backwards-compat: for the northbound direction we also drain
+        # any pending entries that survived the 2026-05-15 rename
+        # under the legacy ``Floridsdorf`` direction value. The CSV
+        # row is still written under the canonical ``Praterstern``
+        # label so the dashboard sees a single direction-stream.
         csv_rows_written = 0
         for direction in DIRECTION_LABELS:
             finalised = _finalize_departed(
@@ -1139,6 +1177,23 @@ def main() -> int:
                 now=when,
                 recently_finalised=recently_finalised,
             )
+            if direction == DIRECTION_LABEL_NORTHBOUND:
+                legacy_finalised = _finalize_departed(
+                    state,
+                    direction=LEGACY_DIRECTION_LABEL_NORTHBOUND,
+                    now=when,
+                    recently_finalised=recently_finalised,
+                )
+                if legacy_finalised:
+                    LOGGER.info(
+                        "Stammstrecke (Hbf): %d Pending-Eintrag/Einträge mit "
+                        "Legacy-Richtungs-Label '%s' finalisiert "
+                        "(umgebucht auf '%s' im CSV).",
+                        len(legacy_finalised),
+                        LEGACY_DIRECTION_LABEL_NORTHBOUND,
+                        DIRECTION_LABEL_NORTHBOUND,
+                    )
+                    finalised = list(finalised) + list(legacy_finalised)
             if not finalised:
                 continue
             by_year: dict[int, list[Any]] = {}
@@ -1206,6 +1261,7 @@ __all__ = [
     "HBF_NORTHBOUND_TERMINI",
     "HBF_SOUTHBOUND_SUBSTRINGS",
     "HBF_SOUTHBOUND_TERMINI",
+    "LEGACY_DIRECTION_LABEL_NORTHBOUND",
     "STAMMSTRECKE_HBF_TRACK_TRUNKS",
     "classify_hbf_direction",
     "main",
