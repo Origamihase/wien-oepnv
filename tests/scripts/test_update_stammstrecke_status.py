@@ -1996,30 +1996,38 @@ def test_main_mixed_finalisation_keeps_delay_and_cancellation_distinct(
     stammstrecke_calls: list[dict[str, Any]] = []
     ausfaelle_calls: list[dict[str, Any]] = []
 
-    monkeypatch.setattr(
-        script,
-        "append_stammstrecke_row",
-        lambda *, timestamp, direction, delay_minutes, stats_dir=None: (
-            stammstrecke_calls.append(
-                {
-                    "timestamp": timestamp,
-                    "direction": direction,
-                    "delay_minutes": delay_minutes,
-                }
-            )
-            or True
-        ),
-    )
-    monkeypatch.setattr(
-        script,
-        "append_ausfall_row",
-        lambda *, timestamp, direction, line, stats_dir=None: (
-            ausfaelle_calls.append(
-                {"timestamp": timestamp, "direction": direction, "line": line}
-            )
-            or True
-        ),
-    )
+    def fake_stammstrecke(
+        *,
+        timestamp: datetime,
+        direction: str,
+        delay_minutes: float,
+        stats_dir: Path | None = None,
+    ) -> bool:
+        del stats_dir
+        stammstrecke_calls.append(
+            {
+                "timestamp": timestamp,
+                "direction": direction,
+                "delay_minutes": delay_minutes,
+            }
+        )
+        return True
+
+    def fake_ausfall(
+        *,
+        timestamp: datetime,
+        direction: str,
+        line: str,
+        stats_dir: Path | None = None,
+    ) -> bool:
+        del stats_dir
+        ausfaelle_calls.append(
+            {"timestamp": timestamp, "direction": direction, "line": line}
+        )
+        return True
+
+    monkeypatch.setattr(script, "append_stammstrecke_row", fake_stammstrecke)
+    monkeypatch.setattr(script, "append_ausfall_row", fake_ausfall)
 
     def fake_query(
         session: Any, direction: Any, *, when: datetime, timeout: int = 0
