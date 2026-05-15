@@ -494,10 +494,12 @@ path since the original `_download_ogd_csv` shape.
 
 ## 6. Statistics & Dashboard Pipeline
 
-Two append-only CSV ledgers under `data/stats/` capture every relevant
+Three append-only CSV ledgers under `data/stats/` capture every relevant
 observation as it happens. They serve **two consumers** with
 different windows: the daily Markdown dashboard
-(`docs/statistik.md`, 30-day window) and the RSS feed itself
+(`docs/statistik.md`, 30-day window) plus the four README STATS
+markers (`STATS:STAMMSTRECKE[_LIVE]` and `STATS:AUSFAELLE[_LIVE]`,
+60-min + 30-day snapshots), and the RSS feed itself
 (Stammstrecke section, 1-hour window — see
 [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)).
 The hot-path build never blocks on observability I/O — both
@@ -566,9 +568,9 @@ it:
    `src/` or `scripts/`" invariant is enforced by
    `tests/test_sentinel_csv_size_bomb.py`.
 2. **Malformed-row tolerance** — `_parse_stammstrecke_rows` /
-   `_parse_stoerung_rows` skip individual rows that fail
-   `fromisoformat` or `float()`. A single fat-fingered manual edit
-   never corrupts the entire dashboard.
+   `_parse_stoerung_rows` / `_parse_ausfall_rows` skip individual
+   rows that fail `fromisoformat` or `float()`. A single fat-fingered
+   manual edit never corrupts the entire dashboard.
 3. **Atomic dashboard write** — the rendered Markdown lands on disk
    through `src.utils.files.atomic_write`. A kill-signal mid-render
    cannot replace the previous dashboard with a half-written file.
@@ -591,6 +593,7 @@ keyword always wins inside `stats_path`.
 | Question | Section in `docs/statistik.md` |
 |---|---|
 | **When** do Stammstrecke delays occur? | "Stammstrecke" — weekday + hour distributions of both observation count and average delay |
+| **How often** is the Stammstrecke cancelling trains? | "Ausfälle" — per-direction and per-line tables plus weekday + hour distributions |
 | **Where** (and **when**) are disruption hotspots? | "Störungen" — per-provider table, weekday + hour distributions, top-5 hotspots with per-location hourly profile |
 
 The location heuristic in `extract_location_name` tries — in order —

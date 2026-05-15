@@ -236,12 +236,15 @@ def read_cache_baustellen() -> list[Any]:
 # Stammstrecke is the only provider whose feed entries are derived
 # *directly* from the statistics ledger (``data/stats/stammstrecke_<YYYY>.csv``)
 # rather than from a separate provider-fetched JSON cache. The cron
-# script ``scripts/update_stammstrecke_status.py`` appends one
-# observation row per direction per run; this provider folds the rows
-# from the most recent hour into 0..N feed events when the per-
-# direction average delay exceeds the threshold. Single source of
-# truth = the CSV ledger; the README dashboard reads the same file
-# (just with a 30-day window instead of the feed's 1-hour window).
+# script ``scripts/update_stammstrecke_hbf.py`` (active since
+# 2026-05-15; reuses shared infrastructure from
+# ``scripts/update_stammstrecke_status.py`` via import) appends one
+# aggregate observation row per direction per cron tick; this provider
+# folds the rows from the most recent hour into 0..N feed events when
+# the per-direction trigger gate (≥2 observations strictly above 9 min
+# in that hour) fires. Single source of truth = the CSV ledger; the
+# README dashboard reads the same file (just with a 30-day window
+# instead of the feed's 1-hour window).
 #
 # Replaced the ``cache/stammstrecke/events.json`` JSON cache 2026-05-09
 # (PR follow-up to #1397). Operational rationale in
