@@ -55,13 +55,21 @@ python -m src.cli checks --fix
 ### Feed lokal bauen
 Um Änderungen am Feed-Generator zu testen:
 ```bash
-# Beispiel: Nur Wiener Linien und ÖBB aktivieren
+# Beispiel: Nur Wiener Linien und ÖBB aktivieren, Baustellen
+# und Stammstrecke deaktivieren
 export WL_ENABLE=true
 export OEBB_ENABLE=true
-export VOR_ENABLE=false
+export BAUSTELLEN_ENABLE=false
+export STAMMSTRECKE_ENABLE=false
 python -m src.cli feed build
 ```
 Der Output liegt dann unter `docs/feed.xml`.
+
+> ℹ️ Ein `VOR_ENABLE` existiert nicht (mehr): VOR ist seit der
+> 2026-05-11-Konsolidierung kein eigenständiger Disruption-Provider
+> mehr — die VOR/VAO-API treibt ausschließlich den
+> Stammstrecken-Monitor, der über `STAMMSTRECKE_ENABLE` gesteuert
+> wird.
 
 ## Pull Requests (PRs)
 

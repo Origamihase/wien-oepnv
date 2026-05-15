@@ -15,9 +15,18 @@ also expressed prose-first under each diagram.
 
 The headline workflow: a cron job (or the `update-cycle.yml` GitHub
 Action) launches `python -m src.cli feed build` (which calls
-`build_feed.main()`), orchestrating 4–5 transit-data providers in
-parallel, deduplicating the merged events, and writing a single RSS
-feed.
+`build_feed.main()`), invoking the registered transit-data providers,
+deduplicating the merged events, and writing a single RSS feed.
+
+> **Hinweis zum aktuellen Default-Setup:** Das Diagramm illustriert
+> beide Provider-Modi des Builders (sync cache vs. async network).
+> Im aktuellen Cron-Setup (`update-cycle.yml`) werden die HTTP-Fetcher
+> für WL, ÖBB und Baustellen aber **in eigenen Workflow-Steps** vor
+> dem `feed build` ausgeführt und schreiben in `cache/<provider>/`;
+> der Feed-Build selbst sieht alle Default-Provider (WL, ÖBB,
+> Baustellen, Stammstrecke) deshalb als **cache_fetchers** (sync,
+> disk-bound). Der Async-Pfad ist die Plug-in-Aufnahme-Stelle für
+> nicht-cache-basierte Drittprovider — siehe §4.
 
 ```mermaid
 sequenceDiagram

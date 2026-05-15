@@ -1,5 +1,16 @@
 # `[attr-defined]`-Cluster — Investigations-Findings (D.1)
 
+> ⚠️ **Status: Historisches Investigations-Dokument (Snapshot).** Dieser Bericht
+> dokumentiert eine punktuelle mypy-Analyse aus der strict-typing-Migration
+> und wurde gegen die damalige Repository-Struktur erstellt. Mehrere der
+> hier referenzierten Skripte (`scripts/update_vor_cache.py`,
+> `scripts/update_vor_stations.py`, `scripts/fetch_vor_haltestellen.py`)
+> wurden mit der 2026-05-11-VOR-Konsolidierung gelöscht; die zugehörigen
+> Items entfallen in der heutigen Test-Suite. Dieses Dokument wird **nicht**
+> nachgepflegt, weil es eine zeitpunktgenaue Cluster-Analyse beschreibt —
+> aktuelle mypy-Konventionen stehen in
+> [`docs/strict-typing-migration.md`](strict-typing-migration.md).
+
 Dieses Dokument klärt die Strategie für den verbleibenden
 `[attr-defined]`-Cluster (98 Errors) der strict-typing-Migration.
 Ziel: per Sub-Kategorie eine konkrete Fix-Empfehlung formulieren,
