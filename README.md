@@ -92,7 +92,7 @@ Das Projekt unterscheidet konsequent zwischen *Live-Verkehrsmeldungen* (treiben 
 | Quelle | Zweck |
 | --- | --- |
 | **Wiener Linien (WL)** | Störungs- und Baustellenmeldungen für U-Bahn, Straßenbahn und Bus innerhalb des WL-Netzes. |
-| **ÖBB** | Bundesweite Bahnmeldungen mit Wien-Filter; Stammstrecken-Verspätungs-Snapshots fließen in die Statistik. |
+| **ÖBB** | Bundesweite Bahnmeldungen mit Wien-Filter (RSS-Feed, `OEBB_RSS_URL`-konfigurierbar). |
 | **VOR/VAO** | Regionalverkehr Wien/Niederösterreich/Burgenland. Wird seit 2026-05-11 ausschließlich für den Stammstrecken-Monitor genutzt (siehe `docs/architecture.md` §7). |
 | **OGD Stadt Wien** | Offizielle Baustellendaten der Stadt Wien (Bezirk, Zeitraum, Geo-Infos). |
 
