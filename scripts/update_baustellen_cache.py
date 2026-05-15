@@ -36,6 +36,7 @@ from utils.cache import write_cache  # noqa: E402
 from utils.files import read_capped_json  # noqa: E402
 from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
 from utils.ids import make_guid  # noqa: E402
+from utils.logging import sanitize_log_arg  # noqa: E402
 from utils.serialize import serialize_for_cache  # noqa: E402
 
 # Security cap against wide-but-flat JSON size-bomb attacks on the
@@ -348,9 +349,19 @@ def _resolve_data_url(candidate: str | None) -> str:
         return DEFAULT_DATA_URL
     validated = _validated_baustellen_data_url(text)
     if validated is None:
+        # Security (Path-Log Sibling Drift Round 4, env-repr closure):
+        # ``text`` is the operator-controlled ``BAUSTELLEN_DATA_URL``
+        # value. Pre-fix the WARNING line interpolated it via ``%r`` —
+        # Python's repr() escapes most attack bytes but lets all 256
+        # Variation Selectors (U+FE00-U+FE0F + U+E0100-U+E01EF) through
+        # verbatim into ``record.args[0]`` and ``record.getMessage()``.
+        # Route through ``sanitize_log_arg`` so the canonical
+        # ``_INVISIBLE_DANGEROUS_RE`` strips them BEFORE the value lands
+        # in caplog / non-SafeFormatter handlers (mirrors the canonical
+        # contract from PR #1475).
         LOGGER.warning(
-            "Baustellen: BAUSTELLEN_DATA_URL %r ist kein bekannter Stadt-Wien-OGD-Host; verwende Standard.",
-            text,
+            "Baustellen: BAUSTELLEN_DATA_URL %s ist kein bekannter Stadt-Wien-OGD-Host; verwende Standard.",
+            sanitize_log_arg(text),
         )
         return DEFAULT_DATA_URL
     return validated
@@ -623,7 +634,13 @@ def main() -> int:
             # ``fetch_content_safe`` never falls back to "no read deadline".
             timeout = min(max(int(timeout_raw), 1), MAX_BAUSTELLEN_TIMEOUT)
         except ValueError:
-            LOGGER.warning("Baustellen: Ungültiger Timeout-Wert %r – verwende Standard", timeout_raw)
+            # Security (Path-Log Sibling Drift Round 4, env-repr closure):
+            # see ``_resolve_data_url`` — same env-repr drift shape on the
+            # operator-controlled ``BAUSTELLEN_TIMEOUT`` value.
+            LOGGER.warning(
+                "Baustellen: Ungültiger Timeout-Wert %s – verwende Standard",
+                sanitize_log_arg(timeout_raw),
+            )
     payload = _fetch_remote(data_url, timeout)
     if payload is None:
         payload = _load_fallback(fallback_path)

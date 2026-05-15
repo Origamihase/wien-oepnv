@@ -366,16 +366,40 @@ def _read_optional_non_negative_int(env_name: str) -> int | None:
         # ``exc`` text is rendered raw via ``%s`` — sanitise to defeat a
         # hostile env-injected value flowing through ``int()``'s error
         # message into the structured log line.
+        #
+        # Security (Path-Log Sibling Drift Round 4, env-repr closure):
+        # ``raw`` was previously formatted via ``%r``; that conversion
+        # leaves all 256 Variation Selectors (U+FE00-U+FE0F +
+        # U+E0100-U+E01EF) in ``record.args`` and ``getMessage()``
+        # verbatim. Route through ``sanitize_log_arg`` to strip the
+        # canonical ``_INVISIBLE_DANGEROUS_RE`` union BEFORE the value
+        # reaches caplog / non-SafeFormatter handlers.
         log.warning(
-            "Ungültiger Wert für %s=%r – ignoriere Override (%s: %s)",
+            "Ungültiger Wert für %s=%s – ignoriere Override (%s: %s)",
             env_name,
-            raw,
+            sanitize_log_arg(raw),
             type(exc).__name__,
             sanitize_log_arg(str(exc)),
         )
         return None
     if value < 0:
-        log.warning("Negativer Wert für %s=%r – ignoriere Override", env_name, raw)
+        # Security (Path-Log Sibling Drift Round 4, env-repr closure):
+        # ``raw`` is the operator-controlled per-provider env override
+        # (``PROVIDER_<SLUG>_MAX_AGE_DAYS`` etc.). Pre-fix the WARNING
+        # interpolated it via ``%r`` — Python's repr() escapes most
+        # attack bytes but lets all 256 Variation Selectors
+        # (U+FE00-U+FE0F + U+E0100-U+E01EF) through verbatim into
+        # ``record.args[1]`` and ``record.getMessage()``. Route through
+        # ``sanitize_log_arg`` so the canonical
+        # ``_INVISIBLE_DANGEROUS_RE`` strips them BEFORE the value
+        # lands in caplog / non-SafeFormatter handlers (mirrors the
+        # sibling defence on line 374 that already routes ``str(exc)``
+        # through the canonical helper).
+        log.warning(
+            "Negativer Wert für %s=%s – ignoriere Override",
+            env_name,
+            sanitize_log_arg(raw),
+        )
         return None
     return value
 

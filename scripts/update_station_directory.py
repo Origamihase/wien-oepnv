@@ -790,7 +790,19 @@ def _parse_radius(raw: str | None) -> int:
     try:
         radius = int(raw)
     except (TypeError, ValueError):
-        logger.warning("Invalid PLACES_RADIUS_M=%r – using default 2500", raw)
+        # Security (Path-Log Sibling Drift Round 4, env-repr closure):
+        # ``raw`` is the operator-controlled ``PLACES_RADIUS_M`` value.
+        # Pre-fix the WARNING line interpolated it via ``%r`` — Python's
+        # repr() escapes most attack bytes but lets all 256 Variation
+        # Selectors (U+FE00-U+FE0F + U+E0100-U+E01EF) through verbatim
+        # into ``record.args[0]`` and ``record.getMessage()``. Route
+        # through ``sanitize_log_arg`` so the canonical
+        # ``_INVISIBLE_DANGEROUS_RE`` strips them BEFORE the value
+        # lands in caplog / non-SafeFormatter handlers.
+        logger.warning(
+            "Invalid PLACES_RADIUS_M=%s – using default 2500",
+            sanitize_log_arg(raw),
+        )
         return 2500
     return max(1, min(50000, radius))
 
@@ -801,7 +813,11 @@ def _parse_max_results(raw: str | None) -> int:
     try:
         value = int(raw)
     except (TypeError, ValueError):
-        logger.warning("Invalid PLACES_MAX_RESULTS=%r – using default 20", raw)
+        # Security: see ``_parse_radius`` — same env-repr drift closure.
+        logger.warning(
+            "Invalid PLACES_MAX_RESULTS=%s – using default 20",
+            sanitize_log_arg(raw),
+        )
         return 20
     if value <= 0:
         return 0
@@ -814,7 +830,17 @@ def _parse_float(raw: str | None, *, key: str, default: float) -> float:
     try:
         return float(raw)
     except (TypeError, ValueError):
-        logger.warning("Invalid %s=%r – using default %s", key, raw, default)
+        # Security: see ``_parse_radius`` — same env-repr drift closure.
+        # ``key`` is a hardcoded module-internal constant
+        # (``REQUEST_TIMEOUT_S`` / ``MERGE_MAX_DIST_M``); only ``raw`` is
+        # operator-controlled and therefore the only arg requiring the
+        # canonical scrub.
+        logger.warning(
+            "Invalid %s=%s – using default %s",
+            key,
+            sanitize_log_arg(raw),
+            default,
+        )
         return default
 
 
@@ -824,7 +850,13 @@ def _parse_int(raw: str | None, *, key: str, default: int) -> int:
     try:
         return int(raw)
     except (TypeError, ValueError):
-        logger.warning("Invalid %s=%r – using default %s", key, raw, default)
+        # Security: see ``_parse_radius`` — same env-repr drift closure.
+        logger.warning(
+            "Invalid %s=%s – using default %s",
+            key,
+            sanitize_log_arg(raw),
+            default,
+        )
         return default
 
 
