@@ -350,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Verspätungen",
+    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b4c2e5634daffb2953a449e1106154bca73bdb498b00ff9111c29ce9d41ff3ae",
+    "pubDate": "2026-05-15T12:30:00+02:00",
+    "starts_at": "2026-05-15T12:30:00+02:00",
+    "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-05-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "22A: Verkehrsüberlastung",
     "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -369,6 +381,18 @@
     "pubDate": "2026-05-15T11:23:00+02:00",
     "starts_at": "2026-05-15T11:23:00+02:00",
     "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=26A|D=2026-05-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e6c1cb1b892fdece121e295371b995171940e3e9ea5a2486f36d8b6c1b48fd45",
+    "pubDate": "2026-05-15T12:34:55+02:00",
+    "starts_at": "2026-05-15T12:34:55+02:00",
+    "ends_at": "2026-05-15T13:34:00+02:00",
     "_identity": "wl|störung|L=26A|D=2026-05-15"
   },
   {
@@ -658,29 +682,5 @@
     "starts_at": "2026-05-15T12:08:00+02:00",
     "ends_at": "2026-05-15T23:55:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-05-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0adadc0d52c1c4ca5640d9262b7d557e64527b5ae1096d8366a008580c44402a",
-    "pubDate": "2026-05-15T11:27:42+02:00",
-    "starts_at": "2026-05-15T11:34:15+02:00",
-    "ends_at": "2026-05-15T12:33:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-05-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Schadhafter Zug Betrieb ab Floridsdorfer Markt",
-    "description": "Schadhafter Zug\nBetrieb ab Floridsdorfer Markt",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "380e67a21594b95212c2bdb22e689f88194c572e96d4059b96b041354531a9fc",
-    "pubDate": "2026-05-15T11:31:05+02:00",
-    "starts_at": "2026-05-15T11:35:13+02:00",
-    "ends_at": "2026-05-15T12:34:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-05-15"
   }
 ]
