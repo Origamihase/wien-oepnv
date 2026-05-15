@@ -605,10 +605,12 @@ Die VOR/VAO ReST API erlaubt **100 Requests pro Tag** (`VAO Start`-
 Kontingent). Seit 2026-05-11 (Operator-Policy "VOR nur noch für die
 Verspätungen der Stammstrecke") ist der Stammstrecken-Monitor der
 **einzige** automatisierte VOR-Konsument im Projekt. Der frühere
-wöchentliche Station-Enrichment-Pfad
-(`scripts/update_vor_stations.py` via `update-stations.yml`) und das
-optionale Disruption-Polling sind aus den automatisierten Pfaden
-entfernt; VOR-Stop-IDs kommen jetzt ausschließlich aus der gepinnten
+wöchentliche Station-Enrichment-Pfad und das optionale
+Disruption-Polling sind aus den automatisierten Pfaden entfernt;
+die zugehörigen Helper-Scripts (`update_vor_cache.py`,
+`update_vor_stations.py`, `fetch_vor_haltestellen.py`) wurden
+2026-05-11 aus `scripts/` gelöscht. VOR-Stop-IDs kommen jetzt
+ausschließlich aus der gepinnten
 `data/vor-haltestellen.csv`-Snapshot. Siehe
 [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)
 für Details des Stammstrecken-Monitors.
@@ -616,8 +618,9 @@ für Details des Stammstrecken-Monitors.
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
 | **Stammstrecke `/trip`** (~alle 30 Min × 2 Richtungen) | 96 | IFTTT-Cadence des `update-cycle.yml`-Triggers, `MAX_TRIPS_PER_QUERY` |
-| **Station-Enrichment `location.name`** | **0** (Pfad entfernt 2026-05-11) | Operator kann `scripts/update_vor_stations.py` manuell aufrufen; kostet dann bewusst Quota |
-| **Disruption-Polling `departureBoard`** | **0** (default; Pfad nicht mehr automatisiert) | Operator kann `scripts/update_vor_cache.py` mit `VOR_MONITOR_STATIONS_WHITELIST` manuell aufrufen |
+| **Station-Enrichment `location.name`** | **0** (Pfad und Script entfernt 2026-05-11) | — |
+| **Disruption-Polling `departureBoard`** | **0** (Pfad und Script entfernt 2026-05-11) | — |
+| **Auth-Diagnose** (`verify_vor_access_id.py`, `check_vor_auth.py`) | **0–2** | nur manueller Operator-Aufruf, einmalige Smoke-Tests |
 | **Tagesbudget gesamt** | **96 / 100** | — |
 
 Zwei zusammenwirkende Mechanismen schützen das Budget:
@@ -625,9 +628,10 @@ Zwei zusammenwirkende Mechanismen schützen das Budget:
 1. **Keine automatisierten Nicht-Stammstrecke-Pfade**: Weder
    `update-cycle.yml`, noch `update-stations.yml`, noch
    `manual-full-refresh.yml` rufen VOR-Disruption-Polling oder
-   VOR-Station-Enrichment auf. Helper-Scripts existieren noch unter
-   `scripts/`, werden aber nur durch explizite Operator-Aufrufe
-   getriggert.
+   VOR-Station-Enrichment auf. Die früheren Helper-Scripts existieren
+   nicht mehr; nur die Auth-Diagnose-Helfer
+   (`scripts/verify_vor_access_id.py`, `scripts/check_vor_auth.py`)
+   bleiben für gezielte manuelle Smoke-Tests verfügbar.
 
 2. **`_charge_one_request`** (`scripts/update_stammstrecke_status.py`).
    Vor jedem `/trip`-Call wird ein Quota-Slot via

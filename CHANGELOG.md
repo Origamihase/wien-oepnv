@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Docs/Cleanup (VOR-Stammstrecke-only consolidation follow-up)** —
+  Doku- und Workflow-Drift nach der 2026-05-11-Konsolidierung (VOR
+  ist nur noch für den Stammstrecken-Monitor zuständig) bereinigt:
+  * Tote Skript-Verweise auf `update_vor_cache.py`,
+    `update_vor_stations.py` und `fetch_vor_haltestellen.py` aus
+    `docs/development.md`, `docs/architecture.md`,
+    `.github/workflows/manual-full-refresh.yml` und
+    `.github/workflows/update-stations.yml` entfernt; die Scripts
+    existieren seit 2026-05-11 nicht mehr.
+  * Verwaiste `cache/vor_929f1c/last_run.json` (kein aktiver Writer
+    nach der Konsolidierung; Status seit 2026-05-09 `api_unreachable`)
+    plus leeres Parent-Verzeichnis gelöscht.
+  * CLI-Help-Text `python -m src.cli cache update …` listet `vor`
+    nicht mehr als gültigen Provider-Identifier (der Handler hat es
+    ohnehin schon abgewiesen, jetzt ist die Hilfe konsistent).
+  * Stale `update-vor-cache.yml`-Workflow-Verweis in
+    `src/utils/cache.py` (`write_status`-Sicherheitskommentar) und in
+    `tests/test_sentinel_quota_status_trojan_source.py` als historisch
+    gekennzeichnet — die Trojan-Source-Defence im Writer bleibt
+    unverändert in Kraft.
 * **Changed (WL OGD reactivation chain, PR #1441-#1453)**: thirteen
   consolidated PRs fully reactivate the Wiener-Linien OGD merge path
   against the canonical `www.wienerlinien.at/ogd_realtime/doku/ogd/`
