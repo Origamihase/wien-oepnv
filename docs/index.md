@@ -25,7 +25,7 @@ Der gesamte Code steht als Open Source zur Verfügung, sodass du jederzeit nachv
 1. **Repository klonen** und ein virtuelles Environment anlegen (`python -m venv .venv`).
 2. **Abhängigkeiten installieren** mit `pip install -r requirements.txt`.
 3. **Caches aktualisieren** via `python -m src.cli cache update`.
-4. **Feed bauen** mit `python -m src.cli feed build`, um `docs/feed.xml` zu generieren (anschließend steht der Gesundheitsbericht lokal unter `docs/feed-health.md` bereit – die Datei ist nicht im Repository versioniert).
+4. **Feed bauen** mit `python -m src.cli feed build`, um `docs/feed.xml` zu generieren (anschließend stehen die Gesundheitsberichte lokal unter `docs/feed-health.md` und `docs/feed-health.json` bereit – beide sind nicht im Repository versioniert).
 5. **Qualitätscheck** vor dem nächsten Build optional mit `python -m src.cli feed lint` durchführen.
 6. **Statische Analysen** optional mit `scripts/run_static_checks.py` ausführen.
 
@@ -81,7 +81,7 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
 
 - [Projektübersicht im README](../README.md)
 - [API-Referenzen und Audits](reference/)
-- Feed-Health-Report: `docs/feed-health.md` (lokal nach jedem Build erzeugt)
+- Feed-Health-Report: `docs/feed-health.md` (+ `docs/feed-health.json` für maschinelle Konsumenten) – beide lokal nach jedem Build erzeugt
 - [Eventschema für Integrationen](schema/events.schema.json)
 - [Feed als RSS-Dokument](feed.xml)
 
