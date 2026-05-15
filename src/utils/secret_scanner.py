@@ -697,6 +697,128 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])glagent-[A-Za-z0-9_\-]{50,}(?![A-Za-z0-9])"),
         "GitLab Cluster Agent Token gefunden",
     ),
+    # GitLab Feed Token (``glft-<20 chars from [A-Za-z0-9_-]>``).
+    # Issued automatically for every user via ``Settings > Access
+    # Tokens > Feed token`` for personal RSS/Atom-feed authentication
+    # against the GitLab REST API. Format mirrors ``glpat-``: 5-char
+    # prefix + 20-char ``[A-Za-z0-9_-]`` body. The ``glft-`` prefix
+    # is unambiguous, and the body lies entirely inside the entropy
+    # fallback's ``[A-Za-z0-9+/=_-]`` alphabet — so the entropy regex
+    # matches the full ``glft-<body>`` span as one generic
+    # ``Hochentropischer Token-String`` finding, losing the GitLab-
+    # Feed-Token-specific issuer attribution. A leak grants the
+    # issuing user's read scope to the activity stream — visible
+    # issues, merge requests, comments, project metadata; for an
+    # admin user the feed exposes the entire instance's project
+    # taxonomy. Blast radius lower than the CI/CD-infrastructure-
+    # tier siblings (``glrt-``/``gldt-``/``glagent-``) but the leak-
+    # surface is broad. The revocation flow lives at
+    # gitlab.com/-/user_settings/personal_access_tokens (alongside
+    # the canonical PAT revocation flow) and is distinct from any
+    # other vendor's. Closes one of the four developer-tooling-tier
+    # GitLab prefixes named-but-deferred by Round 10 (PR #1493).
+    (
+        re.compile(r"(?<![A-Za-z0-9])glft-[A-Za-z0-9_\-]{20}(?![A-Za-z0-9])"),
+        "GitLab Feed Token gefunden",
+    ),
+    # GitLab Incoming Mail Token (``glimt-<25+ chars from
+    # [A-Za-z0-9_-]>``). Embedded in the reply-by-email
+    # ``Reply-To: noreply+<token>@<instance>.gitlab.com`` header,
+    # used by the GitLab incoming-mail subsystem to verify that an
+    # inbound reply genuinely belongs to the issuing user. Format
+    # diverges slightly from ``glpat-``: 6-char prefix + 25-char
+    # body (the longer body matches the upstream
+    # ``Devise.friendly_token(25)`` shape used by Rails ActionMailer
+    # reply-by-email scoping). A leak lets a network adversary post
+    # comments / merge request replies / issue updates **as the
+    # issuing user** by sending crafted email to the GitLab inbound-
+    # mail relay — full impersonation within the user's commenting
+    # scope. The revocation flow lives at
+    # gitlab.com/-/user_settings/personal_access_tokens (alongside
+    # the Feed Token) and is distinct from any other vendor's, so
+    # issuer-specific attribution accelerates IR triage.
+    (
+        re.compile(r"(?<![A-Za-z0-9])glimt-[A-Za-z0-9_\-]{25,}(?![A-Za-z0-9])"),
+        "GitLab Incoming Mail Token gefunden",
+    ),
+    # GitLab CI Build Token (``glcbt-<partition_prefix>_<body>``).
+    # Per-build CI token issued by the GitLab Rails server when a CI
+    # job starts; exposed to the job as the ``CI_JOB_TOKEN`` env var
+    # (GitLab 16.0+ post-DB-partitioning rollout — pre-16.0 build
+    # tokens were unprefixed and fall into the bucket-(b) shape).
+    # Format diverges from every other GitLab prefix: 5-char
+    # ``glcbt-`` prefix + variable-length partition prefix (1-3
+    # alphanumeric chars anchoring the token to its DB partition for
+    # fast lookup) + literal ``_`` + 20+ char body from
+    # ``[A-Za-z0-9_-]``. The structured ``<partition>_<body>`` shape
+    # is unique among GitLab prefixes and is the structural
+    # disambiguator from ``glpat-`` / ``glrt-`` / ``gldt-`` (which
+    # all use a flat 20-char body). A leak during the job's lifetime
+    # (token is invalidated when the job completes, but the window
+    # can be hours for long-running jobs) grants the attacker the
+    # ability to **call the GitLab REST API as the job**: download
+    # package-registry / container-registry artefacts the job had
+    # access to, trigger downstream pipelines via the canonical
+    # ``CI_JOB_TOKEN`` auth flow, impersonate the job to other
+    # pipelines that allow inbound job-token access (the
+    # ``allow_job_token_access`` setting on protected branches).
+    (
+        re.compile(r"(?<![A-Za-z0-9])glcbt-[A-Za-z0-9]+_[A-Za-z0-9_\-]{20,}(?![A-Za-z0-9])"),
+        "GitLab CI Build Token gefunden",
+    ),
+    # GitLab Scoped OAuth Access Token (``glsoat-<20+ chars from
+    # [A-Za-z0-9_-]>``). Issued by SCIM-integrated SSO providers
+    # (Okta / OneLogin / AzureAD / Google Workspace) when an OAuth
+    # application provisions a scoped access token for a GitLab
+    # user. Format mirrors ``glpat-`` with a longer prefix: 7-char
+    # ``glsoat-`` prefix + 20+ char ``[A-Za-z0-9_-]`` body. The
+    # ``glsoat-`` prefix anchors against the OAuth-application-
+    # scoped subset of token scopes (as opposed to the broader
+    # ``glpat-`` user-PAT scope, which would grant the full set of
+    # the user's PAT scopes). A leak grants the OAuth application's
+    # scoped capabilities for the issuing user — typically
+    # ``read_user`` / ``read_repository`` / ``api`` for SCIM-
+    # provisioned OAuth apps in enterprise GitLab Self-Managed
+    # installations. The revocation flow lives at
+    # gitlab.com/-/profile/applications (distinct from the
+    # gitlab.com/-/user_settings/personal_access_tokens PAT flow),
+    # so issuer-specific attribution accelerates IR triage to the
+    # correct dashboard / API endpoint.
+    (
+        re.compile(r"(?<![A-Za-z0-9])glsoat-[A-Za-z0-9_\-]{20,}(?![A-Za-z0-9])"),
+        "GitLab Scoped OAuth Access Token gefunden",
+    ),
+    # CircleCI Personal API Token (``CCIPAT_<32+ chars from
+    # [A-Za-z0-9_-]>``). Issued via
+    # app.circleci.com/settings/user/tokens for full CircleCI
+    # REST-API v2 access. The ``CCIPAT_`` prefix was added in
+    # 2023 to replace the legacy unprefixed 40-char-alphanumeric
+    # CircleCI tokens (legacy tokens fall into the bucket-(b)
+    # shape; the modern ``CCIPAT_`` format anchors against the
+    # entropy fallback's body span). Format: 7-char prefix + 32+
+    # char ``[A-Za-z0-9_-]`` body. The body lies entirely inside
+    # the entropy fallback's alphabet (the underscore is in the
+    # alphabet), so pre-fix the entropy regex matches the full
+    # ``CCIPAT_<body>`` span as one generic ``Hochentropischer
+    # Token-String`` finding, losing the CircleCI-specific
+    # attribution. A leak grants the issuing user's full CircleCI
+    # organisation scope: read every project's pipeline
+    # configuration (which embeds inline env-var references to
+    # other vendors' tokens — AWS keys, Docker registry creds,
+    # third-party API tokens), trigger arbitrary pipelines on
+    # attacker-controlled branches, exfiltrate build artifacts,
+    # and manage SSH keys for project deployments. Blast radius
+    # is structurally identical to the Buildkite User Access
+    # Token (``bkua_``, Round 8) — the personal-token tier of the
+    # CI execution sub-landscape. The revocation flow lives at
+    # app.circleci.com/settings/user/tokens and is distinct from
+    # every other vendor's, so issuer-specific attribution
+    # accelerates IR triage. Closes the CircleCI prefix named-but-
+    # deferred by Round 7/8 (CI execution-tier sibling).
+    (
+        re.compile(r"(?<![A-Za-z0-9])CCIPAT_[A-Za-z0-9_\-]{32,}(?![A-Za-z0-9])"),
+        "CircleCI Personal API Token gefunden",
+    ),
 ]
 
 
