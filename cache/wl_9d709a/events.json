@@ -339,7 +339,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "11A: Verspätungen",
-    "description": "Linie 11A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Sturgasse. Weichen Sie ersatzweise auf die Linie U2 aus. Voraussichtliche Dauer: 06:20 Uhr. Grund: Betriebsstörung im Haltestellenbereich Stadion U.",
+    "description": "Linie 11A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Sturgasse. Weichen Sie ersatzweise auf die Linie U2 aus. Voraussichtliche Dauer: 06:40 Uhr. Grund: Betriebsstörung im Haltestellenbereich Stadion U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "80bad3fc9a7c8570d47692cfb99b01d9a0b11e6fe8749b87eeb08ec1a799c3e2",
     "pubDate": "2026-05-15T05:54:00+02:00",
@@ -374,14 +374,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Verspätungen",
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Am Tabor.",
+    "title": "31A: Verspätungen",
+    "description": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "02eba5a10b6bfbc053ab8e3cd1f9dabf24000400cc5596a3921352c78e6875e3",
-    "pubDate": "2026-05-15T05:20:00+02:00",
-    "starts_at": "2026-05-15T05:20:00+02:00",
-    "ends_at": "2026-05-15T06:02:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-05-15"
+    "guid": "7a2fc58a0e9703ae0845dbd287884295a1c4e146cf7f92e733e658e72b775ab7",
+    "pubDate": "2026-05-15T06:27:00+02:00",
+    "starts_at": "2026-05-15T06:27:00+02:00",
+    "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=31A|D=2026-05-15"
   },
   {
     "source": "Wiener Linien",
@@ -530,6 +530,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Verunreinigung",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7c762209790ccc1458fc85a3ab1e457323e911dc03795bf462a2f2d1fc322e2",
+    "pubDate": "2026-05-15T06:11:00+02:00",
+    "starts_at": "2026-05-15T06:11:00+02:00",
+    "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-05-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -608,7 +620,7 @@
     "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
     "pubDate": "2026-05-15T05:13:00+02:00",
     "starts_at": "2026-05-15T05:13:00+02:00",
-    "ends_at": "2026-05-15T23:55:00+02:00",
+    "ends_at": "2026-05-15T06:28:00+02:00",
     "_identity": "wl|störung|L=U2|D=2026-05-15"
   }
 ]
