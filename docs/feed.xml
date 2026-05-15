@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 15 May 2026 13:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 15 May 2026 14:01:15 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9</guid>
+      <pubDate>Fri, 15 May 2026 13:46:00 +0200</pubDate>
+      <ext:first_seen>Fri, 15 May 2026 14:01:15 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 15 May 2026 13:49:07 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 15 May 2026 14:48:00 +0200</ext:ends_at>
+      <description>Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 15.05.2026]</description>
+      <content:encoded><![CDATA[Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 15.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Fri, 15 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 15.05.2026]</description>
       <content:encoded><![CDATA[Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 15.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b4c2e5634daffb2953a449e1106154bca73bdb498b00ff9111c29ce9d41ff3ae</guid>
-      <pubDate>Fri, 15 May 2026 12:30:00 +0200</pubDate>
-      <ext:first_seen>Fri, 15 May 2026 13:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 15 May 2026 12:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 15 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 15.05.2026]</description>
-      <content:encoded><![CDATA[Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 15.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Technische Störung des Personenlift in Gramatneusiedl: Bahnsteig 3/4]]></title>
@@ -60,17 +60,6 @@
       <ext:starts_at>Fri, 15 May 2026 12:17:54 +0200</ext:starts_at>
       <description>Wegen einer technischen Störung ist derzeit der Personenlift zu Bahnsteig 1/2 in Stockerau Bahnhof außer Betrieb und kann daher nicht benutzt werden. [Seit 15.05.2026]</description>
       <content:encoded><![CDATA[Wegen einer technischen Störung ist derzeit der Personenlift zu Bahnsteig 1/2 in Stockerau Bahnhof außer Betrieb und kann daher nicht benutzt werden.<br/>[Seit 15.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
-      <pubDate>Fri, 15 May 2026 12:08:00 +0200</pubDate>
-      <ext:first_seen>Fri, 15 May 2026 10:30:43 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 15 May 2026 12:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 15 May 2026 13:28:00 +0200</ext:ends_at>
-      <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 15.05.2026]</description>
-      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 15.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[22A: Verkehrsüberlastung]]></title>
@@ -115,6 +104,16 @@
       <ext:ends_at>Fri, 15 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Kein Betrieb [14.05.2026 – 15.05.2026]</description>
       <content:encoded><![CDATA[Kein Betrieb<br/>[14.05.2026 – 15.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Flughafen Wien]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;875281</guid>
+      <pubDate>Wed, 13 May 2026 12:48:57 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 13:24:47 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 13 May 2026 12:48:57 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten fahren zwischen Wien Hbf (U) und Flughafen Wien Bahnhof von 10.07.2026 (09:00 Uhr) bis 27.07.2026 (18:00 Uhr) die IC-Züge mit geänderten Fahrzeiten … [Seit 13.05.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten fahren zwischen Wien Hbf (U) und Flughafen Wien Bahnhof von 10.07.2026 (09:00 Uhr) bis 27.07.2026 (18:00 Uhr) die IC-Züge mit geänderten Fahrzeiten …<br/>[Seit 13.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
