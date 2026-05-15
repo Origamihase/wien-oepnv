@@ -461,7 +461,7 @@ def test_query_departure_board_parses_modern_flat_shape(
     monkeypatch.setattr(script, "_charge_one_request", lambda when: None)
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
-    result = script._query_departure_board(session=object(), when=when)  # type: ignore[arg-type]
+    result = script._query_departure_board(session=object(), when=when)
     assert len(result) == 2
     assert result[0]["name"] == "S 1"
     assert "departureBoard" in captured_url["endpoint"]
@@ -487,7 +487,7 @@ def test_query_departure_board_parses_nested_shape(
     monkeypatch.setattr(script, "_charge_one_request", lambda when: None)
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
-    result = script._query_departure_board(session=object(), when=when)  # type: ignore[arg-type]
+    result = script._query_departure_board(session=object(), when=when)
     assert len(result) == 2
     assert result[0]["name"] == "REX 3"
 
@@ -509,7 +509,7 @@ def test_query_departure_board_handles_single_departure_object(
     monkeypatch.setattr(script, "_charge_one_request", lambda when: None)
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
-    result = script._query_departure_board(session=object(), when=when)  # type: ignore[arg-type]
+    result = script._query_departure_board(session=object(), when=when)
     assert result == [{"name": "S 1"}]
 
 
@@ -530,7 +530,7 @@ def test_query_departure_board_returns_empty_when_field_missing(
     monkeypatch.setattr(script, "_charge_one_request", lambda when: None)
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
-    result = script._query_departure_board(session=object(), when=when)  # type: ignore[arg-type]
+    result = script._query_departure_board(session=object(), when=when)
     assert result == []
 
 
@@ -554,7 +554,7 @@ def test_query_departure_board_raises_on_http_error(
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
     with pytest.raises(requests.HTTPError):
-        script._query_departure_board(session=object(), when=when)  # type: ignore[arg-type]
+        script._query_departure_board(session=object(), when=when)
 
 
 def test_query_departure_board_raises_on_unparseable_json(
@@ -575,7 +575,7 @@ def test_query_departure_board_raises_on_unparseable_json(
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
     with pytest.raises(ValueError):
-        script._query_departure_board(session=object(), when=when)  # type: ignore[arg-type]
+        script._query_departure_board(session=object(), when=when)
 
 
 # ---- Sanity / pinning -----------------------------------------------------

@@ -84,17 +84,15 @@ from __future__ import annotations
 
 import json as _json_lib
 import logging
-import re
 import statistics
 import sys
 from collections import defaultdict
-from collections.abc import Iterable, Iterator, Mapping
+from collections.abc import Iterable, Mapping
 from contextlib import ExitStack
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Final
-from zoneinfo import ZoneInfo
 
 import requests
 
@@ -126,7 +124,7 @@ from scripts.update_stammstrecke_status import (  # noqa: E402
     PENDING_TTL,
     QUERY_TIMEOUT,
     RECENTLY_FINALISED_PATH,
-    VIENNA_TZ,
+    VIENNA_TZ as VIENNA_TZ,
     _QuotaExceeded,
     _build_session,
     _canonical_line_name,
@@ -552,7 +550,7 @@ class _HbfDepartureObservation:
 
 
 def _collect_hbf_observations(
-    departures: Iterable[Mapping[str, Any]],
+    departures: Iterable[Any],
 ) -> tuple[dict[str, list[_SbahnLegObservation]], dict[str, int]]:
     """Filter + direction-classify a ``/departureBoard`` Departure list.
 
