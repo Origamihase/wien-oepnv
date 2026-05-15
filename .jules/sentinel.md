@@ -1,3 +1,35 @@
+## 2026-05-15 - SafeJSONFormatter `allow_nan=False` Drift (Sibling-Formatter Closure of PR #1491 / Round 1488): The `LOG_FORMAT=json` JSON Log Sink — the Ninth-Plus-One Sibling — Renders `extra={"latency_ms": float('nan')}` as the Bare RFC-8259-Forbidden `NaN` / `Infinity` / `-Infinity` Literal That Breaks Every Strict Downstream Log Ingestion Pipeline (Splunk, ElasticSearch, Datadog, Go `encoding/json`, Rust `serde_json` Strict Mode)
+
+**Vulnerability:** PR #1491 (Round 1488) closed the `allow_nan=False` writer-level pin on eight committed-to-main JSON writers. The drift left exactly one structurally identical sibling site uncovered: `src/feed/logging_safe.py:SafeJSONFormatter.format` (line 90 pre-fix), the JSON log sink that fires when `LOG_FORMAT=json` is set (the modern best-practice for log shippers). The formatter walks `record.__dict__` for any non-default field and stuffs it into the serialised payload's `extra` dict — including any `float` value an `extra={...}` caller passes. Pre-fix the call
+
+```python
+log.info("Provider finished", extra={"latency_ms": float('nan')})
+```
+
+renders as
+
+```json
+{"timestamp": "...", "level": "INFO", "logger": "...", "message": "Provider finished", "extra": {"latency_ms": NaN}}
+```
+
+— invalid per RFC 8259 §6, which restricts JSON numeric tokens to finite IEEE-754 floats. Every strict downstream parser refuses the line:
+
+  * **ECMAScript `JSON.parse`** (post-2009 strict mode) — `SyntaxError: Unexpected token N in JSON`.
+  * **Go `encoding/json`** (always strict) — `invalid character 'N' looking for beginning of value`.
+  * **Rust `serde_json`** (strict mode) — `expected value at line 1 column N`.
+  * **Splunk / ElasticSearch / Datadog log ingestion pipelines** that key off RFC-8259 conformance — silently drop the entire batch starting at the malformed line.
+
+The single non-finite float in a single log record breaks the entire ingestion batch for that consumer. The operator-facing alarm pipeline goes blind for the duration of the build cycle, AND every subsequent log line in the batch is silently lost — so the alarm pipeline failure itself is not surfaced. (Python's logging framework does not catch formatter exceptions cleanly: a `ValueError` from `format()` lands in stderr as a noisy traceback that masks the original `log.info(...)` call entirely; the formatter contract is therefore "never raise".)
+
+**Why this site missed PR #1491's writer-inventory walk:** the PR enumerated `json.dump(...)` writer-callsite shapes that produce committed-to-main artefacts. `SafeJSONFormatter.format` uses `json.dumps(...)` (different Python signature) AND its output is operator-facing log lines (not committed artefacts). Both differences hid the structural identity of the threat. The fix path also differed: writers fix the drift via `allow_nan=False` directly, but a `ValueError` from the log formatter would be caught by Python's logging framework and rendered as a raw stderr traceback — invalidating the formatter's never-raise contract. The fix here therefore needs a TWO-LAYER defence:
+
+  1. **Pre-walk the payload** via `_sanitise_non_finite_floats` to convert non-finite floats to safe string repr (`"NaN"` / `"Infinity"` / `"-Infinity"`). Strings round-trip cleanly through every JSON parser.
+  2. **Pin `allow_nan=False`** on the `json.dumps` call as defense-in-depth so a bypass (custom Mapping subclass that `isinstance(d, dict)` does not catch, future container type) surfaces as a loud `ValueError`. The matching `except ValueError` fallback re-encodes via a custom `_FallbackJSONEncoder` that stringifies every float (finite or not) — preserving the never-raise contract while keeping output RFC-8259-conforming.
+
+**Learning:** When closing a writer-shape drift family, walk both the `json.dump(...)` callsite landscape AND the `json.dumps(...)` callsite landscape AND the `logging.Formatter`-subclass landscape — the three sibling shapes share the same RFC-8259 threat model but diverge in fix strategy. JSON log formatters specifically need the two-layer pre-walk + defense-in-depth pattern (because Python's logging contract forbids formatter exceptions). The matching inventory test pins the source-grep invariant `every json.dumps(...) call in src/feed/logging_safe.py must include allow_nan=False` so a future refactor that drops the pin re-fails the gate at PR-review time.
+
+---
+
 ## 2026-05-15 - Committed-Writer `allow_nan=False` Drift: Eight Sibling Writers Outside the Round-1485 / Round-1487 Coordinate-Writer Inventory Land Non-Standard `NaN` / `Infinity` / `-Infinity` Literals (Invalid Per RFC 8259) Into Committed `docs/feed-health.json`, `data/*.json`, `cache/<provider>/last_run.json` — Breaking Every Conforming Downstream JSON Parser (`JSON.parse`, `serde_json`, `encoding/json`)
 
 **Vulnerability:** The 2026-05-14 coordinate finite/range rounds (Round 1485 / Round 1487 — PRs #1485 / #1486 / #1487) pinned `allow_nan=False` on every COORDINATE-emitting writer (the canonical `src/places/merge.py:write_stations`, the five sibling `data/stations.json` writers, the unified `src/utils/cache.py:write_cache`). Those rounds enumerated only the coordinate-writer landscape. Eight sibling COMMITTED-TO-MAIN writers — closed by PR #1434 / PR #1435 ("Trojan-Source / BiDi-Mark Drift Round 11") against the CVE-2021-42574 attack-byte union via `ensure_ascii=True` (or, for `write_feed_health_json`, via the matching `_CONTROL_CHARS_RE.sub("")` scrubs at the payload-build boundary) — never had the `allow_nan=False` pin added:
