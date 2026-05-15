@@ -350,6 +350,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "22A: Verkehrsüberlastung",
+    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea",
+    "pubDate": "2026-05-15T11:28:00+02:00",
+    "starts_at": "2026-05-15T11:28:00+02:00",
+    "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=22A|D=2026-05-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26A: Verkehrsüberlastung",
+    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ccb49ecd7b5e4fd97d1b9d1a06c7dac25eed876e72b21077b01136c445d90099",
+    "pubDate": "2026-05-15T11:23:00+02:00",
+    "starts_at": "2026-05-15T11:23:00+02:00",
+    "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=26A|D=2026-05-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "30/31: Schadhaftes Fahrzeug",
+    "description": "Linie 30: Fahrtbehinderung in Richtung Stammersdorf. Linie 31: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 11:35 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Großjedlersdorf.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bce5e8fb05a27d209fd4dd03d151652313bea3ff9d7be385ce78fedf4663ea96",
+    "pubDate": "2026-05-15T11:25:00+02:00",
+    "starts_at": "2026-05-15T11:25:00+02:00",
+    "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=30,31|D=2026-05-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -542,6 +578,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "80A: Verkehrsüberlastung",
+    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab",
+    "pubDate": "2026-05-15T11:28:00+02:00",
+    "starts_at": "2026-05-15T11:28:00+02:00",
+    "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=80A|D=2026-05-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N65: Betrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)",
     "description": "Gleisbauarbeiten\nBetrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -562,5 +610,17 @@
     "starts_at": "2026-05-12T00:00:20+02:00",
     "ends_at": "2026-05-15T23:59:59+02:00",
     "_identity": "wl|störung|L=N65|D=2026-05-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0adadc0d52c1c4ca5640d9262b7d557e64527b5ae1096d8366a008580c44402a",
+    "pubDate": "2026-05-15T11:27:42+02:00",
+    "starts_at": "2026-05-15T11:27:42+02:00",
+    "ends_at": "2026-05-15T12:27:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-05-15"
   }
 ]
