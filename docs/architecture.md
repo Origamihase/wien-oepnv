@@ -34,7 +34,7 @@ sequenceDiagram
     participant Cron as cron / GH Action
     participant Build as build_feed.main
     participant Collect as _collect_items
-    participant Cache as Cache fetchers<br/>(WL+ÖBB cache)
+    participant Cache as Cache fetchers<br/>(WL + ÖBB + Baustellen + Stammstrecke)
     participant Pool as ThreadPoolExecutor
     participant WL as WL.fetch_events
     participant OEBB as ÖBB.fetch_events
