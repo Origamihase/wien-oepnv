@@ -26,7 +26,7 @@ python -m src.cli [command]
 Wichtige Befehle:
 - `python -m src.cli feed build`: Erzeugt den Feed lokal.
 - `python -m src.cli checks`: Führt `ruff` (Linter) und `mypy` (Type-Checker) aus.
-- `python -m src.cli tests`: (Falls implementiert, sonst direkt `pytest` nutzen).
+- `python -m pytest`: Führt die Test-Suite aus (kein eigenes `cli tests`-Subkommando).
 
 ### Testing
 - Framework: `pytest`

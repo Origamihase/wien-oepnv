@@ -42,7 +42,9 @@ Aktuell gibt es im Projekt zwei separate Stellen, an denen Schlüsselwörter fü
   [`stammstrecke_provider_logic.md`](stammstrecke_provider_logic.md).
   Das Stammstrecken-Verspätungs-Monitoring lief ursprünglich über
   `pyhafas` mit dem ÖBB-HAFAS-Endpunkt; seit der 2026-05-09 Migration
-  läuft es über die VOR/VAO ReST API und ist deshalb in einer eigenen
-  Referenzdatei dokumentiert. Die emittierten Events tragen weiterhin
-  `source: "ÖBB"` (für Konsumenten unsichtbarer Fork), die Datenquelle
-  hat sich aber geändert.
+  läuft es über die VOR/VAO ReST API und seit der 2026-05-15 Migration
+  über `/departureBoard` am Wien Hauptbahnhof. Es ist in einer eigenen
+  Referenzdatei dokumentiert. Mit der 2026-05-09 Migration wurde auch
+  das `source`-Feld der emittierten Events von `"ÖBB"` auf `"VOR/VAO"`
+  umgestellt, weil die Datenquelle inzwischen technisch die VOR/VAO-API
+  ist (`EVENT_SOURCE` in `src/feed/stammstrecke.py`).

@@ -68,10 +68,10 @@ Der Feed-Build folgt einem klaren Ablauf:
 | `data/`               | Stationsverzeichnis, GTFS-Testdaten und Hilfslisten (z. B. Pendler-Whitelist).                   |
 | `docs/`               | Audit-Berichte, Referenzen, Beispiel-Feeds und das offizielle VAO/VOR-API-Handbuch.              |
 | `.github/workflows/`  | Automatisierte Jobs für Cache-Updates, Stationspflege, Feed-Erzeugung und Tests.                |
-| `tests/`              | Umfangreiche Pytest-Suite (über 2000 Tests in ca. 390 Modulen) für Feed-Logik, Provider-Adapter und Utility-Funktionen. |
+| `tests/`              | Umfangreiche Pytest-Suite (über 2600 Tests in rund 400 Modulen) für Feed-Logik, Provider-Adapter und Utility-Funktionen. |
 
 
-> **Hinweis zu Cache-Pfaden:** Die tatsächlichen Verzeichnisse unter `cache/` tragen einen Hash-Suffix zur Cache-Versionierung (Stand Mai 2026: `cache/wl_9d709a/`, `cache/oebb_c40d21/`, `cache/baustellen_d438c3/`). In dieser Dokumentation werden aus Lesbarkeitsgründen verkürzte Schreibweisen wie `cache/wl/events.json` verwendet — sie verweisen jeweils auf das aktuelle Provider-Verzeichnis. Ein eigenes VOR-Cache-Verzeichnis existiert seit der 2026-05-11-Migration nicht mehr (VOR ist auf den Stammstrecken-Monitor beschränkt). Der **Stammstrecke-Monitor** persistiert nicht in einer JSON-Cache-Datei; seit der 2026-05-09-Migration liest der Feed-Builder die Beobachtungen direkt aus dem CSV-Ledger `data/stats/stammstrecke_<YYYY>.csv` (siehe [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)).
+> **Hinweis zu Cache-Pfaden:** Die tatsächlichen Verzeichnisse unter `cache/` tragen einen Hash-Suffix zur Cache-Versionierung (Stand Mai 2026: `cache/wl_9d709a/`, `cache/oebb_c40d21/`, `cache/baustellen_d438c3/`). In dieser Dokumentation werden aus Lesbarkeitsgründen verkürzte Schreibweisen wie `cache/wl/events.json` verwendet — sie verweisen jeweils auf das aktuelle Provider-Verzeichnis. Ein eigenes VOR-Cache-Verzeichnis existiert seit der 2026-05-11-Migration nicht mehr (VOR ist auf den Stammstrecken-Monitor beschränkt). Der **Stammstrecke-Monitor** schreibt seit der 2026-05-09-Migration **kein** `events.json` mehr — der Feed-Builder liest die Beobachtungen direkt aus dem CSV-Ledger `data/stats/stammstrecke_<YYYY>.csv`. Unter `cache/stammstrecke/` liegen weiterhin die internen Sidecar-Dateien `pending_trips.json` und `recently_finalised.json`, mit denen der Hbf-Producer (siehe [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)) Trip-IDs zur Doppel-Vermeidung über mehrere Cron-Ticks hinweg trackt.
 
 ## Installation & Setup
 
@@ -154,7 +154,7 @@ schreibt. Die wichtigsten Parameter:
 | `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrung für `data/first_seen.json`.                      |
 | `WIEN_OEPNV_CACHE_PRETTY` | Steuert die Formatierung der Cache-Dateien (`1` = gut lesbar, `0` = kompakt). |
 
-Alle Pfade werden durch `_resolve_env_path` auf `docs/`, `data/` oder `log/` beschränkt, um Path-Traversal zu verhindern.
+Alle Pfade werden durch `resolve_env_path` (in `src/feed/config.py`) auf `docs/`, `data/` oder `log/` beschränkt, um Path-Traversal zu verhindern.
 
 ### Logging-Initialisierung als Bibliothek verwenden
 
@@ -167,7 +167,7 @@ verwendest.
 
 - Läuft der Feed-Build über `python -m src.cli feed build`, landen Fehler- und Traceback-Ausgaben automatisch in `log/errors.log` (rotierende Log-Datei, konfigurierbar über `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`). Ohne Fehler bleibt die Datei unberührt.
 - Ausführliche Statusmeldungen (z. B. zum VOR-Abruf) werden zusätzlich in `log/diagnostics.log` gesammelt.
-- Beim manuellen Aufruf der Hilfsskripte (bzw. `python -m src.cli cache update vor`) erscheinen Warnungen und Fehler direkt auf `stdout`. Für nachträgliche Analysen kannst du den jeweiligen Lauf zusätzlich mit `LOG_DIR` auf ein separates Verzeichnis umleiten.
+- Beim manuellen Aufruf der Hilfsskripte (bzw. `python -m src.cli cache update wl`) erscheinen Warnungen und Fehler direkt auf `stdout`. Für nachträgliche Analysen kannst du den jeweiligen Lauf zusätzlich mit `LOG_DIR` auf ein separates Verzeichnis umleiten.
 - Setzt du `LOG_FORMAT=json`, schreibt das Projekt strukturierte JSON-Logs mit Zeitstempeln im Format `Europe/Vienna`. Ohne Angabe bleibt das klassische Textformat aktiv.
 
 ## Feed-Ausführung lokal
@@ -219,8 +219,8 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 
 ### Verkehrsverbund Ost-Region (VOR)
 
-- **Anforderung**: VAO-Tagesbudget (100 Requests/Tag) wird seit 2026-05-11 ausschließlich vom S-Bahn-Stammstrecken-Monitor verbraucht (96 Calls/Tag = 48 Cycles × 2 Richtungen). Ein automatisiertes Disruption-Polling existiert nicht mehr (Operator-Policy "VOR nur für die Stammstrecke").
-- **Quelle**: VOR/VAO-ReST-API (`/trip`-Endpunkt), authentifiziert über Access Token.
+- **Anforderung**: VAO-Tagesbudget (100 Requests/Tag) wird seit 2026-05-11 ausschließlich vom S-Bahn-Stammstrecken-Monitor verbraucht. Seit der 2026-05-15-Migration auf `/departureBoard` am Wien Hauptbahnhof sind das **48 Calls/Tag** (1 Hbf-Call × ~48 Cycles statt vorher 2 `/trip`-Calls × 48 Cycles). Ein automatisiertes Disruption-Polling existiert nicht mehr (Operator-Policy "VOR nur für die Stammstrecke").
+- **Quelle**: VOR/VAO-ReST-API (`/departureBoard`-Endpunkt am Wien Hauptbahnhof), authentifiziert über Access Token.
 - **Persistenz**: keine eigene JSON-Cache-Datei mehr; der Stammstrecken-Monitor schreibt Beobachtungen direkt in den CSV-Ledger `data/stats/stammstrecke_<YYYY>.csv` (siehe [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)).
 
 ### Stadt Wien – Baustellen
@@ -426,7 +426,7 @@ Nachnutzung zu gewährleisten.
 Die wichtigsten GitHub Actions:
 
 - `update-cycle.yml` – die zentrale Refresh-Pipeline. Trigger: `repository_dispatch: ifttt_feed_trigger` (ein externes IFTTT-Applet feuert ~alle 30 Minuten auf :00/:30 — zuverlässiger als der frühere GitHub-Cron `0,30 * * * *`, der am 2026-05-10 in Commit `55ca72f` entfernt wurde) sowie `workflow_dispatch` für manuelle Operator-Läufe. Einziger Job, der in einem Runner sequenziell die Provider-Cache-Fetcher (WL, ÖBB, Baustellen), den VAO-Pre-flight + die Stammstrecke-Abfrage, den Feed-Build (`docs/feed.xml`, `data/first_seen.json`, `data/stats/stoerungen_<YYYY>.csv`) sowie das README-/`docs/statistik.md`-Render ausführt und alles in einem Auto-Commit zusammenfasst. Hält die `external-api-fetch`-Concurrency-Lane, damit nie zwei API-Cycles parallel laufen.
-- VOR ist **ausschließlich** für den S-Bahn-Stammstrecke-Verspätungs-Monitor in `update-cycle.yml` eingesetzt (`/trip`-Endpunkt, ~96 Calls/Tag von 100 VAO-Start-Tier-Quota). Eine VOR-Disruption-Polling- bzw. Stations-Anreicherungs-Automatisierung gibt es nicht mehr (Entscheidung 2026-05-11); die zugehörigen Helper-Scripts (`update_vor_cache.py`, `update_vor_stations.py`, `fetch_vor_haltestellen.py`) wurden ebenfalls entfernt. Diagnose-Aufrufe gegen den VOR-Auth-Pfad bleiben via `scripts/verify_vor_access_id.py` und `scripts/check_vor_auth.py` möglich.
+- VOR ist **ausschließlich** für den S-Bahn-Stammstrecke-Verspätungs-Monitor in `update-cycle.yml` eingesetzt (seit 2026-05-15: `/departureBoard`-Endpunkt am Wien Hauptbahnhof, ~48 Calls/Tag von 100 VAO-Start-Tier-Quota; davor zwei `/trip`-Calls pro Tick = 96/Tag). Eine VOR-Disruption-Polling- bzw. Stations-Anreicherungs-Automatisierung gibt es nicht mehr (Entscheidung 2026-05-11); die zugehörigen Helper-Scripts (`update_vor_cache.py`, `update_vor_stations.py`, `fetch_vor_haltestellen.py`) wurden ebenfalls entfernt. Diagnose-Aufrufe gegen den VOR-Auth-Pfad bleiben via `scripts/verify_vor_access_id.py` und `scripts/check_vor_auth.py` möglich.
 - `build-feed.yml` – Code-Change-Verifikationspfad. Der reguläre Cron wurde 2026-05-09 in `update-cycle.yml` migriert; dieser Workflow läuft nur noch auf `push` (für `src/**`, `requirements.txt`, `pyproject.toml`, `.github/workflows/build-feed.yml`) sowie auf `workflow_dispatch` und baut den Feed aus den vorhandenen Caches neu — ohne neue API-Abfrage.
 - `update-stations.yml` – pflegt wöchentlich (Sonntag 01:00 UTC, Cron `0 1 * * 0`) `data/stations.json`. Die Anreicherung ist als **drei-stufige Kaskade** modelliert: OpenStreetMap (Overpass API) liefert die primären Koordinaten; der vorgeschaltete Smoke-Test (`scripts/check_overpass_status.py`) bricht den OSM-Schritt aber kontrolliert ab, falls der Mirror down ist. HAFAS (ÖBB Scotty) übernimmt seit 2026-05-14 als **Tier-2-Fallback** alle Stationen ohne OSM-Koordinaten — eingebettet in `request_safe` und durch einen eigenen `CircuitBreaker` abgesichert (siehe `docs/architecture.md` §5). Direkt davor läuft `scripts/sync_hafas_profile.py` als eigener Workflow-Step und aktualisiert das Mgate-Profil-Sidecar aus dem Open-Source-Projekt `public-transport/hafas-client`. Google Places bleibt der **Tier-3-Notausgang** für die strikte Restmenge, die weder OSM noch HAFAS auflösen konnten. VOR ist seit 2026-05-11 **nicht mehr** Teil des Stations-Refreshs (VOR-Stop-IDs aus gepinnter `data/vor-haltestellen.csv`). Die Stammstrecke-Abfrage und die tägliche `docs/statistik.md`-Regeneration laufen jeweils als Schritt in `update-cycle.yml`.
 - `manual-full-refresh.yml` – `workflow_dispatch`-only-Komplettlauf für Disaster-Recovery (führt alle Cache-Fetcher + Feed-Build hintereinander aus).
@@ -449,7 +449,8 @@ benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
 | `update_wl_cache.py` | Liest die Realtime-Störungen der Wiener Linien und schreibt `cache/wl/events.json`. CLI: `python -m src.cli cache update wl`. |
 | `update_oebb_cache.py` | Holt die ÖBB-Störungs-RSS-Feeds, filtert sie strikt auf Wien-Bezug (`_is_relevant`) und persistiert sie. CLI: `python -m src.cli cache update oebb`. |
 | `update_baustellen_cache.py` | Lädt den Baustellen-Layer der Stadt Wien (oder den `data/samples/baustellen_sample.geojson`-Fallback) und legt Events ab. CLI: `python -m src.cli cache update baustellen`. |
-| `update_stammstrecke_status.py` | Refresh-Producer für den S-Bahn-Stammstrecke-Monitor (wird vom IFTTT-getriggerten `update-cycle.yml` ~alle 30 Min aufgerufen). Schreibt eine Beobachtungs-Zeile pro Lauf und Richtung in `data/stats/stammstrecke_<YYYY>.csv` (siehe [Reference](reference/stammstrecke_provider_logic.md)). |
+| `update_stammstrecke_hbf.py` | Aktiver Refresh-Producer für den S-Bahn-Stammstrecke-Monitor (seit 2026-05-15; wird vom IFTTT-getriggerten `update-cycle.yml` ~alle 30 Min aufgerufen). Fragt einmal pro Tick `/departureBoard` am Wien Hauptbahnhof ab, klassifiziert die Abfahrten per Bahnsteig-1/2-Filter + Endhaltestellen-Whitelist und schreibt aggregierte Verspätungs-Zeilen pro Richtung nach `data/stats/stammstrecke_<YYYY>.csv` sowie eine Zeile pro Ausfall nach `data/stats/ausfaelle_<YYYY>.csv` (siehe [Reference](reference/stammstrecke_provider_logic.md)). |
+| `update_stammstrecke_status.py` | Legacy-Producer (`/trip` × 2 Richtungen, vor 2026-05-15). Wird vom Cron-Workflow nicht mehr direkt aufgerufen, bleibt aber als Modul importierbar — `update_stammstrecke_hbf.py` re-used die geteilte Pending-Trip- / Recently-Finalised-Infrastruktur, den Quota-Charger sowie das CircuitBreaker-Tuning daraus. |
 | `generate_markdown_stats.py` | Aggregiert die CSV-Ledger zu `docs/statistik.md` (30-Tage-Fenster) und patcht die `<!-- STATS:* -->`-Marker im README. |
 
 ### Stationsverzeichnis
@@ -491,7 +492,7 @@ benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
 
 ## Entwicklung & Qualitätssicherung
 
-- **Tests**: `python -m pytest` führt über 2000 Unit- und Integrationstests in rund 390 Modulen unter `tests/` aus.
+- **Tests**: `python -m pytest` führt über 2600 Unit- und Integrationstests in rund 400 Modulen unter `tests/` aus.
 - **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab.
 - **Statische Analyse & Typprüfung**: `ruff check` (Stil/Konsistenz, Regelgruppen `E`, `F`, `S`, `B`) und `mypy --strict` (vollständige Typabdeckung über `src/` und `tests/`, derzeit 0 Errors) laufen identisch zur CI via `python -m src.cli checks`. Optional lassen sich über `--fix` Ruff-Autofixes aktivieren oder zusätzliche Argumente an Ruff durchreichen. Ein zusätzlicher `mypy-strict.yml`-Workflow setzt das Allowlist-Gate auf Pull Requests durch.
 - **Pre-Commit-Hooks**: `.pre-commit-config.yaml` aktiviert lokale Checks (Ruff, mypy, Secret-Scan, Whitespace-Hygiene) bei jedem `git commit`. Einmalig nach dem Klonen `pre-commit install` ausführen — Details in [`CONTRIBUTING.md`](../CONTRIBUTING.md).
@@ -503,8 +504,8 @@ benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
 
 Die neue Kommandozeile (`python -m src.cli`) bündelt bisher verstreute Skripte. Wichtige Unterbefehle:
 
-- `python -m src.cli cache update <wl|oebb|vor|baustellen>` – aktualisiert den jeweiligen Provider-Cache.
-- `python -m src.cli stations update <all|directory|vor|wl>` – führt die bestehenden Stations-Skripte mit optionalem `--verbose` aus.
+- `python -m src.cli cache update <wl|oebb|baustellen>` – aktualisiert den jeweiligen Provider-Cache. (VOR ist seit 2026-05-11 nicht mehr cache-fähig — der Stammstrecke-Monitor läuft als eigener Workflow-Step und schreibt direkt in den CSV-Ledger.)
+- `python -m src.cli stations update <all|directory|wl>` – führt die bestehenden Stations-Skripte mit optionalem `--verbose` aus. (VOR-Stations-Refresh wurde 2026-05-11 entfernt — `data/vor-haltestellen.csv` wird redaktionell gepflegt.)
 - `python -m src.cli feed build` – startet den Feed-Build mit der aktuellen Umgebung.
 - `python -m src.cli feed lint` – prüft die aggregierten Items auf fehlende GUIDs oder unerwartete Duplikate.
 - `python -m src.cli tokens verify <vor|google-places|vor-auth>` – validiert Secrets und API-Zugänge.
@@ -523,7 +524,7 @@ Die CLI respektiert die vorhandene Logging-Konfiguration (`log/errors.log`, `log
 - **Secrets**: (z. B. `VOR_ACCESS_ID`, `VOR_BASE_URL`) werden ausschließlich über Umgebungsvariablen bereitgestellt und niemals im
   Repository abgelegt. Das Skript `src/utils/secret_scanner.py` schützt proaktiv vor versehentlich eingecheckten Geheimnissen.
 - **SSRF-Schutz**: Externe Netzwerkanfragen laufen über `fetch_content_safe` (in `src/utils/http.py`). Diese Funktion verhindert Server-Side Request Forgery, indem sie DNS-Rebinding blockiert, private IP-Adressen (Localhost, internes Netzwerk) ablehnt und DNS-Timeouts erzwingt.
-- **Dateisystem**: Schreibvorgänge nutzen `atomic_write`, um Datenkorruption bei Abstürzen zu vermeiden. Pfadeingaben werden strikt validiert (`_resolve_env_path`), um Path-Traversal-Angriffe zu verhindern. Schreibzugriffe sind auf `docs/`, `data/` und `log/` beschränkt.
+- **Dateisystem**: Schreibvorgänge nutzen `atomic_write`, um Datenkorruption bei Abstürzen zu vermeiden. Pfadeingaben werden strikt validiert (`resolve_env_path` / `validate_path` aus `src/feed/config.py`), um Path-Traversal-Angriffe zu verhindern. Schreibzugriffe sind auf `docs/`, `data/` und `log/` beschränkt.
 - **Logging-Sicherheit**: Kontrollzeichen in Logs werden maskiert, um Log-Injection-Attacken zu unterbinden.
 - **Input-Validierung**: HTML-Ausgaben werden escaped und kritische XML-Felder in CDATA gekapselt, um XSS in Feed-Readern vorzubeugen.
 
