@@ -335,6 +335,23 @@ class _Direction:
     identity_prefix: str
 
 
+# Direction labels: aligned with the Hbf script and the feed renderer.
+#
+# The northbound label was renamed from "Floridsdorf" → "Praterstern"
+# in 2026-05-15: the new name is the next Stammstrecke stop after Hbf
+# heading north, which is symmetric with the southbound "Meidling"
+# label and accommodates short-turn trains that terminate at
+# Praterstern (or even Wien Mitte) without continuing all the way
+# to Floridsdorf. The label is hardcoded here rather than derived
+# from a station-directory seed because the canonical seed
+# "Wien Floridsdorf" no longer reflects the bucket's semantics —
+# the bucket holds every Stammstrecke-northbound train regardless
+# of its actual terminus.
+#
+# This script is no longer wired into the cron path (the Hbf
+# ``/departureBoard`` script replaced it 2026-05-15 in PR #1496),
+# but the constants are kept aligned so that a manual invocation
+# produces ledger entries the Hbf reader can still consume.
 DIRECTIONS: tuple[_Direction, ...] = (
     _Direction(
         origin_id=FLORIDSDORF_VOR_ID,
@@ -345,8 +362,8 @@ DIRECTIONS: tuple[_Direction, ...] = (
     _Direction(
         origin_id=MEIDLING_VOR_ID,
         destination_id=FLORIDSDORF_VOR_ID,
-        target_label=_short_target_label(FLORIDSDORF_CANONICAL_SEED),
-        identity_prefix="stammstrecke_delay_floridsdorf",
+        target_label="Praterstern",
+        identity_prefix="stammstrecke_delay_praterstern",
     ),
 )
 

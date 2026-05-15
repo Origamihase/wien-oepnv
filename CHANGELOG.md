@@ -5,6 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stammstrecke-Monitor — Nord-Richtungs-Label umbenannt:
+  "Floridsdorf" → "Praterstern" (2026-05-15)**:
+  * Die CSV-Spalte `direction` und das `DIRECTION_LABEL_NORTHBOUND`
+    der Schreiber + des Feed-Renderers verwenden ab sofort
+    `"Praterstern"` statt `"Floridsdorf"` für nordwärts gerichtete
+    Stammstrecken-Beobachtungen. Begründung: Bei kurzen Wendezügen,
+    die bereits am Praterstern oder Wien Mitte terminieren (und nicht
+    bis Floridsdorf weiterfahren), bezeichnete die alte Beschriftung
+    fälschlich einen Endpunkt, den die meisten Züge gar nicht
+    erreichen. Die Süd-Beschriftung `"Meidling"` benennt seit jeher
+    die nächste Stammstrecken-Haltestelle nach dem Hbf — die
+    Umbenennung gibt der Nord-Beschriftung die gleiche Semantik:
+    `"Stammstrecken-Züge in Richtung <nächster Stammstrecken-
+    Haltestelle nach Hbf>"`.
+  * **Datenmigration**: Alle bestehenden Zeilen in
+    `data/stats/stammstrecke_2026.csv` wurden mit dem Rename-Commit
+    `Floridsdorf` → `Praterstern` umgeschrieben. Die in-flight Pending-
+    Trip- und Recently-finalised-Ledger
+    (`cache/stammstrecke/pending_trips.json` /
+    `cache/stammstrecke/recently_finalised.json`) wurden ebenfalls
+    konvertiert — sowohl die `direction`-Feldwerte als auch die
+    Identity-Key-Präfixe.
+  * **Backwards-Compat-Shim**: Der Feed-Renderer
+    (`src/feed/stammstrecke.py`) akzeptiert in
+    `DIRECTIONS_BY_LABEL` weiterhin den Legacy-Wert `"Floridsdorf"`
+    (alias auf die `Praterstern`-Direction). Der Hbf-Cron-Pfad ruft
+    `_finalize_departed` zusätzlich für `LEGACY_DIRECTION_LABEL_
+    NORTHBOUND` auf, sodass ein extern wiederhergestellter Pending-
+    State mit alten Schlüsseln transparent in den Praterstern-Bucket
+    fließt. Das CSV wird stets unter dem neuen Label geschrieben.
+  * **Feed-Item-GUID**: Die `identity_prefix` für Nord wurde von
+    `stammstrecke_delay_floridsdorf` auf `stammstrecke_delay_praterstern`
+    umbenannt. Da der `data/first_seen.json` aktuell keinen aktiven
+    Nord-Eintrag enthält, propagiert die Umbenennung als saubere
+    "neue Direction" für RSS-Abonnenten, ohne ein laufendes Event
+    doppelt zu emittieren. Sollte bei einem zukünftigen Nord-Incident
+    ein laufendes Event aus der Zeit vor dem Rename existieren, würde
+    es einmalig als „neues" Event in RSS-Readern erscheinen.
 * **Stammstrecke-Monitor — Platform-Level Bahnsteig-Filter
   (2026-05-15)**:
   * Der `/departureBoard`-Reader filtert seit dieser Änderung jede

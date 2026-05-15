@@ -25,9 +25,10 @@ Operational notes:
   _stammstrecke_observations`); callers see an empty list rather than
   an exception.
 * Direction labels match the writer's convention (``Meidling`` /
-  ``Floridsdorf``); a direction not in :data:`DIRECTIONS_BY_LABEL`
-  is silently dropped — protects against a future writer that adds a
-  new direction without updating the renderer here.
+  ``Praterstern``, with legacy ``Floridsdorf`` rows transparently
+  re-bucketed via :data:`DIRECTIONS_BY_LABEL`); a direction not in
+  the lookup table is silently dropped — protects against a future
+  writer that adds a new direction without updating the renderer here.
 """
 from __future__ import annotations
 
@@ -101,17 +102,41 @@ class _Direction:
 
 
 # Direction registry. Mirrors the cron script's ``DIRECTIONS`` tuple
-# (``scripts/update_stammstrecke_status.py``) — the CSV's
-# ``direction`` column carries the ``target_label`` verbatim, so the
-# label here MUST match the writer's value byte-for-byte.
+# (``scripts/update_stammstrecke_hbf.py``) — the CSV's ``direction``
+# column carries the ``target_label`` verbatim, so the label here MUST
+# match the writer's value byte-for-byte.
+#
+# 2026-05-15 rename: the northbound label was changed from
+# ``"Floridsdorf"`` to ``"Praterstern"`` to make both direction
+# buckets name the **next Stammstrecke stop after Hbf** symmetrically
+# (south = Meidling, north = Praterstern). The CSV migration commit
+# rewrites historical rows, but the legacy alias in
+# :data:`DIRECTIONS_BY_LABEL` below keeps any externally-restored
+# old CSV / backup readable without losing the northbound observations.
 DIRECTIONS: Final[tuple[_Direction, ...]] = (
     _Direction(target_label="Meidling", identity_prefix="stammstrecke_delay_meidling"),
     _Direction(
-        target_label="Floridsdorf", identity_prefix="stammstrecke_delay_floridsdorf"
+        target_label="Praterstern", identity_prefix="stammstrecke_delay_praterstern"
     ),
 )
+
+# Legacy direction label kept in the lookup table only — never the
+# canonical write label. The Hbf script (and any future writer) emits
+# the post-rename ``"Praterstern"`` value; this alias exists so a
+# historical CSV row that still says ``"Floridsdorf"`` (rare after the
+# CSV migration commit, but possible from an external backup or a
+# resurrected legacy-script run that skipped the rename) folds into
+# the same direction object instead of being silently dropped.
+_LEGACY_DIRECTION_ALIAS: Final[dict[str, str]] = {"Floridsdorf": "Praterstern"}
+
 DIRECTIONS_BY_LABEL: Final[dict[str, _Direction]] = {
-    direction.target_label: direction for direction in DIRECTIONS
+    **{direction.target_label: direction for direction in DIRECTIONS},
+    **{
+        legacy_label: next(
+            d for d in DIRECTIONS if d.target_label == canonical_label
+        )
+        for legacy_label, canonical_label in _LEGACY_DIRECTION_ALIAS.items()
+    },
 }
 
 
