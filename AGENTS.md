@@ -6,7 +6,7 @@ Dieses Dokument dient als Leitfaden für KI-Agenten, die an diesem Repository ar
 
 Das Projekt `wien-oepnv` aggregiert Verkehrsmeldungen (Wiener Linien, ÖBB, Stadt-Wien-Baustellen plus den VOR/VAO-basierten S-Bahn-Stammstrecken-Monitor) und stellt sie als RSS-Feed sowie JSON-Daten bereit. Es legt höchsten Wert auf **Reproduzierbarkeit**, **Sicherheit** und **Datenintegrität**.
 
-> **Hinweis zum VOR-Scope:** Seit der Konsolidierung vom 2026-05-11 ist VOR **kein eigenständiger Disruption-Provider** mehr (das frühere `src/providers/vor.py:fetch_events` wurde entfernt). Die VOR/VAO ReST API wird ausschließlich vom Stammstrecken-Verspätungs- und Ausfall-Monitor (`scripts/update_stammstrecke_hbf.py`) konsumiert. Wer einen neuen VOR-Konsumenten plant, muss das Tagesbudget (100 Requests; aktuell sind 48 davon vom Hbf-Monitor belegt) sowie den `_charge_one_request`-Quota-Gate beachten — Details in `docs/architecture.md` §7.
+> **Hinweis zum VOR-Scope:** Seit der Konsolidierung vom 2026-05-11 ist VOR **kein eigenständiger Disruption-Provider** mehr (das frühere `src/providers/vor.py:fetch_events` wurde entfernt). Die VOR/VAO ReST API wird ausschließlich vom Stammstrecken-Verspätungs- und Ausfall-Monitor (`scripts/update_stammstrecke_hbf.py`) konsumiert. Wer einen neuen VOR-Konsumenten plant, muss zwei Quota-Schichten beachten: (a) das Workflow-Pre-Flight-Gate `scripts/preflight_quota_check.py` (verhindert Cron-Ticks, sobald der persistierte Counter das Tagesbudget reißen würde), und (b) die per-Call-Funktion `_charge_one_request` in `scripts/update_stammstrecke_status.py` (importierbar; reserviert einen Quota-Slot **vor** jedem Network Call). Tagesbudget: 100 Requests, aktuell 48 davon vom Hbf-Monitor belegt — Details in `docs/architecture.md` §7.
 
 ### Wichtige Verzeichnisse
 - `src/`: Der gesamte Quellcode des Pakets.
@@ -48,8 +48,8 @@ Wichtige Befehle:
     - Secrets werden über Umgebungsvariablen oder `.env`-Dateien (nicht eingecheckt!) geladen.
 
 2.  **Dateisystem & Pfade**:
-    - Verwende **immer** `validate_path` oder `resolve_env_path` aus `src.feed.config` (bzw. Import via `src.build_feed`), wenn Dateipfade aus Konfigurationen verarbeitet werden.
-    - Schreiben ist nur in `docs/`, `data/` und `log/` erlaubt (Path-Traversal-Schutz).
+    - Verwende **immer** `validate_path` oder `resolve_env_path` aus `src.feed.config`, wenn Dateipfade aus Konfigurationen verarbeitet werden. (`src.build_feed` re-exportiert nur `validate_path` als Test-Hook; `resolve_env_path` ist ausschließlich aus `src.feed.config` importierbar.)
+    - Schreiben ist nur in `docs/`, `data/` und `log/` erlaubt (Path-Traversal-Schutz; siehe `ALLOWED_ROOTS` in `src/feed/config.py`).
     - Verwende `src.utils.files.atomic_write` für alle Dateischreibvorgänge, um Atomizität und korrekte Berechtigungen sicherzustellen.
     - Tests, die temporäre Dateien benötigen, sollten diese in `data/` erstellen, um Path-Traversal-Checks zu bestehen.
 
