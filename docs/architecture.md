@@ -506,18 +506,19 @@ consumers tolerate missing or malformed rows gracefully.
 ```mermaid
 flowchart LR
     subgraph "Producers (every cycle tick — IFTTT-triggered update-cycle.yml, ~30 min)"
-        SS[update_stammstrecke_status.py<br/><i>writes one row per direction</i>]
+        SS[update_stammstrecke_hbf.py<br/><i>writes one delay row per direction<br/>+ one row per cancellation</i>]
         BF[build_feed.main<br/><i>_update_item_state strict-new branch</i>]
     end
     subgraph "Append-only ledgers (data/stats/)"
         SCSV[stammstrecke_YYYY.csv<br/><i>timestamp, weekday, hour, direction, delay_minutes</i>]
+        ACSV[ausfaelle_YYYY.csv<br/><i>timestamp, weekday, hour, direction, line</i>]
         DCSV[stoerungen_YYYY.csv<br/><i>timestamp, weekday, hour, provider, location_name</i>]
     end
     subgraph "Daily aggregator (update-cycle.yml, first cycle tick after midnight Vienna)"
         AGG[generate_markdown_stats.py<br/><i>stdlib only, 30-day window</i>]
     end
     subgraph "Feed-build consumer"
-        FRP[src/feed/stammstrecke.py<br/><i>1-hour window, 9-min median trigger</i>]
+        FRP[src/feed/stammstrecke.py<br/><i>1-hour window, ≥2 obs > 9 min trigger</i>]
     end
     subgraph "Outputs"
         MD[docs/statistik.md<br/><i>ASCII / Emoji bars</i>]
@@ -525,8 +526,10 @@ flowchart LR
     end
 
     SS -- append --> SCSV
+    SS -- append --> ACSV
     BF -- append --> DCSV
     SCSV --> AGG
+    ACSV --> AGG
     DCSV --> AGG
     AGG --> MD
     SCSV --> FRP
@@ -611,17 +614,21 @@ die zugehörigen Helper-Scripts (`update_vor_cache.py`,
 `update_vor_stations.py`, `fetch_vor_haltestellen.py`) wurden
 2026-05-11 aus `scripts/` gelöscht. VOR-Stop-IDs kommen jetzt
 ausschließlich aus der gepinnten
-`data/vor-haltestellen.csv`-Snapshot. Siehe
+`data/vor-haltestellen.csv`-Snapshot. Seit 2026-05-15 verbraucht der
+Monitor zudem nur noch **48 Calls/Tag** (vorher 96): das aktive
+`scripts/update_stammstrecke_hbf.py`-Skript ruft pro Cron-Tick
+**eine** `/departureBoard`-Query am Wien Hauptbahnhof auf statt
+zwei `/trip`-Queries (Floridsdorf ↔ Meidling). Siehe
 [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)
 für Details des Stammstrecken-Monitors.
 
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
-| **Stammstrecke `/trip`** (~alle 30 Min × 2 Richtungen) | 96 | IFTTT-Cadence des `update-cycle.yml`-Triggers, `MAX_TRIPS_PER_QUERY` |
+| **Stammstrecke `/departureBoard`** (~alle 30 Min × 1 Hbf-Call) | 48 | IFTTT-Cadence des `update-cycle.yml`-Triggers |
 | **Station-Enrichment `location.name`** | **0** (Pfad und Script entfernt 2026-05-11) | — |
 | **Disruption-Polling `departureBoard`** | **0** (Pfad und Script entfernt 2026-05-11) | — |
 | **Auth-Diagnose** (`verify_vor_access_id.py`, `check_vor_auth.py`) | **0–2** | nur manueller Operator-Aufruf, einmalige Smoke-Tests |
-| **Tagesbudget gesamt** | **96 / 100** | — |
+| **Tagesbudget gesamt** | **48 / 100** | — |
 
 Zwei zusammenwirkende Mechanismen schützen das Budget:
 
@@ -633,21 +640,26 @@ Zwei zusammenwirkende Mechanismen schützen das Budget:
    (`scripts/verify_vor_access_id.py`, `scripts/check_vor_auth.py`)
    bleiben für gezielte manuelle Smoke-Tests verfügbar.
 
-2. **`_charge_one_request`** (`scripts/update_stammstrecke_status.py`).
-   Vor jedem `/trip`-Call wird ein Quota-Slot via
+2. **`_charge_one_request`** (in
+   `scripts/update_stammstrecke_status.py` definiert, vom aktiven
+   `update_stammstrecke_hbf.py` per Import wiederverwendet). Vor
+   jedem `/departureBoard`-Call wird ein Quota-Slot via
    `vor_provider.save_request_count` reserviert; ein Lauf, der das
    Tagesbudget reißen würde, raised `_QuotaExceeded` *vor* dem
-   Network Call und schreibt einen leeren Cache.
+   Network Call. Defense-in-depth: `update-cycle.yml` schaltet den
+   Step zudem über `scripts/preflight_quota_check.py --check vor
+   --margin 1` vor jedem Tick aus, sobald der persistierte Counter
+   keinen Slot mehr lässt.
 
-Stammstrecke verbraucht damit 96 von 100 Calls/Tag; die restlichen
-4 Calls Puffer bleiben für gelegentliche Operator-Direktaufrufe
-verfügbar. Sollte das Budget in Zukunft enger werden, sind die
-niedrig-hängenden Hebel:
+Mit 48 von 100 Calls/Tag bleibt komfortabel ein Puffer von ~52
+Calls für Operator-Direktaufrufe (`workflow_dispatch` auf
+`update-cycle.yml`, manuelle Smoke-Tests). Sollte das Budget in
+Zukunft enger werden, sind die niedrig-hängenden Hebel:
 
 * IFTTT-Applet von ~30-Min- auf Stunden-Cadence umstellen (halbiert
-  Stammstrecke auf 48 Calls/Tag).
-* `MAX_TRIPS_PER_QUERY = 6` → `3` (kein API-Effekt, da `numF` ein
-  Server-side-Cap ist und VAO mehrere Trips pro Call erlaubt).
+  Stammstrecke auf 24 Calls/Tag).
+* `DEPARTURE_BOARD_DURATION_MIN = 45` → kürzeres Fenster (kein
+  API-Effekt, aber kleinere Antwort-Payloads).
 * Operating-Hours-Cadence im IFTTT-Applet (nur 04-23 Uhr statt
   ganztägig) — die Stammstrecke fährt zwischen 00:30 und 04:00 nur
   ausgedünnt, das Monitoring liefert dort kaum Signal.
