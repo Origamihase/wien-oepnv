@@ -124,7 +124,6 @@ from scripts.update_stammstrecke_status import (  # noqa: E402
     PENDING_TTL,
     QUERY_TIMEOUT,
     RECENTLY_FINALISED_PATH,
-    VIENNA_TZ as VIENNA_TZ,
     _QuotaExceeded,
     _build_session,
     _canonical_line_name,
