@@ -27,10 +27,10 @@ Die folgende Matrix veranschaulicht, wann eine Verbindung als "Wien-relevant" ei
 *Hinweis:* Wenn der strikte Modus über die Umgebungsvariable `OEBB_ONLY_VIENNA` aktiviert ist, werden Pendlerbahnhöfe ignoriert und **jeder** bekannte Endpunkt muss explizit in Wien liegen.
 
 ## Warnung für zukünftige Entwickler (Tech-Debt)
-Aktuell gibt es im Projekt zwei separate Stellen, an denen Schlüsselwörter für Kategorien und Liniencodes gepflegt werden:
+Aktuell gibt es im Projekt zwei separate Stellen, an denen Schlüsselwörter für Kategorien und Liniencodes gepflegt werden — beide leben in `src/providers/oebb.py`:
 
-1. Die Menge `NON_LOCATION_PREFIXES` in der Datei `src/utils/stations.py`.
-2. Der reguläre Ausdruck `base_pattern` innerhalb der Funktion `_strip_oebb_prefixes` in der Datei `src/providers/oebb.py`.
+1. Die Menge `NON_LOCATION_PREFIXES` (siehe Definition ab Zeile ~232) — wird von `_is_category` ausgewertet, um Titel-Tokens als Kategorien (vs. echte Ortsnamen) zu erkennen.
+2. Der reguläre Ausdruck `base_pattern` innerhalb der Funktion `_strip_oebb_prefixes` (siehe Definition ab Zeile ~409) — entfernt führende Linien-/Störungspräfixe iterativ aus dem Titel.
 
 **Achtung:** Wenn in Zukunft neue Kategorien, Störungsarten oder Liniencodes der ÖBB hinzugefügt werden müssen, muss sichergestellt werden, dass diese an **beiden** Stellen ergänzt werden. Eine Divergenz dieser Listen führt zu inkonsistentem Parsing und potenziellen Fehlern bei der Stationserkennung.
 
