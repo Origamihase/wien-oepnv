@@ -498,10 +498,22 @@ def write_status(provider: str, status: dict[str, Any]) -> None:
         # writers. Forensic intent is preserved (``read_status``
         # recovers the original string from the literal escape via
         # ``json.loads``).
+        #
+        # Security (Coordinate finite/range drift, committed-writer
+        # defence-in-depth): ``allow_nan=False`` mirrors the canonical
+        # writer-side pin established in Round 1485 at
+        # :func:`src.places.merge.write_stations` and extended in
+        # Round 1487 to :func:`src.utils.cache.write_cache` (the
+        # sibling events writer in this module). The status payload
+        # is a public ``dict[str, Any]`` so any future caller adding
+        # a float field (latency seconds, response_size_ratio,
+        # error_rate, …) inherits the missing pin and could land
+        # non-standard ``NaN`` / ``Infinity`` literals in the
+        # committed ``cache/<provider>/last_run.json`` heartbeat.
         with atomic_write(
             status_file, mode="w", encoding="utf-8", permissions=0o600
         ) as fh:
-            json.dump(status, fh, ensure_ascii=True, indent=2, sort_keys=True)
+            json.dump(status, fh, ensure_ascii=True, indent=2, sort_keys=True, allow_nan=False)
             fh.write("\n")
     except Exception:
         log.exception(

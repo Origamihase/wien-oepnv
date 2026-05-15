@@ -357,9 +357,20 @@ def _write_request_count_file(path: Path, payload: Mapping[str, Any]) -> None:
     ``_write_heartbeat_file``). Forensic intent is preserved
     (``load_request_count`` recovers the original string from the
     literal escape via ``json.loads``).
+
+    Security (Coordinate finite/range drift, committed-writer
+    defence-in-depth): ``allow_nan=False`` mirrors the canonical
+    writer-side pin established in Round 1485 at
+    :func:`src.places.merge.write_stations` and extended in Round
+    1487 to the sibling stations / cache-events writers. The
+    payload is a ``Mapping[str, Any]`` so any future field
+    (e.g. a fractional response-rate metric, latency average)
+    inherits the missing pin and could land non-standard
+    ``NaN`` / ``Infinity`` literals (invalid per RFC 8259) in
+    the committed ``data/vor_request_count.json`` sidecar.
     """
     with atomic_write(path, mode="w", encoding="utf-8", permissions=0o600) as handle:
-        json.dump(payload, handle, ensure_ascii=True)
+        json.dump(payload, handle, ensure_ascii=True, allow_nan=False)
         handle.write("\n")
 
 

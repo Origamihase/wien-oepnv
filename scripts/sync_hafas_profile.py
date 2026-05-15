@@ -317,6 +317,19 @@ def _write_profile(profile: dict[str, object], output_path: Path) -> None:
     """
     scrubbed = scrub_trojan_source_primitives(profile)
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    # Security (Coordinate finite/range drift, committed-writer
+    # defence-in-depth): ``allow_nan=False`` mirrors the canonical
+    # writer-side pin established in Round 1485 at
+    # :func:`src.places.merge.write_stations` and extended in Round
+    # 1487 to the sibling stations / cache-events writers. The
+    # profile values are regex-extracted from upstream JavaScript
+    # so today's NaN risk is low, but the pin is the defensive line
+    # if a future extraction strategy or upstream-schema change
+    # widens the value surface. Non-standard ``NaN`` / ``Infinity``
+    # literals (invalid per RFC 8259) in the committed
+    # ``data/hafas_profile.json`` would break :func:`json.loads` /
+    # ``JSON.parse`` / ``serde_json`` strict mode at every
+    # downstream consumer.
     with atomic_write(
         output_path, mode="w", encoding="utf-8", permissions=0o600
     ) as handle:
@@ -326,6 +339,7 @@ def _write_profile(profile: dict[str, object], output_path: Path) -> None:
             ensure_ascii=True,
             sort_keys=True,
             indent=2,
+            allow_nan=False,
         )
         handle.write("\n")
 
