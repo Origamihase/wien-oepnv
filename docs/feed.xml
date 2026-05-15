@@ -7,51 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 15 May 2026 20:30:32 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 15 May 2026 21:00:34 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[30: Fahrtbehinderung wegen Feuerwehreinsatz]]></title>
+      <title><![CDATA[U4: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b9c94eeed44512215e406e625fa9f87145e460bd382a84471bdde9af4b2c8d21</guid>
-      <pubDate>Fri, 15 May 2026 19:48:39 +0200</pubDate>
-      <ext:first_seen>Fri, 15 May 2026 12:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 15 May 2026 19:48:39 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 15 May 2026 20:48:00 +0200</ext:ends_at>
-      <description>[Am 15.05.2026]</description>
-      <content:encoded><![CDATA[[Am 15.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682</guid>
+      <pubDate>Fri, 15 May 2026 20:50:00 +0200</pubDate>
+      <ext:first_seen>Fri, 15 May 2026 16:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 15 May 2026 20:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 15 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 15.05.2026]</description>
+      <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 15.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[31: Fahrtbehinderung wegen Feuerwehreinsatz]]></title>
+      <title><![CDATA[40A: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f527fb72670bf64bc0133506694f6ecf181dab0fa5f3e774d8aa5fd4178cdbab</guid>
-      <pubDate>Fri, 15 May 2026 19:48:10 +0200</pubDate>
-      <ext:first_seen>Fri, 15 May 2026 12:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 15 May 2026 19:48:10 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 15 May 2026 20:47:00 +0200</ext:ends_at>
-      <description>[Am 15.05.2026]</description>
-      <content:encoded><![CDATA[[Am 15.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">c51bbbc76fed813828240bea5d2f2e485f5d85268602c5a602e18b5cc1ac55d7</guid>
+      <pubDate>Fri, 15 May 2026 20:42:00 +0200</pubDate>
+      <ext:first_seen>Fri, 15 May 2026 21:00:34 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 15 May 2026 20:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 15 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 15.05.2026]</description>
+      <content:encoded><![CDATA[Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 15.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Fahrtbehinderung wegen Demonstration]]></title>
+      <title><![CDATA[31A: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">882cff7dff40bedd1ece0cbb30689a64d03bb5ae0a9196ee7128b2dd79abddb9</guid>
-      <pubDate>Fri, 15 May 2026 19:41:23 +0200</pubDate>
-      <ext:first_seen>Fri, 15 May 2026 20:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 15 May 2026 19:41:23 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 15 May 2026 20:41:00 +0200</ext:ends_at>
-      <description>[Am 15.05.2026]</description>
-      <content:encoded><![CDATA[[Am 15.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9f165c075986a15f166e33b45b8d944a379e149f1d04cfef623757a51c68a8b2</guid>
-      <pubDate>Fri, 15 May 2026 19:35:00 +0200</pubDate>
-      <ext:first_seen>Fri, 15 May 2026 20:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 15 May 2026 19:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 15 May 2026 20:28:00 +0200</ext:ends_at>
-      <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 15.05.2026]</description>
-      <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 15.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">b1b59ef91c7e5513a7a2362ffbc5f6ec21eb687935ff3e74c62591a531321745</guid>
+      <pubDate>Fri, 15 May 2026 20:41:00 +0200</pubDate>
+      <ext:first_seen>Fri, 15 May 2026 06:30:40 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 15 May 2026 20:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 15 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 15.05.2026]</description>
+      <content:encoded><![CDATA[Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 15.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -116,6 +105,17 @@
       <ext:starts_at>Tue, 12 May 2026 13:39:06 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren. [Seit 12.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren.<br/>[Seit 12.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[47A: Filmaufnahmen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">15b426feb43dc2b416b80eb70aa75396a22ac3d1593bb7f3a236fe7b0e3f9714</guid>
+      <pubDate>Tue, 12 May 2026 10:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 12 May 2026 10:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 12 May 2026 10:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 00:30:00 +0200</ext:ends_at>
+      <description>Veranstaltung Wegen der Sperre der Zehetnergasse aufgrund von Filmaufnahmen kommt es zu einer Umleitung der Linie 47A. Zeitraum: Donnerstag, 28. Mai 2026, etwa 15:00 Uhr bis … [12.05.2026 – 30.05.2026]</description>
+      <content:encoded><![CDATA[Veranstaltung Wegen der Sperre der Zehetnergasse aufgrund von Filmaufnahmen kommt es zu einer Umleitung der Linie 47A. Zeitraum: Donnerstag, 28. Mai 2026, etwa 15:00 Uhr bis …<br/>[12.05.2026 – 30.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
