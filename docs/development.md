@@ -494,7 +494,7 @@ benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
 
 - **Tests**: `python -m pytest` führt über 2600 Unit- und Integrationstests in rund 400 Modulen unter `tests/` aus.
 - **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab.
-- **Statische Analyse & Typprüfung**: `ruff check` (Stil/Konsistenz, Regelgruppen `E`, `F`, `S`, `B`) und `mypy --strict` (vollständige Typabdeckung über `src/` und `tests/`, derzeit 0 Errors) laufen identisch zur CI via `python -m src.cli checks`. Optional lassen sich über `--fix` Ruff-Autofixes aktivieren oder zusätzliche Argumente an Ruff durchreichen. Ein zusätzlicher `mypy-strict.yml`-Workflow setzt das Allowlist-Gate auf Pull Requests durch.
+- **Statische Analyse & Typprüfung**: `ruff check` (Stil/Konsistenz, Regelgruppen `E`, `F`, `S`, `B`, `UP` — siehe `pyproject.toml`) und `mypy --strict` (vollständige Typabdeckung über `src/` und `tests/`, derzeit 0 Errors) laufen identisch zur CI via `python -m src.cli checks`. Optional lassen sich über `--fix` Ruff-Autofixes aktivieren oder zusätzliche Argumente an Ruff durchreichen. Ein zusätzlicher `mypy-strict.yml`-Workflow setzt das Allowlist-Gate auf Pull Requests durch.
 - **Pre-Commit-Hooks**: `.pre-commit-config.yaml` aktiviert lokale Checks (Ruff, mypy, Secret-Scan, Whitespace-Hygiene) bei jedem `git commit`. Einmalig nach dem Klonen `pre-commit install` ausführen — Details in [`CONTRIBUTING.md`](../CONTRIBUTING.md).
 - **Logging**: Zur Laufzeit entsteht `log/errors.log` mit rotierenden Dateien; Größe und Anzahl sind konfigurierbar.
 
