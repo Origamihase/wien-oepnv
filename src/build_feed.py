@@ -157,7 +157,7 @@ def read_cache_wl() -> list[Any]:
 
 
 def _post_filter_oebb(items: list[Any]) -> list[Any]:
-    """Re-apply the ÖBB relevance filter to cached items.
+    """Re-apply the ÖBB relevance filter and re-derive titles for cached items.
 
     The cache is only refreshed by `update_oebb_cache.py`, so a filter
     update doesn't reach the feed until the next cache refresh. Without
@@ -165,10 +165,19 @@ def _post_filter_oebb(items: list[Any]) -> list[Any]:
     *current* spec considers irrelevant (e.g. Wien↔Distant routes that
     slipped through an older filter version).
 
+    We also re-derive the title via ``_apply_route_title`` so a title-
+    formatting improvement (such as the multi-route chain collapse or
+    the affected-line-prefix tightening) reaches the feed even when the
+    cache still holds an older rendering. The original title is left in
+    place if the re-derived version is empty or identical.
+
     Items without a title are passed through unchanged so test fixtures
     and other generic dictionaries aren't accidentally dropped.
     """
-    from .providers.oebb import _is_relevant  # local import: avoids circular at module load
+    from .providers.oebb import (  # local import: avoids circular at module load
+        _apply_route_title,
+        _is_relevant,
+    )
 
     out: list[Any] = []
     for item in items:
@@ -181,8 +190,13 @@ def _post_filter_oebb(items: list[Any]) -> list[Any]:
             # Stub / metadata item — leave it alone.
             out.append(item)
             continue
-        if _is_relevant(title, description):
-            out.append(item)
+        if not _is_relevant(title, description):
+            continue
+        rederived = _apply_route_title(title, description)
+        if rederived and rederived != title:
+            item = dict(item)
+            item["title"] = rederived
+        out.append(item)
     return out
 
 
