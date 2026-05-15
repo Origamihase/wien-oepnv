@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 15 May 2026 05:30:38 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 15 May 2026 06:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">80bad3fc9a7c8570d47692cfb99b01d9a0b11e6fe8749b87eeb08ec1a799c3e2</guid>
+      <pubDate>Fri, 15 May 2026 05:54:00 +0200</pubDate>
+      <ext:first_seen>Fri, 15 May 2026 06:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 15 May 2026 05:54:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 15 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 11A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Sturgasse. [Am 15.05.2026]</description>
+      <content:encoded><![CDATA[Linie 11A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Sturgasse.<br/>[Am 15.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +27,7 @@
       <pubDate>Fri, 15 May 2026 05:20:00 +0200</pubDate>
       <ext:first_seen>Fri, 15 May 2026 05:30:38 +0200</ext:first_seen>
       <ext:starts_at>Fri, 15 May 2026 05:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 15 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 15 May 2026 06:02:00 +0200</ext:ends_at>
       <description>Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Am Tabor. [Am 15.05.2026]</description>
       <content:encoded><![CDATA[Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Am Tabor.<br/>[Am 15.05.2026]]]></content:encoded>
     </item>
@@ -105,17 +116,6 @@
       <ext:ends_at>Sat, 30 May 2026 00:30:00 +0200</ext:ends_at>
       <description>Veranstaltung Wegen der Sperre der Zehetnergasse aufgrund von Filmaufnahmen kommt es zu einer Umleitung der Linie 47A. Zeitraum: Donnerstag, 28. Mai 2026, etwa 15:00 Uhr bis … [12.05.2026 – 30.05.2026]</description>
       <content:encoded><![CDATA[Veranstaltung Wegen der Sperre der Zehetnergasse aufgrund von Filmaufnahmen kommt es zu einer Umleitung der Linie 47A. Zeitraum: Donnerstag, 28. Mai 2026, etwa 15:00 Uhr bis …<br/>[12.05.2026 – 30.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N65: Betrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0af8e48c5c63c0818b4662d59227417ee430c0b1befb39c7dcdd7a316ece5e82</guid>
-      <pubDate>Tue, 12 May 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Tue, 12 May 2026 00:00:45 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 12 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 15 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[12.05.2026 – 15.05.2026]</description>
-      <content:encoded><![CDATA[[12.05.2026 – 15.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
