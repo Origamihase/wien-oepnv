@@ -16,6 +16,8 @@ from pathlib import Path
 from typing import Any, NamedTuple
 from collections.abc import Iterable
 
+from .files import _reject_non_finite_constant, _reject_non_finite_float
+
 __all__ = [
     "canonical_name",
     "display_name",
@@ -328,7 +330,19 @@ def _read_capped_json(
                     label, path_fingerprint, max_bytes,
                 )
                 return None
-            payload: object = json.loads(raw)
+            # Security: ``parse_constant`` + ``parse_float`` hooks reject
+            # the canonical non-finite literal family. Mirrors the
+            # canonical defence pinned at :func:`src.utils.files.read_capped_json`
+            # so a planted ``NaN`` / ``Infinity`` literal in the on-disk
+            # stations or polygon file does NOT propagate as
+            # ``float('nan')`` / ``float('inf')`` into the ``@lru_cache``
+            # import-time loaders (``_station_entries`` /
+            # ``_vienna_polygons``).
+            payload: object = json.loads(
+                raw,
+                parse_constant=_reject_non_finite_constant,
+                parse_float=_reject_non_finite_float,
+            )
             return payload
     except (OSError, json.JSONDecodeError, RecursionError, UnicodeDecodeError):
         return None

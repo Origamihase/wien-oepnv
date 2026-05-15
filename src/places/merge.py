@@ -10,7 +10,11 @@ from pathlib import Path
 from typing import TypedDict, cast
 from collections.abc import Iterable, MutableMapping, Sequence
 
-from ..utils.files import atomic_write
+from ..utils.files import (
+    _reject_non_finite_constant,
+    _reject_non_finite_float,
+    atomic_write,
+)
 from ..utils.serialize import scrub_trojan_source_primitives
 from ..utils.stations import MAX_STATIONS_FILE_BYTES
 
@@ -101,7 +105,29 @@ def load_stations(path: Path) -> list[StationEntry]:
     # propagates out of ``load_stations`` and crashes the Google Places
     # merge step in ``update_station_directory.py``.
     try:
-        raw_data = json.loads(content_bytes)
+        # Security (reader-side non-finite literal defence): mirrors
+        # the writer-side ``allow_nan=False`` pin at
+        # :func:`write_stations` (Round 1485 — the CANONICAL coordinate
+        # writer). A planted ``NaN`` / ``Infinity`` / ``-Infinity`` /
+        # ``1e1000`` in an operator-supplied ``data/stations.json``
+        # (compromised CI runner, partial flush + power loss, hostile PR
+        # landing a tampered fixture, supply-chain attack via the OSM /
+        # Google Places merge step) would otherwise propagate as
+        # ``float('nan')`` / ``float('inf')`` into the merge pipeline.
+        # While ``filter_complete_places`` and ``_parse_place`` already
+        # reject non-finite coordinates at the API ingest layer, the
+        # on-disk file read here is a SEPARATE attacker position (the
+        # disk-write boundary, downstream of the API ingest). The
+        # defence-in-depth ``parse_constant`` + ``parse_float`` hooks
+        # close the parse-time entry point so the in-memory list never
+        # contains a non-finite float regardless of how the on-disk
+        # bytes got there. Hook raises ``json.JSONDecodeError`` caught
+        # by the surrounding except tuple.
+        raw_data = json.loads(
+            content_bytes,
+            parse_constant=_reject_non_finite_constant,
+            parse_float=_reject_non_finite_float,
+        )
     except (json.JSONDecodeError, RecursionError, UnicodeDecodeError) as exc:
         raise ValueError("stations file is not valid JSON") from exc
 

@@ -18,7 +18,11 @@ import os
 import re
 from collections.abc import Iterable, Iterator, Mapping, Sequence
 
-from src.utils.files import read_capped_text
+from src.utils.files import (
+    _reject_non_finite_constant,
+    _reject_non_finite_float,
+    read_capped_text,
+)
 from src.utils.stations import MAX_STATIONS_FILE_BYTES, _normalize_token
 from src.utils.text import escape_markdown, normalise_markdown_text
 
@@ -358,7 +362,18 @@ def _load_stations(path: Path) -> list[Mapping[str, object]]:
         raise StationValidationError(f"Stations file not readable: {path}") from exc
 
     try:
-        raw_data = json.loads(raw_bytes)
+        # Security (reader-side non-finite literal defence): mirrors
+        # the canonical :func:`src.places.merge.load_stations` defence
+        # so the validator sees the same rejection shape — planted
+        # ``NaN`` / ``Infinity`` literals in the stations file flow
+        # through the ``except`` handler as ``StationValidationError``
+        # (operator-actionable diagnostic), not as a silently-propagated
+        # ``float('nan')`` that breaks every coordinate check downstream.
+        raw_data = json.loads(
+            raw_bytes,
+            parse_constant=_reject_non_finite_constant,
+            parse_float=_reject_non_finite_float,
+        )
     except (json.JSONDecodeError, RecursionError, UnicodeDecodeError) as exc:  # pragma: no cover - defensive
         # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
         # stations file (planted by a compromised CI runner or a corrupted
