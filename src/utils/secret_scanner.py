@@ -819,6 +819,157 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])CCIPAT_[A-Za-z0-9_\-]{32,}(?![A-Za-z0-9])"),
         "CircleCI Personal API Token gefunden",
     ),
+    # Mailgun Private API Key (``key-<32 lowercase hex>``). Issued via
+    # app.mailgun.com/app/account/security/api_keys for full Mailgun
+    # transactional-mail API access. Total length 36 chars (4-char
+    # ``key-`` prefix + 32-char lowercase hex body). The ``key-``
+    # prefix is unambiguous in the Mailgun-issuer context: while the
+    # literal substring ``key-`` is common in placeholder values
+    # (``api-key``, ``foo-key-1``), the strict 32-char-lowercase-hex
+    # body length guard rejects every operator-supplied placeholder
+    # that doesn't accidentally land in the hex alphabet AND clock
+    # in at exactly 32 chars. A leak grants the issuing account's
+    # full transactional-mail / contacts API scope: the attacker can
+    # send mail FROM the project's authenticated sending domain
+    # (phishing amplification leveraging the project's existing SPF
+    # / DKIM / DMARC authentication), exfiltrate the suppression /
+    # bounce / event logs (which may carry PII), modify webhook
+    # endpoints to redirect delivery events to attacker-controlled
+    # URLs, and create new API keys to maintain persistence. The
+    # revocation flow lives at app.mailgun.com/app/account/security/
+    # api_keys and is distinct from every other vendor's (in
+    # particular Brevo (Sendinblue) ``xkeysib-`` from Round 5 —
+    # both are transactional-mail vendors but their revocation
+    # flows live on different control planes), so issuer-specific
+    # attribution accelerates IR triage. Pre-fix the entropy
+    # fallback's ``[A-Za-z0-9+/=_-]{24,}`` regex matches only the
+    # 32-hex body span as one generic ``Hochentropischer Token-
+    # String`` finding (the trailing alphabet excludes ``key-``
+    # because ``key-`` is only 4 chars — too short for the 24-char
+    # entropy minimum on its own), losing the Mailgun-specific
+    # attribution. Closes the named-but-deferred adjacent-prefix
+    # candidate from Round 11 (PR closing GitLab developer-tooling
+    # + CircleCI).
+    (
+        re.compile(r"(?<![A-Za-z0-9])key-[a-f0-9]{32}(?![A-Za-z0-9])"),
+        "Mailgun Private API Key gefunden",
+    ),
+    # Square Access Token (``EAAA<60+ chars from [A-Za-z0-9_-]>``).
+    # Issued via developer.squareup.com/apps for full Square REST-API
+    # access. The ``EAAA`` prefix is the base64url encoding of the
+    # first 3 bytes of the embedded JSON token payload's leading
+    # byte sequence (structurally analogous to JWT's ``eyJ`` —
+    # ``eyJ`` decodes to ``{"`` and ``EAAA`` decodes to a different
+    # 3-byte sequence). Both ``EAAA`` and ``eyJ`` are 4-char base64
+    # prefixes but are mutually exclusive at the leading-character
+    # level — no token can match both patterns simultaneously. Total
+    # length 64+ chars in modern Square tokens (4-char prefix +
+    # 60+ char body). The 60-char body lower bound rejects short
+    # ``EAAA``-prefixed fragments (operator placeholder values,
+    # accidentally-truncated tokens) while accepting every
+    # legitimate Square access token. A leak grants the issuing
+    # seller's full Square dashboard scope: read every customer's
+    # payment data / catalog / inventory state, initiate transactions
+    # under the seller's account, refund payments, modify employee
+    # permissions, exfiltrate the merchant's tax-filing data. Blast
+    # radius is structurally identical to the Stripe Live Secret
+    # Key (``sk_live_``, Round 1) — the payment-processor-tier
+    # leak surface. The revocation flow lives at
+    # developer.squareup.com/apps and is distinct from every other
+    # payment-processor's (in particular Stripe's
+    # dashboard.stripe.com/apikeys), so issuer-specific attribution
+    # accelerates IR triage. Pre-fix the entropy fallback matched
+    # the full ``EAAA<body>`` span as one generic ``Hochentropischer
+    # Token-String`` finding, losing the Square-specific
+    # attribution. Closes the named-but-deferred adjacent-prefix
+    # candidate from Round 11.
+    (
+        re.compile(r"(?<![A-Za-z0-9])EAAA[A-Za-z0-9_\-]{60,}(?![A-Za-z0-9])"),
+        "Square Access Token gefunden",
+    ),
+    # Shopify Admin API Access Token (``shpat_<32 lowercase hex>``).
+    # Issued by Shopify when a custom app installs into a store via
+    # the Admin API OAuth flow (post-2022 modern custom-app flow,
+    # ``shpat_`` prefix). Total length 38 chars (6-char prefix +
+    # 32-char hex body). The ``shpat_`` prefix is unambiguous, and
+    # the strict 32-hex body length avoids overlap with the entropy
+    # fallback's broader alphabet. A leak grants the app's full
+    # installed scope on the store: read/write every product,
+    # customer, order, inventory item, fulfilment, refund, draft
+    # order, gift card, abandoned checkout, customer-segment, and
+    # webhook configuration in the store; modify shop settings;
+    # initiate refunds and create new staff accounts. Blast radius
+    # is the highest leak surface in the e-commerce-platform tier
+    # — structurally identical to the GitLab Personal Access Token
+    # (``glpat-``, Round 1) for the e-commerce dashboard. The
+    # revocation flow lives at admin.shopify.com/apps/<app>/edit
+    # and is distinct from every other vendor's. Pre-fix the
+    # entropy fallback's ``[A-Za-z0-9+/=_-]{24,}`` regex matches
+    # the full ``shpat_<body>`` span (the underscore IS in the
+    # entropy alphabet) as one generic ``Hochentropischer Token-
+    # String`` finding, losing the Shopify-Admin-API-specific
+    # attribution that determines which admin dashboard the operator
+    # must visit to revoke the token. Opens the e-commerce-platform
+    # sub-landscape in lockstep with the named adjacent-prefix
+    # candidates (Mailgun / Square) above.
+    (
+        re.compile(r"(?<![A-Za-z0-9])shpat_[a-fA-F0-9]{32}(?![A-Za-z0-9])"),
+        "Shopify Admin API Access Token gefunden",
+    ),
+    # Shopify Shared Secret (``shpss_<32 lowercase hex>``). Issued
+    # alongside ``shpat_`` for HMAC-SHA256 signature verification
+    # of webhook payloads delivered by Shopify to the app's callback
+    # URL. Format identical to ``shpat_`` (6-char prefix + 32-char
+    # hex body); the ``shpss_`` prefix is unambiguous and mutually
+    # exclusive with ``shpat_``/``shppa_``/``shpca_`` at the
+    # fifth-character level. A leak lets a network adversary forge
+    # webhook payloads that the app's signature verification will
+    # accept — every webhook-driven business logic (order fulfilment,
+    # refund processing, cart-abandonment automation, customer-data
+    # synchronisation, gift-card issuance) can be triggered by an
+    # attacker. Blast radius is structurally identical to the
+    # Stripe Webhook Signing Secret (``whsec_``, Round 1) for the
+    # e-commerce dashboard — webhook-payload forgery, not direct
+    # API access. The rotation flow lives via the app's webhook-
+    # settings page in the admin dashboard and is distinct from
+    # the access-token revocation flow.
+    (
+        re.compile(r"(?<![A-Za-z0-9])shpss_[a-fA-F0-9]{32}(?![A-Za-z0-9])"),
+        "Shopify Shared Secret gefunden",
+    ),
+    # Shopify Private App API Access Token (``shppa_<32 lowercase
+    # hex>``). Legacy private-app token shape (deprecated for new
+    # stores 2022-01-01 but still issued for existing installations
+    # that haven't migrated to the modern custom-app flow). Format
+    # identical to ``shpat_``/``shpss_``/``shpca_`` (6-char prefix
+    # + 32-char hex body); the ``shppa_`` prefix is unambiguous.
+    # A leak grants the private app's full store scope — same
+    # blast radius as ``shpat_`` for the apps that haven't migrated
+    # to the modern custom-app flow. The revocation flow lives at
+    # admin.shopify.com/admin/apps/private and is distinct from
+    # the custom-app revocation flow at
+    # admin.shopify.com/admin/settings/apps/development. The
+    # per-prefix attribution lets the operator land on the correct
+    # admin page in seconds during incident response.
+    (
+        re.compile(r"(?<![A-Za-z0-9])shppa_[a-fA-F0-9]{32}(?![A-Za-z0-9])"),
+        "Shopify Private App Access Token gefunden",
+    ),
+    # Shopify Custom App Access Token (``shpca_<32 lowercase hex>``).
+    # Modern custom-app token format (post-2022 replacement of the
+    # deprecated ``shppa_`` private-app shape). Format identical to
+    # the rest of the Shopify family (6-char prefix + 32-char hex
+    # body); the ``shpca_`` prefix is unambiguous. A leak grants
+    # the modern custom app's full store scope — same blast radius
+    # as ``shpat_``. The revocation flow lives at
+    # admin.shopify.com/admin/settings/apps/development and is
+    # distinct from every other Shopify revocation flow (per-prefix
+    # attribution is critical for IR triage so the operator lands
+    # on the correct admin page instantly).
+    (
+        re.compile(r"(?<![A-Za-z0-9])shpca_[a-fA-F0-9]{32}(?![A-Za-z0-9])"),
+        "Shopify Custom App Access Token gefunden",
+    ),
 ]
 
 
