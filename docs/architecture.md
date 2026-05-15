@@ -219,7 +219,7 @@ flowchart LR
 
 - **Process level** — the cron entry point. If `main()` raises, the cron run is the failure unit; this is intentional so a corrupt write doesn't ship a half-built feed.
 - **Provider level** — `_collect_items` wraps each provider's loader in a try/except so one provider's exception cannot drop the others' items. The ThreadPoolExecutor + Apex-Phase-1 deadline-eviction loop bounds wall-clock for unresponsive providers.
-- **Call level** — `request_safe` is the per-call security state machine (§2). `CircuitBreaker` is a Saboteur-pass primitive available for adoption (currently used by Google Places and as a pattern reference for future providers).
+- **Call level** — `request_safe` is the per-call security state machine (§2). `CircuitBreaker` is a Saboteur-pass primitive available for adoption; the shared `src.utils.circuit_breaker.CircuitBreaker` class wraps the OSM client (`src/places/osm_client.py`), the HAFAS client (`src/places/hafas_client.py`) and the Stammstrecke Hbf monitor (`scripts/update_stammstrecke_hbf.py`). Google Places (`src/places/client.py`) carries an ad-hoc inline 5xx-counter breaker rather than the shared primitive — same pattern, separate state.
 - **Transport level** — `JitterRetry` (in `session_with_retries`) handles transient 5xx / connection-reset with jittered exponential backoff. `PinnedHTTPSAdapter` keeps the TLS handshake's SNI on the original hostname while the TCP connect targets the resolved (vetted) IP.
 - **Payload level** — once bytes arrive, every provider validates the top-level type (Zero-Trust shape), handles `RecursionError` from JSON depth-bombs, and operates within the 10 MB body cap.
 

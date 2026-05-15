@@ -139,19 +139,26 @@ schreibt. Die wichtigsten Parameter:
 | Variable                 | Zweck / Standardwert                                                            |
 | ------------------------ | ------------------------------------------------------------------------------- |
 | `OUT_PATH`               | Zielpfad für den RSS-Feed (Standard `docs/feed.xml`).                           |
-| `FEED_TITLE` / `DESC`    | Titel und Beschreibung des Feeds.                                               |
+| `FEED_TITLE` / `FEED_DESC` | Titel und Beschreibung des Feeds (Standards: `"ÖPNV Störungen Wien & Pendler"` / `"Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"`). |
 | `FEED_LINK`              | Referenz-URL (nur http/https, Standard: GitHub-Repository).                     |
 | `MAX_ITEMS`              | Anzahl der Einträge im Feed (Standard 10).                                      |
 | `FEED_TTL`               | Cache-Hinweis für Clients in Minuten (Standard 15).                             |
 | `MAX_ITEM_AGE_DAYS`      | Maximales Alter von Meldungen aus den Caches (Standard 365).                    |
 | `ABSOLUTE_MAX_AGE_DAYS`  | Harte Altersgrenze für Meldungen (Standard 540).                                |
 | `ENDS_AT_GRACE_MINUTES`  | Kulanzfenster für vergangene Endzeiten (Standard 10 Minuten).                   |
+| `FRESH_PUBDATE_WINDOW_MIN` | Toleranzfenster (Minuten) für „frische" pubDates beim Aging-Check (Standard 5). |
+| `CACHE_MAX_AGE_HOURS`    | Maximalalter der Provider-Cache-Dateien, ab dem eine Warnung im Log erscheint (Standard 24). |
+| `FEED_TITLE_CHAR_LIMIT` / `DESCRIPTION_CHAR_LIMIT` | Maximale Zeichenzahl für Item-Titel/Beschreibungen (Standards 256 / 4000). Nur Verkleinerung wirksam — Sicherheits-Hardening-Ceiling. |
 | `PROVIDER_TIMEOUT`       | Globales Timeout für Netzwerkprovider (Standard 25 Sekunden). Per Provider via `PROVIDER_TIMEOUT_<NAME>` oder `<NAME>_TIMEOUT` anpassbar. |
 | `PROVIDER_MAX_WORKERS`   | Anzahl paralleler Worker (0 = automatisch). Feiner steuerbar über `PROVIDER_MAX_WORKERS_<GRUPPE>` bzw. `<GRUPPE>_MAX_WORKERS`. |
 | `WL_ENABLE` / `OEBB_ENABLE` / `BAUSTELLEN_ENABLE` / `STAMMSTRECKE_ENABLE` | Aktiviert bzw. deaktiviert die einzelnen Default-Provider (alle Standard: aktiv). `STAMMSTRECKE_ENABLE` steuert den VOR/VAO-basierten Verspätungs- und Ausfall-Monitor. Eine separate `VOR_ENABLE`-Variable existiert seit der 2026-05-11-Konsolidierung **nicht mehr**. |
-| `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`, `LOG_FORMAT` | Steuerung der Logging-Ausgabe (`log/errors.log`, `log/diagnostics.log`). |
-| `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrung für `data/first_seen.json`.                      |
+| `WL_RSS_URL` / `OEBB_RSS_URL` / `BAUSTELLEN_DATA_URL` / `OVERPASS_URL` | Override der Upstream-URLs. Validiert gegen eine Allow-List bekannter Hosts; abweichende Werte werden ignoriert und der Default verwendet (siehe Modul-Docstrings für Details). |
+| `OEBB_ONLY_VIENNA`       | Strikte ÖBB-Filterung (`1`/`true`/`0`/`false`, Standard `false`): nur Meldungen mit explizitem Wien-Bezug akzeptieren — keine Pendlerbahnhof-Fallbacks (siehe [`docs/reference/oebb_provider_logic.md`](reference/oebb_provider_logic.md)). |
+| `WIEN_OEPNV_OSM_ENRICH`  | Setzt `0` im CI, sobald `scripts/check_overpass_status.py` einen Mirror-Outage detektiert; überspringt dann den OSM-Anreicherungs-Schritt in `scripts/update_station_directory.py`. |
+| `LOG_LEVEL`, `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`, `LOG_FORMAT` | Steuerung der Logging-Ausgabe (`log/errors.log`, `log/diagnostics.log`). `LOG_LEVEL` Standard `INFO`; `LOG_FORMAT=json` aktiviert JSON-Logs. |
+| `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrungstage für `data/first_seen.json` (Standard 60 Tage).        |
 | `WIEN_OEPNV_CACHE_PRETTY` | Steuert die Formatierung der Cache-Dateien (`1` = gut lesbar, `0` = kompakt). |
+| `WIEN_OEPNV_DEBUG`       | Auf `1` gesetzt zeigt die CLI (`python -m src.cli`) bei Fehlern den vollständigen Traceback; Standard verhält sich fail-secure (keine Trace-Ausgabe). |
 
 Alle Pfade werden durch `resolve_env_path` (in `src/feed/config.py`) auf `docs/`, `data/` oder `log/` beschränkt, um Path-Traversal zu verhindern.
 
@@ -439,7 +446,7 @@ Die wichtigsten GitHub Actions:
 - `test.yml` & `test-vor-api.yml` – führen die vollständige Test-Suite bzw. VOR-spezifische Integrationstests aus; `test.yml` läuft bei jedem Push sowie Pull Request und stellt die kontinuierliche Testabdeckung sicher.
 - `mypy-strict.yml`, `bandit.yml`, `codeql.yml`, `complexity-gate.yml`, `seo-guard.yml` – ergänzende Qualitäts-Gates (strikte Typprüfung, Security-Lint, CodeQL-Scan, Komplexitäts-Baseline, SEO/Sitemap-Pflege).
 
-Der `update-cycle.yml`-Job committet alle Cache-, Feed- und Statistik-Outputs in einem einzigen Commit; ein direkter `needs:`-Trigger zwischen Workflows ist damit unnötig. Andere Cache-Update-Workflows (`update-*-cache.yml`) committen ihre Ergebnisse einzeln und werden vom nächsten Cycle-Lauf eingelesen.
+Der `update-cycle.yml`-Job committet alle Cache-, Feed- und Statistik-Outputs in einem einzigen Commit; ein direkter `needs:`-Trigger zwischen Workflows ist damit unnötig. Eigenständige `update-<provider>-cache.yml`-Workflows gibt es seit der DAG-zu-Single-Job-Migration (2026-05-09) nicht mehr — alle Cache-Fetcher (`update_wl_cache.py`, `update_oebb_cache.py`, `update_baustellen_cache.py`) sind Schritte innerhalb von `update-cycle.yml`. Wer einzelne Cache-Fetcher außerhalb des Cycles manuell auslösen will, ruft das jeweilige Skript per `python -m src.cli cache update <provider>` direkt auf oder triggert den vollständigen `manual-full-refresh.yml`-Job.
 
 ## Skripte im Überblick
 
@@ -501,7 +508,7 @@ benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
 - **Tests**: `python -m pytest` führt über 2600 Unit- und Integrationstests in rund 400 Modulen unter `tests/` aus.
 - **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab.
 - **Statische Analyse & Typprüfung**: `ruff check` (Stil/Konsistenz, Regelgruppen `E`, `F`, `S`, `B`, `UP` — siehe `pyproject.toml`) und `mypy --strict` (vollständige Typabdeckung über `src/` und `tests/`, derzeit 0 Errors) laufen identisch zur CI via `python -m src.cli checks`. Optional lassen sich über `--fix` Ruff-Autofixes aktivieren oder zusätzliche Argumente an Ruff durchreichen. Ein zusätzlicher `mypy-strict.yml`-Workflow setzt das Allowlist-Gate auf Pull Requests durch.
-- **Pre-Commit-Hooks**: `.pre-commit-config.yaml` aktiviert lokale Checks (Ruff, mypy, Secret-Scan, Whitespace-Hygiene) bei jedem `git commit`. Einmalig nach dem Klonen `pre-commit install` ausführen — Details in [`CONTRIBUTING.md`](../CONTRIBUTING.md).
+- **Pre-Commit-Hooks**: `.pre-commit-config.yaml` aktiviert lokale Checks bei jedem `git commit`: Ruff, `mypy --strict`, Bandit, der eigene Secret-Scanner (`scripts/scan_secrets.py`), das C901-Komplexitäts-Gate (`scripts/check_complexity.py`) sowie Whitespace-/Merge-Conflict-/YAML-/TOML-/JSON-/Large-File-Hygiene. Einmalig nach dem Klonen `pre-commit install` ausführen — Details in [`CONTRIBUTING.md`](../CONTRIBUTING.md).
 - **Logging**: Zur Laufzeit entsteht `log/errors.log` mit rotierenden Dateien; Größe und Anzahl sind konfigurierbar.
 
 ## Developer Experience & Observability
@@ -524,6 +531,22 @@ Die neue Kommandozeile (`python -m src.cli`) bündelt bisher verstreute Skripte.
 ### Logging & Beobachtbarkeit
 
 Die CLI respektiert die vorhandene Logging-Konfiguration (`log/errors.log`, `log/diagnostics.log`). Für Ad-hoc-Audits lassen sich Berichte und Skriptausgaben über `--output`-Parameter in nachvollziehbaren Pfaden versionieren. Jeder Feed-Build erzeugt zusätzlich einen aktuellen Gesundheitsbericht unter `docs/feed-health.md` (lokal nach jedem Build, nicht im Repository versioniert).
+
+### Optionale GitHub-Issue-Auto-Erstellung bei Feed-Build-Fehlern
+
+Operator:innen können den Feed-Builder so konfigurieren, dass er bei Fehlern automatisch ein GitHub Issue im konfigurierten Repository öffnet (`src/feed/reporting.py:_GithubIssueConfig`). Die Funktion ist standardmäßig **deaktiviert**; sie wird erst aktiv, wenn `FEED_GITHUB_CREATE_ISSUES=true` gesetzt ist und sowohl ein Repository als auch ein Token vorliegen:
+
+| Variable | Zweck |
+| --- | --- |
+| `FEED_GITHUB_CREATE_ISSUES` | Master-Switch (`true`/`false`, Standard `false`). |
+| `FEED_GITHUB_REPOSITORY` | Ziel-Repository im Format `owner/name`. Fallback `GITHUB_REPOSITORY` (von GitHub Actions automatisch gesetzt). Wird gegen die GitHub-Slug-Grammatik validiert. |
+| `FEED_GITHUB_TOKEN` | API-Token mit `issues:write`. Fallback `GITHUB_TOKEN`. Wird ausschließlich an vertrauenswürdige GitHub-API-Hosts gesendet. |
+| `FEED_GITHUB_API_URL` | Optionaler API-Base-Override (z. B. GitHub Enterprise `https://<host>/api/v3`). Fallback `GITHUB_API_URL`, Default `https://api.github.com`. |
+| `FEED_GITHUB_ENTERPRISE_HOSTS` | CSV-Allowlist erlaubter GHE-Hosts; muss bei nicht-public-GitHub-API gesetzt sein, sonst lehnt der Reporter den Call ab und der Token verlässt den Prozess nicht. |
+| `FEED_GITHUB_ISSUE_LABELS` / `_ASSIGNEES` | Komma-separierte Listen für Issue-Labels/Assignees. |
+| `FEED_GITHUB_ISSUE_TITLE_PREFIX` | Titel-Präfix (Standard `"Fehlerbericht"`). |
+
+Sicherheits-Gates: Der Reporter validiert das Repo-Slug gegen GitHubs Naming-Grammatik (`owner` 1-39 Zeichen alphanumerisch/Bindestrich, `name` 1-100 Zeichen `[A-Za-z0-9._-]`) und akzeptiert als API-Host **nur** `api.github.com` (öffentliches GitHub) oder Hosts, die explizit über `FEED_GITHUB_ENTERPRISE_HOSTS` gewhitelistet wurden. Eine fehlkonfigurierte `FEED_GITHUB_API_URL` führt deshalb nicht zur Token-Exfiltration.
 
 ## Authentifizierung & Sicherheit
 

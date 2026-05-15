@@ -6,4 +6,8 @@ dnspython>=2.0.0,<3
 # XXE Mitigation applied
 # pyhafas removed 2026-05-09: the released wheel on PyPI does not export
 # ``pyhafas.profile.OEBBProfile`` so the Stammstrecke monitor was migrated
-# to the VOR/VAO ReST ``/trip`` endpoint (see scripts/update_stammstrecke_status.py).
+# to the VOR/VAO ReST API. The active producer since 2026-05-15 is
+# ``scripts/update_stammstrecke_hbf.py`` (``/departureBoard`` at Wien Hbf);
+# it reuses the shared infrastructure (pending-trip ledger, quota charger,
+# circuit breaker tuning) from the legacy ``scripts/update_stammstrecke_status.py``
+# via import.
