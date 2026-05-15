@@ -1384,6 +1384,83 @@ def _expand_station_abbreviations(name: str) -> str:
     return name
 
 
+def _try_chain_routes(canonical_routes: list[tuple[str, str]]) -> list[str] | None:
+    """Collapse routes that share endpoints into a single linear chain.
+
+    Real ÖBB items frequently describe a corridor disruption as several
+    overlapping segments::
+
+        Wien Westbahnhof ↔ Wien Hütteldorf
+        Wien Hütteldorf ↔ Tullnerbach-Pressbaum
+        Wien Westbahnhof ↔ St. Pölten Hauptbahnhof
+
+    Rendered with ``" / "`` between routes that's awkward and repeats
+    the hub station twice. The three segments above are actually one
+    linear chain:
+
+        St. Pölten Hauptbahnhof ↔ Wien Westbahnhof ↔ Wien Hütteldorf
+            ↔ Tullnerbach-Pressbaum
+
+    We accept the routes as chainable when:
+
+    * Every station has degree ≤ 2 (no branching hub).
+    * Exactly two stations have degree 1 (the chain endpoints).
+    * The graph is connected (the traversal hits every node).
+
+    Orientation rule: prefer a Vienna endpoint at the start so the
+    Wien-focused feed leads with a Wien name when possible; otherwise
+    use the alphabetically smaller endpoint for determinism.
+
+    Returns the ordered station list, or ``None`` if the routes don't
+    form a chain (branches, cycles, multiple disconnected paths) — the
+    caller then falls back to the existing ``" / "`` renderer.
+    """
+    if not canonical_routes:
+        return None
+
+    adj: dict[str, set[str]] = {}
+    for a, b in canonical_routes:
+        if a == b:
+            return None  # self-loop, can't chain
+        adj.setdefault(a, set()).add(b)
+        adj.setdefault(b, set()).add(a)
+
+    # No node may branch — chains are degree-≤-2 by construction.
+    if any(len(neighbours) > 2 for neighbours in adj.values()):
+        return None
+
+    # A chain has exactly two endpoints (degree 1). Zero → cycle,
+    # more than two → disconnected forest of paths.
+    endpoints = sorted(n for n, neighbours in adj.items() if len(neighbours) == 1)
+    if len(endpoints) != 2:
+        return None
+
+    start = endpoints[0]
+    for ep in endpoints:
+        info = station_info(ep)
+        if info and info.in_vienna:
+            start = ep
+            break
+
+    chain: list[str] = [start]
+    prev: str | None = None
+    current = start
+    while True:
+        next_set = adj[current] - ({prev} if prev else set())
+        if not next_set:
+            break
+        next_node = next(iter(next_set))
+        chain.append(next_node)
+        prev = current
+        current = next_node
+
+    # Disconnected components masquerade as chains with two endpoints;
+    # require traversal to cover every node to confirm connectedness.
+    if len(chain) != len(adj):
+        return None
+    return chain
+
+
 def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") -> str:
     """Build a clean ``A ↔ B`` title from extracted route(s).
 
@@ -1391,6 +1468,11 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
     available (so ``Wien Westbf`` → ``Wien Westbahnhof``). The Vienna endpoint
     is placed first to keep the feed visually consistent. Multiple routes are
     joined with ``" / "`` to indicate that several segments are affected.
+
+    When multiple routes share endpoints to form a corridor (e.g. ``A ↔ B``,
+    ``B ↔ C``, ``A ↔ D`` collapses to the linear chain ``D ↔ A ↔ B ↔ C``),
+    we render them as one ``A ↔ B ↔ C ↔ D`` string instead — the
+    "/ "-separated form repeats the hub station and is harder to scan.
 
     Routes that resolve to the same canonical endpoint pair (e.g. one
     description writes ``St. Pölten`` while another writes ``St.Pölten``)
@@ -1401,7 +1483,8 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
     if not routes:
         return ""
 
-    formatted: list[str] = []
+    # Step 1: canonicalise every endpoint pair and dedup case-insensitively.
+    canonical_pairs: list[tuple[str, str]] = []
     seen_canon: set[tuple[str, str]] = set()
     for raw_a, raw_b in routes:
         info_a = station_info(raw_a)
@@ -1421,26 +1504,62 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
         if b_in_vienna and not a_in_vienna:
             name_a, name_b = name_b, name_a
 
-        # Dedup against already-rendered routes after canonical resolution.
         canon_key: tuple[str, str] = tuple(  # type: ignore[assignment]
             sorted((name_a.casefold(), name_b.casefold()))
         )
         if canon_key in seen_canon:
             continue
         seen_canon.add(canon_key)
+        canonical_pairs.append((name_a, name_b))
 
-        formatted.append(f"{name_a} ↔ {name_b}")
+    if not canonical_pairs:
+        return ""
 
-    title = " / ".join(formatted)
+    # Step 2: try to render multi-route titles as a single chain.
+    title_body: str
+    if len(canonical_pairs) >= 2:
+        chain = _try_chain_routes(canonical_pairs)
+        if chain is not None:
+            title_body = " ↔ ".join(chain)
+        else:
+            title_body = " / ".join(f"{a} ↔ {b}" for a, b in canonical_pairs)
+    else:
+        a, b = canonical_pairs[0]
+        title_body = f"{a} ↔ {b}"
+
     if line_prefix:
-        title = f"{line_prefix}: {title}"
-    return title
+        return f"{line_prefix}: {title_body}"
+    return title_body
 
 
 # ---------------- Public ----------------
 
 
-_LINE_TOKEN_RE = re.compile(r"\b((?:REX|S(?:-Bahn)?|U)\s*\d+)\b")
+# Match an affected line code in the description. We require the line
+# code to be followed by a clear "Züge"/"Zug" disruption signal so we
+# don't pick up alternative-route references like
+# ``U3: Wien Ottakring <=> Hütteldorfer Straße`` (which were silently
+# prepended as the title prefix and produced wrong titles like
+# ``U3: Wien Westbahnhof ↔ St. Pölten`` for an S-Bahn disruption).
+_LINE_TOKEN_RE = re.compile(
+    r"\b((?:REX|S(?:-Bahn)?|U)\s*\d+)\s*[-\s]Z[üu]g",
+    re.IGNORECASE,
+)
+
+
+def _normalize_line_token(token: str) -> str:
+    """Render an ÖBB line marker in the canonical ``LETTERS DIGITS`` form.
+
+    The description text sometimes glues the letter prefix to the digit
+    suffix (``REX7-Züge``, ``S50-Züge``) or uses the more verbose
+    ``S-Bahn 50``. Both forms should surface in the user-facing title
+    as ``REX 7`` / ``S 50`` for consistency with the official ÖBB
+    rendering. We collapse interior whitespace runs and then insert a
+    single space between the trailing letter and leading digit when
+    they are glued together.
+    """
+    cleaned = re.sub(r"\s+", " ", token).strip()
+    return re.sub(r"^([A-Za-z][A-Za-z-]*)(\d)", r"\1 \2", cleaned)
 
 
 def _derive_guid(raw_guid: str, title: str, link: str) -> str:
@@ -1461,20 +1580,41 @@ def _apply_route_title(title: str, desc: str) -> str:
     from the description when not already present in the title. Supersedes
     messy raw titles like "Bauarbeiten: Flughafen Wien Wien Mitte-Landstraße"
     with canonical station names and drops the category prefix.
+
+    Line-prefix sourcing: the description's ``-Züge`` mention is the
+    authoritative signal for *which* line is disrupted (the WL ÖBB feed
+    occasionally lists alternative U-Bahn routes by name, and a naive
+    "first line token in description" match prepended those alternative
+    line codes as a bogus title prefix). When the description identifies
+    an affected line, it overrides any existing title prefix; otherwise
+    the title's own prefix is kept.
     """
+    desc_line_match = _LINE_TOKEN_RE.search(desc)
+    desc_line = (
+        _normalize_line_token(desc_line_match.group(1))
+        if desc_line_match
+        else ""
+    )
     existing_line_prefix, _ = _extract_line_prefix(title)
+    # Prefer the description-sourced affected line when it disagrees with
+    # the cached title prefix (older cache items occasionally carry a
+    # stale or wrong prefix like ``U3:`` for an S 50 disruption); fall
+    # back to the existing prefix when the description has no affected-
+    # line signal at all.
+    if desc_line:
+        effective_prefix = desc_line
+    else:
+        effective_prefix = existing_line_prefix
+
     routes = _extract_routes(title, desc)
     relevant_routes = [
         (a, b) for (a, b) in routes if _route_is_wien_relevant(a, b)
     ]
     if relevant_routes:
-        title = _format_route_title(relevant_routes, existing_line_prefix)
+        return _format_route_title(relevant_routes, effective_prefix)
 
-    line_match = _LINE_TOKEN_RE.search(desc)
-    if line_match:
-        line_str = line_match.group(1)
-        if line_str not in title:
-            title = f"{line_str}: {title}"
+    if desc_line and not existing_line_prefix:
+        return f"{desc_line}: {title}"
     return title
 
 
