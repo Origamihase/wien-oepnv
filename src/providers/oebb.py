@@ -162,8 +162,16 @@ _MULTI_COMMA_RE = re.compile(r"\s*,{2,}\s*")
 # A message is treated as such when its title carries one of these
 # keywords AND none of the "real" transit-disruption keywords below.
 _FACILITY_KEYWORD_RE = re.compile(
-    r"\b(aufzug|aufzüge|aufzuege|aufzugsinfo|lift|fahrstuhl|fahrtreppe|"
-    r"fahrtreppen|fahrtreppeninfo|rolltreppe|rolltreppen)\b",
+    # Match the facility root anywhere inside a German compound word —
+    # the ÖBB feed uses ``Personenlift``, ``Aufzugsstörung``,
+    # ``Liftanlage`` etc. as compound nouns. Word boundaries on both
+    # sides would only catch the bare-root form (``Aufzug``, ``Lift``)
+    # and miss real cache items like
+    # ``Technische Störung des Personenlift in Stockerau: Bahnsteig 1/2``.
+    # The optional surrounding ``\w*`` lets the regex match any
+    # German prefix/suffix without enumerating every variant.
+    r"\b\w*(?:aufzug|aufz(?:ü|ue)ge|aufzugsinfo|lift|fahrstuhl|"
+    r"fahrtreppen?(?:info)?|rolltreppen?)\w*\b",
     re.IGNORECASE,
 )
 _WEATHER_KEYWORD_RE = re.compile(
