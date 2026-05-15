@@ -651,7 +651,7 @@ def _log_unrecognised_terminuses(unrecognised: Mapping[str, int]) -> None:
         LOGGER.info(
             "  • %d× Endpunkt='%s'",
             count,
-            sanitize_log_arg(rendered),
+            utils_logging.sanitize_log_arg(rendered),
         )
 
 
@@ -692,14 +692,14 @@ def _process_tick(
     except _QuotaExceeded as exc:
         LOGGER.warning(
             "Stammstrecke (Hbf): Tageslimit erreicht — Abfrage übersprungen (%s).",
-            sanitize_log_arg(str(exc)),
+            utils_logging.sanitize_log_arg(str(exc)),
         )
         return "quota_exceeded"
     except requests.HTTPError as exc:
         status = getattr(getattr(exc, "response", None), "status_code", None)
         LOGGER.warning(
             "Stammstrecke (Hbf): /departureBoard fehlgeschlagen: HTTP %s.",
-            sanitize_log_arg(str(status) if status is not None else "?"),
+            utils_logging.sanitize_log_arg(str(status) if status is not None else "?"),
         )
         return "error"
     except Exception as exc:

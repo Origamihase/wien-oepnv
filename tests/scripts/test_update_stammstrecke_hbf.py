@@ -27,10 +27,16 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from scripts import update_stammstrecke_hbf as script  # noqa: E402
+from scripts import update_stammstrecke_status as _legacy_script  # noqa: E402
 from src.providers import vor as vor_provider  # noqa: E402
 
 
-VIENNA_TZ = script.VIENNA_TZ
+# ``VIENNA_TZ`` is sourced from the legacy ``/trip`` script (which the
+# Hbf monitor re-uses for its shared ledger infrastructure). Tests
+# import it from its actual home rather than via a re-export from the
+# Hbf script — avoiding the ``from src.utils import logging as
+# utils_logging`` pattern that CodeQL flagged on PR #1496.
+VIENNA_TZ = _legacy_script.VIENNA_TZ
 
 
 # ---- Fixtures --------------------------------------------------------------
