@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stammstrecke-Monitor — Platform-Level Bahnsteig-Filter
+  (2026-05-15)**:
+  * Der `/departureBoard`-Reader filtert seit dieser Änderung jede
+    Abfahrt am Wien Hauptbahnhof nach ihrem effektiven Bahnsteig
+    (`rtTrack` mit Fallback auf scheduled `track`). Nur Abfahrten
+    auf **Bahnsteig 1** (Stammstrecke nordwärts → Floridsdorf) oder
+    **Bahnsteig 2** (Stammstrecke südwärts → Meidling) qualifizieren
+    sich für die Stammstrecke-Statistik. Alle anderen Hbf-Bahnsteige
+    (3-12, inkl. Halb-Bahnsteige „1A", „10A-B" usw.) tragen
+    Fernverkehr (RJ/IC/EC/NJ), Hbf-endende REX-Züge, die Marchegger
+    Ostbahn, die Pottendorfer Linie, die Westbahn und weitere
+    Korridore, die NICHT die Stammstrecke nutzen — sie werden seit
+    diesem Patch deterministisch ausgeschlossen.
+  * Begleitend wurden die Substring-Listen für die Richtungsbestimmung
+    bereinigt: `marchegg` und `bratislava` entfernt, weil beide
+    Termini mehrdeutig waren (Marchegg verkehrt rein östlich über die
+    Ostbahn ohne Stammstrecken-Bezug; Bratislava ist sowohl via
+    Stammstrecke + Břeclav als auch via Ostbahn erreichbar). Der
+    Bahnsteig-Filter macht die Substring-Heuristik nur noch für die
+    Richtungsbestimmung notwendig (Nord vs Süd), nicht mehr für die
+    Stammstrecke-Zugehörigkeit selbst.
+  * Diagnostik: Zwei neue Counter (`dropped_no_track`,
+    `dropped_non_stammstrecke_track`) im Tick-Log machen sowohl ein
+    VAO-Schema-Drift (Bahnsteig-Info fehlt) als auch das gesunde
+    Ausscheiden von Nicht-Stammstrecken-Zügen operativ sichtbar,
+    ohne dass die Bahnsteig-Strings zwischen den Filtern wandern.
+  * Semantik: Die Hbf-basierte Messung bleibt eine Stammstrecken-
+    Messung (am Korridor-Mittelpunkt), aber jetzt mit strenger
+    Linien-Eindeutigkeit auf Bahnsteig-Niveau — vergleichbar mit der
+    ursprünglichen `/trip`-basierten Floridsdorf-↔-Meidling-Selektion
+    der Pre-Hbf-Ära, ohne deren `numF=6`-Sampling-Lücke.
 * **Stammstrecke-Monitor — Migration auf `/departureBoard` @ Wien Hbf
   (2026-05-15)**:
   * Der Cron-Pfad ruft seit dem Merge von PR #1496 das neue

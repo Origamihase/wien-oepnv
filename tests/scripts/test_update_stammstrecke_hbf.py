@@ -84,14 +84,18 @@ def _isolated_quota_counter(
         ("Mistelbach", "Floridsdorf"),
         ("Laa an der Thaya", "Floridsdorf"),
         ("Gänserndorf", "Floridsdorf"),
-        ("Bratislava-Petržalka", "Floridsdorf"),
         # Northbound exact-terminus matches (no substring hit)
         ("Wien Mitte", "Floridsdorf"),
         ("Wien Mitte-Landstraße", "Floridsdorf"),
         ("Wien Mitte Bahnhof", "Floridsdorf"),
-        # Unrecognised
-        ("Wien Hauptbahnhof", None),  # terminus AT Hbf is irrelevant
-        ("Wien Westbahnhof", None),   # different corridor
+        # Unrecognised — terminus AT Hbf is irrelevant; Westbahnhof is
+        # a different corridor; Marchegg / Bratislava-Petržalka were
+        # intentionally removed from the northbound substring list
+        # (track filter handles these cases, see module docstring).
+        ("Wien Hauptbahnhof", None),
+        ("Wien Westbahnhof", None),
+        ("Marchegg", None),
+        ("Bratislava-Petržalka", None),
         ("", None),                    # empty
         ("   ", None),                 # whitespace-only
     ],
@@ -339,8 +343,18 @@ def _dep(
     sched_time: str = "08:00:00",
     rt_time: str | None = "08:00:00",
     cancelled: bool = False,
+    track: str | None = "1",
+    rt_track: str | None = None,
 ) -> dict[str, Any]:
-    """Build a synthetic ``/departureBoard`` Departure entry."""
+    """Build a synthetic ``/departureBoard`` Departure entry.
+
+    Defaults to ``track="1"`` so existing tests (which pre-date the
+    platform-level Stammstrecke gate) still produce observations under
+    the new filter. Pass ``track=None`` for the no-platform-info case
+    or ``track="5"`` to exercise the non-Stammstrecke-track drop path.
+    The ``rt_track`` argument overrides ``track`` when populated,
+    mirroring the VAO realtime-platform-change semantics.
+    """
 
     entry: dict[str, Any] = {
         "name": name,
@@ -352,6 +366,10 @@ def _dep(
         entry["rtTime"] = rt_time
     if cancelled:
         entry["cancelled"] = True
+    if track is not None:
+        entry["track"] = track
+    if rt_track is not None:
+        entry["rtTrack"] = rt_track
     return entry
 
 
@@ -365,7 +383,8 @@ def test_collect_groups_by_direction() -> None:
         _dep(name="S 7", direction="Wolfsthal"),
         _dep(name="REX 1", direction="Břeclav"),
     ]
-    by_direction, unrecognised = script._collect_hbf_observations(departures)
+    by_direction, diag = script._collect_hbf_observations(departures)
+    unrecognised = diag.unrecognised_terminus
 
     south = by_direction[script.DIRECTION_LABEL_SOUTHBOUND]
     north = by_direction[script.DIRECTION_LABEL_NORTHBOUND]
@@ -384,7 +403,8 @@ def test_collect_skips_non_sbahn_lines() -> None:
         _dep(name="EC 24", direction="Mödling"),
         _dep(name="Bus 13A", direction="Wien Meidling"),
     ]
-    by_direction, unrecognised = script._collect_hbf_observations(departures)
+    by_direction, diag = script._collect_hbf_observations(departures)
+    unrecognised = diag.unrecognised_terminus
 
     assert by_direction[script.DIRECTION_LABEL_SOUTHBOUND] == []
     assert by_direction[script.DIRECTION_LABEL_NORTHBOUND] == []
@@ -423,7 +443,8 @@ def test_collect_counts_unrecognised_termini() -> None:
         _dep(name="S 2", direction="Some Unknown Place"),
         _dep(name="S 3", direction="Another Unknown"),
     ]
-    by_direction, unrecognised = script._collect_hbf_observations(departures)
+    by_direction, diag = script._collect_hbf_observations(departures)
+    unrecognised = diag.unrecognised_terminus
 
     assert by_direction[script.DIRECTION_LABEL_SOUTHBOUND] == []
     assert by_direction[script.DIRECTION_LABEL_NORTHBOUND] == []
@@ -479,6 +500,181 @@ def test_collect_canonicalises_line_name() -> None:
     by_direction, _ = script._collect_hbf_observations(departures)
     south = by_direction[script.DIRECTION_LABEL_SOUTHBOUND]
     assert {obs.name for obs in south} == {"S1", "S2", "REX3"}
+
+
+# ---- _track_trunk + Stammstrecke-track gate ------------------------------
+
+
+@pytest.mark.parametrize(
+    "track_value,expected",
+    [
+        # Plain numerics
+        ("1", "1"),
+        ("2", "2"),
+        ("5", "5"),
+        ("12", "12"),
+        # Zero-padded variants
+        ("01", "1"),
+        ("02", "2"),
+        ("003", "3"),
+        # Sub-platform suffixes
+        ("1A", "1"),
+        ("1B", "1"),
+        ("2A", "2"),
+        ("10A-B", "10"),
+        # Whitespace padding
+        ("  1  ", "1"),
+        # Trailing modifiers
+        ("1 (Tief)", "1"),
+        # Non-numeric / empty / None
+        ("", None),
+        ("   ", None),
+        ("Gleis A", None),
+        ("-1", None),       # leading non-digit
+        (None, None),
+        (True, None),       # bool guarded (would otherwise yield "1")
+        (False, None),
+        (1, "1"),           # int is coerced to "1"
+        (2, "2"),
+    ],
+)
+def test_track_trunk(track_value: object, expected: str | None) -> None:
+    """Track-trunk normaliser handles every VAO-documented variant."""
+
+    assert script._track_trunk(track_value) == expected
+
+
+def test_extract_track_string_prefers_rttrack() -> None:
+    """``rtTrack`` overrides scheduled ``track`` when populated."""
+
+    dep = {"track": "2", "rtTrack": "5"}
+    assert script._extract_track_string(dep) == "5"
+
+
+def test_extract_track_string_falls_back_to_scheduled() -> None:
+    """Empty/missing ``rtTrack`` falls through to ``track``."""
+
+    assert script._extract_track_string({"track": "1"}) == "1"
+    assert script._extract_track_string({"track": "1", "rtTrack": ""}) == "1"
+    assert script._extract_track_string({"track": "1", "rtTrack": None}) == "1"
+
+
+def test_extract_track_string_accepts_journey_detail_variants() -> None:
+    """``depTrack`` / ``rtDepTrack`` are the journey-detail spellings.
+
+    Per the VAO Handbuch §11 example responses these alternates can
+    appear instead of the station-board ``track`` / ``rtTrack`` shape.
+    """
+
+    assert script._extract_track_string({"depTrack": "1"}) == "1"
+    assert (
+        script._extract_track_string({"depTrack": "5", "rtDepTrack": "1"})
+        == "1"
+    )
+
+
+def test_extract_track_string_returns_none_when_all_missing() -> None:
+    """No track / rtTrack / depTrack / rtDepTrack ⇒ ``None``."""
+
+    assert script._extract_track_string({}) is None
+    assert script._extract_track_string({"track": ""}) is None
+    assert script._extract_track_string({"track": None}) is None
+
+
+def test_collect_keeps_stammstrecke_platform_1() -> None:
+    """Departure on Bahnsteig 1 (Stammstrecke north) is kept."""
+
+    departures = [
+        _dep(name="S 1", direction="Wien Floridsdorf", track="1"),
+    ]
+    by_direction, diag = script._collect_hbf_observations(departures)
+    assert len(by_direction[script.DIRECTION_LABEL_NORTHBOUND]) == 1
+    assert diag.dropped_no_track == 0
+    assert diag.dropped_non_stammstrecke_track == 0
+
+
+def test_collect_keeps_stammstrecke_platform_2() -> None:
+    """Departure on Bahnsteig 2 (Stammstrecke south) is kept."""
+
+    departures = [
+        _dep(name="S 2", direction="Mödling", track="2"),
+    ]
+    by_direction, diag = script._collect_hbf_observations(departures)
+    assert len(by_direction[script.DIRECTION_LABEL_SOUTHBOUND]) == 1
+    assert diag.dropped_non_stammstrecke_track == 0
+
+
+def test_collect_drops_non_stammstrecke_platform() -> None:
+    """A REX departing track 5 (Ostbahn) is dropped from the Stammstrecke sample."""
+
+    departures = [
+        _dep(name="REX 8", direction="Wiener Neustadt", track="5"),
+    ]
+    by_direction, diag = script._collect_hbf_observations(departures)
+    assert all(not v for v in by_direction.values())
+    assert diag.dropped_non_stammstrecke_track == 1
+    assert diag.dropped_no_track == 0
+
+
+def test_collect_drops_when_track_missing() -> None:
+    """No ``track``/``rtTrack`` ⇒ conservative drop + counter."""
+
+    departures = [
+        _dep(name="S 1", direction="Wien Meidling", track=None),
+    ]
+    by_direction, diag = script._collect_hbf_observations(departures)
+    assert all(not v for v in by_direction.values())
+    assert diag.dropped_no_track == 1
+    assert diag.dropped_non_stammstrecke_track == 0
+
+
+def test_collect_rttrack_overrides_scheduled() -> None:
+    """Scheduled Bahnsteig 1, but rtTrack moved the train to track 5 → drop.
+
+    Mid-disruption platform change semantics: the realtime track is
+    authoritative for the Stammstrecke gate. A train originally
+    scheduled on Bahnsteig 1 that VAO announces has been moved to
+    track 5 mid-tick must NOT contribute to the Stammstrecke sample
+    (the platform change implies the train isn't using the
+    Stammstrecke right now).
+    """
+
+    departures = [
+        _dep(name="S 1", direction="Wien Floridsdorf", track="1", rt_track="5"),
+    ]
+    by_direction, diag = script._collect_hbf_observations(departures)
+    assert all(not v for v in by_direction.values())
+    assert diag.dropped_non_stammstrecke_track == 1
+
+
+def test_collect_rttrack_recovers_to_stammstrecke() -> None:
+    """Scheduled track 5, but rtTrack moved to Bahnsteig 2 → keep.
+
+    The mirror image of the override-to-drop case: a platform change
+    that BRINGS a train onto the Stammstrecke is honoured the same
+    way. Realtime data wins.
+    """
+
+    departures = [
+        _dep(name="S 2", direction="Mödling", track="5", rt_track="2"),
+    ]
+    by_direction, diag = script._collect_hbf_observations(departures)
+    assert len(by_direction[script.DIRECTION_LABEL_SOUTHBOUND]) == 1
+    assert diag.dropped_non_stammstrecke_track == 0
+
+
+def test_collect_accepts_sub_platform_variants() -> None:
+    """Sub-platform suffixes (``"1A"``, ``"2B"``, ``"01"``) are accepted."""
+
+    departures = [
+        _dep(name="S 1", direction="Wien Floridsdorf", track="1A"),
+        _dep(name="S 2", direction="Mödling", track="2B"),
+        _dep(name="S 3", direction="Wien Meidling", track="01"),
+    ]
+    by_direction, diag = script._collect_hbf_observations(departures)
+    total = sum(len(v) for v in by_direction.values())
+    assert total == 3
+    assert diag.dropped_non_stammstrecke_track == 0
 
 
 # ---- _query_departure_board ----------------------------------------------

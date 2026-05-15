@@ -56,6 +56,30 @@ landmark names first (fast path), then exact-terminus whitelist
 fallback. Unrecognised terminuses are dropped with a deduplicated INFO
 log so operators can extend the whitelist when a new line appears.
 
+Platform-level Stammstrecke gate
+--------------------------------
+
+The Wien Hauptbahnhof track layout dedicates two platforms to the
+S-Bahn Stammstrecke (``Bahnsteig 1`` for northbound trains toward
+Floridsdorf, ``Bahnsteig 2`` for southbound trains toward Meidling).
+Every other Hbf platform (3 through 12, including the lettered
+half-platforms on longer surface tracks) serves long-distance trains
+(Railjet, IC, EC, NJ), terminating-at-Hbf REX services, the Marchegger
+Ostbahn (REX2 / REX5 / REX8 to Bratislava / Marchegg / Sopron), the
+Pottendorfer Linie, the Westbahn, and other corridors that do NOT
+traverse the Stammstrecke tunnel.
+
+The collector therefore gates every departure on its effective track
+(``rtTrack`` overrides ``track``) before doing any further filtering:
+only trains scheduled on Bahnsteig 1 or 2 — or moved to one of those
+platforms by a realtime announcement — are eligible for the
+Stammstrecke statistic. This eliminates the substring-classification
+false-positive surface where a terminus string like ``"Bratislava-
+Petržalka"`` could match the northbound whitelist regardless of
+whether the train uses the Stammstrecke + Břeclav corridor or the
+eastward Marchegger Ostbahn corridor — only the former departs from
+track 1, so only the former survives the gate.
+
 Latest-wins re-observation
 --------------------------
 
@@ -117,6 +141,7 @@ from __future__ import annotations
 
 import json as _json_lib
 import logging
+import re
 import statistics
 import sys
 from collections import defaultdict
@@ -216,6 +241,49 @@ HAUPTBAHNHOF_VOR_ID: Final = "490134900"
 # not a script-tuning issue.
 DEPARTURE_BOARD_DURATION_MIN: Final = 45
 
+# ---- Stammstrecke platform (Bahnsteig) filter -----------------------------
+#
+# Wien Hauptbahnhof's track layout dedicates two platforms to the S-Bahn
+# Stammstrecke: ``Bahnsteig 1`` carries trains heading north toward
+# Floridsdorf, ``Bahnsteig 2`` carries trains heading south toward
+# Meidling. Every other platform (3 through 12, including the lettered
+# half-platforms "10A"/"10B" found on longer surface tracks) serves
+# long-distance services (Railjet/IC/EC/NJ), terminating-at-Hbf REX
+# trains, the Marchegger Ostbahn (REX2/REX5 to Bratislava/Marchegg),
+# the Pottendorfer Linie, the Westbahn, and other corridors that do
+# NOT traverse the Stammstrecke tunnel.
+#
+# Filtering departures by their effective track therefore provides a
+# deterministic, platform-level identification of trains that actually
+# use the Stammstrecke at Hbf — bypassing the terminus-substring
+# heuristic's false-positive surface (e.g., a train to "Marchegg" or
+# "Bratislava-Petržalka" departing Hbf *eastward* via the Ostbahn
+# would no longer slip into the statistic, because it would land on
+# track 11 / 12 instead of 1 / 2). The substring whitelist still
+# resolves the **direction** (north vs south) for the trains that
+# pass the track gate; the two-layer filter is by design.
+#
+# Realtime override: the VAO ``rtTrack`` field overrides ``track`` when
+# present. A mid-disruption platform change from Bahnsteig 2 to
+# track 5 is therefore correctly excluded from the Stammstrecke
+# sample even when the scheduled timetable still says Bahnsteig 2.
+STAMMSTRECKE_HBF_TRACK_TRUNKS: Final[frozenset[str]] = frozenset({"1", "2"})
+
+# Track-string normaliser. VAO emits track values in several shapes
+# (Handbuch_VAO_ReST_API §13 + §11 example responses):
+#
+# * Plain integer: ``"1"``, ``"5"``
+# * Zero-padded: ``"01"``, ``"02"`` (some legacy serialisers)
+# * Sub-platform suffix: ``"1A"``, ``"1B"``, ``"2A"``, ``"10A-B"``
+# * Whitespace padding: ``"  1  "``
+#
+# The trunk is the leading numeric component, with optional zero
+# padding stripped: ``"01A"`` → ``"1"``, ``"10A-B"`` → ``"10"``.
+# The match is anchored so ``"-1"`` does NOT yield trunk ``"1"`` —
+# the leading ``-`` falls outside the allowed prefix and the function
+# returns ``None`` (defensive: track ``-1`` is not a real platform).
+_TRACK_TRUNK_RE: Final = re.compile(r"^\s*0*([0-9]+)")
+
 # Geographic-direction → CSV-label mapping. Pinned constants so a future
 # rename here cannot silently drift the README dashboard column values
 # (which are pinned to "Meidling" / "Floridsdorf" since the 2026-05-09
@@ -279,13 +347,27 @@ HBF_SOUTHBOUND_SUBSTRINGS: Final[tuple[str, ...]] = (
 )
 
 # Substring fragments for the *northbound* geographic direction at Hbf.
+#
+# Removed 2026-05-15 in the track-filter follow-up (PR #149x): both
+# ``"marchegg"`` and ``"bratislava"`` previously sat in this list as
+# eastward-leaning termini, but neither corresponds to a route that
+# transits the Stammstrecke tunnel — Marchegg services depart Hbf via
+# the Marchegger Ostbahn (eastward, never crosses Praterstern), and
+# Bratislava is reachable from Hbf via either the Stammstrecke +
+# Břeclav corridor (correctly captured by the ``břeclav`` /
+# ``breclav`` substrings) OR the eastward Ostbahn (which doesn't
+# touch the Stammstrecke at all). With the platform-level track gate
+# in :data:`STAMMSTRECKE_HBF_TRACK_TRUNKS` now keeping the analysis
+# strictly on Bahnsteig 1 / 2, the substring whitelist only needs to
+# carry true Stammstrecke-northbound termini — leaving the ambiguous
+# eastward names out is the strict-correctness win.
 HBF_NORTHBOUND_SUBSTRINGS: Final[tuple[str, ...]] = (
     "floridsdorf",    # eventual Stammstrecke northern terminus
     "praterstern",    # intermediate Stammstrecke stop, terminus for some short-runs
     "stockerau",      # S2 / R-train terminus northwest
     "hollabrunn",     # REX northern terminus
     "retz",           # REX northern terminus
-    "břeclav",        # long-distance north (CZ)
+    "břeclav",        # long-distance north (CZ) via Stammstrecke
     "breclav",        # ASCII variant
     "wolkersdorf",    # S2 / R-train terminus north
     "mistelbach",     # S2 northern terminus
@@ -293,8 +375,6 @@ HBF_NORTHBOUND_SUBSTRINGS: Final[tuple[str, ...]] = (
     "laa/thaya",      # variant
     "gänserndorf",    # S1 / REX northern terminus
     "gaenserndorf",   # ASCII variant
-    "marchegg",       # REX eastern terminus
-    "bratislava",     # long-distance northeast (SK)
     # "Wien Mitte" intentionally NOT a substring — too short and would
     # match any train mentioning "Mitte" in a free-form direction string.
     # The exact-terminus whitelist below covers the rare Mitte-
@@ -535,6 +615,62 @@ def _is_sbahn_line(name: str) -> bool:
     return bool(_S_BAHN_LINE_RE.match(name.strip()))
 
 
+def _track_trunk(track_value: object) -> str | None:
+    """Return the trunk number of a VAO ``track`` field, or ``None``.
+
+    Normalises:
+
+    * Leading zeros: ``"01"`` → ``"1"``.
+    * Sub-platform suffix: ``"1A"`` / ``"1B"`` → ``"1"``;
+      ``"10A-B"`` → ``"10"``.
+    * Whitespace padding: ``"  1  "`` → ``"1"``.
+
+    Returns ``None`` for ``None`` / empty / non-leading-digit inputs
+    (e.g., a VAO response that omits ``track`` entirely or reports a
+    non-numeric value like ``"Gleis A"``).
+    """
+
+    if track_value is None:
+        return None
+    if isinstance(track_value, bool):
+        # ``int(True) == 1`` so a stray boolean in the response would
+        # otherwise produce trunk ``"1"`` and falsely whitelist a
+        # bogus departure as Stammstrecke. Strict refusal is the
+        # safer default — VAO's documented ``track`` shape is a
+        # string, never a boolean.
+        return None
+    text = track_value if isinstance(track_value, str) else str(track_value)
+    match = _TRACK_TRUNK_RE.match(text)
+    if match is None:
+        return None
+    return match.group(1)
+
+
+def _extract_track_string(dep: Mapping[str, Any]) -> str | None:
+    """Return the effective track string for *dep* (rtTrack preferred).
+
+    Field-name priority mirrors the VAO Handbuch §11 + §13 inventory:
+
+    * ``rtTrack`` — realtime track at the station-board / trip departure.
+    * ``rtDepTrack`` — realtime departure-track in journey-detail shape.
+    * ``track`` — scheduled station-board / trip track.
+    * ``depTrack`` — scheduled departure-track in journey-detail shape.
+
+    Realtime fields override scheduled fields so an unscheduled
+    platform change during a disruption is respected. Returns
+    ``None`` when none of the candidates carries a non-empty string.
+    """
+
+    for key in ("rtTrack", "rtDepTrack", "track", "depTrack"):
+        value = dep.get(key)
+        if value is None:
+            continue
+        text = value if isinstance(value, str) else str(value)
+        if text.strip():
+            return text
+    return None
+
+
 def _departure_line_name(dep: Mapping[str, Any]) -> str:
     """Extract the line designation from a ``/departureBoard`` entry.
 
@@ -627,9 +763,43 @@ class _HbfDepartureObservation:
     delay_minutes: float
 
 
+@dataclass(frozen=True)
+class _CollectionDiagnostics:
+    """Per-tick filter diagnostics for operator logging.
+
+    The collection step drops every Departure that fails one of four
+    independent gates (cancelled / non-S-Bahn-line / no rtTime /
+    unrecognised terminus / non-Stammstrecke track). Each drop reason
+    surfaces as a separate counter so the operator log can pin the
+    dominant failure mode after a tick.
+
+    Fields:
+
+    * ``unrecognised_terminus`` — distinct terminus strings that
+      failed direction classification (``{terminus: occurrence_count}``).
+      The :func:`_log_unrecognised_terminuses` helper renders the
+      top-N entries.
+    * ``dropped_no_track`` — count of departures dropped because the
+      VAO response did not populate ``track``/``rtTrack`` at all.
+      A persistently-high value points to an upstream serialiser drift
+      (VAO releasing departures without platform info for the queried
+      station).
+    * ``dropped_non_stammstrecke_track`` — count of departures whose
+      effective track normalised to a trunk OTHER than ``1`` or ``2``
+      (i.e., not a Stammstrecke platform). High values are healthy
+      — they reflect long-distance Railjet / IC / EC / NJ services
+      and eastward REX / S60 / S80 / Westbahn departures that pass
+      through Hbf but never touch the Stammstrecke tunnel.
+    """
+
+    unrecognised_terminus: dict[str, int]
+    dropped_no_track: int
+    dropped_non_stammstrecke_track: int
+
+
 def _collect_hbf_observations(
     departures: Iterable[Any],
-) -> tuple[dict[str, list[_SbahnLegObservation]], dict[str, int]]:
+) -> tuple[dict[str, list[_SbahnLegObservation]], _CollectionDiagnostics]:
     """Filter + direction-classify a ``/departureBoard`` Departure list.
 
     Returns a 2-tuple:
@@ -637,17 +807,31 @@ def _collect_hbf_observations(
     * ``{direction_label: [observations]}`` ready to feed to
       :func:`_observe_legs` per-direction. Keys are always present
       (empty list when no departures matched that direction).
-    * ``{unrecognised_terminus: occurrence_count}`` — distinct terminus
-      strings that failed direction classification. The caller logs the
-      top-N entries at INFO so operators can extend the whitelists.
+    * :class:`_CollectionDiagnostics` — per-failure-mode drop counters
+      and the unrecognised-terminus histogram. The caller logs them at
+      INFO so operators can spot platform-info drift / new termini /
+      Stammstrecke-foreign route patterns without scraping DEBUG output.
 
-    Filters (any failure drops the entry):
+    Filter pipeline (any failure drops the entry):
 
-    * Cancelled departures (no useful delay signal).
-    * Lines that are not S / R / REX (non-Stammstrecke products).
-    * Missing realtime signal (``rtTime`` absent) — treated as
-      ``unknown``, same conservative rule as the legacy script.
-    * Unrecognised terminus — direction cannot be classified.
+    1. Departure entry is a :class:`Mapping`.
+    2. Line designation matches the S / R / REX pattern (``S1``,
+       ``REX 3``, ``R 81`` — :func:`_is_sbahn_line`). Long-distance
+       products (RJ, IC, EC, NJ, ICE, CAT, WB) are rejected here.
+    3. **Effective track is Bahnsteig 1 or 2.** The deterministic
+       Stammstrecke gate: only the Wien Hbf platforms dedicated to the
+       S-Bahn Stammstrecke (north / south) pass. Realtime track
+       (``rtTrack`` / ``rtDepTrack``) overrides scheduled track when
+       present so a mid-disruption platform change is respected.
+       Long-distance services on tracks 3-12 and Marchegg / Bratislava
+       / Sopron-bound REX trains on the Ostbahn platforms are all
+       rejected here, regardless of how their terminus string maps
+       under the substring whitelist.
+    4. Scheduled timestamp parses to a :class:`datetime`.
+    5. Realtime signal present (``rtTime`` populated) and not
+       cancelled — the conservative legacy rule, preserved verbatim.
+    6. Terminus resolves to ``Meidling`` or ``Floridsdorf`` via
+       :func:`classify_hbf_direction`.
 
     Compatible with :func:`_observe_legs` via the
     :class:`_SbahnLegObservation` shape (``name``, ``scheduled``,
@@ -659,6 +843,8 @@ def _collect_hbf_observations(
         label: [] for label in DIRECTION_LABELS
     }
     unrecognised: dict[str, int] = defaultdict(int)
+    dropped_no_track = 0
+    dropped_non_stammstrecke_track = 0
 
     for dep in departures:
         if not isinstance(dep, Mapping):
@@ -671,6 +857,20 @@ def _collect_hbf_observations(
             continue
         name = _canonical_line_name(raw_line)
         if not name:
+            continue
+
+        # Platform-level Stammstrecke gate. Applied EARLY (before the
+        # rtTime / direction filters) so the diagnostic counters
+        # attribute every drop to its primary cause: a long-distance
+        # train on track 7 is counted as ``non-Stammstrecke track``
+        # rather than masked behind a downstream filter.
+        track_text = _extract_track_string(dep)
+        if track_text is None:
+            dropped_no_track += 1
+            continue
+        track_trunk = _track_trunk(track_text)
+        if track_trunk is None or track_trunk not in STAMMSTRECKE_HBF_TRACK_TRUNKS:
+            dropped_non_stammstrecke_track += 1
             continue
 
         sched_date = dep.get("date")
@@ -696,7 +896,14 @@ def _collect_hbf_observations(
         )
         by_direction[direction].append(observation)
 
-    return by_direction, dict(unrecognised)
+    return (
+        by_direction,
+        _CollectionDiagnostics(
+            unrecognised_terminus=dict(unrecognised),
+            dropped_no_track=dropped_no_track,
+            dropped_non_stammstrecke_track=dropped_non_stammstrecke_track,
+        ),
+    )
 
 
 def _log_unrecognised_terminuses(unrecognised: Mapping[str, int]) -> None:
@@ -732,6 +939,35 @@ def _log_unrecognised_terminuses(unrecognised: Mapping[str, int]) -> None:
             count,
             utils_logging.sanitize_log_arg(rendered),
         )
+
+
+def _log_track_drops(
+    dropped_no_track: int, dropped_non_stammstrecke_track: int
+) -> None:
+    """Surface track-filter drop counts at INFO when non-zero.
+
+    Two independent signals:
+
+    * ``dropped_no_track`` — VAO response omitted ``track``/``rtTrack``
+      entirely for these departures. A persistently-high value is
+      a serialiser-drift alarm: Wien Hbf is a major station and
+      should always carry platform info. Operators investigate.
+    * ``dropped_non_stammstrecke_track`` — effective track resolved to
+      a trunk other than ``1``/``2``. A *healthy* count: it reflects
+      the long-distance + Ostbahn + Westbahn + S60/S80 departures
+      that legitimately don't use the Stammstrecke and are being
+      correctly excluded by the platform gate.
+    """
+
+    if not dropped_no_track and not dropped_non_stammstrecke_track:
+        return
+    LOGGER.info(
+        "Stammstrecke (Hbf): Track-Filter — %d Abfahrt(en) ohne Bahnsteig-"
+        "Info verworfen, %d Abfahrt(en) auf Nicht-Stammstrecke-Bahnsteig "
+        "(Gleis != 1/2) verworfen.",
+        dropped_no_track,
+        dropped_non_stammstrecke_track,
+    )
 
 
 # ---- Main flow ------------------------------------------------------------
@@ -792,8 +1028,12 @@ def _process_tick(
         )
         return "error"
 
-    by_direction, unrecognised = _collect_hbf_observations(departures)
-    _log_unrecognised_terminuses(unrecognised)
+    by_direction, diagnostics = _collect_hbf_observations(departures)
+    _log_unrecognised_terminuses(diagnostics.unrecognised_terminus)
+    _log_track_drops(
+        diagnostics.dropped_no_track,
+        diagnostics.dropped_non_stammstrecke_track,
+    )
 
     written_per_dir: dict[str, int] = {}
     for direction in DIRECTION_LABELS:
@@ -966,6 +1206,7 @@ __all__ = [
     "HBF_NORTHBOUND_TERMINI",
     "HBF_SOUTHBOUND_SUBSTRINGS",
     "HBF_SOUTHBOUND_TERMINI",
+    "STAMMSTRECKE_HBF_TRACK_TRUNKS",
     "classify_hbf_direction",
     "main",
 ]
