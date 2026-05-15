@@ -4,8 +4,12 @@ Dieses Verzeichnis enthält die automatisierte Test-Suite, basierend auf `pytest
 
 ## Struktur
 
-- **`conftest.py`**: Enthält globale Fixtures, z.B. Mocks für `requests.Session` oder temporäre Verzeichnisse.
-- **`test_*.py`**: Die eigentlichen Testdateien. Sie sind meist nach dem Modul benannt, das sie testen (z.B. `test_build_feed.py` testet `src/build_feed.py`).
+- **`conftest.py`**: Enthält globale Fixtures (z. B. Mocks für `requests.Session`, das `isolate_stats_writes`-Autouse-Fixture und das `reset_circuit_breakers`-Autouse-Fixture für deterministische Test-Reihenfolge).
+- **`test_*.py`**: Die eigentlichen Testdateien. Sie sind meist nach dem Modul benannt, das sie testen (`test_build_feed_atom.py`, `test_build_feed_cache.py`, … decken jeweils einen Aspekt von `src/build_feed.py` ab; das Pendant zu `src/build_feed.py` ist also kein einzelnes Modul, sondern eine Familie themenspezifischer Dateien).
+- **Unterverzeichnisse** für strukturierte Test-Suites:
+  - `tests/places/` — Tier-1/2/3-Stationsverzeichnis-Pipeline (OSM, HAFAS, Google Places).
+  - `tests/providers/` — WL- und ÖBB-Provider-Adapter.
+  - `tests/scripts/` — Wartungsskripte (`update_stammstrecke_*`, `update_station_directory`, `generate_markdown_stats`, …).
 
 ## Tests ausführen
 
@@ -17,7 +21,11 @@ python -m pytest
 
 ### Spezifische Tests
 ```bash
-python -m pytest tests/test_build_feed.py
+# Einzelne Datei
+python -m pytest tests/test_build_feed_atom.py
+
+# Alle Build-Feed-Tests via Glob
+python -m pytest tests/test_build_feed_*.py
 ```
 Oder filtere nach Testnamen:
 ```bash

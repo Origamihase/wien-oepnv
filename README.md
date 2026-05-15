@@ -12,7 +12,7 @@
 
 **Ein Feed, alle Meldungen: Die zentrale Info-Quelle für den Wiener ÖPNV.**
 
-Dieses Projekt bündelt Störungs- und Baustellenmeldungen der Wiener Linien (WL), ÖBB und des VOR in einem deduplizierten RSS-Feed für Wien und das Umland. Ergänzt wird dies durch offizielle OGD-Baustellendaten der Stadt Wien.
+Dieses Projekt bündelt Störungs- und Baustellenmeldungen der Wiener Linien (WL) und ÖBB in einem deduplizierten RSS-Feed für Wien und das Umland, ergänzt um offizielle OGD-Baustellendaten der Stadt Wien sowie einen dedizierten S-Bahn-Stammstrecken-Monitor (Verspätungen & Ausfälle) auf Basis der VOR/VAO ReST API.
 
 ### 🚀 Kernfunktionen auf einen Blick
 

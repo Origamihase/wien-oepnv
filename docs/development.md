@@ -148,8 +148,7 @@ schreibt. Die wichtigsten Parameter:
 | `ENDS_AT_GRACE_MINUTES`  | Kulanzfenster für vergangene Endzeiten (Standard 10 Minuten).                   |
 | `PROVIDER_TIMEOUT`       | Globales Timeout für Netzwerkprovider (Standard 25 Sekunden). Per Provider via `PROVIDER_TIMEOUT_<NAME>` oder `<NAME>_TIMEOUT` anpassbar. |
 | `PROVIDER_MAX_WORKERS`   | Anzahl paralleler Worker (0 = automatisch). Feiner steuerbar über `PROVIDER_MAX_WORKERS_<GRUPPE>` bzw. `<GRUPPE>_MAX_WORKERS`. |
-| `WL_ENABLE` / `OEBB_ENABLE` / `VOR_ENABLE` | Aktiviert bzw. deaktiviert die einzelnen Provider (Standard: aktiv). |
-| `BAUSTELLEN_ENABLE`      | Steuert den neuen Baustellen-Provider (Default: aktiv, nutzt Stadt-Wien-OGD bzw. Fallback-Daten). |
+| `WL_ENABLE` / `OEBB_ENABLE` / `BAUSTELLEN_ENABLE` / `STAMMSTRECKE_ENABLE` | Aktiviert bzw. deaktiviert die einzelnen Default-Provider (alle Standard: aktiv). `STAMMSTRECKE_ENABLE` steuert den VOR/VAO-basierten Verspätungs- und Ausfall-Monitor. Eine separate `VOR_ENABLE`-Variable existiert seit der 2026-05-11-Konsolidierung **nicht mehr**. |
 | `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`, `LOG_FORMAT` | Steuerung der Logging-Ausgabe (`log/errors.log`, `log/diagnostics.log`). |
 | `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrung für `data/first_seen.json`.                      |
 | `WIEN_OEPNV_CACHE_PRETTY` | Steuert die Formatierung der Cache-Dateien (`1` = gut lesbar, `0` = kompakt). |
@@ -186,8 +185,11 @@ Das Skript lädt automatisch `.env`, `data/secrets.env` und
 ```bash
 export WL_ENABLE=true
 export OEBB_ENABLE=true
-export VOR_ENABLE=true
-# Provider-spezifische Secrets/Tokens setzen (z. B. VOR_ACCESS_ID, VOR_BASE_URL ...)
+export BAUSTELLEN_ENABLE=true
+export STAMMSTRECKE_ENABLE=true
+# Stammstrecke-Monitor benötigt VOR-Secrets: VOR_ACCESS_ID, VOR_BASE_URL.
+# Eine eigenständige VOR_ENABLE-Variable gibt es seit der 2026-05-11-
+# Konsolidierung nicht mehr (VOR ist Stammstrecke-only).
 python -m src.cli feed build
 ```
 
@@ -258,11 +260,15 @@ Sie sind damit ohne zusätzlichen Build-Schritt sofort für externe Automationen
 Für Python-Anwendungen existieren zwei bequeme Zugriffspfade:
 
 - **Direkter Cache-Zugriff** – `src.utils.cache.read_cache()` liest die zwischengespeicherten Provider-Events als Python-Liste
-  von Dictionaries ein (Wrapper wie `src.build_feed.read_cache_wl()` sind bereits vorkonfiguriert für „wl“, „oebb“, „vor“ und
-  „baustellen“).
-- **Live-Abruf der Provider** – Die Module `src.providers.wl_fetch`, `src.providers.oebb` und `src.providers.vor` stellen
-  jeweils eine Funktion `fetch_events()` bereit, die die Rohdaten der Wiener Linien, ÖBB bzw. der VOR/VAO-API direkt
-  normalisiert. Authentifizierung und Ratenlimits der VOR-API werden dabei automatisch behandelt.
+  von Dictionaries ein (Wrapper wie `src.build_feed.read_cache_wl()` sind bereits vorkonfiguriert für „wl", „oebb" und
+  „baustellen"; zusätzlich erzeugt `src.build_feed.read_cache_stammstrecke()` die Stammstrecke-Events on-the-fly aus dem
+  CSV-Ledger statt aus einer Cache-Datei). VOR hat seit 2026-05-11 keine eigene JSON-Cache-Datei mehr (siehe `cache/`-Hinweis oben).
+- **Live-Abruf der Provider** – Die Module `src.providers.wl_fetch` und `src.providers.oebb` stellen jeweils eine Funktion
+  `fetch_events()` bereit, die die Rohdaten der Wiener Linien bzw. ÖBB direkt normalisiert. `src.providers.vor` ist seit der
+  2026-05-11-Konsolidierung **kein Disruption-Provider** mehr — das Modul exportiert nur noch
+  Authentifizierungs- und Quota-Helfer (`VorAuth`, `apply_authentication`, `load_request_count`, `save_request_count`,
+  `refresh_access_credentials`, `refresh_base_configuration`) für den Stammstrecken-Monitor. Eine eigenständige
+  `fetch_events`-Funktion gibt es nicht mehr.
 
 Minimalbeispiel für den Cache-Zugriff:
 

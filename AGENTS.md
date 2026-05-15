@@ -4,7 +4,9 @@ Dieses Dokument dient als Leitfaden für KI-Agenten, die an diesem Repository ar
 
 ## Projektüberblick
 
-Das Projekt `wien-oepnv` aggregiert Verkehrsmeldungen (Wiener Linien, ÖBB, VOR, Baustellen) und stellt sie als RSS-Feed sowie JSON-Daten bereit. Es legt höchsten Wert auf **Reproduzierbarkeit**, **Sicherheit** und **Datenintegrität**.
+Das Projekt `wien-oepnv` aggregiert Verkehrsmeldungen (Wiener Linien, ÖBB, Stadt-Wien-Baustellen plus den VOR/VAO-basierten S-Bahn-Stammstrecken-Monitor) und stellt sie als RSS-Feed sowie JSON-Daten bereit. Es legt höchsten Wert auf **Reproduzierbarkeit**, **Sicherheit** und **Datenintegrität**.
+
+> **Hinweis zum VOR-Scope:** Seit der Konsolidierung vom 2026-05-11 ist VOR **kein eigenständiger Disruption-Provider** mehr (das frühere `src/providers/vor.py:fetch_events` wurde entfernt). Die VOR/VAO ReST API wird ausschließlich vom Stammstrecken-Verspätungs- und Ausfall-Monitor (`scripts/update_stammstrecke_hbf.py`) konsumiert. Wer einen neuen VOR-Konsumenten plant, muss das Tagesbudget (100 Requests; aktuell sind 48 davon vom Hbf-Monitor belegt) sowie den `_charge_one_request`-Quota-Gate beachten — Details in `docs/architecture.md` §7.
 
 ### Wichtige Verzeichnisse
 - `src/`: Der gesamte Quellcode des Pakets.
