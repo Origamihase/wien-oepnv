@@ -1,3 +1,57 @@
+## 2026-05-15 - Committed-Reader Non-Finite Literal Drift (Symmetric Closure of Writer-Pin Rounds 1485 / 1487 / 1488 / 1491): Every `json.loads(raw)` Callsite in the Committed-State-File Reader Landscape Accepted `NaN` / `Infinity` / `-Infinity` Tokens AND `1e1000` Scientific-Notation Overflow As Lenient-Mode `float('nan')` / `float('inf')` — Eleven Reader Sites Across `src/` Closed Via Canonical `parse_constant` + `parse_float` Hooks in `src/utils/files.py`
+
+**Vulnerability:** Rounds 1485 / 1487 / 1488 (PR #1485 / #1486 / #1487 / #1488) pinned `allow_nan=False` on every committed-to-main writer in the project (coordinate writers, non-coordinate `dict[str, Any]` writers, the `json.dumps` log formatter). The **reader-side parse path was NEVER hardened**: Python's default ``json.loads`` lenient mode parses three non-standard literal tokens — ``NaN`` / ``Infinity`` / ``-Infinity`` — as ``float('nan')`` / ``float('inf')`` / ``float('-inf')`` AND silently IEEE-754-overflows scientific-notation tokens like ``"1e1000"`` to ``float('inf')`` via the default ``parse_float=float`` hook (the latter bypassing ``parse_constant`` entirely because ``1e1000`` is a syntactically-valid NUMBER token, not one of the three constant tokens). Every `json.loads(raw)` callsite reading a committed state file is therefore the **symmetric companion** to the writer-side pin: a planted on-disk literal propagates as ``float('nan')`` / ``float('inf')`` through the in-memory data structure WITHOUT the writer's defence-in-depth ever firing — because the bytes never travel through the writer in the first place; the reader reads them directly.
+
+**Threat model:** Three distinct attacker positions plant `NaN` / `Infinity` / `-Infinity` / `1e1000` literals into a committed state file BEFORE the next read:
+
+  1. **Compromised CI runner.** A poisoned GitHub Actions runner (third-party action takeover, runner-image supply-chain compromise) writes the literal into `data/first_seen.json` / `data/stations.json` / `cache/<provider>/events.json` between cron ticks. The subsequent `_load_state` / `load_stations` / `read_cache` parses the planted bytes lenient-mode and `float('nan')` flows into the build pipeline.
+  2. **Parallel orchestrator atomic state swap.** A concurrent `update_all_stations.py` (cron-doubled, manual re-trigger, matrix-job) performs an `os.replace(tmp, target)` between the size-cap stat and the `json.loads` of the first orchestrator. The two writers are not coordinated (the file lock is per-script). Race outcome: open() returns the swapped inode; if the swapped file carries `NaN` (from a buggy or compromised second orchestrator), the first orchestrator's reader is poisoned.
+  3. **Hostile PR landing a tampered fixture.** An external contributor opens a PR modifying `tests/fixtures/<thing>.json` to include `NaN` / `Infinity` literals. CI runs the consuming test, the file is read, `float('nan')` propagates through the test harness silently (`nan != nan` is True), the test passes. The `allow_nan=False` writer-pin only fires on the round-trip back — which the test may not exercise. The fixture lands on `main` and now every CI run reads it.
+
+**Impact:**
+
+  * **Silent comparison bugs.** `nan != nan` returns `True`. Every dedup / first-seen / retention-cutoff comparison using `!=` silently misbehaves: a planted `first_seen: NaN` in `data/first_seen.json` makes EVERY `fs_utc < retention_cutoff` return `False` (NaN is incomparable), and the state entry is never pruned — unbounded state growth.
+  * **Silent arithmetic poisoning.** `nan + 5` returns `nan`. `inf - inf` returns `nan`. Every latency / duration / age averaging operation that pulls a planted non-finite from disk pollutes the entire averaged result for the current cron tick.
+  * **Crash-on-round-trip via writer-pin.** Post Round 1485 / 1487 / 1488 / 1491 the writers reject `allow_nan=False`: a planted NaN read in, propagated, and written back hits `ValueError` from `json.dump(..., allow_nan=False)` and the cron pipeline crashes mid-write. Recovery requires manual operator intervention to delete or sanitise the planted state file — until then EVERY cron tick fails.
+  * **Scientific-notation-overflow bypass of `parse_constant`.** `parse_constant` is invoked ONLY for the three literal tokens `NaN` / `Infinity` / `-Infinity`. A planted `"x": 1e1000` is a JSON NUMBER token, so `parse_constant` is NOT called — the default `parse_float=float` IEEE-754-overflows to `float('inf')` silently. The companion `parse_float` hook re-checks `math.isfinite` and rejects the overflow at the parse boundary, closing this bypass.
+
+**Sites closed (11 production sites in `src/`):**
+
+  1. `src/utils/files.py:read_capped_json` — the canonical reader used by `src/places/hafas_client.py`, `src/providers/vor.py`, and several script-side callers; also exports the two new helpers.
+  2. `src/utils/stations.py:_read_capped_json` — duplicate helper for `data/stations.json` + `vienna_polygons.json` (feeds the two `@lru_cache` import-time loaders `_station_entries` / `_vienna_polygons` — a successful bypass crashes every feed-build path).
+  3. `src/build_feed.py:_load_state` — inline reader for `data/first_seen.json` (committed to `main` by `build-feed.yml` on every cron tick).
+  4. `src/utils/cache.py:read_cache` — `cache/<provider>/events.json`.
+  5. `src/utils/cache.py:write_cache` — existing-cache data-degradation reader inside the writer (the planted-NaN-in-existing-cache shape).
+  6. `src/utils/cache.py:read_status` — `cache/<provider>/last_run.json`.
+  7. `src/places/quota.py:MonthlyQuota.load` — `data/places_quota.json`.
+  8. `src/places/merge.py:load_stations` — `data/stations.json` (the canonical Google-Places merge reader).
+  9. `src/places/tiling.py:load_tiles_from_env` — `PLACES_TILES` env value.
+  10. `src/places/tiling.py:load_tiles_from_file` — tile config file.
+  11. `src/utils/stations_validation.py:_load_stations` — `data/stations.json` validator.
+
+**Severity:** **MEDIUM** — same shape class as the writer-pin rounds, but reader-side. Eliminates a defence-in-depth gap that allows a planted on-disk literal to propagate silently into Python-level computation AND to weaponise the writer-side `allow_nan=False` pin into a denial-of-service path (every cron tick crashes mid-write until the planted file is removed).
+
+**Fix (canonical helpers + per-callsite pin):** Two new module-level helpers in `src/utils/files.py`:
+
+  * `_reject_non_finite_constant(constant)` — `parse_constant` hook that raises `json.JSONDecodeError` on every `NaN` / `Infinity` / `-Infinity` token.
+  * `_reject_non_finite_float(value)` — `parse_float` hook that re-checks `math.isfinite` after the standard `float()` parse and raises `json.JSONDecodeError` on overflow / underflow to non-finite.
+
+Both hooks raise `json.JSONDecodeError` (a `ValueError` subclass) so callers' existing `except json.JSONDecodeError` handlers catch the rejection transparently — no per-callsite `except` widening needed. Each migrated `json.loads(...)` call pins both hooks:
+
+```python
+json.loads(
+    raw,
+    parse_constant=_reject_non_finite_constant,
+    parse_float=_reject_non_finite_float,
+)
+```
+
+Companion `tests/test_sentinel_committed_reader_non_finite_drift.py` enumerates all 11 sites + 5 canonical-helper behavioural tests + 13 per-site behavioural PoCs + a symmetry test that proves the writer-pin + reader-pin together close the round-trip at both ends. 31 tests total; every test fails pre-fix (planted NaN / Infinity / 1e1000 propagates as `float('nan')` / `float('inf')`) and passes post-fix (planted literal raises `json.JSONDecodeError` and recovers via the canonical missing-file / corrupt-file / `ValueError` fail-secure path).
+
+**Learning:** Defense-in-depth requires SYMMETRY at both ends of every committed-state boundary. The writer-pin (`allow_nan=False`) and the reader-pin (`parse_constant` + `parse_float`) are ORTHOGONAL: a writer's `allow_nan=False` does not protect against a poisoned ON-DISK file (the planted bytes were never written through the writer); a reader's `parse_constant` does not protect against in-process programmatic NaN injection (a `report.finish(durations={'k': float('nan')})` call bypasses the reader entirely). Both ends need the symmetric pin. **The closing-checklist invariant for future committed-state writer/reader additions is: every `json.dump(...)` MUST carry `allow_nan=False`, AND every `json.loads(...)` reading the same bytes MUST carry both `parse_constant=_reject_non_finite_constant` AND `parse_float=_reject_non_finite_float`.** The `parse_float` hook closes the scientific-notation-overflow bypass that `parse_constant` alone does not catch (`1e1000` is a JSON NUMBER token, not a CONSTANT token).
+
+---
+
 ## 2026-05-15 - Secret Scanner Drift Round 11: GitLab Developer-Tooling Tier Closure (`glft-` Feed / `glimt-` Incoming Mail / `glcbt-` CI Build / `glsoat-` Scoped OAuth) + CircleCI Personal API Token (`CCIPAT_`) — Closes the Named-But-Deferred Next-Round Targets From Round 10
 
 **Vulnerability:** Round 10 (PR #1493) closed the three CI/CD-infrastructure-tier GitLab prefixes (`glrt-` / `gldt-` / `glagent-`) and explicitly named the four developer-tooling-tier siblings (`glft-` / `glimt-` / `glcbt-` / `glsoat-`) + the CircleCI prefix (`CCIPAT_`) as the named-but-deferred next-round targets. Re-running the closing-checklist sweep produces five additional issuer prefixes whose canonical formats silently bypass specific attribution in the post-Round-10 `_KNOWN_TOKENS` table:

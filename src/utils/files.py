@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import math
 import os
 import re
 import secrets
@@ -210,6 +211,80 @@ def get_file_hash(filepath: str | Path, chunk_size: int = 4096) -> str:
     return hasher.hexdigest()
 
 
+# Reader-side defence-in-depth: reject non-finite ``NaN`` / ``Infinity`` /
+# ``-Infinity`` JSON literals (plus overflow-produced ``±inf`` via
+# scientific-notation tokens like ``1e1000``). Mirrors the writer-side
+# ``allow_nan=False`` pin closed at every committed-to-main writer in
+# Round 1485 / Round 1487 / Round 1488. Without the reader-side hooks
+# a planted non-standard literal in an on-disk state file (compromised
+# CI runner, parallel orchestrator atomic state swap, partial flush +
+# power loss, hostile PR landing a tampered fixture) propagates silently
+# as ``float('nan')`` / ``float('inf')`` into Python-level computation:
+#
+#   * ``nan != nan`` returns ``True`` — breaks every dedup invariant
+#     and timestamp comparison that uses ``!=``.
+#   * ``nan + 5`` returns ``nan`` — silently poisons every downstream
+#     arithmetic chain (latency averages, retention-cutoff windows).
+#   * ``inf - inf`` returns ``nan`` — same silent poison shape.
+#   * Round-trip back to a writer hits the ``allow_nan=False`` pin and
+#     raises ``ValueError`` — the cron pipeline crashes mid-write with
+#     no recovery, instead of detecting the corruption at read time and
+#     starting from a clean (empty) state per the canonical
+#     ``read_capped_json`` recovery pattern.
+#
+# Both hooks raise :class:`json.JSONDecodeError` (a :class:`ValueError`
+# subclass) so callers' existing ``except json.JSONDecodeError`` handlers
+# catch the rejection transparently — no per-callsite ``except`` widening
+# is needed. The planted bytes are reported back to the operator log
+# alongside the existing depth/size/encoding diagnostics under the same
+# "corrupt file, treat as missing" recovery shape.
+
+
+def _reject_non_finite_constant(constant: str) -> float:
+    """``parse_constant`` hook: reject ``NaN`` / ``Infinity`` / ``-Infinity``
+    literal tokens (invalid per RFC 8259 §6).
+
+    Python's lenient mode accepts these three tokens as JSON values; this
+    hook overrides the default behaviour so the rejection surfaces as
+    ``json.JSONDecodeError`` at the parse boundary. Used as the canonical
+    ``parse_constant`` argument to :func:`json.loads` across every
+    committed-state-file reader in the project.
+    """
+    raise json.JSONDecodeError(
+        f"Non-finite JSON literal {constant!r}; "
+        f"RFC 8259 forbids NaN/Infinity tokens",
+        constant, 0,
+    )
+
+
+def _reject_non_finite_float(value: str) -> float:
+    """``parse_float`` hook: reject overflow-produced non-finite floats.
+
+    Sibling defence to :func:`_reject_non_finite_constant`. Python's
+    ``json.loads`` parses syntactically-valid scientific-notation tokens
+    like ``"1e1000"`` (NOT a constant, NOT caught by ``parse_constant``)
+    by calling ``float(value)`` — which IEEE-754 overflows to ``+inf`` /
+    ``-inf`` silently. Without this hook a planted ``1e1000`` literal
+    bypasses the ``parse_constant`` defence and lands ``float('inf')``
+    in the parsed structure exactly the same as a ``NaN`` /
+    ``Infinity`` literal would.
+
+    Returns the parsed finite float unchanged; raises
+    :class:`json.JSONDecodeError` on overflow / underflow to a
+    non-finite value. Underflow to ``0.0`` (e.g. ``"1e-1000"``) is
+    finite and accepted — loss of precision is a separate threat
+    model from non-finite propagation.
+    """
+    parsed = float(value)
+    if not math.isfinite(parsed):
+        raise json.JSONDecodeError(
+            f"Non-finite JSON number {value!r}; "
+            f"RFC 8259 requires finite IEEE-754 doubles",
+            value, 0,
+        )
+    return parsed
+
+
 def read_capped_json(
     path: Path,
     max_bytes: int = DEFAULT_MAX_JSON_FILE_BYTES,
@@ -286,7 +361,20 @@ def read_capped_json(
                     label, path_fingerprint, max_bytes,
                 )
                 return None
-            payload: object = json.loads(raw)
+            # Security: ``parse_constant`` + ``parse_float`` hooks reject
+            # the canonical non-finite literal family (``NaN`` /
+            # ``Infinity`` / ``-Infinity`` tokens + scientific-notation
+            # overflow ``1e1000`` → ``+inf``). Mirrors the writer-side
+            # ``allow_nan=False`` pin from Round 1485 / 1487 / 1488 so a
+            # planted on-disk literal does NOT propagate as
+            # ``float('nan')`` / ``float('inf')`` into Python computation
+            # and does NOT round-trip back to the writer where it would
+            # hit ``allow_nan=False`` and crash the cron pipeline.
+            payload: object = json.loads(
+                raw,
+                parse_constant=_reject_non_finite_constant,
+                parse_float=_reject_non_finite_float,
+            )
             return payload
     except (OSError, json.JSONDecodeError, RecursionError, UnicodeDecodeError):
         return None
