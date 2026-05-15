@@ -398,6 +398,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "32A: Rettungseinsatz Betrieb ab Illgasse",
+    "description": "Linie 32A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61",
+    "pubDate": "2026-05-15T12:14:00+02:00",
+    "starts_at": "2026-05-15T12:15:07+02:00",
+    "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=32A|D=2026-05-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -518,6 +530,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "53A: Rettungseinsatz",
+    "description": "Linie 53A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3058c5093b1bbd159b36922b390792530ab5e9c4bfe52c041cccc95ba024abc",
+    "pubDate": "2026-05-15T12:07:00+02:00",
+    "starts_at": "2026-05-15T12:07:00+02:00",
+    "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=53A|D=2026-05-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -622,6 +646,18 @@
     "starts_at": "2026-05-12T00:00:20+02:00",
     "ends_at": "2026-05-15T23:59:59+02:00",
     "_identity": "wl|störung|L=N65|D=2026-05-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Betriebsstörung",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
+    "pubDate": "2026-05-15T12:08:00+02:00",
+    "starts_at": "2026-05-15T12:08:00+02:00",
+    "ends_at": "2026-05-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-05-15"
   },
   {
     "source": "Wiener Linien",

@@ -116,6 +116,15 @@
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&877052": {
     "first_seen": "2026-05-14T03:00:49.384493+00:00"
   },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&877295": {
+    "first_seen": "2026-05-15T10:30:52.685473+00:00"
+  },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&877296": {
+    "first_seen": "2026-05-15T10:30:52.685473+00:00"
+  },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&877298": {
+    "first_seen": "2026-05-15T10:30:52.685473+00:00"
+  },
   "stammstrecke_delay_meidling|2026-05-13T08:00:00+02:00": {
     "first_seen": "2026-05-13T06:30:55.225141+00:00"
   },
@@ -764,6 +773,9 @@
   "wl|st\u00f6rung|L=32A|D=2026-05-12": {
     "first_seen": "2026-05-12T15:30:35.889296+00:00"
   },
+  "wl|st\u00f6rung|L=32A|D=2026-05-15": {
+    "first_seen": "2026-05-15T10:30:52.685473+00:00"
+  },
   "wl|st\u00f6rung|L=35A|D=2026-04-28": {
     "first_seen": "2026-04-28T16:09:55.565028+00:00"
   },
@@ -1063,6 +1075,9 @@
   },
   "wl|st\u00f6rung|L=53A|D=2026-04-24": {
     "first_seen": "2026-04-24T11:42:03.796873+00:00"
+  },
+  "wl|st\u00f6rung|L=53A|D=2026-05-15": {
+    "first_seen": "2026-05-15T10:30:52.685473+00:00"
   },
   "wl|st\u00f6rung|L=56A|D=2026-05-10": {
     "first_seen": "2026-05-10T10:45:16.305734+00:00"
