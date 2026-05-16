@@ -66,12 +66,24 @@ _SCRIPT_ORDER = (
     "update_station_directory.py",
     "update_wl_stations.py",
     "enrich_station_aliases.py",
+    # Curated correction layer (PR #1540): patches/restores/removes
+    # entries that suffer from documented Wiener Linien OGD upstream
+    # defects (wrong coordinates, missing haltepunkte for live DIVAs,
+    # geographic-duplicate haltepunkte for distinct DIVAs). Runs after
+    # enrich_station_aliases so the override's alias set survives the
+    # enrichment pass; runs before the validator gate so the curated
+    # state is what the gate measures. Idempotent — skipping is safe.
+    # See ``data/stations_overrides.json`` for the live override list
+    # and the ``expires_when`` predicates that document when each
+    # override can retire.
+    "apply_station_overrides.py",
 )
 
 _SCRIPT_OUTPUT_FLAG = {
     "update_station_directory.py": "--output",
     "update_wl_stations.py": "--stations",
     "enrich_station_aliases.py": "--stations",
+    "apply_station_overrides.py": "--stations",
 }
 
 _DEFAULT_HEARTBEAT_PATH = REPO_ROOT / "data" / "stations_last_run.json"
