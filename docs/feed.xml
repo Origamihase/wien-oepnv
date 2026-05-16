@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 16 May 2026 20:30:37 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 21:00:38 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[7A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">214cec6cae971effd21b47b0b3859b88354324a6fc53301d0ac43a41c2f9bb78</guid>
+      <pubDate>Sat, 16 May 2026 20:37:00 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 21:00:38 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 20:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 16 May 2026 21:15:00 +0200</ext:ends_at>
+      <description>Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 16.05.2026]</description>
+      <content:encoded><![CDATA[Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 16.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[5: Fahrtbehinderung Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Betrieb ab Resselgasse [Am 16.05.2026]</description>
       <content:encoded><![CDATA[Betrieb ab Resselgasse<br/>[Am 16.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Veranstaltung Betrieb ab Schwedenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">39a4e23ded170c8129efe72a2471b1d4b2a7d98424bc3a55b3e12e849178a8bc</guid>
-      <pubDate>Sat, 16 May 2026 11:34:08 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 12:00:28 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 11:34:08 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Betrieb ab Schwedenplatz &gt; [Am 16.05.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Schwedenplatz ><br/>[Am 16.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
