@@ -366,25 +366,42 @@ def test_legitimate_symlink_staying_inside_base_accepted(
 
 
 def test_source_uses_resolve_not_abspath() -> None:
-    """Pin the fix structurally: the function body must not CALL
-    ``os.path.abspath`` on the candidate path (the canonical pre-fix
-    shape). Mirrors the audit-walker invariants used by other Sentinel
-    rounds — any future refactor that re-introduces an
-    ``os.path.abspath(...)`` call at this site fails the test on the
-    first ``pytest`` run. The check matches the function-CALL token
-    (``os.path.abspath(``) so the prose explanation in the security
-    comment (which names the pre-fix shape) is not counted as a
-    regression.
+    """Pin the fix structurally: the symlink-aware containment helper
+    must call ``Path.resolve`` and must NOT call ``os.path.abspath``
+    (the canonical pre-fix shape). Mirrors the audit-walker invariants
+    used by other Sentinel rounds — any future refactor that
+    re-introduces an ``os.path.abspath(...)`` call at this site fails
+    the test on the first ``pytest`` run. The check matches the
+    function-CALL token (``os.path.abspath(``) so the prose explanation
+    in the security comment (which names the pre-fix shape) is not
+    counted as a regression.
+
+    The canonical containment defence now lives in
+    :func:`src.utils.env._resolve_within_base` (extracted during the
+    default-candidate sibling-drift closure so the env-controlled and
+    default-candidate branches share a single defence). The structural
+    invariant follows the helper:
     """
     import inspect
 
-    source = inspect.getsource(env_utils._default_env_file_candidates)
-    assert "os.path.abspath(" not in source, (
-        "_default_env_file_candidates must use Path.resolve(), not "
+    helper_source = inspect.getsource(env_utils._resolve_within_base)
+    assert "os.path.abspath(" not in helper_source, (
+        "_resolve_within_base must use Path.resolve(), not "
         "os.path.abspath(), so symlinks are followed before the "
         "containment check."
     )
-    assert ".resolve(" in source, (
-        "_default_env_file_candidates must call Path.resolve() to "
-        "follow symlinks at the candidate boundary."
+    assert ".resolve(" in helper_source, (
+        "_resolve_within_base must call Path.resolve() to follow "
+        "symlinks at the candidate boundary."
+    )
+
+    candidates_source = inspect.getsource(env_utils._default_env_file_candidates)
+    assert "os.path.abspath(" not in candidates_source, (
+        "_default_env_file_candidates must not re-introduce os.path.abspath; "
+        "the defence is supplied via _resolve_within_base."
+    )
+    assert "_resolve_within_base" in candidates_source, (
+        "_default_env_file_candidates must route every candidate through "
+        "_resolve_within_base so the symlink-aware containment defence "
+        "applies uniformly to defaults and env-controlled extras."
     )
