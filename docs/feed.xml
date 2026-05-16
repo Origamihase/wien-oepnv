@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 16 May 2026 02:00:37 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 02:30:38 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
+      <pubDate>Sat, 16 May 2026 02:26:00 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 02:30:38 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 02:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 16 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 16.05.2026]</description>
+      <content:encoded><![CDATA[Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 16.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N31: Busse halten in 5B Haltestelle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +115,6 @@
       <pubDate>Sat, 16 May 2026 00:00:15 +0200</pubDate>
       <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
       <ext:starts_at>Sat, 16 May 2026 00:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 16.05.2026]</description>
-      <content:encoded><![CDATA[[Am 16.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45</guid>
-      <pubDate>Sat, 16 May 2026 00:00:11 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 00:00:12 +0200</ext:starts_at>
       <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 16.05.2026]</description>
       <content:encoded><![CDATA[[Am 16.05.2026]]]></content:encoded>
