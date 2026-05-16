@@ -38,7 +38,7 @@ sequenceDiagram
     participant Pool as ThreadPoolExecutor
     participant WL as WL.fetch_events
     participant OEBB as ÖBB.fetch_events
-    participant VOR as VOR.fetch_events
+    participant Plug as Plugin.fetch_events<br/>(custom provider)
     participant Safe as request_safe
     participant Up as Upstream API
     participant Merge as _merge_result
@@ -69,13 +69,13 @@ sequenceDiagram
         Up-->>Safe: response
         Safe-->>OEBB: validated body
         OEBB-->>Merge: list[FeedItem]
-    and VOR
-        Pool->>VOR: submit fetch
-        VOR->>Safe: request_safe (per station)
+    and Plugin
+        Pool->>Plug: submit fetch
+        Plug->>Safe: request_safe(session, url, ...)
         Safe->>Up: HTTPS GET (pinned IP)
         Up-->>Safe: response
-        Safe-->>VOR: validated body
-        VOR-->>Merge: list[FeedItem]
+        Safe-->>Plug: validated body
+        Plug-->>Merge: list[FeedItem]
     end
 
     Note over Pool: Apex-Phase-1 deadline-eviction loop:<br/>per-future timeout vs perf_counter()<br/>cancels stragglers
