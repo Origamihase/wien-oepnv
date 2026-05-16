@@ -478,14 +478,84 @@ def load_env_file(
     return parsed
 
 
-def _default_env_file_candidates(base_dir: Path) -> Iterable[Path]:
-    """Return default env files that should be considered for loading."""
+def _resolve_within_base(candidate: Path, base_dir: Path) -> Path | None:
+    """Return *candidate* resolved through symlinks iff it stays inside *base_dir*.
 
-    candidates = [
+    Security (Symlink-Following Bypass): every env-file candidate path —
+    built-in default (``<base_dir>/.env``, ``<base_dir>/data/secrets.env``,
+    ``<base_dir>/config/secrets.env``) AND ``WIEN_OEPNV_ENV_FILES`` extras —
+    is resolved via ``Path.resolve(strict=False)`` and checked against the
+    ``base_dir`` containment boundary in a single helper. ``os.path.abspath``
+    and the bare lexical Path form ONLY normalise paths lexically and do
+    NOT follow symlinks; so a symlink planted at any candidate location
+    (e.g. ``<base_dir>/.env -> /etc/environment``, ``<base_dir>/data/secrets.env
+    -> ~/.aws/credentials``) silently passes a lexical-only containment check
+    while resolving to a filesystem target OUTSIDE ``base_dir``. Pre-fix
+    ``load_env_file`` then opened the symlink, ``read_capped_text`` followed
+    it to the outside target (up to ``MAX_ENV_FILE_BYTES``), ``_parse_env_file``
+    parsed every ``KEY=VALUE`` line, and the loader wrote each variable into
+    ``os.environ`` (when ``KEY`` is not already set, ``override=False``).
+
+    Blast radius of a successful exploit: ``KEY=VALUE`` pairs from any
+    readable file (``/etc/environment``, ``~/.aws/credentials`` shape,
+    leaked process env dumps) become process env vars — downstream
+    consumers (proxy variables, provider URL overrides not pinned to a
+    canonical allowlist, log-level toggles) treat the injected vars as
+    trusted operator input. The preconditions for the env-controlled
+    branch (filesystem planting + env var injection) ARE sometimes
+    obtainable independently — a hostile PR landing a symlink in ``main``
+    plus a leaked CI env that sets ``WIEN_OEPNV_ENV_FILES``. The default-
+    candidate branch needs only a single precondition (filesystem
+    write to any of the three documented default paths via a hostile PR /
+    compromised CI runner / pre-existing filesystem state); merging the
+    symlink into ``main`` is the entire exploit. Same blast radius across
+    both branches, so the same canonical defence is applied to both via
+    this helper.
+
+    Resolving via ``Path.resolve(strict=False)`` follows every symlink
+    hop along the path; the ``strict=False`` argument preserves the
+    pre-fix behaviour for non-existent paths (the lexical part resolves
+    and the missing tail is appended) while still catching symlinks on
+    every existing prefix. ``OSError`` covers symlink-loop / I/O errors
+    (``ELOOP``); ``RuntimeError`` covers the Python-internal infinite-loop
+    guard on some interpreter versions. Both error classes fail closed
+    (return ``None``) so the secure default holds for any filesystem state
+    that prevents full resolution. Mirrors the ``Path.resolve()``
+    containment shape pinned by :func:`read_secret` for the systemd /
+    Docker secret sub-trees and :func:`src.feed.config.validate_path` for
+    the ``OUT_PATH`` / ``STATE_PATH`` / ``LOG_DIR`` env-controlled
+    boundaries.
+    """
+    try:
+        resolved = candidate.resolve(strict=False)
+    except (OSError, RuntimeError):
+        return None
+    try:
+        resolved.relative_to(base_dir)
+    except ValueError:
+        return None
+    return resolved
+
+
+def _default_env_file_candidates(base_dir: Path) -> Iterable[Path]:
+    """Return default env files that should be considered for loading.
+
+    Every candidate path (built-in defaults AND env-controlled extras
+    from ``WIEN_OEPNV_ENV_FILES``) is routed through
+    :func:`_resolve_within_base` so the symlink-aware containment
+    invariant holds uniformly. See that helper's docstring for the
+    full threat model and fix shape.
+    """
+
+    candidates: list[Path] = []
+    for default in (
         base_dir / ".env",
         base_dir / "data" / "secrets.env",
         base_dir / "config" / "secrets.env",
-    ]
+    ):
+        resolved_default = _resolve_within_base(default, base_dir)
+        if resolved_default is not None:
+            candidates.append(resolved_default)
 
     extra = os.getenv("WIEN_OEPNV_ENV_FILES")
     if extra:
@@ -497,39 +567,8 @@ def _default_env_file_candidates(base_dir: Path) -> Iterable[Path]:
             if not candidate.is_absolute():
                 candidate = base_dir / candidate
 
-            # Security (Symlink-Following Bypass): use ``Path.resolve()`` so
-            # symlinks are followed to their filesystem target BEFORE the
-            # containment check. The previous ``os.path.abspath`` shape only
-            # normalised the path lexically (``.``/``..`` resolution) and did
-            # NOT follow symlinks, so a symlink planted inside ``base_dir``
-            # pointing outside (e.g. ``<base_dir>/decoy.env -> /etc/environment``)
-            # passed the ``relative_to(base_dir)`` check and let
-            # ``load_env_file`` read arbitrary filesystem locations. The
-            # blast radius of a successful exploit: ``KEY=VALUE`` pairs from
-            # any readable file (``/etc/environment``, ``~/.aws/credentials``
-            # shape, leaked process env dumps) become process env vars —
-            # which downstream consumers (proxy variables, provider URL
-            # overrides not pinned to a canonical allowlist, log-level
-            # toggles) treat as trusted operator input. Resolving via
-            # ``Path.resolve(strict=False)`` follows every symlink hop and
-            # rejects targets outside ``base_dir`` at the containment check.
-            # ``OSError`` covers symlink-loop / I/O errors; ``RuntimeError``
-            # covers the Python-internal infinite-loop guard on some
-            # interpreter versions. Both error classes fail closed
-            # (skip the candidate) so the secure default holds for any
-            # filesystem state that prevents full resolution. Mirrors the
-            # ``Path.resolve()`` containment shape pinned by
-            # :func:`read_secret` for the systemd / Docker secret sub-trees
-            # and :func:`src.feed.config.validate_path` for the
-            # ``OUT_PATH`` / ``STATE_PATH`` / ``LOG_DIR`` env-controlled
-            # boundaries.
-            try:
-                resolved_candidate = candidate.resolve(strict=False)
-            except (OSError, RuntimeError):
-                continue
-            try:
-                resolved_candidate.relative_to(base_dir)
-            except ValueError:
+            resolved_candidate = _resolve_within_base(candidate, base_dir)
+            if resolved_candidate is None:
                 # Disallow bypassing base_dir with absolute paths, ../, or
                 # symlinks that resolve outside base_dir.
                 continue
