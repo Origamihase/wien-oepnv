@@ -1,3 +1,53 @@
+## 2026-05-16 - AI/ML Platform Token Family Drift Round 2 (xAI Grok `xai-` + OpenRouter `sk-or-v1-`): Closes The Named-But-Deferred xAI Candidate From The 2026-05-16 Round-1 AI/ML Platform Tier (Groq / Replicate / Perplexity) AND Adds OpenRouter — The Unified OpenAI-Compatible API Aggregator With A UNIQUE BYOK CROSS-PLATFORM PIVOT AMPLIFIER (A Leaked OpenRouter Token Grants Access To All The User's Attached Provider Keys)
+
+**Vulnerability:** Two modern AI/ML inference-platform API tokens that grew rapidly in 2024-2025 — xAI Grok (`xai-<32+ alphanumeric>`, Elon Musk's Grok-2/3/4 LLM family) and OpenRouter (`sk-or-v1-<32+ alphanumeric>`, the unified OpenAI-compatible API aggregator proxying 200+ models) — were NOT enumerated in `_KNOWN_TOKENS` at the time of the previous AI/ML coverage rounds. xAI was explicitly named as the "first deferred next-round candidate" in PR #1534's journal entry (the Round-1 AI/ML platform tier closure for Groq / Replicate / Perplexity). OpenRouter was previously-unenumerated. Pre-fix every leaked xAI / OpenRouter API token fell into the same generic detection branches as the Round-1 vendors:
+
+* **Attribution drift via entropy fallback**: bare tokens with realistic high-uniqueness bodies (xAI: 64-128 alphanumeric chars; OpenRouter: 64 hex chars) match `_HIGH_ENTROPY_RE` and land as generic `Hochentropischer Token-String`. The vendor-specific attribution is lost — incident-response triage must guess between xAI (revocation: console.x.ai/team/<id>/api-keys), OpenRouter (revocation: openrouter.ai/keys), Anthropic, OpenAI, Groq, Replicate, Perplexity, etc.
+
+* **Attribution drift via assignment heuristic**: tokens in `XAI_API_KEY = "..."` or `OPENROUTER_API_KEY = "..."` contexts trigger `_SENSITIVE_ASSIGN_RE` and produce generic `Verdächtige Zuweisung eines potentiellen Secrets` findings, losing the same vendor attribution.
+
+* **Silent undetection** (edge case): for pathological low-uniqueness tokens (e.g., repetitive test fixtures, all-letter bodies), the entropy fallback's `_looks_like_secret` heuristic rejects the candidate entirely. Such fixtures can silently slip through.
+
+**Threat model:** Both vendors share the AI/ML platform credential threat profile established in PR #1534 (Round 1):
+
+* **Billing-credit drain (PRIMARY)**: xAI Grok-4 API charges USD 5-15 per 1M tokens; OpenRouter passes through underlying-provider costs (Claude-3.5-Sonnet at $3/$15 per 1M input/output, Grok-4 at $5/$15 per 1M). A leaked token enables $1000s/hour drain via large-context completions or fine-tuning runs.
+
+* **Model-prompt exfiltration**: attacker queries any of OpenRouter's 200+ proxied models via the victim's account.
+
+* **UNIQUE OPENROUTER AMPLIFIER: BYOK (Bring Your Own Key) cross-platform pivot**: OpenRouter allows users to attach their own provider keys for fallback / cost optimization. A leaked OpenRouter token grants access to ALL the user's attached provider keys (visible / reusable via the OpenRouter dashboard). This is a CROSS-PLATFORM PIVOT amplifier unique to aggregator platforms — a single OpenRouter leak compounds to leak Anthropic / OpenAI / Groq / etc. keys WITHOUT those being separately exposed in source. The dashboard URL ``openrouter.ai/keys`` reveals all attached keys to anyone with the OpenRouter token. This is the highest-blast-radius vector in this round.
+
+* **Cross-platform pivoting (general)**: operators frequently embed multiple AI-platform tokens in the same config file; PR #1534's multi-vendor PoC verified this with 6 vendors, and this round extends to 8 (xAI + OpenRouter added to the Round-1 family).
+
+End-to-end PoC verified pre-fix for both vendor prefixes across multiple body shapes; every shape produced only generic attribution.
+
+**Sites closed (2 detector regexes appended to `_KNOWN_TOKENS`):**
+
+* `src/utils/secret_scanner.py:_KNOWN_TOKENS` — two new entries appended after the Perplexity entry (the Round-1 AI/ML platform tier anchor):
+  ```python
+  (re.compile(r"(?<![A-Za-z0-9])xai-[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "xAI API Key gefunden"),
+  (re.compile(r"(?<![A-Za-z0-9])sk-or-v1-[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "OpenRouter API Key gefunden"),
+  ```
+  Both detectors use the canonical `(?<![A-Za-z0-9])...(?![A-Za-z0-9])` boundary anchors per the established style. The 32+ body lower bound matches each vendor's documented format while rejecting short prefix-only fragments.
+
+**Severity:** **MEDIUM-HIGH** — same as PR #1534 (billing-credit drain primary attack vector), with the OpenRouter BYOK amplifier elevating it to HIGH for OpenRouter-using accounts. The OpenAI mutual-exclusivity test (`test_openrouter_does_not_steal_openai_attribution`) explicitly verifies that pure OpenAI tokens (`sk-<48 alphanumeric>`) continue to be attributed to OpenAI, not falsely matched as OpenRouter.
+
+**Fix:** Append two `(regex, reason)` tuples to `_KNOWN_TOKENS`. Zero false-positive risk: `xai-` and `sk-or-v1-` are vendor-specific prefixes; combined with the 32+ alphanumeric body floor, the structural disambiguator rejects natural-language false positives. The OpenAI `sk-<48 alphanumeric>` and OpenRouter `sk-or-v1-<32+ alphanumeric>` patterns are MUTUALLY EXCLUSIVE at the prefix level (OpenAI's strict alphanumeric body excludes hyphens, so it cannot match `sk-or-v1-...`; OpenRouter's `sk-or-v1-` prefix anchors the alternation specifically).
+
+**Tests added:** `tests/test_sentinel_ai_platform_tokens_round2.py` — 19 tests across 7 categories:
+  1. Per-vendor attribution PoCs (2 variants × assignment context).
+  2. Bare-token PoCs (2 variants × curl-example-in-README format).
+  3. Negative cases (7 cases × prefix-only / natural-language / code identifiers / pure-entropy-without-prefix).
+  4. Cross-detector regression guards (4 cases × Groq / Replicate / OpenAI / OpenRouter-vs-OpenAI mutual exclusivity).
+  5. Multi-vendor PoC: 8-vendor full landscape (Round-1 6 + Round-2 2 = 8 distinct attributions in single file).
+  6. Membership invariant.
+  7. Masking contract.
+
+**Learning:** The AI/ML platform tier now covers 8 vendors via vendor-specific prefix detection (Anthropic + OpenAI + Hugging Face + Groq + Replicate + Perplexity + xAI + OpenRouter). The 8-vendor multi-vendor PoC is the empirical canary for cross-platform-pivoting threat scenarios: a config file leaking all 8 tokens together (common in real-world dev setups) yields 8 distinct revocation flows that incident-response can pursue in parallel. **The OpenRouter BYOK amplifier is structurally distinct from the other vendor leaks** — it's the only one that grants ACCESS to other vendors' tokens via the aggregator's dashboard. Aggregator-platform leaks should always be treated as multi-vendor leaks even when they appear singly in source. **The `sk-` prefix family disambiguation rule**: OpenAI uses `sk-<48 alnum>` (no hyphens in body); OpenRouter uses `sk-or-v1-<32+ alnum>` (explicit version-prefix structure with hyphens); DeepSeek (deferred from PR #1534) uses `sk-<32-48 alnum>` which would collide with OpenAI. The hyphen-presence-in-body is the structural disambiguator that keeps OpenAI/OpenRouter patterns mutually exclusive without context-aware detection.
+
+**Next-round candidates (named-but-deferred):** **DeepSeek API keys** — STILL deferred because the `sk-<32-48 alphanumeric>` format collides with OpenAI's strict `sk-<48 alphanumeric>` regex; closing requires context-aware detection (surrounding variable name like `DEEPSEEK_API_KEY`). **Together AI / Fireworks AI / Cohere / Mistral** — all prefixless; no unique anchor for vendor-specific attribution. **Modal / Banana / Anyscale / RunPod** — serverless ML compute platforms; various token formats, mostly Bearer tokens without unique prefixes. **OAuth 1.0 `oauth_verifier`** — bare `oauth_verifier` parameter, niche but real for legacy OAuth 1.0 PIN-based flows. **The five remaining auth-scheme deferred candidates** (Mutual / vapid / SCRAM / Digest / AWS4-HMAC-SHA256 — all multi-field bodies) remain pending body-structure-aware framework.
+
+**Marker:** SENTINEL_AI_PLATFORM_TOKENS_ROUND2_DRIFT.
+
 ## 2026-05-16 - AI/ML Inference Platform Token Family Drift (Groq `gsk_` + Replicate `r8_` + Perplexity `pplx-`): Three Modern Indie-Developer-Facing AI APIs That Grew Rapidly In 2024-2025 But Were Not Enumerated In `_KNOWN_TOKENS` At The Time Of The Previous Hugging Face / Anthropic / OpenAI Coverage Rounds — Pre-Fix Tokens Fell Into Either Generic Entropy-Fallback (`Hochentropischer Token-String`) Or Assignment-Heuristic (`Verdächtige Zuweisung`) Branches, Losing The Vendor-Specific Revocation Flow Attribution That Incident-Response Triage Keys Off
 
 **Vulnerability:** Three modern AI/ML inference-platform API tokens that grew to mass-developer adoption in 2024-2025 — Groq (`gsk_<48+ alphanumeric>`, the fast LPU-based LLM inference platform), Replicate (`r8_<40 alphanumeric>`, the hosted-model inference platform for SDXL / Llama / FLUX / Whisper / custom Cog models), and Perplexity (`pplx-<48+ alphanumeric>`, the AI-powered search and chat-completion API with real-time web grounding) — were NOT enumerated in `src/utils/secret_scanner.py:_KNOWN_TOKENS`. The pre-existing coverage included Anthropic (`sk-ant-api/admin`), OpenAI (`sk-`, `sk-proj-`, `sk-svcacct-`), Hugging Face (`hf_`), and Notion (`secret_`/`ntn_`) — but the three named-but-missing AI/ML inference siblings were the most-popular indie-developer-facing platforms in the same competitive landscape. Pre-fix every leaked Groq / Replicate / Perplexity API token in committed source / log artefacts / CI debug snippets fell into one of two generic detection branches:

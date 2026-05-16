@@ -681,6 +681,54 @@ _KNOWN_TOKENS = [
     # exfiltrate proprietary prompts. Real-world emission: ``.env``
     # commits, curl examples in tutorials, CI/CD pipeline debug.
     (re.compile(r"(?<![A-Za-z0-9])pplx-[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "Perplexity API Key gefunden"),
+    # xAI Grok API keys (``xai-<32+ alphanumeric>``). Issued via
+    # console.x.ai/team/<id>/api-keys for xAI's Grok platform
+    # (Grok-2, Grok-3, Grok-4 — Elon Musk's LLM family released
+    # in 2024-2025). The ``xai-`` prefix is unambiguous (no other
+    # major issuer uses it), and the strict alphanumeric body lies
+    # entirely inside the entropy fallback's ``[A-Za-z0-9+/=_-]``
+    # alphabet — so the entropy regex matches the full ``xai-<body>``
+    # span as one generic "Hochentropischer Token-String" finding,
+    # losing the xAI-specific issuer attribution that incident-
+    # response keys off (revocation flow at console.x.ai/team/<id>/
+    # api-keys; audit Grok completion-API usage logs for chargeback
+    # fraud / model-prompt exfiltration; check the org's billing
+    # dashboard for unauthorized large-context completions —
+    # Grok-4's 200K-token context window makes a single hostile
+    # completion expensive). Body lower bound 32 chars allows future
+    # canonical length variations while rejecting short prefix-only
+    # fragments; real xAI keys are 64-128 chars body. A leak grants
+    # the issuing account's full xAI API scope: trigger expensive
+    # Grok completions at the victim's expense (USD 5-15 per 1M
+    # tokens), exfiltrate proprietary prompts. xAI Grok was the
+    # named-but-deferred next-round candidate from the 2026-05-16
+    # Round-1 AI/ML platform tier closure (Groq / Replicate /
+    # Perplexity); this round closes it.
+    (re.compile(r"(?<![A-Za-z0-9])xai-[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "xAI API Key gefunden"),
+    # OpenRouter API keys (``sk-or-v1-<32+ alphanumeric>``). Issued
+    # via openrouter.ai/keys for OpenRouter's unified OpenAI-
+    # compatible API aggregator that proxies requests to 200+
+    # different LLMs (Claude, GPT, Llama, Mixtral, Gemini, Grok,
+    # DeepSeek, etc.). The ``sk-or-v1-`` prefix is structurally
+    # DISTINCT from OpenAI's strict ``sk-<48 alphanumeric>`` form
+    # (the embedded hyphens in ``sk-or-v1-`` prevent matching
+    # OpenAI's regex because the OpenAI body alphabet excludes ``-``),
+    # so the two detectors are mutually exclusive at the prefix
+    # level. Pre-fix OpenRouter tokens fell to the entropy fallback
+    # (the full ``sk-or-v1-<body>`` span matches the high-entropy
+    # alphabet because ``-`` is in ``[A-Za-z0-9+/=_-]``) — but as
+    # generic "Hochentropischer Token-String", losing the
+    # OpenRouter-specific issuer attribution. UNIQUE THREAT
+    # AMPLIFIER for OpenRouter: BYOK (Bring Your Own Key) — the
+    # platform allows users to attach their own provider keys for
+    # fallback / cost optimization. A leaked OpenRouter token grants
+    # access to ALL the user's attached provider keys (visible /
+    # reusable via the OpenRouter dashboard). This is a CROSS-
+    # PLATFORM PIVOT amplifier unique to aggregator platforms —
+    # a single OpenRouter leak can compound to leak Anthropic /
+    # OpenAI / Groq / etc. keys without those being separately
+    # exposed in source.
+    (re.compile(r"(?<![A-Za-z0-9])sk-or-v1-[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "OpenRouter API Key gefunden"),
     # DigitalOcean Personal Access Tokens (``dop_v1_<64 hex>``) and OAuth
     # refresh tokens (``doo_v1_<64 hex>``). The ``v1`` prefix anchors against
     # the official format; the strict 64-char lowercase-hex body avoids
