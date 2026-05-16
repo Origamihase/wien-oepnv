@@ -1,3 +1,62 @@
+## 2026-05-16 - `sanitize_log_message` Sibling-Drift Closure (`_keys` + `_header_keys` Regex Alternations Missing `samlart`/`csrf`/`xsrf`): The Parallel-Codepath Sibling Of The 2026-05-16 PR #1531 `_SENSITIVE_QUERY_KEYS` SAML/CSRF/WordPress Round — Same Threat Model (SAML 2.0 Artifact / Bare CSRF/XSRF Credential Leaks Through Operator-Facing Log Streams), Different Consuming Function (The Canonical `sanitize_log_message` Log Sanitizer Called By `sanitize_log_arg` / `clean_message` / `_sanitize_log_detail` Across The Codebase)
+
+**Vulnerability:** PR #1531 closed the SAML/CSRF/WordPress drift in `src/utils/http.py:_SENSITIVE_QUERY_KEYS` — the canonical exact-match set used by `_sanitize_url_for_error` (for URL error-log redaction) AND `_strip_sensitive_params` (for cross-origin redirect protection). That round closed the URL-parsing codepath. BUT the **parallel codepath** in `src/utils/logging.py:sanitize_log_message` (the canonical log sanitizer, called by `sanitize_log_arg` / `clean_message` / `_sanitize_log_detail` across the codebase) has its OWN regex alternation sets (`_keys` for query-form and JSON-form redaction, `_header_keys` for HTTP-Header-form redaction) — and those sets SHARE the drift with `_SENSITIVE_QUERY_KEYS`. Pre-fix every leaked URL / header / JSON document containing `SAMLArt=...`, `_csrf=...`, `xsrf=...`, `X-CSRF: ...`, `XSRF: ...`, or `"samlart": "..."` that passed through `sanitize_log_message` (the dominant log-sanitization entry point) landed the credential VERBATIM in operator log streams. The two consuming functions cover COMPLEMENTARY surface area: `_sanitize_url_for_error` requires a valid URL parsable by `urlparse`, while `sanitize_log_message` handles RAW LOG TEXT (multi-line tracebacks, JSON snippets embedded in error strings, `Header: Value` pairs, `key=value&...` fragments embedded in prose, partial URL fragments — anything that `urlparse` would reject). PR #1531 closed only Path 1; this round closes Path 2.
+
+**Pre-fix inventory (PoC verified):**
+- `samlart` (SAML 2.0 Artifact) — NOT in `_keys` regex, NOT in `_header_keys` regex. **LEAKS in query/header/JSON forms**.
+- Bare `csrf` (Spring `_csrf` normalised; bare `csrf` token name) — NOT in either regex. **LEAKS**. (The `csrf_token` / `XSRF-TOKEN` suffixed variants are ALREADY covered via the existing `[a-z0-9_.\-]*token` alternation; only the bare forms slipped through.)
+- Bare `xsrf` (Angular bare form, distinct from `XSRF-TOKEN` covered via `token`) — NOT in either regex. **LEAKS**.
+- `relaystate` (SAML 2.0 RelayState) — ALREADY covered via the bare `state` alternation (regex substring match). ✓ no action needed.
+- `_wpnonce` (WordPress nonce) — ALREADY covered via the bare `nonce` alternation (regex substring match). ✓ no action needed.
+
+The sibling-drift gap is therefore THREE new alternations (`samlart` / `csrf` / `xsrf`) added to BOTH `_keys` AND `_header_keys`.
+
+**Threat model:** Same per-credential severity ladder as PR #1531 (SAMLArt HIGH = 5-min ARS-resolvable bearer credential; bare CSRF/XSRF MEDIUM-HIGH = session-lifetime replay) but applied to a DIFFERENT leak surface: the canonical log-sanitization chain (`sanitize_log_arg` → `sanitize_log_message`, and the secondary chain `clean_message` → `sanitize_log_message` and `_sanitize_log_detail` → `clean_message` → `sanitize_log_message`). Every `log.warning("... %s ...", sanitize_log_arg(value))` callsite across `src/` and `scripts/` (the canonical entry point — dozens of sites per the existing journal entries) propagates this drift. Real-world emission patterns reaching this codepath: exception messages embedding URLs with sensitive query params (`log.exception("Request to %s failed: %s", sanitize_log_arg(url), sanitize_log_arg(exc))`), cache-key collision logs, GitHub Issue body sanitization (`feed/reporting.py:clean_message`) for operator-facing issue bodies carrying request URLs / tracebacks, traceback sanitization (`sanitize_log_message(text, strip_control_chars=False)`) for Python tracebacks that include HTTP request URL repr() in their frames, and pre-commit hook diagnostic output when secret-scanner finding context (URL fragments) is sanitized before display.
+
+**Sites closed (2 regex alternation extensions):**
+
+* `src/utils/logging.py:_keys` regex — added `samlart|csrf|xsrf` as bare alternations alongside the existing `nonce|state` style. The regex requires the alternation match to be followed by `=` (query form), `:` (header form via the broader pattern), or `"` (JSON form), so natural-language prose containing "csrf" / "xsrf" / "samlart" WITHOUT a key=value structure is NOT over-redacted. Verified via 9 negative test cases (natural-language sentences, separator-free mentions, English idioms).
+
+* `src/utils/logging.py:_header_keys` regex — added `samlart|csrf|xsrf` alongside the existing `nonce|state` style. Used by the HTTP-Header-form pattern at the consuming-function site `(?i)((?:[-a-zA-Z0-9_]*(?:{_header_keys})[-a-zA-Z0-9_]*):\s*)`. Covers `SAMLArt: ...`, `X-CSRF: ...`, `XSRF: ...` and X-prefixed variants.
+
+Zero changes to the consuming `sanitize_log_message` function body, zero changes to `sanitize_log_arg` / `clean_message` / `_sanitize_log_detail`, zero changes to any callsite, zero C901 complexity impact, zero per-call performance overhead (the regex is compiled once at module-import time per the existing pattern; the alternation grows by 3 entries which is negligible at the regex engine level).
+
+**Severity:** **MEDIUM-HIGH** — the SAMLArt case (HIGH per PR #1531's threat model) is the worst path; bare CSRF/XSRF (MEDIUM-HIGH) are bounded by session lifetime. The propagation is across DOZENS of `sanitize_log_arg(value)` callsites and every `clean_message(text)` invocation in the reporting pipeline (which feeds GitHub Issue bodies, operator-facing `docs/feed-health.md`, and `docs/stations_validation_report.md`). CodeQL / Semgrep do not flag this drift because their default rules cover the well-known token/secret/api_key alternations but not the SAML/CSRF/XSRF specific identifiers.
+
+**Fix:** Two-keyword extension of both regex alternations:
+```python
+_keys = (
+    # ... existing alternations ...
+    r"nonce|state|"
+    r"samlart|csrf|xsrf|"  # NEW
+    # ... rest ...
+)
+_header_keys = (
+    # ... existing alternations ...
+    r"saml[-_.\s]*request|saml[-_.\s]*response|nonce|state|"
+    r"samlart|csrf|xsrf|"  # NEW
+    # ... rest ...
+)
+```
+The bare alternations mirror the existing `nonce|state` style — case-insensitive substring match within the surrounding key=value / Header: Value / JSON pattern. The regex's structural requirements (followed by `=`, `:`, or JSON-quoted form) prevent over-redaction of natural-language prose.
+
+Zero FP risk for the three new keywords: "csrf" / "xsrf" / "samlart" do not appear as substrings of common English words. The bare alternations match only at key-name positions in structured input (query/header/JSON), not in free-form text.
+
+**Tests added:** `tests/test_sentinel_sanitize_log_message_drift.py` — 37 tests across 7 categories:
+  1. Query-form PoCs (8 cases × SAMLArt / _csrf / csrf / CSRF / xsrf / standalone forms): proves the credentials are redacted in `?key=value` / `key=value` log fragments.
+  2. Header-form PoCs (6 cases × `SAMLArt:` / `X-SAMLArt:` / `X-CSRF:` / `CSRF:` / `X-XSRF:` / `XSRF:`): proves the `_header_keys` extension covers bare and X-prefixed header forms.
+  3. JSON-form PoCs (4 cases × `{"key": "value"}` / `{'key': 'value'}`): proves the `_keys` extension covers JSON-style document fragments.
+  4. Regression guards (6 cases): existing alternations (`token` / `password` / `RelayState` via state / `_wpnonce` via nonce / `csrf_token` via token / `XSRF-TOKEN` via token) continue to redact — proves additive change is non-destructive.
+  5. Negative cases (9 cases): natural-language prose containing "csrf" / "xsrf" / "samlart" / "saml" without key=value structure must NOT be redacted — proves regex structural requirements prevent over-redaction.
+  6. `sanitize_log_arg` wrapper PoCs (3 cases): the dominant canonical entry point (`log.warning(..., sanitize_log_arg(value))` callsites) propagates the alternation extension.
+  7. Combined SP-initiated SSO PoC: real-world ACS-POST-failed log line carrying SAMLArt + RelayState side by side — both must be redacted (SAMLArt via new alternation, RelayState via existing `state`).
+
+**Learning:** The codebase has TWO independent redaction codepaths for sensitive credentials in URLs / headers / JSON: (1) the **structured-URL path** (`_SENSITIVE_QUERY_KEYS` + `_SENSITIVE_KEY_SUBSTRINGS` in `src/utils/http.py`) used by `_sanitize_url_for_error` and `_strip_sensitive_params`, and (2) the **raw-text log path** (`_keys` + `_header_keys` regex alternations in `src/utils/logging.py`) used by `sanitize_log_message` / `sanitize_log_arg` / `clean_message` / `_sanitize_log_detail`. The two paths cover complementary input surfaces — structured URLs go through Path 1, raw log text goes through Path 2 — but they share the same KEYWORD LIST contract. **When extending the keyword list, BOTH paths must be updated.** PR #1531 closed Path 1's drift for the SAML/CSRF/WP family; this round closes Path 2. The canonical drift detection: any keyword added to `_SENSITIVE_QUERY_KEYS` should also be checked against `sanitize_log_message`'s `_keys` and `_header_keys`. Future drift rounds should explicitly enumerate both paths in their "Sites closed" section. **The substring-match property of bare regex alternations** (`nonce`, `state`, and now `samlart`/`csrf`/`xsrf`) means that prefix/suffix variants are AUTOMATICALLY covered (`_wpnonce` via `nonce`, `RelayState` via `state`, `_csrf` / `_samlart` via the new entries) — this is more lenient than `_SENSITIVE_QUERY_KEYS`'s exact-match-on-normalised-key contract, which provides a higher SIGNAL-to-noise ratio because the URL-parsing path can be precise about key boundaries while the log-text path must work without structural boundaries.
+
+**Next-round candidates (named-but-deferred):** **OAuth 1.0 `oauth_verifier`** — bare `oauth_verifier` and similar OAuth 1.0 specific parameters not currently covered. **WordPress action-specific nonces (`_ajax_nonce`)** — already partially covered via `nonce` substring, but precise attribution missing. **AWS Sig V4 multi-field `AWS4-HMAC-SHA256`** — still deferred pending body-structure-aware framework. **The five remaining auth-scheme deferred candidates** (Mutual / vapid / SCRAM / Digest / AWS4-HMAC-SHA256 — all multi-field bodies) remain pending body-structure-aware framework architecture.
+
+**Marker:** SENTINEL_LOG_SANITIZE_CSRF_SAML_DRIFT.
+
 ## 2026-05-16 - `_SENSITIVE_QUERY_KEYS` SAML/CSRF/WordPress Drift: Five High-Impact Query Parameter Names (`SAMLArt`/`RelayState`/`_csrf`/`xsrf`/`_wpnonce`) Leaked Verbatim Across BOTH `_sanitize_url_for_error` (Operator Error-Log Streams) AND `_strip_sensitive_params` (URLs Carried Through Cross-Origin Redirect Chains To Potentially-Malicious Target Hosts) — The Bare-Form Drift Sibling Of The Multi-Round HTTP-Header / Query-Param Redaction Family
 
 **Vulnerability:** `src/utils/http.py:_SENSITIVE_QUERY_KEYS` (the canonical exact-match set used by both `_sanitize_url_for_error` for error-log redaction AND `_strip_sensitive_params` for cross-origin redirect protection) was missing five high-impact query parameter names whose normalised forms (`samlart` / `relaystate` / `csrf` / `xsrf` / `wpnonce`) are NOT substrings of any entry in `_SENSITIVE_KEY_SUBSTRINGS` (the `token` substring catches `csrf_token`, `csrfmiddlewaretoken`, `XSRF-TOKEN` and similar prefixed/suffixed variants — but NOT bare `csrf` / `xsrf` from Spring Security's `_csrf` GET-based protection or Angular's bootstrap `xsrf` cookie). Pre-fix every leaked `?SAMLArt=<60-char-base64>` / `?RelayState=<URL>` / `?_csrf=<UUID>` / `?xsrf=<24-char-token>` / `?_wpnonce=<10-char-hash>` query parameter:
