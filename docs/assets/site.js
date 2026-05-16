@@ -390,7 +390,6 @@
     const byProvider = countBy(rows, (r) => r.provider || "Unbekannt");
     const byWeekday = countByKey(rows, (r) => r.weekday, WEEKDAYS);
     const byHour = countByKey(rows, (r) => r.hour, HOURS);
-    const byLocation = countBy(rows, (r) => r.location_name || "unbekannt");
 
     const topProvider = topEntry(byProvider);
     const peakHour = topEntry(byHour);
@@ -419,10 +418,6 @@
 
     renderBars("#stoerungen-hour",
       HOURS.map((h) => [`${h}:00`, byHour[h] || 0]),
-      { unit: "", formatValue: (v) => nfInt.format(v) });
-
-    renderBars("#stoerungen-locations",
-      sortedEntries(byLocation).slice(0, 10),
       { unit: "", formatValue: (v) => nfInt.format(v) });
   }
 
