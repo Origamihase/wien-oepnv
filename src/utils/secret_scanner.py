@@ -618,6 +618,69 @@ _KNOWN_TOKENS = [
     # so credentials in committed config / notebook outputs / log artefacts
     # need precise attribution rather than a generic high-entropy hit.
     (re.compile(r"(?<![A-Za-z0-9])hf_[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "Hugging Face Access Token gefunden"),
+    # Groq API keys (``gsk_<48+ alphanumeric>``). Issued via
+    # console.groq.com/keys for Groq's LLM inference API (extremely
+    # fast token generation via custom LPU silicon — the platform's
+    # competitive edge is sub-100ms first-token latency on Llama / Mixtral
+    # / Gemma deployments). The ``gsk_`` prefix is unambiguous (no
+    # other major issuer uses this prefix), and the strict alphanumeric
+    # body lies entirely inside the entropy fallback's
+    # ``[A-Za-z0-9+/=_-]`` alphabet — so the entropy regex matches the
+    # full ``gsk_<body>`` span as one generic "Hochentropischer
+    # Token-String" finding, losing the Groq-specific issuer attribution
+    # that incident-response keys off (revocation flow at
+    # console.groq.com/keys; audit completion-API usage logs for
+    # chargeback fraud / model-prompt exfiltration). Body lower bound
+    # 32 chars allows future canonical length variations while
+    # rejecting short ``gsk_``-prefixed fragments; real Groq keys are
+    # 48-56 chars body. A leak grants the issuing account's full
+    # Groq API scope: trigger inference jobs at the victim's expense
+    # (USD 0.10-1.00 per completion at scale), exfiltrate proprietary
+    # prompts via deployed-model queries, and potentially modify webhook
+    # / billing configuration depending on the platform's account-
+    # management API surface. Real-world emission patterns: Python
+    # notebook outputs hardcoding ``client = Groq(api_key="gsk_...")``;
+    # committed ``.env`` files; README curl examples; CI debug logs.
+    (re.compile(r"(?<![A-Za-z0-9])gsk_[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "Groq API Key gefunden"),
+    # Replicate API tokens (``r8_<40 alphanumeric>``). Issued via
+    # replicate.com/account/api-tokens for Replicate's hosted-model
+    # inference platform (Stable Diffusion, Llama, FLUX, Whisper,
+    # custom Cog-packaged models). The ``r8_`` prefix is unambiguous
+    # (no other major issuer uses this prefix). The 40-char alphanumeric
+    # body matches Replicate's documented canonical format strictly —
+    # rejecting short ``r8_``-prefixed fragments AND rejecting body
+    # variations that don't fit the exact length. A leak's PRIMARY
+    # attack vector is BILLING-CREDIT DRAIN — Replicate charges
+    # per GPU-second for hosted inference (Stable Diffusion XL on
+    # A100 = ~USD 0.01/sec; Llama-70B = ~USD 0.05/sec; long-running
+    # video generation = $$$$). An attacker with the leaked token
+    # can trigger arbitrary inference jobs, draining $1000s of
+    # credits in hours before the victim notices. Distinct revocation
+    # flow at replicate.com/account/api-tokens — must rotate the
+    # specific token AND audit the recent inference job history.
+    # Real-world emission: Python notebook outputs; ``REPLICATE_API_TOKEN=``
+    # in committed ``.env``; HuggingFace Spaces secrets leaked to repo
+    # config.
+    (re.compile(r"(?<![A-Za-z0-9])r8_[A-Za-z0-9]{40}(?![A-Za-z0-9])"), "Replicate API Token gefunden"),
+    # Perplexity API keys (``pplx-<32+ alphanumeric>``). Issued via
+    # perplexity.ai/settings/api for Perplexity's Sonar / Sonar-Pro API
+    # (AI-powered search and chat completions with real-time web
+    # grounding). The ``pplx-`` prefix is unambiguous, and the strict
+    # alphanumeric body lies entirely inside the entropy alphabet — so
+    # the entropy regex matches the full ``pplx-<body>`` span as one
+    # generic "Hochentropischer Token-String" finding, losing the
+    # Perplexity-specific issuer attribution that incident-response
+    # keys off (revocation flow at perplexity.ai/settings/api; audit
+    # Sonar-API completion logs for chargeback fraud / prompt
+    # exfiltration). Body lower bound 32 chars allows future canonical
+    # length variations while rejecting short ``pplx-``-prefixed
+    # fragments; real Perplexity keys are 48-56 chars body. A leak
+    # grants the issuing account's full Perplexity API scope:
+    # trigger Sonar / Sonar-Pro completions at the victim's expense
+    # (USD 0.20-1.00 per completion for Sonar-Pro with web grounding),
+    # exfiltrate proprietary prompts. Real-world emission: ``.env``
+    # commits, curl examples in tutorials, CI/CD pipeline debug.
+    (re.compile(r"(?<![A-Za-z0-9])pplx-[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "Perplexity API Key gefunden"),
     # DigitalOcean Personal Access Tokens (``dop_v1_<64 hex>``) and OAuth
     # refresh tokens (``doo_v1_<64 hex>``). The ``v1`` prefix anchors against
     # the official format; the strict 64-char lowercase-hex body avoids
