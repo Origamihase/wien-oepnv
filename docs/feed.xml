@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 16 May 2026 17:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 18:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[49: Demonstration Betrieb ab Urban-Loritz-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">40b4f7decde925385377867349f45aafc895c02aac6707266641246c620624e6</guid>
+      <pubDate>Sat, 16 May 2026 15:08:47 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 15:30:38 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 15:08:47 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 16 May 2026 22:00:00 +0200</ext:ends_at>
+      <description>[Am 16.05.2026]</description>
+      <content:encoded><![CDATA[[Am 16.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12A: Demonstration Betrieb ab Längenfeldgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -54,28 +65,6 @@
       <content:encoded><![CDATA[Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 16.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[49: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a09a0e489f9b78562f25a5afc4dda87d78fde8e6368b8b93d4b0c2e594a3be4a</guid>
-      <pubDate>Sat, 16 May 2026 14:31:00 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 15:30:38 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 14:31:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 16.05.2026]</description>
-      <content:encoded><![CDATA[Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 16.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
-      <pubDate>Sat, 16 May 2026 14:18:00 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 14:00:32 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 14:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 16.05.2026]</description>
-      <content:encoded><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 16.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[D: Richtung Nußdorf Züge halten bei Schottenring 19]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">1af98f3deb75b5ba535ed0d0e501e84bbf83aaee99eb621850255d9f782ebc98</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Betrieb ab Schwarzenbergplatz [Am 16.05.2026]</description>
       <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz<br/>[Am 16.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Sat, 16 May 2026 04:45:03 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 05:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 04:45:03 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 00:35:00 +0200</ext:ends_at>
+      <description>[16.05.2026 – 17.05.2026]</description>
+      <content:encoded><![CDATA[[16.05.2026 – 17.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
