@@ -1,22 +1,21 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-16T16:35:20+00:00_
+_Generated: 2026-05-16T17:24:57+00:00_
 
 **Stations: 1941 → 1941 (Δ +0)**
 
-## Added (1)
+## Added (0)
 
-- `name:Wien Sofienalpenstraße, Roßkopfgasse (WL)` — Wien Sofienalpenstraße, Roßkopfgasse \(WL\)
+_None._
 
-## Removed (1)
+## Removed (0)
 
-- `name:Wien Unter St. Veit, Hummelgasse (WL)` — Wien Unter St. Veit, Hummelgasse \(WL\)
+_None._
 
 ## Renamed (0)
 
 _None._
 
-## Coordinates shifted (≥ 100 m) (2)
+## Coordinates shifted (≥ 100 m) (0)
 
-- `name:Wien Halblehenweg (WL)` — Wien Halblehenweg \(WL\) (116861 m)
-- `name:Wien Leopoldine-Padaurek-Straße (WL)` — Wien Leopoldine-Padaurek-Straße \(WL\) (78245 m)
+_None._
