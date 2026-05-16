@@ -139,6 +139,79 @@ def test_merge_wl_data_into_existing_vor_entry(stations_path: Path) -> None:
     assert rerun == merged
 
 
+def test_merge_into_existing_google_places_stub_via_wl_diva_index(
+    stations_path: Path,
+) -> None:
+    """The 2026-05-16 PR #1539 fix: a WL payload whose ``name`` doesn't
+    normalise to the existing entry's ``name`` (Innenstadt-U-Bahn pattern
+    — payload ``Wien Herrengasse (WL)`` vs existing ``Herrengasse``) must
+    still merge via the new ``wl_diva`` index instead of producing a
+    duplicate entry.
+
+    Pre-fix, ``_normalize_key`` rendered the two names as ``herrengasse``
+    vs ``wienherrengassewl`` so the name-index lookup missed, ``vor_id`` /
+    ``bst_id`` were both absent, and the WL payload landed in
+    ``unmatched`` — creating the ten Innenstadt-U-Bahn DIVA duplicates.
+    """
+    stations_path.write_text(
+        json.dumps(
+            [
+                {
+                    "name": "Herrengasse",
+                    "wl_diva": "60200506",
+                    "_google_place_id": "ChIJBa9sJZgHbUcRrekncb64g2M",
+                    "_types": ["subway_station"],
+                    "aliases": ["Herrengasse", "Bahnhof Herrengasse"],
+                    "latitude": 48.2096482,
+                    "longitude": 16.36638,
+                    "in_vienna": True,
+                    "pendler": False,
+                    "source": "google_places",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    wl_entries = [
+        {
+            "name": "Wien Herrengasse (WL)",
+            "wl_diva": "60200506",
+            "aliases": ["Wien Herrengasse (WL)", "Herrengasse U"],
+            "wl_stops": [
+                {"stop_id": "2938", "name": "Herrengasse U"},
+                {"stop_id": "4907", "name": "Herrengasse"},
+            ],
+            "latitude": 48.20975,
+            "longitude": 16.365304,
+            "in_vienna": True,
+            "pendler": False,
+            "source": "wl",
+        }
+    ]
+
+    update_wl_stations.merge_into_stations(stations_path, wl_entries)
+
+    merged = _read_entries(stations_path)
+
+    # The critical invariant: exactly ONE entry, not two.
+    assert len(merged) == 1, (
+        "WL payload must merge into the google_places stub via wl_diva, "
+        f"got {len(merged)} entries"
+    )
+    entry = merged[0]
+    assert entry["wl_diva"] == "60200506"
+    assert entry["source"] == "google_places,wl"
+    # Google Places identity bits survive the merge.
+    assert entry["_google_place_id"] == "ChIJBa9sJZgHbUcRrekncb64g2M"
+    assert entry["_types"] == ["subway_station"]
+    # WL payload contributes wl_stops + new aliases.
+    assert entry["wl_stops"] == wl_entries[0]["wl_stops"]
+    from typing import cast
+    aliases = set(cast(list[str], entry["aliases"]))
+    assert {"Herrengasse", "Wien Herrengasse (WL)"} <= aliases
+
+
 def test_unmatched_wl_entry_is_appended(stations_path: Path) -> None:
     wl_entries = [
         {

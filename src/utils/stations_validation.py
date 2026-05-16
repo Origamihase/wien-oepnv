@@ -115,6 +115,35 @@ class NamingIssue:
     reason: str
 
 
+@dataclass(frozen=True)
+class IdentityFieldConflict:
+    """Two stations declaring the same value in a structural identifier field.
+
+    Caught the 2026-05-16 Innenstadt-U-Bahn drift: ten ``wl_diva`` values
+    (Herrengasse, Schwedenplatz, Volkstheater, …) were shared between a
+    ``google_places``-sourced stub and the canonical ``source: wl`` entry
+    because ``scripts/update_wl_stations.py:merge_into_stations``
+    indexed existing entries by ``vor_id`` / ``bst_id`` / ``name`` but
+    not by ``wl_diva``. ``_find_cross_station_id_conflicts`` did not
+    fire — it only compares aliases against other stations' identity
+    fields, not identity-vs-identity. ``_find_duplicate_coordinate_
+    groups`` did not fire either — the stub and the master coordinates
+    differed by ~7-50 m, below the rounding granularity but above the
+    5-decimal-place bucket boundary.
+
+    Distinct from :class:`CrossStationIDIssue`: this dataclass flags a
+    raw identity-field collision (same ``wl_diva`` declared by two
+    entries), whereas ``CrossStationIDIssue`` captures the more
+    indirect case where one entry's *alias* shadows another entry's
+    identity field.
+    """
+
+    field: str
+    value: str
+    identifiers: tuple[str, ...]
+    names: tuple[str, ...]
+
+
 # Per-cell length cap applied at every ``stations.json``-derived
 # Markdown sink in :meth:`ValidationReport.to_markdown`. Mirrors the
 # canonical ``_DASHBOARD_FIELD_MAX_LEN`` constant in
@@ -155,6 +184,11 @@ class ValidationReport:
     provider_issues: tuple[ProviderIssue, ...]
     naming_issues: tuple[NamingIssue, ...]
     gtfs_stop_count: int
+    # Defaulted last so existing call sites that built ``ValidationReport``
+    # positionally before the 2026-05-16 PR #1539 addition keep working
+    # — adopted by the test fixtures + ``scripts/update_all_stations.py``
+    # auto-quarantine path.
+    identity_field_conflicts: tuple[IdentityFieldConflict, ...] = ()
 
     @property
     def has_issues(self) -> bool:
@@ -167,6 +201,7 @@ class ValidationReport:
             or self.cross_station_id_issues
             or self.provider_issues
             or self.naming_issues
+            or self.identity_field_conflicts
         )
 
     def to_markdown(self) -> str:
@@ -211,6 +246,7 @@ class ValidationReport:
         lines.append(f"*Security warnings*: {len(self.security_issues)}")
         lines.append(f"*Provider issues*: {len(self.provider_issues)}")
         lines.append(f"*Cross station ID issues*: {len(self.cross_station_id_issues)}")
+        lines.append(f"*Identity field conflicts*: {len(self.identity_field_conflicts)}")
         lines.append(f"*Naming issues*: {len(self.naming_issues)}")
         lines.append("")
 
@@ -238,6 +274,17 @@ class ValidationReport:
                     f"alias '{_safe_md(cross.alias)}' collides with "
                     f"{_safe_md(cross.colliding_field)} of "
                     f"{_safe_md(cross.colliding_identifier)} ({_safe_md(cross.colliding_name)})"
+                )
+            lines.append("")
+
+        if self.identity_field_conflicts:
+            lines.append("## Identity field conflicts")
+            for conflict in self.identity_field_conflicts:
+                joined_ids = ", ".join(_safe_md(ident) for ident in conflict.identifiers)
+                joined_names = ", ".join(_safe_md(name) for name in conflict.names)
+                lines.append(
+                    f"- {_safe_md(conflict.field)}={_safe_md(conflict.value)} "
+                    f"shared by [{joined_ids}] ({joined_names})"
                 )
             lines.append("")
 
@@ -317,6 +364,7 @@ def validate_stations(
     cross_station_id_issues = tuple(_find_cross_station_id_conflicts(stations))
     provider_issues = tuple(_find_provider_issues(stations))
     naming_issues = tuple(_find_naming_issues(stations))
+    identity_field_conflicts = tuple(_find_identity_field_conflicts(stations))
 
     return ValidationReport(
         total_stations=len(stations),
@@ -329,6 +377,7 @@ def validate_stations(
         provider_issues=provider_issues,
         naming_issues=naming_issues,
         gtfs_stop_count=gtfs_count,
+        identity_field_conflicts=identity_field_conflicts,
     )
 
 
@@ -743,6 +792,51 @@ def _find_cross_station_id_conflicts(
                             colliding_name=str(colliding_entry.get("name", "")).strip() or "<unknown>",
                             colliding_field=field,
                         )
+
+
+def _find_identity_field_conflicts(
+    stations: Sequence[Mapping[str, object]]
+) -> Iterator[IdentityFieldConflict]:
+    """Yield one issue per value that appears on more than one station.
+
+    Checks each of the four structural identifier fields
+    (``wl_diva`` / ``vor_id`` / ``bst_id`` / ``bst_code``). The
+    project's eindeutigkeits-Garantie pins these as primary keys; any
+    duplicate means two stations claim the same physical asset (post
+    PR #1538 a ``google_places`` stub and a ``source: wl`` master
+    shared the same DIVA for ten Innenstadt-U-Bahn stops because the
+    WL merge step indexed by name and ``_normalize_key`` rendered
+    ``Herrengasse`` and ``Wien Herrengasse (WL)`` as distinct keys).
+
+    Whitespace-stripped + lower-cased ``int`` / ``str`` values are
+    compared; ``None`` and empty strings are ignored.  Distinct from
+    :func:`_find_cross_station_id_conflicts`, which fires only when an
+    *alias* on one station shadows an *identity* field on a different
+    station — this function fires on raw identity collisions.
+    """
+    for field in ("wl_diva", "vor_id", "bst_id", "bst_code"):
+        seen: dict[str, list[Mapping[str, object]]] = defaultdict(list)
+        for entry in stations:
+            val = entry.get(field)
+            if not isinstance(val, str | int):
+                continue
+            key = str(val).strip()
+            if not key:
+                continue
+            seen[key].append(entry)
+        for value, entries in seen.items():
+            if len(entries) <= 1:
+                continue
+            identifiers = tuple(_format_identifier(e) for e in entries)
+            names = tuple(
+                str(e.get("name", "")).strip() or "<unknown>" for e in entries
+            )
+            yield IdentityFieldConflict(
+                field=field,
+                value=value,
+                identifiers=identifiers,
+                names=names,
+            )
 
 
 def _extract_source_tokens(value: object) -> set[str]:

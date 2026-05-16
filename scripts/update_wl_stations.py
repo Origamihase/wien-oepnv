@@ -1157,6 +1157,15 @@ def merge_into_stations(
     vor_index: dict[str, dict[str, object]] = {}
     bst_index: dict[str, dict[str, object]] = {}
     name_index: dict[str, dict[str, object]] = {}
+    # Added 2026-05-16 (PR #1539): index by ``wl_diva`` so a WL payload
+    # whose name doesn't normalise to the existing ``google_places`` /
+    # ``oebb`` entry's name (the Innenstadt-U-Bahn pattern — payload
+    # ``Wien Herrengasse (WL)`` vs existing ``Herrengasse``) is still
+    # merged into the existing record instead of duplicated. Pre-fix,
+    # ten Innenstadt-U-Bahn DIVAs (Herrengasse, Schwedenplatz,
+    # Volkstheater, …) were silently duplicated each cron tick because
+    # ``_normalize_key`` rendered the two names as distinct keys.
+    wl_diva_index: dict[str, dict[str, object]] = {}
 
     for entry in existing:
         source = entry.get("source")
@@ -1182,14 +1191,29 @@ def merge_into_stations(
             if key and key not in name_index:
                 name_index[key] = entry
 
+        wl_diva = entry.get("wl_diva")
+        if wl_diva is not None:
+            key = str(wl_diva).strip()
+            if key and key not in wl_diva_index:
+                wl_diva_index[key] = entry
+
     log.info("Keeping %d existing non-WL stations", len(filtered))
 
     unmatched: list[dict[str, object]] = []
     for payload in wl_entries:
         merged_into: dict[str, object] | None = None
 
-        vor_id = payload.get("vor_id")
-        merged_into = _lookup_candidates(vor_index, vor_id)
+        # Match precedence: ``wl_diva`` first — strongest WL-domain
+        # identifier and the failure mode the new index was added for.
+        # Then ``vor_id`` / ``bst_id`` / ``name`` as before so cross-
+        # provider stubs (VOR-only / ÖBB-only) continue to consolidate
+        # the same way.
+        wl_diva = payload.get("wl_diva")
+        merged_into = _lookup_candidates(wl_diva_index, wl_diva)
+
+        if merged_into is None:
+            vor_id = payload.get("vor_id")
+            merged_into = _lookup_candidates(vor_index, vor_id)
 
         if merged_into is None:
             bst_id = payload.get("bst_id")
