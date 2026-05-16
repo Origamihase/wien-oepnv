@@ -2211,6 +2211,21 @@ def _format_item_content(
     if time_line:
         time_line = f"[{time_line.strip('[]')}]"
 
+    # Strip a dangling WL directional marker — descriptions like
+    # ``Veranstaltung\nBetrieb ab Schwedenplatz >`` and
+    # ``Gleisbauarbeiten\nBetrieb ab Thaliastraße >`` carry a
+    # trailing ``>`` (or ``<``) that WL uses as a "service onwards"
+    # arrow indicator. Standalone at the end of the summary it
+    # renders as a stray glyph next to the timeframe bracket
+    # (``Schwedenplatz > [Am 16.05.2026]``) and the user reads it
+    # as a broken HTML tag or truncation artifact.
+    # Performed BEFORE the title-body duplicate check below so that
+    # a summary like ``Betrieb ab Schwedenplatz >`` can be matched
+    # against a title body of ``Betrieb ab Schwedenplatz`` and
+    # dropped entirely when redundant.
+    if summary:
+        summary = re.sub(r"\s*[<>]+\s*$", "", summary).rstrip()
+
     # Skip the summary entirely when it would just repeat the title
     # body verbatim. WL Störung items like ``41E: Ersatzbus 41E halten
     # bei Währinger Str 200`` produce a description that's identical
