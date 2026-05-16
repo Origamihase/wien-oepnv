@@ -458,6 +458,47 @@ _SENSITIVE_HEADER_PARTIALS = frozenset({
     # SAML/JWT bearer assertions are sometimes carried in headers (e.g.
     # `Saml-Assertion`, `X-Subject-Assertion`); strip on cross-origin redirect.
     "assertion",
+    # Security (third-sibling-drift closure of PR #1531
+    # ``_SENSITIVE_QUERY_KEYS`` + PR #1532 ``_keys``/``_header_keys``
+    # log regex extensions): align the HTTP-header redaction path's
+    # canonical floor with the URL-query-param and log-message paths
+    # for the SAML 2.0 / CSRF / WordPress credential family.
+    #
+    # The token-suffixed forms (``X-CSRF-Token``, ``X-XSRF-TOKEN``,
+    # ``X-WP-Nonce-Token``) are already covered via the ``token``
+    # substring above. The bare forms (``X-CSRF``, ``CSRF``,
+    # ``X-XSRF``, ``XSRF``, ``X-WP-Nonce``, ``X-Nonce``, ``Nonce``,
+    # ``SAMLArt``, ``X-SAMLArt``, ``RelayState``, ``X-OAuth-State``)
+    # are NOT covered by any existing partial. Pre-fix every leaked
+    # bare-form header value passed through ``_strip_sensitive_headers``
+    # to the redirect target on cross-origin redirects (host change,
+    # scheme downgrade, port change). The credential value reached
+    # the attacker's access logs.
+    #
+    #   * ``csrf`` — bare X-CSRF / CSRF / X-Custom-Csrf-Field /
+    #     csrf-anything custom protocol headers.
+    #   * ``xsrf`` — bare X-XSRF / XSRF / Angular-style custom XSRF.
+    #   * ``samlart`` — SAML 2.0 Artifact in HTTP header form
+    #     (non-standard but real in some custom SAML SP shims; 5-min
+    #     ARS-resolvable bearer credential).
+    #   * ``nonce`` — X-WP-Nonce (WordPress REST API authentication
+    #     header per https://developer.wordpress.org/rest-api/...) +
+    #     X-Nonce / generic challenge-response nonce headers.
+    #   * ``state`` — RelayState (SAML 2.0 §3.4.4 in non-canonical
+    #     header form) + X-OAuth-State / generic state-preservation
+    #     headers.
+    #
+    # The partial-substring approach handles hyphenated, underscored,
+    # X-prefixed, and case-shifted variants in a single addition per
+    # the existing convention (``token`` matches ``Bearer-Token``,
+    # ``api_token``, ``X-API-Token``, etc.). On cross-origin
+    # redirects over-stripping is the safer default (the alternative
+    # is leaking credentials to the redirect target).
+    "csrf",
+    "xsrf",
+    "samlart",
+    "nonce",
+    "state",
 })
 
 
