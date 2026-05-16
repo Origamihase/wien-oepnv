@@ -18,6 +18,7 @@ import json
 import logging
 import sys
 from pathlib import Path
+from typing import Any, cast
 
 import pytest
 
@@ -28,12 +29,12 @@ if str(REPO_ROOT) not in sys.path:
 from scripts import apply_station_overrides  # noqa: E402
 
 
-def _write(path: Path, payload: dict) -> None:
+def _write(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
-def _stations_from(path: Path) -> list[dict]:
-    return json.loads(path.read_text(encoding="utf-8"))["stations"]
+def _stations_from(path: Path) -> list[dict[str, Any]]:
+    return cast(list[dict[str, Any]], json.loads(path.read_text(encoding="utf-8"))["stations"])
 
 
 # ---------------------------------------------------------------------------

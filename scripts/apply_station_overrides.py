@@ -36,14 +36,13 @@ import json
 import logging
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from src.utils.cache import atomic_write  # noqa: E402
-from src.utils.files import read_capped_text  # noqa: E402
+from src.utils.files import atomic_write, read_capped_text  # noqa: E402
 from src.utils.stations import MAX_STATIONS_FILE_BYTES  # noqa: E402
 
 # Cap matches the overrides file's expected upper bound; 1 MiB is generous
@@ -102,9 +101,9 @@ def _load_json(path: Path, max_bytes: int, label: str) -> Any:
 def _stations_list(payload: Any) -> list[dict[str, Any]]:
     """Return the mutable station list from either the wrapped or bare form."""
     if isinstance(payload, list):
-        return payload
+        return cast(list[dict[str, Any]], payload)
     if isinstance(payload, dict) and isinstance(payload.get("stations"), list):
-        return payload["stations"]
+        return cast(list[dict[str, Any]], payload["stations"])
     raise OverrideError("stations payload must be a list or a {'stations': [...]} object")
 
 
@@ -142,7 +141,7 @@ def _op_restore(stations: list[dict[str, Any]], override: dict[str, Any]) -> str
         )
     existing = _find_by_diva(stations, diva)
     if existing is not None:
-        return f"skip (already present)"
+        return "skip (already present)"
     new_entry = dict(entry_template)
     name = new_entry.get("name", "<unknown>")
     insert_at = _alpha_insertion_index(stations, name if isinstance(name, str) else "")
