@@ -729,6 +729,56 @@ _KNOWN_TOKENS = [
     # OpenAI / Groq / etc. keys without those being separately
     # exposed in source.
     (re.compile(r"(?<![A-Za-z0-9])sk-or-v1-[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "OpenRouter API Key gefunden"),
+    # Database connection strings with embedded credentials
+    # (``<scheme>://<user>:<pass>@<host>``). Pre-fix EVERY database
+    # URI with credentials was SILENTLY UNDETECTED across BOTH
+    # detection branches:
+    #   1. **Entropy fallback** (``_HIGH_ENTROPY_RE``): the body
+    #      alphabet ``[A-Za-z0-9+/=_-]`` excludes ``:``, ``/``, ``@``,
+    #      so the entropy matcher splits at every URI delimiter. The
+    #      fragments (``postgres``, ``admin``, ``secret123``,
+    #      ``db.example.com``, ``5432``, ``prod``) are each below the
+    #      24-char floor — NO finding fires.
+    #   2. **Assignment heuristic** (``_SENSITIVE_ASSIGN_RE``): even
+    #      with a sensitive variable name (``DATABASE_URL``,
+    #      ``MONGO_URI``, ``REDIS_URL``), the unquoted-value branch
+    #      SKIPS values containing ``()[]:`` characters at
+    #      ``_scan_content``. Every database URI contains ``://`` AND
+    #      a port-separator ``:`` — the check rejects the URI verbatim.
+    # Combined effect: a committed ``.env`` file with
+    # ``DATABASE_URL=postgres://admin:supersecret@prod-db.example.com:5432/prod``
+    # ships to production with NO scanner alert.
+    #
+    # Threat model: database credentials are HIGHEST-VALUE secrets —
+    # the URI password is base64-decodable in plain text (no offline
+    # cracking needed), the URI typically targets production, and the
+    # leak enables: (a) full read/write access to all customer data /
+    # billing records / session stores; (b) lateral movement via
+    # shared password reuse on related infrastructure; (c) schema
+    # reconnaissance for social-engineering; (d) persistence via
+    # INSERT of backdoor records.
+    #
+    # The regex matches the canonical RFC-3986-style URI shape for
+    # the top database / broker / mail schemes. The structural
+    # requirement ``user:pass@`` prevents matching URIs without
+    # credentials (``postgres://localhost/db`` is benign — no match).
+    # The ``(?i)`` inline flag handles case-insensitive scheme literals
+    # (per RFC 3986 §3.1, URI schemes are case-insensitive). The
+    # optional ``jdbc:`` prefix covers Java JDBC URL conventions.
+    # Real-world emission: ``.env`` files, ``docker-compose.yml``,
+    # Heroku ``app.json``, settings.py / application.yml /
+    # database.yml, Python notebook output, README example URIs
+    # (often live!), migration scripts, K8s ConfigMaps, Terraform
+    # outputs.
+    (
+        re.compile(
+            r"(?i)\b(?:jdbc:)?"
+            r"(?:postgres(?:ql)?|mysql|mariadb|mongodb(?:\+srv)?|redis|"
+            r"amqp|amqps|kafka|clickhouse|cassandra|elasticsearch|smtp|smtps)"
+            r"://[^@\s/:]+:[^@\s/]+@[^\s/]+"
+        ),
+        "Database Connection String gefunden",
+    ),
     # DigitalOcean Personal Access Tokens (``dop_v1_<64 hex>``) and OAuth
     # refresh tokens (``doo_v1_<64 hex>``). The ``v1`` prefix anchors against
     # the official format; the strict 64-char lowercase-hex body avoids
