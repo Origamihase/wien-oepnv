@@ -497,11 +497,41 @@ def _default_env_file_candidates(base_dir: Path) -> Iterable[Path]:
             if not candidate.is_absolute():
                 candidate = base_dir / candidate
 
-            resolved_candidate = Path(os.path.abspath(candidate))
+            # Security (Symlink-Following Bypass): use ``Path.resolve()`` so
+            # symlinks are followed to their filesystem target BEFORE the
+            # containment check. The previous ``os.path.abspath`` shape only
+            # normalised the path lexically (``.``/``..`` resolution) and did
+            # NOT follow symlinks, so a symlink planted inside ``base_dir``
+            # pointing outside (e.g. ``<base_dir>/decoy.env -> /etc/environment``)
+            # passed the ``relative_to(base_dir)`` check and let
+            # ``load_env_file`` read arbitrary filesystem locations. The
+            # blast radius of a successful exploit: ``KEY=VALUE`` pairs from
+            # any readable file (``/etc/environment``, ``~/.aws/credentials``
+            # shape, leaked process env dumps) become process env vars —
+            # which downstream consumers (proxy variables, provider URL
+            # overrides not pinned to a canonical allowlist, log-level
+            # toggles) treat as trusted operator input. Resolving via
+            # ``Path.resolve(strict=False)`` follows every symlink hop and
+            # rejects targets outside ``base_dir`` at the containment check.
+            # ``OSError`` covers symlink-loop / I/O errors; ``RuntimeError``
+            # covers the Python-internal infinite-loop guard on some
+            # interpreter versions. Both error classes fail closed
+            # (skip the candidate) so the secure default holds for any
+            # filesystem state that prevents full resolution. Mirrors the
+            # ``Path.resolve()`` containment shape pinned by
+            # :func:`read_secret` for the systemd / Docker secret sub-trees
+            # and :func:`src.feed.config.validate_path` for the
+            # ``OUT_PATH`` / ``STATE_PATH`` / ``LOG_DIR`` env-controlled
+            # boundaries.
+            try:
+                resolved_candidate = candidate.resolve(strict=False)
+            except (OSError, RuntimeError):
+                continue
             try:
                 resolved_candidate.relative_to(base_dir)
             except ValueError:
-                # Disallow bypassing base_dir with absolute paths or ../
+                # Disallow bypassing base_dir with absolute paths, ../, or
+                # symlinks that resolve outside base_dir.
                 continue
 
             candidates.append(resolved_candidate)
