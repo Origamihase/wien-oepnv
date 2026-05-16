@@ -267,9 +267,20 @@
     list.setAttribute("aria-busy", "false");
     clear(list);
 
+    // "Andere" is a catch-all for anything that is not Wiener Linien
+    // or ÖBB – so a hypothetical VOR/VAO item (still labelled green
+    // by detectSource) is also visible under "Andere", not just under
+    // "Alle". The dedicated VOR/VAO chip was removed in 2026-05 because
+    // VOR data now flows only into the Stammstrecken monitor.
     const filtered = feedState.filter === "all"
       ? feedState.items
-      : feedState.items.filter((it) => detectSource(it) === feedState.filter);
+      : feedState.items.filter((it) => {
+          const src = detectSource(it);
+          if (feedState.filter === "other") {
+            return src !== "wienerlinien" && src !== "oebb";
+          }
+          return src === feedState.filter;
+        });
 
     if (countBadge) {
       countBadge.textContent = `${nfInt.format(filtered.length)} aktiv`;
