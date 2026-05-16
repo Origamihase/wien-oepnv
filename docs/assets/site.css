@@ -642,6 +642,23 @@ code {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem 2rem;
 }
+.site-footer__hero {
+  grid-column: 1 / -1;
+  margin: 0 0 0.5rem;
+  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  visibility: hidden;
+}
+.site-footer__hero strong {
+  display: block;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  letter-spacing: -0.005em;
+  text-transform: none;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+}
 .site-footer__heading {
   font-size: 0.86rem;
   font-weight: 700;
