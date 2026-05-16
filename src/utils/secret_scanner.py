@@ -143,6 +143,64 @@ _BEARER_RE = re.compile(r"(?i)Bearer\s+([A-Za-z0-9\-_.]{16,})")
 # second-layer filter for any token-shaped string that does happen to
 # follow a ``basic``-prefixed natural-language passage.
 _BASIC_AUTH_RE = re.compile(r"(?i)Basic\s+([A-Za-z0-9+/=]{16,})")
+# Security: ``Negotiate`` literal is matched case-insensitively per RFC
+# 7235 §2.1 (referenced by RFC 4559 §4 — the HTTP SPNEGO authentication
+# scheme used for Kerberos and NTLMSSP via GSSAPI). The Basic Auth
+# detector closed the auth-scheme case-insensitivity contract for
+# ``Basic``; this detector extends the same contract to ``Negotiate``,
+# the canonical RFC-defined HTTP auth-scheme for Kerberos/SPNEGO. Two
+# downstream failure modes were left open by the absence of this
+# detector:
+#   1. **Attribution drift** — long Kerberos GSSAPI tokens (200+ chars
+#      base64-encoded per RFC 4120's AS-REQ/AS-REP/AP-REQ ASN.1 DER
+#      envelope) DO match ``_HIGH_ENTROPY_RE`` generically and land as
+#      ``Hochentropischer Token-String``, losing the SPNEGO-specific
+#      reason that pinpoints revocation flow (KDC ticket revocation,
+#      force user re-auth, audit service principal for replay within
+#      the ticket's typical 8-10h lifetime per RFC 4120 §5.3 default
+#      ``EndTime``; distinct from Bearer-Token IdP revocation and from
+#      Basic Auth user-password rotation). Incident-response triage
+#      must guess the revocation playbook without per-scheme
+#      attribution.
+#   2. **Silent undetection** — all-letter base64 bodies trip the
+#      ``candidate.isalpha()`` skip in the entropy fallback loop (added
+#      to suppress LongCamelCaseClassName false positives). Pre-fix
+#      every leaked ``Negotiate <all-letter-body>`` was SILENTLY
+#      UNDETECTED entirely — the CI gate passed, the encrypted
+#      Kerberos ticket sat committed in the public repo for the full
+#      ticket validity window.
+# The body alphabet ``[A-Za-z0-9+/=]`` is the canonical base64 alphabet
+# per RFC 4648 §4 (standard base64; RFC 4559 §4 references the original
+# base64 encoding per RFC 1421, which uses ``+/=`` not the URL-safe
+# ``_-`` substitution). The 50+ char body floor is the structural
+# disambiguator against natural-language false positives — real
+# Kerberos AS-REP / AP-REQ tokens are 200-3000+ chars base64-encoded
+# (the ASN.1 DER envelope alone is ~100 bytes, the encrypted ticket
+# adds 200-2000+ bytes for typical service principals), so 50 is a
+# safe conservative floor that catches even truncated tokens in
+# fragmented log lines. The English word "negotiate" appears commonly
+# in code comments and natural prose, but never followed by 50+
+# contiguous chars from ``[A-Za-z0-9+/=]`` (English words break at
+# whitespace and punctuation). The downstream
+# ``_looks_like_secret(candidate, is_assignment=True)`` heuristic
+# (``min_categories=1`` in the auth-scheme path) provides the
+# second-layer filter for any token-shaped string that does happen to
+# follow a ``negotiate``-prefixed natural-language passage.
+#
+# Real-world emission patterns include IIS HTTP request logs with
+# ``--debug``, browser HAR exports (Network tab ``Save with content``),
+# Wireshark / tshark capture text exports, WinRM debug logs
+# (``Set-PSDebug -Trace 2``), ``curl -v --negotiate -u :`` debug logs,
+# ``requests`` + ``requests-kerberos`` debug mode, Spring Security's
+# ``org.springframework.security.kerberos`` debug logging, and ELK
+# Stack ingest of ``WWW-Authenticate`` response headers. The structural
+# anchor for Kerberos AP-REQ tokens is the ``YII`` base64 prefix
+# (base64 of the ASN.1 SEQUENCE outer tag ``0x60 0x82``); for NTLMSSP-
+# wrapped Negotiate tokens the prefix is ``TlRMTVNTUA`` (base64 of
+# the ``NTLMSSP\0`` magic). The detector matches on the auth-scheme
+# literal NOT the body prefix, so both Kerberos and NTLMSSP shapes are
+# covered without per-mechanism rule explosion.
+_NEGOTIATE_RE = re.compile(r"(?i)Negotiate\s+([A-Za-z0-9+/=]{50,})")
 
 # Security: ordered (regex, reason) table that ``_scan_content`` iterates
 # over to detect HTTP-auth-scheme-prefixed credentials. Each entry's regex
@@ -150,12 +208,13 @@ _BASIC_AUTH_RE = re.compile(r"(?i)Basic\s+([A-Za-z0-9+/=]{16,})")
 # ``_scan_content`` can read ``match.group(1)`` uniformly. Order matters
 # only for tie-breaking; the ``is_covered`` check in ``_scan_content``
 # anchors the first matching reason at each span. New auth-scheme
-# detectors (e.g. RFC 7616 Digest, RFC 4559 SPNEGO, RFC 7486 HOBA) follow
-# the same shape and inherit the ``(?i)`` case-insensitivity invariant
-# pinned per RFC 7235 §2.1.
+# detectors (e.g. RFC 7616 Digest, RFC 7486 HOBA, NTLM via [MS-NLMP])
+# follow the same shape and inherit the ``(?i)`` case-insensitivity
+# invariant pinned per RFC 7235 §2.1.
 _AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
     (_BEARER_RE, "Bearer-Token wirkt echt"),
     (_BASIC_AUTH_RE, "HTTP Basic Authentication Credential gefunden"),
+    (_NEGOTIATE_RE, "SPNEGO/Negotiate Authentication Token gefunden"),
 )
 
 _PEM_RE = re.compile(r"(-----BEGIN [A-Z ]*PRIVATE KEY-----)(?:.|\n)*?(-----END [A-Z ]*PRIVATE KEY-----)")
