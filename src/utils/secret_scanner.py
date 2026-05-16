@@ -1302,7 +1302,32 @@ def _looks_like_secret(candidate: str, is_assignment: bool = False) -> bool:
     min_categories = 1 if is_assignment else 2
     if categories < min_categories:
         return False
-    if len(set(candidate)) < max(6, len(candidate) // 4):
+    # Security (long-base64 entropy gap closure): cap the uniqueness
+    # requirement at 32 characters. The pre-fix requirement
+    # ``max(6, len(candidate) // 4)`` is mathematically unsatisfiable for
+    # ANY candidate longer than ~256 chars whose alphabet is the base64
+    # ceiling (``[A-Za-z0-9+/=_-]`` — at most 65 unique characters total).
+    # Real-world AWS STS Session Tokens (200-700+ char base64 bodies),
+    # GCP service-account key fingerprints, long Auth0 / Microsoft Graph
+    # OAuth tokens, and any other multi-hundred-char base64 credential
+    # were therefore SILENTLY UNDETECTED — neither ``_HIGH_ENTROPY_RE``
+    # (entropy fallback) nor ``_SENSITIVE_ASSIGN_RE`` (assignment
+    # heuristic) produced a finding because both branches share this
+    # uniqueness gate. The 32-char cap preserves the pre-fix accept /
+    # reject decision for ALL candidates <= 127 chars (the ``len // 4``
+    # branch dominates) while only loosening the gate for longer
+    # candidates where the base64 alphabet ceiling makes the original
+    # ratio impossible to satisfy. False-positive surface is bounded:
+    # ``_HIGH_ENTROPY_RE`` only matches contiguous ``[A-Za-z0-9+/=_-]``
+    # spans (natural-language text breaks at punctuation / whitespace,
+    # so no long English passage can match), and ``_is_binary`` already
+    # skips committed binary files. The remaining surface — base64-
+    # encoded data URIs inlined in HTML/Markdown source — is rare in
+    # practice and can be allow-listed via ``.secret-scan-ignore`` if
+    # it ever matters. The cap value 32 is generous: any realistic
+    # high-entropy secret 128+ chars long contains at least 32 distinct
+    # characters by simple combinatorial probability.
+    if len(set(candidate)) < max(6, min(len(candidate) // 4, 32)):
         return False
     return True
 
