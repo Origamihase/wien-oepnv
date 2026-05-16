@@ -326,6 +326,52 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "xamzsecuritytoken",
     "xamzsignature",
     "xamzcredential",
+    # Security: SAML 2.0 query parameters per OASIS SAML 2.0 §3.4.4 /
+    # §3.6.4. These names are NOT substrings of any entry in
+    # ``_SENSITIVE_KEY_SUBSTRINGS`` below, so without explicit
+    # exact-match entries here they leak verbatim across both
+    # ``_sanitize_url_for_error`` (operator error-log streams) AND
+    # ``_strip_sensitive_params`` (URLs carried through cross-origin
+    # redirect chains to potentially-malicious target hosts):
+    #   * ``samlart`` — SAML 2.0 Artifact (HTTP-Artifact binding).
+    #     A 5-minute-validity bearer credential resolvable to the
+    #     full ``SAMLResponse`` via the IdP's Artifact Resolution
+    #     Service. Leak = full user authentication on every
+    #     IdP-trusted SP for the assertion's lifetime (typically 1h).
+    #   * ``relaystate`` — SAML 2.0 SP-supplied state preservation
+    #     string. Often contains the post-auth landing URL or
+    #     serialised session context. Context leak / targeted-
+    #     phishing reconnaissance.
+    "samlart",
+    "relaystate",
+    # Security: CSRF / XSRF token names whose bare normalised form
+    # (``csrf`` / ``xsrf``) is NOT a substring of any entry in
+    # ``_SENSITIVE_KEY_SUBSTRINGS`` (the ``token`` substring catches
+    # ``csrf_token`` / ``csrfmiddlewaretoken`` but not bare ``csrf``
+    # or Spring Security's ``_csrf``). The canonical leak shapes:
+    #   * ``_csrf`` — Spring Security's GET-based CSRF protection
+    #     (param name normalises to bare ``csrf``).
+    #   * ``xsrf`` / ``XSRF-TOKEN`` — Angular's default XSRF cookie /
+    #     header name (the bare ``xsrf`` form appears in some legacy
+    #     AJAX bootstrap flows). ``XSRF-TOKEN`` normalises to
+    #     ``xsrftoken`` which matches via the ``token`` substring
+    #     ALREADY, so only the bare ``xsrf`` form needs explicit
+    #     coverage here.
+    # Replayable within session lifetime (minutes to hours,
+    # framework- and config-dependent). Enables state-changing-
+    # action replay if the attacker also has session cookie access.
+    "csrf",
+    "xsrf",
+    # Security: WordPress nonce protection. ``_wpnonce`` (and the
+    # rare ``wpnonce`` variant) carries WP's per-action nonce in GET
+    # parameters for state-changing actions (delete-post, install-
+    # plugin, modify-user). Normalised form is ``wpnonce`` — which
+    # doesn't contain any substring match, so the bare form needs an
+    # explicit exact-match entry. Validity: typically 24 hours (WP's
+    # default ``DAY_IN_SECONDS / 2`` lifetime). A leaked
+    # ``_wpnonce`` within the window enables arbitrary WP action
+    # replay if the attacker also has session cookie access.
+    "wpnonce",
 })
 
 # High-risk substrings that trigger redaction even if the key isn't an exact match in _SENSITIVE_QUERY_KEYS.
