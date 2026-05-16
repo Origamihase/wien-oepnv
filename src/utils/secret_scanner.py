@@ -347,18 +347,112 @@ _NTLM_RE = re.compile(r"(?i)NTLM\s+([A-Za-z0-9+/=]{50,})")
 # self-hosted Git host API calls, and copy-pasted documentation
 # snippets in READMEs and wikis.
 _TOKEN_SCHEME_RE = re.compile(r"(?i)token\s+([A-Za-z0-9_\-]{36,})")
+# Security: ``HOBA`` literal is matched case-insensitively per RFC 7235
+# §2.1 (referenced by RFC 7486 §3 — HTTP Origin-Bound Authentication
+# (HOBA)). HOBA is the IANA-registered HTTP authentication scheme for
+# client-asserted public-key authentication WITHOUT TLS client
+# certificates — the canonical "rare but registered" auth-scheme that
+# the NTLM round (the round immediately preceding Token-scheme) and
+# the Token-scheme round (the round immediately preceding this one)
+# both named as a deferred next-round candidate ("rare in practice
+# but a complete auth-scheme enumeration would include it"). Per
+# RFC 7486 §3 the on-the-wire format is the literal ``HOBA`` followed
+# by the ``result`` parameter (a quoted-string carrying four
+# dot-separated base64url-encoded fields)::
+#
+#     Authorization: HOBA result="<KID>.<challenge>.<nonce>.<signature>"
+#
+# Where:
+#   * ``KID`` — base64url-encoded SHA-256 hash of the client's public
+#     key (Key Identifier; 43 chars for the canonical SHA-256 output);
+#   * ``challenge`` — server-supplied base64url-encoded nonce
+#     identifying the auth-request session (8-32 chars typically);
+#   * ``nonce`` — client-supplied base64url-encoded freshness anchor
+#     (8-32 chars typically);
+#   * ``signature`` — base64url-encoded digital signature over
+#     ``KID || challenge || nonce`` using the client's private key
+#     (ECDSA P-256 = 86 base64url chars; RSA-2048 = 342 base64url
+#     chars; the exact length depends on the chosen algorithm per
+#     the HOBA registration in the JOSE algorithm registry).
+#
+# Two downstream failure modes were left open by the absence of this
+# detector:
+#   1. **Attribution drift** — a 100+-char base64url HOBA result
+#      string with mixed character classes DOES match
+#      ``_HIGH_ENTROPY_RE`` (``[A-Za-z0-9+/=_-]{24,}``) for the
+#      contiguous body slices BETWEEN the dots (the dots are OUTSIDE
+#      the entropy alphabet), losing the HOBA-specific issuer
+#      attribution AND splitting one logical credential into multiple
+#      separate findings. Pre-fix incident-response triage had to
+#      guess whether the leaked dotted entropy structure was a
+#      JOSE JWT (revoke at the issuing IdP), a HOBA result (rotate
+#      the client's HOBA key pair at the HOBA server and reissue
+#      a new ``KID``), or something else. Each has a distinct
+#      revocation flow.
+#   2. **Silent undetection** — all-letter base64url fields trip the
+#      ``candidate.isalpha()`` skip in the entropy fallback loop
+#      (added to suppress LongCamelCaseClassName false positives).
+#      Pre-fix every leaked HOBA result whose fields happen to be
+#      all-letter (rare in practice but possible for hand-crafted
+#      test fixtures and CTF challenges) was SILENTLY UNDETECTED.
+# The structural disambiguator is the FOUR dot-separated fields
+# inside a quoted ``result="..."`` parameter — natural-language text
+# essentially never contains the literal ``HOBA`` followed by
+# ``result="<8+ chars>.<8+ chars>.<8+ chars>.<8+ chars>"`` in prose.
+# The body alphabet ``[A-Za-z0-9_\-]`` is the canonical base64url
+# alphabet per RFC 4648 §5 (URL-safe base64; HOBA uses base64url per
+# RFC 7486 §3 to render binary key material / signatures into the
+# textual HTTP scheme without ``+/`` characters that would require
+# URL-percent-encoding in query-string contexts). The 8+ char per-
+# field floor is a structural disambiguator chosen to reject the
+# minimum example values in RFC 7486's normative text (e.g.
+# ``result="kid.6.6.34"`` from §9.4) while accepting every realistic
+# real-world HOBA credential (the canonical KID alone is 43 chars
+# = base64url SHA-256; even truncated CTF examples typically use
+# 8+ char per-field bodies). The quote alphabet ``["']`` accepts
+# both canonical RFC-double-quote shape (``result="..."``) and the
+# de-facto single-quote shape that appears in YAML serialisations
+# of HOBA captures, Python ``requests`` debug logs with f-string
+# formatting, and Postman/Insomnia request exports. The ``(?i)``
+# inline flag inherits the RFC 7235 §2.1 case-insensitivity contract
+# from the Bearer / Basic / Negotiate / NTLM / Token siblings.
+#
+# Real-world emission patterns include WebAuthn-pre-cursor HOBA
+# implementations (most legacy HOBA deployments predate WebAuthn
+# / FIDO2 and use the original RFC 7486 format), academic
+# research papers on HTTP authentication that publish example
+# captures, IoT device firmware that uses HOBA for backend auth
+# in lieu of TLS client certs (constrained-device contexts where
+# the TLS client-cert ladder is too heavyweight), specialised
+# enterprise PKI integrations, browser dev-tools Network tab HAR
+# exports of HOBA-authenticated sites, and Wireshark / tshark
+# capture text exports rendering the Authorization header
+# verbatim. The structural anchor for HOBA captures is the literal
+# ``HOBA result="`` (case-insensitive) — no other HTTP auth-scheme
+# uses this exact prefix shape. Cross-detector ordering: HOBA goes
+# BEFORE the Token-scheme detector (de-facto literal, canonical
+# Bearer-alias position at the END of ``_AUTH_SCHEME_DETECTORS``)
+# so the more-specific IANA-registered HOBA attribution wins over
+# the generic Token-scheme catch-all. HOBA can ALSO match a
+# Token-scheme span (if a Token-scheme body happens to contain
+# enough chars), but the ``covered_ranges`` arbitration in
+# ``_scan_auth_scheme_credentials`` ensures only ONE attribution
+# fires per content blob.
+_HOBA_RE = re.compile(
+    r'''(?i)HOBA\s+result\s*=\s*\\?["']([A-Za-z0-9_\-]{8,}(?:\.[A-Za-z0-9_\-]{8,}){3})\\?["']'''
+)
 
 # Security: ordered (regex, reason) table that ``_scan_content`` iterates
 # over to detect HTTP-auth-scheme-prefixed credentials. Each entry's regex
 # must capture the credential body in group(1) so the loop in
 # ``_scan_content`` can read ``match.group(1)`` uniformly. Order matters
 # for tie-breaking: more-specific auth-scheme literals (Bearer, Basic,
-# Negotiate, NTLM) MUST appear BEFORE the generic ``token`` scheme so
-# their attribution wins via ``covered_ranges`` arbitration when a
+# Negotiate, NTLM, HOBA) MUST appear BEFORE the generic ``token`` scheme
+# so their attribution wins via ``covered_ranges`` arbitration when a
 # token-shaped body sits inside one of those headers. The
 # ``is_covered`` check in ``_scan_content`` anchors the first matching
 # reason at each span. New auth-scheme detectors (e.g. RFC 7616
-# Digest, RFC 7486 HOBA, RFC 8120 Mutual, RFC 4559 AWS4-HMAC-SHA256)
+# Digest, RFC 8120 Mutual, RFC 4559 AWS4-HMAC-SHA256)
 # follow the same shape and inherit the ``(?i)`` case-insensitivity
 # invariant pinned per RFC 7235 §2.1.
 _AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
@@ -366,6 +460,7 @@ _AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
     (_BASIC_AUTH_RE, "HTTP Basic Authentication Credential gefunden"),
     (_NEGOTIATE_RE, "SPNEGO/Negotiate Authentication Token gefunden"),
     (_NTLM_RE, "NTLM Authentication Credential gefunden"),
+    (_HOBA_RE, "HOBA Authentication Credential gefunden"),
     (_TOKEN_SCHEME_RE, "HTTP Token-Scheme Authentication Credential gefunden"),
 )
 
