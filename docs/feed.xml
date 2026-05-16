@@ -7,41 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 16 May 2026 21:00:38 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 21:30:34 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[7A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">214cec6cae971effd21b47b0b3859b88354324a6fc53301d0ac43a41c2f9bb78</guid>
-      <pubDate>Sat, 16 May 2026 20:37:00 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 21:00:38 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 20:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 21:15:00 +0200</ext:ends_at>
-      <description>Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 16.05.2026]</description>
-      <content:encoded><![CDATA[Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 16.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Fahrtbehinderung Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5</guid>
-      <pubDate>Sat, 16 May 2026 20:30:00 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 16:00:30 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 20:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 21:29:00 +0200</ext:ends_at>
-      <description>[Am 16.05.2026]</description>
-      <content:encoded><![CDATA[[Am 16.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Verunreinigung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">203395aa6ca6175d52db5f66075cf2b04d5399d0c1bc3e563906381a19227d5e</guid>
-      <pubDate>Sat, 16 May 2026 20:20:00 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 20:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 20:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 16.05.2026]</description>
-      <content:encoded><![CDATA[Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 16.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[48A: Demonstration Betrieb ab Possingergasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +85,39 @@
       <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Betrieb ab Resselgasse [Am 16.05.2026]</description>
       <content:encoded><![CDATA[Betrieb ab Resselgasse<br/>[Am 16.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Veranstaltung Betrieb ab Schwedenplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">39a4e23ded170c8129efe72a2471b1d4b2a7d98424bc3a55b3e12e849178a8bc</guid>
+      <pubDate>Sat, 16 May 2026 11:34:08 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 12:00:28 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 11:34:08 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Betrieb ab Schwedenplatz &gt; [Am 16.05.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Schwedenplatz ><br/>[Am 16.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Veranstaltung Betrieb ab Schwarzenbergplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8b1e2f187f18995bbf65eba67f26d4902602640fca1243e0baf4e442d8812f93</guid>
+      <pubDate>Sat, 16 May 2026 05:00:02 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 05:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 05:00:02 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Betrieb ab Schwarzenbergplatz [Am 16.05.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz<br/>[Am 16.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Sat, 16 May 2026 04:45:03 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 05:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 04:45:03 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 00:35:00 +0200</ext:ends_at>
+      <description>[16.05.2026 – 17.05.2026]</description>
+      <content:encoded><![CDATA[[16.05.2026 – 17.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
