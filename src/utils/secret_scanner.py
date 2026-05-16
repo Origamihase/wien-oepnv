@@ -271,6 +271,112 @@ _NEGOTIATE_RE = re.compile(r"(?i)Negotiate\s+([A-Za-z0-9+/=]{50,})")
 # NTLMSSP (the Negotiate detector) are covered without per-mechanism
 # rule duplication.
 _NTLM_RE = re.compile(r"(?i)NTLM\s+([A-Za-z0-9+/=]{50,})")
+# Security: ``Token`` literal is matched case-insensitively per RFC 7235
+# §2.1 (the HTTP auth-scheme case-insensitivity contract). The literal
+# ``Token`` is not a registered HTTP auth-scheme in the IANA HTTP
+# Authentication Scheme Registry (Basic / Bearer / Digest / HOBA /
+# Mutual / Negotiate / OAuth / SCRAM-SHA-1 / SCRAM-SHA-256 / vapid are
+# the registered IETF-RFC entries; NTLM / AWS4-HMAC-SHA256 are vendor
+# entries). Despite the lack of IANA registration, ``Token`` is widely
+# used in the wild as a de-facto HTTP auth-scheme literal — GitHub's
+# legacy REST API documentation prescribes ``Authorization: token
+# <PAT>`` as an accepted alias for ``Bearer``, Rails / Devise's
+# default ``token_authenticatable`` shipped with ``Authorization:
+# Token <40-char token>``, Zendesk / Spotify legacy / many internal
+# REST APIs accept the same shape. The NTLM detector closed the
+# vendor-specific [MS-NLMP] auth-scheme path; this detector closes
+# the de-facto-but-not-IANA-registered ``Token`` path that, while
+# unregistered, is the most widely-emitted Bearer alias in real-world
+# debug logs / HAR exports / curl traces. Two downstream failure modes
+# were left open by the absence of this detector:
+#   1. **Attribution drift** — opaque 36+-char alphanumeric/underscore/
+#      hyphen tokens emitted as ``Authorization: Token <body>`` (the
+#      common case for non-GitHub APIs that adopt the de-facto literal
+#      as their Bearer alias) DO match ``_HIGH_ENTROPY_RE``
+#      (``[A-Za-z0-9+/=_-]{24,}``) generically and land as
+#      ``Hochentropischer Token-String`` findings, losing the
+#      Token-scheme-specific reason that pinpoints the auth flow's
+#      operator-control plane (each consuming API has its own
+#      revocation flow at the vendor's settings page; the per-scheme
+#      attribution accelerates IR triage by anchoring against the
+#      ``Token``-scheme literal that callers typically grep for in
+#      log artefacts). Pre-fix incident-response triage had to guess
+#      whether a leaked high-entropy span was a Bearer Token (revoke
+#      at the issuing IdP), a Basic Auth credential (rotate user
+#      password), an NTLM hash (relay + offline crack), a Kerberos
+#      ticket (KDC revocation), or a Token-scheme credential (vendor-
+#      specific revocation per the API's documentation). Five
+#      distinct IR flows that hinge on per-scheme attribution.
+#   2. **Silent undetection** — all-letter base64 bodies trip the
+#      ``candidate.isalpha()`` skip in the entropy fallback loop
+#      (added to suppress LongCamelCaseClassName false positives).
+#      Pre-fix every leaked ``Token <all-letter-body>`` was SILENTLY
+#      UNDETECTED entirely — the CI gate passed, the opaque
+#      Token-scheme credential sat committed in the public repo
+#      indefinitely.
+# The body alphabet ``[A-Za-z0-9_\-]`` is the canonical alphanumeric +
+# underscore + hyphen token shape used by every major vendor that
+# emits via the ``Token`` scheme (GitHub PATs ``ghp_<36>`` and the
+# 40-char classic-PAT shape; Rails/Devise default 40-char hex; Zendesk
+# 40-char alphanumeric). This alphabet is deliberately MORE
+# restrictive than Bearer's ``[A-Za-z0-9\-_.]`` (no ``.``) and Basic /
+# Negotiate / NTLM's ``[A-Za-z0-9+/=]`` (no ``+/=``) — JWTs and base64
+# tokens with padding are emitted via the Bearer / Basic / Negotiate
+# schemes, not the Token scheme, so the alphabet narrowing reduces
+# false positives in code that happens to embed the word ``Token``
+# followed by a dotted version string or base64-padded blob. The 36+
+# char body floor is the structural disambiguator against natural-
+# language false positives — the English word ``Token`` appears
+# commonly in code identifiers, prose, and docstrings, but almost
+# never followed by 36+ contiguous chars from ``[A-Za-z0-9_\-]``
+# (English breaks at whitespace and punctuation; identifier-style
+# names rarely reach 36 chars without word boundaries). The 36-char
+# floor is calibrated to catch the canonical leak shapes — GitHub
+# PATs ``ghp_<36>`` = 40 chars total, GitHub classic 40-char hex,
+# Rails / Devise 40-char hex, Zendesk 40+ chars, generic 40-char
+# alphanumeric — while excluding short identifier-style false
+# positives. The downstream ``_looks_like_secret(candidate,
+# is_assignment=True)`` heuristic (``min_categories=1`` in the
+# auth-scheme path, so uniform-character-class bodies are NOT
+# silently undetected) provides the second-layer filter for any
+# token-shaped string that does happen to follow a ``token``-prefixed
+# natural-language passage. The 36+ char body length combined with
+# the ``len(set(candidate)) >= max(6, min(len // 4, 32))`` uniqueness
+# floor in ``_looks_like_secret`` rejects long-repetition
+# placeholders (``Token aaaa...aaaa``) outright.
+#
+# Real-world emission patterns include:
+#   * curl ``-v`` debug logs for GitHub REST API calls
+#     (``Authorization: token ghp_...``) — the GitHub-recommended
+#     legacy literal that survives in every operations playbook.
+#   * Browser dev-tools Network tab HAR exports for sites that use
+#     ``Token`` instead of ``Bearer`` (Rails/Devise default,
+#     Heroku ops dashboards, internal API admin UIs).
+#   * ``requests`` library debug logs with
+#     ``logging.getLogger("urllib3").setLevel(logging.DEBUG)`` —
+#     emits the Authorization header verbatim.
+#   * Python / Ruby / Go / Node API client docstrings and example
+#     snippets that hardcode a token in test fixtures.
+#   * CI/CD pipeline debug output for any API consumer that uses
+#     the ``Token`` scheme (Rails / Devise applications, GitHub
+#     legacy REST API, Zendesk, Spotify legacy).
+#   * Postman / Insomnia / Bruno saved-request export JSON / YAML.
+#   * Kibana / Grafana / Datadog log views ingesting application
+#     ``Authorization``-header logs that were emitted before the
+#     log sink's redaction rule was applied.
+#
+# Cross-detector ordering: ``_KNOWN_TOKENS`` runs BEFORE
+# ``_AUTH_SCHEME_DETECTORS`` in ``_scan_content``, so a ``Token
+# ghp_<36>`` span yields the more-specific "GitHub Personal Access
+# Token gefunden" attribution (the ``ghp_`` regex matches the inner
+# body, and the Token-scheme detector's wider span is suppressed by
+# ``is_covered``). For opaque non-vendor-prefixed bodies, the
+# Token-scheme detector wins. This mirrors the established ordering
+# contract — the more-specific issuer attribution always wins over
+# the generic auth-scheme attribution. The literal ``Token`` is the
+# Bearer-alias attribution carrier when no more-specific issuer
+# prefix matches.
+_TOKEN_SCHEME_RE = re.compile(r"(?i)Token\s+([A-Za-z0-9_\-]{36,})")
 
 # Security: ordered (regex, reason) table that ``_scan_content`` iterates
 # over to detect HTTP-auth-scheme-prefixed credentials. Each entry's regex
@@ -286,6 +392,7 @@ _AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
     (_BASIC_AUTH_RE, "HTTP Basic Authentication Credential gefunden"),
     (_NEGOTIATE_RE, "SPNEGO/Negotiate Authentication Token gefunden"),
     (_NTLM_RE, "NTLM Authentication Credential gefunden"),
+    (_TOKEN_SCHEME_RE, "HTTP Token Authentication Credential gefunden"),
 )
 
 _PEM_RE = re.compile(r"(-----BEGIN [A-Z ]*PRIVATE KEY-----)(?:.|\n)*?(-----END [A-Z ]*PRIVATE KEY-----)")
