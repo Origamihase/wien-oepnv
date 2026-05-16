@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 16 May 2026 22:30:34 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 23:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[6: Demonstration]]></title>
+      <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">775a9ee25fd9146dcb1a0097e7a489c90bb65763facac0980518294be36a04d3</guid>
-      <pubDate>Sat, 16 May 2026 21:30:00 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 16:00:30 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 21:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 22:31:00 +0200</ext:ends_at>
-      <description>Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 16.05.2026]</description>
-      <content:encoded><![CDATA[Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 16.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c4b6f78b84e8b97980866173041a1c8dec261e5df180cd73eaac2c8038632862</guid>
-      <pubDate>Sat, 16 May 2026 21:30:00 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 16:00:30 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 21:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 22:28:00 +0200</ext:ends_at>
-      <description>Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 16.05.2026]</description>
-      <content:encoded><![CDATA[Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 16.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a</guid>
+      <pubDate>Sat, 16 May 2026 23:00:18 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 23:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 23:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 05:30:00 +0200</ext:ends_at>
+      <description>[16.05.2026 – 17.05.2026]</description>
+      <content:encoded><![CDATA[[16.05.2026 – 17.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Richtung Nußdorf Züge halten bei Schottenring 19]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 16.05.2026]</description>
       <content:encoded><![CDATA[[Am 16.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: Betrieb ab Thaliastraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18</guid>
+      <pubDate>Sat, 16 May 2026 00:00:25 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 00:00:25 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Betrieb ab Thaliastraße &gt; [Am 16.05.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Thaliastraße ><br/>[Am 16.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
