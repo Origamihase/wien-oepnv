@@ -151,6 +151,81 @@ _KNOWN_TOKENS = [
     # current format and avoid colliding with the ``[A-Za-z0-9+/=_-]``
     # entropy fallback's character class.
     (re.compile(r"(?<![A-Za-z0-9])whsec_[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "Stripe Webhook Signing Secret gefunden"),
+    # Slack Token Rotation Refresh Token — the modern V2 rotation
+    # credential issued via ``oauth.v2.access`` with
+    # ``grant_type=refresh_token``. Two on-the-wire shapes per
+    # https://api.slack.com/authentication/rotation:
+    #   * **Direct shape** — ``xoxe-<numeric>-<base64-like body>`` for
+    #     tokens issued without a parent rotation chain.
+    #   * **Chained shape** — ``xoxe.xoxb-<body>`` (bot rotation) or
+    #     ``xoxe.xoxp-<body>`` (user rotation), where the embedded
+    #     ``xox[bp]-`` prefix anchors the rotation chain for Slack's
+    #     auth server lookup.
+    # A leak grants the holder the ability to mint fresh
+    # ``xoxb-``/``xoxp-`` access tokens with the chain's identity and
+    # scopes — multi-month blast radius (refresh tokens are long-
+    # lived; the rotated access tokens have 12-hour TTL but can be
+    # re-minted indefinitely until the refresh token itself is
+    # revoked at https://api.slack.com/apps/<app>/oauth via the
+    # "Reinstall App" / "Rotate Tokens" flow). The revocation flow
+    # is distinct from the legacy ``xoxr-`` refresh-token flow (the
+    # ``xoxr-`` prefix predates V2 rotation; the two are NOT
+    # interchangeable). Placed BEFORE the existing ``xoxb-`` /
+    # ``xoxp-`` / ``xoxa-`` / ``xoxr-`` entries so ``is_covered``
+    # correctly anchors the chained shape at the larger ``xoxe.``-
+    # prefixed span — the inner ``xoxb-``/``xoxp-`` span (which the
+    # strict bare ``xoxb-``/``xoxp-`` regexes would NOT match anyway
+    # because the rotation body shape ``1-<base64body>`` does not
+    # fit ``[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{24,32}``) is
+    # suppressed. Pre-fix the chained shape was silently undetected
+    # entirely (entropy fallback misses ``xoxe.`` due to the dot
+    # falling outside ``[A-Za-z0-9+/=_-]``, only the post-prefix
+    # body span matches generically — losing the Slack-rotation-
+    # specific issuer attribution).
+    (
+        re.compile(r"(?<![A-Za-z0-9])xoxe(?:-|\.xox[bp]-)[0-9a-zA-Z\-]{20,}(?![A-Za-z0-9])"),
+        "Slack Token Rotation Refresh Token gefunden",
+    ),
+    # Slack Browser Session Token (``xoxc-<body>``). Extracted from
+    # ``slack.com`` browser session cookies, granting full user-level
+    # session auth with **no scope restrictions** — equivalent to the
+    # user being logged in via the web client. Unofficial tools
+    # (slack_cleaner, slackdump, slack-export scripts) extract
+    # ``xoxc-`` via DevTools and use it for unattended scripted
+    # access to the user's Slack workspace. The canonical "session
+    # hijack" credential for Slack: an attacker holding ``xoxc-``
+    # can browse every conversation the user can see (DMs, private
+    # channels, sensitive files), post messages as the user, and
+    # exfiltrate the workspace's full message history via the
+    # cookie-authenticated ``/api/conversations.list`` /
+    # ``conversations.history`` endpoints. The revocation flow lives
+    # at https://slack.com/account/sessions ("Sign out all other
+    # sessions") and is distinct from the OAuth-app revocation flow
+    # at https://api.slack.com/apps/ — session-cookie auth, not
+    # app-token auth.
+    (
+        re.compile(r"(?<![A-Za-z0-9])xoxc-[0-9a-zA-Z\-]{20,}(?![A-Za-z0-9])"),
+        "Slack Browser Session Token gefunden",
+    ),
+    # Slack Cookie Session Token (``xoxd-<body>``). Companion to
+    # ``xoxc-`` — the ``d`` cookie value from Slack web sessions,
+    # used in conjunction with ``xoxc-`` for direct browser-style
+    # API calls (e.g. unofficial endpoints that require
+    # cookie-based auth). A leak grants the same SESSION-LEVEL
+    # access as ``xoxc-`` (the two tokens typically leak together
+    # via DevTools cookie extraction). Pre-fix the entropy fallback
+    # caught the body span (the ``xoxd-`` prefix's dash is inside
+    # the entropy alphabet and the body alphabet matches), but the
+    # Slack-cookie-session-specific issuer attribution that anchors
+    # the canonical revocation flow (https://slack.com/account/
+    # sessions — distinct from every other Slack revocation flow)
+    # was lost. Furthermore, for uniform-character-class bodies the
+    # entropy fallback's ``min_categories=2`` requirement returned
+    # ``False`` and the credential was silently undetected entirely.
+    (
+        re.compile(r"(?<![A-Za-z0-9])xoxd-[0-9a-zA-Z\-]{20,}(?![A-Za-z0-9])"),
+        "Slack Cookie Session Token gefunden",
+    ),
     (re.compile(r"(?<![A-Za-z0-9])xoxb-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{24}(?![A-Za-z0-9])"), "Slack Bot Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])xoxp-[0-9]{10,}-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{32}(?![A-Za-z0-9])"), "Slack User Token gefunden"),
     # Slack OAuth-app access token (configuration token issued via the OAuth flow,
