@@ -1098,6 +1098,46 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])[a-f0-9]{32}-us[0-9]{1,3}(?![A-Za-z0-9])"),
         "Mailchimp API Key gefunden",
     ),
+    # AWS STS Service Bearer Token (``ABIA<16 chars from [A-Z0-9]>``).
+    # Issued by ``sts:GetServiceBearerToken`` for service-to-service
+    # authentication on behalf of an AWS user. Same 4+16=20 char format
+    # as ``AKIA``/``ASIA``/``ACCA`` (already enumerated in ``_AWS_ID_RE``)
+    # but the ``ABIA`` prefix was the **fourth credential prefix in the
+    # AWS unique-identifier family** that ``_AWS_ID_RE`` explicitly
+    # enumerated as named-but-uncovered (Round 13 closing checklist
+    # listed only ``AKIA``/``ASIA``/``ACCA``). Per the AWS IAM "Unique
+    # identifiers" reference, ``ABIA`` is the canonical prefix for STS
+    # service bearer tokens; per gitleaks / trufflehog / detect-secrets
+    # / aws-secret-detector default rules, it is detected alongside
+    # the other credential prefixes.
+    #
+    # Pre-fix the 20-char ``ABIA<16>`` token format falls **below**
+    # ``_HIGH_ENTROPY_RE``'s 24-char minimum. A bare leaked token in
+    # plaintext context (log line, JSON fixture without sensitive key,
+    # documentation snippet, hostile-PR fragment) was **silently
+    # undetected** by every detection branch — the CI gate passed,
+    # the credential sat in the public repository indefinitely, and
+    # the issuing user's full AWS scope (the bearer token's authorized
+    # API access window) was exposed to every consumer. In assignment
+    # context the only finding was the generic ``Verdächtige
+    # Zuweisung``, losing the AWS-specific issuer attribution that
+    # incident-response keys off (revocation flow at IAM > STS service
+    # bearer token management — distinct from the IAM > Access keys
+    # flow used to revoke ``AKIA``).
+    #
+    # The strict ``[A-Z0-9]{16}`` body alphabet (uppercase + digits
+    # only, mirroring the canonical ``_AWS_ID_RE`` body) anchors against
+    # false positives on lowercase or mixed-case strings happening to
+    # start with ``ABIA`` (English words / placeholder identifiers); the
+    # ``(?<![A-Za-z0-9])`` lookbehind anchor prevents matching mid-word
+    # occurrences. Distinct attribution from the generic AWS Access Key
+    # ID reason so the report identifies WHICH AWS credential type
+    # leaked and the operator can rotate via the correct STS revocation
+    # flow rather than the IAM access-key rotation flow.
+    (
+        re.compile(r"(?<![A-Za-z0-9])ABIA[A-Z0-9]{16}(?![A-Za-z0-9])"),
+        "AWS STS Service Bearer Token gefunden",
+    ),
 ]
 
 

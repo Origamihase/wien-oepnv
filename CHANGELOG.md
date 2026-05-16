@@ -5,6 +5,46 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Security: Secret Scanner Drift Round 14 — AWS STS Service Bearer Token
+  (`ABIA<16>`) Prefix Detection Gap (2026-05-16)**:
+  * Closes the fourth credential prefix in the AWS 4-character
+    unique-identifier family that `_AWS_ID_RE` explicitly enumerated
+    as named-but-uncovered: `ABIA` (AWS STS service bearer token,
+    issued by `sts:GetServiceBearerToken` for service-to-service
+    authentication on behalf of an AWS user). Round 13's closing
+    checklist enumerated only `AKIA`/`ASIA`/`ACCA` — `ABIA` was the
+    documented fourth credential prefix that remained uncovered.
+  * Pre-fix bare `ABIAV2EXAMPLE12345AB` (20 chars: 4-char prefix +
+    16-char `[A-Z0-9]` body) tokens slipped through every detection
+    branch in `_scan_content`: the `_HIGH_ENTROPY_RE` requires `{24,}`
+    chars and rejects the 20-char shape; `_AWS_ID_RE` enumerated only
+    three of four prefixes; the assignment heuristic loses
+    AWS-specific attribution. Net: silent-undetection in non-assignment
+    contexts (CloudTrail debug log lines, AWS SDK debug traces with
+    `AWS_DEBUG=true`, JSON fixtures without sensitive keys,
+    documentation snippets, hostile-PR fragments) and attribution-drift
+    in assignment contexts (only the generic "Verdächtige Zuweisung"
+    fired, losing the AWS-STS-specific revocation-flow attribution).
+  * Single-tuple addition to `_KNOWN_TOKENS` in
+    `src/utils/secret_scanner.py`:
+    `re.compile(r"(?<![A-Za-z0-9])ABIA[A-Z0-9]{16}(?![A-Za-z0-9])")`
+    with reason `"AWS STS Service Bearer Token gefunden"`. Strict
+    `[A-Z0-9]{16}` body alphabet anchors against false positives on
+    lowercase / mixed-case strings happening to start with `ABIA`;
+    `(?<![A-Za-z0-9])` lookbehind prevents mid-word matches.
+    KNOWN_TOKENS processing runs before `_AWS_ID_RE`, so `is_covered`
+    correctly anchors the more-specific issuer attribution.
+  * Comprehensive test coverage in
+    `tests/test_sentinel_secret_scanner_drift_round14.py` (10 tests):
+    plaintext-context PoC (silent-undetection branch), JSON-fixture
+    PoC, assignment-context PoC (attribution-drift branch), three
+    negative cases (short body / lowercase body / mid-word ABIA),
+    three regression guards (AKIA/ASIA/ACCA still receive canonical
+    `AWS Access Key ID gefunden` — no collision), and an inventory
+    invariant pin (`ABIA` + `AWS STS Service Bearer Token` strings
+    present in `secret_scanner.py` source).
+  * Marker: SENTINEL_AWS_ABIA_PREFIX_DRIFT.
+
 * **Security: Network/Env/Sidecar Non-Finite Literal Drift Closure — 18 JSON
   Parser Sites (2026-05-15)**:
   * Closes the **symmetric companion** of PR #1503's committed-state-file
