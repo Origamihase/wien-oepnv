@@ -642,25 +642,6 @@ code {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem 2rem;
 }
-.site-footer__hero {
-  grid-column: 1 / -1;
-  margin: 0 0 0.5rem;
-  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #FFD95B;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
-}
-.site-footer__hero strong {
-  display: block;
-  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
-  letter-spacing: -0.005em;
-  text-transform: none;
-  color: #ffffff;
-  font-weight: 800;
-  margin-bottom: 0.2rem;
-}
 .site-footer__heading {
   font-size: 0.86rem;
   font-weight: 700;
@@ -708,7 +689,7 @@ code {
   .card, .kpi, .feed-item, .hero { break-inside: avoid; box-shadow: none; }
   .site-footer { background: white; color: black; }
   .site-footer::before { display: none; }
-  .site-footer__heading, .site-footer__hero strong, .site-footer__list strong { color: black; }
-  .site-footer__hero, .site-footer p, .site-footer__list { color: #333; }
+  .site-footer__heading, .site-footer__list strong { color: black; }
+  .site-footer p, .site-footer__list { color: #333; }
   .site-footer a { color: #0F1736; }
 }
