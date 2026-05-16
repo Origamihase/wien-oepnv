@@ -779,6 +779,74 @@ _KNOWN_TOKENS = [
         ),
         "Database Connection String gefunden",
     ),
+    # Directory / Shell / File-Share Connection Strings with embedded
+    # credentials (``<scheme>://<user>:<pass>@<host>``) for the
+    # ``ldap`` / ``ldaps`` / ``ssh`` / ``sftp`` / ``smb`` / ``cifs``
+    # adjacent families. Strict-sibling drift closure for the
+    # 2026-05-16 Database Connection String round above: both the
+    # log-sanitisation codepath at ``src/utils/http.py:_URL_AUTH_RE``
+    # AND the malformed-URI pattern at ``src/utils/logging.py``
+    # already enumerate this EXACT 6-scheme adjacent family — the
+    # scanner detection codepath was the third sibling left out of
+    # step, so a committed ``LDAP_BIND_URL=ldap://admin:pw@dc01/``
+    # shipped to production with the log path masking the credential
+    # at operator-log emission time but the git-history source-of-
+    # truth leaking the credential verbatim into every clone /
+    # archive / search-engine cache.
+    #
+    # Pre-fix detection gaps (mirror the Database round's analysis):
+    #   1. **Entropy fallback** (``_HIGH_ENTROPY_RE``): body alphabet
+    #      ``[A-Za-z0-9+/=_-]`` excludes ``:``, ``/``, ``@`` — the
+    #      matcher splits at every URI delimiter. The fragments
+    #      (``ldap``, ``admin``, ``CompanyAdmin``, ``dc01``,
+    #      ``389``, ``dc=example``) are each below the 24-char
+    #      floor; no entropy finding fires.
+    #   2. **Assignment heuristic** (``_SENSITIVE_ASSIGN_RE``):
+    #      even with a sensitive variable name (``LDAP_BIND_URL``,
+    #      ``SSH_DEPLOY_URL``, ``SMB_SHARE_URL``), the unquoted-
+    #      value branch SKIPS values containing ``:`` (port /
+    #      user-pass separator). Every URI contains ``://`` AND
+    #      ``:`` — the check rejects the URI verbatim.
+    #
+    # Threat model (higher-severity than Database — these grant
+    # infrastructure-control-plane access, not just data-plane):
+    #   * **LDAP / LDAPS**: Active-Directory service-account
+    #     bind credentials. Leak grants forest enumeration, user-
+    #     object read, attacker-machine domain-join, privileged-
+    #     account reset and — with Replicate-Directory-Changes —
+    #     DCSync to extract every krbtgt / computer-account hash.
+    #   * **SSH / SFTP**: interactive shell / chrooted file-system
+    #     access on the target. Universal post-exploitation
+    #     primitive (backdoors, exfiltration, lateral pivot).
+    #     Common in Ansible inventory, Capistrano ``deploy.rb``,
+    #     Fabric ``fabfile.py``, GitLab CI ``deploy_keys``,
+    #     GitHub Actions secrets, Dockerfile ``RUN ssh`` patterns.
+    #   * **SMB / CIFS**: Windows file-share access. Routine
+    #     leak surface for HR documents, executive correspondence,
+    #     source-code backups, developer roaming profiles
+    #     (containing cached AD credentials).
+    #
+    # The regex mirrors the Database round's structural anchors:
+    # optional ``jdbc:`` prefix (Java JNDI), case-insensitive scheme
+    # literal, ``://`` separator, structural ``user:pass@`` shape
+    # requirement (so credential-less URIs ``ssh://host`` are NOT
+    # flagged). Distinct reason ``Directory/Shell/Share Connection
+    # String gefunden`` routes incident-response triage to the
+    # correct revocation flow (AD service-account password rotation
+    # vs. SSH key rotation vs. file-server password reset are three
+    # distinct playbooks). Schemes match exactly the 6-scheme set in
+    # ``src/utils/http.py:_URL_AUTH_RE`` and ``src/utils/logging.py``
+    # — sibling-floor alignment guarded by
+    # ``test_sentinel_directory_shell_share_uri_credential_drift.
+    # test_sibling_floor_alignment_with_log_sanitization``.
+    (
+        re.compile(
+            r"(?i)\b(?:jdbc:)?"
+            r"(?:ldap|ldaps|ssh|sftp|smb|cifs)"
+            r"://[^@\s/:]+:[^@\s/]+@[^\s/]+"
+        ),
+        "Directory/Shell/Share Connection String gefunden",
+    ),
     # DigitalOcean Personal Access Tokens (``dop_v1_<64 hex>``) and OAuth
     # refresh tokens (``doo_v1_<64 hex>``). The ``v1`` prefix anchors against
     # the official format; the strict 64-char lowercase-hex body avoids
