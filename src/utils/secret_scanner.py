@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from collections.abc import Iterable, Sequence
+from collections.abc import Callable, Iterable, Sequence
 import re
 import subprocess  # nosec B404
 
@@ -108,6 +108,56 @@ _AWS_ID_RE = re.compile(r"(?<![A-Za-z0-9])(AKIA|ASIA|ACCA)[A-Z0-9]{16}(?![A-Za-z
 #      restoring case-insensitive matching also closes the entropy-
 #      bypass hole for the affected uniform-body shapes.
 _BEARER_RE = re.compile(r"(?i)Bearer\s+([A-Za-z0-9\-_.]{16,})")
+# Security: ``Basic`` literal is matched case-insensitively per RFC 7235
+# §2.1 (referenced by RFC 7617 §2 — the HTTP Basic Authentication scheme).
+# The Bearer detector closed the auth-scheme case-insensitivity contract
+# for ``Bearer``; this detector extends the same contract to ``Basic``,
+# the canonical companion auth-scheme. Two downstream failure modes were
+# left open by the absence of this detector:
+#   1. **Attribution drift** — the base64-encoded ``user:password`` body
+#      matched ``_HIGH_ENTROPY_RE`` (``[A-Za-z0-9+/=_-]{24,}``) generically
+#      as ``Hochentropischer Token-String``, losing the Basic-Auth-
+#      specific reason that pinpoints rotation flow. Basic Auth requires
+#      rotating the *user's password* (recoverable from the body via
+#      base64 decode), distinct from Bearer-Token revocation (revoke at
+#      the issuing IdP). Incident-response triage must guess the
+#      revocation playbook without per-scheme attribution.
+#   2. **Silent undetection** — short base64 bodies (16-23 chars, e.g.
+#      ``YWRtaW46cGFzc3dvcmQ=`` = ``admin:password`` is only 20 chars)
+#      fall BELOW the entropy fallback's 24-char minimum; AND all-letter
+#      base64 bodies trip the ``candidate.isalpha()`` skip in the entropy
+#      fallback loop (added to suppress LongCamelCaseClassName false
+#      positives). Pre-fix every leaked ``Basic <body>`` with a short or
+#      all-letter body was SILENTLY UNDETECTED entirely — the CI gate
+#      passed, the plaintext ``username:password`` pair (trivially
+#      recovered via base64 decode) sat committed in the public repo.
+# The body alphabet ``[A-Za-z0-9+/=]`` is the canonical base64 alphabet
+# per RFC 4648 §4 (standard base64; URL-safe RFC 4648 §5 uses ``_-``
+# instead of ``+/`` but is rare in Authorization headers per RFC 7617
+# §2). The 16+ contiguous body length is the structural disambiguator
+# against natural-language false positives — sentences like "Basic
+# understanding of..." do NOT have 16+ contiguous chars from the base64
+# alphabet following the literal. The downstream
+# ``_looks_like_secret(candidate, is_assignment=True)`` heuristic
+# (``min_categories=1`` in the auth-scheme path) provides the
+# second-layer filter for any token-shaped string that does happen to
+# follow a ``basic``-prefixed natural-language passage.
+_BASIC_AUTH_RE = re.compile(r"(?i)Basic\s+([A-Za-z0-9+/=]{16,})")
+
+# Security: ordered (regex, reason) table that ``_scan_content`` iterates
+# over to detect HTTP-auth-scheme-prefixed credentials. Each entry's regex
+# must capture the credential body in group(1) so the loop in
+# ``_scan_content`` can read ``match.group(1)`` uniformly. Order matters
+# only for tie-breaking; the ``is_covered`` check in ``_scan_content``
+# anchors the first matching reason at each span. New auth-scheme
+# detectors (e.g. RFC 7616 Digest, RFC 4559 SPNEGO, RFC 7486 HOBA) follow
+# the same shape and inherit the ``(?i)`` case-insensitivity invariant
+# pinned per RFC 7235 §2.1.
+_AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
+    (_BEARER_RE, "Bearer-Token wirkt echt"),
+    (_BASIC_AUTH_RE, "HTTP Basic Authentication Credential gefunden"),
+)
+
 _PEM_RE = re.compile(r"(-----BEGIN [A-Z ]*PRIVATE KEY-----)(?:.|\n)*?(-----END [A-Z ]*PRIVATE KEY-----)")
 
 # Known high-value token patterns to detect specifically
@@ -1342,6 +1392,42 @@ def _mask_secret(value: str) -> str:
     return f"{value[:4]}***{value[-4:]}"
 
 
+def _scan_auth_scheme_credentials(
+    content: str,
+    covered_ranges: list[tuple[int, int]],
+    line_resolver: Callable[[int], int],
+) -> list[tuple[int, str, str]]:
+    """Scan *content* for HTTP-auth-scheme-prefixed credential leaks.
+
+    Iterates over :data:`_AUTH_SCHEME_DETECTORS` (currently
+    ``_BEARER_RE`` + ``_BASIC_AUTH_RE``) and emits one finding per match
+    that passes ``_looks_like_secret(candidate, is_assignment=True)`` and
+    does not overlap an already-covered range. Mutates
+    ``covered_ranges`` in place so subsequent detector loops in
+    :func:`_scan_content` correctly suppress the same span.
+
+    Extracted from :func:`_scan_content` to keep the latter at its C901
+    complexity baseline while still extending coverage to additional
+    auth-scheme literals from the HTTP authentication family (RFC 7235
+    §2.1 case-insensitive auth-scheme contract). Future detectors (RFC
+    7616 Digest, RFC 4559 SPNEGO, RFC 7486 HOBA) extend
+    ``_AUTH_SCHEME_DETECTORS`` without changing this helper or the
+    caller.
+    """
+    findings: list[tuple[int, str, str]] = []
+    for regex, reason in _AUTH_SCHEME_DETECTORS:
+        for match in regex.finditer(content):
+            candidate = match.group(1)
+            span_start, span_end = match.span(1)
+            if not _looks_like_secret(candidate, is_assignment=True):
+                continue
+            if any(span_start < ce and span_end > cs for cs, ce in covered_ranges):
+                continue
+            findings.append((line_resolver(match.start()), candidate, reason))
+            covered_ranges.append((span_start, span_end))
+    return findings
+
+
 def _scan_content(content: str) -> list[tuple[int, str, str]]:
     findings: list[tuple[int, str, str]] = []
     covered_ranges: list[tuple[int, int]] = []
@@ -1388,14 +1474,12 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
             findings.append((get_line_number(match.start()), candidate, "AWS Access Key ID gefunden"))
             covered_ranges.append((span_start, span_end))
 
-    for match in _BEARER_RE.finditer(content):
-        candidate = match.group(1)
-        span_start, span_end = match.span(1)
-
-        if _looks_like_secret(candidate, is_assignment=True):
-            if not is_covered(span_start, span_end):
-                findings.append((get_line_number(match.start()), candidate, "Bearer-Token wirkt echt"))
-                covered_ranges.append((span_start, span_end))
+    # Auth-scheme detectors share the same processing shape; the helper
+    # :func:`_scan_auth_scheme_credentials` iterates :data:`_AUTH_SCHEME_DETECTORS`
+    # and keeps this function at its existing C901 complexity baseline
+    # while extending coverage to additional auth-scheme literals from
+    # the HTTP authentication family.
+    findings.extend(_scan_auth_scheme_credentials(content, covered_ranges, get_line_number))
 
     for match in _SENSITIVE_ASSIGN_RE.finditer(content):
         candidate = match.group(2).strip()
