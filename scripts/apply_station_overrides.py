@@ -42,6 +42,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.utils.files import atomic_write, read_capped_text  # noqa: E402
 from src.utils.stations import MAX_STATIONS_FILE_BYTES  # noqa: E402
 
@@ -82,10 +83,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 
 def configure_logging(verbose: bool) -> None:
-    logging.basicConfig(
-        level=logging.INFO if verbose else logging.WARNING,
-        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
-    )
+    # ``setup_script_logging`` installs the canonical ``SafeFormatter``
+    # on the root handler so any string interpolated into a log record
+    # — including the operator-controlled ``reason`` / ``expires_when``
+    # fields in ``data/stations_overrides.json`` — gets the CVE-2021-
+    # 42574 / log-injection / 8-bit-C1 / Tag-block / ANSI-ESC defence
+    # the rest of the pipeline relies on. Replaces a plain
+    # ``logging.basicConfig`` call; see
+    # ``tests/test_sentinel_preflight_basicconfig_drift.py::test_no_
+    # basicconfig_in_scripts`` for the pinned invariant.
+    setup_script_logging(logging.INFO if verbose else logging.WARNING)
 
 
 def _load_json(path: Path, max_bytes: int, label: str) -> Any:
@@ -94,7 +101,16 @@ def _load_json(path: Path, max_bytes: int, label: str) -> Any:
         raise OverrideError(f"{label} not loadable: {path}")
     try:
         return json.loads(text)
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks
+        # — a deeply nested but otherwise valid JSON body served by a
+        # compromised upstream / committed by a hostile fork would
+        # otherwise propagate past this handler and crash the
+        # orchestrator. Mirrors the canonical defence the rest of the
+        # ``scripts/`` tree applies (see ``.jules/sentinel.md`` —
+        # JSON Depth-Bomb Drift Round 5; pinned by
+        # ``tests/test_sentinel_json_audit_walker.py::test_every_
+        # json_parser_site_catches_recursion_error``).
         raise OverrideError(f"{label} parse error in {path}: {exc}") from exc
 
 
