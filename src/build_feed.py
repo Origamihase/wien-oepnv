@@ -111,6 +111,29 @@ _INCOMPLETE_TITLE_TAIL_RE = re.compile(
 # (empty line set) and a title without a leading line marker.
 _WL_LINE_PREFIX_RE = re.compile(r"^[A-Za-z0-9]+(?:/[A-Za-z0-9]+)*\s*:\s+\S")
 
+# WL descriptions sometimes end with a dangling ``>`` / ``<`` that the
+# source uses as a "service onwards" arrow indicator. With a
+# destination after it (``Betrieb ab Schwedenplatz > Praterstern``) it
+# carries meaning; standalone at the end of the summary
+# (``Betrieb ab Schwedenplatz >``) it reads like a broken HTML tag
+# glyph or truncation artifact next to the ``[Am …]`` timeframe
+# bracket. We only strip the *trailing* form — mid-text occurrences
+# stay put.
+_TRAILING_DIRECTIONAL_MARKER_RE = re.compile(r"\s*[<>]+\s*$")
+
+
+def _strip_trailing_directional_marker(summary: str) -> str:
+    """Drop a trailing WL ``>`` / ``<`` arrow with surrounding whitespace.
+
+    Called before the title-body duplicate check in
+    :func:`_format_item_content` so a summary that only differs from
+    the title body by a dangling marker still matches and gets
+    dropped as redundant.
+    """
+    if not summary:
+        return summary
+    return _TRAILING_DIRECTIONAL_MARKER_RE.sub("", summary).rstrip()
+
 
 def _post_filter_wl(items: list[Any]) -> list[Any]:
     """Defence-in-depth: normalise / drop bad WL items loaded from cache.
@@ -2210,6 +2233,8 @@ def _format_item_content(
     time_line = _WHITESPACE_CLEANUP_RE.sub(" ", time_line).strip()
     if time_line:
         time_line = f"[{time_line.strip('[]')}]"
+
+    summary = _strip_trailing_directional_marker(summary)
 
     # Skip the summary entirely when it would just repeat the title
     # body verbatim. WL Störung items like ``41E: Ersatzbus 41E halten
