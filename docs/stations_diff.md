@@ -1,12 +1,12 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-16T13:18:42+00:00_
+_Generated: 2026-05-16T14:23:28+00:00_
 
-**Stations: 1952 → 1951 (Δ -1)**
+**Stations: 1951 → 1951 (Δ +0)**
 
-## Added (0)
+## Added (1)
 
-_None._
+- `name:Wien Sofienalpenstraße, Roßkopfgasse (WL)` — Wien Sofienalpenstraße, Roßkopfgasse \(WL\)
 
 ## Removed (1)
 
@@ -18,5 +18,5 @@ _None._
 
 ## Coordinates shifted (≥ 100 m) (2)
 
-- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
-- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)
+- `name:Wien Halblehenweg (WL)` — Wien Halblehenweg \(WL\) (116861 m)
+- `name:Wien Leopoldine-Padaurek-Straße (WL)` — Wien Leopoldine-Padaurek-Straße \(WL\) (78245 m)
