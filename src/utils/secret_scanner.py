@@ -271,14 +271,94 @@ _NEGOTIATE_RE = re.compile(r"(?i)Negotiate\s+([A-Za-z0-9+/=]{50,})")
 # NTLMSSP (the Negotiate detector) are covered without per-mechanism
 # rule duplication.
 _NTLM_RE = re.compile(r"(?i)NTLM\s+([A-Za-z0-9+/=]{50,})")
+# Security: the ``token`` literal is matched case-insensitively per the
+# RFC 7235 §2.1 contract that every HTTP auth-scheme literal inherits.
+# Unlike Bearer (RFC 6750), Basic (RFC 7617), Negotiate (RFC 4559), and
+# NTLM ([MS-NLMP]), ``token`` is NOT a registered IANA HTTP
+# Authentication Scheme — it is a de facto convention popularised by
+# GitHub's REST API documentation (``Authorization: token <body>``)
+# and inherited by every Git-host fork that mirrors GitHub's HTTP API
+# shape (Gitea, Forgejo, Codeberg, Gogs) plus DigitalOcean's legacy
+# API v1 docs and various other tools. The NTLM detector closed the
+# Microsoft-vendor-specific scheme; this detector extends the same
+# contract to the GitHub-vendor-specific scheme, the de facto
+# standard for opaque-token HTTP auth in the Git-host ecosystem.
+# Two downstream failure modes were left open by the absence of this
+# detector:
+#   1. **Attribution drift** — opaque API tokens (typically 36+ chars
+#      from the GitHub PAT body alphabet ``[A-Za-z0-9_\-]``) DO match
+#      ``_HIGH_ENTROPY_RE`` (``[A-Za-z0-9+/=_-]{24,}``) generically
+#      and land as ``Hochentropischer Token-String`` findings, losing
+#      the token-scheme-specific reason that pinpoints the issuer
+#      family (GitHub: rotate at github.com/settings/tokens, audit
+#      ``GET /user`` API calls; Gitea/Forgejo: rotate at
+#      ``/user/settings/applications``; DigitalOcean: rotate at
+#      cloud.digitalocean.com/account/api/tokens). Distinct from
+#      Bearer-Token IdP revocation, from Basic Auth user-password
+#      rotation, from Negotiate/Kerberos KDC ticket revocation, and
+#      from NTLM domain-controller hash rotation — five distinct IR
+#      flows that hinge on per-scheme attribution.
+#   2. **Silent undetection** — all-letter bodies trip the
+#      ``candidate.isalpha()`` skip in the entropy fallback loop
+#      (added to suppress LongCamelCaseClassName false positives).
+#      Pre-fix every leaked ``token <all-letter-body>`` was SILENTLY
+#      UNDETECTED entirely (when not also matching the assignment
+#      heuristic for a sensitive variable name).
+# The body alphabet ``[A-Za-z0-9_\-]`` covers GitHub's PAT alphabet
+# (URL-safe alphanumeric + underscore + hyphen — the same alphabet
+# used by every ``gh*_``-prefixed token family), Gitea/Forgejo's PAT
+# alphabet (both inherit GitHub's shape per their REST API specs), and
+# DigitalOcean's hex token shape. Standard base64 padding (``+/=``)
+# is NOT in the alphabet because opaque API tokens in the GitHub-
+# ecosystem ``token`` scheme are URL-safe alphanumeric, NOT base64
+# (Bearer's alphabet adds ``.`` for JWTs; Basic/Negotiate/NTLM use the
+# standard base64 alphabet ``+/=`` for their respective payloads). The
+# 36+ char body floor is the structural disambiguator against
+# natural-language false positives — the word ``token`` is common in
+# English prose and code comments, but is essentially never followed
+# by 36+ contiguous chars from the ``[A-Za-z0-9_\-]`` alphabet in
+# natural text (English words break at whitespace and punctuation).
+# The floor is calibrated to the GitHub PAT body length (``ghp_<36>``
+# = 40 total chars, with the 36-char body part captured when the PAT
+# prefix is absent — the legacy 40-char hex GitHub token from before
+# April 2021 also exceeds the 36-char floor).
+#
+# Cross-detector boundary note: a leaked ``Authorization: token
+# ghp_xxxx...`` carries TWO matchable spans — the ``ghp_<36>`` GitHub
+# PAT span (matched by ``_KNOWN_TOKENS``) and the ``token <body>`` HTTP
+# auth-scheme span (matched by this detector). The ``_KNOWN_TOKENS``
+# matcher runs FIRST in ``_scan_content``, so the GitHub-PAT-specific
+# reason wins via the ``covered_ranges`` arbitration — this detector
+# yields its attribution only for tokens that do NOT match any
+# ``_KNOWN_TOKENS`` prefix (opaque non-prefixed tokens from Gitea /
+# Forgejo / DigitalOcean / legacy pre-April-2021 GitHub tokens). The
+# placement in ``_AUTH_SCHEME_DETECTORS`` is LAST so the more-specific
+# auth-scheme detectors (Bearer / Basic / Negotiate / NTLM) win via
+# the same ``covered_ranges`` arbitration when a token-shaped body
+# sits inside a Bearer / Basic / etc. header.
+#
+# Real-world emission patterns include legacy GitHub REST API curl
+# examples (``curl -H "Authorization: token ghp_xxx"``), ``hub`` CLI
+# debug output, Gitea / Forgejo / Codeberg / Gogs API examples (every
+# Git-host that mirrors the GitHub HTTP API shape), DigitalOcean
+# legacy API v1 docs, CI/CD workflow files with hard-coded fallback
+# tokens, Python ``requests`` debug logs (``logging.DEBUG`` on
+# ``urllib3.connectionpool``), browser HAR exports of intranet
+# self-hosted Git host API calls, and copy-pasted documentation
+# snippets in READMEs and wikis.
+_TOKEN_SCHEME_RE = re.compile(r"(?i)token\s+([A-Za-z0-9_\-]{36,})")
 
 # Security: ordered (regex, reason) table that ``_scan_content`` iterates
 # over to detect HTTP-auth-scheme-prefixed credentials. Each entry's regex
 # must capture the credential body in group(1) so the loop in
 # ``_scan_content`` can read ``match.group(1)`` uniformly. Order matters
-# only for tie-breaking; the ``is_covered`` check in ``_scan_content``
-# anchors the first matching reason at each span. New auth-scheme
-# detectors (e.g. RFC 7616 Digest, RFC 7486 HOBA, RFC 8120 Mutual)
+# for tie-breaking: more-specific auth-scheme literals (Bearer, Basic,
+# Negotiate, NTLM) MUST appear BEFORE the generic ``token`` scheme so
+# their attribution wins via ``covered_ranges`` arbitration when a
+# token-shaped body sits inside one of those headers. The
+# ``is_covered`` check in ``_scan_content`` anchors the first matching
+# reason at each span. New auth-scheme detectors (e.g. RFC 7616
+# Digest, RFC 7486 HOBA, RFC 8120 Mutual, RFC 4559 AWS4-HMAC-SHA256)
 # follow the same shape and inherit the ``(?i)`` case-insensitivity
 # invariant pinned per RFC 7235 §2.1.
 _AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
@@ -286,6 +366,7 @@ _AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
     (_BASIC_AUTH_RE, "HTTP Basic Authentication Credential gefunden"),
     (_NEGOTIATE_RE, "SPNEGO/Negotiate Authentication Token gefunden"),
     (_NTLM_RE, "NTLM Authentication Credential gefunden"),
+    (_TOKEN_SCHEME_RE, "HTTP Token-Scheme Authentication Credential gefunden"),
 )
 
 _PEM_RE = re.compile(r"(-----BEGIN [A-Z ]*PRIVATE KEY-----)(?:.|\n)*?(-----END [A-Z ]*PRIVATE KEY-----)")
