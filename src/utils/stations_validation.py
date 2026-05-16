@@ -277,16 +277,7 @@ class ValidationReport:
                 )
             lines.append("")
 
-        if self.identity_field_conflicts:
-            lines.append("## Identity field conflicts")
-            for conflict in self.identity_field_conflicts:
-                joined_ids = ", ".join(_safe_md(ident) for ident in conflict.identifiers)
-                joined_names = ", ".join(_safe_md(name) for name in conflict.names)
-                lines.append(
-                    f"- {_safe_md(conflict.field)}={_safe_md(conflict.value)} "
-                    f"shared by [{joined_ids}] ({joined_names})"
-                )
-            lines.append("")
+        lines.extend(self._render_identity_field_conflicts())
 
         if self.duplicates:
             lines.append("## Geographic duplicates")
@@ -334,6 +325,26 @@ class ValidationReport:
             lines.append("No issues detected.")
 
         return "\n".join(lines).rstrip() + "\n"
+
+    def _render_identity_field_conflicts(self) -> list[str]:
+        """Render the ``## Identity field conflicts`` section.
+
+        Split out of :meth:`to_markdown` so the parent method stays
+        below the C901 complexity baseline (15) — adding the section
+        inline pushed it from 18 to 20, above the project floor.
+        """
+        if not self.identity_field_conflicts:
+            return []
+        lines = ["## Identity field conflicts"]
+        for conflict in self.identity_field_conflicts:
+            joined_ids = ", ".join(_safe_md(ident) for ident in conflict.identifiers)
+            joined_names = ", ".join(_safe_md(name) for name in conflict.names)
+            lines.append(
+                f"- {_safe_md(conflict.field)}={_safe_md(conflict.value)} "
+                f"shared by [{joined_ids}] ({joined_names})"
+            )
+        lines.append("")
+        return lines
 
 
 class StationValidationError(RuntimeError):
