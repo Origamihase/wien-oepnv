@@ -38,18 +38,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "34A/N20: Bauarbeiten",
-    "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Prager Stra&szlig;e werden die Linien 34A und N20 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 21. April 2026, etwa 00:30 Uhr bis voraussichtlich Anfang Juni 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 34A in Richtung Floridsdorf S U:<br /></strong>Umleitung ab Fr&ouml;mmlgasse # Stryeckgasse &uuml;ber Stryeckgasse &ndash; Prager Stra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Stryeckgasse (Prager Stra&szlig;e 9)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Stryeckgasse (Stryeckgasse 12-14)</p> <p><strong>Linie N20 in Richtung Strebersdorf, Meriangasse:<br /></strong>Umleitung ab Schlo&szlig;hofer Stra&szlig;e # Br&uuml;nner Stra&szlig;e &uuml;ber Br&uuml;nner Stra&szlig;e &ndash; Hermann-Bahr-Stra&szlig;e &ndash; Prager Stra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Am Spitz (Am Spitz 16)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Am Spitz (Schlo&szlig;hofer Stra&szlig;e 1-3)</p> <p><strong>Linie N20 in Richtung E&szlig;ling, Stadtgrenze bzw. E&szlig;ling, Schule:<br /></strong>Umleitung ab Prager Stra&szlig;e # Hermann-Bahr-Stra&szlig;e &uuml;ber Hermann-Bahr-Stra&szlig;e &ndash; Br&uuml;nner Stra&szlig;e &ndash; Schlo&szlig;hofer Stra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Nordbr&uuml;cke (Prager Stra&szlig;e 15-17)<br />Am Spitz (Am Spitz 1)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Nordbr&uuml;cke (Prager Stra&szlig;e gegen&uuml;ber 18A-20)<br />Am Spitz (Br&uuml;nner Stra&szlig;e 7)</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/N20_Gleisbau%20Prager_Strasse.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "167759ff8a28e6ac94800343e2cc64d1727a253839b2f3d9a183daa717932cd7",
-    "pubDate": "2026-04-09T00:00:00+02:00",
-    "starts_at": "2026-04-21T00:00:00+02:00",
-    "ends_at": "2026-06-30T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=34A,N20|D=2026-04-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "37A: Straßenbauarbeiten",
     "description": "<h2>Umfangreiche Stra&szlig;enbauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Donaueschingenstra&szlig;e wird die Linie 37A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Montag, 26. J&auml;nner 2026, etwa 07:00 Uhr bis voraussichtlich Ende Mai 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 37A in Richtung D&auml;nenstra&szlig;e bzw. Nu&szlig;dorfer Stra&szlig;e U:<br /></strong>Umleitung ab Pasettistra&szlig;e # Donaueschingenstra&szlig;e &uuml;ber Pasettistra&szlig;e &ndash; Hellwagstra&szlig;e &ndash; Dresdner Stra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Lorenz-B&ouml;hler-Unfallkrankenhaus (Donaueschingenstra&szlig;e nach Pasettistra&szlig;e)<br />Dresdner Stra&szlig;e U (Dresdner Stra&szlig;e 47)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Lorenz-B&ouml;hler-Unfallkrankenhaus (Pasettistra&szlig;e 73-75)<br />Pasettistra&szlig;e (Pasettistra&szlig;e vor Hellwagstra&szlig;e)</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/37A_Donaueschingenstrasse.png\" alt=\"Skizze\" width=\"859\" height=\"828\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -230,6 +218,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "N20: Umleitung",
+    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten in der Langobardenstra&szlig;e und der damit einhergehenden provisorischen Einbahnf&uuml;hrung von Biberhaufenweg bis Oberdorfstra&szlig;e, wird die Linie N20 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 28. April 2026 (Nacht von 27. auf 28.), Betriebsbeginn auf Dauer von voraussichtlich 4 Wochen.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie N20 in Richtung E&szlig;ling, Schule bzw. E&szlig;ling Stadtgrenze:<br /></strong>Umleitung ab Langobardenstra&szlig;e # Oberdorfstra&szlig;e &uuml;ber Oberdorfstra&szlig;e &ndash; Aspernstra&szlig;e &ndash; Asperner Heldenplatz zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:<br /></span>Aspern, Oberdorfstra&szlig;e (Langobardenstra&szlig;e gg&uuml;. ONr. 207)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>Aspern, Oberdorfstra&szlig;e (Oberdorfstra&szlig;e 2, gemeinsam mit 93A, 97A und 98A)</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1726b0d02537732189d424e1d32801336b1f8a815bde9413b64e4062d8d8a61b",
+    "pubDate": "2026-04-22T00:00:00+02:00",
+    "starts_at": "2026-04-28T00:00:00+02:00",
+    "ends_at": "2027-04-22T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=N20|D=2026-04-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "N41: Gleisbauarbeiten am Aumannplatz",
     "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten im Bereich Aumannplatz kommt es zu einer Umleitung.</p> <p>Zeitraum<br />Ab Dienstag, den 28. April 2026 ca. 01:00 Uhr bis ca. Anfang Juli 2026</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen</strong></span><br /><span style=\"text-decoration: underline;\">Linie N41 Richtung P&ouml;tzleinsdorf<br /></span>Umleitung ab W&auml;hringer Stra&szlig;e # Martinstra&szlig;e &uuml;ber Martinstra&szlig;e &ndash; Gentzgasse &ndash; Lazaristengasse &ndash; Haizingergasse &ndash; Edmund-Wei&szlig;-Gasse &ndash; K&ouml;hlergasse &ndash; Gentzgasse.<br /><br /><span style=\"text-decoration: underline;\">Linie N41 Richtung Schottentor</span><br />Umleitung ab Gentzgasse # Simonygasse &uuml;ber Simonygasse &ndash; W&auml;hringer Stra&szlig;e &ndash; Aumannplatz &ndash; Gentzgasse &ndash; Argauergasse &ndash; W&auml;hringer Stra&szlig;e.</p> <p><strong><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen</span><br /></strong><span style=\"text-decoration: underline;\">Richtung P&ouml;tzleinsdorf:</span><br />Aumannplatz.&nbsp; <br />Ersatzhaltestelle: Gentzgasse 98</p> <p><span style=\"text-decoration: underline;\">Richtung Schottentor:</span><br />Weinhauser Gasse. <br />Ersatzhaltestelle: W&auml;hringer Stra&szlig;e gegen&uuml;ber 200-202<br />Aumannplatz. <br />Ersatzhaltestelle: W&auml;hringer Stra&szlig;e 149</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/N41_Gleisbau_Aumannplatz.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -398,6 +398,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "34A: Rettungseinsatz",
+    "description": "Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "997c5c2696337e2b638d6044431629fb2cf4b65916dd2bc6ef6fcabe66bdd529",
+    "pubDate": "2026-05-16T12:28:00+02:00",
+    "starts_at": "2026-05-16T12:28:00+02:00",
+    "ends_at": "2026-05-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=34A|D=2026-05-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -518,18 +530,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b50c613612251feea4193dabddf520d95d8fd1c6547b45a685160134aa7d7138",
-    "pubDate": "2026-05-16T11:04:14+02:00",
-    "starts_at": "2026-05-16T11:04:14+02:00",
-    "ends_at": "2026-05-16T12:03:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-05-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -550,18 +550,6 @@
     "starts_at": "2026-05-16T00:00:15+02:00",
     "ends_at": "2026-05-16T23:59:59+02:00",
     "_identity": "wl|störung|L=62|D=2026-05-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "64A: Falschparker",
-    "description": "Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "efa70b7ed2b576bd417daacf2dd4d22efff11511fa169fcec09755fcbfdd1b72",
-    "pubDate": "2026-05-16T11:48:00+02:00",
-    "starts_at": "2026-05-16T11:48:00+02:00",
-    "ends_at": "2026-05-16T23:55:00+02:00",
-    "_identity": "wl|störung|L=64A|D=2026-05-16"
   },
   {
     "source": "Wiener Linien",
@@ -614,18 +602,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
-    "pubDate": "2026-05-16T11:02:18+02:00",
-    "starts_at": "2026-05-16T11:06:35+02:00",
-    "ends_at": "2026-05-16T12:06:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-05-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Richtung Nußdorf Züge halten bei Schottenring 19",
     "description": "Richtung Nußdorf\nZüge halten bei Schottenring 19",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -645,18 +621,6 @@
     "pubDate": "2026-05-16T11:34:37+02:00",
     "starts_at": "2026-05-16T11:34:37+02:00",
     "ends_at": "2026-05-16T23:59:59+02:00",
-    "_identity": "wl|störung|L=D|D=2026-05-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fremdunfall Betrieb ab Liechtenwerder Platz",
-    "description": "Fremdunfall\nBetrieb ab Liechtenwerder Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "275c9840b490f181d8a5fddb451cc07aed203c366e9be6f3573c228ba321f2da",
-    "pubDate": "2026-05-16T11:02:18+02:00",
-    "starts_at": "2026-05-16T11:02:18+02:00",
-    "ends_at": "2026-05-16T12:07:00+02:00",
     "_identity": "wl|störung|L=D|D=2026-05-16"
   },
   {
@@ -682,30 +646,6 @@
     "starts_at": "2026-05-16T11:34:37+02:00",
     "ends_at": "2026-05-16T23:59:59+02:00",
     "_identity": "wl|störung|L=D|D=2026-05-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Verkehrsunfall Betrieb ab Liechtenwerder Platz",
-    "description": "Verkehrsunfall\nBetrieb ab Liechtenwerder Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d89e8f452199ec37d2a75e6121a473ed5fd4642023889bce1cb8efaf9ac47f10",
-    "pubDate": "2026-05-16T11:24:57+02:00",
-    "starts_at": "2026-05-16T11:24:57+02:00",
-    "ends_at": "2026-05-16T12:24:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-05-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-05-16T11:13:00+02:00",
-    "starts_at": "2026-05-16T11:13:00+02:00",
-    "ends_at": "2026-05-16T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-05-16"
   },
   {
     "source": "Wiener Linien",
