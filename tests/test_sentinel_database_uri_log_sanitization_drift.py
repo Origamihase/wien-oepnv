@@ -389,23 +389,27 @@ def test_postgres_uri_preserves_host_path_query() -> None:
     """The credential is replaced with ``***`` but the host / port /
     path / query / fragment information is preserved so operators can
     still triage which database the failed connection targeted.
+    Asserting the EXACT sanitised output pins both the credential
+    redaction AND the structural preservation in one invariant (avoids
+    the CodeQL ``py/incomplete-url-substring-sanitization`` false-
+    positive that flags substring containment on a URL).
     """
     url = f"postgres:admin:{_PG_PW}@db.example.com:5432/prod?sslmode=require"
     sanitized = _sanitize_url_for_error(url)
     assert _PG_PW not in sanitized
-    assert "db.example.com" in sanitized
-    assert "5432" in sanitized
-    assert "prod" in sanitized
+    assert sanitized == "postgres:***@db.example.com:5432/prod?sslmode=require"
 
 
 def test_jdbc_postgresql_preserves_host_path() -> None:
     """JDBC variants similarly preserve the host / path so operators
-    can identify the connection target."""
+    can identify the connection target. Asserting the exact sanitised
+    output (rather than substring containment) pins the structure-
+    preservation invariant precisely.
+    """
     url = f"jdbc:postgresql://admin:{_PG_PW}@db.example.com:5432/prod"
     sanitized = _sanitize_url_for_error(url)
     assert _PG_PW not in sanitized
-    assert "db.example.com" in sanitized
-    assert "5432" in sanitized
+    assert sanitized == "jdbc:postgresql://***@db.example.com:5432/prod"
 
 
 # ---------------------------------------------------------------------------
