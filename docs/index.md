@@ -51,6 +51,7 @@ Alle Datenquellen werden revisionssicher versioniert, inklusive Lizenzhinweisen.
 
 ## Feed abonnieren & weiterempfehlen
 
+- **Live-Dashboard**: Unter [`site.html`](site.html) steht ein leichtgewichtiges, vollständig client-seitig gerendertes Dashboard bereit. Es bündelt den aktuellen Feed, die Störungs-Statistik des laufenden Jahres und die Stammstrecken-Kennzahlen ohne Tracker, Cookies oder Drittanbieter-Skripte.
 - **Direkter RSS-Link**: `https://origamihase.github.io/wien-oepnv/feed.xml` liefert stets die aktuellen Meldungen mit sprechenden GUIDs und permalinks. Die Elemente enthalten eindeutige Titel und Links, damit News-Aggregatoren wie Feedly oder Inoreader sie korrekt erkennen.
 - **Sitemap & Robots**: `docs/sitemap.xml` und `docs/robots.txt` weisen Suchmaschinen aktiv auf den Feed hin. Der `<link rel="alternate">`-Eintrag im HTML-Head macht den Feed außerdem für Google Discover und andere „Folgen“-Funktionen sichtbar.
 - **Weiterführende Signale**: Verlinke das Projekt auf deiner Website, in Blogposts oder passenden Community-Foren (z. B. Reddit, Mastodon, lokale ÖPNV-Gruppen). Jede Empfehlung erzeugt wertvolle Backlinks und hilft Suchmaschinen, die Relevanz des Angebots einzuordnen.
@@ -84,6 +85,7 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
 - Feed-Health-Report: `docs/feed-health.md` (+ `docs/feed-health.json` für maschinelle Konsumenten) – beide lokal nach jedem Build erzeugt
 - [Eventschema für Integrationen](schema/events.schema.json)
 - [Feed als RSS-Dokument](feed.xml)
+- [Live-Dashboard (`site.html`)](site.html) mit aktueller Feed-, Störungs- und Stammstrecken-Auswertung
 
 <script type="application/ld+json">
 {

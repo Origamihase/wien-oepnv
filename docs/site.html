@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://raw.githubusercontent.com; font-src 'self'; form-action 'none'; manifest-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; media-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0F1736" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a1126" media="(prefers-color-scheme: dark)">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="robots" content="index,follow">
+
+  <title>Wien ÖPNV – Live-Dashboard | Störungen, Stammstrecke &amp; Statistik</title>
+  <meta name="description" content="Live-Dashboard für Wiener Linien, ÖBB und VOR: aktuelle Störungen aus dem RSS-Feed, Jahresstatistik der Störungsmeldungen sowie Verspätungs- und Ausfalldaten der S-Bahn-Stammstrecke.">
+
+  <link rel="canonical" href="https://origamihase.github.io/wien-oepnv/site.html">
+  <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
+  <link rel="icon" type="image/svg+xml" href="assets/site-favicon.svg">
+  <link rel="stylesheet" href="assets/site.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_AT">
+  <meta property="og:site_name" content="Wien ÖPNV Feed">
+  <meta property="og:title" content="Wien ÖPNV – Live-Dashboard">
+  <meta property="og:description" content="Echtzeit-Übersicht zu Störungen, Stammstrecken-Verspätungen und Ausfällen im Wiener ÖPNV.">
+  <meta property="og:url" content="https://origamihase.github.io/wien-oepnv/site.html">
+  <meta property="og:image" content="https://origamihase.github.io/wien-oepnv/assets/og-default.svg">
+  <meta property="og:image:alt" content="Wien ÖPNV Feed – Social Preview mit eingebautem Wappen">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wien ÖPNV – Live-Dashboard">
+  <meta name="twitter:description" content="Echtzeit-Übersicht zu Störungen, Stammstrecken-Verspätungen und Ausfällen im Wiener ÖPNV.">
+  <meta name="twitter:image" content="https://origamihase.github.io/wien-oepnv/assets/og-default.svg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Wien ÖPNV – Live-Dashboard",
+    "applicationCategory": "TransportationApplication",
+    "operatingSystem": "Cross-platform",
+    "url": "https://origamihase.github.io/wien-oepnv/site.html",
+    "inLanguage": "de-AT",
+    "isAccessibleForFree": true,
+    "description": "Live-Dashboard für Störungen, Stammstrecken-Verspätungen und Ausfälle im Wiener ÖPNV. Datenquellen: Wiener Linien, ÖBB, VOR/VAO.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wien ÖPNV Projektteam",
+      "url": "https://github.com/Origamihase/wien-oepnv"
+    },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a class="brand" href="./" aria-label="Wien ÖPNV – Startseite">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false" aria-hidden="true">
+            <rect width="32" height="32" rx="8"></rect>
+            <path d="M9 9h3v9a2 2 0 0 0 4 0V9h3v9a5 5 0 0 1-10 0V9zm12 0h2v14h-2z"></path>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">Wien ÖPNV</span>
+          <span class="brand__sub">Live-Dashboard</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="#feed">Meldungen</a></li>
+          <li><a href="#stoerungen">Störungs-Statistik</a></li>
+          <li><a href="#stammstrecke">Stammstrecke</a></li>
+          <li><a href="#ausfaelle">Ausfälle</a></li>
+          <li><a href="feed.xml" type="application/rss+xml" class="site-nav__cta">RSS</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="hero__eyebrow">Echtzeit · Open Data · Wien &amp; Ostregion</p>
+      <h1 id="hero-title">Störungen, Verspätungen &amp; Ausfälle auf einen Blick</h1>
+      <p class="hero__lead">
+        Konsolidierte Verkehrsinformationen aus
+        <strong>Wiener Linien</strong>, <strong>ÖBB</strong> und <strong>VOR/VAO</strong> –
+        live aus dem RSS-Feed, ergänzt um die aktuelle Jahresstatistik der
+        S-Bahn-Stammstrecke.
+      </p>
+      <div class="status" role="status" aria-live="polite">
+        <span class="status__dot" data-status="loading" aria-hidden="true"></span>
+        <span class="status__text" id="status-text">Daten werden geladen …</span>
+        <button type="button" id="refresh-btn" class="btn btn--ghost">
+          <span aria-hidden="true">⟳</span>
+          <span>Aktualisieren</span>
+        </button>
+      </div>
+      <p class="hero__meta">
+        Datenstand:&nbsp;<time id="last-update" datetime="">–</time>
+        · <a href="feed.xml" type="application/rss+xml">Feed (RSS)</a>
+        · <a href="https://github.com/Origamihase/wien-oepnv" rel="external noopener noreferrer" target="_blank">Quellcode</a>
+      </p>
+    </section>
+
+    <section id="feed" class="section" aria-labelledby="feed-title">
+      <header class="section__header">
+        <h2 id="feed-title">Aktuelle Meldungen</h2>
+        <p class="section__sub">
+          Live aus <a href="feed.xml" type="application/rss+xml"><code>feed.xml</code></a>
+          · konsolidiert aus offiziellen Quellen
+          · <span id="feed-count" class="badge" aria-live="polite">–</span>
+        </p>
+      </header>
+
+      <div class="filters" role="group" aria-label="Meldungen nach Quelle filtern" id="feed-filters">
+        <button class="chip is-active" type="button" data-filter="all">Alle</button>
+        <button class="chip" type="button" data-filter="wienerlinien">Wiener Linien</button>
+        <button class="chip" type="button" data-filter="oebb">ÖBB</button>
+        <button class="chip" type="button" data-filter="vor">VOR / VAO</button>
+        <button class="chip" type="button" data-filter="other">Andere</button>
+      </div>
+
+      <ol class="feed-list" id="feed-list" aria-busy="true" aria-describedby="feed-empty">
+        <li class="skeleton skeleton--feed"></li>
+        <li class="skeleton skeleton--feed"></li>
+        <li class="skeleton skeleton--feed"></li>
+      </ol>
+      <p class="empty" id="feed-empty" hidden>Keine Meldungen für den gewählten Filter.</p>
+      <p class="error" id="feed-error" hidden role="alert"></p>
+    </section>
+
+    <section id="stoerungen" class="section" aria-labelledby="stoerungen-title">
+      <header class="section__header">
+        <h2 id="stoerungen-title">Störungs-Statistik <span class="year" data-year-label>–</span></h2>
+        <p class="section__sub">
+          Jahresledger aus
+          <code>data/stats/stoerungen_<span data-year-label>–</span>.csv</code>
+          – eine Zeile pro neu erkannter Ereignis-Identität.
+        </p>
+      </header>
+
+      <div class="kpis" id="stoerungen-kpis" aria-label="Kennzahlen Störungen">
+        <article class="kpi skeleton"></article>
+        <article class="kpi skeleton"></article>
+        <article class="kpi skeleton"></article>
+        <article class="kpi skeleton"></article>
+      </div>
+
+      <div class="chart-grid">
+        <article class="card">
+          <h3 class="card__title">Verteilung je Quelle</h3>
+          <div class="bars" id="stoerungen-providers" aria-label="Störungen je Quelle"></div>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Nach Wochentag</h3>
+          <div class="bars" id="stoerungen-weekday" aria-label="Störungen je Wochentag"></div>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Nach Tageszeit</h3>
+          <div class="bars" id="stoerungen-hour" aria-label="Störungen je Stunde"></div>
+        </article>
+        <article class="card card--wide">
+          <h3 class="card__title">Häufigste Orte</h3>
+          <div class="bars" id="stoerungen-locations" aria-label="Häufigste Orte"></div>
+        </article>
+      </div>
+      <p class="error" id="stoerungen-error" hidden role="alert"></p>
+    </section>
+
+    <section id="stammstrecke" class="section" aria-labelledby="stammstrecke-title">
+      <header class="section__header">
+        <h2 id="stammstrecke-title">Stammstrecke – Verspätungen <span class="year" data-year-label>–</span></h2>
+        <p class="section__sub">
+          S-Bahn-Beobachtungen am Wien Hauptbahnhof
+          – <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.
+        </p>
+      </header>
+
+      <div class="kpis" id="stammstrecke-kpis" aria-label="Kennzahlen Stammstrecke">
+        <article class="kpi skeleton"></article>
+        <article class="kpi skeleton"></article>
+        <article class="kpi skeleton"></article>
+        <article class="kpi skeleton"></article>
+      </div>
+
+      <div class="chart-grid">
+        <article class="card">
+          <h3 class="card__title">Ø Verspätung nach Tageszeit</h3>
+          <div class="bars" id="stammstrecke-hour" aria-label="Ø Verspätung je Stunde"></div>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Ø Verspätung nach Wochentag</h3>
+          <div class="bars" id="stammstrecke-weekday" aria-label="Ø Verspätung je Wochentag"></div>
+        </article>
+        <article class="card card--wide">
+          <h3 class="card__title">Beobachtungen je Richtung</h3>
+          <div class="bars" id="stammstrecke-direction" aria-label="Beobachtungen je Richtung"></div>
+        </article>
+      </div>
+      <p class="error" id="stammstrecke-error" hidden role="alert"></p>
+    </section>
+
+    <section id="ausfaelle" class="section" aria-labelledby="ausfaelle-title">
+      <header class="section__header">
+        <h2 id="ausfaelle-title">Stammstrecke – Ausfälle <span class="year" data-year-label>–</span></h2>
+        <p class="section__sub">
+          Annullierte S-Bahn-Züge – deduplizierter Ledger
+          <code>data/stats/ausfaelle_<span data-year-label>–</span>.csv</code>.
+        </p>
+      </header>
+
+      <div class="kpis" id="ausfaelle-kpis" aria-label="Kennzahlen Ausfälle">
+        <article class="kpi skeleton"></article>
+        <article class="kpi skeleton"></article>
+        <article class="kpi skeleton"></article>
+      </div>
+
+      <div class="chart-grid">
+        <article class="card">
+          <h3 class="card__title">Nach Linie</h3>
+          <div class="bars" id="ausfaelle-line" aria-label="Ausfälle je Linie"></div>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Nach Richtung</h3>
+          <div class="bars" id="ausfaelle-direction" aria-label="Ausfälle je Richtung"></div>
+        </article>
+        <article class="card card--wide">
+          <h3 class="card__title">Nach Tageszeit</h3>
+          <div class="bars" id="ausfaelle-hour" aria-label="Ausfälle je Stunde"></div>
+        </article>
+      </div>
+      <p class="error" id="ausfaelle-error" hidden role="alert"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container site-footer__inner">
+      <div>
+        <h2 class="site-footer__heading">Datenquellen</h2>
+        <ul class="site-footer__list">
+          <li><strong>Wiener Linien</strong> – Echtzeit-Störungsmeldungen (OGD)</li>
+          <li><strong>ÖBB</strong> – bundesweite Bahnmeldungen, Wien-gefiltert</li>
+          <li><strong>VOR/VAO</strong> – Stammstrecken-Beobachtungen am Wien Hbf</li>
+          <li><strong>Stadt Wien (OGD)</strong> – Baustellen mit Bezirk &amp; Zeitraum</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Über das Dashboard</h2>
+        <p>
+          Open-Source unter MIT-Lizenz. Aktualisierungs-Cadence des Feeds: rund alle 30&nbsp;Minuten.
+          Dieses Dashboard ruft Feed und Statistik-CSVs <em>direkt im Browser</em> ab –
+          es gibt keinen Tracker, keine Cookies, keine Drittanbieter-Skripte.
+        </p>
+        <p>
+          <a href="https://github.com/Origamihase/wien-oepnv" rel="external noopener noreferrer" target="_blank">Repository auf GitHub</a>
+          · <a href="https://github.com/Origamihase/wien-oepnv/blob/main/data/stats/README.md" rel="external noopener noreferrer" target="_blank">CSV-Schema</a>
+          · <a href="feed.xml" type="application/rss+xml">RSS-Feed</a>
+          · <a href="./">Projekt-Startseite</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>
