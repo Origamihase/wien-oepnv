@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 17 May 2026 01:00:38 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 01:30:37 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N31: Busse halten in 5B Haltestelle]]></title>
@@ -87,17 +87,6 @@
       <content:encoded><![CDATA[[16.05.2026 – 17.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1/2/71/D: Veranstaltung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1b8f8782066b61a07172eee913173e2c56b1427e49229f950ad8fe28bb5ab509</guid>
-      <pubDate>Sat, 16 May 2026 11:29:00 +0200</pubDate>
-      <ext:first_seen>Sun, 17 May 2026 00:00:30 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 11:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 17 May 2026 01:00:00 +0200</ext:ends_at>
-      <description>Linie 1: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. [16.05.2026 – 17.05.2026]</description>
-      <content:encoded><![CDATA[Linie 1: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz.<br/>[16.05.2026 – 17.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
@@ -112,6 +101,17 @@
       <title><![CDATA[44A: Busse halten Alszeile gegenüber 93]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">05f43b3cc6e7fc469b2327c420ffd938743c80bae8e543e6b1266ae3efe72301</guid>
+      <pubDate>Sat, 16 May 2026 00:00:25 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 00:00:25 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[16.05.2026 – 17.05.2026]</description>
+      <content:encoded><![CDATA[[16.05.2026 – 17.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: Betrieb ab Thaliastraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18</guid>
       <pubDate>Sat, 16 May 2026 00:00:25 +0200</pubDate>
       <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
       <ext:starts_at>Sat, 16 May 2026 00:00:25 +0200</ext:starts_at>
