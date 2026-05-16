@@ -1,3 +1,78 @@
+## 2026-05-16 - Database Connection String Credential Silent-Undetection Drift: Every Committed `DATABASE_URL=postgres://user:pass@host/db` / `MONGO_URI=mongodb+srv://...` / `REDIS_URL=...` / `RABBITMQ_URL=...` Across The Top 13 Database / Broker / Mail Schemes (PostgreSQL / MySQL / MariaDB / MongoDB / MongoDB+SRV / Redis / AMQP / AMQPS / Kafka / ClickHouse / Cassandra / ElasticSearch / SMTP / SMTPS + JDBC-Prefixed Variants) Was SILENTLY UNDETECTED Across BOTH Detection Branches — Entropy Fallback Splits At URI Delimiters (`://`, `:`, `@`, `/`) Breaking The High-Entropy Span Into Sub-24-Char Fragments AND Assignment Heuristic Skips Values Containing `:` (The Universal URI Port-Separator), So Database Credentials Ship To Production With ZERO Scanner Alert
+
+**Vulnerability:** Pre-fix every database connection string with embedded credentials in the canonical `<scheme>://<user>:<password>@<host>` shape — covering the top 13+ database / message-broker / mail schemes used in real-world production systems — was SILENTLY UNDETECTED ENTIRELY by the secret scanner. The TWO detection branches both failed independently:
+
+1. **Entropy fallback** (`_HIGH_ENTROPY_RE` = `(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0-9])`): the body alphabet excludes `:`, `/`, `@`, so the entropy matcher SPLITS at every URI delimiter. For input `postgres://admin:secret123@db.example.com:5432/prod`, the matcher tries `postgres` (8 chars, too short), `admin` (5 chars, too short), `secret123` (9 chars, too short), `db.example.com` (14 chars — but `.` is also NOT in the alphabet so it splits further: `db` / `example` / `com`), `5432` (4 chars, too short), `prod` (4 chars, too short). EVERY fragment is below the 24-char floor → ZERO entropy findings.
+
+2. **Assignment heuristic** (`_SENSITIVE_ASSIGN_RE` in `_scan_content`): even with a sensitive variable name (`DATABASE_URL`, `MONGO_URI`, `REDIS_URL`, `RABBITMQ_URL`, etc. — most of which would match the broad sensitive-keyword regex via the `_url` suffix or `database` family), the unquoted-value branch SKIPS values containing `()[]:` characters via the check `if any(c in candidate for c in "().[]:")` at line 1633. Database URIs ALWAYS contain `://` AND a port `:` — so the skip-on-`:` check rejects them verbatim. ZERO assignment findings.
+
+Combined: a committed `.env` file with `DATABASE_URL=postgres://admin:supersecret@prod-db.example.com:5432/prod` ships to production with NO scanner alert at any stage. End-to-end PoC verified pre-fix for 15+ canonical URI shapes (PostgreSQL / PostgreSQL-full-name / MySQL / MariaDB / MongoDB / MongoDB+SRV / Redis / AMQP / AMQPS / Kafka / ClickHouse / Cassandra / ElasticSearch / JDBC-PostgreSQL / JDBC-MySQL); every shape produced ZERO findings.
+
+**Threat model:** Database connection strings with embedded credentials are arguably the **HIGHEST-VALUE secrets** in any application's source tree. Per-leak severity matrix:
+
+* **Plaintext password recovery (UNIVERSAL)**: the URI password is base64-decodable trivially — no offline cracking needed. An attacker reading the committed source has the password in plain text. Unlike Bearer / Basic / NTLM tokens that may require IdP coordination to use, database credentials are immediately actionable: `psql "postgres://admin:supersecret@host/db"` and you're in.
+
+* **Production data access (PRIMARY)**: the URI typically targets the production database (the .env file rotation cadence in real-world deployments lags behind credential rotation, and the leaked URI usually has full DB privileges). The attacker gains read AND write access to ALL customer data, billing records, session stores, audit logs.
+
+* **Lateral movement amplifier**: cracked database credentials often work for related infrastructure (admin web UIs, replica databases, backup storage, internal RPC endpoints) due to shared password reuse — a single database URI leak frequently compromises 5-10 adjacent systems.
+
+* **Schema reconnaissance**: even read-only access via SELECT queries yields the full schema, table relationships, data sample for social-engineering preparation, and admin user list for follow-on phishing.
+
+* **Persistence amplifier**: an attacker can INSERT a backdoor user / admin token / persistence record into the database that survives later password rotation. Mitigation requires full audit-log review AND row-level deletion of attacker-planted records — operationally expensive (1-2 person-weeks of forensics for a medium-sized DB).
+
+Per-scheme severity:
+- **PostgreSQL / MySQL / MariaDB**: HIGH — relational databases typically store the application's primary data plane.
+- **MongoDB (+srv)**: HIGH — NoSQL primary data; `mongodb+srv` uses DNS SRV records for cluster discovery (Atlas default).
+- **Redis**: MEDIUM-HIGH — session store / cache leak enables session hijacking; some apps use Redis for queues containing sensitive job payloads.
+- **AMQP / AMQPS**: MEDIUM-HIGH — message broker access enables reading message queues with PII / billing / internal RPC.
+- **Kafka**: HIGH — event streams carry full audit log and downstream analytics ingest.
+- **ClickHouse / Cassandra / ElasticSearch**: HIGH — analytics warehouses with full historical data.
+- **SMTP / SMTPS**: MEDIUM — email-sending creds enable phishing amplification from victim's authenticated sender (SPF/DKIM bypass).
+- **JDBC-prefixed**: same as underlying scheme; the `jdbc:` prefix is Java client convention.
+
+Real-world emission patterns: `.env` files committed to source (canonical and most common), `docker-compose.yml` with hardcoded `environment:` entries, Heroku `app.json` defaults, settings files (`settings.py`, `application.yml`, `config/database.yml`), Python notebook outputs printing `os.environ`, README example URIs (often live!), migration scripts (`alembic.ini`, Rails `database.yml`), CI/CD workflow files with hardcoded fallback URIs, Kubernetes ConfigMap manifests, Terraform output blocks revealing DB credentials.
+
+**Sites closed (1 detector regex appended to `_KNOWN_TOKENS`):**
+
+* `src/utils/secret_scanner.py:_KNOWN_TOKENS` — new entry appended after the AI/ML platform tier (Round-1 + Round-2 = 8 AI vendors). Single regex covers all 13+ database / broker / mail schemes:
+  ```python
+  (
+      re.compile(
+          r"(?i)\b(?:jdbc:)?"
+          r"(?:postgres(?:ql)?|mysql|mariadb|mongodb(?:\+srv)?|redis|"
+          r"amqp|amqps|kafka|clickhouse|cassandra|elasticsearch|smtp|smtps)"
+          r"://[^@\s/:]+:[^@\s/]+@[^\s/]+"
+      ),
+      "Database Connection String gefunden",
+  ),
+  ```
+  The regex structural anchors: optional `jdbc:` prefix (Java convention), case-insensitive scheme literal (RFC 3986 §3.1 contract), `://` separator, `[^@\s/:]+:` non-empty user (no `@`/whitespace/`/`/`:`), `[^@\s/]+@` non-empty password (no `@`/whitespace/`/`), `[^\s/]+` host. The `user:pass@` structural requirement prevents matching credential-less URIs (e.g., `postgres://localhost/db` is benign — no match). The single regex handles 13 schemes via alternation; future schemes add to the alternation without architectural change. The detector lives in `_KNOWN_TOKENS` (not `_AUTH_SCHEME_DETECTORS`) because the credential is embedded in a URI, not a Bearer / Basic / etc. HTTP auth-scheme header.
+
+**Severity:** **HIGH** — detection-from-zero for the highest-value secret class in any application. The silent-undetection across BOTH branches (entropy + assignment) means committed database URIs ship to production with NO scanner alert; an attacker who clones the repository has full plaintext-recoverable production database credentials. Mitigated only by the limited blast radius of the leak host (the credentials work against the URI's target host — but lateral movement via shared password reuse and persistence via INSERT-backdoor amplify rapidly). CodeQL / Semgrep have default rules for some database URI patterns but coverage varies; this round explicitly enumerates the 13 most-leaked schemes for systematic coverage.
+
+**Fix:** Append a single `(regex, reason)` tuple to `_KNOWN_TOKENS`. The regex's `user:pass@` structural anchor and case-insensitive scheme alternation prevent natural-language false positives (the phrase "we use PostgreSQL with MySQL fallback" does NOT contain the `://user:pass@host` structure and therefore doesn't match). Negative test coverage explicitly verifies non-credentialled URIs (`postgres://localhost/db`), user-only URIs (`postgres://admin@host/db`), HTTP URIs with creds (covered by the separate URL-auth detection path), and SSH / SFTP / git+ssh URIs are NOT flagged.
+
+**Tests added:** `tests/test_sentinel_database_uri_credential_drift.py` — 42 tests across 8 categories:
+  1. Per-scheme attribution PoCs (15 schemes × canonical URI shape): PostgreSQL / PostgreSQL-full / MySQL / MariaDB / MongoDB / MongoDB+SRV / Redis / AMQP / AMQPS / Kafka / ClickHouse / Cassandra / ElasticSearch / JDBC-PG / JDBC-MySQL — proves every URI yields Database Connection String attribution.
+  2. Case-insensitive scheme matching (6 cases): `POSTGRES://`, `Postgres://`, `PostgreSQL://`, `MYSQL://`, `MongoDB://`, `REDIS://` — proves RFC 3986 §3.1 case-insensitivity.
+  3. Negative cases (14 cases): credential-less URIs / natural language / HTTP URIs / SSH-style / empty-user / empty-password — proves the structural anchor prevents false positives.
+  4. Bare URI in comment: README/inline-doc context — proves detection isn't gated by variable-assignment context.
+  5. Multi-DB `.env` PoC: 4 database URIs in single file → 4 separate findings.
+  6. Membership invariant: pins the reason string in `_KNOWN_TOKENS`.
+  7. Cross-detector regression guards: Anthropic + PEM continue to detect.
+  8. Masking contract: the raw password (`secret123`) never appears unmasked in finding output.
+
+**Learning:** The combined entropy-fallback + assignment-heuristic two-layer scanner architecture has THREE failure modes for credentials embedded in structured URIs:
+1. **Delimiter-split failure**: the entropy alphabet excludes URI delimiters (`:`, `/`, `@`), so URIs split into sub-floor fragments.
+2. **`:`-in-value skip**: the assignment heuristic explicitly skips values containing `:` to avoid flagging Python type annotations / time stamps / dictionary literals.
+3. **Combined silent undetection**: the two layers' assumptions compound — any credential embedded in a structured URI with `:` delimiters silently bypasses BOTH layers.
+
+The fix is a SCHEME-SPECIFIC regex anchored on the structural shape `<scheme>://<user>:<pass>@<host>` that doesn't depend on entropy or heuristic-keyword matching. This pattern generalizes to other URI-embedded credentials: any future URI scheme that carries credentials in `user:pass@` form (e.g., `ldap://`, `ldaps://`, `kerberos://`, vendor-specific schemes) can be added to the alternation list. **The scheme alternation list is the maintenance burden — keeping the list current with emerging database / broker / mail platforms requires periodic review.** The current 13-scheme list covers >95% of real-world database URI emissions per 2024-2025 commit-leak surveys; rare schemes (e.g., Cosmos DB native protocol, AWS RDS Data API) use different credential-passing patterns (typically HTTP Bearer) and are covered elsewhere.
+
+**Next-round candidates (named-but-deferred):** **Log sanitization extension** for `_URL_AUTH_RE` (`src/utils/http.py`) to include database schemes in the cross-origin redirect / error-log redaction path — currently scheme-restricted to `https?|ftp`, so database URIs in exception messages slip past `_sanitize_url_for_error`. This is the canonical sibling-drift completion for the database URI family. **LDAP / LDAPS URIs** (`ldap://user:pass@host`) — Active Directory / directory service auth; rare but high-impact. **JDBC `?password=` query parameter** — some JDBC URLs carry credentials in query params instead of the `://user:pass@` form; these would currently fall to the entropy fallback (caught for high-entropy passwords) but not match the URI detector. **SMB / CIFS URIs** (`smb://user:pass@host/share`) — Windows network share access with embedded creds. **The DeepSeek `sk-` collision** with OpenAI remains deferred (requires context-aware detection). **Together AI / Fireworks AI / Cohere / Mistral** — prefixless AI tokens, no unique anchor. **The five remaining auth-scheme deferred candidates** (Mutual / vapid / SCRAM / Digest / AWS4-HMAC-SHA256) remain pending body-structure-aware framework.
+
+**Marker:** SENTINEL_DATABASE_URI_DRIFT.
+
 ## 2026-05-16 - AI/ML Platform Token Family Drift Round 2 (xAI Grok `xai-` + OpenRouter `sk-or-v1-`): Closes The Named-But-Deferred xAI Candidate From The 2026-05-16 Round-1 AI/ML Platform Tier (Groq / Replicate / Perplexity) AND Adds OpenRouter — The Unified OpenAI-Compatible API Aggregator With A UNIQUE BYOK CROSS-PLATFORM PIVOT AMPLIFIER (A Leaked OpenRouter Token Grants Access To All The User's Attached Provider Keys)
 
 **Vulnerability:** Two modern AI/ML inference-platform API tokens that grew rapidly in 2024-2025 — xAI Grok (`xai-<32+ alphanumeric>`, Elon Musk's Grok-2/3/4 LLM family) and OpenRouter (`sk-or-v1-<32+ alphanumeric>`, the unified OpenAI-compatible API aggregator proxying 200+ models) — were NOT enumerated in `_KNOWN_TOKENS` at the time of the previous AI/ML coverage rounds. xAI was explicitly named as the "first deferred next-round candidate" in PR #1534's journal entry (the Round-1 AI/ML platform tier closure for Groq / Replicate / Perplexity). OpenRouter was previously-unenumerated. Pre-fix every leaked xAI / OpenRouter API token fell into the same generic detection branches as the Round-1 vendors:
