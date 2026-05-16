@@ -201,6 +201,76 @@ _BASIC_AUTH_RE = re.compile(r"(?i)Basic\s+([A-Za-z0-9+/=]{16,})")
 # literal NOT the body prefix, so both Kerberos and NTLMSSP shapes are
 # covered without per-mechanism rule explosion.
 _NEGOTIATE_RE = re.compile(r"(?i)Negotiate\s+([A-Za-z0-9+/=]{50,})")
+# Security: ``NTLM`` literal is matched case-insensitively per RFC 7235
+# §2.1 (the HTTP auth-scheme case-insensitivity contract that every
+# HTTP auth-scheme inherits; RFC 4559 §4 also lists ``NTLM`` alongside
+# ``Negotiate`` as a recognised HTTP auth-scheme literal even though
+# the underlying NTLMSSP wire protocol is defined by [MS-NLMP], a
+# Microsoft vendor specification rather than an IETF RFC). The
+# Negotiate detector closed the SPNEGO-wrapped NTLMSSP path; this
+# detector covers ``NTLM`` used directly as an HTTP auth-scheme
+# (without SPNEGO wrapping) — the common case for IIS with legacy
+# clients, SMB-over-HTTP, WebDAV, and SharePoint Windows-only intranet
+# scenarios. Two downstream failure modes were left open by the
+# absence of this detector:
+#   1. **Attribution drift** — long NTLMSSP Type 3 (Authenticate)
+#      messages (350-1000+ bytes raw, base64-encoded to 470-1500+
+#      chars) DO match ``_HIGH_ENTROPY_RE`` (``[A-Za-z0-9+/=_-]{24,}``)
+#      generically and land as ``Hochentropischer Token-String``
+#      findings, losing the NTLM-specific reason that pinpoints
+#      revocation flow (rotate the user's password — the NTLMv2
+#      challenge-response is offline-crackable with ``hashcat`` mode
+#      5600 to recover the plaintext password; audit the domain
+#      controller for NetNTLMv2 relay attempts via ``ntlmrelayx``;
+#      force user re-authentication via password change). Distinct
+#      from Bearer-Token IdP revocation, from Basic Auth user-password
+#      rotation (no relay surface), and from Negotiate/Kerberos KDC
+#      ticket revocation (no offline-cracking surface for the encrypted
+#      ticket portion).
+#   2. **Silent undetection** — all-letter base64 bodies trip the
+#      ``candidate.isalpha()`` skip in the entropy fallback loop
+#      (added to suppress LongCamelCaseClassName false positives).
+#      Pre-fix every leaked ``NTLM <all-letter-body>`` was SILENTLY
+#      UNDETECTED entirely — the CI gate passed, the NTLMSSP message
+#      (potentially containing a NetNTLMv2 hash recoverable to the
+#      plaintext password via offline cracking) sat committed in the
+#      public repo indefinitely.
+# The body alphabet ``[A-Za-z0-9+/=]`` is the canonical base64 alphabet
+# per RFC 4648 §4 (standard base64; NTLMSSP messages always use
+# standard base64 in HTTP Authorization headers per [MS-NLMP] §2.2
+# Header — the binary protocol is rendered into the textual HTTP
+# scheme via standard base64). The 50+ char body floor is the
+# structural disambiguator — real NTLMSSP messages are ALL above 50
+# chars (Type 1 = 40 bytes raw = 56 base64 chars minimum; Type 2
+# = 80-200 bytes raw = 108-272 base64 chars; Type 3 = 350-1000+
+# bytes raw = 470-1500+ base64 chars). 50 is a safe conservative
+# floor that catches every realistic NTLMSSP message including
+# truncated Type 1 tokens in fragmented log lines while preventing
+# natural-language false positives (the acronym ``NTLM`` appears in
+# code comments and documentation, but never followed by 50+
+# contiguous chars from the base64 alphabet — English prose breaks at
+# whitespace and punctuation). The ``(?i)`` inline flag inherits the
+# RFC 7235 §2.1 case-insensitivity contract from the Bearer / Basic
+# Auth / Negotiate siblings.
+#
+# Real-world emission patterns include IIS HTTP request logs with
+# ``--debug`` flag, browser HAR exports (Network tab ``Save with
+# content``) for intranet NTLM-authenticated sites, Wireshark / tshark
+# text-rendered captures of SMB-over-HTTP / WebDAV / SharePoint
+# traffic, WinRM debug logs (``Set-PSDebug -Trace 2``) during the NTLM
+# negotiate / challenge / authenticate round trips, ``curl -v --ntlm
+# -u user:pass`` debug logs, Python ``requests`` with ``requests-ntlm``
+# debug mode, Spring Security ``org.springframework.security.kerberos``
+# debug logging (intercepts NTLM as a fallback when SPNEGO is
+# unavailable), and ELK Stack ingest of ``WWW-Authenticate: NTLM``
+# response headers. The structural anchor for every NTLMSSP message is
+# the ``TlRMTVNTUA`` base64 prefix (base64 of the ASCII NTLMSSP magic
+# ``0x4e 0x54 0x4c 0x4d 0x53 0x53 0x50 0x00`` per [MS-NLMP] §2.2
+# Header); the detector matches on the auth-scheme literal NOT the
+# body prefix, so direct-NTLM (this detector) and SPNEGO-wrapped
+# NTLMSSP (the Negotiate detector) are covered without per-mechanism
+# rule duplication.
+_NTLM_RE = re.compile(r"(?i)NTLM\s+([A-Za-z0-9+/=]{50,})")
 
 # Security: ordered (regex, reason) table that ``_scan_content`` iterates
 # over to detect HTTP-auth-scheme-prefixed credentials. Each entry's regex
@@ -208,13 +278,14 @@ _NEGOTIATE_RE = re.compile(r"(?i)Negotiate\s+([A-Za-z0-9+/=]{50,})")
 # ``_scan_content`` can read ``match.group(1)`` uniformly. Order matters
 # only for tie-breaking; the ``is_covered`` check in ``_scan_content``
 # anchors the first matching reason at each span. New auth-scheme
-# detectors (e.g. RFC 7616 Digest, RFC 7486 HOBA, NTLM via [MS-NLMP])
+# detectors (e.g. RFC 7616 Digest, RFC 7486 HOBA, RFC 8120 Mutual)
 # follow the same shape and inherit the ``(?i)`` case-insensitivity
 # invariant pinned per RFC 7235 §2.1.
 _AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
     (_BEARER_RE, "Bearer-Token wirkt echt"),
     (_BASIC_AUTH_RE, "HTTP Basic Authentication Credential gefunden"),
     (_NEGOTIATE_RE, "SPNEGO/Negotiate Authentication Token gefunden"),
+    (_NTLM_RE, "NTLM Authentication Credential gefunden"),
 )
 
 _PEM_RE = re.compile(r"(-----BEGIN [A-Z ]*PRIVATE KEY-----)(?:.|\n)*?(-----END [A-Z ]*PRIVATE KEY-----)")
