@@ -1,6 +1,6 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-16T14:23:28+00:00_
+_Generated: 2026-05-16T15:01:07+00:00_
 
 **Stations: 1951 → 1951 (Δ +0)**
 
