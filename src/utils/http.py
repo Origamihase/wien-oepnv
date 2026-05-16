@@ -247,10 +247,47 @@ def _normalize_key(key: str) -> str:
     return re.sub(r"[^a-z0-9]", "", key.lower())
 
 
-# Regex to detect credentials in URLs that might be missed by urlparse (e.g. missing //)
-# Matches "scheme:user:pass@host" or "scheme://user:pass@host"
+# Regex to detect credentials in URLs that might be missed by urlparse
+# (e.g. missing ``//``, or a JDBC outer-scheme prefix that hides the inner
+# credentialled URL from ``urlparse``).
+#
+# Matches both ``scheme:user:pass@host`` (malformed, no ``//``) and the
+# canonical ``scheme://user:pass@host`` shape. The scheme alternation
+# covers:
+#
+# * ``https?|ftp`` - the legacy HTTP / FTP coverage. ``[^/\s]+`` allows
+#   user-only forms (``https:user@host``) so the existing
+#   ``test_sanitize_url_missing_slash_group`` invariant holds.
+# * The 13+ database / message-broker / mail schemes from the
+#   2026-05-16 ``Database Connection String`` secret-scanner round
+#   (PostgreSQL / MySQL / MariaDB / MongoDB / MongoDB+SRV / Redis /
+#   AMQP / AMQPS / Kafka / ClickHouse / Cassandra / ElasticSearch /
+#   SMTP / SMTPS). Without these, a malformed URI like
+#   ``postgres:admin:supersecret@db.example.com`` slipped through
+#   ``_sanitize_url_for_error``: ``urlparse`` treats ``postgres`` as
+#   the scheme and the rest as a path (no credentials extracted), and
+#   the scheme alternation rejected the scheme literal.
+# * The LDAP / SSH / SFTP / SMB / CIFS adjacent families - directory
+#   service / shell / file-share schemes that also carry the
+#   ``user:pass@host`` credential shape in real-world configurations.
+# * Optional ``jdbc:`` outer prefix - JDBC connection strings wrap an
+#   inner scheme (``jdbc:postgresql://admin:secret@host``) which
+#   ``urlparse`` mishandles entirely (treats ``jdbc`` as the scheme
+#   and the rest as an opaque path).
+#
+# Schemes NOT in the alternation (e.g. ``mailto``, ``urn``, ``file``,
+# ``tel``) are NOT matched, so benign ``mailto:user@host`` patterns and
+# scheme mentions in prose are preserved verbatim.
 _URL_AUTH_RE = re.compile(
-    r"^(?P<scheme>https?|ftp):(?P<slash>//)?(?P<auth>[^/\s]+)@", re.IGNORECASE
+    r"^(?P<scheme>(?:jdbc:)?"
+    r"(?:https?|ftp|"
+    r"postgres(?:ql)?|mysql|mariadb|"
+    r"mongodb(?:\+srv)?|redis|"
+    r"amqp|amqps|kafka|clickhouse|cassandra|elasticsearch|"
+    r"smtp|smtps|"
+    r"ldap|ldaps|ssh|sftp|smb|cifs"
+    r")):(?P<slash>//)?(?P<auth>[^/\s]+)@",
+    re.IGNORECASE,
 )
 
 # Keys in query parameters that should be redacted in logs

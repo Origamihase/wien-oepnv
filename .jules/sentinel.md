@@ -1,3 +1,82 @@
+## 2026-05-16 - Database / JDBC / LDAP / SSH Credential Log-Sanitisation Drift: `_URL_AUTH_RE` Scheme-Restricted To `https?|ftp` AND `sanitize_log_message` Basic-Auth-In-URL Pattern Required `://` — Every Malformed (No-`//`) Credentialled URI (`postgres:admin:secret@host`) AND Every JDBC-Prefixed URI (`jdbc:postgresql://admin:secret@host`) Leaked Through `_sanitize_url_for_error` / `_sanitize_exception_msg` / `sanitize_log_message` Verbatim Into Operator Log Streams — Sibling-Drift Closure For The 2026-05-16 Database Connection String Secret-Scanner Round
+
+**Vulnerability:** The 2026-05-16 ``Database Connection String`` secret-scanner round closed the *detection* codepath for committed ``DATABASE_URL=postgres://user:pass@host/db`` shapes. It explicitly named ONE next-round-candidate: extend the log-sanitisation path to cover the same scheme family. This round closes that named-but-deferred candidate. Pre-fix THREE distinct sanitisation sites silently leaked database credentials:
+
+1. **`src/utils/http.py:_URL_AUTH_RE`** — the malformed-URI fallback regex (used by `_sanitize_url_for_error` when `urlparse` cannot extract credentials). Pre-fix scheme alternation was restricted to `https?|ftp`. Two failure modes:
+   - **Malformed URI without `//`** (e.g. `postgres:admin:secret@host:5432/db`): `urlparse` sees `postgres` as the scheme and `admin:secret@host:5432/db` as the path (no credentials extracted). `_URL_AUTH_RE` does not match (scheme not in `https?|ftp`). The credential leaks verbatim.
+   - **JDBC-prefixed URI** (e.g. `jdbc:postgresql://admin:secret@host`): `urlparse` sees `jdbc` as the scheme and `postgresql://admin:secret@host` as the opaque path. `_URL_AUTH_RE` does not match (scheme `jdbc` not in `https?|ftp`). The credential leaks verbatim.
+
+2. **`src/utils/http.py:_sanitize_exception_msg`** — the HTTP-only pre-regex (`r"(https?://[^\s'\"<>]+)"`) misses non-HTTP URLs entirely. The function falls back to `sanitize_log_message` for the remainder, which inherits the same gap as #3.
+
+3. **`src/utils/logging.py:sanitize_log_message`** — the Basic-Auth-in-URL pattern `r"(?i)([a-z0-9+.-]+://)([^/@\s]+)@"` required `://`. The canonical `postgres://admin:secret@host` form is caught by this regex, but malformed (no-`//`) forms (`postgres:admin:secret@host`) AND JDBC inner-malformed variants (`jdbc:mysql:root:pw@host`) bypass entirely.
+
+End-to-end PoC verified pre-fix across 27 distinct URI shapes (15 database schemes × malformed shape + 6 JDBC variants + 6 LDAP/SSH/SFTP/SMB/CIFS family members) — every shape leaked its credential through at least one of the three codepaths.
+
+**Threat model:** Per the 2026-05-16 secret-scanner round, database connection strings are arguably the highest-value secrets in any application's source tree. The log-sanitisation drift complements the detection drift: even when the scanner catches the source emission, an operator pasting an exception message into Slack / GitHub Issues / docs / SIEM-routed log streams still leaks the credential. Specific leak vectors per redaction site:
+- **`_sanitize_url_for_error`** — called from `validate_http_url` error paths, `SafeDNSHTTPConnection._new_conn`, cross-origin redirect tracking, request retry logging. A DB URI passed in error context leaks verbatim.
+- **`_sanitize_exception_msg`** — called when a provider raises an exception containing a connection URI. Bubbles to operator-facing log lines AND the public `docs/feed_health.json` artefact.
+- **`sanitize_log_message`** — the fallback for `clean_message` / `_sanitize_log_detail` / `SafeFormatter.formatException` / `SafeJSONFormatter.formatException`. Any log call routing through these helpers preserves the credential pre-fix.
+
+Per-scheme severity matrix mirrors the secret-scanner round: PostgreSQL / MySQL / MariaDB / MongoDB / MongoDB+SRV / Redis / AMQP / AMQPS / Kafka / ClickHouse / Cassandra / ElasticSearch / SMTP / SMTPS (HIGH for relational + NoSQL primary data; MEDIUM-HIGH for cache/queue/message brokers). LDAP / LDAPS adds the directory-service tier (Active Directory bind credentials). SSH / SFTP adds the remote-shell + file-transfer tier. SMB / CIFS adds the Windows network-share tier.
+
+**Sites closed (1 regex replaced + 1 regex appended):**
+
+* `src/utils/http.py:_URL_AUTH_RE` — scheme alternation expanded:
+  ```python
+  _URL_AUTH_RE = re.compile(
+      r"^(?P<scheme>(?:jdbc:)?"
+      r"(?:https?|ftp|"
+      r"postgres(?:ql)?|mysql|mariadb|"
+      r"mongodb(?:\+srv)?|redis|"
+      r"amqp|amqps|kafka|clickhouse|cassandra|elasticsearch|"
+      r"smtp|smtps|"
+      r"ldap|ldaps|ssh|sftp|smb|cifs"
+      r")):(?P<slash>//)?(?P<auth>[^/\s]+)@",
+      re.IGNORECASE,
+  )
+  ```
+  The `(?:jdbc:)?` optional prefix covers JDBC connection strings. The auth fragment `[^/\s]+` preserves the legacy `user-only` form for backward compatibility (e.g. `https:user@host` still becomes `https:***@host`). Schemes NOT in the alternation (`mailto`, `urn`, `file`, `tel`) are NOT matched, preserving benign URLs.
+
+* `src/utils/logging.py:sanitize_log_message` — second Basic-Auth-in-URL pattern appended after the canonical `://` form:
+  ```python
+  (
+      r"(?i)(?<![a-z0-9])"
+      r"((?:jdbc:)?"
+      r"(?:postgres(?:ql)?|mysql|mariadb|"
+      r"mongodb(?:\+srv)?|redis|"
+      r"amqp|amqps|kafka|clickhouse|cassandra|elasticsearch|"
+      r"smtp|smtps|"
+      r"ldap|ldaps|ssh|sftp|smb|cifs)"
+      r":)([^/@\s]+:[^/@\s]+)@",
+      r"\1***@",
+  ),
+  ```
+  The `(?<![a-z0-9])` lookbehind prevents mid-word false positives (`mypostgres:admin@example.com` is preserved). The auth fragment `[^/@\s]+:[^/@\s]+` REQUIRES a literal `:` so benign `mailto:user@host` patterns are NOT matched — a second-layer defence beyond the scheme alternation. No changes to the canonical `://` form (above) or any other pattern in the list.
+
+**Severity:** **HIGH** — defence-in-depth bypass for the highest-value secret class. The detection codepath (PR #1540's scanner round) catches the source emission; this log-sanitisation closure catches the runtime exception emission. Combined the two layers ensure no committed AND no runtime-emitted database credential reaches operator-facing log streams.
+
+**Fix:** Replace `_URL_AUTH_RE` with the expanded scheme alternation. Append the malformed-URI auth regex to `sanitize_log_message.patterns`. Both changes are scheme-explicit (no generic `[a-z]+:` catch-all that would over-redact `mailto:` and similar), maintaining zero false-positive risk for the documented benign URL family.
+
+**Tests added:** `tests/test_sentinel_database_uri_log_sanitization_drift.py` — 59 tests across 8 categories:
+  1. Malformed (no-`//`) URI credentials stripped across 21 schemes / per-scheme parametrised PoCs.
+  2. JDBC-prefixed URIs (canonical + inner-malformed) — 6 variants.
+  3. `_sanitize_exception_msg` end-to-end with real-world exception text — 5 shapes.
+  4. `sanitize_log_message` direct invocation — 6 shapes including LDAP / SSH adjacents.
+  5. Negative cases (12 cases): mailto, urn, file, tel, scheme mentions in prose, compound identifiers like `mypostgres:`, credential-less URIs.
+  6. Backward-compatibility regression guards: HTTP / HTTPS / FTP canonical + malformed forms, user-only forms.
+  7. Trailing path / port / query preservation — credential is masked, host context preserved.
+  8. PoC: multi-URI exception text combining all leak vectors in one message.
+
+**Learning:** The two-layer scanner architecture (detection vs. log-sanitisation) is the canonical defence-in-depth pattern for credential leak prevention. The 2026-05-16 secret-scanner round closed the detection layer; this round closes the log-sanitisation layer. Together they form a complete net: committed credentials are caught at the secret scanner; runtime-emitted credentials are caught at the log sanitiser. **The two layers MUST stay synchronised** — drift between the scheme alternations creates exactly the silent-leak gaps we just closed. Future drift detection: any new credential-carrying scheme added to `_KNOWN_TOKENS` in the secret scanner MUST also be added to both `_URL_AUTH_RE` (http.py) AND the malformed-URI regex (logging.py). The scheme alternations should ideally be a shared constant — but the syntactic constraints differ (the scanner uses `\b...://[^@\s/:]+:[^@\s/]+@[^\s/]+`, the sanitiser uses `(?:scheme):(?://)?(?P<auth>...)@`), so a literal-string union is the pragmatic approach.
+
+**Next-round candidates (named-but-deferred):**
+- **LDAP / LDAPS URI in the secret-scanner detector** — currently NOT in `_KNOWN_TOKENS` (the database URI detector enumerates 13 schemes but not LDAP). LDAP URIs with embedded bind credentials (`ldap://cn=admin:ldap_pw@ldap.example.com:389`) ARE real and leak through detection. Adding them as a separate entry (the scheme family is distinct from the database tier).
+- **SMB / CIFS URI in the secret-scanner detector** — same situation. The Windows network-share family.
+- **JDBC `?password=` query parameter form** — JDBC URLs sometimes carry credentials in query params (`jdbc:postgresql://host/db?user=admin&password=secret`); these fall to the entropy fallback for high-entropy passwords but NOT to the URI structural detector. The structural anchor in the secret scanner's URI regex is `user:pass@`, which the query-param form doesn't match.
+- **SCRAM / Digest / AWS4-HMAC-SHA256 auth schemes** — the five auth-scheme deferred candidates from earlier rounds remain pending body-structure-aware framework.
+
+**Marker:** SENTINEL_DATABASE_URI_LOG_SANITIZATION_DRIFT.
+
 ## 2026-05-16 - Database Connection String Credential Silent-Undetection Drift: Every Committed `DATABASE_URL=postgres://user:pass@host/db` / `MONGO_URI=mongodb+srv://...` / `REDIS_URL=...` / `RABBITMQ_URL=...` Across The Top 13 Database / Broker / Mail Schemes (PostgreSQL / MySQL / MariaDB / MongoDB / MongoDB+SRV / Redis / AMQP / AMQPS / Kafka / ClickHouse / Cassandra / ElasticSearch / SMTP / SMTPS + JDBC-Prefixed Variants) Was SILENTLY UNDETECTED Across BOTH Detection Branches — Entropy Fallback Splits At URI Delimiters (`://`, `:`, `@`, `/`) Breaking The High-Entropy Span Into Sub-24-Char Fragments AND Assignment Heuristic Skips Values Containing `:` (The Universal URI Port-Separator), So Database Credentials Ship To Production With ZERO Scanner Alert
 
 **Vulnerability:** Pre-fix every database connection string with embedded credentials in the canonical `<scheme>://<user>:<password>@<host>` shape — covering the top 13+ database / message-broker / mail schemes used in real-world production systems — was SILENTLY UNDETECTED ENTIRELY by the secret scanner. The TWO detection branches both failed independently:

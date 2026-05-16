@@ -337,8 +337,32 @@ def sanitize_log_message(
         (r"(-----BEGIN [A-Z ]+-----)(?:.|\n)*?(-----END [A-Z ]+-----)", r"\1***\2"),
         # Explicitly mask accessId (Requirement) to ensure robust redaction in tracebacks
         (r"(?i)(accessId\s*=\s*)([^&\s]+)", r"\1***"),
-        # Basic Auth in URLs (protocol://user:pass@host)
+        # Basic Auth in URLs (protocol://user:pass@host) - canonical form.
         (r"(?i)([a-z0-9+.-]+://)([^/@\s]+)@", r"\1***@"),
+        # Basic Auth in malformed credentialled URIs without the ``//``
+        # separator (``postgres:admin:secret@host``) and JDBC inner-
+        # scheme variants (``jdbc:mysql:root:pw@host``). The canonical
+        # ``://`` pattern above misses both shapes entirely. The scheme
+        # alternation enumerates the same 13+ database / broker / mail
+        # schemes as the 2026-05-16 Database Connection String secret-
+        # scanner round plus the LDAP / SSH / SFTP / SMB / CIFS adjacent
+        # families. ``(?<![a-z0-9])`` lookbehind prevents mid-word
+        # false positives (``mypostgres:`` is preserved). The
+        # ``[^/@\s]+:[^/@\s]+`` auth fragment REQUIRES a literal ``:``
+        # so benign ``mailto:user@host`` patterns are not matched
+        # (``mailto`` is also absent from the scheme alternation, but
+        # the auth-requires-``:`` anchor is a second defence layer).
+        (
+            r"(?i)(?<![a-z0-9])"
+            r"((?:jdbc:)?"
+            r"(?:postgres(?:ql)?|mysql|mariadb|"
+            r"mongodb(?:\+srv)?|redis|"
+            r"amqp|amqps|kafka|clickhouse|cassandra|elasticsearch|"
+            r"smtp|smtps|"
+            r"ldap|ldaps|ssh|sftp|smb|cifs)"
+            r":)([^/@\s]+:[^/@\s]+)@",
+            r"\1***@",
+        ),
         # Query parameters (key=value or key%3dvalue)
         # Improved to handle quoted values (e.g. key="val with spaces") with escaped quotes support
         # AND improved unquoted handling to stop at next key or separator (comma/ampersand/newline/quotes)
