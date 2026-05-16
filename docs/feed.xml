@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 16 May 2026 08:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 08:30:39 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f039f2f3a3013ec24c3a2dc8c13684f92a717d560bb3231cda1548e776ce0ff2</guid>
+      <pubDate>Sat, 16 May 2026 08:29:00 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 08:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 08:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 16 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 13A: Unregelmäßige Intervalle in Richtung Alser Straße, Skodagasse. Grund: Verunreinigung. [Am 16.05.2026]</description>
+      <content:encoded><![CDATA[Linie 13A: Unregelmäßige Intervalle in Richtung Alser Straße, Skodagasse. Grund: Verunreinigung.<br/>[Am 16.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U4: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +115,6 @@
       <pubDate>Sat, 16 May 2026 00:00:11 +0200</pubDate>
       <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
       <ext:starts_at>Sat, 16 May 2026 00:00:12 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 16.05.2026]</description>
-      <content:encoded><![CDATA[[Am 16.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U: WE LOVE SONG CONTEST AND U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">40f4e93ef0bff9d54e33880be93f192448f6936712d52d7e5a367e16b65fa4a4</guid>
-      <pubDate>Sat, 16 May 2026 00:00:09 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 05:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 04:30:20 +0200</ext:starts_at>
       <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 16.05.2026]</description>
       <content:encoded><![CDATA[[Am 16.05.2026]]]></content:encoded>
