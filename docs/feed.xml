@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 16 May 2026 04:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 04:30:37 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11: Betrieb ab Frödenplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0cc601b709f5e2e2bf853af2229533e03cb323563dfe0bebb6a3b9de6ceb2e16</guid>
+      <pubDate>Sat, 16 May 2026 04:30:06 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 04:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 04:30:06 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 16.05.2026]</description>
+      <content:encoded><![CDATA[[Am 16.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Betrieb ab Thaliastraße &gt; [Am 16.05.2026]</description>
       <content:encoded><![CDATA[Betrieb ab Thaliastraße ><br/>[Am 16.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
-      <pubDate>Sat, 16 May 2026 00:00:15 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 00:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 16 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 16.05.2026]</description>
-      <content:encoded><![CDATA[[Am 16.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
