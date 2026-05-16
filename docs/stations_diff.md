@@ -1,16 +1,16 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-14T21:48:21+00:00_
+_Generated: 2026-05-16T13:18:42+00:00_
 
-**Stations: 1952 → 1952 (Δ +0)**
+**Stations: 1952 → 1951 (Δ -1)**
 
 ## Added (0)
 
 _None._
 
-## Removed (0)
+## Removed (1)
 
-_None._
+- `name:Wien Unter St. Veit, Hummelgasse (WL)` — Wien Unter St. Veit, Hummelgasse \(WL\)
 
 ## Renamed (0)
 

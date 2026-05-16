@@ -326,6 +326,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Demonstration Betrieb ab Längenfeldgasse",
+    "description": "Demonstration\nBetrieb ab Längenfeldgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1b432d0a567b3e44372c324b88638ed14b97e9cfa505404228a8de11a1ea0db6",
+    "pubDate": "2026-05-16T15:06:51+02:00",
+    "starts_at": "2026-05-16T15:06:55+02:00",
+    "ends_at": "2026-05-16T22:00:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-05-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Fahrtbehinderung wegen Demonstration",
     "description": "Fahrtbehinderung\nwegen Demonstration",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -538,6 +550,54 @@
     "starts_at": "2026-05-16T00:00:05+02:00",
     "ends_at": "2026-05-16T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-05-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Demonstration Betrieb ab Burggase",
+    "description": "Demonstration\nBetrieb ab Burggase",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "acecbeb760dedffecbfc5b7e86e047321e23f715534b38afe919c161959fe041",
+    "pubDate": "2026-05-16T15:17:22+02:00",
+    "starts_at": "2026-05-16T15:17:29+02:00",
+    "ends_at": "2026-05-16T22:00:00+02:00",
+    "_identity": "wl|störung|L=48A|D=2026-05-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Demonstration Betrieb ab Urban-Loritz-Platz",
+    "description": "Demonstration\nBetrieb ab Urban-Loritz-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "40b4f7decde925385377867349f45aafc895c02aac6707266641246c620624e6",
+    "pubDate": "2026-05-16T15:08:47+02:00",
+    "starts_at": "2026-05-16T15:08:47+02:00",
+    "ends_at": "2026-05-16T22:00:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-05-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Demonstration Betrieb ab Hütteldorer Straße",
+    "description": "Demonstration\nBetrieb ab Hütteldorer Straße >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "415821d250859ff61dd48d09f3086be9a143d2d6abe00aa6fd914036bec20161",
+    "pubDate": "2026-05-16T15:08:18+02:00",
+    "starts_at": "2026-05-16T15:08:18+02:00",
+    "ends_at": "2026-05-16T22:00:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-05-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Züge halten bei Linie 9",
+    "description": "Züge halten bei\nLinie 9",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d337f37dd2b111ad6c077b3836b479a24de73d4cd07eed54df73533e75136e91",
+    "pubDate": "2026-05-16T15:10:22+02:00",
+    "starts_at": "2026-05-16T15:10:22+02:00",
+    "ends_at": "2026-05-16T16:09:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-05-16"
   },
   {
     "source": "Wiener Linien",
