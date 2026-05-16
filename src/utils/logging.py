@@ -281,6 +281,27 @@ def sanitize_log_message(
         r"saml[-_.\s]*request|saml[-_.\s]*response|"
         r"[a-z0-9_.\-]*accessid[a-z0-9_.\-]*|id[-_.\s]*token|[a-z0-9_.\-]*session[-_.\s]*id[a-z0-9_.\-]*|session|cookie|[a-z0-9_.\-]*apikey[a-z0-9_.\-]*|[a-z0-9_.\-]*secret[a-z0-9_.\-]*|ticket|[a-z0-9_.\-]*token|code|key|sig|sid|"
         r"nonce|state|"
+        # Security (sibling-drift closure of PR #1531's
+        # ``_SENSITIVE_QUERY_KEYS`` SAML/CSRF/WordPress round):
+        #   * ``samlart`` — SAML 2.0 Artifact per OASIS SAML 2.0
+        #     §3.6.4. 5-min ARS-resolvable bearer credential. The
+        #     bare ``saml`` substring is NOT in the existing
+        #     alternation (only ``saml-request|saml-response`` are
+        #     present), so a leaked ``SAMLArt=...`` query param /
+        #     ``SAMLArt: ...`` header / ``"samlart": "..."`` JSON
+        #     fragment passing through ``sanitize_log_message`` lands
+        #     verbatim in operator log streams.
+        #   * ``csrf`` / ``xsrf`` — bare CSRF/XSRF token names
+        #     (Spring Security's ``_csrf`` GET-based protection,
+        #     Angular's bare ``xsrf`` cookie). The token-suffixed
+        #     forms (``csrf_token``, ``XSRF-TOKEN``) are ALREADY
+        #     covered via the existing ``[a-z0-9_.\-]*token``
+        #     alternation. Only the bare forms need explicit
+        #     coverage here. The ``RelayState`` and ``_wpnonce``
+        #     siblings from PR #1531 are ALREADY covered via the
+        #     existing ``state`` / ``nonce`` alternations (substring
+        #     match within the longer key name).
+        r"samlart|csrf|xsrf|"
         r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
         r"authorization|auth|bearer[-_.\s]*token|bearer|[a-z0-9_.\-]*api[-_.\s]*key[a-z0-9_.\-]*|[a-z0-9_.\-]*private[-_.\s]*key|auth[-_.\s]*token|"
         r"tenant[-_.\s]*id|tenant|subscription[-_.\s]*id|subscription|object[-_.\s]*id|oid|"
@@ -301,6 +322,12 @@ def sanitize_log_message(
         r"api[-_.\s]*key|token|secret|signature|password|auth|session|cookie|private|"
         r"client[-_.\s]*assertion|[a-z0-9_.\-]*assertion[a-z0-9_.\-]*|"
         r"saml[-_.\s]*request|saml[-_.\s]*response|nonce|state|"
+        # Sibling-drift closure (see ``_keys`` above): ``samlart`` /
+        # ``csrf`` / ``xsrf`` bare header forms (``SAMLArt: ...``,
+        # ``X-CSRF: ...``, ``XSRF: ...``) bypass the existing
+        # alternations. Suffixed variants (``X-CSRF-Token``,
+        # ``X-XSRF-TOKEN``) are already covered via ``token``.
+        r"samlart|csrf|xsrf|"
         r"credential|client[-_.\s]*id|passphrase|access[-_.\s]*key|e[-_.\s]*mail"
     )
 
