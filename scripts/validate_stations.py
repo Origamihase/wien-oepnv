@@ -58,6 +58,21 @@ def main() -> int:
             )
         has_error = True
 
+    if report.identity_field_conflicts:
+        # Blocks the orchestrator commit so a regression of the 2026-05-16
+        # google_places-vs-wl Innenstadt-DIVA drift (PR #1539) cannot land
+        # silently again. Same exit-1 contract as provider_issues so the
+        # auto-quarantine path in update_all_stations.py rolls back the
+        # working tree on detection.
+        for i_issue in report.identity_field_conflicts:
+            joined_ids = ", ".join(i_issue.identifiers)
+            print(
+                f"Identity-field conflict: {i_issue.field}={i_issue.value!r} "
+                f"shared by [{joined_ids}]",
+                file=sys.stderr,
+            )
+        has_error = True
+
     return 1 if has_error else 0
 
 

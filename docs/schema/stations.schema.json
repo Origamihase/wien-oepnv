@@ -125,6 +125,18 @@
           "type": "array",
           "items": {"type": "string"},
           "description": "Interne Google-Places-Kategorisierung. Read-only."
+        },
+        "_in_vienna_basis": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "prefixItems": [
+            {"type": "number"},
+            {"type": "number"},
+            {"type": "boolean"}
+          ],
+          "items": false,
+          "description": "Cache-Eintrag von scripts/update_station_directory.py:_resolve_in_vienna_with_cache. Speichert [basis_lat, basis_lon, polygon_result] der letzten LANDESGRENZEOGD-Polygon-Auswertung, damit beim nächsten Cron-Tick nicht erneut der teure Ray-Cast gegen das tausende-Vertex Multipolygon laufen muss. Read-only."
         }
       },
       "additionalProperties": false,
