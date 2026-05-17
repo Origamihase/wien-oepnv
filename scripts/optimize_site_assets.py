@@ -84,7 +84,9 @@ JS_SRC = ASSETS_DIR / "site.js"
 JS_OUT = ASSETS_DIR / "site.min.js"
 
 TRAIN_PNG = ASSETS_DIR / "train.png"
+TRAIN_WEBP = ASSETS_DIR / "train.webp"
 FOOTER_JPG = ASSETS_DIR / "footer-bg.jpg"
+FOOTER_WEBP = ASSETS_DIR / "footer-bg.webp"
 
 HEADER_COMMENT = "/* Wien ÖPNV – Live-Dashboard | MIT License */\n"
 
@@ -100,6 +102,17 @@ TRAIN_TARGET_SIZE = (1584, 224)
 # viewport sizes (the rendered region never exceeds 100vw × footer-h).
 FOOTER_TARGET_SIZE = (1920, 1080)
 FOOTER_JPEG_QUALITY = 72
+
+# Lossless WebP for ``train.webp``: the source is a tight palette PNG
+# whose every pixel matters once the train scrolls into view, and
+# Pillow's lossless mode still beats the PNG by ~15 %. The JPEG-backed
+# ``footer-bg.webp`` is lossy at a quality bracket that matches the
+# JPEG visually (the 78–94 % overlay erases any residual artefacts).
+# Both variants are served via ``<picture>``/``image-set()`` with the
+# original file as the universal fallback — no behaviour change for
+# browsers without WebP support.
+FOOTER_WEBP_QUALITY = 75
+WEBP_ENCODE_METHOD = 6  # slowest/best compression; runs once per source change
 
 
 def _render_min_css() -> str:
@@ -238,6 +251,28 @@ def _optimise_train_png() -> None:
         100 * (1 - after / max(before, 1)),
     )
 
+    # Sibling WebP for browsers that announce ``image/webp`` via Accept.
+    # ``docs/site.html`` serves it through ``<picture><source>`` with the
+    # PNG as fallback, so the visual result is unchanged on engines
+    # without WebP. Lossless mode preserves the palette PNG exactly
+    # while still shaving ~15 % off the wire.
+    with Image.open(TRAIN_PNG) as png:
+        # Palette PNGs save as palette WebPs by default, which the libwebp
+        # encoder cannot really compress. Promote to RGBA so the lossless
+        # transforms have room to work.
+        rgba = png.convert("RGBA") if png.mode == "P" else png
+        rgba.save(
+            TRAIN_WEBP,
+            format="WEBP",
+            lossless=True,
+            method=WEBP_ENCODE_METHOD,
+        )
+    LOG.info(
+        "train.webp: %d bytes (%.1f%% of train.png)",
+        TRAIN_WEBP.stat().st_size,
+        100 * TRAIN_WEBP.stat().st_size / max(after, 1),
+    )
+
 
 def _optimise_footer_jpg() -> None:
     if not FOOTER_JPG.exists():
@@ -281,6 +316,23 @@ def _optimise_footer_jpg() -> None:
         "footer-bg.jpg: %d -> %d bytes (saved %d, %.1f%%)",
         before, after, max(before - after, 0),
         100 * (1 - after / max(before, 1)),
+    )
+
+    # Sibling WebP for the CSS ``image-set()`` declaration. The dark
+    # gradient overlay masks subtle WebP artefacts so a relatively
+    # aggressive quality value still matches the JPEG visually.
+    with Image.open(FOOTER_JPG) as jpg:
+        rgb = jpg.convert("RGB") if jpg.mode != "RGB" else jpg
+        rgb.save(
+            FOOTER_WEBP,
+            format="WEBP",
+            quality=FOOTER_WEBP_QUALITY,
+            method=WEBP_ENCODE_METHOD,
+        )
+    LOG.info(
+        "footer-bg.webp: %d bytes (%.1f%% of footer-bg.jpg)",
+        FOOTER_WEBP.stat().st_size,
+        100 * FOOTER_WEBP.stat().st_size / max(after, 1),
     )
 
 
