@@ -566,6 +566,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N62: Verkehrsunfall Wartezeiten bis zu 45 Minuten",
+    "description": "Verkehrsunfall\nWartezeiten bis zu 45 Minuten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "89f12aeba20ca4df42f6cdfdc789e33a0d761e8cfea15e85039032ecc61fe88b",
+    "pubDate": "2026-05-17T03:16:53+02:00",
+    "starts_at": "2026-05-17T03:17:09+02:00",
+    "ends_at": "2026-05-17T04:15:00+02:00",
+    "_identity": "wl|störung|L=N62|D=2026-05-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N62: Verkehrsunfall",
+    "description": "Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e1c94f9f0baaa9a6f99d729abdb7ecfcaa53673c8d833758a9c4d3307c92cba1",
+    "pubDate": "2026-05-17T03:17:00+02:00",
+    "starts_at": "2026-05-17T03:17:00+02:00",
+    "ends_at": "2026-05-17T04:33:00+02:00",
+    "_identity": "wl|störung|L=N62|D=2026-05-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N65: Betrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)",
     "description": "Gleisbauarbeiten\nBetrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
