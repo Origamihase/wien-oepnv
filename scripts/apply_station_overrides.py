@@ -43,7 +43,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
-from src.utils.files import atomic_write, read_capped_text  # noqa: E402
+from src.utils.files import atomic_write, loads_finite, read_capped_text  # noqa: E402
 from src.utils.stations import MAX_STATIONS_FILE_BYTES  # noqa: E402
 
 # Cap matches the overrides file's expected upper bound; 1 MiB is generous
@@ -100,17 +100,28 @@ def _load_json(path: Path, max_bytes: int, label: str) -> Any:
     if text is None:
         raise OverrideError(f"{label} not loadable: {path}")
     try:
-        return json.loads(text)
+        # Security (reader-side non-finite literal defence, symmetric
+        # to the writer-side ``allow_nan=False`` pin in
+        # ``apply_overrides`` below). ``loads_finite`` bakes in both
+        # ``parse_constant=_reject_non_finite_constant`` and
+        # ``parse_float=_reject_non_finite_float`` so a planted
+        # ``NaN`` / ``Infinity`` / ``-Infinity`` constant token OR a
+        # planted ``1e1000`` scientific-notation overflow in either
+        # ``data/stations_overrides.json`` (hostile PR landing a
+        # tampered patch_coords entry) or ``data/stations.json``
+        # (compromised CI runner / parallel orchestrator atomic state
+        # swap / partial flush + power loss) surfaces as
+        # ``json.JSONDecodeError`` at this boundary rather than
+        # propagating ``float('nan')`` / ``float('inf')`` through
+        # ``patch_coords`` and round-tripping back to
+        # ``data/stations.json``. Mirrors the canonical sibling
+        # readers (``read_capped_json`` / ``load_stations`` /
+        # ``read_cache`` / ``_load_state`` / ``MonthlyQuota.load`` —
+        # 2026-05-15 PR #1503). ``RecursionError`` is re-raised
+        # unchanged by ``loads_finite`` so the depth-bomb defence
+        # (JSON Depth-Bomb Drift Round 5) is preserved.
+        return loads_finite(text)
     except (json.JSONDecodeError, RecursionError) as exc:
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks
-        # — a deeply nested but otherwise valid JSON body served by a
-        # compromised upstream / committed by a hostile fork would
-        # otherwise propagate past this handler and crash the
-        # orchestrator. Mirrors the canonical defence the rest of the
-        # ``scripts/`` tree applies (see ``.jules/sentinel.md`` —
-        # JSON Depth-Bomb Drift Round 5; pinned by
-        # ``tests/test_sentinel_json_audit_walker.py::test_every_
-        # json_parser_site_catches_recursion_error``).
         raise OverrideError(f"{label} parse error in {path}: {exc}") from exc
 
 
@@ -299,7 +310,18 @@ def apply_overrides(
             applied += 1
 
     # Persist
-    text = json.dumps(stations_payload, indent=2, ensure_ascii=False)
+    # Security (writer-side non-finite literal defence, symmetric to the
+    # ``loads_finite`` reader pin above). ``allow_nan=False`` surfaces any
+    # ``float('nan')`` / ``float('inf')`` that bypassed the reader-side
+    # defence (e.g. via a regression to ``json.loads(text)``) as
+    # ``ValueError`` BEFORE the corrupted bytes ship to
+    # ``data/stations.json`` (committed to ``main`` and consumed by every
+    # downstream RFC-8259-strict parser: ``JSON.parse`` in browsers,
+    # ``serde_json`` Rust strict mode, Go's ``encoding/json``). Mirrors
+    # the canonical writer-side pins in ``src/places/merge.py:write_stations``
+    # and ``scripts/update_all_stations.py:_write_stations`` (2026-05-14
+    # PR #1485 / #1487 / #1488 / #1491).
+    text = json.dumps(stations_payload, indent=2, ensure_ascii=False, allow_nan=False)
     with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         handle.write(text)
         handle.write("\n")

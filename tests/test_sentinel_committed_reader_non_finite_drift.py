@@ -402,6 +402,34 @@ def test_inventory_stations_validation_load_pins_hooks() -> None:
     )
 
 
+def test_inventory_apply_station_overrides_load_json_pins_hooks() -> None:
+    """Sibling-drift closure: the curated-correction layer's reader
+    (``scripts/apply_station_overrides.py:_load_json``) was added in
+    2026-05-16 PR #1540 — AFTER the Round 1503 sweep — and inherited
+    neither the ``parse_constant`` + ``parse_float`` kwargs shape nor
+    the ``loads_finite(`` wrapper shape until the
+    SENTINEL_APPLY_STATION_OVERRIDES_NON_FINITE_DRIFT round (see
+    ``tests/test_sentinel_apply_station_overrides_non_finite_drift.py``).
+
+    Accept either the direct-kwargs shape OR the wrapper shape — both
+    pin the same hooks; the wrapper is the preferred form for callsites
+    that don't otherwise import the underlying hook helpers.
+    """
+    from scripts import apply_station_overrides
+
+    source = inspect.getsource(apply_station_overrides._load_json)
+    # Either direct-kwargs OR wrapper form satisfies the contract.
+    if "loads_finite(" in source:
+        return
+    _assert_parse_constant_pin(
+        apply_station_overrides._load_json,
+        where=(
+            "scripts/apply_station_overrides.py:_load_json "
+            "(data/stations_overrides.json + data/stations.json reader)"
+        ),
+    )
+
+
 # ---------------------------------------------------------------------------
 # Behavioural PoC: every fixed reader must reject planted non-finite literals.
 # ---------------------------------------------------------------------------

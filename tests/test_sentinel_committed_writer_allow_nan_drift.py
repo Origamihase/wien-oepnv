@@ -300,6 +300,35 @@ def test_inventory_sync_hafas_profile_write_profile_pins_allow_nan() -> None:
     )
 
 
+def test_inventory_apply_station_overrides_writer_pins_allow_nan() -> None:
+    """Sibling-drift closure: the curated-correction layer's writer
+    (``scripts/apply_station_overrides.py:apply_overrides`` — the
+    ``json.dumps(stations_payload, ...)`` call) was added in
+    2026-05-16 PR #1540 — AFTER the Round 1485 / 1487 / 1488 / 1491
+    sweep — and inherited neither the ``allow_nan=False`` pin nor
+    the sibling-protection contract until the
+    SENTINEL_APPLY_STATION_OVERRIDES_NON_FINITE_DRIFT round (see
+    ``tests/test_sentinel_apply_station_overrides_non_finite_drift.py``).
+
+    Without this pin, any ``float('nan')`` / ``float('inf')`` that
+    bypassed the reader-side defence (e.g. via a regression to
+    ``json.loads(text)``) re-serialises as the non-standard
+    ``NaN`` / ``Infinity`` literal token (invalid per RFC 8259) and
+    the corrupted ``data/stations.json`` bytes ship to ``main``,
+    breaking every strict downstream parser and crashing the next
+    cron tick's ``allow_nan=False`` writers mid-write.
+    """
+    module = _import_script("apply_station_overrides")
+
+    _assert_allow_nan_pin(
+        module.apply_overrides,
+        where=(
+            "scripts/apply_station_overrides.py:apply_overrides "
+            "(data/stations.json persistence)"
+        ),
+    )
+
+
 # ---------------------------------------------------------------------------
 # Behavioural PoC: write_feed_health_json with NaN inputs must fail loudly.
 # ---------------------------------------------------------------------------
