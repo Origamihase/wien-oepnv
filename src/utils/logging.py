@@ -619,6 +619,18 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])(sk-(?:proj|svcacct))-[A-Za-z0-9_\-]{40,}(?![A-Za-z0-9])",
             r"\1-***",
         ),
+        # OpenRouter API Key (``sk-or-v1-<32+ alphanumeric>``). Listed
+        # BEFORE the OpenAI legacy ``sk-<48 alnum>`` pattern so the
+        # more-specific OpenRouter prefix wins first. The two are
+        # structurally distinct (OpenRouter contains a dash inside
+        # the prefix span which breaks the OpenAI legacy regex's
+        # strict alphanumeric body, so collision is impossible at the
+        # regex level) but explicit ordering documents the intent.
+        # Part of SENTINEL_SLACK_AIML_TOKEN_LOG_SANITIZATION_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])(sk-or-v1)-[A-Za-z0-9]{32,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
         (
             r"(?<![A-Za-z0-9])(sk)-[A-Za-z0-9]{48}(?![A-Za-z0-9])",
             r"\1-***",
@@ -638,6 +650,163 @@ def sanitize_log_message(
         (
             r"(?<![A-Za-z0-9])(hf)_[A-Za-z0-9]{32,}(?![A-Za-z0-9])",
             r"\1_***",
+        ),
+        # Slack token family value-shape masking. Sibling-drift closure
+        # for the secret-scanner ``_KNOWN_TOKENS`` entries that detect
+        # committed Slack tokens across SEVEN issuer prefixes:
+        # ``xoxb-`` (Bot Token), ``xoxp-`` (User Token), ``xoxa-``
+        # (OAuth Access), ``xoxr-`` (Refresh), ``xoxc-`` (Browser
+        # Session), ``xoxd-`` (Cookie Session), ``xoxe-`` /
+        # ``xoxe.xoxb-`` / ``xoxe.xoxp-`` (V2 Token Rotation
+        # Refresh — direct + chained forms). The scanner closed the
+        # *detection* codepath for committed source files in
+        # successive rounds; the log-sanitisation codepath was NOT
+        # extended in any prior round — bare Slack token shapes in
+        # plain log text (Slack provider error responses, application
+        # f-string logs, JSON values with NON-sensitive keys, URL
+        # paths / query strings) bypassed every existing key/header/
+        # URL-credential mask pattern and leaked verbatim into
+        # operator log streams plus the public
+        # ``docs/feed_health.json`` artefact.
+        #
+        # Threat model per Slack issuer tier:
+        #   * ``xoxb-<digits>-<digits>-<24 alnum>`` — Bot Token. The
+        #     workhorse credential for Slack automation: posts to
+        #     channels, DMs, reads messages, uploads files, manages
+        #     workspace members per the app's installed scopes.
+        #     Highest routine-leak severity in the Slack family due
+        #     to ubiquity in CI/CD secrets / ``.env`` files.
+        #   * ``xoxp-<digits>-<digits>-<digits>-<32 alnum>`` — User
+        #     Token. Acts AS the user — full impersonation including
+        #     DMs, search, file access, channel history.
+        #   * ``xoxa-<body>`` — OAuth Access Token. Configuration
+        #     tokens issued via the OAuth flow.
+        #   * ``xoxr-<body>`` — Refresh Token. Mints fresh ``xoxb-`` /
+        #     ``xoxp-`` access tokens until the refresh token itself
+        #     is revoked at slack.com/app-settings.
+        #   * ``xoxc-<body>`` — Browser Session Token. Session cookie
+        #     extracted via DevTools; canonical "session hijack"
+        #     credential. Unattended scripted access to the user's
+        #     Slack workspace.
+        #   * ``xoxd-<body>`` — Cookie Session Token. Companion to
+        #     ``xoxc-``; same blast radius plus 2FA-bypass if the
+        #     session was established post-2FA.
+        #   * ``xoxe-`` / ``xoxe.xoxb-`` / ``xoxe.xoxp-`` — V2 Token
+        #     Rotation Refresh (direct + chained). The chained shape
+        #     embeds the rotation chain's identity (``xoxb-`` for
+        #     bot rotation, ``xoxp-`` for user rotation).
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``myxoxb-``, ``0xoxe-`` are preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Strict per-segment digit lengths for the canonical
+        #     ``xoxb-``/``xoxp-`` shapes (10+ digit segments) reject
+        #     accidental fragments while accepting every real-shape
+        #     token.
+        #   * 20+ char body floor for the dash-suffixed variants.
+        # The mask preserves the issuer-specific prefix
+        # (``xoxb-***``, ``xoxe.xoxb-***`` etc.) for incident-response
+        # triage — each tier has a distinct revocation flow
+        # (slack.com/app-settings > Workspace tokens for
+        # xoxb/xoxp/xoxa/xoxr; password reset + active session
+        # termination for xoxc/xoxd; xoxe rotates via the parent
+        # token chain).
+        #
+        # Ordering: ``xoxe.xox[bp]-`` chained patterns are listed
+        # BEFORE the bare ``xoxb-``/``xoxp-`` patterns so the more-
+        # specific chained shape wins first — preserving the full
+        # ``xoxe.xoxb-***`` attribution rather than splitting at the
+        # inner ``xoxb-`` boundary. Re-encoding the rotation-chain
+        # identity is critical for IR triage because the chained
+        # form's revocation flow (rotate the parent ``xoxb-``/
+        # ``xoxp-``) differs from the direct ``xoxe-`` form
+        # (revoke at refresh-token settings).
+        #
+        # Idempotence: masked forms (``xoxb-***``, ``xoxe.xoxb-***``)
+        # do NOT match any of these regexes because ``*`` is not in
+        # any body alphabet AND the masked body length (3 chars) is
+        # below every per-family floor (20/24/32).
+        #
+        # Marker: SENTINEL_SLACK_AIML_TOKEN_LOG_SANITIZATION_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])(xoxe\.xox[bp])-[0-9a-zA-Z\-]{20,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(xoxe)-[0-9a-zA-Z\-]{20,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(xoxb)-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{24}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(xoxp)-[0-9]{10,}-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{32}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(xox[acdr])-[0-9a-zA-Z\-]{20,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        # AI/ML Inference Platform tier value-shape masking. Sibling-
+        # drift closure for the secret-scanner ``_KNOWN_TOKENS``
+        # entries that detect committed AI/ML inference platform
+        # tokens (Groq ``gsk_`` / Replicate ``r8_`` / Perplexity
+        # ``pplx-`` / xAI ``xai-``; OpenRouter ``sk-or-v1-`` is
+        # listed earlier alongside the OpenAI legacy regex to
+        # guarantee precedence). The scanner closed the *detection*
+        # codepath for committed source files across the 2026-05-16
+        # AI/ML Inference Platform tier rounds; the log-sanitisation
+        # codepath was NOT extended in any prior round — bare tokens
+        # in plain log text leaked verbatim.
+        #
+        # Threat model per vendor:
+        #   * Groq ``gsk_<32+ alnum>`` — LPU-accelerated inference
+        #     (LLaMA / Mixtral / Gemma). Billing fraud + free-tier
+        #     abuse for unauthorised inference.
+        #   * Replicate ``r8_<40 alnum>`` — Model hosting (Stable
+        #     Diffusion, custom Cog models). Compute-billing fraud
+        #     (GPU inference at issuer's expense) + backdoored Cog
+        #     model push if token has push scope.
+        #   * Perplexity ``pplx-<32+ alnum>`` — Search-grounded
+        #     inference. Billing fraud + search-result exfiltration.
+        #   * xAI ``xai-<32+ alnum>`` — Grok inference API. Billing
+        #     fraud (Grok-2 / Grok-2 Vision at issuer's expense).
+        #   * OpenRouter ``sk-or-v1-<32+ alnum>`` — UNIQUE CROSS-
+        #     PLATFORM PIVOT AMPLIFIER (handled by the earlier
+        #     OpenRouter regex). A leaked OpenRouter token grants
+        #     access to ALL the user's attached provider keys
+        #     (Anthropic / OpenAI / Mistral / etc.) through the
+        #     aggregator proxy — effectively a multi-vendor
+        #     credential-chain pivot.
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word
+        #     false positives (``agsk_``, ``frnd_`` are preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Strict per-vendor body lengths (32+ for Groq /
+        #     Perplexity / xAI; EXACTLY 40 for Replicate per the
+        #     scanner regex's exact-length anchor).
+        #
+        # Idempotence: masked forms (``gsk_***``, ``pplx-***``) do
+        # NOT match any of these regexes (mask alphabet excludes
+        # ``*``; mask body length 3 is below every floor).
+        (
+            r"(?<![A-Za-z0-9])(gsk)_[A-Za-z0-9]{32,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(r8)_[A-Za-z0-9]{40}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(pplx)-[A-Za-z0-9]{32,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(xai)-[A-Za-z0-9]{32,}(?![A-Za-z0-9])",
+            r"\1-***",
         ),
     ]
     for pattern, repl in patterns:
