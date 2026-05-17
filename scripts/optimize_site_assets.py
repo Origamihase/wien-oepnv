@@ -57,6 +57,18 @@ except ImportError as exc:  # pragma: no cover
     )
     raise SystemExit(2) from exc
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+# Project-wide sanitising logging — see
+# ``tests/test_sentinel_preflight_basicconfig_drift.py`` for the invariant
+# that forbids ``logging.basicConfig`` in scripts/. ``setup_script_logging``
+# installs the same ``SafeFormatter`` the production feed builder uses, so
+# hostile log content (e.g. an attacker-controlled URL in a subprocess error)
+# can't bypass scrubbing on the way to stderr.
+from src.feed.logging_safe import setup_script_logging  # noqa: E402
+
 # Pillow 10 renamed the resampling enum; expose a stable alias so the
 # downscale step works on both modern (``Image.Resampling.LANCZOS``)
 # and legacy (``_LANCZOS``) installations.
@@ -64,7 +76,6 @@ _LANCZOS = getattr(Image, "Resampling", Image).LANCZOS
 
 LOG = logging.getLogger("optimize_site_assets")
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
 ASSETS_DIR = REPO_ROOT / "docs" / "assets"
 
 CSS_SRC = ASSETS_DIR / "site.css"
@@ -297,10 +308,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.INFO,
-        format="%(message)s",
-    )
+    setup_script_logging(logging.DEBUG if args.verbose else logging.INFO)
 
     if args.check:
         css_ok = _minify_css(check_only=True)
