@@ -1081,6 +1081,196 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])(key)-[a-f0-9]{32}(?![A-Za-z0-9])",
             r"\1-***",
         ),
+        # Supply-Chain / E-Commerce / PaaS / Observability / Email-Platform
+        # token tier value-shape masking. Sibling-drift closure for the
+        # secret-scanner ``_KNOWN_TOKENS`` entries detecting committed
+        # tokens across the remaining named-but-deferred backlog from the
+        # 2026-05-17 SaaS / Comms / Workspace / Observability / Secret-
+        # Manager round — every bare token shape below leaked verbatim
+        # through ``sanitize_log_message`` pre-fix (plain log lines, JSON
+        # values with non-sensitive keys, URL paths / query strings with
+        # non-sensitive parameter names, exception messages routed through
+        # ``_sanitize_exception_msg``).
+        #
+        # Families covered (10 issuers / 11 patterns):
+        #
+        # Supply-Chain tier:
+        #   * ``pypi-<20+ from [A-Za-z0-9_-]>`` — PyPI API Token. Issued
+        #     at pypi.org/manage/account/token/. Leak grants publish
+        #     access to every accessible PyPI project — canonical
+        #     supply-chain compromise primitive: a hostile actor can push
+        #     a backdoored wheel of a popular package and every CI run
+        #     of every downstream consumer pulls the malicious version.
+        #
+        # E-Commerce tier (HIGH payment-fraud blast radius):
+        #   * ``shpat_<32 mixed-case hex>`` — Shopify Admin API Access
+        #     Token. Full storefront/admin scope: read every order /
+        #     customer record (PII + payment metadata), modify product
+        #     catalogue (BEC-style price manipulation), drain Shopify
+        #     Payments balance via refunds-to-attacker-IBAN flow.
+        #   * ``shpss_<32 hex>`` — Shopify Shared Secret. Webhook HMAC
+        #     signing key — forge any webhook payload from any private
+        #     Shopify app.
+        #   * ``shppa_<32 hex>`` — Shopify Partner API Access Token.
+        #     Cross-store: every store the Partner is installed on.
+        #   * ``shpca_<32 hex>`` — Shopify Custom App Access Token.
+        #     Per-store but the same Admin API scope as ``shpat_``.
+        #   * ``ck_<32+ alnum>`` — WooCommerce Consumer Key. Pairs with
+        #     ``cs_`` for full WooCommerce REST API access: read every
+        #     order, customer, product. Drain via refund flow analogous
+        #     to Shopify Admin API.
+        #   * ``cs_<32+ alnum>`` — WooCommerce Consumer Secret. The
+        #     paired secret for ``ck_``.
+        #   * ``EAAA<60+ from [A-Za-z0-9_-]>`` — Square Access Token.
+        #     Full payment processing access: read transaction history
+        #     (PII + card-fingerprint metadata), issue refunds, create
+        #     new charges. Direct payment fraud primitive.
+        #
+        # PaaS / Edge-Runtime tier (deployment hijack):
+        #   * ``nfp_<40+ alnum>`` — Netlify Personal Access Token. Full
+        #     account scope: redirect every site's deploys to an
+        #     attacker-controlled build, exfiltrate every env-var that
+        #     a build can read (the canonical landing zone for AWS /
+        #     Stripe / database creds), modify DNS / SSL config to
+        #     hijack the production domain (then capture every
+        #     authenticated session via a forged TLS chain).
+        #   * ``rnd_<40+ from [A-Za-z0-9_-]>`` — Render API Key. Same
+        #     deployment-hijack blast radius as Netlify for services
+        #     hosted on Render's PaaS.
+        #   * ``FlyV1 (?:fm1|fm2|fo1)_<50+>`` — Fly.io Macaroon Token.
+        #     Edge-runtime hijack: deploy malicious code to every Fly
+        #     app the token's macaroon scope grants, modify routing /
+        #     Wireguard peers / Anycast routes, rotate billing
+        #     credentials. The ``FlyV1`` prefix uniquely contains a
+        #     LITERAL SPACE between the issuer keyword and the
+        #     macaroon-discriminator body — mirroring the scanner's
+        #     exact pattern.
+        #
+        # Observability tier (data-exfiltration + APM leak amplifier):
+        #   * ``NRAK-<27 uppercase alnum>`` — New Relic User Key.
+        #     Full user-scope account access: read every APM stream's
+        #     payload (which routinely contains debug-logged tokens
+        #     from production traces — secondary credential leak
+        #     amplifier).
+        #   * ``NRRA-<40 mixed-case hex>`` — New Relic REST API Key.
+        #     REST API access scoped per the key's privilege level.
+        #   * ``NRII-<32 mixed-case hex>`` — New Relic Insights Insert
+        #     Key. NRDB write access; can fabricate / overwrite APM
+        #     events to mask intrusion artifacts.
+        #
+        # Email-Platform tier (phishing amplification):
+        #   * ``xkeysib-<64 hex>-<16 alnum>`` — Brevo (Sendinblue) API
+        #     Key. Marketing + transactional email vendor. Two-part
+        #     body shape: a leak grants the attacker the ability to
+        #     send mail FROM the project's authenticated sending
+        #     domain (phishing amplification leveraging the account's
+        #     existing SPF / DKIM / DMARC reputation), export the
+        #     full subscriber CSV (PII exfiltration), and access the
+        #     transactional logs.
+        #   * ``<32 lowercase hex>-us<digits>`` — Mailchimp API Key.
+        #     The ``us<region>`` datacenter routing identifier is
+        #     PRESERVED in the mask (``***-us20``) for IR-routing
+        #     attribution since mailchimp.com's API endpoints are
+        #     keyed off the region. Mask preserves the suffix so the
+        #     responder can locate the correct admin subdomain
+        #     (``admin.mailchimp.com`` for direct-routed access).
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``xpypi-``, ``foonfp_``, ``Ashpat_`` are
+        #     preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Strict body lengths / alphabets per vendor canonical
+        #     format reject accidental fragments while accepting every
+        #     real-shape token.
+        #
+        # Each mask preserves the issuer-specific prefix (``pypi-***``,
+        # ``shpat_***``, ``EAAA***``, ``nfp_***``, ``FlyV1 fm1_***``,
+        # ``NRAK-***``, ``xkeysib-***`` etc.) for incident-response
+        # triage because each tier has a distinct revocation flow:
+        #   * PyPI — pypi.org/manage/account/token/ > Revoke.
+        #   * Shopify Admin/Custom/Partner/Shared-Secret — shopify.com
+        #     admin panel > Apps > Custom apps > Revoke.
+        #   * WooCommerce — site admin > WooCommerce > Settings >
+        #     Advanced > REST API > Revoke.
+        #   * Square — squareup.com/dashboard > Apps > Revoke.
+        #   * Netlify — app.netlify.com/user/applications > Revoke.
+        #   * Render — render.com/u/settings > API Keys > Revoke.
+        #   * Fly.io — fly.io/dashboard/<org>/tokens > Revoke.
+        #   * New Relic — one.newrelic.com/api-keys > Revoke.
+        #   * Brevo — app.brevo.com/settings/keys/api > Delete.
+        #   * Mailchimp — mailchimp.com/account/api/ > Revoke.
+        #
+        # Idempotence: masked forms (``pypi-***``, ``shpat_***``,
+        # ``EAAA***``, ``nfp_***``, ``FlyV1 fm1_***``, ``NRAK-***``,
+        # ``xkeysib-***``, ``***-us20``) do NOT match any of these
+        # regexes because ``*`` is not in any body alphabet AND the
+        # masked body length (3 chars) is below every per-family floor
+        # (20/27/32/40/50/60/64).
+        #
+        # Marker: SENTINEL_SUPPLY_CHAIN_ECOMMERCE_PAAS_OBSERVABILITY_EMAIL_TOKEN_LOG_SANITIZATION_DRIFT.
+        #
+        # Ordering: ``shpat|shpss|shppa|shpca`` are grouped (mutually
+        # exclusive at the prefix level, same body alphabet/length).
+        # ``ck|cs`` are grouped (mutually exclusive at the prefix level,
+        # same body alphabet/length floor). ``NRAK|NRRA|NRII`` are kept
+        # separate because each has a distinct body alphabet (NRAK
+        # uppercase alnum, NRRA/NRII mixed-case hex).
+        (
+            r"(?<![A-Za-z0-9])(pypi)-[0-9a-zA-Z_\-]{20,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(xkeysib)-[a-f0-9]{64}-[A-Za-z0-9]{16}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(nfp)_[A-Za-z0-9]{40,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(rnd)_[A-Za-z0-9_\-]{40,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(NRAK)-[A-Z0-9]{27}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(NRRA)-[a-fA-F0-9]{40}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(NRII)-[a-fA-F0-9]{32}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(FlyV1 (?:fm[12]|fo1))_[A-Za-z0-9_=\-]{50,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(EAAA)[A-Za-z0-9_\-]{60,}(?![A-Za-z0-9])",
+            r"\1***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(shpat|shpss|shppa|shpca)_[a-fA-F0-9]{32}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(ck|cs)_[a-zA-Z0-9]{32,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        # Mailchimp API Key: ``<32 lowercase hex>-us<digits>``. NO issuer
+        # prefix — purely structural. The mask preserves the ``-us<region>``
+        # datacenter routing suffix so the incident responder can locate
+        # the correct admin subdomain (the ``us<region>`` selector is also
+        # the per-tenant admin host like ``us20.admin.mailchimp.com``);
+        # the 32-hex body span is the credential and is the part masked
+        # to ``***``.
+        (
+            r"(?<![A-Za-z0-9])[a-f0-9]{32}-(us[0-9]{1,3})(?![A-Za-z0-9])",
+            r"***-\1",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
