@@ -513,19 +513,23 @@ code {
 }
 
 /* Live-Tile – Stammstrecken-Mittelwert der letzten 60 Minuten.
- * Sitzt im ``#feed``-Sektionskopf zwischen H2 und Sub-Text und
- * verlinkt zum Detailbereich ``#stammstrecke``. Bewusst kompakt
- * gehalten: ein einzelner Wert genügt, weitere Kennzahlen erscheinen
- * erst im vollständigen KPI-Block weiter unten. Datenquelle ist
- * VOR/VAO (siehe ``docs/architecture.md`` §7) — wird in der Kachel
- * explizit ausgewiesen, damit Leser sie nicht mit dem feed.xml-
- * Sammelfeed aus dem darunter stehenden ``section__sub`` verwechseln. */
+ * Sitzt im ``#feed``-Sektionskopf zwischen dem Quellen-Sub-Text
+ * (Stammstrecken-CSV als Datengrundlage) und dem Sammelfeed-Sub-Text
+ * (``feed.xml``) und verlinkt zum Detailbereich ``#stammstrecke``.
+ * Bewusst kompakt gehalten: ein einzelner Wert genügt, weitere
+ * Kennzahlen erscheinen erst im vollständigen KPI-Block weiter unten.
+ * Datenquelle ist VOR/VAO (siehe ``docs/architecture.md`` §7) — wird
+ * in der Kachel explizit ausgewiesen, damit Leser sie nicht mit dem
+ * feed.xml-Sammelfeed aus dem darunter stehenden ``section__sub``
+ * verwechseln. Das ``margin-bottom`` ist bewusst etwas großzügiger
+ * als ``margin-top``, um die Kachel optisch vom darunter folgenden
+ * Sammelfeed-Sub-Text abzusetzen. */
 .live-tile {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem 1rem;
   flex-wrap: wrap;
-  margin: 0.45rem 0 0.65rem;
+  margin: 0.45rem 0 1rem;
   padding: 0.55rem 1.05rem 0.6rem;
   background: var(--c-surface);
   border: 1px solid var(--c-border);
