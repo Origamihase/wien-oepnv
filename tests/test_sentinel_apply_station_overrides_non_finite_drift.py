@@ -410,7 +410,7 @@ def test_poc_finite_payload_round_trips_unchanged(
 # ---------------------------------------------------------------------------
 
 
-def test_poc_writer_pin_rejects_nan_round_trip(tmp_path: Path) -> None:
+def test_poc_writer_pin_rejects_nan_round_trip() -> None:
     """Even if the reader-side defence regresses, the writer-side pin
     surfaces the planted NaN as ``ValueError`` BEFORE the corrupted
     bytes ship to ``data/stations.json``.
@@ -420,8 +420,6 @@ def test_poc_writer_pin_rejects_nan_round_trip(tmp_path: Path) -> None:
     the writer path through ``apply_overrides``. The writer pin must
     raise.
     """
-    stations_path = tmp_path / "stations.json"
-
     # Build a payload with a NaN coordinate IN MEMORY (no on-disk
     # parsing involved) — emulates the post-reader/pre-writer state
     # that the writer pin defends against.
@@ -437,7 +435,7 @@ def test_poc_writer_pin_rejects_nan_round_trip(tmp_path: Path) -> None:
         json.dumps(payload_with_nan, indent=2, ensure_ascii=False, allow_nan=False)
 
 
-def test_poc_writer_finite_payload_round_trips(tmp_path: Path) -> None:
+def test_poc_writer_finite_payload_round_trips() -> None:
     """The writer pin must not regress on a legitimate finite payload."""
     payload = {"stations": [
         {"name": "Wien Hauptbahnhof", "latitude": 48.18568, "longitude": 16.37534},
@@ -459,9 +457,7 @@ def test_poc_writer_finite_payload_round_trips(tmp_path: Path) -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_symmetry_reader_and_writer_close_apply_station_overrides_pipeline(
-    tmp_path: Path,
-) -> None:
+def test_symmetry_reader_and_writer_close_apply_station_overrides_pipeline() -> None:
     """End-to-end: neither boundary in ``apply_station_overrides`` admits
     a non-finite literal.
 
