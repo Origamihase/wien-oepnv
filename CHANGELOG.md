@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Dashboard: „Ausfälle nach Wochentag" als eigener Chart-Block
+  (2026-05-17)**:
+  * Die Ausfall-Sektion auf `docs/site.html#ausfaelle` zeigt jetzt –
+    analog zu „Ø Verspätung nach Wochentag" im Stammstrecke-Block –
+    eine eigene Balken-Karte „Nach Wochentag" zwischen „Nach Richtung"
+    und „Nach Tageszeit". `renderAusfaelleStats()` hatte die
+    Wochentag-Aggregation (`countByKey(rows, r => r.weekday, WEEKDAYS)`)
+    schon für die `Stärkster Tag`-KPI berechnet; sie war aber nirgends
+    visualisiert. Der neue `renderBars("#ausfaelle-weekday", …)`-Aufruf
+    nutzt dieselbe `cancel`-Bar-Variante (`var(--c-danger)`-Fill) wie
+    die übrigen Ausfall-Charts und reuse das `WEEKDAY_LONG`-Mapping
+    auf die deutschen Vollnamen.
+  * Layout: Die neue Karte ist eine reguläre `card` (kein
+    `card--wide`); auf breiten Viewports stehen Linie/Richtung/Wochentag
+    in einer Reihe, „Nach Tageszeit" bleibt die volle Breite einnehmende
+    untere Karte – exakt das Muster aus dem Stammstrecke-Grid (Stunde
+    + Wochentag schmal, Richtung wide). Keine CSS-Änderung nötig:
+    `.chart-grid` ist `repeat(auto-fit, minmax(min(320px, 100%), 1fr))`,
+    so dass die zusätzliche Karte responsive einrastet.
+  * `docs/assets/site.min.js` mit
+    `python scripts/optimize_site_assets.py --skip-images` regeneriert;
+    `--check` läuft grün. Kein neuer CSS-Hook, keine neue Datenquelle,
+    keine CSP-Anpassung – die Spalten `weekday`/`hour` waren bereits
+    Teil des `data/stats/ausfaelle_<YYYY>.csv`-Schemas seit 2026-05-15.
+
 * **Performance: Static-site asset payload reduced ~86 % (2026-05-17)**:
   * Two Lighthouse runs against `docs/site.html` (mobile + desktop,
     Lighthouse 13.0.2) flagged the same diagnostic chain: `train.png`

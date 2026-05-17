@@ -485,6 +485,10 @@
       sortedEntries(byDirection),
       { unit: "", variant: "cancel", formatValue: (v) => nfInt.format(v) });
 
+    renderBars("#ausfaelle-weekday",
+      WEEKDAYS.map((d) => [WEEKDAY_LONG[d] || d, byWeekday[d] || 0]),
+      { unit: "", variant: "cancel", formatValue: (v) => nfInt.format(v) });
+
     renderBars("#ausfaelle-hour",
       HOURS.map((h) => [`${h}:00`, byHour[h] || 0]),
       { unit: "", variant: "cancel", formatValue: (v) => nfInt.format(v) });
