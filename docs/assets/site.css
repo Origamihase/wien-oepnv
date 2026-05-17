@@ -85,7 +85,11 @@
   }
 }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--c-bg);
+  overflow-x: clip;
+}
 
 body {
   margin: 0;
