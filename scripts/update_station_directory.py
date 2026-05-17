@@ -1112,6 +1112,124 @@ def _enrich_with_hafas(stations: list[Station]) -> list[Station]:
     return residual
 
 
+def _enrich_manual_stations(
+    manual_stations: list[dict[str, object]],
+    location_index: Mapping[str, LocationInfo],
+) -> int:
+    """Enrich manual entries (``source=manual``, ``type=manual_*``) with
+    coordinates from the local lookup index and the HAFAS LocMatch tier.
+
+    Manual entries — added for the Ostregion Liniennetz stations outside
+    the Wien/NÖ pendler scope (PR #1557) — bypass ``_filter_relevant_stations``
+    and therefore never enter the ÖBB-side OSM/HAFAS/Google enrichment chain.
+    Without this step they stay coordinate-less forever, even though the
+    cron pipeline already loads sources (GTFS stops.txt, VOR haltestellen.csv)
+    and has an unmetered fallback (HAFAS ÖBB Scotty) that can resolve them.
+
+    Resolution order — same fail-cheap-first rationale as ``_enrich_with_osm``
+    / ``_enrich_with_hafas`` / ``_enrich_with_google_places``:
+
+      1. **Local index** (``location_index`` = GTFS + VOR coords, free,
+         in-memory). Already built earlier in ``main()`` for the ÖBB
+         flag-annotation pass; we just re-use it.
+      2. **HAFAS LocMatch** (ÖBB Scotty, free, no monthly quota; the same
+         tier that ``_enrich_with_hafas`` taps for ÖBB stations). Handles
+         Austria-wide stations plus most CZ/SK/HU border references that
+         Scotty knows.
+
+    Skips entries that already carry ``latitude``/``longitude`` so the
+    enrichment is idempotent across cron ticks (first run fills 296 entries;
+    subsequent runs no-op unless new manual entries appear).
+
+    Returns the number of entries enriched (for log accounting).
+    """
+    if not manual_stations:
+        return 0
+
+    enriched_local = 0
+    enriched_hafas = 0
+    still_missing = 0
+    skipped_existing = 0
+
+    for entry in manual_stations:
+        lat = entry.get("latitude")
+        lon = entry.get("longitude")
+        if isinstance(lat, int | float) and isinstance(lon, int | float):
+            skipped_existing += 1
+            continue
+
+        name_raw = entry.get("name")
+        if not isinstance(name_raw, str) or not name_raw.strip():
+            continue
+        name = name_raw.strip()
+
+        # 1. Local index (GTFS + VOR coords already loaded by _build_location_index)
+        info: LocationInfo | None = None
+        for key in _normalize_location_keys(name):
+            info = location_index.get(key)
+            if info:
+                break
+        if info is not None:
+            entry["latitude"] = info.latitude
+            entry["longitude"] = info.longitude
+            _merge_sources_into_entry(entry, info.sources)
+            enriched_local += 1
+            continue
+
+        # 2. HAFAS LocMatch fallback (ÖBB Scotty, free)
+        try:
+            hit = enrich_station_with_hafas(name)
+        except Exception:  # nosec B902 - HAFAS must never crash the pipeline
+            logger.warning(
+                "HAFAS lookup raised for manual entry %s",
+                sanitize_log_arg(name),
+            )
+            still_missing += 1
+            continue
+
+        if hit is None:
+            still_missing += 1
+            continue
+
+        entry["latitude"] = hit["lat"]
+        entry["longitude"] = hit["lon"]
+        ext_id = hit.get("extId")
+        if isinstance(ext_id, str) and ext_id.strip():
+            entry["hafas_extId"] = ext_id.strip()
+        _merge_sources_into_entry(entry, {"hafas"})
+        enriched_hafas += 1
+
+    logger.info(
+        "Manual enrichment: %d via local index, %d via HAFAS, %d already had coords, %d still missing",
+        enriched_local,
+        enriched_hafas,
+        skipped_existing,
+        still_missing,
+    )
+    return enriched_local + enriched_hafas
+
+
+def _merge_sources_into_entry(entry: dict[str, object], add: Iterable[str]) -> None:
+    """Add provider tokens to the entry's comma-separated ``source`` field.
+
+    Preserves the existing tokens (typically ``manual``), adds the new ones,
+    deduplicates, and re-emits in alphabetical order — matching the
+    canonical format pinned in ``src/places/merge.py`` and validated by
+    ``_find_naming_issues`` in ``src/utils/stations_validation.py``.
+    """
+    raw = entry.get("source")
+    tokens: set[str] = set()
+    if isinstance(raw, str):
+        tokens.update(part.strip() for part in raw.split(",") if part.strip())
+    elif isinstance(raw, list):
+        tokens.update(str(part).strip() for part in raw if str(part).strip())
+    for token in add:
+        token = str(token).strip()
+        if token:
+            tokens.add(token)
+    entry["source"] = ",".join(sorted(tokens))
+
+
 def _enrich_with_google_places(
     stations: list[Station],
     *,
@@ -2212,6 +2330,14 @@ def main() -> None:
                 )
     else:
         logger.info("Skipping Google Places enrichment (--no-google-enrich)")
+
+    # Enrich the manual block (manual_distant_at / manual_foreign_city —
+    # the Ostregion Liniennetz stations from PR #1557) that bypassed the
+    # ÖBB filter and therefore the ÖBB-side enrichment chain. Re-uses
+    # the location_index built earlier (free GTFS/VOR lookup) and falls
+    # back to the unmetered HAFAS LocMatch tier — exactly the same
+    # cheap-first strategy the ÖBB pipeline already runs.
+    _enrich_manual_stations(manual_stations, location_index)
 
     final_stations = [station.as_dict() for station in stations]
     final_stations.extend(manual_stations)
