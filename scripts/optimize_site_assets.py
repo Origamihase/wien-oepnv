@@ -36,6 +36,7 @@ import logging
 import shutil
 import subprocess  # nosec B404
 import sys
+import warnings
 from pathlib import Path
 
 try:
@@ -68,6 +69,7 @@ if str(REPO_ROOT) not in sys.path:
 # hostile log content (e.g. an attacker-controlled URL in a subprocess error)
 # can't bypass scrubbing on the way to stderr.
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
+from src.utils.files import read_capped_text  # noqa: E402
 
 # Pillow 10 renamed the resampling enum; expose a stable alias so the
 # downscale step works on both modern (``Image.Resampling.LANCZOS``)
@@ -75,6 +77,93 @@ from src.feed.logging_safe import setup_script_logging  # noqa: E402
 _LANCZOS = getattr(Image, "Resampling", Image).LANCZOS
 
 LOG = logging.getLogger("optimize_site_assets")
+
+# Security: per-loader byte cap for the four CSS/JS file reads
+# (``CSS_SRC``/``JS_SRC`` sources + ``CSS_OUT``/``JS_OUT`` minified
+# outputs). Pre-fix every site used the unsafe ``Path.read_text(
+# encoding="utf-8")`` shape with NO size cap — a planted multi-GiB
+# CSS/JS file (hostile PR, compromised ``main`` checkout, partial flush
+# + power loss) buffered via ``read_text()`` allocates O(file_size)
+# bytes and raises :exc:`MemoryError`. ``MemoryError`` is a
+# :class:`BaseException` subclass that propagates past every
+# ``except OSError`` / ``except ValueError`` handler in the pre-commit
+# pipeline and aborts the ``site-assets-minified`` hook
+# (``.pre-commit-config.yaml`` invokes ``optimize_site_assets.py
+# --check`` on every commit that touches the dashboard assets). The
+# 4-MiB cap is ~200x the largest legitimate asset (``site.js`` at
+# ~25 KiB) — generous enough to absorb any future hand-edit while still
+# rejecting GiB-sized planted attacks. Mirrors
+# ``scripts/check_complexity.py:MAX_BASELINE_FILE_BYTES`` (the closest
+# canonical sibling — both are repo-internal small text files that
+# would never legitimately exceed 1 MiB).
+MAX_CSS_FILE_BYTES = 4 * 1024 * 1024
+
+# Security: decompression-bomb cap for ``PIL.Image.open()`` calls in
+# the image optimisation flow. The two committed assets are tiny by
+# any standard (``train.png`` at 1584×224 = ~355 K pixels,
+# ``footer-bg.jpg`` at 1920×1080 = ~2 M pixels). PIL's default
+# ``MAX_IMAGE_PIXELS`` is ~89 M pixels (= ~358 MiB at RGBA 8-bit) — a
+# ~40x overshoot of the legitimate ceiling and the default policy
+# emits a non-fatal :class:`DecompressionBombWarning` at that threshold
+# (only escalating to :class:`DecompressionBombError` at 2 × ~89 M =
+# ~178 M pixels). A hostile PR replacing one of the committed assets
+# with a small file that DECLARES dimensions of 50 000 × 50 000
+# pixels (= 2.5 B pixels, ~10 GiB if decoded) would:
+#   * Sail past the warning (non-fatal by default).
+#   * Trigger the error gate at the second open call — but only AFTER
+#     ``img.resize()`` materialises the 100-M-pixel buffer for the
+#     first warning-bracket bomb and OOMs the host.
+# Pinning ``Image.MAX_IMAGE_PIXELS`` to 25 M (~12x the largest
+# legitimate asset) AND promoting :class:`DecompressionBombWarning` to
+# an error closes both shapes — every bomb declaring more pixels than
+# the cap is rejected at the very first ``Image.open()`` call (the
+# header parse runs the bomb check before any pixel buffer is
+# allocated).
+MAX_IMAGE_PIXELS = 25_000_000
+
+Image.MAX_IMAGE_PIXELS = MAX_IMAGE_PIXELS
+warnings.filterwarnings("error", category=Image.DecompressionBombWarning)
+
+
+def _read_capped_or_die(path: Path, label: str) -> str:
+    """Read *path* via :func:`read_capped_text`, exiting on cap violation.
+
+    Used for the SOURCE assets (``CSS_SRC`` / ``JS_SRC``) where a
+    cap-violation return of ``None`` cannot be recovered from — the
+    minified output cannot be rendered without the source. The exit is
+    deliberately loud (non-zero) so the pre-commit hook surfaces the
+    planted-huge-file shape instead of silently rendering an empty
+    output bundle.
+    """
+    content = read_capped_text(
+        path, MAX_CSS_FILE_BYTES, label=label, logger=LOG
+    )
+    if content is None:
+        raise SystemExit(
+            f"{label} at {path} exceeds the {MAX_CSS_FILE_BYTES}-byte cap or "
+            "is unreadable; refusing to process."
+        )
+    return content
+
+
+def _read_capped_or_empty(path: Path, label: str) -> str:
+    """Read *path* via :func:`read_capped_text`, returning ``""`` on
+    missing / oversized / unreadable.
+
+    Used for the OUTPUT assets (``CSS_OUT`` / ``JS_OUT``) where a
+    cap-violation simply means the committed minified bundle is corrupt
+    or oversized — equivalent to drift from the freshly-rendered
+    expected output. In check-mode the comparison reports drift; in
+    regen-mode the oversized file is overwritten with the smaller
+    correct output.
+    """
+    if not path.exists():
+        return ""
+    content = read_capped_text(
+        path, MAX_CSS_FILE_BYTES, label=label, logger=LOG
+    )
+    return content if content is not None else ""
+
 
 ASSETS_DIR = REPO_ROOT / "docs" / "assets"
 
@@ -119,17 +208,21 @@ def _render_min_css() -> str:
     # rcssmin/rjsmin ship without type stubs; ``str()`` makes the
     # Any -> str boundary explicit so strict mypy is happy without an
     # inline type-ignore.
-    return HEADER_COMMENT + str(rcssmin.cssmin(CSS_SRC.read_text(encoding="utf-8")))
+    return HEADER_COMMENT + str(
+        rcssmin.cssmin(_read_capped_or_die(CSS_SRC, "site.css"))
+    )
 
 
 def _render_min_js() -> str:
-    return HEADER_COMMENT + str(rjsmin.jsmin(JS_SRC.read_text(encoding="utf-8")))
+    return HEADER_COMMENT + str(
+        rjsmin.jsmin(_read_capped_or_die(JS_SRC, "site.js"))
+    )
 
 
 def _minify_css(check_only: bool = False) -> bool:
     """Regenerate ``site.min.css``. In check mode return False on drift."""
     expected = _render_min_css()
-    current = CSS_OUT.read_text(encoding="utf-8") if CSS_OUT.exists() else ""
+    current = _read_capped_or_empty(CSS_OUT, "site.min.css")
     if check_only:
         ok = current == expected
         if not ok:
@@ -151,7 +244,7 @@ def _minify_css(check_only: bool = False) -> bool:
 def _minify_js(check_only: bool = False) -> bool:
     """Regenerate ``site.min.js``. In check mode return False on drift."""
     expected = _render_min_js()
-    current = JS_OUT.read_text(encoding="utf-8") if JS_OUT.exists() else ""
+    current = _read_capped_or_empty(JS_OUT, "site.min.js")
     if check_only:
         ok = current == expected
         if not ok:
