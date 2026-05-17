@@ -17,7 +17,12 @@
   <link rel="canonical" href="https://origamihase.github.io/wien-oepnv/site.html">
   <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
   <link rel="icon" type="image/svg+xml" href="assets/site-favicon.svg">
-  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/site.min.css">
+  <!-- The dashboard fetches the statistics CSVs from raw.githubusercontent.com
+       once site.min.js has executed; resolving the DNS upfront shaves ~50–200 ms
+       off the first CSV request on cold connections. -->
+  <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
+  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_AT">
@@ -57,7 +62,7 @@
 
   <header class="site-header" role="banner">
     <div class="container site-header__inner">
-      <a class="brand" href="./" aria-label="Wien ÖPNV – Startseite">
+      <a class="brand" href="./" aria-label="Wien ÖPNV Live-Dashboard – Startseite">
         <span class="brand__mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" focusable="false" aria-hidden="true">
             <rect width="32" height="32" rx="8"></rect>
@@ -82,7 +87,7 @@
   </header>
 
   <div class="trainline" aria-hidden="true">
-    <img class="trainline__train" src="assets/train.png" alt="" decoding="async" width="3168" height="448">
+    <img class="trainline__train" src="assets/train.png" alt="" decoding="async" fetchpriority="low" width="1584" height="224">
   </div>
 
   <main id="main" class="container" tabindex="-1">
@@ -268,6 +273,6 @@
     </div>
   </footer>
 
-  <script src="assets/site.js" defer></script>
+  <script src="assets/site.min.js" defer></script>
 </body>
 </html>
