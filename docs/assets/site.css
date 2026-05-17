@@ -588,10 +588,20 @@ code {
  * heights below match a single bar row at the active font (~28 px incl.
  * ``gap`` between rows) times the cardinality of the bucket; the
  * containers may exceed them when label wrapping kicks in, but never
- * shrink. */
+ * shrink.
+ *
+ * ``align-content: start`` is required because the default ``normal``
+ * for grid resolves to ``stretch``, which would enlarge each auto-sized
+ * row equally to fill the reserved ``min-height``. With few rows in a
+ * tall reservation (e.g. 2 directions in 140 px, 3 providers in 290 px)
+ * that stretching produces huge visual gaps between bars; pinning to
+ * ``start`` keeps the rows at their natural ~22 px height and packs
+ * them at the top, with the leftover space (only visible during the
+ * loading hand-off) sitting harmlessly below. */
 .bars {
   display: grid;
   gap: 0.45rem;
+  align-content: start;
   font-variant-numeric: tabular-nums;
 }
 #stoerungen-providers, #ausfaelle-line { min-height: 290px; }
