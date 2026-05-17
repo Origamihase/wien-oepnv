@@ -426,17 +426,22 @@ def test_collect_geographic_resolution_overrides_track_assignment() -> None:
 def test_collect_falls_back_to_track_for_unknown_terminus() -> None:
     """Termini absent from the central directory fall back to the track.
 
-    ``Břeclav`` and ``Bratislava-Petržalka`` are not present in
-    ``data/stations.json``; with the hybrid resolver, the
-    surviving track-trunk determines the direction. No departure is
-    dropped for an unrecognised terminus.
+    Uses fictional terminus names guaranteed to be absent from
+    ``data/stations.json``. The previous fixtures (``Břeclav`` /
+    ``Bratislava-Petržalka``) were absorbed into the directory by the
+    HAFAS-enrichment cron — both gained coordinates that put them on
+    the geographic-resolver branch instead of the track-fallback
+    branch this test exercises. With the hybrid resolver, the
+    surviving track-trunk determines the direction for any terminus
+    without a directory hit. No departure is dropped for an
+    unrecognised terminus.
     """
 
     departures = [
         # Unknown terminus, track 1 → SOUTHBOUND per fallback.
-        _dep(name="REX 1", direction="Břeclav", track="1"),
+        _dep(name="REX 1", direction="Fictional Test Terminus A", track="1"),
         # Unknown terminus, track 2 → NORTHBOUND per fallback.
-        _dep(name="REX 2", direction="Bratislava-Petržalka", track="2"),
+        _dep(name="REX 2", direction="Fictional Test Terminus B", track="2"),
         # Empty direction string, track 1 → SOUTHBOUND per fallback;
         # pre-refactor this row was dropped as an "unrecognised
         # terminus" rather than reaching either bucket.
