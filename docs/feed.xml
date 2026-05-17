@@ -7,35 +7,46 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 17 May 2026 18:30:37 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 19:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[30/31: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fb65545e0273eccd38d8f72f7e799e36353a5435cbc16b73f350f06151325373</guid>
+      <pubDate>Sun, 17 May 2026 18:49:00 +0200</pubDate>
+      <ext:first_seen>Sun, 17 May 2026 19:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 17 May 2026 18:49:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 30: Betrieb nur zwischen Floridsdorf S U und Brünner Straße, Hanreitergasse. Linie 31: Betrieb nur zwischen Schottenring U und Brünner Straße, Hanreitergasse. [Am 17.05.2026]</description>
+      <content:encoded><![CDATA[Linie 30: Betrieb nur zwischen Floridsdorf S U und Brünner Straße, Hanreitergasse. Linie 31: Betrieb nur zwischen Schottenring U und Brünner Straße, Hanreitergasse.<br/>[Am 17.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12A: Fahrtbehinderung Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7</guid>
-      <pubDate>Sun, 17 May 2026 18:28:16 +0200</pubDate>
+      <pubDate>Sun, 17 May 2026 18:25:00 +0200</pubDate>
       <ext:first_seen>Sun, 17 May 2026 18:30:37 +0200</ext:first_seen>
       <ext:starts_at>Sun, 17 May 2026 18:28:16 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 17 May 2026 19:27:00 +0200</ext:ends_at>
-      <description>[Am 17.05.2026]</description>
-      <content:encoded><![CDATA[[Am 17.05.2026]]]></content:encoded>
+      <ext:ends_at>Sun, 17 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 17.05.2026]</description>
+      <content:encoded><![CDATA[Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 17.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[49: Fahrtbehinderung Falschparker]]></title>
+      <title><![CDATA[49: Falschparker Züge halten Urban-Loritz-Platz 3]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4</guid>
-      <pubDate>Sun, 17 May 2026 18:26:01 +0200</pubDate>
+      <pubDate>Sun, 17 May 2026 18:25:00 +0200</pubDate>
       <ext:first_seen>Sun, 17 May 2026 18:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 17 May 2026 18:26:01 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 17 May 2026 19:25:00 +0200</ext:ends_at>
-      <description>[Am 17.05.2026]</description>
-      <content:encoded><![CDATA[[Am 17.05.2026]]]></content:encoded>
+      <ext:starts_at>Sun, 17 May 2026 18:33:35 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 19:38:00 +0200</ext:ends_at>
+      <description>Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 17.05.2026]</description>
+      <content:encoded><![CDATA[Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 17.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10: Fahrtbehinderung Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7091f5ceb189603887edeb672707027ab0765bd9fd7a0fa2d67f934f96a2ae34</guid>
-      <pubDate>Sun, 17 May 2026 17:54:36 +0200</pubDate>
+      <pubDate>Sun, 17 May 2026 18:04:10 +0200</pubDate>
       <ext:first_seen>Sun, 17 May 2026 18:00:34 +0200</ext:first_seen>
       <ext:starts_at>Sun, 17 May 2026 18:07:26 +0200</ext:starts_at>
       <ext:ends_at>Sun, 17 May 2026 19:07:00 +0200</ext:ends_at>
@@ -104,17 +115,6 @@
       <pubDate>Sat, 16 May 2026 00:00:25 +0200</pubDate>
       <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
       <ext:starts_at>Sat, 16 May 2026 00:00:25 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[16.05.2026 – 17.05.2026]</description>
-      <content:encoded><![CDATA[[16.05.2026 – 17.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45</guid>
-      <pubDate>Sat, 16 May 2026 00:00:11 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 00:00:12 +0200</ext:starts_at>
       <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[16.05.2026 – 17.05.2026]</description>
       <content:encoded><![CDATA[[16.05.2026 – 17.05.2026]]]></content:encoded>
