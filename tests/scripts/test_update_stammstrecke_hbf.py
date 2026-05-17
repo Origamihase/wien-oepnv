@@ -68,6 +68,13 @@ def _isolated_quota_counter(
         ("REX3", True),
         ("R 81", True),
         ("R81", True),
+        # Cityjet Express (``CJX``) joined the accepted set on
+        # 2026-05-17 after ÖBB rebranded selected REX rolling-stock.
+        # The corridor coverage is unchanged; the line label is the
+        # only thing that flips.
+        ("CJX 9", True),
+        ("CJX9", True),
+        ("cjx 5", True),
         ("RJ 65", False),  # Railjet, not Stammstrecke
         ("IC 533", False), # InterCity
         ("EC 24", False),  # EuroCity
@@ -79,7 +86,7 @@ def _isolated_quota_counter(
     ],
 )
 def test_is_sbahn_line(name: str, expected: bool) -> None:
-    """Line-pattern filter accepts S/R/REX and rejects everything else."""
+    """Line-pattern filter accepts S/R/REX/CJX and rejects everything else."""
 
     assert script._is_sbahn_line(name) is expected
 

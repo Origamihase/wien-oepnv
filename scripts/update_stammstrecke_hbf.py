@@ -429,8 +429,8 @@ def _query_departure_board(
         "duration": str(duration_min),
         # Filter on product classes Train (1) + S-Bahn (2). The
         # post-filter in :func:`_is_sbahn_line` narrows further to
-        # S/R/REX line patterns, but the upstream filter saves us a
-        # ton of long-distance (RJ, IC, EC, NJ) entries in the
+        # S/R/REX/CJX line patterns, but the upstream filter saves us
+        # a ton of long-distance (RJ, IC, EC, NJ) entries in the
         # response payload.
         "products": "3",
         # Enable server-side realtime data so ``rtTime`` is populated
@@ -521,7 +521,7 @@ def _query_departure_board(
 
 
 def _is_sbahn_line(name: str) -> bool:
-    """Return ``True`` if *name* matches the S/R/REX line-code pattern.
+    """Return ``True`` if *name* matches the S/R/REX/CJX line-code pattern.
 
     Mirrors the legacy ``_is_sbahn_leg`` line-name check but operates
     on a bare string (the departure's ``name`` field) rather than a
