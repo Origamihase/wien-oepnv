@@ -9,3 +9,13 @@ responses>=0.26.0,<1
 pytest-timeout
 pytest-cov>=5.0,<7
 pre-commit>=3.7,<5
+# Static-site asset pipeline (docs/site.html + docs/assets/*). The
+# minifiers are pure-Python and required by both the pre-commit drift
+# check and the manual ``scripts/optimize_site_assets.py`` run. Pillow
+# handles the resize step for the train sprite and footer backdrop;
+# the lossy image binaries (pngquant, optipng, jpegoptim) are only
+# needed when refreshing the committed PNG/JPEG assets and the script
+# degrades gracefully if any of them is missing.
+rcssmin>=1.2,<2
+rjsmin>=1.2,<2
+Pillow>=10.0,<13

@@ -5,6 +5,70 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Performance: Static-site asset payload reduced ~86 % (2026-05-17)**:
+  * Two Lighthouse runs against `docs/site.html` (mobile + desktop,
+    Lighthouse 13.0.2) flagged the same diagnostic chain: `train.png`
+    (992 KiB) and `footer-bg.jpg` (661 KiB) dominated the network
+    payload and were the only material targets of the
+    `image-delivery-insight` audit (score 0.5, est. savings ~989 KiB).
+    The hand-maintained `site.css` (19 KiB) and `site.js` (25 KiB)
+    additionally tripped `unminified-javascript` (score 0.5) and
+    contributed to a 429 ms HTML→CSS render-blocking chain.
+    Accessibility flagged `label-content-name-mismatch` (score 0) on
+    the header brand link whose `aria-label="Wien ÖPNV – Startseite"`
+    did not include the visible "Live-Dashboard" sub-label.
+  * Image assets re-encoded losslessly-at-display-size:
+    - `train.png`: 3168×448 → 1584×224 (identical 7.07:1 aspect ratio;
+      `clamp(1.5rem, 4vw, 2.5rem)` capped display height already
+      undershot the new 224 px native height even at 3× DPR), pngquant
+      `--quality 65` palette quantisation + optipng `-o7 -fix`.
+      **1015927 → 63046 bytes (93.8 % reduction)**; mean per-channel
+      RGB diff at display size 0.8–1.1 of 255 (imperceptible).
+    - `footer-bg.jpg`: 2732×1536 → 1920×1080 (16:9 preserved), JPEG
+      quality 72 + progressive + `jpegoptim --strip-all`. **677250 →
+      194825 bytes (71.2 % reduction)**; per-channel diff is further
+      attenuated by the 78–94 % opacity dark gradient overlay drawn
+      on top, so the visible difference is well under 0.2 %.
+  * CSS/JS pipeline switched to checked-in minified bundles:
+    - `docs/assets/site.css` and `site.js` remain the authoritative
+      readable sources; new `site.min.css` (15486 bytes, 18.4 %
+      smaller) and `site.min.js` (18628 bytes, 25.9 % smaller) are
+      generated alongside and referenced by `docs/site.html`.
+    - Pure-Python (`rcssmin` / `rjsmin`) — no Node toolchain
+      introduced, preserving the project's "kein Build-Schritt"
+      stance for the dashboard. New `scripts/optimize_site_assets.py`
+      drives the pipeline; `--check` mode fails closed when the
+      committed bundles fall out of sync with their sources and is
+      wired into pre-commit via a `files:` filter so it only runs
+      when a `site.{css,js,min.css,min.js}` blob is staged.
+  * HTML micro-fixes that do **not** touch the visual layout:
+    - `aria-label="Wien ÖPNV Live-Dashboard – Startseite"` includes
+      both visible sub-labels, satisfying axe's
+      `label-content-name-mismatch` rule.
+    - Train sprite `<img>` `width`/`height` updated to the new
+      1584×224 natural size so the browser's aspect-ratio reservation
+      matches the bitmap (CSS `height:100%` continues to drive the
+      rendered size — CLS unchanged).
+    - `fetchpriority="low"` on the decorative train sprite frees
+      bandwidth for higher-priority resources during early load.
+    - `<link rel="dns-prefetch">` + `<link rel="preconnect" crossorigin>`
+      pre-resolve `raw.githubusercontent.com` so the deferred CSV
+      fetches kicked off by `site.min.js` skip the cold-DNS hit.
+  * Net effect on the documented payload: 1693 KiB → 258 KiB on the
+    two image assets alone (1435 KiB saved, ~86 %); combined with the
+    CSS/JS shrink the total `docs/` page weight reported by Lighthouse
+    drops from 1677 KiB to ≈ 300 KiB. Visual rendering and JS
+    behaviour are byte-for-byte equivalent at display size and
+    fully-loaded state; no CSP relaxation, no new third-party request.
+  * `requirements-dev.txt` gains `rcssmin`, `rjsmin`, and `Pillow`
+    (pure-Python where it matters; Pillow is already installed in any
+    environment that ran prior image-related scripts). The image
+    binaries (`pngquant`, `optipng`, `jpegoptim`) remain optional —
+    contributors who only edit CSS/JS do not need them, and the
+    script degrades gracefully (warns + continues) when any is
+    missing on PATH.
+  * Marker: SENTINEL_LIGHTHOUSE_2026_05_17_ASSET_PAYLOAD.
+
 * **Security: Secret Scanner Drift Round 14 — AWS STS Service Bearer Token
   (`ABIA<16>`) Prefix Detection Gap (2026-05-16)**:
   * Closes the fourth credential prefix in the AWS 4-character

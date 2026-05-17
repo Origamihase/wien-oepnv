@@ -88,3 +88,20 @@ repos:
         pass_filenames: false
         require_serial: true
         types: [python]
+
+  # ── Static-site asset drift check ────────────────────────────────
+  # docs/assets/site.min.css and docs/assets/site.min.js are derived
+  # from their readable sources (site.css / site.js); the dashboard's
+  # docs/site.html references the minified copies. This hook fails if
+  # the committed bundles fall out of sync with the source — the fix
+  # is to re-run ``python scripts/optimize_site_assets.py --skip-images``
+  # and stage the regenerated bundles.
+  - repo: local
+    hooks:
+      - id: site-assets-minified
+        name: docs/assets/site.min.* matches source
+        entry: python scripts/optimize_site_assets.py --check
+        language: system
+        files: ^docs/assets/site\.(css|js|min\.css|min\.js)$
+        pass_filenames: false
+        require_serial: true
