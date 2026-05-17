@@ -923,6 +923,164 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])(dop_v1|doo_v1)_[a-f0-9]{64}(?![A-Za-z0-9])",
             r"\1_***",
         ),
+        # SaaS / Communications / Workspace / Observability / Secret-Manager
+        # token tier value-shape masking. Sibling-drift closure for the
+        # secret-scanner ``_KNOWN_TOKENS`` entries detecting committed
+        # tokens across these high-blast-radius issuer families that the
+        # log-sanitisation codepath was NOT extended for in any prior
+        # round — bare tokens in plain log text (application f-string
+        # logs, upstream error responses echoing the token back, JSON
+        # values with non-sensitive key names, URL paths / query strings
+        # with non-sensitive parameter names) bypassed every existing
+        # key/header/URL-credential mask pattern and leaked verbatim
+        # into operator log streams plus the public
+        # ``docs/feed_health.json`` artefact.
+        #
+        # Families covered (10 issuers / 12 patterns):
+        #
+        # Universal Auth tier — the single highest-blast-radius gap:
+        #   * ``eyJ<10+>.<10+>.<20+>`` — JSON Web Token (JWT). The
+        #     canonical bearer credential for Auth0, Okta, AWS Cognito,
+        #     Google Identity, Azure AD, custom OAuth/OIDC providers and
+        #     every modern SaaS identity provider. Dots are OUTSIDE the
+        #     entropy fallback's ``[A-Za-z0-9+/=_-]`` alphabet so without
+        #     this specific pattern only ONE segment is matched at a
+        #     time and the full-token span (the bearer credential) is
+        #     silently lost.
+        #
+        # Workspace SaaS tier:
+        #   * ``ATATT3xFfGF0<100+>`` — Atlassian API Token (Jira /
+        #     Confluence / Trello REST API). Full Cloud-API scope.
+        #   * ``lin_api_<32+>`` — Linear API Key. Full issue tracker /
+        #     project-management GraphQL scope.
+        #   * ``secret_<43>`` — Notion Integration Token (legacy
+        #     format). Full workspace read/write for shared content.
+        #   * ``ntn_<43+>`` — Notion Modern Integration Token. Same
+        #     blast radius as the legacy ``secret_`` form.
+        #   * ``PMAK-<24 hex>-<34 hex>`` — Postman API Key. Full
+        #     workspace collections / environments / mocks scope.
+        #
+        # Observability tier:
+        #   * ``sntrys_<30+>`` — Sentry Auth Token. Org-level Sentry
+        #     API access (issue/event data, releases, debug files,
+        #     source maps, member list, webhook configuration).
+        #
+        # Secret-Manager tier — **HIGHEST blast-radius amplifier**:
+        #   * ``dp.<pt|st|sa|ct|scim|audit>.<43>`` — Doppler Tokens.
+        #     Six role variants. One leaked Doppler token grants read
+        #     access to every secret stored in the accessible
+        #     projects/configs (database credentials, third-party API
+        #     keys, OAuth client secrets, signing keys are all
+        #     routinely stored in Doppler environments). One leak
+        #     compromises every downstream credential.
+        #
+        # Communications tier:
+        #   * ``<3-14 digits>:<35>`` — Telegram Bot Token. Full bot
+        #     impersonation in every chat the bot is added to.
+        #   * ``AC<32 hex>`` — Twilio Account SID. Principal credential
+        #     for the project; pairs with the Auth Token for full
+        #     telephony API access. 2FA-bypass primitive via SMS.
+        #   * ``SK<32 hex>`` — Twilio API Key SID. Fine-grained scoped
+        #     credential; pairs with a separate secret.
+        #   * ``key-<32 hex>`` — Mailgun Private API Key. Mail-send
+        #     access from the project's authenticated domain
+        #     (phishing amplification leveraging SPF / DKIM).
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``myATATT3xFfGF0``, ``foosntrys_`` are
+        #     preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Strict body lengths / alphabets per vendor canonical
+        #     format reject accidental fragments while accepting every
+        #     real-shape token.
+        # Each mask preserves the issuer-specific prefix (``eyJ***``,
+        # ``ATATT3xFfGF0***``, ``sntrys_***``, ``dp.pt.***``,
+        # ``PMAK-***``, ``key-***`` etc.) for incident-response triage
+        # because each tier has a distinct revocation flow.
+        #
+        # Idempotence: masked forms (``eyJ***``, ``ATATT3xFfGF0***``,
+        # ``sntrys_***``, ``dp.pt.***``, ``PMAK-***``, etc.) do NOT
+        # match any of these regexes because ``*`` is not in any body
+        # alphabet AND the masked body length (3 chars) is below every
+        # per-family floor (20/30/32/35/43/100).
+        #
+        # Marker: SENTINEL_SAAS_COMMS_SECRET_MANAGER_TOKEN_LOG_SANITIZATION_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])(eyJ)[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{20,}(?![A-Za-z0-9])",
+            r"\1***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(ATATT3xFfGF0)[A-Za-z0-9_=\-]{100,}(?![A-Za-z0-9])",
+            r"\1***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(sntrys)_[A-Za-z0-9_=\-]{30,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(lin_api)_[A-Za-z0-9]{32,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        # Notion: ``secret_<43 alnum>`` legacy + ``ntn_<43+ extended>``
+        # modern. Two patterns because the bodies have different
+        # alphabets (legacy strict alnum, modern includes ``_``/``-``)
+        # and different floor lengths, so a single combined regex would
+        # either under-match the modern form or over-match the legacy
+        # one.
+        (
+            r"(?<![A-Za-z0-9])(secret)_[A-Za-z0-9]{43}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(ntn)_[A-Za-z0-9_\-]{43,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(PMAK)-[a-fA-F0-9]{24}-[a-fA-F0-9]{34}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        # Doppler: multi-segment ``dp.<role>.<43 alnum>``. The two
+        # literal ``.`` separators are outside the entropy fallback's
+        # alphabet — the canonical "entropy-fallback-bypass" shape.
+        # Role alternation matches the six documented Doppler token
+        # roles (personal / service / service-account / CLI / SCIM
+        # / audit) — any other role suffix is rejected.
+        (
+            r"(?<![A-Za-z0-9])(dp\.(?:pt|st|sa|ct|scim|audit))\.[A-Za-z0-9]{43}(?![A-Za-z0-9])",
+            r"\1.***",
+        ),
+        # Telegram Bot Token: ``<3-14 digits>:<35 chars from
+        # [A-Za-z0-9_-]>``. The bot-ID (digits) is not secret on its
+        # own (Telegram exposes bot user IDs publicly) but masking
+        # only the body after ``:`` preserves the bot-identification
+        # span for incident-response triage while still suppressing
+        # the credential. Marker pattern: capture the digit prefix
+        # and replace only the colon-separated body.
+        (
+            r"(?<![A-Za-z0-9])([0-9]{3,14}):[a-zA-Z0-9_\-]{35}(?![A-Za-z0-9])",
+            r"\1:***",
+        ),
+        # Twilio Account SID + API Key SID: uppercase ``AC``/``SK``
+        # + 32 lowercase hex. Case-sensitive: ``sk-<48>`` (OpenAI
+        # legacy) and ``sk_live_<24>`` (Stripe) are lowercase + have
+        # a dash/underscore inside the prefix, so they are mutually
+        # exclusive with the Twilio shape. The 32 lowercase-hex body
+        # is the canonical Twilio SID format.
+        (
+            r"(?<![A-Za-z0-9])(AC|SK)[a-f0-9]{32}(?![A-Za-z0-9])",
+            r"\1***",
+        ),
+        # Mailgun Private API Key: ``key-<32 lowercase hex>``. The
+        # ``key-`` prefix is intentionally short — strict 32-char
+        # lowercase-hex body is the disambiguator. The ``(?<![A-Za-z0-9])``
+        # lookbehind prevents ``api-key-<hex>``, ``foo-key-<hex>`` and
+        # similar legitimate placeholder shapes from being falsely
+        # masked.
+        (
+            r"(?<![A-Za-z0-9])(key)-[a-f0-9]{32}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
