@@ -42,9 +42,9 @@ Mehr Statistiken findest du hier:
 | Kennzahl | Wert |
 | -------- | ---- |
 | Beobachtungen (gesamt) | 4 |
-| Durchschnittliche Verspätung | 0.0 min |
+| Durchschnittliche Verspätung | 0.5 min |
 | Kritische Verspätungen (> 9 min) | 0 |
-| Letzte Aktualisierung | 2026-05-17 08:30 CEST |
+| Letzte Aktualisierung | 2026-05-17 09:00 CEST |
 <!-- STATS:STAMMSTRECKE_LIVE:END -->
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
@@ -52,10 +52,10 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 121 |
+| Beobachtungen (gesamt) | 123 |
 | Durchschnittliche Verspätung | 0.8 min |
 | Kritische Verspätungen (> 9 min) | 1 |
-| Letzte Aktualisierung | 2026-05-17 08:30 CEST |
+| Letzte Aktualisierung | 2026-05-17 09:00 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
 
 ### Ausfälle auf der S-Bahn Stammstrecke
@@ -66,7 +66,7 @@ Mehr Statistiken findest du hier:
 | Kennzahl | Wert |
 | -------- | ---- |
 | Ausfälle (gesamt) | 1 |
-| Letzte Aktualisierung | 2026-05-17 08:30 CEST |
+| Letzte Aktualisierung | 2026-05-17 09:00 CEST |
 <!-- STATS:AUSFAELLE_LIVE:END -->
 
 <!-- STATS:AUSFAELLE:BEGIN -->
@@ -74,9 +74,9 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Ausfälle (gesamt) | 5 |
+| Ausfälle (gesamt) | 6 |
 | Häufigste Linien | REX1 (2), S2 (2), REX3 (1) |
-| Letzte Aktualisierung | 2026-05-17 08:30 CEST |
+| Letzte Aktualisierung | 2026-05-17 09:00 CEST |
 <!-- STATS:AUSFAELLE:END -->
 
 > **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).
