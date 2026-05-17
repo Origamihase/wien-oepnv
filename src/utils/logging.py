@@ -435,6 +435,79 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])(hvs|hvb|hvr)\.[A-Za-z0-9_\-]{30,}(?![A-Za-z0-9])",
             r"\1.***",
         ),
+        # GitHub token family value-shape masking. Sibling-drift closure
+        # for the secret-scanner ``_KNOWN_TOKENS`` entries that detect
+        # committed GitHub tokens (``ghp_`` Personal Access Token,
+        # ``gho_`` OAuth Access Token, ``ghu_`` App User-to-Server,
+        # ``ghs_`` App Server-to-Server / ``GITHUB_TOKEN``, ``ghr_``
+        # Refresh Token, ``github_pat_`` Fine-Grained PAT). The scanner
+        # closed the *detection* codepath for committed source files; the
+        # log-sanitisation codepath was NOT extended in the same rounds —
+        # bare GitHub token shapes in plain log text (application f-string
+        # logs, upstream error responses echoing the token back, JSON
+        # values without sensitive key names, URL query strings / path
+        # segments with NON-sensitive parameter names like ``ref`` /
+        # ``commit_sha``) bypass every existing key/header/URL-credential
+        # mask pattern and leak verbatim to operator log streams and the
+        # public ``docs/feed_health.json`` artefact.
+        #
+        # Threat model (per-tier blast radius):
+        #   * ``ghp_<36 alphanumeric>`` — Personal Access Token (Classic).
+        #     Full scope per token configuration. Leaking grants ability
+        #     to read every repo the user can read, push to every repo
+        #     the user can write, exfiltrate secrets via repo files /
+        #     Actions logs, create/delete repos, and (with admin:org)
+        #     administer the user's organisations.
+        #   * ``gho_<36 alphanumeric>`` — OAuth-App Access Token (issued
+        #     via OAuth web flow). Per-OAuth-app scope.
+        #   * ``ghu_<36 alphanumeric>`` — GitHub App User-to-Server Token.
+        #     Per-installation scope intersected with user's repo access.
+        #   * ``ghs_<36 alphanumeric>`` — **HIGHEST routine-leak severity.**
+        #     Format of ``GITHUB_TOKEN`` auto-injected by GitHub Actions
+        #     into every workflow run. Leaking grants full ``contents:
+        #     write`` / ``packages: write`` / ``actions: write`` scope
+        #     for the workflow's TTL (typically 1-6 hours, actively
+        #     renewable).
+        #   * ``ghr_<36 alphanumeric>`` — Refresh Token (issued alongside
+        #     ``gho_``/``ghu_`` during token rotation). Mints fresh access
+        #     tokens until refresh token is revoked.
+        #   * ``github_pat_<22+ alphanumeric_>`` — Fine-Grained PAT.
+        #     Per-repo or per-org scoped with resource-level permissions
+        #     (Contents, Metadata, Actions, Pull Requests, Issues,
+        #     Workflows, Webhooks). Modern replacement for ``ghp_``
+        #     classic tokens. Body permits internal underscores per
+        #     GitHub's canonical ``github_pat_<22>_<59>`` format.
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``myghp_xxx``, ``xghs_yyy`` are preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Strict 36-char alphanumeric body for ``ghp_``/``gho_``/
+        #     ``ghu_``/``ghs_``/``ghr_`` matches GitHub's canonical
+        #     token shape and rejects accidental fragments.
+        #   * 22+ char body with underscores allowed for ``github_pat_``
+        #     matches the fine-grained format.
+        # The mask preserves the issuer-specific prefix (``ghp_***`` /
+        # ``ghs_***`` etc.) for incident-response triage — each tier has
+        # a distinct revocation flow (Settings → Developer settings →
+        # Personal access tokens for ghp_/github_pat_; Settings →
+        # Applications → Authorized OAuth Apps for gho_/ghr_; per-App
+        # installation rotation for ghu_/ghs_).
+        #
+        # Idempotent: masked forms (``ghp_***`` / ``github_pat_***``)
+        # do NOT match the regex because ``*`` is not in the body
+        # alphabet AND the masked body length (3 chars) is below the
+        # 36/22-char floors.
+        #
+        # Marker: SENTINEL_GITHUB_TOKEN_LOG_SANITIZATION_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])(ghp|gho|ghu|ghs|ghr)_[0-9a-zA-Z]{36}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(github_pat)_[0-9a-zA-Z_]{22,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
