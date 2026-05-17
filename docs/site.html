@@ -121,20 +121,21 @@
     <section id="feed" class="section" aria-labelledby="feed-title">
       <header class="section__header">
         <h2 id="feed-title">Aktuelle Meldungen</h2>
+
+        <a class="live-tile" href="#stammstrecke" aria-label="Durchschnittliche Verspätung der S-Bahn-Stammstrecke in den letzten 60 Minuten – Quelle VOR / VAO – zum Detailbereich springen">
+          <span class="live-tile__label">
+            Ø Verspätung Stammstrecke
+            <span class="live-tile__window">letzte 60&nbsp;min · Quelle VOR&nbsp;/&nbsp;VAO</span>
+          </span>
+          <span class="live-tile__value" id="stammstrecke-live-avg" aria-live="polite">–</span>
+        </a>
+
         <p class="section__sub">
           Live aus <a href="feed.xml" type="application/rss+xml"><code>feed.xml</code></a>
           · konsolidiert aus offiziellen Quellen
           · <span id="feed-count" class="badge" aria-live="polite">–</span>
         </p>
       </header>
-
-      <a class="live-tile" href="#stammstrecke" aria-label="Durchschnittliche Verspätung der S-Bahn-Stammstrecke in den letzten 60 Minuten – zum Detailbereich springen">
-        <span class="live-tile__label">
-          Ø Verspätung Stammstrecke
-          <span class="live-tile__window">letzte 60&nbsp;min</span>
-        </span>
-        <span class="live-tile__value" id="stammstrecke-live-avg" aria-live="polite">–</span>
-      </a>
 
       <div class="filters" role="group" aria-label="Meldungen nach Quelle filtern" id="feed-filters">
         <button class="chip is-active" type="button" data-filter="all">Alle</button>
