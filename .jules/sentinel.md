@@ -1,3 +1,67 @@
+## 2026-05-17 - GitHub Token Family Log-Sanitisation Sibling-Drift Closure (`ghp_` / `gho_` / `ghu_` / `ghs_` / `ghr_` / `github_pat_`): The First Of The ~70 Named-But-Deferred Vendor Family Backlog Documented In The 2026-05-17 Vault Log-Sanitisation Round — Every Bare GitHub Personal-Access / OAuth-App / GitHub-App / Refresh / Fine-Grained Token In Plain Log Text / JSON Value With Non-Sensitive Key / URL Query String With NON-Sensitive Param / Path Segment Bypassed Every Existing Key-Value / Header / URL-Credential Mask In `sanitize_log_message` And Leaked Verbatim Into Operator Log Streams And The Public `docs/feed_health.json` Artefact
+
+**Vulnerability:** The 2026-05-17 HashiCorp Vault Token Family Log-Sanitisation Drift Closure round (this journal entry's immediate predecessor) closed the operator-log leak sink for the 3-prefix Vault token family (`hvs.`/`hvb.`/`hvr.`) and explicitly named the GitHub token family as the FIRST of ~70 scanner detectors with parallel log-sanitisation drift. This round closes the GitHub-family arm of that backlog. Pre-fix EVERY bare GitHub token shape in `sanitize_log_message` and the downstream `_sanitize_exception_msg` chain bypassed every existing key/header/URL-credential mask pattern and leaked verbatim across four leak surfaces:
+
+1. **Plain application f-string logs** — `log.error(f"Auth failed using {token}: {exc}")`. The existing `_keys` alternation includes `[a-z0-9_.\-]*ghp(?:[-_][a-z0-9_.\-]*)?` for KEY names like `ghp=...`, but bare GitHub tokens in plain log text bypass every key-based mask (no `<key>=<token>` / `<key>: <token>` / `{"<key>": "<token>"}` shape).
+
+2. **Upstream error responses** — `log.warning(f"Provider error: {response.text}")` where a misconfigured / compromised upstream echoes the supplied token back in its error payload (GitHub Issue body, webhook payload, GraphQL error message).
+
+3. **JSON values without sensitive key names** — `{"data": "ghp_AAA..."}` / `{"payload": "ghs_BBB..."}` / `{"response_body": "github_pat_CCC..."}` / `{"message": "ghr_DDD..."}`. The JSON-key sensitive-name regex misses keys like `data` / `payload` / `response_body` / `message` / `ref` so the token value leaks unredacted into the JSON value span.
+
+4. **URL paths / query strings with non-sensitive parameter names** — `GET /repos/foo/bar?ref=ghp_<36>` / `GET /api/internal/audit/ghs_<36>/details`. The Basic-Auth-in-URL regex requires the credential to appear before `@`; path-embedded tokens and query-string tokens with NON-sensitive parameter names (`ref`, `commit_sha`, `q`, `since`) slip past entirely.
+
+End-to-end pre-fix PoC: every GitHub token prefix in plain log text, JSON value without sensitive key, URL path, and exception text routed through `_sanitize_exception_msg` (which falls back to `sanitize_log_message` for the non-HTTP-URL remainder) leaked verbatim through the operator-log sink.
+
+**Threat model (per-tier blast radius — mirror the 2026-05-17 Vault round's structural analysis):**
+
+* **`ghp_<36 alphanumeric>` (Personal Access Token Classic)** — Full scope per token configuration (`repo`, `workflow`, `admin:org`, `delete_repo`, `read:packages`, `write:packages`, etc.). Leaking grants ability to read every repo the user can read, push to every repo the user can write, exfiltrate secrets via repo files / GitHub Actions logs / committed `.env` files, create/delete repos, and — with `admin:org` scope — administer the user's organisations (add new admins, modify team membership, audit-log tampering, persistence-via-deploy-keys / persistence-via-OAuth-app-approvals).
+
+* **`gho_<36 alphanumeric>` (OAuth-App Access Token)** — Issued via the OAuth web flow. Per-OAuth-app scope tied to the user's consent grant; persistent until the user revokes the app at https://github.com/settings/applications. Common in third-party tooling (Vercel, Netlify, Heroku, CircleCI).
+
+* **`ghu_<36 alphanumeric>` (GitHub App User-to-Server Token)** — GitHub App acting on behalf of an authenticated user. Per-installation scope intersected with the user's repo access. Common in OAuth-flow GitHub Apps (Dependabot, Renovate, CodeQL, Socket.dev).
+
+* **`ghs_<36 alphanumeric>` (GitHub App Server-to-Server Token)** — **HIGHEST routine-leak severity in the GitHub family.** This is the format of `GITHUB_TOKEN` auto-injected by GitHub Actions into every workflow run — leaking grants full `contents: write` / `packages: write` / `actions: write` / `id-token: write` scope on the repo for the duration of the workflow run (typically 1-6 hours TTL but actively renewable for the workflow's lifetime via the `gh auth token` refresh flow). Most-common real-world leak surface: workflow `echo` of `${{ secrets.GITHUB_TOKEN }}`, `setup-node` / `setup-python` debug logs, `actions/checkout` fork-PR token-leak attack chains (CVE-2023-3651 family), third-party action `inputs:` echoing secret context.
+
+* **`ghr_<36 alphanumeric>` (Refresh Token)** — Issued alongside `gho_` / `ghu_` during token rotation. Mint fresh access tokens until the refresh token itself is revoked at https://github.com/settings/applications. Long-lived blast radius (typically multi-month TTL; refresh tokens persist across access-token rotations).
+
+* **`github_pat_<22+ alphanumeric_>` (Fine-Grained Personal Access Token)** — Per-repo or per-org scoped with resource-level permissions (Contents, Metadata, Actions, Pull Requests, Issues, Workflows, Webhooks, Administration, Secrets, Environments, etc.). Modern replacement for `ghp_` classic tokens with finer-grained ACL. Body permits internal underscores per GitHub's canonical `github_pat_<22>_<59>` format. A leak grants the per-resource scope configured at token creation — typically read/write on a single repo or org, which is still high-impact (push branches, modify Actions workflows, set repo secrets, trigger deploy workflows).
+
+Specific log-leak sinks each affected by the sibling drift:
+- `_sanitize_url_for_error` (`src/utils/http.py`) — called from `validate_http_url` error paths, `SafeDNSHTTPConnection._new_conn`, cross-origin redirect tracking, request retry logging. A URL with `/repos/foo/bar?ref=ghp_<36>` in the query string leaks verbatim.
+- `_sanitize_exception_msg` (`src/utils/http.py`) — extracts HTTP URLs via a pre-regex and falls back to `sanitize_log_message` for the remainder. Exception messages with GitHub tokens reached operator-facing log lines AND the public `docs/feed_health.json` artefact.
+- `sanitize_log_message` (`src/utils/logging.py`) — the fallback for `clean_message` / `_sanitize_log_detail` / `SafeFormatter.formatException` / `SafeJSONFormatter.formatException`. Every log call routing through these helpers preserved the GitHub token pre-fix.
+- `sanitize_log_arg` (`src/utils/logging.py`) — the canonical wrapper for logging args. GitHub tokens in string args and in `__str__` of custom objects leaked verbatim.
+
+**Fix:** Append two sibling patterns to `sanitize_log_message`'s pattern list mirroring the scanner regex structural anchors. The patterns are appended AFTER the existing JSON-style key masks AND after the Vault token mask so that established key-based masking fires first (`github_token=ghs_<36>` → `github_token=***` via the existing query-param mask; the value-shape mask is a defence-in-depth backstop for bare tokens that escape all key-based patterns):
+
+```python
+(
+    r"(?<![A-Za-z0-9])(ghp|gho|ghu|ghs|ghr)_[0-9a-zA-Z]{36}(?![A-Za-z0-9])",
+    r"\1_***",
+),
+(
+    r"(?<![A-Za-z0-9])(github_pat)_[0-9a-zA-Z_]{22,}(?![A-Za-z0-9])",
+    r"\1_***",
+),
+```
+
+Structural anchors mirror the scanner regexes exactly:
+- `(?<![A-Za-z0-9])` lookbehind prevents mid-word false positives (`myghp_xxx`, `xghs_yyy`, `1ghr_zzz` are preserved).
+- `(?![A-Za-z0-9])` lookahead bounds the body span.
+- Strict 36-char alphanumeric body for `ghp_`/`gho_`/`ghu_`/`ghs_`/`ghr_` matches GitHub's canonical token shape (rejects accidental fragments like `ghp_short`, `ghs_xxx`).
+- 22+ char body with underscores allowed for `github_pat_` matches the fine-grained format (real tokens are 84+ chars body with one internal underscore separating the 22-char prefix-segment from the 59-char body-segment).
+- The mask preserves the issuer-specific prefix (`ghp_***` / `ghs_***` / `github_pat_***` etc.) for incident-response triage — each tier has a distinct revocation flow:
+  * `ghp_`/`github_pat_` — Settings → Developer settings → Personal access tokens → Revoke / Regenerate
+  * `gho_`/`ghr_` — Settings → Applications → Authorized OAuth Apps → Revoke
+  * `ghu_`/`ghs_` — per-App installation rotation via App management API or installation revocation
+- Idempotent: the masked forms (`ghp_***` / `github_pat_***`) do NOT match the regexes because `*` is not in the body alphabets `[0-9a-zA-Z]` / `[0-9a-zA-Z_]` AND the masked body length (3 chars) is below the 36-char / 22-char floors.
+
+PoC at `tests/test_sentinel_github_token_log_sanitization_drift.py` covers all six GitHub prefixes across four leak surfaces (plain log line × {ghp/gho/ghu/ghs/ghr/github_pat}, JSON value with 4 non-sensitive key names × {ghp/gho/ghu/ghs/ghr/github_pat}, URL query/path × {ghp/gho/ghu/ghs/ghr/github_pat}, end-to-end via `_sanitize_exception_msg` × {ghp/gho/ghu/ghs/ghr/github_pat}), plus the `sanitize_log_arg` wrapper, idempotence, 8 benign negative cases (short fragments, mid-identifier collisions), and a sibling-alignment invariant test (`test_scanner_and_log_sanitiser_share_github_token_family`) that enumerates the scanner's GitHub prefix set and confirms the log mask covers every prefix — any future GitHub-family extension to the scanner without a companion log-mask update fails this test on the first CI run after the new scanner entry is committed.
+
+**Learning:** **The general sibling-drift invariant from the 2026-05-17 Vault log-sanitisation round extends directly to every vendor family in the scanner's `_KNOWN_TOKENS`: when extending the scanner to detect a new value-shape family, AUDIT every log-sanitisation codepath in the same PR and add matching value-shape masks.** The GitHub token family is the canonical "high-volume routine emission" case for the drift — `GITHUB_TOKEN` (ghs_) is auto-injected into EVERY GitHub Actions workflow run, so the log-emission surface is enormous (every echoed env var, every action input, every error message from a third-party action). The Vault round closed the "narrow-but-critical" arm (Vault tokens leak rarely but with catastrophic blast radius); this round closes the "broad-and-frequent" arm (GitHub tokens leak constantly via Actions debug logs and provider error responses, with high blast radius). Next-round candidates explicitly named-but-deferred: the remaining ~65 vendor families from the 2026-05-17 enumeration — GitLab `glpat-/glptt-/...`, AWS `AKIA/ASIA/ACCA`, Slack `xoxb-/xoxp-/xoxa-/xoxr-/xoxc-/xoxd-/xoxe-`, Stripe `sk_live_/sk_test_/rk_live_/rk_test_/whsec_`, OpenAI `sk-/sk-proj-/sk-svcacct-`, Anthropic `sk-ant-`, the AI-platform family `hf_/gsk_/r8_/pplx-/xai-/sk-or-v1-`, cloud-CI `dop_v1_/doo_v1_/CircleCI/Buildkite/Netlify/Render/Fly.io`, Twilio `AC*/SK*`, Notion `secret_*`, Discord bot tokens, Atlassian, Sentry, Linear, Brevo, Postman, Doppler, New Relic, and ~30 more. Each is the same drift class as Vault and GitHub but per-vendor scoped; each future round closes one vendor's family per the journal pattern's canonical one-family-per-round scope. The sibling-alignment invariant test from this round (`test_scanner_and_log_sanitiser_share_github_token_family`) is the template for future rounds — each future vendor family gets its own enumeration assertion.
+
+**Marker:** SENTINEL_GITHUB_TOKEN_LOG_SANITIZATION_DRIFT.
+
 ## 2026-05-17 - HashiCorp Vault Token Family Log-Sanitisation Sibling-Drift Closure (`hvs.` / `hvb.` / `hvr.`): The Companion Log-Sanitisation Round To The 2026-05-17 Scanner Round — Every Bare Vault Token Shape In Plain Log Text / JSON Value With Non-Sensitive Key / URL Path Bypassed Every Existing Key-Value / Header / URL-Credential Mask In `sanitize_log_message` And Leaked Verbatim Into Operator Log Streams And The Public `docs/feed_health.json` Artefact
 
 **Vulnerability:** The 2026-05-17 HashiCorp Vault Token Family Drift Closure round (this journal entry's immediate predecessor) extended `_KNOWN_TOKENS` in `src/utils/secret_scanner.py` to detect every prefix in the modern Vault token taxonomy (`hvs.` Service / `hvb.` Batch / `hvr.` Recovery). That round closed the *detection* codepath for committed source files — but the companion log-sanitisation codepath (`src/utils/logging.py:sanitize_log_message`) was NOT extended in the same round, preserving the canonical sibling-drift pattern documented across the 2026-05-16 Database / 2026-05-16 Directory/Shell/Share rounds: the source-of-truth (git history) leak is caught by the scanner but the operator-log / public-feed-health-json sink leaks the token verbatim. Three distinct leak vectors confirmed pre-fix:
