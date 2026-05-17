@@ -508,6 +508,137 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])(github_pat)_[0-9a-zA-Z_]{22,}(?![A-Za-z0-9])",
             r"\1_***",
         ),
+        # High-Severity Cloud / Payment / LLM / Git-Host Token Family
+        # value-shape masking. Sibling-drift closure for the secret-
+        # scanner ``_KNOWN_TOKENS`` entries enumerated in
+        # ``src/utils/secret_scanner.py`` (AWS / Google API / Stripe /
+        # Anthropic / OpenAI / GitLab PAT / NPM / SendGrid / Hugging
+        # Face). The scanner closed the *detection* codepath for
+        # committed source files in rounds 1-N; the log-sanitisation
+        # codepath was NOT extended for these families — bare token
+        # shapes in plain log text (application f-string logs, upstream
+        # error responses echoing the token back, JSON values with
+        # NON-sensitive key names, URL paths embedding the token, and
+        # exception text routed through ``_sanitize_exception_msg``)
+        # bypassed every existing key/header/URL-credential mask and
+        # leaked verbatim into operator log streams plus the public
+        # ``docs/feed_health.json`` artefact.
+        #
+        # Threat model per family:
+        #   * AWS ``AKIA``/``ASIA``/``ACCA``/``ABIA<16 uppercase>`` —
+        #     Cloud account access (full data plane + control plane
+        #     for the issuing principal): read every S3 bucket /
+        #     RDS DB / DynamoDB table the principal can see, mint
+        #     STS credentials, modify IAM (with ``iam:*``), exfiltrate
+        #     KMS-encrypted data via ``kms:Decrypt``. Per-prefix
+        #     attribution (Personnel vs. STS vs. Federated vs. Bearer)
+        #     accelerates IR triage to the right rotation flow.
+        #   * Google API Key ``AIza<35 base64url-ish>`` — Per-key
+        #     scope for the issuing project: Maps / Places / Geocoding
+        #     / Translate / YouTube quota burn (USD 100s/day at scale),
+        #     plus the project's quota-tier billing fraud.
+        #   * Stripe ``sk_live_<24>`` / ``sk_test_<24>`` /
+        #     ``rk_live_<24>`` / ``rk_test_<24>`` / ``whsec_<32+>`` —
+        #     Payment-processing fraud (full account API access for
+        #     the live secret; webhook forgery for whsec_). Live
+        #     secret is the highest-severity; restricted variants
+        #     carry scoped subsets.
+        #   * Anthropic ``sk-ant-(api|admin)NN-<32+>`` — LLM billing
+        #     fraud + prompt exfiltration. Admin-tier additionally
+        #     grants console access to the org's billing /
+        #     organisation members.
+        #   * OpenAI ``sk-<48 alphanumeric>`` (legacy) /
+        #     ``sk-proj-<40+>`` / ``sk-svcacct-<40+>`` — Same blast
+        #     radius across tiers: completion API at the issuer's
+        #     expense, custom-model exfiltration, fine-tune-job
+        #     hijack.
+        #   * GitLab PAT ``glpat-<20>`` — Mirror of the GitHub PAT
+        #     family scope on the GitLab side: full repo / project
+        #     access per the token's scope configuration.
+        #   * NPM ``npm_<36 alphanumeric>`` — Supply-chain risk:
+        #     publish malicious packages under the issuer's
+        #     organisation, modify package-tarball contents, deprecate
+        #     legitimate versions.
+        #   * SendGrid ``SG.<22>.<43>`` — Transactional email sent
+        #     FROM the project's authenticated sending domain
+        #     (phishing amplification leveraging SPF / DKIM / DMARC
+        #     authentication), contact-list exfiltration, webhook-
+        #     redirect to attacker-controlled URLs.
+        #   * Hugging Face ``hf_<32+>`` — Model hub access: read
+        #     private models / datasets / Spaces, push backdoored
+        #     model weights, exfiltrate fine-tuning data.
+        #
+        # Structural anchors mirror the scanner regexes:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``myAKIA<16>`` is preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Strict body lengths / alphabets per vendor canonical
+        #     format reject accidental fragments while accepting
+        #     every real-shape token.
+        # The mask preserves issuer-specific prefixes (``AKIA***``,
+        # ``sk_live_***``, ``sk-ant-api03-***`` etc.) for incident-
+        # response triage — each vendor has a distinct revocation
+        # flow.
+        #
+        # Ordering note: more-specific OpenAI prefixes
+        # (``sk-ant-``/``sk-proj-``/``sk-svcacct-``) are listed BEFORE
+        # the generic OpenAI legacy ``sk-<48 alphanumeric>`` so they
+        # win first. The patterns are also mutually exclusive at the
+        # body-alphabet level (legacy ``sk-`` requires 48 chars from
+        # ``[A-Za-z0-9]`` with NO ``-``, while the prefixed siblings
+        # have ``-`` after the issuer keyword), so ordering is a
+        # documentation aid rather than a correctness requirement.
+        #
+        # Idempotence: masked forms (``AKIA***``, ``sk_live_***``,
+        # ``glpat-***`` etc.) do NOT match any of these regexes
+        # because ``*`` is not in any body alphabet AND the masked
+        # body length (3 chars) is below every per-family floor.
+        #
+        # Marker: SENTINEL_MULTI_VENDOR_TOKEN_LOG_SANITIZATION_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])(AKIA|ASIA|ACCA|ABIA)[A-Z0-9]{16}(?![A-Za-z0-9])",
+            r"\1***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(AIza)[0-9A-Za-z\-_]{35}(?![A-Za-z0-9])",
+            r"\1***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(sk_live|sk_test|rk_live|rk_test)_[0-9a-zA-Z]{24}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(whsec)_[A-Za-z0-9]{32,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(sk-ant-(?:api|admin)[0-9]{2})-[A-Za-z0-9_\-]{32,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(sk-(?:proj|svcacct))-[A-Za-z0-9_\-]{40,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(sk)-[A-Za-z0-9]{48}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(glpat)-[0-9a-zA-Z_\-]{20}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(npm)_[0-9a-zA-Z]{36}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(SG)\.[A-Za-z0-9_\-]{22}\.[A-Za-z0-9_\-]{43}(?![A-Za-z0-9])",
+            r"\1.***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(hf)_[A-Za-z0-9]{32,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
