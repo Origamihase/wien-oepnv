@@ -388,6 +388,53 @@ def sanitize_log_message(
         # Mask potentially leaked secrets in JSON error messages
         (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
+        # HashiCorp Vault token family value-shape masking.
+        # Sibling-drift closure for the 2026-05-17 secret-scanner round
+        # that extended ``_KNOWN_TOKENS`` in
+        # ``src/utils/secret_scanner.py`` to detect HashiCorp Vault
+        # Service / Batch / Recovery tokens (``hvs.`` / ``hvb.`` /
+        # ``hvr.`` prefixes with 30+ char base64url bodies). The
+        # scanner closed the *detection* codepath for committed source
+        # files but the log-sanitisation codepath was NOT extended in
+        # the same round — bare Vault token shapes in plain log text
+        # (application f-string logs, upstream error responses echoing
+        # the token back, JSON values without sensitive key names, URL
+        # paths embedding the token) bypass every existing
+        # key/header/URL-credential mask pattern and leak verbatim to
+        # operator log streams and the public
+        # ``docs/feed_health.json`` artefact.
+        #
+        # Threat model (mirror the secret-scanner Round 6 / 2026-05-17
+        # rounds' blast-radius analysis):
+        #   * ``hvs.`` — Vault Service Token (persistent, full policy
+        #     scope; HCP Vault Secrets managed + self-hosted Vault 1.10+).
+        #   * ``hvb.`` — Vault Batch Token (ephemeral, full policy
+        #     scope for TTL; common in CI/CD and serverless workloads).
+        #   * ``hvr.`` — Vault Recovery Token (root-equivalent on
+        #     sealed/HSM-backed Vault; mint new root token via
+        #     ``POST /v1/sys/generate-root`` once unsealed → persistent
+        #     backdoor with full administrative scope).
+        #
+        # Structural anchors mirror the scanner regex:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``obj.hvs.foo`` is preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * 30+ char body floor rejects accidental fragments
+        #     (attribute-access chains, filesystem paths, mid-
+        #     identifier collisions) while accepting the canonical
+        #     90-110 char Vault token shape.
+        # The mask preserves the issuer-specific prefix (``hvs.***`` /
+        # ``hvb.***`` / ``hvr.***``) for incident-response triage:
+        # each tier has a distinct revocation flow (``vault token
+        # revoke`` for service/batch via ``POST /v1/auth/token/revoke``
+        # vs. ``POST /v1/sys/generate-recovery-token/attempt`` + Shamir
+        # recovery-key re-keying for recovery).
+        #
+        # Marker: SENTINEL_VAULT_TOKEN_LOG_SANITIZATION_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])(hvs|hvb|hvr)\.[A-Za-z0-9_\-]{30,}(?![A-Za-z0-9])",
+            r"\1.***",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
