@@ -1,10 +1,10 @@
 # Stations Validation Report
 
-*Total stations analysed*: 1941
+*Total stations analysed*: 2237
 *GTFS stops loaded*: 168
 *Geographic duplicates*: 0
 *Alias issues*: 0
-*Coordinate anomalies*: 0
+*Coordinate anomalies*: 296
 *GTFS mismatches*: 0
 *Security warnings*: 0
 *Provider issues*: 0
@@ -12,4 +12,300 @@
 *Identity field conflicts*: 0
 *Naming issues*: 0
 
-No issues detected.
+## Coordinate anomalies
+- source:manual (Allentsteig): missing latitude, missing longitude
+- source:manual (Altenhof): missing latitude, missing longitude
+- source:manual (Amstetten): missing latitude, missing longitude
+- source:manual (Aschbach): missing latitude, missing longitude
+- source:manual (Aspang): missing latitude, missing longitude
+- source:manual (Atzenbrugg): missing latitude, missing longitude
+- source:manual (Ausschlag-Zöbern): missing latitude, missing longitude
+- source:manual (Bad Erlach): missing latitude, missing longitude
+- source:manual (Bad Fischau): missing latitude, missing longitude
+- source:manual (Bad Fischau-Brunn): missing latitude, missing longitude
+- source:manual (Bad Neusiedl am See): missing latitude, missing longitude
+- source:manual (Bad Sauerbrunn): missing latitude, missing longitude
+- source:manual (Baden Josefplatz): missing latitude, missing longitude
+- source:manual (Baumgarten-Schattendorf): missing latitude, missing longitude
+- source:manual (Berndorf Fabrik): missing latitude, missing longitude
+- source:manual (Berndorf Stadt): missing latitude, missing longitude
+- source:manual (Blindenmarkt): missing latitude, missing longitude
+- source:manual (Bratislava Petržalka): missing latitude, missing longitude
+- source:manual (Bratislava hlavná stanica): missing latitude, missing longitude
+- source:manual (Breitenbrunn): missing latitude, missing longitude
+- source:manual (Breiteneich bei Horn): missing latitude, missing longitude
+- source:manual (Breitensee NÖ): missing latitude, missing longitude
+- source:manual (Breitenstein): missing latitude, missing longitude
+- source:manual (Breitenwaida): missing latitude, missing longitude
+- source:manual (Brno): missing latitude, missing longitude
+- source:manual (Brunn a.d. Pitten): missing latitude, missing longitude
+- source:manual (Brunn a.d. Schneebergbahn): missing latitude, missing longitude
+- source:manual (Buchberg): missing latitude, missing longitude
+- source:manual (Böheimkirchen): missing latitude, missing longitude
+- source:manual (Böhlerwerk a.d. Ybbs): missing latitude, missing longitude
+- source:manual (Břeclav): missing latitude, missing longitude
+- source:manual (Csorna): missing latitude, missing longitude
+- source:manual (Deutschkreutz): missing latitude, missing longitude
+- source:manual (Devínska Nová Ves): missing latitude, missing longitude
+- source:manual (Donnerskirchen): missing latitude, missing longitude
+- source:manual (Draßburg): missing latitude, missing longitude
+- source:manual (Dreistetten): missing latitude, missing longitude
+- source:manual (Dürrwien): missing latitude, missing longitude
+- source:manual (Edlitz-Grimmenstein): missing latitude, missing longitude
+- source:manual (Eggenburg): missing latitude, missing longitude
+- source:manual (Eichberg): missing latitude, missing longitude
+- source:manual (Eisenstadt): missing latitude, missing longitude
+- source:manual (Eisenstadt Schule): missing latitude, missing longitude
+- source:manual (Enzersdorf bei Staatz): missing latitude, missing longitude
+- source:manual (Enzesfeld-Lindabrunn): missing latitude, missing longitude
+- source:manual (Erlauf): missing latitude, missing longitude
+- source:manual (Etsdorf-Straß): missing latitude, missing longitude
+- source:manual (Fehring): missing latitude, missing longitude
+- source:manual (Fels): missing latitude, missing longitude
+- source:manual (Fertőszentmiklós): missing latitude, missing longitude
+- source:manual (Fertőszéplak-Fertőd): missing latitude, missing longitude
+- source:manual (Feuerwerksanstalt): missing latitude, missing longitude
+- source:manual (Frauenkirchen): missing latitude, missing longitude
+- source:manual (Friedberg): missing latitude, missing longitude
+- source:manual (Frättingsdorf): missing latitude, missing longitude
+- source:manual (Furth-Göttweig): missing latitude, missing longitude
+- source:manual (Furth-Palt): missing latitude, missing longitude
+- source:manual (Gaflenz): missing latitude, missing longitude
+- source:manual (Gaisruck): missing latitude, missing longitude
+- source:manual (Gars-Thunau): missing latitude, missing longitude
+- source:manual (Gattendorf): missing latitude, missing longitude
+- source:manual (Gedersdorf): missing latitude, missing longitude
+- source:manual (Gemeinlebarn): missing latitude, missing longitude
+- source:manual (Getzersdorf): missing latitude, missing longitude
+- source:manual (Gleißenfeld): missing latitude, missing longitude
+- source:manual (Gmünd NÖ): missing latitude, missing longitude
+- source:manual (Gobelsburg): missing latitude, missing longitude
+- source:manual (Gols): missing latitude, missing longitude
+- source:manual (Greifenstein-Altenberg): missing latitude, missing longitude
+- source:manual (Greinsfurth): missing latitude, missing longitude
+- source:manual (Groß Sierning): missing latitude, missing longitude
+- source:manual (Großweikersdorf): missing latitude, missing longitude
+- source:manual (Grünbach Kohlenwerk): missing latitude, missing longitude
+- source:manual (Grünbach Schule): missing latitude, missing longitude
+- source:manual (Grünbach am Schneeberg): missing latitude, missing longitude
+- source:manual (Guntersdorf): missing latitude, missing longitude
+- source:manual (Guntramsdorf Thallern): missing latitude, missing longitude
+- source:manual (Gutenstein): missing latitude, missing longitude
+- source:manual (Győr): missing latitude, missing longitude
+- source:manual (Göllersdorf): missing latitude, missing longitude
+- source:manual (Göpfritz): missing latitude, missing longitude
+- source:manual (Hainfeld): missing latitude, missing longitude
+- source:manual (Hartberg): missing latitude, missing longitude
+- source:manual (Hausleiten): missing latitude, missing longitude
+- source:manual (Hautzendorf): missing latitude, missing longitude
+- source:manual (Hegyeshalom): missing latitude, missing longitude
+- source:manual (Herzogenburg): missing latitude, missing longitude
+- source:manual (Herzogenburg Stadt): missing latitude, missing longitude
+- source:manual (Herzogenburg-Wielandsthal): missing latitude, missing longitude
+- source:manual (Hetzmannsdorf-Wullersdorf): missing latitude, missing longitude
+- source:manual (Hilm-Kematen): missing latitude, missing longitude
+- source:manual (Hirschbach): missing latitude, missing longitude
+- source:manual (Hirtenberg): missing latitude, missing longitude
+- source:manual (Horn): missing latitude, missing longitude
+- source:manual (Höbersdorf): missing latitude, missing longitude
+- source:manual (Höflein a.d. Donau): missing latitude, missing longitude
+- source:manual (Hörersdorf): missing latitude, missing longitude
+- source:manual (Hötzelsdorf-Geras): missing latitude, missing longitude
+- source:manual (Irnfritz): missing latitude, missing longitude
+- source:manual (Jedenspeigen): missing latitude, missing longitude
+- source:manual (Jihlava): missing latitude, missing longitude
+- source:manual (Jois): missing latitude, missing longitude
+- source:manual (Kamegg): missing latitude, missing longitude
+- source:manual (Kapellerfeld): missing latitude, missing longitude
+- source:manual (Kastenreith): missing latitude, missing longitude
+- source:manual (Katzelsdorf): missing latitude, missing longitude
+- source:manual (Kirchberg a.d. Pielach): missing latitude, missing longitude
+- source:manual (Kirchberg am Wagram): missing latitude, missing longitude
+- source:manual (Kirchstetten): missing latitude, missing longitude
+- source:manual (Klamm-Schottwien): missing latitude, missing longitude
+- source:manual (Kleinreifling): missing latitude, missing longitude
+- source:manual (Kottingneusiedl): missing latitude, missing longitude
+- source:manual (Kreisbach): missing latitude, missing longitude
+- source:manual (Krenstetten-Biberbach): missing latitude, missing longitude
+- source:manual (Krummnußbaum): missing latitude, missing longitude
+- source:manual (Kröllendorf): missing latitude, missing longitude
+- source:manual (Küb): missing latitude, missing longitude
+- source:manual (Ladendorf): missing latitude, missing longitude
+- source:manual (Langenlebarn): missing latitude, missing longitude
+- source:manual (Langenlois): missing latitude, missing longitude
+- source:manual (Lanzenkirchen): missing latitude, missing longitude
+- source:manual (Laubenbachmühle): missing latitude, missing longitude
+- source:manual (Leobendorf-Burg Kreuzenstein): missing latitude, missing longitude
+- source:manual (Lilienfeld): missing latitude, missing longitude
+- source:manual (Lilienfeld Krankenhaus): missing latitude, missing longitude
+- source:manual (Limberg-Maissau): missing latitude, missing longitude
+- source:manual (Loipersbach-Schattendorf): missing latitude, missing longitude
+- source:manual (Loosdorf): missing latitude, missing longitude
+- source:manual (Mariazell): missing latitude, missing longitude
+- source:manual (Markersdorf a.d. Pielach): missing latitude, missing longitude
+- source:manual (Marktl): missing latitude, missing longitude
+- source:manual (Marz-Rohrbach): missing latitude, missing longitude
+- source:manual (Mattersburg): missing latitude, missing longitude
+- source:manual (Mattersburg Nord): missing latitude, missing longitude
+- source:manual (Mauer-Öhling): missing latitude, missing longitude
+- source:manual (Melk): missing latitude, missing longitude
+- source:manual (Michelhausen): missing latitude, missing longitude
+- source:manual (Miesenbach-Waidmannsfeld): missing latitude, missing longitude
+- source:manual (Moosbierbaum-Heiligeneich): missing latitude, missing longitude
+- source:manual (Mosonmagyaróvár): missing latitude, missing longitude
+- source:manual (Muckendorf-Wipfing): missing latitude, missing longitude
+- source:manual (Mönchhof-Halbturn): missing latitude, missing longitude
+- source:manual (Mühling): missing latitude, missing longitude
+- source:manual (Mühling-Plaika): missing latitude, missing longitude
+- source:manual (Müllendorf): missing latitude, missing longitude
+- source:manual (Neubau-Kreuzstetten): missing latitude, missing longitude
+- source:manual (Neudorf): missing latitude, missing longitude
+- source:manual (Neudörfl): missing latitude, missing longitude
+- source:manual (Neufeld a.d. Leitha): missing latitude, missing longitude
+- source:manual (Neumarkt a.d. Ybbs-Karlsbach): missing latitude, missing longitude
+- source:manual (Nickelsdorf): missing latitude, missing longitude
+- source:manual (Niederkreuzstetten): missing latitude, missing longitude
+- source:manual (Ober Olberndorf): missing latitude, missing longitude
+- source:manual (Ober Piesting): missing latitude, missing longitude
+- source:manual (Ober Waltersdorf): missing latitude, missing longitude
+- source:manual (Obereggendorf): missing latitude, missing longitude
+- source:manual (Obergrafendorf): missing latitude, missing longitude
+- source:manual (Oberland): missing latitude, missing longitude
+- source:manual (Oberradlberg): missing latitude, missing longitude
+- source:manual (Obersdorf): missing latitude, missing longitude
+- source:manual (Oberweiden): missing latitude, missing longitude
+- source:manual (Oed): missing latitude, missing longitude
+- source:manual (Ollersbach): missing latitude, missing longitude
+- source:manual (Ortmann): missing latitude, missing longitude
+- source:manual (Ostrava): missing latitude, missing longitude
+- source:manual (Paasdorf): missing latitude, missing longitude
+- source:manual (Pama): missing latitude, missing longitude
+- source:manual (Pamhagen): missing latitude, missing longitude
+- source:manual (Paudorf): missing latitude, missing longitude
+- source:manual (Pernitz Raimundviertel): missing latitude, missing longitude
+- source:manual (Pernitz Wipfelhofstraße): missing latitude, missing longitude
+- source:manual (Pernitz-Muggendorf): missing latitude, missing longitude
+- source:manual (Petersbaumgarten): missing latitude, missing longitude
+- source:manual (Petzenkirchen): missing latitude, missing longitude
+- source:manual (Pfennigbach): missing latitude, missing longitude
+- source:manual (Piesting): missing latitude, missing longitude
+- source:manual (Piesting Harzwerk): missing latitude, missing longitude
+- source:manual (Pinggau Markt): missing latitude, missing longitude
+- source:manual (Pitten): missing latitude, missing longitude
+- source:manual (Plank am Kamp): missing latitude, missing longitude
+- source:manual (Platt): missing latitude, missing longitude
+- source:manual (Pottenstein a.d. Triesting): missing latitude, missing longitude
+- source:manual (Prinzersdorf): missing latitude, missing longitude
+- source:manual (Puchberg am Schneeberg): missing latitude, missing longitude
+- source:manual (Purbach am Neusiedlersee): missing latitude, missing longitude
+- source:manual (Purgstall): missing latitude, missing longitude
+- source:manual (Pöchlarn): missing latitude, missing longitude
+- source:manual (Pürbach-Schrems): missing latitude, missing longitude
+- source:manual (Rabensburg): missing latitude, missing longitude
+- source:manual (Rainfeld-Kleinzell): missing latitude, missing longitude
+- source:manual (Retz): missing latitude, missing longitude
+- source:manual (Rohrbach a.d. Gölsen): missing latitude, missing longitude
+- source:manual (Rohrendorf): missing latitude, missing longitude
+- source:manual (Rosenau): missing latitude, missing longitude
+- source:manual (Rosenburg): missing latitude, missing longitude
+- source:manual (Rothengrub): missing latitude, missing longitude
+- source:manual (Saffen): missing latitude, missing longitude
+- source:manual (Sankt Andrä am Zicksee): missing latitude, missing longitude
+- source:manual (Sautern-Schiltern): missing latitude, missing longitude
+- source:manual (Schauboden): missing latitude, missing longitude
+- source:manual (Scheibbs): missing latitude, missing longitude
+- source:manual (Scheiblingkirchen-Warth): missing latitude, missing longitude
+- source:manual (Schleinbach): missing latitude, missing longitude
+- source:manual (Schlöglmühl): missing latitude, missing longitude
+- source:manual (Schrambach): missing latitude, missing longitude
+- source:manual (Schwarzenau): missing latitude, missing longitude
+- source:manual (Schönberg am Kamp): missing latitude, missing longitude
+- source:manual (Schönborn-Mallebarn): missing latitude, missing longitude
+- source:manual (Schützen Ruster Straße): missing latitude, missing longitude
+- source:manual (Schützen am Gebirge): missing latitude, missing longitude
+- source:manual (Seebenstein): missing latitude, missing longitude
+- source:manual (Selzthal): missing latitude, missing longitude
+- source:manual (Semmering): missing latitude, missing longitude
+- source:manual (Seyring): missing latitude, missing longitude
+- source:manual (Sierndorf): missing latitude, missing longitude
+- source:manual (Sierndorf a.d. March): missing latitude, missing longitude
+- source:manual (Sigmundsherberg): missing latitude, missing longitude
+- source:manual (Silberwald): missing latitude, missing longitude
+- source:manual (Sitzenberg-Reidling): missing latitude, missing longitude
+- source:manual (Sonntagberg): missing latitude, missing longitude
+- source:manual (Sopron): missing latitude, missing longitude
+- source:manual (St. Egyden): missing latitude, missing longitude
+- source:manual (St. Georgen am Steinfelde): missing latitude, missing longitude
+- source:manual (St. Johann-Weistrach): missing latitude, missing longitude
+- source:manual (St. Peter-Seitenstetten): missing latitude, missing longitude
+- source:manual (St. Pölten Alpenbahnhof-Kaiserwald): missing latitude, missing longitude
+- source:manual (St. Pölten Bildungscampus): missing latitude, missing longitude
+- source:manual (St. Pölten Porschestraße): missing latitude, missing longitude
+- source:manual (St. Pölten Traisenpark): missing latitude, missing longitude
+- source:manual (St. Valentin): missing latitude, missing longitude
+- source:manual (St. Veit a.d. Gölsen): missing latitude, missing longitude
+- source:manual (St. Veit a.d. Triesting): missing latitude, missing longitude
+- source:manual (Staatz): missing latitude, missing longitude
+- source:manual (Stadt Haag): missing latitude, missing longitude
+- source:manual (Stadt Waidhofen a.d. Ybbs): missing latitude, missing longitude
+- source:manual (Statzendorf): missing latitude, missing longitude
+- source:manual (Stiefern): missing latitude, missing longitude
+- source:manual (Stillfried): missing latitude, missing longitude
+- source:manual (Szombathely): missing latitude, missing longitude
+- source:manual (Säusenstein): missing latitude, missing longitude
+- source:manual (Sölling): missing latitude, missing longitude
+- source:manual (Tallesbrunn): missing latitude, missing longitude
+- source:manual (Tauchen-Schaueregg): missing latitude, missing longitude
+- source:manual (Theresienfeld): missing latitude, missing longitude
+- source:manual (Traisen): missing latitude, missing longitude
+- source:manual (Traisen Markt): missing latitude, missing longitude
+- source:manual (Traismauer): missing latitude, missing longitude
+- source:manual (Trasdorf): missing latitude, missing longitude
+- source:manual (Ulmerfeld-Hausmening): missing latitude, missing longitude
+- source:manual (Ulrichskirchen): missing latitude, missing longitude
+- source:manual (Unter Höflein): missing latitude, missing longitude
+- source:manual (Unter Purkersdorf): missing latitude, missing longitude
+- source:manual (Unter Tullnerbach): missing latitude, missing longitude
+- source:manual (Untereggendorf): missing latitude, missing longitude
+- source:manual (Unterkritzendorf): missing latitude, missing longitude
+- source:manual (Unterradlberg): missing latitude, missing longitude
+- source:manual (Unterretzbach): missing latitude, missing longitude
+- source:manual (Urschendorf): missing latitude, missing longitude
+- source:manual (Viehofen): missing latitude, missing longitude
+- source:manual (Vitis): missing latitude, missing longitude
+- source:manual (Wagram-Grafenegg): missing latitude, missing longitude
+- source:manual (Waidhofen a.d. Ybbs): missing latitude, missing longitude
+- source:manual (Waidhofen a.d. Ybbs Pestalozzistraße): missing latitude, missing longitude
+- source:manual (Waldegg): missing latitude, missing longitude
+- source:manual (Waldegg-Dürnbach): missing latitude, missing longitude
+- source:manual (Wallern im Burgenland): missing latitude, missing longitude
+- source:manual (Weiden am See): missing latitude, missing longitude
+- source:manual (Weikendorf-Dörfles): missing latitude, missing longitude
+- source:manual (Weissenbach-Neuhaus): missing latitude, missing longitude
+- source:manual (Weyer): missing latitude, missing longitude
+- source:manual (Wiener Neustadt Anemonensee): missing latitude, missing longitude
+- source:manual (Wiener Neustadt Civitas Nova): missing latitude, missing longitude
+- source:manual (Wieselburg a.d. Erlauf): missing latitude, missing longitude
+- source:manual (Wiesen-Sigleß): missing latitude, missing longitude
+- source:manual (Wiesenfeld-Schwarzenbach): missing latitude, missing longitude
+- source:manual (Wilhelmsburg a.d. Traisen): missing latitude, missing longitude
+- source:manual (Willendorf): missing latitude, missing longitude
+- source:manual (Winden): missing latitude, missing longitude
+- source:manual (Winzendorf): missing latitude, missing longitude
+- source:manual (Wittmannsdorf): missing latitude, missing longitude
+- source:manual (Wolfsbergkogel): missing latitude, missing longitude
+- source:manual (Wopfing): missing latitude, missing longitude
+- source:manual (Wulkaprodersdorf): missing latitude, missing longitude
+- source:manual (Wulkaprodersdorf Rathausgasse): missing latitude, missing longitude
+- source:manual (Wöllersdorf): missing latitude, missing longitude
+- source:manual (Wöllersdorf Marchgraben): missing latitude, missing longitude
+- source:manual (Ybbs a.d. Donau): missing latitude, missing longitude
+- source:manual (Zeiselmauer-Königstetten): missing latitude, missing longitude
+- source:manual (Zellerndorf): missing latitude, missing longitude
+- source:manual (Ziersdorf): missing latitude, missing longitude
+- source:manual (Znojmo): missing latitude, missing longitude
+- source:manual (Znojmo-Nový Šaldorf): missing latitude, missing longitude
+- source:manual (Zurndorf): missing latitude, missing longitude
+- source:manual (Zöbing): missing latitude, missing longitude
+- source:manual (České Velenice): missing latitude, missing longitude
+- source:manual (Šatov): missing latitude, missing longitude
