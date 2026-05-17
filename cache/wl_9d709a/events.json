@@ -338,6 +338,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Fahrtbehinderung Schadhafter PKW",
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4e3e8e3d34611006be58dd054f1b442732c63245c0191f05087b5fb7c011ffd2",
+    "pubDate": "2026-05-17T12:19:30+02:00",
+    "starts_at": "2026-05-17T12:20:38+02:00",
+    "ends_at": "2026-05-17T13:20:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-05-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Schadhafter PKW Betrieb ab Quellenplatz",
+    "description": "Schadhafter PKW\nBetrieb ab Quellenplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cc423866d98744fc1a78905cdf35199b6a2cd43c781710d540e75e32caaa46d4",
+    "pubDate": "2026-05-17T12:21:34+02:00",
+    "starts_at": "2026-05-17T12:21:55+02:00",
+    "ends_at": "2026-05-17T13:20:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-05-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -502,5 +526,17 @@
     "starts_at": "2025-11-10T06:00:00+01:00",
     "ends_at": "2026-06-01T00:56:00+02:00",
     "_identity": "wl|störung|L=80A|D=2025-11-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung Schadhafter PKW",
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "07fc3d5c006ef5b2e75d51f79fbb8f69fc9fe380998ff9915be4c3fe302c86fd",
+    "pubDate": "2026-05-17T12:22:20+02:00",
+    "starts_at": "2026-05-17T12:22:29+02:00",
+    "ends_at": "2026-05-17T13:21:00+02:00",
+    "_identity": "wl|störung|L=O|D=2026-05-17"
   }
 ]

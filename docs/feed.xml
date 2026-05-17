@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 17 May 2026 12:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 12:30:38 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: Fahrtbehinderung Schadhafter PKW]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">07fc3d5c006ef5b2e75d51f79fbb8f69fc9fe380998ff9915be4c3fe302c86fd</guid>
+      <pubDate>Sun, 17 May 2026 12:22:20 +0200</pubDate>
+      <ext:first_seen>Sun, 17 May 2026 12:30:38 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 17 May 2026 12:22:29 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 13:21:00 +0200</ext:ends_at>
+      <description>[Am 17.05.2026]</description>
+      <content:encoded><![CDATA[[Am 17.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:starts_at>Wed, 13 May 2026 12:48:57 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten fahren zwischen Wien Hbf (U) und Flughafen Wien Bahnhof von 10.07.2026 (09:00 Uhr) bis 27.07.2026 (18:00 Uhr) die IC-Züge mit geänderten Fahrzeiten … [Seit 13.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten fahren zwischen Wien Hbf (U) und Flughafen Wien Bahnhof von 10.07.2026 (09:00 Uhr) bis 27.07.2026 (18:00 Uhr) die IC-Züge mit geänderten Fahrzeiten …<br/>[Seit 13.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56A/60A/N60: Maurer Kirtag 2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3a272435aaae38a8075d151af17edf90ec6bd2ba6e4546b3a3a5f233234153f6</guid>
-      <pubDate>Wed, 13 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 14 May 2026 00:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 13 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 07 Jun 2026 20:00:00 +0200</ext:ends_at>
-      <description>Veranstaltung Wegen Abhaltung des Maurer Kirtages am Maurer Hauptplatz kommt es zu Umleitungen bei den dort verkehrenden Buslinien. [13.05.2026 – 07.06.2026]</description>
-      <content:encoded><![CDATA[Veranstaltung Wegen Abhaltung des Maurer Kirtages am Maurer Hauptplatz kommt es zu Umleitungen bei den dort verkehrenden Buslinien.<br/>[13.05.2026 – 07.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
