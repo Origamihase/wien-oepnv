@@ -1075,17 +1075,22 @@ _KNOWN_TOKENS = [
     # HashiCorp Cloud Platform (HCP) Vault Secrets token (``hvs.<base64
     # body>``). Issued via portal.cloud.hashicorp.com for HCP Vault
     # Secrets API access (the managed-Vault offering — read every
-    # secret stored in the namespace's apps and integrations). Total
-    # length typically 95-110 chars (4-char prefix incl. dot + 90+ char
-    # base64url body). The ``hvs.`` prefix is unique to HashiCorp's
-    # modern HCP token format (introduced 2023; replaces the legacy
-    # ``hvb.`` admin tokens) and the literal ``.`` separator
-    # disambiguates from any alphanumeric-prefixed token already in the
-    # table. A leak grants whoever holds the token full read-access to
-    # every secret the issuing service principal / human user can see —
+    # secret stored in the namespace's apps and integrations). The
+    # same ``hvs.`` prefix is also issued by self-hosted HashiCorp
+    # Vault (Enterprise + Community) since the 1.10 release
+    # (2022-03) for persistent ``service``-type tokens (default token
+    # shape, written to Vault's storage backend; companion to the
+    # ``hvb.`` batch token + ``hvr.`` recovery token siblings closed
+    # in the entries immediately below this one). Total length
+    # typically 95-110 chars (4-char prefix incl. dot + 90+ char
+    # base64url body). The literal ``.`` separator disambiguates
+    # from any alphanumeric-prefixed token already in the table. A
+    # leak grants whoever holds the token full read-access to every
+    # secret the issuing service principal / human user can see —
     # the highest blast-radius credential class in the modern infra
     # stack. The revocation flow lives at portal.cloud.hashicorp.com
-    # and is distinct from any other vendor's, so issuer-specific
+    # (HCP) or ``vault token revoke <token>`` (self-hosted) and is
+    # distinct from any other vendor's, so issuer-specific
     # attribution is critical for IR triage. Pre-fix the entropy
     # fallback flagged the body as a generic high-entropy span (the
     # ``.`` is OUTSIDE the entropy alphabet ``[A-Za-z0-9+/=_-]``, so
@@ -1094,6 +1099,102 @@ _KNOWN_TOKENS = [
     (
         re.compile(r"(?<![A-Za-z0-9])hvs\.[A-Za-z0-9_\-]{30,}(?![A-Za-z0-9])"),
         "HCP Vault Secrets Token gefunden",
+    ),
+    # HashiCorp Vault Batch Token (``hvb.<base64url body>``). The
+    # canonical batch-token prefix for self-hosted HashiCorp Vault
+    # (Vault Enterprise + Vault Community) since the 1.10 release
+    # (2022-03; replaces the legacy ``b.`` prefix). Sibling-drift
+    # closure for the ``hvs.`` Vault Service Token detector above:
+    # the two prefixes are issued by the SAME Vault auth-method API
+    # call (``auth/token/create``) with different ``type`` parameters
+    # — ``service`` produces the persistent ``hvs.`` token (default,
+    # written to Vault's storage backend), ``batch`` produces the
+    # ephemeral, lightweight ``hvb.`` token (NOT written to storage
+    # — Vault encrypts the token's auth data into the token itself,
+    # which means batch tokens scale to high-throughput workloads
+    # without storage backend pressure). Pre-fix the ``hvb.`` shape
+    # had NO ``_KNOWN_TOKENS`` entry and the entropy fallback
+    # flagged only the body span after ``hvb.`` (the ``.`` is
+    # OUTSIDE the entropy alphabet ``[A-Za-z0-9+/=_-]``) as a
+    # generic ``Hochentropischer Token-String`` finding, losing the
+    # Vault-specific issuer attribution that incident-response
+    # triage keys off.
+    #
+    # Threat model: batch tokens are typically issued for CI/CD
+    # pipelines, ephemeral container workloads, and serverless
+    # function invocations — the exact contexts where token leaks
+    # in committed source are MOST likely. A leaked batch token
+    # grants the issuing policy's full Vault scope for the token's
+    # TTL: read every KV secret the policy permits (database creds,
+    # cloud provider keys, internal API tokens, OAuth client
+    # secrets routinely stored in Vault), generate dynamic
+    # secrets (database credentials, AWS STS tokens via the
+    # ``aws/sts`` mount, GCP service-account tokens via the
+    # ``gcp/`` mount, PKI certificates via the ``pki/`` mount),
+    # and — if the policy includes ``encrypt`` capability on a
+    # ``transit/`` mount — encrypt/decrypt arbitrary application
+    # data. Blast radius is the same per-policy scope as
+    # ``hvs.`` service tokens, scoped only by the batch token's
+    # TTL (typically minutes to hours, but configurable to days).
+    # The revocation flow lives at ``vault token revoke <token>``
+    # (or the API equivalent ``POST /v1/auth/token/revoke``) and
+    # is the same revocation flow as ``hvs.`` service tokens
+    # (Vault treats both as first-class auth tokens for
+    # revocation), so issuer-specific attribution accelerates IR
+    # triage to the correct Vault cluster's audit log + revoke
+    # endpoint.
+    (
+        re.compile(r"(?<![A-Za-z0-9])hvb\.[A-Za-z0-9_\-]{30,}(?![A-Za-z0-9])"),
+        "HashiCorp Vault Batch Token gefunden",
+    ),
+    # HashiCorp Vault Recovery Token (``hvr.<base64url body>``). The
+    # canonical recovery-token prefix for self-hosted HashiCorp Vault
+    # since 1.10 release (replaces the legacy ``r.`` prefix). Recovery
+    # tokens are issued ONLY in HSM-backed or auto-unseal Vault
+    # deployments (the Enterprise tier or the Cloud KMS / AWS KMS /
+    # Azure Key Vault / GCP CKMS auto-unseal flows) via the
+    # ``generate-recovery-token`` API (``POST /v1/sys/generate-
+    # recovery-token``). They authorise the highest-privilege
+    # recovery operations on a sealed or partially-sealed Vault
+    # cluster — operations a regular root token CANNOT perform when
+    # Vault is in a degraded state (sealed / cluster-leader-failover
+    # / lost-quorum scenarios). Sibling-drift closure for the
+    # ``hvs.`` Vault Service Token detector above: same Vault
+    # cluster, same on-the-wire encoding (base64url body after the
+    # dotted prefix), distinct privilege tier.
+    #
+    # Threat model (HIGHEST severity in the HashiCorp Vault token
+    # family): a leaked recovery token grants the holder root-
+    # equivalent operations on the sealed Vault cluster — including
+    # the ability to GENERATE A NEW ROOT TOKEN
+    # (``POST /v1/sys/generate-root``) once Vault is unsealed, which
+    # is then a persistent backdoor with FULL Vault administrative
+    # capability. The compromised root token can subsequently:
+    #   * Read every secret in every namespace / KV mount.
+    #   * Modify every policy attached to every token.
+    #   * Disable audit logging to cover tracks.
+    #   * Add new auth methods (LDAP, Kerberos, OIDC, AppRole) for
+    #     persistent attacker access independent of the root
+    #     token's eventual revocation.
+    #   * Mint new dynamic secrets (cloud provider credentials,
+    #     database admin accounts) that outlive the Vault breach.
+    # Pre-fix the ``hvr.`` shape had NO ``_KNOWN_TOKENS`` entry
+    # and the entropy fallback only flagged the body span after
+    # ``hvr.`` as a generic ``Hochentropischer Token-String``
+    # finding, losing both the Vault-recovery-specific issuer
+    # attribution AND the cluster-recovery-flow-specific incident
+    # response surface (operator must immediately re-seal the
+    # cluster, regenerate the recovery-key shares via Shamir
+    # threshold reconstruction, and audit every operation since
+    # the recovery token was issued for evidence of a generated
+    # root token). The revocation flow lives at
+    # ``POST /v1/sys/generate-recovery-token/attempt`` (cancel +
+    # restart the recovery flow) and is distinct from regular
+    # token revocation, so issuer-specific attribution is
+    # critical for IR triage.
+    (
+        re.compile(r"(?<![A-Za-z0-9])hvr\.[A-Za-z0-9_\-]{30,}(?![A-Za-z0-9])"),
+        "HashiCorp Vault Recovery Token gefunden",
     ),
     # Doppler tokens (``dp.<role>.<43 alphanumeric body>`` where
     # ``<role>`` is one of ``pt`` / ``st`` / ``sa`` / ``ct`` / ``scim``
