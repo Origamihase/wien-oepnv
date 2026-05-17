@@ -338,25 +338,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "30: Verkehrsunfall",
-    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9cd582e7d389dfb7834c2277d3b615c12e0f096ebda88b9ebe100ad4f2576284",
-    "pubDate": "2026-05-17T18:49:00+02:00",
-    "starts_at": "2026-05-17T18:49:00+02:00",
-    "ends_at": "2026-05-17T19:50:00+02:00",
-    "_identity": "wl|störung|L=30|D=2026-05-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "31: Feuerwehreinsatz Züge halten bei Li. 5 Ri. Westbahnhof S U",
     "description": "Feuerwehreinsatz\nZüge halten bei Li. 5 Ri. Westbahnhof S U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4063a805a9f326395127913f7ccce86b075f208c6f9c65ce837a80b373a24937",
     "pubDate": "2026-05-17T19:09:55+02:00",
     "starts_at": "2026-05-17T19:09:55+02:00",
-    "ends_at": "2026-05-17T20:09:00+02:00",
+    "ends_at": "2026-05-17T21:00:00+02:00",
     "_identity": "wl|störung|L=31|D=2026-05-17"
   },
   {
@@ -375,7 +363,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "31: Feuerwehreinsatz",
-    "description": "Linie 31: Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz. Weichen Sie ersatzweise auf die Linien U4 und U6 aus. Voraussichtliche Dauer: 19:40 Uhr. Grund: Feuerwehreinsatz im Bereich Obere Augartenstraße.",
+    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "748a7fd4a5421241f869780aa9f5e1d09e39d012f8769926583ebfb1bf880707",
     "pubDate": "2026-05-17T19:07:00+02:00",
@@ -518,14 +506,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Falschparker Züge halten Urban-Loritz-Platz 3",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "5B: Feuerwehreinsatz",
+    "description": "Linie 5B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
-    "pubDate": "2026-05-17T18:25:00+02:00",
-    "starts_at": "2026-05-17T18:33:35+02:00",
-    "ends_at": "2026-05-17T19:38:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-05-17"
+    "guid": "5f671ec81f4101e7a69acb74ef323b5826af481e95c7cb595f76f8b7e4676e03",
+    "pubDate": "2026-05-17T19:07:00+02:00",
+    "starts_at": "2026-05-17T19:07:00+02:00",
+    "ends_at": "2026-05-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=5B|D=2026-05-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5B: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fb91307f7d1fef9311a4ff9659fcd81ccc7a53707aa277690cf60f8d2fd51828",
+    "pubDate": "2026-05-17T19:37:34+02:00",
+    "starts_at": "2026-05-17T19:37:55+02:00",
+    "ends_at": "2026-05-17T20:37:00+02:00",
+    "_identity": "wl|störung|L=5B|D=2026-05-17"
   },
   {
     "source": "Wiener Linien",
@@ -566,6 +566,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "71: Feuerwehreinsatz",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55decc0b7f142050de65e35d35137faddad686db30de497c2a1c3cb4fc6052b4",
+    "pubDate": "2026-05-17T19:07:00+02:00",
+    "starts_at": "2026-05-17T19:07:00+02:00",
+    "ends_at": "2026-05-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-05-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "80A: Bauarbeiten",
     "description": "Die Linie 80A wird in Richtung Neu Marx zwischen Friedensgasse und Stadionbrücke über die Wittelsbachstraße, Erdberger Lände und Schlachthausgasse umgeleitet. Die Haltestellen Friedensgasse, Lukschgasse, Rustenschacherallee, Klaschkaweg und Stadionbrücke können dadurch nicht eingehalten werden. Voraussichtliche Dauer: Ende Mai 2026. Grund: Bauarbeiten im Bereich Stadionallee.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -574,41 +586,5 @@
     "starts_at": "2025-11-10T06:00:00+01:00",
     "ends_at": "2026-06-01T00:56:00+02:00",
     "_identity": "wl|störung|L=80A|D=2025-11-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Verkehrsunfall Betrieb ab Brünner Straße, Hanreitergasse",
-    "description": "Verkehrsunfall\nBetrieb ab Brünner Straße, Hanreitergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1dce6de12c3a0fbf186e6ce3cd27e8e8cfdb33913e6a9565a0733f92d6dd551b",
-    "pubDate": "2026-05-17T18:51:03+02:00",
-    "starts_at": "2026-05-17T18:55:58+02:00",
-    "ends_at": "2026-05-17T19:54:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-05-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Verkehrsunfall Züge halten in der Schleife",
-    "description": "Verkehrsunfall\nZüge halten in der Schleife",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "45ef5f2620b8f900125d2cd4489eb352d8f51173daeee37d0cbd0276ef42775e",
-    "pubDate": "2026-05-17T18:51:03+02:00",
-    "starts_at": "2026-05-17T18:51:03+02:00",
-    "ends_at": "2026-05-17T19:56:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-05-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
-    "pubDate": "2026-05-17T18:51:03+02:00",
-    "starts_at": "2026-05-17T18:54:54+02:00",
-    "ends_at": "2026-05-17T19:54:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-05-17"
   }
 ]
