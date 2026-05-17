@@ -2337,7 +2337,21 @@ def main() -> None:
     # the location_index built earlier (free GTFS/VOR lookup) and falls
     # back to the unmetered HAFAS LocMatch tier — exactly the same
     # cheap-first strategy the ÖBB pipeline already runs.
-    _enrich_manual_stations(manual_stations, location_index)
+    #
+    # Env-disabled via ``WIEN_OEPNV_MANUAL_ENRICH=0`` — mirrors the
+    # ``WIEN_OEPNV_OSM_ENRICH`` gate used by
+    # ``test_wrapper_atomic_on_success`` to keep the orchestrator
+    # subprocess test under its 180-second pytest timeout: the test
+    # carries 296 manual entries without coordinates, and 296 real
+    # HAFAS LocMatch round-trips from a GitHub-hosted runner regularly
+    # burn 3-5 minutes (well over the budget). Production cron runs
+    # leave the env unset so the enrichment remains active.
+    if get_bool_env("WIEN_OEPNV_MANUAL_ENRICH", True):
+        _enrich_manual_stations(manual_stations, location_index)
+    else:
+        logger.info(
+            "Skipping manual entry enrichment (WIEN_OEPNV_MANUAL_ENRICH=0)"
+        )
 
     final_stations = [station.as_dict() for station in stations]
     final_stations.extend(manual_stations)
