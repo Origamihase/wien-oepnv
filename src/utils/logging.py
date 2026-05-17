@@ -1010,6 +1010,50 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])(eyJ)[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{20,}(?![A-Za-z0-9])",
             r"\1***",
         ),
+        # Discord Bot Token: ``<base64url(snowflake-id)>.<base64url(
+        # timestamp)>.<HMAC>``. Three dot-separated base64url segments —
+        # structurally identical to JWT but with a snowflake-ID-based
+        # first segment instead of the JOSE ``eyJ`` header. Discord
+        # stringifies the user ID (decimal digits) before base64-
+        # encoding, so the first segment ALWAYS starts with ``[MNO]``
+        # (decimal ``1``-``3`` → ``M``, ``4``-``7`` → ``N``, ``8``-``9``
+        # → ``O``); JWTs ALWAYS start with ``eyJ``. The two leading-
+        # character classes are disjoint, so no token can match both
+        # patterns and the JWT regex above is mutually exclusive at the
+        # leading-char level. Sibling-drift closure for the 2026-05-08
+        # Round-3 secret-scanner round that added the Discord pattern
+        # to ``_KNOWN_TOKENS`` but left the log-sanitisation codepath
+        # untouched — Discord was explicitly named in the deferred
+        # backlog of every 2026-05-17 multi-vendor / SaaS / supply-
+        # chain log-sanitisation round but never closed until now.
+        #
+        # Threat model: a leaked Discord bot token grants FULL bot
+        # privileges in every guild the bot is invited to (read/write
+        # all visible messages, kick/ban users, edit channels and
+        # roles, run any registered slash commands, read voice/DM
+        # history with appropriate scopes). The revocation flow lives
+        # at https://discord.com/developers/applications/ Developer
+        # Portal — distinct from any other vendor's, so issuer-
+        # specific attribution accelerates IR triage. Pre-fix the dots
+        # are OUTSIDE the entropy fallback's ``[A-Za-z0-9+/=_-]``
+        # alphabet, so without this specific pattern only ONE segment
+        # at a time matches against the existing key/header/URL
+        # masks, losing both the issuer attribution AND the full
+        # credential span.
+        #
+        # The mask preserves the leading ``[MNO]`` Discord-shape
+        # disambiguator AND the three-segment structure
+        # (``M***.***.***``) so IR triage immediately recognises the
+        # Discord shape (vs. JWT ``eyJ***`` shape). Idempotence:
+        # ``M***.***.***`` does NOT re-match because ``*`` is not in
+        # the body alphabet AND the masked segment length (3 chars)
+        # is below every per-segment floor (22/6/27).
+        #
+        # Marker: SENTINEL_DISCORD_BOT_TOKEN_LOG_SANITIZATION_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])([MNO])[A-Za-z0-9_\-]{22,27}\.[A-Za-z0-9_\-]{6,7}\.[A-Za-z0-9_\-]{27,}(?![A-Za-z0-9])",
+            r"\1***.***.***",
+        ),
         (
             r"(?<![A-Za-z0-9])(ATATT3xFfGF0)[A-Za-z0-9_=\-]{100,}(?![A-Za-z0-9])",
             r"\1***",
