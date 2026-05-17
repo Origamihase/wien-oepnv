@@ -51,11 +51,13 @@ Design contract
   under ``maxChange=0`` does not bleed into the signal.
 - **S-Bahn product filter**: the eligible leg must carry an S-Bahn or regional train
   product label. The VAO `/trip` call uses `products=3` to pre-filter Train (1) + S-Bahn (2).
-  We accept either ``leg.category in {"S", "R", "REX"}``,
-  ``leg.name`` matching ``(S|R|REX)\\d+``, or ``leg.Product[].catOut`` /
+  We accept either ``leg.category in {"S", "R", "REX", "CJX"}``,
+  ``leg.name`` matching ``(S|R|REX|CJX)\\d+``, or ``leg.Product[].catOut`` /
   ``Product[].line`` matching the same — covering the known
-  upstream-shape variants without committing to a single one. Long-distance
-  trains (Railjet, IC, etc.) are filtered out.
+  upstream-shape variants without committing to a single one. Cityjet Express
+  (``CJX``) was added 2026-05-17 after ÖBB rebranded selected REX rolling-
+  stock; the corridor coverage is unchanged. Long-distance trains
+  (Railjet, IC, etc.) are filtered out.
 - **Self-Healing on degradation**: if either condition holds the
   events file is *unconditionally* reset to ``[]``:
 
@@ -282,11 +284,12 @@ MAX_QUERY_TIMEOUT = 30
 BREAKER_FAILURE_THRESHOLD = 10
 BREAKER_RECOVERY_TIMEOUT = 3600.0
 
-# Pattern that identifies an S-Bahn, R, or REX line label (``S 1``, ``S 7``,
-# ``REX 3``, ``R 81`` …). Used as the secondary signal when the VAO ``category``
-# field is missing or non-canonical; primary signal is
-# ``category in {"S", "R", "REX"}`` / ``Product.catOut in {"S", "R", "REX"}``.
-_S_BAHN_LINE_RE = re.compile(r"^\s*(S|REX|R)\s*\d+\s*$", re.IGNORECASE)
+# Pattern that identifies an S-Bahn, R, REX, or CJX line label (``S 1``, ``S 7``,
+# ``REX 3``, ``R 81``, ``CJX 9`` …). Used as the secondary signal when the VAO
+# ``category`` field is missing or non-canonical; primary signal is
+# ``category in {"S", "R", "REX", "CJX"}`` /
+# ``Product.catOut in {"S", "R", "REX", "CJX"}``.
+_S_BAHN_LINE_RE = re.compile(r"^\s*(S|REX|R|CJX)\s*\d+\s*$", re.IGNORECASE)
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
@@ -637,8 +640,8 @@ def _save_pending_trips(path: Path, state: Mapping[str, _PendingTrip]) -> bool:
     (``_load_pending_trips`` recovers the original string from the
     literal escape via ``json.loads``). Legitimate payload content
     is exclusively ASCII (hardcoded direction labels, short S-Bahn
-    / R / REX line designations, ISO-8601 timestamps), so the diff
-    shape is unchanged on the happy path.
+    / R / REX / CJX line designations, ISO-8601 timestamps), so the
+    diff shape is unchanged on the happy path.
     """
 
     payload = {key: _trip_to_json(trip) for key, trip in state.items()}
@@ -1036,25 +1039,30 @@ def _is_sbahn_leg(leg: object) -> bool:
     """Return ``True`` when *leg* represents a Vienna S-Bahn or regional rail product.
 
     The filter targets regional rail: the Vienna S-Bahn product
-    family (``S 1``, ``S 2``, ``S 7``, ``S 80`` …) as well as Regional (``R``)
-    and Regional Express (``REX``) trains are accepted. InterCity (``IC``),
-    Railjet (``RJ``), and any non-rail products are rejected.
+    family (``S 1``, ``S 2``, ``S 7``, ``S 80`` …) as well as Regional
+    (``R``), Regional Express (``REX``), and Cityjet Express (``CJX``)
+    trains are accepted. InterCity (``IC``), Railjet (``RJ``), and any
+    non-rail products are rejected.
 
     Checks (any single signal is sufficient):
 
-    * ``leg.category in {"S", "R", "REX"}`` — VAO's preferred field;
-    * ``leg.name`` matching ``^\\s*(S|REX|R)\\s*\\d+\\s*$`` — fallback for older
-      VAO peers that only set the human-readable label;
-    * ``leg.Product[].catOut in {"S", "R", "REX"}`` or ``Product[].line`` matching
-      ``^\\s*(S|REX|R)\\s*\\d+\\s*$`` — the JSON-RPC nested form some VAO
-      releases use.
+    * ``leg.category in {"S", "R", "REX", "CJX"}`` — VAO's preferred field;
+    * ``leg.name`` matching ``^\\s*(S|REX|R|CJX)\\s*\\d+\\s*$`` — fallback for
+      older VAO peers that only set the human-readable label;
+    * ``leg.Product[].catOut in {"S", "R", "REX", "CJX"}`` or
+      ``Product[].line`` matching ``^\\s*(S|REX|R|CJX)\\s*\\d+\\s*$`` — the
+      JSON-RPC nested form some VAO releases use.
 
     The previous-generation matcher also accepted ``"SB"`` as category;
     the 2026-05-09 Senior-API-Integration audit removed it because
     ``SB`` is ambiguous in the German-speaking ÖV space (it can denote
     *Schnellbahn* — a synonym for S-Bahn — but also *Schnellbus* in
     some VAO/ÖBB regional dialects, and there is no SB service on the
-    Stammstrecke).
+    Stammstrecke). ``CJX`` was added 2026-05-17 once ÖBB rebranded
+    selected REX rolling-stock as Cityjet Express; the line still
+    serves Stammstrecke-axis corridors (CJX 9 to Payerbach-Reichenau,
+    CJX 5 to Wiener Neustadt) and must not be dropped from the sample
+    just because of the new product label.
 
     Accepts ``object`` (rather than ``Mapping``) so the defensive
     ``isinstance(leg, Mapping)`` gate is reachable at type-check time
@@ -1067,7 +1075,7 @@ def _is_sbahn_leg(leg: object) -> bool:
         return False
 
     category = (str(leg.get("category") or "")).strip().upper()
-    if category in {"S", "R", "REX"}:
+    if category in {"S", "R", "REX", "CJX"}:
         return True
 
     name = str(leg.get("name") or "").strip()
@@ -1086,7 +1094,7 @@ def _is_sbahn_leg(leg: object) -> bool:
 
     for product in candidates:
         cat_out = str(product.get("catOut") or "").strip().upper()
-        if cat_out in {"S", "R", "REX"}:
+        if cat_out in {"S", "R", "REX", "CJX"}:
             return True
         line = str(product.get("line") or "").strip()
         if _S_BAHN_LINE_RE.match(line):

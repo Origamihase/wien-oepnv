@@ -233,19 +233,35 @@ def _low_trips() -> list[dict[str, Any]]:
 
 
 def test_is_sbahn_leg_matches_canonical_category() -> None:
-    """The primary signal is ``leg.category == "S"`` (strict-S only)."""
+    """The primary signal is ``leg.category`` in the accepted-category set.
+
+    The set covers Vienna S-Bahn (``S``), Regional (``R``), Regional
+    Express (``REX``), and Cityjet Express (``CJX``). ``CJX`` joined
+    on 2026-05-17 after ÖBB rebranded selected REX rolling-stock; the
+    same Stammstrecke-axis corridors are served.
+    """
     assert script._is_sbahn_leg({"category": "S", "name": "S 1"})
     assert script._is_sbahn_leg({"category": "S", "name": "S 80"})
+    assert script._is_sbahn_leg({"category": "R", "name": "R 81"})
+    assert script._is_sbahn_leg({"category": "REX", "name": "REX 3"})
+    assert script._is_sbahn_leg({"category": "CJX", "name": "CJX 9"})
     # Lowercase / mixed case is still accepted (the matcher upcases).
     assert script._is_sbahn_leg({"category": "s", "name": "S 7"})
+    assert script._is_sbahn_leg({"category": "cjx", "name": "CJX 5"})
 
 
 def test_is_sbahn_leg_matches_name_when_category_missing() -> None:
-    """Fallback signal: ``leg.name`` matches ``S\\d+``."""
+    """Fallback signal: ``leg.name`` matches ``(S|R|REX|CJX)\\d+``."""
     assert script._is_sbahn_leg({"name": "S 1"})
     assert script._is_sbahn_leg({"name": "S 7"})
     assert script._is_sbahn_leg({"name": "S 80"})
     assert script._is_sbahn_leg({"name": "s 2"})
+    assert script._is_sbahn_leg({"name": "REX 3"})
+    assert script._is_sbahn_leg({"name": "R 81"})
+    # Cityjet Express — added 2026-05-17 after the ÖBB product rebrand.
+    assert script._is_sbahn_leg({"name": "CJX 9"})
+    assert script._is_sbahn_leg({"name": "CJX9"})
+    assert script._is_sbahn_leg({"name": "cjx 5"})
 
 
 def test_is_sbahn_leg_matches_nested_product_field() -> None:
@@ -256,6 +272,10 @@ def test_is_sbahn_leg_matches_nested_product_field() -> None:
     assert script._is_sbahn_leg({"Product": [{"line": "S 80"}]})
     # Single Product object (not list) — also accepted.
     assert script._is_sbahn_leg({"Product": {"catOut": "S"}})
+    # CJX via the nested-product shape (both catOut and line paths).
+    assert script._is_sbahn_leg({"Product": [{"catOut": "CJX"}]})
+    assert script._is_sbahn_leg({"Product": [{"line": "CJX 9"}]})
+    assert script._is_sbahn_leg({"Product": {"catOut": "cjx"}})
 
 
 def test_is_sbahn_leg_rejects_non_regional() -> None:
