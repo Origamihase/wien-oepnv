@@ -7,8 +7,52 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 17 May 2026 23:00:44 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 23:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[WLB: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a3824cf2b28862393f00e8184f6eb157409bebc3b6b373abb3ac3f67960f6454</guid>
+      <pubDate>Sun, 17 May 2026 23:25:41 +0200</pubDate>
+      <ext:first_seen>Sun, 17 May 2026 23:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 17 May 2026 23:25:45 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 17.05.2026]</description>
+      <content:encoded><![CDATA[[Am 17.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2563cb7e5e67c7016a99b581b604e1f7ef686490b44625d39ce5e66b47c20dc1</guid>
+      <pubDate>Sun, 17 May 2026 23:25:12 +0200</pubDate>
+      <ext:first_seen>Sun, 17 May 2026 00:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 17 May 2026 23:25:16 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 17.05.2026]</description>
+      <content:encoded><![CDATA[[Am 17.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972</guid>
+      <pubDate>Sun, 17 May 2026 23:24:46 +0200</pubDate>
+      <ext:first_seen>Sun, 17 May 2026 23:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 17 May 2026 23:25:02 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 17.05.2026]</description>
+      <content:encoded><![CDATA[[Am 17.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Sun, 17 May 2026 23:22:00 +0200</pubDate>
+      <ext:first_seen>Sun, 17 May 2026 15:30:33 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 17 May 2026 23:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 17 May 2026 23:52:00 +0200</ext:ends_at>
+      <description>Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 17.05.2026]</description>
+      <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 17.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +63,6 @@
       <ext:ends_at>Mon, 18 May 2026 05:30:00 +0200</ext:ends_at>
       <description>[17.05.2026 – 18.05.2026]</description>
       <content:encoded><![CDATA[[17.05.2026 – 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26: Verunreinigung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4976d2f3ee76abf434e489a3a2f1b95a20c2a0cddf8f596da1eb800cfddc7c31</guid>
-      <pubDate>Sun, 17 May 2026 22:20:00 +0200</pubDate>
-      <ext:first_seen>Sun, 17 May 2026 15:30:33 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 17 May 2026 22:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 17 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 26: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 17.05.2026]</description>
-      <content:encoded><![CDATA[Linie 26: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 17.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -49,17 +82,6 @@
       <pubDate>Sun, 17 May 2026 04:30:05 +0200</pubDate>
       <ext:first_seen>Sun, 17 May 2026 04:30:37 +0200</ext:first_seen>
       <ext:starts_at>Sun, 17 May 2026 04:30:05 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 17.05.2026]</description>
-      <content:encoded><![CDATA[[Am 17.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
-      <pubDate>Sun, 17 May 2026 00:00:23 +0200</pubDate>
-      <ext:first_seen>Sun, 17 May 2026 00:30:41 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 17 May 2026 00:00:23 +0200</ext:starts_at>
       <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 17.05.2026]</description>
       <content:encoded><![CDATA[[Am 17.05.2026]]]></content:encoded>
@@ -93,28 +115,6 @@
       <pubDate>Sat, 16 May 2026 00:00:25 +0200</pubDate>
       <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
       <ext:starts_at>Sat, 16 May 2026 00:00:25 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[16.05.2026 – 17.05.2026]</description>
-      <content:encoded><![CDATA[[16.05.2026 – 17.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45</guid>
-      <pubDate>Sat, 16 May 2026 00:00:11 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 00:00:12 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[16.05.2026 – 17.05.2026]</description>
-      <content:encoded><![CDATA[[16.05.2026 – 17.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41E/10A: Ersatzbus 41E hält beim 10A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5</guid>
-      <pubDate>Sat, 16 May 2026 00:00:09 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 00:00:09 +0200</ext:starts_at>
       <ext:ends_at>Sun, 17 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[16.05.2026 – 17.05.2026]</description>
       <content:encoded><![CDATA[[16.05.2026 – 17.05.2026]]]></content:encoded>
