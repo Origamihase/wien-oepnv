@@ -1315,6 +1315,80 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])[a-f0-9]{32}-(us[0-9]{1,3})(?![A-Za-z0-9])",
             r"***-\1",
         ),
+        # Figma + Tailscale token-family value-shape masking. Sibling-
+        # drift closure for the secret-scanner ``_KNOWN_TOKENS`` entries
+        # added in the same round — Figma Personal Access Token
+        # (``figd_<43>``) and Tailscale auth/api/client/webhook keys
+        # (``tskey-(?:auth|api|client|webhook)-<id>-<secret>``). The
+        # log-sanitisation codepath MUST mask these alongside the
+        # scanner detection codepath; without value-shape masking, a
+        # bare leaked token in plain log text (application f-string
+        # logs, upstream error responses echoing the token back, JSON
+        # values without sensitive key names, URL paths / query strings
+        # with NON-sensitive parameter names, exception messages routed
+        # through ``_sanitize_exception_msg``) bypasses every existing
+        # key/header/URL-credential mask pattern and leaks verbatim
+        # into operator log streams and the public
+        # ``docs/feed_health.json`` artefact.
+        #
+        # Threat model:
+        #   * Figma PAT ``figd_<43>`` — Full design-collaboration scope
+        #     for the issuing user across every accessible team /
+        #     project / file. The Figma ``X-Figma-Token`` header is
+        #     already in ``_SENSITIVE_HEADERS``; this entry closes the
+        #     companion VALUE-shape gap (header name was redacted, but
+        #     the VALUE embedded in JSON / URL paths / exception text
+        #     leaked verbatim).
+        #   * Tailscale ``tskey-auth-`` — Auth Key: attach a rogue node
+        #     to the victim's private overlay network. The rogue node
+        #     sees every subnet-routed service AND pivots laterally as
+        #     a trusted peer.
+        #   * Tailscale ``tskey-api-`` — Admin REST API access: modify
+        #     ACLs (open every tailnet device to the attacker), rotate
+        #     DNS configuration (DNS-rebinding amplifier), add/remove
+        #     users, mint fresh auth keys.
+        #   * Tailscale ``tskey-client-`` — OAuth client secret: mints
+        #     fresh OAuth access tokens until revocation.
+        #   * Tailscale ``tskey-webhook-`` — Webhook signing secret:
+        #     forge tailnet event payloads accepted as authentic by
+        #     downstream consumers (state-machine confusion attacks).
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``myfigd_<body>``, ``Xtskey-auth-...`` are
+        #     preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Strict body lengths per vendor canonical format: Figma
+        #     EXACTLY 43 chars from ``[A-Za-z0-9_-]``; Tailscale
+        #     ``<tier>`` from a strict 4-keyword alternation,
+        #     ``<keyID>`` 8+ alnum, ``<keySecret>`` 20+ alnum.
+        # The masks preserve issuer-specific prefixes:
+        #   * Figma → ``figd_***`` (revocation flow at figma.com/
+        #     settings/personal-access-tokens).
+        #   * Tailscale → ``tskey-auth-***`` / ``tskey-api-***`` /
+        #     ``tskey-client-***`` / ``tskey-webhook-***`` (per-tier
+        #     attribution; each tier has a distinct revocation sub-page
+        #     under login.tailscale.com/admin/settings).
+        #
+        # Idempotence: masked forms (``figd_***``, ``tskey-auth-***``,
+        # etc.) do NOT re-match because ``*`` is OUTSIDE every body
+        # alphabet AND the masked body length (3 chars) is below every
+        # per-family floor (43 / 8 / 20).
+        #
+        # Cross-family mutex: ``figd_`` vs. ``tskey-`` prefixes are
+        # disjoint at the leading-character level, so no token can
+        # match both patterns.
+        #
+        # Marker: SENTINEL_FIGMA_TAILSCALE_TOKEN_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])(figd)_[A-Za-z0-9_\-]{43}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(tskey-(?:auth|api|client|webhook))-"
+            r"[A-Za-z0-9]{8,}-[A-Za-z0-9]{20,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)

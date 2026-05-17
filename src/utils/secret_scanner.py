@@ -1859,6 +1859,118 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])[a-f0-9]{32}-us[0-9]{1,3}(?![A-Za-z0-9])"),
         "Mailchimp API Key gefunden",
     ),
+    # Figma Personal Access Token (``figd_<43 chars from [A-Za-z0-9_-]>``).
+    # Issued via figma.com/settings/personal-access-tokens for full Figma
+    # REST API access scoped to the issuing user's accessible teams /
+    # projects / files. The Figma issuer header (``X-Figma-Token``) is
+    # ALREADY enumerated in ``src/utils/http.py:_SENSITIVE_HEADERS`` (so
+    # the cross-origin redirect strip path covers it), but the TOKEN
+    # VALUE shape was not in this scanner table — a header/value drift
+    # mirroring the pattern this round closes (header name reaches the
+    # operator log redacted, value-shape leaks verbatim).
+    #
+    # Total length 48 chars (5-char prefix + 43-char body). The
+    # ``figd_`` prefix is unambiguous (no other major issuer uses it),
+    # and the body alphabet ``[A-Za-z0-9_-]`` (base64url + underscore +
+    # dash) lies entirely inside the entropy fallback's
+    # ``[A-Za-z0-9+/=_-]`` alphabet — so the entropy regex matches the
+    # full ``figd_<body>`` span as one generic ``Hochentropischer
+    # Token-String`` finding (the dash and underscore ARE in the
+    # alphabet), losing the Figma-specific issuer attribution that
+    # incident-response triage keys off. The strict 43-char body length
+    # matches the documented canonical PAT shape (per the trufflehog /
+    # gitleaks / detect-secrets default rules) and rejects accidental
+    # ``figd_``-prefixed fragments.
+    #
+    # Threat model: a leaked Figma PAT grants the issuing user's full
+    # design-collaboration scope across every accessible team / project
+    # / file — read every design (including unpublished prototypes and
+    # internal pitch decks that routinely contain customer-facing
+    # branding before public reveal), copy proprietary design tokens
+    # (which often encode business-strategic colour / typography
+    # decisions), POST comments AS the user (impersonation risk for
+    # social-engineering reconnaissance), and exfiltrate the team's
+    # entire design-system version history. Blast radius is structurally
+    # similar to Notion (``secret_<43>`` / ``ntn_<43+>``, Round 8) for
+    # the workspace-collaboration tier — both are content-management
+    # SaaS tokens with full-workspace read/write scope.
+    #
+    # Real-world emission patterns: ``.env`` files
+    # (``FIGMA_TOKEN=figd_...``), CI/CD pipeline debug logs, README
+    # curl examples, notebook outputs hardcoding the PAT, and the
+    # canonical sibling-drift leak surface — JSON values in error
+    # responses echoing the token back via a hostile / misconfigured
+    # upstream. The revocation flow lives at figma.com/settings/
+    # personal-access-tokens > Revoke and is distinct from every other
+    # vendor's, so issuer-specific attribution accelerates IR triage.
+    (
+        re.compile(r"(?<![A-Za-z0-9])figd_[A-Za-z0-9_\-]{43}(?![A-Za-z0-9])"),
+        "Figma Personal Access Token gefunden",
+    ),
+    # Tailscale Key family (``tskey-(?:auth|api|client|webhook)-<keyID>-<keySecret>``).
+    # Issued via login.tailscale.com/admin/settings/keys for tailnet
+    # operations across four documented tiers:
+    #   * ``tskey-auth-`` — Auth Key for registering new nodes into the
+    #     tailnet's overlay network (pre-auth or reusable; with or
+    #     without ephemeral lifetime).
+    #   * ``tskey-api-`` — API Access Token for the management REST API
+    #     (manage devices, ACLs, DNS, user provisioning).
+    #   * ``tskey-client-`` — OAuth client secret for programmatic
+    #     access via the OAuth2 client-credentials flow.
+    #   * ``tskey-webhook-`` — Webhook signing secret for verifying
+    #     payload authenticity from tailnet event subscriptions.
+    #
+    # Format: ``tskey-<tier>-<keyID>-<keySecret>`` where keyID is 8+
+    # alphanumeric chars (real-world 9-14) and keySecret is 20+
+    # alphanumeric chars (real-world 30-50+). The multiple dash-
+    # separated segments bypass the entropy fallback's contiguous-match
+    # span (dashes ARE in the alphabet, but Tailscale tokens are
+    # typically broken at the dashes by the heuristic split inside
+    # ``_scan_content``) — individual ``<keyID>``/``<keySecret>``
+    # fragments frequently fall below the 24-char entropy floor when
+    # examined in isolation, and the issuer attribution that anchors
+    # the revocation flow is lost.
+    #
+    # Threat model per tier (each maps to a DISTINCT revocation
+    # sub-page of login.tailscale.com/admin/settings):
+    #   * ``auth`` — leak lets an attacker attach a rogue NODE to the
+    #     victim's private overlay network. The rogue node sees every
+    #     subnet-routed service the tailnet exposes (internal admin
+    #     panels, dev databases, monitoring dashboards) and can pivot
+    #     laterally as a trusted peer. Auth keys can have re-use limits
+    #     (single-use / N-use / unlimited) — unlimited keys are the
+    #     highest-blast-radius variant.
+    #   * ``api`` — leak grants admin-API access: modify ACLs (open
+    #     attacker access to every tailnet device), rotate DNS
+    #     configuration (DNS-rebinding amplifier), add/remove users,
+    #     mint fresh auth keys until revocation.
+    #   * ``client`` — OAuth client secret. Leak mints OAuth access
+    #     tokens for the configured scope — same blast radius as the
+    #     ``api`` tier for any operation the OAuth scope grants.
+    #   * ``webhook`` — webhook signing secret. Leak lets an attacker
+    #     FORGE tailnet event payloads (device-joined, device-removed,
+    #     ACL-updated) that downstream consumers will accept as
+    #     authentic, enabling state-machine confusion attacks against
+    #     IAM-integration glue code.
+    #
+    # The tier keyword is the structural disambiguator AND the
+    # incident-response attribution — each tier has a distinct
+    # revocation sub-page (the admin settings UI has separate "Keys",
+    # "OAuth clients", and "Webhooks" tabs). Distinct reason per tier
+    # routes IR triage to the correct sub-page in seconds.
+    #
+    # Real-world emission patterns: GitHub Actions secrets
+    # (``TS_AUTH_KEY``, ``TAILSCALE_API_TOKEN``), Kubernetes
+    # ConfigMaps / Secrets for the ``tailscale`` sidecar / operator,
+    # Docker Compose env, ``terraform.tfvars`` for the Tailscale
+    # Terraform provider, Ansible inventory.
+    (
+        re.compile(
+            r"(?<![A-Za-z0-9])tskey-(?:auth|api|client|webhook)-"
+            r"[A-Za-z0-9]{8,}-[A-Za-z0-9]{20,}(?![A-Za-z0-9])"
+        ),
+        "Tailscale Key gefunden",
+    ),
     # AWS STS Service Bearer Token (``ABIA<16 chars from [A-Z0-9]>``).
     # Issued by ``sts:GetServiceBearerToken`` for service-to-service
     # authentication on behalf of an AWS user. Same 4+16=20 char format
