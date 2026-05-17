@@ -808,6 +808,121 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])(xai)-[A-Za-z0-9]{32,}(?![A-Za-z0-9])",
             r"\1-***",
         ),
+        # DevOps / CI/CD Pipeline + DigitalOcean Cloud token-family
+        # value-shape masking. Sibling-drift closure for the secret-
+        # scanner ``_KNOWN_TOKENS`` entries that detect committed CI/CD
+        # tokens across 4 vendors / 13 issuer prefixes:
+        #   * GitLab CI/CD pipeline tier (8): ``glrt-`` (Runner Auth),
+        #     ``gldt-`` (Deploy), ``glagent-`` (KAS Agent), ``glft-``
+        #     (Feature Flag client), ``glimt-`` (Incoming Mail / Service
+        #     Desk), ``glcbt-`` (CI Build per-job), ``glsoat-`` (SCIM
+        #     OAuth), ``glptt-`` (Pipeline Trigger).
+        #   * CircleCI Personal API Token: ``CCIPAT_<32+>``.
+        #   * Buildkite (2): ``bkat_`` (Agent), ``bkua_`` (User Access).
+        #   * DigitalOcean cloud (2): ``dop_v1_<64 hex>`` (PAT) +
+        #     ``doo_v1_<64 hex>`` (OAuth Refresh).
+        # The scanner closed the *detection* codepath for committed
+        # source files across the 2026-05-16 / 2026-05-17 rounds; the
+        # log-sanitisation codepath was NOT extended in any prior
+        # round — bare tokens in plain log text (application f-string
+        # logs, upstream error responses echoing the token back, JSON
+        # values with NON-sensitive key names, URL paths / query
+        # strings) bypassed every existing key/header/URL-credential
+        # mask pattern and leaked verbatim into operator log streams
+        # plus the public ``docs/feed_health.json`` artefact.
+        #
+        # Threat model per family:
+        #   * GitLab Runner / Deploy / Agent / Pipeline Trigger / CI
+        #     Build / Feature Flag / Incoming Mail / SCIM OAuth — CI/CD
+        #     code-execution on the project's runners, secrets
+        #     exfiltration, cluster control plane (KAS), feature-flag
+        #     manipulation, SCIM user-provisioning hijack.
+        #   * CircleCI ``CCIPAT_`` — full user-scoped REST-API access:
+        #     read every accessible pipeline's build logs (which often
+        #     include masked-but-echoed env vars), trigger pipelines
+        #     with arbitrary parameters, modify project settings.
+        #   * Buildkite ``bkat_`` (Agent) — highest leak surface in the
+        #     modern CI stack: rogue agents drain the job queue with
+        #     whatever build-secret env vars the pipeline exposes.
+        #   * Buildkite ``bkua_`` (User Access) — full user-scoped
+        #     access across every accessible Buildkite organisation.
+        #   * DigitalOcean ``dop_v1_`` — full account API access
+        #     (Droplets, Spaces, Databases, Kubernetes clusters across
+        #     every project in the account). ``doo_v1_`` mints fresh
+        #     ``dop_v1_`` access tokens until revoked at the OAuth
+        #     app authorisation page.
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``myglrt-``, ``fooCCIPAT_`` are preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Strict body lengths per vendor canonical format:
+        #     glrt/gldt/glft = exactly 20 chars; glsoat = 20+; glimt =
+        #     25+; glagent = 50+; glcbt = ``<alnum>_<20+>``; glptt =
+        #     exactly 40; CCIPAT_ = 32+; bkat_/bkua_ = 40+ alnum;
+        #     dop_v1_/doo_v1_ = exactly 64 lowercase hex.
+        # The mask preserves the issuer-specific prefix
+        # (``glrt-***``, ``CCIPAT_***``, ``bkat_***``, ``dop_v1_***``
+        # etc.) for incident-response triage — each tier has a distinct
+        # revocation flow:
+        #   * GitLab CI/CD — project / group / instance access-tokens
+        #     pages (each token type has its own admin sub-page).
+        #   * CircleCI — app.circleci.com/settings/user/tokens > Revoke.
+        #   * Buildkite Agent — buildkite.com/organizations/<org>/agents.
+        #   * Buildkite User — buildkite.com/user/api-access-tokens.
+        #   * DigitalOcean — cloud.digitalocean.com/account/api/tokens.
+        #
+        # Idempotence: masked forms (``glrt-***``, ``CCIPAT_***``,
+        # ``bkat_***``, ``dop_v1_***``) do NOT match any of these
+        # regexes because ``*`` is not in any body alphabet AND the
+        # masked body length (3 chars) is below every per-family floor
+        # (20/25/27/32/40/50/64).
+        #
+        # Marker: SENTINEL_CICD_DEVOPS_TOKEN_LOG_SANITIZATION_DRIFT.
+        #
+        # Ordering: ``glcbt-`` (special two-part body) listed BEFORE
+        # the other GitLab CI/CD prefixes so the more-specific
+        # ``glcbt-<alnum>_<20+>`` shape wins first — preserving the
+        # full ``glcbt-***`` attribution rather than splitting the
+        # body span. The other GitLab prefixes are mutually exclusive
+        # at the prefix level (glrt vs gldt vs glft etc.) so order
+        # among them is documentation aid only.
+        (
+            r"(?<![A-Za-z0-9])(glcbt)-[A-Za-z0-9]+_[A-Za-z0-9_\-]{20,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(glrt|gldt|glft)-[A-Za-z0-9_\-]{20}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(glagent)-[A-Za-z0-9_\-]{50,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(glimt)-[A-Za-z0-9_\-]{25,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(glsoat)-[A-Za-z0-9_\-]{20,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(glptt)-[0-9a-zA-Z_\-]{40}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(CCIPAT)_[A-Za-z0-9_\-]{32,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(bkat|bkua)_[A-Za-z0-9]{40,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(dop_v1|doo_v1)_[a-f0-9]{64}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
