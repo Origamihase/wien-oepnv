@@ -55,108 +55,6 @@ def _isolated_quota_counter(
     vor_provider._flush_quota_cache()
 
 
-# ---- _classify_hbf_direction ----------------------------------------------
-
-
-@pytest.mark.parametrize(
-    "direction_str,expected",
-    [
-        # Southbound substring matches
-        ("Wien Meidling", "Meidling"),
-        ("Mödling", "Meidling"),
-        ("Moedling Bahnhof", "Meidling"),
-        ("Wiener Neustadt Hbf", "Meidling"),
-        ("Payerbach-Reichenau", "Meidling"),
-        ("Graz Hbf", "Meidling"),
-        ("Klagenfurt Hbf", "Meidling"),
-        ("Flughafen Wien Bahnhof", "Meidling"),
-        ("Wolfsthal", "Meidling"),
-        ("Wien Flughafen", "Meidling"),
-        # Northbound substring matches
-        ("Wien Floridsdorf", "Praterstern"),
-        ("Praterstern", "Praterstern"),
-        ("Stockerau", "Praterstern"),
-        ("Hollabrunn", "Praterstern"),
-        ("Retz", "Praterstern"),
-        ("Břeclav", "Praterstern"),
-        ("Breclav", "Praterstern"),
-        ("Wolkersdorf", "Praterstern"),
-        ("Mistelbach", "Praterstern"),
-        ("Laa an der Thaya", "Praterstern"),
-        ("Gänserndorf", "Praterstern"),
-        # Northbound exact-terminus matches (no substring hit)
-        ("Wien Mitte", "Praterstern"),
-        ("Wien Mitte-Landstraße", "Praterstern"),
-        ("Wien Mitte Bahnhof", "Praterstern"),
-        # Unrecognised — terminus AT Hbf is irrelevant; Westbahnhof is
-        # a different corridor; Marchegg / Bratislava-Petržalka were
-        # intentionally removed from the northbound substring list
-        # (track filter handles these cases, see module docstring).
-        ("Wien Hauptbahnhof", None),
-        ("Wien Westbahnhof", None),
-        ("Marchegg", None),
-        ("Bratislava-Petržalka", None),
-        ("", None),                    # empty
-        ("   ", None),                 # whitespace-only
-    ],
-)
-def test_classify_hbf_direction(direction_str: str, expected: str | None) -> None:
-    """Direction classification covers the canonical termini per direction."""
-
-    assert script.classify_hbf_direction(direction_str) == expected
-
-
-def test_classify_hbf_direction_case_insensitive_substring() -> None:
-    """Substring match operates case-insensitively for direction strings."""
-
-    assert script.classify_hbf_direction("MÖDLING") == "Meidling"
-    assert script.classify_hbf_direction("graz hbf") == "Meidling"
-    assert script.classify_hbf_direction("FLORIDSDORF") == "Praterstern"
-
-
-def test_classify_hbf_direction_substring_at_any_position() -> None:
-    """Match anywhere in the string (e.g., ``Wien Meidling Hauptbahnhof``)."""
-
-    assert script.classify_hbf_direction("Wien Meidling Bahnhof") == "Meidling"
-    # Both substrings are southbound; either match yields the same label.
-    assert script.classify_hbf_direction("via Meidling nach Mödling") == "Meidling"
-
-
-def test_classify_hbf_direction_resolves_mixed_via_to_rightmost() -> None:
-    """Conflicting north+south substrings → the right-most match wins.
-
-    Regression test for the pre-2026-05-15 first-list-wins bug. VAO's
-    ``direction`` field renders the *terminus* at the end of the
-    string; the right-most matching substring therefore identifies the
-    true terminus instead of an upstream "via" waypoint that happens to
-    belong to the opposite direction.
-    """
-
-    # Terminus = Floridsdorf (north); "Mödling" appears as a via stop.
-    assert (
-        script.classify_hbf_direction("via Mödling nach Floridsdorf")
-        == "Praterstern"
-    )
-    # Terminus = Mödling (south); "Floridsdorf" appears as a via stop.
-    assert (
-        script.classify_hbf_direction("via Floridsdorf nach Mödling")
-        == "Meidling"
-    )
-    # Variant with an explicit terminus suffix ("Bahnhof") after the
-    # terminus name keeps the right-most match alignment intact.
-    assert (
-        script.classify_hbf_direction("via Mödling nach Floridsdorf Bahnhof")
-        == "Praterstern"
-    )
-    # Mixed string with a southbound prefix and a multi-step northbound
-    # path — the right-most match (Praterstern, north) wins because it
-    # marks the terminus.
-    assert (
-        script.classify_hbf_direction("Meidling via Floridsdorf nach Praterstern")
-        == "Praterstern"
-    )
-
-
 # ---- _is_sbahn_line --------------------------------------------------------
 
 
@@ -374,24 +272,28 @@ def _dep(
 
 
 def test_collect_groups_by_direction() -> None:
-    """Departures split into south (Meidling) and north (Floridsdorf) buckets."""
+    """Departures split into south (Meidling) and north (Praterstern) buckets.
+
+    The geographic primary path resolves every known terminus via the
+    central station directory and compares its latitude against
+    :data:`HBF_REFERENCE_LATITUDE`. Wolfsthal (lat ≈ 48.14) is south
+    of Hbf, Meidling and Mödling are south, Floridsdorf is north.
+    """
 
     departures = [
-        _dep(name="S 1", direction="Wien Meidling"),
-        _dep(name="S 2", direction="Mödling"),
-        _dep(name="REX 3", direction="Wien Floridsdorf"),
-        _dep(name="S 7", direction="Wolfsthal"),
-        _dep(name="REX 1", direction="Břeclav"),
+        _dep(name="S 1", direction="Wien Meidling"),     # lat 48.18 → south
+        _dep(name="S 2", direction="Mödling"),           # lat 48.09 → south
+        _dep(name="REX 3", direction="Wien Floridsdorf"),  # lat 48.26 → north
+        _dep(name="S 7", direction="Wolfsthal"),         # lat 48.14 → south
+        _dep(name="S 3", direction="Stockerau"),         # lat 48.38 → north
     ]
-    by_direction, diag = script._collect_hbf_observations(departures)
-    unrecognised = diag.unrecognised_terminus
+    by_direction, _ = script._collect_hbf_observations(departures)
 
     south = by_direction[script.DIRECTION_LABEL_SOUTHBOUND]
     north = by_direction[script.DIRECTION_LABEL_NORTHBOUND]
 
     assert {obs.name for obs in south} == {"S1", "S2", "S7"}
-    assert {obs.name for obs in north} == {"REX3", "REX1"}
-    assert unrecognised == {}
+    assert {obs.name for obs in north} == {"REX3", "S3"}
 
 
 def test_collect_skips_non_sbahn_lines() -> None:
@@ -403,14 +305,10 @@ def test_collect_skips_non_sbahn_lines() -> None:
         _dep(name="EC 24", direction="Mödling"),
         _dep(name="Bus 13A", direction="Wien Meidling"),
     ]
-    by_direction, diag = script._collect_hbf_observations(departures)
-    unrecognised = diag.unrecognised_terminus
+    by_direction, _ = script._collect_hbf_observations(departures)
 
     assert by_direction[script.DIRECTION_LABEL_SOUTHBOUND] == []
     assert by_direction[script.DIRECTION_LABEL_NORTHBOUND] == []
-    # Non-S/REX entries are line-filtered, so they don't count as
-    # "unrecognised direction" — the direction is never evaluated.
-    assert unrecognised == {}
 
 
 def test_collect_captures_cancelled_departures_as_cancelled_observations() -> None:
@@ -495,23 +393,70 @@ def test_departure_is_cancelled_accepts_bool_and_string_true() -> None:
     assert script._departure_is_cancelled({}) is False
 
 
-def test_collect_counts_unrecognised_termini() -> None:
-    """Unknown termini surface in the returned counter for INFO logging."""
+def test_collect_geographic_resolution_overrides_track_assignment() -> None:
+    """A known terminus's latitude wins over the track-based fallback.
+
+    Wien Floridsdorf (lat ≈ 48.256) is geographically north of Hbf, so
+    the observation lands in the NORTHBOUND bucket even when the train
+    departs from Bahnsteig 1 (which the fallback would otherwise
+    label as SOUTHBOUND). Symmetric for Wien Meidling on Bahnsteig 2.
+    """
 
     departures = [
-        _dep(name="S 1", direction="Some Unknown Place"),
-        _dep(name="S 2", direction="Some Unknown Place"),
-        _dep(name="S 3", direction="Another Unknown"),
+        # Northern terminus on Bahnsteig 1 → geographic resolution wins.
+        _dep(name="REX 3", direction="Wien Floridsdorf", track="1"),
+        # Southern terminus on Bahnsteig 2 → geographic resolution wins.
+        _dep(name="S 1", direction="Wien Meidling", track="2"),
     ]
-    by_direction, diag = script._collect_hbf_observations(departures)
-    unrecognised = diag.unrecognised_terminus
+    by_direction, _ = script._collect_hbf_observations(departures)
+    south = by_direction[script.DIRECTION_LABEL_SOUTHBOUND]
+    north = by_direction[script.DIRECTION_LABEL_NORTHBOUND]
 
-    assert by_direction[script.DIRECTION_LABEL_SOUTHBOUND] == []
-    assert by_direction[script.DIRECTION_LABEL_NORTHBOUND] == []
-    assert unrecognised == {
-        "Some Unknown Place": 2,
-        "Another Unknown": 1,
-    }
+    assert {obs.name for obs in south} == {"S1"}
+    assert {obs.name for obs in north} == {"REX3"}
+
+
+def test_collect_falls_back_to_track_for_unknown_terminus() -> None:
+    """Termini absent from the central directory fall back to the track.
+
+    ``Břeclav`` and ``Bratislava-Petržalka`` are not present in
+    ``data/stations.json``; with the hybrid resolver, the
+    surviving track-trunk determines the direction. No departure is
+    dropped for an unrecognised terminus.
+    """
+
+    departures = [
+        # Unknown terminus, track 1 → SOUTHBOUND per fallback.
+        _dep(name="REX 1", direction="Břeclav", track="1"),
+        # Unknown terminus, track 2 → NORTHBOUND per fallback.
+        _dep(name="REX 2", direction="Bratislava-Petržalka", track="2"),
+        # Empty direction string, track 1 → SOUTHBOUND per fallback;
+        # pre-refactor this row was dropped as an "unrecognised
+        # terminus" rather than reaching either bucket.
+        _dep(name="S 8", direction="", track="1"),
+    ]
+    by_direction, _ = script._collect_hbf_observations(departures)
+    south = by_direction[script.DIRECTION_LABEL_SOUTHBOUND]
+    north = by_direction[script.DIRECTION_LABEL_NORTHBOUND]
+
+    assert {obs.name for obs in south} == {"REX1", "S8"}
+    assert {obs.name for obs in north} == {"REX2"}
+
+
+def test_collect_diagnostics_have_no_unrecognised_field() -> None:
+    """The diagnostics dataclass no longer carries the unrecognised counter.
+
+    Pinning the removal so a future refactor cannot silently restore the
+    legacy substring/whitelist surface; the hybrid resolver is
+    exhaustive and there is no third "unrecognised" bucket anymore.
+    """
+
+    departures = [
+        _dep(name="S 1", direction="Some Unknown Place", track="1"),
+        _dep(name="S 2", direction="Another Unknown", track="2"),
+    ]
+    _, diag = script._collect_hbf_observations(departures)
+    assert not hasattr(diag, "unrecognised_terminus")
 
 
 def test_collect_handles_non_mapping_entries() -> None:
