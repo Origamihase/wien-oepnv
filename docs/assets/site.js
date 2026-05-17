@@ -421,8 +421,37 @@
       { unit: "", formatValue: (v) => nfInt.format(v) });
   }
 
+  function renderStammstreckeLiveTile(rows) {
+    // Mirrors ``render_readme_stammstrecke_live_block`` in
+    // ``scripts/generate_markdown_stats.py``: arithmetic mean of
+    // ``delay_minutes`` over the rolling 60-minute window. We compute it
+    // client-side instead of fetching a pre-rendered fragment so the tile
+    // stays accurate between the workflow's 30-minute README refreshes.
+    const node = $("#stammstrecke-live-avg");
+    if (!node) return;
+    const cutoff = Date.now() - 60 * 60 * 1000;
+    let sum = 0;
+    let count = 0;
+    for (const r of rows) {
+      const ts = Date.parse(r.timestamp);
+      if (!Number.isFinite(ts) || ts < cutoff) continue;
+      const d = parseFloat(r.delay_minutes);
+      if (!Number.isFinite(d)) continue;
+      sum += d;
+      count += 1;
+    }
+    node.textContent = count === 0 ? "N/A" : `${nf1.format(sum / count)} min`;
+  }
+
+  function resetStammstreckeLiveTile(text) {
+    const node = $("#stammstrecke-live-avg");
+    if (node) node.textContent = text;
+  }
+
   function renderStammstreckeStats(year, rows) {
     setYearLabels(year);
+
+    renderStammstreckeLiveTile(rows);
 
     const valid = rows
       .map((r) => ({ ...r, delay: parseFloat(r.delay_minutes) }))
@@ -692,6 +721,7 @@
       const rows = rowsToObjects(parseCSV(text));
       renderStammstreckeStats(year, rows);
     } catch (err) {
+      resetStammstreckeLiveTile("–");
       showError("stammstrecke-error", `Stammstrecke-Statistik nicht verfügbar: ${err.message}`);
       throw err;
     }
