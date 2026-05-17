@@ -176,6 +176,14 @@ def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
     # without touching production timeouts or retry counts.
     env = os.environ.copy()
     env["WIEN_OEPNV_OSM_ENRICH"] = "0"
+    # Also disable the manual-block enrichment (HAFAS LocMatch for
+    # ``type=manual_*`` entries without coordinates) — same reason as
+    # ``WIEN_OEPNV_OSM_ENRICH=0``: 296 real HAFAS round-trips from a
+    # GitHub-hosted runner regularly take 3-5 minutes and tip the
+    # orchestrator over even the bumped 180-second pytest timeout.
+    # The manual-enrichment helper is exercised in isolation by
+    # ``tests/test_update_station_directory_manual_enrichment.py``.
+    env["WIEN_OEPNV_MANUAL_ENRICH"] = "0"
 
     # Run the wrapper without modifications — should succeed if main is clean.
     result = subprocess.run(  # noqa: S603  # nosec B603
