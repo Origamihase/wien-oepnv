@@ -359,6 +359,16 @@ code {
   color: var(--c-text-subtle);
   font-weight: 600;
 }
+/* Reserve a stable 4-character slot for the year placeholder so the
+ * paragraph height does not change once JS swaps the bootstrap "–"
+ * for the actual ``YYYY`` value (this was the third CLS culprit on
+ * desktop, inside ``section#ausfaelle > p.section__sub``). */
+[data-year-label] {
+  display: inline-block;
+  min-width: 4ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
 .section__sub {
   margin: 0;
   color: var(--c-text-muted);
@@ -517,6 +527,11 @@ code {
   box-shadow: var(--shadow-sm);
   display: grid;
   gap: 0.2rem;
+  /* Keep the rendered KPI tile at least as tall as its skeleton so the
+   * transition between the loading state and the real numbers never
+   * shrinks the card. The 112 px floor matches the typical
+   * label + value + sub layout at the body font sizes. */
+  min-height: 112px;
 }
 .kpi__label {
   margin: 0;
@@ -562,12 +577,27 @@ code {
   letter-spacing: -0.005em;
 }
 
-/* Bars (SVG-based, CSP-friendly) */
+/* Bars (SVG-based, CSP-friendly).
+ *
+ * Each ``.bars`` container is populated by JS once the relevant CSV
+ * arrives from raw.githubusercontent.com. Reserving the eventual row
+ * height up-front (per ID, since each bucket has a known max bar count)
+ * keeps Cumulative Layout Shift near zero — before this guard the
+ * ``#ausfaelle`` section alone scored ~0.94 CLS on mobile because the
+ * 24-hour, 10-line and 7-weekday bars all materialised at once. The
+ * heights below match a single bar row at the active font (~28 px incl.
+ * ``gap`` between rows) times the cardinality of the bucket; the
+ * containers may exceed them when label wrapping kicks in, but never
+ * shrink. */
 .bars {
   display: grid;
   gap: 0.45rem;
   font-variant-numeric: tabular-nums;
 }
+#stoerungen-providers, #ausfaelle-line { min-height: 290px; }
+#stoerungen-weekday, #stammstrecke-weekday, #ausfaelle-weekday { min-height: 200px; }
+#stoerungen-hour, #stammstrecke-hour, #ausfaelle-hour { min-height: 700px; }
+#stammstrecke-direction, #ausfaelle-direction { min-height: 140px; }
 .bar-row {
   display: grid;
   grid-template-columns: minmax(6em, 18ch) 1fr minmax(3em, max-content);
@@ -619,8 +649,8 @@ code {
   border: 1px solid var(--c-border);
   min-height: 80px;
 }
-.skeleton--feed { min-height: 96px; }
-.kpi.skeleton { background: var(--c-surface-2); border: 1px solid var(--c-border); min-height: 92px; }
+.skeleton--feed { min-height: 152px; }
+.kpi.skeleton { background: var(--c-surface-2); border: 1px solid var(--c-border); min-height: 112px; }
 .skeleton::after {
   content: "";
   position: absolute;
@@ -655,12 +685,27 @@ code {
   position: absolute;
   inset: 0;
   z-index: -1;
+  /* JPEG fallback first — browsers that do not understand
+   * ``image-set()`` (notably pre-2021 Chromium and Safari < 14) drop
+   * the second declaration silently and use the JPEG. Engines that do
+   * understand it pick the WebP, saving ~45 % on the transferred
+   * payload without any visible difference (the dark gradient overlay
+   * masks the slight quality reduction). */
   background-image:
     linear-gradient(180deg,
       rgba(10, 17, 38, 0.58) 0%,
       rgba(10, 17, 38, 0.78) 55%,
       rgba(10, 17, 38, 0.94) 100%),
     url("footer-bg.jpg");
+  background-image:
+    linear-gradient(180deg,
+      rgba(10, 17, 38, 0.58) 0%,
+      rgba(10, 17, 38, 0.78) 55%,
+      rgba(10, 17, 38, 0.94) 100%),
+    image-set(
+      url("footer-bg.webp") type("image/webp"),
+      url("footer-bg.jpg") type("image/jpeg")
+    );
   background-size: cover;
   background-position: 58% center;
   background-repeat: no-repeat;

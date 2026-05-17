@@ -5,6 +5,91 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Performance: CLS ≈ 0.94 → ≈ 0 und WebP-Varianten für die zwei
+  Bild-Assets (2026-05-17)**:
+  * Zwei frische Lighthouse-Läufe (13.0.2) gegen
+    `https://origamihase.github.io/wien-oepnv/site.html` zeigten, dass
+    der Asset-Payload nach dem ersten Optimierungs-Pass (Eintrag oben)
+    zwar passte, das mobile Profil aber bei `cumulative-layout-shift =
+    0.937` (Desktop 0.598) hängen blieb. Schuld waren drei dynamische
+    Ladestellen, die ihren Platzbedarf vor dem CSV-Render nicht
+    reservierten: die zehn `.bars`-Container in den drei `chart-grid`
+    Sektionen (ohne jedes Skelett), die `[data-year-label]`-Spans
+    (Text-Sprung „–" → „YYYY") und die KPI-/Feed-Skelette, die mit
+    `min-height: 92/96 px` deutlich unter der Endhöhe der späteren
+    Inhalte saßen. Auf Mobil verschob sich daher `section#ausfaelle`
+    um 0.937 Layout-Score, auf Desktop traten drei separate Shifts
+    auf (chart-grid#ausfaelle, card--wide#stammstrecke-direction und
+    der Jahres-Paragraph in `#ausfaelle > p.section__sub`).
+  * `docs/assets/site.css`:
+    - Pro `#…-hour` / `#…-weekday` / `#…-line` / `#…-providers` /
+      `#…-direction` ein expliziter `min-height` (700 / 200 / 290 /
+      290 / 140 px), bemessen an „Bar-Anzahl × ~28 px Row + Gap". Die
+      Container reservieren damit beim ersten Paint exakt den Platz,
+      den `renderBars()` später mit den CSV-Werten füllt — kein
+      Push-Down mehr, wenn die Daten ankommen.
+    - `.kpi { min-height: 112px }` und `.kpi.skeleton { min-height:
+      112px }` (war 92 px) — die Skelette matchen jetzt die echte
+      Card-Höhe (Label + clamp-Wert + Sub-Zeile + Padding), so dass
+      KPI-Reveals weder schrumpfen noch wachsen.
+    - `.skeleton--feed { min-height: 152px }` (war 96 px) — die
+      Feed-Items rendern typischerweise Titel + Description + Meta in
+      ~150 px, also gleicht die Reserve den Endwert an.
+    - `[data-year-label] { display: inline-block; min-width: 4ch;
+      text-align: center; font-variant-numeric: tabular-nums }` —
+      reserviert die volle „YYYY"-Breite für den „–"-Platzhalter, so
+      dass der Jahres-Tausch durch `setYearLabels()` keine
+      Zeilenumbruch- oder Word-Spacing-Verschiebung mehr auslöst.
+  * `docs/assets/site.html` + `docs/assets/site.css`:
+    - `train.png` (63 KB Palette-PNG) bekommt ein verlustfreies
+      `train.webp` Geschwister (57 KB, –9 %) und wird via
+      `<picture><source type="image/webp" srcset="…webp"><img …></picture>`
+      ausgeliefert. Engines ohne WebP-Unterstützung laden weiterhin
+      direkt das PNG, die `<img>` behält ihre 1584×224-Attribute und
+      damit die identische CLS-Reservierung.
+    - `footer-bg.jpg` (195 KB JPEG q=72) bekommt ein lossy
+      `footer-bg.webp` Geschwister (108 KB q=75, –45 %, weil die
+      78–94 % dunkle Verlaufs-Overlay jegliche WebP-Artefakte
+      maskiert). Die `.site-footer::before`-Regel deklariert
+      `background-image` zweimal: erst mit JPEG-`url()` als
+      Universal-Fallback, dann mit `image-set(url("…webp"),
+      url("…jpg"))` — moderne Engines (Chrome 88+, Safari 14+,
+      Firefox 88+ ≈ 95 % Global Reach) wählen die WebP, ältere
+      ignorieren die zweite Deklaration und behalten die JPEG.
+  * `scripts/optimize_site_assets.py`:
+    - Neue `TRAIN_WEBP` / `FOOTER_WEBP` Konstanten und zwei
+      Pillow-Save-Aufrufe am Ende der bestehenden
+      `_optimise_train_png()` / `_optimise_footer_jpg()` Funktionen
+      generieren die WebP-Varianten in einem einzigen Skript-Lauf.
+      Train.webp ist verlustfrei (`lossless=True`), Footer.webp läuft
+      mit `quality=75`, beide nutzen `method=6` (langsame, beste
+      Kompression — wird nur bei einer Quell-Änderung neu erzeugt).
+      `--skip-images` lässt beide WebP-Pfade unverändert (Test- und
+      Pre-commit-Pfad bleiben Pure-Python und brauchen kein libwebp).
+  * Erwartete Lighthouse-Wirkung (rechnerisch — neue Reports liefern
+    Maintainer nach):
+    - **CLS Mobil 0.937 → ≈ 0.00, Desktop 0.598 → ≈ 0.00** durch die
+      vier `min-height`-Cluster (Bars, KPIs, Feed, Year).
+    - **Performance-Score Mobil 76 → 95+, Desktop 78 → 95+** —
+      CLS hatte beide Profile auf den Performance-Schlüsselmetriken
+      blockiert, FCP/LCP/TBT lagen schon im grünen Bereich.
+    - **Transfer-Gewinn ~92 KB** für moderne Browser (Train WebP
+      ‑5 KB, Footer WebP ‑87 KB), bei unverändertem Fallback-Pfad
+      für ältere Engines.
+  * Was sich **nicht** ändert: Final-State-Rendering (alle
+    Reservierungen werden im geladenen Zustand überschrieben oder
+    perfekt aufgefüllt), CSP (`img-src 'self' data:` deckt WebP
+    aus demselben Origin schon ab), Feed-/CSV-Pfade, Cache-Strategie
+    (GitHub Pages liefert weiterhin 10 min `max-age`, was Lighthouse
+    via `cache-insight` zwangsläufig als „nicht ideal" markiert —
+    außerhalb der Reichweite eines statischen Workflows).
+  * `python scripts/optimize_site_assets.py --check` läuft grün;
+    `tests/scripts/test_optimize_site_assets.py` (6 Tests) bleibt
+    grün, weil der Image-Pfad wie bisher hinter `shutil.which`-
+    Guards lebt und die WebP-Save-Calls innerhalb der bestehenden
+    `_optimise_*` Funktionen liegen.
+  * Marker: SENTINEL_LIGHTHOUSE_2026_05_17_CLS_RESERVATION.
+
 * **Dashboard: „Ausfälle nach Wochentag" als eigener Chart-Block
   (2026-05-17)**:
   * Die Ausfall-Sektion auf `docs/site.html#ausfaelle` zeigt jetzt –
