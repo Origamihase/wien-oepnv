@@ -7,18 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 11:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 11:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U3: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[U6: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
-      <pubDate>Mon, 18 May 2026 10:34:00 +0200</pubDate>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Mon, 18 May 2026 11:17:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 08:00:39 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 11:17:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c4d4448b0267859a73cc289d87d6fb4d0e216ade078fa509342ef899d6ba97f1</guid>
+      <pubDate>Mon, 18 May 2026 11:14:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 11:30:40 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 11:14:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 40: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 40: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8592082f0ee1e02c1752914f4264dc0c7712b06abe68bfff8093855857b88f37</guid>
+      <pubDate>Mon, 18 May 2026 10:39:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 11:30:40 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 10:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10: Schadhafter Zug Einstieg Thalistraé 153]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b808b58a65d3336c37cd2aaef7637d266ccc2d3d68c47a060644ee56ae55724a</guid>
+      <pubDate>Mon, 18 May 2026 10:38:40 +0200</pubDate>
       <ext:first_seen>Mon, 18 May 2026 11:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 10:34:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 11:20:00 +0200</ext:ends_at>
-      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+      <ext:starts_at>Mon, 18 May 2026 10:38:40 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 11:36:00 +0200</ext:ends_at>
+      <description>[Am 18.05.2026]</description>
+      <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Schadhaftes Fahrzeug]]></title>
@@ -30,17 +63,6 @@
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
       <content:encoded><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fdcda7ef6a92179bf10d7bc572ea4566627e0563f24d6ad54899c823e3aca356</guid>
-      <pubDate>Mon, 18 May 2026 10:26:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 11:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 10:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Wien Mitte ↔ Flughafen Wien]]></title>
@@ -95,28 +117,6 @@
       <ext:ends_at>Thu, 11 Jun 2026 05:00:00 +0200</ext:ends_at>
       <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [18.05.2026 – 11.06.2026]</description>
       <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[18.05.2026 – 11.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
-      <pubDate>Sun, 17 May 2026 00:00:23 +0200</pubDate>
-      <ext:first_seen>Sun, 17 May 2026 00:30:41 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 17 May 2026 00:00:23 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[17.05.2026 – 18.05.2026]</description>
-      <content:encoded><![CDATA[[17.05.2026 – 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
-      <pubDate>Sat, 16 May 2026 00:00:25 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 00:00:25 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[16.05.2026 – 18.05.2026]</description>
-      <content:encoded><![CDATA[[16.05.2026 – 18.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
