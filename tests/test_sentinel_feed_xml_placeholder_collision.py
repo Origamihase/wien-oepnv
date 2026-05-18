@@ -90,13 +90,15 @@ Marker: SENTINEL_FEED_XML_PLACEHOLDER_COLLISION.
 
 from __future__ import annotations
 
+import secrets as _secrets
 from datetime import UTC, datetime
-from typing import Any
+from typing import Any, cast
 
 import pytest
 
 import src.build_feed
 from src.build_feed import _emit_item, _make_rss
+from src.feed_types import FeedItem
 
 
 SENTINEL_FEED_XML_PLACEHOLDER_COLLISION = (
@@ -119,19 +121,22 @@ _PH_TITLE_FIXED = f"___CDATA_TITLE_{_FIXED_UID}___"
 
 @pytest.fixture
 def fixed_uid(monkeypatch: pytest.MonkeyPatch) -> str:
-    """Pin ``secrets.token_hex`` inside ``src.build_feed`` so every call
-    returns the same UID, making the placeholder fully predictable for
-    PoC tests."""
-    monkeypatch.setattr(src.build_feed.secrets, "token_hex", lambda _n: _FIXED_UID)
+    """Pin ``secrets.token_hex`` in the standard-library ``secrets``
+    module so every call returns the same UID, making the placeholder
+    fully predictable for PoC tests. ``src/build_feed.py`` performs a
+    plain ``import secrets`` at module scope, so patching
+    ``_secrets.token_hex`` propagates to the call site verbatim."""
+    monkeypatch.setattr(_secrets, "token_hex", lambda _n: _FIXED_UID)
     return _FIXED_UID
 
 
-def _base_item(**overrides: Any) -> dict[str, Any]:
-    """Build a minimal FeedItem-shaped dict suitable for ``_emit_item``.
+def _base_item(**overrides: Any) -> FeedItem:
+    """Build a minimal :class:`FeedItem` suitable for ``_emit_item``.
 
     The defaults are valid, non-colliding values. Tests override the
-    specific field they want to plant the placeholder in.
-    """
+    specific field they want to plant the placeholder in. The
+    :func:`cast` keeps mypy happy with optional ``NotRequired`` fields
+    while still giving runtime ``dict.update`` semantics."""
     item: dict[str, Any] = {
         "source": "test",
         "title": "Test Disruption",
@@ -142,11 +147,9 @@ def _base_item(**overrides: Any) -> dict[str, Any]:
         "starts_at": _NOW,
         "ends_at": None,
         "category": "Hinweis",
-        "lines": [],
-        "stops": [],
     }
     item.update(overrides)
-    return item
+    return cast(FeedItem, item)
 
 
 # ---------------------------------------------------------------------------
