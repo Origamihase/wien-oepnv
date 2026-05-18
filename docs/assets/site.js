@@ -657,6 +657,11 @@
 
   let refreshTimer = null;
   let currentAbort = null;
+  let sectionObserver = null;
+  // IDs of statistic sections the user has revealed by scrolling. A refresh
+  // (manual or automatic) only re-fetches whatever lives in this set – the
+  // feed is the only thing that always reloads.
+  const loadedSections = new Set();
 
   async function loadAll() {
     if (currentAbort) currentAbort.abort();
@@ -667,24 +672,32 @@
     const refreshBtn = $("#refresh-btn");
     if (refreshBtn) refreshBtn.disabled = true;
 
-    const tasks = await Promise.allSettled([
-      loadFeed(ctrl.signal),
-      loadStoerungen(ctrl.signal),
-      loadStammstrecke(ctrl.signal),
-      loadAusfaelle(ctrl.signal),
-    ]);
+    // Global status/timestamp follow the feed only; statistic sections keep
+    // their inline showError/hideError lifecycle. On a refresh we additionally
+    // rerun the loaders for sections the user has already scrolled to.
+    const tasks = [
+      loadFeed(ctrl.signal).then(
+        () => {
+          setStatus("ok", "Alle Daten aktuell.");
+          setLastUpdate(new Date());
+        },
+        () => {
+          setStatus("error", "Daten konnten nicht geladen werden.");
+        },
+      ),
+    ];
+    for (const id of loadedSections) {
+      const loader = SECTION_LOADERS[id];
+      if (!loader) continue;
+      tasks.push(loader(ctrl.signal).then(
+        () => setLastUpdate(new Date()),
+        () => {},
+      ));
+    }
+
+    await Promise.allSettled(tasks);
 
     if (refreshBtn) refreshBtn.disabled = false;
-
-    const errors = tasks.filter((t) => t.status === "rejected");
-    if (errors.length === 0) {
-      setStatus("ok", "Alle Daten aktuell.");
-    } else if (errors.length === tasks.length) {
-      setStatus("error", "Daten konnten nicht geladen werden.");
-    } else {
-      setStatus("warning", `Teilweise geladen (${tasks.length - errors.length}/${tasks.length}).`);
-    }
-    setLastUpdate(new Date());
   }
 
   async function loadFeed(signal) {
@@ -739,6 +752,55 @@
     }
   }
 
+  const SECTION_LOADERS = {
+    stoerungen: loadStoerungen,
+    stammstrecke: loadStammstrecke,
+    ausfaelle: loadAusfaelle,
+  };
+
+  function setupSectionObserver() {
+    const targets = Object.keys(SECTION_LOADERS)
+      .map((id) => document.getElementById(id))
+      .filter((node) => node != null);
+
+    if (typeof IntersectionObserver !== "function" || targets.length === 0) {
+      // Fallback for environments without IntersectionObserver – avoid leaving
+      // the skeletons stuck and just load everything eagerly.
+      for (const node of targets) triggerSectionLoad(node.id);
+      return;
+    }
+
+    sectionObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const id = entry.target.id;
+          if (!(id in SECTION_LOADERS)) continue;
+          sectionObserver.unobserve(entry.target);
+          triggerSectionLoad(id);
+        }
+      },
+      { rootMargin: "200px" },
+    );
+
+    for (const node of targets) sectionObserver.observe(node);
+  }
+
+  async function triggerSectionLoad(id) {
+    if (loadedSections.has(id)) return;
+    const loader = SECTION_LOADERS[id];
+    if (!loader) return;
+    loadedSections.add(id);
+    const signal = currentAbort ? currentAbort.signal : undefined;
+    try {
+      await loader(signal);
+      setLastUpdate(new Date());
+    } catch {
+      // showError already invoked inside the loader – nothing else to do
+      // here; the global status keeps following the feed.
+    }
+  }
+
   // ----- Wiring -----
 
   function attachFilterHandlers() {
@@ -780,6 +842,7 @@
     setYearLabels(new Date().getFullYear());
     attachFilterHandlers();
     attachRefresh();
+    setupSectionObserver();
     loadAll();
     startAutoRefresh();
   }
