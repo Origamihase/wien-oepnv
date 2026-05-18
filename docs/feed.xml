@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 14:30:37 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 15:00:37 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0245b6164e8aeaf5bf219cd1cff1358fe2406e2c522e5ac88f5e5fc5c5e87abe</guid>
+      <pubDate>Mon, 18 May 2026 14:43:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 15:00:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 14:43:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[67A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8c9d560d5a391213b33f74170224eb79a575e27ec25a49d2bef16608a31f52d9</guid>
+      <pubDate>Mon, 18 May 2026 14:38:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 15:00:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 14:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 67A: Unregelmäßige in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 67A: Unregelmäßige in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[48A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,17 +65,6 @@
       <content:encoded><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U3: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
-      <pubDate>Mon, 18 May 2026 14:02:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 11:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 14:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 14:45:00 +0200</ext:ends_at>
-      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[40A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f</guid>
@@ -85,17 +96,6 @@
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
       <content:encoded><![CDATA[Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
-      <pubDate>Mon, 18 May 2026 13:08:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 13:30:33 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 13:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 14:55:00 +0200</ext:ends_at>
-      <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25: Verkehrsunfall]]></title>
