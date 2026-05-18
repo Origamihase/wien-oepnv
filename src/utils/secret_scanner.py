@@ -2161,6 +2161,107 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])ABIA[A-Z0-9]{16}(?![A-Za-z0-9])"),
         "AWS STS Service Bearer Token gefunden",
     ),
+    # Dropbox Short-Lived Access Token (``sl.<base64url body>``). The
+    # canonical Dropbox OAuth2 short-lived access-token format introduced
+    # in the 2021 OAuth2 rotation rollout — replaces the legacy 64-char
+    # alphanumeric long-lived tokens that fall into the bucket-(b) shape
+    # (no canonical prefix). Issued by the ``oauth2/token`` endpoint with
+    # ``grant_type=refresh_token`` and consumed by every Dropbox HTTP API
+    # endpoint (``/2/files/*``, ``/2/sharing/*``, ``/2/team/*``,
+    # ``/2/users/*``) for full file-storage / sharing / team-admin access.
+    # The ``sl.`` prefix is unambiguous (no other major issuer uses this
+    # prefix) and the literal ``.`` separator sits OUTSIDE the entropy
+    # fallback's ``[A-Za-z0-9+/=_-]`` alphabet — so pre-fix the
+    # ``_HIGH_ENTROPY_RE`` match started AT the base64url body after
+    # the dot, stripping the ``sl.`` prefix from the matched span and
+    # losing the Dropbox-specific issuer attribution. Body alphabet
+    # ``[A-Za-z0-9_-]`` (base64url) lies entirely inside the entropy
+    # alphabet so the body itself matched as one generic
+    # ``Hochentropischer Token-String`` finding. Body lower bound 40
+    # chars rejects accidental ``sl.``-prefixed fragments (operator
+    # placeholder values, ISO 639 Slovenian language code URL path
+    # segments like ``/sl/about``) while accepting every legitimate
+    # token — real-world Dropbox short-lived tokens are 130-160 chars
+    # in the base64url body span.
+    #
+    # Threat model: a leaked Dropbox short-lived access token grants
+    # the issuing app's full file-storage / sharing / team-admin scope
+    # for the token's TTL (typically 4 hours, but the same app's
+    # refresh token can re-mint short-lived tokens indefinitely — a
+    # leaked short-lived token strongly signals the refresh token is
+    # also exposed somewhere in the same artefact). Full file read =
+    # data exfiltration (customer documents, source-code backups,
+    # plain-text credential notes, scanned ID cards stored as personal
+    # backups). File write = ransomware-style overwrite, malicious-
+    # document injection. Sharing scope = create unauthorised shared
+    # links exfiltrating the team's stored content via the public
+    # internet. Team-admin scope = exfiltrate the team's member
+    # directory, revoke other admins' access, modify retention
+    # policies for persistence. Real-world emission patterns:
+    # ``.env`` files (``DROPBOX_TOKEN=sl....``), CI/CD pipeline debug
+    # logs, GitHub Actions secrets dumped to logs by a misconfigured
+    # action, notebook outputs hardcoding the token, Dropbox SDK error
+    # responses echoing the token back in diagnostic messages.
+    # Revocation flow lives at dropbox.com/developers/apps (App console
+    # > app settings > "Revoke tokens") and is distinct from every
+    # other vendor's. Closes the file-storage SaaS vendor family that
+    # was named-but-deferred as a "bucket-(b)" candidate by prior
+    # rounds — the modern short-lived format DOES carry a distinctive
+    # prefix (``sl.``) that anchors per-issuer attribution.
+    (
+        re.compile(r"(?<![A-Za-z0-9])sl\.[A-Za-z0-9_\-]{40,}(?![A-Za-z0-9])"),
+        "Dropbox Short-Lived Access Token gefunden",
+    ),
+    # Pulumi Access Token (``pul-<40 lowercase hex>``). The canonical
+    # Pulumi Personal Access Token format. Issued via
+    # app.pulumi.com/account/tokens for full Pulumi Cloud API access:
+    # read/write every accessible org / project / stack's state, trigger
+    # arbitrary ``pulumi up`` operations modifying production
+    # infrastructure, exfiltrate the org's complete deployment-history
+    # audit log. Format matches the canonical trufflehog / gitleaks /
+    # detect-secrets default rule (``pul-[a-f0-9]{40}``) — 4-char prefix
+    # plus 40-char lowercase-hex body for a total of 44 chars. The
+    # ``pul-`` prefix is unambiguous (no other major issuer uses this
+    # prefix), and the strict 40-char lowercase-hex body (a SHA-1-shape
+    # hash digest) anchors against false positives on placeholder values
+    # like ``pull-request-1234`` or ``pul-foo`` (the ``-`` in placeholder
+    # text is in the entropy alphabet but the body alphabet rejects
+    # non-hex chars and the strict 40-char length rejects short fragments).
+    # Pre-fix the entropy fallback matched the full ``pul-<body>`` span
+    # as one generic ``Hochentropischer Token-String`` finding (both
+    # ``-`` and the lowercase-hex body lie inside the entropy alphabet),
+    # losing the Pulumi-specific issuer attribution that anchors the
+    # app.pulumi.com/account/tokens revocation flow.
+    #
+    # Threat model (HIGHEST blast radius — IaC control plane): a leaked
+    # Pulumi access token grants the issuing user's full Pulumi Cloud
+    # API access for every accessible org / project / stack. Read
+    # access = exfiltrate EVERY secret persisted in stack state (cloud
+    # provider credentials are the canonical IaC-stored credential
+    # class — AWS / Azure / GCP keys, database passwords, third-party
+    # API keys, TLS private keys for issued certificates), reconstruct
+    # the org's complete infrastructure topology for reconnaissance.
+    # Write access = trigger arbitrary ``pulumi up`` operations
+    # modifying production infrastructure (provision attacker-
+    # controlled VMs in the victim's cloud account, modify IAM
+    # bindings, add backdoored DNS records redirecting customer
+    # traffic). The IaC control-plane breach is the canonical "pivot
+    # to every downstream environment via a single credential"
+    # amplifier — structurally analogous to a leaked Terraform Cloud
+    # workspace token. Real-world emission patterns: ``.env`` files
+    # (``PULUMI_ACCESS_TOKEN=pul-...``), GitHub Actions secrets,
+    # CI/CD pipeline debug logs, notebook outputs, Pulumi SDK error
+    # responses echoing the token back. The revocation flow lives at
+    # app.pulumi.com/account/tokens > "Revoke" and is distinct from
+    # every other vendor's. Closes the IaC SaaS vendor family that
+    # was implicit in the previous rounds' coverage of cloud provider
+    # secrets (AWS / Azure / GCP credentials are the canonical
+    # IaC-stored secret family) but missing for the IaC control-plane
+    # platform itself.
+    (
+        re.compile(r"(?<![A-Za-z0-9])pul-[a-f0-9]{40}(?![A-Za-z0-9])"),
+        "Pulumi Access Token gefunden",
+    ),
 ]
 
 
