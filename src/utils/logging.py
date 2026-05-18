@@ -1006,8 +1006,157 @@ def sanitize_log_message(
         # per-family floor (20/30/32/35/43/100).
         #
         # Marker: SENTINEL_SAAS_COMMS_SECRET_MANAGER_TOKEN_LOG_SANITIZATION_DRIFT.
+        #
+        # Mapbox Access Token value-shape masking. Sibling-drift closure
+        # for the secret-scanner ``_KNOWN_TOKENS`` entry that detects
+        # committed Mapbox tokens
+        # (``(?:pk|sk|tk)\.eyJ<3-segment-JWT-body>``). The scanner closes
+        # the *detection* codepath via a dedicated entry placed BEFORE
+        # the generic JWT entry so the more-specific Mapbox attribution
+        # wins via the ``covered_ranges`` arbitration; this mask closes
+        # the *sanitisation* codepath via a dedicated regex placed
+        # BEFORE the generic JWT regex so the more-specific replacement
+        # wins before the JWT mask strips the inner ``eyJ<body>`` span.
+        #
+        # ORDER REQUIREMENT: this entry MUST appear BEFORE the generic
+        # JWT mask immediately below — otherwise the JWT regex matches
+        # the inner ``eyJ<body>`` first and replaces it with ``eyJ***``,
+        # leaving ``pk.eyJ***`` / ``sk.eyJ***`` / ``tk.eyJ***`` in the
+        # output (the leading scope-tier prefix is preserved by
+        # accident, but the IR triage path sees a JWT-attributed
+        # finding rather than a Mapbox-attributed one — the operator
+        # might not realise the leaked credential demands the
+        # account.mapbox.com revocation flow rather than a generic
+        # JWT-issuer revocation flow). Placing Mapbox first preserves
+        # the full ``(?:pk|sk|tk)\.eyJ***`` attribution span so the
+        # responder identifies the Mapbox scope tier at a glance.
+        #
+        # Threat model per scope tier (see the matching scanner entry
+        # in ``src/utils/secret_scanner.py`` for full per-tier blast
+        # radius analysis):
+        #   * ``pk.`` — Public Access Token. Quota theft (overage
+        #     billing fraud), DDoS-amplification against the issuing
+        #     account's Mapbox quota.
+        #   * ``sk.`` — **SECRET Access Token. HIGHEST blast radius in
+        #     the Mapbox family.** Full account-write scopes:
+        #     overwrite production tilesets (route-hijack / map-
+        #     manipulation amplifier), mint new ``sk.`` tokens for
+        #     persistence, exfiltrate billing / analytics data,
+        #     manipulate the production maps consumed by downstream
+        #     consumers and integrators.
+        #   * ``tk.`` — Temporary Access Token (ephemeral scope,
+        #     short TTL). Distinct attribution lets IR verify the
+        #     leak window aligned with token TTL.
+        #
+        # Structural anchors mirror the scanner regex exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-identifier
+        #     false positives (``foosk.eyJ...`` is NOT matched because
+        #     ``s`` is preceded by ``o`` alphanumeric — the existing
+        #     JWT mask still catches the inner JWT in that pathological
+        #     case so security is preserved, just via the JWT
+        #     attribution rather than Mapbox).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Strict ``[A-Za-z0-9_\-]`` per-segment base64url alphabet
+        #     mirrors the JWT mask; ``{10,10,20}`` per-segment floors
+        #     mirror the JWT mask AND match real-world Mapbox token
+        #     shapes.
+        # The mask preserves the issuer-specific scope-tier prefix
+        # (``pk.eyJ***`` / ``sk.eyJ***`` / ``tk.eyJ***``) for IR
+        # triage — the operator immediately identifies the Mapbox
+        # scope tier and navigates to account.mapbox.com/access-tokens/
+        # for the appropriate revocation flow.
+        #
+        # Idempotence: masked forms (``pk.eyJ***`` / ``sk.eyJ***`` /
+        # ``tk.eyJ***``) do NOT re-match this regex because ``*`` is
+        # OUTSIDE the per-segment alphabet ``[A-Za-z0-9_\-]`` AND the
+        # masked body length (3 chars per segment) is below the
+        # per-segment floor (10/10/20). The JWT mask immediately
+        # below ALSO does not re-match (the ``eyJ`` anchor still
+        # requires 10+ chars after, which the masked ``***`` form
+        # does not satisfy).
+        #
+        # Marker: SENTINEL_BITBUCKET_MAPBOX_TOKEN_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])((?:pk|sk|tk)\.eyJ)"
+            r"[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{20,}"
+            r"(?![A-Za-z0-9])",
+            r"\1***",
+        ),
         (
             r"(?<![A-Za-z0-9])(eyJ)[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{20,}(?![A-Za-z0-9])",
+            r"\1***",
+        ),
+        # Bitbucket App Password / Repository Access Token value-shape
+        # masking. Sibling-drift closure for the secret-scanner
+        # ``_KNOWN_TOKENS`` entry that detects committed Bitbucket
+        # tokens (``ATBB<24+ alnum body>``). The scanner closes the
+        # *detection* codepath for committed source files (placed near
+        # the Atlassian Cloud API Token entry); this mask closes the
+        # *sanitisation* codepath via the matching value-shape regex.
+        # Without this mask, a bare ``ATBB<body>`` token shape in
+        # plain log text (application f-string logs, upstream
+        # Bitbucket API error responses echoing the token back, JSON
+        # values with non-sensitive key names, URL paths embedding
+        # the token, exception messages routed through
+        # ``_sanitize_exception_msg``) bypasses every existing
+        # key/header/URL-credential mask pattern and leaks verbatim
+        # into operator log streams and the public
+        # ``docs/feed_health.json`` artefact.
+        #
+        # Threat model (mirror the scanner's blast-radius analysis):
+        # leak grants the issuing principal's Bitbucket Cloud scope
+        # per the token's configured permissions:
+        #   * ``repository:read`` — code disclosure, IP exfiltration.
+        #   * ``repository:write`` — backdoored commits to protected
+        #     branches (supply-chain compromise primitive).
+        #   * ``workspace:admin`` — modify workspace member roles,
+        #     add attacker collaborators, exfiltrate every repo in
+        #     the workspace.
+        #   * App Password tier — additionally grants the issuing
+        #     user's read access across EVERY accessible workspace
+        #     (multi-workspace pivot amplifier).
+        # Blast radius mirrors the GitHub PAT (``ghp_***``) and
+        # GitLab PAT (``glpat-***``) families on their respective
+        # platforms.
+        #
+        # The mask preserves the issuer-specific prefix (``ATBB***``)
+        # for IR triage — the revocation flow lives at
+        # bitbucket.org/account/settings/app-passwords/ (App
+        # Passwords) or the per-project / per-workspace / per-repo
+        # Access Tokens settings pages (resource-scoped variants).
+        # All these revocation flows are DISTINCT from the Atlassian
+        # Cloud API Token revocation flow
+        # (id.atlassian.com/manage-profile/security/api-tokens) used
+        # for the existing ``ATATT3xFfGF0***`` mask, so per-issuer
+        # attribution is critical for IR triage to land on the
+        # correct admin panel.
+        #
+        # Structural anchors mirror the scanner regex exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-identifier
+        #     false positives (``XATBB<body>``, ``0ATBB<body>`` are
+        #     preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Strict ``[A-Za-z0-9]`` body alphabet (no ``_-``)
+        #     distinguishes Bitbucket from the GitHub / GitLab / NPM
+        #     token families and rejects accidental fragments.
+        #   * 24-char body floor matches the permissive minimum for
+        #     legacy Bitbucket Server access tokens while accepting
+        #     every real-world Bitbucket Cloud Repository / Workspace
+        #     / Project Access Token (canonical 32-40 char body).
+        #
+        # Idempotence: masked form (``ATBB***``) does NOT re-match
+        # because ``*`` is OUTSIDE the body alphabet ``[A-Za-z0-9]``
+        # AND the masked body length (3 chars) is below the 24-char
+        # floor.
+        #
+        # Cross-family mutex: ``ATBB`` vs. ``ATATT3xFfGF0`` prefixes
+        # are disjoint at the 5th-character level (``ATBB`` vs.
+        # ``ATATT3xFfGF0`` — the latter is 12 chars and starts with
+        # ``ATATT`` after the 4th char), so no token can match both
+        # patterns and the existing Atlassian Cloud API Token mask
+        # remains correctly attributed.
+        (
+            r"(?<![A-Za-z0-9])(ATBB)[A-Za-z0-9]{24,}(?![A-Za-z0-9])",
             r"\1***",
         ),
         # Discord Bot Token: ``<base64url(snowflake-id)>.<base64url(

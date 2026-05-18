@@ -864,6 +864,79 @@ _KNOWN_TOKENS = [
     # secrets exposed to those pipelines), so the leak surface is the
     # repository's CI permissions rather than the user's PAT scope.
     (re.compile(r"(?<![A-Za-z0-9])glptt-[0-9a-zA-Z_\-]{40}(?![A-Za-z0-9])"), "GitLab Pipeline Trigger Token gefunden"),
+    # Mapbox Access Token (``(?:pk|sk|tk)\.eyJ<3-segment-JWT-body>``).
+    # Issued via account.mapbox.com/access-tokens/ for the Mapbox Maps /
+    # Geocoding / Directions / Static Images / Tilesets / Vision SDK
+    # APIs (the geospatial-vendor counterpart to the existing Google
+    # API Key family already in this table). The on-the-wire format
+    # is a 3-char prefix (``pk.`` public / ``sk.`` secret / ``tk.``
+    # temporary) followed by a canonical 3-segment base64url JOSE JWT
+    # body — structurally a JWT, but with a Mapbox-specific scope-
+    # tier prefix that sits OUTSIDE the existing JWT detector's
+    # ``eyJ`` anchor.
+    #
+    # ORDER REQUIREMENT: this entry MUST appear BEFORE the JWT entry
+    # below so the more-specific Mapbox attribution wins via the
+    # ``covered_ranges`` arbitration in ``_scan_content``. Pre-fix the
+    # JWT entry matched the inner ``eyJ<body>.<body>.<body>`` span and
+    # the leading ``pk.``/``sk.``/``tk.`` scope tier was LOST from
+    # attribution AND from the covered span. The lookbehind
+    # ``(?<![A-Za-z0-9])`` succeeds because the ``.`` before ``eyJ``
+    # is non-alphanumeric, so the JWT regex match span ended one
+    # character before the Mapbox span — the operator saw a generic
+    # JWT finding without knowing it was a Mapbox secret token
+    # demanding account.mapbox.com revocation.
+    #
+    # Threat model per scope tier (each maps to a DISTINCT operational
+    # consequence — IR triage MUST identify the scope from the prefix
+    # because Mapbox does NOT allow rotating just the scope without
+    # rotating the entire token):
+    #   * ``pk.`` — Public Access Token. Client-side scopes
+    #     (``styles:read`` / ``fonts:read`` / ``datasets:read`` /
+    #     ``vision:read``). LEAK: quota theft (third party uses your
+    #     Mapbox account's monthly map-load / geocoding quota until
+    #     it overflows; per-load overage charges from Mapbox start at
+    #     USD 0.50 per 1k loads above the free tier). Routine in
+    #     client-side JavaScript bundles (the token is published in
+    #     the page's JS payload by design) but committed in source
+    #     control it can still be exfiltrated by a network adversary
+    #     for sustained quota abuse.
+    #   * ``sk.`` — **SECRET Access Token (HIGHEST blast radius in the
+    #     Mapbox family).** Full account-write scopes
+    #     (``tilesets:write`` / ``uploads:write`` / ``datasets:write``
+    #     / ``tokens:write`` / ``styles:write`` / ``analytics:read`` /
+    #     potentially ``credentials:write`` for billing). LEAK:
+    #     overwrite production tilesets with attacker-controlled
+    #     content (route-hijack / map-manipulation amplifier for
+    #     embedded navigation widgets), mint new ``sk.`` tokens to
+    #     maintain persistence, exfiltrate the account's billing /
+    #     analytics data, and modify the production maps used by
+    #     downstream consumers (the Wien-OePNV project explicitly
+    #     avoids Mapbox in favour of OpenStreetMap — see README §
+    #     Datenquellen — but downstream forks and integrators may
+    #     hold ``sk.`` tokens that this detector now protects).
+    #   * ``tk.`` — Temporary Access Token (ephemeral scope, short
+    #     TTL). Lower blast radius than ``pk.``/``sk.`` because the
+    #     credential expires; still warrants distinct attribution
+    #     so IR can verify the leak window aligned with token TTL.
+    #
+    # Real-world emission patterns: ``.env`` files
+    # (``MAPBOX_ACCESS_TOKEN=sk.eyJ...``), client-side JavaScript
+    # bundle build outputs (the public ``pk.`` is canonical, but the
+    # ``sk.`` SHOULD NEVER ship to client — a leak in the bundle is
+    # a high-severity finding), CI/CD pipeline debug logs, GitHub
+    # Actions secrets dumped to logs by a misconfigured action,
+    # Mapbox SDK error responses echoing the token back in
+    # diagnostic messages, OpenStreetMap-to-Mapbox-bridge tools
+    # that hard-code the secret for tileset-upload automation.
+    (
+        re.compile(
+            r"(?<![A-Za-z0-9])(?:pk|sk|tk)\.eyJ"
+            r"[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{20,}"
+            r"(?![A-Za-z0-9])"
+        ),
+        "Mapbox Access Token gefunden",
+    ),
     # JSON Web Tokens (JWTs): ``eyJ<header>.<payload>.<signature>`` where
     # each segment is base64url-encoded ``[A-Za-z0-9_-]+``. The ``eyJ``
     # prefix is the base64url encoding of ``{"`` (the start of every JOSE
@@ -876,6 +949,11 @@ _KNOWN_TOKENS = [
     # signature) without flagging short base64url strings that happen to
     # have the ``eyJ`` prefix purely by collision. Order: place AFTER more
     # specific issuer-prefixed tokens so ``is_covered`` correctly anchors.
+    # The Mapbox detector immediately above MUST stay before this entry
+    # because Mapbox tokens have a ``(?:pk|sk|tk)\.`` scope-tier prefix
+    # that this JWT pattern's ``eyJ`` anchor would otherwise strip from
+    # the matched span — losing the Mapbox-specific issuer attribution
+    # and the scope-tier disambiguator that anchors IR triage.
     (
         re.compile(r"(?<![A-Za-z0-9])eyJ[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{20,}(?![A-Za-z0-9])"),
         "JSON Web Token (JWT) gefunden",
@@ -983,6 +1061,78 @@ _KNOWN_TOKENS = [
     (
         re.compile(r"(?<![A-Za-z0-9])ATATT3xFfGF0[A-Za-z0-9_=\-]{100,}(?![A-Za-z0-9])"),
         "Atlassian API Token gefunden",
+    ),
+    # Bitbucket App Password / Repository Access Token (``ATBB<24+ alnum
+    # body>``). Issued via bitbucket.org/account/settings/app-passwords/
+    # (App Password — user-scoped, the common shape for CLI / git-over-
+    # HTTPS) or via per-repository / workspace / project settings >
+    # Access Tokens (resource-scoped, used by deploy scripts and CI/CD
+    # pipelines). Sibling-drift closure for the 2026-05-16 Atlassian
+    # Cloud API Token (``ATATT3xFfGF0``) round above: same issuer
+    # (Atlassian Corporation), distinct product (Bitbucket vs. Jira /
+    # Confluence / Trello), distinct prefix (``ATBB`` vs.
+    # ``ATATT3xFfGF0``), DISTINCT REVOCATION FLOW
+    # (bitbucket.org/account/settings/app-passwords/ for App Passwords
+    # plus the project/repo/workspace Access Tokens settings pages for
+    # the resource-scoped variants; ALL distinct from
+    # id.atlassian.com/manage-profile/security/api-tokens for the
+    # Atlassian Cloud API Tokens). Per-issuer attribution is critical
+    # for IR triage because the operator must navigate to the correct
+    # admin panel — confusing Bitbucket with Atlassian Cloud sends the
+    # responder to the WRONG settings page.
+    #
+    # Format: canonical trufflehog / gitleaks default rule for
+    # Bitbucket Access Tokens is ``ATBB[a-zA-Z0-9]{32}([a-fA-F0-9]{8})?``
+    # — strict 32-char alphanumeric body plus optional 8-char CRC32
+    # suffix (total 36 or 44 chars after the ``ATBB`` prefix). Real-
+    # world tokens land in the 36-44 char body range. The ``{24,}``
+    # lower bound here is intentionally permissive to cover historical
+    # variants (the legacy short Bitbucket Server access-token format
+    # had a 24-char body) while still rejecting accidental fragments
+    # via the strict ``[A-Za-z0-9]`` body alphabet (no underscores or
+    # hyphens — distinguishes from the GitHub / GitLab / NPM token
+    # families which all use ``[A-Za-z0-9_-]``).
+    #
+    # Pre-fix detection gaps (mirror the Figma + Tailscale round):
+    #   1. **Entropy fallback** (``_HIGH_ENTROPY_RE``): the body
+    #      alphabet ``[A-Za-z0-9]`` lies INSIDE the entropy alphabet
+    #      ``[A-Za-z0-9+/=_-]`` so the full ``ATBB<body>`` span DID
+    #      match generically as ``Hochentropischer Token-String`` —
+    #      BUT the Bitbucket-specific issuer attribution that anchors
+    #      the revocation flow at bitbucket.org/account/settings/
+    #      app-passwords/ was LOST. The generic high-entropy reason
+    #      forces the operator to manually identify the issuer from
+    #      surrounding context, slowing IR triage.
+    #   2. **Log sanitisation codepath**: the bare ``ATBB<body>`` token
+    #      shape in plain log text (application f-string logs,
+    #      Bitbucket API error responses echoing the token back, JSON
+    #      values with non-sensitive keys, URL paths embedding the
+    #      token) leaked verbatim — no value-shape mask existed for
+    #      this token family.
+    #
+    # Threat model: a leaked Bitbucket Repository Access Token grants
+    # the issuing principal's full Bitbucket Cloud scope per the
+    # token's configured permissions (read / write / admin on the
+    # specific repo / workspace / project). Common scope combinations:
+    #   * ``repository:read + pullrequest:read`` — code-disclosure leak,
+    #     IP exfiltration, source-control reconnaissance.
+    #   * ``repository:write`` — push backdoored commits to protected
+    #     branches (canonical supply-chain compromise primitive on
+    #     Bitbucket-hosted projects).
+    #   * ``workspace:admin`` — modify workspace member roles, add
+    #     attacker accounts as collaborators, exfiltrate every repo
+    #     in the workspace, rotate every other workspace token to
+    #     maintain persistence.
+    #   * App Password tier — additionally grants the user's read
+    #     access across EVERY accessible workspace (multi-workspace
+    #     pivot amplifier).
+    # Blast radius mirrors the GitHub PAT (``ghp_``) and GitLab PAT
+    # (``glpat-``) families on their respective platforms — the
+    # repository-host control plane is the highest leak surface for
+    # source-control-driven supply-chain compromise.
+    (
+        re.compile(r"(?<![A-Za-z0-9])ATBB[A-Za-z0-9]{24,}(?![A-Za-z0-9])"),
+        "Bitbucket Access Token gefunden",
     ),
     # Sentry Auth Token (``sntrys_<base64-with-embedded-JSON>``).
     # Sentry's modern rotation-aware auth-token format (introduced
