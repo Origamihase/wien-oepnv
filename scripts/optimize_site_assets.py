@@ -174,6 +174,7 @@ JS_OUT = ASSETS_DIR / "site.min.js"
 
 TRAIN_PNG = ASSETS_DIR / "train.png"
 TRAIN_WEBP = ASSETS_DIR / "train.webp"
+TRAIN_SMALL_WEBP = ASSETS_DIR / "train-small.webp"
 FOOTER_JPG = ASSETS_DIR / "footer-bg.jpg"
 FOOTER_WEBP = ASSETS_DIR / "footer-bg.webp"
 
@@ -184,6 +185,14 @@ HEADER_COMMENT = "/* Wien ÖPNV – Live-Dashboard | MIT License */\n"
 # halve the original 3168x448 sprite to 1584x224 — same aspect ratio
 # (≈7.07:1), one quarter of the original area.
 TRAIN_TARGET_SIZE = (1584, 224)
+
+# Narrow-viewport variant served via ``<picture><source media="(max-width: 799px)">``.
+# Below 800 CSS px the trainline strip falls to the ``clamp(...)`` minimum
+# of 1.5rem (24 CSS px); at 3x DPR that's a 72-device-px-tall source. The
+# 108 px target gives ~50% headroom while still bringing the file down
+# from ~57 KiB to ~12 KiB. Same aspect ratio (≈7.07:1) as the main
+# sprite so the rendered geometry is byte-identical to ``train.webp``.
+TRAIN_SMALL_TARGET_SIZE = (768, 108)
 
 # ``footer-bg.jpg`` is rendered behind a 78–94 % dark overlay, so a
 # 1920x1080 base with aggressive JPEG quantisation is visually
@@ -201,6 +210,15 @@ FOOTER_JPEG_QUALITY = 72
 # original file as the universal fallback — no behaviour change for
 # browsers without WebP support.
 FOOTER_WEBP_QUALITY = 75
+
+# ``train-small.webp`` is rendered at 24 CSS px tall on narrow viewports
+# (1.5rem floor of the ``clamp(1.5rem, 4vw, 2.5rem)`` height). The
+# downscale from 1584×224 to 768×108 inevitably anti-aliases the tight
+# palette, leaving few exact pixel matches — which makes lossless WebP
+# fall back to almost-pass-through encoding. Lossy at q=90 is visually
+# indistinguishable at 24 px tall and shrinks the file ~4× versus the
+# lossless variant (~13 KiB vs ~55 KiB at the same dimensions).
+TRAIN_SMALL_WEBP_QUALITY = 90
 WEBP_ENCODE_METHOD = 6  # slowest/best compression; runs once per source change
 
 
@@ -360,10 +378,33 @@ def _optimise_train_png() -> None:
             lossless=True,
             method=WEBP_ENCODE_METHOD,
         )
+
+        # Narrow-viewport sibling. The ``<picture><source media>`` order in
+        # ``docs/site.html`` is:
+        #     1. small WebP via ``media="(max-width: 799px)"``
+        #     2. main WebP (this file, unconditional)
+        #     3. PNG (universal fallback)
+        # which keeps the main sprite as the desktop / DPR-safe source
+        # while saving ~40+ KiB on every mobile load. Lossy q=90 is used
+        # here (the main variant is lossless) because the resize
+        # introduces anti-aliasing the palette PNG cannot represent —
+        # see ``TRAIN_SMALL_WEBP_QUALITY`` for the full reasoning.
+        small = rgba.resize(TRAIN_SMALL_TARGET_SIZE, _LANCZOS)
+        small.save(
+            TRAIN_SMALL_WEBP,
+            format="WEBP",
+            quality=TRAIN_SMALL_WEBP_QUALITY,
+            method=WEBP_ENCODE_METHOD,
+        )
     LOG.info(
         "train.webp: %d bytes (%.1f%% of train.png)",
         TRAIN_WEBP.stat().st_size,
         100 * TRAIN_WEBP.stat().st_size / max(after, 1),
+    )
+    LOG.info(
+        "train-small.webp: %d bytes (%.1f%% of train.webp)",
+        TRAIN_SMALL_WEBP.stat().st_size,
+        100 * TRAIN_SMALL_WEBP.stat().st_size / max(TRAIN_WEBP.stat().st_size, 1),
     )
 
 
