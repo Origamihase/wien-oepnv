@@ -7,29 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 13:30:33 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 14:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[57A: Verkehrsunfall]]></title>
+      <title><![CDATA[40A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d735177cc6e0c032bea05c9936fbbc2b7922b9a27c7090d9edb0f0dee69f67b3</guid>
-      <pubDate>Mon, 18 May 2026 13:22:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 13:30:33 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 13:22:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f</guid>
+      <pubDate>Mon, 18 May 2026 13:52:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 14:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 13:52:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 57A: Fahrtbehinderung in Richtung Rudolfsheim, Anschützgasse. Voraussichtliche Dauer: 13:35 Uhr. Grund: Verkehrsunfall im Bereich Gumpendorfer Straße. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 57A: Fahrtbehinderung in Richtung Rudolfsheim, Anschützgasse. Voraussichtliche Dauer: 13:35 Uhr. Grund: Verkehrsunfall im Bereich Gumpendorfer Straße.<br/>[Am 18.05.2026]]]></content:encoded>
+      <description>Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[30/31: Polizeieinsatz]]></title>
+      <title><![CDATA[57A: Fahrtbehinderung Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a4a5456005e574a0c5b4db4857e3ca6b45e6f0bbd0d807676f632c447c330e1a</guid>
-      <pubDate>Mon, 18 May 2026 13:11:00 +0200</pubDate>
+      <guid isPermaLink="false">1d1d05be353e05525465b91804efa6f53fda855f31d552fdfa5243e7b4328a8b</guid>
+      <pubDate>Mon, 18 May 2026 13:23:02 +0200</pubDate>
       <ext:first_seen>Mon, 18 May 2026 13:30:33 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 13:23:02 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 14:22:00 +0200</ext:ends_at>
+      <description>[Am 18.05.2026]</description>
+      <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0b04f102bd159f98a41bb7194d24ea5268065185467f63b745203825c9848323</guid>
+      <pubDate>Mon, 18 May 2026 13:11:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 14:00:49 +0200</ext:first_seen>
       <ext:starts_at>Mon, 18 May 2026 13:11:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 30: Fahrtbehinderung in Richtung Stammersdorf. Linie 31: Fahrtbehinderung in Richtung Stammersdorf. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 30: Fahrtbehinderung in Richtung Stammersdorf. Linie 31: Fahrtbehinderung in Richtung Stammersdorf.<br/>[Am 18.05.2026]]]></content:encoded>
+      <description>Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ded38e51a87168b5dec5fa7cf47e1322d71a9fc82b58c76e54b10b9190810f6c</guid>
+      <pubDate>Mon, 18 May 2026 13:11:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 14:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 13:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Betriebsstörung]]></title>
@@ -39,85 +61,62 @@
       <ext:first_seen>Mon, 18 May 2026 13:30:33 +0200</ext:first_seen>
       <ext:starts_at>Mon, 18 May 2026 13:08:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:30 Uhr. Grund: Betriebsstörung im Haltestellenbereich Kagraner Platz. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie U1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:30 Uhr. Grund: Betriebsstörung im Haltestellenbereich Kagraner Platz.<br/>[Am 18.05.2026]]]></content:encoded>
+      <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[25/94A: Verkehrsunfall]]></title>
+      <title><![CDATA[25: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4277d3dcebea0e588a6c5fb7103fb10b929fe43cf590299f5ba29d9221cca77b</guid>
+      <guid isPermaLink="false">904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781</guid>
       <pubDate>Mon, 18 May 2026 12:57:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 13:00:35 +0200</ext:first_seen>
+      <ext:first_seen>Mon, 18 May 2026 08:30:35 +0200</ext:first_seen>
       <ext:starts_at>Mon, 18 May 2026 12:57:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Linie 94A: Fahrtbehinderung in Richtung Stadlau S U. Weichen Sie ersatzweise auf die Linie 26A … [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Linie 94A: Fahrtbehinderung in Richtung Stadlau S U. Weichen Sie ersatzweise auf die Linie 26A …<br/>[Am 18.05.2026]]]></content:encoded>
+      <description>Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2: Schadhafter Zug Betrieb ab Johann-Nepomuk-Berger-Platz]]></title>
+      <title><![CDATA[94A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0ecba112e23adfc7e5e50e1379b39d22b363162f5d42e7f7afc2a62f6a5fe8dd</guid>
-      <pubDate>Mon, 18 May 2026 12:52:42 +0200</pubDate>
+      <guid isPermaLink="false">f0d634e8c64b753a861add399e7138caa8409a34cbca6326b25b7324feb41ede</guid>
+      <pubDate>Mon, 18 May 2026 12:57:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 09:30:35 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 12:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 94A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 94A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3</guid>
+      <pubDate>Mon, 18 May 2026 12:52:00 +0200</pubDate>
       <ext:first_seen>Mon, 18 May 2026 08:00:39 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 12:52:50 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 13:52:00 +0200</ext:ends_at>
-      <description>[Am 18.05.2026]</description>
-      <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
+      <ext:starts_at>Mon, 18 May 2026 12:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a4037eb177f53feada9cd8d5d413f9865f66b30fafc51c7e633db6ca36d431e5</guid>
-      <pubDate>Mon, 18 May 2026 12:44:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 13:00:35 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 12:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 18.05.2026]]]></content:encoded>
+      <title><![CDATA[Wien Floridsdorf ↔ Wien Mitte ↔ Flughafen Wien]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;852582</guid>
+      <pubDate>Mon, 18 May 2026 09:39:06 +0200</pubDate>
+      <ext:first_seen>Tue, 05 May 2026 11:26:32 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 09:39:06 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof … [Seit 18.05.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof …<br/>[Seit 18.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[26: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[Einstieg: Brünner Straße 31-31A]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">59e208367d2d4abd51c67734b05d4470604d748bf4d8210aec89186b2434cefa</guid>
-      <pubDate>Mon, 18 May 2026 12:32:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 08:30:35 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 12:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8de0171cb5a82c20b0963bf79e2f59c4da0c97e94c58a5fdab5ede435ad86aba</guid>
-      <pubDate>Mon, 18 May 2026 12:32:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 08:30:35 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 12:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7</guid>
-      <pubDate>Mon, 18 May 2026 12:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 12:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 12:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">01c1edad0db092aed085d667951c6be88cf791b9631f3f4007cfee702ab02beb</guid>
-      <pubDate>Mon, 18 May 2026 11:53:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 12:00:42 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 11:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">14d72afa7ef35cf4a782d1b4e669aa9e18ea4c13673e9bbf8d0e47d12f90a4fe</guid>
+      <pubDate>Mon, 18 May 2026 04:54:34 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 05:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 04:54:34 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Einstieg: Brünner Straße 31-31A [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Einstieg: Brünner Straße 31-31A<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
