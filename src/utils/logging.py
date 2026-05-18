@@ -1687,6 +1687,85 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])(dapi)[a-f0-9]{32}(?:-[0-9]+)?(?![A-Za-z0-9])",
             r"\1***",
         ),
+        # HubSpot Private App Token (``pat-(?:na1|na2|na3|eu1)-<UUID>``) +
+        # PlanetScale Database Token (``pscale_(?:oauth|tkn|pw)_<43>``)
+        # value-shape masking. Sibling-drift closure for the 2026-05-18
+        # round that extended ``_KNOWN_TOKENS`` in
+        # ``src/utils/secret_scanner.py`` to detect each canonical token
+        # shape with vendor-specific attribution. Pre-fix the scanner-
+        # side coverage was missing for BOTH families AND the log-
+        # sanitisation codepath was NOT extended in any prior round —
+        # bare token shapes in plain log text (application f-string logs,
+        # upstream error responses echoing the token back, JSON values
+        # without sensitive key names, URL paths embedding the token,
+        # URL query strings with NON-sensitive parameter names) bypassed
+        # every existing key/header/URL-credential mask and leaked
+        # verbatim to operator log streams plus the public
+        # ``docs/feed_health.json`` artefact.
+        #
+        # Threat model (mirror the secret-scanner round's blast radius):
+        #   * HubSpot ``pat-`` — Full CRM data plane with PII. Leaking
+        #     grants the issuing private app's configured scopes against
+        #     the HubSpot portal: complete contact database (GDPR-
+        #     protected PII at scale), company / deal records, marketing
+        #     campaigns + recipient lists, automation workflows, form
+        #     submissions. Distinct from every other CRM-vendor rotation
+        #     flow.
+        #   * PlanetScale ``pscale_<tier>_`` — Per-tier DB control plane
+        #     plus data plane: ``oauth_`` mints user OAuth tokens
+        #     (multi-user pivot); ``tkn_`` grants Service Token /
+        #     PAT-scoped API access (modify schemas, exfiltrate
+        #     branch passwords, trigger deploys); ``pw_`` provides
+        #     direct MySQL-wire-protocol access (full data
+        #     exfiltration / ransomware overwrite primitive).
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``Xpat-na1-...``, ``mypscale_tkn_...`` are
+        #     preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * HubSpot: ``pat-(?:na1|na2|na3|eu1)-<8>-<4>-<4>-<4>-<12>``
+        #     UUID-shape body anchored against the four documented
+        #     HubSpot data-residency regions (na1=US East, na2=US
+        #     Central, na3=US West, eu1=Germany).
+        #   * PlanetScale: ``pscale_(?:oauth|tkn|pw)_[A-Za-z0-9_-]{43}``
+        #     strict 43-char body across three documented tiers.
+        #
+        # The masks preserve issuer-specific prefixes for IR triage:
+        #   * HubSpot → ``pat-***`` (revocation flow at HubSpot portal >
+        #     Settings > Account Setup > Integrations > Private Apps >
+        #     <App> > Auth tab > "Rotate"). Per-region disambiguation
+        #     is intentionally collapsed in the mask — the operator
+        #     reads the region from the SAME log line context (the
+        #     leaked token's adjacent JSON / env-var name typically
+        #     identifies the portal) without needing the region
+        #     embedded in the mask.
+        #   * PlanetScale → ``pscale_oauth_***`` / ``pscale_tkn_***`` /
+        #     ``pscale_pw_***`` (per-tier mask preserves tier
+        #     attribution; three distinct revocation panels at
+        #     app.planetscale.com require tier identification from the
+        #     prefix).
+        #
+        # Idempotence: masked forms (``pat-***``, ``pscale_tkn_***``)
+        # do NOT re-match because ``*`` is OUTSIDE every body alphabet
+        # AND the masked body length (3 chars) is below every per-
+        # family floor (UUID = 36 / PlanetScale = 43).
+        #
+        # Cross-family mutex: ``pat-`` vs. ``pscale_`` prefixes are
+        # disjoint at the second-character level (``pa`` vs. ``ps``),
+        # so no token can match both patterns.
+        #
+        # Marker: SENTINEL_HUBSPOT_PLANETSCALE_TOKEN_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])(pat)-(?:na1|na2|na3|eu1)-"
+            r"[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-"
+            r"[a-fA-F0-9]{4}-[a-fA-F0-9]{12}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(pscale_(?:oauth|tkn|pw))_[A-Za-z0-9_\-]{43}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)

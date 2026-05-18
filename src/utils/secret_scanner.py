@@ -2369,6 +2369,132 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])dapi[a-f0-9]{32}(?:-[0-9]+)?(?![A-Za-z0-9])"),
         "Databricks Personal Access Token gefunden",
     ),
+    # HubSpot Private App Token (``pat-(?:na1|na2|na3|eu1)-<UUID>``).
+    # The canonical HubSpot Private App access token format. Issued via
+    # the HubSpot portal UI at Settings → Account Setup → Integrations →
+    # Private Apps → <App> → Auth tab. Used for the HubSpot CRM /
+    # Marketing / Automation REST APIs (``/crm/v3/...``, ``/marketing/v3/
+    # ...``, ``/contacts/v1/...``). The body is a canonical RFC-4122
+    # UUID (8-4-4-4-12 lowercase hex with internal ``-`` separators),
+    # which DOES match the entropy fallback's ``[A-Za-z0-9+/=_-]``
+    # alphabet (``-`` IS in the alphabet) — pre-fix the entropy regex
+    # matched the full ``pat-<region>-<UUID>`` span as one generic
+    # ``Hochentropischer Token-String`` finding, losing the HubSpot-
+    # specific issuer attribution that anchors the per-portal revocation
+    # flow.
+    #
+    # Threat model (HIGH blast radius — full CRM data plane with PII):
+    # a leaked ``pat-`` grants the issuing private app's configured
+    # OAuth-equivalent scopes against the HubSpot portal. The canonical
+    # scope set (``crm.objects.contacts.read``/``write``,
+    # ``crm.objects.companies.``, ``crm.objects.deals.``,
+    # ``marketing.``, ``automation.``, ``forms.``, ``files.``)
+    # provides FULL access to: the portal's complete contact database
+    # (names + emails + phone + addresses + custom properties —
+    # GDPR-protected PII at scale), every company and deal record
+    # (B2B revenue data + pipeline forecasts), every marketing email
+    # campaign (recipient lists + open / click tracking — competitive
+    # intelligence goldmine), every automation workflow (modify or
+    # disable triggers — sabotage primitive), every form submission
+    # (incoming lead capture — exfiltrate or redirect to attacker
+    # endpoint). Real-world emission patterns: ``.env`` files
+    # (``HUBSPOT_PRIVATE_APP_TOKEN=pat-na1-...``), CI/CD pipeline debug
+    # logs, GitHub Actions secrets dumped to logs by a misconfigured
+    # action, notebook outputs hardcoding ``HubSpot(access_token=
+    # "pat-na1-...")``, curl examples in README files. Revocation flow
+    # lives at the HubSpot portal UI > Settings > Account Setup >
+    # Integrations > Private Apps > <App> > Auth tab > "Rotate"
+    # (immediate) or "Delete app" (permanent) — distinct per portal,
+    # distinct from every other CRM-vendor rotation flow (Salesforce,
+    # Microsoft Dynamics 365, Zoho CRM).
+    #
+    # Structural anchors:
+    #   * ``pat-`` literal prefix (HubSpot's canonical Private App
+    #     prefix; no other major issuer uses this prefix with the
+    #     region + UUID body shape).
+    #   * ``(?:na1|na2|na3|eu1)`` strict region alternation matches
+    #     HubSpot's documented data-residency regions (US East = na1,
+    #     US Central = na2, US West = na3, Germany = eu1). Future
+    #     regions (e.g. ap1 for Asia-Pacific, au1 for Australia) would
+    #     require an additive update — the strict alternation prevents
+    #     false positives on placeholder values like ``pat-foo-...``
+    #     while accepting every legitimate token currently issued.
+    #   * ``[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}``
+    #     strict UUID body (RFC 4122 canonical 8-4-4-4-12 hex form,
+    #     case-insensitive per RFC 4122 §3 ABNF — HubSpot issues
+    #     lowercase but accepts either case on input).
+    #   * ``(?<![A-Za-z0-9])`` / ``(?![A-Za-z0-9])`` boundary anchors
+    #     reject mid-word collisions (``Xpat-na1-...`` / ``...0``
+    #     tails).
+    (
+        re.compile(
+            r"(?<![A-Za-z0-9])pat-(?:na1|na2|na3|eu1)-"
+            r"[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-"
+            r"[a-fA-F0-9]{4}-[a-fA-F0-9]{12}(?![A-Za-z0-9])"
+        ),
+        "HubSpot Private App Token gefunden",
+    ),
+    # PlanetScale Database Token (``pscale_(?:oauth|tkn|pw)_<43 chars>``).
+    # The canonical PlanetScale credential format spanning three tiers
+    # with DISTINCT revocation flows:
+    #   * ``pscale_oauth_<body>`` — OAuth Client Secret. Issued via
+    #     app.planetscale.com/<org>/settings/oauth-apps. Mint user-
+    #     delegated OAuth access tokens against the PlanetScale API.
+    #     Multi-user pivot (the OAuth flow can grant tokens for ANY
+    #     PlanetScale user who has authorized the app — cross-account
+    #     amplifier).
+    #   * ``pscale_tkn_<body>`` — Service Token / Personal Access Token.
+    #     Issued via app.planetscale.com/<org>/settings/service-tokens.
+    #     Full PlanetScale API access scoped per the token's configured
+    #     permissions (typically ``connect_production_branch``,
+    #     ``manage_branches``, ``manage_deploy_requests``,
+    #     ``read_organization``). Modify production schemas, exfiltrate
+    #     every branch's DB password, trigger arbitrary deploy requests,
+    #     delete branches.
+    #   * ``pscale_pw_<body>`` — Database branch password. **HIGHEST
+    #     data-plane blast radius:** direct MySQL-wire-protocol access
+    #     to the database branch (read every table, write every table
+    #     — full customer data exfiltration / ransomware-style overwrite
+    #     primitive). Issued via app.planetscale.com/<org>/<db>/<branch>/
+    #     passwords.
+    # The body (43-char ``[A-Za-z0-9_-]`` base64url-ish alphabet) lies
+    # ENTIRELY inside the entropy fallback's ``[A-Za-z0-9+/=_-]``
+    # alphabet — pre-fix the entropy regex matched the full
+    # ``pscale_<tier>_<body>`` span as one generic ``Hochentropischer
+    # Token-String`` finding, losing the PlanetScale-specific issuer
+    # attribution PLUS the credential-tier disambiguation that anchors
+    # the operator's revocation playbook (three distinct revocation
+    # panels — OAuth Apps, Service Tokens, Branch Passwords — require
+    # tier identification from the prefix).
+    #
+    # Real-world emission patterns: ``.env`` files (``PLANETSCALE_TOKEN=
+    # pscale_tkn_...``, ``DATABASE_URL=mysql://<user>:pscale_pw_...@<host>/
+    # <db>``), CI/CD pipeline debug logs (Terraform
+    # ``planetscale_database`` resource echoing the token in plan
+    # output), notebook outputs hardcoding the PlanetScale Python client
+    # constructor, ``pscale`` CLI ``--service-token`` flag in CI YAML
+    # files committed to source.
+    #
+    # Structural anchors:
+    #   * ``pscale_`` literal prefix (unambiguous; no other major issuer
+    #     uses this prefix).
+    #   * ``(?:oauth|tkn|pw)`` strict tier alternation matches the
+    #     three documented PlanetScale credential tiers. The strict
+    #     alternation prevents false positives on placeholder values
+    #     like ``pscale_foo_...`` while preserving per-tier IR triage.
+    #   * ``[A-Za-z0-9_-]{43}`` strict 43-char base64url body matches
+    #     PlanetScale's documented canonical format. The strict length
+    #     rejects accidental fragments while the boundary anchors
+    #     prevent extension into longer adjacent identifiers.
+    #   * ``(?<![A-Za-z0-9])`` / ``(?![A-Za-z0-9])`` boundary anchors
+    #     reject mid-word collisions (``Xpscale_tkn_...`` / ``...G``
+    #     tails).
+    (
+        re.compile(
+            r"(?<![A-Za-z0-9])pscale_(?:oauth|tkn|pw)_[A-Za-z0-9_\-]{43}(?![A-Za-z0-9])"
+        ),
+        "PlanetScale Database Token gefunden",
+    ),
 ]
 
 
