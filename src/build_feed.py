@@ -1948,6 +1948,54 @@ def _cdata_content(s: str) -> str:
     return s.replace("]]>", "]]]]><![CDATA[>")
 
 
+def _placeholder_collides_with_formatted(
+    ph_content: str, ph_title: str, formatted: FormattedContent
+) -> bool:
+    """Return True if either placeholder appears in any text-bearing field
+    of *formatted*.
+
+    Security (CDATA placeholder collision drift closure):
+    ``_emit_item`` injects ``ph_content`` / ``ph_title`` as the ``.text``
+    of ``<content:encoded>`` / ``<title>`` ElementTree elements and
+    later substitutes them via a global ``xml_str.replace(...)`` pass
+    for CDATA-wrapped content. The downstream replace is element-agnostic
+    — any occurrence of either placeholder ANYWHERE in the serialised
+    XML gets replaced, including inside ``<link>`` / ``<guid>`` /
+    ``<description>`` element text whose values come from upstream-
+    controlled fields. Pre-fix the loop only verified absence in three
+    of the eight ``FormattedContent`` text fields (``desc_html``,
+    ``raw_desc``, ``title_out``); the remaining five (``link``, ``guid``,
+    ``desc_text_truncated``, ``title_cdata``, ``desc_cdata``) leaked
+    upstream-controlled spans into the placeholder-replacement target
+    set without a collision check. An upstream item whose ``link`` or
+    ``guid`` coincidentally matched the random placeholder pattern
+    would corrupt the serialised RSS XML (CDATA injected into the
+    wrong element, original element text consumed by the replacement).
+    Practical exploitability requires predicting a 128-bit UID
+    (astronomically low for a remote attacker), but the project's
+    Zero-Trust upstream contract (AGENTS.md §3) demands defense-in-
+    depth at every upstream-data boundary regardless of practical
+    exploitability — a legitimate URL that happens to embed the
+    placeholder pattern (highly unlikely yet possible) would silently
+    corrupt the public feed. The check examines every text-bearing
+    ``FormattedContent`` field, mirroring the ``isinstance`` Zero-Trust
+    guards added at every other upstream JSON-parse site
+    (``src/providers/vor.py``, ``src/providers/wl_fetch.py``,
+    ``src/places/client.py``).
+    """
+    text_fields = (
+        formatted.link,
+        formatted.guid,
+        formatted.title_out,
+        formatted.title_cdata,
+        formatted.desc_html,
+        formatted.desc_cdata,
+        formatted.desc_text_truncated,
+        formatted.raw_desc,
+    )
+    return any(ph_content in field or ph_title in field for field in text_fields)
+
+
 class FormattedContent(NamedTuple):
     guid: str
     link: str
@@ -2311,9 +2359,15 @@ def _emit_item(
         if age <= timedelta(minutes=feed_config.FRESH_PUBDATE_WINDOW_MIN):
             pubDate = now
 
-    # Generate unique placeholders
-    # We use a cryptographically secure random token to ensure uniqueness within the document
-    # Ensure placeholder is not accidentally present in the original desc_html or raw_desc
+    # Generate unique placeholders.
+    # We use a cryptographically secure random token to ensure uniqueness within the document.
+    # ``_placeholder_collides_with_formatted`` verifies the candidate
+    # placeholders do not appear in ANY of the eight text-bearing
+    # ``FormattedContent`` fields — closing the upstream-controlled
+    # collision gap on ``link`` / ``guid`` / ``desc_text_truncated`` /
+    # ``title_cdata`` / ``desc_cdata`` that the pre-fix inline check
+    # missed (only ``desc_html`` / ``raw_desc`` / ``title_out`` were
+    # examined).
     max_attempts = 100
     attempts = 0
     while True:
@@ -2322,7 +2376,7 @@ def _emit_item(
         uid = secrets.token_hex(16)
         PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
         PH_TITLE = f"___CDATA_TITLE_{uid}___"
-        if PH_CONTENT not in formatted.desc_html and PH_CONTENT not in formatted.raw_desc and PH_TITLE not in formatted.title_out:
+        if not _placeholder_collides_with_formatted(PH_CONTENT, PH_TITLE, formatted):
             break
         attempts += 1
 
