@@ -2262,6 +2262,113 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])pul-[a-f0-9]{40}(?![A-Za-z0-9])"),
         "Pulumi Access Token gefunden",
     ),
+    # Slack App-Level Token (``xapp-<version>-<app_id>-<sequence>-<hex>``).
+    # The canonical Slack App-Level Token format used for Socket Mode and
+    # app-level Events API access. Issued via api.slack.com/apps/<app_id>/
+    # general ("App-Level Tokens" section) with scopes from the
+    # ``connections:write`` / ``authorizations:read`` family. Strict
+    # sibling of the existing ``xoxb-`` / ``xoxp-`` / ``xoxa-`` / ``xoxc-``
+    # / ``xoxd-`` / ``xoxe-`` / ``xoxr-`` Slack family entries — they each
+    # have dedicated ``_KNOWN_TOKENS`` rows but the App-Level variant was
+    # SILENTLY UNDETECTED entirely (NO finding at all). The multi-dash
+    # multi-segment format splits the entropy match at every per-segment
+    # boundary into fragments below the 24-char ``_HIGH_ENTROPY_RE``
+    # floor (1-digit version, 11-char app id, 13-digit sequence are all
+    # too short to trip the entropy detector independently), so the
+    # FULL ``xapp-1-A...-...-...`` span escaped detection on every
+    # branch including the generic entropy fallback. Real-world emission
+    # patterns: ``.env`` files (``SLACK_APP_TOKEN=xapp-...``), GitHub
+    # Actions secrets dumped to logs by a misconfigured action, notebook
+    # outputs hardcoding the token in a Slack SDK ``socket_mode_client``
+    # constructor, Slack SDK error responses echoing the token back.
+    # Revocation flow lives at api.slack.com/apps/<app_id>/general
+    # ("App-Level Tokens" section > "Regenerate") and is distinct from
+    # every other Slack token family's revocation flow (xoxb/xoxp =
+    # ``oauth.v2.revoke`` API; xoxc/xoxd = slack.com/account/sessions;
+    # xapp = api.slack.com/apps/<app_id>/general).
+    #
+    # Threat model (HIGH blast radius — workspace event firehose plus
+    # cross-tenant app management): a leaked ``xapp-`` grants the
+    # holder the app's Socket Mode connection (full firehose of every
+    # app-subscribed workspace event — DM contents, channel messages
+    # the app can see, interactive component payloads, slash command
+    # invocations, modal submissions). Combined with the
+    # ``authorizations:read`` scope it enumerates every workspace
+    # install of the app — one leaked App-Level Token compromises
+    # every workspace the app is installed in (cross-tenant pivot).
+    #
+    # Structural anchors:
+    #   * ``xapp-`` literal prefix (unambiguous; no other major issuer).
+    #   * ``[0-9]+`` version segment (typically ``1``).
+    #   * ``[A-Z][A-Z0-9]{8,}`` app_id segment — Slack App IDs always
+    #     start with the literal ``A`` followed by 10+ uppercase alnum
+    #     chars (Slack's documented App ID format).
+    #   * ``[0-9]+`` sequence segment (typically 13 digits).
+    #   * ``[a-zA-Z0-9]{32,}`` body floor — real Slack App-Level Token
+    #     bodies are 64+ chars; the 32-char floor rejects accidental
+    #     fragments while accepting future canonical-length variations.
+    #   * ``(?<![A-Za-z0-9])`` / ``(?![A-Za-z0-9])`` boundary anchors
+    #     reject mid-word collisions (``Xxapp-...`` / ``...0`` tails).
+    (
+        re.compile(
+            r"(?<![A-Za-z0-9])xapp-[0-9]+-[A-Z][A-Z0-9]{8,}-[0-9]+-[a-zA-Z0-9]{32,}(?![A-Za-z0-9])"
+        ),
+        "Slack App-Level Token gefunden",
+    ),
+    # Databricks Personal Access Token (``dapi<32 hex>(?:-<digit>)?``).
+    # The canonical Databricks PAT format. Issued via the Databricks
+    # workspace UI (User Settings → Developer → Access tokens) for full
+    # workspace-scoped API access (Databricks REST API ``/api/2.0/...``).
+    # The body (32 lowercase hex chars after the ``dapi`` prefix) lies
+    # ENTIRELY inside the entropy fallback's ``[A-Za-z0-9+/=_-]``
+    # alphabet — pre-fix the entropy regex matched the full
+    # ``dapi<body>`` span as one generic ``Hochentropischer
+    # Token-String`` finding, losing the Databricks-specific issuer
+    # attribution that anchors the per-workspace revocation flow.
+    #
+    # Threat model (HIGH blast radius — full workspace data plane plus
+    # job-execution plane): a leaked ``dapi`` grants the issuing user's
+    # full Databricks workspace-scoped API access. Read access =
+    # exfiltrate EVERY table the user can SELECT (Unity Catalog tables,
+    # S3/ADLS/GCS-backed Delta tables, federated tables — the canonical
+    # data-warehouse credential class), export entire datasets via
+    # ``/api/2.0/jobs/runs/export``, exfiltrate notebook source code
+    # (which routinely embeds further credentials — cloud provider keys,
+    # database connection strings, third-party API keys). Write access
+    # = submit arbitrary Spark jobs / SQL queries on the user's
+    # attached clusters (compute-resource theft on GPU clusters at
+    # USD 100s-1000s/hour), modify Unity Catalog permissions (with
+    # appropriate privileges), upload backdoored notebooks to user
+    # folders for persistence. The cluster-execution capability is the
+    # canonical "arbitrary code execution within the cloud account"
+    # amplifier — Databricks clusters run on the customer's AWS/Azure/
+    # GCP account, giving the cluster the IAM role attached to the
+    # cluster (often a broad ``DatabricksDataAccess`` role with S3 /
+    # Glue / Athena read).
+    #
+    # Real-world emission patterns: ``.env`` files (``DATABRICKS_TOKEN=
+    # dapi...``), CI/CD pipeline debug logs (``terraform-provider-
+    # databricks`` echoing the token in plan output), notebook output
+    # cells displaying ``os.environ`` for debugging, ``databricks-cli``
+    # ``--profile`` config files committed by mistake. Revocation flow
+    # lives at Databricks workspace UI > User Settings > Developer >
+    # Access tokens > "Revoke" — distinct per workspace, distinct from
+    # every other Databricks credential class (service principals, OAuth
+    # apps, basic auth).
+    #
+    # Structural anchors:
+    #   * ``dapi`` literal prefix (unambiguous; no other major issuer).
+    #   * ``[a-f0-9]{32}`` strict lowercase-hex 32-char body matches
+    #     Databricks' documented canonical format and rejects placeholder
+    #     values (``dapibus malesuada`` from Lorem Ipsum, ``dapi-foo``).
+    #   * ``(?:-[0-9]+)?`` optional version suffix supports the modern
+    #     ``dapi<hex>-2`` / ``dapi<hex>-3`` rotation format.
+    #   * ``(?<![A-Za-z0-9])`` / ``(?![A-Za-z0-9])`` boundary anchors
+    #     reject mid-word collisions (``Xdapi...`` / ``...G`` tails).
+    (
+        re.compile(r"(?<![A-Za-z0-9])dapi[a-f0-9]{32}(?:-[0-9]+)?(?![A-Za-z0-9])"),
+        "Databricks Personal Access Token gefunden",
+    ),
 ]
 
 

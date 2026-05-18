@@ -1612,6 +1612,81 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])pul-[a-f0-9]{40}(?![A-Za-z0-9])",
             r"pul-***",
         ),
+        # Slack App-Level Token (``xapp-<v>-<app_id>-<seq>-<hex>``) + Databricks
+        # Personal Access Token (``dapi<32 hex>(?:-<digit>)?``) value-shape
+        # masking. Sibling-drift closure for the 2026-05-18 round that
+        # extended ``_KNOWN_TOKENS`` in ``src/utils/secret_scanner.py`` to
+        # detect each canonical token shape with vendor-specific
+        # attribution. Pre-fix the scanner-side coverage was missing for
+        # BOTH families AND the log-sanitisation codepath was NOT
+        # extended in any prior round — bare token shapes in plain log
+        # text (application f-string logs, upstream error responses
+        # echoing the token back, JSON values without sensitive key
+        # names, URL paths embedding the token, URL query strings with
+        # NON-sensitive parameter names) bypassed every existing
+        # key/header/URL-credential mask and leaked verbatim to operator
+        # log streams plus the public ``docs/feed_health.json`` artefact.
+        #
+        # Threat model (mirror the secret-scanner round's blast radius):
+        #   * Slack ``xapp-`` — Socket Mode + app-level Events API
+        #     connection. Leaking grants the app's full event firehose
+        #     (DMs / channel messages / slash commands / modal
+        #     submissions for every app-subscribed event) AND combined
+        #     with ``authorizations:read`` enumerates every workspace
+        #     install of the app (cross-tenant pivot — one App-Level
+        #     Token compromises every workspace the app is installed in).
+        #   * Databricks ``dapi`` — full workspace-scoped data plane +
+        #     job-execution plane. Leaking grants ``SELECT`` on every
+        #     table the user can read (Unity Catalog data exfil),
+        #     arbitrary Spark/SQL job submission on the user's clusters
+        #     (compute theft on USD 100s-1000s/hour GPU clusters), AND
+        #     arbitrary code execution within the cloud account via the
+        #     cluster's attached IAM role (the canonical "data plane to
+        #     control plane pivot" amplifier).
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``Xxapp-...``, ``mydapi...`` are preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Slack: ``xapp-<digits>-[A-Z][A-Z0-9]{8,}-<digits>-<32+
+        #     alnum body>`` matches the canonical Slack App-Level Token
+        #     format (App ID always starts with ``A`` followed by 10+
+        #     uppercase alnum chars per Slack docs; 13-digit sequence;
+        #     64+ char body — 32-char floor accepts future variations).
+        #   * Databricks: ``dapi[a-f0-9]{32}(?:-[0-9]+)?`` strict
+        #     lowercase-hex body anchors against placeholder false
+        #     positives like the Latin Lorem-Ipsum word "dapibus" and
+        #     the literal ``dapi-foo`` placeholder while accepting the
+        #     modern ``dapi<hex>-2`` rotation format.
+        #
+        # The masks preserve issuer-specific prefixes:
+        #   * Slack App-Level → ``xapp-***`` (revocation flow at
+        #     api.slack.com/apps/<app_id>/general > "App-Level Tokens"
+        #     > "Regenerate").
+        #   * Databricks → ``dapi***`` (revocation flow at Databricks
+        #     workspace UI > User Settings > Developer > Access tokens
+        #     > "Revoke" — distinct per workspace).
+        #
+        # Idempotence: masked forms (``xapp-***``, ``dapi***``) do NOT
+        # re-match because ``*`` is OUTSIDE every body alphabet AND
+        # the masked body length (3 chars) is below every per-family
+        # floor (32 / 32).
+        #
+        # Cross-family mutex: ``xapp-`` vs. ``dapi`` prefixes are
+        # disjoint at the leading-character level (``x`` vs. ``d``),
+        # so no token can match both patterns. They are ALSO disjoint
+        # from the existing Slack family entries (``xoxb-``/``xoxp-``/
+        # etc.) at the second-character level (``a`` vs. ``o``).
+        #
+        # Marker: SENTINEL_SLACK_XAPP_DATABRICKS_TOKEN_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])(xapp)-[0-9]+-[A-Z][A-Z0-9]{8,}-[0-9]+-[a-zA-Z0-9]{32,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(dapi)[a-f0-9]{32}(?:-[0-9]+)?(?![A-Za-z0-9])",
+            r"\1***",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
