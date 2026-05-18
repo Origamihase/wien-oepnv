@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 05:00:43 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 05:30:34 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Einstieg: Brünner Straße 31-31A]]></title>
@@ -52,17 +52,6 @@
       <ext:ends_at>Thu, 11 Jun 2026 05:00:00 +0200</ext:ends_at>
       <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [18.05.2026 – 11.06.2026]</description>
       <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[18.05.2026 – 11.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a</guid>
-      <pubDate>Sun, 17 May 2026 23:00:06 +0200</pubDate>
-      <ext:first_seen>Sun, 17 May 2026 23:00:44 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 17 May 2026 23:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 05:30:00 +0200</ext:ends_at>
-      <description>[17.05.2026 – 18.05.2026]</description>
-      <content:encoded><![CDATA[[17.05.2026 – 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
@@ -115,6 +104,17 @@
       <pubDate>Sat, 16 May 2026 00:00:11 +0200</pubDate>
       <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
       <ext:starts_at>Sat, 16 May 2026 00:00:12 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[16.05.2026 – 18.05.2026]</description>
+      <content:encoded><![CDATA[[16.05.2026 – 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[41E/10A: Ersatzbus 41E hält beim 10A]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5</guid>
+      <pubDate>Sat, 16 May 2026 00:00:09 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 00:00:09 +0200</ext:starts_at>
       <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[16.05.2026 – 18.05.2026]</description>
       <content:encoded><![CDATA[[16.05.2026 – 18.05.2026]]]></content:encoded>
