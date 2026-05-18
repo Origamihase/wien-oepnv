@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 21:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 22:00:37 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[49A: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">535949d900686766460ddb8a9829917e5ea3ee61ba1c4e6f4c3cbc3a74961bb7</guid>
+      <pubDate>Mon, 18 May 2026 21:56:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 22:00:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 21:56:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: Haltestelle ersatzlos aufgelassen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +115,6 @@
       <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[17.05.2026 – 18.05.2026]</description>
       <content:encoded><![CDATA[[17.05.2026 – 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
-      <pubDate>Sat, 16 May 2026 00:00:25 +0200</pubDate>
-      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 16 May 2026 00:00:25 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[16.05.2026 – 18.05.2026]</description>
-      <content:encoded><![CDATA[[16.05.2026 – 18.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
