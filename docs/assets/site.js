@@ -685,7 +685,7 @@
           setLastUpdate(new Date());
         },
         () => {
-          setStatus("error", "Daten konnten nicht geladen werden.");
+          setStatus("error", "Live-Feed konnte nicht geladen werden.");
         },
       ),
       loadStammstrecke(ctrl.signal).then(
@@ -715,6 +715,10 @@
       feedState.items = feed.items;
       renderFeed();
     } catch (err) {
+      // Ein AbortError stammt vom Race aus loadAll() (neuer Refresh hat
+      // den alten Request verdrängt). showError() und die DOM-Mutationen
+      // würden in dem Fall nur Flackern erzeugen – stilles Rethrow.
+      if (err.name === "AbortError") throw err;
       const list = $("#feed-list");
       if (list) { list.setAttribute("aria-busy", "false"); clear(list); }
       showError("feed-error", `Feed konnte nicht geladen werden: ${err.message}`);
@@ -729,6 +733,7 @@
       const rows = rowsToObjects(parseCSV(text));
       renderStoerungenStats(year, rows);
     } catch (err) {
+      if (err.name === "AbortError") throw err;
       showError("stoerungen-error", `Störungs-Statistik nicht verfügbar: ${err.message}`);
       throw err;
     }
@@ -741,6 +746,9 @@
       const rows = rowsToObjects(parseCSV(text));
       renderStammstreckeStats(year, rows);
     } catch (err) {
+      // Bei Abort die Live-Kachel nicht auf "–" zurücksetzen – der neue
+      // Request wird sie ohnehin in Kürze mit frischen Daten füllen.
+      if (err.name === "AbortError") throw err;
       resetStammstreckeLiveTile("–");
       showError("stammstrecke-error", `Stammstrecke-Statistik nicht verfügbar: ${err.message}`);
       throw err;
@@ -754,6 +762,7 @@
       const rows = rowsToObjects(parseCSV(text));
       renderAusfaelleStats(year, rows);
     } catch (err) {
+      if (err.name === "AbortError") throw err;
       showError("ausfaelle-error", `Ausfall-Statistik nicht verfügbar: ${err.message}`);
       throw err;
     }
@@ -771,8 +780,14 @@
     const targets = Object.keys(SECTION_LOADERS)
       .map((id) => document.getElementById(id))
       .filter((node) => node != null);
+    // Anzahl der *tatsächlich* im DOM vorhandenen Targets festhalten.
+    // Wenn SECTION_LOADERS mehr Einträge enthält als das Markup hergibt
+    // (z. B. eine Section wurde im HTML entfernt), würde ein Vergleich
+    // gegen Object.keys(SECTION_LOADERS).length nie aufgehen – der
+    // Observer bliebe für die ganze Session am Leben.
+    const targetCount = targets.length;
 
-    if (typeof IntersectionObserver !== "function" || targets.length === 0) {
+    if (typeof IntersectionObserver !== "function" || targetCount === 0) {
       // Fallback for environments without IntersectionObserver – avoid leaving
       // the skeletons stuck and just load everything eagerly.
       for (const node of targets) triggerSectionLoad(node.id);
@@ -788,13 +803,10 @@
           sectionObserver.unobserve(entry.target);
           triggerSectionLoad(id);
         }
-        // Once every lazy section has been triggered the observer has no
-        // remaining work – release it instead of keeping an empty instance
-        // alive for the rest of the session.
-        if (
-          sectionObserver &&
-          loadedSections.size >= Object.keys(SECTION_LOADERS).length
-        ) {
+        // Sobald jede tatsächlich beobachtete Section getriggert wurde,
+        // hat der Observer keine Arbeit mehr – freigeben, statt eine
+        // leere Instanz für den Rest der Session zu halten.
+        if (sectionObserver && loadedSections.size === targetCount) {
           sectionObserver.disconnect();
           sectionObserver = null;
         }
