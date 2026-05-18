@@ -425,6 +425,27 @@ code {
   display: grid;
   gap: 0.7rem;
 }
+/* Bootstrap reservation against feed-driven CLS.
+ *
+ * The feed-list initially renders 3 skeleton placeholders (~478 px
+ * total) and grows to ~10 feed items (~2000–3000 px) once JS resolves
+ * ``feed.xml``. Without a reservation, every section below it
+ * (#stoerungen / #stammstrecke / #ausfaelle) is pushed down by that
+ * delta — Lighthouse measured a 0.906 mobile CLS on the
+ * 2026-05-18 dark-mode run, with #ausfaelle as the dominant
+ * culprit (entire section shifted ~745 px while in-viewport).
+ *
+ * Setting min-height while ``aria-busy="true"`` reserves the eventual
+ * list footprint up-front; the bootstrap HTML declares the attribute,
+ * and ``renderFeed()`` in site.js drops it to ``"false"`` the moment
+ * the first batch of items lands. After that point the rule no longer
+ * matches and the post-load layout is identical to the pre-fix
+ * behaviour. The 1600 px floor was chosen against the typical
+ * 10-item, ~2000 px feed: it absorbs the bulk of the growth while
+ * keeping the visible "loading" area to ~3 skeletons + ~1100 px of
+ * background colour — a few seconds of slightly taller dead space in
+ * exchange for collapsing CLS from 0.9 to ~0.1. */
+.feed-list[aria-busy="true"] { min-height: 1600px; }
 .feed-item {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -435,6 +456,12 @@ code {
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
   transition: transform 0.12s ease, box-shadow 0.12s ease;
+  /* Isolate intra-item layout from the rest of the feed-list. Each
+   * card already has a solid border and box-shadow that visually scopes
+   * its content, so promising the browser that nothing inside affects
+   * outside layout is safe — and it skips a lot of redundant invalidation
+   * work when many feed-items render in one frame. No visual effect. */
+  contain: layout;
 }
 .feed-item:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
 .feed-item__source {
@@ -457,6 +484,26 @@ code {
 .feed-item__source[data-source="oebb"] { background: var(--c-oebb); }
 .feed-item__source[data-source="vor"] { background: var(--c-vor); }
 .feed-item__source[data-source="other"] { background: var(--c-text-subtle); }
+
+/* Dark-mode source pill contrast fix.
+ *
+ * The light-mode brand colours (#E2002A, #C03021, …) give white text a
+ * 4.5:1+ contrast ratio on the pill background — passing WCAG AA. The
+ * dark-mode variants intentionally shift to brighter pastels (#ff5f7e,
+ * #ff6f5e, #a3d36b, #8b9ab5) so the bar-row fills inside the chart
+ * cards still pop against the dark navy surface; but those pastels
+ * only have ~2.7–2.9:1 contrast with white text, which makes the pill
+ * labels nearly unreadable on dark phones (Lighthouse measured the
+ * exact ratios at 2.92 / 2.73 in the May 2026 audit).
+ *
+ * Flipping the pill text to ``var(--c-brand)`` (dark navy #0a1126 in
+ * dark mode) lifts every combination above 6.4:1 without touching the
+ * brand-coloured backgrounds that the chart fills rely on. The rule
+ * only fires under ``prefers-color-scheme: dark`` so the light-mode
+ * appearance is preserved byte-for-byte. */
+@media (prefers-color-scheme: dark) {
+  .feed-item__source { color: var(--c-brand); }
+}
 .feed-item__body { min-width: 0; }
 .feed-item__title {
   margin: 0 0 0.25rem;
@@ -564,6 +611,15 @@ code {
   color: var(--c-text-subtle);
 }
 .live-tile__value {
+  /* ``display: inline-block`` + ``min-width: 5ch`` reserves the numeric
+   * slot up-front so the bootstrap ``–`` placeholder and the rendered
+   * "0,1 min" / "12,4 min" / "N/A" value share an identical box. Without
+   * this the value width grows by ~4ch when JS swaps in the actual
+   * number, which can re-wrap the parent flex layout (label + value)
+   * on narrow viewports. The 5ch floor matches the widest expected
+   * payload ("12,4 min" at the locale's decimal comma). */
+  display: inline-block;
+  min-width: 5ch;
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -591,6 +647,11 @@ code {
    * shrinks the card. The 112 px floor matches the typical
    * label + value + sub layout at the body font sizes. */
   min-height: 112px;
+  /* Each KPI card has its own padding/border/shadow that already scopes
+   * its content visually. Containing layout means changes inside the
+   * card (e.g. the JS swap from empty skeleton → label/value/sub
+   * paragraphs) don't trigger re-layout of sibling cards in the grid. */
+  contain: layout;
 }
 .kpi__label {
   margin: 0;
@@ -627,6 +688,12 @@ code {
   padding: 1.1rem 1.2rem 1.2rem;
   box-shadow: var(--shadow-sm);
   min-width: 0;
+  /* Same reasoning as ``.kpi``/``.feed-item``: the card is a self-
+   * contained chart container with explicit border + min-height
+   * reservation per ID, so layout containment lets the browser skip
+   * sibling re-layout when its ``.bars`` child swaps from the skeleton
+   * placeholder to the real bar-row list. */
+  contain: layout;
 }
 .card--wide { grid-column: 1 / -1; }
 .card__title {
