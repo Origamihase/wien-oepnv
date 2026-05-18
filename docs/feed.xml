@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 17:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 18:00:44 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[77A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b1866dbda10de11cf3a1ffe8fa6fa879751a915b069299afcb4c2a0a6f3945d6</guid>
+      <pubDate>Mon, 18 May 2026 17:58:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 13:00:35 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 17:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">594c762e1862c2f127c0ccf6fe0a4ab3ce8896fc67b8d91c5680d55db8bffd0a</guid>
+      <pubDate>Mon, 18 May 2026 17:42:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 18:00:44 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 17:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ccb49ecd7b5e4fd97d1b9d1a06c7dac25eed876e72b21077b01136c445d90099</guid>
+      <pubDate>Mon, 18 May 2026 17:31:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 15:00:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 17:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U4: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +50,8 @@
       <ext:first_seen>Mon, 18 May 2026 07:00:49 +0200</ext:first_seen>
       <ext:starts_at>Mon, 18 May 2026 17:17:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U4 fährt derzeit in der Station Landstraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 17:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Landstraße. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Die Linie U4 fährt derzeit in der Station Landstraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 17:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Landstraße.<br/>[Am 18.05.2026]]]></content:encoded>
+      <description>Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: Fahrtbehinderung wegen Rettungseinsatz]]></title>
@@ -41,17 +74,6 @@
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
       <content:encoded><![CDATA[Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
-      <pubDate>Mon, 18 May 2026 16:22:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 13:30:33 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 16:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 17:40:00 +0200</ext:ends_at>
-      <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A: Verkehrsüberlastung]]></title>
@@ -93,28 +115,6 @@
       <ext:starts_at>Mon, 18 May 2026 09:39:06 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof … [Seit 18.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof …<br/>[Seit 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Einstieg: Brünner Straße 31-31A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">14d72afa7ef35cf4a782d1b4e669aa9e18ea4c13673e9bbf8d0e47d12f90a4fe</guid>
-      <pubDate>Mon, 18 May 2026 04:54:34 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 05:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 04:54:34 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Bauarbeiten Einstieg: Brünner Straße 31-31A [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Bauarbeiten Einstieg: Brünner Straße 31-31A<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Mon, 18 May 2026 04:45:06 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 05:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 04:45:06 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 00:35:00 +0200</ext:ends_at>
-      <description>[18.05.2026 – 19.05.2026]</description>
-      <content:encoded><![CDATA[[18.05.2026 – 19.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
