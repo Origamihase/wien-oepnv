@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 18:00:44 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 18:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">381829f20deab888a50e0846e6431dbf3ea0d5a796a28663625e48630c13c686</guid>
+      <pubDate>Mon, 18 May 2026 18:14:37 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 18:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 18:14:37 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 19:12:00 +0200</ext:ends_at>
+      <description>[Am 18.05.2026]</description>
+      <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Fahrtbehinderung Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35</guid>
+      <pubDate>Mon, 18 May 2026 18:09:27 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 18:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 18:09:33 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 19:09:00 +0200</ext:ends_at>
+      <description>[Am 18.05.2026]</description>
+      <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[77A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,15 +43,15 @@
       <content:encoded><![CDATA[Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11A: Betriebsstörung]]></title>
+      <title><![CDATA[11A: Betriebsstörung Betrieb ab Sturgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">594c762e1862c2f127c0ccf6fe0a4ab3ce8896fc67b8d91c5680d55db8bffd0a</guid>
-      <pubDate>Mon, 18 May 2026 17:42:00 +0200</pubDate>
+      <guid isPermaLink="false">2750bb69e57bc45e18a21a001b7af27d61aa4571b9f15311e596cdab6d66d090</guid>
+      <pubDate>Mon, 18 May 2026 17:45:38 +0200</pubDate>
       <ext:first_seen>Mon, 18 May 2026 18:00:44 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 17:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+      <ext:starts_at>Mon, 18 May 2026 17:45:38 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 18:44:00 +0200</ext:ends_at>
+      <description>[Am 18.05.2026]</description>
+      <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26A: Verkehrsüberlastung]]></title>
@@ -54,17 +76,6 @@
       <content:encoded><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[18: Fahrtbehinderung wegen Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
-      <pubDate>Mon, 18 May 2026 17:02:17 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 17:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 17:03:15 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 18:02:00 +0200</ext:ends_at>
-      <description>Rettungseinsatz Betrieb ab St. Marx [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Rettungseinsatz Betrieb ab St. Marx<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[13A: Schadhafter PKW]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9bfc09400cbab037ba3921881e740e24b07301b7269331389dfd1fb1718c8618</guid>
@@ -74,17 +85,6 @@
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
       <content:encoded><![CDATA[Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405</guid>
-      <pubDate>Mon, 18 May 2026 16:09:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 13:00:35 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 16:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Wien Jedlersdorf]]></title>
