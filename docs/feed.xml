@@ -7,51 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 19:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 19:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[38/39A: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[61A: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7022acd6cf738bfa79b4421870fc8a823c2ece8f7392e31ebab21d276613f649</guid>
+      <guid isPermaLink="false">e2abb8f49c371274d012156348735011d23cd99f56dc4253281f93a1f03e4842</guid>
+      <pubDate>Mon, 18 May 2026 19:12:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 19:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 19:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 61A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 61A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[39A: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">71618ae62b9ab93dc5f1a08adb28c6d4811eab44ce507f1cdcc6c028681640f7</guid>
       <pubDate>Mon, 18 May 2026 18:56:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 19:00:57 +0200</ext:first_seen>
+      <ext:first_seen>Mon, 18 May 2026 19:30:45 +0200</ext:first_seen>
       <ext:starts_at>Mon, 18 May 2026 18:56:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Linie 39A: Unregelmäßige Intervalle in beiden Richtungen. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Linie 39A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 18.05.2026]]]></content:encoded>
+      <description>Linie 39A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 39A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <title><![CDATA[38: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">381829f20deab888a50e0846e6431dbf3ea0d5a796a28663625e48630c13c686</guid>
-      <pubDate>Mon, 18 May 2026 18:14:37 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 18:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 18:14:37 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 19:12:00 +0200</ext:ends_at>
-      <description>[Am 18.05.2026]</description>
-      <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Fahrtbehinderung Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35</guid>
-      <pubDate>Mon, 18 May 2026 18:09:27 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 18:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 18:09:33 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 19:09:00 +0200</ext:ends_at>
-      <description>[Am 18.05.2026]</description>
-      <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ccb49ecd7b5e4fd97d1b9d1a06c7dac25eed876e72b21077b01136c445d90099</guid>
-      <pubDate>Mon, 18 May 2026 17:31:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 15:00:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 17:31:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">c16184b68509899faf02a65c374d8c059400404774e2da3970444c5b92e08600</guid>
+      <pubDate>Mon, 18 May 2026 18:56:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 19:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 18:56:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 18.05.2026]]]></content:encoded>
+      <description>Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Wien Jedlersdorf]]></title>
@@ -115,6 +104,17 @@
       <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 18.05.2026]</description>
       <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Kranarbeiten ab 01. Juni 2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ea5c0a14274e4e9715287474322b70a593216116a425ef7cbb594981f139be65</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 00:00:40 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 11 Jun 2026 05:00:00 +0200</ext:ends_at>
+      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [18.05.2026 – 11.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[18.05.2026 – 11.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
