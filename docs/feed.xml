@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 08:30:35 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 09:00:41 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4</guid>
+      <pubDate>Mon, 18 May 2026 08:42:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 09:00:41 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 08:47:07 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34</guid>
+      <pubDate>Mon, 18 May 2026 08:34:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 09:00:41 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 08:34:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Tullnerfeld]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -53,17 +75,6 @@
       <content:encoded><![CDATA[Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3</guid>
-      <pubDate>Mon, 18 May 2026 07:58:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 08:00:39 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 07:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[15A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">bc65efc0eaddbdf7e05327a802d1b0275625e76f2f1601244d8cb88fec910412</guid>
@@ -106,17 +117,6 @@
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
       <content:encoded><![CDATA[Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Einstieg: Brünner Straße 31-31A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">14d72afa7ef35cf4a782d1b4e669aa9e18ea4c13673e9bbf8d0e47d12f90a4fe</guid>
-      <pubDate>Mon, 18 May 2026 04:54:34 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 05:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 04:54:34 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Bauarbeiten Einstieg: Brünner Straße 31-31A [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Bauarbeiten Einstieg: Brünner Straße 31-31A<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
