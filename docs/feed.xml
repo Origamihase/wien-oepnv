@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 23:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 00:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
@@ -68,9 +68,9 @@
       <pubDate>Mon, 18 May 2026 04:54:34 +0200</pubDate>
       <ext:first_seen>Mon, 18 May 2026 05:00:43 +0200</ext:first_seen>
       <ext:starts_at>Mon, 18 May 2026 04:54:34 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Bauarbeiten Einstieg: Brünner Straße 31-31A [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Bauarbeiten Einstieg: Brünner Straße 31-31A<br/>[Am 18.05.2026]]]></content:encoded>
+      <ext:ends_at>Tue, 19 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Einstieg: Brünner Straße 31-31A [18.05.2026 – 19.05.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Einstieg: Brünner Straße 31-31A<br/>[18.05.2026 – 19.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -82,17 +82,6 @@
       <ext:ends_at>Tue, 19 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[18.05.2026 – 19.05.2026]</description>
       <content:encoded><![CDATA[[18.05.2026 – 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Betrieb ab Frödenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0cc601b709f5e2e2bf853af2229533e03cb323563dfe0bebb6a3b9de6ceb2e16</guid>
-      <pubDate>Mon, 18 May 2026 04:30:25 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 05:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 04:30:25 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 18.05.2026]</description>
-      <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Kranarbeiten ab 01. Juni 2026]]></title>
@@ -112,9 +101,20 @@
       <pubDate>Sun, 17 May 2026 00:00:23 +0200</pubDate>
       <ext:first_seen>Sun, 17 May 2026 00:30:41 +0200</ext:first_seen>
       <ext:starts_at>Sun, 17 May 2026 00:00:23 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[17.05.2026 – 18.05.2026]</description>
-      <content:encoded><![CDATA[[17.05.2026 – 18.05.2026]]]></content:encoded>
+      <ext:ends_at>Tue, 19 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[17.05.2026 – 19.05.2026]</description>
+      <content:encoded><![CDATA[[17.05.2026 – 19.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Sat, 16 May 2026 00:00:25 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 00:00:25 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[16.05.2026 – 19.05.2026]</description>
+      <content:encoded><![CDATA[[16.05.2026 – 19.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
