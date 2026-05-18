@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 18 May 2026 16:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 17:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a</guid>
+      <pubDate>Mon, 18 May 2026 16:40:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 07:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 16:40:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Schadhafter PKW]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9bfc09400cbab037ba3921881e740e24b07301b7269331389dfd1fb1718c8618</guid>
+      <pubDate>Mon, 18 May 2026 16:39:00 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 17:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 16:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 13A: Umleitung in Richtung Alser Straße, Skodagasse zwischen Karl-Popper-Straße und Johann-Strauß-Gasse über Wiedner Gürtel und Wiedner Hauptstraße. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie 13A: Umleitung in Richtung Alser Straße, Skodagasse zwischen Karl-Popper-Straße und Johann-Strauß-Gasse über Wiedner Gürtel und Wiedner Hauptstraße.<br/>[Am 18.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +39,8 @@
       <ext:first_seen>Mon, 18 May 2026 13:30:33 +0200</ext:first_seen>
       <ext:starts_at>Mon, 18 May 2026 16:22:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U1 fährt derzeit in der Station Reumannplatz in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 16:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich … [Am 18.05.2026]</description>
-      <content:encoded><![CDATA[Die Linie U1 fährt derzeit in der Station Reumannplatz in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 16:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich …<br/>[Am 18.05.2026]]]></content:encoded>
+      <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
+      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A: Verkehrsüberlastung]]></title>
@@ -69,7 +91,7 @@
       <pubDate>Mon, 18 May 2026 14:02:00 +0200</pubDate>
       <ext:first_seen>Mon, 18 May 2026 13:00:35 +0200</ext:first_seen>
       <ext:starts_at>Mon, 18 May 2026 14:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 18 May 2026 16:59:00 +0200</ext:ends_at>
       <description>Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.05.2026]</description>
       <content:encoded><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.05.2026]]]></content:encoded>
     </item>
@@ -93,28 +115,6 @@
       <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Bauarbeiten Einstieg: Brünner Straße 31-31A [Am 18.05.2026]</description>
       <content:encoded><![CDATA[Bauarbeiten Einstieg: Brünner Straße 31-31A<br/>[Am 18.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Mon, 18 May 2026 04:45:06 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 05:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 04:45:06 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 00:35:00 +0200</ext:ends_at>
-      <description>[18.05.2026 – 19.05.2026]</description>
-      <content:encoded><![CDATA[[18.05.2026 – 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Betrieb ab Frödenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0cc601b709f5e2e2bf853af2229533e03cb323563dfe0bebb6a3b9de6ceb2e16</guid>
-      <pubDate>Mon, 18 May 2026 04:30:25 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 05:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 04:30:25 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 18 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 18.05.2026]</description>
-      <content:encoded><![CDATA[[Am 18.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
