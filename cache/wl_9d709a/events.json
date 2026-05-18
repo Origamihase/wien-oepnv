@@ -351,7 +351,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "25/94A: Verkehrsunfall",
-    "description": "Linie 25: Fahrtbehinderung in Richtung Floridsdorf S U. Linie 94A: Fahrtbehinderung in Richtung Stadlau S U. Voraussichtliche Dauer: 13:20 Uhr. Grund: Verkehrsunfall im Bereich Erzherzog-Karl-Straße.",
+    "description": "Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Linie 94A: Fahrtbehinderung in Richtung Stadlau S U. Weichen Sie ersatzweise auf die Linie 26A aus. Voraussichtliche Dauer: 13:40 Uhr. Grund: Verkehrsunfall im Bereich Erzherzog-Karl-Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4277d3dcebea0e588a6c5fb7103fb10b929fe43cf590299f5ba29d9221cca77b",
     "pubDate": "2026-05-18T12:57:00+02:00",
@@ -430,6 +430,18 @@
     "starts_at": "2026-05-18T12:52:04+02:00",
     "ends_at": "2026-05-18T13:51:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-05-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "30/31: Polizeieinsatz",
+    "description": "Linie 30: Fahrtbehinderung in Richtung Stammersdorf. Linie 31: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 13:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Großjedlersdorf.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4a5456005e574a0c5b4db4857e3ca6b45e6f0bbd0d807676f632c447c330e1a",
+    "pubDate": "2026-05-18T13:11:00+02:00",
+    "starts_at": "2026-05-18T13:11:00+02:00",
+    "ends_at": "2026-05-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=30,31|D=2026-05-18"
   },
   {
     "source": "Wiener Linien",
@@ -590,14 +602,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52: Fahrtbehinderung Verkehrsunfall",
+    "title": "57A: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "538e3537ccddfddb6ed2a2bea6bb7128afece95871c03e3c9b06dde002cf7d72",
-    "pubDate": "2026-05-18T12:03:53+02:00",
-    "starts_at": "2026-05-18T12:03:54+02:00",
-    "ends_at": "2026-05-18T13:03:00+02:00",
-    "_identity": "wl|störung|L=52|D=2026-05-18"
+    "guid": "1d1d05be353e05525465b91804efa6f53fda855f31d552fdfa5243e7b4328a8b",
+    "pubDate": "2026-05-18T13:23:02+02:00",
+    "starts_at": "2026-05-18T13:23:02+02:00",
+    "ends_at": "2026-05-18T14:22:00+02:00",
+    "_identity": "wl|störung|L=57A|D=2026-05-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Verkehrsunfall",
+    "description": "Linie 57A: Fahrtbehinderung in Richtung Rudolfsheim, Anschützgasse. Voraussichtliche Dauer: 13:35 Uhr. Grund: Verkehrsunfall im Bereich Gumpendorfer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d735177cc6e0c032bea05c9936fbbc2b7922b9a27c7090d9edb0f0dee69f67b3",
+    "pubDate": "2026-05-18T13:22:00+02:00",
+    "starts_at": "2026-05-18T13:22:00+02:00",
+    "ends_at": "2026-05-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=57A|D=2026-05-18"
   },
   {
     "source": "Wiener Linien",
@@ -621,18 +645,6 @@
     "pubDate": "2026-05-18T04:45:06+02:00",
     "starts_at": "2026-05-18T04:45:06+02:00",
     "ends_at": "2026-05-19T00:35:00+02:00",
-    "_identity": "wl|störung|L=62A|D=2026-05-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62A: Polizeieinsatz",
-    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8d32bf253eb361fad3cf7ab04e3d566120cac23962eabe72fe27664af6ff30e4",
-    "pubDate": "2026-05-18T12:29:00+02:00",
-    "starts_at": "2026-05-18T12:29:00+02:00",
-    "ends_at": "2026-05-18T23:55:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-05-18"
   },
   {
@@ -662,18 +674,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
-    "pubDate": "2026-05-18T12:16:26+02:00",
-    "starts_at": "2026-05-18T12:31:03+02:00",
-    "ends_at": "2026-05-18T13:30:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-05-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Verkehrsunfall",
     "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -682,18 +682,6 @@
     "starts_at": "2026-05-18T12:15:00+02:00",
     "ends_at": "2026-05-18T23:55:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-05-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "77A: Verkehrsunfall",
-    "description": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b1866dbda10de11cf3a1ffe8fa6fa879751a915b069299afcb4c2a0a6f3945d6",
-    "pubDate": "2026-05-18T12:15:00+02:00",
-    "starts_at": "2026-05-18T12:15:00+02:00",
-    "ends_at": "2026-05-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=77A|D=2026-05-18"
   },
   {
     "source": "Wiener Linien",
@@ -710,14 +698,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Rettungseinsatz",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U1: Betriebsstörung",
+    "description": "Linie U1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:30Uhr. Grund: Betriebsstörung im Haltestellenbereich Kagraner Platz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-05-18T12:46:00+02:00",
-    "starts_at": "2026-05-18T12:46:00+02:00",
-    "ends_at": "2026-05-18T12:59:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-05-18"
+    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
+    "pubDate": "2026-05-18T13:08:00+02:00",
+    "starts_at": "2026-05-18T13:08:00+02:00",
+    "ends_at": "2026-05-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-05-18"
   },
   {
     "source": "Wiener Linien",
@@ -729,6 +717,18 @@
     "pubDate": "2026-05-18T04:54:34+02:00",
     "starts_at": "2026-05-18T04:54:34+02:00",
     "ends_at": "2026-05-18T23:59:59+02:00",
+    "_identity": "wl|störung|L=|D=2026-05-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "68bc6af54c6e7221254acf728b57d945990511addcc9f1a0366dc0c96112b806",
+    "pubDate": "2026-05-18T13:11:41+02:00",
+    "starts_at": "2026-05-18T13:23:37+02:00",
+    "ends_at": "2026-05-18T14:23:00+02:00",
     "_identity": "wl|störung|L=|D=2026-05-18"
   }
 ]
