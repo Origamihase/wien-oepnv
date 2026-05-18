@@ -2495,6 +2495,136 @@ _KNOWN_TOKENS = [
         ),
         "PlanetScale Database Token gefunden",
     ),
+    # Heroku Platform API Token (``HRKU-<base64url 36+ body>``).
+    # The canonical Heroku Platform API authorization token format issued
+    # post-March 2023 in response to the heroku.com OAuth incident
+    # (https://status.heroku.com/incidents/2413). Issued via the Heroku
+    # CLI (``heroku authorizations:create``) and the Heroku Dashboard at
+    # dashboard.heroku.com/account/applications. Used for the Heroku
+    # Platform API (``api.heroku.com/apps/...``,
+    # ``api.heroku.com/account/...``, ``api.heroku.com/teams/...``)
+    # for full app / dyno / config-var / Heroku Postgres / Heroku Redis
+    # control-plane access. The body alphabet (``[A-Za-z0-9_-]``) lies
+    # ENTIRELY inside the entropy fallback's ``[A-Za-z0-9+/=_-]``
+    # alphabet — pre-fix the entropy regex matched the full
+    # ``HRKU-<body>`` span as one generic ``Hochentropischer
+    # Token-String`` finding, losing the Heroku-specific issuer
+    # attribution that anchors the per-account revocation flow.
+    #
+    # Threat model (HIGH blast radius — full PaaS control plane plus
+    # adjacent data-plane access via add-ons): a leaked ``HRKU-`` grants
+    # the issuing user / authorization's full Heroku Platform API
+    # scope. Read access = enumerate every app the user has access to
+    # (across personal account and every Heroku Team they collaborate
+    # on), dump every app's config vars (which routinely embed further
+    # credentials — ``DATABASE_URL`` for Heroku Postgres with the
+    # PostgreSQL connection string including the password,
+    # ``REDIS_URL`` for Heroku Redis with the auth token,
+    # ``SENDGRID_API_KEY`` / ``STRIPE_SECRET_KEY`` etc. for every
+    # third-party add-on the app uses — the canonical "one credential
+    # leak cascades to many" amplifier). Write access = arbitrary code
+    # execution via ``heroku run`` against any dyno (canonical "shell
+    # on the production server" primitive), modify app config vars
+    # (overwrite ``DATABASE_URL`` to redirect every app instance to an
+    # attacker-controlled DB for credential interception), release
+    # new app code via ``heroku releases:rollback`` or new slug uploads
+    # (supply-chain compromise of the production app), scale up / down
+    # dynos (DoS or cost-amplification attack).
+    #
+    # Real-world emission patterns: ``.env`` files
+    # (``HEROKU_API_KEY=HRKU-...``), ``~/.netrc`` files committed by
+    # accident, CI/CD pipeline debug logs (``heroku-cli`` debug output
+    # echoing the token in plan output), GitHub Actions secrets dumped
+    # to logs by a misconfigured action, ``Procfile`` / ``app.json``
+    # examples in README files hardcoding the token. Revocation flow
+    # lives at the Heroku Dashboard > Account Settings > Applications
+    # > "Revoke" (per-authorization) or via the CLI ``heroku
+    # authorizations:revoke <id>`` — distinct per account, distinct
+    # from every other PaaS-vendor rotation flow (Render via the
+    # dashboard ``Settings > API Keys``, Vercel via the dashboard
+    # ``Settings > Tokens``, Fly.io via ``fly tokens revoke``).
+    #
+    # Structural anchors:
+    #   * ``HRKU-`` literal prefix (Heroku's canonical post-2023
+    #     prefix; no other major issuer uses this prefix). Case-
+    #     sensitive matches the documented uppercase convention.
+    #   * ``[A-Za-z0-9_\-]{36,}`` body alphabet covers BOTH the UUID-
+    #     shape body (32 hex + 4 dashes = 36 chars) AND the base64url-
+    #     shape body (40+ chars). The 36-char floor rejects accidental
+    #     fragments while accepting every documented Heroku canonical
+    #     token shape.
+    #   * ``(?<![A-Za-z0-9])`` / ``(?![A-Za-z0-9])`` boundary anchors
+    #     reject mid-word collisions (``XHRKU-...`` / ``...G`` tails).
+    (
+        re.compile(r"(?<![A-Za-z0-9])HRKU-[A-Za-z0-9_\-]{36,}(?![A-Za-z0-9])"),
+        "Heroku Platform API Token gefunden",
+    ),
+    # Docker Hub Personal Access Token (``dckr_pat_<base64url 27+ body>``).
+    # The canonical Docker Hub PAT format used for Docker registry
+    # authentication (``docker login`` with the PAT as the password).
+    # Issued via the Docker Hub UI at hub.docker.com/settings/security
+    # for full user-scoped registry access (push / pull / delete
+    # repositories the user owns, list every private repository under
+    # the user's namespace). The body alphabet (``[A-Za-z0-9_-]``)
+    # lies ENTIRELY inside the entropy fallback's
+    # ``[A-Za-z0-9+/=_-]`` alphabet — pre-fix the entropy regex
+    # matched the full ``dckr_pat_<body>`` span as one generic
+    # ``Hochentropischer Token-String`` finding, losing the
+    # Docker-Hub-specific issuer attribution that anchors the per-user
+    # revocation flow.
+    #
+    # Threat model (HIGH blast radius — supply-chain compromise
+    # primitive): a leaked ``dckr_pat_`` grants the issuing user's
+    # full Docker Hub scope per the token's configured permissions.
+    # Read access = pull every private image in the user's namespace
+    # (potentially containing baked-in credentials, proprietary source
+    # code in container layers, internal-only infrastructure topology
+    # encoded in image labels). Write access = push backdoored images
+    # to ANY repository under the user's namespace under any tag — the
+    # canonical "supply-chain compromise" primitive. Every downstream
+    # consumer pulling ``user/image:latest`` (CI/CD pipelines,
+    # Kubernetes deployments using ``imagePullPolicy: Always``,
+    # ``docker-compose`` setups with no pinned digest) pulls the
+    # backdoored image. The blast-radius amplifier is the cascade:
+    # Docker Hub is a top-3 public registry and base images frequently
+    # get reused across many projects, so a compromised base image
+    # with millions of weekly pulls cascades to every downstream
+    # consumer.
+    #
+    # Real-world emission patterns: ``.env`` files
+    # (``DOCKER_HUB_TOKEN=dckr_pat_...``), CI/CD pipeline YAML
+    # (``docker login -u $USER -p $DOCKER_HUB_TOKEN`` echoed in debug
+    # logs when the pipeline runs with ``set -x``),
+    # ``~/.docker/config.json`` files committed by mistake (the
+    # ``auths`` block embeds the base64-encoded ``user:dckr_pat_<body>``
+    # string), GitHub Actions secrets dumped to logs by a misconfigured
+    # action, ``docker buildx`` debug output echoing the token in the
+    # registry-login phase, notebook outputs running ``docker push``
+    # with the token in plain text. Revocation flow lives at the Docker
+    # Hub UI > Account Settings > Security > Access Tokens > "Delete"
+    # — distinct per user, distinct from every other container-registry
+    # vendor's revocation flow (GitHub Container Registry uses GitHub
+    # PATs with ``write:packages`` scope; AWS ECR uses IAM credentials;
+    # GitLab Container Registry uses GitLab PATs).
+    #
+    # Structural anchors:
+    #   * ``dckr_pat_`` literal prefix (Docker Hub's canonical PAT
+    #     prefix; no other major issuer uses this prefix). The trailing
+    #     ``_`` after ``pat`` is the documented separator before the
+    #     body.
+    #   * ``[A-Za-z0-9_\-]{27,}`` body alphabet covers Docker Hub's
+    #     documented base64url-ish body shape. The 27-char floor matches
+    #     the minimum documented PAT length while accepting future
+    #     canonical-length variations.
+    #   * ``(?<![A-Za-z0-9])`` / ``(?![A-Za-z0-9])`` boundary anchors
+    #     reject mid-word collisions (``Xdckr_pat_...`` / ``...G``
+    #     tails). The lookbehind specifically rejects accidentally
+    #     prefixed shapes that would otherwise extend the literal
+    #     ``dckr_pat_`` identifier into a longer mid-word match.
+    (
+        re.compile(r"(?<![A-Za-z0-9])dckr_pat_[A-Za-z0-9_\-]{27,}(?![A-Za-z0-9])"),
+        "Docker Hub Personal Access Token gefunden",
+    ),
 ]
 
 

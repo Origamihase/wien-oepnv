@@ -1766,6 +1766,85 @@ def sanitize_log_message(
             r"(?<![A-Za-z0-9])(pscale_(?:oauth|tkn|pw))_[A-Za-z0-9_\-]{43}(?![A-Za-z0-9])",
             r"\1_***",
         ),
+        # Heroku Platform API Token (``HRKU-<base64url 36+ body>``) +
+        # Docker Hub Personal Access Token (``dckr_pat_<base64url 27+
+        # body>``) value-shape masking. Sibling-drift closure for the
+        # 2026-05-18 round that extended ``_KNOWN_TOKENS`` in
+        # ``src/utils/secret_scanner.py`` to detect each canonical token
+        # shape with vendor-specific attribution. Pre-fix the scanner-
+        # side coverage was missing for BOTH families AND the log-
+        # sanitisation codepath was NOT extended in any prior round —
+        # bare token shapes in plain log text (application f-string
+        # logs, upstream error responses echoing the token back, JSON
+        # values without sensitive key names, URL paths embedding the
+        # token, URL query strings with NON-sensitive parameter names)
+        # bypassed every existing key/header/URL-credential mask and
+        # leaked verbatim to operator log streams plus the public
+        # ``docs/feed_health.json`` artefact.
+        #
+        # Threat model (mirror the secret-scanner round's blast radius):
+        #   * Heroku ``HRKU-`` — Full PaaS control plane plus adjacent
+        #     data-plane access via add-ons. Leaking grants the issuing
+        #     authorization's full Heroku Platform API scope: enumerate
+        #     every app, dump every app's config vars (which routinely
+        #     embed ``DATABASE_URL`` for Heroku Postgres,
+        #     ``REDIS_URL`` for Heroku Redis, ``SENDGRID_API_KEY``,
+        #     ``STRIPE_SECRET_KEY``, etc. — the canonical "one
+        #     credential leak cascades to many" amplifier), shell into
+        #     production via ``heroku run`` (arbitrary code execution
+        #     primitive), release backdoored slugs (supply-chain
+        #     compromise of the production app), scale dynos (DoS /
+        #     cost-amplification attack).
+        #   * Docker Hub ``dckr_pat_`` — Supply-chain compromise
+        #     primitive. Push backdoored images to ANY repository under
+        #     the user's namespace; every downstream consumer pulling
+        #     ``user/image:latest`` (CI/CD pipelines, Kubernetes with
+        #     ``imagePullPolicy: Always``, ``docker-compose`` without
+        #     pinned digest) pulls the backdoor. Docker Hub is a top-3
+        #     public registry — compromised base images cascade to
+        #     every downstream consumer.
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``XHRKU-...``, ``mydckr_pat_...`` are
+        #     preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Heroku: ``HRKU-[A-Za-z0-9_\-]{36,}`` covers both the
+        #     UUID-shape (32 hex + 4 dashes = 36 chars) and the
+        #     base64url-shape (40+ chars) bodies.
+        #   * Docker Hub: ``dckr_pat_[A-Za-z0-9_\-]{27,}`` covers the
+        #     documented base64url-ish PAT body shape.
+        #
+        # The masks preserve issuer-specific prefixes for IR triage:
+        #   * Heroku → ``HRKU-***`` (revocation flow at
+        #     dashboard.heroku.com/account/applications or
+        #     ``heroku authorizations:revoke <id>``). Distinct from
+        #     every other PaaS-vendor rotation flow (Render, Vercel,
+        #     Fly.io).
+        #   * Docker Hub → ``dckr_pat_***`` (revocation flow at
+        #     hub.docker.com/settings/security > "Delete"). Distinct
+        #     from every other container-registry vendor's revocation
+        #     flow (GHCR uses GitHub PATs, AWS ECR uses IAM, GitLab
+        #     Container Registry uses GitLab PATs).
+        #
+        # Idempotence: masked forms (``HRKU-***``, ``dckr_pat_***``)
+        # do NOT re-match because ``*`` is OUTSIDE every body alphabet
+        # AND the masked body length (3 chars) is below every per-
+        # family floor (36 / 27).
+        #
+        # Cross-family mutex: ``HRKU-`` vs. ``dckr_pat_`` prefixes are
+        # disjoint at the leading-character level (``H`` vs. ``d``),
+        # so no token can match both patterns.
+        #
+        # Marker: SENTINEL_HEROKU_DOCKER_TOKEN_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])(HRKU)-[A-Za-z0-9_\-]{36,}(?![A-Za-z0-9])",
+            r"\1-***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])(dckr_pat)_[A-Za-z0-9_\-]{27,}(?![A-Za-z0-9])",
+            r"\1_***",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
