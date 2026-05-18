@@ -1538,6 +1538,80 @@ def sanitize_log_message(
             r"[A-Za-z0-9]{8,}-[A-Za-z0-9]{20,}(?![A-Za-z0-9])",
             r"\1-***",
         ),
+        # Dropbox + Pulumi token-family value-shape masking. Sibling-
+        # drift closure for the secret-scanner ``_KNOWN_TOKENS`` entries
+        # added in the same round — Dropbox Short-Lived Access Token
+        # (``sl.<base64url body 40+>``) and Pulumi Access Token
+        # (``pul-<40 lowercase hex>``). The log-sanitisation codepath
+        # MUST mask these alongside the scanner detection codepath;
+        # without value-shape masking, a bare leaked token in plain
+        # log text (application f-string logs, upstream error responses
+        # echoing the token back, JSON values without sensitive key
+        # names, URL paths / query strings with NON-sensitive parameter
+        # names, exception messages routed through
+        # ``_sanitize_exception_msg``) bypasses every existing
+        # key/header/URL-credential mask pattern and leaks verbatim
+        # into operator log streams and the public
+        # ``docs/feed_health.json`` artefact.
+        #
+        # Threat model:
+        #   * Dropbox ``sl.<body>`` — file-storage / sharing /
+        #     team-admin scope per the issuing app's permissions.
+        #     File read = customer data exfiltration; file write =
+        #     ransomware-style overwrite; sharing scope = create
+        #     unauthorised public shared links; team-admin scope =
+        #     exfiltrate team directory, revoke other admins, modify
+        #     retention policies. The short-lived 4h TTL bounds the
+        #     blast window but the issuing app's refresh token can
+        #     re-mint short-lived tokens indefinitely — a leaked
+        #     short-lived token implies the refresh token is also
+        #     exposed in the same artefact.
+        #   * Pulumi ``pul-<body>`` (HIGHEST blast radius — IaC
+        #     control plane) — full Pulumi Cloud API access for the
+        #     issuing user across every accessible org / project /
+        #     stack. Read access = exfiltrate every secret persisted
+        #     in stack state (cloud provider creds, database
+        #     passwords, third-party API keys, TLS private keys).
+        #     Write access = trigger arbitrary ``pulumi up`` modifying
+        #     production infrastructure (provision attacker VMs,
+        #     modify IAM, redirect DNS). The "pivot to every
+        #     downstream environment via a single credential"
+        #     amplifier.
+        #
+        # Structural anchors mirror the scanner regexes exactly:
+        #   * ``(?<![A-Za-z0-9])`` lookbehind prevents mid-word false
+        #     positives (``mysl.<body>``, ``Xpul-<body>`` are
+        #     preserved).
+        #   * ``(?![A-Za-z0-9])`` lookahead bounds the body span.
+        #   * Dropbox body: 40+ chars from ``[A-Za-z0-9_-]`` (base64url
+        #     alphabet); real-world bodies 130-160 chars.
+        #   * Pulumi body: strict 40-char lowercase hex (SHA-1-shape
+        #     digest) rejects placeholder values like
+        #     ``pull-request-1234`` that contain hyphens.
+        # The masks preserve issuer-specific prefixes:
+        #   * Dropbox → ``sl.***`` (revocation flow at
+        #     dropbox.com/developers/apps > App > "Revoke tokens").
+        #   * Pulumi → ``pul-***`` (revocation flow at
+        #     app.pulumi.com/account/tokens > "Revoke").
+        #
+        # Idempotence: masked forms (``sl.***``, ``pul-***``) do NOT
+        # re-match because ``*`` is OUTSIDE every body alphabet AND
+        # the masked body length (3 chars) is below every per-family
+        # floor (40 / 40).
+        #
+        # Cross-family mutex: ``sl.`` vs. ``pul-`` prefixes are
+        # disjoint at the leading-character level (``s`` vs. ``p``),
+        # so no token can match both patterns.
+        #
+        # Marker: SENTINEL_DROPBOX_PULUMI_TOKEN_DRIFT.
+        (
+            r"(?<![A-Za-z0-9])sl\.[A-Za-z0-9_\-]{40,}(?![A-Za-z0-9])",
+            r"sl.***",
+        ),
+        (
+            r"(?<![A-Za-z0-9])pul-[a-f0-9]{40}(?![A-Za-z0-9])",
+            r"pul-***",
+        ),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
