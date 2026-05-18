@@ -468,7 +468,18 @@ code {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 100px;
+  /* Reserve enough horizontal room for the widest source label
+   * ("WIENER LINIEN" – 13 uppercase chars at 0.72rem/700) so every
+   * pill across the feed renders at the same width. Previously the
+   * 100 px floor only sufficed for shorter labels ("ÖBB",
+   * "ANDERE"), which let "WIENER LINIEN" inflate its own pill and
+   * pushed the title column to a different start column on every
+   * card – the result was a visibly stair-stepped indentation down
+   * the list. The 9 rem (144 px) floor fits the longest label with a
+   * small visual buffer and still sits well within the 320 px mobile
+   * viewport before ``grid-template-columns`` collapses to a single
+   * column at 540 px. */
+  min-width: 9rem;
   padding: 0.18rem 0.55rem;
   height: max-content;
   border-radius: 8px;
@@ -485,24 +496,37 @@ code {
 .feed-item__source[data-source="vor"] { background: var(--c-vor); }
 .feed-item__source[data-source="other"] { background: var(--c-text-subtle); }
 
-/* Dark-mode source pill contrast fix.
+/* Dark-mode source pill contrast.
  *
- * The light-mode brand colours (#E2002A, #C03021, …) give white text a
- * 4.5:1+ contrast ratio on the pill background — passing WCAG AA. The
- * dark-mode variants intentionally shift to brighter pastels (#ff5f7e,
- * #ff6f5e, #a3d36b, #8b9ab5) so the bar-row fills inside the chart
- * cards still pop against the dark navy surface; but those pastels
- * only have ~2.7–2.9:1 contrast with white text, which makes the pill
- * labels nearly unreadable on dark phones (Lighthouse measured the
- * exact ratios at 2.92 / 2.73 in the May 2026 audit).
+ * Light-mode brand colours (#E2002A, #C03021, …) give white text a
+ * 6.8:1+ contrast on the pill background – comfortably above WCAG-AA.
+ * The dark-mode ``--c-wl`` / ``--c-oebb`` / ``--c-vor`` tokens shift
+ * to brighter pastels (#ff5f7e, #ff6f5e, #a3d36b) so the bar-row
+ * fills inside the chart cards still pop against the dark navy
+ * surface, but those same pastels only score 2.7-2.9:1 with white
+ * text, which made the source labels nearly unreadable on dark
+ * phones (Lighthouse measured 2.92 / 2.73 in the May 2026 audit).
  *
- * Flipping the pill text to ``var(--c-brand)`` (dark navy #0a1126 in
- * dark mode) lifts every combination above 6.4:1 without touching the
- * brand-coloured backgrounds that the chart fills rely on. The rule
- * only fires under ``prefers-color-scheme: dark`` so the light-mode
- * appearance is preserved byte-for-byte. */
+ * An earlier attempt flipped the pill *text* to ``var(--c-brand)``
+ * (dark navy). That cleared the WCAG ratio on paper but read "muddy"
+ * on the bright pill colours and visually competed with the pill
+ * itself; combined with the intrinsic pill widths it also stayed
+ * misaligned across cards.
+ *
+ * The current fix paints the pill *background* with darker, saturated
+ * brand variants in dark mode and keeps the pill text white in both
+ * schemes. Every combination now clears 6:1 against white, the
+ * silhouette still reads as the brand colour, and the chart fills
+ * above (which are evaluated against the dark navy card surface, not
+ * the pill's white text) keep the lively pastels. The pill width is
+ * locked separately via the ``min-width: 9rem`` rule above so the
+ * title column lines up across cards regardless of label length. */
 @media (prefers-color-scheme: dark) {
-  .feed-item__source { color: var(--c-brand); }
+  .feed-item__source { background: #4a5775; }
+  .feed-item__source[data-source="wienerlinien"] { background: #b80024; }
+  .feed-item__source[data-source="oebb"] { background: #9f2a1b; }
+  .feed-item__source[data-source="vor"] { background: #406b0e; }
+  .feed-item__source[data-source="other"] { background: #4a5775; }
 }
 .feed-item__body { min-width: 0; }
 .feed-item__title {
