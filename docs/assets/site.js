@@ -658,9 +658,9 @@
   let refreshTimer = null;
   let currentAbort = null;
   let sectionObserver = null;
-  // IDs of statistic sections the user has revealed by scrolling. A refresh
-  // (manual or automatic) only re-fetches whatever lives in this set – the
-  // feed is the only thing that always reloads.
+  // IDs of *lazy* statistic sections the user has revealed by scrolling
+  // (currently #stoerungen and #ausfaelle). A refresh always re-runs the
+  // feed and stammstrecke loaders, plus whatever lives in this set.
   const loadedSections = new Set();
 
   async function loadAll() {
@@ -672,18 +672,25 @@
     const refreshBtn = $("#refresh-btn");
     if (refreshBtn) refreshBtn.disabled = true;
 
-    // Global status/timestamp follow the feed only; statistic sections keep
-    // their inline showError/hideError lifecycle. On a refresh we additionally
-    // rerun the loaders for sections the user has already scrolled to.
+    // The global status follows the feed alone – it's decoupled from the
+    // lazy statistic sections, so a successful feed reload doesn't claim
+    // "alles aktuell" when #stoerungen / #ausfaelle haven't been loaded.
+    // Stammstrecke loads eagerly because its CSV also powers the above-
+    // the-fold live tile in the feed header. Sections that became visible
+    // in this session piggyback on the same AbortController.
     const tasks = [
       loadFeed(ctrl.signal).then(
         () => {
-          setStatus("ok", "Alle Daten aktuell.");
+          setStatus("ok", "Live-Feed aktualisiert.");
           setLastUpdate(new Date());
         },
         () => {
           setStatus("error", "Daten konnten nicht geladen werden.");
         },
+      ),
+      loadStammstrecke(ctrl.signal).then(
+        () => setLastUpdate(new Date()),
+        () => {},
       ),
     ];
     for (const id of loadedSections) {
@@ -752,9 +759,11 @@
     }
   }
 
+  // Lazy loaders only – stammstrecke is intentionally absent because it
+  // is loaded eagerly inside loadAll() to keep the live tile in the feed
+  // header populated above the fold.
   const SECTION_LOADERS = {
     stoerungen: loadStoerungen,
-    stammstrecke: loadStammstrecke,
     ausfaelle: loadAusfaelle,
   };
 
@@ -778,6 +787,16 @@
           if (!(id in SECTION_LOADERS)) continue;
           sectionObserver.unobserve(entry.target);
           triggerSectionLoad(id);
+        }
+        // Once every lazy section has been triggered the observer has no
+        // remaining work – release it instead of keeping an empty instance
+        // alive for the rest of the session.
+        if (
+          sectionObserver &&
+          loadedSections.size >= Object.keys(SECTION_LOADERS).length
+        ) {
+          sectionObserver.disconnect();
+          sectionObserver = null;
         }
       },
       { rootMargin: "200px" },
@@ -842,8 +861,11 @@
     setYearLabels(new Date().getFullYear());
     attachFilterHandlers();
     attachRefresh();
-    setupSectionObserver();
+    // loadAll() runs first so currentAbort is set before the observer can
+    // fire (matters for the no-IntersectionObserver fallback path, which
+    // synchronously kicks the lazy loaders from setupSectionObserver).
     loadAll();
+    setupSectionObserver();
     startAutoRefresh();
   }
 
