@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 19 May 2026 18:30:42 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 19:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9e3976e9bb5ee545674f34d5b6d143bb76fab0ede012b583b848c10916715046</guid>
+      <pubDate>Tue, 19 May 2026 18:40:00 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 19:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 18:40:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 19:04:00 +0200</ext:ends_at>
+      <description>Linie 9A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie 9A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 19.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
+      <pubDate>Tue, 19 May 2026 18:35:00 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 09:30:38 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 18:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Wien Süßenbrunn]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -26,7 +48,7 @@
       <pubDate>Tue, 19 May 2026 17:46:00 +0200</pubDate>
       <ext:first_seen>Tue, 19 May 2026 11:30:44 +0200</ext:first_seen>
       <ext:starts_at>Tue, 19 May 2026 17:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 19 May 2026 19:20:00 +0200</ext:ends_at>
       <description>Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 19.05.2026]</description>
       <content:encoded><![CDATA[Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 19.05.2026]]]></content:encoded>
     </item>
@@ -37,31 +59,9 @@
       <pubDate>Tue, 19 May 2026 17:35:00 +0200</pubDate>
       <ext:first_seen>Tue, 19 May 2026 18:00:37 +0200</ext:first_seen>
       <ext:starts_at>Tue, 19 May 2026 17:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 19 May 2026 18:59:00 +0200</ext:ends_at>
       <description>Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 19.05.2026]</description>
       <content:encoded><![CDATA[Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[69A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">999c28c05936850f94a3a3feea492352b165f48af774c34e6c84931ea7df4f20</guid>
-      <pubDate>Tue, 19 May 2026 17:05:00 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 17:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 17:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A: Störung an einem Bahnübergang]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">78cfc305e07fdf703edca3374236eb576bf584080a19450b6f7f78fade7ec1e8</guid>
-      <pubDate>Tue, 19 May 2026 16:48:00 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 17:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 16:48:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang.<br/>[Am 19.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hütteldorf]]></title>
