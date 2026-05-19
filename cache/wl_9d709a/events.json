@@ -314,12 +314,36 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Feuerwehreinsatz",
+    "title": "10A: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0fb441752223336a3409d8f10b49fb5996d541ddff6fb028aeae1cee90451da3",
+    "pubDate": "2026-05-19T11:09:12+02:00",
+    "starts_at": "2026-05-19T11:18:44+02:00",
+    "ends_at": "2026-05-19T12:18:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-05-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Betriebsstörung Betrieb ab Meidling Hauptstraße",
+    "description": "Betriebsstörung\nBetrieb ab Meidling Hauptstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2893c27688c4e313f189b6c77ff6d725912c49de9ac434daf72361a4f439d010",
+    "pubDate": "2026-05-19T11:19:22+02:00",
+    "starts_at": "2026-05-19T11:19:22+02:00",
+    "ends_at": "2026-05-19T12:18:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-05-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Betriebsstörung",
     "description": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3e26483301d1dfa000646b53210fe6284c656448fd1b66db1b51304db1692434",
-    "pubDate": "2026-05-19T08:01:00+02:00",
-    "starts_at": "2026-05-19T08:01:00+02:00",
+    "guid": "abae72a6ccef48e743b3943d0074059b8e01d4d5248fce2416b74da71e4c4e2b",
+    "pubDate": "2026-05-19T11:03:00+02:00",
+    "starts_at": "2026-05-19T11:03:00+02:00",
     "ends_at": "2026-05-19T23:55:00+02:00",
     "_identity": "wl|störung|L=10A|D=2026-05-19"
   },
@@ -370,6 +394,18 @@
     "starts_at": "2026-05-19T04:30:12+02:00",
     "ends_at": "2026-05-19T23:59:59+02:00",
     "_identity": "wl|störung|L=11|D=2026-05-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Verunreinigung",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "393a2a809b00f01d691846042c79d62a3a68c7af8c71ee5f38dc43c54f48e759",
+    "pubDate": "2026-05-19T11:25:00+02:00",
+    "starts_at": "2026-05-19T11:25:00+02:00",
+    "ends_at": "2026-05-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-05-19"
   },
   {
     "source": "Wiener Linien",
@@ -554,6 +590,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "59A: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "58049a1b9575e14e483eaa63cc80174f59177b23eba83c03556e41bf15231c8a",
+    "pubDate": "2026-05-19T11:03:18+02:00",
+    "starts_at": "2026-05-19T11:03:18+02:00",
+    "ends_at": "2026-05-19T12:02:00+02:00",
+    "_identity": "wl|störung|L=59A|D=2026-05-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Betriebsstörung",
+    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a91916ebfae10495bfe26d851fd989dfb98e3b79121e747890d1c7c976694e3d",
+    "pubDate": "2026-05-19T11:00:00+02:00",
+    "starts_at": "2026-05-19T11:00:00+02:00",
+    "ends_at": "2026-05-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=59A|D=2026-05-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -574,6 +634,30 @@
     "starts_at": "2026-05-17T00:00:23+02:00",
     "ends_at": "2026-05-19T23:59:59+02:00",
     "_identity": "wl|störung|L=62|D=2026-05-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "63A: Betriebsstörung",
+    "description": "Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "268fd410f5ef450f9c7a2a594e86bd0dc8db5b7815880b183dc553c14f663dfe",
+    "pubDate": "2026-05-19T11:03:00+02:00",
+    "starts_at": "2026-05-19T11:03:00+02:00",
+    "ends_at": "2026-05-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=63A|D=2026-05-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "63A: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9a300c9dbb15b8e754f40885f59a8acc4ed751492a8fa0375f97b66440650342",
+    "pubDate": "2026-05-19T11:05:21+02:00",
+    "starts_at": "2026-05-19T11:15:09+02:00",
+    "ends_at": "2026-05-19T12:14:00+02:00",
+    "_identity": "wl|störung|L=63A|D=2026-05-19"
   },
   {
     "source": "Wiener Linien",
