@@ -179,6 +179,11 @@ schreibt. Die wichtigsten Parameter:
 | `WIEN_OEPNV_DEBUG`       | Auf `1` gesetzt zeigt die CLI (`python -m src.cli`) bei Fehlern den vollständigen Traceback; Standard verhält sich fail-secure (keine Trace-Ausgabe). |
 | `VOR_USER_AGENT`         | Custom User-Agent für VOR/VAO-API-Calls (Standard `wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv)`). |
 | `VOR_REQUEST_COUNT_FILE` | Override für den Persistenzpfad des VAO-Tagesbudget-Counters (Standard `data/vor_request_count.json`). |
+| `VOR_AUTH_TYPE`          | Erzwingt das Auth-Schema bei der VAO-Token-Normalisierung (`bearer` oder `basic`, Standard: automatische Erkennung aus dem Token-Format in `src/providers/vor.py:_normalise_access_token`). |
+| `BAUSTELLEN_TIMEOUT`     | Per-Request-Timeout (Sekunden) für `scripts/update_baustellen_cache.py` (Standard `20`, hart geklammert auf `MAX_BAUSTELLEN_TIMEOUT`). |
+| `BAUSTELLEN_FALLBACK_PATH` | Pfad zur lokalen JSON-Fallback-Datei (Standard `data/samples/baustellen_sample.geojson`), die verwendet wird, wenn der OGD-Endpoint der Stadt Wien nicht erreichbar ist. |
+| `SITE_BASE_URL`          | Basis-URL für die Sitemap-Generierung (`scripts/generate_sitemap.py`). Standard identisch mit `PAGES_BASE_URL`; gegen die GitHub-Pages-Allow-List validiert. |
+| `WIEN_TOKEN`             | Override des Wien-Token-Matches für die `in_vienna`-Heuristik in `src/utils/stations.py` (Standard `wien`). Diakritik wird automatisch geklammert; nur für Test-Sandboxen interessant. |
 
 Alle Pfade werden durch `resolve_env_path` (in `src/feed/config.py`) auf `docs/`, `data/` oder `log/` beschränkt, um Path-Traversal zu verhindern.
 
@@ -451,11 +456,48 @@ zu `in_vienna` (Vienna-Station vs. Pendler) wird sowohl vom Updater als
 auch vom Validator und JSON-Schema erzwungen — Verstöße führen zu einer
 WARNING bzw. blockieren den Atomic-Write.
 
+### Manuelle Station-Overrides
+
+`data/stations_overrides.json` ist eine schmal definierte
+Korrekturschicht, die `scripts/apply_station_overrides.py` zwischen
+WL-Merge und Validator-Gate auf `data/stations.json` anwendet.
+Sie behebt Upstream-Defekte der Wiener-Linien-OGD, die sich nicht
+durch Tuning der Merge-Logik beheben lassen (etwa fehlerhaft
+fehlende Haltepunkte, falsche Koordinaten einzelner DIVAs).
+
+Drei Operationen sind erlaubt — andere Schemata werden hart
+abgelehnt, damit ein bösartiger oder unaufmerksamer Override nicht
+das gesamte Verzeichnis umformen kann:
+
+| `op` | Wirkung |
+| ---- | ------- |
+| `restore` | Schreibt einen kompletten Station-Eintrag (inkl. `wl_stops`) zurück, wenn er beim letzten Cron-Tick verschwunden war. |
+| `patch_coords` | Setzt `latitude` / `longitude` auf der bestehenden Station neu — z. B. bei nachweislich falscher OGD-Koordinate. |
+| `remove` | Entfernt einen kompletten Eintrag (selten benötigt). |
+
+Jeder Eintrag trägt zwingend `reason` (kurze Begründung) und
+`expires_when` (Bedingung, unter der der Override retire-bar wird) —
+damit verfallene Workarounds beim nächsten Audit auffallen.
+Implementierung und Tests: `scripts/apply_station_overrides.py`,
+`tests/test_apply_station_overrides.py`.
+
 ### Zusätzliche Datenquellen
 
 Weitere offene Datensätze (z. B. ÖBB-GTFS, Streckendaten, Wiener OGD, INSPIRE-Geodaten) können lokal in `data/` abgelegt und mit
 Feed- oder Stationsdaten verknüpft werden. Hinweise zu Lizenzierung und Verknüpfung stehen in diesem Abschnitt, um eine saubere
 Nachnutzung zu gewährleisten.
+
+Wichtige Sidecar-Dateien unter `data/`, die im obigen Lizenz-Block
+nicht einzeln gelistet sind:
+
+| Datei / Verzeichnis | Zweck |
+| ------------------- | ----- |
+| `data/stations_metadata.json` | Kurate VZG-Streckennummern → Kilometer-Mapping für Stammstrecken-Auswertungen. Testabgesichert via `tests/test_stations_metadata.py`. |
+| `data/places_quota.json` | Persistenter Monats-Quota-State des Google-Places-Tiers (siehe [`docs/how-to/google_places_stations.md`](how-to/google_places_stations.md)). Vom Cron-Runner geschrieben. |
+| `data/new_places.json` | Optionales Diff-Artefakt aus `scripts/fetch_google_places_stations.py --dump-new`. |
+| `data/streckendaten/` | Platzhalter-Verzeichnis für lokale VZG-Schnittdaten (per `.gitignore` versioniert, Inhalt nicht commited). |
+| `data/stations_last_run.json` | Heartbeat des wöchentlichen Stations-Refreshs (Validation-Summary, Sub-Skript-Laufzeiten). |
+| `data/stations_overrides.json` | Manuelle Korrekturschicht — siehe Abschnitt darüber. |
 
 ## Automatisierte Workflows
 
@@ -551,7 +593,15 @@ Die neue Kommandozeile (`python -m src.cli`) bündelt bisher verstreute Skripte.
 
 ### Qualitätsberichte für das Stationsverzeichnis
 
-`python -m src.cli stations validate --output docs/stations_validation_report.md` erstellt den Report `docs/stations_validation_report.md`. Die Ausgabe enthält zusammengefasste Kennzahlen und detaillierte Listen der gefundenen Probleme. Über `--decimal-places` lässt sich die Toleranz für Dubletten steuern.
+`python -m src.cli stations validate --output docs/stations_validation_report.md` erstellt den Report `docs/stations_validation_report.md`. Die Ausgabe enthält zusammengefasste Kennzahlen und detaillierte Listen der gefundenen Probleme.
+
+| Flag | Zweck |
+| ---- | ----- |
+| `--stations PATH` | Alternativer Pfad zur `stations.json` (Default `data/stations.json`). |
+| `--gtfs PATH` | Alternativer Pfad zur GTFS-`stops.txt` (Default `data/gtfs/stops.txt`). |
+| `--decimal-places N` | Toleranz beim Koordinaten-Matching (Default 5 Nachkommastellen). |
+| `--output PATH` | Schreibt den Markdown-Bericht zusätzlich an den angegebenen Ort. |
+| `--fail-on-issues` | Beendet den Lauf mit Exit-Code 1, sobald irgendeine Issue-Kategorie nicht leer ist (CI-Gate). |
 
 ### Logging & Beobachtbarkeit
 

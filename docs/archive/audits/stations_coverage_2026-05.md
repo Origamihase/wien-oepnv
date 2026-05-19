@@ -18,7 +18,7 @@ des VOR-Kerngebiets) und resultierende Anpassungen am Updater.
 
 Falsch. `data/stations.json` enthält den Eintrag:
 
-```json
+```text
 {
   "name": "Wien Mitte-Landstraße",
   "vor_id": "490074300",
@@ -67,7 +67,7 @@ ein:
 
 ### Neue Datei `data/pendler_candidates.json`
 
-```json
+```text
 {
   "candidates": [
     {"name": "Pfaffstätten", "line": "S-Bahn Südbahn", "priority": 1},
