@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 19 May 2026 21:00:46 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 21:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5: Rettungseinsatz Züge halten bei Linie O]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5</guid>
+      <pubDate>Tue, 19 May 2026 21:10:00 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 15:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 21:12:41 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: Haltestelle ersatzlos aufgelassen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Wed, 20 May 2026 05:00:00 +0200</ext:ends_at>
       <description>[19.05.2026 – 20.05.2026]</description>
       <content:encoded><![CDATA[[19.05.2026 – 20.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f</guid>
-      <pubDate>Tue, 19 May 2026 19:37:00 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 14:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 19:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hütteldorf]]></title>
