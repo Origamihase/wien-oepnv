@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 19 May 2026 13:00:46 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 13:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[29A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fd28b60b0d399a255267aca8e0564e4a131b7ccaa011c57449a8324ef18484f3</guid>
+      <pubDate>Tue, 19 May 2026 13:23:00 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 13:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 13:23:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 19.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[O: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,17 +54,6 @@
       <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10: Verkehrsunfall Züge halten bei Linie 44]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a4cddb78fd03b56f761ec546f768deb7adda0bbc71b6726600ab6d6b97415842</guid>
-      <pubDate>Tue, 19 May 2026 12:34:23 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 12:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 12:34:23 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 17:00:00 +0200</ext:ends_at>
-      <description>[Am 19.05.2026]</description>
-      <content:encoded><![CDATA[[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[2: Fahrtbehinderung Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed</guid>
@@ -65,48 +65,15 @@
       <content:encoded><![CDATA[[Am 19.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[29B: Rettungseinsatz]]></title>
+      <title><![CDATA[10: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">926698c2f961fc28e72bfea5a39121734c681178bdca0f0904afd2b0b22ae1d0</guid>
-      <pubDate>Tue, 19 May 2026 12:12:00 +0200</pubDate>
+      <guid isPermaLink="false">61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f</guid>
+      <pubDate>Tue, 19 May 2026 12:20:00 +0200</pubDate>
       <ext:first_seen>Tue, 19 May 2026 12:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 12:12:00 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 19 May 2026 12:20:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">268fd410f5ef450f9c7a2a594e86bd0dc8db5b7815880b183dc553c14f663dfe</guid>
-      <pubDate>Tue, 19 May 2026 11:03:00 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 11:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 11:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abae72a6ccef48e743b3943d0074059b8e01d4d5248fce2416b74da71e4c4e2b</guid>
-      <pubDate>Tue, 19 May 2026 11:03:00 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 08:30:32 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 11:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e19d2a31fcfdb6d2b7f1e4ee95e4b4a615ab9baa6ce4bbcc423af956a08e0a3d</guid>
-      <pubDate>Tue, 19 May 2026 09:35:00 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 10:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 09:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 4A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 4A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.05.2026]]]></content:encoded>
+      <description>Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hütteldorf]]></title>
@@ -117,6 +84,39 @@
       <ext:starts_at>Tue, 19 May 2026 08:42:26 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge … [Seit 19.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge …<br/>[Seit 19.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: Feuerwehreinsatz Betrieb ab Wilhelminenstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b9bde0bd00dd3f66c66ebf8a0bc67ffef08ccf0d1e2029055bcb6077c8d8dd7e</guid>
+      <pubDate>Tue, 19 May 2026 08:01:04 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 08:30:32 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 08:01:04 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 19:45:00 +0200</ext:ends_at>
+      <description>[Am 19.05.2026]</description>
+      <content:encoded><![CDATA[[Am 19.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Tue, 19 May 2026 04:45:03 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 05:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 04:45:03 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 20 May 2026 00:35:00 +0200</ext:ends_at>
+      <description>[19.05.2026 – 20.05.2026]</description>
+      <content:encoded><![CDATA[[19.05.2026 – 20.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11: Betrieb ab Frödenplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0cc601b709f5e2e2bf853af2229533e03cb323563dfe0bebb6a3b9de6ceb2e16</guid>
+      <pubDate>Tue, 19 May 2026 04:30:12 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 04:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 04:30:12 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 19.05.2026]</description>
+      <content:encoded><![CDATA[[Am 19.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
