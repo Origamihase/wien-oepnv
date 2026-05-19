@@ -41,7 +41,7 @@ Analog zur Abfahrtstafel: letzte Ankunftszeit um eine Minute erhöhen und erneut
 ## Beispiel
 
 ```bash
-curl -G "${VOR_BASE_URL}/arrivalBoard" \
+curl -G "${VOR_BASE_URL}arrivalBoard" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   --data-urlencode "id=490118400" \
   --data-urlencode "date=2025-05-22" \

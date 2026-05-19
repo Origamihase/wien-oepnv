@@ -34,7 +34,7 @@ Führt eine Umkreissuche um eine Koordinate durch und liefert Stationen, POIs so
 ## Beispiel
 
 ```bash
-curl -G "${VOR_BASE_URL}/location.nearbystops" \
+curl -G "${VOR_BASE_URL}location.nearbystops" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   --data-urlencode "originCoordLat=48.20849" \
   --data-urlencode "originCoordLong=16.37208" \

@@ -126,8 +126,10 @@ python -m src.cli config wizard
 python -m src.cli security scan
 ```
 
-Die Unterbefehle akzeptieren standardmäßig alle bekannten Ziele (z. B. Provider `wl`, `oebb`, `vor`) und lassen sich bei Bedarf
-präzise einschränken. Über `--python` kann ein alternativer Interpreter für die Hilfsskripte gesetzt werden.
+Die Unterbefehle akzeptieren standardmäßig alle bekannten Ziele (z. B. Provider `wl`, `oebb`, `baustellen`) und lassen sich bei Bedarf
+präzise einschränken. Der Stations-Refresh-Wrapper `scripts/update_all_stations.py` (aufgerufen via
+`python -m src.cli stations update all`) akzeptiert zusätzlich `--python`, um einen alternativen Interpreter für die internen
+Sub-Skripte zu setzen — die unified CLI selbst kennt diese Option nicht.
 
 ## Konfiguration des Feed-Builds
 

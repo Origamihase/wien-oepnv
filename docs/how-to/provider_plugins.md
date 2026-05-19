@@ -41,6 +41,26 @@ def register_providers(register_provider):
     register_provider("CUSTOM_PROVIDER_ENABLE", load_custom_events, cache_key="custom")
 ```
 
+### Alternative: deklarative `PROVIDERS`-Konstante
+
+Statt einer `register_providers`-Funktion kann das Plugin auch eine
+`PROVIDERS`-Konstante exportieren — die Loader-Engine
+(`src/feed/providers.py:_register_plugin_providers`) akzeptiert beide
+Stile. Jeder Eintrag ist ein Tupel `(env_var, loader)` bzw.
+`(env_var, loader, cache_key)`. Wird `cache_key` weggelassen, leitet das
+Framework ihn aus der Env-Variable ab.
+
+```python
+PROVIDERS = [
+    ("CUSTOM_PROVIDER_ENABLE", load_custom_events, "custom"),
+]
+```
+
+Sind beide vorhanden, wird zuerst `register_providers` aufgerufen und
+zusätzlich die Konstante ausgewertet. Falls keiner der beiden Hooks
+existiert, protokolliert das Framework eine Warnung und das Plugin wird
+übersprungen.
+
 ## 3. Plugin laden
 
 Aktiviere das Plugin über die Umgebungsvariable

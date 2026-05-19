@@ -64,7 +64,7 @@ Weitere Parameter (z. B. für detaillierte Rad-/Auto-Profile) sind im Handbuch
 ## Beispiel
 
 ```bash
-curl -G "${VOR_BASE_URL}/trip" \
+curl -G "${VOR_BASE_URL}trip" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   --data-urlencode "originId=490118400" \
   --data-urlencode "destId=490190301" \
