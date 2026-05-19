@@ -11,7 +11,7 @@ description: "Anleitung zum Tier-3-Fallback-Abruf von Bahnhofs- und Haltestellen
 > 2. **Tier 2 — HAFAS (ÖBB Scotty).** `scripts/update_station_directory.py:_enrich_with_hafas` läuft direkt im Anschluss über jede Station ohne OSM-Koordinaten. Liefert hochpräzise Koordinaten und die EVA-Nummer (`hafas_extId`); ist nicht durch ein Tagesbudget limitiert und schont damit das Google-Kontingent. Implementiert in `src/places/hafas_client.py`, abgesichert durch einen eigenen `CircuitBreaker` und eingebettet in `request_safe`.
 > 3. **Tier 3 — Google Places.** Erst danach prüft `_stations_missing_coordinates`, welche Einträge **noch immer** keine `latitude`/`longitude` tragen. Nur diese strikte Restmenge wird über `_enrich_with_google_places(..., missing_subset=…)` an die Places API weitergereicht. Decken OSM und HAFAS gemeinsam alles ab, wird der Google-Aufruf vollständig übersprungen — das Monatskontingent bleibt unangetastet.
 >
-> Stationen, deren Koordinaten OSM oder HAFAS bereits aufgelöst haben, werden **nicht** neu verschlüsselt — selbst wenn ein Google Place denselben Namen trägt. Die Demotion ist absichtlich harsch: Open-Data-Erstanbieter (Overpass), gefolgt vom kostenfreien Operator-Backend (HAFAS), kommen vor dem kommerziellen Anbieter (Google).
+> Stationen, deren Koordinaten OSM oder HAFAS bereits aufgelöst haben, werden **nicht** neu zugeordnet — selbst wenn ein Google Place denselben Namen trägt. Die Demotion ist absichtlich harsch: Open-Data-Erstanbieter (Overpass), gefolgt vom kostenfreien Operator-Backend (HAFAS), kommen vor dem kommerziellen Anbieter (Google).
 
 Dieses Dokument beschreibt die *Mechanik* des Tier-3-Imports — den Quota-Manager, die Health-Checks und den Workflow. Wer einen reinen, vollständigen Stationskatalog mit Koordinaten benötigt, sollte zuerst den OSM-Pfad verifizieren (siehe `scripts/check_overpass_status.py`) und das HAFAS-Profil prüfen (`data/hafas_profile.json`, befüllt durch `scripts/sync_hafas_profile.py`); Google Places wird nur dann ausgelöst, wenn beide vorgelagerten Tiers nachweislich Lücken hinterlassen.
 
@@ -54,7 +54,7 @@ Die Places API darf nur im Rahmen des kostenlosen Kontingents genutzt werden. Da
 
 ## Nutzung des Skripts
 
-```
+```bash
 python scripts/fetch_google_places_stations.py --dry-run
 ```
 
@@ -65,16 +65,17 @@ python scripts/fetch_google_places_stations.py --dry-run
 
 Um Änderungen persistent zu speichern:
 
-```
+```bash
 python scripts/fetch_google_places_stations.py --write
 ```
 
-Für manuelle Tests gegen die API muss der Header `X-Goog-Api-Key` gesetzt sein:
+Für manuelle Tests gegen die API muss der Header `X-Goog-Api-Key` gesetzt sein, und der POST-Body verlangt einen `Content-Type: application/json`-Header:
 
-```
+```bash
 curl \
   -H "X-Goog-Api-Key: ${GOOGLE_ACCESS_ID}" \
   -H "X-Goog-FieldMask: places.id" \
+  -H "Content-Type: application/json" \
   "https://places.googleapis.com/v1/places:searchNearby" \
   -d '{"includedTypes": ["train_station"], "locationRestriction": {"circle": {"center": {"latitude": 48.2082, "longitude": 16.3738}, "radius": 2000}}}'
 ```
@@ -83,12 +84,13 @@ Zusatzoptionen:
 
 * `--dump-new data/new_places.json` – schreibt nur neue & aktualisierte Einträge in eine separate Datei (hilfreich für Review/Artefakte).
 * `--tiles-file tiles.json` – überschreibt `PLACES_TILES` mit einer lokalen Datei.
+* `--enforce-free-cap` / `--no-enforce-free-cap` – aktiviert (Default) bzw. deaktiviert die strikte Quota-Cap-Enforcement aus `src/places/quota.py`. Mit `--no-enforce-free-cap` läuft das Skript auch dann weiter, wenn ein Limit überschritten würde — ausschließlich für gezielte Operator-Reruns gedacht; produktive Cron-Pfade müssen den Default behalten.
 
 ## Zugang schnell prüfen
 
 Bevor der eigentliche Import läuft, kann der API-Schlüssel mit einem leichten Health-Check validiert werden:
 
-```
+```bash
 python scripts/verify_google_places_access.py
 ```
 
