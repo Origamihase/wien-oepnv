@@ -34,7 +34,7 @@ Die S-Bahn-Stammstrecke ist das Rückgrat des Pendlerverkehrs. Wir erfassen und 
 Mehr Statistiken findest du hier:
 [**📊 Zum detaillierten Dashboard**](docs/statistik.md)
 
-### Verspätungen auf der S-Bahn Stammstrecke
+### Verspätungen auf der S-Bahn-Stammstrecke
 
 <!-- STATS:STAMMSTRECKE_LIVE:BEGIN -->
 > _Letzte 60 Minuten – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
@@ -58,7 +58,7 @@ Mehr Statistiken findest du hier:
 | Letzte Aktualisierung | 2026-05-20 01:00 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
 
-### Ausfälle auf der S-Bahn Stammstrecke
+### Ausfälle auf der S-Bahn-Stammstrecke
 
 <!-- STATS:AUSFAELLE_LIVE:BEGIN -->
 > _Letzte 60 Minuten – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
