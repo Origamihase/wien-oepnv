@@ -1,9 +1,9 @@
 ---
-title: "GET /DepartureBoard"
+title: "GET /departureBoard"
 description: "Referenz für den DepartureBoard-Endpunkt mit Pflichtparametern, Filtern und Hinweisen zum Scrollen durch weitere Abfahrten."
 ---
 
-# GET /DepartureBoard
+# GET /departureBoard
 
 ## Kurzbeschreibung
 Gibt eine Abfahrtstafel für eine Station oder einen Steig zurück. Enthält Abfahrtszeiten, Echtzeitinformationen, Linienangaben und eine `JourneyDetailRef` zur Detailabfrage.
@@ -40,7 +40,7 @@ Zur Verlängerung des Zeitraums wird die Abfahrtszeit der letzten Fahrt um eine 
 ## Beispiel
 
 ```bash
-curl -G "${VOR_BASE_URL}/DepartureBoard" \
+curl -G "${VOR_BASE_URL}/departureBoard" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   --data-urlencode "id=490118400" \
   --data-urlencode "date=2025-05-22" \

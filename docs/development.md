@@ -68,7 +68,7 @@ Der Feed-Build folgt einem klaren Ablauf:
 | `data/`               | Stationsverzeichnis, GTFS-Testdaten und Hilfslisten (z. B. Pendler-Whitelist).                   |
 | `docs/`               | Audit-Berichte, Referenzen, Beispiel-Feeds und das offizielle VAO/VOR-API-Handbuch.              |
 | `.github/workflows/`  | Automatisierte Jobs für Cache-Updates, Stationspflege, Feed-Erzeugung und Tests.                |
-| `tests/`              | Umfangreiche Pytest-Suite (über 2600 Tests in rund 400 Modulen) für Feed-Logik, Provider-Adapter und Utility-Funktionen. |
+| `tests/`              | Umfangreiche Pytest-Suite (über 3200 Tests in rund 450 Modulen) für Feed-Logik, Provider-Adapter und Utility-Funktionen. |
 
 
 > **Hinweis zu Cache-Pfaden:** Die tatsächlichen Verzeichnisse unter `cache/` tragen einen Hash-Suffix zur Cache-Versionierung (Stand Mai 2026: `cache/wl_9d709a/`, `cache/oebb_c40d21/`, `cache/baustellen_d438c3/`). In dieser Dokumentation werden aus Lesbarkeitsgründen verkürzte Schreibweisen wie `cache/wl/events.json` verwendet — sie verweisen jeweils auf das aktuelle Provider-Verzeichnis. Ein eigenes VOR-Cache-Verzeichnis existiert seit der 2026-05-11-Migration nicht mehr (VOR ist auf den Stammstrecken-Monitor beschränkt). Der **Stammstrecke-Monitor** schreibt seit der 2026-05-09-Migration **kein** `events.json` mehr — der Feed-Builder liest die Beobachtungen direkt aus dem CSV-Ledger `data/stats/stammstrecke_<YYYY>.csv`. Unter `cache/stammstrecke/` liegen weiterhin die internen Sidecar-Dateien `pending_trips.json` und `recently_finalised.json`, mit denen der Hbf-Producer (siehe [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)) Trip-IDs zur Doppel-Vermeidung über mehrere Cron-Ticks hinweg trackt.
@@ -396,10 +396,12 @@ Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert
 #### Automatisierte Qualitätsberichte
 
 `python -m src.cli stations validate` erzeugt einen Markdown-Bericht mit
-acht Issue-Kategorien: **geographic duplicates**, **alias issues**,
+neun Issue-Kategorien: **geographic duplicates**, **alias issues**,
 **coordinate anomalies**, **GTFS mismatches**, **security warnings**,
 **provider issues** (VOR-/OEBB-Konsistenz), **cross-station ID
-collisions** und **naming issues** (kanonische Namens-Eindeutigkeit +
+collisions**, **identity field conflicts** (raw `wl_diva`/`bst_id`/
+`vor_id`/`bst_code`-Kollisionen zwischen Stationen, ergänzt 2026-05-16
+in PR #1539) und **naming issues** (kanonische Namens-Eindeutigkeit +
 no-space-Source-Format + Vienna/Pendler Mutual-Exclusivity).
 Über `--output docs/stations_validation_report.md` wird der Bericht
 persistiert; mit `--fail-on-issues` bricht die CLI bei jedem Befund mit
@@ -504,10 +506,11 @@ benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
 | `regen_mypy_baseline.sh` | Regeneriert `.mypy-baseline.txt` (gleiche Mechanik wie c901). |
 | `generate_sitemap.py` | Generiert `docs/sitemap.xml` und `docs/feed.xml`-Hinweise; läuft im `seo-guard.yml`-Workflow. |
 | `gtfs.py` | GTFS-Hilfsmodul (`read_gtfs_stops`); wird von Tests und vom Stations-Validator konsumiert. |
+| `optimize_site_assets.py` | Erzeugt minifizierte `site.min.css` / `site.min.js` aus den lesbaren Quellen sowie WebP-Geschwister für `train.png` / `footer-bg.jpg`. Wird vom Pre-Commit-Hook `site-assets-minified --check` aufgerufen, um Drift zwischen Quelle und committetem Bundle zu verhindern. Idempotent (`--check`/`--skip-images` ohne Image-Tools nutzbar). |
 
 ## Entwicklung & Qualitätssicherung
 
-- **Tests**: `python -m pytest` führt über 2600 Unit- und Integrationstests in rund 400 Modulen unter `tests/` aus.
+- **Tests**: `python -m pytest` führt über 3200 Unit- und Integrationstests in rund 450 Modulen unter `tests/` aus.
 - **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab.
 - **Statische Analyse & Typprüfung**: `ruff check` (Stil/Konsistenz, Regelgruppen `E`, `F`, `S`, `B`, `UP` — siehe `pyproject.toml`) und `mypy --strict` (vollständige Typabdeckung über `src/` und `tests/`, derzeit 0 Errors) laufen identisch zur CI via `python -m src.cli checks`. Optional lassen sich über `--fix` Ruff-Autofixes aktivieren oder zusätzliche Argumente an Ruff durchreichen. Ein zusätzlicher `mypy-strict.yml`-Workflow setzt das Allowlist-Gate auf Pull Requests durch.
 - **Pre-Commit-Hooks**: `.pre-commit-config.yaml` aktiviert lokale Checks bei jedem `git commit`: Ruff, `mypy --strict`, Bandit, der eigene Secret-Scanner (`scripts/scan_secrets.py`), das C901-Komplexitäts-Gate (`scripts/check_complexity.py`) sowie Whitespace-/Merge-Conflict-/YAML-/TOML-/JSON-/Large-File-Hygiene. Einmalig nach dem Klonen `pre-commit install` ausführen — Details in [`CONTRIBUTING.md`](../CONTRIBUTING.md).
