@@ -27,7 +27,7 @@ Liefert Metadaten zu Betreibern, Verwaltungen, Produktklassen und Produkten, die
 ## Beispiel
 
 ```bash
-curl -G "${VOR_BASE_URL}/datainfo" \
+curl -G "${VOR_BASE_URL}datainfo" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   -H "Accept: application/json"
 ```

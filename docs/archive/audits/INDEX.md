@@ -15,10 +15,12 @@ Chronologische Übersicht aller archivierten Audits dieses Projekts.
 
 | Datum | Bericht | Schwerpunkt |
 |---|---|---|
-| 2025-05 | [system_audit.md](system_audit.md) | Allgemeiner System-Audit |
+| 2025-07 | [audit-2025-07-08.md](audit-2025-07-08.md) | Manueller Review der Feed-Builder-Robustheit (keine Findings) |
+| 2025-06 | [audit-2025-06-02.md](audit-2025-06-02.md) | `ruff check` als statisches Lint-Gate aufgenommen |
+| 2025-05 | [audit-2025-05-29.md](audit-2025-05-29.md), [audit-2025-05-22.md](audit-2025-05-22.md), [system_audit.md](system_audit.md) | Codebasis-Audits + allgemeiner System-Audit |
 | 2025-04 | [audit-2025-04-05.md](audit-2025-04-05.md) | Periodischer Quartals-Audit |
 | 2025-03 | [audit-2025-03-17.md](audit-2025-03-17.md) | Periodischer Quartals-Audit |
-| 2025-02 | [audit-2025-02-14.md](audit-2025-02-14.md), [code_quality_audit_2025_02.md](code_quality_audit_2025_02.md) | Quartals-Audit + Code Quality |
+| 2025-02 | [audit-2025-02-14.md](audit-2025-02-14.md), [audit_report.md](audit_report.md), [code_quality_audit_2025_02.md](code_quality_audit_2025_02.md) | Quartals-Audit + Code Quality + Februar-Audit-Bericht |
 | 2025-01 | [audit-2025-01.md](audit-2025-01.md), [audit-2025-01-04.md](audit-2025-01-04.md) | Monats-Audits |
 | 2024-12 | [audit-2024-12-31.md](audit-2024-12-31.md) | Monats-Audit |
 
@@ -27,7 +29,7 @@ Chronologische Übersicht aller archivierten Audits dieses Projekts.
 | Bereich | Berichte |
 |---|---|
 | VOR/VAO API | [vor_api_review.md](vor_api_review.md), [vor_api_test.md](vor_api_test.md) |
-| ÖBB Stammstrecke | [oebb_stammstrecke_audit.md](oebb_stammstrecke_audit.md) (2026-05-09: PRs #1365 – #1368, `max_journeys=5`-Anpassung, vollständige Audit-Abnahme) |
+| ÖBB Stammstrecke | [oebb_stammstrecke_audit.md](oebb_stammstrecke_audit.md) (2026-05-09: PRs #1365 – #1368, `max_journeys=5`-Anpassung, vollständige Audit-Abnahme); [stammstrecke_vor_migration_qa_2026-05-09.md](stammstrecke_vor_migration_qa_2026-05-09.md) (Senior-Architect-QA der `pyhafas`→VOR/VAO-Migration) |
 | Security | [security_report.md](security_report.md) |
 | Performance | [performance_report.md](performance_report.md) |
 | Deduplication | [deduplication_report.md](deduplication_report.md) |

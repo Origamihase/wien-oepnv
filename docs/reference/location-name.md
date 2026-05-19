@@ -38,7 +38,7 @@ Sucht Ortspunkte (Adressen, Haltestellen, POIs) anhand eines Namenseingabe und l
 ## Beispiel
 
 ```bash
-curl -G "${VOR_BASE_URL}/location.name" \
+curl -G "${VOR_BASE_URL}location.name" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   --data-urlencode "input=Hauptbahnhof" \
   --data-urlencode "maxNo=5" \

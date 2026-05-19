@@ -27,7 +27,7 @@ Gibt die Eckdaten der aktuellen Fahrplanperiode zurück (Beginn, Ende, letzter D
 ## Beispiel
 
 ```bash
-curl -G "${VOR_BASE_URL}/tti" \
+curl -G "${VOR_BASE_URL}tti" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   -H "Accept: application/json"
 ```

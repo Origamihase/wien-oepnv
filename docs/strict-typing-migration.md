@@ -406,7 +406,16 @@ korrigiert. Faustregel: Das Regen-Skript läuft nur in einer Umgebung,
 in der `pip install -r requirements-dev.txt` bereits durchgelaufen
 ist.
 
-## 7. Offene Backlog (Stand C34, Baseline = 414 Zeilen)
+## 7. Offene Backlog (historischer Stand C34, Baseline = 414 Zeilen)
+
+> ℹ️ **Aktueller Stand (Mai 2026):** `.mypy-baseline.txt` ist **0 Bytes**
+> — alle 414 ursprünglich allowlisteten Errors wurden zwischenzeitlich
+> gefixt. `mypy --no-pretty src tests` läuft inzwischen ohne Errors
+> durch (siehe `mypy-strict.yml`-Workflow); die Tabelle unten ist als
+> Aufstellung des damaligen Backlogs erhalten, gibt aber **nicht** den
+> aktuellen Zustand wieder. Wenn künftig wieder Errors allowlistet
+> werden müssen (selten — Standardansatz ist „fix in PR"), spiegelt
+> §6.2 das Regen-Verfahren.
 
 | Code                    | Anzahl | Hauptklasse                                   |
 |-------------------------|--------|-----------------------------------------------|
@@ -423,7 +432,7 @@ ist.
 | sonstige                | 19     | union-attr, name-defined, dict-item, …        |
 | **Σ**                   | **414**|                                               |
 
-Ungefähr 24 Zeilen entfallen auf `scripts/` (über Imports ins Gate
+Ungefähr 24 Zeilen entfielen auf `scripts/` (über Imports ins Gate
 gezogen), der Rest auf `tests/`.
 
 C25–C33 waren **selektiv** zugeschnitten — nicht jeder Error in den

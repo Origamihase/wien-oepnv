@@ -40,7 +40,7 @@ Zur Verlängerung des Zeitraums wird die Abfahrtszeit der letzten Fahrt um eine 
 ## Beispiel
 
 ```bash
-curl -G "${VOR_BASE_URL}/departureBoard" \
+curl -G "${VOR_BASE_URL}departureBoard" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   --data-urlencode "id=490118400" \
   --data-urlencode "date=2025-05-22" \

@@ -29,7 +29,7 @@ Liefert Detailinformationen zu einem Ortspunkt aus vorherigen Location-Services,
 ## Beispiel
 
 ```bash
-curl -G "${VOR_BASE_URL}/location.details" \
+curl -G "${VOR_BASE_URL}location.details" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   --data-urlencode "id=A=1@O=Graz%20Hauptbahnhof@X=15417507@Y=47072481@U=81@L=460304000@" \
   --data-urlencode "weather=true" \

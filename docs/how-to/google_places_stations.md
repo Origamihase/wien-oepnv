@@ -39,8 +39,8 @@ Alle Parameter lassen sich via Umgebungsvariablen steuern. Die wichtigsten:
 | `MERGE_MAX_DIST_M` | `150` | Distanzschwelle für Duplikate (Meter). |
 | `BOUNDINGBOX_VIENNA` | – | JSON-Objekt mit `min_lat`, `min_lng`, `max_lat`, `max_lng` zur Heuristik `in_vienna`. |
 | `OUT_PATH_STATIONS` | `data/stations.json` | Zielpfad für das Stations-JSON. |
-| `REQUEST_TIMEOUT_S` | `25` | HTTP Timeout je Request (Sekunden). |
-| `REQUEST_MAX_RETRIES` | `4` | Maximale Retry-Versuche bei 429/5xx. |
+| `REQUEST_TIMEOUT_S` | `25` | HTTP Timeout je Request (Sekunden). Hart auf `MAX_TIMEOUT_S = 25.0` geklammert (`src/places/client.py`); Werte darüber werden TIGHTEN-only auf den Cap abgesenkt, um Slowloris-Angriffe über eine kompromittierte Env zu verhindern. |
+| `REQUEST_MAX_RETRIES` | `4` | Maximale Retry-Versuche bei 429/5xx. Hart auf `MAX_REQUEST_RETRIES = 10` geklammert (`src/places/client.py`); ein `REQUEST_MAX_RETRIES=99999` führt nicht zu Endlos-Retries. |
 
 ## Kostenkontrolle & Free-Cap
 

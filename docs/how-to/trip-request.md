@@ -13,7 +13,7 @@ Diese Anleitung zeigt die grundlegenden Schritte, um mit der VAO ReST API eine V
 2. Wähle aus der Antwort eine passende `id` oder `extId` aus (`CoordLocation`/`StopLocation`).
 
 ```bash
-curl -G "${VOR_BASE_URL}/location.name" \
+curl -G "${VOR_BASE_URL}location.name" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   --data-urlencode "input=Schottentor" \
   --data-urlencode "maxNo=3"
@@ -22,7 +22,7 @@ curl -G "${VOR_BASE_URL}/location.name" \
 ## 2. Trip-Service aufrufen
 
 ```bash
-curl -G "${VOR_BASE_URL}/trip" \
+curl -G "${VOR_BASE_URL}trip" \
   --data-urlencode "accessId=${VOR_ACCESS_ID}" \
   --data-urlencode "originId=<START_ID>" \
   --data-urlencode "destId=<ZIEL_ID>" \
