@@ -7,18 +7,39 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 19 May 2026 19:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 19:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9A: Verspätungen]]></title>
+      <title><![CDATA[Wien Floridsdorf ↔ Wien Süßenbrunn]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;878279</guid>
+      <pubDate>Tue, 19 May 2026 19:18:43 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 17:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 19:18:43 +0200</ext:starts_at>
+      <description>Wegen einer Oberleitungsstörung waren zwischen Wien Floridsdorf Bahnhof (U) und Wien Süßenbrunn Bahnhst bis 19:10 Uhr nur eingeschränkt Fahrten möglich. [Seit 19.05.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Oberleitungsstörung waren zwischen Wien Floridsdorf Bahnhof (U) und Wien Süßenbrunn Bahnhst bis 19:10 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 19.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9e3976e9bb5ee545674f34d5b6d143bb76fab0ede012b583b848c10916715046</guid>
-      <pubDate>Tue, 19 May 2026 18:40:00 +0200</pubDate>
+      <guid isPermaLink="false">1919cd6e27075dd1d78aef98e5007d07958daeec1b66c2535357bc252850c2bc</guid>
+      <pubDate>Tue, 19 May 2026 19:18:00 +0200</pubDate>
       <ext:first_seen>Tue, 19 May 2026 19:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 18:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 19:04:00 +0200</ext:ends_at>
-      <description>Linie 9A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 9A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 19.05.2026]]]></content:encoded>
+      <ext:starts_at>Tue, 19 May 2026 19:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 9A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie 9A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 19.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: Rettungseinsatz Züge halten bei Linie O]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4</guid>
+      <pubDate>Tue, 19 May 2026 19:18:00 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 10:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 19:25:14 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 6: Umleitung in Richtung Geiereckstraße Matzleinsdorfer Platz S und Quellenplatz über Hauptbahnhof S U. Voraussichtliche Dauer: 19:50 Uhr. Grund: Rettungseinsatz im … [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie 6: Umleitung in Richtung Geiereckstraße Matzleinsdorfer Platz S und Quellenplatz über Hauptbahnhof S U. Voraussichtliche Dauer: 19:50 Uhr. Grund: Rettungseinsatz im …<br/>[Am 19.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Polizeieinsatz]]></title>
@@ -30,38 +51,6 @@
       <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.05.2026]</description>
       <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Floridsdorf ↔ Wien Süßenbrunn]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;878279</guid>
-      <pubDate>Tue, 19 May 2026 18:12:13 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 17:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 18:12:13 +0200</ext:starts_at>
-      <description>Wegen einer Oberleitungsstörung sind zwischen Wien Floridsdorf Bahnhof (U) und Wien Süßenbrunn Bahnhst Zugfahrten derzeit nur eingeschränkt möglich. [Seit 19.05.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Oberleitungsstörung sind zwischen Wien Floridsdorf Bahnhof (U) und Wien Süßenbrunn Bahnhst Zugfahrten derzeit nur eingeschränkt möglich.<br/>[Seit 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9</guid>
-      <pubDate>Tue, 19 May 2026 17:46:00 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 11:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 17:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 19:20:00 +0200</ext:ends_at>
-      <description>Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b22dfbbf389bb0a8ea03be177b6fa20b16f32c05b0828f6ae785106649e64f7b</guid>
-      <pubDate>Tue, 19 May 2026 17:35:00 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 18:00:37 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 17:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 18:59:00 +0200</ext:ends_at>
-      <description>Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 19.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hütteldorf]]></title>
@@ -115,6 +104,16 @@
       <ext:starts_at>Mon, 18 May 2026 15:02:36 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Jedlersdorf Bahnhst, Wien Süßenbrunn Bahnhst bzw. Gerasdorf b. Wien Bahnhst von 10.08.2026 bis … [Seit 18.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Jedlersdorf Bahnhst, Wien Süßenbrunn Bahnhst bzw. Gerasdorf b. Wien Bahnhst von 10.08.2026 bis …<br/>[Seit 18.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Floridsdorf ↔ Wien Praterstern]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;846446</guid>
+      <pubDate>Mon, 18 May 2026 15:01:28 +0200</pubDate>
+      <ext:first_seen>Mon, 18 May 2026 15:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 18 May 2026 15:01:28 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 04.07.2026 bis 06.09.2026 keine Züge fahren. [Seit 18.05.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 04.07.2026 bis 06.09.2026 keine Züge fahren.<br/>[Seit 18.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
