@@ -138,12 +138,22 @@
           – <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.
         </p>
 
-        <a class="live-tile" href="#stammstrecke" aria-label="Ø Verspätung Stammstrecke letzte 60 min · Quelle VOR / VAO – Detailbereich öffnen">
+        <!-- Accessible name was previously overridden by ``aria-label`` and
+             excluded the dynamic value ("1,5 min") rendered into
+             ``#stammstrecke-live-avg``. axe / Lighthouse flagged this as
+             WCAG 2.5.3 "Label in Name" because the visible text was not
+             contained in the accessible name. Dropping ``aria-label`` lets
+             the accessible name fall back to the inner text (label +
+             window + value), so screen readers and speech-input users see
+             the same text the eye does; the action hint is preserved
+             via a visually-hidden suffix. -->
+        <a class="live-tile" href="#stammstrecke">
           <span class="live-tile__label">
             Ø Verspätung Stammstrecke
             <span class="live-tile__window">letzte 60&nbsp;min · Quelle VOR&nbsp;/&nbsp;VAO</span>
           </span>
           <span class="live-tile__value" id="stammstrecke-live-avg" aria-live="polite">–</span>
+          <span class="visually-hidden"> – Detailbereich öffnen</span>
         </a>
 
         <p class="section__sub">
