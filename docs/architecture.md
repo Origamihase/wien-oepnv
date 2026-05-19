@@ -559,7 +559,7 @@ flowchart LR
 | **Strictly zero data-science dependencies** — no `numpy`, `pandas`, `matplotlib`; CI install stays sub-second | `scripts/generate_markdown_stats.py` imports only `csv`, `collections`, `datetime`, `statistics`, `pathlib`, `zoneinfo`, `argparse` |
 | **Append-only, lock-free producers** — single-line writes on POSIX are atomic below `PIPE_BUF` (4 KiB), so concurrent cycle ticks cannot interleave bytes mid-line | `src/utils/stats.py:_append_row` (mode `"a"`, no `flock`) |
 | **Strict-new gating for disruptions** — long-lived events recorded once, not once per build | `src/build_feed.py:_update_item_state` records only on the *strict* state-cache miss (neither `_identity` nor `guid` had a prior entry) |
-| **Idempotent, byte-stable output** — re-running the aggregator on identical input produces byte-identical Markdown so `git-auto-commit-action` is a no-op when nothing changed | Stable secondary sort (alphabetical) breaks every tie in `render_top_locations`; renderer never reads `now()` outside the timestamp shown in the header |
+| **Idempotent, byte-stable output** — re-running the aggregator on identical input produces byte-identical Markdown so `git-auto-commit-action` is a no-op when nothing changed | Stable secondary sort (alphabetical tie-break, e.g. `key=lambda pair: (-pair[1], pair[0])` in `_format_providers_section`, `_format_ausfall_directions_section`, `_format_ausfall_lines_section`) used in every ranking; renderer never reads `now()` outside the timestamp shown in the header |
 | **Per-year file rotation** — individual ledger size stays bounded even over multi-year operation | Filename derived from the row's Vienna-local `timestamp.year`, not process clock |
 
 ### Resiliency layers
@@ -607,14 +607,22 @@ keyword always wins inside `stats_path`.
 |---|---|
 | **When** do Stammstrecke delays occur? | "Stammstrecke" — weekday + hour distributions of both observation count and average delay |
 | **How often** is the Stammstrecke cancelling trains? | "Ausfälle" — per-direction and per-line tables plus weekday + hour distributions |
-| **Where** (and **when**) are disruption hotspots? | "Störungen" — per-provider table, weekday + hour distributions, top-5 hotspots with per-location hourly profile |
+| **When** do disruption events cluster? | "Störungen" — per-provider table plus weekday + hour distributions |
 
-The location heuristic in `extract_location_name` tries — in order —
-`zwischen X und Y` (capture group 1), then `Wien <Name>`, then the
-first capitalised multi-word token outside a small stopword set
-(`Bauarbeiten`, `Verspätung`, `Linie`, …). Falls back to
-`"unbekannt"` so the dashboard always renders, even on adversarial
-provider input.
+`extract_location_name` ist weiterhin Teil der Producer-Pipeline (siehe
+`src/utils/stats.py` und `src/build_feed.py:2041`) und persistiert die
+abgeleitete Location pro Disruption-Zeile in
+`data/stats/stoerungen_<YYYY>.csv`. Die aktuelle Dashboard-Renderung
+aggregiert die Daten allerdings nur nach `provider`, `weekday` und
+`hour` (siehe `aggregate_stoerungen` in
+`scripts/generate_markdown_stats.py:416`) — eine frühere „Top-5
+Hotspots mit Stundenprofil"-Sektion wurde entfernt, die Roh-Daten in
+der CSV bleiben aber für Ad-hoc-Analysen erhalten. Die Heuristik selbst
+versucht — in dieser Reihenfolge — `zwischen X und Y` (Capture Group 1),
+dann `Wien <Name>`, dann das erste mehrteilige Token außerhalb einer
+kleinen Stoppwortliste (`Bauarbeiten`, `Verspätung`, `Linie`, …). Als
+Fallback bleibt `"unbekannt"`, damit das Dashboard auch bei
+adversarial Provider-Input noch rendert.
 
 ---
 

@@ -88,12 +88,19 @@ Aus den zurückgegebenen `Departure`-Objekten überlebt nur, wer
    deterministisch ausgeschlossen. `rtTrack` überschreibt das
    geplante `track`, sodass eine kurzfristige Bahnsteig-Verlegung
    weg von Bahnsteig 1/2 das Sample korrekt verlässt.
-2. **Richtungs-Klassifikation** (`HBF_SOUTHBOUND_SUBSTRINGS` /
-   `HBF_NORTHBOUND_SUBSTRINGS` + `HBF_SOUTHBOUND_TERMINI` /
-   `HBF_NORTHBOUND_TERMINI`): Substring-Match gegen
-   `direction.lower()` zuerst, dann exakter Whitelist-Match.
-   Unbekannte Termini werden mit deduplizierter INFO-Log-Zeile
-   verworfen, damit Operator:innen die Whitelist erweitern können.
+2. **Richtungs-Klassifikation** (hybrider Lookup gegen
+   `station_info` + Geo-Vergleich gegen `HBF_REFERENCE_LATITUDE`):
+   Der `direction`-String der Departure wird über
+   `src.utils.stations.station_info` im Stationsverzeichnis
+   nachgeschlagen. Liefert der Lookup eine Latitude, klassifiziert ein
+   reiner Geo-Vergleich gegen `HBF_REFERENCE_LATITUDE = 48.1851`:
+   nördlich (`lat > 48.1851`) → `"Praterstern"`, südlich
+   (`lat < 48.1851`) → `"Meidling"`. Unbekannte Termini oder Einträge
+   ohne Koordinaten fallen auf die im Bahnsteig-Filter bereits
+   etablierte Track-Trunk-Klassifikation zurück: Trunk `"1"` →
+   `"Meidling"`, Trunk `"2"` → `"Praterstern"`. Der Fallback ist
+   erschöpfend, weil der Bahnsteig-Filter `track_trunk` bereits auf
+   `{"1", "2"}` eingeschränkt hat — kein Zug wird hier verworfen.
 3. **S-Bahn-Linien-Filter** (`_is_sbahn_line`, Regex
    `_S_BAHN_LINE_RE`): Nur Linien, die das `S\d+`-Muster matchen.
    `REX`/`R`/`IC`/`Railjet` werden trotz Bahnsteig 1/2 verworfen.
@@ -374,11 +381,14 @@ Architektur-Kontext und Diagramm: siehe Section 6 in
 * **Bahnsteig-Whitelist**: `STAMMSTRECKE_HBF_TRACK_TRUNKS` (aktuell
   `{"1", "2"}`) im Hbf-Producer. Erweiterung nur sinnvoll, wenn ÖBB
   einen weiteren Hbf-Bahnsteig auf die Stammstrecke umlenkt.
-* **Richtungs-Klassifikation**: `HBF_SOUTHBOUND_SUBSTRINGS` /
-  `HBF_NORTHBOUND_SUBSTRINGS` für den schnellen Substring-Match,
-  `HBF_SOUTHBOUND_TERMINI` / `HBF_NORTHBOUND_TERMINI` für die
-  exakte Whitelist seltener Termini. Erweiterung über die
-  `Unbekannter Endpunkt am Hbf`-INFO-Logs des Hbf-Producers.
+* **Richtungs-Klassifikation**: `HBF_REFERENCE_LATITUDE` im Hbf-Producer
+  (aktuell `48.1851`, gepinnt am Wien-Hauptbahnhof-Eintrag in
+  `data/stations.json`). Eine Verschiebung des Stationsverzeichnis-
+  Eintrags würde diesen Anker mitverschieben — daher die explizite
+  Konstante. Neue Termini brauchen keine Whitelist-Pflege: solange
+  sie im `stations.json` mit einer Koordinate vorhanden sind, klappt
+  die Klassifikation automatisch; fehlt der Eintrag, übernimmt die
+  Track-Trunk-Klassifikation (`"1"` → Meidling, `"2"` → Praterstern).
 * **Direction-Labels**: `DIRECTION_LABEL_SOUTHBOUND` /
   `DIRECTION_LABEL_NORTHBOUND` (Producer) und `DIRECTIONS` (Renderer)
   müssen byteweise übereinstimmen — die CSV-`direction`-Spalte

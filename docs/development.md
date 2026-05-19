@@ -107,14 +107,25 @@ python -m src.cli cache update
 # Nur ausgewählte Provider aktualisieren.
 python -m src.cli cache update wl oebb
 
+# Alle Provider explizit; beim ersten Fehler abbrechen statt
+# alle Läufe durchzuführen.
+python -m src.cli cache update --all --stop-on-error
+
 # Feed generieren (äquivalent zu python -m src.build_feed).
 python -m src.cli feed build
+
+# Aggregierte Items auf strukturelle Probleme prüfen (kein Output-File).
+python -m src.cli feed lint
 
 # Zugangsdaten prüfen und beim ersten Fehler abbrechen.
 python -m src.cli tokens verify --stop-on-error
 
-# Stationsverzeichnis prüfen und Bericht speichern.
-python -m src.cli stations validate --output docs/stations_validation_report.md
+# Alle bekannten Zugangsdaten explizit validieren.
+python -m src.cli tokens verify --all
+
+# Stationsverzeichnis prüfen und Bericht speichern; CI-äquivalentes
+# Fail-on-Issues für eine harte Pipeline-Bremse.
+python -m src.cli stations validate --output docs/stations_validation_report.md --fail-on-issues
 
 # Ruff + mypy wie in der CI ausführen.
 python -m src.cli checks --fix
@@ -141,8 +152,10 @@ schreibt. Die wichtigsten Parameter:
 | Variable                 | Zweck / Standardwert                                                            |
 | ------------------------ | ------------------------------------------------------------------------------- |
 | `OUT_PATH`               | Zielpfad für den RSS-Feed (Standard `docs/feed.xml`).                           |
+| `FEED_HEALTH_PATH` / `FEED_HEALTH_JSON_PATH` | Zielpfade für die nach jedem Build erzeugten Health-Reports (Standards: `docs/feed-health.md` / `docs/feed-health.json`). Beide nicht im Repository versioniert. |
 | `FEED_TITLE` / `FEED_DESC` | Titel und Beschreibung des Feeds (Standards: `"ÖPNV Störungen Wien & Pendler"` / `"Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"`). |
 | `FEED_LINK`              | Referenz-URL (nur http/https, Standard: GitHub-Repository).                     |
+| `PAGES_BASE_URL`         | Basis-URL der GitHub-Pages-Site für absolute Permalinks (Standard `https://origamihase.github.io/wien-oepnv`). Wird gegen die Pages-Host-Allow-List validiert; abweichende Werte fallen auf den Standard zurück. |
 | `MAX_ITEMS`              | Anzahl der Einträge im Feed (Standard 10).                                      |
 | `FEED_TTL`               | Cache-Hinweis für Clients in Minuten (Standard 15).                             |
 | `MAX_ITEM_AGE_DAYS`      | Maximales Alter von Meldungen aus den Caches (Standard 365).                    |
@@ -157,10 +170,15 @@ schreibt. Die wichtigsten Parameter:
 | `WL_RSS_URL` / `OEBB_RSS_URL` / `BAUSTELLEN_DATA_URL` / `OVERPASS_URL` | Override der Upstream-URLs. Validiert gegen eine Allow-List bekannter Hosts; abweichende Werte werden ignoriert und der Default verwendet (siehe Modul-Docstrings für Details). |
 | `OEBB_ONLY_VIENNA`       | Strikte ÖBB-Filterung (`1`/`true`/`0`/`false`, Standard `false`): nur Meldungen mit explizitem Wien-Bezug akzeptieren — keine Pendlerbahnhof-Fallbacks (siehe [`docs/reference/oebb_provider_logic.md`](reference/oebb_provider_logic.md)). |
 | `WIEN_OEPNV_OSM_ENRICH`  | Setzt `0` im CI, sobald `scripts/check_overpass_status.py` einen Mirror-Outage detektiert; überspringt dann den OSM-Anreicherungs-Schritt in `scripts/update_station_directory.py`. |
+| `WIEN_OEPNV_MANUAL_ENRICH` | Toggle (Standard `1`) für die Nachreicherung manuell gepflegter Auslands-/Distant-AT-Knoten (`type=manual_*`) in `scripts/update_station_directory.py:_enrich_manual_stations`. Auf `0` gesetzt, um in Test-Sandboxen die ~296 realen HAFAS-Round-trips zu vermeiden (siehe `tests/test_update_all_stations_wrapper.py`). |
+| `WIEN_OEPNV_PROVIDER_PLUGINS` | Komma-separierte Liste optionaler Provider-Plugin-Module (siehe [`docs/how-to/provider_plugins.md`](how-to/provider_plugins.md)). Standard leer; nicht gesetzte Module werden ignoriert. |
+| `WIEN_OEPNV_ENV_FILES` | Komma-separierte Liste zusätzlicher `.env`-Dateien, die vor der Konfiguration eingelesen werden (`src/utils/env.py`). Standard liest `.env`, `data/secrets.env`, `config/secrets.env`. |
 | `LOG_LEVEL`, `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`, `LOG_FORMAT` | Steuerung der Logging-Ausgabe (`log/errors.log`, `log/diagnostics.log`). `LOG_LEVEL` Standard `INFO`; `LOG_FORMAT=json` aktiviert JSON-Logs. |
 | `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrungstage für `data/first_seen.json` (Standard 60 Tage).        |
 | `WIEN_OEPNV_CACHE_PRETTY` | Steuert die Formatierung der Cache-Dateien (`1` = gut lesbar, `0` = kompakt). |
 | `WIEN_OEPNV_DEBUG`       | Auf `1` gesetzt zeigt die CLI (`python -m src.cli`) bei Fehlern den vollständigen Traceback; Standard verhält sich fail-secure (keine Trace-Ausgabe). |
+| `VOR_USER_AGENT`         | Custom User-Agent für VOR/VAO-API-Calls (Standard `wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv)`). |
+| `VOR_REQUEST_COUNT_FILE` | Override für den Persistenzpfad des VAO-Tagesbudget-Counters (Standard `data/vor_request_count.json`). |
 
 Alle Pfade werden durch `resolve_env_path` (in `src/feed/config.py`) auf `docs/`, `data/` oder `log/` beschränkt, um Path-Traversal zu verhindern.
 
