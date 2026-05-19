@@ -101,9 +101,13 @@ Aus den zurückgegebenen `Departure`-Objekten überlebt nur, wer
    `"Meidling"`, Trunk `"2"` → `"Praterstern"`. Der Fallback ist
    erschöpfend, weil der Bahnsteig-Filter `track_trunk` bereits auf
    `{"1", "2"}` eingeschränkt hat — kein Zug wird hier verworfen.
-3. **S-Bahn-Linien-Filter** (`_is_sbahn_line`, Regex
-   `_S_BAHN_LINE_RE`): Nur Linien, die das `S\d+`-Muster matchen.
-   `REX`/`R`/`IC`/`Railjet` werden trotz Bahnsteig 1/2 verworfen.
+3. **S-Bahn-/Regional-Linien-Filter** (`_is_sbahn_line`, Regex
+   `_S_BAHN_LINE_RE = ^\s*(S|REX|R|CJX)\s*\d+\s*$`): Akzeptiert
+   `S\d+`, `R\d+`, `REX\d+` und `CJX\d+`. `IC`/`Railjet`/`EC`/`NJ`/`ICE`
+   werden hier verworfen; in der Praxis fahren auf Wien-Hbf-Bahnsteig
+   1/2 (Stammstrecke) ausschließlich S-Bahn-Linien, sodass die R/REX/CJX-
+   Branches reine Defense-in-Depth gegen kurzfristige Bahnsteig-
+   Verlegungen sind.
 
 **Cancellation-Branch (Ausfälle)**: Der Cancellation-Check läuft VOR
 dem `rtTime`-Filter, weil VAO bei ausgefallenen Zügen oft keine
@@ -400,9 +404,12 @@ Architektur-Kontext und Diagramm: siehe Section 6 in
   Sized als 30-Min-Cron-Cadence + 15-Min-Overlap, damit jeder Zug
   zweimal beobachtet wird (latest-wins-Overwrite). Eine Verlängerung
   bläht die Antwort ohne Genauigkeits-Gewinn auf.
-* **Regex für S-Bahn-Linien**: `_S_BAHN_LINE_RE`. Erfasst alle ÖBB-
-  S-Bahn-Linien (`S\d+`), inklusive zukünftiger Erweiterungen
-  (`S 90`, `S 100`).
+* **Regex für S-/R-/REX-/CJX-Linien**: `_S_BAHN_LINE_RE` (definiert in
+  `scripts/update_stammstrecke_status.py`, vom Hbf-Producer per Import
+  wiederverwendet). Erfasst `S\d+`, `R\d+`, `REX\d+` und `CJX\d+`
+  (inklusive zukünftiger Erweiterungen wie `S 90`, `S 100`). Auf
+  Bahnsteig 1/2 fahren faktisch nur S-Bahnen — die R/REX/CJX-Branches
+  sind Defense-in-Depth für kurzfristige Bahnsteig-Verlegungen.
 * **Rate-Limit**: `BREAKER_FAILURE_THRESHOLD` /
   `BREAKER_RECOVERY_TIMEOUT`. Aktuell auf `10` / `3600 s` gesetzt. Das
   100/Tag-VAO-Budget wird durch den `_charge_one_request`-Pfad
