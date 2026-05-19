@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 19 May 2026 21:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 22:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[59A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bbf31a68061bfd0881f02a66b144b8f6c7e19668ddd11e8dc8d9ef56e900dee5</guid>
+      <pubDate>Tue, 19 May 2026 21:51:00 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 11:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 21:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 19.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[5: Rettungseinsatz Züge halten bei Linie O]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -103,17 +114,6 @@
       <ext:ends_at>Tue, 19 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Bauarbeiten Einstieg: Brünner Straße 31-31A [18.05.2026 – 19.05.2026]</description>
       <content:encoded><![CDATA[Bauarbeiten Einstieg: Brünner Straße 31-31A<br/>[18.05.2026 – 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Kranarbeiten ab 01. Juni 2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ea5c0a14274e4e9715287474322b70a593216116a425ef7cbb594981f139be65</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 18 May 2026 00:00:40 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 18 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 11 Jun 2026 05:00:00 +0200</ext:ends_at>
-      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [18.05.2026 – 11.06.2026]</description>
-      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[18.05.2026 – 11.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
