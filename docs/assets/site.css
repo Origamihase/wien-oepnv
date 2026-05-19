@@ -129,6 +129,22 @@ code {
   font-size: 0.92em;
 }
 
+/* Accessibility utility — visually hidden but exposed to assistive tech.
+ * Used to extend the accessible name of an element beyond its visible
+ * text without altering the rendered layout. Standard ``clip-path``
+ * pattern (the older ``clip: rect(...)`` form is deprecated). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Skip-Link */
 .skip-link {
   position: absolute;
@@ -257,7 +273,19 @@ code {
 .hero::before {
   content: "";
   position: absolute;
-  inset: -40% -10% auto auto;
+  /* Pixel-anchored offsets keep the decorative blob stable regardless
+   * of how tall the hero ends up. Earlier we used ``inset: -40% -10%``;
+   * because ``top`` percentages resolve against the *containing block's
+   * height*, any post-load growth of the hero (e.g. ``#last-update``
+   * going from "–" to "18. Mai 2026, 10:14 Uhr (Europe/Vienna)" and
+   * wrapping on narrow viewports) re-resolved ``-40%`` to a more
+   * negative pixel value and shifted the visible ``::before``. The
+   * 2026-05-19 mobile Lighthouse run pinned the full 0.21 CLS on this
+   * element. Fixed offsets break the dependency on hero height; the
+   * blob is purely decorative, so the slight visual delta versus the
+   * old percent-based geometry is irrelevant. */
+  top: -160px;
+  right: -48px;
   width: 480px; height: 480px;
   background:
     radial-gradient(closest-side, rgba(76, 169, 255, 0.18), transparent 70%),

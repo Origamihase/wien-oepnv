@@ -72,7 +72,20 @@
   }
 
   function clear(node) {
-    while (node && node.firstChild) node.removeChild(node.firstChild);
+    if (!node) return;
+    // ``replaceChildren()`` performs the same removal in a single,
+    // engine-optimised call (chrome ≥ 86, firefox ≥ 78, safari ≥ 14 —
+    // all roughly 2020-vintage and therefore comfortably below the
+    // baseline of any browser still receiving security updates). The
+    // manual ``while``-loop fallback below is kept as a defence-in-depth
+    // safety net for environments without ``replaceChildren``: removing
+    // it would be silently fatal on the few platforms still missing it,
+    // and the branch costs nothing on modern engines.
+    if (typeof node.replaceChildren === "function") {
+      node.replaceChildren();
+      return;
+    }
+    while (node.firstChild) node.removeChild(node.firstChild);
   }
 
   function safeHttpsUrl(raw) {
@@ -116,13 +129,20 @@
   // ----- Fetching -----
 
   async function fetchText(url, { signal } = {}) {
-    const buster = Math.floor(Date.now() / 60000);
-    const sep = url.includes("?") ? "&" : "?";
-    const res = await fetch(url + sep + "t=" + buster, {
-      cache: "no-store",
+    // ``cache: "no-cache"`` forces the browser to revalidate the cached
+    // entry against the origin (``If-None-Match`` / ``If-Modified-Since``)
+    // on every refresh. When the upstream payload is unchanged the
+    // server replies ``304 Not Modified`` and the browser serves the
+    // cached body — same freshness guarantee as the previous
+    // ``no-store`` + per-minute cache-buster combo, but without
+    // redownloading the full feed/CSV each cycle. Both GitHub Pages
+    // (``feed.xml``) and ``raw.githubusercontent.com`` (the CSV mirror)
+    // emit strong ``ETag`` headers, so revalidation produces real
+    // bandwidth savings on the 5-minute auto-refresh tick.
+    const res = await fetch(url, {
+      cache: "no-cache",
       credentials: "omit",
       redirect: "follow",
-      mode: "cors",
       signal,
     });
     if (!res.ok) throw new Error(`HTTP ${res.status} – ${url}`);
@@ -190,9 +210,14 @@
   // ----- XML/RSS parser -----
 
   const NS_EXT = "https://wien-oepnv.example/schema";
+  // A single ``DOMParser`` instance is reused for every refresh. Each
+  // ``parseFromString`` call creates a fresh document, so reuse is safe
+  // and avoids the per-call constructor allocation on the 5-minute
+  // auto-refresh cycle.
+  const domParser = new DOMParser();
 
   function parseFeed(xmlText) {
-    const doc = new DOMParser().parseFromString(xmlText, "application/xml");
+    const doc = domParser.parseFromString(xmlText, "application/xml");
     const err = doc.querySelector("parsererror");
     if (err) throw new Error("Feed konnte nicht geparst werden");
     const channel = doc.querySelector("channel");
@@ -202,7 +227,7 @@
     const items = Array.from(doc.getElementsByTagName("item")).map((it) => {
       const get = (tag) => firstChildText(it, tag);
       const ns = (tag) => firstChildTextNs(it, NS_EXT, tag);
-      return {
+      const item = {
         title: get("title"),
         link: get("link"),
         guid: get("guid"),
@@ -212,6 +237,12 @@
         startsAt: ns("starts_at"),
         endsAt: ns("ends_at"),
       };
+      // ``detectSource`` is regex-based and otherwise re-runs on every
+      // filter change *and* twice inside ``renderFeedItem``. Caching the
+      // result on the parsed item keeps the filter/render hot path
+      // allocation-free.
+      item.source = detectSource(item);
+      return item;
     });
     return { lastBuild, items };
   }
@@ -272,10 +303,12 @@
     // by detectSource) is also visible under "Andere", not just under
     // "Alle". The dedicated VOR/VAO chip was removed in 2026-05 because
     // VOR data now flows only into the Stammstrecken monitor.
+    // ``item.source`` is set once during feed parsing and reused here,
+    // so the filter pass is a plain string-compare loop.
     const filtered = feedState.filter === "all"
       ? feedState.items
       : feedState.items.filter((it) => {
-          const src = detectSource(it);
+          const src = it.source || detectSource(it);
           if (feedState.filter === "other") {
             return src !== "wienerlinien" && src !== "oebb";
           }
@@ -300,8 +333,11 @@
   }
 
   function renderFeedItem(item) {
-    const li = el("li", { class: "feed-item", attrs: { "data-source": detectSource(item) } });
-    const src = detectSource(item);
+    // ``item.source`` is the cached classification set at parse time;
+    // fall back to a live detection so the function still works when
+    // called with a hand-crafted item (e.g. from tests).
+    const src = item.source || detectSource(item);
+    const li = el("li", { class: "feed-item", attrs: { "data-source": src } });
     li.append(el("span", {
       class: "feed-item__source",
       attrs: { "data-source": src, title: sourceLabel(src) },
