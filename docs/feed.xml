@@ -7,17 +7,39 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 19 May 2026 17:30:37 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 18:00:37 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[63A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9</guid>
+      <pubDate>Tue, 19 May 2026 17:46:00 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 11:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 17:46:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 19.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Wien Süßenbrunn]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;878279</guid>
-      <pubDate>Tue, 19 May 2026 17:29:16 +0200</pubDate>
+      <pubDate>Tue, 19 May 2026 17:44:40 +0200</pubDate>
       <ext:first_seen>Tue, 19 May 2026 17:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 17:29:16 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 19 May 2026 17:44:40 +0200</ext:starts_at>
       <description>Wegen einer Oberleitungsstörung sind zwischen Wien Floridsdorf Bahnhof (U) und Wien Süßenbrunn Bahnhst keine Fahrten möglich. [Seit 19.05.2026]</description>
       <content:encoded><![CDATA[Wegen einer Oberleitungsstörung sind zwischen Wien Floridsdorf Bahnhof (U) und Wien Süßenbrunn Bahnhst keine Fahrten möglich.<br/>[Seit 19.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b22dfbbf389bb0a8ea03be177b6fa20b16f32c05b0828f6ae785106649e64f7b</guid>
+      <pubDate>Tue, 19 May 2026 17:35:00 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 18:00:37 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 17:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 19.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[69A: Verspätungen]]></title>
@@ -40,28 +62,6 @@
       <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang. [Am 19.05.2026]</description>
       <content:encoded><![CDATA[Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang.<br/>[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Fahrtbehinderung Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7</guid>
-      <pubDate>Tue, 19 May 2026 16:46:30 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 17:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 16:46:30 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 17:46:00 +0200</ext:ends_at>
-      <description>[Am 19.05.2026]</description>
-      <content:encoded><![CDATA[[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5</guid>
-      <pubDate>Tue, 19 May 2026 16:46:00 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 11:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 16:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 19.05.2026]</description>
-      <content:encoded><![CDATA[Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 19.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Heiligenstadt]]></title>
