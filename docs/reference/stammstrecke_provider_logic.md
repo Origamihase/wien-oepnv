@@ -80,8 +80,8 @@ Aus den zurückgegebenen `Departure`-Objekten überlebt nur, wer
 **alle drei Filter** passiert:
 
 1. **Bahnsteig-Filter** (`STAMMSTRECKE_HBF_TRACK_TRUNKS = {"1", "2"}`):
-   Wien Hbf hat zwei Stammstrecken-Bahnsteige — Bahnsteig 1 nordwärts
-   (Praterstern), Bahnsteig 2 südwärts (Meidling). Alle anderen
+   Wien Hbf hat zwei Stammstrecken-Bahnsteige — Bahnsteig 1 südwärts
+   (Meidling), Bahnsteig 2 nordwärts (Praterstern). Alle anderen
    Bahnsteige (3–12 inkl. Halb-Bahnsteige „1A"/„10A-B") tragen
    Fernverkehr (RJ/IC/EC/NJ), Hbf-endende REX-Züge, die Marchegger
    Ostbahn, die Pottendorfer Linie, die Westbahn — sie werden

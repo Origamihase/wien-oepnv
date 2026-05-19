@@ -224,8 +224,10 @@ jobs:
       # ``update_stammstrecke_status.py`` inherited from the VAO API.
       # One ``/departureBoard`` poll returns ALL Stammstrecke trains
       # in the 45-min duration window — a single API call per tick
-      # covers both directions (south = Meidling, north = Floridsdorf),
-      # classified via terminus whitelists. Rollback path: swap the
+      # covers both directions (south = Meidling, north = Praterstern;
+      # the pre-2026-05-15 north label was "Floridsdorf" — see the
+      # rename rationale in update_stammstrecke_hbf.py), classified
+      # via terminus whitelists. Rollback path: swap the
       # script name back to ``update_stammstrecke_status.py`` and
       # bump ``--margin`` above to ``2``.
       - name: Refresh Stammstrecke status
