@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 19 May 2026 14:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 15:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5</guid>
+      <pubDate>Tue, 19 May 2026 14:58:00 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 15:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 15:00:08 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse.<br/>[Am 19.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[61A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f01f6bfc539d737cfb9352804fe8a7b3feacc86b339269e1284ac631eaa221ae</guid>
+      <pubDate>Tue, 19 May 2026 14:29:00 +0200</pubDate>
+      <ext:first_seen>Tue, 19 May 2026 15:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 19 May 2026 14:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 19 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie 61A wird in Richtung Vösendorf-Siebenhirten zwischen An den Steinfeldern und Perfektastraße U über Perfektastraße umgeleitet. [Am 19.05.2026]</description>
+      <content:encoded><![CDATA[Die Linie 61A wird in Richtung Vösendorf-Siebenhirten zwischen An den Steinfeldern und Perfektastraße U über Perfektastraße umgeleitet.<br/>[Am 19.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[46: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -95,28 +117,6 @@
       <ext:starts_at>Tue, 19 May 2026 08:42:26 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge … [Seit 19.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge …<br/>[Seit 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: Feuerwehreinsatz Betrieb ab Wilhelminenstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b9bde0bd00dd3f66c66ebf8a0bc67ffef08ccf0d1e2029055bcb6077c8d8dd7e</guid>
-      <pubDate>Tue, 19 May 2026 08:01:04 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 08:30:32 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 08:01:04 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 19 May 2026 19:45:00 +0200</ext:ends_at>
-      <description>[Am 19.05.2026]</description>
-      <content:encoded><![CDATA[[Am 19.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Tue, 19 May 2026 04:45:03 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 05:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 04:45:03 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 00:35:00 +0200</ext:ends_at>
-      <description>[19.05.2026 – 20.05.2026]</description>
-      <content:encoded><![CDATA[[19.05.2026 – 20.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
