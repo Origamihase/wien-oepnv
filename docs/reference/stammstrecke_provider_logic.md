@@ -1,4 +1,4 @@
-# S-Bahn Stammstrecke Provider Logic
+# S-Bahn-Stammstrecke Provider Logic
 
 Das Stammstrecken-Verspätungs-Monitoring überwacht die Stammstrecke
 am Wien Hauptbahnhof auf signifikante Verspätungen und Ausfälle und

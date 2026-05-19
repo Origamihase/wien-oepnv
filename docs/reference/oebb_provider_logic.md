@@ -38,7 +38,7 @@ Aktuell gibt es im Projekt zwei separate Stellen, an denen Schlüsselwörter fü
 
 ## Verwandte Dokumentation
 
-* **S-Bahn Stammstrecke Monitor** — siehe
+* **S-Bahn-Stammstrecke-Monitor** — siehe
   [`stammstrecke_provider_logic.md`](stammstrecke_provider_logic.md).
   Das Stammstrecken-Verspätungs-Monitoring lief ursprünglich über
   `pyhafas` mit dem ÖBB-HAFAS-Endpunkt; seit der 2026-05-09 Migration
