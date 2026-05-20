@@ -990,7 +990,14 @@ def _get_translation_pipeline() -> Any:
     return _TRANSLATION_STATE["pipeline"]
 
 
-def _translate_text(text: str) -> str:
+# Sentinel returned when a translation cannot be produced — distinct
+# from an empty string so callers can distinguish "no input" from "the
+# model failed". Mirrors the dual-state pattern used elsewhere in this
+# module (e.g. ``_TRANSLATION_STATE``).
+_TRANSLATION_FAILED_MARKER = "[Partially translated]"
+
+
+def _translate_text_attempt(text: str, ident: str = "") -> str | None:
     """Translate ``text`` from German to English with entity preservation.
 
     Pipeline:
@@ -999,38 +1006,80 @@ def _translate_text(text: str) -> str:
          and ÖPNV line identifiers with alphanumeric placeholders so
          the ML model cannot mistranslate proper nouns.
       2. The masked text goes through the Hugging Face translation
-         pipeline.
+         pipeline. ``truncation=True`` caps long inputs at the model's
+         max context window instead of letting Marian crash on > 512
+         tokens.
       3. :func:`_unmask_entities` restores the original surface forms
          from the placeholder mapping.
 
-    On any failure (model unavailable, runtime error, unexpected
-    shape) the original input is returned unchanged. Failures are
-    logged via :func:`sanitize_log_arg` so a hostile upstream string
-    cannot inject log-line forgery primitives into the diagnostics
-    stream.
+    Returns ``None`` on ANY failure (pipeline unavailable, runtime
+    error, malformed output, empty result) so callers can distinguish
+    "translated" from "had to fall back to the German source". Use
+    :func:`_translate_text` if you want a safe fallback that always
+    returns a string.
+
+    ``ident`` is included in warning logs (sanitised) so the GitHub
+    Actions log shows exactly which feed identities failed to
+    translate — critical for diagnosing partial-translation drift.
+    """
+    if not text or not text.strip():
+        return None
+    pipe = _get_translation_pipeline()
+    if pipe is None:
+        return None
+    masked_text, entity_mapping = _mask_entities(text)
+    try:
+        # ``truncation=True`` enforces the model's input cap (512 tokens
+        # for opus-mt-de-en) BEFORE Marian asserts and crashes the
+        # whole feed build. Without it, a single long disruption text
+        # would abort the EN-feed pass for every item that follows.
+        result = pipe(masked_text, max_length=512, truncation=True)
+    except Exception as exc:
+        log.warning(
+            "Translation failed for identity %s — pipeline raised %s: %s",
+            sanitize_log_arg(ident or "<unknown>"),
+            type(exc).__name__,
+            sanitize_log_arg(str(exc)),
+        )
+        return None
+    if not isinstance(result, list) or not result:
+        log.warning(
+            "Translation failed for identity %s — empty/invalid result shape.",
+            sanitize_log_arg(ident or "<unknown>"),
+        )
+        return None
+    first = result[0]
+    if not isinstance(first, dict):
+        log.warning(
+            "Translation failed for identity %s — result[0] not a dict.",
+            sanitize_log_arg(ident or "<unknown>"),
+        )
+        return None
+    translated = first.get("translation_text")
+    if not isinstance(translated, str) or not translated.strip():
+        log.warning(
+            "Translation failed for identity %s — translator returned empty text.",
+            sanitize_log_arg(ident or "<unknown>"),
+        )
+        return None
+    return _unmask_entities(translated, entity_mapping)
+
+
+def _translate_text(text: str, ident: str = "") -> str:
+    """Translate ``text`` from German to English; fall back to the source on failure.
+
+    Thin wrapper around :func:`_translate_text_attempt` that converts
+    the ``None`` failure signal into a safe-fallback string return.
+    Kept as a public-style helper so callers that do not need to
+    distinguish success from fallback have a single-string API; the
+    cache-aware path inside :func:`_cached_translation` uses
+    :func:`_translate_text_attempt` directly so a failed translation
+    is NEVER cached as the canonical English text.
     """
     if not text or not text.strip():
         return text
-    pipe = _get_translation_pipeline()
-    if pipe is None:
-        return text
-    masked_text, entity_mapping = _mask_entities(text)
-    try:
-        result = pipe(masked_text, max_length=512)
-    except Exception as exc:
-        log.warning(
-            "Übersetzung fehlgeschlagen (%s) – Rückfall auf Originaltext.",
-            sanitize_log_arg(str(exc)),
-        )
-        return text
-    if not isinstance(result, list) or not result:
-        return text
-    first = result[0]
-    if isinstance(first, dict):
-        translated = first.get("translation_text")
-        if isinstance(translated, str) and translated:
-            return _unmask_entities(translated, entity_mapping)
-    return text
+    attempt = _translate_text_attempt(text, ident=ident)
+    return attempt if attempt is not None else text
 
 
 def _translate_time_line_en(time_line: str) -> str:
@@ -1059,18 +1108,33 @@ def _cached_translation(
     field: str,
     ident: str,
     state: dict[str, dict[str, Any]] | None,
-) -> str:
+) -> tuple[str, bool]:
     """Return the cached EN translation of ``text`` for ``ident``/``field``.
 
-    On cache miss the translation is computed via :func:`_translate_text`
-    and persisted to ``state[ident]["translations"]["en"][field]`` so a
-    later run reuses the work (one translation per disruption identity
-    per lifecycle, by design).
+    Returns a tuple ``(translation, succeeded)`` where ``succeeded`` is
+    ``True`` only when the ML pipeline actually produced a translation
+    (either fresh or from the persistent cache). On failure the German
+    source is returned with ``succeeded=False`` and **nothing is
+    cached** — this fixes the "Sticky German" cache-corruption bug
+    where a transient pipeline failure (model not yet downloaded,
+    transformers import error, OOM) would poison the cache with the
+    German source text and lock the item in German forever.
+
+    Two further drift-protection guards:
+
+      * If the persisted "translation" is byte-identical to the
+        German source, treat it as a stale fallback from an earlier
+        buggy build and retry. Real translations from a successful
+        ML pass almost never equal the source verbatim (and the few
+        that do — e.g. ``ÖBB`` alone — round-trip safely).
+      * If ``state`` or ``ident`` is missing, fall through to a
+        cache-less translation via :func:`_translate_text_attempt`.
     """
     if not text:
-        return text
+        return text, True  # empty input is trivially "translated"
     if state is None or not ident:
-        return _translate_text(text)
+        attempt = _translate_text_attempt(text, ident=ident)
+        return (attempt, True) if attempt is not None else (text, False)
     entry = state.setdefault(ident, {})
     translations_raw = entry.get("translations")
     if not isinstance(translations_raw, dict):
@@ -1081,11 +1145,24 @@ def _cached_translation(
         en_raw = {}
         translations_raw["en"] = en_raw
     cached = en_raw.get(field)
-    if isinstance(cached, str) and cached:
-        return cached
-    translated = _translate_text(text)
-    en_raw[field] = translated
-    return translated
+    if isinstance(cached, str) and cached and cached != text:
+        return cached, True
+    if isinstance(cached, str) and cached == text:
+        # Stale-fallback heuristic: a prior run cached the German
+        # source as the "translation" — re-attempt now that the
+        # pipeline may be healthy.
+        log.info(
+            "Cached EN translation for %s/%s equals source; retrying.",
+            sanitize_log_arg(ident),
+            sanitize_log_arg(field),
+        )
+    attempt = _translate_text_attempt(text, ident=ident)
+    if attempt is None:
+        # Translation failed — do NOT persist the German source as
+        # the "translation". The next run gets a clean retry.
+        return text, False
+    en_raw[field] = attempt
+    return attempt, True
 
 
 def _parse_lines_from_title(title: str) -> list[str]:
@@ -2597,18 +2674,40 @@ def _apply_lang_overlay(
     EN strings are persisted in ``state[ident]["translations"]["en"]``
     and round-trip through :func:`_save_state`).
 
+    If either the title or the summary cannot be translated, the
+    description is annotated with the ``[Partially translated]``
+    marker so subscribers can see the degradation rather than silently
+    consuming a mostly-German item in the EN feed.
+
     For ``lang != "en"`` the input is returned unchanged.
     """
     if lang != "en":
         return base
 
-    title_en = _sanitize_text(
-        _cached_translation(base.title_out, "title", ident, state)
+    title_raw, title_ok = _cached_translation(
+        base.title_out, "title", ident, state
     )
-    summary_en = _sanitize_text(
-        _cached_translation(summary_de, "summary", ident, state)
-    ) if summary_de else ""
+    title_en = _sanitize_text(title_raw)
+    if summary_de:
+        summary_raw, summary_ok = _cached_translation(
+            summary_de, "summary", ident, state
+        )
+        summary_en = _sanitize_text(summary_raw)
+    else:
+        summary_en = ""
+        summary_ok = True
     time_line_en = _translate_time_line_en(time_line_de)
+
+    if not (title_ok and summary_ok):
+        log.warning(
+            "Translation incomplete for identity %s "
+            "(title_ok=%s, summary_ok=%s) — emitting partial-translation marker.",
+            sanitize_log_arg(ident or "<unknown>"),
+            title_ok,
+            summary_ok,
+        )
+        summary_en = _append_partial_translation_marker(summary_en)
+
     desc_text_truncated_en, desc_html_en = _compose_description(
         summary_en, time_line_en
     )
@@ -2622,6 +2721,20 @@ def _apply_lang_overlay(
         title_out=title_en,
         desc_html=desc_html_en,
     )
+
+
+def _append_partial_translation_marker(summary: str) -> str:
+    """Append :data:`_TRANSLATION_FAILED_MARKER` to ``summary`` once.
+
+    Idempotent: if the marker is already present the summary is
+    returned unchanged. Empty summaries are replaced with the marker
+    alone so the user-facing feed still flags the partial state.
+    """
+    if not summary:
+        return _TRANSLATION_FAILED_MARKER
+    if _TRANSLATION_FAILED_MARKER in summary:
+        return summary
+    return f"{summary} {_TRANSLATION_FAILED_MARKER}"
 
 
 def _format_item_content(

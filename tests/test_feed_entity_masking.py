@@ -114,10 +114,11 @@ def test_translate_text_pipes_masked_text_through_pipeline(
 ) -> None:
     """The pipeline receives the MASKED text (not the original) so a
     real Helsinki model cannot mistranslate proper nouns."""
-    seen: dict[str, str] = {}
+    seen: dict[str, Any] = {}
 
-    def fake_pipeline(text: str, max_length: int) -> list[dict[str, str]]:
+    def fake_pipeline(text: str, **kwargs: Any) -> list[dict[str, str]]:
         seen["input"] = text
+        seen["kwargs"] = kwargs
         # The fake model echoes the input as the translation so we can
         # verify the unmask step preserves the original entities.
         return [{"translation_text": text}]
@@ -130,6 +131,8 @@ def test_translate_text_pipes_masked_text_through_pipeline(
     assert "Stephansplatz" not in seen["input"]
     assert "Wiener Linien" not in seen["input"]
     assert "U6" not in seen["input"]
+    # ``truncation=True`` is forwarded so long inputs don't crash Marian.
+    assert seen["kwargs"].get("truncation") is True
     # The final output must restore the proper nouns verbatim.
     assert out == text
 
@@ -139,7 +142,7 @@ def test_translate_text_handles_dropped_placeholder_gracefully(
 ) -> None:
     """If the translator drops a placeholder the rest of the output is
     still restored and no stray ``XENT…`` token leaks to subscribers."""
-    def fake_pipeline(text: str, max_length: int) -> list[dict[str, str]]:
+    def fake_pipeline(text: str, **kwargs: Any) -> list[dict[str, str]]:
         # Strip every placeholder from the "translation" — simulates a
         # model that aggressively rewrites unfamiliar tokens.
         return [{"translation_text": build_feed._ENTITY_PLACEHOLDER_RE.sub("", text)}]
