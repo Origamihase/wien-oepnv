@@ -38,21 +38,37 @@ def test_translate_text_returns_original_without_pipeline(
     assert build_feed._translate_text("Verspätung") == "Verspätung"
 
 
-def test_cached_translation_persists_in_state(monkeypatch: Any) -> None:
+def test_cached_translation_returns_success_flag(monkeypatch: Any) -> None:
+    """A pipeline failure must NOT cache the German source as the EN
+    "translation" — that was the Sticky-German cache-corruption bug.
+
+    Pre-fix behaviour: ``_cached_translation`` returned the German
+    fallback AND wrote it under ``state[ident]["translations"]["en"]``,
+    so subsequent runs (with a healthy pipeline) still served the
+    cached German text.
+    """
     monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
     state: dict[str, dict[str, Any]] = {}
-    first = build_feed._cached_translation("Hallo", "title", "ident-1", state)
-    assert first == "Hallo"  # fallback to original (no pipeline)
-    # State now carries the translation under the canonical layout.
-    assert state["ident-1"]["translations"]["en"]["title"] == "Hallo"
-
-    # Overwrite the cached value — second lookup must read from state and
-    # NOT re-trigger ``_translate_text``.
-    state["ident-1"]["translations"]["en"]["title"] = "Hello (cached)"
-    assert (
-        build_feed._cached_translation("Hallo", "title", "ident-1", state)
-        == "Hello (cached)"
+    text, succeeded = build_feed._cached_translation(
+        "Hallo", "title", "ident-1", state
     )
+    assert text == "Hallo"  # fallback to original (no pipeline)
+    assert succeeded is False  # explicit failure flag
+    # Cache MUST NOT carry the German fallback — the next run gets a
+    # clean retry.
+    translations = state.get("ident-1", {}).get("translations", {})
+    assert "title" not in translations.get("en", {})
+
+    # Once the cache has a real translation, the second lookup reads
+    # from state without re-invoking the (still-broken) pipeline.
+    state.setdefault("ident-1", {}).setdefault("translations", {}).setdefault(
+        "en", {}
+    )["title"] = "Hello (cached)"
+    text2, succeeded2 = build_feed._cached_translation(
+        "Hallo", "title", "ident-1", state
+    )
+    assert text2 == "Hello (cached)"
+    assert succeeded2 is True
 
 
 def test_format_item_content_en_falls_back_when_pipeline_unavailable(
@@ -63,6 +79,9 @@ def test_format_item_content_en_falls_back_when_pipeline_unavailable(
     The pipeline is stubbed to ``None`` so the title/summary stay as the
     German original; the time-line prefix is translated via the static
     dictionary so the EN feed still carries the English bracketed form.
+    The partial-translation marker must surface so subscribers can see
+    the degradation, and the cache MUST NOT persist the German source
+    as a "translation" (Sticky-German fix).
     """
     monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
     item = cast(
@@ -85,9 +104,13 @@ def test_format_item_content_en_falls_back_when_pipeline_unavailable(
     assert "[Since" in formatted_en.desc_text_truncated
     # German fallback preserved for title because the model is unreachable.
     assert formatted_en.title_out == "U6: Verspätung"
-    # Cache populated for the second call.
-    assert "title" in state["wl-1"]["translations"]["en"]
-    assert "summary" in state["wl-1"]["translations"]["en"]
+    # Partial-translation marker surfaces in the rebuilt description.
+    assert build_feed._TRANSLATION_FAILED_MARKER in formatted_en.desc_text_truncated
+    # Cache MUST NOT contain the German fallback for either field —
+    # the next run gets a clean retry once the pipeline is healthy.
+    translations = state.get("wl-1", {}).get("translations", {}).get("en", {})
+    assert "title" not in translations
+    assert "summary" not in translations
 
 
 def test_make_rss_en_writes_english_metadata_and_atom_self(
