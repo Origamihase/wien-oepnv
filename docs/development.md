@@ -177,9 +177,13 @@ schreibt. Die wichtigsten Parameter:
 | `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrungstage für `data/first_seen.json` (Standard 60 Tage).        |
 | `WIEN_OEPNV_CACHE_PRETTY` | Steuert die Formatierung der Cache-Dateien (`1` = gut lesbar, `0` = kompakt). |
 | `WIEN_OEPNV_DEBUG`       | Auf `1` gesetzt zeigt die CLI (`python -m src.cli`) bei Fehlern den vollständigen Traceback; Standard verhält sich fail-secure (keine Trace-Ausgabe). |
+| `VOR_ACCESS_ID`          | **Pflicht-Secret** für den Stammstrecken-Monitor (VAO-Access-Token). Niemals committen — laden via `.env`, `data/secrets.env` oder `config/secrets.env`. Validierbar mit `python -m src.cli tokens verify vor`. |
+| `VOR_BASE_URL`           | **Pflicht-Secret** für den Stammstrecken-Monitor: Basis-URL der VAO-ReST-API (validiert in `src/providers/vor.py:_validated_vor_base_url`). Legacy-Alias `VOR_BASE`. |
 | `VOR_USER_AGENT`         | Custom User-Agent für VOR/VAO-API-Calls (Standard `wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv)`). |
 | `VOR_REQUEST_COUNT_FILE` | Override für den Persistenzpfad des VAO-Tagesbudget-Counters (Standard `data/vor_request_count.json`). |
 | `VOR_AUTH_TYPE`          | Erzwingt das Auth-Schema bei der VAO-Token-Normalisierung (`bearer` oder `basic`, Standard: automatische Erkennung aus dem Token-Format in `src/providers/vor.py:_normalise_access_token`). |
+| `VOR_VERSION` / `VOR_VERSIONS` | Versions-String für die VAO-URL (z. B. `v1.11.0`); `VOR_VERSIONS` ist Fallback-Alias für `VOR_VERSION`. Optional, Default folgt der API-Vorgabe. |
+| `GOOGLE_ACCESS_ID`       | Pflicht für den Tier-3-Notausgang (Google Places). Fallback-Alias `GOOGLE_MAPS_API_KEY` (deprecated). Details im How-to [`docs/how-to/google_places_stations.md`](how-to/google_places_stations.md). |
 | `BAUSTELLEN_TIMEOUT`     | Per-Request-Timeout (Sekunden) für `scripts/update_baustellen_cache.py` (Standard `20`, hart geklammert auf `MAX_BAUSTELLEN_TIMEOUT`). |
 | `BAUSTELLEN_FALLBACK_PATH` | Pfad zur lokalen JSON-Fallback-Datei (Standard `data/samples/baustellen_sample.geojson`), die verwendet wird, wenn der OGD-Endpoint der Stadt Wien nicht erreichbar ist. |
 | `SITE_BASE_URL`          | Basis-URL für die Sitemap-Generierung (`scripts/generate_sitemap.py`). Standard identisch mit `PAGES_BASE_URL`; gegen die GitHub-Pages-Allow-List validiert. |
@@ -632,9 +636,7 @@ Sicherheits-Gates: Der Reporter validiert das Repo-Slug gegen GitHubs Naming-Gra
 
 ## Authentifizierung & Sicherheit
 
-- **Secrets**: (z. B. `VOR_ACCESS_ID`, `VOR_BASE_URL`) werden ausschließlich über Umgebungsvariablen bereitgestellt und niemals im
-  Repository abgelegt. Das Skript `src/utils/secret_scanner.py` schützt proaktiv vor versehentlich eingecheckten Geheimnissen.
-  Optionale Secondary-Variablen für den VOR/VAO-Stack: `VOR_BASE` (Legacy-Alias für `VOR_BASE_URL`, akzeptiert in `src/providers/vor.py:_validated_vor_base_url`), `VOR_VERSION` und `VOR_VERSIONS` (Versions-Strings für die VAO-URL, z. B. `v1.11.0` — `VOR_VERSIONS` ist Fallback-Alias für `VOR_VERSION`). Beide werden in `.github/workflows/update-cycle.yml` als Build-Secrets durchgereicht.
+- **Secrets**: Pflicht- und optionale Variablen (`VOR_ACCESS_ID`, `VOR_BASE_URL`, `VOR_VERSION` / `VOR_VERSIONS`, `GOOGLE_ACCESS_ID`, …) sind im Tabellenblock [„Konfiguration des Feed-Builds"](#konfiguration-des-feed-builds) gelistet. Sie werden ausschließlich über Umgebungsvariablen bereitgestellt und niemals im Repository abgelegt; das Skript `src/utils/secret_scanner.py` schützt proaktiv vor versehentlich eingecheckten Geheimnissen. In `.github/workflows/update-cycle.yml` werden diese Werte als Build-Secrets durchgereicht.
 - **SSRF-Schutz**: Externe Netzwerkanfragen laufen über `fetch_content_safe` (in `src/utils/http.py`). Diese Funktion verhindert Server-Side Request Forgery, indem sie DNS-Rebinding blockiert, private IP-Adressen (Localhost, internes Netzwerk) ablehnt und DNS-Timeouts erzwingt.
 - **Dateisystem**: Schreibvorgänge nutzen `atomic_write`, um Datenkorruption bei Abstürzen zu vermeiden. Pfadeingaben werden strikt validiert (`resolve_env_path` / `validate_path` aus `src/feed/config.py`), um Path-Traversal-Angriffe zu verhindern. Schreibzugriffe sind auf `docs/`, `data/` und `log/` beschränkt.
 - **Logging-Sicherheit**: Kontrollzeichen in Logs werden maskiert, um Log-Injection-Attacken zu unterbinden.
