@@ -13,35 +13,224 @@
 (() => {
   const REPO = "Origamihase/wien-oepnv";
   const RAW_BASE = `https://raw.githubusercontent.com/${REPO}/main/data/stats`;
-  const FEED_URL = "feed.xml";
+  const FEED_URL_DE = "feed.xml";
+  const FEED_URL_EN = "feed.en.xml";
   const REFRESH_MS = 5 * 60 * 1000; // 5 Minuten
+  const LANG_STORAGE_KEY = "wienoepnv:lang";
 
-  const WEEKDAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
-  const WEEKDAY_LONG = {
-    Mo: "Montag", Di: "Dienstag", Mi: "Mittwoch", Do: "Donnerstag",
-    Fr: "Freitag", Sa: "Samstag", So: "Sonntag",
+  // ----- Lokalisierung (Zero-Tracker) ---------------------------------
+  // Statisches Wörterbuch: das Frontend-UI hat wenig Text, deshalb wird
+  // hier KEIN externes Fetch benötigt. Schlüssel decken sich mit
+  // ``data-i18n``-Attributen in ``site.html``. Werte für ``de`` werden
+  // einmal beim Init aus dem statischen DOM gelesen und gecached, damit
+  // ein Wechsel ``EN -> DE`` ohne Reload sauber zurücksetzt.
+  const I18N_EN = {
+    "skip-link": "Skip to content",
+    "brand-aria": "Wien Public Transport Live Dashboard – home",
+    "brand-sub": "Live dashboard",
+    "nav-main": "Main navigation",
+    "nav-feed": "Disruptions",
+    "nav-stoerungen": "Disruption statistics",
+    "nav-stammstrecke": "Trunk line",
+    "nav-ausfaelle": "Cancellations",
+    "lang-switch": "Choose language",
+    "lang-de": "Deutsch",
+    "lang-en": "English",
+    "hero-eyebrow": "Real time · Open data · Vienna & eastern Austria",
+    "hero-title": "Disruptions, delays & cancellations at a glance",
+    "hero-lead-html":
+      "Consolidated transit information from <strong>Wiener Linien</strong>, " +
+      "<strong>ÖBB</strong> and <strong>VOR/VAO</strong> – live from the " +
+      "RSS feed, augmented with the latest yearly statistics for the " +
+      "S-Bahn trunk line.",
+    "status-loading": "Loading data …",
+    "status-ok": "Live feed updated.",
+    "status-error": "The live feed could not be loaded.",
+    "btn-refresh": "Refresh",
+    "hero-meta-stamp": "Last updated:",
+    "hero-meta-rss": "Feed (RSS)",
+    "hero-meta-source": "Source code",
+    "feed-title": "Current disruptions",
+    "feed-sub-stammstrecke-html":
+      "Current S-Bahn observations at Vienna Hauptbahnhof " +
+      "– <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.",
+    "feed-sub-live-html":
+      "Live from <a href=\"feed.en.xml\" type=\"application/rss+xml\" " +
+      "data-i18n-href=\"feed-href\" data-href-de=\"feed.xml\" " +
+      "data-href-en=\"feed.en.xml\"><code>feed.en.xml</code></a> " +
+      "· consolidated from official sources " +
+      "· <span id=\"feed-count\" class=\"badge\" aria-live=\"polite\">–</span>",
+    "live-tile-label": "Avg. trunk-line delay",
+    "live-tile-window": "last 60 min · source VOR / VAO",
+    "live-tile-cta": " – open detail view",
+    "filters-aria": "Filter disruptions by source",
+    "filter-all": "All",
+    "filter-wl": "Wiener Linien",
+    "filter-oebb": "ÖBB",
+    "filter-other": "Other",
+    "feed-empty": "No disruptions for the selected filter.",
+    "feed-error-prefix": "Feed could not be loaded:",
+    "stoerungen-error-prefix": "Disruption statistics unavailable:",
+    "stammstrecke-error-prefix": "Trunk-line statistics unavailable:",
+    "ausfaelle-error-prefix": "Cancellation statistics unavailable:",
   };
-  const HOURS = Array.from({ length: 24 }, (_, h) => String(h).padStart(2, "0"));
 
-  const dtfFull = new Intl.DateTimeFormat("de-AT", {
-    timeZone: "Europe/Vienna",
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
-  const dtfTime = new Intl.DateTimeFormat("de-AT", {
-    timeZone: "Europe/Vienna",
-    timeStyle: "short",
-  });
-  const dtfDate = new Intl.DateTimeFormat("de-AT", {
-    timeZone: "Europe/Vienna",
-    dateStyle: "medium",
-  });
-  const rtf = new Intl.RelativeTimeFormat("de", { numeric: "auto" });
-  const nfInt = new Intl.NumberFormat("de-AT");
-  const nf1 = new Intl.NumberFormat("de-AT", {
+  // Status-Strings können sich zur Laufzeit ändern und sind kein
+  // ``data-i18n``-Knoten — sie werden via ``setStatus`` gesetzt. Wir
+  // halten daher eine ergänzende DE-Übersicht für die JS-internen Texte.
+  const STATUS_TEXT = {
+    de: {
+      "status-loading": "Daten werden geladen …",
+      "status-ok": "Live-Feed aktualisiert.",
+      "status-error": "Live-Feed konnte nicht geladen werden.",
+      "feed-error-prefix": "Feed konnte nicht geladen werden:",
+      "stoerungen-error-prefix": "Störungs-Statistik nicht verfügbar:",
+      "stammstrecke-error-prefix": "Stammstrecke-Statistik nicht verfügbar:",
+      "ausfaelle-error-prefix": "Ausfall-Statistik nicht verfügbar:",
+    },
+    en: {
+      "status-loading": I18N_EN["status-loading"],
+      "status-ok": I18N_EN["status-ok"],
+      "status-error": I18N_EN["status-error"],
+      "feed-error-prefix": I18N_EN["feed-error-prefix"],
+      "stoerungen-error-prefix": I18N_EN["stoerungen-error-prefix"],
+      "stammstrecke-error-prefix": I18N_EN["stammstrecke-error-prefix"],
+      "ausfaelle-error-prefix": I18N_EN["ausfaelle-error-prefix"],
+    },
+  };
+
+  function readStoredLang() {
+    try {
+      const stored = localStorage.getItem(LANG_STORAGE_KEY);
+      if (stored === "en" || stored === "de") return stored;
+    } catch {
+      // localStorage may be unavailable (private mode, disabled) — ignore.
+    }
+    return "de";
+  }
+
+  let currentLang = readStoredLang();
+
+  function writeStoredLang(lang) {
+    try {
+      localStorage.setItem(LANG_STORAGE_KEY, lang);
+    } catch {
+      // ignore — language stays in-memory only
+    }
+  }
+
+  function tr(key) {
+    if (currentLang === "en" && Object.prototype.hasOwnProperty.call(I18N_EN, key)) {
+      return I18N_EN[key];
+    }
+    return null;
+  }
+
+  function statusText(key) {
+    const dict = STATUS_TEXT[currentLang] || STATUS_TEXT.de;
+    return dict[key] || STATUS_TEXT.de[key] || "";
+  }
+
+  function currentFeedUrl() {
+    return currentLang === "en" ? FEED_URL_EN : FEED_URL_DE;
+  }
+
+  function localeTag() {
+    return currentLang === "en" ? "en-GB" : "de-AT";
+  }
+
+  let dtfFull = buildDtf({ dateStyle: "medium", timeStyle: "short" });
+  let dtfTime = buildDtf({ timeStyle: "short" });
+  let dtfDate = buildDtf({ dateStyle: "medium" });
+  let rtf = new Intl.RelativeTimeFormat(localeTag(), { numeric: "auto" });
+  let nfInt = new Intl.NumberFormat(localeTag());
+  let nf1 = new Intl.NumberFormat(localeTag(), {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   });
+
+  function buildDtf(opts) {
+    return new Intl.DateTimeFormat(localeTag(), {
+      timeZone: "Europe/Vienna",
+      ...opts,
+    });
+  }
+
+  function rebuildIntl() {
+    dtfFull = buildDtf({ dateStyle: "medium", timeStyle: "short" });
+    dtfTime = buildDtf({ timeStyle: "short" });
+    dtfDate = buildDtf({ dateStyle: "medium" });
+    rtf = new Intl.RelativeTimeFormat(localeTag(), { numeric: "auto" });
+    nfInt = new Intl.NumberFormat(localeTag());
+    nf1 = new Intl.NumberFormat(localeTag(), {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1,
+    });
+  }
+
+  const WEEKDAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+  const WEEKDAY_LONG_DE = {
+    Mo: "Montag", Di: "Dienstag", Mi: "Mittwoch", Do: "Donnerstag",
+    Fr: "Freitag", Sa: "Samstag", So: "Sonntag",
+  };
+  const WEEKDAY_LONG_EN = {
+    Mo: "Monday", Di: "Tuesday", Mi: "Wednesday", Do: "Thursday",
+    Fr: "Friday", Sa: "Saturday", So: "Sunday",
+  };
+  function weekdayLong(key) {
+    const dict = currentLang === "en" ? WEEKDAY_LONG_EN : WEEKDAY_LONG_DE;
+    return dict[key] || key;
+  }
+  const HOURS = Array.from({ length: 24 }, (_, h) => String(h).padStart(2, "0"));
+
+  // KPI / chart labels rendered dynamically (NOT covered by ``data-i18n``)
+  // because they are emitted by ``renderKpis`` / ``renderBars`` at runtime.
+  const CHART_TEXT_DE = {
+    "kpi-stoerungen-total": "Erfasste Störungen",
+    "kpi-top-provider": "Häufigste Quelle",
+    "kpi-peak-hour": "Spitzenstunde",
+    "kpi-top-weekday": "Stärkster Tag",
+    "kpi-observations": "Beobachtungen",
+    "kpi-avg-delay": "Ø Verspätung",
+    "kpi-max-delay": "Max. Verspätung",
+    "kpi-heavy-delays": "Schwerverspätungen",
+    "kpi-cancellations": "Ausfälle",
+    "kpi-top-line": "Häufigste Linie",
+    "sub-year": "Jahr",
+    "sub-meldungen": "Meldungen",
+    "sub-ausfaelle": "Ausfälle",
+    "sub-no-data": "keine Daten",
+    "sub-all-observations": "alle Beobachtungen",
+    "sub-tick-value": "Tickwert",
+    "sub-over-9": "≥ 9 Minuten",
+    "tile-na": "N/A",
+    "tile-em-dash": "–",
+  };
+  const CHART_TEXT_EN = {
+    "kpi-stoerungen-total": "Recorded disruptions",
+    "kpi-top-provider": "Most frequent source",
+    "kpi-peak-hour": "Peak hour",
+    "kpi-top-weekday": "Busiest weekday",
+    "kpi-observations": "Observations",
+    "kpi-avg-delay": "Avg. delay",
+    "kpi-max-delay": "Max. delay",
+    "kpi-heavy-delays": "Severe delays",
+    "kpi-cancellations": "Cancellations",
+    "kpi-top-line": "Most affected line",
+    "sub-year": "Year",
+    "sub-meldungen": "reports",
+    "sub-ausfaelle": "cancellations",
+    "sub-no-data": "no data",
+    "sub-all-observations": "all observations",
+    "sub-tick-value": "tick value",
+    "sub-over-9": "≥ 9 minutes",
+    "tile-na": "N/A",
+    "tile-em-dash": "–",
+  };
+  function ct(key) {
+    const dict = currentLang === "en" ? CHART_TEXT_EN : CHART_TEXT_DE;
+    return dict[key] || CHART_TEXT_DE[key] || key;
+  }
 
   // ----- DOM helper -----
 
@@ -99,11 +288,14 @@
     }
   }
 
-  function setStatus(state, message) {
+  function setStatus(state, key) {
     const dot = $(".status__dot");
     const text = $("#status-text");
     if (dot) dot.dataset.status = state;
-    if (text) text.textContent = message;
+    if (text) {
+      text.textContent = statusText(key);
+      text.dataset.statusKey = key;
+    }
   }
 
   function setLastUpdate(date) {
@@ -111,14 +303,17 @@
     if (!t) return;
     const iso = date.toISOString();
     t.setAttribute("datetime", iso);
-    t.textContent = dtfFull.format(date) + " Uhr (Europe/Vienna)";
+    const suffix = currentLang === "en" ? " (Europe/Vienna)" : " Uhr (Europe/Vienna)";
+    t.textContent = dtfFull.format(date) + suffix;
   }
 
-  function showError(elId, message) {
+  function showError(elId, prefixKey, detail) {
     const node = document.getElementById(elId);
     if (!node) return;
     node.hidden = false;
-    node.textContent = message;
+    node.textContent = `${statusText(prefixKey)} ${detail}`;
+    node.dataset.errorPrefixKey = prefixKey;
+    node.dataset.errorDetail = detail;
   }
 
   function hideError(elId) {
@@ -281,10 +476,10 @@
   }
 
   function sourceLabel(key) {
-    return key === "wienerlinien" ? "Wiener Linien"
-         : key === "oebb" ? "ÖBB"
-         : key === "vor" ? "VOR / VAO"
-         : "Andere";
+    if (key === "wienerlinien") return "Wiener Linien";
+    if (key === "oebb") return "ÖBB";
+    if (key === "vor") return "VOR / VAO";
+    return currentLang === "en" ? "Other" : "Andere";
   }
 
   let feedState = { items: [], filter: "all" };
@@ -316,7 +511,8 @@
         });
 
     if (countBadge) {
-      countBadge.textContent = `${nfInt.format(filtered.length)} aktiv`;
+      const suffix = currentLang === "en" ? "active" : "aktiv";
+      countBadge.textContent = `${nfInt.format(filtered.length)} ${suffix}`;
     }
 
     if (filtered.length === 0) {
@@ -348,7 +544,7 @@
 
     const titleNode = el("h3", { class: "feed-item__title" });
     const link = safeHttpsUrl(item.link);
-    const titleText = item.title || "(ohne Titel)";
+    const titleText = item.title || (currentLang === "en" ? "(untitled)" : "(ohne Titel)");
     if (link) {
       const a = el("a", {
         text: titleText,
@@ -365,10 +561,13 @@
     }
 
     const meta = el("div", { class: "feed-item__meta" });
+    const labels = currentLang === "en"
+      ? { begin: "Begin: ", until: "Until: ", firstSeen: "First seen: " }
+      : { begin: "Beginn: ", until: "Bis: ", firstSeen: "Erstmals: " };
     const pub = parseRfc2822(item.pubDate);
     if (pub) {
       const d = document.createElement("div");
-      d.append(el("dfn", { text: "Beginn: " }));
+      d.append(el("dfn", { text: labels.begin }));
       const t = el("time", { attrs: { datetime: pub.toISOString() }, text: dtfFull.format(pub) });
       d.append(t);
       meta.append(d);
@@ -376,14 +575,14 @@
     const ends = parseRfc2822(item.endsAt);
     if (ends) {
       const d = document.createElement("div");
-      d.append(el("dfn", { text: "Bis: " }));
+      d.append(el("dfn", { text: labels.until }));
       d.append(el("time", { attrs: { datetime: ends.toISOString() }, text: dtfFull.format(ends) }));
       meta.append(d);
     }
     const seen = parseRfc2822(item.firstSeen);
     if (seen) {
       const d = document.createElement("div");
-      d.append(el("dfn", { text: "Erstmals: " }));
+      d.append(el("dfn", { text: labels.firstSeen }));
       d.append(document.createTextNode(humanRelative(seen)));
       meta.append(d);
     }
@@ -408,7 +607,7 @@
     const diffMs = date.getTime() - Date.now();
     const absMin = Math.abs(diffMs) / 60000;
     const sign = diffMs < 0 ? -1 : 1;
-    if (absMin < 1) return "gerade eben";
+    if (absMin < 1) return currentLang === "en" ? "just now" : "gerade eben";
     if (absMin < 60) return rtf.format(sign * Math.round(absMin), "minute");
     const hours = absMin / 60;
     if (hours < 24) return rtf.format(sign * Math.round(hours), "hour");
@@ -432,16 +631,16 @@
     const peakWeekday = topEntry(byWeekday);
 
     renderKpis("#stoerungen-kpis", [
-      { label: "Erfasste Störungen", value: nfInt.format(total), sub: `Jahr ${year}` },
-      { label: "Häufigste Quelle",
-        value: topProvider ? topProvider[0] : "–",
-        sub: topProvider ? `${nfInt.format(topProvider[1])} Meldungen` : "" },
-      { label: "Spitzenstunde",
-        value: peakHour ? `${peakHour[0]}:00` : "–",
-        sub: peakHour ? `${nfInt.format(peakHour[1])} Meldungen` : "" },
-      { label: "Stärkster Tag",
-        value: peakWeekday ? (WEEKDAY_LONG[peakWeekday[0]] || peakWeekday[0]) : "–",
-        sub: peakWeekday ? `${nfInt.format(peakWeekday[1])} Meldungen` : "" },
+      { label: ct("kpi-stoerungen-total"), value: nfInt.format(total), sub: `${ct("sub-year")} ${year}` },
+      { label: ct("kpi-top-provider"),
+        value: topProvider ? topProvider[0] : ct("tile-em-dash"),
+        sub: topProvider ? `${nfInt.format(topProvider[1])} ${ct("sub-meldungen")}` : "" },
+      { label: ct("kpi-peak-hour"),
+        value: peakHour ? `${peakHour[0]}:00` : ct("tile-em-dash"),
+        sub: peakHour ? `${nfInt.format(peakHour[1])} ${ct("sub-meldungen")}` : "" },
+      { label: ct("kpi-top-weekday"),
+        value: peakWeekday ? weekdayLong(peakWeekday[0]) : ct("tile-em-dash"),
+        sub: peakWeekday ? `${nfInt.format(peakWeekday[1])} ${ct("sub-meldungen")}` : "" },
     ]);
 
     renderBars("#stoerungen-providers",
@@ -449,7 +648,7 @@
       { variant: "provider", formatValue: (v) => nfInt.format(v) });
 
     renderBars("#stoerungen-weekday",
-      WEEKDAYS.map((d) => [WEEKDAY_LONG[d] || d, byWeekday[d] || 0]),
+      WEEKDAYS.map((d) => [weekdayLong(d), byWeekday[d] || 0]),
       { unit: "", formatValue: (v) => nfInt.format(v) });
 
     renderBars("#stoerungen-hour",
@@ -476,7 +675,7 @@
       sum += d;
       count += 1;
     }
-    node.textContent = count === 0 ? "N/A" : `${nf1.format(sum / count)} min`;
+    node.textContent = count === 0 ? ct("tile-na") : `${nf1.format(sum / count)} min`;
   }
 
   function resetStammstreckeLiveTile(text) {
@@ -502,10 +701,10 @@
     const avgByHour = averageBy(valid, (r) => r.hour, (r) => r.delay, HOURS);
 
     renderKpis("#stammstrecke-kpis", [
-      { label: "Beobachtungen", value: nfInt.format(total), sub: `Jahr ${year}` },
-      { label: "Ø Verspätung", value: `${nf1.format(avg)} min`, sub: "alle Beobachtungen" },
-      { label: "Max. Verspätung", value: `${nf1.format(max)} min`, sub: "Tickwert" },
-      { label: "Schwerverspätungen", value: nfInt.format(over9), sub: "≥ 9 Minuten" },
+      { label: ct("kpi-observations"), value: nfInt.format(total), sub: `${ct("sub-year")} ${year}` },
+      { label: ct("kpi-avg-delay"), value: `${nf1.format(avg)} min`, sub: ct("sub-all-observations") },
+      { label: ct("kpi-max-delay"), value: `${nf1.format(max)} min`, sub: ct("sub-tick-value") },
+      { label: ct("kpi-heavy-delays"), value: nfInt.format(over9), sub: ct("sub-over-9") },
     ]);
 
     renderBars("#stammstrecke-hour",
@@ -513,7 +712,7 @@
       { unit: " min", variant: "delay", formatValue: (v) => nf1.format(v) });
 
     renderBars("#stammstrecke-weekday",
-      WEEKDAYS.map((d) => [WEEKDAY_LONG[d] || d, avgByWeekday[d] || 0]),
+      WEEKDAYS.map((d) => [weekdayLong(d), avgByWeekday[d] || 0]),
       { unit: " min", variant: "delay", formatValue: (v) => nf1.format(v) });
 
     renderBars("#stammstrecke-direction",
@@ -533,13 +732,13 @@
     const topWeekday = topEntry(byWeekday);
 
     renderKpis("#ausfaelle-kpis", [
-      { label: "Ausfälle", value: nfInt.format(total), sub: `Jahr ${year}` },
-      { label: "Häufigste Linie",
-        value: topLine ? topLine[0] : "–",
-        sub: topLine ? `${nfInt.format(topLine[1])} Ausfälle` : "keine Daten" },
-      { label: "Stärkster Tag",
-        value: topWeekday ? (WEEKDAY_LONG[topWeekday[0]] || topWeekday[0]) : "–",
-        sub: topWeekday ? `${nfInt.format(topWeekday[1])} Ausfälle` : "keine Daten" },
+      { label: ct("kpi-cancellations"), value: nfInt.format(total), sub: `${ct("sub-year")} ${year}` },
+      { label: ct("kpi-top-line"),
+        value: topLine ? topLine[0] : ct("tile-em-dash"),
+        sub: topLine ? `${nfInt.format(topLine[1])} ${ct("sub-ausfaelle")}` : ct("sub-no-data") },
+      { label: ct("kpi-top-weekday"),
+        value: topWeekday ? weekdayLong(topWeekday[0]) : ct("tile-em-dash"),
+        sub: topWeekday ? `${nfInt.format(topWeekday[1])} ${ct("sub-ausfaelle")}` : ct("sub-no-data") },
     ]);
 
     renderBars("#ausfaelle-line",
@@ -551,7 +750,7 @@
       { unit: "", variant: "cancel", formatValue: (v) => nfInt.format(v) });
 
     renderBars("#ausfaelle-weekday",
-      WEEKDAYS.map((d) => [WEEKDAY_LONG[d] || d, byWeekday[d] || 0]),
+      WEEKDAYS.map((d) => [weekdayLong(d), byWeekday[d] || 0]),
       { unit: "", variant: "cancel", formatValue: (v) => nfInt.format(v) });
 
     renderBars("#ausfaelle-hour",
@@ -648,7 +847,10 @@
     clear(root);
     if (opts.variant) root.classList.add(`bars--${opts.variant}`);
     if (entries.length === 0) {
-      root.append(el("p", { class: "empty", text: "Keine Daten verfügbar." }));
+      root.append(el("p", {
+        class: "empty",
+        text: currentLang === "en" ? "No data available." : "Keine Daten verfügbar.",
+      }));
       return;
     }
     const max = entries.reduce((m, [, v]) => (Number.isFinite(v) && v > m ? v : m), 0);
@@ -704,7 +906,7 @@
     const ctrl = new AbortController();
     currentAbort = ctrl;
 
-    setStatus("loading", "Daten werden geladen …");
+    setStatus("loading", "status-loading");
     const refreshBtn = $("#refresh-btn");
     if (refreshBtn) refreshBtn.disabled = true;
 
@@ -717,11 +919,11 @@
     const tasks = [
       loadFeed(ctrl.signal).then(
         () => {
-          setStatus("ok", "Live-Feed aktualisiert.");
+          setStatus("ok", "status-ok");
           setLastUpdate(new Date());
         },
         () => {
-          setStatus("error", "Live-Feed konnte nicht geladen werden.");
+          setStatus("error", "status-error");
         },
       ),
       loadStammstrecke(ctrl.signal).then(
@@ -746,7 +948,7 @@
   async function loadFeed(signal) {
     try {
       hideError("feed-error");
-      const text = await fetchText(FEED_URL, { signal });
+      const text = await fetchText(currentFeedUrl(), { signal });
       const feed = parseFeed(text);
       feedState.items = feed.items;
       renderFeed();
@@ -757,7 +959,7 @@
       if (err.name === "AbortError") throw err;
       const list = $("#feed-list");
       if (list) { list.setAttribute("aria-busy", "false"); clear(list); }
-      showError("feed-error", `Feed konnte nicht geladen werden: ${err.message}`);
+      showError("feed-error", "feed-error-prefix", err.message);
       throw err;
     }
   }
@@ -770,7 +972,7 @@
       renderStoerungenStats(year, rows);
     } catch (err) {
       if (err.name === "AbortError") throw err;
-      showError("stoerungen-error", `Störungs-Statistik nicht verfügbar: ${err.message}`);
+      showError("stoerungen-error", "stoerungen-error-prefix", err.message);
       throw err;
     }
   }
@@ -786,7 +988,7 @@
       // Request wird sie ohnehin in Kürze mit frischen Daten füllen.
       if (err.name === "AbortError") throw err;
       resetStammstreckeLiveTile("–");
-      showError("stammstrecke-error", `Stammstrecke-Statistik nicht verfügbar: ${err.message}`);
+      showError("stammstrecke-error", "stammstrecke-error-prefix", err.message);
       throw err;
     }
   }
@@ -799,7 +1001,7 @@
       renderAusfaelleStats(year, rows);
     } catch (err) {
       if (err.name === "AbortError") throw err;
-      showError("ausfaelle-error", `Ausfall-Statistik nicht verfügbar: ${err.message}`);
+      showError("ausfaelle-error", "ausfaelle-error-prefix", err.message);
       throw err;
     }
   }
@@ -905,8 +1107,143 @@
     }, REFRESH_MS);
   }
 
+  // ----- Localisation runtime ----------------------------------------
+
+  // Cache the original DE values once at init time so a switch
+  // ``EN -> DE`` restores the markup verbatim without a full reload.
+  // ``data-i18n-html="1"`` opts a node into innerHTML replacement (used
+  // for short fragments that contain inline ``<strong>``/``<code>``);
+  // every other node is restricted to ``textContent`` for XSS safety.
+  function snapshotDefaultTexts() {
+    for (const node of document.querySelectorAll("[data-i18n]")) {
+      if (node.dataset.i18nDefault === undefined) {
+        const html = node.dataset.i18nHtml === "1";
+        node.dataset.i18nDefault = html ? node.innerHTML : node.textContent;
+      }
+    }
+    for (const node of document.querySelectorAll("[data-i18n-aria-label]")) {
+      if (node.dataset.i18nAriaDefault === undefined) {
+        node.dataset.i18nAriaDefault = node.getAttribute("aria-label") || "";
+      }
+    }
+    for (const node of document.querySelectorAll("[data-i18n-title]")) {
+      if (node.dataset.i18nTitleDefault === undefined) {
+        node.dataset.i18nTitleDefault = node.getAttribute("title") || "";
+      }
+    }
+  }
+
+  function applyTranslationsToDom(lang) {
+    document.documentElement.setAttribute("lang", lang);
+    // Body text replacements.
+    for (const node of document.querySelectorAll("[data-i18n]")) {
+      const key = node.getAttribute("data-i18n");
+      const html = node.dataset.i18nHtml === "1";
+      let value;
+      if (lang === "en" && Object.prototype.hasOwnProperty.call(I18N_EN, key)) {
+        value = I18N_EN[key];
+      } else {
+        value = node.dataset.i18nDefault;
+      }
+      if (value == null) continue;
+      if (html) {
+        node.innerHTML = value;
+      } else {
+        node.textContent = value;
+      }
+    }
+    // aria-label replacements.
+    for (const node of document.querySelectorAll("[data-i18n-aria-label]")) {
+      const key = node.getAttribute("data-i18n-aria-label");
+      let value;
+      if (lang === "en" && Object.prototype.hasOwnProperty.call(I18N_EN, key)) {
+        value = I18N_EN[key];
+      } else {
+        value = node.dataset.i18nAriaDefault;
+      }
+      if (value != null) node.setAttribute("aria-label", value);
+    }
+    // title= replacements (tooltip text on lang-switch buttons).
+    for (const node of document.querySelectorAll("[data-i18n-title]")) {
+      const key = node.getAttribute("data-i18n-title");
+      let value;
+      if (lang === "en" && Object.prototype.hasOwnProperty.call(I18N_EN, key)) {
+        value = I18N_EN[key];
+      } else {
+        value = node.dataset.i18nTitleDefault;
+      }
+      if (value != null) node.setAttribute("title", value);
+    }
+    // href= swap for the RSS link(s).
+    for (const node of document.querySelectorAll("[data-i18n-href]")) {
+      const href = lang === "en"
+        ? node.getAttribute("data-href-en")
+        : node.getAttribute("data-href-de");
+      if (href) node.setAttribute("href", href);
+    }
+    // Live status / error refreshes — re-render with the new locale.
+    const status = $("#status-text");
+    if (status && status.dataset.statusKey) {
+      status.textContent = statusText(status.dataset.statusKey);
+    }
+    for (const sel of ["#feed-error", "#stoerungen-error", "#stammstrecke-error", "#ausfaelle-error"]) {
+      const node = $(sel);
+      if (node && node.dataset.errorPrefixKey) {
+        node.textContent = `${statusText(node.dataset.errorPrefixKey)} ${node.dataset.errorDetail || ""}`;
+      }
+    }
+    // Re-render last-update timestamp suffix (de "Uhr" vs en blank).
+    const t = $("#last-update");
+    const dt = t && t.getAttribute("datetime");
+    if (dt) {
+      const parsed = Date.parse(dt);
+      if (Number.isFinite(parsed)) setLastUpdate(new Date(parsed));
+    }
+  }
+
+  function attachLangSwitch() {
+    const root = $(".lang-switch");
+    if (!root) return;
+    // Reflect the persisted choice on first paint.
+    updateLangSwitchActive(currentLang);
+    if (currentLang !== "de") {
+      applyTranslationsToDom(currentLang);
+    }
+    root.addEventListener("click", (ev) => {
+      const target = ev.target;
+      if (!(target instanceof HTMLElement)) return;
+      const btn = target.closest("[data-lang]");
+      if (!btn || !root.contains(btn)) return;
+      const lang = btn.getAttribute("data-lang");
+      if (lang !== "de" && lang !== "en") return;
+      if (lang === currentLang) return;
+      currentLang = lang;
+      writeStoredLang(lang);
+      rebuildIntl();
+      updateLangSwitchActive(lang);
+      applyTranslationsToDom(lang);
+      // Re-render dynamic UI that did not go through ``data-i18n``.
+      renderFeed();
+      // Re-fetch the feed in the new language (no full reload — keeps
+      // the strict CSP intact).
+      loadAll();
+    });
+  }
+
+  function updateLangSwitchActive(lang) {
+    const root = $(".lang-switch");
+    if (!root) return;
+    for (const btn of root.querySelectorAll("[data-lang]")) {
+      const active = btn.getAttribute("data-lang") === lang;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    }
+  }
+
   function init() {
     setYearLabels(new Date().getFullYear());
+    snapshotDefaultTexts();
+    attachLangSwitch();
     attachFilterHandlers();
     attachRefresh();
     // loadAll() runs first so currentAbort is set before the observer can

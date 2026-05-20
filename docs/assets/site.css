@@ -233,6 +233,36 @@ code {
 }
 .site-nav__cta:hover { background: var(--c-accent); color: var(--c-accent-ink) !important; border-color: transparent; }
 
+/* Language switcher (DE | EN). CSP-strict: no inline styles or scripts. */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 0.6rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  background: var(--c-surface);
+  font-size: 0.85rem;
+}
+.lang-switch__btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--c-text-muted);
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.lang-switch__btn:hover,
+.lang-switch__btn:focus-visible { color: var(--c-text); background: var(--c-surface-2); outline: none; }
+.lang-switch__btn.is-active { color: var(--c-accent-ink); background: var(--c-accent); }
+.lang-switch__sep { color: var(--c-text-subtle); user-select: none; }
+
 /* Train strip between header and hero */
 .trainline {
   position: relative;

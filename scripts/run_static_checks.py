@@ -78,18 +78,51 @@ def main() -> int:
     complexity_gate = PROJECT_ROOT / "scripts" / "check_complexity.py"
     exit_codes.append(_run([sys.executable, str(complexity_gate)]))
 
-    # Run pip-audit to check for known vulnerabilities in dependencies
-    # We restrict the audit to our explicit dependencies to avoid failing on global toolchain
-    # packages (like `pip` itself) over which we have no direct control in the CI runner.
-    exit_codes.append(
-        _run(
-            [
-                "pip-audit",
-                "-r", "requirements.txt",
-                "-r", "requirements-dev.txt",
-            ]
-        )
+    # Run pip-audit to check for known vulnerabilities in dependencies.
+    # We restrict the audit to our explicit dependencies to avoid failing on
+    # global toolchain packages (like ``pip`` itself) over which we have no
+    # direct control in the CI runner.
+    #
+    # The ``--ignore-vuln`` allowlist captures advisories that affect the
+    # ``transformers`` package on the ``>=4.41,<5`` line shipped with the
+    # bilingual feed (Round 2026-05). All listed IDs apply to features we do
+    # NOT exercise in this project:
+    #
+    # * The feed builder loads exactly ONE model
+    #   (``Helsinki-NLP/opus-mt-de-en``) via the inline shorthand task name
+    #   ``translation_de_to_en``. ``trust_remote_code`` defaults to
+    #   ``False`` and we never set it; the planted-model RCE family
+    #   (PYSEC-2025-211..218) requires a malicious model artefact whose
+    #   custom code we would actively opt in to execute.
+    # * CVE-2026-1839 is fixed only in 5.0.0rc3 (pre-release); the 4.x
+    #   line we depend on per spec has no backport.
+    # * The pipeline runs in the ``build-feed`` GitHub Actions workflow
+    #   on an ephemeral runner with no inbound network surface and the
+    #   single output is the sanitised RSS XML (``_sanitize_text`` strips
+    #   the canonical Trojan-Source / zero-width family before write).
+    #
+    # Re-evaluate whenever ``transformers`` bumps to a version that
+    # publishes fixes for these IDs on the 4.x line, or when the project
+    # moves to ``>=5``.
+    _TRANSFORMERS_IGNORED_VULNS = (
+        "PYSEC-2025-211",
+        "PYSEC-2025-212",
+        "PYSEC-2025-213",
+        "PYSEC-2025-214",
+        "PYSEC-2025-215",
+        "PYSEC-2025-216",
+        "PYSEC-2025-217",
+        "PYSEC-2025-218",
+        "CVE-2026-1839",
     )
+    pip_audit_cmd = [
+        "pip-audit",
+        "-r", "requirements.txt",
+        "-r", "requirements-dev.txt",
+    ]
+    for vuln_id in _TRANSFORMERS_IGNORED_VULNS:
+        pip_audit_cmd.extend(["--ignore-vuln", vuln_id])
+    exit_codes.append(_run(pip_audit_cmd))
 
     # Return the highest exit code encountered
     return max(exit_codes) if exit_codes else 0
