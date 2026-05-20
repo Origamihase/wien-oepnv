@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 20 May 2026 06:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2026 07:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[49: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1252a6d03226d3f1d21b0f0e84cdaf2b9637cd4ac88019850214fb459e92e018</guid>
-      <pubDate>Wed, 20 May 2026 05:08:00 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 06:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 05:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.05.2026]</description>
-      <content:encoded><![CDATA[Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734</guid>
-      <pubDate>Wed, 20 May 2026 05:08:00 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 06:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 05:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.05.2026]</description>
-      <content:encoded><![CDATA[Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -114,6 +92,28 @@
       <ext:ends_at>Thu, 11 Jun 2026 05:00:00 +0200</ext:ends_at>
       <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [18.05.2026 – 11.06.2026]</description>
       <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[18.05.2026 – 11.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
+      <pubDate>Sun, 17 May 2026 00:00:23 +0200</pubDate>
+      <ext:first_seen>Sun, 17 May 2026 00:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 17 May 2026 00:00:23 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 20 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[17.05.2026 – 20.05.2026]</description>
+      <content:encoded><![CDATA[[17.05.2026 – 20.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Sat, 16 May 2026 00:00:25 +0200</pubDate>
+      <ext:first_seen>Sat, 16 May 2026 00:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 16 May 2026 00:00:25 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 20 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[16.05.2026 – 20.05.2026]</description>
+      <content:encoded><![CDATA[[16.05.2026 – 20.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
