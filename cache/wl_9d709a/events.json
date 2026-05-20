@@ -218,6 +218,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "D: Kurzführung am 21.05.2026",
+    "description": "<h2>Staatsbesuch</h2> <p>Wegen eines Staatsbesuchs wird die Linie D verk&uuml;rzt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Donnerstag, 21.05.2026, voraussichtlich zwischen 15:00 Uhr und 16:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie D:</strong><br />Kurzf&uuml;hrung, Betrieb nur zwischen Nu&szlig;dorf und Quartier Belvedere.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Weichen Sie ersatzweise auf die Linien U1, 6, 11 und 69A aus.</p> <p><span style=\"text-decoration: underline;\"><strong>Hinweis:</strong></span><br />Die genauen Zeitpunkte sind nicht bekannt. Beachten Sie daher die Lautsprecherdurchsagen und unsere Echtzeitinformationen unter <a href=\"https://www.wienmobil.at\">WienMobil</a>.</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "784dbddb4ccb1c42c573e6301631bca7a7222adbdc05c7adef1b13492ba1afd2",
+    "pubDate": "2026-05-20T09:00:00+02:00",
+    "starts_at": "2026-05-20T09:00:00+02:00",
+    "ends_at": "2026-05-21T16:30:00+02:00",
+    "_identity": "wl|hinweis|L=D|D=2026-05-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "N41: Gleisbauarbeiten am Aumannplatz",
     "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten im Bereich Aumannplatz kommt es zu einer Umleitung.</p> <p>Zeitraum<br />Ab Dienstag, den 28. April 2026 ca. 01:00 Uhr bis ca. Anfang Juli 2026</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen</strong></span><br /><span style=\"text-decoration: underline;\">Linie N41 Richtung P&ouml;tzleinsdorf<br /></span>Umleitung ab W&auml;hringer Stra&szlig;e # Martinstra&szlig;e &uuml;ber Martinstra&szlig;e &ndash; Gentzgasse &ndash; Lazaristengasse &ndash; Haizingergasse &ndash; Edmund-Wei&szlig;-Gasse &ndash; K&ouml;hlergasse &ndash; Gentzgasse.<br /><br /><span style=\"text-decoration: underline;\">Linie N41 Richtung Schottentor</span><br />Umleitung ab Gentzgasse # Simonygasse &uuml;ber Simonygasse &ndash; W&auml;hringer Stra&szlig;e &ndash; Aumannplatz &ndash; Gentzgasse &ndash; Argauergasse &ndash; W&auml;hringer Stra&szlig;e.</p> <p><strong><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen</span><br /></strong><span style=\"text-decoration: underline;\">Richtung P&ouml;tzleinsdorf:</span><br />Aumannplatz.&nbsp; <br />Ersatzhaltestelle: Gentzgasse 98</p> <p><span style=\"text-decoration: underline;\">Richtung Schottentor:</span><br />Weinhauser Gasse. <br />Ersatzhaltestelle: W&auml;hringer Stra&szlig;e gegen&uuml;ber 200-202<br />Aumannplatz. <br />Ersatzhaltestelle: W&auml;hringer Stra&szlig;e 149</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/N41_Gleisbau_Aumannplatz.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,6 +358,18 @@
     "starts_at": "2026-05-12T00:00:18+02:00",
     "ends_at": "2026-05-20T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-05-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
+    "pubDate": "2026-05-20T09:00:03+02:00",
+    "starts_at": "2026-05-20T09:00:08+02:00",
+    "ends_at": "2026-05-20T09:59:00+02:00",
+    "_identity": "wl|störung|L=38|D=2026-05-20"
   },
   {
     "source": "Wiener Linien",
@@ -574,6 +598,42 @@
     "starts_at": "2026-05-16T00:00:14+02:00",
     "ends_at": "2026-05-20T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-05-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "61050604051e6004ec6f1aa1bd456297d7a5a3c423af697a9d36147a6443b43a",
+    "pubDate": "2026-05-20T08:45:33+02:00",
+    "starts_at": "2026-05-20T08:51:23+02:00",
+    "ends_at": "2026-05-20T10:45:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-05-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fremdunfall Betrieb ab Rosensteingasse",
+    "description": "Fremdunfall\nBetrieb ab Rosensteingasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "753a0ee3d3a4cdb9b477d6436109d37356afd120f5fc68c2566552b5c8d58086",
+    "pubDate": "2026-05-20T08:51:06+02:00",
+    "starts_at": "2026-05-20T08:51:06+02:00",
+    "ends_at": "2026-05-20T10:30:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-05-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fremder Verkehrsunfall",
+    "description": "Linie 9: Betrieb nur zwischen Westbahnhof S U und Rosensteingasse. Weiterfahrt bis Hernals, Wattgasse. Weichen Sie ersatzweise auf die Linie 10A aus. Voraussichtliche Dauer: 09:10 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Blumengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8592082f0ee1e02c1752914f4264dc0c7712b06abe68bfff8093855857b88f37",
+    "pubDate": "2026-05-20T08:44:00+02:00",
+    "starts_at": "2026-05-20T08:44:00+02:00",
+    "ends_at": "2026-05-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-05-20"
   },
   {
     "source": "Wiener Linien",
