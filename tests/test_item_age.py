@@ -44,7 +44,7 @@ def test_main_filters_items_older_than_max(
     def fake_collect(report: Any = None) -> list[dict[str, Any]]:
         return [recent, old]
 
-    captured = {}
+    captured: dict[str, Any] = {}
 
     def fake_make_rss(
         items: Any,
@@ -91,7 +91,7 @@ def test_main_filters_items_older_than_absolute(
     def fake_collect(report: Any = None) -> list[dict[str, Any]]:
         return [within, too_old]
 
-    captured = {}
+    captured: dict[str, Any] = {}
 
     def fake_make_rss(
         items: Any,

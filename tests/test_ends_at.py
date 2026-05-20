@@ -36,7 +36,7 @@ def test_item_with_past_ends_at_is_dropped(
     def fake_collect(report: Any = None) -> list[dict[str, Any]]:
         return [future, past]
 
-    captured = {}
+    captured: dict[str, Any] = {}
 
     def fake_make_rss(
         items: Any,

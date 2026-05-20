@@ -766,8 +766,19 @@ def _get_translation_pipeline() -> Any:
         return None
     try:
         from transformers import pipeline
-        _TRANSLATION_PIPELINE = pipeline(
-            "translation_de_to_en", model=_TRANSLATION_MODEL_NAME
+        # ``translation_de_to_en`` is Hugging Face's runtime shorthand
+        # for ``task="translation"`` with the language pair encoded in
+        # the task name. The transformers package enumerates the
+        # canonical tasks via ``Literal[...]`` ``@overload``\s, so the
+        # shorthand does not match any overload under mypy strict.
+        # The runtime accepts it (the docstring of ``pipeline`` lists
+        # the shorthand explicitly); keeping the literal string for
+        # spec parity and silencing the call-overload locally — the
+        # ``unused-ignore`` companion handles environments where the
+        # transformers package is loaded without overload metadata
+        # (the import-untyped branch via ``ignore_missing_imports``).
+        _TRANSLATION_PIPELINE = pipeline(  # type: ignore[call-overload, unused-ignore]
+            "translation_de_to_en", model=_TRANSLATION_MODEL_NAME,
         )
         log.info(
             "Übersetzungs-Pipeline %s geladen.", _TRANSLATION_MODEL_NAME

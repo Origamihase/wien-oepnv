@@ -41,7 +41,7 @@ def test_main_dedupes_items(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> 
     def fake_collect(report: Any = None) -> list[dict[str, Any]]:
         return list(sample_items)
 
-    captured = {}
+    captured: dict[str, Any] = {}
 
     def fake_make_rss(
         items: Any,
