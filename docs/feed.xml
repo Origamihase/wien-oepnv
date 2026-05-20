@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 20 May 2026 15:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2026 16:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[22A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">24f3e8ed4b406112c71c820943058faeb5e6f2942ac26ea1686d40f72cd4f36c</guid>
+      <pubDate>Wed, 20 May 2026 15:40:00 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 16:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 20 May 2026 15:40:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 20.05.2026]</description>
+      <content:encoded><![CDATA[Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 20.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[59A: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">67e2c4ff9a0715b42be38d1994c52ec3de3dfbd83b63ba04f9cd86b9086f27fd</guid>
+      <pubDate>Wed, 20 May 2026 15:36:00 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 16:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 20 May 2026 15:36:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 20.05.2026]</description>
+      <content:encoded><![CDATA[Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 20.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: Fahrtbehinderung wegen Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -27,7 +49,7 @@
       <pubDate>Wed, 20 May 2026 15:17:00 +0200</pubDate>
       <ext:first_seen>Wed, 20 May 2026 15:30:51 +0200</ext:first_seen>
       <ext:starts_at>Wed, 20 May 2026 15:19:03 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Wed, 20 May 2026 16:37:00 +0200</ext:ends_at>
       <description>Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.05.2026]</description>
       <content:encoded><![CDATA[Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.05.2026]]]></content:encoded>
     </item>
@@ -95,28 +117,6 @@
       <ext:ends_at>Thu, 21 May 2026 16:30:00 +0200</ext:ends_at>
       <description>Staatsbesuch Wegen eines Staatsbesuchs wird die Linie D verkürzt. [20.05.2026 – 21.05.2026]</description>
       <content:encoded><![CDATA[Staatsbesuch Wegen eines Staatsbesuchs wird die Linie D verkürzt.<br/>[20.05.2026 – 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: 40+41: Betrieb ab Gersthof]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8</guid>
-      <pubDate>Wed, 20 May 2026 08:06:12 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 08:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 08:06:12 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 20.05.2026]</description>
-      <content:encoded><![CDATA[[Am 20.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: Gersthof]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8fc2142f96f52b13d5b783366be5422b91f88088ec2b47cd38bbfda2736860f8</guid>
-      <pubDate>Wed, 20 May 2026 08:05:40 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 08:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 08:05:40 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 20.05.2026]</description>
-      <content:encoded><![CDATA[[Am 20.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
