@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 21 May 2026 00:30:58 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 01:00:38 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N31: Busse halten in 5B Haltestelle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">99c0f0d91bebb27b44d688aa64a7f76e32acd8e71ce8e2fb023d1dcc8992f5fa</guid>
+      <pubDate>Thu, 21 May 2026 00:55:09 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 01:00:38 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 00:55:09 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>[On 21.05.2026]</description>
+      <content:encoded><![CDATA[[On 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N65: Betrieb ab Laxenburger Straße, Troststraße (Bei Linie N66)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0af8e48c5c63c0818b4662d59227417ee430c0b1befb39c7dcdd7a316ece5e82</guid>
+      <pubDate>Thu, 21 May 2026 00:45:27 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 01:00:38 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 00:45:27 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>[On 21.05.2026]</description>
+      <content:encoded><![CDATA[[On 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N46: Busse halten bei Linie 48A in Burggasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -95,28 +117,6 @@
       <ext:starts_at>Wed, 20 May 2026 10:30:17 +0200</ext:starts_at>
       <description>Due to construction work, there are no REX 6-trains between Ebenfurth Bahnhof and Baumgarten in Bgld-Schattendorf Bahnhof from 15.06.2026 (06:50) to 17.06.2026 (15:00). [Since 20.05.2026]</description>
       <content:encoded><![CDATA[Due to construction work, there are no REX 6-trains between Ebenfurth Bahnhof and Baumgarten in Bgld-Schattendorf Bahnhof from 15.06.2026 (06:50) to 17.06.2026 (15:00).<br/>[Since 20.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Short tour on 21.05.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">784dbddb4ccb1c42c573e6301631bca7a7222adbdc05c7adef1b13492ba1afd2</guid>
-      <pubDate>Wed, 20 May 2026 09:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 09:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 09:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 16:30:00 +0200</ext:ends_at>
-      <description>State visit Due to a state visit the line D is shortened. [20.05.2026 – 21.05.2026]</description>
-      <content:encoded><![CDATA[State visit Due to a state visit the line D is shortened.<br/>[20.05.2026 – 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: 40+41: Betrieb ab Gersthof]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8</guid>
-      <pubDate>Wed, 20 May 2026 08:06:12 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 08:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 08:06:12 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[20.05.2026 – 21.05.2026]</description>
-      <content:encoded><![CDATA[[20.05.2026 – 21.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
