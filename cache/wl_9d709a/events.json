@@ -386,6 +386,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "33A: Verkehrsunfall",
+    "description": "Linie 33A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d3a49b62c3f1f00bd2ce128fcd055d4c5865ec006c8578a3d141dac4ca73cd73",
+    "pubDate": "2026-05-20T13:43:00+02:00",
+    "starts_at": "2026-05-20T13:43:00+02:00",
+    "ends_at": "2026-05-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=33A|D=2026-05-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -590,14 +602,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "97A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "title": "93A: Verkehrsunfall",
+    "description": "Linie 93A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "043df3e8784db5d148d6b694f6d2e74bc16b6007b3f58b3a8dc3388584ca5abf",
-    "pubDate": "2026-05-20T09:52:23+02:00",
-    "starts_at": "2026-05-20T09:52:50+02:00",
-    "ends_at": "2026-05-20T14:00:00+02:00",
-    "_identity": "wl|störung|L=97A|D=2026-05-20"
+    "guid": "a3667d5e60f0e78104318dc6a26c984e9da83f4bc86d2f015804ab6b3a2767e0",
+    "pubDate": "2026-05-20T13:52:00+02:00",
+    "starts_at": "2026-05-20T13:52:00+02:00",
+    "ends_at": "2026-05-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=93A|D=2026-05-20"
   },
   {
     "source": "Wiener Linien",
