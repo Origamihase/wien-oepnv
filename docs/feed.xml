@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 20 May 2026 19:30:41 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2026 20:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[63A: Haltestelle ersatzlos aufgelassen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">77391cb4f98fba825416ed6df243c59aeccf63e19aed18e775fc47f60528f36e</guid>
+      <pubDate>Wed, 20 May 2026 20:00:28 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 20:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 20 May 2026 20:00:28 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>[20.05.2026 – 21.05.2026]</description>
+      <content:encoded><![CDATA[[20.05.2026 – 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">36ad6a7c30b68d7345880b54bf25d283a433758da75c3a0fa4127d22d410a937</guid>
+      <pubDate>Wed, 20 May 2026 19:52:00 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 20:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 20 May 2026 19:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie O: Umleitung in Richtung Raxstraße zwischen Hintere Zollamtsstraße und Quartier Belvedere S über Stubentor U und Schwarzenbergplatz. [Am 20.05.2026]</description>
+      <content:encoded><![CDATA[Linie O: Umleitung in Richtung Raxstraße zwischen Hintere Zollamtsstraße und Quartier Belvedere S über Stubentor U und Schwarzenbergplatz.<br/>[Am 20.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[57A: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ea62c449327bf335e63a7d607bb714e6ac14750aff28e2890f1af90455e231e6</guid>
+      <pubDate>Wed, 20 May 2026 19:50:00 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 20:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 20 May 2026 19:51:17 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 57A: Fahrtbehinderung in Richtung Rudolfsheim, Anschützgasse. Voraussichtliche Dauer: 20:15 Uhr. Grund: Falschparker im Bereich Anschützgasse 20. [Am 20.05.2026]</description>
+      <content:encoded><![CDATA[Linie 57A: Fahrtbehinderung in Richtung Rudolfsheim, Anschützgasse. Voraussichtliche Dauer: 20:15 Uhr. Grund: Falschparker im Bereich Anschützgasse 20.<br/>[Am 20.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[30: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -39,17 +72,6 @@
       <ext:first_seen>Wed, 20 May 2026 17:01:02 +0200</ext:first_seen>
       <ext:starts_at>Wed, 20 May 2026 17:01:41 +0200</ext:starts_at>
       <ext:ends_at>Wed, 20 May 2026 21:15:00 +0200</ext:ends_at>
-      <description>[Am 20.05.2026]</description>
-      <content:encoded><![CDATA[[Am 20.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Fahrtbehinderung Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Wed, 20 May 2026 16:29:40 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 09:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 16:29:40 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 20:00:00 +0200</ext:ends_at>
       <description>[Am 20.05.2026]</description>
       <content:encoded><![CDATA[[Am 20.05.2026]]]></content:encoded>
     </item>
@@ -96,27 +118,6 @@
       <ext:ends_at>Thu, 20 May 2027 11:11:00 +0200</ext:ends_at>
       <description>Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet. [Ab 02.06.2026]</description>
       <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet.<br/>[Ab 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N54: Veranstaltung am 30.05.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9f0927477931611e3d079d470234ecfde3964ab06d806b8d2f3f99fca026efe9</guid>
-      <pubDate>Wed, 20 May 2026 12:10:00 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 12:30:38 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 12:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 06:00:00 +0200</ext:ends_at>
-      <description>Wegen einer Veranstaltung im Technischen Museum mit einer damit verbundenen Straßensperre wird die Linie N54 umgeleitet. [20.05.2026 – 30.05.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Veranstaltung im Technischen Museum mit einer damit verbundenen Straßensperre wird die Linie N54 umgeleitet.<br/>[20.05.2026 – 30.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[REX 6: Wien Baumgarten (WL) ↔ Ebenfurth]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;871188</guid>
-      <pubDate>Wed, 20 May 2026 10:30:17 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 10:30:17 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Ebenfurth Bahnhof und Baumgarten im Bgld-Schattendorf Bahnhof von 15.06.2026 (06:50) bis 17.06.2026 (15:00 Uhr) keine REX 6-Züge fahren. [Seit 20.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Ebenfurth Bahnhof und Baumgarten im Bgld-Schattendorf Bahnhof von 15.06.2026 (06:50) bis 17.06.2026 (15:00 Uhr) keine REX 6-Züge fahren.<br/>[Seit 20.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
