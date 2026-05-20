@@ -43,8 +43,17 @@ def test_main_dedupes_items(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> 
 
     captured = {}
 
-    def fake_make_rss(items: Any, now: Any, state: Any, deletions: Any = None) -> str:
-        captured["items"] = items
+    def fake_make_rss(
+        items: Any,
+        now: Any,
+        state: Any,
+        deletions: Any = None,
+        *,
+        lang: str = "de",
+    ) -> str:
+        # Capture only on the first (German) call; the build pipeline now
+        # also invokes ``_make_rss`` a second time for the EN mirror.
+        captured.setdefault("items", items)
         return ""
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)

@@ -16,6 +16,7 @@
 
   <link rel="canonical" href="https://origamihase.github.io/wien-oepnv/site.html">
   <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Vienna Public Transport Feed (English)" href="feed.en.xml" hreflang="en">
   <link rel="icon" type="image/svg+xml" href="assets/site-favicon.svg">
   <link rel="stylesheet" href="assets/site.min.css">
   <!-- The dashboard fetches the statistics CSVs from raw.githubusercontent.com
@@ -63,11 +64,11 @@
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <a class="skip-link" href="#main" data-i18n="skip-link">Zum Inhalt springen</a>
 
   <header class="site-header" role="banner">
     <div class="container site-header__inner">
-      <a class="brand" href="./" aria-label="Wien ÖPNV Live-Dashboard – Startseite">
+      <a class="brand" href="./" aria-label="Wien ÖPNV Live-Dashboard – Startseite" data-i18n-aria-label="brand-aria">
         <span class="brand__mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" focusable="false" aria-hidden="true">
             <rect width="32" height="32" rx="8"></rect>
@@ -76,18 +77,30 @@
         </span>
         <span class="brand__text">
           <span class="brand__name">Wien ÖPNV</span>
-          <span class="brand__sub">Live-Dashboard</span>
+          <span class="brand__sub" data-i18n="brand-sub">Live-Dashboard</span>
         </span>
       </a>
-      <nav class="site-nav" aria-label="Hauptnavigation">
+      <nav class="site-nav" aria-label="Hauptnavigation" data-i18n-aria-label="nav-main">
         <ul>
-          <li><a href="#feed">Meldungen</a></li>
-          <li><a href="#stoerungen">Störungs-Statistik</a></li>
-          <li><a href="#stammstrecke">Stammstrecke</a></li>
-          <li><a href="#ausfaelle">Ausfälle</a></li>
-          <li><a href="feed.xml" type="application/rss+xml" class="site-nav__cta">RSS</a></li>
+          <li><a href="#feed" data-i18n="nav-feed">Meldungen</a></li>
+          <li><a href="#stoerungen" data-i18n="nav-stoerungen">Störungs-Statistik</a></li>
+          <li><a href="#stammstrecke" data-i18n="nav-stammstrecke">Stammstrecke</a></li>
+          <li><a href="#ausfaelle" data-i18n="nav-ausfaelle">Ausfälle</a></li>
+          <li><a href="feed.xml" type="application/rss+xml" class="site-nav__cta" data-i18n-href="feed-href" data-href-de="feed.xml" data-href-en="feed.en.xml">RSS</a></li>
         </ul>
       </nav>
+      <!-- Sprachumschalter (Zero-Tracker): CSP-konformer In-Page-Switch
+           ohne externes Widget. Die aktive Sprache liegt in
+           ``localStorage['wienoepnv:lang']`` und steuert (a) den
+           ``data-i18n``-gesteuerten Textaustausch und (b) den
+           Feed-Fetch (``feed.xml`` vs. ``feed.en.xml``). Beide Buttons
+           bleiben sichtbar (``aria-pressed`` markiert den aktiven
+           Zustand), damit Screenreader die Wahl ansagen. -->
+      <div class="lang-switch" role="group" aria-label="Sprache wählen" data-i18n-aria-label="lang-switch">
+        <button type="button" class="lang-switch__btn is-active" data-lang="de" aria-pressed="true" lang="de" title="Deutsch" data-i18n-title="lang-de">DE</button>
+        <span class="lang-switch__sep" aria-hidden="true">|</span>
+        <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" lang="en" title="English" data-i18n-title="lang-en">EN</button>
+      </div>
     </div>
   </header>
 
@@ -106,9 +119,9 @@
 
   <main id="main" class="container" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
-      <p class="hero__eyebrow">Echtzeit · Open Data · Wien &amp; Ostregion</p>
-      <h1 id="hero-title">Störungen, Verspätungen &amp; Ausfälle auf einen Blick</h1>
-      <p class="hero__lead">
+      <p class="hero__eyebrow" data-i18n="hero-eyebrow">Echtzeit · Open Data · Wien &amp; Ostregion</p>
+      <h1 id="hero-title" data-i18n="hero-title">Störungen, Verspätungen &amp; Ausfälle auf einen Blick</h1>
+      <p class="hero__lead" data-i18n="hero-lead-html" data-i18n-html="1">
         Konsolidierte Verkehrsinformationen aus
         <strong>Wiener Linien</strong>, <strong>ÖBB</strong> und <strong>VOR/VAO</strong> –
         live aus dem RSS-Feed, ergänzt um die aktuelle Jahresstatistik der
@@ -116,24 +129,24 @@
       </p>
       <div class="status" role="status" aria-live="polite">
         <span class="status__dot" data-status="loading" aria-hidden="true"></span>
-        <span class="status__text" id="status-text">Daten werden geladen …</span>
+        <span class="status__text" id="status-text" data-i18n="status-loading">Daten werden geladen …</span>
         <button type="button" id="refresh-btn" class="btn btn--ghost">
           <span aria-hidden="true">⟳</span>
-          <span>Aktualisieren</span>
+          <span data-i18n="btn-refresh">Aktualisieren</span>
         </button>
       </div>
       <p class="hero__meta">
-        Datenstand:&nbsp;<time id="last-update" datetime="">–</time>
-        · <a href="feed.xml" type="application/rss+xml">Feed (RSS)</a>
-        · <a href="https://github.com/Origamihase/wien-oepnv" rel="external noopener noreferrer" target="_blank">Quellcode</a>
+        <span data-i18n="hero-meta-stamp">Datenstand:</span>&nbsp;<time id="last-update" datetime="">–</time>
+        · <a href="feed.xml" type="application/rss+xml" data-i18n="hero-meta-rss" data-i18n-href="feed-href" data-href-de="feed.xml" data-href-en="feed.en.xml">Feed (RSS)</a>
+        · <a href="https://github.com/Origamihase/wien-oepnv" rel="external noopener noreferrer" target="_blank" data-i18n="hero-meta-source">Quellcode</a>
       </p>
     </section>
 
     <section id="feed" class="section" aria-labelledby="feed-title">
       <header class="section__header">
-        <h2 id="feed-title">Aktuelle Meldungen</h2>
+        <h2 id="feed-title" data-i18n="feed-title">Aktuelle Meldungen</h2>
 
-        <p class="section__sub">
+        <p class="section__sub" data-i18n="feed-sub-stammstrecke-html" data-i18n-html="1">
           Aktuelle S-Bahn-Beobachtungen am Wien Hauptbahnhof
           – <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.
         </p>
@@ -149,25 +162,25 @@
              via a visually-hidden suffix. -->
         <a class="live-tile" href="#stammstrecke">
           <span class="live-tile__label">
-            Ø Verspätung Stammstrecke
-            <span class="live-tile__window">letzte 60&nbsp;min · Quelle VOR&nbsp;/&nbsp;VAO</span>
+            <span data-i18n="live-tile-label">Ø Verspätung Stammstrecke</span>
+            <span class="live-tile__window" data-i18n="live-tile-window">letzte 60&nbsp;min · Quelle VOR&nbsp;/&nbsp;VAO</span>
           </span>
           <span class="live-tile__value" id="stammstrecke-live-avg" aria-live="polite">–</span>
-          <span class="visually-hidden"> – Detailbereich öffnen</span>
+          <span class="visually-hidden" data-i18n="live-tile-cta"> – Detailbereich öffnen</span>
         </a>
 
-        <p class="section__sub">
-          Live aus <a href="feed.xml" type="application/rss+xml"><code>feed.xml</code></a>
+        <p class="section__sub" data-i18n="feed-sub-live-html" data-i18n-html="1">
+          Live aus <a href="feed.xml" type="application/rss+xml" data-i18n-href="feed-href" data-href-de="feed.xml" data-href-en="feed.en.xml"><code>feed.xml</code></a>
           · konsolidiert aus offiziellen Quellen
           · <span id="feed-count" class="badge" aria-live="polite">–</span>
         </p>
       </header>
 
-      <div class="filters" role="group" aria-label="Meldungen nach Quelle filtern" id="feed-filters">
-        <button class="chip is-active" type="button" data-filter="all">Alle</button>
-        <button class="chip" type="button" data-filter="wienerlinien">Wiener Linien</button>
-        <button class="chip" type="button" data-filter="oebb">ÖBB</button>
-        <button class="chip" type="button" data-filter="other">Andere</button>
+      <div class="filters" role="group" aria-label="Meldungen nach Quelle filtern" id="feed-filters" data-i18n-aria-label="filters-aria">
+        <button class="chip is-active" type="button" data-filter="all" data-i18n="filter-all">Alle</button>
+        <button class="chip" type="button" data-filter="wienerlinien" data-i18n="filter-wl">Wiener Linien</button>
+        <button class="chip" type="button" data-filter="oebb" data-i18n="filter-oebb">ÖBB</button>
+        <button class="chip" type="button" data-filter="other" data-i18n="filter-other">Andere</button>
       </div>
 
       <ol class="feed-list" id="feed-list" aria-busy="true" aria-describedby="feed-empty">
@@ -175,7 +188,7 @@
         <li class="skeleton skeleton--feed"></li>
         <li class="skeleton skeleton--feed"></li>
       </ol>
-      <p class="empty" id="feed-empty" hidden>Keine Meldungen für den gewählten Filter.</p>
+      <p class="empty" id="feed-empty" hidden data-i18n="feed-empty">Keine Meldungen für den gewählten Filter.</p>
       <p class="error" id="feed-error" hidden role="alert"></p>
     </section>
 

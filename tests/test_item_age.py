@@ -46,8 +46,17 @@ def test_main_filters_items_older_than_max(
 
     captured = {}
 
-    def fake_make_rss(items: Any, now_param: Any, state: Any, deletions: Any = None) -> str:
-        captured["items"] = items
+    def fake_make_rss(
+        items: Any,
+        now_param: Any,
+        state: Any,
+        deletions: Any = None,
+        *,
+        lang: str = "de",
+    ) -> str:
+        # Capture only on the first (German) call; the build pipeline now
+        # also invokes ``_make_rss`` a second time for the EN mirror.
+        captured.setdefault("items", items)
         return ""
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
@@ -84,8 +93,17 @@ def test_main_filters_items_older_than_absolute(
 
     captured = {}
 
-    def fake_make_rss(items: Any, now_param: Any, state: Any, deletions: Any = None) -> str:
-        captured["items"] = items
+    def fake_make_rss(
+        items: Any,
+        now_param: Any,
+        state: Any,
+        deletions: Any = None,
+        *,
+        lang: str = "de",
+    ) -> str:
+        # Capture only on the first (German) call; the build pipeline now
+        # also invokes ``_make_rss`` a second time for the EN mirror.
+        captured.setdefault("items", items)
         return ""
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)

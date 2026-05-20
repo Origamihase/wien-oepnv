@@ -38,8 +38,17 @@ def test_item_with_past_ends_at_is_dropped(
 
     captured = {}
 
-    def fake_make_rss(items: Any, now_param: Any, state: Any, deletions: Any = None) -> str:
-        captured["items"] = items
+    def fake_make_rss(
+        items: Any,
+        now_param: Any,
+        state: Any,
+        deletions: Any = None,
+        *,
+        lang: str = "de",
+    ) -> str:
+        # Capture only on the first (German) call; the build pipeline now
+        # also invokes ``_make_rss`` a second time for the EN mirror.
+        captured.setdefault("items", items)
         return ""
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)

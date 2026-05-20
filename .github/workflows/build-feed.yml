@@ -56,6 +56,33 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
+      # Hugging Face Hub cache. The translation model
+      # ``Helsinki-NLP/opus-mt-de-en`` (~300 MB) is fetched on the first
+      # EN-feed run; subsequent runs hit the on-disk cache. The cache key
+      # rotates monthly (YYYY-MM) so an auto-updated model still has a
+      # chance to land within ~30 days while keeping daily-bandwidth
+      # usage flat. ``restore-keys`` falls back to the previous-month
+      # cache so the rotation does not force a fresh download.
+      - name: Resolve Hugging Face cache key
+        id: hf-cache-key
+        shell: bash
+        run: |
+          echo "month=$(date -u +'%Y-%m')" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Hugging Face hub
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: huggingface-${{ runner.os }}-${{ steps.hf-cache-key.outputs.month }}
+          restore-keys: |
+            huggingface-${{ runner.os }}-
+
+      # PyTorch CPU-only wheel (saves >1 GiB versus the default CUDA
+      # build) — keep this step BEFORE the project requirements install
+      # so the transformers pipeline finds an already-resolved torch.
+      - name: Install PyTorch (CPU-only)
+        run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+
       - name: Install dependencies
         uses: ./.github/actions/install-deps
 
@@ -118,4 +145,5 @@ jobs:
             data/first_seen.json
             data/stats/stoerungen_*.csv
             docs/feed.xml
+            docs/feed.en.xml
             README.md

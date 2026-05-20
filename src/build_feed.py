@@ -724,6 +724,151 @@ _WHITESPACE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]+")
 def _sanitize_text(s: str) -> str:
     return _CONTROL_RE.sub("", s or "")
 
+
+# ---------------- Translation engine (Helsinki-NLP/opus-mt-de-en) ----------------
+#
+# The transformers pipeline is loaded lazily so the CLI commands
+# (``feed lint``, ``feed build`` with ``WIEN_OEPNV_LANGS=de``) do not
+# pay the ~300 MB model-load cost when the EN feed is not requested.
+# A single failure flips ``_TRANSLATION_LOAD_FAILED`` so subsequent
+# calls return the original text immediately rather than retrying the
+# import on every item (which would multiply runtime under bulk EN
+# rebuilds).
+_TRANSLATION_PIPELINE: Any = None
+_TRANSLATION_LOAD_FAILED: bool = False
+_TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
+
+# Static lookup for German → English time-line prefixes used inside the
+# bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
+# these via the ML model would be wasteful — every disruption shares
+# the same five prefixes — and slow (each translate call hits the
+# tokenizer). The dictionary mapping mirrors the prefixes emitted by
+# ``format_local_times`` in :mod:`src.build_feed`.
+_TIME_PREFIX_DE_TO_EN: dict[str, str] = {
+    "Seit": "Since",
+    "Bis": "Until",
+    "Ab": "From",
+    "Am": "On",
+}
+
+
+def _get_translation_pipeline() -> Any:
+    """Lazily instantiate the German → English translation pipeline.
+
+    Returns the pipeline on success, ``None`` on any import or model-
+    load failure (defensive: the EN feed degrades to the German
+    original rather than crashing the build).
+    """
+    global _TRANSLATION_PIPELINE, _TRANSLATION_LOAD_FAILED
+    if _TRANSLATION_PIPELINE is not None:
+        return _TRANSLATION_PIPELINE
+    if _TRANSLATION_LOAD_FAILED:
+        return None
+    try:
+        from transformers import pipeline
+        _TRANSLATION_PIPELINE = pipeline(
+            "translation_de_to_en", model=_TRANSLATION_MODEL_NAME
+        )
+        log.info(
+            "Übersetzungs-Pipeline %s geladen.", _TRANSLATION_MODEL_NAME
+        )
+    except Exception as exc:
+        _TRANSLATION_LOAD_FAILED = True
+        log.warning(
+            "Übersetzungs-Pipeline konnte nicht geladen werden (%s) – "
+            "EN-Feed nutzt Originaltext.",
+            sanitize_log_arg(str(exc)),
+        )
+        return None
+    return _TRANSLATION_PIPELINE
+
+
+def _translate_text(text: str) -> str:
+    """Translate ``text`` from German to English.
+
+    On any failure (model unavailable, runtime error, unexpected shape)
+    the original input is returned unchanged. Failures are logged via
+    :func:`sanitize_log_arg` so a hostile upstream string cannot inject
+    log-line forgery primitives into the diagnostics stream.
+    """
+    if not text or not text.strip():
+        return text
+    pipe = _get_translation_pipeline()
+    if pipe is None:
+        return text
+    try:
+        result = pipe(text, max_length=512)
+    except Exception as exc:
+        log.warning(
+            "Übersetzung fehlgeschlagen (%s) – Rückfall auf Originaltext.",
+            sanitize_log_arg(str(exc)),
+        )
+        return text
+    if not isinstance(result, list) or not result:
+        return text
+    first = result[0]
+    if isinstance(first, dict):
+        translated = first.get("translation_text")
+        if isinstance(translated, str) and translated:
+            return translated
+    return text
+
+
+def _translate_time_line_en(time_line: str) -> str:
+    """Swap a leading German time-line prefix (e.g. ``Seit``) for English.
+
+    ``time_line`` is the bracketed form emitted by
+    :func:`_format_item_content` — e.g. ``[Seit 05.01.2026]`` or
+    ``[05.01.2026 – 06.01.2026]``. Date-range strings without a
+    German prefix word pass through unchanged.
+    """
+    if not time_line:
+        return time_line
+    stripped = time_line.strip().strip("[]").strip()
+    if not stripped:
+        return time_line
+    for de_prefix, en_prefix in _TIME_PREFIX_DE_TO_EN.items():
+        if stripped == de_prefix:
+            return f"[{en_prefix}]"
+        if stripped.startswith(f"{de_prefix} "):
+            return f"[{en_prefix} {stripped[len(de_prefix) + 1:]}]"
+    return time_line
+
+
+def _cached_translation(
+    text: str,
+    field: str,
+    ident: str,
+    state: dict[str, dict[str, Any]] | None,
+) -> str:
+    """Return the cached EN translation of ``text`` for ``ident``/``field``.
+
+    On cache miss the translation is computed via :func:`_translate_text`
+    and persisted to ``state[ident]["translations"]["en"][field]`` so a
+    later run reuses the work (one translation per disruption identity
+    per lifecycle, by design).
+    """
+    if not text:
+        return text
+    if state is None or not ident:
+        return _translate_text(text)
+    entry = state.setdefault(ident, {})
+    translations_raw = entry.get("translations")
+    if not isinstance(translations_raw, dict):
+        translations_raw = {}
+        entry["translations"] = translations_raw
+    en_raw = translations_raw.get("en")
+    if not isinstance(en_raw, dict):
+        en_raw = {}
+        translations_raw["en"] = en_raw
+    cached = en_raw.get(field)
+    if isinstance(cached, str) and cached:
+        return cached
+    translated = _translate_text(text)
+    en_raw[field] = translated
+    return translated
+
+
 def _parse_lines_from_title(title: str) -> list[str]:
     m = _LINE_PREFIX_RE.match(title or "")
     if not m:
@@ -2048,8 +2193,226 @@ def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, A
     return ident, fs_dt
 
 
+# Category-prefix duplicate stripping is extracted from
+# :func:`_format_item_content` so the complexity gate (C901, baseline 31)
+# still tolerates the lang/state additions introduced for the bilingual
+# feed. The block was a tight-knit sub-block of the formatter (no
+# external dependencies beyond ``re`` and the inputs) — pulling it out
+# preserves behaviour byte-for-byte while freeing ~8 branches from the
+# caller.
+_CATEGORY_PREFIX_WORDS: frozenset[str] = frozenset({
+    "bauarbeiten",
+    "gleisbauarbeiten",
+    "straßenbauarbeiten",
+    "strassenbauarbeiten",
+    "rohrleitungsarbeiten",
+    "kranarbeiten",
+    "veranstaltung",
+})
+
+_TITLE_BODY_RE = re.compile(r"^[A-Za-z0-9/]+:\s*(\S.*)$")
+_DATE_RANGE_PREFIX_RE = re.compile(
+    r"^\d{2}\.\d{2}\.\d{4}\s*-\s*\d{2}\.\d{2}\.\d{4}\s*•\s*"
+)
+_DATE_SINGLE_PREFIX_RE = re.compile(r"^\d{2}\.\d{2}\.\d{4}\s*•\s*")
+
+
+def _drop_category_word(summary: str, word: str) -> str:
+    """Strip ``word`` (and a following separator) from the start of summary."""
+    leading = re.match(
+        rf"^{re.escape(word)}\s*[:.,;–—-]?\s+", summary, re.IGNORECASE
+    )
+    if leading:
+        return summary[leading.end():].strip()
+    return summary
+
+
+def _strip_summary_category_prefix(summary: str, raw_title: str) -> str:
+    """Remove a leading category H2 word that duplicates the title body.
+
+    Real WL Hinweis items render with a ``Gleisbauarbeiten`` H2 which
+    becomes the title body AND the first description word; we strip the
+    duplicate so the user does not see the category word twice. Two
+    patterns are recognised:
+
+      1. ``T: "9/40/41/42: Gleisbauarbeiten"`` /
+         ``D: "Gleisbauarbeiten Wegen ..."`` — first words match.
+      2. ``T: "62A: Busse halten ..."`` /
+         ``D: "Bauarbeiten Busse halten ..."`` — category prepended to
+         an otherwise title-equivalent description.
+    """
+    title_match = _TITLE_BODY_RE.match(raw_title or "")
+    title_body = title_match.group(1).strip() if title_match else (raw_title or "").strip()
+    if not (title_body and summary):
+        return summary
+
+    first_title_word = title_body.split()[0]
+    first_summary_word = summary.split()[0]
+    if not first_summary_word:
+        return summary
+
+    summary_cf = first_summary_word.casefold()
+    title_cf = first_title_word.casefold()
+    if summary_cf not in _CATEGORY_PREFIX_WORDS:
+        return summary
+
+    if summary_cf == title_cf:
+        return _drop_category_word(summary, first_summary_word)
+
+    words = summary.split(maxsplit=2)
+    if len(words) >= 2 and words[1].casefold() == title_cf:
+        return _drop_category_word(summary, first_summary_word)
+    return summary
+
+
+# Truncation tail-cleanup helpers — extracted from
+# :func:`_format_item_content` for the same C901 budget reason as
+# :func:`_strip_summary_category_prefix` above. Both blocks were tight
+# self-contained sub-blocks; pulling them out preserves behaviour.
+_TRUNCATION_PUNCT_STRIP = " ,;:-)/"
+_TRUNCATION_UNIT_TOKENS: frozenset[str] = frozenset(
+    {"Uhr", "min", "sec", "h", "km", "kg", "m", "cm", "s", "ms"}
+)
+
+
+def _should_drop_trailing_tail(tail: str) -> bool:
+    """Decide whether the trailing token after a truncation rsplit is noise.
+
+    Drops short German abbreviations, all-uppercase line markers, bare
+    numbers, and standalone unit tokens; preserves real content words.
+    """
+    tail_stripped = tail.rstrip(".")
+    ends_with_period = tail.endswith(".")
+    if not tail_stripped:
+        return True
+    if len(tail) > 5:
+        return False
+    if ends_with_period and tail_stripped.isalpha():
+        return True
+    if ends_with_period and tail_stripped.isdigit():
+        return True
+    if tail_stripped.isdigit():
+        return True
+    if tail_stripped.isalpha() and tail_stripped.isupper():
+        return True
+    return tail in _TRUNCATION_UNIT_TOKENS or tail_stripped in _TRUNCATION_UNIT_TOKENS
+
+
+def _trim_truncation_tail(truncated: str) -> str:
+    """Iteratively drop noise tokens at the end of a hard-truncated summary."""
+    for _ in range(8):
+        truncated = truncated.rstrip(_TRUNCATION_PUNCT_STRIP)
+        last_space = truncated.rfind(" ")
+        if last_space <= 0:
+            break
+        tail = truncated[last_space + 1:]
+        if _should_drop_trailing_tail(tail):
+            truncated = truncated[:last_space]
+        else:
+            break
+    return truncated
+
+
+def _truncate_summary_180(summary: str) -> str:
+    """Hard-limit ``summary`` to 180 characters with TV-friendly tail cleanup."""
+    if len(summary) <= 180:
+        return summary
+    truncated = summary[:175].rsplit(" ", 1)[0]
+    truncated = _trim_truncation_tail(truncated)
+    if truncated.count("(") > truncated.count(")"):
+        last_open = truncated.rfind("(")
+        if last_open >= 0:
+            truncated = truncated[:last_open].rstrip(_TRUNCATION_PUNCT_STRIP)
+    return truncated.rstrip(_TRUNCATION_PUNCT_STRIP) + " …"
+
+
+def _compose_description(summary: str, time_line: str) -> tuple[str, str]:
+    """Assemble (desc_text_truncated, desc_html) from summary + time_line."""
+    desc_parts: list[str] = []
+    if summary:
+        desc_parts.append(summary)
+    if time_line:
+        desc_parts.append(time_line)
+    desc_html = "<br/>".join(desc_parts)
+    desc_text = " ".join(desc_parts)
+    if len(desc_text) > feed_config.DESCRIPTION_CHAR_LIMIT:
+        desc_text_truncated = (
+            desc_text[: feed_config.DESCRIPTION_CHAR_LIMIT].rstrip()
+            + "... [TRUNCATED]"
+        )
+    else:
+        desc_text_truncated = desc_text
+    desc_html = truncate_html(
+        desc_html,
+        feed_config.DESCRIPTION_CHAR_LIMIT,
+        ellipsis="... [TRUNCATED]",
+    )
+    return desc_text_truncated, desc_html
+
+
+def _summary_duplicates_title(summary: str, title_out: str) -> bool:
+    """Return True when summary is just the title body restated verbatim."""
+    if not (summary and title_out):
+        return False
+    title_body_match = _TITLE_BODY_RE.match(title_out)
+    title_body_compare = (
+        title_body_match.group(1).strip() if title_body_match else title_out
+    )
+    if not title_body_compare:
+        return False
+    return summary.casefold() == title_body_compare.casefold()
+
+
+def _apply_lang_overlay(
+    base: FormattedContent,
+    summary_de: str,
+    time_line_de: str,
+    ident: str,
+    lang: str,
+    state: dict[str, dict[str, Any]] | None,
+) -> FormattedContent:
+    """Translate the German formatted output into English, if requested.
+
+    Cache lookups go through :func:`_cached_translation` so each
+    disruption identity is translated exactly once per lifecycle (the
+    EN strings are persisted in ``state[ident]["translations"]["en"]``
+    and round-trip through :func:`_save_state`).
+
+    For ``lang != "en"`` the input is returned unchanged.
+    """
+    if lang != "en":
+        return base
+
+    title_en = _sanitize_text(
+        _cached_translation(base.title_out, "title", ident, state)
+    )
+    summary_en = _sanitize_text(
+        _cached_translation(summary_de, "summary", ident, state)
+    ) if summary_de else ""
+    time_line_en = _translate_time_line_en(time_line_de)
+    desc_text_truncated_en, desc_html_en = _compose_description(
+        summary_en, time_line_en
+    )
+    return FormattedContent(
+        guid=base.guid,
+        link=base.link,
+        title_cdata=_cdata_content(title_en),
+        desc_text_truncated=desc_text_truncated_en,
+        desc_cdata=_cdata_content(desc_html_en),
+        raw_desc=base.raw_desc,
+        title_out=title_en,
+        desc_html=desc_html_en,
+    )
+
+
 def _format_item_content(
-    it: FeedItem, ident: str, starts_at: datetime | None, ends_at: datetime | None
+    it: FeedItem,
+    ident: str,
+    starts_at: datetime | None,
+    ends_at: datetime | None,
+    *,
+    lang: str = "de",
+    state: dict[str, dict[str, Any]] | None = None,
 ) -> FormattedContent:
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
@@ -2079,81 +2442,15 @@ def _format_item_content(
     summary = _sanitize_text(summary).strip()
 
     # ÖBB-spezifische Datumspräfixe (z.B. "17.09.2026 - 19.11.2026 • ") entfernen
-    summary = re.sub(r"^\d{2}\.\d{2}\.\d{4}\s*-\s*\d{2}\.\d{2}\.\d{4}\s*•\s*", "", summary)
-    summary = re.sub(r"^\d{2}\.\d{2}\.\d{4}\s*•\s*", "", summary)
+    summary = _DATE_RANGE_PREFIX_RE.sub("", summary)
+    summary = _DATE_SINGLE_PREFIX_RE.sub("", summary)
 
     # Bulletpoints auflösen, um einen fließenden Satz zu bilden
     summary = summary.replace(" • ", " ").replace("•", " ")
     summary = _WHITESPACE_CLEANUP_RE.sub(" ", summary).strip()
 
-    # Strip a leading category word that just repeats the title body.
-    # Real WL Hinweis items render with an H2 like ``Gleisbauarbeiten``
-    # which becomes the title body and *also* the first word of the
-    # description. The user sees::
-    #
-    #   T: "9/40/41/42: Gleisbauarbeiten"
-    #   D: "Gleisbauarbeiten Wegen umfangreicher Gleisbauarbeiten …"
-    #
-    # which reads as a duplicated word at the start of the description.
-    # We only strip when the duplicated leading word is one of the
-    # well-known WL/ÖBB construction-category nouns; this avoids
-    # collapsing e.g. ``Ersatzverkehr zwischen X und Y`` (which is a
-    # complete clause, not a category prefix) when the title also says
-    # ``Ersatzverkehr``.
-    _CATEGORY_PREFIX_WORDS = {
-        "bauarbeiten",
-        "gleisbauarbeiten",
-        "straßenbauarbeiten",
-        "strassenbauarbeiten",
-        "rohrleitungsarbeiten",
-        "kranarbeiten",
-        "veranstaltung",
-    }
-    title_match = re.match(r"^[A-Za-z0-9/]+:\s*(\S.*)$", raw_title or "")
-    title_body = title_match.group(1).strip() if title_match else (raw_title or "").strip()
-    if title_body and summary:
-        first_title_word = title_body.split()[0]
-        first_summary_word = summary.split()[0] if summary else ""
-        if (
-            first_title_word
-            and first_summary_word
-            and first_title_word.casefold() == first_summary_word.casefold()
-            and first_title_word.casefold() in _CATEGORY_PREFIX_WORDS
-        ):
-            leading = re.match(
-                rf"^{re.escape(first_summary_word)}\s*[:.,;–—-]?\s+",
-                summary,
-                re.IGNORECASE,
-            )
-            if leading:
-                summary = summary[leading.end():].strip()
-        elif (
-            first_summary_word
-            and first_summary_word.casefold() in _CATEGORY_PREFIX_WORDS
-            and first_title_word
-            and first_title_word.casefold() != first_summary_word.casefold()
-        ):
-            # Second pattern: description starts with a category word
-            # (``Bauarbeiten`` / ``Gleisbauarbeiten``) but the title body
-            # does NOT start with the same category — instead the title
-            # body's first word matches the SECOND word of the
-            # description::
-            #
-            #   T: "62A: Busse halten Breitenfurter Straße 236-238"
-            #   D: "Bauarbeiten Busse halten Breitenfurter Straße 236-238"
-            #
-            # The description prepends a category H2 in front of what's
-            # otherwise identical to the title body. Strip the leading
-            # category word in that case as well.
-            words = summary.split(maxsplit=2)
-            if len(words) >= 2 and words[1].casefold() == first_title_word.casefold():
-                leading = re.match(
-                    rf"^{re.escape(first_summary_word)}\s*[:.,;–—-]?\s+",
-                    summary,
-                    re.IGNORECASE,
-                )
-                if leading:
-                    summary = summary[leading.end():].strip()
+    # Doppelte Kategorie-Wortpräfixe entfernen (siehe Helper-Docstring).
+    summary = _strip_summary_category_prefix(summary, raw_title)
 
     # Extrahiere maximal die ersten zwei Sätze.
     # Boundary regex: a real sentence end is a period after at least
@@ -2192,76 +2489,12 @@ def _format_item_content(
                 short_summary = candidate
         summary = short_summary
 
-    # Harte Begrenzung für den TV-Screen (max. 180 Zeichen)
-    if len(summary) > 180:
-        truncated = summary[:175].rsplit(' ', 1)[0]
-        # Strip trailing artifacts left behind by the partial-word drop:
-        # • short German abbreviation tokens ("bzw.", "ca.", "z.B.",
-        #   "u.a.", "ggf.") — visually "Word bzw. …" looks like a
-        #   glitch instead of an intentional ellipsis.
-        # • short letter-only line markers ("IC", "RJX", "REX", "S",
-        #   "U") that the rsplit isolated after dropping the partial
-        #   number — "IC 1110, IC 1113, IC …" should become
-        #   "IC 1110, IC 1113 …".
-        # • interleaved stray punctuation (",", ";", ")", "-") that
-        #   would otherwise hold the tail open across iterations,
-        #   e.g. "Uhr -" leaves "Uhr" exposed only after the dash is
-        #   stripped.
-        _PUNCT_STRIP = ' ,;:-)/'
-        # Known short German unit tokens that, on their own, look like a
-        # mid-stream cut ("Uhr" without its number, "min", "km", …). We
-        # treat them like line markers and drop them even when the case
-        # rule below would otherwise classify them as content words.
-        _UNIT_TOKENS = {"Uhr", "min", "sec", "h", "km", "kg", "m", "cm", "s", "ms"}
-        # Iteration cap large enough to unwind chained "IC 1110, IC 1113,
-        # IC 1115, …" patterns without over-stripping into real content
-        # words. The break-on-content-word rule below is what ultimately
-        # terminates the loop.
-        for _ in range(8):
-            truncated = truncated.rstrip(_PUNCT_STRIP)
-            last_space = truncated.rfind(' ')
-            if last_space <= 0:
-                break
-            tail = truncated[last_space + 1:]
-            tail_stripped = tail.rstrip('.')
-            ends_with_period = tail.endswith('.')
-            should_drop = False
-            if not tail_stripped:
-                should_drop = True
-            elif len(tail) > 5:
-                should_drop = False
-            elif ends_with_period and tail_stripped.isalpha():
-                # German abbreviations ("bzw.", "ca.", "z.B.", "ggf.").
-                should_drop = True
-            elif ends_with_period and tail_stripped.isdigit():
-                # German date ordinals ("3.", "10.", "31.").
-                should_drop = True
-            elif tail_stripped.isdigit():
-                # Standalone numbers in a list ("IC 1110, IC 1113, …").
-                should_drop = True
-            elif tail_stripped.isalpha() and tail_stripped.isupper():
-                # All-uppercase line markers ("IC", "REX", "RJX", "EC").
-                should_drop = True
-            elif tail in _UNIT_TOKENS or tail_stripped in _UNIT_TOKENS:
-                # Known unit tokens ("Uhr", "min", …) that look isolated
-                # without their number partner.
-                should_drop = True
-            # Real German content words (mixed-case, ≥4 chars, or in
-            # neither the marker nor unit set) terminate the loop.
-            if should_drop:
-                truncated = truncated[:last_space]
-            else:
-                break
-        # Drop a trailing unbalanced opening paren: real ÖBB clauses
-        # like "(jeweils 08:45 Uhr - 14:45 Uhr)" frequently land just
-        # past the opening "(" so the truncated form ended with
-        # "(jeweils 08:45 …" / "(22:00 …" — a dangling paren reads
-        # like a stray glyph before the ellipsis.
-        if truncated.count("(") > truncated.count(")"):
-            last_open = truncated.rfind("(")
-            if last_open >= 0:
-                truncated = truncated[:last_open].rstrip(_PUNCT_STRIP)
-        summary = truncated.rstrip(_PUNCT_STRIP) + " …"
+    # Harte Begrenzung für den TV-Screen (max. 180 Zeichen).
+    # Die Tail-Cleanup-Iteration (Abkürzungen, Linienkürzel, Einheits-
+    # Tokens, unbalancierte Klammer) wurde in :func:`_truncate_summary_180`
+    # extrahiert, damit die C901-Komplexitätsgrenze (Baseline 31) Platz
+    # für den lang/state-Overlay behält.
+    summary = _truncate_summary_180(summary)
 
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(raw_title)
@@ -2291,41 +2524,27 @@ def _format_item_content(
     # both gives the user the same text twice. We compare casefold so
     # ``Linie 11A: Verspätung.`` and ``Verspätung`` are not flagged
     # as duplicates (different content).
-    if summary and title_out:
-        title_body_match = re.match(r"^[A-Za-z0-9/]+:\s*(\S.*)$", title_out)
-        title_body_compare = (
-            title_body_match.group(1).strip() if title_body_match else title_out
-        )
-        if title_body_compare and summary.casefold() == title_body_compare.casefold():
-            summary = ""
+    if _summary_duplicates_title(summary, title_out):
+        summary = ""
 
-    # Combine
-    desc_parts = []
-    if summary:
-        desc_parts.append(summary)
-    if time_line:
-        desc_parts.append(time_line)
-
-    desc_html = "<br/>".join(desc_parts)
-
-    # Plain text summary for <description>
-    desc_text = " ".join(desc_parts)
-    if len(desc_text) > feed_config.DESCRIPTION_CHAR_LIMIT:
-        desc_text_truncated = desc_text[:feed_config.DESCRIPTION_CHAR_LIMIT].rstrip() + "... [TRUNCATED]"
-    else:
-        desc_text_truncated = desc_text
-
-    # Truncate HTML descriptions using the HTML-aware truncator to prevent broken layout/XSS.
-    desc_html = truncate_html(desc_html, feed_config.DESCRIPTION_CHAR_LIMIT, ellipsis="... [TRUNCATED]")
+    desc_text_truncated, desc_html = _compose_description(summary, time_line)
 
     # Prepare CDATA content (handle ]]> in content)
     desc_cdata = _cdata_content(desc_html)
 
-    return FormattedContent(guid, link, title_cdata, desc_text_truncated, desc_cdata, raw_desc, title_out, desc_html)
+    base = FormattedContent(
+        guid, link, title_cdata, desc_text_truncated, desc_cdata,
+        raw_desc, title_out, desc_html,
+    )
+    return _apply_lang_overlay(base, summary, time_line, ident, lang, state)
 
 
 def _emit_item(
-    it: FeedItem, now: datetime, state: dict[str, dict[str, Any]]
+    it: FeedItem,
+    now: datetime,
+    state: dict[str, dict[str, Any]],
+    *,
+    lang: str = "de",
 ) -> tuple[str, ET.Element, dict[str, str]]:
     """Convert a normalized item dictionary into an RSS <item> element and CDATA replacements.
 
@@ -2333,6 +2552,9 @@ def _emit_item(
         it: The normalized item dictionary.
         now: The current datetime (used for relative time calculations).
         state: The state dictionary (used to persist first_seen timestamps).
+        lang: Target output language (``"de"`` or ``"en"``). When ``"en"``
+            the formatter applies a translation overlay (cached in
+            ``state[ident]["translations"]["en"]``).
 
     Returns:
         A tuple containing:
@@ -2352,6 +2574,8 @@ def _emit_item(
         ident,
         starts_at if isinstance(starts_at, datetime) else None,
         ends_at if isinstance(ends_at, datetime) else None,
+        lang=lang,
+        state=state,
     )
 
     if not isinstance(pubDate, datetime) and feed_config.FRESH_PUBDATE_WINDOW_MIN > 0:
@@ -2425,11 +2649,38 @@ def _emit_item(
     return ident, item, replacements
 
 
+# Channel-level metadata for the English feed mirror (docs/feed.en.xml).
+# Kept as a module-level constant so the EN strings are reviewable in one
+# place and never reach the upstream-controlled translation pipeline —
+# channel metadata is build-time-owned, not item-derived.
+_CHANNEL_METADATA_EN: dict[str, str] = {
+    "title": "Vienna Public Transport — Disruptions & Commuter Info",
+    "description": (
+        "Active disruptions, construction works and restrictions from "
+        "official sources (Wiener Linien, ÖBB, VOR/VAO, City of Vienna)."
+    ),
+    "language": "en",
+}
+
+
+def _channel_metadata(lang: str) -> dict[str, str]:
+    """Resolve channel-level metadata for ``lang`` (``"de"`` or ``"en"``)."""
+    if lang == "en":
+        return _CHANNEL_METADATA_EN
+    return {
+        "title": feed_config.FEED_TITLE,
+        "description": feed_config.FEED_DESC,
+        "language": "de",
+    }
+
+
 def _make_rss(
     items: list[FeedItem],
     now: datetime,
     state: dict[str, dict[str, Any]],
     deletions: set[str] | None = None,
+    *,
+    lang: str = "de",
 ) -> str:
     """
     Generate the full RSS XML document from a list of items using ElementTree.
@@ -2439,6 +2690,10 @@ def _make_rss(
         now: Current timestamp.
         state: State dictionary for tracking items.
         deletions: IDs to be removed from the state.
+        lang: Target language for the output (``"de"`` or ``"en"``).
+            Drives channel metadata, ``<language>``, the atom self
+            ``href`` (``feed.xml`` vs ``feed.en.xml``) and the per-item
+            translation overlay forwarded to :func:`_emit_item`.
 
     Returns:
         The generated RSS XML string with CDATA sections.
@@ -2448,6 +2703,9 @@ def _make_rss(
 
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
+
+    metadata = _channel_metadata(lang)
+    feed_filename = "feed.en.xml" if lang == "en" else "feed.xml"
 
     # Security: route the env-controlled FEED_TITLE / FEED_DESC through
     # the canonical ``_sanitize_text`` (``_CONTROL_RE`` strip — C0/C1
@@ -2464,10 +2722,12 @@ def _make_rss(
     # per-item AND channel-level RSS sinks. ``FEED_LINK`` is already
     # pinned by ``validate_public_feed_url`` (HTTPS-only + GitHub host
     # allow-list + ``_UNSAFE_URL_CHARS`` strip) so its emission needs
-    # no additional sanitisation.
-    ET.SubElement(channel, "title").text = _sanitize_text(feed_config.FEED_TITLE)
+    # no additional sanitisation. The EN strings come from the
+    # module-level constant ``_CHANNEL_METADATA_EN`` and are still routed
+    # through the sanitiser for defense-in-depth uniformity.
+    ET.SubElement(channel, "title").text = _sanitize_text(metadata["title"])
     ET.SubElement(channel, "link").text = feed_config.FEED_LINK
-    ET.SubElement(channel, "description").text = _sanitize_text(feed_config.FEED_DESC)
+    ET.SubElement(channel, "description").text = _sanitize_text(metadata["description"])
 
     # Atom self/alternate-Links + Sprache. Diese drei Tags wurden früher
     # vom Perl-basierten "Normalize feed metadata (SEO)"-Step in
@@ -2482,8 +2742,8 @@ def _make_rss(
     atom_self = ET.SubElement(channel, f"{{{ATOM_NS}}}link")
     atom_self.set("rel", "self")
     atom_self.set("type", "application/rss+xml")
-    atom_self.set("href", f"{pages_base}/feed.xml")
-    ET.SubElement(channel, "language").text = "de"
+    atom_self.set("href", f"{pages_base}/{feed_filename}")
+    ET.SubElement(channel, "language").text = metadata["language"]
 
     ET.SubElement(channel, "lastBuildDate").text = _fmt_rfc2822(now)
     ET.SubElement(channel, "ttl").text = str(feed_config.FEED_TTL)
@@ -2494,7 +2754,7 @@ def _make_rss(
     for it in items:
         if emitted >= feed_config.MAX_ITEMS:
             break
-        ident, elem, repl = _emit_item(it, now, state)
+        ident, elem, repl = _emit_item(it, now, state, lang=lang)
         channel.append(elem)
         item_replacements.update(repl)
         identities_in_feed.append(ident)
@@ -2762,15 +3022,40 @@ def main() -> int:
             duplicates=tuple(duplicate_summaries),
         )
 
+        # German feed (primary) is built first so the public ``feed.xml``
+        # is always refreshed regardless of any translation-pipeline
+        # issues encountered for the EN variant.
         rss_start = perf_counter()
-        rss = _make_rss(items, now, state, deletions=dropped_ids)
+        rss_de = _make_rss(items, now, state, deletions=dropped_ids, lang="de")
         rss_duration = perf_counter() - rss_start
 
         out_path = validate_path(Path(feed_config.OUT_PATH), "OUT_PATH")
         with atomic_write(
             out_path, mode="w", encoding="utf-8", permissions=0o644
         ) as f:
-            f.write(rss)
+            f.write(rss_de)
+
+        # English mirror — written next to ``feed.xml`` as ``feed.en.xml``.
+        # Failures during translation degrade gracefully to the German
+        # original via ``_translate_text`` / ``_apply_lang_overlay``;
+        # write errors are isolated so the primary feed (already on disk)
+        # stays committed even if the EN file cannot be produced.
+        en_path = out_path.with_name("feed.en.xml")
+        en_out_path = validate_path(en_path, "OUT_PATH")
+        try:
+            rss_en = _make_rss(
+                items, now, state, deletions=dropped_ids, lang="en"
+            )
+            with atomic_write(
+                en_out_path, mode="w", encoding="utf-8", permissions=0o644
+            ) as f:
+                f.write(rss_en)
+        except Exception as exc:
+            log.warning(
+                "EN-Feed konnte nicht geschrieben werden (%s) – "
+                "deutscher Feed ist bereits aktualisiert.",
+                sanitize_log_arg(str(exc)),
+            )
 
         try:
             _save_state(state, deletions=dropped_ids)
