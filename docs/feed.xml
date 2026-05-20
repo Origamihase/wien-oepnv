@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 20 May 2026 14:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2026 15:00:39 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[92A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c9e9abc64cba7e7c56f1c43b0719647d6429630cc9ea6cd8ff1e0a88d9e7ee38</guid>
+      <pubDate>Wed, 20 May 2026 14:44:00 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 15:00:39 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 20 May 2026 14:44:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 20.05.2026]</description>
+      <content:encoded><![CDATA[Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 20.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[37: Fahrtbehinderung Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Thu, 21 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[20.05.2026 – 21.05.2026]</description>
       <content:encoded><![CDATA[[20.05.2026 – 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Betrieb ab Frödenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0cc601b709f5e2e2bf853af2229533e03cb323563dfe0bebb6a3b9de6ceb2e16</guid>
-      <pubDate>Wed, 20 May 2026 04:30:22 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 05:00:42 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 04:30:22 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 20.05.2026]</description>
-      <content:encoded><![CDATA[[Am 20.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

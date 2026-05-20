@@ -590,6 +590,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "92A: Polizeieinsatz",
+    "description": "Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c9e9abc64cba7e7c56f1c43b0719647d6429630cc9ea6cd8ff1e0a88d9e7ee38",
+    "pubDate": "2026-05-20T14:44:00+02:00",
+    "starts_at": "2026-05-20T14:44:00+02:00",
+    "ends_at": "2026-05-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=92A|D=2026-05-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "9: Betrieb ab Sommarugagasse",
     "description": "Gleisbauarbeiten\nBetrieb ab Sommarugagasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
