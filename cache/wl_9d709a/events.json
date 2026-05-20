@@ -494,18 +494,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "35A: Verkehrsüberlastung",
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "311a3d1d21d0e028a008e02b40ec15cfb9a9f4383510c50597e114937b639358",
-    "pubDate": "2026-05-20T16:11:00+02:00",
-    "starts_at": "2026-05-20T16:11:00+02:00",
-    "ends_at": "2026-05-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=35A|D=2026-05-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -759,12 +747,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-05-20T16:21:00+02:00",
+    "pubDate": "2026-05-20T16:29:40+02:00",
     "starts_at": "2026-05-20T16:29:40+02:00",
-    "ends_at": "2026-05-20T23:55:00+02:00",
+    "ends_at": "2026-05-20T20:00:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-05-20"
   },
   {

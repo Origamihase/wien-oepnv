@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 20 May 2026 17:30:41 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2026 18:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[4A: Fahrtbehinderung Falschparker]]></title>
@@ -46,23 +46,12 @@
       <title><![CDATA[9: Fahrtbehinderung Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Wed, 20 May 2026 16:21:00 +0200</pubDate>
+      <pubDate>Wed, 20 May 2026 16:29:40 +0200</pubDate>
       <ext:first_seen>Wed, 20 May 2026 09:00:47 +0200</ext:first_seen>
       <ext:starts_at>Wed, 20 May 2026 16:29:40 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.05.2026]</description>
-      <content:encoded><![CDATA[Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[35A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">311a3d1d21d0e028a008e02b40ec15cfb9a9f4383510c50597e114937b639358</guid>
-      <pubDate>Wed, 20 May 2026 16:11:00 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 16:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 16:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 20.05.2026]</description>
-      <content:encoded><![CDATA[Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 20.05.2026]]]></content:encoded>
+      <ext:ends_at>Wed, 20 May 2026 20:00:00 +0200</ext:ends_at>
+      <description>[Am 20.05.2026]</description>
+      <content:encoded><![CDATA[[Am 20.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2A: Schadhaftes Fahrzeug]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 20.05.2026]</description>
       <content:encoded><![CDATA[Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 20.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/42A: Umleitung Lidlgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">788edb4ecc8d6bab12f103e3752c8b02671660cbaad794f1a6b57460be1d0d28</guid>
+      <pubDate>Wed, 20 May 2026 12:45:00 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 13:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 02 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 20 May 2027 11:11:00 +0200</ext:ends_at>
+      <description>Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet. [Ab 02.06.2026]</description>
+      <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet.<br/>[Ab 02.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
