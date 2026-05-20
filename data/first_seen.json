@@ -1281,7 +1281,12 @@
     "first_seen": "2026-05-18T09:30:40.274664+00:00"
   },
   "wl|st\u00f6rung|L=40|D=2026-05-20": {
-    "first_seen": "2026-05-20T06:30:44.152720+00:00"
+    "first_seen": "2026-05-20T06:30:44.152720+00:00",
+    "translations": {
+      "en": {
+        "title": "40: 40+41: Betrieb ab Gersthof"
+      }
+    }
   },
   "wl|st\u00f6rung|L=41E|D=2026-05-04": {
     "first_seen": "2026-05-06T16:03:08.533152+00:00"
@@ -2312,6 +2317,14 @@
   "wl|st\u00f6rung|L=N41|D=2026-05-20": {
     "first_seen": "2026-05-19T22:30:45.005949+00:00"
   },
+  "wl|st\u00f6rung|L=N41|D=2026-05-21": {
+    "first_seen": "2026-05-20T22:30:58.523256+00:00",
+    "translations": {
+      "en": {
+        "title": "N41: Busse halten W\u00e4hringer Stra\u00dfe ONr. 200-202"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=N43|D=2026-05-01": {
     "first_seen": "2026-04-30T23:28:44.616135+00:00"
   },
@@ -2350,6 +2363,14 @@
   },
   "wl|st\u00f6rung|L=N43|D=2026-05-20": {
     "first_seen": "2026-05-19T22:30:45.005949+00:00"
+  },
+  "wl|st\u00f6rung|L=N43|D=2026-05-21": {
+    "first_seen": "2026-05-20T22:30:58.523256+00:00",
+    "translations": {
+      "en": {
+        "title": "N43: Busse halten Dornbacher Stra\u00dfe 85"
+      }
+    }
   },
   "wl|st\u00f6rung|L=N46|D=2026-04-24": {
     "first_seen": "2026-04-23T23:25:40.827041+00:00"
@@ -2392,6 +2413,14 @@
   },
   "wl|st\u00f6rung|L=N46|D=2026-05-20": {
     "first_seen": "2026-05-19T22:30:45.005949+00:00"
+  },
+  "wl|st\u00f6rung|L=N46|D=2026-05-21": {
+    "first_seen": "2026-05-20T22:30:58.523256+00:00",
+    "translations": {
+      "en": {
+        "title": "N46: Busse halten bei Linie 48A in Burggasse"
+      }
+    }
   },
   "wl|st\u00f6rung|L=N60|D=2026-05-04": {
     "first_seen": "2026-05-04T05:02:24.512353+00:00"
