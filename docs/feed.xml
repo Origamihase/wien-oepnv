@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 20 May 2026 05:00:42 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2026 05:30:37 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[49/52: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">82dbe51234c5b3d4e442797729f78ab50f08b4376e1541808c9b8f74bc571260</guid>
+      <pubDate>Wed, 20 May 2026 05:08:00 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 05:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 20 May 2026 05:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 49: Betrieb nur zwischen Ring, Volkstheater U und Breitensee S. Linie 52: Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die … [Am 20.05.2026]</description>
+      <content:encoded><![CDATA[Linie 49: Betrieb nur zwischen Ring, Volkstheater U und Breitensee S. Linie 52: Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die …<br/>[Am 20.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +41,6 @@
       <ext:ends_at>Wed, 20 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 20.05.2026]</description>
       <content:encoded><![CDATA[[Am 20.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a</guid>
-      <pubDate>Tue, 19 May 2026 23:00:11 +0200</pubDate>
-      <ext:first_seen>Tue, 19 May 2026 23:00:37 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 19 May 2026 23:00:11 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 05:30:00 +0200</ext:ends_at>
-      <description>[19.05.2026 – 20.05.2026]</description>
-      <content:encoded><![CDATA[[19.05.2026 – 20.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hütteldorf]]></title>
