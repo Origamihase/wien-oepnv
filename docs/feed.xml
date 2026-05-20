@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 20 May 2026 20:00:56 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2026 20:30:37 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[73B: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9f503bb9e5b8e1133ffe1c72595b0ad67a5aa96491b301492c22aa37e861c1ee</guid>
+      <pubDate>Wed, 20 May 2026 20:15:00 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 20:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 20 May 2026 20:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 73B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 20.05.2026]</description>
+      <content:encoded><![CDATA[Linie 73B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 20.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: Haltestelle ersatzlos aufgelassen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -28,8 +39,8 @@
       <ext:first_seen>Wed, 20 May 2026 20:00:56 +0200</ext:first_seen>
       <ext:starts_at>Wed, 20 May 2026 19:52:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie O: Umleitung in Richtung Raxstraße zwischen Hintere Zollamtsstraße und Quartier Belvedere S über Stubentor U und Schwarzenbergplatz. [Am 20.05.2026]</description>
-      <content:encoded><![CDATA[Linie O: Umleitung in Richtung Raxstraße zwischen Hintere Zollamtsstraße und Quartier Belvedere S über Stubentor U und Schwarzenbergplatz.<br/>[Am 20.05.2026]]]></content:encoded>
+      <description>Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.05.2026]</description>
+      <content:encoded><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[57A: Fahrtbehinderung Falschparker]]></title>
@@ -37,21 +48,10 @@
       <guid isPermaLink="false">ea62c449327bf335e63a7d607bb714e6ac14750aff28e2890f1af90455e231e6</guid>
       <pubDate>Wed, 20 May 2026 19:50:00 +0200</pubDate>
       <ext:first_seen>Wed, 20 May 2026 20:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 19:51:17 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 20 May 2026 20:03:22 +0200</ext:starts_at>
       <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 57A: Fahrtbehinderung in Richtung Rudolfsheim, Anschützgasse. Voraussichtliche Dauer: 20:15 Uhr. Grund: Falschparker im Bereich Anschützgasse 20. [Am 20.05.2026]</description>
-      <content:encoded><![CDATA[Linie 57A: Fahrtbehinderung in Richtung Rudolfsheim, Anschützgasse. Voraussichtliche Dauer: 20:15 Uhr. Grund: Falschparker im Bereich Anschützgasse 20.<br/>[Am 20.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2079eed11fb52f3e5d3f26f767acfa075e513cdb0b512e1d46839b2866aa3029</guid>
-      <pubDate>Wed, 20 May 2026 18:44:00 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 19:00:41 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 18:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 30: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 20.05.2026]</description>
-      <content:encoded><![CDATA[Linie 30: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 20.05.2026]]]></content:encoded>
+      <description>Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.05.2026]</description>
+      <content:encoded><![CDATA[Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Fahrtbehinderung wegen Rettungseinsatz]]></title>
@@ -72,17 +72,6 @@
       <ext:first_seen>Wed, 20 May 2026 17:01:02 +0200</ext:first_seen>
       <ext:starts_at>Wed, 20 May 2026 17:01:41 +0200</ext:starts_at>
       <ext:ends_at>Wed, 20 May 2026 21:15:00 +0200</ext:ends_at>
-      <description>[Am 20.05.2026]</description>
-      <content:encoded><![CDATA[[Am 20.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: Derzeit kein Linienbetrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">34d843ac508f14d717bb30f7366d41205d5aaf80e2f499e216d45953526e1585</guid>
-      <pubDate>Wed, 20 May 2026 16:17:42 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 12:30:38 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 16:17:42 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 20 May 2026 20:30:00 +0200</ext:ends_at>
       <description>[Am 20.05.2026]</description>
       <content:encoded><![CDATA[[Am 20.05.2026]]]></content:encoded>
     </item>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 20 May 2027 11:11:00 +0200</ext:ends_at>
       <description>Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet. [Ab 02.06.2026]</description>
       <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet.<br/>[Ab 02.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N54: Veranstaltung am 30.05.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9f0927477931611e3d079d470234ecfde3964ab06d806b8d2f3f99fca026efe9</guid>
+      <pubDate>Wed, 20 May 2026 12:10:00 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 12:30:38 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 20 May 2026 12:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 06:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Veranstaltung im Technischen Museum mit einer damit verbundenen Straßensperre wird die Linie N54 umgeleitet. [20.05.2026 – 30.05.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Veranstaltung im Technischen Museum mit einer damit verbundenen Straßensperre wird die Linie N54 umgeleitet.<br/>[20.05.2026 – 30.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
