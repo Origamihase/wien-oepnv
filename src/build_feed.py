@@ -10,6 +10,7 @@ import secrets
 import sys
 import xml.etree.ElementTree as ET  # nosec B405
 from collections import defaultdict
+from collections.abc import Sequence
 from concurrent.futures import (
     FIRST_COMPLETED,
     CancelledError,
@@ -18,16 +19,17 @@ from concurrent.futures import (
     wait,
 )
 from datetime import datetime, timedelta, UTC
-import requests
-from dateutil import parser
 from email.utils import format_datetime
+from functools import lru_cache
 from pathlib import Path
 from threading import BoundedSemaphore, Lock
 from time import perf_counter
 from typing import Any, cast, NamedTuple
-from collections.abc import Sequence
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
+
+import requests
+from dateutil import parser
 
 from .feed_types import FeedItem
 from .feed import config as feed_config
@@ -730,12 +732,11 @@ def _sanitize_text(s: str) -> str:
 # The transformers pipeline is loaded lazily so the CLI commands
 # (``feed lint``, ``feed build`` with ``WIEN_OEPNV_LANGS=de``) do not
 # pay the ~300 MB model-load cost when the EN feed is not requested.
-# A single failure flips ``_TRANSLATION_LOAD_FAILED`` so subsequent
-# calls return the original text immediately rather than retrying the
-# import on every item (which would multiply runtime under bulk EN
-# rebuilds).
-_TRANSLATION_PIPELINE: Any = None
-_TRANSLATION_LOAD_FAILED: bool = False
+# The state is held in a single module-level dict so CodeQL does not
+# misread a sentinel ``_TRANSLATION_LOAD_FAILED`` flag as an unused
+# global (CodeQL's "Unused global variable" check does not follow the
+# ``global`` declaration through a circuit-breaker assignment).
+_TRANSLATION_STATE: dict[str, Any] = {"pipeline": None, "load_failed": False}
 _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 
 # Static lookup for German → English time-line prefixes used inside the
@@ -752,17 +753,212 @@ _TIME_PREFIX_DE_TO_EN: dict[str, str] = {
 }
 
 
+# ---------------- Entity preservation (proper-noun masking) ----------------
+#
+# The Helsinki opus-mt-de-en model translates German to English by
+# statistical token mapping; it does not know which spans are proper
+# nouns and will happily translate ``Stephansplatz`` to
+# ``Stephen's Square`` or ``Wiener Linien`` to ``Vienna Lines``.
+# To prevent this we mask known entities BEFORE handing the text to
+# the model and unmask them AFTER inference. Three entity sources are
+# composed (longest-first so e.g. ``Wien Hauptbahnhof`` matches before
+# ``Hauptbahnhof``):
+#
+#   1. A static list of operator brands / network names that never
+#      change shape across feed builds.
+#   2. A compiled regex for ÖPNV line identifiers (U-Bahn, S-Bahn,
+#      tram, bus) — these are short alphanumeric tokens
+#      (``U1``..``U6``, ``S1``..``S99``, ``1``..``99[A-Z]?``) that
+#      machine translation routinely loses.
+#   3. A lazily-built regex covering every name + alias from the
+#      project's station directory (``data/stations.json`` via
+#      :func:`src.utils.stations._station_entries`). Loading is gated
+#      behind ``@lru_cache`` so the CLI commands that never request
+#      EN output pay zero cost.
+#
+# The placeholder format ``XENT<n>X`` is alphanumeric and starts with
+# a letter so the SentencePiece tokenizer used by Marian/Helsinki
+# models keeps each placeholder as a single token without inserting
+# extra whitespace. Translation that drops a placeholder degrades
+# gracefully — :func:`_unmask_entities` only restores the placeholders
+# it can still find.
+_BRAND_ENTITIES: tuple[str, ...] = (
+    "Wiener Linien",
+    "Wiener Lokalbahnen",
+    "Badner Bahn",
+    "WLB",
+    "ÖBB",
+    "VOR",
+    "VAO",
+    "WESTbahn",
+    "Cat",
+    "RegioJet",
+    "S-Bahn",
+    "S-Bahn-Stammstrecke",
+    "Stammstrecke",
+)
+
+_LINE_ENTITY_RE: re.Pattern[str] = re.compile(
+    r"\b(U[1-6]|S[0-9]+|[1-9][0-9]?[A-Z]?)\b"
+)
+
+# Placeholder pattern recognised by :func:`_unmask_entities` and the
+# ``X``-bookended form deliberately avoids ``_`` (which the
+# SentencePiece tokenizer used by Marian models treats specially).
+_ENTITY_PLACEHOLDER_FORMAT = "XENT{index}X"
+_ENTITY_PLACEHOLDER_RE: re.Pattern[str] = re.compile(r"XENT\d+X")
+
+
+@lru_cache(maxsize=1)
+def _station_entity_pattern() -> re.Pattern[str] | None:
+    """Build a regex that matches the canonical station names from the
+    project's station directory.
+
+    Two name forms per entry are emitted:
+
+      * The canonical ``name`` field (e.g. ``Wien Stephansplatz``).
+      * The bare form with the leading ``Wien `` prefix dropped (e.g.
+        ``Stephansplatz``) so disruption text that omits the city
+        prefix still matches.
+
+    The ``aliases`` list is intentionally NOT consumed — it ships
+    ~244k minor spelling variants per station which would explode the
+    regex to multi-megabyte size and dominate per-item runtime for
+    ~zero coverage gain (real disruption text uses the canonical or
+    the bare form, not ``Bahnhof X Station Bf.``). Entries are sorted
+    longest-first so ``Wien Hauptbahnhof`` matches ahead of
+    ``Hauptbahnhof`` (greedy left-to-right alternation in :mod:`re`
+    honours the first alternative that matches at a given position;
+    the longest-first order makes the alternation pick the most
+    specific name). Lookup is cached for the lifetime of the process
+    via :func:`functools.lru_cache`.
+    """
+    try:
+        from .utils.stations import _station_entries
+    except ImportError:
+        # Defensive: keeps the entity masker functional even if the
+        # stations helper is unavailable (e.g. a future refactor or a
+        # stripped-down test fixture).
+        return None
+
+    names: set[str] = set()
+    for entry in _station_entries():
+        raw_name = entry.get("name")
+        if not isinstance(raw_name, str):
+            continue
+        stripped = raw_name.strip()
+        # Filter out pathological short tokens, pure-digit IDs and
+        # values that would collide with the line-identifier regex
+        # (e.g. ``5B`` as a station alias).
+        if (
+            len(stripped) < 4
+            or stripped.isdigit()
+            or _LINE_ENTITY_RE.fullmatch(stripped)
+        ):
+            continue
+        names.add(stripped)
+        if stripped.lower().startswith("wien "):
+            bare = stripped[5:].strip()
+            if (
+                len(bare) >= 4
+                and not bare.isdigit()
+                and not _LINE_ENTITY_RE.fullmatch(bare)
+            ):
+                names.add(bare)
+
+    if not names:
+        return None
+
+    sorted_names = sorted(names, key=len, reverse=True)
+    pattern = (
+        r"(?<!\w)(?:"
+        + "|".join(re.escape(name) for name in sorted_names)
+        + r")(?!\w)"
+    )
+    return re.compile(pattern, re.IGNORECASE)
+
+
+@lru_cache(maxsize=1)
+def _brand_entity_pattern() -> re.Pattern[str]:
+    """Compile the static brand list into a longest-first regex."""
+    sorted_brands = sorted(_BRAND_ENTITIES, key=len, reverse=True)
+    pattern = (
+        r"(?<!\w)(?:"
+        + "|".join(re.escape(brand) for brand in sorted_brands)
+        + r")(?!\w)"
+    )
+    return re.compile(pattern, re.IGNORECASE)
+
+
+def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
+    """Replace known entities in ``text`` with stable placeholders.
+
+    The masker applies three passes (brands → stations → line tokens)
+    so the longest-matching span wins regardless of which source
+    discovered it. Each unique surface form gets exactly one
+    placeholder so a sentence mentioning the same station twice
+    survives one round-trip through the translation model with
+    identical tokens.
+
+    Returns a tuple ``(masked_text, mapping)`` where ``mapping`` maps
+    each placeholder back to the original entity text. Callers feed
+    the masked text into the translation pipeline and route the
+    result through :func:`_unmask_entities`.
+    """
+    if not text:
+        return text, {}
+
+    mapping: dict[str, str] = {}
+    surface_to_placeholder: dict[str, str] = {}
+
+    def _replace(match: re.Match[str]) -> str:
+        surface = match.group(0)
+        cached = surface_to_placeholder.get(surface)
+        if cached is not None:
+            return cached
+        placeholder = _ENTITY_PLACEHOLDER_FORMAT.format(index=len(mapping))
+        mapping[placeholder] = surface
+        surface_to_placeholder[surface] = placeholder
+        return placeholder
+
+    working = _brand_entity_pattern().sub(_replace, text)
+    station_pattern = _station_entity_pattern()
+    if station_pattern is not None:
+        working = station_pattern.sub(_replace, working)
+    working = _LINE_ENTITY_RE.sub(_replace, working)
+    return working, mapping
+
+
+def _unmask_entities(text: str, mapping: dict[str, str]) -> str:
+    """Restore entity surface forms in ``text`` using ``mapping``.
+
+    Tolerant of the translator dropping or reordering placeholders —
+    only placeholders that still appear in ``text`` are restored, the
+    rest are silently discarded so the output never carries a literal
+    ``XENT3X`` token to subscribers.
+    """
+    if not mapping:
+        return text
+
+    def _restore(match: re.Match[str]) -> str:
+        placeholder = match.group(0)
+        return mapping.get(placeholder, "")
+
+    return _ENTITY_PLACEHOLDER_RE.sub(_restore, text)
+
+
 def _get_translation_pipeline() -> Any:
     """Lazily instantiate the German → English translation pipeline.
 
     Returns the pipeline on success, ``None`` on any import or model-
     load failure (defensive: the EN feed degrades to the German
-    original rather than crashing the build).
+    original rather than crashing the build). State is held in a
+    module-level dict to avoid the ``global`` declaration pattern
+    CodeQL misclassifies as an unused-global write.
     """
-    global _TRANSLATION_PIPELINE, _TRANSLATION_LOAD_FAILED
-    if _TRANSLATION_PIPELINE is not None:
-        return _TRANSLATION_PIPELINE
-    if _TRANSLATION_LOAD_FAILED:
+    if _TRANSLATION_STATE["pipeline"] is not None:
+        return _TRANSLATION_STATE["pipeline"]
+    if _TRANSLATION_STATE["load_failed"]:
         return None
     try:
         from transformers import pipeline
@@ -777,38 +973,50 @@ def _get_translation_pipeline() -> Any:
         # ``unused-ignore`` companion handles environments where the
         # transformers package is loaded without overload metadata
         # (the import-untyped branch via ``ignore_missing_imports``).
-        _TRANSLATION_PIPELINE = pipeline(  # type: ignore[call-overload, unused-ignore]
+        _TRANSLATION_STATE["pipeline"] = pipeline(  # type: ignore[call-overload, unused-ignore]
             "translation_de_to_en", model=_TRANSLATION_MODEL_NAME,
         )
         log.info(
             "Übersetzungs-Pipeline %s geladen.", _TRANSLATION_MODEL_NAME
         )
     except Exception as exc:
-        _TRANSLATION_LOAD_FAILED = True
+        _TRANSLATION_STATE["load_failed"] = True
         log.warning(
             "Übersetzungs-Pipeline konnte nicht geladen werden (%s) – "
             "EN-Feed nutzt Originaltext.",
             sanitize_log_arg(str(exc)),
         )
         return None
-    return _TRANSLATION_PIPELINE
+    return _TRANSLATION_STATE["pipeline"]
 
 
 def _translate_text(text: str) -> str:
-    """Translate ``text`` from German to English.
+    """Translate ``text`` from German to English with entity preservation.
 
-    On any failure (model unavailable, runtime error, unexpected shape)
-    the original input is returned unchanged. Failures are logged via
-    :func:`sanitize_log_arg` so a hostile upstream string cannot inject
-    log-line forgery primitives into the diagnostics stream.
+    Pipeline:
+
+      1. :func:`_mask_entities` replaces known brands, station names
+         and ÖPNV line identifiers with alphanumeric placeholders so
+         the ML model cannot mistranslate proper nouns.
+      2. The masked text goes through the Hugging Face translation
+         pipeline.
+      3. :func:`_unmask_entities` restores the original surface forms
+         from the placeholder mapping.
+
+    On any failure (model unavailable, runtime error, unexpected
+    shape) the original input is returned unchanged. Failures are
+    logged via :func:`sanitize_log_arg` so a hostile upstream string
+    cannot inject log-line forgery primitives into the diagnostics
+    stream.
     """
     if not text or not text.strip():
         return text
     pipe = _get_translation_pipeline()
     if pipe is None:
         return text
+    masked_text, entity_mapping = _mask_entities(text)
     try:
-        result = pipe(text, max_length=512)
+        result = pipe(masked_text, max_length=512)
     except Exception as exc:
         log.warning(
             "Übersetzung fehlgeschlagen (%s) – Rückfall auf Originaltext.",
@@ -821,7 +1029,7 @@ def _translate_text(text: str) -> str:
     if isinstance(first, dict):
         translated = first.get("translation_text")
         if isinstance(translated, str) and translated:
-            return translated
+            return _unmask_entities(translated, entity_mapping)
     return text
 
 
