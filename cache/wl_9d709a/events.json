@@ -266,6 +266,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "N54: Veranstaltung am 30.05.2026",
+    "description": "<h2>Veranstaltung</h2> <p>Wegen einer Veranstaltung im Technischen Museum mit einer damit verbundenen Stra&szlig;ensperre wird die Linie N54 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />30. Mai 2026 (Nacht von 29. auf 30. Mai), Betriebsbeginn bis Betriebsschluss.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie N54:</strong><br />Umleitung in beiden Richtungen &uuml;ber die Linzer Stra&szlig;e - Schlo&szlig;allee, bzw. Winckelmannstra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Haltestelle Penzinger Stra&szlig;e in Richtung Ober St. Veit:</span><br />Verlegt von: Mariahilfer Stra&szlig;e vor Schlo&szlig;allee<br />Verlegt nach: Schlo&szlig;allee nach Linzer Stra&szlig;e (Haltestelle der Linie 10A)</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9f0927477931611e3d079d470234ecfde3964ab06d806b8d2f3f99fca026efe9",
+    "pubDate": "2026-05-20T12:10:00+02:00",
+    "starts_at": "2026-05-20T12:10:00+02:00",
+    "ends_at": "2026-05-30T06:00:00+02:00",
+    "_identity": "wl|hinweis|L=N54|D=2026-05-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "N54: Umleitung",
     "description": "<h2>Umleitung wegen einer Veranstaltung:</h2> <p>Wegen einer Veranstaltung in der Mariahilfer Stra&szlig;e im Bereich des Technischen Museums wird die Linie N54 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Samstag, 30. Mai 2026, Betriebsbeginn bis Sonntag, 31. Mai 2026, 22:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie N54 in Ober St. Veit U:<br /></strong>Umleitung ab Mariahilfer Stra&szlig;e # Zollernsperggasse &uuml;ber Linzer Stra&szlig;e &ndash; Schlo&szlig;allee &ndash; Penziger Stra&szlig;e zur Stammstrecke.</p> <p><strong>In Richtung Westbahnhof SU:<br /></strong>Umleitung ab Penzinger Stra&szlig;e # Schlo&szlig;allee &uuml;ber Schlo&szlig;allee &ndash; Linzer Stra&szlig;e &ndash; Winckelmannstra&szlig;e &ndash; Mariahilfer Stra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen in Richtung Ober St. Veit U:<br /></span>Penzinger Stra&szlig;e (Mariahilfer Stra&szlig;e vor Schlo&szlig;allee)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>Linzer Stra&szlig;e (Schlo&szlig;allee nach Linzer Stra&szlig;e, gemeinsam mit 10A)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -338,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "15A: Verkehrsunfall",
-    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b22dfbbf389bb0a8ea03be177b6fa20b16f32c05b0828f6ae785106649e64f7b",
-    "pubDate": "2026-05-20T09:45:00+02:00",
-    "starts_at": "2026-05-20T09:45:00+02:00",
-    "ends_at": "2026-05-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-05-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "16A: Verkehrsunfall",
     "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -362,14 +362,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26A: Verkehrsstörung",
-    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
+    "title": "2A: Verkehrsüberlastung",
+    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1a83f40242f4fe2a61c94eb4176ded36b2f53fed946428f494a7d09691a0966e",
-    "pubDate": "2026-05-20T08:16:00+02:00",
-    "starts_at": "2026-05-20T08:16:00+02:00",
+    "guid": "06817ade86d1a1933bbe0d61cb95b6a6235420db1b9474f70939e73f51c11a2f",
+    "pubDate": "2026-05-20T12:23:00+02:00",
+    "starts_at": "2026-05-20T12:23:00+02:00",
     "ends_at": "2026-05-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=26A|D=2026-05-20"
+    "_identity": "wl|störung|L=2A|D=2026-05-20"
   },
   {
     "source": "Wiener Linien",
@@ -590,18 +590,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "97A: Verkehrsunfall",
-    "description": "Linie 97A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "84179df3b6977c1f2a94231aa650a6c134e1750cbe78746ad0558d3b8a6317b8",
-    "pubDate": "2026-05-20T09:50:00+02:00",
-    "starts_at": "2026-05-20T09:50:00+02:00",
-    "ends_at": "2026-05-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=97A|D=2026-05-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Betrieb ab Sommarugagasse",
     "description": "Gleisbauarbeiten\nBetrieb ab Sommarugagasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -646,18 +634,6 @@
     "starts_at": "2026-05-20T08:51:06+02:00",
     "ends_at": "2026-05-20T13:00:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-05-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
-    "pubDate": "2026-05-20T10:56:00+02:00",
-    "starts_at": "2026-05-20T10:56:00+02:00",
-    "ends_at": "2026-05-20T11:59:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-05-20"
   },
   {
     "source": "Wiener Linien",
