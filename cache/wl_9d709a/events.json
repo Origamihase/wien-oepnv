@@ -350,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "16A: Verkehrsunfall",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dccbadcbf12162af2af610ce5d398d1d933ec7a7a29797ac278f17a4bdc47cb6",
+    "pubDate": "2026-05-20T11:12:00+02:00",
+    "starts_at": "2026-05-20T11:12:00+02:00",
+    "ends_at": "2026-05-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=16A|D=2026-05-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Verkehrsstörung",
     "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -663,7 +675,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U6: Betriebsstörung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Längenfeldgasse.",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
     "pubDate": "2026-05-20T10:56:00+02:00",
