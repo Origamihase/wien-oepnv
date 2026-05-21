@@ -46,6 +46,25 @@ def test_mask_entities_protects_known_stations() -> None:
     assert "Stephansplatz" in mapping.values()
 
 
+def test_mask_entities_protects_wien_x_aliases() -> None:
+    """Regression: aliases of canonical station names whose name is a
+    compound form (e.g. ``Wien Mitte-Landstraße`` carrying the alias
+    ``Wien Mitte``) must be protected. Pre-fix the EN feed showed
+    titles like ``Wien Rennweg - Vienna Mitte`` because the masker
+    only consumed canonical names — ``Wien Mitte`` was missing and
+    the translator rewrote ``Wien`` → ``Vienna`` for that token.
+    """
+    text = "Wien Rennweg - Wien Mitte"
+    masked, mapping = build_feed._mask_entities(text)
+    assert "Wien Mitte" not in masked, (
+        f"Wien Mitte leaked into the masked text; the translator would "
+        f"rewrite it to Vienna Mitte. masked={masked!r}"
+    )
+    assert "Wien Rennweg" not in masked
+    assert "Wien Mitte" in mapping.values()
+    assert "Wien Rennweg" in mapping.values()
+
+
 def test_mask_entities_longest_match_wins() -> None:
     """``Wien Hauptbahnhof`` must match before ``Hauptbahnhof`` so the
     placeholder covers the full compound name."""
