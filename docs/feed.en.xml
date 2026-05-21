@@ -7,18 +7,73 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 21 May 2026 09:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 09:30:39 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1A/2A: Staatsbesuch]]></title>
+      <title><![CDATA[U3: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e5840266fa92f1d4a836dc635182c056f13c86cd52a7c6fd401b2320edcee78d</guid>
+      <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
+      <pubDate>Thu, 21 May 2026 09:28:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 07:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 09:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U3: Fahrtbehinderung in Richtung Ottakring. Voraussichtliche Dauer: 09:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater. [Partially translated] [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Fahrtbehinderung in Richtung Ottakring. Voraussichtliche Dauer: 09:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
+      <pubDate>Thu, 21 May 2026 09:23:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 09:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 09:23:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Partially translated] [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/71/D/O: Staatsbesuch]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ad618d3cce37d941fd71e0241fbe268512f39c4235877ca533d66131824eb9a3</guid>
+      <pubDate>Thu, 21 May 2026 09:16:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 09:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 09:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. [Partially translated] [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Thu, 21 May 2026 09:13:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 09:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 09:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated] [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Busse halten Landstraßer Hauptstraße 116]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf</guid>
+      <pubDate>Thu, 21 May 2026 09:06:52 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 09:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 09:06:52 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Partially translated] [On 21.05.2026]</description>
+      <content:encoded><![CDATA[[Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A: Staatsbesuch]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3076bf4635f1f1a10bdd01285136b757ed2b6bb547377d4eebff9d9671f3df2e</guid>
       <pubDate>Thu, 21 May 2026 08:52:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 09:00:52 +0200</ext:first_seen>
+      <ext:first_seen>Thu, 21 May 2026 09:30:39 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 08:52:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 1A: Fahrtbehinderung in Richtung Schottentor U. Linie 2A: Fahrtbehinderung in Richtung Schwarzenbergplatz. [Partially translated] [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 1A: Fahrtbehinderung in Richtung Schottentor U. Linie 2A: Fahrtbehinderung in Richtung Schwarzenbergplatz. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
+      <description>Linie 1A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated] [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 1A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[76A/76B: Demonstration]]></title>
@@ -63,61 +118,6 @@
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet. [Partially translated] [Since 21.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet. [Partially translated]<br/>[Since 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/43: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dbdd898917832cac7ecbd327f3d1d1dfe68d3e015a9393dc7c3b188399d29f0a</guid>
-      <pubDate>Thu, 21 May 2026 08:20:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 08:30:34 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 08:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. [Partially translated] [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba</guid>
-      <pubDate>Thu, 21 May 2026 07:53:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 08:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 07:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Partially translated] [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/11A/26A/2A/41A/4A/5A/60A/76A/77A/80A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b7de036d3f0ac71a4133dfc79ad6e16ec3a39cc9289a7dee626466c78e61aeeb</guid>
-      <pubDate>Thu, 21 May 2026 07:50:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 08:30:34 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 07:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. [Partially translated] [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[79B: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7ab9732a843a04247957be1f1105d5e79149099ca511612df462b6a93923106d</guid>
-      <pubDate>Thu, 21 May 2026 07:35:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 08:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 07:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 79B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Partially translated] [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 79B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Aufgelassen Busse halten Wienerbergbrücke]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fea8a52de8284e73a68e14a51478ee4263f596086bd37c21aa6e1137962f6b4a</guid>
-      <pubDate>Thu, 21 May 2026 07:25:32 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 07:30:41 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 07:25:32 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Partially translated] [On 21.05.2026]</description>
-      <content:encoded><![CDATA[[Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
