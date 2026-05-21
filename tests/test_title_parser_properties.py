@@ -44,7 +44,11 @@ from src.providers.wl_lines import _extract_prefix_lines, _ensure_line_prefix
 # (line codes + colon + body) and adversarial fragments (no prefix,
 # stacked prefixes, control characters, very long inputs).
 _TITLE_CHARS = st.characters(
-    blacklist_categories=("Cs",),  # surrogates — invalid in str
+    # Mypy --strict cannot prove the literal-string tuple matches Hypothesis's
+    # ``Literal[…]`` enumeration of Unicode category codes. ``# type: ignore[arg-type]``
+    # mirrors the canonical fix shape in ``tests/test_fuzzing.py`` for the
+    # same ``("Cs",)`` surrogate-exclusion pattern.
+    blacklist_categories=("Cs",),  # type: ignore[arg-type]  # surrogates — invalid in str
 )
 _titles = st.text(
     alphabet=_TITLE_CHARS,
