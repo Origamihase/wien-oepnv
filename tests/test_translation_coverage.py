@@ -388,8 +388,6 @@ def test_de_and_en_feed_items_are_byte_identical_when_pipeline_fails(
     rss_de = build_feed._make_rss([item], now, state, lang="de")
     rss_en = build_feed._make_rss([item], now, state, lang="en")
 
-    import re
-
     # Extract the <item>…</item> body from each feed. Only ONE item
     # in this fixture, so a single regex group is enough.
     de_item = re.search(r"<item>.*?</item>", rss_de, re.DOTALL)
