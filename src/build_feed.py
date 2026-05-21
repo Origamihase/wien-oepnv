@@ -123,6 +123,46 @@ _WL_LINE_PREFIX_RE = re.compile(r"^[A-Za-z0-9]+(?:/[A-Za-z0-9]+)*\s*:\s+\S")
 # stay put.
 _TRAILING_DIRECTIONAL_MARKER_RE = re.compile(r"\s*[<>]+\s*$")
 
+# Line prefixes WL puts at the start of descriptions are redundant
+# noise — the title already carries the line attribution via the
+# canonical ``40/41:`` prefix. Real cache examples:
+#
+#   * ``40+41: Betrieb ab Gersthof``
+#   * ``Linie 40: Nach einer Fahrtbehinderung …``
+#   * ``Linien 9/40/41/42: Umleitung``
+#
+# Stripping the prefix at cache-read time cleans up the user-visible
+# summary and avoids it being copied verbatim into the description
+# during cross-line dedup-merge. The line-token shape (``[A-Z]{0,4}
+# \d{1,3}[A-Z]?``) is deliberately strict so generic prefixes like
+# ``Achtung:``, ``Information:`` or sentence-internal time markers
+# ``17:30 Uhr…`` stay untouched.
+_WL_DESC_LINE_TOKEN = r"[A-Z]{0,4}\d{1,3}[A-Z]?"  # noqa: S105 — regex fragment, not a secret
+_WL_DESC_LINIE_PREFIX_RE = re.compile(
+    rf"^\s*Linien?\s+(?:{_WL_DESC_LINE_TOKEN})"
+    rf"(?:\s*[/+,]\s*(?:{_WL_DESC_LINE_TOKEN})){{0,20}}\s*:\s+",
+    re.IGNORECASE,
+)
+_WL_DESC_COMPACT_PREFIX_RE = re.compile(
+    rf"^\s*(?:{_WL_DESC_LINE_TOKEN})"
+    rf"(?:\s*[/+,]\s*(?:{_WL_DESC_LINE_TOKEN})){{0,20}}\s*:\s+",
+    re.IGNORECASE,
+)
+
+
+def _strip_wl_description_line_prefix(desc: str) -> str:
+    """Remove a leading WL ``Linie N:`` / ``40+41:`` prefix from a description.
+
+    The title already carries the line attribution, so the prefix is
+    pure noise that mirrors back into the rendered summary.
+    """
+    if not desc:
+        return desc
+    cleaned = _WL_DESC_LINIE_PREFIX_RE.sub("", desc, count=1)
+    if cleaned == desc:
+        cleaned = _WL_DESC_COMPACT_PREFIX_RE.sub("", desc, count=1)
+    return cleaned
+
 
 def _strip_trailing_directional_marker(summary: str) -> str:
     """Drop a trailing WL ``>`` / ``<`` arrow with surrounding whitespace.
@@ -153,15 +193,39 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
        prefix is the key signal for transit-line attribution; without
        it the user can't tell which line is affected, so we drop
        these too.
+    4. Cached items can carry a stacked / non-canonical line prefix
+       (``40: 40+41: Betrieb ab Gersthof``) when an older
+       ``_ensure_line_prefix`` prepended ``relatedLines`` on top of the
+       title's own ``40+41:`` block. The re-parse via
+       ``_extract_prefix_lines`` unions the layers and re-emits a
+       canonical ``40/41: …`` prefix so the user immediately sees
+       which lines are affected.
     """
+    from .providers.wl_lines import _extract_prefix_lines
+
     out: list[Any] = []
-    for item in items:
-        if not isinstance(item, dict):
-            out.append(item)
+    for original in items:
+        if not isinstance(original, dict):
+            out.append(original)
             continue
+        item = original
         title = item.get("title")
         if isinstance(title, str) and title:
             cleaned = re.sub(r"\s+", " ", title).strip()
+            # Rebuild a stacked or non-canonical line prefix (e.g.
+            # ``40: 40+41: Betrieb ab Gersthof`` →
+            # ``40/41: Betrieb ab Gersthof``). Only touches items where
+            # ``_extract_prefix_lines`` recovers ≥1 line tokens AND the
+            # rebuilt form differs from the cached title — leaves bodies
+            # without a prefix block untouched. Line order follows WL's
+            # original sequence in the title (``41E/10A:`` round-trips,
+            # ``40: 40+41:`` collapses to ``40/41:`` without reordering).
+            body, prefix_lines = _extract_prefix_lines(cleaned)
+            if prefix_lines and body:
+                canonical = "/".join(prefix_lines)
+                rebuilt = f"{canonical}: {body}"
+                if rebuilt != cleaned:
+                    cleaned = rebuilt
             if cleaned != title:
                 item = dict(item)
                 item["title"] = cleaned
@@ -177,6 +241,15 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
             category = item.get("category")
             if category == "Störung" and not _WL_LINE_PREFIX_RE.match(cleaned):
                 continue
+        # Strip a redundant ``Linie 40:`` / ``40+41:`` prefix from the
+        # description — the title already attributes the line(s).
+        desc = item.get("description")
+        if isinstance(desc, str) and desc:
+            stripped = _strip_wl_description_line_prefix(desc)
+            if stripped != desc:
+                if item is original:
+                    item = dict(item)
+                item["description"] = stripped
         out.append(item)
     return out
 

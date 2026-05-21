@@ -26,7 +26,14 @@ def _display_line(s: str) -> str:
 
 
 # Präfix-Erkennung/Entfernung:
-LINE_PREFIX_STRIP_RE = re.compile(r"^\s*[A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20}\s*:\s*", re.IGNORECASE)
+# Accept ``/``, ``+`` and ``,`` as separators between line codes. WL
+# sometimes uses ``40+41:`` for items that affect two lines on the
+# same corridor — the previous slash-only pattern silently treated
+# the whole ``40+41`` as a body fragment, causing ``_ensure_line_prefix``
+# to prepend ``40: `` on top of it (``40: 40+41: …``).
+LINE_PREFIX_STRIP_RE = re.compile(
+    r"^\s*[A-Za-z0-9]+(?:\s*[/+,]\s*[A-Za-z0-9]+){0,20}\s*:\s*", re.IGNORECASE
+)
 LINES_COMPLEX_PREFIX_RE = re.compile(
     r"^\s*[A-Za-z0-9]+(?:\s*,\s*[A-Za-z0-9]+)+(?:(?:\s+und\s+)?Rufbus\s+[A-Za-z0-9]+)?(?:\s*\([^)]+\))?\s*:\s*",
     re.IGNORECASE,
@@ -34,33 +41,91 @@ LINES_COMPLEX_PREFIX_RE = re.compile(
 RUF_BUS_PREFIX_RE = re.compile(r"^\s*Rufbus\s+([A-Za-z0-9]+)\s*:\s*", re.IGNORECASE)
 
 
-def _strip_existing_line_block(title: str) -> str:
-    """Entfernt vorhandene Linienblöcke am Anfang (Slash-/Komma-/Rufbus-Varianten)."""
+def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
+    """Strip leading line prefix(es) and return (body, lines_in_order).
+
+    Handles stacked prefixes (``40: 40+41: …`` — a previous
+    ``_ensure_line_prefix`` mishap that we now correct) and multiple
+    separator styles (``/``, ``+``, ``,``). The lines returned are
+    cleaned via :func:`_clean_line_token` and de-duplicated while
+    preserving the order in which they first appear in the title —
+    so ``41E/10A:`` extracts to ``["41E", "10A"]`` (original WL
+    rendering kept) rather than a sorted ``["10A", "41E"]`` that
+    would re-order the user-visible prefix unnecessarily.
+    """
     if len(title) > 500:
         title = title[:500]
+    seen: set[str] = set()
+    lines: list[str] = []
+    body = title.strip()
+    # Loop ensures we handle stacked prefixes like ``40: 40+41: …``.
+    # Five iterations is far more than any real WL/ÖBB title needs and
+    # the loop terminates as soon as no prefix matches.
+    for _ in range(5):
+        match = LINES_COMPLEX_PREFIX_RE.match(body) or LINE_PREFIX_STRIP_RE.match(body)
+        if match:
+            block = body[: match.end()].rstrip(": \t")
+            for tok in re.split(r"[,/+]", block):
+                cleaned = _clean_line_token(tok.strip())
+                if cleaned and cleaned not in seen:
+                    seen.add(cleaned)
+                    lines.append(cleaned)
+            body = body[match.end():].strip()
+            continue
+        ruf_match = RUF_BUS_PREFIX_RE.match(body)
+        if ruf_match:
+            cleaned = _clean_line_token(ruf_match.group(1))
+            if cleaned and cleaned not in seen:
+                seen.add(cleaned)
+                lines.append(cleaned)
+            body = body[ruf_match.end():].strip()
+            continue
+        break
+    return body, lines
 
-    t = LINE_PREFIX_STRIP_RE.sub("", title)
-    t = RUF_BUS_PREFIX_RE.sub("", t)
-    if ":" in t:
-        pre, post = t.split(":", 1)
-        if ("," in pre) or ("Rufbus" in pre) or ("(" in pre):
-            t = post.strip()
-    return t
+
+def _strip_existing_line_block(title: str) -> str:
+    """Entfernt vorhandene Linienblöcke am Anfang (Slash/Plus/Komma/Rufbus)."""
+    body, _ = _extract_prefix_lines(title)
+    return body
 
 
 def _ensure_line_prefix(title: str, lines_disp: list[str]) -> str:
-    """Sorgt für „L1/L2: …“. Entfernt vorhandene Präfixe zuerst."""
+    """Sorgt für „L1/L2: …“. Entfernt vorhandene Präfixe zuerst.
+
+    The existing prefix's lines are UNIONED with ``lines_disp`` so a
+    WL item titled ``40+41: Betrieb ab Gersthof`` whose ``relatedLines``
+    API field only carries ``["40"]`` still surfaces with both lines
+    in the rendered title (``40/41: Betrieb ab Gersthof``). Without
+    the union the API value would silently drop the ``41`` info that
+    WL itself put into the title text.
+    """
     if len(title) > 500:
         title = title[:500]
 
-    if not lines_disp:
+    body, existing_lines = _extract_prefix_lines(title)
+
+    if not lines_disp and not existing_lines:
         return title
-    wanted = "/".join(lines_disp)
-    if re.match(rf"^\s*{re.escape(wanted)}\s*:\s*", title, re.IGNORECASE):
-        rest = re.sub(rf"^\s*{re.escape(wanted)}\s*:\s*", "", title, flags=re.IGNORECASE).strip()
-        return title if rest else wanted
-    stripped = _strip_existing_line_block(title).strip()
-    return f"{wanted}: {stripped}" if stripped else wanted
+
+    # Union of provider-supplied lines and lines parsed from the title's
+    # leading prefix block(s). Preserve the order from ``lines_disp``
+    # first (typically already sorted by the caller) and append any
+    # extra lines from the existing prefix in their original title-order
+    # so ``41E/10A:`` round-trips unchanged.
+    seen = set()
+    merged: list[str] = []
+    for tok in list(lines_disp) + list(existing_lines):
+        cleaned = _clean_line_token(tok)
+        if cleaned and cleaned not in seen:
+            seen.add(cleaned)
+            merged.append(cleaned)
+
+    if not merged:
+        return body or title
+
+    wanted = "/".join(merged)
+    return f"{wanted}: {body}" if body else wanted
 
 
 # Fallback-Linien aus Titeltext — vorher Datum/Zeit/Adressen maskieren
