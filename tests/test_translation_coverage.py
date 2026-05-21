@@ -349,8 +349,6 @@ def test_de_and_en_feed_items_have_identical_content_set(
     rss_de = build_feed._make_rss(items, now, state, lang="de")
     rss_en = build_feed._make_rss(items, now, state, lang="en")
 
-    import re
-
     de_guids = re.findall(r"<guid[^>]*>([^<]+)</guid>", rss_de)
     en_guids = re.findall(r"<guid[^>]*>([^<]+)</guid>", rss_en)
     # Same set, same order — the GUIDs are the canonical identity.
