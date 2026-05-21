@@ -809,29 +809,66 @@ _ENTITY_PLACEHOLDER_FORMAT = "XENT{index}X"
 _ENTITY_PLACEHOLDER_RE: re.Pattern[str] = re.compile(r"XENT\d+X")
 
 
+# Aliases that look like a noise-prefixed station ("Bahnhof X", "Bf X",
+# "Station X", …) are skipped — those are spelling variants of the
+# canonical name, not user-facing short forms. The match is
+# case-insensitive and bounded by ``\b`` so the regex does not eat
+# fragments of legitimate words ("Bahnhofstraße" stays untouched).
+_ALIAS_NOISE_RE: re.Pattern[str] = re.compile(
+    r"(?i)\b(?:Bahnhof|Bahnst|Bahnhst|Bhf|Bf|Hbf|Station|Hp|hl\.?\s*st\.?)\b"
+)
+
+# Aliases must look like a clean, short ``Wien X`` station name to be
+# eligible for inclusion. Length cap keeps the regex bounded; the
+# character class keeps spelling variants ("Wien Schwedenplatz",
+# "Wien Heiligenstadt", "Wien Mitte") in while filtering out anything
+# carrying digits, parentheses, slashes, or other markup.
+_ALIAS_CLEAN_RE: re.Pattern[str] = re.compile(
+    r"^[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß. \-]{6,28}$"
+)
+
+
 @lru_cache(maxsize=1)
 def _station_entity_pattern() -> re.Pattern[str] | None:
-    """Build a regex that matches the canonical station names from the
-    project's station directory.
+    """Build a regex that matches every meaningful station name from
+    the project's station directory.
 
-    Two name forms per entry are emitted:
+    Three name forms per entry are emitted:
 
-      * The canonical ``name`` field (e.g. ``Wien Stephansplatz``).
-      * The bare form with the leading ``Wien `` prefix dropped (e.g.
-        ``Stephansplatz``) so disruption text that omits the city
-        prefix still matches.
+      * The canonical ``name`` field (e.g. ``Wien Stephansplatz``,
+        ``Wien Mitte-Landstraße``).
+      * The bare form with the leading ``Wien `` prefix dropped
+        (e.g. ``Stephansplatz``) so disruption text that omits the
+        city prefix still matches.
+      * Curated ``Wien X`` aliases from the entry's alias list — only
+        for ``in_vienna`` entries, only when the alias looks like a
+        user-facing short form (passes ``_ALIAS_CLEAN_RE`` and does
+        NOT contain a "Bahnhof"/"Bf"/"Station" noise prefix). This
+        captures real-world short forms like ``Wien Mitte`` (alias
+        of canonical ``Wien Mitte-Landstraße``) that ÖBB and WL feed
+        text routinely use without the long suffix. Without the
+        alias coverage the masker missed ``Wien Mitte`` and the
+        translation pipeline rewrote ``Wien`` → ``Vienna`` for that
+        token alone, producing ``Vienna Mitte`` in the EN feed.
 
-    The ``aliases`` list is intentionally NOT consumed — it ships
-    ~244k minor spelling variants per station which would explode the
-    regex to multi-megabyte size and dominate per-item runtime for
-    ~zero coverage gain (real disruption text uses the canonical or
-    the bare form, not ``Bahnhof X Station Bf.``). Entries are sorted
-    longest-first so ``Wien Hauptbahnhof`` matches ahead of
-    ``Hauptbahnhof`` (greedy left-to-right alternation in :mod:`re`
-    honours the first alternative that matches at a given position;
-    the longest-first order makes the alternation pick the most
-    specific name). Lookup is cached for the lifetime of the process
-    via :func:`functools.lru_cache`.
+    The bare form is NOT emitted for aliases (only for canonicals)
+    because alias text can be ambiguous outside the Vienna context —
+    e.g. ``Mitte`` alone is not Vienna-specific, but ``Wien Mitte``
+    is. Restricting bare-form generation to canonical names keeps
+    the regex precise without false positives.
+
+    The ~244k raw aliases in ``data/stations.json`` are reduced to
+    ~11k Vienna short-forms after the ``in_vienna`` + clean-regex +
+    noise-regex filters, so the compiled pattern stays under a
+    megabyte and first-compile cost is ~350 ms (one-time, amortised
+    over the build).
+
+    Entries are sorted longest-first so ``Wien Hauptbahnhof`` matches
+    ahead of ``Hauptbahnhof`` (greedy left-to-right alternation in
+    :mod:`re` honours the first alternative that matches at a given
+    position; the longest-first order makes the alternation pick the
+    most specific name). Lookup is cached for the lifetime of the
+    process via :func:`functools.lru_cache`.
     """
     try:
         from .utils.stations import _station_entries
@@ -865,6 +902,28 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
                 and not _LINE_ENTITY_RE.fullmatch(bare)
             ):
                 names.add(bare)
+
+        # Curated ``Wien X`` aliases — restrict to Vienna entries so
+        # the regex cannot accidentally protect a non-Vienna alias
+        # that happens to start with ``Wien``.
+        if not entry.get("in_vienna"):
+            continue
+        aliases = entry.get("aliases")
+        if not isinstance(aliases, list):
+            continue
+        for raw_alias in aliases:
+            if not isinstance(raw_alias, str):
+                continue
+            alias = raw_alias.strip()
+            if (
+                not alias
+                or alias == stripped
+                or not alias.startswith("Wien ")
+                or _ALIAS_NOISE_RE.search(alias)
+                or not _ALIAS_CLEAN_RE.fullmatch(alias)
+            ):
+                continue
+            names.add(alias)
 
     if not names:
         return None
