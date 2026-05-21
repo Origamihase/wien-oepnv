@@ -7,18 +7,73 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 21 May 2026 10:30:36 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 11:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[15A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b308b34c73763c3b52f85a58d4722456ac7c871cea2c1845291ef4ff61b82a3c</guid>
+      <pubDate>Thu, 21 May 2026 10:58:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 11:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 10:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26A/94A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">be942d6087acae893831ae786595d7b6251ece815a58903f170b5f6705b6248c</guid>
+      <pubDate>Thu, 21 May 2026 10:53:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 11:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 10:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[41A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">40731276ea473181b05fa66aaa73fac6d7642d4d0778655478c74353797680ef</guid>
+      <pubDate>Thu, 21 May 2026 10:52:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 11:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 10:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 41A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Bauarbeiten. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 41A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Bauarbeiten.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Rettungseinsatz Züge halten bei Linie 71]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c</guid>
+      <pubDate>Thu, 21 May 2026 10:38:42 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 11:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 10:38:42 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 11:37:00 +0200</ext:ends_at>
+      <description>[Am 21.05.2026]</description>
+      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Rettungseinsatz Züge halten bei Linie 71]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
+      <pubDate>Thu, 21 May 2026 10:32:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 11:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 10:34:50 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[5: Fahrtbehinderung wegen Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5</guid>
       <pubDate>Thu, 21 May 2026 10:27:00 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:28:40 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 21 May 2026 10:36:46 +0200</ext:starts_at>
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 11:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Rauscherstraße. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 11:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Rauscherstraße.<br/>[Am 21.05.2026]]]></content:encoded>
+      <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[WLB: Polizeieinsatz Betrieb ab Matzleinsdorfer Platz]]></title>
@@ -32,26 +87,26 @@
       <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62: Züge halten bei Linie 18 Richtung Burggasse]]></title>
+      <title><![CDATA[62: Polizeieinsatz Betrieb ab Kliebergasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b</guid>
-      <pubDate>Thu, 21 May 2026 10:25:12 +0200</pubDate>
+      <guid isPermaLink="false">2563cb7e5e67c7016a99b581b604e1f7ef686490b44625d39ce5e66b47c20dc1</guid>
+      <pubDate>Thu, 21 May 2026 10:20:00 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:25:12 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 11:24:00 +0200</ext:ends_at>
-      <description>[Am 21.05.2026]</description>
-      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
+      <ext:starts_at>Thu, 21 May 2026 10:24:43 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Polizeieinsatz Betrieb ab Oper, Karlsplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972</guid>
-      <pubDate>Thu, 21 May 2026 10:22:18 +0200</pubDate>
+      <pubDate>Thu, 21 May 2026 10:20:00 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 10:22:28 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 11:21:00 +0200</ext:ends_at>
-      <description>[Am 21.05.2026]</description>
-      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Polizeieinsatz]]></title>
@@ -60,64 +115,9 @@
       <pubDate>Thu, 21 May 2026 10:02:00 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 07:30:41 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 10:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 21 May 2026 10:59:00 +0200</ext:ends_at>
       <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
       <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[3A: Staatsbesuch]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bac0064260fb76c06ab1de80ce8e5075badb3172c86aabce3bb3972d4b5f53fc</guid>
-      <pubDate>Thu, 21 May 2026 09:38:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 10:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 09:38:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Staatsbesuch. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Staatsbesuch.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2/71: Staatsbesuch]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70b3e5a7dfb481bb43bc9a930d09cf0b1996b69fe054c70273f67adf24e865cd</guid>
-      <pubDate>Thu, 21 May 2026 09:16:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 09:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Busse halten Landstraßer Hauptstraße 116]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf</guid>
-      <pubDate>Thu, 21 May 2026 09:06:52 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 09:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 09:06:52 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 21.05.2026]</description>
-      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a38e2ca7a84ce8085bdcf58d06bbb25125fbcf936ce29cd6a5915116418fcdae</guid>
-      <pubDate>Thu, 21 May 2026 08:30:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 08:30:34 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 08:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet. [Seit 21.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet.<br/>[Seit 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/41A/5A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">614c267b6f2ef9f6dfbb675a524a9104fe6c15a5b53876e6aaf3148beba64c73</guid>
-      <pubDate>Thu, 21 May 2026 07:50:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 07:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 5A: Unregelmäßige Intervalle in beiden Richtungen. Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 5A: Unregelmäßige Intervalle in beiden Richtungen. Linie 11A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
