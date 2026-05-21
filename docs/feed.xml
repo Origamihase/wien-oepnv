@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 21 May 2026 21:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 22:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[10/46/48A: Betriebsstörung]]></title>
+      <title><![CDATA[46: Fahrtbehinderung Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b391cf8e159885d034ff04e5c3124f1c10bed5973fe91d7570ae944158e15f6f</guid>
-      <pubDate>Thu, 21 May 2026 21:29:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 21:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 21:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 10: Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse. Linie 46: Fahrtbehinderung in Richtung Joachimsthalerplatz. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 10: Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse. Linie 46: Fahrtbehinderung in Richtung Joachimsthalerplatz.<br/>[Am 21.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">5390244029e2e86916e2c0b8a37582ce7d21dde0093de92fe30f51d52cbfc0c5</guid>
+      <pubDate>Thu, 21 May 2026 21:31:36 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 16:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 21:31:48 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 22:31:00 +0200</ext:ends_at>
+      <description>[Am 21.05.2026]</description>
+      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40: 40+41: Betrieb ab Gersthof & Falschparker Betrieb ab Gersthof]]></title>
+      <title><![CDATA[10: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ed9c3f396c3424629ee8cdd78fd5804440177370028dfdf0ea4f186e02952ada</guid>
-      <pubDate>Thu, 21 May 2026 20:33:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 21:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 08:06:12 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>40+41: Betrieb ab Gersthof &lt; Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [20.05.2026 – 21.05.2026]</description>
-      <content:encoded><![CDATA[40+41: Betrieb ab Gersthof < Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[20.05.2026 – 21.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">133ffbcd0b2f71b543a2c0f5320fa67ba5678cbcb7eba0ce920a1c3f70a90114</guid>
+      <pubDate>Thu, 21 May 2026 21:29:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 22:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 21:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[48A: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">40abe8015540dc340a7006b7131e0f8abed33a83dfde5af7bcbdf50c13a4eeb9</guid>
+      <pubDate>Thu, 21 May 2026 21:29:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 22:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 21:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Haltestelle ersatzlos aufgelassen]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 21.05.2026]</description>
       <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Veranstaltung am 20.06.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ae37be58476398c49e85220303f7950556951488ab964d8e4898e0ad6cd23a48</guid>
-      <pubDate>Thu, 21 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 20:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 21 Jun 2026 01:00:00 +0200</ext:ends_at>
-      <description>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen. [21.05.2026 – 21.06.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[21.05.2026 – 21.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

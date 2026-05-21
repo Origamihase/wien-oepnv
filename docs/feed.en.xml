@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 21 May 2026 21:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 22:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[10/46/48A: Operation failure]]></title>
+      <title><![CDATA[46: Impairment of operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b391cf8e159885d034ff04e5c3124f1c10bed5973fe91d7570ae944158e15f6f</guid>
-      <pubDate>Thu, 21 May 2026 21:29:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 21:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 21:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Line 10: Disability in the direction of Unter St. Veit, Hummelgasse. Line 46: Disability in the direction of Joachimsthalerplatz. [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Line 10: Disability in the direction of Unter St. Veit, Hummelgasse. Line 46: Disability in the direction of Joachimsthalerplatz.<br/>[On 21.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">5390244029e2e86916e2c0b8a37582ce7d21dde0093de92fe30f51d52cbfc0c5</guid>
+      <pubDate>Thu, 21 May 2026 21:31:36 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 16:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 21:31:48 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 22:31:00 +0200</ext:ends_at>
+      <description>[On 21.05.2026]</description>
+      <content:encoded><![CDATA[[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40: 40+41: operation from Gersthof & False Parker operation from Gersthof]]></title>
+      <title><![CDATA[10: Operation failure]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ed9c3f396c3424629ee8cdd78fd5804440177370028dfdf0ea4f186e02952ada</guid>
-      <pubDate>Thu, 21 May 2026 20:33:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 21:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 08:06:12 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>40+41: Operation from Gersthof &lt; Line 40: After a driving disability, different intervals occur. [20.05.2026 – 21.05.2026]</description>
-      <content:encoded><![CDATA[40+41: Operation from Gersthof < Line 40: After a driving disability, different intervals occur.<br/>[20.05.2026 – 21.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">133ffbcd0b2f71b543a2c0f5320fa67ba5678cbcb7eba0ce920a1c3f70a90114</guid>
+      <pubDate>Thu, 21 May 2026 21:29:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 22:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 21:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line 10: After a driving disability, there are different intervals. [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Line 10: After a driving disability, there are different intervals.<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[48A: Operation failure]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">40abe8015540dc340a7006b7131e0f8abed33a83dfde5af7bcbdf50c13a4eeb9</guid>
+      <pubDate>Thu, 21 May 2026 21:29:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 22:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 21:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line 48A: After a driving disability, there are different intervals. [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Line 48A: After a driving disability, there are different intervals.<br/>[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: stop left unreplaced]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 21.05.2026]</description>
       <content:encoded><![CDATA[[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Event at 20.06.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ae37be58476398c49e85220303f7950556951488ab964d8e4898e0ad6cd23a48</guid>
-      <pubDate>Thu, 21 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 20:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 21 Jun 2026 01:00:00 +0200</ext:ends_at>
-      <description>Because of an event at the Ernst-Happel-Stadion, the following transport measures are taking place. [21.05.2026 – 21.06.2026]</description>
-      <content:encoded><![CDATA[Because of an event at the Ernst-Happel-Stadion, the following transport measures are taking place.<br/>[21.05.2026 – 21.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
