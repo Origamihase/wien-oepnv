@@ -172,6 +172,15 @@ DEFAULT_PENDLER_CANDIDATES_PATH = _ROOT / "data" / "pendler_candidates.json"
 DEFAULT_GTFS_STOPS_PATH = _ROOT / "data" / "gtfs" / "stops.txt"
 DEFAULT_WL_HALTEPUNKTE_PATH = _ROOT / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_VOR_STOPS_PATH = _ROOT / "data" / "vor-haltestellen.csv"
+# Compact projection of the ÖBB-Infrastruktur GeoNetz dataset (1 056 rail
+# stations with their UIC EVA-Nr, IFOPT-ID and postal address). Generated
+# by ``scripts/extract_oebb_geonetz_stops.py`` from the upstream 23 MiB
+# ``GeoNetz_12-2024.zip``. Read by ``_enrich_with_geonetz`` to attach
+# the three identifier fields onto every ÖBB-Excel station whose
+# ``bst_id`` matches a row's ``bsts_id``. Coordinates are left untouched
+# by this enrichment — they are governed by OSM/HAFAS/Google tiers and
+# the PR #1601 GeoNetz-reconciliation; this loader only adds metadata.
+DEFAULT_GEONETZ_STOPS_PATH = _ROOT / "data" / "oebb_geonetz_stops.json"
 # Soft-fail snapshot for the ÖBB workbook — mirrors the pinned-CSV
 # fallback pattern used by WL OGD (PR #1441-#1442) and the VOR
 # haltestellen snapshot, so a transient ``data.oebb.at`` outage no
@@ -1645,6 +1654,18 @@ def parse_args() -> argparse.Namespace:
         help="Path to the VOR stop CSV used for VOR_STATION_IDS",
     )
     parser.add_argument(
+        "--geonetz-stops",
+        type=Path,
+        metavar="PATH",
+        default=DEFAULT_GEONETZ_STOPS_PATH,
+        help=(
+            "Path to the compact ÖBB-Infrastruktur GeoNetz stops JSON "
+            "(produced by scripts/extract_oebb_geonetz_stops.py from the "
+            "upstream GeoNetz_12-2024.zip). Used to attach UIC eva_nr, "
+            "IFOPT-ID and postal address to oebb-source stations."
+        ),
+    )
+    parser.add_argument(
         "--gtfs-stops",
         type=Path,
         metavar="PATH",
@@ -2065,6 +2086,126 @@ def _filter_relevant_stations(stations: list[Station]) -> list[Station]:
     return filtered
 
 
+def _load_geonetz_stops(path: Path) -> dict[str, dict[str, object]]:
+    """Read ``data/oebb_geonetz_stops.json`` into a ``bsts_id`` lookup.
+
+    The file is the compact projection produced by
+    ``scripts/extract_oebb_geonetz_stops.py`` from the ÖBB-Infrastruktur
+    GeoNetz dataset (data.oebb.at GeoNetz_12-2024). Missing file or
+    malformed payload degrades to an empty dict with a warning — the
+    enrichment is a best-effort metadata-only tier whose absence must
+    never crash the cron pipeline.
+    """
+    if not path.exists():
+        logger.info("GeoNetz stops file not found: %s — skipping enrichment", path)
+        return {}
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        logger.warning("Failed to load GeoNetz stops from %s: %s", path, exc)
+        return {}
+    stops = raw.get("stops") if isinstance(raw, Mapping) else None
+    if not isinstance(stops, list):
+        logger.warning("GeoNetz stops file %s has no 'stops' list", path)
+        return {}
+    lookup: dict[str, dict[str, object]] = {}
+    for entry in stops:
+        if not isinstance(entry, Mapping):
+            continue
+        bsts = entry.get("bsts_id")
+        if not isinstance(bsts, str) or not bsts:
+            continue
+        # Coerce to ``dict[str, object]`` — the loader output uses
+        # immutable Mapping interface but downstream want a mutable
+        # row they can patch (e.g. for tests). Plain copy is enough.
+        lookup[bsts] = dict(entry)
+    logger.info("Loaded %d GeoNetz stops from %s", len(lookup), path)
+    return lookup
+
+
+def _enrich_with_geonetz(
+    stations: Iterable[Station], geonetz_lookup: Mapping[str, Mapping[str, object]]
+) -> None:
+    """Attach UIC ``eva_nr``, ``ifopt_id`` and ``address`` from GeoNetz.
+
+    Each station is matched two ways:
+
+    1. **Primary join** by ÖBB ``bst_id`` against the GeoNetz
+       ``bsts_id`` column. This covers all 147 oebb-source stations
+       cleanly.
+    2. **Secondary join** by exact canonical name for entries that
+       lack a bst_id match (typically synthetic 900xxx-ids from the
+       VOR/WL pathway whose corresponding station nevertheless lives
+       in GeoNetz, e.g. Wien Hauptbahnhof, bst_id=900100 in our
+       directory vs. BSTS_ID=2393 in GeoNetz). The name match uses
+       the unique-name subset of the lookup to avoid false positives
+       on the small number of repeated operational names.
+
+    On a hit, the three identifier fields are written to
+    ``station.extras`` if not already set. Coordinates are explicitly
+    *not* overwritten — they're governed by the OSM/HAFAS/Google
+    enrichment tiers and the PR #1601 GeoNetz-reconciliation; this
+    loader only adds metadata so the next cron tick doesn't silently
+    revert a hand-curated value.
+
+    Idempotent: stations that already carry an ``eva_nr`` from a
+    previous run pass through untouched.
+    """
+    if not geonetz_lookup:
+        return
+    # Build the secondary by-name index from the same lookup — keep
+    # only names that appear exactly once so a duplicate operational
+    # name (rare, but happens) can never mis-match.
+    name_counts: dict[str, int] = {}
+    for row in geonetz_lookup.values():
+        nm = row.get("name")
+        if isinstance(nm, str) and nm:
+            name_counts[nm] = name_counts.get(nm, 0) + 1
+    by_name: dict[str, Mapping[str, object]] = {
+        str(row["name"]): row
+        for row in geonetz_lookup.values()
+        if isinstance(row.get("name"), str)
+        and name_counts.get(str(row["name"]), 0) == 1
+    }
+    enriched = 0
+    for station in stations:
+        geo: Mapping[str, object] | None = None
+        bst_id = station.bst_id
+        if bst_id:
+            try:
+                lookup_id = str(int(float(bst_id)))
+            except (TypeError, ValueError):
+                lookup_id = str(bst_id)
+            geo = geonetz_lookup.get(lookup_id)
+        if geo is None and station.name:
+            geo = by_name.get(station.name)
+        if geo is None:
+            continue
+        changed = False
+        for geo_field in ("eva_nr", "ifopt_id", "address"):
+            value = geo.get(geo_field)
+            if not isinstance(value, str) or not value:
+                continue
+            if station.extras.get(geo_field):
+                continue  # preserve any pre-existing value across cron runs
+            station.extras[geo_field] = value
+            changed = True
+        if changed:
+            enriched += 1
+            # Append the ``oebb_geonetz`` provenance token to the
+            # source list so downstream consumers see the data
+            # lineage. Mirrors the convention the PR #1601 coord-
+            # reconciliation already set up.
+            existing_source = station.extras.get("source")
+            tokens: set[str] = set()
+            if isinstance(existing_source, str):
+                tokens.update(t.strip() for t in existing_source.split(",") if t.strip())
+            tokens.add("oebb_geonetz")
+            station.extras["source"] = ",".join(sorted(tokens))
+    if enriched:
+        logger.info("GeoNetz-enriched %d stations with eva_nr/ifopt_id/address", enriched)
+
+
 def load_pendler_station_ids(path: Path) -> set[str]:
     if not path.exists():
         logger.warning(
@@ -2251,6 +2392,15 @@ def main() -> None:
     if vor_stops or vor_name_map:
         _assign_vor_ids(stations, vor_stops, name_to_vor_id=vor_name_map)
     stations = _filter_relevant_stations(stations)
+
+    # GeoNetz metadata enrichment (PR β). Runs after the filter so it
+    # only touches the pendler/in_vienna subset, and before OSM/HAFAS/
+    # Google so downstream enrichment tiers see the eva_nr that PR γ
+    # (planned: HAFAS-drift-detection) needs as the join key. Idempotent
+    # — re-runs leave previously-set values alone.
+    geonetz_lookup = _load_geonetz_stops(args.geonetz_stops)
+    if geonetz_lookup:
+        _enrich_with_geonetz(stations, geonetz_lookup)
 
     # OSM is now the primary directory enrichment source. Google Places
     # only runs as a *fallback* when at least one station is still
