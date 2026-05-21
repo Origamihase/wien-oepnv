@@ -31,7 +31,9 @@ import csv
 import io
 import json
 import math
+from collections.abc import Mapping
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -50,13 +52,20 @@ def _haversine_m(a_lat: float, a_lon: float, b_lat: float, b_lon: float) -> floa
 
 
 @pytest.fixture(scope="module")
-def stations() -> list[dict]:
-    return json.loads((REPO_ROOT / "data" / "stations.json").read_text(encoding="utf-8"))["stations"]
+def stations() -> list[dict[str, Any]]:
+    raw = json.loads((REPO_ROOT / "data" / "stations.json").read_text(encoding="utf-8"))
+    payload = raw["stations"]
+    assert isinstance(payload, list)
+    return payload
 
 
 @pytest.fixture(scope="module")
-def pendler_candidates() -> dict:
-    return json.loads((REPO_ROOT / "data" / "pendler_candidates.json").read_text(encoding="utf-8"))
+def pendler_candidates() -> dict[str, Any]:
+    raw = json.loads(
+        (REPO_ROOT / "data" / "pendler_candidates.json").read_text(encoding="utf-8")
+    )
+    assert isinstance(raw, dict)
+    return raw
 
 
 @pytest.fixture(scope="module")
@@ -89,14 +98,16 @@ _PR1224_WRONG: dict[str, tuple[float, float]] = {
 
 
 @pytest.mark.parametrize("name, canonical", list(_GEONETZ_CANONICAL.items()))
-def test_pendler_coords_near_geonetz_canonical(stations, name: str, canonical: tuple[float, float]) -> None:
+def test_pendler_coords_near_geonetz_canonical(
+    stations: list[dict[str, Any]], name: str, canonical: tuple[float, float]
+) -> None:
     """The three pendler stations whose coords PR #1224 hand-curated must
     sit within 200 m of the official ÖBB GeoNetz value."""
     entry = next((s for s in stations if s.get("name") == name), None)
     assert entry is not None, f"{name!r} missing from stations.json"
     lat, lon = entry.get("latitude"), entry.get("longitude")
     assert lat is not None and lon is not None, f"{name!r} has no coordinates"
-    drift = _haversine_m(lat, lon, canonical[0], canonical[1])
+    drift = _haversine_m(float(lat), float(lon), canonical[0], canonical[1])
     assert drift <= 200, (
         f"{name!r} coordinates drifted {drift:.0f} m from the GeoNetz canonical "
         f"{canonical} → ({lat}, {lon}). The hand-curated PR #1224 value was wrong; "
@@ -105,7 +116,9 @@ def test_pendler_coords_near_geonetz_canonical(stations, name: str, canonical: t
 
 
 @pytest.mark.parametrize("name, wrong", list(_PR1224_WRONG.items()))
-def test_pendler_coords_not_pr1224_revert(stations, name: str, wrong: tuple[float, float]) -> None:
+def test_pendler_coords_not_pr1224_revert(
+    stations: list[dict[str, Any]], name: str, wrong: tuple[float, float]
+) -> None:
     """Anti-revert: the literal PR #1224 hand-curated coordinates must
     never come back. Trip wire against accidental rollback."""
     entry = next((s for s in stations if s.get("name") == name), None)
@@ -122,7 +135,7 @@ def test_pendler_coords_not_pr1224_revert(stations, name: str, wrong: tuple[floa
 # ---------------------------------------------------------------------------
 
 
-def test_weigelsdorf_not_in_stations_json(stations) -> None:
+def test_weigelsdorf_not_in_stations_json(stations: list[dict[str, Any]]) -> None:
     """Weigelsdorf is operatively closed since 2023-07-01 (Pottendorfer
     Linie modernization, new Bahnhof Ebreichsdorf is the replacement)."""
     hits = [s for s in stations if s.get("name") == "Weigelsdorf"]
@@ -133,13 +146,17 @@ def test_weigelsdorf_not_in_stations_json(stations) -> None:
     )
 
 
-def test_weigelsdorf_not_in_pendler_candidates(pendler_candidates) -> None:
+def test_weigelsdorf_not_in_pendler_candidates(
+    pendler_candidates: Mapping[str, Any],
+) -> None:
     """The pendler-whitelist must not anchor a decommissioned station."""
-    hits = [c for c in pendler_candidates["candidates"] if c.get("name") == "Weigelsdorf"]
+    hits = [
+        c for c in pendler_candidates["candidates"] if c.get("name") == "Weigelsdorf"
+    ]
     assert hits == []
 
 
-def test_weigelsdorf_not_in_gtfs_stops(gtfs_stops) -> None:
+def test_weigelsdorf_not_in_gtfs_stops(gtfs_stops: list[dict[str, str]]) -> None:
     """The GTFS stops mirror must not carry the phantom station either."""
     hits = [r for r in gtfs_stops if r.get("stop_name") == "Weigelsdorf"]
     assert hits == [], (
