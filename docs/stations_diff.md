@@ -1,16 +1,17 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-21T12:21:26+00:00_
+_Generated: 2026-05-21T13:39:02+00:00_
 
-**Stations: 2236 → 2236 (Δ +0)**
+**Stations: 2236 → 2235 (Δ -1)**
 
-## Added (0)
+## Added (1)
 
-_None._
+- `name:Wien Hauptbahnhof (WL)` — Wien Hauptbahnhof \(WL\)
 
-## Removed (0)
+## Removed (2)
 
-_None._
+- `bst:900100` — Wien Hauptbahnhof
+- `bst:900105` — Wien Kaiserebersdorf
 
 ## Renamed (0)
 
