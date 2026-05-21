@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 21 May 2026 17:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 18:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[73A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8d70b788bb9f2705f837b7e65be05431855d1f1a0680c78911d688f0d10f2cd2</guid>
+      <pubDate>Thu, 21 May 2026 17:51:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 18:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 17:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 73A: Fahrtbehinderung in Richtung Simmering S U. Voraussichtliche Dauer: 18:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Zinnergasse . [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 73A: Fahrtbehinderung in Richtung Simmering S U. Voraussichtliche Dauer: 18:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Zinnergasse .<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[38: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
       <content:encoded><![CDATA[Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
-      <pubDate>Thu, 21 May 2026 16:24:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 09:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 16:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[59A: Verkehrsüberlastung]]></title>
@@ -82,7 +82,7 @@
       <pubDate>Thu, 21 May 2026 15:00:00 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 15:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 21 May 2026 18:00:00 +0200</ext:ends_at>
       <description>Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
       <content:encoded><![CDATA[Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
@@ -93,7 +93,7 @@
       <pubDate>Thu, 21 May 2026 14:55:00 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 16:01:09 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 14:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 21 May 2026 18:00:00 +0200</ext:ends_at>
       <description>Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
       <content:encoded><![CDATA[Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
