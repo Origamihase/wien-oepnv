@@ -39,6 +39,14 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Defense-in-depth ceiling: a healthy feed build (cache miss for HF +
+    # pip + feed compose + EN translation pass) runs in 8-12 min. The
+    # cache-hit path is much faster (~3 min). 20 min gives ~2x headroom
+    # over the slowest legitimate cold-cache run while catching hangs
+    # (stuck network fetch, hung translation pipeline) quickly. Without
+    # the cap the workflow inherits GitHub's 360-min default. Mirrors the
+    # canonical defence shape established in update-cycle.yml.
+    timeout-minutes: 20
     permissions:
       contents: write
 

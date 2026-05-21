@@ -31,6 +31,14 @@ jobs:
     #   - https://gh.io/using-larger-runners (GitHub.com only)
     # Consider using larger runners or machines with greater resources for possible analysis time improvements.
     runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    # Defense-in-depth ceiling: CodeQL Python analysis on this codebase
+    # (~17 kLOC src + ~28 kLOC tests) runs in 8-15 min. The 'actions'
+    # language run is much faster (~2 min). 30 min gives ~2x headroom
+    # over the slowest legitimate run while catching hangs (stuck
+    # database build, runaway query) quickly. Without the cap the
+    # workflow inherits GitHub's 360-min default. Mirrors the canonical
+    # defence shape established in update-cycle.yml.
+    timeout-minutes: 30
     permissions:
       # required for all workflows
       security-events: write

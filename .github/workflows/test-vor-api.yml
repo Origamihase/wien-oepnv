@@ -14,6 +14,13 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    # Defense-in-depth ceiling: the VOR API smoke test does a single
+    # /departureBoard probe with the usual VOR/VAO retry budget. Healthy
+    # runs are under a minute. 10 min gives generous headroom while
+    # catching hangs (stuck retry loop, unresponsive upstream) quickly.
+    # Without the cap the workflow inherits GitHub's 360-min default.
+    # Mirrors the canonical defence shape established in update-cycle.yml.
+    timeout-minutes: 10
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src

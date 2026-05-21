@@ -13,6 +13,15 @@ jobs:
   pytest:
     name: Run test suite
     runs-on: ubuntu-latest
+    # Defense-in-depth ceiling: the full pytest suite (~8000 tests +
+    # static checks + station validation + Overpass smoke check) runs
+    # in 4-6 min locally and 6-10 min on a GH runner. 20 min gives ~2x
+    # headroom while catching hangs (stuck test, infinite recursion,
+    # runaway fixture) quickly. The per-test pytest-timeout (60 s in
+    # pyproject.toml) is a finer-grained gate; the job-level cap is the
+    # defence-in-depth backstop. Without the cap the workflow inherits
+    # GitHub's 360-min default. Mirrors update-cycle.yml.
+    timeout-minutes: 20
 
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
