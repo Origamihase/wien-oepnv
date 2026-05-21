@@ -1,7 +1,7 @@
 # Stations Validation Report
 
-*Total stations analysed*: 2237
-*GTFS stops loaded*: 168
+*Total stations analysed*: 2236
+*GTFS stops loaded*: 167
 *Geographic duplicates*: 1
 *Alias issues*: 0
 *Coordinate anomalies*: 0
@@ -13,4 +13,4 @@
 *Naming issues*: 0
 
 ## Geographic duplicates
-- (47.82668, 16.17324) → source:hafas,manual, source:hafas,manual
+- (47.82668, 16.17324) → source:hafas,manual,oebb\_geonetz, source:hafas,manual,oebb\_geonetz
