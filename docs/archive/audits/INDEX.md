@@ -10,6 +10,7 @@ Chronologische Übersicht aller archivierten Audits dieses Projekts.
 | 2026-05-05 | [Follow-up](stations_data_audit_2026-05-05_followup.md) | [#1189](https://github.com/Origamihase/wien-oepnv/pull/1189) | 31-Vertex-Polygon (vorher 8-Vertex-Konvex-Hülle), Liesing-VOR-Coords, Sue↔Su-Token-Fix, WL-OGD-Auto-Download |
 | 2026-05-05 | [Offizielles Polygon](stations_data_audit_2026-05-05_official_polygon.md) | [#1190](https://github.com/Origamihase/wien-oepnv/pull/1190) | Hand-kuratiertes Polygon ersetzt durch offizielle `LANDESGRENZEOGD`-Quelle der MA 41 (5.637 Vertices, ~1–2 m Genauigkeit) |
 | 2026-05 | [Vollständigkeit / Pendler-Coverage](stations_coverage_2026-05.md) | (offen) | 12 kritische + 57 wichtige Pendlerstationen identifiziert; name-basierte Wishlist `data/pendler_candidates.json` + Updater-Erweiterung statt manuelle ID-Raterei |
+| 2026-05-21 | [GeoNetz-Reconciliation](stations_geonetz_reconciliation_2026-05-21.md) | (dieser PR) | ÖBB-GeoNetz-Quervalidierung deckt drei falsche hand-kurierte Koordinaten aus PR #1224 auf (Laxenburg-Biedermannsdorf ~10 km off); Weigelsdorf operativ stillgelegt 2023, aus allen Datenpfaden entfernt |
 
 ## Code & System
 
