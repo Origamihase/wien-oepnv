@@ -21,7 +21,7 @@ Pre-fix state inventory (PoC verified):
     ``sanitize_log_message`` invocation.
   * Bare ``csrf`` (Spring ``_csrf`` normalised) — NOT in ``_keys``,
     NOT in ``_header_keys``. Leaks verbatim. Note that the existing
-    ``[a-z0-9_.\-]*token`` alternation catches the SUFFIXED form
+    ``[a-z0-9_.\\-]*token`` alternation catches the SUFFIXED form
     (``csrf_token``, ``XSRF-TOKEN``) but NOT the bare form.
   * Bare ``xsrf`` (Angular bare form) — NOT in ``_keys``, NOT in
     ``_header_keys``. Leaks verbatim. Same suffix asymmetry as csrf.

@@ -709,18 +709,47 @@ def _load_existing_station_entries(
             if bst_id is None:
                 is_manual = True
             elif source != "oebb":
-                if isinstance(source, str) and "oebb" in source:
-                    is_manual = False
+                if isinstance(source, str):
+                    stripped = source.strip()
+                    if stripped:
+                        # Token-based classification: a substring match for
+                        # ``"oebb"`` inside a comma-separated source string
+                        # would mis-classify entries whose ``source`` carries
+                        # only a metadata provider whose name *contains* the
+                        # canonical ``oebb`` token (e.g. ``oebb_geonetz`` —
+                        # the GeoNetz EVA/IFOPT enrichment, not the ÖBB
+                        # Excel ``Verzeichnis der Verkehrsstationen``).
+                        # Pre-fix the substring check at this site bucketed
+                        # the synthetic ``Wien Hauptbahnhof`` (``bst_id=
+                        # 900100``, ``source=google_places,oebb_geonetz,
+                        # vor,wl``) and ``Wien Kaiserebersdorf`` (``bst_id=
+                        # 900105``, ``source=oebb_geonetz,vor``) into the
+                        # ÖBB-Excel ``mapping`` even though the underlying
+                        # ``bst_id`` is never present in the live ÖBB
+                        # workbook. The entries therefore failed to round-
+                        # trip through the rebuild and dropped out of
+                        # ``data/stations.json`` on every weekly cron tick —
+                        # the regression visible in commit ``484c1f6``'s
+                        # post-mortem (the file fix there did not address
+                        # the underlying classifier bug).
+                        tokens = {t.strip() for t in stripped.split(",") if t.strip()}
+                        is_manual = "oebb" not in tokens
+                    else:
+                        # Backward-compat: entries written before the
+                        # ``as_dict`` source-default fix lack a source
+                        # field entirely (empty string). If they carry the
+                        # typical ÖBB Excel fields (``bst_id`` +
+                        # ``bst_code``), treat them as ÖBB — otherwise the
+                        # next Excel pull would create a duplicate and
+                        # trip the canonical-name uniqueness gate (see
+                        # PR #1203 cron failure post-mortem).
+                        bst_code = entry.get("bst_code")
+                        is_manual = not (isinstance(bst_code, str) and bst_code.strip())
                 elif isinstance(source, list) and "oebb" in source:
                     is_manual = False
                 elif not source:
-                    # Backward-compat: entries written before the
-                    # `as_dict` source-default fix lack a source field
-                    # entirely. If they carry the typical ÖBB Excel
-                    # fields (bst_id + bst_code), treat them as ÖBB —
-                    # otherwise the next Excel pull would create a
-                    # duplicate and trip the canonical-name uniqueness
-                    # gate (see PR #1203 cron failure post-mortem).
+                    # Backward-compat (non-string variant): ``None`` / unset
+                    # ``source`` falls through to the same ``bst_code`` guard.
                     bst_code = entry.get("bst_code")
                     is_manual = not (isinstance(bst_code, str) and bst_code.strip())
                 else:

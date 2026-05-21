@@ -18,6 +18,24 @@ gegen ein Temp-File und kopiert nur nach Auto-Quarantine zurück.
 Janitor PR #1321: file-level S603 suppression. The single
 subprocess.run(...) in this file invokes sys.executable against a
 hard-coded path under REPO_ROOT, so the call is safe.
+
+Test-Hygiene contract: every test below either calls ``wrapper.main([])``
+or invokes ``scripts/update_all_stations.py`` as a subprocess. The
+wrapper hardcodes three output paths (``data/stations.json``,
+``data/stations_last_run.json``, ``docs/stations_diff.md`` — see lines
+89-91 of the script and ``Path("data/stations.json").resolve()`` at
+line 648). All three sit inside the repository root, so a green test
+run necessarily mutates the working tree. Pre-fix this leaked into
+subsequent station-dependent tests in the same pytest session
+(``test_hauptbahnhof_id_matches_stations_directory``,
+``test_clean_title_expands_wien_hbf_abbreviation`` and the
+``test_oebb_*`` cluster all silently depended on the unmodified
+on-disk state) — the cascade that masked the classifier regression at
+``scripts/update_station_directory.py:_load_existing_station_entries``
+for weeks. The autouse ``_restore_wrapper_outputs`` fixture below
+snapshots the bytes of all three paths before each test and restores
+them in teardown so test order can never matter again. A passing
+pytest run leaves no diff in ``git status``.
 """
 from __future__ import annotations
 
@@ -25,12 +43,56 @@ import json
 import os
 import subprocess
 import sys
+from collections.abc import Iterator
 from pathlib import Path
 
 import pytest
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
+# Paths the wrapper hardcodes — see ``scripts/update_all_stations.py``
+# lines 89-91 (``_DEFAULT_HEARTBEAT_PATH`` / ``_DEFAULT_DIFF_REPORT_PATH``)
+# and line 648 (``target_stations_json = Path("data/stations.json")``).
+_WRAPPER_OUTPUT_PATHS: tuple[Path, ...] = (
+    REPO_ROOT / "data" / "stations.json",
+    REPO_ROOT / "data" / "stations_last_run.json",
+    REPO_ROOT / "docs" / "stations_diff.md",
+)
+
+
+@pytest.fixture(autouse=True)
+def _restore_wrapper_outputs() -> Iterator[None]:
+    """Snapshot and restore the wrapper's hardcoded output files.
+
+    The wrapper writes to three repo-root paths regardless of any
+    monkeypatching the test sets up, because the path constants are
+    captured at module import time. Without this fixture a green run
+    of any test below leaves the three files modified in ``git status``
+    and poisons downstream station-related tests via order-dependent
+    file-state coupling — exactly the cascade that masked the
+    ``_load_existing_station_entries`` classifier bug.
+
+    The fixture runs the test inside a try/finally so the snapshot is
+    restored even on test failure or skip. ``autouse=True`` applies it
+    to every test in this module, including any future addition.
+    """
+    snapshots: dict[Path, bytes | None] = {
+        path: (path.read_bytes() if path.exists() else None)
+        for path in _WRAPPER_OUTPUT_PATHS
+    }
+    try:
+        yield
+    finally:
+        for path, original in snapshots.items():
+            if original is None:
+                # The path did not exist before the test. If the test
+                # created it, remove it so the post-test state matches
+                # the pre-test state bit-for-bit.
+                if path.exists():
+                    path.unlink()
+            else:
+                path.write_bytes(original)
 
 
 def test_wrapper_proceeds_when_no_quarantineable_match(
@@ -155,7 +217,14 @@ def test_wrapper_preserves_stations_json_on_atomic_write_failure(
 
 @pytest.mark.timeout(180)
 def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
-    """Bei Erfolg ist data/stations.json nach dem Lauf valide."""
+    """Bei Erfolg ist data/stations.json nach dem Lauf valide.
+
+    The ``_restore_wrapper_outputs`` autouse fixture above snapshots
+    every working-tree path the wrapper writes into and restores them
+    in teardown, so an end-to-end run that drives the live merge
+    pipeline against ``cwd=REPO_ROOT`` no longer leaks state into
+    sibling tests.
+    """
     # Mock the OSM Overpass call by env-disabling it inside the
     # subprocess: the wrapper test exists to verify atomicity of the
     # update pipeline, NOT to exercise real network round-trips. The
