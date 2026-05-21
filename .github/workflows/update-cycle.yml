@@ -63,6 +63,14 @@ concurrency:
 jobs:
   cycle:
     runs-on: ubuntu-latest
+    # Defense-in-depth ceiling for the whole job. A healthy tick runs
+    # in 3-5 min (see step-order comment above); without this cap the
+    # workflow inherits GitHub's 360-min default, so a hung subprocess
+    # in any step burns 6h of billable minutes and — combined with
+    # ``concurrency: cancel-in-progress: false`` above — backs up the
+    # next ~12 IFTTT triggers behind it. 10 min gives ~2x headroom over
+    # the worst legitimate run while still catching hangs quickly.
+    timeout-minutes: 10
     permissions:
       contents: write
     env:
@@ -191,17 +199,42 @@ jobs:
       # ``continue-on-error: true`` raised an orange badge per failed
       # step; the warning emits the same operator-visible signal here.
       - name: Refresh free-API caches in parallel
+        # Defense-in-depth step ceiling. The per-process ``timeout 90``
+        # wrappers below catch a single hung fetcher (their exit code
+        # 124 surfaces via the report() ``::warning::`` annotation, so
+        # the other two fetchers' caches still refresh on the same
+        # tick). This step-level ``timeout-minutes: 3`` is the fallback
+        # if ALL three processes hang past their per-process budget
+        # OR if the ``wait`` plumbing itself misbehaves (e.g. a bash
+        # job-control quirk). 3 min ≈ ``90s parallel + reporting`` —
+        # comfortably above the per-process ceiling but tight enough
+        # to leave 7 min of the job's 10-min budget for VAO + feed
+        # build + commit. Healthy ticks finish this step in ~30s.
+        timeout-minutes: 3
         run: |
           set +e
 
           log_dir="$RUNNER_TEMP/fetcher-logs"
           mkdir -p "$log_dir"
 
-          python scripts/update_wl_cache.py         > "$log_dir/wl.log"         2>&1 &
+          # Per-process Slowloris-defence wrapper. ``timeout`` (GNU
+          # coreutils, ships on ubuntu-latest) sends SIGTERM after 90s
+          # and follows up with SIGKILL 10s later via ``--kill-after``
+          # so a fetcher stuck in an uninterruptible C-extension call
+          # (e.g. a hung HTTPS socket below urllib3's Python-layer
+          # read deadline) cannot survive the SIGTERM-ignore path.
+          # Exit code 124 = SIGTERM-on-timeout, 137 = SIGKILL — the
+          # report() helper prints both via the existing ``(exit ${rc})``
+          # annotation so operators see ``::warning::`` lines for the
+          # killed fetcher. 90s budget covers the WORST documented
+          # legitimate run (WL: 2 endpoints × ~25s timeout × app-retry
+          # ≈ 60-80s under heavy upstream retry-load); healthy fetchers
+          # finish in <10s.
+          timeout --kill-after=10 90 python scripts/update_wl_cache.py         > "$log_dir/wl.log"         2>&1 &
           pid_wl=$!
-          python scripts/update_oebb_cache.py       > "$log_dir/oebb.log"       2>&1 &
+          timeout --kill-after=10 90 python scripts/update_oebb_cache.py       > "$log_dir/oebb.log"       2>&1 &
           pid_oebb=$!
-          python scripts/update_baustellen_cache.py > "$log_dir/baustellen.log" 2>&1 &
+          timeout --kill-after=10 90 python scripts/update_baustellen_cache.py > "$log_dir/baustellen.log" 2>&1 &
           pid_baustellen=$!
 
           wait "$pid_wl";         rc_wl=$?
