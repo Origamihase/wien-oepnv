@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 21 May 2026 07:30:41 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 08:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[63A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba</guid>
+      <pubDate>Thu, 21 May 2026 07:53:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 08:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 07:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">06817ade86d1a1933bbe0d61cb95b6a6235420db1b9474f70939e73f51c11a2f</guid>
+      <pubDate>Thu, 21 May 2026 07:50:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 08:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 07:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[79B: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7ab9732a843a04247957be1f1105d5e79149099ca511612df462b6a93923106d</guid>
+      <pubDate>Thu, 21 May 2026 07:35:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 08:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 07:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 79B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 79B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U3: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +50,8 @@
       <ext:first_seen>Thu, 21 May 2026 07:30:41 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 07:27:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U3: Fahrtbehinderung in Richtung Simmering. Voraussichtliche Dauer: 07:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hütteldorfer Straße. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Fahrtbehinderung in Richtung Simmering. Voraussichtliche Dauer: 07:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hütteldorfer Straße.<br/>[Am 21.05.2026]]]></content:encoded>
+      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Aufgelassen Busse halten Wienerbergbrücke]]></title>
@@ -85,38 +118,6 @@
       <ext:ends_at>Sat, 30 May 2026 06:00:00 +0200</ext:ends_at>
       <description>Wegen einer Veranstaltung im Technischen Museum mit einer damit verbundenen Straßensperre wird die Linie N54 umgeleitet. [20.05.2026 – 30.05.2026]</description>
       <content:encoded><![CDATA[Wegen einer Veranstaltung im Technischen Museum mit einer damit verbundenen Straßensperre wird die Linie N54 umgeleitet.<br/>[20.05.2026 – 30.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[REX 6: Wien Baumgarten (WL) ↔ Ebenfurth]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;871188</guid>
-      <pubDate>Wed, 20 May 2026 10:30:17 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 10:30:17 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Ebenfurth Bahnhof und Baumgarten im Bgld-Schattendorf Bahnhof von 15.06.2026 (06:50) bis 17.06.2026 (15:00 Uhr) keine REX 6-Züge fahren. [Seit 20.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Ebenfurth Bahnhof und Baumgarten im Bgld-Schattendorf Bahnhof von 15.06.2026 (06:50) bis 17.06.2026 (15:00 Uhr) keine REX 6-Züge fahren.<br/>[Seit 20.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Kurzführung am 21.05.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">784dbddb4ccb1c42c573e6301631bca7a7222adbdc05c7adef1b13492ba1afd2</guid>
-      <pubDate>Wed, 20 May 2026 09:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 09:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 09:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 16:30:00 +0200</ext:ends_at>
-      <description>Staatsbesuch Wegen eines Staatsbesuchs wird die Linie D verkürzt. [20.05.2026 – 21.05.2026]</description>
-      <content:encoded><![CDATA[Staatsbesuch Wegen eines Staatsbesuchs wird die Linie D verkürzt.<br/>[20.05.2026 – 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: 40+41: Betrieb ab Gersthof]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8</guid>
-      <pubDate>Wed, 20 May 2026 08:06:12 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 08:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 08:06:12 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[20.05.2026 – 21.05.2026]</description>
-      <content:encoded><![CDATA[[20.05.2026 – 21.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
