@@ -200,6 +200,15 @@
       "en": {}
     }
   },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&878860": {
+    "first_seen": "2026-05-21T22:30:53.893692+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to people in the track area, no journeys were possible between Wien Rennweg Bahnhst and Wien Mitte-Landstra\u00dfe Bahnhof (U) until 00:11 o'clock.",
+        "title": "Wien Rennweg - Vienna Mitte"
+      }
+    }
+  },
   "stammstrecke_delay_meidling|2026-05-13T08:00:00+02:00": {
     "first_seen": "2026-05-13T06:30:55.225141+00:00"
   },
@@ -2810,6 +2819,14 @@
       }
     }
   },
+  "wl|st\u00f6rung|L=N41|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:30:53.893692+00:00",
+    "translations": {
+      "en": {
+        "title": "N41: Buses stop W\u00e4hringer Stra\u00dfe ONo. 200-202"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=N43|D=2026-05-01": {
     "first_seen": "2026-04-30T23:28:44.616135+00:00"
   },
@@ -2851,6 +2868,14 @@
   },
   "wl|st\u00f6rung|L=N43|D=2026-05-21": {
     "first_seen": "2026-05-20T22:30:58.523256+00:00",
+    "translations": {
+      "en": {
+        "title": "N43: Buses stop at Dornbacher Stra\u00dfe 85"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=N43|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:30:53.893692+00:00",
     "translations": {
       "en": {
         "title": "N43: Buses stop at Dornbacher Stra\u00dfe 85"
@@ -2904,6 +2929,14 @@
     "translations": {
       "en": {
         "title": "N46: Buses stop at line 48A in Burggasse"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=N46|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:30:53.893692+00:00",
+    "translations": {
+      "en": {
+        "title": "N46: Buses stop at line 48A in Neustiftgasse"
       }
     }
   },
