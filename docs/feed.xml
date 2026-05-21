@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 21 May 2026 08:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 08:30:34 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[37A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a38e2ca7a84ce8085bdcf58d06bbb25125fbcf936ce29cd6a5915116418fcdae</guid>
+      <pubDate>Thu, 21 May 2026 08:30:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 08:30:34 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 08:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet. [Seit 21.05.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet.<br/>[Seit 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/43: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dbdd898917832cac7ecbd327f3d1d1dfe68d3e015a9393dc7c3b188399d29f0a</guid>
+      <pubDate>Thu, 21 May 2026 08:20:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 08:30:34 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 08:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,15 +43,15 @@
       <content:encoded><![CDATA[Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[10A/11A/26A/2A/41A/4A/5A/60A/76A/77A/80A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">06817ade86d1a1933bbe0d61cb95b6a6235420db1b9474f70939e73f51c11a2f</guid>
+      <guid isPermaLink="false">b7de036d3f0ac71a4133dfc79ad6e16ec3a39cc9289a7dee626466c78e61aeeb</guid>
       <pubDate>Thu, 21 May 2026 07:50:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 08:00:59 +0200</ext:first_seen>
+      <ext:first_seen>Thu, 21 May 2026 08:30:34 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 07:50:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 21.05.2026]]]></content:encoded>
+      <description>Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Linie 4A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[79B: Verkehrsüberlastung]]></title>
@@ -60,17 +82,6 @@
       <pubDate>Thu, 21 May 2026 07:25:32 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 07:30:41 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 07:25:32 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 21.05.2026]</description>
-      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Busse halten Erzherzog-Karl-Straße 78]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92</guid>
-      <pubDate>Thu, 21 May 2026 07:07:20 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 07:30:41 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 07:07:20 +0200</ext:starts_at>
       <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 21.05.2026]</description>
       <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 20 May 2027 11:11:00 +0200</ext:ends_at>
       <description>Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet. [Ab 02.06.2026]</description>
       <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet.<br/>[Ab 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N54: Veranstaltung am 30.05.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9f0927477931611e3d079d470234ecfde3964ab06d806b8d2f3f99fca026efe9</guid>
-      <pubDate>Wed, 20 May 2026 12:10:00 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 12:30:38 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 20 May 2026 12:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 06:00:00 +0200</ext:ends_at>
-      <description>Wegen einer Veranstaltung im Technischen Museum mit einer damit verbundenen Straßensperre wird die Linie N54 umgeleitet. [20.05.2026 – 30.05.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Veranstaltung im Technischen Museum mit einer damit verbundenen Straßensperre wird die Linie N54 umgeleitet.<br/>[20.05.2026 – 30.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
