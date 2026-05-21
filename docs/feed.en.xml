@@ -7,16 +7,27 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 21 May 2026 11:30:42 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 12:00:45 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5A: Schadhafter LKW]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e47f80405c74ab767929d6d84856246a5d2ac91e3505324f7405d3f01db3268</guid>
+      <pubDate>Thu, 21 May 2026 11:39:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 12:00:45 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 11:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 5A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated] [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 5A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab</guid>
-      <pubDate>Thu, 21 May 2026 11:23:00 +0200</pubDate>
+      <pubDate>Thu, 21 May 2026 11:29:00 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 09:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 11:23:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 11:29:00 +0200</ext:ends_at>
+      <ext:starts_at>Thu, 21 May 2026 11:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated] [On 21.05.2026]</description>
       <content:encoded><![CDATA[Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
     </item>
@@ -43,34 +54,23 @@
       <content:encoded><![CDATA[Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[71: Rettungseinsatz Züge halten bei Linie 71]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c</guid>
-      <pubDate>Thu, 21 May 2026 10:38:42 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 11:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:38:42 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 11:37:00 +0200</ext:ends_at>
-      <description>[Partially translated] [On 21.05.2026]</description>
-      <content:encoded><![CDATA[[Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Rettungseinsatz Züge halten bei Linie 71]]></title>
+      <title><![CDATA[18: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
       <pubDate>Thu, 21 May 2026 10:32:00 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 11:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:34:50 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 21 May 2026 10:32:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated] [On 21.05.2026]</description>
       <content:encoded><![CDATA[Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[5: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <title><![CDATA[5: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5</guid>
       <pubDate>Thu, 21 May 2026 10:27:00 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:36:46 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 21 May 2026 10:27:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 21 May 2026 12:33:00 +0200</ext:ends_at>
       <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated] [On 21.05.2026]</description>
       <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
@@ -85,17 +85,6 @@
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated] [On 21.05.2026]</description>
       <content:encoded><![CDATA[Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972</guid>
-      <pubDate>Thu, 21 May 2026 10:20:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 11:40:00 +0200</ext:ends_at>
-      <description>Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated] [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Staatsbesuch]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Partially translated] [On 21.05.2026]</description>
       <content:encoded><![CDATA[[Partially translated]<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a38e2ca7a84ce8085bdcf58d06bbb25125fbcf936ce29cd6a5915116418fcdae</guid>
+      <pubDate>Thu, 21 May 2026 08:30:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 08:30:34 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 08:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet. [Partially translated] [Since 21.05.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet. [Partially translated]<br/>[Since 21.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
