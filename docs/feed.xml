@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 21 May 2026 20:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 21:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40: 40+41: Betrieb ab Gersthof & Falschparker Betrieb ab Gersthof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ed9c3f396c3424629ee8cdd78fd5804440177370028dfdf0ea4f186e02952ada</guid>
+      <pubDate>Thu, 21 May 2026 20:33:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 21:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 20 May 2026 08:06:12 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>40+41: Betrieb ab Gersthof &lt; Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [20.05.2026 – 21.05.2026]</description>
+      <content:encoded><![CDATA[40+41: Betrieb ab Gersthof < Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[20.05.2026 – 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[5: Fahrtbehinderung Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5</guid>
-      <pubDate>Thu, 21 May 2026 20:19:00 +0200</pubDate>
+      <pubDate>Thu, 21 May 2026 20:20:26 +0200</pubDate>
       <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 20:20:26 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 21 May 2026 21:20:00 +0200</ext:ends_at>
+      <description>[Am 21.05.2026]</description>
+      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Haltestelle ersatzlos aufgelassen]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 21 Jun 2026 01:00:00 +0200</ext:ends_at>
       <description>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen. [21.05.2026 – 21.06.2026]</description>
       <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[21.05.2026 – 21.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/42A: Umleitung Lidlgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">788edb4ecc8d6bab12f103e3752c8b02671660cbaad794f1a6b57460be1d0d28</guid>
-      <pubDate>Wed, 20 May 2026 12:45:00 +0200</pubDate>
-      <ext:first_seen>Wed, 20 May 2026 13:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 02 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 20 May 2027 11:11:00 +0200</ext:ends_at>
-      <description>Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet. [Ab 02.06.2026]</description>
-      <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet.<br/>[Ab 02.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
