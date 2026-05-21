@@ -105,3 +105,20 @@ repos:
         files: ^docs/assets/site\.(css|js|min\.css|min\.js)$
         pass_filenames: false
         require_serial: true
+
+  # ── Dashboard i18n coverage gate ─────────────────────────────────
+  # Every ``data-i18n*`` attribute in docs/site.html must have a
+  # matching key in the ``I18N_EN`` dictionary in docs/assets/site.js.
+  # The pre-commit hook rejects drift the moment a new German UI
+  # string is added to the HTML without an English equivalent — that
+  # was the exact failure mode behind the partially-translated
+  # dashboard (section headings + footer were never registered).
+  - repo: local
+    hooks:
+      - id: i18n-coverage
+        name: docs/site.html data-i18n keys covered by I18N_EN
+        entry: python scripts/check_i18n_coverage.py
+        language: system
+        files: ^docs/(site\.html|assets/site\.js)$
+        pass_filenames: false
+        require_serial: true

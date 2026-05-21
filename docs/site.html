@@ -11,8 +11,8 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="robots" content="index,follow">
 
-  <title>Wien ÖPNV – Live-Dashboard | Störungen, Stammstrecke &amp; Statistik</title>
-  <meta name="description" content="Live-Dashboard für Wiener Linien, ÖBB und VOR: aktuelle Störungen aus dem RSS-Feed, Jahresstatistik der Störungsmeldungen sowie Verspätungs- und Ausfalldaten der S-Bahn-Stammstrecke.">
+  <title data-i18n="doc-title">Wien ÖPNV – Live-Dashboard | Störungen, Stammstrecke &amp; Statistik</title>
+  <meta name="description" content="Live-Dashboard für Wiener Linien, ÖBB und VOR: aktuelle Störungen aus dem RSS-Feed, Jahresstatistik der Störungsmeldungen sowie Verspätungs- und Ausfalldaten der S-Bahn-Stammstrecke." data-i18n-content="meta-description">
 
   <link rel="canonical" href="https://origamihase.github.io/wien-oepnv/site.html">
   <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
@@ -194,15 +194,15 @@
 
     <section id="stoerungen" class="section" aria-labelledby="stoerungen-title">
       <header class="section__header">
-        <h2 id="stoerungen-title">Störungs-Statistik <span class="year" data-year-label>–</span></h2>
-        <p class="section__sub">
+        <h2 id="stoerungen-title"><span data-i18n="stoerungen-title">Störungs-Statistik</span> <span class="year" data-year-label>–</span></h2>
+        <p class="section__sub" data-i18n="stoerungen-sub-html" data-i18n-html="1">
           Jahresledger aus
           <code>data/stats/stoerungen_<span data-year-label>–</span>.csv</code>
           – eine Zeile pro neu erkannter Ereignis-Identität.
         </p>
       </header>
 
-      <div class="kpis" id="stoerungen-kpis" role="group" aria-label="Kennzahlen Störungen">
+      <div class="kpis" id="stoerungen-kpis" role="group" aria-label="Kennzahlen Störungen" data-i18n-aria-label="aria-stoerungen-kpis">
         <article class="kpi skeleton"></article>
         <article class="kpi skeleton"></article>
         <article class="kpi skeleton"></article>
@@ -211,16 +211,16 @@
 
       <div class="chart-grid">
         <article class="card">
-          <h3 class="card__title">Verteilung je Quelle</h3>
-          <div class="bars" id="stoerungen-providers" role="group" aria-label="Störungen je Quelle"></div>
+          <h3 class="card__title" data-i18n="card-by-provider">Verteilung je Quelle</h3>
+          <div class="bars" id="stoerungen-providers" role="group" aria-label="Störungen je Quelle" data-i18n-aria-label="aria-stoerungen-providers"></div>
         </article>
         <article class="card">
-          <h3 class="card__title">Nach Wochentag</h3>
-          <div class="bars" id="stoerungen-weekday" role="group" aria-label="Störungen je Wochentag"></div>
+          <h3 class="card__title" data-i18n="card-by-weekday">Nach Wochentag</h3>
+          <div class="bars" id="stoerungen-weekday" role="group" aria-label="Störungen je Wochentag" data-i18n-aria-label="aria-stoerungen-weekday"></div>
         </article>
         <article class="card">
-          <h3 class="card__title">Nach Tageszeit</h3>
-          <div class="bars" id="stoerungen-hour" role="group" aria-label="Störungen je Stunde"></div>
+          <h3 class="card__title" data-i18n="card-by-hour">Nach Tageszeit</h3>
+          <div class="bars" id="stoerungen-hour" role="group" aria-label="Störungen je Stunde" data-i18n-aria-label="aria-stoerungen-hour"></div>
         </article>
       </div>
       <p class="error" id="stoerungen-error" hidden role="alert"></p>
@@ -228,14 +228,14 @@
 
     <section id="stammstrecke" class="section" aria-labelledby="stammstrecke-title">
       <header class="section__header">
-        <h2 id="stammstrecke-title">Stammstrecke – Verspätungen <span class="year" data-year-label>–</span></h2>
-        <p class="section__sub">
+        <h2 id="stammstrecke-title"><span data-i18n="stammstrecke-title">Stammstrecke – Verspätungen</span> <span class="year" data-year-label>–</span></h2>
+        <p class="section__sub" data-i18n="stammstrecke-sub-html" data-i18n-html="1">
           S-Bahn-Beobachtungen am Wien Hauptbahnhof
           – <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.
         </p>
       </header>
 
-      <div class="kpis" id="stammstrecke-kpis" role="group" aria-label="Kennzahlen Stammstrecke">
+      <div class="kpis" id="stammstrecke-kpis" role="group" aria-label="Kennzahlen Stammstrecke" data-i18n-aria-label="aria-stammstrecke-kpis">
         <article class="kpi skeleton"></article>
         <article class="kpi skeleton"></article>
         <article class="kpi skeleton"></article>
@@ -244,16 +244,16 @@
 
       <div class="chart-grid">
         <article class="card">
-          <h3 class="card__title">Ø Verspätung nach Tageszeit</h3>
-          <div class="bars" id="stammstrecke-hour" role="group" aria-label="Ø Verspätung je Stunde"></div>
+          <h3 class="card__title" data-i18n="card-stammstrecke-hour">Ø Verspätung nach Tageszeit</h3>
+          <div class="bars" id="stammstrecke-hour" role="group" aria-label="Ø Verspätung je Stunde" data-i18n-aria-label="aria-stammstrecke-hour"></div>
         </article>
         <article class="card">
-          <h3 class="card__title">Ø Verspätung nach Wochentag</h3>
-          <div class="bars" id="stammstrecke-weekday" role="group" aria-label="Ø Verspätung je Wochentag"></div>
+          <h3 class="card__title" data-i18n="card-stammstrecke-weekday">Ø Verspätung nach Wochentag</h3>
+          <div class="bars" id="stammstrecke-weekday" role="group" aria-label="Ø Verspätung je Wochentag" data-i18n-aria-label="aria-stammstrecke-weekday"></div>
         </article>
         <article class="card card--wide">
-          <h3 class="card__title">Beobachtungen je Richtung</h3>
-          <div class="bars" id="stammstrecke-direction" role="group" aria-label="Beobachtungen je Richtung"></div>
+          <h3 class="card__title" data-i18n="card-stammstrecke-direction">Beobachtungen je Richtung</h3>
+          <div class="bars" id="stammstrecke-direction" role="group" aria-label="Beobachtungen je Richtung" data-i18n-aria-label="aria-stammstrecke-direction"></div>
         </article>
       </div>
       <p class="error" id="stammstrecke-error" hidden role="alert"></p>
@@ -261,14 +261,14 @@
 
     <section id="ausfaelle" class="section" aria-labelledby="ausfaelle-title">
       <header class="section__header">
-        <h2 id="ausfaelle-title">Stammstrecke – Ausfälle <span class="year" data-year-label>–</span></h2>
-        <p class="section__sub">
+        <h2 id="ausfaelle-title"><span data-i18n="ausfaelle-title">Stammstrecke – Ausfälle</span> <span class="year" data-year-label>–</span></h2>
+        <p class="section__sub" data-i18n="ausfaelle-sub-html" data-i18n-html="1">
           Annullierte S-Bahn-Züge – deduplizierter Ledger
           <code>data/stats/ausfaelle_<span data-year-label>–</span>.csv</code>.
         </p>
       </header>
 
-      <div class="kpis" id="ausfaelle-kpis" role="group" aria-label="Kennzahlen Ausfälle">
+      <div class="kpis" id="ausfaelle-kpis" role="group" aria-label="Kennzahlen Ausfälle" data-i18n-aria-label="aria-ausfaelle-kpis">
         <article class="kpi skeleton"></article>
         <article class="kpi skeleton"></article>
         <article class="kpi skeleton"></article>
@@ -276,20 +276,20 @@
 
       <div class="chart-grid">
         <article class="card">
-          <h3 class="card__title">Nach Linie</h3>
-          <div class="bars" id="ausfaelle-line" role="group" aria-label="Ausfälle je Linie"></div>
+          <h3 class="card__title" data-i18n="card-by-line">Nach Linie</h3>
+          <div class="bars" id="ausfaelle-line" role="group" aria-label="Ausfälle je Linie" data-i18n-aria-label="aria-ausfaelle-line"></div>
         </article>
         <article class="card">
-          <h3 class="card__title">Nach Richtung</h3>
-          <div class="bars" id="ausfaelle-direction" role="group" aria-label="Ausfälle je Richtung"></div>
+          <h3 class="card__title" data-i18n="card-by-direction">Nach Richtung</h3>
+          <div class="bars" id="ausfaelle-direction" role="group" aria-label="Ausfälle je Richtung" data-i18n-aria-label="aria-ausfaelle-direction"></div>
         </article>
         <article class="card">
-          <h3 class="card__title">Nach Wochentag</h3>
-          <div class="bars" id="ausfaelle-weekday" role="group" aria-label="Ausfälle je Wochentag"></div>
+          <h3 class="card__title" data-i18n="card-by-weekday">Nach Wochentag</h3>
+          <div class="bars" id="ausfaelle-weekday" role="group" aria-label="Ausfälle je Wochentag" data-i18n-aria-label="aria-ausfaelle-weekday"></div>
         </article>
         <article class="card card--wide">
-          <h3 class="card__title">Nach Tageszeit</h3>
-          <div class="bars" id="ausfaelle-hour" role="group" aria-label="Ausfälle je Stunde"></div>
+          <h3 class="card__title" data-i18n="card-by-hour">Nach Tageszeit</h3>
+          <div class="bars" id="ausfaelle-hour" role="group" aria-label="Ausfälle je Stunde" data-i18n-aria-label="aria-ausfaelle-hour"></div>
         </article>
       </div>
       <p class="error" id="ausfaelle-error" hidden role="alert"></p>
@@ -303,26 +303,26 @@
         &nbsp;
       </p>
       <div>
-        <h2 class="site-footer__heading">Datenquellen</h2>
+        <h2 class="site-footer__heading" data-i18n="footer-sources-heading">Datenquellen</h2>
         <ul class="site-footer__list">
-          <li><strong>Wiener Linien</strong> – Echtzeit-Störungsmeldungen (OGD)</li>
-          <li><strong>ÖBB</strong> – bundesweite Bahnmeldungen, Wien-gefiltert</li>
-          <li><strong>VOR/VAO</strong> – Stammstrecken-Beobachtungen am Wien Hbf</li>
-          <li><strong>Stadt Wien (OGD)</strong> – Baustellen mit Bezirk &amp; Zeitraum</li>
+          <li data-i18n="footer-source-wl-html" data-i18n-html="1"><strong>Wiener Linien</strong> – Echtzeit-Störungsmeldungen (OGD)</li>
+          <li data-i18n="footer-source-oebb-html" data-i18n-html="1"><strong>ÖBB</strong> – bundesweite Bahnmeldungen, Wien-gefiltert</li>
+          <li data-i18n="footer-source-vor-html" data-i18n-html="1"><strong>VOR/VAO</strong> – Stammstrecken-Beobachtungen am Wien Hbf</li>
+          <li data-i18n="footer-source-stadt-html" data-i18n-html="1"><strong>Stadt Wien (OGD)</strong> – Baustellen mit Bezirk &amp; Zeitraum</li>
         </ul>
       </div>
       <div>
-        <h2 class="site-footer__heading">Über das Dashboard</h2>
-        <p>
+        <h2 class="site-footer__heading" data-i18n="footer-about-heading">Über das Dashboard</h2>
+        <p data-i18n="footer-about-html" data-i18n-html="1">
           Open-Source unter MIT-Lizenz. Aktualisierungs-Cadence des Feeds: rund alle 30&nbsp;Minuten.
           Dieses Dashboard ruft Feed und Statistik-CSVs <em>direkt im Browser</em> ab –
           es gibt keinen Tracker, keine Cookies, keine Drittanbieter-Skripte.
         </p>
         <p>
-          <a href="https://github.com/Origamihase/wien-oepnv" rel="external noopener noreferrer" target="_blank">Repository auf GitHub</a>
-          · <a href="https://github.com/Origamihase/wien-oepnv/blob/main/data/stats/README.md" rel="external noopener noreferrer" target="_blank">CSV-Schema</a>
-          · <a href="feed.xml" type="application/rss+xml">RSS-Feed</a>
-          · <a href="./">Projekt-Startseite</a>
+          <a href="https://github.com/Origamihase/wien-oepnv" rel="external noopener noreferrer" target="_blank" data-i18n="footer-link-repo">Repository auf GitHub</a>
+          · <a href="https://github.com/Origamihase/wien-oepnv/blob/main/data/stats/README.md" rel="external noopener noreferrer" target="_blank" data-i18n="footer-link-schema">CSV-Schema</a>
+          · <a href="feed.xml" type="application/rss+xml" data-i18n="footer-link-rss" data-i18n-href="feed-href" data-href-de="feed.xml" data-href-en="feed.en.xml">RSS-Feed</a>
+          · <a href="./" data-i18n="footer-link-home">Projekt-Startseite</a>
         </p>
       </div>
     </div>

@@ -25,8 +25,15 @@
   // einmal beim Init aus dem statischen DOM gelesen und gecached, damit
   // ein Wechsel ``EN -> DE`` ohne Reload sauber zurücksetzt.
   const I18N_EN = {
+    // Document <head>
+    "doc-title": "Vienna Public Transport – Live Dashboard | Disruptions, Trunk Line & Statistics",
+    "meta-description":
+      "Live dashboard for Wiener Linien, ÖBB and VOR: current disruptions from the RSS " +
+      "feed, yearly statistics of disruption reports plus delay and cancellation data " +
+      "for the S-Bahn trunk line. Proper names (stations, operators) are kept in German.",
+    // Header / navigation
     "skip-link": "Skip to content",
-    "brand-aria": "Wien Public Transport Live Dashboard – home",
+    "brand-aria": "Wien ÖPNV Live Dashboard – home",
     "brand-sub": "Live dashboard",
     "nav-main": "Main navigation",
     "nav-feed": "Disruptions",
@@ -36,7 +43,8 @@
     "lang-switch": "Choose language",
     "lang-de": "Deutsch",
     "lang-en": "English",
-    "hero-eyebrow": "Real time · Open data · Vienna & eastern Austria",
+    // Hero
+    "hero-eyebrow": "Real-time · Open data · Vienna & eastern Austria",
     "hero-title": "Disruptions, delays & cancellations at a glance",
     "hero-lead-html":
       "Consolidated transit information from <strong>Wiener Linien</strong>, " +
@@ -50,9 +58,10 @@
     "hero-meta-stamp": "Last updated:",
     "hero-meta-rss": "Feed (RSS)",
     "hero-meta-source": "Source code",
+    // Feed section
     "feed-title": "Current disruptions",
     "feed-sub-stammstrecke-html":
-      "Current S-Bahn observations at Vienna Hauptbahnhof " +
+      "Current S-Bahn observations at Wien Hauptbahnhof " +
       "– <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.",
     "feed-sub-live-html":
       "Live from <a href=\"feed.en.xml\" type=\"application/rss+xml\" " +
@@ -73,6 +82,63 @@
     "stoerungen-error-prefix": "Disruption statistics unavailable:",
     "stammstrecke-error-prefix": "Trunk-line statistics unavailable:",
     "ausfaelle-error-prefix": "Cancellation statistics unavailable:",
+    // Disruption-statistics section
+    "stoerungen-title": "Disruption statistics",
+    "stoerungen-sub-html":
+      "Yearly ledger from " +
+      "<code>data/stats/stoerungen_<span data-year-label>–</span>.csv</code> " +
+      "– one row per newly recognised event identity.",
+    "aria-stoerungen-kpis": "Disruption key figures",
+    "card-by-provider": "Distribution by source",
+    "aria-stoerungen-providers": "Disruptions by source",
+    "card-by-weekday": "By weekday",
+    "aria-stoerungen-weekday": "Disruptions by weekday",
+    "card-by-hour": "By hour of day",
+    "aria-stoerungen-hour": "Disruptions by hour",
+    // Stammstrecke-delays section
+    "stammstrecke-title": "Trunk line – delays",
+    "stammstrecke-sub-html":
+      "S-Bahn observations at Wien Hauptbahnhof – " +
+      "<code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.",
+    "aria-stammstrecke-kpis": "Trunk line key figures",
+    "card-stammstrecke-hour": "Avg. delay by hour of day",
+    "aria-stammstrecke-hour": "Avg. delay by hour",
+    "card-stammstrecke-weekday": "Avg. delay by weekday",
+    "aria-stammstrecke-weekday": "Avg. delay by weekday",
+    "card-stammstrecke-direction": "Observations by direction",
+    "aria-stammstrecke-direction": "Observations by direction",
+    // Stammstrecke-cancellations section
+    "ausfaelle-title": "Trunk line – cancellations",
+    "ausfaelle-sub-html":
+      "Cancelled S-Bahn services – deduplicated ledger " +
+      "<code>data/stats/ausfaelle_<span data-year-label>–</span>.csv</code>.",
+    "aria-ausfaelle-kpis": "Cancellation key figures",
+    "card-by-line": "By line",
+    "aria-ausfaelle-line": "Cancellations by line",
+    "card-by-direction": "By direction",
+    "aria-ausfaelle-direction": "Cancellations by direction",
+    "aria-ausfaelle-weekday": "Cancellations by weekday",
+    "aria-ausfaelle-hour": "Cancellations by hour",
+    // Footer
+    "footer-sources-heading": "Data sources",
+    "footer-source-wl-html":
+      "<strong>Wiener Linien</strong> – real-time disruption reports (OGD)",
+    "footer-source-oebb-html":
+      "<strong>ÖBB</strong> – nationwide rail alerts, filtered to Vienna",
+    "footer-source-vor-html":
+      "<strong>VOR/VAO</strong> – trunk-line observations at Wien Hbf",
+    "footer-source-stadt-html":
+      "<strong>City of Vienna (OGD)</strong> – construction works with district &amp; period",
+    "footer-about-heading": "About the dashboard",
+    "footer-about-html":
+      "Open-source under the MIT licence. Feed update cadence: roughly every 30&nbsp;minutes. " +
+      "This dashboard fetches feed and statistics CSVs <em>directly in the browser</em> – " +
+      "no trackers, no cookies, no third-party scripts. Proper names (stations, operators) " +
+      "are kept in German on purpose; only the surrounding text is translated.",
+    "footer-link-repo": "Repository on GitHub",
+    "footer-link-schema": "CSV schema",
+    "footer-link-rss": "RSS feed",
+    "footer-link-home": "Project home",
   };
 
   // Status-Strings können sich zur Laufzeit ändern und sind kein
@@ -1131,20 +1197,29 @@
         node.dataset.i18nTitleDefault = node.getAttribute("title") || "";
       }
     }
+    for (const node of document.querySelectorAll("[data-i18n-content]")) {
+      if (node.dataset.i18nContentDefault === undefined) {
+        node.dataset.i18nContentDefault = node.getAttribute("content") || "";
+      }
+    }
+  }
+
+  function _resolveI18nValue(lang, key, defaultValue) {
+    if (lang === "en" && Object.prototype.hasOwnProperty.call(I18N_EN, key)) {
+      return I18N_EN[key];
+    }
+    return defaultValue;
   }
 
   function applyTranslationsToDom(lang) {
     document.documentElement.setAttribute("lang", lang);
-    // Body text replacements.
+    // Body text replacements. ``data-i18n-html="1"`` opts a node into
+    // innerHTML rewriting (safe because the template strings come from
+    // our static ``I18N_EN`` dictionary, never from external input).
     for (const node of document.querySelectorAll("[data-i18n]")) {
       const key = node.getAttribute("data-i18n");
       const html = node.dataset.i18nHtml === "1";
-      let value;
-      if (lang === "en" && Object.prototype.hasOwnProperty.call(I18N_EN, key)) {
-        value = I18N_EN[key];
-      } else {
-        value = node.dataset.i18nDefault;
-      }
+      const value = _resolveI18nValue(lang, key, node.dataset.i18nDefault);
       if (value == null) continue;
       if (html) {
         node.innerHTML = value;
@@ -1155,24 +1230,20 @@
     // aria-label replacements.
     for (const node of document.querySelectorAll("[data-i18n-aria-label]")) {
       const key = node.getAttribute("data-i18n-aria-label");
-      let value;
-      if (lang === "en" && Object.prototype.hasOwnProperty.call(I18N_EN, key)) {
-        value = I18N_EN[key];
-      } else {
-        value = node.dataset.i18nAriaDefault;
-      }
+      const value = _resolveI18nValue(lang, key, node.dataset.i18nAriaDefault);
       if (value != null) node.setAttribute("aria-label", value);
     }
     // title= replacements (tooltip text on lang-switch buttons).
     for (const node of document.querySelectorAll("[data-i18n-title]")) {
       const key = node.getAttribute("data-i18n-title");
-      let value;
-      if (lang === "en" && Object.prototype.hasOwnProperty.call(I18N_EN, key)) {
-        value = I18N_EN[key];
-      } else {
-        value = node.dataset.i18nTitleDefault;
-      }
+      const value = _resolveI18nValue(lang, key, node.dataset.i18nTitleDefault);
       if (value != null) node.setAttribute("title", value);
+    }
+    // content= replacements (meta description, og:title, …).
+    for (const node of document.querySelectorAll("[data-i18n-content]")) {
+      const key = node.getAttribute("data-i18n-content");
+      const value = _resolveI18nValue(lang, key, node.dataset.i18nContentDefault);
+      if (value != null) node.setAttribute("content", value);
     }
     // href= swap for the RSS link(s).
     for (const node of document.querySelectorAll("[data-i18n-href]")) {
@@ -1181,6 +1252,12 @@
         : node.getAttribute("data-href-de");
       if (href) node.setAttribute("href", href);
     }
+    // ``data-i18n-html`` rewrites blew away any ``<span data-year-label>``
+    // children that were filled with the current year on init. Re-apply
+    // the year fill so dynamic ``code`` paths inside the translated
+    // markup keep showing e.g. ``stoerungen_2026.csv`` instead of
+    // ``stoerungen_–.csv``.
+    setYearLabels(new Date().getFullYear());
     // Live status / error refreshes — re-render with the new locale.
     const status = $("#status-text");
     if (status && status.dataset.statusKey) {
