@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 21 May 2026 20:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 20:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5</guid>
+      <pubDate>Thu, 21 May 2026 20:19:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 20:20:26 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: Haltestelle ersatzlos aufgelassen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,50 +30,6 @@
       <ext:ends_at>Fri, 22 May 2026 05:00:00 +0200</ext:ends_at>
       <description>[21.05.2026 – 22.05.2026]</description>
       <content:encoded><![CDATA[[21.05.2026 – 22.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bfc899618370c2bf7f34f404ba72289dcb2b3e3f894e658fcfbc1dbd0629a12a</guid>
-      <pubDate>Thu, 21 May 2026 19:57:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 08:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 19:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Fahrtbehinderung wegen Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d</guid>
-      <pubDate>Thu, 21 May 2026 19:10:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 19:22:57 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[39A: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">71618ae62b9ab93dc5f1a08adb28c6d4811eab44ce507f1cdcc6c028681640f7</guid>
-      <pubDate>Thu, 21 May 2026 18:55:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 19:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 18:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 39A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 39A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">93779f2373f8195241c5ab62df54f31689b7c4f93a9f65654658fd3b67c3a983</guid>
-      <pubDate>Thu, 21 May 2026 18:20:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 18:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 18:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[74A: Busse halten Landstraßer Hauptstraße 116]]></title>
@@ -118,6 +85,39 @@
       <ext:ends_at>Fri, 22 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[21.05.2026 – 22.05.2026]</description>
       <content:encoded><![CDATA[[21.05.2026 – 22.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11: Betrieb ab Frödenplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0cc601b709f5e2e2bf853af2229533e03cb323563dfe0bebb6a3b9de6ceb2e16</guid>
+      <pubDate>Thu, 21 May 2026 04:30:03 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 04:30:38 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 04:30:03 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 21.05.2026]</description>
+      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Veranstaltung am 20.06.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ae37be58476398c49e85220303f7950556951488ab964d8e4898e0ad6cd23a48</guid>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 20:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 21 Jun 2026 01:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen. [21.05.2026 – 21.06.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[21.05.2026 – 21.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/42A: Umleitung Lidlgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">788edb4ecc8d6bab12f103e3752c8b02671660cbaad794f1a6b57460be1d0d28</guid>
+      <pubDate>Wed, 20 May 2026 12:45:00 +0200</pubDate>
+      <ext:first_seen>Wed, 20 May 2026 13:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 02 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 20 May 2027 11:11:00 +0200</ext:ends_at>
+      <description>Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet. [Ab 02.06.2026]</description>
+      <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten wird die Lidlgasse vorübergehend zur Einbahn, die Busse werden umgeleitet.<br/>[Ab 02.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

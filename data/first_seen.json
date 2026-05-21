@@ -218,6 +218,15 @@
   "wl|hinweis|L=11A|D=2026-04-20": {
     "first_seen": "2026-04-21T22:10:39.366200+00:00"
   },
+  "wl|hinweis|L=11A|D=2026-05-21": {
+    "first_seen": "2026-05-21T18:30:46.198196+00:00",
+    "translations": {
+      "en": {
+        "summary": "Because of an event at the Ernst-Happel-Stadion, the following transport measures are taking place.",
+        "title": "11A: Event at 20.06.2026"
+      }
+    }
+  },
   "wl|hinweis|L=27A,28A,29A|D=2026-05-11": {
     "first_seen": "2026-05-11T15:01:05.459120+00:00"
   },
@@ -554,7 +563,9 @@
   "wl|st\u00f6rung|L=11|D=2026-05-21": {
     "first_seen": "2026-05-21T02:30:38.161208+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "11: operation from Fr\u00f6denplatz"
+      }
     }
   },
   "wl|st\u00f6rung|L=12A|D=2026-04-23": {
@@ -1851,7 +1862,10 @@
   "wl|st\u00f6rung|L=5|D=2026-05-21": {
     "first_seen": "2026-05-21T08:30:36.035352+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "Line 5: After a driving disability, there are different intervals.",
+        "title": "5: Impairment of false parkers"
+      }
     }
   },
   "wl|st\u00f6rung|L=60A|D=2026-04-21": {
