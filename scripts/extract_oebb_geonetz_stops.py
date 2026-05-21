@@ -48,10 +48,10 @@ if str(_ROOT) not in sys.path:
 
 try:  # pragma: no cover - convenience for module execution
     from src.feed.logging_safe import setup_script_logging
-    from src.utils.files import read_capped_bytes
+    from src.utils.files import atomic_write, read_capped_bytes
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from feed.logging_safe import setup_script_logging  # type: ignore[no-redef]
-    from utils.files import read_capped_bytes  # type: ignore[no-redef]
+    from utils.files import atomic_write, read_capped_bytes  # type: ignore[no-redef]
 
 # Cap mirrors ``MAX_JSON_FILE_BYTES`` in scripts/update_station_directory.py.
 # The raw GeoNetz dump is ~23 MiB; 50 MiB leaves ~2x headroom for a future
@@ -248,10 +248,16 @@ def main(argv: list[str] | None = None) -> int:
 
     payload = extract(args.raw, args.source_url)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    # ``atomic_write`` (tempfile + ``os.replace``) so a crash / SIGINT
+    # mid-dump cannot leave a half-written JSON snapshot in the
+    # repository — ``data/oebb-geonetz-stops.json`` is committed to
+    # ``main`` by the operator's station-refresh prep and consumed by
+    # ``scripts/update_station_directory.py:_enrich_with_geonetz`` on
+    # the next cron tick. Mirrors the canonical writer pattern used by
+    # the sibling ``data/stations.json`` / ``data/quarantine.json`` /
+    # ``cache/<provider>/events.json`` sinks.
+    with atomic_write(args.output, mode="w", encoding="utf-8") as handle:
+        handle.write(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
     size_kib = args.output.stat().st_size / 1024
     logger.info(
         "Wrote %d stops (%.0f KiB) to %s — fahrplanperiode %s..%s",
