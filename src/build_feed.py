@@ -137,7 +137,7 @@ _TRAILING_DIRECTIONAL_MARKER_RE = re.compile(r"\s*[<>]+\s*$")
 # \d{1,3}[A-Z]?``) is deliberately strict so generic prefixes like
 # ``Achtung:``, ``Information:`` or sentence-internal time markers
 # ``17:30 Uhr…`` stay untouched.
-_WL_DESC_LINE_TOKEN = r"[A-Z]{0,4}\d{1,3}[A-Z]?"  # noqa: S105 — regex fragment, not a secret
+_WL_DESC_LINE_TOKEN = r"[A-Z]{0,4}\d{1,3}[A-Z]?"  # nosec B105  # noqa: S105 — regex fragment, not a secret
 _WL_DESC_LINIE_PREFIX_RE = re.compile(
     rf"^\s*Linien?\s+(?:{_WL_DESC_LINE_TOKEN})"
     rf"(?:\s*[/+,]\s*(?:{_WL_DESC_LINE_TOKEN})){{0,20}}\s*:\s+",
