@@ -69,7 +69,7 @@ if str(REPO_ROOT) not in sys.path:
 # hostile log content (e.g. an attacker-controlled URL in a subprocess error)
 # can't bypass scrubbing on the way to stderr.
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
-from src.utils.files import read_capped_text  # noqa: E402
+from src.utils.files import atomic_write, read_capped_text  # noqa: E402
 
 # Pillow 10 renamed the resampling enum; expose a stable alias so the
 # downscale step works on both modern (``Image.Resampling.LANCZOS``)
@@ -249,7 +249,16 @@ def _minify_css(check_only: bool = False) -> bool:
                 "`python scripts/optimize_site_assets.py --skip-images`",
             )
         return ok
-    CSS_OUT.write_text(expected, encoding="utf-8")
+    # ``atomic_write`` (tempfile + ``os.replace``) so a crash / SIGINT
+    # mid-write cannot leave a partial ``site.min.css`` in the working
+    # tree — the file is committed to ``main`` by the SEO guard
+    # workflow, so a corrupt half-write would land in the public asset
+    # served by GitHub Pages. Mirrors the canonical writer pattern
+    # established for every other repository-committed sink
+    # (``data/stations.json``, ``data/quarantine.json``,
+    # ``cache/<provider>/events.json``, …).
+    with atomic_write(CSS_OUT, mode="w", encoding="utf-8") as handle:
+        handle.write(expected)
     LOG.info(
         "CSS: %d -> %d bytes (%.1f%% smaller)",
         CSS_SRC.stat().st_size,
@@ -271,7 +280,11 @@ def _minify_js(check_only: bool = False) -> bool:
                 "`python scripts/optimize_site_assets.py --skip-images`",
             )
         return ok
-    JS_OUT.write_text(expected, encoding="utf-8")
+    # Same atomic-write rationale as ``_minify_css`` above — see that
+    # function's comment block for the SEO-guard commit path that
+    # makes a partial write user-visible on GitHub Pages.
+    with atomic_write(JS_OUT, mode="w", encoding="utf-8") as handle:
+        handle.write(expected)
     LOG.info(
         "JS:  %d -> %d bytes (%.1f%% smaller)",
         JS_SRC.stat().st_size,

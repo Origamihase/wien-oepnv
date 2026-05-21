@@ -12,9 +12,11 @@ from typing import TYPE_CHECKING, cast
 
 if TYPE_CHECKING:
     from . import build_feed as build_feed_module
+    from .utils.files import atomic_write
     from .utils.stations_validation import validate_stations
 else:
     from . import build_feed as build_feed_module
+    from .utils.files import atomic_write
     from .utils.stations_validation import validate_stations
 
 __all__ = ["build_feed_module"]
@@ -350,7 +352,16 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
     if args.output:
         output_path: Path = args.output
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(markdown, encoding="utf-8")
+        # ``atomic_write`` (tempfile + ``os.replace``) so a SIGINT
+        # mid-write cannot leave a half-rendered Markdown report at
+        # the caller's path. Operators routinely pipe this command's
+        # output into a build pipeline (the validation report is the
+        # next-step input for a release decision); a partial write
+        # would surface as a silent truncation downstream. Mirrors
+        # the canonical writer pattern established for every other
+        # operator-facing sink in the repository.
+        with atomic_write(output_path, mode="w", encoding="utf-8") as handle:
+            handle.write(markdown)
         print(f"Report written to {output_path}")
 
     if args.fail_on_issues and report.has_issues:
