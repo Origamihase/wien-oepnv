@@ -1338,6 +1338,14 @@
   "wl|st\u00f6rung|L=37A|D=2026-05-12": {
     "first_seen": "2026-05-11T22:00:45.724719+00:00"
   },
+  "wl|st\u00f6rung|L=37A|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:01:00.206860+00:00",
+    "translations": {
+      "en": {
+        "title": "37A: Buses stop at Pasetti Street vor Hellwagstra\u00dfe (at line 5A)"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=37|D=2026-04-24": {
     "first_seen": "2026-04-24T16:33:59.582460+00:00"
   },
@@ -1592,6 +1600,14 @@
   "wl|st\u00f6rung|L=43|D=2026-05-18": {
     "first_seen": "2026-05-18T05:30:38.335466+00:00"
   },
+  "wl|st\u00f6rung|L=43|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:01:00.206860+00:00",
+    "translations": {
+      "en": {
+        "title": "43: Use the line 43A - Dornbacher Stra\u00dfe 85"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=44A|D=2026-04-23": {
     "first_seen": "2026-04-23T16:01:08.078407+00:00"
   },
@@ -1600,6 +1616,14 @@
   },
   "wl|st\u00f6rung|L=44A|D=2026-05-16": {
     "first_seen": "2026-05-15T22:00:43.505703+00:00"
+  },
+  "wl|st\u00f6rung|L=44A|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:01:00.206860+00:00",
+    "translations": {
+      "en": {
+        "title": "44A: Buses stop as line opposite 93"
+      }
+    }
   },
   "wl|st\u00f6rung|L=44|D=2026-05-13": {
     "first_seen": "2026-05-13T04:00:42.036563+00:00"
@@ -1624,6 +1648,14 @@
     "translations": {
       "en": {
         "title": "46: Impairment of operation"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=46|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:01:00.206860+00:00",
+    "translations": {
+      "en": {
+        "title": "46: operation from Thaliastra\u00dfe"
       }
     }
   },
@@ -2378,6 +2410,14 @@
       }
     }
   },
+  "wl|st\u00f6rung|L=74A|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:01:00.206860+00:00",
+    "translations": {
+      "en": {
+        "title": "74A: Buses stop Landstra\u00dfer main road 116"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=76A,76B|D=2026-05-13": {
     "first_seen": "2026-05-13T20:39:11.584779+00:00"
   },
@@ -2440,6 +2480,14 @@
   },
   "wl|st\u00f6rung|L=7A|D=2026-05-21": {
     "first_seen": "2026-05-21T05:30:41.907769+00:00",
+    "translations": {
+      "en": {
+        "title": "7A: Open buses stop at Wienerbergbr\u00fccke"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=7A|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:01:00.206860+00:00",
     "translations": {
       "en": {
         "title": "7A: Open buses stop at Wienerbergbr\u00fccke"
@@ -2546,6 +2594,14 @@
     "first_seen": "2026-05-21T14:01:09.467978+00:00",
     "translations": {
       "en": {}
+    }
+  },
+  "wl|st\u00f6rung|L=9|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:01:00.206860+00:00",
+    "translations": {
+      "en": {
+        "title": "9: Disability due to track construction"
+      }
     }
   },
   "wl|st\u00f6rung|L=D|D=2026-04-22": {
@@ -3326,5 +3382,14 @@
   },
   "wl|st\u00f6rung|L=|D=2026-05-18": {
     "first_seen": "2026-05-18T03:00:43.944161+00:00"
+  },
+  "wl|st\u00f6rung|L=|D=2026-05-22": {
+    "first_seen": "2026-05-21T22:01:00.206860+00:00",
+    "translations": {
+      "en": {
+        "summary": "Construction start: Br\u00fcnner Stra\u00dfe 31-31A",
+        "title": "Introduction: Br\u00fcnner Stra\u00dfe 31-31A"
+      }
+    }
   }
 }
