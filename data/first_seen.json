@@ -443,6 +443,15 @@
   "wl|st\u00f6rung|L=11A,12A|D=2026-04-27": {
     "first_seen": "2026-04-27T09:06:33.392909+00:00"
   },
+  "wl|st\u00f6rung|L=11A,26A,2A,94A|D=2026-05-21": {
+    "first_seen": "2026-05-21T15:30:55.194592+00:00",
+    "translations": {
+      "en": {
+        "summary": "Line 2A: Irregular intervals in both directions. Line 11A: Irregular intervals in both directions.",
+        "title": "11A/26A/2A/94A: traffic congestion"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=11A,41A,5A|D=2026-05-21": {
     "first_seen": "2026-05-21T08:30:36.035352+00:00",
     "translations": {
@@ -2237,7 +2246,9 @@
   "wl|st\u00f6rung|L=74A|D=2026-05-21": {
     "first_seen": "2026-05-21T07:30:39.832197+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "74A: Buses stop Landstra\u00dfer main road 116"
+      }
     }
   },
   "wl|st\u00f6rung|L=76A,76B|D=2026-05-13": {
@@ -2432,7 +2443,10 @@
   "wl|st\u00f6rung|L=D|D=2026-05-21": {
     "first_seen": "2026-05-21T14:01:09.467978+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "Line D: There are different intervals after a driving disability.",
+        "title": "D: State visit"
+      }
     }
   },
   "wl|st\u00f6rung|L=N20|D=2026-04-24": {
