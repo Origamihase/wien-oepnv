@@ -25,6 +25,13 @@ jobs:
   c901-gate:
     name: C901 complexity gate (max 15 for new code)
     runs-on: ubuntu-latest
+    # Defense-in-depth ceiling: the C901 gate is a single radon-like AST
+    # walker over ~17 kLOC src + scripts; it completes in under a minute.
+    # 5 min gives ~5x headroom over the worst observed runtime while
+    # catching hangs quickly. Without the cap the workflow inherits
+    # GitHub's 360-min default. Mirrors the canonical defence shape
+    # established in update-cycle.yml.
+    timeout-minutes: 5
 
     steps:
       - name: Check out repository

@@ -17,6 +17,13 @@ jobs:
   mypy-strict:
     name: mypy --strict (src/ + tests/) vs allowlist
     runs-on: ubuntu-latest
+    # Defense-in-depth ceiling: mypy --strict on src/ + tests/ (~45 kLOC
+    # combined) runs in 3-5 min with a warm cache. 10 min gives ~2x
+    # headroom while catching hangs (stuck mypy plugin, runaway type
+    # inference) quickly. Without the cap the workflow inherits
+    # GitHub's 360-min default. Mirrors the canonical defence shape
+    # established in update-cycle.yml.
+    timeout-minutes: 10
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src

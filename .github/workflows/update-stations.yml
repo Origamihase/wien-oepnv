@@ -45,6 +45,17 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    # Defense-in-depth ceiling: the weekly station-directory refresh is
+    # the second-heaviest workflow after manual-full-refresh. It does
+    # the ÖBB Excel pull + WL OGD CSV pull + OSM Overpass enrichment +
+    # HAFAS manual-block enrichment + (conditional) Google Places
+    # fallback + validation + diff + heartbeat. Healthy runs take
+    # 25-45 min depending on OSM Overpass and HAFAS latency. 60 min
+    # gives ~1.3x headroom while catching hangs (stuck Overpass query,
+    # runaway HAFAS retry loop) quickly. Without the cap the workflow
+    # inherits GitHub's 360-min default. Mirrors the canonical defence
+    # shape established in update-cycle.yml.
+    timeout-minutes: 60
     permissions:
       contents: write
 

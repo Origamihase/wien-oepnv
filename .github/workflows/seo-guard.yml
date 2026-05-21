@@ -20,6 +20,15 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    # Defense-in-depth ceiling: the SEO guard regenerates the sitemap
+    # (sub-second), verifies the feed structure (sub-second), patches
+    # the GitHub repo metadata (single curl PATCH), and waits up to 6x
+    # ~10 s for the published feed via curl + grep. 10 min gives ample
+    # headroom while catching hangs (stuck PATCH, stuck published-feed
+    # poll) quickly. Without the cap the workflow inherits GitHub's
+    # 360-min default. Mirrors the canonical defence shape established
+    # in update-cycle.yml.
+    timeout-minutes: 10
     permissions:
       contents: write
     env:

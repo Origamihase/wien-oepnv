@@ -29,6 +29,16 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    # Defense-in-depth ceiling: the manual full-refresh is the heaviest
+    # workflow in the project — it does WL + ÖBB + Baustellen + VOR cache
+    # refreshes + station directory rebuild + feed compose + stats render
+    # + sitemap. Healthy runs take 20-40 min depending on whether the
+    # HF/pip cache is warm. 60 min gives ~1.5x headroom over the worst
+    # legitimate cold-cache run while catching genuine hangs (stuck
+    # upstream API, runaway OSM Overpass round-trip) quickly. Without
+    # the cap the workflow inherits GitHub's 360-min default. Mirrors
+    # the canonical defence shape established in update-cycle.yml.
+    timeout-minutes: 60
     permissions:
       contents: write
 
