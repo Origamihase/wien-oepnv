@@ -1,3 +1,4 @@
+# ruff: noqa: S603
 """Regression tests for ``scripts/check_i18n_coverage.py``.
 
 The gate exists to catch the exact regression that left the dashboard
@@ -6,6 +7,12 @@ without its English counterpart in ``site.js``'s ``I18N_EN`` dict, and
 the EN locale silently showed the German source. These tests pin the
 detection contract so the gate keeps failing on missing translations
 no matter how future maintainers reshape the HTML / JS.
+
+The file-level ``# ruff: noqa: S603`` mirrors the established
+convention (see ``tests/test_provider_plugins.py``): every
+``subprocess.run`` here invokes either the real gate script or a
+fixture copy whose path is built from a hard-coded ``Path`` literal,
+never from user input.
 """
 from __future__ import annotations
 
@@ -23,7 +30,7 @@ def _run_gate(fixture_root: Path) -> subprocess.CompletedProcess[str]:
     """Invoke the *copied* gate inside ``fixture_root`` so the script's
     ``REPO_ROOT`` derivation (``Path(__file__).resolve().parents[1]``)
     resolves to the fixture, not the real repo."""
-    return subprocess.run(  # noqa: S603  # nosec B603
+    return subprocess.run(  # nosec B603
         [
             sys.executable,
             str(fixture_root / "scripts" / "check_i18n_coverage.py"),
@@ -174,7 +181,7 @@ def test_gate_flags_genuine_orphan_as_note_only(tmp_path: Path) -> None:
 def test_gate_passes_on_real_repo() -> None:
     """Smoke test: the real ``docs/site.html`` + ``docs/assets/site.js``
     must satisfy the gate on every CI run."""
-    result = subprocess.run(  # noqa: S603  # nosec B603
+    result = subprocess.run(  # nosec B603
         [sys.executable, str(GATE)],
         cwd=REPO_ROOT,
         capture_output=True,
