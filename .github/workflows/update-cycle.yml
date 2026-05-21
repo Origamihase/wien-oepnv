@@ -152,7 +152,18 @@ jobs:
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: .venv
-          key: venv-${{ runner.os }}-py${{ steps.setup_python.outputs.python-version }}-${{ hashFiles('requirements.txt', '.github/actions/install-deps/action.yml') }}
+          # ``update-cycle.yml`` itself is hashed in so any inline
+          # change to the install procedure (PR #1600 added the
+          # ``pip install torch …`` line in the cache-miss branch
+          # below; the cache key did NOT change because neither
+          # ``requirements.txt`` nor ``install-deps/action.yml``
+          # was touched, so existing cached venvs from before the
+          # fix kept being restored — the install step was gated
+          # off and ``torch`` stayed missing, leaving the EN feed
+          # stuck on the ``[Partially translated]`` marker for
+          # ~10 items/tick). Hashing the workflow file closes
+          # that class of drift at the cache-key boundary.
+          key: venv-${{ runner.os }}-py${{ steps.setup_python.outputs.python-version }}-${{ hashFiles('requirements.txt', '.github/actions/install-deps/action.yml', '.github/workflows/update-cycle.yml') }}
 
       - name: Install dependencies (cache miss)
         if: steps.venv_cache.outputs.cache-hit != 'true'
@@ -182,6 +193,24 @@ jobs:
         # Persists across subsequent steps; ``$GITHUB_PATH`` is the
         # documented mechanism for cross-step PATH mutation.
         run: echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
+
+      # Self-healing torch backstop. The cache-key fix above closes the
+      # drift channel that left ``torch`` missing from cached venvs
+      # after PR #1600, but it only takes effect when the workflow
+      # file itself changes. This idempotent step is the second layer:
+      # ``pip install torch …`` is a no-op (~1-2 s) when torch is
+      # already installed at the requested version, so it costs almost
+      # nothing on the healthy path. If a cached venv ever ends up
+      # missing torch again (silent cache restoration of an older
+      # pre-torch venv from a branch with a hash-collision, a future
+      # refactor that drops torch from the install step, an
+      # actions/cache restore-keys widening, …), this step heals it
+      # before the feed-build step runs and writes ``[Partially
+      # translated]`` markers into ``docs/feed.en.xml``. The ``--index-url``
+      # pin keeps the CPU-only wheel; without it pip would resolve
+      # against PyPI default and pull the multi-GiB CUDA build.
+      - name: Ensure torch CPU wheel is present (self-healing)
+        run: pip install torch --index-url https://download.pytorch.org/whl/cpu
 
       # ----- Cache fetchers (free APIs, no quota gate) ---------------------
 
