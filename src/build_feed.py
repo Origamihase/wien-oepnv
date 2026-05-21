@@ -990,13 +990,6 @@ def _get_translation_pipeline() -> Any:
     return _TRANSLATION_STATE["pipeline"]
 
 
-# Sentinel returned when a translation cannot be produced — distinct
-# from an empty string so callers can distinguish "no input" from "the
-# model failed". Mirrors the dual-state pattern used elsewhere in this
-# module (e.g. ``_TRANSLATION_STATE``).
-_TRANSLATION_FAILED_MARKER = "[Partially translated]"
-
-
 def _translate_text_attempt(text: str, ident: str = "") -> str | None:
     """Translate ``text`` from German to English with entity preservation.
 
@@ -2674,10 +2667,16 @@ def _apply_lang_overlay(
     EN strings are persisted in ``state[ident]["translations"]["en"]``
     and round-trip through :func:`_save_state`).
 
-    If either the title or the summary cannot be translated, the
-    description is annotated with the ``[Partially translated]``
-    marker so subscribers can see the degradation rather than silently
-    consuming a mostly-German item in the EN feed.
+    **Per-item atomic fallback contract**: the EN feed promises the
+    same content as the DE feed, only in another language. To honour
+    that promise an item must be either fully translated (title +
+    summary + time-line) OR a verbatim copy of the German source — a
+    mixed-language item or a "Partially translated" marker would mean
+    the EN subscriber sees information the DE subscriber does not,
+    which violates the content-parity contract requested by the
+    operator. When ``_cached_translation`` reports a failure on
+    either field the function returns ``base`` unchanged so the EN
+    feed item is byte-identical to the DE item for that disruption.
 
     For ``lang != "en"`` the input is returned unchanged.
     """
@@ -2687,27 +2686,28 @@ def _apply_lang_overlay(
     title_raw, title_ok = _cached_translation(
         base.title_out, "title", ident, state
     )
-    title_en = _sanitize_text(title_raw)
     if summary_de:
         summary_raw, summary_ok = _cached_translation(
             summary_de, "summary", ident, state
         )
-        summary_en = _sanitize_text(summary_raw)
     else:
-        summary_en = ""
+        summary_raw = ""
         summary_ok = True
-    time_line_en = _translate_time_line_en(time_line_de)
 
     if not (title_ok and summary_ok):
-        log.warning(
+        log.info(
             "Translation incomplete for identity %s "
-            "(title_ok=%s, summary_ok=%s) — emitting partial-translation marker.",
+            "(title_ok=%s, summary_ok=%s) — EN feed item falls back to "
+            "the German source verbatim to preserve DE↔EN content parity.",
             sanitize_log_arg(ident or "<unknown>"),
             title_ok,
             summary_ok,
         )
-        summary_en = _append_partial_translation_marker(summary_en)
+        return base
 
+    title_en = _sanitize_text(title_raw)
+    summary_en = _sanitize_text(summary_raw)
+    time_line_en = _translate_time_line_en(time_line_de)
     desc_text_truncated_en, desc_html_en = _compose_description(
         summary_en, time_line_en
     )
@@ -2721,20 +2721,6 @@ def _apply_lang_overlay(
         title_out=title_en,
         desc_html=desc_html_en,
     )
-
-
-def _append_partial_translation_marker(summary: str) -> str:
-    """Append :data:`_TRANSLATION_FAILED_MARKER` to ``summary`` once.
-
-    Idempotent: if the marker is already present the summary is
-    returned unchanged. Empty summaries are replaced with the marker
-    alone so the user-facing feed still flags the partial state.
-    """
-    if not summary:
-        return _TRANSLATION_FAILED_MARKER
-    if _TRANSLATION_FAILED_MARKER in summary:
-        return summary
-    return f"{summary} {_TRANSLATION_FAILED_MARKER}"
 
 
 def _format_item_content(

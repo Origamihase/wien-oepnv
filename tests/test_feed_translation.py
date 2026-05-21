@@ -74,14 +74,15 @@ def test_cached_translation_returns_success_flag(monkeypatch: Any) -> None:
 def test_format_item_content_en_falls_back_when_pipeline_unavailable(
     monkeypatch: Any,
 ) -> None:
-    """``lang="en"`` runs the overlay and rebuilds desc with EN time-line.
+    """``lang="en"`` falls back to the German item verbatim when the
+    pipeline is unavailable — per the DE↔EN content-parity contract.
 
-    The pipeline is stubbed to ``None`` so the title/summary stay as the
-    German original; the time-line prefix is translated via the static
-    dictionary so the EN feed still carries the English bracketed form.
-    The partial-translation marker must surface so subscribers can see
-    the degradation, and the cache MUST NOT persist the German source
-    as a "translation" (Sticky-German fix).
+    The previous design rebuilt the description with the EN time-line
+    plus a ``[Partially translated]`` marker; that produced a mixed-
+    language item that violated "EN must offer the same content as
+    DE". The new contract: per-item atomic fallback. If the model
+    cannot translate the item, the EN feed item is byte-identical to
+    the DE item for that disruption.
     """
     monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
     item = cast(
@@ -97,15 +98,28 @@ def test_format_item_content_en_falls_back_when_pipeline_unavailable(
     )
     starts = datetime(2026, 5, 16, 10, 0, tzinfo=UTC)
     state: dict[str, dict[str, Any]] = {}
+    formatted_de = build_feed._format_item_content(
+        item, ident="wl-1", starts_at=starts, ends_at=None,
+        lang="de", state=None,
+    )
     formatted_en = build_feed._format_item_content(
         item, ident="wl-1", starts_at=starts, ends_at=None,
         lang="en", state=state,
     )
-    assert "[Since" in formatted_en.desc_text_truncated
-    # German fallback preserved for title because the model is unreachable.
-    assert formatted_en.title_out == "U6: Verspätung"
-    # Partial-translation marker surfaces in the rebuilt description.
-    assert build_feed._TRANSLATION_FAILED_MARKER in formatted_en.desc_text_truncated
+    # Atomic fallback: the EN feed item is byte-identical to the DE
+    # item when the pipeline cannot translate.
+    assert formatted_en.title_out == formatted_de.title_out
+    assert formatted_en.desc_text_truncated == formatted_de.desc_text_truncated
+    assert formatted_en.desc_html == formatted_de.desc_html
+    # No legacy "[Partially translated]" marker leaks into the feed.
+    assert "Partially translated" not in formatted_en.desc_text_truncated
+    # German time-line is preserved (no half-EN ``[Since …]`` smuggled
+    # into a DE-fallback item — the byte-identical assertion above
+    # already covers this, but pin the human-readable invariant too).
+    assert "[Since" not in formatted_en.desc_text_truncated
+    assert "[On" not in formatted_en.desc_text_truncated
+    assert "[Until" not in formatted_en.desc_text_truncated
+    assert "[From" not in formatted_en.desc_text_truncated
     # Cache MUST NOT contain the German fallback for either field —
     # the next run gets a clean retry once the pipeline is healthy.
     translations = state.get("wl-1", {}).get("translations", {}).get("en", {})

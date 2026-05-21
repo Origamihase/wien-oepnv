@@ -181,18 +181,26 @@ def test_complex_disruption_is_fully_translated_with_entity_preservation(
     translations = state["wl-cov-1"]["translations"]["en"]
     assert translations["title"] != item["title"]
     assert "Stephansplatz" in translations["summary"]
-    # No partial-translation marker because every field translated
-    # successfully.
-    assert build_feed._TRANSLATION_FAILED_MARKER not in desc_en
+    # No legacy "[Partially translated]" marker because every field
+    # translated successfully — and the marker has been retired in
+    # favour of the per-item atomic fallback contract.
+    assert "Partially translated" not in desc_en
 
 
-def test_partially_translated_marker_surfaces_on_pipeline_failure(
+def test_en_feed_falls_back_to_de_when_pipeline_unavailable(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """When the pipeline fails (e.g. model not yet downloaded), the
-    description must carry the ``[Partially translated]`` marker so
-    subscribers see the degradation instead of silently consuming a
-    mostly-German item."""
+    """Per-item atomic DE↔EN parity: when the pipeline fails the EN
+    item is byte-identical to the DE item for that disruption.
+
+    Predecessor (#1597): a ``[Partially translated]`` marker was
+    appended to a half-translated item (DE summary + EN time-line +
+    marker). Subscribers saw inconsistent content between feed.xml
+    and feed.en.xml, which violated the explicit "EN must offer the
+    same content as DE" rule. The new contract: the EN feed item
+    falls back to a verbatim copy of the German item so the two feeds
+    are content-identical when translation is unavailable.
+    """
     monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
     item = cast(
         FeedItem,
@@ -207,6 +215,14 @@ def test_partially_translated_marker_surfaces_on_pipeline_failure(
     )
     state: dict[str, dict[str, Any]] = {}
 
+    formatted_de = build_feed._format_item_content(
+        item,
+        ident="wl-cov-2",
+        starts_at=datetime(2026, 5, 16, 10, 0, tzinfo=UTC),
+        ends_at=None,
+        lang="de",
+        state=None,
+    )
     formatted_en = build_feed._format_item_content(
         item,
         ident="wl-cov-2",
@@ -216,9 +232,17 @@ def test_partially_translated_marker_surfaces_on_pipeline_failure(
         state=state,
     )
 
-    assert build_feed._TRANSLATION_FAILED_MARKER in formatted_en.desc_text_truncated
+    # Atomic DE↔EN parity: every text-bearing field matches DE verbatim.
+    assert formatted_en.title_out == formatted_de.title_out
+    assert formatted_en.desc_text_truncated == formatted_de.desc_text_truncated
+    assert formatted_en.desc_html == formatted_de.desc_html
+    # No marker leaks into the published feed.
+    assert "Partially translated" not in formatted_en.desc_text_truncated
+    # The German time-line is preserved — no half-EN ``[Since …]``
+    # smuggled into a DE-fallback item.
+    assert "[Am " in formatted_en.desc_text_truncated or formatted_en.desc_text_truncated == formatted_de.desc_text_truncated
     # And: the German fallback was NOT cached as the EN translation
-    # (sticky-German fix).
+    # (sticky-German fix from PR #1597 still in force).
     translations = state.get("wl-cov-2", {}).get("translations", {}).get("en", {})
     assert "title" not in translations
     assert "summary" not in translations
@@ -290,3 +314,86 @@ def test_cache_repair_after_sticky_german(
     assert text == "Delay"
     # Cache repaired with the real translation.
     assert state["wl-cov-3"]["translations"]["en"]["title"] == "Delay"
+
+
+def test_de_and_en_feed_items_have_identical_content_set(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The DE and EN feeds must always describe the same set of
+    disruptions in the same order.
+
+    This is the integration-level invariant behind the user's
+    "selben Inhalt bieten" contract: even when the pipeline fails
+    for every item, the EN feed must enumerate the same GUIDs in
+    the same order as the DE feed — no item dropped, no item
+    duplicated, no item silently re-ordered.
+    """
+    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    items = [
+        cast(
+            FeedItem,
+            {
+                "title": f"U{i}: Verspätung",
+                "description": f"Test disruption {i}",
+                "source": "Wiener Linien",
+                "category": "Störung",
+                "guid": f"wl-set-{i}",
+                "link": "",
+                "pubDate": datetime(2026, 5, 16, 10, i, tzinfo=UTC),
+            },
+        )
+        for i in range(1, 6)
+    ]
+    state: dict[str, dict[str, Any]] = {}
+    now = datetime(2026, 5, 16, 12, 0, tzinfo=UTC)
+    rss_de = build_feed._make_rss(items, now, state, lang="de")
+    rss_en = build_feed._make_rss(items, now, state, lang="en")
+
+    de_guids = re.findall(r"<guid[^>]*>([^<]+)</guid>", rss_de)
+    en_guids = re.findall(r"<guid[^>]*>([^<]+)</guid>", rss_en)
+    # Same set, same order — the GUIDs are the canonical identity.
+    assert de_guids == en_guids
+    assert len(de_guids) == len(items)
+
+
+def test_de_and_en_feed_items_are_byte_identical_when_pipeline_fails(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Per-item atomic fallback: when the pipeline cannot translate,
+    every ``<item>…</item>`` block in feed.en.xml is byte-identical
+    to the corresponding block in feed.xml. No mixed-language text,
+    no marker leaking into the EN feed body.
+    """
+    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    item = cast(
+        FeedItem,
+        {
+            "title": "U6: Verspätung wegen Bauarbeiten",
+            "description": (
+                "Aufgrund einer technischen Störung kommt es zu "
+                "Verzögerungen zwischen Wien Hauptbahnhof und Stephansplatz."
+            ),
+            "source": "Wiener Linien",
+            "category": "Störung",
+            "guid": "wl-parity-1",
+            "link": "",
+            "pubDate": datetime(2026, 5, 16, 10, 0, tzinfo=UTC),
+            "starts_at": datetime(2026, 5, 16, 9, 0, tzinfo=UTC),
+        },
+    )
+    state: dict[str, dict[str, Any]] = {}
+    now = datetime(2026, 5, 16, 12, 0, tzinfo=UTC)
+    rss_de = build_feed._make_rss([item], now, state, lang="de")
+    rss_en = build_feed._make_rss([item], now, state, lang="en")
+
+    # Extract the <item>…</item> body from each feed. Only ONE item
+    # in this fixture, so a single regex group is enough.
+    de_item = re.search(r"<item>.*?</item>", rss_de, re.DOTALL)
+    en_item = re.search(r"<item>.*?</item>", rss_en, re.DOTALL)
+    assert de_item is not None and en_item is not None
+
+    # Atomic fallback contract: the EN item is byte-identical to the
+    # DE item when the pipeline cannot translate.
+    assert en_item.group(0) == de_item.group(0)
+    # And: no legacy marker survived in the EN feed body.
+    assert "Partially translated" not in rss_en
