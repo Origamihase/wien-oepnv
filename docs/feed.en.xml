@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 21 May 2026 18:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 19:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[39A: Harmful vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">71618ae62b9ab93dc5f1a08adb28c6d4811eab44ce507f1cdcc6c028681640f7</guid>
+      <pubDate>Thu, 21 May 2026 18:55:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 19:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 18:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line 39A: Irregular intervals in both directions. Reason: Harmful vehicle. [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Line 39A: Irregular intervals in both directions. Reason: Harmful vehicle.<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -41,17 +52,6 @@
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Line 73A: Disability in the direction of Simmering S U. Estimated duration: 18:15 clock. Reason: Foreign traffic accident in the Zinnergasse area. [On 21.05.2026]</description>
       <content:encoded><![CDATA[Line 73A: Disability in the direction of Simmering S U. Estimated duration: 18:15 clock. Reason: Foreign traffic accident in the Zinnergasse area.<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: Traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5</guid>
-      <pubDate>Thu, 21 May 2026 16:22:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 16:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 16:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Line 59A: Irregular intervals in both directions. Reason: traffic overload. [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Line 59A: Irregular intervals in both directions. Reason: traffic overload.<br/>[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[6: Harmful vehicle]]></title>
@@ -87,17 +87,6 @@
       <content:encoded><![CDATA[Line 71: After a driving disability, there are different intervals.<br/>[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11A/26A/94A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cdc8d4abd2650fa69ec054c85caf5fdeadacc4f1d49f63b7e525ab0a31598f5d</guid>
-      <pubDate>Thu, 21 May 2026 10:53:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 18:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Line 11A: Irregular intervals in both directions. Line 26A: Irregular intervals in both directions. [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Line 11A: Irregular intervals in both directions. Line 26A: Irregular intervals in both directions.<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[74A: Buses stop Landstraßer main road 116]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Due to construction work in the Donaueschingenstraße area, the line 37A is diverted. [Since 21.05.2026]</description>
       <content:encoded><![CDATA[Due to construction work in the Donaueschingenstraße area, the line 37A is diverted.<br/>[Since 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Open buses stop at Wienerbergbrücke]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fea8a52de8284e73a68e14a51478ee4263f596086bd37c21aa6e1137962f6b4a</guid>
+      <pubDate>Thu, 21 May 2026 07:25:32 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 07:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 07:25:32 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 21.05.2026]</description>
+      <content:encoded><![CDATA[[On 21.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

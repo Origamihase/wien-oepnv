@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 21 May 2026 18:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 19:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[39A: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">71618ae62b9ab93dc5f1a08adb28c6d4811eab44ce507f1cdcc6c028681640f7</guid>
+      <pubDate>Thu, 21 May 2026 18:55:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 19:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 18:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 39A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 39A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -28,8 +39,8 @@
       <ext:first_seen>Thu, 21 May 2026 18:30:49 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 18:27:45 +0200</ext:starts_at>
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 31: Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 31: Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz.<br/>[Am 21.05.2026]]]></content:encoded>
+      <description>Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[73A: Fremder Verkehrsunfall]]></title>
@@ -39,19 +50,8 @@
       <ext:first_seen>Thu, 21 May 2026 18:00:59 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 17:51:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 73A: Fahrtbehinderung in Richtung Simmering S U. Voraussichtliche Dauer: 18:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Zinnergasse . [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 73A: Fahrtbehinderung in Richtung Simmering S U. Voraussichtliche Dauer: 18:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Zinnergasse .<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5</guid>
-      <pubDate>Thu, 21 May 2026 16:22:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 16:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 16:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 21.05.2026]]]></content:encoded>
+      <description>Linie 73A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
+      <content:encoded><![CDATA[Linie 73A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[6: Schadhaftes Fahrzeug]]></title>
@@ -87,17 +87,6 @@
       <content:encoded><![CDATA[Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11A/26A/94A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cdc8d4abd2650fa69ec054c85caf5fdeadacc4f1d49f63b7e525ab0a31598f5d</guid>
-      <pubDate>Thu, 21 May 2026 10:53:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 18:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Linie 26A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[74A: Busse halten Landstraßer Hauptstraße 116]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet. [Seit 21.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet.<br/>[Seit 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Aufgelassen Busse halten Wienerbergbrücke]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fea8a52de8284e73a68e14a51478ee4263f596086bd37c21aa6e1137962f6b4a</guid>
+      <pubDate>Thu, 21 May 2026 07:25:32 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 07:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 07:25:32 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 21.05.2026]</description>
+      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
