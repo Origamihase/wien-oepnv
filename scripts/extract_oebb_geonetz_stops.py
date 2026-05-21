@@ -167,7 +167,17 @@ def extract(raw_path: Path, source_url: str) -> dict[str, Any]:
             f"Raw GeoNetz file {raw_path} unreadable or exceeded "
             f"{MAX_GEONETZ_RAW_BYTES} bytes."
         )
-    raw = json.loads(raw_bytes)
+    # ``Exception`` deliberately covers RecursionError — a nested-array
+    # depth-bomb (~5000 levels, few KB on disk) raises RecursionError
+    # past every ``json.JSONDecodeError`` / ``ValueError`` handler. See
+    # JSON Depth-Bomb Drift Round 5 walker in
+    # tests/test_sentinel_json_audit_walker.py.
+    try:
+        raw = json.loads(raw_bytes)
+    except Exception as exc:
+        raise ValueError(
+            f"Raw GeoNetz file {raw_path} unparseable as JSON: {exc}"
+        ) from exc
     features = raw.get("features") if isinstance(raw, dict) else None
     if not isinstance(features, list):
         raise ValueError(

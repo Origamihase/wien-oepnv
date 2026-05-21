@@ -2100,8 +2100,13 @@ def _load_geonetz_stops(path: Path) -> dict[str, dict[str, object]]:
         logger.info("GeoNetz stops file not found: %s — skipping enrichment", path)
         return {}
     try:
+        # ``Exception`` deliberately covers RecursionError too — a
+        # nested-array depth-bomb (~5000 levels, few KB on disk) raises
+        # RecursionError from ``json.loads`` past every ``OSError`` /
+        # ``json.JSONDecodeError`` handler. See JSON Depth-Bomb Drift
+        # Round 5 walker in tests/test_sentinel_json_audit_walker.py.
         raw = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+    except Exception as exc:
         logger.warning("Failed to load GeoNetz stops from %s: %s", path, exc)
         return {}
     stops = raw.get("stops") if isinstance(raw, Mapping) else None
