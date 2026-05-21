@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 21 May 2026 12:00:45 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 12:30:36 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[5A: Schadhafter LKW]]></title>
@@ -43,28 +43,6 @@
       <content:encoded><![CDATA[Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[26A/94A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">be942d6087acae893831ae786595d7b6251ece815a58903f170b5f6705b6248c</guid>
-      <pubDate>Thu, 21 May 2026 10:53:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 11:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
-      <pubDate>Thu, 21 May 2026 10:32:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 11:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[5: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5</guid>
@@ -74,17 +52,6 @@
       <ext:ends_at>Thu, 21 May 2026 12:33:00 +0200</ext:ends_at>
       <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
       <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2563cb7e5e67c7016a99b581b604e1f7ef686490b44625d39ce5e66b47c20dc1</guid>
-      <pubDate>Thu, 21 May 2026 10:20:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 10:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.05.2026]</description>
-      <content:encoded><![CDATA[Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Staatsbesuch]]></title>
@@ -118,6 +85,39 @@
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet. [Seit 21.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet.<br/>[Seit 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Aufgelassen Busse halten Wienerbergbrücke]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fea8a52de8284e73a68e14a51478ee4263f596086bd37c21aa6e1137962f6b4a</guid>
+      <pubDate>Thu, 21 May 2026 07:25:32 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 07:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 07:25:32 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 21.05.2026]</description>
+      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26A: Busse halten Erzherzog-Karl-Straße 78]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92</guid>
+      <pubDate>Thu, 21 May 2026 07:07:20 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 07:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 07:07:20 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 21.05.2026]</description>
+      <content:encoded><![CDATA[[Am 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Thu, 21 May 2026 04:45:03 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 05:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 04:45:03 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 22 May 2026 00:35:00 +0200</ext:ends_at>
+      <description>[21.05.2026 – 22.05.2026]</description>
+      <content:encoded><![CDATA[[21.05.2026 – 22.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
