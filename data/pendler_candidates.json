@@ -22,7 +22,6 @@
     {"name": "Gloggnitz", "line": "CJX9/REX Südbahn (Endpunkt vor Semmering)", "priority": 2, "added": "2026-05-05"},
     {"name": "Payerbach-Reichenau", "line": "CJX9/REX/R Südbahn", "priority": 2, "added": "2026-05-05"},
 
-    {"name": "Weigelsdorf", "line": "R/REX Pottendorfer Linie", "priority": 2, "added": "2026-05-05"},
     {"name": "Wampersdorf", "line": "R/REX Pottendorfer Linie (Abzweigung)", "priority": 2, "added": "2026-05-05"},
     {"name": "Pottendorf-Landegg", "line": "R/REX Pottendorfer Linie (namensgebend)", "priority": 2, "added": "2026-05-05"},
 
@@ -87,6 +86,7 @@
     "Excerpt from the 2026-05 stations-coverage research; see docs/archive/audits/stations_coverage_2026-05.md for the full picture and rationale.",
     "Priority 1 = 'critical missing for Wien-pendler use case' (Top-12 of the research).",
     "Priority 2 = 'important' (additional commuter stations identified in the same research).",
-    "Future planned stations (Wien Hietzinger Hauptstraße, Wien Stranzenbergbrücke, possible Wien Lobau reactivation) are intentionally not listed — they are documented in the audit file under 'Beobachten / nach Inbetriebnahme nachpflegen'."
+    "Future planned stations (Wien Hietzinger Hauptstraße, Wien Stranzenbergbrücke, possible Wien Lobau reactivation) are intentionally not listed — they are documented in the audit file under 'Beobachten / nach Inbetriebnahme nachpflegen'.",
+    "Weigelsdorf: operatively closed on 2023-07-01 with the Pottendorfer-Linie modernization (new Bahnhof Ebreichsdorf opened 2023-09-04 as replacement). Removed from this whitelist to stop the resolver pipeline from chasing phantom bus-stops that share the town name."
   ]
 }
