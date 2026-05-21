@@ -18,15 +18,19 @@ def test_load_tiles_from_env_limits_entries() -> None:
         tiling.load_tiles_from_env(payload)
 
 
-def test_load_tiles_from_file_limits_entries() -> None:
-    data_path = Path("data/test_tiles_limit.json")
+def test_load_tiles_from_file_limits_entries(tmp_path: Path) -> None:
+    # Pre-fix this test wrote to the production-adjacent path
+    # ``data/test_tiles_limit.json`` with a ``finally``-based cleanup —
+    # not robust against pytest signal termination or a write-time
+    # exception that fires before the ``try`` block. ``tmp_path`` is
+    # the canonical fixture for test-owned files: pytest cleans it up
+    # automatically and the path lives outside the repository root,
+    # so a failure cannot leak into ``git status`` either way.
+    data_path = tmp_path / "test_tiles_limit.json"
     too_many = [{"lat": 48.2, "lng": 16.3}] * (tiling.MAX_TILE_COUNT + 1)
-    try:
-        data_path.write_text(json.dumps(too_many), encoding="utf-8")
-        with pytest.raises(ValueError, match="Tile configuration exceeds the limit"):
-            tiling.load_tiles_from_file(data_path)
-    finally:
-        data_path.unlink(missing_ok=True)
+    data_path.write_text(json.dumps(too_many), encoding="utf-8")
+    with pytest.raises(ValueError, match="Tile configuration exceeds the limit"):
+        tiling.load_tiles_from_file(data_path)
 
 
 @pytest.mark.parametrize(

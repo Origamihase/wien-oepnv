@@ -25,20 +25,51 @@ def _display_line(s: str) -> str:
     return _clean_line_token(s)
 
 
+# Strict line-token shape used by ``_extract_prefix_lines`` to gate the
+# prefix-strip decision. A token must look like a real Vienna or ÖBB
+# line code (digits + optional letter, OR a known operator letter
+# prefix followed by digits) to count. Without this gate the
+# permissive ``[A-Za-z0-9]+`` regex below would happily classify a
+# generic word like ``Achtung``, ``Information`` or ``Hinweis`` (every
+# titlecased noun that ends with ``:``) as a "line code", causing the
+# downstream ``_post_filter_wl`` rebuild to mangle the title into
+# ``ACHTUNG: …``. The pattern requires AT LEAST one digit so single-
+# letter / pure-word tokens cannot slip through; ``[A-Z]{0,4}`` covers
+# ÖBB carrier prefixes (REX, RJ, RJX, EC, ICE, IC, WB, NJ, CJX, S, U,
+# N, R, D) and the WL bus-suffix ``A``/``E`` is captured by the
+# optional trailing ``[A-Z]?``.
+_STRICT_LINE_TOKEN_RE = re.compile(r"^[A-Z]{0,4}\d{1,3}[A-Z]?$")
+
+
 # Präfix-Erkennung/Entfernung:
 # Accept ``/``, ``+`` and ``,`` as separators between line codes. WL
 # sometimes uses ``40+41:`` for items that affect two lines on the
 # same corridor — the previous slash-only pattern silently treated
 # the whole ``40+41`` as a body fragment, causing ``_ensure_line_prefix``
 # to prepend ``40: `` on top of it (``40: 40+41: …``).
+# Require whitespace OR end-of-string AFTER the colon
+# (``:(?:\s+|$)``) so a sentence-starting time fragment like
+# ``17:30 Uhr Verspätung`` doesn't match as a line prefix. Pre-fix
+# the lenient ``:\s*`` regex consumed ``17:`` and left the body as
+# ``30 Uhr Verspätung`` with lines=``[17]`` — the strict-line-token
+# gate alone cannot catch this because ``17`` IS a valid line-code
+# shape (the disambiguator is what comes after the colon, not what
+# comes before it). Every real WL/ÖBB title in the cache carries
+# ``: `` with a space, and the empty-body shape ``5:`` (returning
+# just the prefix marker after a previous render dropped the body)
+# is covered by the ``$`` alternative so ``_ensure_line_prefix``'s
+# empty-body contract still holds.
 LINE_PREFIX_STRIP_RE = re.compile(
-    r"^\s*[A-Za-z0-9]+(?:\s*[/+,]\s*[A-Za-z0-9]+){0,20}\s*:\s*", re.IGNORECASE
-)
-LINES_COMPLEX_PREFIX_RE = re.compile(
-    r"^\s*[A-Za-z0-9]+(?:\s*,\s*[A-Za-z0-9]+)+(?:(?:\s+und\s+)?Rufbus\s+[A-Za-z0-9]+)?(?:\s*\([^)]+\))?\s*:\s*",
+    r"^\s*[A-Za-z0-9]+(?:\s*[/+,]\s*[A-Za-z0-9]+){0,20}\s*:(?:\s+|$)",
     re.IGNORECASE,
 )
-RUF_BUS_PREFIX_RE = re.compile(r"^\s*Rufbus\s+([A-Za-z0-9]+)\s*:\s*", re.IGNORECASE)
+LINES_COMPLEX_PREFIX_RE = re.compile(
+    r"^\s*[A-Za-z0-9]+(?:\s*,\s*[A-Za-z0-9]+)+(?:(?:\s+und\s+)?Rufbus\s+[A-Za-z0-9]+)?(?:\s*\([^)]+\))?\s*:(?:\s+|$)",
+    re.IGNORECASE,
+)
+RUF_BUS_PREFIX_RE = re.compile(
+    r"^\s*Rufbus\s+([A-Za-z0-9]+)\s*:(?:\s+|$)", re.IGNORECASE
+)
 
 
 def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
@@ -52,6 +83,20 @@ def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
     so ``41E/10A:`` extracts to ``["41E", "10A"]`` (original WL
     rendering kept) rather than a sorted ``["10A", "41E"]`` that
     would re-order the user-visible prefix unnecessarily.
+
+    Defence against false-positive matches on titles that *look*
+    line-prefixed but aren't: the underlying regex
+    :data:`LINE_PREFIX_STRIP_RE` is intentionally permissive
+    (``[A-Za-z0-9]+`` before the colon) so it can absorb operator
+    letter prefixes (``REX7``, ``RJX12``, ``41E``, ``10A``, ``N20``).
+    That same permissiveness, pre-fix, treated generic word prefixes
+    like ``Achtung: Sperre`` / ``Information: Test`` and sentence-
+    starting numerics like ``17:30 Verspätung`` as line prefixes,
+    producing a mangled rebuild (``ACHTUNG: Sperre``, lines=``[17]``).
+    The :data:`_STRICT_LINE_TOKEN_RE` gate below rejects the strip
+    when ANY extracted token fails strict line-code validation —
+    leaving the title body untouched so the user-visible text stays
+    readable even if WL ever ships a non-line-prefixed title.
     """
     if len(title) > 500:
         title = title[:500]
@@ -65,21 +110,34 @@ def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
         match = LINES_COMPLEX_PREFIX_RE.match(body) or LINE_PREFIX_STRIP_RE.match(body)
         if match:
             block = body[: match.end()].rstrip(": \t")
+            candidates: list[str] = []
             for tok in re.split(r"[,/+]", block):
                 cleaned = _clean_line_token(tok.strip())
-                if cleaned and cleaned not in seen:
-                    seen.add(cleaned)
-                    lines.append(cleaned)
-            body = body[match.end():].strip()
-            continue
+                if cleaned:
+                    candidates.append(cleaned)
+            # Only commit the strip when EVERY extracted token looks
+            # like a real line code. Otherwise the prefix is a generic
+            # word (``Achtung:``, ``Hinweis:``) or a time fragment
+            # (``17:30``) and stripping it would mangle the title.
+            if candidates and all(_STRICT_LINE_TOKEN_RE.match(c) for c in candidates):
+                for cleaned in candidates:
+                    if cleaned not in seen:
+                        seen.add(cleaned)
+                        lines.append(cleaned)
+                body = body[match.end():].strip()
+                continue
+            # No strip — abandon the prefix-loop so the body keeps its
+            # original ``Achtung: …`` / ``17:30 …`` shape.
+            break
         ruf_match = RUF_BUS_PREFIX_RE.match(body)
         if ruf_match:
             cleaned = _clean_line_token(ruf_match.group(1))
-            if cleaned and cleaned not in seen:
+            if cleaned and _STRICT_LINE_TOKEN_RE.match(cleaned) and cleaned not in seen:
                 seen.add(cleaned)
                 lines.append(cleaned)
-            body = body[ruf_match.end():].strip()
-            continue
+                body = body[ruf_match.end():].strip()
+                continue
+            break
         break
     return body, lines
 
