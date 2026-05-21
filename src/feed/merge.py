@@ -20,8 +20,13 @@ _LINE_PREFIX_RE = re.compile(
     # so they can fuzzy-merge with the compact ``S 50`` / ``U6``
     # variants from another provider.
     r"[A-Za-z]+(?:-[Bb]ahn)?\s*\d{1,3}[A-Za-z]?"
-    r"(?:\s*/\s*[A-Za-z]+(?:-[Bb]ahn)?\s*\d{1,3}[A-Za-z]?)*"
-    r"|[A-Za-z0-9]+(?:\s*/\s*[A-Za-z0-9]+){0,20}"  # WL style: 1/2, U6, 13A
+    r"(?:\s*[/+]\s*[A-Za-z]+(?:-[Bb]ahn)?\s*\d{1,3}[A-Za-z]?)*"
+    # WL style: ``1/2``, ``U6``, ``13A`` — and also ``40+41`` (a
+    # multi-line shorthand WL uses for items affecting two lines on
+    # the same corridor). Without the ``+`` alternative the merge
+    # falls back to a single-line set and loses the cross-line
+    # overlap signal that drives ``deduplicate_fuzzy``.
+    r"|[A-Za-z0-9]+(?:\s*[/+]\s*[A-Za-z0-9]+){0,20}"
     r")\s*:\s*"
 )
 _LINE_TOKEN_RE = re.compile(r"^(?:\d{1,3}[A-Z]?|[A-Z]{1,4}\d{0,3}[A-Z]?)$")
@@ -180,7 +185,9 @@ def _parse_title(title: str) -> tuple[set[str], str]:
     event_name = title[m.end() :].strip()
 
     lines = set()
-    for raw in lines_str.split("/"):
+    # Split on ``/`` and ``+`` (WL multi-line shorthand) so all line
+    # tokens of ``40+41:`` and ``40/41:`` are captured equally.
+    for raw in re.split(r"[/+]", lines_str):
         # Strip a verbose ``-Bahn`` suffix so "S-Bahn 50" and "S 50"
         # produce the same canonical token "S50" — without this both
         # would coexist in the feed for the same incident.
@@ -269,6 +276,22 @@ def _has_significant_overlap_cached(
 def _natural_keys(text: str) -> list[str | int]:
     """Helper for natural sorting of line numbers (e.g. U1, U2, U10)."""
     return [int(c) if c.isdigit() else c for c in re.split(r'(\d+)', text)]
+
+
+_TRAILING_DIRECTIONAL_RE = re.compile(r"\s*[<>]+\s*$")
+
+
+def _trim_trailing_directional(text: str) -> str:
+    """Strip a trailing WL ``<``/``>`` arrow marker and surrounding space.
+
+    Mirrors ``_strip_trailing_directional_marker`` in ``build_feed`` but
+    runs at the merge stage so the marker doesn't end up *between* two
+    concatenated descriptions (where the per-item output strip in
+    ``_format_item_content`` can no longer reach it).
+    """
+    if not text:
+        return text
+    return _TRAILING_DIRECTIONAL_RE.sub("", text).rstrip()
 
 
 def _calculate_line_overlap(lines1: set[str], lines2: set[str]) -> float:
@@ -516,7 +539,19 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                             elif norm_desc2 in norm_desc1:
                                 existing_copy["description"] = desc1
                             else:
-                                existing_copy["description"] = f"{desc1}\n\n{desc2}".strip()
+                                # Strip trailing WL directional markers
+                                # (``<``/``>``) from each side BEFORE
+                                # joining so the marker doesn't end up
+                                # in the middle of the combined text
+                                # (real case: ``Betrieb ab Gersthof <``
+                                # + ``Linie 40: …`` → ``Betrieb ab
+                                # Gersthof < Linie 40: …`` reads as
+                                # a stray glyph in the user's feed).
+                                clean1 = _trim_trailing_directional(desc1)
+                                clean2 = _trim_trailing_directional(desc2)
+                                existing_copy["description"] = (
+                                    f"{clean1}\n\n{clean2}".strip()
+                                )
                         elif desc2:
                             existing_copy["description"] = desc2
 
