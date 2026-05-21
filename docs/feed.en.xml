@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 21 May 2026 18:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 18:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[66A: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107</guid>
+      <pubDate>Thu, 21 May 2026 18:27:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 16:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 18:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line 66A: Irregular intervals in both directions. Reason: rescue operation. [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Line 66A: Irregular intervals in both directions. Reason: rescue operation.<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Rescue operation from Klosterneuburger Straße, Wallensteinstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">93779f2373f8195241c5ab62df54f31689b7c4f93a9f65654658fd3b67c3a983</guid>
+      <pubDate>Thu, 21 May 2026 18:20:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 18:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 18:27:45 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line 31: Operation only between Stammersdorf and Klosterneuburger Straße, Wallensteinstraße. Continue to Wallensteinplatz. [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Line 31: Operation only between Stammersdorf and Klosterneuburger Straße, Wallensteinstraße. Continue to Wallensteinplatz.<br/>[On 21.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[73A: Foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +41,6 @@
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Line 73A: Disability in the direction of Simmering S U. Estimated duration: 18:15 clock. Reason: Foreign traffic accident in the Zinnergasse area. [On 21.05.2026]</description>
       <content:encoded><![CDATA[Line 73A: Disability in the direction of Simmering S U. Estimated duration: 18:15 clock. Reason: Foreign traffic accident in the Zinnergasse area.<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">31f255c87f5a1575177df04a76beabf6426a71727ee2fef75eb69ab752e4775f</guid>
-      <pubDate>Thu, 21 May 2026 16:49:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 17:01:29 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 16:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Line 38: After a driving disability, there are different intervals. [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Line 38: After a driving disability, there are different intervals.<br/>[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[59A: Traffic congestion]]></title>
@@ -76,37 +87,15 @@
       <content:encoded><![CDATA[Line 71: After a driving disability, there are different intervals.<br/>[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1: Foreign traffic accident]]></title>
+      <title><![CDATA[11A/26A/94A: traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">85ef2a0baf69650a1a8085cc90d290ed25d87e7295927f37db4a458c23e43499</guid>
-      <pubDate>Thu, 21 May 2026 15:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 10:30:36 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 15:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 18:00:00 +0200</ext:ends_at>
-      <description>Line 1: After a driving disability, there are different intervals. [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Line 1: After a driving disability, there are different intervals.<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: State visit]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">725c5250c60acec71a2b1fc654e2e1560bc396a74ad0b468d32af47b1d966802</guid>
-      <pubDate>Thu, 21 May 2026 14:55:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 16:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 14:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 21 May 2026 18:00:00 +0200</ext:ends_at>
-      <description>Line D: There are different intervals after a driving disability. [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Line D: There are different intervals after a driving disability.<br/>[On 21.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/26A/2A/94A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">810b71f3958c3bff69405cb571916b59a149128f2a357417f444b7c0fa05aa2c</guid>
+      <guid isPermaLink="false">cdc8d4abd2650fa69ec054c85caf5fdeadacc4f1d49f63b7e525ab0a31598f5d</guid>
       <pubDate>Thu, 21 May 2026 10:53:00 +0200</pubDate>
-      <ext:first_seen>Thu, 21 May 2026 17:30:55 +0200</ext:first_seen>
+      <ext:first_seen>Thu, 21 May 2026 18:30:49 +0200</ext:first_seen>
       <ext:starts_at>Thu, 21 May 2026 10:53:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 21 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Line 2A: Irregular intervals in both directions. Line 11A: Irregular intervals in both directions. [On 21.05.2026]</description>
-      <content:encoded><![CDATA[Line 2A: Irregular intervals in both directions. Line 11A: Irregular intervals in both directions.<br/>[On 21.05.2026]]]></content:encoded>
+      <description>Line 11A: Irregular intervals in both directions. Line 26A: Irregular intervals in both directions. [On 21.05.2026]</description>
+      <content:encoded><![CDATA[Line 11A: Irregular intervals in both directions. Line 26A: Irregular intervals in both directions.<br/>[On 21.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[74A: Buses stop Landstraßer main road 116]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 21 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 21.05.2026]</description>
       <content:encoded><![CDATA[[On 21.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a38e2ca7a84ce8085bdcf58d06bbb25125fbcf936ce29cd6a5915116418fcdae</guid>
+      <pubDate>Thu, 21 May 2026 08:30:00 +0200</pubDate>
+      <ext:first_seen>Thu, 21 May 2026 08:30:34 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 21 May 2026 08:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Due to construction work in the Donaueschingenstraße area, the line 37A is diverted. [Since 21.05.2026]</description>
+      <content:encoded><![CDATA[Due to construction work in the Donaueschingenstraße area, the line 37A is diverted.<br/>[Since 21.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -227,7 +227,10 @@
   "wl|hinweis|L=37A|D=2026-05-21": {
     "first_seen": "2026-05-21T06:30:34.655651+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "Due to construction work in the Donaueschingenstra\u00dfe area, the line 37A is diverted.",
+        "title": "37A: Construction works"
+      }
     }
   },
   "wl|hinweis|L=40,41,42,9|D=2026-05-04": {
@@ -449,6 +452,15 @@
       "en": {
         "summary": "Line 2A: Irregular intervals in both directions. Line 11A: Irregular intervals in both directions.",
         "title": "11A/26A/2A/94A: traffic congestion"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=11A,26A,94A|D=2026-05-21": {
+    "first_seen": "2026-05-21T16:30:49.184688+00:00",
+    "translations": {
+      "en": {
+        "summary": "Line 11A: Irregular intervals in both directions. Line 26A: Irregular intervals in both directions.",
+        "title": "11A/26A/94A: traffic congestion"
       }
     }
   },
@@ -1213,6 +1225,15 @@
   },
   "wl|st\u00f6rung|L=31|D=2026-05-19": {
     "first_seen": "2026-05-19T06:00:51.471781+00:00"
+  },
+  "wl|st\u00f6rung|L=31|D=2026-05-21": {
+    "first_seen": "2026-05-21T16:30:49.184688+00:00",
+    "translations": {
+      "en": {
+        "summary": "Line 31: Operation only between Stammersdorf and Klosterneuburger Stra\u00dfe, Wallensteinstra\u00dfe. Continue to Wallensteinplatz.",
+        "title": "31: Rescue operation from Klosterneuburger Stra\u00dfe, Wallensteinstra\u00dfe"
+      }
+    }
   },
   "wl|st\u00f6rung|L=32A|D=2026-04-25": {
     "first_seen": "2026-04-25T11:44:07.758332+00:00"
@@ -2090,7 +2111,10 @@
   "wl|st\u00f6rung|L=66A|D=2026-05-21": {
     "first_seen": "2026-05-21T14:01:09.467978+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "Line 66A: Irregular intervals in both directions. Reason: rescue operation.",
+        "title": "66A: Rescue operation"
+      }
     }
   },
   "wl|st\u00f6rung|L=67A|D=2026-05-08": {
