@@ -82,6 +82,21 @@
           "pattern": "^[0-9A-Za-z._:@=-]+$",
           "description": "HAFAS (ÖBB Scotty) extId aus der LocMatch-Anreicherung in src/places/hafas_client.py. Wird vom HAFAS-Fallback in scripts/update_station_directory.py gesetzt, wenn OSM Overpass keine Koordinaten liefert und HAFAS die Station auflöst. Typisch 7-9 Ziffern (z. B. '8100353' für Wien Hauptbahnhof); zulässig sind auch alphanumerische HAFAS-LIDs."
         },
+        "eva_nr": {
+          "type": "string",
+          "pattern": "^[0-9]{6,8}$",
+          "description": "UIC EVA-Nummer (z. B. '8103000' für Wien Hauptbahnhof) aus dem ÖBB-Infrastruktur GeoNetz-Datensatz (data.oebb.at GeoNetz_12-2024, CC BY 4.0). Internationaler UIC-Standard, identisch mit der DB-Stations-Nummer und damit Schlüssel für DB-HAFAS / transport.rest / bahn.guru-Integration. Wird vom GeoNetz-Loader in scripts/update_station_directory.py gesetzt; nur bei oebb-Stationen mit einem bsts_id-Match im Datensatz vorhanden."
+        },
+        "ifopt_id": {
+          "type": "string",
+          "pattern": "^[a-z]{2}:[0-9]+:[0-9]+$",
+          "description": "IFOPT-ID (International Fixed Object Code for Public Transport, DELFI-konform, z. B. 'at:49:1349' für Wien Hauptbahnhof). Standard für gleisscharfe ÖPNV-Stop-Identifikation in DE/AT/CH. Aus dem ÖBB GeoNetz."
+        },
+        "address": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Postalische Adresse der Station aus GeoNetz STP_ROADNAME (z. B. '1100 Wien, Am Hauptbahnhof 1'). Read-only Display-Information; algorithmisch nicht verwendet."
+        },
         "wl_stops": {
           "type": "array",
           "description": "WL-Einzelhaltepunkte (Bahnsteige/Richtungen) aus data/wienerlinien-ogd-haltepunkte.csv (Wiener Linien OGD, www.wienerlinien.at/ogd_realtime/doku/ogd/).",
