@@ -397,3 +397,155 @@ def test_de_and_en_feed_items_are_byte_identical_when_pipeline_fails(
     assert en_item.group(0) == de_item.group(0)
     # And: no legacy marker survived in the EN feed body.
     assert "Partially translated" not in rss_en
+
+
+# --- Metadata-driven glossary end-to-end ------------------------------
+#
+# The above tests pin the translation pipeline against the BASE
+# glossary. The next two tests pin the metadata-aware layering: a
+# Wiener Linien item must activate the WL overlay (``Aufzug`` →
+# ``elevator``); an ÖBB item must activate the ÖBB overlay
+# (``Personenzug`` → ``passenger train``). The overlays kick in
+# automatically because :func:`_format_item_content` extracts the
+# item's ``source`` / ``category`` and threads them through the
+# translation cascade. No caller code change required to benefit from
+# the operator-specific vocabulary.
+
+
+def test_metadata_glossary_activates_wiener_linien_overlay(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A WL item containing ``Aufzug`` must surface as ``elevator`` in
+    the EN feed — the WL source overlay is the only place that maps
+    ``Aufzug``. Base-only would leave the word untranslated (Marian's
+    default would mishandle it because ``Aufzug`` also means "elevator"
+    in everyday German but the model is biased to "lift / elevator"
+    inconsistently)."""
+    # Fake pipeline: passes the masked text through verbatim. The
+    # glossary already substituted the WL terms BEFORE the pipeline
+    # saw them, so the test does not need to translate anything itself.
+    def pass_through(text: str, **kwargs: Any) -> list[dict[str, str]]:
+        return [{"translation_text": text}]
+
+    monkeypatch.setattr(
+        build_feed, "_get_translation_pipeline", lambda: pass_through
+    )
+    item = cast(
+        FeedItem,
+        {
+            "title": "Information",
+            "description": (
+                "Aufzug außer Betrieb. Niederflur-Garnitur ersetzt durch "
+                "Standard-Fahrzeug."
+            ),
+            "source": "Wiener Linien",
+            "category": "Hinweis",
+            "guid": "wl-meta-1",
+            "link": "",
+        },
+    )
+    state: dict[str, dict[str, Any]] = {}
+    formatted_en = build_feed._format_item_content(
+        item,
+        ident="wl-meta-1",
+        starts_at=datetime(2026, 5, 16, 10, 0, tzinfo=UTC),
+        ends_at=None,
+        lang="en",
+        state=state,
+    )
+    desc_en = formatted_en.desc_text_truncated.lower()
+    # WL overlay activated: surface form gone, EN equivalent present.
+    assert "aufzug" not in desc_en
+    assert "elevator" in desc_en
+    assert "niederflur" not in desc_en
+    assert "low-floor" in desc_en
+
+
+def test_metadata_glossary_activates_oebb_overlay(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """An ÖBB item containing ``Personenzug`` and ``Bahnsteigwechsel``
+    must surface as ``passenger train`` and ``platform change`` in
+    the EN feed — both terms are ÖBB-only vocabulary."""
+    def pass_through(text: str, **kwargs: Any) -> list[dict[str, str]]:
+        return [{"translation_text": text}]
+
+    monkeypatch.setattr(
+        build_feed, "_get_translation_pipeline", lambda: pass_through
+    )
+    item = cast(
+        FeedItem,
+        {
+            "title": "Information",
+            "description": (
+                "Personenzug 5072 mit kurzfristigem Bahnsteigwechsel. "
+                "Reisende beachten den Anschlussverlust nach Salzburg."
+            ),
+            "source": "ÖBB",
+            "category": "Störung",
+            "guid": "oebb-meta-1",
+            "link": "",
+        },
+    )
+    state: dict[str, dict[str, Any]] = {}
+    formatted_en = build_feed._format_item_content(
+        item,
+        ident="oebb-meta-1",
+        starts_at=datetime(2026, 5, 16, 10, 0, tzinfo=UTC),
+        ends_at=None,
+        lang="en",
+        state=state,
+    )
+    desc_en = formatted_en.desc_text_truncated.lower()
+    # ÖBB overlay activated: surface forms gone, EN equivalents present.
+    assert "personenzug" not in desc_en
+    assert "passenger train" in desc_en
+    assert "bahnsteigwechsel" not in desc_en
+    assert "platform change" in desc_en
+    assert "anschlussverlust" not in desc_en
+    assert "missed connection" in desc_en
+
+
+def test_metadata_glossary_no_cross_operator_contamination(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A Baustellen item must NOT activate WL elevator vocabulary —
+    overlays are scoped per ``source``, not unioned across operators.
+    This pins the cache-key isolation guarantee."""
+    def pass_through(text: str, **kwargs: Any) -> list[dict[str, str]]:
+        return [{"translation_text": text}]
+
+    monkeypatch.setattr(
+        build_feed, "_get_translation_pipeline", lambda: pass_through
+    )
+    item = cast(
+        FeedItem,
+        {
+            "title": "Information",
+            # "Aufzug" appears in the text but the item is a Baustellen
+            # item, NOT a WL item — the WL overlay must stay dormant.
+            "description": "Vollsperre wegen Aufzug-Wartung.",
+            "source": "Stadt Wien – Baustellen",
+            "category": "Baustelle",
+            "guid": "bau-meta-1",
+            "link": "",
+        },
+    )
+    state: dict[str, dict[str, Any]] = {}
+    formatted_en = build_feed._format_item_content(
+        item,
+        ident="bau-meta-1",
+        starts_at=datetime(2026, 5, 16, 10, 0, tzinfo=UTC),
+        ends_at=None,
+        lang="en",
+        state=state,
+    )
+    desc_en = formatted_en.desc_text_truncated.lower()
+    # Baustellen overlay activated: "Vollsperre" → "full closure".
+    assert "vollsperre" not in desc_en
+    assert "full closure" in desc_en
+    # WL overlay NOT activated: "Aufzug" stays untouched in the
+    # Baustellen context (the overlay scoping prevents the WL
+    # elevator vocabulary from leaking into a road-construction item).
+    assert "aufzug" in desc_en
+    assert "elevator" not in desc_en

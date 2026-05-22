@@ -236,6 +236,180 @@ def test_glossary_and_entity_masking_compose() -> None:
     assert "Betriebsstörung" not in restored
 
 
+# --- Metadata-driven glossary layering -------------------------------
+#
+# The metadata-aware glossary uses a three-layer composition:
+#   1. ``_GLOSSARY_BASE`` — universally applicable transit jargon
+#   2. ``_GLOSSARY_BY_SOURCE[source]`` — operator-specific vocabulary
+#   3. ``_GLOSSARY_BY_CATEGORY[category]`` — disruption-type vocabulary
+#
+# Each ``FeedItem`` carries the ``source``/``category`` metadata that
+# the resolver merges into the active glossary BEFORE the model sees
+# the text. Without metadata the resolver returns the base layer
+# verbatim, preserving backward compatibility for callers that don't
+# care about per-item context.
+
+
+def test_resolve_glossary_base_only_when_no_metadata() -> None:
+    """Without metadata the resolver returns the base layer verbatim."""
+    glossary = build_feed._resolve_glossary(None, None)
+    assert glossary["Betriebsstörung"] == "service disruption"
+    assert glossary["Verspätung"] == "delay"
+    # WL-only entry not present in base.
+    assert "Kurzführung" not in glossary
+    # ÖBB-only entry not present in base.
+    assert "Personenzug" not in glossary
+    # Stadt-Wien-only entry not present in base.
+    assert "Vollsperre" not in glossary
+
+
+def test_resolve_glossary_wiener_linien_overlay() -> None:
+    """``source="Wiener Linien"`` activates the WL overlay; base
+    entries remain alongside the operator-specific ones."""
+    wl = build_feed._resolve_glossary("Wiener Linien", None)
+    # Base entry survives.
+    assert wl["Betriebsstörung"] == "service disruption"
+    # WL-specific entries activated.
+    assert wl["Aufzug"] == "elevator"
+    assert wl["Rolltreppe"] == "escalator"
+    assert wl["Kurzführung"] == "short-running service"
+    assert wl["Niederflur"] == "low-floor"
+
+
+def test_resolve_glossary_oebb_overlay() -> None:
+    """``source="ÖBB"`` contributes rail-specific vocabulary."""
+    oebb = build_feed._resolve_glossary("ÖBB", None)
+    # Base entry survives.
+    assert oebb["Verspätung"] == "delay"
+    # ÖBB-specific entries activated.
+    assert oebb["Personenzug"] == "passenger train"
+    assert oebb["Anschlussverlust"] == "missed connection"
+    assert oebb["Bahnsteigwechsel"] == "platform change"
+    # WL-only entry NOT in ÖBB overlay.
+    assert "Kurzführung" not in oebb
+
+
+def test_resolve_glossary_baustellen_overlay() -> None:
+    """``source="Stadt Wien – Baustellen"`` contributes road-construction
+    vocabulary that does not appear in transit overlays."""
+    bau = build_feed._resolve_glossary("Stadt Wien – Baustellen", None)
+    assert bau["Vollsperre"] == "full closure"
+    assert bau["Teilsperre"] == "partial closure"
+    assert bau["Bauphase"] == "construction phase"
+    assert bau["Verkehrsführung"] == "traffic routing"
+    # WL-specific entry NOT in Baustellen overlay.
+    assert "Aufzug" not in bau
+
+
+def test_resolve_glossary_vor_overlay_empty_falls_through_to_base() -> None:
+    """``source="VOR/VAO"`` declares an empty overlay; the resolver
+    must produce the same dict as base-only (architectural symmetry
+    with the other operators, no functional change)."""
+    vor = build_feed._resolve_glossary("VOR/VAO", None)
+    base = build_feed._resolve_glossary(None, None)
+    assert vor == base
+
+
+def test_resolve_glossary_unknown_source_degrades_to_base() -> None:
+    """A typo or new operator in the feed source string MUST NOT
+    crash the EN build — the resolver returns the base layer."""
+    result = build_feed._resolve_glossary("Unknown Provider XYZ", None)
+    base = build_feed._resolve_glossary(None, None)
+    assert result == base
+
+
+def test_apply_domain_glossary_uses_wiener_linien_overlay() -> None:
+    """End-to-end through ``_apply_domain_glossary``: a WL-only term
+    is masked only when ``source="Wiener Linien"`` is passed in."""
+    text = "Aufzug außer Betrieb, Niederflur ersetzt."
+    _, mapping_base = build_feed._apply_domain_glossary(text)
+    _, mapping_wl = build_feed._apply_domain_glossary(
+        text, source="Wiener Linien"
+    )
+    # Without metadata: WL terms left untouched.
+    assert "elevator" not in mapping_base.values()
+    assert "low-floor" not in mapping_base.values()
+    # With metadata: WL overlay activates the canonical EN renderings.
+    assert "elevator" in mapping_wl.values()
+    assert "low-floor" in mapping_wl.values()
+
+
+def test_apply_domain_glossary_uses_oebb_overlay() -> None:
+    """End-to-end through ``_apply_domain_glossary``: ÖBB rail-specific
+    compound nouns activate only with ``source="ÖBB"``."""
+    text = "Personenzug 5072 mit Bahnsteigwechsel und Anschlussverlust."
+    _, mapping_base = build_feed._apply_domain_glossary(text)
+    _, mapping_oebb = build_feed._apply_domain_glossary(text, source="ÖBB")
+    assert "passenger train" not in mapping_base.values()
+    assert "platform change" not in mapping_base.values()
+    assert "missed connection" not in mapping_base.values()
+    assert "passenger train" in mapping_oebb.values()
+    assert "platform change" in mapping_oebb.values()
+    assert "missed connection" in mapping_oebb.values()
+
+
+def test_apply_domain_glossary_uses_baustellen_overlay() -> None:
+    """End-to-end through ``_apply_domain_glossary``: road-construction
+    vocabulary activates only with ``source="Stadt Wien – Baustellen"``."""
+    text = "Vollsperre der Fahrbahn, neue Verkehrsführung in Bauphase 2."
+    _, mapping_base = build_feed._apply_domain_glossary(text)
+    _, mapping_bau = build_feed._apply_domain_glossary(
+        text, source="Stadt Wien – Baustellen"
+    )
+    assert "full closure" not in mapping_base.values()
+    assert "traffic routing" not in mapping_base.values()
+    assert "construction phase" not in mapping_base.values()
+    assert "full closure" in mapping_bau.values()
+    assert "traffic routing" in mapping_bau.values()
+    assert "construction phase" in mapping_bau.values()
+
+
+def test_apply_domain_glossary_base_active_with_source_overlay() -> None:
+    """Adding a source overlay must NOT mask base entries — overlays
+    extend the active glossary, they do not replace it."""
+    text = "Betriebsstörung mit Kurzführung wegen Schadhaftem Fahrzeug."
+    _, mapping = build_feed._apply_domain_glossary(
+        text, source="Wiener Linien"
+    )
+    # Base entries — unchanged.
+    assert "service disruption" in mapping.values()
+    assert "defective vehicle" in mapping.values()
+    # WL overlay entry — newly active.
+    assert "short-running service" in mapping.values()
+
+
+def test_apply_domain_glossary_no_cross_overlay_contamination() -> None:
+    """A Baustellen item must NOT pick up Wiener Linien vocabulary,
+    and vice versa. The overlay axis is per-source, not cumulative
+    across all known operators."""
+    text = "Aufzug bei Vollsperre"
+    _, mapping_wl = build_feed._apply_domain_glossary(
+        text, source="Wiener Linien"
+    )
+    _, mapping_bau = build_feed._apply_domain_glossary(
+        text, source="Stadt Wien – Baustellen"
+    )
+    # WL sees Aufzug, not Vollsperre.
+    assert "elevator" in mapping_wl.values()
+    assert "full closure" not in mapping_wl.values()
+    # Baustellen sees Vollsperre, not Aufzug.
+    assert "full closure" in mapping_bau.values()
+    assert "elevator" not in mapping_bau.values()
+
+
+def test_norm_metadata_handles_none_empty_and_whitespace() -> None:
+    """``_norm_metadata`` is the contract for FeedItem source/category
+    normalisation before glossary lookup. It must collapse the empty,
+    whitespace and non-string edge cases to ``None`` so the resolver
+    cache key stays stable across providers."""
+    assert build_feed._norm_metadata(None) is None
+    assert build_feed._norm_metadata("") is None
+    assert build_feed._norm_metadata("   ") is None
+    assert build_feed._norm_metadata(123) is None
+    assert build_feed._norm_metadata(" Wiener Linien ") == "Wiener Linien"
+    assert build_feed._norm_metadata("ÖBB") == "ÖBB"
+
+
 def test_street_suffix_protects_compound_names() -> None:
     """Regression: ``Pasettistraße`` was rendered as ``"Pasetti
     Street"`` and ``Landstraßer Hauptstraße`` as ``"Landstraßer main

@@ -911,16 +911,34 @@ _LINE_ENTITY_RE: re.Pattern[str] = re.compile(
 #
 # Each entry below is a German source token mapped to its canonical
 # English equivalent in the transit domain. The mapping is consumed
-# by ``_mask_entities`` BEFORE the model sees the text: the German
-# token is replaced by an ``XENT…`` placeholder whose mapping entry
-# carries the *English* term. After the model returns its (now
-# correct, because the problematic word is gone) translation,
-# ``_unmask_entities`` substitutes the English term back in.
+# by :func:`_apply_domain_glossary` BEFORE the model sees the text:
+# the German token is replaced by an ``XGLO…`` placeholder whose
+# mapping entry carries the *English* term. After the model returns
+# its (now correct, because the problematic word is gone) translation,
+# :func:`_unmask_entities` substitutes the English term back in.
 #
-# Longer compound terms appear first so e.g. ``Schadhaftem Fahrzeug``
-# beats the single-word ``Schadhaftem`` and the model receives one
-# placeholder per concept rather than two.
-_DOMAIN_GLOSSARY: dict[str, str] = {
+# Architecture: three-layer composition driven by the per-item
+# metadata (``FeedItem["source"]``, ``FeedItem["category"]``) that
+# every provider already attaches to a disruption. At translation
+# time the active glossary is the merger of:
+#
+#   * :data:`_GLOSSARY_BASE` — universally applicable transit jargon
+#   * :data:`_GLOSSARY_BY_SOURCE` ``[source]`` — operator-specific
+#     vocabulary (Wiener Linien / ÖBB / Stadt Wien Baustellen / …)
+#   * :data:`_GLOSSARY_BY_CATEGORY` ``[category]`` — disruption-type
+#     specific vocabulary (architectural extension point — empty
+#     today because the project has a tight source↔category coupling)
+#
+# Layering applies later overlays last, so a source / category entry
+# can override a base entry when needed. The merger and the compiled
+# alternation regex are cached per ``(source, category)`` combination
+# via :func:`_resolve_glossary` and :func:`_domain_glossary_pattern`
+# — the build pays the merge/compile cost once per unique combination,
+# not once per item. Longer compound terms appear first in the
+# regex alternation so e.g. ``Schadhaftem Fahrzeug`` beats the
+# single-word ``Schadhaftem`` and the model receives one placeholder
+# per concept rather than two.
+_GLOSSARY_BASE: dict[str, str] = {
     # --- Disruption-type nouns --------------------------------------
     "Betriebsstörung": "service disruption",
     "Betriebsstörungen": "service disruptions",
@@ -940,6 +958,15 @@ _DOMAIN_GLOSSARY: dict[str, str] = {
     "Fahrtausfälle": "service cancellations",
     "Zugausfall": "train cancellation",
     "Zugausfälle": "train cancellations",
+    # --- Disruption resolution / progress markers -------------------
+    # Marian's defaults read awkwardly here ("behoben" → "fixed",
+    # "Behebung" → "elimination"). The transit-domain natural English
+    # mirrors how UK / Irish operators phrase the same updates.
+    "behoben": "resolved",
+    "Behebung": "resolution",
+    "Ursache": "cause",
+    "wird untersucht": "is being investigated",
+    "wird geprüft": "is being checked",
     # --- Construction / works ---------------------------------------
     "Gleisbauarbeiten": "track construction works",
     "Gleisarbeiten": "track works",
@@ -950,6 +977,14 @@ _DOMAIN_GLOSSARY: dict[str, str] = {
     "Kranarbeiten": "crane works",
     "Rohrleitungsarbeiten": "pipeline works",
     "Straßenbauarbeiten": "roadworks",
+    # --- Time / expectancy adverbs ----------------------------------
+    # Marian translates "voraussichtlich" as "presumably" which reads
+    # awkwardly in a disruption / construction timeline. The transit
+    # use case is always "expected to last / end at …".
+    "voraussichtlich": "expected",
+    "voraussichtliche Dauer": "expected duration",
+    "voraussichtliches Ende": "expected end",
+    "bis auf Weiteres": "until further notice",
     # --- Replacement services ---------------------------------------
     "Schienenersatzverkehr": "rail replacement service",
     "Ersatzverkehr": "replacement service",
@@ -982,25 +1017,153 @@ _DOMAIN_GLOSSARY: dict[str, str] = {
 }
 
 
-@lru_cache(maxsize=1)
-def _domain_glossary_pattern() -> re.Pattern[str]:
-    """Compile a case-insensitive, longest-first regex from the
-    :data:`_DOMAIN_GLOSSARY` keys.
+# Operator-specific glossary overlays. Each key is the literal
+# ``source`` value emitted by the matching provider (see
+# ``src/providers/*.py`` and ``src/feed/stammstrecke.py``). An item's
+# active glossary is :data:`_GLOSSARY_BASE` ∪ this overlay; entries
+# here override base entries when both define the same key (rare —
+# the overlays focus on terms that do NOT appear in the base set so
+# they would be too narrow to apply universally).
+_GLOSSARY_BY_SOURCE: dict[str, dict[str, str]] = {
+    # Urban transit (metros, trams, buses). Marian routinely
+    # mistranslates Wien-specific compound nouns ("Niederflur" →
+    # "low-floor", "Kurzführung" → "short-running service") because
+    # the training set covers Hochdeutsch prose rather than ÖPNV
+    # operations vocabulary.
+    "Wiener Linien": {
+        "Kurzführung": "short-running service",
+        "kurzgeführt": "operating short-running",
+        "Aufzug": "elevator",
+        "Aufzüge": "elevators",
+        "Rolltreppe": "escalator",
+        "Rolltreppen": "escalators",
+        "Niederflurfahrzeug": "low-floor vehicle",
+        "Niederflur": "low-floor",
+        "Halt entfällt": "stop omitted",
+        "Halt entfallen": "stop omitted",
+        "Halte entfallen": "stops omitted",
+    },
+    # Long-distance + regional rail. Heavy use of railway-specific
+    # vocabulary that the generic translator handles inconsistently
+    # ("Personenzug" → "person train", "Reservierungspflicht" →
+    # "Reservation duty").
+    "ÖBB": {
+        "Personenzug": "passenger train",
+        "Personenzüge": "passenger trains",
+        "Regionalzug": "regional train",
+        "Regionalzüge": "regional trains",
+        "Fernverkehr": "long-distance service",
+        "Nahverkehr": "regional service",
+        "Bahnsteigwechsel": "platform change",
+        "Anschlussverlust": "missed connection",
+        "Reservierungspflicht": "mandatory reservation",
+        "Tunnelsperre": "tunnel closure",
+    },
+    # Road construction sites (Stadt Wien open-data Baustellen feed).
+    # Talks about lane closures and routing in road-traffic vocabulary
+    # that does NOT appear in WL/ÖBB items, so the WL elevator/tram
+    # vocabulary would never apply here and vice versa.
+    "Stadt Wien – Baustellen": {
+        "Vollsperre": "full closure",
+        "Vollsperrung": "full closure",
+        "Teilsperre": "partial closure",
+        "Teilsperrung": "partial closure",
+        "Spurbeschränkung": "lane restriction",
+        "Spurreduktion": "lane reduction",
+        "Bauphase": "construction phase",
+        "Verkehrsführung": "traffic routing",
+    },
+    # VOR/VAO Stammstrecke-Verspätungsmonitor emits highly templated
+    # CSV-driven items; the surface vocabulary is already covered by
+    # the base glossary. Empty overlay kept for symmetry with the
+    # other operators (and so the resolver finds the key without
+    # falling through to ``.get(..., {})``).
+    "VOR/VAO": {},
+}
 
-    The regex is consumed by :func:`_mask_entities`; matches resolve
-    to the *English* equivalent in the mapping rather than the German
-    surface form, so the unmask step inserts the corrected EN term
-    directly. Longest-first sort is critical: ``Schadhaftem Fahrzeug``
-    must beat the single-word ``Schadhaftem`` alternation so the model
-    sees one placeholder, not two.
+
+# Category-specific glossary overlays. Architectural extension point:
+# the project currently has a tight 1:1 source↔category coupling
+# (Stadt Wien ↔ Baustelle; WL/ÖBB/VOR ↔ Störung), so source-driven
+# entries cover today's vocabulary needs. The category axis activates
+# once an operator publishes a new category (e.g. WL also emitting a
+# "Baustelle" category for tram-replacement works) and we want
+# category-specific overrides regardless of which source emits them.
+_GLOSSARY_BY_CATEGORY: dict[str, dict[str, str]] = {}
+
+
+@lru_cache(maxsize=32)
+def _resolve_glossary(
+    source: str | None, category: str | None
+) -> dict[str, str]:
+    """Return the merged glossary for a given ``(source, category)``.
+
+    Layering order: base → source overlay → category overlay. Later
+    overlays override earlier entries with the same key. Unknown
+    ``source`` / ``category`` values degrade silently to the base
+    layer — a typo in the feed's source string MUST NOT abort the EN
+    build.
+
+    Caches up to 32 unique combinations; today's catalogue is ~4
+    sources × ~3 categories + the ``(None, None)`` legacy entry, well
+    under the cap. The returned dict is INTERNAL cached state —
+    callers MUST treat it as read-only (only ``.get()`` and ``.keys()``
+    usages exist today).
     """
-    sorted_terms = sorted(_DOMAIN_GLOSSARY.keys(), key=len, reverse=True)
+    merged: dict[str, str] = dict(_GLOSSARY_BASE)
+    if source:
+        merged.update(_GLOSSARY_BY_SOURCE.get(source, {}))
+    if category:
+        merged.update(_GLOSSARY_BY_CATEGORY.get(category, {}))
+    return merged
+
+
+@lru_cache(maxsize=32)
+def _domain_glossary_pattern(
+    source: str | None, category: str | None
+) -> re.Pattern[str]:
+    """Compile the case-insensitive, longest-first regex for the
+    active glossary derived from ``(source, category)``.
+
+    Cached per metadata combination so the regex compile work is paid
+    once per unique combo, not per feed item. The regex matches any
+    key from the active layered glossary; the actual surface →
+    English mapping is resolved at match time inside
+    :func:`_apply_domain_glossary` via :func:`_resolve_glossary`.
+
+    Longest-first sort is critical: ``Schadhaftem Fahrzeug`` must beat
+    the single-word ``Schadhaftem`` alternation so the model sees one
+    placeholder, not two.
+    """
+    glossary = _resolve_glossary(source, category)
+    sorted_terms = sorted(glossary.keys(), key=len, reverse=True)
+    if not sorted_terms:
+        # Defensive: empty glossary should never happen because the
+        # base layer is always populated. Return a never-match pattern
+        # rather than letting ``re.compile("(?<!\\w)(?:)(?!\\w)")``
+        # produce ill-defined alternation.
+        return re.compile(r"(?!)")
     pattern = (
         r"(?<!\w)(?:"
         + "|".join(re.escape(term) for term in sorted_terms)
         + r")(?!\w)"
     )
     return re.compile(pattern, re.IGNORECASE)
+
+
+def _norm_metadata(value: Any) -> str | None:
+    """Normalise a ``FeedItem`` source/category field for metadata
+    lookup.
+
+    Returns ``None`` for non-string or whitespace-only input so the
+    caller can treat "no metadata" uniformly. Trims edge whitespace
+    so a provider that emits ``" Wiener Linien "`` still matches the
+    canonical key in :data:`_GLOSSARY_BY_SOURCE`.
+    """
+    if not isinstance(value, str):
+        return None
+    stripped = value.strip()
+    return stripped if stripped else None
 
 
 # German compound-noun suffixes that mark a token as a street / public-
@@ -1295,7 +1458,12 @@ _GLOSSARY_PLACEHOLDER_FORMAT = "XGLO{index}X"
 _UNMASK_PLACEHOLDER_RE: re.Pattern[str] = re.compile(r"X(?:ENT|GLO)\d+X")
 
 
-def _apply_domain_glossary(text: str) -> tuple[str, dict[str, str]]:
+def _apply_domain_glossary(
+    text: str,
+    *,
+    source: str | None = None,
+    category: str | None = None,
+) -> tuple[str, dict[str, str]]:
     """Substitute ÖPNV-domain German terms with placeholders that
     resolve to their canonical English equivalents.
 
@@ -1320,22 +1488,37 @@ def _apply_domain_glossary(text: str) -> tuple[str, dict[str, str]]:
     entries (unlike :func:`_mask_entities` which is strictly
     identity). The two operations compose in
     :func:`_translate_text_attempt`.
+
+    Metadata-driven layering: when ``source`` and/or ``category`` are
+    passed in (typically extracted from the ``FeedItem`` by
+    :func:`_format_item_content`), the active glossary is the merger
+    of :data:`_GLOSSARY_BASE` with the matching overlays in
+    :data:`_GLOSSARY_BY_SOURCE` / :data:`_GLOSSARY_BY_CATEGORY`. The
+    overlay broadens coverage for vocabulary that is too narrow to
+    apply universally (``Aufzug`` should only resolve to "elevator"
+    for Wiener Linien items; ``Vollsperre`` only for Stadt Wien
+    Baustellen items). Without metadata the function uses only the
+    base layer — preserves backward compatibility for callers that
+    do not care about per-item context.
     """
     if not text:
         return text, {}
+
+    glossary = _resolve_glossary(source, category)
+    pattern = _domain_glossary_pattern(source, category)
 
     mapping: dict[str, str] = {}
     surface_to_placeholder: dict[str, str] = {}
 
     def _replace(match: re.Match[str]) -> str:
         surface = match.group(0)
-        en_term = _DOMAIN_GLOSSARY.get(surface)
+        en_term = glossary.get(surface)
         if en_term is None:
             # Case-insensitive fallback (the glossary pattern matches
             # ``betriebsstörung`` at sentence start; the dict keys are
             # capitalised because that is how WL and ÖBB publish the
             # term in 99 % of items). Small dict, linear scan is fine.
-            for key, value in _DOMAIN_GLOSSARY.items():
+            for key, value in glossary.items():
                 if key.lower() == surface.lower():
                     en_term = value
                     break
@@ -1343,7 +1526,7 @@ def _apply_domain_glossary(text: str) -> tuple[str, dict[str, str]]:
             # Pattern matched but resolution failed — return the
             # surface unchanged so no placeholder dangles in the
             # output. Defensive only; should not happen given the
-            # pattern is built from the dict keys.
+            # pattern is built from the active glossary's keys.
             return surface
         cached = surface_to_placeholder.get(surface)
         if cached is not None:
@@ -1353,7 +1536,7 @@ def _apply_domain_glossary(text: str) -> tuple[str, dict[str, str]]:
         surface_to_placeholder[surface] = placeholder
         return placeholder
 
-    processed = _domain_glossary_pattern().sub(_replace, text)
+    processed = pattern.sub(_replace, text)
     return processed, mapping
 
 
@@ -1428,7 +1611,13 @@ def _get_translation_pipeline() -> Any:
     return _TRANSLATION_STATE["pipeline"]
 
 
-def _translate_text_attempt(text: str, ident: str = "") -> str | None:
+def _translate_text_attempt(
+    text: str,
+    ident: str = "",
+    *,
+    source: str | None = None,
+    category: str | None = None,
+) -> str | None:
     """Translate ``text`` from German to English with entity preservation.
 
     Pipeline:
@@ -1452,6 +1641,11 @@ def _translate_text_attempt(text: str, ident: str = "") -> str | None:
     ``ident`` is included in warning logs (sanitised) so the GitHub
     Actions log shows exactly which feed identities failed to
     translate — critical for diagnosing partial-translation drift.
+
+    ``source`` and ``category`` (when supplied — they are the
+    matching ``FeedItem`` fields) drive the metadata-aware glossary
+    layering in :func:`_apply_domain_glossary`: operator-specific
+    vocabulary activates only when the item came from that operator.
     """
     if not text or not text.strip():
         return None
@@ -1470,7 +1664,9 @@ def _translate_text_attempt(text: str, ident: str = "") -> str | None:
     # The two mappings are merged into a single dict for unmasking
     # (each pass uses a distinct placeholder format so indices cannot
     # collide).
-    glossary_processed, glossary_mapping = _apply_domain_glossary(text)
+    glossary_processed, glossary_mapping = _apply_domain_glossary(
+        text, source=source, category=category,
+    )
     masked_text, entity_mapping = _mask_entities(glossary_processed)
     combined_mapping = {**glossary_mapping, **entity_mapping}
     try:
@@ -1510,7 +1706,13 @@ def _translate_text_attempt(text: str, ident: str = "") -> str | None:
     return _unmask_entities(translated, combined_mapping)
 
 
-def _translate_text(text: str, ident: str = "") -> str:
+def _translate_text(
+    text: str,
+    ident: str = "",
+    *,
+    source: str | None = None,
+    category: str | None = None,
+) -> str:
     """Translate ``text`` from German to English; fall back to the source on failure.
 
     Thin wrapper around :func:`_translate_text_attempt` that converts
@@ -1520,10 +1722,16 @@ def _translate_text(text: str, ident: str = "") -> str:
     cache-aware path inside :func:`_cached_translation` uses
     :func:`_translate_text_attempt` directly so a failed translation
     is NEVER cached as the canonical English text.
+
+    ``source`` and ``category`` forward through to
+    :func:`_translate_text_attempt` for metadata-aware glossary
+    layering; default ``None`` preserves backward compatibility.
     """
     if not text or not text.strip():
         return text
-    attempt = _translate_text_attempt(text, ident=ident)
+    attempt = _translate_text_attempt(
+        text, ident=ident, source=source, category=category,
+    )
     return attempt if attempt is not None else text
 
 
@@ -1553,6 +1761,9 @@ def _cached_translation(
     field: str,
     ident: str,
     state: dict[str, dict[str, Any]] | None,
+    *,
+    source: str | None = None,
+    category: str | None = None,
 ) -> tuple[str, bool]:
     """Return the cached EN translation of ``text`` for ``ident``/``field``.
 
@@ -1574,11 +1785,20 @@ def _cached_translation(
         that do — e.g. ``ÖBB`` alone — round-trip safely).
       * If ``state`` or ``ident`` is missing, fall through to a
         cache-less translation via :func:`_translate_text_attempt`.
+
+    ``source`` and ``category`` forward through to
+    :func:`_translate_text_attempt` for metadata-aware glossary
+    layering. The translation cache key remains ``(ident, field)`` —
+    item metadata is implicit in ``ident`` (one disruption belongs to
+    exactly one operator), so the cache layout does not need
+    additional axes.
     """
     if not text:
         return text, True  # empty input is trivially "translated"
     if state is None or not ident:
-        attempt = _translate_text_attempt(text, ident=ident)
+        attempt = _translate_text_attempt(
+            text, ident=ident, source=source, category=category,
+        )
         return (attempt, True) if attempt is not None else (text, False)
     entry = state.setdefault(ident, {})
     translations_raw = entry.get("translations")
@@ -1601,7 +1821,9 @@ def _cached_translation(
             sanitize_log_arg(ident),
             sanitize_log_arg(field),
         )
-    attempt = _translate_text_attempt(text, ident=ident)
+    attempt = _translate_text_attempt(
+        text, ident=ident, source=source, category=category,
+    )
     if attempt is None:
         # Translation failed — do NOT persist the German source as
         # the "translation". The next run gets a clean retry.
@@ -3137,6 +3359,9 @@ def _apply_lang_overlay(
     ident: str,
     lang: str,
     state: dict[str, dict[str, Any]] | None,
+    *,
+    source: str | None = None,
+    category: str | None = None,
 ) -> FormattedContent:
     """Translate the German formatted output into English, if requested.
 
@@ -3157,16 +3382,24 @@ def _apply_lang_overlay(
     feed item is byte-identical to the DE item for that disruption.
 
     For ``lang != "en"`` the input is returned unchanged.
+
+    ``source`` / ``category`` (normalised
+    :data:`FeedItem` fields) drive metadata-aware glossary layering
+    inside the translation cascade. Default ``None`` keeps the
+    function callable from the existing tests that do not need to
+    exercise the metadata path.
     """
     if lang != "en":
         return base
 
     title_raw, title_ok = _cached_translation(
-        base.title_out, "title", ident, state
+        base.title_out, "title", ident, state,
+        source=source, category=category,
     )
     if summary_de:
         summary_raw, summary_ok = _cached_translation(
-            summary_de, "summary", ident, state
+            summary_de, "summary", ident, state,
+            source=source, category=category,
         )
     else:
         summary_raw = ""
@@ -3343,7 +3576,17 @@ def _format_item_content(
         guid, link, title_cdata, desc_text_truncated, desc_cdata,
         raw_desc, title_out, desc_html,
     )
-    return _apply_lang_overlay(base, summary, time_line, ident, lang, state)
+    # Extract the per-item metadata that drives glossary layering in
+    # the EN translation cascade. Both fields are normalised to
+    # ``None`` for empty / non-string values so the downstream
+    # ``_resolve_glossary`` cache key is stable across the
+    # ``None``/``""``/``"  "`` edge cases.
+    source_meta = _norm_metadata(it.get("source"))
+    category_meta = _norm_metadata(it.get("category"))
+    return _apply_lang_overlay(
+        base, summary, time_line, ident, lang, state,
+        source=source_meta, category=category_meta,
+    )
 
 
 def _emit_item(
