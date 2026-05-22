@@ -1287,7 +1287,6 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
 # unmasker handles both via a single union regex (see
 # :data:`_UNMASK_PLACEHOLDER_RE`).
 _GLOSSARY_PLACEHOLDER_FORMAT = "XGLO{index}X"
-_GLOSSARY_PLACEHOLDER_RE: re.Pattern[str] = re.compile(r"XGLO\d+X")
 
 # Unified regex for the unmasker — matches both entity (``XENT…``)
 # and glossary (``XGLO…``) placeholders. Defined at module import
