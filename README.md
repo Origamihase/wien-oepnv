@@ -5,6 +5,7 @@
 [![Feed Build](https://github.com/Origamihase/wien-oepnv/actions/workflows/build-feed.yml/badge.svg?branch=main)](https://github.com/Origamihase/wien-oepnv/actions/workflows/build-feed.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Subscribe to Feed](https://img.shields.io/badge/RSS-Subscribe_to_Feed-orange?style=flat&logo=rss)](https://origamihase.github.io/wien-oepnv/feed.xml)
+[![Website](https://img.shields.io/badge/Website-Wien_ÖPNV-0F1736?style=flat&logo=githubpages&logoColor=white)](https://origamihase.github.io/wien-oepnv/site.html#ausfaelle)
 
 ---
 
