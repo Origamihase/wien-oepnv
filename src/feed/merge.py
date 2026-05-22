@@ -278,6 +278,107 @@ def _natural_keys(text: str) -> list[str | int]:
     return [int(c) if c.isdigit() else c for c in re.split(r'(\d+)', text)]
 
 
+# Helper for collapsing two merged names that share a substantial common
+# word-aligned prefix. Without this collapse, the merge name-combining
+# logic concatenates with ``&`` and produces ugly walls of text when WL
+# ships near-identical Hinweis items that only differ by date or
+# location. Real cache examples (current snapshot):
+#
+#   * ``11A: Veranstaltung am 09.06.2026`` × 4 items with different
+#     dates merged into the 122-char title
+#     ``11A: Veranstaltung am 09.06.2026 & Veranstaltung am 03.06.2026
+#     & Veranstaltung am 11.06.2026 & Veranstaltung am 20.06.2026``
+#   * ``43: Benutzen Sie die Linie 43A - Dornbacher Straße 85`` +
+#     ``43: Benutzen Sie die Linie 43A - Alszeile 93`` merged into
+#     the 96-char title repeating ``Benutzen Sie die Linie 43A`` twice
+#
+# The collapse keeps the shared prefix once and joins the differing
+# suffixes with ``, ``. When ALL suffix parts are calendar dates
+# (``DD.MM.YYYY``), they get sorted chronologically so the user sees
+# events in time order rather than cache-insertion order.
+_DATE_PIECE_RE = re.compile(r"^(\d{1,2})\.(\d{1,2})\.(\d{4})$")
+
+
+def _date_sort_key(part: str) -> tuple[int, int, int] | None:
+    match = _DATE_PIECE_RE.match(part.strip())
+    if not match:
+        return None
+    day, month, year = match.groups()
+    return (int(year), int(month), int(day))
+
+
+def _collapse_common_prefix(
+    ex_name: str,
+    name: str,
+    *,
+    min_prefix: int = 10,
+    max_suffix: int = 60,
+) -> str | None:
+    """Combine two names by sharing a common word-aligned prefix.
+
+    Returns the collapsed name, or ``None`` to indicate the caller
+    should fall back to the existing ``ex_name & name`` join.
+
+    Constraints:
+
+    * Substantial overlap — at least ``min_prefix`` shared characters,
+      ending at a word boundary (space) so we never split mid-word.
+    * Short suffixes — each remainder must be ≤ ``max_suffix`` chars.
+      Joining two long sentences with a comma is harder to read than
+      the explicit ``&`` join the existing logic produces.
+    * No directional arrow — ÖBB chain routes carrying ``↔`` use that
+      character as a chain joiner (``A ↔ B ↔ C``), not a separator,
+      so collapsing them by common prefix would mangle the route.
+    """
+    if not ex_name or not name:
+        return None
+    if "↔" in ex_name or "↔" in name:
+        return None
+
+    n = min(len(ex_name), len(name))
+    common_len = 0
+    for i in range(n):
+        if ex_name[i] != name[i]:
+            break
+        common_len = i + 1
+    if common_len < min_prefix:
+        return None
+    # Backtrack to the last word boundary so the prefix never splits a
+    # word in half (e.g. ``Veranstaltun`` from ``Veranstaltungen`` vs
+    # ``Veranstaltung am``).
+    while common_len > 0 and not ex_name[common_len - 1].isspace():
+        common_len -= 1
+    if common_len < min_prefix:
+        return None
+
+    prefix = ex_name[:common_len]
+    ex_remainder = ex_name[common_len:].strip()
+    name_remainder = name[common_len:].strip()
+    if not ex_remainder or not name_remainder:
+        return None
+    if len(name_remainder) > max_suffix:
+        return None
+
+    # ``ex_remainder`` may already be a comma-separated list if a
+    # previous merge ran through this helper. Split, dedup, append the
+    # new suffix.
+    ex_parts = [p.strip() for p in ex_remainder.split(",") if p.strip()]
+    if name_remainder in ex_parts:
+        # The new suffix is already present (e.g. duplicate Hinweis
+        # republished by WL). Return the existing name unchanged.
+        return ex_name
+
+    all_parts = ex_parts + [name_remainder]
+    # If every part is a calendar date, sort chronologically so the
+    # user sees ``03.06.2026, 09.06.2026, 11.06.2026`` rather than
+    # the cache-insertion order ``09.06.2026, 03.06.2026, 11.06.2026``.
+    sort_keys = [_date_sort_key(p) for p in all_parts]
+    if all(k is not None for k in sort_keys):
+        all_parts = [p for _, p in sorted(zip(sort_keys, all_parts))]
+
+    return f"{prefix.rstrip()} " + ", ".join(all_parts)
+
+
 _TRAILING_DIRECTIONAL_RE = re.compile(r"\s*[<>]+\s*$")
 
 
@@ -511,7 +612,24 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                             # Simple check:
                             parts = [p.strip() for p in ex_name.split("&")]
                             if name not in parts:
-                                new_name = f"{ex_name} & {name}"
+                                # Try a smarter collapse first — when
+                                # ``ex_name`` and ``name`` share a
+                                # substantial word-aligned prefix
+                                # (e.g. ``Veranstaltung am 09.06.2026``
+                                # + ``Veranstaltung am 03.06.2026``),
+                                # keep the prefix once and join the
+                                # differing suffixes with ``, ``
+                                # instead of ` & `. Falls through to
+                                # the legacy ``&``-join if the
+                                # collapse declines (short prefix,
+                                # long suffix, ÖBB ``↔`` chain).
+                                collapsed = _collapse_common_prefix(
+                                    ex_name, name
+                                )
+                                if collapsed is not None:
+                                    new_name = collapsed
+                                else:
+                                    new_name = f"{ex_name} & {name}"
 
                     # Reconstruct Title
                     # Sort lines naturally (alphanumeric)?
