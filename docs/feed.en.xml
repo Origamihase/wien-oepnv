@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 22 May 2026 23:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 23 May 2026 00:01:15 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c6fd32148db0de9ea67fb811e28260fea110b7705aafe137c948254f88184c8e</guid>
+      <pubDate>Fri, 22 May 2026 23:38:00 +0200</pubDate>
+      <ext:first_seen>Sat, 23 May 2026 00:01:15 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 23:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 23 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: defective vehicle. [22.05.2026 – 23.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[22.05.2026 – 23.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N29: Buses stop on the main runway]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,39 +30,6 @@
       <ext:ends_at>Sat, 23 May 2026 05:30:00 +0200</ext:ends_at>
       <description>[22.05.2026 – 23.05.2026]</description>
       <content:encoded><![CDATA[[22.05.2026 – 23.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Harmful vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22</guid>
-      <pubDate>Fri, 22 May 2026 22:21:00 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 11:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 22:21:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a driving disability, there are different intervals. [On 22.05.2026]</description>
-      <content:encoded><![CDATA[After a driving disability, there are different intervals.<br/>[On 22.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: Track damage operation from Franz-Josefs-Bahnhof S]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">95ac9435b80e25aa5d5711003a207b243c484d8d8e7532b8bd970120f928de13</guid>
-      <pubDate>Fri, 22 May 2026 10:14:53 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 18:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 10:15:04 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:45:00 +0200</ext:ends_at>
-      <description>[On 22.05.2026]</description>
-      <content:encoded><![CDATA[[On 22.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Track damage operation from Franz-Josefs-Bahnhof S]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8069f3a5da18ce7ba7ec4617bde53ee459ee8834529f30e4f2de90bc110553ab</guid>
-      <pubDate>Fri, 22 May 2026 10:14:24 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 10:30:41 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 10:14:35 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:45:00 +0200</ext:ends_at>
-      <description>[On 22.05.2026]</description>
-      <content:encoded><![CDATA[[On 22.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Buses stop at Breitenfurter Straße 236-238]]></title>
@@ -65,26 +43,15 @@
       <content:encoded><![CDATA[[22.05.2026 – 23.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11: operation from Frödenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0cc601b709f5e2e2bf853af2229533e03cb323563dfe0bebb6a3b9de6ceb2e16</guid>
-      <pubDate>Fri, 22 May 2026 04:30:09 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 04:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 04:30:09 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 22.05.2026]</description>
-      <content:encoded><![CDATA[[On 22.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[9: Disability due to track construction]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">d280e5ddac0af3382c1b354fb03d282c238bf112358b241357de02731032fe74</guid>
       <pubDate>Fri, 22 May 2026 00:00:27 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 22.05.2026]</description>
-      <content:encoded><![CDATA[[On 22.05.2026]]]></content:encoded>
+      <ext:ends_at>Sat, 23 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 23.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 23.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Open buses stop at Wienerbergbrücke]]></title>
@@ -93,9 +60,9 @@
       <pubDate>Fri, 22 May 2026 00:00:20 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 22.05.2026]</description>
-      <content:encoded><![CDATA[[On 22.05.2026]]]></content:encoded>
+      <ext:ends_at>Sat, 23 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 23.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 23.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[74A: Buses stop Landstraßer main road 116]]></title>
@@ -104,9 +71,9 @@
       <pubDate>Fri, 22 May 2026 00:00:18 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 00:00:18 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 22.05.2026]</description>
-      <content:encoded><![CDATA[[On 22.05.2026]]]></content:encoded>
+      <ext:ends_at>Sat, 23 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 23.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 23.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37A: Buses stop at Pasetti Street vor Hellwagstraße (at line 5A)]]></title>
@@ -115,9 +82,42 @@
       <pubDate>Fri, 22 May 2026 00:00:18 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 00:00:18 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 22.05.2026]</description>
-      <content:encoded><![CDATA[[On 22.05.2026]]]></content:encoded>
+      <ext:ends_at>Sat, 23 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 23.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 23.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Use the line 43A - Dornbacher Straße 85]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Fri, 22 May 2026 00:00:13 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 00:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 23 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 23.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 23.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44A: Buses stop as line opposite 93]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">05f43b3cc6e7fc469b2327c420ffd938743c80bae8e543e6b1266ae3efe72301</guid>
+      <pubDate>Fri, 22 May 2026 00:00:13 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 00:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 23 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 23.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 23.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: operation from Thaliastraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18</guid>
+      <pubDate>Fri, 22 May 2026 00:00:13 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 00:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 23 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 23.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 23.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
