@@ -325,18 +325,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "N65: Umleitung wegen Gleisbauarbeiten",
-    "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten im Bereich Otto-Probst-Stra&szlig;e m&uuml;ssen die Busse der Linie N65 umgeleitet werden.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 11. Mai 2026 (Nacht von 10. auf 11. Mai) bis Freitag, 22. Mai 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie N65:</strong><br />Umleitung in Richtung Liesing ab Neilreichgasse # Raxstra&szlig;e &uuml;ber Raxstra&szlig;e - Triester Stra&szlig;e zur Computerstra&szlig;e.<br />In Richtung Quellenstra&szlig;e / Reumannplatz Umleitung ab Computerstra&szlig;e # Triester Stra&szlig;e &uuml;ber Triester Stra&szlig;e - Altdorferstra&szlig;e - Raxstra&szlig;e - Laxenburger Stra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen Richtung Liesing:</span><br />- Sahulkastra&szlig;e (Neilreichgasse 110)<br />- Wienerfeldgasse (Neilreichgasse gegen&uuml;ber 139c)<br />- Fr&ouml;denplatz (Fr&ouml;denplatz vor Otto-Probst-Stra&szlig;e)<br />- Otto-Probst-Stra&szlig;e (Otto-Probst-Stra&szlig;e 3)<br />- Otto-Probst-Platz (Pfarrgasse vor Otto-Probst-Stra&szlig;e)<br />- Jungbauerweg (Otto-Probst-Stra&szlig;e 32)<br />- Grohnergasse (Otto-Probst-Stra&szlig;e vor Grohnergasse)</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen Richtung Quellenstra&szlig;e, bzw. Reumannplatz:</span><br />- Computerstra&szlig;e (Otto-Probst-Stra&szlig;e nach Triester Stra&szlig;e)<br />- Jungbauerweg (Otto-Probst-Stra&szlig;e 41)<br />- Otto-Probst-Platz (Pfarrgasse nach Otto-Probst-Stra&szlig;e)<br />- Otto-Probst-Stra&szlig;e (Otto-Probst-Stra&szlig;e 3)<br />- Fr&ouml;denplatz (Neilreichgasse nach Otto-Probst-Stra&szlig;e)<br />- Wienerfeldgasse (Neilreichgasse 139c)<br />- Sahulkastra&szlig;e (Neilreichgasse 113)<br />- Raxstra&szlig;e (Neilreichgasse vor Raxstra&szlig;e)<br />- Neilreichgasse, Troststra&szlig;e (Neilreichgasse 75)<br />- Laxenburger Stra&szlig;e, Troststra&szlig;e (Troststra&szlig;e 45a-b)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen in Richtung Quellenstra&szlig;e, bzw. Reumannplatz:</span><br />- Computerstra&szlig;e (Computerstra&szlig;e vor Triester Stra&szlig;e, Haltestelle der Linie 65A)<br />- Raxstra&szlig;e (Raxstra&szlig;e nach Neilreichgasse, Haltestelle der Linie 15A)<br />- Laxenburger Stra&szlig;e, Troststra&szlig;e (Laxenburger Stra&szlig;e vor Troststra&szlig;e, Haltestelle der Linien 66A und N66).</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Weichen Sie ersatzweise auf die Linie N66 aus.</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "79a0971c16a30cdc645e2434c98c90e3e8c9dbfb4e247d926809ca5081ee567d",
-    "pubDate": "2026-04-29T16:00:00+02:00",
-    "starts_at": "2026-05-11T00:00:00+02:00",
-    "ends_at": "2026-05-22T06:00:00+02:00",
-    "_identity": "wl|hinweis|L=N65|D=2026-05-11"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "41E/10A: Ersatzbus 41E hält beim 10A",
     "description": "Gleisbauarbeiten\nErsatzbus 41E\nhält beim 10A",
@@ -634,6 +622,18 @@
     "starts_at": "2026-05-22T00:00:27+02:00",
     "ends_at": "2026-05-22T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-05-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in Richtung Simmering. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-05-22T05:44:00+02:00",
+    "starts_at": "2026-05-22T05:44:00+02:00",
+    "ends_at": "2026-05-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-05-22"
   },
   {
     "source": "Wiener Linien",
