@@ -350,14 +350,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "11: Polizeieinsatz Betrieb ab Raxstraße, Rudolfshügelgasse",
+    "description": "Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Raxstraße. Voraussichtliche Dauer: 14:30 Uhr. Grund: Polizeieinsatz im Bereich Frödenplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7",
-    "pubDate": "2026-05-22T13:02:00+02:00",
-    "starts_at": "2026-05-22T13:02:29+02:00",
+    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
+    "pubDate": "2026-05-22T13:43:00+02:00",
+    "starts_at": "2026-05-22T13:54:18+02:00",
     "ends_at": "2026-05-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-05-22"
+    "_identity": "wl|störung|L=11|D=2026-05-22"
   },
   {
     "source": "Wiener Linien",
@@ -614,6 +614,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "48A: Verkehrsüberlastung",
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "68437700f8aeaee18ffffa29c3114cdeb4dd158a27bedb1178d146036ce0af2b",
+    "pubDate": "2026-05-22T13:42:00+02:00",
+    "starts_at": "2026-05-22T13:42:00+02:00",
+    "ends_at": "2026-05-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=48A|D=2026-05-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5: Gleisschaden Betrieb ab Lerchenfelder Straße",
     "description": "Gleisschaden\nBetrieb ab Lerchenfelder Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -766,6 +778,18 @@
     "starts_at": "2026-05-22T00:00:27+02:00",
     "ends_at": "2026-05-22T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-05-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Betriebsstörung",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Schönbrunn.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
+    "pubDate": "2026-05-22T13:35:00+02:00",
+    "starts_at": "2026-05-22T13:35:00+02:00",
+    "ends_at": "2026-05-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-05-22"
   },
   {
     "source": "Wiener Linien",
