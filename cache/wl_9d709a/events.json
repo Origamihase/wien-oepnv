@@ -230,18 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "93A/98A: Umleitung",
-    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten im Bereich Langobardenstra&szlig;e und der damit einhergehenden provisorischen Einbahnf&uuml;hrung von Biberhaufenweg bis Oberdorfstra&szlig;e werden die Linien 93A und 98A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Montag, 27. April 2026, etwa 07:00 Uhr bis 22. Mai 2026, etwa 12:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linien 93A und 98A in Richtung Kagran U bzw. E&szlig;ling, Schippanisiedlung:<br /></strong>Umleitung ab Erzherzog-Karl-Stra&szlig;e # Oberdorfstra&szlig;e &uuml;ber Aspernstra&szlig;e &ndash; Asperner Heldenplatz &ndash; Biberhaufenweg zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Haberlandtgasse (Oberdorfstra&szlig;e 23)<br />Aspern, Oberdorfstra&szlig;e (Oberdorfstra&szlig;e 3-5)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Haberlandtgasse (Aspernstra&szlig;e 116-120, gemeinsam mit 26A und 97A)<br />Asperner Heldenplatz (Asperner Heldenplatz gg&uuml;. ONr. 3, gemeinsam mit 22A, 92A und 97A)</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3b48c6bade87bed3e7579f74a1d74ed6b4906fee88d5ada7e19b6b3324f45738",
-    "pubDate": "2026-04-22T00:00:00+02:00",
-    "starts_at": "2026-04-27T00:00:00+02:00",
-    "ends_at": "2026-05-22T12:00:00+02:00",
-    "_identity": "wl|hinweis|L=93A,98A|D=2026-04-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "N41: Gleisbauarbeiten am Aumannplatz",
     "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten im Bereich Aumannplatz kommt es zu einer Umleitung.</p> <p>Zeitraum<br />Ab Dienstag, den 28. April 2026 ca. 01:00 Uhr bis ca. Anfang Juli 2026</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen</strong></span><br /><span style=\"text-decoration: underline;\">Linie N41 Richtung P&ouml;tzleinsdorf<br /></span>Umleitung ab W&auml;hringer Stra&szlig;e # Martinstra&szlig;e &uuml;ber Martinstra&szlig;e &ndash; Gentzgasse &ndash; Lazaristengasse &ndash; Haizingergasse &ndash; Edmund-Wei&szlig;-Gasse &ndash; K&ouml;hlergasse &ndash; Gentzgasse.<br /><br /><span style=\"text-decoration: underline;\">Linie N41 Richtung Schottentor</span><br />Umleitung ab Gentzgasse # Simonygasse &uuml;ber Simonygasse &ndash; W&auml;hringer Stra&szlig;e &ndash; Aumannplatz &ndash; Gentzgasse &ndash; Argauergasse &ndash; W&auml;hringer Stra&szlig;e.</p> <p><strong><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen</span><br /></strong><span style=\"text-decoration: underline;\">Richtung P&ouml;tzleinsdorf:</span><br />Aumannplatz.&nbsp; <br />Ersatzhaltestelle: Gentzgasse 98</p> <p><span style=\"text-decoration: underline;\">Richtung Schottentor:</span><br />Weinhauser Gasse. <br />Ersatzhaltestelle: W&auml;hringer Stra&szlig;e gegen&uuml;ber 200-202<br />Aumannplatz. <br />Ersatzhaltestelle: W&auml;hringer Stra&szlig;e 149</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/N41_Gleisbau_Aumannplatz.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -398,12 +386,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fahrtbehinderung Falschparker",
+    "title": "1: Falschparker",
     "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
     "pubDate": "2026-05-22T10:59:00+02:00",
-    "starts_at": "2026-05-22T11:00:30+02:00",
+    "starts_at": "2026-05-22T10:59:00+02:00",
     "ends_at": "2026-05-22T23:55:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-05-22"
   },
@@ -442,6 +430,18 @@
     "starts_at": "2026-05-22T00:00:18+02:00",
     "ends_at": "2026-05-22T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-05-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Beschädigte Oberleitung",
+    "description": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fahrleitungsgebrechen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ebdacb34a223701fc057fddf1bcbeccaa6586d917c2571d48a6a9cb96e2527ef",
+    "pubDate": "2026-05-22T11:43:00+02:00",
+    "starts_at": "2026-05-22T11:43:00+02:00",
+    "ends_at": "2026-05-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=38|D=2026-05-22"
   },
   {
     "source": "Wiener Linien",
@@ -638,6 +638,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62: Verspätungen",
+    "description": "Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "82b2b968365fe18a9edd52433273c0f78ff5079c2218a60fb58c22aa07911b8c",
+    "pubDate": "2026-05-22T11:55:00+02:00",
+    "starts_at": "2026-05-22T11:55:00+02:00",
+    "ends_at": "2026-05-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-05-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -686,6 +698,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1555342c6c62fac019e48fc68f16c22cbe873b235136efe400e1cf31dcd96c9e",
+    "pubDate": "2026-05-22T11:54:01+02:00",
+    "starts_at": "2026-05-22T11:54:01+02:00",
+    "ends_at": "2026-05-22T12:53:00+02:00",
+    "_identity": "wl|störung|L=9A|D=2026-05-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9A: Fremder Verkehrsunfall",
+    "description": "Linie 9A: Umleitung zwischen Pohlgasse und Bahnhof Meidling über die Ruckergasse und die Eichenstraße. Voraussichtliche Dauer: 12:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Rauchgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bec3d4bf3b3b42e0a2ce7d0835c0df549b41187301194ad10172275ee8ec44d6",
+    "pubDate": "2026-05-22T11:52:00+02:00",
+    "starts_at": "2026-05-22T11:52:00+02:00",
+    "ends_at": "2026-05-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=9A|D=2026-05-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "9: Betrieb ab Sommarugagasse",
     "description": "Gleisbauarbeiten\nBetrieb ab Sommarugagasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -718,30 +754,6 @@
     "starts_at": "2026-05-22T11:08:14+02:00",
     "ends_at": "2026-05-22T23:55:00+02:00",
     "_identity": "wl|störung|L=O|D=2026-05-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-05-22T10:59:00+02:00",
-    "starts_at": "2026-05-22T10:59:00+02:00",
-    "ends_at": "2026-05-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-05-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Schadhaftes Fahrzeug",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
-    "pubDate": "2026-05-22T10:51:00+02:00",
-    "starts_at": "2026-05-22T10:51:00+02:00",
-    "ends_at": "2026-05-22T11:28:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-05-22"
   },
   {
     "source": "Wiener Linien",

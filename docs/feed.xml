@@ -7,26 +7,48 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 22 May 2026 11:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2026 12:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U3: Verspätungen]]></title>
+      <title><![CDATA[62: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
-      <pubDate>Fri, 22 May 2026 10:59:00 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 06:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 10:59:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">82b2b968365fe18a9edd52433273c0f78ff5079c2218a60fb58c22aa07911b8c</guid>
+      <pubDate>Fri, 22 May 2026 11:55:00 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 12:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 11:55:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 22.05.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 22.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1: Fahrtbehinderung Falschparker]]></title>
+      <title><![CDATA[9A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bec3d4bf3b3b42e0a2ce7d0835c0df549b41187301194ad10172275ee8ec44d6</guid>
+      <pubDate>Fri, 22 May 2026 11:52:00 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 12:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 11:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Umleitung zwischen Pohlgasse und Bahnhof Meidling über die Ruckergasse und die Eichenstraße. Voraussichtliche Dauer: 12:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Rauchgasse. [Am 22.05.2026]</description>
+      <content:encoded><![CDATA[Umleitung zwischen Pohlgasse und Bahnhof Meidling über die Ruckergasse und die Eichenstraße. Voraussichtliche Dauer: 12:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Rauchgasse.<br/>[Am 22.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38: Beschädigte Oberleitung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ebdacb34a223701fc057fddf1bcbeccaa6586d917c2571d48a6a9cb96e2527ef</guid>
+      <pubDate>Fri, 22 May 2026 11:43:00 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 12:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 11:43:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Fahrleitungsgebrechen. [Am 22.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Fahrleitungsgebrechen.<br/>[Am 22.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1</guid>
       <pubDate>Fri, 22 May 2026 10:59:00 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 11:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 11:00:30 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 22 May 2026 10:59:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 22.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 22.05.2026]]]></content:encoded>
@@ -41,27 +63,6 @@
       <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 22.05.2026]</description>
       <content:encoded><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 22.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Floridsdorf ↔ Wien Meidling]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;878966</guid>
-      <pubDate>Fri, 22 May 2026 10:53:20 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 11:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 10:53:20 +0200</ext:starts_at>
-      <description>Wegen Personen im Gleisbereich waren zwischen Wien Meidling Bahnhof (U) und Wien Floridsdorf Bahnhof (U) bis 10:52 Uhr nur eingeschränkt Fahrten möglich. [Seit 22.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Personen im Gleisbereich waren zwischen Wien Meidling Bahnhof (U) und Wien Floridsdorf Bahnhof (U) bis 10:52 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 22.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd</guid>
-      <pubDate>Fri, 22 May 2026 10:51:00 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 11:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 10:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 11:28:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 22.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 22.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12: Gleisschaden Betrieb ab Franz-Josefs-Bahnhof S]]></title>
