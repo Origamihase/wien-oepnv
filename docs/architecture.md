@@ -699,6 +699,7 @@ Zukunft enger werden, sind die niedrig-hängenden Hebel:
 - **`request_safe` joint refactor** → `.jules/omega.md`
 - **Chaos audit + RecursionError fix** → `.jules/saboteur.md`
 - **DX / docs / cartography** → `.jules/scribe.md` (this document's companion)
+- **Governance gates & hooks** → `.jules/automator.md`
 
 The `.jules/` journals are the project's institutional memory. When
 adding a new defence, optimisation, or refactor, append an entry there
