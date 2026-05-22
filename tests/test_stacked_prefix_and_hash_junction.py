@@ -44,7 +44,6 @@ from typing import Any, cast
 
 from src import build_feed
 from src.build_feed import _post_filter_wl
-from src.feed.merge import deduplicate_fuzzy
 from src.feed_types import FeedItem
 from src.providers.wl_lines import _extract_prefix_lines
 
