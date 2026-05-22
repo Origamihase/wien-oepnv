@@ -144,6 +144,155 @@ def test_mask_entities_preserves_umlauts_and_letters() -> None:
     assert "—" in mapping.values()
 
 
+def test_domain_glossary_translates_betriebsstoerung() -> None:
+    """Regression: ``Betriebsstörung`` was rendered as ``"Harmful
+    vehicle"`` on the live feed. The glossary now maps it to the
+    canonical English equivalent BEFORE the model sees the text."""
+    text = "U6: Betriebsstörung"
+    masked, mapping = build_feed._apply_domain_glossary(text)
+    assert "Betriebsstörung" not in masked
+    assert "service disruption" in mapping.values()
+
+
+@pytest.mark.parametrize(
+    "de_term,en_term",
+    [
+        ("Betriebsstörung", "service disruption"),
+        ("Fahrtbehinderung", "service obstruction"),
+        ("Gleisbauarbeiten", "track construction works"),
+        ("Hauptfahrbahn", "main carriageway"),
+        ("Schadhaftem Fahrzeug", "defective vehicle"),
+        ("Schadhafter LKW", "defective truck"),
+        ("Aufgelassen", "Discontinued"),
+        ("Polizeieinsatz", "police operation"),
+        ("Rettungseinsatz", "rescue operation"),
+        ("Verkehrsunfall", "traffic accident"),
+        ("Schienenersatzverkehr", "rail replacement service"),
+        ("Stromausfall", "power outage"),
+        ("Personen im Gleisbereich", "persons on the tracks"),
+        ("Unregelmäßige Intervalle", "irregular intervals"),
+    ],
+)
+def test_domain_glossary_round_trip(de_term: str, en_term: str) -> None:
+    """Every glossary entry must map a German source token to the
+    expected English equivalent and round-trip cleanly when unmasked."""
+    text = f"Wegen {de_term} kommt es zu Verspätungen."
+    masked, mapping = build_feed._apply_domain_glossary(text)
+    assert de_term not in masked, (
+        f"DE term {de_term!r} reached the translator raw. masked={masked!r}"
+    )
+    assert en_term in mapping.values(), (
+        f"EN translation {en_term!r} missing from mapping {mapping}"
+    )
+    # Simulate the model preserving placeholders verbatim — the EN
+    # term must surface in the unmasked output.
+    restored = build_feed._unmask_entities(masked, mapping)
+    assert en_term in restored
+
+
+def test_domain_glossary_case_insensitive() -> None:
+    """Glossary matching is case-insensitive so a lowercase token at
+    the start of a sentence still gets the canonical EN translation."""
+    text = "betriebsstörung führt zu Verspätungen."
+    masked, mapping = build_feed._apply_domain_glossary(text)
+    assert "betriebsstörung" not in masked.lower()
+    assert "service disruption" in mapping.values()
+
+
+def test_domain_glossary_longest_match_wins() -> None:
+    """``Schadhaftem Fahrzeug`` (multi-word) must beat the single-word
+    ``Schadhaftem`` alternation so the model sees one placeholder, not
+    two."""
+    text = "wegen Schadhaftem Fahrzeug verzögert sich der Betrieb"
+    masked, mapping = build_feed._apply_domain_glossary(text)
+    # One placeholder for the compound — not two for the parts.
+    assert "defective vehicle" in mapping.values()
+    placeholder_count = sum(
+        1 for v in mapping.values() if v == "defective vehicle"
+    )
+    assert placeholder_count == 1
+
+
+def test_glossary_and_entity_masking_compose() -> None:
+    """End-to-end pipeline composition: glossary first (DE→EN), then
+    verbatim entity masking. The merged mapping must restore EN terms
+    where the glossary applied and DE surfaces elsewhere."""
+    text = "U6: Betriebsstörung — Wien Hauptbahnhof betroffen"
+    # Pass 1: glossary
+    gloss_text, gloss_mapping = build_feed._apply_domain_glossary(text)
+    assert "Betriebsstörung" not in gloss_text
+    assert "service disruption" in gloss_mapping.values()
+    # Pass 2: entity masking (sees text WITH XGLO placeholders)
+    masked, ent_mapping = build_feed._mask_entities(gloss_text)
+    assert "Wien Hauptbahnhof" not in masked
+    assert "Wien Hauptbahnhof" in ent_mapping.values()
+    # Merge mappings — glossary uses XGLO, entities use XENT, no collision.
+    combined = {**gloss_mapping, **ent_mapping}
+    assert len(combined) == len(gloss_mapping) + len(ent_mapping)
+    # Unmask combines both
+    restored = build_feed._unmask_entities(masked, combined)
+    assert "service disruption" in restored
+    assert "Wien Hauptbahnhof" in restored
+    assert "Betriebsstörung" not in restored
+
+
+def test_street_suffix_protects_compound_names() -> None:
+    """Regression: ``Pasettistraße`` was rendered as ``"Pasetti
+    Street"`` and ``Landstraßer Hauptstraße`` as ``"Landstraßer main
+    road"`` on the live feed. Both surface forms must now be masked
+    so the translator cannot rewrite the ``-straße`` suffix."""
+    cases = [
+        "Pasettistraße",
+        "Hauptstraße",
+        "Hellwagstraße",
+        "Mariahilferstraße",
+        "Wipplingergasse",
+        "Schwarzenbergplatz",
+        "Wienerbergbrücke",
+    ]
+    for word in cases:
+        text = f"Sperre an der {word} bis 18:00."
+        masked, mapping = build_feed._mask_entities(text)
+        assert word not in masked, (
+            f"Street name {word!r} reached the translator raw. masked={masked!r}"
+        )
+        # Either the street pass picked it up (mapped verbatim) or an
+        # earlier pass (stations) recognised it as a registered name.
+        # Both outcomes preserve the surface form on round-trip.
+        assert word in mapping.values()
+
+
+def test_street_suffix_ignores_normal_words() -> None:
+    """The street-suffix heuristic must not match arbitrary German
+    words. A normal sentence containing ``Linie``, ``Bahn``, ``wegen``
+    must pass through untouched (apart from the line ``5A`` and brand
+    matches the existing passes already handle)."""
+    text = "Die wegen der Bahn umgeleitete Linie nutzt eine andere Route."
+    masked, mapping = build_feed._mask_entities(text)
+    for word in ("Die", "wegen", "der", "umgeleitete", "Linie", "eine", "andere", "Route"):
+        assert word in masked, (
+            f"Normal German word {word!r} was wrongly masked. masked={masked!r}"
+        )
+
+
+def test_brand_pattern_is_case_sensitive() -> None:
+    """Regression: a case-insensitive brand pattern matched ``vor``
+    (German preposition "before") against the operator brand
+    ``VOR``. The pattern must be case-sensitive so the prose around
+    the brand stays translatable."""
+    # Lowercase 'vor' must NOT match the VOR brand.
+    text = "Pasettistraße vor Hellwagstraße"
+    masked, mapping = build_feed._mask_entities(text)
+    assert "vor" in masked
+    assert "vor" not in mapping.values()
+    # Uppercase VOR still does.
+    text2 = "VOR und ÖBB informieren"
+    masked2, mapping2 = build_feed._mask_entities(text2)
+    assert "VOR" not in masked2
+    assert "VOR" in mapping2.values()
+    assert "ÖBB" in mapping2.values()
+
+
 def test_mask_entities_longest_match_wins() -> None:
     """``Wien Hauptbahnhof`` must match before ``Hauptbahnhof`` so the
     placeholder covers the full compound name."""
