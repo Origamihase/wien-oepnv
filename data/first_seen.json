@@ -682,6 +682,7 @@
     "first_seen": "2026-05-22T08:30:41.393337+00:00",
     "translations": {
       "en": {
+        "summary": "After a driving disability, there are different intervals.",
         "title": "12: Track damage operation from Franz-Josefs-Bahnhof S"
       }
     }
@@ -2141,6 +2142,7 @@
     "first_seen": "2026-05-22T08:30:41.393337+00:00",
     "translations": {
       "en": {
+        "summary": "After a driving disability, there are different intervals.",
         "title": "5: Track damage operation from Franz-Josefs-Bahnhof S"
       }
     }
@@ -2862,6 +2864,15 @@
       "en": {
         "summary": "Line D: There are different intervals after a driving disability.",
         "title": "D: State visit"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=D|D=2026-05-22": {
+    "first_seen": "2026-05-22T14:31:02.781416+00:00",
+    "translations": {
+      "en": {
+        "summary": "Line D: Irregular intervals in both directions. Reason: Demonstration.",
+        "title": "D: D: Demonstration"
       }
     }
   },
