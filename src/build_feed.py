@@ -105,13 +105,23 @@ _INCOMPLETE_TITLE_TAIL_RE = re.compile(
     re.IGNORECASE,
 )
 
-# WL Störung items must carry a line prefix (``U6:``, ``41E:``,
-# ``9/40/41/42:``); without it the user can't tell which line is
-# affected and the meldung is useless. Real cache items
-# ``Verkehrsunfall Betrieb ab Nordbrücke`` and ``Fahrtbehinderung
-# wegen Verkehrsunfall`` carry ``_identity='wl|störung|L=|D=...'``
-# (empty line set) and a title without a leading line marker.
-_WL_LINE_PREFIX_RE = re.compile(r"^[A-Za-z0-9]+(?:/[A-Za-z0-9]+)*\s*:\s+\S")
+# WL Störung items must carry a real line prefix (``U6:``, ``41E:``,
+# ``9/40/41/42:``, ``D:``); without it the user can't tell which line
+# is affected and the meldung is useless. Real cache items
+# ``Verkehrsunfall Betrieb ab Nordbrücke``, ``Fahrtbehinderung wegen
+# Verkehrsunfall``, ``Einstieg: Brünner Straße 31-31A`` and
+# ``Sperre Bahnsteig Richtung Siebenhirten`` all carry
+# ``_identity='wl|störung|L=|D=...'`` (empty line set) and a title
+# whose leading word *looks* like a line prefix to the eye but is
+# actually a generic German noun (``Einstieg:``, ``Sperre`` without a
+# colon).
+#
+# The validation is delegated to :func:`_extract_prefix_lines` so the
+# same strict-line-token gate that protects the title-rebuild step
+# (rejects ``Achtung:``, ``Hinweis:``, ``Einstieg:`` etc.) also drives
+# the drop decision here. Items with NO recognisable line prefix —
+# regardless of how their title is shaped — are dropped at cache-read
+# time.
 
 # WL descriptions sometimes end with a dangling ``>`` / ``<`` that the
 # source uses as a "service onwards" arrow indicator. With a
@@ -240,11 +250,18 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
             title_body = cleaned.split(":", 1)[-1].strip() if ":" in cleaned else cleaned
             if _INCOMPLETE_TITLE_TAIL_RE.search(title_body):
                 continue
-            # Drop WL Störung items without a line prefix — WL didn't
-            # provide a line code and the user can't disambiguate the
-            # affected line from the title alone.
+            # Drop WL Störung items without a recognisable line
+            # prefix — WL didn't provide a line code and the user
+            # can't disambiguate the affected line from the title
+            # alone. ``prefix_lines`` was computed via
+            # :func:`_extract_prefix_lines` above (with the strict
+            # line-token gate) so a generic German word prefix like
+            # ``Einstieg: Brünner Straße 31-31A`` or
+            # ``Sperre Bahnsteig Richtung Siebenhirten`` (both real
+            # cache items) is correctly classified as "no line
+            # prefix" and dropped.
             category = item.get("category")
-            if category == "Störung" and not _WL_LINE_PREFIX_RE.match(cleaned):
+            if category == "Störung" and not prefix_lines:
                 continue
         # Strip a redundant ``Linie 40:`` / ``40+41:`` prefix from the
         # description — the title already attributes the line(s).
