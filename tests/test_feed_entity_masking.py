@@ -255,6 +255,10 @@ def test_resolve_glossary_base_only_when_no_metadata() -> None:
     glossary = build_feed._resolve_glossary(None, None)
     assert glossary["Betriebsstörung"] == "service disruption"
     assert glossary["Verspätung"] == "delay"
+    # Operator-agnostic cancellation vocabulary lives in base — both
+    # WL and ÖBB items emit ``Halt entfällt`` and the EN rendering is
+    # identical.
+    assert glossary["Halt entfällt"] == "stop omitted"
     # WL-only entry not present in base.
     assert "Kurzführung" not in glossary
     # ÖBB-only entry not present in base.
@@ -265,19 +269,31 @@ def test_resolve_glossary_base_only_when_no_metadata() -> None:
 
 def test_resolve_glossary_wiener_linien_overlay() -> None:
     """``source="Wiener Linien"`` activates the WL overlay; base
-    entries remain alongside the operator-specific ones."""
+    entries remain alongside the operator-specific ones.
+
+    Scope: disruption-core only. Facility vocabulary (Aufzug /
+    Rolltreppe / Niederflur) is intentionally OUT — those items do
+    not belong in the feed."""
     wl = build_feed._resolve_glossary("Wiener Linien", None)
     # Base entry survives.
     assert wl["Betriebsstörung"] == "service disruption"
-    # WL-specific entries activated.
-    assert wl["Aufzug"] == "elevator"
-    assert wl["Rolltreppe"] == "escalator"
+    # WL-specific disruption entries activated.
     assert wl["Kurzführung"] == "short-running service"
-    assert wl["Niederflur"] == "low-floor"
+    assert wl["kurzgeführt"] == "operating short-running"
+    # Facility vocabulary is intentionally absent — feed scope excludes
+    # elevator / escalator items by policy, so the overlay must not
+    # smuggle that vocabulary in via the EN translation either.
+    assert "Aufzug" not in wl
+    assert "Rolltreppe" not in wl
+    assert "Niederflurfahrzeug" not in wl
 
 
 def test_resolve_glossary_oebb_overlay() -> None:
-    """``source="ÖBB"`` contributes rail-specific vocabulary."""
+    """``source="ÖBB"`` contributes rail-specific vocabulary.
+
+    Scope: disruption-core only — train-types, platform/connection
+    disruption, line-section closures. Service-info vocabulary
+    (Reservierungspflicht / Fahrkartenpflicht / etc.) is OUT."""
     oebb = build_feed._resolve_glossary("ÖBB", None)
     # Base entry survives.
     assert oebb["Verspätung"] == "delay"
@@ -285,6 +301,9 @@ def test_resolve_glossary_oebb_overlay() -> None:
     assert oebb["Personenzug"] == "passenger train"
     assert oebb["Anschlussverlust"] == "missed connection"
     assert oebb["Bahnsteigwechsel"] == "platform change"
+    assert oebb["Tunnelsperre"] == "tunnel closure"
+    # Service-info vocabulary is intentionally absent.
+    assert "Reservierungspflicht" not in oebb
     # WL-only entry NOT in ÖBB overlay.
     assert "Kurzführung" not in oebb
 
@@ -320,18 +339,25 @@ def test_resolve_glossary_unknown_source_degrades_to_base() -> None:
 
 def test_apply_domain_glossary_uses_wiener_linien_overlay() -> None:
     """End-to-end through ``_apply_domain_glossary``: a WL-only term
-    is masked only when ``source="Wiener Linien"`` is passed in."""
-    text = "Aufzug außer Betrieb, Niederflur ersetzt."
+    is masked only when ``source="Wiener Linien"`` is passed in.
+
+    ``Kurzführung`` (line short-runs to a substitute terminus in
+    response to a disruption) is the canonical WL-only Vokabel that
+    Marian renders as the literal "short conduct" without the overlay
+    — meaningless in transit English."""
+    text = "5: Kurzführung wegen Schadhaftem Fahrzeug."
     _, mapping_base = build_feed._apply_domain_glossary(text)
     _, mapping_wl = build_feed._apply_domain_glossary(
         text, source="Wiener Linien"
     )
-    # Without metadata: WL terms left untouched.
-    assert "elevator" not in mapping_base.values()
-    assert "low-floor" not in mapping_base.values()
-    # With metadata: WL overlay activates the canonical EN renderings.
-    assert "elevator" in mapping_wl.values()
-    assert "low-floor" in mapping_wl.values()
+    # Without metadata: WL term left untouched (only the base term
+    # ``Schadhaftem Fahrzeug`` is masked).
+    assert "short-running service" not in mapping_base.values()
+    assert "defective vehicle" in mapping_base.values()
+    # With metadata: WL overlay adds ``Kurzführung`` to the active
+    # glossary; base entry remains active alongside it.
+    assert "short-running service" in mapping_wl.values()
+    assert "defective vehicle" in mapping_wl.values()
 
 
 def test_apply_domain_glossary_uses_oebb_overlay() -> None:
@@ -381,20 +407,26 @@ def test_apply_domain_glossary_base_active_with_source_overlay() -> None:
 def test_apply_domain_glossary_no_cross_overlay_contamination() -> None:
     """A Baustellen item must NOT pick up Wiener Linien vocabulary,
     and vice versa. The overlay axis is per-source, not cumulative
-    across all known operators."""
-    text = "Aufzug bei Vollsperre"
+    across all known operators.
+
+    ``Kurzführung`` (WL-only operational vocabulary) and ``Vollsperre``
+    (Baustellen-only road-closure vocabulary) never co-occur in a
+    real item, but the test text contains both surface forms to
+    isolate the overlay scoping: each source overlay translates ONLY
+    its own vocabulary, leaving the other operator's term untouched."""
+    text = "Kurzführung wegen Vollsperre"
     _, mapping_wl = build_feed._apply_domain_glossary(
         text, source="Wiener Linien"
     )
     _, mapping_bau = build_feed._apply_domain_glossary(
         text, source="Stadt Wien – Baustellen"
     )
-    # WL sees Aufzug, not Vollsperre.
-    assert "elevator" in mapping_wl.values()
+    # WL sees Kurzführung, not Vollsperre.
+    assert "short-running service" in mapping_wl.values()
     assert "full closure" not in mapping_wl.values()
-    # Baustellen sees Vollsperre, not Aufzug.
+    # Baustellen sees Vollsperre, not Kurzführung.
     assert "full closure" in mapping_bau.values()
-    assert "elevator" not in mapping_bau.values()
+    assert "short-running service" not in mapping_bau.values()
 
 
 def test_norm_metadata_handles_none_empty_and_whitespace() -> None:

@@ -415,12 +415,11 @@ def test_de_and_en_feed_items_are_byte_identical_when_pipeline_fails(
 def test_metadata_glossary_activates_wiener_linien_overlay(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """A WL item containing ``Aufzug`` must surface as ``elevator`` in
-    the EN feed — the WL source overlay is the only place that maps
-    ``Aufzug``. Base-only would leave the word untranslated (Marian's
-    default would mishandle it because ``Aufzug`` also means "elevator"
-    in everyday German but the model is biased to "lift / elevator"
-    inconsistently)."""
+    """A WL item containing ``Kurzführung`` must surface as
+    ``short-running service`` in the EN feed — the WL source overlay
+    is the only place that maps ``Kurzführung``. Without the overlay
+    Marian renders it as the literal "short conduct" which is
+    meaningless in transit English."""
     # Fake pipeline: passes the masked text through verbatim. The
     # glossary already substituted the WL terms BEFORE the pipeline
     # saw them, so the test does not need to translate anything itself.
@@ -433,13 +432,13 @@ def test_metadata_glossary_activates_wiener_linien_overlay(
     item = cast(
         FeedItem,
         {
-            "title": "Information",
+            "title": "5: Kurzführung",
             "description": (
-                "Aufzug außer Betrieb. Niederflur-Garnitur ersetzt durch "
-                "Standard-Fahrzeug."
+                "Kurzführung der Linie 5 zwischen Westbahnhof und "
+                "Praterstern wegen Schadhaftem Fahrzeug."
             ),
             "source": "Wiener Linien",
-            "category": "Hinweis",
+            "category": "Störung",
             "guid": "wl-meta-1",
             "link": "",
         },
@@ -455,10 +454,11 @@ def test_metadata_glossary_activates_wiener_linien_overlay(
     )
     desc_en = formatted_en.desc_text_truncated.lower()
     # WL overlay activated: surface form gone, EN equivalent present.
-    assert "aufzug" not in desc_en
-    assert "elevator" in desc_en
-    assert "niederflur" not in desc_en
-    assert "low-floor" in desc_en
+    assert "kurzführung" not in desc_en
+    assert "short-running service" in desc_en
+    # Base glossary still active alongside the overlay.
+    assert "schadhaftem fahrzeug" not in desc_en
+    assert "defective vehicle" in desc_en
 
 
 def test_metadata_glossary_activates_oebb_overlay(
@@ -509,22 +509,24 @@ def test_metadata_glossary_activates_oebb_overlay(
 def test_metadata_glossary_no_cross_operator_contamination(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """A Baustellen item must NOT activate WL elevator vocabulary —
-    overlays are scoped per ``source``, not unioned across operators.
-    This pins the cache-key isolation guarantee."""
+    """A Baustellen item must NOT activate WL Kurzführung vocabulary,
+    and the WL overlay must NOT translate Baustellen-specific
+    Vollsperre. Overlays are scoped per ``source``, not unioned across
+    operators — pins the per-(source, category) cache-key isolation."""
     def pass_through(text: str, **kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": text}]
 
     monkeypatch.setattr(
         build_feed, "_get_translation_pipeline", lambda: pass_through
     )
+    # Synthetic text that contains both surface forms — they never
+    # co-occur in a real item, but the test is about overlay scoping,
+    # not realistic prose.
     item = cast(
         FeedItem,
         {
             "title": "Information",
-            # "Aufzug" appears in the text but the item is a Baustellen
-            # item, NOT a WL item — the WL overlay must stay dormant.
-            "description": "Vollsperre wegen Aufzug-Wartung.",
+            "description": "Vollsperre wegen Kurzführung der Bauphase.",
             "source": "Stadt Wien – Baustellen",
             "category": "Baustelle",
             "guid": "bau-meta-1",
@@ -541,11 +543,13 @@ def test_metadata_glossary_no_cross_operator_contamination(
         state=state,
     )
     desc_en = formatted_en.desc_text_truncated.lower()
-    # Baustellen overlay activated: "Vollsperre" → "full closure".
+    # Baustellen overlay activated: Vollsperre + Bauphase translated.
     assert "vollsperre" not in desc_en
     assert "full closure" in desc_en
-    # WL overlay NOT activated: "Aufzug" stays untouched in the
-    # Baustellen context (the overlay scoping prevents the WL
-    # elevator vocabulary from leaking into a road-construction item).
-    assert "aufzug" in desc_en
-    assert "elevator" not in desc_en
+    assert "bauphase" not in desc_en
+    assert "construction phase" in desc_en
+    # WL overlay NOT activated: Kurzführung stays untouched in the
+    # Baustellen context (overlay scoping prevents WL vocabulary from
+    # leaking into a road-construction item).
+    assert "kurzführung" in desc_en
+    assert "short-running service" not in desc_en

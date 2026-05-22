@@ -967,6 +967,14 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Ursache": "cause",
     "wird untersucht": "is being investigated",
     "wird geprüft": "is being checked",
+    # --- Cancelled stops --------------------------------------------
+    # Operator-agnostic (WL: "Halt am Karlsplatz entfällt"; ÖBB: "Halt
+    # in St. Pölten entfällt"). Sits in base because the surface form
+    # and the EN rendering are identical across operators — there is
+    # no operator-specific override to write.
+    "Halt entfällt": "stop omitted",
+    "Halt entfallen": "stop omitted",
+    "Halte entfallen": "stops omitted",
     # --- Construction / works ---------------------------------------
     "Gleisbauarbeiten": "track construction works",
     "Gleisarbeiten": "track works",
@@ -1025,28 +1033,24 @@ _GLOSSARY_BASE: dict[str, str] = {
 # the overlays focus on terms that do NOT appear in the base set so
 # they would be too narrow to apply universally).
 _GLOSSARY_BY_SOURCE: dict[str, dict[str, str]] = {
-    # Urban transit (metros, trams, buses). Marian routinely
-    # mistranslates Wien-specific compound nouns ("Niederflur" →
-    # "low-floor", "Kurzführung" → "short-running service") because
-    # the training set covers Hochdeutsch prose rather than ÖPNV
-    # operations vocabulary.
+    # Urban transit (metros, trams, buses). Scope: disruption-core
+    # vocabulary only (Störungen / Verspätungen / Ausfälle). Facility
+    # vocabulary (Aufzug / Rolltreppe / Niederflur) is intentionally
+    # OUT — those items are not feed content. "Kurzführung" stays
+    # because it describes an operational truncation of a line in
+    # response to a disruption (the line short-runs to a substitute
+    # terminus); Marian otherwise renders it as the literal "short
+    # conduct" which is meaningless in transit English.
     "Wiener Linien": {
         "Kurzführung": "short-running service",
         "kurzgeführt": "operating short-running",
-        "Aufzug": "elevator",
-        "Aufzüge": "elevators",
-        "Rolltreppe": "escalator",
-        "Rolltreppen": "escalators",
-        "Niederflurfahrzeug": "low-floor vehicle",
-        "Niederflur": "low-floor",
-        "Halt entfällt": "stop omitted",
-        "Halt entfallen": "stop omitted",
-        "Halte entfallen": "stops omitted",
     },
-    # Long-distance + regional rail. Heavy use of railway-specific
-    # vocabulary that the generic translator handles inconsistently
-    # ("Personenzug" → "person train", "Reservierungspflicht" →
-    # "Reservation duty").
+    # Long-distance + regional rail. Scope: disruption-core
+    # vocabulary only — train-type names (so the EN feed can phrase
+    # "Personenzug 5072 verspätet" naturally), platform / connection
+    # disruption phrases, line-section closures. Service-info
+    # vocabulary (Reservierungspflicht / Fahrkartenpflicht / etc.) is
+    # OUT — those are not disruption content.
     "ÖBB": {
         "Personenzug": "passenger train",
         "Personenzüge": "passenger trains",
@@ -1056,7 +1060,6 @@ _GLOSSARY_BY_SOURCE: dict[str, dict[str, str]] = {
         "Nahverkehr": "regional service",
         "Bahnsteigwechsel": "platform change",
         "Anschlussverlust": "missed connection",
-        "Reservierungspflicht": "mandatory reservation",
         "Tunnelsperre": "tunnel closure",
     },
     # Road construction sites (Stadt Wien open-data Baustellen feed).
