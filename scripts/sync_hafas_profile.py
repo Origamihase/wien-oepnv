@@ -46,7 +46,7 @@ import sys
 from collections.abc import Sequence
 from logging import DEBUG, INFO, getLogger
 from pathlib import Path
-from typing import Final
+from typing import Final, cast
 
 import requests
 
@@ -307,6 +307,189 @@ def _build_profile_document(extracted: dict[str, str]) -> dict[str, object]:
     }
 
 
+# ---------------------------------------------------------------------------
+# Structural validation
+#
+# The regex extractor in ``_extract_profile`` only enforces character-class
+# and length bounds on the raw match. If a future upstream refactor moves
+# the credential strings around (renames the ``salt`` key, embeds a
+# placeholder string the regex still matches, accidentally lifts an
+# unrelated literal), the extractor would happily produce a syntactically
+# valid but semantically broken profile. Writing that profile to disk
+# pollutes the HAFAS cache for the entire cron-pipeline lifetime — every
+# enrichment falls through to the Google-Places tier, burning the daily
+# Places quota on stations that should have been served by HAFAS.
+#
+# ``_validate_profile_document`` is the writer-side gate. It runs AFTER
+# ``_build_profile_document`` assembles the document and BEFORE
+# ``_write_profile`` commits the bytes. A validation failure raises
+# :class:`HafasProfileValidationError` which ``main`` catches and turns
+# into exit code 1 — no on-disk state is mutated.
+# ---------------------------------------------------------------------------
+
+_PROFILE_MAX_FIELD_LEN: Final[int] = 256
+_PROFILE_MIN_VER_LEN: Final[int] = 3   # e.g. "1.0"
+_PROFILE_MIN_AID_LEN: Final[int] = 8
+_PROFILE_MIN_SALT_LEN: Final[int] = 8  # only applied when salt is non-empty
+
+# ``ver`` is HAFAS's API client version. Every release observed in the
+# upstream profile since 2022 has used the ``MAJOR.MINOR[.PATCH]`` shape
+# (e.g. "1.45", "1.46", "1.46.LIVE"). The regex is intentionally narrow:
+# a freeform-string drift would silently break the HAFAS request envelope.
+_VER_VALIDATION_RE: Final[re.Pattern[str]] = re.compile(
+    r"^[0-9]+\.[0-9]+(?:\.[0-9A-Za-z_-]+)?$"
+)
+
+# ``aid`` is the deployment-scoped Application-ID. ÖBB's current value
+# ("OWDL4fE4ixNiPBBm") is a 16-char base62-ish token; the regex permits
+# the broader alphanumeric+separator set used by other HAFAS deployments
+# but rejects whitespace / control characters / Trojan-Source primitives.
+_AID_VALIDATION_RE: Final[re.Pattern[str]] = re.compile(
+    r"^[A-Za-z0-9._\-+/]{%d,128}$" % _PROFILE_MIN_AID_LEN
+)
+
+# ``salt`` (when present) is the HMAC-MD5 ingredient. HAFAS deployments
+# that use signing carry an opaque alphanumeric+padding token; ÖBB's
+# current upstream omits it entirely.
+_SALT_VALIDATION_RE: Final[re.Pattern[str]] = re.compile(
+    r"^[A-Za-z0-9._\-+/=]{%d,256}$" % _PROFILE_MIN_SALT_LEN
+)
+
+
+class HafasProfileValidationError(ValueError):
+    """Raised when the assembled HAFAS profile fails structural validation.
+
+    A distinct subclass of :class:`ValueError` so callers (the
+    ``main`` entry point and any future tooling) can differentiate
+    write-time validation failures from generic value errors elsewhere
+    in the pipeline.
+    """
+
+
+def _ensure_str(
+    value: object,
+    field: str,
+    *,
+    min_len: int = 0,
+    max_len: int = _PROFILE_MAX_FIELD_LEN,
+) -> str:
+    """Assert *value* is a string within ``[min_len, max_len]`` characters.
+
+    Returns the validated string. Raises
+    :class:`HafasProfileValidationError` with a field-named message on
+    any violation. The value bytes themselves are NEVER logged or
+    embedded in the message — only the field name and the structural
+    reason — because every field in this document is credential-class.
+    """
+    if not isinstance(value, str):
+        raise HafasProfileValidationError(
+            f"HAFAS profile field {field!r} must be a string, got "
+            f"{type(value).__name__}"
+        )
+    length = len(value)
+    if length < min_len:
+        raise HafasProfileValidationError(
+            f"HAFAS profile field {field!r} too short "
+            f"(len={length}, min={min_len})"
+        )
+    if length > max_len:
+        raise HafasProfileValidationError(
+            f"HAFAS profile field {field!r} too long "
+            f"(len={length}, max={max_len})"
+        )
+    return value
+
+
+def _validate_profile_document(profile: object) -> None:
+    """Structurally validate *profile* before it is committed to disk.
+
+    Checks:
+        * Top-level is a ``dict`` carrying the four mandatory keys
+          (``salt`` / ``ver`` / ``auth`` / ``client``).
+        * Every leaf value is a string within the per-field length bounds.
+        * ``ver`` matches the canonical ``MAJOR.MINOR[.PATCH]`` shape.
+        * ``auth.aid`` matches the alphanumeric+separator token shape
+          and meets the minimum length floor.
+        * ``salt`` is either empty (ÖBB's current state) OR matches the
+          alphanumeric+padding token shape with the minimum length floor.
+        * ``client`` carries the four request-envelope keys (``id`` /
+          ``type`` / ``name`` / ``l``) and every value is a non-empty
+          string.
+
+    Raises :class:`HafasProfileValidationError` with a field-named
+    message on any failure. Field values are never embedded in the
+    message; only the field NAME and the structural reason appear.
+    """
+    if not isinstance(profile, dict):
+        raise HafasProfileValidationError(
+            f"HAFAS profile must be a dict, got {type(profile).__name__}"
+        )
+    profile_dict = cast(dict[str, object], profile)
+
+    required_top = {"salt", "ver", "auth", "client"}
+    missing_top = required_top - profile_dict.keys()
+    if missing_top:
+        raise HafasProfileValidationError(
+            f"HAFAS profile missing top-level keys: {sorted(missing_top)}"
+        )
+
+    salt = _ensure_str(profile_dict["salt"], "salt", min_len=0, max_len=256)
+    if salt and not _SALT_VALIDATION_RE.fullmatch(salt):
+        raise HafasProfileValidationError(
+            "HAFAS profile field 'salt' has invalid format "
+            "(expected alphanumeric+padding token)"
+        )
+
+    ver = _ensure_str(
+        profile_dict["ver"], "ver", min_len=_PROFILE_MIN_VER_LEN, max_len=32
+    )
+    if not _VER_VALIDATION_RE.fullmatch(ver):
+        raise HafasProfileValidationError(
+            "HAFAS profile field 'ver' has invalid format "
+            "(expected MAJOR.MINOR[.PATCH])"
+        )
+
+    auth = profile_dict["auth"]
+    if not isinstance(auth, dict):
+        raise HafasProfileValidationError(
+            f"HAFAS profile field 'auth' must be a dict, got "
+            f"{type(auth).__name__}"
+        )
+    auth_dict = cast(dict[str, object], auth)
+    for auth_key in ("type", "aid"):
+        if auth_key not in auth_dict:
+            raise HafasProfileValidationError(
+                f"HAFAS profile field 'auth' missing required key "
+                f"{auth_key!r}"
+            )
+    _ensure_str(auth_dict["type"], "auth.type", min_len=1, max_len=32)
+    aid = _ensure_str(
+        auth_dict["aid"], "auth.aid", min_len=_PROFILE_MIN_AID_LEN, max_len=128
+    )
+    if not _AID_VALIDATION_RE.fullmatch(aid):
+        raise HafasProfileValidationError(
+            "HAFAS profile field 'auth.aid' has invalid format "
+            "(expected alphanumeric+separator token)"
+        )
+
+    client = profile_dict["client"]
+    if not isinstance(client, dict):
+        raise HafasProfileValidationError(
+            f"HAFAS profile field 'client' must be a dict, got "
+            f"{type(client).__name__}"
+        )
+    client_dict = cast(dict[str, object], client)
+    for client_key in ("id", "type", "name", "l"):
+        if client_key not in client_dict:
+            raise HafasProfileValidationError(
+                f"HAFAS profile field 'client' missing required key "
+                f"{client_key!r}"
+            )
+        _ensure_str(
+            client_dict[client_key], f"client.{client_key}", min_len=1
+        )
+
+
 def _write_profile(profile: dict[str, object], output_path: Path) -> None:
     """Persist the profile atomically with 0600 permissions.
 
@@ -357,6 +540,20 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 1
 
     profile = _build_profile_document(extracted)
+    try:
+        _validate_profile_document(profile)
+    except HafasProfileValidationError as exc:
+        # Sanitised: ``str(exc)`` contains the field NAME and the
+        # structural reason but never the field VALUE (the validator
+        # never embeds values in its messages). Routing through
+        # ``sanitize_log_arg`` keeps a hostile upstream's payload from
+        # injecting newline / ANSI / Trojan-Source primitives into the
+        # cron log line.
+        LOGGER.error(
+            "HAFAS profile failed structural validation: %s",
+            sanitize_log_arg(str(exc)),
+        )
+        return 1
     try:
         _write_profile(profile, args.output)
     except OSError as exc:
