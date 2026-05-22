@@ -809,6 +809,15 @@
   "wl|st\u00f6rung|L=16A|D=2026-05-20": {
     "first_seen": "2026-05-20T09:30:42.364095+00:00"
   },
+  "wl|st\u00f6rung|L=16A|D=2026-05-22": {
+    "first_seen": "2026-05-22T13:30:49.368525+00:00",
+    "translations": {
+      "en": {
+        "summary": "Irregular intervals in both directions. Reason: traffic overload.",
+        "title": "16A: Traffic congestion"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=17A,70A|D=2026-05-13": {
     "first_seen": "2026-05-13T20:39:11.584779+00:00"
   },
@@ -976,6 +985,15 @@
   },
   "wl|st\u00f6rung|L=22A|D=2026-05-20": {
     "first_seen": "2026-05-20T14:00:48.002872+00:00"
+  },
+  "wl|st\u00f6rung|L=22A|D=2026-05-22": {
+    "first_seen": "2026-05-22T13:30:49.368525+00:00",
+    "translations": {
+      "en": {
+        "summary": "Irregular intervals in both directions. Reason: traffic overload.",
+        "title": "22A: Traffic congestion"
+      }
+    }
   },
   "wl|st\u00f6rung|L=24A,31A|D=2026-04-29": {
     "first_seen": "2026-04-29T15:33:12.860362+00:00"
