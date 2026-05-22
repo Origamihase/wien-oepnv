@@ -72,12 +72,27 @@ _STRICT_LINE_TOKEN_RE = re.compile(r"^(?:[A-Z]{0,4}\d{1,3}[A-Z]?|[A-Z])$")
 # just the prefix marker after a previous render dropped the body)
 # is covered by the ``$`` alternative so ``_ensure_line_prefix``'s
 # empty-body contract still holds.
+# Each line-code token may be followed by a parenthetical qualifier
+# such as ``(Schulkurs)`` (WL's school-run variant of a bus) or
+# ``(Nachtbus)``. The qualifier is informational but does NOT change
+# the line-code identity; it is preserved in the description body
+# but stripped from the prefix block so the title round-trips as
+# the canonical ``85A: …`` rather than ``85A (Schulkurs): …``.
 LINE_PREFIX_STRIP_RE = re.compile(
-    r"^\s*[A-Za-z0-9]+(?:\s*[/+,]\s*[A-Za-z0-9]+){0,20}\s*:(?:\s+|$)",
+    r"^\s*[A-Za-z0-9]+(?:\s*\([^)]+\))?"
+    r"(?:\s*[/+,]\s*[A-Za-z0-9]+(?:\s*\([^)]+\))?){0,20}"
+    r"\s*:(?:\s+|$)",
     re.IGNORECASE,
 )
+# Allow ``,`` (not only ``und``) as a connector between the
+# comma-list and the trailing ``Rufbus`` token — real cache item
+# ``56A, 60A, N60, Rufbus N61:`` uses the ``,`` form, and pre-fix
+# the regex required ``und`` so the prefix slipped through
+# unrecognised and surfaced as a stacked title.
 LINES_COMPLEX_PREFIX_RE = re.compile(
-    r"^\s*[A-Za-z0-9]+(?:\s*,\s*[A-Za-z0-9]+)+(?:(?:\s+und\s+)?Rufbus\s+[A-Za-z0-9]+)?(?:\s*\([^)]+\))?\s*:(?:\s+|$)",
+    r"^\s*[A-Za-z0-9]+(?:\s*,\s*[A-Za-z0-9]+)+"
+    r"(?:\s*,?\s*(?:und\s+)?Rufbus\s+[A-Za-z0-9]+)?"
+    r"(?:\s*\([^)]+\))?\s*:(?:\s+|$)",
     re.IGNORECASE,
 )
 RUF_BUS_PREFIX_RE = re.compile(
@@ -125,6 +140,13 @@ def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
             block = body[: match.end()].rstrip(": \t")
             candidates: list[str] = []
             for tok in re.split(r"[,/+]", block):
+                # Strip a parenthetical qualifier like ``(Schulkurs)``
+                # before token-cleaning — the qualifier is sub-line
+                # classification, not part of the line code itself.
+                # Real cache item ``85A (Schulkurs):`` would otherwise
+                # fail the strict-token gate and leave the title
+                # stacked as ``85A: 85A (Schulkurs): …``.
+                tok = re.sub(r"\s*\([^)]+\)\s*", " ", tok)
                 cleaned = _clean_line_token(tok.strip())
                 if cleaned:
                     candidates.append(cleaned)

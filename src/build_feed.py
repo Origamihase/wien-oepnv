@@ -2986,6 +2986,17 @@ def _format_item_content(
 
     # Bulletpoints auflösen, um einen fließenden Satz zu bilden
     summary = summary.replace(" • ", " ").replace("•", " ")
+    # WL uses ``#`` as an internal street-junction marker — real cache
+    # text reads ``ab Engerthstraße # Elderschplatz über …`` meaning
+    # "starting from the Engerthstraße / Elderschplatz intersection".
+    # The bare ``#`` glyph looks like a stray hashtag to a feed
+    # subscriber, so swap it for ``/`` which mirrors WL's own
+    # ``40/41`` line-separator convention and reads as a junction
+    # marker without ambiguity. All 46 current cache occurrences
+    # carry whitespace on both sides (``\\s+#\\s+``), so the
+    # space-anchored swap can't accidentally touch a hashtag inside
+    # quoted strings or a URL fragment.
+    summary = summary.replace(" # ", " / ")
     summary = _WHITESPACE_CLEANUP_RE.sub(" ", summary).strip()
 
     # Doppelte Kategorie-Wortpräfixe entfernen (siehe Helper-Docstring).
