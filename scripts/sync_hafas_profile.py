@@ -345,14 +345,14 @@ _VER_VALIDATION_RE: Final[re.Pattern[str]] = re.compile(
 # the broader alphanumeric+separator set used by other HAFAS deployments
 # but rejects whitespace / control characters / Trojan-Source primitives.
 _AID_VALIDATION_RE: Final[re.Pattern[str]] = re.compile(
-    r"^[A-Za-z0-9._\-+/]{%d,128}$" % _PROFILE_MIN_AID_LEN
+    rf"^[A-Za-z0-9._\-+/]{{{_PROFILE_MIN_AID_LEN},128}}$"
 )
 
 # ``salt`` (when present) is the HMAC-MD5 ingredient. HAFAS deployments
 # that use signing carry an opaque alphanumeric+padding token; ÖBB's
 # current upstream omits it entirely.
 _SALT_VALIDATION_RE: Final[re.Pattern[str]] = re.compile(
-    r"^[A-Za-z0-9._\-+/=]{%d,256}$" % _PROFILE_MIN_SALT_LEN
+    rf"^[A-Za-z0-9._\-+/=]{{{_PROFILE_MIN_SALT_LEN},256}}$"
 )
 
 
