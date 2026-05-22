@@ -115,6 +115,50 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Enable verbose logging output for the wrapper and update scripts.",
     )
+    # The three output paths used to be hardcoded module-level
+    # constants. Exposing them as CLI args lets the regression test
+    # suite point the wrapper at a ``tmp_path`` so an end-to-end run
+    # does not mutate the production working tree — the root-cause
+    # fix for the pollution that PR #1607 mitigated via an autouse
+    # fixture. Production cron runs (every workflow invokes the
+    # script with no arguments) get the same byte-identical
+    # behaviour because the defaults preserve the historical paths.
+    parser.add_argument(
+        "--target",
+        type=Path,
+        default=REPO_ROOT / "data" / "stations.json",
+        help=(
+            "Path to write the final merged stations directory "
+            "(default: data/stations.json under the repository root)."
+        ),
+    )
+    parser.add_argument(
+        "--heartbeat",
+        type=Path,
+        default=REPO_ROOT / "data" / "stations_last_run.json",
+        help=(
+            "Path to write the run heartbeat "
+            "(default: data/stations_last_run.json under the repository root)."
+        ),
+    )
+    parser.add_argument(
+        "--diff-report",
+        type=Path,
+        default=REPO_ROOT / "docs" / "stations_diff.md",
+        help=(
+            "Path to write the human-readable diff report "
+            "(default: docs/stations_diff.md under the repository root)."
+        ),
+    )
+    parser.add_argument(
+        "--quarantine",
+        type=Path,
+        default=REPO_ROOT / "data" / "quarantine.json",
+        help=(
+            "Path to write the auto-quarantine sidecar on validation "
+            "failure (default: data/quarantine.json under the repository root)."
+        ),
+    )
     return parser.parse_args(argv)
 
 
@@ -645,7 +689,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     configure_logging(args.verbose)
 
     script_dir = Path(__file__).resolve().parent
-    target_stations_json = Path("data/stations.json").resolve()
+    target_stations_json: Path = args.target.resolve()
+    heartbeat_path: Path = args.heartbeat
+    diff_report_path: Path = args.diff_report
+    quarantine_path: Path = args.quarantine
 
     sub_script_results: list[dict[str, Any]] = []
 
@@ -721,7 +768,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             if quarantined_stations:
                 _write_stations_payload(tmp_stations_path, valid_stations)
                 _write_quarantine_file(
-                    _DEFAULT_QUARANTINE_PATH,
+                    quarantine_path,
                     quarantined_stations,
                     _collect_quarantine_reasons(report),
                     timestamp,
@@ -734,7 +781,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                     "Auto-quarantined %d station(s) with blocking validation issues; "
                     "details written to %s. Affected: %s",
                     len(quarantined_stations),
-                    _DEFAULT_QUARANTINE_PATH,
+                    quarantine_path,
                     ", ".join(quarantined_names),
                 )
             else:
@@ -778,9 +825,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         # Persist the heartbeat and diff report next to the data they describe.
         # Both files are atomic-written so a partial run never produces
         # half-written observability artefacts.
-        _write_heartbeat_file(_DEFAULT_HEARTBEAT_PATH, heartbeat)
-        _DEFAULT_DIFF_REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        with atomic_write(_DEFAULT_DIFF_REPORT_PATH, mode="w", encoding="utf-8") as handle:
+        _write_heartbeat_file(heartbeat_path, heartbeat)
+        diff_report_path.parent.mkdir(parents=True, exist_ok=True)
+        with atomic_write(diff_report_path, mode="w", encoding="utf-8") as handle:
             handle.write(_render_diff_markdown(
                 diff,
                 before_count=len(before_snapshot),
@@ -789,8 +836,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             ))
         logging.info(
             "Wrote heartbeat (%s) and diff report (%s)",
-            _DEFAULT_HEARTBEAT_PATH.name,
-            _DEFAULT_DIFF_REPORT_PATH.name,
+            heartbeat_path.name,
+            diff_report_path.name,
         )
 
     logging.info("All station update scripts completed successfully.")
