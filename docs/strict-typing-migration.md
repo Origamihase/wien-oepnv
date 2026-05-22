@@ -1,5 +1,17 @@
 # Strict-Typing-Migration der Test-Suite
 
+> ℹ️ **Status: Historische Referenz / Migration abgeschlossen.**
+> Die Cluster-Migration **C25–C33** ist abgeschlossen, das mypy-strict-Gate
+> (`.github/workflows/mypy-strict.yml`) läuft mit einer leeren Allowlist
+> (`.mypy-baseline.txt` = 0 Zeilen = 0 strict-mode-Errors über `src/` und
+> `tests/`). Dieses Dokument bleibt als **Konventions- und Patterns-Referenz**
+> für künftige Test-Annotationen erhalten — die in §3 dokumentierten
+> Patterns gelten unverändert. Die **„Anschluss-Roadmap" in §9** listet
+> historische Folgearbeiten; die dort genannten Backlog-Zahlen
+> (`[type-arg]` 22, `[unused-ignore]` 14, `[no-untyped-def]` 173,
+> `[attr-defined]` 99) reflektieren den Stand **vor** Abschluss der
+> Migration und sind nicht aktuell.
+
 Dieses Dokument konsolidiert die Konventionen, Patterns und Werkzeuge,
 die im Zuge der Cluster-Migration **C25–C33** beim strict-typing-konformen
 Annotieren der `tests/`-Suite etabliert wurden, sowie das mit **C34**
