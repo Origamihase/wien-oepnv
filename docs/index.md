@@ -15,7 +15,7 @@ Der gesamte Code steht als Open Source zur Verfügung, sodass du jederzeit nachv
 
 ## Warum der Wien ÖPNV Feed?
 
-- **Zentrale Verkehrsinformationen**: Vereinheitlichte Meldungen der Wiener Linien (WL), der ÖBB und des Verkehrsverbund Ost-Region (VOR) inklusive neuer Baustellen-Datenquellen.
+- **Zentrale Verkehrsinformationen**: Vereinheitlichte Meldungen der Wiener Linien (WL) und der ÖBB, ergänzt um offizielle OGD-Baustellendaten der Stadt Wien sowie einen VOR/VAO-basierten S-Bahn-Stammstrecken-Monitor (Verspätungen & Ausfälle; seit 2026-05-11 ist VOR ausschließlich für diesen Monitor in Verwendung, siehe Tabelle weiter unten).
 - **Suchmaschinenfreundlich**: Optimierte Seitentitel, strukturierte Daten und interne Verlinkungen helfen, dass Entwickler:innen, Journalist:innen und Mobilitätsplaner:innen das Projekt schnell finden.
 - **Fokus auf Reproduzierbarkeit**: Vom Cache-Update über den Feed-Build bis hin zu Tests und Audits – jeder Schritt ist dokumentiert und automatisierbar.
 - **Flexible Nutzung**: Konsumiere den RSS-Feed, greife direkt auf JSON-Caches zu oder verwende die Python-Helfer aus `src/`, um deine Anwendung mit Echtzeitdaten zu versorgen.
