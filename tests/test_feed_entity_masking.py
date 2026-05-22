@@ -13,6 +13,8 @@ from __future__ import annotations
 
 from typing import Any
 
+import pytest
+
 from src import build_feed
 
 
@@ -63,6 +65,83 @@ def test_mask_entities_protects_wien_x_aliases() -> None:
     assert "Wien Rennweg" not in masked
     assert "Wien Mitte" in mapping.values()
     assert "Wien Rennweg" in mapping.values()
+
+
+def test_mask_entities_protects_unicode_route_separators() -> None:
+    """Regression: Unicode glyphs that Marian's SentencePiece tokenizer
+    treats as ``<unk>`` must be masked so they survive the round trip.
+
+    User report (live feed.en.xml, 2026-05-22):
+
+      DE: ``Wien Hauptbahnhof ↔ Wien Floridsdorf ↔ Wien Meidling``
+      EN: ``Wien Hauptbahnhof Wien Floridsdorf Wien Meidling``  ← arrows stripped
+
+    Without masking, the translator silently drops every preserved
+    glyph (arrows, bullets, em-/en-dashes, …) and the EN feed shows
+    the station names smashed together. The new fourth pass in
+    :func:`_mask_entities` routes those glyphs through the same
+    placeholder machinery as proper nouns.
+    """
+    text = "Wien Hauptbahnhof ↔ Wien Floridsdorf ↔ Wien Meidling"
+    masked, mapping = build_feed._mask_entities(text)
+    # The arrow must NOT appear in the masked text — if it did, the
+    # translator would receive it raw and drop it.
+    assert "↔" not in masked, (
+        f"↔ leaked into the masked text — Marian would drop it as <unk>. "
+        f"masked={masked!r}"
+    )
+    # The arrow IS in the mapping (so unmask can restore it).
+    assert "↔" in mapping.values()
+    # Repeated arrows share a single placeholder so the token count is
+    # stable across mention frequency.
+    arrow_placeholders = [k for k, v in mapping.items() if v == "↔"]
+    assert len(arrow_placeholders) == 1
+    # Round-trip restores the original glyphs verbatim.
+    assert build_feed._unmask_entities(masked, mapping) == text
+
+
+@pytest.mark.parametrize(
+    "glyph",
+    [
+        "↔",   # U+2194 LEFT RIGHT ARROW (the user-reported case)
+        "→",   # U+2192 RIGHTWARDS ARROW
+        "←",   # U+2190 LEFTWARDS ARROW
+        "⇄",   # U+21C4 RIGHTWARDS ARROW OVER LEFTWARDS ARROW
+        "⇒",   # U+21D2 RIGHTWARDS DOUBLE ARROW
+        "⇔",   # U+21D4 LEFT RIGHT DOUBLE ARROW
+        "—",   # U+2014 EM DASH
+        "–",   # U+2013 EN DASH
+        "•",   # U+2022 BULLET
+        "…",   # U+2026 HORIZONTAL ELLIPSIS
+    ],
+)
+def test_mask_entities_protects_every_glyph_class(glyph: str) -> None:
+    """Every preserved-symbol class registered in
+    :data:`build_feed._PRESERVED_SYMBOLS_RE` must round-trip cleanly.
+    """
+    text = f"A {glyph} B"
+    masked, mapping = build_feed._mask_entities(text)
+    assert glyph not in masked, f"{glyph!r} reached the translator raw"
+    assert glyph in mapping.values()
+    assert build_feed._unmask_entities(masked, mapping) == text
+
+
+def test_mask_entities_preserves_umlauts_and_letters() -> None:
+    """Sanity guard: the preserved-symbols pass must NOT touch German
+    umlauts (``ä``, ``ö``, ``ü``, ``ß``) — those MUST reach the model
+    so the surrounding sentence can be translated. False positives in
+    this class would break every German disruption text.
+    """
+    text = "Straße — Östlich Verzögerung für Reisende: Ärger über Übergänge."
+    masked, mapping = build_feed._mask_entities(text)
+    # Each umlaut survives the mask pass verbatim.
+    for letter in ("ä", "ö", "ü", "ß", "Ä", "Ö", "Ü"):
+        assert letter in masked, (
+            f"umlaut {letter!r} was wrongly masked — masked={masked!r}"
+        )
+    # The em-dash IS protected (the user's reported failure mode).
+    assert "—" not in masked
+    assert "—" in mapping.values()
 
 
 def test_mask_entities_longest_match_wins() -> None:
