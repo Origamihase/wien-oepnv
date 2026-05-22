@@ -337,7 +337,10 @@ def _download_ogd_csv(url: str, target: Path) -> bool:
             try:
                 sidecar.unlink()
             except FileNotFoundError:
-                pass
+                log.debug(
+                    "Stale WL OGD cache sidecar already absent [path-sha256=%s]",
+                    _path_fingerprint(sidecar),
+                )
             except OSError as exc:
                 log.warning(
                     "Failed to clear stale WL OGD cache sidecar (%s)", exc
