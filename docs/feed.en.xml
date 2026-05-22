@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 22 May 2026 07:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2026 08:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[18: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
+      <pubDate>Fri, 22 May 2026 07:41:00 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 08:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 07:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: rescue operation. [On 22.05.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[On 22.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U4: Harmful vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +115,6 @@
       <pubDate>Fri, 22 May 2026 00:00:18 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 00:00:18 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 22.05.2026]</description>
-      <content:encoded><![CDATA[[On 22.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Use the line 43A - Dornbacher Straße 85]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
-      <pubDate>Fri, 22 May 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 00:00:13 +0200</ext:starts_at>
       <ext:ends_at>Fri, 22 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 22.05.2026]</description>
       <content:encoded><![CDATA[[On 22.05.2026]]]></content:encoded>
