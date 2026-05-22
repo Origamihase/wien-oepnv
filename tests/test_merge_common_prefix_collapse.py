@@ -176,8 +176,6 @@ class TestEndToEndDeduplicateFuzzy:
     """The collapse must work through the full ``deduplicate_fuzzy`` pipeline."""
 
     def test_user_reported_11a_veranstaltung_pipeline(self) -> None:
-        from datetime import datetime, timezone
-
         from src.feed.merge import deduplicate_fuzzy
 
         def _make(date_str: str, guid: str) -> dict[str, Any]:

@@ -374,7 +374,7 @@ def _collapse_common_prefix(
     # the cache-insertion order ``09.06.2026, 03.06.2026, 11.06.2026``.
     sort_keys = [_date_sort_key(p) for p in all_parts]
     if all(k is not None for k in sort_keys):
-        all_parts = [p for _, p in sorted(zip(sort_keys, all_parts))]
+        all_parts = [p for _, p in sorted(zip(sort_keys, all_parts, strict=True))]
 
     return f"{prefix.rstrip()} " + ", ".join(all_parts)
 
