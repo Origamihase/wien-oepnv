@@ -28,17 +28,30 @@ def _display_line(s: str) -> str:
 # Strict line-token shape used by ``_extract_prefix_lines`` to gate the
 # prefix-strip decision. A token must look like a real Vienna or ÖBB
 # line code (digits + optional letter, OR a known operator letter
-# prefix followed by digits) to count. Without this gate the
-# permissive ``[A-Za-z0-9]+`` regex below would happily classify a
-# generic word like ``Achtung``, ``Information`` or ``Hinweis`` (every
-# titlecased noun that ends with ``:``) as a "line code", causing the
-# downstream ``_post_filter_wl`` rebuild to mangle the title into
-# ``ACHTUNG: …``. The pattern requires AT LEAST one digit so single-
-# letter / pure-word tokens cannot slip through; ``[A-Z]{0,4}`` covers
-# ÖBB carrier prefixes (REX, RJ, RJX, EC, ICE, IC, WB, NJ, CJX, S, U,
-# N, R, D) and the WL bus-suffix ``A``/``E`` is captured by the
-# optional trailing ``[A-Z]?``.
-_STRICT_LINE_TOKEN_RE = re.compile(r"^[A-Z]{0,4}\d{1,3}[A-Z]?$")
+# prefix followed by digits, OR a single bare uppercase letter such as
+# WL tram ``D``) to count. Without this gate the permissive
+# ``[A-Za-z0-9]+`` regex below would happily classify a generic word
+# like ``Achtung``, ``Information`` or ``Hinweis`` (every titlecased
+# noun that ends with ``:``) as a "line code", causing the downstream
+# ``_post_filter_wl`` rebuild to mangle the title into ``ACHTUNG: …``.
+# Two shapes are accepted:
+#
+#   1. ``[A-Z]{0,4}\d{1,3}[A-Z]?`` — the canonical digit-bearing line
+#      code. ``[A-Z]{0,4}`` covers ÖBB carrier prefixes (REX, RJ, RJX,
+#      EC, ICE, IC, WB, NJ, CJX, S, U, N, R, D) and the WL bus-suffix
+#      ``A``/``E`` is captured by the optional trailing ``[A-Z]?``.
+#   2. ``[A-Z]`` — a single bare uppercase letter. Required by WL's
+#      letters-only tram line ``D`` (Wien Hauptbahnhof — Nußdorf).
+#      Real cache item ``D: D: Demonstration`` reproduced the stacking
+#      bug when the original digit-only gate rejected ``D`` so
+#      ``_ensure_line_prefix`` couldn't strip the existing ``D:``
+#      prefix and ended up prepending another ``D:`` from
+#      ``relatedLines``.
+#
+# Multi-letter words without digits (``ACHTUNG``, ``INFORMATION``,
+# ``HINWEIS``, ``LINIE``) still fail both shapes, so the original
+# false-positive guard stays intact.
+_STRICT_LINE_TOKEN_RE = re.compile(r"^(?:[A-Z]{0,4}\d{1,3}[A-Z]?|[A-Z])$")
 
 
 # Präfix-Erkennung/Entfernung:
