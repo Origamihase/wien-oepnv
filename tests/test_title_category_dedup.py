@@ -105,15 +105,22 @@ class TestNonCategoryWordsPreserved:
         assert out.startswith("Ersatzverkehr")
 
     def test_no_match_no_strip(self) -> None:
-        # Title and description don't share a first word — no strip.
+        # Title and description don't share a first word. Round 37
+        # tightened the dedup so a known WL category word (here
+        # ``Veranstaltung``) followed by ``Wegen`` is recognised as
+        # the WL HTML ``<h2>`` heading leak and stripped — even when
+        # the title body is unrelated. Pre-Round-37 the leading
+        # ``Veranstaltung`` survived.
         title = "53A/54A/54B: Ablenkung ab 8. Mai"
         desc = (
             "Veranstaltung Wegen einer Veranstaltung am Wolfrathplatz "
             "werden die Busse umgeleitet."
         )
         _, out = _format(title, desc)
-        # Both "Veranstaltung" mentions stay.
-        assert out.startswith("Veranstaltung")
+        # Round 37: leading heading-word stripped, body restated cause.
+        assert out.startswith("Wegen einer Veranstaltung")
+        # The body's own "Veranstaltung" mention survives mid-text.
+        assert "Veranstaltung am Wolfrathplatz" in out
 
     def test_short_summary_unchanged(self) -> None:
         title = "U6: Verspätung"
