@@ -897,6 +897,135 @@ _LINE_ENTITY_RE: re.Pattern[str] = re.compile(
     r"\b(U[1-6]|S[0-9]+|[1-9][0-9]?[A-Z]?)\b"
 )
 
+# ÖPNV domain glossary. The Helsinki opus-mt-de-en model has only
+# seen everyday German prose during training; it routinely
+# mistranslates Austrian transit jargon because the closest token in
+# its vocabulary lives in a different domain. Live regressions
+# observed on the public feed (2026-05-22):
+#
+#   * ``Betriebsstörung``        → "Harmful vehicle"   (sic)
+#   * ``Fahrtbehinderung``       → "Disability"
+#   * ``Aufgelassen``            → "Open"               (opposite meaning!)
+#   * ``Hauptfahrbahn``          → "main runway"
+#   * ``Schadhaftem Fahrzeug``   → "Harmful vehicle"
+#
+# Each entry below is a German source token mapped to its canonical
+# English equivalent in the transit domain. The mapping is consumed
+# by ``_mask_entities`` BEFORE the model sees the text: the German
+# token is replaced by an ``XENT…`` placeholder whose mapping entry
+# carries the *English* term. After the model returns its (now
+# correct, because the problematic word is gone) translation,
+# ``_unmask_entities`` substitutes the English term back in.
+#
+# Longer compound terms appear first so e.g. ``Schadhaftem Fahrzeug``
+# beats the single-word ``Schadhaftem`` and the model receives one
+# placeholder per concept rather than two.
+_DOMAIN_GLOSSARY: dict[str, str] = {
+    # --- Disruption-type nouns --------------------------------------
+    "Betriebsstörung": "service disruption",
+    "Betriebsstörungen": "service disruptions",
+    "Fahrtbehinderung": "service obstruction",
+    "Fahrtbehinderungen": "service obstructions",
+    "Streckenstörung": "line disruption",
+    "Streckensperre": "line closure",
+    "Gleissperre": "track closure",
+    "Signalstörung": "signal disruption",
+    "Weichenstörung": "switch fault",
+    "Stellwerksstörung": "interlocking failure",
+    "Oberleitungsstörung": "overhead-line fault",
+    "Stromausfall": "power outage",
+    "Verspätung": "delay",
+    "Verspätungen": "delays",
+    "Fahrtausfall": "service cancellation",
+    "Fahrtausfälle": "service cancellations",
+    "Zugausfall": "train cancellation",
+    "Zugausfälle": "train cancellations",
+    # --- Construction / works ---------------------------------------
+    "Gleisbauarbeiten": "track construction works",
+    "Gleisarbeiten": "track works",
+    "Gleisschaden": "track damage",
+    "Bauarbeiten": "construction works",
+    "Wartungsarbeiten": "maintenance works",
+    "Reparaturarbeiten": "repair works",
+    "Kranarbeiten": "crane works",
+    "Rohrleitungsarbeiten": "pipeline works",
+    "Straßenbauarbeiten": "roadworks",
+    # --- Replacement services ---------------------------------------
+    "Schienenersatzverkehr": "rail replacement service",
+    "Ersatzverkehr": "replacement service",
+    "Ersatzbus": "replacement bus",
+    # --- Emergencies / events ---------------------------------------
+    "Polizeieinsatz": "police operation",
+    "Rettungseinsatz": "rescue operation",
+    "Notarzteinsatz": "ambulance operation",
+    "Feuerwehreinsatz": "fire-brigade operation",
+    "Verkehrsunfall": "traffic accident",
+    "Verkehrsüberlastung": "traffic congestion",
+    "Staatsbesuch": "state visit",
+    "Veranstaltung": "event",
+    "Demonstration": "demonstration",
+    # --- State / mode adjectives ------------------------------------
+    "Schadhaftes Fahrzeug": "defective vehicle",
+    "Schadhafter Fahrzeug": "defective vehicle",
+    "Schadhaftem Fahrzeug": "defective vehicle",
+    "Schadhafter LKW": "defective truck",
+    "Schadhaftem LKW": "defective truck",
+    "Hauptfahrbahn": "main carriageway",
+    "Aufgelassen": "Discontinued",
+    "Aufgelassene": "Discontinued",
+    "Personen im Gleisbereich": "persons on the tracks",
+    "Umleitung": "diversion",
+    "Unregelmäßige Intervalle": "irregular intervals",
+    "Eingeschränkter Betrieb": "restricted service",
+    # --- Compound idioms specific to ÖBB/WL ticker text ------------
+    "Betrieb ab": "service from",
+}
+
+
+@lru_cache(maxsize=1)
+def _domain_glossary_pattern() -> re.Pattern[str]:
+    """Compile a case-insensitive, longest-first regex from the
+    :data:`_DOMAIN_GLOSSARY` keys.
+
+    The regex is consumed by :func:`_mask_entities`; matches resolve
+    to the *English* equivalent in the mapping rather than the German
+    surface form, so the unmask step inserts the corrected EN term
+    directly. Longest-first sort is critical: ``Schadhaftem Fahrzeug``
+    must beat the single-word ``Schadhaftem`` alternation so the model
+    sees one placeholder, not two.
+    """
+    sorted_terms = sorted(_DOMAIN_GLOSSARY.keys(), key=len, reverse=True)
+    pattern = (
+        r"(?<!\w)(?:"
+        + "|".join(re.escape(term) for term in sorted_terms)
+        + r")(?!\w)"
+    )
+    return re.compile(pattern, re.IGNORECASE)
+
+
+# German compound-noun suffixes that mark a token as a street / public-
+# space proper noun. The masker treats any word ending in one of these
+# suffixes — and capitalised at the start — as an entity to preserve
+# verbatim. Live regressions on the public feed (2026-05-22):
+#
+#   * ``Pasettistraße`` → "Pasetti Street"
+#   * ``Landstraßer Hauptstraße`` → "Landstraßer main road"
+#
+# The model heuristically renders ``-straße`` as "Street" / "road" once
+# the word stem is unknown; by masking the entire compound we keep the
+# Austrian street name as a single recognisable label in the EN feed.
+# The Latin-1 supplement umlauts (``ä``/``ö``/``ü``/``ß``) are part of
+# ``\w`` under Python 3 ``re`` so the ``\b`` word boundary works
+# naturally on tokens like ``Hellwagstraße``.
+_STREET_SUFFIX_RE: re.Pattern[str] = re.compile(
+    r"\b[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-.]{1,30}"
+    r"(?:"
+    r"[Ss]traße|[Ss]trasse|[Gg]asse|[Pp]latz|[Bb]rücke|[Bb]rucke"
+    r"|[Mm]arkt|[Ww]eg|[Rr]ing|[Aa]llee|[Ss]tieg|[Ss]teig"
+    r"|[Pp]romenade|[Kk]ai|[Gg]raben"
+    r")\b"
+)
+
 # Placeholder pattern recognised by :func:`_unmask_entities` and the
 # ``X``-bookended form deliberately avoids ``_`` (which the
 # SentencePiece tokenizer used by Marian models treats specially).
@@ -1066,38 +1195,65 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
 
 @lru_cache(maxsize=1)
 def _brand_entity_pattern() -> re.Pattern[str]:
-    """Compile the static brand list into a longest-first regex."""
+    """Compile the static brand list into a longest-first, case-
+    sensitive regex.
+
+    Case-sensitive matching is critical: the brand list contains
+    all-caps abbreviations (``VOR``, ``VAO``, ``WLB``, ``ÖBB``) that
+    would collide with everyday German prepositions under
+    ``re.IGNORECASE`` — the canonical example was ``VOR`` (operator)
+    matching ``vor`` (preposition "before") in disruption text such
+    as ``"… Pasettistraße vor Hellwagstraße"``. The case-sensitive
+    pattern keeps the brand list useful for the upper-case forms
+    operators actually publish, while letting the surrounding prose
+    flow through to the translator untouched.
+    """
     sorted_brands = sorted(_BRAND_ENTITIES, key=len, reverse=True)
     pattern = (
         r"(?<!\w)(?:"
         + "|".join(re.escape(brand) for brand in sorted_brands)
         + r")(?!\w)"
     )
-    return re.compile(pattern, re.IGNORECASE)
+    return re.compile(pattern)
 
 
 def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     """Replace known entities in ``text`` with stable placeholders.
 
-    The masker applies four passes (brands → stations → line tokens
-    → preserved Unicode symbols) so the longest-matching span wins
-    regardless of which source discovered it. Each unique surface
-    form gets exactly one placeholder so a sentence mentioning the
-    same station twice — or the same ``↔`` arrow twice — survives
-    one round-trip through the translation model with identical
-    tokens.
+    The masker applies five passes in priority order — each pass is a
+    **verbatim shield**: the placeholder restores to the original
+    German surface form on unmask:
 
-    The fourth pass covers Unicode glyphs that the Marian
-    SentencePiece tokenizer routinely drops as ``<unk>`` (arrows,
-    bullets, em-/en-dashes, …). Without it, a route-style title like
-    ``Wien Hauptbahnhof ↔ Wien Floridsdorf`` loses the ``↔``
-    separator during translation and the EN feed shows the station
-    names smashed together.
+      1. **Brands** — static operator / network names.
+      2. **Stations** — canonical names + bare forms + curated
+         ``Wien X`` aliases from the project's station directory.
+      3. **Line tokens** — ``U6``, ``S40``, ``5A``, …
+      4. **Street suffixes** — capitalised compound nouns ending in a
+         German street/place suffix (``…straße``, ``…gasse``,
+         ``…platz``, …) are preserved verbatim. This catches every
+         street name that is NOT also a registered station alias.
+      5. **Preserved Unicode symbols** — arrows, bullets, em-/en-
+         dashes, the ellipsis: glyphs that Marian's SentencePiece
+         tokenizer otherwise maps to ``<unk>`` and drops.
 
-    Returns a tuple ``(masked_text, mapping)`` where ``mapping`` maps
-    each placeholder back to the original entity text. Callers feed
-    the masked text into the translation pipeline and route the
-    result through :func:`_unmask_entities`.
+    Domain-jargon translation (``Betriebsstörung`` →
+    ``service disruption`` etc.) is a SEPARATE concern handled by
+    :func:`_apply_domain_glossary` and composed in
+    :func:`_translate_text_attempt`. Keeping the two passes split
+    preserves the masker's identity contract — ``unmask(mask(x)) == x``
+    for arbitrary text — and lets the property-based tests in
+    ``tests/test_entity_masking_properties.py`` keep their strong
+    round-trip invariant.
+
+    Longest-matching span wins regardless of which source discovered
+    it. Each unique surface form gets exactly one placeholder so a
+    sentence mentioning the same station twice — or the same ``↔``
+    arrow twice — survives one round-trip through the translation
+    model with identical tokens.
+
+    Returns a tuple ``(masked_text, mapping)`` where ``mapping``
+    resolves each placeholder back to the German surface form the
+    feed should restore.
     """
     if not text:
         return text, {}
@@ -1120,17 +1276,105 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     if station_pattern is not None:
         working = station_pattern.sub(_replace, working)
     working = _LINE_ENTITY_RE.sub(_replace, working)
+    working = _STREET_SUFFIX_RE.sub(_replace, working)
     working = _PRESERVED_SYMBOLS_RE.sub(_replace, working)
     return working, mapping
+
+
+# Glossary placeholders use a distinct ``XGLO<n>X`` prefix so the
+# combined unmask regex can tell them apart from the verbatim
+# ``XENT<n>X`` placeholders emitted by :func:`_mask_entities`. The
+# unmasker handles both via a single union regex (see
+# :data:`_UNMASK_PLACEHOLDER_RE`).
+_GLOSSARY_PLACEHOLDER_FORMAT = "XGLO{index}X"
+_GLOSSARY_PLACEHOLDER_RE: re.Pattern[str] = re.compile(r"XGLO\d+X")
+
+# Unified regex for the unmasker — matches both entity (``XENT…``)
+# and glossary (``XGLO…``) placeholders. Defined at module import
+# time so :func:`_unmask_entities` does not pay the compile cost per
+# call.
+_UNMASK_PLACEHOLDER_RE: re.Pattern[str] = re.compile(r"X(?:ENT|GLO)\d+X")
+
+
+def _apply_domain_glossary(text: str) -> tuple[str, dict[str, str]]:
+    """Substitute ÖPNV-domain German terms with placeholders that
+    resolve to their canonical English equivalents.
+
+    The Helsinki opus-mt-de-en model has only seen everyday German
+    prose during training; it routinely mistranslates Austrian
+    transit jargon because the closest token in its vocabulary lives
+    in a different domain. Live regressions on the public feed
+    (2026-05-22):
+
+      * ``Betriebsstörung``        → "Harmful vehicle"
+      * ``Fahrtbehinderung``       → "Disability"
+      * ``Aufgelassen``            → "Open" (opposite meaning!)
+      * ``Hauptfahrbahn``          → "main runway"
+
+    This helper short-circuits the mistranslation: each known DE
+    term is replaced by a stable ``XGLO<n>X`` placeholder whose
+    mapping entry carries the *English* equivalent. After the model
+    finishes translating the (now jargon-free) surrounding prose,
+    :func:`_unmask_entities` substitutes the English term back in.
+
+    The mask/unmask round-trip is therefore **DE → EN** for glossary
+    entries (unlike :func:`_mask_entities` which is strictly
+    identity). The two operations compose in
+    :func:`_translate_text_attempt`.
+    """
+    if not text:
+        return text, {}
+
+    mapping: dict[str, str] = {}
+    surface_to_placeholder: dict[str, str] = {}
+
+    def _replace(match: re.Match[str]) -> str:
+        surface = match.group(0)
+        en_term = _DOMAIN_GLOSSARY.get(surface)
+        if en_term is None:
+            # Case-insensitive fallback (the glossary pattern matches
+            # ``betriebsstörung`` at sentence start; the dict keys are
+            # capitalised because that is how WL and ÖBB publish the
+            # term in 99 % of items). Small dict, linear scan is fine.
+            for key, value in _DOMAIN_GLOSSARY.items():
+                if key.lower() == surface.lower():
+                    en_term = value
+                    break
+        if en_term is None:
+            # Pattern matched but resolution failed — return the
+            # surface unchanged so no placeholder dangles in the
+            # output. Defensive only; should not happen given the
+            # pattern is built from the dict keys.
+            return surface
+        cached = surface_to_placeholder.get(surface)
+        if cached is not None:
+            return cached
+        placeholder = _GLOSSARY_PLACEHOLDER_FORMAT.format(index=len(mapping))
+        mapping[placeholder] = en_term
+        surface_to_placeholder[surface] = placeholder
+        return placeholder
+
+    processed = _domain_glossary_pattern().sub(_replace, text)
+    return processed, mapping
 
 
 def _unmask_entities(text: str, mapping: dict[str, str]) -> str:
     """Restore entity surface forms in ``text`` using ``mapping``.
 
+    Handles BOTH placeholder formats emitted by the masking pipeline:
+
+      * ``XENT<n>X`` — verbatim entity placeholders produced by
+        :func:`_mask_entities` (brands, stations, lines, streets,
+        symbols). Mapping value is the German surface form to
+        restore.
+      * ``XGLO<n>X`` — domain-glossary placeholders produced by
+        :func:`_apply_domain_glossary`. Mapping value is the English
+        equivalent of the German term.
+
     Tolerant of the translator dropping or reordering placeholders —
     only placeholders that still appear in ``text`` are restored, the
     rest are silently discarded so the output never carries a literal
-    ``XENT3X`` token to subscribers.
+    ``XENT3X`` / ``XGLO2X`` token to subscribers.
     """
     if not mapping:
         return text
@@ -1139,7 +1383,7 @@ def _unmask_entities(text: str, mapping: dict[str, str]) -> str:
         placeholder = match.group(0)
         return mapping.get(placeholder, "")
 
-    return _ENTITY_PLACEHOLDER_RE.sub(_restore, text)
+    return _UNMASK_PLACEHOLDER_RE.sub(_restore, text)
 
 
 def _get_translation_pipeline() -> Any:
@@ -1215,7 +1459,21 @@ def _translate_text_attempt(text: str, ident: str = "") -> str | None:
     pipe = _get_translation_pipeline()
     if pipe is None:
         return None
-    masked_text, entity_mapping = _mask_entities(text)
+    # Compose two mask passes:
+    #   1. Domain-glossary substitution — DE jargon → ``XGLO<n>X``
+    #      placeholders that resolve to canonical English terms. Runs
+    #      FIRST so the entity masker afterwards sees the placeholder
+    #      tokens (which look like opaque proper nouns) and leaves
+    #      them untouched.
+    #   2. Verbatim entity masking — brands, stations, lines, streets,
+    #      Unicode symbols → ``XENT<n>X`` placeholders that resolve
+    #      to the original German surface form.
+    # The two mappings are merged into a single dict for unmasking
+    # (each pass uses a distinct placeholder format so indices cannot
+    # collide).
+    glossary_processed, glossary_mapping = _apply_domain_glossary(text)
+    masked_text, entity_mapping = _mask_entities(glossary_processed)
+    combined_mapping = {**glossary_mapping, **entity_mapping}
     try:
         # ``truncation=True`` enforces the model's input cap (512 tokens
         # for opus-mt-de-en) BEFORE Marian asserts and crashes the
@@ -1250,7 +1508,7 @@ def _translate_text_attempt(text: str, ident: str = "") -> str | None:
             sanitize_log_arg(ident or "<unknown>"),
         )
         return None
-    return _unmask_entities(translated, entity_mapping)
+    return _unmask_entities(translated, combined_mapping)
 
 
 def _translate_text(text: str, ident: str = "") -> str:
