@@ -374,6 +374,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "26A: Verkehrsüberlastung",
+    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ccb49ecd7b5e4fd97d1b9d1a06c7dac25eed876e72b21077b01136c445d90099",
+    "pubDate": "2026-05-22T06:59:00+02:00",
+    "starts_at": "2026-05-22T06:59:00+02:00",
+    "ends_at": "2026-05-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=26A|D=2026-05-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
