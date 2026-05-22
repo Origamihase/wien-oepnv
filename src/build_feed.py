@@ -882,6 +882,38 @@ _ENTITY_PLACEHOLDER_FORMAT = "XENT{index}X"
 _ENTITY_PLACEHOLDER_RE: re.Pattern[str] = re.compile(r"XENT\d+X")
 
 
+# Unicode glyphs that the Helsinki opus-mt-de-en tokenizer is likely
+# to map to its ``<unk>`` slot — and silently drop on detokenize.
+# Empirically observed in the live feed (2026-05-22): an ÖBB title
+# ``Wien Hauptbahnhof ↔ Wien Floridsdorf ↔ Wien Meidling`` translated
+# to ``Wien Hauptbahnhof Wien Floridsdorf Wien Meidling`` — the
+# bidirectional arrow ``↔`` (U+2194) was stripped. The fix routes
+# these glyphs through the same placeholder-mask path as proper
+# nouns so they survive the round trip.
+#
+# Coverage by Unicode block:
+#   * U+2010..U+2015 — dashes (hyphen, figure dash, en-/em-dash, …)
+#     plus U+2026 (horizontal ellipsis) and U+2022/U+2023 (bullets);
+#   * U+2190..U+21FF — Arrows block;
+#   * U+27F0..U+27FF — Supplemental Arrows-A;
+#   * U+2900..U+297F — Supplemental Arrows-B;
+#   * U+2B00..U+2BFF — Miscellaneous Symbols and Arrows.
+#
+# The class is intentionally narrow: it does NOT cover the Latin-1
+# supplement (where ``ä``/``ö``/``ü`` live and MUST survive into the
+# model). False-positive risk is therefore zero for typical German
+# disruption text.
+_PRESERVED_SYMBOLS_RE: re.Pattern[str] = re.compile(
+    r"["
+    r"‐-―•‣…"
+    r"←-⇿"
+    r"⟰-⟿"
+    r"⤀-⥿"
+    r"⬀-⯿"
+    r"]"
+)
+
+
 # Aliases that look like a noise-prefixed station ("Bahnhof X", "Bf X",
 # "Station X", …) are skipped — those are spelling variants of the
 # canonical name, not user-facing short forms. The match is
@@ -1025,12 +1057,20 @@ def _brand_entity_pattern() -> re.Pattern[str]:
 def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     """Replace known entities in ``text`` with stable placeholders.
 
-    The masker applies three passes (brands → stations → line tokens)
-    so the longest-matching span wins regardless of which source
-    discovered it. Each unique surface form gets exactly one
-    placeholder so a sentence mentioning the same station twice
-    survives one round-trip through the translation model with
-    identical tokens.
+    The masker applies four passes (brands → stations → line tokens
+    → preserved Unicode symbols) so the longest-matching span wins
+    regardless of which source discovered it. Each unique surface
+    form gets exactly one placeholder so a sentence mentioning the
+    same station twice — or the same ``↔`` arrow twice — survives
+    one round-trip through the translation model with identical
+    tokens.
+
+    The fourth pass covers Unicode glyphs that the Marian
+    SentencePiece tokenizer routinely drops as ``<unk>`` (arrows,
+    bullets, em-/en-dashes, …). Without it, a route-style title like
+    ``Wien Hauptbahnhof ↔ Wien Floridsdorf`` loses the ``↔``
+    separator during translation and the EN feed shows the station
+    names smashed together.
 
     Returns a tuple ``(masked_text, mapping)`` where ``mapping`` maps
     each placeholder back to the original entity text. Callers feed
@@ -1058,6 +1098,7 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     if station_pattern is not None:
         working = station_pattern.sub(_replace, working)
     working = _LINE_ENTITY_RE.sub(_replace, working)
+    working = _PRESERVED_SYMBOLS_RE.sub(_replace, working)
     return working, mapping
 
 
