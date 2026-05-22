@@ -158,10 +158,19 @@ def test_fuzzy_merge_name_combining() -> None:
             "guid": "g2"
         }
     ]
-    # Tokens "Event", "Special" overlap.
+    # Tokens "Event", "Special" overlap. Round 36's
+    # ``_collapse_common_prefix`` keeps the shared
+    # ``Event Special `` prefix once and joins the differing
+    # suffixes with ``, ``. Pre-Round-36 the merge produced
+    # ``Event Special Run & Event Special Walk`` (legacy
+    # ``&``-join).
     merged = deduplicate_fuzzy(items)
     assert len(merged) == 1
-    assert "Event Special Run & Event Special Walk" in merged[0]["title"] or "Event Special Walk & Event Special Run" in merged[0]["title"]
+    title = merged[0]["title"]
+    assert (
+        "Event Special Run, Walk" in title
+        or "Event Special Walk, Run" in title
+    ), f"Unexpected merged title: {title!r}"
 
 def test_fuzzy_merge_recursive() -> None:
     # A merges with B, result merges with C?

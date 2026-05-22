@@ -318,7 +318,7 @@ def _run(cmd: list[str], *, tolerate: tuple[int, ...] = ()) -> None:
 def _needs_downscale(path: Path, target: tuple[int, int]) -> bool:
     """True if ``path`` is wider than ``target[0]`` (cheap natural-size check)."""
     with Image.open(path) as img:
-        return img.size[0] > target[0]
+        return bool(img.size[0] > target[0])
 
 
 def _optimise_train_png() -> None:

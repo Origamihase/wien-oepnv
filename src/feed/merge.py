@@ -395,6 +395,19 @@ def _trim_trailing_directional(text: str) -> str:
     return _TRAILING_DIRECTIONAL_RE.sub("", text).rstrip()
 
 
+def _join_merged_names(ex_name: str, name: str) -> str:
+    """Combine two non-identical bodies — prefer prefix collapse, else ``&``.
+
+    Extracted from :func:`deduplicate_fuzzy` to keep its McCabe count at
+    the baselined 21. Tries :func:`_collapse_common_prefix` first
+    (produces the user-friendly ``Veranstaltung am DATE1, DATE2`` form
+    when both bodies share a substantial word-aligned prefix), and
+    falls back to the legacy ``ex_name & name`` join when the collapse
+    declines (short overlap, long suffix, ÖBB ``↔`` chain).
+    """
+    return _collapse_common_prefix(ex_name, name) or f"{ex_name} & {name}"
+
+
 def _calculate_line_overlap(lines1: set[str], lines2: set[str]) -> float:
     if not lines1 or not lines2:
         return 0.0
@@ -623,13 +636,7 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                                 # the legacy ``&``-join if the
                                 # collapse declines (short prefix,
                                 # long suffix, ÖBB ``↔`` chain).
-                                collapsed = _collapse_common_prefix(
-                                    ex_name, name
-                                )
-                                if collapsed is not None:
-                                    new_name = collapsed
-                                else:
-                                    new_name = f"{ex_name} & {name}"
+                                new_name = _join_merged_names(ex_name, name)
 
                     # Reconstruct Title
                     # Sort lines naturally (alphanumeric)?

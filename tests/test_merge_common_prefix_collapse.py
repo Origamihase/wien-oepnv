@@ -36,6 +36,8 @@ Guards
 
 from __future__ import annotations
 
+from typing import Any
+
 from src.feed.merge import _collapse_common_prefix
 
 
@@ -178,7 +180,7 @@ class TestEndToEndDeduplicateFuzzy:
 
         from src.feed.merge import deduplicate_fuzzy
 
-        def _make(date_str: str, guid: str) -> dict:
+        def _make(date_str: str, guid: str) -> dict[str, Any]:
             return {
                 "source": "Wiener Linien",
                 "category": "Hinweis",
