@@ -252,12 +252,23 @@ def test_wrapper_auto_quarantines_matching_stations(
     monkeypatch.setattr(wrapper, "validate_stations", lambda *a, **kw: failing_report)
 
     quarantine_path = data_dir / "quarantine.json"
+    # The wrapper now accepts ``--target`` / ``--heartbeat`` /
+    # ``--diff-report`` / ``--quarantine`` CLI args so the test
+    # redirects every output into ``tmp_path`` directly. The
+    # legacy ``monkeypatch.setattr(_DEFAULT_*)`` + ``chdir`` pattern
+    # is preserved as belt-and-suspenders so a future revert of the
+    # CLI args still routes outputs into ``tmp_path``.
     monkeypatch.setattr(wrapper, "_DEFAULT_HEARTBEAT_PATH", tmp_path / "heartbeat.json")
     monkeypatch.setattr(wrapper, "_DEFAULT_DIFF_REPORT_PATH", tmp_path / "diff.md")
     monkeypatch.setattr(wrapper, "_DEFAULT_QUARANTINE_PATH", quarantine_path)
     monkeypatch.chdir(tmp_path)
 
-    exit_code = wrapper.main([])
+    exit_code = wrapper.main([
+        "--target", str(stations_path),
+        "--heartbeat", str(tmp_path / "heartbeat.json"),
+        "--diff-report", str(tmp_path / "diff.md"),
+        "--quarantine", str(quarantine_path),
+    ])
     assert exit_code == 0
 
     final_payload = json.loads(stations_path.read_text(encoding="utf-8"))
@@ -328,12 +339,21 @@ def test_wrapper_skips_quarantine_for_global_only_issue(
     monkeypatch.setattr(wrapper, "validate_stations", lambda *a, **kw: global_only_report)
 
     quarantine_path = data_dir / "quarantine.json"
+    # See ``test_wrapper_auto_quarantines_matching_stations`` above for
+    # the rationale of pinning the wrapper's outputs via both the new
+    # CLI args and the legacy ``_DEFAULT_*``/``chdir`` belt-and-
+    # suspenders so the test never touches the production paths.
     monkeypatch.setattr(wrapper, "_DEFAULT_HEARTBEAT_PATH", tmp_path / "heartbeat.json")
     monkeypatch.setattr(wrapper, "_DEFAULT_DIFF_REPORT_PATH", tmp_path / "diff.md")
     monkeypatch.setattr(wrapper, "_DEFAULT_QUARANTINE_PATH", quarantine_path)
     monkeypatch.chdir(tmp_path)
 
-    exit_code = wrapper.main([])
+    exit_code = wrapper.main([
+        "--target", str(stations_path),
+        "--heartbeat", str(tmp_path / "heartbeat.json"),
+        "--diff-report", str(tmp_path / "diff.md"),
+        "--quarantine", str(quarantine_path),
+    ])
     assert exit_code == 0
     assert not quarantine_path.exists(), (
         "quarantine.json must not be created when the only blocking issue is the "
@@ -367,11 +387,23 @@ def test_wrapper_writes_heartbeat_and_diff_on_success(
     )
     monkeypatch.setattr(wrapper, "validate_stations", lambda *a, **kw: clean_report)
 
-    # Redirect heartbeat + diff to tmp_path so the live files stay untouched
+    # Redirect every wrapper output to tmp_path via the CLI args so
+    # the live files stay untouched. The legacy ``_DEFAULT_*``
+    # monkeypatches are kept as belt-and-suspenders for an
+    # accidental future regression.
+    target_path = tmp_path / "stations.json"
+    target_path.write_text(
+        json.dumps({"stations": []}, ensure_ascii=False), encoding="utf-8"
+    )
     monkeypatch.setattr(wrapper, "_DEFAULT_HEARTBEAT_PATH", tmp_path / "heartbeat.json")
     monkeypatch.setattr(wrapper, "_DEFAULT_DIFF_REPORT_PATH", tmp_path / "diff.md")
 
-    exit_code = wrapper.main([])
+    exit_code = wrapper.main([
+        "--target", str(target_path),
+        "--heartbeat", str(tmp_path / "heartbeat.json"),
+        "--diff-report", str(tmp_path / "diff.md"),
+        "--quarantine", str(tmp_path / "quarantine.json"),
+    ])
     assert exit_code == 0
 
     heartbeat_path = tmp_path / "heartbeat.json"
