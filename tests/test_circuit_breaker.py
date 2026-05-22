@@ -7,6 +7,7 @@ Each test maps to one chaos scenario in ``.jules/saboteur.md``.
 from __future__ import annotations
 
 import threading
+import weakref
 from collections.abc import Iterator
 from typing import Any
 
@@ -393,3 +394,62 @@ def test_chaos_flapping_upstream_doesnt_cause_breaker_thrashing() -> None:
     # Counter never accumulated above 2 because each success cleared it
     assert_state(breaker, CircuitState.CLOSED)
     assert breaker.consecutive_failures == 0
+
+
+# ---------- Registry ----------
+
+
+def test_new_breaker_is_auto_registered() -> None:
+    """Every fresh CircuitBreaker must show up in ``iter_instances``
+    immediately — the autouse ``reset_circuit_breakers`` fixture in
+    ``conftest.py`` relies on this to find newly-added module breakers
+    without explicit per-module bookkeeping."""
+    breaker = CircuitBreaker("registry-probe")
+    snapshot = CircuitBreaker.iter_instances()
+    assert breaker in snapshot, (
+        "Newly-constructed breakers must be auto-registered into "
+        "CircuitBreaker._instances so the test fixture covers them."
+    )
+
+
+def test_iter_instances_returns_snapshot_list() -> None:
+    """``iter_instances`` must return a list snapshot (not the live
+    ``WeakSet``) so callers can safely mutate / iterate without
+    tripping on concurrent garbage collection."""
+    snapshot = CircuitBreaker.iter_instances()
+    assert isinstance(snapshot, list)
+
+
+def test_garbage_collected_breaker_drops_from_registry() -> None:
+    """Ephemeral breakers (created inside a test, no module-level
+    reference) must be evictable from the registry. The ``WeakSet``
+    backs this: once the local reference is gone and GC runs, the
+    registry entry vanishes — preventing memory leakage across long
+    test sessions."""
+    import gc
+
+    breaker = CircuitBreaker("ephemeral-gc-probe")
+    ref = weakref.ref(breaker)
+    assert ref() is not None
+    del breaker
+    gc.collect()
+    # If a strong reference accidentally survived (e.g. a stray module
+    # global), this would still hold the breaker alive. The fact that
+    # WeakSet drops the entry is what we're protecting.
+    assert ref() is None, (
+        "Ephemeral breaker should be GC-eligible — strong refs from "
+        "the registry would defeat the WeakSet contract."
+    )
+
+
+def test_registered_breakers_include_module_singletons() -> None:
+    """The OSM and HAFAS module-level breakers must be reachable via
+    ``iter_instances`` once their owning modules have been imported.
+    Regression-pins the test-isolation guarantee that newly added
+    project breakers are reset automatically."""
+    from src.places import hafas_client as _hafas
+    from src.places import osm_client as _osm
+
+    snapshot = CircuitBreaker.iter_instances()
+    assert _osm._BREAKER in snapshot
+    assert _hafas._BREAKER in snapshot

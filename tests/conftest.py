@@ -273,44 +273,66 @@ def isolate_stats_writes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Ite
 # fails any later test that exercises the same call site with a
 # ``CircuitBreakerOpen`` masquerading as the upstream's real failure.
 #
-# The autouse fixture below resets every project-owned CircuitBreaker
-# back to CLOSED + zero failures before each test runs. Adding a new
-# breaker is a single ``_iter_known_breakers`` line — no test boilerplate
-# required.
+# The autouse fixture below resets every CircuitBreaker registered in
+# :attr:`CircuitBreaker._instances` back to CLOSED + zero failures
+# before each test runs. Adding a new breaker is now zero boilerplate:
+# the :class:`CircuitBreaker` ``__init__`` auto-registers every
+# instance into the process-wide :class:`weakref.WeakSet` so newly
+# instantiated breakers (HAFAS, Stammstrecke, future providers) are
+# picked up automatically without touching this fixture.
 # ---------------------------------------------------------------------------
 
 
-def _iter_known_breakers() -> Iterator[object]:
-    """Yield every module-level CircuitBreaker the project owns.
+def _eagerly_import_breaker_modules() -> None:
+    """Import every module known to own a :class:`CircuitBreaker` singleton.
 
-    Imports are inside the function so a partial test environment (e.g.
-    a places-free worktree) never aborts collection. Each entry is
-    yielded as ``object`` because the actual type is an implementation
-    detail of the producing module.
+    The registry is populated lazily by ``CircuitBreaker.__init__``, so a
+    breaker only appears in :meth:`iter_instances` after its owning
+    module is imported. Tests that exercise (e.g.) HAFAS but happen to
+    run before the first test that imports the OSM client would
+    otherwise see a partial registry. Eager-importing the known
+    breaker-owning modules here ties registration to session start, not
+    to first use, so the autouse reset fixture covers every project
+    breaker on the very first test.
+
+    Imports are wrapped individually so a partial test environment
+    (e.g. a places-free worktree) does not abort collection.
     """
-    from src.places import osm_client as _osm_module
+    import importlib
 
-    yield _osm_module._BREAKER
+    for module_name in (
+        "src.places.osm_client",
+        "src.places.hafas_client",
+    ):
+        try:
+            importlib.import_module(module_name)
+        except ImportError:  # pragma: no cover - tolerated by design
+            pass
+
+
+_eagerly_import_breaker_modules()
 
 
 @pytest.fixture(autouse=True)
 def reset_circuit_breakers() -> Iterator[None]:
     """Force every known CircuitBreaker back to CLOSED before each test.
 
-    Without this guard, a test that opens the breaker (intentionally or
-    by side-effect of a chaos run) would silently fail every later test
-    that touches the same call site, masking real upstream regressions
-    and creating order-dependent test failures.
+    Iterates :meth:`CircuitBreaker.iter_instances` (the process-wide
+    weak registry populated by ``CircuitBreaker.__init__``) so newly
+    added breakers are picked up automatically — no per-module
+    bookkeeping required. Without this guard, a test that opens the
+    breaker (intentionally or by side-effect of a chaos run) would
+    silently fail every later test that touches the same call site,
+    masking real upstream regressions and creating order-dependent
+    test failures.
     """
-    for breaker in _iter_known_breakers():
-        reset = getattr(breaker, "reset", None)
-        if callable(reset):
-            reset()
+    from src.utils.circuit_breaker import CircuitBreaker
+
+    for breaker in CircuitBreaker.iter_instances():
+        breaker.reset()
     yield
-    for breaker in _iter_known_breakers():
-        reset = getattr(breaker, "reset", None)
-        if callable(reset):
-            reset()
+    for breaker in CircuitBreaker.iter_instances():
+        breaker.reset()
 
 
 # ---------------------------------------------------------------------------

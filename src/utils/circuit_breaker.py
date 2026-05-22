@@ -41,9 +41,10 @@ from __future__ import annotations
 import logging
 import threading
 import time
+import weakref
 from collections.abc import Callable
 from enum import Enum
-from typing import Any, TypeVar
+from typing import Any, ClassVar, TypeVar
 
 log = logging.getLogger(__name__)
 
@@ -155,7 +156,24 @@ class CircuitBreaker:
         - ``.jules/saboteur.md`` for the design-rationale entry that
           motivated this primitive over the three pre-existing
           ad-hoc resilience implementations.
+
+    Registry:
+        Every instance is auto-registered into :attr:`_instances`, a
+        process-wide :class:`weakref.WeakSet`. :meth:`iter_instances`
+        returns a stable snapshot; test fixtures use it to reset every
+        live breaker between tests without maintaining a hand-edited
+        list. Strong references stay with the owning module (``_BREAKER
+        = CircuitBreaker(...)``), so module-level singletons survive
+        for the process lifetime while ephemeral breakers created
+        inside tests are garbage-collected as soon as the test exits.
     """
+
+    # Process-wide registry of live breakers. Weakly referenced so that
+    # ephemeral breakers (e.g. created inside a test function) are
+    # garbage-collected without leaking — module-level singletons keep
+    # themselves alive via the importing module's own reference.
+    _instances: ClassVar[weakref.WeakSet[CircuitBreaker]] = weakref.WeakSet()
+    _registry_lock: ClassVar[threading.Lock] = threading.Lock()
 
     def __init__(
         self,
@@ -178,6 +196,24 @@ class CircuitBreaker:
         self._consecutive_failures = 0
         self._opened_at: float | None = None
         self._lock = threading.RLock()
+
+        # Register AFTER the instance is fully constructed so a partial
+        # state cannot leak into a concurrent ``iter_instances`` snapshot.
+        with CircuitBreaker._registry_lock:
+            CircuitBreaker._instances.add(self)
+
+    @classmethod
+    def iter_instances(cls) -> list[CircuitBreaker]:
+        """Return a snapshot list of every live :class:`CircuitBreaker`.
+
+        Snapshots are returned (instead of an iterator over the live
+        :class:`~weakref.WeakSet`) so callers can safely reset, inspect
+        or count without tripping on concurrent garbage collection.
+        Useful for test fixtures that need to reset every project-owned
+        breaker without hard-coding a per-module import list.
+        """
+        with cls._registry_lock:
+            return list(cls._instances)
 
     @property
     def state(self) -> CircuitState:

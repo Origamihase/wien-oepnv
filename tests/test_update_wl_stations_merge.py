@@ -12,16 +12,37 @@ import pytest
 from scripts import update_wl_stations
 
 
-def test_download_ogd_csv_returns_false_on_network_failure(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """When the WL OGD endpoint is unreachable the helper degrades gracefully.
+class _DummyResponse:
+    """Minimal stand-in for :class:`requests.Response` used by the helper.
 
-    Sandboxed environments may not have network access; the download must
-    return ``False`` (without raising) so that the existing local CSV
-    files keep the pipeline functional.
+    Only exposes the surface ``_download_ogd_csv`` actually reads:
+    ``status_code``, ``content`` and ``headers``. Headers default to an
+    empty dict so tests that don't care about validators stay terse.
     """
-    target = tmp_path / "wienerlinien-ogd-haltestellen.csv"
+
+    def __init__(
+        self,
+        status_code: int = 200,
+        content: bytes = b"",
+        headers: Mapping[str, str] | None = None,
+    ) -> None:
+        self.status_code = status_code
+        self.content = content
+        self.headers = dict(headers or {})
+
+
+def _install_fake_http(
+    monkeypatch: pytest.MonkeyPatch,
+    request_callable: object,
+) -> list[dict[str, object]]:
+    """Patch ``session_with_retries`` and ``request_safe`` to deterministic doubles.
+
+    Returns a mutable list that captures one entry per ``request_safe``
+    invocation, recording the URL and the request kwargs. Tests inspect
+    this to assert that conditional headers were (or weren't) sent.
+    """
+
+    captured: list[dict[str, object]] = []
 
     def fake_session_with_retries(_user_agent):  # type: ignore[no-untyped-def]
         class _DummySession:
@@ -33,12 +54,33 @@ def test_download_ogd_csv_returns_false_on_network_failure(
 
         return _DummySession()
 
-    def fake_fetch(_session, _url, *, timeout):  # type: ignore[no-untyped-def]
-        raise OSError("simulated network failure")
+    def fake_request_safe(_session, url, **kwargs):  # type: ignore[no-untyped-def]
+        captured.append({"url": url, "kwargs": kwargs})
+        if callable(request_callable):
+            return request_callable(url, kwargs)
+        return request_callable
 
     import src.utils.http as http_utils
     monkeypatch.setattr(http_utils, "session_with_retries", fake_session_with_retries)
-    monkeypatch.setattr(http_utils, "fetch_content_safe", fake_fetch)
+    monkeypatch.setattr(http_utils, "request_safe", fake_request_safe)
+    return captured
+
+
+def test_download_ogd_csv_returns_false_on_network_failure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """When the WL OGD endpoint is unreachable the helper degrades gracefully.
+
+    Sandboxed environments may not have network access; the download must
+    return ``False`` (without raising) so that the existing local CSV
+    files keep the pipeline functional.
+    """
+    target = tmp_path / "wienerlinien-ogd-haltestellen.csv"
+
+    def boom(_url, _kwargs):  # type: ignore[no-untyped-def]
+        raise OSError("simulated network failure")
+
+    _install_fake_http(monkeypatch, boom)
 
     ok = update_wl_stations._download_ogd_csv(
         "https://example.invalid/wl.csv", target
@@ -53,28 +95,165 @@ def test_download_ogd_csv_writes_target_on_success(
     target = tmp_path / "wienerlinien-ogd-haltestellen.csv"
     payload = b'"HALTESTELLEN_ID";"NAME";"DIVA"\n"1001";"Karlsplatz";"60201076"\n'
 
-    def fake_session_with_retries(_user_agent):  # type: ignore[no-untyped-def]
-        class _DummySession:
-            def __enter__(self):  # type: ignore[no-untyped-def]
-                return self
-
-            def __exit__(self, *_args):  # type: ignore[no-untyped-def]
-                return False
-
-        return _DummySession()
-
-    def fake_fetch(_session, _url, *, timeout):  # type: ignore[no-untyped-def]
-        return payload
-
-    import src.utils.http as http_utils
-    monkeypatch.setattr(http_utils, "session_with_retries", fake_session_with_retries)
-    monkeypatch.setattr(http_utils, "fetch_content_safe", fake_fetch)
+    response = _DummyResponse(
+        status_code=200,
+        content=payload,
+        headers={"ETag": '"abc123"', "Last-Modified": "Wed, 01 Jan 2025 00:00:00 GMT"},
+    )
+    captured = _install_fake_http(monkeypatch, response)
 
     ok = update_wl_stations._download_ogd_csv(
         "https://example.test/wl.csv", target
     )
     assert ok is True
     assert target.read_bytes() == payload
+    # First call: no validators on disk, so no conditional headers
+    kwargs = cast(dict[str, object], captured[0]["kwargs"])
+    first_headers = cast(dict[str, str], kwargs["headers"])
+    assert "If-None-Match" not in first_headers
+    assert "If-Modified-Since" not in first_headers
+    # Sidecar is created with the returned validators
+    sidecar = update_wl_stations._cache_sidecar_path(target)
+    assert sidecar.exists()
+    sidecar_payload = json.loads(sidecar.read_text(encoding="utf-8"))
+    assert sidecar_payload["etag"] == '"abc123"'
+    assert sidecar_payload["last_modified"] == "Wed, 01 Jan 2025 00:00:00 GMT"
+
+
+def test_download_ogd_csv_sends_conditional_headers_when_sidecar_present(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A second invocation must send ``If-None-Match`` / ``If-Modified-Since``
+    derived from the sidecar persisted by the previous run."""
+    target = tmp_path / "wienerlinien-ogd-haltestellen.csv"
+    target.write_bytes(b'"HALTESTELLEN_ID";"NAME"\n')
+    sidecar = update_wl_stations._cache_sidecar_path(target)
+    sidecar.write_text(
+        json.dumps(
+            {
+                "version": 1,
+                "etag": '"abc123"',
+                "last_modified": "Wed, 01 Jan 2025 00:00:00 GMT",
+                "fetched_at": "2026-05-22T16:00:00+00:00",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    response = _DummyResponse(status_code=304)
+    captured = _install_fake_http(monkeypatch, response)
+
+    ok = update_wl_stations._download_ogd_csv(
+        "https://example.test/wl.csv", target
+    )
+
+    assert ok is True
+    kwargs = cast(dict[str, object], captured[0]["kwargs"])
+    headers = cast(dict[str, str], kwargs["headers"])
+    assert headers["If-None-Match"] == '"abc123"'
+    assert headers["If-Modified-Since"] == "Wed, 01 Jan 2025 00:00:00 GMT"
+    # 304 leaves the existing target untouched (bytes-identical)
+    assert target.read_bytes() == b'"HALTESTELLEN_ID";"NAME"\n'
+    # Sidecar is preserved as-is on 304
+    sidecar_payload = json.loads(sidecar.read_text(encoding="utf-8"))
+    assert sidecar_payload["etag"] == '"abc123"'
+
+
+def test_download_ogd_csv_304_with_missing_target_clears_sidecar(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """If the sidecar lies about the local copy (file missing) the helper
+    must drop the stale sidecar and report failure so the next run does a
+    full GET."""
+    target = tmp_path / "wienerlinien-ogd-haltestellen.csv"
+    sidecar = update_wl_stations._cache_sidecar_path(target)
+    # Create a sidecar but NOT the target. Because the helper checks for
+    # target existence before considering the sidecar valid, no
+    # conditional headers are sent — but the server may still respond
+    # 304 (e.g. via an upstream cache). Simulate that hostile-shape edge
+    # case so the recovery path is exercised.
+    sidecar.write_text(
+        json.dumps({"version": 1, "etag": '"x"', "last_modified": ""}),
+        encoding="utf-8",
+    )
+
+    response = _DummyResponse(status_code=304)
+    _install_fake_http(monkeypatch, response)
+
+    ok = update_wl_stations._download_ogd_csv(
+        "https://example.test/wl.csv", target
+    )
+
+    assert ok is False
+    assert not target.exists()
+    assert not sidecar.exists(), "Stale sidecar must be cleared on 304-without-target"
+
+
+def test_download_ogd_csv_refreshes_sidecar_on_200(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A 200 response with new validators must overwrite the existing sidecar."""
+    target = tmp_path / "wienerlinien-ogd-haltestellen.csv"
+    target.write_bytes(b"stale-payload\n")
+    sidecar = update_wl_stations._cache_sidecar_path(target)
+    sidecar.write_text(
+        json.dumps({"version": 1, "etag": '"old"', "last_modified": ""}),
+        encoding="utf-8",
+    )
+
+    fresh_payload = b'"DIVA";"PlatformText"\n"60201076";"Karlsplatz"\n'
+    response = _DummyResponse(
+        status_code=200,
+        content=fresh_payload,
+        headers={
+            "ETag": '"new-etag"',
+            "Last-Modified": "Thu, 02 Jan 2025 00:00:00 GMT",
+        },
+    )
+    _install_fake_http(monkeypatch, response)
+
+    ok = update_wl_stations._download_ogd_csv(
+        "https://example.test/wl.csv", target
+    )
+
+    assert ok is True
+    assert target.read_bytes() == fresh_payload
+    sidecar_payload = json.loads(sidecar.read_text(encoding="utf-8"))
+    assert sidecar_payload["etag"] == '"new-etag"'
+    assert sidecar_payload["last_modified"] == "Thu, 02 Jan 2025 00:00:00 GMT"
+
+
+def test_download_ogd_csv_skips_sidecar_when_no_validators_returned(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A 200 with neither ETag nor Last-Modified must NOT create an empty
+    sidecar (it would force a full GET next time anyway)."""
+    target = tmp_path / "wienerlinien-ogd-haltestellen.csv"
+
+    response = _DummyResponse(
+        status_code=200, content=b"row\n", headers={}
+    )
+    _install_fake_http(monkeypatch, response)
+
+    ok = update_wl_stations._download_ogd_csv(
+        "https://example.test/wl.csv", target
+    )
+    assert ok is True
+    assert target.read_bytes() == b"row\n"
+    assert not update_wl_stations._cache_sidecar_path(target).exists()
+
+
+def test_read_cache_validators_ignores_corrupt_sidecar(
+    tmp_path: Path,
+) -> None:
+    """A corrupted JSON sidecar must be treated as missing (return ``{}``)
+    so the next fetch falls back to an unconditional GET."""
+    target = tmp_path / "wienerlinien-ogd-haltestellen.csv"
+    target.write_bytes(b"")
+    sidecar = update_wl_stations._cache_sidecar_path(target)
+    sidecar.write_text("{not valid json", encoding="utf-8")
+
+    assert update_wl_stations._read_cache_validators(target) == {}
 
 
 @pytest.fixture()
