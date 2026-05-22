@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 22 May 2026 14:01:24 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2026 14:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">06817ade86d1a1933bbe0d61cb95b6a6235420db1b9474f70939e73f51c11a2f</guid>
+      <pubDate>Fri, 22 May 2026 14:01:00 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 14:30:43 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 14:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 22.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 22.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[48A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,23 +43,23 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Schönbrunn.<br/>[Am 22.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[41: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <title><![CDATA[41: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8</guid>
       <pubDate>Fri, 22 May 2026 13:08:00 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 13:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 13:20:22 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 22 May 2026 13:08:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 22.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 22.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <title><![CDATA[40: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5092aa3e16264a54729d619c0073938e9a20bc79adf99a5a51f89ef26c9055eb</guid>
       <pubDate>Fri, 22 May 2026 13:08:00 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 13:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 13:21:33 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 22 May 2026 13:08:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 22.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 22.05.2026]]]></content:encoded>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Fahrleitungsgebrechen. [Am 22.05.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Fahrleitungsgebrechen.<br/>[Am 22.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: Gleisschaden Betrieb ab Franz-Josefs-Bahnhof S]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">95ac9435b80e25aa5d5711003a207b243c484d8d8e7532b8bd970120f928de13</guid>
-      <pubDate>Fri, 22 May 2026 10:14:53 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 10:30:41 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 10:15:04 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:45:00 +0200</ext:ends_at>
-      <description>[Am 22.05.2026]</description>
-      <content:encoded><![CDATA[[Am 22.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
