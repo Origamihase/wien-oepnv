@@ -57,6 +57,19 @@ def test_feed_lint_ok_without_issues(
 
     monkeypatch.setattr(build_feed, "_invoke_collect_items", lambda report: list(items))
     monkeypatch.setattr(build_feed, "_load_state", lambda: {})
+    # Defang the stale-cache check: this test only cares about the
+    # structural-issue branch of ``lint()``. Without the patch the
+    # real ``_detect_stale_caches`` reads the committed cache files'
+    # mtimes from the working tree — those flip past the 24h cutoff
+    # in any environment where the repo has been sitting idle for a
+    # day (CI runners, dev machines that haven't refreshed the
+    # cache via cron), and ``exit_code`` becomes ``1`` even though
+    # the synthetic ``items`` list is squeaky-clean. Returning an
+    # empty list mirrors the "all caches fresh" world the test
+    # contract assumes.
+    monkeypatch.setattr(
+        build_feed, "_detect_stale_caches", lambda report, now: []
+    )
 
     exit_code = build_feed.lint()
 
