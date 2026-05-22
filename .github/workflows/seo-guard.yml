@@ -79,12 +79,29 @@ jobs:
           fi
           echo "sitemap.xml verification passed (${url_count} URLs)."
 
+      - name: Pull concurrent remote changes
+        # Defense against the cross-workflow push race documented in
+        # update-cycle.yml's commit step: update-cycle.yml writes to
+        # main every few minutes (paths under docs/**), and any of
+        # those writes can land between this workflow's checkout and
+        # this workflow's push, turning the auto-commit-action's push
+        # into a non-fast-forward rejection. Mirrors the established
+        # pattern in update-cycle.yml and manual-full-refresh.yml:
+        # rebase the locally regenerated sitemap onto the current
+        # remote tip first, then push with --force-with-lease so a
+        # last-millisecond push from another writer cleanly aborts
+        # the push (rather than overwriting) and the run is retried
+        # by the next docs/** push that triggers seo-guard.
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: git pull --rebase --autostash
+
       - name: Commit sitemap changes
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: 'chore(seo): refresh sitemap.xml [skip ci]'
           file_pattern: 'docs/sitemap.xml'
+          push_options: '--force-with-lease'
 
       - name: Verify feed file (repo) – exactly one self & one alternate
         shell: bash
