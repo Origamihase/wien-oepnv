@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 22 May 2026 14:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2026 15:01:24 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[30A: Police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7da5c845dde342e85455e46b0b77a4f17cf765bbbd42d622772c3ff5827ac44c</guid>
+      <pubDate>Fri, 22 May 2026 14:59:00 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 15:01:24 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 14:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: police operation. [On 22.05.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[On 22.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[24A: Traffic disturbance]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">764922ffc60674d3cd5283f14e4206f60cf446e572f2692a38fdfeb37fd849d5</guid>
+      <pubDate>Fri, 22 May 2026 14:35:00 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 15:01:24 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 14:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic disturbance. [On 22.05.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 22.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +38,7 @@
       <pubDate>Fri, 22 May 2026 14:01:00 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 14:30:43 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 14:01:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 22 May 2026 15:00:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic overload. [On 22.05.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic overload.<br/>[On 22.05.2026]]]></content:encoded>
     </item>
@@ -30,17 +52,6 @@
       <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic overload. [On 22.05.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic overload.<br/>[On 22.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Harmful vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682</guid>
-      <pubDate>Fri, 22 May 2026 13:35:00 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 07:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 13:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a driving disability, there are different intervals. [On 22.05.2026]</description>
-      <content:encoded><![CDATA[After a driving disability, there are different intervals.<br/>[On 22.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[41: Disability due to rescue operation]]></title>
@@ -60,7 +71,7 @@
       <pubDate>Fri, 22 May 2026 13:08:00 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 13:31:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 13:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 22 May 2026 14:58:00 +0200</ext:ends_at>
       <description>After a driving disability, there are different intervals. [On 22.05.2026]</description>
       <content:encoded><![CDATA[After a driving disability, there are different intervals.<br/>[On 22.05.2026]]]></content:encoded>
     </item>
@@ -82,7 +93,7 @@
       <pubDate>Fri, 22 May 2026 12:25:00 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 12:30:47 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 12:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 22 May 2026 14:58:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic disturbance. [On 22.05.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 22.05.2026]]]></content:encoded>
     </item>
@@ -93,31 +104,20 @@
       <pubDate>Fri, 22 May 2026 12:25:00 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 12:30:47 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 12:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 22 May 2026 14:58:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic disturbance. [On 22.05.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 22.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62: Delays]]></title>
+      <title><![CDATA[12: Track damage operation from Franz-Josefs-Bahnhof S]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">82b2b968365fe18a9edd52433273c0f78ff5079c2218a60fb58c22aa07911b8c</guid>
-      <pubDate>Fri, 22 May 2026 11:55:00 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 12:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 11:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: Harmful vehicle. [On 22.05.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: Harmful vehicle.<br/>[On 22.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: Corrupted overhead line]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ebdacb34a223701fc057fddf1bcbeccaa6586d917c2571d48a6a9cb96e2527ef</guid>
-      <pubDate>Fri, 22 May 2026 11:43:00 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 12:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 11:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 22 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: failure of the overhead line. [On 22.05.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: failure of the overhead line.<br/>[On 22.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">95ac9435b80e25aa5d5711003a207b243c484d8d8e7532b8bd970120f928de13</guid>
+      <pubDate>Fri, 22 May 2026 10:14:53 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 10:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 10:15:04 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 22 May 2026 23:45:00 +0200</ext:ends_at>
+      <description>[On 22.05.2026]</description>
+      <content:encoded><![CDATA[[On 22.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
