@@ -2691,7 +2691,15 @@ _CATEGORY_PREFIX_WORDS: frozenset[str] = frozenset({
     "strassenbauarbeiten",
     "rohrleitungsarbeiten",
     "kranarbeiten",
+    "brückenbauarbeiten",
+    "brueckenbauarbeiten",
+    "brückenarbeiten",
+    "brueckenarbeiten",
+    "schienenarbeiten",
     "veranstaltung",
+    "demonstration",
+    "filmaufnahmen",
+    "falschparker",
 })
 
 _TITLE_BODY_RE = re.compile(r"^[A-Za-z0-9/]+:\s*(\S.*)$")
@@ -2712,38 +2720,56 @@ def _drop_category_word(summary: str, word: str) -> str:
 
 
 def _strip_summary_category_prefix(summary: str, raw_title: str) -> str:
-    """Remove a leading category H2 word that duplicates the title body.
+    """Remove a leading category H2 word that duplicates the title body
+    or signals an HTML-heading leak.
 
-    Real WL Hinweis items render with a ``Gleisbauarbeiten`` H2 which
-    becomes the title body AND the first description word; we strip the
-    duplicate so the user does not see the category word twice. Two
-    patterns are recognised:
+    Real WL Hinweis items render with a ``<h2>Gleisbauarbeiten</h2>
+    <p>Wegen …</p>`` HTML pair. After HTML-to-text conversion the
+    heading word lands at the start of the body, producing redundant
+    openings. Three patterns are recognised:
 
       1. ``T: "9/40/41/42: Gleisbauarbeiten"`` /
          ``D: "Gleisbauarbeiten Wegen ..."`` — first words match.
       2. ``T: "62A: Busse halten ..."`` /
          ``D: "Bauarbeiten Busse halten ..."`` — category prepended to
          an otherwise title-equivalent description.
+      3. ``T: "27A/28A/29A: Fronleichnamsumzug"`` /
+         ``D: "Veranstaltung Wegen Abhaltung des …"`` — the leading
+         word is a known WL category AND the next word is ``Wegen``,
+         so the body restates the cause and the heading word is pure
+         noise. This catches the audit-round-7 cases where the title
+         body is unrelated to the category word (Fronleichnamsumzug,
+         Filmaufnahmen, Dornbacher Straße, …).
     """
-    title_match = _TITLE_BODY_RE.match(raw_title or "")
-    title_body = title_match.group(1).strip() if title_match else (raw_title or "").strip()
-    if not (title_body and summary):
+    if not summary:
         return summary
 
-    first_title_word = title_body.split()[0]
-    first_summary_word = summary.split()[0]
-    if not first_summary_word:
+    words = summary.split()
+    if not words:
         return summary
-
+    first_summary_word = words[0]
     summary_cf = first_summary_word.casefold()
-    title_cf = first_title_word.casefold()
     if summary_cf not in _CATEGORY_PREFIX_WORDS:
         return summary
 
+    # Branch 3 — heading-leak via ``<Category> Wegen <body>``. Does not
+    # depend on the title shape because real German prose never opens
+    # a sentence with the bare category word followed by ``Wegen``;
+    # the only producer of that pattern is the WL HTML heading leak.
+    if len(words) >= 2 and words[1].casefold() == "wegen":
+        return _drop_category_word(summary, first_summary_word)
+
+    # Branches 1 & 2 — title-body comparison.
+    title_match = _TITLE_BODY_RE.match(raw_title or "")
+    title_body = title_match.group(1).strip() if title_match else (raw_title or "").strip()
+    if not title_body:
+        return summary
+
+    first_title_word = title_body.split()[0]
+    title_cf = first_title_word.casefold()
     if summary_cf == title_cf:
         return _drop_category_word(summary, first_summary_word)
 
-    words = summary.split(maxsplit=2)
     if len(words) >= 2 and words[1].casefold() == title_cf:
         return _drop_category_word(summary, first_summary_word)
     return summary

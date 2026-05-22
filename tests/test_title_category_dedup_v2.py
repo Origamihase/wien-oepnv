@@ -70,19 +70,24 @@ class TestCategoryPrefixSecondPattern:
         _, out = _format(title, desc)
         assert "Gleisbauarbeiten" not in out
 
-    def test_no_match_no_strip(self) -> None:
-        # Description starts with a category word but the title body's
-        # first word doesn't match the SECOND word of the description.
-        # The category word stays in place.
+    def test_category_wegen_pattern_stripped_independent_of_title(self) -> None:
+        # Description starts with a category word AND the next word is
+        # ``Wegen`` — Round 37 added a third branch in
+        # ``_strip_summary_category_prefix`` that recognises this as
+        # the WL HTML heading-leak (real German prose never opens
+        # with bare ``Veranstaltung Wegen …``) and strips the
+        # category, independent of the title shape. Pre-Round-37 the
+        # category word survived because the title-body comparison
+        # branches required a shared first word.
         title = "53A/54A/54B: Ablenkung ab 8. Mai"
         desc = (
             "Veranstaltung Wegen einer Veranstaltung am Wolfrathplatz "
             "werden die Busse umgeleitet."
         )
         _, out = _format(title, desc)
-        # Title body first word ("Ablenkung") doesn't match desc[1] ("Wegen")
-        # so the leading "Veranstaltung" stays.
-        assert out.startswith("Veranstaltung Wegen")
+        # Round 37: leading heading-word stripped.
+        assert out.startswith("Wegen einer Veranstaltung")
+        assert not out.startswith("Veranstaltung Wegen")
 
     def test_round24_pattern_still_works(self) -> None:
         # The original Round 24 rule (title body and desc share first
