@@ -130,14 +130,19 @@ _TRAILING_DIRECTIONAL_MARKER_RE = re.compile(r"\s*[<>]+\s*$")
 #   * ``40+41: Betrieb ab Gersthof``
 #   * ``Linie 40: Nach einer Fahrtbehinderung …``
 #   * ``Linien 9/40/41/42: Umleitung``
+#   * ``Linie D: Unregelmäßige Intervalle …`` (WL tram ``D`` — single
+#     bare letter, no digit)
 #
 # Stripping the prefix at cache-read time cleans up the user-visible
 # summary and avoids it being copied verbatim into the description
-# during cross-line dedup-merge. The line-token shape (``[A-Z]{0,4}
-# \d{1,3}[A-Z]?``) is deliberately strict so generic prefixes like
-# ``Achtung:``, ``Information:`` or sentence-internal time markers
-# ``17:30 Uhr…`` stay untouched.
-_WL_DESC_LINE_TOKEN = r"[A-Z]{0,4}\d{1,3}[A-Z]?"  # nosec B105  # noqa: S105 — regex fragment, not a secret
+# during cross-line dedup-merge. The line-token shape mirrors
+# ``_STRICT_LINE_TOKEN_RE`` in ``src/providers/wl_lines.py``: either a
+# digit-bearing code (``[A-Z]{0,4}\d{1,3}[A-Z]?``) or a single bare
+# uppercase letter (WL tram ``D``). Pure multi-letter German words
+# (``Achtung``, ``Information``, ``Hinweis``) cannot match either
+# shape so generic prefixes and time markers like ``17:30 Uhr…``
+# stay untouched.
+_WL_DESC_LINE_TOKEN = r"(?:[A-Z]{0,4}\d{1,3}[A-Z]?|[A-Z])"  # nosec B105  # noqa: S105 — regex fragment, not a secret
 _WL_DESC_LINIE_PREFIX_RE = re.compile(
     rf"^\s*Linien?\s+(?:{_WL_DESC_LINE_TOKEN})"
     rf"(?:\s*[/+,]\s*(?:{_WL_DESC_LINE_TOKEN})){{0,20}}\s*:\s+",
