@@ -321,7 +321,7 @@ def test_load_geonetz_stops_routes_through_read_capped_json() -> None:
         "unbounded shape propagates MemoryError past the cron orchestrator."
     )
     assert "loads" not in call_names or "json" not in {
-        getattr(node.func.value, "id", "")  # type: ignore[attr-defined]
+        getattr(node.func.value, "id", "")
         for node in ast.walk(func_def)
         if isinstance(node, ast.Call)
         and isinstance(node.func, ast.Attribute)
