@@ -8,13 +8,14 @@ import json
 import logging
 import math
 import os
+import re
 import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any, cast
 from collections.abc import Iterable, Sequence
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 from dateutil import parser as dtparser
 from requests.exceptions import RequestException
@@ -81,6 +82,23 @@ def _path_fingerprint(path: Path) -> str:
 DEFAULT_DATA_URL = (
     "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0"
     "&typeName=ogdwien:BAUSTELLEOGD&srsName=EPSG:4326&outputFormat=json"
+)
+
+# WFS servers disagree on the token that selects GeoJSON output: GeoServer
+# accepts ``json`` / ``application/json``, MapServer wants ``geojson`` /
+# ``GEOJSON``. When the configured token is not honoured the endpoint
+# answers with a GML / XML ServiceException (Content-Type
+# ``application/xml``) — which the strict ``_fetch_remote`` content-type
+# pin then (correctly) rejects, leaving the cron stuck on the bundled
+# fallback. Negotiating across the known tokens lets the fetch self-heal
+# across an upstream server/config change WITHOUT relaxing that pin: each
+# attempt still has to return a JSON content-type and parse as a GeoJSON
+# object, so a WAF/error page never slips through.
+_OUTPUT_FORMAT_CANDIDATES: tuple[str, ...] = (
+    "json",
+    "application/json",
+    "geojson",
+    "GEOJSON",
 )
 DEFAULT_INFO_URL = (
     "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen"
@@ -374,6 +392,24 @@ def _resolve_data_url(candidate: str | None) -> str:
         )
         return DEFAULT_DATA_URL
     return validated
+
+
+def _with_output_format(url: str, output_format: str) -> str:
+    """Return ``url`` with its ``outputFormat`` query value set to
+    ``output_format`` (appended if absent).
+
+    Only the ``outputFormat`` token is rewritten — every other byte of the
+    URL (scheme, host, ``typeName``/``srsName`` colons, …) is left
+    untouched, so the host pin already applied by :func:`_resolve_data_url`
+    still holds and ``_fetch_remote`` re-validates the result anyway. The
+    value is percent-encoded (``/`` kept readable, as WFS endpoints expect
+    for ``application/json``).
+    """
+    encoded = quote(output_format, safe="/")
+    if re.search(r"(?i)[?&]outputFormat=", url):
+        return re.sub(r"(?i)([?&]outputFormat=)[^&]*", lambda m: m.group(1) + encoded, url, count=1)
+    sep = "&" if "?" in url else "?"
+    return f"{url}{sep}outputFormat={encoded}"
 
 
 def _resolve_fallback_path(candidate: str | None) -> Path:
@@ -675,7 +711,19 @@ def main() -> int:
                 "Baustellen: Ungültiger Timeout-Wert %s – verwende Standard",
                 sanitize_log_arg(timeout_raw),
             )
-    payload = _fetch_remote(data_url, timeout)
+    # Negotiate the GeoJSON outputFormat: try the configured token first,
+    # then the common server-specific variants, stopping at the first that
+    # returns a parseable GeoJSON object.
+    payload = None
+    for output_format in _OUTPUT_FORMAT_CANDIDATES:
+        payload = _fetch_remote(_with_output_format(data_url, output_format), timeout)
+        if payload is not None:
+            if output_format != _OUTPUT_FORMAT_CANDIDATES[0]:
+                LOGGER.info(
+                    "Baustellen: outputFormat=%s vom Endpoint akzeptiert.",
+                    output_format,
+                )
+            break
     used_fallback = False
     if payload is None:
         used_fallback = True
