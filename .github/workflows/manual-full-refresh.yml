@@ -111,7 +111,14 @@ jobs:
         uses: ./.github/actions/install-deps
 
       # ----- 1) Caches der Quellsysteme aktualisieren -----
+      # ``continue-on-error``: der Baustellen-Updater gibt Exit 2 zurück,
+      # wenn der Live-WFS-Abruf scheitert und das Fallback-Sample
+      # geschrieben wird (siehe ``update_baustellen_cache.main``). Eine
+      # einzelne degradierte Quelle darf den manuellen Full-Refresh NICHT
+      # abbrechen (sonst kein Feed-Rebuild) — die Warnung bleibt im Log
+      # sichtbar, der Step wird als "tolerierter Fehler" markiert.
       - name: Refresh Baustellen cache
+        continue-on-error: true
         run: python scripts/update_baustellen_cache.py
 
       - name: Refresh Wiener Linien cache
