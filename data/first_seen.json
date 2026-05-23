@@ -227,6 +227,15 @@
       }
     }
   },
+  "stadt wien \u2013 baustellen|baustelle|L=|D=2026-05-25|T=E\u00dflinger Hauptstra\u00dfe 96|F=631f62b75ba2d0e03efa73b00c37ba3626d8b839e00a1bf62d2736cdf82d2b7c": {
+    "first_seen": "2026-05-23T22:52:42.252894+00:00",
+    "translations": {
+      "en": {
+        "summary": "Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane.",
+        "title": "E\u00dflinger Hauptstra\u00dfe 96"
+      }
+    }
+  },
   "stammstrecke_delay_meidling|2026-05-13T08:00:00+02:00": {
     "first_seen": "2026-05-13T06:30:55.225141+00:00"
   },
@@ -1192,6 +1201,15 @@
   "wl|st\u00f6rung|L=26|D=2026-05-20": {
     "first_seen": "2026-05-20T09:00:40.702021+00:00"
   },
+  "wl|st\u00f6rung|L=26|D=2026-05-23": {
+    "first_seen": "2026-05-23T20:01:02.261436+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "26: Impurity"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=27A|D=2026-04-22": {
     "first_seen": "2026-04-22T15:09:04.903055+00:00"
   },
@@ -1587,6 +1605,15 @@
       "en": {
         "summary": "Irregular intervals in both directions. Reason: traffic disturbance.",
         "title": "37: Traffic disturbance"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=37|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:52:42.252894+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards High Wait. expected duration: 01:15 clock. Reason: Foreign traffic accident in the Barawitzkagasse station area.",
+        "title": "37: foreign traffic accident"
       }
     }
   },
@@ -2095,6 +2122,15 @@
       }
     }
   },
+  "wl|st\u00f6rung|L=52|D=2026-05-23": {
+    "first_seen": "2026-05-23T21:00:47.706906+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: police operation.",
+        "title": "52: service obstruction for police operation"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=53A|D=2026-04-24": {
     "first_seen": "2026-04-24T11:42:03.796873+00:00"
   },
@@ -2425,14 +2461,6 @@
       }
     }
   },
-  "wl|st\u00f6rung|L=62A|D=2026-05-23": {
-    "first_seen": "2026-05-23T03:01:03.217773+00:00",
-    "translations": {
-      "en": {
-        "title": "62A: Buses stop at Breitenfurter Stra\u00dfe 236-238"
-      }
-    }
-  },
   "wl|st\u00f6rung|L=62|D=2026-05-01": {
     "first_seen": "2026-04-30T23:28:44.616135+00:00"
   },
@@ -2740,6 +2768,15 @@
       "en": {
         "summary": "Driving disability towards Schottenring U. Estimated duration: 09:35 o'clock. Reason: Traffic accident in the area of Simmeringer main road # Rautenstrauchgasse .",
         "title": "71: Traffic accident"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=71|D=2026-05-23": {
+    "first_seen": "2026-05-23T20:30:45.281463+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "71: service obstruction False Parker"
       }
     }
   },
@@ -3125,6 +3162,14 @@
       }
     }
   },
+  "wl|st\u00f6rung|L=N29|D=2026-05-23": {
+    "first_seen": "2026-05-23T21:00:47.706906+00:00",
+    "translations": {
+      "en": {
+        "title": "N29: Buses stop on the main carriageway"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=N31|D=2026-04-21": {
     "first_seen": "2026-04-21T03:30:11.885333+00:00"
   },
@@ -3188,6 +3233,14 @@
   },
   "wl|st\u00f6rung|L=N31|D=2026-05-23": {
     "first_seen": "2026-05-22T23:00:57.675755+00:00",
+    "translations": {
+      "en": {
+        "title": "N31: Buses stop at 5B"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=N31|D=2026-05-24": {
+    "first_seen": "2026-05-23T23:00:49.687941+00:00",
     "translations": {
       "en": {
         "title": "N31: Buses stop at 5B"
@@ -3260,6 +3313,14 @@
       }
     }
   },
+  "wl|st\u00f6rung|L=N41|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:30:39.869413+00:00",
+    "translations": {
+      "en": {
+        "title": "N41: Buses stop W\u00e4hringer Stra\u00dfe ONo. 200-202"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=N43|D=2026-05-01": {
     "first_seen": "2026-04-30T23:28:44.616135+00:00"
   },
@@ -3317,6 +3378,14 @@
   },
   "wl|st\u00f6rung|L=N43|D=2026-05-23": {
     "first_seen": "2026-05-22T22:30:45.384358+00:00",
+    "translations": {
+      "en": {
+        "title": "N43: Buses stop at Dornbacher Stra\u00dfe 85"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=N43|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:30:39.869413+00:00",
     "translations": {
       "en": {
         "title": "N43: Buses stop at Dornbacher Stra\u00dfe 85"
@@ -3386,6 +3455,14 @@
     "translations": {
       "en": {
         "title": "N46: Buses stop at line 48A in Burggasse"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=N46|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:30:39.869413+00:00",
+    "translations": {
+      "en": {
+        "title": "N46: Buses stop at line 48A in Neustiftgasse"
       }
     }
   },
@@ -3741,6 +3818,15 @@
       }
     }
   },
+  "wl|st\u00f6rung|L=U3|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:52:42.252894+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective vehicle.",
+        "title": "U3: delays"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=U4,U6|D=2026-05-16": {
     "first_seen": "2026-05-16T11:30:33.814286+00:00"
   },
@@ -3819,6 +3905,15 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: contamination.",
         "title": "U4: Impurity"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=U4|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:52:42.252894+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards H\u00fctteldorf. expected duration: 01:00. Reason: police operation in the Spittelau stop area.",
+        "title": "U4: police operation"
       }
     }
   },
@@ -3917,6 +4012,15 @@
     "translations": {
       "en": {
         "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "U6: Impurity"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=U6|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:30:39.869413+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in the direction of seven shepherds. Reason: contamination.",
         "title": "U6: Impurity"
       }
     }
