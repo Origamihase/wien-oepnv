@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 23 May 2026 23:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 23 May 2026 23:30:39 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
@@ -24,23 +24,12 @@
       <title><![CDATA[52: Fahrtbehinderung wegen Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734</guid>
-      <pubDate>Sat, 23 May 2026 22:44:00 +0200</pubDate>
+      <pubDate>Sat, 23 May 2026 22:48:32 +0200</pubDate>
       <ext:first_seen>Sat, 23 May 2026 23:00:47 +0200</ext:first_seen>
       <ext:starts_at>Sat, 23 May 2026 22:48:52 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 23 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 23.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 23.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Fahrtbehinderung Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bfd357f13c49b2d00ce6fd1805b24df9114635460bc690a0b432ba646eea4bf5</guid>
-      <pubDate>Sat, 23 May 2026 22:23:00 +0200</pubDate>
-      <ext:first_seen>Sat, 23 May 2026 22:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 23 May 2026 22:26:12 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 23 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 23.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 23.05.2026]]]></content:encoded>
+      <ext:ends_at>Sat, 23 May 2026 23:48:00 +0200</ext:ends_at>
+      <description>[Am 23.05.2026]</description>
+      <content:encoded><![CDATA[[Am 23.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -112,6 +101,17 @@
       <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Fri, 22 May 2026 00:00:13 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 00:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 23 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 23.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 23.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44A: Busse halten Alszeile gegenüber 93]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">05f43b3cc6e7fc469b2327c420ffd938743c80bae8e543e6b1266ae3efe72301</guid>
       <pubDate>Fri, 22 May 2026 00:00:13 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 00:00:13 +0200</ext:starts_at>
