@@ -3,7 +3,7 @@ prefixes whose canonical format silently bypasses specific attribution
 in the current ``_KNOWN_TOKENS`` table.
 
 The 2026-05-05 / 2026-05-06 / 2026-05-08 rounds (see
-``.jules/sentinel.md``) closed Anthropic / OpenAI / GitHub non-PAT /
+the audit) closed Anthropic / OpenAI / GitHub non-PAT /
 SendGrid / Stripe / Slack / Hugging Face / DigitalOcean / GitLab
 Pipeline Trigger / Twilio / Notion / JWT / Discord token patterns.
 The prevention rule on those rounds was:

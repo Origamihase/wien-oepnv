@@ -2,7 +2,7 @@
 three credential-bearing / cache-feeding API endpoints.
 
 The 2026-05-09 *Public Feed URL Allow-List Drift* round
-(``.jules/sentinel.md``) closed the analogous shape for
+ closed the analogous shape for
 ``validate_public_feed_url`` (``src/utils/http.py``) — pinning the
 scheme to ``https`` (HTTP-on-publish is a TLS-strip primitive on every
 subscriber's RSS reader).  The three provider-side cousins

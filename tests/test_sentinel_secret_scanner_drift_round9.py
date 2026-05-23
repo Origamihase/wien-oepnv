@@ -2,7 +2,7 @@
 issuer prefixes whose canonical format silently bypasses specific
 attribution in the post-Round-8 ``_KNOWN_TOKENS`` table.
 
-The 2026-05-10 Round 8 (see ``.jules/sentinel.md``) closed Render /
+The 2026-05-10 Round 8 closed Render /
 Buildkite User Access Token / Fly.io and re-stated the prevention rule:
 
 > "Every audit round that adds a new issuer MUST also enumerate THREE

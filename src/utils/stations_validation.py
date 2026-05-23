@@ -236,22 +236,22 @@ class ValidationReport:
         # any future direct ``to_markdown()`` caller bypass it
         # entirely. Sanitising at THIS boundary closes every code path
         # in one cut.
-        lines = ["# Stations Validation Report", ""]
-        lines.append(f"*Total stations analysed*: {self.total_stations}")
-        lines.append(f"*GTFS stops loaded*: {self.gtfs_stop_count}")
-        lines.append(f"*Geographic duplicates*: {len(self.duplicates)}")
-        lines.append(f"*Alias issues*: {len(self.alias_issues)}")
-        lines.append(f"*Coordinate anomalies*: {len(self.coordinate_issues)}")
-        lines.append(f"*GTFS mismatches*: {len(self.gtfs_issues)}")
-        lines.append(f"*Security warnings*: {len(self.security_issues)}")
-        lines.append(f"*Provider issues*: {len(self.provider_issues)}")
-        lines.append(f"*Cross station ID issues*: {len(self.cross_station_id_issues)}")
-        lines.append(f"*Identity field conflicts*: {len(self.identity_field_conflicts)}")
-        lines.append(f"*Naming issues*: {len(self.naming_issues)}")
+        lines = ["# Stationsverzeichnis-Validierungsbericht", ""]
+        lines.append(f"*Analysierte Stationen (gesamt)*: {self.total_stations}")
+        lines.append(f"*Geladene GTFS-Stops*: {self.gtfs_stop_count}")
+        lines.append(f"*Geografische Duplikate*: {len(self.duplicates)}")
+        lines.append(f"*Alias-Probleme*: {len(self.alias_issues)}")
+        lines.append(f"*Koordinaten-Anomalien*: {len(self.coordinate_issues)}")
+        lines.append(f"*GTFS-Abweichungen*: {len(self.gtfs_issues)}")
+        lines.append(f"*Sicherheitswarnungen*: {len(self.security_issues)}")
+        lines.append(f"*Provider-Probleme*: {len(self.provider_issues)}")
+        lines.append(f"*Stationsübergreifende-ID-Kollisionen*: {len(self.cross_station_id_issues)}")
+        lines.append(f"*Identity-Field-Konflikte*: {len(self.identity_field_conflicts)}")
+        lines.append(f"*Namens-Probleme*: {len(self.naming_issues)}")
         lines.append("")
 
         if self.security_issues:
-            lines.append("## Security warnings (potential XSS/Injection)")
+            lines.append("## Sicherheitswarnungen (potenzielle XSS/Injection)")
             for sec in self.security_issues:
                 lines.append(
                     f"- {_safe_md(sec.identifier)} ({_safe_md(sec.name)}): {_safe_md(sec.reason)}"
@@ -259,7 +259,7 @@ class ValidationReport:
             lines.append("")
 
         if self.provider_issues:
-            lines.append("## Provider issues (VOR/OEBB)")
+            lines.append("## Provider-Probleme (VOR/OEBB)")
             for prov in self.provider_issues:
                 lines.append(
                     f"- {_safe_md(prov.identifier)} ({_safe_md(prov.name)}): {_safe_md(prov.reason)}"
@@ -267,12 +267,12 @@ class ValidationReport:
             lines.append("")
 
         if self.cross_station_id_issues:
-            lines.append("## Cross station ID issues")
+            lines.append("## Stationsübergreifende-ID-Kollisionen")
             for cross in self.cross_station_id_issues:
                 lines.append(
                     f"- {_safe_md(cross.identifier)} ({_safe_md(cross.name)}): "
-                    f"alias '{_safe_md(cross.alias)}' collides with "
-                    f"{_safe_md(cross.colliding_field)} of "
+                    f"Alias '{_safe_md(cross.alias)}' kollidiert mit "
+                    f"{_safe_md(cross.colliding_field)} von "
                     f"{_safe_md(cross.colliding_identifier)} ({_safe_md(cross.colliding_name)})"
                 )
             lines.append("")
@@ -280,7 +280,7 @@ class ValidationReport:
         lines.extend(self._render_identity_field_conflicts())
 
         if self.duplicates:
-            lines.append("## Geographic duplicates")
+            lines.append("## Geografische Duplikate")
             for group in self.duplicates:
                 joined_ids = ", ".join(_safe_md(ident) for ident in group.identifiers)
                 lines.append(
@@ -289,7 +289,7 @@ class ValidationReport:
             lines.append("")
 
         if self.alias_issues:
-            lines.append("## Alias issues")
+            lines.append("## Alias-Probleme")
             for ali in self.alias_issues:
                 lines.append(
                     f"- {_safe_md(ali.identifier)} ({_safe_md(ali.name)}): {_safe_md(ali.reason)}"
@@ -297,7 +297,7 @@ class ValidationReport:
             lines.append("")
 
         if self.coordinate_issues:
-            lines.append("## Coordinate anomalies")
+            lines.append("## Koordinaten-Anomalien")
             for coord in self.coordinate_issues:
                 lines.append(
                     f"- {_safe_md(coord.identifier)} ({_safe_md(coord.name)}): {_safe_md(coord.reason)}"
@@ -305,16 +305,16 @@ class ValidationReport:
             lines.append("")
 
         if self.gtfs_issues:
-            lines.append("## GTFS mismatches")
+            lines.append("## GTFS-Abweichungen")
             for gtfs in self.gtfs_issues:
                 lines.append(
                     f"- {_safe_md(gtfs.identifier)} ({_safe_md(gtfs.name)}) → "
-                    f"missing stop_id {_safe_md(gtfs.vor_id)}"
+                    f"fehlende stop_id {_safe_md(gtfs.vor_id)}"
                 )
             lines.append("")
 
         if self.naming_issues:
-            lines.append("## Naming issues")
+            lines.append("## Namens-Probleme")
             for naming in self.naming_issues:
                 lines.append(
                     f"- {_safe_md(naming.identifier)} ({_safe_md(naming.name)}): {_safe_md(naming.reason)}"
@@ -322,12 +322,12 @@ class ValidationReport:
             lines.append("")
 
         if not self.has_issues:
-            lines.append("No issues detected.")
+            lines.append("Keine Probleme festgestellt.")
 
         return "\n".join(lines).rstrip() + "\n"
 
     def _render_identity_field_conflicts(self) -> list[str]:
-        """Render the ``## Identity field conflicts`` section.
+        """Render the ``## Identity-Field-Konflikte`` section.
 
         Split out of :meth:`to_markdown` so the parent method stays
         below the C901 complexity baseline (15) — adding the section
@@ -335,13 +335,13 @@ class ValidationReport:
         """
         if not self.identity_field_conflicts:
             return []
-        lines = ["## Identity field conflicts"]
+        lines = ["## Identity-Field-Konflikte"]
         for conflict in self.identity_field_conflicts:
             joined_ids = ", ".join(_safe_md(ident) for ident in conflict.identifiers)
             joined_names = ", ".join(_safe_md(name) for name in conflict.names)
             lines.append(
                 f"- {_safe_md(conflict.field)}={_safe_md(conflict.value)} "
-                f"shared by [{joined_ids}] ({joined_names})"
+                f"gemeinsam genutzt von [{joined_ids}] ({joined_names})"
             )
         lines.append("")
         return lines
@@ -692,7 +692,7 @@ def _find_gtfs_issues(
 # ASCII C0 controls excluding ``\t``/``\n``/``\r``) and (b) every code
 # point covered by the canonical log sanitiser
 # ``src/utils/logging.py:_INVISIBLE_DANGEROUS_RE``. The 2026-05-09
-# BiDi-Mark Drift Round 2 entry in ``.jules/sentinel.md`` flagged the
+# BiDi-Mark Drift Round 2 audit flagged the
 # divergence between the two regexes as the next drift candidate: the
 # canonical sanitiser already strips ``\u061c`` (ALM), ``\u200b-\u200f``
 # (ZWSP/ZWNJ/ZWJ/LRM/RLM), and ``\ufeff`` (BOM), but the validator did

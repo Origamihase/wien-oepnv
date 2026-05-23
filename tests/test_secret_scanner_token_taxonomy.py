@@ -1,6 +1,6 @@
 """Tests for token-taxonomy completeness in the secret scanner.
 
-The journal in ``.jules/sentinel.md`` (entries from 2026-05-05) recorded that
+The audit journal (entries from 2026-05-05) recorded that
 ``_KNOWN_TOKENS`` repeatedly drifted behind the issuer's full prefix list,
 making the generic high-entropy fallback the only line of defence for whole
 families of credentials. This module checks the variants that were missing

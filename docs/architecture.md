@@ -1,22 +1,24 @@
-# Architecture Map — Wien ÖPNV Feed
+# Architektur-Karte — Wien ÖPNV Feed
 
-This document is the visual companion to the README and the `.jules/`
-journals. It is written for a developer joining the project six months
-from now: someone who needs to understand **how the system fits
-together** before diving into any one file.
+Dieses Dokument ist die visuelle Ergänzung zur README. Es ist für
+Entwickler:innen geschrieben, die in einem halben Jahr zum Projekt
+stoßen: jene Person, die verstehen muss, **wie das System
+zusammenhängt**, bevor sie sich in irgendeine einzelne Datei stürzt.
 
-The diagrams below are rendered automatically by GitHub. If you are
-reading this in a non-Mermaid-aware viewer, the same information is
-also expressed prose-first under each diagram.
+Die Diagramme weiter unten werden von GitHub automatisch gerendert.
+Wer das hier in einem Viewer ohne Mermaid-Unterstützung liest, findet
+zu jedem Diagramm dieselbe Information zusätzlich als Fließtext
+darunter.
 
 ---
 
-## 1. The Transit Data Fetching Pipeline
+## 1. Die Pipeline für den Abruf der Verkehrsdaten
 
-The headline workflow: a cron job (or the `update-cycle.yml` GitHub
-Action) launches `python -m src.cli feed build` (which calls
-`build_feed.main()`), invoking the registered transit-data providers,
-deduplicating the merged events, and writing a single RSS feed.
+Der zentrale Workflow: Ein Cron-Job (bzw. die GitHub-Action
+`update-cycle.yml`) startet `python -m src.cli feed build` (das wiederum
+`build_feed.main()` aufruft), invokiert die registrierten
+Verkehrsdaten-Provider, dedupliziert die zusammengeführten Events und
+schreibt einen einzelnen RSS-Feed.
 
 > **Hinweis zum aktuellen Default-Setup:** Das Diagramm illustriert
 > beide Provider-Modi des Builders (sync cache vs. async network).
@@ -34,172 +36,174 @@ sequenceDiagram
     participant Cron as cron / GH Action
     participant Build as build_feed.main
     participant Collect as _collect_items
-    participant Cache as Cache fetchers<br/>(WL + ÖBB + Baustellen + Stammstrecke)
+    participant Cache as Cache-Fetcher<br/>(WL + ÖBB + Baustellen + Stammstrecke)
     participant Pool as ThreadPoolExecutor
     participant WL as WL.fetch_events
     participant OEBB as ÖBB.fetch_events
-    participant Plug as Plugin.fetch_events<br/>(custom provider)
+    participant Plug as Plugin.fetch_events<br/>(eigener Provider)
     participant Safe as request_safe
-    participant Up as Upstream API
+    participant Up as Upstream-API
     participant Merge as _merge_result
     participant Dedupe as _dedupe_items + deduplicate_fuzzy
     participant RSS as _make_rss + atomic_write
 
-    Cron->>Build: invoke
+    Cron->>Build: starten
     Build->>Collect: _collect_items(report)
     Collect->>Collect: _categorize_providers
-    Note over Collect: split into cache_fetchers<br/>(sync, disk-bound) and<br/>network_fetchers (async)
+    Note over Collect: Aufteilung in cache_fetchers<br/>(sync, disk-bound) und<br/>network_fetchers (async)
 
-    Collect->>Cache: sequential read
+    Collect->>Cache: sequentielles Lesen
     Cache-->>Merge: list[FeedItem]
     Merge->>Collect: items.extend(...)
 
     Collect->>Pool: _run_network_fetchers
     par WL
-        Pool->>WL: submit fetch
+        Pool->>WL: fetch absetzen
         WL->>Safe: request_safe(session, url, ...)
-        Safe->>Up: HTTPS GET (pinned IP)
-        Up-->>Safe: response
-        Safe-->>WL: validated body
+        Safe->>Up: HTTPS GET (gepinnte IP)
+        Up-->>Safe: Response
+        Safe-->>WL: validierter Body
         WL-->>Merge: list[FeedItem]
     and ÖBB
-        Pool->>OEBB: submit fetch
+        Pool->>OEBB: fetch absetzen
         OEBB->>Safe: request_safe(session, url, ...)
-        Safe->>Up: HTTPS GET (pinned IP)
-        Up-->>Safe: response
-        Safe-->>OEBB: validated body
+        Safe->>Up: HTTPS GET (gepinnte IP)
+        Up-->>Safe: Response
+        Safe-->>OEBB: validierter Body
         OEBB-->>Merge: list[FeedItem]
     and Plugin
-        Pool->>Plug: submit fetch
+        Pool->>Plug: fetch absetzen
         Plug->>Safe: request_safe(session, url, ...)
-        Safe->>Up: HTTPS GET (pinned IP)
-        Up-->>Safe: response
-        Safe-->>Plug: validated body
+        Safe->>Up: HTTPS GET (gepinnte IP)
+        Up-->>Safe: Response
+        Safe-->>Plug: validierter Body
         Plug-->>Merge: list[FeedItem]
     end
 
-    Note over Pool: Apex-Phase-1 deadline-eviction loop:<br/>per-future timeout vs perf_counter()<br/>cancels stragglers
+    Note over Pool: Apex-Phase-1 Deadline-Eviction-Schleife:<br/>per-Future-Timeout vs. perf_counter()<br/>kappt Nachzügler
 
-    Merge->>Collect: items list
-    Collect-->>Build: combined items
-    Build->>Dedupe: strict identity dedupe
+    Merge->>Collect: Items-Liste
+    Collect-->>Build: zusammengeführte Items
+    Build->>Dedupe: strikte Identity-Dedup
     Dedupe->>Dedupe: deduplicate_fuzzy
-    Note over Dedupe: Apex-Phase-2 parallel<br/>token-cache O(n) regex
-    Dedupe-->>Build: deduped items
+    Note over Dedupe: Apex-Phase-2 paralleler<br/>Token-Cache, O(n)-Regex
+    Dedupe-->>Build: deduplizierte Items
     Build->>RSS: _make_rss + atomic_write
     RSS-->>Cron: docs/feed.xml
 ```
 
-**Why each step matters:**
+**Warum jeder Schritt zählt:**
 
-- **`_categorize_providers`** decides which providers can run synchronously (their loader has a `_provider_cache_name` attribute → reads from disk) vs. asynchronously (real network fetch). Separating them up front keeps the executor pool focused on I/O-bound work.
-- **The `par … and …` block** is the **bulkhead**: a crash in any one provider's `fetch_events` is caught by `_drain_completed_futures` and recorded as that provider's error, while the others continue. This is what makes the system never "all-down on one bad upstream."
-- **The Apex-Phase-1 callout** is critical: without bounded `wait()` timeouts the loop would busy-spin against `perf_counter()` (see `.jules/apex.md` 2026-05-07 entry).
-- **`request_safe`** is the security state machine — see diagram §2 below.
-- **`deduplicate_fuzzy`** is Apex-Phase-2 territory: the parallel `merged_cache` reduces O(n²) regex re-parsing to O(n) (see `.jules/apex.md`).
+- **`_categorize_providers`** entscheidet, welche Provider synchron laufen können (Loader trägt das Attribut `_provider_cache_name` → liest von der Platte) und welche asynchron (echter Netzwerk-Abruf). Diese Trennung hält den Executor-Pool auf I/O-gebundene Arbeit fokussiert.
+- **Der `par … and …`-Block** ist das **Bulkhead-Prinzip**: Ein Crash in einem einzelnen `fetch_events`-Aufruf wird von `_drain_completed_futures` abgefangen und als Fehler genau dieses Providers verbucht — die anderen laufen weiter. Genau das macht das System nie „komplett wegen einer kaputten Quelle aus".
+- **Der Hinweis auf Apex-Phase-1** ist entscheidend: Ohne gedeckelte `wait()`-Timeouts würde die Schleife gegen `perf_counter()` busy-spinnen.
+- **`request_safe`** ist die Security-State-Machine — siehe Diagramm §2.
+- **`deduplicate_fuzzy`** ist Apex-Phase-2-Territorium: Der parallele `merged_cache` reduziert das O(n²)-Regex-Reparsing auf O(n).
 
 ---
 
-## 2. The `request_safe` Security State Machine
+## 2. Die `request_safe`-Security-State-Machine
 
-`request_safe` is a single 75-line orchestrator that calls 14 cohesive
-security helpers in a strict order. Each helper documents the attack
-vector it mitigates. The flowchart below shows the order; the prose
-beneath summarizes why each gate exists.
+`request_safe` ist ein einzelner 75-Zeilen-Orchestrator, der 14
+kohäsive Security-Helfer in strikter Reihenfolge aufruft. Jeder Helfer
+dokumentiert den Angriffsvektor, den er entschärft. Das Flussdiagramm
+unten zeigt die Reihenfolge, die Tabelle darunter fasst zusammen,
+warum jede Schranke existiert.
 
 ```mermaid
 flowchart TD
-    A[request_safe entry] --> B{timeout is None?}
-    B -- yes --> C[timeout = DEFAULT_TIMEOUT<br/>Slowloris default]
-    B -- no --> D[strip allow_redirects<br/>+ stream from kwargs]
+    A[request_safe Eintritt] --> B{timeout is None?}
+    B -- ja --> C[timeout = DEFAULT_TIMEOUT<br/>Slowloris-Default]
+    B -- nein --> D[allow_redirects + stream<br/>aus kwargs entfernen]
     C --> D
-    D --> E[init headers as<br/>CaseInsensitiveDict]
-    E --> F[_merge_request_hooks<br/><i>attaches _check_response_security</i>]
-    F --> G[_compute_total_time_budget<br/><i>tuple → sum</i>]
+    D --> E[Headers als<br/>CaseInsensitiveDict initialisieren]
+    E --> F[_merge_request_hooks<br/><i>hängt _check_response_security an</i>]
+    F --> G[_compute_total_time_budget<br/><i>Tuple → Summe</i>]
     G --> H[for attempt in 0..max_redirects]
 
-    H --> I[_check_total_budget_or_raise<br/><i>Slowloris across redirects</i>]
-    I --> J[_per_request_timeout<br/><i>cap to remaining</i>]
-    J --> K[validate_http_url<br/><i>SSRF guard</i>]
+    H --> I[_check_total_budget_or_raise<br/><i>Slowloris über Redirects</i>]
+    I --> J[_per_request_timeout<br/><i>kappt auf Restbudget</i>]
+    J --> K[validate_http_url<br/><i>SSRF-Schranke</i>]
     K --> L{scheme}
 
-    L -- http --> M[_send_http_pinned<br/><i>DNS-rebinding TOCTOU</i>]
-    L -- https --> N[_resolve_target_ip<br/><i>private-IP guard</i>]
-    N --> O[_send_https_pinned<br/><i>SNI/Host pin via adapter</i>]
+    L -- http --> M[_send_http_pinned<br/><i>DNS-Rebinding-TOCTOU</i>]
+    L -- https --> N[_resolve_target_ip<br/><i>Private-IP-Schranke</i>]
+    N --> O[_send_https_pinned<br/><i>SNI/Host-Pin via Adapter</i>]
 
     M --> P[with ctx as r:]
     O --> P
-    P --> Q{_is_redirect?<br/>MagicMock-safe}
+    P --> Q{_is_redirect?<br/>MagicMock-sicher}
 
-    Q -- yes --> R[_process_redirect:<br/>1. cap check<br/>2. _strip_redirect_secrets<br/>3. _apply_method_downgrade<br/>4. _drop_host_header]
+    Q -- ja --> R[_process_redirect:<br/>1. Cap-Check<br/>2. _strip_redirect_secrets<br/>3. _apply_method_downgrade<br/>4. _drop_host_header]
     R --> H
 
-    Q -- no --> S{raise_for_status?}
-    S -- yes --> T[r.raise_for_status]
-    S -- no --> U
-    T --> U[_validate_content_type<br/><i>WAF/proxy block</i>]
-    U --> V[_compute_read_timeout<br/><i>Slowloris on read</i>]
-    V --> W[read_response_safe<br/><i>MAX_PAYLOAD_SIZE cap</i>]
+    Q -- nein --> S{raise_for_status?}
+    S -- ja --> T[r.raise_for_status]
+    S -- nein --> U
+    T --> U[_validate_content_type<br/><i>WAF/Proxy-Block</i>]
+    U --> V[_compute_read_timeout<br/><i>Slowloris beim Lesen</i>]
+    V --> W[read_response_safe<br/><i>MAX_PAYLOAD_SIZE-Cap</i>]
     W --> X[r._content = content<br/>return r]
 
-    H -. exception .-> Y[catch RequestException]
-    Y --> Z[_sanitize_exception_msg<br/><i>strip URLs from error</i>]
-    Z -.-> AA([raise sanitized])
+    H -. exception .-> Y[RequestException fangen]
+    Y --> Z[_sanitize_exception_msg<br/><i>URLs aus Fehler entfernen</i>]
+    Z -.-> AA([sanitisiert weiterwerfen])
 ```
 
-**Why each gate exists** (also in helper docstrings):
+**Warum jede Schranke existiert** (auch in den Helper-Docstrings dokumentiert):
 
-| Gate | Mitigates |
+| Schranke | Entschärft |
 |---|---|
-| Slowloris default timeout | Caller forgetting to pass timeout → indefinite hang |
-| Disable auto-redirects | DNS-rebinding TOCTOU between safety check and connect |
-| `_merge_request_hooks` | Silent skip of `_check_response_security` IP-verification |
-| `_compute_total_time_budget` (tuple sum) | Adversary chaining redirects to stretch wall-clock budget |
-| `_check_total_budget_or_raise` | Slowloris across redirects |
-| `_per_request_timeout` | Per-step timeout decay across the chain |
-| `validate_http_url` | SSRF via internal/private hostnames |
-| `_resolve_target_ip` | SSRF via DNS resolution returning a private IP |
-| `_send_http_pinned` | DNS-rebinding TOCTOU on plain HTTP |
-| `_send_https_pinned` | DNS-rebinding TOCTOU on HTTPS + SNI/Host mismatch |
-| `_is_redirect` (MagicMock guard) | False-positive redirects in mock-based tests |
-| `_strip_redirect_secrets` | Token / credential leak across origins |
-| `_apply_method_downgrade` | RFC-7231 method preservation/downgrade compliance |
-| `_drop_host_header` | SNI/Host mismatch on the redirected request |
-| `_validate_content_type` | WAF/proxy block-page misinterpretation (text/html attack) |
-| `_compute_read_timeout` | Slowloris on the body-read side |
-| `read_response_safe` | Payload-size cap (MAX_PAYLOAD_SIZE = 10 MB) |
-| `_sanitize_exception_msg` | Sensitive URLs leaking into error messages and logs |
+| Slowloris-Default-Timeout | Aufrufer:in vergisst Timeout → endlos hängender Call |
+| Auto-Redirects deaktivieren | DNS-Rebinding-TOCTOU zwischen Sicherheitsprüfung und Connect |
+| `_merge_request_hooks` | Stilles Überspringen der `_check_response_security` IP-Verifikation |
+| `_compute_total_time_budget` (Tuple-Summe) | Angreifer:in verkettet Redirects, um das Wall-Clock-Budget zu strecken |
+| `_check_total_budget_or_raise` | Slowloris über mehrere Redirects |
+| `_per_request_timeout` | Per-Step-Timeout-Decay entlang der Kette |
+| `validate_http_url` | SSRF über interne/private Hostnames |
+| `_resolve_target_ip` | SSRF via DNS-Auflösung mit privater IP |
+| `_send_http_pinned` | DNS-Rebinding-TOCTOU auf plain HTTP |
+| `_send_https_pinned` | DNS-Rebinding-TOCTOU auf HTTPS + SNI/Host-Mismatch |
+| `_is_redirect` (MagicMock-Schutz) | Falsch-positive Redirects in Mock-basierten Tests |
+| `_strip_redirect_secrets` | Token-/Credential-Leak über Origin-Grenzen |
+| `_apply_method_downgrade` | RFC-7231-konforme Methoden-Erhaltung/-Herabstufung |
+| `_drop_host_header` | SNI/Host-Mismatch beim weitergeleiteten Request |
+| `_validate_content_type` | Fehlinterpretation der Block-Page eines WAF/Proxys (text/html-Angriff) |
+| `_compute_read_timeout` | Slowloris auf der Body-Read-Seite |
+| `read_response_safe` | Payload-Größen-Cap (MAX_PAYLOAD_SIZE = 10 MB) |
+| `_sanitize_exception_msg` | Sensible URLs lecken in Fehlertexte und Logs |
 
-The full audit lives in `.jules/omega.md` (2026-05-07 entry).
+Das 2026-05-07-Audit hat diese Angriffsfläche geschlossen.
 
 ---
 
-## 3. Resilience-Layer Stack
+## 3. Resilienz-Layer-Stack
 
-The system has five layered defences against a hostile network or
-upstream. Each layer has its own scope; together they form
-defence-in-depth.
+Das System trägt fünf gestaffelte Verteidigungslinien gegen ein
+feindliches Netzwerk oder eine feindliche Upstream-Quelle. Jede Schicht
+hat ihren eigenen Geltungsbereich; zusammen ergeben sie
+Defense-in-Depth.
 
 ```mermaid
 flowchart LR
-    subgraph "Process level"
+    subgraph "Prozess-Ebene"
         A[build_feed.main]
     end
-    subgraph "Provider level (bulkhead)"
-        B[_collect_items<br/>per-provider try/except]
-        C[ThreadPoolExecutor<br/>+ deadline eviction]
+    subgraph "Provider-Ebene (Bulkhead)"
+        B[_collect_items<br/>per-Provider try/except]
+        C[ThreadPoolExecutor<br/>+ Deadline-Eviction]
     end
-    subgraph "Call level (Saboteur + Sentinel)"
-        D[CircuitBreaker<br/><i>opt-in primitive</i>]
-        E[request_safe<br/><i>14 security helpers</i>]
+    subgraph "Call-Ebene"
+        D[CircuitBreaker<br/><i>Opt-in-Primitiv</i>]
+        E[request_safe<br/><i>14 Security-Helfer</i>]
     end
-    subgraph "Transport level (Sentinel)"
-        F[urllib3 JitterRetry<br/>±20% backoff]
-        G[PinnedHTTPSAdapter<br/>per-IP TLS pin]
+    subgraph "Transport-Ebene"
+        F[urllib3 JitterRetry<br/>±20% Backoff]
+        G[PinnedHTTPSAdapter<br/>per-IP TLS-Pin]
     end
-    subgraph "Payload level (Saboteur)"
-        H[isinstance type check]
-        I[RecursionError catch]
+    subgraph "Payload-Ebene"
+        H[isinstance-Typprüfung]
+        I[RecursionError fangen]
         J[MAX_PAYLOAD_SIZE 10MB]
     end
 
@@ -215,50 +219,53 @@ flowchart LR
     J --> A
 ```
 
-**Layer-by-layer rationale:**
+**Schicht für Schicht:**
 
-- **Process level** — the cron entry point. If `main()` raises, the cron run is the failure unit; this is intentional so a corrupt write doesn't ship a half-built feed.
-- **Provider level** — `_collect_items` wraps each provider's loader in a try/except so one provider's exception cannot drop the others' items. The ThreadPoolExecutor + Apex-Phase-1 deadline-eviction loop bounds wall-clock for unresponsive providers.
-- **Call level** — `request_safe` is the per-call security state machine (§2). `CircuitBreaker` is a Saboteur-pass primitive available for adoption; the shared `src.utils.circuit_breaker.CircuitBreaker` class wraps the OSM client (`src/places/osm_client.py`), the HAFAS client (`src/places/hafas_client.py`) and the Stammstrecke Hbf monitor (`scripts/update_stammstrecke_hbf.py`). Google Places (`src/places/client.py`) carries an ad-hoc inline 5xx-counter breaker rather than the shared primitive — same pattern, separate state.
-- **Transport level** — `JitterRetry` (in `session_with_retries`) handles transient 5xx / connection-reset with jittered exponential backoff. `PinnedHTTPSAdapter` keeps the TLS handshake's SNI on the original hostname while the TCP connect targets the resolved (vetted) IP.
-- **Payload level** — once bytes arrive, every provider validates the top-level type (Zero-Trust shape), handles `RecursionError` from JSON depth-bombs, and operates within the 10 MB body cap.
+- **Prozess-Ebene** — der Cron-Eintrittspunkt. Wenn `main()` wirft, ist der Cron-Lauf die Fehler-Einheit; das ist Absicht, damit ein korrupter Schreibvorgang keinen halbgaren Feed veröffentlicht.
+- **Provider-Ebene** — `_collect_items` hüllt den Loader jedes Providers in ein try/except, sodass eine Provider-Exception die Items der anderen nicht mit in den Abgrund nimmt. Der `ThreadPoolExecutor` plus die Apex-Phase-1-Deadline-Eviction-Schleife begrenzt das Wall-Clock-Budget für nicht antwortende Provider.
+- **Call-Ebene** — `request_safe` ist die per-Call-Security-State-Machine (§2). `CircuitBreaker` ist ein zur Übernahme bereitstehendes Resilienz-Primitiv; die gemeinsam genutzte Klasse `src.utils.circuit_breaker.CircuitBreaker` umhüllt den OSM-Client (`src/places/osm_client.py`), den HAFAS-Client (`src/places/hafas_client.py`) und den Stammstrecken-Hbf-Monitor (`scripts/update_stammstrecke_hbf.py`). Google Places (`src/places/client.py`) trägt einen ad-hoc inline-implementierten 5xx-Counter-Breaker statt des gemeinsamen Primitivs — gleiches Pattern, eigener State.
+- **Transport-Ebene** — `JitterRetry` (in `session_with_retries`) behandelt transiente 5xx und Connection-Resets per jitter-belegtem Exponential-Backoff. `PinnedHTTPSAdapter` hält die SNI beim TLS-Handshake auf dem ursprünglichen Hostnamen, während der TCP-Connect die aufgelöste (geprüfte) IP anvisiert.
+- **Payload-Ebene** — sobald Bytes eintreffen, validiert jeder Provider den Top-Level-Typ (Zero-Trust-Shape), fängt `RecursionError` aus JSON-Tiefenbomben und arbeitet innerhalb des 10-MB-Body-Caps.
 
 ---
 
-## 4. Provider Plugin Contract
+## 4. Provider-Plugin-Vertrag
 
-Adding a new provider takes three steps. The diagram shows what your
-new module must export and how `_collect_items` discovers it.
+Ein neuer Provider lässt sich in drei Schritten ergänzen. Das Diagramm
+zeigt, was dein neues Modul exportieren muss und wie `_collect_items`
+es entdeckt.
 
 ```mermaid
 flowchart TB
-    A[Your new module:<br/>src/providers/yourapi.py] --> B[def fetch_events<br/>timeout: int = 25<br/>-&gt; list[FeedItem]]
-    A --> C[Optional:<br/>fetch_events._provider_cache_name<br/><i>marks as disk-bound</i>]
+    A[Dein neues Modul:<br/>src/providers/yourapi.py] --> B[def fetch_events<br/>timeout: int = 25<br/>-&gt; list[FeedItem]]
+    A --> C[Optional:<br/>fetch_events._provider_cache_name<br/><i>markiert als disk-bound</i>]
 
-    D[Registration:<br/>register_provider env_var, loader<br/>cache_key=...] --> E[ProviderSpec stored in registry]
+    D[Registrierung:<br/>register_provider env_var, loader<br/>cache_key=...] --> E[ProviderSpec im Registry abgelegt]
     E --> F[iter_providers] --> G[_collect_items.<br/>_categorize_providers]
-    G --> H{_provider_cache_name<br/>set?}
-    H -- yes --> I[cache_fetchers<br/><i>sync</i>]
-    H -- no --> J[network_fetchers<br/><i>async via executor</i>]
+    G --> H{_provider_cache_name<br/>gesetzt?}
+    H -- ja --> I[cache_fetchers<br/><i>sync</i>]
+    H -- nein --> J[network_fetchers<br/><i>async via Executor</i>]
 ```
 
-**Required contract:**
+**Pflicht-Vertrag:**
 
 ```python
 # src/providers/yourapi.py
 from src.feed_types import FeedItem
 
 def fetch_events(timeout: int = 25) -> list[FeedItem]:
-    """Return a list of typed feed items for this provider.
+    """Liefert eine typisierte Feed-Item-Liste für diesen Provider.
 
-    Must NOT raise on network errors — log and return an empty list.
-    Must NOT block longer than ``timeout`` seconds total.
-    Must validate top-level payload shape before parsing (Zero-Trust).
+    Darf bei Netzwerk-Fehlern NICHT raisen — loggen und leere Liste
+    zurückgeben.
+    Darf insgesamt NICHT länger als ``timeout`` Sekunden blockieren.
+    Muss vor dem Parsen den Top-Level-Payload-Typ validieren
+    (Zero-Trust).
     """
     ...
 ```
 
-**Recommended adoption pattern (Saboteur's CircuitBreaker):**
+**Empfohlenes Pattern (CircuitBreaker):**
 
 ```python
 from src.utils.circuit_breaker import CircuitBreaker, CircuitBreakerOpen
@@ -273,271 +280,288 @@ def fetch_events(timeout: int = 25) -> list[FeedItem]:
         return []
 ```
 
-The breaker logs its own state transitions, so operators see
+Der Breaker loggt seine eigenen State-Übergänge, sodass Operator:innen
+ohne zusätzliche Verkabelung Einträge wie
 `CircuitBreaker[yourapi]: CLOSED → OPEN after 5 consecutive failures`
-in the build log without any extra wiring.
+im Build-Log sehen.
 
 ---
 
-## 5. Three-Tier Station-Directory Enrichment (OSM → HAFAS → Google)
+## 5. Drei-Stufen-Stationsverzeichnis-Anreicherung (OSM → HAFAS → Google)
 
-Station coordinates and metadata are populated by a layered enrichment
-pipeline orchestrated by `scripts/update_station_directory.py`. The
-hierarchy is a **strictly tiered cascade**: OpenStreetMap (Overpass
-API) is the primary source, HAFAS (ÖBB Scotty) is the Level-2 fallback
-introduced 2026-05-14, and Google Places is the last-resort tier that
-only ever processes stations the first two could not resolve.
+Stationskoordinaten und -Metadaten werden über eine geschichtete
+Anreicherungspipeline befüllt, die von
+`scripts/update_station_directory.py` orchestriert wird. Die Hierarchie
+ist eine **strikt gestufte Kaskade**: OpenStreetMap (Overpass-API) ist
+die primäre Quelle, HAFAS (ÖBB Scotty) ist der seit 2026-05-14
+eingeführte Level-2-Fallback, und Google Places ist die letzte Stufe,
+die ausschließlich Stationen verarbeitet, die die ersten beiden Stufen
+nicht auflösen konnten.
 
 ```mermaid
 flowchart LR
-    A[ÖBB Verzeichnis<br/>(Excel)] --> B[Station list<br/>without coordinates]
-    B --> C[CI gate:<br/>scripts/check_overpass_status.py]
-    C -- mirror up --> D[Tier 1: OSM Overpass<br/>(src/places/osm_client.py)]
-    C -- mirror down --> E[Skip OSM<br/>via WIEN_OEPNV_OSM_ENRICH=0]
-    D --> F[OSM CircuitBreaker<br/>5 fail / 5 min cool-off]
-    F --> G[merge_places<br/>(name + distance match)]
-    G --> H[Stations missing coords?]
+    A[ÖBB-Verzeichnis<br/>(Excel)] --> B[Stationsliste<br/>ohne Koordinaten]
+    B --> C[CI-Gate:<br/>scripts/check_overpass_status.py]
+    C -- Mirror up --> D[Tier 1: OSM Overpass<br/>(src/places/osm_client.py)]
+    C -- Mirror down --> E[OSM überspringen<br/>via WIEN_OEPNV_OSM_ENRICH=0]
+    D --> F[OSM CircuitBreaker<br/>5 Fails / 5 Min Cool-off]
+    F --> G[merge_places<br/>(Name + Distanz-Match)]
+    G --> H[Stationen ohne Koordinaten?]
     E --> H
-    H -- yes --> K[Tier 2: HAFAS Mgate<br/>(src/places/hafas_client.py)]
-    K --> L[HAFAS CircuitBreaker<br/>5 fail / 5 min cool-off]
-    L --> M[Residual missing?]
-    M -- yes --> I[Tier 3: Google Places<br/>(strict residual subset only)]
-    M -- no --> J[stations.json]
-    H -- no --> J
+    H -- ja --> K[Tier 2: HAFAS Mgate<br/>(src/places/hafas_client.py)]
+    K --> L[HAFAS CircuitBreaker<br/>5 Fails / 5 Min Cool-off]
+    L --> M[Rest noch ohne Koordinaten?]
+    M -- ja --> I[Tier 3: Google Places<br/>(nur strikte Restmenge)]
+    M -- nein --> J[stations.json]
+    H -- nein --> J
     I --> J
 ```
 
-**Why OSM-first:**
+**Warum OSM zuerst:**
 
-- **Open data, no quota.** The Overpass API is publicly reachable
-  without an API key and operates under a fair-use policy. Every
-  Vienna station-directory refresh would otherwise burn the Google
-  Places monthly free-tier quota, which is finite and shared with
-  other ad-hoc verification runs.
-- **Editor-maintained passenger names.** The `_NAME_PRIORITY` ladder
-  in `src/places/osm_client.py:_select_name` selects
+- **Offene Daten, kein Kontingent.** Die Overpass-API ist ohne API-Key
+  öffentlich erreichbar und arbeitet unter einer Fair-Use-Policy. Ohne
+  diese Stufe würde jeder Wien-Stationsverzeichnis-Refresh das
+  Monats-Freikontingent von Google Places verbrauchen — endlich und
+  geteilt mit anderen Ad-hoc-Verifikationsläufen.
+- **Editor-gepflegte Passagier-Namen.** Die `_NAME_PRIORITY`-Hierarchie
+  in `src/places/osm_client.py:_select_name` wählt
   `name:de` → `name` → `official_name(:de)` → `loc_name(:de)` →
-  `alt_name(:de)` → `short_name(:de)`. Long passenger-friendly forms
-  (`"Wien Hauptbahnhof"`, `"Wien Praterstern"`) consistently win over
-  cryptic ÖBB internal abbreviations while compound structures stay
-  intact because the long-form keys are picked first.
-- **Strict typing.** The Overpass tag bag is exposed as the
-  `OSMTags` TypedDict (see `src/places/osm_client.py`). Every key the
-  project actually consumes (naming, classification, accessibility,
-  operator metadata) is enumerated with `NotRequired[str]`, so
-  `mypy --strict` catches misspelled tag reads at every call site.
+  `alt_name(:de)` → `short_name(:de)`. Lange, passagierfreundliche
+  Formen (`"Wien Hauptbahnhof"`, `"Wien Praterstern"`) setzen sich
+  konsistent gegen kryptische ÖBB-interne Abkürzungen durch, während
+  zusammengesetzte Strukturen intakt bleiben, weil die Long-Form-Keys
+  zuerst gegriffen werden.
+- **Strikte Typisierung.** Der Overpass-Tag-Bag wird als TypedDict
+  `OSMTags` exponiert (siehe `src/places/osm_client.py`). Jeder Tag,
+  den das Projekt tatsächlich konsumiert (Naming, Klassifizierung,
+  Barrierefreiheit, Betreiber-Metadaten), ist mit `NotRequired[str]`
+  enumeriert; `mypy --strict` fängt damit jeden Tippfehler bei
+  Tag-Reads.
 
-**Why HAFAS is the Level-2 fallback (and why Google moved to Level 3):**
+**Warum HAFAS der Level-2-Fallback ist (und Google auf Stufe 3 rutscht):**
 
-- **Operator-authoritative coordinates and EVA numbers.** HAFAS is
-  ÖBB's own routing backbone. A `LocMatch` query returns the canonical
-  station record together with the EVA-Nummer (`extId`, e.g.
-  `"8100353"` for Wien Hauptbahnhof) that the project persists as the
-  top-level `hafas_extId` field on every HAFAS-resolved station. The
-  coordinates carried by the response are quoted in microdegrees
-  (`x=16377778` → `16.377778°`) and are scaled to WGS84 floats by
-  `src/places/hafas_client.py:_extract_first_location`.
-- **No daily/monthly request budget.** Unlike the VAO ReST endpoint
-  (capped at 100 req/day, reserved for the Stammstrecke monitor —
-  see §7) and Google Places (monthly free-tier ceiling tracked in
-  `data/places_quota.json`), the HAFAS Mgate API has no published
-  per-consumer cap that the cron pipeline would routinely hit. Every
-  station HAFAS can resolve is one fewer station that consumes the
-  Google budget.
-- **Self-healing credential rotation.** ÖBB rotates the Mgate
-  `salt` / `ver` / `aid` triple without notice. The companion
-  `scripts/sync_hafas_profile.py` runs **before** the enrichment in
-  `update-stations.yml` and extracts the live values from the open-
-  source `public-transport/hafas-client` OEBB profile
-  (`p/oebb/index.js` + sibling `p/oebb/base.js`), persisting them
-  atomically to `data/hafas_profile.json`. A rotated upstream profile
-  flows into the next cron tick automatically — the cached profile
-  is rebuilt from the canonical source every run.
-- **Purist integration.** No external HAFAS client library is used.
-  The Mgate `LocMatch` request body is constructed directly,
-  serialised through `json.dumps(payload, separators=(',', ':'))` so
-  the on-the-wire bytes match the MAC input byte-for-byte, optionally
-  signed with `MD5(body + salt)` when the upstream profile carries a
-  salt (ÖBB currently does not), and dispatched through the same
-  `request_safe` security state machine (§2) every other provider
-  uses. A dedicated module-level `CircuitBreaker("hafas_enrichment",
-  failure_threshold=5, recovery_timeout=300.0)` cools the upstream
-  for five minutes after a failure streak so an ÖBB outage cannot
-  self-DDoS the cron pipeline and `CircuitBreakerOpen` is converted
-  to `None` at the public entry point — a HAFAS hiccup never crashes
-  the script and the Google Places fallback still runs for the
-  residual missing subset.
+- **Betreiber-authoritative Koordinaten und EVA-Nummern.** HAFAS ist
+  die hauseigene Routing-Backbone der ÖBB. Eine `LocMatch`-Query
+  liefert den kanonischen Stationsrecord zusammen mit der EVA-Nummer
+  (`extId`, z. B. `"8100353"` für Wien Hauptbahnhof), die das Projekt
+  in jeder HAFAS-aufgelösten Station als Top-Level-Feld
+  `hafas_extId` persistiert. Die Antwort-Koordinaten sind in
+  Mikrograd codiert (`x=16377778` → `16.377778°`) und werden von
+  `src/places/hafas_client.py:_extract_first_location` zu
+  WGS84-Floats skaliert.
+- **Kein Tages-/Monats-Request-Budget.** Anders als der
+  VAO-ReST-Endpoint (gedeckelt auf 100 Req/Tag, reserviert für den
+  Stammstrecken-Monitor — siehe §7) und Google Places (Monats-
+  Freikontingent, getrackt in `data/places_quota.json`) hat die
+  HAFAS-Mgate-API kein publiziertes per-Konsumenten-Limit, das die
+  Cron-Pipeline routinemäßig reißen würde. Jede Station, die HAFAS
+  auflösen kann, ist eine Station weniger, die das Google-Budget
+  belastet.
+- **Selbstheilende Credential-Rotation.** Die ÖBB rotiert das
+  Mgate-`salt`/`ver`/`aid`-Tripel ohne Vorankündigung. Das
+  Begleit-Skript `scripts/sync_hafas_profile.py` läuft in
+  `update-stations.yml` **vor** der Anreicherung, extrahiert die
+  aktuellen Werte aus dem Open-Source-Profil
+  `public-transport/hafas-client` (OEBB-Profil:
+  `p/oebb/index.js` + `p/oebb/base.js`) und persistiert sie atomar
+  nach `data/hafas_profile.json`. Ein rotiertes Upstream-Profil
+  fließt damit automatisch in den nächsten Cron-Tick ein — das
+  zwischengespeicherte Profil wird bei jedem Lauf aus der kanonischen
+  Quelle neu aufgebaut.
+- **Schlanke Integration.** Es wird **keine** externe
+  HAFAS-Client-Bibliothek verwendet. Der Mgate-`LocMatch`-Body wird
+  direkt konstruiert, durch
+  `json.dumps(payload, separators=(',', ':'))` serialisiert
+  (sodass die On-the-Wire-Bytes byte-genau dem MAC-Input entsprechen),
+  optional mit `MD5(body + salt)` signiert, sobald das Upstream-Profil
+  ein Salt trägt (aktuell nicht), und durch dieselbe
+  `request_safe`-Security-State-Machine (§2) abgesetzt wie jeder
+  andere Provider. Ein dedizierter modulweiter
+  `CircuitBreaker("hafas_enrichment", failure_threshold=5,
+  recovery_timeout=300.0)` kühlt das Upstream nach einer Fehlerserie
+  fünf Minuten lang — eine ÖBB-Störung kann die Cron-Pipeline damit
+  nicht in Selbst-DDoS treiben. `CircuitBreakerOpen` wird am
+  öffentlichen Einstiegspunkt zu `None` konvertiert: ein
+  HAFAS-Schluckauf crasht das Skript nicht, und der
+  Google-Places-Fallback läuft trotzdem für die verbliebene Restmenge.
 
-**Why Google Places is the last-resort tier:**
+**Warum Google Places die Notfall-Stufe ist:**
 
-- After OSM and HAFAS have run, `_stations_missing_coordinates`
-  filters the station list to exactly the entries that *still* lack
-  `latitude`/`longitude`. That residual subset — and **only** that
-  subset — is passed to
-  `_enrich_with_google_places(..., missing_subset=...)`. Stations
-  resolved by OSM or HAFAS are never re-keyed even when a Google
-  Place happens to share their name.
-- When OSM + HAFAS cover every station with coordinates the Google
-  Places call is skipped entirely. The free-tier quota
-  (`PLACES_LIMIT_*` env-vars) is preserved for genuinely missing
-  entries.
+- Nachdem OSM und HAFAS gelaufen sind, filtert
+  `_stations_missing_coordinates` die Stationsliste auf exakt jene
+  Einträge, denen *noch immer* `latitude`/`longitude` fehlt. Diese
+  Restmenge — und **nur** diese — wird an
+  `_enrich_with_google_places(..., missing_subset=...)` übergeben.
+  Stationen, die von OSM oder HAFAS aufgelöst wurden, werden auch
+  dann nicht neu verschlüsselt, wenn ein Google-Place zufällig
+  denselben Namen trägt.
+- Wenn OSM und HAFAS alle Stationen mit Koordinaten abdecken, wird
+  der Google-Places-Call vollständig übersprungen. Das Freikontingent
+  (`PLACES_LIMIT_*`-Env-Vars) bleibt für tatsächlich fehlende Einträge
+  reserviert.
 
-**Network resilience layers:**
+**Netzwerk-Resilienz-Schichten:**
 
-1. **CI smoke test** (`scripts/check_overpass_status.py`) probes
-   the Overpass endpoint with an `out count` query at the start of
-   the `update-stations.yml` workflow. If Overpass is unreachable the
-   workflow flips `WIEN_OEPNV_OSM_ENRICH=0`, skipping the OSM run
-   entirely instead of waiting on stalled urllib3 retries.
-2. **HAFAS profile sync** (`scripts/sync_hafas_profile.py`) runs in
-   the same workflow before `update_all_stations.py` and refreshes
-   `data/hafas_profile.json` from the upstream community profile via
-   `request_safe`, persisting the result through
-   `src.utils.files.atomic_write` so a partial fetch cannot leave a
-   corrupted JSON sidecar.
-3. **`urllib3` JitterRetry** (`session_with_retries`) handles
-   transient 5xx / connection-reset within a single OSM or HAFAS
-   call.
-4. **`CircuitBreaker` per tier** — `src/places/osm_client.py:_BREAKER`
-   and `src/places/hafas_client.py:_BREAKER` each open after five
-   consecutive failures and stay open for five minutes; both convert
-   `CircuitBreakerOpen` into a soft per-call `None`/empty result so
-   the cron pipeline keeps going with whatever tiers remain healthy.
-5. **`request_safe`** wraps every OSM and HAFAS call in the security
-   state machine (§2): SSRF, redirect, content-type, slowloris,
-   payload cap.
-6. **Test-isolation** — `tests/conftest.py` registers an autouse
-   `reset_circuit_breakers` fixture that walks `_iter_known_breakers()`
-   and calls `.reset()` on each entry before and after every test.
-   The list currently covers `src.places.osm_client._BREAKER`; the
-   HAFAS breaker (`hafas_enrichment`) and Stammstrecke-Hbf breaker
-   (`stammstrecke-hbf-vor`) aren't yet in the inventory, so tests
-   that intentionally trip them must call `breaker.reset()` themselves
-   or use a `monkeypatch` to rebuild the breaker. Extend
-   `_iter_known_breakers()` when adding a new breaker if you want
-   blanket isolation for its callers.
+1. **CI-Smoke-Test** (`scripts/check_overpass_status.py`) prüft den
+   Overpass-Endpoint zu Beginn von `update-stations.yml` mit einer
+   `out count`-Query. Ist Overpass nicht erreichbar, setzt der Workflow
+   `WIEN_OEPNV_OSM_ENRICH=0` und überspringt den OSM-Lauf, anstatt auf
+   stehende urllib3-Retries zu warten.
+2. **HAFAS-Profil-Sync** (`scripts/sync_hafas_profile.py`) läuft im
+   selben Workflow vor `update_all_stations.py` und aktualisiert
+   `data/hafas_profile.json` über `request_safe` aus dem Upstream-
+   Community-Profil. Persistiert wird über
+   `src.utils.files.atomic_write`, sodass ein abgebrochener Download
+   keine korrupte JSON-Sidecar-Datei hinterlassen kann.
+3. **`urllib3`-JitterRetry** (`session_with_retries`) behandelt
+   transiente 5xx und Connection-Resets innerhalb eines einzelnen
+   OSM- oder HAFAS-Aufrufs.
+4. **`CircuitBreaker` pro Tier** — `src/places/osm_client.py:_BREAKER`
+   und `src/places/hafas_client.py:_BREAKER` öffnen nach fünf
+   aufeinanderfolgenden Fehlern und bleiben fünf Minuten offen; beide
+   konvertieren `CircuitBreakerOpen` zu einem soft-fail
+   `None`/Leerer-Liste-Ergebnis pro Call, sodass die Cron-Pipeline
+   mit den noch gesunden Tiers weiterläuft.
+5. **`request_safe`** umhüllt jeden OSM- und HAFAS-Call in der
+   Security-State-Machine (§2): SSRF, Redirect, Content-Type,
+   Slowloris, Payload-Cap.
+6. **Test-Isolation** — `tests/conftest.py` registriert eine
+   autouse-Fixture `reset_circuit_breakers`, die über
+   `_iter_known_breakers()` läuft und vor und nach jedem Test auf
+   jedem Eintrag `.reset()` aufruft. Aktuell deckt die Liste
+   `src.places.osm_client._BREAKER`; der HAFAS-Breaker
+   (`hafas_enrichment`) und der Stammstrecken-Hbf-Breaker
+   (`stammstrecke-hbf-vor`) sind noch nicht im Inventar — Tests, die
+   diese Breaker absichtlich triggern, müssen selbst `breaker.reset()`
+   aufrufen oder den Breaker per `monkeypatch` neu aufbauen. Wer für
+   einen neuen Breaker pauschale Isolation wünscht, ergänzt
+   `_iter_known_breakers()`.
 
-The relevant CLI flags / env vars:
+Relevante CLI-Flags / Env-Vars:
 
-| Flag / env | Default | Purpose |
+| Flag / Env | Default | Zweck |
 |---|---|---|
-| `--osm-enrich` / `--no-osm-enrich` | enabled | CLI toggle for the OSM step |
-| `WIEN_OEPNV_OSM_ENRICH` | `1` | Env override; `0` skips OSM (used by CI when the smoke check fails) |
-| `--google-enrich` / `--no-google-enrich` | enabled | CLI toggle for the Google Places fallback |
-| `OVERPASS_URL` | `overpass-api.de` | Trusted-mirror override; rejected unless on the allow-list |
-| `MERGE_MAX_DIST_M` | `150` | Distance threshold for the dedup match in `merge_places` |
+| `--osm-enrich` / `--no-osm-enrich` | aktiv | CLI-Schalter für den OSM-Schritt |
+| `WIEN_OEPNV_OSM_ENRICH` | `1` | Env-Override; `0` überspringt OSM (von CI gesetzt, wenn der Smoke-Test fehlschlägt) |
+| `--google-enrich` / `--no-google-enrich` | aktiv | CLI-Schalter für den Google-Places-Fallback |
+| `OVERPASS_URL` | `overpass-api.de` | Trusted-Mirror-Override; abgelehnt, wenn nicht auf der Allowlist |
+| `MERGE_MAX_DIST_M` | `150` | Distanz-Schwelle für den Dedup-Match in `merge_places` |
 
-HAFAS itself has no CLI toggle — the tier is active whenever the
-profile sidecar exists. Operators who want to bypass HAFAS for
-debugging can simply delete `data/hafas_profile.json` and the client
-short-circuits to `None` for every station after a single
-`HAFAS enrichment disabled: …` log line.
+HAFAS selbst hat keinen CLI-Schalter — die Stufe ist aktiv, sobald die
+Profil-Sidecar-Datei existiert. Wer HAFAS zu Debug-Zwecken überspringen
+will, löscht schlicht `data/hafas_profile.json`; der Client kurz-
+schließt dann für jede Station auf `None`, hinterlässt eine einzige
+Log-Zeile `HAFAS enrichment disabled: …`.
 
-### 5a. Wiener Linien OGD merge (the fourth source)
+### 5a. Wiener-Linien-OGD-Merge (die vierte Quelle)
 
-After the OSM / Google Places enrichment writes the ÖBB-rooted
-`stations.json`, the wrapper orchestrator runs
-`scripts/update_wl_stations.py` as a separate stage. This step folds
-Wiener Linien's OGD-Echtzeit station and stop data into the directory
-so the published feed knows about U-Bahn, Tram and Bus stops that
-have no ÖBB counterpart.
+Nachdem die OSM-/Google-Places-Anreicherung die ÖBB-verwurzelte
+`stations.json` geschrieben hat, läuft `scripts/update_wl_stations.py`
+als eigene Stufe im Wrapper-Orchestrator. Dieser Schritt faltet die
+Wiener-Linien-OGD-Echtzeit-Stations- und Stop-Daten in das Verzeichnis,
+damit der publizierte Feed auch U-Bahn-, Straßenbahn- und Bus-Stops
+kennt, die kein ÖBB-Gegenstück haben.
 
-**Source endpoint** (post-PR #1442): the canonical
-`www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-{halte
-stellen,haltepunkte}.csv`. The historical `data.wien.gv.at/csv/`
-proxy was retired during the 60th Wien OGD phase (September 2025)
-and `haltepunkte.csv` started returning HTTP 404 on the proxy host —
-the migration is documented in
-`scripts/update_wl_stations.py:OGD_HALTESTELLEN_URL`. Both files are
-downloaded fresh on every cron tick (`--download` default-on) and
-atomic-written to `data/wienerlinien-ogd-{haltestellen,haltepunkte}.
-csv`; on download failure the pipeline keeps the pinned local
-snapshot and continues.
+**Quell-Endpoint** (seit PR #1442): das kanonische
+`www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-{haltestellen,haltepunkte}.csv`.
+Der historische Proxy `data.wien.gv.at/csv/` wurde in der 60.
+Wien-OGD-Phase (September 2025) ausgemustert; `haltepunkte.csv`
+lieferte dort HTTP 404. Die Migration ist in
+`scripts/update_wl_stations.py:OGD_HALTESTELLEN_URL` dokumentiert.
+Beide Dateien werden in jedem Cron-Tick frisch heruntergeladen
+(`--download` ist Default-on) und atomar nach
+`data/wienerlinien-ogd-{haltestellen,haltepunkte}.csv` geschrieben.
+Bei Download-Fehlschlag behält die Pipeline den gepinnten lokalen
+Snapshot und läuft weiter.
 
-**Entry construction** (`build_wl_entries`):
+**Einträge bauen** (`build_wl_entries`):
 
-1. Group haltepunkte by their haltestelle DIVA.
-2. Per group, derive the canonical name via `_derive_station_label`:
-   if the haltestelle `PlatformText` is a generic transport-typed
-   token (`Bahnhof`, `Lokalbahn`, `Hauptbahnhof`, `Station`, `Halt`,
-   `Bf`, `Hbf`, `Bahn`, `U-Bahn`) and the haltepunkte produce a
-   single cleaned `StopText`, use the `StopText`. Otherwise keep
-   the `PlatformText`. This rule (PR #1453) turns operator-useless
-   labels like `Wien Bahnhof (WL)` into informative ones like
-   `Wien Tribuswinkel - Josefsthal (WL)`, while preserving the
-   common case (`Karlsplatz`, `Stephansplatz`, …).
-3. Resolve `in_vienna` from the aggregate (mean) haltepunkt
-   coordinates so the flag stays coherent with the persisted
-   `latitude`/`longitude` (invariant pinned by
-   `test_coordinates_match_in_vienna_flag` after PR #1449).
-4. Set `pendler = not in_vienna` to mirror the legacy WL-auto-
-   promote heuristic for border-area stops (PR #1443).
-5. Build the entry with `wl_diva`, `wl_stops`, `aliases` — but
-   without synthetic `bst_id` / `bst_code` (PR #1446 redesign).
+1. Haltepunkte nach ihrer Haltestellen-DIVA gruppieren.
+2. Je Gruppe den kanonischen Namen über `_derive_station_label`
+   ableiten: Wenn der Haltestellen-`PlatformText` ein generisches,
+   verkehrs-typisches Token ist (`Bahnhof`, `Lokalbahn`,
+   `Hauptbahnhof`, `Station`, `Halt`, `Bf`, `Hbf`, `Bahn`, `U-Bahn`)
+   und die Haltepunkte einen einzigen bereinigten `StopText` ergeben,
+   wird der `StopText` verwendet. Andernfalls bleibt der `PlatformText`
+   stehen. Diese Regel (PR #1453) verwandelt operator-nutzlose Labels
+   wie `Wien Bahnhof (WL)` in informative Labels wie
+   `Wien Tribuswinkel - Josefsthal (WL)`, während der häufige Fall
+   (`Karlsplatz`, `Stephansplatz`, …) erhalten bleibt.
+3. `in_vienna` aus den aggregierten (Mittelwert-)Haltepunkt-Koordinaten
+   auflösen, damit das Flag mit den persistierten
+   `latitude`/`longitude`-Werten konsistent bleibt (durch
+   `test_coordinates_match_in_vienna_flag` nach PR #1449 gepinnt).
+4. `pendler = not in_vienna` setzen, um die historische
+   WL-Auto-Promote-Heuristik für Stops in Grenzregionen zu spiegeln
+   (PR #1443).
+5. Den Eintrag mit `wl_diva`, `wl_stops`, `aliases` bauen — ohne
+   synthetische `bst_id`/`bst_code` (PR #1446-Redesign).
 
-**Co-located haltestelle merge** (PR #1451): a post-build pass
-`_merge_colocated_duplicates` folds groups that share a canonical
-name **and** lie within 150 m of each other into a single entry.
-Wiener Linien's OGD-Echtzeit lists some physical stops twice
-(opposing-direction bahnsteige with distinct DIVAs); the merge
-collects all haltepunkte under one entry with the lexicographically
-lowest DIVA as `wl_diva`. Groups with at least one pair ≥150 m
-apart remain separate — they are multi-modal stops at one venue
-(Bus + Tram pair) or generic-PlatformText coincidences, and the
-shared display name is semantically correct.
+**Co-lokierter-Haltestellen-Merge** (PR #1451): Ein Post-Build-Pass
+`_merge_colocated_duplicates` faltet Gruppen mit identischem
+kanonischen Namen **und** Abstand ≤ 150 m zu einem einzigen Eintrag
+zusammen. Wiener-Linien-OGD-Echtzeit listet manche physischen Stops
+zweimal (Gegenrichtungs-Bahnsteige mit eigener DIVA); der Merge sammelt
+alle Haltepunkte unter einem Eintrag mit der lexikografisch kleinsten
+DIVA als `wl_diva`. Gruppen, in denen mindestens ein Paar ≥ 150 m
+auseinander liegt, bleiben separat — das sind multimodale Stops an
+einem Standort (Bus + Tram-Paar) oder generic-PlatformText-Zufälle,
+für die der gemeinsame Display-Name semantisch korrekt ist.
 
-**Name uniqueness contract** (PR #1452): the stations validator no
-longer enforces canonical-name uniqueness. `name` is an
-operator-facing display label; structural uniqueness lives in
-`wl_diva` / `bst_id` / `vor_id` / `bst_code`. Wiener Linien
-legitimately ships duplicate `PlatformText` values across non-
-mergeable multi-DIVA groups (10 such groups on the May 2026 CSV
-snapshot, including `Lokalbahn` × 4 spread across 5.6 km and
-`Bahnhof` × 2 at 9.4 km separation) — the older
-`_disambiguate_duplicate_names` DIVA-suffix workaround
-(`Wien Bahnhof (WL 60205022)` etc.) cluttered the RSS feed and was
-retired together with the validator gate.
+**Namens-Eindeutigkeits-Vertrag** (PR #1452): Der Stationsvalidator
+erzwingt die kanonische Namens-Eindeutigkeit nicht mehr. `name` ist
+ein operator-zugewandtes Display-Label; die strukturelle Eindeutigkeit
+lebt in `wl_diva`/`bst_id`/`vor_id`/`bst_code`. Wiener Linien liefert
+legitim duplizierte `PlatformText`-Werte in nicht-mergebaren
+Multi-DIVA-Gruppen (10 solche Gruppen im Mai-2026-CSV-Snapshot,
+darunter `Lokalbahn` × 4 verteilt über 5,6 km und `Bahnhof` × 2 mit
+9,4 km Abstand) — der frühere DIVA-Suffix-Workaround
+`_disambiguate_duplicate_names` (`Wien Bahnhof (WL 60205022)` usw.)
+hat den RSS-Feed zugemüllt und wurde zusammen mit dem Validator-Gate
+entfernt.
 
-**Resilience**: same `session_with_retries` + `fetch_content_safe`
-stack as the other sources, plus pinned snapshot fallback. Unlike
-the ÖBB workbook (until PR #1450) the WL CSVs have had a soft-fail
-path since the original `_download_ogd_csv` shape.
+**Resilienz**: derselbe `session_with_retries` +
+`fetch_content_safe`-Stack wie die anderen Quellen, plus gepinnter
+Snapshot-Fallback. Anders als das ÖBB-Workbook (bis PR #1450) haben
+die WL-CSVs schon seit der ersten Form von `_download_ogd_csv` einen
+Soft-Fail-Pfad.
 
 ---
 
-## 6. Statistics & Dashboard Pipeline
+## 6. Statistik- und Dashboard-Pipeline
 
-Three append-only CSV ledgers under `data/stats/` capture every relevant
-observation as it happens. They serve **two consumers** with
-different windows: the daily Markdown dashboard
-(`docs/statistik.md`, 30-day window) plus the four README STATS
-markers (`STATS:STAMMSTRECKE[_LIVE]` and `STATS:AUSFAELLE[_LIVE]`,
-60-min + 30-day snapshots), and the RSS feed itself
-(Stammstrecke section, 1-hour window — see
+Drei Append-only-CSV-Ledger unter `data/stats/` fangen jede relevante
+Beobachtung ein, sobald sie auftritt. Sie bedienen **zwei Konsumenten**
+mit unterschiedlichen Fenstern: das tägliche Markdown-Dashboard
+(`docs/statistik.md`, 30-Tage-Fenster) plus die vier README-STATS-
+Marker (`STATS:STAMMSTRECKE[_LIVE]` und `STATS:AUSFAELLE[_LIVE]`,
+60-Min- und 30-Tage-Snapshots), sowie den RSS-Feed selbst
+(Stammstrecken-Sektion, 1-Stunden-Fenster — siehe
 [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)).
-The hot-path build never blocks on observability I/O — both
-consumers tolerate missing or malformed rows gracefully.
+Der Hot-Path-Build blockiert nie auf Observability-I/O — beide
+Konsumenten tolerieren fehlende oder fehlerhafte Zeilen kulant.
 
 ```mermaid
 flowchart LR
-    subgraph "Producers (every cycle tick — IFTTT-triggered update-cycle.yml, ~30 min)"
-        SS[update_stammstrecke_hbf.py<br/><i>writes one delay row per direction<br/>+ one row per cancellation</i>]
-        BF[build_feed.main<br/><i>_update_item_state strict-new branch</i>]
+    subgraph "Producer (jeder Cycle-Tick — IFTTT-getriggertes update-cycle.yml, ca. 30 Min)"
+        SS[update_stammstrecke_hbf.py<br/><i>schreibt eine Delay-Zeile je Richtung<br/>+ eine Zeile je Ausfall</i>]
+        BF[build_feed.main<br/><i>_update_item_state strict-new-Branch</i>]
     end
-    subgraph "Append-only ledgers (data/stats/)"
+    subgraph "Append-only-Ledger (data/stats/)"
         SCSV[stammstrecke_YYYY.csv<br/><i>timestamp, weekday, hour, direction, delay_minutes</i>]
         ACSV[ausfaelle_YYYY.csv<br/><i>timestamp, weekday, hour, direction, line</i>]
         DCSV[stoerungen_YYYY.csv<br/><i>timestamp, weekday, hour, provider, location_name</i>]
     end
-    subgraph "Daily aggregator (update-cycle.yml, first cycle tick after midnight Vienna)"
-        AGG[generate_markdown_stats.py<br/><i>stdlib only, 30-day window</i>]
+    subgraph "Täglicher Aggregator (update-cycle.yml, erster Cycle-Tick nach Mitternacht Wien)"
+        AGG[generate_markdown_stats.py<br/><i>nur stdlib, 30-Tage-Fenster</i>]
     end
-    subgraph "Feed-build consumer"
-        FRP[src/feed/stammstrecke.py<br/><i>1-hour window, ≥2 obs > 9 min trigger</i>]
+    subgraph "Feed-Build-Konsument"
+        FRP[src/feed/stammstrecke.py<br/><i>1-Stunden-Fenster, ≥2 Beobachtungen > 9 min</i>]
     end
-    subgraph "Outputs"
-        MD[docs/statistik.md<br/><i>ASCII / Emoji bars</i>]
-        RSS[docs/feed.xml<br/><i>0..2 Stammstrecke items</i>]
+    subgraph "Ausgaben"
+        MD[docs/statistik.md<br/><i>ASCII-/Emoji-Balken</i>]
+        RSS[docs/feed.xml<br/><i>0..2 Stammstrecken-Items</i>]
     end
 
     SS -- append --> SCSV
@@ -551,63 +575,66 @@ flowchart LR
     FRP --> RSS
 ```
 
-### Architectural goals
+### Architektur-Ziele
 
-| Goal | Embodied by |
+| Ziel | Verwirklicht durch |
 | --- | --- |
-| **CI/CD decoupling** — the daily aggregator runs once per day at the first cycle tick after midnight Vienna, gated by an in-step `TZ=Europe/Vienna date +%H%M` check inside `update-cycle.yml`; the README STATS markers refresh on every ~30-min cycle tick | `.github/workflows/update-cycle.yml` "Refresh statistics dashboard and README snapshot" step (the dedicated `generate-stats.yml` workflow was retired alongside the per-provider escape hatches; ad-hoc regenerations now go through `manual-full-refresh.yml`) |
-| **Strictly zero data-science dependencies** — no `numpy`, `pandas`, `matplotlib`; CI install stays sub-second | `scripts/generate_markdown_stats.py` imports only `csv`, `collections`, `datetime`, `statistics`, `pathlib`, `zoneinfo`, `argparse` |
-| **Append-only, lock-free producers** — single-line writes on POSIX are atomic below `PIPE_BUF` (4 KiB), so concurrent cycle ticks cannot interleave bytes mid-line | `src/utils/stats.py:_append_row` (mode `"a"`, no `flock`) |
-| **Strict-new gating for disruptions** — long-lived events recorded once, not once per build | `src/build_feed.py:_update_item_state` records only on the *strict* state-cache miss (neither `_identity` nor `guid` had a prior entry) |
-| **Idempotent, byte-stable output** — re-running the aggregator on identical input produces byte-identical Markdown so `git-auto-commit-action` is a no-op when nothing changed | Stable secondary sort (alphabetical tie-break, e.g. `key=lambda pair: (-pair[1], pair[0])` in `_format_providers_section`, `_format_ausfall_directions_section`, `_format_ausfall_lines_section`) used in every ranking; renderer never reads `now()` outside the timestamp shown in the header |
-| **Per-year file rotation** — individual ledger size stays bounded even over multi-year operation | Filename derived from the row's Vienna-local `timestamp.year`, not process clock |
+| **CI/CD-Entkoppelung** — der tägliche Aggregator läuft genau einmal am Tag (erster Cycle-Tick nach Mitternacht Wien), gegated durch ein Inline-`TZ=Europe/Vienna date +%H%M`-Check in `update-cycle.yml`; die README-STATS-Marker werden bei jedem ca. 30-Min-Cycle-Tick aktualisiert | `.github/workflows/update-cycle.yml`, Step „Refresh statistics dashboard and README snapshot" (der separate `generate-stats.yml`-Workflow wurde zusammen mit den per-Provider-Escapes entfernt; Ad-hoc-Regenerationen laufen jetzt über `manual-full-refresh.yml`) |
+| **Strikt null Data-Science-Abhängigkeiten** — kein `numpy`, `pandas`, `matplotlib`; die CI-Installation bleibt sub-sekundär | `scripts/generate_markdown_stats.py` importiert nur `csv`, `collections`, `datetime`, `statistics`, `pathlib`, `zoneinfo`, `argparse` |
+| **Append-only, lock-freie Producer** — Einzelzeilen-Writes sind unter POSIX bis `PIPE_BUF` (4 KiB) atomar, parallele Cycle-Ticks können also nicht mitten in einer Zeile Bytes verschachteln | `src/utils/stats.py:_append_row` (Modus `"a"`, kein `flock`) |
+| **Strict-new-Gating für Disruptions** — langlebige Events werden einmal aufgezeichnet, nicht einmal pro Build | `src/build_feed.py:_update_item_state` schreibt nur beim *strikten* State-Cache-Miss (weder `_identity` noch `guid` hatten einen Vorgängereintrag) |
+| **Idempotente, byte-stabile Ausgabe** — ein erneuter Aggregator-Lauf auf identischer Eingabe erzeugt byte-identisches Markdown, damit `git-auto-commit-action` zum No-op wird, wenn nichts geändert hat | Stabiler Sekundär-Sort (alphabetische Tie-Breaks, z. B. `key=lambda pair: (-pair[1], pair[0])` in `_format_providers_section`, `_format_ausfall_directions_section`, `_format_ausfall_lines_section`) in jeder Rangliste; der Renderer liest `now()` nur für den Zeitstempel im Header |
+| **Per-Jahr-Datei-Rotation** — die einzelne Ledger-Größe bleibt auch über Mehrjahres-Betrieb beschränkt | Dateiname wird aus dem Wien-lokalen `timestamp.year` der Zeile abgeleitet, nicht aus der Prozess-Uhr |
 
-### Resiliency layers
+### Resilienz-Schichten
 
-The producers are observability, not core functionality, so every
-failure path is **best-effort, no-throw**: any `OSError` from the
-writer is logged at WARNING and swallowed. Production pipelines never
-crash because the disk filled up.
+Die Producer sind Observability, keine Kern-Funktionalität, deshalb
+ist jeder Fehlerpfad **best-effort, no-throw**: ein `OSError` aus dem
+Writer wird auf WARNING geloggt und verschluckt. Produktions-Pipelines
+crashen nie, weil die Platte vollgelaufen ist.
 
-The aggregator, by contrast, is the choke point that has to read
-*untrusted* on-disk bytes (a planted-huge CSV from a compromised CI
-runner is the canonical threat model). Three layered defences cover
-it:
+Der Aggregator hingegen ist der Engpass, der *nicht vertrauenswürdige*
+Bytes von der Platte lesen muss (eine im CI-Runner manipulierte
+riesige CSV ist das kanonische Threat-Modell). Drei gestaffelte
+Verteidigungslinien decken ihn ab:
 
-1. **Bounded reads** — every CSV is loaded through
-   `read_capped_text` (open + `fstat` on the open fd + capped
-   `read(MAX_CSV_BYTES + 1)`) and parsed via `csv.reader` over an
-   in-memory `io.StringIO`. The "no bare `csv.reader(handle)` in
-   `src/` or `scripts/`" invariant is enforced by
-   `tests/test_sentinel_csv_size_bomb.py`.
-2. **Malformed-row tolerance** — `_parse_stammstrecke_rows` /
-   `_parse_stoerung_rows` / `_parse_ausfall_rows` skip individual
-   rows that fail `fromisoformat` or `float()`. A single fat-fingered
-   manual edit never corrupts the entire dashboard.
-3. **Atomic dashboard write** — the rendered Markdown lands on disk
-   through `src.utils.files.atomic_write`. A kill-signal mid-render
-   cannot replace the previous dashboard with a half-written file.
+1. **Begrenzte Reads** — jede CSV wird über `read_capped_text` geladen
+   (`open` + `fstat` auf den offenen Filedescriptor + gedeckeltes
+   `read(MAX_CSV_BYTES + 1)`) und über `csv.reader` über einem
+   In-Memory-`io.StringIO` geparst. Das „kein bares
+   `csv.reader(handle)` in `src/` oder `scripts/`"-Invariant ist über
+   `tests/test_sentinel_csv_size_bomb.py` durchgesetzt.
+2. **Toleranz gegenüber fehlerhaften Zeilen** —
+   `_parse_stammstrecke_rows` / `_parse_stoerung_rows` /
+   `_parse_ausfall_rows` überspringen einzelne Zeilen, die
+   `fromisoformat` oder `float()` werfen. Ein fehlerhaft editierter
+   Eintrag legt nicht das ganze Dashboard lahm.
+3. **Atomarer Dashboard-Write** — das gerenderte Markdown landet via
+   `src.utils.files.atomic_write` auf der Platte. Ein Kill-Signal
+   mitten im Render-Vorgang kann das vorhandene Dashboard nicht durch
+   eine halbgeschriebene Datei ersetzen.
 
-### Test isolation
+### Test-Isolation
 
-The production writers default to `<repo>/data/stats/` via
-`src.utils.stats.DEFAULT_STATS_DIR`. An autouse fixture
-`isolate_stats_writes` in `tests/conftest.py` monkey-patches that
-constant to a per-test `tmp_path` for **every** test in the suite, so
-any test that transitively exercises a hot path which records stats
-(the `_update_item_state` strict-new branch, the Stammstrecke
-processing loop) cannot pollute the committed CSV ledger. Tests that
-explicitly target a different `stats_dir` (the dedicated unit tests in
-`tests/test_utils_stats.py`) are unaffected because the explicit
-keyword always wins inside `stats_path`.
+Die Produktion-Writer defaulten via `src.utils.stats.DEFAULT_STATS_DIR`
+auf `<repo>/data/stats/`. Eine autouse-Fixture `isolate_stats_writes`
+in `tests/conftest.py` monkey-patcht diese Konstante für **jeden** Test
+auf einen per-Test-`tmp_path`, sodass jeder Test, der transitiv einen
+Hot-Path triggert, der Statistik schreibt (der
+`_update_item_state`-strict-new-Branch, die
+Stammstrecken-Processing-Schleife) den committeten CSV-Ledger nicht
+verunreinigen kann. Tests, die explizit ein anderes `stats_dir` ansetzen
+(die dedizierten Unit-Tests in `tests/test_utils_stats.py`), bleiben
+unberührt, weil das explizite Keyword innerhalb von `stats_path` immer
+gewinnt.
 
-### What the dashboard answers
+### Was das Dashboard beantwortet
 
-| Question | Section in `docs/statistik.md` |
+| Frage | Sektion in `docs/statistik.md` |
 |---|---|
-| **When** do Stammstrecke delays occur? | "Stammstrecke" — weekday + hour distributions of both observation count and average delay |
-| **How often** is the Stammstrecke cancelling trains? | "Ausfälle" — per-direction and per-line tables plus weekday + hour distributions |
-| **When** do disruption events cluster? | "Störungen" — per-provider table plus weekday + hour distributions |
+| **Wann** treten Stammstrecken-Verspätungen auf? | „Stammstrecke" — Wochentag- und Stunden-Verteilung sowohl der Beobachtungszahl als auch der mittleren Verspätung |
+| **Wie häufig** fallen auf der Stammstrecke Züge aus? | „Ausfälle" — per-Richtung- und per-Linien-Tabellen plus Wochentag- und Stunden-Verteilung |
+| **Wann** bündeln sich Disruption-Events? | „Störungen" — per-Provider-Tabelle plus Wochentag- und Stunden-Verteilung |
 
 `extract_location_name` ist weiterhin Teil der Producer-Pipeline (siehe
 `src/utils/stats.py` und `src/build_feed.py:2041`) und persistiert die
@@ -626,81 +653,74 @@ adversarial Provider-Input noch rendert.
 
 ---
 
-## 7. VOR/VAO API — Stammstrecke-only scope (2026-05-11)
+## 7. VOR/VAO-API — Stammstrecke-only-Scope (2026-05-11)
 
-Die VOR/VAO ReST API erlaubt **100 Requests pro Tag** (`VAO Start`-
-Kontingent). Seit 2026-05-11 (Operator-Policy "VOR nur noch für die
+Die VOR/VAO-ReST-API erlaubt **100 Requests pro Tag** (`VAO Start`-
+Kontingent). Seit 2026-05-11 (Operator-Policy „VOR nur noch für die
 Verspätungen der Stammstrecke") ist der Stammstrecken-Monitor der
 **einzige** automatisierte VOR-Konsument im Projekt. Der frühere
 wöchentliche Station-Enrichment-Pfad und das optionale
 Disruption-Polling sind aus den automatisierten Pfaden entfernt;
-die zugehörigen Helper-Scripts (`update_vor_cache.py`,
+die zugehörigen Helper-Skripte (`update_vor_cache.py`,
 `update_vor_stations.py`, `fetch_vor_haltestellen.py`) wurden
 2026-05-11 aus `scripts/` gelöscht. VOR-Stop-IDs kommen jetzt
-ausschließlich aus der gepinnten
+ausschließlich aus dem gepinnten
 `data/vor-haltestellen.csv`-Snapshot. Seit 2026-05-15 verbraucht der
 Monitor zudem nur noch **48 Calls/Tag** (vorher 96): das aktive
-`scripts/update_stammstrecke_hbf.py`-Skript ruft pro Cron-Tick
-**eine** `/departureBoard`-Query am Wien Hauptbahnhof auf statt
-zwei `/trip`-Queries (Floridsdorf ↔ Meidling). Siehe
+`scripts/update_stammstrecke_hbf.py`-Skript setzt pro Cron-Tick
+**eine** `/departureBoard`-Query am Wien Hauptbahnhof ab statt zwei
+`/trip`-Queries (Floridsdorf ↔ Meidling). Siehe
 [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)
-für Details des Stammstrecken-Monitors.
+für Details zum Stammstrecken-Monitor.
 
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
-| **Stammstrecke `/departureBoard`** (~alle 30 Min × 1 Hbf-Call) | 48 | IFTTT-Cadence des `update-cycle.yml`-Triggers |
-| **Station-Enrichment `location.name`** | **0** (Pfad und Script entfernt 2026-05-11) | — |
-| **Disruption-Polling `departureBoard`** | **0** (Pfad und Script entfernt 2026-05-11) | — |
+| **Stammstrecke `/departureBoard`** (ca. alle 30 Min × 1 Hbf-Call) | 48 | IFTTT-Cadence des `update-cycle.yml`-Triggers |
+| **Station-Enrichment `location.name`** | **0** (Pfad und Skript 2026-05-11 entfernt) | — |
+| **Disruption-Polling `departureBoard`** | **0** (Pfad und Skript 2026-05-11 entfernt) | — |
 | **Auth-Diagnose** (`verify_vor_access_id.py`, `check_vor_auth.py`) | **0–2** | nur manueller Operator-Aufruf, einmalige Smoke-Tests |
 | **Tagesbudget gesamt** | **48 / 100** | — |
 
 Zwei zusammenwirkende Mechanismen schützen das Budget:
 
 1. **Keine automatisierten Nicht-Stammstrecke-Pfade**: Weder
-   `update-cycle.yml`, noch `update-stations.yml`, noch
+   `update-cycle.yml` noch `update-stations.yml` noch
    `manual-full-refresh.yml` rufen VOR-Disruption-Polling oder
-   VOR-Station-Enrichment auf. Die früheren Helper-Scripts existieren
+   VOR-Station-Enrichment auf. Die früheren Helper-Skripte existieren
    nicht mehr; nur die Auth-Diagnose-Helfer
    (`scripts/verify_vor_access_id.py`, `scripts/check_vor_auth.py`)
    bleiben für gezielte manuelle Smoke-Tests verfügbar.
 
-2. **`_charge_one_request`** (in
-   `scripts/update_stammstrecke_status.py` definiert, vom aktiven
+2. **`_charge_one_request`** (definiert in
+   `scripts/update_stammstrecke_status.py`, vom aktiven
    `update_stammstrecke_hbf.py` per Import wiederverwendet). Vor
-   jedem `/departureBoard`-Call wird ein Quota-Slot via
-   `vor_provider.save_request_count` reserviert; ein Lauf, der das
-   Tagesbudget reißen würde, raised `_QuotaExceeded` *vor* dem
-   Network Call. Defense-in-depth: `update-cycle.yml` schaltet den
-   Step zudem über `scripts/preflight_quota_check.py --check vor
-   --margin 1` vor jedem Tick aus, sobald der persistierte Counter
-   keinen Slot mehr lässt.
+   jedem `/departureBoard`-Call wird über
+   `vor_provider.save_request_count` ein Quota-Slot reserviert; ein
+   Lauf, der das Tagesbudget reißen würde, raised `_QuotaExceeded`
+   *vor* dem Network-Call. Defense-in-Depth: `update-cycle.yml`
+   schaltet den Step zusätzlich über
+   `scripts/preflight_quota_check.py --check vor --margin 1` vor jedem
+   Tick aus, sobald der persistierte Counter keinen Slot mehr lässt.
 
-Mit 48 von 100 Calls/Tag bleibt komfortabel ein Puffer von ~52
+Mit 48 von 100 Calls/Tag bleibt komfortabel ein Puffer von ca. 52
 Calls für Operator-Direktaufrufe (`workflow_dispatch` auf
 `update-cycle.yml`, manuelle Smoke-Tests). Sollte das Budget in
-Zukunft enger werden, sind die niedrig-hängenden Hebel:
+Zukunft enger werden, sind die niedrig hängenden Hebel:
 
-* IFTTT-Applet von ~30-Min- auf Stunden-Cadence umstellen (halbiert
-  Stammstrecke auf 24 Calls/Tag).
+* IFTTT-Applet von ca. 30-Min- auf Stunden-Cadence umstellen (halbiert
+  die Stammstrecke auf 24 Calls/Tag).
 * `DEPARTURE_BOARD_DURATION_MIN = 45` → kürzeres Fenster (kein
   API-Effekt, aber kleinere Antwort-Payloads).
-* Operating-Hours-Cadence im IFTTT-Applet (nur 04-23 Uhr statt
+* Operating-Hours-Cadence im IFTTT-Applet (nur 04–23 Uhr statt
   ganztägig) — die Stammstrecke fährt zwischen 00:30 und 04:00 nur
   ausgedünnt, das Monitoring liefert dort kaum Signal.
 
 ---
 
-## 8. Cross-references
+## 8. Querverweise
 
-- **Security audit history** → `.jules/sentinel.md`
-- **Performance optimisations** → `.jules/apex.md`
-- **Static-analysis hygiene** → `.jules/purist.md`
-- **Complexity refactors** → `.jules/surgeon.md`
-- **`request_safe` joint refactor** → `.jules/omega.md`
-- **Chaos audit + RecursionError fix** → `.jules/saboteur.md`
-- **DX / docs / cartography** → `.jules/scribe.md` (this document's companion)
-- **Governance gates & hooks** → `.jules/automator.md`
-
-The `.jules/` journals are the project's institutional memory. When
-adding a new defence, optimisation, or refactor, append an entry there
-and (if the change is architecturally visible) update this map.
+Die laufende Audit- und Refactoring-Historie liegt in `CHANGELOG.md`
+(aktuelle und unveröffentlichte Einträge) und unter
+`docs/archive/audits/` (abgeschlossene Audit-Berichte). Architektur-
+relevante Änderungen sollten zusätzlich diese Karte und gegebenenfalls
+das jeweilige Mermaid-Diagramm aktualisieren.

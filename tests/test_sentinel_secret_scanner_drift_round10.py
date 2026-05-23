@@ -2,7 +2,7 @@
 token issuer prefixes whose canonical format silently bypasses specific
 attribution in the post-Round-9 ``_KNOWN_TOKENS`` table.
 
-The 2026-05-10 Round 9 (see ``.jules/sentinel.md``) closed New Relic
+The 2026-05-10 Round 9 closed New Relic
 NRAK / NRRA / NRII and re-stated the prevention rule:
 
 > "Every audit round that adds a new issuer MUST also enumerate THREE

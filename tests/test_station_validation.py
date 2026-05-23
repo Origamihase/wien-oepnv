@@ -96,11 +96,11 @@ def test_markdown_rendering_contains_sections(stations_file: Path, gtfs_file: Pa
     report = validate_stations(stations_file, gtfs_stops_path=gtfs_file)
     markdown = report.to_markdown()
 
-    assert "# Stations Validation Report" in markdown
-    assert "## Geographic duplicates" in markdown
-    assert "## Alias issues" in markdown
-    assert "## GTFS mismatches" in markdown
-    assert "*Coordinate anomalies*:" in markdown
+    assert "# Stationsverzeichnis-Validierungsbericht" in markdown
+    assert "## Geografische Duplikate" in markdown
+    assert "## Alias-Probleme" in markdown
+    assert "## GTFS-Abweichungen" in markdown
+    assert "*Koordinaten-Anomalien*:" in markdown
 
 
 def test_report_flags_missing_alias_list(tmp_path: Path, gtfs_file: Path) -> None:
@@ -244,8 +244,8 @@ def test_markdown_rendering_contains_cross_station_id_section() -> None:
 
     markdown = report.to_markdown()
 
-    assert "*Cross station ID issues*: 1" in markdown
-    assert "## Cross station ID issues" in markdown
+    assert "*Stationsübergreifende-ID-Kollisionen*: 1" in markdown
+    assert "## Stationsübergreifende-ID-Kollisionen" in markdown
     assert "bst:1234" in markdown
     assert "'Mitte'" in markdown
     # Underscore is a Markdown emphasis primitive; the canonical
@@ -255,7 +255,7 @@ def test_markdown_rendering_contains_cross_station_id_section() -> None:
     # escape resolution); only the raw Markdown text differs.
     assert "bst\\_code" in markdown
     assert "bst:5678" in markdown
-    assert "No issues detected." not in markdown
+    assert "Keine Probleme festgestellt." not in markdown
 
 
 def test_naming_validation_allows_duplicate_canonical_names(tmp_path: Path) -> None:

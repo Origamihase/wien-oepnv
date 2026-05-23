@@ -1,6 +1,6 @@
 """Sentinel PoC: ``scripts/generate_sitemap.py:_UNSAFE_URL_CHARS`` was the
 deferred sibling of the 2026-05-11 *Tag-Character / Variation-Selector
-Drift* round (``.jules/sentinel.md`` line 1720).
+Drift* round.
 
 The Round-11 journal entry widened every canonical-sanitiser regex in
 lockstep to cover the Unicode Tag block (U+E0000..U+E007F), the BMP
@@ -87,7 +87,7 @@ The *second layer* (``validate_public_feed_url`` -> ``validate_http_url``)
 uses the canonical ``src/utils/http.py:_UNSAFE_URL_CHARS`` which already
 matches the Round-11 additions, so a candidate carrying Tag-character or
 Variation-Selector bytes is currently rejected at the second layer. But
-the prevention rule from Round 6 (``.jules/sentinel.md`` line 8079)
+the prevention rule from Round 6
 explicitly named the structural risk:
 
   > A future PR that adds a callsite of ``_UNSAFE_URL_CHARS`` in

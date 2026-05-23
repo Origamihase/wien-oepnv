@@ -388,7 +388,7 @@ def test_reporting_control_chars_re_pattern_matches_canonical_pattern() -> None:
     requirement visible at PR-review time.
 
     Mirrors the cross-regex pattern-source pinning used by the
-    closing-checklist greps documented in `.jules/sentinel.md`.
+    closing-checklist greps documented in the audit.
     """
     assert _CONTROL_CHARS_RE.pattern == CANONICAL_LOGGING_RE.pattern, (
         "feed/reporting._CONTROL_CHARS_RE pattern drifted from "

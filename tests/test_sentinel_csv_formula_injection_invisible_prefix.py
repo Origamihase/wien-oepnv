@@ -3,7 +3,7 @@ BiDi / line-terminator characters at the
 ``src.utils.stats._sanitize_csv_text_field`` boundary.
 
 The 2026-05-09 ``CSV Formula Injection (CWE-1236) at the Stats-Writer
-Boundary`` round (``.jules/sentinel.md``) closed the canonical
+Boundary`` round closed the canonical
 formula-prefix surface (``=`` / ``+`` / ``-`` / ``@`` / ``\\t`` / ``\\r``)
 by prepending a single quote (``'``) to any cell beginning with one of
 :data:`_CSV_FORMULA_PREFIXES`. The CLEANER step in front of the
@@ -173,7 +173,7 @@ def test_csv_control_chars_regex_matches_invisible_prefix(
     """
     assert stats_utils._CSV_CONTROL_CHARS_RE.search(code_point) is not None, (
         f"_CSV_CONTROL_CHARS_RE must match {label} ({hex(ord(code_point))}); "
-        "see .jules/sentinel.md (CSV Formula Injection — Invisible Prefix "
+        "see the audit (CSV Formula Injection — Invisible Prefix "
         "Bypass) for the full list of code points the writer must strip."
     )
 
@@ -359,7 +359,7 @@ def test_csv_control_chars_regex_covers_canonical_invisible_dangerous_set() -> N
         + (" …" if len(missing) > 20 else "")
         + "\nThe two regexes must stay in sync: any code point covered "
         "by the canonical log sanitiser must also be flagged by the "
-        "CSV writer. See .jules/sentinel.md (CSV Formula Injection — "
+        "CSV writer. See the audit (CSV Formula Injection — "
         "Invisible Prefix Bypass) for the closing rule."
     )
 

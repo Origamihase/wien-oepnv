@@ -1,7 +1,7 @@
 """Sentinel: Clear-Text-Logging Drift in core utility modules.
 
 The journal's Clear-Text-Logging Drift family (PR #1351 in
-``.jules/sentinel.md``) hardened the OSM and (rolled-back) GTFS-RT
+the audit) hardened the OSM and (rolled-back) GTFS-RT
 Stammstrecke providers so every framework catch-all that logged the
 bound exception name routed the text through ``sanitize_log_arg``.
 The same pattern remained UN-hardened in three core utility modules

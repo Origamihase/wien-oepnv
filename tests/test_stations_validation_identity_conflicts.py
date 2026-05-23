@@ -217,7 +217,7 @@ def test_markdown_renders_identity_conflict_section(tmp_path: Path) -> None:
     report = validate_stations(path)
     rendered = report.to_markdown()
 
-    assert "## Identity field conflicts" in rendered
+    assert "## Identity-Field-Konflikte" in rendered
     # ``_safe_md`` HTML-escapes ``_`` to ``\_`` per CommonMark protocol.
     assert "wl\\_diva" in rendered
     assert "60200506" in rendered

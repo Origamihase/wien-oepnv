@@ -2,7 +2,7 @@
 issuer prefixes whose canonical format silently bypasses specific attribution
 in the post-Round-7 ``_KNOWN_TOKENS`` table.
 
-The 2026-05-10 Round 7 (see ``.jules/sentinel.md``) closed Doppler /
+The 2026-05-10 Round 7 closed Doppler /
 Buildkite Agent Token / Netlify and re-stated the prevention rule:
 
 > "Every audit round that adds a new issuer MUST also enumerate THREE

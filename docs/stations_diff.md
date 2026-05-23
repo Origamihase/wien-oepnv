@@ -1,21 +1,21 @@
-# stations.json Diff Report
+# stations.json — Diff-Bericht
 
-_Generated: 2026-05-21T21:11:43+00:00_
+_Erzeugt am: 2026-05-21T21:11:43+00:00_
 
-**Stations: 2236 → 2236 (Δ +0)**
+**Stationen: 2236 → 2236 (Δ +0)**
 
-## Added (0)
+## Hinzugefügt (0)
 
-_None._
+_Keine._
 
-## Removed (0)
+## Entfernt (0)
 
-_None._
+_Keine._
 
-## Renamed (0)
+## Umbenannt (0)
 
-_None._
+_Keine._
 
-## Coordinates shifted (≥ 100 m) (0)
+## Koordinaten verschoben (≥ 100 m) (0)
 
-_None._
+_Keine._

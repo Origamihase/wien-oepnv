@@ -4,7 +4,7 @@ Cloud token tier value-shape log-sanitisation across
 chain.
 
 The 2026-05-17 Slack + AI/ML Inference Platform Log-Sanitisation Drift
-Closure round (see ``.jules/sentinel.md``) named the **DevOps & CI/CD
+Closure round named the **DevOps & CI/CD
 Pipeline credential tier** as the next high-impact backlog cluster. The
 secret-scanner ``_KNOWN_TOKENS`` already detects committed tokens for the
 following 13 issuer-prefixes across 4 vendors, but the companion log-

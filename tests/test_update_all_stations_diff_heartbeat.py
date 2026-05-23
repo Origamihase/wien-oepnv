@@ -84,10 +84,10 @@ def test_render_diff_markdown_clean_run_signals_no_change() -> None:
     diff: wrapper._DiffResult = {"added": [], "removed": [], "renamed": [], "coord_shifted": []}
     rendered = wrapper._render_diff_markdown(diff, before_count=107, after_count=107, timestamp="2026-05-05T18:00:00+00:00")
 
-    assert "stations.json Diff Report" in rendered
+    assert "stations.json — Diff-Bericht" in rendered
     assert "107 → 107 (Δ +0)" in rendered
-    assert "_None._" in rendered  # each empty section emits the placeholder
-    assert rendered.count("_None._") == 4  # all four sections empty
+    assert "_Keine._" in rendered  # each empty section emits the placeholder
+    assert rendered.count("_Keine._") == 4  # all four sections empty
 
 
 def test_render_diff_markdown_lists_renames() -> None:
@@ -415,4 +415,4 @@ def test_wrapper_writes_heartbeat_and_diff_on_success(
 
     diff_path = tmp_path / "diff.md"
     assert diff_path.exists()
-    assert "stations.json Diff Report" in diff_path.read_text(encoding="utf-8")
+    assert "stations.json — Diff-Bericht" in diff_path.read_text(encoding="utf-8")

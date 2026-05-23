@@ -1,33 +1,37 @@
-# Security Policy
+# Sicherheits-Richtlinie
 
-## Supported Versions
+## Unterstützte Versionen
 
-The following versions of the project are currently supported with security updates:
+Aktuell werden ausschließlich folgende Versionen mit Sicherheits-Updates versorgt:
 
-| Version | Supported          |
+| Version | Unterstützt        |
 | ------- | ------------------ |
 | Main    | :white_check_mark: |
 
-## Reporting a Vulnerability
+## Schwachstellen melden
 
-We take the security of this project seriously. If you find any security vulnerability, please report it to us as soon as possible.
+Wir nehmen die Sicherheit dieses Projekts ernst. Wer eine Schwachstelle entdeckt, möge sie bitte so zeitnah wie möglich melden.
 
-### How to Report
+### Meldewege
 
-Please do **not** report security vulnerabilities through public GitHub issues. Instead, please report them via the following channels:
+Bitte **keine** öffentlichen GitHub-Issues für Sicherheitsmeldungen verwenden. Stattdessen einen der folgenden Kanäle nutzen:
 
-1.  **GitHub Security Advisories:** If enabled for this repository, please use the "Report a vulnerability" button in the Security tab.
-2.  **Email:** If you cannot use GitHub Security Advisories, please send an email to the repository owner (contact info typically found in the GitHub profile).
+1. **GitHub Security Advisories**: Falls für dieses Repository aktiviert, die Schaltfläche „Report a vulnerability" im Reiter *Security* benutzen.
+2. **E-Mail**: Falls GitHub Security Advisories nicht infrage kommen, eine E-Mail an die Repository-Inhaber:innen senden (Kontaktdaten typischerweise im GitHub-Profil).
 
-### What to Include
+### Was die Meldung enthalten sollte
 
-Please include as much information as possible to help us reproduce and fix the issue:
+Bitte so viele Informationen wie möglich beilegen, damit das Problem reproduzierbar und behebbar wird:
 
--   A description of the vulnerability.
--   Steps to reproduce the issue.
--   Affected versions.
--   Any potential impact or proof of concept (PoC).
+- Beschreibung der Schwachstelle.
+- Schritte zur Reproduktion.
+- Betroffene Versionen.
+- Mögliche Auswirkung oder Proof of Concept (PoC).
 
-### Response Timeline
+### Reaktionszeit
 
-We will try to acknowledge your report within 48 hours and provide an estimated timeline for a fix. We appreciate your cooperation in disclosing vulnerabilities responsibly.
+Wir bestätigen den Eingang in der Regel innerhalb von 48 Stunden und liefern eine grobe Einschätzung des Zeitfensters für die Behebung. Vielen Dank für die kooperative, verantwortungsvolle Offenlegung.
+
+### Sicherheitsmodell im Überblick
+
+Eine Übersicht über die im Projekt etablierten Schutzmechanismen (SSRF-Schutz via `request_safe`, atomare Schreiboperationen, Path-Guard auf `docs/`/`data/`/`log/`, Secret-Scanner, Quota-Schichten der VOR/VAO-Anbindung) steht in [`AGENTS.md`](AGENTS.md) und in [`docs/architecture.md`](docs/architecture.md) §§2–4.

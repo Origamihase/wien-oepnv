@@ -4,7 +4,7 @@ Git-Host token family value-shape log-sanitisation across
 chain.
 
 The 2026-05-17 Vault and GitHub Log-Sanitisation Drift Closure rounds
-(see ``.jules/sentinel.md``) established the canonical "value-shape mask
+ established the canonical "value-shape mask
 for every scanner ``_KNOWN_TOKENS`` prefix" contract. The GitHub round
 explicitly named "the FIRST of the ~70 next-round-candidate scanner
 detectors with parallel log-sanitisation drift"; this round closes the

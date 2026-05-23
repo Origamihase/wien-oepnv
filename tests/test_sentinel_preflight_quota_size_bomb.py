@@ -1,7 +1,7 @@
 """Sentinel PoC: preflight quota state — JSON size-bomb on the
 ``scripts/preflight_quota_check.py:_read_json_file`` loader.
 
-The 2026-05-08 *JSON Size-Bomb Round 3* round (``.jules/sentinel.md``)
+The 2026-05-08 *JSON Size-Bomb Round 3* round
 canonicalised ``read_capped_json`` for sixteen on-disk JSON loaders
 across eight scripts in ``scripts/``. The closing-checklist grep
 enumerated every ``json.load(handle)`` / ``Path.read_text()``-then-

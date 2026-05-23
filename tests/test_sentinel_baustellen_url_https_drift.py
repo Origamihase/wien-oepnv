@@ -2,7 +2,7 @@
 the Stadt Wien OGD endpoint via env override.
 
 The 2026-05-10 *HTTPS-only Provider URL Drift* round (PR #1415,
-``.jules/sentinel.md``) closed the analogous shape for the three
+the audit) closed the analogous shape for the three
 provider URL validators (``_validated_vor_base_url`` /
 ``_validated_oebb_url`` / ``_validated_wl_base``) — pinning the scheme
 to ``https`` so an env override cannot redirect credentials over
