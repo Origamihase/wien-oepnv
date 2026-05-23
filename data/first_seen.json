@@ -1869,6 +1869,15 @@
   "wl|st\u00f6rung|L=44|D=2026-05-13": {
     "first_seen": "2026-05-13T04:00:42.036563+00:00"
   },
+  "wl|st\u00f6rung|L=44|D=2026-05-23": {
+    "first_seen": "2026-05-23T14:30:41.431657+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "44: traffic accident"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=46A|D=2026-04-23": {
     "first_seen": "2026-04-23T14:02:05.586384+00:00"
   },
@@ -2304,6 +2313,15 @@
     "translations": {
       "en": {
         "title": "60: Driving disability Traffic accident"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=60|D=2026-05-23": {
+    "first_seen": "2026-05-23T14:30:41.431657+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction in the direction of Westbahnhof S U. expected duration: 17:00. Reason: switch fault in the stop area Penzinger Stra\u00dfe.",
+        "title": "60: delays"
       }
     }
   },
@@ -3537,6 +3555,15 @@
       "en": {
         "summary": "Irregular intervals towards Leopoldau. Reason: Harmful vehicle.",
         "title": "U1: Delays"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=U1|D=2026-05-23": {
+    "first_seen": "2026-05-23T14:30:41.431657+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: service disruption.",
+        "title": "U1: service disruption"
       }
     }
   },
