@@ -37,6 +37,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import math
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
@@ -48,10 +49,10 @@ if str(_ROOT) not in sys.path:
 
 try:  # pragma: no cover - convenience for module execution
     from src.feed.logging_safe import setup_script_logging
-    from src.utils.files import atomic_write, read_capped_bytes
+    from src.utils.files import atomic_write, loads_finite, read_capped_bytes
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from feed.logging_safe import setup_script_logging  # type: ignore[no-redef]
-    from utils.files import atomic_write, read_capped_bytes  # type: ignore[no-redef]
+    from utils.files import atomic_write, loads_finite, read_capped_bytes  # type: ignore[no-redef]
 
 # Cap mirrors ``MAX_JSON_FILE_BYTES`` in scripts/update_station_directory.py.
 # The raw GeoNetz dump is ~23 MiB; 50 MiB leaves ~2x headroom for a future
@@ -96,7 +97,19 @@ def _coerce_float(value: Any) -> float | None:
     if isinstance(value, bool):
         return None  # JSON true/false should never end up in a coord field
     if isinstance(value, (int, float)):
-        return float(value)
+        coerced = float(value)
+        # Security: reject ``NaN`` / ``±Inf`` so a poisoned upstream
+        # coordinate (compromised CDN / DNS hijack / MITM on the
+        # ÖBB-Infrastruktur fetch) cannot land non-standard non-finite
+        # literals in the committed ``data/oebb_geonetz_stops.json``
+        # sidecar. Mirrors the canonical coordinate-floor pinned at
+        # :func:`src.places.hafas_client._extract_first_location`,
+        # :func:`src.places.client._parse_place`, and the writer-side
+        # ``allow_nan=False`` pin established in Round 1485
+        # (``src.places.merge.write_stations``).
+        if not math.isfinite(coerced):
+            return None
+        return coerced
     return None
 
 
@@ -172,8 +185,22 @@ def extract(raw_path: Path, source_url: str) -> dict[str, Any]:
     # past every ``json.JSONDecodeError`` / ``ValueError`` handler. See
     # JSON Depth-Bomb Drift Round 5 walker in
     # tests/test_sentinel_json_audit_walker.py.
+    #
+    # Security: ``loads_finite`` pins ``parse_constant`` + ``parse_float``
+    # hooks that reject ``NaN`` / ``Infinity`` / ``-Infinity`` literal
+    # tokens AND scientific-notation overflow (``1e1000`` → ``+inf``).
+    # Pre-fix ``json.loads(raw_bytes)`` accepted the non-finite literal
+    # family under Python's default lenient settings — a planted
+    # ``STP_LAT: NaN`` in a compromised upstream GeoNetz dump
+    # (compromised CDN / DNS hijack / MITM on the ÖBB-Infrastruktur
+    # fetch) propagates through ``_coerce_float`` (which only checks
+    # ``isinstance(value, (int, float))`` — ``float('nan')`` IS a
+    # float) into the committed ``data/oebb_geonetz_stops.json``
+    # sidecar as a non-standard ``NaN`` literal invalid per RFC 8259.
+    # The writer-side ``allow_nan=False`` pin below is the
+    # defence-in-depth second layer.
     try:
-        raw = json.loads(raw_bytes)
+        raw = loads_finite(raw_bytes)
     except Exception as exc:
         raise ValueError(
             f"Raw GeoNetz file {raw_path} unparseable as JSON: {exc}"
@@ -256,8 +283,22 @@ def main(argv: list[str] | None = None) -> int:
     # the next cron tick. Mirrors the canonical writer pattern used by
     # the sibling ``data/stations.json`` / ``data/quarantine.json`` /
     # ``cache/<provider>/events.json`` sinks.
+    # Security (Coordinate finite/range drift, committed-writer defence-
+    # in-depth): ``allow_nan=False`` mirrors the canonical writer-side
+    # pin established in Round 1485 at
+    # :func:`src.places.merge.write_stations` and extended in
+    # Round 1487 to :func:`src.utils.cache.write_cache` /
+    # :func:`src.utils.cache.write_status`. The payload's coordinate
+    # fields are scrubbed by :func:`_coerce_float` upstream, but the
+    # writer-side pin surfaces any future bypass (e.g. a new float
+    # field added to the payload schema) as a loud ``ValueError``
+    # rather than silently landing non-standard ``NaN`` / ``Infinity``
+    # literals (invalid per RFC 8259) in the committed
+    # ``data/oebb_geonetz_stops.json`` sidecar.
     with atomic_write(args.output, mode="w", encoding="utf-8") as handle:
-        handle.write(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+        handle.write(
+            json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
+        )
     size_kib = args.output.stat().st_size / 1024
     logger.info(
         "Wrote %d stops (%.0f KiB) to %s — fahrplanperiode %s..%s",

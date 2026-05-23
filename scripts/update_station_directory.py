@@ -2124,19 +2124,48 @@ def _load_geonetz_stops(path: Path) -> dict[str, dict[str, object]]:
     malformed payload degrades to an empty dict with a warning — the
     enrichment is a best-effort metadata-only tier whose absence must
     never crash the cron pipeline.
+
+    Security: ``read_capped_json`` enforces both the depth-bomb catch
+    tuple AND the byte-size cap (see :data:`MAX_JSON_FILE_BYTES`),
+    plus ``parse_constant`` + ``parse_float`` non-finite literal
+    rejection. Pre-fix the loader used ``json.loads(path.read_text(...))``
+    which buffers the entire file into memory before parsing — a
+    planted huge file at ``data/oebb_geonetz_stops.json`` (compromised
+    CI runner / hostile PR / corrupted previous run / partial flush +
+    power loss) would propagate ``MemoryError`` (a ``BaseException``
+    subclass NOT caught by ``except Exception:``) past the loader and
+    crash the weekly station refresh cron pipeline (the orchestrator
+    runs every update script via ``subprocess.run(check=True)``).
+    Pre-fix also accepted ``NaN`` / ``Infinity`` / scientific-notation
+    overflow tokens at the JSON parse boundary — a poisoned coordinate
+    field would propagate as ``float('nan')`` / ``float('inf')`` past
+    the ``isinstance(value, str)`` guards on ``bsts_id`` into
+    downstream enrichment that compares via ``==``/``!=``
+    (``nan != nan`` is True — silent dedup invariant breakage).
+    Mirrors the canonical loader pattern pinned at
+    :func:`_load_existing_station_entries` and
+    :func:`load_pendler_station_ids` in this module.
     """
     if not path.exists():
         logger.info("GeoNetz stops file not found: %s — skipping enrichment", path)
         return {}
-    try:
-        # ``Exception`` deliberately covers RecursionError too — a
-        # nested-array depth-bomb (~5000 levels, few KB on disk) raises
-        # RecursionError from ``json.loads`` past every ``OSError`` /
-        # ``json.JSONDecodeError`` handler. See JSON Depth-Bomb Drift
-        # Round 5 walker in tests/test_sentinel_json_audit_walker.py.
-        raw = json.loads(path.read_text(encoding="utf-8"))
-    except Exception as exc:
-        logger.warning("Failed to load GeoNetz stops from %s: %s", path, exc)
+    # Security: ``read_capped_json`` enforces the depth-bomb catch tuple,
+    # the byte-size cap, AND ``parse_constant`` / ``parse_float`` non-
+    # finite literal rejection. Returns ``None`` on missing / invalid /
+    # oversized files — closing the unbounded ``path.read_text()``
+    # MemoryError vector that pre-fix could crash the cron pipeline.
+    raw = read_capped_json(
+        path,
+        MAX_JSON_FILE_BYTES,
+        label="GeoNetz stops",
+        logger=logger,
+    )
+    if raw is None:
+        logger.warning(
+            "Failed to load GeoNetz stops from [path-sha256=%s] "
+            "(missing/invalid/oversized)",
+            _path_fingerprint(path),
+        )
         return {}
     stops = raw.get("stops") if isinstance(raw, Mapping) else None
     if not isinstance(stops, list):
