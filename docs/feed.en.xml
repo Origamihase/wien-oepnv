@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 24 May 2026 01:00:49 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 01:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Eßlinger Hauptstraße 96]]></title>
@@ -19,6 +19,17 @@
       <ext:ends_at>Sun, 06 Sep 2026 02:00:00 +0200</ext:ends_at>
       <description>Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane. [25.05.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane.<br/>[25.05.2026 – 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">809633dc17702ea5749ccf9f4418e79ceb36712e1a203d0f4be57734e09fe65f</guid>
+      <pubDate>Sun, 24 May 2026 01:19:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 01:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 01:19:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Quellenplatz.. expected duration: 02:00. Reason: fire-brigade operation in the Baumgasse range. [On 24.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Quellenplatz.. expected duration: 02:00. Reason: fire-brigade operation in the Baumgasse range.<br/>[On 24.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N31: Buses stop at 5B]]></title>
@@ -34,13 +45,13 @@
     <item>
       <title><![CDATA[37: foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c5967a225000cfa70f0360204f0e15a3823fbe67437b4556e2214a6146b37072</guid>
-      <pubDate>Sun, 24 May 2026 00:48:00 +0200</pubDate>
+      <guid isPermaLink="false">89120d0470ea18b91557ad7fb1b2bbd655bec5746442fac646a071a183fbd310</guid>
+      <pubDate>Sun, 24 May 2026 00:49:21 +0200</pubDate>
       <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 00:48:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction towards High Wait. expected duration: 01:15 clock. Reason: Foreign traffic accident in the Barawitzkagasse station area. [On 24.05.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards High Wait. expected duration: 01:15 clock. Reason: Foreign traffic accident in the Barawitzkagasse station area.<br/>[On 24.05.2026]]]></content:encoded>
+      <ext:starts_at>Sun, 24 May 2026 00:49:21 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 01:49:00 +0200</ext:ends_at>
+      <description>[On 24.05.2026]</description>
+      <content:encoded><![CDATA[[On 24.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: police operation]]></title>
@@ -49,7 +60,7 @@
       <pubDate>Sun, 24 May 2026 00:43:00 +0200</pubDate>
       <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
       <ext:starts_at>Sun, 24 May 2026 00:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sun, 24 May 2026 01:28:00 +0200</ext:ends_at>
       <description>service obstruction towards Hütteldorf. expected duration: 01:00. Reason: police operation in the Spittelau stop area. [On 24.05.2026]</description>
       <content:encoded><![CDATA[service obstruction towards Hütteldorf. expected duration: 01:00. Reason: police operation in the Spittelau stop area.<br/>[On 24.05.2026]]]></content:encoded>
     </item>
@@ -60,7 +71,7 @@
       <pubDate>Sun, 24 May 2026 00:41:00 +0200</pubDate>
       <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
       <ext:starts_at>Sun, 24 May 2026 00:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sun, 24 May 2026 01:28:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: defective vehicle. [On 24.05.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 24.05.2026]]]></content:encoded>
     </item>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 24 May 2026 05:30:00 +0200</ext:ends_at>
       <description>[23.05.2026 – 24.05.2026]</description>
       <content:encoded><![CDATA[[23.05.2026 – 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Disability due to track construction]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d280e5ddac0af3382c1b354fb03d282c238bf112358b241357de02731032fe74</guid>
-      <pubDate>Fri, 22 May 2026 00:00:27 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[22.05.2026 – 24.05.2026]</description>
-      <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
