@@ -237,14 +237,14 @@ def test_extract_writer_pins_allow_nan_false() -> None:
     :func:`src.places.merge.write_stations` (Round 1485) and
     :func:`src.utils.cache.write_cache` (Round 1487).
     """
-    import scripts.extract_oebb_geonetz_stops as eog
+    from scripts.extract_oebb_geonetz_stops import main
 
     # Inspect the writer's source to verify the pin is in place — a
     # source-level assertion catches both the regression and any future
     # refactor that drops the writer pin.
     import inspect
 
-    source = inspect.getsource(eog.main)
+    source = inspect.getsource(main)
     assert "allow_nan=False" in source, (
         "Writer must pin allow_nan=False — pre-fix shape silently emits "
         "non-standard NaN / Infinity literals into committed JSON."
