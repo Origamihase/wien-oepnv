@@ -1,16 +1,16 @@
-# Stations Validation Report
+# Stationsverzeichnis-Validierungsbericht
 
-*Total stations analysed*: 2236
-*GTFS stops loaded*: 167
-*Geographic duplicates*: 1
-*Alias issues*: 0
-*Coordinate anomalies*: 0
-*GTFS mismatches*: 0
-*Security warnings*: 0
-*Provider issues*: 0
-*Cross station ID issues*: 0
-*Identity field conflicts*: 0
-*Naming issues*: 0
+*Analysierte Stationen (gesamt)*: 2236
+*Geladene GTFS-Stops*: 167
+*Geografische Duplikate*: 1
+*Alias-Probleme*: 0
+*Koordinaten-Anomalien*: 0
+*GTFS-Abweichungen*: 0
+*Sicherheitswarnungen*: 0
+*Provider-Probleme*: 0
+*Stationsübergreifende-ID-Kollisionen*: 0
+*Identity-Field-Konflikte*: 0
+*Namens-Probleme*: 0
 
-## Geographic duplicates
+## Geografische Duplikate
 - (47.82668, 16.17324) → source:hafas,manual,oebb\_geonetz, source:hafas,manual,oebb\_geonetz

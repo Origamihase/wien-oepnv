@@ -415,4 +415,4 @@ def test_wrapper_writes_heartbeat_and_diff_on_success(
 
     diff_path = tmp_path / "diff.md"
     assert diff_path.exists()
-    assert "stations.json Diff Report" in diff_path.read_text(encoding="utf-8")
+    assert "stations.json — Diff-Bericht" in diff_path.read_text(encoding="utf-8")
