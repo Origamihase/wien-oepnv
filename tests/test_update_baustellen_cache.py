@@ -152,7 +152,11 @@ def test_collect_events_from_sample_payload() -> None:
     assert first["location"]["coordinates"] == {"lat": 48.2562499, "lon": 16.4007}
 
 
-def test_main_uses_fallback_when_remote_fails(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_main_uses_fallback_when_remote_fails(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    import logging
+
     calls: list[tuple[str, list[dict[str, Any]]]] = []
 
     def fake_fetch_remote(url: str, timeout: int) -> None:
@@ -164,12 +168,21 @@ def test_main_uses_fallback_when_remote_fails(monkeypatch: pytest.MonkeyPatch) -
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
     monkeypatch.setattr(update_baustellen_cache, "write_cache", capture_cache)
     monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
+    caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
 
     exit_code = update_baustellen_cache.main()
 
-    assert exit_code == 0
+    # Exit 2 = degraded: the cache came from the fallback sample, not a
+    # live fetch. The previous silent ``return 0`` is what let the broken
+    # WFS fetch hide for weeks.
+    assert exit_code == 2
     assert calls and calls[0][0] == "baustellen"
     assert len(calls[0][1]) == 2
+    assert any(
+        "FALLBACK" in record.getMessage()
+        for record in caplog.records
+        if record.name == "update_baustellen_cache"
+    )
 
 
 def test_resolve_fallback_path_default_when_unset() -> None:

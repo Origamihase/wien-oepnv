@@ -160,7 +160,7 @@ def test_resolve_radius_clamping(monkeypatch: pytest.MonkeyPatch, raw: str, expe
 
 
 def test_post_filter_keeps_relevant_drops_noise_passes_stubs() -> None:
-    relevant = {"title": "Umbau", "description": "x", "location": _loc(*WIEN_HBF)}
+    relevant = {"title": "Fahrbahnsanierung", "description": "x", "location": _loc(*WIEN_HBF)}
     noise = {"title": "Hinterhof", "description": "x", "location": _loc(*FAR_AWAY)}
     no_coords = {"title": "Ohne Geo", "description": "x"}
     stub = {"guid": "meta-only"}
@@ -168,11 +168,29 @@ def test_post_filter_keeps_relevant_drops_noise_passes_stubs() -> None:
 
     result = _post_filter_baustellen([relevant, noise, no_coords, stub, sentinel])
 
-    assert relevant in result
-    assert noise not in result
-    assert no_coords not in result  # no coordinates → fail closed
+    titles = [r["title"] for r in result if isinstance(r, dict) and "title" in r]
+    # Relevant item kept and prefixed with the affected Bahnhof.
+    assert any(t.endswith("Fahrbahnsanierung") and "Hauptbahnhof" in t for t in titles)
+    assert "Hinterhof" not in titles  # far from any Bahnhof → dropped
+    assert "Ohne Geo" not in titles  # no coordinates → fail closed
     assert stub in result  # title/description-less stub passes through
     assert sentinel in result  # non-dict passes through
+
+
+def test_post_filter_enriches_title_with_affected_bahnhof() -> None:
+    item = {"title": "Vollsperre Nordbahnstraße", "description": "x", "location": _loc(*WIEN_HBF)}
+    [out] = _post_filter_baustellen([item])
+    assert out["title"].startswith("Wien Hauptbahnhof: ")
+    assert out["title"].endswith("Vollsperre Nordbahnstraße")
+    # Original dict is left untouched (mutation via copy).
+    assert item["title"] == "Vollsperre Nordbahnstraße"
+
+
+def test_post_filter_does_not_double_name_station() -> None:
+    # Title already names the station → no redundant prefix.
+    item = {"title": "Umbau Bahnhof Mödling", "description": "x", "location": _loc(*MOEDLING)}
+    [out] = _post_filter_baustellen([item])
+    assert out["title"] == "Umbau Bahnhof Mödling"
 
 
 # --- _first_lonlat (geometry descent) -----------------------------------------

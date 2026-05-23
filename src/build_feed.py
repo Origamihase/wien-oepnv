@@ -328,19 +328,39 @@ def read_cache_oebb() -> list[Any]:
     return _post_filter_oebb(list(read_cache("oebb") or []))
 
 
-def _post_filter_baustellen(items: list[Any]) -> list[Any]:
-    """Defence-in-depth: keep only construction sites at/near a rail Bahnhof.
+def _baustellen_title_names_station(title: str, label: str) -> bool:
+    """Return ``True`` if ``title`` already mentions a distinctive token of
+    the station ``label``, so the prefix isn't doubled up (e.g. avoid
+    ``Wien Floridsdorf: Umbau Bahnhofsvorplatz Floridsdorf``). The generic
+    ``Wien`` token (and other ≤4-char tokens) is ignored on purpose."""
+    lowered = title.lower()
+    return any(
+        len(token) > 4 and token in lowered
+        for token in re.split(r"\W+", label.lower())
+    )
 
-    ``update_baustellen_cache.py`` already applies this relevance gate at
-    ingestion, but the on-disk cache (or the bundled fallback sample) may
-    predate the current policy. Re-applying on read guarantees the feed
-    never carries a back-courtyard road closure the current spec would
-    reject — the same defence-in-depth contract as :func:`_post_filter_oebb`.
+
+def _post_filter_baustellen(items: list[Any]) -> list[Any]:
+    """Defence-in-depth relevance gate plus ÖPNV title enrichment.
+
+    ``update_baustellen_cache.py`` already drops construction sites that
+    are not at/near a rail Bahnhof at ingestion, but the on-disk cache (or
+    the bundled fallback sample) may predate the current policy — so the
+    gate is re-applied here, the same defence-in-depth contract as
+    :func:`_post_filter_oebb`.
+
+    For the items that pass, the affected Bahnhof (Wien station or
+    Pendlerbahnhof) is prefixed onto the title so the entry reads as a
+    transit message at a glance — mirroring the line/route prefixes WL and
+    ÖBB carry, and the title re-derivation :func:`_post_filter_oebb`
+    performs. The prefix is skipped when the title already names the
+    station, keeping the headline compact.
 
     Items carrying neither a title nor a description are treated as
     stubs/metadata and passed through unchanged.
     """
-    from .providers.baustellen import is_transit_relevant
+    from .providers.baustellen import relevant_station
+    from .utils.stations import display_name
 
     out: list[Any] = []
     for item in items:
@@ -353,8 +373,13 @@ def _post_filter_baustellen(items: list[Any]) -> list[Any]:
             # Stub / metadata item — leave it alone.
             out.append(item)
             continue
-        if not is_transit_relevant(item.get("location")):
+        station = relevant_station(item.get("location"))
+        if station is None:
             continue
+        label = display_name(station) or station
+        if label and not _baustellen_title_names_station(title, label):
+            item = dict(item)
+            item["title"] = f"{label}: {title}" if title else label
         out.append(item)
     return out
 

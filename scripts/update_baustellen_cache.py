@@ -676,9 +676,15 @@ def main() -> int:
                 sanitize_log_arg(timeout_raw),
             )
     payload = _fetch_remote(data_url, timeout)
+    used_fallback = False
     if payload is None:
+        used_fallback = True
         payload = _load_fallback(fallback_path)
         if payload is None:
+            LOGGER.error(
+                "Baustellen: Live-Abruf UND Fallback fehlgeschlagen – Cache "
+                "nicht aktualisiert."
+            )
             return 1
     events = _collect_events(payload)
     # Keep only construction sites at/near a rail Bahnhof (Wien station or
@@ -694,6 +700,18 @@ def main() -> int:
             len(events),
         )
     write_cache("baustellen", relevant)
+    if used_fallback:
+        # Exit 2 = "degraded": the cache was written from the bundled
+        # fallback sample, NOT a live fetch. The cron wrapper maps any
+        # non-zero exit to a visible ``::warning`` so this failure mode
+        # stops hiding behind an INFO "Cache aktualisiert" success line.
+        LOGGER.warning(
+            "Baustellen: Live-Abruf fehlgeschlagen – Cache nutzt FALLBACK-"
+            "Demodaten (%d Eintrag/Einträge, kein ÖPNV-Live-Signal). "
+            "WFS-Endpoint prüfen.",
+            len(relevant),
+        )
+        return 2
     LOGGER.info("Baustellen: Cache mit %d Einträgen aktualisiert.", len(relevant))
     return 0
 
