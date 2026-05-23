@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 24 May 2026 00:52:42 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 01:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Eßlinger Hauptstraße 96]]></title>
@@ -21,6 +21,17 @@
       <content:encoded><![CDATA[Die Rohrlegungsarbeiten werden in der Nacht, in der Zeit von von 20:00 Uhr bis 05:00 Uhr bei Sperre von einem Fahrstreifen durchgeführt.<br/>[25.05.2026 – 06.09.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[N31: Busse halten in 5B Haltestelle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">99c0f0d91bebb27b44d688aa64a7f76e32acd8e71ce8e2fb023d1dcc8992f5fa</guid>
+      <pubDate>Sun, 24 May 2026 00:55:22 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 01:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 00:55:22 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>[Am 24.05.2026]</description>
+      <content:encoded><![CDATA[[Am 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[37: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c5967a225000cfa70f0360204f0e15a3823fbe67437b4556e2214a6146b37072</guid>
@@ -28,8 +39,8 @@
       <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
       <ext:starts_at>Sun, 24 May 2026 00:48:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Hohe Warte. Voraussichtliche Dauer: 01:15 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Barawitzkagasse. [Am 24.05.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Hohe Warte. Voraussichtliche Dauer: 01:15 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Barawitzkagasse.<br/>[Am 24.05.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Polizeieinsatz]]></title>
@@ -39,8 +50,8 @@
       <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
       <ext:starts_at>Sun, 24 May 2026 00:43:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Hütteldorf. Voraussichtliche Dauer: 01:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Spittelau. [Am 24.05.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Hütteldorf. Voraussichtliche Dauer: 01:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Spittelau.<br/>[Am 24.05.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Verspätungen]]></title>
@@ -104,17 +115,6 @@
       <pubDate>Fri, 22 May 2026 00:00:27 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[22.05.2026 – 24.05.2026]</description>
-      <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Aufgelassen Busse halten Wienerbergbrücke]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fea8a52de8284e73a68e14a51478ee4263f596086bd37c21aa6e1137962f6b4a</guid>
-      <pubDate>Fri, 22 May 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 00:00:20 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[22.05.2026 – 24.05.2026]</description>
       <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>

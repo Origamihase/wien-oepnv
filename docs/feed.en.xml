@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 24 May 2026 00:52:42 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 01:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Eßlinger Hauptstraße 96]]></title>
@@ -19,6 +19,17 @@
       <ext:ends_at>Sun, 06 Sep 2026 02:00:00 +0200</ext:ends_at>
       <description>Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane. [25.05.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane.<br/>[25.05.2026 – 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N31: Buses stop at 5B]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">99c0f0d91bebb27b44d688aa64a7f76e32acd8e71ce8e2fb023d1dcc8992f5fa</guid>
+      <pubDate>Sun, 24 May 2026 00:55:22 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 01:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 00:55:22 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>[On 24.05.2026]</description>
+      <content:encoded><![CDATA[[On 24.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37: foreign traffic accident]]></title>
@@ -104,17 +115,6 @@
       <pubDate>Fri, 22 May 2026 00:00:27 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[22.05.2026 – 24.05.2026]</description>
-      <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Open buses stop at Wienerbergbrücke]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fea8a52de8284e73a68e14a51478ee4263f596086bd37c21aa6e1137962f6b4a</guid>
-      <pubDate>Fri, 22 May 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 00:00:20 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[22.05.2026 – 24.05.2026]</description>
       <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
