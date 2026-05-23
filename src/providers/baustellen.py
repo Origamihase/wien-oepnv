@@ -27,8 +27,22 @@ __all__ = [
     "DEFAULT_STATION_RADIUS_M",
     "is_transit_relevant",
     "mentions_oepnv",
+    "oepnv_lead",
     "relevant_station",
+    "u_bahn_lines",
 ]
+
+# U-Bahn line labels (U1–U6) are the one line identifier that can be pulled
+# from the free text reliably — unambiguous token, no negation traps, and
+# it marks the marquee projects. Bus/tram line *numbers* are intentionally
+# NOT extracted: the source text negates them ("Linie 49 nicht
+# beeinträchtigt"), reuses the operator name ("Wiener Linien") and is full
+# of house numbers — extracting them would mislabel entries.
+_UBAHN_RE: Final = re.compile(r"\bu([1-6])\b", re.IGNORECASE)
+
+# Sentence splitter for surfacing the ÖPNV-relevant sentence. Splits after
+# ., ! or ? followed by whitespace — linear, no backtracking.
+_SENTENCE_SPLIT_RE: Final = re.compile(r"(?<=[.!?])\s+")
 
 # Public-transport vocabulary for the text signal. A construction site whose
 # title/description mentions any of these affects ÖPNV even when it is not
@@ -113,6 +127,35 @@ def mentions_oepnv(text: str) -> bool:
     bus, tram/Bim, U-/S-Bahn, …)."""
 
     return bool(_OEPNV_RE.search(text or ""))
+
+
+def u_bahn_lines(text: str) -> list[str]:
+    """Return the sorted, de-duplicated U-Bahn line labels (``U1``–``U6``)
+    named in ``text`` — e.g. ``["U2", "U5"]``; empty if none."""
+
+    return sorted({f"U{digit}" for digit in _UBAHN_RE.findall(text or "")})
+
+
+def oepnv_lead(text: str) -> str:
+    """Reorder ``text`` so the first sentence that mentions public transport
+    comes first (remaining sentences keep their order).
+
+    The construction feed entries are truncated for display, so the ÖPNV
+    impact ("Bus X umgeleitet", "Haltestelle Y verlegt") must lead or it is
+    cut off. Returns the text unchanged if no sentence matches or it already
+    leads.
+    """
+
+    if not text:
+        return text
+    sentences = _SENTENCE_SPLIT_RE.split(text.strip())
+    for index, sentence in enumerate(sentences):
+        if _OEPNV_RE.search(sentence):
+            if index == 0:
+                return text
+            reordered = [sentences[index], *sentences[:index], *sentences[index + 1 :]]
+            return " ".join(reordered)
+    return text
 
 
 def is_transit_relevant(item: Any, *, radius_m: float | None = None) -> bool:

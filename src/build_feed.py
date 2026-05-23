@@ -359,7 +359,7 @@ def _post_filter_baustellen(items: list[Any]) -> list[Any]:
     Items carrying neither a title nor a description are treated as
     stubs/metadata and passed through unchanged.
     """
-    from .providers.baustellen import mentions_oepnv, relevant_station
+    from .providers.baustellen import mentions_oepnv, relevant_station, u_bahn_lines
     from .utils.stations import display_name
 
     out: list[Any] = []
@@ -373,14 +373,24 @@ def _post_filter_baustellen(items: list[Any]) -> list[Any]:
             # Stub / metadata item — leave it alone.
             out.append(item)
             continue
+        blob = f"{title} {description}"
         station = relevant_station(item.get("location"))
-        if station is None and not mentions_oepnv(f"{title} {description}"):
+        if station is None and not mentions_oepnv(blob):
             continue
+        # Title prefix: the affected Bahnhof (geo) takes precedence as the
+        # most concrete locator; otherwise the U-Bahn line(s) named in the
+        # text. Bus/tram line numbers are deliberately not guessed here (see
+        # the provider module) — their impact leads the description instead.
+        label = ""
         if station is not None:
             label = display_name(station) or station
-            if label and not _baustellen_title_names_station(title, label):
-                item = dict(item)
-                item["title"] = f"{label}: {title}" if title else label
+        else:
+            lines = u_bahn_lines(blob)
+            if lines:
+                label = "/".join(lines)
+        if label and not _baustellen_title_names_station(title, label):
+            item = dict(item)
+            item["title"] = f"{label}: {title}" if title else label
         out.append(item)
     return out
 
