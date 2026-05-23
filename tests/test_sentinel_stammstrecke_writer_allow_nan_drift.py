@@ -321,7 +321,6 @@ def test_save_recently_finalised_rejects_nan_when_payload_widens(
     # To plant a NaN we monkeypatch the local ``finalised`` mapping
     # construction so the payload comprehension produces a NaN value
     # instead of an iso-format string.
-    path = _state_dir / "recently_finalised.json"
 
     # Synthetic payload that mimics a future schema-widening field.
     # We invoke the underlying serialiser the writer uses, with the
