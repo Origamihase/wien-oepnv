@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -29,13 +30,15 @@ FAR_AWAY = (48.170000, 16.520000)
 
 SAMPLE_PATH = Path(__file__).resolve().parents[1] / "data" / "samples" / "baustellen_sample.geojson"
 
+_RailSet = tuple[tuple[str, float, float], ...]
 
-def _loc(lat: float, lon: float) -> dict:
+
+def _loc(lat: float, lon: float) -> dict[str, Any]:
     return {"address": "Teststraße", "coordinates": {"lat": lat, "lon": lon}}
 
 
 @pytest.fixture
-def single_station(monkeypatch: pytest.MonkeyPatch):
+def single_station(monkeypatch: pytest.MonkeyPatch) -> _RailSet:
     """Replace the rail-station set with one synthetic Bahnhof so distance
     assertions are independent of the real directory."""
 
@@ -47,19 +50,19 @@ def single_station(monkeypatch: pytest.MonkeyPatch):
 # --- nearest_rail_station: geometry / radius ----------------------------------
 
 
-def test_nearest_rail_station_matches_at_zero_distance(single_station) -> None:
+def test_nearest_rail_station_matches_at_zero_distance(single_station: _RailSet) -> None:
     match = stations.nearest_rail_station(48.2000, 16.3700, 150.0)
     assert match is not None
     assert match[0] == "Test Bahnhof"
     assert match[1] == pytest.approx(0.0, abs=1.0)
 
 
-def test_nearest_rail_station_within_radius(single_station) -> None:
+def test_nearest_rail_station_within_radius(single_station: _RailSet) -> None:
     # ~100 m north of the station (0.0009° lat ≈ 100 m).
     assert stations.nearest_rail_station(48.2009, 16.3700, 150.0) is not None
 
 
-def test_nearest_rail_station_outside_radius(single_station) -> None:
+def test_nearest_rail_station_outside_radius(single_station: _RailSet) -> None:
     # ~300 m north — dropped at 150 m, kept once the radius is widened.
     assert stations.nearest_rail_station(48.2027, 16.3700, 150.0) is None
     assert stations.nearest_rail_station(48.2027, 16.3700, 500.0) is not None
@@ -76,11 +79,13 @@ def test_nearest_rail_station_outside_radius(single_station) -> None:
         ("x", 16.37),
     ],
 )
-def test_nearest_rail_station_fails_closed_on_bad_coords(single_station, lat, lon) -> None:
+def test_nearest_rail_station_fails_closed_on_bad_coords(
+    single_station: _RailSet, lat: object, lon: object
+) -> None:
     assert stations.nearest_rail_station(lat, lon, 150.0) is None
 
 
-def test_nearest_rail_station_rejects_nonpositive_radius(single_station) -> None:
+def test_nearest_rail_station_rejects_nonpositive_radius(single_station: _RailSet) -> None:
     assert stations.nearest_rail_station(48.2000, 16.3700, 0.0) is None
     assert stations.nearest_rail_station(48.2000, 16.3700, -10.0) is None
 
@@ -114,11 +119,13 @@ def test_far_away_road_works_is_not_relevant() -> None:
         {"coordinates": {"lat": float("nan"), "lon": 16.37}},
     ],
 )
-def test_is_transit_relevant_fails_closed(location) -> None:
+def test_is_transit_relevant_fails_closed(location: object) -> None:
     assert is_transit_relevant(location) is False
 
 
-def test_radius_override_widens_match(monkeypatch: pytest.MonkeyPatch, single_station) -> None:
+def test_radius_override_widens_match(
+    monkeypatch: pytest.MonkeyPatch, single_station: _RailSet
+) -> None:
     far = _loc(48.2027, 16.3700)  # ~300 m from the synthetic station
     assert is_transit_relevant(far) is False
     monkeypatch.setenv("BAUSTELLEN_STATION_RADIUS_M", "500")
@@ -180,7 +187,9 @@ def test_post_filter_keeps_relevant_drops_noise_passes_stubs() -> None:
         ([[[[16.4, 48.2]]]], (16.4, 48.2)),  # MultiPolygon
     ],
 )
-def test_first_lonlat_descends_geometries(coordinates, expected) -> None:
+def test_first_lonlat_descends_geometries(
+    coordinates: object, expected: tuple[float, float]
+) -> None:
     assert update_baustellen_cache._first_lonlat(coordinates) == expected
 
 
@@ -195,7 +204,7 @@ def test_first_lonlat_descends_geometries(coordinates, expected) -> None:
         [[[[[[[[[[16.4, 48.2]]]]]]]]]],  # deeper than _MAX_COORD_DEPTH
     ],
 )
-def test_first_lonlat_rejects_bad_geometries(coordinates) -> None:
+def test_first_lonlat_rejects_bad_geometries(coordinates: object) -> None:
     assert update_baustellen_cache._first_lonlat(coordinates) is None
 
 
