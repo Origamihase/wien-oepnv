@@ -638,6 +638,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "D: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c4d5ef0c25b44b7246d48ec4d938e77441185b7dcca81b50ad6b2cc945ac9595",
+    "pubDate": "2026-05-23T18:50:32+02:00",
+    "starts_at": "2026-05-23T18:55:14+02:00",
+    "ends_at": "2026-05-23T19:54:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-05-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fremder Verkehrsunfall",
+    "description": "Linie D: Fahrtbehinderung in Richtung Nußdorf, Beethovengang. Voraussichtliche Dauer: 19:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Prinz-Eugen-Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd",
+    "pubDate": "2026-05-23T18:49:00+02:00",
+    "starts_at": "2026-05-23T18:49:00+02:00",
+    "ends_at": "2026-05-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-05-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Sperre Bahnsteig Richtung Siebenhirten",
     "description": "Sperre Bahnsteig Richtung Siebenhirten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
