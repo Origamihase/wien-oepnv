@@ -1,5 +1,56 @@
 # Sentinel's Journal
 
+## 2026-05-23 - Non-Finite Literal Audit Walker (Parser-Site Closing Rule)
+
+**Vulnerability:** The 2026-05-14 / 2026-05-15 rounds (PR #1485 /
+#1487 / #1488 / #1491 / #1503) pinned
+`parse_constant=_reject_non_finite_constant` +
+`parse_float=_reject_non_finite_float` on every documented
+`json.loads` / `json.load` / `response.json()` call across the
+committed-state-file readers and network-tainted parsers. Behavioural
+PoC + named-list source-grep tests at
+`tests/test_sentinel_committed_reader_non_finite_drift.py` pin the
+canonical hook names on each named reader. However the
+**non-finite-literal axis** never received a programmatic walker —
+unlike the **RecursionError** axis (covered by
+`tests/test_sentinel_json_audit_walker.py` since 2026-05-08) and the
+**size-cap** axis (covered by
+`tests/test_sentinel_size_cap_audit_walker.py` since 2026-05-23 — the
+GeoNetz / i18n round closing rule). A future contributor adding a
+fresh `json.loads(content)` / `response.json()` call without the
+hooks would silently regress the entire fix family: bare
+`json.loads("NaN")` returns `float('nan')`, bare `json.loads("1e1000")`
+IEEE-754-overflows to `float('inf')`, and the planted non-finite
+value propagates through `nan != nan` dedup comparisons (silent
+breakage), `nan + 5` arithmetic (silent poison), and the writer-pin
+round-trip (`allow_nan=False` → `ValueError` mid-write → cron crash).
+The journal entry that closed the GeoNetz round explicitly named the
+gap: "Future canonical-loader rounds should ship the walker alongside
+the per-site fix so every parser-site axis (RecursionError +
+size-cap + non-finite-literal + Trojan-Source scrub) is
+programmatically enforced from the start."
+
+**Learning:** The closing rule is now realised for the
+**non-finite-literal** axis via
+`tests/test_sentinel_non_finite_literal_audit_walker.py`. The walker
+parses every `*.py` under `src/` and `scripts/` via `ast.parse`,
+collects the local `json` module aliases (so
+`import json as _json_lib; _json_lib.loads(c)` is resolved correctly),
+finds every `<json-alias>.loads(...)` / `<json-alias>.load(...)` /
+`<receiver>.json(...)` call, and asserts each carries both
+`parse_constant=...` and `parse_float=...` keyword arguments (or a
+`**kwargs` spread the walker conservatively tolerates). When invoked
+against the post-fix codebase the walker correctly reports zero
+findings (verified pre-merge); when invoked against a synthetic
+`json.loads(content)` regression it flags the exact line + the
+missing kwargs. Future contributors adding a fresh parser site
+without the hooks fail the walker at PR-review time regardless of
+whether the journal named the file. With this round all three of
+the parser-site canonical axes (RecursionError + size-cap +
+non-finite-literal) are now programmatically enforced; the
+Trojan-Source scrub axis remains the open closing-rule item for a
+future round.
+
 ## 2026-05-23 - i18n Coverage Gate MemoryError DoS + Size-Cap Walker
 
 **Vulnerability:** `scripts/check_i18n_coverage.py:180-181` used
