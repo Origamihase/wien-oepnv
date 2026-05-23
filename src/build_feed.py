@@ -328,8 +328,39 @@ def read_cache_oebb() -> list[Any]:
     return _post_filter_oebb(list(read_cache("oebb") or []))
 
 
+def _post_filter_baustellen(items: list[Any]) -> list[Any]:
+    """Defence-in-depth: keep only construction sites at/near a rail Bahnhof.
+
+    ``update_baustellen_cache.py`` already applies this relevance gate at
+    ingestion, but the on-disk cache (or the bundled fallback sample) may
+    predate the current policy. Re-applying on read guarantees the feed
+    never carries a back-courtyard road closure the current spec would
+    reject — the same defence-in-depth contract as :func:`_post_filter_oebb`.
+
+    Items carrying neither a title nor a description are treated as
+    stubs/metadata and passed through unchanged.
+    """
+    from .providers.baustellen import is_transit_relevant
+
+    out: list[Any] = []
+    for item in items:
+        if not isinstance(item, dict):
+            out.append(item)
+            continue
+        title = str(item.get("title") or "")
+        description = str(item.get("description") or "")
+        if not title and not description:
+            # Stub / metadata item — leave it alone.
+            out.append(item)
+            continue
+        if not is_transit_relevant(item.get("location")):
+            continue
+        out.append(item)
+    return out
+
+
 def read_cache_baustellen() -> list[Any]:
-    return list(read_cache("baustellen") or [])
+    return _post_filter_baustellen(list(read_cache("baustellen") or []))
 
 
 # Stammstrecke feed events are now derived from the CSV ledger

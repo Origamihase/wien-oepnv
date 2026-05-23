@@ -146,9 +146,10 @@ def test_collect_events_from_sample_payload() -> None:
     assert len(events) == 2
     first = events[0]
     assert first["category"] == "Baustelle"
-    assert first["context"]["district"] == "06"
+    assert first["context"]["district"] == "21"
     assert first["starts_at"].startswith("2025-10-01")
     assert "location" in first
+    assert first["location"]["coordinates"] == {"lat": 48.2562499, "lon": 16.4007}
 
 
 def test_main_uses_fallback_when_remote_fails(monkeypatch: pytest.MonkeyPatch) -> None:
