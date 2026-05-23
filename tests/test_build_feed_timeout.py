@@ -27,41 +27,6 @@ def test_collect_items_timeout_zero() -> None:
         assert "Timeout nach 0s" in args[1]
         mock_executor.submit.assert_not_called()
 
-def test_collect_items_timeout_underflow() -> None:
-    # If timeout logic works properly, _call_fetch_with_timeout shouldn't be executed
-    # when timeout reaches exactly 0
-
-    mock_feed_config = MagicMock()
-    mock_feed_config.PROVIDER_TIMEOUT = 1
-    mock_feed_config.PROVIDER_MAX_WORKERS = 1
-    mock_feed_config.get_bool_env.return_value = True
-
-    def mock_fetch(timeout: Any = None) -> list[dict[str, Any]]: return []
-    mock_fetch.__name__ = "dummy_provider"
-    report = MagicMock(spec=RunReport)
-
-    with patch.object(bf, "feed_config", mock_feed_config), \
-         patch.object(bf, "PROVIDERS", [("DUMMY_ENABLE", mock_fetch)]), \
-         patch.object(bf, "DEFAULT_PROVIDERS", ("DUMMY_ENABLE",)):
-
-        # Intercept _run_fetch just as it is created
-        original_submit = bf.ThreadPoolExecutor.submit
-
-        captured_run_fetch = []
-        def mock_submit(self: Any, fn: Any, *args: Any, **kwargs: Any) -> Any:
-            captured_run_fetch.append(fn)
-            return original_submit(self, fn, *args, **kwargs)
-
-        with patch("src.build_feed.ThreadPoolExecutor.submit", new=mock_submit):
-            # We want to skip actually executing it inside the pool,
-            # so we let the pool cancel or time out. Wait, easiest is to let it run
-            # but mock perf_counter just for the thread.
-            pass
-
-        # Since ThreadPoolExecutor uses real threads, mocking perf_counter is hard.
-        # Let's extract the exact _run_fetch manually without running _collect_items!
-
-# Let's just create a test that directly tests the condition.
 def test_run_fetch_timeout_exactly_zero() -> None:
     # We will simulate exactly what _run_fetch does
     import threading
