@@ -1,5 +1,49 @@
 # Sentinel's Journal
 
+## 2026-05-23 - i18n Coverage Gate MemoryError DoS + Size-Cap Walker
+
+**Vulnerability:** `scripts/check_i18n_coverage.py:180-181` used
+`HTML_PATH.read_text(encoding="utf-8")` and
+`JS_PATH.read_text(encoding="utf-8")` with NO byte-size cap on the two
+committed dashboard sources (`docs/site.html`, `docs/assets/site.js`).
+The gate is invoked from TWO blocking pipelines: the local pre-commit
+hook (`.pre-commit-config.yaml`) AND the canonical CI gauntlet at
+`scripts/run_static_checks.py` (which is itself invoked by
+`.github/workflows/test.yml`). A planted multi-GiB
+`docs/site.html` / `docs/assets/site.js` (hostile PR replacing the
+tracked source, compromised CI runner / `main` checkout, partial flush
++ power loss mid-edit) buffered via `read_text()` allocated
+O(file_size) bytes and raised `MemoryError`. `MemoryError` is a
+`BaseException` subclass — NOT caught by any handler in the script
+(`main()` has no try/except at all) — so the unhandled exception
+escaped the gate and crashed the full static-checks pipeline. Direct
+sibling drift from the same canonical inventory: the sibling script
+`scripts/optimize_site_assets.py` writes to the EXACT same two files
+via `atomic_write` and already routes its reads through
+`read_capped_text` with a 4-MiB cap (`MAX_CSS_FILE_BYTES`) — the i18n
+coverage gate was the missed sibling.
+
+**Learning:** The 2026-05-23 GeoNetz round's closing rule
+("future canonical-loader rounds should ship the walker alongside the
+per-site fix so every parser-site axis … is programmatically enforced
+from the start") is now realised for the **size-cap** axis via
+`tests/test_sentinel_size_cap_audit_walker.py`. The walker scans every
+`*.py` under `src/` and `scripts/` for bare `<expr>.read_text(...)` /
+`<expr>.read_bytes(...)` calls (banned shapes — they allocate
+O(file_size) bytes before any defence layer can run). When invoked
+against the pre-fix code it correctly flagged
+`scripts/check_i18n_coverage.py:180` and `:181`; the post-fix
+allowlist is empty by design. Any future contributor who adds a bare
+`path.read_text()` / `path.read_bytes()` call to `src/` or `scripts/`
+will fail the walker at PR-review time regardless of whether the
+journal named the file. The post-fix PoC test in
+`tests/test_sentinel_check_i18n_size_bomb_ondisk.py` uses AST-based
+static inspection of the `main()` function body (excluding docstrings)
+to lock the `read_capped_text` route + ban the bare `read_text` /
+`read_bytes` shapes specifically for this script — defence-in-depth
+against the walker drift case where a future PR silently broadens the
+allowlist.
+
 ## 2026-05-23 - GeoNetz Loader MemoryError DoS + Non-Finite Literal Drift
 
 **Vulnerability:** Two siblings of the JSON size-bomb / non-finite literal

@@ -42,8 +42,40 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+# Ensure the project root is on ``sys.path`` so the canonical
+# ``read_capped_text`` defence helper resolves regardless of how the
+# script is invoked (``python scripts/check_i18n_coverage.py`` from the
+# pre-commit hook, ``scripts/run_static_checks.py`` subprocess in CI, or
+# direct execution from a developer shell).
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+try:
+    from src.utils.files import read_capped_text
+except ModuleNotFoundError:
+    from utils.files import read_capped_text  # type: ignore[no-redef]
+
 HTML_PATH = REPO_ROOT / "docs" / "site.html"
 JS_PATH = REPO_ROOT / "docs" / "assets" / "site.js"
+
+# Security: per-loader byte cap for the two committed dashboard files
+# (``docs/site.html`` ~20 KiB, ``docs/assets/site.js`` ~50 KiB). Pre-fix
+# both sites used the unsafe ``Path.read_text(encoding="utf-8")`` shape
+# with NO size cap — a planted multi-GiB file (hostile PR replacing the
+# tracked source, compromised CI runner / ``main`` checkout, partial
+# flush + power loss mid-edit) buffered via ``read_text()`` allocates
+# O(file_size) bytes and raises :exc:`MemoryError`. ``MemoryError`` is a
+# :class:`BaseException` subclass that propagates past every ordinary
+# ``except`` handler in the call chain and aborts both the pre-commit
+# ``i18n-coverage`` hook AND the canonical CI gauntlet at
+# ``scripts/run_static_checks.py`` (which invokes this script as a
+# subprocess and fails the whole gate on a non-zero exit / crash). The
+# 4-MiB cap mirrors :data:`scripts.optimize_site_assets.MAX_CSS_FILE_BYTES`
+# (the closest canonical sibling — the optimiser writes the very same
+# two files via :func:`atomic_write` so the two scripts share the same
+# legitimate ceiling). ~80x headroom over today's largest legitimate
+# source (~50 KiB) while still rejecting GiB-sized planted attacks.
+MAX_I18N_FILE_BYTES = 4 * 1024 * 1024
 
 # data-i18n="key" / data-i18n-aria-label="key" / data-i18n-title="key" /
 # data-i18n-content="key" / data-i18n-href="key" — we extract every
@@ -177,8 +209,34 @@ def main() -> int:
         print(f"ERROR: {JS_PATH} not found", file=sys.stderr)
         return 1
 
-    html_content = HTML_PATH.read_text(encoding="utf-8")
-    js_content = JS_PATH.read_text(encoding="utf-8")
+    # Security: ``read_capped_text`` enforces a TOCTOU-safe byte-size cap
+    # (open-then-fstat on the open file descriptor, defensive
+    # ``read(max_bytes + 1)`` budget) so a planted oversized file is
+    # rejected before buffering — closes the ``MemoryError`` propagation
+    # path that would crash the static-checks pipeline. A ``None`` return
+    # signals "missing / oversized / invalid UTF-8"; either shape is a
+    # hard fail of the gate (we cannot validate i18n coverage against a
+    # corrupt input).
+    html_content = read_capped_text(
+        HTML_PATH, MAX_I18N_FILE_BYTES, label="site.html"
+    )
+    if html_content is None:
+        print(
+            f"ERROR: {HTML_PATH} exceeds the "
+            f"{MAX_I18N_FILE_BYTES}-byte cap or is unreadable",
+            file=sys.stderr,
+        )
+        return 1
+    js_content = read_capped_text(
+        JS_PATH, MAX_I18N_FILE_BYTES, label="site.js"
+    )
+    if js_content is None:
+        print(
+            f"ERROR: {JS_PATH} exceeds the "
+            f"{MAX_I18N_FILE_BYTES}-byte cap or is unreadable",
+            file=sys.stderr,
+        )
+        return 1
 
     html_keys = _extract_html_keys(html_content)
     js_entries = _extract_js_keys(js_content)
