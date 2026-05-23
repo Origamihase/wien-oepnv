@@ -7,7 +7,6 @@ the city must be dropped so the feed stays a focused transit signal.
 from __future__ import annotations
 
 import json
-import math
 from pathlib import Path
 
 import pytest
