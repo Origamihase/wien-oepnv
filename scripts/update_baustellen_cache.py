@@ -33,7 +33,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
-from src.providers.baustellen import is_transit_relevant  # noqa: E402
+from src.providers.baustellen import is_transit_relevant, oepnv_lead  # noqa: E402
 from utils.cache import write_cache  # noqa: E402
 from utils.files import loads_finite, read_capped_json  # noqa: E402
 from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
@@ -718,7 +718,9 @@ def _format_description(properties: dict[str, Any], start: datetime | None, end:
     info = _first_match(properties, INFO_KEYS)
     segments: list[str] = []
     if info:
-        segments.append(info)
+        # Lead with the public-transport sentence so the ÖPNV impact
+        # survives the feed's description truncation.
+        segments.append(oepnv_lead(info))
     if start:
         segments.append(f"Beginn: {start.strftime('%d.%m.%Y %H:%M')} Uhr")
     if end:

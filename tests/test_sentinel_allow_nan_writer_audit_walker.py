@@ -93,7 +93,7 @@ Three documented sites live here today:
   motivates the non-finite-literal axis (committed-to-main artefact
   that strict parsers must handle) does not apply.
 
-* ``src/build_feed.py:_identity_for_item`` (lines 2318 and 2327) —
+* ``src/build_feed.py:_identity_for_item`` (lines 2328 and 2337) —
   two ``json.dumps(item, sort_keys=True, default=str)`` calls compute
   the SHA-256 input for the feed-item identity hash. The serialised
   bytes flow into ``hashlib.sha256(raw.encode("utf-8")).hexdigest()``
@@ -142,8 +142,8 @@ ALLOWLIST: frozenset[tuple[str, int]] = frozenset(
         # into ``hashlib.sha256(...).hexdigest()`` on the very next
         # line and are not retained anywhere else. No parser-consumed
         # artefact, so the threat model does not apply.
-        ("src/build_feed.py", 2318),
-        ("src/build_feed.py", 2327),
+        ("src/build_feed.py", 2328),
+        ("src/build_feed.py", 2337),
     }
 )
 
@@ -536,7 +536,7 @@ def test_allowlist_is_minimal_and_documented() -> None:
     assert ALLOWLIST == frozenset(
         {
             ("src/places/hafas_client.py", 282),
-            ("src/build_feed.py", 2318),
-            ("src/build_feed.py", 2327),
+            ("src/build_feed.py", 2328),
+            ("src/build_feed.py", 2337),
         }
     )

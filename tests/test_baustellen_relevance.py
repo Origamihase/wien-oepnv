@@ -19,7 +19,9 @@ from src.providers.baustellen import (
     DEFAULT_STATION_RADIUS_M,
     is_transit_relevant,
     mentions_oepnv,
+    oepnv_lead,
     relevant_station,
+    u_bahn_lines,
 )
 from src.utils import stations
 
@@ -235,6 +237,67 @@ def test_post_filter_does_not_double_name_station() -> None:
     item = {"title": "Umbau Bahnhof Mödling", "description": "x", "location": _loc(*MOEDLING)}
     [out] = _post_filter_baustellen([item])
     assert out["title"] == "Umbau Bahnhof Mödling"
+
+
+def test_post_filter_prefixes_u_bahn_line_when_not_geo() -> None:
+    item = {
+        "title": "Neubaugasse",
+        "description": "Für den U-Bahnbau der U2 / U5 wird gesperrt.",
+        "location": _loc(*FAR_AWAY),
+    }
+    [out] = _post_filter_baustellen([item])
+    assert out["title"] == "U2/U5: Neubaugasse"
+
+
+def test_post_filter_does_not_guess_a_bus_tram_line() -> None:
+    # Bus/tram impact → kept, but NO guessed line prefix (only U-Bahn/Bahnhof).
+    item = {
+        "title": "Eßlinger Hauptstraße 96",
+        "description": "Der Busverkehr der Wiener Linien wird umgeleitet.",
+        "location": _loc(*FAR_AWAY),
+    }
+    [out] = _post_filter_baustellen([item])
+    assert out["title"] == "Eßlinger Hauptstraße 96"
+
+
+# --- u_bahn_lines / oepnv_lead ------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "text, expected",
+    [
+        ("Bauvorhaben U2 / U5", ["U2", "U5"]),
+        ("Neubau der U-Bahnstation der U2 Pilgramgasse", ["U2"]),
+        ("Generalsanierung der U6 Trasse", ["U6"]),
+        ("U-Bahnbau ohne Liniennummer", []),
+        ("Buslinie 10A und Hausnummer 96", []),
+        ("", []),
+    ],
+)
+def test_u_bahn_lines(text: str, expected: list[str]) -> None:
+    assert u_bahn_lines(text) == expected
+
+
+def test_oepnv_lead_moves_transit_sentence_to_front() -> None:
+    text = "Die Gleisbauarbeiten erfolgen bei Tag und Nacht. Die Haltestelle der Linie 2 wird verlegt."
+    assert oepnv_lead(text).startswith("Die Haltestelle der Linie 2 wird verlegt.")
+
+
+def test_oepnv_lead_noop_when_already_leading_or_no_match() -> None:
+    leads = "Die Haltestelle wird verlegt. Danach normaler Betrieb."
+    assert oepnv_lead(leads) == leads
+    no_oepnv = "Rohrlegung bei Tag. Keine Behinderung des Verkehrs."
+    assert oepnv_lead(no_oepnv) == no_oepnv
+    assert oepnv_lead("") == ""
+
+
+def test_sample_linestring_description_leads_with_oepnv() -> None:
+    payload = json.loads(SAMPLE_PATH.read_text(encoding="utf-8"))
+    events = update_baustellen_cache._collect_events(payload)
+    # Feature 2 (Thaliastraße): the ÖPNV sentence must lead the description.
+    assert events[1]["description"].startswith(
+        "Die Haltestelle der Straßenbahnlinie 2 wird verlegt"
+    )
 
 
 # --- _first_lonlat (geometry descent) -----------------------------------------
