@@ -50,9 +50,11 @@ if str(_ROOT) not in sys.path:
 try:  # pragma: no cover - convenience for module execution
     from src.feed.logging_safe import setup_script_logging
     from src.utils.files import atomic_write, loads_finite, read_capped_bytes
+    from src.utils.serialize import scrub_trojan_source_primitives
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from feed.logging_safe import setup_script_logging  # type: ignore[no-redef]
     from utils.files import atomic_write, loads_finite, read_capped_bytes  # type: ignore[no-redef]
+    from utils.serialize import scrub_trojan_source_primitives  # type: ignore[no-redef]
 
 # Cap mirrors ``MAX_JSON_FILE_BYTES`` in scripts/update_station_directory.py.
 # The raw GeoNetz dump is ~23 MiB; 50 MiB leaves ~2x headroom for a future
@@ -275,6 +277,28 @@ def main(argv: list[str] | None = None) -> int:
 
     payload = extract(args.raw, args.source_url)
     args.output.parent.mkdir(parents=True, exist_ok=True)
+    # Security (Trojan-Source / BiDi-Mark Drift, ingestion-boundary
+    # defence): strip the canonical CVE-2021-42574 attack-byte union
+    # (BiDi formatting controls, BiDi isolates, zero-width primitives +
+    # LRM/RLM/ALM, Unicode line / paragraph separators, the BOM / ZWNBSP,
+    # and the 8-bit C1 terminal-escape primitives) from every reachable
+    # string in the GeoNetz payload BEFORE ``json.dumps``. The payload's
+    # ``stops[].name`` / ``stops[].address`` / ``stops[].ifopt_id`` /
+    # ``stops[].bsts_id`` / ``stops[].eva_nr`` fields are taken verbatim
+    # from the upstream GeoNetz dump — a compromised CDN / DNS hijack /
+    # MITM on the ÖBB-Infrastruktur fetch carrying U+202E in any of
+    # those fields would otherwise land the bytes in the committed
+    # ``data/oebb_geonetz_stops.json`` sidecar. ``ensure_ascii=False``
+    # is preserved at the writer below so legitimate German station
+    # names (umlauts ä/ö/ü/Ä/Ö/Ü + sharp s ß) stay compact in the
+    # commit diff. Mirrors the canonical writer-side pin established
+    # in Round 13 at ``src/places/merge.py:write_stations`` and
+    # extended in Round 14 to the eight named script-level writers
+    # (``tests/test_sentinel_script_station_writers_trojan_source.py``);
+    # the closing-rule walker is
+    # ``tests/test_sentinel_trojan_source_audit_walker.py``.
+    scrubbed = scrub_trojan_source_primitives(payload)
+    serialisable = scrubbed if isinstance(scrubbed, dict) else payload
     # ``atomic_write`` (tempfile + ``os.replace``) so a crash / SIGINT
     # mid-dump cannot leave a half-written JSON snapshot in the
     # repository — ``data/oebb-geonetz-stops.json`` is committed to
@@ -297,7 +321,7 @@ def main(argv: list[str] | None = None) -> int:
     # ``data/oebb_geonetz_stops.json`` sidecar.
     with atomic_write(args.output, mode="w", encoding="utf-8") as handle:
         handle.write(
-            json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
+            json.dumps(serialisable, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
         )
     size_kib = args.output.stat().st_size / 1024
     logger.info(

@@ -1,5 +1,78 @@
 # Sentinel's Journal
 
+## 2026-05-23 - Trojan-Source Scrub Audit Walker (Writer-Site Closing Rule)
+
+**Vulnerability:** Two committed-state JSON writer sinks still emitted
+the canonical CVE-2021-42574 Trojan-Source / BiDi-mark / zero-width /
+8-bit C1 attack-byte union as raw UTF-8 bytes despite the 2026-05-14
+Round 13 / 14 closing-checklist sweep:
+
+1. `scripts/extract_oebb_geonetz_stops.py:main` (line ~300) writes
+   `data/oebb_geonetz_stops.json` via
+   `json.dumps(payload, ensure_ascii=False, indent=2,
+   allow_nan=False)` with NO `scrub_trojan_source_primitives` call on
+   the payload. The payload's `stops[].name`, `stops[].address`,
+   `stops[].ifopt_id`, `stops[].bsts_id`, and `stops[].eva_nr`
+   fields flow verbatim from the upstream ÖBB GeoNetz dump
+   (`data.oebb.at` ÖBB-Infrastruktur AG endpoint) — a compromised
+   CDN / DNS hijack / MITM on the GeoNetz fetch carrying U+202E
+   (RIGHT-TO-LEFT OVERRIDE) in any of those fields lands the BiDi
+   reversal trigger directly in the committed sidecar (`E2 80 AE`
+   UTF-8 bytes). Same file's parser-site siblings (size-cap +
+   non-finite literal) were closed in PR #1629 but the writer-side
+   Trojan-Source scrub was missed.
+
+2. `scripts/apply_station_overrides.py:apply_overrides` (line ~324)
+   writes `data/stations.json` after applying the curated overrides
+   list via `json.dumps(stations_payload, indent=2,
+   ensure_ascii=False, allow_nan=False)` with NO
+   `scrub_trojan_source_primitives` call. Two attack vectors land
+   bytes here: (a) a previously-poisoned `data/stations.json`
+   (planted via a bypass of the canonical writer, surviving from a
+   corrupted previous cron run, or written by an early-deployment
+   build pre-dating Round 12-14) survives the read-then-write cycle;
+   (b) the `_op_restore` handler inserts the override's `entry`
+   template verbatim via `dict(entry_template)`, so a hostile PR
+   landing a tampered `data/stations_overrides.json` carrying
+   U+202E in an `entry` `name` field plants the byte directly into
+   the committed `data/stations.json`. Both files reach `main` via
+   the weekly `update-stations.yml` cron pipeline.
+
+**Learning:** The 2026-05-23 closing rule for the parser-site axes
+(`Future canonical-loader rounds should ship the walker alongside the
+per-site fix so every parser-site axis (RecursionError + size-cap +
+non-finite-literal + Trojan-Source scrub) is programmatically
+enforced from the start`) is now realised for the **Trojan-Source
+scrub** axis via `tests/test_sentinel_trojan_source_audit_walker.py`.
+The walker scans every `*.py` under `src/` and `scripts/` for any
+`json.dump(...)` / `json.dumps(...)` call that explicitly pins
+`ensure_ascii=False` as a keyword argument and asserts the smallest
+enclosing function (or module body for module-level writers) contains
+at least one `scrub_trojan_source_primitives(...)` call. Three
+documented sibling-defence sites live in the `ALLOWLIST`:
+`src/places/hafas_client.py:_serialise_payload` (HAFAS wire-format
+bytes are MAC-signed and sent to a third-party endpoint, not
+committed); `src/feed/reporting.py:write_feed_health_json` (per-field
+`_CONTROL_CHARS_RE.sub("", ...)` strips the byte-equivalent canonical
+union pre-serialisation); `src/feed/logging_safe.py:SafeJSONFormatter`
+(two lines — `sanitize_log_message(dumped, strip_control_chars=False)`
+always strips the byte-equivalent canonical union
+post-serialisation). When invoked against the pre-fix codebase the
+walker correctly flagged `scripts/apply_station_overrides.py:324` and
+`scripts/extract_oebb_geonetz_stops.py:300`; post-fix it reports zero
+findings. Any future contributor who adds a fresh
+`json.dump(..., ensure_ascii=False, ...)` /
+`json.dumps(..., ensure_ascii=False, ...)` callsite without a
+sibling `scrub_trojan_source_primitives` call (or a documented
+allowlist entry) fails the walker at PR-review time regardless of
+whether the journal named the file. With this round all four
+canonical fix-family axes (RecursionError + size-cap +
+non-finite-literal + Trojan-Source scrub) are now programmatically
+enforced; the journal-named closing rule from the 2026-05-23
+non-finite-literal round is complete. Future fix families should
+inherit this template: ship the walker alongside the per-site fix
+from PR #1, never as a follow-up round.
+
 ## 2026-05-23 - Non-Finite Literal Audit Walker (Parser-Site Closing Rule)
 
 **Vulnerability:** The 2026-05-14 / 2026-05-15 rounds (PR #1485 /
