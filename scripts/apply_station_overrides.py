@@ -44,6 +44,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.utils.files import atomic_write, loads_finite, read_capped_text  # noqa: E402
+from src.utils.serialize import scrub_trojan_source_primitives  # noqa: E402
 from src.utils.stations import MAX_STATIONS_FILE_BYTES  # noqa: E402
 
 # Cap matches the overrides file's expected upper bound; 1 MiB is generous
@@ -310,6 +311,37 @@ def apply_overrides(
             applied += 1
 
     # Persist
+    # Security (Trojan-Source / BiDi-Mark Drift, ingestion-boundary
+    # defence): strip the canonical CVE-2021-42574 attack-byte union
+    # (BiDi formatting controls, BiDi isolates, zero-width primitives +
+    # LRM/RLM/ALM, Unicode line / paragraph separators, the BOM / ZWNBSP,
+    # and the 8-bit C1 terminal-escape primitives) from every reachable
+    # string in the stations payload BEFORE ``json.dumps``. Two attack
+    # vectors are closed here: (a) a previously-poisoned
+    # ``data/stations.json`` carrying historic BiDi marks (planted via
+    # a bypass of the canonical writer, surviving from a corrupted
+    # previous cron run, or written by an early-deployment build
+    # pre-dating the Round 12-14 closing rounds) would otherwise be
+    # re-emitted verbatim via this re-write; (b) the ``_op_restore``
+    # handler inserts the override's ``entry`` template verbatim via
+    # ``dict(entry_template)``, so a hostile PR landing a tampered
+    # ``data/stations_overrides.json`` carrying U+202E in an
+    # ``entry`` ``name`` field would otherwise plant the byte directly
+    # into the committed ``data/stations.json``. ``ensure_ascii=False``
+    # is preserved at the writer below so legitimate German station
+    # names (umlauts ä/ö/ü/Ä/Ö/Ü + sharp s ß) stay compact in the
+    # commit diff. Mirrors the canonical writer-side pin established
+    # in Round 13 at ``src/places/merge.py:write_stations`` and extended
+    # in Round 14 to the eight named script-level writers
+    # (``tests/test_sentinel_script_station_writers_trojan_source.py``);
+    # the closing-rule walker is
+    # ``tests/test_sentinel_trojan_source_audit_walker.py``.
+    scrubbed_payload = scrub_trojan_source_primitives(stations_payload)
+    serialisable = (
+        scrubbed_payload
+        if isinstance(scrubbed_payload, dict | list)
+        else stations_payload
+    )
     # Security (writer-side non-finite literal defence, symmetric to the
     # ``loads_finite`` reader pin above). ``allow_nan=False`` surfaces any
     # ``float('nan')`` / ``float('inf')`` that bypassed the reader-side
@@ -321,7 +353,7 @@ def apply_overrides(
     # the canonical writer-side pins in ``src/places/merge.py:write_stations``
     # and ``scripts/update_all_stations.py:_write_stations`` (2026-05-14
     # PR #1485 / #1487 / #1488 / #1491).
-    text = json.dumps(stations_payload, indent=2, ensure_ascii=False, allow_nan=False)
+    text = json.dumps(serialisable, indent=2, ensure_ascii=False, allow_nan=False)
     with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         handle.write(text)
         handle.write("\n")
