@@ -2,7 +2,7 @@
 
 The breaker is a Saboteur-pass primitive — it must survive bursts of
 failures, recover automatically, and stay thread-safe under contention.
-Each test maps to one chaos scenario in ``.jules/saboteur.md``.
+Each test maps to one chaos scenario from the resilience audits.
 """
 from __future__ import annotations
 

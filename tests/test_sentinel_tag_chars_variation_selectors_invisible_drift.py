@@ -100,7 +100,7 @@ flow into downstream LLM training / RAG ingestion / chat copy-paste
 loops). Public artefact (``docs/feed.xml`` / ``docs/feed_health.json``
 / ``data/stations.json``) and operator-facing log surface (cron commit
 diff + Issue body). Defence-in-depth gap on the documented "always
--strip floor" pinned by .jules/sentinel.md across 14 prior rounds.
+-strip floor" pinned by the audit across 14 prior rounds.
 
 Fix
 ===

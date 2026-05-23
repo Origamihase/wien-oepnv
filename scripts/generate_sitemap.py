@@ -53,8 +53,8 @@ EXCLUDED_DIRS = {"_includes"}
 # Variation Selectors (U+FE00..U+FE0F), the Unicode Tag block
 # (U+E0000..U+E007F), and the supplementary Variation Selectors
 # (U+E0100..U+E01EF). The 2026-05-11 Round-11 canonical-floor
-# widening (.jules/sentinel.md "Tag-Character / Variation-Selector
-# Drift") updated every other sanitiser site but missed this
+# widening ("Tag-Character / Variation-Selector Drift") updated
+# every other sanitiser site but missed this
 # sibling — the source-file comment ("byte-exact mirror") quietly
 # diverged. A planted ``SITE_BASE_URL`` carrying Tag-character /
 # Variation-Selector bytes is byte-distinct but visually identical

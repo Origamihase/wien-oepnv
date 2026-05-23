@@ -119,8 +119,8 @@ DNS_TIMEOUT = 5.0
 #    Trojan-Source class display-confusion as the BiDi format controls
 #    (LRM/RLM are full BiDi primitives despite being zero-width).
 #
-# The 2026-05-09 "BiDi-Mark Drift Round 3" journal entry (.jules/
-# sentinel.md) explicitly named this regex as a sibling drift candidate
+# The 2026-05-09 "BiDi-Mark Drift Round 3" audit entry explicitly
+# named this regex as a sibling drift candidate
 # that the Round 3 PR did not close — it widened
 # ``stations_validation._UNSAFE_CHARS_RE`` to the canonical
 # ``_INVISIBLE_DANGEROUS_RE`` set but deferred the URL boundary. This
@@ -2160,9 +2160,7 @@ def request_safe(
           ``MAX_PAYLOAD_SIZE`` cap.
     6. Sanitize any leaked URLs in error messages before re-raising.
 
-    See ``docs/architecture.md`` §2 for the rendered flowchart and
-    ``.jules/omega.md`` for the joint Sentinel+Surgeon refactor that
-    extracted these 14 helpers from the original 280-line monolith.
+    See ``docs/architecture.md`` §2 for the rendered flowchart.
 
     Args:
         session: The :class:`requests.Session` to use. The session's

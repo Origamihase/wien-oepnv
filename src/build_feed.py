@@ -719,7 +719,7 @@ def format_local_times(
 # ``https://origamihase.github.io/wien-oepnv/feed.xml``). Pre-2026-05-10
 # the class covered only ASCII C0 (ex-TAB/LF/CR) + DEL — narrower than
 # the canonical Trojan-Source / line-terminator union that the
-# BiDi-Mark Drift family (Rounds 2-5 in ``.jules/sentinel.md``)
+# BiDi-Mark Drift family (Rounds 2-5)
 # consolidated as the project-wide floor. The drift opened a
 # *Trojan-Source RSS* primitive on the public feed:
 #
@@ -2649,10 +2649,7 @@ def _collect_items(report: RunReport | None = None) -> list[FeedItem]:
         :func:`deduplicate_fuzzy` afterwards.
 
     See Also:
-        - ``docs/architecture.md`` §1 for the full sequence diagram.
-        - ``.jules/surgeon.md`` for the seven-phase extraction history.
-        - ``.jules/apex.md`` for the deadline-eviction-loop performance
-          fix this orchestrator depends on.
+        ``docs/architecture.md`` §1 for the full sequence diagram.
     """
     init_providers()
     if report is None:

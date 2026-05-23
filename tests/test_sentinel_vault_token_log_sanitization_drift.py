@@ -3,7 +3,7 @@ log-sanitisation across ``sanitize_log_message`` and the downstream
 ``_sanitize_exception_msg`` chain.
 
 The 2026-05-17 ``hvb.`` / ``hvr.`` Vault Token Family Drift Closure round
-(see ``.jules/sentinel.md``) extended ``_KNOWN_TOKENS`` in
+ extended ``_KNOWN_TOKENS`` in
 ``src/utils/secret_scanner.py`` to detect HashiCorp Vault Service / Batch /
 Recovery tokens (``hvs.`` / ``hvb.`` / ``hvr.`` prefixes with 30+ char
 base64url bodies). The companion log-sanitisation codepath

@@ -692,7 +692,7 @@ def _find_gtfs_issues(
 # ASCII C0 controls excluding ``\t``/``\n``/``\r``) and (b) every code
 # point covered by the canonical log sanitiser
 # ``src/utils/logging.py:_INVISIBLE_DANGEROUS_RE``. The 2026-05-09
-# BiDi-Mark Drift Round 2 entry in ``.jules/sentinel.md`` flagged the
+# BiDi-Mark Drift Round 2 audit flagged the
 # divergence between the two regexes as the next drift candidate: the
 # canonical sanitiser already strips ``\u061c`` (ALM), ``\u200b-\u200f``
 # (ZWSP/ZWNJ/ZWJ/LRM/RLM), and ``\ufeff`` (BOM), but the validator did

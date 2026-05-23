@@ -654,8 +654,8 @@ def test_canonical_invisible_dangerous_re_covers_every_unicode_cf_character() ->
     floor matches each one. A future Unicode-spec addition of a new
     Format-category code point fails this test on the first pytest
     run after the new ``unicodedata`` ships, surfacing the next drift
-    family programmatically per the prevention rule pinned in
-    ``.jules/sentinel.md`` (2026-05-14 "Zero-Width Format Drift").
+    family programmatically per the prevention rule pinned by the
+    2026-05-14 "Zero-Width Format Drift" audit.
     """
     canonical = canonical_logging._INVISIBLE_DANGEROUS_RE
     missing: list[int] = []

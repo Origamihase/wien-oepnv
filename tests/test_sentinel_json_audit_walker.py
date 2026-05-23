@@ -1,9 +1,9 @@
 """Sentinel auto-discoverable invariant: every JSON parser site must
 catch ``RecursionError`` (directly or via ``Exception``/``BaseException``).
 
-Round 5 of the JSON depth-bomb drift family
-(``.jules/sentinel.md`` 2026-05-08) closed two cron-pipeline parser
-sites that the named-list audit had walked past, and the prevention
+Round 5 of the JSON depth-bomb drift family (2026-05-08) closed two
+cron-pipeline parser sites that the named-list audit had walked
+past, and the prevention
 rule explicitly recommended replacing the closing-grep methodology
 with a programmatic walker::
 
@@ -240,7 +240,7 @@ def test_every_json_parser_site_catches_recursion_error() -> None:
         f"RecursionError-tolerant exception coverage:\n{rendered}\n\n"
         "Each site must have an enclosing try/except whose tuple "
         "includes RecursionError, Exception, or BaseException. "
-        "See .jules/sentinel.md (JSON Depth-Bomb Drift Round 5) for "
+        "See the JSON Depth-Bomb Drift Round 5 audit for "
         "the full closing rule."
     )
 

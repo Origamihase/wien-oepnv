@@ -1,7 +1,7 @@
 """Sentinel PoC: ``_UNSAFE_CHARS_RE`` in ``src/utils/stations_validation.py``
 is narrower than the canonical ``_INVISIBLE_DANGEROUS_RE``.
 
-The 2026-05-09 BiDi-Mark Drift Round 2 entry in ``.jules/sentinel.md``
+The 2026-05-09 BiDi-Mark Drift Round 2 entry (audit)
 explicitly named this gap as the next drift candidate::
 
     The companion regex in ``src/utils/stations_validation.py:_UNSAFE_CHARS_RE``
@@ -112,7 +112,7 @@ def test_unsafe_chars_regex_matches_missing_code_point(
     point and the validator flags the issue."""
     assert stations_validation._UNSAFE_CHARS_RE.search(code_point) is not None, (
         f"_UNSAFE_CHARS_RE must match {label} ({hex(ord(code_point))}); "
-        "see .jules/sentinel.md (BiDi-Mark Drift Round 2) for the full "
+        "see the audit (BiDi-Mark Drift Round 2) for the full "
         "list of code points the validator must reject."
     )
 
@@ -213,7 +213,7 @@ def test_unsafe_chars_regex_covers_canonical_invisible_dangerous_set() -> None:
         + (" …" if len(missing) > 20 else "")
         + "\nThe two regexes must stay in sync: any code point covered "
         "by the canonical log sanitiser must also be flagged by the "
-        "stations.json validator. See .jules/sentinel.md "
+        "stations.json validator. See the audit "
         "(BiDi-Mark Drift Round 2) for the closing rule."
     )
 

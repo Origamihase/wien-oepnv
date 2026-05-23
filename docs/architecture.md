@@ -1,9 +1,9 @@
 # Architecture Map — Wien ÖPNV Feed
 
-This document is the visual companion to the README and the `.jules/`
-journals. It is written for a developer joining the project six months
-from now: someone who needs to understand **how the system fits
-together** before diving into any one file.
+This document is the visual companion to the README. It is written
+for a developer joining the project six months from now: someone who
+needs to understand **how the system fits together** before diving
+into any one file.
 
 The diagrams below are rendered automatically by GitHub. If you are
 reading this in a non-Mermaid-aware viewer, the same information is
@@ -94,9 +94,9 @@ sequenceDiagram
 
 - **`_categorize_providers`** decides which providers can run synchronously (their loader has a `_provider_cache_name` attribute → reads from disk) vs. asynchronously (real network fetch). Separating them up front keeps the executor pool focused on I/O-bound work.
 - **The `par … and …` block** is the **bulkhead**: a crash in any one provider's `fetch_events` is caught by `_drain_completed_futures` and recorded as that provider's error, while the others continue. This is what makes the system never "all-down on one bad upstream."
-- **The Apex-Phase-1 callout** is critical: without bounded `wait()` timeouts the loop would busy-spin against `perf_counter()` (see `.jules/apex.md` 2026-05-07 entry).
+- **The Apex-Phase-1 callout** is critical: without bounded `wait()` timeouts the loop would busy-spin against `perf_counter()`.
 - **`request_safe`** is the security state machine — see diagram §2 below.
-- **`deduplicate_fuzzy`** is Apex-Phase-2 territory: the parallel `merged_cache` reduces O(n²) regex re-parsing to O(n) (see `.jules/apex.md`).
+- **`deduplicate_fuzzy`** is Apex-Phase-2 territory: the parallel `merged_cache` reduces O(n²) regex re-parsing to O(n).
 
 ---
 
@@ -170,7 +170,7 @@ flowchart TD
 | `read_response_safe` | Payload-size cap (MAX_PAYLOAD_SIZE = 10 MB) |
 | `_sanitize_exception_msg` | Sensitive URLs leaking into error messages and logs |
 
-The full audit lives in `.jules/omega.md` (2026-05-07 entry).
+The 2026-05-07 audit closed this surface.
 
 ---
 
@@ -690,17 +690,10 @@ Zukunft enger werden, sind die niedrig-hängenden Hebel:
 
 ---
 
-## 8. Cross-references
+## 8. Querverweise
 
-- **Security audit history** → `.jules/sentinel.md`
-- **Performance optimisations** → `.jules/apex.md`
-- **Static-analysis hygiene** → `.jules/purist.md`
-- **Complexity refactors** → `.jules/surgeon.md`
-- **`request_safe` joint refactor** → `.jules/omega.md`
-- **Chaos audit + RecursionError fix** → `.jules/saboteur.md`
-- **DX / docs / cartography** → `.jules/scribe.md` (this document's companion)
-- **Governance gates & hooks** → `.jules/automator.md`
-
-The `.jules/` journals are the project's institutional memory. When
-adding a new defence, optimisation, or refactor, append an entry there
-and (if the change is architecturally visible) update this map.
+Die laufende Audit- und Refactoring-Historie liegt in `CHANGELOG.md`
+(aktuelle und unveröffentlichte Einträge) und unter
+`docs/archive/audits/` (abgeschlossene Audit-Berichte). Architektur-
+relevante Änderungen sollten zusätzlich diese Karte und gegebenenfalls
+das jeweilige Mermaid-Diagramm aktualisieren.

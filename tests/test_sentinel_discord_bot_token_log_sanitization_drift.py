@@ -3,7 +3,7 @@ log-sanitisation across ``sanitize_log_message`` and the downstream
 ``_sanitize_exception_msg`` chain.
 
 The 2026-05-08 Round-3 ``Discord Bot Token`` secret-scanner round (see
-``.jules/sentinel.md``) extended ``_KNOWN_TOKENS`` in
+the audit) extended ``_KNOWN_TOKENS`` in
 ``src/utils/secret_scanner.py`` to detect Discord bot tokens via the
 canonical structural shape ``<base64url(snowflake-id)>.<base64url(timestamp)>
 .<HMAC>`` (regex

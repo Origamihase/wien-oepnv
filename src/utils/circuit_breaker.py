@@ -151,11 +151,8 @@ class CircuitBreaker:
         ...     result = None
 
     See Also:
-        - ``docs/architecture.md`` §3 (resilience-layer stack) and §4
-          (provider plugin contract) for visual context.
-        - ``.jules/saboteur.md`` for the design-rationale entry that
-          motivated this primitive over the three pre-existing
-          ad-hoc resilience implementations.
+        ``docs/architecture.md`` §3 (resilience-layer stack) and §4
+        (provider plugin contract) for visual context.
 
     Registry:
         Every instance is auto-registered into :attr:`_instances`, a

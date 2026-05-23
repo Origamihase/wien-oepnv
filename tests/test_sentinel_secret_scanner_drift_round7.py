@@ -2,7 +2,7 @@
 issuer prefixes whose canonical format silently bypasses specific attribution
 in the post-Round-6 ``_KNOWN_TOKENS`` table.
 
-The 2026-05-10 Round 6 (see ``.jules/sentinel.md``) closed Brevo / Postman /
+The 2026-05-10 Round 6 closed Brevo / Postman /
 HCP Vault Secrets and re-stated the prevention rule:
 
 > "Every audit round that adds a new issuer MUST also enumerate THREE

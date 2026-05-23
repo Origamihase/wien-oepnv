@@ -206,7 +206,7 @@ def test_control_re_matches_invisible_dangerous_code_point(
     """
     assert build_feed._CONTROL_RE.search(code_point) is not None, (
         f"_CONTROL_RE must match {label} ({hex(ord(code_point))}); "
-        "see .jules/sentinel.md (Feed-XML BiDi-Mark Drift) for the full "
+        "see the audit (Feed-XML BiDi-Mark Drift) for the full "
         "list of code points the build-feed sanitiser must reject. "
         "The drift opens a Trojan-Source RSS primitive on the public "
         "feed at https://origamihase.github.io/wien-oepnv/feed.xml."
@@ -344,7 +344,7 @@ def test_control_re_covers_canonical_invisible_dangerous_set() -> None:
         + (" …" if len(missing) > 20 else "")
         + "\nThe two regexes must stay in sync: any code point covered "
         "by the canonical log sanitiser must also be flagged by the "
-        "build-feed sanitiser. See .jules/sentinel.md (Feed-XML BiDi-"
+        "build-feed sanitiser. See the audit (Feed-XML BiDi-"
         "Mark Drift) for the closing rule."
     )
 

@@ -2,7 +2,7 @@
 narrower than the canonical ``_INVISIBLE_DANGEROUS_RE`` from
 ``src/utils/logging.py``.
 
-The 2026-05-09 BiDi-Mark Drift Round 3 entry in ``.jules/sentinel.md``
+The 2026-05-09 BiDi-Mark Drift Round 3 entry (audit)
 ("Two-Site Drift Closure: OSMOverpassConfig Host-Only Validation +
 ``_UNSAFE_CHARS_RE`` BiDi/Zero-Width Gap") closed the validator regex
 in ``src/utils/stations_validation.py`` and explicitly named
@@ -155,7 +155,7 @@ def test_unsafe_url_chars_regex_matches_missing_code_point(
     """
     assert canonical_http._UNSAFE_URL_CHARS.search(code_point) is not None, (
         f"_UNSAFE_URL_CHARS must match {label} ({hex(ord(code_point))}); "
-        "see .jules/sentinel.md (BiDi-Mark Drift Round 3) for the full "
+        "see the audit (BiDi-Mark Drift Round 3) for the full "
         "list of code points the URL validator must reject. The Round 3 "
         "entry explicitly named ``_UNSAFE_URL_CHARS`` as a sibling drift "
         "candidate that did not get closed in the same round."
@@ -275,7 +275,7 @@ def test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set() -> No
         + (" …" if len(missing) > 20 else "")
         + "\nThe two regexes must stay in sync: any code point covered "
         "by the canonical log sanitiser must also be flagged by the "
-        "URL validator. See .jules/sentinel.md (BiDi-Mark Drift "
+        "URL validator. See the audit (BiDi-Mark Drift "
         "Round 3, sibling drift candidate enumeration) for the "
         "closing rule."
     )

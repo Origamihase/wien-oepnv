@@ -5,7 +5,7 @@ chain.
 
 The 2026-05-17 Multi-Vendor (AWS / Google / Stripe / Anthropic / OpenAI /
 GitLab PAT / NPM / SendGrid / Hugging Face), GitHub, and HashiCorp Vault
-Log-Sanitisation Drift Closure rounds (see ``.jules/sentinel.md``)
+Log-Sanitisation Drift Closure rounds
 established the canonical "value-shape mask for every scanner
 ``_KNOWN_TOKENS`` prefix" contract. The Multi-Vendor round explicitly
 named "~70 next-round-candidate scanner detectors with parallel log-

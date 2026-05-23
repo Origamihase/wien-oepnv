@@ -1,6 +1,6 @@
 """Sentinel PoC: ``scripts/generate_sitemap.py:_UNSAFE_URL_CHARS`` was the
 deferred bucket-(b) sibling from the 2026-05-10 *BiDi-Mark Drift
-Round 6* round (``.jules/sentinel.md``).
+Round 6* round.
 
 The Round 6 journal entry explicitly enumerated the post-fix state of
 every sibling regex against the canonical

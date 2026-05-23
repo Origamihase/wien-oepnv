@@ -144,7 +144,7 @@ _CSV_FORMULA_PREFIXES: Final = ("=", "+", "-", "@", "\t", "\r")
 #    being zero-width.
 #
 # The pre-fix regex covered only (1); the BiDi-Mark Drift family
-# (Rounds 2-4 in ``.jules/sentinel.md``) widened ``_CONTROL_CHARS_RE``,
+# (Rounds 2-4) widened ``_CONTROL_CHARS_RE``,
 # ``_INVISIBLE_DANGEROUS_RE``, ``_MARKDOWN_NORMALISE_UNSAFE_RE``,
 # ``_UNSAFE_CHARS_RE``, and ``_UNSAFE_URL_CHARS`` to cover (2)-(4) but
 # explicitly deferred this CSV writer's regex. The inventory test

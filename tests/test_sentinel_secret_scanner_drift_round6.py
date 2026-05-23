@@ -2,7 +2,7 @@
 issuer prefixes whose canonical format silently bypasses specific attribution
 in the post-Round-5 ``_KNOWN_TOKENS`` table.
 
-The 2026-05-09 Round 5 (see ``.jules/sentinel.md``) closed Atlassian /
+The 2026-05-09 Round 5 closed Atlassian /
 Sentry / Linear and re-stated the prevention rule:
 
 > "Treat ``_KNOWN_TOKENS`` as an issuer-keyed table — walk the modern

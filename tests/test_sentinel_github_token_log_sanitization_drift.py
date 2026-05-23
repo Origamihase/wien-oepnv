@@ -4,7 +4,7 @@ Refresh / Fine-Grained token family value-shape log-sanitisation across
 chain.
 
 The 2026-05-17 HashiCorp Vault Token Family Log-Sanitisation Drift Closure
-round (see ``.jules/sentinel.md``) explicitly named the GitHub token family
+round explicitly named the GitHub token family
 (``ghp_`` / ``gho_`` / ``ghu_`` / ``ghs_`` / ``ghr_`` / ``github_pat_``) as
 the **first** of the ~70 next-round-candidate scanner detectors whose
 detection codepath (``_KNOWN_TOKENS`` in ``src/utils/secret_scanner.py``)
