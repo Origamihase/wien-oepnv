@@ -15,11 +15,3 @@ class TestJsonLogLeak(unittest.TestCase):
         self.assertNotIn("secret", sanitized)
         self.assertIn("***", sanitized)
 
-    def test_json_escaped_newline_leak(self) -> None:
-        # Case where the input already has escaped newlines (e.g. from another logger)
-        # This might be tricky, but let's see.
-        # If input is '{"password":\\n"secret"}', then \\n is literal backslash n.
-        # \s* doesn't match it.
-        # So strictly speaking, sanitize_log_message might not handle already escaped newlines well either.
-        # But our primary concern is raw newlines being escaped by US.
-        pass
