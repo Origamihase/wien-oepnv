@@ -17,12 +17,14 @@ from typing import Any, NamedTuple
 from collections.abc import Iterable
 
 from .files import _reject_non_finite_constant, _reject_non_finite_float
+from .geo import calculate_distance_meters
 
 __all__ = [
     "canonical_name",
     "display_name",
     "is_in_vienna",
     "is_pendler",
+    "nearest_rail_station",
     "station_by_oebb_id",
     "station_info",
     "text_has_vienna_connection",
@@ -533,6 +535,59 @@ def _station_entries() -> tuple[dict[str, Any], ...]:
         if isinstance(entry, dict):
             result.append(entry)
     return tuple(result)
+
+
+@lru_cache(maxsize=1)
+def _rail_station_coordinates() -> tuple[tuple[str, float, float], ...]:
+    """Return ``(name, lat, lon)`` for every rail Betriebsstelle.
+
+    A ``bst_id`` marks an ÖBB / S-Bahn operating point — i.e. a
+    *Bahnhof* (52 of them inside Vienna) or a *Pendlerbahnhof* (109
+    commuter stations). Pure Wiener-Linien tram/bus stops (``wl_diva``
+    only, no ``bst_id``) are deliberately excluded: matching against the
+    ~1800 stops would turn proximity into "near any stop", which in a
+    dense city means "everywhere". Entries without a valid coordinate
+    pair are skipped.
+    """
+
+    rail: list[tuple[str, float, float]] = []
+    for entry in _station_entries():
+        if not entry.get("bst_id"):
+            continue
+        lat = _coerce_lat(entry.get("latitude") or entry.get("lat"))
+        lon = _coerce_lon(entry.get("longitude") or entry.get("lon"))
+        if lat is None or lon is None:
+            continue
+        name = entry.get("name")
+        if isinstance(name, str) and name.strip():
+            rail.append((name.strip(), lat, lon))
+    return tuple(rail)
+
+
+def nearest_rail_station(
+    lat: object, lon: object, radius_m: float
+) -> tuple[str, float] | None:
+    """Return ``(name, distance_m)`` of the closest rail Bahnhof within
+    ``radius_m`` of the coordinate, or ``None`` if none qualifies.
+
+    Inputs are coerced and range-checked via :func:`_coerce_lat` /
+    :func:`_coerce_lon`, so ``None`` / ``NaN`` / out-of-range coordinates
+    yield ``None`` (fail closed). The scan is ``O(n)`` over the cached
+    rail set (~160 entries) with no regex/backtracking surface.
+    """
+
+    qlat = _coerce_lat(lat)
+    qlon = _coerce_lon(lon)
+    if qlat is None or qlon is None:
+        return None
+    if not radius_m > 0:
+        return None
+    best: tuple[str, float] | None = None
+    for name, slat, slon in _rail_station_coordinates():
+        distance = calculate_distance_meters(qlat, qlon, slat, slon)
+        if distance <= radius_m and (best is None or distance < best[1]):
+            best = (name, distance)
+    return best
 
 
 @lru_cache(maxsize=1)

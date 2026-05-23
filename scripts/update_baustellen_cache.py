@@ -32,6 +32,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
+from src.providers.baustellen import is_transit_relevant  # noqa: E402
 from utils.cache import write_cache  # noqa: E402
 from utils.files import loads_finite, read_capped_json  # noqa: E402
 from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
@@ -508,6 +509,35 @@ def _build_context(properties: dict[str, Any]) -> dict[str, Any]:
     return context
 
 
+# GeoJSON geometries arrive as Point (``[lon, lat]``), LineString
+# (``[[lon, lat], ...]``), Polygon (``[[[lon, lat], ...]]``) or their
+# Multi* variants. The station-proximity test only needs one
+# representative coordinate, so we descend to the first vertex. The depth
+# is bounded so a maliciously deep nested array from a compromised
+# ``data.wien.gv.at`` upstream cannot drive unbounded recursion.
+_MAX_COORD_DEPTH = 8
+
+
+def _first_lonlat(coordinates: Any, _depth: int = 0) -> tuple[float, float] | None:
+    """Return the first ``(lon, lat)`` pair from a GeoJSON coordinate array."""
+    if _depth > _MAX_COORD_DEPTH:
+        return None
+    if not isinstance(coordinates, list | tuple) or not coordinates:
+        return None
+    first = coordinates[0]
+    if isinstance(first, bool):
+        return None
+    if isinstance(first, int | float):
+        # Leaf level: a coordinate needs at least a lon/lat pair.
+        if len(coordinates) < 2:
+            return None
+        try:
+            return float(coordinates[0]), float(coordinates[1])
+        except (TypeError, ValueError):
+            return None
+    return _first_lonlat(first, _depth + 1)
+
+
 def _build_location(properties: dict[str, Any], geometry: dict[str, Any]) -> dict[str, Any]:
     location: dict[str, Any] = {}
     address_parts: list[str] = []
@@ -523,43 +553,39 @@ def _build_location(properties: dict[str, Any], geometry: dict[str, Any]) -> dic
     if address_parts:
         location["address"] = ", ".join(address_parts)
     if isinstance(geometry, dict):
-        coordinates = geometry.get("coordinates")
-        if isinstance(coordinates, list | tuple) and len(coordinates) >= 2:
-            try:
-                lon, lat = float(coordinates[0]), float(coordinates[1])
-            except (TypeError, ValueError):
-                pass
-            else:
-                # Security (Coordinate finite/range drift, parser-level
-                # floor): mirror the canonical scrub pinned at
-                # ``src/places/hafas_client.py:_extract_first_location``,
-                # ``src/places/client.py:_parse_place`` and
-                # ``src/places/osm_client.py:filter_complete_places``
-                # (Round 1485 / Round 1486). A compromised
-                # ``data.wien.gv.at`` upstream (or MITM / DNS rebind)
-                # planting GeoJSON ``coordinates: [NaN, Infinity]``
-                # otherwise lands the poisoned float in
-                # ``location["coordinates"]`` — which propagates verbatim
-                # through ``write_cache`` into ``cache/baustellen/
-                # events.json`` (committed to ``main`` by
-                # ``update-cycle.yml``).
-                # ``math.isfinite`` is the strict superset of
-                # ``not math.isnan`` — it rejects ``NaN`` AND ``±Inf``
-                # in one check. The WGS84-range guard (-90 <= lat <= 90,
-                # -180 <= lon <= 180) rejects pathological integer-
-                # overflow shapes. Pairs failing either guard are
-                # silently dropped (the rest of the event's address /
-                # metadata is preserved); the writer-side
-                # ``allow_nan=False`` pin in
-                # ``src/utils/cache.py:write_cache`` is the
-                # defence-in-depth second layer.
-                if (
-                    math.isfinite(lat)
-                    and math.isfinite(lon)
-                    and -90.0 <= lat <= 90.0
-                    and -180.0 <= lon <= 180.0
-                ):
-                    location["coordinates"] = {"lat": lat, "lon": lon}
+        point = _first_lonlat(geometry.get("coordinates"))
+        if point is not None:
+            lon, lat = point
+            # Security (Coordinate finite/range drift, parser-level
+            # floor): mirror the canonical scrub pinned at
+            # ``src/places/hafas_client.py:_extract_first_location``,
+            # ``src/places/client.py:_parse_place`` and
+            # ``src/places/osm_client.py:filter_complete_places``
+            # (Round 1485 / Round 1486). A compromised
+            # ``data.wien.gv.at`` upstream (or MITM / DNS rebind)
+            # planting GeoJSON ``coordinates: [NaN, Infinity]``
+            # otherwise lands the poisoned float in
+            # ``location["coordinates"]`` — which propagates verbatim
+            # through ``write_cache`` into ``cache/baustellen/
+            # events.json`` (committed to ``main`` by
+            # ``update-cycle.yml``).
+            # ``math.isfinite`` is the strict superset of
+            # ``not math.isnan`` — it rejects ``NaN`` AND ``±Inf``
+            # in one check. The WGS84-range guard (-90 <= lat <= 90,
+            # -180 <= lon <= 180) rejects pathological integer-
+            # overflow shapes. Pairs failing either guard are
+            # silently dropped (the rest of the event's address /
+            # metadata is preserved); the writer-side
+            # ``allow_nan=False`` pin in
+            # ``src/utils/cache.py:write_cache`` is the
+            # defence-in-depth second layer.
+            if (
+                math.isfinite(lat)
+                and math.isfinite(lon)
+                and -90.0 <= lat <= 90.0
+                and -180.0 <= lon <= 180.0
+            ):
+                location["coordinates"] = {"lat": lat, "lon": lon}
     return location
 
 
@@ -655,8 +681,20 @@ def main() -> int:
         if payload is None:
             return 1
     events = _collect_events(payload)
-    write_cache("baustellen", events)
-    LOGGER.info("Baustellen: Cache mit %d Einträgen aktualisiert.", len(events))
+    # Keep only construction sites at/near a rail Bahnhof (Wien station or
+    # Pendlerbahnhof). The upstream feed covers every road works in the
+    # city; admitting all of them would bury the ÖPNV signal the feed
+    # exists to carry.
+    relevant = [event for event in events if is_transit_relevant(event.get("location"))]
+    skipped = len(events) - len(relevant)
+    if skipped:
+        LOGGER.info(
+            "Baustellen: %d von %d Meldung(en) ohne ÖPNV-Bezug verworfen.",
+            skipped,
+            len(events),
+        )
+    write_cache("baustellen", relevant)
+    LOGGER.info("Baustellen: Cache mit %d Einträgen aktualisiert.", len(relevant))
     return 0
 
 
