@@ -642,6 +642,26 @@ def _save_pending_trips(path: Path, state: Mapping[str, _PendingTrip]) -> bool:
     is exclusively ASCII (hardcoded direction labels, short S-Bahn
     / R / REX / CJX line designations, ISO-8601 timestamps), so the
     diff shape is unchanged on the happy path.
+
+    Security (Non-Finite Literal Writer-Defence Drift, sibling of
+    PRs #1487 / #1488 — coordinate + companion-writer rounds):
+    ``allow_nan=False`` mirrors the canonical writer-side pin
+    established for the sibling state-sink writers
+    (``data/first_seen.json`` / ``data/stations_last_run.json`` /
+    ``data/vor_request_count.json`` / ``data/places_quota.json`` /
+    ``cache/<provider>/last_run.json``). ``_trip_to_json`` emits
+    ``"latest_delay_minutes": trip.latest_delay_minutes`` directly
+    from the concrete ``float`` field; a future refactor of
+    :func:`_leg_departure_delay_minutes` that lets ``float('nan')``
+    / ``float('inf')`` reach ``latest_delay_minutes`` (missing-data
+    sentinel, third-party SDK NaN observation, derived-statistic
+    division) would otherwise plant the non-standard literal —
+    invalid per RFC 8259 §6 — in the committed artefact. This pin
+    is also the writer-side dual of the reader-side ``loads_finite``
+    hook on :func:`_load_pending_trips`: together they enforce the
+    round-trip invariant that no non-finite literal can enter or
+    leave the on-disk state without surfacing as a loud
+    ``ValueError`` at the producing call.
     """
 
     payload = {key: _trip_to_json(trip) for key, trip in state.items()}
@@ -659,6 +679,7 @@ def _save_pending_trips(path: Path, state: Mapping[str, _PendingTrip]) -> bool:
                 indent=2,
                 sort_keys=True,
                 ensure_ascii=True,
+                allow_nan=False,
             )
             fh.write("\n")
         return True
@@ -752,6 +773,18 @@ def _save_recently_finalised(
     every non-ASCII code point so no raw byte in the canonical attack
     union reaches the committed
     ``cache/stammstrecke/recently_finalised.json``.
+
+    Security (Non-Finite Literal Writer-Defence Drift, defence-in-
+    depth sibling pin of :func:`_save_pending_trips`):
+    ``allow_nan=False`` is set in lockstep with the canonical writer
+    pin even though today's payload is all-string
+    (``{key: ts.isoformat()}`` — ``isoformat()`` always returns a
+    finite-byte string). The pin protects against a future schema
+    widening that adds a numeric field (re-emission count, age-in-
+    seconds for cleanup tooling, observed-delay arithmetic) — the
+    sibling pin keeps the writer-shape contract uniform across the
+    two-file ledger pair so a future refactor cannot regress one
+    half of the round-trip invariant.
     """
 
     payload = {key: ts.isoformat() for key, ts in finalised.items()}
@@ -769,6 +802,7 @@ def _save_recently_finalised(
                 indent=2,
                 sort_keys=True,
                 ensure_ascii=True,
+                allow_nan=False,
             )
             fh.write("\n")
         return True
