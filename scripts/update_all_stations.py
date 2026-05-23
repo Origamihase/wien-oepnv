@@ -308,11 +308,11 @@ def _render_diff_markdown(
     # 2026-05-09 ``Markdown Injection Drift Round 3`` entry for
     # ``ValidationReport.to_markdown()``.
     lines = [
-        "# stations.json Diff Report",
+        "# stations.json — Diff-Bericht",
         "",
-        f"_Generated: {timestamp}_",
+        f"_Erzeugt am: {timestamp}_",
         "",
-        f"**Stations: {before_count} → {after_count} (Δ {after_count - before_count:+d})**",
+        f"**Stationen: {before_count} → {after_count} (Δ {after_count - before_count:+d})**",
         "",
     ]
 
@@ -323,7 +323,7 @@ def _render_diff_markdown(
             for item in items:
                 lines.append(formatter(item))
         else:
-            lines.append("_None._")
+            lines.append("_Keine._")
         lines.append("")
 
     def _safe_key(raw: str) -> str:
@@ -333,22 +333,22 @@ def _render_diff_markdown(
         return escape_markdown(normalise_markdown_text(raw))
 
     section(
-        "Added",
+        "Hinzugefügt",
         diff["added"],
         lambda it: f"- `{_safe_key(it[0])}` — {_safe_name(it[1])}",
     )
     section(
-        "Removed",
+        "Entfernt",
         diff["removed"],
         lambda it: f"- `{_safe_key(it[0])}` — {_safe_name(it[1])}",
     )
     section(
-        "Renamed",
+        "Umbenannt",
         diff["renamed"],
         lambda it: f'- `{_safe_key(it[0])}`: "{_safe_name(it[1])}" → "{_safe_name(it[2])}"',
     )
     section(
-        f"Coordinates shifted (≥ {int(_COORD_SHIFT_THRESHOLD_M)} m)",
+        f"Koordinaten verschoben (≥ {int(_COORD_SHIFT_THRESHOLD_M)} m)",
         diff["coord_shifted"],
         lambda it: f"- `{_safe_key(it[0])}` — {_safe_name(it[1])} ({it[2]} m)",
     )
