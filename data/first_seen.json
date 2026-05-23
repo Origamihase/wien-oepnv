@@ -3295,6 +3295,14 @@
       }
     }
   },
+  "wl|st\u00f6rung|L=N41|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:30:39.869413+00:00",
+    "translations": {
+      "en": {
+        "title": "N41: Buses stop W\u00e4hringer Stra\u00dfe ONo. 200-202"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=N43|D=2026-05-01": {
     "first_seen": "2026-04-30T23:28:44.616135+00:00"
   },
@@ -3352,6 +3360,14 @@
   },
   "wl|st\u00f6rung|L=N43|D=2026-05-23": {
     "first_seen": "2026-05-22T22:30:45.384358+00:00",
+    "translations": {
+      "en": {
+        "title": "N43: Buses stop at Dornbacher Stra\u00dfe 85"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=N43|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:30:39.869413+00:00",
     "translations": {
       "en": {
         "title": "N43: Buses stop at Dornbacher Stra\u00dfe 85"
@@ -3421,6 +3437,14 @@
     "translations": {
       "en": {
         "title": "N46: Buses stop at line 48A in Burggasse"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=N46|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:30:39.869413+00:00",
+    "translations": {
+      "en": {
+        "title": "N46: Buses stop at line 48A in Neustiftgasse"
       }
     }
   },
@@ -3952,6 +3976,15 @@
     "translations": {
       "en": {
         "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "U6: Impurity"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=U6|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:30:39.869413+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in the direction of seven shepherds. Reason: contamination.",
         "title": "U6: Impurity"
       }
     }
