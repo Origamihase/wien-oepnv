@@ -350,30 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
-    "pubDate": "2026-05-23T19:54:23+02:00",
-    "starts_at": "2026-05-23T19:54:23+02:00",
-    "ends_at": "2026-05-23T20:53:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-05-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7",
-    "pubDate": "2026-05-23T19:54:23+02:00",
-    "starts_at": "2026-05-23T19:54:25+02:00",
-    "ends_at": "2026-05-23T20:53:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-05-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -622,18 +598,6 @@
     "starts_at": "2025-11-10T06:00:00+01:00",
     "ends_at": "2026-06-01T00:56:00+02:00",
     "_identity": "wl|störung|L=80A|D=2025-11-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "95A: Verkehrsstörung",
-    "description": "Linie 95A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "99ab34c56580c402fb3142d9981303beebe72cbd05e3484f468cbc666b93c1b0",
-    "pubDate": "2026-05-23T15:30:00+02:00",
-    "starts_at": "2026-05-23T15:30:00+02:00",
-    "ends_at": "2026-05-23T20:28:00+02:00",
-    "_identity": "wl|störung|L=95A|D=2026-05-23"
   },
   {
     "source": "Wiener Linien",
