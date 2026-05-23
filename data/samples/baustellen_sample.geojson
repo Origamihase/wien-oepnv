@@ -3,42 +3,39 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {
-        "OGD_ID": "BS-0001",
-        "BEZEICHNUNG": "Umbau Bahnhofsvorplatz Floridsdorf",
-        "STRASSE": "Am Spitz",
-        "VON": "Franz-Jonas-Platz",
-        "BIS": "Pius-Parsch-Platz",
-        "ANFANGSZEIT": "2025-10-01T06:00:00+02:00",
-        "ENDEZEIT": "2025-10-15T22:00:00+02:00",
-        "BEZIRK": "21",
-        "HINWEIS": "Fahrbahnverengung im Bereich der Bahnhofszufahrt.",
-        "VERKEHRSMASSNAHME": "Fahrbahnverengung"
-      },
+      "id": "BAUSTELLENPKTOGD.1",
       "geometry": {
         "type": "Point",
         "coordinates": [16.4007, 48.2562499]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "BEZIRK": 21,
+        "BEZEICHNUNG": "Umbau Bahnhofsvorplatz Floridsdorf",
+        "BEHINDERUNGSART": "Fahrbahnsperre",
+        "PRESSETEXT": "Sanierung des Bahnhofsvorplatzes; Zufahrt zeitweise eingeschränkt.",
+        "OBJEKT_BEGINN": "2025-10-01Z",
+        "OBJEKT_ENDE": "2025-10-15Z"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "OGD_ID": "BS-0002",
-        "MASSNAHME": "Gleisbau Bahnhof Mödling",
-        "STRASSENNAME": "Bahnhofsplatz",
-        "ABSCHNITT_VON": "Hauptstraße",
-        "ABSCHNITT_BIS": "Bahnstraße",
-        "DAUER": "2025-11-05/2025-11-20",
-        "BEZIRK": "Mödling",
-        "BEMERKUNG": "Schienenersatzverkehr, Haltestellen verlegt.",
-        "VERKEHRSART": "Straßenbahn"
-      },
+      "id": "BAUSTELLENLINOGD.2",
       "geometry": {
         "type": "LineString",
         "coordinates": [
-          [16.295474, 48.085628],
-          [16.296100, 48.086000]
+          [16.3255, 48.2103],
+          [16.3262, 48.2107]
         ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "BEZIRK": 16,
+        "BEZEICHNUNG": "Thaliastraße",
+        "BEHINDERUNGSART": "Gleisbau",
+        "PRESSETEXT": "Die Haltestelle der Straßenbahnlinie 2 wird verlegt; während der Arbeiten ist Schienenersatzverkehr eingerichtet.",
+        "OBJEKT_BEGINN": "2025-11-05Z",
+        "OBJEKT_ENDE": "2025-11-20Z"
       }
     }
   ]

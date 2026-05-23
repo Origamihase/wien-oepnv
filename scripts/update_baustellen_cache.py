@@ -81,7 +81,16 @@ def _path_fingerprint(path: Path) -> str:
 
 DEFAULT_DATA_URL = (
     "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0"
-    "&typeName=ogdwien:BAUSTELLEOGD&srsName=EPSG:4326&outputFormat=json"
+    "&typeName=ogdwien:BAUSTELLENLINOGD&srsName=EPSG:4326&outputFormat=json"
+)
+
+# The Stadt-Wien OGD migration (GeoServer "geoserverneuogd") split the old
+# single ``BAUSTELLEOGD`` layer into two "verkehrswirksame Baustellen"
+# feature types — one for line segments, one for point locations. Both are
+# fetched and merged so neither geometry kind is lost.
+_BAUSTELLEN_TYPENAMES: tuple[str, ...] = (
+    "ogdwien:BAUSTELLENLINOGD",
+    "ogdwien:BAUSTELLENPKTOGD",
 )
 
 # WFS servers disagree on the token that selects GeoJSON output: GeoServer
@@ -154,6 +163,7 @@ TO_KEYS: tuple[str, ...] = (
     "BIS_KM",
 )
 INFO_KEYS: tuple[str, ...] = (
+    "PRESSETEXT",
     "HINWEIS",
     "INFO",
     "BESCHREIBUNG",
@@ -163,6 +173,7 @@ INFO_KEYS: tuple[str, ...] = (
     "ANMERKUNG",
 )
 START_KEYS: tuple[str, ...] = (
+    "OBJEKT_BEGINN",
     "ANFANGSZEIT",
     "BEGINN",
     "BEGINN_DATUM",
@@ -174,6 +185,7 @@ START_KEYS: tuple[str, ...] = (
     "VON_DATUM",
 )
 END_KEYS: tuple[str, ...] = (
+    "OBJEKT_ENDE",
     "ENDEZEIT",
     "ENDE",
     "END_DATUM",
@@ -461,6 +473,24 @@ def _with_output_format(url: str, output_format: str) -> str:
     return f"{url}{sep}outputFormat={encoded}"
 
 
+def _with_typename(url: str, typename: str) -> str:
+    """Return ``url`` with its ``typeName``/``typeNames`` query value set to
+    ``typename`` (appended if absent).
+
+    Only the type-name token is rewritten — scheme/host/path and the other
+    parameters are preserved, so the host pin from :func:`_resolve_data_url`
+    still holds (``_fetch_remote`` re-validates regardless). The ``ogdwien:``
+    workspace colon is kept readable.
+    """
+    encoded = quote(typename, safe=":")
+    if re.search(r"(?i)[?&]typeNames?=", url):
+        return re.sub(
+            r"(?i)([?&]typeNames?=)[^&]*", lambda m: m.group(1) + encoded, url, count=1
+        )
+    sep = "&" if "?" in url else "?"
+    return f"{url}{sep}typeName={encoded}"
+
+
 def _resolve_fallback_path(candidate: str | None) -> Path:
     """Resolve the fallback-path env override against ``REPO_ROOT``.
 
@@ -540,6 +570,12 @@ def _parse_datetime(value: str | float | int | None) -> datetime | None:
     candidate = value.strip()
     if not candidate:
         return None
+    # Stadt-Wien WFS emits date-only values with a bare trailing ``Z``
+    # (e.g. ``2026-03-22Z``). ``dateutil`` rejects that shape, so expand
+    # it to an explicit UTC midnight before parsing.
+    date_only_z = re.fullmatch(r"(\d{4}-\d{2}-\d{2})Z", candidate)
+    if date_only_z:
+        candidate = f"{date_only_z.group(1)}T00:00:00+00:00"
     try:
         parsed = dtparser.parse(candidate)
     except (ValueError, OverflowError):
@@ -585,7 +621,11 @@ def _build_context(properties: dict[str, Any]) -> dict[str, Any]:
     district = properties.get("BEZIRK") or properties.get("BZR")
     if district:
         context["district"] = str(district).strip()
-    measure = properties.get("VERKEHRSMASSNAHME") or properties.get("VERKEHRSART")
+    measure = (
+        properties.get("BEHINDERUNGSART")
+        or properties.get("VERKEHRSMASSNAHME")
+        or properties.get("VERKEHRSART")
+    )
     if measure:
         context["measure"] = str(measure).strip()
     status = properties.get("STATUS")
@@ -739,6 +779,33 @@ def _collect_events(payload: dict[str, Any]) -> list[dict[str, Any]]:
     return events
 
 
+def _fetch_layers(data_url: str, timeout: int) -> list[dict[str, Any]] | None:
+    """Fetch every Baustellen feature type and return the merged events.
+
+    For each type name the GeoJSON ``outputFormat`` is negotiated (the
+    configured token first, then the common server-specific variants),
+    stopping at the first that returns a parseable GeoJSON object. Returns
+    ``None`` only when NO layer could be fetched (the caller then falls
+    back to the bundled sample); a partial success (one of two layers)
+    still returns the events it got.
+    """
+    merged: list[dict[str, Any]] = []
+    any_success = False
+    for typename in _BAUSTELLEN_TYPENAMES:
+        layer_url = _with_typename(data_url, typename)
+        payload = None
+        for output_format in _OUTPUT_FORMAT_CANDIDATES:
+            payload = _fetch_remote(_with_output_format(layer_url, output_format), timeout)
+            if payload is not None:
+                break
+        if payload is None:
+            LOGGER.warning("Baustellen: Layer %s nicht abrufbar.", typename)
+            continue
+        any_success = True
+        merged.extend(_collect_events(payload))
+    return merged if any_success else None
+
+
 def main() -> int:
     configure_logging()
     data_url = _resolve_data_url(os.getenv("BAUSTELLEN_DATA_URL"))
@@ -760,27 +827,15 @@ def main() -> int:
                 "Baustellen: Ungültiger Timeout-Wert %s – verwende Standard",
                 sanitize_log_arg(timeout_raw),
             )
-    # Negotiate the GeoJSON outputFormat: try the configured token first,
-    # then the common server-specific variants, stopping at the first that
-    # returns a parseable GeoJSON object.
-    payload = None
-    for output_format in _OUTPUT_FORMAT_CANDIDATES:
-        payload = _fetch_remote(_with_output_format(data_url, output_format), timeout)
-        if payload is not None:
-            if output_format != _OUTPUT_FORMAT_CANDIDATES[0]:
-                LOGGER.info(
-                    "Baustellen: outputFormat=%s vom Endpoint akzeptiert.",
-                    output_format,
-                )
-            break
+    events = _fetch_layers(data_url, timeout)
     used_fallback = False
-    if payload is None:
+    if events is None:
         used_fallback = True
-        # Every outputFormat variant was refused — capture WHY (the OGC
-        # exception body) before falling back, so the operator log can
-        # pinpoint a renamed typeName / unsupported version.
+        # Every layer was refused — capture WHY (the OGC exception body)
+        # before falling back, so the operator log can pinpoint a renamed
+        # typeName / unsupported version.
         _log_endpoint_diagnostic(
-            _with_output_format(data_url, _OUTPUT_FORMAT_CANDIDATES[0]), timeout
+            _with_typename(data_url, _BAUSTELLEN_TYPENAMES[0]), timeout
         )
         payload = _load_fallback(fallback_path)
         if payload is None:
@@ -789,12 +844,12 @@ def main() -> int:
                 "nicht aktualisiert."
             )
             return 1
-    events = _collect_events(payload)
-    # Keep only construction sites at/near a rail Bahnhof (Wien station or
-    # Pendlerbahnhof). The upstream feed covers every road works in the
-    # city; admitting all of them would bury the ÖPNV signal the feed
-    # exists to carry.
-    relevant = [event for event in events if is_transit_relevant(event.get("location"))]
+        events = _collect_events(payload)
+    # Keep only ÖPNV-relevant sites: at/near a rail Bahnhof OR a text that
+    # mentions public transport (stop / line / bus / tram / metro). The
+    # upstream feed is "verkehrswirksam" but still includes pure car-traffic
+    # works, which would bury the ÖPNV signal the feed exists to carry.
+    relevant = [event for event in events if is_transit_relevant(event)]
     skipped = len(events) - len(relevant)
     if skipped:
         LOGGER.info(
