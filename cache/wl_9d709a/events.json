@@ -350,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "22A: Verkehrsstörung",
+    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "07fbd4250b1b41be2f33585e1fdc450273353e228726ad73a3be5b3991b090b5",
+    "pubDate": "2026-05-23T15:31:00+02:00",
+    "starts_at": "2026-05-23T15:31:00+02:00",
+    "ends_at": "2026-05-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=22A|D=2026-05-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -627,7 +639,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "95A: Verkehrsstörung",
-    "description": "Linie 95A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung im Bereich .",
+    "description": "Linie 95A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "99ab34c56580c402fb3142d9981303beebe72cbd05e3484f468cbc666b93c1b0",
     "pubDate": "2026-05-23T15:30:00+02:00",

@@ -218,6 +218,15 @@
       }
     }
   },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&879196": {
+    "first_seen": "2026-05-23T14:00:57.082989+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to persons on the tracks, no journeys are possible between Vienna Hbf (U) and Wien Matzleinsdorfer Platz Bahnhst until expected 16:00 o'clock.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Matzleinsdorfer Platz"
+      }
+    }
+  },
   "stammstrecke_delay_meidling|2026-05-13T08:00:00+02:00": {
     "first_seen": "2026-05-13T06:30:55.225141+00:00"
   },
@@ -1019,6 +1028,15 @@
       "en": {
         "summary": "Irregular intervals in both directions. Reason: traffic overload.",
         "title": "22A: Traffic congestion"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=22A|D=2026-05-23": {
+    "first_seen": "2026-05-23T14:00:57.082989+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic disturbance.",
+        "title": "22A: Traffic disturbance"
       }
     }
   },
