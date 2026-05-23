@@ -227,6 +227,15 @@
       }
     }
   },
+  "stadt wien \u2013 baustellen|baustelle|L=|D=2026-05-25|T=E\u00dflinger Hauptstra\u00dfe 96|F=631f62b75ba2d0e03efa73b00c37ba3626d8b839e00a1bf62d2736cdf82d2b7c": {
+    "first_seen": "2026-05-23T22:52:42.252894+00:00",
+    "translations": {
+      "en": {
+        "summary": "Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane.",
+        "title": "E\u00dflinger Hauptstra\u00dfe 96"
+      }
+    }
+  },
   "stammstrecke_delay_meidling|2026-05-13T08:00:00+02:00": {
     "first_seen": "2026-05-13T06:30:55.225141+00:00"
   },
@@ -1596,6 +1605,15 @@
       "en": {
         "summary": "Irregular intervals in both directions. Reason: traffic disturbance.",
         "title": "37: Traffic disturbance"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=37|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:52:42.252894+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards High Wait. expected duration: 01:15 clock. Reason: Foreign traffic accident in the Barawitzkagasse station area.",
+        "title": "37: foreign traffic accident"
       }
     }
   },
@@ -3792,6 +3810,15 @@
       }
     }
   },
+  "wl|st\u00f6rung|L=U3|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:52:42.252894+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective vehicle.",
+        "title": "U3: delays"
+      }
+    }
+  },
   "wl|st\u00f6rung|L=U4,U6|D=2026-05-16": {
     "first_seen": "2026-05-16T11:30:33.814286+00:00"
   },
@@ -3870,6 +3897,15 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: contamination.",
         "title": "U4: Impurity"
+      }
+    }
+  },
+  "wl|st\u00f6rung|L=U4|D=2026-05-24": {
+    "first_seen": "2026-05-23T22:52:42.252894+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards H\u00fctteldorf. expected duration: 01:00. Reason: police operation in the Spittelau stop area.",
+        "title": "U4: police operation"
       }
     }
   },

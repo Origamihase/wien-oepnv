@@ -7,8 +7,63 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 24 May 2026 00:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 00:52:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Eßlinger Hauptstraße 96]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">48d4e68fcafed0a29b00e9f074705a2a76c7c3e996e072d172bbcb919e22b460</guid>
+      <pubDate>Mon, 25 May 2026 02:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 25 May 2026 02:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 06 Sep 2026 02:00:00 +0200</ext:ends_at>
+      <description>Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane. [25.05.2026 – 06.09.2026]</description>
+      <content:encoded><![CDATA[Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane.<br/>[25.05.2026 – 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37: foreign traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c5967a225000cfa70f0360204f0e15a3823fbe67437b4556e2214a6146b37072</guid>
+      <pubDate>Sun, 24 May 2026 00:48:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 00:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards High Wait. expected duration: 01:15 clock. Reason: Foreign traffic accident in the Barawitzkagasse station area. [On 24.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards High Wait. expected duration: 01:15 clock. Reason: Foreign traffic accident in the Barawitzkagasse station area.<br/>[On 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a</guid>
+      <pubDate>Sun, 24 May 2026 00:43:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 00:43:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Hütteldorf. expected duration: 01:00. Reason: police operation in the Spittelau stop area. [On 24.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Hütteldorf. expected duration: 01:00. Reason: police operation in the Spittelau stop area.<br/>[On 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Sun, 24 May 2026 00:41:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 00:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: defective vehicle. [On 24.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N46: Buses stop at line 48A in Neustiftgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a751a157bea2c61bda9406b779159246c8d4f92aa8a9f6765523f38cb2bce878</guid>
+      <pubDate>Sun, 24 May 2026 00:30:28 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 00:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 00:30:28 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>[On 24.05.2026]</description>
+      <content:encoded><![CDATA[[On 24.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N41: Buses stop Währinger Straße ONo. 200-202]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,17 +71,6 @@
       <pubDate>Sun, 24 May 2026 00:30:07 +0200</pubDate>
       <ext:first_seen>Sun, 24 May 2026 00:30:39 +0200</ext:first_seen>
       <ext:starts_at>Sun, 24 May 2026 00:30:07 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 05:00:00 +0200</ext:ends_at>
-      <description>[On 24.05.2026]</description>
-      <content:encoded><![CDATA[[On 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N46: Buses stop at line 48A in Neustiftgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1bc89bc576e114343fbe409de06c7658ab641c9714cb025001dae07c25e9ae89</guid>
-      <pubDate>Sun, 24 May 2026 00:30:05 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 00:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 00:30:05 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 05:00:00 +0200</ext:ends_at>
       <description>[On 24.05.2026]</description>
       <content:encoded><![CDATA[[On 24.05.2026]]]></content:encoded>
@@ -43,17 +87,6 @@
       <content:encoded><![CDATA[[On 24.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U6: Impurity]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515</guid>
-      <pubDate>Sun, 24 May 2026 00:18:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 00:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 00:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in the direction of seven shepherds. Reason: contamination. [On 24.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in the direction of seven shepherds. Reason: contamination.<br/>[On 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[N29: Buses stop on the main carriageway]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a</guid>
@@ -61,17 +94,6 @@
       <ext:first_seen>Sat, 23 May 2026 23:00:47 +0200</ext:first_seen>
       <ext:starts_at>Sat, 23 May 2026 23:00:01 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 05:30:00 +0200</ext:ends_at>
-      <description>[23.05.2026 – 24.05.2026]</description>
-      <content:encoded><![CDATA[[23.05.2026 – 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Buses stop at Breitenfurter Straße 236-238]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Sat, 23 May 2026 04:45:11 +0200</pubDate>
-      <ext:first_seen>Sat, 23 May 2026 05:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 23 May 2026 04:45:11 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[23.05.2026 – 24.05.2026]</description>
       <content:encoded><![CDATA[[23.05.2026 – 24.05.2026]]]></content:encoded>
     </item>
@@ -93,28 +115,6 @@
       <pubDate>Fri, 22 May 2026 00:00:20 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[22.05.2026 – 24.05.2026]</description>
-      <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Buses stop Landstraßer main road 116]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf</guid>
-      <pubDate>Fri, 22 May 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 00:00:18 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[22.05.2026 – 24.05.2026]</description>
-      <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Buses stop at Pasetti Street vor Hellwagstraße (at line 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
-      <pubDate>Fri, 22 May 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 22 May 2026 00:00:18 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[22.05.2026 – 24.05.2026]</description>
       <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
