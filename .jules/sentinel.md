@@ -1,5 +1,90 @@
 # Sentinel's Journal
 
+## 2026-05-23 - Stammstrecke Writer Non-Finite Literal Drift + Writer-Side `allow_nan=False` Audit Walker
+
+**Vulnerability:** Two committed-state JSON writers in
+`scripts/update_stammstrecke_status.py` emitted non-standard
+`NaN` / `Infinity` / `-Infinity` literals (invalid per RFC 8259 §6)
+when a non-finite float reached the payload — the writer-side
+sibling of the parser-side `loads_finite` hook closed in the
+2026-05-14 / 2026-05-15 rounds (PRs #1485 / #1487 / #1488):
+
+1. `scripts/update_stammstrecke_status.py:_save_pending_trips`
+   (line 656) writes `cache/stammstrecke/pending_trips.json` via
+   `_json_lib.dump(payload, fh, indent=2, sort_keys=True,
+   ensure_ascii=True)` with NO `allow_nan=False`. The payload's
+   `latest_delay_minutes` field is a CONCRETE `float` type (not
+   `float | None`) on `_PendingTrip` and flows directly from
+   `_leg_departure_delay_minutes` arithmetic (`(actual -
+   scheduled).total_seconds() / 60.0`). A future refactor that uses
+   `float('inf')` as a missing-data sentinel, a third-party VAO peer
+   SDK that surfaces `math.nan` for missing observations, or a
+   derived-statistic division-by-zero (e.g. mean-of-empty
+   computation) lands the non-standard literal verbatim in the
+   committed-to-`main` sidecar. Confirmed by PoC: pre-fix a
+   `_PendingTrip(latest_delay_minutes=float('nan'))` writes
+   `"latest_delay_minutes": NaN` to disk; the next `_load_pending_trips`
+   call invokes `loads_finite` which rejects the literal with
+   `json.JSONDecodeError` and the `except (ValueError,
+   json.JSONDecodeError, RecursionError)` handler treats the file
+   as missing — **every observed-but-not-yet-finalised S-Bahn trip
+   is silently lost** for the affected cron tick (the finalise pass
+   produces a zero-observation CSV row).
+
+2. `scripts/update_stammstrecke_status.py:_save_recently_finalised`
+   (line 766) writes `cache/stammstrecke/recently_finalised.json`
+   with the same writer shape and the same missing pin. Today's
+   payload is `{key: ts.isoformat() for key, ts in
+   finalised.items()}` (all-string values), so the present-day
+   exploitability is gated on a schema widening that adds a numeric
+   field (re-emission count, age-in-seconds for cleanup tooling,
+   observed-delay arithmetic). The sibling pin keeps the
+   writer-shape contract uniform across the two-file ledger pair so
+   a future refactor cannot regress one half of the round-trip
+   invariant.
+
+Both files reach `main` via the IFTTT-triggered `update-cycle.yml`
+workflow whose auto-commit step uses `add_options: '-A'` so every
+modified file under `cache/` is staged and pushed.
+
+**Learning:** The 2026-05-23 closing rule for the canonical four-axis
+fix family was almost complete after the Trojan-Source scrub walker
+shipped — but the **writer-side non-finite-literal** axis
+(`allow_nan=False`) had only per-callsite source-grep tests at
+`tests/test_sentinel_committed_writer_allow_nan_drift.py` /
+`test_sentinel_companion_writer_allow_nan_drift.py` /
+`test_sentinel_safe_json_formatter_allow_nan_drift.py`, never a
+programmatic walker. The drift this round closes: the missing
+writer-side dual of the parser-side
+`test_sentinel_non_finite_literal_audit_walker.py`. With the new
+walker the parser-site canonical fix-family axes
+(RecursionError + size-cap + non-finite-literal) plus the
+writer-site axes (Trojan-Source scrub + `allow_nan=False`) are now
+**all five** programmatically enforced; a future contributor adding
+a fresh `json.dump(...)` / `json.dumps(...)` callsite without the
+pin fails the walker at PR-review time regardless of whether the
+journal named the file. The walker lives at
+`tests/test_sentinel_allow_nan_writer_audit_walker.py` and scans
+every `*.py` under `src/` and `scripts/` via `ast.parse`, resolves
+local `json` aliases (so `import json as _json_lib;
+_json_lib.dump(...)` is picked up — the exact shape the stammstrecke
+writers use), and asserts each writer carries `allow_nan=False` (or
+a `**kwargs` spread the walker conservatively tolerates). Three
+allowlist entries cover the documented non-disk / signed-payload
+sites: `src/places/hafas_client.py:_serialise_payload` (line 282 —
+MAC-signed HAFAS wire payload), `src/build_feed.py:_identity_for_item`
+(lines 2261 and 2270 — in-memory hash compute, bytes flow into
+`hashlib.sha256(...).hexdigest()` on the very next line). When
+invoked against the pre-fix codebase the walker correctly flagged
+both stammstrecke writers; post-fix it reports zero findings.
+Behavioural PoC at
+`tests/test_sentinel_stammstrecke_writer_allow_nan_drift.py` pins
+the exact `ValueError(r"Out of range float")` shape that
+`json.dump(..., allow_nan=False)` produces on a NaN / ±Infinity
+input — three axes (`nan`, `+inf`, `-inf`) covered per writer,
+plus the round-trip happy-path seal showing the post-fix writer
+does NOT regress finite-payload behaviour.
+
 ## 2026-05-23 - Trojan-Source Scrub Audit Walker (Writer-Site Closing Rule)
 
 **Vulnerability:** Two committed-state JSON writer sinks still emitted
