@@ -167,6 +167,8 @@ def test_main_uses_fallback_when_remote_fails(
 
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
     monkeypatch.setattr(update_baustellen_cache, "write_cache", capture_cache)
+    # Stub the network diagnostic so the fallback path stays offline.
+    monkeypatch.setattr(update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None)
     monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
     caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
 
@@ -229,6 +231,61 @@ def test_main_negotiates_output_format(monkeypatch: pytest.MonkeyPatch) -> None:
     assert cached and cached[0][0] == "baustellen"
 
 
+def test_log_endpoint_diagnostic_logs_sanitised_snippet(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    """When the WFS refuses every format, the diagnostic surfaces a snippet
+    of the refusing body (e.g. an OGC ServiceException) so the cause is
+    visible in the operator log."""
+    import logging
+
+    import responses
+
+    _patch_http_layer_bypass(monkeypatch)
+
+    @responses.activate
+    def run() -> None:
+        responses.get(
+            update_baustellen_cache.DEFAULT_DATA_URL,
+            body=(
+                '<?xml version="1.0"?><ServiceExceptionReport>'
+                '<ServiceException code="InvalidParameterValue" locator="typeName">'
+                "Unknown layer ogdwien:BAUSTELLEOGD</ServiceException>"
+                "</ServiceExceptionReport>"
+            ),
+            status=200,
+            content_type="application/xml",
+        )
+        caplog.set_level(logging.INFO, logger="update_baustellen_cache")
+        update_baustellen_cache._log_endpoint_diagnostic(
+            update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+        )
+        messages = [
+            record.getMessage()
+            for record in caplog.records
+            if record.name == "update_baustellen_cache"
+        ]
+        assert any(
+            "Endpoint-Diagnose" in message and "ServiceException" in message
+            for message in messages
+        )
+
+    run()
+
+
+def test_log_endpoint_diagnostic_swallows_errors(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A diagnostic hiccup must never raise — it is strictly best-effort."""
+
+    def boom(*args: Any, **kwargs: Any) -> Any:
+        raise OSError("network down")
+
+    monkeypatch.setattr(update_baustellen_cache, "session_with_retries", boom)
+    # Must return cleanly rather than propagate.
+    update_baustellen_cache._log_endpoint_diagnostic(
+        update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+    )
+
+
 def test_resolve_fallback_path_default_when_unset() -> None:
     assert update_baustellen_cache._resolve_fallback_path(None) == update_baustellen_cache.DEFAULT_FALLBACK_PATH
     assert update_baustellen_cache._resolve_fallback_path("") == update_baustellen_cache.DEFAULT_FALLBACK_PATH
@@ -286,6 +343,7 @@ def test_baustellen_timeout_env_is_clamped(
 
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
     monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda *args, **kwargs: None)
+    monkeypatch.setattr(update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None)
     monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
     monkeypatch.setenv("BAUSTELLEN_TIMEOUT", raw)
 

@@ -100,6 +100,12 @@ _OUTPUT_FORMAT_CANDIDATES: tuple[str, ...] = (
     "geojson",
     "GEOJSON",
 )
+
+# Upper bound for the read-only diagnostic snippet logged when the WFS
+# refuses every outputFormat. An OGC ``ServiceExceptionReport`` naming the
+# offending parameter fits comfortably in 2 KiB; the cap keeps a hostile /
+# oversized upstream body from being buffered into the log.
+_DIAGNOSTIC_MAX_BYTES = 2048
 DEFAULT_INFO_URL = (
     "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen"
 )
@@ -284,6 +290,49 @@ def _fetch_remote(url: str, timeout: int) -> dict[str, Any] | None:
         LOGGER.warning("Baustellen: Ungültiges JSON vom Endpoint (%s)", exc)
         return None
     return payload
+
+
+def _log_endpoint_diagnostic(url: str, timeout: int) -> None:
+    """Best-effort: log a short, sanitised snippet of a refusing WFS
+    response so an operator can see *why* the endpoint rejects the request
+    (typically an OGC ``ServiceExceptionReport`` naming the bad
+    ``typeName`` / version).
+
+    Strictly read-only and bounded — it reads at most
+    ``_DIAGNOSTIC_MAX_BYTES``, follows no redirects, and the bytes are only
+    sanitised and logged, never parsed as data or returned. The data path
+    keeps refusing non-JSON content types unchanged; this is pure
+    observability. Every error is swallowed so a diagnostic hiccup can
+    never break the cron flow.
+    """
+    if not validate_http_url(url):
+        return
+    try:
+        with session_with_retries(USER_AGENT, raise_on_status=False) as session:
+            with session.get(
+                url,
+                timeout=timeout,
+                stream=True,
+                allow_redirects=False,
+                headers={"Accept": "application/json"},
+            ) as response:
+                status = response.status_code
+                content_type = response.headers.get("Content-Type", "?")
+                chunk = next(response.iter_content(_DIAGNOSTIC_MAX_BYTES), b"")
+    except (RequestException, OSError, ValueError) as exc:
+        LOGGER.info(
+            "Baustellen: Endpoint-Diagnose nicht möglich (%s)",
+            sanitize_log_arg(str(exc)),
+        )
+        return
+    snippet = chunk.decode("utf-8", errors="replace").strip()
+    if snippet:
+        LOGGER.warning(
+            "Baustellen: Endpoint-Diagnose – HTTP %s, Content-Type %s, Auszug: %s",
+            status,
+            sanitize_log_arg(content_type),
+            sanitize_log_arg(snippet),
+        )
 
 
 def _load_fallback(path: Path) -> dict[str, Any] | None:
@@ -727,6 +776,12 @@ def main() -> int:
     used_fallback = False
     if payload is None:
         used_fallback = True
+        # Every outputFormat variant was refused — capture WHY (the OGC
+        # exception body) before falling back, so the operator log can
+        # pinpoint a renamed typeName / unsupported version.
+        _log_endpoint_diagnostic(
+            _with_output_format(data_url, _OUTPUT_FORMAT_CANDIDATES[0]), timeout
+        )
         payload = _load_fallback(fallback_path)
         if payload is None:
             LOGGER.error(
