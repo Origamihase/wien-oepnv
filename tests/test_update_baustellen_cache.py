@@ -185,6 +185,50 @@ def test_main_uses_fallback_when_remote_fails(
     )
 
 
+def test_with_output_format_rewrites_only_the_token() -> None:
+    rewritten = update_baustellen_cache._with_output_format(
+        update_baustellen_cache.DEFAULT_DATA_URL, "application/json"
+    )
+    assert rewritten.endswith("outputFormat=application/json")
+    # Every other parameter is preserved byte-for-byte.
+    assert "typeName=ogdwien:BAUSTELLEOGD" in rewritten
+    assert "srsName=EPSG:4326" in rewritten
+    assert rewritten.startswith("https://data.wien.gv.at/daten/geo?")
+
+
+def test_with_output_format_appends_when_absent() -> None:
+    base = "https://data.wien.gv.at/daten/geo?service=WFS"
+    assert (
+        update_baustellen_cache._with_output_format(base, "geojson")
+        == base + "&outputFormat=geojson"
+    )
+
+
+def test_main_negotiates_output_format(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The configured ``json`` token returns nothing (the production
+    failure mode); the negotiation must fall through to the next variant
+    and use it as a live success — NOT the degraded fallback."""
+    seen: list[str] = []
+    payload = {"type": "FeatureCollection", "features": []}
+
+    def fake_fetch_remote(url: str, timeout: int) -> dict[str, Any] | None:
+        seen.append(url)
+        return payload if "outputFormat=application/json" in url else None
+
+    cached: list[tuple[str, list[dict[str, Any]]]] = []
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
+    monkeypatch.setattr(
+        update_baustellen_cache, "write_cache", lambda p, items: cached.append((p, items))
+    )
+
+    exit_code = update_baustellen_cache.main()
+
+    assert exit_code == 0  # live success via the negotiated format, not fallback
+    assert seen[0].endswith("outputFormat=json")  # configured token tried first
+    assert any("outputFormat=application/json" in url for url in seen)
+    assert cached and cached[0][0] == "baustellen"
+
+
 def test_resolve_fallback_path_default_when_unset() -> None:
     assert update_baustellen_cache._resolve_fallback_path(None) == update_baustellen_cache.DEFAULT_FALLBACK_PATH
     assert update_baustellen_cache._resolve_fallback_path("") == update_baustellen_cache.DEFAULT_FALLBACK_PATH
@@ -247,7 +291,10 @@ def test_baustellen_timeout_env_is_clamped(
 
     update_baustellen_cache.main()
 
-    assert captured == [expected]
+    # main() now negotiates the outputFormat, so _fetch_remote is called
+    # once per candidate; every call must receive the clamped timeout.
+    assert captured
+    assert all(value == expected for value in captured)
 
 
 def test_resolve_fallback_path_blocks_symlink_escape(tmp_path: Path) -> None:
