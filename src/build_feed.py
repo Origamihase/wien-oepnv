@@ -343,23 +343,23 @@ def _baustellen_title_names_station(title: str, label: str) -> bool:
 def _post_filter_baustellen(items: list[Any]) -> list[Any]:
     """Defence-in-depth relevance gate plus ÖPNV title enrichment.
 
-    ``update_baustellen_cache.py`` already drops construction sites that
-    are not at/near a rail Bahnhof at ingestion, but the on-disk cache (or
-    the bundled fallback sample) may predate the current policy — so the
-    gate is re-applied here, the same defence-in-depth contract as
-    :func:`_post_filter_oebb`.
+    ``update_baustellen_cache.py`` already drops non-ÖPNV-relevant sites at
+    ingestion, but the on-disk cache (or the bundled fallback sample) may
+    predate the current policy — so the gate is re-applied here, the same
+    defence-in-depth contract as :func:`_post_filter_oebb`.
 
-    For the items that pass, the affected Bahnhof (Wien station or
-    Pendlerbahnhof) is prefixed onto the title so the entry reads as a
-    transit message at a glance — mirroring the line/route prefixes WL and
-    ÖBB carry, and the title re-derivation :func:`_post_filter_oebb`
-    performs. The prefix is skipped when the title already names the
-    station, keeping the headline compact.
+    An item is kept when it is ÖPNV-relevant — at/near a rail Bahnhof OR its
+    text mentions public transport (the "Bahnhofsnähe ODER ÖPNV-Text"
+    policy). When a Bahnhof matches, its name is prefixed onto the title so
+    the entry reads as a transit message at a glance — mirroring the
+    line/route prefixes WL and ÖBB carry, and the title re-derivation
+    :func:`_post_filter_oebb` performs. The prefix is skipped when the title
+    already names the station, keeping the headline compact.
 
     Items carrying neither a title nor a description are treated as
     stubs/metadata and passed through unchanged.
     """
-    from .providers.baustellen import relevant_station
+    from .providers.baustellen import mentions_oepnv, relevant_station
     from .utils.stations import display_name
 
     out: list[Any] = []
@@ -374,12 +374,13 @@ def _post_filter_baustellen(items: list[Any]) -> list[Any]:
             out.append(item)
             continue
         station = relevant_station(item.get("location"))
-        if station is None:
+        if station is None and not mentions_oepnv(f"{title} {description}"):
             continue
-        label = display_name(station) or station
-        if label and not _baustellen_title_names_station(title, label):
-            item = dict(item)
-            item["title"] = f"{label}: {title}" if title else label
+        if station is not None:
+            label = display_name(station) or station
+            if label and not _baustellen_title_names_station(title, label):
+                item = dict(item)
+                item["title"] = f"{label}: {title}" if title else label
         out.append(item)
     return out
 

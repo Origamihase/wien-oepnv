@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import math
 import os
+import re
 from typing import Any, Final
 
 from ..utils.stations import nearest_rail_station
@@ -25,8 +26,35 @@ from ..utils.stations import nearest_rail_station
 __all__ = [
     "DEFAULT_STATION_RADIUS_M",
     "is_transit_relevant",
+    "mentions_oepnv",
     "relevant_station",
 ]
+
+# Public-transport vocabulary for the text signal. A construction site whose
+# title/description mentions any of these affects ÖPNV even when it is not
+# right next to a rail Bahnhof (e.g. a bus/tram stop being relocated). The
+# alternation is plain literals + bounded character classes — linear, no
+# catastrophic backtracking. Clear compound terms match as substrings;
+# short/ambiguous tokens (bus, bim, linie, U1–U6, tram) require word
+# boundaries so "Busch" or "Baulinie" do not false-trigger.
+_OEPNV_RE: Final = re.compile(
+    r"haltestelle"
+    r"|stra[sß]+enbahn"
+    r"|schienenersatz"
+    r"|verkehrsmittel"
+    r"|buslinie"
+    r"|autobus"
+    r"|u-?bahn"
+    r"|s-?bahn"
+    r"|öpnv"
+    r"|öffentliche[rn]?\s+verkehr"
+    r"|\bbus(?:se)?\b"
+    r"|\bbim\b"
+    r"|\blinien?\b"
+    r"|\bu[1-6]\b"
+    r"|\btram\b",
+    re.IGNORECASE,
+)
 
 #: Default proximity (in metres) between a construction site and a rail
 #: Bahnhof for the site to count as ÖPNV-relevant. 150 m mirrors the
@@ -80,8 +108,26 @@ def relevant_station(location: Any, *, radius_m: float | None = None) -> str | N
     return match[0] if match else None
 
 
-def is_transit_relevant(location: Any, *, radius_m: float | None = None) -> bool:
-    """Return ``True`` iff the construction ``location`` sits within the
-    configured radius of a rail Bahnhof (Wien station or Pendlerbahnhof)."""
+def mentions_oepnv(text: str) -> bool:
+    """Return ``True`` if ``text`` mentions public transport (a stop, line,
+    bus, tram/Bim, U-/S-Bahn, …)."""
 
-    return relevant_station(location, radius_m=radius_m) is not None
+    return bool(_OEPNV_RE.search(text or ""))
+
+
+def is_transit_relevant(item: Any, *, radius_m: float | None = None) -> bool:
+    """Return ``True`` if a construction ``item`` is ÖPNV-relevant.
+
+    Relevance is geographic **or** textual: the site sits within the
+    configured radius of a rail Bahnhof (Wien station or Pendlerbahnhof),
+    OR its title/description names public transport. ``item`` is the
+    provider's event mapping (``location`` + ``title`` + ``description``).
+    Non-dict input is treated as not relevant (fail closed).
+    """
+
+    if not isinstance(item, dict):
+        return False
+    if relevant_station(item.get("location"), radius_m=radius_m) is not None:
+        return True
+    text = f"{item.get('title') or ''} {item.get('description') or ''}"
+    return mentions_oepnv(text)

@@ -193,7 +193,7 @@ def test_with_output_format_rewrites_only_the_token() -> None:
     )
     assert rewritten.endswith("outputFormat=application/json")
     # Every other parameter is preserved byte-for-byte.
-    assert "typeName=ogdwien:BAUSTELLEOGD" in rewritten
+    assert "typeName=ogdwien:BAUSTELLENLINOGD" in rewritten
     assert "srsName=EPSG:4326" in rewritten
     assert rewritten.startswith("https://data.wien.gv.at/daten/geo?")
 
@@ -204,6 +204,41 @@ def test_with_output_format_appends_when_absent() -> None:
         update_baustellen_cache._with_output_format(base, "geojson")
         == base + "&outputFormat=geojson"
     )
+
+
+def test_with_typename_rewrites_only_the_token() -> None:
+    rewritten = update_baustellen_cache._with_typename(
+        update_baustellen_cache.DEFAULT_DATA_URL, "ogdwien:BAUSTELLENPKTOGD"
+    )
+    assert "typeName=ogdwien:BAUSTELLENPKTOGD" in rewritten
+    assert "BAUSTELLENLINOGD" not in rewritten
+    # Other parameters untouched.
+    assert "outputFormat=json" in rewritten
+    assert "srsName=EPSG:4326" in rewritten
+
+
+def test_fetch_layers_merges_both_typenames(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Both feature types are fetched and their events merged."""
+    seen_typenames: list[str] = []
+
+    def fake_fetch_remote(url: str, timeout: int) -> dict[str, Any]:
+        # Record which layer was requested; return one feature per layer.
+        for typename in update_baustellen_cache._BAUSTELLEN_TYPENAMES:
+            if typename in url:
+                seen_typenames.append(typename)
+        return {"type": "FeatureCollection", "features": []}
+
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
+    events = update_baustellen_cache._fetch_layers(
+        update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+    )
+    assert events == []  # empty FeatureCollections → no events, but not None
+    assert set(seen_typenames) == set(update_baustellen_cache._BAUSTELLEN_TYPENAMES)
+
+
+def test_fetch_layers_returns_none_when_all_layers_fail(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", lambda url, timeout: None)
+    assert update_baustellen_cache._fetch_layers("https://data.wien.gv.at/x", timeout=5) is None
 
 
 def test_main_negotiates_output_format(monkeypatch: pytest.MonkeyPatch) -> None:

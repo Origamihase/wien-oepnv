@@ -18,6 +18,7 @@ from src.providers import baustellen
 from src.providers.baustellen import (
     DEFAULT_STATION_RADIUS_M,
     is_transit_relevant,
+    mentions_oepnv,
     relevant_station,
 )
 from src.utils import stations
@@ -99,37 +100,79 @@ def test_relevant_station_at_real_bahnhof() -> None:
     assert "Hauptbahnhof" in name
 
 
-def test_pendlerbahnhof_is_relevant() -> None:
-    assert is_transit_relevant(_loc(*MOEDLING)) is True
+def _item(lat: float, lon: float, *, title: str = "Sanierung", description: str = "Fahrbahn") -> dict[str, Any]:
+    return {"location": _loc(lat, lon), "title": title, "description": description}
 
 
-def test_far_away_road_works_is_not_relevant() -> None:
-    assert is_transit_relevant(_loc(*FAR_AWAY)) is False
+def test_geo_only_item_is_relevant_without_oepnv_text() -> None:
+    # Near a Pendlerbahnhof, no ÖPNV keyword needed.
+    assert is_transit_relevant(_item(*MOEDLING)) is True
+
+
+def test_text_only_item_is_relevant_far_from_rail() -> None:
+    item = _item(*FAR_AWAY, title="Umbau", description="Die Haltestelle wird verlegt")
+    assert is_transit_relevant(item) is True
+
+
+def test_item_neither_geo_nor_oepnv_is_not_relevant() -> None:
+    assert is_transit_relevant(_item(*FAR_AWAY, title="Innenhof", description="Hinterhofarbeiten")) is False
 
 
 @pytest.mark.parametrize(
-    "location",
+    "item",
     [
         None,
         "nope",
         {},
-        {"address": "Teststraße"},  # no coordinates
-        {"coordinates": "nope"},
-        {"coordinates": {"lat": None, "lon": None}},
-        {"coordinates": {"lat": float("nan"), "lon": 16.37}},
+        {"title": "Innenhof", "description": "Hinterhofarbeiten"},  # no location, no ÖPNV text
+        {"location": {"coordinates": {"lat": None, "lon": None}}, "title": "x", "description": "y"},
+        {"location": {"coordinates": {"lat": float("nan"), "lon": 16.37}}, "title": "x", "description": "y"},
     ],
 )
-def test_is_transit_relevant_fails_closed(location: object) -> None:
-    assert is_transit_relevant(location) is False
+def test_is_transit_relevant_fails_closed(item: object) -> None:
+    assert is_transit_relevant(item) is False
 
 
-def test_radius_override_widens_match(
+def test_radius_override_widens_geo_match(
     monkeypatch: pytest.MonkeyPatch, single_station: _RailSet
 ) -> None:
-    far = _loc(48.2027, 16.3700)  # ~300 m from the synthetic station
+    # ~300 m from the synthetic station, no ÖPNV text → relevance is purely radius-driven.
+    far = _item(48.2027, 16.3700, title="Sanierung", description="Fahrbahn")
     assert is_transit_relevant(far) is False
     monkeypatch.setenv("BAUSTELLEN_STATION_RADIUS_M", "500")
     assert is_transit_relevant(far) is True
+
+
+# --- mentions_oepnv -----------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Die Haltestelle Haspingerplatz wird aufgelassen",
+        "Umleitung der Straßenbahnlinie 2",
+        "Schienenersatzverkehr eingerichtet",
+        "betrifft die öffentlichen Verkehrsmittel",
+        "Sperre der Buslinie 10A",
+        "Linie 46 verkürzt",
+        "U6 Teilsperre",
+    ],
+)
+def test_mentions_oepnv_true(text: str) -> None:
+    assert mentions_oepnv(text) is True
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "",
+        "Vollsperre der Fahrbahn wegen Rohrlegung",
+        "Gehsteigsanierung im Innenhof",
+        "Buschenschank am Nussberg",  # 'Busch…' must not trip the \\bbus\\b token
+    ],
+)
+def test_mentions_oepnv_false(text: str) -> None:
+    assert mentions_oepnv(text) is False
 
 
 # --- radius resolution / clamping ---------------------------------------------
@@ -160,19 +203,20 @@ def test_resolve_radius_clamping(monkeypatch: pytest.MonkeyPatch, raw: str, expe
 
 
 def test_post_filter_keeps_relevant_drops_noise_passes_stubs() -> None:
-    relevant = {"title": "Fahrbahnsanierung", "description": "x", "location": _loc(*WIEN_HBF)}
-    noise = {"title": "Hinterhof", "description": "x", "location": _loc(*FAR_AWAY)}
-    no_coords = {"title": "Ohne Geo", "description": "x"}
+    geo = {"title": "Fahrbahnsanierung", "description": "x", "location": _loc(*WIEN_HBF)}
+    text = {"title": "Gleisarbeiten", "description": "Haltestelle verlegt", "location": _loc(*FAR_AWAY)}
+    noise = {"title": "Hinterhof", "description": "Innenhofarbeiten", "location": _loc(*FAR_AWAY)}
     stub = {"guid": "meta-only"}
     sentinel = "passthrough-non-dict"
 
-    result = _post_filter_baustellen([relevant, noise, no_coords, stub, sentinel])
+    result = _post_filter_baustellen([geo, text, noise, stub, sentinel])
 
     titles = [r["title"] for r in result if isinstance(r, dict) and "title" in r]
-    # Relevant item kept and prefixed with the affected Bahnhof.
+    # geo-relevant → kept and prefixed with the affected Bahnhof.
     assert any(t.endswith("Fahrbahnsanierung") and "Hauptbahnhof" in t for t in titles)
-    assert "Hinterhof" not in titles  # far from any Bahnhof → dropped
-    assert "Ohne Geo" not in titles  # no coordinates → fail closed
+    # text-relevant (far from rail, but mentions a stop) → kept, NOT prefixed.
+    assert "Gleisarbeiten" in titles
+    assert "Hinterhof" not in titles  # neither near a Bahnhof nor ÖPNV text → dropped
     assert stub in result  # title/description-less stub passes through
     assert sentinel in result  # non-dict passes through
 
@@ -233,6 +277,8 @@ def test_sample_payload_is_all_transit_relevant() -> None:
     payload = json.loads(SAMPLE_PATH.read_text(encoding="utf-8"))
     events = update_baustellen_cache._collect_events(payload)
     assert len(events) == 2
-    assert all(is_transit_relevant(event.get("location")) for event in events)
-    # The LineString feature must still yield a usable coordinate.
-    assert events[1]["location"]["coordinates"]["lat"] == pytest.approx(48.085628)
+    # Feature 1 is geo-relevant (at a Bahnhof), feature 2 is text-relevant
+    # (mentions a stop, far from rail) — the "Bahnhofsnähe ODER ÖPNV-Text" policy.
+    assert all(is_transit_relevant(event) for event in events)
+    # The LineString feature must still yield a usable representative coordinate.
+    assert events[1]["location"]["coordinates"]["lat"] == pytest.approx(48.2103)
