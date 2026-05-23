@@ -36,7 +36,18 @@ jobs:
       SITE_BASE: https://origamihase.github.io/wien-oepnv
       DESC: Konsolidierter RSS-Feed für Störungen und Baustellenmeldungen im Wiener ÖPNV (WL/ÖBB/VOR), inkl. Doku & Open-Data-Workflows.
     steps:
-      - name: Checkout
+      # Workaround for actions/checkout#2351 (sporadic includeIf credential
+      # race on v6 → "could not read Username, terminal prompts disabled").
+      # Two attempts; remove once v6.0.3+ is pinned.
+      - name: Check out repository (attempt 1/2)
+        id: checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+        continue-on-error: true
+
+      - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
+        if: steps.checkout.outcome == 'failure'
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
