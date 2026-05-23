@@ -1,12 +1,12 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-05-23T23:53+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-05-24T00:00+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
 | Kennzahl | Wert |
 | --- | ---: |
-| Stammstrecke-Beobachtungen (2026) | 704 |
+| Stammstrecke-Beobachtungen (2026) | 706 |
 | Verspätungen > 9 min (2026) | 2 |
 | ⌀ Verspätung (2026) | 1.1 min |
 | Stammstrecke-Ausfälle (2026) | 99 |
@@ -18,8 +18,8 @@ _Automatisch erzeugt am 2026-05-23T23:53+02:00 (Europe/Vienna)._
 
 | Richtung | Anzahl |
 | --- | ---: |
-| Meidling | 355 |
-| Praterstern | 349 |
+| Meidling | 356 |
+| Praterstern | 350 |
 
 ### Beobachtungen je Wochentag
 
@@ -29,14 +29,14 @@ _Automatisch erzeugt am 2026-05-23T23:53+02:00 (Europe/Vienna)._
 `Mi  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·············  87
 `Do  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦··············  78
 `Fr  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·············  87
-`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  188
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦············  91
+`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  189
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦············  92
 ```
 
 ### Beobachtungen je Stunde
 
 ```
-`00h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  32
+`00h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  33
 `01h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  33
 `02h ` │ 🟧🟧🟧🟧🟧🟧🟧·················  10
 `03h ` │ 🟧🟧🟧🟧🟧🟧··················  8
@@ -59,7 +59,7 @@ _Automatisch erzeugt am 2026-05-23T23:53+02:00 (Europe/Vienna)._
 `20h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  33
 `21h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  31
 `22h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  33
-`23h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  32
+`23h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  33
 ```
 
 ### Verspätungen ⌀ Minuten je Wochentag
@@ -100,7 +100,7 @@ _Automatisch erzeugt am 2026-05-23T23:53+02:00 (Europe/Vienna)._
 `20h ` │ 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨········    1.3 min
 `21h ` │ 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨·············    0.9 min
 `22h ` │ 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨··········    1.1 min
-`23h ` │ 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨·········    1.2 min
+`23h ` │ 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨········    1.3 min
 ```
 
 ## Ausfälle
