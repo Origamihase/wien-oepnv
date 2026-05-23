@@ -6,9 +6,13 @@ def test_init_version() -> None:
 
 def test_init_exports_main() -> None:
     assert hasattr(src, "main")
-    from src.build_feed import main as build_feed_main
-    # Using == for function names to avoid proxy object/import issues with 'is'
-    assert src.main.__name__ == build_feed_main.__name__
+    # Identity comparison breaks when sibling tests reload ``src.build_feed`` via
+    # ``sys.modules.pop`` (see ``_import_build_feed_without_providers``); the
+    # structural check below survives the reload and is still stronger than the
+    # original ``__name__``-only comparison.
+    assert callable(src.main)
+    assert src.main.__module__ == "src.build_feed"
+    assert src.main.__qualname__ == "main"
 
 def test_feed_health_path_in_all() -> None:
     import src.feed.config as config
