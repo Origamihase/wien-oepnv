@@ -51,10 +51,10 @@
     "first_seen": "2026-05-24T14:30:41.732987+00:00",
     "translations": {
       "en": {
-        "summary": "service obstruction in both directions. expected duration: 17:00. Reason: defective vehicle in the area between Kagraner Platz and Rennbahnweg.",
+        "summary": "After an service obstruction there are different intervals.",
         "title": "U1: defective vehicle"
       },
-      "epoch": 1
+      "epoch": 2
     }
   },
   "0ca3f48e6a9272810c8ab6512e587a3862ab6df6372517f2c20fba10e0755ea2": {
@@ -478,6 +478,16 @@
       }
     }
   },
+  "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6": {
+    "first_seen": "2026-05-24T15:30:43.700723+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "U3: rescue operation"
+      },
+      "epoch": 2
+    }
+  },
   "7924da86880b145400ba16c82079517f0ae2353decabe416d2442f595489e643": {
     "first_seen": "2026-05-24T13:00:40.718423+00:00",
     "translations": {
@@ -680,7 +690,7 @@
         "summary": "Detailed information about the construction project U2 / U5 can be obtained via the ombudsperson of the respective metro section.",
         "title": "U2/U5: Siebenbrunnengasse from junction Siebenbrunnenplatz and Reinprechtsdorfer Stra\u00dfe to 44"
       },
-      "epoch": 1
+      "epoch": 2
     }
   },
   "af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf": {
@@ -698,7 +708,7 @@
         "summary": "Only the existing bus stop at the Rabengasse will be moved locally.",
         "title": "Roadway Hauptstra\u00dfe from Emmerich-Teuber-Platz and Juchgasse and Apostelgasse to slaughterhouse gas"
       },
-      "epoch": 1
+      "epoch": 2
     }
   },
   "b27d0e9569b2ed2ea394007c61624619b8d769e2a6711991724493556dd4f1bf": {
@@ -708,7 +718,7 @@
         "summary": "Detailed information about the construction project U2 / U5 can be obtained from the ombudsperson of the respective metro section. since 12. June 2023 the \u2026 will be",
         "title": "U2/U5: Mariahilfer Street from Stiftgasse to Erika-Weinzierl-Platz and Kirchengasse"
       },
-      "epoch": 1
+      "epoch": 2
     }
   },
   "b3259c3ee95d4bc68d33c8e0bfb3b4541128a5bbf769225a0a614fdb3e018fbc": {
@@ -762,7 +772,7 @@
         "summary": "The repair work and necessary conversion work on the Stadionbr\u00fccke due to the extension of the 18 tram line will be carried out in several phases of construction.",
         "title": "Stadionbr\u00fccke from Ludwig-Koe\u00dfler-Platz and Erdberger Lands to Sch\u00fcttelstra\u00dfe and Stadionallee"
       },
-      "epoch": 1
+      "epoch": 2
     }
   },
   "c5064b63b9ab3bf10f6b2bac4de6569e936ec0ea24c77cdd8d80aa6fd85ce88f": {
@@ -863,7 +873,7 @@
         "summary": "The general renovation of the U6 route is carried out in the actual area when the passage is blocked (at the level of 9, Pulverturmgasse or 18, Sternwartestra\u00dfe) between the inner and \u2026",
         "title": "U6: Underpass Pulverturmgasse between the inner and outer W\u00e4hringer belt"
       },
-      "epoch": 1
+      "epoch": 2
     }
   },
   "e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037": {
@@ -901,7 +911,7 @@
         "summary": "The installation of a district heating line is carried out during the night from 20:00 to 05:00 with the release of a correspondingly wide residual runway of at least \u2026",
         "title": "Br\u00fcnner Stra\u00dfe 59"
       },
-      "epoch": 1
+      "epoch": 2
     }
   },
   "ed1f6507265dcc6ff7add026c0770bdc055f04c2d70aea973466972e4fba7f4d": {
@@ -930,7 +940,7 @@
         "summary": "The repair and redesign work in the Favoritenstra\u00dfe pedestrian zone will be carried out following the ongoing sealing work of Wiener Linien GmbH & Co KG at \u2026",
         "title": "Favoritenstra\u00dfe from crossing Landgutgasse to crossing Keplerplatz and Keplergasse"
       },
-      "epoch": 1
+      "epoch": 2
     }
   },
   "f08bea6e6a5b3806f650b8aeba83a52d0130011025d1be45bead7e76806b6a1b": {
@@ -970,7 +980,7 @@
         "summary": "in the shadow of track construction works of Wiener Linien GmbH & Co KG, the pipe laying work takes place during the day in the area of the roadway and the bicycle strip and when the \u2026 is blocked",
         "title": "Aumannplatz 1 to Gentzgasse and T\u00fcrkenschanzstra\u00dfe"
       },
-      "epoch": 1
+      "epoch": 2
     }
   },
   "f8982bc97b1fe3ed6b2d9c47fc60754a63c1ff817524a694320c7a1635a8d3b1": {

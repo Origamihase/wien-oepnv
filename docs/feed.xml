@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 24 May 2026 17:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 17:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
+      <pubDate>Sun, 24 May 2026 17:22:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 17:30:43 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 17:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 15 Nov 2026 01:00:00 +0100</ext:ends_at>
       <description>Die Instandsetzungs- und Umgestaltungarbeiten in der Fußgängerzone Favoritenstraße werden nach den derzeit laufenden Abdichtungsarbeiten der Wiener Linien GmbH &amp; Co KG an der … [Seit 19.04.2026]</description>
       <content:encoded><![CDATA[Die Instandsetzungs- und Umgestaltungarbeiten in der Fußgängerzone Favoritenstraße werden nach den derzeit laufenden Abdichtungsarbeiten der Wiener Linien GmbH &amp; Co KG an der …<br/>[Seit 19.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Gräffergasse von Kreuzung Halirschgasse und Schultheßgasse bis Kreuzung Heigerleinstraße]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">f08bea6e6a5b3806f650b8aeba83a52d0130011025d1be45bead7e76806b6a1b</guid>
-      <pubDate>Sun, 19 Oct 2025 02:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 15:11:37 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Oct 2025 02:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 02:00:00 +0200</ext:ends_at>
-      <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag, wobei die Gräffergasse von der Halirschgasse und Schultheßgasse bis zur … [Seit 19.10.2025]</description>
-      <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag, wobei die Gräffergasse von der Halirschgasse und Schultheßgasse bis zur …<br/>[Seit 19.10.2025]]]></content:encoded>
     </item>
   </channel>
 </rss>
