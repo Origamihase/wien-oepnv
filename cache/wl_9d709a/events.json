@@ -566,6 +566,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "74A: Signalstörung",
+    "description": "Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037",
+    "pubDate": "2026-05-24T13:38:00+02:00",
+    "starts_at": "2026-05-24T13:38:00+02:00",
+    "ends_at": "2026-05-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-05-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "7A: Aufgelassen Busse halten Wienerbergbrücke",
     "description": "Aufgelassen\nBusse halten Wienerbergbrücke",
     "link": "https://www.wienerlinien.at/ogd_realtime",

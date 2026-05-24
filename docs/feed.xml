@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 24 May 2026 13:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 14:01:22 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[74A: Signalstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037</guid>
+      <pubDate>Sun, 24 May 2026 13:38:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 14:01:22 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 13:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung. [Am 24.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Am 24.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[85A: Straßenbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -101,17 +112,6 @@
       <ext:ends_at>Mon, 25 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[24.05.2026 – 25.05.2026]</description>
       <content:encoded><![CDATA[[24.05.2026 – 25.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44A/N43: Dornbacher Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6bb2ac6cdc5eb19dd0e1b0e8a1742ef1e031054b7c7fd63b55f56c1649b5cd82</guid>
-      <pubDate>Fri, 27 Mar 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 05:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 27 Mar 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 27 Mar 2027 11:11:00 +0100</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es zu Umleitungen in beiden Richtungen bei den Linien 44A und N43. Zeitraum: Linie 44A: ab Donnerstag, 16. April … [Seit 27.03.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es zu Umleitungen in beiden Richtungen bei den Linien 44A und N43. Zeitraum: Linie 44A: ab Donnerstag, 16. April …<br/>[Seit 27.03.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
