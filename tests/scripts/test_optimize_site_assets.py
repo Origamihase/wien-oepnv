@@ -137,3 +137,93 @@ def test_render_helpers_are_pure(_isolate_assets: Path) -> None:
     assert not opt.JS_OUT.exists()
     assert ".x{color:red}" in css
     assert "var x=1" in js or "var x = 1" in js  # rjsmin keeps the var-decl spacing
+
+
+# --- HTML cache-busting -----------------------------------------------
+
+
+def _write_html(path: Path) -> None:
+    path.write_text(
+        '<!doctype html><html><head>'
+        '<link rel="stylesheet" href="assets/site.min.css">'
+        '</head><body>'
+        '<script src="assets/site.min.js" defer></script>'
+        '</body></html>',
+        encoding="utf-8",
+    )
+
+
+def test_html_cache_bust_pins_content_hash(_isolate_assets: Path) -> None:
+    _write(opt.CSS_SRC, ".x{color:red}\n")
+    _write(opt.JS_SRC, "var x = 1;\n")
+    html_path = _isolate_assets.parent / "site.html"
+    _write_html(html_path)
+
+    assert opt.main(["--skip-images"]) == 0
+
+    html = html_path.read_text(encoding="utf-8")
+    css_v = opt._asset_version(opt._render_min_css())
+    js_v = opt._asset_version(opt._render_min_js())
+    assert f'href="assets/site.min.css?v={css_v}"' in html
+    assert f'src="assets/site.min.js?v={js_v}"' in html
+    # Freshly pinned HTML satisfies --check.
+    assert opt.main(["--check"]) == 0
+
+
+def test_html_cache_bust_is_idempotent(_isolate_assets: Path) -> None:
+    _write(opt.CSS_SRC, ".x{color:red}\n")
+    _write(opt.JS_SRC, "var x = 1;\n")
+    html_path = _isolate_assets.parent / "site.html"
+    _write_html(html_path)
+    assert opt.main(["--skip-images"]) == 0
+    first = html_path.read_text(encoding="utf-8")
+    # A second run against the unchanged bundle is byte-identical.
+    assert opt.main(["--skip-images"]) == 0
+    assert html_path.read_text(encoding="utf-8") == first
+
+
+def test_html_cache_bust_token_follows_content(_isolate_assets: Path) -> None:
+    _write(opt.CSS_SRC, ".x{color:red}\n")
+    _write(opt.JS_SRC, "var x = 1;\n")
+    html_path = _isolate_assets.parent / "site.html"
+    _write_html(html_path)
+    assert opt.main(["--skip-images"]) == 0
+    before = opt._asset_version(opt._render_min_css())
+
+    # Change the CSS source → the pinned ?v= token must change with it.
+    _write(opt.CSS_SRC, ".x{color:blue}\n")
+    assert opt.main(["--skip-images"]) == 0
+    after = opt._asset_version(opt._render_min_css())
+    assert before != after
+    assert f"?v={after}" in html_path.read_text(encoding="utf-8")
+
+
+def test_html_cache_bust_check_detects_stale_version(
+    _isolate_assets: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    _write(opt.CSS_SRC, ".x{color:red}\n")
+    _write(opt.JS_SRC, "var x = 1;\n")
+    html_path = _isolate_assets.parent / "site.html"
+    _write_html(html_path)
+    assert opt.main(["--skip-images"]) == 0
+
+    # Corrupt only the pinned CSS token; the bundles stay in sync, so this
+    # isolates the HTML drift path from the CSS/JS bundle checks.
+    stale = html_path.read_text(encoding="utf-8").replace(
+        opt._asset_version(opt._render_min_css()), "deadbeefdead"
+    )
+    html_path.write_text(stale, encoding="utf-8")
+
+    caplog.set_level("ERROR", logger=opt.LOG.name)
+    assert opt.main(["--check"]) == 1
+    assert any("site.html" in r.getMessage() for r in caplog.records)
+
+
+def test_sync_html_versions_missing_html_is_noop(_isolate_assets: Path) -> None:
+    _write(opt.CSS_SRC, ".x{color:red}\n")
+    _write(opt.JS_SRC, "var x = 1;\n")
+    # No site.html in the tmp tree → the cache-bust step is a silent
+    # success and never touches the real docs/site.html.
+    assert not (_isolate_assets.parent / "site.html").exists()
+    assert opt._sync_html_versions(check_only=True) is True
+    assert opt.main(["--skip-images"]) == 0
