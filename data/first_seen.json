@@ -558,6 +558,15 @@
       }
     }
   },
+  "ed1f6507265dcc6ff7add026c0770bdc055f04c2d70aea973466972e4fba7f4d": {
+    "first_seen": "2026-05-24T03:30:44.356605+00:00",
+    "translations": {
+      "en": {
+        "summary": "Because of construction works in the area of Breitenleer Stra\u00dfe the line 85A (school course) is redirected.",
+        "title": "85A: roadworks"
+      }
+    }
+  },
   "ed9c3f396c3424629ee8cdd78fd5804440177370028dfdf0ea4f186e02952ada": {
     "first_seen": "2026-05-21T19:00:57.519855+00:00",
     "translations": {
@@ -570,11 +579,74 @@
   "f8982bc97b1fe3ed6b2d9c47fc60754a63c1ff817524a694320c7a1635a8d3b1": {
     "first_seen": "2026-05-04T07:51:57.195205+00:00"
   },
+  "fb86e3ee71e78074f58695bac4b27a09ac9ec9882861f49c5d5cfc2aa0a2bde6": {
+    "first_seen": "2026-05-24T03:30:44.356605+00:00",
+    "translations": {
+      "en": {
+        "summary": "Only the existing bus stop at the Rabengasse will be moved locally.",
+        "title": "Roadway Hauptstra\u00dfe from Emmerich-Teuber-Platz and Juchgasse and Apostelgasse to slaughterhouse gas"
+      }
+    }
+  },
   "fea8a52de8284e73a68e14a51478ee4263f596086bd37c21aa6e1137962f6b4a": {
     "first_seen": "2026-05-21T22:01:00.206860+00:00",
     "translations": {
       "en": {
         "title": "7A: Open buses stop at Wienerbergbr\u00fccke"
+      }
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&829791": {
+    "first_seen": "2026-05-24T03:30:44.356605+00:00",
+    "translations": {
+      "en": {
+        "summary": "construction works means that between Wien Franz-Josefs-Bahnhof and Wien Heiligenstadt Station (U) from 14.12.2025 to 01.07.2026 (03:00 o'clock) there are no S40 and R40 trains.",
+        "title": "Wien Franz-Josefs-Bahnhof \u2194 Wien Heiligenstadt"
+      }
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&834855": {
+    "first_seen": "2026-05-24T03:30:44.356605+00:00",
+    "translations": {
+      "en": {
+        "summary": "construction works allows between Flughafen Wien station and Wolfsthal station on 19.02.2026 on 19.03.2026 on 16.04.2026 on 21.05.2026 and 18.06.2026 \u2026",
+        "title": "REX 7: Wien Floridsdorf \u2194 Flughafen Wien"
+      }
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&835981": {
+    "first_seen": "2026-05-24T03:30:44.356605+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to construction works, between Vienna Hbf (U) and Felixdorf station on 10.02.2026 on 10.03.2026 on 14.04.2026 on 12.05.2026 on 09.06.2026 on 14.07.2026 on 11.08.2026 on \u2026",
+        "title": "Wien Hauptbahnhof \u2194 Felixdorf"
+      }
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&852534": {
+    "first_seen": "2026-05-24T03:30:44.356605+00:00",
+    "translations": {
+      "en": {
+        "summary": "construction works allows between Wien Meidling station (U) and Wien Floridsdorf station (U) from 07.04.2026 (23:30 clock) to 08.04.2026 (03:52 clock), from 05.05.2026 \u2026",
+        "title": "Wien Meidling \u2194 Wien Floridsdorf"
+      }
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&852897": {
+    "first_seen": "2026-05-24T03:30:44.356605+00:00",
+    "translations": {
+      "en": {
+        "summary": "Because of construction works, between Wien Floridsdorf station (U) and Flughafen Wien station from 01.06.2026 to 19.06.2026 (both Saturday, Sunday and holiday) some \u2026",
+        "title": "Wien Floridsdorf \u2194 Flughafen Wien"
+      }
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&854951": {
+    "first_seen": "2026-05-24T03:30:44.356605+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to construction works, between Flughafen Wien Bahnhof and Vienna Railway Station (U) the RJ 820 train runs from 13.04.2026 to 26.05.2026 (from Monday to Thursday) with changed journey times.",
+        "title": "Wien Hauptbahnhof \u2194 Flughafen Wien"
       }
     }
   },
