@@ -83,3 +83,53 @@ def test_prune_log_file_actually_prunes(tmp_path: Path) -> None:
 
     assert "Old Message" not in content
     assert "New Message" in content
+
+
+def test_prune_log_file_prunes_json_format(tmp_path: Path) -> None:
+    """JSON-format logs (LOG_FORMAT=json) must be age-pruned too.
+
+    ``SafeJSONFormatter`` emits one object per line whose first key is an
+    ISO-8601 ``timestamp``. The plain ``%(asctime)s`` regex never matches that
+    shape, so before the fix every JSON line was treated as a continuation
+    line and time-based retention silently did nothing.
+    """
+    log_file = tmp_path / "test_prune_json.log"
+
+    old_date = datetime.now(UTC) - timedelta(days=10)
+    new_date = datetime.now(UTC)
+
+    old_line = (
+        f'{{"timestamp": "{old_date.isoformat()}", "level": "INFO", '
+        f'"logger": "x", "message": "Old JSON Message"}}\n'
+    )
+    new_line = (
+        f'{{"timestamp": "{new_date.isoformat()}", "level": "INFO", '
+        f'"logger": "x", "message": "New JSON Message"}}\n'
+    )
+
+    log_file.write_text(old_line + new_line, encoding="utf-8")
+
+    prune_log_file(log_file, now=new_date, keep_days=7)
+
+    content = log_file.read_text(encoding="utf-8")
+
+    assert "Old JSON Message" not in content
+    assert "New JSON Message" in content
+
+
+def test_prune_log_record_timestamp_parses_both_formats() -> None:
+    """The shared parser recognises plain + JSON record headers and rejects
+    continuation lines."""
+    from src.feed.logging import _parse_log_record_timestamp
+
+    assert _parse_log_record_timestamp("2026-05-24 20:01:00,123 INFO x: hi") is not None
+    assert (
+        _parse_log_record_timestamp(
+            '{"timestamp": "2026-05-24T20:01:00+02:00", "level": "INFO"}'
+        )
+        is not None
+    )
+    # Continuation line (traceback) — no leading timestamp.
+    assert _parse_log_record_timestamp('    File "x.py", line 1, in <module>') is None
+    # Malformed JSON timestamp value — rejected, not crashing.
+    assert _parse_log_record_timestamp('{"timestamp": "not-a-date", "level": "INFO"}') is None

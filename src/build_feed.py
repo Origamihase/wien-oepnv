@@ -4146,8 +4146,18 @@ def lint() -> int:
         if missing_guid_items:
             print("\nEinträge ohne GUID:")
             for item in missing_guid_items:
-                source = item.get("source") or "unbekannt"
-                title = item.get("title") or "<ohne Titel>"
+                # Security: ``source`` / ``title`` are upstream-controlled and
+                # reach this operator-facing stdout sink BEFORE the per-item
+                # ``_format_item_content`` sanitisation runs (lint never formats
+                # the items). Route both through ``_sanitize_text`` so the
+                # canonical ``_CONTROL_RE`` floor (C0/C1 + BiDi + zero-width +
+                # line/paragraph separators + Tag/VS blocks) is stripped here too
+                # — the sibling duplicate-group print already sanitises its
+                # titles via ``_summarize_duplicates``; this closes the
+                # un-sanitised sibling path (Trojan-Source / terminal-escape /
+                # log-forgery on the lint report).
+                source = _sanitize_text(str(item.get("source") or "unbekannt"))
+                title = _sanitize_text(str(item.get("title") or "<ohne Titel>"))
                 print(f"- {source}: {title}")
 
         provider_failures = report.has_errors()
