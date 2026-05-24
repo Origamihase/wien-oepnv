@@ -2822,8 +2822,7 @@ def _drop_old_items(
         if not isinstance(it, dict):
             continue  # type: ignore[unreachable]
 
-        ident = _identity_for_item(it)
-        state_entry = state.get(ident) if isinstance(state, dict) else None
+        ident, state_entry = _lookup_state(it, state)
 
         ends_at = it.get("ends_at")
         if isinstance(ends_at, datetime):
@@ -2891,6 +2890,40 @@ def _dedupe_key_for_item(
             key,
         )
     return key, True
+
+
+def _state_key_for_item(it: FeedItem) -> str:
+    """Return the persistent ``first_seen`` state key for ``it``.
+
+    Prefers the provider ``guid`` — stable across upstream title/description
+    edits and the read-side title enrichment — so an item's ``first_seen``
+    (and the age-based retirement that relies on it) survives those changes.
+    Falls back to the content identity when no guid is present, so EVERY
+    item, provider-independently, still gets a first_seen entry.
+    """
+    guid = it.get("guid")
+    if guid:
+        return str(guid)
+    return _identity_for_item(it)
+
+
+def _lookup_state(
+    it: FeedItem, state: dict[str, dict[str, Any]]
+) -> tuple[str, dict[str, Any] | None]:
+    """Return ``(stable_key, entry)`` for ``it``'s first_seen state.
+
+    Prefers the guid-based key (:func:`_state_key_for_item`); on a miss it
+    falls back to a legacy identity-keyed entry so first_seen migrates
+    without a reset. Shared by the writer (:func:`_update_item_state`) and
+    the age check (:func:`_drop_old_items`) so both stay consistent.
+    """
+    key = _state_key_for_item(it)
+    entry = state.get(key)
+    if entry is None:
+        legacy = _identity_for_item(it)
+        if legacy != key:
+            entry = state.get(legacy)
+    return key, entry
 
 
 def _summarize_duplicates(items: Sequence[FeedItem]) -> list[DuplicateSummary]:
@@ -3183,11 +3216,7 @@ class FormattedContent(NamedTuple):
 
 
 def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, Any]]) -> tuple[str, datetime]:
-    ident = _identity_for_item(it)
-    st = state.get(ident)
-    # Fallback: check guid as secondary key
-    if not st and it.get("guid") and it["guid"] != ident:
-        st = state.get(str(it["guid"]))
+    ident, st = _lookup_state(it, state)
     is_strictly_new = not st
     if not st:
         st = {"first_seen": _to_utc(now).isoformat()}
