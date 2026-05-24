@@ -140,6 +140,24 @@ def test_parse_range_handles_duration(duration: str, expected_start: date, expec
     assert end is not None and end.date() == expected_end
 
 
+def test_parse_range_ignores_spatial_bis_value() -> None:
+    """Bare ``BIS`` is a spatial 'to' descriptor (sibling of BIS_NR/BIS_KM),
+    not an end-date. A house-number value like '22' must NOT be coerced by the
+    lenient date parser into a bogus end-date (day-22-of-current-month)."""
+    properties = {"OBJEKT_BEGINN": "2026-03-01Z", "BIS": "22"}
+    start, end = update_baustellen_cache._parse_range(properties)
+    assert start is not None and start.date() == date(2026, 3, 1)
+    assert end is None
+
+
+def test_parse_range_still_reads_explicit_until_date() -> None:
+    """The explicit date keys (DATUM_BIS / BIS_DATUM) remain valid end-dates."""
+    properties = {"OBJEKT_BEGINN": "2026-03-01Z", "DATUM_BIS": "2026-04-15Z"}
+    start, end = update_baustellen_cache._parse_range(properties)
+    assert start is not None and start.date() == date(2026, 3, 1)
+    assert end is not None and end.date() == date(2026, 4, 15)
+
+
 def test_collect_events_from_sample_payload() -> None:
     payload = json.loads(SAMPLE_PATH.read_text(encoding="utf-8"))
     events = update_baustellen_cache._collect_events(payload)
