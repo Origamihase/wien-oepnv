@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import csv
 import sys
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -119,6 +119,44 @@ def test_append_stammstrecke_row_returns_false_on_io_error(
         stats_dir=tmp_path / "nope",
     )
     assert ok is False
+
+
+@pytest.mark.parametrize("bad", [float("nan"), float("inf"), float("-inf")])
+def test_append_stammstrecke_row_rejects_non_finite_delay(
+    tmp_path: Path, bad: float
+) -> None:
+    """A non-finite delay must be skipped (return False, write nothing) so the
+    ledger never carries a literal nan/inf that the reader re-accepts."""
+    ok = stats_utils.append_stammstrecke_row(
+        timestamp=datetime(2026, 5, 4, 8, 0, tzinfo=VIENNA_TZ),
+        direction="Meidling",
+        delay_minutes=bad,
+        stats_dir=tmp_path,
+    )
+    assert ok is False
+    assert not (tmp_path / "stammstrecke_2026.csv").exists()
+
+
+def test_read_recent_reads_intermediate_years(tmp_path: Path) -> None:
+    """A window wider than one year must read the middle years' ledgers, not
+    just the two boundary years."""
+    for year in (2024, 2025, 2026):
+        stats_utils.append_stammstrecke_row(
+            timestamp=datetime(year, 6, 1, 12, 0, tzinfo=VIENNA_TZ),
+            direction="Meidling",
+            delay_minutes=10.0,
+            stats_dir=tmp_path,
+        )
+
+    result = stats_utils.read_recent_stammstrecke_observations(
+        now=datetime(2026, 6, 2, 12, 0, tzinfo=VIENNA_TZ),
+        window=timedelta(days=900),  # cutoff ~2023-12 → spans 2024+2025+2026
+        stats_dir=tmp_path,
+    )
+
+    # The 2025 ledger sits strictly between the boundary years; the former
+    # {cutoff.year, now.year} set skipped it entirely.
+    assert {obs.timestamp.year for obs in result} == {2024, 2025, 2026}
 
 
 # ---- Disruption writer ----------------------------------------------------

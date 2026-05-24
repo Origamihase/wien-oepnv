@@ -27,6 +27,7 @@ from __future__ import annotations
 import csv
 import io
 import logging
+import math
 import os
 import re
 from dataclasses import dataclass
@@ -407,6 +408,20 @@ def append_stammstrecke_row(
     The function is best-effort: filesystem errors are logged and
     swallowed so the upstream cron pipeline always exits cleanly.
     """
+    # Defense-in-depth (non-finite floor): a non-finite delay would be
+    # rendered as the literal "nan"/"inf" into the ledger, which the
+    # reader's ``float(raw_delay)`` re-accepts — silently poisoning every
+    # downstream mean/threshold aggregation. Upstream producers guard
+    # against this today, but the project pins ``allow_nan=False`` on every
+    # JSON sink for exactly this reason; mirror that floor here at the CSV
+    # write boundary. Skip the row (best-effort contract: log + return
+    # False, never raise) rather than write a corrupt value.
+    if not math.isfinite(delay_minutes):
+        LOGGER.warning(
+            "Nicht-finiter delay_minutes (%r) – Stammstrecke-Zeile übersprungen.",
+            delay_minutes,
+        )
+        return False
     when = to_vienna(timestamp)
     path = stats_path("stammstrecke", when.year, base_dir=stats_dir)
     row = (
@@ -744,7 +759,12 @@ def read_recent_stammstrecke_observations(
         return []
     cutoff = now - window
     folder = stats_dir if stats_dir is not None else DEFAULT_STATS_DIR
-    years = sorted({cutoff.year, now.year})
+    # Read every calendar year the window spans, not just its two
+    # boundaries: a window wider than one full year (no current caller
+    # passes one, but the API is public) would otherwise silently skip the
+    # intermediate years' ledgers. ``range`` is identical to the former
+    # ``{cutoff.year, now.year}`` set for the ≤1-year windows used today.
+    years = list(range(cutoff.year, now.year + 1))
     observations: list[StammstreckeObservation] = []
     for year in years:
         path = folder / f"stammstrecke_{year:04d}.csv"

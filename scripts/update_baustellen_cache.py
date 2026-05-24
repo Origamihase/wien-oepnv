@@ -193,7 +193,13 @@ END_KEYS: tuple[str, ...] = (
     "ENDE_DATUM",
     "DATUM_BIS",
     "BIS_DATUM",
-    "BIS",
+    # NB: bare "BIS" is intentionally NOT an end-date key. It is a spatial
+    # "to" descriptor (sibling of BIS_NR / BIS_KM / ABSCHNITT_BIS in
+    # TO_KEYS); the explicit date variants are DATUM_BIS / BIS_DATUM. Since
+    # _parse_datetime uses the lenient dateutil parser, a spatial value such
+    # as a bare house number ("22") would otherwise be misread as a date
+    # (day-of-current-month), planting a bogus ends_at/GUID and risking the
+    # item being aged out as already-expired.
 )
 
 
