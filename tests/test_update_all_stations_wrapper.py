@@ -274,6 +274,13 @@ def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
     # The manual-enrichment helper is exercised in isolation by
     # ``tests/test_update_station_directory_manual_enrichment.py``.
     env["WIEN_OEPNV_MANUAL_ENRICH"] = "0"
+    # Also disable the WL↔HAFAS coordinate reconciliation (added with the
+    # Austrian-source consensus): for the ~40 multimodal overlap hubs it
+    # fires real HAFAS round-trips (and a possible Overpass call), the same
+    # network cost that ``WIEN_OEPNV_OSM_ENRICH=0`` exists to keep out of
+    # this timing-sensitive wrapper test. The pass is exercised in
+    # isolation by ``tests/test_at_coordinate_consensus.py``.
+    env["WIEN_OEPNV_AT_RECONCILE"] = "0"
 
     target_stations, wrapper_args = _wrapper_args_for(tmp_path)
 
