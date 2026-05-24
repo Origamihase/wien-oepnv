@@ -76,6 +76,7 @@
     "filter-all": "All",
     "filter-wl": "Wiener Linien",
     "filter-oebb": "ÖBB",
+    "filter-baustellen": "Construction",
     "filter-other": "Other",
     "feed-empty": "No disruptions for the selected filter.",
     "feed-error-prefix": "Feed could not be loaded:",
@@ -534,9 +535,15 @@
   // ----- Feed rendering -----
 
   function detectSource(item) {
+    const link = (item.link || "").toLowerCase();
     const haystack = `${item.link} ${item.title}`.toLowerCase();
     if (/(wienerlinien|wiener\s*linien|wl-disp|ogd_realtime)/.test(haystack)) return "wienerlinien";
     if (/(oebb|öbb|scotty)/.test(haystack)) return "oebb";
+    // City-of-Vienna construction dataset → fixed data.gv.at link. Keyed
+    // on the link (not the combined haystack) so a WL/ÖBB report whose
+    // title merely mentions "Baustelle" is not misclassified — those are
+    // already returned above.
+    if (/data\.gv\.at\/[^ ]*baustellen/.test(link)) return "baustellen";
     if (/(vor\.at|verkehrsverbund|vao\.|anachb)/.test(haystack)) return "vor";
     return "other";
   }
@@ -544,6 +551,7 @@
   function sourceLabel(key) {
     if (key === "wienerlinien") return "Wiener Linien";
     if (key === "oebb") return "ÖBB";
+    if (key === "baustellen") return currentLang === "en" ? "Construction" : "Baustellen";
     if (key === "vor") return "VOR / VAO";
     return currentLang === "en" ? "Other" : "Andere";
   }
@@ -559,19 +567,21 @@
     list.setAttribute("aria-busy", "false");
     clear(list);
 
-    // "Andere" is a catch-all for anything that is not Wiener Linien
-    // or ÖBB – so a hypothetical VOR/VAO item (still labelled green
-    // by detectSource) is also visible under "Andere", not just under
-    // "Alle". The dedicated VOR/VAO chip was removed in 2026-05 because
-    // VOR data now flows only into the Stammstrecken monitor.
-    // ``item.source`` is set once during feed parsing and reused here,
-    // so the filter pass is a plain string-compare loop.
+    // "Andere" is a catch-all for anything that is not Wiener Linien,
+    // ÖBB or Baustellen – so a hypothetical VOR/VAO item (still labelled
+    // green by detectSource) is also visible under "Andere", not just
+    // under "Alle". Baustellen got its own chip in 2026-05 and is
+    // therefore excluded from the catch-all; the dedicated VOR/VAO chip
+    // was removed earlier because VOR data now flows only into the
+    // Stammstrecken monitor. ``item.source`` is set once during feed
+    // parsing and reused here, so the filter pass is a plain
+    // string-compare loop.
     const filtered = feedState.filter === "all"
       ? feedState.items
       : feedState.items.filter((it) => {
           const src = it.source || detectSource(it);
           if (feedState.filter === "other") {
-            return src !== "wienerlinien" && src !== "oebb";
+            return src !== "wienerlinien" && src !== "oebb" && src !== "baustellen";
           }
           return src === feedState.filter;
         });
