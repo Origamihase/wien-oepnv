@@ -135,7 +135,24 @@ def _iso(s: str | None) -> datetime | None:
     s = s.replace("Z", "+00:00")
     if len(s) >= 5 and (s[-5] in "+-") and s[-3] != ":":
         s = s[:-2] + ":" + s[-2:]
-    dt = dtparser.isoparse(s)
+    try:
+        dt = dtparser.isoparse(s)
+    except (ValueError, OverflowError) as exc:
+        # Fail soft: a single malformed upstream timestamp must NOT
+        # propagate out of fetch_events. The fetch_events item loops
+        # have no per-item guard, so an unhandled ValueError aborts the
+        # whole fetch; update_wl_cache.py then swallows it via its broad
+        # ``except Exception`` and silently keeps the stale cache — one
+        # bad date field disables the entire WL refresh for that cycle.
+        # Mirrors the defensive parsing in the sibling timestamp parsers
+        # ``oebb._parse_dt_rfc2822`` and ``wl_text.extract_date_from_title``.
+        # ``isoparse``'s ValueError embeds a fragment of the upstream
+        # input, so the bound name is sanitised before logging.
+        log.debug(
+            "WL-Zeitstempel nicht parsebar (%s) – ignoriere Feld.",
+            sanitize_log_arg(str(exc)),
+        )
+        return None
     if not dt.tzinfo:
         dt = dt.replace(tzinfo=UTC)
     return cast('datetime | None', dt)
