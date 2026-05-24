@@ -37,7 +37,7 @@ from scripts.generate_sitemap import (  # noqa: E402
     _base_url,
     _to_url,
 )
-from src.utils.files import atomic_write  # noqa: E402
+from src.utils.files import atomic_write, read_capped_text  # noqa: E402
 
 _INTRO = (
     "Der Wien ÖPNV Feed bündelt Störungs- und Baustellenmeldungen von "
@@ -103,7 +103,8 @@ def _front_matter(text: str) -> dict[str, str]:
 def _page_meta(path: Path) -> tuple[str, str | None]:
     """Return ``(title, description)`` from front matter, falling back to
     the first H1 for the title and ``None`` for a missing description."""
-    text = path.read_text(encoding="utf-8")
+    # Capped read (sentinel: no bare Path.read_text in src/ or scripts/).
+    text = read_capped_text(path) or ""
     front = _front_matter(text)
     title = front.get("title")
     if not title:
