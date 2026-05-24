@@ -566,7 +566,7 @@ def test_metadata_glossary_no_cross_operator_contamination(
 # pipeline.
 
 
-def _fc(title_out: str) -> "build_feed.FormattedContent":
+def _fc(title_out: str) -> build_feed.FormattedContent:
     """Minimal FormattedContent whose only meaningful field for the
     overlay is ``title_out`` (the German title to translate)."""
     return build_feed.FormattedContent(
