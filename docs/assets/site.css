@@ -565,10 +565,10 @@ code {
  *
  * Light-mode brand colours (#E2002A, #C03021, …) give white text a
  * 6.8:1+ contrast on the pill background – comfortably above WCAG-AA.
- * The dark-mode ``--c-wl`` / ``--c-oebb`` / ``--c-vor`` tokens shift
- * to brighter pastels (#ff5f7e, #ff6f5e, #a3d36b) so the bar-row
- * fills inside the chart cards still pop against the dark navy
- * surface, but those same pastels only score 2.7-2.9:1 with white
+ * The dark-mode ``--c-wl`` / ``--c-oebb`` / ``--c-vor`` tokens carry
+ * brighter pastels (#ff5f7e, #ff6f5e, #a3d36b) tuned to pop as
+ * chart-card fills against the dark navy surface, but those same
+ * pastels only score 2.7-2.9:1 with white
  * text, which made the source labels nearly unreadable on dark
  * phones (Lighthouse measured 2.92 / 2.73 in the May 2026 audit).
  *
@@ -580,10 +580,13 @@ code {
  *
  * The current fix paints the pill *background* with darker, saturated
  * brand variants in dark mode and keeps the pill text white in both
- * schemes. Every combination now clears 6:1 against white, the
- * silhouette still reads as the brand colour, and the chart fills
- * above (which are evaluated against the dark navy card surface, not
- * the pill's white text) keep the lively pastels. The pill width is
+ * schemes. Every combination now clears 6:1 against white and the
+ * silhouette still reads as the brand colour. The Wiener-Linien and
+ * ÖBB provider bars deliberately mirror these same dark reds (see the
+ * ``.bars--provider`` dark-mode override below) so each source's chart
+ * fill matches its feed pill; the other token-driven fills (VOR,
+ * Baustellen) are evaluated against the dark navy card surface, not
+ * white text, so they keep their lively pastels. The pill width is
  * locked separately via the ``min-width: 9rem`` rule above so the
  * title column lines up across cards regardless of label length. */
 @media (prefers-color-scheme: dark) {
@@ -862,6 +865,15 @@ code {
    in site.js — match both languages so the bar stays yellow in EN too. */
 .bars--provider .bar-row[data-key="Baustellen"] .bar-row__fill,
 .bars--provider .bar-row[data-key="Construction"] .bar-row__fill { fill: var(--c-baustellen); }
+/* In dark mode the Wiener-Linien and ÖBB source pills drop to darker,
+   saturated brand reds (see the .feed-item__source dark-mode block);
+   mirror those exact reds on the matching provider bars so a source's
+   chart fill and its feed pill read as the same colour instead of the
+   brighter pastel carried by the dark-mode --c-wl / --c-oebb tokens. */
+@media (prefers-color-scheme: dark) {
+  .bars--provider .bar-row[data-key="Wiener Linien"] .bar-row__fill { fill: #b80024; }
+  .bars--provider .bar-row[data-key="ÖBB"] .bar-row__fill { fill: #9f2a1b; }
+}
 .bars--delay .bar-row__fill { fill: var(--c-warning); }
 .bars--cancel .bar-row__fill { fill: var(--c-danger); }
 
