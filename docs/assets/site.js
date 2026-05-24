@@ -694,6 +694,14 @@
 
   // ----- Statistics (stoerungen) -----
 
+  // Display-only short form for the source-distribution chart + KPI. The
+  // yearly ledger stores the descriptive "Stadt Wien – Baustellen" in its
+  // ``provider`` column (the feed pipeline keys glossary/entity-masking
+  // off that exact string), so we shorten it for the dashboard only and
+  // leave the data untouched. The ``data-key`` rendered from this label
+  // is what drives the yellow ``--c-baustellen`` bar fill in site.css.
+  const providerLabel = (p) => (/Baustellen/.test(p) ? "Baustellen" : p);
+
   function renderStoerungenStats(year, rows) {
     setYearLabels(year);
 
@@ -709,7 +717,7 @@
     renderKpis("#stoerungen-kpis", [
       { label: ct("kpi-stoerungen-total"), value: nfInt.format(total), sub: `${ct("sub-year")} ${year}` },
       { label: ct("kpi-top-provider"),
-        value: topProvider ? topProvider[0] : ct("tile-em-dash"),
+        value: topProvider ? providerLabel(topProvider[0]) : ct("tile-em-dash"),
         sub: topProvider ? `${nfInt.format(topProvider[1])} ${ct("sub-meldungen")}` : "" },
       { label: ct("kpi-peak-hour"),
         value: peakHour ? `${peakHour[0]}:00` : ct("tile-em-dash"),
@@ -720,7 +728,7 @@
     ]);
 
     renderBars("#stoerungen-providers",
-      sortedEntries(byProvider).slice(0, 8),
+      sortedEntries(byProvider).slice(0, 8).map(([p, v]) => [providerLabel(p), v]),
       { variant: "provider", formatValue: (v) => nfInt.format(v) });
 
     renderBars("#stoerungen-weekday",

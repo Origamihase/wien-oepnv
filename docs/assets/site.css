@@ -858,6 +858,7 @@ code {
 .bars--provider .bar-row[data-key="Wiener Linien"] .bar-row__fill { fill: var(--c-wl); }
 .bars--provider .bar-row[data-key="ÖBB"] .bar-row__fill { fill: var(--c-oebb); }
 .bars--provider .bar-row[data-key^="VOR"] .bar-row__fill { fill: var(--c-vor); }
+.bars--provider .bar-row[data-key="Baustellen"] .bar-row__fill { fill: var(--c-baustellen); }
 .bars--delay .bar-row__fill { fill: var(--c-warning); }
 .bars--cancel .bar-row__fill { fill: var(--c-danger); }
 
