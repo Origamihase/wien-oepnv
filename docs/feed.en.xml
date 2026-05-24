@@ -7,16 +7,38 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 24 May 2026 19:30:42 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 20:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Westbahnhof: Mariahilfer Street from Europaplatz and Mariahilfer Belt to Palmgasse and Gerstnerstraße]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">32c749674cb7c89d4c808a8f1412be3b93f365d274870d34852e170c0c959453</guid>
+      <pubDate>Mon, 25 May 2026 02:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 20:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 25 May 2026 02:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 30 Jun 2026 02:00:00 +0200</ext:ends_at>
+      <description>The actual area of Mariahilfer Straße is to be closed for vehicle traffic. [25.05.2026 – 30.06.2026]</description>
+      <content:encoded><![CDATA[The actual area of Mariahilfer Straße is to be closed for vehicle traffic.<br/>[25.05.2026 – 30.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c6fd32148db0de9ea67fb811e28260fea110b7705aafe137c948254f88184c8e</guid>
+      <pubDate>Sun, 24 May 2026 19:58:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 20:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 19:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: defective vehicle. [On 24.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 24.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1: False Parker service from Rear Zollamtsstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1</guid>
       <pubDate>Sun, 24 May 2026 19:16:00 +0200</pubDate>
       <ext:first_seen>Sun, 24 May 2026 19:30:42 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 19:27:05 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:starts_at>Sun, 24 May 2026 19:30:28 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 20:29:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 24.05.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.05.2026]]]></content:encoded>
     </item>
@@ -39,17 +61,6 @@
       <ext:first_seen>Sun, 24 May 2026 18:30:41 +0200</ext:first_seen>
       <ext:starts_at>Sun, 24 May 2026 18:05:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 20:00:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 24.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: service obstruction False Parker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa</guid>
-      <pubDate>Sun, 24 May 2026 18:05:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 18:30:41 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 18:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 19:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 24.05.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.05.2026]]]></content:encoded>
     </item>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 31 Jul 2026 02:00:00 +0200</ext:ends_at>
       <description>The repair work and necessary conversion work on the Stadionbrücke due to the extension of the 18 tram line will be carried out in several phases of construction. [Since 03.02.2025]</description>
       <content:encoded><![CDATA[The repair work and necessary conversion work on the Stadionbrücke due to the extension of the 18 tram line will be carried out in several phases of construction.<br/>[Since 03.02.2025]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Underpass Pulverturmgasse between the inner and outer Währinger belt]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">e42299ab6916a9966af3e18450d8212592453fca17cab8f5078a500b2ec2beb8</guid>
-      <pubDate>Sat, 28 Mar 2026 01:00:00 +0100</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 15:11:37 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 28 Mar 2026 01:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 31 Aug 2026 02:00:00 +0200</ext:ends_at>
-      <description>The general renovation of the U6 route is carried out in the actual area when the passage is blocked (at the level of 9, Pulverturmgasse or 18, Sternwartestraße) between the inner and … [28.03.2026 – 31.08.2026]</description>
-      <content:encoded><![CDATA[The general renovation of the U6 route is carried out in the actual area when the passage is blocked (at the level of 9, Pulverturmgasse or 18, Sternwartestraße) between the inner and …<br/>[28.03.2026 – 31.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
