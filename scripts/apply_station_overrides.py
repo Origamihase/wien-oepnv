@@ -144,6 +144,21 @@ def _find_by_diva(stations: list[dict[str, Any]], diva: str) -> dict[str, Any] |
     return None
 
 
+def _find_by_eva(stations: list[dict[str, Any]], eva: str) -> dict[str, Any] | None:
+    """Return the first station entry with matching ``eva_nr``, or None.
+
+    Lets ``patch_coords`` target the manual ÖBB-station entries
+    (``type=manual_*``) that carry an ``eva_nr`` but no ``wl_diva``.
+    ``eva_nr`` is a string in stations.json; ``str(...)`` keeps the match
+    robust against a defensively int-typed value.
+    """
+    for entry in stations:
+        value = entry.get("eva_nr")
+        if value is not None and str(value).strip() == eva:
+            return entry
+    return None
+
+
 def _alpha_insertion_index(stations: list[dict[str, Any]], target_name: str) -> int:
     """Pick a sorted insertion index by case-insensitive ``name``.
 
@@ -178,14 +193,23 @@ def _op_restore(stations: list[dict[str, Any]], override: dict[str, Any]) -> str
 
 
 def _op_patch_coords(stations: list[dict[str, Any]], override: dict[str, Any]) -> str:
-    diva = override["wl_diva"]
-    target = _find_by_diva(stations, diva)
+    # Target by wl_diva (WL stops) or, as a fallback, eva_nr (manual ÖBB
+    # stations that carry no wl_diva). The apply loop guarantees at least
+    # one identifier is present.
+    diva = override.get("wl_diva")
+    if isinstance(diva, str) and diva.strip():
+        target = _find_by_diva(stations, diva.strip())
+        key_desc = f"wl_diva={diva.strip()}"
+    else:
+        eva_key = str(override.get("eva_nr") or "").strip()
+        target = _find_by_eva(stations, eva_key)
+        key_desc = f"eva_nr={eva_key}"
     if target is None:
         log.warning(
-            "patch_coords: wl_diva=%s not present in stations.json — "
-            "skipping (the upstream may have removed the station; "
-            "consider retiring this override)",
-            diva,
+            "patch_coords: %s not present in stations.json — skipping "
+            "(the upstream may have removed the station; consider "
+            "retiring this override)",
+            key_desc,
         )
         return "skip (target missing)"
 
@@ -217,8 +241,8 @@ def _op_patch_coords(stations: list[dict[str, Any]], override: dict[str, Any]) -
                         changed_fields.append(f"wl_stops[{sid}].{sub}")
 
     if not changed_fields:
-        return f"skip (no change, wl_diva={diva})"
-    return f"patched wl_diva={diva}, fields={changed_fields}"
+        return f"skip (no change, {key_desc})"
+    return f"patched {key_desc}, fields={changed_fields}"
 
 
 def _op_remove(stations: list[dict[str, Any]], override: dict[str, Any]) -> str:
@@ -289,24 +313,37 @@ def apply_overrides(
             return 1
         op = raw_override.get("op")
         diva = raw_override.get("wl_diva")
+        eva = raw_override.get("eva_nr")
         if op not in _ALLOWED_OPS:
             log.error(
                 "Override #%d has unknown op %r (allowed: %s)",
                 index, op, sorted(_ALLOWED_OPS),
             )
             return 1
-        if not isinstance(diva, str) or not diva.strip():
+        has_diva = isinstance(diva, str) and bool(diva.strip())
+        # ``patch_coords`` may key on ``eva_nr`` (manual ÖBB stations have no
+        # ``wl_diva``); ``restore`` / ``remove`` still require ``wl_diva``.
+        if op == "patch_coords":
+            has_eva = eva is not None and bool(str(eva).strip())
+            if not (has_diva or has_eva):
+                log.error(
+                    "Override #%d (op=patch_coords) needs a wl_diva or eva_nr",
+                    index,
+                )
+                return 1
+        elif not has_diva:
             log.error(
                 "Override #%d (op=%s) missing or invalid wl_diva", index, op
             )
             return 1
+        ident = str(diva).strip() if has_diva else f"eva_nr={str(eva).strip()}"
         handler = _HANDLERS[op]
         try:
             result = handler(stations, raw_override)
         except OverrideError as exc:
-            log.error("Override #%d (op=%s, wl_diva=%s): %s", index, op, diva, exc)
+            log.error("Override #%d (op=%s, %s): %s", index, op, ident, exc)
             return 1
-        log.info("Override #%d (op=%s, wl_diva=%s): %s", index, op, diva, result)
+        log.info("Override #%d (op=%s, %s): %s", index, op, ident, result)
         if not result.startswith("skip"):
             applied += 1
 

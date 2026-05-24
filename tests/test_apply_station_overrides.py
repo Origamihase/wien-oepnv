@@ -229,6 +229,78 @@ def test_patch_coords_missing_diva_warns_but_does_not_fail(
     assert _stations_from(stations_path)[0]["wl_diva"] == "99999999"
 
 
+def test_patch_coords_by_eva_nr_targets_manual_station(tmp_path: Path) -> None:
+    """patch_coords can key on eva_nr for manual ÖBB stations (no wl_diva).
+
+    Mirrors the Bad Fischau / Bad Fischau-Brunn fix: two distinct
+    manual_distant_at stations shared one coordinate; re-pointing one by
+    its eva_nr separates them.
+    """
+    stations_path = tmp_path / "stations.json"
+    overrides_path = tmp_path / "overrides.json"
+
+    _write(stations_path, {"stations": [
+        {"name": "Bad Fischau", "eva_nr": "8100655", "type": "manual_distant_at",
+         "source": "hafas,manual,oebb_geonetz", "in_vienna": False, "pendler": False,
+         "latitude": 47.826685, "longitude": 16.173239, "aliases": ["Bad Fischau"]},
+        {"name": "Bad Fischau-Brunn", "eva_nr": "8100653", "type": "manual_distant_at",
+         "source": "hafas,manual,oebb_geonetz", "in_vienna": False, "pendler": False,
+         "latitude": 47.826685, "longitude": 16.173239, "aliases": ["Bad Fischau-Brunn"]},
+    ]})
+    _write(overrides_path, {"overrides": [
+        {
+            "op": "patch_coords",
+            "eva_nr": "8100655",
+            "reason": "test",
+            "latitude": 47.831202,
+            "longitude": 16.171251,
+        }
+    ]})
+
+    rc = apply_station_overrides.apply_overrides(stations_path, overrides_path)
+    assert rc == 0
+
+    by_name = {s["name"]: s for s in _stations_from(stations_path)}
+    assert (by_name["Bad Fischau"]["latitude"], by_name["Bad Fischau"]["longitude"]) == (47.831202, 16.171251)
+    # The sibling entry (different eva_nr) must stay put.
+    assert (by_name["Bad Fischau-Brunn"]["latitude"], by_name["Bad Fischau-Brunn"]["longitude"]) == (47.826685, 16.173239)
+
+
+def test_patch_coords_missing_eva_warns_but_does_not_fail(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture,
+) -> None:
+    stations_path = tmp_path / "stations.json"
+    overrides_path = tmp_path / "overrides.json"
+    _write(stations_path, {"stations": [
+        {"name": "Other", "eva_nr": "9999999", "source": "manual",
+         "latitude": 48.1, "longitude": 16.1, "in_vienna": False, "pendler": False,
+         "aliases": ["Other"]},
+    ]})
+    _write(overrides_path, {"overrides": [
+        {"op": "patch_coords", "eva_nr": "8100655", "reason": "test",
+         "latitude": 47.831202, "longitude": 16.171251},
+    ]})
+    with caplog.at_level(logging.WARNING, logger="apply_station_overrides"):
+        rc = apply_station_overrides.apply_overrides(stations_path, overrides_path)
+    assert rc == 0
+    assert any("8100655" in r.getMessage() for r in caplog.records)
+    assert _stations_from(stations_path)[0]["latitude"] == 48.1
+
+
+def test_patch_coords_requires_diva_or_eva(tmp_path: Path) -> None:
+    stations_path = tmp_path / "stations.json"
+    overrides_path = tmp_path / "overrides.json"
+    _write(stations_path, {"stations": [
+        {"name": "X", "wl_diva": "1", "source": "wl", "latitude": 48.1,
+         "longitude": 16.1, "in_vienna": True, "pendler": False, "aliases": ["X"]},
+    ]})
+    _write(overrides_path, {"overrides": [
+        {"op": "patch_coords", "reason": "no identifier", "latitude": 48.2, "longitude": 16.2},
+    ]})
+    rc = apply_station_overrides.apply_overrides(stations_path, overrides_path)
+    assert rc == 1
+
+
 # ---------------------------------------------------------------------------
 # Remove
 # ---------------------------------------------------------------------------
@@ -366,7 +438,14 @@ def test_committed_overrides_file_schema() -> None:
     for entry in payload["overrides"]:
         assert isinstance(entry, dict)
         assert entry["op"] in {"restore", "patch_coords", "remove"}
-        assert isinstance(entry.get("wl_diva"), str) and entry["wl_diva"].strip()
+        # Identifier: wl_diva for WL stops; patch_coords may instead key on
+        # eva_nr (manual ÖBB stations carry no wl_diva).
+        has_diva = isinstance(entry.get("wl_diva"), str) and bool(entry["wl_diva"].strip())
+        if entry["op"] == "patch_coords":
+            has_eva = entry.get("eva_nr") is not None and bool(str(entry["eva_nr"]).strip())
+            assert has_diva or has_eva
+        else:
+            assert has_diva
         assert isinstance(entry.get("reason"), str) and entry["reason"]
         # Every override must document its retire condition so future
         # maintainers know when to drop it.
@@ -380,16 +459,25 @@ def test_committed_overrides_file_schema() -> None:
 
 
 def test_committed_overrides_cover_the_known_drifts() -> None:
-    """The committed overrides file targets exactly the four DIVAs
-    that the 2026-05-16 audit identified as recurring upstream defects.
+    """The committed overrides file targets exactly the known upstream
+    defects: the four 2026-05-16 audit DIVAs plus the Bad Fischau
+    geographic-duplicate fix (eva-keyed, 2026-05-24).
 
     If this set ever needs to change, update the assertion intentionally
     — silent drift in the override list is itself a regression.
     """
     path = REPO_ROOT / "data" / "stations_overrides.json"
     payload = json.loads(path.read_text(encoding="utf-8"))
-    by_op_diva = {(o["op"], o["wl_diva"]) for o in payload["overrides"]}
-    assert ("restore", "60200558") in by_op_diva  # Hummelgasse
-    assert ("patch_coords", "60201955") in by_op_diva  # Halblehenweg
-    assert ("patch_coords", "60201954") in by_op_diva  # Leopoldine-Padaurek
-    assert ("remove", "60251359") in by_op_diva  # Sofienalpenstraße, Roßkopfgasse
+
+    def _ident(o: dict[str, Any]) -> str:
+        diva = o.get("wl_diva")
+        if isinstance(diva, str) and diva.strip():
+            return diva.strip()
+        return f"eva:{str(o.get('eva_nr') or '').strip()}"
+
+    by_op = {(o["op"], _ident(o)) for o in payload["overrides"]}
+    assert ("restore", "60200558") in by_op  # Hummelgasse
+    assert ("patch_coords", "60201955") in by_op  # Halblehenweg
+    assert ("patch_coords", "60201954") in by_op  # Leopoldine-Padaurek
+    assert ("remove", "60251359") in by_op  # Sofienalpenstraße, Roßkopfgasse
+    assert ("patch_coords", "eva:8100655") in by_op  # Bad Fischau geographic duplicate

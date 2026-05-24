@@ -10,6 +10,15 @@
   },
   "overrides": [
     {
+      "op": "patch_coords",
+      "eva_nr": "8100655",
+      "latitude": 47.831202,
+      "longitude": 16.171251,
+      "reason": "Bad Fischau (eva 8100655) and Bad Fischau-Brunn (eva 8100653) were both enriched to Bad Fischau-Brunn's position (47.826685, 16.173239), so two distinct manual_distant_at OEBB stations shared one coordinate (geographic-duplicate validator finding, distance 0). Re-points Bad Fischau to its authoritative OEBB Geo-Netz coordinate (data/oebb_geonetz_stops.json, bsts_id 442); the two stations are ~490 m apart in reality. Bad Fischau-Brunn is left untouched (already within the 150 m inertia tolerance of its Geo-Netz position).",
+      "added": "2026-05-24",
+      "expires_when": "The enrichment assigns eva 8100655 (Bad Fischau) its own coordinate distinct from eva 8100653, e.g. by reconciling manual_distant_at entries against oebb_geonetz by eva_nr."
+    },
+    {
       "op": "restore",
       "wl_diva": "60200558",
       "reason": "Wiener Linien retired all haltepunkte for DIVA 60200558 (Wien Unter St. Veit, Hummelgasse) but the station itself stays in haltestellen.csv. The WL build step skips DIVAs without haltepunkte, so the station drops from stations.json each cron tick. Restored from PR #1537 (the merge commit f755e8a snapshot).",
