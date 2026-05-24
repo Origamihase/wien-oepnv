@@ -9,6 +9,7 @@ on:
       - "docs/**"
       - ".github/workflows/seo-guard.yml"
       - "scripts/generate_sitemap.py"
+      - "scripts/generate_llms_txt.py"
 
 permissions:
   contents: read
@@ -90,6 +91,39 @@ jobs:
           fi
           echo "sitemap.xml verification passed (${url_count} URLs)."
 
+      - name: Refresh llms.txt
+        run: python scripts/generate_llms_txt.py
+
+      - name: Verify llms.txt
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! -s docs/llms.txt ]]; then
+            echo "Error: docs/llms.txt missing or empty after generation"
+            exit 1
+          fi
+
+          # llms.txt spec: the file must open with an H1 naming the project.
+          if ! head -n 1 docs/llms.txt | grep -q '^# '; then
+            echo "Error: docs/llms.txt must start with an '# ' H1 heading"
+            head -n 1 docs/llms.txt
+            exit 1
+          fi
+
+          # Every curated link must live under SITE_BASE (markdown link form
+          # is ``[label](${SITE_BASE}/...)`` so the '(' anchors the match).
+          if ! grep -qF "(${SITE_BASE}/" docs/llms.txt; then
+            echo "Error: docs/llms.txt does not reference SITE_BASE (${SITE_BASE})"
+            exit 1
+          fi
+
+          link_count="$(grep -c '^- \[' docs/llms.txt || true)"
+          if [[ "$link_count" -lt 1 ]]; then
+            echo "Error: docs/llms.txt contains no link entries"
+            exit 1
+          fi
+          echo "llms.txt verification passed (${link_count} links)."
+
       - name: Pull concurrent remote changes
         # Defense against the cross-workflow push race documented in
         # update-cycle.yml's commit step: update-cycle.yml writes to
@@ -110,8 +144,8 @@ jobs:
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
-          commit_message: 'chore(seo): refresh sitemap.xml [skip ci]'
-          file_pattern: 'docs/sitemap.xml'
+          commit_message: 'chore(seo): refresh sitemap.xml & llms.txt [skip ci]'
+          file_pattern: 'docs/sitemap.xml docs/llms.txt'
           push_options: '--force-with-lease'
 
       - name: Verify feed file (repo) – exactly one self & one alternate

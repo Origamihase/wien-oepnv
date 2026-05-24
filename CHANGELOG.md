@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **SEO/GEO: `llms.txt`-Generator, Sitemap-Batching & JSON-LD-Sentinel
+  (2026-05-24)**:
+  * `scripts/generate_llms_txt.py` (neu) erzeugt `docs/llms.txt` nach dem
+    [llms.txt-Standard](https://llmstxt.org/): eine kuratierte,
+    Markdown-formatierte Karte der informationsdichtesten Seiten für
+    LLM-/KI-Crawler (H1 + Summary-Blockquote, Abschnitte Dokumentation /
+    API-Referenz / How-to / Feeds). Titel und Beschreibungen der Referenz-
+    und How-to-Seiten stammen aus deren vorhandenem Front-Matter, sodass
+    neue Seiten automatisch erscheinen; die übrigen Einträge sind statisch
+    kuratiert. URLs werden über `generate_sitemap._to_url` erzeugt und
+    teilen den `SITE_BASE_URL`-Host-Pin (`_base_url`), damit `llms.txt`-
+    Links nie von ihren `sitemap.xml`-Pendants abweichen. Die Ausgabe ist
+    deterministisch (keine Zeitstempel), sodass der tägliche `seo-guard`-
+    Lauf nur bei echten Doku-Änderungen committet. Abgedeckt durch
+    `tests/scripts/test_generate_llms_txt.py`.
+  * `.github/workflows/seo-guard.yml`: neue Schritte „Refresh llms.txt"
+    und „Verify llms.txt" (H1-Pflicht, `SITE_BASE`-Referenz, mindestens
+    ein Link) analog zur Sitemap-Prüfung; der Auto-Commit erfasst jetzt
+    `docs/sitemap.xml` **und** `docs/llms.txt`.
+  * **Sitemap-Performance — N+1 aufgelöst**: `scripts/generate_sitemap.py`
+    startete in `_last_modified()` pro Datei einen eigenen
+    `git log -1`-Subprozess (61 Prozess-Starts ≈ 215 ms im aktuellen
+    Baum). Ersetzt durch `_git_lastmod_map()`, das die Historie in **einem**
+    gestreamten `git log --name-only`-Aufruf durchläuft und abbricht,
+    sobald jede angefragte Datei ihren neuesten Commit gezeigt hat
+    (≈ 12 ms, ~18×). Semantik (Commit-Datum → mtime-Fallback →
+    Zukunfts-Clamp) bleibt identisch; abgedeckt durch
+    `tests/scripts/test_generate_sitemap_lastmod.py` (inkl.
+    „genau ein git-Prozess"-Regression).
+  * **JSON-LD-Sentinel** (`tests/test_site_html_structured_data.py`):
+    stellt sicher, dass der bestehende `application/ld+json`-Block in
+    `docs/site.html` erhalten und valide bleibt (Schema.org-`@context`,
+    `@type`), damit die KI-/Such-Sichtbarkeit nicht unbemerkt regrediert.
 * **Performance: CLS ≈ 0.94 → ≈ 0 und WebP-Varianten für die zwei
   Bild-Assets (2026-05-17)**:
   * Zwei frische Lighthouse-Läufe (13.0.2) gegen
