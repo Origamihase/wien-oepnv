@@ -26,6 +26,7 @@
   --c-wl: #E2002A;
   --c-oebb: #C03021;
   --c-vor: #5a8f12;
+  --c-baustellen: #f2b600;
   --c-rss: #C77A00;
 
   --c-success: #0a7a59;
@@ -72,6 +73,7 @@
     --c-wl: #ff5f7e;
     --c-oebb: #ff6f5e;
     --c-vor: #a3d36b;
+    --c-baustellen: #f7c948;
     --c-rss: #ffd28a;
 
     --c-success: #34d3a4;
@@ -553,6 +555,11 @@ code {
 .feed-item__source[data-source="oebb"] { background: var(--c-oebb); }
 .feed-item__source[data-source="vor"] { background: var(--c-vor); }
 .feed-item__source[data-source="other"] { background: var(--c-text-subtle); }
+/* Baustellen is the only pill with dark text on a yellow ground (a
+ * deliberate "construction sign" look). Black on the ``--c-baustellen``
+ * yellow clears WCAG-AAA in both schemes, so it needs no dark-mode
+ * background override like the white-text pills below. */
+.feed-item__source[data-source="baustellen"] { background: var(--c-baustellen); color: #1a1a1a; }
 
 /* Dark-mode source pill contrast.
  *
