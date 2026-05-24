@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 24 May 2026 07:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 08:00:39 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U1: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
-      <pubDate>Sun, 24 May 2026 06:46:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 07:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 06:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 24.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 24.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[85A: roadworks]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -112,6 +101,17 @@
       <ext:ends_at>Mon, 25 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[24.05.2026 – 25.05.2026]</description>
       <content:encoded><![CDATA[[24.05.2026 – 25.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44A/N43: Dornbacher Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6bb2ac6cdc5eb19dd0e1b0e8a1742ef1e031054b7c7fd63b55f56c1649b5cd82</guid>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 05:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 27 Mar 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 27 Mar 2027 11:11:00 +0100</ext:ends_at>
+      <description>Due to track construction works in Dornbacher Straße there are redirections in both directions on the lines 44A and N43. Period: Line 44A: from Thursday, 16. April … [Since 27.03.2026]</description>
+      <content:encoded><![CDATA[Due to track construction works in Dornbacher Straße there are redirections in both directions on the lines 44A and N43. Period: Line 44A: from Thursday, 16. April …<br/>[Since 27.03.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
