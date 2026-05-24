@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 24 May 2026 15:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 16:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2: Fremder Verkehrsunfall]]></title>
+      <title><![CDATA[31: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0749610181f65ab0658c177429fbd2fa37ffe19a156e13edf490d50626a4aa1b</guid>
-      <pubDate>Sun, 24 May 2026 15:18:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 15:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 15:18:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">6c21c74cc84894b7e65fe8ea51db3f5b61d9d4579ddbc08da82f7d12c6a3810c</guid>
+      <pubDate>Sun, 24 May 2026 15:48:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 16:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 15:48:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung in beiden Richtungen zwischen Ring, Volkstheater U und Rathaus U über die Reichsratsstraße. [Am 24.05.2026]</description>
-      <content:encoded><![CDATA[Umleitung in beiden Richtungen zwischen Ring, Volkstheater U und Rathaus U über die Reichsratsstraße.<br/>[Am 24.05.2026]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 24.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Fremdunfall Betrieb ab Rathaus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">86cb972f4df995def8e05501ac969daa24286d7d2f5fb9ef9a8343bbc2c216c8</guid>
+      <pubDate>Sun, 24 May 2026 15:24:34 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 16:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 15:24:34 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 16:23:00 +0200</ext:ends_at>
+      <description>[Am 24.05.2026]</description>
+      <content:encoded><![CDATA[[Am 24.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Aumannplatz 1 bis Gentzgasse und Türkenschanzstraße]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 14 Aug 2026 02:00:00 +0200</ext:ends_at>
       <description>Die Verlegung einer Fernwärmezuleitung erfolgt in der Nacht in der Zeit von 20:00 Uhr bis 05:00 Uhr bei Freihaltung einer entsprechend breiten Restfahrbahn von mindestens … [17.05.2026 – 14.08.2026]</description>
       <content:encoded><![CDATA[Die Verlegung einer Fernwärmezuleitung erfolgt in der Nacht in der Zeit von 20:00 Uhr bis 05:00 Uhr bei Freihaltung einer entsprechend breiten Restfahrbahn von mindestens …<br/>[17.05.2026 – 14.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Favoritenstraße von Kreuzung Landgutgasse bis Kreuzung Keplerplatz und Keplergasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">efb9d1010340b08652023c32c60dcfbcd9ef734d3067b5fef422990194e7afb3</guid>
-      <pubDate>Sun, 19 Apr 2026 02:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 15:11:37 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Apr 2026 02:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 15 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Die Instandsetzungs- und Umgestaltungarbeiten in der Fußgängerzone Favoritenstraße werden nach den derzeit laufenden Abdichtungsarbeiten der Wiener Linien GmbH &amp; Co KG an der … [Seit 19.04.2026]</description>
-      <content:encoded><![CDATA[Die Instandsetzungs- und Umgestaltungarbeiten in der Fußgängerzone Favoritenstraße werden nach den derzeit laufenden Abdichtungsarbeiten der Wiener Linien GmbH &amp; Co KG an der …<br/>[Seit 19.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
