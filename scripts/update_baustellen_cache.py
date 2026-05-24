@@ -228,9 +228,15 @@ class ConstructionEvent:
             "link": self.link,
             "guid": self.guid,
             "pubDate": self.pub_date,
+            # ``starts_at`` is a schema-required key (events.schema.json) that
+            # every other provider (WL/ÖBB/Stammstrecke) always emits, with a
+            # null value when unknown. Emit it unconditionally here too — the
+            # former ``if self.starts_at`` guard dropped the key entirely for a
+            # Baustelle without a parseable start date, producing a cache item
+            # that violates the published schema. ``ends_at`` stays optional
+            # (it is NOT in the schema's ``required`` set).
+            "starts_at": self.starts_at,
         }
-        if self.starts_at:
-            item["starts_at"] = self.starts_at
         if self.ends_at:
             item["ends_at"] = self.ends_at
         if self.context:

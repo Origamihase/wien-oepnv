@@ -49,9 +49,9 @@
       "description": "Projektinterne Kennung zur Nachverfolgung von 'first_seen'."
     },
     "pubDate": {
-      "type": "string",
+      "type": ["string", "null"],
       "format": "date-time",
-      "description": "Veröffentlichungszeitpunkt der Meldung (ISO-8601)."
+      "description": "Veröffentlichungszeitpunkt der Meldung (ISO-8601). Kann null sein, wenn die Quelle keinen parsebaren Zeitstempel liefert (z. B. WL-Items ohne Zeitfeld, ÖBB-Items mit fehlendem pubDate)."
     },
     "starts_at": {
       "type": ["string", "null"],
