@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 24 May 2026 17:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 18:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26A: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cc50dc6a5ca22ae79c6dcc472391441d2a97d10bcf2b47c7cba4c68f563860cc</guid>
+      <pubDate>Sun, 24 May 2026 17:36:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 18:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 17:36:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 18:35:00 +0200</ext:ends_at>
+      <description>[Am 24.05.2026]</description>
+      <content:encoded><![CDATA[[Am 24.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U3: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,17 +27,6 @@
       <pubDate>Sun, 24 May 2026 17:22:00 +0200</pubDate>
       <ext:first_seen>Sun, 24 May 2026 17:30:43 +0200</ext:first_seen>
       <ext:starts_at>Sun, 24 May 2026 17:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
-      <pubDate>Sun, 24 May 2026 16:27:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 16:30:41 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 16:27:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.05.2026]]]></content:encoded>
