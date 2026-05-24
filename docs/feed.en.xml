@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 24 May 2026 02:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 03:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Eßlinger Hauptstraße 96]]></title>
@@ -19,28 +19,6 @@
       <ext:ends_at>Sun, 06 Sep 2026 02:00:00 +0200</ext:ends_at>
       <description>Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane. [25.05.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane.<br/>[25.05.2026 – 06.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Vandalism]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d32077a1b2e894929e4e64d1f25d2b413063be9cce672144aa08efdd6b52ca50</guid>
-      <pubDate>Sun, 24 May 2026 02:27:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 02:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 02:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: vandalism. [On 24.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: vandalism.<br/>[On 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b6c91de6a573124e11d145d18e3e1d2e44abd0ff6a0d3a6eac284f68d68b53ac</guid>
-      <pubDate>Sun, 24 May 2026 01:20:30 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 01:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 01:20:52 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 03:00:00 +0200</ext:ends_at>
-      <description>[On 24.05.2026]</description>
-      <content:encoded><![CDATA[[On 24.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N31: Buses stop at 5B]]></title>
@@ -115,6 +93,28 @@
       <pubDate>Fri, 22 May 2026 00:00:20 +0200</pubDate>
       <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 22 May 2026 00:00:20 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 24.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Buses stop Landstraßer main road 116]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf</guid>
+      <pubDate>Fri, 22 May 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 24.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Buses stop at Pasetti Street vor Hellwagstraße (at line 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Fri, 22 May 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 00:00:18 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[22.05.2026 – 24.05.2026]</description>
       <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
