@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import socket
 import sys
-from datetime import date
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -156,6 +156,29 @@ def test_parse_range_still_reads_explicit_until_date() -> None:
     start, end = update_baustellen_cache._parse_range(properties)
     assert start is not None and start.date() == date(2026, 3, 1)
     assert end is not None and end.date() == date(2026, 4, 15)
+
+
+def test_to_item_always_emits_required_starts_at_key() -> None:
+    """``starts_at`` is a schema-required key (events.schema.json) that every
+    other provider emits — null when unknown. A Baustelle without a parsed
+    start must still emit it as null, not drop the key entirely."""
+    event = update_baustellen_cache.ConstructionEvent(
+        guid="g1",
+        title="Test",
+        description="desc",
+        starts_at=None,
+        ends_at=None,
+        pub_date=datetime(2026, 3, 1, tzinfo=UTC),
+    )
+    item = event.to_item()
+    assert "starts_at" in item and item["starts_at"] is None
+    for key in (
+        "source", "category", "title", "description", "link", "guid",
+        "pubDate", "starts_at",
+    ):
+        assert key in item, f"schema-required key {key!r} missing from to_item()"
+    # ends_at is optional in the schema → still omitted when None.
+    assert "ends_at" not in item
 
 
 def test_collect_events_from_sample_payload() -> None:
