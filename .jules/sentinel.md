@@ -1,5 +1,54 @@
 # Sentinel's Journal
 
+## 2026-05-24 - Stored HTML/JS Injection (XSS) in Published `<content:encoded>` via `html_to_text` Entity Double-Decode
+
+**Vulnerability:** `_compose_description` (`src/build_feed.py`) built the
+`desc_html` body of the feed's `<content:encoded>` element by joining the
+PLAIN-TEXT `summary` + `time_line` with `<br/>` and emitting it verbatim
+inside a raw CDATA block (`<![CDATA[{desc_cdata}]]>`) — the one feed field
+every conformant RSS reader renders as HTML. The summary comes from
+`html_to_text` (`src/utils/text.py`), which runs the upstream description
+through `HTMLParser(convert_charrefs=True)`. That parser DECODES entity-
+escaped angle brackets into its output: an upstream `description` of
+`&lt;img src=x onerror=alert(...)&gt;` (the literal form for the JSON
+providers WL/VOR; the double-escaped `&amp;lt;...` form for the XML/RSS ÖBB
+provider that survives one XML-decode layer) becomes the LIVE string
+`<img src=x onerror=alert(...)>` in the "plain text". With no output-encoding
+at the HTML sink the tag reached `<content:encoded>` intact and executed in
+subscribers' readers — stored XSS / HTML-injection on the public feed
+(`https://origamihase.github.io/wien-oepnv/feed.xml`). Confirmed by an
+end-to-end PoC that drives the real `_format_item_content` pipeline and
+parses the resulting CDATA body with a reader-accurate `HTMLParser`
+(`tests/test_content_encoded_html_injection.py`): pre-fix the `<img>` start
+tag + `onerror` event-handler attribute survive; post-fix the bytes are
+inert escaped text (`&lt;img…`). Literal `<script>`/`<img>` tags were already
+dropped by `_HTMLToTextParser` (`_IGNORE_TAGS` + tags-not-captured) — which
+is precisely why the ENTITY-escaped form was the surviving vector. The
+asymmetry between `convert_charrefs=True` (decodes) and tag-stripping (drops)
+is the whole bug.
+
+**Learning:** The entire feed-sanitisation history (the multi-round
+`_CONTROL_RE` BiDi / zero-width / Trojan-Source saga) hardened the
+`<title>`/`<description>` XML TEXT nodes — where ElementTree's automatic
+`<>&` escaping already neutralises structural injection — but never
+output-encoded the ONE field that is *definitionally* HTML: the raw-CDATA
+`<content:encoded>` body. Invisible-character display-confusion was being
+patched round after round while live-script execution sat wide open. Fix =
+context-correct output encoding AT THE SINK: `html.escape(part, quote=False)`
+on each plain-text part in `_compose_description` (the shared DE+EN
+chokepoint — `_apply_lang_overlay` re-composes through the same function), so
+only the builder's own structural `<br/>` stays live. CDATA-as-TEXT sinks
+(`<title>`) must NOT be escaped: CDATA content is not entity-decoded by the
+XML parser, so escaping there would surface a literal `&amp;`. General rule
+for this codebase: `html_to_text` returns DISPLAY text, never HTML-safe text;
+every sink that renders its output as HTML (only `<content:encoded>` today)
+must HTML-escape it. Future-round sibling watch-list: a generic
+"plain-text-into-raw-HTML/CDATA" audit walker would pin this invariant the
+way the JSON loader/writer walkers pin their parser/writer sites. Adding the
+`import html` shifted `src/build_feed.py` line numbers +1; the `allow_nan`
+writer-walker allowlist pins `_identity_for_item` by absolute line number
+(2359/2368 → 2360/2369) and had to be re-synced in the same PR.
+
 ## 2026-05-23 - Stammstrecke Writer Non-Finite Literal Drift + Writer-Side `allow_nan=False` Audit Walker
 
 **Vulnerability:** Two committed-state JSON writers in
