@@ -26,7 +26,28 @@ from src.providers.baustellen import (
 from src.utils import stations
 
 # Real directory coordinates (data/stations.json).
-WIEN_HBF = (48.185184, 16.376413)  # bst_id 900100, in_vienna
+_STATIONS_JSON = Path(__file__).resolve().parents[1] / "data" / "stations.json"
+
+
+def _directory_coord(name: str) -> tuple[float, float]:
+    """Return a station's authoritative ``(lat, lon)`` from the committed
+    directory.
+
+    Derived rather than hard-coded so the fixture tracks consensus-driven
+    coordinate updates — the WL→HAFAS→OSM reconciliation re-points
+    multimodal hubs such as Hauptbahnhof to the WL/OSM-agreed position —
+    instead of pinning a value that silently drifts out of the matching
+    radius.
+    """
+    payload = json.loads(_STATIONS_JSON.read_text(encoding="utf-8"))
+    entries = payload["stations"] if isinstance(payload, dict) else payload
+    for entry in entries:
+        if entry.get("name") == name:
+            return (float(entry["latitude"]), float(entry["longitude"]))
+    raise AssertionError(f"{name!r} not found in {_STATIONS_JSON}")
+
+
+WIEN_HBF = _directory_coord("Wien Hauptbahnhof")  # multimodal hub, in_vienna
 MOEDLING = (48.085628, 16.295474)  # bst_id 1377, pendler
 # A point deep in the Donau-Auen floodplain — no rail Bahnhof for km.
 FAR_AWAY = (48.170000, 16.520000)
