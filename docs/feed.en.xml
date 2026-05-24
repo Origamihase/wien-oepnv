@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 24 May 2026 01:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 02:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Eßlinger Hauptstraße 96]]></title>
@@ -41,39 +41,6 @@
       <ext:ends_at>Sun, 24 May 2026 05:00:00 +0200</ext:ends_at>
       <description>[On 24.05.2026]</description>
       <content:encoded><![CDATA[[On 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37: foreign traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">89120d0470ea18b91557ad7fb1b2bbd655bec5746442fac646a071a183fbd310</guid>
-      <pubDate>Sun, 24 May 2026 00:49:21 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 00:49:21 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 01:49:00 +0200</ext:ends_at>
-      <description>[On 24.05.2026]</description>
-      <content:encoded><![CDATA[[On 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a</guid>
-      <pubDate>Sun, 24 May 2026 00:43:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 00:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 01:28:00 +0200</ext:ends_at>
-      <description>service obstruction towards Hütteldorf. expected duration: 01:00. Reason: police operation in the Spittelau stop area. [On 24.05.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Hütteldorf. expected duration: 01:00. Reason: police operation in the Spittelau stop area.<br/>[On 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
-      <pubDate>Sun, 24 May 2026 00:41:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 00:52:42 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 00:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 01:28:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 24.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 24.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N46: Buses stop at line 48A in Neustiftgasse]]></title>
@@ -118,6 +85,39 @@
       <ext:ends_at>Sun, 24 May 2026 05:30:00 +0200</ext:ends_at>
       <description>[23.05.2026 – 24.05.2026]</description>
       <content:encoded><![CDATA[[23.05.2026 – 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Disability due to track construction]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d280e5ddac0af3382c1b354fb03d282c238bf112358b241357de02731032fe74</guid>
+      <pubDate>Fri, 22 May 2026 00:00:27 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 00:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 24.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Open buses stop at Wienerbergbrücke]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fea8a52de8284e73a68e14a51478ee4263f596086bd37c21aa6e1137962f6b4a</guid>
+      <pubDate>Fri, 22 May 2026 00:00:20 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 00:00:20 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 24.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Buses stop Landstraßer main road 116]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf</guid>
+      <pubDate>Fri, 22 May 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Fri, 22 May 2026 00:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 22 May 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[22.05.2026 – 24.05.2026]</description>
+      <content:encoded><![CDATA[[22.05.2026 – 24.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
