@@ -190,6 +190,24 @@ def test_domain_glossary_round_trip(de_term: str, en_term: str) -> None:
     assert en_term in restored
 
 
+def test_domain_glossary_translates_ggue_abbreviation() -> None:
+    """Regression: the Baustellen addressing abbreviation ``ggü.``
+    (gegenüber) was left untranslated by Marian, so "Simonygasse
+    ggü. 2B" reached the EN feed verbatim. The glossary maps it to
+    the English ``opp.`` (opposite). Longest-first ordering keeps the
+    dotted form intact (``opp.``) rather than splitting it into
+    ``opp`` + a stray ``.``."""
+    masked, mapping = build_feed._apply_domain_glossary("Simonygasse ggü. 2B")
+    assert "ggü." not in masked
+    assert "opp." in mapping.values()
+    # The dotted form wins over the bare ``ggü`` — exactly one mapping
+    # entry, carrying the period.
+    assert [v for v in mapping.values() if v == "opp."] == ["opp."]
+    # Bare form (no trailing period) maps to the bare ``opp``.
+    _, mapping_bare = build_feed._apply_domain_glossary("Haltestelle ggü Eingang")
+    assert "opp" in mapping_bare.values()
+
+
 def test_domain_glossary_case_insensitive() -> None:
     """Glossary matching is case-insensitive so a lowercase token at
     the start of a sentence still gets the canonical EN translation."""

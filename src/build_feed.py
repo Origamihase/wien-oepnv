@@ -930,7 +930,9 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #   1 — first epoch. Invalidates every pre-epoch cache entry, picking
 #       up the street-suffix masker (#1624), the metadata-driven
 #       glossary (#1625) and the disruption-core scope tightening.
-_TRANSLATION_CACHE_EPOCH = 1
+#   2 — "ggü." / "ggü" (gegenüber) → "opp." / "opp" street-addressing
+#       abbreviation added to the base glossary.
+_TRANSLATION_CACHE_EPOCH = 2
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1120,6 +1122,15 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Eingeschränkter Betrieb": "restricted service",
     # --- Compound idioms specific to ÖBB/WL ticker text ------------
     "Betrieb ab": "service from",
+    # --- Street-addressing abbreviations ----------------------------
+    # "ggü." (gegenüber) is the Baustellen-feed shorthand for
+    # "opposite house number N" (e.g. "Simonygasse ggü. 2B"). Marian
+    # leaves the unknown abbreviation verbatim, so the EN feed showed
+    # the German "ggü." untranslated. Map it to the English "opp."
+    # (opposite). Longest-first ordering makes the dotted form win
+    # over the bare "ggü" so the period is preserved as "opp.".
+    "ggü.": "opp.",
+    "ggü": "opp",
 }
 
 
