@@ -553,3 +553,149 @@ def test_metadata_glossary_no_cross_operator_contamination(
     # leaking into a road-construction item).
     assert "kurzführung" in desc_en
     assert "short-running service" not in desc_en
+
+
+# --- Translation-cache epoch invalidation -----------------------------
+#
+# EN translations are cached per disruption identity and persisted
+# across builds. The cache key (title + date-range for Baustellen
+# items) survives a description-only edit, so a translation computed
+# once is served for the lifetime of the item. When the masking /
+# glossary logic improves, the ``_TRANSLATION_CACHE_EPOCH`` guard
+# evicts the stale rendering and recomputes it through the improved
+# pipeline.
+
+
+def _fc(title_out: str) -> build_feed.FormattedContent:
+    """Minimal FormattedContent whose only meaningful field for the
+    overlay is ``title_out`` (the German title to translate)."""
+    return build_feed.FormattedContent(
+        guid="g",
+        link="",
+        title_cdata=title_out,
+        desc_text_truncated="",
+        desc_cdata="",
+        raw_desc="",
+        title_out=title_out,
+        desc_html="",
+    )
+
+
+def test_stale_epoch_evicts_and_retranslates(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Regression for the live ``Schlachthausgasse`` → "slaughterhouse
+    gas" leak. A translation cached by a build with weaker masking
+    (no street-suffix protection) keeps its broken rendering because
+    the cache key (title + dates) survives a description-only edit.
+    The epoch guard must evict the stale entry and recompute with the
+    current masker, which protects the street name verbatim."""
+    # Current pipeline behaviour: preserves the XENT/XGLO placeholders
+    # the masker injects; only rewrites a couple of connectors.
+    def fake(text: str, **kwargs: Any) -> list[dict[str, str]]:
+        out = text.replace("Fahrbahn", "Roadway").replace(" bis ", " to ")
+        return [{"translation_text": out}]
+
+    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: fake)
+
+    ident = "stadt wien – baustellen|baustelle|L=|D=2026-03-09|T=Fahrbahn|F=abc"
+    de_title = "Fahrbahn Hauptstraße von Apostelgasse bis Schlachthausgasse"
+    state: dict[str, dict[str, Any]] = {
+        ident: {
+            "first_seen": "2026-03-09T00:00:00+00:00",
+            "translations": {
+                # Stale rendering from a pre-street-masking build; note
+                # the ABSENT epoch key → treated as epoch 0 → stale.
+                "en": {
+                    "title": "Roadway Hauptstraße from Apostelgasse to slaughterhouse gas",
+                },
+            },
+        },
+    }
+    out = build_feed._apply_lang_overlay(
+        _fc(de_title), "", "", ident, "en", state,
+        source="Stadt Wien – Baustellen", category="Baustelle",
+    )
+    # Stale broken rendering is gone; the street name survives verbatim.
+    assert "slaughterhouse gas" not in out.title_out
+    assert "Schlachthausgasse" in out.title_out
+    # Cache refreshed and stamped with the current epoch.
+    assert (
+        state[ident]["translations"]["epoch"]
+        == build_feed._TRANSLATION_CACHE_EPOCH
+    )
+    assert "slaughterhouse" not in state[ident]["translations"]["en"]["title"]
+
+
+def test_current_epoch_cache_is_trusted_without_pipeline(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A translation tagged with the current epoch is served from the
+    cache verbatim — the pipeline is never invoked (proven by a fake
+    that raises if called)."""
+    def boom(text: str, **kwargs: Any) -> list[dict[str, str]]:
+        raise AssertionError("pipeline must not be called for fresh cache")
+
+    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: boom)
+    ident = "fresh-cache-1"
+    state: dict[str, dict[str, Any]] = {
+        ident: {
+            "translations": {
+                "en": {"title": "Cached English title"},
+                "epoch": build_feed._TRANSLATION_CACHE_EPOCH,
+            },
+        },
+    }
+    out = build_feed._apply_lang_overlay(
+        _fc("Deutscher Titel"), "", "", ident, "en", state,
+    )
+    assert out.title_out == "Cached English title"
+    # Epoch unchanged (still current).
+    assert (
+        state[ident]["translations"]["epoch"]
+        == build_feed._TRANSLATION_CACHE_EPOCH
+    )
+
+
+def test_fresh_translation_stamps_current_epoch(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A first-time translation stamps the current epoch so the next
+    build trusts the cache instead of recomputing."""
+    def fake(text: str, **kwargs: Any) -> list[dict[str, str]]:
+        return [{"translation_text": text}]
+
+    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: fake)
+    ident = "fresh-stamp-1"
+    state: dict[str, dict[str, Any]] = {}
+    build_feed._apply_lang_overlay(
+        _fc("U6: Betriebsstörung"), "Eine Meldung.", "", ident, "en", state,
+        source="Wiener Linien", category="Störung",
+    )
+    assert (
+        state[ident]["translations"]["epoch"]
+        == build_feed._TRANSLATION_CACHE_EPOCH
+    )
+
+
+def test_epoch_not_stamped_when_pipeline_fails(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A transient pipeline failure must NOT advance the epoch — the
+    item stays flagged stale so the next (healthy) build retries
+    instead of locking in a half-empty cache at the current epoch."""
+    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    ident = "fail-epoch-1"
+    state: dict[str, dict[str, Any]] = {
+        ident: {"translations": {"en": {"title": "stale"}}},  # epoch 0
+    }
+    out = build_feed._apply_lang_overlay(
+        _fc("U6: Betriebsstörung"), "Meldung", "", ident, "en", state,
+    )
+    # Pipeline down → atomic German fallback (base returned unchanged).
+    assert out.title_out == "U6: Betriebsstörung"
+    # Epoch NOT advanced — the entry remains eligible for a retry.
+    assert (
+        state[ident]["translations"].get("epoch", 0)
+        < build_feed._TRANSLATION_CACHE_EPOCH
+    )

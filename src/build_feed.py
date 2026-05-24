@@ -901,6 +901,37 @@ def _sanitize_text(s: str) -> str:
 _TRANSLATION_STATE: dict[str, Any] = {"pipeline": None, "load_failed": False}
 _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 
+# Translation-cache epoch. EN translations are cached per disruption
+# identity in ``state[ident]["translations"]["en"]`` and persisted
+# across builds. The cache key (see :func:`_identity_for_item`) is
+# stable across cosmetic changes — a Baustellen item keyed on
+# ``title + date-range`` survives a description-only edit — so a
+# translation computed once is served for the lifetime of the item
+# (multi-year for long construction projects).
+#
+# That persistence is a problem whenever the masking / glossary logic
+# IMPROVES: an item translated by an older build keeps its stale
+# rendering forever, because :func:`_cached_translation` only forces a
+# retry when the cached value equals the German source (the
+# "Sticky-German" guard). A cached value that is a *wrong but
+# non-German* translation — e.g. ``Schlachthausgasse`` rendered as
+# "slaughterhouse gas" before the street-suffix masker existed — is
+# served indefinitely.
+#
+# The epoch breaks that lock. Bump this integer whenever a change to
+# :func:`_mask_entities`, the entity patterns, or the domain glossary
+# would alter the EN output for already-cached items. On the next
+# build :func:`_apply_lang_overlay` evicts every translation stamped
+# with an older epoch and recomputes it through the improved
+# pipeline, then re-stamps the current epoch so subsequent builds
+# trust the cache again (no churn).
+#
+# Epoch history:
+#   1 — first epoch. Invalidates every pre-epoch cache entry, picking
+#       up the street-suffix masker (#1624), the metadata-driven
+#       glossary (#1625) and the disruption-core scope tightening.
+_TRANSLATION_CACHE_EPOCH = 1
+
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
 # these via the ML model would be wasteful — every disruption shares
@@ -3473,6 +3504,60 @@ def _summary_duplicates_title(summary: str, title_out: str) -> bool:
     return summary.casefold() == title_body_compare.casefold()
 
 
+def _evict_stale_translations(
+    ident: str, state: dict[str, dict[str, Any]] | None
+) -> None:
+    """Drop cached EN translations that predate the current
+    :data:`_TRANSLATION_CACHE_EPOCH`.
+
+    Called at the top of :func:`_apply_lang_overlay` before any cache
+    lookup. When the persisted epoch is older than the current one the
+    item was translated by a build with weaker masking / glossary
+    logic; the whole ``en`` sub-dict is removed so every field is
+    recomputed through the improved pipeline. The epoch is re-stamped
+    only AFTER a successful retranslation (see
+    :func:`_stamp_translation_epoch`) so a transient pipeline failure
+    cannot lock in a half-empty cache at the current epoch.
+    """
+    if state is None or not ident:
+        return
+    entry = state.get(ident)
+    if not isinstance(entry, dict):
+        return
+    translations = entry.get("translations")
+    if not isinstance(translations, dict):
+        return
+    epoch_raw = translations.get("epoch", 0)
+    epoch = epoch_raw if isinstance(epoch_raw, int) else 0
+    if epoch < _TRANSLATION_CACHE_EPOCH:
+        if "en" in translations:
+            log.info(
+                "Evicting stale EN translation for %s (epoch %s < %s).",
+                sanitize_log_arg(ident),
+                epoch,
+                _TRANSLATION_CACHE_EPOCH,
+            )
+        translations.pop("en", None)
+
+
+def _stamp_translation_epoch(
+    ident: str, state: dict[str, dict[str, Any]] | None
+) -> None:
+    """Record that ``ident``'s cached translations were produced under
+    the current :data:`_TRANSLATION_CACHE_EPOCH`.
+
+    Called only after every field translated successfully, so a future
+    build trusts the cache instead of evicting it again (no churn even
+    for items whose translation legitimately drops a placeholder).
+    """
+    if state is None or not ident:
+        return
+    entry = state.setdefault(ident, {})
+    translations = entry.setdefault("translations", {})
+    if isinstance(translations, dict):
+        translations["epoch"] = _TRANSLATION_CACHE_EPOCH
+
+
 def _apply_lang_overlay(
     base: FormattedContent,
     summary_de: str,
@@ -3509,9 +3594,21 @@ def _apply_lang_overlay(
     inside the translation cascade. Default ``None`` keeps the
     function callable from the existing tests that do not need to
     exercise the metadata path.
+
+    Cache freshness: cached translations are tagged with the
+    :data:`_TRANSLATION_CACHE_EPOCH` they were produced under. Stale
+    entries (older epoch) are evicted up-front so a masking / glossary
+    improvement is picked up on the next build instead of serving the
+    old rendering for the lifetime of the item.
     """
     if lang != "en":
         return base
+
+    # Pick up masking / glossary improvements: discard cached
+    # translations produced under an older epoch so the lookups below
+    # recompute them. Re-stamped at the end only when every field
+    # translated successfully.
+    _evict_stale_translations(ident, state)
 
     title_raw, title_ok = _cached_translation(
         base.title_out, "title", ident, state,
@@ -3536,6 +3633,10 @@ def _apply_lang_overlay(
             summary_ok,
         )
         return base
+
+    # Every field translated under the current epoch — stamp it so the
+    # next build trusts the cache instead of evicting and recomputing.
+    _stamp_translation_epoch(ident, state)
 
     title_en = _sanitize_text(title_raw)
     summary_en = _sanitize_text(summary_raw)
