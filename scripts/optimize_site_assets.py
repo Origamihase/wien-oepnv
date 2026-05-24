@@ -15,6 +15,7 @@ Outputs (always overwritten):
 
 * ``docs/assets/site.min.css``      — minified CSS referenced by ``docs/site.html``
 * ``docs/assets/site.min.js``       — minified JS referenced by ``docs/site.html``
+* ``docs/site.html``                — CSS/JS references get a content-hash ``?v=`` cache-bust token
 * ``docs/assets/train.png``         — re-encoded in place (downscaled + palette)
 * ``docs/assets/footer-bg.jpg``     — re-encoded in place (downscaled + progressive)
 
@@ -32,7 +33,9 @@ markers from the image tools, which are intentionally stripped via
 from __future__ import annotations
 
 import argparse
+import hashlib
 import logging
+import re
 import shutil
 import subprocess  # nosec B404
 import sys
@@ -294,6 +297,82 @@ def _minify_js(check_only: bool = False) -> bool:
     return True
 
 
+# ----- HTML cache-busting --------------------------------------------
+#
+# GitHub Pages serves ``site.min.css`` / ``site.min.js`` with a 10-minute
+# ``Cache-Control: max-age`` and the ``<link>`` / ``<script>`` references
+# carry no version token, so a returning visitor keeps the previously
+# cached bundle for up to ten minutes after a deploy — long enough for a
+# shipped change (e.g. a new feed-source classifier) to look "not applied
+# yet" while the fresh HTML around it already updated. Pinning a short
+# content hash as a ``?v=`` query makes each URL change exactly when the
+# bundle bytes change, so browsers refetch immediately. The query keeps
+# the same origin, so the strict ``script-src 'self'`` / ``style-src
+# 'self'`` CSP is unaffected.
+
+
+def _html_target() -> Path:
+    """The dashboard HTML whose asset references carry the ``?v=`` tokens.
+
+    Derived from ``ASSETS_DIR`` (read at call time) so the isolation
+    fixtures that redirect ``ASSETS_DIR`` into a tmp tree also redirect
+    this path — a test that only patched the asset paths never rewrites
+    the real ``docs/site.html``.
+    """
+    return ASSETS_DIR.parent / "site.html"
+
+
+def _asset_version(content: str) -> str:
+    """Cache-bust token: first 12 hex of the SHA-256 of the served bundle
+    bytes. Changes iff the bundle content changes."""
+    return hashlib.sha256(content.encode("utf-8")).hexdigest()[:12]
+
+
+def _pin_asset_version(html: str, ref: str, version: str) -> str:
+    """Rewrite ``<ref>`` / ``<ref>?v=OLD`` to ``<ref>?v=<version>``.
+
+    ``ref`` is the bare relative URL (e.g. ``assets/site.min.js``). A
+    function replacement is used so no character in ``ref`` / ``version``
+    is interpreted as a backreference, and the optional existing ``?v=``
+    token is replaced so repeated runs are byte-idempotent.
+    """
+    pattern = re.compile(re.escape(ref) + r"(?:\?v=[0-9a-f]+)?")
+    return pattern.sub(lambda _m: f"{ref}?v={version}", html)
+
+
+def _sync_html_versions(check_only: bool = False) -> bool:
+    """Pin the cache-bust ``?v=`` tokens on the CSS/JS references in
+    ``site.html``. In check mode return ``False`` on drift.
+
+    A missing ``site.html`` (isolated test tree) is a no-op success — the
+    asset-only fixtures never create one.
+    """
+    html_path = _html_target()
+    if not html_path.exists():
+        return True
+    current = _read_capped_or_die(html_path, "site.html")
+    css_v = _asset_version(_render_min_css())
+    js_v = _asset_version(_render_min_js())
+    expected = _pin_asset_version(current, f"assets/{CSS_OUT.name}", css_v)
+    expected = _pin_asset_version(expected, f"assets/{JS_OUT.name}", js_v)
+    if check_only:
+        ok = current == expected
+        if not ok:
+            LOG.error(
+                "site.html asset versions are out of date — run "
+                "`python scripts/optimize_site_assets.py --skip-images`",
+            )
+        return ok
+    if current != expected:
+        # Same atomic-write rationale as ``_minify_css`` — ``site.html``
+        # is a repository-committed, GitHub-Pages-served file, so a
+        # partial write would land in the public page.
+        with atomic_write(html_path, mode="w", encoding="utf-8") as handle:
+            handle.write(expected)
+        LOG.info("HTML: pinned cache-bust versions (css=%s, js=%s)", css_v, js_v)
+    return True
+
+
 def _have(tool: str) -> bool:
     return shutil.which(tool) is not None
 
@@ -512,10 +591,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.check:
         css_ok = _minify_css(check_only=True)
         js_ok = _minify_js(check_only=True)
-        return 0 if (css_ok and js_ok) else 1
+        html_ok = _sync_html_versions(check_only=True)
+        return 0 if (css_ok and js_ok and html_ok) else 1
 
     _minify_css()
     _minify_js()
+    _sync_html_versions()
 
     if not args.skip_images:
         _optimise_train_png()
