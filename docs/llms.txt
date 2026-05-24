@@ -1,0 +1,38 @@
+# Wien ÖPNV Feed – Aktuelle Verkehrsmeldungen & Open-Data-API
+
+> Open-Source-Projekt für Verkehrsinformationen in Wien und der Ostregion: RSS-Feed, JSON-Daten, Dokumentation & Entwickler-Tools.
+
+Der Wien ÖPNV Feed bündelt Störungs- und Baustellenmeldungen von Wiener Linien, ÖBB und VOR zu einem konsolidierten RSS-Feed, ergänzt um Dokumentation und reproduzierbare Open-Data-Workflows. Die folgenden Seiten sind die informationsdichtesten Einstiegspunkte.
+
+## Dokumentation
+
+- [Architektur-Karte — Wien ÖPNV Feed](https://origamihase.github.io/wien-oepnv/architecture.html): Architekturüberblick: wie Caches, Provider, Feed-Build und GitHub-Actions-Workflows zusammenhängen.
+- [Entwicklerdokumentation – Wien ÖPNV Feed](https://origamihase.github.io/wien-oepnv/development.html): Entwickler-Handbuch: Setup, CLI, Konfiguration, Provider-Logik, Tests und CI-Pipelines.
+- [Wien ÖPNV — Statistik 2026](https://origamihase.github.io/wien-oepnv/statistik.html): Automatisch erzeugte Jahresstatistik der Störungs- und Baustellenmeldungen im Wiener ÖPNV.
+- [Live-Dashboard](https://origamihase.github.io/wien-oepnv/site.html): Interaktives Dashboard mit Live-Störungen, Stammstrecken-Monitor und Jahresstatistik.
+
+## API-Referenz
+
+- [GET /arrivalBoard](https://origamihase.github.io/wien-oepnv/reference/arrivalboard.html): Dokumentation des ArrivalBoard-Endpunkts mit Parametern, Antwortstruktur und Hinweisen zum Paging über Ankunftszeiträume.
+- [GET /datainfo](https://origamihase.github.io/wien-oepnv/reference/datainfo.html): Beschreibung des Datainfo-Service inklusive Struktur der Betreiber-, Produkt- und Kategorienlisten für nachgelagerte Filter.
+- [GET /departureBoard](https://origamihase.github.io/wien-oepnv/reference/departureboard.html): Referenz für den DepartureBoard-Endpunkt mit Pflichtparametern, Filtern und Hinweisen zum Scrollen durch weitere Abfahrten.
+- [GET /location.details](https://origamihase.github.io/wien-oepnv/reference/location-details.html): Endpunktbeschreibung für detaillierte Ortspunktausgaben inklusive Ausstattung, Sharing-Angeboten und optionalen Wetterdaten.
+- [GET /location.name](https://origamihase.github.io/wien-oepnv/reference/location-name.html): Referenz für die Namenssuche nach Ortspunkten mit Filteroptionen für Typen, Produkte und Standortgewichtung.
+- [GET /location.nearbystops](https://origamihase.github.io/wien-oepnv/reference/location-nearbystops.html): Dokumentation der Umkreissuche mit Parametern für Radius, Treffertypen sowie Zusatzinformationen zu Sharing-Angeboten.
+- [ÖBB Provider Logic (`src/providers/oebb.py`)](https://origamihase.github.io/wien-oepnv/reference/oebb_provider_logic.html)
+- [S-Bahn-Stammstrecke Provider Logic](https://origamihase.github.io/wien-oepnv/reference/stammstrecke_provider_logic.html)
+- [GET /tti](https://origamihase.github.io/wien-oepnv/reference/timetable-info.html): Referenz für das Timetable-Info-Service mit Erläuterungen zu Gültigkeitszeiträumen und Grenzen für API-Abfragen.
+- [GET /trip](https://origamihase.github.io/wien-oepnv/reference/trip.html): Ausführliche Parameterliste für Trip-Anfragen inklusive Via-Optionen, Produktfiltern und Rückgabestruktur der VAO ReST API.
+
+## How-to
+
+- [Google Places Stations Import](https://origamihase.github.io/wien-oepnv/how-to/google_places_stations.html): Anleitung zum Tier-3-Fallback-Abruf von Bahnhofs- und Haltestellendaten über die Google Places API in den lokalen Stationskatalog (OSM primär, HAFAS als Tier-2-Fallback davor).
+- [Eigene Provider-Plugins anbinden](https://origamihase.github.io/wien-oepnv/how-to/provider_plugins.html): Schritt-für-Schritt-Anleitung, um neue Datenquellen als Provider-Plugin in die Feed-Pipeline einzubinden und lokal zu testen.
+- [Repository-Secrets sicher testen](https://origamihase.github.io/wien-oepnv/how-to/test-api-secrets.html): So führen Sie API-Aufrufe mit in GitHub Actions hinterlegten Secrets aus, ohne die Zugangsdaten lokal preiszugeben.
+- [Trip-Abfrage durchführen](https://origamihase.github.io/wien-oepnv/how-to/trip-request.html): Kurzer Leitfaden, um mit der VAO ReST API Fahrten zwischen zwei Punkten zu ermitteln und die Antworten weiterzuverarbeiten.
+- [API-Versionen prüfen](https://origamihase.github.io/wien-oepnv/how-to/versions.html): Leitfaden, um die aktuell genutzte VAO ReST API-Version zu identifizieren und Änderungen zwischen Versionen nachzuverfolgen.
+
+## Feeds & Daten
+
+- [RSS-Feed (Deutsch)](https://origamihase.github.io/wien-oepnv/feed.xml): Konsolidierter RSS-Feed mit Störungs- und Baustellenmeldungen für den Wiener ÖPNV (WL/ÖBB/VOR).
+- [RSS feed (English)](https://origamihase.github.io/wien-oepnv/feed.en.xml): English-language consolidated disruption and construction feed for Vienna public transport.
