@@ -9,6 +9,16 @@
       "epoch": 1
     }
   },
+  "0749610181f65ab0658c177429fbd2fa37ffe19a156e13edf490d50626a4aa1b": {
+    "first_seen": "2026-05-24T13:30:48.093098+00:00",
+    "translations": {
+      "en": {
+        "summary": "diversion in both directions between Ring, Volkstheater U and Rathaus U via the Reichsratsstra\u00dfe.",
+        "title": "2: foreign traffic accident"
+      },
+      "epoch": 1
+    }
+  },
   "08f4559a66917d733ab90dd1c2c92b48f6df1c5aff04b2df8ea22298f0025690": {
     "first_seen": "2026-05-24T01:04:40.542482+00:00",
     "translations": {
@@ -924,6 +934,16 @@
       "epoch": 1
     }
   },
+  "f7940797be88623f2a15511a572191f1670b75616580055286efcae2a41647cd": {
+    "first_seen": "2026-05-24T13:30:48.093098+00:00",
+    "translations": {
+      "en": {
+        "summary": "in the shadow of track construction works of Wiener Linien GmbH & Co KG, the pipe laying work takes place during the day in the area of the roadway and the bicycle strip and when the \u2026 is blocked",
+        "title": "Aumannplatz 1 to Gentzgasse and T\u00fcrkenschanzstra\u00dfe"
+      },
+      "epoch": 1
+    }
+  },
   "f8982bc97b1fe3ed6b2d9c47fc60754a63c1ff817524a694320c7a1635a8d3b1": {
     "first_seen": "2026-05-04T07:51:57.195205+00:00"
   },
@@ -1001,6 +1021,16 @@
       "en": {
         "summary": "Due to construction works, between Flughafen Wien Bahnhof and Vienna Railway Station (U) the RJ 820 train runs from 13.04.2026 to 26.05.2026 (from Monday to Thursday) with changed journey times.",
         "title": "Wien Hauptbahnhof \u2194 Flughafen Wien"
+      },
+      "epoch": 1
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&879345": {
+    "first_seen": "2026-05-24T13:30:48.093098+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation, only limited journeys between Wien Rennweg Bahnhst and Wien Quartier Belvedere Bahnhst to 15:14 were possible.",
+        "title": "Wien Rennweg \u2194 Wien Quartier Belvedere"
       },
       "epoch": 1
     }

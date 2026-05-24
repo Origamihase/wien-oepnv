@@ -362,6 +362,54 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Fremder Verkehrsunfall",
+    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Ring, Volkstheater U und Rathaus U über die Reichsratsstraße. Richtung Dornbach: Haltestelle Ring, Volkstheater U: Die Züge halten in der Haltestelle der Linien 46, 49 und 48A, die Haltestelle Parlament kann nicht eingehalten werden. Richtung Friedrich-Engels-Platz: Haltestelle Ring, Volkstheater U: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Voraussichtliche Dauer: 15:50 Uhr. Grund: Fremder Verkehrsunfall im Bereich Rathausplatz # Reichsratsstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0749610181f65ab0658c177429fbd2fa37ffe19a156e13edf490d50626a4aa1b",
+    "pubDate": "2026-05-24T15:18:00+02:00",
+    "starts_at": "2026-05-24T15:18:00+02:00",
+    "ends_at": "2026-05-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-05-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fremdunfall Züge haltne bei Linie 49",
+    "description": "Fremdunfall\nZüge haltne bei Linie 49",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4bb98eb392dd1500dcda90424365fe4f6d275911838aaad99881e39fb39647b1",
+    "pubDate": "2026-05-24T15:23:36+02:00",
+    "starts_at": "2026-05-24T15:23:36+02:00",
+    "ends_at": "2026-05-24T16:22:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-05-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fremdunfall Betrieb ab Rathaus",
+    "description": "Fremdunfall\nBetrieb ab Rathaus >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "86cb972f4df995def8e05501ac969daa24286d7d2f5fb9ef9a8343bbc2c216c8",
+    "pubDate": "2026-05-24T15:24:34+02:00",
+    "starts_at": "2026-05-24T15:24:34+02:00",
+    "ends_at": "2026-05-24T16:23:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-05-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fremdunfall Züge halten bei Bellariastraße",
+    "description": "Fremdunfall\nZüge halten bei Bellariastraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "87f66c875280e7286edbfd7749e084b392349c4f188d0e9bfb417642b560c678",
+    "pubDate": "2026-05-24T15:22:38+02:00",
+    "starts_at": "2026-05-24T15:22:38+02:00",
+    "ends_at": "2026-05-24T16:21:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-05-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -562,18 +610,6 @@
     "starts_at": "2026-05-22T00:00:18+02:00",
     "ends_at": "2026-05-24T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-05-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Signalstörung",
-    "description": "Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037",
-    "pubDate": "2026-05-24T13:38:00+02:00",
-    "starts_at": "2026-05-24T13:38:00+02:00",
-    "ends_at": "2026-05-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-05-24"
   },
   {
     "source": "Wiener Linien",
