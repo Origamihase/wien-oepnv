@@ -694,13 +694,16 @@
 
   // ----- Statistics (stoerungen) -----
 
-  // Display-only short form for the source-distribution chart + KPI. The
-  // yearly ledger stores the descriptive "Stadt Wien – Baustellen" in its
+  // Display label for the source-distribution chart + KPI. The yearly
+  // ledger stores the descriptive "Stadt Wien – Baustellen" in its
   // ``provider`` column (the feed pipeline keys glossary/entity-masking
-  // off that exact string), so we shorten it for the dashboard only and
-  // leave the data untouched. The ``data-key`` rendered from this label
-  // is what drives the yellow ``--c-baustellen`` bar fill in site.css.
-  const providerLabel = (p) => (/Baustellen/.test(p) ? "Baustellen" : p);
+  // off that exact string), so we map it — display only, data untouched —
+  // to the short, localized name via the same ``sourceLabel`` helper the
+  // feed uses (DE "Baustellen" / EN "Construction"). loadAll() re-renders
+  // the stats on a language switch, so the label follows currentLang. The
+  // ``data-key`` rendered from this label drives the yellow
+  // ``--c-baustellen`` bar fill in site.css (both strings are matched).
+  const providerLabel = (p) => (/Baustellen/.test(p) ? sourceLabel("baustellen") : p);
 
   function renderStoerungenStats(year, rows) {
     setYearLabels(year);
