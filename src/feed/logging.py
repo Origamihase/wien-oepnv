@@ -96,6 +96,50 @@ def configure_logging() -> None:
 
 _LOG_TIMESTAMP_RE = re.compile(r"^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2}),(\d{3})")
 
+# Record-header timestamp for the JSON formatter (active when
+# ``LOG_FORMAT=json``). ``SafeJSONFormatter`` emits one object per line whose
+# FIRST key is the ISO-8601 ``timestamp`` (see
+# ``src/feed/logging_safe.py``): ``{"timestamp": "2026-05-24T20:01:00+02:00", …}``.
+# Without this, ``prune_log_file`` matched only the plain ``%(asctime)s`` shape
+# (``YYYY-MM-DD HH:MM:SS,mmm``); every JSON line fell through as a "continuation"
+# line, the whole file collapsed into one un-timestamped group, and time-based
+# retention silently became a no-op for JSON logs.
+_LOG_JSON_TIMESTAMP_RE = re.compile(r'^\s*\{\s*"timestamp"\s*:\s*"([^"]+)"')
+
+
+def _parse_log_record_timestamp(line: str) -> datetime | None:
+    """Return the leading record timestamp of a log *line*, normalised to
+    :data:`LOG_TIMEZONE`, or ``None`` for continuation / unparseable lines.
+
+    Handles BOTH emitted formats so :func:`prune_log_file` honours the
+    retention window regardless of ``LOG_FORMAT``:
+
+      * plain ``%(asctime)s`` — ``YYYY-MM-DD HH:MM:SS,mmm`` (``SafeFormatter``)
+      * JSON — ``{"timestamp": "<ISO-8601>", …}`` (``SafeJSONFormatter``)
+    """
+    parsed: datetime | None = None
+    match = _LOG_TIMESTAMP_RE.match(line)
+    if match:
+        try:
+            parsed = datetime.strptime(
+                f"{match.group(1)} {match.group(2)},{match.group(3)}",
+                "%Y-%m-%d %H:%M:%S,%f",
+            )
+        except ValueError:
+            return None
+    else:
+        json_match = _LOG_JSON_TIMESTAMP_RE.match(line)
+        if json_match:
+            try:
+                parsed = datetime.fromisoformat(json_match.group(1))
+            except ValueError:
+                return None
+    if parsed is None:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=LOG_TIMEZONE)
+    return parsed.astimezone(LOG_TIMEZONE)
+
 # Security: ``MAX_LOG_PRUNE_KEEP_DAYS`` is the retention-window ceiling for the
 # in-place log-pruning helper. ``prune_log_file`` consumes ``keep_days`` as
 # ``cutoff = now - timedelta(days=keep_days)`` (direct ``datetime - timedelta``
@@ -174,7 +218,7 @@ def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
     grouped: list[list[str]] = []
     current: list[str] = []
     for line in raw_lines:
-        if _LOG_TIMESTAMP_RE.match(line):
+        if _parse_log_record_timestamp(line) is not None:
             if current:
                 grouped.append(current)
             current = [line]
@@ -188,21 +232,12 @@ def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
 
     filtered: list[str] = []
     for record_lines in grouped:
-        first = record_lines[0]
-        match = _LOG_TIMESTAMP_RE.match(first)
-        if not match:
+        ts = _parse_log_record_timestamp(record_lines[0])
+        if ts is None:
+            # No parseable record timestamp (continuation line / unknown
+            # shape) — keep conservatively rather than risk dropping data.
             filtered.extend(record_lines)
             continue
-        ts_raw = f"{match.group(1)} {match.group(2)},{match.group(3)}"
-        try:
-            ts = datetime.strptime(ts_raw, "%Y-%m-%d %H:%M:%S,%f")
-        except ValueError:
-            filtered.extend(record_lines)
-            continue
-        if ts.tzinfo is None:
-            ts = ts.replace(tzinfo=LOG_TIMEZONE)
-        else:
-            ts = ts.astimezone(LOG_TIMEZONE)
         if ts >= cutoff:
             filtered.extend(record_lines)
 

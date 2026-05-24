@@ -50,6 +50,35 @@ def test_feed_lint_reports_duplicates_and_missing_guid(
     assert exit_code == 1
 
 
+def test_feed_lint_sanitizes_missing_guid_output(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """A guid-less item carrying control / BiDi / zero-width bytes in its
+    title must not leak them raw into the operator-facing lint stdout.
+
+    The duplicate-group print already sanitises via ``_summarize_duplicates``;
+    this guards the sibling "Einträge ohne GUID" path against Trojan-Source /
+    terminal-escape / log-forgery on the lint report.
+    """
+    now = datetime.now(UTC)
+    # RLO (U+202E), zero-width space (U+200B), ANSI ESC (U+001B), BEL (U+0007)
+    evil_title = "Bar\u202e\u200b\x1b[31m\x07evil"
+    items = [_make_item("bar", guid=None, title=evil_title)]
+
+    monkeypatch.setattr(build_feed, "_invoke_collect_items", lambda report: list(items))
+    monkeypatch.setattr(build_feed, "_load_state", lambda: {})
+    monkeypatch.setattr(build_feed, "_detect_stale_caches", lambda report, now: [])
+
+    build_feed.lint()
+
+    out = capsys.readouterr().out
+    assert "Einträge ohne GUID" in out
+    for bad in ("\u202e", "\u200b", "\x1b", "\x07"):
+        assert bad not in out, f"unsanitised {bad!r} leaked into lint stdout"
+    # The visible text still surfaces so the operator sees the offending item.
+    assert "Bar" in out and "evil" in out
+
+
 def test_feed_lint_ok_without_issues(
     monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
