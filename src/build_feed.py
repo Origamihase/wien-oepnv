@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import html
 import inspect
 import json
 import logging
@@ -3485,7 +3486,18 @@ def _compose_description(summary: str, time_line: str) -> tuple[str, str]:
         desc_parts.append(summary)
     if time_line:
         desc_parts.append(time_line)
-    desc_html = "<br/>".join(desc_parts)
+    # Security (stored HTML/JS injection on the public feed): ``summary`` and
+    # ``time_line`` are PLAIN TEXT, but ``desc_html`` is emitted verbatim into
+    # the ``<content:encoded>`` CDATA body, which every conformant RSS reader
+    # renders as HTML. ``html_to_text`` decodes entity-escaped angle brackets
+    # (``&lt;img onerror=…&gt;`` → ``<img onerror=…>``) via
+    # ``HTMLParser(convert_charrefs=True)``, so a compromised/MITM'd upstream
+    # could otherwise land an executable tag in subscribers' readers. Escape
+    # each text part for the HTML context; only the builder's own structural
+    # ``<br/>`` separators stay live. ``desc_text`` below is for the
+    # ``<description>`` XML text node and is left unescaped — ElementTree
+    # applies the correct XML escaping there.
+    desc_html = "<br/>".join(html.escape(part, quote=False) for part in desc_parts)
     desc_text = " ".join(desc_parts)
     if len(desc_text) > feed_config.DESCRIPTION_CHAR_LIMIT:
         desc_text_truncated = (
