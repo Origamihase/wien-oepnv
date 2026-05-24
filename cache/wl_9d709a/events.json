@@ -614,6 +614,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U3: Verunreinigung",
+    "description": "Linie U3: Unregelmäßige Intervalle in Richtung Ottakring. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
+    "pubDate": "2026-05-24T05:49:00+02:00",
+    "starts_at": "2026-05-24T05:49:00+02:00",
+    "ends_at": "2026-05-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-05-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Sperre Bahnsteig Richtung Siebenhirten",
     "description": "Sperre Bahnsteig Richtung Siebenhirten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
