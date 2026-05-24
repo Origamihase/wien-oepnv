@@ -60,7 +60,6 @@ def test_feed_lint_sanitizes_missing_guid_output(
     this guards the sibling "Einträge ohne GUID" path against Trojan-Source /
     terminal-escape / log-forgery on the lint report.
     """
-    now = datetime.now(UTC)
     # RLO (U+202E), zero-width space (U+200B), ANSI ESC (U+001B), BEL (U+0007)
     evil_title = "Bar\u202e\u200b\x1b[31m\x07evil"
     items = [_make_item("bar", guid=None, title=evil_title)]
