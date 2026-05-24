@@ -3135,9 +3135,34 @@ def _dedupe_items(items: list[FeedItem]) -> list[FeedItem]:
             out.append(it)
     return out
 
+# Feed-ordering priority by category, applied as a tie-breaker when several
+# items share the same ``first_seen``. Lower rank sorts first. ``Störung``
+# (WL/ÖBB live disruptions AND the Stammstrecke delay/cancellation monitor,
+# whose ``EVENT_CATEGORY`` is also ``"Störung"``) leads; ``Baustelle``
+# (long-running construction) trails; every other category (e.g. WL
+# ``Hinweis``) sits between. Keyed on the casefolded category so a provider
+# emitting ``"störung"`` still matches. Operator policy (2026-05): disruptions
+# matter more for the feed than construction.
+_CATEGORY_FEED_RANK: dict[str, int] = {
+    "störung": 0,
+    "baustelle": 2,
+}
+_DEFAULT_CATEGORY_FEED_RANK = 1
+
+
+def _category_feed_rank(item: FeedItem) -> int:
+    """Return the feed-priority rank for *item*'s category (lower sorts first)."""
+    category = item.get("category")
+    if isinstance(category, str):
+        return _CATEGORY_FEED_RANK.get(
+            category.strip().casefold(), _DEFAULT_CATEGORY_FEED_RANK
+        )
+    return _DEFAULT_CATEGORY_FEED_RANK
+
+
 def _recency_sort_key(
     item: FeedItem, state: dict[str, dict[str, Any]], now_utc: datetime
-) -> tuple[float, str]:
+) -> tuple[float, int, float, str]:
     """FIFO-by-``first_seen`` ordering for the feed: newest-appeared first.
 
     Sorts by the persisted (guid-stable) ``first_seen`` descending. An item
@@ -3145,12 +3170,29 @@ def _recency_sort_key(
     disruptions lead. No-longer-valid items are already removed upstream by
     :func:`_drop_old_items`, so the visible Top-N are the newest still-valid
     disruptions; older ones fall off the bottom as fresher ones arrive.
+
+    Ties on ``first_seen`` (a batch of items that surfaced in the SAME build —
+    e.g. a fresh set of construction sites that all get ``first_seen = now``)
+    are broken, in order, by:
+
+    1. **Category priority** (:func:`_category_feed_rank`) — live disruptions
+       (``Störung``: WL/ÖBB plus the Stammstrecke delay/cancellation monitor)
+       outrank long-running ``Baustelle`` items; everything else (e.g. WL
+       ``Hinweis``) sits between. Operator policy: Störungen are more important
+       for the feed than Baustellen.
+    2. **``pubDate`` descending** — the source's own recency signal; the more
+       recently published item leads. A missing/unparseable ``pubDate`` sorts
+       last within its group (``-inf`` → ``+inf`` after negation).
+    3. **guid** — final deterministic tiebreaker for a stable total order
+       (otherwise items tying on all of the above would shuffle between builds).
     """
     _, entry = _lookup_state(item, state)
     first_seen = _parse_first_seen(entry, now_utc) or now_utc
+    pub = _parse_datetime(item.get("pubDate"))
+    pub_ts = pub.timestamp() if isinstance(pub, datetime) else float("-inf")
     guid_val = item.get("guid")
     guid_str = str(guid_val) if guid_val else _identity_for_item(item)
-    return (-first_seen.timestamp(), guid_str)
+    return (-first_seen.timestamp(), _category_feed_rank(item), -pub_ts, guid_str)
 
 
 def _build_canonical_link(candidate: Any, ident: str) -> str:

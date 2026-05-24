@@ -70,15 +70,16 @@ def test_sort_key_handles_none_guid(monkeypatch: pytest.MonkeyPatch, tmp_path: P
     key2 = build_feed._recency_sort_key(item_missing_guid, state, now_utc)
     key3 = build_feed._recency_sort_key(item_str_guid, state, now_utc)
 
-    # Verify that the tiebreak (guid) part of the key is a string
-    assert isinstance(key1[1], str)
-    assert len(key1[1]) > 0
+    # Verify that the final-tiebreak (guid) part of the key is a string.
+    # Key shape: (-first_seen, category_rank, -pubDate, guid) → guid is last.
+    assert isinstance(key1[-1], str)
+    assert len(key1[-1]) > 0
 
-    assert isinstance(key2[1], str)
-    assert len(key2[1]) > 0
+    assert isinstance(key2[-1], str)
+    assert len(key2[-1]) > 0
 
-    assert isinstance(key3[1], str)
-    assert key3[1] == "some-guid"
+    assert isinstance(key3[-1], str)
+    assert key3[-1] == "some-guid"
 
 def test_deterministic_sorting_fallback(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
 
@@ -113,3 +114,51 @@ def test_deterministic_sorting_fallback(monkeypatch: pytest.MonkeyPatch, tmp_pat
 
     # We assert that the sorted result matches the one ordered by identities directly
     assert [it["title"] for it in sorted_items] == [x["item"]["title"] for x in expected_order]
+
+
+def test_stoerung_ranks_above_baustelle_on_first_seen_tie(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """On a first_seen tie (same build), Störung outranks Hinweis outranks Baustelle."""
+    build_feed = _import_build_feed(monkeypatch)
+    now = datetime(2026, 5, 24, 12, 0, tzinfo=UTC)
+    state: dict[str, dict[str, Any]] = {}  # empty → all first_seen == now
+    items = [
+        {"title": "Bau", "category": "Baustelle", "guid": "b", "pubDate": now},
+        {"title": "Stoer", "category": "Störung", "guid": "s", "pubDate": now},
+        {"title": "Hint", "category": "Hinweis", "guid": "h", "pubDate": now},
+    ]
+    ordered = sorted(items, key=lambda it: build_feed._recency_sort_key(it, state, now))
+    assert [it["title"] for it in ordered] == ["Stoer", "Hint", "Bau"]
+
+
+def test_newer_pubdate_first_within_same_category_and_first_seen(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """Same category + first_seen → newer pubDate leads (sinks old-start Baustellen)."""
+    build_feed = _import_build_feed(monkeypatch)
+    now = datetime(2026, 5, 24, 12, 0, tzinfo=UTC)
+    state: dict[str, dict[str, Any]] = {}
+    items = [
+        {"title": "old-start", "category": "Baustelle", "guid": "a",
+         "pubDate": datetime(2021, 2, 28, tzinfo=UTC)},
+        {"title": "new-start", "category": "Baustelle", "guid": "b",
+         "pubDate": datetime(2026, 4, 1, tzinfo=UTC)},
+    ]
+    ordered = sorted(items, key=lambda it: build_feed._recency_sort_key(it, state, now))
+    assert [it["title"] for it in ordered] == ["new-start", "old-start"]
+
+
+def test_missing_pubdate_sorts_last_within_group(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """A null/unparseable pubDate sorts last within its (first_seen, category) group."""
+    build_feed = _import_build_feed(monkeypatch)
+    now = datetime(2026, 5, 24, 12, 0, tzinfo=UTC)
+    state: dict[str, dict[str, Any]] = {}
+    items = [
+        {"title": "no-pub", "category": "Störung", "guid": "a", "pubDate": None},
+        {"title": "has-pub", "category": "Störung", "guid": "b", "pubDate": now},
+    ]
+    ordered = sorted(items, key=lambda it: build_feed._recency_sort_key(it, state, now))
+    assert [it["title"] for it in ordered] == ["has-pub", "no-pub"]
