@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 24 May 2026 06:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 07:00:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
+      <pubDate>Sun, 24 May 2026 06:46:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 07:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 06:46:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 24.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 24.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U3: Verunreinigung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +28,8 @@
       <ext:first_seen>Sun, 24 May 2026 06:00:49 +0200</ext:first_seen>
       <ext:starts_at>Sun, 24 May 2026 05:49:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in Richtung Ottakring. Grund: Verunreinigung. [Am 24.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Ottakring. Grund: Verunreinigung.<br/>[Am 24.05.2026]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 24.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 24.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[85A: Straßenbauarbeiten]]></title>
@@ -101,17 +112,6 @@
       <ext:starts_at>Mon, 16 Feb 2026 09:52:28 +0100</ext:starts_at>
       <description>Wegen Bauarbeiten fährt zwischen Flughafen Wien Bahnhof und Wien Hbf (U) von 13.04.2026 bis 26.05.2026 (von Montag bis Donnerstag) der Zug RJ 820 mit geänderten Fahrzeiten. [Seit 16.02.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten fährt zwischen Flughafen Wien Bahnhof und Wien Hbf (U) von 13.04.2026 bis 26.05.2026 (von Montag bis Donnerstag) der Zug RJ 820 mit geänderten Fahrzeiten.<br/>[Seit 16.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Sun, 24 May 2026 04:45:03 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 05:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 04:45:03 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 00:35:00 +0200</ext:ends_at>
-      <description>[24.05.2026 – 25.05.2026]</description>
-      <content:encoded><![CDATA[[24.05.2026 – 25.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

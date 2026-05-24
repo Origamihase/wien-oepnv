@@ -614,8 +614,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-05-24T06:46:00+02:00",
+    "starts_at": "2026-05-24T06:46:00+02:00",
+    "ends_at": "2026-05-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-05-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U3: Verunreinigung",
-    "description": "Linie U3: Unregelmäßige Intervalle in Richtung Ottakring. Grund: Verunreinigung.",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
     "pubDate": "2026-05-24T05:49:00+02:00",
