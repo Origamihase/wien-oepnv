@@ -4,6 +4,7 @@ import pytest
 import types
 from pathlib import Path
 from datetime import datetime, UTC
+from typing import Any
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     module_name = "src.build_feed"
@@ -42,7 +43,7 @@ def test_sort_key_handles_none_guid(monkeypatch: pytest.MonkeyPatch, tmp_path: P
 
     build_feed = _import_build_feed(monkeypatch)
     now_utc = datetime.now(UTC)
-    state: dict = {}
+    state: dict[str, dict[str, Any]] = {}
 
     # Create an item with explicitly None guid
     item_none_guid = {
@@ -84,7 +85,7 @@ def test_deterministic_sorting_fallback(monkeypatch: pytest.MonkeyPatch, tmp_pat
     build_feed = _import_build_feed(monkeypatch)
 
     now = datetime(2024, 1, 1, 12, 0, tzinfo=UTC)
-    state: dict = {}
+    state: dict[str, dict[str, Any]] = {}
     # No state → identical first_seen (now); no guids → identity tiebreak.
     items = [
         {"title": "Item C", "pubDate": now},
