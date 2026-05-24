@@ -123,7 +123,7 @@ def test_stoerung_ranks_above_baustelle_on_first_seen_tie(
     build_feed = _import_build_feed(monkeypatch)
     now = datetime(2026, 5, 24, 12, 0, tzinfo=UTC)
     state: dict[str, dict[str, Any]] = {}  # empty → all first_seen == now
-    items = [
+    items: list[dict[str, Any]] = [
         {"title": "Bau", "category": "Baustelle", "guid": "b", "pubDate": now},
         {"title": "Stoer", "category": "Störung", "guid": "s", "pubDate": now},
         {"title": "Hint", "category": "Hinweis", "guid": "h", "pubDate": now},
@@ -139,7 +139,7 @@ def test_newer_pubdate_first_within_same_category_and_first_seen(
     build_feed = _import_build_feed(monkeypatch)
     now = datetime(2026, 5, 24, 12, 0, tzinfo=UTC)
     state: dict[str, dict[str, Any]] = {}
-    items = [
+    items: list[dict[str, Any]] = [
         {"title": "old-start", "category": "Baustelle", "guid": "a",
          "pubDate": datetime(2021, 2, 28, tzinfo=UTC)},
         {"title": "new-start", "category": "Baustelle", "guid": "b",
@@ -156,7 +156,7 @@ def test_missing_pubdate_sorts_last_within_group(
     build_feed = _import_build_feed(monkeypatch)
     now = datetime(2026, 5, 24, 12, 0, tzinfo=UTC)
     state: dict[str, dict[str, Any]] = {}
-    items = [
+    items: list[dict[str, Any]] = [
         {"title": "no-pub", "category": "Störung", "guid": "a", "pubDate": None},
         {"title": "has-pub", "category": "Störung", "guid": "b", "pubDate": now},
     ]
