@@ -4,6 +4,7 @@ import pytest
 import types
 from pathlib import Path
 from datetime import datetime, UTC
+from typing import Any
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     module_name = "src.build_feed"
@@ -29,7 +30,8 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
 
 def test_sort_key_handles_none_guid(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     """
-    Verify that _sort_key handles cases where 'guid' is explicitly None in the item dict.
+    Verify that _recency_sort_key handles cases where 'guid' is explicitly
+    None / missing / a string in the item dict (tiebreak part is index 1).
     """
 
     monkeypatch.setenv("OUT_PATH", "docs/feed.xml")
@@ -40,6 +42,8 @@ def test_sort_key_handles_none_guid(monkeypatch: pytest.MonkeyPatch, tmp_path: P
     (tmp_path / "log").mkdir()
 
     build_feed = _import_build_feed(monkeypatch)
+    now_utc = datetime.now(UTC)
+    state: dict[str, dict[str, Any]] = {}
 
     # Create an item with explicitly None guid
     item_none_guid = {
@@ -62,34 +66,34 @@ def test_sort_key_handles_none_guid(monkeypatch: pytest.MonkeyPatch, tmp_path: P
     }
 
     # This should not raise TypeError
-    key1 = build_feed._sort_key(item_none_guid)
-    key2 = build_feed._sort_key(item_missing_guid)
-    key3 = build_feed._sort_key(item_str_guid)
+    key1 = build_feed._recency_sort_key(item_none_guid, state, now_utc)
+    key2 = build_feed._recency_sort_key(item_missing_guid, state, now_utc)
+    key3 = build_feed._recency_sort_key(item_str_guid, state, now_utc)
 
-    # Verify that the guid part of the key is a string
-    assert isinstance(key1[2], str)
-    assert len(key1[2]) > 0
+    # Verify that the tiebreak (guid) part of the key is a string
+    assert isinstance(key1[1], str)
+    assert len(key1[1]) > 0
 
-    assert isinstance(key2[2], str)
-    assert len(key2[2]) > 0
+    assert isinstance(key2[1], str)
+    assert len(key2[1]) > 0
 
-    assert isinstance(key3[2], str)
-    assert key3[2] == "some-guid"
+    assert isinstance(key3[1], str)
+    assert key3[1] == "some-guid"
 
 def test_deterministic_sorting_fallback(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
 
     build_feed = _import_build_feed(monkeypatch)
 
     now = datetime(2024, 1, 1, 12, 0, tzinfo=UTC)
-    # Identical pubDates, but no guids
+    state: dict[str, dict[str, Any]] = {}
+    # No state → identical first_seen (now); no guids → identity tiebreak.
     items = [
         {"title": "Item C", "pubDate": now},
         {"title": "Item A", "pubDate": now},
         {"title": "Item B", "pubDate": now},
     ]
 
-    # Generate keys using _sort_key
-    sorted_items = sorted(items, key=build_feed._sort_key)
+    sorted_items = sorted(items, key=lambda it: build_feed._recency_sort_key(it, state, now))
 
     # Ensure they don't error out, and order is deterministic.
     # The _sort_key will generate strings via _identity_for_item

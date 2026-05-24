@@ -2808,11 +2808,18 @@ def _drop_old_items(
     now: datetime,
     state: dict[str, dict[str, Any]],
 ) -> tuple[list[FeedItem], set[str]]:
-    """Entferne Items, die zu alt sind oder bereits beendet wurden.
+    """Entferne Items, die nicht mehr gültig oder zu lange im Feed sind.
 
-    Neben ``pubDate``/``starts_at`` wird – falls vorhanden – ``first_seen`` aus dem
-    geladenen State als Altersreferenz verwendet. Das betrifft Items ohne
-    Datumsangaben, die andernfalls ewig im Feed verbleiben würden.
+    Zwei Regeln:
+
+    1. **Ungültig → sofort raus:** ein ``ends_at`` in der Vergangenheit
+       (über die ``ENDS_AT_GRACE_MINUTES`` hinaus) bedeutet, die Störung ist
+       behoben → die Meldung macht sofort Platz.
+    2. **Alter → FIFO nach ``first_seen``:** das Alter zählt ab dem
+       Auftauchen im Feed (``first_seen`` aus dem State), NICHT ab dem
+       Quell-Startdatum. So fällt ein aktiver Langläufer nicht wegen eines
+       alten Startdatums heraus; ein noch nicht im State vermerktes Item ist
+       brandneu und wird hier nie ausgemustert.
     """
 
     out: list[FeedItem] = []
@@ -2830,25 +2837,17 @@ def _drop_old_items(
                 dropped.add(ident)
                 continue
 
-        dt = it.get("pubDate") or it.get("starts_at")
-        age_days: float | None = None
-        if isinstance(dt, datetime):
-            age_days = (now_utc - _to_utc(dt)).total_seconds() / 86400.0
-        elif isinstance(state_entry, dict):
-            raw_first_seen = state_entry.get("first_seen")
-            if raw_first_seen is not None:
-                try:
-                    first_seen_dt = datetime.fromisoformat(str(raw_first_seen))
-                except Exception:
-                    log.warning(
-                        "first_seen Parsefehler: %r – ignoriere für %s",
-                        raw_first_seen,
-                        ident,
-                    )
-                else:
-                    if first_seen_dt.tzinfo is None:
-                        first_seen_dt = first_seen_dt.replace(tzinfo=UTC)
-                    age_days = (now_utc - _to_utc(first_seen_dt)).total_seconds() / 86400.0
+        # Age out by how long the item has been in the feed (first_seen) —
+        # FIFO by appearance ("man kennt die Meldung schon"). The source
+        # start date is deliberately NOT used, so an active long-runner that
+        # only recently surfaced is not retired for an old upstream start;
+        # an item not yet in the state is brand-new and never aged out here.
+        first_seen_dt = _parse_first_seen(state_entry, None)
+        age_days: float | None = (
+            (now_utc - first_seen_dt).total_seconds() / 86400.0
+            if first_seen_dt is not None
+            else None
+        )
 
         if age_days is not None:
             if age_days > feed_config.ABSOLUTE_MAX_AGE_DAYS:
@@ -2924,6 +2923,28 @@ def _lookup_state(
         if legacy != key:
             entry = state.get(legacy)
     return key, entry
+
+
+def _parse_first_seen(
+    entry: dict[str, Any] | None, fallback: datetime | None
+) -> datetime | None:
+    """Return the UTC ``first_seen`` datetime from a state ``entry``.
+
+    Falls back to ``fallback`` when the entry is absent or its ``first_seen``
+    is missing/unparseable.
+    """
+    if not entry:
+        return fallback
+    raw = entry.get("first_seen")
+    if raw is None:
+        return fallback
+    try:
+        parsed = datetime.fromisoformat(str(raw))
+    except (ValueError, TypeError):
+        return fallback
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=UTC)
+    return _to_utc(parsed)
 
 
 def _summarize_duplicates(items: Sequence[FeedItem]) -> list[DuplicateSummary]:
@@ -3071,18 +3092,22 @@ def _dedupe_items(items: list[FeedItem]) -> list[FeedItem]:
             out.append(it)
     return out
 
-def _sort_key(item: FeedItem) -> tuple[int, float, str]:
-    pd = item.get("pubDate")
-    # Fix TypeError: Ensure guid is always a string, even if explicitly None
-    guid_val = item.get("guid")
-    if guid_val:
-        guid_str = str(guid_val)
-    else:
-        guid_str = _identity_for_item(item)
+def _recency_sort_key(
+    item: FeedItem, state: dict[str, dict[str, Any]], now_utc: datetime
+) -> tuple[float, str]:
+    """FIFO-by-``first_seen`` ordering for the feed: newest-appeared first.
 
-    if isinstance(pd, datetime):
-        return (0, -_to_utc(pd).timestamp(), guid_str)
-    return (1, 0.0, guid_str)
+    Sorts by the persisted (guid-stable) ``first_seen`` descending. An item
+    not yet in the state counts as just-appeared (``now``) so genuinely new
+    disruptions lead. No-longer-valid items are already removed upstream by
+    :func:`_drop_old_items`, so the visible Top-N are the newest still-valid
+    disruptions; older ones fall off the bottom as fresher ones arrive.
+    """
+    _, entry = _lookup_state(item, state)
+    first_seen = _parse_first_seen(entry, now_utc) or now_utc
+    guid_val = item.get("guid")
+    guid_str = str(guid_val) if guid_val else _identity_for_item(item)
+    return (-first_seen.timestamp(), guid_str)
 
 
 def _build_canonical_link(candidate: Any, ident: str) -> str:
@@ -4154,8 +4179,9 @@ def main() -> int:
             log.warning("Keine Items gesammelt.")
             items = []
         else:
-            log.debug("Sortiere %d Items nach Priorität.", len(items))
-        items.sort(key=_sort_key)
+            log.debug("Sortiere %d Items nach Priorität (first_seen, neueste zuerst).", len(items))
+        now_utc = _to_utc(now)
+        items.sort(key=lambda it: _recency_sort_key(it, state, now_utc))
 
         new_items_count = _count_new_items(items, state)
 

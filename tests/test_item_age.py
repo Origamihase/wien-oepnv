@@ -38,8 +38,13 @@ def test_main_filters_items_older_than_max(
     )
 
     now = datetime.now(UTC)
-    recent = {"title": "recent", "pubDate": now - timedelta(days=2) + timedelta(minutes=1)}
-    old = {"title": "old", "pubDate": now - timedelta(days=2) - timedelta(minutes=1)}
+    # Aging is now by first_seen (feed presence), not the source date.
+    recent = {"title": "recent", "guid": "G-recent"}
+    old = {"title": "old", "guid": "G-old"}
+    fake_state = {
+        "G-recent": {"first_seen": (now - timedelta(days=1)).isoformat()},
+        "G-old": {"first_seen": (now - timedelta(days=2, minutes=1)).isoformat()},
+    }
 
     def fake_collect(report: Any = None) -> list[dict[str, Any]]:
         return [recent, old]
@@ -61,6 +66,8 @@ def test_main_filters_items_older_than_max(
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
     monkeypatch.setattr(build_feed, "_make_rss", fake_make_rss)
+    monkeypatch.setattr(build_feed, "_load_state", lambda: dict(fake_state))
+    monkeypatch.setattr(build_feed, "_save_state", lambda *a, **k: None)
     monkeypatch.chdir(tmp_path)
     setattr(build_feed, "OUT_PATH", "docs/feed.xml")
 
@@ -79,13 +86,12 @@ def test_main_filters_items_older_than_absolute(
     )
 
     now = datetime.now(UTC)
-    within = {
-        "title": "within_abs",
-        "starts_at": now - timedelta(days=2) + timedelta(minutes=1),
-    }
-    too_old = {
-        "title": "too_old",
-        "starts_at": now - timedelta(days=2) - timedelta(minutes=1),
+    # ABSOLUTE_MAX_AGE_DAYS applies to first_seen regardless of ends_at.
+    within = {"title": "within_abs", "guid": "G-within"}
+    too_old = {"title": "too_old", "guid": "G-too-old"}
+    fake_state = {
+        "G-within": {"first_seen": (now - timedelta(days=2) + timedelta(minutes=1)).isoformat()},
+        "G-too-old": {"first_seen": (now - timedelta(days=2) - timedelta(minutes=1)).isoformat()},
     }
 
     def fake_collect(report: Any = None) -> list[dict[str, Any]]:
@@ -108,6 +114,8 @@ def test_main_filters_items_older_than_absolute(
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
     monkeypatch.setattr(build_feed, "_make_rss", fake_make_rss)
+    monkeypatch.setattr(build_feed, "_load_state", lambda: dict(fake_state))
+    monkeypatch.setattr(build_feed, "_save_state", lambda *a, **k: None)
     monkeypatch.chdir(tmp_path)
     setattr(build_feed, "OUT_PATH", "docs/feed.xml")
 

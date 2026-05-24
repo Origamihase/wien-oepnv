@@ -234,12 +234,19 @@ def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch: pytest.MonkeyPatch
             assert isinstance(value, datetime)
             assert value.tzinfo is not None
 
-    state: dict[str, dict[str, Any]] = {}
+    # first_seen now drives ordering: "new-guid" appeared later than
+    # "older-guid", so it sorts first. ("Veraltete" is dropped by its past
+    # ends_at regardless of state.)
+    state: dict[str, dict[str, Any]] = {
+        "new-guid": {"first_seen": "2024-01-02T08:00:00+00:00"},
+        "older-guid": {"first_seen": "2024-01-01T08:00:00+00:00"},
+    }
     filtered, _ = build_feed._drop_old_items(cache_items, now, state)
     assert {it["guid"] for it in filtered} == {"new-guid", "older-guid"}
 
     deduped = build_feed._dedupe_items(filtered)
-    deduped.sort(key=build_feed._sort_key)
+    now_utc = build_feed._to_utc(now)
+    deduped.sort(key=lambda it: build_feed._recency_sort_key(it, state, now_utc))
 
     assert [it["guid"] for it in deduped] == ["new-guid", "older-guid"]
 
