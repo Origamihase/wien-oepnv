@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Sicherheit: Stored-XSS im veröffentlichten `<content:encoded>`-Feld
+  geschlossen (2026-05-24)**: `_compose_description` (`src/build_feed.py`)
+  bettete den reinen Text aus `summary`/`time_line` un-escaped in den
+  RSS-`<content:encoded>`-CDATA-Body ein – das einzige Feed-Feld, das
+  Feed-Reader als HTML rendern. Da `html_to_text`
+  (`HTMLParser(convert_charrefs=True)`) entity-kodierte Spitzklammern
+  dekodiert, konnte eine kompromittierte/MITM-behaftete Upstream-Quelle
+  (`&lt;img onerror=…&gt;` bzw. die doppelt-escaped Form bei ÖBB-RSS) ein
+  ausführbares `<img onerror=…>`-Tag in jeden Abonnenten-Reader schleusen
+  (Stored XSS). Fix: kontextkorrektes HTML-Encoding der Text-Teile via
+  `html.escape(part, quote=False)` am gemeinsamen DE/EN-Chokepoint; nur das
+  vom Builder selbst erzeugte `<br/>` bleibt aktiv. CDATA-als-Text-Senken
+  (`<title>`) bleiben bewusst un-escaped (CDATA dekodiert keine Entities).
+  Abgedeckt durch `tests/test_content_encoded_html_injection.py`
+  (Reader-genaue `HTMLParser`-PoC, scheitert vor dem Fix). Die Zeilennummern
+  der `allow_nan`-Writer-Walker-Allowlist (`_identity_for_item`) wurden an den
+  durch den neuen `import html` verschobenen Block angepasst (2359/2368 →
+  2360/2369).
 * **SEO/GEO: `llms.txt`-Generator, Sitemap-Batching & JSON-LD-Sentinel
   (2026-05-24)**:
   * `scripts/generate_llms_txt.py` (neu) erzeugt `docs/llms.txt` nach dem
