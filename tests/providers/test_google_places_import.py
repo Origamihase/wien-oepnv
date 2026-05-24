@@ -96,6 +96,44 @@ def test_merge_matches_by_distance() -> None:
     assert updated.get("_google_place_id") == "alt-id"
 
 
+def test_merge_distance_match_picks_nearest_not_first() -> None:
+    """A place that matches no station by name must bind to the *nearest*
+    station within ``max_distance_m`` — not the first one in iteration order.
+
+    Both stations below are inside the 150 m radius (Alpha ~124 m, Beta
+    ~5 m), so the legacy first-match behaviour would have attached the
+    place to Alpha and overwritten its coordinates.
+    """
+    existing: list[StationEntry] = [
+        {
+            "name": "Alpha Stop",
+            "source": "oebb",
+            "aliases": [],
+            "latitude": 48.2061,
+            "longitude": 16.3840,
+            "in_vienna": True,
+        },
+        {
+            "name": "Beta Stop",
+            "source": "oebb",
+            "aliases": [],
+            "latitude": 48.20697,
+            "longitude": 16.38495,
+            "in_vienna": True,
+        },
+    ]
+    places = [make_place("nearest-id", "Gamma Punkt", lat=48.2070, lng=16.3850)]
+    config = MergeConfig(max_distance_m=150.0, bounding_box=None)
+    outcome = merge_places(existing, places, config)
+
+    assert len(outcome.new_entries) == 0
+    assert len(outcome.updated_entries) == 1
+    alpha = next(s for s in outcome.stations if s["name"] == "Alpha Stop")
+    beta = next(s for s in outcome.stations if s["name"] == "Beta Stop")
+    assert beta.get("_google_place_id") == "nearest-id"
+    assert alpha.get("_google_place_id") is None
+
+
 def test_merge_infers_in_vienna_from_address_and_bounds() -> None:
     existing: list[StationEntry] = []
     places = [

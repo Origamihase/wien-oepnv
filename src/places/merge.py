@@ -256,13 +256,26 @@ def _find_matching_station(
         if isinstance(name, str) and normalize_name(name) == norm:
             return station, True
 
+    # Distance fallback: bind the place to the *nearest* station within
+    # ``max_distance_m`` rather than the first one encountered. In dense
+    # areas several stops can sit within the radius (e.g. a U-Bahn access
+    # and an adjacent tram stop); returning the first in iteration order
+    # could attach the place to the wrong station and overwrite its
+    # coordinates. Mirrors ``stations.nearest_rail_station``. Ties keep the
+    # earlier station (strict ``<``).
+    best: StationEntry | None = None
+    best_distance = float("inf")
     for station in stations:
         lat = station.get("latitude")
         lng = station.get("longitude")
-        if isinstance(lat, float | int) and isinstance(lng, float | int):
-            distance = haversine_m(float(lat), float(lng), place.latitude, place.longitude)
-            if distance <= max_distance_m:
-                return station, False
+        if not (isinstance(lat, float | int) and isinstance(lng, float | int)):
+            continue
+        distance = haversine_m(float(lat), float(lng), place.latitude, place.longitude)
+        if distance <= max_distance_m and distance < best_distance:
+            best = station
+            best_distance = distance
+    if best is not None:
+        return best, False
     return None
 
 
