@@ -549,6 +549,22 @@ def _load_gtfs_locations(path: Path) -> dict[str, LocationInfo]:
     return locations
 
 
+_WL_DIVA_KEY_PREFIX = "diva:"
+
+
+def _wl_diva_key(diva: str) -> str:
+    """Return the namespaced location-index key for a WL DIVA identifier.
+
+    ``_normalize_location_keys`` strips ``:`` (and casefolds), so a DIVA
+    key can never collide with a name-derived key — letting callers that
+    hold a station's ``wl_diva`` resolve coordinates by the authoritative
+    identifier instead of the lossy ``Wien <name> (WL)`` <-> ``<name>``
+    name match.
+    """
+
+    return f"{_WL_DIVA_KEY_PREFIX}{diva}"
+
+
 def _load_wienerlinien_locations(path: Path) -> dict[str, LocationInfo]:
     locations: dict[str, LocationInfo] = {}
     if not path.exists():
@@ -571,12 +587,25 @@ def _load_wienerlinien_locations(path: Path) -> dict[str, LocationInfo]:
     try:
         reader = csv.DictReader(io.StringIO(content), delimiter=";")
         for row in reader:
-            name = row.get("NAME")
+            # The Wiener Linien OGD CSV schema migrated (PR #1442): the
+            # legacy data.wien.gv.at proxy export keyed on NAME /
+            # WGS84_LAT / WGS84_LON; the canonical wienerlinien.at
+            # OGD-Echtzeit export that replaced it renames those to
+            # StopText / Latitude / Longitude and exposes the DIVA. Read
+            # the new names first and fall back to the legacy ones so the
+            # loader survives either upstream shape (mirrors the fuzzy-key
+            # resilience in scripts/update_wl_stations.py).
+            name = row.get("StopText") or row.get("NAME")
             if name:
                 name = _harmonize_station_name(name)
-            lat = _coerce_float_value(row.get("WGS84_LAT"))
-            lon = _coerce_float_value(row.get("WGS84_LON"))
-            if not name or lat is None or lon is None:
+            lat = _coerce_float_value(row.get("Latitude") or row.get("WGS84_LAT"))
+            lon = _coerce_float_value(row.get("Longitude") or row.get("WGS84_LON"))
+            if lat is None or lon is None:
+                continue
+            diva = (row.get("DIVA") or "").strip()
+            if diva:
+                _store_location(locations, _wl_diva_key(diva), lat, lon, source="wl")
+            if not name:
                 continue
             for key in _normalize_location_keys(name):
                 if not key:
@@ -1167,8 +1196,8 @@ def _enrich_manual_stations(
     Resolution order — same fail-cheap-first rationale as ``_enrich_with_osm``
     / ``_enrich_with_hafas`` / ``_enrich_with_google_places``:
 
-      1. **Local index** (``location_index`` = GTFS + VOR coords, free,
-         in-memory). Already built earlier in ``main()`` for the ÖBB
+      1. **Local index** (``location_index`` = GTFS + WL + VOR coords,
+         free, in-memory). Already built earlier in ``main()`` for the ÖBB
          flag-annotation pass; we just re-use it.
       2. **HAFAS LocMatch** (ÖBB Scotty, free, no monthly quota; the same
          tier that ``_enrich_with_hafas`` taps for ÖBB stations). Handles
@@ -1201,12 +1230,18 @@ def _enrich_manual_stations(
             continue
         name = name_raw.strip()
 
-        # 1. Local index (GTFS + VOR coords already loaded by _build_location_index)
+        # 1. Local index. Try the authoritative WL DIVA first (exact key,
+        #    immune to the "Wien <name> (WL)" vs "<name>" mismatch), then
+        #    fall back to the normalized name keys.
         info: LocationInfo | None = None
-        for key in _normalize_location_keys(name):
-            info = location_index.get(key)
-            if info:
-                break
+        wl_diva = entry.get("wl_diva")
+        if isinstance(wl_diva, str) and wl_diva.strip():
+            info = location_index.get(_wl_diva_key(wl_diva.strip()))
+        if info is None:
+            for key in _normalize_location_keys(name):
+                info = location_index.get(key)
+                if info:
+                    break
         if info is not None:
             entry["latitude"] = info.latitude
             entry["longitude"] = info.longitude
@@ -2547,7 +2582,7 @@ def main() -> None:
     # Enrich the manual block (manual_distant_at / manual_foreign_city —
     # the Ostregion Liniennetz stations from PR #1557) that bypassed the
     # ÖBB filter and therefore the ÖBB-side enrichment chain. Re-uses
-    # the location_index built earlier (free GTFS/VOR lookup) and falls
+    # the location_index built earlier (free GTFS/WL/VOR lookup) and falls
     # back to the unmetered HAFAS LocMatch tier — exactly the same
     # cheap-first strategy the ÖBB pipeline already runs.
     #

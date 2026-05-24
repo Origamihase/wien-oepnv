@@ -164,3 +164,46 @@ def test_skips_entry_with_blank_name(monkeypatch: pytest.MonkeyPatch) -> None:
 
     assert usd._enrich_manual_stations([entry], {}) == 0
     assert "latitude" not in entry
+
+
+def test_local_index_resolves_via_wl_diva_before_name(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A WL station whose display name (``Wien Herrengasse (WL)``) cannot
+    match the bare WL stop name resolves via its authoritative ``wl_diva``
+    key — never touching the metered HAFAS/Google tiers."""
+    entry = _manual("Wien Herrengasse (WL)", wl_diva="60200506")
+    # Only the DIVA key carries the coordinate; the normalized name keys
+    # ("wien herrengasse", ...) are deliberately ABSENT from the index.
+    location_index = {usd._wl_diva_key("60200506"): _location(48.2095, 16.3658, source="wl")}
+
+    def _explode_if_called(_name: str) -> object:
+        raise AssertionError("HAFAS must not be called when the WL DIVA resolves")
+
+    monkeypatch.setattr(usd, "enrich_station_with_hafas", _explode_if_called)
+    enriched = usd._enrich_manual_stations([entry], location_index)
+
+    assert enriched == 1
+    assert entry["latitude"] == 48.2095
+    assert entry["longitude"] == 16.3658
+    # Source merge: 'manual' (existing) + 'wl' (DIVA-index source), comma-sorted.
+    assert entry["source"] == "manual,wl"
+
+
+def test_falls_back_to_name_when_wl_diva_not_indexed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A ``wl_diva`` that is absent from the index must not short-circuit
+    resolution — the normalized name keys remain the fallback."""
+    entry = _manual("Wolkersdorf", wl_diva="99999999")  # DIVA not in index
+    location_index = {"wolkersdorf": _location(48.3784, 16.5127, source="wl")}
+
+    def _explode_if_called(_name: str) -> object:
+        raise AssertionError("HAFAS must not be called when the name index hits")
+
+    monkeypatch.setattr(usd, "enrich_station_with_hafas", _explode_if_called)
+    enriched = usd._enrich_manual_stations([entry], location_index)
+
+    assert enriched == 1
+    assert entry["latitude"] == 48.3784
+    assert entry["longitude"] == 16.5127
