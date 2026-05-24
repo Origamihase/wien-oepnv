@@ -319,8 +319,9 @@ for event in wl_events:
 
 ### Datenformat der Ereignisse
 
-Unabhängig vom Provider folgen alle Ereignisse derselben Struktur, die auch im Feed verwendet wird. Die wichtigsten Felder im
-JSON-Cache (Strings im ISO-8601-Format) bzw. bei direkter Python-Nutzung (Python-`datetime`-Objekte) sind:
+Unabhängig vom Provider folgen alle Ereignisse derselben Struktur, die auch im Feed verwendet wird. Die Zeitfelder liegen
+im JSON-Cache als ISO-8601-Strings (bzw. bei direkter Python-Nutzung als `datetime`-Objekte) vor und dürfen `null` sein.
+Die wichtigsten Felder sind:
 
 | Feld        | Beschreibung                                                                                  |
 | ----------- | --------------------------------------------------------------------------------------------- |
@@ -330,16 +331,19 @@ JSON-Cache (Strings im ISO-8601-Format) bzw. bei direkter Python-Nutzung (Python
 | `description` | Ausführliche Beschreibung inkl. Zusatzinfos wie Umleitungen, betroffene Haltestellen usw.     |
 | `link`      | Referenz-URL zur Originalmeldung oder weiterführenden Infos.                                   |
 | `guid`      | Stabile eindeutige Kennung, geeignet als Primärschlüssel.                                      |
-| `pubDate`   | Veröffentlichungszeitpunkt der Meldung.                                                        |
-| `starts_at` | Technischer Startzeitpunkt des Ereignisses (häufig identisch mit `pubDate`).                    |
+| `pubDate`   | Veröffentlichungszeitpunkt der Meldung; `null`, wenn die Quelle keinen parsebaren Zeitstempel liefert (z. B. WL-Items ohne Zeitfeld). |
+| `starts_at` | Technischer Startzeitpunkt der Maßnahme (häufig identisch mit `pubDate`); `null`, wenn nicht ermittelbar.                    |
 | `ends_at`   | Optionales Ende der Maßnahme; `null`, wenn unbekannt oder bereits vergangen.                   |
+| `first_seen` | Zeitpunkt, an dem die Meldung erstmals im Feed erschien (projektintern via `data/first_seen.json` gepflegt).                |
 | `_identity` | Projektinterner Schlüssel zur Nachverfolgung des „first seen“-Zeitpunkts (optional vorhanden). |
 
 Eine formale Beschreibung steht als [JSON-Schema](schema/events.schema.json)
-bereit und eignet sich für Validierungen in Drittprojekten. Alle Felder sind als
-Unicode-Strings hinterlegt, zusätzliche provider-spezifische Hilfsfelder werden
-vor dem JSON-Export entfernt, sodass die Datensätze stabil und schema-konform
-bleiben.
+bereit und eignet sich für Validierungen in Drittprojekten. Pflichtfelder
+sind `source`, `category`, `title`, `description`, `link`, `guid`, `pubDate`
+und `starts_at`; die Zeitfelder `pubDate`, `starts_at` und `ends_at` dürfen
+`null` sein. Alle übrigen Werte sind Unicode-Strings; zusätzliche
+provider-spezifische Hilfsfelder werden vor dem JSON-Export entfernt, sodass
+die Datensätze stabil und schema-konform bleiben.
 
 ## Stationsverzeichnis
 
