@@ -699,3 +699,40 @@ def test_epoch_not_stamped_when_pipeline_fails(
         state[ident]["translations"].get("epoch", 0)
         < build_feed._TRANSLATION_CACHE_EPOCH
     )
+
+
+def test_metadata_glossary_translates_ggue_to_opp(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The Baustellen addressing abbreviation ``ggü.`` (gegenüber) must
+    surface as ``opp.`` (opposite) in the EN feed, while the street
+    name (``Simonygasse``) and the house number (``2B``) are preserved
+    verbatim by the entity masker."""
+    def pass_through(text: str, **kwargs: Any) -> list[dict[str, str]]:
+        return [{"translation_text": text}]
+
+    monkeypatch.setattr(
+        build_feed, "_get_translation_pipeline", lambda: pass_through
+    )
+    item = cast(
+        FeedItem,
+        {
+            "title": "Simonygasse ggü. 2B",
+            "description": "",
+            "source": "Stadt Wien – Baustellen",
+            "category": "Baustelle",
+            "guid": "bau-ggue-1",
+            "link": "",
+        },
+    )
+    state: dict[str, dict[str, Any]] = {}
+    out = build_feed._format_item_content(
+        item,
+        ident="bau-ggue-1",
+        starts_at=datetime(2026, 4, 26, 2, 0, tzinfo=UTC),
+        ends_at=None,
+        lang="en",
+        state=state,
+    )
+    assert out.title_out == "Simonygasse opp. 2B"
+    assert "ggü" not in out.title_out
