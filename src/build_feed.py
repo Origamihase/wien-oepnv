@@ -2822,8 +2822,14 @@ def _drop_old_items(
         if not isinstance(it, dict):
             continue  # type: ignore[unreachable]
 
-        ident = _identity_for_item(it)
+        ident = _state_key_for_item(it)
         state_entry = state.get(ident) if isinstance(state, dict) else None
+        if state_entry is None and isinstance(state, dict):
+            # Migration: recover first_seen from a legacy identity-keyed
+            # entry written before the switch to guid-stable state keys.
+            legacy = _identity_for_item(it)
+            if legacy != ident:
+                state_entry = state.get(legacy)
 
         ends_at = it.get("ends_at")
         if isinstance(ends_at, datetime):
@@ -2891,6 +2897,21 @@ def _dedupe_key_for_item(
             key,
         )
     return key, True
+
+
+def _state_key_for_item(it: FeedItem) -> str:
+    """Return the persistent ``first_seen`` state key for ``it``.
+
+    Prefers the provider ``guid`` — stable across upstream title/description
+    edits and the read-side title enrichment — so an item's ``first_seen``
+    (and the age-based retirement that relies on it) survives those changes.
+    Falls back to the content identity when no guid is present, so EVERY
+    item, provider-independently, still gets a first_seen entry.
+    """
+    guid = it.get("guid")
+    if guid:
+        return str(guid)
+    return _identity_for_item(it)
 
 
 def _summarize_duplicates(items: Sequence[FeedItem]) -> list[DuplicateSummary]:
@@ -3183,11 +3204,13 @@ class FormattedContent(NamedTuple):
 
 
 def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, Any]]) -> tuple[str, datetime]:
-    ident = _identity_for_item(it)
+    ident = _state_key_for_item(it)
     st = state.get(ident)
-    # Fallback: check guid as secondary key
-    if not st and it.get("guid") and it["guid"] != ident:
-        st = state.get(str(it["guid"]))
+    if not st:
+        # Migration: recover first_seen from a legacy identity-keyed entry.
+        legacy = _identity_for_item(it)
+        if legacy != ident:
+            st = state.get(legacy)
     is_strictly_new = not st
     if not st:
         st = {"first_seen": _to_utc(now).isoformat()}
