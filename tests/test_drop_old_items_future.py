@@ -34,18 +34,19 @@ def test_future_ends_at_skips_max_age(monkeypatch: pytest.MonkeyPatch) -> None:
         {"MAX_ITEM_AGE_DAYS": "365", "ABSOLUTE_MAX_AGE_DAYS": "540"},
     )
     now = datetime.now(UTC)
-    future = {
-        "title": "future",
-        "pubDate": now - timedelta(days=400),
-        "ends_at": now + timedelta(days=1),
+    # Aging is by first_seen (feed presence), so it is driven by state.
+    future = {"title": "future", "guid": "G-future", "ends_at": now + timedelta(days=1)}
+    no_end = {"title": "no_end", "guid": "G-no-end"}
+    too_old = {"title": "too_old", "guid": "G-too-old", "ends_at": now + timedelta(days=1)}
+    state = {
+        # 400 d in the feed: past MAX (365) but a future ends_at skips the MAX drop.
+        "G-future": {"first_seen": (now - timedelta(days=400)).isoformat()},
+        # 400 d in the feed, no ends_at → dropped by MAX.
+        "G-no-end": {"first_seen": (now - timedelta(days=400)).isoformat()},
+        # 541 d in the feed → ABSOLUTE drop regardless of ends_at.
+        "G-too-old": {"first_seen": (now - timedelta(days=541)).isoformat()},
     }
-    no_end = {"title": "no_end", "pubDate": now - timedelta(days=400)}
-    too_old = {
-        "title": "too_old",
-        "pubDate": now - timedelta(days=541),
-        "ends_at": now + timedelta(days=1),
-    }
-    res, _ = build_feed._drop_old_items([future, no_end, too_old], now, {})
+    res, _ = build_feed._drop_old_items([future, no_end, too_old], now, state)
     assert res == [future]
 
 
