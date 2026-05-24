@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 24 May 2026 18:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 18:30:41 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40: service obstruction False Parker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
+      <pubDate>Sun, 24 May 2026 18:05:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 18:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 18:17:51 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 24.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[57A: service obstruction for rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2ac5fae7e3f48a67607975b18dba585c5ef50bbf2cc22863a26b7cf93ff0890</guid>
+      <pubDate>Sun, 24 May 2026 18:13:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 18:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 18:15:13 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 24.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 24.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[41: service obstruction False Parker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa</guid>
+      <pubDate>Sun, 24 May 2026 18:05:00 +0200</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 18:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 24 May 2026 18:16:08 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 24.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[26A: service obstruction for police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +52,6 @@
       <ext:ends_at>Sun, 24 May 2026 18:35:00 +0200</ext:ends_at>
       <description>[On 24.05.2026]</description>
       <content:encoded><![CDATA[[On 24.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
-      <pubDate>Sun, 24 May 2026 17:22:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 17:30:43 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 24 May 2026 17:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 24 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 24.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Aumannplatz 1 to Gentzgasse and Türkenschanzstraße]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 31 Aug 2026 02:00:00 +0200</ext:ends_at>
       <description>The general renovation of the U6 route is carried out in the actual area when the passage is blocked (at the level of 9, Pulverturmgasse or 18, Sternwartestraße) between the inner and … [28.03.2026 – 31.08.2026]</description>
       <content:encoded><![CDATA[The general renovation of the U6 route is carried out in the actual area when the passage is blocked (at the level of 9, Pulverturmgasse or 18, Sternwartestraße) between the inner and …<br/>[28.03.2026 – 31.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Brünner Straße 59]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">ec4d867a94cd18a87df8957056f606be097603f44de75d9ee660753fb4ceba45</guid>
-      <pubDate>Sun, 17 May 2026 02:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 15:11:37 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 17 May 2026 02:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 14 Aug 2026 02:00:00 +0200</ext:ends_at>
-      <description>The installation of a district heating line is carried out during the night from 20:00 to 05:00 with the release of a correspondingly wide residual runway of at least … [17.05.2026 – 14.08.2026]</description>
-      <content:encoded><![CDATA[The installation of a district heating line is carried out during the night from 20:00 to 05:00 with the release of a correspondingly wide residual runway of at least …<br/>[17.05.2026 – 14.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Favoritenstraße from crossing Landgutgasse to crossing Keplerplatz and Keplergasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">efb9d1010340b08652023c32c60dcfbcd9ef734d3067b5fef422990194e7afb3</guid>
-      <pubDate>Sun, 19 Apr 2026 02:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 15:11:37 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Apr 2026 02:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 15 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>The repair and redesign work in the Favoritenstraße pedestrian zone will be carried out following the ongoing sealing work of Wiener Linien GmbH &amp; Co KG at … [Since 19.04.2026]</description>
-      <content:encoded><![CDATA[The repair and redesign work in the Favoritenstraße pedestrian zone will be carried out following the ongoing sealing work of Wiener Linien GmbH &amp; Co KG at …<br/>[Since 19.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
