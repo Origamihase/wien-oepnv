@@ -608,7 +608,7 @@ def _dedupe_exact_duplicates(
     removed = 0
     for entry in stations:
         fingerprint = json.dumps(
-            dict(entry), sort_keys=True, ensure_ascii=True, default=str
+            dict(entry), sort_keys=True, ensure_ascii=True, allow_nan=False, default=str
         )
         if fingerprint in seen:
             removed += 1
