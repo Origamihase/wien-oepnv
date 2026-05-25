@@ -131,6 +131,25 @@ def _normalize_token(value: str) -> str:
     return text.strip()
 
 
+def _name_owns_alias(name: str, alias_token: str) -> bool:
+    """Return True when *name* designates the station the alias is named after.
+
+    The eponymous station — the one literally called *alias_token* — should
+    win that alias over a neighbour that merely carries it as a cross-reference.
+    Comparing only ``_normalize_token(name)`` missed this because the stored
+    name keeps the ``Wien`` city qualifier and a ``(WL)`` / ``(VOR)`` provider
+    suffix (``"Wien Taborstraße (WL)"`` → ``"wien taborstrasse wl"``), which
+    never equals the bare ``"taborstrasse"`` key. The bare form is compared too.
+    """
+    if not alias_token:
+        return False
+    if _normalize_token(name) == alias_token:
+        return True
+    bare = re.sub(r"\s*\([^)]*\)\s*", " ", name)
+    bare = re.sub(r"^\s*[Ww]ien\s+", "", bare)
+    return _normalize_token(bare) == alias_token
+
+
 def _source_token_set(value: object) -> frozenset[str]:
     """Return the canonical set of provider source tokens for a station entry.
 
@@ -738,13 +757,20 @@ def _station_lookup() -> dict[str, StationInfo]:
             record_is_wl = record_tokens == frozenset({"wl"})
 
             alias_token = _normalize_token(alias_text)
-            record_token = _normalize_token(alias_record.name)
-            existing_token = _normalize_token(existing_record.name)
 
-            if alias_token and alias_token == record_token and alias_token != existing_token:
+            # Eponymous-name precedence: the station the alias is named after
+            # wins it over a neighbour that merely cross-references the name.
+            # ``_name_owns_alias`` also matches the bare name (``Wien`` prefix /
+            # ``(WL)`` suffix stripped), so "Wien Taborstraße (WL)" claims
+            # "taborstrasse" instead of the earlier-registered "Heinestraße"
+            # (and "Wien Kagran" instead of "Betriebshof Kagran").
+            record_named = _name_owns_alias(alias_record.name, alias_token)
+            existing_named = _name_owns_alias(existing_record.name, alias_token)
+
+            if record_named and not existing_named:
                 mapping[key] = (alias_record, strength)
                 continue
-            if alias_token and alias_token == existing_token and alias_token != record_token:
+            if existing_named and not record_named:
                 continue
 
             if existing_record.vor_id and alias_record.vor_id and existing_record.vor_id == alias_record.vor_id:
