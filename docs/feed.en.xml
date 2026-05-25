@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 25 May 2026 19:01:06 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 19:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[39A: defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">71618ae62b9ab93dc5f1a08adb28c6d4811eab44ce507f1cdcc6c028681640f7</guid>
-      <pubDate>Mon, 25 May 2026 18:44:00 +0200</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 19:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 18:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 25.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 25.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[38: defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 31 Jul 2026 02:00:00 +0200</ext:ends_at>
       <description>The repair work and necessary conversion work on the Stadionbrücke due to the extension of the 18 tram line will be carried out in several phases of construction. [Since 03.02.2025]</description>
       <content:encoded><![CDATA[The repair work and necessary conversion work on the Stadionbrücke due to the extension of the 18 tram line will be carried out in several phases of construction.<br/>[Since 03.02.2025]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Matzleinsdorfer Platz 3-4 to 5]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">5a83a68f71eafce5842edcd92ffa48382941d54f7c9c190b08626b372c1ac89e</guid>
+      <pubDate>Sun, 27 Mar 2022 01:00:00 +0100</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 12:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 27 Mar 2022 01:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 31 Dec 2028 01:00:00 +0100</ext:ends_at>
+      <description>In the course of the underground construction is since 28. March 2022, 09:00 o'clock the right turn lane towards 5. District on the departure ramp of the Margaret belt coming from Hauptbahnhof to … [Since 27.03.2022]</description>
+      <content:encoded><![CDATA[In the course of the underground construction is since 28. March 2022, 09:00 o'clock the right turn lane towards 5. District on the departure ramp of the Margaret belt coming from Hauptbahnhof to …<br/>[Since 27.03.2022]]]></content:encoded>
     </item>
   </channel>
 </rss>
