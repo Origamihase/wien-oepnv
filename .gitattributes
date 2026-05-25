@@ -1,0 +1,10 @@
+# Append-only, year-partitioned statistics ledgers. ``src/utils/stats.py``
+# only ever appends rows (file mode "a", stable header written once on
+# creation), so a 3-way merge during a concurrent-push rebase / autostash
+# re-apply must KEEP BOTH sides' appended rows. Git's built-in ``union``
+# driver concatenates the divergent tails — the correct, lossless semantics
+# for an append-only ledger; picking one side would silently drop logged
+# disruptions / cancellations / delays. Without this a conflict on these
+# files left an unmerged index that crashed the downstream auto-commit (see
+# the reconcile step in ``.github/workflows/update-cycle.yml``).
+data/stats/*.csv merge=union
