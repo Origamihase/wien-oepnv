@@ -138,7 +138,39 @@ jobs:
         # the push (rather than overwriting) and the run is retried
         # by the next docs/** push that triggers seo-guard.
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        run: git pull --rebase --autostash
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # ``git pull --rebase --autostash`` does NOT fail when the autostash
+          # RE-APPLY conflicts (the rebase succeeds, the failed stash apply is
+          # only a warning, the step exits 0) — it would hand an UNMERGED
+          # index to the auto-commit step, which dies with "you need to
+          # resolve your current index first" (the failure fixed for the feed
+          # workflows on 2026-05-25). This job only ever modifies
+          # docs/sitemap.xml + docs/llms.txt — both fully regenerated above —
+          # so on a conflict the locally built copy is authoritative and the
+          # conflict set stays within the file_pattern committed below.
+          git pull --rebase --autostash
+
+          mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
+          if [ "${#conflicts[@]}" -gt 0 ]; then
+            echo "::warning title=reconcile::autostash re-apply conflicted on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"
+            # In a stash-apply conflict, stage 3 ("--theirs") is the stashed
+            # locally-built version; stage 2 is the just-pulled upstream.
+            git checkout --theirs -- "${conflicts[@]}"
+            git add -- "${conflicts[@]}"
+            # A conflicted ``git stash apply`` leaves the autostash entry on
+            # the stash stack; drop it so it cannot leak into a later run.
+            git stash drop || true
+          fi
+
+          # Never hand an unmerged index to the auto-commit step.
+          if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+            echo "::error title=reconcile::unresolved merge conflicts remain after reconcile" >&2
+            git diff --name-only --diff-filter=U >&2
+            exit 1
+          fi
 
       - name: Commit sitemap changes
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
