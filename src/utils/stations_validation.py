@@ -892,14 +892,19 @@ def _find_identity_field_conflicts(
 ) -> Iterator[IdentityFieldConflict]:
     """Yield one issue per value that appears on more than one station.
 
-    Checks each of the four structural identifier fields
-    (``wl_diva`` / ``vor_id`` / ``bst_id`` / ``bst_code``). The
-    project's eindeutigkeits-Garantie pins these as primary keys; any
+    Checks each of the five structural identifier fields
+    (``wl_diva`` / ``vor_id`` / ``bst_id`` / ``bst_code`` / ``eva_nr``).
+    The project's eindeutigkeits-Garantie pins these as primary keys; any
     duplicate means two stations claim the same physical asset (post
     PR #1538 a ``google_places`` stub and a ``source: wl`` master
     shared the same DIVA for ten Innenstadt-U-Bahn stops because the
     WL merge step indexed by name and ``_normalize_key`` rendered
     ``Herrengasse`` and ``Wien Herrengasse (WL)`` as distinct keys).
+    ``eva_nr`` (the UIC station number) was added after an
+    ``oebb_geonetz`` Betriebsstelle record (``Handelskai``, bst_code
+    ``Nw  H2``) duplicated the canonical ``Wien Handelskai`` Verkehrs-
+    station — same ``eva_nr`` 8101934 — and slipped past the other four
+    keys because their ``bst_code`` / ``bst_id`` differ.
 
     Whitespace-stripped + lower-cased ``int`` / ``str`` values are
     compared; ``None`` and empty strings are ignored.  Distinct from
@@ -907,7 +912,7 @@ def _find_identity_field_conflicts(
     *alias* on one station shadows an *identity* field on a different
     station — this function fires on raw identity collisions.
     """
-    for field in ("wl_diva", "vor_id", "bst_id", "bst_code"):
+    for field in ("wl_diva", "vor_id", "bst_id", "bst_code", "eva_nr"):
         seen: dict[str, list[Mapping[str, object]]] = defaultdict(list)
         for entry in stations:
             val = entry.get(field)
