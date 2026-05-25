@@ -181,6 +181,40 @@ def test_to_item_always_emits_required_starts_at_key() -> None:
     assert "ends_at" not in item
 
 
+def _bau_feature(*, name: str = "Brünner Straße 59", objectid: int = 1) -> dict[str, Any]:
+    return {
+        "properties": {
+            "BEZEICHNUNG": name,
+            "OBJEKT_BEGINN": "2026-05-17Z",
+            "OBJEKT_ENDE": "2026-08-14Z",
+            "OBJECTID": objectid,
+        },
+        "geometry": {},
+    }
+
+
+def test_guid_stable_across_objectid_churn() -> None:
+    """The Baustellen GUID must NOT depend on the volatile ArcGIS OBJECTID.
+
+    The upstream WFS re-assigns OBJECTID on re-indexing; if the GUID changed
+    with it, first_seen would reset every churn and the site would perpetually
+    dominate the first_seen-sorted feed. Same title + start + end must yield
+    one guid regardless of OBJECTID.
+    """
+    ev1 = update_baustellen_cache._feature_to_event(_bau_feature(objectid=111))
+    ev2 = update_baustellen_cache._feature_to_event(_bau_feature(objectid=999))
+    assert ev1 is not None and ev2 is not None
+    assert ev1.guid == ev2.guid
+
+
+def test_guid_differs_for_distinct_sites() -> None:
+    """Distinct sites (different title) still get distinct guids."""
+    ev1 = update_baustellen_cache._feature_to_event(_bau_feature(name="Brünner Straße 59"))
+    ev2 = update_baustellen_cache._feature_to_event(_bau_feature(name="Gentzgasse 1"))
+    assert ev1 is not None and ev2 is not None
+    assert ev1.guid != ev2.guid
+
+
 def test_collect_events_from_sample_payload() -> None:
     payload = json.loads(SAMPLE_PATH.read_text(encoding="utf-8"))
     events = update_baustellen_cache._collect_events(payload)
