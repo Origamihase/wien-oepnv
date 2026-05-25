@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 25 May 2026 18:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 19:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[12A: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <title><![CDATA[39A: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7</guid>
-      <pubDate>Mon, 25 May 2026 17:32:32 +0200</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 18:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 17:32:39 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 18:32:00 +0200</ext:ends_at>
-      <description>[Am 25.05.2026]</description>
-      <content:encoded><![CDATA[[Am 25.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">71618ae62b9ab93dc5f1a08adb28c6d4811eab44ce507f1cdcc6c028681640f7</guid>
+      <pubDate>Mon, 25 May 2026 18:44:00 +0200</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 19:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 25 May 2026 18:44:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c16184b68509899faf02a65c374d8c059400404774e2da3970444c5b92e08600</guid>
+      <pubDate>Mon, 25 May 2026 18:44:00 +0200</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 19:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 25 May 2026 18:44:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2/U5: Siebenbrunnengasse von Kreuzung Siebenbrunnenplatz und Reinprechtsdorfer Straße bis 44]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 31 Jul 2026 02:00:00 +0200</ext:ends_at>
       <description>Die Instandsetzungsarbeiten und erforderlichen Umbauarbeiten an der Stadionbrücke aufgrund der Verlängerung der Straßenbahnlinie 18 werden in mehreren Bauphasen durchgeführt. [Seit 03.02.2025]</description>
       <content:encoded><![CDATA[Die Instandsetzungsarbeiten und erforderlichen Umbauarbeiten an der Stadionbrücke aufgrund der Verlängerung der Straßenbahnlinie 18 werden in mehreren Bauphasen durchgeführt.<br/>[Seit 03.02.2025]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Matzleinsdorfer Platz 3-4 bis 5]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">5a83a68f71eafce5842edcd92ffa48382941d54f7c9c190b08626b372c1ac89e</guid>
-      <pubDate>Sun, 27 Mar 2022 01:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 12:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 27 Mar 2022 01:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 31 Dec 2028 01:00:00 +0100</ext:ends_at>
-      <description>Im Zuge des U-Bahnbaus ist seit 28. März 2022, 09:00 Uhr die Rechtsabbiegespur in Richtung 5. Bezirk auf der Abfahrtsrampe des Margaretengürtels vom Hauptbahnhof kommend zum … [Seit 27.03.2022]</description>
-      <content:encoded><![CDATA[Im Zuge des U-Bahnbaus ist seit 28. März 2022, 09:00 Uhr die Rechtsabbiegespur in Richtung 5. Bezirk auf der Abfahrtsrampe des Margaretengürtels vom Hauptbahnhof kommend zum …<br/>[Seit 27.03.2022]]]></content:encoded>
     </item>
   </channel>
 </rss>
