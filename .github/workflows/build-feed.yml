@@ -29,11 +29,22 @@ on:
 permissions:
   contents: read
 
-# Independent concurrency lane — this workflow does no API I/O so
-# it does not need to share the ``external-api-fetch`` lock with the
-# data-fetcher workflows.
+# Concurrency lane. On ``main`` this workflow commits ``chore: rebuild
+# feed`` — touching ``data/first_seen.json`` and the feed XMLs — to the
+# SAME branch that ``update-cycle.yml`` and ``manual-full-refresh.yml``
+# push to. Those run in the ``external-api-fetch`` group; if this workflow
+# kept its own lane it could push to ``main`` WHILE a cycle tick is
+# mid-build, and the cycle's ``git pull --rebase --autostash`` would then
+# re-apply its autostash on top of our just-pushed ``first_seen.json`` —
+# leaving an unmerged index that crashed the cycle's auto-commit (observed
+# 2026-05-25). Sharing ``external-api-fetch`` on ``main`` serialises the
+# three feed-writing workflows so two of them can never race the same pull
+# window. Non-``main`` (PR / branch) builds keep their own per-ref lane —
+# they only verify code changes and never push (see the
+# ``if: github.ref == 'refs/heads/main'`` guards on the commit steps), so
+# they stay parallel and fast.
 concurrency:
-  group: build-feed-${{ github.ref }}
+  group: ${{ github.ref == 'refs/heads/main' && 'external-api-fetch' || format('build-feed-{0}', github.ref) }}
   cancel-in-progress: false
 
 jobs:
@@ -139,7 +150,49 @@ jobs:
 
       - name: Pull concurrent remote changes
         if: github.ref == 'refs/heads/main'
-        run: git pull --rebase --autostash
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # ``git pull --rebase --autostash`` does NOT fail when the
+          # autostash RE-APPLY conflicts: the rebase (fast-forward onto a
+          # concurrent push) succeeds, the failed ``git stash apply`` is
+          # only a warning, and the step still exits 0 — leaving an UNMERGED
+          # index. The next step (git-auto-commit-action) then dies with the
+          # opaque "error: you need to resolve your current index first"
+          # (observed 2026-05-25 on update-cycle.yml, the mirror of this
+          # commit pattern). The shared ``external-api-fetch`` concurrency
+          # lane now serialises the feed-writing workflows so this collision
+          # should not recur; the block below is the defense-in-depth
+          # backstop that keeps ANY residual concurrent push (a manual push,
+          # a future workflow) from re-introducing the silent-unmerged-index
+          # failure.
+          git pull --rebase --autostash
+
+          # Append-only ledgers (``data/stats/*.csv``) auto-resolve via the
+          # ``merge=union`` driver in ``.gitattributes`` — both sides' rows
+          # are kept, so they never surface as unmerged here. Everything
+          # else this build writes (feed XMLs, README, the ``first_seen``
+          # state) is a full regeneration from the on-disk caches, so on the
+          # rare residual conflict the locally built copy is authoritative.
+          mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
+          if [ "${#conflicts[@]}" -gt 0 ]; then
+            echo "::warning title=reconcile::autostash re-apply conflicted on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"
+            # In a stash-apply conflict, stage 3 ("--theirs") is the stashed
+            # locally-built version; stage 2 is the just-pulled upstream.
+            git checkout --theirs -- "${conflicts[@]}"
+            git add -- "${conflicts[@]}"
+            # A conflicted ``git stash apply`` leaves the autostash entry on
+            # the stash stack; drop it so it cannot leak into a later run.
+            git stash drop || true
+          fi
+
+          # Never hand an unmerged index to the auto-commit step.
+          if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+            echo "::error title=reconcile::unresolved merge conflicts remain after reconcile" >&2
+            git diff --name-only --diff-filter=U >&2
+            exit 1
+          fi
 
       - name: Commit and push changes
         if: github.ref == 'refs/heads/main'

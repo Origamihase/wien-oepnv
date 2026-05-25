@@ -205,7 +205,50 @@ jobs:
 
       # ----- 5) Aenderungen committen und pushen -----
       - name: Pull concurrent remote changes
-        run: git pull --rebase --autostash
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # ``git pull --rebase --autostash`` does NOT fail when the
+          # autostash RE-APPLY conflicts: the rebase (fast-forward onto a
+          # concurrent push) succeeds, the failed ``git stash apply`` is
+          # only a warning, and the step still exits 0 — leaving an UNMERGED
+          # index. The next step (git-auto-commit-action) then dies with the
+          # opaque "error: you need to resolve your current index first"
+          # (observed 2026-05-25 on update-cycle.yml, the mirror of this
+          # commit pattern). The shared ``external-api-fetch`` concurrency
+          # lane now serialises the feed-writing workflows so this collision
+          # should not recur; the block below is the defense-in-depth
+          # backstop that keeps ANY residual concurrent push (a manual push,
+          # a future workflow) from re-introducing the silent-unmerged-index
+          # failure.
+          git pull --rebase --autostash
+
+          # Append-only ledgers (``data/stats/*.csv``) auto-resolve via the
+          # ``merge=union`` driver in ``.gitattributes`` — both sides' rows
+          # are kept, so they never surface as unmerged here. Everything
+          # else this refresh writes (feed XMLs, README, statistik.md, the
+          # station directory, the ``first_seen`` state) is a full
+          # regeneration, so on the rare residual conflict the locally built
+          # copy is authoritative.
+          mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
+          if [ "${#conflicts[@]}" -gt 0 ]; then
+            echo "::warning title=reconcile::autostash re-apply conflicted on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"
+            # In a stash-apply conflict, stage 3 ("--theirs") is the stashed
+            # locally-built version; stage 2 is the just-pulled upstream.
+            git checkout --theirs -- "${conflicts[@]}"
+            git add -- "${conflicts[@]}"
+            # A conflicted ``git stash apply`` leaves the autostash entry on
+            # the stash stack; drop it so it cannot leak into a later run.
+            git stash drop || true
+          fi
+
+          # Never hand an unmerged index to the auto-commit step.
+          if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+            echo "::error title=reconcile::unresolved merge conflicts remain after reconcile" >&2
+            git diff --name-only --diff-filter=U >&2
+            exit 1
+          fi
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
