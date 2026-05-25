@@ -11,13 +11,17 @@ matched the bare ``"taborstrasse"`` key and the earlier neighbour kept it
 """
 import json
 from pathlib import Path
+from typing import Any
 
 import pytest
 
 from src.utils import stations
+from src.utils.stations import StationInfo
 
 
-def _lookup_with(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, data: list[dict]) -> dict:
+def _lookup_with(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, data: list[dict[str, Any]]
+) -> dict[str, StationInfo]:
     temp_file = tmp_path / "stations.json"
     temp_file.write_text(json.dumps(data), encoding="utf-8")
     monkeypatch.setattr(stations, "_STATIONS_PATH", temp_file)
