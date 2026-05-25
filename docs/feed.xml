@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 25 May 2026 16:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 17:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[6: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d</guid>
+      <pubDate>Mon, 25 May 2026 16:46:00 +0200</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 17:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 25 May 2026 16:46:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[40: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,31 +27,9 @@
       <pubDate>Mon, 25 May 2026 16:14:00 +0200</pubDate>
       <ext:first_seen>Mon, 25 May 2026 16:30:51 +0200</ext:first_seen>
       <ext:starts_at>Mon, 25 May 2026 16:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 25 May 2026 17:20:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Fahrtbehinderung Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5236f47ffd1dcffd769c8ad48ffbd0ee63810602a92ad31fcd46eb9237ddea29</guid>
-      <pubDate>Mon, 25 May 2026 15:50:12 +0200</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 16:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 15:50:29 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 16:49:00 +0200</ext:ends_at>
-      <description>[Am 25.05.2026]</description>
-      <content:encoded><![CDATA[[Am 25.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26: Fahrtbehinderung Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9c7b3ee5f523fca7feed81f5f9ddbfbd1a74b67ce91790006cb9036727ea2bca</guid>
-      <pubDate>Mon, 25 May 2026 15:49:14 +0200</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 16:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 15:57:58 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 16:57:00 +0200</ext:ends_at>
-      <description>[Am 25.05.2026]</description>
-      <content:encoded><![CDATA[[Am 25.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25: Verkehrsunfall]]></title>
@@ -50,28 +39,6 @@
       <ext:first_seen>Mon, 25 May 2026 16:01:04 +0200</ext:first_seen>
       <ext:starts_at>Mon, 25 May 2026 15:46:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 25 May 2026 17:12:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">84f9fe1b5c4beaf00a73c1565363074e86a57541f0f409f0ef6b0f7aac539f50</guid>
-      <pubDate>Mon, 25 May 2026 15:18:00 +0200</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 16:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 15:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 16:45:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9cd582e7d389dfb7834c2277d3b615c12e0f096ebda88b9ebe100ad4f2576284</guid>
-      <pubDate>Mon, 25 May 2026 15:18:00 +0200</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 16:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 15:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 16:40:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.05.2026]]]></content:encoded>
     </item>
@@ -118,6 +85,39 @@
       <ext:ends_at>Sun, 31 May 2026 02:00:00 +0200</ext:ends_at>
       <description>Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag, Sperre des Gehsteiges und Errichtung eines mindestens 2,00 m breiten Ersatzgehsteiges auf … [11.01.2026 – 31.05.2026]</description>
       <content:encoded><![CDATA[Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag, Sperre des Gehsteiges und Errichtung eines mindestens 2,00 m breiten Ersatzgehsteiges auf …<br/>[11.01.2026 – 31.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Gräffergasse von Kreuzung Halirschgasse und Schultheßgasse bis Kreuzung Heigerleinstraße]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">0d815c2be48f418a2fcb0ed2c81148394294e1624e92839beca36905793ed988</guid>
+      <pubDate>Sun, 19 Oct 2025 02:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 12:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Oct 2025 02:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 02:00:00 +0200</ext:ends_at>
+      <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag, wobei die Gräffergasse von der Halirschgasse und Schultheßgasse bis zur … [Seit 19.10.2025]</description>
+      <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag, wobei die Gräffergasse von der Halirschgasse und Schultheßgasse bis zur …<br/>[Seit 19.10.2025]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Hernalser Hauptstraße von Redtenbachergasse und Schadinagasse bis Julius-Meinl-Gasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">7d2114f00485c063fb6c979a2f851e48c36d7ed498b3bc1104213ac684b0e769</guid>
+      <pubDate>Sun, 19 Oct 2025 02:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 12:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Oct 2025 02:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 02:00:00 +0200</ext:ends_at>
+      <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau)werden im gegenständlichen Bereich der Hernalser Hauptstraßebei bei Tag, in der Nacht und teilweise auch an Wochenenden … [Seit 19.10.2025]</description>
+      <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau)werden im gegenständlichen Bereich der Hernalser Hauptstraßebei bei Tag, in der Nacht und teilweise auch an Wochenenden …<br/>[Seit 19.10.2025]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Schultheßgasse von Kreuzung Halirschgasse und Gräffergasse bis Kreuzung Dittersdorfgasse und Fercher]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">90a066c0cbcb833c01e517b7c70c4cd5d9d03c4c04ace74efd68a8fe56051526</guid>
+      <pubDate>Sun, 19 Oct 2025 02:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 12:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Oct 2025 02:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 02:00:00 +0200</ext:ends_at>
+      <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag und bei Freihaltung einer mindestens 3,00 m breiten Restfahrbahn. [Seit 19.10.2025]</description>
+      <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag und bei Freihaltung einer mindestens 3,00 m breiten Restfahrbahn.<br/>[Seit 19.10.2025]]]></content:encoded>
     </item>
   </channel>
 </rss>
