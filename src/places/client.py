@@ -9,11 +9,12 @@ import secrets
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, cast
+from typing import Any, Final, cast
 from collections.abc import Iterable, Iterator, Sequence
 
 import requests
 
+from ..utils.circuit_breaker import CircuitBreaker, CircuitState
 from ..utils.env import read_secret
 from ..utils.files import _reject_non_finite_constant, _reject_non_finite_float
 from ..utils.http import read_response_safe, session_with_retries, verify_response_ip
@@ -111,6 +112,22 @@ MAX_TIMEOUT_S = 25.0
 # the ``MAX_TIMEOUT_S`` cap pattern above.
 MAX_REQUEST_RETRIES = 10
 
+# Resilience: shared per-process circuit breaker for the Google Places
+# upstream, replacing the former per-instance ``_consecutive_5xx_errors``
+# counter. Trips to OPEN after 5 consecutive 5xx responses (failure
+# threshold unchanged), short-circuiting further calls — and therefore
+# further per-attempt quota debits — until the 300 s recovery window
+# elapses and a single HALF_OPEN probe re-tests the upstream. The quota
+# accounting in ``_post`` is deliberately left untouched: the monthly
+# free-tier cap is enforced solely by ``MonthlyQuota.can_consume`` and is
+# independent of this breaker. ``recovery_timeout`` mirrors the HAFAS
+# enrichment breaker (``src/places/hafas_client.py``).
+_BREAKER: Final[CircuitBreaker] = CircuitBreaker(
+    "google_places",
+    failure_threshold=5,
+    recovery_timeout=300.0,
+)
+
 FIELD_MASK_NEARBY = "places.id,places.displayName,places.location,places.types"
 DEFAULT_INCLUDED_TYPES: Sequence[str] = (
     "train_station",
@@ -205,7 +222,6 @@ class GooglePlacesClient:
         self._radius_m = RADIUS_M
         self._max_result_count = MAX_RESULTS
         self._rank_preference = RANK_PREF
-        self._consecutive_5xx_errors = 0
 
     def __enter__(self) -> GooglePlacesClient:
         return self
@@ -398,8 +414,14 @@ class GooglePlacesClient:
         attempt = 0
         last_error: Exception | None = None
 
-        # Check circuit breaker before starting requests
-        if self._consecutive_5xx_errors >= 5:
+        # Resilience: short-circuit before issuing (and quota-debiting) any
+        # request while the shared breaker is OPEN. Reading ``state`` lazily
+        # performs the OPEN→HALF_OPEN transition once ``recovery_timeout``
+        # has elapsed, so the next call is admitted as a probe. The value is
+        # read into a fresh local at each check site because ``record_failure``
+        # below can re-open the breaker between the two checks.
+        breaker_state = _BREAKER.state
+        if breaker_state is CircuitState.OPEN:
             raise GooglePlacesError("Circuit breaker open: too many consecutive 5xx errors")
 
         while attempt <= self._config.max_retries:
@@ -453,7 +475,7 @@ class GooglePlacesClient:
                     self.request_count += 1
 
                     if response.status_code == 200:
-                        self._consecutive_5xx_errors = 0
+                        _BREAKER.record_success()
                         try:
                             # Security: pin parse_constant + parse_float hooks
                             # that reject NaN / Infinity / -Infinity literals
@@ -496,18 +518,18 @@ class GooglePlacesClient:
 
                     if response.status_code in {429, 500, 502, 503, 504}:
                         if response.status_code != 429:
-                            self._consecutive_5xx_errors += 1
+                            _BREAKER.record_failure()
 
                         detail = _sanitize_error_detail(response.text, secrets=[self._config.api_key])
                         last_error = GooglePlacesError(
                             f"HTTP {response.status_code}: {detail}"
                         )
                     elif response.status_code in {401, 403}:
-                        self._consecutive_5xx_errors = 0
+                        _BREAKER.record_success()
                         details = self._extract_error_details(response)
                         raise GooglePlacesPermissionError(details)
                     else:
-                        self._consecutive_5xx_errors = 0
+                        _BREAKER.record_success()
                         message = self._format_error_message(response)
                         raise GooglePlacesError(
                             f"Failed to fetch places ({response.status_code}): {message}"
@@ -517,7 +539,7 @@ class GooglePlacesClient:
                 last_error = exc
 
                 if exc.response is not None and exc.response.status_code >= 500:
-                    self._consecutive_5xx_errors += 1
+                    _BREAKER.record_failure()
 
                 LOGGER.warning(
                     "Request error (attempt %s/%s): %s",
@@ -529,7 +551,8 @@ class GooglePlacesClient:
             if attempt > self._config.max_retries:
                 break
 
-            if self._consecutive_5xx_errors >= 5:
+            breaker_state = _BREAKER.state
+            if breaker_state is CircuitState.OPEN:
                 raise GooglePlacesError("Circuit breaker open: too many consecutive 5xx errors")
 
             sleep_for = self._backoff(attempt)
