@@ -1,0 +1,174 @@
+{
+  "timestamp": "2026-05-25T08:17:24+00:00",
+  "count": 4,
+  "stations": [
+    {
+      "identifier": "code:Mb  H2H / source:oebb_geonetz,osm",
+      "name": "Siebenhirten",
+      "issues": [
+        {
+          "category": "cross-station",
+          "reason": "alias 'Mb  H2H' collides with bst_code of 'Siebenhirten' (code:Mb  H2H / source:oebb_geonetz,osm)"
+        },
+        {
+          "category": "cross-station",
+          "reason": "alias 'Mb  H2H' collides with bst_code of 'Siebenhirten' (code:Mb  H2H / source:oebb_geonetz,osm)"
+        }
+      ],
+      "entry": {
+        "bst_id": "1371",
+        "bst_code": "Mb  H2H",
+        "name": "Siebenhirten",
+        "in_vienna": true,
+        "pendler": false,
+        "_in_vienna_basis": [
+          48.1301348,
+          16.3096955,
+          true
+        ],
+        "eva_nr": "8101523",
+        "ifopt_id": "at:43:4765",
+        "address": "2130 Siebenhirten, Bahnkellergasse",
+        "source": "oebb_geonetz,osm",
+        "aliases": [
+          "Siebenhirten",
+          "Bahnhof Siebenhirten",
+          "Bf Siebenhirten",
+          "bf Siebenhirten",
+          "Mb  H2H",
+          "Siebenhirten Bahnhof",
+          "Siebenhirten Bf",
+          "Siebenhirten bf"
+        ],
+        "latitude": 48.1300226,
+        "longitude": 16.3086651
+      }
+    },
+    {
+      "identifier": "code:Nw  H2 / source:oebb_geonetz,osm",
+      "name": "Handelskai",
+      "issues": [
+        {
+          "category": "cross-station",
+          "reason": "alias 'Nw  H2' collides with bst_code of 'Handelskai' (code:Nw  H2 / source:oebb_geonetz,osm)"
+        },
+        {
+          "category": "cross-station",
+          "reason": "alias 'Nw  H2' collides with bst_code of 'Handelskai' (code:Nw  H2 / source:oebb_geonetz,osm)"
+        }
+      ],
+      "entry": {
+        "bst_id": "1586",
+        "bst_code": "Nw  H2",
+        "name": "Handelskai",
+        "in_vienna": true,
+        "pendler": false,
+        "_in_vienna_basis": [
+          48.2418274,
+          16.385702,
+          true
+        ],
+        "eva_nr": "8101934",
+        "ifopt_id": "at:49:1705",
+        "address": "1200 Wien,",
+        "source": "oebb_geonetz,osm",
+        "aliases": [
+          "Handelskai",
+          "Bahnhof Handelskai",
+          "Bf Handelskai",
+          "bf Handelskai",
+          "Handelskai Bahnhof",
+          "Handelskai Bf",
+          "Handelskai bf",
+          "Nw  H2"
+        ],
+        "latitude": 48.2421429,
+        "longitude": 16.3859804
+      }
+    },
+    {
+      "identifier": "code:Mb  H2H / source:oebb_geonetz,osm",
+      "name": "Siebenhirten",
+      "issues": [
+        {
+          "category": "cross-station",
+          "reason": "alias 'Mb  H2H' collides with bst_code of 'Siebenhirten' (code:Mb  H2H / source:oebb_geonetz,osm)"
+        },
+        {
+          "category": "cross-station",
+          "reason": "alias 'Mb  H2H' collides with bst_code of 'Siebenhirten' (code:Mb  H2H / source:oebb_geonetz,osm)"
+        }
+      ],
+      "entry": {
+        "bst_id": "1371",
+        "bst_code": "Mb  H2H",
+        "name": "Siebenhirten",
+        "in_vienna": true,
+        "pendler": false,
+        "_in_vienna_basis": [
+          48.1301348,
+          16.3096955,
+          true
+        ],
+        "eva_nr": "8101523",
+        "ifopt_id": "at:43:4765",
+        "address": "2130 Siebenhirten, Bahnkellergasse",
+        "source": "oebb_geonetz,osm",
+        "aliases": [
+          "Siebenhirten",
+          "Bahnhof Siebenhirten",
+          "Bf Siebenhirten",
+          "bf Siebenhirten",
+          "Mb  H2H",
+          "Siebenhirten Bahnhof",
+          "Siebenhirten Bf",
+          "Siebenhirten bf"
+        ],
+        "latitude": 48.1300226,
+        "longitude": 16.3086651
+      }
+    },
+    {
+      "identifier": "code:Nw  H2 / source:oebb_geonetz,osm",
+      "name": "Handelskai",
+      "issues": [
+        {
+          "category": "cross-station",
+          "reason": "alias 'Nw  H2' collides with bst_code of 'Handelskai' (code:Nw  H2 / source:oebb_geonetz,osm)"
+        },
+        {
+          "category": "cross-station",
+          "reason": "alias 'Nw  H2' collides with bst_code of 'Handelskai' (code:Nw  H2 / source:oebb_geonetz,osm)"
+        }
+      ],
+      "entry": {
+        "bst_id": "1586",
+        "bst_code": "Nw  H2",
+        "name": "Handelskai",
+        "in_vienna": true,
+        "pendler": false,
+        "_in_vienna_basis": [
+          48.2418274,
+          16.385702,
+          true
+        ],
+        "eva_nr": "8101934",
+        "ifopt_id": "at:49:1705",
+        "address": "1200 Wien,",
+        "source": "oebb_geonetz,osm",
+        "aliases": [
+          "Handelskai",
+          "Bahnhof Handelskai",
+          "Bf Handelskai",
+          "bf Handelskai",
+          "Handelskai Bahnhof",
+          "Handelskai Bf",
+          "Handelskai bf",
+          "Nw  H2"
+        ],
+        "latitude": 48.2421429,
+        "longitude": 16.3859804
+      }
+    }
+  ]
+}
