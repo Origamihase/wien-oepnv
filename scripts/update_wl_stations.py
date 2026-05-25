@@ -1121,6 +1121,78 @@ def _all_pairs_within(
     return True
 
 
+def _drop_distant_name_contamination(
+    entries: list[dict[str, object]], *, threshold_m: float = 2000.0
+) -> int:
+    """Strip aliases / wl_stops whose name is a *different* station located
+    more than *threshold_m* away.
+
+    A Wiener-Linien DIVA legitimately groups physically nearby stops, and a
+    grouped stop's StopText sometimes equals a neighbouring station's name
+    (interchanges, depots) — those resolve to a station a few hundred metres
+    away and stay. But a genuinely mislabelled stop pollutes the alias index:
+    e.g. a stop sitting *at Grinzing* carrying the name ``Karlsplatz`` (6.4 km
+    away) made ``station_info("Karlsplatz")`` resolve to Grinzing. Only the
+    > threshold cases are dropped; the sweep that motivated this guard found
+    exactly one such case across the whole directory, with no false positives
+    among the legitimate sub-2-km interchange names. Returns the number of
+    alias/stop tokens dropped. Mutates *entries* in place.
+    """
+    from src.utils.stations import _normalize_token
+
+    def _bare(name: object) -> str:
+        text = re.sub(r"\s*\((?:WL|VOR)\)\s*$", "", str(name or ""))
+        return _normalize_token(re.sub(r"^Wien\s+", "", text))
+
+    # bare canonical-name token -> coordinates of the owning station(s)
+    name_coords: dict[str, list[tuple[float, float]]] = {}
+    for entry in entries:
+        lat, lon = entry.get("latitude"), entry.get("longitude")
+        if isinstance(lat, int | float) and isinstance(lon, int | float):
+            token = _bare(entry.get("name"))
+            if token:
+                name_coords.setdefault(token, []).append((float(lat), float(lon)))
+
+    def _is_distant(label: object, own: str, elat: float, elon: float) -> bool:
+        if not isinstance(label, str):
+            return False
+        token = _normalize_token(label)
+        owners = name_coords.get(token)
+        if not token or token == own or not owners:
+            return False
+        return all(
+            _haversine_m(elat, elon, owner_lat, owner_lon) > threshold_m
+            for owner_lat, owner_lon in owners
+        )
+
+    dropped = 0
+    for entry in entries:
+        lat, lon = entry.get("latitude"), entry.get("longitude")
+        if not isinstance(lat, int | float) or not isinstance(lon, int | float):
+            continue
+        elat, elon, own = float(lat), float(lon), _bare(entry.get("name"))
+
+        aliases = entry.get("aliases")
+        if isinstance(aliases, list):
+            kept = [a for a in aliases if not _is_distant(a, own, elat, elon)]
+            if len(kept) != len(aliases):
+                dropped += len(aliases) - len(kept)
+                entry["aliases"] = kept
+
+        stops = entry.get("wl_stops")
+        if isinstance(stops, list):
+            kept_stops = [
+                s
+                for s in stops
+                if not (isinstance(s, dict) and _is_distant(s.get("name"), own, elat, elon))
+            ]
+            if len(kept_stops) != len(stops):
+                dropped += len(stops) - len(kept_stops)
+                entry["wl_stops"] = kept_stops
+
+    return dropped
+
+
 def _merge_entry_group(group: list[dict[str, object]]) -> dict[str, object]:
     """Fold a list of co-located duplicate entries into one.
 
@@ -1729,6 +1801,15 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     wl_entries = build_wl_entries(haltestellen, haltepunkte, vor_mapping)
     log.info("Prepared %d WL station entries", len(wl_entries))
+
+    # Drop mislabelled stop names that resolve to a far-away station (an
+    # upstream WL DIVA-grouping artefact). Without this a stop sitting at
+    # one station but carrying another's name (observed: a Grinzing stop
+    # named "Karlsplatz", 6.4 km off) pollutes the alias index and resolves
+    # lookups to the wrong station.
+    contaminated = _drop_distant_name_contamination(wl_entries)
+    if contaminated:
+        log.info("Dropped %d distant-name-contaminating alias/stop token(s)", contaminated)
 
     # Austrian-source coordinate consensus (WL → HAFAS → OSM → Google).
     # Env-disabled via ``WIEN_OEPNV_AT_RECONCILE=0`` — mirrors the
