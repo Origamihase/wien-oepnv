@@ -50,6 +50,24 @@ def test_distant_wl_stop_name_is_flagged(tmp_path: Path) -> None:
     assert report.cross_name_alias_issues[0].label_kind == "wl_stop"
 
 
+def test_distant_full_form_alias_is_flagged(tmp_path: Path) -> None:
+    # Belt-and-suspenders: the contaminating label is the *full* "Wien X"
+    # form, not the short colloquial one. The conservative write-time guard
+    # leaves this in place; the validator bares both sides and catches it.
+    path = _write(tmp_path / "stations.json", [
+        {"name": "Karlsplatz", "aliases": ["Karlsplatz"], "latitude": 48.20, "longitude": 16.37},
+        {"name": "Grinzing", "aliases": ["Grinzing", "Wien Karlsplatz"], "latitude": 48.30, "longitude": 16.50},
+    ])
+
+    report = validate_stations(path)
+
+    assert len(report.cross_name_alias_issues) == 1
+    issue = report.cross_name_alias_issues[0]
+    assert issue.name == "Grinzing"
+    assert issue.label == "Wien Karlsplatz"
+    assert issue.colliding_name == "Karlsplatz"
+
+
 def test_nearby_same_name_alias_is_not_flagged(tmp_path: Path) -> None:
     # ~0.6 km apart — a legitimate interchange label, kept.
     path = _write(tmp_path / "stations.json", [

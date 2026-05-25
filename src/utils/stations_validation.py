@@ -157,9 +157,13 @@ class CrossNameAliasIssue:
     stop). The guard strips such labels pre-merge on the Wiener-Linien
     entries only; this check runs over the *final* merged directory, so a
     label that slips in via any other path — a manual edit, a future
-    non-WL source — is still surfaced. The same 2 km threshold
-    (:data:`_CROSS_NAME_DISTANCE_THRESHOLD_M`) is used, so it fires only
-    on genuine contamination: legitimate sub-2-km interchange labels
+    non-WL source — is still surfaced. It reuses the guard's 2 km
+    threshold (:data:`_CROSS_NAME_DISTANCE_THRESHOLD_M`) but matches one
+    step more broadly: both the label and the owner names are reduced
+    with :func:`_bare_station_name`, so a *full-form* ``Wien Karlsplatz``
+    label — which the guard leaves in place — is caught alongside the
+    short ``Karlsplatz`` form. It still fires only on genuine
+    contamination: legitimate sub-2-km interchange labels
     (``Oper, Karlsplatz`` → ``Karlsplatz`` at ~160 m) are kept. Distinct
     from :class:`CrossStationIDIssue`, which matches an alias against
     another station's structural *identity* field rather than its
@@ -1125,12 +1129,15 @@ def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
 
 # Distance beyond which an alias / ``wl_stop`` label that doubles as a
 # *different* station's canonical name is treated as contamination rather
-# than a legitimate interchange label. MUST stay in sync with the
+# than a legitimate interchange label. The 2 km value mirrors the
 # write-time guard ``_drop_distant_name_contamination`` in
-# ``scripts/update_wl_stations.py`` so this validator check is a faithful
-# post-merge safety-net. A directory sweep showed the legitimate
-# cross-name interchange labels cluster at <= ~500 m, so 2 km leaves a
-# wide margin and yields zero hits on the current clean directory.
+# ``scripts/update_wl_stations.py``; the validator reuses it as the
+# post-merge backstop but matches one step more broadly — it bares the
+# label as well as the owner name (see ``_find_cross_name_alias_issues``),
+# closing the full-form ``Wien X`` case the guard leaves in place. A
+# directory sweep showed the legitimate cross-name interchange labels
+# cluster at <= ~500 m, so 2 km leaves a wide margin and yields zero hits
+# on the current clean directory in every matching variant.
 _CROSS_NAME_DISTANCE_THRESHOLD_M = 2000.0
 
 _WL_VOR_SUFFIX_RE = re.compile(r"\s*\((?:WL|VOR)\)\s*$")
@@ -1138,12 +1145,15 @@ _WIEN_PREFIX_RE = re.compile(r"^Wien\s+")
 
 
 def _bare_station_name(name: object) -> str:
-    """Tokenise a canonical station name for cross-name comparison.
+    """Reduce a station name *or* a label to a cross-name comparison token.
 
     Strips the ``(WL)`` / ``(VOR)`` provider suffix and a leading
-    ``Wien`` before :func:`_normalize_token`, mirroring the ``_bare``
-    closure in ``_drop_distant_name_contamination`` so both sides
-    compare the same tokens.
+    ``Wien`` before :func:`_normalize_token`. Applied to *both* the
+    canonical names (the owner index) and the alias / ``wl_stop`` labels
+    being checked, so the two sides compare on equal footing. This bares
+    one step further than ``_drop_distant_name_contamination``, which
+    bares only the owner side and matches raw-normalised labels — the
+    asymmetry that lets a full-form ``Wien X`` label slip past the guard.
     """
     text = _WL_VOR_SUFFIX_RE.sub("", str(name or ""))
     return _normalize_token(_WIEN_PREFIX_RE.sub("", text))
@@ -1196,11 +1206,15 @@ def _find_cross_name_alias_issues(
 ) -> Iterator[CrossNameAliasIssue]:
     """Flag alias / ``wl_stop`` labels matching a far-away station's name.
 
-    See :class:`CrossNameAliasIssue`. A label is flagged when it
-    normalises to the bare canonical name of one or more *other* stations
-    and **every** such owner sits more than *threshold_m* away — the same
-    all-owners-distant rule the write-time guard applies, so a label that
-    also resolves to a nearby interchange of the same name is kept.
+    See :class:`CrossNameAliasIssue`. Both the label and the owner names
+    are reduced with :func:`_bare_station_name`, so a label is flagged
+    when its bare form equals the bare canonical name of one or more
+    *other* stations and **every** such owner sits more than *threshold_m*
+    away. Baring both sides is deliberately broader than the write-time
+    guard (which bares only the owner names): it additionally catches a
+    full-form ``Wien X`` label, the belt-and-suspenders case the
+    conservative guard leaves in place. The all-owners-distant rule keeps
+    a label that also resolves to a nearby interchange of the same name.
     """
     name_index = _build_cross_name_index(stations)
 
@@ -1211,7 +1225,10 @@ def _find_cross_name_alias_issues(
             continue
         own = _bare_station_name(entry.get("name"))
         for kind, label in _iter_entry_labels(entry):
-            token = _normalize_token(label)
+            # Bare the label too (not just owner names): a full-form
+            # "Wien Karlsplatz" label bares to the same token as the
+            # "Karlsplatz" owner, so it is caught alongside the short form.
+            token = _bare_station_name(label)
             if not token or token == own:
                 continue
             owner = name_index.get(token)
