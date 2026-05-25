@@ -144,6 +144,36 @@ class IdentityFieldConflict:
     names: tuple[str, ...]
 
 
+@dataclass(frozen=True)
+class CrossNameAliasIssue:
+    """Alias or ``wl_stop`` label that doubles as a *different*, far-away
+    station's canonical name.
+
+    Post-merge safety-net mirroring the write-time guard
+    ``_drop_distant_name_contamination`` in
+    ``scripts/update_wl_stations.py`` (the 2026-05 Grinzing→Karlsplatz
+    drift: a stop sitting at Grinzing carried the name ``Karlsplatz``
+    6.4 km away, so ``station_info("Karlsplatz")`` resolved to the wrong
+    stop). The guard strips such labels pre-merge on the Wiener-Linien
+    entries only; this check runs over the *final* merged directory, so a
+    label that slips in via any other path — a manual edit, a future
+    non-WL source — is still surfaced. The same 2 km threshold
+    (:data:`_CROSS_NAME_DISTANCE_THRESHOLD_M`) is used, so it fires only
+    on genuine contamination: legitimate sub-2-km interchange labels
+    (``Oper, Karlsplatz`` → ``Karlsplatz`` at ~160 m) are kept. Distinct
+    from :class:`CrossStationIDIssue`, which matches an alias against
+    another station's structural *identity* field rather than its
+    display name.
+    """
+
+    identifier: str
+    name: str
+    label: str
+    label_kind: str
+    colliding_name: str
+    distance_m: int
+
+
 # Per-cell length cap applied at every ``stations.json``-derived
 # Markdown sink in :meth:`ValidationReport.to_markdown`. Mirrors the
 # canonical ``_DASHBOARD_FIELD_MAX_LEN`` constant in
@@ -189,6 +219,10 @@ class ValidationReport:
     # — adopted by the test fixtures + ``scripts/update_all_stations.py``
     # auto-quarantine path.
     identity_field_conflicts: tuple[IdentityFieldConflict, ...] = ()
+    # Defaulted (later addition) so the existing keyword/``**defaults``
+    # constructors in the test suite keep working without the new key —
+    # same rationale as ``identity_field_conflicts`` above.
+    cross_name_alias_issues: tuple[CrossNameAliasIssue, ...] = ()
 
     @property
     def has_issues(self) -> bool:
@@ -202,6 +236,7 @@ class ValidationReport:
             or self.provider_issues
             or self.naming_issues
             or self.identity_field_conflicts
+            or self.cross_name_alias_issues
         )
 
     def to_markdown(self) -> str:
@@ -248,6 +283,7 @@ class ValidationReport:
         lines.append(f"*Stationsübergreifende-ID-Kollisionen*: {len(self.cross_station_id_issues)}")
         lines.append(f"*Identity-Field-Konflikte*: {len(self.identity_field_conflicts)}")
         lines.append(f"*Namens-Probleme*: {len(self.naming_issues)}")
+        lines.append(f"*Namens-Alias-Kollisionen*: {len(self.cross_name_alias_issues)}")
         lines.append("")
 
         if self.security_issues:
@@ -321,6 +357,8 @@ class ValidationReport:
                 )
             lines.append("")
 
+        lines.extend(self._render_cross_name_alias_issues())
+
         if not self.has_issues:
             lines.append("Keine Probleme festgestellt.")
 
@@ -342,6 +380,26 @@ class ValidationReport:
             lines.append(
                 f"- {_safe_md(conflict.field)}={_safe_md(conflict.value)} "
                 f"gemeinsam genutzt von [{joined_ids}] ({joined_names})"
+            )
+        lines.append("")
+        return lines
+
+    def _render_cross_name_alias_issues(self) -> list[str]:
+        """Render the ``## Namens-Alias-Kollisionen`` section.
+
+        Split out of :meth:`to_markdown` (like
+        :meth:`_render_identity_field_conflicts`) so the parent method
+        stays at its C901 baseline of 18 rather than gaining a branch.
+        """
+        if not self.cross_name_alias_issues:
+            return []
+        lines = ["## Namens-Alias-Kollisionen"]
+        for issue in self.cross_name_alias_issues:
+            lines.append(
+                f"- {_safe_md(issue.identifier)} ({_safe_md(issue.name)}): "
+                f"{issue.label_kind} '{_safe_md(issue.label)}' entspricht dem "
+                f"Namen der entfernten Station {_safe_md(issue.colliding_name)} "
+                f"(~{issue.distance_m} m)"
             )
         lines.append("")
         return lines
@@ -376,6 +434,7 @@ def validate_stations(
     provider_issues = tuple(_find_provider_issues(stations))
     naming_issues = tuple(_find_naming_issues(stations))
     identity_field_conflicts = tuple(_find_identity_field_conflicts(stations))
+    cross_name_alias_issues = tuple(_find_cross_name_alias_issues(stations))
 
     return ValidationReport(
         total_stations=len(stations),
@@ -389,6 +448,7 @@ def validate_stations(
         naming_issues=naming_issues,
         gtfs_stop_count=gtfs_count,
         identity_field_conflicts=identity_field_conflicts,
+        cross_name_alias_issues=cross_name_alias_issues,
     )
 
 
@@ -1046,3 +1106,125 @@ def _find_security_issues(
                         name=name,
                         reason=f"Unsafe characters in alias: {alias!r}"
                     )
+
+
+def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Great-circle distance in metres (mean Earth radius).
+
+    Local copy mirroring ``scripts/update_wl_stations.py:_haversine_m`` so
+    the cross-name safety-net measures distance identically to the
+    write-time guard it backstops.
+    """
+    radius = 6_371_000.0
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp = math.radians(lat2 - lat1)
+    dl = math.radians(lon2 - lon1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * radius * math.asin(math.sqrt(a))
+
+
+# Distance beyond which an alias / ``wl_stop`` label that doubles as a
+# *different* station's canonical name is treated as contamination rather
+# than a legitimate interchange label. MUST stay in sync with the
+# write-time guard ``_drop_distant_name_contamination`` in
+# ``scripts/update_wl_stations.py`` so this validator check is a faithful
+# post-merge safety-net. A directory sweep showed the legitimate
+# cross-name interchange labels cluster at <= ~500 m, so 2 km leaves a
+# wide margin and yields zero hits on the current clean directory.
+_CROSS_NAME_DISTANCE_THRESHOLD_M = 2000.0
+
+_WL_VOR_SUFFIX_RE = re.compile(r"\s*\((?:WL|VOR)\)\s*$")
+_WIEN_PREFIX_RE = re.compile(r"^Wien\s+")
+
+
+def _bare_station_name(name: object) -> str:
+    """Tokenise a canonical station name for cross-name comparison.
+
+    Strips the ``(WL)`` / ``(VOR)`` provider suffix and a leading
+    ``Wien`` before :func:`_normalize_token`, mirroring the ``_bare``
+    closure in ``_drop_distant_name_contamination`` so both sides
+    compare the same tokens.
+    """
+    text = _WL_VOR_SUFFIX_RE.sub("", str(name or ""))
+    return _normalize_token(_WIEN_PREFIX_RE.sub("", text))
+
+
+def _iter_entry_labels(entry: Mapping[str, object]) -> Iterator[tuple[str, str]]:
+    """Yield ``(kind, label)`` for every alias and ``wl_stop`` name on *entry*.
+
+    ``kind`` is ``"alias"`` or ``"wl_stop"``. The ``wl_stop`` names are
+    included because :func:`src.utils.stations._station_lookup` re-derives
+    them as text aliases at lookup time, so a contaminated stop name is
+    just as misleading as a contaminated alias.
+    """
+    aliases = entry.get("aliases")
+    if isinstance(aliases, Sequence) and not isinstance(aliases, str | bytes):
+        for alias in aliases:
+            if isinstance(alias, str):
+                yield "alias", alias
+    stops = entry.get("wl_stops")
+    if isinstance(stops, Sequence) and not isinstance(stops, str | bytes):
+        for stop in stops:
+            if isinstance(stop, Mapping):
+                stop_name = stop.get("name")
+                if isinstance(stop_name, str):
+                    yield "wl_stop", stop_name
+
+
+def _build_cross_name_index(
+    stations: Sequence[Mapping[str, object]]
+) -> dict[str, tuple[str, list[tuple[float, float]]]]:
+    """Map bare canonical-name token → (display name, owner coordinates)."""
+    index: dict[str, tuple[str, list[tuple[float, float]]]] = {}
+    for entry in stations:
+        lat = _extract_float(entry.get("latitude"))
+        lon = _extract_float(entry.get("longitude"))
+        if lat is None or lon is None:
+            continue
+        token = _bare_station_name(entry.get("name"))
+        if not token:
+            continue
+        display = str(entry.get("name", "")).strip() or "<unknown>"
+        index.setdefault(token, (display, []))[1].append((lat, lon))
+    return index
+
+
+def _find_cross_name_alias_issues(
+    stations: Sequence[Mapping[str, object]],
+    *,
+    threshold_m: float = _CROSS_NAME_DISTANCE_THRESHOLD_M,
+) -> Iterator[CrossNameAliasIssue]:
+    """Flag alias / ``wl_stop`` labels matching a far-away station's name.
+
+    See :class:`CrossNameAliasIssue`. A label is flagged when it
+    normalises to the bare canonical name of one or more *other* stations
+    and **every** such owner sits more than *threshold_m* away — the same
+    all-owners-distant rule the write-time guard applies, so a label that
+    also resolves to a nearby interchange of the same name is kept.
+    """
+    name_index = _build_cross_name_index(stations)
+
+    for entry in stations:
+        lat = _extract_float(entry.get("latitude"))
+        lon = _extract_float(entry.get("longitude"))
+        if lat is None or lon is None:
+            continue
+        own = _bare_station_name(entry.get("name"))
+        for kind, label in _iter_entry_labels(entry):
+            token = _normalize_token(label)
+            if not token or token == own:
+                continue
+            owner = name_index.get(token)
+            if owner is None:
+                continue
+            owner_name, coords = owner
+            distances = [_haversine_m(lat, lon, olat, olon) for olat, olon in coords]
+            if distances and all(dist > threshold_m for dist in distances):
+                yield CrossNameAliasIssue(
+                    identifier=_format_identifier(entry),
+                    name=str(entry.get("name", "")).strip() or "<unknown>",
+                    label=label.strip(),
+                    label_kind=kind,
+                    colliding_name=owner_name,
+                    distance_m=round(min(distances)),
+                )
