@@ -338,7 +338,10 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
 
     # Avoid printing potentially sensitive coordinate details to stdout.
     # Instead, print a high-level summary; full details are available in the
-    # optional report file.
+    # optional report file. All nine categories are listed so the summary
+    # matches ``report.has_issues`` / ``--fail-on-issues`` — previously it
+    # omitted cross-station-ID, identity-field, provider and naming issues,
+    # so a clean-looking summary could hide a non-zero exit.
     sys.stdout.write(
         "Stations validation summary: "
         f"{report.total_stations} stations analysed, "
@@ -346,6 +349,10 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
         f"{len(report.alias_issues)} alias issues, "
         f"{len(report.coordinate_issues)} coordinate anomalies, "
         f"{len(report.gtfs_issues)} GTFS mismatches, "
+        f"{len(report.cross_station_id_issues)} cross-station ID collisions, "
+        f"{len(report.identity_field_conflicts)} identity-field conflicts, "
+        f"{len(report.provider_issues)} provider issues, "
+        f"{len(report.naming_issues)} naming issues, "
         f"{len(report.security_issues)} security warnings.\n"
     )
 
