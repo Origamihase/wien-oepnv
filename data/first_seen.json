@@ -220,6 +220,15 @@
       "epoch": 2
     }
   },
+  "1bc89bc576e114343fbe409de06c7658ab641c9714cb025001dae07c25e9ae89": {
+    "first_seen": "2026-05-25T22:30:42.552191+00:00",
+    "translations": {
+      "en": {
+        "title": "N46: Buses stop at line 48A in Neustiftgasse"
+      },
+      "epoch": 2
+    }
+  },
   "1c8a978cf49a76f2a6cd8082d03ab0cb6e9c8e518c0b8389f590fcf2bc3076d1": {
     "first_seen": "2026-05-24T01:04:40.542482+00:00",
     "translations": {
@@ -1643,6 +1652,16 @@
     "translations": {
       "en": {
         "title": "26A: service obstruction for police operation"
+      },
+      "epoch": 2
+    }
+  },
+  "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a": {
+    "first_seen": "2026-05-25T22:30:42.552191+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards H\u00fctteldorf, Bujattigasse. expected duration: 00:50 clock. Reason: rescue operation in H\u00fctteldorfer Stra\u00dfe 325.",
+        "title": "49: service obstruction for rescue operation"
       },
       "epoch": 2
     }

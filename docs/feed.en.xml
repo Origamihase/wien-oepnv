@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 26 May 2026 00:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 00:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N46: Buses stop at line 48A in Neustiftgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1bc89bc576e114343fbe409de06c7658ab641c9714cb025001dae07c25e9ae89</guid>
+      <pubDate>Tue, 26 May 2026 00:30:24 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:30:24 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>[On 26.05.2026]</description>
+      <content:encoded><![CDATA[[On 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49: service obstruction for rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a</guid>
+      <pubDate>Tue, 26 May 2026 00:21:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Hütteldorf, Bujattigasse. expected duration: 00:50 clock. Reason: rescue operation in Hütteldorfer Straße 325. [On 26.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Hütteldorf, Bujattigasse. expected duration: 00:50 clock. Reason: rescue operation in Hütteldorfer Straße 325.<br/>[On 26.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[46: No operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 31 Dec 2029 01:00:00 +0100</ext:ends_at>
       <description>The Volksgartenstraße between the Hansenstraße and the Museumstraße will block a lane in order to handle the construction site traffic for the underground construction. [Since 28.02.2021]</description>
       <content:encoded><![CDATA[The Volksgartenstraße between the Hansenstraße and the Museumstraße will block a lane in order to handle the construction site traffic for the underground construction.<br/>[Since 28.02.2021]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Right Vienna line from crossing Ramperstorffergasse to crossing Pilgramgasse and Pilgrambrücke]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">f7a5ee7769a7f11d9adab25f6593a5ab60fb777787803d41fc1d33f26956c1cc</guid>
-      <pubDate>Sun, 28 Feb 2021 01:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 12:59:53 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 28 Feb 2021 01:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 31 May 2028 02:00:00 +0200</ext:ends_at>
-      <description>For the new construction of the underground station of the U2 Pilgramgasse, the right-hand Vienna line from the Ramperstorffergasse to the Pilgramgasse is blocked for vehicle traffic. [Since 28.02.2021]</description>
-      <content:encoded><![CDATA[For the new construction of the underground station of the U2 Pilgramgasse, the right-hand Vienna line from the Ramperstorffergasse to the Pilgramgasse is blocked for vehicle traffic.<br/>[Since 28.02.2021]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U5: Spitalgasse from 29 to 33]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">493ec169203c75eb87347563e1c71757cd9b898e58c4f1cabbabe6b51f6c6718</guid>
-      <pubDate>Sun, 11 Jan 2026 01:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 12:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Jan 2026 01:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 31 May 2026 02:00:00 +0200</ext:ends_at>
-      <description>The cable laying work (110 kV conversion as preliminary work for the U5) is carried out during the day, blocking of the pavement and construction of a replacement platform at least 2.00 m wide on … [11.01.2026 – 31.05.2026]</description>
-      <content:encoded><![CDATA[The cable laying work (110 kV conversion as preliminary work for the U5) is carried out during the day, blocking of the pavement and construction of a replacement platform at least 2.00 m wide on …<br/>[11.01.2026 – 31.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
