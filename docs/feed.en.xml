@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 25 May 2026 21:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 22:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[71: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7</guid>
+      <pubDate>Mon, 25 May 2026 21:49:00 +0200</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 22:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 25 May 2026 21:49:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction in both directions. expected duration: 22:10 watch. Reason: traffic accident in the Simmeringer Hauptstraße 48 range. [On 25.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction in both directions. expected duration: 22:10 watch. Reason: traffic accident in the Simmeringer Hauptstraße 48 range.<br/>[On 25.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2/U5: Siebenbrunnengasse from junction Siebenbrunnenplatz and Reinprechtsdorfer Straße to 44]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 31 Dec 2028 01:00:00 +0100</ext:ends_at>
       <description>In the course of the underground construction is since 28. March 2022, 09:00 o'clock the right turn lane towards 5. District on the departure ramp of the Margaret belt coming from Hauptbahnhof to … [Since 27.03.2022]</description>
       <content:encoded><![CDATA[In the course of the underground construction is since 28. March 2022, 09:00 o'clock the right turn lane towards 5. District on the departure ramp of the Margaret belt coming from Hauptbahnhof to …<br/>[Since 27.03.2022]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Matzleinsdorfer Platz under structure ÖBB]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">985cb2eab47d7dfc649141d0e0566ab1d5cc4b69bceec32f32dda1bdffaded44</guid>
-      <pubDate>Sun, 14 Mar 2021 01:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 12:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 14 Mar 2021 01:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 31 Dec 2028 01:00:00 +0100</ext:ends_at>
-      <description>In order to improve and increase the safety measures during the tunnelling work of the underground construction, one of the two … will be placed under the bridge structure of the ÖBB [Since 14.03.2021]</description>
-      <content:encoded><![CDATA[In order to improve and increase the safety measures during the tunnelling work of the underground construction, one of the two … will be placed under the bridge structure of the ÖBB<br/>[Since 14.03.2021]]]></content:encoded>
     </item>
   </channel>
 </rss>

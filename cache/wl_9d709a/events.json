@@ -554,6 +554,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "71: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
+    "pubDate": "2026-05-25T21:49:20+02:00",
+    "starts_at": "2026-05-25T21:53:16+02:00",
+    "ends_at": "2026-05-25T22:53:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-05-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Verkehrsunfall",
+    "description": "Linie 71: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 22:10 Uhr. Grund: Verkehrsunfall im Bereich Simmeringer Hauptstraße 48.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
+    "pubDate": "2026-05-25T21:49:00+02:00",
+    "starts_at": "2026-05-25T21:49:00+02:00",
+    "ends_at": "2026-05-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-05-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 116",
     "description": "Bauarbeiten\nBusse halten Landstraßer Hauptstraße 116",
     "link": "https://www.wienerlinien.at/ogd_realtime",
