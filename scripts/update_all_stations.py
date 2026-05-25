@@ -580,6 +580,44 @@ def _partition_stations(
     return valid, quarantined
 
 
+def _dedupe_exact_duplicates(
+    stations: Sequence[Mapping[str, Any]],
+) -> tuple[list[Mapping[str, Any]], int]:
+    """Drop byte-identical duplicate entries, preserving first-seen order.
+
+    A station directory must never carry two identical records. When it
+    does — e.g. the same ``oebb_geonetz`` entry preserved twice through the
+    ``update_station_directory`` existing-file → ``manual_stations``
+    round-trip, whose ``final_stations.extend(manual_stations)`` assembly
+    has no dedup pass — the intentional "a station's own ``bst_code`` is
+    also one of its aliases" rule (``enrich_station_aliases``) turns the
+    pair into a *cross-station* ID collision: copy A's alias shadows copy
+    B's ``bst_code`` and vice versa. ``_find_cross_station_id_conflicts``
+    self-excludes by object identity, so a single copy is fine, but two
+    copies both fire and the auto-quarantine then removes *every* entry
+    matching that identifier — silently dropping a valid station from the
+    directory (observed for Wien Siebenhirten / Wien Handelskai). Collapsing
+    exact duplicates to one copy restores the self-exclusion invariant.
+
+    Only byte-identical entries are merged. Two records that share an
+    identity field but differ elsewhere are a genuine conflict and are left
+    untouched for ``_find_identity_field_conflicts`` to surface.
+    """
+    seen: set[str] = set()
+    deduped: list[Mapping[str, Any]] = []
+    removed = 0
+    for entry in stations:
+        fingerprint = json.dumps(
+            dict(entry), sort_keys=True, ensure_ascii=True, default=str
+        )
+        if fingerprint in seen:
+            removed += 1
+            continue
+        seen.add(fingerprint)
+        deduped.append(entry)
+    return deduped, removed
+
+
 def _write_stations_payload(
     path: Path, stations: Sequence[Mapping[str, Any]]
 ) -> None:
@@ -735,6 +773,25 @@ def main(argv: Sequence[str] | None = None) -> int:
                 "exit_code": 0,
                 "duration_s": round(duration, 2),
             })
+
+        # Collapse byte-identical duplicate entries before validation.
+        # ``update_station_directory.py`` assembles its output as
+        # ``fresh + manual_stations`` with no dedup pass, so a station
+        # preserved through the existing-file → manual round-trip can be
+        # written twice. A duplicated record self-collides on its own
+        # ``bst_code``-as-alias and would otherwise auto-quarantine the
+        # whole station every run (see ``_dedupe_exact_duplicates``).
+        merged_before_validation = _load_stations(tmp_stations_path)
+        deduped_stations, removed_duplicates = _dedupe_exact_duplicates(
+            merged_before_validation
+        )
+        if removed_duplicates:
+            logging.warning(
+                "Removed %d byte-identical duplicate station entr%s before validation",
+                removed_duplicates,
+                "y" if removed_duplicates == 1 else "ies",
+            )
+            _write_stations_payload(tmp_stations_path, deduped_stations)
 
         # Run validation
         logging.info("Validating merged %s", tmp_stations_path)
