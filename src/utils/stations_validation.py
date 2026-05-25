@@ -858,15 +858,33 @@ def _find_cross_station_id_conflicts(
 
             if norm_alias in id_map:
                 for colliding_entry, field in id_map[norm_alias]:
-                    if colliding_entry is not entry:
-                        yield CrossStationIDIssue(
-                            identifier=_format_identifier(entry),
-                            name=str(entry.get("name", "")).strip() or "<unknown>",
-                            alias=alias.strip(),
-                            colliding_identifier=_format_identifier(colliding_entry),
-                            colliding_name=str(colliding_entry.get("name", "")).strip() or "<unknown>",
-                            colliding_field=field,
-                        )
+                    if colliding_entry is entry:
+                        continue
+                    # Skip when the alias is simply the entry's OWN identity
+                    # code in the same field. ``enrich_station_aliases``
+                    # deliberately lists a station's own ``bst_code`` among
+                    # its aliases, so a duplicate / shared-code record (e.g.
+                    # two "Mb  H2H" Siebenhirten entries) makes each copy's
+                    # own-code alias "shadow" the other's ``bst_code``. That
+                    # is a duplicate / shared-identity collision — surfaced
+                    # (non-blocking) by ``_find_identity_field_conflicts`` —
+                    # not a genuine alias-shadows-another-station ambiguity.
+                    # Firing here would auto-quarantine *every* copy and drop
+                    # the station entirely (Wien Siebenhirten / Handelskai).
+                    own_val = entry.get(field)
+                    if (
+                        isinstance(own_val, str | int)
+                        and _normalize_token(str(own_val)) == norm_alias
+                    ):
+                        continue
+                    yield CrossStationIDIssue(
+                        identifier=_format_identifier(entry),
+                        name=str(entry.get("name", "")).strip() or "<unknown>",
+                        alias=alias.strip(),
+                        colliding_identifier=_format_identifier(colliding_entry),
+                        colliding_name=str(colliding_entry.get("name", "")).strip() or "<unknown>",
+                        colliding_field=field,
+                    )
 
 
 def _find_identity_field_conflicts(

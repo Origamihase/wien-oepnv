@@ -69,15 +69,21 @@ def test_dedupe_keeps_distinct_entries() -> None:
     assert len(deduped) == 2
 
 
-def test_duplicate_triggers_cross_station_collision_but_single_copy_is_clean() -> None:
-    """The end-to-end link: duplicate fires the collision, dedup clears it."""
+def test_dedupe_collapses_duplicate_and_result_is_collision_free() -> None:
+    """The dedup pass collapses byte-identical copies to one clean record.
+
+    The validator's self-collision guard (see
+    ``tests/test_stations_validation_self_collision_guard.py``) means two
+    same-``bst_code`` copies are no longer mis-flagged as a cross-station
+    collision, so neither the pair nor the single copy raises an issue; the
+    dedup pass additionally removes the redundant copy so the directory
+    never carries two identical records.
+    """
     duplicated = [_siebenhirten(), _siebenhirten()]
-    issues_with_dup = list(_find_cross_station_id_conflicts(duplicated))
-    # Both copies cross-collide on the shared ``bst_code``-as-alias.
-    assert len(issues_with_dup) >= 1
-    assert any(issue.colliding_field == "bst_code" for issue in issues_with_dup)
+    # Shared-bst_code self-shadow is guarded → no cross-station issue.
+    assert list(_find_cross_station_id_conflicts(duplicated)) == []
 
     deduped, removed = update_all_stations._dedupe_exact_duplicates(duplicated)
     assert removed == 1
-    # A single copy self-excludes (``colliding_entry is not entry``) → clean.
+    assert len(deduped) == 1
     assert list(_find_cross_station_id_conflicts(deduped)) == []
