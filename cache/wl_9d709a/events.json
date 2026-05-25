@@ -350,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7",
+    "pubDate": "2026-05-25T17:32:32+02:00",
+    "starts_at": "2026-05-25T17:32:39+02:00",
+    "ends_at": "2026-05-25T18:32:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-05-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -548,7 +560,7 @@
     "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
     "pubDate": "2026-05-25T16:46:00+02:00",
     "starts_at": "2026-05-25T16:46:00+02:00",
-    "ends_at": "2026-05-25T23:55:00+02:00",
+    "ends_at": "2026-05-25T18:15:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-05-25"
   },
   {

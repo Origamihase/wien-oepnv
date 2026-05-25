@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 25 May 2026 17:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 18:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12A: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7</guid>
+      <pubDate>Mon, 25 May 2026 17:32:32 +0200</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 18:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 25 May 2026 17:32:39 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 25 May 2026 18:32:00 +0200</ext:ends_at>
+      <description>[Am 25.05.2026]</description>
+      <content:encoded><![CDATA[[Am 25.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -27,7 +38,7 @@
       <pubDate>Mon, 25 May 2026 16:46:00 +0200</pubDate>
       <ext:first_seen>Mon, 25 May 2026 17:01:06 +0200</ext:first_seen>
       <ext:starts_at>Mon, 25 May 2026 16:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 25 May 2026 18:15:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.05.2026]]]></content:encoded>
     </item>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 30 May 2026 02:00:00 +0200</ext:ends_at>
       <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag und bei Freihaltung einer mindestens 3,00 m breiten Restfahrbahn. [Seit 19.10.2025]</description>
       <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag und bei Freihaltung einer mindestens 3,00 m breiten Restfahrbahn.<br/>[Seit 19.10.2025]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Stadionbrücke von Ludwig-Koeßler-Platz und Erdberger Lände bis Schüttelstraße und Stadionallee]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">a8aa22286913ca3c805e28e9c2f5da7f05ded8c7d67105c4757c43d5da985acb</guid>
-      <pubDate>Mon, 03 Feb 2025 01:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 12:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 03 Feb 2025 01:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 31 Jul 2026 02:00:00 +0200</ext:ends_at>
-      <description>Die Instandsetzungsarbeiten und erforderlichen Umbauarbeiten an der Stadionbrücke aufgrund der Verlängerung der Straßenbahnlinie 18 werden in mehreren Bauphasen durchgeführt. [Seit 03.02.2025]</description>
-      <content:encoded><![CDATA[Die Instandsetzungsarbeiten und erforderlichen Umbauarbeiten an der Stadionbrücke aufgrund der Verlängerung der Straßenbahnlinie 18 werden in mehreren Bauphasen durchgeführt.<br/>[Seit 03.02.2025]]]></content:encoded>
     </item>
   </channel>
 </rss>
