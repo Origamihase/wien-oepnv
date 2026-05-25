@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 25 May 2026 03:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 04:00:44 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[46: foreign traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eed4ea629d44bb9f67a32b24760e7fc7e9fbb8fab9efd3a43457846fae26b28d</guid>
-      <pubDate>Mon, 25 May 2026 00:16:00 +0200</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 00:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 00:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction in the direction of Josefstädter Straße U. expected duration: 01:00 o'clock. Reason: Foreigner traffic accident in the stop area Thaliastraße U. [On 25.05.2026]</description>
-      <content:encoded><![CDATA[service obstruction in the direction of Josefstädter Straße U. expected duration: 01:00 o'clock. Reason: Foreigner traffic accident in the stop area Thaliastraße U.<br/>[On 25.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Brünner Straße 59]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 30 May 2026 02:00:00 +0200</ext:ends_at>
       <description>The pipe laying work (preparations for underground construction) is generally carried out during the day and when a residual runway at least 3.00 m wide is kept free. [Since 19.10.2025]</description>
       <content:encoded><![CDATA[The pipe laying work (preparations for underground construction) is generally carried out during the day and when a residual runway at least 3.00 m wide is kept free.<br/>[Since 19.10.2025]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Matzleinsdorfer Platz under structure ÖBB]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">9aaa5be2cbe80f8b0296a978882b301df191bf3d771a1f7e38c42da1bea569d2</guid>
+      <pubDate>Sun, 14 Mar 2021 01:00:00 +0100</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 23:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 14 Mar 2021 01:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 31 Dec 2028 01:00:00 +0100</ext:ends_at>
+      <description>In order to improve and increase the safety measures during the tunnelling work of the underground construction, one of the two … will be placed under the bridge structure of the ÖBB [Since 14.03.2021]</description>
+      <content:encoded><![CDATA[In order to improve and increase the safety measures during the tunnelling work of the underground construction, one of the two … will be placed under the bridge structure of the ÖBB<br/>[Since 14.03.2021]]]></content:encoded>
     </item>
   </channel>
 </rss>
