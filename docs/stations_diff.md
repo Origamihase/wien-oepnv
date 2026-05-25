@@ -1,22 +1,22 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-05-25T18:45:09+00:00_
+_Erzeugt am: 2026-05-25T21:34:41+00:00_
 
-**Stationen: 2238 → 2236 (Δ -2)**
+**Stationen: 2238 → 2238 (Δ +0)**
 
 ## Hinzugefügt (0)
 
 _Keine._
 
-## Entfernt (2)
+## Entfernt (0)
 
-- `bst:1371` — Siebenhirten
-- `bst:1586` — Handelskai
+_Keine._
 
 ## Umbenannt (0)
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (0)
+## Koordinaten verschoben (≥ 100 m) (2)
 
-_Keine._
+- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
+- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)
