@@ -1,12 +1,12 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-05-25T22:16:25+00:00_
+_Erzeugt am: 2026-05-25T22:44:13+00:00_
 
-**Stationen: 2237 → 2238 (Δ +1)**
+**Stationen: 2237 → 2237 (Δ +0)**
 
-## Hinzugefügt (1)
+## Hinzugefügt (0)
 
-- `bst:1586` — Handelskai
+_Keine._
 
 ## Entfernt (0)
 
