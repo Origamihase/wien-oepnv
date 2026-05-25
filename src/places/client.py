@@ -635,7 +635,7 @@ class GooglePlacesClient:
             for detail_item in details:
                 if not isinstance(detail_item, dict):
                     continue
-                detail_dict = cast('dict[str, Any]', detail_item)
+                detail_dict = cast(dict[str, Any], detail_item)
                 detail_type = detail_dict.get("@type")
                 if not isinstance(detail_type, str) or not detail_type.endswith("BadRequest"):
                     continue
