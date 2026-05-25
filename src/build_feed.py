@@ -3536,9 +3536,11 @@ def _compose_description(summary: str, time_line: str) -> tuple[str, str]:
     # ``HTMLParser(convert_charrefs=True)``, so a compromised/MITM'd upstream
     # could otherwise land an executable tag in subscribers' readers. Escape
     # each text part for the HTML context; only the builder's own structural
-    # ``<br/>`` separators stay live. ``desc_text`` below is for the
-    # ``<description>`` XML text node and is left unescaped — ElementTree
-    # applies the correct XML escaping there.
+    # ``<br/>`` separators stay live. ``desc_text_truncated`` below stays PLAIN
+    # display text here (so the WL directional ``>`` markers, line-prefix logic
+    # and truncation tests keep operating on the unescaped form); contextual
+    # output-encoding for it happens at its HTML-rendered ``<description>`` sink
+    # in :func:`_emit_item`.
     desc_html = "<br/>".join(html.escape(part, quote=False) for part in desc_parts)
     desc_text = " ".join(desc_parts)
     if len(desc_text) > feed_config.DESCRIPTION_CHAR_LIMIT:
@@ -3973,7 +3975,23 @@ def _emit_item(
         ET.SubElement(item, "{https://wien-oepnv.example/schema}ends_at").text = _fmt_rfc2822(ends_at)
 
     # Description
-    ET.SubElement(item, "description").text = formatted.desc_text_truncated
+    # Security (stored HTML/JS injection on the public feed — ``<description>``
+    # sibling of the ``<content:encoded>`` output-encoding fix): ``<description>``
+    # is an XML TEXT node, so ElementTree escapes ``<>&`` for XML *well-formedness*
+    # on serialise. That alone is NOT enough — a conformant RSS reader XML-decodes
+    # the node exactly ONCE and the overwhelming majority then render the result
+    # as HTML (RSS 2.0 ``<description>`` is HTML by convention; ``content:encoded``
+    # was added only to carry the *full* body). ``desc_text_truncated`` carries
+    # plain display text in which an upstream ``&lt;img onerror=…&gt;`` has already
+    # been decoded by ``html_to_text`` into a live ``<img onerror=…>``; without
+    # output-encoding here that tag would execute in the subscriber's reader after
+    # its single XML-decode. HTML-escape at this sink so the reader's lone
+    # XML-decode yields inert ``&lt;img…&gt;`` *source* text. This is the single
+    # per-item ``<description>`` sink for both the DE and EN feeds (``_emit_item``
+    # is invoked once per language with the language-resolved ``formatted``).
+    ET.SubElement(item, "description").text = html.escape(
+        formatted.desc_text_truncated, quote=False
+    )
 
     # content:encoded
     ET.SubElement(item, "{http://purl.org/rss/1.0/modules/content/}encoded").text = PH_CONTENT

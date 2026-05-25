@@ -1,5 +1,57 @@
 # Sentinel's Journal
 
+## 2026-05-25 - Stored HTML/JS Injection (XSS) in Published `<description>` — Unescaped Sibling of the `<content:encoded>` Output-Encoding Fix
+
+**Vulnerability:** The 2026-05-24 round HTML-escaped the `<content:encoded>`
+CDATA body but EXPLICITLY left the per-item `<description>` XML text node
+unescaped, with the comment *"``desc_text`` below is for the `<description>`
+XML text node and is left unescaped — ElementTree applies the correct XML
+escaping there."* That reasoning conflates XML-**structural** safety with
+HTML-**rendering** safety — the exact confusion the 2026-05-24 entry itself
+diagnosed for `<content:encoded>`. `<description>` is rendered as HTML by the
+overwhelming majority of RSS readers (RSS 2.0 convention; `content:encoded`
+was added only to carry the *full* body). The same upstream
+`&lt;img src=x onerror=…&gt;` that `html_to_text`
+(`HTMLParser(convert_charrefs=True)`) decodes into a LIVE `<img onerror=…>`
+in `summary` (`src/build_feed.py:_format_item_content`) flows unescaped through
+`_compose_description` → `desc_text_truncated` → `<description>`.text
+(`_emit_item`). ElementTree escapes `<>&` exactly ONCE for XML
+well-formedness; a conformant reader XML-decodes that node exactly once →
+`<img onerror=…>` → and (rendering description as HTML) executes it. Stored
+XSS on the public feed (`https://origamihase.github.io/wien-oepnv/feed.xml`),
+the direct sibling of the `<content:encoded>` vector. `_sanitize_text`
+(`_CONTROL_RE`) strips only invisible/control/BiDi/zero-width chars and NEVER
+`<` (0x3C) / `>` (0x3E), so it never closed this. Confirmed by an end-to-end
+PoC (`tests/test_description_html_injection.py`) that drives the real
+`_emit_item`, serialises the actually-published `<description>` element to XML,
+re-parses it (the reader's single XML-decode), then HTML-renders the result
+with a reader-accurate `HTMLParser(convert_charrefs=True)`: pre-fix the live
+`img` / `script` start tag + the `onerror` event-handler attribute survive
+(`live_tags == ['img']` / `['script']`); post-fix the bytes are inert escaped
+source (`&lt;img…&gt;`).
+
+**Learning:** Output-encoding must cover EVERY field a reader renders as HTML —
+not just the one CDATA field. The fix is contextual output-encoding AT THE
+SINK: `html.escape(formatted.desc_text_truncated, quote=False)` on the
+`<description>` `ET.SubElement` in `_emit_item` — the single per-item
+`<description>` sink for BOTH the DE and EN feeds (`_emit_item` is invoked once
+per language with the language-resolved `FormattedContent`, so one escape
+covers both). Escaping at the SINK (not inside `_compose_description`, where the
+2026-05-24 `desc_html` fix lives) keeps `desc_text_truncated` PLAIN display text
+so the WL directional-`>` markers, line-prefix logic and truncation tests keep
+operating on the unescaped form — the XML-text-node-rendered-as-HTML encoding
+belongs to the sink that *knows* the rendering context (textbook contextual
+output-encoding). CDATA-HTML bodies pre-encode at composition (the body is
+*built* as HTML there); XML-text-node-rendered-as-HTML fields encode at their
+element sink. The general rule from 2026-05-24 — *"every sink that renders its
+output as HTML must HTML-escape it"* — had enumerated ONLY `<content:encoded>`;
+`<description>` is the second member and was hiding behind ElementTree's XML
+escaping. The named "plain-text-into-raw-HTML/CDATA audit walker" watch-list
+item now has TWO confirmed members; a future generic walker must enumerate both
+(a) CDATA HTML bodies AND (b) XML text nodes whose RSS element name is
+HTML-rendered by convention (`description`, `content:encoded`) — the latter is
+the trap, because ElementTree silently makes the XML *look* safe.
+
 ## 2026-05-24 - Stored HTML/JS Injection (XSS) in Published `<content:encoded>` via `html_to_text` Entity Double-Decode
 
 **Vulnerability:** `_compose_description` (`src/build_feed.py`) built the
