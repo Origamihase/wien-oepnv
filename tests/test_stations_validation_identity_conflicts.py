@@ -132,6 +132,48 @@ def test_bst_id_and_bst_code_duplicates_flagged(tmp_path: Path) -> None:
     assert fields == {"bst_id", "bst_code"}
 
 
+def test_eva_nr_duplicate_flagged(tmp_path: Path) -> None:
+    """Two records sharing the UIC ``eva_nr`` but with different
+    ``bst_code`` / ``bst_id`` — the Handelskai pattern, where an
+    ``oebb_geonetz`` Betriebsstelle record duplicated the canonical
+    ``Wien Handelskai`` Verkehrsstation — must be flagged. The pair slips
+    past the other four identifier keys because those differ."""
+    path = tmp_path / "stations.json"
+    entries = [
+        _make_entry(
+            name="Handelskai",
+            eva_nr="8101934",
+            bst_code="Nw  H2",
+            bst_id="1586",
+            source="oebb_geonetz,osm",
+            aliases=["Handelskai"],
+            latitude=48.242143,
+            longitude=16.385980,
+        ),
+        _make_entry(
+            name="Wien Handelskai",
+            eva_nr="8101934",
+            bst_code="Hak",
+            bst_id="779",
+            wl_diva="60201705",
+            source="hafas,oebb,oebb_geonetz,osm,wl",
+            aliases=["Wien Handelskai"],
+            latitude=48.241418,
+            longitude=16.384869,
+        ),
+    ]
+    path.write_text(json.dumps(entries), encoding="utf-8")
+
+    report = validate_stations(path)
+    eva_conflicts = [
+        c for c in report.identity_field_conflicts if c.field == "eva_nr"
+    ]
+    assert len(eva_conflicts) == 1
+    assert eva_conflicts[0].value == "8101934"
+    assert set(eva_conflicts[0].names) == {"Handelskai", "Wien Handelskai"}
+    assert report.has_issues
+
+
 def test_unique_identifiers_produce_no_conflicts(tmp_path: Path) -> None:
     path = tmp_path / "stations.json"
     entries = [
