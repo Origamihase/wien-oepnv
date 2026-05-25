@@ -763,12 +763,16 @@ def _feature_to_event(feature: dict[str, Any]) -> ConstructionEvent | None:
     description = _format_description(properties, start, end)
     location = _build_location(properties, geometry)
     context = _build_context(properties)
-    identifier = (
-        properties.get("OGD_ID")
-        or properties.get("OBJECTID")
-        or properties.get("ID")
-        or title
-    )
+    # The Baustellen GUID must stay STABLE for the same physical construction
+    # site across WFS refreshes: it keys ``first_seen``, and a changing GUID
+    # makes the site look brand-new on every change, resetting first_seen so it
+    # perpetually dominates the first_seen-sorted feed. ``OBJECTID`` / ``ID`` are
+    # ArcGIS query-time row identifiers that are NOT stable across the upstream's
+    # re-indexing — observed churning 3x in two days for the *same* site
+    # (identical title + start + end, three different OBJECTIDs). Derive the
+    # identity from a stable open-data id when the layer offers one, otherwise
+    # from the stable title; never from the volatile OBJECTID/ID row number.
+    identifier = properties.get("OGD_ID") or title
     guid = make_guid("baustellen", str(identifier), start.isoformat() if start else "", end.isoformat() if end else "")
     pub_date = start or end or datetime.now(tz=VIENNA_TZ)
     return ConstructionEvent(
