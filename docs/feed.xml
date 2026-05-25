@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 25 May 2026 08:30:42 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 09:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[7A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">214cec6cae971effd21b47b0b3859b88354324a6fc53301d0ac43a41c2f9bb78</guid>
-      <pubDate>Mon, 25 May 2026 07:33:00 +0200</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 08:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 07:33:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 25.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 25.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Brünner Straße 59]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 30 May 2026 02:00:00 +0200</ext:ends_at>
       <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag und bei Freihaltung einer mindestens 3,00 m breiten Restfahrbahn. [Seit 19.10.2025]</description>
       <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag und bei Freihaltung einer mindestens 3,00 m breiten Restfahrbahn.<br/>[Seit 19.10.2025]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Matzleinsdorfer Platz unter Tragwerk ÖBB]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">9aaa5be2cbe80f8b0296a978882b301df191bf3d771a1f7e38c42da1bea569d2</guid>
+      <pubDate>Sun, 14 Mar 2021 01:00:00 +0100</pubDate>
+      <ext:first_seen>Sun, 24 May 2026 23:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 14 Mar 2021 01:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 31 Dec 2028 01:00:00 +0100</ext:ends_at>
+      <description>Zur Verbesserung und Erhöhung der Sicherungsmaßnahmen während der Tunnelvortriebarbeiten des U-Bahnbaus wird unter dem Brückentragwerk der ÖBB eine der beiden … [Seit 14.03.2021]</description>
+      <content:encoded><![CDATA[Zur Verbesserung und Erhöhung der Sicherungsmaßnahmen während der Tunnelvortriebarbeiten des U-Bahnbaus wird unter dem Brückentragwerk der ÖBB eine der beiden …<br/>[Seit 14.03.2021]]]></content:encoded>
     </item>
   </channel>
 </rss>
