@@ -349,6 +349,59 @@ def test_remove_missing_diva_warns(
     assert any("60251359" in r.getMessage() for r in caplog.records)
 
 
+def test_remove_by_bst_code_drops_all_matches(tmp_path: Path) -> None:
+    """``remove`` keyed on ``bst_code`` (for oebb_geonetz Betriebsstellen
+    that carry no wl_diva, e.g. the regenerating Handelskai 'Nw  H2'
+    record) removes EVERY matching entry, so a build that re-creates the
+    redundant record — even duplicated — cannot leave a copy behind."""
+    stations_path = tmp_path / "stations.json"
+    overrides_path = tmp_path / "overrides.json"
+
+    _write(stations_path, {"stations": [
+        {"name": "Wien Handelskai", "bst_code": "Hak", "wl_diva": "60201705",
+         "eva_nr": "8101934", "source": "oebb,wl",
+         "latitude": 48.2414, "longitude": 16.3849,
+         "in_vienna": True, "pendler": False, "aliases": ["Wien Handelskai"]},
+        {"name": "Handelskai", "bst_code": "Nw  H2", "eva_nr": "8101934",
+         "source": "oebb_geonetz,osm",
+         "latitude": 48.2421, "longitude": 16.3860,
+         "in_vienna": True, "pendler": False, "aliases": ["Handelskai"]},
+        {"name": "Handelskai", "bst_code": "Nw  H2", "eva_nr": "8101934",
+         "source": "oebb_geonetz,osm",
+         "latitude": 48.2421, "longitude": 16.3860,
+         "in_vienna": True, "pendler": False, "aliases": ["Handelskai"]},
+    ]})
+    _write(overrides_path, {"overrides": [
+        {"op": "remove", "bst_code": "Nw  H2", "reason": "test"}
+    ]})
+
+    rc = apply_station_overrides.apply_overrides(stations_path, overrides_path)
+    assert rc == 0
+    names = [s["name"] for s in _stations_from(stations_path)]
+    assert names == ["Wien Handelskai"]  # both "Nw  H2" copies removed
+
+
+def test_remove_missing_bst_code_warns(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture,
+) -> None:
+    stations_path = tmp_path / "stations.json"
+    overrides_path = tmp_path / "overrides.json"
+
+    _write(stations_path, {"stations": [
+        {"name": "Other", "bst_code": "Xy", "source": "oebb",
+         "latitude": 48.1, "longitude": 16.1,
+         "in_vienna": True, "pendler": False, "aliases": ["Other"]},
+    ]})
+    _write(overrides_path, {"overrides": [
+        {"op": "remove", "bst_code": "Nw  H2", "reason": "test"}
+    ]})
+
+    with caplog.at_level(logging.WARNING, logger="apply_station_overrides"):
+        rc = apply_station_overrides.apply_overrides(stations_path, overrides_path)
+    assert rc == 0
+    assert any("Nw  H2" in r.getMessage() for r in caplog.records)
+
+
 # ---------------------------------------------------------------------------
 # Schema validation
 # ---------------------------------------------------------------------------
@@ -444,6 +497,11 @@ def test_committed_overrides_file_schema() -> None:
         if entry["op"] == "patch_coords":
             has_eva = entry.get("eva_nr") is not None and bool(str(entry["eva_nr"]).strip())
             assert has_diva or has_eva
+        elif entry["op"] == "remove":
+            # ``remove`` may key on ``bst_code`` for oebb_geonetz
+            # Betriebsstellen that carry no wl_diva.
+            has_bst_code = isinstance(entry.get("bst_code"), str) and bool(entry["bst_code"].strip())
+            assert has_diva or has_bst_code
         else:
             assert has_diva
         assert isinstance(entry.get("reason"), str) and entry["reason"]
@@ -473,6 +531,9 @@ def test_committed_overrides_cover_the_known_drifts() -> None:
         diva = o.get("wl_diva")
         if isinstance(diva, str) and diva.strip():
             return diva.strip()
+        bst_code = o.get("bst_code")
+        if isinstance(bst_code, str) and bst_code.strip():
+            return f"bst_code:{bst_code.strip()}"
         return f"eva:{str(o.get('eva_nr') or '').strip()}"
 
     by_op = {(o["op"], _ident(o)) for o in payload["overrides"]}
@@ -481,3 +542,4 @@ def test_committed_overrides_cover_the_known_drifts() -> None:
     assert ("patch_coords", "60201954") in by_op  # Leopoldine-Padaurek
     assert ("remove", "60251359") in by_op  # Sofienalpenstraße, Roßkopfgasse
     assert ("patch_coords", "eva:8100655") in by_op  # Bad Fischau geographic duplicate
+    assert ("remove", "bst_code:Nw  H2") in by_op  # Handelskai eva-duplicate

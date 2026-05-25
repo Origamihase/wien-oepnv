@@ -246,20 +246,48 @@ def _op_patch_coords(stations: list[dict[str, Any]], override: dict[str, Any]) -
 
 
 def _op_remove(stations: list[dict[str, Any]], override: dict[str, Any]) -> str:
-    diva = override["wl_diva"]
-    for i, entry in enumerate(stations):
-        value = entry.get("wl_diva")
-        if isinstance(value, str) and value.strip() == diva:
-            removed_name = entry.get("name", "?")
-            stations.pop(i)
-            return f"removed wl_diva={diva} ({removed_name!r}) at index {i}"
-    log.warning(
-        "remove: wl_diva=%s not present in stations.json — skipping "
-        "(the upstream may have removed it already; consider retiring "
-        "this override)",
-        diva,
-    )
-    return "skip (target missing)"
+    diva = override.get("wl_diva")
+    if isinstance(diva, str) and diva.strip():
+        target = diva.strip()
+        for i, entry in enumerate(stations):
+            value = entry.get("wl_diva")
+            if isinstance(value, str) and value.strip() == target:
+                removed_name = entry.get("name", "?")
+                stations.pop(i)
+                return f"removed wl_diva={target} ({removed_name!r}) at index {i}"
+        log.warning(
+            "remove: wl_diva=%s not present in stations.json — skipping "
+            "(the upstream may have removed it already; consider retiring "
+            "this override)",
+            target,
+        )
+        return "skip (target missing)"
+
+    # bst_code targeting: for oebb_geonetz Betriebsstellen that carry no
+    # wl_diva and that the build re-creates each run (e.g. the Handelskai
+    # "Nw  H2" record, which duplicates the canonical "Wien Handelskai" by
+    # eva_nr). Remove EVERY match so a regenerated copy cannot survive into
+    # the validator gate.
+    code = str(override.get("bst_code") or "").strip()
+    removed_names = [
+        str(entry.get("name", "?"))
+        for entry in stations
+        if isinstance(entry.get("bst_code"), str) and entry["bst_code"].strip() == code
+    ]
+    if not removed_names:
+        log.warning(
+            "remove: bst_code=%s not present in stations.json — skipping "
+            "(the upstream may have removed it already; consider retiring "
+            "this override)",
+            code,
+        )
+        return "skip (target missing)"
+    stations[:] = [
+        entry
+        for entry in stations
+        if not (isinstance(entry.get("bst_code"), str) and entry["bst_code"].strip() == code)
+    ]
+    return f"removed bst_code={code} ({removed_names!r})"
 
 
 _HANDLERS = {
@@ -321,8 +349,12 @@ def apply_overrides(
             )
             return 1
         has_diva = isinstance(diva, str) and bool(diva.strip())
+        bst_code = raw_override.get("bst_code")
+        has_bst_code = isinstance(bst_code, str) and bool(bst_code.strip())
         # ``patch_coords`` may key on ``eva_nr`` (manual ÖBB stations have no
-        # ``wl_diva``); ``restore`` / ``remove`` still require ``wl_diva``.
+        # ``wl_diva``); ``remove`` may key on ``bst_code`` (oebb_geonetz
+        # Betriebsstellen have no ``wl_diva``); ``restore`` still requires
+        # ``wl_diva``.
         if op == "patch_coords":
             has_eva = eva is not None and bool(str(eva).strip())
             if not (has_diva or has_eva):
@@ -331,12 +363,24 @@ def apply_overrides(
                     index,
                 )
                 return 1
+        elif op == "remove":
+            if not (has_diva or has_bst_code):
+                log.error(
+                    "Override #%d (op=remove) needs a wl_diva or bst_code",
+                    index,
+                )
+                return 1
         elif not has_diva:
             log.error(
                 "Override #%d (op=%s) missing or invalid wl_diva", index, op
             )
             return 1
-        ident = str(diva).strip() if has_diva else f"eva_nr={str(eva).strip()}"
+        if has_diva:
+            ident = str(diva).strip()
+        elif has_bst_code:
+            ident = f"bst_code={str(bst_code).strip()}"
+        else:
+            ident = f"eva_nr={str(eva).strip()}"
         handler = _HANDLERS[op]
         try:
             result = handler(stations, raw_override)
