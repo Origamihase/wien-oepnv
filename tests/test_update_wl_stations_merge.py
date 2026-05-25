@@ -959,3 +959,46 @@ def test_merge_sources_emits_alphabetical_order() -> None:
         update_wl_stations._merge_sources("google_places,vor", "vor", "wl")
         == "google_places,vor,wl"
     )
+
+
+def test_drop_distant_name_contamination() -> None:
+    """A wl_stop/alias named like a >2km station is dropped; a nearby
+    interchange name is kept. Mirrors the real Grinzing→Karlsplatz case."""
+    entries: list[dict[str, object]] = [
+        {
+            "name": "Wien Grinzing (WL)",
+            "latitude": 48.2554,
+            "longitude": 16.3421,
+            "aliases": ["Grinzing", "Karlsplatz", "Grinzinger Allee"],
+            "wl_stops": [
+                {"stop_id": "1", "name": "Grinzing", "latitude": 48.2554, "longitude": 16.3421},
+                {"stop_id": "2", "name": "Karlsplatz", "latitude": 48.2554, "longitude": 16.3421},
+            ],
+        },
+        {  # 6.4 km from Grinzing → its name on Grinzing is contamination
+            "name": "Wien Karlsplatz",
+            "latitude": 48.2008,
+            "longitude": 16.3694,
+            "aliases": ["Karlsplatz"],
+            "wl_stops": [],
+        },
+        {  # ~250 m from Grinzing → legitimate nearby interchange name, kept
+            "name": "Wien Grinzinger Allee (WL)",
+            "latitude": 48.2540,
+            "longitude": 16.3450,
+            "aliases": ["Grinzinger Allee"],
+            "wl_stops": [],
+        },
+    ]
+
+    dropped = update_wl_stations._drop_distant_name_contamination(entries)
+
+    assert dropped == 2  # the far "Karlsplatz" alias + the "Karlsplatz" wl_stop
+    grinzing = cast(Mapping[str, object], entries[0])
+    aliases = cast("list[str]", grinzing["aliases"])
+    stops = cast("list[Mapping[str, object]]", grinzing["wl_stops"])
+    assert "Karlsplatz" not in aliases
+    assert all(s.get("name") != "Karlsplatz" for s in stops)
+    # nearby interchange name and own name are preserved
+    assert "Grinzinger Allee" in aliases
+    assert "Grinzing" in aliases

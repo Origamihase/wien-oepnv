@@ -79,6 +79,10 @@ def test_cli_stations_validate_writes_report(tmp_path: Path, monkeypatch: pytest
         coordinate_issues: list[str] = []
         gtfs_issues: list[str] = []
         security_issues: list[str] = []
+        cross_station_id_issues: list[str] = []
+        identity_field_conflicts: list[str] = []
+        provider_issues: list[str] = []
+        naming_issues: list[str] = []
 
         def to_markdown(self) -> str:
             return "dummy-report\n"
