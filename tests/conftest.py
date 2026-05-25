@@ -303,6 +303,7 @@ def _eagerly_import_breaker_modules() -> None:
     for module_name in (
         "src.places.osm_client",
         "src.places.hafas_client",
+        "src.places.client",
     ):
         try:
             importlib.import_module(module_name)

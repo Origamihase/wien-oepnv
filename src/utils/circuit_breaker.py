@@ -21,10 +21,11 @@ failure opens it again with a fresh timer.
 
 Why a project-local primitive instead of a third-party library:
 
-* The codebase has three ad-hoc resilience implementations
-  (``places/client.py`` instance counter, ``vor.py`` Emergency Stop,
-  WL/ÖBB urllib3-only). A shared primitive eliminates drift when a
-  fourth provider is added.
+* The codebase grew several ad-hoc resilience implementations
+  (``vor.py`` Emergency Stop, WL/ÖBB urllib3-only, and the former
+  ``places/client.py`` per-instance 5xx counter — since migrated to
+  this primitive). A shared primitive eliminates drift as further
+  providers adopt it.
 * The third-party options (``circuitbreaker``, ``pybreaker``) bring
   larger surface than we need and don't compose cleanly with our
   existing ``session_with_retries`` plumbing.
@@ -104,10 +105,10 @@ class CircuitBreaker:
       :class:`CircuitBreakerOpen` for ``recovery_timeout`` seconds.
       This prevents self-DDoS against a known-down upstream.
 
-    The recommended adoption pattern for a new provider (and the only
-    pattern in use today by Google Places) is to *wrap* the
-    network-fetcher entry point with the breaker, leaving the
-    underlying ``session_with_retries`` retry policy unchanged::
+    Two adoption styles are in use. The recommended one for a simple
+    network-fetcher entry point is to *wrap* it with :meth:`call`,
+    leaving the underlying ``session_with_retries`` retry policy
+    unchanged (OSM, HAFAS and the Stammstrecke-Hbf monitor)::
 
         _BREAKER = CircuitBreaker("yourapi", failure_threshold=5,
                                    recovery_timeout=300.0)
@@ -118,6 +119,13 @@ class CircuitBreaker:
             except CircuitBreakerOpen:
                 log.warning("yourapi breaker open; returning empty list")
                 return []
+
+    When the breaker must interleave with an in-method retry loop and
+    per-attempt accounting (Google Places: only 5xx count as failures,
+    and each HTTP attempt debits the monthly quota *before* it runs),
+    drive it with the lower-level :meth:`record_success` /
+    :meth:`record_failure` and read :attr:`state` to short-circuit,
+    rather than :meth:`call`.
 
     Args:
         name: Human-readable identifier used in log messages
