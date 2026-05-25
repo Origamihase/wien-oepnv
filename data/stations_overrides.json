@@ -411,6 +411,13 @@
       "reason": "Wien Sofienalpenstraße, Roßkopfgasse (DIVA 60251359) shares the exact haltepunkte coordinates (48.2471756, 16.2189477) with Wien Roßkopfgasse (DIVA 60251355) — both DIVAs are in haltestellen.csv (with different official coordinates) but their haltepunkte all collapse to the same point. Keep the simpler-named modern entry (DIVA 60251355, newer haltepunkt id 8216); drop the legacy intersection-name variant (DIVA 60251359, older haltepunkt ids 3921/3922).",
       "added": "2026-05-16",
       "expires_when": "Wiener Linien retires DIVA 60251359 from haltestellen.csv OR moves its haltepunkte to the genuine intersection location, ~150 m southwest of DIVA 60251355"
+    },
+    {
+      "op": "remove",
+      "bst_code": "Nw  H2",
+      "reason": "The build re-creates a standalone oebb_geonetz Betriebsstelle record 'Handelskai' (bst_code 'Nw  H2', no wl_diva) each run; it duplicates the canonical 'Wien Handelskai' Verkehrsstation by eva_nr 8101934 and is a pure subset (same eva_nr/ifopt_id/address — the canonical entry additionally carries wl_diva 60201705, vor_id and WL stops). The duplicate trips the eva_nr identity-conflict gate (validate_stations.py exits 1) and makes the bare 'Handelskai' lookup resolve to the impoverished record. Keyed on bst_code because the record has no wl_diva and its eva_nr is shared with the canonical entry; removes every match so a regenerated copy cannot survive into the validator.",
+      "added": "2026-05-26",
+      "expires_when": "The build no longer emits a standalone oebb_geonetz 'Handelskai' (bst_code 'Nw  H2') record separate from the canonical 'Wien Handelskai' — e.g. the GeoNetz/OSM merge reconciles Betriebsstellen against the Verkehrsstation by eva_nr."
     }
   ]
 }
