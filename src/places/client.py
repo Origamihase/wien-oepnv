@@ -9,7 +9,7 @@ import secrets
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Final, cast
+from typing import Any, Final, cast
 from collections.abc import Iterable, Iterator, Sequence
 
 import requests
