@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 25 May 2026 10:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 11:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[D: police operation Einstieg in the Wipplingerstraße]]></title>
+      <title><![CDATA[U4: delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584</guid>
-      <pubDate>Mon, 25 May 2026 09:46:00 +0200</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 10:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 09:50:03 +0200</ext:starts_at>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Mon, 25 May 2026 10:38:00 +0200</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 25 May 2026 10:38:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>No operation between stock exchange and Augasse. [On 25.05.2026]</description>
-      <content:encoded><![CDATA[No operation between stock exchange and Augasse.<br/>[On 25.05.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: defective vehicle. [On 25.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 25.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: service obstruction for rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
+      <pubDate>Mon, 25 May 2026 09:48:36 +0200</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 25 May 2026 10:54:49 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 25 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Absberggasse. expected duration: 11:10 watch. Reason: rescue operation in the Schlickgasse stop area. [On 25.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Absberggasse. expected duration: 11:10 watch. Reason: rescue operation in the Schlickgasse stop area.<br/>[On 25.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Brünner Straße 59]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 31 May 2026 02:00:00 +0200</ext:ends_at>
       <description>The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out during the day and, if necessary, during the night, during the time from 22:00 to 05:00 at … [11.01.2026 – 31.05.2026]</description>
       <content:encoded><![CDATA[The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out during the day and, if necessary, during the night, during the time from 22:00 to 05:00 at …<br/>[11.01.2026 – 31.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Schultheßgasse from crossing Halirschgasse and Gräffergasse to crossing Dittersdorfgasse and Fercher]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">901ed953855b29e0b6c57f141c465798a7b7c37eaa49ceb15e2be2f34351b9f6</guid>
-      <pubDate>Sun, 19 Oct 2025 02:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 24 May 2026 23:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Oct 2025 02:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 02:00:00 +0200</ext:ends_at>
-      <description>The pipe laying work (preparations for underground construction) is generally carried out during the day and when a residual runway at least 3.00 m wide is kept free. [Since 19.10.2025]</description>
-      <content:encoded><![CDATA[The pipe laying work (preparations for underground construction) is generally carried out during the day and when a residual runway at least 3.00 m wide is kept free.<br/>[Since 19.10.2025]]]></content:encoded>
     </item>
   </channel>
 </rss>
