@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 26 May 2026 11:01:17 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 11:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U6: switch fault]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">861eb589822612a9402ffcc15457641ff4cf74d6a9632da81a7b59b0d8e8dda0</guid>
+      <pubDate>Tue, 26 May 2026 11:11:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 11:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 11:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>The line U6 currently runs between the stations Gumpendorfer Straße and Westbahnhof in both directions via track 2. expected duration: Not foreseeable. [On 26.05.2026]</description>
+      <content:encoded><![CDATA[The line U6 currently runs between the stations Gumpendorfer Straße and Westbahnhof in both directions via track 2. expected duration: Not foreseeable.<br/>[On 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A: service obstruction False Parker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e19d2a31fcfdb6d2b7f1e4ee95e4b4a615ab9baa6ce4bbcc423af956a08e0a3d</guid>
+      <pubDate>Tue, 26 May 2026 10:41:02 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 11:01:17 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 11:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 26.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 26.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[52: rescue operation service from Anschützgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,37 +43,15 @@
       <content:encoded><![CDATA[[On 26.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[4A: service obstruction False Parker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e19d2a31fcfdb6d2b7f1e4ee95e4b4a615ab9baa6ce4bbcc423af956a08e0a3d</guid>
-      <pubDate>Tue, 26 May 2026 10:38:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 11:01:17 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 10:41:02 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 26.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[60: rescue operation service from Anschützgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789</guid>
-      <pubDate>Tue, 26 May 2026 10:36:44 +0200</pubDate>
+      <pubDate>Tue, 26 May 2026 10:32:00 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 11:01:17 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 10:36:44 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 11:35:00 +0200</ext:ends_at>
-      <description>[On 26.05.2026]</description>
-      <content:encoded><![CDATA[[On 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f</guid>
-      <pubDate>Tue, 26 May 2026 10:20:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 10:30:42 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 10:20:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic accident. [On 26.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 26.05.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 26.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 26.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[39A: foreign traffic accident]]></title>
@@ -63,17 +63,6 @@
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
       <description>The 39A line currently only runs between Heiligenstadt S U station and Oberdöbling S. Switch to the 10A, 35A lines as a replacement. expected duration: Not foreseeable. [On 26.05.2026]</description>
       <content:encoded><![CDATA[The 39A line currently only runs between Heiligenstadt S U station and Oberdöbling S. Switch to the 10A, 35A lines as a replacement. expected duration: Not foreseeable.<br/>[On 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: False Parker service from Albertgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5</guid>
-      <pubDate>Tue, 26 May 2026 09:30:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 10:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 09:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operation only between Praterstern S U and Blindengasse. [On 26.05.2026]</description>
-      <content:encoded><![CDATA[Operation only between Praterstern S U and Blindengasse.<br/>[On 26.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: No operation]]></title>
@@ -115,6 +104,17 @@
       <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:15 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 26.05.2026]</description>
+      <content:encoded><![CDATA[[On 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71E: replacement service buses stop at Simmeringer Hauptstraße opp. 197]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45</guid>
+      <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:25 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 26.05.2026]</description>
       <content:encoded><![CDATA[[On 26.05.2026]]]></content:encoded>
