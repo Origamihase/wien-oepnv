@@ -124,7 +124,7 @@ ALLOWLIST: frozenset[tuple[str, int]] = frozenset(
         # HAFAS wire-format request body; bytes are hashed by the MAC
         # signing protocol and sent to the upstream HAFAS endpoint,
         # not committed to any operator-facing sidecar.
-        ("src/places/hafas_client.py", 282),
+        ("src/places/hafas_client.py", 289),
         # Feed-health JSON sink; per-field ``_CONTROL_CHARS_RE.sub("",
         # ...)`` calls at lines 726 / 729 / 777 strip the canonical
         # attack-byte union from every user-controlled string field
@@ -634,7 +634,7 @@ def test_allowlist_is_minimal_and_documented() -> None:
     # site for another (without updating the docstring) also fails.
     assert ALLOWLIST == frozenset(
         {
-            ("src/places/hafas_client.py", 282),
+            ("src/places/hafas_client.py", 289),
             ("src/feed/reporting.py", 846),
             ("src/feed/logging_safe.py", 247),
             ("src/feed/logging_safe.py", 258),
