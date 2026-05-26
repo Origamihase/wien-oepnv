@@ -279,6 +279,16 @@
       "epoch": 2
     }
   },
+  "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1": {
+    "first_seen": "2026-05-26T16:30:55.201766+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals towards Karlsplatz . Reason: defective vehicle.",
+        "title": "U2: delays"
+      },
+      "epoch": 2
+    }
+  },
   "1ab48baa4d06b55033c1947808e17518905654c7a8db3085734e3226de5b74d2": {
     "first_seen": "2026-05-24T20:30:42.053624+00:00",
     "translations": {
@@ -2074,6 +2084,16 @@
       "epoch": 2
     }
   },
+  "ce3f845fdf6b1708d96ce3df85b94a08d3eaa4b609b7b5b8fbf0f99af12c84fe": {
+    "first_seen": "2026-05-26T16:30:55.201766+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards Reumannplatz U. Line 68A: service obstruction towards Reumannplatz U. expected duration: 18:50 watch. Reason: wrong parker in the Waldgasse 25 range.",
+        "title": "68A/68B: False Parker"
+      },
+      "epoch": 2
+    }
+  },
   "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a": {
     "first_seen": "2026-05-25T22:30:42.552191+00:00",
     "translations": {
@@ -2154,6 +2174,15 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: traffic congestion.",
         "title": "7A: traffic congestion"
+      },
+      "epoch": 2
+    }
+  },
+  "d681141843602c3a9a131b000c419c40da87788ff291462fb70be75c59c453eb": {
+    "first_seen": "2026-05-26T16:30:55.201766+00:00",
+    "translations": {
+      "en": {
+        "title": "59A: fire-brigade operation service from Bear\u00fchlgang"
       },
       "epoch": 2
     }
