@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 26 May 2026 18:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 19:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[68A/68B: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ce3f845fdf6b1708d96ce3df85b94a08d3eaa4b609b7b5b8fbf0f99af12c84fe</guid>
-      <pubDate>Tue, 26 May 2026 18:24:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 18:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 18:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Reumannplatz U. Linie 68A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 18:50 Uhr. Grund: Falschparker im Bereich Waldgasse 25. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Reumannplatz U. Linie 68A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 18:50 Uhr. Grund: Falschparker im Bereich Waldgasse 25.<br/>[Am 26.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U2: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -27,9 +16,9 @@
       <pubDate>Tue, 26 May 2026 18:18:00 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 18:30:55 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 18:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in Richtung Karlsplatz . Grund: Schadhaftes Fahrzeug. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Karlsplatz . Grund: Schadhaftes Fahrzeug.<br/>[Am 26.05.2026]]]></content:encoded>
+      <ext:ends_at>Tue, 26 May 2026 18:58:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in Richtung Seestadt. Grund: Schadhaftes Fahrzeug. [Am 26.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Seestadt. Grund: Schadhaftes Fahrzeug.<br/>[Am 26.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[59A: Feuerwehreinsatz Betrieb ab Bärenmühldurchgang]]></title>
@@ -39,17 +28,6 @@
       <ext:first_seen>Tue, 26 May 2026 18:30:55 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 15:38:37 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 20:37:00 +0200</ext:ends_at>
-      <description>[Am 26.05.2026]</description>
-      <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37: Fahrtbehinderung Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f</guid>
-      <pubDate>Tue, 26 May 2026 17:32:11 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 18:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 17:43:48 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 18:43:00 +0200</ext:ends_at>
       <description>[Am 26.05.2026]</description>
       <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
     </item>
@@ -82,38 +60,60 @@
       <pubDate>Tue, 26 May 2026 17:07:00 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 17:30:55 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 17:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 26 May 2026 18:58:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U3: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[N46: Thaliastraße U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
-      <pubDate>Tue, 26 May 2026 17:01:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 17:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 17:01:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">b3dddce3dc80f12d5b1311e5cc5eb73c5428ec5b96a230f20dbb510d2fb1e2fd</guid>
+      <pubDate>Tue, 26 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 15:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 26 Jun 2026 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie N46 in Richtung Otto-Wagner-Areal Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel unter U6 Nach: Kaiserstraße 106 Dauer: 02. Juni … [26.05.2026 – 26.06.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie N46 in Richtung Otto-Wagner-Areal Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel unter U6 Nach: Kaiserstraße 106 Dauer: 02. Juni …<br/>[26.05.2026 – 26.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[1/2/2A/43/44/59A/62/71/D/WLB: D, 1, 2, 43, 44, 62, 71, 59A, 1A, Badner Bahn: Demonstration am 27.05.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405</guid>
-      <pubDate>Tue, 26 May 2026 15:52:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 16:01:23 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 15:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 18:34:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 26.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">e7909786778b4cc1c0ed65c60672be5067b8c8d2bfedb1513422cf897a529ba0</guid>
+      <pubDate>Tue, 26 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 15:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 19:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Demonstration kommt es zu Verkehrsmaßnahmen Zeitraum: Mittwoch, 27. Mai 2026, zwischen 11:00 Uhr und 19:00 Uhr. Maßnahmen: Linie D: Umleitung in beiden Richtungen … [26.05.2026 – 27.05.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Verkehrsmaßnahmen Zeitraum: Mittwoch, 27. Mai 2026, zwischen 11:00 Uhr und 19:00 Uhr. Maßnahmen: Linie D: Umleitung in beiden Richtungen …<br/>[26.05.2026 – 27.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[41E: Ersatzbus 41E halten bei Währinger Str 200]]></title>
+      <title><![CDATA[46: Kein Betrieb]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6ba0bae6a68768907c14045ca96ddc1c51347bec7722644905e849c3f33b7ed0</guid>
+      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
+      <pubDate>Tue, 26 May 2026 00:00:27 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 26.05.2026]</description>
+      <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: Betrieb ab Gersthof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8</guid>
       <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 16:01:23 +0200</ext:first_seen>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 26.05.2026]</description>
+      <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[41E/10A: Ersatzbus 41E hält beim 10A]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5</guid>
+      <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 26.05.2026]</description>
