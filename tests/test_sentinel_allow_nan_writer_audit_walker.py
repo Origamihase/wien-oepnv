@@ -81,7 +81,7 @@ the signature input and break the upstream verification step.
 
 Three documented sites live here today:
 
-* ``src/places/hafas_client.py:_serialise_payload`` (line 282) —
+* ``src/places/hafas_client.py:_serialise_payload`` (line 289) —
   the function builds the HAFAS wire-format request body whose bytes
   are hashed by the Mgate ``mac`` signing protocol. Setting
   ``allow_nan=False`` would not change today's call-graph (HAFAS
@@ -137,7 +137,7 @@ ALLOWLIST: frozenset[tuple[str, int]] = frozenset(
         # committed to any operator-facing sidecar. The threat model
         # for the non-finite-literal axis (committed-to-main artefact)
         # does not apply.
-        ("src/places/hafas_client.py", 282),
+        ("src/places/hafas_client.py", 289),
         # Feed-item identity hash compute — the serialised bytes flow
         # into ``hashlib.sha256(...).hexdigest()`` on the very next
         # line and are not retained anywhere else. No parser-consumed
@@ -535,7 +535,7 @@ def test_allowlist_is_minimal_and_documented() -> None:
     # site for another (without updating the docstring) also fails.
     assert ALLOWLIST == frozenset(
         {
-            ("src/places/hafas_client.py", 282),
+            ("src/places/hafas_client.py", 289),
             ("src/build_feed.py", 2371),
             ("src/build_feed.py", 2380),
         }

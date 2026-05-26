@@ -25,7 +25,8 @@ name: Update cycle
 # ``actions/download-artifact`` glob/pattern semantics — that
 # silently kept ``build_feed`` from ever committing. The single-job
 # rewrite has zero artifact plumbing, no inter-job push race, and a
-# single auto-commit at the end so the operator-visible state moves
+# single inline commit + resilient push at the end (see the "Commit and
+# push cycle outputs" step) so the operator-visible state moves
 # atomically (or not at all). The trade-off is sequential runtime
 # (~3-5 min vs the DAG's ~2-3 min) and slightly less granular UI
 # observability — both acceptable for the 30-min cadence.
@@ -41,7 +42,10 @@ name: Update cycle
 #      + appends to ``data/stats/stoerungen_<YYYY>.csv``
 #   6. ``generate_markdown_stats.py`` patches the README markers and
 #      regenerates ``docs/statistik.md`` from the ledger
-#   7. ``git pull --rebase --autostash`` + single auto-commit
+#   7. ``git pull --rebase --autostash`` reconcile + a single inline
+#      ``git commit`` and a retrying, never-fail ``git push`` (no
+#      external commit action — see that step's header for the
+#      action-download-resilience rationale)
 #
 # Concurrency: the workflow holds the ``external-api-fetch`` lock
 # (shared with ``manual-full-refresh.yml`` and the dispatch-only
@@ -433,28 +437,102 @@ jobs:
             exit 1
           fi
 
-      - name: Commit cycle outputs
-        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
-        with:
-          commit_message: 'chore: update cycle'
-          # Mirrors the proven-working ``manual-full-refresh.yml``
-          # commit pattern: ``add_options: -A`` catches every modified
-          # file in the workspace (cache files, CSV ledgers, quota
-          # counter, feed.xml, first_seen state, statistik.md, README,
-          # any future output added to the cycle) without having to
-          # maintain a brittle file_pattern allowlist that silently
-          # drops outputs whose path doesn't match a glob. The
-          # earlier file_pattern-based commit step on this workflow
-          # never produced a ``chore: update cycle`` commit on main —
-          # the auto-commit-action's ``git add ${pattern}`` shell-
-          # interpolation interacts oddly with the multi-line YAML
-          # ``|`` block scalar on the auto-cycle runner image, so a
-          # legitimate workspace diff occasionally looked like
-          # nothing-to-commit. ``-A`` makes that failure mode
-          # impossible.
-          # ``--force-with-lease`` mirrors ``manual-full-refresh.yml``
-          # so a concurrent push from ``update-stations.yml`` (Sundays)
-          # doesn't leave this commit hanging on a non-fast-forward
-          # rejection.
-          add_options: '-A'
-          push_options: '--force-with-lease'
+      # Inline ``git`` instead of an external commit action. This is the
+      # MOST IMPORTANT workflow in the project (the live feed's ~30-min
+      # heartbeat) and must never go red on a transient infrastructure
+      # blip. A ``uses:`` action is resolved and DOWNLOADED by the runner
+      # in the "Prepare all required actions" setup phase, BEFORE the
+      # first step runs; when codeload.github.com hiccups, that download
+      # fails and the whole job dies in setup — before any retry/fallback
+      # step could ever execute. (Observed 2026-05-26 12:30 UTC:
+      # ``git-auto-commit-action`` 404'd from codeload "after 1 attempts"
+      # and the entire tick was lost.) You cannot retry a ``uses:``
+      # download from inside the workflow, so the only robust fix is to
+      # not depend on one: ``git`` is pre-installed on the runner, needs
+      # no download, and lets us own the retry + never-fail logic below.
+      # The remaining ``uses:`` actions (checkout / setup-python / cache)
+      # are first-party and the cycle is idempotent, so a rare setup-phase
+      # miss on those self-heals on the next tick.
+      #
+      # Robustness contract (replaces the old action's behaviour 1:1 and
+      # then hardens it):
+      #   * ``git add -A`` — stage every workspace output (caches, CSV
+      #     ledgers, quota counter, feed XMLs, first_seen state,
+      #     statistik.md, README, feed-health, any future output). Mirrors
+      #     the former ``add_options: -A``; no brittle file_pattern.
+      #   * no changes -> clean no-op (exit 0), as the action did.
+      #   * push with up to 4 attempts and exponential backoff (2/4/8 s),
+      #     re-syncing onto any concurrent push (non-fast-forward) between
+      #     tries. ``--force-with-lease`` is preserved (mirrors
+      #     ``manual-full-refresh.yml``); the re-fetch refreshes the lease
+      #     so the replayed commit fast-forwards cleanly.
+      #   * if every attempt fails -> emit a ``::warning::`` and exit 0.
+      #     The just-built outputs are NOT published this tick, but the
+      #     repository keeps the last good commit and the next ~30-min
+      #     tick rebuilds and republishes from fresh caches. A skipped
+      #     publish is ~30 min of staleness; a red workflow would be
+      #     worse and would page the operator for a non-actionable blip.
+      - name: Commit and push cycle outputs
+        shell: bash
+        env:
+          # Keep ``git rebase --continue`` non-interactive (it would
+          # otherwise open an editor for the replayed commit message).
+          GIT_EDITOR: 'true'
+        run: |
+          # NOTE: intentionally NO ``-e`` — every failure below is
+          # handled explicitly so the step can guarantee exit 0.
+          set -uo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Cycle produced no changes — nothing to commit or push."
+            exit 0
+          fi
+          git commit -m "chore: update cycle"
+
+          branch="${GITHUB_REF_NAME}"
+          max_attempts=4
+          delay=2
+          attempt=1
+          while :; do
+            if git push --force-with-lease origin "HEAD:${branch}"; then
+              echo "Cycle outputs published on attempt ${attempt}/${max_attempts}."
+              exit 0
+            fi
+            if [ "${attempt}" -ge "${max_attempts}" ]; then
+              echo "::warning title=cycle-publish::git push failed after ${max_attempts} attempts; this tick's outputs were NOT published. The repository keeps the last good commit and the next ~30-min tick will rebuild and publish from fresh caches. Not failing the workflow."
+              exit 0
+            fi
+            echo "Push attempt ${attempt}/${max_attempts} failed; re-syncing with origin/${branch} and retrying in ${delay}s."
+            sleep "${delay}"
+            # Re-sync onto any concurrent push. ``update-stations.yml``
+            # (Sundays) and ``seo-guard.yml`` (daily) run in SEPARATE
+            # concurrency lanes and can legitimately land a push here, so
+            # the lease can go stale between attempts. ``git pull
+            # --rebase`` replays our single commit onto the new tip;
+            # tolerate a transient fetch failure (network blip) and just
+            # retry the push after the backoff.
+            if ! git pull --rebase --autostash origin "${branch}"; then
+              # A rebase replay can stop on a conflict. Every cycle output
+              # is a full regeneration, so the locally-built copy (the
+              # commit being replayed = "theirs" in rebase terms) wins.
+              # Append-only CSV ledgers auto-resolve via ``merge=union``
+              # (.gitattributes) and never reach here.
+              mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
+              if [ "${#conflicts[@]}" -gt 0 ]; then
+                echo "::warning title=cycle-reconcile::rebase conflict on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"
+                git checkout --theirs -- "${conflicts[@]}"
+                git add -- "${conflicts[@]}"
+                git rebase --continue || git rebase --abort || true
+              else
+                # Not a conflict (the fetch itself failed) — abort any
+                # half-started rebase and just retry the push.
+                git rebase --abort 2>/dev/null || true
+              fi
+            fi
+            attempt=$((attempt + 1))
+            delay=$((delay * 2))
+          done
