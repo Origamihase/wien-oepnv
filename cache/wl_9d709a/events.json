@@ -326,26 +326,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Gleisbauarbeiten",
-    "description": "Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Frödenplatz. Weichen Sie ersatzweise auf die Linien U1, 16A aus. Voraussichtliche Dauer: 30.05.2026 01:00 Uhr. Grund: Gleisbauarbeiten im Bereich Otto-Probst-Straße # Tesarekplatz.",
+    "title": "11/65A/O: Rettungseinsatz",
+    "description": "Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Quellenplatz. Linie O: Betrieb nur zwischen Bruno-Marek-Allee und Quellenplatz. Die Linie 65A wird in Richtung Inzersdorf, Zetschegasse zwischen Reumannplatz U und Gußriegelstraße über Laxenburger Straße und Raxstraße umgeleitet. Weichen Sie ersatzweise auf die Linien U1, 15A, 16A, 66A aus. Voraussichtliche Dauer: 05:50 Uhr. Grund: Rettungseinsatz im Bereich Troststraße # Alxingergasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a2348e4c6c8c41f78b8d12eb667cf03af7acccea5299ceb0012bfbc50beea227",
-    "pubDate": "2026-05-11T04:50:00+02:00",
-    "starts_at": "2026-05-11T04:50:00+02:00",
-    "ends_at": "2026-05-30T01:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-05-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Betrieb ab Frödenplatz",
-    "description": "Gleisbauarbeiten\nBetrieb ab Frödenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0cc601b709f5e2e2bf853af2229533e03cb323563dfe0bebb6a3b9de6ceb2e16",
-    "pubDate": "2026-05-26T04:30:10+02:00",
-    "starts_at": "2026-05-26T04:30:10+02:00",
-    "ends_at": "2026-05-26T23:59:59+02:00",
-    "_identity": "wl|störung|L=11|D=2026-05-26"
+    "guid": "0bbc5e33d6a24f1a0c1a97028ebc54a073d3215cbcd1e3b8d1f656b73b5b04ae",
+    "pubDate": "2026-05-26T05:05:00+02:00",
+    "starts_at": "2026-05-26T05:05:00+02:00",
+    "ends_at": "2026-05-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=11,65A,O|D=2026-05-26"
   },
   {
     "source": "Wiener Linien",
@@ -610,18 +598,6 @@
     "starts_at": "2026-05-26T00:00:17+02:00",
     "ends_at": "2026-05-26T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-05-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N29: Busse halten auf der Hauptfahrbahn",
-    "description": "Busse halten auf\nder Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
-    "pubDate": "2026-05-25T23:00:00+02:00",
-    "starts_at": "2026-05-25T23:00:00+02:00",
-    "ends_at": "2026-05-26T05:30:00+02:00",
-    "_identity": "wl|störung|L=N29|D=2026-05-25"
   },
   {
     "source": "Wiener Linien",
