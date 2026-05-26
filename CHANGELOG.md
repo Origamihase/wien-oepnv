@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Robustheit: 30-Minuten-Zyklus durchgehärtet (Tier 1–3, 2026-05-26)**:
+  Folgeschritt zur Action-Download-Resilienz — `update-cycle.yml` an allen
+  verbleibenden Fehlerstellen abgesichert, damit der wichtigste Workflow
+  des Projekts nicht an transienten oder kosmetischen Problemen scheitert:
+  * **Statistik-Step entkoppelt** (`continue-on-error`): Der kosmetische
+    README-/Dashboard-Render lief vor dem Commit ohne Fehlertoleranz —
+    ein Crash dort brach den Job ab und **verhinderte die
+    Feed-Veröffentlichung**. Jetzt orange Annotation statt Blockade.
+  * **torch-Self-Heal ohne Netzwerk auf dem gesunden Pfad**: Der Step rief
+    bei *jedem* Tick unbedingt `pip install torch` auf — ein transienter
+    `download.pytorch.org`-Ausfall färbte den Lauf rot. Jetzt
+    Import-Check zuerst (null Netzwerk-I/O, wenn torch im Cache liegt),
+    sonst Install mit Retry; fehlt torch endgültig, degradiert nur der
+    EN-Feed für einen Tick (kein harter Fehler).
+  * **Pre-Publish-Sanity-Check**: `feed.xml`/`feed.en.xml` werden vor dem
+    Commit auf Wohlgeformtheit + nicht-leer geprüft; bei Defekt wird der
+    Publish übersprungen (letzter guter Feed bleibt online).
+  * **Reconcile + Commit/Push zu einem Never-Fail-Block konsolidiert**:
+    entfernt den letzten harten `exit 1`-Pfad der Publish-Sequenz; das
+    Reconcile auf konkurrierende Pushes steckt jetzt im Retry-Loop.
+  * **Step-Timeouts** (Build feed 5 min, Statistik 2 min) fangen Hänger
+    deutlich vor dem 10-min-Job-Limit ab; **git-Netzwerk-Timeouts**
+    (`LOW_SPEED_LIMIT/TIME`) bremsen hängende push/pull-Sockets aus.
+  * **Backup-Cron** (`schedule: '17 * * * *'`, off-cadence) als reines
+    Sicherheitsnetz gegen verlorene Ticks / IFTTT-Ausfall — IFTTT bleibt
+    primärer :00/:30-Treiber; das VAO-100/Tag-Budget ist durch den
+    `preflight_quota_check`-Gate weiterhin garantiert (Backup-Ticks bauen
+    notfalls nur aus den Free-API-Caches neu).
+  * **`PAGES_BASE_URL` schedule-robust** aus `$GITHUB_REPOSITORY` statt
+    `${{ github.event.repository.name }}` (auf `schedule`-Events leer) und
+    **git-Identität einmalig** direkt nach dem Checkout gesetzt.
 * **Robustheit: 30-Minuten-Zyklus übersteht Action-Download-Ausfälle und
   publiziert mit Retry + Never-Fail (2026-05-26)**: Der Lauf vom
   2026-05-26 12:30 UTC von `update-cycle.yml` starb bereits in der
