@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 26 May 2026 17:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 18:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[37: service obstruction False Parker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f</guid>
+      <pubDate>Tue, 26 May 2026 17:31:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 18:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 17:43:48 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 26.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 26.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43: rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 26.05.2026]</description>
       <content:encoded><![CDATA[[On 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: service obstruction for rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5</guid>
-      <pubDate>Tue, 26 May 2026 15:10:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 15:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 15:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 26.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 26.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
