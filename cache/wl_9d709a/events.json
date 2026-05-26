@@ -374,6 +374,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "30A/32A: Gasrohrgebrechen",
+    "description": "Die Linie 30A wird in Richtung Neu Leopoldau zwischen Großjedlersdorf und Bernreiterplatz über die Jedlersdorfer Straße umgeleitet. Die Linie 32A wird in Richtung Leopoldau S U zwischen Großjedlersdorf, Jochbergengasse und Bernreiterplatz über die Jedlersdorfer Straße umgeleitet. Die Haltestelle Jedlersdorfer Platz kann dadurch nicht eingehalten werden. Die Störung dauert voraussichtlich bis Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Baumergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d29e731483a18efdd703b0caecd6dfb506453ec24e610504bf25c89695b86dfe",
+    "pubDate": "2026-05-26T22:41:00+02:00",
+    "starts_at": "2026-05-26T22:41:00+02:00",
+    "ends_at": "2026-05-27T01:30:00+02:00",
+    "_identity": "wl|störung|L=30A,32A|D=2026-05-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -579,7 +591,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "71: Polizeieinsatz",
-    "description": "Linie 71: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: Nicht absehbar. Grund: Polizeieinsatz im Haltestellenbereich St. Marx S.",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d",
     "pubDate": "2026-05-26T22:27:00+02:00",
@@ -646,6 +658,18 @@
     "starts_at": "2026-05-26T00:00:17+02:00",
     "ends_at": "2026-05-26T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-05-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf\nder Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-05-26T23:00:26+02:00",
+    "starts_at": "2026-05-26T23:00:26+02:00",
+    "ends_at": "2026-05-27T05:30:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-05-26"
   },
   {
     "source": "Wiener Linien",
