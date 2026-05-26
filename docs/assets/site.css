@@ -634,6 +634,17 @@ code {
 @media (max-width: 540px) {
   .feed-item { grid-template-columns: 1fr; }
   .feed-item__source { justify-self: start; }
+  /* Single-column feed-items stack the source badge above the body and
+   * are ~50% taller than the two-column desktop layout, so the 1600px
+   * global reservation undershoots the real mobile footprint (~10 items
+   * ≈ 2400px). The deficit let the sections below the feed shift down
+   * when the skeletons swapped for content — Lighthouse measured a 0.84
+   * mobile CLS for #feed on the 2026-05-26 run. Reserving the taller
+   * mobile footprint absorbs that growth. Like the global floor it only
+   * applies while aria-busy="true" (dropped by renderFeed() once the
+   * first batch lands), so the *loaded* layout is byte-for-byte
+   * unchanged — only the brief loading area is taller. */
+  .feed-list[aria-busy="true"] { min-height: 2400px; }
 }
 
 /* Empty / error states */
