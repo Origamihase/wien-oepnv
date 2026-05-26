@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 26 May 2026 16:01:23 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 16:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[D: defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c</guid>
+      <pubDate>Tue, 26 May 2026 16:02:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 16:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 16:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>The D line currently runs only between Absberggasse and the stock exchange or between Augasse and Nußdorf S. The trains continue from the stock exchange via the 1 and 71 lines to … [On 26.05.2026]</description>
+      <content:encoded><![CDATA[The D line currently runs only between Absberggasse and the stock exchange or between Augasse and Nußdorf S. The trains continue from the stock exchange via the 1 and 71 lines to …<br/>[On 26.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +41,6 @@
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: traffic congestion. [On 26.05.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">45e9fa055fa6de68f6d4b0b6fe8d6c7618eef983d2f63db426ccca192a040e62</guid>
-      <pubDate>Tue, 26 May 2026 15:39:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 16:01:23 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 15:39:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: service disruption. [On 26.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 26.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[59A: fire-brigade operation]]></title>
@@ -70,7 +70,7 @@
       <guid isPermaLink="false">301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5</guid>
       <pubDate>Tue, 26 May 2026 15:10:00 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 15:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 15:16:53 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 26 May 2026 15:10:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 26.05.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 26.05.2026]]]></content:encoded>
@@ -98,23 +98,23 @@
       <content:encoded><![CDATA[Because of an demonstration it comes to traffic measures period: Wednesday, 27. May 2026, between 11:00 o'clock and 19:00 o'clock. Measures: Line D: diversion in both directions …<br/>[26.05.2026 – 27.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e</guid>
-      <pubDate>Tue, 26 May 2026 13:54:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 09:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 13:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 26.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[46: No operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
       <pubDate>Tue, 26 May 2026 00:00:27 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 26.05.2026]</description>
+      <content:encoded><![CDATA[[On 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: service from Gersthof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8</guid>
+      <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 26.05.2026]</description>
       <content:encoded><![CDATA[[On 26.05.2026]]]></content:encoded>
