@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 26 May 2026 11:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 12:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[66A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">74d7957440840d3e04ef7e63c6b0e84924838c4a84cdab001ac77313773a37b5</guid>
+      <pubDate>Tue, 26 May 2026 11:33:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 12:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 11:33:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 26.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 26.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Weichenstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,23 +43,12 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[52: Rettungseinsatz Betrieb ab Anschützgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">135dc138ba98273ad144d64ca134b6893a89c99daba5bd7077ef978a587e1c53</guid>
-      <pubDate>Tue, 26 May 2026 10:38:04 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 11:01:17 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 10:38:11 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 11:37:00 +0200</ext:ends_at>
-      <description>[Am 26.05.2026]</description>
-      <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Rettungseinsatz Betrieb ab Anschützgasse]]></title>
+      <title><![CDATA[60: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789</guid>
       <pubDate>Tue, 26 May 2026 10:32:00 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 11:01:17 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 10:36:44 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 26 May 2026 10:32:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
