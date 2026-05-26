@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 26 May 2026 16:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 17:00:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[63A: Impurity]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2302b6c8ead474fd6c130598002ada9c1815a8a31b4a355a2b220bbb9182318b</guid>
+      <pubDate>Tue, 26 May 2026 16:53:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 17:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 16:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: contamination. [On 26.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: contamination.<br/>[On 26.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[D: defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
       <description>The D line currently runs only between Absberggasse and the stock exchange or between Augasse and Nußdorf S. The trains continue from the stock exchange via the 1 and 71 lines to … [On 26.05.2026]</description>
       <content:encoded><![CDATA[The D line currently runs only between Absberggasse and the stock exchange or between Augasse and Nußdorf S. The trains continue from the stock exchange via the 1 and 71 lines to …<br/>[On 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">02eba5a10b6bfbc053ab8e3cd1f9dabf24000400cc5596a3921352c78e6875e3</guid>
-      <pubDate>Tue, 26 May 2026 15:55:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 16:01:23 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 15:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: service disruption. [On 26.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 26.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A: traffic congestion]]></title>

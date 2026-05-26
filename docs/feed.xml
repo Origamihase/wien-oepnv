@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 26 May 2026 16:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 17:00:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[63A: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2302b6c8ead474fd6c130598002ada9c1815a8a31b4a355a2b220bbb9182318b</guid>
+      <pubDate>Tue, 26 May 2026 16:53:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 17:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 16:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 26.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 26.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[D: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,19 +28,8 @@
       <ext:first_seen>Tue, 26 May 2026 16:30:55 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 16:02:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie D fährt derzeit nur zwischen Absberggasse und Börse beziehungsweise zwischen Augasse und Nußdorf S. Die Züge fahren ab Börse weiter über die Linien 1 und 71 bis … [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Die Linie D fährt derzeit nur zwischen Absberggasse und Börse beziehungsweise zwischen Augasse und Nußdorf S. Die Züge fahren ab Börse weiter über die Linien 1 und 71 bis …<br/>[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">02eba5a10b6bfbc053ab8e3cd1f9dabf24000400cc5596a3921352c78e6875e3</guid>
-      <pubDate>Tue, 26 May 2026 15:55:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 16:01:23 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 15:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 26.05.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A: Verkehrsüberlastung]]></title>
