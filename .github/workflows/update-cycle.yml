@@ -19,9 +19,13 @@ name: Update cycle
 #     download that cannot be retried from inside the job). It does NOT
 #     drive the primary cadence (IFTTT still owns :00/:30) and cannot
 #     breach the VAO 100/day budget: the ``preflight_quota_check`` gate
-#     skips the quota-bound poll once the daily counter is near the cap,
-#     so a backup tick simply rebuilds from the free-API caches. Without
-#     this net, an IFTTT outage would silently freeze the live feed.
+#     skips the quota-bound poll once the daily counter is near the cap.
+#     A second guard — the ``Backup-cron freshness gate`` step — makes a
+#     backup tick SKIP all fetch/build/publish work when a cycle tick
+#     already committed within ~35 min, so on healthy days the backup
+#     costs ~zero API calls and only does real work during a genuine
+#     outage. Without this net, an IFTTT outage would silently freeze
+#     the live feed.
 # The weekly station-directory refresh is a separate GitHub-native cron
 # in ``update-stations.yml`` (Sundays 01:00 UTC).
 #
@@ -40,17 +44,20 @@ name: Update cycle
 # Step order:
 #   1. ``actions/checkout`` (full history for clean rebase later) +
 #      configure the bot git identity once for the whole job
-#   2. ``actions/setup-python`` + venv-cache restore + conditional
+#   2. backup-cron freshness gate — on a ``schedule`` run decide whether a
+#      recent tick already covered this window; steps 4-7 gate on its
+#      ``should_run`` output (dispatch / manual runs always run)
+#   3. ``actions/setup-python`` + venv-cache restore + conditional
 #      ``pip install`` on cache miss + prepend ``.venv/bin`` to PATH
-#   3. WL / ÖBB / Baustellen cache fetchers (parallel via bash; free APIs)
-#   4. VAO quota pre-flight + Stammstrecke poll (gated on counter)
-#   5. ``feed build`` reads all caches + the freshly-appended CSV
+#   4. WL / ÖBB / Baustellen cache fetchers (parallel via bash; free APIs)
+#   5. VAO quota pre-flight + Stammstrecke poll (gated on counter)
+#   6. ``feed build`` reads all caches + the freshly-appended CSV
 #      ledger and writes ``docs/feed.xml`` + ``data/first_seen.json``
 #      + appends to ``data/stats/stoerungen_<YYYY>.csv`` (step-capped)
-#   6. ``generate_markdown_stats.py`` patches the README markers and
+#   7. ``generate_markdown_stats.py`` patches the README markers and
 #      regenerates ``docs/statistik.md`` (best-effort, continue-on-error:
 #      a cosmetic stats failure must NEVER block the feed publish)
-#   7. validate the built feed XML, then a single inline ``git commit``
+#   8. validate the built feed XML, then a single inline ``git commit``
 #      + retrying, never-fail ``git push`` (reconcile onto concurrent
 #      pushes is folded into the push loop; no external commit action —
 #      see that step's header for the full resilience rationale)
@@ -66,7 +73,9 @@ on:
     types: [ifttt_feed_trigger]
   schedule:
     # Backup safety net only (see "Trigger model" above). Off-cadence
-    # minute :17 so it never collides with IFTTT's :00/:30 ticks.
+    # minute :17 so it never collides with IFTTT's :00/:30 ticks, and the
+    # "Backup-cron freshness gate" step self-skips when a recent tick
+    # already ran, so this costs ~zero API calls on healthy days.
     - cron: '17 * * * *'
 
 permissions:
@@ -130,6 +139,48 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      # Backup-cron freshness gate. The hourly ``schedule`` tick is a
+      # safety net (see "Trigger model" above), NOT a second cadence: when
+      # IFTTT is healthy a cycle tick has already run within the last
+      # ~30 min, so a backup tick would only burn a redundant VAO request
+      # (the daily budget is metered) plus free-API fetches. This gate
+      # makes a ``schedule`` run SKIP the fetch/build/publish work when a
+      # cycle tick committed inside the freshness window, so the backup
+      # cron costs ~zero API calls on healthy days and does real work only
+      # when IFTTT has genuinely gone silent. IFTTT (``repository_dispatch``)
+      # and operator (``workflow_dispatch``) runs are NEVER gated.
+      #
+      # Signal: the commit time of ``data/vor_request_count.json`` /
+      # ``docs/feed.xml`` — the counter is rewritten on every VAO poll and
+      # the feed on every content change, so "most recent commit touching
+      # either" tracks the last real tick (full history is present via the
+      # ``fetch-depth: 0`` checkout). The 35-min window sits just above
+      # IFTTT's ~30-min cadence (drift headroom) so a slightly-late IFTTT
+      # tick is not misread as an outage; a true outage is caught by the
+      # next hourly tick. Unknown / parse-fail defaults to "run" (fail safe).
+      - name: Backup-cron freshness gate
+        id: freshness
+        shell: bash
+        run: |
+          set -uo pipefail
+          if [ "${GITHUB_EVENT_NAME}" != "schedule" ]; then
+            echo "Trigger '${GITHUB_EVENT_NAME}' is not the backup cron — running the full cycle."
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          last=$(git log -1 --format=%ct -- data/vor_request_count.json docs/feed.xml 2>/dev/null || echo 0)
+          last=${last:-0}
+          now=$(date +%s)
+          age=$(( now - last ))
+          window=2100  # 35 min, just above IFTTT's ~30-min cadence
+          if [ "${last}" -gt 0 ] && [ "${age}" -lt "${window}" ]; then
+            echo "Backup cron: last cycle tick was ${age}s ago (< ${window}s) — IFTTT looks healthy; skipping this redundant tick (no API calls)."
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Backup cron: last cycle tick was ${age}s ago (>= ${window}s or unknown) — IFTTT may be down; running the full cycle as a safety net."
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Set up Python
         id: setup_python
@@ -293,6 +344,7 @@ jobs:
       # ``continue-on-error: true`` raised an orange badge per failed
       # step; the warning emits the same operator-visible signal here.
       - name: Refresh free-API caches in parallel
+        if: steps.freshness.outputs.should_run == 'true'
         # Defense-in-depth step ceiling. The per-process ``timeout 90``
         # wrappers below catch a single hung fetcher (their exit code
         # 124 surfaces via the report() ``::warning::`` annotation, so
@@ -372,6 +424,7 @@ jobs:
       # was 2.)
       - name: VAO quota pre-flight
         id: vor_preflight
+        if: steps.freshness.outputs.should_run == 'true'
         # ``continue-on-error: true`` — the preflight script
         # intentionally exits 1 when the budget is exhausted. We do
         # NOT want that to fail the workflow; instead the conditional
@@ -401,6 +454,7 @@ jobs:
       # ----- Feed build (no API call — pure consumer of caches) -----------
 
       - name: Build feed
+        if: steps.freshness.outputs.should_run == 'true'
         # Step ceiling below the 10-min job cap so a hung builder (e.g. a
         # stalled translation-pipeline call) is killed fast and still
         # leaves budget for the publish step. Healthy builds finish well
@@ -439,6 +493,7 @@ jobs:
       # one day; the next day's tick catches up. The README markers
       # are unaffected.
       - name: Refresh statistics dashboard and README snapshot
+        if: steps.freshness.outputs.should_run == 'true'
         # Cosmetic and non-critical: the README markers + yearly dashboard
         # are nice-to-have, NOT the deliverable (``docs/feed.xml`` is).
         # The step runs BEFORE the commit so its output rides the same

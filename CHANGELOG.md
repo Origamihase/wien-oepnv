@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Backup-Cron: Freshness-Gate gegen redundante API-Last (2026-05-26)**:
+  Der neue stündliche Sicherheits-Cron lief bisher rein additiv zu IFTTT
+  und verursachte ~+24 Ticks/Tag (VAO ~48→~72/Tag — innerhalb des durch
+  den Preflight hart gedeckelten 100/Tag-Budgets, aber an gesunden Tagen
+  komplett redundant). Neu prüft ein **Freshness-Gate** vor den
+  Fetch-/Build-/Publish-Schritten bei `schedule`-Läufen, ob bereits ein
+  Tick innerhalb der letzten ~35 min committet hat (Signal: Commit-Zeit
+  von `data/vor_request_count.json` / `docs/feed.xml`), und überspringt
+  dann die gesamte API-/Build-Arbeit. Ergebnis: an gesunden Tagen ~0
+  Extra-API-Abfragen, voller Schutz nur bei echtem IFTTT-Ausfall.
+  IFTTT- (`repository_dispatch`) und manuelle (`workflow_dispatch`) Läufe
+  bleiben ungegated. Unbekannt/Parse-Fehler ⇒ „run" (fail-safe).
 * **Robustheit: 30-Minuten-Zyklus durchgehärtet (Tier 1–3, 2026-05-26)**:
   Folgeschritt zur Action-Download-Resilienz — `update-cycle.yml` an allen
   verbleibenden Fehlerstellen abgesichert, damit der wichtigste Workflow
