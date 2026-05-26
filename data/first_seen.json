@@ -861,6 +861,16 @@
       "epoch": 2
     }
   },
+  "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5": {
+    "first_seen": "2026-05-26T08:01:07.879111+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between Praterstern S U and Blindengasse.",
+        "title": "5: False Parker service from Albertgasse"
+      },
+      "epoch": 2
+    }
+  },
   "666d3b86c4d5a910c409a49c1d5bd6140d4ccea066859333b16dbb6837d74ccf": {
     "first_seen": "2026-05-24T02:00:55.629662+00:00",
     "translations": {
@@ -1328,6 +1338,16 @@
         "summary": "The repair and redesign work in the Favoritenstra\u00dfe pedestrian zone will be carried out following the ongoing sealing work of Wiener Linien GmbH & Co KG at \u2026",
         "title": "Favoritenstra\u00dfe from crossing Landgutgasse to crossing Keplerplatz and Keplergasse"
       }
+    }
+  },
+  "9467a246f86f6472938f073378209e9f650cfb30990767d72eec86235aa9019c": {
+    "first_seen": "2026-05-26T08:01:07.879111+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: rescue operation.",
+        "title": "97A: rescue operation"
+      },
+      "epoch": 2
     }
   },
   "9519d3a8dd4972bfbaf8cd1508b670e7bcfde314e055bd7c083b74eeeec1a449": {
@@ -2320,6 +2340,16 @@
       "en": {
         "summary": "Due to a police operation, no journeys were possible between Wien Heiligenstadt Station (U) and Wien Hernals Bahnhst until 20:50 clock.",
         "title": "Wien Heiligenstadt \u2194 Wien Hernals"
+      },
+      "epoch": 2
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&879699": {
+    "first_seen": "2026-05-26T08:01:07.879111+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a defective train on the route, only limited rides were possible in Wien Rennweg Bahnhst until 09:55 clock.",
+        "title": "Wien Rennweg"
       },
       "epoch": 2
     }

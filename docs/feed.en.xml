@@ -7,34 +7,44 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 26 May 2026 09:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 10:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2: traffic accident]]></title>
+      <title><![CDATA[Wien Rennweg]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;879699</guid>
+      <pubDate>Tue, 26 May 2026 10:00:05 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 10:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 10:00:05 +0200</ext:starts_at>
+      <description>Due to a defective train on the route, only limited rides were possible in Wien Rennweg Bahnhst until 09:55 clock. [Since 26.05.2026]</description>
+      <content:encoded><![CDATA[Due to a defective train on the route, only limited rides were possible in Wien Rennweg Bahnhst until 09:55 clock.<br/>[Since 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[97A: rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc</guid>
-      <pubDate>Tue, 26 May 2026 09:06:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 09:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 09:06:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">9467a246f86f6472938f073378209e9f650cfb30990767d72eec86235aa9019c</guid>
+      <pubDate>Tue, 26 May 2026 09:55:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 10:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 09:55:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 26.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 26.05.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 26.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5: False Parker service from Albertgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5</guid>
+      <pubDate>Tue, 26 May 2026 09:30:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 10:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 09:32:29 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation only between Praterstern S U and Blindengasse. [On 26.05.2026]</description>
+      <content:encoded><![CDATA[Operation only between Praterstern S U and Blindengasse.<br/>[On 26.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8</guid>
-      <pubDate>Tue, 26 May 2026 09:06:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 09:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 09:06:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 26.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e</guid>
       <pubDate>Tue, 26 May 2026 09:06:00 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 09:30:53 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 09:06:00 +0200</ext:starts_at>
@@ -54,23 +64,12 @@
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 26.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[7A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
-      <pubDate>Tue, 26 May 2026 07:57:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 09:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 07:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion. [On 26.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[40A: rescue operation service from Sternwartestraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">0dad447e1a2d21d0e9c43c5e4aeb6bc994fa524bc67a12b3727d48d66fe8e90b</guid>
       <pubDate>Tue, 26 May 2026 08:36:00 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 09:01:15 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 08:41:58 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 26 May 2026 08:36:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
       <description>The line 40A is redirected towards Felix-Dahn-Straße between Alserbachstraße and Sternwartestraße via Währinger belt. [On 26.05.2026]</description>
       <content:encoded><![CDATA[The line 40A is redirected towards Felix-Dahn-Straße between Alserbachstraße and Sternwartestraße via Währinger belt.<br/>[On 26.05.2026]]]></content:encoded>
