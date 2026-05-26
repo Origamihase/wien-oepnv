@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 26 May 2026 22:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 22:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[71: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d</guid>
+      <pubDate>Tue, 26 May 2026 22:27:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 22:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 22:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction in both directions. expected duration: Not foreseeable. [On 26.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction in both directions. expected duration: Not foreseeable.<br/>[On 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5: service obstruction for police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4</guid>
+      <pubDate>Tue, 26 May 2026 22:06:58 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 22:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 22:06:58 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:06:00 +0200</ext:ends_at>
+      <description>[On 26.05.2026]</description>
+      <content:encoded><![CDATA[[On 26.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N46: Thaliastraße U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 26.05.2026]</description>
       <content:encoded><![CDATA[[On 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2/U5: Siebenbrunnengasse from junction Siebenbrunnenplatz and Reinprechtsdorfer Straße to 44]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">88f83131c42d972f1adfff964b9356342b8eab8fc7838fe6c7f2da6a06615274</guid>
-      <pubDate>Sun, 28 Feb 2021 01:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 12:59:53 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 28 Feb 2021 01:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 01:00:00 +0100</ext:ends_at>
-      <description>Detailed information about the construction project U2 / U5 can be obtained via the ombudsperson of the respective metro section. [Since 28.02.2021]</description>
-      <content:encoded><![CDATA[Detailed information about the construction project U2 / U5 can be obtained via the ombudsperson of the respective metro section.<br/>[Since 28.02.2021]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2/U5: Volksgartenstraße 2]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">892e2fdfd892f624cc11c1c2328a599b2cfb238d6590b7742af7a6d1073496f5</guid>
-      <pubDate>Sun, 28 Feb 2021 01:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 12:59:53 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 28 Feb 2021 01:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 31 Dec 2029 01:00:00 +0100</ext:ends_at>
-      <description>The Volksgartenstraße between the Hansenstraße and the Museumstraße will block a lane in order to handle the construction site traffic for the underground construction. [Since 28.02.2021]</description>
-      <content:encoded><![CDATA[The Volksgartenstraße between the Hansenstraße and the Museumstraße will block a lane in order to handle the construction site traffic for the underground construction.<br/>[Since 28.02.2021]]]></content:encoded>
     </item>
   </channel>
 </rss>
