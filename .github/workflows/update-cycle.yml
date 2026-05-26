@@ -5,19 +5,25 @@ name: Update cycle
 # with shared workspace, then emits ONE commit covering every
 # output.
 #
-# Trigger model (since 2026-05-10, commit 55ca72f): the GitHub-
-# native ``schedule: cron '0,30 * * * *'`` was removed and the cycle
-# is now driven solely from outside GitHub Actions:
+# Trigger model (since 2026-05-10, commit 55ca72f): IFTTT drives the
+# precise cadence; a sparse GitHub-native cron is a safety net only.
 #   * IFTTT fires ``repository_dispatch: ifttt_feed_trigger`` on the
 #     normal ~30-min cadence (lands close to :00/:30 with less drift
-#     than the GH Actions cron tick the project used previously).
+#     than the GH Actions cron tick the project used previously). This
+#     is the PRIMARY driver of the 30-min "data + feed" cadence.
 #   * Operators press ``Run workflow`` (``workflow_dispatch``) for
 #     out-of-band runs.
-# The 30-min cadence for "data + feed" therefore lives in the
-# external IFTTT applet, not in this file. The weekly station-
-# directory refresh is intentionally kept on a GitHub-native cron
-# in ``update-stations.yml`` (Sundays 01:00 UTC) — its weekly tick
-# is rotation-friendly and does not need IFTTT's :00/:30 precision.
+#   * ``schedule: cron '17 * * * *'`` (hourly, off-cadence minute) is a
+#     BACKUP only — it catches a tick that IFTTT missed entirely or a
+#     tick that died in the runner setup phase (a first-party action
+#     download that cannot be retried from inside the job). It does NOT
+#     drive the primary cadence (IFTTT still owns :00/:30) and cannot
+#     breach the VAO 100/day budget: the ``preflight_quota_check`` gate
+#     skips the quota-bound poll once the daily counter is near the cap,
+#     so a backup tick simply rebuilds from the free-API caches. Without
+#     this net, an IFTTT outage would silently freeze the live feed.
+# The weekly station-directory refresh is a separate GitHub-native cron
+# in ``update-stations.yml`` (Sundays 01:00 UTC).
 #
 # Why single-job (replaces the DAG-with-artifacts architecture from
 # 2026-05-09 which broke the README cadence): the artifact-based
@@ -25,27 +31,29 @@ name: Update cycle
 # ``actions/download-artifact`` glob/pattern semantics — that
 # silently kept ``build_feed`` from ever committing. The single-job
 # rewrite has zero artifact plumbing, no inter-job push race, and a
-# single inline commit + resilient push at the end (see the "Commit and
-# push cycle outputs" step) so the operator-visible state moves
+# single inline commit + resilient push at the end (see the "Validate
+# and publish cycle outputs" step) so the operator-visible state moves
 # atomically (or not at all). The trade-off is sequential runtime
 # (~3-5 min vs the DAG's ~2-3 min) and slightly less granular UI
 # observability — both acceptable for the 30-min cadence.
 #
 # Step order:
-#   1. ``actions/checkout`` (full history for clean rebase later)
+#   1. ``actions/checkout`` (full history for clean rebase later) +
+#      configure the bot git identity once for the whole job
 #   2. ``actions/setup-python`` + venv-cache restore + conditional
 #      ``pip install`` on cache miss + prepend ``.venv/bin`` to PATH
 #   3. WL / ÖBB / Baustellen cache fetchers (parallel via bash; free APIs)
 #   4. VAO quota pre-flight + Stammstrecke poll (gated on counter)
 #   5. ``feed build`` reads all caches + the freshly-appended CSV
 #      ledger and writes ``docs/feed.xml`` + ``data/first_seen.json``
-#      + appends to ``data/stats/stoerungen_<YYYY>.csv``
+#      + appends to ``data/stats/stoerungen_<YYYY>.csv`` (step-capped)
 #   6. ``generate_markdown_stats.py`` patches the README markers and
-#      regenerates ``docs/statistik.md`` from the ledger
-#   7. ``git pull --rebase --autostash`` reconcile + a single inline
-#      ``git commit`` and a retrying, never-fail ``git push`` (no
-#      external commit action — see that step's header for the
-#      action-download-resilience rationale)
+#      regenerates ``docs/statistik.md`` (best-effort, continue-on-error:
+#      a cosmetic stats failure must NEVER block the feed publish)
+#   7. validate the built feed XML, then a single inline ``git commit``
+#      + retrying, never-fail ``git push`` (reconcile onto concurrent
+#      pushes is folded into the push loop; no external commit action —
+#      see that step's header for the full resilience rationale)
 #
 # Concurrency: the workflow holds the ``external-api-fetch`` lock
 # (shared with ``manual-full-refresh.yml`` and the dispatch-only
@@ -56,6 +64,10 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [ifttt_feed_trigger]
+  schedule:
+    # Backup safety net only (see "Trigger model" above). Off-cadence
+    # minute :17 so it never collides with IFTTT's :00/:30 ticks.
+    - cron: '17 * * * *'
 
 permissions:
   contents: read
@@ -107,6 +119,17 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
+
+      # Configure the bot git identity once, up front, so every later
+      # git-writing step shares it (today: the commit/push at the end).
+      # Set on the local repo (not --global); it persists in .git/config
+      # across steps in the shared workspace. actions/checkout does not
+      # set a committer identity, so without this ``git commit`` would
+      # fail with "Please tell me who you are".
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Set up Python
         id: setup_python
@@ -225,7 +248,34 @@ jobs:
       # pin keeps the CPU-only wheel; without it pip would resolve
       # against PyPI default and pull the multi-GiB CUDA build.
       - name: Ensure torch CPU wheel is present (self-healing)
-        run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+        shell: bash
+        run: |
+          set -uo pipefail
+          # Healthy path: torch is already in the cached venv, so the
+          # import check short-circuits with ZERO network I/O. Previously
+          # this step ran an unconditional ``pip install`` on EVERY tick,
+          # so a transient ``download.pytorch.org`` outage red-badged the
+          # project's most important workflow even though torch was fine.
+          if python -c "import torch" 2>/dev/null; then
+            echo "torch already present — skipping reinstall (no network)."
+            exit 0
+          fi
+          # Genuinely missing: install the CPU-only wheel with a short
+          # retry so an index blip doesn't fail the tick. The ``--index-url``
+          # pin keeps the CPU wheel (else pip pulls the multi-GiB CUDA build).
+          for attempt in 1 2 3; do
+            if pip install torch --index-url https://download.pytorch.org/whl/cpu; then
+              echo "torch installed on attempt ${attempt}/3."
+              exit 0
+            fi
+            echo "::warning title=torch-install::install attempt ${attempt}/3 failed; retrying."
+            sleep "$((attempt * 3))"
+          done
+          # Soft degradation, never a hard fail: without torch the EN feed
+          # shows "[Partially translated]" for THIS tick only; the next
+          # tick self-heals. Far better than aborting the whole cycle.
+          echo "::warning title=torch-install::torch still missing after 3 attempts; EN feed may degrade to [Partially translated] this tick (next tick self-heals)."
+          exit 0
 
       # ----- Cache fetchers (free APIs, no quota gate) ---------------------
 
@@ -351,13 +401,24 @@ jobs:
       # ----- Feed build (no API call — pure consumer of caches) -----------
 
       - name: Build feed
-        run: python -m src.cli feed build
-        env:
-          # Atom self/alternate-Links werden direkt im Python-Builder
-          # geschrieben. Aus dem aktuellen Repo abgeleitet, damit Forks
-          # korrekte atom:link-URLs schreiben statt auf das
-          # Original-Repo zu zeigen.
-          PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        # Step ceiling below the 10-min job cap so a hung builder (e.g. a
+        # stalled translation-pipeline call) is killed fast and still
+        # leaves budget for the publish step. Healthy builds finish well
+        # under a minute.
+        timeout-minutes: 5
+        shell: bash
+        run: |
+          # Atom self/alternate links are written by the Python builder.
+          # Derive the GitHub Pages base from the always-present
+          # ``$GITHUB_REPOSITORY`` / ``$GITHUB_REPOSITORY_OWNER`` runner
+          # env vars rather than ``${{ github.event.repository.name }}``:
+          # the event payload is empty on ``schedule`` events (the new
+          # backup-cron trigger), which would otherwise emit a broken
+          # ``https://owner.github.io/`` with no repo segment. Forks
+          # inherit their own repo, so atom:link URLs stay correct
+          # instead of pointing at the upstream repo.
+          export PAGES_BASE_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}"
+          python -m src.cli feed build
 
       # ----- README + dashboard render (no API call) ----------------------
 
@@ -378,6 +439,17 @@ jobs:
       # one day; the next day's tick catches up. The README markers
       # are unaffected.
       - name: Refresh statistics dashboard and README snapshot
+        # Cosmetic and non-critical: the README markers + yearly dashboard
+        # are nice-to-have, NOT the deliverable (``docs/feed.xml`` is).
+        # The step runs BEFORE the commit so its output rides the same
+        # atomic commit, but a crash here must NEVER abort the job and
+        # block the feed publish (which is exactly what happened without
+        # this guard: the sequential job aborted before the commit step).
+        # ``continue-on-error`` surfaces a failure as an orange annotation
+        # while letting the feed publish proceed; the README simply stays
+        # one tick stale until the stats script is healthy again.
+        continue-on-error: true
+        timeout-minutes: 2
         run: |
           vienna_hhmm=$(TZ=Europe/Vienna date +%H%M)
           if [ "$vienna_hhmm" -lt 30 ]; then
@@ -388,104 +460,85 @@ jobs:
             python scripts/generate_markdown_stats.py --skip-dashboard
           fi
 
-      # ----- Single atomic commit -----------------------------------------
+      # ----- Validate + single atomic publish ----------------------------
 
-      - name: Pull concurrent remote changes
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          # ``git pull --rebase --autostash`` does NOT fail when the
-          # autostash RE-APPLY conflicts: the rebase (fast-forward onto a
-          # concurrent push) succeeds, the failed ``git stash apply`` is
-          # only a warning, and the step still exits 0 — leaving an UNMERGED
-          # index. The next step (git-auto-commit-action) then dies with the
-          # opaque "error: you need to resolve your current index first"
-          # (observed 2026-05-25: build-feed.yml pushed ``chore: rebuild
-          # feed`` mid-cycle and both runs had rewritten
-          # ``data/first_seen.json``). The shared ``external-api-fetch``
-          # concurrency lane now serialises the feed-writing workflows so
-          # this collision should not recur; the block below is the
-          # defense-in-depth backstop that keeps ANY residual concurrent
-          # push (a manual push, a future workflow) from re-introducing the
-          # silent-unmerged-index failure.
-          git pull --rebase --autostash
-
-          # Append-only ledgers (``data/stats/*.csv``) auto-resolve via the
-          # ``merge=union`` driver in ``.gitattributes`` — both sides' rows
-          # are kept, so they never surface as unmerged here. Everything
-          # else the cycle writes (feed XMLs, README, statistik.md, the
-          # ``first_seen`` state) is a full regeneration from the freshly
-          # fetched caches, so on the rare residual conflict the locally
-          # built copy is authoritative.
-          mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
-          if [ "${#conflicts[@]}" -gt 0 ]; then
-            echo "::warning title=reconcile::autostash re-apply conflicted on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"
-            # In a stash-apply conflict, stage 3 ("--theirs") is the stashed
-            # locally-built version; stage 2 is the just-pulled upstream.
-            git checkout --theirs -- "${conflicts[@]}"
-            git add -- "${conflicts[@]}"
-            # A conflicted ``git stash apply`` leaves the autostash entry on
-            # the stash stack; drop it so it cannot leak into a later run.
-            git stash drop || true
-          fi
-
-          # Never hand an unmerged index to the auto-commit step.
-          if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
-            echo "::error title=reconcile::unresolved merge conflicts remain after reconcile" >&2
-            git diff --name-only --diff-filter=U >&2
-            exit 1
-          fi
-
-      # Inline ``git`` instead of an external commit action. This is the
-      # MOST IMPORTANT workflow in the project (the live feed's ~30-min
-      # heartbeat) and must never go red on a transient infrastructure
-      # blip. A ``uses:`` action is resolved and DOWNLOADED by the runner
-      # in the "Prepare all required actions" setup phase, BEFORE the
-      # first step runs; when codeload.github.com hiccups, that download
-      # fails and the whole job dies in setup — before any retry/fallback
-      # step could ever execute. (Observed 2026-05-26 12:30 UTC:
-      # ``git-auto-commit-action`` 404'd from codeload "after 1 attempts"
-      # and the entire tick was lost.) You cannot retry a ``uses:``
-      # download from inside the workflow, so the only robust fix is to
-      # not depend on one: ``git`` is pre-installed on the runner, needs
-      # no download, and lets us own the retry + never-fail logic below.
+      # ONE never-fail step does the whole publish: validate the built
+      # feed, stage everything, commit, and push with retry + concurrent-
+      # push reconcile folded in. This is the MOST IMPORTANT workflow in
+      # the project (the live feed's ~30-min heartbeat) and must never go
+      # red on a transient infrastructure blip.
+      #
+      # Why inline ``git`` and not an external commit action: a ``uses:``
+      # action is resolved and DOWNLOADED by the runner in the "Prepare
+      # all required actions" setup phase, BEFORE the first step runs;
+      # when codeload.github.com hiccups, that download fails and the
+      # whole job dies in setup — before any retry/fallback could run.
+      # (Observed 2026-05-26 12:30 UTC: ``git-auto-commit-action`` 404'd
+      # from codeload "after 1 attempts" and the entire tick was lost.)
+      # A ``uses:`` download cannot be retried from inside the job, so the
+      # only robust fix is to not depend on one: ``git`` is pre-installed,
+      # needs no download, and lets us own the retry + never-fail logic.
       # The remaining ``uses:`` actions (checkout / setup-python / cache)
       # are first-party and the cycle is idempotent, so a rare setup-phase
-      # miss on those self-heals on the next tick.
+      # miss on those self-heals on the next tick (and the hourly backup
+      # cron is the additional net for a fully-lost tick).
       #
-      # Robustness contract (replaces the old action's behaviour 1:1 and
-      # then hardens it):
+      # Robustness contract:
+      #   * VALIDATE first — if the built feed XML is malformed or empty,
+      #     skip the publish entirely (warning + exit 0) so a builder
+      #     hiccup can never push corruption over the last-good feed.
       #   * ``git add -A`` — stage every workspace output (caches, CSV
       #     ledgers, quota counter, feed XMLs, first_seen state,
-      #     statistik.md, README, feed-health, any future output). Mirrors
-      #     the former ``add_options: -A``; no brittle file_pattern.
-      #   * no changes -> clean no-op (exit 0), as the action did.
-      #   * push with up to 4 attempts and exponential backoff (2/4/8 s),
-      #     re-syncing onto any concurrent push (non-fast-forward) between
-      #     tries. ``--force-with-lease`` is preserved (mirrors
-      #     ``manual-full-refresh.yml``); the re-fetch refreshes the lease
-      #     so the replayed commit fast-forwards cleanly.
-      #   * if every attempt fails -> emit a ``::warning::`` and exit 0.
-      #     The just-built outputs are NOT published this tick, but the
-      #     repository keeps the last good commit and the next ~30-min
-      #     tick rebuilds and republishes from fresh caches. A skipped
-      #     publish is ~30 min of staleness; a red workflow would be
-      #     worse and would page the operator for a non-actionable blip.
-      - name: Commit and push cycle outputs
+      #     statistik.md, README, feed-health, any future output).
+      #   * no changes -> clean no-op (exit 0).
+      #   * push with up to 4 attempts and exponential backoff (2/4/8 s).
+      #     The first push reconciles implicitly; on a non-fast-forward
+      #     (a concurrent push from update-stations.yml / seo-guard.yml,
+      #     which share no concurrency lane with this workflow) the loop
+      #     does ``git pull --rebase`` to replay our commit and retries.
+      #     ``--force-with-lease`` is preserved; the re-fetch refreshes the
+      #     lease so the replayed commit fast-forwards. Rebase conflicts
+      #     resolve to the locally-built regeneration; ``merge=union`` CSV
+      #     ledgers never conflict. (This folds in the former separate
+      #     "Pull concurrent remote changes" step and removes its hard
+      #     ``exit 1`` path — the last red path in the publish sequence.)
+      #   * if every attempt fails -> warning + exit 0. The just-built
+      #     outputs are NOT published this tick, but the repo keeps the
+      #     last good commit and the next tick rebuilds from fresh caches.
+      #     A skipped publish is ~30 min of staleness; a red workflow would
+      #     be worse and would page the operator for a non-actionable blip.
+      - name: Validate and publish cycle outputs
         shell: bash
         env:
           # Keep ``git rebase --continue`` non-interactive (it would
           # otherwise open an editor for the replayed commit message).
           GIT_EDITOR: 'true'
+          # Abort a stalled push/pull transfer (< 1 KB/s for 30 s) instead
+          # of letting a hung socket ride up to the 10-min job ceiling.
+          GIT_HTTP_LOW_SPEED_LIMIT: '1000'
+          GIT_HTTP_LOW_SPEED_TIME: '30'
         run: |
-          # NOTE: intentionally NO ``-e`` — every failure below is
-          # handled explicitly so the step can guarantee exit 0.
+          # NOTE: intentionally NO ``-e`` — every failure below is handled
+          # explicitly so the step can guarantee exit 0.
           set -uo pipefail
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 1) Pre-publish sanity gate. Never ship a malformed or empty
+          #    feed: if the builder exited 0 but wrote garbage, keep the
+          #    last-good feed online and skip this tick (next tick rebuilds).
+          for feed in docs/feed.xml docs/feed.en.xml; do
+            [ -f "${feed}" ] || continue
+            if [ ! -s "${feed}" ]; then
+              echo "::warning title=feed-validate::${feed} is empty — skipping publish this tick (last-good feed stays online)."
+              exit 0
+            fi
+            if ! python -c "import sys, xml.etree.ElementTree as ET; ET.parse(sys.argv[1])" "${feed}"; then
+              echo "::warning title=feed-validate::${feed} is not well-formed XML — skipping publish this tick (last-good feed stays online)."
+              exit 0
+            fi
+          done
 
+          # 2) Stage + commit. ``git add -A`` mirrors the former action's
+          #    ``add_options: -A``; the bot identity was configured up front.
           git add -A
           if git diff --cached --quiet; then
             echo "Cycle produced no changes — nothing to commit or push."
@@ -493,6 +546,7 @@ jobs:
           fi
           git commit -m "chore: update cycle"
 
+          # 3) Push with retry + concurrent-push reconcile + never-fail.
           branch="${GITHUB_REF_NAME}"
           max_attempts=4
           delay=2
@@ -503,24 +557,19 @@ jobs:
               exit 0
             fi
             if [ "${attempt}" -ge "${max_attempts}" ]; then
-              echo "::warning title=cycle-publish::git push failed after ${max_attempts} attempts; this tick's outputs were NOT published. The repository keeps the last good commit and the next ~30-min tick will rebuild and publish from fresh caches. Not failing the workflow."
+              echo "::warning title=cycle-publish::git push failed after ${max_attempts} attempts; this tick's outputs were NOT published. The repo keeps the last good commit and the next tick will rebuild and publish from fresh caches. Not failing the workflow."
               exit 0
             fi
             echo "Push attempt ${attempt}/${max_attempts} failed; re-syncing with origin/${branch} and retrying in ${delay}s."
             sleep "${delay}"
-            # Re-sync onto any concurrent push. ``update-stations.yml``
-            # (Sundays) and ``seo-guard.yml`` (daily) run in SEPARATE
-            # concurrency lanes and can legitimately land a push here, so
-            # the lease can go stale between attempts. ``git pull
-            # --rebase`` replays our single commit onto the new tip;
+            # Re-sync onto any concurrent push and replay our commit;
             # tolerate a transient fetch failure (network blip) and just
             # retry the push after the backoff.
             if ! git pull --rebase --autostash origin "${branch}"; then
               # A rebase replay can stop on a conflict. Every cycle output
               # is a full regeneration, so the locally-built copy (the
               # commit being replayed = "theirs" in rebase terms) wins.
-              # Append-only CSV ledgers auto-resolve via ``merge=union``
-              # (.gitattributes) and never reach here.
+              # ``merge=union`` CSV ledgers auto-resolve and never reach here.
               mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
               if [ "${#conflicts[@]}" -gt 0 ]; then
                 echo "::warning title=cycle-reconcile::rebase conflict on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"
