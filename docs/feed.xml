@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 26 May 2026 23:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 23:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[66A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">aba904564d19959e0ddb3e2e002949d8d9e98e2655696c852ae1597077a1d78b</guid>
+      <pubDate>Tue, 26 May 2026 23:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 23:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 23:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[30A/32A: Gasrohrgebrechen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,28 +30,6 @@
       <ext:ends_at>Wed, 27 May 2026 01:30:00 +0200</ext:ends_at>
       <description>Die Linie 30A wird in Richtung Neu Leopoldau zwischen Großjedlersdorf und Bernreiterplatz über die Jedlersdorfer Straße umgeleitet. [26.05.2026 – 27.05.2026]</description>
       <content:encoded><![CDATA[Die Linie 30A wird in Richtung Neu Leopoldau zwischen Großjedlersdorf und Bernreiterplatz über die Jedlersdorfer Straße umgeleitet.<br/>[26.05.2026 – 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d</guid>
-      <pubDate>Tue, 26 May 2026 22:27:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 22:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 22:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Fahrtbehinderung wegen Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4</guid>
-      <pubDate>Tue, 26 May 2026 22:06:58 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 22:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 22:06:58 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:06:00 +0200</ext:ends_at>
-      <description>[Am 26.05.2026]</description>
-      <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N46: Thaliastraße U]]></title>
@@ -115,6 +104,17 @@
       <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:25 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 26.05.2026]</description>
+      <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
+      <pubDate>Tue, 26 May 2026 00:00:14 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:14 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 26.05.2026]</description>
       <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
