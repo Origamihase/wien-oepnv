@@ -7,37 +7,59 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 26 May 2026 12:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 15:01:16 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2: Fahrtbehinderung Falschparker]]></title>
+      <title><![CDATA[1A: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9ddf5d1b468f97566b0d71492d70a5743faa129c9553b8165867b8249c7b99da</guid>
-      <pubDate>Tue, 26 May 2026 12:25:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 12:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 12:25:49 +0200</ext:starts_at>
+      <guid isPermaLink="false">ad4f085c52382af6e3fe8075c712a8ae261d948c3dde4f7135bf0f3bfdcf1687</guid>
+      <pubDate>Tue, 26 May 2026 14:37:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 15:01:16 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 14:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 26.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[77A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d2fb78dfec0b3971d13e72314dc2efcdbccb60650daf7059b954d1bd1800e28b</guid>
+      <pubDate>Tue, 26 May 2026 14:31:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 15:01:16 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 14:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 26.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A/63A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fe3f8a2312d30d0eb23797471476e03f976bf63c554e15883b76157878946da9</guid>
+      <pubDate>Tue, 26 May 2026 14:27:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 15:01:16 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 14:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. [Am 26.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f</guid>
+      <pubDate>Tue, 26 May 2026 14:01:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 15:01:16 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 14:01:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[66A: Verkehrsunfall]]></title>
+      <title><![CDATA[D: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">74d7957440840d3e04ef7e63c6b0e84924838c4a84cdab001ac77313773a37b5</guid>
-      <pubDate>Tue, 26 May 2026 11:33:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 12:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 11:33:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Weichenstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">861eb589822612a9402ffcc15457641ff4cf74d6a9632da81a7b59b0d8e8dda0</guid>
-      <pubDate>Tue, 26 May 2026 11:11:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 11:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 11:11:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e</guid>
+      <pubDate>Tue, 26 May 2026 13:54:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 09:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 13:54:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
@@ -96,28 +118,6 @@
       <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 26.05.2026]</description>
       <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
-      <pubDate>Tue, 26 May 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 26.05.2026]</description>
-      <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2/U5: Siebenbrunnengasse von Kreuzung Siebenbrunnenplatz und Reinprechtsdorfer Straße bis 44]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">88f83131c42d972f1adfff964b9356342b8eab8fc7838fe6c7f2da6a06615274</guid>
-      <pubDate>Sun, 28 Feb 2021 01:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 25 May 2026 12:59:53 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 28 Feb 2021 01:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 01:00:00 +0100</ext:ends_at>
-      <description>Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden. [Seit 28.02.2021]</description>
-      <content:encoded><![CDATA[Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden.<br/>[Seit 28.02.2021]]]></content:encoded>
     </item>
   </channel>
 </rss>
