@@ -350,26 +350,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Rettungseinsatz",
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "26A/94A: Verkehrsüberlastung",
+    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
-    "pubDate": "2026-05-26T05:05:00+02:00",
-    "starts_at": "2026-05-26T05:05:00+02:00",
+    "guid": "be942d6087acae893831ae786595d7b6251ece815a58903f170b5f6705b6248c",
+    "pubDate": "2026-05-26T06:42:00+02:00",
+    "starts_at": "2026-05-26T06:42:00+02:00",
     "ends_at": "2026-05-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-05-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
-    "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92",
-    "pubDate": "2026-05-26T00:00:15+02:00",
-    "starts_at": "2026-05-26T00:00:15+02:00",
-    "ends_at": "2026-05-26T23:59:59+02:00",
-    "_identity": "wl|störung|L=26A|D=2026-05-26"
+    "_identity": "wl|störung|L=26A,94A|D=2026-05-26"
   },
   {
     "source": "Wiener Linien",
@@ -526,6 +514,54 @@
     "starts_at": "2026-05-26T00:00:27+02:00",
     "ends_at": "2026-05-26T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-05-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Zug Betrieb ab Hofwiesengasse",
+    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3ba4c6494be8dc0e55d7daa610f5f3b2f958bae603c38cf922f86623dddd062b",
+    "pubDate": "2026-05-26T06:56:12+02:00",
+    "starts_at": "2026-05-26T06:56:13+02:00",
+    "ends_at": "2026-05-26T07:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-05-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebfcdeecb63555a7d3eeda6e1144843992faaa428a94f9ee9f79f89dc91e33f",
+    "pubDate": "2026-05-26T06:55:30+02:00",
+    "starts_at": "2026-05-26T06:55:30+02:00",
+    "ends_at": "2026-05-26T07:54:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-05-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Zug Betrieb ab Hietzing",
+    "description": "Schadhafter Zug\nBetrieb ab Hietzing >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9af2a719dbb39fc7b8160d494638687588df31ef1f3e5601db7f73a66230c477",
+    "pubDate": "2026-05-26T06:55:03+02:00",
+    "starts_at": "2026-05-26T06:56:30+02:00",
+    "ends_at": "2026-05-26T07:56:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-05-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhaftes Fahrzeug",
+    "description": "Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Weichen Sie ersatzweise auf die Linien 10, 56A und 56B aus. Voraussichtliche Dauer: 07:30 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Lainzer Straße 101.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
+    "pubDate": "2026-05-26T06:54:00+02:00",
+    "starts_at": "2026-05-26T06:54:00+02:00",
+    "ends_at": "2026-05-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-05-26"
   },
   {
     "source": "Wiener Linien",
