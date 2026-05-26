@@ -19,6 +19,16 @@
       "epoch": 2
     }
   },
+  "02eba5a10b6bfbc053ab8e3cd1f9dabf24000400cc5596a3921352c78e6875e3": {
+    "first_seen": "2026-05-26T14:01:23.491305+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: service disruption.",
+        "title": "2: delays"
+      },
+      "epoch": 2
+    }
+  },
   "043266e11b1fcd118d110d881572408f3f0528a49ae87d4226c8748569a082f0": {
     "first_seen": "2026-05-25T10:00:46.798313+00:00",
     "translations": {
@@ -192,6 +202,16 @@
         "title": "Linzer Stra\u00dfe from junction H\u00fcttelbergstra\u00dfe and Bergmillergasse to junction Wolfersberggasse"
       },
       "epoch": 1
+    }
+  },
+  "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405": {
+    "first_seen": "2026-05-26T14:01:23.491305+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic congestion.",
+        "title": "10A: traffic congestion"
+      },
+      "epoch": 2
     }
   },
   "135dc138ba98273ad144d64ca134b6893a89c99daba5bd7077ef978a587e1c53": {
@@ -526,6 +546,16 @@
       "epoch": 2
     }
   },
+  "3dcd8c946bae4eb5c3d7c26733e2607d131d6414855dd7048a9f5274900c3c98": {
+    "first_seen": "2026-05-26T14:01:23.491305+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between station Meidling S U and B\u00e4renm\u00fchlgang. expected duration: Not foreseeable.",
+        "title": "59A: fire-brigade operation"
+      },
+      "epoch": 2
+    }
+  },
   "3dd2ec4d62d47b447d5556f040f0774144f7f65954d4ab25fa15656df8857568": {
     "first_seen": "2026-05-24T01:32:20.355557+00:00",
     "translations": {
@@ -607,6 +637,16 @@
       "en": {
         "summary": "The affected bus lines are redirected, the passenger information is provided by Wiener Linien GmbH & Co KG. The installation of a district heating line \u2026",
         "title": "Maxingstra\u00dfe from crossing Hanselmayergasse to crossing Trauttmansdorffgasse"
+      },
+      "epoch": 2
+    }
+  },
+  "45e9fa055fa6de68f6d4b0b6fe8d6c7618eef983d2f63db426ccca192a040e62": {
+    "first_seen": "2026-05-26T14:01:23.491305+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: service disruption.",
+        "title": "5: delays"
       },
       "epoch": 2
     }
@@ -944,6 +984,15 @@
       "en": {
         "summary": "Transport measures are largely taken over by the construction works metro, also in the streets of the lower road network.",
         "title": "Universit\u00e4tsstra\u00dfe crossing Landesgerichtsstra\u00dfe and Garnisongasse"
+      },
+      "epoch": 2
+    }
+  },
+  "6ba0bae6a68768907c14045ca96ddc1c51347bec7722644905e849c3f33b7ed0": {
+    "first_seen": "2026-05-26T14:01:23.491305+00:00",
+    "translations": {
+      "en": {
+        "title": "41E: replacement bus 41E hold at W\u00e4hringer Str 200"
       },
       "epoch": 2
     }
