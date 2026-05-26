@@ -5,6 +5,43 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Robustheit: 30-Minuten-Zyklus übersteht Action-Download-Ausfälle und
+  publiziert mit Retry + Never-Fail (2026-05-26)**: Der Lauf vom
+  2026-05-26 12:30 UTC von `update-cycle.yml` starb bereits in der
+  Setup-Phase („Prepare all required actions"), weil
+  `stefanzweifel/git-auto-commit-action` nicht von `codeload.github.com`
+  geladen werden konnte (404 „after 1 attempts"). Ein per `uses:`
+  referenzierter Action-Download wird vor dem ersten Step aufgelöst —
+  ein Retry/Fallback im Workflow kann dort nicht mehr greifen, der Job
+  ist tot, bevor irgendein Step läuft. Fix: Der finale Commit-/Push-
+  Schritt nutzt jetzt Inline-`git` (auf dem Runner vorinstalliert, kein
+  Download) statt der externen Action. `git add -A` bildet das frühere
+  `add_options: -A` 1:1 ab; bei „nichts zu committen" ist der Schritt ein
+  sauberer No-op. Der Push läuft mit bis zu 4 Versuchen und
+  exponentiellem Backoff (2/4/8 s) und re-synchronisiert zwischen den
+  Versuchen via `git pull --rebase --autostash` auf konkurrierende Pushes
+  (`update-stations.yml` sonntags, `seo-guard.yml` täglich liegen in
+  eigenen Concurrency-Lanes); `--force-with-lease` bleibt erhalten.
+  Rebase-Konflikte werden zugunsten der lokal gebauten Vollregeneration
+  aufgelöst (append-only CSV-Ledger lösen sich ohnehin über
+  `merge=union`). Schlägt jeder Versuch fehl, beendet der Schritt mit
+  `::warning::` statt rotem Status — die zuletzt veröffentlichten Daten
+  bleiben stehen und der nächste ~30-Minuten-Tick baut neu auf. Damit ist
+  die wichtigste Pipeline des Projekts gegen den beobachteten transienten
+  CDN-Ausfall **und** gegen Push-Fehler abgesichert. Der bestehende
+  Vertrag aus `tests/test_en_feed_workflow_deps.py` (torch-CPU-Install,
+  HuggingFace-Cache, `feed build`) bleibt unberührt.
+* **Doku: HAFAS-Profil wird wöchentlich (nicht pro Tick) aktualisiert
+  (2026-05-26)**: Die Docstrings in `src/places/hafas_client.py` und
+  `scripts/sync_hafas_profile.py` sagten „before each cron tick" bzw.
+  „so the cron pipeline always picks up the freshest credentials" und
+  erweckten so den Eindruck, das Profil werde alle 30 Minuten geladen.
+  Tatsächlich läuft `sync_hafas_profile.py` ausschließlich im
+  *wöchentlichen* `update-stations.yml` (Sonntags 01:00 UTC); der
+  30-Minuten-Zyklus liest nur das committete `data/hafas_profile.json`
+  und lädt nichts nach (der Laufzeit-Client cached zudem in-process).
+  Das Profil wird damit höchstens einmal pro Woche geladen. Docstrings
+  entsprechend präzisiert.
 * **Sicherheit: Stored-XSS im veröffentlichten `<content:encoded>`-Feld
   geschlossen (2026-05-24)**: `_compose_description` (`src/build_feed.py`)
   bettete den reinen Text aus `summary`/`time_line` un-escaped in den

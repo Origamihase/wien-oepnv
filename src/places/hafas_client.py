@@ -18,12 +18,19 @@ Resilience is layered to mirror the OSM Overpass client:
   size / content-type guards.
 
 The HAFAS profile (``salt`` / ``ver`` / ``aid`` / ``client``) is loaded
-lazily from ``data/hafas_profile.json``. The companion
-``scripts/sync_hafas_profile.py`` refreshes the file from upstream
-before each cron tick. When the profile is absent (developer's local
-machine, first-time clone) :func:`enrich_station_with_hafas` returns
-``None`` instead of raising — the caller treats HAFAS as unavailable
-and falls through to the Google Places tier.
+lazily from ``data/hafas_profile.json`` and cached in-process for the
+lifetime of the run — this module never fetches the profile over the
+network. The committed JSON *is* the cache. It is refreshed by the
+companion ``scripts/sync_hafas_profile.py``, which runs only in the
+*weekly* station-directory workflow
+(``.github/workflows/update-stations.yml``, Sundays 01:00 UTC), right
+before the directory rebuild that actually consumes HAFAS enrichment.
+The ~30-min feed cycle (``update-cycle.yml``) neither runs the sync nor
+reads this file, so the profile is fetched at most once per week — not
+per tick. When the profile is absent (developer's local machine,
+first-time clone) :func:`enrich_station_with_hafas` returns ``None``
+instead of raising — the caller treats HAFAS as unavailable and falls
+through to the Google Places tier.
 
 No external HAFAS client library is used. The Mgate request payload is
 constructed directly and — when the upstream profile carries a salt —

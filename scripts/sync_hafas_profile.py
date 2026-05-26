@@ -14,9 +14,14 @@ triple in the repository would silently break the HAFAS fallback inside
 :mod:`src.places.hafas_client`. This helper extracts the live values
 from the upstream ``public-transport/hafas-client`` project (the
 canonical community mirror of ÖBB's web-app profile) and persists them
-atomically to ``data/hafas_profile.json``. The CI workflow runs this
-script directly before ``scripts/update_station_directory.py`` so the
-cron pipeline always picks up the freshest credentials.
+atomically to ``data/hafas_profile.json``. Only the *weekly* station-
+directory workflow (``.github/workflows/update-stations.yml``, Sundays
+01:00 UTC) runs this script, directly before the directory refresh
+(``scripts/update_all_stations.py``) that actually consumes HAFAS
+enrichment, so the once-a-week rebuild picks up the freshest
+credentials. The ~30-min feed cycle (``update-cycle.yml``) does NOT run
+this sync — it only reads the committed ``data/hafas_profile.json`` —
+so the profile is fetched at most once per week, never per tick.
 
 The upstream OEBB profile is split across two JavaScript modules — the
 entry point ``p/oebb/index.js`` and the imported ``p/oebb/base.js``
