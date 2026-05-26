@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 26 May 2026 06:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 06:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U4: Rettungseinsatz]]></title>
@@ -16,28 +16,6 @@
       <pubDate>Tue, 26 May 2026 05:54:00 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 06:00:58 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 05:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U4 fährt derzeit zwischen den Stationen Kettenbrückengasse und Pilgramgasse in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 06:20 Uhr. Grund … [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Die Linie U4 fährt derzeit zwischen den Stationen Kettenbrückengasse und Pilgramgasse in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 06:20 Uhr. Grund …<br/>[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Rettungseinsatz Betrieb ab Gudrunstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84</guid>
-      <pubDate>Tue, 26 May 2026 05:05:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 06:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 05:12:32 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">60e5d1fc81f9e419af2885a4add5d77bc9a63cc0d961ee3d6df6ff7144a7fc0a</guid>
-      <pubDate>Tue, 26 May 2026 05:05:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 06:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 05:05:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
@@ -118,6 +96,28 @@
       <ext:ends_at>Thu, 31 Dec 2026 01:00:00 +0100</ext:ends_at>
       <description>Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden. [Seit 28.02.2021]</description>
       <content:encoded><![CDATA[Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden.<br/>[Seit 28.02.2021]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2/U5: Volksgartenstraße 2]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">892e2fdfd892f624cc11c1c2328a599b2cfb238d6590b7742af7a6d1073496f5</guid>
+      <pubDate>Sun, 28 Feb 2021 01:00:00 +0100</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 12:59:53 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 28 Feb 2021 01:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 31 Dec 2029 01:00:00 +0100</ext:ends_at>
+      <description>Zur Abwicklung des Baustellenverkehrs für den U-Bahnbau wird In der Volksgartenstraße zwischen der Hansenstraße und der Museumstraße eine Fahrspur gesperrt. [Seit 28.02.2021]</description>
+      <content:encoded><![CDATA[Zur Abwicklung des Baustellenverkehrs für den U-Bahnbau wird In der Volksgartenstraße zwischen der Hansenstraße und der Museumstraße eine Fahrspur gesperrt.<br/>[Seit 28.02.2021]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Rechte Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und Pilgrambrücke]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">f7a5ee7769a7f11d9adab25f6593a5ab60fb777787803d41fc1d33f26956c1cc</guid>
+      <pubDate>Sun, 28 Feb 2021 01:00:00 +0100</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 12:59:53 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 28 Feb 2021 01:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 31 May 2028 02:00:00 +0200</ext:ends_at>
+      <description>Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile von der Ramperstorffergasse bis zur Pilgramgasse für den Fahrzeugverkehr gesperrt. [Seit 28.02.2021]</description>
+      <content:encoded><![CDATA[Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile von der Ramperstorffergasse bis zur Pilgramgasse für den Fahrzeugverkehr gesperrt.<br/>[Seit 28.02.2021]]]></content:encoded>
     </item>
   </channel>
 </rss>
