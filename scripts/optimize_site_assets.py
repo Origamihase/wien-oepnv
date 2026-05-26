@@ -218,10 +218,13 @@ FOOTER_WEBP_QUALITY = 75
 # (1.5rem floor of the ``clamp(1.5rem, 4vw, 2.5rem)`` height). The
 # downscale from 1584×224 to 768×108 inevitably anti-aliases the tight
 # palette, leaving few exact pixel matches — which makes lossless WebP
-# fall back to almost-pass-through encoding. Lossy at q=90 is visually
-# indistinguishable at 24 px tall and shrinks the file ~4× versus the
-# lossless variant (~13 KiB vs ~55 KiB at the same dimensions).
-TRAIN_SMALL_WEBP_QUALITY = 90
+# fall back to almost-pass-through encoding. Lossy at q=75 is visually
+# indistinguishable at 24 px tall — the sprite is decorative
+# (``aria-hidden``, ``fetchpriority="low"``) — and trims the file well
+# below the q=90 variant that Lighthouse's image-delivery insight
+# flagged as over-large, without touching the 768×108 dimensions that
+# keep the DPR headroom intact.
+TRAIN_SMALL_WEBP_QUALITY = 75
 WEBP_ENCODE_METHOD = 6  # slowest/best compression; runs once per source change
 
 
