@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 26 May 2026 10:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 10:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[18: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f</guid>
+      <pubDate>Tue, 26 May 2026 10:20:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 10:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 10:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 26.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[39A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a1ef8ce30ad0f3717a8e5d52c3f2008749cd322b737c79ffaa5b98dfe80292a4</guid>
+      <pubDate>Tue, 26 May 2026 10:05:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 10:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 10:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie 39A fährt derzeit nur zwischen Bahnhof Heiligenstadt S U und Oberdöbling S. Weichen Sie ersatzweise auf die Linien 10A, 35A aus. Voraussichtliche Dauer: Nicht absehbar. [Am 26.05.2026]</description>
+      <content:encoded><![CDATA[Die Linie 39A fährt derzeit nur zwischen Bahnhof Heiligenstadt S U und Oberdöbling S. Weichen Sie ersatzweise auf die Linien 10A, 35A aus. Voraussichtliche Dauer: Nicht absehbar.<br/>[Am 26.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Rennweg]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -26,7 +48,7 @@
       <pubDate>Tue, 26 May 2026 09:55:00 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 10:01:07 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 09:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 26 May 2026 10:28:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 26.05.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 26.05.2026]]]></content:encoded>
     </item>
@@ -37,39 +59,6 @@
       <pubDate>Tue, 26 May 2026 09:30:00 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 10:01:07 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 09:32:29 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Praterstern S U und Blindengasse. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Praterstern S U und Blindengasse.<br/>[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8</guid>
-      <pubDate>Tue, 26 May 2026 09:06:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 09:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 09:06:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[80A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab</guid>
-      <pubDate>Tue, 26 May 2026 08:22:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 09:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 08:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 26.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 26.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0dad447e1a2d21d0e9c43c5e4aeb6bc994fa524bc67a12b3727d48d66fe8e90b</guid>
-      <pubDate>Tue, 26 May 2026 08:36:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 09:01:15 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 08:36:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.05.2026]]]></content:encoded>
@@ -114,6 +103,17 @@
       <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:15 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 26.05.2026]</description>
+      <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45</guid>
+      <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:25 +0200</ext:starts_at>
       <ext:ends_at>Tue, 26 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 26.05.2026]</description>
       <content:encoded><![CDATA[[Am 26.05.2026]]]></content:encoded>

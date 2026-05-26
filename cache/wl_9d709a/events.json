@@ -350,26 +350,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Verkehrsunfall",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "18: Verkehrsunfall",
+    "description": "Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
-    "pubDate": "2026-05-26T09:06:00+02:00",
-    "starts_at": "2026-05-26T09:06:00+02:00",
+    "guid": "2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f",
+    "pubDate": "2026-05-26T10:20:00+02:00",
+    "starts_at": "2026-05-26T10:20:00+02:00",
     "ends_at": "2026-05-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-05-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
-    "pubDate": "2026-05-26T09:17:49+02:00",
-    "starts_at": "2026-05-26T09:17:49+02:00",
-    "ends_at": "2026-05-26T10:17:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-05-26"
+    "_identity": "wl|störung|L=18|D=2026-05-26"
   },
   {
     "source": "Wiener Linien",
@@ -398,14 +386,50 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40A: Rettungseinsatz",
-    "description": "Linie 40A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "39A: Fremdunfall Betrieb ab Oberdöbling",
+    "description": "Fremdunfall\nBetrieb ab Oberdöbling",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0dad447e1a2d21d0e9c43c5e4aeb6bc994fa524bc67a12b3727d48d66fe8e90b",
-    "pubDate": "2026-05-26T08:36:00+02:00",
-    "starts_at": "2026-05-26T08:36:00+02:00",
+    "guid": "0e421e69b82d03eeddb7589457ff6457ff94754031d2d5765e0bb812c8f91479",
+    "pubDate": "2026-05-26T10:15:02+02:00",
+    "starts_at": "2026-05-26T10:15:02+02:00",
+    "ends_at": "2026-05-26T11:13:00+02:00",
+    "_identity": "wl|störung|L=39A|D=2026-05-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Fremdunfall Ab Oberdöbling über Linie 38 nach Grinzing",
+    "description": "Fremdunfall\nAb Oberdöbling über Linie 38 nach Grinzing",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "578e48925393f337385d712a98c07df569c5aee44fcdd67f76fa800e471ed31c",
+    "pubDate": "2026-05-26T10:16:14+02:00",
+    "starts_at": "2026-05-26T10:16:32+02:00",
+    "ends_at": "2026-05-26T11:15:00+02:00",
+    "_identity": "wl|störung|L=39A|D=2026-05-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Fremder Verkehrsunfall",
+    "description": "Die Linie 39A fährt derzeit nur zwischen Bahnhof Heiligenstadt S U und Oberdöbling S. Weichen Sie ersatzweise auf die Linien 10A, 35A aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Fremder Verkehrsunfall im Bereich Windhabergasse .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a1ef8ce30ad0f3717a8e5d52c3f2008749cd322b737c79ffaa5b98dfe80292a4",
+    "pubDate": "2026-05-26T10:05:00+02:00",
+    "starts_at": "2026-05-26T10:05:00+02:00",
     "ends_at": "2026-05-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=40A|D=2026-05-26"
+    "_identity": "wl|störung|L=39A|D=2026-05-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c9e1c770fa2f14e3c9f7ea06fcc4490c287acb1b7b11f20e941cd7e30ca0e631",
+    "pubDate": "2026-05-26T10:15:31+02:00",
+    "starts_at": "2026-05-26T10:15:31+02:00",
+    "ends_at": "2026-05-26T11:15:00+02:00",
+    "_identity": "wl|störung|L=39A|D=2026-05-26"
   },
   {
     "source": "Wiener Linien",
@@ -555,7 +579,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "5: Falschparker Betrieb ab Albertgasse",
-    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 10:15 Uhr. Grund: Falschparker im Bereich Kaiserstraße 100.",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
     "pubDate": "2026-05-26T09:30:00+02:00",
@@ -638,25 +662,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "80A: Verkehrsüberlastung",
-    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab",
-    "pubDate": "2026-05-26T08:22:00+02:00",
-    "starts_at": "2026-05-26T08:22:00+02:00",
-    "ends_at": "2026-05-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=80A|D=2026-05-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "97A: Rettungseinsatz",
     "description": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "9467a246f86f6472938f073378209e9f650cfb30990767d72eec86235aa9019c",
     "pubDate": "2026-05-26T09:55:00+02:00",
     "starts_at": "2026-05-26T09:55:00+02:00",
-    "ends_at": "2026-05-26T23:55:00+02:00",
+    "ends_at": "2026-05-26T10:28:00+02:00",
     "_identity": "wl|störung|L=97A|D=2026-05-26"
   },
   {
