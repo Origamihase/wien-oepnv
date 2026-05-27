@@ -3710,8 +3710,17 @@ def _apply_lang_overlay(
     # next build trusts the cache instead of evicting and recomputing.
     _stamp_translation_epoch(ident, state)
 
+    # Mirror the DE length contract (see ``_format_item_content`` lines
+    # ~3826-3839): German→English expansion (compound nouns split into
+    # several words) can push a translated title past ``TITLE_CHAR_LIMIT``
+    # or a summary past the 180-char TV-screen cap. The DE strings fed into
+    # translation were already capped, so re-apply both caps to the
+    # translated output to keep the EN feed within the same contract.
     title_en = _sanitize_text(title_raw)
-    summary_en = _sanitize_text(summary_raw)
+    if len(title_en) > feed_config.TITLE_CHAR_LIMIT:
+        title_en = title_en[: feed_config.TITLE_CHAR_LIMIT].rstrip() + " …"
+    title_en = _WHITESPACE_RE.sub(" ", title_en).strip()
+    summary_en = _truncate_summary_180(_sanitize_text(summary_raw))
     time_line_en = _translate_time_line_en(time_line_de)
     desc_text_truncated_en, desc_html_en = _compose_description(
         summary_en, time_line_en
