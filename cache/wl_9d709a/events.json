@@ -332,7 +332,7 @@
     "guid": "b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5",
     "pubDate": "2026-05-26T00:00:17+02:00",
     "starts_at": "2026-05-26T00:00:17+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=10A,41E|D=2026-05-26"
   },
   {
@@ -350,26 +350,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Betrieb ab Frödenplatz",
-    "description": "Gleisbauarbeiten\nBetrieb ab Frödenplatz",
+    "title": "15A/65A: Fremder Verkehrsunfall",
+    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Fremder Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0cc601b709f5e2e2bf853af2229533e03cb323563dfe0bebb6a3b9de6ceb2e16",
-    "pubDate": "2026-05-27T04:30:26+02:00",
-    "starts_at": "2026-05-27T04:30:26+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
-    "_identity": "wl|störung|L=11|D=2026-05-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Verunreinigung",
-    "description": "Linie 12: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "206b2be0af7f1ed67fcf6f5727bc71df9cf7c6dd9a7fa137ab68348c7c419bfe",
-    "pubDate": "2026-05-27T22:53:00+02:00",
-    "starts_at": "2026-05-27T22:53:00+02:00",
-    "ends_at": "2026-05-27T23:55:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-05-27"
+    "guid": "e7b0e67609a16a37d450a0698a27d7e85d4471b4fe97050593759e0d7739240e",
+    "pubDate": "2026-05-27T23:52:00+02:00",
+    "starts_at": "2026-05-27T23:52:00+02:00",
+    "ends_at": "2026-05-28T00:30:00+02:00",
+    "_identity": "wl|störung|L=15A,65A|D=2026-05-27"
   },
   {
     "source": "Wiener Linien",
@@ -380,7 +368,7 @@
     "guid": "62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92",
     "pubDate": "2026-05-26T00:00:15+02:00",
     "starts_at": "2026-05-26T00:00:15+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-05-26"
   },
   {
@@ -392,7 +380,7 @@
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-05-26T00:00:13+02:00",
     "starts_at": "2026-05-26T00:00:13+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-05-26"
   },
   {
@@ -404,7 +392,7 @@
     "guid": "0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8",
     "pubDate": "2026-05-26T00:00:17+02:00",
     "starts_at": "2026-05-26T00:00:17+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=40|D=2026-05-26"
   },
   {
@@ -416,7 +404,7 @@
     "guid": "3dd2ec4d62d47b447d5556f040f0774144f7f65954d4ab25fa15656df8857568",
     "pubDate": "2026-05-26T00:00:17+02:00",
     "starts_at": "2026-05-26T00:00:17+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=41|D=2026-05-26"
   },
   {
@@ -428,7 +416,7 @@
     "guid": "8fc2142f96f52b13d5b783366be5422b91f88088ec2b47cd38bbfda2736860f8",
     "pubDate": "2026-05-26T00:00:17+02:00",
     "starts_at": "2026-05-26T00:00:17+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=41|D=2026-05-26"
   },
   {
@@ -440,7 +428,7 @@
     "guid": "72daecfae156d674f4b17f0865290882105ea9c8dc7f884762c80c1d60a7140d",
     "pubDate": "2026-05-22T00:00:13+02:00",
     "starts_at": "2026-05-26T00:00:27+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=42|D=2026-05-22"
   },
   {
@@ -464,7 +452,7 @@
     "guid": "00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12",
     "pubDate": "2026-05-22T00:00:13+02:00",
     "starts_at": "2026-05-22T00:00:13+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-05-22"
   },
   {
@@ -476,7 +464,7 @@
     "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
     "pubDate": "2026-05-22T00:00:13+02:00",
     "starts_at": "2026-05-22T00:00:13+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-05-22"
   },
   {
@@ -488,7 +476,7 @@
     "guid": "d69dbcd381e73ff23979749766d0ce677cb151b10269f6f878240d11cec54c8f",
     "pubDate": "2026-05-22T00:00:13+02:00",
     "starts_at": "2026-05-22T00:00:13+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-05-22"
   },
   {
@@ -500,7 +488,7 @@
     "guid": "05f43b3cc6e7fc469b2327c420ffd938743c80bae8e543e6b1266ae3efe72301",
     "pubDate": "2026-05-22T00:00:13+02:00",
     "starts_at": "2026-05-22T00:00:13+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=44A|D=2026-05-22"
   },
   {
@@ -524,7 +512,7 @@
     "guid": "2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18",
     "pubDate": "2026-05-22T00:00:13+02:00",
     "starts_at": "2026-05-22T00:00:13+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-05-22"
   },
   {
@@ -536,7 +524,7 @@
     "guid": "ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b",
     "pubDate": "2026-05-26T00:00:27+02:00",
     "starts_at": "2026-05-26T00:00:27+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-05-26"
   },
   {
@@ -548,19 +536,19 @@
     "guid": "73d648f3a7ba3bcbd8d8a2bca0cd90910b76ad79273af161c054a1a859333ec7",
     "pubDate": "2026-05-27T18:17:16+02:00",
     "starts_at": "2026-05-27T18:34:36+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T01:41:00+02:00",
     "_identity": "wl|störung|L=49|D=2026-05-27"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "49: Wasserrohrgebrechen",
-    "description": "Linie 49: Betrieb nur zwischen Ring, Volkstheater U und Baumgarten. Ein Schienenersatzverkehr mit Bussen zwischen Baumgarten und Satzberggasse wurde eingerichtet. Voraussichtliche Dauer: Nicht absehbar. Grund: Wasserrohrgebrechen im Bereich Linzer Straße 424.",
+    "description": "Linie 49: Betrieb nur zwischen Ring, Volkstheater U und Baumgarten. Ein Schienenersatzverkehr mit Bussen zwischen Baumgarten und Satzberggasse wurde eingerichtet. Voraussichtliche Dauer: Betriebsschluss. Grund: Wasserrohrgebrechen im Bereich Linzer Straße 424.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "bfbe7b65fb0dbbafbc85f08d07247290bee9eb36dd63bfc69a63bd7ee9e40b81",
     "pubDate": "2026-05-27T18:12:00+02:00",
     "starts_at": "2026-05-27T18:12:00+02:00",
-    "ends_at": "2026-05-27T23:55:00+02:00",
+    "ends_at": "2026-05-28T00:55:00+02:00",
     "_identity": "wl|störung|L=49|D=2026-05-27"
   },
   {
@@ -584,7 +572,7 @@
     "guid": "968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c",
     "pubDate": "2026-05-26T00:00:14+02:00",
     "starts_at": "2026-05-26T00:00:14+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=62|D=2026-05-26"
   },
   {
@@ -596,7 +584,7 @@
     "guid": "c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45",
     "pubDate": "2026-05-26T00:00:15+02:00",
     "starts_at": "2026-05-26T00:00:25+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-05-26"
   },
   {
@@ -608,7 +596,7 @@
     "guid": "af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf",
     "pubDate": "2026-05-26T00:00:13+02:00",
     "starts_at": "2026-05-26T00:00:13+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-05-26"
   },
   {
@@ -620,7 +608,7 @@
     "guid": "fea8a52de8284e73a68e14a51478ee4263f596086bd37c21aa6e1137962f6b4a",
     "pubDate": "2026-05-22T00:00:20+02:00",
     "starts_at": "2026-05-22T00:00:20+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=7A|D=2026-05-22"
   },
   {
@@ -644,7 +632,7 @@
     "guid": "d280e5ddac0af3382c1b354fb03d282c238bf112358b241357de02731032fe74",
     "pubDate": "2026-05-22T00:00:27+02:00",
     "starts_at": "2026-05-22T00:00:27+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-05-22"
   },
   {
@@ -656,7 +644,7 @@
     "guid": "9e1da55a84eb2a314bb8ea95e8d7d92a26df6c2fdc0147bedf979d9e42250eb8",
     "pubDate": "2026-05-26T00:00:17+02:00",
     "starts_at": "2026-05-26T00:00:17+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-05-26"
   },
   {
@@ -692,7 +680,7 @@
     "guid": "14d72afa7ef35cf4a782d1b4e669aa9e18ea4c13673e9bbf8d0e47d12f90a4fe",
     "pubDate": "2026-05-26T00:00:14+02:00",
     "starts_at": "2026-05-26T00:00:14+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
+    "ends_at": "2026-05-28T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-05-26"
   }
 ]
