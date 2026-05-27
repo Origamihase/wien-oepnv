@@ -105,3 +105,29 @@ def test_reproduction_linie_n62_date_mismatch(monkeypatch: pytest.MonkeyPatch) -
     assert ev["pubDate"].year == 2025
     assert ev["pubDate"].month == 12
     assert ev["pubDate"].day == 12
+
+def test_monthname_advance_notice_sets_starts_at(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Spelled-out month form (real WL shape, e.g. "ab 07. April 2026").
+    # The legacy regex ignored it, so starts_at silently fell back to the
+    # API publication date; it must now win as the effective start.
+    traffic_info = _base_event(
+        title="56A: Bauarbeiten Maxingstraße ab 07. April 2026",
+        time={"start": "2026-01-10T00:00:00.000+01:00"},
+        attributes={"relatedLines": ["56A"]},
+    )
+
+    _setup_fetch(monkeypatch, traffic_infos=[traffic_info])
+
+    events = fetch_events()
+    assert len(events) == 1
+    ev = events[0]
+
+    start_dt = ev["starts_at"]
+    assert start_dt.year == 2026
+    assert start_dt.month == 4
+    assert start_dt.day == 7
+
+    # PubDate should remain the API publication date.
+    assert ev["pubDate"].year == 2026
+    assert ev["pubDate"].month == 1
+    assert ev["pubDate"].day == 10
