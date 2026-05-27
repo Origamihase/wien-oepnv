@@ -1852,6 +1852,16 @@
   "8d766003c3ff0681ce82ed31d19c99624f047547c4c41bb3cf4def4b566e56d7": {
     "first_seen": "2026-05-06T04:58:26.638473+00:00"
   },
+  "8de0171cb5a82c20b0963bf79e2f59c4da0c97e94c58a5fdab5ede435ad86aba": {
+    "first_seen": "2026-05-27T18:30:52.698399+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective vehicle.",
+        "title": "27: defective vehicle"
+      },
+      "epoch": 2
+    }
+  },
   "8e2e60cd08cdc480ab7a0f38043ad42d96e4825d6383c974792544f84a1e4447": {
     "first_seen": "2026-05-24T20:34:38.763545+00:00",
     "translations": {
@@ -3046,6 +3056,16 @@
       "en": {
         "summary": "Because of an demonstration it comes to traffic measures period: Wednesday, 27. May 2026, between 11:00 o'clock and 19:00 o'clock. Measures: Line D: diversion in both directions \u2026",
         "title": "1/2/2A/43/44/59A/62/71/D/WLB: D, 1, 2, 43, 44, 62, 71, 59A, 1A, Badner Bahn: demonstration on 27.05.2026"
+      },
+      "epoch": 2
+    }
+  },
+  "e7c762209790ccc1458fc85a3ab1e457323e911dc03795bf462a2f2d1fc322e2": {
+    "first_seen": "2026-05-27T18:30:52.698399+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "6: Impurity"
       },
       "epoch": 2
     }
