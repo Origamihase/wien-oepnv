@@ -362,6 +362,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "22A: Verkehrsüberlastung",
+    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea",
+    "pubDate": "2026-05-27T07:58:00+02:00",
+    "starts_at": "2026-05-27T07:58:00+02:00",
+    "ends_at": "2026-05-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=22A|D=2026-05-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -586,6 +598,18 @@
     "starts_at": "2026-05-22T00:00:20+02:00",
     "ends_at": "2026-05-27T23:59:59+02:00",
     "_identity": "wl|störung|L=7A|D=2026-05-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Verkehrsüberlastung",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
+    "pubDate": "2026-05-27T07:59:00+02:00",
+    "starts_at": "2026-05-27T07:59:00+02:00",
+    "ends_at": "2026-05-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2026-05-27"
   },
   {
     "source": "Wiener Linien",
