@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 27 May 2026 18:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2026 18:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U6: service disruption]]></title>
@@ -40,17 +40,6 @@
       <ext:starts_at>Wed, 27 May 2026 17:29:54 +0200</ext:starts_at>
       <description>Due to an overhead-line fault, only limited journeys between Wien Praterstern Station (U) and Wien Meidling Station (U) to 17:17 were possible. [Since 27.05.2026]</description>
       <content:encoded><![CDATA[Due to an overhead-line fault, only limited journeys between Wien Praterstern Station (U) and Wien Meidling Station (U) to 17:17 were possible.<br/>[Since 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: service obstruction for rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc</guid>
-      <pubDate>Wed, 27 May 2026 17:16:21 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 17:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 17:16:24 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 18:15:00 +0200</ext:ends_at>
-      <description>[On 27.05.2026]</description>
-      <content:encoded><![CDATA[[On 27.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A: rescue operation]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Wed, 27 May 2026 20:00:00 +0200</ext:ends_at>
       <description>[On 27.05.2026]</description>
       <content:encoded><![CDATA[[On 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[59A: demonstration service from Bearühlgang]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">736f71855b66e15dcb71393b98107316c160008d90ede78fd29f17ea17d81afe</guid>
+      <pubDate>Wed, 27 May 2026 11:53:37 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 14:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 11:53:37 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 19:15:00 +0200</ext:ends_at>
+      <description>service from Bärenühlgang [On 27.05.2026]</description>
+      <content:encoded><![CDATA[service from Bärenühlgang<br/>[On 27.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
