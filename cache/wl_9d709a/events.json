@@ -374,30 +374,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Demonstration Betrieb ab Resselgasse",
-    "description": "Demonstration\nBetrieb ab Resselgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a3904226e11e2eaa01222749b08821d53ed1cdb9f1a41de4e9b274034872a123",
-    "pubDate": "2026-05-27T11:43:18+02:00",
-    "starts_at": "2026-05-27T11:43:18+02:00",
-    "ends_at": "2026-05-27T20:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-05-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Demonstration Betrieb ab Börse",
-    "description": "Demonstration\nBetrieb ab Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bd2bbc492fa41191c2ba11d0c2b48db31149a36909ebf7486dc05890a079f7ac",
-    "pubDate": "2026-05-27T11:42:49+02:00",
-    "starts_at": "2026-05-27T11:42:49+02:00",
-    "ends_at": "2026-05-27T20:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-05-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -406,18 +382,6 @@
     "starts_at": "2026-05-26T00:00:15+02:00",
     "ends_at": "2026-05-27T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-05-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b96bf1b89fa457564acf6d8c73bb05ce025a28809f6e89d1def5f382ceed30fd",
-    "pubDate": "2026-05-27T13:48:06+02:00",
-    "starts_at": "2026-05-27T13:48:06+02:00",
-    "ends_at": "2026-05-27T20:00:00+02:00",
-    "_identity": "wl|störung|L=2A|D=2026-05-27"
   },
   {
     "source": "Wiener Linien",
@@ -554,18 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "79343c2af8b49d8a4bb3120797f86ee4e630ec230701989466be6b4b1c33d5f6",
-    "pubDate": "2026-05-27T13:01:02+02:00",
-    "starts_at": "2026-05-27T13:01:02+02:00",
-    "ends_at": "2026-05-27T20:00:00+02:00",
-    "_identity": "wl|störung|L=43|D=2026-05-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "44A: Busse halten Alszeile gegenüber 93",
     "description": "Bauarbeiten\nBusse halten Alszeile gegenüber 93",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -614,11 +566,11 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Wasserrohrgebr. Betrieb ab Baumgarten",
-    "description": "Wasserrohrgebr.\nBetrieb ab Baumgarten",
+    "title": "49: Wasserrohrgebr. Ersatzverkehr ab Satzberggasse bis Baumgarten",
+    "description": "Wasserrohrgebr.\nErsatzverkehr ab Satzberggasse bis Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4a6d62f335fafb3bc04f55f75bb339a1964f22d39835a1e5f021a60288d62b15",
-    "pubDate": "2026-05-27T18:22:06+02:00",
+    "guid": "73d648f3a7ba3bcbd8d8a2bca0cd90910b76ad79273af161c054a1a859333ec7",
+    "pubDate": "2026-05-27T18:17:16+02:00",
     "starts_at": "2026-05-27T18:34:36+02:00",
     "ends_at": "2026-05-27T23:59:59+02:00",
     "_identity": "wl|störung|L=49|D=2026-05-27"
@@ -627,24 +579,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "49: Wasserrohrgebrechen",
-    "description": "Linie 49: Betrieb nur zwischen Ring, Volkstheater U und Baumgarten. Voraussichtliche Dauer: Nicht absehbar. Grund: Wasserrohrgebrechen im Bereich Linzer Straße 424.",
+    "description": "Linie 49: Betrieb nur zwischen Ring, Volkstheater U und Baumgarten. Ein Schienenersatzverkehr mit Bussen zwischen Baumgarten und Satzberggasse wurde eingerichtet. Voraussichtliche Dauer: Nicht absehbar. Grund: Wasserrohrgebrechen im Bereich Linzer Straße 424.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "bfbe7b65fb0dbbafbc85f08d07247290bee9eb36dd63bfc69a63bd7ee9e40b81",
     "pubDate": "2026-05-27T18:12:00+02:00",
     "starts_at": "2026-05-27T18:12:00+02:00",
     "ends_at": "2026-05-27T23:55:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-05-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung Wasserrohrgebrechen",
-    "description": "Fahrtbehinderung\nWasserrohrgebrechen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dc3267abfcbe8a2eec6a95930a110eef2d2350080797aaf5e7bc01023abea797",
-    "pubDate": "2026-05-27T18:17:16+02:00",
-    "starts_at": "2026-05-27T18:17:42+02:00",
-    "ends_at": "2026-05-27T23:59:59+02:00",
     "_identity": "wl|störung|L=49|D=2026-05-27"
   },
   {
