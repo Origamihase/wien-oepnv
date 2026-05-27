@@ -67,6 +67,39 @@ DEFAULT_MAX_ZIP_ENTRIES = 1000
 DEFAULT_MAX_ZIP_FILENAME_LENGTH = 1024
 
 
+def _close_and_cleanup_failed_write(
+    f: IO[Any] | None, fd: int | None, tmp_path: Path
+) -> None:
+    """Best-effort cleanup after a failed :func:`atomic_write`.
+
+    Closes whichever descriptor is still open — the file object when
+    ``open(fd, ...)`` succeeded, otherwise the raw ``fd`` from ``os.open``
+    (which would leak if ``open(fd, ...)`` raised before taking ownership) —
+    then removes the temporary file.
+    """
+    log = logging.getLogger(__name__)
+    # Close if still open (e.g. exception during yield)
+    if f is not None:
+        try:
+            f.close()
+        except Exception as close_exc:
+            log.warning("Failed to close temporary file", exc_info=close_exc)
+    elif fd is not None:
+        # ``os.open`` succeeded but ``open(fd, ...)`` never took ownership
+        # (e.g. an invalid ``encoding`` raises LookupError before the file
+        # object is built). Close the raw descriptor so it does not leak.
+        try:
+            os.close(fd)
+        except OSError:
+            pass
+    # Cleanup temp file
+    if os.path.exists(tmp_path):
+        try:
+            os.unlink(tmp_path)
+        except OSError as unlink_exc:
+            log.warning("Failed to remove temporary file", exc_info=unlink_exc)
+
+
 @contextmanager
 def atomic_write(
     path: str | Path,
@@ -103,6 +136,7 @@ def atomic_write(
     unique_id = secrets.token_hex(16)
     tmp_path = target.with_name(f"{target.name}.{unique_id}.tmp")
 
+    fd: int | None = None
     f: IO[Any] | None = None
     try:
         flags = os.O_CREAT | os.O_EXCL
@@ -123,13 +157,17 @@ def atomic_write(
             pass
 
         f = open(fd, mode, encoding=encoding, newline=newline)
+        # The file object now owns the descriptor — closing ``f`` closes
+        # ``fd``. Null the raw handle so the failure path never double-closes
+        # it (a re-used fd could by then belong to an unrelated file).
+        fd = None
         yield f
         f.flush()
         os.fsync(f.fileno())
 
         # Set permissions before moving into place and closing
         try:
-            os.fchmod(fd, permissions)
+            os.fchmod(f.fileno(), permissions)
         except OSError:
             pass
 
@@ -149,20 +187,7 @@ def atomic_write(
                 raise FileExistsError(f"File {target} already exists") from exc
 
     except Exception:
-        # Close if still open (e.g. exception during yield)
-        if f is not None:
-            try:
-                f.close()
-            except Exception as close_exc:
-                import logging
-                logging.getLogger(__name__).warning("Failed to close temporary file", exc_info=close_exc)
-        # Cleanup temp file
-        if os.path.exists(tmp_path):
-            try:
-                os.unlink(tmp_path)
-            except OSError as unlink_exc:
-                import logging
-                logging.getLogger(__name__).warning("Failed to remove temporary file", exc_info=unlink_exc)
+        _close_and_cleanup_failed_write(f, fd, tmp_path)
         raise
 
 

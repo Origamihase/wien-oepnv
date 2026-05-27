@@ -691,3 +691,33 @@ def test_append_stammstrecke_row_does_not_modify_safe_text(tmp_path: Path) -> No
     assert rows[0][3] == "Meidling"
     # Numeric formatting unchanged.
     assert rows[0][4] == "5.50"
+
+
+def test_read_recent_observations_localizes_year_at_new_year_boundary(
+    tmp_path: Path,
+) -> None:
+    """File selection must use the Vienna-local year (matching the writer).
+
+    A row written at 2027-01-01 00:30 Vienna (= 2026-12-31 23:30 UTC) lands in
+    ``stammstrecke_2027.csv``. Reading with a UTC-aware ``now`` that is still
+    2026 in UTC but already 2027 in Vienna must still find that row, i.e. the
+    reader must scan the 2027 ledger rather than only the UTC ``now.year``.
+    """
+    written_at = datetime(2026, 12, 31, 23, 30, tzinfo=UTC)
+    stats_utils.append_stammstrecke_row(
+        timestamp=written_at,
+        direction="Meidling",
+        delay_minutes=6.0,
+        stats_dir=tmp_path,
+    )
+    # Confirm the writer placed the row in the *new* year's ledger.
+    assert (tmp_path / "stammstrecke_2027.csv").exists()
+
+    now_utc = datetime(2026, 12, 31, 23, 45, tzinfo=UTC)  # 2027-01-01 00:45 Vienna
+    observations = stats_utils.read_recent_stammstrecke_observations(
+        now=now_utc,
+        window=timedelta(hours=2),
+        stats_dir=tmp_path,
+    )
+    assert len(observations) == 1
+    assert observations[0].direction == "Meidling"

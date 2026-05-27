@@ -764,7 +764,12 @@ def read_recent_stammstrecke_observations(
     # passes one, but the API is public) would otherwise silently skip the
     # intermediate years' ledgers. ``range`` is identical to the former
     # ``{cutoff.year, now.year}`` set for the ≤1-year windows used today.
-    years = list(range(cutoff.year, now.year + 1))
+    # Year-file names are derived from the *Vienna-local* year at write time
+    # (:func:`append_stammstrecke_row` uses ``to_vienna(timestamp).year``), so
+    # the file-selection range must localise too. A UTC-aware ``now`` in the
+    # first hour(s) after a Vienna New-Year would otherwise scan only the
+    # previous year's ledger and miss rows just written to the new one.
+    years = list(range(to_vienna(cutoff).year, to_vienna(now).year + 1))
     observations: list[StammstreckeObservation] = []
     for year in years:
         path = folder / f"stammstrecke_{year:04d}.csv"

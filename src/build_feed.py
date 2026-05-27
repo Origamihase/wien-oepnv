@@ -3038,13 +3038,18 @@ def _count_new_items(
     items: Sequence[FeedItem],
     state: dict[str, dict[str, Any]],
 ) -> int:
-    existing = set(state.keys()) if isinstance(state, dict) else set()
     count = 0
     for it in items:
         if not isinstance(it, dict):
             continue  # type: ignore[unreachable]
-        ident = _identity_for_item(it)
-        if ident not in existing:
+        # The state is persisted under the guid-preferring key scheme
+        # (:func:`_state_key_for_item`, with a legacy-identity fallback) used
+        # by both the writer and the age-out. Comparing the raw content
+        # identity (:func:`_identity_for_item`) against guid-keyed state
+        # counted every guid-bearing item as "new" on every run — use the
+        # same lookup so an already-tracked item is recognised.
+        _key, entry = _lookup_state(it, state)
+        if entry is None:
             count += 1
     return count
 
