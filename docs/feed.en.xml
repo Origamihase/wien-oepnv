@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 27 May 2026 06:49:39 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2026 07:00:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[44: service obstruction traffic accident]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Wed, 27 May 2026 07:25:00 +0200</ext:ends_at>
       <description>[On 27.05.2026]</description>
       <content:encoded><![CDATA[[On 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e51951a503565e36ead67df34b39b4610182b9b9dcc9afc61af74e08f8698c87</guid>
-      <pubDate>Wed, 27 May 2026 06:05:00 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 06:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 06:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 06:51:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N46: Thaliastraße U]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[26.05.2026 – 27.05.2026]</description>
       <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2/U5: Siebenbrunnengasse from junction Siebenbrunnenplatz and Reinprechtsdorfer Straße to 44]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">88f83131c42d972f1adfff964b9356342b8eab8fc7838fe6c7f2da6a06615274</guid>
+      <pubDate>Sun, 28 Feb 2021 01:00:00 +0100</pubDate>
+      <ext:first_seen>Mon, 25 May 2026 12:59:53 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 28 Feb 2021 01:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 01:00:00 +0100</ext:ends_at>
+      <description>Detailed information about the construction project U2 / U5 can be obtained via the ombudsperson of the respective metro section. [Since 28.02.2021]</description>
+      <content:encoded><![CDATA[Detailed information about the construction project U2 / U5 can be obtained via the ombudsperson of the respective metro section.<br/>[Since 28.02.2021]]]></content:encoded>
     </item>
   </channel>
 </rss>
