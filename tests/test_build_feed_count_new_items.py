@@ -9,13 +9,17 @@ corrected behaviour: an item already tracked in the state is not counted.
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from typing import Any
 
 import src.build_feed as bf
+from src.feed_types import FeedItem
 
 
-def _wl_item(guid: str) -> dict[str, object]:
+def _wl_item(guid: str) -> FeedItem:
     return {
         "title": "U6: Störung im Bereich Längenfeldgasse",
+        "link": "https://example.invalid/u6",
+        "description": "Test disruption",
         "source": "Wiener Linien",
         "category": "Störung",
         "guid": guid,
@@ -30,13 +34,15 @@ def test_count_new_items_recognises_guid_keyed_state() -> None:
     assert key == "WL-123"
     assert bf._identity_for_item(item) != key
 
-    state = {key: {"first_seen": "2026-05-01T00:00:00+00:00"}}
+    state: dict[str, dict[str, Any]] = {key: {"first_seen": "2026-05-01T00:00:00+00:00"}}
     assert bf._count_new_items([item], state) == 0
 
 
 def test_count_new_items_counts_genuinely_new_items() -> None:
     seen = _wl_item("WL-123")
-    state = {bf._state_key_for_item(seen): {"first_seen": "2026-05-01T00:00:00+00:00"}}
+    state: dict[str, dict[str, Any]] = {
+        bf._state_key_for_item(seen): {"first_seen": "2026-05-01T00:00:00+00:00"}
+    }
 
     fresh = _wl_item("WL-999")
     assert bf._count_new_items([seen, fresh], state) == 1

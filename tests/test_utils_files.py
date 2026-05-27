@@ -1,6 +1,7 @@
 import builtins
 import os
 from pathlib import Path
+from typing import Any
 import pytest
 from src.utils.files import atomic_write
 
@@ -98,13 +99,13 @@ def test_atomic_write_closes_raw_fd_when_file_open_fails(
         closed.append(fd)
         real_os_close(fd)
 
-    real_open = builtins.open
+    real_open: Any = builtins.open
 
     def failing_open(file: object, *args: object, **kwargs: object) -> object:
         # Fail only the descriptor-adopting open performed by atomic_write.
         if isinstance(file, int) and file in opened:
             raise LookupError("unknown encoding: definitely-not-a-codec")
-        return real_open(file, *args, **kwargs)  # type: ignore[arg-type]
+        return real_open(file, *args, **kwargs)
 
     monkeypatch.setattr(os, "open", tracking_os_open)
     monkeypatch.setattr(os, "close", tracking_os_close)

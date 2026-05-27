@@ -3038,8 +3038,6 @@ def _count_new_items(
     items: Sequence[FeedItem],
     state: dict[str, dict[str, Any]],
 ) -> int:
-    if not isinstance(state, dict):
-        return sum(1 for it in items if isinstance(it, dict))
     count = 0
     for it in items:
         if not isinstance(it, dict):
