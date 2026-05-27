@@ -1,3 +1,4 @@
+import builtins
 import os
 from pathlib import Path
 import pytest
@@ -73,3 +74,49 @@ def test_atomic_write_permissions(tmp_path: Path) -> None:
 
     mode2 = target2.stat().st_mode & 0o777
     assert mode2 == 0o644
+
+
+def test_atomic_write_closes_raw_fd_when_file_open_fails(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """If ``open(fd, ...)`` raises (e.g. bad encoding) the raw descriptor
+    from ``os.open`` must be closed, not leaked."""
+    target = tmp_path / "leak.txt"
+    opened: list[int] = []
+    closed: list[int] = []
+
+    real_os_open = os.open
+
+    def tracking_os_open(*args: object, **kwargs: object) -> int:
+        fd = real_os_open(*args, **kwargs)  # type: ignore[arg-type]
+        opened.append(fd)
+        return fd
+
+    real_os_close = os.close
+
+    def tracking_os_close(fd: int) -> None:
+        closed.append(fd)
+        real_os_close(fd)
+
+    real_open = builtins.open
+
+    def failing_open(file: object, *args: object, **kwargs: object) -> object:
+        # Fail only the descriptor-adopting open performed by atomic_write.
+        if isinstance(file, int) and file in opened:
+            raise LookupError("unknown encoding: definitely-not-a-codec")
+        return real_open(file, *args, **kwargs)  # type: ignore[arg-type]
+
+    monkeypatch.setattr(os, "open", tracking_os_open)
+    monkeypatch.setattr(os, "close", tracking_os_close)
+    monkeypatch.setattr(builtins, "open", failing_open)
+
+    with pytest.raises(LookupError):
+        with atomic_write(target) as handle:
+            handle.write("never reached")
+
+    assert opened, "os.open was not exercised"
+    # The descriptor opened before the failed open(fd, ...) must be closed.
+    assert opened[0] in closed
+    # No temp file and no target should be left behind.
+    assert not any(p.name.endswith(".tmp") for p in tmp_path.iterdir())
+    assert not target.exists()
