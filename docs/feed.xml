@@ -7,18 +7,84 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 27 May 2026 11:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2026 12:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1/2/71/D: Demonstration]]></title>
+      <title><![CDATA[59A: Demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b33c4ef1106f2daf60ccf49b2361a52a0bd4309b23b458de0ab8fd55ff48297c</guid>
-      <pubDate>Wed, 27 May 2026 11:21:00 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 11:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 11:21:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">93ab0689378e9f93a7fef6787a0f5e0088f3122408b6af0a201e68258fb4b490</guid>
+      <pubDate>Wed, 27 May 2026 11:51:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 11:51:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung in beiden Richtungen zwischen Kliebergasse und Julius-Raab-Platz über Quartier Belvedere S und Schwarzenbergplatz. [Am 27.05.2026]</description>
-      <content:encoded><![CDATA[Umleitung in beiden Richtungen zwischen Kliebergasse und Julius-Raab-Platz über Quartier Belvedere S und Schwarzenbergplatz.<br/>[Am 27.05.2026]]]></content:encoded>
+      <description>Betrieb nur zwischen Bahnhof Meidling S U und Bärenmühldurchgang. Voraussichtliche Dauer: Nicht absehbar. [Am 27.05.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Bahnhof Meidling S U und Bärenmühldurchgang. Voraussichtliche Dauer: Nicht absehbar.<br/>[Am 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Demonstration Betrieb ab Resselgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a3904226e11e2eaa01222749b08821d53ed1cdb9f1a41de4e9b274034872a123</guid>
+      <pubDate>Wed, 27 May 2026 11:43:18 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 11:43:18 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 18:45:00 +0200</ext:ends_at>
+      <description>Betrieb ab Resselgasse [Am 27.05.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Resselgasse<br/>[Am 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">57d004da43aa922d23ef17d2febd4d27e41c86903650f7772a81a3838692e289</guid>
+      <pubDate>Wed, 27 May 2026 11:41:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 11:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 27.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Fahrtbehinderung wegen Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4e2427e61bec98c160f61c806cf29a33a0eeb03e82e5fa7ffabf042a02249147</guid>
+      <pubDate>Wed, 27 May 2026 11:36:02 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 11:36:02 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 19:15:00 +0200</ext:ends_at>
+      <description>[Am 27.05.2026]</description>
+      <content:encoded><![CDATA[[Am 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Demonstration Betrieb ab Schwarzenbergplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c026b000b202d288cf3bec2c812e718351d4c37b0196152e41c269e70771cadc</guid>
+      <pubDate>Wed, 27 May 2026 11:35:33 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 11:35:33 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 18:45:00 +0200</ext:ends_at>
+      <description>Betrieb ab Schwarzenbergplatz [Am 27.05.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz<br/>[Am 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Demonstration Betrieb ab Ring, Volkstheater]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">56efdee6d024abacd36240318e62e642b355c434d845f56aebdd91507e6d33a1</guid>
+      <pubDate>Wed, 27 May 2026 11:33:08 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 11:33:08 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 18:30:00 +0200</ext:ends_at>
+      <description>Betrieb ab Ring, Volkstheater [Am 27.05.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Ring, Volkstheater<br/>[Am 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37/38/40/41: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">da99853a8e456e182109ce2c755539f70448da1973b8606ed1f0aeb50e4ce14c</guid>
+      <pubDate>Wed, 27 May 2026 11:03:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 11:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Linie 38: Betrieb nur zwischen Grinzing und Spitalgasse. [Am 27.05.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Linie 38: Betrieb nur zwischen Grinzing und Spitalgasse.<br/>[Am 27.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -51,72 +117,6 @@
       <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 27.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N46: Thaliastraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b3dddce3dc80f12d5b1311e5cc5eb73c5428ec5b96a230f20dbb510d2fb1e2fd</guid>
-      <pubDate>Tue, 26 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 15:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 26 Jun 2026 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie N46 in Richtung Otto-Wagner-Areal Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel unter U6 Nach: Kaiserstraße 106 Dauer: 02. Juni … [26.05.2026 – 26.06.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie N46 in Richtung Otto-Wagner-Areal Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel unter U6 Nach: Kaiserstraße 106 Dauer: 02. Juni …<br/>[26.05.2026 – 26.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/2A/43/44/59A/62/71/D/WLB: D, 1, 2, 43, 44, 62, 71, 59A, 1A, Badner Bahn: Demonstration am 27.05.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e7909786778b4cc1c0ed65c60672be5067b8c8d2bfedb1513422cf897a529ba0</guid>
-      <pubDate>Tue, 26 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 15:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 19:00:00 +0200</ext:ends_at>
-      <description>Wegen einer Demonstration kommt es zu Verkehrsmaßnahmen Zeitraum: Mittwoch, 27. Mai 2026, zwischen 11:00 Uhr und 19:00 Uhr. Maßnahmen: Linie D: Umleitung in beiden Richtungen … [26.05.2026 – 27.05.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Verkehrsmaßnahmen Zeitraum: Mittwoch, 27. Mai 2026, zwischen 11:00 Uhr und 19:00 Uhr. Maßnahmen: Linie D: Umleitung in beiden Richtungen …<br/>[26.05.2026 – 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Tue, 26 May 2026 00:00:27 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 27.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40/41: Betrieb ab Gersthof]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8</guid>
-      <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 27.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41E/10A: Ersatzbus 41E hält beim 10A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5</guid>
-      <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 27.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Busse halten Erzherzog-Karl-Straße 78]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92</guid>
-      <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 27.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
