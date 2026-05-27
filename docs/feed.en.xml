@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 27 May 2026 09:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2026 10:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
+      <pubDate>Wed, 27 May 2026 09:42:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 10:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 09:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>The line U1 currently runs between the stations Keplerplatz and South Tyrolean square in both directions via track 2. expected duration: 10:10 watch. Reason … [On 27.05.2026]</description>
+      <content:encoded><![CDATA[The line U1 currently runs between the stations Keplerplatz and South Tyrolean square in both directions via track 2. expected duration: 10:10 watch. Reason …<br/>[On 27.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 27 May 2026 19:00:00 +0200</ext:ends_at>
       <description>Because of an demonstration it comes to traffic measures period: Wednesday, 27. May 2026, between 11:00 o'clock and 19:00 o'clock. Measures: Line D: diversion in both directions … [26.05.2026 – 27.05.2026]</description>
       <content:encoded><![CDATA[Because of an demonstration it comes to traffic measures period: Wednesday, 27. May 2026, between 11:00 o'clock and 19:00 o'clock. Measures: Line D: diversion in both directions …<br/>[26.05.2026 – 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
-      <pubDate>Wed, 27 May 2026 07:59:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 09:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 07:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion. [On 27.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 27.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
