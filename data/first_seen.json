@@ -455,6 +455,16 @@
       "epoch": 2
     }
   },
+  "219e547df2be869f9c5e196043c5ef1b5d356073d50ea5347540dd618f54101f": {
+    "first_seen": "2026-05-27T14:30:51.609942+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: rescue operation.",
+        "title": "10A: rescue operation"
+      },
+      "epoch": 2
+    }
+  },
   "22a23c959dba974a3b217035a0fedc8ce92fc59bdd26f0c271cb5a518f9d5c7c": {
     "first_seen": "2026-05-24T12:30:47.972869+00:00",
     "translations": {
@@ -2842,6 +2852,16 @@
       "epoch": 2
     }
   },
+  "e08bda9f03dce228e77674725b02e9f293ebd068205353f4d4fda7e87dffd0d9": {
+    "first_seen": "2026-05-27T14:30:51.609942+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "46: service obstruction False Parker"
+      },
+      "epoch": 2
+    }
+  },
   "e19d2a31fcfdb6d2b7f1e4ee95e4b4a615ab9baa6ce4bbcc423af956a08e0a3d": {
     "first_seen": "2026-05-26T09:01:17.466441+00:00",
     "translations": {
@@ -3356,6 +3376,16 @@
       "en": {
         "summary": "Due to a fire brigade operation, no journeys are possible between Wien Stadlau Bahnhst (U) and Wien Simmering Bahnhof (U).",
         "title": "Wien Stadlau \u2194 Wien Simmering"
+      },
+      "epoch": 2
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&880428": {
+    "first_seen": "2026-05-27T14:30:51.609942+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a defective train on the route, train journeys in Vienna Hbf (U) to expected 16:30 are limited.",
+        "title": "Wien Hauptbahnhof"
       },
       "epoch": 2
     }
