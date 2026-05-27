@@ -163,9 +163,9 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7bac5f3db07dcedf88a5372392753818a4a819bd3f8ed77f1f0251a2a718c76b",
     "pubDate": "2026-02-23T15:30:00+01:00",
-    "starts_at": "2026-02-23T15:30:00+01:00",
+    "starts_at": "2026-04-07T00:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
-    "_identity": "wl|hinweis|L=56A,56B,58A,58B|D=2026-02-23"
+    "_identity": "wl|hinweis|L=56A,56B,58A,58B|D=2026-04-07"
   },
   {
     "source": "Wiener Linien",
@@ -187,9 +187,9 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ea5c0a14274e4e9715287474322b70a593216116a425ef7cbb594981f139be65",
     "pubDate": "2026-05-18T00:00:00+02:00",
-    "starts_at": "2026-05-18T00:00:00+02:00",
+    "starts_at": "2026-06-01T00:00:00+02:00",
     "ends_at": "2026-06-11T05:00:00+02:00",
-    "_identity": "wl|hinweis|L=63A|D=2026-05-18"
+    "_identity": "wl|hinweis|L=63A|D=2026-06-01"
   },
   {
     "source": "Wiener Linien",
@@ -211,9 +211,9 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7c21a488d688f2b3815bcef348eab248d62bee4ae151b81b04017d1e93ab458f",
     "pubDate": "2025-10-23T06:35:00+02:00",
-    "starts_at": "2025-10-23T06:35:00+02:00",
+    "starts_at": "2025-11-03T00:00:00+01:00",
     "ends_at": "2027-10-23T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=80A|D=2025-10-23"
+    "_identity": "wl|hinweis|L=80A|D=2025-11-03"
   },
   {
     "source": "Wiener Linien",
@@ -358,6 +358,18 @@
     "starts_at": "2026-05-27T04:30:26+02:00",
     "ends_at": "2026-05-27T23:59:59+02:00",
     "_identity": "wl|störung|L=11|D=2026-05-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Verunreinigung",
+    "description": "Linie 12: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "206b2be0af7f1ed67fcf6f5727bc71df9cf7c6dd9a7fa137ab68348c7c419bfe",
+    "pubDate": "2026-05-27T22:53:00+02:00",
+    "starts_at": "2026-05-27T22:53:00+02:00",
+    "ends_at": "2026-05-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-05-27"
   },
   {
     "source": "Wiener Linien",
@@ -578,6 +590,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Verunreinigung",
+    "description": "Linie 66A: Unregelmäßige Intervalle in Richtung Reumannplatz U. Es kommt zu Wartezeiten bis zu 20 Minuten. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0888c1d875334376a10ad60bd733b6a5f43fd3920cb8605cfdea62f9236bbc97",
+    "pubDate": "2026-05-27T22:46:00+02:00",
+    "starts_at": "2026-05-27T22:46:00+02:00",
+    "ends_at": "2026-05-27T23:20:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-05-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -646,6 +670,18 @@
     "starts_at": "2026-05-26T00:00:17+02:00",
     "ends_at": "2026-05-27T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-05-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf\nder Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-05-27T23:00:10+02:00",
+    "starts_at": "2026-05-27T23:00:10+02:00",
+    "ends_at": "2026-05-28T05:30:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-05-27"
   },
   {
     "source": "Wiener Linien",

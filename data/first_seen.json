@@ -99,6 +99,16 @@
       "epoch": 2
     }
   },
+  "0888c1d875334376a10ad60bd733b6a5f43fd3920cb8605cfdea62f9236bbc97": {
+    "first_seen": "2026-05-27T21:01:07.483099+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals towards Reumannplatz U. There are waiting times up to 20 minutes. Reason: Impurity.",
+        "title": "66A: Impurity"
+      },
+      "epoch": 2
+    }
+  },
   "08f4559a66917d733ab90dd1c2c92b48f6df1c5aff04b2df8ea22298f0025690": {
     "first_seen": "2026-05-24T01:04:40.542482+00:00",
     "translations": {
@@ -431,6 +441,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: contamination.",
         "title": "31: Impurity"
+      },
+      "epoch": 2
+    }
+  },
+  "206b2be0af7f1ed67fcf6f5727bc71df9cf7c6dd9a7fa137ab68348c7c419bfe": {
+    "first_seen": "2026-05-27T21:01:07.483099+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "12: Impurity"
       },
       "epoch": 2
     }
@@ -3080,6 +3100,16 @@
       "epoch": 2
     }
   },
+  "ea5c0a14274e4e9715287474322b70a593216116a425ef7cbb594981f139be65": {
+    "first_seen": "2026-05-27T21:01:07.483099+00:00",
+    "translations": {
+      "en": {
+        "summary": "Because of crane works in the Kerschensteinergasse range between Kundratstra\u00dfe and L\u00e4ngenfeldgasse, the 63A line is redirected.",
+        "title": "63A: crane works from 01 June 2026"
+      },
+      "epoch": 2
+    }
+  },
   "eb21123465f7ce48fb46926a59a01001cb6aa4f82316dd21ca92548677bee1aa": {
     "first_seen": "2026-05-24T03:01:09.493067+00:00",
     "translations": {
@@ -3484,6 +3514,16 @@
       "en": {
         "summary": "Due to an overhead-line fault, only limited journeys between Wien Praterstern Station (U) and Wien Meidling Station (U) to 17:17 were possible.",
         "title": "Wien Praterstern \u2194 Wien Meidling"
+      },
+      "epoch": 2
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&880577": {
+    "first_seen": "2026-05-27T21:01:07.483099+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an switch fault, only limited train journeys to expected 23:00 are possible in Liesing (Vienna).",
+        "title": "Wien Liesing"
       },
       "epoch": 2
     }

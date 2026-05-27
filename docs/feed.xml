@@ -7,8 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 27 May 2026 22:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2026 23:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">206b2be0af7f1ed67fcf6f5727bc71df9cf7c6dd9a7fa137ab68348c7c419bfe</guid>
+      <pubDate>Wed, 27 May 2026 22:53:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 23:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 22:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 27.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0888c1d875334376a10ad60bd733b6a5f43fd3920cb8605cfdea62f9236bbc97</guid>
+      <pubDate>Wed, 27 May 2026 22:46:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 23:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 22:46:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:20:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in Richtung Reumannplatz U. Es kommt zu Wartezeiten bis zu 20 Minuten. Grund: Verunreinigung. [Am 27.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Reumannplatz U. Es kommt zu Wartezeiten bis zu 20 Minuten. Grund: Verunreinigung.<br/>[Am 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Liesing]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;880577</guid>
+      <pubDate>Wed, 27 May 2026 22:39:51 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 23:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 22:39:51 +0200</ext:starts_at>
+      <description>Wegen einer Weichenstörung sind in Liesing (Wien) Zugfahrten bis voraussichtlich 23:00 Uhr nur eingeschränkt möglich. [Seit 27.05.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Weichenstörung sind in Liesing (Wien) Zugfahrten bis voraussichtlich 23:00 Uhr nur eingeschränkt möglich.<br/>[Seit 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Kranarbeiten ab 01. Juni 2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ea5c0a14274e4e9715287474322b70a593216116a425ef7cbb594981f139be65</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 23:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 11 Jun 2026 05:00:00 +0200</ext:ends_at>
+      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [01.06.2026 – 11.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[01.06.2026 – 11.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49: Wasserrohrgebr. Ersatzverkehr ab Satzberggasse bis Baumgarten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -69,50 +112,6 @@
       <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 27.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41E/10A: Ersatzbus 41E hält beim 10A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5</guid>
-      <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 27.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Busse halten Erzherzog-Karl-Straße 78]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92</guid>
-      <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 27.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45</guid>
-      <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:25 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 27.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
-      <pubDate>Tue, 26 May 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:14 +0200</ext:starts_at>
       <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[26.05.2026 – 27.05.2026]</description>
       <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
