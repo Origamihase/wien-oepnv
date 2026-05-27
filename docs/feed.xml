@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 27 May 2026 20:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2026 21:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[6: Verunreinigung]]></title>
@@ -32,16 +32,6 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 27.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[S-Bahn Stammstrecke Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/web/wienerlinien/oeffis-stoerungen-strecke</link>
-      <guid isPermaLink="false">c096146a3e36f06442ccecd2fb9c1ca60e2c8bb835a223bc0a14ba2027f9ed0d</guid>
-      <pubDate>Wed, 27 May 2026 20:30:55 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 20:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 19:29:00 +0200</ext:starts_at>
-      <description>Durchschnittliche Verspätung von 13.5 Minuten in Richtung Meidling [Seit 27.05.2026] [Seit 27.05.2026]</description>
-      <content:encoded><![CDATA[Durchschnittliche Verspätung von 13.5 Minuten in Richtung Meidling [Seit 27.05.2026]<br/>[Seit 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[49: Wasserrohrgebr. Ersatzverkehr ab Satzberggasse bis Baumgarten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">73d648f3a7ba3bcbd8d8a2bca0cd90910b76ad79273af161c054a1a859333ec7</guid>
@@ -51,17 +41,6 @@
       <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 27.05.2026]</description>
       <content:encoded><![CDATA[[Am 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3dd0ec36f6dc8594c9e37e23580bdcf5f82555521c07875e9f83c718912578fc</guid>
-      <pubDate>Wed, 27 May 2026 18:49:00 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 19:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 18:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 27.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 27.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Stadlau ↔ Wien Simmering]]></title>
@@ -112,6 +91,28 @@
       <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[26.05.2026 – 27.05.2026]</description>
+      <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[41E/10A: Ersatzbus 41E hält beim 10A]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5</guid>
+      <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[26.05.2026 – 27.05.2026]</description>
+      <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26A: Busse halten Erzherzog-Karl-Straße 78]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92</guid>
+      <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:15 +0200</ext:starts_at>
       <ext:ends_at>Wed, 27 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[26.05.2026 – 27.05.2026]</description>
       <content:encoded><![CDATA[[26.05.2026 – 27.05.2026]]]></content:encoded>
