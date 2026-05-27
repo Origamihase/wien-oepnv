@@ -2872,6 +2872,15 @@
       "epoch": 2
     }
   },
+  "e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc": {
+    "first_seen": "2026-05-27T15:30:54.576812+00:00",
+    "translations": {
+      "en": {
+        "title": "46: service obstruction for rescue operation"
+      },
+      "epoch": 2
+    }
+  },
   "e19d2a31fcfdb6d2b7f1e4ee95e4b4a615ab9baa6ce4bbcc423af956a08e0a3d": {
     "first_seen": "2026-05-26T09:01:17.466441+00:00",
     "translations": {
@@ -3396,6 +3405,16 @@
       "en": {
         "summary": "Due to a defective train on the route, train journeys in Vienna Hbf (U) to expected 16:30 are limited.",
         "title": "Wien Hauptbahnhof"
+      },
+      "epoch": 2
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&880448": {
+    "first_seen": "2026-05-27T15:30:54.576812+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an overhead-line fault, only limited journeys between Wien Praterstern Station (U) and Wien Meidling Station (U) to 17:17 were possible.",
+        "title": "Wien Praterstern \u2194 Wien Meidling"
       },
       "epoch": 2
     }
