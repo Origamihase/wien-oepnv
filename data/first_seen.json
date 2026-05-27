@@ -1989,6 +1989,16 @@
       }
     }
   },
+  "b33c4ef1106f2daf60ccf49b2361a52a0bd4309b23b458de0ab8fd55ff48297c": {
+    "first_seen": "2026-05-27T09:30:47.569765+00:00",
+    "translations": {
+      "en": {
+        "summary": "diversion in both directions between Kliebergasse and Julius-Raab-Platz via Quartier Belvedere S and Schwarzenbergplatz.",
+        "title": "1/2/71/D: demonstration"
+      },
+      "epoch": 2
+    }
+  },
   "b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5": {
     "first_seen": "2026-05-25T22:01:02.098191+00:00",
     "translations": {
@@ -2843,6 +2853,16 @@
       "en": {
         "summary": "Due to an switch fault, train journeys between Wien Grillgasse Bahnhst and Kledering Bahnhst are currently only limited.",
         "title": "Wien Grillgasse \u2194 Kledering"
+      },
+      "epoch": 2
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&880239": {
+    "first_seen": "2026-05-27T09:30:47.569765+00:00",
+    "translations": {
+      "en": {
+        "summary": "construction works allows between Vienna Hbf (U) and Gramatneusiedl station from 31.10.2026 to 30.11.2026 \u2026",
+        "title": "Wien Hauptbahnhof \u2194 Gramatneusiedl"
       },
       "epoch": 2
     }
