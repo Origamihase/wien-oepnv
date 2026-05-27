@@ -298,6 +298,16 @@ eingeführte Level-2-Fallback, und Google Places ist die letzte Stufe,
 die ausschließlich Stationen verarbeitet, die die ersten beiden Stufen
 nicht auflösen konnten.
 
+> **Hinweis zur GeoNetz-Anreicherung:** Orthogonal zur Koordinaten-Kaskade
+> läuft `_enrich_with_geonetz`. Es liest die gepinnte
+> `data/oebb_geonetz_stops.json` (eine kompakte Stops-Projektion, die
+> `scripts/extract_oebb_geonetz_stops.py` aus dem 23 MiB großen
+> ÖBB-Infrastruktur-`GeoNetz_*.zip` extrahiert) und hängt **Identifier-
+> Metadaten** an — EVA-Nummer und IFOPT-ID, markiert über den Source-Token
+> `oebb_geonetz`. Das ist mit ~390 Stationen die zweithäufigste
+> Source-Klasse im Verzeichnis, **liefert aber keine Koordinaten** und ist
+> daher keine eigene Tier-Stufe.
+
 ```mermaid
 flowchart LR
     A[ÖBB-Verzeichnis<br/>(Excel)] --> B[Stationsliste<br/>ohne Koordinaten]
