@@ -523,6 +523,16 @@
       "epoch": 2
     }
   },
+  "267d8ac0fe0e918bc720863d4680bf12d69b3eb17068704575a5fdc39d9687a1": {
+    "first_seen": "2026-05-27T16:00:59.822989+00:00",
+    "translations": {
+      "en": {
+        "summary": "Trains stop at lines 46 / 49",
+        "title": "2: demonstration trains stop at lines 46 / 49"
+      },
+      "epoch": 2
+    }
+  },
   "28558f7f3df0d14e50989b20b434cc7a8090b42104bc73acf6100d34fab122d2": {
     "first_seen": "2026-05-24T01:04:40.542482+00:00",
     "translations": {
@@ -1649,6 +1659,16 @@
       "en": {
         "summary": "service obstruction in both directions. expected duration: 14:00. Reason: Foreign traffic accident in the Maculangasse range.",
         "title": "25A: foreign traffic accident"
+      },
+      "epoch": 2
+    }
+  },
+  "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22": {
+    "first_seen": "2026-05-27T16:00:59.822989+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "U6: service disruption"
       },
       "epoch": 2
     }
