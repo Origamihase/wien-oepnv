@@ -7,29 +7,106 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 27 May 2026 13:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2026 13:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[43: demonstration operation only to Alser Straße]]></title>
+      <title><![CDATA[10A: Harmful car]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b3736874a6eacd30fdd319c139e5013eef770688e170c3dd54fdf727856a8cfa</guid>
-      <pubDate>Wed, 27 May 2026 13:00:33 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 13:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 13:00:33 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 14:00:00 +0200</ext:ends_at>
-      <description>Operation only up to Alser Straße [On 27.05.2026]</description>
-      <content:encoded><![CDATA[Operation only up to Alser Straße<br/>[On 27.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">78540c72d35d31e4bc545f938542f8f6723e265369ba26c1b3f6b82e6b1d9174</guid>
+      <pubDate>Wed, 27 May 2026 13:24:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 13:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards the station Heiligenstadt S U. expected duration: 13:50 clock. Reason: A bad car in the area Gersthofer Straße / Türkenschanzpark. [On 27.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards the station Heiligenstadt S U. expected duration: 13:50 clock. Reason: A bad car in the area Gersthofer Straße / Türkenschanzpark.<br/>[On 27.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[44: demonstration operation only up to Johann-N.-Berger-Platz]]></title>
+      <title><![CDATA[25A: foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f16ff7d3a26b727ad3e4480e3a2fa29b79a849af4447248b8f2109a2c76a2862</guid>
-      <pubDate>Wed, 27 May 2026 13:00:04 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 13:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 13:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 13:59:00 +0200</ext:ends_at>
-      <description>Operation only up to Johann-N.-Berger-Platz [On 27.05.2026]</description>
-      <content:encoded><![CDATA[Operation only up to Johann-N.-Berger-Platz<br/>[On 27.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">84318e774b5ccd6822c26059857afafc0cbed220a53b696064276283f940765c</guid>
+      <pubDate>Wed, 27 May 2026 13:23:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 13:23:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction in both directions. expected duration: 14:00. Reason: Foreign traffic accident in the Maculangasse range. [On 27.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction in both directions. expected duration: 14:00. Reason: Foreign traffic accident in the Maculangasse range.<br/>[On 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
+      <pubDate>Wed, 27 May 2026 13:18:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 13:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: demonstration service from Alser Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8a4f15de6eaecb5021052354060397807be2a00e6021981c8cd11c0d2e54be67</guid>
+      <pubDate>Wed, 27 May 2026 13:11:12 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 13:11:32 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 14:02:00 +0200</ext:ends_at>
+      <description>service from Alser Straße [On 27.05.2026]</description>
+      <content:encoded><![CDATA[service from Alser Straße<br/>[On 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44: demonstration service from Johann-N.-Berger-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">15992d664226a7bbfd3a0b7e605994c5ed9cc9f174854b06a7f9cd291786c3ab</guid>
+      <pubDate>Wed, 27 May 2026 13:11:10 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 13:11:32 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 14:01:00 +0200</ext:ends_at>
+      <description>service from Johann-N.-Berger-Platz [On 27.05.2026]</description>
+      <content:encoded><![CDATA[service from Johann-N.-Berger-Platz<br/>[On 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
+      <pubDate>Wed, 27 May 2026 13:11:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 13:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9</guid>
+      <pubDate>Wed, 27 May 2026 13:10:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 13:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[24A: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">647389adc701cc0e0d20ee18f6ee0001853021d81f73777b06c4716df3f44cb0</guid>
+      <pubDate>Wed, 27 May 2026 13:10:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 13:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: police operation. [On 27.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: police operation.<br/>[On 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
+      <pubDate>Wed, 27 May 2026 13:03:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 27 May 2026 13:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: demonstration]]></title>
@@ -41,83 +118,6 @@
       <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">08408390c411a0cac6e961a9db5563f61e6dcf89a3effb5fa1d5aa1d66b23019</guid>
-      <pubDate>Wed, 27 May 2026 11:03:00 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 13:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 11:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37: demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9b311543316b0d89059c9d36807f7f9358eec7bb23971dd2c9159696c175f87e</guid>
-      <pubDate>Wed, 27 May 2026 11:03:00 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 13:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 11:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d2c09d1410213d11f1678e3db7d6328b0c02c187402386be30db810ca4d15569</guid>
-      <pubDate>Wed, 27 May 2026 11:03:00 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 13:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 11:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eb5fb89bc7cd503bd049b16df9628b5baf8061345c564c21ec66581aeb0d2b94</guid>
-      <pubDate>Wed, 27 May 2026 11:03:00 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 13:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 11:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5bab4c00098918f18a816e951a38eb16c7717b913215fc9d70620386a622b8db</guid>
-      <pubDate>Wed, 27 May 2026 11:59:00 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 12:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 11:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 27.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">93ab0689378e9f93a7fef6787a0f5e0088f3122408b6af0a201e68258fb4b490</guid>
-      <pubDate>Wed, 27 May 2026 11:51:00 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 12:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 11:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operation only between station Meidling S U and Bärenmühlgang. expected duration: Not foreseeable. [On 27.05.2026]</description>
-      <content:encoded><![CDATA[Operation only between station Meidling S U and Bärenmühlgang. expected duration: Not foreseeable.<br/>[On 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: demonstration service from Resselgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a3904226e11e2eaa01222749b08821d53ed1cdb9f1a41de4e9b274034872a123</guid>
-      <pubDate>Wed, 27 May 2026 11:43:18 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 12:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 11:43:18 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 27 May 2026 18:45:00 +0200</ext:ends_at>
-      <description>service from Resselgasse [On 27.05.2026]</description>
-      <content:encoded><![CDATA[service from Resselgasse<br/>[On 27.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
