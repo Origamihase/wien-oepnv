@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 28 May 2026 13:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 14:01:20 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[3A: Verkehrsüberlastung]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 28.05.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56A/56B: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ed0db574bd28a7429ee311e0d75446295cb467bb7833890845d379fb731b81d2</guid>
-      <pubDate>Thu, 28 May 2026 13:29:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 13:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 13:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 56A: Unregelmäßige Intervalle in beiden Richtungen. [Am 28.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 56A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 28.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Schadhaftes Fahrzeug]]></title>
@@ -52,17 +41,6 @@
       <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 28.05.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[51A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6a4e0733afac812d3852f60f9583f9dde32ea542f36b712bda828013e639daa9</guid>
-      <pubDate>Thu, 28 May 2026 12:40:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 13:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 12:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 28.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 28.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Baden]]></title>
@@ -115,6 +93,28 @@
       <ext:starts_at>Wed, 27 May 2026 11:11:13 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 31.10.2026 bis 30.11.2026 … [Seit 27.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 31.10.2026 bis 30.11.2026 …<br/>[Seit 27.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1</guid>
+      <pubDate>Thu, 28 May 2026 13:58:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 18:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 13:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 28.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 28.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N46: Thaliastraße U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b3dddce3dc80f12d5b1311e5cc5eb73c5428ec5b96a230f20dbb510d2fb1e2fd</guid>
+      <pubDate>Tue, 26 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 15:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 26 Jun 2026 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie N46 in Richtung Otto-Wagner-Areal Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel unter U6 Nach: Kaiserstraße 106 Dauer: 02. Juni … [26.05.2026 – 26.06.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie N46 in Richtung Otto-Wagner-Areal Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel unter U6 Nach: Kaiserstraße 106 Dauer: 02. Juni …<br/>[26.05.2026 – 26.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
