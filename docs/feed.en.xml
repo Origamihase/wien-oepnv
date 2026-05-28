@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 28 May 2026 01:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 02:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[63A: crane works from 01 June 2026]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Thu, 11 Jun 2026 05:00:00 +0200</ext:ends_at>
       <description>Because of crane works in the Kerschensteinergasse range between Kundratstraße and Längenfeldgasse, the 63A line is redirected. [01.06.2026 – 11.06.2026]</description>
       <content:encoded><![CDATA[Because of crane works in the Kerschensteinergasse range between Kundratstraße and Längenfeldgasse, the 63A line is redirected.<br/>[01.06.2026 – 11.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: water pipe base replacement service from Satzberggasse to tree garden]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">73d648f3a7ba3bcbd8d8a2bca0cd90910b76ad79273af161c054a1a859333ec7</guid>
-      <pubDate>Wed, 27 May 2026 18:17:16 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 20:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 27 May 2026 18:34:36 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 01:41:00 +0200</ext:ends_at>
-      <description>[27.05.2026 – 28.05.2026]</description>
-      <content:encoded><![CDATA[[27.05.2026 – 28.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Stadlau ↔ Wien Simmering]]></title>
@@ -113,6 +102,17 @@
       <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:25 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[26.05.2026 – 28.05.2026]</description>
+      <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: stop about 10 m rearranged height house no. 81]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c</guid>
+      <pubDate>Tue, 26 May 2026 00:00:14 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:14 +0200</ext:starts_at>
       <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[26.05.2026 – 28.05.2026]</description>
       <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
