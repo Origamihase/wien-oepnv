@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 28 May 2026 21:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 21:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[13A: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
-      <pubDate>Thu, 28 May 2026 19:31:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 20:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 19:31:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 21:03:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 28.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 28.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[10A/37A/40A: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -75,17 +64,6 @@
       <content:encoded><![CDATA[Because of crane works in the Kerschensteinergasse range between Kundratstraße and Längenfeldgasse, the 63A line is redirected.<br/>[01.06.2026 – 11.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10A: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">219e547df2be869f9c5e196043c5ef1b5d356073d50ea5347540dd618f54101f</guid>
-      <pubDate>Thu, 28 May 2026 20:19:00 +0200</pubDate>
-      <ext:first_seen>Wed, 27 May 2026 16:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 20:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 21:12:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: rescue operation. [On 28.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[Wien Stadlau ↔ Wien Simmering]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;880401</guid>
@@ -106,11 +84,33 @@
       <content:encoded><![CDATA[construction works allows between Vienna Hbf (U) and Gramatneusiedl station from 31.10.2026 to 30.11.2026 …<br/>[Since 27.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[41E: replacement bus 41E hold at Währinger Str 200]]></title>
+      <title><![CDATA[N46: Thaliastraße U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6ba0bae6a68768907c14045ca96ddc1c51347bec7722644905e849c3f33b7ed0</guid>
+      <guid isPermaLink="false">b3dddce3dc80f12d5b1311e5cc5eb73c5428ec5b96a230f20dbb510d2fb1e2fd</guid>
+      <pubDate>Tue, 26 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 15:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 26 Jun 2026 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of line N46 towards Otto-Wagner-Areal Stop: Thaliastraße U From: Lerchenfelder Belt under U6 To: Kaiserstraße 106 Duration: 02 June … [26.05.2026 – 26.06.2026]</description>
+      <content:encoded><![CDATA[Stop change of line N46 towards Otto-Wagner-Areal Stop: Thaliastraße U From: Lerchenfelder Belt under U6 To: Kaiserstraße 106 Duration: 02 June …<br/>[26.05.2026 – 26.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: No operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
+      <pubDate>Tue, 26 May 2026 00:00:27 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[26.05.2026 – 28.05.2026]</description>
+      <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: service from Gersthof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8</guid>
       <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 16:01:23 +0200</ext:first_seen>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
       <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[26.05.2026 – 28.05.2026]</description>
