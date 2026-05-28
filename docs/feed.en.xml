@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 28 May 2026 12:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 12:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2A: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7cad868f2124c8c9ed07d7c4d992c419343ac92db002d0bcfec6a978a3aee724</guid>
+      <pubDate>Thu, 28 May 2026 12:18:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 12:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 12:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 28.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Baden]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -18,17 +29,6 @@
       <ext:starts_at>Thu, 28 May 2026 11:51:49 +0200</ext:starts_at>
       <description>Due to construction works, between Wien Meidling train station and Baden b.Vienna train station from 08.06.2026 to 03.07.2026 some local trains with changed travel times. [Since 28.05.2026]</description>
       <content:encoded><![CDATA[Due to construction works, between Wien Meidling train station and Baden b.Vienna train station from 08.06.2026 to 03.07.2026 some local trains with changed travel times.<br/>[Since 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">49eb2c1bd433616d13cea08a9a3a32b0222f9729f31aaece42aac218211be2da</guid>
-      <pubDate>Thu, 28 May 2026 11:05:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 11:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 11:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: rescue operation in the Liesing S stop area. [On 28.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation in the Liesing S stop area.<br/>[On 28.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Buses stop at Breitenfurter Straße 236-238]]></title>
