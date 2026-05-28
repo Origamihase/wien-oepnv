@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 28 May 2026 23:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 00:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[48A: Rettungseinsatz]]></title>
+      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2d67d7e9c317d518f24f879879e1b8977cbc97545f7ebbc35fdd5aa8a7ec2e29</guid>
-      <pubDate>Thu, 28 May 2026 23:07:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 23:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 23:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:49:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 28.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 28.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Fri, 29 May 2026 00:00:10 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 00:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 00:00:10 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 29.05.2026]</description>
+      <content:encoded><![CDATA[[Am 29.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44A: Busse halten Alszeile gegenüber 93]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">05f43b3cc6e7fc469b2327c420ffd938743c80bae8e543e6b1266ae3efe72301</guid>
+      <pubDate>Fri, 29 May 2026 00:00:10 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 00:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 00:00:10 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 29.05.2026]</description>
+      <content:encoded><![CDATA[[Am 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A/37A/40A: Bauarbeiten]]></title>
@@ -38,9 +49,9 @@
       <pubDate>Thu, 28 May 2026 15:50:38 +0200</pubDate>
       <ext:first_seen>Thu, 28 May 2026 16:31:34 +0200</ext:first_seen>
       <ext:starts_at>Thu, 28 May 2026 15:50:38 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 28.05.2026]</description>
-      <content:encoded><![CDATA[[Am 28.05.2026]]]></content:encoded>
+      <ext:ends_at>Fri, 29 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[28.05.2026 – 29.05.2026]</description>
+      <content:encoded><![CDATA[[28.05.2026 – 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Baden]]></title>
@@ -104,17 +115,6 @@
       <ext:ends_at>Fri, 26 Jun 2026 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie N46 in Richtung Otto-Wagner-Areal Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel unter U6 Nach: Kaiserstraße 106 Dauer: 02. Juni … [26.05.2026 – 26.06.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie N46 in Richtung Otto-Wagner-Areal Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel unter U6 Nach: Kaiserstraße 106 Dauer: 02. Juni …<br/>[26.05.2026 – 26.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Tue, 26 May 2026 00:00:27 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 28.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
