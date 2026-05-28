@@ -374,18 +374,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2A: Rettungseinsatz",
-    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7cad868f2124c8c9ed07d7c4d992c419343ac92db002d0bcfec6a978a3aee724",
-    "pubDate": "2026-05-28T12:18:00+02:00",
-    "starts_at": "2026-05-28T12:18:00+02:00",
-    "ends_at": "2026-05-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=2A|D=2026-05-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -411,12 +399,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "40: Fahrtbehinderung Falschparker",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
-    "pubDate": "2026-05-28T12:11:00+02:00",
+    "pubDate": "2026-05-28T12:13:48+02:00",
     "starts_at": "2026-05-28T12:13:58+02:00",
-    "ends_at": "2026-05-28T23:55:00+02:00",
+    "ends_at": "2026-05-28T13:13:00+02:00",
     "_identity": "wl|störung|L=40|D=2026-05-28"
   },
   {
@@ -447,12 +435,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "41: Fahrtbehinderung Falschparker",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
-    "pubDate": "2026-05-28T12:11:00+02:00",
+    "pubDate": "2026-05-28T12:14:46+02:00",
     "starts_at": "2026-05-28T12:14:56+02:00",
-    "ends_at": "2026-05-28T23:55:00+02:00",
+    "ends_at": "2026-05-28T13:14:00+02:00",
     "_identity": "wl|störung|L=41|D=2026-05-28"
   },
   {
@@ -566,6 +554,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "51A: Verspätungen",
+    "description": "Linie 51A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6a4e0733afac812d3852f60f9583f9dde32ea542f36b712bda828013e639daa9",
+    "pubDate": "2026-05-28T12:40:00+02:00",
+    "starts_at": "2026-05-28T12:40:00+02:00",
+    "ends_at": "2026-05-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=51A|D=2026-05-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -573,18 +573,6 @@
     "pubDate": "2026-05-28T04:45:11+02:00",
     "starts_at": "2026-05-28T04:45:11+02:00",
     "ends_at": "2026-05-29T00:35:00+02:00",
-    "_identity": "wl|störung|L=62A|D=2026-05-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62A: Rettungseinsatz",
-    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6460e1e726125cbd76631a4f606981ffec2a04a8e4742a5bba5493fa66c765df",
-    "pubDate": "2026-05-28T10:49:00+02:00",
-    "starts_at": "2026-05-28T10:49:00+02:00",
-    "ends_at": "2026-05-28T12:27:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-05-28"
   },
   {
