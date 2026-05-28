@@ -150,3 +150,55 @@ def test_quota_increments_on_single_success(
 
     assert quota.counts["nearby"] == 1
     assert quota.daily_total == 1
+
+
+def test_retry_after_header_honoured_on_429(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A 429 with ``Retry-After: N`` must drive the retry sleep to >= N.
+
+    Pre-fix the 429 path wrapped the upstream signal in a
+    ``GooglePlacesError`` (not a ``requests.RequestException``); the
+    extraction guard ``isinstance(last_error, requests.RequestException)``
+    therefore skipped the header entirely and the client backed off only
+    via ``_backoff(attempt)`` (~0.5 s on the first retry), re-hitting the
+    rate-limited endpoint while upstream was still asking us to wait.
+    """
+    sleeps: list[float] = []
+    monkeypatch.setattr("src.places.client.time.sleep", lambda s: sleeps.append(s))
+
+    first = _MockResponse(429)
+    first.headers["Retry-After"] = "30"
+    second = _MockResponse(200, b'{"places": []}')
+
+    session = MagicMock(spec=requests.Session)
+    session.post.side_effect = [first, second]
+    client, _, _ = _make_client(tmp_path, session)
+    client._post("places:searchNearby", {}, quota_kind="nearby")
+
+    # Exactly one sleep ran (between the 429 and the 200).
+    assert len(sleeps) == 1
+    # The 30 s Retry-After value beats the exponential backoff for attempt 1
+    # and stays under the hard 60 s cap.
+    assert 30.0 <= sleeps[0] <= 60.0
+
+
+def test_retry_after_header_honoured_with_whitespace_and_fraction(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Forms like ``" 12.5 "`` are valid Retry-After payloads and must be
+    parsed; pre-fix the ``isdigit()`` precondition rejected them."""
+    sleeps: list[float] = []
+    monkeypatch.setattr("src.places.client.time.sleep", lambda s: sleeps.append(s))
+
+    first = _MockResponse(429)
+    first.headers["Retry-After"] = " 12.5 "
+    second = _MockResponse(200, b'{"places": []}')
+
+    session = MagicMock(spec=requests.Session)
+    session.post.side_effect = [first, second]
+    client, _, _ = _make_client(tmp_path, session)
+    client._post("places:searchNearby", {}, quota_kind="nearby")
+
+    assert len(sleeps) == 1
+    assert sleeps[0] >= 12.5

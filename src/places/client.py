@@ -17,7 +17,12 @@ import requests
 from ..utils.circuit_breaker import CircuitBreaker, CircuitState
 from ..utils.env import read_secret
 from ..utils.files import _reject_non_finite_constant, _reject_non_finite_float
-from ..utils.http import read_response_safe, session_with_retries, verify_response_ip
+from ..utils.http import (
+    parse_retry_after,
+    read_response_safe,
+    session_with_retries,
+    verify_response_ip,
+)
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
 
 from .quota import MonthlyQuota, QuotaConfig
@@ -426,6 +431,13 @@ class GooglePlacesClient:
 
         while attempt <= self._config.max_retries:
             attempt += 1
+            # The 429 / 5xx branch below sets ``last_error`` to a
+            # ``GooglePlacesError`` (NOT a ``requests.RequestException``), so
+            # the legacy extraction from ``last_error.response.headers`` would
+            # silently miss every status-coded Retry-After. Capture the header
+            # at its source (inside the ``with response`` block, or from the
+            # exception's attached response on the connection-level path).
+            retry_after_header: str | None = None
             # Quota: count each HTTP attempt up-front. Google bills per request
             # regardless of HTTP status, so we must not wait for a 200 before
             # incrementing — otherwise retries on 429/5xx would silently eat
@@ -524,6 +536,11 @@ class GooglePlacesClient:
                         last_error = GooglePlacesError(
                             f"HTTP {response.status_code}: {detail}"
                         )
+                        # Capture Retry-After while the response context is
+                        # still open — the wrapping ``GooglePlacesError`` does
+                        # not carry the underlying response, so the legacy
+                        # exception-attached extraction below cannot see it.
+                        retry_after_header = response.headers.get("Retry-After")
                     elif response.status_code in {401, 403}:
                         _BREAKER.record_success()
                         details = self._extract_error_details(response)
@@ -538,8 +555,13 @@ class GooglePlacesClient:
             except requests.RequestException as exc:
                 last_error = exc
 
-                if exc.response is not None and exc.response.status_code >= 500:
-                    _BREAKER.record_failure()
+                if exc.response is not None:
+                    if exc.response.status_code >= 500:
+                        _BREAKER.record_failure()
+                    # Connection-level RequestException occasionally carries a
+                    # response (e.g. a chunked-encoding error mid-body). Honour
+                    # Retry-After from there too so the two paths converge.
+                    retry_after_header = exc.response.headers.get("Retry-After")
 
                 LOGGER.warning(
                     "Request error (attempt %s/%s): %s",
@@ -557,15 +579,15 @@ class GooglePlacesClient:
 
             sleep_for = self._backoff(attempt)
 
-            # If we can access response, let's extract Retry-After
-            retry_after_val = None
-            header: str | None = None
-            try:
-                if isinstance(last_error, requests.RequestException) and last_error.response is not None:
-                    header = last_error.response.headers.get("Retry-After")
-                    if header and header.isdigit():
-                        retry_after_val = float(header)
-            except ValueError:
+            # Honour Retry-After captured from either path (status-coded 429
+            # or connection-level exception with attached response). Delegate
+            # numeric + HTTP-date parsing to :func:`parse_retry_after` — the
+            # places-client now matches the OEBB Retry-After handling instead
+            # of carrying its own ad-hoc ``isdigit()`` shape that rejected
+            # valid whitespace-padded / fractional / HTTP-date forms.
+            header: str | None = retry_after_header
+            retry_after_val: float | None = parse_retry_after(header)
+            if retry_after_val is None and header:
                 # Sentinel (Clear-Text-Logging Drift, places-client sibling
                 # of the ÖBB ``src/providers/oebb.py`` Retry-After fix):
                 # ``header`` is fully upstream-controlled HTTP header text
