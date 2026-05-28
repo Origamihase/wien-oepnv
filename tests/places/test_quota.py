@@ -112,3 +112,48 @@ def test_resolve_quota_state_path_prefers_env(tmp_path: Path) -> None:
 def test_resolve_quota_state_path_rejects_outside_repo(tmp_path: Path) -> None:
     with pytest.raises(ValueError):
         resolve_quota_state_path({"PLACES_QUOTA_STATE": str(tmp_path / "custom.json")})
+
+
+def test_load_rejects_negative_daily_total(tmp_path: Path) -> None:
+    """A corrupted state file with ``daily_total < 0`` must raise, mirroring
+    the sibling ``total`` / ``counts`` validation.
+
+    Pre-fix the field was silently coerced to ``0`` while the same condition
+    on ``total`` raised — letting a planted/corrupted state file reset the
+    daily counter every load and bypass ``PLACES_LIMIT_DAILY`` for an entire
+    day. Inconsistent strictness is a budget-escape vector.
+    """
+    path = tmp_path / "places_quota.json"
+    path.write_text(
+        json.dumps(
+            {
+                "month": "2024-05",
+                "counts": {"nearby": 0, "text": 0, "details": 0},
+                "total": 0,
+                "daily_key": "2024-05-15",
+                "daily_total": -1,
+            }
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="daily_total"):
+        MonthlyQuota.load(path, now_func=lambda: _utc(2024, 5, 15))
+
+
+def test_load_rejects_non_int_daily_total(tmp_path: Path) -> None:
+    """A non-int ``daily_total`` (e.g. ``"999"`` as a string) must raise."""
+    path = tmp_path / "places_quota.json"
+    path.write_text(
+        json.dumps(
+            {
+                "month": "2024-05",
+                "counts": {"nearby": 0, "text": 0, "details": 0},
+                "total": 0,
+                "daily_key": "2024-05-15",
+                "daily_total": "999",
+            }
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="daily_total"):
+        MonthlyQuota.load(path, now_func=lambda: _utc(2024, 5, 15))
