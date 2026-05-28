@@ -128,6 +128,16 @@
       "epoch": 1
     }
   },
+  "0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52": {
+    "first_seen": "2026-05-28T08:00:55.751783+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic congestion.",
+        "title": "13A: traffic congestion"
+      },
+      "epoch": 2
+    }
+  },
   "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919": {
     "first_seen": "2026-05-24T16:30:41.753972+00:00",
     "translations": {
@@ -1944,6 +1954,7 @@
     "first_seen": "2026-05-26T20:30:53.941692+00:00",
     "translations": {
       "en": {
+        "summary": "After an service obstruction there are different intervals.",
         "title": "5: service obstruction for police operation"
       },
       "epoch": 2
