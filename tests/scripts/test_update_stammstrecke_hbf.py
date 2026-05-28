@@ -237,6 +237,40 @@ def test_departure_delay_minutes_uses_rt_date_when_present() -> None:
     assert script._departure_delay_minutes(dep) == 10.0
 
 
+def test_departure_delay_minutes_handles_midnight_rollover_without_rt_date() -> None:
+    """``rtDate`` omitted across midnight must NOT produce a ~-24 h delay.
+
+    Pre-fix the fallback ``rt_date = sched_date`` parked the realtime
+    departure at the same calendar day as the schedule, so a train
+    scheduled 23:55 running ~10 min late (rtTime ``00:05``) computed
+    as actual = 2026-05-15 00:05 − scheduled = 2026-05-15 23:55 =
+    −1430 min. That meaningless negative value then biases the
+    per-direction mean in the stats ledger. The 12 h rollover-
+    heuristic adds one day to ``actual`` so the true 10-min delay
+    surfaces.
+    """
+    dep = {
+        "date": "2026-05-15",
+        "time": "23:55:00",
+        # rtDate intentionally omitted; only rtTime is supplied.
+        "rtTime": "00:05:00",
+    }
+    delay = script._departure_delay_minutes(dep)
+    assert delay == 10.0
+
+
+def test_departure_delay_minutes_small_early_departure_not_treated_as_rollover() -> None:
+    """A small (< 12 h) early departure stays negative — only large
+    backwards gaps trigger the day-bump heuristic."""
+    dep = {
+        "date": "2026-05-15",
+        "time": "12:00:00",
+        # rtDate omitted; rtTime is 2 min EARLY (not a rollover).
+        "rtTime": "11:58:00",
+    }
+    assert script._departure_delay_minutes(dep) == -2.0
+
+
 # ---- _collect_hbf_observations --------------------------------------------
 
 

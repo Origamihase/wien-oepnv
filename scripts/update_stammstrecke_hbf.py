@@ -158,7 +158,7 @@ import sys
 from collections.abc import Iterable, Mapping
 from contextlib import ExitStack
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Final
 
@@ -672,10 +672,23 @@ def _departure_delay_minutes(dep: Mapping[str, Any]) -> float | None:
     if not rt_time:
         return None
 
-    rt_date = dep.get("rtDate") or dep.get("rtDepDate") or sched_date
+    rt_date_explicit = dep.get("rtDate") or dep.get("rtDepDate")
+    rt_date = rt_date_explicit or sched_date
     actual = _parse_vao_dt(rt_date, rt_time)
     if actual is None:
         return None
+
+    # Midnight-rollover heuristic: when VAO omits ``rtDate`` (we fell
+    # back to ``sched_date``) AND the resulting ``actual`` lies more
+    # than 12 h BEFORE ``scheduled``, the realtime departure has
+    # crossed midnight relative to the schedule (e.g. scheduled
+    # 23:55, rtTime "00:05" → actual computed as same-day 00:05 yields
+    # a meaningless ≈-23:50 h "delay"). Bump ``actual`` by one day so
+    # the recorded delay reflects the true wall-clock difference. The
+    # 12 h threshold separates a legitimate (small-magnitude) early
+    # departure from a midnight wrap.
+    if rt_date_explicit is None and (scheduled - actual) > timedelta(hours=12):
+        actual = actual + timedelta(days=1)
 
     return (actual - scheduled).total_seconds() / 60.0
 
