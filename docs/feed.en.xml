@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 28 May 2026 07:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 08:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10: service obstruction for rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9</guid>
+      <pubDate>Thu, 28 May 2026 07:51:25 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 08:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 07:51:25 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 08:50:00 +0200</ext:ends_at>
+      <description>[On 28.05.2026]</description>
+      <content:encoded><![CDATA[[On 28.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62A: Buses stop at Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -63,6 +74,28 @@
       <content:encoded><![CDATA[Stop change of line N46 towards Otto-Wagner-Areal Stop: Thaliastraße U From: Lerchenfelder Belt under U6 To: Kaiserstraße 106 Duration: 02 June …<br/>[26.05.2026 – 26.06.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[60: rescue operation service from Anschützgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789</guid>
+      <pubDate>Thu, 28 May 2026 07:50:27 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 11:01:17 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 07:50:48 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 08:50:00 +0200</ext:ends_at>
+      <description>[On 28.05.2026]</description>
+      <content:encoded><![CDATA[[On 28.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A/63A: traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fedc26128854a91ab0b73b7d131676a7e66edfe1c71aecc67c02c73e852ef9bf</guid>
+      <pubDate>Thu, 28 May 2026 07:58:00 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 08:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 07:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Line 63A: irregular intervals in both directions. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line 63A: irregular intervals in both directions.<br/>[On 28.05.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[46: No operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
@@ -80,39 +113,6 @@
       <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 28.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41E/10A: replacement bus 41E stops at 10A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5</guid>
-      <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 28.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Buses stop Erzherzog-Karl-Straße 78]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92</guid>
-      <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 28.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71E: replacement service buses stop at Simmeringer Hauptstraße opp. 197]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45</guid>
-      <pubDate>Tue, 26 May 2026 00:00:15 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:25 +0200</ext:starts_at>
       <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[26.05.2026 – 28.05.2026]</description>
       <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
