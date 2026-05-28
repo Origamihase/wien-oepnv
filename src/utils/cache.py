@@ -291,11 +291,18 @@ def read_cache(provider: str) -> list[Any]:
     return []
 
 
-def prune_cache(max_age_hours: int = 48) -> None:
+def prune_cache(max_age_hours: int = 48, *, provider: str | None = None) -> None:
     """Evict cached files older than `max_age_hours` hours to prevent repo bloat.
 
     Iterates through the cache directory and deletes `events.json` files that
     are older than the specified age. Removes the provider directory if empty.
+
+    When *provider* is given, only that provider's cache directory is considered.
+    :func:`write_cache` uses this scoped form so a successful write for one
+    provider cannot prune another provider's stale-but-still-protected cache
+    out from under the data-degradation guard (which keys on
+    ``cache_file.exists()``). Operator-side callers may pass ``provider=None``
+    (the default) to keep the original repo-wide cleanup behaviour.
     """
     if max_age_hours <= 0:
         return
@@ -312,10 +319,13 @@ def prune_cache(max_age_hours: int = 48) -> None:
     now = datetime.now(UTC)
     cutoff = now - timedelta(hours=max_age_hours)
 
-    for provider_dir in _CACHE_DIR.iterdir():
-        if not provider_dir.is_dir():
-            continue
+    if provider is not None:
+        scoped_dir = _CACHE_DIR / provider
+        provider_dirs = [scoped_dir] if scoped_dir.is_dir() else []
+    else:
+        provider_dirs = [p for p in _CACHE_DIR.iterdir() if p.is_dir()]
 
+    for provider_dir in provider_dirs:
         cache_file = provider_dir / _CACHE_FILENAME
         if cache_file.exists():
             try:
@@ -394,8 +404,13 @@ def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) 
     # canonical attack-byte union and the scrub-and-drop semantics rationale.
     items = scrub_trojan_source_primitives(items)
 
-    prune_cache()
-
+    # NOTE: prune_cache MUST NOT run before the data-degradation guard below.
+    # A repo-wide prune at this point would delete *other* providers' stale
+    # caches and (if any of them is currently being protected by the
+    # degradation guard) leave their guard with no on-disk baseline to
+    # compare against — turning a future empty/sparse payload into a silent
+    # overwrite. The post-write scoped prune at the end of this function
+    # cleans up this provider's own stale state without touching siblings.
     cache_file = _cache_file(provider)
 
     # Data Degradation Guard
@@ -493,6 +508,14 @@ def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) 
             cache_file,
         )
         raise
+
+    # Per-provider stale-entry cleanup. Scoped to ``provider`` so this write
+    # cannot prune a sibling provider's still-protected cache (see the NOTE
+    # at the top of this function). For the file we just wrote this is a
+    # no-op since its mtime is current; the call is a documented hook for
+    # the original "prevent repo bloat" intent without the cross-provider
+    # data-destruction side-effect the unscoped form caused.
+    prune_cache(provider=provider)
 
 
 def write_status(provider: str, status: dict[str, Any]) -> None:
