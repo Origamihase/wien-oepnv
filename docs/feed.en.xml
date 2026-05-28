@@ -7,29 +7,62 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 28 May 2026 18:01:13 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 18:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[60A/63A: traffic congestion]]></title>
+      <title><![CDATA[60: service obstruction False Parker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">605b689c8046bbe3cc59972c0ea0473f3904020fee2f8ed592d934ed8ccef11b</guid>
-      <pubDate>Thu, 28 May 2026 17:11:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 17:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 17:11:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093</guid>
+      <pubDate>Thu, 28 May 2026 18:08:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 18:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 18:16:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line 63A: irregular intervals in both directions. [On 28.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line 63A: irregular intervals in both directions.<br/>[On 28.05.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 28.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[38: service obstruction traffic accident]]></title>
+      <title><![CDATA[60A: traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2</guid>
-      <pubDate>Thu, 28 May 2026 17:02:32 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 17:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 17:02:45 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 18:02:00 +0200</ext:ends_at>
-      <description>[On 28.05.2026]</description>
-      <content:encoded><![CDATA[[On 28.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">0c324aeb68aff0a13a99697bafb1720b1552500ec06ceef7ada487c69aa2ddcf</guid>
+      <pubDate>Thu, 28 May 2026 17:11:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 18:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 17:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 28.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8</guid>
+      <pubDate>Thu, 28 May 2026 17:11:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 18:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 17:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 18:26:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 28.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[16A: traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7</guid>
+      <pubDate>Thu, 28 May 2026 16:51:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 18:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 16:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 28.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d22f8a5721cb328952fc07b28fc40f91ea591ee68bafe657d779bd5fbff1b8bc</guid>
+      <pubDate>Thu, 28 May 2026 16:51:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 18:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 16:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 28.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A: traffic accident]]></title>
@@ -38,20 +71,9 @@
       <pubDate>Thu, 28 May 2026 16:53:00 +0200</pubDate>
       <ext:first_seen>Thu, 28 May 2026 17:30:46 +0200</ext:first_seen>
       <ext:starts_at>Thu, 28 May 2026 16:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 28 May 2026 18:27:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 28.05.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A/13A/14A/16A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fe258337beedde93d0cc868ccf1e17baf66b2ae9641197b10312d8a0b3e7deab</guid>
-      <pubDate>Thu, 28 May 2026 16:51:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 17:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 16:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line 13A: irregular intervals in both directions. [On 28.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line 13A: irregular intervals in both directions.<br/>[On 28.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A/37A/40A: construction works]]></title>
@@ -96,27 +118,6 @@
       <ext:ends_at>Thu, 28 May 2026 20:48:00 +0200</ext:ends_at>
       <description>No operation at the moment! [On 28.05.2026]</description>
       <content:encoded><![CDATA[No operation at the moment!<br/>[On 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A: demonstration Currently no operation!]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1f3251282cad53d1f9579787978c604d8ef28c99c58b12eddeb8555c92c2d3e2</guid>
-      <pubDate>Thu, 28 May 2026 14:48:44 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 15:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 14:48:44 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 20:47:00 +0200</ext:ends_at>
-      <description>No operation at the moment! [On 28.05.2026]</description>
-      <content:encoded><![CDATA[No operation at the moment!<br/>[On 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Meidling ↔ Baden]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;880814</guid>
-      <pubDate>Thu, 28 May 2026 11:51:49 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 12:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 11:51:49 +0200</ext:starts_at>
-      <description>Due to construction works, between Wien Meidling train station and Baden b.Vienna train station from 08.06.2026 to 03.07.2026 some local trains with changed travel times. [Since 28.05.2026]</description>
-      <content:encoded><![CDATA[Due to construction works, between Wien Meidling train station and Baden b.Vienna train station from 08.06.2026 to 03.07.2026 some local trains with changed travel times.<br/>[Since 28.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
