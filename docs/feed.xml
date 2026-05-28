@@ -7,8 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 28 May 2026 19:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 19:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Payerbach-Reichenau]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;881075</guid>
+      <pubDate>Thu, 28 May 2026 19:14:46 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 19:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 19:14:46 +0200</ext:starts_at>
+      <description>Wegen eines Hindernisses im Gleisbereich waren in Payerbach-Reichenau an der Rax Bahnhof bis 19:04 Uhr keine Fahrten möglich. [Seit 28.05.2026]</description>
+      <content:encoded><![CDATA[Wegen eines Hindernisses im Gleisbereich waren in Payerbach-Reichenau an der Rax Bahnhof bis 19:04 Uhr keine Fahrten möglich.<br/>[Seit 28.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Stellwerksstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,12 +31,12 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung.<br/>[Am 28.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[60: Fahrtbehinderung Falschparker]]></title>
+      <title><![CDATA[60: Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093</guid>
       <pubDate>Thu, 28 May 2026 18:08:00 +0200</pubDate>
       <ext:first_seen>Thu, 28 May 2026 18:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 18:16:00 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 28 May 2026 18:08:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 28 May 2026 19:26:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.05.2026]]]></content:encoded>
@@ -106,17 +116,6 @@
       <ext:starts_at>Thu, 28 May 2026 11:51:49 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten fahren zwischen Wien Meidling Bahnhof und Baden b.Wien Bahnhof von 08.06.2026 bis 03.07.2026 einige Nahverkehrszüge mit geänderten Fahrzeiten. [Seit 28.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten fahren zwischen Wien Meidling Bahnhof und Baden b.Wien Bahnhof von 08.06.2026 bis 03.07.2026 einige Nahverkehrszüge mit geänderten Fahrzeiten.<br/>[Seit 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52</guid>
-      <pubDate>Thu, 28 May 2026 16:51:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 10:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 16:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 18:58:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
