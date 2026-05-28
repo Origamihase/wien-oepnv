@@ -264,6 +264,15 @@
       "epoch": 1
     }
   },
+  "1208d769280f3717e072900bf0525bfeea3a5bbcf57cdabc919e0b5db800c594": {
+    "first_seen": "2026-05-28T03:01:05.274560+00:00",
+    "translations": {
+      "en": {
+        "title": "46: service obstruction due to power failure"
+      },
+      "epoch": 2
+    }
+  },
   "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405": {
     "first_seen": "2026-05-26T14:01:23.491305+00:00",
     "translations": {
@@ -289,6 +298,15 @@
       "en": {
         "summary": "service obstruction in both directions. expected duration: Not foreseeable.",
         "title": "71: police operation"
+      },
+      "epoch": 2
+    }
+  },
+  "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3": {
+    "first_seen": "2026-05-28T03:01:05.274560+00:00",
+    "translations": {
+      "en": {
+        "title": "62A: Buses stop at Breitenfurter Stra\u00dfe 236-238"
       },
       "epoch": 2
     }
@@ -3274,6 +3292,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "40: defective vehicle"
+      },
+      "epoch": 2
+    }
+  },
+  "f6b99f8e719b9a812cbfdfe935bf0da9c6cae2e455a20b4b450370bbbfcf72ba": {
+    "first_seen": "2026-05-28T03:01:05.274560+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between Ring, Volkstheater U and Baumgarten. Reason: Corrupt overhead line through a crane in the H\u00fctteldorf, Bujattigasse stop area.",
+        "title": "49: Corrupt overhead line through a crane"
       },
       "epoch": 2
     }
