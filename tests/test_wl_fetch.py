@@ -207,3 +207,66 @@ def test_fetch_events_uses_extra_context_when_no_stops(monkeypatch: pytest.Monke
     desc = events[0]["description"]
     assert "Station: Karlsplatz" in desc
     assert "Location: Ausgang Oper" in desc
+
+
+def test_fetch_events_tolerates_non_string_title_and_description(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A truthy non-string ``title`` / ``description`` from a misbehaving
+    upstream peer must not crash the whole batch.
+
+    Pre-fix the inline ``(ti.get("title") or ti.get("name") or "Meldung").strip()``
+    chain raised ``AttributeError`` when the value was an ``int`` / ``list`` /
+    ``dict`` (because ``or`` short-circuits to the truthy non-string value and
+    ``.strip()`` is then called on it). ``update_wl_cache.py``'s broad
+    ``except Exception`` then swallowed the crash and kept the stale cache —
+    one bad upstream field disabled the WL refresh for every other item in
+    the same batch.
+    """
+    now = datetime.now(UTC).isoformat()
+    bad_traffic_info = {
+        "title": 42,
+        "description": ["unexpected", "list"],
+        "time": {"start": now},
+        "attributes": {},
+    }
+    good_traffic_info = _base_event(title="Sperre Karlsplatz")
+
+    _setup_fetch(
+        monkeypatch,
+        traffic_infos=[bad_traffic_info, good_traffic_info],
+        news=[],
+    )
+
+    # Pre-fix this would propagate AttributeError out of fetch_events.
+    events = fetch_events(timeout=0)
+    # The well-formed item survives; the malformed item must not abort the batch.
+    titles = [str(event.get("title", "")) for event in events]
+    assert any("Karlsplatz" in title for title in titles)
+
+
+def test_fetch_events_tolerates_non_string_news_subtitle(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A non-string ``subtitle`` in the news payload must not raise
+    ``TypeError`` inside ``" ".join(...)``.
+
+    Pre-fix only ``attrs.get("status")`` / ``attrs.get("state")`` were
+    routed through ``str(... or "")``; ``poi.get("subtitle") or ""``
+    returned the truthy non-string value directly, so a dict / list /
+    int subtitle aborted the entire news loop.
+    """
+    now = datetime.now(UTC).isoformat()
+    bad_news = {
+        "title": "Hinweis",
+        "subtitle": {"unexpected": "dict-shape"},
+        "description": "Description text",
+        "time": {"start": now},
+        "attributes": {},
+    }
+
+    _setup_fetch(monkeypatch, traffic_infos=[], news=[bad_news])
+
+    # Pre-fix this would propagate TypeError out of fetch_events.
+    events = fetch_events(timeout=0)
+    assert isinstance(events, list)
