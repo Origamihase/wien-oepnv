@@ -515,6 +515,16 @@
   "1f755d68184bd94ad3039c5c26b65c6895e2c061940bd65d392003cb8cdb0a2b": {
     "first_seen": "2026-05-04T10:20:39.827737+00:00"
   },
+  "1fada7614a788ccf1a33277fc05d810e42ffa22f80e787d1c7f2415eb1f42b8c": {
+    "first_seen": "2026-05-28T18:01:06.506494+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective vehicle.",
+        "title": "25: delays"
+      },
+      "epoch": 2
+    }
+  },
   "1fec64f7674c231aa626363b72c7ed2e10ff1600c7b2aba65e75f391ec2517f7": {
     "first_seen": "2026-05-21T05:00:45.747742+00:00",
     "translations": {
@@ -2413,6 +2423,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: traffic congestion.",
         "title": "3A: traffic congestion"
+      },
+      "epoch": 2
+    }
+  },
+  "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0": {
+    "first_seen": "2026-05-28T18:01:06.506494+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "13A: rescue operation"
       },
       "epoch": 2
     }
