@@ -182,11 +182,19 @@ class MonthlyQuota:
 
         daily_key = raw.get("daily_key", "")
         if not isinstance(daily_key, str):
-            daily_key = ""
+            raise ValueError("Quota state field 'daily_key' must be a string")
 
+        # Strict validation mirrors the sibling ``total`` / ``counts`` checks
+        # above. The pre-fix silent coerce-to-0 let a corrupted state file
+        # (compromised CI runner, partial flush + power loss, operator
+        # mis-edit) bypass the daily cap (``PLACES_LIMIT_DAILY``) for the
+        # whole day — while a sibling negative ``total`` still aborted the
+        # load. Inconsistent strictness is a budget-escape vector.
         daily_total = raw.get("daily_total", 0)
         if not isinstance(daily_total, int) or daily_total < 0:
-            daily_total = 0
+            raise ValueError(
+                "Quota field 'daily_total' must be a non-negative integer"
+            )
 
         return cls(
             month_key=month,

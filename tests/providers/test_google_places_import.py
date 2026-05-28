@@ -51,6 +51,41 @@ def test_normalize_name_handles_accents_and_spacing() -> None:
     assert normalize_name("  Wíen   Mítte  ") == "wien mitte"
 
 
+def test_normalize_name_collapses_punctuation_so_dedup_matcher_agrees() -> None:
+    """``Wien Hbf`` / ``Wien Hbf.`` / ``Wien-Hbf`` / ``Wien (Hbf)`` must
+    all normalise to the same string.
+
+    Pre-fix the dedup matcher in :mod:`src.places.merge` compared the raw
+    casefold + accent-strip output, so any punctuation difference between
+    sources (Google vs OSM vs WL) produced a duplicate station row.
+    """
+    base = normalize_name("Wien Hbf")
+    assert base == "wien hbf"
+    assert normalize_name("Wien Hbf.") == base
+    assert normalize_name("Wien-Hbf") == base
+    assert normalize_name("Wien (Hbf)") == base
+    # Trailing comma + casing variant.
+    assert normalize_name("WIEN, HBF") == base
+    # Cross-source: ``St. Pölten`` (with abbreviated saint) vs ``St Pölten``.
+    assert normalize_name("St. Pölten") == normalize_name("St Pölten")
+
+
+def test_normalize_name_caps_result_length_without_breaking_equality() -> None:
+    """A name > 250 chars must still normalise (case-folded, etc.) AND two
+    overlong strings that differ only in case must compare equal.
+
+    Pre-fix ``if len(name) > 250: return name`` returned the raw input,
+    so a mixed-case overlong string and its lowercased twin compared
+    unequal — defeating the dedup invariant exactly when it mattered.
+    """
+    upper = "Hauptbahnhof Wien " * 20  # ~360 chars
+    lower = upper.lower()
+    norm_upper = normalize_name(upper)
+    norm_lower = normalize_name(lower)
+    assert norm_upper == norm_lower
+    assert len(norm_upper) <= 250
+
+
 def test_haversine_distance_matches_reference() -> None:
     distance = haversine_m(48.2065, 16.384, 48.207, 16.3845)
     assert distance == pytest.approx(66.8129884753474, rel=1e-6)
