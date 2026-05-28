@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 28 May 2026 05:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 05:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[49: Fahrleitungsgebr Betrieb ab Baumgarten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">272d512eae6da1e07e24fc3c17abdfd04ac5f147666e8c386e0b225c7c091555</guid>
+      <pubDate>Thu, 28 May 2026 04:42:37 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 05:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 04:42:50 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 05:42:00 +0200</ext:ends_at>
+      <description>[Am 28.05.2026]</description>
+      <content:encoded><![CDATA[[Am 28.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,17 +43,6 @@
       <content:encoded><![CDATA[[Am 28.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[49: Beschädigte Oberleitung durch einen Kran]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f6b99f8e719b9a812cbfdfe935bf0da9c6cae2e455a20b4b450370bbbfcf72ba</guid>
-      <pubDate>Thu, 28 May 2026 04:42:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 05:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 04:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Ring, Volkstheater U und Baumgarten. Grund: Beschädigte Oberleitung durch einen Kran im Haltestellenbereich Hütteldorf, Bujattigasse. [Am 28.05.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Ring, Volkstheater U und Baumgarten. Grund: Beschädigte Oberleitung durch einen Kran im Haltestellenbereich Hütteldorf, Bujattigasse.<br/>[Am 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[63A: Kranarbeiten ab 01. Juni 2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ea5c0a14274e4e9715287474322b70a593216116a425ef7cbb594981f139be65</guid>
@@ -62,6 +62,17 @@
       <ext:starts_at>Thu, 28 May 2026 00:29:55 +0200</ext:starts_at>
       <description>Wegen Reparaturarbeiten nach einem Feuerwehreinsatz sind zwischen Wien Stadlau Bahnhst (U) und Wien Simmering Bahnhof (U) Zugfahrten bis voraussichtlich 28.05.2026, 20:00 … [Seit 28.05.2026]</description>
       <content:encoded><![CDATA[Wegen Reparaturarbeiten nach einem Feuerwehreinsatz sind zwischen Wien Stadlau Bahnhst (U) und Wien Simmering Bahnhof (U) Zugfahrten bis voraussichtlich 28.05.2026, 20:00 …<br/>[Seit 28.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
+      <pubDate>Thu, 28 May 2026 05:05:00 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 05:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 28.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 28.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -99,17 +110,6 @@
       <title><![CDATA[40/41: Betrieb ab Gersthof]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8</guid>
-      <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 28.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41E/10A: Ersatzbus 41E hält beim 10A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5</guid>
       <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
