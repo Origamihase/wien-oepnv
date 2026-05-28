@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 28 May 2026 23:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 23:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[12: service obstruction False Parker]]></title>
+      <title><![CDATA[48A: rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d5852610e5230534aa875aec60af4a7a1b528ad8f8dd7b2db5fde27fedc59960</guid>
-      <pubDate>Thu, 28 May 2026 22:08:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 22:19:04 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:20:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 28.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 28.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">2d67d7e9c317d518f24f879879e1b8977cbc97545f7ebbc35fdd5aa8a7ec2e29</guid>
+      <pubDate>Thu, 28 May 2026 23:07:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 23:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 23:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:49:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 28.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A/37A/40A: construction works]]></title>
@@ -106,15 +106,15 @@
       <content:encoded><![CDATA[Stop change of line N46 towards Otto-Wagner-Areal Stop: Thaliastraße U From: Lerchenfelder Belt under U6 To: Kaiserstraße 106 Duration: 02 June …<br/>[26.05.2026 – 26.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[5: False Parker service from Albertgasse]]></title>
+      <title><![CDATA[46: No operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5</guid>
-      <pubDate>Thu, 28 May 2026 22:07:37 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 10:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 22:15:49 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:24:00 +0200</ext:ends_at>
-      <description>Operation only between Praterstern S U and Blindengasse. [On 28.05.2026]</description>
-      <content:encoded><![CDATA[Operation only between Praterstern S U and Blindengasse.<br/>[On 28.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
+      <pubDate>Tue, 26 May 2026 00:00:27 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 26 May 2026 00:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[26.05.2026 – 28.05.2026]</description>
+      <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
