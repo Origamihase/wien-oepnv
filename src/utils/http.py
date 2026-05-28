@@ -7,6 +7,7 @@ import ipaddress
 import logging
 import atexit
 import collections
+import math
 import os
 import re
 import socket
@@ -60,7 +61,15 @@ def parse_retry_after(
     if not header:
         return None
     if _RETRY_AFTER_NUMERIC_RE.fullmatch(header):
-        return max(0.0, float(header))
+        # ``float(header)`` returns ``+inf`` for ~309-digit strings (and
+        # Python's ``\d`` also matches Unicode decimal digits). Reject
+        # any non-finite parsed value so a hostile / malformed upstream
+        # cannot persuade a caller — present or future — to ``time.sleep``
+        # for effectively forever.
+        parsed_seconds = float(header)
+        if not math.isfinite(parsed_seconds):
+            return None
+        return max(0.0, parsed_seconds)
     try:
         parsed = parsedate_to_datetime(header)
     except (TypeError, ValueError):
@@ -68,7 +77,10 @@ def parse_retry_after(
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=UTC)
     reference = now if now is not None else datetime.now(UTC)
-    return max(0.0, (parsed - reference).total_seconds())
+    delta_seconds = (parsed - reference).total_seconds()
+    if not math.isfinite(delta_seconds):
+        return None
+    return max(0.0, delta_seconds)
 
 
 _DEFAULT_RETRY_OPTIONS: dict[str, Any] = {
@@ -1039,6 +1051,17 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
             if _is_sensitive_header(header_name):
                 del headers[header_name]
 
+        # Also strip sensitive QUERY parameters from the redirect URL.
+        # ``request_safe`` does this inside its manual redirect loop via
+        # ``_strip_redirect_secrets``, but callers that hit ``Session``
+        # directly (e.g. ``places/client.py`` POSTs that use the session's
+        # native redirect handling) only reach THIS hook. Without the
+        # strip, a cross-origin redirect target receives the auth token
+        # in the URL line of the next request — defeating the header
+        # strip immediately above.
+        if url is not None:
+            prepared_request.url = _strip_sensitive_params(url)
+
 
 def session_with_retries(
     user_agent: str,
@@ -1662,11 +1685,16 @@ def read_response_safe(
             response.close()
             raise requests.Timeout(f"Read timed out after {read_timeout} seconds")
 
-        chunks.append(chunk)
-        received += len(chunk)
-        if received > max_bytes:
+        # Check the prospective size BEFORE appending so the worst-case
+        # in-memory buffer is bounded by ``max_bytes`` (not
+        # ``max_bytes + chunk_size``). Matters for callers that pass a
+        # small ``max_bytes`` cap (e.g. a 1 KiB health probe) — the
+        # pre-fix loop could buffer 8 KiB before raising.
+        if received + len(chunk) > max_bytes:
             response.close()
             raise ValueError(f"Response too large (> {max_bytes} bytes)")
+        chunks.append(chunk)
+        received += len(chunk)
     return b"".join(chunks)
 
 
@@ -2344,5 +2372,24 @@ def cleanup_http_sessions() -> None:
                     sanitize_log_arg(str(exc)),
                 )
         _HTTP_SESSION_CACHE.clear()
+
+    # Also drain any sessions still pending in the eviction queue. The
+    # background ``_cleanup_evicted_sessions_thread`` only closes one
+    # entry per 60 s grace window, so a burst of evictions can leave
+    # several sessions queued at shutdown. Without this drain, atexit
+    # closed the active cache but leaked the queued sockets — visible
+    # to test fixtures via ``responses`` ResourceWarnings.
+    while True:
+        try:
+            session, _eviction_time = _EVICTED_SESSIONS_QUEUE.get_nowait()
+        except queue.Empty:
+            break
+        try:
+            session.close()
+        except Exception as exc:
+            log.debug(
+                "Error closing evicted HTTP session during cleanup: %s",
+                sanitize_log_arg(str(exc)),
+            )
 
 atexit.register(cleanup_http_sessions)
