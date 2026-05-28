@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 28 May 2026 22:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 22:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[67A: Verspätungen]]></title>
+      <title><![CDATA[12: Fahrtbehinderung Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8bf5590ba8056f9dfcfc548105336cba93be31243e590da4d263617b95edd0ee</guid>
-      <pubDate>Thu, 28 May 2026 21:49:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 22:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 21:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 22:25:00 +0200</ext:ends_at>
-      <description>Unregelmäßige in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 28.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 28.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">d5852610e5230534aa875aec60af4a7a1b528ad8f8dd7b2db5fde27fedc59960</guid>
+      <pubDate>Thu, 28 May 2026 22:08:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 22:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 22:19:04 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:20:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A/37A/40A: Bauarbeiten]]></title>
@@ -106,15 +106,15 @@
       <content:encoded><![CDATA[Haltestellenverlegung der Linie N46 in Richtung Otto-Wagner-Areal Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel unter U6 Nach: Kaiserstraße 106 Dauer: 02. Juni …<br/>[26.05.2026 – 26.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
+      <title><![CDATA[5: Fahrtbehinderung Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Tue, 26 May 2026 00:00:27 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 28.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5</guid>
+      <pubDate>Thu, 28 May 2026 22:07:37 +0200</pubDate>
+      <ext:first_seen>Tue, 26 May 2026 10:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 22:15:49 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:15:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
