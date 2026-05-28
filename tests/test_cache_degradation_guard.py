@@ -1,9 +1,12 @@
 import json
+import os
+import time
 from pathlib import Path
 from typing import Any
 
 import pytest
 from unittest.mock import patch
+from src.utils import cache as cache_module
 from src.utils.cache import write_cache, DataDegradationError
 
 def test_cache_degradation_guard_bypass_on_new_cache(tmp_path: Path) -> None:
@@ -119,3 +122,42 @@ def test_cache_degradation_guard_bypass_on_corrupt_cache(tmp_path: Path) -> None
         with target_file.open("r", encoding="utf-8") as f:
             saved_data = json.load(f)
         assert len(saved_data) == 1
+
+
+def test_write_cache_does_not_prune_sibling_providers(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A successful write for one provider must not prune another provider's
+    stale cache out from under the data-degradation guard.
+
+    Pre-fix, ``write_cache`` ran an unscoped ``prune_cache()`` that iterated
+    every provider directory and deleted any ``events.json`` older than 48 h.
+    A repo-wide sibling prune therefore destroyed the on-disk baseline the
+    degradation guard depends on (``cache_file.exists()`` short-circuits to
+    False), turning a future empty/sparse payload into a silent overwrite.
+    """
+    cache_dir = tmp_path / "cache"
+    cache_dir.mkdir()
+    monkeypatch.setattr(cache_module, "_CACHE_DIR", cache_dir)
+
+    # Provider A: write a healthy cache, then artificially age its mtime
+    # past the 48 h cutoff so a repo-wide prune would target it.
+    write_cache("alpha", [{"id": i} for i in range(100)])
+    alpha_file = cache_module._cache_file("alpha")
+    assert alpha_file.exists()
+    aged = time.time() - 49 * 3600
+    os.utime(alpha_file, (aged, aged))
+
+    # Provider B writes successfully. Pre-fix this deleted alpha's cache.
+    write_cache("beta", [{"id": i} for i in range(50)])
+    assert alpha_file.exists(), (
+        "beta's write must not delete alpha's stale-but-still-protected cache"
+    )
+
+    # Alpha's degradation guard must still fire when its next upstream
+    # response is empty. Pre-fix the guard silently accepted [] because
+    # ``cache_file.exists()`` returned False after beta's prune.
+    with pytest.raises(DataDegradationError):
+        write_cache("alpha", [])
+    # The guard raised before atomic_write, so alpha's cache stays intact.
+    assert alpha_file.exists()
