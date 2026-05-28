@@ -583,9 +583,9 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             ):
                 continue
 
-            title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
+            title_raw = str(ti.get("title") or ti.get("name") or "Meldung").strip()
             title = _tidy_title_wl(title_raw)
-            desc_raw = (ti.get("description") or "").strip()
+            desc_raw = str(ti.get("description") or "").strip()
             # Do NOT strip HTML here, we need to preserve links (Task 3)
             desc = desc_raw
             if _is_facility_only(title_raw, desc_raw):
@@ -687,14 +687,16 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             # with empty ``title`` but a populated ``name`` (real WL
             # News payload shape) doesn't collapse to the literal
             # placeholder "Hinweis".
-            title_raw = (
+            title_raw = str(
                 poi.get("title") or poi.get("name") or "Hinweis"
             ).strip()
             title = _tidy_title_wl(title_raw)
-            desc_raw = (poi.get("description") or "").strip()
+            desc_raw = str(poi.get("description") or "").strip()
             # Do NOT strip HTML here, we need to preserve links (Task 3)
             desc = desc_raw
-            if _is_facility_only(title_raw, desc_raw, poi.get("subtitle") or ""):
+            if _is_facility_only(
+                title_raw, desc_raw, str(poi.get("subtitle") or "")
+            ):
                 continue
 
             tinfo = _coerce_dict(poi.get("time"))
@@ -715,7 +717,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             text_for_filter = " ".join(
                 [
                     title_raw,
-                    poi.get("subtitle") or "",
+                    str(poi.get("subtitle") or ""),
                     desc_raw,
                     str(attrs.get("status") or ""),
                     str(attrs.get("state") or ""),
