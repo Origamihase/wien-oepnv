@@ -19,6 +19,16 @@
       "epoch": 2
     }
   },
+  "01c1edad0db092aed085d667951c6be88cf791b9631f3f4007cfee702ab02beb": {
+    "first_seen": "2026-05-28T12:30:53.427781+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "52: traffic accident"
+      },
+      "epoch": 2
+    }
+  },
   "02eba5a10b6bfbc053ab8e3cd1f9dabf24000400cc5596a3921352c78e6875e3": {
     "first_seen": "2026-05-26T14:01:23.491305+00:00",
     "translations": {
@@ -2912,6 +2922,16 @@
       "en": {
         "summary": "service obstruction in both directions. expected duration: 00:15 clock. Reason: service disruption in the Vorgartenstra\u00dfe stop area.",
         "title": "U1: service disruption"
+      },
+      "epoch": 2
+    }
+  },
+  "d735177cc6e0c032bea05c9936fbbc2b7922b9a27c7090d9edb0f0dee69f67b3": {
+    "first_seen": "2026-05-28T12:30:53.427781+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic accident in the Laimgrubengasse stop area.",
+        "title": "57A: traffic accident"
       },
       "epoch": 2
     }

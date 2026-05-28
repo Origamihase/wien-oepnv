@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 28 May 2026 14:01:20 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 14:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[3A: traffic congestion]]></title>
+      <title><![CDATA[57A: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9f9e6187c209c35f7459a15952d47555cbf84b2191172cf18db8d559f94cca69</guid>
-      <pubDate>Thu, 28 May 2026 13:29:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 13:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 28 May 2026 13:29:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">d735177cc6e0c032bea05c9936fbbc2b7922b9a27c7090d9edb0f0dee69f67b3</guid>
+      <pubDate>Thu, 28 May 2026 14:14:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 14:14:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion. [On 28.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 28.05.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: traffic accident in the Laimgrubengasse stop area. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident in the Laimgrubengasse stop area.<br/>[On 28.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">01c1edad0db092aed085d667951c6be88cf791b9631f3f4007cfee702ab02beb</guid>
+      <pubDate>Thu, 28 May 2026 14:08:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 14:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 28.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: defective vehicle]]></title>
@@ -104,17 +115,6 @@
       <ext:ends_at>Thu, 28 May 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals towards Karlsplatz . Reason: defective vehicle. [On 28.05.2026]</description>
       <content:encoded><![CDATA[irregular intervals towards Karlsplatz . Reason: defective vehicle.<br/>[On 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N46: Thaliastraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b3dddce3dc80f12d5b1311e5cc5eb73c5428ec5b96a230f20dbb510d2fb1e2fd</guid>
-      <pubDate>Tue, 26 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 15:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 26 Jun 2026 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line N46 towards Otto-Wagner-Areal Stop: Thaliastraße U From: Lerchenfelder Belt under U6 To: Kaiserstraße 106 Duration: 02 June … [26.05.2026 – 26.06.2026]</description>
-      <content:encoded><![CDATA[Stop change of line N46 towards Otto-Wagner-Areal Stop: Thaliastraße U From: Lerchenfelder Belt under U6 To: Kaiserstraße 106 Duration: 02 June …<br/>[26.05.2026 – 26.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
