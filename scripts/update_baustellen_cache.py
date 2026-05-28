@@ -875,6 +875,17 @@ def main() -> int:
             skipped,
             len(events),
         )
+    # Empty payload would trigger ``DataDegradationError`` in
+    # ``write_cache`` when a populated cache already exists, and the
+    # uncaught error would crash the cron step. Skip the write
+    # instead — the pinned previous cache stays valid and the
+    # non-zero exit surfaces the issue to the cron wrapper.
+    if not relevant:
+        LOGGER.warning(
+            "Baustellen: 0 ÖPNV-relevante Einträge nach Filter – "
+            "Cache wird NICHT überschrieben, gepinnter Snapshot bleibt aktiv."
+        )
+        return 1
     write_cache("baustellen", relevant)
     if used_fallback:
         # Exit 2 = "degraded": the cache was written from the bundled

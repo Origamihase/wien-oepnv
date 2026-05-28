@@ -319,9 +319,17 @@ def test_fetch_layers_returns_none_when_all_layers_fail(monkeypatch: pytest.Monk
 def test_main_negotiates_output_format(monkeypatch: pytest.MonkeyPatch) -> None:
     """The configured ``json`` token returns nothing (the production
     failure mode); the negotiation must fall through to the next variant
-    and use it as a live success — NOT the degraded fallback."""
+    and use it as a live success — NOT the degraded fallback.
+
+    The payload now carries one ÖPNV-relevant feature so the post-filter
+    yields a non-empty ``relevant`` list and the empty-payload-skip path
+    is not what's under test here.
+    """
     seen: list[str] = []
-    payload = {"type": "FeatureCollection", "features": []}
+    payload = {
+        "type": "FeatureCollection",
+        "features": [_bau_feature(name="U6 Bauarbeiten Großfeldsiedlung")],
+    }
 
     def fake_fetch_remote(url: str, timeout: int) -> dict[str, Any] | None:
         seen.append(url)
@@ -805,6 +813,49 @@ def test_load_fallback_handles_json_depth_bomb(
     assert result is None
     assert any(
         "ungültiges JSON" in record.getMessage()
+        for record in caplog.records
+        if record.name == "update_baustellen_cache"
+    )
+
+
+def test_main_skips_write_on_empty_relevant_payload(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    """A live fetch yielding 0 ÖPNV-relevant entries must NOT trigger the
+    ``DataDegradationError`` path in ``write_cache``.
+
+    Pre-fix the empty payload reached ``write_cache("baustellen", [])`` which
+    raised ``DataDegradationError`` when the prior cache had items. The error
+    was never caught by ``main()``, so the cron step crashed with a non-zero
+    traceback rather than the clean "kept stale cache" signal the operator
+    can read.
+    """
+    import logging
+
+    calls: list[tuple[str, list[dict[str, Any]]]] = []
+
+    def fake_fetch_remote(url: str, timeout: int) -> dict[str, Any]:
+        # Live fetch returns a well-formed but empty FeatureCollection
+        # (e.g. transient upstream that legitimately had no construction
+        # sites, or every site filtered out as non-ÖPNV).
+        return {"type": "FeatureCollection", "features": []}
+
+    def capture_cache(provider: str, items: list[dict[str, Any]]) -> None:
+        calls.append((provider, items))
+
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
+    monkeypatch.setattr(update_baustellen_cache, "write_cache", capture_cache)
+    caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
+
+    exit_code = update_baustellen_cache.main()
+
+    # write_cache must NOT have been called — the pinned snapshot stays intact.
+    assert calls == []
+    # Non-zero exit so the cron wrapper surfaces the kept-stale state.
+    assert exit_code != 0
+    # The operator-facing warning explains what happened.
+    assert any(
+        "0 ÖPNV-relevante" in record.getMessage()
         for record in caplog.records
         if record.name == "update_baustellen_cache"
     )
