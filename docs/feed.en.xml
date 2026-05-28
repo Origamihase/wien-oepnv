@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 28 May 2026 21:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 22:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[67A: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8bf5590ba8056f9dfcfc548105336cba93be31243e590da4d263617b95edd0ee</guid>
+      <pubDate>Thu, 28 May 2026 21:49:00 +0200</pubDate>
+      <ext:first_seen>Thu, 28 May 2026 22:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 21:49:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 28 May 2026 22:25:00 +0200</ext:ends_at>
+      <description>Irregular in both directions. Reason: defective vehicle. [On 28.05.2026]</description>
+      <content:encoded><![CDATA[Irregular in both directions. Reason: defective vehicle.<br/>[On 28.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[10A/37A/40A: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -101,17 +112,6 @@
       <pubDate>Tue, 26 May 2026 00:00:27 +0200</pubDate>
       <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 26 May 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[26.05.2026 – 28.05.2026]</description>
-      <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40/41: service from Gersthof]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8</guid>
-      <pubDate>Tue, 26 May 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:17 +0200</ext:starts_at>
       <ext:ends_at>Thu, 28 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[26.05.2026 – 28.05.2026]</description>
       <content:encoded><![CDATA[[26.05.2026 – 28.05.2026]]]></content:encoded>
