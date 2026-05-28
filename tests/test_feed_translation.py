@@ -165,3 +165,45 @@ def test_apply_lang_overlay_passthrough_for_de() -> None:
     )
     out = build_feed._apply_lang_overlay(base, "X", "[Seit 01.01.2026]", "id", "de", {})
     assert out is base
+
+
+def test_apply_lang_overlay_enforces_en_length_caps() -> None:
+    """The EN overlay must honour the same TITLE_CHAR_LIMIT / 180-char summary
+    caps as the DE path — German→English expansion can otherwise overflow them.
+
+    The translation cache is pre-seeded (at the current epoch so it is not
+    evicted) so the ML pipeline is never invoked.
+    """
+    base = build_feed.FormattedContent(
+        guid="g",
+        link="https://example.com",
+        title_cdata="T",
+        desc_text_truncated="kurze deutsche Zusammenfassung",
+        desc_cdata="X",
+        raw_desc="X",
+        title_out="kurzer deutscher Titel",
+        desc_html="X",
+    )
+    ident = "len-cap-id"
+    long_title = "Very long translated title segment " * 20  # ~700 chars
+    long_summary = "Very long translated summary sentence. " * 20  # ~780 chars
+    state: dict[str, dict[str, Any]] = {
+        ident: {
+            "translations": {
+                "epoch": build_feed._TRANSLATION_CACHE_EPOCH,
+                "en": {"title": long_title, "summary": long_summary},
+            }
+        }
+    }
+
+    out = build_feed._apply_lang_overlay(
+        base, "kurze deutsche Zusammenfassung", "", ident, "en", state
+    )
+
+    # Confirm the seeded cache was used (not a fail-safe passthrough to base).
+    assert out is not base
+    # Title respects TITLE_CHAR_LIMIT (plus the trailing " …" ellipsis).
+    assert len(out.title_out) <= build_feed.feed_config.TITLE_CHAR_LIMIT + 2
+    assert out.title_out.endswith("…")
+    # Summary respects the 180-char TV-screen cap (time line is empty here).
+    assert len(out.desc_text_truncated) <= 180
