@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 from dataclasses import dataclass
 from pathlib import Path
@@ -53,11 +54,43 @@ def _validate_tile_count(count: int) -> None:
 
 def _coerce_coordinate(raw: Mapping[str, object], key: str) -> float:
     value = raw.get(key)
-    if isinstance(value, float | int):
-        return float(value)
+    # ``bool`` is a subclass of ``int``: a JSON ``true`` / ``false`` would
+    # otherwise coerce to ``1.0`` / ``0.0`` and slip through as a silent
+    # bogus coordinate. Reject it explicitly before the numeric branch.
+    if isinstance(value, bool):
+        raise TypeError(f"Invalid {key!r} value in tile specification: {value!r}")
     if isinstance(value, str):
-        return float(value)
-    raise TypeError(f"Invalid {key!r} value in tile specification: {value!r}")
+        coerced = float(value)
+    elif isinstance(value, float | int):
+        try:
+            coerced = float(value)
+        except OverflowError as exc:
+            # A JSON integer with hundreds of digits parses to an
+            # arbitrary-precision Python ``int`` (the ``parse_float``
+            # non-finite hook never sees an integer literal) and overflows
+            # IEEE-754 here. Surface as ValueError so ``_parse_tiles``
+            # reports an invalid tile instead of letting the uncaught
+            # ``OverflowError`` escape the caller's
+            # ``except (OSError, ValueError)`` cron guard.
+            raise ValueError(
+                f"Out-of-range {key!r} value in tile specification: {value!r}"
+            ) from exc
+    else:
+        raise TypeError(f"Invalid {key!r} value in tile specification: {value!r}")
+    # Security (reader-side non-finite defence): the ``json.loads``
+    # ``parse_float`` / ``parse_constant`` hooks in ``load_tiles_from_env`` /
+    # ``load_tiles_from_file`` only fire for JSON *number* literals. A
+    # coordinate supplied as a JSON *string* (``"NaN"`` / ``"Infinity"`` /
+    # ``"-Infinity"`` / ``"1e1000"``) bypasses them entirely and ``float(...)``
+    # happily yields a non-finite value. Re-validate here so the in-memory
+    # tile list never carries a non-finite coordinate that would poison the
+    # downstream bounding-box / haversine math — the invariant the module's
+    # parse-boundary comments already assert.
+    if not math.isfinite(coerced):
+        raise ValueError(
+            f"Non-finite {key!r} value in tile specification: {value!r}"
+        )
+    return coerced
 
 
 def _parse_tiles(raw_tiles: Iterable[object]) -> list[Tile]:
