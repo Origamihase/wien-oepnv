@@ -320,7 +320,16 @@ def prune_cache(max_age_hours: int = 48, *, provider: str | None = None) -> None
     cutoff = now - timedelta(hours=max_age_hours)
 
     if provider is not None:
-        scoped_dir = _CACHE_DIR / provider
+        # ``write_cache`` and the read paths (:func:`_cache_file` /
+        # :func:`_status_file`) store each provider under
+        # ``sanitize_filename(provider)`` — e.g. ``"wl"`` → ``"wl_9d709a"`` —
+        # so the scoped prune MUST sanitise too. Pre-fix this joined the RAW
+        # provider name (``cache/wl``), a directory that never exists, so the
+        # ``is_dir()`` check failed, ``provider_dirs`` stayed empty and the
+        # post-write scoped prune in :func:`write_cache` was a permanent
+        # no-op: a provider's own ``events.json`` older than ``max_age_hours``
+        # was never evicted (silent repo bloat / indefinitely-stale cache).
+        scoped_dir = _CACHE_DIR / sanitize_filename(provider)
         provider_dirs = [scoped_dir] if scoped_dir.is_dir() else []
     else:
         provider_dirs = [p for p in _CACHE_DIR.iterdir() if p.is_dir()]
