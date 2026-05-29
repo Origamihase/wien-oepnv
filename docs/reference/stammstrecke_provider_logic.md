@@ -8,7 +8,7 @@ zwei Module:
 | Komponente | Verantwortlichkeit |
 | :--- | :--- |
 | `scripts/update_stammstrecke_hbf.py` | Refresh-Producer (aktiv seit 2026-05-15): wird vom IFTTT-getriggerten `update-cycle.yml` (~alle 30 Min auf :00/:30) als Pipeline-Schritt aufgerufen, fragt einmal pro Tick die VOR/VAO `/departureBoard`-API am Wien Hauptbahnhof ab und hängt eine aggregierte Beobachtungs-Zeile pro Richtung an `data/stats/stammstrecke_<YYYY>.csv` sowie eine Zeile pro Ausfall an `data/stats/ausfaelle_<YYYY>.csv` (CSV-Ledger). Die geteilte Pending-Trip- und Recently-Finalised-Infrastruktur wird per Import aus dem Legacy-Modul `scripts/update_stammstrecke_status.py` wiederverwendet — letzteres wird vom Cron-Workflow nicht mehr direkt aufgerufen. |
-| `src/feed/stammstrecke.py` | Feed-Renderer: liest die zuletzt geschriebenen Zeilen, prüft für jede Richtung über ein 1-Stunden-Fenster, ob mindestens zwei Beobachtungen die 9-Minuten-Schwelle überschreiten, und erzeugt — ggf. — einen schema-konformen FeedItem. |
+| `src/feed/stammstrecke.py` | Feed-Renderer: liest die zuletzt geschriebenen Zeilen, prüft für jede Richtung über ein 1-Stunden-Fenster, ob mindestens zwei **aufeinanderfolgende** Beobachtungen die 9-Minuten-Schwelle überschreiten, und erzeugt — ggf. — einen schema-konformen FeedItem. |
 
 Diese Architektur entstand in zwei Schritten:
 
@@ -230,6 +230,7 @@ Cache zu lesen oder zu schreiben.
 | Name | Wert | Bedeutung |
 | :--- | :--- | :--- |
 | `DELAY_THRESHOLD_MINUTES` | `9.0` | Schwellenwert pro Beobachtung; wird vom Trigger-Gate konsumiert. |
+| `TRIGGER_CONSECUTIVE_COUNT` | `2` | Anzahl **aufeinanderfolgender** Beobachtungen (zeitlich benachbart), die jeweils strikt über `DELAY_THRESHOLD_MINUTES` liegen müssen, damit eine Episode starten darf. |
 | `FEED_WINDOW` | `1 h` | Zeitfenster (rückwirkend von `now`), in dem das Trigger-Gate ausgewertet wird. |
 | `EPISODE_LOOKBACK` | `6 h` | Max. Rückblick zur Bestimmung des `first_seen`-Zeitpunkts der laufenden Episode. |
 | `EPISODE_GAP_TOLERANCE` | `70 min` | Maximale Lücke zwischen zwei Beobachtungen, ehe eine Episode als beendet gilt (deckt einen ausgefallenen Cron-Tick ab). |
@@ -247,21 +248,30 @@ Pro Richtung und pro Build:
    Direction `Praterstern`).
 2. Filtere auf das jüngste `FEED_WINDOW` (1 Stunde) — typischerweise
    2 Beobachtungen pro Richtung.
-3. **Trigger**: emittiere ein Event genau dann, wenn **mindestens zwei**
-   Beobachtungen in dieser Untermenge **strikt** über
-   `DELAY_THRESHOLD_MINUTES` liegen. Die 2-aus-N-Regel verhindert,
-   dass ein einzelner Ausreißer eine Richtung allein ins Event drückt;
-   bei der typischen Stichprobengröße (2 Beobachtungen pro Stunde)
-   müssen also beide jüngsten Ticks die Schwelle reißen.
+3. **Trigger**: emittiere ein Event genau dann, wenn **mindestens
+   `TRIGGER_CONSECUTIVE_COUNT` (zwei) aufeinanderfolgende**
+   Beobachtungen in dieser Untermenge — zeitlich benachbart, ohne eine
+   darunterliegende Beobachtung dazwischen — **strikt** über
+   `DELAY_THRESHOLD_MINUTES` liegen. Die Regel verlangt eine
+   *anhaltende* Verspätung: weder ein einzelner Ausreißer noch zwei
+   hohe Ticks, die einen erholten (sub-Schwellen-)Tick umklammern,
+   lösen allein aus. Bei der typischen Stichprobengröße (2 Beobachtungen
+   pro Stunde) müssen also beide jüngsten Ticks die Schwelle reißen.
 4. **Anzeigewert**: das Event-`description`-Feld zeigt den **Mittelwert**
    (`mean`) der Beobachtungen im Feed-Fenster — für End-Nutzer:innen
    leichter interpretierbar als der Median.
 5. **`first_seen`**: gehe vom jüngsten Above-Threshold-Sample im
    6-Stunden-Lookback rückwärts und nimm den frühesten Zeitpunkt einer
    zusammenhängenden Folge mit `> DELAY_THRESHOLD_MINUTES` und
-   Sample-Abstand `≤ EPISODE_GAP_TOLERANCE` als Episode-Start. Dieser
-   Wert geht in `starts_at`, `first_seen`, `guid`-Hash und das
-   `Seit DD.MM.YYYY`-Datum ein.
+   Sample-Abstand `≤ EPISODE_GAP_TOLERANCE` als Episode-Start. Kurze
+   Unterschreitungen der Schwelle werden dabei **überbrückt**, nicht als
+   Episodenende gewertet: sub-Schwellen-Samples werden vor dem
+   Rückwärtslauf herausgefiltert, sodass ein kurzer Einbruch zwischen
+   zwei hohen Samples die Episode nur dann beendet, wenn die dadurch
+   entstehende Lücke `EPISODE_GAP_TOLERANCE` übersteigt — das hält das
+   Episoden-Datum über die kurzen Erholungen einer anhaltenden Störung
+   stabil. Dieser Wert geht in `starts_at`, `first_seen`, `guid`-Hash
+   und das `Seit DD.MM.YYYY`-Datum ein.
 
 ### Event-Schema
 

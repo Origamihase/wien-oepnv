@@ -1,12 +1,15 @@
 """Trigger semantics for :mod:`src.feed.stammstrecke`.
 
-The Stammstrecke feed event is fired when at least **two** CSV rows in
-a direction's last-hour window carry a sample-mean delay strictly
-greater than :data:`DELAY_THRESHOLD_MINUTES` (9 minutes). Each CSV row
+The Stammstrecke feed event is fired when at least
+:data:`TRIGGER_CONSECUTIVE_COUNT` (**two**) *consecutive* CSV rows in a
+direction's last-hour window each carry a sample-mean delay strictly
+greater than :data:`DELAY_THRESHOLD_MINUTES` (9 minutes) — adjacent in
+time order, with no below-threshold sample between them. Each CSV row
 is itself the mean of multiple trains finalised by the same cron tick
 (typically 10-15 since the 2026-05-15 ``/departureBoard`` + track-filter
-migration), so the trigger requires sustained widespread delay, not a
-single outlier train.
+migration), so the trigger requires a *sustained* widespread delay — not
+a single outlier train, and not two bad ticks that merely bracket a
+recovered one.
 
 This module pins:
 
@@ -20,6 +23,9 @@ This module pins:
    single-tick outliers from triggering the feed entry).
 4. The empty / sub-threshold cases: no rows or all rows ≤ 9 min must
    produce zero events.
+5. The *consecutive* gate: two above-threshold rows separated by a
+   sub-threshold dip must NOT fire, while any back-to-back
+   above-threshold pair within the window must.
 """
 
 from __future__ import annotations
@@ -33,6 +39,7 @@ from src.feed import stammstrecke as feed_module
 from src.feed.stammstrecke import (
     DELAY_THRESHOLD_MINUTES,
     FEED_WINDOW,
+    TRIGGER_CONSECUTIVE_COUNT,
     compute_stammstrecke_events,
 )
 from src.utils.stats import StammstreckeObservation
@@ -196,6 +203,62 @@ def test_empty_observations_yield_no_events() -> None:
     assert events == []
 
 
+# ---- Consecutive gate: adjacency, not mere count -----------------------
+
+
+def test_two_high_rows_straddling_a_dip_do_not_fire() -> None:
+    """Two above-threshold rows with a recovered tick between them → no event.
+
+    Behaviour pin for the "two *consecutive* trains" rule. Under the
+    earlier "any two rows above threshold in the window" count this
+    fired (the two 12-minute rows made ``delayed_count == 2``); the
+    consecutive gate must reject it because the high samples are not
+    adjacent — a sub-threshold sample sits between them, so the delay
+    was not sustained across two back-to-back observations.
+    """
+
+    obs = [
+        _obs(when=NOW - timedelta(minutes=45), direction="Praterstern", delay=12.0),
+        _obs(when=NOW - timedelta(minutes=25), direction="Praterstern", delay=5.0),
+        _obs(when=NOW - timedelta(minutes=5), direction="Praterstern", delay=12.0),
+    ]
+    events = _run(obs)
+    assert events == []
+
+
+def test_consecutive_pair_after_an_initial_dip_fires() -> None:
+    """A below-threshold sample followed by two consecutive high rows → 1 event.
+
+    The gate is satisfied by *any* run of two adjacent above-threshold
+    samples within the window, so an episode that ramps up mid-window
+    (one good tick, then two sustained bad ticks) still fires. Firing is
+    driven by the consecutive pair, not by the windowed mean — note the
+    mean here (≈8.3) is itself below threshold, yet the event fires.
+    """
+
+    obs = [
+        _obs(when=NOW - timedelta(minutes=50), direction="Praterstern", delay=4.0),
+        _obs(when=NOW - timedelta(minutes=25), direction="Praterstern", delay=10.0),
+        _obs(when=NOW - timedelta(minutes=5), direction="Praterstern", delay=11.0),
+    ]
+    events = _run(obs)
+    assert len(events) == 1
+    assert "in Richtung Praterstern" in events[0]["description"]
+
+
+def test_three_consecutive_above_threshold_fire() -> None:
+    """A run longer than the required pair still fires (run length ≥ 2)."""
+
+    obs = [
+        _obs(when=NOW - timedelta(minutes=50), direction="Meidling", delay=10.0),
+        _obs(when=NOW - timedelta(minutes=25), direction="Meidling", delay=11.0),
+        _obs(when=NOW - timedelta(minutes=5), direction="Meidling", delay=12.0),
+    ]
+    events = _run(obs)
+    assert len(events) == 1
+    assert "in Richtung Meidling" in events[0]["description"]
+
+
 # ---- Direction isolation: north and south fire independently -----------
 
 
@@ -221,3 +284,9 @@ def test_threshold_constant_is_9_minutes() -> None:
 
     assert DELAY_THRESHOLD_MINUTES == 9.0
     assert FEED_WINDOW == timedelta(hours=1)
+
+
+def test_consecutive_count_constant_is_two() -> None:
+    """Pin the consecutive-train requirement so a drift trips the test."""
+
+    assert TRIGGER_CONSECUTIVE_COUNT == 2
