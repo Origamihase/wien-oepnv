@@ -55,6 +55,14 @@ VIENNA_TZ: Final = ZoneInfo("Europe/Vienna")
 # observations only) and the feed provider here owns the entire
 # rendering contract.
 DELAY_THRESHOLD_MINUTES: Final[float] = 9.0
+# Minimum number of *consecutive* in-window observations (adjacent in
+# time order) that must each carry a delay strictly greater than
+# ``DELAY_THRESHOLD_MINUTES`` before a direction's episode is allowed to
+# start. Two back-to-back cron samples above the threshold approximate a
+# sustained ≥30-minute exceedance (given the ~30-minute observation
+# cadence); a lone outlier sample — or two high samples separated by a
+# sub-threshold dip — must not fire on its own.
+TRIGGER_CONSECUTIVE_COUNT: Final[int] = 2
 EVENT_SOURCE: Final = "VOR/VAO"
 EVENT_CATEGORY: Final = "Störung"
 EVENT_TITLE: Final = "S-Bahn Stammstrecke Verspätungen"
@@ -69,11 +77,14 @@ EVENT_LINK: Final = (
 # 2026-05-09 design directive ("Die Meldung im RSS-Feed soll ganz
 # aktuelle Meldungen der letzten Stunde anzeigen") and follows the
 # observation cadence (one row per direction per 30 minutes → window
-# typically holds 2 rows). The trigger gate requires at least 2 trains
-# in the given direction with a delay strictly greater than the threshold
-# within the window (defensive: a single high outlier cannot push the
-# direction past the threshold on its own); the value rendered in the
-# feed item description is the *mean* (more intuitive for end users).
+# typically holds 2 rows). The trigger gate requires
+# ``TRIGGER_CONSECUTIVE_COUNT`` (2) *consecutive* observations in the
+# given direction — adjacent in time order — each with a delay strictly
+# greater than the threshold within the window (defensive: neither a
+# single high outlier nor two high samples straddling a below-threshold
+# dip can push the direction past the threshold on their own); the value
+# rendered in the feed item description is the *mean* of all in-window
+# observations (more intuitive for end users).
 #
 # ``EPISODE_LOOKBACK`` — when computing ``first_seen`` for the current
 # above-threshold episode, we walk back further: the earliest
@@ -151,16 +162,32 @@ def _episode_start(
     direction_obs: list[StammstreckeObservation],
     now: datetime,
 ) -> datetime | None:
-    """Find the earliest contiguous threshold-exceeding observation back from *now*.
+    """Find the start timestamp of the current above-threshold episode.
 
-    Walks the observations in *direction_obs* (which the caller has
-    already filtered to the per-direction subset and sorted ascending)
-    backwards from the most recent row. The episode terminates at the
-    first row whose delay is at or below the threshold OR whose gap
-    to the next-newer observation exceeds
-    :data:`EPISODE_GAP_TOLERANCE`. Returns the timestamp of the
-    earliest row that survives both gates, or ``None`` when no
-    contiguous above-threshold observations exist.
+    Considers only the above-threshold rows in *direction_obs* (the
+    caller passes the per-direction subset). Rows whose delay is at or
+    below :data:`DELAY_THRESHOLD_MINUTES` are filtered out up front and
+    are NOT treated as episode boundaries — see the note below. The
+    surviving rows are walked from the most recent backwards; the
+    episode terminates at the first gap *between consecutive
+    above-threshold rows* that exceeds :data:`EPISODE_GAP_TOLERANCE`,
+    and the timestamp of the oldest row reached before that gap is
+    returned. Returns ``None`` when no row exceeds the threshold.
+
+    Short sub-threshold dips are bridged, not terminating. Because the
+    below-threshold rows are dropped before the walk, a brief dip
+    between two above-threshold samples does not end the episode — it
+    only widens the gap the two surviving rows straddle. The episode
+    ends across a dip solely when that widened gap exceeds
+    :data:`EPISODE_GAP_TOLERANCE` (i.e. the dip, a genuine data gap, or
+    the two combined, outlasted one tolerated missed observation). This
+    keeps the ``[Seit DD.MM.YYYY]`` label and the item GUID stable
+    across the momentary recoveries that punctuate a sustained
+    disruption rather than resetting them on every transient dip. The
+    trigger decision in :func:`compute_stammstrecke_events` is
+    independent of this function — bridging here changes only the
+    displayed episode-start date and the GUID, never whether an event
+    fires.
     """
     above_threshold = [
         obs for obs in direction_obs if obs.delay_minutes > DELAY_THRESHOLD_MINUTES
@@ -176,6 +203,34 @@ def _episode_start(
         episode_start = obs.timestamp
         previous = obs.timestamp
     return episode_start
+
+
+def _has_consecutive_exceedance(
+    observations: list[StammstreckeObservation],
+    *,
+    required: int = TRIGGER_CONSECUTIVE_COUNT,
+) -> bool:
+    """Return ``True`` when *required* time-adjacent observations each exceed the threshold.
+
+    Walks *observations* in ascending-timestamp order, tracking the
+    length of the current run of consecutive samples whose delay is
+    strictly greater than :data:`DELAY_THRESHOLD_MINUTES`, and returns
+    as soon as a run reaches *required*. A sample at or below the
+    threshold resets the run to zero, so two high samples that straddle
+    a sub-threshold dip do NOT satisfy the gate. This enforces the
+    "two *consecutive* trains over 9 minutes" episode-start rule rather
+    than the weaker "any two trains over 9 minutes anywhere in the
+    window" count.
+    """
+    run = 0
+    for obs in sorted(observations, key=lambda o: o.timestamp):
+        if obs.delay_minutes > DELAY_THRESHOLD_MINUTES:
+            run += 1
+            if run >= required:
+                return True
+        else:
+            run = 0
+    return False
 
 
 def _build_event(
@@ -222,9 +277,12 @@ def compute_stammstrecke_events(
     *now* defaults to :func:`datetime.now` in Europe/Vienna. The
     function emits at most one event per direction in
     :data:`DIRECTIONS` and returns an empty list when no direction has
-    at least 2 observations with a delay over *feed_window* exceeding
-    :data:`DELAY_THRESHOLD_MINUTES`. The displayed value in the feed
-    item is the *mean* of the same observations — see the module-
+    :data:`TRIGGER_CONSECUTIVE_COUNT` *consecutive* observations within
+    *feed_window* whose delay strictly exceeds
+    :data:`DELAY_THRESHOLD_MINUTES` (two adjacent samples over the
+    threshold — a lone outlier, or two high samples straddling a
+    sub-threshold dip, does not fire). The displayed value in the feed
+    item is the *mean* of all in-window observations — see the module-
     level note on the trigger / display split.
 
     Used by :func:`src.feed.providers.read_cache_stammstrecke` as the
@@ -266,15 +324,17 @@ def compute_stammstrecke_events(
         recent = [obs for obs in direction_obs if obs.timestamp >= feed_window_start]
         if not recent:
             continue
-        delays = [obs.delay_minutes for obs in recent]
-        # Trigger gate: requires at least 2 trains in the given direction
-        # with a delay strictly greater than the threshold within the feed window.
-        # Display value: mean — easier for end users to interpret.
+        # Trigger gate: an episode may only start when
+        # ``TRIGGER_CONSECUTIVE_COUNT`` (2) *consecutive* in-window
+        # observations each carry a delay strictly greater than the
+        # threshold — two adjacent cron samples over 9 minutes. A lone
+        # outlier, or two high samples straddling a below-threshold dip,
+        # does not fire. The displayed value is the *mean* of all
+        # in-window observations (easier for end users to interpret).
         # See module docstring "Window lengths".
-        delayed_count = sum(1 for d in delays if d > DELAY_THRESHOLD_MINUTES)
-        if delayed_count < 2:
+        if not _has_consecutive_exceedance(recent):
             continue
-        avg_delay = mean(delays)
+        avg_delay = mean([obs.delay_minutes for obs in recent])
         episode_start = _episode_start(direction_obs=direction_obs, now=current)
         if episode_start is None:
             # Degenerate case: ``_episode_start`` returned None despite
@@ -305,5 +365,6 @@ __all__ = [
     "EVENT_SOURCE",
     "EVENT_TITLE",
     "FEED_WINDOW",
+    "TRIGGER_CONSECUTIVE_COUNT",
     "compute_stammstrecke_events",
 ]
