@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 06:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 06:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A: fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">026449bbaa4d4fb12232ee00ce32f945776d8f5fe194667e421e376d9efa1ed7</guid>
+      <pubDate>Fri, 29 May 2026 06:21:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 06:30:43 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 06:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43: Use the line 43A - Dornbacher Straße 85]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +115,6 @@
       <ext:starts_at>Wed, 27 May 2026 11:11:13 +0200</ext:starts_at>
       <description>construction works allows between Vienna Hbf (U) and Gramatneusiedl station from 31.10.2026 to 30.11.2026 … [Since 27.05.2026]</description>
       <content:encoded><![CDATA[construction works allows between Vienna Hbf (U) and Gramatneusiedl station from 31.10.2026 to 30.11.2026 …<br/>[Since 27.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N46: Thaliastraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b3dddce3dc80f12d5b1311e5cc5eb73c5428ec5b96a230f20dbb510d2fb1e2fd</guid>
-      <pubDate>Tue, 26 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 26 May 2026 15:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 26 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 26 Jun 2026 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line N46 towards Otto-Wagner-Areal Stop: Thaliastraße U From: Lerchenfelder Belt under U6 To: Kaiserstraße 106 Duration: 02 June … [26.05.2026 – 26.06.2026]</description>
-      <content:encoded><![CDATA[Stop change of line N46 towards Otto-Wagner-Areal Stop: Thaliastraße U From: Lerchenfelder Belt under U6 To: Kaiserstraße 106 Duration: 02 June …<br/>[26.05.2026 – 26.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
