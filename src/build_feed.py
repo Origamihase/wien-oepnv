@@ -2930,6 +2930,19 @@ def _drop_old_items(
                     continue
 
         out.append(it)
+
+    # Duplicate-identity guard: when two items share a state-key (e.g. a
+    # duplicate-guid pair across providers / plugins) and one expired or
+    # aged out while the other survives, the loop above added the shared
+    # identity to ``dropped`` from the expired sibling AND will re-emit the
+    # state entry from the survivor in ``_make_rss``. Pre-fix
+    # ``_save_state`` then unconditionally pruned the freshly-written
+    # survivor entry — silent perpetual churn (re-publish via fresh
+    # pubDate, FIFO age retirement disabled). Subtract the survivors'
+    # identities so ``dropped`` carries only items with no surviving
+    # twin.
+    if dropped:
+        dropped -= {_lookup_state(it, state)[0] for it in out}
     return out, dropped
 
 
