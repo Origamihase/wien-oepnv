@@ -561,8 +561,14 @@ def _normalize_endpoint_name(name: str) -> str:
     """
     if not name:
         return ""
-    cleaned = re.sub(r"<[^>]+>", " ", name)
-    cleaned = html.unescape(cleaned)
+    # Order matters: ``html.unescape`` first decodes entity-escaped angle
+    # brackets (``&lt;b&gt;Wien Mitte&lt;/b&gt;``) into their actual
+    # ``<`` / ``>`` chars, so the subsequent tag strip catches them. The
+    # reverse order leaves entity-encoded tags intact and they survive
+    # into the captured endpoint name. Same fix applied at the other
+    # two sibling sites in this file.
+    cleaned = html.unescape(name)
+    cleaned = re.sub(r"<[^>]+>", " ", cleaned)
     cleaned = re.sub(r"\s{2,}", " ", cleaned).strip()
     # Iteratively strip trailing parens like (U), (S), (R)
     while True:
@@ -578,13 +584,23 @@ def _normalize_endpoint_name(name: str) -> str:
 
     # If the endpoint absorbed a sentence boundary ("Mödling. Auch ..."),
     # truncate to the part before the period when *that* part resolves
-    # against the directory. Abbreviations like "St. Pölten" stay intact
-    # because "St" alone doesn't resolve.
+    # against the directory. Walk the candidate splits from RIGHTMOST to
+    # LEFTMOST so the longest resolving prefix wins — important for
+    # abbreviated saint names that contain a period themselves: pre-fix
+    # ``partition(". ")`` always cut at the FIRST period, so
+    # ``"St. Pölten. Bitte Reisende"`` left head=``"St"`` (unresolvable),
+    # no truncation happened, and the garbled multi-sentence string
+    # passed through as the endpoint. Walking from the right tries
+    # ``"St. Pölten"`` first → resolves → truncation succeeds.
+    # The single-period ``"St. Pölten"`` case still works (the only
+    # split candidate is ``"St"`` which doesn't resolve → no change).
     if ". " in cleaned:
-        head, _, _tail = cleaned.partition(". ")
-        head_clean = head.strip()
-        if head_clean and station_info(head_clean) is not None:
-            cleaned = head_clean
+        parts = cleaned.split(". ")
+        for split_at in range(len(parts) - 1, 0, -1):
+            candidate = ". ".join(parts[:split_at]).strip()
+            if candidate and station_info(candidate) is not None:
+                cleaned = candidate
+                break
 
     return cleaned
 
@@ -632,8 +648,10 @@ def _extract_zwischen_routes(description: str) -> list[tuple[str, str]]:
         return []
 
     # Strip HTML tags and unescape entities; we want plain text for matching.
-    plain = re.sub(r"<[^>]+>", " ", description)
-    plain = html.unescape(plain)
+    # Order matters: unescape first so entity-encoded tags (``&lt;b&gt;``)
+    # become real ``<b>`` and the subsequent tag strip catches them.
+    plain = html.unescape(description)
+    plain = re.sub(r"<[^>]+>", " ", plain)
     plain = re.sub(r"\s+", " ", plain).strip()
 
     routes: list[tuple[str, str]] = []
@@ -1233,8 +1251,11 @@ def _find_stations_in_text(blob: str) -> list[str]:
     # "Hbf<" (left over from "<b>Graz Hbf</b>") slip through the
     # _GENERIC_STATION_TOKENS filter and canonicalise to flagship
     # stations through their alias rules.
-    cleaned = re.sub(r"<[^>]+>", " ", blob)
-    cleaned = html.unescape(cleaned)
+    # Order matters: unescape first so entity-encoded ``&lt;b&gt;`` becomes
+    # ``<b>`` and the tag strip then catches it. See sibling sites for
+    # the full rationale.
+    cleaned = html.unescape(blob)
+    cleaned = re.sub(r"<[^>]+>", " ", cleaned)
     # Use whitespace splitting to preserve punctuation like '.' in 'St. Pölten'
     tokens = [t for t in re.split(r"[\s/]+", cleaned) if t]
     if not tokens:
@@ -1353,8 +1374,14 @@ def _is_poor_title(t: str) -> bool:
 
 # Recognises a leading line marker (REX 7, S 50, RJX 12, …) so we can preserve
 # it even when we rebuild the title from extracted endpoints.
+#
+# The colon is MANDATORY (``:\s*``, not ``:?\s*``) so a colonless title that
+# happens to start with a token + digit (``"R 5 Wien Hbf"``, ``"D 100 Wien"``)
+# is NOT misparsed as line-prefixed. Pre-fix the optional colon glued an
+# imaginary prefix onto such titles, mangling the downstream rebuild. The
+# companion :data:`_LEADING_LINE_PREFIX_RE` already requires the colon.
 _LINE_PREFIX_RE = re.compile(
-    r"^\s*((?:REX|RJX|RJ|EC|ICE|IC|WB|NJ|CJX|S-Bahn|S|U|R|D)\s*\d+[A-Za-z]?)\s*:?\s*",
+    r"^\s*((?:REX|RJX|RJ|EC|ICE|IC|WB|NJ|CJX|S-Bahn|S|U|R|D)\s*\d+[A-Za-z]?)\s*:\s*",
     re.IGNORECASE,
 )
 
@@ -1685,7 +1712,14 @@ def _build_item_from_xml(item: ET.Element) -> FeedItem | None:
     desc = _clean_description(_get_text(item, "description"))
     pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 
-    guid = _derive_guid(raw_guid, title, link)
+    # GUID derivation MUST use the upstream RAW title (and link), not the
+    # post-cleanup ``title``. The cleanup output depends on station-alias
+    # rules, ``_LEADING_LINE_PREFIX_RE``, etc.; any of those evolving
+    # between runs would shift the derived GUID for the same upstream
+    # item and surface a duplicate feed entry (the dedup key would
+    # mismatch the cache's old entry). The raw upstream signal is the
+    # stable anchor.
+    guid = _derive_guid(raw_guid, raw_title, link)
     title = _apply_route_title(title, desc)
     title = _resolve_poor_title(title, link, guid, desc)
 
