@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 13:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 14:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[38A: False Parker]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">06817ade86d1a1933bbe0d61cb95b6a6235420db1b9474f70939e73f51c11a2f</guid>
-      <pubDate>Fri, 29 May 2026 11:59:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 12:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 11:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion. [On 29.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Matzleinsdorfer Platz under structure ÖBB]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 31 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>The stop of the affected bus lines at the Bujattigasse will be temporarily moved to the Wolfersberggasse ON 1. [19.04.2026 – 31.07.2026]</description>
       <content:encoded><![CDATA[The stop of the affected bus lines at the Bujattigasse will be temporarily moved to the Wolfersberggasse ON 1.<br/>[19.04.2026 – 31.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Favoritenstraße from crossing Landgutgasse to crossing Keplerplatz and Keplergasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">ff1c6fe5e560dee012dd61ae90260ee393fc994fa3d2e40f63659785dbc5d10f</guid>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 12:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>The repair and redesign work in the Favoritenstraße pedestrian zone will be carried out following the ongoing sealing work of Wiener Linien GmbH &amp;amp; Co KG at … [Since 19.04.2026]</description>
+      <content:encoded><![CDATA[The repair and redesign work in the Favoritenstraße pedestrian zone will be carried out following the ongoing sealing work of Wiener Linien GmbH &amp; Co KG at …<br/>[Since 19.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
