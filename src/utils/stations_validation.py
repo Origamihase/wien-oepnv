@@ -606,8 +606,21 @@ def _format_duplicate_group(
 def _format_identifier(entry: Mapping[str, object]) -> str:
     parts: list[str] = []
     bst_id = entry.get("bst_id")
+    # Canonical writer serialises ``bst_id`` as ``str`` (see
+    # ``scripts/update_station_directory.py`` — ``"bst_id": str(self.bst_id)``),
+    # so the previous ``isinstance(bst_id, int)``-only branch was dead
+    # code on every real entry — silently omitting ``bst_id`` from the
+    # identifier the auto-quarantine path uses for distinctness.
+    # Sibling readers in this same file already use ``str | int``
+    # (``_find_cross_station_id_conflicts``, ``_find_identity_field_conflicts``).
+    # Latent hazard: a future merge yielding two ``bst_code``-less entries
+    # distinguished only by ``bst_id`` would collapse to one identifier
+    # and re-trigger the mass-quarantine failure the comment below
+    # documents for ``source="wl"``.
     if isinstance(bst_id, int):
         parts.append(f"bst:{bst_id}")
+    elif isinstance(bst_id, str) and bst_id.strip():
+        parts.append(f"bst:{bst_id.strip()}")
     bst_code = entry.get("bst_code")
     if isinstance(bst_code, str) and bst_code.strip():
         parts.append(f"code:{bst_code.strip()}")

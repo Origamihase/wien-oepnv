@@ -236,11 +236,19 @@ def merge_places(
 
 
 def _sorted_stations(stations: Sequence[StationEntry]) -> list[StationEntry]:
+    # ``.get(key, default)`` only returns the default when the key is
+    # ABSENT — a present-but-``null`` ``_google_place_id`` (operator-
+    # edited / legacy / tampered ``data/stations.json``) returns ``None``.
+    # Two same-normalized-name entries where one carries ``null`` and the
+    # other a string id would then crash sorted() with
+    # ``TypeError: '<' not supported between instances of 'NoneType' and 'str'``.
+    # Coerce ``None`` to ``""`` so the tuple comparison stays string-only,
+    # mirroring the ``str()`` coercion already used on the ``name`` key.
     return sorted(
         stations,
         key=lambda entry: (
             normalize_name(str(entry.get("name", ""))),
-            entry.get("_google_place_id", ""),
+            entry.get("_google_place_id") or "",
         ),
     )
 
