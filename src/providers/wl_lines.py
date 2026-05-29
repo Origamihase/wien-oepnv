@@ -46,7 +46,12 @@ def _display_line(s: str) -> str:
 #      bug when the original digit-only gate rejected ``D`` so
 #      ``_ensure_line_prefix`` couldn't strip the existing ``D:``
 #      prefix and ended up prepending another ``D:`` from
-#      ``relatedLines``.
+#      ``relatedLines``. The over-permissiveness (accepting any letter,
+#      not just ``D`` / ``O``) is bounded here by the colon-line-prefix
+#      shape ``LINE_PREFIX_STRIP_RE`` requires; the body-scanner gate
+#      ``LINE_CODE_RE`` below tightens to ``[DO]`` because that surface
+#      is unanchored and a sentence-start ``S`` in ``S-Bahn-Verkehr``
+#      otherwise matches via ``\b[A-Z]\b`` as a phantom line.
 #
 # Multi-letter words without digits (``ACHTUNG``, ``INFORMATION``,
 # ``HINWEIS``, ``LINIE``) still fail both shapes, so the original
@@ -233,8 +238,24 @@ def _ensure_line_prefix(title: str, lines_disp: list[str]) -> str:
 # canonically upper-cased (``U6``, ``S40``, ``41E``, ``D``), so
 # requiring uppercase rejects the false positive without missing any
 # legitimate token.
+#
+# Single-letter alternative is ``[DO]`` (not ``[A-Z]``): ``D`` (Wien
+# Hauptbahnhof — Nußdorf) and ``O`` (Praterstern — Raxstraße) are the
+# ONLY single-letter line codes in the entire WL/ÖBB/VOR network. Pre-
+# fix the unconstrained ``[A-Z]`` alternative extracted any standalone
+# uppercase letter as a phantom line — real example title ``Information
+# zu S-Bahn-Verkehr in Wien`` yielded ``[('S', 'S')]`` because ``\bS\b``
+# matches the ``S`` in ``S-Bahn`` (``-`` is a non-word boundary). The
+# phantom line then flowed into ``_wl_identity`` (wrong bucket /
+# first_seen key) AND into the rendered title via ``_ensure_line_prefix``
+# (``S: Information zu S-Bahn-Verkehr…``). Same bug for ``A`` in ``A bis
+# Karlsplatz`` (sentence-start preposition). Tightening to ``[DO]``
+# preserves both real single-letter tram lines while rejecting every
+# other standalone uppercase letter. Multi-character tokens (``U6``,
+# ``S40``, ``41E``, ``REX7``) are unaffected — they match the
+# digit-bearing alternatives.
 LINE_CODE_RE = re.compile(
-    r"\b(?:U\d{1,2}|S\d{1,2}|N\d{1,3}|[0-9]{1,3}[A-Z]?|[A-Z])\b",
+    r"\b(?:U\d{1,2}|S\d{1,2}|N\d{1,3}|[0-9]{1,3}[A-Z]?|[DO])\b",
 )
 RUF_BUS_RE = re.compile(r"Rufbus\s+([A-Za-z0-9]+)", re.IGNORECASE)
 DATE_FULL_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\.(?:\d{2}|\d{4})\b")
