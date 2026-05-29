@@ -1,4 +1,3 @@
-import hashlib
 import re
 from typing import Any
 
@@ -491,6 +490,27 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     # work is touched.
     merged_cache: list[tuple[set[str], str, str, set[str]]] = []
 
+    # Stable, input-order-independent iteration. ``deduplicate_fuzzy``
+    # uses first-match-wins on the inner loop (``break`` after the merge),
+    # so the SURVIVOR of any merge group is whichever item arrives in
+    # ``items`` first. Without this sort the result depends on the
+    # arbitrary upstream concatenation order — three items with a
+    # transitive overlap graph (``A↔C``, ``B↔C``, but no direct ``A↔B``)
+    # produce ``[AC, B]`` from ``[A, B, C]`` and ``[BC, A]`` from
+    # ``[B, A, C]`` because ``C`` merges with whichever of ``A`` / ``B``
+    # the iteration encountered first. Sorting by the per-item stable
+    # identity tuple makes survivor selection deterministic across
+    # runs, so the merged item's preserved ``_identity`` / ``guid``
+    # (see the peer-merge branch below) stays the same cycle to cycle.
+    items = sorted(
+        items,
+        key=lambda it: (
+            str(it.get("_identity") or ""),
+            str(it.get("guid") or ""),
+            str(it.get("title") or ""),
+        ),
+    )
+
     for item in items:
         merged = False
         title = item.get("title", "")
@@ -682,11 +702,25 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
                     _promote_newer_dates(existing_copy, item)
 
-                    # 4. Update GUID
-                    # We create a new deterministic GUID based on the new title.
-                    # This ensures clients see it as a new/updated item.
-                    existing_copy["guid"] = hashlib.sha256(new_title.encode("utf-8")).hexdigest()
-                    existing_copy["_identity"] = existing_copy["guid"]
+                    # 4. Preserve survivor's GUID and ``_identity``.
+                    # Pre-fix the peer-merge rehashed ``guid = sha256(new_title)``
+                    # and set ``_identity = guid`` to "signal clients see a new
+                    # / updated item". That broke ``first_seen`` tracking: the
+                    # build-time state lookup keys on the guid (preferred by
+                    # ``_state_key_for_item``) with a legacy fallback to
+                    # ``_identity_for_item``. Both keys came from the same
+                    # ``sha256(new_title)``, so every cycle in which the
+                    # merge grouping or the combined title shifted produced
+                    # a fresh hash → fresh state key → fresh ``first_seen``,
+                    # and the merged disruption was perpetually treated as
+                    # brand-new (re-published via the fresh-pubDate window,
+                    # FIFO retirement could never fire). Survivor selection
+                    # is now deterministic via the top-of-function sort, so
+                    # the survivor's ``guid`` and ``_identity`` (carried
+                    # forward by the ``dict(existing)`` copy above) stay
+                    # stable across cycles. Updates flow through ``title``
+                    # / ``description`` / ``pubDate`` — the channels RSS
+                    # clients actually use to detect updates.
                     existing_copy.pop("_calculated_identity", None)
 
                     merged_items[idx] = existing_copy

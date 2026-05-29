@@ -85,7 +85,10 @@ def test_fuzzy_merge_provider_priority_vor_wins_reverse_order() -> None:
 
 def test_fuzzy_merge_provider_priority_no_provider_field() -> None:
     """
-    Ensure no crash if 'provider' field is missing, falls back to normal merge.
+    Ensure no crash if 'provider' field is missing — falls back to the
+    standard peer-merge branch, which now PRESERVES the survivor's guid
+    (the pre-fix code rehashed it to ``sha256(new_title)`` and reset
+    first_seen; see ``test_fuzzy_merge_identity.py`` for the rationale).
     """
     items = [
         {
@@ -104,8 +107,10 @@ def test_fuzzy_merge_provider_priority_no_provider_field() -> None:
 
     merged = deduplicate_fuzzy(items)
     assert len(merged) == 1
-    # Should use normal logic (merge descriptions, generate new GUID)
-    assert merged[0]["guid"] != "g1"
-    assert merged[0]["guid"] != "g2"
+    # Peer-merge preserves the survivor's guid. Survivor selection is
+    # deterministic via the top-of-function sort by
+    # ``(_identity, guid, title)``; neither item carries ``_identity``
+    # so the lower ``guid`` wins → ``g1``.
+    assert merged[0]["guid"] == "g1"
     assert "Desc 1" in merged[0]["description"]
     assert "Desc 2" in merged[0]["description"]
