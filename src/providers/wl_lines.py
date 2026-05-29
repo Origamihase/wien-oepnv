@@ -221,10 +221,20 @@ def _ensure_line_prefix(title: str, lines_disp: list[str]) -> str:
     return f"{wanted}: {body}" if body else wanted
 
 
-# Fallback-Linien aus Titeltext — vorher Datum/Zeit/Adressen maskieren
+# Fallback-Linien aus Titeltext — vorher Datum/Zeit/Adressen maskieren.
+#
+# Case-sensitivity (no ``re.IGNORECASE``): pre-fix the regex matched any
+# lowercase letter via the bare ``[A-Z]`` alternative under
+# ``IGNORECASE``, so a sentence-start German particle in the title
+# (``"Bauarbeiten a Karlsplatz"``, ``"e Linie"`` etc.) was extracted
+# as ``"a"`` / ``"e"``, upper-cased to ``"A"`` / ``"E"`` by
+# ``_clean_line_token`` and then accepted by ``_STRICT_LINE_TOKEN_RE``
+# as a bus / tram line letter. Real WL line codes are always
+# canonically upper-cased (``U6``, ``S40``, ``41E``, ``D``), so
+# requiring uppercase rejects the false positive without missing any
+# legitimate token.
 LINE_CODE_RE = re.compile(
     r"\b(?:U\d{1,2}|S\d{1,2}|N\d{1,3}|[0-9]{1,3}[A-Z]?|[A-Z])\b",
-    re.IGNORECASE,
 )
 RUF_BUS_RE = re.compile(r"Rufbus\s+([A-Za-z0-9]+)", re.IGNORECASE)
 DATE_FULL_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\.(?:\d{2}|\d{4})\b")
@@ -295,6 +305,19 @@ def _make_line_pairs_from_related(rel_lines: list[Any]) -> list[tuple[str, str]]
     pairs: list[tuple[str, str]] = []
     seen: set[str] = set()
     for x in rel_lines:
+        # Defensive shape check (matches the sibling
+        # :func:`_stop_names_from_related` in ``wl_fetch.py``): WL
+        # ``relatedLines`` is documented as a flat list of line-code
+        # strings (``["U1", "U2"]``). A misbehaving / compromised
+        # upstream peer (or a tampered proxy response) may ship
+        # ``[{"name": "U1"}]`` instead — ``_tok`` would then call
+        # ``str(dict)`` and produce the garbage token ``"nameU1"``,
+        # which lands in the bucket key, the GUID, and the emitted
+        # title verbatim. Skip non-string entries so the malformed
+        # item simply contributes no tokens rather than poisoning
+        # the bucket.
+        if not isinstance(x, str):
+            continue
         tok = _tok(x)
         if not tok or tok in seen:
             continue
