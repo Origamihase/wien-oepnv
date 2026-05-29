@@ -43,6 +43,24 @@ def test_serialize_nested_collections_are_json_friendly() -> None:
     assert all(isinstance(item["tags"], list) for item in result["items"])
     assert isinstance(result["metadata"], list)
 
+def test_serialize_frozenset_to_sorted_list() -> None:
+    # ``frozenset`` is NOT a subclass of ``set`` — pre-fix it fell through
+    # to the pass-through tail and crashed ``json.dump`` with "Object of
+    # type frozenset is not JSON serializable". It must be converted to a
+    # deterministically sorted list exactly like ``set``.
+    import json
+
+    result = serialize_for_cache({"tags": frozenset({"b", "a", "c"})})
+    assert result == {"tags": ["a", "b", "c"]}
+    # Round-trips through json.dump (the actual downstream consumer).
+    assert json.dumps(result) == '{"tags": ["a", "b", "c"]}'
+
+
+def test_serialize_nested_frozenset_inside_containers() -> None:
+    result = serialize_for_cache([frozenset({3, 1, 2}), {"x": frozenset({"z"})}])
+    assert result == [[1, 2, 3], {"x": ["z"]}]
+
+
 def test_serialize_circular_reference_raises_value_error() -> None:
     circular_dict: dict[str, object] = {"a": 1}
     circular_dict["b"] = circular_dict
