@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 29 May 2026 21:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 22:00:42 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[13A/14A: Polizeieinsatz]]></title>
+      <title><![CDATA[14A: Polizeieinsatz Betrieb ab Haus des Meeres]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eda45f1c7889d7e71e0cfb5bc0877e6448757f7b596df8e00a15b3f249271361</guid>
+      <guid isPermaLink="false">179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc</guid>
       <pubDate>Fri, 29 May 2026 21:27:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 21:30:53 +0200</ext:first_seen>
+      <ext:first_seen>Fri, 29 May 2026 22:00:42 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 21:31:39 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71</guid>
+      <pubDate>Fri, 29 May 2026 21:27:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 22:00:42 +0200</ext:first_seen>
       <ext:starts_at>Fri, 29 May 2026 21:27:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Hauptbahnhof S U. Linie 14A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 21:50 Uhr. Grund: Polizeieinsatz im Bereich … [Am 29.05.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Hauptbahnhof S U. Linie 14A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 21:50 Uhr. Grund: Polizeieinsatz im Bereich …<br/>[Am 29.05.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11/71: Gleisbauarbeiten]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U Haltestelle: Antonsplatz Von: Antonsplatz 13 vor Rechberggasse Nach: Antonsplatz 16 Dauer: 22. April 2026, etwa … [Seit 16.04.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U Haltestelle: Antonsplatz Von: Antonsplatz 13 vor Rechberggasse Nach: Antonsplatz 16 Dauer: 22. April 2026, etwa …<br/>[Seit 16.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52/60: Rustengasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">13c7e9ae9dda1413c6734b0d7e8d0b74c026fa8779e27bc4be507109165e130f</guid>
-      <pubDate>Tue, 14 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 52 in Richtung Baumgarten und 60 in Richtung Rodaun Haltestelle: Rustengasse Von: Mariahilfer Straße 186-188 Nach: Mariahilfer Straße 180-182 … [Seit 14.04.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 52 in Richtung Baumgarten und 60 in Richtung Rodaun Haltestelle: Rustengasse Von: Mariahilfer Straße 186-188 Nach: Mariahilfer Straße 180-182 …<br/>[Seit 14.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

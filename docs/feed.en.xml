@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 21:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 22:00:42 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[13A/14A: police operation]]></title>
+      <title><![CDATA[14A: police operation service from House of the Sea]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eda45f1c7889d7e71e0cfb5bc0877e6448757f7b596df8e00a15b3f249271361</guid>
+      <guid isPermaLink="false">179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc</guid>
       <pubDate>Fri, 29 May 2026 21:27:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 21:30:53 +0200</ext:first_seen>
+      <ext:first_seen>Fri, 29 May 2026 22:00:42 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 21:31:39 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71</guid>
+      <pubDate>Fri, 29 May 2026 21:27:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 22:00:42 +0200</ext:first_seen>
       <ext:starts_at>Fri, 29 May 2026 21:27:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction towards Hauptbahnhof S U. Line 14A: service obstruction towards Reumannplatz U. expected duration: 21:50 watch. Reason: police operation in the … range [On 29.05.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Hauptbahnhof S U. Line 14A: service obstruction towards Reumannplatz U. expected duration: 21:50 watch. Reason: police operation in the … range<br/>[On 29.05.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11/71: track construction works]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about … [Since 16.04.2026]</description>
       <content:encoded><![CDATA[Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about …<br/>[Since 16.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52/60: Rustengasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">13c7e9ae9dda1413c6734b0d7e8d0b74c026fa8779e27bc4be507109165e130f</guid>
-      <pubDate>Tue, 14 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of lines 52 towards Baumgarten and 60 towards Rodaun Stop: Rustengasse From: Mariahilfer Straße 186-188 To: Mariahilfer Straße 180-182 … [Since 14.04.2026]</description>
-      <content:encoded><![CDATA[Stop change of lines 52 towards Baumgarten and 60 towards Rodaun Stop: Rustengasse From: Mariahilfer Straße 186-188 To: Mariahilfer Straße 180-182 …<br/>[Since 14.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
