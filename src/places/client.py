@@ -133,7 +133,25 @@ _BREAKER: Final[CircuitBreaker] = CircuitBreaker(
     recovery_timeout=300.0,
 )
 
-FIELD_MASK_NEARBY = "places.id,places.displayName,places.location,places.types"
+# Field mask for the Nearby Search call. ``places.formattedAddress`` is
+# REQUIRED so the Google path actually populates ``Place.formatted_address``:
+# ``merge._infer_in_vienna`` keys the Vienna classification off the address
+# text ("wien" / "vienna") and ``merge._create_station`` / the update path
+# persist it to ``_formatted_address`` in ``data/stations.json``. Without it
+# the Places API omits the field from the response (the New API returns only
+# masked fields), ``formatted_address`` is always ``None`` and the whole
+# address-based signal silently degrades to bounding-box-only.
+#
+# Cost: ``formattedAddress`` sits in the same Pro (Basic) SKU tier as the
+# ``displayName`` / ``location`` / ``types`` fields already in the mask, so
+# the Nearby Search call's billing tier is UNCHANGED — no new cost is
+# incurred by requesting it. ``nextPageToken`` is intentionally NOT in the
+# mask (searchNearby does not accept it; pinned by
+# ``test_field_mask_excludes_next_page_token``).
+FIELD_MASK_NEARBY = (
+    "places.id,places.displayName,places.location,"
+    "places.types,places.formattedAddress"
+)
 DEFAULT_INCLUDED_TYPES: Sequence[str] = (
     "train_station",
     "subway_station",
@@ -345,7 +363,17 @@ class GooglePlacesClient:
             return None
         latitude = location.get("latitude")
         longitude = location.get("longitude")
-        if not isinstance(latitude, float | int) or not isinstance(longitude, float | int):
+        # ``bool`` is a subclass of ``int``: a smuggled ``true`` / ``false``
+        # would otherwise satisfy ``isinstance(..., float | int)`` and coerce
+        # to a bogus ``1.0`` / ``0.0`` that sails past the finite + WGS84-range
+        # guards below. Reject it as part of the same Zero-Trust "nonsensical
+        # coordinate" drop the NaN / Inf / out-of-range checks already enforce.
+        if (
+            isinstance(latitude, bool)
+            or isinstance(longitude, bool)
+            or not isinstance(latitude, float | int)
+            or not isinstance(longitude, float | int)
+        ):
             LOGGER.warning("Skipping place with invalid coordinates: %s", self._sanitize_arg(place_id))
             return None
         lat_value = float(latitude)
