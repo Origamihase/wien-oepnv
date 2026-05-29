@@ -788,16 +788,6 @@
       "epoch": 2
     }
   },
-  "256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733": {
-    "first_seen": "2026-05-29T16:30:45.399357+00:00",
-    "translations": {
-      "en": {
-        "summary": "After an service obstruction there are different intervals.",
-        "title": "63A: traffic accident"
-      },
-      "epoch": 2
-    }
-  },
   "25aaa13254b9ce81fb625b0637b8f8bc3c273092cfb4e74b5a3edd46693d0001": {
     "first_seen": "2026-05-29T14:01:02.950569+00:00",
     "translations": {
@@ -1164,16 +1154,6 @@
       "en": {
         "summary": "Operation only between station Meidling S U and B\u00e4renm\u00fchlgang. expected duration: Not foreseeable.",
         "title": "59A: fire-brigade operation"
-      },
-      "epoch": 2
-    }
-  },
-  "3dd0ec36f6dc8594c9e37e23580bdcf5f82555521c07875e9f83c718912578fc": {
-    "first_seen": "2026-05-27T17:01:09.662130+00:00",
-    "translations": {
-      "en": {
-        "summary": "After an service obstruction there are different intervals.",
-        "title": "U2: police operation"
       },
       "epoch": 2
     }
@@ -3109,15 +3089,6 @@
       }
     }
   },
-  "a7f6783cec819d802976a3d6f9f27ab627f5e35b56cf703230c756aefc51060f": {
-    "first_seen": "2026-05-29T18:00:58.466577+00:00",
-    "translations": {
-      "en": {
-        "title": "36A: service obstruction False Parker"
-      },
-      "epoch": 2
-    }
-  },
   "a8aa22286913ca3c805e28e9c2f5da7f05ded8c7d67105c4757c43d5da985acb": {
     "first_seen": "2026-05-25T10:30:56.582144+00:00",
     "translations": {
@@ -3766,12 +3737,32 @@
       "epoch": 2
     }
   },
+  "d54ea31a8d9717d932bee0e04f74f4ab8f1a96e6f95b9836ba88b750aa1fa25a": {
+    "first_seen": "2026-05-29T19:02:07.204415+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to track construction works in the Simmeringer Hauptstra\u00dfe, short guided tours take place in the evenings from Monday to Friday on the line 11 and 71 (22:30-01:00). Period: From \u2026",
+        "title": "11/71: track construction works"
+      },
+      "epoch": 2
+    }
+  },
   "d5852610e5230534aa875aec60af4a7a1b528ad8f8dd7b2db5fde27fedc59960": {
     "first_seen": "2026-05-28T20:30:54.542810+00:00",
     "translations": {
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "12: service obstruction False Parker"
+      },
+      "epoch": 2
+    }
+  },
+  "d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6": {
+    "first_seen": "2026-05-29T19:02:07.204415+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to track construction works in Dornbacher Stra\u00dfe, the following change is made to the 43 line.",
+        "title": "43: track construction works"
       },
       "epoch": 2
     }
