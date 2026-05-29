@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 15:31:12 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 16:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[44/46: defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f34999bb55f1affc05f4c2321e383e514a97e444a6675e807ab62e4462ecd696</guid>
+      <pubDate>Fri, 29 May 2026 15:59:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 16:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 15:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Schottentor U. Line 46: service obstruction towards Josefstädter Straße U. expected duration: 16:30 watch. Reason: defective vehicle in … [On 29.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Schottentor U. Line 46: service obstruction towards Josefstädter Straße U. expected duration: 16:30 watch. Reason: defective vehicle in …<br/>[On 29.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[48A: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2f0f0b15cf1fdadadbd71826d1a850fb70259bc440a3ea35bc181776b55d7c6a</guid>
+      <pubDate>Fri, 29 May 2026 15:31:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 16:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 15:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: police operation. [On 29.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: police operation.<br/>[On 29.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">25aaa13254b9ce81fb625b0637b8f8bc3c273092cfb4e74b5a3edd46693d0001</guid>
+      <pubDate>Thu, 12 Feb 2026 06:00:00 +0100</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 16:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 16 Mar 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 11 Jul 2026 01:00:00 +0200</ext:ends_at>
+      <description>Because of track construction works in Lerchenfelder Straße the line 46 operating short-running will be. [16.03.2026 – 11.07.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works in Lerchenfelder Straße the line 46 operating short-running will be.<br/>[16.03.2026 – 11.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[24A: traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -85,39 +118,6 @@
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Transfer of the lines 62 and 16A to the Opera, Karlsplatz U or Alaudagasse U Stop: Hetzendorf Castle From: Hetzendorfer Straße 79 To: Hetzendorfer … [Since 04.05.2026]</description>
       <content:encoded><![CDATA[Transfer of the lines 62 and 16A to the Opera, Karlsplatz U or Alaudagasse U Stop: Hetzendorf Castle From: Hetzendorfer Straße 79 To: Hetzendorfer …<br/>[Since 04.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N81: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6cb07c7304a9b02c49316003964e6675ee0b068a781b6f5ac81424572887ef36</guid>
-      <pubDate>Tue, 28 Apr 2026 14:05:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 05 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
-      <description>Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected. [05.05.2026 – 06.06.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">186002bab3620d0f83a3e90468c9f090075c495c87a9da702bb5afed432fbece</guid>
-      <pubDate>Mon, 20 Apr 2026 03:02:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
-      <description>Due to track construction works in Dornbacher Straße, the following change is made to the 43 line. [Since 20.04.2026]</description>
-      <content:encoded><![CDATA[Due to track construction works in Dornbacher Straße, the following change is made to the 43 line.<br/>[Since 20.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Antonsplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
-      <pubDate>Thu, 16 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 16 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about … [Since 16.04.2026]</description>
-      <content:encoded><![CDATA[Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about …<br/>[Since 16.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
