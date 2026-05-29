@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 16:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 17:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[18/6: defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">aacc39f83fe170f26c07ccc402e213333a35b8dff67f135ce2ceafae46631d10</guid>
+      <pubDate>Fri, 29 May 2026 16:59:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 17:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 16:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Geiereckstraße. Line 18: service obstruction towards Schlachthausgasse U. expected duration: 17:30 watch. Reason: defective vehicle in the range . [On 29.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Geiereckstraße. Line 18: service obstruction towards Schlachthausgasse U. expected duration: 17:30 watch. Reason: defective vehicle in the range .<br/>[On 29.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">031185cc617d1370557e65b800e69f3976fc946bf7b245cd8a46f5593d5a3bba</guid>
+      <pubDate>Fri, 29 May 2026 16:58:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 17:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 16:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Raxstraße. expected duration: 17:30 watch. Reason: service disruption in the Sechskrügelgasse stop area. [On 29.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Raxstraße. expected duration: 17:30 watch. Reason: service disruption in the Sechskrügelgasse stop area.<br/>[On 29.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: service obstruction for rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107</guid>
+      <pubDate>Fri, 29 May 2026 16:41:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 17:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 16:42:32 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 29.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 29.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[60: delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -85,39 +118,6 @@
       <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[86A/87A: Wiedgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">44bd2fe8108b407c7c9653fabfa95a39189a07fb0342ddb750f6642f5419a53a</guid>
-      <pubDate>Thu, 07 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 07 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 07 May 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop transfer of lines 86A towards Breitenlee, Arnikaweg and 87A towards Hermann-Gebauer-Straße Stop: Wiedgasse From: Wiedgasse before Konstanziagasse … [Since 07.05.2026]</description>
-      <content:encoded><![CDATA[Stop transfer of lines 86A towards Breitenlee, Arnikaweg and 87A towards Hermann-Gebauer-Straße Stop: Wiedgasse From: Wiedgasse before Konstanziagasse …<br/>[Since 07.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/39A: Barawitzkagasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9faf76903caede3d049fa87cc6a801cc3c1d072c7cc96a41782a250f795c055a</guid>
-      <pubDate>Tue, 05 May 2026 15:50:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 05 May 2026 15:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 05 May 2027 23:59:00 +0200</ext:ends_at>
-      <description>Stop change of lines 10A and 39A towards station Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse 10-12 Duration: From … [Since 05.05.2026]</description>
-      <content:encoded><![CDATA[Stop change of lines 10A and 39A towards station Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse 10-12 Duration: From …<br/>[Since 05.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A/62: lock Hetzendorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7163817bf0ae8c45bb1051f68cf2cc608d28cbfda8022471592d0b97a140183b</guid>
-      <pubDate>Mon, 04 May 2026 16:30:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 16:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Transfer of the lines 62 and 16A to the Opera, Karlsplatz U or Alaudagasse U Stop: Hetzendorf Castle From: Hetzendorfer Straße 79 To: Hetzendorfer … [Since 04.05.2026]</description>
-      <content:encoded><![CDATA[Transfer of the lines 62 and 16A to the Opera, Karlsplatz U or Alaudagasse U Stop: Hetzendorf Castle From: Hetzendorfer Straße 79 To: Hetzendorfer …<br/>[Since 04.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
