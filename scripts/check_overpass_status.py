@@ -106,15 +106,27 @@ def _resolve_endpoint(override: str | None) -> str:
         return get_overpass_endpoint()
     if override in DEFAULT_OVERPASS_ENDPOINTS:
         return override
-    LOGGER.warning(
-        "Refusing override %s; not on the trusted Overpass allow-list — using default.",
-        sanitize_log_arg(override),
+    # Refuse the request loudly instead of silently substituting the
+    # default mirror. Pre-fix a non-exact match (trailing slash, casing
+    # drift) would log a WARNING but still probe ``DEFAULT_OVERPASS_ENDPOINTS[0]``
+    # and report its health — the operator believed they tested mirror
+    # X but actually tested mirror Y. ``main`` maps this to exit code 2.
+    raise ValueError(
+        f"--endpoint {override!r} is not on the trusted Overpass allow-list"
     )
-    return DEFAULT_OVERPASS_ENDPOINTS[0]
 
 
 def _send_probe(session: requests.Session, endpoint: str, timeout_s: float) -> requests.Response | None:
     try:
+        # ``raise_for_status=False`` so a degraded-but-reachable mirror
+        # (HTTP 5xx) comes back as a Response object and lands on the
+        # ``_evaluate_response`` non-200 → exit 1 path. Pre-fix the
+        # default ``True`` raised ``HTTPError`` for 5xx, the caller
+        # caught it via ``requests.RequestException`` and returned
+        # ``None`` → exit 2 (network failure). The ``--allow-skip``
+        # workflow flag then mapped 2 → 0, silently skipping OSM
+        # enrichment instead of failing the workflow as the documented
+        # "degraded" path requires.
         return request_safe(
             session,
             endpoint,
@@ -122,6 +134,7 @@ def _send_probe(session: requests.Session, endpoint: str, timeout_s: float) -> r
             max_bytes=64 * 1024,
             timeout=timeout_s,
             allowed_content_types=("application/json", "application/osm3s+xml"),
+            raise_for_status=False,
             headers={
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -198,7 +211,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = _parse_args(argv)
     _configure_logging(args.verbose)
 
-    endpoint = _resolve_endpoint(args.endpoint)
+    try:
+        endpoint = _resolve_endpoint(args.endpoint)
+    except ValueError as exc:
+        LOGGER.error(
+            "Endpoint configuration rejected: %s",
+            sanitize_log_arg(str(exc)),
+        )
+        return 2
     code = _probe(endpoint, max(1.0, float(args.timeout)))
 
     if code == 2 and args.allow_skip:
