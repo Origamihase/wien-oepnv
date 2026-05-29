@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 21:02:07 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 21:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A/14A: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eda45f1c7889d7e71e0cfb5bc0877e6448757f7b596df8e00a15b3f249271361</guid>
+      <pubDate>Fri, 29 May 2026 21:27:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 21:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 21:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Hauptbahnhof S U. Line 14A: service obstruction towards Reumannplatz U. expected duration: 21:50 watch. Reason: police operation in the … range [On 29.05.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Hauptbahnhof S U. Line 14A: service obstruction towards Reumannplatz U. expected duration: 21:50 watch. Reason: police operation in the … range<br/>[On 29.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11/71: track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,39 +41,6 @@
       <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
       <description>Due to track construction works in Dornbacher Straße, the following change is made to the 43 line. [Since 20.04.2026]</description>
       <content:encoded><![CDATA[Due to track construction works in Dornbacher Straße, the following change is made to the 43 line.<br/>[Since 20.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36A: Traffic disturbance]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b5c3eb3c8298ffde92f4600bdc2284a4f9a3e22f2a510de46dd4c5f5a0bbdd0</guid>
-      <pubDate>Fri, 29 May 2026 20:03:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 20:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 20:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 29.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1d3414b1e3cc28842526c11ed2f6bc808d703447c6c64603053764ec08ab1b50</guid>
-      <pubDate>Fri, 29 May 2026 18:06:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 19:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 18:06:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A: Harmful car]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">173444927f321fd3387317ab3961c378961129967af8d9ee4969982ef86d207b</guid>
-      <pubDate>Fri, 29 May 2026 17:07:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 17:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 17:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operation only between station Meidling S U, Schedifkaplatz and Swatoschgasse. expected duration: 17:30 watch. Reason: Harmful car in the area Grillgasse. [On 29.05.2026]</description>
-      <content:encoded><![CDATA[Operation only between station Meidling S U, Schedifkaplatz and Swatoschgasse. expected duration: 17:30 watch. Reason: Harmful car in the area Grillgasse.<br/>[On 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: track construction works]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
       <description>Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected. [05.05.2026 – 06.06.2026]</description>
       <content:encoded><![CDATA[Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Antonsplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about … [Since 16.04.2026]</description>
+      <content:encoded><![CDATA[Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about …<br/>[Since 16.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52/60: Rustengasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">13c7e9ae9dda1413c6734b0d7e8d0b74c026fa8779e27bc4be507109165e130f</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 14 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of lines 52 towards Baumgarten and 60 towards Rodaun Stop: Rustengasse From: Mariahilfer Straße 186-188 To: Mariahilfer Straße 180-182 … [Since 14.04.2026]</description>
+      <content:encoded><![CDATA[Stop change of lines 52 towards Baumgarten and 60 towards Rodaun Stop: Rustengasse From: Mariahilfer Straße 186-188 To: Mariahilfer Straße 180-182 …<br/>[Since 14.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
