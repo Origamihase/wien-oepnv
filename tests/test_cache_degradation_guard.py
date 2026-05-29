@@ -124,6 +124,56 @@ def test_cache_degradation_guard_bypass_on_corrupt_cache(tmp_path: Path) -> None
         assert len(saved_data) == 1
 
 
+def test_scoped_prune_evicts_providers_own_stale_cache(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The scoped ``prune_cache(provider=...)`` must actually evict THIS
+    provider's own ``events.json`` once it is older than ``max_age_hours``.
+
+    Pre-fix the scoped branch joined the RAW provider name
+    (``cache/alpha``) while every read/write path stores the provider under
+    ``sanitize_filename(provider)`` (``cache/alpha_<hash>``). The raw
+    directory never exists, so ``is_dir()`` failed and the scoped prune was
+    a permanent no-op — a provider's own stale cache lived forever (silent
+    repo bloat / indefinitely-stale data served past max_age).
+    """
+    cache_dir = tmp_path / "cache"
+    cache_dir.mkdir()
+    monkeypatch.setattr(cache_module, "_CACHE_DIR", cache_dir)
+
+    write_cache("alpha", [{"id": i} for i in range(100)])
+    alpha_file = cache_module._cache_file("alpha")
+    assert alpha_file.exists()
+    # Age it past the 48 h cutoff.
+    aged = time.time() - 49 * 3600
+    os.utime(alpha_file, (aged, aged))
+
+    cache_module.prune_cache(max_age_hours=48, provider="alpha")
+
+    assert not alpha_file.exists(), (
+        "scoped prune must evict alpha's own >max_age stale events.json "
+        "(pre-fix it looked in the non-existent raw 'cache/alpha' dir)"
+    )
+
+
+def test_scoped_prune_keeps_providers_fresh_cache(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Safety guard: the scoped prune must NOT delete a freshly-written
+    cache (the immediate post-write case), only one older than max_age."""
+    cache_dir = tmp_path / "cache"
+    cache_dir.mkdir()
+    monkeypatch.setattr(cache_module, "_CACHE_DIR", cache_dir)
+
+    write_cache("alpha", [{"id": i} for i in range(100)])
+    alpha_file = cache_module._cache_file("alpha")
+    assert alpha_file.exists()
+
+    # Fresh mtime — the just-written file must survive the post-write prune.
+    cache_module.prune_cache(max_age_hours=48, provider="alpha")
+    assert alpha_file.exists()
+
+
 def test_write_cache_does_not_prune_sibling_providers(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

@@ -169,7 +169,7 @@ def serialize_for_cache(
         return value.isoformat()
 
     # Container types - check for cycles
-    if isinstance(value, dict | list | tuple | set):
+    if isinstance(value, dict | list | tuple | set | frozenset):
         if _stack is None:
             _stack = set()
 
@@ -189,7 +189,15 @@ def serialize_for_cache(
                     serialize_for_cache(item, _stack, _depth + 1, max_depth)
                     for item in value
                 ]
-            if isinstance(value, set):
+            if isinstance(value, set | frozenset):
+                # ``frozenset`` is NOT a subclass of ``set`` (sibling types),
+                # so it must be matched explicitly — pre-fix a frozenset value
+                # fell through to the ``return value`` tail and then crashed
+                # ``json.dump`` with "Object of type frozenset is not JSON
+                # serializable", despite this function's documented job of
+                # producing a JSON-serializable structure. Mirrors the
+                # ``set | frozenset`` handling already used by the sibling
+                # serialiser in ``src/feed/logging_safe.py``.
                 serialized = [
                     serialize_for_cache(item, _stack, _depth + 1, max_depth)
                     for item in value
