@@ -374,6 +374,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "26/27: Polizeieinsatz",
+    "description": "Linie 26: Unregelmäßige Intervalle in beiden Richtungen. Linie 27: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0d469cfba49f363e857db27c9c19226a6c47e93f22e0fd91298f1d86665fa36f",
+    "pubDate": "2026-05-29T08:35:00+02:00",
+    "starts_at": "2026-05-29T08:35:00+02:00",
+    "ends_at": "2026-05-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=26,27|D=2026-05-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -548,7 +560,7 @@
     "guid": "6e8d730fa49ad4bb678353894e55415fcd9bfbdea9d97e5770694567f4f027af",
     "pubDate": "2026-05-29T08:16:00+02:00",
     "starts_at": "2026-05-29T08:16:00+02:00",
-    "ends_at": "2026-05-29T23:55:00+02:00",
+    "ends_at": "2026-05-29T08:57:00+02:00",
     "_identity": "wl|störung|L=48A|D=2026-05-29"
   },
   {
