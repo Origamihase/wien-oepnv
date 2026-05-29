@@ -11,8 +11,20 @@ _VIENNA_TZ = ZoneInfo("Europe/Vienna")
 # ---------------- Relevanz-/Ausschluss-Filter ----------------
 
 KW_RESTRICTION = re.compile(
+    # Match the restriction root anywhere inside a German compound noun
+    # (``Baustelle``, ``Teilsperre``, ``Streckensperre``, ``Bauarbeiten``,
+    # ``Verspätungen``, ``Einschränkungen``, ``Signalstörung`` …). The
+    # bare-root pattern with ``\b`` on BOTH sides MISSED every inflection /
+    # compound of the prefix-roots below (``sperr``, ``baustell``, ``verspät``,
+    # ``einschränk``, ``unterbrech`` …): only the handful of roots that happen
+    # to be standalone words (``umleitung``, ``verkehr``, ``gesperrt``,
+    # standalone ``Störung`` / ``Ausfall``) ever matched, so the bulk of real
+    # WL disruption items were silently dropped at the mandatory inclusion
+    # gate in ``wl_fetch`` (and not rescued past ``KW_EXCLUDE``). Same fix
+    # shape as the sibling ``FACILITY_ONLY`` regex below, which documents this
+    # exact ``\b``-on-both-sides pitfall. Keyword list is unchanged.
     r"""
-    \b(
+    \b\w*(
         umleitung       # detour
         | ersatzverkehr  # replacement service
         | unterbrech     # interruption
@@ -31,7 +43,7 @@ KW_RESTRICTION = re.compile(
         | teilbetrieb    # partial service
         | pendelverkehr  # shuttle service
         | kurzstrecke    # short route
-    )\b
+    )\w*\b
     """,
     re.IGNORECASE | re.VERBOSE,
 )
