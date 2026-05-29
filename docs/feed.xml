@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 29 May 2026 20:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 21:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[36A: Verkehrsstörung]]></title>
@@ -28,17 +28,6 @@
       <ext:first_seen>Fri, 29 May 2026 19:00:55 +0200</ext:first_seen>
       <ext:starts_at>Fri, 29 May 2026 18:06:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733</guid>
-      <pubDate>Fri, 29 May 2026 18:07:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 18:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 20:27:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.05.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.05.2026]]]></content:encoded>
     </item>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U Haltestelle: Antonsplatz Von: Antonsplatz 13 vor Rechberggasse Nach: Antonsplatz 16 Dauer: 22. April 2026, etwa … [Seit 16.04.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U Haltestelle: Antonsplatz Von: Antonsplatz 13 vor Rechberggasse Nach: Antonsplatz 16 Dauer: 22. April 2026, etwa …<br/>[Seit 16.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52/60: Rustengasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">13c7e9ae9dda1413c6734b0d7e8d0b74c026fa8779e27bc4be507109165e130f</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 14 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 52 in Richtung Baumgarten und 60 in Richtung Rodaun Haltestelle: Rustengasse Von: Mariahilfer Straße 186-188 Nach: Mariahilfer Straße 180-182 … [Seit 14.04.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 52 in Richtung Baumgarten und 60 in Richtung Rodaun Haltestelle: Rustengasse Von: Mariahilfer Straße 186-188 Nach: Mariahilfer Straße 180-182 …<br/>[Seit 14.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

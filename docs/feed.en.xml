@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 20:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 21:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[36A: Traffic disturbance]]></title>
@@ -28,17 +28,6 @@
       <ext:first_seen>Fri, 29 May 2026 19:00:55 +0200</ext:first_seen>
       <ext:starts_at>Fri, 29 May 2026 18:06:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733</guid>
-      <pubDate>Fri, 29 May 2026 18:07:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 18:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 20:27:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
     </item>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about … [Since 16.04.2026]</description>
       <content:encoded><![CDATA[Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about …<br/>[Since 16.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52/60: Rustengasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">13c7e9ae9dda1413c6734b0d7e8d0b74c026fa8779e27bc4be507109165e130f</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 14 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of lines 52 towards Baumgarten and 60 towards Rodaun Stop: Rustengasse From: Mariahilfer Straße 186-188 To: Mariahilfer Straße 180-182 … [Since 14.04.2026]</description>
+      <content:encoded><![CDATA[Stop change of lines 52 towards Baumgarten and 60 towards Rodaun Stop: Rustengasse From: Mariahilfer Straße 186-188 To: Mariahilfer Straße 180-182 …<br/>[Since 14.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
