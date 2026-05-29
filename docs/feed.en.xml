@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 20:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 20:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[36A: service obstruction False Parker]]></title>
+      <title><![CDATA[36A: Traffic disturbance]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7f6783cec819d802976a3d6f9f27ab627f5e35b56cf703230c756aefc51060f</guid>
-      <pubDate>Fri, 29 May 2026 19:46:25 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 20:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 19:46:25 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 20:45:00 +0200</ext:ends_at>
-      <description>[On 29.05.2026]</description>
-      <content:encoded><![CDATA[[On 29.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">3b5c3eb3c8298ffde92f4600bdc2284a4f9a3e22f2a510de46dd4c5f5a0bbdd0</guid>
+      <pubDate>Fri, 29 May 2026 20:03:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 20:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 20:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 29.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: delays]]></title>
@@ -38,7 +38,7 @@
       <pubDate>Fri, 29 May 2026 18:07:00 +0200</pubDate>
       <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
       <ext:starts_at>Fri, 29 May 2026 18:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 29 May 2026 20:27:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
     </item>
