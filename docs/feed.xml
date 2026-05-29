@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 29 May 2026 17:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 18:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[15A: Schadhafter PKW]]></title>
@@ -17,8 +17,8 @@
       <ext:first_seen>Fri, 29 May 2026 17:30:52 +0200</ext:first_seen>
       <ext:starts_at>Fri, 29 May 2026 17:07:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Bahnhof Meidling S U, Schedifkaplatz und Swatoschgasse. Voraussichtliche Dauer: 17:30 Uhr. Grund: Schadhafter PKW im Bereich Grillgasse. [Am 29.05.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Bahnhof Meidling S U, Schedifkaplatz und Swatoschgasse. Voraussichtliche Dauer: 17:30 Uhr. Grund: Schadhafter PKW im Bereich Grillgasse.<br/>[Am 29.05.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[6: Schadhaftes Fahrzeug]]></title>
@@ -43,37 +43,15 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[66A: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <title><![CDATA[66A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107</guid>
       <pubDate>Fri, 29 May 2026 16:41:00 +0200</pubDate>
       <ext:first_seen>Fri, 29 May 2026 17:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 16:42:32 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 29 May 2026 16:41:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 29.05.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9d69502e4ce35704998fd599963cc784e2209d0871e3b4cf191210220509b047</guid>
-      <pubDate>Fri, 29 May 2026 14:54:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:31:12 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 14:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 17:50:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7814ea6ddddf40d66bdca98701ed751452470a75b79db6c37950f6efa728837</guid>
-      <pubDate>Fri, 29 May 2026 14:54:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:31:12 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 14:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 17:50:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[86A/87A: Wiedgasse]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten am Olympiaplatz wird die Rufbuslinie N81 umgeleitet. [05.05.2026 – 06.06.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Olympiaplatz wird die Rufbuslinie N81 umgeleitet.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">186002bab3620d0f83a3e90468c9f090075c495c87a9da702bb5afed432fbece</guid>
+      <pubDate>Mon, 20 Apr 2026 03:02:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung. [Seit 20.04.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung.<br/>[Seit 20.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Antonsplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U Haltestelle: Antonsplatz Von: Antonsplatz 13 vor Rechberggasse Nach: Antonsplatz 16 Dauer: 22. April 2026, etwa … [Seit 16.04.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U Haltestelle: Antonsplatz Von: Antonsplatz 13 vor Rechberggasse Nach: Antonsplatz 16 Dauer: 22. April 2026, etwa …<br/>[Seit 16.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
