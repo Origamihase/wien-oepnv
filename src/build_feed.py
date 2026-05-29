@@ -695,12 +695,18 @@ def _fetch_supports_timeout(fetch: Any) -> bool:
 def _call_fetch_with_timeout(
     fetch: Any, timeout: int | float | None, supports_timeout: bool
 ) -> Any:
-    """Invoke the fetch callable, passing the timeout if supported."""
+    """Invoke the fetch callable, passing the timeout if supported.
+
+    Trusts the :func:`_fetch_supports_timeout` introspection result —
+    pre-fix the ``except TypeError: return fetch()`` retry caught any
+    TypeError raised from INSIDE the fetch body (e.g. an ``int(timeout)``
+    conversion failure, a type-assertion error), then re-invoked the
+    fetcher with no kwargs. The retry duplicated HTTP requests, side
+    effects, quota debits, and the ``report.provider_started`` event
+    sequence — masking the real internal error behind a doubled run.
+    """
     if supports_timeout:
-        try:
-            return fetch(timeout=None if timeout is None else timeout)
-        except TypeError:
-            return fetch()
+        return fetch(timeout=None if timeout is None else timeout)
     return fetch()
 
 # ---------------- Helpers ----------------
@@ -2521,7 +2527,31 @@ def _submit_network_fetches(
     futures: dict[Any, tuple[Any, str, int]] = {}
     deadlines: dict[Any, float | None] = {}
     pending: set[Any] = set()
-    semaphores: dict[str, BoundedSemaphore] = {}
+
+    # Pre-compute the per-group worker limit across ALL fetchers BEFORE
+    # the main submit loop. Pre-fix the loop only registered a
+    # semaphore when the CURRENT fetcher's own per-provider env-limit
+    # was set, so a sibling provider in the same ``concurrency_key``
+    # group without its own env override ran unbounded — silently
+    # defeating the operator-intended shared cap. If two group members
+    # set different positive limits, the tighter one (``min``) wins so
+    # the group respects every member's stated upper bound.
+    group_limits: dict[str, int] = {}
+    for fetch in network_fetchers:
+        provider_name = provider_names.get(fetch, _provider_display_name(fetch))
+        env_name = provider_envs.get(fetch)
+        concurrency_key = _provider_concurrency_key(fetch, provider_name)
+        worker_limit = _provider_worker_limit(
+            fetch, env_name, provider_name, concurrency_key
+        )
+        if worker_limit is not None and worker_limit > 0:
+            current = group_limits.get(concurrency_key)
+            group_limits[concurrency_key] = (
+                min(current, worker_limit) if current is not None else worker_limit
+            )
+    semaphores: dict[str, BoundedSemaphore] = {
+        key: BoundedSemaphore(limit) for key, limit in group_limits.items()
+    }
 
     for fetch in network_fetchers:
         provider_name = provider_names.get(fetch, _provider_display_name(fetch))
@@ -2534,12 +2564,10 @@ def _submit_network_fetches(
         worker_limit = _provider_worker_limit(
             fetch, env_name, provider_name, concurrency_key
         )
-        semaphore: BoundedSemaphore | None = None
-        if worker_limit is not None and worker_limit > 0:
-            semaphore = semaphores.get(concurrency_key)
-            if semaphore is None:
-                semaphore = BoundedSemaphore(worker_limit)
-                semaphores[concurrency_key] = semaphore
+        # Every member of a group with a positive limit picks up the
+        # pre-computed shared semaphore — including members whose OWN
+        # ``worker_limit`` resolved to ``None``.
+        semaphore: BoundedSemaphore | None = semaphores.get(concurrency_key)
         if timeout_override is not None:
             log.debug(
                 "Provider %s nutzt Timeout-Override von %ss",
@@ -4444,6 +4472,16 @@ def main() -> int:
             log.warning(
                 "State speichern fehlgeschlagen (%s) – Feed wurde geschrieben, State bleibt veraltet.",
                 sanitize_log_arg(str(e)),
+            )
+            # Surface the failure on the structured report so monitoring
+            # / dashboards see "degraded" instead of a clean
+            # ``build_successful=True``. Pre-fix the swallowed exception
+            # let the run report record a fully-successful build while
+            # first_seen / translations / stats counters silently
+            # drifted out of sync with the on-disk feed.
+            report.add_warning(
+                f"State save failed: {sanitize_log_arg(type(e).__name__)} — "
+                "first_seen / translations / stats may drift on the next run."
             )
 
         total_duration = perf_counter() - job_start
