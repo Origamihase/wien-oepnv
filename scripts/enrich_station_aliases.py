@@ -343,9 +343,16 @@ def _load_vor_names(path: Path) -> dict[str, str]:
     # propagate ``MemoryError`` past the caller and crash the cron
     # pipeline.
     import io
+    # ``utf-8-sig`` strips a UTF-8 BOM if upstream emits one. The VOR
+    # CSV's first column is ``StopPointId`` — a BOM-prefixed file would
+    # make ``row.get("StopPointId")`` return ``None`` for the first
+    # row only (because the header reads as ``"﻿StopPointId"``),
+    # silently dropping that stop's name. Sibling ``scripts/gtfs.py``
+    # already uses ``utf-8-sig`` per the GTFS spec, which explicitly
+    # permits a BOM.
     content = read_capped_text(
         path, MAX_ALIAS_CSV_BYTES,
-        encoding="utf-8", label="VOR stops", logger=log,
+        encoding="utf-8-sig", label="VOR stops", logger=log,
     )
     if content is None:
         return {}
@@ -429,7 +436,7 @@ def _load_gtfs_index(path: Path) -> dict[str, set[str]]:
     import io
     content = read_capped_text(
         path, MAX_ALIAS_CSV_BYTES,
-        encoding="utf-8", label="GTFS stops", logger=log,
+        encoding="utf-8-sig", label="GTFS stops", logger=log,
     )
     if content is None:
         return {}

@@ -583,11 +583,21 @@ def _parse_datetime(value: str | float | int | None) -> datetime | None:
     if not candidate:
         return None
     # Stadt-Wien WFS emits date-only values with a bare trailing ``Z``
-    # (e.g. ``2026-03-22Z``). ``dateutil`` rejects that shape, so expand
-    # it to an explicit UTC midnight before parsing.
+    # (e.g. ``2026-03-22Z``). ``dateutil`` rejects that shape, so we
+    # parse the YYYY-MM-DD directly. The trailing ``Z`` here is a
+    # date-shape marker — NOT a UTC tz indicator. Stadt Wien operates
+    # the WFS in Europe/Vienna local time, so treating ``Z`` as UTC
+    # midnight then converting to Vienna shifted the displayed
+    # timestamp by 1-2 h (and could shift the *date* across DST). Parse
+    # the date directly as Vienna-local midnight.
     date_only_z = re.fullmatch(r"(\d{4}-\d{2}-\d{2})Z", candidate)
     if date_only_z:
-        candidate = f"{date_only_z.group(1)}T00:00:00+00:00"
+        try:
+            return datetime.strptime(
+                date_only_z.group(1), "%Y-%m-%d"
+            ).replace(tzinfo=VIENNA_TZ)
+        except ValueError:
+            return None
     try:
         parsed = dtparser.parse(candidate)
     except (ValueError, OverflowError):

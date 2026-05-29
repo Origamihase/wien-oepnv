@@ -492,6 +492,23 @@ def _query_departure_board(
             f"{type(payload).__name__}"
         )
 
+    # VAO sometimes returns HTTP 200 with an error envelope —
+    # ``{"errorCode": "H730", "errorText": "..."}`` (quota / authentication
+    # errors are typical examples). Pre-fix the function silently
+    # returned ``[]`` for any payload without a ``Departure`` field,
+    # so an operator log showed a clean "0 departures" run while the
+    # real upstream state was an authentication failure. Surface the
+    # error explicitly so the caller's diagnostic branch logs it and
+    # the cron tick reports an error rather than success.
+    error_code = payload.get("errorCode")
+    if isinstance(error_code, str) and error_code:
+        error_text = payload.get("errorText")
+        text_part = f" ({error_text!r})" if isinstance(error_text, str) else ""
+        raise ValueError(
+            f"VAO /departureBoard returned errorCode "
+            f"{error_code!r}{text_part}"
+        )
+
     # Response shape variants seen in the wild (audit docs 2026-02):
     #   * ``{"Departure": [...]}`` — modern flat shape
     #   * ``{"DepartureBoard": {"Departure": [...]}}`` — nested shape
@@ -828,19 +845,37 @@ def _collect_hbf_observations(
         if not name:
             continue
 
+        # Compute cancellation up front so the track-gate below can let
+        # cancelled departures through without ``rtTrack`` — same
+        # rationale as the cancellation-before-rtTime-gate documented
+        # below. A cancelled S-Bahn train at Hbf often has its
+        # ``rtTrack`` removed by VAO (the train will never arrive at
+        # any platform), so the strict track gate would otherwise
+        # silently undercount outages in
+        # ``data/stats/ausfaelle_<YYYY>.csv``.
+        cancelled = _departure_is_cancelled(dep)
+
         # Platform-level Stammstrecke gate. Applied EARLY (before the
         # rtTime / direction resolution) so the diagnostic counters
         # attribute every drop to its primary cause: a long-distance
         # train on track 7 is counted as ``non-Stammstrecke track``
         # rather than masked behind a downstream filter.
         track_text = _extract_track_string(dep)
+        track_trunk: str | None
         if track_text is None:
-            dropped_no_track += 1
-            continue
-        track_trunk = _track_trunk(track_text)
-        if track_trunk is None or track_trunk not in STAMMSTRECKE_HBF_TRACK_TRUNKS:
-            dropped_non_stammstrecke_track += 1
-            continue
+            # Cancelled-no-track: keep so terminus-based direction
+            # resolution can still classify the outage. Non-cancelled
+            # departures with no track are genuinely unclassifiable
+            # and still drop here.
+            if not cancelled:
+                dropped_no_track += 1
+                continue
+            track_trunk = None
+        else:
+            track_trunk = _track_trunk(track_text)
+            if track_trunk is None or track_trunk not in STAMMSTRECKE_HBF_TRACK_TRUNKS:
+                dropped_non_stammstrecke_track += 1
+                continue
 
         sched_date = dep.get("date")
         sched_time = dep.get("time")
@@ -848,13 +883,9 @@ def _collect_hbf_observations(
         if scheduled is None:
             continue
 
-        # Cancellation check BEFORE the rtTime gate: a cancelled
-        # departure typically has no ``rtTime`` (the train will never
-        # depart, so there is nothing to forecast), so the conservative
-        # rtTime filter would otherwise discard the cancellation signal
-        # alongside it. Direction resolution still runs so the
-        # cancelled train lands in the correct bucket.
-        cancelled = _departure_is_cancelled(dep)
+        # Cancellation already decided above; the cancellation path
+        # uses ``delay_minutes=0.0`` as a placeholder while the
+        # observation is routed to the Ausfaelle ledger.
         if not cancelled:
             delay_value = _departure_delay_minutes(dep)
             if delay_value is None:
@@ -882,11 +913,14 @@ def _collect_hbf_observations(
             elif track_trunk == "2":
                 direction = DIRECTION_LABEL_NORTHBOUND
         if direction is None:
-            # Defensive — unreachable: the track-trunk gate above
-            # guarantees ``track_trunk`` is ``"1"`` or ``"2"``. The
-            # explicit guard exists for the type checker and to keep
-            # the code robust against a future widening of the
-            # allowed trunk set.
+            # Reachable on the cancelled-no-track path when terminus
+            # lookup also failed (unknown destination or no recorded
+            # latitude). Drop these genuinely unclassifiable
+            # cancellations rather than misroute them into an
+            # arbitrary direction bucket. For the normal
+            # track-known path the trunk-fallback above is
+            # exhaustive (``track_trunk`` ∈ ``{"1", "2"}``), so this
+            # guard never fires there.
             continue
 
         observation = _SbahnLegObservation(
