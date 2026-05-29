@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 22:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 23:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[17A: traffic accident]]></title>
+      <title><![CDATA[11A: defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5663fecbf675128e997aa265491bb433f2c1a3c40b9e5aa509f998b0c368932d</guid>
-      <pubDate>Fri, 29 May 2026 22:04:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 22:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 22:04:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic accident. [On 29.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 29.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">9360dd62571149f3c66d4dc7049cd6c8f5718ab035b60027fbe1e936919aa8e0</guid>
+      <pubDate>Fri, 29 May 2026 22:42:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 23:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 22:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:16:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: defective vehicle. [On 29.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[39A: traffic accident]]></title>
@@ -35,17 +35,6 @@
       <title><![CDATA[14A: police operation service from House of the Sea]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc</guid>
-      <pubDate>Fri, 29 May 2026 21:27:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 22:00:42 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 21:31:39 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71</guid>
       <pubDate>Fri, 29 May 2026 21:27:00 +0200</pubDate>
       <ext:first_seen>Fri, 29 May 2026 22:00:42 +0200</ext:first_seen>
       <ext:starts_at>Fri, 29 May 2026 21:27:00 +0200</ext:starts_at>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Transfer of the lines 62 and 16A to the Opera, Karlsplatz U or Alaudagasse U Stop: Hetzendorf Castle From: Hetzendorfer Straße 79 To: Hetzendorfer … [Since 04.05.2026]</description>
       <content:encoded><![CDATA[Transfer of the lines 62 and 16A to the Opera, Karlsplatz U or Alaudagasse U Stop: Hetzendorf Castle From: Hetzendorfer Straße 79 To: Hetzendorfer …<br/>[Since 04.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N81: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6cb07c7304a9b02c49316003964e6675ee0b068a781b6f5ac81424572887ef36</guid>
+      <pubDate>Tue, 28 Apr 2026 14:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 05 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
+      <description>Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected. [05.05.2026 – 06.06.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
