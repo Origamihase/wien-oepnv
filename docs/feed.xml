@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 29 May 2026 09:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 10:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[49: Feuerwehreinsatz Betrieb ab Hütteldorfer Straße]]></title>
+      <title><![CDATA[49: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">473df33d7180f77651b05e9b538305fff8dd9e6f7da76712cc6da012e9c5bd02</guid>
-      <pubDate>Fri, 29 May 2026 09:05:31 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 09:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 09:05:31 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 17:15:00 +0200</ext:ends_at>
-      <description>[Am 29.05.2026]</description>
-      <content:encoded><![CDATA[[Am 29.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">dfbcff6d2f1e7787cd358ec3802a6df025d3ce1964c93c763b232441bac6da65</guid>
+      <pubDate>Fri, 29 May 2026 09:48:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 10:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 09:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz. [Am 29.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.<br/>[Am 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26/27: Polizeieinsatz]]></title>
@@ -52,17 +52,6 @@
       <ext:ends_at>Fri, 29 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 29.05.2026]</description>
       <content:encoded><![CDATA[[Am 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7</guid>
-      <pubDate>Fri, 29 May 2026 08:15:00 +0200</pubDate>
-      <ext:first_seen>Thu, 28 May 2026 18:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 08:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 29.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 29.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A/37A/40A: Bauarbeiten]]></title>
@@ -117,6 +106,16 @@
       <ext:ends_at>Thu, 11 Jun 2026 05:00:00 +0200</ext:ends_at>
       <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [01.06.2026 – 11.06.2026]</description>
       <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[01.06.2026 – 11.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Stadlau ↔ Wien Simmering]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;880401</guid>
+      <pubDate>Thu, 28 May 2026 20:48:23 +0200</pubDate>
+      <ext:first_seen>Wed, 27 May 2026 16:01:20 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 28 May 2026 20:48:23 +0200</ext:starts_at>
+      <description>Wegen Reparaturarbeiten nach einem Feuerwehreinsatz sind zwischen Wien Stadlau Bahnhst (U) und Wien Simmering Bahnhof (U) Zugfahrten bis voraussichtlich 30.05.2026, 07:00 … [Seit 28.05.2026]</description>
+      <content:encoded><![CDATA[Wegen Reparaturarbeiten nach einem Feuerwehreinsatz sind zwischen Wien Stadlau Bahnhst (U) und Wien Simmering Bahnhof (U) Zugfahrten bis voraussichtlich 30.05.2026, 07:00 …<br/>[Seit 28.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
