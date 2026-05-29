@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 19:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 20:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[36A: service obstruction False Parker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7f6783cec819d802976a3d6f9f27ab627f5e35b56cf703230c756aefc51060f</guid>
+      <pubDate>Fri, 29 May 2026 19:46:25 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 20:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 29 May 2026 19:46:25 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 29 May 2026 20:45:00 +0200</ext:ends_at>
+      <description>[On 29.05.2026]</description>
+      <content:encoded><![CDATA[[On 29.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1: delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,39 +41,6 @@
       <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c1ce89fc07a31460a53947346c1d250614e6661635d844985802869cc35c9214</guid>
-      <pubDate>Fri, 29 May 2026 18:07:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 29 May 2026 18:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 29 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 29.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N8: Nußdorfer Straße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e700b01355e77fa5fafea3bede0853415d157996be3e74038bacc8fa6c3481b4</guid>
-      <pubDate>Fri, 24 Apr 2026 15:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 30 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line N8 towards Handelskai S U Stop: Nußdorfer Straße U From: Währinger Gürtel 170 To: Heiligenstädter Straße ONR. 2 Duration: From … [Since 30.04.2026]</description>
-      <content:encoded><![CDATA[Stop change of line N8 towards Handelskai S U Stop: Nußdorfer Straße U From: Währinger Gürtel 170 To: Heiligenstädter Straße ONR. 2 Duration: From …<br/>[Since 30.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N8: Thaliastraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">05c4dbd8c11c974f8bd0ef91fae9cc3609895d515cf5c157adba2dbee87150be</guid>
-      <pubDate>Fri, 19 Jul 2024 09:52:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jul 2024 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 16 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Stop change of line N8 towards Alterlaa U Stop: Thaliastraße U From: Lerchenfelder Belt 35 To: Lerchenfelder Belt 41 Duration: From 20. July … [Since 24.07.2024]</description>
-      <content:encoded><![CDATA[Stop change of line N8 towards Alterlaa U Stop: Thaliastraße U From: Lerchenfelder Belt 35 To: Lerchenfelder Belt 41 Duration: From 20. July …<br/>[Since 24.07.2024]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A: Harmful car]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
       <description>Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected. [05.05.2026 – 06.06.2026]</description>
       <content:encoded><![CDATA[Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">186002bab3620d0f83a3e90468c9f090075c495c87a9da702bb5afed432fbece</guid>
+      <pubDate>Mon, 20 Apr 2026 03:02:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
+      <description>Due to track construction works in Dornbacher Straße, the following change is made to the 43 line. [Since 20.04.2026]</description>
+      <content:encoded><![CDATA[Due to track construction works in Dornbacher Straße, the following change is made to the 43 line.<br/>[Since 20.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Antonsplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about … [Since 16.04.2026]</description>
+      <content:encoded><![CDATA[Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about …<br/>[Since 16.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
