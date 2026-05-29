@@ -127,10 +127,24 @@ WL_SESSION_HEADERS = {"Accept": "application/json"}
 
 # ---------------- Zeit & Utils ----------------
 
-def _iso(s: str | None) -> datetime | None:
-    """Parst ISO (inkl. 'Z' / TZ ohne Doppelpunkt) robust zu aware datetime."""
+def _iso(s: object) -> datetime | None:
+    """Parst ISO (inkl. 'Z' / TZ ohne Doppelpunkt) robust zu aware datetime.
 
-    if not s:
+    Accepts ``object`` rather than ``str | None`` because every call site
+    passes a raw ``dict.get(...)`` value (typed ``Any``) straight from the
+    upstream JSON — see ``_best_ts`` (``time.start`` / ``updated`` / …) and
+    the two item loops in ``fetch_events``. A *truthy non-string* value (a
+    numeric epoch like ``1700000000``, a list, a dict) would otherwise reach
+    ``s.replace(...)`` below and raise ``AttributeError`` — which the
+    ``(ValueError, OverflowError)`` guard around ``isoparse`` does NOT catch.
+    That exception then propagates out of the unguarded ``fetch_events`` item
+    loop and disables the entire WL cache refresh for the cycle
+    (``update_wl_cache.py`` swallows it via a broad ``except Exception``).
+    Type-guarding here upholds the documented "one bad timestamp must not
+    abort the fetch" contract below.
+    """
+
+    if not isinstance(s, str) or not s:
         return None
     s = s.replace("Z", "+00:00")
     if len(s) >= 5 and (s[-5] in "+-") and s[-3] != ":":
@@ -189,6 +203,59 @@ def _best_ts(obj: dict[str, Any]) -> datetime | None:
         if cand:
             return cand
     return None
+
+
+# Status values (``status`` / ``state`` on the POI or its ``attributes``)
+# that mark a disruption finished / inactive — such items are dropped.
+# Matched on WORD BOUNDARIES, not bare substrings: the German *active*
+# statuses ``laufende`` (ongoing) and ``ausstehende`` (pending) — and the
+# noun ``Wochenende`` (weekend) — all contain the substring ``ende`` and were
+# wrongly dropped by the prior ``"ende" in blob`` membership test, silently
+# discarding valid live disruptions. All keywords are ASCII, so ``\b`` is safe.
+_INACTIVE_STATUS_RE = re.compile(
+    r"\b(?:finished|inactive|inaktiv|done|closed|nicht aktiv|ended|ende|"
+    r"abgeschlossen|beendet|geschlossen)\b"
+)
+
+
+def _is_inactive_status(*values: object) -> bool:
+    """True when any status/state *value* marks the item finished/inactive."""
+    blob = " ".join(str(v or "") for v in values).lower()
+    return _INACTIVE_STATUS_RE.search(blob) is not None
+
+
+def _wl_identity(
+    prefix: str,
+    line_pairs: list[tuple[str, str]],
+    real_start: datetime | None,
+    topic_key: str,
+) -> str:
+    """Build a stable, collision-resistant ``_identity`` for a WL item.
+
+    The base key is line-set + start-day, kept deliberately title-/
+    description-insensitive so a disruption's identity (and thus its
+    ``first_seen`` age) stays stable across builds as upstream edits its
+    wording. But that base key is too weak when an item has NO parseable
+    line set OR no start date: two genuinely distinct line-less Hinweise, or
+    two distinct date-less Störungen sharing a line set, then collapse to the
+    same key and ``_dedupe_items`` (which keys on ``_identity`` first —
+    build_feed.py) silently drops one. In those weak cases fold the
+    normalized ``topic_key`` into the key — mirroring the line-less
+    title/hash discriminator the central ``_identity_for_item`` already
+    applies — so distinct topics stay distinct (and true duplicates, which
+    share a topic_key, still dedup). The common lines+date case is left
+    byte-identical, so existing identities (and their first_seen) don't churn.
+    """
+    id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
+    id_day = (
+        real_start.date().isoformat()
+        if isinstance(real_start, datetime)
+        else "None"
+    )
+    identity = f"wl|{prefix}|L={id_lines}|D={id_day}"
+    if not id_lines or id_day == "None":
+        identity = f"{identity}|TK={topic_key}"
+    return identity
 
 
 def _is_active(start: datetime | None, end: datetime | None, now: datetime) -> bool:
@@ -558,28 +625,8 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
         # A) TrafficInfos (Störungen)
         for ti in _fetch_traffic_infos(timeout=timeout, session=session):
             attrs = _coerce_dict(ti.get("attributes"))
-            status_blob = " ".join(
-                [
-                    str(ti.get("status") or ""),
-                    str(attrs.get("status") or ""),
-                    str(attrs.get("state") or ""),
-                ]
-            ).lower()
-            if any(
-                x in status_blob
-                for x in (
-                    "finished",
-                    "inactive",
-                    "inaktiv",
-                    "done",
-                    "closed",
-                    "nicht aktiv",
-                    "ended",
-                    "ende",
-                    "abgeschlossen",
-                    "beendet",
-                    "geschlossen",
-                )
+            if _is_inactive_status(
+                ti.get("status"), attrs.get("status"), attrs.get("state")
             ):
                 continue
 
@@ -633,9 +680,8 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                     extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
 
             # stabile Identity für first_seen
-            id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
-            id_day = real_start.date().isoformat() if isinstance(real_start, datetime) else "None"
-            identity = f"wl|störung|L={id_lines}|D={id_day}"
+            topic_key = _topic_key_from_title(title_raw)
+            identity = _wl_identity("störung", line_pairs, real_start, topic_key)
 
             raw.append(
                 {
@@ -643,7 +689,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                     "category": "Störung",
                     "title": title,
                     "title_core": _title_core(title_raw),
-                    "topic_key": _topic_key_from_title(title_raw),
+                    "topic_key": topic_key,
                     "desc": desc,
                     "extras": extras,
                     "lines_pairs": line_pairs,  # [(tok, disp), …]
@@ -658,28 +704,8 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
         # B) News/Hinweise
         for poi in _fetch_news(timeout=timeout, session=session):
             attrs = _coerce_dict(poi.get("attributes"))
-            status_blob = " ".join(
-                [
-                    str(poi.get("status") or ""),
-                    str(attrs.get("status") or ""),
-                    str(attrs.get("state") or ""),
-                ]
-            ).lower()
-            if any(
-                x in status_blob
-                for x in (
-                    "finished",
-                    "inactive",
-                    "inaktiv",
-                    "done",
-                    "closed",
-                    "nicht aktiv",
-                    "ended",
-                    "ende",
-                    "abgeschlossen",
-                    "beendet",
-                    "geschlossen",
-                )
+            if _is_inactive_status(
+                poi.get("status"), attrs.get("status"), attrs.get("state")
             ):
                 continue
 
@@ -741,9 +767,8 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 if attrs.get(k):
                     extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
 
-            id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
-            id_day = real_start.date().isoformat() if isinstance(real_start, datetime) else "None"
-            identity = f"wl|hinweis|L={id_lines}|D={id_day}"
+            topic_key = _topic_key_from_title(title_raw)
+            identity = _wl_identity("hinweis", line_pairs, real_start, topic_key)
 
             raw.append(
                 {
@@ -751,7 +776,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                     "category": "Hinweis",
                     "title": title,
                     "title_core": _title_core(title_raw),
-                    "topic_key": _topic_key_from_title(title_raw),
+                    "topic_key": topic_key,
                     "desc": desc,
                     "extras": extras,
                     "lines_pairs": line_pairs,  # [(tok, disp), …]
