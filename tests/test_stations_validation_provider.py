@@ -9,7 +9,33 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from src.utils.stations_validation import validate_stations
+from src.utils.stations_validation import is_synthetic_vor_id, validate_stations
+
+
+def test_is_synthetic_vor_id_matches_only_the_synthetic_range() -> None:
+    """The shared synthetic-id test: 9xxxx / 9xxxxx strings, nothing else.
+
+    This predicate is the single source of truth used by both the VOR
+    provider validation and the directory builder's manual/ÖBB
+    classifier, so a drift here would silently re-open either the
+    dropped-synthetic-entry bug or the duplicate-real-bst_id bug.
+    """
+    # Synthetic VOR ids (Wien U-Bahn departure-board stops + legacy form).
+    assert is_synthetic_vor_id("900100") is True
+    assert is_synthetic_vor_id("900112") is True
+    assert is_synthetic_vor_id("93010") is True  # tolerated legacy 5-digit form
+    # Real ÖBB Betriebsstellen ids and codes are NOT synthetic.
+    assert is_synthetic_vor_id("1371") is False  # Siebenhirten
+    assert is_synthetic_vor_id("100") is False
+    assert is_synthetic_vor_id("Mb  H2H") is False
+    # fullmatch, not search: a synthetic substring inside a longer id
+    # must not register as synthetic.
+    assert is_synthetic_vor_id("8900100") is False
+    assert is_synthetic_vor_id("900100x") is False
+    # Non-string values (int ids, None) return False — callers that hold
+    # an int normalise via ``str(...)`` first.
+    assert is_synthetic_vor_id(900100) is False
+    assert is_synthetic_vor_id(None) is False
 
 
 def _write(path: Path, entries: list[dict[str, object]]) -> None:
