@@ -843,6 +843,28 @@ _UNSAFE_CHARS_RE = re.compile(
 _VOR_ID_PATTERN = re.compile(r"9\d{4,5}")
 
 
+def is_synthetic_vor_id(value: object) -> bool:
+    """Return ``True`` when *value* is a synthetic VOR station id.
+
+    Synthetic ids occupy the ``9xxxx`` / ``9xxxxx`` range
+    (:data:`_VOR_ID_PATTERN`) assigned to VOR-sourced departure-board
+    stops — e.g. ``900100``–``900112`` for the Wien U-Bahn stops, plus
+    the tolerated legacy 5-digit form such as ``93010``. The live ÖBB
+    ``Verzeichnis der Verkehrsstationen`` workbook never carries these,
+    so an entry keyed by one cannot round-trip through an Excel re-pull
+    and must be preserved verbatim rather than rebuilt. Real ÖBB
+    Betriebsstellen ids (e.g. ``1371``) and non-string values return
+    ``False``.
+
+    Single source of truth for the synthetic-id test, shared by the VOR
+    provider validation below and the directory builder's manual/ÖBB
+    classifier (``scripts/update_station_directory.py``) — keeping the
+    two in lock-step so a real workbook station can never be mistaken
+    for a synthetic one (or vice versa) by only one of them.
+    """
+    return isinstance(value, str) and _VOR_ID_PATTERN.fullmatch(value) is not None
+
+
 def _find_cross_station_id_conflicts(
     stations: Sequence[Mapping[str, object]]
 ) -> Iterator[CrossStationIDIssue]:
@@ -919,8 +941,13 @@ def _find_identity_field_conflicts(
     station — same ``eva_nr`` 8101934 — and slipped past the other four
     keys because their ``bst_code`` / ``bst_id`` differ.
 
-    Whitespace-stripped + lower-cased ``int`` / ``str`` values are
-    compared; ``None`` and empty strings are ignored.  Distinct from
+    Whitespace-stripped ``int`` / ``str`` values are compared
+    **case-sensitively** — ÖBB ``bst_code``s are case-significant
+    (``Aw`` and ``aw`` are distinct Betriebsstellen), so case-folding
+    here would manufacture false-positive collisions; the alias-shadow
+    sibling :func:`_find_cross_station_id_conflicts` *does* casefold via
+    :func:`_normalize_token` because it matches free-text aliases.
+    ``None`` and empty strings are ignored.  Distinct from
     :func:`_find_cross_station_id_conflicts`, which fires only when an
     *alias* on one station shadows an *identity* field on a different
     station — this function fires on raw identity collisions.
@@ -1003,7 +1030,7 @@ def _find_provider_issues(
         name = str(entry.get("name", "")).strip() or "<unknown>"
         for key in ("bst_id", "bst_code"):
             value = entry.get(key)
-            if not isinstance(value, str) or not _VOR_ID_PATTERN.fullmatch(value):
+            if not is_synthetic_vor_id(value):
                 yield ProviderIssue(
                     identifier=identifier,
                     name=name,

@@ -142,6 +142,44 @@ def test_real_oebb_entry_with_extras_stays_in_mapping(tmp_path: Path) -> None:
     assert not any(e.get("name") == "Wiener Neustadt Hauptbahnhof" for e in manual)
 
 
+def test_real_oebb_entry_without_bare_oebb_token_stays_in_mapping(tmp_path: Path) -> None:
+    """A real workbook station that lost its bare ``oebb`` source token → mapping.
+
+    Regression for the duplicate-``bst_id`` bug. ``Siebenhirten`` is a
+    real ÖBB Betriebsstelle (``bst_id=1371``) the Excel workbook
+    re-emits, but its committed ``source`` is ``"oebb_geonetz,osm"`` —
+    the bare ``oebb`` token was lost across enrichment cycles. The
+    pre-fix token check classified it ``manual``, so the rebuild
+    appended it verbatim *alongside* the fresh Excel extract's own
+    ``bst_id=1371`` row → two entries sharing one ``bst_id`` → a
+    ``validate_stations`` identity-conflict failure. Because ``1371`` is
+    NOT in the synthetic VOR range, it must land in ``mapping`` so the
+    fresh extract merges into it instead of duplicating it.
+    """
+    path = tmp_path / "stations.json"
+    _write_stations(
+        path,
+        [
+            {
+                "bst_id": 1371,
+                "bst_code": "Mb  H2H",
+                "name": "Siebenhirten",
+                "source": "oebb_geonetz,osm",
+                "eva_nr": "8101523",
+            }
+        ],
+    )
+
+    mapping, manual = _load_existing_station_entries(path)
+
+    assert "1371" in mapping, (
+        "A real ÖBB workbook station (non-synthetic bst_id) whose source "
+        "lost the bare ``oebb`` token must stay in mapping so the Excel "
+        "re-pull merges into it rather than emitting a duplicate."
+    )
+    assert not any(e.get("name") == "Siebenhirten" for e in manual)
+
+
 def test_bare_oebb_source_string_stays_in_mapping(tmp_path: Path) -> None:
     """The pre-PR-β canonical ÖBB source — ``source="oebb"`` exactly.
 
@@ -296,3 +334,27 @@ def test_real_stations_json_keeps_wien_hauptbahnhof_as_manual() -> None:
     manual_names = {e.get("name") for e in manual}
     assert "Wien Hauptbahnhof" in manual_names
     assert "Wien Kaiserebersdorf" in manual_names
+
+
+def test_real_stations_json_keeps_siebenhirten_in_mapping() -> None:
+    """End-to-end pin: committed Siebenhirten (real bst_id 1371) → mapping.
+
+    Sibling to :func:`test_real_stations_json_keeps_wien_hauptbahnhof_as_manual`
+    for the opposite failure mode. ``Siebenhirten`` carries
+    ``source="oebb_geonetz,osm"`` (no bare ``oebb`` token) but a real,
+    non-synthetic ``bst_id`` the live workbook re-emits. It must classify
+    into ``mapping`` — leaking it into ``manual_stations`` ships a
+    duplicate ``bst_id=1371`` that fails ``validate_stations`` in CI.
+    """
+    stations_path = Path("data/stations.json")
+    if not stations_path.exists():  # pragma: no cover - fresh clone
+        pytest.skip("data/stations.json not present in this checkout")
+
+    mapping, manual = _load_existing_station_entries(stations_path)
+
+    assert "1371" in mapping, (
+        "Regression: Siebenhirten (real bst_id 1371, source without a bare "
+        "``oebb`` token) must round-trip through the ÖBB-Excel mapping, not "
+        "leak into manual_stations and duplicate against the fresh extract."
+    )
+    assert not any(e.get("name") == "Siebenhirten" for e in manual)

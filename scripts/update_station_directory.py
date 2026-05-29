@@ -57,6 +57,7 @@ try:  # pragma: no cover - convenience for module execution
     from src.utils.http import fetch_content_safe, session_with_retries
     from src.utils.serialize import scrub_trojan_source_primitives
     from src.utils.stations import is_in_vienna as _is_point_in_vienna
+    from src.utils.stations_validation import is_synthetic_vor_id
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from utils.files import (  # type: ignore[no-redef]
         atomic_write,
@@ -73,6 +74,7 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
     from utils.http import fetch_content_safe, session_with_retries  # type: ignore[no-redef]
     from utils.serialize import scrub_trojan_source_primitives  # type: ignore[no-redef]
     from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore[no-redef]
+    from utils.stations_validation import is_synthetic_vor_id  # type: ignore[no-redef]
 
 # Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
 # canonical ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
@@ -762,7 +764,36 @@ def _load_existing_station_entries(
                         # post-mortem (the file fix there did not address
                         # the underlying classifier bug).
                         tokens = {t.strip() for t in stripped.split(",") if t.strip()}
-                        is_manual = "oebb" not in tokens
+                        if "oebb" in tokens:
+                            is_manual = False
+                        else:
+                            # No bare ``oebb`` token. Route to the ÖBB-Excel
+                            # ``mapping`` (so the re-pull merges into the entry)
+                            # ONLY when it carries a real Betriebsstellen
+                            # ``bst_code``. Two non-workbook shapes stay manual:
+                            #   * synthetic VOR stops, whose ``bst_code`` is a
+                            #     9xxxx placeholder the live workbook never
+                            #     emits (e.g. ``Wien Hauptbahnhof`` 900100) —
+                            #     the case the token check originally fixed; and
+                            #   * WL-/VOR-only haltestellen, which carry no
+                            #     ``bst_code`` at all (e.g. ``source="wl,vor"``).
+                            # The pre-fix ``"oebb" not in tokens`` shortcut
+                            # mis-filed a real workbook station that had merely
+                            # lost its bare ``oebb`` token (``Siebenhirten``,
+                            # bst_id=1371, source="oebb_geonetz,osm") as manual,
+                            # duplicating it against the fresh extract (same
+                            # bst_id in both lists, no dedup at the combine
+                            # step) and tripping ``validate_stations``. Keying
+                            # off a real (non-synthetic) ``bst_code`` keeps the
+                            # synthetic / WL-only entries manual while letting a
+                            # genuine Betriebsstelle round-trip through mapping.
+                            bst_code = entry.get("bst_code")
+                            has_real_oebb_code = (
+                                isinstance(bst_code, str)
+                                and bool(bst_code.strip())
+                                and not is_synthetic_vor_id(bst_code.strip())
+                            )
+                            is_manual = not has_real_oebb_code
                     else:
                         # Backward-compat: entries written before the
                         # ``as_dict`` source-default fix lack a source
