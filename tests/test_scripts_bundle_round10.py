@@ -37,6 +37,7 @@ import pytest
 from scripts import check_overpass_status, update_baustellen_cache
 from scripts import enrich_station_aliases as enrich
 import scripts.update_stammstrecke_hbf as hbf_script
+from src.providers import vor as vor_provider
 
 
 # ---------------------------------------------------------------------------
@@ -133,7 +134,7 @@ def test_query_departure_board_raises_on_vao_error_envelope(
     )
     # Avoid touching the live VOR base URL / auth.
     monkeypatch.setattr(
-        hbf_script.vor_provider, "VOR_BASE_URL", "https://example.invalid/"
+        vor_provider, "VOR_BASE_URL", "https://example.invalid/"
     )
 
     session = MagicMock()
