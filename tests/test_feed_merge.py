@@ -33,9 +33,14 @@ def test_fuzzy_merge_silvester() -> None:
     assert "Details about Lauf." in item["description"]
     assert "Details about Pfad." in item["description"]
 
-    # Check GUID updated
-    assert item["guid"] != "guid1"
-    assert item["guid"] != "guid2"
+    # Check GUID: the survivor's guid is preserved across the peer-merge
+    # so RSS clients keep tracking the same item across cycles, and the
+    # server-side ``first_seen`` lookup (which keys on the guid) survives
+    # the merge instead of resetting every cycle the combined title
+    # shifts. Survivor selection is deterministic via the top-of-function
+    # sort by ``(_identity, guid, title)``; neither item carries
+    # ``_identity`` here, so the lower ``guid`` wins → ``guid1``.
+    assert item["guid"] == "guid1"
 
 def test_fuzzy_merge_pubdate_update() -> None:
     items = [
