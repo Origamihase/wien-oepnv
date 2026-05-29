@@ -100,3 +100,32 @@ class TestNoPrefixNoChange:
         # A title without a line prefix must still pass through.
         raw = "Wien Hauptbahnhof ↔ Mödling"
         assert _clean_title_keep_places(raw) == "Wien Hauptbahnhof ↔ Mödling"
+
+
+class TestLinePrefixColonMandatory:
+    """``_LINE_PREFIX_RE`` MUST require the colon (``:``), not treat it as
+    optional. A colonless title that happens to start with a token + digit
+    pattern (``"R 5 Wien Hbf"``, ``"D 100 Wien"``) is NOT a line-prefixed
+    title and the downstream rebuild must leave it alone.
+
+    Pre-fix the regex carried ``:?\\s*`` (optional colon) and matched
+    colonless titles, mangling the rebuild via a phantom prefix. The
+    companion ``_LEADING_LINE_PREFIX_RE`` already required the colon —
+    the drift is now closed.
+    """
+
+    def test_colonless_title_is_not_line_prefixed(self) -> None:
+        prefix, rest = _extract_line_prefix("R 5 Wien Hbf")
+        assert prefix == ""
+        assert rest == "R 5 Wien Hbf"
+
+    def test_colonless_d100_title_is_not_line_prefixed(self) -> None:
+        prefix, rest = _extract_line_prefix("D 100 Wien")
+        assert prefix == ""
+        assert rest == "D 100 Wien"
+
+    def test_colon_form_still_extracted(self) -> None:
+        # Regression guard: the canonical colon-suffixed form still works.
+        prefix, rest = _extract_line_prefix("REX 7: Wien Hbf ↔ Salzburg")
+        assert prefix == "REX 7"
+        assert rest == "Wien Hbf ↔ Salzburg"

@@ -93,3 +93,18 @@ class TestSentenceBoundaryInDescription:
             )
             is True
         )
+
+    def test_st_poelten_followed_by_sentence_truncates_correctly(self) -> None:
+        """Pre-fix ``partition(". ")`` always cut at the FIRST period —
+        ``"St. Pölten. Bitte ..."`` left head=``"St"`` (unresolvable), so
+        the garbled multi-sentence string passed through verbatim as the
+        captured endpoint. The rightmost-first walk now tries
+        ``"St. Pölten"`` (the longest resolving prefix) and truncates
+        cleanly.
+        """
+        routes = _extract_routes(
+            "Bauarbeiten",
+            "zwischen Wien Hbf und St. Pölten. Bitte beachten Sie die "
+            "Umleitungen.",
+        )
+        assert routes == [("Wien", "St. Pölten")]
