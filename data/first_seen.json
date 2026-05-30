@@ -3033,6 +3033,16 @@
       }
     }
   },
+  "9e3976e9bb5ee545674f34d5b6d143bb76fab0ede012b583b848c10916715046": {
+    "first_seen": "2026-05-30T12:01:05.441914+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective vehicle.",
+        "title": "9A: delays"
+      },
+      "epoch": 2
+    }
+  },
   "9f9e6187c209c35f7459a15952d47555cbf84b2191172cf18db8d559f94cca69": {
     "first_seen": "2026-05-28T11:30:54.626213+00:00",
     "translations": {
@@ -4852,6 +4862,16 @@
       "en": {
         "summary": "Due to an obstacle in the track area, no journeys were possible in Payerbach-Reichenau at the Rax station until 19:04.",
         "title": "Payerbach-Reichenau"
+      },
+      "epoch": 2
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&881568": {
+    "first_seen": "2026-05-30T12:01:05.441914+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to damage to the track between Wien Hetzendorf Bahnhst and Wien Atzgersdorf Bahnhst train journeys to expected 15:00 are only possible with limited effect.",
+        "title": "Wien Hetzendorf \u2194 Wien Atzgersdorf"
       },
       "epoch": 2
     }
