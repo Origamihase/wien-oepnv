@@ -10,16 +10,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   plus die aktuelle Temperatur in °C für Wien. Als Abfrage-Koordinaten
   dienen die des **Wiener Hauptbahnhofs aus dem Stationsverzeichnis**
   (`data/stations.json`, Eintrag „Wien Hauptbahnhof", 48.186116 /
-  16.374399). Datenquelle ist die
-  **Open-Meteo GeoSphere-Austria-API** (`/v1/geosphere_arome_austria`,
-  AROME-Modell der GeoSphere Austria), direkt im Browser abgefragt und
-  gemeinsam mit den Verkehrsdaten über `loadAll()` im 5-Minuten-Takt
-  aktualisiert. Da das Modell `hourly`- statt `current`-Variablen führt,
-  wird die Stundenreihe (`temperature_2m,weather_code,is_day` mit
-  `timeformat=unixtime`) geholt und clientseitig der Wert der aktuellen
-  Stunde zeitzonensicher ausgewählt; ein Fallback auf reine
-  `temperature_2m` greift, falls das Modell eine optionale Variable nicht
-  anbietet. Das Symbol ist ein monochromes Inline-SVG (WMO-Wettercode →
+  16.374399). Datenquelle ist das **GeoSphere-Austria-Modell AROME**
+  über die Open-Meteo-API, direkt im Browser abgefragt und gemeinsam mit
+  den Verkehrsdaten über `loadAll()` im 5-Minuten-Takt aktualisiert. Die
+  Abfrage nutzt eine **Fallback-Kette** (erster Treffer gewinnt), da der
+  offizielle OpenAPI-Spec nur `/v1/forecast` dokumentiert: primär
+  `/v1/forecast` mit
+  `current=temperature_2m,weather_code,is_day&models=geosphere_arome_austria`,
+  dann der dedizierte Endpunkt `/v1/geosphere_arome_austria` mit
+  zeitzonensicher (über `timeformat=unixtime`) gewählter aktueller Stunde
+  der `hourly`-Reihe, zuletzt Best-Match als Notnagel — so zeigt das
+  Widget verlässlich einen Wert, ohne sich auf nur teilweise
+  dokumentierte Endpunkte zu verlassen. Das Symbol ist ein monochromes
+  Inline-SVG (WMO-Wettercode →
   Sonne/Mond/Wolke/Regen/Schnee/Nebel/Gewitter inkl. Tag-/Nacht-Variante),
   Tooltip und `aria-label` (`role="img"`) werden zweisprachig (DE/EN)
   gesetzt. CSP `connect-src` um `https://api.open-meteo.com` erweitert

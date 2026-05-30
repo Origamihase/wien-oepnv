@@ -19,17 +19,20 @@
   const LANG_STORAGE_KEY = "wienoepnv:lang";
 
   // ----- Wetter (Wien) ------------------------------------------------
-  // Open-Meteo GeoSphere-Austria-API (AROME-Modell der GeoSphere Austria,
-  // vormals ZAMG). Wird im Browser des Besuchers abgefragt — der
-  // CSP-``connect-src`` lässt nur ``api.open-meteo.com`` zu — und
-  // gemeinsam mit den Verkehrsdaten in ``loadAll()`` aktualisiert.
-  // Die Doku-Seite des Modells führt ``hourly``-Variablen (keinen
-  // ``current``-Block), daher holen wir die Stundenreihe und wählen
-  // clientseitig den Wert der aktuellen Stunde (``timeformat=unixtime`` →
-  // zeitzonensichere Auswahl). Abfrage-Koordinaten: Wien Hauptbahnhof aus
-  // dem Stationsverzeichnis (data/stations.json — Eintrag
-  // "Wien Hauptbahnhof", bst_id 900100 / eva_nr 8103000).
-  const WEATHER_URL = "https://api.open-meteo.com/v1/geosphere_arome_austria";
+  // Open-Meteo (GeoSphere-Austria-Modell AROME). Wird im Browser des
+  // Besuchers abgefragt — der CSP-``connect-src`` lässt nur
+  // ``api.open-meteo.com`` zu — und gemeinsam mit den Verkehrsdaten in
+  // ``loadAll()`` aktualisiert. ``loadWeather`` probiert mehrere
+  // Request-Formen der Reihe nach (siehe dort): primär den dokumentierten
+  // ``/v1/forecast``-Endpunkt mit ``models=geosphere_arome_austria``,
+  // dann den dedizierten Modell-Endpunkt mit der Stundenreihe, zuletzt
+  // Best-Match als Notnagel — so zeigt das Widget möglichst immer einen
+  // Wert, ohne Annahmen über nur teilweise dokumentierte Endpunkte/Params.
+  // Abfrage-Koordinaten: Wien Hauptbahnhof aus dem Stationsverzeichnis
+  // (data/stations.json — Eintrag "Wien Hauptbahnhof", bst_id 900100 /
+  // eva_nr 8103000).
+  const WEATHER_API = "https://api.open-meteo.com/v1";
+  const WEATHER_MODEL = "geosphere_arome_austria";
   const WEATHER_LAT = "48.186116";
   const WEATHER_LON = "16.374399";
 
@@ -1185,15 +1188,27 @@
     };
   }
 
-  async function fetchWeatherReading(hourlyVars, signal) {
-    const params = new URLSearchParams({
-      latitude: WEATHER_LAT,
-      longitude: WEATHER_LON,
-      hourly: hourlyVars,
-      timeformat: "unixtime",
-      forecast_days: "1",
-    });
-    const res = await fetch(`${WEATHER_URL}?${params.toString()}`, {
+  // Map an Open-Meteo response to the compact ``{temp, code, isDay}``
+  // reading. Prefers the ``current`` block (single-model responses use
+  // unsuffixed keys) and falls back to the nearest-now hourly entry, so
+  // the same parser handles both request shapes below.
+  function readingFromData(data) {
+    const cur = data && data.current;
+    if (cur && typeof cur.temperature_2m === "number"
+        && Number.isFinite(cur.temperature_2m)) {
+      const code = cur.weather_code;
+      const day = cur.is_day;
+      return {
+        temp: cur.temperature_2m,
+        code: typeof code === "number" && Number.isFinite(code) ? code : null,
+        isDay: typeof day === "number" ? day !== 0 : null,
+      };
+    }
+    return weatherReadingFromHourly(data && data.hourly);
+  }
+
+  async function fetchWeather(url, signal) {
+    const res = await fetch(url, {
       cache: "no-cache",
       credentials: "omit",
       redirect: "follow",
@@ -1201,24 +1216,41 @@
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    const reading = weatherReadingFromHourly(data && data.hourly);
-    if (!reading) throw new Error("weather payload without usable hourly data");
+    const reading = readingFromData(data);
+    if (!reading) throw new Error("weather payload without usable data");
     return reading;
   }
 
   async function loadWeather(signal) {
-    let reading;
-    try {
-      reading = await fetchWeatherReading(
-        "temperature_2m,weather_code,is_day", signal,
-      );
-    } catch (err) {
-      if (err && err.name === "AbortError") throw err;
-      // A 4xx most likely means this model doesn't offer one of the
-      // optional variables — retry with just the temperature so the widget
-      // still shows a value (rendered with the neutral fallback icon).
-      reading = await fetchWeatherReading("temperature_2m", signal);
+    const loc = `latitude=${WEATHER_LAT}&longitude=${WEATHER_LON}`;
+    const current = "current=temperature_2m,weather_code,is_day";
+    const hourly =
+      "hourly=temperature_2m,weather_code,is_day&timeformat=unixtime&forecast_days=1";
+    // Tried in order; the first that yields a value wins (every URL stays
+    // on api.open-meteo.com, the only host the CSP allows). The Open-Meteo
+    // OpenAPI spec documents only ``/v1/forecast`` — model-specific paths
+    // are undocumented — so GeoSphere data is requested primarily via
+    // ``/v1/forecast`` + ``models=`` (the safest, documented form). The
+    // dedicated endpoint with its documented hourly series is the second
+    // try, and a plain best-match request is the last-resort so the widget
+    // still shows a value even if the GeoSphere model identifier changes.
+    const urls = [
+      `${WEATHER_API}/forecast?${loc}&${current}&models=${WEATHER_MODEL}`,
+      `${WEATHER_API}/${WEATHER_MODEL}?${loc}&${hourly}`,
+      `${WEATHER_API}/forecast?${loc}&${current}`,
+    ];
+    let reading = null;
+    let lastErr = null;
+    for (const url of urls) {
+      try {
+        reading = await fetchWeather(url, signal);
+        break;
+      } catch (err) {
+        if (err && err.name === "AbortError") throw err;
+        lastErr = err;
+      }
     }
+    if (!reading) throw lastErr || new Error("weather unavailable");
     weatherState = reading;
     renderWeather();
   }
