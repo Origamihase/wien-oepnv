@@ -39,8 +39,8 @@ class _ClientCMMixin:
     def __enter__(self) -> _ClientCMMixin:
         return self
 
-    def __exit__(self, *exc: object) -> bool:
-        return False
+    def __exit__(self, *exc: object) -> None:
+        return None
 
 
 class _SuccessClient(_ClientCMMixin):
