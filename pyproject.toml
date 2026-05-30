@@ -41,6 +41,11 @@ ignore = [
 "scripts/run_static_checks.py" = ["S603"]
 "scripts/update_all_stations.py" = ["S603"]
 "scripts/update_station_directory.py" = ["S603"]
+# Spawns a real ``git`` process to build throwaway repos for the sitemap
+# lastmod regression. Static ``["git", *args]`` arg list, never user input.
+# A file-specific ignore is version-robust (ruff 0.4.x vs newer anchor the
+# S603 range to different lines, so an inline ``# noqa`` cannot satisfy both).
+"tests/scripts/test_generate_sitemap_lastmod.py" = ["S603", "S607"]
 "tests/**/*.py" = [
   "S101", "S113", "S314", "S105", "S108", "S110", "S310", "F841",
   # bugbear rules deliberately allowed in tests:
