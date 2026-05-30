@@ -260,7 +260,12 @@ LINE_CODE_RE = re.compile(
 RUF_BUS_RE = re.compile(r"Rufbus\s+([A-Za-z0-9]+)", re.IGNORECASE)
 DATE_FULL_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\.(?:\d{2}|\d{4})\b")
 DATE_SHORT_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\b")
-TIME_RE = re.compile(r"\b\d{1,2}:\d{2}\b")
+# ``(?::\d{2})?`` captures the optional seconds component. Pre-fix the
+# regex matched only ``HH:MM``; an ``HH:MM:SS`` timestamp left ``:SS``
+# behind, and the trailing 2-digit ``SS`` was then extracted as a phantom
+# WL line via the ``[0-9]{1,3}[A-Z]?`` branch of ``LINE_CODE_RE``
+# (``Sperre 17:30:45 Ausfall`` -> phantom line ``45``).
+TIME_RE = re.compile(r"\b\d{1,2}:\d{2}(?::\d{2})?\b")
 ADDRESS_NO_RE = re.compile(
     # Two shapes covered:
     #   1) Compound street names where the suffix is glued onto the prefix
@@ -284,8 +289,14 @@ ADDRESS_NO_RE = re.compile(
     r"\s+\d+(?:\s*[-–—/]\s*\d+)?[A-Za-z]?\b",
     re.IGNORECASE,
 )
+# ``[A-Za-z]?`` captures the optional alpha suffix on a house number.
+# Pre-fix the trailing ``\b`` required the number to end at a word boundary
+# WITHOUT a letter (``Stiege 12`` masked, ``Stiege 12A`` did NOT — the
+# ``12`` matched but ``A`` then escaped to ``LINE_CODE_RE`` and surfaced as
+# a phantom line ``12A``). Mirrors the alpha-suffix already supported by
+# the sibling ``ADDRESS_NO_RE`` numeric-tail above (``[A-Za-z]?\b``).
 ADDRESS_NO_PRE_RE = re.compile(
-    r"\b(?:ggü\.?|gegenüber|Nr\.?|Nummer|Hausnr\.?|Objekt|Stiege|Tür|Top)\s+\d+\b",
+    r"\b(?:ggü\.?|gegenüber|Nr\.?|Nummer|Hausnr\.?|Objekt|Stiege|Tür|Top)\s+\d+[A-Za-z]?\b",
     re.IGNORECASE,
 )
 

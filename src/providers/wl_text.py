@@ -268,9 +268,21 @@ TITLE_TOPIC_TOKENS = {
     "gesperrt",
 }
 
+# Pre-fix ``betrieb\s+ab.*`` (and the sibling ``betrieb\s+nur.*``) used a
+# greedy ``.*`` that swallowed every downstream token through to end-of-
+# string, eating legitimate topic tokens — ``Sperre Betrieb ab Karlsplatz
+# mit Unfall`` collapsed to ``sperre`` (the ``unfall`` topic token was
+# lost), so two unrelated incidents that happened to follow a "Betrieb
+# ab ..." preamble degenerated to the same ``topic_key`` and collided in
+# the WL identity / dedup pipeline. Replacing ``.*`` with
+# ``\s+\S+`` strips the canonical "Betrieb ab <Ort>" / "Betrieb nur
+# <Ort>" phrasing (one location word, matching what the upstream feed
+# actually emits — verified against current cache snapshots) and stops
+# at the next whitespace so downstream tokens survive for the topic-key
+# extractor at ``_topic_key_from_title``.
 _GENERIC_FILLER = re.compile(
     r"\b(fahrtbehinderung|verkehrsbehinderung|behinderung|störung|stoerung|hinweis|meldung|serviceinfo|service\-info|"
-    r"betrieb\s+ab.*|betrieb\s+nur.*)\b",
+    r"betrieb\s+ab\s+\S+|betrieb\s+nur\s+\S+)\b",
     re.IGNORECASE,
 )
 
