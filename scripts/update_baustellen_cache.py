@@ -576,7 +576,14 @@ def _parse_datetime(value: str | float | int | None) -> datetime | None:
     if isinstance(value, int | float):
         try:
             return datetime.fromtimestamp(float(value), tz=VIENNA_TZ)
-        except (ValueError, OSError):
+        except (ValueError, OSError, OverflowError):
+            # ``OverflowError`` (NOT a ValueError/OSError subclass) is raised by
+            # ``datetime.fromtimestamp`` for an out-of-range epoch — e.g. a
+            # garbled WFS ``BEGINN``/``ENDE`` numeric field carrying ``1e20``
+            # (``loads_finite`` admits any finite number). Without this catch it
+            # propagated through ``_feature_to_event`` → ``_collect_events`` →
+            # ``main`` and crashed the whole baustellen cache update. Mirrors the
+            # ``OverflowError`` already caught in the string/dateutil branch below.
             return None
     # value is narrowed to str here by the type annotation and prior branches
     candidate = value.strip()
