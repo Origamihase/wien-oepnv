@@ -201,6 +201,17 @@ class CircuitBreaker:
         self._consecutive_failures = 0
         self._opened_at: float | None = None
         self._lock = threading.RLock()
+        # ``_probe_in_flight`` enforces the docstring's "exactly one
+        # probe is admitted" contract for HALF_OPEN. Without this flag
+        # every thread that observed HALF_OPEN before the in-flight
+        # probe resolved passed the gate and ran a SECOND probe against
+        # the recovering upstream — a documented but harmless race
+        # before, a real DoS multiplier under high concurrency. The
+        # flag is set/cleared under ``self._lock`` together with the
+        # state transition; the only call sites are inside ``call()``
+        # (set on OPEN→HALF_OPEN admit, cleared on probe completion via
+        # the success/failure recorders).
+        self._probe_in_flight = False
 
         # Register AFTER the instance is fully constructed so a partial
         # state cannot leak into a concurrent ``iter_instances`` snapshot.
@@ -261,6 +272,8 @@ class CircuitBreaker:
             self._state = CircuitState.CLOSED
             self._consecutive_failures = 0
             self._opened_at = None
+            # Probe resolved → release the HALF_OPEN single-flight slot.
+            self._probe_in_flight = False
 
     def record_failure(self) -> None:
         """Mark a failed call. In CLOSED, increments the counter and may
@@ -274,6 +287,8 @@ class CircuitBreaker:
                 )
                 self._state = CircuitState.OPEN
                 self._opened_at = self._clock()
+                # Probe resolved → release the HALF_OPEN single-flight slot.
+                self._probe_in_flight = False
                 return
 
             self._consecutive_failures += 1
@@ -303,6 +318,19 @@ class CircuitBreaker:
                 raise CircuitBreakerOpen(
                     f"CircuitBreaker[{self.name}] is OPEN; refusing call"
                 )
+            # HALF_OPEN admit gate: exactly one probe is allowed in
+            # flight at a time (per the class docstring). Subsequent
+            # threads observing HALF_OPEN with a probe already running
+            # are refused — same surface as the OPEN branch above —
+            # so the recovering upstream isn't pile-driven by N
+            # concurrent probes the moment the recovery timer expires.
+            if self._state is CircuitState.HALF_OPEN:
+                if self._probe_in_flight:
+                    raise CircuitBreakerOpen(
+                        f"CircuitBreaker[{self.name}] is HALF_OPEN with a "
+                        f"probe in flight; refusing call"
+                    )
+                self._probe_in_flight = True
 
         try:
             result = func(*args, **kwargs)
@@ -322,6 +350,7 @@ class CircuitBreaker:
             self._state = CircuitState.CLOSED
             self._consecutive_failures = 0
             self._opened_at = None
+            self._probe_in_flight = False
             log.info("CircuitBreaker[%s]: reset to CLOSED", self.name)
 
 

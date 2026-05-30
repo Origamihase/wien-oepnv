@@ -96,6 +96,22 @@ _AID_RE: Final[re.Pattern[str]] = re.compile(
     r"""\baid\s*:\s*['"]([0-9A-Za-z.\-_]{1,128})['"]""",
 )
 
+# Strip ``/* … */`` block comments and ``// …`` line comments before the
+# credential regexes scan: a stale doc-comment containing the literal
+# ``ver: '1.30', aid: 'Old...'`` would otherwise be the FIRST occurrence
+# ``re.search`` matches (see ``_extract_profile``). The two pre-fix
+# substitutions don't need to understand JS lexer rules — string
+# literals can in principle contain ``//`` sequences, but the upstream
+# HAFAS sources never embed comment markers inside a credential string.
+_JS_BLOCK_COMMENT_RE: Final[re.Pattern[str]] = re.compile(r"/\*[\s\S]*?\*/")
+_JS_LINE_COMMENT_RE: Final[re.Pattern[str]] = re.compile(r"//[^\n]*")
+
+
+def _strip_js_comments(source: str) -> str:
+    """Return *source* with ``/* … */`` and ``// …`` comments removed."""
+    return _JS_LINE_COMMENT_RE.sub("", _JS_BLOCK_COMMENT_RE.sub("", source))
+
+
 # Tight wall-clock cap. The fetch happens at the very start of the
 # station-update workflow, so a slow upstream here directly delays the
 # whole cron tick.
@@ -260,8 +276,19 @@ def _extract_profile(source: str) -> dict[str, str] | None:
     then carries an empty string so downstream consumers can treat
     "no salt" as a known state rather than a parse failure.
     """
-    ver_match = _VER_RE.search(source)
-    aid_match = _AID_RE.search(source)
+    # Strip JS comments before the credential regexes scan: a leading
+    # ``/** Previously used ver: '1.30', aid: 'Old...' */`` doc block (or
+    # any inline ``//`` line-comment carrying a stale example value)
+    # would otherwise be the FIRST occurrence ``.search()`` matches and
+    # the live profile literal further down would be ignored — yielding
+    # stale credentials committed to ``data/hafas_profile.json`` until
+    # the next weekly sync, by which point every HAFAS call has been
+    # failing silently for days. Stripping comments first makes the
+    # match unambiguous; the active profile literal is the only
+    # remaining candidate.
+    sanitised = _strip_js_comments(source)
+    ver_match = _VER_RE.search(sanitised)
+    aid_match = _AID_RE.search(sanitised)
 
     missing: list[str] = []
     if ver_match is None:
@@ -279,7 +306,7 @@ def _extract_profile(source: str) -> dict[str, str] | None:
         "ver": ver_match.group(1),
         "aid": aid_match.group(1),
     }
-    salt_match = _SALT_RE.search(source)
+    salt_match = _SALT_RE.search(sanitised)
     if salt_match is not None:
         extracted["salt"] = salt_match.group(1)
     else:

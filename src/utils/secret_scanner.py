@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import fnmatch
 import logging
 from dataclasses import dataclass
 from pathlib import Path
@@ -2927,11 +2928,47 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
 
 
 def _should_ignore(path: Path, patterns: Sequence[str], base_dir: Path) -> bool:
+    """Apply the operator-supplied ``.secret-scan-ignore`` patterns.
+
+    Pre-fix ``relative.match(pattern)`` used ``pathlib.PurePath.match``,
+    whose semantics match only against the last path component for
+    pattern-without-``/`` cases — so a single line ``*`` in
+    ``.secret-scan-ignore`` matched *every* file regardless of depth
+    (``PurePath('a/b/c').match('*') is True``), silently disabling the
+    scanner across the whole repo; and a line ``.env`` matched every
+    nested ``.env`` (e.g. ``src/config/.env``), masking real plants in
+    sub-tree configs. Neither aligns with the gitignore intuition the
+    one-line comment at the call site implies.
+
+    Post-fix the match uses ``fnmatch.fnmatch`` against the FULL forward-
+    slash-normalised relative path AND the basename, so:
+
+    * A pattern with ``/`` is anchored against the full path
+      (``src/leak.py`` matches only that file).
+    * A pattern without ``/`` matches the basename (``*.env`` matches
+      every ``.env`` at any depth, in line with operator expectation).
+    * Bare ``*`` no longer matches everything because ``fnmatch``'s
+      ``*`` does NOT cross ``/`` boundaries when applied to the full
+      path, and at the basename layer it only matches files in the
+      repo root with no dot in the name.
+
+    The behaviour is closer to ``gitignore`` than the previous
+    ``PurePath.match`` and never silently drops the scanner's coverage.
+    """
     try:
         relative = path.relative_to(base_dir)
     except ValueError:
         return False
-    return any(relative.match(pattern) for pattern in patterns)
+    rel_str = relative.as_posix()
+    rel_name = relative.name
+    for pattern in patterns:
+        if "/" in pattern:
+            if fnmatch.fnmatch(rel_str, pattern):
+                return True
+        else:
+            if fnmatch.fnmatch(rel_name, pattern):
+                return True
+    return False
 
 
 def scan_repository(

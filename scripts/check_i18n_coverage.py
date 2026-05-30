@@ -158,9 +158,14 @@ def _extract_js_keys(content: str) -> dict[str, str]:
     out: dict[str, str] = {}
     for match in _JS_DICT_KEY_RE.finditer(block):
         key = match.group(1)
-        if key in out:
-            # Duplicate keys silently overwrite at runtime; surface it.
-            continue
+        # JavaScript object-literal duplicate-key semantics: the LAST
+        # occurrence's value is what the runtime exposes. Pre-fix this
+        # loop kept the FIRST value (``if key in out: continue``), so a
+        # hand-written ``I18N_EN`` with a non-empty earlier entry then
+        # an empty later override (``"k": "good"`` then ``"k": ""``)
+        # reported "not empty" while the page rendered blank — the
+        # opposite of what ``_value_is_empty`` exists to detect. The
+        # ``out[key] = …`` below now overwrites, mirroring runtime.
         # Pull a short excerpt of the value to detect ``: ""``.
         value_start = match.end()
         value_chunk = block[value_start : value_start + 80]

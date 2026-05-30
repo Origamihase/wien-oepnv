@@ -68,7 +68,11 @@ def main() -> int:
         vor_id = entry.get("vor_id")
         name = entry.get("station_name") or "Unknown"
 
-        if not vor_id:
+        # ``vor_id is None`` (or empty string) is "missing"; integer ``0``
+        # / ``False`` (etc.) are STRUCTURALLY PRESENT — pre-fix
+        # ``if not vor_id`` reported them as missing and short-circuited
+        # the more informative downstream invalid-id message.
+        if vor_id is None or vor_id == "":
             print(f"Entry {i} ({name}) missing vor_id", file=sys.stderr)
             errors += 1
             continue
