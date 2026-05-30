@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://raw.githubusercontent.com; font-src 'self'; form-action 'none'; manifest-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; media-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://raw.githubusercontent.com https://api.open-meteo.com; font-src 'self'; form-action 'none'; manifest-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; media-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#0F1736" media="(prefers-color-scheme: light)">
@@ -18,7 +18,7 @@
   <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
   <link rel="alternate" type="application/rss+xml" title="Vienna Public Transport Feed (English)" href="feed.en.xml">
   <link rel="icon" type="image/svg+xml" href="assets/site-favicon.svg">
-  <link rel="stylesheet" href="assets/site.min.css?v=da2a36718f98">
+  <link rel="stylesheet" href="assets/site.min.css?v=698f42a9a85c">
   <!-- The dashboard fetches the statistics CSVs from raw.githubusercontent.com
        once site.min.js has executed; resolving the DNS upfront shaves ~50–200 ms
        off the first CSV request on cold connections. The ``preconnect`` hint
@@ -29,6 +29,13 @@
        upcoming CORS fetch instead of opening a second one. -->
   <link rel="dns-prefetch" href="https://raw.githubusercontent.com" crossorigin>
   <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+  <!-- The header weather widget calls the Open-Meteo GeoSphere-Austria
+       API on load (and on every transit-data refresh). Resolving its DNS
+       up-front trims the time the widget shows its "–" placeholder. Only
+       a ``dns-prefetch`` hint (no ``preconnect``) because the weather
+       call is secondary to the feed/CSV fetch above and must not compete
+       for an early warmed socket. -->
+  <link rel="dns-prefetch" href="https://api.open-meteo.com">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_AT">
@@ -80,6 +87,21 @@
           <span class="brand__sub" data-i18n="brand-sub">Live-Dashboard</span>
         </span>
       </a>
+      <!-- Wetter-Widget (Wien): kleines Symbol + aktuelle Temperatur in °C.
+           Quelle: Open-Meteo GeoSphere-Austria-API, direkt im Browser
+           geladen (CSP ``connect-src`` erlaubt nur ``api.open-meteo.com``)
+           und gemeinsam mit den Verkehrsdaten via ``loadAll()`` im
+           5-Minuten-Takt aktualisiert. ``renderWeather()`` füllt Icon und
+           Temperatur; die reservierte Breite hält das Header-Layout stabil
+           (kein CLS), solange noch der ``–``-Platzhalter steht. role="img"
+           + dynamisch gesetztes aria-label fassen Symbol und Wert zu einer
+           barrierefreien Einheit zusammen; die Lokalisierung der Tooltip-/
+           aria-Texte erfolgt in site.js (kein ``data-i18n``-Knoten). -->
+      <div class="weather" id="weather" role="img" data-state="loading"
+           title="Wetter in Wien" aria-label="Aktuelles Wetter in Wien">
+        <span class="weather__icon" id="weather-icon" aria-hidden="true"></span>
+        <span class="weather__temp" id="weather-temp">–</span>
+      </div>
       <nav class="site-nav" aria-label="Hauptnavigation" data-i18n-aria-label="nav-main">
         <ul>
           <li><a href="#feed" data-i18n="nav-feed">Meldungen</a></li>
@@ -329,6 +351,6 @@
     </div>
   </footer>
 
-  <script src="assets/site.min.js?v=251609ddc417" defer></script>
+  <script src="assets/site.min.js?v=0f0f7958244c" defer></script>
 </body>
 </html>

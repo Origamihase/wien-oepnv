@@ -265,6 +265,47 @@ code {
 .lang-switch__btn.is-active { color: var(--c-accent-ink); background: var(--c-accent); }
 .lang-switch__sep { color: var(--c-text-subtle); user-select: none; }
 
+/* Weather widget (Vienna) — small icon + current temperature shown in the
+ * header between the brand and the nav. Data comes from the Open-Meteo
+ * GeoSphere-Austria API (fetched in the browser, refreshed together with
+ * the transit data); site.js fills the icon + value at runtime. The temp
+ * slot reserves its eventual width so the bootstrap "–" → "21 °C" swap
+ * never shifts the surrounding header (no CLS). Every colour is a theme
+ * token, so dark mode needs no override. */
+.weather {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex: none;
+  margin-left: 0.1rem;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  background: var(--c-surface);
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+.weather__icon {
+  display: inline-flex;
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--c-text-subtle);
+}
+.weather__icon svg { width: 100%; height: 100%; display: block; }
+.weather__temp {
+  /* tabular-nums + a fixed min-width keep the widest realistic reading
+   * ("−15 °C") and the "–" placeholder in an identical box. */
+  display: inline-block;
+  min-width: 3.5em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-text);
+}
+
 /* Train strip between header and hero */
 .trainline {
   position: relative;

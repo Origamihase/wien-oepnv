@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Dashboard: Wetter-Widget im Header (Wien, 2026-05-30)**:
+  Der Header zeigt jetzt links neben der Marke ein kleines Wetter-Symbol
+  plus die aktuelle Temperatur in °C für Wien. Datenquelle ist die
+  **Open-Meteo GeoSphere-Austria-API** (`/v1/geosphere_arome_austria`,
+  AROME-Modell der GeoSphere Austria), direkt im Browser abgefragt und
+  gemeinsam mit den Verkehrsdaten über `loadAll()` im 5-Minuten-Takt
+  aktualisiert. Da das Modell `hourly`- statt `current`-Variablen führt,
+  wird die Stundenreihe (`temperature_2m,weather_code,is_day` mit
+  `timeformat=unixtime`) geholt und clientseitig der Wert der aktuellen
+  Stunde zeitzonensicher ausgewählt; ein Fallback auf reine
+  `temperature_2m` greift, falls das Modell eine optionale Variable nicht
+  anbietet. Das Symbol ist ein monochromes Inline-SVG (WMO-Wettercode →
+  Sonne/Mond/Wolke/Regen/Schnee/Nebel/Gewitter inkl. Tag-/Nacht-Variante),
+  Tooltip und `aria-label` (`role="img"`) werden zweisprachig (DE/EN)
+  gesetzt. CSP `connect-src` um `https://api.open-meteo.com` erweitert
+  (plus `dns-prefetch`-Hinweis); ein fehlgeschlagener Wetterabruf lässt
+  den globalen Feed-Status unberührt — das Widget behält dann seinen
+  letzten Wert bzw. den `–`-Platzhalter. Die reservierte Breite des
+  Temperatur-Slots verhindert Layout-Shift (kein CLS).
 * **Backup-Cron: Freshness-Gate gegen redundante API-Last (2026-05-26)**:
   Der neue stündliche Sicherheits-Cron lief bisher rein additiv zu IFTTT
   und verursachte ~+24 Ticks/Tag (VAO ~48→~72/Tag — innerhalb des durch
