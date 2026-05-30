@@ -18,6 +18,21 @@
   const REFRESH_MS = 5 * 60 * 1000; // 5 Minuten
   const LANG_STORAGE_KEY = "wienoepnv:lang";
 
+  // ----- Wetter (Wien) ------------------------------------------------
+  // Open-Meteo GeoSphere-Austria-API (AROME-Modell der GeoSphere Austria,
+  // vormals ZAMG). Wird im Browser des Besuchers abgefragt — der
+  // CSP-``connect-src`` lässt nur ``api.open-meteo.com`` zu — und
+  // gemeinsam mit den Verkehrsdaten in ``loadAll()`` aktualisiert.
+  // Die Doku-Seite des Modells führt ``hourly``-Variablen (keinen
+  // ``current``-Block), daher holen wir die Stundenreihe und wählen
+  // clientseitig den Wert der aktuellen Stunde (``timeformat=unixtime`` →
+  // zeitzonensichere Auswahl). Abfrage-Koordinaten: Wien Hauptbahnhof aus
+  // dem Stationsverzeichnis (data/stations.json — Eintrag
+  // "Wien Hauptbahnhof", bst_id 900100 / eva_nr 8103000).
+  const WEATHER_URL = "https://api.open-meteo.com/v1/geosphere_arome_austria";
+  const WEATHER_LAT = "48.186116";
+  const WEATHER_LON = "16.374399";
+
   // ----- Lokalisierung (Zero-Tracker) ---------------------------------
   // Statisches Wörterbuch: das Frontend-UI hat wenig Text, deshalb wird
   // hier KEIN externes Fetch benötigt. Schlüssel decken sich mit
@@ -297,6 +312,35 @@
   function ct(key) {
     const dict = currentLang === "en" ? CHART_TEXT_EN : CHART_TEXT_DE;
     return dict[key] || CHART_TEXT_DE[key] || key;
+  }
+
+  // Weather-widget strings rendered dynamically (icon tooltip + aria
+  // label), analogous to CHART_TEXT — NOT covered by ``data-i18n`` because
+  // the header widget's text is built at runtime by ``renderWeather``. The
+  // condition keys mirror the buckets returned by ``weatherCondition``.
+  const WEATHER_TEXT_DE = {
+    aria: "Aktuelles Wetter in Wien",
+    clear: "klar",
+    partly: "teils bewölkt",
+    cloudy: "bewölkt",
+    fog: "Nebel",
+    rain: "Regen",
+    snow: "Schnee",
+    thunder: "Gewitter",
+  };
+  const WEATHER_TEXT_EN = {
+    aria: "Current weather in Vienna",
+    clear: "clear",
+    partly: "partly cloudy",
+    cloudy: "cloudy",
+    fog: "fog",
+    rain: "rain",
+    snow: "snow",
+    thunder: "thunderstorm",
+  };
+  function wt(key) {
+    const dict = currentLang === "en" ? WEATHER_TEXT_EN : WEATHER_TEXT_DE;
+    return dict[key] || WEATHER_TEXT_DE[key] || key;
   }
 
   // ----- DOM helper -----
@@ -978,6 +1022,207 @@
     root.append(frag);
   }
 
+  // ----- Weather widget -----
+
+  // Lucide-style monochrome icons (stroke = currentColor). Each entry is a
+  // list of <circle>/<path> primitives assembled by ``buildWeatherIcon``
+  // via the same CSP-safe ``svg()`` helper the bar charts use — no inline
+  // styles, no external image requests.
+  const WEATHER_ICONS = {
+    sun: {
+      circles: [["12", "12", "4"]],
+      paths: [
+        "M12 2v2", "M12 20v2", "m4.93 4.93 1.41 1.41",
+        "m17.66 17.66 1.41 1.41", "M2 12h2", "M20 12h2",
+        "m6.34 17.66-1.41 1.41", "m19.07 4.93-1.41 1.41",
+      ],
+    },
+    moon: { paths: ["M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"] },
+    "cloud-sun": {
+      paths: [
+        "M12 2v2", "m4.93 4.93 1.41 1.41", "M20 12h2",
+        "m19.07 4.93-1.41 1.41", "M15.947 12.65a4 4 0 0 0-5.925-4.128",
+        "M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z",
+      ],
+    },
+    cloud: { paths: ["M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"] },
+    "cloud-fog": {
+      paths: [
+        "M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242",
+        "M16 17H7", "M17 21H9",
+      ],
+    },
+    "cloud-rain": {
+      paths: [
+        "M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242",
+        "M16 14v6", "M8 14v6", "M12 16v6",
+      ],
+    },
+    "cloud-snow": {
+      paths: [
+        "M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242",
+        "M8 15h.01", "M8 19h.01", "M12 17h.01", "M12 21h.01",
+        "M16 15h.01", "M16 19h.01",
+      ],
+    },
+    "cloud-bolt": {
+      paths: [
+        "M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973",
+        "m13 12-3 5h4l-3 5",
+      ],
+    },
+  };
+
+  function buildWeatherIcon(name) {
+    const def = WEATHER_ICONS[name] || WEATHER_ICONS.cloud;
+    const node = svg("svg", {
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      "stroke-width": "2",
+      "stroke-linecap": "round",
+      "stroke-linejoin": "round",
+      "aria-hidden": "true",
+      focusable: "false",
+    });
+    for (const [cx, cy, r] of def.circles || []) {
+      node.append(svg("circle", { cx, cy, r }));
+    }
+    for (const d of def.paths || []) {
+      node.append(svg("path", { d }));
+    }
+    return node;
+  }
+
+  // WMO weather interpretation code → coarse condition bucket. Mirrors the
+  // table in the Open-Meteo docs (0 clear … 95+ thunderstorm); the bucket
+  // drives both the icon and the localized label/tooltip.
+  function weatherCondition(code) {
+    if (code === 0) return "clear";
+    if (code === 1 || code === 2) return "partly";
+    if (code === 3) return "cloudy";
+    if (code === 45 || code === 48) return "fog";
+    if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) return "rain";
+    if ((code >= 71 && code <= 77) || code === 85 || code === 86) return "snow";
+    if (code >= 95) return "thunder";
+    return "cloudy";
+  }
+
+  // ``isDay === false`` swaps the only two icons that read wrong at night:
+  // a bright sun (clear) and the sunny-cloud (partly). Everything else is
+  // day/night-agnostic. ``null`` (field absent) is treated as daytime.
+  function weatherIconName(condition, isDay) {
+    if (condition === "clear") return isDay === false ? "moon" : "sun";
+    if (condition === "partly") return isDay === false ? "cloud" : "cloud-sun";
+    if (condition === "fog") return "cloud-fog";
+    if (condition === "rain") return "cloud-rain";
+    if (condition === "snow") return "cloud-snow";
+    if (condition === "thunder") return "cloud-bolt";
+    return "cloud";
+  }
+
+  // Last successful reading, re-rendered on a language switch (like
+  // ``feedState``) so the tooltip/aria label follow ``currentLang``
+  // without a refetch.
+  let weatherState = null;
+
+  function renderWeather() {
+    const widget = $("#weather");
+    const iconNode = $("#weather-icon");
+    const tempNode = $("#weather-temp");
+    if (!widget || !iconNode || !tempNode || !weatherState) return;
+    const { temp, code, isDay } = weatherState;
+    const condition = Number.isFinite(code) ? weatherCondition(code) : "cloudy";
+    // de-AT / SI convention: number, NBSP, unit ("21 °C"). The NBSP keeps
+    // the value and unit on one line inside the reserved temp slot.
+    const tempText = `${nfInt.format(Math.round(temp))} °C`;
+    tempNode.textContent = tempText;
+    clear(iconNode);
+    iconNode.append(buildWeatherIcon(weatherIconName(condition, isDay)));
+    widget.dataset.state = "ready";
+    widget.dataset.condition = condition;
+    const label = `${wt("aria")}: ${tempText}, ${wt(condition)}`;
+    widget.setAttribute("aria-label", label);
+    widget.setAttribute("title", label);
+  }
+
+  // Pick the hourly entry closest to "now" and map it to the compact
+  // ``{temp, code, isDay}`` reading the widget renders. ``hourly.time`` is
+  // requested as ``unixtime`` (absolute UTC seconds), so the nearest-now
+  // search is independent of both the API timezone and the visitor's
+  // local clock. Optional fields degrade to ``null`` (→ neutral icon).
+  function weatherReadingFromHourly(hourly) {
+    const times = hourly && hourly.time;
+    const temps = hourly && hourly.temperature_2m;
+    if (!Array.isArray(times) || !Array.isArray(temps) || times.length === 0) {
+      return null;
+    }
+    const nowSec = Date.now() / 1000;
+    let best = -1;
+    let bestDiff = Infinity;
+    for (let i = 0; i < times.length; i++) {
+      const t = Number(times[i]);
+      const temp = temps[i];
+      // Only consider hours with a real numeric temperature. Open-Meteo
+      // emits ``null`` for gaps, and ``Number(null)`` is ``0`` — without
+      // the ``typeof`` guard a gap at the nearest hour would render as a
+      // bogus "0 °C".
+      if (!Number.isFinite(t) || typeof temp !== "number" || !Number.isFinite(temp)) {
+        continue;
+      }
+      const diff = Math.abs(t - nowSec);
+      if (diff < bestDiff) { bestDiff = diff; best = i; }
+    }
+    if (best < 0) return null;
+    const codeArr = hourly.weather_code;
+    const dayArr = hourly.is_day;
+    const codeVal = Array.isArray(codeArr) ? codeArr[best] : null;
+    const dayVal = Array.isArray(dayArr) ? dayArr[best] : null;
+    return {
+      temp: temps[best],
+      code: typeof codeVal === "number" && Number.isFinite(codeVal) ? codeVal : null,
+      isDay: typeof dayVal === "number" ? dayVal !== 0 : null,
+    };
+  }
+
+  async function fetchWeatherReading(hourlyVars, signal) {
+    const params = new URLSearchParams({
+      latitude: WEATHER_LAT,
+      longitude: WEATHER_LON,
+      hourly: hourlyVars,
+      timeformat: "unixtime",
+      forecast_days: "1",
+    });
+    const res = await fetch(`${WEATHER_URL}?${params.toString()}`, {
+      cache: "no-cache",
+      credentials: "omit",
+      redirect: "follow",
+      signal,
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const reading = weatherReadingFromHourly(data && data.hourly);
+    if (!reading) throw new Error("weather payload without usable hourly data");
+    return reading;
+  }
+
+  async function loadWeather(signal) {
+    let reading;
+    try {
+      reading = await fetchWeatherReading(
+        "temperature_2m,weather_code,is_day", signal,
+      );
+    } catch (err) {
+      if (err && err.name === "AbortError") throw err;
+      // A 4xx most likely means this model doesn't offer one of the
+      // optional variables — retry with just the temperature so the widget
+      // still shows a value (rendered with the neutral fallback icon).
+      reading = await fetchWeatherReading("temperature_2m", signal);
+    }
+    weatherState = reading;
+    renderWeather();
+  }
+
   // ----- Loading orchestration -----
 
   let refreshTimer = null;
@@ -1017,6 +1262,11 @@
         () => setLastUpdate(new Date()),
         () => {},
       ),
+      // Weather is decoupled from the global status: a failed weather
+      // fetch (API down, offline, blocked host) must not flip the feed
+      // status to "error". On failure the widget simply keeps its last
+      // value or the bootstrap "–" placeholder.
+      loadWeather(ctrl.signal).then(() => {}, () => {}),
     ];
     for (const id of loadedSections) {
       const loader = SECTION_LOADERS[id];
@@ -1322,6 +1572,9 @@
       applyTranslationsToDom(lang);
       // Re-render dynamic UI that did not go through ``data-i18n``.
       renderFeed();
+      // Relabel the weather tooltip/aria from cached state in the new
+      // language (loadAll() below refetches too, but this is instant).
+      renderWeather();
       // Re-fetch the feed in the new language (no full reload — keeps
       // the strict CSP intact).
       loadAll();
