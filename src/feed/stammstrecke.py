@@ -32,15 +32,20 @@ Operational notes:
 """
 from __future__ import annotations
 
+import json as _json_lib
 import logging
 from collections import defaultdict
+from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import datetime, timedelta
+from pathlib import Path
 from statistics import mean
 from typing import Any, Final
 from zoneinfo import ZoneInfo
 
+from src.utils.files import atomic_write, loads_finite, read_capped_text
 from src.utils.ids import make_guid
+from src.utils.logging import sanitize_log_arg
 from src.utils.stats import (
     StammstreckeObservation,
     read_recent_stammstrecke_observations,
@@ -49,6 +54,11 @@ from src.utils.stats import (
 LOGGER = logging.getLogger("feed.stammstrecke")
 
 VIENNA_TZ: Final = ZoneInfo("Europe/Vienna")
+
+# Repository root — for resolving the on-disk
+# ``cache/stammstrecke/episode_starts.json`` ledger. ``parents[2]``
+# walks ``stammstrecke.py`` → ``feed/`` → ``src/`` → repo root.
+_REPO_ROOT: Final = Path(__file__).resolve().parents[2]
 
 # Threshold and event-shape constants. Single source of truth — the
 # cron script no longer carries its own copy of these (it writes raw
@@ -103,6 +113,37 @@ FEED_WINDOW: Final = timedelta(hours=1)
 EPISODE_LOOKBACK: Final = timedelta(hours=6)
 EPISODE_GAP_TOLERANCE: Final = timedelta(minutes=70)
 
+# Path to the persisted episode-start ledger. One entry per direction
+# with a currently-active episode (``{direction.target_label: ISO
+# datetime}``). Wiped per-direction when the trigger gate no longer
+# fires for that direction (the episode has ended).
+#
+# Why this exists: ``_episode_start`` walks an at-most ``EPISODE_LOOKBACK``-
+# wide observation window backwards through above-threshold rows. For an
+# episode that has lasted longer than the lookback (6 h), the oldest row
+# still inside the window is the window edge — NOT the true episode start.
+# As the lookback window slides forward each build cycle the returned
+# ``episode_start`` advances with it, which in turn drifts the derived
+# ``first_seen`` / ``guid`` / ``_identity`` (all derived from
+# ``iso_first_seen`` in ``_build_event``), so every cycle the build-feed
+# state lookup misses the prior entry, ``first_seen`` is reset to ``now``,
+# and the disruption re-publishes as brand-new (FIFO retirement on age can
+# never fire either). Persisting the FIRST observed episode start across
+# cycles pins ``iso_first_seen`` regardless of how much later the lookback
+# window slides — exactly the same first-observation-wins semantics
+# ``build_feed`` already uses for ``data/first_seen.json``.
+EPISODE_STARTS_PATH: Final = (
+    _REPO_ROOT / "cache" / "stammstrecke" / "episode_starts.json"
+)
+
+# Defence-in-depth byte cap on the persisted episode-start ledger. The
+# canonical happy-path payload is two ISO-8601 timestamps keyed by short
+# direction labels (~200 bytes); 256 KiB is ~1000× that, generous for any
+# future schema widening yet small enough to bound a planted / corrupt
+# file. Matches the size-cap convention of the sibling
+# ``RECENTLY_FINALISED_MAX_BYTES`` in the cron script.
+EPISODE_STARTS_MAX_BYTES: Final = 256 * 1024
+
 
 @dataclass(frozen=True)
 class _Direction:
@@ -149,6 +190,113 @@ DIRECTIONS_BY_LABEL: Final[dict[str, _Direction]] = {
         for legacy_label, canonical_label in _LEGACY_DIRECTION_ALIAS.items()
     },
 }
+
+
+def _coerce_aware(value: datetime) -> datetime:
+    """Force *value* to be timezone-aware in :data:`VIENNA_TZ`.
+
+    Mirrors the helper of the same name in the cron script: naive
+    datetimes can appear when a hand-edited state file omits the offset;
+    rather than rejecting the entry we localise it defensively so the
+    rest of the persisted state survives.
+    """
+    if value.tzinfo is None:
+        return value.replace(tzinfo=VIENNA_TZ)
+    return value
+
+
+def _load_episode_starts(path: Path) -> dict[str, datetime]:
+    """Read the persisted-episode-start ledger from *path*.
+
+    Schema: ``{direction.target_label: iso-8601-timestamp}``. Returns an
+    empty dict on missing / oversize / unparseable input — the WARNING log
+    line distinguishes a silent fresh-start (no file yet, e.g. first run
+    after deploy) from a corrupt-file recovery.
+
+    Mirrors the read-side defence shape of ``_load_recently_finalised`` in
+    ``scripts/update_stammstrecke_status.py`` (Round 1503 sibling): a
+    poisoned ``cache/stammstrecke/episode_starts.json`` would otherwise
+    land ``float('nan')`` in a timestamp slot and silently round-trip back
+    through the writer.
+    """
+    raw = read_capped_text(
+        path,
+        max_bytes=EPISODE_STARTS_MAX_BYTES,
+        label="episode starts",
+        logger=LOGGER,
+    )
+    if raw is None or not raw.strip():
+        return {}
+    try:
+        payload = loads_finite(raw)
+    except (ValueError, RecursionError) as exc:
+        LOGGER.warning(
+            "Episode-Starts-Ledger korrupt (%s) — starte mit leerem Set.",
+            sanitize_log_arg(str(exc)),
+        )
+        return {}
+    if not isinstance(payload, Mapping):
+        LOGGER.warning(
+            "Episode-Starts-Ledger hat unerwartetes Top-Level-Format — "
+            "starte mit leerem Set."
+        )
+        return {}
+    out: dict[str, datetime] = {}
+    for key, value in payload.items():
+        if not isinstance(value, str):
+            continue
+        try:
+            ts = datetime.fromisoformat(value)
+        except ValueError:
+            continue
+        out[str(key)] = _coerce_aware(ts)
+    return out
+
+
+def _save_episode_starts(path: Path, starts: Mapping[str, datetime]) -> bool:
+    """Persist *starts* atomically; best-effort.
+
+    Returns ``True`` on success, ``False`` if the write failed (and was
+    logged at WARNING). Losing one cycle's update is safe — the affected
+    directions keep their previous persisted start on next load, which is
+    the desired fallback shape (one drifted ``first_seen`` value on a
+    rare crash beats every value drifting every cycle).
+
+    Security: same Trojan-Source / Non-Finite-Literal threat model as the
+    sibling ``_save_pending_trips`` / ``_save_recently_finalised`` in the
+    cron script — committed to ``main`` via ``update-cycle.yml``'s
+    auto-commit step, rendered through ``cat`` / ``less`` / the GitHub
+    web UI. Keys are short hardcoded direction labels (ASCII), but the
+    ``ensure_ascii=True`` pin keeps the file shape uniform with its
+    siblings so a future schema widening cannot regress half of the
+    round-trip invariant. ``allow_nan=False`` is the writer-side dual of
+    the ``loads_finite`` hook in ``_load_episode_starts`` above.
+    """
+    payload = {key: ts.isoformat() for key, ts in starts.items()}
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with atomic_write(
+            path,
+            mode="w",
+            encoding="utf-8",
+            permissions=0o644,
+        ) as fh:
+            _json_lib.dump(
+                payload,
+                fh,
+                indent=2,
+                sort_keys=True,
+                ensure_ascii=True,
+                allow_nan=False,
+            )
+            fh.write("\n")
+        return True
+    except OSError as exc:
+        LOGGER.warning(
+            "Episode-Starts-Ledger konnte nicht geschrieben werden: %s",
+            sanitize_log_arg(str(exc)),
+        )
+        return False
 
 
 def _format_minutes(value: float) -> str:
@@ -271,6 +419,7 @@ def compute_stammstrecke_events(
     now: datetime | None = None,
     feed_window: timedelta = FEED_WINDOW,
     episode_lookback: timedelta = EPISODE_LOOKBACK,
+    episode_starts_path: Path | None = None,
 ) -> list[dict[str, Any]]:
     """Read the CSV ledger, fold it into 0..N feed events.
 
@@ -285,14 +434,34 @@ def compute_stammstrecke_events(
     item is the *mean* of all in-window observations — see the module-
     level note on the trigger / display split.
 
+    ``episode_start`` persistence: the per-direction start is loaded
+    from / persisted to *episode_starts_path* (default
+    :data:`EPISODE_STARTS_PATH`). The persisted value pins the
+    rendered ``[Seit DD.MM.YYYY]`` label, the GUID and the
+    ``_identity`` across feed builds so an episode lasting longer than
+    :data:`EPISODE_LOOKBACK` does not drift its identity every cycle —
+    pre-fix the sliding lookback window advanced the returned start
+    once an episode aged past 6 h, making the build-feed state lookup
+    miss the prior entry every cycle and re-publishing the disruption
+    as brand-new. When the trigger gate STOPS firing for a direction
+    the persisted entry is cleared (episode ended). Pass a custom
+    *episode_starts_path* in tests.
+
     Used by :func:`src.feed.providers.read_cache_stammstrecke` as the
     canonical entry point.
     """
     current = now if now is not None else datetime.now(VIENNA_TZ)
+    starts_path = episode_starts_path or EPISODE_STARTS_PATH
+    persisted_starts = _load_episode_starts(starts_path)
     observations = read_recent_stammstrecke_observations(
         now=current, window=episode_lookback
     )
     if not observations:
+        # No data at all → keep the persisted state untouched. A silent
+        # window with no rows is NOT evidence that an active episode has
+        # ended (it may just mean the cron hasn't written yet); clearing
+        # here would forfeit the persisted ``first_seen`` for every
+        # currently-active episode on every empty cycle.
         return []
     # Bucket observations by their *canonical* direction label so a CSV
     # row that still carries the legacy ``"Floridsdorf"`` value (from a
@@ -318,12 +487,15 @@ def compute_stammstrecke_events(
     # Process directions in registry order so two simultaneous events
     # surface in a stable order across feed builds.
     for direction in DIRECTIONS:
-        direction_obs = by_direction.get(direction.target_label)
-        if not direction_obs:
-            continue
-        recent = [obs for obs in direction_obs if obs.timestamp >= feed_window_start]
-        if not recent:
-            continue
+        # ``direction_obs`` defaults to ``[]`` so the trigger-gate-failed
+        # branch below treats "direction has no observations at all"
+        # identically to "direction has rows older than feed_window" —
+        # both signal the episode is not currently active and the
+        # persisted entry should be cleared.
+        direction_obs = by_direction.get(direction.target_label, [])
+        recent = [
+            obs for obs in direction_obs if obs.timestamp >= feed_window_start
+        ]
         # Trigger gate: an episode may only start when
         # ``TRIGGER_CONSECUTIVE_COUNT`` (2) *consecutive* in-window
         # observations each carry a delay strictly greater than the
@@ -332,17 +504,38 @@ def compute_stammstrecke_events(
         # does not fire. The displayed value is the *mean* of all
         # in-window observations (easier for end users to interpret).
         # See module docstring "Window lengths".
-        if not _has_consecutive_exceedance(recent):
+        if not recent or not _has_consecutive_exceedance(recent):
+            # Trigger no longer fires for this direction → the episode
+            # has ended. Drop any persisted start so the NEXT episode
+            # (after EPISODE_GAP_TOLERANCE has elapsed and a fresh trigger
+            # fires) starts with a fresh ``first_seen`` / GUID instead of
+            # inheriting the previous disruption's identity.
+            persisted_starts.pop(direction.target_label, None)
             continue
         avg_delay = mean([obs.delay_minutes for obs in recent])
-        episode_start = _episode_start(direction_obs=direction_obs, now=current)
-        if episode_start is None:
+        computed_start = _episode_start(direction_obs=direction_obs, now=current)
+        if computed_start is None:
             # Degenerate case: ``_episode_start`` returned None despite
             # the threshold gate firing. Should be unreachable (the recent
             # subset feeds the same threshold gate), but rather than
             # raise we fall back to the earliest row in *recent* —
             # which is at most ``feed_window`` old.
-            episode_start = min(obs.timestamp for obs in recent)
+            computed_start = min(obs.timestamp for obs in recent)
+        # Persisted-start state machine: a value persisted on a prior
+        # cycle wins as long as it's still EARLIER than what the current
+        # 6 h lookback yields — that's exactly the case the window-drift
+        # bug fires (episode older than EPISODE_LOOKBACK → ``computed_start``
+        # has advanced past the persisted true start). If the persisted
+        # value is somehow LATER than the computed (out-of-order ledger
+        # writes, hand edit) we trust the earlier of the two. The first
+        # cycle of a fresh episode has no persisted entry and just pins
+        # ``computed_start``.
+        persisted = persisted_starts.get(direction.target_label)
+        if persisted is not None and persisted <= computed_start:
+            episode_start = persisted
+        else:
+            episode_start = computed_start
+            persisted_starts[direction.target_label] = episode_start
         events.append(
             _build_event(
                 direction=direction,
@@ -351,6 +544,12 @@ def compute_stammstrecke_events(
                 episode_start=episode_start,
             )
         )
+    # Best-effort persistence: failure is logged inside ``_save_episode_starts``
+    # and falls through silently — losing one cycle's update means the
+    # affected directions keep their previous persisted start on next load,
+    # which is the desired fallback shape (one drifted ``first_seen`` value
+    # on a rare crash beats every value drifting every cycle).
+    _save_episode_starts(starts_path, persisted_starts)
     return events
 
 

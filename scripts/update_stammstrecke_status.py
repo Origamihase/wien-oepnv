@@ -1214,10 +1214,29 @@ def _leg_departure_delay_minutes(leg: Mapping[str, Any]) -> float | None:
     if not rt_time:
         return None
 
-    rt_date = origin.get("rtDate") or origin.get("rtDepDate") or sched_date
+    # ``rt_date_explicit`` captures whether VAO ITSELF supplied a real-
+    # time date (vs the ``sched_date`` fallback). The midnight-rollover
+    # heuristic below is only applied when it did NOT — otherwise the
+    # explicit date is authoritative and a same-day early departure is a
+    # legitimate small-magnitude negative delay we must record verbatim.
+    rt_date_explicit = origin.get("rtDate") or origin.get("rtDepDate")
+    rt_date = rt_date_explicit or sched_date
     actual = _parse_vao_dt(rt_date, rt_time)
     if actual is None:
         return None
+
+    # Midnight-rollover heuristic ported from the sibling
+    # :func:`update_stammstrecke_hbf._departure_delay_minutes`. Without
+    # an explicit ``rtDate``, ``actual`` defaults to ``sched_date``; a
+    # scheduled-at-23:55 leg with ``rtTime="00:05"`` therefore yields a
+    # same-day 00:05 ``actual`` and a meaningless ≈ −23h50m "delay"
+    # which then propagates verbatim into ``latest_delay_minutes`` and
+    # the downstream Stammstrecke aggregator. Bumping ``actual`` by one
+    # day when the computed delay is < −12 h reflects the true wall-
+    # clock difference. 12 h cleanly separates a legitimate small
+    # negative early departure from a midnight wrap.
+    if rt_date_explicit is None and (scheduled - actual) > timedelta(hours=12):
+        actual = actual + timedelta(days=1)
 
     return (actual - scheduled).total_seconds() / 60.0
 
@@ -1467,10 +1486,27 @@ def _finalize_departed(
     Mutates *state* (and, when supplied, *recently_finalised*) in place.
     """
 
+    # ``key not in recently_finalised`` guard: if the previous tick
+    # successfully wrote the recently-finalised ledger but then CRASHED
+    # before ``_save_pending_trips`` rewrote ``pending_trips.json``, the
+    # next load sees both files out of sync — the entry is already
+    # finalised on disk but still present in ``state``. Pre-fix we
+    # finalised it a SECOND time, producing a duplicate CSV row (and a
+    # second tally in the daily ``ausfaelle_*.csv``). The
+    # ``_observe_legs`` re-emission guard at the read path only protects
+    # against API-side re-emissions; it has no effect on entries already
+    # loaded from the un-updated ``pending_trips.json`` after a crash
+    # between the two ``atomic_write`` calls. Skipping here is the
+    # complete fix and matches the spirit of the docstring's "exactly
+    # once per trip" contract.
     finalize_keys = [
         key
         for key, trip in state.items()
-        if trip.direction == direction and trip.scheduled <= now
+        if (
+            trip.direction == direction
+            and trip.scheduled <= now
+            and (recently_finalised is None or key not in recently_finalised)
+        )
     ]
     finalize_keys.sort(key=lambda k: state[k].scheduled)
     finalised: list[_PendingTrip] = []
