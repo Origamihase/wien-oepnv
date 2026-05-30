@@ -20,9 +20,9 @@ cannot silently reintroduce it:
 from __future__ import annotations
 
 import json
-import logging as pylog
 import sys
 import time
+from logging import INFO, LogRecord
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -69,8 +69,8 @@ def test_safe_json_formatter_stays_valid_with_access_id() -> None:
     from src.feed.logging_safe import SafeJSONFormatter
 
     formatter = SafeJSONFormatter()
-    record = pylog.LogRecord(
-        "t", pylog.INFO, "f.py", 1, "auth accessId=SECRETTOKENVALUE", None, None
+    record = LogRecord(
+        "t", INFO, "f.py", 1, "auth accessId=SECRETTOKENVALUE", None, None
     )
     rendered = formatter.format(record)
     parsed = json.loads(rendered)  # must not raise

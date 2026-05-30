@@ -1285,6 +1285,19 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     return results
 
 
+def _rebuild_netloc(normalized_hostname: str, port: int | None) -> str:
+    """Reassemble a netloc from an NFKC-normalized hostname.
+
+    Restores IPv6 literal brackets (``urlparse(...).hostname`` strips them) and a
+    non-default explicit port. Extracted from :func:`validate_http_url` so that
+    function stays at/below its C901 complexity baseline.
+    """
+    final_hostname = f"[{normalized_hostname}]" if ":" in normalized_hostname else normalized_hostname
+    if port is not None:
+        return f"{final_hostname}:{port}"
+    return final_hostname
+
+
 def validate_http_url(
     url: str | None, check_dns: bool = True, allowed_ports: Container[int] = (80, 443)
 ) -> str | None:
@@ -1336,19 +1349,10 @@ def validate_http_url(
              # urlparse.hostname returns lowercased hostname.
              normalized_hostname = unicodedata.normalize("NFKC", parsed.hostname)
 
-             # Reconstruct netloc safely (Task 5)
-             # Avoid using replace() which might clobber ports if they match the hostname
-
-             # Fix IPv6 Brackets: normalized_hostname (from parsed.hostname) lacks brackets for IPv6.
-             # We must restore them if it's an IPv6 literal (contains colons).
-             if ":" in normalized_hostname:
-                 final_hostname = f"[{normalized_hostname}]"
-             else:
-                 final_hostname = normalized_hostname
-
-             new_netloc = final_hostname
-             if parsed.port is not None:
-                 new_netloc = f"{final_hostname}:{parsed.port}"
+             # Reconstruct netloc (IPv6-bracket + explicit-port restoration) via a
+             # helper so this function stays at/below its C901 complexity baseline.
+             # Avoid replace() which might clobber ports that match the hostname.
+             new_netloc = _rebuild_netloc(normalized_hostname, parsed.port)
 
              # Update parsed object
              parsed = parsed._replace(netloc=new_netloc)

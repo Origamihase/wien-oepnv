@@ -28,7 +28,22 @@ def _set_default_env(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
     monkeypatch.delenv("GOOGLE_ACCESS_ID", raising=False)
 
 
-class _SuccessClient:
+class _ClientCMMixin:
+    """Model the context-manager protocol of the real ``GooglePlacesClient``.
+
+    ``verify.main`` now opens the client with ``with GooglePlacesClient(...)``
+    so its pooled session is closed on every exit path (FD-leak fix); the test
+    doubles must therefore support ``__enter__``/``__exit__``.
+    """
+
+    def __enter__(self) -> _ClientCMMixin:
+        return self
+
+    def __exit__(self, *exc: object) -> bool:
+        return False
+
+
+class _SuccessClient(_ClientCMMixin):
     def __init__(self, config: Any) -> None:
         self.config = config
         self.request_count = 0
@@ -45,7 +60,7 @@ class _SuccessClient:
         )
 
 
-class _PermissionDeniedClient:
+class _PermissionDeniedClient(_ClientCMMixin):
     def __init__(self, config: Any) -> None:
         self.config = config
         self.request_count = 0
@@ -56,7 +71,7 @@ class _PermissionDeniedClient:
         )
 
 
-class _ErrorClient:
+class _ErrorClient(_ClientCMMixin):
     def __init__(self, config: Any) -> None:
         self.config = config
         self.request_count = 0
