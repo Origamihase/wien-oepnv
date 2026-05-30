@@ -953,7 +953,12 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       glossary (#1625) and the disruption-core scope tightening.
 #   2 — "ggü." / "ggü" (gegenüber) → "opp." / "opp" street-addressing
 #       abbreviation added to the base glossary.
-_TRANSLATION_CACHE_EPOCH = 2
+#   3 — station masker now derives clean surface variants from
+#       ``(WL)`` / ``(VOR)``-suffixed canonical names (e.g.
+#       ``Schloss Hetzendorf`` from ``Wien Schloss Hetzendorf (WL)``),
+#       so Vienna stop names with a translatable component are no
+#       longer mistranslated ("Schloss Hetzendorf" → "lock Hetzendorf").
+_TRANSLATION_CACHE_EPOCH = 3
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1370,6 +1375,15 @@ _ALIAS_NOISE_RE: re.Pattern[str] = re.compile(
     r"(?i)\b(?:Bahnhof|Bahnst|Bahnhst|Bhf|Bf|Hbf|Station|Hp|hl\.?\s*st\.?)\b"
 )
 
+# Trailing data-source marker suffix on a canonical station name — the
+# ``(WL)`` in ``Wien Schloss Hetzendorf (WL)`` or the ``(VOR)`` /
+# ``(ÖBB)`` equivalents. Stripped when deriving the clean surface
+# variants in :func:`_station_entity_pattern` so the masker protects
+# the form real feed text carries (without the marker). Anchored to
+# the END so a parenthetical that is genuinely part of a name (none
+# exist today, but defensively) mid-string is left intact.
+_STATION_PAREN_SUFFIX_RE: re.Pattern[str] = re.compile(r"\s*\([^)]*\)\s*$")
+
 # Aliases must look like a clean, short ``Wien X`` station name to be
 # eligible for inclusion. Length cap keeps the regex bounded; the
 # character class keeps spelling variants ("Wien Schwedenplatz",
@@ -1446,14 +1460,34 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
         ):
             continue
         names.add(stripped)
+        # Emit clean surface variants. The station directory stores
+        # Vienna stops with a data-source marker suffix (e.g. ``Wien
+        # Schloss Hetzendorf (WL)``) — 1720 of 1773 Vienna canonicals
+        # carry one. Real feed text uses the clean form WITHOUT the
+        # ``(WL)`` / ``(VOR)`` marker, and frequently without the
+        # ``Wien `` city prefix too. Pre-fix the bare-form derivation
+        # only dropped the ``Wien `` prefix, leaving the useless
+        # ``Schloss Hetzendorf (WL)`` in the regex while the feed's
+        # actual ``Schloss Hetzendorf`` slipped through — the model
+        # then mistranslated the ``Schloss`` component to "lock" /
+        # "Castle". Emit every clean variant so the masker protects
+        # the surface form the feed carries:
+        #   ``Wien Schloss Hetzendorf (WL)`` (canonical, above)
+        #   ``Wien Schloss Hetzendorf``       (suffix stripped)
+        #   ``Schloss Hetzendorf (WL)``       (prefix stripped)
+        #   ``Schloss Hetzendorf``            (both stripped)
+        clean = _STATION_PAREN_SUFFIX_RE.sub("", stripped).strip()
+        variants = {clean}
         if stripped.lower().startswith("wien "):
-            bare = stripped[5:].strip()
+            variants.add(stripped[5:].strip())
+            variants.add(clean[5:].strip())
+        for variant in variants:
             if (
-                len(bare) >= 4
-                and not bare.isdigit()
-                and not _LINE_ENTITY_RE.fullmatch(bare)
+                len(variant) >= 4
+                and not variant.isdigit()
+                and not _LINE_ENTITY_RE.fullmatch(variant)
             ):
-                names.add(bare)
+                names.add(variant)
 
         # Curated ``Wien X`` aliases — restrict to Vienna entries so
         # the regex cannot accidentally protect a non-Vienna alias
