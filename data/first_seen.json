@@ -1348,7 +1348,7 @@
     "translations": {
       "en": {
         "summary": "Stop change of lines 86A towards Breitenlee, Arnikaweg and 87A towards Hermann-Gebauer-Stra\u00dfe stop: Wiedgasse From: Wiedgasse before Konstanziagasse \u2026",
-        "title": "86A/87A: Wiedgasse"
+        "title": "XENT440c384b5ae3ae8X1X/XENT440c384b5ae3ae8X2X: XENT440c384b5ae3ae8X0X"
       },
       "epoch": 3
     }
@@ -1765,6 +1765,7 @@
     "first_seen": "2026-05-30T22:00:54.402055+00:00",
     "translations": {
       "en": {
+        "summary": "After an service obstruction there are different intervals.",
         "title": "26: service obstruction because of police operation"
       },
       "epoch": 3
@@ -1912,6 +1913,7 @@
     "first_seen": "2026-05-30T22:00:54.402055+00:00",
     "translations": {
       "en": {
+        "summary": "After an service obstruction there are different intervals.",
         "title": "27: service obstruction because of police operation"
       },
       "epoch": 3
@@ -2206,7 +2208,7 @@
     "translations": {
       "en": {
         "summary": "Stop change of lines 62 and 16A towards Oper, Karlsplatz U or Alaudagasse U stop: Schloss Hetzendorf From: Hetzendorfer Stra\u00dfe 79 To: Hetzendorfer \u2026",
-        "title": "16A/62: Schloss Hetzendorf"
+        "title": "XENT440c384b5ae3ae8X1X/XENT440c384b5ae3ae8X2X: XENT440c384b5ae3ae8X0X"
       },
       "epoch": 3
     }
@@ -3196,7 +3198,7 @@
     "translations": {
       "en": {
         "summary": "Stop change of lines 10A and 39A towards Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse XENT451aac69e31fe947X",
-        "title": "10A/39A: Barawitzkagasse"
+        "title": "XENT440c384b5ae3ae8X1X/XENT440c384b5ae3ae8X2X: XENT440c384b5ae3ae8X0X"
       },
       "epoch": 3
     }
@@ -3229,6 +3231,16 @@
         "title": "57A: service obstruction for rescue operation"
       },
       "epoch": 2
+    }
+  },
+  "a366c32c65098559124d9098d458131cf3e677c92ae8069e81b721bb4295db1a": {
+    "first_seen": "2026-05-30T22:30:40.396795+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "25: XGLO440c384b5ae3ae8X0X because of XGLO440c384b5ae3ae8X1X"
+      },
+      "epoch": 3
     }
   },
   "a3904226e11e2eaa01222749b08821d53ed1cdb9f1a41de4e9b274034872a123": {
