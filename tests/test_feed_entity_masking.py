@@ -554,15 +554,20 @@ def test_unmask_entities_restores_originals() -> None:
 def test_unmask_entities_tolerates_missing_placeholders() -> None:
     """Translator output may drop a placeholder; unmask must not leak
     a literal ``XENTnX`` token into the published feed."""
-    mapping = {"XENT0X": "Wien Hauptbahnhof", "XENT1X": "U6"}
-    # Translator returned an output that kept XENT0X but dropped XENT1X
-    # AND introduced a stray XENT9X that isn't in the mapping.
-    output = "Closure at XENT0X due to XENT9X works"
+    # Build placeholders via the live format constant so the test stays
+    # correct regardless of the per-process placeholder nonce.
+    ph0 = build_feed._ENTITY_PLACEHOLDER_FORMAT.format(index=0)
+    ph1 = build_feed._ENTITY_PLACEHOLDER_FORMAT.format(index=1)
+    ph9 = build_feed._ENTITY_PLACEHOLDER_FORMAT.format(index=9)
+    mapping = {ph0: "Wien Hauptbahnhof", ph1: "U6"}
+    # Translator returned an output that kept ph0 but dropped ph1
+    # AND introduced a stray ph9 that isn't in the mapping.
+    output = f"Closure at {ph0} due to {ph9} works"
     restored = build_feed._unmask_entities(output, mapping)
     assert "Wien Hauptbahnhof" in restored
     # Stray placeholder is stripped, not left in the user-visible text.
-    assert "XENT9X" not in restored
-    assert "XENT" not in restored
+    assert ph9 not in restored
+    assert build_feed._ENTITY_PLACEHOLDER_RE.search(restored) is None
 
 
 def test_unmask_entities_no_mapping_returns_input_unchanged() -> None:

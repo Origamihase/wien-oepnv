@@ -1325,8 +1325,20 @@ _STREET_SUFFIX_RE: re.Pattern[str] = re.compile(
 # Placeholder pattern recognised by :func:`_unmask_entities` and the
 # ``X``-bookended form deliberately avoids ``_`` (which the
 # SentencePiece tokenizer used by Marian models treats specially).
-_ENTITY_PLACEHOLDER_FORMAT = "XENT{index}X"
-_ENTITY_PLACEHOLDER_RE: re.Pattern[str] = re.compile(r"XENT\d+X")
+#
+# A per-process random hex nonce is embedded between the ``XENT``/``XGLO``
+# prefix and the index so a placeholder can never collide with a token of
+# the same *shape* that an upstream (Zero-Trusted) title/description happens
+# to carry. Without it, a crafted source token such as ``XENT0X`` either
+# collided with a generated placeholder and was rewritten to that entity's
+# surface form on unmask, or matched the unmask sweep and was deleted
+# (``mapping.get(ph, "")``) — corrupting the EN feed body. The nonce makes
+# both impossible (the source cannot predict it) while staying ``_``-free
+# for SentencePiece; the literal ``X`` separator before the index keeps the
+# regex unambiguous and leaves any old/foreign ``XENT<digits>X`` unmatched.
+_PLACEHOLDER_NONCE = secrets.token_hex(8)
+_ENTITY_PLACEHOLDER_FORMAT = "XENT" + _PLACEHOLDER_NONCE + "X{index}X"
+_ENTITY_PLACEHOLDER_RE: re.Pattern[str] = re.compile("XENT" + _PLACEHOLDER_NONCE + r"X\d+X")
 
 
 # Unicode glyphs that the Helsinki opus-mt-de-en tokenizer is likely
@@ -1582,13 +1594,13 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
 # ``XENT<n>X`` placeholders emitted by :func:`_mask_entities`. The
 # unmasker handles both via a single union regex (see
 # :data:`_UNMASK_PLACEHOLDER_RE`).
-_GLOSSARY_PLACEHOLDER_FORMAT = "XGLO{index}X"
+_GLOSSARY_PLACEHOLDER_FORMAT = "XGLO" + _PLACEHOLDER_NONCE + "X{index}X"
 
 # Unified regex for the unmasker — matches both entity (``XENT…``)
 # and glossary (``XGLO…``) placeholders. Defined at module import
 # time so :func:`_unmask_entities` does not pay the compile cost per
 # call.
-_UNMASK_PLACEHOLDER_RE: re.Pattern[str] = re.compile(r"X(?:ENT|GLO)\d+X")
+_UNMASK_PLACEHOLDER_RE: re.Pattern[str] = re.compile("X(?:ENT|GLO)" + _PLACEHOLDER_NONCE + r"X\d+X")
 
 
 def _apply_domain_glossary(
@@ -2283,6 +2295,33 @@ def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = N
                 if deletions:
                     for k in deletions:
                         merged_state.pop(k, None)
+
+                # Apply STATE_RETENTION_DAYS to the *merged* dict, not just the
+                # in-memory load. ``_load_state`` drops expired entries from the
+                # working set, but ``_read_state_capped`` above re-reads the raw
+                # on-disk file, so an expired entry this run no longer tracks
+                # (another run's items, parallel-writer leftovers) is otherwise
+                # resurrected and re-written every cycle — the file grows
+                # unboundedly until it trips ``MAX_STATE_FILE_BYTES`` and the
+                # loader wipes *all* first_seen tracking at once. Prune only
+                # entries NOT in this run's ``state``: those are already within
+                # retention via ``_load_state`` and must keep their freshly
+                # written first_seen for cross-run dedup / parallel-writer
+                # safety (a recent parallel-writer entry has a recent
+                # first_seen and is kept; unparseable first_seen -> kept).
+                if feed_config.STATE_RETENTION_DAYS > 0:
+                    retention_cutoff = _to_utc(datetime.now(UTC)) - timedelta(
+                        days=feed_config.STATE_RETENTION_DAYS
+                    )
+                    for ident in list(merged_state.keys()):
+                        if ident in state:
+                            continue
+                        entry = merged_state.get(ident)
+                        if not isinstance(entry, dict):
+                            continue
+                        fs_utc = _parse_first_seen(entry, None)
+                        if fs_utc is not None and fs_utc < retention_cutoff:
+                            merged_state.pop(ident, None)
 
                 with atomic_write(
                     path, mode="w", encoding="utf-8", permissions=0o600

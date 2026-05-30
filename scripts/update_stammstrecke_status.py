@@ -996,8 +996,6 @@ def _query_trips(
 
     endpoint = f"{vor_provider.VOR_BASE_URL}trip"
 
-    _charge_one_request(when)
-
     # ``request_safe(raise_for_status=False)`` rather than the
     # ``fetch_content_safe`` wrapper: the wrapper hardcodes
     # ``raise_for_status=True``, which means the request_safe ``except``
@@ -1920,6 +1918,13 @@ def _process_direction(
         when.isoformat(),
     )
     try:
+        # Charge the VAO daily quota BEFORE consulting the breaker: a quota
+        # breach is a LOCAL budget signal, not an upstream-health failure, so
+        # it must not count toward the breaker's failure threshold (which would
+        # otherwise OPEN the breaker for BREAKER_RECOVERY_TIMEOUT after ~10
+        # quota-blocked ticks and skip the first ticks after the midnight reset).
+        # ``_QuotaExceeded`` raised here is caught below.
+        _charge_one_request(when)
         trips = _BREAKER.call(_query_trips, session, direction, when=when)
     except CircuitBreakerOpen:
         # Re-raise so main() can break out of the loop without re-trying
@@ -2124,6 +2129,17 @@ def main() -> int:
             )
             if not finalised:
                 continue
+            # Durably record the suppression set BEFORE writing any CSV row for
+            # this direction. ``_finalize_departed`` has already popped these
+            # trips from ``state`` (in memory) and registered their keys in
+            # ``recently_finalised``; persisting it now closes the crash window
+            # between a CSV append below and the post-loop ledger save. On a
+            # crash in that window the still-on-disk pending entry is re-observed
+            # next tick but skipped by the now-durable ``recently_finalised``
+            # guard instead of being double-finalised (a duplicate row would
+            # inflate the mean delay). Trade-off: a crash here means a missing
+            # row (under-count), which is preferable to a duplicate.
+            _save_recently_finalised(RECENTLY_FINALISED_PATH, recently_finalised)
             # Split finalised trains into cancellations (each gets one
             # ``ausfaelle_<YYYY>.csv`` row keyed on the train's
             # scheduled departure) and regular delay observations (one

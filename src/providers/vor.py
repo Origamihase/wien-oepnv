@@ -853,6 +853,18 @@ def _persist_quota_to_disk() -> int:
             # Add our unsaved delta to what is on disk.
             new_total = disk_count + _QUOTA_CACHE["unsaved_delta"]
 
+            # Cross-process safety net: the ``< MAX`` fail-fast in
+            # ``save_request_count`` / ``_charge_one_request`` tests a per-process
+            # cache, so two concurrent processes (e.g. overlapping
+            # ``workflow_dispatch`` runs not covered by the ``external-api-fetch``
+            # concurrency group) can each pass the check at ``count == MAX-1`` and
+            # both increment, pushing the *persisted* total past the hard daily
+            # budget (-> 101/100). Clamp the written total at ``MAX_REQUESTS_PER_DAY``
+            # under the file lock so the counter can never exceed the contractual
+            # limit and every subsequent check correctly blocks. This is a no-op
+            # for the single-process path (whose fail-fast already stops at MAX).
+            new_total = min(new_total, MAX_REQUESTS_PER_DAY)
+
             _QUOTA_CACHE["count"] = new_total
             _QUOTA_CACHE["date"] = date_iso
             _QUOTA_CACHE["unsaved_delta"] = 0

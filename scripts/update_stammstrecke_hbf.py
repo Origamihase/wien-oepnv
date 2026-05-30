@@ -413,11 +413,10 @@ def _query_departure_board(
     OR nest it under ``DepartureBoard.Departure``; both shapes are
     accepted).
 
-    Charges the VAO daily quota counter exactly once via
-    :func:`_charge_one_request` before sending. A
-    :class:`_QuotaExceeded` raised here aborts the cron tick before any
-    network I/O — operators see the budget breach in the workflow log
-    without a half-completed request.
+    The VAO daily quota is charged by the CALLER (before the circuit
+    breaker is consulted), not here: a quota breach is a local budget
+    signal and must not count as an upstream failure toward the breaker.
+    See the charge at the call site in the tick loop.
     """
 
     safe_timeout = max(1, min(timeout, MAX_QUERY_TIMEOUT))
@@ -444,8 +443,6 @@ def _query_departure_board(
     }
 
     endpoint = f"{vor_provider.VOR_BASE_URL}departureBoard"
-
-    _charge_one_request(when)
 
     # Mirror the legacy script's response-handling pattern (read body
     # before raising on HTTP error) so the downstream diagnostic
@@ -1003,6 +1000,13 @@ def _process_tick(
     )
 
     try:
+        # Charge the VAO daily quota BEFORE consulting the breaker: a quota
+        # breach is a LOCAL budget signal, not an upstream-health failure, so
+        # it must not count toward the breaker's failure threshold. Charging
+        # inside the breaker-wrapped call let ~10 quota-blocked ticks OPEN the
+        # breaker for BREAKER_RECOVERY_TIMEOUT and silently skip the first
+        # ticks after the midnight quota reset. ``_QuotaExceeded`` is caught below.
+        _charge_one_request(when)
         departures = _BREAKER.call(_query_departure_board, session, when=when)
     except CircuitBreakerOpen:
         raise
@@ -1169,6 +1173,17 @@ def main() -> int:
                     finalised = list(finalised) + list(legacy_finalised)
             if not finalised:
                 continue
+            # Durably record the suppression set BEFORE writing any CSV row for
+            # this direction. ``_finalize_departed`` has already popped these
+            # trips from ``state`` (in memory) and registered their keys in
+            # ``recently_finalised``; persisting it now closes the crash window
+            # between a CSV append below and the post-loop ledger save. On a
+            # crash in that window the still-on-disk pending entry is re-observed
+            # next tick but skipped by the now-durable ``recently_finalised``
+            # guard instead of being double-finalised (a duplicate row would
+            # inflate the mean delay). Trade-off: a crash here means a missing
+            # row (under-count), which is preferable to a duplicate.
+            _save_recently_finalised(RECENTLY_FINALISED_PATH, recently_finalised)
             # Split finalised trains: cancellations go to a dedicated
             # ledger (one CSV row per cancelled train so each shows up
             # as a discrete event in the dashboard count), non-

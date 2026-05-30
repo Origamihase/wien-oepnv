@@ -919,3 +919,37 @@ def test_duration_window_covers_cron_interval_with_overlap() -> None:
     """
 
     assert script.DEPARTURE_BOARD_DURATION_MIN > 30
+
+
+def test_process_tick_quota_exhausted_does_not_trip_breaker(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Quota exhaustion is a LOCAL budget signal: it must not count toward the
+    circuit breaker's failure threshold. Pre-fix the charge ran inside the
+    breaker-wrapped ``_query_departure_board``, so ~10 quota-blocked ticks
+    OPENed the breaker for an hour and skipped ticks after the midnight reset."""
+
+    def raising_charge(_when: datetime) -> None:
+        # ``_QuotaExceeded`` is defined in the status module and imported by the
+        # Hbf script; reference it via the status alias so it is mypy-visible
+        # (same class object the Hbf ``except _QuotaExceeded`` catches).
+        raise _legacy_script._QuotaExceeded("daily limit reached")
+
+    fetched = {"called": False}
+
+    def fake_query(*args: Any, **kwargs: Any) -> list[Any]:
+        fetched["called"] = True
+        return []
+
+    monkeypatch.setattr(script, "_charge_one_request", raising_charge)
+    monkeypatch.setattr(script, "_query_departure_board", fake_query)
+    script._BREAKER.reset()
+    failures_before = script._BREAKER.consecutive_failures
+
+    when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
+    state: dict[Any, Any] = {}
+    result = script._process_tick(session=object(), state=state, when=when)
+
+    assert result == "quota_exceeded"
+    assert fetched["called"] is False
+    assert script._BREAKER.consecutive_failures == failures_before
