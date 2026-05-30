@@ -1615,6 +1615,19 @@ def merge_into_stations(
     *,
     reconcile: Callable[[list[dict[str, object]]], None] | None = None,
 ) -> None:
+    # Data-loss floor: with no WL entries the merge below strips every
+    # existing ``source == "wl"`` station and writes the remainder back,
+    # silently deleting the entire Wiener-Linien layer from stations.json.
+    # An empty set only happens when the OGD CSVs failed to load/parse
+    # (oversized → ``read_capped_text`` returned ``None``, download error,
+    # format change). Refuse and keep the committed file untouched.
+    if not wl_entries:
+        log.error(
+            "merge_into_stations called with no WL entries — refusing to "
+            "overwrite stations [path-sha256=%s] (would delete every WL station).",
+            _path_fingerprint(stations_path),
+        )
+        return
     # Security: ``read_capped_json`` enforces both the depth-bomb catch
     # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). The
     # depth-bomb-only catch missed ``MemoryError`` (a ``BaseException``
@@ -1801,6 +1814,17 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     wl_entries = build_wl_entries(haltestellen, haltepunkte, vor_mapping)
     log.info("Prepared %d WL station entries", len(wl_entries))
+
+    # Abort before the costly reconcile + merge if the OGD load produced
+    # nothing — merge_into_stations would otherwise wipe the WL layer.
+    if not wl_entries:
+        log.error(
+            "No WL station entries were built (haltestellen=%d, haltepunkte=%d) — "
+            "aborting to protect data/stations.json from WL-layer deletion.",
+            len(haltestellen),
+            len(haltepunkte),
+        )
+        return 1
 
     # Drop mislabelled stop names that resolve to a far-away station (an
     # upstream WL DIVA-grouping artefact). Without this a stop sitting at

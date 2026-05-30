@@ -270,6 +270,32 @@ def _read_entries(path: Path) -> list[dict[str, object]]:
     return cast(list[dict[str, object]], data)
 
 
+def test_merge_into_stations_refuses_to_delete_wl_on_empty_entries(
+    stations_path: Path,
+) -> None:
+    """Empty ``wl_entries`` must NOT strip existing WL stations (data-loss floor).
+
+    An empty entry set only happens when the OGD CSV load failed; the merge
+    must keep the committed file rather than silently wipe the WL layer.
+    """
+    stations_path.write_text(
+        json.dumps(
+            [
+                {"name": "Karlsplatz", "wl_diva": "60201076", "source": "wl"},
+                {"name": "Wien Hbf", "bst_id": "900100", "source": "oebb"},
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    update_wl_stations.merge_into_stations(stations_path, [])
+
+    merged = _read_entries(stations_path)
+    # Both entries preserved — the WL station was not deleted.
+    assert len(merged) == 2
+    assert {e.get("source") for e in merged} == {"wl", "oebb"}
+
+
 def test_merge_wl_data_into_existing_vor_entry(stations_path: Path) -> None:
     stations_path.write_text(
         json.dumps(

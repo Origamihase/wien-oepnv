@@ -1048,6 +1048,12 @@ def _find_provider_issues(
                 )
 
     for entry in vor_entries:
+        # A station sourced from BOTH ``oebb`` and ``vor`` already contributed
+        # its own ``bst_code`` to ``oebb_codes`` above, so an ``in oebb_codes``
+        # test would flag it as colliding with itself. It IS the OEBB entry,
+        # not a distinct VOR-only station, so skip the cross-provider check.
+        if "oebb" in _extract_source_tokens(entry.get("source")):
+            continue
         bst_code = entry.get("bst_code")
         # Same type-guard as the OEBB-side ``oebb_codes.add`` above: a
         # malformed list / dict ``bst_code`` would otherwise raise
