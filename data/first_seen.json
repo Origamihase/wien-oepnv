@@ -1348,7 +1348,7 @@
     "translations": {
       "en": {
         "summary": "Stop transfer of lines 86A towards Breitenlee, Arnikaweg and 87A towards Hermann-Gebauer-Stra\u00dfe Stop: Wiedgasse From: Wiedgasse before Konstanziagasse \u2026",
-        "title": "86A/87A: Wiedgasse"
+        "title": "XENTa5be02558520c10X0X/XENTa5be02558520c10X1X: XENTa5be02558520c10X2X"
       },
       "epoch": 2
     }
@@ -3178,7 +3178,7 @@
     "translations": {
       "en": {
         "summary": "Stop change of lines 10A and 39A towards station Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse 10-12 Duration: From \u2026",
-        "title": "10A/39A: Barawitzkagasse"
+        "title": "XENTa5be02558520c10X0X/XENTa5be02558520c10X1X: XENTa5be02558520c10X2X"
       },
       "epoch": 2
     }
@@ -3839,6 +3839,16 @@
     "translations": {
       "en": {
         "title": "26A: service obstruction for police operation"
+      },
+      "epoch": 2
+    }
+  },
+  "cc9412e0ad103835f513e072a8517d4fbc8cb147f555ad4f61249eeebae8b990": {
+    "first_seen": "2026-05-30T21:00:49.005548+00:00",
+    "translations": {
+      "en": {
+        "summary": "XGLOa5be02558520c10X0X in both directions. Reason: contamination.",
+        "title": "XENTa5be02558520c10X0X: impurity"
       },
       "epoch": 2
     }
