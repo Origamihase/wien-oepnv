@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 30 May 2026 19:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 19:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[3A: Verspätungen]]></title>
+      <title><![CDATA[29A: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87</guid>
-      <pubDate>Sat, 30 May 2026 18:10:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 18:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 19:10:00 +0200</ext:ends_at>
+      <guid isPermaLink="false">86a65ab6e558f661aa538c3f4a06367de61adfdcf654c7ec31b57f2f5243756c</guid>
+      <pubDate>Sat, 30 May 2026 19:26:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 19:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 19:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 19:47:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 30.05.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 30.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
+      <pubDate>Sat, 30 May 2026 19:24:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 19:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 19:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Aspernstraße. [Am 30.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Aspernstraße.<br/>[Am 30.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">15ef57fce9c662ed7b76084303f102ef88811630f5a714caaf939a9b1b81af96</guid>
+      <pubDate>Sat, 30 May 2026 19:01:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 19:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 19:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 30.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 30.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Demonstration]]></title>
@@ -27,20 +49,9 @@
       <pubDate>Sat, 30 May 2026 15:42:00 +0200</pubDate>
       <ext:first_seen>Sat, 30 May 2026 18:30:45 +0200</ext:first_seen>
       <ext:starts_at>Sat, 30 May 2026 15:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 30 May 2026 19:27:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 16:15 Uhr. Grund: Demonstration im Bereich Ringstraße und Franz-Josefs-Kai. [Am 30.05.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 16:15 Uhr. Grund: Demonstration im Bereich Ringstraße und Franz-Josefs-Kai.<br/>[Am 30.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">938ac29fa057a3ddd67f86c556a2f4fea6b28f73f84d298ed3c0dbde81da7fcf</guid>
-      <pubDate>Sat, 30 May 2026 17:50:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 18:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 17:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 19:04:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.05.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[34A/N20: Bauarbeiten]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 07 May 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 86A in Richtung Breitenlee, Arnikaweg und 87A in Richtung Hermann-Gebauer-Straße Haltestelle: Wiedgasse Von: Wiedgasse vor Konstanziagasse … [Seit 07.05.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 86A in Richtung Breitenlee, Arnikaweg und 87A in Richtung Hermann-Gebauer-Straße Haltestelle: Wiedgasse Von: Wiedgasse vor Konstanziagasse …<br/>[Seit 07.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/39A: Barawitzkagasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9faf76903caede3d049fa87cc6a801cc3c1d072c7cc96a41782a250f795c055a</guid>
-      <pubDate>Tue, 05 May 2026 15:50:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 05 May 2026 15:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 05 May 2027 23:59:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 10A und 39A in Richtung Bahnhof Heiligenstadt S U Haltestelle: Barawitzkagasse Von: Barawitzkagasse 4-6 Nach: Barawitzkagasse 10-12 Dauer: Ab … [Seit 05.05.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 10A und 39A in Richtung Bahnhof Heiligenstadt S U Haltestelle: Barawitzkagasse Von: Barawitzkagasse 4-6 Nach: Barawitzkagasse 10-12 Dauer: Ab …<br/>[Seit 05.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
