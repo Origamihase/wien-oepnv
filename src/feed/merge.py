@@ -542,14 +542,19 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 if _has_significant_overlap_cached(
                     norm_name, ex_norm_name, tokens, ex_tokens
                 ):
-                    # Provider Priority Logic
-                    # VOR > ÖBB. If one is VOR and other is ÖBB, we prioritize VOR.
+                    # Provider priority logic — legacy VOR disruption provider only.
+                    # The standalone VOR disruption provider (source == "vor") was
+                    # removed 2026-05-11. The only remaining "vor"-ish source is the
+                    # Stammstrecke delay monitor (source "VOR/VAO"): an INDIRECT,
+                    # derived signal that must NOT override real ÖBB / WL disruptions.
+                    # Match the provider name EXACTLY so "vor/vao" is excluded from
+                    # this priority and merges as a normal peer (ÖBB stays master).
                     p1 = (existing.get("provider") or existing.get("source") or "").lower()
                     p2 = (item.get("provider") or item.get("source") or "").lower()
 
-                    is_vor_existing = "vor" in p1
+                    is_vor_existing = p1 == "vor"
                     is_oebb_existing = "oebb" in p1 or "öbb" in p1
-                    is_vor_item = "vor" in p2
+                    is_vor_item = p2 == "vor"
                     is_oebb_item = "oebb" in p2 or "öbb" in p2
 
                     # Case 1: Existing is VOR, Item is ÖBB -> Keep Existing, merge ÖBB desc if useful
