@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 30 May 2026 14:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 14:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9A: Verspätungen]]></title>
+      <title><![CDATA[26A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9e3976e9bb5ee545674f34d5b6d143bb76fab0ede012b583b848c10916715046</guid>
-      <pubDate>Sat, 30 May 2026 13:46:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 14:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 13:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 14:15:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 30.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 30.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">ccb49ecd7b5e4fd97d1b9d1a06c7dac25eed876e72b21077b01136c445d90099</guid>
+      <pubDate>Sat, 30 May 2026 14:16:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 14:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 14:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 30.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 30.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hetzendorf ↔ Wien Atzgersdorf]]></title>
@@ -29,17 +29,6 @@
       <ext:starts_at>Sat, 30 May 2026 13:34:30 +0200</ext:starts_at>
       <description>Wegen eines Schadens am Gleis sind zwischen Wien Hetzendorf Bahnhst und Wien Atzgersdorf Bahnhst Zugfahrten bis voraussichtlich 15:00 Uhr nur eingeschränkt möglich. [Seit 30.05.2026]</description>
       <content:encoded><![CDATA[Wegen eines Schadens am Gleis sind zwischen Wien Hetzendorf Bahnhst und Wien Atzgersdorf Bahnhst Zugfahrten bis voraussichtlich 15:00 Uhr nur eingeschränkt möglich.<br/>[Seit 30.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Polizeieinsatz Züge halten bei Linie 1]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ded38e51a87168b5dec5fa7cf47e1322d71a9fc82b58c76e54b10b9190810f6c</guid>
-      <pubDate>Sat, 30 May 2026 12:57:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 13:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 12:59:39 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in Richtung Stammersdorf. Grund: Polizeieinsatz. [Am 30.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Stammersdorf. Grund: Polizeieinsatz.<br/>[Am 30.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[95A: Signalstörung]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 62 und 16A in Richtung Oper, Karlsplatz U bzw. Alaudagasse U Haltestelle: Schloss Hetzendorf Von: Hetzendorfer Straße 79 Nach: Hetzendorfer … [Seit 04.05.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 62 und 16A in Richtung Oper, Karlsplatz U bzw. Alaudagasse U Haltestelle: Schloss Hetzendorf Von: Hetzendorfer Straße 79 Nach: Hetzendorfer …<br/>[Seit 04.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N81: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6cb07c7304a9b02c49316003964e6675ee0b068a781b6f5ac81424572887ef36</guid>
+      <pubDate>Tue, 28 Apr 2026 14:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 05 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten am Olympiaplatz wird die Rufbuslinie N81 umgeleitet. [05.05.2026 – 06.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Olympiaplatz wird die Rufbuslinie N81 umgeleitet.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
