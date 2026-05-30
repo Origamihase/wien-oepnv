@@ -24,8 +24,8 @@ def _git(repo: Path, *args: str, committer_date: str | None = None) -> None:
     if committer_date is not None:
         env["GIT_COMMITTER_DATE"] = committer_date
         env["GIT_AUTHOR_DATE"] = committer_date
-    subprocess.run(
-        ["git", *args],  # noqa: S603, S607
+    subprocess.run(  # noqa: S603
+        ["git", *args],  # noqa: S607
         cwd=repo,
         check=True,
         capture_output=True,

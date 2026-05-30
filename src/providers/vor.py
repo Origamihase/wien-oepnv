@@ -719,9 +719,13 @@ def load_request_count(bypass_cache: bool = False) -> tuple[str | None, int]:
     today_local = datetime.now(vienna_tz).strftime("%Y-%m-%d")
 
     if not bypass_cache and _QUOTA_CACHE["date"] == today_local:
-        # If we have a cached value for today, it might be stale but it's a lower bound.
-        # However, for accurate reading we fall through to file.
-        return (today_local, _QUOTA_CACHE["count"])
+        # Return the full in-memory usage. ``count`` only holds the last
+        # *flushed* total; live reservations accumulate in ``unsaved_delta``
+        # between batch flushes. Every other read site (the disk path below
+        # and ``save_request_count``) sums both, so the cache-hit path must
+        # too — otherwise it under-reports usage by up to one flush batch and
+        # defeats the ``_charge_one_request`` pre-flight quota check.
+        return (today_local, cast(int, _QUOTA_CACHE["count"] + _QUOTA_CACHE.get("unsaved_delta", 0)))
 
     # Security: ``read_capped_json`` enforces a TOCTOU-safe 1 MiB cap and
     # returns ``None`` for missing / oversized / depth-bombed / corrupt

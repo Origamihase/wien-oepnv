@@ -302,7 +302,7 @@ def sanitize_log_message(
         # subject_assertion, jwt_assertion, etc.
         r"[a-z0-9_.\-]{0,64}assertion[a-z0-9_.\-]{0,64}|"
         r"saml[-_.\s]*request|saml[-_.\s]*response|"
-        r"[a-z0-9_.\-]{0,64}accessid[a-z0-9_.\-]{0,64}|id[-_.\s]*token|[a-z0-9_.\-]{0,64}session[-_.\s]*id[a-z0-9_.\-]{0,64}|session|cookie|[a-z0-9_.\-]{0,64}apikey[a-z0-9_.\-]{0,64}|[a-z0-9_.\-]{0,64}secret[a-z0-9_.\-]{0,64}|ticket|[a-z0-9_.\-]{0,64}token|code|key|sig|sid|"
+        r"[a-z0-9_.\-]{0,64}access[-_.\s]*id[a-z0-9_.\-]{0,64}|id[-_.\s]*token|[a-z0-9_.\-]{0,64}session[-_.\s]*id[a-z0-9_.\-]{0,64}|session|cookie|[a-z0-9_.\-]{0,64}apikey[a-z0-9_.\-]{0,64}|[a-z0-9_.\-]{0,64}secret[a-z0-9_.\-]{0,64}|ticket|[a-z0-9_.\-]{0,64}token|code|key|sig|sid|"
         r"nonce|state|"
         # Security (sibling-drift closure of PR #1531's
         # ``_SENSITIVE_QUERY_KEYS`` SAML/CSRF/WordPress round):
@@ -351,7 +351,7 @@ def sanitize_log_message(
         # alternations. Suffixed variants (``X-CSRF-Token``,
         # ``X-XSRF-TOKEN``) are already covered via ``token``.
         r"samlart|csrf|xsrf|"
-        r"credential|client[-_.\s]*id|passphrase|access[-_.\s]*key|e[-_.\s]*mail"
+        r"credential|client[-_.\s]*id|passphrase|access[-_.\s]*key|access[-_.\s]*id|e[-_.\s]*mail"
     )
 
     # Common patterns for secrets in URLs/Headers

@@ -728,6 +728,14 @@ def _parse_stammstrecke_row(row: dict[str, str]) -> StammstreckeObservation | No
         delay = float(raw_delay)
     except ValueError:
         return None
+    if not math.isfinite(delay):
+        # Reader-side non-finite floor — symmetric with the writer guard in
+        # ``append_stammstrecke_row``. ``float("nan")`` / ``float("inf")`` /
+        # ``float("1e400")`` parse without raising and would otherwise be
+        # re-accepted verbatim, silently poisoning every downstream
+        # mean/threshold aggregation (the exact threat the writer docstring
+        # warns about). Drop the row rather than propagate a poison value.
+        return None
     return StammstreckeObservation(
         timestamp=ts, direction=raw_dir, delay_minutes=delay
     )

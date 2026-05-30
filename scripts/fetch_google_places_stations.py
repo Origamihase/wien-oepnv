@@ -368,7 +368,11 @@ def _write_if_changed(path: Path, stations: Sequence[Mapping[str, object]]) -> N
             LOGGER.info("Stations file already up-to-date")
             return
     path.parent.mkdir(parents=True, exist_ok=True)
-    if not payload.strip():
+    if not serialisable:
+        # ``payload`` is always a non-empty JSON document (at minimum
+        # ``{"stations": []}``), so the previous ``payload.strip()`` guard
+        # could never fire. Check the actual station list instead so a
+        # genuinely empty result cannot clobber a previously committed file.
         LOGGER.warning("Refusing to write empty stations payload to %s", path)
         return
 

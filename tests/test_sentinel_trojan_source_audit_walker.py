@@ -134,8 +134,8 @@ ALLOWLIST: frozenset[tuple[str, int]] = frozenset(
         # strip_control_chars=False)`` always strips the canonical
         # attack-byte union via ``_INVISIBLE_DANGEROUS_RE.sub("",
         # sanitized)`` post-serialisation.
-        ("src/feed/logging_safe.py", 247),
-        ("src/feed/logging_safe.py", 258),
+        ("src/feed/logging_safe.py", 260),
+        ("src/feed/logging_safe.py", 273),
     }
 )
 
@@ -636,7 +636,7 @@ def test_allowlist_is_minimal_and_documented() -> None:
         {
             ("src/places/hafas_client.py", 289),
             ("src/feed/reporting.py", 846),
-            ("src/feed/logging_safe.py", 247),
-            ("src/feed/logging_safe.py", 258),
+            ("src/feed/logging_safe.py", 260),
+            ("src/feed/logging_safe.py", 273),
         }
     )
