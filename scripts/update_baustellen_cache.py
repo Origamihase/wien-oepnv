@@ -34,7 +34,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers.baustellen import is_transit_relevant, oepnv_lead  # noqa: E402
-from utils.cache import write_cache  # noqa: E402
+from utils.cache import DataDegradationError, write_cache  # noqa: E402
 from utils.files import loads_finite, read_capped_json  # noqa: E402
 from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
 from utils.ids import make_guid  # noqa: E402
@@ -903,7 +903,22 @@ def main() -> int:
             "Cache wird NICHT überschrieben, gepinnter Snapshot bleibt aktiv."
         )
         return 1
-    write_cache("baustellen", relevant)
+    try:
+        write_cache("baustellen", relevant)
+    except DataDegradationError:
+        # ``write_cache`` refuses not only *empty* but also *drastically
+        # smaller* payloads (< 20 % of the existing cache). The bundled
+        # fallback sample holds only a couple of features, so when the live
+        # WFS fetch fails against a populated production cache the write would
+        # raise — and this is exactly the scenario the fallback exists for.
+        # Treat it like the empty-payload guard above: keep the pinned
+        # snapshot, surface a non-zero exit, never crash the cron step.
+        LOGGER.warning(
+            "Baustellen: Schreiben würde den Cache drastisch degradieren "
+            "(%d Eintrag/Einträge) – gepinnter Snapshot bleibt aktiv.",
+            len(relevant),
+        )
+        return 1
     if used_fallback:
         # Exit 2 = "degraded": the cache was written from the bundled
         # fallback sample, NOT a live fetch. The cron wrapper maps any

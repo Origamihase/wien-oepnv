@@ -153,6 +153,13 @@ class SafeFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         record = logging.makeLogRecord(record.__dict__)
+        # Security: a foreign (non-Safe) handler on the same logger may have
+        # already formatted this record and cached an UNSANITISED traceback in
+        # ``record.exc_text``. ``logging.Formatter.format`` reuses that cache
+        # verbatim instead of calling our sanitising ``formatException``, so a
+        # copied-in ``exc_text`` would leak raw secrets straight to the sink.
+        # Drop the cache so ``formatException`` (which redacts) always re-runs.
+        record.exc_text = None
         original_msg = record.getMessage()
         sanitized_msg = sanitize_log_message(original_msg)
         record.msg = sanitized_msg
@@ -244,7 +251,15 @@ class SafeJSONFormatter(logging.Formatter):
         # logging framework wraps formatter exceptions in noisy stderr
         # output that would mask the original log call entirely.
         try:
-            dumped = json.dumps(safe_payload, ensure_ascii=False, allow_nan=False)
+            # ``default=str`` keeps the formatter's never-raise contract for
+            # non-JSON-serialisable ``extra`` values (e.g. ``datetime`` —
+            # extremely common). Without it ``json.dumps`` raises ``TypeError``
+            # (NOT caught by the ``except ValueError`` below), Python's logging
+            # framework swallows it via ``handleError`` and the whole record is
+            # silently dropped.
+            dumped = json.dumps(
+                safe_payload, ensure_ascii=False, allow_nan=False, default=str
+            )
         except ValueError:
             # Final fallback for the pathological-bypass case (custom
             # Mapping subclass / non-list iterable that the walker did
@@ -260,6 +275,7 @@ class SafeJSONFormatter(logging.Formatter):
                 ensure_ascii=False,
                 allow_nan=False,
                 cls=_FallbackJSONEncoder,
+                default=str,
             )
         sanitized = sanitize_log_message(dumped, strip_control_chars=False)
         return sanitized.replace("\n", "\\n").replace("\r", "\\r")
