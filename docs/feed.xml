@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 30 May 2026 19:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 20:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[29A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">86a65ab6e558f661aa538c3f4a06367de61adfdcf654c7ec31b57f2f5243756c</guid>
-      <pubDate>Sat, 30 May 2026 19:26:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 19:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 19:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 19:47:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 30.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 30.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
-      <pubDate>Sat, 30 May 2026 19:24:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 19:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 19:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Aspernstraße. [Am 30.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Aspernstraße.<br/>[Am 30.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[60A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,17 +21,6 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 30.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e9995022cdafed79aec298f8690da72242b6c7693f2df40e49c51d5db05a6414</guid>
-      <pubDate>Sat, 30 May 2026 15:42:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 15:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 19:27:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 16:15 Uhr. Grund: Demonstration im Bereich Ringstraße und Franz-Josefs-Kai. [Am 30.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 16:15 Uhr. Grund: Demonstration im Bereich Ringstraße und Franz-Josefs-Kai.<br/>[Am 30.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[34A/N20: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e42264819bc62bd2fe2fbd8fff14608a5246ec0d9c9bd2c311b7bd577ca4532e</guid>
@@ -63,17 +30,6 @@
       <ext:ends_at>Wed, 03 Jun 2026 17:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Prager Straße wird die Linie 34A bis 03. Juni 2026, etwa 17:00 Uhr umgeleitet. [09.04.2026 – 03.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Prager Straße wird die Linie 34A bis 03. Juni 2026, etwa 17:00 Uhr umgeleitet.<br/>[09.04.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
-      <pubDate>Sat, 30 May 2026 18:13:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 15:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 18:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 30.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 30.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: Gleisbauarbeiten]]></title>
@@ -118,6 +74,50 @@
       <ext:ends_at>Fri, 07 May 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 86A in Richtung Breitenlee, Arnikaweg und 87A in Richtung Hermann-Gebauer-Straße Haltestelle: Wiedgasse Von: Wiedgasse vor Konstanziagasse … [Seit 07.05.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 86A in Richtung Breitenlee, Arnikaweg und 87A in Richtung Hermann-Gebauer-Straße Haltestelle: Wiedgasse Von: Wiedgasse vor Konstanziagasse …<br/>[Seit 07.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/39A: Barawitzkagasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9faf76903caede3d049fa87cc6a801cc3c1d072c7cc96a41782a250f795c055a</guid>
+      <pubDate>Tue, 05 May 2026 15:50:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 05 May 2026 15:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 05 May 2027 23:59:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 10A und 39A in Richtung Bahnhof Heiligenstadt S U Haltestelle: Barawitzkagasse Von: Barawitzkagasse 4-6 Nach: Barawitzkagasse 10-12 Dauer: Ab … [Seit 05.05.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 10A und 39A in Richtung Bahnhof Heiligenstadt S U Haltestelle: Barawitzkagasse Von: Barawitzkagasse 4-6 Nach: Barawitzkagasse 10-12 Dauer: Ab …<br/>[Seit 05.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[16A/62: Schloss Hetzendorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7163817bf0ae8c45bb1051f68cf2cc608d28cbfda8022471592d0b97a140183b</guid>
+      <pubDate>Mon, 04 May 2026 16:30:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 04 May 2026 16:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 62 und 16A in Richtung Oper, Karlsplatz U bzw. Alaudagasse U Haltestelle: Schloss Hetzendorf Von: Hetzendorfer Straße 79 Nach: Hetzendorfer … [Seit 04.05.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 62 und 16A in Richtung Oper, Karlsplatz U bzw. Alaudagasse U Haltestelle: Schloss Hetzendorf Von: Hetzendorfer Straße 79 Nach: Hetzendorfer …<br/>[Seit 04.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N81: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6cb07c7304a9b02c49316003964e6675ee0b068a781b6f5ac81424572887ef36</guid>
+      <pubDate>Tue, 28 Apr 2026 14:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 05 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten am Olympiaplatz wird die Rufbuslinie N81 umgeleitet. [05.05.2026 – 06.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Olympiaplatz wird die Rufbuslinie N81 umgeleitet.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Antonsplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U Haltestelle: Antonsplatz Von: Antonsplatz 13 vor Rechberggasse Nach: Antonsplatz 16 Dauer: 22. April 2026, etwa … [Seit 16.04.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U Haltestelle: Antonsplatz Von: Antonsplatz 13 vor Rechberggasse Nach: Antonsplatz 16 Dauer: 22. April 2026, etwa …<br/>[Seit 16.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
