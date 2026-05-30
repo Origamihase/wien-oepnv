@@ -1546,6 +1546,16 @@
       "epoch": 1
     }
   },
+  "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c": {
+    "first_seen": "2026-05-30T13:01:10.168107+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective vehicle.",
+        "title": "U3: delays"
+      },
+      "epoch": 2
+    }
+  },
   "4f0a00569455b938354830883aaaa1b8329cb5e711044a24de915c4c4ca0bece": {
     "first_seen": "2026-05-25T10:00:46.798313+00:00",
     "translations": {
@@ -1934,6 +1944,16 @@
         "summary": "In the Lindengasse / Kirchengasse crossing area and in the Kirchengasse at the height of ON 1 and ON 20-22, the underground station digs into the shafts.",
         "title": "U2/U5: Kirchengasse 1 to 30"
       }
+    }
+  },
+  "67f6f340526dbbc6c28a07268bd4d4da5596272e34d03f234305749a96c6a33a": {
+    "first_seen": "2026-05-30T13:01:10.168107+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "6: foreign traffic accident"
+      },
+      "epoch": 2
     }
   },
   "6869f0bfbb32760c71605175f55b528d7167224553899d570ce08e7d10f36b7d": {
@@ -2991,6 +3011,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: traffic congestion.",
         "title": "11A: traffic congestion"
+      },
+      "epoch": 2
+    }
+  },
+  "9d5d830296db380d998cfac3ef2dc6b284f418d9c2fcaf12d004818d82b4f105": {
+    "first_seen": "2026-05-30T13:01:10.168107+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "18: foreign traffic accident"
       },
       "epoch": 2
     }

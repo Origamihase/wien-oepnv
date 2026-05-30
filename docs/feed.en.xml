@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 30 May 2026 14:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 15:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Sat, 30 May 2026 14:56:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 15:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 14:56:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: defective vehicle. [On 30.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 30.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: foreign traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">67f6f340526dbbc6c28a07268bd4d4da5596272e34d03f234305749a96c6a33a</guid>
+      <pubDate>Sat, 30 May 2026 14:54:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 15:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 14:54:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 30.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 30.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: foreign traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9d5d830296db380d998cfac3ef2dc6b284f418d9c2fcaf12d004818d82b4f105</guid>
+      <pubDate>Sat, 30 May 2026 14:54:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 15:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 14:54:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 30.05.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 30.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[26A: traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -84,39 +117,6 @@
       <ext:ends_at>Fri, 07 May 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop transfer of lines 86A towards Breitenlee, Arnikaweg and 87A towards Hermann-Gebauer-Straße Stop: Wiedgasse From: Wiedgasse before Konstanziagasse … [Since 07.05.2026]</description>
       <content:encoded><![CDATA[Stop transfer of lines 86A towards Breitenlee, Arnikaweg and 87A towards Hermann-Gebauer-Straße Stop: Wiedgasse From: Wiedgasse before Konstanziagasse …<br/>[Since 07.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/39A: Barawitzkagasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9faf76903caede3d049fa87cc6a801cc3c1d072c7cc96a41782a250f795c055a</guid>
-      <pubDate>Tue, 05 May 2026 15:50:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 05 May 2026 15:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 05 May 2027 23:59:00 +0200</ext:ends_at>
-      <description>Stop change of lines 10A and 39A towards station Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse 10-12 Duration: From … [Since 05.05.2026]</description>
-      <content:encoded><![CDATA[Stop change of lines 10A and 39A towards station Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse 10-12 Duration: From …<br/>[Since 05.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A/62: lock Hetzendorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7163817bf0ae8c45bb1051f68cf2cc608d28cbfda8022471592d0b97a140183b</guid>
-      <pubDate>Mon, 04 May 2026 16:30:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 16:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Transfer of the lines 62 and 16A to the Opera, Karlsplatz U or Alaudagasse U Stop: Hetzendorf Castle From: Hetzendorfer Straße 79 To: Hetzendorfer … [Since 04.05.2026]</description>
-      <content:encoded><![CDATA[Transfer of the lines 62 and 16A to the Opera, Karlsplatz U or Alaudagasse U Stop: Hetzendorf Castle From: Hetzendorfer Straße 79 To: Hetzendorfer …<br/>[Since 04.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N81: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6cb07c7304a9b02c49316003964e6675ee0b068a781b6f5ac81424572887ef36</guid>
-      <pubDate>Tue, 28 Apr 2026 14:05:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 05 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
-      <description>Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected. [05.05.2026 – 06.06.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
