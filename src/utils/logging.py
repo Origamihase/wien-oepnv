@@ -324,6 +324,16 @@ def sanitize_log_message(
         #     existing ``state`` / ``nonce`` alternations (substring
         #     match within the longer key name).
         r"samlart|csrf|xsrf|"
+        # Sibling-drift closure vs ``src/utils/http.py``'s sensitive-key
+        # contract (``_SENSITIVE_QUERY_KEYS``/``_SENSITIVE_KEY_SUBSTRINGS``
+        # include ``webhook``/``jwt``/``dsn``; ``test_sentinel_redaction``
+        # pins them). Without these, ``sanitize_log_message`` — the
+        # formatter-level sanitiser applied to EVERY record — let a
+        # ``webhook_url=https://hooks.slack.com/services/T.../B.../XXXX``
+        # (secret carried in the URL *path*, so no value-shape pattern
+        # catches it) leak verbatim into logs and the public
+        # ``docs/feed_health.json``. ``cfduid`` (bare) joins ``__cfduid``.
+        r"[a-z0-9_.\-]{0,64}webhook[a-z0-9_.\-]{0,64}|jwt|dsn|cfduid|"
         r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
         r"authorization|auth|bearer[-_.\s]*token|bearer|[a-z0-9_.\-]{0,64}api[-_.\s]*key[a-z0-9_.\-]{0,64}|[a-z0-9_.\-]{0,64}private[-_.\s]*key|auth[-_.\s]*token|"
         r"tenant[-_.\s]*id|tenant|subscription[-_.\s]*id|subscription|object[-_.\s]*id|oid|"
@@ -350,6 +360,7 @@ def sanitize_log_message(
         # alternations. Suffixed variants (``X-CSRF-Token``,
         # ``X-XSRF-TOKEN``) are already covered via ``token``.
         r"samlart|csrf|xsrf|"
+        r"[a-z0-9_.\-]{0,64}webhook[a-z0-9_.\-]{0,64}|jwt|dsn|"
         r"credential|client[-_.\s]*id|passphrase|access[-_.\s]*key|access[-_.\s]*id|e[-_.\s]*mail"
     )
 
@@ -357,8 +368,13 @@ def sanitize_log_message(
     patterns: list[tuple[str, str]] = [
         # PEM blocks (keys/certs) - MUST be first to prevent partial redaction by other patterns
         (r"(-----BEGIN [A-Z ]+-----)(?:.|\n)*?(-----END [A-Z ]+-----)", r"\1***\2"),
-        # Explicitly mask accessId (Requirement) to ensure robust redaction in tracebacks
-        (r"(?i)(accessId\s*=\s*)([^&\s]+)", r"\1***"),
+        # Explicitly mask accessId (Requirement) to ensure robust redaction in tracebacks.
+        # The value class excludes JSON/structural chars (``"`` ``'`` ``,`` ``}``) so that
+        # when this runs over an already-serialised JSON record (SafeJSONFormatter sanitises
+        # the dumped string a second time) the greedy match does not swallow the closing
+        # quote/brace and emit unterminated/invalid JSON — ``accessId`` is the primary
+        # VOR/Wiener-Linien credential name, so this path is exercised on every auth log line.
+        (r"(?i)(accessId\s*=\s*)([^&\s\"',}]+)", r"\1***"),
         # Basic Auth in URLs (protocol://user:pass@host) - canonical form.
         # Security (ReDoS): the scheme class is BOUNDED ``{1,64}`` and
         # POSSESSIVE (``+`` suffix). The prior unbounded ``[a-z0-9+.-]+``

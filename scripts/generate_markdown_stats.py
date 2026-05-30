@@ -41,6 +41,7 @@ import argparse
 import csv
 import io
 import logging
+import math
 import re
 import statistics
 import sys
@@ -97,7 +98,11 @@ README_MAX_BYTES: Final = 1 * 1024 * 1024
 # annual dashboard remains at ``docs/statistik.md``; the README block is
 # intentionally short so it stays glanceable.
 DEFAULT_README_WINDOW_DAYS: Final = 30
-STAMMSTRECKE_THRESHOLD_MINUTES: Final = 9.0
+# Aliased to the single source of truth in ``src.feed.stammstrecke`` so the
+# dashboard/30-day-README threshold can never silently drift from the live-block
+# threshold (``DELAY_THRESHOLD_MINUTES``) — previously hardcoded ``9.0`` here and
+# in two more spots, which understated/overstated exceedances on a threshold change.
+STAMMSTRECKE_THRESHOLD_MINUTES: Final = DELAY_THRESHOLD_MINUTES
 README_PENDING_PLACEHOLDER: Final = "_wird berechnet…_"
 
 # Sentinel emitted by :func:`src.utils.stats.extract_location_name` when
@@ -179,7 +184,7 @@ class StammstreckeAggregate:
     by_direction: dict[str, int] = field(default_factory=dict)
     total_observations: int = 0
     threshold_exceedances: int = 0
-    threshold_minutes: float = 9.0
+    threshold_minutes: float = DELAY_THRESHOLD_MINUTES
 
 
 @dataclass
@@ -301,6 +306,12 @@ def _parse_stammstrecke_rows(
             delay = float(row["delay_minutes"])
         except (KeyError, ValueError, TypeError):
             continue
+        # NaN/Inf must never reach the renderer: ``_scale_bar`` bypasses its
+        # ``value <= 0`` guard for NaN (IEEE 754) and then ``int(round(nan))``
+        # raises ValueError, crashing dashboard generation and leaving
+        # docs/statistik.md stale. Drop the corrupt row instead.
+        if not math.isfinite(delay):
+            continue
         weekday = row.get("weekday") or WEEKDAY_LABELS[ts.weekday()]
         try:
             hour = int(row.get("hour") or ts.hour)
@@ -389,7 +400,7 @@ def _parse_ausfall_rows(
 def aggregate_stammstrecke(
     rows: list[StammstreckeRow],
     *,
-    threshold_minutes: float = 9.0,
+    threshold_minutes: float = DELAY_THRESHOLD_MINUTES,
 ) -> StammstreckeAggregate:
     """Roll *rows* up into the dimensions the dashboard needs.
 

@@ -16,6 +16,7 @@ import hashlib
 import io
 import json
 import logging
+import math
 import os
 import re
 
@@ -1968,6 +1969,12 @@ def _coerce_bst_id(value: object | None) -> str | None:
             return None
         return digits
     if isinstance(value, int | float):
+        # ``int(float("nan"))`` raises ValueError and ``int(float("inf"))``
+        # raises OverflowError; openpyxl (data_only=True) can return non-finite
+        # floats from malformed cached-formula cells. Drop the cell instead of
+        # letting the exception escape the row loop and crash the whole run.
+        if isinstance(value, float) and not math.isfinite(value):
+            return None
         return str(int(value))
     return None
 

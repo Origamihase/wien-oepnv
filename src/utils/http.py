@@ -761,7 +761,6 @@ class SafeDNSAdapter(TimeoutHTTPAdapter):
             num_pools=connections,
             maxsize=maxsize,
             block=block,
-            strict=True,
             **pool_kwargs,
         )
 
@@ -825,7 +824,6 @@ class PinnedHTTPSAdapter(TimeoutHTTPAdapter):
             num_pools=connections,
             maxsize=maxsize,
             block=block,
-            strict=True,
             **pool_kwargs,
         )
 
@@ -1090,7 +1088,11 @@ def session_with_retries(
     class JitterRetry(Retry):
         def get_backoff_time(self) -> float:
             base_backoff = super().get_backoff_time()
-            return base_backoff * secrets.SystemRandom().uniform(0.8, 1.2)
+            jittered = base_backoff * secrets.SystemRandom().uniform(0.8, 1.2)
+            # ``super().get_backoff_time()`` is already capped at ``backoff_max``;
+            # re-cap AFTER applying the +/-20% jitter so the upward jitter cannot
+            # push a sleep past the documented ceiling (e.g. 120s -> 144s).
+            return min(float(self.backoff_max), jittered)
 
     retry = JitterRetry(**options)
     adapter = SafeDNSAdapter(max_retries=retry, timeout=timeout)
@@ -1353,6 +1355,17 @@ def validate_http_url(
 
              # Reconstruct candidate with normalized hostname
              candidate = parsed.geturl()
+
+             # Re-run the unsafe-char gate on the reconstructed URL: NFKC can map
+             # fullwidth / compatibility forms (e.g. U+FF1C '＜' -> '<',
+             # U+FF1E '＞' -> '>', U+FF5C '｜' -> '|', U+FF02 '＂' -> '"') to ASCII
+             # structural characters that the pre-normalization check at the top
+             # could not see. Without this, a hostname like ``exam＜ple.com``
+             # would survive into the returned URL as ``exam<ple.com`` — defeating
+             # the invariant ``_UNSAFE_URL_CHARS`` is meant to guarantee for URLs
+             # that land in the published feed ``<link>``.
+             if _UNSAFE_URL_CHARS.search(candidate):
+                 return None
 
         hostname = parsed.hostname
         if not hostname:

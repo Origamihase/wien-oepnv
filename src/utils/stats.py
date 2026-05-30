@@ -765,6 +765,10 @@ def read_recent_stammstrecke_observations(
     """
     if window.total_seconds() <= 0:
         return []
+    # Localise ``now`` so a naive argument can't raise ``TypeError`` when compared
+    # against the always-aware ``parsed.timestamp`` below — the docstring promises
+    # this function never raises and degrades to "no observations" instead.
+    now = to_vienna(now)
     cutoff = now - window
     folder = stats_dir if stats_dir is not None else DEFAULT_STATS_DIR
     # Read every calendar year the window spans, not just its two

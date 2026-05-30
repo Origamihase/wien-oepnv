@@ -61,6 +61,15 @@ _SENSITIVE_ASSIGN_RE = re.compile(
     (
         # Group 1: The key
         (?:
+            # ReDoS guard: anchor the match at a [a-z0-9_.-] run boundary. The
+            # bounded {0,64} prefix below was still retried at EVERY position
+            # inside a long run (each retry attempting the ~46-branch keyword
+            # alternation) -> O(N*64*alts), ~33 s/MB on a hostile committed
+            # line (base64 blob / minified bundle / lockfile). With this
+            # lookbehind, positions inside a run fail in O(1) and the prefix is
+            # only attempted at run starts -> linear. Realistic key names start
+            # at a boundary and are << 64 chars, so this is lossless for them.
+            (?<![a-z0-9_.-])
             [a-z0-9_.-]{0,64}  # Prefix allowing letters, numbers, underscores, dots, hyphens
             (?:
                 token|secret|password|passphrase|credential|
@@ -81,6 +90,7 @@ _SENSITIVE_ASSIGN_RE = re.compile(
         |
         (?:
             # Strict matching for short/risky keywords to avoid false positives (e.g. throughput)
+            (?<![a-z0-9_.-])  # ReDoS guard: see the boundary anchor above.
             [a-z0-9_.-]{0,64}  # Prefix
             (?:
                 glpat|ghp|otp

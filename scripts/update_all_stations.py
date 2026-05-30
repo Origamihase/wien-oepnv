@@ -607,9 +607,18 @@ def _dedupe_exact_duplicates(
     deduped: list[Mapping[str, Any]] = []
     removed = 0
     for entry in stations:
-        fingerprint = json.dumps(
-            dict(entry), sort_keys=True, ensure_ascii=True, allow_nan=False, default=str
-        )
+        try:
+            fingerprint = json.dumps(
+                dict(entry), sort_keys=True, ensure_ascii=True, allow_nan=False, default=str
+            )
+        except ValueError:
+            # A non-finite value (NaN/Inf) in a coordinate field makes the
+            # ``allow_nan=False`` fingerprint raise. Don't abort the whole
+            # orchestrator (which would leave heartbeat/diff unwritten): treat
+            # the entry as unique so exact-dedup degrades gracefully.
+            logging.warning("Skipping exact-dedup fingerprint for entry with non-finite value")
+            deduped.append(entry)
+            continue
         if fingerprint in seen:
             removed += 1
             continue

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import io
 import logging
+import math
 import sys
 from dataclasses import dataclass
 import csv
@@ -60,9 +61,16 @@ def _coerce_float(text: str | None) -> float | None:
     if not value:
         return None
     try:
-        return float(value)
+        result = float(value)
     except ValueError:
         return None
+    # Reject NaN/Inf: ``float("nan")``/``float("1e1000")`` do not raise, and a
+    # non-finite stop coordinate silently propagates through any downstream
+    # Haversine/distance arithmetic (NaN is truthy, so ``if stop.stop_lat:``
+    # passes). Drop the malformed value instead.
+    if not math.isfinite(result):
+        return None
+    return result
 
 
 def _coerce_int(text: str | None) -> int | None:

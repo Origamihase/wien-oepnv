@@ -3,10 +3,10 @@
 
 Thin CLI wrapper around :func:`src.utils.stations_validation.validate_stations`.
 Exit code semantics are preserved from the previous inline implementation:
-only ``provider_issues`` and ``cross_station_id_issues`` trigger a non-zero
-exit. Other issue categories (alias, coordinate, GTFS, security, duplicate)
-are tolerated to match historical CLI behaviour and to keep the
-``scripts/update_all_stations.py`` wrapper's strictness contract unchanged.
+``provider_issues``, ``cross_station_id_issues`` and ``identity_field_conflicts``
+trigger a non-zero exit. Other issue categories (alias, coordinate, GTFS,
+security, duplicate) are tolerated to match historical CLI behaviour and to keep
+the ``scripts/update_all_stations.py`` wrapper's strictness contract unchanged.
 """
 
 from __future__ import annotations
@@ -33,10 +33,16 @@ def main() -> int:
         default=Path("data/stations.json"),
         help="Path to stations.json to validate (default: data/stations.json)",
     )
+    parser.add_argument(
+        "--gtfs-stops",
+        type=Path,
+        default=None,
+        help="Optional path to a GTFS stops.txt to cross-check station coordinates against.",
+    )
     args = parser.parse_args()
 
     try:
-        report = validate_stations(args.stations)
+        report = validate_stations(args.stations, gtfs_stops_path=args.gtfs_stops)
     except StationValidationError as exc:
         print(str(exc), file=sys.stderr)
         return 1

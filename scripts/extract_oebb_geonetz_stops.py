@@ -150,6 +150,15 @@ def _extract_stop_record(feature: dict[str, Any]) -> dict[str, Any] | None:
 
     lat = _coerce_float(props.get("STP_LAT"))
     lon = _coerce_float(props.get("STP_LON"))
+    # ``_coerce_float`` rejects NaN/Inf but not out-of-range values. Reject
+    # coordinates outside the WGS84 envelope so a poisoned upstream GeoNetz dump
+    # (e.g. ``STP_LAT=999.0``) cannot contaminate the committed sidecar with
+    # values future consumers would treat as valid — mirrors the lat/lon bounds
+    # enforced in ``update_baustellen_cache._build_location``.
+    if lat is not None and not (-90.0 <= lat <= 90.0):
+        lat = None
+    if lon is not None and not (-180.0 <= lon <= 180.0):
+        lon = None
     name = props.get("STP_NAME")
     if not isinstance(name, str) or not name.strip():
         return None
