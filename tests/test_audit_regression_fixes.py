@@ -65,7 +65,9 @@ def test_safe_json_formatter_handles_datetime_extra() -> None:
 
     formatter = logging_safe.SafeJSONFormatter()
     record = logging.LogRecord("t", logging.INFO, __file__, 1, "hello", (), None)
-    record.when = datetime(2026, 1, 1, 12, 0, 0)  # type: ignore[attr-defined]
+    # Inject a datetime ``extra`` the way the logging framework would; the
+    # formatter reads it back from ``record.__dict__``.
+    record.__dict__["when"] = datetime(2026, 1, 1, 12, 0, 0)
     out = formatter.format(record)
     payload = json.loads(out)
     assert payload["message"] == "hello"
@@ -160,13 +162,18 @@ def test_baustellen_main_survives_data_degradation(
 ) -> None:
     from scripts import update_baustellen_cache
 
+    # Import the original class definition from the SAME module the script
+    # uses (``utils.cache`` once the script has put ``src`` on sys.path).
+    # Under CI's ``PYTHONPATH=src`` ``utils.cache`` and ``src.utils.cache`` are
+    # distinct module objects with distinct ``DataDegradationError`` classes,
+    # so the raised type must match the one the script's ``except`` references.
+    from utils.cache import DataDegradationError
+
     def fake_fetch_remote(url: str, timeout: int) -> None:
         return None
 
     def degrading_write_cache(provider: str, items: list[dict[str, Any]]) -> None:
-        # Use the exact class the script's ``except`` clause references so the
-        # handler matches regardless of the src/ vs scripts/ import path.
-        raise update_baustellen_cache.DataDegradationError("degraded payload rejected")
+        raise DataDegradationError("degraded payload rejected")
 
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
     monkeypatch.setattr(update_baustellen_cache, "write_cache", degrading_write_cache)
