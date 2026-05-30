@@ -92,5 +92,51 @@ def test_dedupe_fuzzy_still_merges_same_topic() -> None:
     ]
     result = deduplicate_fuzzy(items)
     assert len(result) == 1
-    # VOR record wins as master; ÖBB description appended only when substantive.
-    assert result[0].get("source") == "VOR/VAO"
+    # ÖBB (a real disruption) stays master. "VOR/VAO" is the Stammstrecke delay
+    # monitor — an INDIRECT, derived signal that must NOT override ÖBB / WL. It
+    # merges as a normal peer, so the ÖBB record wins and the VOR description is
+    # appended. (The legacy "VOR wins" rule applied only to the removed VOR
+    # disruption provider with source == "vor", never to "VOR/VAO".)
+    assert result[0].get("source") == "ÖBB"
+
+
+def test_stammstrecke_event_does_not_override_oebb() -> None:
+    """The Stammstrecke delay event must never override an ÖBB disruption.
+
+    Its fixed title ("S-Bahn Stammstrecke Verspätungen") carries no line prefix,
+    so it never reaches the line-overlap merge and stays a separate feed item.
+    Even a synthetic line-bearing "VOR/VAO" item merges as a peer with ÖBB as
+    master — it can no longer replace the ÖBB record (legacy footgun closed).
+    """
+    # 1) Realistic Stammstrecke event (no line tokens) + ÖBB → stay separate.
+    realistic = deduplicate_fuzzy(
+        [
+            {
+                "guid": "oebb-1", "_identity": "oebb|1", "source": "ÖBB",
+                "title": "S1, S2, S3: Störung Wien Mitte", "description": "ÖBB-Störung.",
+            },
+            {
+                "guid": "vor-1", "_identity": "vor|1", "source": "VOR/VAO",
+                "title": "S-Bahn Stammstrecke Verspätungen",
+                "description": "Durchschnittliche Verspätung von 11 Minuten.",
+            },
+        ]
+    )
+    assert len(realistic) == 2
+    assert {i.get("source") for i in realistic} == {"ÖBB", "VOR/VAO"}
+
+    # 2) Even a synthetic line-bearing VOR/VAO item does not replace ÖBB.
+    overlap = deduplicate_fuzzy(
+        [
+            {
+                "guid": "oebb-2", "_identity": "oebb|2", "source": "ÖBB",
+                "title": "S1: Signalstörung Floridsdorf", "description": "ÖBB-Meldung.",
+            },
+            {
+                "guid": "vor-2", "_identity": "vor|2", "source": "VOR/VAO",
+                "title": "S1: Signalstörung Floridsdorf", "description": "VOR-Detail.",
+            },
+        ]
+    )
+    assert len(overlap) == 1
+    assert overlap[0].get("source") == "ÖBB"  # ÖBB master — not overridden by VOR/VAO

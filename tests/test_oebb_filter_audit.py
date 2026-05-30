@@ -174,5 +174,8 @@ class TestLinePrefixWithSpace:
         ]
         result = deduplicate_fuzzy(items)
         assert len(result) == 1
-        # VOR wins as master per provider priority logic.
-        assert result[0]["source"] == "VOR/VAO"
+        # ÖBB (a real disruption) stays master. "VOR/VAO" (the Stammstrecke
+        # delay monitor) is an indirect signal that no longer overrides ÖBB —
+        # it merges as a normal peer. (The "VOR wins" rule applied only to the
+        # removed VOR disruption provider with source == "vor".)
+        assert result[0]["source"] == "ÖBB"
