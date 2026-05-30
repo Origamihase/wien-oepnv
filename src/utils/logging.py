@@ -231,7 +231,6 @@ _INVISIBLE_DANGEROUS_RE = re.compile(
     r"\U0001d173-\U0001d17a"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
-_LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
 # ANSI escape codes: comprehensive matching for CSI, OSC, Fe, and 2-byte sequences
 # Matches:
 # 1. CSI: ESC [ ...
