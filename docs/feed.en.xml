@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 30 May 2026 23:00:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 23:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[XENTa5be02558520c10X0X: impurity]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Sat, 30 May 2026 23:38:00 +0200</ext:ends_at>
       <description>XGLOa5be02558520c10X0X in both directions. Reason: contamination. [On 30.05.2026]</description>
       <content:encoded><![CDATA[XGLOa5be02558520c10X0X in both directions. Reason: contamination.<br/>[On 30.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: service obstruction for police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46</guid>
-      <pubDate>Sat, 30 May 2026 22:15:24 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 22:30:43 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 22:15:24 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 23:14:00 +0200</ext:ends_at>
-      <description>[On 30.05.2026]</description>
-      <content:encoded><![CDATA[[On 30.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[34A/N20: construction works]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
       <description>Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected. [05.05.2026 – 06.06.2026]</description>
       <content:encoded><![CDATA[Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Antonsplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about … [Since 16.04.2026]</description>
+      <content:encoded><![CDATA[Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22 April 2026, about …<br/>[Since 16.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
