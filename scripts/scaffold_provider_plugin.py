@@ -5,7 +5,14 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import sys
 import textwrap
+
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from src.utils.files import atomic_write  # noqa: E402
 
 TEMPLATE = textwrap.dedent(
     '''from __future__ import annotations
@@ -61,7 +68,10 @@ def main(argv: list[str] | None = None) -> int:
         parser.error(f"{target} exists – use --overwrite to replace it.")
 
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(TEMPLATE.strip() + "\n", encoding="utf-8")
+    # atomic_write (tempfile + os.replace) so a crash / SIGINT mid-write cannot
+    # leave a partially-written (corrupt) plugin skeleton at the target path.
+    with atomic_write(target, mode="w", encoding="utf-8") as handle:
+        handle.write(TEMPLATE.strip() + "\n")
     print(f"Provider plugin scaffold written to {target}")
     return 0
 

@@ -49,10 +49,12 @@ if str(_ROOT) not in sys.path:
 
 try:  # pragma: no cover - convenience for module execution
     from src.feed.logging_safe import setup_script_logging
+    from src.feed.config import warn_if_outside_allowed_roots
     from src.utils.files import atomic_write, loads_finite, read_capped_bytes
     from src.utils.serialize import scrub_trojan_source_primitives
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from feed.logging_safe import setup_script_logging  # type: ignore[no-redef]
+    from feed.config import warn_if_outside_allowed_roots  # type: ignore[no-redef]
     from utils.files import atomic_write, loads_finite, read_capped_bytes  # type: ignore[no-redef]
     from utils.serialize import scrub_trojan_source_primitives  # type: ignore[no-redef]
 
@@ -276,7 +278,10 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     payload = extract(args.raw, args.source_url)
-    args.output.parent.mkdir(parents=True, exist_ok=True)
+    # Operator guardrail: --output may target a path outside the repo; warn but
+    # still write there.
+    out_path = warn_if_outside_allowed_roots(args.output, logger=logger, label="--output")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     # Security (Trojan-Source / BiDi-Mark Drift, ingestion-boundary
     # defence): strip the canonical CVE-2021-42574 attack-byte union
     # (BiDi formatting controls, BiDi isolates, zero-width primitives +
@@ -319,7 +324,7 @@ def main(argv: list[str] | None = None) -> int:
     # rather than silently landing non-standard ``NaN`` / ``Infinity``
     # literals (invalid per RFC 8259) in the committed
     # ``data/oebb_geonetz_stops.json`` sidecar.
-    with atomic_write(args.output, mode="w", encoding="utf-8") as handle:
+    with atomic_write(out_path, mode="w", encoding="utf-8") as handle:
         handle.write(
             json.dumps(serialisable, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
         )

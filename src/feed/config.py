@@ -32,6 +32,7 @@ from ..config.defaults import (
 )
 from ..utils.env import get_bool_env, get_int_env
 from ..utils.http import validate_public_feed_url
+from ..utils.logging import sanitize_log_arg
 
 ALLOWED_ROOTS = {"docs", "data", "log"}
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -222,6 +223,42 @@ def validate_path(path: Path, name: str) -> Path:
         if rel.parts and rel.parts[0] in ALLOWED_ROOTS:
             return resolved
     raise InvalidPathError(f"{name} outside allowed directories")
+
+
+def is_within_allowed_roots(path: Path) -> bool:
+    """Boolean companion to :func:`validate_path` (never raises).
+
+    Returns ``True`` when *path* resolves under one of the repository's
+    :data:`ALLOWED_ROOTS`. Used by operator-tool guardrails that warn — rather
+    than fail — on out-of-tree writes.
+    """
+    try:
+        validate_path(path, "path")
+    except InvalidPathError:
+        return False
+    return True
+
+
+def warn_if_outside_allowed_roots(
+    path: Path, *, logger: logging.Logger, label: str = "output path"
+) -> Path:
+    """Operator-tool guardrail: resolve *path*, warn (never fail) when it
+    escapes :data:`ALLOWED_ROOTS`, and return the resolved path to write to.
+
+    Operator tools may legitimately target paths outside the repository (e.g.
+    ``~/.config/feed.env``); this surfaces accidental ``..`` traversal without
+    breaking that workflow. CI / pipeline writers that must stay in-tree use
+    the raising :func:`validate_path` instead.
+    """
+    resolved = Path(path).expanduser().resolve()
+    if not is_within_allowed_roots(resolved):
+        logger.warning(
+            "%s %s is outside the repository's allowed roots (%s); writing there anyway.",
+            label,
+            sanitize_log_arg(str(resolved)),
+            ", ".join(sorted(ALLOWED_ROOTS)),
+        )
+    return resolved
 
 
 def resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool = False) -> Path:

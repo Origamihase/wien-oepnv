@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import logging
 import re
 import sys
 import textwrap
@@ -14,6 +15,8 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 SRC_DIR = BASE_DIR / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
+
+LOGGER = logging.getLogger("configure_feed")
 
 try:  # pragma: no cover - allow execution via package and script
     from utils.configuration_wizard import (
@@ -26,6 +29,7 @@ try:  # pragma: no cover - allow execution via package and script
         mask_value,
         normalize_existing_values,
     )
+    from feed.config import warn_if_outside_allowed_roots
     from utils.env import load_env_file
     from utils.files import atomic_write
 except ImportError:  # pragma: no cover - allow python scripts/configure_feed.py
@@ -39,6 +43,7 @@ except ImportError:  # pragma: no cover - allow python scripts/configure_feed.py
         mask_value,
         normalize_existing_values,
     )
+    from src.feed.config import warn_if_outside_allowed_roots  # type: ignore
     from src.utils.env import load_env_file  # type: ignore
     from src.utils.files import atomic_write  # type: ignore
 
@@ -195,9 +200,12 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    env_path = Path(args.env_file)
-    if not env_path.is_absolute():
-        env_path = (BASE_DIR / env_path).resolve()
+    raw_env_path = Path(args.env_file).expanduser()
+    env_path = raw_env_path if raw_env_path.is_absolute() else (BASE_DIR / raw_env_path)
+    # Operator guardrail: --env-file may legitimately point outside the repo
+    # (e.g. ~/.config/feed.env), but warn on out-of-tree / ``..`` paths. This
+    # also fixes the former absolute-path bypass that skipped resolution.
+    env_path = warn_if_outside_allowed_roots(env_path, logger=LOGGER, label="--env-file")
 
     overrides = _parse_overrides(list(args.set))
     existing_env = _load_existing(env_path)

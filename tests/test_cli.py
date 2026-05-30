@@ -69,7 +69,11 @@ def test_cli_cache_update_rejects_mixed_all(monkeypatch: pytest.MonkeyPatch) -> 
 
 
 def test_cli_stations_validate_writes_report(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]) -> None:
-    output_path = tmp_path / "report.md"
+    # --output is locked to the repo's allowed roots (docs/data/log); chdir into
+    # tmp_path and write under a CWD-local data/ dir so validate_path accepts it.
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "data").mkdir()
+    output_path = tmp_path / "data" / "report.md"
 
     class DummyReport:
         has_issues = True
@@ -115,6 +119,46 @@ def test_cli_stations_validate_writes_report(tmp_path: Path, monkeypatch: pytest
     assert "Report written to" in captured.out
     assert output_path.read_text(encoding="utf-8") == "dummy-report\n"
     assert exit_code == 1
+
+
+def test_cli_stations_validate_rejects_output_outside_repo(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """CI lockdown: an --output path outside the repo's allowed roots must fail."""
+
+    class DummyReport:
+        has_issues = False
+        total_stations = 1
+        duplicates: list[str] = []
+        alias_issues: list[str] = []
+        coordinate_issues: list[str] = []
+        gtfs_issues: list[str] = []
+        security_issues: list[str] = []
+        cross_station_id_issues: list[str] = []
+        identity_field_conflicts: list[str] = []
+        provider_issues: list[str] = []
+        naming_issues: list[str] = []
+        cross_name_alias_issues: list[str] = []
+
+        def to_markdown(self) -> str:
+            return "report\n"
+
+    monkeypatch.setattr(cli, "validate_stations", lambda *a, **k: DummyReport())
+
+    # tmp_path is outside the repository (CWD = repo root here) → rejected, and
+    # nothing is written.
+    outside = tmp_path / "evil.md"
+    with pytest.raises(SystemExit):
+        cli.main([
+            "stations",
+            "validate",
+            "--stations",
+            "stations.json",
+            "--output",
+            str(outside),
+        ])
+    assert not outside.exists()
+    assert "outside allowed directories" in capsys.readouterr().err
 
 
 def test_cli_checks_forwards_arguments(monkeypatch: pytest.MonkeyPatch) -> None:
