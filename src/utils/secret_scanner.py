@@ -41,12 +41,26 @@ _HIGH_ENTROPY_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0
 # Detect sensitive variable assignments (e.g. key = "value")
 # We use a broad list of keywords and allow common separators (hyphens, dots) in prefixes/suffixes
 # to catch variations like my-api-key, config.client_secret, etc.
+#
+# Security (ReDoS): every key-affix repetition below is BOUNDED ``{0,64}``
+# rather than the prior unbounded ``*``. The unbounded affixes caused
+# catastrophic O(n²) backtracking — a hostile committed line holding the
+# literal ``token`` followed by a long run of ``[a-z0-9_.-]`` chars with no
+# trailing ``[:=]`` (a long base64-ish blob, an npm ``integrity`` hash list,
+# a Tailscale ACL, …) made the greedy affix consume the whole run, the
+# required ``\s*[:=]`` fail, and the engine backtrack one char at a time at
+# every start position (~6 s for 4 KB, ~36 s for 10 KB), stalling the CI
+# secret gate so sibling files never got scanned. ``re.sub``/``finditer``
+# still advance the start position across the whole input, so a real key
+# preceded by a long prefix is still found — only the *per-position*
+# look-ahead is capped. 64 is far longer than any realistic key
+# identifier, so the bound is lossless for genuine secrets.
 _SENSITIVE_ASSIGN_RE = re.compile(
     r"""(?xis)
     (
         # Group 1: The key
         (?:
-            [a-z0-9_.-]*  # Prefix allowing letters, numbers, underscores, dots, hyphens
+            [a-z0-9_.-]{0,64}  # Prefix allowing letters, numbers, underscores, dots, hyphens
             (?:
                 token|secret|password|passphrase|credential|
                 accessid|accesskey|access-key|access.key|
@@ -61,16 +75,16 @@ _SENSITIVE_ASSIGN_RE = re.compile(
                 webhook_url|webhook-url|webhook.url|webhook|
                 dsn|subscriptionkey
             )
-            [a-z0-9_.-]*  # Suffix allowing letters, numbers, underscores, dots, hyphens
+            [a-z0-9_.-]{0,64}  # Suffix allowing letters, numbers, underscores, dots, hyphens
         )
         |
         (?:
             # Strict matching for short/risky keywords to avoid false positives (e.g. throughput)
-            [a-z0-9_.-]*  # Prefix
+            [a-z0-9_.-]{0,64}  # Prefix
             (?:
                 glpat|ghp|otp
             )
-            (?:[-_][a-z0-9_.-]*)?  # Strict suffix (underscore/hyphen required or end)
+            (?:[-_][a-z0-9_.-]{0,64})?  # Strict suffix (underscore/hyphen required or end)
         )
     )
     \s*[:=]\s*  # Assignment operator (= or :) surrounded by flexible whitespace (including newlines)

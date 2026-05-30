@@ -240,6 +240,15 @@ _LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
 # 4. Two-byte sequences: ESC [space-/] [0-~]
 _ANSI_ESCAPE_RE = re.compile(r'\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07\x1b]*(?:\x07|\x1b\\)|[@-Z\\^_]|[\x20-\x2f][\x30-\x7e])')
 
+# Security (ReDoS defense-in-depth): upper bound on the input length that
+# ``sanitize_log_message`` runs its ~100-pattern credential-masking sweep
+# over. 8 KiB is far longer than any realistic single log line / argument
+# (the longest legitimate inputs are multi-line tracebacks, still well under
+# this), so the cap never truncates genuine operator output — it only bounds
+# the worst-case CPU an attacker can force with an abnormally long hostile
+# argument. See the truncation note in ``sanitize_log_message``.
+_MAX_SANITIZE_INPUT_CHARS = 8192
+
 
 def sanitize_log_message(
     text: str, secrets: list[str] | None = None, strip_control_chars: bool = True
@@ -264,6 +273,20 @@ def sanitize_log_message(
     if not text:
         return ""
 
+    # Security (ReDoS defense-in-depth): bound the input length before the
+    # credential-masking regex sweep below. Those patterns are individually
+    # linear (their key-name affixes are length-bounded), but the sweep runs
+    # ~100 patterns over the whole string, so an attacker-supplied multi-
+    # hundred-KB log argument — e.g. a hostile upstream response body echoed
+    # into a log call — would still burn seconds-to-minutes of CPU per call
+    # and stall the cron. Real log lines / arguments are far shorter; capping
+    # an abnormally long single argument bounds the worst case to a constant.
+    # Truncation happens BEFORE masking, so any credential in the retained
+    # prefix is still redacted and anything past the cap is dropped (never
+    # emitted) — the cap cannot leak a secret it removes.
+    if len(text) > _MAX_SANITIZE_INPUT_CHARS:
+        text = text[:_MAX_SANITIZE_INPUT_CHARS] + " ...[truncated]"
+
     sanitized = text
 
     # Remove ANSI escape codes explicitly first
@@ -271,15 +294,15 @@ def sanitize_log_message(
 
     # Keys that should be redacted (regex alternation, longest match first)
     _keys = (
-        r"client[-_.\s]*secret|access[-_.\s]*token|refresh[-_.\s]*token|[a-z0-9_.\-]*client[-_.\s]*id[a-z0-9_.\-]*|[a-z0-9_.\-]*signature|[a-z0-9_.\-]*password[a-z0-9_.\-]*|[a-z0-9_.\-]*e[-_.\s]*mail[a-z0-9_.\-]*|"
+        r"client[-_.\s]*secret|access[-_.\s]*token|refresh[-_.\s]*token|[a-z0-9_.\-]{0,64}client[-_.\s]*id[a-z0-9_.\-]{0,64}|[a-z0-9_.\-]{0,64}signature|[a-z0-9_.\-]{0,64}password[a-z0-9_.\-]{0,64}|[a-z0-9_.\-]{0,64}e[-_.\s]*mail[a-z0-9_.\-]{0,64}|"
         r"client[-_.\s]*assertion[-_.\s]*type|client[-_.\s]*assertion|"
         # Plain `assertion` (RFC 7521/7522/7523 — SAML 2.0 / JWT Bearer Auth Grant):
         # carries a signed identity assertion that is effectively a credential.
-        # The optional [a-z0-9_.\-]* prefix/suffix also captures saml_assertion,
+        # The optional [a-z0-9_.\-]{0,64} prefix/suffix also captures saml_assertion,
         # subject_assertion, jwt_assertion, etc.
-        r"[a-z0-9_.\-]*assertion[a-z0-9_.\-]*|"
+        r"[a-z0-9_.\-]{0,64}assertion[a-z0-9_.\-]{0,64}|"
         r"saml[-_.\s]*request|saml[-_.\s]*response|"
-        r"[a-z0-9_.\-]*accessid[a-z0-9_.\-]*|id[-_.\s]*token|[a-z0-9_.\-]*session[-_.\s]*id[a-z0-9_.\-]*|session|cookie|[a-z0-9_.\-]*apikey[a-z0-9_.\-]*|[a-z0-9_.\-]*secret[a-z0-9_.\-]*|ticket|[a-z0-9_.\-]*token|code|key|sig|sid|"
+        r"[a-z0-9_.\-]{0,64}accessid[a-z0-9_.\-]{0,64}|id[-_.\s]*token|[a-z0-9_.\-]{0,64}session[-_.\s]*id[a-z0-9_.\-]{0,64}|session|cookie|[a-z0-9_.\-]{0,64}apikey[a-z0-9_.\-]{0,64}|[a-z0-9_.\-]{0,64}secret[a-z0-9_.\-]{0,64}|ticket|[a-z0-9_.\-]{0,64}token|code|key|sig|sid|"
         r"nonce|state|"
         # Security (sibling-drift closure of PR #1531's
         # ``_SENSITIVE_QUERY_KEYS`` SAML/CSRF/WordPress round):
@@ -295,7 +318,7 @@ def sanitize_log_message(
         #     (Spring Security's ``_csrf`` GET-based protection,
         #     Angular's bare ``xsrf`` cookie). The token-suffixed
         #     forms (``csrf_token``, ``XSRF-TOKEN``) are ALREADY
-        #     covered via the existing ``[a-z0-9_.\-]*token``
+        #     covered via the existing ``[a-z0-9_.\-]{0,64}token``
         #     alternation. Only the bare forms need explicit
         #     coverage here. The ``RelayState`` and ``_wpnonce``
         #     siblings from PR #1531 are ALREADY covered via the
@@ -303,16 +326,16 @@ def sanitize_log_message(
         #     match within the longer key name).
         r"samlart|csrf|xsrf|"
         r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
-        r"authorization|auth|bearer[-_.\s]*token|bearer|[a-z0-9_.\-]*api[-_.\s]*key[a-z0-9_.\-]*|[a-z0-9_.\-]*private[-_.\s]*key|auth[-_.\s]*token|"
+        r"authorization|auth|bearer[-_.\s]*token|bearer|[a-z0-9_.\-]{0,64}api[-_.\s]*key[a-z0-9_.\-]{0,64}|[a-z0-9_.\-]{0,64}private[-_.\s]*key|auth[-_.\s]*token|"
         r"tenant[-_.\s]*id|tenant|subscription[-_.\s]*id|subscription|object[-_.\s]*id|oid|"
         r"code[-_.\s]*challenge|code[-_.\s]*verifier|"
         r"x[-_.\s]*api[-_.\s]*key|ocp[-_.\s]*apim[-_.\s]*subscription[-_.\s]*key|"
-        r"[a-z0-9_.\-]*credential|x[-_.\s]*amz[-_.\s]*credential|x[-_.\s]*amz[-_.\s]*security[-_.\s]*token|"
+        r"[a-z0-9_.\-]{0,64}credential|x[-_.\s]*amz[-_.\s]*credential|x[-_.\s]*amz[-_.\s]*security[-_.\s]*token|"
         r"x[-_.\s]*amz[-_.\s]*signature|x[-_.\s]*auth[-_.\s]*token|"
-        r"[a-z0-9_.\-]*passphrase[a-z0-9_.\-]*|[a-z0-9_.\-]*access[-_.\s]*key[-_.\s]*id[a-z0-9_.\-]*|"
-        r"[a-z0-9_.\-]*secret[-_.\s]*access[-_.\s]*key|[a-z0-9_.\-]*auth[-_.\s]*code[a-z0-9_.\-]*|"
-        r"[a-z0-9_.\-]*authorization[-_.\s]*code[a-z0-9_.\-]*|"
-        r"[a-z0-9_.\-]*otp(?:[-_][a-z0-9_.\-]*)?|[a-z0-9_.\-]*glpat(?:[-_][a-z0-9_.\-]*)?|[a-z0-9_.\-]*ghp(?:[-_][a-z0-9_.\-]*)?|"
+        r"[a-z0-9_.\-]{0,64}passphrase[a-z0-9_.\-]{0,64}|[a-z0-9_.\-]{0,64}access[-_.\s]*key[-_.\s]*id[a-z0-9_.\-]{0,64}|"
+        r"[a-z0-9_.\-]{0,64}secret[-_.\s]*access[-_.\s]*key|[a-z0-9_.\-]{0,64}auth[-_.\s]*code[a-z0-9_.\-]{0,64}|"
+        r"[a-z0-9_.\-]{0,64}authorization[-_.\s]*code[a-z0-9_.\-]{0,64}|"
+        r"[a-z0-9_.\-]{0,64}otp(?:[-_][a-z0-9_.\-]{0,64})?|[a-z0-9_.\-]{0,64}glpat(?:[-_][a-z0-9_.\-]{0,64})?|[a-z0-9_.\-]{0,64}ghp(?:[-_][a-z0-9_.\-]{0,64})?|"
         r"\bpass\b|\bpwd\b|\buser[-_.]?pass\b"
     )
 
@@ -320,7 +343,7 @@ def sanitize_log_message(
     # Explicitly supports hyphens for header style (e.g. Api-Key)
     _header_keys = (
         r"api[-_.\s]*key|token|secret|signature|password|auth|session|cookie|private|"
-        r"client[-_.\s]*assertion|[a-z0-9_.\-]*assertion[a-z0-9_.\-]*|"
+        r"client[-_.\s]*assertion|[a-z0-9_.\-]{0,64}assertion[a-z0-9_.\-]{0,64}|"
         r"saml[-_.\s]*request|saml[-_.\s]*response|nonce|state|"
         # Sibling-drift closure (see ``_keys`` above): ``samlart`` /
         # ``csrf`` / ``xsrf`` bare header forms (``SAMLArt: ...``,
@@ -338,7 +361,19 @@ def sanitize_log_message(
         # Explicitly mask accessId (Requirement) to ensure robust redaction in tracebacks
         (r"(?i)(accessId\s*=\s*)([^&\s]+)", r"\1***"),
         # Basic Auth in URLs (protocol://user:pass@host) - canonical form.
-        (r"(?i)([a-z0-9+.-]+://)([^/@\s]+)@", r"\1***@"),
+        # Security (ReDoS): the scheme class is BOUNDED ``{1,64}`` and
+        # POSSESSIVE (``+`` suffix). The prior unbounded ``[a-z0-9+.-]+``
+        # caused catastrophic O(n²) backtracking — on a hostile log
+        # argument made of a long run of ``[a-z0-9+.-]`` chars with no
+        # ``://`` (e.g. a leaked base64-ish token or hostname), the ``+``
+        # consumed the whole run, ``://`` failed, and the engine
+        # backtracked one char at a time at every start position
+        # (~75 s for 100 KB), freezing the entire log pipeline since
+        # ``sanitize_log_message`` runs on every operator log line. ``:``
+        # and ``/`` are NOT in the class, so the possessive quantifier
+        # never over-consumes a real ``scheme://`` — the fix is lossless
+        # for every realistic URL scheme (all well under 64 chars).
+        (r"(?i)([a-z0-9+.-]{1,64}+://)([^/@\s]+)@", r"\1***@"),
         # Basic Auth in malformed credentialled URIs without the ``//``
         # separator (``postgres:admin:secret@host``) and JDBC inner-
         # scheme variants (``jdbc:mysql:root:pw@host``). The canonical
@@ -384,7 +419,7 @@ def sanitize_log_message(
         (r"(?i)('(?:Set-)?Cookie'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
         # Generic sensitive headers (e.g. X-Api-Key, X-Goog-Api-Key, X-Auth-Token)
         # Matches any header name containing a sensitive term. Allows underscores too.
-        (rf"(?i)((?:[-a-zA-Z0-9_]*(?:{_header_keys})[-a-zA-Z0-9_]*):\s*)((?:.*)(?:\n\s+.*)*)", r"\1***"),
+        (rf"(?i)((?:[-a-zA-Z0-9_]{{0,64}}(?:{_header_keys})[-a-zA-Z0-9_]{{0,64}}):\s*)((?:.*)(?:\n\s+.*)*)", r"\1***"),
         # Mask potentially leaked secrets in JSON error messages
         (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
