@@ -935,6 +935,16 @@
       "epoch": 2
     }
   },
+  "2c1a7be072fb0c6769578fb03bbd41b65f46e10143beb37ef354c91d9adee656": {
+    "first_seen": "2026-05-30T14:30:55.005206+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic congestion.",
+        "title": "2: traffic congestion"
+      },
+      "epoch": 2
+    }
+  },
   "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7": {
     "first_seen": "2026-05-25T20:01:00.188196+00:00",
     "translations": {
@@ -3699,6 +3709,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: defective vehicle.",
         "title": "10: delays"
+      },
+      "epoch": 2
+    }
+  },
+  "c7adcf4ae4de93f3b69bafc53bb2cdce2b4a91e62fb4c4c3dbc1b68276b823cf": {
+    "first_seen": "2026-05-30T14:30:55.005206+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Line D: irregular intervals in both directions.",
+        "title": "1/71/D/O: demonstration"
       },
       "epoch": 2
     }
