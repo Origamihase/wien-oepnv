@@ -307,7 +307,13 @@ def _stop_names_from_related(rel_stops: list[Any]) -> list[str]:
         if canonical:
             final = display_name(canonical)
         else:
-            final = re.sub(r"\s{2,}", " ", raw).strip()
+            # ``\s+`` (NOT ``\s{2,}``): the prior shape only collapsed runs
+            # of >=2 whitespace chars, so a single embedded ``\n`` or ``\t``
+            # in a relatedStops name survived into the RSS ``Haltestelle:``
+            # description line verbatim, breaking the single-line render
+            # downstream. Matches the canonical shape of the sibling
+            # ``_normalize_whitespace`` helper below.
+            final = re.sub(r"\s+", " ", raw).strip()
         if not final:
             continue
         key = final.casefold()
