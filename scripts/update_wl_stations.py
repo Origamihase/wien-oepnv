@@ -1692,6 +1692,22 @@ def merge_into_stations(
 
     log.info("Keeping %d existing non-WL stations", len(filtered))
 
+    # Data-loss floor: with no WL entries to re-add, writing ``filtered``
+    # back would permanently drop every existing ``source == "wl"`` station.
+    # An empty set only happens when the OGD CSV load failed (oversized →
+    # ``read_capped_text`` returned ``None``, download/format error), so
+    # refuse and keep the committed file. A genuinely empty or unreadable
+    # existing file has no WL rows to lose (``len(filtered) == len(existing)``),
+    # so the depth-bomb / fresh-start path still writes through.
+    if not wl_entries and len(filtered) < len(existing):
+        log.error(
+            "No WL entries to merge but %d existing WL station(s) would be "
+            "deleted — refusing to overwrite stations [path-sha256=%s].",
+            len(existing) - len(filtered),
+            _path_fingerprint(stations_path),
+        )
+        return
+
     unmatched: list[dict[str, object]] = []
     for payload in wl_entries:
         merged_into: dict[str, object] | None = None
@@ -1801,6 +1817,17 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     wl_entries = build_wl_entries(haltestellen, haltepunkte, vor_mapping)
     log.info("Prepared %d WL station entries", len(wl_entries))
+
+    # Abort before the costly reconcile + merge if the OGD load produced
+    # nothing — merge_into_stations would otherwise wipe the WL layer.
+    if not wl_entries:
+        log.error(
+            "No WL station entries were built (haltestellen=%d, haltepunkte=%d) — "
+            "aborting to protect data/stations.json from WL-layer deletion.",
+            len(haltestellen),
+            len(haltepunkte),
+        )
+        return 1
 
     # Drop mislabelled stop names that resolve to a far-away station (an
     # upstream WL DIVA-grouping artefact). Without this a stop sitting at

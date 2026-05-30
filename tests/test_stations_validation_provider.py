@@ -162,6 +162,24 @@ def test_vor_bst_code_collides_with_oebb(tmp_path: Path) -> None:
     assert "VOR bst_code collides with OEBB" in reasons
 
 
+def test_dual_source_oebb_vor_entry_does_not_self_collide(tmp_path: Path) -> None:
+    """A station sourced from BOTH ``oebb`` and ``vor`` must not be flagged as
+    colliding with itself.
+
+    Such an entry contributes its own ``bst_code`` to the OEBB code set, so the
+    cross-provider collision check would otherwise match it against itself and
+    emit a spurious ``VOR bst_code collides with OEBB`` issue.
+    """
+    path = tmp_path / "stations.json"
+    dual = _vor_entry("900100", "Dual")
+    dual["source"] = "oebb,vor"
+    _write(path, [dual, _vor_entry("900200", "VOR-only", lat=48.3)])
+    report = validate_stations(path)
+    reasons = [issue.reason for issue in report.provider_issues]
+    assert "VOR bst_code collides with OEBB" not in reasons
+    assert report.provider_issues == ()
+
+
 def test_source_string_with_spaces_is_parsed(tmp_path: Path) -> None:
     """`source: 'google_places, vor, wl'` (with whitespace after commas) must be recognised as VOR.
 
