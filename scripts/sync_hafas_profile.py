@@ -58,6 +58,7 @@ import requests
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from src.feed.config import warn_if_outside_allowed_roots
 from src.feed.logging_safe import setup_script_logging
 from src.utils.files import atomic_write
 from src.utils.http import request_safe, session_with_retries
@@ -531,6 +532,9 @@ def _write_profile(profile: dict[str, object], output_path: Path) -> None:
     auth-bearing sidecars.
     """
     scrubbed = scrub_trojan_source_primitives(profile)
+    # Operator guardrail: --output may target a path outside the repo; warn but
+    # still write there (operators legitimately dump the profile elsewhere).
+    output_path = warn_if_outside_allowed_roots(output_path, logger=LOGGER, label="--output")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     # Security (Coordinate finite/range drift, committed-writer
     # defence-in-depth): ``allow_nan=False`` mirrors the canonical

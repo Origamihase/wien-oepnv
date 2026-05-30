@@ -6,7 +6,10 @@ from dataclasses import dataclass
 from datetime import datetime, UTC
 from pathlib import Path
 from collections.abc import Mapping
+import logging
 import re
+
+from ..feed.config import warn_if_outside_allowed_roots
 
 from ..config.defaults import (
     DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
@@ -90,6 +93,14 @@ class ConfigOption:
                 f"{self.key} akzeptiert nur yes/no, true/false oder 1/0 (erhalten: {raw!r})."
             )
         if self.kind == "path":
+            # Operator guardrail: a path field (e.g. OUT_PATH) may legitimately
+            # point outside the repo; warn on out-of-tree targets but keep the
+            # value as typed (the feed builder resolves it via resolve_env_path).
+            warn_if_outside_allowed_roots(
+                Path(text).expanduser(),
+                logger=logging.getLogger(__name__),
+                label=self.key,
+            )
             return Path(text).as_posix()
         # secret/string fallthrough – trim outer whitespace only
         return text

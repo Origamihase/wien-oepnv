@@ -49,7 +49,7 @@ from src.utils.env import load_default_env_files
 from src.utils.files import atomic_write, loads_finite, read_capped_text
 from src.utils.logging import sanitize_log_arg
 from src.utils.serialize import scrub_trojan_source_primitives
-from src.feed.config import InvalidPathError, validate_path
+from src.feed.config import InvalidPathError, validate_path, warn_if_outside_allowed_roots
 
 LOGGER = logging.getLogger("places.cli")
 
@@ -292,6 +292,9 @@ def _dump_changes(
     new_entries: Sequence[Mapping[str, object]],
     updated_entries: Sequence[Mapping[str, object]],
 ) -> None:
+    # Operator guardrail: --dump-new may target a path outside the repo (a
+    # debug dump to /tmp is common); warn but still write there.
+    path = warn_if_outside_allowed_roots(path, logger=LOGGER, label="--dump-new")
     # Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
     # defence): strip the canonical CVE-2021-42574 attack-byte union from
     # provider-fetched Google Places ``new`` / ``updated`` entries BEFORE

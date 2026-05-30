@@ -12,10 +12,12 @@ from typing import TYPE_CHECKING, cast
 
 if TYPE_CHECKING:
     from . import build_feed as build_feed_module
+    from .feed.config import InvalidPathError, validate_path
     from .utils.files import atomic_write
     from .utils.stations_validation import validate_stations
 else:
     from . import build_feed as build_feed_module
+    from .feed.config import InvalidPathError, validate_path
     from .utils.files import atomic_write
     from .utils.stations_validation import validate_stations
 
@@ -358,7 +360,13 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
     )
 
     if args.output:
-        output_path: Path = args.output
+        # CI lockdown: the validation-report path is restricted to the repo's
+        # allowed roots (docs/data/log). A path that resolves outside the
+        # repository fails loudly instead of writing an arbitrary file.
+        try:
+            output_path: Path = validate_path(args.output, "--output")
+        except InvalidPathError as exc:
+            raise CLIError(str(exc)) from exc
         output_path.parent.mkdir(parents=True, exist_ok=True)
         # ``atomic_write`` (tempfile + ``os.replace``) so a SIGINT
         # mid-write cannot leave a half-rendered Markdown report at
