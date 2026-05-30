@@ -262,8 +262,14 @@ def _resolve_lastmod(path: Path, git_iso: str | None) -> str:
             timestamp = _dt.datetime.fromisoformat(git_iso.replace("Z", "+00:00"))
     if timestamp is None:
         timestamp = _dt.datetime.fromtimestamp(path.stat().st_mtime, tz=_dt.UTC)
-    lastmod_date = timestamp.date()
-    today = _dt.date.today()
+    # Compare in UTC. ``timestamp.date()`` reflects the stored offset (e.g. a
+    # commit at 2026-05-31T00:30+02:00 -> 2026-05-31) while a naive
+    # ``date.today()`` on a UTC CI runner is 2026-05-30, which would wrongly
+    # clamp the genuine lastmod back a day. Normalise both sides to UTC.
+    if timestamp.tzinfo is None:
+        timestamp = timestamp.replace(tzinfo=_dt.UTC)
+    lastmod_date = timestamp.astimezone(_dt.UTC).date()
+    today = _dt.datetime.now(_dt.UTC).date()
     if lastmod_date > today:
         lastmod_date = today
     return lastmod_date.isoformat()

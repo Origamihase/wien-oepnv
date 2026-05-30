@@ -16,6 +16,7 @@ import csv
 import hashlib
 import json
 import logging
+import math
 import re
 import sys
 from dataclasses import dataclass
@@ -469,9 +470,17 @@ def _coerce_float(value: str) -> float | None:
         return None
     text = value.strip().replace(",", ".")
     try:
-        return float(text)
+        result = float(text)
     except ValueError:
         return None
+    # Reject NaN/Inf at the parse boundary. ``float("nan")``/``float("1e1000")``
+    # do not raise, and a non-finite coordinate would poison the coordinate
+    # averaging (``_aggregate_coordinates``), make ``_all_pairs_within`` return
+    # True for NaN pairs (spurious merges), and finally crash the whole merge at
+    # ``json.dump(..., allow_nan=False)``. Drop the corrupt cell instead.
+    if not math.isfinite(result):
+        return None
+    return result
 
 
 @dataclass

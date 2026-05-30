@@ -1211,7 +1211,10 @@ def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     dp = math.radians(lat2 - lat1)
     dl = math.radians(lon2 - lon1)
     a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
-    return 2 * radius * math.asin(math.sqrt(a))
+    # Clamp to the asin domain: floating-point error can push ``sqrt(a)`` a hair
+    # above 1.0 for near-antipodal inputs, which would raise ``ValueError`` (math
+    # domain error). Mirrors the robust form in ``geo.calculate_distance_meters``.
+    return 2 * radius * math.asin(min(1.0, math.sqrt(a)))
 
 
 # Distance beyond which an alias / ``wl_stop`` label that doubles as a

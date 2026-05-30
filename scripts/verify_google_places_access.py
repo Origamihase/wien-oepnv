@@ -98,34 +98,37 @@ def main(argv: Sequence[str] | None = None) -> int:
         LOGGER.error("Configuration error: %s", exc)
         return 2
 
-    client = GooglePlacesClient(config)
+    # Use the context manager so the underlying ``requests.Session`` (pooled TCP
+    # sockets / TLS state) is closed on every exit path — matches the lifecycle
+    # used by ``fetch_google_places_stations.py`` and avoids FD leaks when
+    # ``main()`` is invoked repeatedly (e.g. from a test harness).
+    with GooglePlacesClient(config) as client:
+        try:
+            first_place, request_count = _verify_access(config, probe_tile, client=client)
+        except GooglePlacesPermissionError as exc:
+            LOGGER.error("Places API denied the request: %s", exc)
+            hint = permission_hint(str(exc))
+            if hint:
+                LOGGER.error(hint)
+            return 1
+        except GooglePlacesError as exc:
+            LOGGER.error("Places API request failed: %s", exc)
+            return 1
+        except Exception as exc:  # pragma: no cover - defensive
+            LOGGER.error("Unexpected error while verifying Places API access: %s", exc)
+            return 1
 
-    try:
-        first_place, request_count = _verify_access(config, probe_tile, client=client)
-    except GooglePlacesPermissionError as exc:
-        LOGGER.error("Places API denied the request: %s", exc)
-        hint = permission_hint(str(exc))
-        if hint:
-            LOGGER.error(hint)
-        return 1
-    except GooglePlacesError as exc:
-        LOGGER.error("Places API request failed: %s", exc)
-        return 1
-    except Exception as exc:  # pragma: no cover - defensive
-        LOGGER.error("Unexpected error while verifying Places API access: %s", exc)
-        return 1
+        if first_place is not None:
+            LOGGER.info(
+                "Places API access verified; received place %s (%s)",
+                first_place.name,
+                first_place.place_id,
+            )
+        else:
+            LOGGER.info("Places API access verified; request completed with zero results.")
 
-    if first_place is not None:
-        LOGGER.info(
-            "Places API access verified; received place %s (%s)",
-            first_place.name,
-            first_place.place_id,
-        )
-    else:
-        LOGGER.info("Places API access verified; request completed with zero results.")
-
-    LOGGER.info("Verification used %d request(s).", request_count)
-    return 0
+        LOGGER.info("Verification used %d request(s).", request_count)
+        return 0
 
 
 if __name__ == "__main__":  # pragma: no cover

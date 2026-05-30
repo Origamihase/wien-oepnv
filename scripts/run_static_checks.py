@@ -131,8 +131,11 @@ def main() -> int:
         pip_audit_cmd.extend(["--ignore-vuln", vuln_id])
     exit_codes.append(_run(pip_audit_cmd))
 
-    # Return the highest exit code encountered
-    return max(exit_codes) if exit_codes else 0
+    # Fail if any check failed. ``max()`` is wrong here: a subprocess
+    # killed by a signal (SIGKILL/SIGSEGV/OOM-killer) returns a *negative*
+    # code on POSIX, so ``max([0, -9, 0])`` would be ``0`` and the run
+    # would be reported green even though e.g. mypy was OOM-killed mid-check.
+    return 1 if any(code != 0 for code in exit_codes) else 0
 
 
 if __name__ == "__main__":

@@ -76,7 +76,14 @@ def main(argv: list[str] | None = None) -> int:
 
     print(f"{len(findings)} potentiell sensible Einträge gefunden:")
     for finding in findings:
-        relative = finding.path.relative_to(base_dir)
+        try:
+            relative: Path | str = finding.path.relative_to(base_dir)
+        except ValueError:
+            # A finding whose resolved path lies outside ``base_dir`` (e.g. an
+            # absolute path argument, or a tracked symlink resolving out of tree)
+            # cannot be made relative. Show the absolute path instead of crashing
+            # the whole report with an unhandled ValueError.
+            relative = finding.path
         print(
             f"  {relative}:{finding.line_number}: {finding.reason} -> {finding.match}"
         )

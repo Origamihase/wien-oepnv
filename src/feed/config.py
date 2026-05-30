@@ -209,7 +209,15 @@ _validated_feed_public_url = validate_public_feed_url
 def validate_path(path: Path, name: str) -> Path:
     """Ensure ``path`` stays within whitelisted directories."""
 
-    resolved = path.resolve()
+    try:
+        resolved = path.resolve()
+    except (ValueError, OSError) as exc:
+        # ``Path.resolve()`` raises a bare ``ValueError`` for an embedded NUL
+        # byte (and ``OSError`` for some pathological inputs). Convert to the
+        # module's own error type so the documented "never raises" contract of
+        # ``is_within_allowed_roots`` / ``warn_if_outside_allowed_roots`` holds
+        # (they only catch ``InvalidPathError``). Such a path is never valid.
+        raise InvalidPathError(f"{name} could not be resolved") from exc
     bases = {REPO_ROOT}
     if "PYTEST_CURRENT_TEST" in os.environ:
         bases.add(Path.cwd().resolve())
