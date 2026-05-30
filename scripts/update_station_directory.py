@@ -2016,7 +2016,19 @@ def extract_stations(workbook_stream: BytesIO) -> list[Station]:
             )
             seen_ids.add(parsed_id)
             stations.append(station)
-        stations.sort(key=lambda item: item.bst_id)
+        # ``bst_id`` is a numeric identifier stored as a string. Pure
+        # string sort gives lexicographic order (``'100' < '11' < '9'``);
+        # numeric sort matches operator expectation and minimises the
+        # diff churn on ``data/stations.json`` when the upstream Excel
+        # row order shifts.  Fall back to ``str`` for any non-numeric
+        # ID so an unexpected value can't crash the sort.
+        def _bst_id_key(item: Station) -> tuple[int, str]:
+            try:
+                return (int(item.bst_id), "")
+            except (TypeError, ValueError):
+                return (10**12, str(item.bst_id))
+
+        stations.sort(key=_bst_id_key)
         logger.info("Extracted %d stations", len(stations))
         return stations
     finally:

@@ -3400,6 +3400,19 @@ def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, A
     if not st:
         st = {"first_seen": _to_utc(now).isoformat()}
     state[ident] = st
+    # Legacy-key migration cleanup: ``_lookup_state`` returns the modern
+    # guid-shaped key in ``ident``, but on a guid-key miss it falls back
+    # to the legacy ``_identity_for_item`` entry to migrate forward. Pre-
+    # fix we wrote the entry under the new guid key but left the legacy
+    # entry on disk; ``STATE_RETENTION_DAYS`` (60d) bounded the bloat,
+    # but every subsequent build kept comparing the same now-redundant
+    # legacy key in ``_lookup_state``'s fallback path until the prune
+    # eventually fired. Dropping the legacy entry once the migration has
+    # written the new key keeps ``data/first_seen.json`` tidy and saves
+    # the legacy-lookup cost on every cycle.
+    legacy = _identity_for_item(it)
+    if legacy != ident and legacy in state:
+        state.pop(legacy, None)
 
     try:
         fs_dt = datetime.fromisoformat(st["first_seen"])

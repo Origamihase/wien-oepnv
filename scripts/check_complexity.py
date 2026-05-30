@@ -88,13 +88,31 @@ def _parse_baseline(path: Path) -> dict[str, int]:
             )
             continue
         try:
-            out[parts[0]] = int(parts[1])
+            value = int(parts[1])
         except ValueError:
             print(
                 f"::warning::malformed baseline line ignored: {raw!r}",
                 file=sys.stderr,
             )
             continue
+        # Duplicate-name guard: a baseline that lists the same function
+        # twice (operator error, merge conflict, careless regen) MUST NOT
+        # silently relax the gate to the higher value. Pre-fix the
+        # ``out[name] = value`` last-wins, so two lines ``foo 16`` then
+        # ``foo 20`` weakened the gate to 20 — a real ``foo`` complexity-17
+        # violation would then pass. Take the stricter (lower) value and
+        # emit a workflow warning so the duplicate is visible in CI.
+        existing = out.get(parts[0])
+        if existing is not None:
+            print(
+                f"::warning::duplicate baseline entry for {parts[0]!r} "
+                f"({existing} vs {value}); keeping stricter "
+                f"{min(existing, value)}",
+                file=sys.stderr,
+            )
+            out[parts[0]] = min(existing, value)
+        else:
+            out[parts[0]] = value
     return out
 
 
