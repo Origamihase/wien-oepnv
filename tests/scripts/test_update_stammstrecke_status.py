@@ -1254,54 +1254,63 @@ def test_query_trips_raises_on_non_dict_payload(
         )
 
 
-def test_query_trips_charges_quota_before_fetching(
+def test_process_direction_charges_quota_before_breaker(
     monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
 ) -> None:
-    """Quota is reserved BEFORE the network call, so a quota-exhausted run
-    never sends a request."""
+    """Quota is reserved by ``_process_direction`` BEFORE the breaker-wrapped
+    fetch, so a quota-exhausted run never sends a request. The charge was moved
+    out of ``_query_trips`` to the caller so a ``_QuotaExceeded`` (a local budget
+    signal) cannot count toward the circuit breaker's failure threshold."""
 
     call_order: list[str] = []
 
-    def fake_charge(_now: datetime) -> None:
-        call_order.append("charge")
+    monkeypatch.setattr(script, "_charge_one_request", lambda _now: call_order.append("charge"))
 
-    def fake_request(*args: Any, **kwargs: Any) -> requests.Response:
+    def fake_query(*args: Any, **kwargs: Any) -> list[Any]:
         call_order.append("fetch")
-        return _make_response(status_code=200, body=b'{"Trip": []}')
+        return []
 
-    monkeypatch.setattr(script, "_charge_one_request", fake_charge)
-    monkeypatch.setattr(script, "request_safe", fake_request)
+    monkeypatch.setattr(script, "_query_trips", fake_query)
+    script._BREAKER.reset()
 
-    script._query_trips(
-        session=object(), direction=script.DIRECTIONS[0], when=_stable_now
+    state: dict[str, Any] = {}
+    result = script._process_direction(
+        object(), script.DIRECTIONS[0], state, when=_stable_now
     )
     assert call_order == ["charge", "fetch"]
+    assert result == "ok"
 
 
-def test_query_trips_propagates_quota_exceeded_without_fetching(
+def test_process_direction_quota_exhausted_does_not_trip_breaker(
     monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
 ) -> None:
-    """When the quota gate raises, no network call is made."""
-
-    fetched = {"called": False}
+    """When the quota gate raises, no network call is made AND the circuit
+    breaker's failure counter is NOT incremented. Pre-fix the charge ran inside
+    the breaker-wrapped ``_query_trips``, so ~10 quota-blocked ticks OPENed the
+    breaker for an hour and silently skipped the first ticks after the midnight
+    quota reset."""
 
     def raising_charge(_now: datetime) -> None:
         raise script._QuotaExceeded("daily limit reached")
 
-    def fake_request(*args: Any, **kwargs: Any) -> requests.Response:
+    fetched = {"called": False}
+
+    def fake_query(*args: Any, **kwargs: Any) -> list[Any]:
         fetched["called"] = True
-        return _make_response(status_code=200, body=b"")
+        return []
 
     monkeypatch.setattr(script, "_charge_one_request", raising_charge)
-    monkeypatch.setattr(script, "request_safe", fake_request)
+    monkeypatch.setattr(script, "_query_trips", fake_query)
+    script._BREAKER.reset()
+    failures_before = script._BREAKER.consecutive_failures
 
-    with pytest.raises(script._QuotaExceeded):
-        script._query_trips(
-            session=object(),
-            direction=script.DIRECTIONS[0],
-            when=_stable_now,
-        )
+    state: dict[str, Any] = {}
+    result = script._process_direction(
+        object(), script.DIRECTIONS[0], state, when=_stable_now
+    )
+    assert result == "quota_exceeded"
     assert fetched["called"] is False
+    assert script._BREAKER.consecutive_failures == failures_before
 
 
 # ---- Pending-trip state persistence ---------------------------------------
