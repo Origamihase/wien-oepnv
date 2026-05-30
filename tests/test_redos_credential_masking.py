@@ -34,6 +34,8 @@ guard that tolerates slow CI runners without flaking.
 from __future__ import annotations
 
 import time
+from collections.abc import Callable
+from typing import Any
 
 from src.utils import secret_scanner as ss
 from src.utils.logging import (
@@ -47,7 +49,7 @@ from src.utils.logging import (
 # --------------------------------------------------------------------------
 
 
-def _timed(fn, *args) -> float:
+def _timed(fn: Callable[..., Any], *args: Any) -> float:
     start = time.perf_counter()
     fn(*args)
     return time.perf_counter() - start
