@@ -156,6 +156,21 @@ def test_should_ignore_with_basename_pattern_matches_at_any_depth(
     assert _should_ignore(nested, ["*.env"], tmp_path)
 
 
+def test_should_ignore_refuses_bare_star(tmp_path: Path) -> None:
+    """A bare ``*`` / ``**`` must NOT disable the whole scanner (ignore footgun)."""
+    from src.utils.secret_scanner import _should_ignore
+
+    nested = tmp_path / "src" / "config" / ".env"
+    nested.parent.mkdir(parents=True)
+    nested.write_text("x")
+    # Bare asterisk patterns (optionally whitespace-wrapped) are refused...
+    assert not _should_ignore(nested, ["*"], tmp_path)
+    assert not _should_ignore(nested, ["**"], tmp_path)
+    assert not _should_ignore(nested, [" * "], tmp_path)
+    # ...while a real glob in the same list still applies.
+    assert _should_ignore(nested, ["*", "*.env"], tmp_path)
+
+
 def test_should_ignore_returns_false_for_outside_base_dir(tmp_path: Path) -> None:
     from src.utils.secret_scanner import _should_ignore
 

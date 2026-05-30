@@ -2499,6 +2499,34 @@ def write_json(stations_list: list[dict[str, object]], output_path: Path) -> Non
     logger.info("Wrote [path-sha256=%s]", _path_fingerprint(output_path))
 
 
+# Refuse to overwrite a populated station directory with a drastically smaller
+# ÖBB set (truncated/corrupt workbook). 0.5 → block when the new ÖBB count drops
+# below half the existing; ÖBB station counts are very stable, so the false-
+# abort risk is negligible while a manual-only / near-empty result is caught.
+STATION_DIRECTORY_FLOOR_RATIO = 0.5
+
+
+def _station_directory_floor_violation(*, new_oebb: int, existing_oebb: int) -> str | None:
+    """Return a reason string when writing would lose ÖBB station data, else None.
+
+    A truncated or corrupt ÖBB workbook yields zero or very few ÖBB stations;
+    overwriting a populated ``data/stations.json`` with that set silently drops
+    the entire ÖBB layer (only the preserved manual entries survive). Mirrors
+    the ``write_cache`` degradation guard. A fresh/empty existing directory
+    (``existing_oebb == 0``) writes through — there is nothing to lose — but a
+    zero-ÖBB result is always rejected because a valid workbook always yields
+    stations.
+    """
+    if new_oebb == 0:
+        return "extract_stations produced 0 ÖBB stations (truncated/corrupt workbook?)"
+    if existing_oebb and new_oebb < existing_oebb * STATION_DIRECTORY_FLOOR_RATIO:
+        return (
+            f"{new_oebb} ÖBB stations is below {STATION_DIRECTORY_FLOOR_RATIO:.0%} "
+            f"of the existing {existing_oebb} (truncated/corrupt workbook?)"
+        )
+    return None
+
+
 def main() -> None:
     args = parse_args()
     configure_logging(args.verbose)
@@ -2646,6 +2674,19 @@ def main() -> None:
 
     final_stations = [station.as_dict() for station in stations]
     final_stations.extend(manual_stations)
+
+    # Data-loss floor: never replace a populated directory with a truncated ÖBB
+    # set (see _station_directory_floor_violation). Fails closed — the pinned
+    # committed file stays intact and the cron run surfaces a non-zero exit.
+    floor_violation = _station_directory_floor_violation(
+        new_oebb=len(stations), existing_oebb=len(existing_entries)
+    )
+    if floor_violation:
+        raise SystemExit(
+            "Refusing to overwrite station directory "
+            f"[path-sha256={_path_fingerprint(args.output)}]: {floor_violation}"
+        )
+
     write_json(final_stations, args.output)
 
 

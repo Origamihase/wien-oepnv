@@ -2947,10 +2947,10 @@ def _should_ignore(path: Path, patterns: Sequence[str], base_dir: Path) -> bool:
       (``src/leak.py`` matches only that file).
     * A pattern without ``/`` matches the basename (``*.env`` matches
       every ``.env`` at any depth, in line with operator expectation).
-    * Bare ``*`` no longer matches everything because ``fnmatch``'s
-      ``*`` does NOT cross ``/`` boundaries when applied to the full
-      path, and at the basename layer it only matches files in the
-      repo root with no dot in the name.
+    * A bare ``*`` / ``**`` pattern (only asterisks, optionally wrapped in
+      whitespace) is explicitly REFUSED: it would match every basename and
+      silently disable the entire scanner — the precise ignore-list footgun
+      this matcher guards against. Such a pattern is skipped, never honoured.
 
     The behaviour is closer to ``gitignore`` than the previous
     ``PurePath.match`` and never silently drops the scanner's coverage.
@@ -2962,6 +2962,11 @@ def _should_ignore(path: Path, patterns: Sequence[str], base_dir: Path) -> bool:
     rel_str = relative.as_posix()
     rel_name = relative.name
     for pattern in patterns:
+        # Security: refuse a bare "*"/"**" (only asterisks, possibly wrapped in
+        # whitespace). fnmatch("*") matches every basename, so honouring it
+        # would silently disable the whole scanner — the ignore-list footgun.
+        if not pattern.strip().strip("*"):
+            continue
         if "/" in pattern:
             if fnmatch.fnmatch(rel_str, pattern):
                 return True
