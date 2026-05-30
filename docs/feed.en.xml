@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 30 May 2026 18:00:46 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 18:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[3A: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87</guid>
+      <pubDate>Sat, 30 May 2026 18:10:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 18:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 18:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 19:10:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: defective vehicle. [On 30.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 30.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e9995022cdafed79aec298f8690da72242b6c7693f2df40e49c51d5db05a6414</guid>
+      <pubDate>Sat, 30 May 2026 15:42:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 18:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 15:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. expected duration: 16:15 watch. Reason: demonstration in the range Ringstraße and Franz-Josefs-Kai. [On 30.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. expected duration: 16:15 watch. Reason: demonstration in the range Ringstraße and Franz-Josefs-Kai.<br/>[On 30.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,15 +54,15 @@
       <content:encoded><![CDATA[Due to construction works in the Prague Street area, the 34A line will be redirected until June 3, 2026, approximately 17:00.<br/>[09.04.2026 – 03.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[71/D/O: demonstration]]></title>
+      <title><![CDATA[U3: delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e0bcb4e1700b827741ba2acb2d705160d2d97fcaf3c6cd7f6b00440d4d9d8f30</guid>
-      <pubDate>Sat, 30 May 2026 15:42:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 17:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 15:42:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Sat, 30 May 2026 18:13:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 15:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 18:13:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line O: irregular intervals in both directions. [On 30.05.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line O: irregular intervals in both directions.<br/>[On 30.05.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: defective vehicle. [On 30.05.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 30.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: track construction works]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Wed, 05 May 2027 23:59:00 +0200</ext:ends_at>
       <description>Stop change of lines 10A and 39A towards station Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse 10-12 Duration: From … [Since 05.05.2026]</description>
       <content:encoded><![CDATA[Stop change of lines 10A and 39A towards station Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse 10-12 Duration: From …<br/>[Since 05.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A/62: lock Hetzendorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7163817bf0ae8c45bb1051f68cf2cc608d28cbfda8022471592d0b97a140183b</guid>
-      <pubDate>Mon, 04 May 2026 16:30:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 16:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Transfer of the lines 62 and 16A to the Opera, Karlsplatz U or Alaudagasse U Stop: Hetzendorf Castle From: Hetzendorfer Straße 79 To: Hetzendorfer … [Since 04.05.2026]</description>
-      <content:encoded><![CDATA[Transfer of the lines 62 and 16A to the Opera, Karlsplatz U or Alaudagasse U Stop: Hetzendorf Castle From: Hetzendorfer Straße 79 To: Hetzendorfer …<br/>[Since 04.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N81: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6cb07c7304a9b02c49316003964e6675ee0b068a781b6f5ac81424572887ef36</guid>
-      <pubDate>Tue, 28 Apr 2026 14:05:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 05 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
-      <description>Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected. [05.05.2026 – 06.06.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works on the Olympiaplatz, the N81 call bus line is redirected.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
