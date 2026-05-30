@@ -322,7 +322,7 @@
   // the header widget's text is built at runtime by ``renderWeather``. The
   // condition keys mirror the buckets returned by ``weatherCondition``.
   const WEATHER_TEXT_DE = {
-    aria: "Aktuelles Wetter in Wien",
+    aria: "Aktuelles Wetter am Wiener Hbf",
     clear: "klar",
     partly: "teils bewölkt",
     cloudy: "bewölkt",
@@ -332,7 +332,7 @@
     thunder: "Gewitter",
   };
   const WEATHER_TEXT_EN = {
-    aria: "Current weather in Vienna",
+    aria: "Current weather at Wien Hbf",
     clear: "clear",
     partly: "partly cloudy",
     cloudy: "cloudy",
