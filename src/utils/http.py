@@ -1425,8 +1425,18 @@ def validate_http_url(
             # Security Enhancement: Block known DNS rebinding/wildcard DNS services (e.g. nip.io)
             # This is critical when check_dns=False to prevent bypassing IP checks via public domains
             # that resolve to localhost (e.g. 127.0.0.1.nip.io).
+            #
+            # Security (trailing-dot bypass): match against ``check_host``
+            # (the dot-stripped form built above for the TLD check), NOT
+            # ``lower_host``. Pre-fix the loop used ``lower_host`` with
+            # the trailing dot intact, so a host like
+            # ``127.0.0.1.nip.io.`` (or ``..`` / ``...``) fell through —
+            # ``"...nip.io.".endswith(".nip.io")`` is False — and the URL
+            # was returned to a caller that explicitly bypassed live DNS
+            # (``check_dns=False``). Reachable via every embedding path
+            # that publishes a URL into a committed artefact.
             for unsafe_domain in _UNSAFE_DOMAINS:
-                if lower_host == unsafe_domain or lower_host.endswith("." + unsafe_domain):
+                if check_host == unsafe_domain or check_host.endswith("." + unsafe_domain):
                     return None
 
             # Security Enhancement: If DNS resolution is skipped, we must be stricter.
