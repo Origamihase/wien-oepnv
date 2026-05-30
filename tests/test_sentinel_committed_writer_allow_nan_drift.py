@@ -252,9 +252,12 @@ def test_inventory_monthly_quota_save_atomic_pins_allow_nan() -> None:
 def test_inventory_build_feed_save_state_pins_allow_nan() -> None:
     from src import build_feed
 
+    # The ``json.dump(merged_state, ...)`` writer lives in the
+    # ``_write_merged_state`` helper that ``_save_state`` calls under the lock
+    # (extracted so the exclusive-lock site sits next to its failure handler).
     _assert_allow_nan_pin(
-        build_feed._save_state,
-        where="src/build_feed.py:_save_state (data/first_seen.json)",
+        build_feed._write_merged_state,
+        where="src/build_feed.py:_write_merged_state (data/first_seen.json)",
     )
 
 
