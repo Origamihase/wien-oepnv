@@ -7,7 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 * **Dashboard: Wetter-Widget im Header (Wien, 2026-05-30)**:
   Der Header zeigt jetzt links neben der Marke ein kleines Wetter-Symbol
-  plus die aktuelle Temperatur in °C für Wien. Datenquelle ist die
+  plus die aktuelle Temperatur in °C für Wien. Als Abfrage-Koordinaten
+  dienen die des **Wiener Hauptbahnhofs aus dem Stationsverzeichnis**
+  (`data/stations.json`, Eintrag „Wien Hauptbahnhof", 48.186116 /
+  16.374399). Datenquelle ist die
   **Open-Meteo GeoSphere-Austria-API** (`/v1/geosphere_arome_austria`,
   AROME-Modell der GeoSphere Austria), direkt im Browser abgefragt und
   gemeinsam mit den Verkehrsdaten über `loadAll()` im 5-Minuten-Takt

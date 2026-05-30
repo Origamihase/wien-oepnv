@@ -26,10 +26,12 @@
   // Die Doku-Seite des Modells führt ``hourly``-Variablen (keinen
   // ``current``-Block), daher holen wir die Stundenreihe und wählen
   // clientseitig den Wert der aktuellen Stunde (``timeformat=unixtime`` →
-  // zeitzonensichere Auswahl). Koordinaten: Wien (Stephansplatz).
+  // zeitzonensichere Auswahl). Abfrage-Koordinaten: Wien Hauptbahnhof aus
+  // dem Stationsverzeichnis (data/stations.json — Eintrag
+  // "Wien Hauptbahnhof", bst_id 900100 / eva_nr 8103000).
   const WEATHER_URL = "https://api.open-meteo.com/v1/geosphere_arome_austria";
-  const WEATHER_LAT = "48.2085";
-  const WEATHER_LON = "16.3721";
+  const WEATHER_LAT = "48.186116";
+  const WEATHER_LON = "16.374399";
 
   // ----- Lokalisierung (Zero-Tracker) ---------------------------------
   // Statisches Wörterbuch: das Frontend-UI hat wenig Text, deshalb wird
