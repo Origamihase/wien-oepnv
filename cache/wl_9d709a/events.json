@@ -698,6 +698,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5B: Falschparker",
+    "description": "Linie 5B: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 21:45 Uhr. Grund: Falschparker im Haltestellenbereich Obere Augartenstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6f2fe1e933b94c1a12afde9a2d517b8be52680e46d798a0016e5fbb36a659a92",
+    "pubDate": "2026-05-30T21:26:00+02:00",
+    "starts_at": "2026-05-30T21:26:00+02:00",
+    "ends_at": "2026-05-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=5B|D=2026-05-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -782,20 +794,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2026-05-30T20:14:00+02:00",
-    "starts_at": "2026-05-30T20:14:00+02:00",
-    "ends_at": "2026-05-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-05-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U2: Polizeieinsatz",
-    "description": "Die Linie U2 fährt derzeit nur zwischen und Donauspital. Weichen Sie ersatzweise auf die Linien 26A, 25 aus. Voraussichtliche Dauer: 21:10 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Aspernstraße.",
+    "description": "Die Linie U2 fährt derzeit nur zwischen Karlsplatz und Donauspital. Weichen Sie ersatzweise auf die Linien 26A, 25 aus. Voraussichtliche Dauer: 21:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Aspernstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3dd0ec36f6dc8594c9e37e23580bdcf5f82555521c07875e9f83c718912578fc",
     "pubDate": "2026-05-30T20:50:00+02:00",
