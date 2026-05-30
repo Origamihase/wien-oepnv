@@ -796,6 +796,16 @@ def _persist_quota_to_disk() -> int:
     flush). All security invariants (TOCTOU-safe capped read, negative-
     count clamp, atomic write, lock-failure quota-poison sentinel) live
     in this helper now and are exercised through both entry points.
+
+    Cross-process safety: the persisted total is clamped at
+    :data:`MAX_REQUESTS_PER_DAY` under the file lock. The ``< MAX``
+    fail-fast in :func:`save_request_count` / ``_charge_one_request``
+    only consults the per-process cache, so two concurrent processes
+    (e.g. overlapping ``workflow_dispatch`` runs not covered by the
+    ``external-api-fetch`` concurrency group) could each pass the check at
+    ``count == MAX-1`` and both increment, pushing the persisted total
+    past the hard daily budget (-> 101/100). The clamp makes that
+    impossible; it is a no-op for the single-process fail-fast path.
     """
     if _QUOTA_CACHE.get("unsaved_delta", 0) <= 0:
         return cast(int, _QUOTA_CACHE.get("count", 0))
@@ -850,8 +860,8 @@ def _persist_quota_to_disk() -> int:
                 # Update our memory cache to reflect exactly what's on disk right now
                 _QUOTA_CACHE["count"] = disk_count
 
-            # Add our unsaved delta to what is on disk.
-            new_total = disk_count + _QUOTA_CACHE["unsaved_delta"]
+            # Add our unsaved delta, clamped at the hard daily budget (cross-process race; see docstring).
+            new_total = min(disk_count + _QUOTA_CACHE["unsaved_delta"], MAX_REQUESTS_PER_DAY)
 
             _QUOTA_CACHE["count"] = new_total
             _QUOTA_CACHE["date"] = date_iso

@@ -296,7 +296,22 @@ ADDRESS_NO_RE = re.compile(
 # a phantom line ``12A``). Mirrors the alpha-suffix already supported by
 # the sibling ``ADDRESS_NO_RE`` numeric-tail above (``[A-Za-z]?\b``).
 ADDRESS_NO_PRE_RE = re.compile(
-    r"\b(?:ggü\.?|gegenüber|Nr\.?|Nummer|Hausnr\.?|Objekt|Stiege|Tür|Top)\s+\d+[A-Za-z]?\b",
+    # ``Gleis``/``Bahnsteig``/``Steig`` (platform numbers) join the address
+    # prefixes: ``Gleis 3 gesperrt`` left ``3`` behind, which ``LINE_CODE_RE``
+    # then surfaced as a phantom tram line. ``\bSteig`` only matches the
+    # standalone platform word (``Bahnsteig`` keeps its own literal alt; the
+    # mid-word ``steig`` street suffix has no leading word boundary here).
+    r"\b(?:ggü\.?|gegenüber|Nr\.?|Nummer|Hausnr\.?|Objekt|Stiege|Tür|Top|Gleis|Bahnsteig|Steig)\s+\d+[A-Za-z]?\b",
+    re.IGNORECASE,
+)
+# Duration phrases ("5 Minuten", "ca. 20 Min", "3 Stunden", "2 Tage"). Without
+# masking, the leading number was extracted as a phantom WL line by the
+# ``[0-9]{1,3}[A-Z]?`` branch of ``LINE_CODE_RE`` ("Verspätung um 5 Minuten" ->
+# phantom line ``5``). Only the fallback text extractor (``relatedLines`` empty)
+# is affected. ``5``/``10``/``43`` ARE real tram lines, but a bare number
+# directly followed by a time unit is unambiguously a duration, not a line.
+DURATION_RE = re.compile(
+    r"\b\d{1,3}\s*(?:Minuten?|Min\.?|Stunden?|Std\.?|Sekunden?|Sek\.?|Tagen?|Tage|Wochen?|Monaten?|Monate)\b",
     re.IGNORECASE,
 )
 
@@ -307,8 +322,9 @@ def _mask_dates_times_addresses(t: str) -> str:
     t = DATE_FULL_RE.sub(" ", t)
     t = DATE_SHORT_RE.sub(" ", t)
     t = TIME_RE.sub(" ", t)
+    t = DURATION_RE.sub(" ", t)  # Dauer-Phrasen (5 Minuten) entfernen
     t = ADDRESS_NO_RE.sub(r"\1", t)  # Zahl nach Straßentyp entfernen
-    t = ADDRESS_NO_PRE_RE.sub(" ", t)  # Zahl nach Präfix (ggü. 12) entfernen
+    t = ADDRESS_NO_PRE_RE.sub(" ", t)  # Zahl nach Präfix (ggü. 12 / Gleis 3) entfernen
     return t
 
 
