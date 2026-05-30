@@ -2275,6 +2275,85 @@ def _read_state_capped(path: Path) -> dict[str, dict[str, Any]]:
         return {}
 
 
+def _prune_expired_merged_state(
+    merged_state: dict[str, dict[str, Any]], state: dict[str, dict[str, Any]]
+) -> None:
+    """Drop resurrected, retention-expired entries from ``merged_state`` in place.
+
+    ``_load_state`` drops expired entries from the in-memory working set, but
+    ``_save_state`` re-reads the raw on-disk file via ``_read_state_capped`` and
+    merges it — so an entry this run no longer tracks (another run's items,
+    parallel-writer leftovers) is otherwise resurrected and re-written every
+    cycle, growing the file until it trips ``MAX_STATE_FILE_BYTES`` and the
+    loader wipes *all* first_seen tracking at once. Prune only entries NOT in
+    this run's ``state``: those are already within retention via ``_load_state``
+    and must keep their freshly written first_seen for cross-run dedup /
+    parallel-writer safety (a recent parallel-writer entry has a recent
+    first_seen and is kept; unparseable first_seen -> kept).
+    """
+    if feed_config.STATE_RETENTION_DAYS <= 0:
+        return
+    retention_cutoff = _to_utc(datetime.now(UTC)) - timedelta(
+        days=feed_config.STATE_RETENTION_DAYS
+    )
+    for ident in list(merged_state.keys()):
+        if ident in state:
+            continue
+        entry = merged_state.get(ident)
+        if not isinstance(entry, dict):
+            continue
+        fs_utc = _parse_first_seen(entry, None)
+        if fs_utc is not None and fs_utc < retention_cutoff:
+            merged_state.pop(ident, None)
+
+
+def _write_merged_state(
+    path: Path, state: dict[str, dict[str, Any]], deletions: set[str] | None
+) -> None:
+    """Merge ``state`` into the on-disk state file and atomically rewrite it.
+
+    The caller MUST hold the exclusive state lock. Reads the existing file under
+    the byte-size cap, layers this run's ``state`` on top, drops ``deletions``,
+    prunes retention-expired survivors, then writes via ``atomic_write``.
+    """
+    # Safe merge: read existing state to avoid overwriting parallel updates.
+    # Security: open-then-fstat closes the TOCTOU between the size cap and
+    # ``open``. ``read(MAX + 1)`` defends against zero-st_size special files.
+    # See _load_state.
+    merged_state = _read_state_capped(path)
+    merged_state.update(state)
+    if deletions:
+        for k in deletions:
+            merged_state.pop(k, None)
+    # Prune resurrected, retention-expired entries so the on-disk state file
+    # cannot grow until it trips ``MAX_STATE_FILE_BYTES`` and the loader wipes
+    # *all* first_seen tracking at once.
+    _prune_expired_merged_state(merged_state, state)
+    with atomic_write(path, mode="w", encoding="utf-8", permissions=0o600) as f:
+        # Security (Trojan-Source / BiDi-Mark Drift Round 10):
+        # ``ensure_ascii=True`` escapes every non-ASCII code point as a literal
+        # ``\uXXXX`` sequence. The state dict's KEYS carry feed-item identities
+        # computed by ``_identity_for_item`` — the WL/non-OEBB fallback branches
+        # embed the raw provider title verbatim. A planted upstream title
+        # carrying U+202E (RIGHT-TO-LEFT OVERRIDE) / zero-width / Unicode
+        # line-separator / 8-bit C1 bytes would otherwise reach
+        # ``data/first_seen.json`` — a file committed to ``main`` by
+        # ``build-feed.yml`` — as raw UTF-8, triggering BiDi reversal in any
+        # ``cat`` / ``less`` / GitHub web UI / IDE viewer. Mirrors the canonical
+        # fix shape pinned in PR #1434 for ``_write_quarantine_file``. Forensic
+        # intent is preserved (``json.loads`` recovers the original bytes from
+        # the literal escape sequence).
+        #
+        # Security (Coordinate finite/range drift, committed-writer
+        # defence-in-depth): ``allow_nan=False`` mirrors the canonical writer-side
+        # pin (Round 1485, :func:`src.places.merge.write_stations`). A planted
+        # ``NaN`` / ``Infinity`` literal in a previous-run ``data/first_seen.json``
+        # survives the ``json.loads`` round-trip and re-writes verbatim without
+        # the pin. ``ensure_ascii=True`` already blocks Trojan-Source primitives;
+        # ``allow_nan=False`` closes the sibling RFC-8259 non-conformance drift.
+        json.dump(merged_state, f, ensure_ascii=True, indent=2, sort_keys=True, allow_nan=False)
+
+
 def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = None) -> None:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -2289,82 +2368,7 @@ def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = N
     try:
         with lock_path.open("a+", encoding="utf-8") as lock_file:
             with file_lock(lock_file, exclusive=True):
-                # Safe merge: read existing state to avoid overwriting parallel updates
-                # Security: open-then-fstat closes the TOCTOU between
-                # the size cap and ``open``. ``read(MAX + 1)`` defends
-                # against zero-st_size special files. See _load_state.
-                merged_state = _read_state_capped(path)
-
-                merged_state.update(state)
-                if deletions:
-                    for k in deletions:
-                        merged_state.pop(k, None)
-
-                # Apply STATE_RETENTION_DAYS to the *merged* dict, not just the
-                # in-memory load. ``_load_state`` drops expired entries from the
-                # working set, but ``_read_state_capped`` above re-reads the raw
-                # on-disk file, so an expired entry this run no longer tracks
-                # (another run's items, parallel-writer leftovers) is otherwise
-                # resurrected and re-written every cycle — the file grows
-                # unboundedly until it trips ``MAX_STATE_FILE_BYTES`` and the
-                # loader wipes *all* first_seen tracking at once. Prune only
-                # entries NOT in this run's ``state``: those are already within
-                # retention via ``_load_state`` and must keep their freshly
-                # written first_seen for cross-run dedup / parallel-writer
-                # safety (a recent parallel-writer entry has a recent
-                # first_seen and is kept; unparseable first_seen -> kept).
-                if feed_config.STATE_RETENTION_DAYS > 0:
-                    retention_cutoff = _to_utc(datetime.now(UTC)) - timedelta(
-                        days=feed_config.STATE_RETENTION_DAYS
-                    )
-                    for ident in list(merged_state.keys()):
-                        if ident in state:
-                            continue
-                        entry = merged_state.get(ident)
-                        if not isinstance(entry, dict):
-                            continue
-                        fs_utc = _parse_first_seen(entry, None)
-                        if fs_utc is not None and fs_utc < retention_cutoff:
-                            merged_state.pop(ident, None)
-
-                with atomic_write(
-                    path, mode="w", encoding="utf-8", permissions=0o600
-                ) as f:
-                    # Security (Trojan-Source / BiDi-Mark Drift Round 10):
-                    # ``ensure_ascii=True`` escapes every non-ASCII code
-                    # point as a literal ``\uXXXX`` sequence. The state
-                    # dict's KEYS carry feed-item identities computed by
-                    # ``_identity_for_item`` — the WL/non-OEBB fallback
-                    # branches (this file: the ``T={item['title']}``
-                    # interpolations) embed the raw provider title
-                    # verbatim. A planted upstream title carrying
-                    # U+202E (RIGHT-TO-LEFT OVERRIDE) / zero-width /
-                    # Unicode line-separator / 8-bit C1 bytes would
-                    # otherwise reach ``data/first_seen.json`` — a file
-                    # committed to ``main`` by ``build-feed.yml`` — as
-                    # raw UTF-8, triggering BiDi reversal in any
-                    # ``cat`` / ``less`` / GitHub web UI / IDE viewer.
-                    # Mirrors the canonical fix shape pinned in PR #1434
-                    # for ``_write_quarantine_file``. Forensic intent is
-                    # preserved (``json.loads`` recovers the original
-                    # bytes from the literal escape sequence).
-                    #
-                    # Security (Coordinate finite/range drift, committed-
-                    # writer defence-in-depth): ``allow_nan=False`` mirrors
-                    # the canonical writer-side pin established in Round
-                    # 1485 at :func:`src.places.merge.write_stations` and
-                    # extended in Round 1487 to the sibling stations and
-                    # cache-events writers. ``merged_state`` is a
-                    # ``dict[str, Any]`` round-tripped via ``json.loads``
-                    # (Python's default lenient mode parses ``NaN`` /
-                    # ``Infinity`` literals as ``float('nan')`` /
-                    # ``float('inf')``); a planted non-standard literal
-                    # in a previous-run ``data/first_seen.json`` survives
-                    # the round-trip and re-writes verbatim without the
-                    # pin. ``ensure_ascii=True`` already blocks Trojan-
-                    # Source primitives; ``allow_nan=False`` closes the
-                    # sibling RFC-8259 non-conformance drift.
-                    json.dump(merged_state, f, ensure_ascii=True, indent=2, sort_keys=True, allow_nan=False)
+                _write_merged_state(path, state, deletions)
     except (OSError, TimeoutError) as exc:
         # Security: ``file_lock(..., exclusive=True)`` re-raises on
         # acquisition failure (timeout under contention, fcntl ENOLCK,
