@@ -67,6 +67,51 @@ def test_mask_entities_protects_wien_x_aliases() -> None:
     assert "Wien Rennweg" in mapping.values()
 
 
+def test_mask_entities_protects_suffixed_station_bare_form() -> None:
+    """Regression: ``Schloss Hetzendorf`` was rendered ``lock
+    Hetzendorf`` (title) / ``Hetzendorf Castle`` (description) in the
+    EN feed.
+
+    Root cause: 1720 of 1773 Vienna canonicals carry a data-source
+    marker suffix (``Wien Schloss Hetzendorf (WL)``). Pre-fix the
+    bare-form derivation only dropped the ``Wien `` prefix, leaving
+    the useless ``Schloss Hetzendorf (WL)`` in the regex while the
+    feed's actual ``Schloss Hetzendorf`` slipped through — Marian then
+    mistranslated the ``Schloss`` component. The masker now strips the
+    ``(WL)`` suffix too, so every clean surface variant is protected.
+    """
+    # Exact user-reported title and description surface forms.
+    for text in (
+        "16A/62: Schloss Hetzendorf",
+        "Haltestelle: Schloss Hetzendorf",
+        "Schloss Hetzendorf",
+    ):
+        masked, mapping = build_feed._mask_entities(text)
+        assert "Schloss Hetzendorf" not in masked, (
+            f"Schloss Hetzendorf leaked into masked text — Marian would "
+            f"mistranslate 'Schloss'. masked={masked!r}"
+        )
+        assert "Schloss Hetzendorf" in mapping.values(), (
+            f"Schloss Hetzendorf not preserved verbatim. mapping={mapping}"
+        )
+    # Bare 'Schloss' must NOT escape on its own (the whole compound is
+    # one entity, not 'Schloss' + 'Hetzendorf' split).
+    masked, _ = build_feed._mask_entities("Schloss Hetzendorf")
+    assert "Schloss" not in masked
+
+
+def test_mask_entities_protects_other_suffixed_stations() -> None:
+    """The suffix-stripping fix is systematic, not a one-off for
+    Schloss Hetzendorf: other ``(WL)``-suffixed Vienna stops whose
+    name carries a translatable component are protected too."""
+    for station in ("Schloss Schönbrunn", "Schloss Belvedere", "Alte Donau"):
+        masked, mapping = build_feed._mask_entities(f"Sperre bei {station}")
+        assert station not in masked, (
+            f"{station!r} leaked into masked text. masked={masked!r}"
+        )
+        assert station in mapping.values()
+
+
 def test_mask_entities_protects_unicode_route_separators() -> None:
     """Regression: Unicode glyphs that Marian's SentencePiece tokenizer
     treats as ``<unk>`` must be masked so they survive the round trip.
