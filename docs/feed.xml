@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 30 May 2026 12:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 13:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[31: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ded38e51a87168b5dec5fa7cf47e1322d71a9fc82b58c76e54b10b9190810f6c</guid>
+      <pubDate>Sat, 30 May 2026 12:57:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 13:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 12:59:39 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in Richtung Stammersdorf. Grund: Polizeieinsatz. [Am 30.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Stammersdorf. Grund: Polizeieinsatz.<br/>[Am 30.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[95A: Signalstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">288d594e94bc9da3033af3aae7c6403d2548ed08b23868db717d1486305c29aa</guid>
+      <pubDate>Sat, 30 May 2026 12:42:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 13:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 30 May 2026 12:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung. [Am 30.05.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Am 30.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,19 +39,8 @@
       <ext:first_seen>Sat, 30 May 2026 12:30:48 +0200</ext:first_seen>
       <ext:starts_at>Sat, 30 May 2026 12:12:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. [Am 30.05.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse.<br/>[Am 30.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[28A: Signalstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">753998b4e3a00037197f6e6dbe6141b65fe37b2b195ca9cf351d7298aa96ea37</guid>
-      <pubDate>Sat, 30 May 2026 11:12:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 11:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 11:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 30 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung. [Am 30.05.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Am 30.05.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.05.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: Gleisbauarbeiten]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten am Olympiaplatz wird die Rufbuslinie N81 umgeleitet. [05.05.2026 – 06.06.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Olympiaplatz wird die Rufbuslinie N81 umgeleitet.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Antonsplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
-      <pubDate>Thu, 16 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 16 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U Haltestelle: Antonsplatz Von: Antonsplatz 13 vor Rechberggasse Nach: Antonsplatz 16 Dauer: 22. April 2026, etwa … [Seit 16.04.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U Haltestelle: Antonsplatz Von: Antonsplatz 13 vor Rechberggasse Nach: Antonsplatz 16 Dauer: 22. April 2026, etwa …<br/>[Seit 16.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
