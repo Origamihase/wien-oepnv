@@ -1014,7 +1014,17 @@ def _find_provider_issues(
             vor_entries.append(entry)
         if "oebb" in sources:
             bst_code = entry.get("bst_code")
-            if bst_code:
+            # Type-guard mirrors every other ``_find_*`` finder in this
+            # module: per the documented threat model the on-disk
+            # ``stations.json`` is a planted-input boundary, so a
+            # malformed entry with a list / dict ``bst_code`` must yield
+            # a ``ProviderIssue`` (or be skipped), not crash the
+            # validator with ``TypeError: unhashable type``. Without the
+            # guard ``oebb_codes.add(bst_code)`` (set add of a list /
+            # dict) and the later ``in oebb_codes`` membership test both
+            # raise and propagate out of the public ``validate_stations``
+            # entry point.
+            if isinstance(bst_code, str | int) and bst_code:
                 oebb_codes.add(bst_code)
 
     if len(vor_entries) < 2:
@@ -1038,7 +1048,15 @@ def _find_provider_issues(
                 )
 
     for entry in vor_entries:
-        if entry.get("bst_code") in oebb_codes:
+        bst_code = entry.get("bst_code")
+        # Same type-guard as the OEBB-side ``oebb_codes.add`` above: a
+        # malformed list / dict ``bst_code`` would otherwise raise
+        # ``TypeError: unhashable`` on the ``in oebb_codes`` membership
+        # test and crash the validator. A non-hashable VOR ``bst_code``
+        # cannot in principle collide with the (string / int) OEBB
+        # entries that were admitted above, so skipping it here is
+        # semantically correct as well as crash-safe.
+        if isinstance(bst_code, str | int) and bst_code in oebb_codes:
             yield ProviderIssue(
                 identifier=_format_identifier(entry),
                 name=str(entry.get("name", "")).strip() or "<unknown>",

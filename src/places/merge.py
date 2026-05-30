@@ -278,7 +278,20 @@ def _find_matching_station(
         lng = station.get("longitude")
         if not (isinstance(lat, float | int) and isinstance(lng, float | int)):
             continue
-        distance = haversine_m(float(lat), float(lng), place.latitude, place.longitude)
+        # Defence-in-depth (Coordinate finite/range drift — disk-read side):
+        # ``load_stations`` already rejects non-finite literals
+        # (``NaN``/``Inf``/``1e1000``) at parse time, but a finite-yet-
+        # OUT-OF-WGS84-range value (``latitude: 999.0`` from a hand edit /
+        # legacy backup / planted file) still slips through and the
+        # ``haversine_m`` call below would raise ``ValueError`` for the
+        # [-90,90] / [-180,180] bounds — propagating out of
+        # ``merge_places`` and crashing the Google Places station-
+        # directory update. Skipping a single corrupt entry mirrors the
+        # non-numeric skip above and keeps the merge running.
+        lat_f, lng_f = float(lat), float(lng)
+        if not (-90.0 <= lat_f <= 90.0 and -180.0 <= lng_f <= 180.0):
+            continue
+        distance = haversine_m(lat_f, lng_f, place.latitude, place.longitude)
         if distance <= max_distance_m and distance < best_distance:
             best = station
             best_distance = distance
