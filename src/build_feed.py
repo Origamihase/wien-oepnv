@@ -1596,11 +1596,15 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
 # :data:`_UNMASK_PLACEHOLDER_RE`).
 _GLOSSARY_PLACEHOLDER_FORMAT = "XGLO" + _PLACEHOLDER_NONCE + "X{index}X"
 
-# Unified regex for the unmasker — matches both entity (``XENT…``)
-# and glossary (``XGLO…``) placeholders. Defined at module import
-# time so :func:`_unmask_entities` does not pay the compile cost per
-# call.
-_UNMASK_PLACEHOLDER_RE: re.Pattern[str] = re.compile("X(?:ENT|GLO)" + _PLACEHOLDER_NONCE + r"X\d+X")
+# Unified regex for the unmasker — matches both entity (``XENT…``) and glossary
+# (``XGLO…``) placeholders. Built from ``_ENTITY_PLACEHOLDER_RE.pattern`` (plus
+# the sibling glossary shape) so the entity regex, the entity format, and this
+# combined sweep stay in lock-step from a single source of truth. Defined at
+# module import time so :func:`_unmask_entities` does not pay the compile cost
+# per call.
+_UNMASK_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
+    _ENTITY_PLACEHOLDER_RE.pattern + "|XGLO" + _PLACEHOLDER_NONCE + r"X\d+X"
+)
 
 
 def _apply_domain_glossary(
