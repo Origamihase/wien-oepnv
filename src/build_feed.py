@@ -865,11 +865,25 @@ def format_local_times(
 # unconditionally so a planted "Verspaetung<U+00AD>U6 evil"
 # title reaches every subscriber's RSS reader visually identical
 # to the legitimate text but byte-distinct downstream.
+# XML-invalid code points (added 2026-05): ElementTree serialises feed item
+# title/description/guid into the public docs/feed.xml + feed.en.xml. Two byte
+# shapes from a hostile/garbled upstream value survive the Cf/control set above
+# and break the feed (both verified end-to-end through ``_make_rss``):
+#   * U+FFFE / U+FFFF \u2014 forbidden by the XML 1.0 Char production
+#     ([#x20-#xD7FF] | [#xE000-#xFFFD]); a planted title yields a feed that
+#     fails to parse (ParseError: not well-formed) in every subscriber's reader.
+#   * U+D800-U+DFFF surrogates \u2014 a lone surrogate (reachable via a ``\uD800``
+#     escape in upstream JSON) raises UnicodeEncodeError at serialisation and
+#     aborts the WHOLE build.
+# NOTE: the noncharacters U+FDD0-U+FDEF and supplementary-plane U+nFFFE/U+nFFFF
+# are deliberately NOT stripped \u2014 they are *valid* per the XML 1.0 Char grammar
+# (confirmed: they round-trip through ElementTree), so removing them would be
+# silent data loss, not a fix.
 _CONTROL_RE = re.compile(
     r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F"
     r"\u00ad\u0600-\u0605\u061c\u06dd\u070f\u0890\u0891\u08e2\u180e"
     r"\u200b-\u200f\u2028-\u202e\u2060-\u206f\ufeff"
-    r"\ufe00-\ufe0f\ufff9-\ufffb"
+    r"\ud800-\udfff\ufe00-\ufe0f\ufff9-\ufffb\ufffe\uffff"
     r"\U000110bd\U000110cd"
     r"\U00013430-\U00013438"
     r"\U0001bca0-\U0001bca3"
@@ -2353,7 +2367,16 @@ def _identity_for_item(item: FeedItem) -> str:
     sa_str = _to_utc(sa).isoformat() if isinstance(sa, datetime) else "None"
     ea_str = _to_utc(ea).isoformat() if isinstance(ea, datetime) else "None"
     fuzzy_raw = f"{title}|{sa_str}|{ea_str}"
-    fuzzy_hash = hashlib.sha256(fuzzy_raw.encode("utf-8")).hexdigest()
+    # ``errors="surrogatepass"`` (here and the two ``json.dumps`` hashes below):
+    # a lone surrogate (U+D800-U+DFFF, reachable via a ``\uD800`` escape in an
+    # upstream JSON title) would otherwise raise ``UnicodeEncodeError`` at this
+    # identity-hash encode — BEFORE ``_sanitize_text`` strips it from the
+    # rendered title — aborting the whole build. ``surrogatepass`` lets the
+    # hash encode the bytes deterministically; the hash value is unchanged for
+    # every surrogate-free input (the normal case), so no first_seen churn.
+    fuzzy_hash = hashlib.sha256(
+        fuzzy_raw.encode("utf-8", "surrogatepass")
+    ).hexdigest()
 
     result: str
     source = (item.get("source") or "").lower()
@@ -2375,7 +2398,7 @@ def _identity_for_item(item: FeedItem) -> str:
                     result = f"{base}|T={item['title']}|F={fuzzy_hash}"
                 else:
                     raw = json.dumps(item, sort_keys=True, default=str)
-                    hashed = hashlib.sha256(raw.encode("utf-8")).hexdigest()
+                    hashed = hashlib.sha256(raw.encode("utf-8", "surrogatepass")).hexdigest()
                     result = f"{base}|H={hashed}|F={fuzzy_hash}"
             else:
                 result = f"{base}|F={fuzzy_hash}"
@@ -2384,7 +2407,7 @@ def _identity_for_item(item: FeedItem) -> str:
             result = f"{base}|T={item['title']}|F={fuzzy_hash}"
         else:
             raw = json.dumps(item, sort_keys=True, default=str)
-            hashed = hashlib.sha256(raw.encode("utf-8")).hexdigest()
+            hashed = hashlib.sha256(raw.encode("utf-8", "surrogatepass")).hexdigest()
             result = f"{base}|H={hashed}|F={fuzzy_hash}"
 
     item["_calculated_identity"] = result

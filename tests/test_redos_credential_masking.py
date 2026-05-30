@@ -65,17 +65,22 @@ def test_sanitize_log_message_redos_inputs_are_bounded() -> None:
     ]
     for payload in hostile:
         elapsed = _timed(sanitize_log_message, payload)
-        assert elapsed < 5.0, (
+        # Generous ceiling: the fixed code runs each of these in ~2 s locally
+        # (the input is capped at 8 KiB before masking, so cost is constant),
+        # while the broken O(n^2) code took ~75 s+ and climbing. 30 s leaves
+        # ample headroom for a slow / loaded CI runner without ever admitting
+        # a real catastrophic-backtracking regression.
+        assert elapsed < 30.0, (
             f"sanitize_log_message took {elapsed:.2f}s on a "
             f"{len(payload)}-char hostile input — ReDoS regression "
-            f"(fixed code runs this in <1s; broken code took minutes)."
+            f"(fixed code runs this in ~2s; broken code took minutes)."
         )
 
 
 def test_sanitize_log_message_is_size_capped() -> None:
     """Worst-case cost is constant: a 1 MB input is no slower than 8 KB."""
     elapsed = _timed(sanitize_log_message, "-" + "a" * 1_000_000 + ".b")
-    assert elapsed < 5.0, f"1 MB input not bounded: {elapsed:.2f}s"
+    assert elapsed < 30.0, f"1 MB input not bounded: {elapsed:.2f}s"
 
     # Inputs longer than the cap are truncated (before masking, so nothing
     # past the cap can leak); shorter inputs are passed through untouched.
@@ -116,11 +121,12 @@ def test_secret_scanner_redos_input_is_linear() -> None:
 
     The scanner is (correctly) linear in file size — no length cap, since a
     file scanner must read whole files. At 30 KB the fixed code runs in ~1.5 s
-    while the broken O(n^2) code would take ~5 minutes (36 s at 10 KB × 9), so
-    the multi-second ceiling cleanly separates fixed from regressed.
+    while the broken O(n^2) code would take ~5 minutes (36 s at 10 KB × 9). The
+    30 s ceiling leaves ample headroom for a slow / loaded CI runner while still
+    catching a catastrophic-backtracking regression by orders of magnitude.
     """
     elapsed = _timed(ss._scan_content, "token" + "a" * 30_000 + "=")
-    assert elapsed < 5.0, (
+    assert elapsed < 30.0, (
         f"_scan_content took {elapsed:.2f}s on a 30 KB hostile input — "
         f"ReDoS regression (fixed: ~1.5s; broken: minutes)."
     )

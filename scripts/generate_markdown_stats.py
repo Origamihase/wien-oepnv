@@ -261,6 +261,26 @@ def _iter_csv_rows(path: Path, header: tuple[str, ...]) -> Iterator[dict[str, st
         yield dict(zip(header, row, strict=True))
 
 
+def _aware_fromisoformat(value: str) -> datetime:
+    """Parse an ISO-8601 timestamp, coercing a naive result to Vienna time.
+
+    The CSV writer emits Vienna-aware timestamps, but a hand-edited row (or a
+    future writer that drops the offset) yields a *naive* ``datetime`` from
+    ``fromisoformat``. Comparing that against the tz-aware ``cutoff`` in
+    ``_filter_rows_by_window`` / ``_filter_rows_by_timedelta`` raises
+    ``TypeError: can't compare offset-naive and offset-aware datetimes`` —
+    which no ``except`` in ``main`` catches, so ``docs/statistik.md`` is written
+    but the README patch crashes (exit 1) and the README is left stale. Treating
+    a naive value as Europe/Vienna mirrors the ``--now-iso`` handling
+    (``now = now.replace(tzinfo=VIENNA_TZ)``) and the CSV writer's own
+    ``to_vienna`` convention, so genuinely-offset rows are unaffected.
+    """
+    parsed = datetime.fromisoformat(value)
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=VIENNA_TZ)
+    return parsed
+
+
 def _parse_stammstrecke_rows(
     raw_rows: Iterable[dict[str, str]],
 ) -> list[StammstreckeRow]:
@@ -274,7 +294,7 @@ def _parse_stammstrecke_rows(
     parsed: list[StammstreckeRow] = []
     for row in raw_rows:
         try:
-            ts = datetime.fromisoformat(row["timestamp"])
+            ts = _aware_fromisoformat(row["timestamp"])
         except (KeyError, ValueError, TypeError):
             continue
         try:
@@ -306,7 +326,7 @@ def _parse_stoerung_rows(
     parsed: list[StoerungRow] = []
     for row in raw_rows:
         try:
-            ts = datetime.fromisoformat(row["timestamp"])
+            ts = _aware_fromisoformat(row["timestamp"])
         except (KeyError, ValueError, TypeError):
             continue
         weekday = row.get("weekday") or WEEKDAY_LABELS[ts.weekday()]
@@ -341,7 +361,7 @@ def _parse_ausfall_rows(
     parsed: list[AusfallRow] = []
     for row in raw_rows:
         try:
-            ts = datetime.fromisoformat(row["timestamp"])
+            ts = _aware_fromisoformat(row["timestamp"])
         except (KeyError, ValueError, TypeError):
             continue
         weekday = row.get("weekday") or WEEKDAY_LABELS[ts.weekday()]
