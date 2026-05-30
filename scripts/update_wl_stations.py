@@ -1615,19 +1615,6 @@ def merge_into_stations(
     *,
     reconcile: Callable[[list[dict[str, object]]], None] | None = None,
 ) -> None:
-    # Data-loss floor: with no WL entries the merge below strips every
-    # existing ``source == "wl"`` station and writes the remainder back,
-    # silently deleting the entire Wiener-Linien layer from stations.json.
-    # An empty set only happens when the OGD CSVs failed to load/parse
-    # (oversized → ``read_capped_text`` returned ``None``, download error,
-    # format change). Refuse and keep the committed file untouched.
-    if not wl_entries:
-        log.error(
-            "merge_into_stations called with no WL entries — refusing to "
-            "overwrite stations [path-sha256=%s] (would delete every WL station).",
-            _path_fingerprint(stations_path),
-        )
-        return
     # Security: ``read_capped_json`` enforces both the depth-bomb catch
     # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). The
     # depth-bomb-only catch missed ``MemoryError`` (a ``BaseException``
@@ -1704,6 +1691,22 @@ def merge_into_stations(
                 wl_diva_index[key] = entry
 
     log.info("Keeping %d existing non-WL stations", len(filtered))
+
+    # Data-loss floor: with no WL entries to re-add, writing ``filtered``
+    # back would permanently drop every existing ``source == "wl"`` station.
+    # An empty set only happens when the OGD CSV load failed (oversized →
+    # ``read_capped_text`` returned ``None``, download/format error), so
+    # refuse and keep the committed file. A genuinely empty or unreadable
+    # existing file has no WL rows to lose (``len(filtered) == len(existing)``),
+    # so the depth-bomb / fresh-start path still writes through.
+    if not wl_entries and len(filtered) < len(existing):
+        log.error(
+            "No WL entries to merge but %d existing WL station(s) would be "
+            "deleted — refusing to overwrite stations [path-sha256=%s].",
+            len(existing) - len(filtered),
+            _path_fingerprint(stations_path),
+        )
+        return
 
     unmatched: list[dict[str, object]] = []
     for payload in wl_entries:
