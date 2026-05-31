@@ -331,14 +331,20 @@ def read_cache_oebb() -> list[Any]:
 
 def _baustellen_title_names_station(title: str, label: str) -> bool:
     """Return ``True`` if ``title`` already mentions a distinctive token of
-    the station ``label``, so the prefix isn't doubled up (e.g. avoid
-    ``Wien Floridsdorf: Umbau Bahnhofsvorplatz Floridsdorf``). The generic
-    ``Wien`` token (and other ≤4-char tokens) is ignored on purpose."""
+    the station/line ``label``, so the prefix isn't doubled up (e.g. avoid
+    ``Wien Floridsdorf: Umbau Bahnhofsvorplatz Floridsdorf`` or
+    ``U2: … U2 …``). The generic ``Wien`` token (and other ≤4-char tokens)
+    is ignored on purpose — except the short U-Bahn line labels ``U1``–``U6``,
+    which are distinctive and matched as a whole word."""
     lowered = title.lower()
-    return any(
-        len(token) > 4 and token in lowered
-        for token in re.split(r"\W+", label.lower())
-    )
+    for token in re.split(r"\W+", label.lower()):
+        if not token:
+            continue
+        if len(token) > 4 and token in lowered:
+            return True
+        if re.fullmatch(r"u[1-6]", token) and re.search(rf"\b{token}\b", lowered):
+            return True
+    return False
 
 
 def _post_filter_baustellen(items: list[Any]) -> list[Any]:
@@ -758,8 +764,17 @@ def format_local_times(
     if isinstance(end, datetime):
         end_local = _to_utc(end).astimezone(_VIENNA_TZ)
 
-    if start_local and end_local and (end_local - start_local).days > 180:
-        log.warning("Enddatum liegt mehr als 180 Tage nach Startdatum. Setze Enddatum auf None.")
+    # Guard against absurd end dates, but keep legitimate multi-month
+    # disruptions: cap the start→end span at the configured absolute item
+    # horizon (ABSOLUTE_MAX_AGE_DAYS, default 540) instead of a hard-coded
+    # 180 days, so a real long-running range still renders as a range
+    # instead of collapsing to "Seit …".
+    max_span_days = feed_config.ABSOLUTE_MAX_AGE_DAYS
+    if start_local and end_local and (end_local - start_local).days > max_span_days:
+        log.warning(
+            "Enddatum liegt mehr als %s Tage nach Startdatum. Setze Enddatum auf None.",
+            max_span_days,
+        )
         end_local = None
 
     today = datetime.now(_VIENNA_TZ)

@@ -84,3 +84,36 @@ def test_format_local_times_end_before_start_past(
     # Verify the warning was logged
     warnings = [record.getMessage() for record in caplog.records if record.levelname == "WARNING"]
     assert "Enddatum liegt vor Startdatum" in warnings
+
+
+def test_format_local_times_long_range_keeps_end(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    build_feed = _import_build_feed(monkeypatch)
+
+    class MockDatetime(dt_module.datetime):
+        @classmethod
+        def now(cls, tz: Any = None) -> datetime:  # type: ignore[override]
+            return cls(2026, 6, 1, 12, 0, tzinfo=tz)
+
+    monkeypatch.setattr(build_feed, "datetime", MockDatetime)
+
+    # ~274-day span: longer than the old hard-coded 180-day cap but well
+    # within ABSOLUTE_MAX_AGE_DAYS (540), so the explicit end date must
+    # survive and render as a range instead of collapsing to "Seit …".
+    start = MockDatetime(2026, 1, 1, 12, 0, tzinfo=dt_module.UTC)
+    end = MockDatetime(2026, 10, 2, 12, 0, tzinfo=dt_module.UTC)
+
+    with caplog.at_level(logging.WARNING):
+        result = build_feed.format_local_times(start, end)
+
+    # Renders as a range (start … end), not the single-date "Seit …" form,
+    # so the explicit end date is preserved. (The separator between the
+    # dates uses narrow no-break spaces around an en-dash, so assert on the
+    # two date boundaries rather than the exact glyphs.)
+    assert result.startswith("01.01.2026")
+    assert result.endswith("02.10.2026")
+    assert not result.startswith("Seit")
+    warnings = [record.getMessage() for record in caplog.records if record.levelname == "WARNING"]
+    assert not any("Setze Enddatum auf None" in message for message in warnings)

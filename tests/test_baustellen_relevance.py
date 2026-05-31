@@ -270,6 +270,17 @@ def test_post_filter_prefixes_u_bahn_line_when_not_geo() -> None:
     assert out["title"] == "U2/U5: Neubaugasse"
 
 
+def test_post_filter_does_not_double_name_u_bahn_line() -> None:
+    # Title already names the U-Bahn line → no redundant "U2:" prefix.
+    item = {
+        "title": "U2 Rathaus gesperrt",
+        "description": "Für den U-Bahnbau der U2 wird gesperrt.",
+        "location": _loc(*FAR_AWAY),
+    }
+    [out] = _post_filter_baustellen([item])
+    assert out["title"] == "U2 Rathaus gesperrt"
+
+
 def test_post_filter_does_not_guess_a_bus_tram_line() -> None:
     # Bus/tram impact → kept, but NO guessed line prefix (only U-Bahn/Bahnhof).
     item = {
