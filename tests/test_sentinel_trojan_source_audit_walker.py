@@ -126,10 +126,10 @@ ALLOWLIST: frozenset[tuple[str, int]] = frozenset(
         # not committed to any operator-facing sidecar.
         ("src/places/hafas_client.py", 289),
         # Feed-health JSON sink; per-field ``_CONTROL_CHARS_RE.sub("",
-        # ...)`` calls at lines 726 / 729 / 777 strip the canonical
+        # ...)`` calls at lines 730 / 733 / 781 strip the canonical
         # attack-byte union from every user-controlled string field
         # before ``json.dump``.
-        ("src/feed/reporting.py", 846),
+        ("src/feed/reporting.py", 850),
         # JSON log formatter; ``sanitize_log_message(dumped,
         # strip_control_chars=False)`` always strips the canonical
         # attack-byte union via ``_INVISIBLE_DANGEROUS_RE.sub("",
@@ -635,7 +635,7 @@ def test_allowlist_is_minimal_and_documented() -> None:
     assert ALLOWLIST == frozenset(
         {
             ("src/places/hafas_client.py", 289),
-            ("src/feed/reporting.py", 846),
+            ("src/feed/reporting.py", 850),
             ("src/feed/logging_safe.py", 260),
             ("src/feed/logging_safe.py", 273),
         }

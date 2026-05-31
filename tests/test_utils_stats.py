@@ -159,6 +159,35 @@ def test_read_recent_reads_intermediate_years(tmp_path: Path) -> None:
     assert {obs.timestamp.year for obs in result} == {2024, 2025, 2026}
 
 
+def test_read_recent_degrades_on_csv_error_keeping_prior_rows(tmp_path: Path) -> None:
+    """A corrupted ledger that makes ``csv`` raise mid-iteration must not sink
+    the whole read: the best-effort contract requires keeping the rows already
+    parsed from healthy year-files instead of propagating the exception."""
+    # Healthy 2025 ledger — one valid observation.
+    stats_utils.append_stammstrecke_row(
+        timestamp=datetime(2025, 6, 1, 12, 0, tzinfo=VIENNA_TZ),
+        direction="Meidling",
+        delay_minutes=10.0,
+        stats_dir=tmp_path,
+    )
+    # Corrupted 2026 ledger — a single quoted field larger than
+    # ``csv.field_size_limit()`` (still well under the byte cap) makes
+    # ``csv.DictReader`` raise ``csv.Error`` while iterating.
+    oversized = "x" * (csv.field_size_limit() + 1000)
+    (tmp_path / "stammstrecke_2026.csv").write_text(
+        "timestamp,direction,delay_minutes\n" + f'"{oversized}",Meidling,5\n',
+        encoding="utf-8",
+    )
+
+    # Must not raise — and the healthy 2025 observation survives.
+    result = stats_utils.read_recent_stammstrecke_observations(
+        now=datetime(2026, 6, 2, 12, 0, tzinfo=VIENNA_TZ),
+        window=timedelta(days=900),
+        stats_dir=tmp_path,
+    )
+    assert {obs.timestamp.year for obs in result} == {2025}
+
+
 # ---- Disruption writer ----------------------------------------------------
 
 

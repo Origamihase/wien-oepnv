@@ -803,13 +803,26 @@ def read_recent_stammstrecke_observations(
         if text is None:
             continue
         reader = csv.DictReader(io.StringIO(text))
-        for row in reader:
-            parsed = _parse_stammstrecke_row(row)
-            if parsed is None:
-                continue
-            if parsed.timestamp < cutoff:
-                continue
-            observations.append(parsed)
+        try:
+            for row in reader:
+                parsed = _parse_stammstrecke_row(row)
+                if parsed is None:
+                    continue
+                if parsed.timestamp < cutoff:
+                    continue
+                observations.append(parsed)
+        except csv.Error as exc:
+            # ``csv`` can raise (e.g. a quoted field exceeding
+            # ``csv.field_size_limit`` still fits under the byte cap) only
+            # while iterating — after ``read_capped_text`` already returned.
+            # Honour the documented best-effort contract: keep the rows read
+            # so far (incl. earlier year-files) instead of propagating.
+            LOGGER.warning(
+                "Stammstrecke ledger %s konnte nicht vollständig gelesen werden: %s",
+                sanitize_log_arg(str(path)),
+                sanitize_log_arg(str(exc)),
+            )
+            continue
     observations.sort(key=lambda obs: obs.timestamp)
     return observations
 

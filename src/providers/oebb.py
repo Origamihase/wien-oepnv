@@ -545,17 +545,12 @@ _STRECKE_PLAIN_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 
-# Suffixes that should be stripped before looking up a station name.
-_BAHNHOF_TRAILING_RE = re.compile(
-    r"\s*\b(?:Hauptbahnhof|Bahnhof|Bahnhst|Hbf|Bhf|Bf)\b\.?",
-    re.IGNORECASE,
-)
-# Variant that anchors at end-of-string AND rejects a leading hyphen so
-# compound proper nouns like ``Wien Franz-Josefs-Bahnhof`` keep the
-# trailing ``-Bahnhof`` intact. Stripping it produced a dangling
-# ``Wien Franz-Josefs-`` that leaked into dedup keys (and into visible
-# titles whenever the alias resolution in :func:`station_info` failed to
-# bridge the truncation).
+# Suffix stripped before looking up a station name. Anchored at end-of-string
+# AND rejects a leading hyphen so compound proper nouns like
+# ``Wien Franz-Josefs-Bahnhof`` keep the trailing ``-Bahnhof`` intact.
+# Stripping it produced a dangling ``Wien Franz-Josefs-`` that leaked into
+# dedup keys (and into visible titles whenever the alias resolution in
+# :func:`station_info` failed to bridge the truncation).
 _BAHNHOF_TRAILING_END_RE = re.compile(
     r"(?<![\-‐-―])\s+\b(?:Hauptbahnhof|Bahnhof|Bahnhst|Hbf|Bhf|Bf)\b\.?\s*$",
     re.IGNORECASE,
@@ -1411,7 +1406,7 @@ def _is_poor_title(t: str) -> bool:
 # imaginary prefix onto such titles, mangling the downstream rebuild. The
 # companion :data:`_LEADING_LINE_PREFIX_RE` already requires the colon.
 _LINE_PREFIX_RE = re.compile(
-    r"^\s*((?:REX|RJX|RJ|EC|ICE|IC|WB|NJ|CJX|S-Bahn|S|U|R|D)\s*\d+[A-Za-z]?)\s*:\s*",
+    r"^\s*((?:REX|RJX|RJ|EC|ICE|IC|WB|NJ|CJX|S-Bahn|S|U-Bahn|U|R|D)\s*\d+[A-Za-z]?)\s*:\s*",
     re.IGNORECASE,
 )
 

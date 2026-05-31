@@ -337,6 +337,16 @@ class CircuitBreaker:
         except Exception:
             self.record_failure()
             raise
+        except BaseException:
+            # A non-Exception BaseException (KeyboardInterrupt, SystemExit,
+            # GeneratorExit) escaping the probe must still release the
+            # HALF_OPEN single-flight slot — otherwise the breaker stays
+            # wedged forever (the state never leaves HALF_OPEN, so the lazy
+            # recovery timer never re-fires and every later call is refused).
+            # It is deliberately NOT counted as an upstream failure.
+            with self._lock:
+                self._probe_in_flight = False
+            raise
         else:
             self.record_success()
             return result
