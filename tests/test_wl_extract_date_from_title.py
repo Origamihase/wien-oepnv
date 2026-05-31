@@ -38,6 +38,24 @@ def test_numeric_missing_year_january_reference_keeps_previous_december() -> Non
     assert got == datetime(2025, 12, 28, tzinfo=VIENNA)
 
 
+def test_numeric_two_digit_year_is_honoured() -> None:
+    # Pre-fix the 2-digit year "26" was captured as None and routed through
+    # the nearest-occurrence heuristic; now it is expanded to 2026.
+    got = extract_date_from_title("Linie 4A: Verlegung ab 12.01.26")
+    assert got == datetime(2026, 1, 12, tzinfo=VIENNA)
+
+
+def test_numeric_two_digit_year_overrides_nearest_occurrence() -> None:
+    # The harmful case: an "ab" date in the past relative to a late API
+    # reference. With only a 4-digit pattern, "ab 1.5.26" was treated as
+    # missing-year and the heuristic resolved it to 2027 (nearest to the
+    # reference). Honouring the explicit 2-digit year keeps it at 2026.
+    got = extract_date_from_title(
+        "Umleitung ab 1.5.26", reference_date=_ref(2026, 12, 20)
+    )
+    assert got == datetime(2026, 5, 1, tzinfo=VIENNA)
+
+
 def test_monthname_explicit_year() -> None:
     got = extract_date_from_title(
         "56A/58A: Bauarbeiten Maxingstraße ab 07. April 2026"

@@ -148,7 +148,13 @@ _MONTHS_DE: dict[str, int] = {
 # ``ab DD.MM.[YYYY]`` — numeric form (trailing dot after the month is
 # mandatory, matching the legacy pattern).
 _DATE_NUMERIC_RE = re.compile(
-    r"ab\s+(\d{1,2})\.(\d{1,2})\.(\d{4})?",
+    # The 4-digit alternative is tried BEFORE the 2-digit one (ordered
+    # alternation) so "2026" captures all four digits. A 2-digit year like
+    # "26" is now accepted and expanded to 2026 in _extract_day_month_year,
+    # instead of being captured as None and routed through the
+    # nearest-occurrence year heuristic (which can resolve to the wrong year
+    # when the title's "ab" date lies in the past relative to the API start).
+    r"ab\s+(\d{1,2})\.(\d{1,2})\.(\d{4}|\d{2})?",
     re.IGNORECASE,
 )
 # ``ab DD. <Monat> [YYYY]`` — spelled-out form WL uses for advance
@@ -163,6 +169,20 @@ _DATE_MONTHNAME_RE = re.compile(
 )
 
 
+def _expand_two_digit_year(year_str: str | None) -> int | None:
+    """Expand an optional captured year.
+
+    A 2-digit year (``"26"``) becomes ``2026``; a 4-digit year passes
+    through unchanged; ``None`` (no year captured) stays ``None``.
+    """
+    if not year_str:
+        return None
+    year = int(year_str)
+    if len(year_str) == 2:
+        year += 2000
+    return year
+
+
 def _extract_day_month_year(title: str) -> tuple[int, int, int | None] | None:
     """Return ``(day, month, year_or_None)`` from the first ``ab`` date.
 
@@ -173,7 +193,7 @@ def _extract_day_month_year(title: str) -> tuple[int, int, int | None] | None:
     match = _DATE_NUMERIC_RE.search(title)
     if match:
         day_str, month_str, year_str = match.groups()
-        return int(day_str), int(month_str), int(year_str) if year_str else None
+        return int(day_str), int(month_str), _expand_two_digit_year(year_str)
     match = _DATE_MONTHNAME_RE.search(title)
     if match:
         day_str, month_word, year_str = match.groups()
