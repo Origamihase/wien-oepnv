@@ -47,7 +47,15 @@ DEFAULT_CACHE_MAX_AGE_HOURS = 24
 DEFAULT_PROVIDER_TIMEOUT = 25
 DEFAULT_PROVIDER_MAX_WORKERS = 0
 DEFAULT_STATE_PATH = Path("data/first_seen.json")
-DEFAULT_STATE_RETENTION_DAYS = 60
+# Must stay >= DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS so a long-running disruption's
+# first_seen is retained for the item's whole feed lifetime. With a shorter
+# window (the prior default was 60 << 540), _load_state dropped a still-produced
+# item's state once its first_seen crossed the window; _update_item_state then
+# reset first_seen to "now", so the item re-published (fresh pubDate), jumped to
+# the top of the recency sort, could never reach the age cutoff, and was
+# re-counted in the stats. 600 = 540 (the absolute age cap) + 60 days margin so
+# the age machinery retires the item before its state is pruned.
+DEFAULT_STATE_RETENTION_DAYS = 600
 DEFAULT_PROVIDER_FLAGS = {
     "WL_ENABLE": True,
     "OEBB_ENABLE": True,
