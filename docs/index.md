@@ -36,7 +36,7 @@ Weitere Details findest du in der [ausführlichen Projektdokumentation](../READM
 | Datenquelle | Inhalt | Abruf-Cadence |
 |-------------|--------|---------------|
 | Wiener Linien (WL) | Störungs- und Echtzeitmeldungen für U-Bahn, Straßenbahn und Bus | ~alle 30 Min (IFTTT-getriggert) |
-| ÖBB | Bundesweite Bahnmeldungen mit strikten Wien-Filter | ~alle 30 Min (IFTTT-getriggert) |
+| ÖBB | Bundesweite Bahnmeldungen mit striktem Wien-Filter | ~alle 30 Min (IFTTT-getriggert) |
 | Verkehrsverbund Ost-Region (VOR) | VOR/VAO ReST API, seit 2026-05-11 **ausschließlich** für den S-Bahn-Stammstrecken-Verspätungs- und Ausfall-Monitor genutzt | ~alle 30 Min (IFTTT-getriggert) |
 | Stadt Wien (OGD) | Offizielle Baustellendaten (Bezirk, Zeitraum, Geo-Infos) | ~alle 30 Min (IFTTT-getriggert) |
 
