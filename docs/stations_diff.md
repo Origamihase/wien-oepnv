@@ -1,21 +1,22 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-05-25T22:44:13+00:00_
+_Erzeugt am: 2026-05-31T05:19:39+00:00_
 
-**Stationen: 2237 → 2237 (Δ +0)**
+**Stationen: 2237 → 2235 (Δ -2)**
 
 ## Hinzugefügt (0)
 
 _Keine._
 
-## Entfernt (0)
+## Entfernt (2)
 
-_Keine._
+- `name:Wien Puchgasse, Maculangasse (WL)` — Wien Puchgasse, Maculangasse \(WL\)
+- `name:Wien Richard-Neutra-Gasse (WL)` — Wien Richard-Neutra-Gasse \(WL\)
 
 ## Umbenannt (0)
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (0)
+## Koordinaten verschoben (≥ 100 m) (1)
 
-_Keine._
+- `name:Wien Auhof (WL)` — Wien Auhof \(WL\) (126 m)
