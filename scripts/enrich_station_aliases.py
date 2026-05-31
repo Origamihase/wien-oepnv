@@ -358,11 +358,24 @@ def _load_vor_names(path: Path) -> dict[str, str]:
         return {}
     names: dict[str, str] = {}
     reader = csv.DictReader(io.StringIO(content), delimiter=";")
-    for row in reader:
-        vor_id = (row.get("StopPointId") or "").strip()
-        name = (row.get("StopPointName") or "").strip()
-        if vor_id and name:
-            names[vor_id] = name
+    try:
+        for row in reader:
+            vor_id = (row.get("StopPointId") or "").strip()
+            name = (row.get("StopPointName") or "").strip()
+            if vor_id and name:
+                names[vor_id] = name
+    except csv.Error:
+        # read_capped_text enforces only the byte cap, not CSV well-formedness.
+        # A single field larger than csv.field_size_limit (default 131072) —
+        # still well under MAX_ALIAS_CSV_BYTES — raises csv.Error (NOT an
+        # OSError) during iteration. Degrade gracefully (skip enrichment)
+        # instead of crashing the cron pipeline, mirroring the size/depth
+        # fallbacks in the sibling loaders.
+        log.warning(
+            "Malformed VOR stops CSV [path-sha256=%s]; skipping alias enrichment.",
+            _path_fingerprint(path),
+        )
+        return {}
     log.info("Loaded %d VOR stop names", len(names))
     return names
 
@@ -442,13 +455,24 @@ def _load_gtfs_index(path: Path) -> dict[str, set[str]]:
         return {}
     index: dict[str, set[str]] = defaultdict(set)
     reader = csv.DictReader(io.StringIO(content))
-    for row in reader:
-        name = (row.get("stop_name") or "").strip()
-        if not name:
-            continue
-        key = _normalize_key(name)
-        if key:
-            index[key].add(name)
+    try:
+        for row in reader:
+            name = (row.get("stop_name") or "").strip()
+            if not name:
+                continue
+            key = _normalize_key(name)
+            if key:
+                index[key].add(name)
+    except csv.Error:
+        # See _load_vor_names: a field larger than csv.field_size_limit
+        # (default 131072, well under MAX_ALIAS_CSV_BYTES) raises csv.Error
+        # (NOT an OSError) during iteration. Degrade gracefully with whatever
+        # rows parsed cleanly instead of crashing the cron pipeline.
+        log.warning(
+            "Malformed GTFS stops CSV [path-sha256=%s]; using %d variants "
+            "parsed before the error.",
+            _path_fingerprint(path), len(index),
+        )
     log.info("Indexed %d GTFS stop name variants", len(index))
     return index
 
