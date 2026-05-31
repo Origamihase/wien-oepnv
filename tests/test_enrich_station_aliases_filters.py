@@ -94,8 +94,42 @@ def test_generic_blocklist_covers_directions_and_rail_vocab() -> None:
         "platz",
         "munchen",
         "muenchen",
+        "aug",
+        "am",
     }
     assert expected <= _GENERIC_ALIAS_BLOCKLIST
+
+
+def test_generic_blocklist_drops_aug_abbreviation_family() -> None:
+    """bug b8: "Aug." (the Gasse→G. shortening of "Wien Augasse") and its
+    compounds collide with the German month abbreviation "Aug." — every
+    form normalising to bare "aug" must be dropped, while "Augasse" /
+    "Wien Augasse" survive."""
+    station = {
+        "name": "Wien Augasse (WL)",
+        "aliases": ["Augasse", "Aug.", "Aug. Bahnhof", "Aug. Station", "Wien Augasse"],
+    }
+    aliases = _alias_candidates(station, vor_names={}, vor_mapping={}, gtfs_index={})
+    assert "Aug." not in aliases
+    assert "Aug. Bahnhof" not in aliases
+    assert "Aug. Station" not in aliases
+    assert "Augasse" in aliases
+    assert "Wien Augasse" in aliases
+
+
+def test_generic_blocklist_drops_am_bahnhof_phrase_family() -> None:
+    """bug b9: "Am Bahnhof" / "Am Bf" (from the WL stop "Wien Am Bahnhof")
+    collide with the everyday phrase "am Bf" — every form normalising to
+    bare "am" must be dropped, while the "Wien Am Bahnhof" forms survive."""
+    station = {
+        "name": "Wien Am Bahnhof (WL)",
+        "aliases": ["Am Bahnhof", "Am Bf", "Am bf", "Wien Am Bahnhof"],
+    }
+    aliases = _alias_candidates(station, vor_names={}, vor_mapping={}, gtfs_index={})
+    assert "Am Bahnhof" not in aliases
+    assert "Am Bf" not in aliases
+    assert "Am bf" not in aliases
+    assert "Wien Am Bahnhof" in aliases
 
 
 def test_cross_station_collision_drops_other_station_canonical() -> None:
