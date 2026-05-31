@@ -179,6 +179,11 @@ def test_radius_override_widens_geo_match(
         "Sperre der Buslinie 10A",
         "Linie 46 verkürzt",
         "U6 Teilsperre",
+        # bug b4: the leading-only \b must KEEP the compound U-/S-Bahn forms
+        # (no boundary exists between "bahn" and "bau"/"station").
+        "U-Bahnbau wird gesperrt",
+        "Neubau der U-Bahnstation der U2",
+        "S-Bahn-Stammstrecke betroffen",
     ],
 )
 def test_mentions_oepnv_true(text: str) -> None:
@@ -192,6 +197,10 @@ def test_mentions_oepnv_true(text: str) -> None:
         "Vollsperre der Fahrbahn wegen Rohrlegung",
         "Gehsteigsanierung im Innenhof",
         "Buschenschank am Nussberg",  # 'Busch…' must not trip the \\bbus\\b token
+        # bug b4: the substrings "ubahn" / "sbahn" inside unrelated compounds
+        # must NOT trip the U-/S-Bahn tokens (leading \b on both).
+        "Fahrbahnsanierung bei der Hochschaubahn",
+        "Erneuerung am Verkehrsbahnhof Inzersdorf",
     ],
 )
 def test_mentions_oepnv_false(text: str) -> None:
