@@ -308,7 +308,6 @@ def _format_minutes(value: float) -> str:
 def _episode_start(
     *,
     direction_obs: list[StammstreckeObservation],
-    now: datetime,
 ) -> datetime | None:
     """Find the start timestamp of the current above-threshold episode.
 
@@ -541,7 +540,7 @@ def compute_stammstrecke_events(
                 persisted_starts.pop(direction.target_label, None)
             continue
         avg_delay = mean([obs.delay_minutes for obs in recent])
-        computed_start = _episode_start(direction_obs=direction_obs, now=current)
+        computed_start = _episode_start(direction_obs=direction_obs)
         if computed_start is None:
             # Degenerate case: ``_episode_start`` returned None despite
             # the threshold gate firing. Should be unreachable (the recent
