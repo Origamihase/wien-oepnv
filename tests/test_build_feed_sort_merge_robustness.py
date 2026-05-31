@@ -76,7 +76,7 @@ def test_drain_isolates_a_failing_merge(monkeypatch: pytest.MonkeyPatch) -> None
     def fetch() -> list[Any]:
         return []
 
-    fetch.__name__ = "wl_fetch"  # type: ignore[attr-defined]
+    fetch.__name__ = "wl_fetch"
 
     futures = {fut: (fetch, "Wiener Linien", 10)}
     deadlines: dict[Any, float | None] = {fut: None}
