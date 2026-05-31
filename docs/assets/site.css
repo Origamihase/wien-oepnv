@@ -175,14 +175,18 @@ code {
 .site-header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  /* Brand is anchored left via ``margin-inline-end: auto`` (below); the nav
+   * + weather + language switcher then form one compact, evenly-spaced
+   * cluster on the right instead of the former ``space-between`` spread that
+   * left the weather chip and nav floating with large gaps in the middle. */
+  gap: 0.55rem;
   min-height: var(--header-h);
 }
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
+  margin-inline-end: auto;
   text-decoration: none;
   color: var(--c-text);
 }
@@ -235,7 +239,6 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  margin-left: 0.6rem;
   padding: 0.2rem 0.4rem;
   border: 1px solid var(--c-border);
   border-radius: 8px;
@@ -261,7 +264,8 @@ code {
 .lang-switch__sep { color: var(--c-text-subtle); user-select: none; }
 
 /* Weather widget (Vienna) — small icon + current temperature shown in the
- * header between the brand and the nav. Data comes from the Open-Meteo
+ * header's right-hand cluster, between the nav and the language switcher.
+ * Data comes from the Open-Meteo
  * GeoSphere-Austria API (fetched in the browser, refreshed together with
  * the transit data); site.js fills the icon + value at runtime. The temp
  * slot reserves its eventual width so the bootstrap "–" → "21 °C" swap
@@ -272,7 +276,6 @@ code {
   align-items: center;
   gap: 0.35rem;
   flex: none;
-  margin-left: 0.1rem;
   padding: 0.2rem 0.55rem;
   border: 1px solid var(--c-border);
   border-radius: 999px;
