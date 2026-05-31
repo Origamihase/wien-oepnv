@@ -703,6 +703,13 @@ def _departure_delay_minutes(dep: Mapping[str, Any]) -> float | None:
     # departure from a midnight wrap.
     if rt_date_explicit is None and (scheduled - actual) > timedelta(hours=12):
         actual = actual + timedelta(days=1)
+    # Symmetric wrap: a leg scheduled just AFTER midnight (e.g. 00:05)
+    # that departs a few minutes early (rtTime "23:54", i.e. the previous
+    # day) yields a same-day 23:54 ``actual`` and a bogus ≈ +23h49m
+    # "delay". Pull ``actual`` back one day so the recorded delay is the
+    # true small negative value (≈ −11 min) instead of ~+1429 min.
+    elif rt_date_explicit is None and (actual - scheduled) > timedelta(hours=12):
+        actual = actual - timedelta(days=1)
 
     return (actual - scheduled).total_seconds() / 60.0
 

@@ -186,6 +186,12 @@ def _op_restore(stations: list[dict[str, Any]], override: dict[str, Any]) -> str
     if existing is not None:
         return "skip (already present)"
     new_entry = dict(entry_template)
+    # Force the inserted record's identity field to equal the idempotency
+    # key. Otherwise, if a curated ``entry`` template ever carried a
+    # different (or missing) ``wl_diva``, the next run's
+    # ``_find_by_diva(stations, diva)`` would not match the inserted
+    # record and restore would re-insert a duplicate on every cron tick.
+    new_entry["wl_diva"] = diva
     name = new_entry.get("name", "<unknown>")
     insert_at = _alpha_insertion_index(stations, name if isinstance(name, str) else "")
     stations.insert(insert_at, new_entry)

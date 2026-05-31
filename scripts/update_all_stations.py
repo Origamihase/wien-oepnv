@@ -159,6 +159,17 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
             "failure (default: data/quarantine.json under the repository root)."
         ),
     )
+    parser.add_argument(
+        "--polygon",
+        type=Path,
+        default=_DEFAULT_POLYGON_PATH,
+        help=(
+            "Path to the Vienna boundary polygon whose vertex count is "
+            "recorded in the heartbeat (default: data/LANDESGRENZEOGD.json "
+            "under the repository root). Exposed so a relocated run reads a "
+            "relocated polygon instead of the production data dir."
+        ),
+    )
     return parser.parse_args(argv)
 
 
@@ -740,6 +751,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     heartbeat_path: Path = args.heartbeat
     diff_report_path: Path = args.diff_report
     quarantine_path: Path = args.quarantine
+    polygon_path: Path = args.polygon
 
     sub_script_results: list[dict[str, Any]] = []
 
@@ -873,7 +885,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         # before atomic copy-back so the heartbeat reflects what is about to land.
         after_snapshot = _load_stations(tmp_stations_path)
         diff = _compute_diff(before_snapshot, after_snapshot)
-        polygon_vertices = _count_polygon_vertices(_DEFAULT_POLYGON_PATH)
+        polygon_vertices = _count_polygon_vertices(polygon_path)
         heartbeat = _build_heartbeat(
             report=report,
             diff=diff,

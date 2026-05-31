@@ -43,8 +43,12 @@ def main() -> int:
 
     # HAFAS ID pattern: typically 7 to 9 digits (e.g. 430471000, 8100002)
     # The requirement says "usually 7-9 digits, often starting with 81 or 43".
-    # We will flag anything that is NOT 7-9 digits.
-    pattern = re.compile(r"^\d{7,9}$")
+    # We will flag anything that is NOT 7-9 digits. ``[0-9]`` (not ``\d``)
+    # restricts to ASCII digits — the Unicode-aware ``\d`` would accept
+    # Arabic-Indic/Devanagari/full-width digits — and the match is applied
+    # via ``fullmatch`` so a trailing newline (which bare ``$`` tolerates)
+    # is rejected too.
+    pattern = re.compile(r"[0-9]{7,9}")
 
     errors = 0
     for i, entry in enumerate(data):
@@ -81,7 +85,7 @@ def main() -> int:
             # Try to cast int to str
             vor_id = str(vor_id)
 
-        if not pattern.match(vor_id):
+        if not pattern.fullmatch(vor_id):
             print(f"Invalid VOR ID format for '{name}': {vor_id} (expected 7-9 digits)", file=sys.stderr)
             errors += 1
 
