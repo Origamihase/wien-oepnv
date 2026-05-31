@@ -439,7 +439,17 @@ def normalise_markdown_text(text: str, *, max_len: int = 200) -> str:
 
 def escape_markdown(text: str) -> str:
     """Escape HTML and Markdown characters to prevent injection/XSS."""
-    text = html.escape(text)
+    # Order matters: backslash-escape the Markdown metacharacters FIRST, then
+    # HTML-escape LAST (see the trailing ``html.escape`` call). Doing
+    # ``html.escape`` first was a bug — it rewrites an apostrophe to the numeric
+    # entity ``&#x27;``, and the ``#`` step of the per-char loop then escaped the
+    # ``#`` *inside* that entity (``&\\#x27;``), which CommonMark / GFM render as
+    # the literal text ``&#x27;`` instead of an apostrophe, silently corrupting
+    # every apostrophe in operator-facing reports (``KeyError: 'station'``,
+    # station names like ``O'Brien``). Escaping the metacharacters first keeps
+    # the loop's ``#`` away from the numeric entity emitted later, with every
+    # injection defence below still intact.
+    #
     # Security (backslash-precedence-bypass round): escape ``\\``
     # itself FIRST, before the per-char loop below. CommonMark 2.4
     # consumes ``\\\\`` left-to-right as a single literal ``\\``, so
@@ -460,7 +470,13 @@ def escape_markdown(text: str) -> str:
     # single literal ``\\``.
     text = text.replace("\\", "\\\\")
     # Escape Markdown characters that could create links or formatting.
-    # We backslash-escape: [ ] ( ) * _ ` @ < > # ~
+    # We backslash-escape: [ ] ( ) * _ ` @ # ~
+    #
+    # ``<`` and ``>`` are intentionally NOT backslash-escaped here: the trailing
+    # ``html.escape`` turns them into ``&lt;`` / ``&gt;`` (rendered as literal
+    # ``<`` / ``>``, unable to form an HTML tag, autolink, or blockquote marker).
+    # Backslash-escaping them would instead yield ``\\&lt;``, which renders as
+    # the literal text ``&lt;``.
     #
     # Security: ``#`` was missing pre-Sentinel ``escape_markdown`` ATX-
     # heading-injection round. Callers in :mod:`src.feed.reporting`
@@ -504,8 +520,13 @@ def escape_markdown(text: str) -> str:
     # 2.4, so backslash escapes apply), so legitimate text
     # ("~/foo" path abbreviations, "~5 minutes" approximation
     # symbols) is visually unchanged on the rendered page.
-    for char in "[]()*_`@<>#~":
+    for char in "[]()*_`@#~":
         text = text.replace(char, f"\\{char}")
+    # HTML-escape LAST: ``& < > " '`` -> entities so the result is safe both as
+    # Markdown and as inline HTML (GFM interprets raw HTML). Running this after
+    # the loop keeps the numeric entity ``&#x27;`` it emits for an apostrophe
+    # intact — the loop's ``#`` step can no longer reach inside it.
+    text = html.escape(text)
     return text
 
 

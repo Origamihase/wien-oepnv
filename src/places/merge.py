@@ -276,7 +276,16 @@ def _find_matching_station(
     for station in stations:
         lat = station.get("latitude")
         lng = station.get("longitude")
-        if not (isinstance(lat, float | int) and isinstance(lng, float | int)):
+        # ``bool`` is a subclass of ``int``, so a JSON boolean coordinate
+        # (``true``/``false``) would pass the ``float | int`` gate and coerce to
+        # ``1.0``/``0.0``. Reject it first, mirroring every sibling coordinate
+        # parser (client._parse_place, osm_client._coerce_float,
+        # tiling._coerce_coordinate, hafas_client) which all drop bool.
+        if (
+            isinstance(lat, bool)
+            or isinstance(lng, bool)
+            or not (isinstance(lat, float | int) and isinstance(lng, float | int))
+        ):
             continue
         # Defence-in-depth (Coordinate finite/range drift — disk-read side):
         # ``load_stations`` already rejects non-finite literals

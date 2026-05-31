@@ -1655,6 +1655,16 @@ def merge_into_stations(
     else:
         raise ValueError("stations.json must contain a JSON array or a dict with a 'stations' array")
 
+    # Drop non-dict elements before the merge loop below calls ``entry.get(...)``.
+    # read_capped_json validates only the TOP-LEVEL type, so a structurally
+    # valid but malformed file (``[1, 2, "x"]`` / ``{"stations": ["foo"]}`` — a
+    # corrupted previous run or a parallel atomic state swap, the documented
+    # threat model) would otherwise raise an uncaught AttributeError and abort
+    # the cron pipeline (the orchestrator runs this via ``subprocess(check=True)``).
+    # Mirrors update_all_stations._load_stations and the sibling NaN/size/depth
+    # defences in this file, which degrade gracefully instead of crashing.
+    existing = [entry for entry in existing if isinstance(entry, dict)]
+
     filtered: list[dict[str, object]] = []
     vor_index: dict[str, dict[str, object]] = {}
     bst_index: dict[str, dict[str, object]] = {}
@@ -1810,15 +1820,27 @@ def main(argv: Sequence[str] | None = None) -> int:
         "Reading haltestellen: [path-sha256=%s]",
         _path_fingerprint(args.haltestellen),
     )
-    haltestellen = load_haltestellen(args.haltestellen)
-    log.info("Found %d haltestellen", len(haltestellen))
+    try:
+        haltestellen = load_haltestellen(args.haltestellen)
+        log.info("Found %d haltestellen", len(haltestellen))
 
-    log.info(
-        "Reading haltepunkte: [path-sha256=%s]",
-        _path_fingerprint(args.haltepunkte),
-    )
-    haltepunkte = load_haltepunkte(args.haltepunkte)
-    log.info("Found %d haltepunkte", len(haltepunkte))
+        log.info(
+            "Reading haltepunkte: [path-sha256=%s]",
+            _path_fingerprint(args.haltepunkte),
+        )
+        haltepunkte = load_haltepunkte(args.haltepunkte)
+        log.info("Found %d haltepunkte", len(haltepunkte))
+    except FileNotFoundError:
+        # A required CSV is missing (e.g. --download enabled but the fetch
+        # failed and no local fallback file exists): _dict_reader raises
+        # FileNotFoundError. Abort cleanly with return 1 — matching the
+        # empty-wl_entries path below — instead of an unhandled traceback
+        # that aborts the cron pipeline (subprocess check=True). Path is not
+        # logged raw to avoid leaking it.
+        log.error(
+            "A required Wiener-Linien OGD CSV is missing; aborting (return 1)."
+        )
+        return 1
 
     vor_mapping = load_vor_mapping(args.vor_mapping)
     if vor_mapping:

@@ -14,13 +14,14 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    # Defense-in-depth ceiling: the VOR API smoke test does a single
-    # /departureBoard probe with the usual VOR/VAO retry budget. Healthy
-    # runs are under a minute. 10 min gives generous headroom while
-    # catching hangs (stuck retry loop, unresponsive upstream) quickly.
-    # Without the cap the workflow inherits GitHub's 360-min default.
-    # Mirrors the canonical defence shape established in update-cycle.yml.
-    timeout-minutes: 10
+    # Defense-in-depth ceiling. The VOR /location.name smoke test itself is
+    # under a minute, but the final ``pytest -q`` step re-runs the FULL suite
+    # (~8000 tests) with the VOR secrets present, which — like the "Run test
+    # suite" job in test.yml — takes well over 10 min on a GH runner and was
+    # being cancelled at the cap. Match test.yml's 20-min budget (the per-test
+    # pytest-timeout of 60 s still catches genuine hangs). Without the cap the
+    # workflow inherits GitHub's 360-min default.
+    timeout-minutes: 20
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src

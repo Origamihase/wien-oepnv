@@ -245,7 +245,12 @@ def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
         # Security: Modify in-place to preserve file handle for RotatingFileHandler.
         # atomic_write would replace the inode, causing the active logger to write to a stale handle.
         # Use r+ to read/write without replacing inode.
-        with path.open("r+", encoding="utf-8") as handle:
+        # newline="" disables universal-newline translation on write: the read
+        # side (read_capped_text -> bytes.decode + splitlines(keepends=True)) is
+        # byte-exact, so without this a record already ending in "\r\n" would be
+        # rewritten as "\r\r\n" on a platform where os.linesep == "\r\n"
+        # (Windows), corrupting the log and shifting offsets vs the live handler.
+        with path.open("r+", encoding="utf-8", newline="") as handle:
             handle.seek(0)
             handle.write("".join(filtered))
             handle.truncate()

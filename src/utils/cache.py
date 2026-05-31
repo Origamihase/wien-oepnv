@@ -276,7 +276,29 @@ def read_cache(provider: str) -> list[Any]:
             # marks regardless of how the on-disk bytes got there. See
             # ``src/utils/serialize.py:scrub_trojan_source_primitives``
             # for the canonical attack-byte union.
-            scrubbed = scrub_trojan_source_primitives(payload)
+            try:
+                scrubbed = scrub_trojan_source_primitives(payload)
+            except RecursionError:
+                # ``scrub_trojan_source_primitives`` enforces its OWN nesting
+                # cap (max_depth=50) and raises ``RecursionError``. ``json.loads``
+                # above parses far deeper (CPython ~1000), so a moderately-deep
+                # (51..~990 levels) poisoned cache parses cleanly — entering this
+                # ``else`` block — and only trips the scrubber HERE, OUTSIDE the
+                # ``try`` whose ``except (... RecursionError ...)`` handler was
+                # meant to neutralise depth bombs. Without this guard the error
+                # escapes ``read_cache`` and is reclassified by the orchestrator's
+                # generic ``except`` as a fetch failure, losing the dedicated
+                # cache-corruption alert and the documented return-[] contract.
+                log.warning(
+                    "Cache for provider '%s' at %s exceeds the safe nesting "
+                    "depth; treating as corrupt and skipping.",
+                    provider,
+                    cache_file,
+                )
+                _emit_cache_alert(
+                    provider, "Cache-Verschachtelung zu tief (Depth-Bomb)"
+                )
+                return []
             if isinstance(scrubbed, list):
                 return scrubbed
             return []

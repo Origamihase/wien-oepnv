@@ -2950,8 +2950,10 @@ def _should_ignore(path: Path, patterns: Sequence[str], base_dir: Path) -> bool:
     sub-tree configs. Neither aligns with the gitignore intuition the
     one-line comment at the call site implies.
 
-    Post-fix the match uses ``fnmatch.fnmatch`` against the FULL forward-
-    slash-normalised relative path AND the basename, so:
+    Post-fix the match uses ``fnmatch.fnmatchcase`` against the FULL forward-
+    slash-normalised relative path AND the basename (``fnmatchcase`` is
+    case-sensitive on every platform, unlike ``fnmatch`` which case-folds on
+    Windows via ``os.path.normcase``), so:
 
     * A pattern with ``/`` is anchored against the full path
       (``src/leak.py`` matches only that file).
@@ -2977,11 +2979,18 @@ def _should_ignore(path: Path, patterns: Sequence[str], base_dir: Path) -> bool:
         # would silently disable the whole scanner — the ignore-list footgun.
         if not pattern.strip().strip("*"):
             continue
+        # Use fnmatchcase, NOT fnmatch: fnmatch routes both the name and the
+        # pattern through os.path.normcase, which lowercases on Windows — making
+        # the ignore list case-INsensitive there but case-sensitive on Linux,
+        # i.e. platform-dependent coverage for a security gate (a Windows-side
+        # over-broad match could silently skip a file holding a planted secret).
+        # fnmatchcase is case-sensitive on every platform, matching git's
+        # default case-sensitive path semantics the docstring describes.
         if "/" in pattern:
-            if fnmatch.fnmatch(rel_str, pattern):
+            if fnmatch.fnmatchcase(rel_str, pattern):
                 return True
         else:
-            if fnmatch.fnmatch(rel_name, pattern):
+            if fnmatch.fnmatchcase(rel_name, pattern):
                 return True
     return False
 
