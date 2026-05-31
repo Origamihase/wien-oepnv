@@ -83,7 +83,7 @@ Der Output liegt dann unter `docs/feed.xml`.
    Jede Änderung an der Logik benötigt einen entsprechenden Test in `tests/`. Wenn du einen Bug fixest, schreibe zuerst einen Test, der den Bug reproduziert.
 
 4. **CI-Checks beachten:**
-   Beim Erstellen des PRs laufen GitHub Actions (`test.yml`). Stelle sicher, dass sie grün sind.
+   Beim Erstellen des PRs laufen mehrere GitHub-Actions-Workflows als Qualitäts-Gates: Test-Suite (`test.yml`), strikte Typprüfung (`mypy-strict.yml`), Sicherheits-Scan (`bandit.yml`), CodeQL-Analyse (`codeql.yml`) und das Komplexitäts-Gate (`complexity-gate.yml`). Stelle sicher, dass **alle** grün sind.
 
 ## Fehlermeldungen (Issues)
 

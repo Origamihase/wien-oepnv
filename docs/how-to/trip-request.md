@@ -10,7 +10,7 @@ Diese Anleitung zeigt die grundlegenden Schritte, um mit der VAO ReST API eine V
 ## 1. Ortspunkte bestimmen
 
 1. Suche Start- und Zielort über `location.name` oder `location.nearbystops`.
-2. Wähle aus der Antwort eine passende `id` oder `extId` aus (`CoordLocation`/`StopLocation`).
+2. Wähle aus der Antwort eine passende `id` oder `extId` aus (`CoordLocation`; `StopLocation`-Elemente liefert nur `location.details`).
 
 ```bash
 curl -G "${VOR_BASE_URL}location.name" \

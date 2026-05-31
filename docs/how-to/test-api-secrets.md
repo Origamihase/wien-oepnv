@@ -3,9 +3,11 @@ title: "Repository-Secrets sicher testen"
 description: "So führen Sie API-Aufrufe mit in GitHub Actions hinterlegten Secrets aus, ohne die Zugangsdaten lokal preiszugeben."
 ---
 
-# How to test an API call that uses repository secrets
+# Repository-Secrets sicher testen
 
 Wenn der Endpunkt einer API und der zugehörige API-Key als Secrets im GitHub-Repository hinterlegt sind, können Sie den Abruf dennoch sicher testen, indem Sie die Ausführung innerhalb eines GitHub-Actions-Workflows vornehmen. Secrets werden ausschließlich in diesem Kontext aufgelöst – so behalten sie ihren Schutz, während Sie prüfen können, ob der Request erfolgreich ist.
+
+> **Aufbau dieser Anleitung:** Die Abschnitte 1–3 zeigen eine **generische Vorlage**, mit der Sie einen beliebigen API-Abruf neu aufsetzen können. Abschnitt 4 beschreibt den bereits im Repository vorhandenen **produktiven Workflow** `test-vor-api.yml` für die VOR-API – diesen müssen Sie nicht neu anlegen, sondern können ihn direkt ausführen.
 
 ## 1. Manuell startbaren Workflow anlegen
 
