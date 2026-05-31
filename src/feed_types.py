@@ -37,33 +37,3 @@ class Provider(Protocol):
     """Protocol for disruption providers."""
     def fetch_events(self, *args: Any, **kwargs: Any) -> list[FeedItem]:
         ...
-
-
-class VorMessage(TypedDict):
-    """Raw message structure from VOR API."""
-    head: NotRequired[str]
-    text: NotRequired[str]
-    description: NotRequired[str]
-    name: NotRequired[str]
-
-    sDate: NotRequired[str]
-    sTime: NotRequired[str]
-    eDate: NotRequired[str]
-    eTime: NotRequired[str]
-
-    products: NotRequired[dict[str, Any] | list[Any]]
-    id: NotRequired[str]
-    act: NotRequired[str | bool]
-
-
-class VorDeparture(TypedDict):
-    """Departure structure from VOR API."""
-    name: NotRequired[str]
-    direction: NotRequired[str]
-    date: NotRequired[str]
-    time: NotRequired[str]
-    cancelled: NotRequired[bool | str]
-    Product: NotRequired[Any]
-    rtMessages: NotRequired[Any]
-    warnings: NotRequired[Any]
-    infos: NotRequired[Any]

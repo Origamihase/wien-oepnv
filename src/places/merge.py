@@ -213,8 +213,21 @@ def merge_places(
         if "aliases" not in station:
             station["aliases"] = []
 
+    # Precompute each station's normalized name once (O(n)) so the name-match
+    # phase is O(m+n), not O(m*n): otherwise normalize_name (NFKD + regex) runs
+    # for every station on every incoming place. Kept in lockstep with
+    # ``stations`` — ``_update_station`` never touches ``name``, and a newly
+    # created station appends its normalized name so later places still dedupe
+    # against it.
+    norm_names: list[str | None] = []
+    for station in stations:
+        name = station.get("name")
+        norm_names.append(normalize_name(name) if isinstance(name, str) else None)
+
     for place in places:
-        result = _find_matching_station(stations, place, config.max_distance_m)
+        result = _find_matching_station(
+            stations, norm_names, place, config.max_distance_m
+        )
         if result is not None:
             station, matched_by_name = result
             if _update_station(station, place, config, matched_by_name):
@@ -225,6 +238,10 @@ def merge_places(
         new_station = _create_station(place, config)
         stations.append(new_station)
         new_entries.append(new_station)
+        new_name = new_station.get("name")
+        norm_names.append(
+            normalize_name(new_name) if isinstance(new_name, str) else None
+        )
 
     stations = _sorted_stations(stations)
     return MergeOutcome(
@@ -255,13 +272,13 @@ def _sorted_stations(stations: Sequence[StationEntry]) -> list[StationEntry]:
 
 def _find_matching_station(
     stations: Sequence[StationEntry],
+    norm_names: Sequence[str | None],
     place: Place,
     max_distance_m: float,
 ) -> tuple[StationEntry, bool] | None:
     norm = normalize_name(place.name)
-    for station in stations:
-        name = station.get("name")
-        if isinstance(name, str) and normalize_name(name) == norm:
+    for station, station_norm in zip(stations, norm_names, strict=True):
+        if station_norm == norm:
             return station, True
 
     # Distance fallback: bind the place to the *nearest* station within

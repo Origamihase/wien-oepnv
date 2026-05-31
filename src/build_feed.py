@@ -963,7 +963,7 @@ _TRANSLATION_CACHE_EPOCH = 3
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
 # these via the ML model would be wasteful — every disruption shares
-# the same five prefixes — and slow (each translate call hits the
+# the same four prefixes — and slow (each translate call hits the
 # tokenizer). The dictionary mapping mirrors the prefixes emitted by
 # ``format_local_times`` in :mod:`src.build_feed`.
 _TIME_PREFIX_DE_TO_EN: dict[str, str] = {
@@ -4205,7 +4205,6 @@ def _make_rss(
     items: list[FeedItem],
     now: datetime,
     state: dict[str, dict[str, Any]],
-    deletions: set[str] | None = None,
     *,
     lang: str = "de",
 ) -> str:
@@ -4216,7 +4215,6 @@ def _make_rss(
         items: List of item dictionaries.
         now: Current timestamp.
         state: State dictionary for tracking items.
-        deletions: IDs to be removed from the state.
         lang: Target language for the output (``"de"`` or ``"en"``).
             Drives channel metadata, ``<language>``, the atom self
             ``href`` (``feed.xml`` vs ``feed.en.xml``) and the per-item
@@ -4225,9 +4223,6 @@ def _make_rss(
     Returns:
         The generated RSS XML string with CDATA sections.
     """
-    if deletions is None:
-        deletions = set()
-
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
 
@@ -4276,15 +4271,13 @@ def _make_rss(
     ET.SubElement(channel, "ttl").text = str(feed_config.FEED_TTL)
 
     item_replacements: dict[str, str] = {}
-    identities_in_feed: list[str] = []
     emitted = 0
     for it in items:
         if emitted >= feed_config.MAX_ITEMS:
             break
-        ident, elem, repl = _emit_item(it, now, state, lang=lang)
+        _ident, elem, repl = _emit_item(it, now, state, lang=lang)
         channel.append(elem)
         item_replacements.update(repl)
-        identities_in_feed.append(ident)
         emitted += 1
 
     # Pretty print the tree
@@ -4564,7 +4557,7 @@ def main() -> int:
         # is always refreshed regardless of any translation-pipeline
         # issues encountered for the EN variant.
         rss_start = perf_counter()
-        rss_de = _make_rss(items, now, state, deletions=dropped_ids, lang="de")
+        rss_de = _make_rss(items, now, state, lang="de")
         rss_duration = perf_counter() - rss_start
 
         out_path = validate_path(Path(feed_config.OUT_PATH), "OUT_PATH")
@@ -4582,7 +4575,7 @@ def main() -> int:
         en_out_path = validate_path(en_path, "OUT_PATH")
         try:
             rss_en = _make_rss(
-                items, now, state, deletions=dropped_ids, lang="en"
+                items, now, state, lang="en"
             )
             with atomic_write(
                 en_out_path, mode="w", encoding="utf-8", permissions=0o644

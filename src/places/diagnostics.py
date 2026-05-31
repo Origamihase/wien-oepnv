@@ -11,7 +11,7 @@ def permission_hint(details: str) -> str | None:
 
     message = details.lower()
 
-    if "are blocked" in message or "blocked" in message:
+    if "blocked" in message:
         return (
             "Check the Google Cloud project: enable Places API (New) and allow the API key to call "
             "https://places.googleapis.com in its API restrictions."

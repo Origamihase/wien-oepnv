@@ -150,7 +150,7 @@ def test_end_to_end_survivor_first_seen_is_preserved_on_disk(
 
     state = build_feed._load_state()  # empty on first run
     kept, dropped = build_feed._drop_old_items([expired, ongoing], now, state)
-    build_feed._make_rss(kept, now, state, deletions=dropped)
+    build_feed._make_rss(kept, now, state)
     build_feed._save_state(state, deletions=dropped)
 
     on_disk = json.loads(
