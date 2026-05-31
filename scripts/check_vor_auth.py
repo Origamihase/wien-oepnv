@@ -80,18 +80,23 @@ def main(argv: Sequence[str] | None = None) -> int:
     session = requests.Session()
     vor_module.apply_authentication(session)
 
-    if session.auth is None:
-        LOGGER.error(
-            "apply_authentication() did not configure session.auth — credentials "
-            "would not be injected on outgoing requests."
-        )
-        return 1
-
+    # Check the plain-HTTP case FIRST: apply_authentication() fails closed on
+    # an http:// base URL (it returns WITHOUT setting session.auth), so the
+    # session.auth-is-None branch below would otherwise fire first with a
+    # misleading "internal bug" message for what is really the insecure-URL
+    # condition — leaving this accurate diagnostic unreachable (dead code).
     if base_url.lower().startswith("http://"):
         LOGGER.error(
             "VOR base URL is plain HTTP (%s) while credentials are configured — "
             "secrets would leak over the wire. Refusing to report success.",
             base_url,
+        )
+        return 1
+
+    if session.auth is None:
+        LOGGER.error(
+            "apply_authentication() did not configure session.auth — credentials "
+            "would not be injected on outgoing requests."
         )
         return 1
 
