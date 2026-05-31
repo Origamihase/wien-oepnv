@@ -174,6 +174,15 @@ _GENERIC_ALIAS_BLOCKLIST = frozenset({
     # "München" is a prefix of "Münchendorf"; the disambiguated forms
     # ("München Hbf", "München Hauptbahnhof") are kept as aliases.
     "munchen", "muenchen",
+    # Synthetic short forms that collide with everyday German. "Aug." (the
+    # Gasse→G. shortening of "Wien Augasse") matches the month abbreviation
+    # "Aug."; "Am Bf"/"Am Bahnhof" (from the WL stop "Wien Am Bahnhof") match
+    # the ubiquitous phrase "am Bf". Both normalise to a bare
+    # preposition/abbreviation via _normalize_key (which strips the
+    # bahnhof/bf/station suffix), so every compound variant is covered. The
+    # stations stay resolvable via "Wien Augasse" / "Wien Am Bahnhof" and the
+    # "wien" key (bugs b8/b9).
+    "aug", "am",
 })
 
 
