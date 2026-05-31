@@ -1205,7 +1205,12 @@ def _leg_departure_delay_minutes(leg: Mapping[str, Any]) -> float | None:
     # heuristic below is only applied when it did NOT — otherwise the
     # explicit date is authoritative and a same-day early departure is a
     # legitimate small-magnitude negative delay we must record verbatim.
-    rt_date_explicit = origin.get("rtDate") or origin.get("rtDepDate")
+    # ``or None`` collapses an EMPTY-string rtDate/rtDepDate to ``None``:
+    # ``"" or "" == ""`` is falsy but not ``None``, which would make the
+    # ``rt_date_explicit is None`` heuristic gate below evaluate False and
+    # wrongly skip the midnight-rollover correction (a 23:55 leg with
+    # rtTime "00:05" then yields a bogus ≈ −23h50m delay).
+    rt_date_explicit = origin.get("rtDate") or origin.get("rtDepDate") or None
     rt_date = rt_date_explicit or sched_date
     actual = _parse_vao_dt(rt_date, rt_time)
     if actual is None:
