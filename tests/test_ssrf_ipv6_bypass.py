@@ -38,3 +38,20 @@ def test_other_translation_prefixes() -> None:
 def test_ipv4_mapped() -> None:
     # IPv4-mapped (::ffff:0:0/96) - Should be blocked
     assert is_ip_safe(ipaddress.ip_address("::ffff:127.0.0.1")) is False
+
+
+def test_ipv4_mapped_cgnat_blocked() -> None:
+    # IPv4-mapped Shared Address Space / CGNAT (RFC 6598, ::ffff:100.64.0.0/10).
+    # On Python 3.11 the mapped form reports is_global=True / is_private=False,
+    # so without the ipv4_mapped unwrap in is_ip_safe it would slip past the
+    # IPv4-only 100.64.0.0/10 block (reachable via an attacker-controlled AAAA
+    # record or an ``http://[::ffff:100.64.0.1]/`` URL literal).
+    assert is_ip_safe(ipaddress.ip_address("100.64.0.1")) is False
+    assert is_ip_safe(ipaddress.ip_address("::ffff:100.64.0.1")) is False
+
+
+def test_ipv4_mapped_public_still_allowed() -> None:
+    # The unwrap must not over-block: a genuinely public mapped address stays
+    # reachable (parity with its bare IPv4 form).
+    assert is_ip_safe(ipaddress.ip_address("8.8.8.8")) is True
+    assert is_ip_safe(ipaddress.ip_address("::ffff:8.8.8.8")) is True

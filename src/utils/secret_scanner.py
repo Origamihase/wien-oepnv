@@ -477,9 +477,9 @@ _HOBA_RE = re.compile(
 # token-shaped body sits inside one of those headers. The
 # ``is_covered`` check in ``_scan_content`` anchors the first matching
 # reason at each span. New auth-scheme detectors (e.g. RFC 7616
-# Digest, RFC 8120 Mutual, RFC 4559 AWS4-HMAC-SHA256)
-# follow the same shape and inherit the ``(?i)`` case-insensitivity
-# invariant pinned per RFC 7235 §2.1.
+# Digest, RFC 8120 Mutual, AWS SigV4 ``AWS4-HMAC-SHA256`` — a vendor
+# scheme with no IETF RFC) follow the same shape and inherit the
+# ``(?i)`` case-insensitivity invariant pinned per RFC 7235 §2.1.
 _AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
     (_BEARER_RE, "Bearer-Token wirkt echt"),
     (_BASIC_AUTH_RE, "HTTP Basic Authentication Credential gefunden"),
@@ -489,7 +489,13 @@ _AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
     (_TOKEN_SCHEME_RE, "HTTP Token-Scheme Authentication Credential gefunden"),
 )
 
-_PEM_RE = re.compile(r"(-----BEGIN [A-Z ]*PRIVATE KEY-----)(?:.|\n)*?(-----END [A-Z ]*PRIVATE KEY-----)")
+# Security: the inter-anchor gap is bounded (``{0,8192}?`` — well above any
+# real PEM body, an RSA-4096 key is ~3.2 KiB) instead of the unbounded
+# ``(?:.|\n)*?``. An unbounded lazy quantifier makes ``finditer`` restart at
+# every ``BEGIN`` marker and scan to EOF when no ``END`` follows, which is
+# O(markers x filesize) — a crafted file (hostile-PR threat model) could hang
+# the secret-scan gate. The bound caps per-start-position work to a constant.
+_PEM_RE = re.compile(r"(-----BEGIN [A-Z ]*PRIVATE KEY-----)(?:.|\n){0,8192}?(-----END [A-Z ]*PRIVATE KEY-----)")
 
 # Known high-value token patterns to detect specifically
 # These bypass the generic entropy checks and provide specific descriptions
@@ -2786,8 +2792,9 @@ def _scan_auth_scheme_credentials(
 ) -> list[tuple[int, str, str]]:
     """Scan *content* for HTTP-auth-scheme-prefixed credential leaks.
 
-    Iterates over :data:`_AUTH_SCHEME_DETECTORS` (currently
-    ``_BEARER_RE`` + ``_BASIC_AUTH_RE``) and emits one finding per match
+    Iterates over :data:`_AUTH_SCHEME_DETECTORS` (Bearer, Basic,
+    Negotiate, NTLM, HOBA and the generic Token scheme) and emits one
+    finding per match
     that passes ``_looks_like_secret(candidate, is_assignment=True)`` and
     does not overlap an already-covered range. Mutates
     ``covered_ranges`` in place so subsequent detector loops in
@@ -2796,10 +2803,9 @@ def _scan_auth_scheme_credentials(
     Extracted from :func:`_scan_content` to keep the latter at its C901
     complexity baseline while still extending coverage to additional
     auth-scheme literals from the HTTP authentication family (RFC 7235
-    §2.1 case-insensitive auth-scheme contract). Future detectors (RFC
-    7616 Digest, RFC 4559 SPNEGO, RFC 7486 HOBA) extend
-    ``_AUTH_SCHEME_DETECTORS`` without changing this helper or the
-    caller.
+    §2.1 case-insensitive auth-scheme contract). Future detectors (e.g.
+    RFC 7616 Digest) extend ``_AUTH_SCHEME_DETECTORS`` without changing
+    this helper or the caller.
     """
     findings: list[tuple[int, str, str]] = []
     for regex, reason in _AUTH_SCHEME_DETECTORS:

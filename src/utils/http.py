@@ -1196,6 +1196,19 @@ def is_ip_safe(
         else:
             return False
 
+        # Normalize IPv4-mapped IPv6 addresses (``::ffff:a.b.c.d``) to their
+        # embedded IPv4 form so every property and range check below — most
+        # importantly the explicit RFC 6598 Shared-Address-Space (CGNAT) block
+        # — runs against the real IPv4. On Python 3.11 the mapped form reports
+        # ``is_global=True``/``is_private=False`` for the 100.64.0.0/10 range,
+        # so without this unwrap ``http://[::ffff:100.64.0.1]/`` or an
+        # attacker-controlled AAAA record pointing there would slip past the
+        # IPv4-only CGNAT guard. (3.13 already delegates these properties, but
+        # the project targets 3.11.)
+        mapped = getattr(ip, "ipv4_mapped", None)
+        if mapped is not None:
+            ip = mapped
+
         # Block unspecified addresses (0.0.0.0, ::)
         if ip.is_unspecified:
             return False
