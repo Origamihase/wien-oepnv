@@ -323,6 +323,28 @@ def test_oepnv_lead_noop_when_already_leading_or_no_match() -> None:
     assert oepnv_lead("") == ""
 
 
+def test_oepnv_lead_keeps_abbreviation_period_intact() -> None:
+    # bug b5: "Nr." is an abbreviation, not a sentence end — the stop number
+    # stays attached when the ÖPNV sentence is surfaced (was mangled to
+    # "Die Haltestelle Nr. <other sentence> 4351 …").
+    out = oepnv_lead("Fahrbahnerneuerung. Die Haltestelle Nr. 4351 wird verlegt.")
+    assert out.startswith("Die Haltestelle Nr. 4351 wird verlegt.")
+
+
+def test_oepnv_lead_keeps_date_ordinal_intact() -> None:
+    # bug b5: the day ordinal "3." must not split "3. März".
+    out = oepnv_lead("Ab 3. März gilt eine Umleitung. Die Buslinie wird verlegt.")
+    assert out.startswith("Die Buslinie wird verlegt.")
+    assert "3. März" in out
+
+
+def test_oepnv_lead_still_splits_lowercase_next_sentence() -> None:
+    # No uppercase-follower gate: a real boundary before a lowercase-initial
+    # next sentence is still split, so the ÖPNV sentence is surfaced.
+    out = oepnv_lead("Fahrbahn wird saniert. die Haltestelle wird verlegt.")
+    assert out.startswith("die Haltestelle wird verlegt.")
+
+
 def test_sample_linestring_description_leads_with_oepnv() -> None:
     payload = json.loads(SAMPLE_PATH.read_text(encoding="utf-8"))
     events = update_baustellen_cache._collect_events(payload)
