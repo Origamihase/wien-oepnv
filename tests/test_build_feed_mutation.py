@@ -10,7 +10,7 @@ def test_build_feed_mutation() -> None:
          patch.object(bf, "_summarize_duplicates", return_value=[]), \
          patch.object(bf, "_dedupe_items", return_value=items), \
          patch.object(bf, "deduplicate_fuzzy", return_value=items), \
-         patch.object(bf, "_make_rss", return_value=("", set())), \
+         patch.object(bf, "_make_rss", return_value=""), \
          patch.object(bf, "_load_state", return_value={}), \
          patch.object(bf, "_save_state"), \
          patch.object(bf, "atomic_write", MagicMock()):
