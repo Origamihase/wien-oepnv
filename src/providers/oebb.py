@@ -195,7 +195,16 @@ _TRANSIT_KEYWORD_RE = re.compile(
     # ``\w{0,4}`` keeps the regex bounded but covers German plural and
     # genitive forms without enumerating every variant.
     r"\b(bauarbeit\w{0,4}|störung\w{0,4}|stoerung\w{0,4}|"
-    r"verspätung\w{0,4}|verspaetung\w{0,4}|sperre\w{0,4}|sperrung\w{0,4}|"
+    r"verspätung\w{0,4}|verspaetung\w{0,4}|"
+    r"zugverspätung\w{0,4}|zugverspaetung\w{0,4}|"
+    # Rail-specific compound closures (Gleissperrung, Streckensperre,
+    # Bahnsperre, …). The plain ``sperrung``/``sperre`` stems below carry
+    # a leading ``\b`` from the group anchor, so without this rail-prefixed
+    # form a weather title like "Hochwasser: Gleissperrung Wien Floridsdorf"
+    # was wrongly dropped (no transit signal recognised). Bounded to the
+    # gleis/strecken/bahn prefixes so a road "Vollsperrung" stays out.
+    r"(?:gleis|strecken|bahn)\w*(?:sperrung|sperre)\w{0,4}|"
+    r"sperre\w{0,4}|sperrung\w{0,4}|"
     r"gesperrt|geschlossen|unterbrochen|eingestellt|"
     r"umleitung\w{0,4}|ersatzverkehr|haltausfall\w{0,4}|zugausfall\w{0,4}|"
     r"streckenunterbrechung\w{0,4}|unterbrechung\w{0,4}|teilausfall\w{0,4}|"
@@ -990,6 +999,39 @@ _TITLE_NOISE_WORDS = frozenset({
     "nahverkehr",
     "nahverkehrszüge",
     "nahverkehrszuege",
+    # Infrastructure-work nouns that frequently TRAIL a single Wien/Pendler
+    # station title ("Wien Meidling Stellwerk", "Wien Praterstern
+    # Umbauarbeiten"). They are common German nouns, never station names, so
+    # the title-residual heuristic must not misread them as an implicit
+    # unknown second endpoint and drop an otherwise-relevant single-station
+    # message (bug b2).
+    "stellwerk",
+    "stellwerke",
+    "sanierung",
+    "sanierungsarbeiten",
+    "umbau",
+    "umbauarbeiten",
+    "ausbau",
+    "ausbauarbeiten",
+    "erneuerung",
+    "erneuerungsarbeiten",
+    "modernisierung",
+    "reparatur",
+    "reparaturarbeiten",
+    "wartung",
+    "wartungsarbeiten",
+    "instandhaltung",
+    "instandhaltungsarbeiten",
+    "ertüchtigung",
+    "ertuechtigung",
+    "brückenarbeiten",
+    "brueckenarbeiten",
+    "gleisarbeiten",
+    "weichenarbeiten",
+    "oberleitungsarbeiten",
+    "vorplatz",
+    "bahnhofsvorplatz",
+    "reisezentrum",
 })
 
 
@@ -1310,6 +1352,13 @@ def _find_stations_in_text(blob: str) -> list[str]:
                 # expansions.
                 token_norm = chunk.casefold().rstrip(".:,;")
                 if token_norm in _GENERIC_STATION_TOKENS:
+                    continue
+                if OEBB_ONLY_VIENNA and token_norm in ("wien", "vienna"):
+                    # The bare area word "Wien"/"Vienna" canonicalises to a
+                    # flagship station ("Wien Hauptbahnhof") — a phantom
+                    # mention. In strict Vienna-only mode that must not seed
+                    # a relevant station from a generic "ab/bis Wien" notice
+                    # (bug b10). Default mode (flag off) is unaffected.
                     continue
                 if len(chunk_alpha) < 3:
                     continue
