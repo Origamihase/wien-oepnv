@@ -32,7 +32,6 @@ import os
 from dataclasses import dataclass
 from typing import Any, NotRequired, TypedDict, cast
 from collections.abc import Iterable, Iterator
-from urllib.parse import urlparse
 
 import requests
 
@@ -116,8 +115,6 @@ DEFAULT_OVERPASS_ENDPOINTS: tuple[str, ...] = (
     "https://overpass-api.de/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter",
 )
-
-_TRUSTED_OVERPASS_HOSTS: frozenset[str] = frozenset(urlparse(url).hostname or "" for url in DEFAULT_OVERPASS_ENDPOINTS)
 
 
 # Vienna bounding box (south, west, north, east). Pulled from the
@@ -252,7 +249,7 @@ def get_overpass_endpoint() -> str:
     if raw in DEFAULT_OVERPASS_ENDPOINTS:
         return raw
     LOGGER.warning(
-        "OVERPASS_URL %s is not on the trusted Overpass host allow-list; falling back to default endpoint",
+        "OVERPASS_URL %s is not on the trusted Overpass endpoint allow-list; falling back to default endpoint",
         sanitize_log_arg(raw),
     )
     return DEFAULT_OVERPASS_ENDPOINTS[0]
@@ -469,7 +466,7 @@ def _normalize_tags(raw: object) -> OSMTags:
 
     Overpass guarantees keys and values are strings, but the JSON
     decoder returns ``object`` so the loop discards any drift defensively
-    (e.g. a ``null`` value smuggled past a Vespian mirror). The result
+    (e.g. a ``null`` value smuggled past a rogue/non-canonical mirror). The result
     is cast to :data:`OSMTags` so downstream call sites benefit from
     strict typing without paying a per-key validation cost; the parser
     contract is that the returned dict is the project's canonical view

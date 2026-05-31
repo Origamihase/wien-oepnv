@@ -58,7 +58,7 @@ def test_state_cleanup_keeps_only_current_identities(
     assert set(state_after_first.keys()) == {"guid-a", "guid-b"}
 
     state = build_feed._load_state()
-    build_feed._make_rss([item_b], now, state, deletions={"guid-a"})
+    build_feed._make_rss([item_b], now, state)
     build_feed._save_state(state, deletions={"guid-a"})
 
     state_after_second = build_feed._load_state()
