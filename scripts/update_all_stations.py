@@ -765,17 +765,24 @@ def main(argv: Sequence[str] | None = None) -> int:
             start = time.monotonic()
             try:
                 run_script(args.python, script_path, args.verbose, output_flag, tmp_stations_path)
-            except subprocess.CalledProcessError as exc:  # pragma: no cover - thin wrapper
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:  # pragma: no cover - thin wrapper
                 duration = time.monotonic() - start
+                # TimeoutExpired is a sibling of CalledProcessError (NOT a
+                # subclass) and carries no ``returncode``: a sub-script that
+                # actually exceeds the 600 s budget — the exact hang the
+                # timeout guards — would otherwise escape this handler and
+                # crash the orchestrator with a traceback, bypassing the
+                # structured failure record. Record it like any other failure.
+                exit_code = getattr(exc, "returncode", None) or 1
                 sub_script_results.append({
                     "name": script_name,
-                    "exit_code": exc.returncode or 1,
+                    "exit_code": exit_code,
                     "duration_s": round(duration, 2),
                 })
                 logging.error(
-                    "Script %s failed with exit code %s", script_path.name, exc.returncode
+                    "Script %s failed with exit code %s", script_path.name, exit_code
                 )
-                return exc.returncode or 1
+                return exit_code
             duration = time.monotonic() - start
             sub_script_results.append({
                 "name": script_name,
