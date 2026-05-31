@@ -337,12 +337,15 @@ def main(argv: list[str] | None = None) -> int:
         handle.write(
             json.dumps(serialisable, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
         )
-    size_kib = args.output.stat().st_size / 1024
+    # Use the resolved out_path (atomic_write wrote there). args.output may be
+    # an unexpanded "~/..." that Path.stat() looks up literally, raising a
+    # spurious FileNotFoundError AFTER a successful write.
+    size_kib = out_path.stat().st_size / 1024
     logger.info(
         "Wrote %d stops (%.0f KiB) to %s — fahrplanperiode %s..%s",
         len(payload["stops"]),
         size_kib,
-        args.output,
+        out_path,
         payload.get("fahrplanperiode", {}).get("from", "?"),
         payload.get("fahrplanperiode", {}).get("to", "?"),
     )
