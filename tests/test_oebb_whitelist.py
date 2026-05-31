@@ -30,6 +30,19 @@ def station_entries() -> Any:  # JSON-derived list of dicts; full typing require
     return entries
 
 
+def test_bare_wien_phantom_suppressed_under_only_vienna(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # bug b10: bare "Wien" canonicalises to the flagship "Wien Hauptbahnhof"
+    # (a phantom station). Under OEBB_ONLY_VIENNA that must NOT seed a
+    # relevant station from a generic "ab/bis Wien" notice. Default mode
+    # (flag off) keeps the existing behaviour.
+    monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", True)
+    assert oebb._is_relevant("Bauarbeiten ab Wien", "Hinweise zu Reisen ab Wien.") is False
+    monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", False)
+    assert oebb._is_relevant("Bauarbeiten ab Wien", "Hinweise zu Reisen ab Wien.") is True
+
+
 @pytest.fixture(scope="module")
 def pendler_station(station_entries: Any) -> Any:  # entry["name"] narrowing to str needs cast
     for entry in station_entries:

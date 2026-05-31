@@ -146,3 +146,21 @@ class TestImplicitRouteToUnknown:
             )
             is True
         )
+
+    def test_wien_single_station_with_infrastructure_noun_kept(self) -> None:
+        # bug b2: a trailing infrastructure-work noun (Stellwerk,
+        # Umbauarbeiten, …) is a description, not an implicit unknown second
+        # endpoint — the single-station Wien message must keep.
+        assert (
+            _is_relevant(
+                "Bauarbeiten Wien Meidling Stellwerk",
+                "Wegen Bauarbeiten gesperrt.",
+            )
+            is True
+        )
+        assert (
+            _is_relevant(
+                "Wien Praterstern Umbauarbeiten", "Bauarbeiten am Bahnsteig."
+            )
+            is True
+        )

@@ -17,6 +17,38 @@ from __future__ import annotations
 from src.providers.oebb import _is_facility_or_weather_only, _is_relevant
 
 
+class TestRailCompoundWeatherRescue:
+    # bug b3: a weather-prefixed REAL rail disruption (Gleissperrung,
+    # Streckensperre, Bahnsperre, Zugverspätung) carries a rail-specific
+    # transit signal in the title and must be kept; pure weather notices
+    # without such a signal still drop.
+    def test_hochwasser_gleissperrung_kept(self) -> None:
+        assert (
+            _is_relevant(
+                "Hochwasser: Gleissperrung Wien Floridsdorf",
+                "Wegen Hochwasser ist das Gleis in Wien Floridsdorf gesperrt.",
+            )
+            is True
+        )
+
+    def test_sturm_zugverspaetung_kept(self) -> None:
+        assert (
+            _is_relevant(
+                "Sturm: Zugverspätungen Wien Mitte",
+                "Wegen Sturm gibt es Zugverspätungen in Wien Mitte.",
+            )
+            is True
+        )
+
+    def test_pure_weather_still_dropped(self) -> None:
+        assert (
+            _is_facility_or_weather_only(
+                "Sturmwarnung für den Raum Wien", "Heute starker Sturm erwartet."
+            )
+            is True
+        )
+
+
 class TestUserReportedFacilityWeatherDrops:
     def test_aufzug_defekt_wien_hbf_dropped(self) -> None:
         assert _is_relevant("Aufzug defekt: Wien Hauptbahnhof", "x") is False
