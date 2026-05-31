@@ -2821,7 +2821,19 @@ def _drain_completed_futures(
                     provider_name, f"Fetch fehlgeschlagen: {sanitised}"
                 )
             else:
-                merge_result(fetch, result, provider_name)
+                # Isolate a single provider's merge failure: ``merge_result``
+                # (and the report bookkeeping it calls) runs OUTSIDE the
+                # ``future.result()`` try above, so an exception here would
+                # otherwise propagate out of the drain loop and lose every
+                # already-collected item from the other providers.
+                try:
+                    merge_result(fetch, result, provider_name)
+                except Exception as exc:
+                    sanitised = sanitize_log_arg(str(exc))
+                    log.exception("%s merge fehlgeschlagen: %s", name, sanitised)
+                    report.provider_error(
+                        provider_name, f"Merge fehlgeschlagen: {sanitised}"
+                    )
 
 
 def _run_network_fetchers(
@@ -3355,6 +3367,9 @@ def _recency_sort_key(
     first_seen = _parse_first_seen(entry, now_utc) or now_utc
     pub = _parse_datetime(item.get("pubDate"))
     pub_ts = pub.timestamp() if isinstance(pub, datetime) else float("-inf")
+    # Clamp a future pubDate to now: a bogus future publication date must not
+    # rank an item ahead of genuinely-current items in this pubDate tiebreaker.
+    pub_ts = min(pub_ts, now_utc.timestamp())
     guid_val = item.get("guid")
     guid_str = str(guid_val) if guid_val else _identity_for_item(item)
     return (-first_seen.timestamp(), _category_feed_rank(item), -pub_ts, guid_str)
