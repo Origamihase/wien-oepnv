@@ -203,15 +203,44 @@ class GooglePlacesConfig:
         # may pass a smaller value (tests use 1.0–5.0s) but never raise
         # above ``MAX_TIMEOUT_S``. ``object.__setattr__`` is required
         # because the dataclass is frozen.
-        if self.timeout_s > MAX_TIMEOUT_S:
+        #
+        # Robustness: a non-positive ``timeout_s`` (e.g. a ``REQUEST_TIMEOUT_S``
+        # env typo like ``0`` / ``-1``) is invalid — ``requests`` would raise a
+        # bare ``ValueError`` mid-request and abort the whole enrichment pass.
+        # Fall back to the safe default (``MAX_TIMEOUT_S`` equals the documented
+        # 25 s default) instead of crashing, so the Places tier degrades rather
+        # than hard-fails.
+        if self.timeout_s <= 0 or self.timeout_s > MAX_TIMEOUT_S:
             object.__setattr__(self, "timeout_s", MAX_TIMEOUT_S)
         # Security: enforce the retry ceiling described in the
         # ``MAX_REQUEST_RETRIES`` block above. Same TIGHTEN-only contract
         # as ``timeout_s``: tests use 0–3, default is 4, the cap only
         # truncates oversized env overrides that would otherwise stall
         # the cron job and exhaust the monthly Places quota.
+        #
+        # Robustness: floor a negative ``max_retries`` at 0. A value like
+        # ``-1`` makes the ``while attempt <= max_retries`` loop in ``_post``
+        # never run, so NO request is issued and every tile hard-fails with a
+        # bare ``GooglePlacesError`` — silently disabling the whole Places
+        # fallback tier on a one-character env typo. Floor-clamping to 0 runs
+        # the request exactly once (no retries).
+        if self.max_retries < 0:
+            object.__setattr__(self, "max_retries", 0)
         if self.max_retries > MAX_REQUEST_RETRIES:
             object.__setattr__(self, "max_retries", MAX_REQUEST_RETRIES)
+        # Google Places ``searchNearby`` requires ``maxResultCount`` in [1, 20]
+        # and a positive ``radius`` (≤ 50 000 m). Clamp here so a misconfigured
+        # caller value is corrected at the single source of truth (the config)
+        # rather than silently rejected by the API or, for ``0``, diverging
+        # from the module-global default the client used to read.
+        if self.max_result_count < 1:
+            object.__setattr__(self, "max_result_count", 1)
+        elif self.max_result_count > 20:
+            object.__setattr__(self, "max_result_count", 20)
+        if self.radius_m < 1:
+            object.__setattr__(self, "radius_m", 1)
+        elif self.radius_m > 50000:
+            object.__setattr__(self, "radius_m", 50000)
 
 
 class GooglePlacesClient:
@@ -242,8 +271,13 @@ class GooglePlacesClient:
         self._enforce_quota = enforce_quota
         self._quota_skipped_kinds: set[str] = set()
         self._included_types = self._sanitize_included_types(config.included_types)
-        self._radius_m = RADIUS_M
-        self._max_result_count = MAX_RESULTS
+        # Read per-call geometry from the injected config (the single source
+        # of truth, already range-clamped in ``GooglePlacesConfig.__post_init__``)
+        # instead of the import-time module globals, so caller-supplied
+        # ``radius_m`` / ``max_result_count`` actually reach the request body.
+        # ``RANK_PREF`` stays a module global — the config carries no rank field.
+        self._radius_m = config.radius_m
+        self._max_result_count = config.max_result_count
         self._rank_preference = RANK_PREF
 
     def __enter__(self) -> GooglePlacesClient:
@@ -459,6 +493,13 @@ class GooglePlacesClient:
 
         while attempt <= self._config.max_retries:
             attempt += 1
+            # Breaker state for THIS attempt. When it is HALF_OPEN this request
+            # is the single recovery probe and MUST resolve the breaker: a 429
+            # or a connection-level error — neither of which records a failure
+            # on the normal CLOSED path — would otherwise leave the breaker
+            # stuck HALF_OPEN and admit an unbounded series of probes, each
+            # re-debiting Places quota up-front.
+            probe_state = _BREAKER.state
             # The 429 / 5xx branch below sets ``last_error`` to a
             # ``GooglePlacesError`` (NOT a ``requests.RequestException``), so
             # the legacy extraction from ``last_error.response.headers`` would
@@ -557,7 +598,11 @@ class GooglePlacesClient:
                         return cast(dict[str, object], payload)
 
                     if response.status_code in {429, 500, 502, 503, 504}:
-                        if response.status_code != 429:
+                        # A 429 is deliberately NOT a breaker failure on the
+                        # normal (CLOSED) path — but during a HALF_OPEN probe it
+                        # must still resolve the breaker (re-open it), otherwise
+                        # the probe never completes.
+                        if response.status_code != 429 or probe_state is CircuitState.HALF_OPEN:
                             _BREAKER.record_failure()
 
                         detail = _sanitize_error_detail(response.text, secrets=[self._config.api_key])
@@ -583,13 +628,22 @@ class GooglePlacesClient:
             except requests.RequestException as exc:
                 last_error = exc
 
+                resolved = False
                 if exc.response is not None:
                     if exc.response.status_code >= 500:
                         _BREAKER.record_failure()
+                        resolved = True
                     # Connection-level RequestException occasionally carries a
                     # response (e.g. a chunked-encoding error mid-body). Honour
                     # Retry-After from there too so the two paths converge.
                     retry_after_header = exc.response.headers.get("Retry-After")
+                if not resolved and probe_state is CircuitState.HALF_OPEN:
+                    # The recovery probe hit a connection-level error (no
+                    # response — the common reset/timeout case — or a <500
+                    # attached response). Re-open the breaker so it does not
+                    # remain HALF_OPEN and keep admitting a fresh probe (and a
+                    # fresh quota debit) on every subsequent call.
+                    _BREAKER.record_failure()
 
                 LOGGER.warning(
                     "Request error (attempt %s/%s): %s",
