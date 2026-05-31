@@ -951,25 +951,35 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
         )
 
     # E) Sammel-vs.-Einzel: Aggregat entfernen, wenn *alle* Linien als Einzel
-    #    vorliegen — aber nur innerhalb DERSELBEN Kategorie. Ohne den
-    #    Kategorie-Schlüssel löscht z. B. ein Hinweis-Einzelitem (U1) + ein
-    #    Hinweis-Einzelitem (U2) ein echtes Störungs-Aggregat {U1,U2}, obwohl
-    #    keine Einzel-*Störung* diese Linien abdeckt — die Störungsmeldung
-    #    verschwände still aus dem Feed. Spiegelt die Kategorie-Prüfung in F).
-    single_line_coverage: dict[tuple[Any, str], int] = {}
+    #    vorliegen — aber nur innerhalb DERSELBEN Kategorie UND nur, wenn das
+    #    Einzelitem zeitlich überlappt. Ohne den Kategorie-Schlüssel löscht
+    #    z. B. ein Hinweis-Einzelitem (U1) + ein Hinweis-Einzelitem (U2) ein
+    #    echtes Störungs-Aggregat {U1,U2}, obwohl keine Einzel-*Störung* diese
+    #    Linien abdeckt. Ohne die Zeitprüfung löschen zeitlich DISJUNKTE,
+    #    unverwandte Einzelmeldungen (U1 für Zeitraum P1, U2 für P2) ein echtes
+    #    Aggregat für einen dritten Zeitraum P3 — die Störungsmeldung verschwände
+    #    still aus dem Feed. Spiegelt die Kategorie- *und* Zeit-Prüfung in F).
+    single_line_intervals: dict[tuple[Any, str], list[tuple[Any, Any]]] = {}
     for it in items:
         ls = it.get("_lines_set") or set()
         if len(ls) == 1:
             ln = next(iter(ls))
-            cov_key = (it.get("category"), ln)
-            single_line_coverage[cov_key] = single_line_coverage.get(cov_key, 0) + 1
+            single_line_intervals.setdefault((it.get("category"), ln), []).append(
+                (it.get("starts_at"), it.get("ends_at"))
+            )
 
     filtered: list[dict[str, Any]] = []
     for it in items:
         ls = it.get("_lines_set") or set()
         cat = it.get("category")
-        if len(ls) >= 2 and all(single_line_coverage.get((cat, ln), 0) > 0 for ln in ls):
-            continue  # Aggregat raus (nur bei gleicher Kategorie)
+        if len(ls) >= 2 and all(
+            any(
+                _intervals_overlap(it.get("starts_at"), it.get("ends_at"), s, e)
+                for (s, e) in single_line_intervals.get((cat, ln), [])
+            )
+            for ln in ls
+        ):
+            continue  # Aggregat raus (gleiche Kategorie + Zeitüberlappung)
         filtered.append(it)
 
     # F) Subset-Bereinigung: Eintrag entfernen, wenn ein anderer Eintrag eine Obermenge der Linien abdeckt

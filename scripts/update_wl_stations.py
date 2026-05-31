@@ -235,7 +235,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         default=True,
         help=(
             "Download the latest WL OGD haltestellen/haltepunkte CSVs from "
-            "data.wien.gv.at before merging (default: enabled). On failure, "
+            "www.wienerlinien.at before merging (default: enabled). On failure, "
             "the existing local files are used as a fallback."
         ),
     )
@@ -584,31 +584,6 @@ def _canonical_name(raw: str) -> str:
     return base
 
 
-def _derive_bst_id(identifier: str | None) -> int | None:
-    if not identifier:
-        return None
-    digits = re.sub(r"\D", "", identifier)
-    if not digits:
-        return None
-    trimmed = digits[-8:]
-    return int(f"9{trimmed.zfill(8)}")
-
-
-def _derive_bst_code(name: str, identifier: str | None) -> str | None:
-    cleaned = re.sub(r"\(WL\)", "", name).strip()
-    cleaned = re.sub(r"(?i)^wien\s+", "", cleaned).strip()
-    tokens = [token for token in re.split(r"[^A-Za-z0-9ÄÖÜäöüß]+", cleaned) if token]
-    if tokens:
-        primary = tokens[0][:3]
-        if primary:
-            return f"WL-{primary.upper()}"
-    if identifier:
-        digits = re.sub(r"\D", "", identifier)
-        if digits:
-            return f"WL-{digits[-3:]}"
-    return None
-
-
 # Haltestelle PlatformText values that carry no location information
 # on their own and are routinely shared across far-apart stops in the
 # OGD-Echtzeit data (e.g. ``Lokalbahn`` × 4 across 5.6 km of greater
@@ -934,7 +909,21 @@ def build_wl_entries(
             if latitude is None or longitude is None:
                 lat_val = vor_entry.get("latitude")
                 lon_val = vor_entry.get("longitude")
-                if isinstance(lat_val, int | float) and isinstance(lon_val, int | float):
+                # Mirror the finiteness + WGS84 range gate every other
+                # coordinate-ingestion point enforces (``_coerce_float``,
+                # ``_wl_coord_index``, ``extract_oebb_geonetz_stops``); a
+                # planted out-of-range value (e.g. latitude 999.0) in the
+                # VOR mapping must not flow through as a "valid" coordinate.
+                if (
+                    isinstance(lat_val, int | float)
+                    and isinstance(lon_val, int | float)
+                    and not isinstance(lat_val, bool)
+                    and not isinstance(lon_val, bool)
+                    and math.isfinite(lat_val)
+                    and math.isfinite(lon_val)
+                    and -90.0 <= lat_val <= 90.0
+                    and -180.0 <= lon_val <= 180.0
+                ):
                     latitude = round(float(lat_val), 6)
                     longitude = round(float(lon_val), 6)
         aliases.update(_alias_variants(station.name, canonical, resolved_name or None))
@@ -970,8 +959,8 @@ def build_wl_entries(
         #   (a) ``_find_cross_station_id_conflicts`` flagged
         #       ``alias DIVA`` collisions against synthetic
         #       ``bst_id = 9{DIVA}`` on other entries.
-        #   (b) ``_derive_bst_code`` truncated names to the first
-        #       three letters, producing hundreds of duplicates
+        #   (b) name-based truncation to the first three letters
+        #       produced hundreds of duplicates
         #       (``WL-ABS`` for both Absbergbrücke and Absberggasse,
         #       ``WL-ADA`` for Ada-Christen-Gasse and four others, …).
         #

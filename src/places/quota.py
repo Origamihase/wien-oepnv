@@ -68,7 +68,7 @@ class QuotaConfig:
 
 @dataclass
 class MonthlyQuota:
-    """Persisted request counters scoped to the current UTC month."""
+    """Persisted request counters scoped to the current Europe/Vienna month."""
 
     month_key: str
     counts: dict[str, int] = field(default_factory=_empty_counts)
@@ -79,8 +79,14 @@ class MonthlyQuota:
 
     @staticmethod
     def current_month_key(now: datetime | None = None) -> str:
+        # Convert to Europe/Vienna before forming the key so the monthly
+        # counter resets on the SAME calendar boundary as ``current_daily_key``
+        # (and the operator's local mental model). Keying off raw UTC made the
+        # two counters reset on different boundaries for the ~1–2 h each month
+        # where Vienna has crossed into the new month but UTC has not.
         reference = now or _utc_now()
-        return f"{reference.year:04d}-{reference.month:02d}"
+        local_ref = reference.astimezone(ZoneInfo("Europe/Vienna"))
+        return f"{local_ref.year:04d}-{local_ref.month:02d}"
 
     @staticmethod
     def current_daily_key(now: datetime | None = None) -> str:

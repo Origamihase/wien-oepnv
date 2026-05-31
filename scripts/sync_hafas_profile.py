@@ -97,20 +97,58 @@ _AID_RE: Final[re.Pattern[str]] = re.compile(
     r"""\baid\s*:\s*['"]([0-9A-Za-z.\-_]{1,128})['"]""",
 )
 
-# Strip ``/* … */`` block comments and ``// …`` line comments before the
-# credential regexes scan: a stale doc-comment containing the literal
-# ``ver: '1.30', aid: 'Old...'`` would otherwise be the FIRST occurrence
-# ``re.search`` matches (see ``_extract_profile``). The two pre-fix
-# substitutions don't need to understand JS lexer rules — string
-# literals can in principle contain ``//`` sequences, but the upstream
-# HAFAS sources never embed comment markers inside a credential string.
-_JS_BLOCK_COMMENT_RE: Final[re.Pattern[str]] = re.compile(r"/\*[\s\S]*?\*/")
-_JS_LINE_COMMENT_RE: Final[re.Pattern[str]] = re.compile(r"//[^\n]*")
-
-
 def _strip_js_comments(source: str) -> str:
-    """Return *source* with ``/* … */`` and ``// …`` comments removed."""
-    return _JS_LINE_COMMENT_RE.sub("", _JS_BLOCK_COMMENT_RE.sub("", source))
+    """Return *source* with ``/* … */`` and ``// …`` comments removed.
+
+    Stripping comments before the credential regexes scan prevents a stale
+    doc-comment containing a literal ``ver: '1.30', aid: 'Old...'`` from
+    being the FIRST occurrence ``re.search`` matches (see
+    ``_extract_profile``).
+
+    The scan is **string-literal aware**: a ``//`` or ``/*`` sequence that
+    lives inside a ``'…'`` / ``"…"`` / ``` `…` ``` literal is NOT treated as
+    a comment. A naive regex strip (the pre-fix implementation) deleted
+    everything after the ``//`` of a URL such as
+    ``endpoint: 'https://fahrplan.oebb.at/...'``, which would silently erase
+    a credential that ever shared the same physical line as a URL.
+    """
+    out: list[str] = []
+    i = 0
+    n = len(source)
+    quote: str | None = None
+    while i < n:
+        ch = source[i]
+        if quote is not None:
+            out.append(ch)
+            if ch == "\\" and i + 1 < n:
+                # Preserve the escaped character verbatim.
+                out.append(source[i + 1])
+                i += 2
+                continue
+            if ch == quote:
+                quote = None
+            i += 1
+            continue
+        if ch in "'\"`":
+            quote = ch
+            out.append(ch)
+            i += 1
+            continue
+        if ch == "/" and i + 1 < n:
+            nxt = source[i + 1]
+            if nxt == "/":
+                newline = source.find("\n", i + 2)
+                if newline == -1:
+                    break
+                i = newline
+                continue
+            if nxt == "*":
+                end = source.find("*/", i + 2)
+                i = n if end == -1 else end + 2
+                continue
+        out.append(ch)
+        i += 1
+    return "".join(out)
 
 
 # Tight wall-clock cap. The fetch happens at the very start of the

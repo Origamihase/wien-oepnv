@@ -138,3 +138,75 @@ def test_success_resets_failure_streak(monkeypatch: pytest.MonkeyPatch) -> None:
     assert result == {"places": []}
     assert _BREAKER.state is CircuitState.CLOSED
     assert session.post.call_count == 5
+
+
+class _FakeClock:
+    def __init__(self) -> None:
+        self.t = 0.0
+
+    def __call__(self) -> float:
+        return self.t
+
+    def advance(self, dt: float) -> None:
+        self.t += dt
+
+
+def _install_half_open_breaker(monkeypatch: pytest.MonkeyPatch) -> Any:
+    """Install a fresh single-failure breaker (with an injected clock) as the
+    module-level ``_BREAKER`` and drive it to HALF_OPEN."""
+    from src.utils.circuit_breaker import CircuitBreaker
+
+    clock = _FakeClock()
+    breaker = CircuitBreaker(
+        "places-half-open-test",
+        failure_threshold=1,
+        recovery_timeout=5.0,
+        clock=clock,
+    )
+    monkeypatch.setattr("src.places.client._BREAKER", breaker)
+    breaker.record_failure()  # threshold=1 → OPEN
+    assert breaker.state is CircuitState.OPEN
+    clock.advance(6.0)  # recovery elapsed → next state read transitions to HALF_OPEN
+    return breaker
+
+
+def test_half_open_probe_429_reopens_breaker(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A 429 during the HALF_OPEN recovery probe must RE-OPEN the breaker.
+
+    Pre-fix a 429 skipped ``record_failure`` unconditionally, so the probe
+    left the breaker stuck HALF_OPEN — every subsequent call then issued
+    another probe (re-debiting quota) instead of holding OPEN.
+    """
+    monkeypatch.setattr("src.places.client.time.sleep", lambda _s: None)
+    breaker = _install_half_open_breaker(monkeypatch)
+    session = MagicMock(spec=requests.Session)
+    session.post.return_value = _MockResponse(429)
+    client = GooglePlacesClient(_CONFIG, session=session)
+
+    with pytest.raises(GooglePlacesError):
+        client._post("places:searchNearby", {}, quota_kind="nearby")
+
+    # The probe resolved the breaker (re-opened it) and stopped after one
+    # request instead of looping on further probes.
+    assert breaker.state is CircuitState.OPEN
+    assert session.post.call_count == 1
+
+
+def test_half_open_probe_connection_error_reopens_breaker(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A connection-level error (no attached response — the common reset /
+    timeout case) during the HALF_OPEN probe must also re-open the breaker
+    rather than leave it stuck HALF_OPEN.
+    """
+    monkeypatch.setattr("src.places.client.time.sleep", lambda _s: None)
+    breaker = _install_half_open_breaker(monkeypatch)
+    session = MagicMock(spec=requests.Session)
+    session.post.side_effect = requests.ConnectionError("connection reset")
+    client = GooglePlacesClient(_CONFIG, session=session)
+
+    with pytest.raises(GooglePlacesError):
+        client._post("places:searchNearby", {}, quota_kind="nearby")
+
+    assert breaker.state is CircuitState.OPEN
+    assert session.post.call_count == 1

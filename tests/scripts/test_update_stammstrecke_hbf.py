@@ -271,6 +271,25 @@ def test_departure_delay_minutes_small_early_departure_not_treated_as_rollover()
     assert script._departure_delay_minutes(dep) == -2.0
 
 
+def test_departure_delay_minutes_handles_early_across_midnight_rollover() -> None:
+    """Symmetric to the late-across-midnight case: a leg scheduled just
+    AFTER midnight that departs a few minutes EARLY (rtTime on the previous
+    day) must NOT produce a bogus ~+24 h delay.
+
+    Pre-fix only the forward wrap (``scheduled − actual > 12 h``) was
+    corrected; a leg scheduled ``00:05`` with rtTime ``23:54`` (no rtDate)
+    computed actual = same-day 23:54 → +1429 min instead of the true
+    −11 min, massively skewing the per-direction mean for that tick.
+    """
+    dep = {
+        "date": "2026-05-15",
+        "time": "00:05:00",
+        # rtDate omitted; rtTime is 11 min EARLY, landing on the prior day.
+        "rtTime": "23:54:00",
+    }
+    assert script._departure_delay_minutes(dep) == -11.0
+
+
 # ---- _collect_hbf_observations --------------------------------------------
 
 

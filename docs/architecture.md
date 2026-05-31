@@ -404,7 +404,7 @@ flowchart LR
   Restmenge — und **nur** diese — wird an
   `_enrich_with_google_places(..., missing_subset=...)` übergeben.
   Stationen, die von OSM oder HAFAS aufgelöst wurden, werden auch
-  dann nicht neu verschlüsselt, wenn ein Google-Place zufällig
+  dann nicht erneut geokodiert, wenn ein Google-Place zufällig
   denselben Namen trägt.
 - Wenn OSM und HAFAS alle Stationen mit Koordinaten abdecken, wird
   der Google-Places-Call vollständig übersprungen. Das Freikontingent
@@ -647,19 +647,28 @@ gewinnt.
 | **Wann** bündeln sich Disruption-Events? | „Störungen" — per-Provider-Tabelle plus Wochentag- und Stunden-Verteilung |
 
 `extract_location_name` ist weiterhin Teil der Producer-Pipeline (siehe
-`src/utils/stats.py` und `src/build_feed.py:2041`) und persistiert die
+`src/utils/stats.py` und `src/build_feed.py`) und persistiert die
 abgeleitete Location pro Disruption-Zeile in
 `data/stats/stoerungen_<YYYY>.csv`. Die aktuelle Dashboard-Renderung
 aggregiert die Daten allerdings nur nach `provider`, `weekday` und
 `hour` (siehe `aggregate_stoerungen` in
-`scripts/generate_markdown_stats.py:416`) — eine frühere „Top-5
+`scripts/generate_markdown_stats.py`) — eine frühere „Top-5
 Hotspots mit Stundenprofil"-Sektion wurde entfernt, die Roh-Daten in
 der CSV bleiben aber für Ad-hoc-Analysen erhalten. Die Heuristik selbst
-versucht — in dieser Reihenfolge — `zwischen X und Y` (Capture Group 1),
-dann `Wien <Name>`, dann das erste mehrteilige Token außerhalb einer
-kleinen Stoppwortliste (`Bauarbeiten`, `Verspätung`, `Linie`, …). Als
-Fallback bleibt `"unbekannt"`, damit das Dashboard auch bei
-adversarial Provider-Input noch rendert.
+ist katalog-zentriert: Ein Kandidat wird nur zurückgegeben, wenn er
+über die kuratierte Verzeichnisdatei `data/stations.json` (`station_info`)
+auflösbar ist. In dieser Reihenfolge versucht sie — (1)
+`| Haltestelle:` (WL-`relatedStops`, erster Eintrag, verbatim
+akzeptiert), (2) `| Station:` / `| Location:` (WL-Extras), (3)
+`in Richtung X` (Stammstrecke-Renderer), (4) `zwischen X und Y`
+(ÖBB-Phrasierung, Capture Group 1), (5) `Wien <Stadtteil>`, (6) einen
+Sliding-Window-Verzeichnis-Scan über Titel + Beschreibung. Einziger
+Fallback ist `"unbekannt"`; einen Freitext-/Token-Fallback samt
+Stoppwortliste gibt es bewusst **nicht** mehr (die Freitext-Regex-
+Matches wurden 2026-05-09 entfernt, weil deutsche Substantive durchweg
+großgeschrieben sind und Störungstypen wie `Demonstration Linie`
+fälschlich als Haltestellen akzeptiert wurden). So rendert das Dashboard
+auch bei adversarial Provider-Input noch.
 
 ---
 

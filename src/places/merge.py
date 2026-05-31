@@ -339,27 +339,40 @@ def _update_station(
             changed = True
 
     existing_place_id = station.get("_google_place_id")
-    if existing_place_id != place.place_id and (
-        existing_place_id is None or matched_by_name or not isinstance(existing_place_id, str)
-    ):
+    # Whether this place is trusted to "own" the station. A distance-only
+    # match (matched_by_name=False) against a station that already carries a
+    # DIFFERENT valid Google place_id is NOT trusted: the place_id guard
+    # below already refuses to adopt the new id in that case, and the
+    # coordinate/type/address writes must be gated on the SAME predicate —
+    # otherwise a neighbouring, distinct place falling within max_distance_m
+    # would keep id X but silently relocate the station onto Y's coordinates
+    # (state corruption in dense areas where several stops share the radius).
+    place_owns_station = (
+        matched_by_name
+        or existing_place_id is None
+        or not isinstance(existing_place_id, str)
+        or existing_place_id == place.place_id
+    )
+    if existing_place_id != place.place_id and place_owns_station:
         station["_google_place_id"] = place.place_id
         changed = True
 
-    if station.get("latitude") != place.latitude:
-        station["latitude"] = place.latitude
-        changed = True
-    if station.get("longitude") != place.longitude:
-        station["longitude"] = place.longitude
-        changed = True
+    if place_owns_station:
+        if station.get("latitude") != place.latitude:
+            station["latitude"] = place.latitude
+            changed = True
+        if station.get("longitude") != place.longitude:
+            station["longitude"] = place.longitude
+            changed = True
 
-    if place.types:
-        if station.get("_types") != place.types:
-            station["_types"] = list(place.types)
-            changed = True
-    if place.formatted_address:
-        if station.get("_formatted_address") != place.formatted_address:
-            station["_formatted_address"] = place.formatted_address
-            changed = True
+        if place.types:
+            if station.get("_types") != place.types:
+                station["_types"] = list(place.types)
+                changed = True
+        if place.formatted_address:
+            if station.get("_formatted_address") != place.formatted_address:
+                station["_formatted_address"] = place.formatted_address
+                changed = True
 
     if "in_vienna" not in station:
         station["in_vienna"] = _infer_in_vienna(place, config.bounding_box)

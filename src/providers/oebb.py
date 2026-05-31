@@ -76,7 +76,12 @@ _OEBB_TRUSTED_HOSTS = frozenset({"fahrplan.oebb.at"})
 
 
 def _validated_oebb_url(raw: str) -> str | None:
-    safe = validate_http_url(raw)
+    # ``check_dns=False``: the host is pinned to a single trusted allow-list
+    # value below, so the DNS-rebinding/SSRF resolution adds nothing here. It
+    # would, however, run a blocking DNS lookup at module-import time (this is
+    # called at import) and — worse — silently DROP a legitimate override on a
+    # transient resolver hiccup. The https-scheme + exact-host pins remain.
+    safe = validate_http_url(raw, check_dns=False)
     if not safe:
         return None
     parsed = urlparse(safe)
@@ -147,6 +152,11 @@ ARROW_ANY_RE    = re.compile(
     r"(?:<=>|<->|<>|→|↔|=>|->|<-|=|–|—|\s-\s)"
     r"(?:\s*(?:>|&gt;|&amp;gt;|&#62;|&#x3E;)+)?\s*"
 )
+# Tokens that can never be part of a station name (arrow/separator
+# glyphs). Hoisted to module scope to match every other regex here and
+# the identical constant in ``src/utils/stats.py``; previously this was
+# recompiled on each ``_find_stations_in_text`` call.
+_NOISE_TOKEN_RE = re.compile(r"^[↔→←↗↘↙↖<>=–—\-«»‹›]+$")
 DESC_CLEANUP_RE = re.compile(
     r"(?:(?:<|&lt;|&amp;lt;|&#60;|&#x3C;)+\s*)"
     r"(?:<=>|<->|<>|→|↔|=>|->|<-)"
@@ -1286,7 +1296,6 @@ def _find_stations_in_text(blob: str) -> list[str]:
     # characters appear in route titles ("A ↔ B"), and including them in
     # sliding-window chunks let canonical_name silently expand "Hbf ↔"
     # into "Wien Hauptbahnhof" via the directory's alias-expansion rules.
-    _NOISE_TOKEN_RE = re.compile(r"^[↔→←↗↘↙↖<>=–—\-«»‹›]+$")
     tokens = [t for t in tokens if not _NOISE_TOKEN_RE.match(t)]
     if not tokens:
         return []

@@ -428,22 +428,23 @@ Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert
      Ein leerer Bericht bestätigt den No-Change-Lauf (Heartbeat-Funktion).
 5. **Validation-Report regenerieren** – `python -m src.cli stations validate
    --output docs/stations_validation_report.md` schreibt die Markdown-
-   Variante des Validation-Reports (alle 8 Kategorien) für Review-Zwecke.
+   Variante des Validation-Reports (alle 10 Kategorien) für Review-Zwecke.
 
 #### Automatisierte Qualitätsberichte
 
 `python -m src.cli stations validate` erzeugt einen Markdown-Bericht mit
-neun Issue-Kategorien: **geographic duplicates**, **alias issues**,
+zehn Issue-Kategorien: **geographic duplicates**, **alias issues**,
 **coordinate anomalies**, **GTFS mismatches**, **security warnings**,
 **provider issues** (VOR-/OEBB-Konsistenz), **cross-station ID
 collisions**, **identity field conflicts** (raw `wl_diva`/`bst_id`/
 `vor_id`/`bst_code`-Kollisionen zwischen Stationen, ergänzt 2026-05-16
-in PR #1539) und **naming issues** (no-space-Source-Format +
+in PR #1539), **naming issues** (no-space-Source-Format +
 Vienna/Pendler Mutual-Exclusivity; die pre-2026-05-12 vorhandene
 kanonische Namens-Eindeutigkeits-Prüfung wurde entfernt, weil
 `name` ein operator-facing Display-Label ist, dessen
 strukturelle Eindeutigkeit von `wl_diva`/`bst_id`/`vor_id`/
-`bst_code` getragen wird).
+`bst_code` getragen wird) und **cross-name alias collisions**
+(Namens-Alias-Kollisionen zwischen Stationen).
 Über `--output docs/stations_validation_report.md` wird der Bericht
 persistiert; mit `--fail-on-issues` bricht die CLI bei jedem Befund mit
 einem Fehlercode ab. In CI läuft der Validator als Pflicht-Gate (siehe

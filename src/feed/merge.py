@@ -322,9 +322,13 @@ def _collapse_common_prefix(
 
     * Substantial overlap — at least ``min_prefix`` shared characters,
       ending at a word boundary (space) so we never split mid-word.
-    * Short suffixes — each remainder must be ≤ ``max_suffix`` chars.
-      Joining two long sentences with a comma is harder to read than
-      the explicit ``&`` join the existing logic produces.
+    * Short new suffix — only the *incoming* remainder
+      (``name_remainder``) must be ≤ ``max_suffix`` chars. Joining two
+      long sentences with a comma is harder to read than the explicit
+      ``&`` join the existing logic produces. The existing remainder
+      (``ex_remainder``) is intentionally **not** capped because it
+      accumulates previously-collapsed comma-separated parts (e.g. a
+      growing date list) across successive merges.
     * No directional arrow — ÖBB chain routes carrying ``↔`` use that
       character as a chain joiner (``A ↔ B ↔ C``), not a separator,
       so collapsing them by common prefix would mangle the route.

@@ -14,7 +14,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers.wiener_linien import fetch_events  # noqa: E402  (import after path setup)
-from src.utils.cache import write_cache  # noqa: E402
+from src.utils.cache import DataDegradationError, write_cache  # noqa: E402
 from src.utils.serialize import serialize_for_cache  # noqa: E402
 
 
@@ -56,7 +56,19 @@ def main() -> int:
         return 1
 
     serialized_items = [serialize_for_cache(item) for item in items]
-    write_cache("wl", serialized_items)
+    try:
+        write_cache("wl", serialized_items)
+    except DataDegradationError:
+        # ``write_cache`` refuses not only an empty payload but also a
+        # drastically smaller one (< 20 % of the existing cache) to avoid
+        # overwriting a healthy cache during a partial upstream outage.
+        # Keep the existing cache and exit non-zero instead of crashing
+        # the cron step (mirrors scripts/update_baustellen_cache.py).
+        logger.warning(
+            "Degraded WL payload (%d events); keeping existing cache.",
+            len(serialized_items),
+        )
+        return 1
     logger.info("Updated Wiener Linien cache with %d events.", len(serialized_items))
     return 0
 

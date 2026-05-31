@@ -398,6 +398,26 @@ def test_leg_departure_delay_skips_cancelled_leg() -> None:
     assert script._leg_departure_delay_minutes(leg) is None
 
 
+def test_leg_departure_delay_handles_early_across_midnight_rollover() -> None:
+    """Symmetric midnight wrap: a leg scheduled just AFTER midnight that
+    departs a few minutes EARLY (rtTime on the prior day, no rtDate) must
+    yield the true small negative delay (≈ −11 min), not a bogus ~+24 h
+    that would skew the per-direction mean.
+    """
+
+    leg = {
+        "type": "JNY",
+        "name": "S 1",
+        "category": "S",
+        "Origin": {
+            "date": "2026-05-09",
+            "time": "00:05:00",
+            "rtTime": "23:54:00",  # 11 min early, lands on the previous day.
+        },
+    }
+    assert script._leg_departure_delay_minutes(leg) == -11.0
+
+
 def test_leg_departure_delay_skips_unparseable_schedule() -> None:
     """When the scheduled timestamp is malformed we cannot compute a
     delta — return ``None`` rather than risk a misleading 0.
