@@ -486,8 +486,9 @@ _ZWISCHEN_PLAIN_RE = re.compile(
     # train clause and produced frankenstring endpoints.
     r"einige|keine|kein|alle|mehrere|wenige|s[äa]mtliche|"
     # Intermediate-via marker — ends the captured endpoint at the via stop
-    # so "Mödling über Wiener Neudorf" yields b="Mödling".
-    r"[üu]ber|via"
+    # so "Mödling über Wiener Neudorf" yields b="Mödling". ``zu|zur`` ends it
+    # at the dominant ÖBB closer "kommt es zwischen X und Y zu <…>" (bug b1).
+    r"zu|zur|[üu]ber|via"
     r")\b"
     r"|[,;!?]"  # Plain sentence punctuation (period excluded — see above)
     r"|[—–]"  # German em-/en-dash often introduces a side remark
@@ -519,7 +520,7 @@ _VON_NACH_PLAIN_RE = re.compile(
     r"auf|au[ßs]er\s+betrieb|nicht|kein|von|bis|am|im|in\s+der|"
     r"f[üu]r|wegen|aufgrund|durch|infolge|"
     r"ist|sind|war|waren|wird|werden|kann|k[öo]nnen|"
-    r"f[äa]hrt|fahren|kommt|fallen|halten|halten\s+nicht)\b"
+    r"f[äa]hrt|fahren|kommt|fallen|halten|halten\s+nicht|[üu]ber|via)\b"
     r"|[,;!?]"
     r"|[—–]"
     r"|<"
@@ -544,7 +545,7 @@ _STRECKE_PLAIN_RE = re.compile(
     r"betroffen|beeintr[äa]chtigt|gest[öo]rt|eingeschr[äa]nkt|"
     r"auf|au[ßs]er\s+betrieb|nicht|kein|von|bis|am|im|in\s+der|"
     r"f[üu]r|wegen|aufgrund|durch|infolge|"
-    r"ist|sind|war|waren|wird|werden|kann|k[öo]nnen)\b"
+    r"ist|sind|war|waren|wird|werden|kann|k[öo]nnen|kommt|fahren|fallen|halten|[üu]ber|via)\b"
     r"|[,;!?]"
     r"|[—–]"
     r"|<"
@@ -1193,7 +1194,7 @@ def _is_relevant(title: str, description: str) -> bool:
         info = station_info(s)
         if not info:
             continue
-        if info.in_vienna or info.pendler:
+        if info.in_vienna or (info.pendler and not OEBB_ONLY_VIENNA):
             has_relevant = True
         else:
             has_distant = True
