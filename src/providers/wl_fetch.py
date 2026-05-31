@@ -638,7 +638,12 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 continue
 
             title_raw = str(ti.get("title") or ti.get("name") or "Meldung").strip()
-            title = _tidy_title_wl(title_raw)
+            # ``_tidy_title_wl`` strips leading/trailing dashes/colons, so a
+            # source title of only punctuation ("---") tidies to "" — then
+            # ``_ensure_line_prefix`` would render just the line codes
+            # ("U1/U2") with no description. Fall back to a generic label so
+            # the title stays informative (mirrors the line-640 fallback).
+            title = _tidy_title_wl(title_raw) or "Meldung"
             desc_raw = str(ti.get("description") or "").strip()
             # Do NOT strip HTML here, we need to preserve links (Task 3)
             desc = desc_raw
@@ -733,7 +738,12 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             title_raw = str(
                 poi.get("title") or poi.get("name") or "Hinweis"
             ).strip()
-            title = _tidy_title_wl(title_raw)
+            # ``_tidy_title_wl`` strips leading/trailing dashes/colons, so a
+            # source title of only punctuation ("---") tidies to "" — then
+            # ``_ensure_line_prefix`` would render just the line codes
+            # ("U1/U2") with no description. Fall back to a generic label so
+            # the title stays informative (mirrors the line-640 fallback).
+            title = _tidy_title_wl(title_raw) or "Meldung"
             desc_raw = str(poi.get("description") or "").strip()
             # Do NOT strip HTML here, we need to preserve links (Task 3)
             desc = desc_raw

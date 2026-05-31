@@ -11,6 +11,19 @@ from src.providers.wl_lines import (
 from src.providers.wl_text import _tidy_title_wl
 
 
+def test_punctuation_only_title_falls_back_to_label() -> None:
+    # bug: a WL source title of only punctuation ("---") tidies to "" because
+    # _tidy_title_wl strips leading/trailing dashes/colons; _ensure_line_prefix
+    # then renders just the line codes ("U1/U2") with no description. The
+    # ``or "Meldung"`` fallback at the call site keeps the title informative.
+    assert _tidy_title_wl("---") == ""
+    assert _ensure_line_prefix("", ["U1", "U2"]) == "U1/U2"  # the malformed case
+    assert (
+        _ensure_line_prefix(_tidy_title_wl("---") or "Meldung", ["U1", "U2"])
+        == "U1/U2: Meldung"
+    )
+
+
 def test_bucket_merge_prefers_informative_title_and_description(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
