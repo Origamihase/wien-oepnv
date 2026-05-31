@@ -229,6 +229,26 @@ def _get_tokens(name: str) -> set[str]:
     return set(x for x in re.split(r"\W+", _normalize_name(name)) if x)
 
 
+# Numbers that pin a title to a specific platform / track. ONLY digits
+# directly after a platform/track keyword are captured — a date ("ab 03.
+# November") or line number is deliberately NOT, so a same-event pair on
+# different dates still merges (bug b7). Linear; the keyword alternation is
+# plain literals and the capture is a bounded ``\d+``.
+_PLATFORM_NUMBER_RE = re.compile(
+    r"\b(?:bahnsteigkante|bahnsteige|bahnsteig|gleise|gleis|steig|sektor|bstg)"
+    r"\s*\.?\s*(\d+)",
+    re.IGNORECASE,
+)
+
+
+def _platform_numbers(name: str) -> frozenset[str]:
+    """Return the platform/track numbers a title pins to, e.g.
+    ``frozenset({"1"})`` for "Bahnsteig 1 Wien Mitte". Two otherwise-
+    overlapping titles that name DIFFERENT, non-overlapping platforms
+    describe distinct incidents and must not be merged (bug b7)."""
+    return frozenset(_PLATFORM_NUMBER_RE.findall(name))
+
+
 def _has_significant_overlap(name1: str, name2: str) -> bool:
     """
     Checks if names share significant words or a long common substring.
@@ -238,11 +258,18 @@ def _has_significant_overlap(name1: str, name2: str) -> bool:
         _normalize_name(name2),
         _get_tokens(name1),
         _get_tokens(name2),
+        _platform_numbers(name1),
+        _platform_numbers(name2),
     )
 
 
 def _has_significant_overlap_cached(
-    n1: str, n2: str, t1: set[str], t2: set[str]
+    n1: str,
+    n2: str,
+    t1: set[str],
+    t2: set[str],
+    p1: frozenset[str] = frozenset(),
+    p2: frozenset[str] = frozenset(),
 ) -> bool:
     """Variant of ``_has_significant_overlap`` that consumes pre-computed
     normalized names and token sets.
@@ -256,6 +283,13 @@ def _has_significant_overlap_cached(
     reusing them on every comparison drops the parse work from O(n²) to
     O(n) without changing the comparison semantics.
     """
+    # Distinct, non-overlapping platform/track numbers ("Bahnsteig 1" vs
+    # "Bahnsteig 5") mark different incidents at the same station — never
+    # merge them even when the rest of the title matches (bug b7). Only
+    # fires when BOTH titles pin a platform, so a platform-specific item
+    # still merges into a general one.
+    if p1 and p2 and p1.isdisjoint(p2):
+        return False
     if not n1 or not n2:
         return False
 
@@ -551,6 +585,7 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
         # inner loop — reused on every existing-item comparison.
         norm_name = _normalize_name(name)
         tokens = _get_tokens(name)
+        plat = _platform_numbers(name)
 
         for idx, existing in enumerate(merged_items):
             ex_lines, ex_name, ex_norm_name, ex_tokens = merged_cache[idx]
@@ -564,7 +599,8 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
             # Optimization: Check lines first (cheaper)
             if line_overlap > 0.3:
                 if _has_significant_overlap_cached(
-                    norm_name, ex_norm_name, tokens, ex_tokens
+                    norm_name, ex_norm_name, tokens, ex_tokens,
+                    plat, _platform_numbers(ex_name),
                 ):
                     # Provider priority logic — legacy VOR disruption provider only.
                     # The standalone VOR disruption provider (source == "vor") was
