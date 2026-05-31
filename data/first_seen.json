@@ -3890,6 +3890,16 @@
       "epoch": 2
     }
   },
+  "c91ebc7af0c153e176fd8bba1e07b14cc1ec784e2debd42fd7a362daec3ad116": {
+    "first_seen": "2026-05-31T07:01:18.769922+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "36B: defective truck"
+      },
+      "epoch": 3
+    }
+  },
   "cb9088cd02c986b631be55ad114736df3a2f720bafabadab58b7a05bbe33aff4": {
     "first_seen": "2026-05-24T03:01:09.493067+00:00",
     "translations": {
@@ -5180,6 +5190,26 @@
       "en": {
         "summary": "Due to an overhead-line fault, no rides were possible in St.P\u00f6lten Hbf until 01:37 watch.",
         "title": "St. P\u00f6lten Hauptbahnhof"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&881765": {
+    "first_seen": "2026-05-31T07:01:18.769922+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an overhead-line fault, no journeys are currently possible between Wien Meidling Station (U) and Wien Blumental Bahnhst.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Blumental"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&881766": {
+    "first_seen": "2026-05-31T07:01:18.769922+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an interlocking malfunction am Bahnhof, no journeys are currently possible in Wr.Neustadt Hbf.",
+        "title": "Wiener Neustadt Hauptbahnhof"
       },
       "epoch": 3
     }
