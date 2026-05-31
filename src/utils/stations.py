@@ -1019,8 +1019,13 @@ def _vienna_stations_regex() -> re.Pattern[str]:
                 if alias:
                     vienna.add(str(alias).strip().lower())
 
-    # Filtere ungenaue Alias-Namen und reine Zahlen (z.B. IDs) heraus
-    vienna = {n for n in vienna if len(n) >= 3 and not n.isdigit()}
+    # Filtere ungenaue Alias-Namen und reine Zahlen (z.B. IDs) heraus. Die
+    # Mindestlänge 4 (wie in :func:`_non_vienna_stations_regex`) entfernt die
+    # opaken 3-Zeichen ÖBB-Betriebsstellencodes (HAK/STK/REN/HET/SUE/…), die
+    # sonst als ganzes Wort auf Alltagstoken wie die Handelsakademie-Abkürzung
+    # "HAK" matchen und ein falsches Wien-Signal liefern — echte Meldungen
+    # referenzieren diese Stationen über den Vollnamen (Bug b11).
+    vienna = {n for n in vienna if len(n) >= 4 and not n.isdigit()}
     vienna -= {"hbf", "bf", "bahnhof", "hauptbahnhof", "station"}
 
     if not vienna:
