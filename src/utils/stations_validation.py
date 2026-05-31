@@ -673,12 +673,17 @@ def _find_alias_issues(
         required: list[str] = []
         if name:
             required.append(name)
+        # Accept ``str | int`` for the identity fields (bst_code / vor_id),
+        # matching the sibling validators _find_cross_station_id_conflicts and
+        # _find_identity_field_conflicts. A directory entry whose bst_code is a
+        # JSON integer would otherwise be silently skipped here, so a genuinely
+        # missing required alias for that station went unreported (bug #8).
         bst_code = entry.get("bst_code")
-        if isinstance(bst_code, str) and bst_code.strip():
-            required.append(bst_code.strip())
+        if isinstance(bst_code, str | int) and str(bst_code).strip():
+            required.append(str(bst_code).strip())
         vor_id = entry.get("vor_id")
-        if isinstance(vor_id, str) and vor_id.strip():
-            required.append(vor_id.strip())
+        if isinstance(vor_id, str | int) and str(vor_id).strip():
+            required.append(str(vor_id).strip())
 
         alias_set = {alias.lower() for alias in aliases}
         missing_required = [value for value in required if value.lower() not in alias_set]
