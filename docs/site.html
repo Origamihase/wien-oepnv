@@ -18,7 +18,7 @@
   <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
   <link rel="alternate" type="application/rss+xml" title="Vienna Public Transport Feed (English)" href="feed.en.xml">
   <link rel="icon" type="image/svg+xml" href="assets/site-favicon.svg">
-  <link rel="stylesheet" href="assets/site.min.css?v=ece3072c1cef">
+  <link rel="stylesheet" href="assets/site.min.css?v=2ba857116103">
   <!-- The dashboard fetches the statistics CSVs from raw.githubusercontent.com
        once site.min.js has executed; resolving the DNS upfront shaves ~50–200 ms
        off the first CSV request on cold connections. The ``preconnect`` hint
@@ -87,7 +87,18 @@
           <span class="brand__sub" data-i18n="brand-sub">Live-Dashboard</span>
         </span>
       </a>
+      <nav class="site-nav" aria-label="Hauptnavigation" data-i18n-aria-label="nav-main">
+        <ul>
+          <li><a href="#feed" data-i18n="nav-feed">Meldungen</a></li>
+          <li><a href="#stoerungen" data-i18n="nav-stoerungen">Störungs-Statistik</a></li>
+          <li><a href="#stammstrecke" data-i18n="nav-stammstrecke">Stammstrecke</a></li>
+          <li><a href="#ausfaelle" data-i18n="nav-ausfaelle">Ausfälle</a></li>
+          <li><a href="feed.xml" type="application/rss+xml" class="site-nav__cta" data-i18n-href="feed-href" data-href-de="feed.xml" data-href-en="feed.en.xml">RSS</a></li>
+        </ul>
+      </nav>
       <!-- Wetter-Widget (Wien): kleines Symbol + aktuelle Temperatur in °C.
+           Sitzt im rechten Header-Cluster zwischen Navigation und
+           Sprachumschalter (zwei Utility-Chips am rechten Rand).
            Quelle: Open-Meteo GeoSphere-Austria-API, direkt im Browser
            geladen (CSP ``connect-src`` erlaubt nur ``api.open-meteo.com``)
            und gemeinsam mit den Verkehrsdaten via ``loadAll()`` im
@@ -102,15 +113,6 @@
         <span class="weather__icon" id="weather-icon" aria-hidden="true"></span>
         <span class="weather__temp" id="weather-temp">–</span>
       </div>
-      <nav class="site-nav" aria-label="Hauptnavigation" data-i18n-aria-label="nav-main">
-        <ul>
-          <li><a href="#feed" data-i18n="nav-feed">Meldungen</a></li>
-          <li><a href="#stoerungen" data-i18n="nav-stoerungen">Störungs-Statistik</a></li>
-          <li><a href="#stammstrecke" data-i18n="nav-stammstrecke">Stammstrecke</a></li>
-          <li><a href="#ausfaelle" data-i18n="nav-ausfaelle">Ausfälle</a></li>
-          <li><a href="feed.xml" type="application/rss+xml" class="site-nav__cta" data-i18n-href="feed-href" data-href-de="feed.xml" data-href-en="feed.en.xml">RSS</a></li>
-        </ul>
-      </nav>
       <!-- Sprachumschalter (Zero-Tracker): CSP-konformer In-Page-Switch
            ohne externes Widget. Die aktive Sprache liegt in
            ``localStorage['wienoepnv:lang']`` und steuert (a) den
