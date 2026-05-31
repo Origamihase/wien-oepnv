@@ -88,3 +88,28 @@ class TestMultiRouteUndZwischen:
             )
             is False
         )
+
+
+def test_von_bis_weekday_phrase_is_not_a_route() -> None:
+    # "von Montag bis Freitag" is a validity period, not a route. Pre-fix it
+    # was extracted as a bogus ("Montag", "Freitag …") route which, being the
+    # only route, made _is_relevant drop an otherwise Wien-relevant message.
+    assert _extract_routes(
+        "Wien Praterstern",
+        "Bahnsteigsanierung. Von Montag bis Freitag verkehren Busse.",
+    ) == []
+
+
+def test_zwischen_weekday_phrase_is_not_a_route() -> None:
+    assert _extract_routes(
+        "Bauarbeiten", "zwischen Montag und Freitag fahren keine Züge."
+    ) == []
+
+
+def test_weekday_temporal_phrase_keeps_wien_station_relevant() -> None:
+    # End-to-end: the Vienna single-station message survives despite the
+    # validity-period phrasing that previously fabricated a route.
+    assert _is_relevant(
+        "Wien Praterstern",
+        "Bahnsteigsanierung. Von Montag bis Freitag verkehren Busse.",
+    ) is True

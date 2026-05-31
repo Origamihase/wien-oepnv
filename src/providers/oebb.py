@@ -605,6 +605,22 @@ def _normalize_endpoint_name(name: str) -> str:
     return cleaned
 
 
+# German weekday / month names (and a few temporal words). The temporal
+# phrasings ``von <Tag> bis <Tag>`` / ``zwischen <Tag> und <Tag>`` are matched
+# by _VON_NACH_PLAIN_RE / _ZWISCHEN_PLAIN_RE, whose endpoints are validated only
+# by _looks_like_station_name — which otherwise accepts a weekday/month word as
+# a "station". The resulting bogus route (e.g. ("Montag", "Freitag …")), being
+# the only route extracted, makes _is_relevant return False and silently drop an
+# otherwise Wien-relevant single-station message. These tokens are never station
+# endpoints, so reject them up-front.
+_CALENDAR_WORDS = frozenset({
+    "montag", "dienstag", "mittwoch", "donnerstag", "freitag", "samstag",
+    "sonntag", "feiertag", "feiertage", "feiertagen", "werktag", "werktags",
+    "jänner", "januar", "februar", "feber", "märz", "april", "mai", "juni",
+    "juli", "august", "september", "oktober", "november", "dezember",
+})
+
+
 def _looks_like_station_name(text: str) -> bool:
     """Reject pure dates/numbers and date/time fragments.
 
@@ -632,6 +648,11 @@ def _looks_like_station_name(text: str) -> bool:
     # Defence in depth: reject if the entire string is dates / numbers
     # interleaved with punctuation.
     if re.fullmatch(r"[\d.\-/\s]+", text):
+        return False
+    # Reject endpoints whose first word is a German weekday / month name: the
+    # temporal "von X bis Y" / "zwischen X und Y" phrasings capture these as
+    # fake route endpoints (e.g. "Montag", "Freitag verkehren Busse").
+    if text.casefold().split()[0] in _CALENDAR_WORDS:
         return False
     return True
 
