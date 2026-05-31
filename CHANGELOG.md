@@ -5,6 +5,71 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed-Filter & Dedup: Korrektheits-Welle (Bugs b1–b14, 2026-06-01)**:
+  Eine Reihe verifizierter Filter-Fehler behoben, die echte Wien-Meldungen
+  fälschlich verwarfen oder irrelevante Meldungen aufnahmen. Jeder Fix ist
+  durch dedizierte Regressionstests abgesichert:
+  * **ÖBB-Routen-Erkennung** (`src/providers/oebb.py`): Die Routen-Regexes
+    `_ZWISCHEN_`/`_VON_NACH_`/`_STRECKE_PLAIN_RE` haben Grenzwort-Token
+    erhalten (`zu`/`zur`, `über`/`via`, Prädikatsverben) — die Standard-
+    Formulierung „… kommt es zwischen X und Y **zu** …" überdehnte zuvor
+    den zweiten Endpunkt und verwarf die echte Wien-Route (b1). Ein
+    beschreibendes Schluss-Substantiv im Einzelstation-Titel
+    („Wien Meidling Stellwerk") wird nicht mehr als impliziter unbekannter
+    Endpunkt fehlgedeutet (`_TITLE_NOISE_WORDS` um Infrastruktur-Nomen
+    ergänzt, b2). Wetter-präfigierte Bahn-Störungen („Hochwasser:
+    Gleissperrung …") werden gerettet (`_TRANSIT_KEYWORD_RE` um
+    rail-spezifische Compound-Sperrungen + `Zugverspätung`, b3).
+  * **Strikter Modus** (`OEBB_ONLY_VIENNA`): Das bloße Arealwort „Wien"
+    kanonisiert nicht mehr zu einer Phantom-Station (b10), und eine allein
+    stehende Pendler-Erwähnung zählt nicht mehr als relevant (b12) — siehe
+    `docs/reference/oebb_provider_logic.md`.
+  * **Fuzzy-Dedup** (`src/feed/merge.py`): „Wien"/„Vienna" sind jetzt
+    Stoppwörter (verhindert das Verschmelzen verschiedener Routen),
+    Bahnhof-Abkürzungen werden vor der Tokenisierung normalisiert
+    (`Hbf`/`Bhf`/`Bf` → `…bahnhof`, sodass „Wien Hbf" und „Wien
+    Hauptbahnhof" weiter zusammengeführt werden, b6), und unterschiedliche
+    Bahnsteig-/Gleis-Nummern (`_platform_numbers`) verhindern eine
+    Verschmelzung verschiedener Bahnsteige (b7).
+  * **Baustellen** (`src/providers/baustellen.py`): Die `\bu-/s-bahn`-Token
+    tragen eine führende Wortgrenze (kein Fehltreffer mehr auf
+    „Hochschaubahn", b4), und `oepnv_lead` zerschneidet Sätze
+    abkürzungsbewusst (`_split_into_sentences`, kein Bruch an „Nr." /
+    „3. März", b5).
+  * **Stationsverzeichnis**: Opake Betriebsstellencodes mit ≤ 3 Zeichen
+    werden aus dem Wien-Erkennungs-Regex entfernt (Mindest-Alias-Länge
+    3 → 4 in `src/utils/stations.py`, b11); der Alias-Generator blockt die
+    Müll-Aliase „aug"/„am" an der Wurzel (`_GENERIC_ALIAS_BLOCKLIST` in
+    `scripts/enrich_station_aliases.py`), 40 fehlerhafte Aliase aus
+    `data/stations.json` entfernt (b8/b9).
+  * **Feed-Rendering** (`src/build_feed.py`): Mehrmonatige Enddaten bleiben
+    erhalten (180-Tage-Kappe → `feed_config.ABSOLUTE_MAX_AGE_DAYS` = 540,
+    b13); doppelte U-Bahn-Linien-Präfixe („U2: U2 …") werden erkannt
+    (`_baustellen_title_names_station` akzeptiert `U1`–`U6`, b14).
+
+* **Feed-Pipeline: Robustheits- & Korrektheitsfixes (Review-Funde #1–#8, 2026-06-01)**:
+  Projektweite Prüfung jenseits des Relevanzfilters; verifizierte Fehler
+  behoben (jeweils mit Regressionstest):
+  * **Wiener-Linien-Titel** (`src/providers/wl_fetch.py`): Ein reiner
+    Satzzeichen-Titel („---") fällt auf „Meldung" zurück, statt als bloße
+    Linien-Codes („U1/U2") ohne Beschreibung zu erscheinen (#1).
+  * **Feed-Sortierung** (`src/build_feed.py`): Eine in der Zukunft liegende
+    `pubDate` wird auf „jetzt" gekappt und rangiert nicht mehr vor aktuellen
+    Items (#2); ein Fehler beim Zusammenführen eines Provider-Ergebnisses
+    wird pro Provider isoliert und verwirft nicht mehr alle bereits
+    eingesammelten Items (`_drain_completed_futures`, #3).
+  * **Stammstrecke** (`scripts/update_stammstrecke_status.py`): Ein leerer
+    `rtDate`/`rtDepDate` (statt fehlend) deaktiviert nicht mehr die
+    Mitternachts-Heuristik — verhinderte Schein-Verspätungen von ≈ −1430 min
+    (#4).
+  * **`.env`-Parser** (`src/utils/env.py`): Ein nicht geschlossenes
+    Anführungszeichen (`KEY="abc`) liefert den dekodierten Inhalt statt des
+    streunenden Quotes — schützt Tokens/Credentials vor Korruption (#5).
+  * **Stationsvalidierung** (`src/utils/stations_validation.py`): Die
+    Identitätsfelder (`bst_code`) akzeptieren `str | int` wie die
+    Geschwister-Validatoren; ein ganzzahliger `bst_code` wird nicht mehr
+    stillschweigend übersprungen (#8).
+
 * **Dashboard: Wetter-Widget im Header (Wien, 2026-05-30)**:
   Der Header zeigt jetzt links neben der Marke ein kleines Wetter-Symbol
   plus die aktuelle Temperatur in °C für Wien. Als Abfrage-Koordinaten
@@ -271,151 +336,158 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
     keine CSP-Anpassung – die Spalten `weekday`/`hour` waren bereits
     Teil des `data/stats/ausfaelle_<YYYY>.csv`-Schemas seit 2026-05-15.
 
-* **Performance: Static-site asset payload reduced ~86 % (2026-05-17)**:
-  * Two Lighthouse runs against `docs/site.html` (mobile + desktop,
-    Lighthouse 13.0.2) flagged the same diagnostic chain: `train.png`
-    (992 KiB) and `footer-bg.jpg` (661 KiB) dominated the network
-    payload and were the only material targets of the
-    `image-delivery-insight` audit (score 0.5, est. savings ~989 KiB).
-    The hand-maintained `site.css` (19 KiB) and `site.js` (25 KiB)
-    additionally tripped `unminified-javascript` (score 0.5) and
-    contributed to a 429 ms HTML→CSS render-blocking chain.
-    Accessibility flagged `label-content-name-mismatch` (score 0) on
-    the header brand link whose `aria-label="Wien ÖPNV – Startseite"`
-    did not include the visible "Live-Dashboard" sub-label.
-  * Image assets re-encoded losslessly-at-display-size:
-    - `train.png`: 3168×448 → 1584×224 (identical 7.07:1 aspect ratio;
-      `clamp(1.5rem, 4vw, 2.5rem)` capped display height already
-      undershot the new 224 px native height even at 3× DPR), pngquant
-      `--quality 65` palette quantisation + optipng `-o7 -fix`.
-      **1015927 → 63046 bytes (93.8 % reduction)**; mean per-channel
-      RGB diff at display size 0.8–1.1 of 255 (imperceptible).
-    - `footer-bg.jpg`: 2732×1536 → 1920×1080 (16:9 preserved), JPEG
-      quality 72 + progressive + `jpegoptim --strip-all`. **677250 →
-      194825 bytes (71.2 % reduction)**; per-channel diff is further
-      attenuated by the 78–94 % opacity dark gradient overlay drawn
-      on top, so the visible difference is well under 0.2 %.
-  * CSS/JS pipeline switched to checked-in minified bundles:
-    - `docs/assets/site.css` and `site.js` remain the authoritative
-      readable sources; new `site.min.css` (15486 bytes, 18.4 %
-      smaller) and `site.min.js` (18628 bytes, 25.9 % smaller) are
-      generated alongside and referenced by `docs/site.html`.
-    - Pure-Python (`rcssmin` / `rjsmin`) — no Node toolchain
-      introduced, preserving the project's "kein Build-Schritt"
-      stance for the dashboard. New `scripts/optimize_site_assets.py`
-      drives the pipeline; `--check` mode fails closed when the
-      committed bundles fall out of sync with their sources and is
-      wired into pre-commit via a `files:` filter so it only runs
-      when a `site.{css,js,min.css,min.js}` blob is staged.
-  * HTML micro-fixes that do **not** touch the visual layout:
-    - `aria-label="Wien ÖPNV Live-Dashboard – Startseite"` includes
-      both visible sub-labels, satisfying axe's
-      `label-content-name-mismatch` rule.
-    - Train sprite `<img>` `width`/`height` updated to the new
-      1584×224 natural size so the browser's aspect-ratio reservation
-      matches the bitmap (CSS `height:100%` continues to drive the
-      rendered size — CLS unchanged).
-    - `fetchpriority="low"` on the decorative train sprite frees
-      bandwidth for higher-priority resources during early load.
+* **Performance: Asset-Payload der statischen Website um ~86 % reduziert (2026-05-17)**:
+  * Zwei Lighthouse-Läufe gegen `docs/site.html` (Mobil + Desktop,
+    Lighthouse 13.0.2) flaggten dieselbe Diagnose-Kette: `train.png`
+    (992 KiB) und `footer-bg.jpg` (661 KiB) dominierten den Netzwerk-
+    Payload und waren die einzigen materiellen Ziele des
+    `image-delivery-insight`-Audits (Score 0.5, geschätzte Einsparung ~989 KiB).
+    Das handgepflegte `site.css` (19 KiB) und `site.js` (25 KiB)
+    lösten zusätzlich `unminified-javascript` (Score 0.5) aus und
+    trugen zu einer 429-ms-HTML→CSS-Render-Blocking-Kette bei.
+    Accessibility flaggte `label-content-name-mismatch` (Score 0) am
+    Marken-Link im Header, dessen `aria-label="Wien ÖPNV – Startseite"`
+    das sichtbare „Live-Dashboard"-Sub-Label nicht enthielt.
+  * Bild-Assets verlustfrei auf Anzeigegröße neu kodiert:
+    - `train.png`: 3168×448 → 1584×224 (identisches 7.07:1-Seiten-
+      verhältnis; die per `clamp(1.5rem, 4vw, 2.5rem)` gedeckelte
+      Anzeigehöhe unterschritt die neue 224-px-Nativhöhe schon bei 3× DPR),
+      pngquant-`--quality 65`-Palettenquantisierung + optipng `-o7 -fix`.
+      **1015927 → 63046 bytes (93.8 % Reduktion)**; mittlere
+      Pro-Kanal-RGB-Differenz bei Anzeigegröße 0.8–1.1 von 255
+      (nicht wahrnehmbar).
+    - `footer-bg.jpg`: 2732×1536 → 1920×1080 (16:9 erhalten), JPEG
+      Quality 72 + progressiv + `jpegoptim --strip-all`. **677250 →
+      194825 bytes (71.2 % Reduktion)**; die Pro-Kanal-Differenz wird
+      durch das darübergelegte Dunkel-Gradient-Overlay mit 78–94 %
+      Deckkraft weiter abgeschwächt, sodass der sichtbare Unterschied
+      deutlich unter 0.2 % liegt.
+  * CSS/JS-Pipeline auf eingecheckte minifizierte Bundles umgestellt:
+    - `docs/assets/site.css` und `site.js` bleiben die maßgeblichen
+      lesbaren Quellen; neue `site.min.css` (15486 bytes, 18.4 %
+      kleiner) und `site.min.js` (18628 bytes, 25.9 % kleiner) werden
+      daneben erzeugt und von `docs/site.html` referenziert.
+    - Pure-Python (`rcssmin` / `rjsmin`) — keine Node-Toolchain
+      eingeführt, was die „kein Build-Schritt"-Haltung des Projekts
+      für das Dashboard bewahrt. Das neue `scripts/optimize_site_assets.py`
+      treibt die Pipeline; der `--check`-Modus schlägt fehl (fail-closed),
+      wenn die committeten Bundles aus dem Sync mit ihren Quellen
+      geraten, und ist über einen `files:`-Filter so in pre-commit
+      verdrahtet, dass er nur läuft, wenn ein
+      `site.{css,js,min.css,min.js}`-Blob gestaged ist.
+  * HTML-Mikro-Fixes, die das visuelle Layout **nicht** berühren:
+    - `aria-label="Wien ÖPNV Live-Dashboard – Startseite"` enthält
+      beide sichtbaren Sub-Labels und erfüllt damit die
+      `label-content-name-mismatch`-Regel von axe.
+    - `width`/`height` des Train-Sprite-`<img>` auf die neue
+      1584×224-Nativgröße aktualisiert, sodass die Aspect-Ratio-
+      Reservierung des Browsers zur Bitmap passt (CSS `height:100%`
+      bestimmt weiterhin die gerenderte Größe — CLS unverändert).
+    - `fetchpriority="low"` am dekorativen Train-Sprite gibt Bandbreite
+      für höher priorisierte Ressourcen während des frühen Ladens frei.
     - `<link rel="dns-prefetch">` + `<link rel="preconnect" crossorigin>`
-      pre-resolve `raw.githubusercontent.com` so the deferred CSV
-      fetches kicked off by `site.min.js` skip the cold-DNS hit.
-  * Net effect on the documented payload: 1693 KiB → 258 KiB on the
-    two image assets alone (1435 KiB saved, ~86 %); combined with the
-    CSS/JS shrink the total `docs/` page weight reported by Lighthouse
-    drops from 1677 KiB to ≈ 300 KiB. Visual rendering and JS
-    behaviour are byte-for-byte equivalent at display size and
-    fully-loaded state; no CSP relaxation, no new third-party request.
-  * `requirements-dev.txt` gains `rcssmin`, `rjsmin`, and `Pillow`
-    (pure-Python where it matters; Pillow is already installed in any
-    environment that ran prior image-related scripts). The image
-    binaries (`pngquant`, `optipng`, `jpegoptim`) remain optional —
-    contributors who only edit CSS/JS do not need them, and the
-    script degrades gracefully (warns + continues) when any is
-    missing on PATH.
+      lösen `raw.githubusercontent.com` vorab auf, sodass die von
+      `site.min.js` angestoßenen verzögerten CSV-Fetches den
+      Cold-DNS-Treffer überspringen.
+  * Netto-Effekt auf den dokumentierten Payload: 1693 KiB → 258 KiB
+    allein bei den zwei Bild-Assets (1435 KiB gespart, ~86 %); zusammen
+    mit dem CSS/JS-Schrumpf sinkt das von Lighthouse gemeldete
+    Gesamt-Seitengewicht von `docs/` von 1677 KiB auf ≈ 300 KiB. Visuelles
+    Rendering und JS-Verhalten sind bei Anzeigegröße und im
+    vollständig geladenen Zustand byte-für-byte identisch; keine
+    CSP-Lockerung, kein neuer Third-Party-Request.
+  * `requirements-dev.txt` erhält `rcssmin`, `rjsmin` und `Pillow`
+    (Pure-Python, wo es zählt; Pillow ist in jeder Umgebung, die zuvor
+    bildbezogene Skripte ausgeführt hat, bereits installiert). Die
+    Bild-Binaries (`pngquant`, `optipng`, `jpegoptim`) bleiben optional —
+    Mitwirkende, die nur CSS/JS bearbeiten, brauchen sie nicht, und das
+    Skript degradiert graziös (warnt + fährt fort), wenn eines davon
+    nicht im PATH liegt.
   * Marker: SENTINEL_LIGHTHOUSE_2026_05_17_ASSET_PAYLOAD.
 
-* **Security: Secret Scanner Drift Round 14 — AWS STS Service Bearer Token
-  (`ABIA<16>`) Prefix Detection Gap (2026-05-16)**:
-  * Closes the fourth credential prefix in the AWS 4-character
-    unique-identifier family that `_AWS_ID_RE` explicitly enumerated
-    as named-but-uncovered: `ABIA` (AWS STS service bearer token,
-    issued by `sts:GetServiceBearerToken` for service-to-service
-    authentication on behalf of an AWS user). Round 13's closing
-    checklist enumerated only `AKIA`/`ASIA`/`ACCA` — `ABIA` was the
-    documented fourth credential prefix that remained uncovered.
-  * Pre-fix bare `ABIAV2EXAMPLE12345AB` (20 chars: 4-char prefix +
-    16-char `[A-Z0-9]` body) tokens slipped through every detection
-    branch in `_scan_content`: the `_HIGH_ENTROPY_RE` requires `{24,}`
-    chars and rejects the 20-char shape; `_AWS_ID_RE` enumerated only
-    three of four prefixes; the assignment heuristic loses
-    AWS-specific attribution. Net: silent-undetection in non-assignment
-    contexts (CloudTrail debug log lines, AWS SDK debug traces with
-    `AWS_DEBUG=true`, JSON fixtures without sensitive keys,
-    documentation snippets, hostile-PR fragments) and attribution-drift
-    in assignment contexts (only the generic "Verdächtige Zuweisung"
-    fired, losing the AWS-STS-specific revocation-flow attribution).
-  * Single-tuple addition to `_KNOWN_TOKENS` in
+* **Security: Secret-Scanner-Drift Runde 14 — Erkennungslücke beim Präfix
+  des AWS STS Service Bearer Tokens (`ABIA<16>`) (2026-05-16)**:
+  * Schließt das vierte Credential-Präfix in der AWS-Familie der
+    4-Zeichen-Unique-Identifier, das `_AWS_ID_RE` ausdrücklich als
+    benannt-aber-ungedeckt aufführte: `ABIA` (AWS STS Service Bearer
+    Token, ausgestellt von `sts:GetServiceBearerToken` für
+    Service-zu-Service-Authentifizierung im Namen eines AWS-Nutzers). Die
+    Abschluss-Checkliste von Runde 13 führte nur `AKIA`/`ASIA`/`ACCA`
+    auf — `ABIA` war das dokumentierte vierte Credential-Präfix, das ungedeckt blieb.
+  * Vor dem Fix rutschten blanke `ABIAV2EXAMPLE12345AB`-Tokens (20 Zeichen:
+    4-Zeichen-Präfix + 16-Zeichen-`[A-Z0-9]`-Body) durch jeden Erkennungs-
+    zweig in `_scan_content`: `_HIGH_ENTROPY_RE` verlangt `{24,}` Zeichen
+    und weist die 20-Zeichen-Form ab; `_AWS_ID_RE` führte nur drei von
+    vier Präfixen auf; die Zuweisungs-Heuristik verliert die
+    AWS-spezifische Attribution. Netto: stille Nicht-Erkennung in
+    Nicht-Zuweisungs-Kontexten (CloudTrail-Debug-Log-Zeilen, AWS-SDK-Debug-
+    Traces mit `AWS_DEBUG=true`, JSON-Fixtures ohne sensible Schlüssel,
+    Doku-Snippets, feindselige PR-Fragmente) und Attribution-Drift
+    in Zuweisungs-Kontexten (nur das generische "Verdächtige Zuweisung"
+    feuerte und verlor die AWS-STS-spezifische Revocation-Flow-Attribution).
+  * Einzelnes Tupel ergänzt zu `_KNOWN_TOKENS` in
     `src/utils/secret_scanner.py`:
     `re.compile(r"(?<![A-Za-z0-9])ABIA[A-Z0-9]{16}(?![A-Za-z0-9])")`
-    with reason `"AWS STS Service Bearer Token gefunden"`. Strict
-    `[A-Z0-9]{16}` body alphabet anchors against false positives on
-    lowercase / mixed-case strings happening to start with `ABIA`;
-    `(?<![A-Za-z0-9])` lookbehind prevents mid-word matches.
-    KNOWN_TOKENS processing runs before `_AWS_ID_RE`, so `is_covered`
-    correctly anchors the more-specific issuer attribution.
-  * Comprehensive test coverage in
-    `tests/test_sentinel_secret_scanner_drift_round14.py` (10 tests):
-    plaintext-context PoC (silent-undetection branch), JSON-fixture
-    PoC, assignment-context PoC (attribution-drift branch), three
-    negative cases (short body / lowercase body / mid-word ABIA),
-    three regression guards (AKIA/ASIA/ACCA still receive canonical
-    `AWS Access Key ID gefunden` — no collision), and an inventory
-    invariant pin (`ABIA` + `AWS STS Service Bearer Token` strings
-    present in `secret_scanner.py` source).
+    mit Begründung `"AWS STS Service Bearer Token gefunden"`. Das strikte
+    `[A-Z0-9]{16}`-Body-Alphabet schützt gegen False Positives auf
+    Lowercase-/Mixed-Case-Strings, die zufällig mit `ABIA` beginnen;
+    das `(?<![A-Za-z0-9])`-Lookbehind verhindert Treffer mitten im Wort.
+    Die KNOWN_TOKENS-Verarbeitung läuft vor `_AWS_ID_RE`, sodass
+    `is_covered` die spezifischere Aussteller-Attribution korrekt verankert.
+  * Umfassende Testabdeckung in
+    `tests/test_sentinel_secret_scanner_drift_round14.py` (10 Tests):
+    Plaintext-Kontext-PoC (Silent-Undetection-Zweig), JSON-Fixture-
+    PoC, Zuweisungs-Kontext-PoC (Attribution-Drift-Zweig), drei
+    Negativfälle (kurzer Body / Lowercase-Body / ABIA mitten im Wort),
+    drei Regressions-Guards (AKIA/ASIA/ACCA erhalten weiterhin das
+    kanonische `AWS Access Key ID gefunden` — keine Kollision) und ein
+    Inventar-Invariant-Pin (`ABIA`- + `AWS STS Service Bearer Token`-Strings
+    im Quelltext von `secret_scanner.py` vorhanden).
   * Marker: SENTINEL_AWS_ABIA_PREFIX_DRIFT.
 
-* **Security: Network/Env/Sidecar Non-Finite Literal Drift Closure — 18 JSON
-  Parser Sites (2026-05-15)**:
-  * Closes the **symmetric companion** of PR #1503's committed-state-file
-    reader closure across three orthogonal taint channels:
-    13 network-tainted HTTP responses (`wl_fetch._get_json`,
+* **Security: Schließung der Non-Finite-Literal-Drift für Netzwerk/Env/Sidecar — 18 JSON-
+  Parser-Stellen (2026-05-15)**:
+  * Schließt das **symmetrische Gegenstück** zur Closure des
+    Committed-State-File-Readers aus PR #1503 über drei orthogonale
+    Taint-Kanäle hinweg: 13 netzwerk-getaintete HTTP-Antworten
+    (`wl_fetch._get_json`,
     `places.client._post`/`_format_error_message`,
     `hafas_client._fetch_hafas_location`,
     `osm_client.OSMOverpassClient._fetch_payload`,
     `reporting._GithubIssueReporter.submit`,
     `check_overpass_status._evaluate_response`,
     `verify_vor_access_id`, `update_baustellen_cache._load_json_from_content`,
-    `update_stammstrecke_hbf` + `update_stammstrecke_status` VAO endpoints),
-    2 env-tainted `BOUNDINGBOX_VIENNA` parsers
+    `update_stammstrecke_hbf` + `update_stammstrecke_status` VAO-Endpunkte),
+    2 env-getaintete `BOUNDINGBOX_VIENNA`-Parser
     (`fetch_google_places_stations._parse_bounding_box`,
-    `update_station_directory._parse_bounding_box`), and 3 disk-sidecar
-    state readers missed by PR #1503 (`build_feed._read_state_capped`,
+    `update_station_directory._parse_bounding_box`) und 3
+    Disk-Sidecar-State-Reader, die PR #1503 übersehen hatte
+    (`build_feed._read_state_capped`,
     `update_stammstrecke_status._load_pending_trips` /
     `_load_recently_finalised`).
-  * Without these pins a compromised upstream / DNS-hijack / MITM /
-    leaked-CI-env / hostile-operator can plant `NaN` / `Infinity` /
-    `-Infinity` / `1e1000` literals at any of these parse boundaries.
-    The lenient-mode parser returns a Python structure with
-    `float('nan')` / `float('inf')` inside, poisoning comparisons
-    (`nan != nan` is True — breaks dedup invariants), arithmetic
-    (`nan + x` is nan — silently corrupts latency averages and delay
-    calculations), and round-tripping back to the writer pin
-    (`allow_nan=False` from Round 1485/1487/1488/1491) — the cron
-    pipeline crashes mid-write at the next persist.
-  * New canonical helper `loads_finite()` in `src/utils/files.py`
-    (thin shim over `json.loads` that bakes in the
-    `_reject_non_finite_constant` + `_reject_non_finite_float` hooks
-    PR #1503 established). New callsites should use `loads_finite()`
-    rather than calling `json.loads()` directly; `response.json()`
-    sites pass the hooks as kwargs.
-  * Comprehensive test coverage in
+  * Ohne diese Pins kann ein kompromittierter Upstream / DNS-Hijack /
+    MITM / geleaktes CI-Env / feindseliger Operator an jeder dieser
+    Parse-Grenzen `NaN`- / `Infinity`- / `-Infinity`- / `1e1000`-Literale
+    einschleusen. Der Lenient-Mode-Parser liefert eine Python-Struktur
+    mit `float('nan')` / `float('inf')` darin zurück und vergiftet so
+    Vergleiche (`nan != nan` ist True — bricht Dedup-Invarianten),
+    Arithmetik (`nan + x` ist nan — korrumpiert still Latenz-Mittelwerte
+    und Verspätungsberechnungen) und das Zurückschreiben an den
+    Writer-Pin (`allow_nan=False` aus Runde 1485/1487/1488/1491) — die
+    Cron-Pipeline stürzt beim nächsten Persistieren mitten im Schreiben ab.
+  * Neuer kanonischer Helper `loads_finite()` in `src/utils/files.py`
+    (dünner Shim über `json.loads`, der die von PR #1503 etablierten
+    Hooks `_reject_non_finite_constant` + `_reject_non_finite_float`
+    fest einbaut). Neue Aufrufstellen sollten `loads_finite()` nutzen
+    statt `json.loads()` direkt aufzurufen; `response.json()`-Stellen
+    übergeben die Hooks als kwargs.
+  * Umfassende Testabdeckung in
     `tests/test_sentinel_network_tainted_non_finite_drift.py` (38
-    tests): 5 canonical-helper behavioural tests, 18 inventory pins
-    (source-grep each enumerated site for the hook), per-site
-    behavioural PoCs across NaN / Infinity / scientific-notation
-    overflow + finite-round-trip regression guards, plus the writer-
-    reader round-trip symmetry proof.
+    Tests): 5 Verhaltenstests für den kanonischen Helper, 18
+    Inventar-Pins (Source-Grep jeder aufgezählten Stelle nach dem Hook),
+    pro-Stelle-Verhaltens-PoCs über NaN / Infinity / Scientific-Notation-
+    Überlauf + Finite-Round-Trip-Regressionsschutz, plus der
+    Writer-Reader-Round-Trip-Symmetriebeweis.
   * Marker: SENTINEL_NETWORK_TAINTED_NON_FINITE_DRIFT.
 
 * **Stammstrecke-Ausfälle — Neue Statistik aus bestehenden VAO-Abfragen
@@ -600,7 +672,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   separaten `_persist_quota_to_disk`-Helper ausgegliedert, den der
   atexit-Flush direkt aufruft ohne den Counter zu inkrementieren.
   Regression-Tests pinnen das No-Inflation-Invariant.
-* **Docs/Cleanup (VOR-Stammstrecke-only consolidation follow-up)** —
+* **Docs/Cleanup (Nachzug zur VOR-Stammstrecke-only-Konsolidierung)** —
   Doku- und Workflow-Drift nach der 2026-05-11-Konsolidierung (VOR
   ist nur noch für den Stammstrecken-Monitor zuständig) bereinigt:
   * Tote Skript-Verweise auf `update_vor_cache.py`,
@@ -620,88 +692,91 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
     `tests/test_sentinel_quota_status_trojan_source.py` als historisch
     gekennzeichnet — die Trojan-Source-Defence im Writer bleibt
     unverändert in Kraft.
-* **Changed (WL OGD reactivation chain, PR #1441-#1453)**: thirteen
-  consolidated PRs fully reactivate the Wiener-Linien OGD merge path
-  against the canonical `www.wienerlinien.at/ogd_realtime/doku/ogd/`
-  endpoint (the previous `data.wien.gv.at/csv/` proxy was retired in
-  the 60th OGD phase, September 2025).
-  * **Endpoint + workflow (#1441, #1442)** — removed the redundant
-    inline curl step from `update-stations.yml`, migrated both
-    `OGD_HALTESTELLEN_URL` / `OGD_HALTEPUNKTE_URL` constants to the
-    canonical Wiener Linien host. Soft-fail to pinned local CSVs on
-    upstream outage.
-  * **Schema fuzzy-keys (#1444)** — added column aliases so the
-    loader parses both the legacy proxy CSV
-    (`HALTESTELLEN_ID`/`NAME`/`WGS84_*`) and the canonical
-    OGD-Echtzeit CSV (`DIVA`/`PlatformText`/`StopText`/`Latitude`).
-  * **WL-only entries im `wl_diva`-Namensraum (#1446)** — removed
-    synthetic `bst_id` (`9{DIVA}`) and synthetic `bst_code`
-    (`WL-{name[:3]}`) on WL-only entries; the canonical `wl_diva`
-    field is the sole structural identifier and cross-station-id
-    collisions / `WL-ABS`-style code duplicates are gone.
-  * **Pendler-Default für Border-Stops (#1443)** — unmatched WL
-    haltestellen outside the Wien polygon auto-promote to
-    `pendler=True`.
-  * **Validator identifier (#1447)** — `_format_identifier` now
-    includes `wl_diva` so WL-only entries get distinct keys instead
-    of collapsing onto `"source:wl"` (which had pulled 1759 stations
-    into auto-quarantine over 30 genuine naming groups).
-  * **StopID + direction-marker sanitisation (#1445)** — short
-    `StopID` counter values are filtered out of `aliases` (legacy
-    8-digit RBL stays); `<` and `>` direction markers in `StopText`
-    are replaced with `←` / `→` so they no longer hit
-    `_UNSAFE_CHARS_RE`.
-  * **`in_vienna` consistency (#1449)** — `build_wl_entries` now
-    derives `in_vienna` from the aggregate haltepunkt coordinates
-    instead of any-stop-wins, so boundary stations no longer carry
-    a flag that contradicts their persisted coords. Pinned by
-    `test_coordinates_match_in_vienna_flag`.
-  * **ÖBB workbook soft-fail (#1450)** — `download_workbook` atomic-
-    writes a snapshot to `data/oebb-verkehrsstationen.xlsx` on every
-    successful run and reads from the snapshot when `data.oebb.at`
-    returns a network error. Closes the asymmetric failure mode
-    where ÖBB was the only fail-fast upstream source. CodeQL config
-    (`.github/codeql/codeql-config.yml`) excludes the
-    `py/clear-text-storage-sensitive-data` false-positive that
-    matches every public-data cache writer in this project.
+* **Changed (WL-OGD-Reaktivierungskette, PR #1441-#1453)**: Dreizehn
+  konsolidierte PRs reaktivieren den Wiener-Linien-OGD-Merge-Pfad
+  vollständig gegen den kanonischen
+  `www.wienerlinien.at/ogd_realtime/doku/ogd/`-Endpunkt (der vorherige
+  `data.wien.gv.at/csv/`-Proxy wurde in der 60. OGD-Phase im September
+  2025 abgeschaltet).
+  * **Endpoint + Workflow (#1441, #1442)** — den redundanten
+    Inline-curl-Schritt aus `update-stations.yml` entfernt, beide
+    Konstanten `OGD_HALTESTELLEN_URL` / `OGD_HALTEPUNKTE_URL` auf den
+    kanonischen Wiener-Linien-Host migriert. Soft-Fail auf gepinnte
+    lokale CSVs bei Upstream-Ausfall.
+  * **Schema-Fuzzy-Keys (#1444)** — Spalten-Aliase ergänzt, sodass der
+    Loader sowohl das Legacy-Proxy-CSV
+    (`HALTESTELLEN_ID`/`NAME`/`WGS84_*`) als auch das kanonische
+    OGD-Echtzeit-CSV (`DIVA`/`PlatformText`/`StopText`/`Latitude`) parst.
+  * **WL-only-Einträge im `wl_diva`-Namensraum (#1446)** — synthetische
+    `bst_id` (`9{DIVA}`) und synthetischen `bst_code`
+    (`WL-{name[:3]}`) bei WL-only-Einträgen entfernt; das kanonische
+    `wl_diva`-Feld ist der einzige strukturelle Identifier, und
+    Cross-Station-ID-Kollisionen / `WL-ABS`-artige Code-Duplikate
+    sind verschwunden.
+  * **Pendler-Default für Border-Stops (#1443)** — nicht zugeordnete
+    WL-Haltestellen außerhalb des Wien-Polygons werden automatisch auf
+    `pendler=True` hochgestuft.
+  * **Validator-Identifier (#1447)** — `_format_identifier` schließt
+    jetzt `wl_diva` ein, sodass WL-only-Einträge distinkte Schlüssel
+    erhalten, statt auf `"source:wl"` zu kollabieren (was 1759 Stationen
+    über 30 echte Naming-Gruppen in die Auto-Quarantäne gezogen hatte).
+  * **StopID- + Richtungsmarker-Sanitisierung (#1445)** — kurze
+    `StopID`-Zählerwerte werden aus den `aliases` herausgefiltert (die
+    Legacy-8-stellige RBL bleibt); `<`- und `>`-Richtungsmarker in
+    `StopText` werden durch `←` / `→` ersetzt, sodass sie nicht mehr
+    `_UNSAFE_CHARS_RE` treffen.
+  * **`in_vienna`-Konsistenz (#1449)** — `build_wl_entries` leitet
+    `in_vienna` jetzt aus den aggregierten Haltepunkt-Koordinaten ab
+    statt nach Any-Stop-wins, sodass Grenzstationen kein Flag mehr
+    tragen, das ihren persistierten Koordinaten widerspricht. Gepinnt
+    durch `test_coordinates_match_in_vienna_flag`.
+  * **ÖBB-Workbook-Soft-Fail (#1450)** — `download_workbook` schreibt
+    bei jedem erfolgreichen Lauf atomar einen Snapshot nach
+    `data/oebb-verkehrsstationen.xlsx` und liest aus dem Snapshot, wenn
+    `data.oebb.at` einen Netzwerkfehler liefert. Schließt den
+    asymmetrischen Fehlermodus, in dem ÖBB die einzige Fail-Fast-
+    Upstream-Quelle war. Die CodeQL-Config
+    (`.github/codeql/codeql-config.yml`) schließt das
+    `py/clear-text-storage-sensitive-data`-False-Positive aus, das auf
+    jeden Public-Data-Cache-Writer in diesem Projekt zutrifft.
   * **Multi-DIVA-Merge <150 m (#1451)** — `_merge_colocated_dupli
-    cates` folds same-name haltestellen with haltepunkte-mean
-    coordinates within 150 m of each other into a single entry
-    (lexicographically lowest DIVA wins, all haltepunkte and
-    aliases unioned). Removes 4 doublings from the current
-    `stations.json` (Stock im Weg, Vorgartenstraße, Lieblgasse,
-    Altmannsdorfer Straße).
-  * **`name` ist Display-Label, kein PK (#1452)** — the validator's
-    canonical-name uniqueness check is removed. Structural
-    uniqueness lives in `wl_diva` / `bst_id` / `vor_id` /
-    `bst_code`; `name` is operator-facing. The
-    `_disambiguate_duplicate_names` DIVA-suffix workaround
-    (`Wien Bahnhof (WL 60205022)`) is retired — duplicate display
-    labels are now legal and the RSS feed shows the clean
-    `Wien Bahnhof (WL)` form.
+    cates` faltet gleichnamige Haltestellen mit Haltepunkte-Mittel-
+    Koordinaten innerhalb von 150 m zueinander zu einem einzigen
+    Eintrag zusammen (die lexikographisch kleinste DIVA gewinnt, alle
+    Haltepunkte und Aliase werden vereinigt). Entfernt 4 Doppelungen
+    aus dem aktuellen `stations.json` (Stock im Weg, Vorgartenstraße,
+    Lieblgasse, Altmannsdorfer Straße).
+  * **`name` ist Display-Label, kein PK (#1452)** — die
+    Kanonische-Namens-Eindeutigkeitsprüfung des Validators wird
+    entfernt. Strukturelle Eindeutigkeit lebt in `wl_diva` / `bst_id` /
+    `vor_id` / `bst_code`; `name` ist operator-zugewandt. Der
+    `_disambiguate_duplicate_names`-DIVA-Suffix-Workaround
+    (`Wien Bahnhof (WL 60205022)`) ist abgeschafft — doppelte
+    Display-Labels sind jetzt zulässig und der RSS-Feed zeigt die
+    saubere `Wien Bahnhof (WL)`-Form.
   * **Aussagekräftige Display-Namen aus `StopText` (#1453)** —
-    `_derive_station_label` overrides generic transport-typed
-    haltestelle `PlatformText` tokens (`Bahnhof`, `Lokalbahn`,
+    `_derive_station_label` überschreibt generische transport-typisierte
+    `PlatformText`-Tokens der Haltestelle (`Bahnhof`, `Lokalbahn`,
     `Hauptbahnhof`, `Station`, `Halt`, `Bf`, `Hbf`, `Bahn`,
-    `U-Bahn`) with the haltepunkte `StopText` when one is
-    available. Six entries got a real toponym:
+    `U-Bahn`) mit dem Haltepunkte-`StopText`, sofern einer
+    verfügbar ist. Sechs Einträge bekamen ein echtes Toponym:
     `Wien Bahnhof (WL)` × 2 → `Wien Tribuswinkel - Josefsthal
     (WL)`, `Wiener Neudorf (WL)`; `Wien Lokalbahn (WL)` × 4 →
     `Wien Guntramsdorf Lokalbahn (WL)`, `Wien Möllersdorf (WL)`,
     `Wien Neu Guntramsdorf (WL)`, `Wien Traiskirchen Lokalbahn
-    (WL)`. Non-generic PlatformText values stay untouched so
-    ÖBB / VOR name-based joins remain stable.
-  * **Test data refresh (#1449)** — three station-directory tests
-    hard-coded legacy DIVAs that Wiener Linien has since renumbered
-    (`60201076` was Karlsplatz pre-PR #1442 and is now
-    Ratzenhofergasse; `60201002` was Schottentor and is now
-    Pensionsversicherungsanstalt). Updated to current DIVAs.
-  * **Outcome on production data**: `stations.json` grew from 196
-    to 1951 entries (4 co-located doublings merged out of 1803 WL
-    entries), 0 DIVA suffixes in canonical names, 0 generic
-    `Wien Bahnhof (WL)` / `Wien Lokalbahn (WL)` labels, validator
-    reports 0 alias / naming / security issues, `quarantine.json`
-    stays empty across cron ticks.
+    (WL)`. Nicht-generische PlatformText-Werte bleiben unangetastet,
+    sodass ÖBB- / VOR-Name-basierte Joins stabil bleiben.
+  * **Test-Daten-Refresh (#1449)** — drei Stationsverzeichnis-Tests
+    hatten Legacy-DIVAs hartkodiert, die Wiener Linien seither
+    umnummeriert hat (`60201076` war vor PR #1442 Karlsplatz und ist
+    jetzt Ratzenhofergasse; `60201002` war Schottentor und ist jetzt
+    Pensionsversicherungsanstalt). Auf aktuelle DIVAs aktualisiert.
+  * **Ergebnis auf Produktivdaten**: `stations.json` wuchs von 196 auf
+    1951 Einträge (4 ko-lokalisierte Doppelungen aus 1803 WL-Einträgen
+    herausgemergt), 0 DIVA-Suffixe in kanonischen Namen, 0 generische
+    `Wien Bahnhof (WL)` / `Wien Lokalbahn (WL)`-Labels, der Validator
+    meldet 0 Alias- / Naming- / Security-Issues, `quarantine.json`
+    bleibt über Cron-Ticks hinweg leer.
 * **Changed (Auto-Quarantine für `update_all_stations.py`)**: Blockierende
   Validation-Issues (`provider_issues`, `cross_station_id_issues`,
   `naming_issues`, `security_issues`) brechen die Pipeline nicht mehr ab.
@@ -763,8 +838,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   in `scripts/update_vor_stations.py` macht Live-API-Calls jetzt nur
   noch für die 10 Stammstrecke-Stationen (`STAMMSTRECKE_VOR_IDS`).
   Alle anderen Station-IDs fallen auf die gepinnte
-  `data/vor-haltestellen.csv` zurück. Begründung wie oben — preserves
-  the daily quota for the hot path. Test-Coverage:
+  `data/vor-haltestellen.csv` zurück. Begründung wie oben — bewahrt
+  das Tagesbudget für den heißen Pfad. Test-Coverage:
   `test_fetch_vor_stops_from_api_skips_non_stammstrecke_ids`.
 * **Added (Statistik-Dashboard)**: Zero-dependency Append-only-CSV-
   Pipeline und Markdown-Dashboard — Architektur-Kontext in
@@ -899,22 +974,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   integriert. Dokumentiert in `docs/reference/oebb_provider_logic.md`.
   Tests mocken `pyhafas` vollständig
   (`tests/scripts/test_update_stammstrecke_status.py`).
-* **Security**: VOR daily-quota counter is now lower-bound clamped at 0
-  inside both `load_request_count` and `save_request_count` (the
-  under-lock disk re-read). Pre-fix, a poisoned `data/vor_request_count.json`
-  with `{"date": "<today>", "requests": -1000}` would silently bypass the
-  runtime quota check (`todays_count >= MAX_REQUESTS_PER_DAY` is False
-  for any negative count) and be perpetuated by the next save. Defense-
-  in-depth against compromised CI runners and partial-flush corruption.
-* **Security**: Secret scanner now detects four additional issuer
-  taxonomies that the entropy fallback misses: JSON Web Tokens
-  (`eyJ<base64url>.<base64url>.<base64url>` — three dot-separated
-  segments bypass the `[A-Za-z0-9+/=_-]` alphabet), Hugging Face Access
-  Tokens (`hf_<32+>`), DigitalOcean PATs (`dop_v1_<64 hex>`) and OAuth
-  Refresh Tokens (`doo_v1_<64 hex>`), and GitLab Pipeline Trigger
-  Tokens (`glptt-<40>`). Each finding now reports the issuer-specific
-  reason instead of a generic high-entropy hit, speeding triage and
-  revocation.
+* **Security**: Der VOR-Tagesquota-Zähler wird jetzt sowohl in
+  `load_request_count` als auch in `save_request_count` (dem
+  Disk-Re-Read unter Lock) nach unten auf 0 begrenzt. Vor dem Fix konnte
+  eine manipulierte `data/vor_request_count.json` mit
+  `{"date": "<today>", "requests": -1000}` die Laufzeit-Quota-Prüfung
+  stillschweigend umgehen (`todays_count >= MAX_REQUESTS_PER_DAY` ist für
+  jeden negativen Zählerstand False) und wäre durch das nächste Speichern
+  fortgeschrieben worden. Defense-in-Depth gegen kompromittierte
+  CI-Runner und Korruption durch partielles Flushen.
+* **Security**: Der Secret-Scanner erkennt jetzt vier zusätzliche
+  Aussteller-Taxonomien, die der Entropie-Fallback verfehlt: JSON Web
+  Tokens (`eyJ<base64url>.<base64url>.<base64url>` — drei
+  punktgetrennte Segmente umgehen das `[A-Za-z0-9+/=_-]`-Alphabet),
+  Hugging Face Access Tokens (`hf_<32+>`), DigitalOcean PATs
+  (`dop_v1_<64 hex>`) und OAuth Refresh Tokens (`doo_v1_<64 hex>`)
+  sowie GitLab Pipeline Trigger Tokens (`glptt-<40>`). Jeder Fund meldet
+  jetzt den ausstellerspezifischen Grund statt eines generischen
+  High-Entropy-Treffers, was Triage und Revocation beschleunigt.
 
 ## [2026-05-05]
 * **Data**: Wien-Stadtgrenzen-Polygon ersetzt — neu: offizielle
@@ -966,7 +1043,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Quelle: PDF-Handbuch
 
-- 2026-01-14 – Optimized feed deduplication logic to prioritize VOR provider events (API) over ÖBB provider events (Scraper). Conflicts are now resolved by retaining the VOR event as the master record while merging unique description details from the ÖBB event. This ensures higher data quality and stability.
+- 2026-01-14 – Feed-Deduplizierungslogik optimiert, um VOR-Provider-Events (API) gegenüber ÖBB-Provider-Events (Scraper) zu priorisieren. Konflikte werden jetzt aufgelöst, indem das VOR-Event als Master-Record beibehalten und eindeutige Beschreibungsdetails aus dem ÖBB-Event eingemergt werden. Das sichert höhere Datenqualität und Stabilität.
 - 2025-08-11 – Line Info Service ergänzt. (Kapitel 19)
 - 2025-07-02 – Aktualisierung 5.9.2 zu Informationstexten bei Störungen.
 - 2025-05-22 – Neuer Parameter `includeDrt` im Trip-Service.

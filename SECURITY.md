@@ -34,4 +34,4 @@ Wir bestätigen den Eingang in der Regel innerhalb von 48 Stunden und liefern ei
 
 ### Sicherheitsmodell im Überblick
 
-Eine Übersicht über die im Projekt etablierten Schutzmechanismen (SSRF-Schutz via `request_safe`, atomare Schreiboperationen, Path-Guard auf `docs/`/`data/`/`log/`, Secret-Scanner, Quota-Schichten der VOR/VAO-Anbindung) steht in [`AGENTS.md`](AGENTS.md) und in [`docs/architecture.md`](docs/architecture.md) §§2–4.
+Eine Übersicht über die im Projekt etablierten Schutzmechanismen (SSRF-Schutz via `request_safe`, atomare Schreiboperationen, Path-Guard auf `docs/`/`data/`/`log/`, Secret-Scanner, Quota-Schichten der VOR/VAO-Anbindung) steht in [`AGENTS.md`](AGENTS.md), in [`docs/architecture.md`](docs/architecture.md) §§2–4 sowie – speziell zum Secret-Scanner – in [`docs/development.md`](docs/development.md).

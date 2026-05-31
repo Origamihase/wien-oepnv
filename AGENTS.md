@@ -48,7 +48,7 @@ Wichtige Befehle:
     - Secrets werden über Umgebungsvariablen oder `.env`-Dateien (nicht eingecheckt!) geladen.
 
 2.  **Dateisystem & Pfade**:
-    - Verwende **immer** `validate_path` oder `resolve_env_path` aus `src.feed.config`, wenn Dateipfade aus Konfigurationen verarbeitet werden. (`src.build_feed` re-exportiert nur `validate_path` als Test-Hook; `resolve_env_path` ist ausschließlich aus `src.feed.config` importierbar.)
+    - Verwende **immer** `validate_path` oder `resolve_env_path` aus `src.feed.config`, wenn Dateipfade aus Konfigurationen verarbeitet werden. (`src.build_feed` re-exportiert nur `validate_path` als Test-Hook; `resolve_env_path` stammt aus `src.feed.config` und wird vom Paket `src.feed` re-exportiert, ist aber **nicht** aus `src.build_feed` importierbar.)
     - Schreiben ist nur in `docs/`, `data/` und `log/` erlaubt (Path-Traversal-Schutz; siehe `ALLOWED_ROOTS` in `src/feed/config.py`).
     - Verwende `src.utils.files.atomic_write` für alle Dateischreibvorgänge, um Atomizität und korrekte Berechtigungen sicherzustellen.
     - Tests, die temporäre Dateien benötigen, sollten diese in `data/` erstellen, um Path-Traversal-Checks zu bestehen.

@@ -24,13 +24,18 @@ Die folgende Matrix veranschaulicht, wann eine Verbindung als "Wien-relevant" ei
 | **Pendlerbahnhof** | **Pendlerbahnhof** | ❌ **Verworfen** | Strecke außerhalb Wiens ohne direkten Wien-Bezug. |
 | **Pendlerbahnhof**| **Unbekannt** | ❌ **Verworfen** | Wenn mindestens eine Station bekannt ist, *muss* zwingend auch eine in Wien liegen (Asymmetrischer Pendler-Check). |
 
-*Hinweis:* Wenn der strikte Modus über die Umgebungsvariable `OEBB_ONLY_VIENNA` aktiviert ist, werden Pendlerbahnhöfe ignoriert und **jeder** bekannte Endpunkt muss explizit in Wien liegen.
+*Hinweis:* Wenn der strikte Modus über die Umgebungsvariable `OEBB_ONLY_VIENNA` aktiviert ist, werden Pendlerbahnhöfe ignoriert und **jeder** bekannte Endpunkt muss explizit in Wien liegen. Zwei zusätzliche Schärfungen gelten ausschließlich in diesem Modus:
+
+* Das bloße Arealwort „Wien"/„Vienna" wird **nicht** mehr zu einer Flaggschiff-Station (z. B. „Wien Hauptbahnhof") kanonisiert. So sät eine generische „ab/bis Wien"-Meldung keine Phantom-Station mehr (Bug `b10`).
+* Eine **allein** stehende Pendler-Erwähnung zählt nicht mehr als relevant: Ist die einzige erkannte Station ein Pendlerbahnhof, wird die Meldung verworfen, da ohne echten Wien-Bezug (Bug `b12`).
+
+Im Standardmodus (Flag aus) bleibt beides unverändert.
 
 ## Warnung für zukünftige Entwickler (Tech-Debt)
 Aktuell gibt es im Projekt zwei separate Stellen, an denen Schlüsselwörter für Kategorien und Liniencodes gepflegt werden — beide leben in `src/providers/oebb.py`:
 
-1. Die Menge `NON_LOCATION_PREFIXES` (siehe Definition ab Zeile ~232) — wird von `_is_category` ausgewertet, um Titel-Tokens als Kategorien (vs. echte Ortsnamen) zu erkennen.
-2. Der reguläre Ausdruck `base_pattern` innerhalb der Funktion `_strip_oebb_prefixes` (siehe Definition ab Zeile ~409) — entfernt führende Linien-/Störungspräfixe iterativ aus dem Titel.
+1. Die Menge `NON_LOCATION_PREFIXES` (siehe Definition ab Zeile ~251) — wird von `_is_category` ausgewertet, um Titel-Tokens als Kategorien (vs. echte Ortsnamen) zu erkennen.
+2. Der reguläre Ausdruck `base_pattern` innerhalb der Funktion `_strip_oebb_prefixes` (siehe Definition ab Zeile ~428) — entfernt führende Linien-/Störungspräfixe iterativ aus dem Titel.
 
 **Achtung:** Wenn in Zukunft neue Kategorien, Störungsarten oder Liniencodes der ÖBB hinzugefügt werden müssen, muss sichergestellt werden, dass diese an **beiden** Stellen ergänzt werden. Eine Divergenz dieser Listen führt zu inkonsistentem Parsing und potenziellen Fehlern bei der Stationserkennung.
 

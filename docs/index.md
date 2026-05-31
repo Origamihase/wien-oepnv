@@ -27,7 +27,7 @@ Der gesamte Code steht als Open Source zur Verfügung, sodass du jederzeit nachv
 3. **Caches aktualisieren** via `python -m src.cli cache update`.
 4. **Feed bauen** mit `python -m src.cli feed build`, um `docs/feed.xml` zu generieren (anschließend stehen die Gesundheitsberichte lokal unter `docs/feed-health.md` und `docs/feed-health.json` bereit – beide sind nicht im Repository versioniert).
 5. **Qualitätscheck** vor dem nächsten Build optional mit `python -m src.cli feed lint` durchführen.
-6. **Statische Analysen** optional mit `scripts/run_static_checks.py` ausführen.
+6. **Statische Analysen** optional mit `python -m src.cli checks` ausführen.
 
 Weitere Details findest du in der [ausführlichen Projektdokumentation](../README.md) sowie in den [How-to-Anleitungen](how-to/) für spezielle Workflows.
 
