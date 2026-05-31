@@ -58,22 +58,15 @@ Design contract
   (``CJX``) was added 2026-05-17 after ÖBB rebranded selected REX rolling-
   stock; the corridor coverage is unchanged. Long-distance trains
   (Railjet, IC, etc.) are filtered out.
-- **Self-Healing on degradation**: if either condition holds the
-  events file is *unconditionally* reset to ``[]``:
-
-      * the API is unreachable (``RequestException``,
-        ``CircuitBreakerOpen``, JSON decode failure, malformed payload);
-      * the per-sample mean for *all* monitored directions is
-        ``≤ 9`` minutes.
-
-  This keeps the RSS feed free of stale warnings — a transient blip or
-  recovery becomes invisible to feed readers within at most one cron
-  tick (30 minutes).
-- **First-seen persistence**: when a direction was *already* over the
-  threshold in the previous run, its ``first_seen`` timestamp is
-  carried over so the GUID stays stable for the duration of an
-  episode. RSS readers therefore see one continuously-updated entry
-  per episode rather than a flood of new entries every 30 minutes.
+- **CSV ledger, not events**: this script is now a pure CSV appender —
+  the former ``events.json`` / RSS output (``OUTPUT_PATH`` plus the event
+  builders) was removed on 2026-05-09. Each tick appends one per-direction
+  mean-delay row to ``data/stats/stammstrecke_<YYYY>.csv`` (and cancellation
+  rows to ``data/stats/ausfaelle_<YYYY>.csv``); on an unreachable API or a
+  degraded signal simply no row is recorded for that tick. Event emission —
+  self-healing of stale warnings and per-episode GUID / ``first_seen``
+  stability — now lives in the feed builder
+  (:mod:`src.feed.stammstrecke`), not here.
 - **Quota integration**: every ``/trip`` call increments the shared
   ``data/vor_request_count.json`` counter via :func:`save_request_count`
   *before* the request is sent. A run that would push the day's usage
@@ -87,18 +80,13 @@ Design contract
 - **Atomicity**: writes go through :func:`src.utils.files.atomic_write`
   with permissive ``0o644`` permissions; a crash mid-write cannot
   leave a half-written cache file behind.
-- **Timezone**: GitHub Actions runs in UTC. All timestamps inside the
-  emitted events (``pubDate``, ``starts_at``, ``first_seen``) are
-  localised to ``Europe/Vienna`` via :mod:`zoneinfo` and serialised as
-  ISO 8601 strings with offset, matching
-  ``docs/schema/events.schema.json``.
-- **Schema**: each emitted event mirrors the canonical FeedItem shape
-  every other provider produces (``source`` / ``category`` / ``title``
-  / ``description`` / ``link`` / ``guid`` / ``pubDate`` / ``starts_at``
-  / ``ends_at`` / ``first_seen`` / ``_identity``). Per-direction
-  events differ in ``description`` (target station name +
-  ``[Seit DD.MM.YYYY]``), ``guid`` and ``_identity`` so feed readers
-  treat them as separate notifications.
+- **Timezone**: GitHub Actions runs in UTC. The scheduled / observation
+  timestamps written to the CSV ledger are localised to ``Europe/Vienna``
+  via :mod:`zoneinfo` and serialised as ISO 8601 strings with offset.
+- **Schema**: the CSV ledger rows carry the per-direction mean delay (and
+  cancellations) keyed by timestamp and direction; the canonical FeedItem
+  event shape they feed into is built downstream in
+  :mod:`src.feed.stammstrecke`.
 - **Logging**: every diagnostic message is routed through
   :func:`src.feed.logging_safe.setup_script_logging` so log injection
   / ANSI / BiDi attacks via upstream-controlled fields are sanitised

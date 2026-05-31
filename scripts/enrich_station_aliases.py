@@ -642,10 +642,8 @@ def _alias_candidates(
                 # Replace suffix
                 new_key = key[:-len(src)] + dst
                 station_keys.add(new_key)
-            # Word boundary check (for normalized keys, words are separated by space)
-            # But wait, _normalize_key returns space separated?
-            # yes: cleaned = re.sub(r"[^a-z0-9]+", " ", cleaned)
-            # So "wien hauptbahnhof" has space.
+            # _normalize_key collapses non-alphanumerics to single spaces, so
+            # words are space-separated — pad with spaces for a word-boundary match.
             if f" {src} " in f" {key} ":
                  # Replace word
                  # Use regex to be safe

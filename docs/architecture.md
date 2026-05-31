@@ -438,15 +438,14 @@ flowchart LR
    Slowloris, Payload-Cap.
 6. **Test-Isolation** — `tests/conftest.py` registriert eine
    autouse-Fixture `reset_circuit_breakers`, die über
-   `_iter_known_breakers()` läuft und vor und nach jedem Test auf
-   jedem Eintrag `.reset()` aufruft. Aktuell deckt die Liste
-   `src.places.osm_client._BREAKER`; der HAFAS-Breaker
-   (`hafas_enrichment`) und der Stammstrecken-Hbf-Breaker
-   (`stammstrecke-hbf-vor`) sind noch nicht im Inventar — Tests, die
-   diese Breaker absichtlich triggern, müssen selbst `breaker.reset()`
-   aufrufen oder den Breaker per `monkeypatch` neu aufbauen. Wer für
-   einen neuen Breaker pauschale Isolation wünscht, ergänzt
-   `_iter_known_breakers()`.
+   `CircuitBreaker.iter_instances()` (ein prozessweites
+   `weakref.WeakSet`, das jeder `CircuitBreaker.__init__` automatisch
+   befüllt) läuft und vor und nach jedem Test auf jedem registrierten
+   Breaker `.reset()` aufruft. Damit werden **alle** Breaker — inkl.
+   des HAFAS-Breakers (`hafas_enrichment`) und der Stammstrecke-Breaker
+   — ohne manuelles Inventar erfasst; ein neu hinzugefügter Breaker ist
+   automatisch isoliert, ein gesondertes `breaker.reset()` pro Test ist
+   nicht nötig.
 
 Relevante CLI-Flags / Env-Vars:
 
@@ -590,7 +589,7 @@ flowchart LR
 | Ziel | Verwirklicht durch |
 | --- | --- |
 | **CI/CD-Entkoppelung** — der tägliche Aggregator läuft genau einmal am Tag (erster Cycle-Tick nach Mitternacht Wien), gegated durch ein Inline-`TZ=Europe/Vienna date +%H%M`-Check in `update-cycle.yml`; die README-STATS-Marker werden bei jedem ca. 30-Min-Cycle-Tick aktualisiert | `.github/workflows/update-cycle.yml`, Step „Refresh statistics dashboard and README snapshot" (der separate `generate-stats.yml`-Workflow wurde zusammen mit den per-Provider-Escapes entfernt; Ad-hoc-Regenerationen laufen jetzt über `manual-full-refresh.yml`) |
-| **Strikt null Data-Science-Abhängigkeiten** — kein `numpy`, `pandas`, `matplotlib`; die CI-Installation bleibt sub-sekundär | `scripts/generate_markdown_stats.py` importiert nur `csv`, `collections`, `datetime`, `statistics`, `pathlib`, `zoneinfo`, `argparse` |
+| **Strikt null Data-Science-Abhängigkeiten** — kein `numpy`, `pandas`, `matplotlib`; die CI-Installation bleibt sub-sekundär | `scripts/generate_markdown_stats.py` kommt ohne externe Data-Science-Pakete aus — nur Python-Standardbibliothek (u. a. `csv`, `datetime`, `statistics`, `zoneinfo`) und projekteigene `src.*`-Module |
 | **Append-only, lock-freie Producer** — Einzelzeilen-Writes sind unter POSIX bis `PIPE_BUF` (4 KiB) atomar, parallele Cycle-Ticks können also nicht mitten in einer Zeile Bytes verschachteln | `src/utils/stats.py:_append_row` (Modus `"a"`, kein `flock`) |
 | **Strict-new-Gating für Disruptions** — langlebige Events werden einmal aufgezeichnet, nicht einmal pro Build | `src/build_feed.py:_update_item_state` schreibt nur beim *strikten* State-Cache-Miss (weder `_identity` noch `guid` hatten einen Vorgängereintrag) |
 | **Idempotente, byte-stabile Ausgabe** — ein erneuter Aggregator-Lauf auf identischer Eingabe erzeugt byte-identisches Markdown, damit `git-auto-commit-action` zum No-op wird, wenn nichts geändert hat | Stabiler Sekundär-Sort (alphabetische Tie-Breaks, z. B. `key=lambda pair: (-pair[1], pair[0])` in `_format_providers_section`, `_format_ausfall_directions_section`, `_format_ausfall_lines_section`) in jeder Rangliste; der Renderer liest `now()` nur für den Zeitstempel im Header |

@@ -195,7 +195,7 @@ Weitere Schutzmechanismen:
 * **Atomares Persistieren des Pending-Ledgers**: Der Finalize-Pass
   schreibt zuerst `recently_finalised.json` und dann
   `pending_trips.json`; ein Crash zwischen beiden Schreibvorgängen
-  führt im nächsten Tick im Schlimmsten Fall dazu, dass ein bereits
+  führt im nächsten Tick im schlimmsten Fall dazu, dass ein bereits
   finalisierter Trip nochmals beobachtet wird — der
   `recently_finalised`-Guard verhindert das Doppel-Recording.
 * **Logging** (`src.feed.logging_safe.setup_script_logging` →

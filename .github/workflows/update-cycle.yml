@@ -101,9 +101,10 @@ jobs:
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src
-      # VOR/VAO API credentials — required by ``scripts/update_stammstrecke_
-      # status.py``. Without these env vars VAO rejects every request
-      # with HTTP 400 (errorText="Missing value for required param accessId").
+      # VOR/VAO API credentials — required by ``scripts/update_stammstrecke_hbf.py``
+      # (the active producer; the legacy ``update_stammstrecke_status.py`` remains
+      # only the documented rollback target). Without these env vars VAO rejects
+      # every request with HTTP 400 (errorText="Missing value for required param accessId").
       VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
       VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
       VOR_BASE: ${{ secrets.VOR_BASE }}

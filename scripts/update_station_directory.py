@@ -35,6 +35,10 @@ from collections.abc import Callable, Iterable, Mapping, MutableMapping, Sequenc
 
 import openpyxl
 
+# ``subprocess`` is re-exported on purpose (NOT a public API of this script):
+# ``tests/test_update_station_directory_cache_refresh.py`` patches
+# ``usd.subprocess.run`` and mypy --strict's ``no_implicit_reexport`` requires
+# the name to be in ``__all__`` for that attribute access to type-check.
 __all__ = ["subprocess"]
 
 DEFAULT_SOURCE_URL = "https://data.oebb.at/dam/jcr:fce22daf-0dd8-4a15-80b4-dbca6e80ce38/" "Verzeichnis%20der%20Verkehrsstationen.xlsx"

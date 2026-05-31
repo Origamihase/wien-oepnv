@@ -396,7 +396,7 @@ def _stable_sort_key(item: Any) -> tuple[str, str, str, str]:
     Verwendet ``_identity`` als primäres Kriterium (vom Provider explizit gesetzt
     und bewusst gegen Titel-Kosmetik invariant), dann ``guid``, danach ``title``
     und ``source`` als Tie-Breaker für Items, denen die Hauptfelder fehlen. Items,
-    die keine Dicts sind, sortieren konsistent auf den leeren Tupel.
+    die keine Dicts sind, sortieren konsistent auf das leere Tupel.
     """
     if not isinstance(item, dict):
         return ("", "", "", "")
