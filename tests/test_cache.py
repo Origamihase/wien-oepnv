@@ -38,6 +38,27 @@ def test_read_cache_warns_on_non_list(
     assert "does not contain a JSON array" in caplog.text
 
 
+def test_read_cache_skips_moderately_deep_payload(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """A poisoned cache nested deeper than the Trojan-Source scrubber's
+    ``max_depth`` (50) but shallower than ``json.loads``' ~1000 limit parses
+    cleanly, enters the ``else`` block, then trips ``scrub_trojan_source_
+    primitives`` with ``RecursionError``. That call sits OUTSIDE the read
+    ``try``/``except``, so without the dedicated guard the error escapes
+    ``read_cache``. The guard must treat it as a corrupt cache (skip + alert)."""
+    cache_file = _prepare_cache(tmp_path, monkeypatch, "provider")
+    depth = 100
+    cache_file.write_text("[" * depth + "]" * depth, encoding="utf-8")
+
+    caplog.set_level(logging.WARNING, logger="src.utils.cache")
+
+    assert cache.read_cache("provider") == []
+    assert "nesting depth" in caplog.text
+
+
 @pytest.mark.parametrize("pretty", [False, True])
 def test_write_cache_explicit_pretty_flag(
     tmp_path: Path,
