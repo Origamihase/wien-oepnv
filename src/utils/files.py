@@ -186,6 +186,22 @@ def atomic_write(
             except FileExistsError as exc:
                 raise FileExistsError(f"File {target} already exists") from exc
 
+        # Durability: the file's data blocks were fsync'd above, but the
+        # directory entry created by the rename/link is a separate metadata
+        # write that can be lost on power loss / kernel crash. fsync the parent
+        # directory so the appearance of ``target`` is itself durable. Best
+        # effort: platforms without directory file descriptors (e.g. Windows)
+        # raise ``OSError`` on ``os.open`` of a directory and degrade to a
+        # no-op, matching the os.fchmod handling above.
+        try:
+            dir_fd = os.open(target.parent, os.O_RDONLY)
+            try:
+                os.fsync(dir_fd)
+            finally:
+                os.close(dir_fd)
+        except OSError:
+            pass
+
     except Exception:
         _close_and_cleanup_failed_write(f, fd, tmp_path)
         raise
@@ -648,10 +664,15 @@ def validate_zip_archive_safe(
         )
     total_declared = 0
     for info in infos:
-        if len(info.filename) > max_filename_length:
+        # Measure the encoded byte length: ``zipfile`` decodes entry names to a
+        # ``str``, so ``len()`` would count code points and let a multibyte
+        # (CJK/emoji) name reach ~4x the cap on disk / in a log line — the very
+        # filename-bomb shape this guard defends against.
+        filename_bytes = len(info.filename.encode("utf-8", "surrogatepass"))
+        if filename_bytes > max_filename_length:
             raise ValueError(
                 f"{label} archive entry filename length exceeds threshold: "
-                f"{len(info.filename)} > {max_filename_length} bytes"
+                f"{filename_bytes} > {max_filename_length} bytes"
             )
         if info.file_size > max_per_entry_uncompressed:
             raise ValueError(
