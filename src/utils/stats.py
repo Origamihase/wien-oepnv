@@ -250,8 +250,10 @@ def _sanitize_csv_text_field(value: str) -> str:
 # :func:`station_info` recognises it — so a poisoned upstream string can
 # never silently land as a "location" cell on the dashboard.
 #
-# All upper bounds are explicit (``{1,80}``) to keep the regex engine
-# bounded on adversarial inputs (ReDoS hardening).
+# All upper bounds are explicit (``{1,200}`` for the labelled-segment
+# captures, ``{1,80}`` for the free-text scans) to keep the regex engine
+# bounded on adversarial inputs (ReDoS hardening); the captured value is
+# later clamped to 80 chars in :func:`_normalise_location`.
 _HALTESTELLE_RE: Final = re.compile(
     r"\|\s*Haltestelle:\s*([^|]{1,200})",
     re.IGNORECASE,

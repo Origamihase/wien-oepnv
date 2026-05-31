@@ -1006,7 +1006,11 @@ def _find_provider_issues(
        OEBB-sourced station.
     """
     vor_entries: list[Mapping[str, object]] = []
-    oebb_codes: set[object] = set()
+    # Normalise to ``str`` so an OEBB code serialised as int 900100 and a
+    # VOR code serialised as the string "900100" collide correctly (a set
+    # treats ``int`` and ``str`` members as distinct), mirroring the
+    # ``str(...)`` normalisation used by the sibling identity finders.
+    oebb_codes: set[str] = set()
 
     for entry in stations:
         sources = _extract_source_tokens(entry.get("source"))
@@ -1025,7 +1029,7 @@ def _find_provider_issues(
             # raise and propagate out of the public ``validate_stations``
             # entry point.
             if isinstance(bst_code, str | int) and bst_code:
-                oebb_codes.add(bst_code)
+                oebb_codes.add(str(bst_code))
 
     if len(vor_entries) < 2:
         yield ProviderIssue(
@@ -1062,7 +1066,7 @@ def _find_provider_issues(
         # cannot in principle collide with the (string / int) OEBB
         # entries that were admitted above, so skipping it here is
         # semantically correct as well as crash-safe.
-        if isinstance(bst_code, str | int) and bst_code in oebb_codes:
+        if isinstance(bst_code, str | int) and str(bst_code) in oebb_codes:
             yield ProviderIssue(
                 identifier=_format_identifier(entry),
                 name=str(entry.get("name", "")).strip() or "<unknown>",

@@ -447,7 +447,13 @@ _VOR_TRUSTED_HOSTS = frozenset({"routenplaner.verkehrsauskunft.at"})
 
 
 def _validated_vor_base_url(raw: str) -> str | None:
-    safe = validate_http_url(raw)
+    # ``check_dns=False``: the host is pinned to a single trusted allow-list
+    # value below, so the DNS-rebinding/SSRF resolution adds nothing here. It
+    # would, however, run a blocking DNS lookup at module-import time
+    # (``refresh_base_configuration`` runs at import) and silently DROP a
+    # legitimate override on a transient resolver hiccup. The https-scheme +
+    # exact-host pins remain the real checks.
+    safe = validate_http_url(raw, check_dns=False)
     if not safe:
         return None
     parsed = urlparse(safe)
@@ -779,11 +785,17 @@ def load_request_count(bypass_cache: bool = False) -> tuple[str | None, int]:
     return (None, 0)
 
 
-def _persist_quota_to_disk() -> int:
+def _persist_quota_to_disk(force_date: str | None = None) -> int:
     """Persist any pending ``unsaved_delta`` to disk; **does not increment**.
 
     Caller MUST hold :data:`_QUOTA_LOCK`. Returns the new on-disk total
     (or the unchanged in-memory total when there was nothing to flush).
+
+    *force_date* overrides the day the delta is booked under. It is used
+    by :func:`save_request_count` to flush a still-pending prior-day delta
+    under the PRIOR day's date when a long-lived process crosses the Vienna
+    midnight boundary — otherwise the default (current Vienna day) would
+    mis-credit those requests to the new day and zero the prior ledger.
 
     Split off from :func:`save_request_count` 2026-05-15 to fix a
     quota-inflation bug: the previous :func:`_flush_quota_cache` invoked
@@ -810,9 +822,12 @@ def _persist_quota_to_disk() -> int:
     if _QUOTA_CACHE.get("unsaved_delta", 0) <= 0:
         return cast(int, _QUOTA_CACHE.get("count", 0))
 
-    vienna_tz = ZoneInfo("Europe/Vienna")
-    now_local = datetime.now(vienna_tz)
-    date_iso = now_local.strftime("%Y-%m-%d")
+    if force_date is not None:
+        date_iso = force_date
+    else:
+        vienna_tz = ZoneInfo("Europe/Vienna")
+        now_local = datetime.now(vienna_tz)
+        date_iso = now_local.strftime("%Y-%m-%d")
 
     # Ensure the parent directory exists before attempting to open the lock file.
     # This prevents FileNotFoundError if the directory structure is missing.
@@ -906,6 +921,14 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
 
         # Fast path: update memory cache and defer file writes to reduce I/O bottleneck
         if _QUOTA_CACHE["date"] != date_iso:
+            # Flush any pending prior-day delta BEFORE resetting, booking it
+            # under the prior day's date. A long-lived process that crosses
+            # the Vienna midnight boundary would otherwise silently discard
+            # up to QUOTA_FLUSH_BATCH_SIZE-1 reserved-but-unflushed requests,
+            # under-counting the prior day's on-disk ledger.
+            prior_date = _QUOTA_CACHE["date"]
+            if prior_date and _QUOTA_CACHE.get("unsaved_delta", 0) > 0:
+                _persist_quota_to_disk(force_date=cast(str, prior_date))
             _QUOTA_CACHE["date"] = date_iso
             _QUOTA_CACHE["count"] = 0
             _QUOTA_CACHE["unsaved_delta"] = 0
