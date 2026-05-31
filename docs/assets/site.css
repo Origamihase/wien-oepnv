@@ -766,12 +766,30 @@ code {
   color: var(--c-text);
 }
 
-/* KPI grid */
+/* KPI grid.
+ *
+ * Explicit per-section column counts replace the former
+ * ``auto-fit, minmax(200px, 1fr)``. ``auto-fit`` stretched a single
+ * wrapped tile to full width at intermediate widths (a 4-KPI section read
+ * as 3 + 1 lonely orphan; a 3-KPI section as 2 + 1). Pinning the counts per
+ * section keeps the tiles a balanced block at every breakpoint: the
+ * four-KPI Störungs-/Stammstrecke sections go 1 → 2×2 → 4-up, and the
+ * three-KPI Ausfälle section goes 1 → 2+1 → 3-up. */
 .kpis {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr;
   gap: 0.75rem;
   margin-bottom: 1rem;
+}
+@media (min-width: 480px) {
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 640px) {
+  #ausfaelle-kpis { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 880px) {
+  #stoerungen-kpis,
+  #stammstrecke-kpis { grid-template-columns: repeat(4, 1fr); }
 }
 .kpi {
   background: var(--c-surface);
@@ -814,11 +832,28 @@ code {
   color: var(--c-text-subtle);
 }
 
-/* Chart cards */
+/* Chart cards.
+ *
+ * Explicit per-section column counts (was ``auto-fit, minmax(320px, 1fr)``).
+ * The 24-hour "Nach Tageszeit" charts are intrinsically tall (24 bar rows,
+ * ~700 px); under ``auto-fit`` they were forced into a 3-up row in the
+ * Störungs-/Stammstrecke sections, stretching their short neighbours
+ * (~140–290 px) to 700 px and scattering dead space. They now span the full
+ * row via ``.card--wide`` (as the Ausfälle hour chart already did), so the
+ * remaining short charts pair/triple evenly: two-chart sections go 2-up,
+ * the four-chart Ausfälle section 3-up, and the full-width hour charts get
+ * long, readable bars instead of a cramped third of the row. */
 .chart-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  grid-template-columns: 1fr;
   gap: 0.9rem;
+}
+@media (min-width: 600px) {
+  #stoerungen .chart-grid,
+  #stammstrecke .chart-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 768px) {
+  #ausfaelle .chart-grid { grid-template-columns: repeat(3, 1fr); }
 }
 .card {
   background: var(--c-surface);

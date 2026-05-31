@@ -18,7 +18,7 @@
   <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
   <link rel="alternate" type="application/rss+xml" title="Vienna Public Transport Feed (English)" href="feed.en.xml">
   <link rel="icon" type="image/svg+xml" href="assets/site-favicon.svg">
-  <link rel="stylesheet" href="assets/site.min.css?v=d1732b7e8a2d">
+  <link rel="stylesheet" href="assets/site.min.css?v=ece3072c1cef">
   <!-- The dashboard fetches the statistics CSVs from raw.githubusercontent.com
        once site.min.js has executed; resolving the DNS upfront shaves ~50–200 ms
        off the first CSV request on cold connections. The ``preconnect`` hint
@@ -241,7 +241,7 @@
           <h3 class="card__title" data-i18n="card-by-weekday">Nach Wochentag</h3>
           <div class="bars" id="stoerungen-weekday" role="group" aria-label="Störungen je Wochentag" data-i18n-aria-label="aria-stoerungen-weekday"></div>
         </article>
-        <article class="card">
+        <article class="card card--wide">
           <h3 class="card__title" data-i18n="card-by-hour">Nach Tageszeit</h3>
           <div class="bars" id="stoerungen-hour" role="group" aria-label="Störungen je Stunde" data-i18n-aria-label="aria-stoerungen-hour"></div>
         </article>
@@ -267,16 +267,16 @@
 
       <div class="chart-grid">
         <article class="card">
-          <h3 class="card__title" data-i18n="card-stammstrecke-hour">Ø Verspätung nach Tageszeit</h3>
-          <div class="bars" id="stammstrecke-hour" role="group" aria-label="Ø Verspätung je Stunde" data-i18n-aria-label="aria-stammstrecke-hour"></div>
-        </article>
-        <article class="card">
           <h3 class="card__title" data-i18n="card-stammstrecke-weekday">Ø Verspätung nach Wochentag</h3>
           <div class="bars" id="stammstrecke-weekday" role="group" aria-label="Ø Verspätung je Wochentag" data-i18n-aria-label="aria-stammstrecke-weekday"></div>
         </article>
         <article class="card">
           <h3 class="card__title" data-i18n="card-stammstrecke-direction">Beobachtungen je Richtung</h3>
           <div class="bars" id="stammstrecke-direction" role="group" aria-label="Beobachtungen je Richtung" data-i18n-aria-label="aria-stammstrecke-direction"></div>
+        </article>
+        <article class="card card--wide">
+          <h3 class="card__title" data-i18n="card-stammstrecke-hour">Ø Verspätung nach Tageszeit</h3>
+          <div class="bars" id="stammstrecke-hour" role="group" aria-label="Ø Verspätung je Stunde" data-i18n-aria-label="aria-stammstrecke-hour"></div>
         </article>
       </div>
       <p class="error" id="stammstrecke-error" hidden role="alert"></p>
