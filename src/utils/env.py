@@ -259,8 +259,12 @@ def _parse_value(value: str) -> str:
         parts.append(char)
         idx += 1
 
-    # If no closing quote found, return as is (consistent with flexible parsing)
-    return value
+    # No closing quote: the operator opened a quote and forgot to close it.
+    # Return the decoded CONTENT after the opening quote (consistent with the
+    # closed-quote path above) instead of ``value`` itself — keeping the stray
+    # opening quote yielded values like ``"abc`` that silently corrupt a
+    # token/credential at the use site.
+    return "".join(parts)
 
 
 def _decode_escape(quote_char: str, next_char: str) -> str | None:
