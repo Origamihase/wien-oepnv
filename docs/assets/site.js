@@ -204,13 +204,6 @@
     }
   }
 
-  function tr(key) {
-    if (currentLang === "en" && Object.prototype.hasOwnProperty.call(I18N_EN, key)) {
-      return I18N_EN[key];
-    }
-    return null;
-  }
-
   function statusText(key) {
     const dict = STATUS_TEXT[currentLang] || STATUS_TEXT.de;
     return dict[key] || STATUS_TEXT.de[key] || "";
