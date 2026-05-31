@@ -926,6 +926,14 @@ def build_wl_entries(
                 ):
                     latitude = round(float(lat_val), 6)
                     longitude = round(float(lon_val), 6)
+                    # The flags above were derived from the unreliable name
+                    # lookup because aggregate coords were missing. Now that the
+                    # VOR mapping's coordinates have been adopted, re-derive
+                    # ``in_vienna`` from them (mirroring the aggregate-coord and
+                    # co-located-merge branches) so the persisted flag stays
+                    # consistent with the persisted coordinates — the invariant
+                    # ``test_coordinates_match_in_vienna_flag`` checks.
+                    in_vienna = is_in_vienna(latitude, longitude)
         aliases.update(_alias_variants(station.name, canonical, resolved_name or None))
         # Mirror the legacy WL-auto-promote heuristic from
         # ``update_station_directory._annotate_station_flags`` (a WL-sourced
@@ -1086,8 +1094,6 @@ def _merge_colocated_duplicates(
 def _haversine_m(
     lat1: float, lon1: float, lat2: float, lon2: float
 ) -> float:
-    import math
-
     radius = 6_371_000.0
     p1, p2 = math.radians(lat1), math.radians(lat2)
     dp = math.radians(lat2 - lat1)

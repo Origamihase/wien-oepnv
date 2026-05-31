@@ -158,8 +158,10 @@ def _configure_safe_logging(level: int = logging.INFO) -> None:
 VOR_DAILY_LIMIT: Final[int] = 100
 VOR_QUOTA_FILE: Final[Path] = REPO_ROOT / "data" / "vor_request_count.json"
 
-# Google Places monthly + daily caps. Mirror the env defaults used by
-# the OSM-first / Google-Places-fallback step in ``update-stations.yml``.
+# Google Places monthly cap. (This preflight gates only the monthly total;
+# the daily Places sub-cap is enforced in-script by ``MonthlyQuota``.) Mirror
+# the env defaults used by the OSM-first / Google-Places-fallback step in
+# ``update-stations.yml``.
 PLACES_QUOTA_FILE: Final[Path] = REPO_ROOT / "data" / "places_quota.json"
 PLACES_DEFAULT_MONTHLY: Final[int] = 4000
 
@@ -251,11 +253,15 @@ def _check_places(margin: int, limit: int) -> int:
     expensive workflow steps that run *before* the client is invoked).
     """
     state = _read_json_file(PLACES_QUOTA_FILE)
-    # Cross-month boundary → counter resets to 0.
+    # Cross-month boundary → counter resets to 0. The stored ``month`` is
+    # written by ``MonthlyQuota.current_month_key`` in Europe/Vienna, so the
+    # comparison month MUST also be Vienna-local — using UTC here would, in the
+    # ~1–2 h month-end window where Vienna has rolled over but UTC has not,
+    # falsely treat the counter as freshly reset and pass a near-cap run.
     from datetime import datetime
     from zoneinfo import ZoneInfo
 
-    current_month = datetime.now(ZoneInfo("UTC")).strftime("%Y-%m")
+    current_month = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m")
     stored_month = state.get("month")
     if stored_month != current_month:
         return margin

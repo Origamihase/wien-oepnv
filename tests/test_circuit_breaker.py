@@ -203,6 +203,31 @@ def test_call_half_open_admits_exactly_one_probe() -> None:
     assert_state(breaker, CircuitState.CLOSED)
 
 
+def test_call_half_open_releases_probe_slot_on_base_exception() -> None:
+    # A non-Exception BaseException (KeyboardInterrupt/SystemExit/GeneratorExit)
+    # escaping the probe must still release the HALF_OPEN single-flight slot,
+    # or the breaker wedges forever: state never leaves HALF_OPEN (the lazy
+    # recovery timer only re-fires from OPEN) and every later call is refused.
+    clock = FakeClock()
+    breaker = CircuitBreaker(
+        "test", failure_threshold=1, recovery_timeout=1.0, clock=clock
+    )
+    breaker.record_failure()  # OPEN
+    clock.advance(1.5)  # → HALF_OPEN
+
+    def probe_interrupted() -> str:
+        raise KeyboardInterrupt("probe interrupted")
+
+    with pytest.raises(KeyboardInterrupt):
+        breaker.call(probe_interrupted)
+
+    # The slot was released, so the next probe is admitted (not refused with
+    # CircuitBreakerOpen) and can recover the breaker.
+    assert_state(breaker, CircuitState.HALF_OPEN)
+    breaker.call(lambda: "ok")
+    assert_state(breaker, CircuitState.CLOSED)
+
+
 # ---------- reset() ----------
 
 def test_reset_returns_to_closed() -> None:

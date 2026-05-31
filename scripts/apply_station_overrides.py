@@ -176,7 +176,11 @@ def _alpha_insertion_index(stations: list[dict[str, Any]], target_name: str) -> 
 
 
 def _op_restore(stations: list[dict[str, Any]], override: dict[str, Any]) -> str:
-    diva = override["wl_diva"]
+    # Strip once (mirroring ``_op_patch_coords`` / ``_op_remove``) so the
+    # idempotency key used for ``_find_by_diva`` is identical to the value
+    # stored on the inserted record — otherwise a wl_diva with surrounding
+    # whitespace would miss the lookup and re-insert a duplicate every tick.
+    diva = str(override["wl_diva"]).strip()
     entry_template = override.get("entry")
     if not isinstance(entry_template, dict):
         raise OverrideError(

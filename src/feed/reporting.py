@@ -420,7 +420,11 @@ class RunReport:
     def record_exception(self, exc: Exception) -> None:
         message = f"{exc.__class__.__name__}: {exc}"
         self.exception_message = clean_message(message)
-        self.add_error_message(f"Ausnahme: {message}")
+        # Don't also push an "Ausnahme: …" entry into the error list: every
+        # rendering sink already appends ``exception_message`` to its error
+        # output (guarded by ``not in errors``), and the prefixed copy would
+        # never match that guard — so the exception was being listed twice.
+        # The structured "**Ausnahme:**" field still carries the label.
 
     def prune_logs(self) -> None:
         now = self.started_at

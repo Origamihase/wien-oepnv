@@ -901,7 +901,6 @@ def is_in_vienna(lat: object, lon: object | None = None) -> bool:
             info = station_info(lat)
             if info:
                 return bool(info.in_vienna)
-            import os
             # _normalize_token casefolds and strips noise — apply the same
             # normalisation to the env-derived city token so a deployer
             # setting WIEN_TOKEN="Wien" (or any cased variant) still
@@ -934,7 +933,8 @@ def is_pendler(name: str) -> bool:
 def vor_station_ids() -> tuple[str, ...]:
     """Return the configured VOR station IDs from ``stations.json``.
 
-    The function collects all entries that provide a ``vor_id`` and returns a
+    The function collects entries that lie inside Vienna or in the commuter
+    belt (``in_vienna`` or ``pendler``) and provide a ``vor_id``, returning a
     sorted tuple of distinct identifiers. Numeric aliases are also included to
     preserve legacy identifiers that may still be referenced externally. This
     centralizes the list of
@@ -975,7 +975,8 @@ def _non_vienna_stations_regex() -> re.Pattern[str] | None:
         if name and not name.isdigit() and len(name) >= 4:
             non_vienna.add(name)
 
-        for alias in entry.get("aliases", []):
+        aliases = entry.get("aliases")
+        for alias in aliases if isinstance(aliases, list) else []:
             if alias:
                 alias_str = str(alias).strip()
                 if alias_str and not alias_str.isdigit() and len(alias_str) >= 4:
@@ -1013,7 +1014,8 @@ def _vienna_stations_regex() -> re.Pattern[str]:
             name = str(entry.get("name", "")).strip().lower()
             if name:
                 vienna.add(name)
-            for alias in entry.get("aliases", []):
+            aliases = entry.get("aliases")
+            for alias in aliases if isinstance(aliases, list) else []:
                 if alias:
                     vienna.add(str(alias).strip().lower())
 

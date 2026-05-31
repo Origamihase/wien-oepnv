@@ -35,6 +35,7 @@ from .wl_lines import (
 from .wl_text import (
     KW_EXCLUDE,
     KW_RESTRICTION,
+    _VIENNA_TZ,
     _is_facility_only,
     _tidy_title_wl,
     _title_core,
@@ -662,7 +663,11 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 # If we found a date in the title, we prioritize it if:
                 # 1. We don't have a start date from API.
                 # 2. Or the title date is later than the API start date (suggesting future event published early).
-                if not start or title_date.date() > start.date():
+                # ``title_date`` is anchored to Europe/Vienna midnight, so the
+                # API ``start`` (UTC-aware) must be projected to Vienna before
+                # comparing calendar days — otherwise the day-boundary decision
+                # drifts by one near midnight UTC.
+                if not start or title_date.date() > start.astimezone(_VIENNA_TZ).date():
                     real_start = title_date
 
             # We check activity based on the API start time (publication/validity start),
@@ -747,7 +752,11 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
 
             real_start = start
             if title_date:
-                if not start or title_date.date() > start.date():
+                # ``title_date`` is anchored to Europe/Vienna midnight, so the
+                # API ``start`` (UTC-aware) must be projected to Vienna before
+                # comparing calendar days — otherwise the day-boundary decision
+                # drifts by one near midnight UTC.
+                if not start or title_date.date() > start.astimezone(_VIENNA_TZ).date():
                     real_start = title_date
 
             if not _is_active(start, end, now):
