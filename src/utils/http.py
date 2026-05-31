@@ -23,7 +23,7 @@ from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
 from typing import Any, TypeGuard, cast
 from collections.abc import Container, Mapping, MutableMapping
-from urllib.parse import parse_qsl, urlencode, urljoin, urlparse
+from urllib.parse import ParseResult, parse_qsl, urlencode, urljoin, urlparse
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -1298,6 +1298,20 @@ def _rebuild_netloc(normalized_hostname: str, port: int | None) -> str:
     return final_hostname
 
 
+def _has_embedded_credentials(parsed: ParseResult) -> bool:
+    """True if the URL carries userinfo (``user[:pass]@host``).
+
+    Used both before AND after NFKC hostname normalization. NFKC can map
+    fullwidth / compatibility characters to an ASCII ``@`` (e.g. U+FF20
+    FULLWIDTH COMMERCIAL AT -> ``@``); because ``urlparse`` only splits
+    userinfo at an ASCII ``@``, such a character survives the pre-normalization
+    check as part of the hostname and only becomes a real ``@`` after
+    normalization, re-partitioning the authority and re-introducing userinfo.
+    Extracted so :func:`validate_http_url` stays at/below its C901 baseline.
+    """
+    return bool(parsed.username or parsed.password)
+
+
 def validate_http_url(
     url: str | None, check_dns: bool = True, allowed_ports: Container[int] = (80, 443)
 ) -> str | None:
@@ -1339,7 +1353,7 @@ def validate_http_url(
 
         # Disallow embedded credentials to avoid leaking secrets via logs or proxies.
         # Check this BEFORE normalization to ensure we don't accidentally strip them when reconstructing netloc.
-        if parsed.username or parsed.password:
+        if _has_embedded_credentials(parsed):
             return None
 
         # Security: Normalize only hostname to NFKC to prevent IDNA bypasses and homograph confusion
@@ -1369,6 +1383,19 @@ def validate_http_url(
              # the invariant ``_UNSAFE_URL_CHARS`` is meant to guarantee for URLs
              # that land in the published feed ``<link>``.
              if _UNSAFE_URL_CHARS.search(candidate):
+                 return None
+
+             # NFKC can also map fullwidth / compatibility characters to an
+             # ASCII '@' (e.g. U+FF20 FULLWIDTH COMMERCIAL AT -> '@'). Such a
+             # character is part of the hostname before normalization (urlparse
+             # only splits userinfo at an ASCII '@'), so the pre-normalization
+             # credentials check above cannot see it; after normalization it
+             # re-partitions the authority and re-introduces userinfo. '@' is
+             # intentionally NOT in _UNSAFE_URL_CHARS, so re-validate embedded
+             # credentials on the reconstructed parse result to preserve the
+             # no-credentials invariant (and avoid host-spoofing display
+             # confusion in the published feed <link>).
+             if _has_embedded_credentials(parsed):
                  return None
 
         hostname = parsed.hostname

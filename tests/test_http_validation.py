@@ -32,6 +32,18 @@ def test_validate_http_url_rejects_userinfo() -> None:
     assert validate_http_url("http://user@example.com") is None
 
 
+def test_validate_http_url_rejects_nfkc_userinfo() -> None:
+    # NFKC maps U+FF20 FULLWIDTH COMMERCIAL AT to an ASCII '@'. urlparse does
+    # not split userinfo at the fullwidth form, so the whole authority is the
+    # hostname and the pre-normalization credentials check passes; after
+    # hostname normalization the '@' re-partitions the authority and
+    # re-introduces userinfo (host becomes "evil.com", userinfo "trusted.com").
+    # The post-normalization re-check must reject it. check_dns=False isolates
+    # the syntax/credentials gate from DNS.
+    assert validate_http_url("http://trusted.com＠evil.com/", check_dns=False) is None
+    assert validate_http_url("https://a.example＠b.example", check_dns=False) is None
+
+
 def test_validate_http_url_rejects_excessive_length() -> None:
     long_url = "https://example.com/" + ("a" * 5000)
     assert validate_http_url(long_url) is None
