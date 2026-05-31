@@ -112,3 +112,20 @@ def test_escape_markdown_strips_dangerous_markdown_meta_chars() -> None:
     assert escape_markdown("**bold**") == r"\*\*bold\*\*"
     assert escape_markdown("`code`") == r"\`code\`"
     assert escape_markdown("@here") == r"\@here"
+
+
+def test_escape_markdown_apostrophe_not_corrupted() -> None:
+    """Regression: ``html.escape`` emits the numeric entity ``&#x27;`` for an
+    apostrophe. Pre-fix, ``html.escape`` ran first and the ``#`` step of the
+    per-char loop then backslash-escaped the ``#`` *inside* that entity
+    (``&\\#x27;``), which GFM renders as the literal text ``&#x27;`` instead of
+    an apostrophe. With ``html.escape`` running LAST the entity stays intact.
+    """
+    assert escape_markdown("O'Brien") == "O&#x27;Brien"
+    assert escape_markdown("KeyError: 'station'") == "KeyError: &#x27;station&#x27;"
+    # The apostrophe entity must NOT carry a backslash before its '#'.
+    assert "&\\#x27;" not in escape_markdown("don't")
+    # Double quotes stay a clean entity too (they never contained a '#').
+    assert escape_markdown('say "hi"') == "say &quot;hi&quot;"
+    # '<' / '>' are still neutralised — via html.escape, not the backslash loop.
+    assert escape_markdown("<b>") == "&lt;b&gt;"
