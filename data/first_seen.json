@@ -950,9 +950,9 @@
     "translations": {
       "en": {
         "summary": "irregular intervals in both directions. Reason: rescue operation.",
-        "title": "66A: service obstruction for rescue operation"
+        "title": "66A: rescue operation"
       },
-      "epoch": 2
+      "epoch": 3
     }
   },
   "2c1a7be072fb0c6769578fb03bbd41b65f46e10143beb37ef354c91d9adee656": {
@@ -2203,6 +2203,16 @@
       "epoch": 2
     }
   },
+  "6e99216299a61049561d5a4425452f6c84cc32619ff3840ff8b07559a0c13400": {
+    "first_seen": "2026-05-31T16:30:55.234857+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "67A: interference at a level crossing"
+      },
+      "epoch": 3
+    }
+  },
   "6f2fe1e933b94c1a12afde9a2d517b8be52680e46d798a0016e5fbb36a659a92": {
     "first_seen": "2026-05-30T19:30:46.761058+00:00",
     "translations": {
@@ -2415,6 +2425,16 @@
         "title": "U3: rescue operation"
       },
       "epoch": 2
+    }
+  },
+  "78cfc305e07fdf703edca3374236eb576bf584080a19450b6f7f78fade7ec1e8": {
+    "first_seen": "2026-05-31T16:30:55.234857+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "16A: interference at a level crossing"
+      },
+      "epoch": 3
     }
   },
   "79054466529ebfd0e51e15eb0c8a48ad7079839328f9fe0b572b2bd0ba147755": {
@@ -3436,6 +3456,16 @@
         "title": "O: False Parker service from Rear Zollamtsstra\u00dfe"
       },
       "epoch": 2
+    }
+  },
+  "a9a27425e5abc97ac537f8ede7996cb196df826cae17e716388d06154a7c5243": {
+    "first_seen": "2026-05-31T16:30:55.234857+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "17A: interference at a level crossing"
+      },
+      "epoch": 3
     }
   },
   "a9ff4c17d6db76cc411126f88593644a2ca05540a67a5b3b507c7da67d72fa02": {
