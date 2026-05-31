@@ -44,6 +44,23 @@ _UBAHN_RE: Final = re.compile(r"\bu([1-6])\b", re.IGNORECASE)
 # ., ! or ? followed by whitespace — linear, no backtracking.
 _SENTENCE_SPLIT_RE: Final = re.compile(r"(?<=[.!?])\s+")
 
+# Abbreviations / ordinals whose trailing period is NOT a sentence end.
+# :func:`_split_into_sentences` re-merges any fragment that ``_SENTENCE_SPLIT_RE``
+# cut right after one of these — "Die Haltestelle Nr. 4351 …" and "ab 3. März
+# …" must stay intact (bug b5). Unlike an uppercase-follower gate this leaves a
+# genuine boundary before a lowercase- or number-initial next sentence
+# splittable, so the ÖPNV sentence can still be reordered to the front.
+# Anchored at end-of-fragment; the alternation is plain literals — linear.
+_NO_SENTENCE_BREAK_RE: Final = re.compile(
+    r"(?:"
+    r"\b(?:nr|bzw|ca|usw|etc|inkl|exkl|ggf|evtl|max|min|vgl|str|pl|dr|"
+    r"hausnr|mio|mrd|tel|geb|lt|bspw|abs|kfz)"
+    r"|\bz\.\s?b|\bu\.\s?a|\bd\.\s?h"  # z.B. / u.a. / d.h.
+    r"|\b\d{1,2}"  # day/month ordinal ("3." in "3. März")
+    r")\.\s*$",
+    re.IGNORECASE,
+)
+
 # Public-transport vocabulary for the text signal. A construction site whose
 # title/description mentions any of these affects ÖPNV even when it is not
 # right next to a rail Bahnhof (e.g. a bus/tram stop being relocated). The
@@ -136,6 +153,21 @@ def u_bahn_lines(text: str) -> list[str]:
     return sorted({f"U{digit}" for digit in _UBAHN_RE.findall(text or "")})
 
 
+def _split_into_sentences(text: str) -> list[str]:
+    """Split ``text`` into sentences, re-merging fragments that the linear
+    splitter cut at a German abbreviation or a day/month ordinal so they
+    stay intact (bug b5). No uppercase-follower gate, so a genuine boundary
+    before a lowercase- or number-initial next sentence is still split."""
+    fragments = _SENTENCE_SPLIT_RE.split(text)
+    merged: list[str] = []
+    for fragment in fragments:
+        if merged and _NO_SENTENCE_BREAK_RE.search(merged[-1]):
+            merged[-1] = f"{merged[-1]} {fragment}"
+        else:
+            merged.append(fragment)
+    return merged
+
+
 def oepnv_lead(text: str) -> str:
     """Reorder ``text`` so the first sentence that mentions public transport
     comes first (remaining sentences keep their order).
@@ -148,7 +180,7 @@ def oepnv_lead(text: str) -> str:
 
     if not text:
         return text
-    sentences = _SENTENCE_SPLIT_RE.split(text.strip())
+    sentences = _split_into_sentences(text.strip())
     for index, sentence in enumerate(sentences):
         if _OEPNV_RE.search(sentence):
             if index == 0:
