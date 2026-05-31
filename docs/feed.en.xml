@@ -7,40 +7,17 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 31 May 2026 01:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2026 02:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[25: XGLO440c384b5ae3ae8X0X because of XGLO440c384b5ae3ae8X1X]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a366c32c65098559124d9098d458131cf3e677c92ae8069e81b721bb4295db1a</guid>
-      <pubDate>Sun, 31 May 2026 00:01:00 +0200</pubDate>
-      <ext:first_seen>Sun, 31 May 2026 00:30:40 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 31 May 2026 00:01:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 31 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 31.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 31.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26: service obstruction because of police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5aaba97144ab1f9a110bad400e29c07d9fcca47c4b94a7b2a49b8438a1b01109</guid>
-      <pubDate>Sun, 31 May 2026 00:01:00 +0200</pubDate>
-      <ext:first_seen>Sun, 31 May 2026 00:00:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 31 May 2026 00:01:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 31 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 31.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 31.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: service obstruction because of police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">625312ff0a505ab67720d68ebb14aca83e0a6ed463920bd05b72da054c66ead9</guid>
-      <pubDate>Sun, 31 May 2026 00:01:00 +0200</pubDate>
-      <ext:first_seen>Sun, 31 May 2026 00:00:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 31 May 2026 00:01:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 31 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 31.05.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 31.05.2026]]]></content:encoded>
+      <title><![CDATA[St. Pölten Hauptbahnhof]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;881677</guid>
+      <pubDate>Sun, 31 May 2026 01:44:35 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 21:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 31 May 2026 01:44:35 +0200</ext:starts_at>
+      <description>Due to an overhead-line fault, no rides were possible in St.Pölten Hbf until 01:37 watch. [Since 31.05.2026]</description>
+      <content:encoded><![CDATA[Due to an overhead-line fault, no rides were possible in St.Pölten Hbf until 01:37 watch.<br/>[Since 31.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[34A/N20: construction works]]></title>
@@ -118,6 +95,28 @@
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of lines 62 and 16A towards Oper, Karlsplatz U or Alaudagasse U stop: Schloss Hetzendorf From: Hetzendorfer Straße 79 To: Hetzendorfer … [Since 04.05.2026]</description>
       <content:encoded><![CDATA[Stop change of lines 62 and 16A towards Oper, Karlsplatz U or Alaudagasse U stop: Schloss Hetzendorf From: Hetzendorfer Straße 79 To: Hetzendorfer …<br/>[Since 04.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N81: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6cb07c7304a9b02c49316003964e6675ee0b068a781b6f5ac81424572887ef36</guid>
+      <pubDate>Tue, 28 Apr 2026 14:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 05 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
+      <description>Because of track construction works on the Olympiaplatz, the N81 call bus line is being redirected. [05.05.2026 – 06.06.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works on the Olympiaplatz, the N81 call bus line is being redirected.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Antonsplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22. April 2026, approximately … [Since 16.04.2026]</description>
+      <content:encoded><![CDATA[Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22. April 2026, approximately …<br/>[Since 16.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
