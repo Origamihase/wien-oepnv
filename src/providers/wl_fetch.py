@@ -641,7 +641,13 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             desc_raw = str(ti.get("description") or "").strip()
             # Do NOT strip HTML here, we need to preserve links (Task 3)
             desc = desc_raw
-            if _is_facility_only(title_raw, desc_raw):
+            # Facility check is TITLE-driven (mirrors the ÖBB sibling
+            # _is_facility_or_weather_only, which inspects only the title): a
+            # facility word in the free-text DESCRIPTION is a side-mention and
+            # must NOT drop a genuine line disruption (e.g. "U4: Streckensperre"
+            # whose description also notes an out-of-service lift). Only a
+            # facility-only TITLE drops the item.
+            if _is_facility_only(title_raw):
                 continue
 
             tinfo = _coerce_dict(ti.get("time"))
@@ -726,9 +732,10 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             desc_raw = str(poi.get("description") or "").strip()
             # Do NOT strip HTML here, we need to preserve links (Task 3)
             desc = desc_raw
-            if _is_facility_only(
-                title_raw, desc_raw, str(poi.get("subtitle") or "")
-            ):
+            # Title-driven facility check (see the trafficInfo branch above):
+            # a facility word in the description / subtitle is only a
+            # side-mention and must not drop a genuine line disruption.
+            if _is_facility_only(title_raw):
                 continue
 
             tinfo = _coerce_dict(poi.get("time"))
@@ -943,19 +950,26 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             }
         )
 
-    # E) Sammel-vs.-Einzel: Aggregat entfernen, wenn *alle* Linien als Einzel vorliegen
-    single_line_coverage: dict[str, int] = {}
+    # E) Sammel-vs.-Einzel: Aggregat entfernen, wenn *alle* Linien als Einzel
+    #    vorliegen — aber nur innerhalb DERSELBEN Kategorie. Ohne den
+    #    Kategorie-Schlüssel löscht z. B. ein Hinweis-Einzelitem (U1) + ein
+    #    Hinweis-Einzelitem (U2) ein echtes Störungs-Aggregat {U1,U2}, obwohl
+    #    keine Einzel-*Störung* diese Linien abdeckt — die Störungsmeldung
+    #    verschwände still aus dem Feed. Spiegelt die Kategorie-Prüfung in F).
+    single_line_coverage: dict[tuple[Any, str], int] = {}
     for it in items:
         ls = it.get("_lines_set") or set()
         if len(ls) == 1:
             ln = next(iter(ls))
-            single_line_coverage[ln] = single_line_coverage.get(ln, 0) + 1
+            cov_key = (it.get("category"), ln)
+            single_line_coverage[cov_key] = single_line_coverage.get(cov_key, 0) + 1
 
     filtered: list[dict[str, Any]] = []
     for it in items:
         ls = it.get("_lines_set") or set()
-        if len(ls) >= 2 and all(single_line_coverage.get(ln, 0) > 0 for ln in ls):
-            continue  # Aggregat raus
+        cat = it.get("category")
+        if len(ls) >= 2 and all(single_line_coverage.get((cat, ln), 0) > 0 for ln in ls):
+            continue  # Aggregat raus (nur bei gleicher Kategorie)
         filtered.append(it)
 
     # F) Subset-Bereinigung: Eintrag entfernen, wenn ein anderer Eintrag eine Obermenge der Linien abdeckt
