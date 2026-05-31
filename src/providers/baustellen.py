@@ -75,8 +75,12 @@ _OEPNV_RE: Final = re.compile(
     r"|verkehrsmittel"
     r"|buslinie"
     r"|autobus"
-    r"|u-?bahn"
-    r"|s-?bahn"
+    # Leading \b ONLY: matches "U-Bahn"/"S-Bahn"/"U-Bahnbau"/"U-Bahnstation"
+    # but not the substrings in "Hochschaubahn" ("ubahn") or
+    # "Verkehrsbahnhof" ("sbahn"). A TRAILING \b after "bahn" would wrongly
+    # drop the compound forms (no boundary between "bahn" and "bau") — bug b4.
+    r"|\bu-?bahn"
+    r"|\bs-?bahn"
     r"|öpnv"
     r"|öffentliche[rn]?\s+verkehr"
     r"|\bbus(?:se)?\b"
