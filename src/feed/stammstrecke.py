@@ -381,6 +381,27 @@ def _has_consecutive_exceedance(
     return False
 
 
+def _has_recent_exceedance(
+    observations: list[StammstreckeObservation], now: datetime
+) -> bool:
+    """Return ``True`` when an above-threshold observation lies within
+    :data:`EPISODE_GAP_TOLERANCE` of *now* — i.e. the episode is still
+    bridging a brief dip rather than having genuinely ended.
+
+    Used to gate the persisted-start CLEAR in
+    :func:`compute_stammstrecke_events` with the SAME gap tolerance
+    :func:`_episode_start` applies to the wider lookback window, so a single
+    recovered cron tick (a sub-threshold sample between two highs) that makes
+    the narrow ``feed_window`` trigger gate fail does NOT wipe the persisted
+    ``first_seen`` / GUID of a still-running disruption.
+    """
+    cutoff = now - EPISODE_GAP_TOLERANCE
+    return any(
+        obs.delay_minutes > DELAY_THRESHOLD_MINUTES and obs.timestamp >= cutoff
+        for obs in observations
+    )
+
+
 def _build_event(
     *,
     direction: _Direction,
@@ -505,12 +526,19 @@ def compute_stammstrecke_events(
         # in-window observations (easier for end users to interpret).
         # See module docstring "Window lengths".
         if not recent or not _has_consecutive_exceedance(recent):
-            # Trigger no longer fires for this direction → the episode
-            # has ended. Drop any persisted start so the NEXT episode
-            # (after EPISODE_GAP_TOLERANCE has elapsed and a fresh trigger
-            # fires) starts with a fresh ``first_seen`` / GUID instead of
-            # inheriting the previous disruption's identity.
-            persisted_starts.pop(direction.target_label, None)
+            # The narrow 1 h feed_window trigger gate is not firing this cycle.
+            # Only FORGET the episode identity once the episode has GENUINELY
+            # ended — i.e. no above-threshold observation remains within
+            # EPISODE_GAP_TOLERANCE of ``current``. A single recovered cron
+            # tick (a brief sub-threshold dip between two highs) makes this
+            # gate fail while ``_episode_start`` still bridges the dip over the
+            # wider episode_lookback window; clearing the persisted start here
+            # would wipe the true ``first_seen``, change the GUID, and
+            # re-publish the ongoing disruption as brand-new (jumping the
+            # rendered ``[Seit DD.MM.YYYY]`` date). Gate the clear on the SAME
+            # gap tolerance ``_episode_start`` uses so the two windows agree.
+            if not _has_recent_exceedance(direction_obs, current):
+                persisted_starts.pop(direction.target_label, None)
             continue
         avg_delay = mean([obs.delay_minutes for obs in recent])
         computed_start = _episode_start(direction_obs=direction_obs, now=current)

@@ -179,6 +179,56 @@ def test_persisted_start_is_cleared_when_episode_ends(tmp_path: Path) -> None:
     assert "Praterstern" not in sm._load_episode_starts(starts_path)
 
 
+def test_single_recovered_tick_does_not_reset_episode_identity(
+    tmp_path: Path,
+) -> None:
+    """A brief sub-threshold dip between two highs (one recovered cron tick)
+    makes the 1 h feed_window trigger gate fail for a cycle, but the episode is
+    still bridged by ``_episode_start`` over the 6 h window. Pre-fix the
+    persisted start was wiped on that gate miss, so the next firing cycle
+    re-derived the start from the slid 6 h window edge and re-published the
+    disruption as brand-new. Post-fix the identity stays stable across the dip.
+    """
+    base = datetime(2026, 5, 30, 0, 0, tzinfo=VIENNA_TZ)
+    dip_ts = base + timedelta(hours=7, minutes=30)
+    starts_path = tmp_path / "episode_starts.json"
+
+    def run(hour: int, minute: int) -> list[dict[str, Any]]:
+        # Rewrite the ledger with only the rows that exist UP TO this cycle's
+        # ``now`` (the reader does not cap future rows, and the real cron writes
+        # rows as time progresses). 12.0 min every 30 min, except a 5.0 dip at
+        # 07:30.
+        now = datetime(2026, 5, 30, hour, minute, tzinfo=VIENNA_TZ)
+        rows: list[tuple[datetime, str, float]] = []
+        i = 0
+        while (ts := base + timedelta(minutes=30 * i)) <= now:
+            rows.append((ts, "Praterstern", 5.0 if ts == dip_ts else 12.0))
+            i += 1
+        _write_obs_ledger(tmp_path, year=2026, rows=rows)
+        return _patched_compute(now=now, stats_dir=tmp_path, starts_path=starts_path)
+
+    # Establish the persisted start while 00:00 is still inside the 6 h lookback.
+    early = run(3, 0)
+    assert len(early) == 1
+    true_first_seen = early[0]["first_seen"]
+    true_guid = early[0]["guid"]
+
+    # Dip cycle at 08:00: the 07:30 sub-threshold sample sits between the only
+    # two in-feed-window highs (07:00, 08:00), breaking the consecutive gate so
+    # no event fires — but the persisted start must NOT be wiped, because a high
+    # remains within EPISODE_GAP_TOLERANCE of now.
+    dip = run(8, 0)
+    assert dip == []
+    assert "Praterstern" in sm._load_episode_starts(starts_path)
+
+    # Recovery cycle at 08:30: the gate fires again. The identity must match the
+    # original 00:00 start, not the slid 6 h-window edge (02:30).
+    recovered = run(8, 30)
+    assert len(recovered) == 1
+    assert recovered[0]["first_seen"] == true_first_seen
+    assert recovered[0]["guid"] == true_guid
+
+
 def test_load_save_round_trip_preserves_timezone(tmp_path: Path) -> None:
     """A persisted aware datetime must round-trip without losing its offset."""
     path = tmp_path / "episode_starts.json"
