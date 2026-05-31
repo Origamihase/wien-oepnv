@@ -166,6 +166,14 @@ _STOP_WORDS = {
     "hbf",
     "bf",
     "bhf",
+    # The ubiquitous city qualifier — nearly every Vienna station name
+    # carries it, so without this two DIFFERENT Vienna routes that merely
+    # share "Wien" reach the overlap threshold and wrongly merge (bug b6).
+    # Safe to drop only because _normalize_name first folds Hbf/Bf into
+    # their spelled-out forms, so cross-provider Hbf/Hauptbahnhof pairs
+    # still share the distinctive station token.
+    "wien",
+    "vienna",
 }
 
 
@@ -200,8 +208,20 @@ def _parse_title(title: str) -> tuple[set[str], str]:
 
 
 def _normalize_name(name: str) -> str:
-    """Removes digits and lowercases the name for comparison."""
-    return re.sub(r"\d+", "", name).lower().strip()
+    """Lowercase, expand the Bahnhof-family abbreviations (Hbf/Bhf/Bf →
+    …bahnhof) so an abbreviated station name and its spelled-out form
+    tokenise identically, then drop digits for comparison.
+
+    The abbreviation expansion is what lets ``wien`` safely join the stop
+    words (bug b6): "Wien Hbf" and "Wien Hauptbahnhof" reduce to the same
+    meaningful token ``hauptbahnhof`` and still dedup across providers,
+    while two different routes that merely share "Wien" no longer do.
+    """
+    lowered = re.sub(r"\d+", "", name).lower()
+    lowered = re.sub(r"\bhbf\b", "hauptbahnhof", lowered)
+    lowered = re.sub(r"\bbhf\b", "bahnhof", lowered)
+    lowered = re.sub(r"\bbf\b", "bahnhof", lowered)
+    return lowered.strip()
 
 
 def _get_tokens(name: str) -> set[str]:
