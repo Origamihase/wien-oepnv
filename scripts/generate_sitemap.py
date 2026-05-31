@@ -24,13 +24,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-try:
-    from src.utils.files import atomic_write
-    from src.utils.http import validate_public_feed_url
-except ModuleNotFoundError:
-    # Fallback if src is not a package or run differently
-    from utils.files import atomic_write  # type: ignore[no-redef]
-    from utils.http import validate_public_feed_url  # type: ignore[no-redef]
+from src.utils.files import atomic_write  # noqa: E402
+from src.utils.http import validate_public_feed_url  # noqa: E402
 
 DOCS_DIR = REPO_ROOT / "docs"
 DEFAULT_BASE_URL = "https://origamihase.github.io/wien-oepnv"

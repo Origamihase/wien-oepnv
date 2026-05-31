@@ -578,7 +578,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
     werden). Die 30-Tage-Statistik im README überspannt den
     Migrations-Tag und zeigt deshalb für einige Wochen eine
     Diskontinuität, die ein Mess-Semantik-Wechsel ist, kein Bug
-    und keine realer Qualitäts-Veränderung. Wer Werte vor und
+    und keine reale Qualitäts-Veränderung. Wer Werte vor und
     nach 2026-05-15 vergleicht, sollte diesen Stichtag im Auge
     behalten.
   * `data/stats/stammstrecke_<YYYY>.csv`-Schema und
@@ -854,7 +854,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 * **Security/Liveness**: Stammstrecke-Monitor erzwingt jetzt einen
   echten HTTP-Timeout für pyhafas-Aufrufe. Das vorherige Code-Snippet
   versuchte, ``client.profile.requests.timeout`` zu setzen — pyhafas
-  kennt diese Attribut-Pfad nicht (``request_session`` heißt das
+  kennt diesen Attribut-Pfad nicht (``request_session`` heißt das
   Attribut), und ``requests.Session`` honoriert ``session.timeout``
   als Attribut ohnehin nicht. Resultat: ein hängender HAFAS-Endpoint
   hätte den Cron-Run bis zur GitHub-Actions-Wallclock (6 h) blockiert

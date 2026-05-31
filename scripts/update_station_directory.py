@@ -35,8 +35,6 @@ from collections.abc import Callable, Iterable, Mapping, MutableMapping, Sequenc
 
 import openpyxl
 
-__all__ = ["subprocess"]
-
 DEFAULT_SOURCE_URL = "https://data.oebb.at/dam/jcr:fce22daf-0dd8-4a15-80b4-dbca6e80ce38/" "Verzeichnis%20der%20Verkehrsstationen.xlsx"
 _ROOT = Path(__file__).resolve().parents[1]
 if str(_ROOT) not in sys.path:

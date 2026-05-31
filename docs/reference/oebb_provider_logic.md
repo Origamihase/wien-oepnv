@@ -20,7 +20,7 @@ Die folgende Matrix veranschaulicht, wann eine Verbindung als "Wien-relevant" ei
 | **Unbekannt** | **Unbekannt** | ❌ **Verworfen** | Komplett unbekannte Strecke, typischerweise reiner Fern-/Auslandsverkehr (z. B. Budapest ↔ Bratislava). |
 | **Wien** | **Wien** | ✅ **Behalten** | Innerstädtische Verbindung. |
 | **Wien** | **Pendlerbahnhof** | ✅ **Behalten** | Relevante Pendelstrecke. |
-| **Wien** | **Unbekannt** | ✅ **Behalten** | Mindestens ein Endpunkt ist bekannt und liegt in Wien. |
+| **Wien** | **Unbekannt** | ❌ **Verworfen** | Ein unbekannter Endpunkt disqualifiziert die gesamte Strecke; behalten werden nur Strecken, deren bekannte Endpunkte allesamt Wien/Pendler sind und mindestens einen Wien-Bezug haben. |
 | **Pendlerbahnhof** | **Pendlerbahnhof** | ❌ **Verworfen** | Strecke außerhalb Wiens ohne direkten Wien-Bezug. |
 | **Pendlerbahnhof**| **Unbekannt** | ❌ **Verworfen** | Wenn mindestens eine Station bekannt ist, *muss* zwingend auch eine in Wien liegen (Asymmetrischer Pendler-Check). |
 

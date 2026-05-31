@@ -26,7 +26,7 @@ name: Update station directory
 #
 # VOR is intentionally not invoked from this workflow (the project
 # reserves the VAO 100/day budget for the Stammstrecke monitor — see
-# ``build-feed.yml``). VOR station IDs come from the
+# ``update-cycle.yml``). VOR station IDs come from the
 # pinned ``data/vor-haltestellen.csv`` snapshot.
 on:
   schedule:

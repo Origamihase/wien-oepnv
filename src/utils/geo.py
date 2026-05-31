@@ -160,7 +160,7 @@ def apply_coordinate_inertia(
     upstream payload), while invalid EXISTING falls through to
     "accept new" (recovery from corrupt local cache). Hardened
     against ``NaN`` and out-of-range values that an earlier draft
-    would have propagated under rule 4.
+    would have propagated.
 
     Args:
         existing_lat: Existing latitude or ``None``.

@@ -315,7 +315,7 @@ def main(argv: list[str] | None = None) -> int:
     serialisable = scrubbed if isinstance(scrubbed, dict) else payload
     # ``atomic_write`` (tempfile + ``os.replace``) so a crash / SIGINT
     # mid-dump cannot leave a half-written JSON snapshot in the
-    # repository — ``data/oebb-geonetz-stops.json`` is committed to
+    # repository — ``data/oebb_geonetz_stops.json`` is committed to
     # ``main`` by the operator's station-refresh prep and consumed by
     # ``scripts/update_station_directory.py:_enrich_with_geonetz`` on
     # the next cron tick. Mirrors the canonical writer pattern used by

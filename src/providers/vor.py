@@ -202,30 +202,10 @@ def _load_int_env(name: str, default: int) -> int:
     return value
 
 
-# Security: env-supplied regexes (``VOR_BUS_INCLUDE_REGEX`` /
-# ``VOR_BUS_EXCLUDE_REGEX``) are compiled here and matched against every
-# bus-line token during feed building. An operator typo or compromised
-# config store could supply a ReDoS-vulnerable pattern (e.g. ``(a+)+$``,
-# ``(.*)*``) that locks the build process at 100% CPU on certain inputs.
-# We defend with two cheap, stdlib-only layers before ``re.compile``:
-# (1) bound the pattern length so an oversized input cannot exhaust
-# memory during compilation, and (2) heuristically reject the most
-# common ReDoS construction — nested unbounded quantifiers around a
-# group, i.e. ``(...+)+`` / ``(...*)*`` / ``(...?)+`` etc. The default
-# bus filter patterns above contain no such constructions, so the
-# fallback path stays safe. Detection is intentionally heuristic; it
-# does not catch every ReDoS shape (alternation overlap such as
-# ``(a|aa)+`` slips through), but it blocks the patterns that have
-# historically caused real outages and falls back to the project's
-# pre-vetted defaults whenever a check fires.
-
-
-
-
 # Security: ``DEFAULT_HTTP_TIMEOUT`` (15s) is the Slowloris-defence ceiling for
-# every VOR request — both the connect and read budget for ``fetch_content_safe``
-# at lines 1173 and 1436, plus the cache-update script at
-# ``scripts/update_vor_stations.py``. ``_load_int_env`` only enforces a lower
+# every VOR request — both the connect and read budget for VOR's HTTP calls
+# (``fetch_content_safe`` in :mod:`src.utils.http`), plus the cache-update
+# script at ``scripts/update_vor_stations.py``. ``_load_int_env`` only enforces a lower
 # bound (``value > 0``), so a benign-looking env override such as
 # ``VOR_HTTP_TIMEOUT=99999`` (intentional misconfig, leaked CI env, or
 # compromised secret store) would silently let a single sluggish or attacker-
@@ -239,28 +219,6 @@ HTTP_TIMEOUT = min(
     _load_int_env("VOR_HTTP_TIMEOUT", DEFAULT_HTTP_TIMEOUT),
     DEFAULT_HTTP_TIMEOUT,
 )
-# Security: ``MAX_VOR_FETCH_TIMEOUT`` is the parameter-boundary Slowloris-defence
-# ceiling for the public ``fetch_events`` / ``fetch_vor_disruptions`` APIs. The
-# env-source clamp on ``HTTP_TIMEOUT`` above bounds operator-controlled config,
-# but the public ``timeout`` parameter bypassed it via
-# ``timeout or HTTP_TIMEOUT`` at ``_fetch_departure_board_for_station`` — a
-# caller passing ``timeout=99999`` (intentional misconfig, leaked CI env,
-# compromised secret store, or a hypothetical future ``VOR_FETCH_TIMEOUT`` env
-# var wired into a maintenance script) would let a sluggish or attacker-
-# controlled VAO peer hold a worker for ~28 hours per fetch, stalling the cron
-# pipeline. Capping at the public API entry point (defense-in-depth) means
-# every caller — current and future — inherits the ceiling. Same TIGHTEN-only
-# contract as ``MAX_OEBB_FETCH_TIMEOUT`` (``src/providers/oebb.py``) and
-# ``MAX_WL_FETCH_TIMEOUT`` (``src/providers/wl_fetch.py``) — the parameter-
-# boundary defense-in-depth pattern documented in the 2026-05-07 Slowloris-Cap
-# Drift Round 4 journal entry, applied to the VOR sibling that round
-# explicitly named as still-open ("VOR has env-source cap via
-# ``min(VOR_HTTP_TIMEOUT, DEFAULT_HTTP_TIMEOUT)`` but the public
-# ``fetch_events(timeout=99999)`` bypasses it via ``timeout or HTTP_TIMEOUT``").
-# Cap value matches the VOR-specific 15s ceiling (``DEFAULT_HTTP_TIMEOUT``)
-# rather than ``feed_config.MAX_PROVIDER_TIMEOUT`` (25s) because VOR has chosen
-# a tighter local Slowloris contract — orchestrator overrides at 25s are
-# already documented as needing to be tightened to VOR's 15s ceiling.
 # Security: ``DEFAULT_MAX_REQUESTS_PER_DAY`` (100) is the *contractual* hard
 # cap of the "VAO Start" tier — exceeding it risks suspension of the access
 # ID by the upstream provider. ``_load_int_env`` itself only enforces a
@@ -284,7 +242,7 @@ DEFAULT_QUOTA_FLUSH_BATCH_SIZE = 10
 # Security: cap ``VOR_QUOTA_FLUSH_BATCH_SIZE`` at ``MAX_REQUESTS_PER_DAY``
 # (the contractual hard cap of 100/day for the VAO Start tier). The batch
 # size is the *loss window* if the process is killed abnormally — the
-# ``atexit``-registered flush at line 126 does NOT run on SIGKILL / OOM
+# ``atexit``-registered flush (``_flush_quota_cache``) does NOT run on SIGKILL / OOM
 # kill / kernel panic / container reaper, so any unflushed delta is
 # silently dropped. A benign-looking env override such as
 # ``VOR_QUOTA_FLUSH_BATCH_SIZE=99999`` (intentional misconfig, leaked CI
@@ -380,31 +338,20 @@ def _write_request_count_file(path: Path, payload: Mapping[str, Any]) -> None:
 
 
 
-# Security: per-loader byte caps for the four on-disk parsers in this
-# module. Pre-fix every site used the unsafe ``Path.read_text()`` ->
-# ``json.loads()`` shape with no size cap whatsoever. A planted huge file
-# (compromised CI runner / partial flush + power loss / parallel
-# orchestrator's atomic state swap) buffered the entire file into memory
-# and propagated ``MemoryError`` (a ``BaseException`` subclass that is NOT
-# caught by ``except (FileNotFoundError, OSError, json.JSONDecodeError,
-# RecursionError)``) past every catch tuple — crashing the entire VOR
-# provider import chain (``_load_station_name_map`` runs at module-import
-# time via ``STATION_NAME_MAP = _load_station_name_map()``) or the per-
-# request quota debit (``load_request_count`` / ``save_request_count``).
-# Each cap is sized at ~100x the largest legitimately-written shape so
-# the cap does NOT introduce a false-positive rejection of valid state:
-#   - ``vor-haltestellen.mapping.json`` is ~35 KiB at HEAD; 5 MiB is
-#     ~143x and accommodates 4-5x growth in upstream VAO catalogue.
-#   - ``vor_request_count.json`` is a single small object
-#     ``{"date": "...", "requests": N}`` (~50 bytes); 1 MiB matches the
-#     existing ``places/quota.py:MAX_QUOTA_FILE_BYTES`` ceiling.
-#   - ``vor-haltestellen.csv`` is ~8 KiB at HEAD; 5 MiB is ~625x and
-#     accommodates a multi-region catalogue if the VAO scope expands.
-# Mirrors the per-loader cap pattern in ``src/utils/cache.py``
-# (``MAX_CACHE_FILE_BYTES``) / ``src/places/quota.py``
-# (``MAX_QUOTA_FILE_BYTES``) / ``src/places/tiling.py``
-# (``MAX_TILE_FILE_BYTES``) — same threat-model bound applied to the
-# previously-uncapped VOR provider sites.
+# Security: byte cap for the on-disk quota parser in this module. Pre-fix the
+# site used the unsafe ``Path.read_text()`` -> ``json.loads()`` shape with no
+# size cap whatsoever. A planted huge file (compromised CI runner / partial
+# flush + power loss / parallel orchestrator's atomic state swap) buffered the
+# entire file into memory and propagated ``MemoryError`` (a ``BaseException``
+# subclass that is NOT caught by ``except (FileNotFoundError, OSError,
+# json.JSONDecodeError, RecursionError)``) past every catch tuple — crashing the
+# per-request quota debit (``load_request_count`` / ``save_request_count``).
+# ``vor_request_count.json`` is a single small object
+# ``{"date": "...", "requests": N}`` (~50 bytes); 1 MiB matches the existing
+# ``places/quota.py:MAX_QUOTA_FILE_BYTES`` ceiling. Mirrors the per-loader cap
+# pattern in ``src/utils/cache.py`` (``MAX_CACHE_FILE_BYTES``) /
+# ``src/places/quota.py`` (``MAX_QUOTA_FILE_BYTES``) / ``src/places/tiling.py``
+# (``MAX_TILE_FILE_BYTES``).
 MAX_VOR_QUOTA_FILE_BYTES = 1 * 1024 * 1024
 
 
