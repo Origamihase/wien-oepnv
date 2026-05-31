@@ -418,6 +418,27 @@ def test_leg_departure_delay_handles_early_across_midnight_rollover() -> None:
     assert script._leg_departure_delay_minutes(leg) == -11.0
 
 
+def test_leg_departure_delay_applies_midnight_heuristic_with_empty_rtdepdate() -> None:
+    """bug: an EMPTY-string ``rtDepDate`` ('') is falsy but not ``None``, so
+    without the ``or None`` normalisation the ``rt_date_explicit is None`` gate
+    skipped the midnight-rollover heuristic — a 23:55 leg departing 00:05 then
+    yielded a bogus ≈ −23h50m delay instead of the true ~10 min.
+    """
+
+    leg = {
+        "type": "JNY",
+        "name": "S 1",
+        "category": "S",
+        "Origin": {
+            "date": "2026-05-09",
+            "time": "23:55:00",
+            "rtTime": "00:05:00",  # 10 min late, lands on the next day.
+            "rtDepDate": "",  # empty string → must count as "no explicit date".
+        },
+    }
+    assert script._leg_departure_delay_minutes(leg) == 10.0
+
+
 def test_leg_departure_delay_skips_unparseable_schedule() -> None:
     """When the scheduled timestamp is malformed we cannot compute a
     delta — return ``None`` rather than risk a misleading 0.
