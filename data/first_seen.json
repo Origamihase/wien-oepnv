@@ -1240,6 +1240,7 @@
     "first_seen": "2026-06-01T10:00:57.732508+00:00",
     "translations": {
       "en": {
+        "summary": "After an service obstruction there are different intervals.",
         "title": "5: service obstruction because of rescue operation"
       },
       "epoch": 3
@@ -2743,6 +2744,15 @@
         "title": "Antonsplatz from 13 to 18"
       },
       "epoch": 1
+    }
+  },
+  "859fe0941e8bf4468bc802c2aeb56d9f7d635123f70d902547a35e2bf9a98daa": {
+    "first_seen": "2026-06-01T11:01:25.565368+00:00",
+    "translations": {
+      "en": {
+        "title": "41E: replacement bus 41E stops at W\u00e4hringer Str 200"
+      },
+      "epoch": 3
     }
   },
   "861eb589822612a9402ffcc15457641ff4cf74d6a9632da81a7b59b0d8e8dda0": {
@@ -4682,10 +4692,10 @@
     "first_seen": "2026-05-29T16:30:45.399357+00:00",
     "translations": {
       "en": {
-        "summary": "Stop change of line N8 towards Handelskai S U Stop: Nu\u00dfdorfer Stra\u00dfe U From: W\u00e4hringer G\u00fcrtel 170 To: Heiligenst\u00e4dter Stra\u00dfe ONR. 2 Duration: From \u2026",
+        "summary": "Stop change of line N8 towards Handelskai S U Stop: Nu\u00dfdorfer Stra\u00dfe U From: W\u00e4hringer Belt 170 To: Heiligenst\u00e4dter Stra\u00dfe ONr. 2 Duration: From \u2026",
         "title": "N8: Nu\u00dfdorfer Stra\u00dfe U"
       },
-      "epoch": 2
+      "epoch": 3
     }
   },
   "e78eaae06ed5d3cf090d4186a3c0813bd59271e475fa87f71ff2ee4b48e3d505": {
