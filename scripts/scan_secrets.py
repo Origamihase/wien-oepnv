@@ -15,7 +15,7 @@ if str(SRC_DIR) not in sys.path:
 try:  # pragma: no cover - executed both as script and module
     from utils.secret_scanner import load_ignore_file, scan_repository
 except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.secret_scanner import (  # type: ignore
+    from src.utils.secret_scanner import (
         load_ignore_file,
         scan_repository,
     )

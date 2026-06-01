@@ -50,8 +50,11 @@ def main() -> int:
         )
         return 1
 
+    # Defensive: fetch_events() is annotated list[...], so mypy --strict
+    # sees this runtime contract guard as unreachable. Keep it regardless —
+    # a provider regression returning a non-list must not corrupt the cache.
     if not isinstance(items, list):
-        logger.error(
+        logger.error(  # type: ignore[unreachable]
             "Unexpected fetch_events() return type %s; keeping existing cache.",
             type(items).__name__,
         )
