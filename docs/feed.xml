@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 01 Jun 2026 10:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 10:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[52: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3f86886b555d7056de7a7b4762c1e700d24dad5c50cc8ca7fbd1c1214ae5d9d6</guid>
+      <pubDate>Mon, 01 Jun 2026 10:29:00 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 10:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 10:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 01 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 11:00 Uhr. Grund: Feuerwehreinsatz im Bereich Linzer Straße 75. [Am 01.06.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 11:00 Uhr. Grund: Feuerwehreinsatz im Bereich Linzer Straße 75.<br/>[Am 01.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +27,7 @@
       <pubDate>Mon, 01 Jun 2026 08:31:00 +0200</pubDate>
       <ext:first_seen>Mon, 01 Jun 2026 09:00:52 +0200</ext:first_seen>
       <ext:starts_at>Mon, 01 Jun 2026 08:31:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 01 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 01 Jun 2026 10:28:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 01.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 01.06.2026]]]></content:encoded>
     </item>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 11 Jul 2026 01:00:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Lerchenfelder Straße wird die Linie 46 kurzgeführt. [16.03.2026 – 11.07.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Lerchenfelder Straße wird die Linie 46 kurzgeführt.<br/>[16.03.2026 – 11.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[86A/87A: Wiedgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">44bd2fe8108b407c7c9653fabfa95a39189a07fb0342ddb750f6642f5419a53a</guid>
-      <pubDate>Thu, 07 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 07 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 07 May 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 86A in Richtung Breitenlee, Arnikaweg und 87A in Richtung Hermann-Gebauer-Straße Haltestelle: Wiedgasse Von: Wiedgasse vor Konstanziagasse … [07.05.2026 – 07.05.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 86A in Richtung Breitenlee, Arnikaweg und 87A in Richtung Hermann-Gebauer-Straße Haltestelle: Wiedgasse Von: Wiedgasse vor Konstanziagasse …<br/>[07.05.2026 – 07.05.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
