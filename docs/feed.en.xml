@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 01 Jun 2026 05:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 06:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40A: Haltestelle aufgelassen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
+      <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 01 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 01.06.2026]</description>
+      <content:encoded><![CDATA[[Am 01.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Busse halten Dänenstraße ggü. 2]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5</guid>
+      <pubDate>Mon, 01 Jun 2026 05:37:22 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:37:22 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 01 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 01.06.2026]</description>
+      <content:encoded><![CDATA[[Am 01.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: Busse halten Gregor-Mendel-Straße ggü. 33]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
+      <pubDate>Mon, 01 Jun 2026 05:35:55 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:35:55 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 01 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 01.06.2026]</description>
+      <content:encoded><![CDATA[[Am 01.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62A: Buses stop at Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,6 +52,17 @@
       <ext:ends_at>Tue, 02 Jun 2026 00:35:00 +0200</ext:ends_at>
       <description>[01.06.2026 – 02.06.2026]</description>
       <content:encoded><![CDATA[[01.06.2026 – 02.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ee9d3f3d2f7894fa11d971e1ac5f847be3f219359a43a6a87138d443f4bb3996</guid>
+      <pubDate>Mon, 01 Jun 2026 05:36:00 +0200</pubDate>
+      <ext:first_seen>Sun, 31 May 2026 20:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:36:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 01 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 01.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 01.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[34A/N20: construction works]]></title>
@@ -74,50 +118,6 @@
       <ext:ends_at>Fri, 07 May 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of lines 86A towards Breitenlee, Arnikaweg and 87A towards Hermann-Gebauer-Straße stop: Wiedgasse From: Wiedgasse before Konstanziagasse … [07.05.2026 – 07.05.2027]</description>
       <content:encoded><![CDATA[Stop change of lines 86A towards Breitenlee, Arnikaweg and 87A towards Hermann-Gebauer-Straße stop: Wiedgasse From: Wiedgasse before Konstanziagasse …<br/>[07.05.2026 – 07.05.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/39A: Barawitzkagasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9faf76903caede3d049fa87cc6a801cc3c1d072c7cc96a41782a250f795c055a</guid>
-      <pubDate>Tue, 05 May 2026 15:50:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 05 May 2026 15:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 05 May 2027 23:59:00 +0200</ext:ends_at>
-      <description>Stop transfer of lines 10A and 39A towards station Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse 10-12 Duration: From … [05.05.2026 – 05.05.2027]</description>
-      <content:encoded><![CDATA[Stop transfer of lines 10A and 39A towards station Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse 10-12 Duration: From …<br/>[05.05.2026 – 05.05.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A/62: Schloss Hetzendorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7163817bf0ae8c45bb1051f68cf2cc608d28cbfda8022471592d0b97a140183b</guid>
-      <pubDate>Mon, 04 May 2026 16:30:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 16:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of lines 62 and 16A towards Oper, Karlsplatz U or Alaudagasse U stop: Schloss Hetzendorf From: Hetzendorfer Straße 79 To: Hetzendorfer … [04.05.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Stop change of lines 62 and 16A towards Oper, Karlsplatz U or Alaudagasse U stop: Schloss Hetzendorf From: Hetzendorfer Straße 79 To: Hetzendorfer …<br/>[04.05.2026 – 31.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N81: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6cb07c7304a9b02c49316003964e6675ee0b068a781b6f5ac81424572887ef36</guid>
-      <pubDate>Tue, 28 Apr 2026 14:05:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 05 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 00:30:00 +0200</ext:ends_at>
-      <description>Because of track construction works on the Olympiaplatz, the N81 call bus line is being redirected. [05.05.2026 – 06.06.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works on the Olympiaplatz, the N81 call bus line is being redirected.<br/>[05.05.2026 – 06.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Antonsplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
-      <pubDate>Thu, 16 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 16 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22. April 2026, approximately … [16.04.2026 – 16.04.2027]</description>
-      <content:encoded><![CDATA[Stop change of line 7A towards Reumannplatz U Stop: Antonsplatz From: Antonsplatz 13 before Rechberggasse To: Antonsplatz 16 Duration: 22. April 2026, approximately …<br/>[16.04.2026 – 16.04.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
