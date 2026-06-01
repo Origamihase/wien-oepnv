@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 01 Jun 2026 12:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 12:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[5: service obstruction because of rescue operation]]></title>
@@ -41,17 +41,6 @@
       <ext:ends_at>Mon, 01 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: rescue operation. [On 01.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 01.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3f86886b555d7056de7a7b4762c1e700d24dad5c50cc8ca7fbd1c1214ae5d9d6</guid>
-      <pubDate>Mon, 01 Jun 2026 10:29:00 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 10:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 10:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 01 Jun 2026 11:57:00 +0200</ext:ends_at>
-      <description>Operation only between Westbahnhof S U and Linzer Straße, Reinlgasse. Continue via line 10 to Joachimsthalerplatz. [On 01.06.2026]</description>
-      <content:encoded><![CDATA[Operation only between Westbahnhof S U and Linzer Straße, Reinlgasse. Continue via line 10 to Joachimsthalerplatz.<br/>[On 01.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: stop Discontinued]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
       <description>Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line. [20.04.2026 – 08.04.2027]</description>
       <content:encoded><![CDATA[Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11/71: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d54ea31a8d9717d932bee0e04f74f4ab8f1a96e6f95b9836ba88b750aa1fa25a</guid>
+      <pubDate>Mon, 16 Feb 2026 06:00:00 +0100</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 03 Mar 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 27 Jun 2026 01:30:00 +0200</ext:ends_at>
+      <description>Due to track construction works in the Simmeringer Hauptstraße, short guides are available in the evening hours Monday to Friday at the line 11 and 71 (22:30-01:00). Period: From … [03.03.2026 – 27.06.2026]</description>
+      <content:encoded><![CDATA[Due to track construction works in the Simmeringer Hauptstraße, short guides are available in the evening hours Monday to Friday at the line 11 and 71 (22:30-01:00). Period: From …<br/>[03.03.2026 – 27.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
