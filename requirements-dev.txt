@@ -16,6 +16,6 @@ pre-commit>=3.7,<5
 # the lossy image binaries (pngquant, optipng, jpegoptim) are only
 # needed when refreshing the committed PNG/JPEG assets and the script
 # degrades gracefully if any of them is missing.
-rcssmin>=1.2,<2
+rcssmin>=1.2.2,<2
 rjsmin>=1.2,<2
 Pillow>=10.0,<13
