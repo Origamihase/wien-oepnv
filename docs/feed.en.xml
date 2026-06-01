@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 01 Jun 2026 14:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 14:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[41: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
+      <pubDate>Mon, 01 Jun 2026 13:45:00 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 14:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 13:45:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 01 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 01.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 01.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e3e13c6b90be5e66804691a6a7901f8c83e37548e7fcba2b3b5336dc0f8722db</guid>
+      <pubDate>Mon, 01 Jun 2026 13:45:00 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 14:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 13:45:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 01 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 01.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 01.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[41E: replacement bus 41E stops at Währinger Str 200]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sat, 27 Jun 2026 01:30:00 +0200</ext:ends_at>
       <description>Due to track construction works in the Simmeringer Hauptstraße, short guides are available in the evening hours Monday to Friday at the line 11 and 71 (22:30-01:00). Period: From … [03.03.2026 – 27.06.2026]</description>
       <content:encoded><![CDATA[Due to track construction works in the Simmeringer Hauptstraße, short guides are available in the evening hours Monday to Friday at the line 11 and 71 (22:30-01:00). Period: From …<br/>[03.03.2026 – 27.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N8: Nußdorfer Straße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e700b01355e77fa5fafea3bede0853415d157996be3e74038bacc8fa6c3481b4</guid>
-      <pubDate>Fri, 24 Apr 2026 15:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 30 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line N8 towards Handelskai S U Stop: Nußdorfer Straße U From: Währinger Belt 170 To: Heiligenstädter Straße ONr. 2 Duration: From … [30.04.2026 – 30.04.2027]</description>
-      <content:encoded><![CDATA[Stop change of line N8 towards Handelskai S U Stop: Nußdorfer Straße U From: Währinger Belt 170 To: Heiligenstädter Straße ONr. 2 Duration: From …<br/>[30.04.2026 – 30.04.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N8: Thaliastraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">05c4dbd8c11c974f8bd0ef91fae9cc3609895d515cf5c157adba2dbee87150be</guid>
-      <pubDate>Fri, 19 Jul 2024 09:52:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jul 2024 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 16 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Stop change of line N8 towards Alterlaa U Stop: Thaliastraße U From: Lerchenfelder Belt 35 To: Lerchenfelder Belt 41 Duration: From 20. July … [Since 24.07.2024]</description>
-      <content:encoded><![CDATA[Stop change of line N8 towards Alterlaa U Stop: Thaliastraße U From: Lerchenfelder Belt 35 To: Lerchenfelder Belt 41 Duration: From 20. July …<br/>[Since 24.07.2024]]]></content:encoded>
     </item>
   </channel>
 </rss>
