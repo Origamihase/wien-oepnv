@@ -518,6 +518,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
+    "pubDate": "2026-06-01T08:22:57+02:00",
+    "starts_at": "2026-06-01T08:22:57+02:00",
+    "ends_at": "2026-06-01T09:22:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-06-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -526,6 +538,18 @@
     "starts_at": "2026-05-29T00:00:13+02:00",
     "ends_at": "2026-06-01T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-05-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Polizeieinsatz",
+    "description": "Linie 31: Unregelmäßige Intervalle in Richtung Schottenring U. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ded38e51a87168b5dec5fa7cf47e1322d71a9fc82b58c76e54b10b9190810f6c",
+    "pubDate": "2026-06-01T08:25:00+02:00",
+    "starts_at": "2026-06-01T08:25:00+02:00",
+    "ends_at": "2026-06-01T08:40:00+02:00",
+    "_identity": "wl|störung|L=31|D=2026-06-01"
   },
   {
     "source": "Wiener Linien",
@@ -730,6 +754,18 @@
     "starts_at": "2026-05-29T00:00:24+02:00",
     "ends_at": "2026-06-01T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-05-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf",
+    "pubDate": "2026-06-01T08:27:31+02:00",
+    "starts_at": "2026-06-01T08:27:47+02:00",
+    "ends_at": "2026-06-01T09:27:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-06-01"
   },
   {
     "source": "Wiener Linien",
