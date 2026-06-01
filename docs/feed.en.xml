@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 01 Jun 2026 08:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 09:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5: Fahrtbehinderung Verkehrsunfall]]></title>
+      <title><![CDATA[63A: traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf</guid>
-      <pubDate>Mon, 01 Jun 2026 08:27:31 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 08:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 08:27:47 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 01 Jun 2026 09:27:00 +0200</ext:ends_at>
-      <description>[Am 01.06.2026]</description>
-      <content:encoded><![CDATA[[Am 01.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: Fahrtbehinderung Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a</guid>
-      <pubDate>Mon, 01 Jun 2026 08:22:57 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 08:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 08:22:57 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 01 Jun 2026 09:22:00 +0200</ext:ends_at>
-      <description>[Am 01.06.2026]</description>
-      <content:encoded><![CDATA[[Am 01.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8</guid>
+      <pubDate>Mon, 01 Jun 2026 08:31:00 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 09:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 08:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 01 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic congestion. [On 01.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 01.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: stop Discontinued]]></title>
@@ -87,17 +76,6 @@
       <content:encoded><![CDATA[Because of construction works in the Prague Street area, the line 34A is redirected to June 03, 2026, approximately 17:00 clock.<br/>[09.04.2026 – 03.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[31: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ded38e51a87168b5dec5fa7cf47e1322d71a9fc82b58c76e54b10b9190810f6c</guid>
-      <pubDate>Mon, 01 Jun 2026 08:25:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 13:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 08:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 01 Jun 2026 08:40:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in Richtung Schottenring U. Grund: Polizeieinsatz. [Am 01.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Schottenring U. Grund: Polizeieinsatz.<br/>[Am 01.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[43: track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6</guid>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sat, 27 Jun 2026 01:30:00 +0200</ext:ends_at>
       <description>Due to track construction works in the Simmeringer Hauptstraße, short guides are available in the evening hours Monday to Friday at the line 11 and 71 (22:30-01:00). Period: From … [03.03.2026 – 27.06.2026]</description>
       <content:encoded><![CDATA[Due to track construction works in the Simmeringer Hauptstraße, short guides are available in the evening hours Monday to Friday at the line 11 and 71 (22:30-01:00). Period: From …<br/>[03.03.2026 – 27.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">25aaa13254b9ce81fb625b0637b8f8bc3c273092cfb4e74b5a3edd46693d0001</guid>
+      <pubDate>Mon, 16 Mar 2026 04:30:00 +0100</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 16:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 16 Mar 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 11 Jul 2026 01:00:00 +0200</ext:ends_at>
+      <description>Because of track construction works in the Lerchenfelder Straße, the line 46 operating short-running becomes the line. [16.03.2026 – 11.07.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works in the Lerchenfelder Straße, the line 46 operating short-running becomes the line.<br/>[16.03.2026 – 11.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[86A/87A: Wiedgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">44bd2fe8108b407c7c9653fabfa95a39189a07fb0342ddb750f6642f5419a53a</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 07 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 07 May 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of lines 86A towards Breitenlee, Arnikaweg and 87A towards Hermann-Gebauer-Straße stop: Wiedgasse From: Wiedgasse before Konstanziagasse … [07.05.2026 – 07.05.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 86A towards Breitenlee, Arnikaweg and 87A towards Hermann-Gebauer-Straße stop: Wiedgasse From: Wiedgasse before Konstanziagasse …<br/>[07.05.2026 – 07.05.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
