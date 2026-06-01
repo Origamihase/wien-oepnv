@@ -1,0 +1,67 @@
+name: Health check
+
+# Standalone watchdog for the data pipeline. It is intentionally ALLOWED to go
+# red: a failed scheduled run makes GitHub e-mail the maintainer (see the repo's
+# Watch / Actions notification settings — GitHub notifies the user who owns the
+# scheduled workflow). The readable diagnosis is printed in the run log and the
+# job summary, so the linked run tells you immediately WHAT broke.
+#
+# This workflow is fully independent of update-cycle.yml:
+#   * A red health check NEVER affects the feed build.
+#   * The feed build is NEVER made to fail by this workflow.
+# It only READS the repo (contents: read) and never commits.
+
+on:
+  schedule:
+    # Every 6 hours → detection latency for a stalled feed or an unreachable
+    # source is at most ~6 h. Increase the frequency for faster alerts; the
+    # trade-off is more e-mails while an outage persists (GitHub mails on every
+    # failed run, there is no built-in dedupe).
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: health-check
+  cancel-in-progress: true
+
+jobs:
+  health:
+    name: Probe sources & output freshness
+    runs-on: ubuntu-latest
+    # Generous ceiling: three live source fetches (each retried internally,
+    # hard-capped at HEALTH_FETCH_TIMEOUT_SECONDS=120s) plus two file reads
+    # finish in well under a minute on a healthy day.
+    timeout-minutes: 10
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      PYTHONPATH: src
+    steps:
+      # Workaround for actions/checkout#2351 (sporadic includeIf credential
+      # race on v6 → "could not read Username, terminal prompts disabled").
+      # Two attempts; remove once v6.0.3+ is pinned. Mirrors the other workflows.
+      - name: Check out repository (attempt 1/2)
+        id: checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        continue-on-error: true
+
+      - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
+        if: steps.checkout.outcome == 'failure'
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      # Full requirements.txt so the live-canary subprocesses run with the exact
+      # same dependency set as production (update-cycle.yml). torch is NOT
+      # needed here (it is only used by the EN-feed translation path).
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      - name: Run health check
+        run: python scripts/health_check.py
