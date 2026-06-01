@@ -742,3 +742,17 @@ Die laufende Audit- und Refactoring-Historie liegt in `CHANGELOG.md`
 `docs/archive/audits/` (abgeschlossene Audit-Berichte). Architektur-
 relevante Änderungen sollten zusätzlich diese Karte und gegebenenfalls
 das jeweilige Mermaid-Diagramm aktualisieren.
+
+**Sicherheitsmechanismen** sind bewusst über mehrere Dokumente verteilt –
+diese Karte beschreibt nur die laufzeit-architektonischen Schichten:
+
+* `request_safe`-SSRF-Abwehr (DNS-Rebinding-Schutz, Host-Pinning,
+  privater-Adressraum-Block): § 2 in diesem Dokument.
+* Resilienz-Stack (Circuit-Breaker, Retry, Soft-Fail auf Caches): § 3.
+* Path-Guard (`ALLOWED_ROOTS` auf `docs/`/`data/`/`log/`), atomare
+  Schreiboperationen (`atomic_write`) und der **Secret-Scanner**
+  (`src/utils/secret_scanner.py`, im CI- und pre-commit-Lauf) sind als
+  Entwicklungs-/CI-Werkzeuge in [`development.md`](development.md)
+  dokumentiert.
+* Eine konsolidierte Gesamtübersicht steht in [`AGENTS.md`](../AGENTS.md);
+  die Meldewege für Schwachstellen in [`SECURITY.md`](../SECURITY.md).
