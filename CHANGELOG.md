@@ -1,8 +1,8 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokumentiert.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 * **Bugfix: EN-Feed — verstümmelte Masking-Platzhalter beseitigt (2026-06-01)**:
