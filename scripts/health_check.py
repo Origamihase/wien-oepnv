@@ -46,7 +46,6 @@ two workflows' cadences.
 
 from __future__ import annotations
 
-import json
 import os
 import re
 import subprocess  # nosec B404
@@ -57,12 +56,24 @@ from email.utils import parsedate_to_datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+SRC_DIR = REPO_ROOT / "src"
+# Resolve the canonical size-/depth-capped file helpers regardless of how the
+# script is launched. Both ``src`` (for ``from utils.…``) and the repo root go
+# on the path, mirroring scripts/update_baustellen_cache.py. Using the capped
+# helpers (instead of ``Path.read_text`` / ``json.loads``) is mandatory: the
+# repo-wide audit-walker tests reject bare reads/parses in src/ and scripts/.
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from utils.files import read_capped_json, read_capped_text  # noqa: E402
+
 try:  # Vienna local time is a nice-to-have header detail; tzdata may be absent.
     _VIENNA: ZoneInfo | None = ZoneInfo("Europe/Vienna")
 except Exception:  # pragma: no cover - tzdata missing
     _VIENNA = None
-
-REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 def _env_float(name: str, default: float) -> float:
@@ -253,11 +264,10 @@ def _fmt_age(seconds: float) -> str:
 def check_feed_freshness(now: datetime) -> Check:
     name = "Feed-Build"
     path = REPO_ROOT / "docs" / "feed.xml"
-    try:
-        text = path.read_text(encoding="utf-8")
-    except OSError as exc:
-        return Check(name, ok=False, summary="FEHLER — feed.xml nicht lesbar",
-                     detail=str(exc)[:200])
+    text = read_capped_text(path, label="feed.xml")
+    if text is None:
+        return Check(name, ok=False,
+                     summary="FEHLER — feed.xml fehlt, ist zu groß oder nicht lesbar")
     m = re.search(r"<lastBuildDate>\s*(.*?)\s*</lastBuildDate>", text)
     if not m:
         return Check(name, ok=False,
@@ -285,12 +295,11 @@ def check_feed_freshness(now: datetime) -> Check:
 def check_stations(now: datetime) -> Check:
     name = "Stationsverzeichnis"
     path = REPO_ROOT / "data" / "stations_last_run.json"
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, ValueError) as exc:
+    data = read_capped_json(path, label="stations_last_run")
+    if not isinstance(data, dict):
         return Check(name, ok=False,
-                     summary="FEHLER — stations_last_run.json nicht lesbar",
-                     detail=str(exc)[:200])
+                     summary="FEHLER — stations_last_run.json fehlt, ist zu groß "
+                     "oder kein gültiges JSON-Objekt")
 
     problems: list[str] = []
 
