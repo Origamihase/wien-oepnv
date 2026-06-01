@@ -1655,6 +1655,27 @@ _UNMASK_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
     _ENTITY_PLACEHOLDER_RE.pattern + "|XGLO" + _PLACEHOLDER_NONCE + r"X\d+X"
 )
 
+# Nonce-AGNOSTIC detector for placeholders that survived the unmask step
+# because the NMT model MANGLED them. Observed corruptions in cached EN output
+# (``data/first_seen.json``): a dropped hex char in the nonce, the prefix
+# lower-cased (``XGLO`` → ``XGLo``), German-looking nonce fragments translated
+# to English (a stray ``from`` / ``…de…`` → ``…en…``) and a truncated index.
+# Each of these defeats the EXACT-nonce :data:`_UNMASK_PLACEHOLDER_RE`, so the
+# token leaks into the feed verbatim. Unlike that sweep, this pattern does NOT
+# pin the per-process nonce: it matches the ``XENT``/``XGLO`` prefix
+# (case-insensitively, to catch the lower-cased form) followed by an arbitrary
+# alphanumeric nonce body — ``[A-Za-z0-9]`` rather than hex so a *translated*
+# nonce fragment still matches — and the literal ``X`` index separator. That
+# trailing ``X`` is what separates a leaked sentinel from a real German word
+# beginning with the same letters (e.g. ``Xentenplatz`` has no such ``X``),
+# keeping the false-positive rate effectively zero on ÖPNV text (every station,
+# line and operator is masked before translation). Used as a post-unmask
+# safety net and a cache-hit self-heal trigger.
+_RESIDUAL_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
+    r"(?:XENT|XGLO)[A-Za-z0-9]*X",
+    re.IGNORECASE,
+)
+
 
 def _apply_domain_glossary(
     text: str,
@@ -1809,6 +1830,32 @@ def _get_translation_pipeline() -> Any:
     return _TRANSLATION_STATE["pipeline"]
 
 
+def _is_non_translatable_content(masked_text: str) -> bool:
+    """True when ``masked_text`` holds nothing the ML model needs to translate.
+
+    After :func:`_mask_entities`, an all-entity title such as
+    ``86A/87A: Wiedgasse`` becomes a run of verbatim entity placeholders joined
+    by punctuation (``XENT…X1X/XENT…X2X: XENT…X0X``) — there is no German prose
+    left to render. Feeding that to the NMT model is pure downside: the
+    SentencePiece tokenizer can mangle the densely-packed placeholders (the
+    EN-feed sentinel-leak bug) for zero translation benefit. When this returns
+    ``True`` the caller skips the model and unmasks the masked text directly,
+    reproducing the correct, language-neutral surface forms.
+
+    Returns ``True`` only when — after removing every entity placeholder — the
+    remainder carries no alphabetic character, AND no glossary (``XGLO``)
+    placeholder is present. ``XGLO`` placeholders stand in for German jargon the
+    model still has to translate into English, so their presence forces the full
+    pipeline.
+    """
+    if not masked_text.strip():
+        return False
+    if "XGLO" in masked_text:
+        return False
+    remaining = _ENTITY_PLACEHOLDER_RE.sub("", masked_text)
+    return not any(ch.isalpha() for ch in remaining)
+
+
 def _translate_text_attempt(
     text: str,
     ident: str = "",
@@ -1867,6 +1914,14 @@ def _translate_text_attempt(
     )
     masked_text, entity_mapping = _mask_entities(glossary_processed)
     combined_mapping = {**glossary_mapping, **entity_mapping}
+    # Entity-only fast path: when masking leaves nothing translatable (a title
+    # that is just line/station placeholders + punctuation), skip the NMT model
+    # entirely. Round-tripping such a string through Marian risks mangling the
+    # densely-packed placeholders (EN-feed sentinel leak) for no translation
+    # gain — unmasking the masked text reproduces the correct, language-neutral
+    # surface forms directly.
+    if _is_non_translatable_content(masked_text):
+        return _unmask_entities(masked_text, combined_mapping)
     try:
         # ``truncation=True`` enforces the model's input cap (512 tokens
         # for opus-mt-de-en) BEFORE Marian asserts and crashes the
@@ -1901,7 +1956,20 @@ def _translate_text_attempt(
             sanitize_log_arg(ident or "<unknown>"),
         )
         return None
-    return _unmask_entities(translated, combined_mapping)
+    unmasked = _unmask_entities(translated, combined_mapping)
+    if _RESIDUAL_PLACEHOLDER_RE.search(unmasked):
+        # The model mangled a placeholder so badly the exact-nonce unmask could
+        # not restore it (dropped/translated nonce chars, lower-cased prefix,
+        # truncated index). Treat the whole translation as FAILED so the caller
+        # does not cache it and falls back to the German source — a raw sentinel
+        # must never reach subscribers.
+        log.warning(
+            "Translation for identity %s left a residual placeholder; "
+            "discarding and falling back to source.",
+            sanitize_log_arg(ident or "<unknown>"),
+        )
+        return None
+    return unmasked
 
 
 def _translate_text(
@@ -2009,7 +2077,17 @@ def _cached_translation(
         translations_raw["en"] = en_raw
     cached = en_raw.get(field)
     if isinstance(cached, str) and cached and cached != text:
-        return cached, True
+        if not _RESIDUAL_PLACEHOLDER_RE.search(cached):
+            return cached, True
+        # Self-heal: a value persisted by an earlier build carries a residual
+        # placeholder (the NMT model mangled it, defeating the exact-nonce
+        # unmask). Treat the hit as a MISS and re-translate below so a raw
+        # sentinel is never served from cache to subscribers.
+        log.info(
+            "Cache self-heal: residual placeholder in EN %s for %s; retrying.",
+            sanitize_log_arg(field),
+            sanitize_log_arg(ident),
+        )
     if isinstance(cached, str) and cached == text:
         # Stale-fallback heuristic: a prior run cached the German
         # source as the "translation" — re-attempt now that the

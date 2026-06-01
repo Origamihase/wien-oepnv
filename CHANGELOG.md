@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: EN-Feed — verstümmelte Masking-Platzhalter beseitigt (2026-06-01)**:
+  Im englischen Feed (`docs/feed.en.xml`) erschienen in manchen Item-Titeln rohe
+  Masking-Sentinels (z. B. `XENT…X1X/XENT…X2X: XENT…X0X`) statt der übersetzten
+  Linien/Stationen, während die Description desselben Items korrekt war. Ursache:
+  Das NMT-Modell (Helsinki `opus-mt-de-en`, SentencePiece) **verstümmelt** die
+  opaken Platzhalter — beobachtet wurden ein gedropptes Hex-Zeichen im
+  Per-Prozess-Nonce, ein kleingeschriebenes Präfix (`XGLO` → `XGLo`), ins
+  Englische „übersetzte" Nonce-Fragmente (`…de…` → `…en…`, ein verirrtes `from`)
+  und ein abgeschnittener Index. Jede dieser Verstümmelungen lässt das
+  **exakt-Nonce**-Unmasking scheitern, sodass der Sentinel verbatim durchrutscht,
+  als „Übersetzung" gecacht (`data/first_seen.json`) und auf Cache-Hits ungeprüft
+  ausgeliefert wird. Titel sind anfälliger als Summaries, weil sie fast nur dicht
+  gepackte Platzhalter (`Linie/Linie: Station`) ohne übersetzbaren Text enthalten.
+  Vier Verteidigungslinien in `src/build_feed.py`:
+  * **Safety-Net**: Ein Rest-Platzhalter nach dem Unmask (nonce-agnostischer
+    Detektor `_RESIDUAL_PLACEHOLDER_RE`) wertet die Übersetzung als
+    fehlgeschlagen → sie wird **nicht** gecacht und das Item fällt verbatim auf
+    den deutschen Quelltext zurück (DE↔EN-Inhalts-Parität bleibt gewahrt).
+  * **Cache-Self-Heal**: Ein bereits vergifteter Cache-Hit wird als Miss
+    behandelt und neu übersetzt, sodass Alt-Poison nie mehr ausgeliefert wird.
+  * **Qualitäts-Bypass**: Rein-Entity-Titel (`86A/87A: Wiedgasse` — nur
+    Platzhalter + Satzzeichen, kein `XGLO`) überspringen das Modell ganz und
+    werden direkt entmaskiert — korrektes Englisch ohne Modell-Risiko, ohne
+    DE-Fallback.
+  * **Daten-Bereinigung**: Die 13 bereits vergifteten Cache-Werte in
+    `data/first_seen.json` zurückgesetzt; der nächste Build berechnet sie über
+    die gehärtete Pipeline neu.
 * **Feed-Filter & Dedup: Korrektheits-Welle (Bugs b1–b14, 2026-06-01)**:
   Eine Reihe verifizierter Filter-Fehler behoben, die echte Wien-Meldungen
   fälschlich verwarfen oder irrelevante Meldungen aufnahmen. Jeder Fix ist
