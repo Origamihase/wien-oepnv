@@ -29,7 +29,7 @@ trap 'rm -f "$CURRENT"' EXIT
 # version, not a PATH-earlier copy from uv/pipx that may be a different
 # version. CI is unaffected (fresh runner has no shadow), but local dev
 # environments often do.
-PYTHONPATH=src python3 -m mypy --no-pretty src tests > "$CURRENT" 2>&1 || true
+PYTHONPATH=src python3 -m mypy --no-pretty src tests scripts > "$CURRENT" 2>&1 || true
 
 # `grep` exits 1 when there are no matches; under `set -e`/`pipefail`
 # that would abort before we write the (legitimately empty) baseline.

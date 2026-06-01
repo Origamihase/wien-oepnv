@@ -33,7 +33,7 @@ try:  # pragma: no cover - allow execution via package and script
     from utils.env import load_env_file
     from utils.files import atomic_write
 except ImportError:  # pragma: no cover - allow python scripts/configure_feed.py
-    from src.utils.configuration_wizard import (  # type: ignore
+    from src.utils.configuration_wizard import (
         ConfigOption,
         CONFIG_OPTIONS,
         ConfigurationError,
@@ -43,9 +43,9 @@ except ImportError:  # pragma: no cover - allow python scripts/configure_feed.py
         mask_value,
         normalize_existing_values,
     )
-    from src.feed.config import warn_if_outside_allowed_roots  # type: ignore
-    from src.utils.env import load_env_file  # type: ignore
-    from src.utils.files import atomic_write  # type: ignore
+    from src.feed.config import warn_if_outside_allowed_roots
+    from src.utils.env import load_env_file
+    from src.utils.files import atomic_write
 
 _OPTION_BY_KEY: dict[str, ConfigOption] = {option.key: option for option in CONFIG_OPTIONS}
 
@@ -86,14 +86,14 @@ def _print_header(path: Path) -> None:
     print(f"Zieldatei: {path}")
 
 
-def _render_help(option) -> None:
+def _render_help(option: ConfigOption) -> None:
     wrapped = textwrap.fill(option.help, width=78, initial_indent="  ", subsequent_indent="  ")
     print()
     print(f"{option.label} ({option.key})")
     print(wrapped)
 
 
-def _prompt_for_option(option, current: str | None) -> str | None:
+def _prompt_for_option(option: ConfigOption, current: str | None) -> str | None:
     default_display = current or option.default_str()
     while True:
         if option.kind == "bool":
@@ -125,7 +125,7 @@ def _prompt_for_option(option, current: str | None) -> str | None:
                 else:
                     return None
         try:
-            normalized = option.normalize(candidate)
+            normalized: str = option.normalize(candidate)
         except ConfigurationError as exc:
             print(f"  -> {exc}")
             continue
