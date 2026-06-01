@@ -261,6 +261,37 @@ def isolate_stats_writes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Ite
     yield
 
 
+@pytest.fixture(autouse=True)
+def isolate_episode_starts_writes(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> Iterator[None]:
+    """Redirect the Stammstrecke episode-start ledger to a per-test tmp file.
+
+    ``src.feed.stammstrecke`` persists the first-observed episode start to
+    ``cache/stammstrecke/episode_starts.json`` under the repo root
+    (:data:`~src.feed.stammstrecke.EPISODE_STARTS_PATH`). That file is
+    intentionally committed and refreshed by the Stammstrecke workflow, so a
+    stray test write is easy to wave through in review as "the cache updated".
+    Any test that drives the compute path without passing an explicit
+    ``episode_starts_path`` falls back to ``EPISODE_STARTS_PATH`` and mutates
+    the tracked seed, dirtying the working tree and risking an accidental
+    commit of synthetic test rows.
+
+    The canonical statemachine tests already inject a tmp path; integration
+    tests that exercise the ledger only as a side effect do not — so isolate
+    it globally, mirroring :func:`isolate_stats_writes`. The override is
+    monkeypatched on the module attribute, which the producer reads at call
+    time (``episode_starts_path or EPISODE_STARTS_PATH``), so an explicit
+    keyword still wins for tests that target their own path.
+    """
+    from src.feed import stammstrecke
+
+    monkeypatch.setattr(
+        stammstrecke, "EPISODE_STARTS_PATH", tmp_path / "episode_starts.json"
+    )
+    yield
+
+
 # ---------------------------------------------------------------------------
 # CircuitBreaker test-isolation fixture
 #
