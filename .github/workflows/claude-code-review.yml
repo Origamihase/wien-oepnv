@@ -39,6 +39,13 @@ jobs:
 
       - name: Run Claude Code Review
         id: claude-review
+        # Das Review ist beratend (postet Kommentare) und niemals ein
+        # Qualitäts-Gate — ein Fehlschlag heißt nie „Code schlecht", sondern
+        # immer Infra/Token/Transient (fehlendes Secret auf Fork-PRs, ein
+        # transienter API-Aussetzer o. Ä.). Damit solche Aussetzer keinen
+        # roten Check erzeugen, läuft der Schritt mit continue-on-error; auf
+        # regulären PRs läuft das Review unverändert und postet Kommentare.
+        continue-on-error: true
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
