@@ -12,6 +12,12 @@ on:
 
 jobs:
   claude-review:
+    # Dependabot-PRs erhalten aus Sicherheitsgründen keinen Zugriff auf
+    # Repository-Secrets — CLAUDE_CODE_OAUTH_TOKEN ist dort leer, wodurch die
+    # Action ohne gültiges Token sofort fehlschlägt (rotes X trotz grüner
+    # Pflicht-Checks). Solche PRs daher überspringen.
+    if: github.actor != 'dependabot[bot]'
+
     # Optional: Filter by PR author
     # if: |
     #   github.event.pull_request.user.login == 'external-contributor' ||
