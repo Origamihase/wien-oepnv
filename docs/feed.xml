@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 01 Jun 2026 06:31:01 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 07:00:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[40A: Haltestelle aufgelassen]]></title>
@@ -52,17 +52,6 @@
       <ext:ends_at>Tue, 02 Jun 2026 00:35:00 +0200</ext:ends_at>
       <description>[01.06.2026 – 02.06.2026]</description>
       <content:encoded><![CDATA[[01.06.2026 – 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ee9d3f3d2f7894fa11d971e1ac5f847be3f219359a43a6a87138d443f4bb3996</guid>
-      <pubDate>Mon, 01 Jun 2026 05:36:00 +0200</pubDate>
-      <ext:first_seen>Sun, 31 May 2026 20:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 01 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[34A/N20: Bauarbeiten]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 07 May 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 86A in Richtung Breitenlee, Arnikaweg und 87A in Richtung Hermann-Gebauer-Straße Haltestelle: Wiedgasse Von: Wiedgasse vor Konstanziagasse … [07.05.2026 – 07.05.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 86A in Richtung Breitenlee, Arnikaweg und 87A in Richtung Hermann-Gebauer-Straße Haltestelle: Wiedgasse Von: Wiedgasse vor Konstanziagasse …<br/>[07.05.2026 – 07.05.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/39A: Barawitzkagasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9faf76903caede3d049fa87cc6a801cc3c1d072c7cc96a41782a250f795c055a</guid>
+      <pubDate>Tue, 05 May 2026 15:50:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 15:05:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 05 May 2026 15:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 05 May 2027 23:59:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 10A und 39A in Richtung Bahnhof Heiligenstadt S U Haltestelle: Barawitzkagasse Von: Barawitzkagasse 4-6 Nach: Barawitzkagasse 10-12 Dauer: Ab … [05.05.2026 – 05.05.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 10A und 39A in Richtung Bahnhof Heiligenstadt S U Haltestelle: Barawitzkagasse Von: Barawitzkagasse 4-6 Nach: Barawitzkagasse 10-12 Dauer: Ab …<br/>[05.05.2026 – 05.05.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
