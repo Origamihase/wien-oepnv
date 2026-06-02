@@ -7,29 +7,39 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 02 Jun 2026 22:01:12 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2026 22:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[59A: Verunreinigung]]></title>
+      <title><![CDATA[Wien Praterstern]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;882699</guid>
+      <pubDate>Tue, 02 Jun 2026 22:22:48 +0200</pubDate>
+      <ext:first_seen>Tue, 02 Jun 2026 22:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 02 Jun 2026 22:22:48 +0200</ext:starts_at>
+      <description>Due to damage to the track, only limited train journeys to expected train station (U) to expected 04:00 are possible at Wien Praterstern. [Since 02.06.2026]</description>
+      <content:encoded><![CDATA[Due to damage to the track, only limited train journeys to expected train station (U) to expected 04:00 are possible at Wien Praterstern.<br/>[Since 02.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71E: water pipe fractures]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c266d303aaa91a906584b59481a39d619e6a8c78cace72c81dc4d1cfc0a892a9</guid>
+      <pubDate>Tue, 02 Jun 2026 22:10:00 +0200</pubDate>
+      <ext:first_seen>Tue, 02 Jun 2026 22:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 02 Jun 2026 22:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 01:00:00 +0200</ext:ends_at>
+      <description>The line 71E becomes towards Simmering SU between Zentralfriedhof 4.Tor and Weißenböckstraße via Thürnlhofstraße - Kaiser-Ebersdorfer Straße - Florian-Hedorfer-StraßeX … [02.06.2026 – 03.06.2026]</description>
+      <content:encoded><![CDATA[The line 71E becomes towards Simmering SU between Zentralfriedhof 4.Tor and Weißenböckstraße via Thürnlhofstraße - Kaiser-Ebersdorfer Straße - Florian-Hedorfer-StraßeX …<br/>[02.06.2026 – 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[59A: pollution]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">89c7e98b8f27d48cb03c0d0017ab220e860d6d3673e2506ba1f48f6d2eb5a555</guid>
       <pubDate>Tue, 02 Jun 2026 21:39:00 +0200</pubDate>
       <ext:first_seen>Tue, 02 Jun 2026 22:01:12 +0200</ext:first_seen>
       <ext:starts_at>Tue, 02 Jun 2026 21:39:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 02 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 02.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Fahrtbehinderung Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2138817ce7dee6c1ab9ec27b0e566a638feb7edc33c7812f5c58764e8b4aa7bc</guid>
-      <pubDate>Tue, 02 Jun 2026 21:22:44 +0200</pubDate>
-      <ext:first_seen>Tue, 02 Jun 2026 22:01:12 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 02 Jun 2026 21:22:47 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 02 Jun 2026 22:22:00 +0200</ext:ends_at>
-      <description>[Am 02.06.2026]</description>
-      <content:encoded><![CDATA[[Am 02.06.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: contamination. [On 02.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: contamination.<br/>[On 02.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: service from Thaliastraße]]></title>
@@ -52,28 +62,6 @@
       <ext:ends_at>Tue, 02 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 02.06.2026]</description>
       <content:encoded><![CDATA[[On 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Fahrtbehinderung Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf</guid>
-      <pubDate>Tue, 02 Jun 2026 21:18:55 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 08:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 02 Jun 2026 21:18:55 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 02 Jun 2026 22:18:00 +0200</ext:ends_at>
-      <description>[Am 02.06.2026]</description>
-      <content:encoded><![CDATA[[Am 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: Fahrtbehinderung Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a</guid>
-      <pubDate>Tue, 02 Jun 2026 21:18:17 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 08:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 02 Jun 2026 21:22:21 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 02 Jun 2026 22:22:00 +0200</ext:ends_at>
-      <description>[Am 02.06.2026]</description>
-      <content:encoded><![CDATA[[Am 02.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: stop Discontinued]]></title>
@@ -118,6 +106,17 @@
       <ext:ends_at>Wed, 03 Jun 2026 00:35:00 +0200</ext:ends_at>
       <description>[02.06.2026 – 03.06.2026]</description>
       <content:encoded><![CDATA[[02.06.2026 – 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[34A/N20: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e42264819bc62bd2fe2fbd8fff14608a5246ec0d9c9bd2c311b7bd577ca4532e</guid>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 18:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 09 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 17:00:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Prague Street area, the line 34A is redirected to June 03, 2026, approximately 17:00 clock. [09.04.2026 – 03.06.2026]</description>
+      <content:encoded><![CDATA[Because of construction works in the Prague Street area, the line 34A is redirected to June 03, 2026, approximately 17:00 clock.<br/>[09.04.2026 – 03.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

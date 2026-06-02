@@ -518,18 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
-    "pubDate": "2026-06-02T21:18:17+02:00",
-    "starts_at": "2026-06-02T21:22:21+02:00",
-    "ends_at": "2026-06-02T22:22:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-06-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -566,30 +554,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a256ddc9071e1be270714d5f6be746d8db040a3968d1eb9ae42aab06ab94ad4",
-    "pubDate": "2026-06-02T21:19:11+02:00",
-    "starts_at": "2026-06-02T21:19:11+02:00",
-    "ends_at": "2026-06-02T22:18:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-06-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
-    "pubDate": "2026-06-02T21:19:40+02:00",
-    "starts_at": "2026-06-02T21:19:55+02:00",
-    "ends_at": "2026-06-02T22:19:00+02:00",
-    "_identity": "wl|störung|L=38|D=2026-06-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -598,18 +562,6 @@
     "starts_at": "2026-06-01T05:38:20+02:00",
     "ends_at": "2026-06-02T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-06-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2138817ce7dee6c1ab9ec27b0e566a638feb7edc33c7812f5c58764e8b4aa7bc",
-    "pubDate": "2026-06-02T21:22:44+02:00",
-    "starts_at": "2026-06-02T21:22:47+02:00",
-    "ends_at": "2026-06-02T22:22:00+02:00",
-    "_identity": "wl|störung|L=40A|D=2026-06-02"
   },
   {
     "source": "Wiener Linien",
@@ -794,18 +746,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf",
-    "pubDate": "2026-06-02T21:18:55+02:00",
-    "starts_at": "2026-06-02T21:18:55+02:00",
-    "ends_at": "2026-06-02T22:18:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-06-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -838,6 +778,18 @@
     "starts_at": "2026-06-02T00:00:24+02:00",
     "ends_at": "2026-06-02T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-05-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71E: Wasserrohrgebrechen",
+    "description": "Die Linie 71E wird in Richtung Simmering SU zwischen Zentralfriedhof 4.Tor und Weißenböckstraße über Thürnlhofstraße - Kaiser-Ebersdorfer Straße - Florian-Hedorfer-Straße umgeleitet. Die Haltestellen Zentralfriedhof 3. Tor, Zentralfriedhof 2. Tor und Zentralfriedhof 1. Tor können dadurch nicht eingehalten werden. Voraussichtliche Dauer: Nicht absehbar. Grund: Wasserrohrgebrechen im Bereich Simmeringer Hauptstraße # Thürnlhofstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c266d303aaa91a906584b59481a39d619e6a8c78cace72c81dc4d1cfc0a892a9",
+    "pubDate": "2026-06-02T22:10:00+02:00",
+    "starts_at": "2026-06-02T22:10:00+02:00",
+    "ends_at": "2026-06-03T01:00:00+02:00",
+    "_identity": "wl|störung|L=71E|D=2026-06-02"
   },
   {
     "source": "Wiener Linien",

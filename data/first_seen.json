@@ -2940,8 +2940,10 @@
     "first_seen": "2026-06-02T20:01:12.619353+00:00",
     "translations": {
       "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
         "title": "59A: pollution"
-      }
+      },
+      "epoch": 3
     }
   },
   "89f4d5b271521b2cdd500c2b0d9188c9972cfddd3ecf964d7c99737b00d5485f": {
@@ -4127,6 +4129,16 @@
         "title": "U2/U5: Siebenbrunnengasse from junction Siebenbrunnenplatz and Reinprechtsdorfer Stra\u00dfe to 44"
       },
       "epoch": 2
+    }
+  },
+  "c266d303aaa91a906584b59481a39d619e6a8c78cace72c81dc4d1cfc0a892a9": {
+    "first_seen": "2026-06-02T20:31:00.001117+00:00",
+    "translations": {
+      "en": {
+        "summary": "The line 71E becomes towards Simmering SU between Zentralfriedhof 4.Tor and Wei\u00dfenb\u00f6ckstra\u00dfe via Th\u00fcrnlhofstra\u00dfe - Kaiser-Ebersdorfer Stra\u00dfe - Florian-Hedorfer-Stra\u00dfeX \u2026",
+        "title": "71E: water pipe fractures"
+      },
+      "epoch": 3
     }
   },
   "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c": {
@@ -5630,6 +5642,16 @@
       "en": {
         "summary": "Due to a police operation between Vienna Hbf (U) and Wien Meidling train station (U) to expected 20:15 clock no journeys are possible.",
         "title": "Wien Hauptbahnhof \u2194 Wien Hauptbahnhof / Wien Hauptbahnhof \u2194 Wien Meidling"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&882699": {
+    "first_seen": "2026-06-02T20:31:00.001117+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to damage to the track, only limited train journeys to expected train station (U) to expected 04:00 are possible at Wien Praterstern.",
+        "title": "Wien Praterstern"
       },
       "epoch": 3
     }
