@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 03 Jun 2026 01:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 01:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N8: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">313e76822e143c50caffac5207b30a6b8ef6e79c6209a0240d13410a1e0ac6ce</guid>
+      <pubDate>Wed, 03 Jun 2026 01:08:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 01:30:40 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 01:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 03.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 03.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Floridsdorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sat, 27 Jun 2026 01:30:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei der Linie 11 und 71 zu Kurzführungen (22:30-01:00). Zeitraum: Von … [03.03.2026 – 27.06.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei der Linie 11 und 71 zu Kurzführungen (22:30-01:00). Zeitraum: Von …<br/>[03.03.2026 – 27.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N8: Nußdorfer Straße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e700b01355e77fa5fafea3bede0853415d157996be3e74038bacc8fa6c3481b4</guid>
-      <pubDate>Fri, 24 Apr 2026 15:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 30 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie N8 in Richtung Handelskai S U Haltestelle: Nußdorfer Straße U Von: Währinger Gürtel 170 Nach: Heiligenstädter Straße ONr. 2 Dauer: Ab … [30.04.2026 – 30.04.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie N8 in Richtung Handelskai S U Haltestelle: Nußdorfer Straße U Von: Währinger Gürtel 170 Nach: Heiligenstädter Straße ONr. 2 Dauer: Ab …<br/>[30.04.2026 – 30.04.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

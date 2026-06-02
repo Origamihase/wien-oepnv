@@ -878,6 +878,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N8: Verkehrsunfall",
+    "description": "Linie N8: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "313e76822e143c50caffac5207b30a6b8ef6e79c6209a0240d13410a1e0ac6ce",
+    "pubDate": "2026-06-03T01:08:00+02:00",
+    "starts_at": "2026-06-03T01:08:00+02:00",
+    "ends_at": "2026-06-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=N8|D=2026-06-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Einstieg: Brünner Straße 31-31A",
     "description": "Bauarbeiten\nEinstieg: Brünner Straße 31-31A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
