@@ -518,30 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsüberlastung",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
-    "pubDate": "2026-06-02T08:10:00+02:00",
-    "starts_at": "2026-06-02T08:10:00+02:00",
-    "ends_at": "2026-06-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-06-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Polizeieinsatz",
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "810ddddf37c3bfda3e29fcd9fe96566231a7941343e64c6f0f65d605631c27b6",
-    "pubDate": "2026-06-02T08:19:00+02:00",
-    "starts_at": "2026-06-02T08:19:00+02:00",
-    "ends_at": "2026-06-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=11A|D=2026-06-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -682,6 +658,18 @@
     "starts_at": "2026-06-02T00:00:22+02:00",
     "ends_at": "2026-06-02T23:59:59+02:00",
     "_identity": "wl|störung|L=41|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42A: Verspätungen",
+    "description": "Linie 42A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ec35d84f2444a99f2c65ec20af03a293d41787a346c7f1c1a4ff5bf93524ab24",
+    "pubDate": "2026-06-02T12:06:00+02:00",
+    "starts_at": "2026-06-02T12:06:00+02:00",
+    "ends_at": "2026-06-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=42A|D=2026-06-02"
   },
   {
     "source": "Wiener Linien",
