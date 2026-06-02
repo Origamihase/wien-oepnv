@@ -734,18 +734,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Verunreinigung",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "89c7e98b8f27d48cb03c0d0017ab220e860d6d3673e2506ba1f48f6d2eb5a555",
-    "pubDate": "2026-06-02T21:39:00+02:00",
-    "starts_at": "2026-06-02T21:39:00+02:00",
-    "ends_at": "2026-06-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-06-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -806,18 +794,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Verspätungen",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "214cec6cae971effd21b47b0b3859b88354324a6fc53301d0ac43a41c2f9bb78",
-    "pubDate": "2026-06-02T19:32:00+02:00",
-    "starts_at": "2026-06-02T19:32:00+02:00",
-    "ends_at": "2026-06-03T01:10:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-06-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Betrieb ab Sommarugagasse",
     "description": "Gleisbauarbeiten\nBetrieb ab Sommarugagasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -838,6 +814,18 @@
     "starts_at": "2026-06-02T00:00:23+02:00",
     "ends_at": "2026-06-02T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf\nder Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-06-02T23:00:12+02:00",
+    "starts_at": "2026-06-02T23:00:12+02:00",
+    "ends_at": "2026-06-03T05:30:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-06-02"
   },
   {
     "source": "Wiener Linien",
