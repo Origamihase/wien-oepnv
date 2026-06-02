@@ -1176,16 +1176,6 @@
       "epoch": 3
     }
   },
-  "374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9": {
-    "first_seen": "2026-05-27T12:03:07.020489+00:00",
-    "translations": {
-      "en": {
-        "summary": "irregular intervals in both directions. Reason: police operation.",
-        "title": "12A: police operation"
-      },
-      "epoch": 2
-    }
-  },
   "374682a5ef7d10ffd53b8de882f56078f3143e483965f06fa24942e8656502d7": {
     "first_seen": "2026-06-01T13:30:49.740991+00:00",
     "translations": {
@@ -5586,6 +5576,16 @@
       "en": {
         "summary": "Due to an interlocking malfunction am Bahnhof, no journeys are currently possible in Wr.Neustadt Hbf.",
         "title": "Wiener Neustadt Hauptbahnhof"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&882653": {
+    "first_seen": "2026-06-02T18:01:08.483646+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation between Vienna Hbf (U) and Wien Meidling train station (U) to expected 20:15 clock no journeys are possible.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Hauptbahnhof / Wien Hauptbahnhof \u2194 Wien Meidling"
       },
       "epoch": 3
     }
