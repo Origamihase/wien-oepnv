@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 02 Jun 2026 12:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2026 13:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[37/38/40/41: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e5158dbfad6d3f5928345ac4da2bbfba8d6b48080db1165e00510ece56c883ae</guid>
+      <pubDate>Tue, 02 Jun 2026 12:39:00 +0200</pubDate>
+      <ext:first_seen>Tue, 02 Jun 2026 13:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 02 Jun 2026 12:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 02 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 38: Unregelmäßige Intervalle in beiden Richtungen. [Am 02.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 38: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 02.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[42A: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung. [20.04.2026 – 08.04.2027]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/71: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d54ea31a8d9717d932bee0e04f74f4ab8f1a96e6f95b9836ba88b750aa1fa25a</guid>
-      <pubDate>Mon, 16 Feb 2026 06:00:00 +0100</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 03 Mar 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 27 Jun 2026 01:30:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei der Linie 11 und 71 zu Kurzführungen (22:30-01:00). Zeitraum: Von … [03.03.2026 – 27.06.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei der Linie 11 und 71 zu Kurzführungen (22:30-01:00). Zeitraum: Von …<br/>[03.03.2026 – 27.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
