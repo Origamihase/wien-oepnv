@@ -530,6 +530,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1A: Verkehrsunfall",
+    "description": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9c4b20eeb0989a8f43e6b6aa56a0761d9fd3f3c3c7627ef6c508b6ef4287118a",
+    "pubDate": "2026-06-02T14:13:00+02:00",
+    "starts_at": "2026-06-02T14:13:00+02:00",
+    "ends_at": "2026-06-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=1A|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -538,18 +550,6 @@
     "starts_at": "2026-05-29T00:00:13+02:00",
     "ends_at": "2026-06-02T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-05-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37/38/40/41: Rettungseinsatz",
-    "description": "Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Linie 40: Unregelmäßige Intervalle in beiden Richtungen. Linie 41: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e5158dbfad6d3f5928345ac4da2bbfba8d6b48080db1165e00510ece56c883ae",
-    "pubDate": "2026-06-02T12:39:00+02:00",
-    "starts_at": "2026-06-02T12:39:00+02:00",
-    "ends_at": "2026-06-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=37,38,40,41|D=2026-06-02"
   },
   {
     "source": "Wiener Linien",
@@ -602,6 +602,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40/41: Betrieb ab Gersthof",
+    "description": "40+41: Betrieb\nab Gersthof <",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8",
+    "pubDate": "2026-06-02T00:00:22+02:00",
+    "starts_at": "2026-06-02T00:00:22+02:00",
+    "ends_at": "2026-06-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=40|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "41E: Ersatzbus 41E hält bei Währinger Str 200",
     "description": "Gleisbauarbeiten\nErsatzbus 41E\nhält bei\nWähringer Str 200",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -622,6 +634,30 @@
     "starts_at": "2026-06-02T00:00:22+02:00",
     "ends_at": "2026-06-02T23:59:59+02:00",
     "_identity": "wl|störung|L=41E|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Einstieg bei Linie 40",
+    "description": "Gleisbauarbeiten\nEinstieg bei Linie 40",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3dd2ec4d62d47b447d5556f040f0774144f7f65954d4ab25fa15656df8857568",
+    "pubDate": "2026-06-02T00:00:22+02:00",
+    "starts_at": "2026-06-02T00:00:22+02:00",
+    "ends_at": "2026-06-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=41|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Gersthof",
+    "description": "Gersthof <",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8fc2142f96f52b13d5b783366be5422b91f88088ec2b47cd38bbfda2736860f8",
+    "pubDate": "2026-06-02T00:00:22+02:00",
+    "starts_at": "2026-06-02T00:00:22+02:00",
+    "ends_at": "2026-06-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=41|D=2026-06-02"
   },
   {
     "source": "Wiener Linien",
@@ -758,6 +794,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62: Schadhaftes Fahrzeug",
+    "description": "Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "609182136527b3c7baff4b9b43ba2d79979590761dcf61a917f5784db4aba3e6",
+    "pubDate": "2026-06-02T14:15:00+02:00",
+    "starts_at": "2026-06-02T14:15:00+02:00",
+    "ends_at": "2026-06-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62: Haltestelle ca. 10 m rückverlegt Höhe Hausnr. 81",
     "description": "Haltestelle ca. 10 m rückverlegt\nHöhe Hausnr. 81",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -795,10 +843,10 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9A: Fahrtbehinderung Falschparker",
-    "description": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2",
-    "pubDate": "2026-06-02T13:41:00+02:00",
+    "pubDate": "2026-06-02T13:44:14+02:00",
     "starts_at": "2026-06-02T13:44:14+02:00",
     "ends_at": "2026-06-02T14:43:00+02:00",
     "_identity": "wl|störung|L=9A|D=2026-06-02"
