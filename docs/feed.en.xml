@@ -7,41 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 02 Jun 2026 14:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2026 15:01:17 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[1A: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9c4b20eeb0989a8f43e6b6aa56a0761d9fd3f3c3c7627ef6c508b6ef4287118a</guid>
-      <pubDate>Tue, 02 Jun 2026 14:13:00 +0200</pubDate>
-      <ext:first_seen>Tue, 02 Jun 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 02 Jun 2026 14:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 02 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic accident. [On 02.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9A: service obstruction False Parker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2</guid>
-      <pubDate>Tue, 02 Jun 2026 13:44:14 +0200</pubDate>
-      <ext:first_seen>Tue, 02 Jun 2026 14:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 02 Jun 2026 13:44:14 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 02 Jun 2026 14:43:00 +0200</ext:ends_at>
-      <description>[On 02.06.2026]</description>
-      <content:encoded><![CDATA[[On 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: False Parker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7</guid>
-      <pubDate>Tue, 02 Jun 2026 13:06:00 +0200</pubDate>
-      <ext:first_seen>Tue, 02 Jun 2026 13:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 02 Jun 2026 13:06:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 02 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 02.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 02.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[42A: delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +85,39 @@
       <ext:ends_at>Wed, 03 Jun 2026 00:35:00 +0200</ext:ends_at>
       <description>[02.06.2026 – 03.06.2026]</description>
       <content:encoded><![CDATA[[02.06.2026 – 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[34A/N20: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e42264819bc62bd2fe2fbd8fff14608a5246ec0d9c9bd2c311b7bd577ca4532e</guid>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 18:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 09 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 17:00:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Prague Street area, the line 34A is redirected to June 03, 2026, approximately 17:00 clock. [09.04.2026 – 03.06.2026]</description>
+      <content:encoded><![CDATA[Because of construction works in the Prague Street area, the line 34A is redirected to June 03, 2026, approximately 17:00 clock.<br/>[09.04.2026 – 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6</guid>
+      <pubDate>Mon, 20 Apr 2026 03:02:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
+      <description>Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line. [20.04.2026 – 08.04.2027]</description>
+      <content:encoded><![CDATA[Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11/71: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d54ea31a8d9717d932bee0e04f74f4ab8f1a96e6f95b9836ba88b750aa1fa25a</guid>
+      <pubDate>Mon, 16 Feb 2026 06:00:00 +0100</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 03 Mar 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 27 Jun 2026 01:30:00 +0200</ext:ends_at>
+      <description>Due to track construction works in the Simmeringer Hauptstraße, short guides are available in the evening hours Monday to Friday at the line 11 and 71 (22:30-01:00). Period: From … [03.03.2026 – 27.06.2026]</description>
+      <content:encoded><![CDATA[Due to track construction works in the Simmeringer Hauptstraße, short guides are available in the evening hours Monday to Friday at the line 11 and 71 (22:30-01:00). Period: From …<br/>[03.03.2026 – 27.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
