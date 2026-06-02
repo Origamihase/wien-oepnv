@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 02 Jun 2026 04:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2026 05:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[46: Betrieb ab Thaliastraße]]></title>
@@ -65,6 +65,17 @@
       <content:encoded><![CDATA[[01.06.2026 – 02.06.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Tue, 02 Jun 2026 04:45:15 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 05:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 02 Jun 2026 04:45:15 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 00:35:00 +0200</ext:ends_at>
+      <description>[02.06.2026 – 03.06.2026]</description>
+      <content:encoded><![CDATA[[02.06.2026 – 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[34A/N20: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e42264819bc62bd2fe2fbd8fff14608a5246ec0d9c9bd2c311b7bd577ca4532e</guid>
@@ -74,6 +85,17 @@
       <ext:ends_at>Wed, 03 Jun 2026 17:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Prager Straße wird die Linie 34A bis 03. Juni 2026, etwa 17:00 Uhr umgeleitet. [09.04.2026 – 03.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Prager Straße wird die Linie 34A bis 03. Juni 2026, etwa 17:00 Uhr umgeleitet.<br/>[09.04.2026 – 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Tue, 02 Jun 2026 04:47:00 +0200</pubDate>
+      <ext:first_seen>Sat, 30 May 2026 15:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 02 Jun 2026 04:47:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 02 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 02.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 02.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: Gleisbauarbeiten]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sat, 27 Jun 2026 01:30:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei der Linie 11 und 71 zu Kurzführungen (22:30-01:00). Zeitraum: Von … [03.03.2026 – 27.06.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei der Linie 11 und 71 zu Kurzführungen (22:30-01:00). Zeitraum: Von …<br/>[03.03.2026 – 27.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N8: Nußdorfer Straße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e700b01355e77fa5fafea3bede0853415d157996be3e74038bacc8fa6c3481b4</guid>
-      <pubDate>Fri, 24 Apr 2026 15:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 30 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie N8 in Richtung Handelskai S U Haltestelle: Nußdorfer Straße U Von: Währinger Gürtel 170 Nach: Heiligenstädter Straße ONr. 2 Dauer: Ab … [30.04.2026 – 30.04.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie N8 in Richtung Handelskai S U Haltestelle: Nußdorfer Straße U Von: Währinger Gürtel 170 Nach: Heiligenstädter Straße ONr. 2 Dauer: Ab …<br/>[30.04.2026 – 30.04.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N8: Thaliastraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">05c4dbd8c11c974f8bd0ef91fae9cc3609895d515cf5c157adba2dbee87150be</guid>
-      <pubDate>Fri, 19 Jul 2024 09:52:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 18:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jul 2024 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 16 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Haltestellenverlegung der Linie N8 in Richtung Alterlaa U Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel 35 Nach: Lerchenfelder Gürtel 41 Dauer: Ab 20. Juli … [Seit 24.07.2024]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie N8 in Richtung Alterlaa U Haltestelle: Thaliastraße U Von: Lerchenfelder Gürtel 35 Nach: Lerchenfelder Gürtel 41 Dauer: Ab 20. Juli …<br/>[Seit 24.07.2024]]]></content:encoded>
     </item>
   </channel>
 </rss>
