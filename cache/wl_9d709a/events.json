@@ -518,6 +518,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "301864fe661402a234c7e28ce57d515a8b73dbea9b2393b14e61bea5451c769d",
+    "pubDate": "2026-06-02T23:10:41+02:00",
+    "starts_at": "2026-06-02T23:11:08+02:00",
+    "ends_at": "2026-06-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Verkehrsunfall Betrieb ab Dänenstraße",
+    "description": "Verkehrsunfall\nBetrieb ab Dänenstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b1410b4886e29fdcbaff439e2502be1fd63e47e783543af4a10f2e5cf9067515",
+    "pubDate": "2026-06-02T23:11:00+02:00",
+    "starts_at": "2026-06-02T23:11:00+02:00",
+    "ends_at": "2026-06-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Veranstaltung Betrieb ab Silbergasse",
+    "description": "Veranstaltung\nBetrieb ab Silbergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e3b69cce9e1c67ef05b1cca10e2e0a3da2208ee2c8af88148f4ebf15195e30b2",
+    "pubDate": "2026-06-02T23:11:08+02:00",
+    "starts_at": "2026-06-02T23:11:08+02:00",
+    "ends_at": "2026-06-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -526,6 +562,18 @@
     "starts_at": "2026-05-29T00:00:13+02:00",
     "ends_at": "2026-06-02T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-05-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "35A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7a6b5813f02625534069ce29a01493676112844d8b5dd7d5468d7855d943bf8d",
+    "pubDate": "2026-06-02T23:11:27+02:00",
+    "starts_at": "2026-06-02T23:11:39+02:00",
+    "ends_at": "2026-06-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=35A|D=2026-06-02"
   },
   {
     "source": "Wiener Linien",
@@ -550,6 +598,30 @@
     "starts_at": "2026-06-01T05:37:22+02:00",
     "ends_at": "2026-06-02T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
+    "pubDate": "2026-06-02T23:11:10+02:00",
+    "starts_at": "2026-06-02T23:13:35+02:00",
+    "ends_at": "2026-06-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=38|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Verkehrsunfall Betrieb ab Nußdorfer Straße",
+    "description": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2b2f63b1963887e8ebb1197e04616588596e5bdcfade51c2548b4ba7e2fc8261",
+    "pubDate": "2026-06-02T23:11:10+02:00",
+    "starts_at": "2026-06-02T23:13:06+02:00",
+    "ends_at": "2026-06-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=38|D=2026-06-02"
   },
   {
     "source": "Wiener Linien",
