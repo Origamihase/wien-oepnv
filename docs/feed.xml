@@ -7,18 +7,50 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 03 Jun 2026 10:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 10:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[D: Verspätungen]]></title>
+      <title><![CDATA[S-Bahn Stammstrecke Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/web/wienerlinien/oeffis-stoerungen-strecke</link>
+      <guid isPermaLink="false">506a840c9c5defab3e7fe0bea92d968b483db011fd2a0d10a6f43215c884c3fd</guid>
+      <pubDate>Wed, 03 Jun 2026 10:30:53 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 10:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 10:00:00 +0200</ext:starts_at>
+      <description>Durchschnittliche Verspätung von 11.7 Minuten in Richtung Praterstern [Seit 03.06.2026] [Seit 03.06.2026]</description>
+      <content:encoded><![CDATA[Durchschnittliche Verspätung von 11.7 Minuten in Richtung Praterstern [Seit 03.06.2026]<br/>[Seit 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Fahrtbehinderung Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c7925ff70d53612e7f52f703b1a2b91345fcc7af95cb98ea1dd62d9ae3a76484</guid>
-      <pubDate>Wed, 03 Jun 2026 09:48:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 10:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 09:48:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9</guid>
+      <pubDate>Wed, 03 Jun 2026 10:07:53 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 10:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 10:07:53 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 11:07:00 +0200</ext:ends_at>
+      <description>[Am 03.06.2026]</description>
+      <content:encoded><![CDATA[[Am 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[57A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d354c7652a6b29deb96b519f98e62abb5becc90c01b68e51f6409488034e70ec</guid>
+      <pubDate>Wed, 03 Jun 2026 10:07:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 10:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 10:07:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 03.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 03.06.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Gleisschaden Einstieg in der Leberstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ab60d73d944470617310e1629498a8e76adfc549376b8de6c581adc05b49ec40</guid>
+      <pubDate>Wed, 03 Jun 2026 09:23:15 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 10:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 09:23:15 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 13:00:00 +0200</ext:ends_at>
+      <description>[Am 03.06.2026]</description>
+      <content:encoded><![CDATA[[Am 03.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9: Falschparker Einstieg Rosensteingasse 61]]></title>
@@ -32,24 +64,13 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[18: Gleisschaden]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ff9b04f319fc22e039949597fa16e852577d197b36d235e28063c6b3c9562f16</guid>
-      <pubDate>Wed, 03 Jun 2026 09:18:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 09:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 09:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[7A: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a2b0eb63942e1f4021934a84d5cd0df84f51ded61fcb83e3bd269465214a9da2</guid>
       <pubDate>Wed, 03 Jun 2026 08:30:00 +0200</pubDate>
       <ext:first_seen>Wed, 03 Jun 2026 09:00:53 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 08:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Wed, 03 Jun 2026 10:59:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
     </item>
@@ -96,28 +117,6 @@
       <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[01.06.2026 – 03.06.2026]</description>
       <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: Busse halten Gregor-Mendel-Straße ggü. 33]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
-      <pubDate>Mon, 01 Jun 2026 05:35:55 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:35:55 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.06.2026 – 03.06.2026]</description>
-      <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Wed, 03 Jun 2026 04:45:26 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 05:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 04:45:26 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 00:35:00 +0200</ext:ends_at>
-      <description>[03.06.2026 – 04.06.2026]</description>
-      <content:encoded><![CDATA[[03.06.2026 – 04.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
