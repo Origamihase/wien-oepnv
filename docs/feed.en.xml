@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 03 Jun 2026 15:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 16:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[35A: traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">311a3d1d21d0e028a008e02b40ec15cfb9a9f4383510c50597e114937b639358</guid>
+      <pubDate>Wed, 03 Jun 2026 15:59:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 16:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 15:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic congestion in the stop area Nußdorfer Straße U. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion in the stop area Nußdorfer Straße U.<br/>[On 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91f10f4182d7824836d33d2209e9cea486854f28d5216b1b2b5c5844beec8939</guid>
+      <pubDate>Wed, 03 Jun 2026 15:51:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 16:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 15:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f772b0a6c66647ee4e80b618f6f009261e873191227b6bfcbf9b58294cc76bd1</guid>
+      <pubDate>Wed, 03 Jun 2026 15:51:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 16:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 15:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[47A/N54: diversion direction Unter St. Veit or Westbahnhof]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -60,7 +93,7 @@
       <pubDate>Wed, 03 Jun 2026 13:38:00 +0200</pubDate>
       <ext:first_seen>Tue, 02 Jun 2026 14:30:50 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 13:38:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Wed, 03 Jun 2026 15:57:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: traffic accident. [On 03.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 03.06.2026]]]></content:encoded>
     </item>
@@ -85,39 +118,6 @@
       <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[02.06.2026 – 03.06.2026]</description>
       <content:encoded><![CDATA[[02.06.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: stop Discontinued]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
-      <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.06.2026 – 03.06.2026]</description>
-      <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Buses stop Dänenstraße opp. 2]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5</guid>
-      <pubDate>Mon, 01 Jun 2026 05:37:22 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:37:22 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.06.2026 – 03.06.2026]</description>
-      <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: Buses stop Gregor-Mendel-Straße opp. 33]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
-      <pubDate>Mon, 01 Jun 2026 05:35:55 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:35:55 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.06.2026 – 03.06.2026]</description>
-      <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
