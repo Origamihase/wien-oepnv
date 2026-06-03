@@ -7,29 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 03 Jun 2026 09:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 09:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[7A: Fremder Verkehrsunfall]]></title>
+      <title><![CDATA[9: service obstruction False Parker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
+      <pubDate>Wed, 03 Jun 2026 09:25:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 09:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 09:29:06 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Antonigasse. expected duration: 09:50 watch. Reason: wrong parker in the Hormayrgasse range. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Antonigasse. expected duration: 09:50 watch. Reason: wrong parker in the Hormayrgasse range.<br/>[On 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: track damage]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ff9b04f319fc22e039949597fa16e852577d197b36d235e28063c6b3c9562f16</guid>
+      <pubDate>Wed, 03 Jun 2026 09:18:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 09:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 09:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation only between Burggasse, Stadthalle U and St. Marx S. Switch to U3, 71, 74A and S-Bahn. expected duration: Not foreseeable. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[Operation only between Burggasse, Stadthalle U and St. Marx S. Switch to U3, 71, 74A and S-Bahn. expected duration: Not foreseeable.<br/>[On 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a2b0eb63942e1f4021934a84d5cd0df84f51ded61fcb83e3bd269465214a9da2</guid>
       <pubDate>Wed, 03 Jun 2026 08:30:00 +0200</pubDate>
       <ext:first_seen>Wed, 03 Jun 2026 09:00:53 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 08:30:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung zwischen Davidgasse, Knöllgasse und Arthaberplatz über Gußriegelstraße, Troststraße und Laxenburgerstraße. [Am 03.06.2026]</description>
-      <content:encoded><![CDATA[Umleitung zwischen Davidgasse, Knöllgasse und Arthaberplatz über Gußriegelstraße, Troststraße und Laxenburgerstraße.<br/>[Am 03.06.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[30: Rettungseinsatz]]></title>
+      <title><![CDATA[30: rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e651b94865f7e5efc9395cf803f518a69f762e0cb990649d58cf4f8152b3d3c7</guid>
       <pubDate>Wed, 03 Jun 2026 07:44:00 +0200</pubDate>
       <ext:first_seen>Wed, 03 Jun 2026 08:01:05 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 07:44:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: service from Thaliastraße]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Thu, 04 Jun 2026 00:35:00 +0200</ext:ends_at>
       <description>[03.06.2026 – 04.06.2026]</description>
       <content:encoded><![CDATA[[03.06.2026 – 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[34A/N20: construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e42264819bc62bd2fe2fbd8fff14608a5246ec0d9c9bd2c311b7bd577ca4532e</guid>
-      <pubDate>Thu, 09 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 18:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 09 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 17:00:00 +0200</ext:ends_at>
-      <description>Because of construction works in the Prague Street area, the line 34A is redirected to June 03, 2026, approximately 17:00 clock. [09.04.2026 – 03.06.2026]</description>
-      <content:encoded><![CDATA[Because of construction works in the Prague Street area, the line 34A is redirected to June 03, 2026, approximately 17:00 clock.<br/>[09.04.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6</guid>
-      <pubDate>Mon, 20 Apr 2026 03:02:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
-      <description>Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line. [20.04.2026 – 08.04.2027]</description>
-      <content:encoded><![CDATA[Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

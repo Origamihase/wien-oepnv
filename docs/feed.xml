@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 03 Jun 2026 09:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 09:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
+      <pubDate>Wed, 03 Jun 2026 09:25:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 09:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 09:29:06 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 09:50 Uhr. Grund: Falschparker im Bereich Hormayrgasse . [Am 03.06.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 09:50 Uhr. Grund: Falschparker im Bereich Hormayrgasse .<br/>[Am 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Gleisschaden]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ff9b04f319fc22e039949597fa16e852577d197b36d235e28063c6b3c9562f16</guid>
+      <pubDate>Wed, 03 Jun 2026 09:18:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 09:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 09:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb nur zwischen Burggasse, Stadthalle U und St. Marx S. Weichen Sie ersatzweise auf die Linien U3, 71, 74A und die S-Bahn aus. Voraussichtliche Dauer: Nicht absehbar. [Am 03.06.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Burggasse, Stadthalle U und St. Marx S. Weichen Sie ersatzweise auf die Linien U3, 71, 74A und die S-Bahn aus. Voraussichtliche Dauer: Nicht absehbar.<br/>[Am 03.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[7A: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +39,8 @@
       <ext:first_seen>Wed, 03 Jun 2026 09:00:53 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 08:30:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung zwischen Davidgasse, Knöllgasse und Arthaberplatz über Gußriegelstraße, Troststraße und Laxenburgerstraße. [Am 03.06.2026]</description>
-      <content:encoded><![CDATA[Umleitung zwischen Davidgasse, Knöllgasse und Arthaberplatz über Gußriegelstraße, Troststraße und Laxenburgerstraße.<br/>[Am 03.06.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[30: Rettungseinsatz]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Thu, 04 Jun 2026 00:35:00 +0200</ext:ends_at>
       <description>[03.06.2026 – 04.06.2026]</description>
       <content:encoded><![CDATA[[03.06.2026 – 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[34A/N20: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e42264819bc62bd2fe2fbd8fff14608a5246ec0d9c9bd2c311b7bd577ca4532e</guid>
-      <pubDate>Thu, 09 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 18:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 09 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 17:00:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Prager Straße wird die Linie 34A bis 03. Juni 2026, etwa 17:00 Uhr umgeleitet. [09.04.2026 – 03.06.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Prager Straße wird die Linie 34A bis 03. Juni 2026, etwa 17:00 Uhr umgeleitet.<br/>[09.04.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6</guid>
-      <pubDate>Mon, 20 Apr 2026 03:02:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung. [20.04.2026 – 08.04.2027]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

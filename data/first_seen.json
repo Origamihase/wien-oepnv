@@ -3597,7 +3597,11 @@
   "a2b0eb63942e1f4021934a84d5cd0df84f51ded61fcb83e3bd269465214a9da2": {
     "first_seen": "2026-06-03T07:00:53.580628+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "7A: foreign traffic accident"
+      },
+      "epoch": 3
     }
   },
   "a3904226e11e2eaa01222749b08821d53ed1cdb9f1a41de4e9b274034872a123": {
@@ -3793,6 +3797,16 @@
         "title": "66A: police operation"
       },
       "epoch": 2
+    }
+  },
+  "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386": {
+    "first_seen": "2026-06-03T07:30:58.093757+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards Antonigasse. expected duration: 09:50 watch. Reason: wrong parker in the Hormayrgasse range.",
+        "title": "9: service obstruction False Parker"
+      },
+      "epoch": 3
     }
   },
   "ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b": {
@@ -4907,8 +4921,10 @@
     "first_seen": "2026-06-03T06:01:05.082883+00:00",
     "translations": {
       "en": {
-        "summary": "After an service obstruction there are different intervals."
-      }
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "30: rescue operation"
+      },
+      "epoch": 3
     }
   },
   "e700b01355e77fa5fafea3bede0853415d157996be3e74038bacc8fa6c3481b4": {
@@ -5453,6 +5469,16 @@
         "title": "Favoritenstra\u00dfe from crossing Landgutgasse to crossing Keplerplatz and Keplergasse"
       },
       "epoch": 2
+    }
+  },
+  "ff9b04f319fc22e039949597fa16e852577d197b36d235e28063c6b3c9562f16": {
+    "first_seen": "2026-06-03T07:30:58.093757+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between Burggasse, Stadthalle U and St. Marx S. Switch to U3, 71, 74A and S-Bahn. expected duration: Not foreseeable.",
+        "title": "18: track damage"
+      },
+      "epoch": 3
     }
   },
   "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&829791": {
