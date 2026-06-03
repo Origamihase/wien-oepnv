@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 03 Jun 2026 18:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 19:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[12A/13A/5A/33A/5A/5BX/65A/77A/80A/93A: traffic congestion]]></title>
+      <title><![CDATA[12A/13A/14A/33A/5A/5B/65A/77A/80A/93A/94A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4f414cc855806fa8f262d8802c244af307e51f966209b331a26c279ab7b01a9c</guid>
+      <guid isPermaLink="false">e4941d083366df434de307efca3806fde4b07b88fa259f985909fb625d7ff6f6</guid>
       <pubDate>Wed, 03 Jun 2026 17:47:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 18:01:09 +0200</ext:first_seen>
+      <ext:first_seen>Wed, 03 Jun 2026 19:00:50 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 17:47:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line 5A: irregular intervals in both directions. [On 03.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line 5A: irregular intervals in both directions.<br/>[On 03.06.2026]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 5A: Unregelmäßige Intervalle in beiden Richtungen. [Am 03.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 5A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 03.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62: track damage Operation only up to Bhf. Meidling Dörfelstr., from Bhf. Meidling Dörfelstraße]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Wed, 03 Jun 2026 23:45:00 +0200</ext:ends_at>
       <description>track damage operation only up to Bhf. Meidling &amp;lt;&amp;gt; Dörfelstr. track damage service from Bhf. Meidling &amp;lt;&amp;gt; Dörfelstraße [On 03.06.2026]</description>
       <content:encoded><![CDATA[track damage operation only up to Bhf. Meidling &lt;&gt; Dörfelstr. track damage service from Bhf. Meidling &lt;&gt; Dörfelstraße<br/>[On 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[94A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b79028aaa1fdd7fc7889c7f24a28ccc80200e858d4fcbe7105f68be3c59ecb5f</guid>
-      <pubDate>Wed, 03 Jun 2026 16:32:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 17:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 16:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[35A: traffic congestion]]></title>
@@ -115,6 +104,17 @@
       <pubDate>Wed, 03 Jun 2026 15:16:00 +0200</pubDate>
       <ext:first_seen>Wed, 03 Jun 2026 09:00:53 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 15:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f</guid>
+      <pubDate>Wed, 03 Jun 2026 18:07:00 +0200</pubDate>
+      <ext:first_seen>Tue, 02 Jun 2026 21:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 18:07:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
