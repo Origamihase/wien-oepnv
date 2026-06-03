@@ -3231,8 +3231,10 @@
     "first_seen": "2026-06-03T10:30:58.887326+00:00",
     "translations": {
       "en": {
-        "summary": "Because of the rainbow parade, the following traffic measures are taking place."
-      }
+        "summary": "Because of the rainbow parade, the following traffic measures are taking place.",
+        "title": "1/1A/22X/2A/31/3A/59A/71/74A/D: Rainbow Parade 2026 on 1306.2026"
+      },
+      "epoch": 3
     }
   },
   "92c53d152cc26771efc2869b6be8e84c680bdcfb3dd519c64bba7b5988105c2a": {
@@ -4064,6 +4066,16 @@
         "title": "O: service obstruction because of police operation"
       },
       "epoch": 2
+    }
+  },
+  "b3dcbbc6e19d96361d56bc3f3ee29d72b2f90f08ddab0ffb34e6788945fb613c": {
+    "first_seen": "2026-06-03T11:30:48.044254+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic accident.",
+        "title": "26A: traffic accident"
+      },
+      "epoch": 3
     }
   },
   "b3dddce3dc80f12d5b1311e5cc5eb73c5428ec5b96a230f20dbb510d2fb1e2fd": {

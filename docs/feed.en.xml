@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 03 Jun 2026 13:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 13:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26A: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b3dcbbc6e19d96361d56bc3f3ee29d72b2f90f08ddab0ffb34e6788945fb613c</guid>
+      <pubDate>Wed, 03 Jun 2026 13:05:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 13:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 13:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic accident. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 03.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[48A: foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,15 +54,26 @@
       <content:encoded><![CDATA[Due to construction works in the station area Seestadt, the exit tracks are blocked alternately.<br/>[03.06.2026 – 20.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1/1A/2/2A/31/3A/59A/71/74A/D: Regenbogenparade 2026 am 13.06.2026]]></title>
+      <title><![CDATA[1/1A/22X/2A/31/3A/59A/71/74A/D: Rainbow Parade 2026 on 1306.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">91879edcd0477704fc6fe70f23daf6ba98704bc97545e28d96fd687387197fa9</guid>
       <pubDate>Wed, 03 Jun 2026 06:00:00 +0200</pubDate>
       <ext:first_seen>Wed, 03 Jun 2026 12:30:58 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 06:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
-      <description>Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen. [03.06.2026 – 13.06.2026]</description>
-      <content:encoded><![CDATA[Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
+      <description>Because of the rainbow parade, the following traffic measures are taking place. [03.06.2026 – 13.06.2026]</description>
+      <content:encoded><![CDATA[Because of the rainbow parade, the following traffic measures are taking place.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e651b94865f7e5efc9395cf803f518a69f762e0cb990649d58cf4f8152b3d3c7</guid>
+      <pubDate>Wed, 03 Jun 2026 13:18:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 08:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 13:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: service from Thaliastraße]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[01.06.2026 – 03.06.2026]</description>
       <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: Buses stop Gregor-Mendel-Straße opp. 33]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
-      <pubDate>Mon, 01 Jun 2026 05:35:55 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:35:55 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.06.2026 – 03.06.2026]</description>
-      <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Buses stop at Breitenfurter Straße 236-238]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Wed, 03 Jun 2026 04:45:26 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 05:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 04:45:26 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 00:35:00 +0200</ext:ends_at>
-      <description>[03.06.2026 – 04.06.2026]</description>
-      <content:encoded><![CDATA[[03.06.2026 – 04.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
