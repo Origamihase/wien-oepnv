@@ -764,7 +764,7 @@
     "guid": "0f263bf18e0688ef5429e4c14baed120ab2bd5c27d0bc1a278c13749715386ae",
     "pubDate": "2026-06-03T17:39:53+02:00",
     "starts_at": "2026-06-03T17:39:53+02:00",
-    "ends_at": "2026-06-03T23:15:00+02:00",
+    "ends_at": "2026-06-03T23:59:59+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-03"
   },
   {
@@ -776,7 +776,7 @@
     "guid": "3bd22726420279ab2026e70b351fc7fcb5ca5e75a7964b14725381471569f673",
     "pubDate": "2026-06-03T17:40:55+02:00",
     "starts_at": "2026-06-03T17:41:48+02:00",
-    "ends_at": "2026-06-03T23:30:00+02:00",
+    "ends_at": "2026-06-03T23:59:59+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-03"
   },
   {
@@ -788,7 +788,7 @@
     "guid": "6c769d208d65c2c04353b66d4ef875eefaf24dd705930b5faf541885fb23458a",
     "pubDate": "2026-06-03T17:40:07+02:00",
     "starts_at": "2026-06-03T17:40:07+02:00",
-    "ends_at": "2026-06-03T23:45:00+02:00",
+    "ends_at": "2026-06-03T23:59:59+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-03"
   },
   {
@@ -842,14 +842,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "WLB: Gleisschaden Kein Betrieb",
+    "description": "Gleisschaden\nKein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-06-03T20:47:00+02:00",
-    "starts_at": "2026-06-03T20:47:00+02:00",
-    "ends_at": "2026-06-03T21:30:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-06-03"
+    "guid": "7b059468cc8fad6a87993f13a0f5ca40a68fb69ff034efb6ffa31541b959162a",
+    "pubDate": "2026-06-03T17:42:12+02:00",
+    "starts_at": "2026-06-03T17:42:22+02:00",
+    "ends_at": "2026-06-03T23:59:59+02:00",
+    "_identity": "wl|störung|L=WLB|D=2026-06-03"
   },
   {
     "source": "Wiener Linien",
@@ -860,19 +860,7 @@
     "guid": "95bf7dc4dbab2f4d967ee7dbb59a562f95e9c6dfa828cb4ade6a1b5bf32fac8e",
     "pubDate": "2026-06-03T17:43:15+02:00",
     "starts_at": "2026-06-03T17:43:30+02:00",
-    "ends_at": "2026-06-03T23:30:00+02:00",
-    "_identity": "wl|störung|L=WLB|D=2026-06-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "WLB: Fahrtbehinderung Gleisschaden",
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd7d374f5cffaa5ab8c2e6644326ab17294e6e0d2c0ca3bd8f8d37cbbe3dc0b6",
-    "pubDate": "2026-06-03T17:42:12+02:00",
-    "starts_at": "2026-06-03T17:42:22+02:00",
-    "ends_at": "2026-06-03T23:30:00+02:00",
+    "ends_at": "2026-06-03T23:59:59+02:00",
     "_identity": "wl|störung|L=WLB|D=2026-06-03"
   },
   {

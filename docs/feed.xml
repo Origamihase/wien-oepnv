@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 03 Jun 2026 21:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 22:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[62: Gleisschaden Betrieb nur bis Bhf. Meidling Dörfelstr., ab Bhf. Meidling Dörfelstraße]]></title>
+      <title><![CDATA[62: Gleisschaden Umleitung ab Eichenstraße zum Westbahnhof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3bd22726420279ab2026e70b351fc7fcb5ca5e75a7964b14725381471569f673</guid>
+      <pubDate>Wed, 03 Jun 2026 17:40:55 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 22:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 17:41:48 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 03.06.2026]</description>
+      <content:encoded><![CDATA[[Am 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Gleisschaden Betrieb nur bis Bhf. Meidling Dörfelstr.]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c32744041f69da93733f01f758dbe56d1b2695ae454e121e6314a292d7d54021</guid>
-      <pubDate>Wed, 03 Jun 2026 17:40:07 +0200</pubDate>
+      <pubDate>Tue, 02 Jun 2026 00:00:14 +0200</pubDate>
       <ext:first_seen>Wed, 03 Jun 2026 18:01:09 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 17:41:05 +0200</ext:starts_at>
       <ext:ends_at>Wed, 03 Jun 2026 23:45:00 +0200</ext:ends_at>
-      <description>Gleisschaden Betrieb nur bis Bhf. Meidling &amp;lt;&amp;gt; Dörfelstr. Gleisschaden Betrieb ab Bhf. Meidling &amp;lt;&amp;gt; Dörfelstraße [Am 03.06.2026]</description>
-      <content:encoded><![CDATA[Gleisschaden Betrieb nur bis Bhf. Meidling &lt;&gt; Dörfelstr. Gleisschaden Betrieb ab Bhf. Meidling &lt;&gt; Dörfelstraße<br/>[Am 03.06.2026]]]></content:encoded>
+      <description>Gleisschaden Betrieb nur bis Bhf. Meidling &amp;lt;&amp;gt; Dörfelstr. [Am 03.06.2026]</description>
+      <content:encoded><![CDATA[Gleisschaden Betrieb nur bis Bhf. Meidling &lt;&gt; Dörfelstr.<br/>[Am 03.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[47A/N54: Umleitung Richtung Unter St. Veit bzw. Westbahnhof]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[01.06.2026 – 03.06.2026]</description>
       <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Wed, 03 Jun 2026 04:45:26 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 05:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 04:45:26 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 00:35:00 +0200</ext:ends_at>
-      <description>[03.06.2026 – 04.06.2026]</description>
-      <content:encoded><![CDATA[[03.06.2026 – 04.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
