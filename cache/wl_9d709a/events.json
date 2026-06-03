@@ -531,7 +531,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10A: Verkehrsüberlastung",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung im Haltestellenbereich Schloss Schönbrunn.",
+    "description": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
     "pubDate": "2026-06-03T15:57:00+02:00",
@@ -562,18 +562,6 @@
     "starts_at": "2026-06-03T15:51:00+02:00",
     "ends_at": "2026-06-03T23:55:00+02:00",
     "_identity": "wl|störung|L=18|D=2026-06-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1A: Verkehrsunfall",
-    "description": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9c4b20eeb0989a8f43e6b6aa56a0761d9fd3f3c3c7627ef6c508b6ef4287118a",
-    "pubDate": "2026-06-03T13:38:00+02:00",
-    "starts_at": "2026-06-03T13:38:00+02:00",
-    "ends_at": "2026-06-03T15:57:00+02:00",
-    "_identity": "wl|störung|L=1A|D=2026-06-03"
   },
   {
     "source": "Wiener Linien",
@@ -615,7 +603,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "35A: Verkehrsüberlastung",
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung im Haltestellenbereich Nußdorfer Straße U.",
+    "description": "Linie 35A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "311a3d1d21d0e028a008e02b40ec15cfb9a9f4383510c50597e114937b639358",
     "pubDate": "2026-06-03T15:59:00+02:00",
@@ -831,7 +819,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "59A: Verkehrsüberlastung",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung im Haltestellenbereich Arbeitergasse, Gürtel.",
+    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
     "pubDate": "2026-06-03T15:57:00+02:00",
@@ -854,12 +842,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "60: Rettungseinsatz",
     "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
     "pubDate": "2026-06-03T15:28:00+02:00",
-    "starts_at": "2026-06-03T15:30:26+02:00",
+    "starts_at": "2026-06-03T15:28:00+02:00",
     "ends_at": "2026-06-03T23:55:00+02:00",
     "_identity": "wl|störung|L=60|D=2026-06-03"
   },
@@ -898,6 +886,18 @@
     "starts_at": "2026-06-03T14:36:00+02:00",
     "ends_at": "2026-06-03T23:55:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Rettungseinsatz",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
+    "pubDate": "2026-06-03T16:01:00+02:00",
+    "starts_at": "2026-06-03T16:01:00+02:00",
+    "ends_at": "2026-06-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-06-03"
   },
   {
     "source": "Wiener Linien",
@@ -946,18 +946,6 @@
     "starts_at": "2026-05-29T00:00:12+02:00",
     "ends_at": "2026-06-03T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-05-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "35f1c1dae859117ecfd4a8a5bacbe13030aa8781faed62b42b7559892dc0a368",
-    "pubDate": "2026-06-03T15:18:56+02:00",
-    "starts_at": "2026-06-03T15:19:07+02:00",
-    "ends_at": "2026-06-03T16:18:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-06-03"
   },
   {
     "source": "Wiener Linien",
