@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 03 Jun 2026 16:31:03 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 17:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[94A: traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b79028aaa1fdd7fc7889c7f24a28ccc80200e858d4fcbe7105f68be3c59ecb5f</guid>
+      <pubDate>Wed, 03 Jun 2026 16:32:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 17:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 16:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[35A: traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[02.06.2026 – 03.06.2026]</description>
       <content:encoded><![CDATA[[02.06.2026 – 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: stop Discontinued]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
-      <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.06.2026 – 03.06.2026]</description>
-      <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
