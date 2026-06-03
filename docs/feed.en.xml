@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 03 Jun 2026 11:00:56 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 11:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[29A: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fd28b60b0d399a255267aca8e0564e4a131b7ccaa011c57449a8324ef18484f3</guid>
+      <pubDate>Wed, 03 Jun 2026 11:25:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 11:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 11:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 03.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 03.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[41: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,28 +54,6 @@
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: service obstruction traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9</guid>
-      <pubDate>Wed, 03 Jun 2026 10:07:53 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 10:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 10:07:53 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 11:07:00 +0200</ext:ends_at>
-      <description>[On 03.06.2026]</description>
-      <content:encoded><![CDATA[[On 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[57A: foreign traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d354c7652a6b29deb96b519f98e62abb5becc90c01b68e51f6409488034e70ec</guid>
-      <pubDate>Wed, 03 Jun 2026 10:07:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 10:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 10:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 11:20:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[18: track damage Einstieg in the Leberstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ab60d73d944470617310e1629498a8e76adfc549376b8de6c581adc05b49ec40</guid>
@@ -74,28 +63,6 @@
       <ext:ends_at>Wed, 03 Jun 2026 13:00:00 +0200</ext:ends_at>
       <description>[On 03.06.2026]</description>
       <content:encoded><![CDATA[[On 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: service obstruction False Parker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Wed, 03 Jun 2026 09:25:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 09:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 09:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction towards Antonigasse. expected duration: 09:50 watch. Reason: wrong parker in the Hormayrgasse range. [On 03.06.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Antonigasse. expected duration: 09:50 watch. Reason: wrong parker in the Hormayrgasse range.<br/>[On 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: foreign traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b0eb63942e1f4021934a84d5cd0df84f51ded61fcb83e3bd269465214a9da2</guid>
-      <pubDate>Wed, 03 Jun 2026 08:30:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 09:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 08:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 10:59:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 03.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: service from Thaliastraße]]></title>
@@ -118,6 +85,39 @@
       <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[02.06.2026 – 03.06.2026]</description>
       <content:encoded><![CDATA[[02.06.2026 – 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: stop Discontinued]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
+      <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.06.2026 – 03.06.2026]</description>
+      <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Buses stop Dänenstraße opp. 2]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5</guid>
+      <pubDate>Mon, 01 Jun 2026 05:37:22 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:37:22 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.06.2026 – 03.06.2026]</description>
+      <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: Buses stop Gregor-Mendel-Straße opp. 33]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
+      <pubDate>Mon, 01 Jun 2026 05:35:55 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:35:55 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.06.2026 – 03.06.2026]</description>
+      <content:encoded><![CDATA[[01.06.2026 – 03.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
