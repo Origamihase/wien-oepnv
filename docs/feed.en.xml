@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 04 Jun 2026 00:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 01:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[62: track damage service from Bhf. Meidling Dörfelstraße]]></title>
@@ -109,15 +109,15 @@
       <content:encoded><![CDATA[[01.06.2026 – 04.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62A: Buses stop at Breitenfurter Straße 236-238]]></title>
+      <title><![CDATA[43: track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Wed, 03 Jun 2026 04:45:26 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 05:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 04:45:26 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 00:35:00 +0200</ext:ends_at>
-      <description>[03.06.2026 – 04.06.2026]</description>
-      <content:encoded><![CDATA[[03.06.2026 – 04.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6</guid>
+      <pubDate>Mon, 20 Apr 2026 03:02:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
+      <description>Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line. [20.04.2026 – 08.04.2027]</description>
+      <content:encoded><![CDATA[Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
