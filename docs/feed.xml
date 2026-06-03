@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 03 Jun 2026 09:30:58 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 10:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9: Fahrtbehinderung Falschparker]]></title>
+      <title><![CDATA[D: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c7925ff70d53612e7f52f703b1a2b91345fcc7af95cb98ea1dd62d9ae3a76484</guid>
+      <pubDate>Wed, 03 Jun 2026 09:48:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 10:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 09:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 03.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 03.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Falschparker Einstieg Rosensteingasse 61]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
       <pubDate>Wed, 03 Jun 2026 09:25:00 +0200</pubDate>
       <ext:first_seen>Wed, 03 Jun 2026 09:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 09:29:06 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 03 Jun 2026 09:37:48 +0200</ext:starts_at>
       <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 09:50 Uhr. Grund: Falschparker im Bereich Hormayrgasse . [Am 03.06.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 09:50 Uhr. Grund: Falschparker im Bereich Hormayrgasse .<br/>[Am 03.06.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: Gleisschaden]]></title>
@@ -28,8 +39,8 @@
       <ext:first_seen>Wed, 03 Jun 2026 09:30:58 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 09:18:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Burggasse, Stadthalle U und St. Marx S. Weichen Sie ersatzweise auf die Linien U3, 71, 74A und die S-Bahn aus. Voraussichtliche Dauer: Nicht absehbar. [Am 03.06.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Burggasse, Stadthalle U und St. Marx S. Weichen Sie ersatzweise auf die Linien U3, 71, 74A und die S-Bahn aus. Voraussichtliche Dauer: Nicht absehbar.<br/>[Am 03.06.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Fremder Verkehrsunfall]]></title>
@@ -38,17 +49,6 @@
       <pubDate>Wed, 03 Jun 2026 08:30:00 +0200</pubDate>
       <ext:first_seen>Wed, 03 Jun 2026 09:00:53 +0200</ext:first_seen>
       <ext:starts_at>Wed, 03 Jun 2026 08:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e651b94865f7e5efc9395cf803f518a69f762e0cb990649d58cf4f8152b3d3c7</guid>
-      <pubDate>Wed, 03 Jun 2026 07:44:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 08:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 07:44:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 03 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
