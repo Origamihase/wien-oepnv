@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 03 Jun 2026 08:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 08:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[30: Fahrtbehinderung wegen Rettungseinsatz]]></title>
@@ -87,17 +87,6 @@
       <content:encoded><![CDATA[[03.06.2026 – 04.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U2: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
-      <pubDate>Wed, 03 Jun 2026 07:45:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 19:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 07:45:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 03 Jun 2026 08:27:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[34A/N20: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e42264819bc62bd2fe2fbd8fff14608a5246ec0d9c9bd2c311b7bd577ca4532e</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung. [20.04.2026 – 08.04.2027]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11/71: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d54ea31a8d9717d932bee0e04f74f4ab8f1a96e6f95b9836ba88b750aa1fa25a</guid>
+      <pubDate>Mon, 16 Feb 2026 06:00:00 +0100</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 03 Mar 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 27 Jun 2026 01:30:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei der Linie 11 und 71 zu Kurzführungen (22:30-01:00). Zeitraum: Von … [03.03.2026 – 27.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei der Linie 11 und 71 zu Kurzführungen (22:30-01:00). Zeitraum: Von …<br/>[03.03.2026 – 27.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
