@@ -7,103 +7,92 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 04 Jun 2026 10:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 11:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[38A: Veranstaltung]]></title>
+      <title><![CDATA[38A: event service obstruction towards Kahlenberg]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7824a340d48039313a6564fd9371cfb36dbffda4161fd7f8468540c853d1fb62</guid>
-      <pubDate>Thu, 04 Jun 2026 10:24:00 +0200</pubDate>
-      <ext:first_seen>Thu, 04 Jun 2026 10:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 10:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 10:40 Uhr. Grund: Veranstaltung im Bereich Grinzinger Straße. [Am 04.06.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 10:40 Uhr. Grund: Veranstaltung im Bereich Grinzinger Straße.<br/>[Am 04.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">f91a480269f0cc748b3476952d491488e786c9ed921b0a6787056b175e548dbd</guid>
+      <pubDate>Thu, 04 Jun 2026 10:26:05 +0200</pubDate>
+      <ext:first_seen>Thu, 04 Jun 2026 11:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 04 Jun 2026 10:26:05 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 11:25:00 +0200</ext:ends_at>
+      <description>service obstruction towards Kahlenberg [On 04.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Kahlenberg<br/>[On 04.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10A: Betriebsstörung]]></title>
+      <title><![CDATA[5: event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0918aef69bfad1b1887a9991a3c26dd12ac7635097c52f83bc05fece8ffc3cf9</guid>
+      <pubDate>Thu, 04 Jun 2026 10:21:00 +0200</pubDate>
+      <ext:first_seen>Thu, 04 Jun 2026 11:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 04 Jun 2026 10:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 04.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 04.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12: event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1992b2fe8017750b0e413fadc0e157b9cd1e076f821a7057e6d80f3120485f87</guid>
+      <pubDate>Thu, 04 Jun 2026 10:21:00 +0200</pubDate>
+      <ext:first_seen>Thu, 04 Jun 2026 11:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 04 Jun 2026 10:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 04.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 04.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: service disruption]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">abae72a6ccef48e743b3943d0074059b8e01d4d5248fce2416b74da71e4c4e2b</guid>
       <pubDate>Thu, 04 Jun 2026 10:24:00 +0200</pubDate>
       <ext:first_seen>Thu, 04 Jun 2026 10:30:53 +0200</ext:first_seen>
       <ext:starts_at>Thu, 04 Jun 2026 10:24:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 04.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 04.06.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: service disruption. [On 04.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 04.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[12: Veranstaltung Züge halten bei Linien 43 und 44 Richtung Schottentor]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">21ffff7e88484ba3aa5587788529272d6e194d31f730db9ec1d66cf673454236</guid>
-      <pubDate>Thu, 04 Jun 2026 10:20:35 +0200</pubDate>
-      <ext:first_seen>Thu, 04 Jun 2026 10:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 10:20:35 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 11:23:00 +0200</ext:ends_at>
-      <description>Züge halten bei Linien 43 und 44 Richtung Schottentor [Am 04.06.2026]</description>
-      <content:encoded><![CDATA[Züge halten bei Linien 43 und 44 Richtung Schottentor<br/>[Am 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Veranstaltung Züge halten bei Linien 43 und 44 Richtung Schottentor]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">65ce3010a20346136934b21a69b10810457753118b1682980521cb94e03ab4ff</guid>
-      <pubDate>Thu, 04 Jun 2026 10:20:06 +0200</pubDate>
-      <ext:first_seen>Thu, 04 Jun 2026 10:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 10:20:06 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 11:22:00 +0200</ext:ends_at>
-      <description>Züge halten bei Linien 43 und 44 Richtung Schottentor [Am 04.06.2026]</description>
-      <content:encoded><![CDATA[Züge halten bei Linien 43 und 44 Richtung Schottentor<br/>[Am 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27A/28A/29A: Veranstaltung]]></title>
+      <title><![CDATA[27A/28A/29A: event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">72af08b08449383b3b0674a97d5117273bea08dfbb8d3dbf516c1bacebe21a48</guid>
       <pubDate>Thu, 04 Jun 2026 10:14:00 +0200</pubDate>
       <ext:first_seen>Thu, 04 Jun 2026 10:30:53 +0200</ext:first_seen>
       <ext:starts_at>Thu, 04 Jun 2026 10:14:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 27A wird in beiden Richtungen zwischen Eipeldauer Straße und Sebaldgasse über Kmürschnerstraße - Siemensstraße umgeleitet. [Am 04.06.2026]</description>
-      <content:encoded><![CDATA[Die Linie 27A wird in beiden Richtungen zwischen Eipeldauer Straße und Sebaldgasse über Kmürschnerstraße - Siemensstraße umgeleitet.<br/>[Am 04.06.2026]]]></content:encoded>
+      <description>The line 27A is redirected in both directions between Eipeldauer Straße and Sebaldgasse via Kmürschnerstraße - Siemensstraße. [On 04.06.2026]</description>
+      <content:encoded><![CDATA[The line 27A is redirected in both directions between Eipeldauer Straße and Sebaldgasse via Kmürschnerstraße - Siemensstraße.<br/>[On 04.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[48A: Fahrtbehinderung Veranstaltung]]></title>
+      <title><![CDATA[48A: service obstruction event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3d59b698faff7a803fd813b379eb1562f56b1bc1c94f80f973ab4b4f065d3c1a</guid>
       <pubDate>Thu, 04 Jun 2026 10:09:46 +0200</pubDate>
       <ext:first_seen>Thu, 04 Jun 2026 10:30:53 +0200</ext:first_seen>
       <ext:starts_at>Thu, 04 Jun 2026 10:13:50 +0200</ext:starts_at>
       <ext:ends_at>Thu, 04 Jun 2026 11:13:00 +0200</ext:ends_at>
-      <description>[Am 04.06.2026]</description>
-      <content:encoded><![CDATA[[Am 04.06.2026]]]></content:encoded>
+      <description>[On 04.06.2026]</description>
+      <content:encoded><![CDATA[[On 04.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[26A: Veranstaltung]]></title>
+      <title><![CDATA[26A: event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c3152d87e229d2ddce55efc5d517a8d089df678c3b739a0e9f227524e4612053</guid>
       <pubDate>Thu, 04 Jun 2026 10:03:00 +0200</pubDate>
       <ext:first_seen>Thu, 04 Jun 2026 10:30:53 +0200</ext:first_seen>
       <ext:starts_at>Thu, 04 Jun 2026 10:03:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Kagran U und Eßling, Stadtgrenze. Voraussichtliche Dauer: 11:30 Uhr. Grund: Veranstaltung im Haltestellenbereich Groß-Enzersdorf. [Am 04.06.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Kagran U und Eßling, Stadtgrenze. Voraussichtliche Dauer: 11:30 Uhr. Grund: Veranstaltung im Haltestellenbereich Groß-Enzersdorf.<br/>[Am 04.06.2026]]]></content:encoded>
+      <description>Operation only between Kagran U and Eßling, Stadtgrenze. expected duration: 11:30 watch. Reason: event in the Groß-Enzersdorf stop area. [On 04.06.2026]</description>
+      <content:encoded><![CDATA[Operation only between Kagran U and Eßling, Stadtgrenze. expected duration: 11:30 watch. Reason: event in the Groß-Enzersdorf stop area.<br/>[On 04.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[70A: event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8733360f996c960c3b81a490caff354820c4c414ffc6b150d3814e130cd81d73</guid>
-      <pubDate>Thu, 04 Jun 2026 09:37:00 +0200</pubDate>
+      <pubDate>Thu, 04 Jun 2026 10:46:00 +0200</pubDate>
       <ext:first_seen>Thu, 04 Jun 2026 10:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 09:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 04.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[17A: event]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f496aa42b7090916ff101584c2032e367c8c83a5067d371873f5663367027999</guid>
-      <pubDate>Thu, 04 Jun 2026 09:37:00 +0200</pubDate>
-      <ext:first_seen>Thu, 04 Jun 2026 10:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 09:37:00 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 04 Jun 2026 10:46:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 04.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 04.06.2026]]]></content:encoded>
@@ -118,6 +107,16 @@
       <ext:ends_at>Thu, 04 Jun 2026 15:00:00 +0200</ext:ends_at>
       <description>track damage operation only up to Bhf. Meidling &amp;lt;&amp;gt; Dörfelstraße track damage service from Bhf. Meidling &amp;lt;&amp;gt; Dörfelstraße [On 04.06.2026]</description>
       <content:encoded><![CDATA[track damage operation only up to Bhf. Meidling &lt;&gt; Dörfelstraße track damage service from Bhf. Meidling &lt;&gt; Dörfelstraße<br/>[On 04.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S 50: Wien Hütteldorf ↔Wien Westbahnhof ↔XSt. Pölten Hauptbahnhof]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;882601</guid>
+      <pubDate>Tue, 02 Jun 2026 16:31:24 +0200</pubDate>
+      <ext:first_seen>Thu, 04 Jun 2026 03:00:47 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 02 Jun 2026 16:31:24 +0200</ext:starts_at>
+      <description>Due to construction works, between Wien Westbahnhof (U) and Wien Hütteldorf Train Station (U) from 02.11.2026 (20:00 o'clock) to 14.11.2026 (17:00 o'clock) some S50 trains … [Since 02.06.2026]</description>
+      <content:encoded><![CDATA[Due to construction works, between Wien Westbahnhof (U) and Wien Hütteldorf Train Station (U) from 02.11.2026 (20:00 o'clock) to 14.11.2026 (17:00 o'clock) some S50 trains …<br/>[Since 02.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

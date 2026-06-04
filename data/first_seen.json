@@ -244,6 +244,16 @@
       "epoch": 2
     }
   },
+  "0918aef69bfad1b1887a9991a3c26dd12ac7635097c52f83bc05fece8ffc3cf9": {
+    "first_seen": "2026-06-04T09:00:55.914163+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "5: event"
+      },
+      "epoch": 3
+    }
+  },
   "09c6c0078992644777b577861d9f330719e87459f19b400f6e30e0497a6e00c1": {
     "first_seen": "2026-05-24T12:30:47.972869+00:00",
     "translations": {
@@ -630,6 +640,16 @@
         "title": "43: track construction works"
       },
       "epoch": 2
+    }
+  },
+  "1992b2fe8017750b0e413fadc0e157b9cd1e076f821a7057e6d80f3120485f87": {
+    "first_seen": "2026-06-04T09:00:55.914163+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "12: event"
+      },
+      "epoch": 3
     }
   },
   "19a7bac3b27f474c47cc354f8e68e5c26ebee4d3ad0c96b3e4bc3159ec47ed1d": {
@@ -1338,7 +1358,10 @@
   "3d59b698faff7a803fd813b379eb1562f56b1bc1c94f80f973ab4b4f065d3c1a": {
     "first_seen": "2026-06-04T08:30:53.157150+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "48A: service obstruction event"
+      },
+      "epoch": 3
     }
   },
   "3dcd8c946bae4eb5c3d7c26733e2607d131d6414855dd7048a9f5274900c3c98": {
@@ -2559,8 +2582,10 @@
     "first_seen": "2026-06-04T08:30:53.157150+00:00",
     "translations": {
       "en": {
-        "summary": "The line 27A is redirected in both directions between Eipeldauer Stra\u00dfe and Sebaldgasse via Km\u00fcrschnerstra\u00dfe - Siemensstra\u00dfe."
-      }
+        "summary": "The line 27A is redirected in both directions between Eipeldauer Stra\u00dfe and Sebaldgasse via Km\u00fcrschnerstra\u00dfe - Siemensstra\u00dfe.",
+        "title": "27A/28A/29A: event"
+      },
+      "epoch": 3
     }
   },
   "72daecfae156d674f4b17f0865290882105ea9c8dc7f884762c80c1d60a7140d": {
@@ -3995,7 +4020,11 @@
   "abae72a6ccef48e743b3943d0074059b8e01d4d5248fce2416b74da71e4c4e2b": {
     "first_seen": "2026-06-04T08:30:53.157150+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: service disruption.",
+        "title": "10A: service disruption"
+      },
+      "epoch": 3
     }
   },
   "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386": {
@@ -4435,7 +4464,11 @@
   "c3152d87e229d2ddce55efc5d517a8d089df678c3b739a0e9f227524e4612053": {
     "first_seen": "2026-06-04T08:30:53.157150+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "Operation only between Kagran U and E\u00dfling, Stadtgrenze. expected duration: 11:30 watch. Reason: event in the Gro\u00df-Enzersdorf stop area.",
+        "title": "26A: event"
+      },
+      "epoch": 3
     }
   },
   "c31d348d86188264a4028a87f54d29035937e5a1beb0ea98730e61bf22e95ed1": {
@@ -5704,6 +5737,16 @@
   },
   "f8982bc97b1fe3ed6b2d9c47fc60754a63c1ff817524a694320c7a1635a8d3b1": {
     "first_seen": "2026-05-04T07:51:57.195205+00:00"
+  },
+  "f91a480269f0cc748b3476952d491488e786c9ed921b0a6787056b175e548dbd": {
+    "first_seen": "2026-06-04T09:00:55.914163+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards Kahlenberg",
+        "title": "38A: event service obstruction towards Kahlenberg"
+      },
+      "epoch": 3
+    }
   },
   "f92275ceb290a981df3dd2513e74c7edb549d5b5fc0a145c126c101868625ff7": {
     "first_seen": "2026-05-29T09:30:50.825290+00:00",
