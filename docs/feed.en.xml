@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 04 Jun 2026 14:01:12 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 14:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Atzgersdorf ↔ Wien Hetzendorf]]></title>
@@ -18,17 +18,6 @@
       <ext:starts_at>Thu, 04 Jun 2026 13:59:43 +0200</ext:starts_at>
       <description>Due to damage to the track between Wien Atzgersdorf Bahnhst and Wien Hetzendorf Bahnhst train journeys are currently only limited. [Since 04.06.2026]</description>
       <content:encoded><![CDATA[Due to damage to the track between Wien Atzgersdorf Bahnhst and Wien Hetzendorf Bahnhst train journeys are currently only limited.<br/>[Since 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: track damage]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9ae819da26999d3a57dc4e1bc809291590eac95a77887208a1310c4aeed7e8aa</guid>
-      <pubDate>Wed, 03 Jun 2026 17:38:00 +0200</pubDate>
-      <ext:first_seen>Thu, 04 Jun 2026 13:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 17:38:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [03.06.2026 – 04.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[03.06.2026 – 04.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[48A: signal disruption]]></title>
@@ -42,17 +31,6 @@
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: signal disruption.<br/>[On 04.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62: track damage operation only up to Bhf. Meidling Dörfelstraße, from Bhf. Meidling Dörfelstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4e44043bcc4d9e67221c76d746f7cefcf31eba468f589cc80c1fd45660384adb</guid>
-      <pubDate>Thu, 04 Jun 2026 04:59:58 +0200</pubDate>
-      <ext:first_seen>Thu, 04 Jun 2026 05:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 05:00:05 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 15:00:00 +0200</ext:ends_at>
-      <description>track damage operation only up to Bhf. Meidling &amp;lt;&amp;gt; Dörfelstraße track damage service from Bhf. Meidling &amp;lt;&amp;gt; Dörfelstraße [On 04.06.2026]</description>
-      <content:encoded><![CDATA[track damage operation only up to Bhf. Meidling &lt;&gt; Dörfelstraße track damage service from Bhf. Meidling &lt;&gt; Dörfelstraße<br/>[On 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔Wien Westbahnhof ↔XSt. Pölten Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;882601</guid>
@@ -61,6 +39,17 @@
       <ext:starts_at>Tue, 02 Jun 2026 16:31:24 +0200</ext:starts_at>
       <description>Due to construction works, between Wien Westbahnhof (U) and Wien Hütteldorf Train Station (U) from 02.11.2026 (20:00 o'clock) to 14.11.2026 (17:00 o'clock) some S50 trains … [Since 02.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works, between Wien Westbahnhof (U) and Wien Hütteldorf Train Station (U) from 02.11.2026 (20:00 o'clock) to 14.11.2026 (17:00 o'clock) some S50 trains …<br/>[Since 02.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: track damage service from Bhf. Meidling Dörfelstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6c769d208d65c2c04353b66d4ef875eefaf24dd705930b5faf541885fb23458a</guid>
+      <pubDate>Thu, 04 Jun 2026 04:59:58 +0200</pubDate>
+      <ext:first_seen>Thu, 04 Jun 2026 00:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 17:40:07 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 23:45:00 +0200</ext:ends_at>
+      <description>track damage service from Bhf. Meidling &amp;lt;&amp;gt; Dörfelstraße [03.06.2026 – 04.06.2026]</description>
+      <content:encoded><![CDATA[track damage service from Bhf. Meidling &lt;&gt; Dörfelstraße<br/>[03.06.2026 – 04.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[47A/N54: diversion direction Unter St. Veit or Westbahnhof]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Thu, 04 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[02.06.2026 – 04.06.2026]</description>
       <content:encoded><![CDATA[[02.06.2026 – 04.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: stop Discontinued]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
+      <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.06.2026 – 04.06.2026]</description>
+      <content:encoded><![CDATA[[01.06.2026 – 04.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
