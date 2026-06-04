@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 04 Jun 2026 12:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 13:01:14 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62: Gleisschaden]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9ae819da26999d3a57dc4e1bc809291590eac95a77887208a1310c4aeed7e8aa</guid>
+      <pubDate>Wed, 03 Jun 2026 17:38:00 +0200</pubDate>
+      <ext:first_seen>Thu, 04 Jun 2026 13:01:14 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 17:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [03.06.2026 – 04.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[03.06.2026 – 04.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[48A: Signalstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -35,7 +46,7 @@
       <title><![CDATA[62: track damage operation only up to Bhf. Meidling Dörfelstraße, from Bhf. Meidling Dörfelstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4e44043bcc4d9e67221c76d746f7cefcf31eba468f589cc80c1fd45660384adb</guid>
-      <pubDate>Wed, 03 Jun 2026 17:40:07 +0200</pubDate>
+      <pubDate>Thu, 04 Jun 2026 04:59:58 +0200</pubDate>
       <ext:first_seen>Thu, 04 Jun 2026 05:00:55 +0200</ext:first_seen>
       <ext:starts_at>Thu, 04 Jun 2026 05:00:05 +0200</ext:starts_at>
       <ext:ends_at>Thu, 04 Jun 2026 15:00:00 +0200</ext:ends_at>
@@ -106,17 +117,6 @@
       <ext:ends_at>Thu, 04 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[02.06.2026 – 04.06.2026]</description>
       <content:encoded><![CDATA[[02.06.2026 – 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: stop Discontinued]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
-      <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.06.2026 – 04.06.2026]</description>
-      <content:encoded><![CDATA[[01.06.2026 – 04.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
