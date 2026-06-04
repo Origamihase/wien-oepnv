@@ -7,29 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 04 Jun 2026 15:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 16:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[Wien Atzgersdorf ↔ Wien Hetzendorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;883291</guid>
-      <pubDate>Thu, 04 Jun 2026 14:38:13 +0200</pubDate>
-      <ext:first_seen>Thu, 04 Jun 2026 14:01:12 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 14:38:13 +0200</ext:starts_at>
-      <description>Due to damage to the track between Wien Atzgersdorf Bahnhst and Wien Hetzendorf Bahnhst train journeys are currently only limited. [Since 04.06.2026]</description>
-      <content:encoded><![CDATA[Due to damage to the track between Wien Atzgersdorf Bahnhst and Wien Hetzendorf Bahnhst train journeys are currently only limited.<br/>[Since 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: signal disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">26d6ea1adb75affcc218623c21f2020f9235b882eb5033047c9205dd557a514d</guid>
-      <pubDate>Thu, 04 Jun 2026 11:53:00 +0200</pubDate>
-      <ext:first_seen>Thu, 04 Jun 2026 12:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 11:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: signal disruption. [On 04.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: signal disruption.<br/>[On 04.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔Wien Westbahnhof ↔XSt. Pölten Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -113,6 +92,28 @@
       <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
       <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
       <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.06.2026 – 04.06.2026]</description>
+      <content:encoded><![CDATA[[01.06.2026 – 04.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Buses stop Dänenstraße opp. 2]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5</guid>
+      <pubDate>Mon, 01 Jun 2026 05:37:22 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:37:22 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.06.2026 – 04.06.2026]</description>
+      <content:encoded><![CDATA[[01.06.2026 – 04.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: Buses stop Gregor-Mendel-Straße opp. 33]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
+      <pubDate>Mon, 01 Jun 2026 05:35:55 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:35:55 +0200</ext:starts_at>
       <ext:ends_at>Thu, 04 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[01.06.2026 – 04.06.2026]</description>
       <content:encoded><![CDATA[[01.06.2026 – 04.06.2026]]]></content:encoded>
