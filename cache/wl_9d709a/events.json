@@ -530,42 +530,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Veranstaltung Züge halten bei Linien 43 und 44 Richtung Schottentor",
-    "description": "Veranstaltung\nZüge halten bei Linien 43 und 44 Richtung Schottentor",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "21ffff7e88484ba3aa5587788529272d6e194d31f730db9ec1d66cf673454236",
-    "pubDate": "2026-06-04T10:20:35+02:00",
-    "starts_at": "2026-06-04T10:20:35+02:00",
-    "ends_at": "2026-06-04T11:23:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-06-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fahrtbehinderung Veranstaltung",
-    "description": "Fahrtbehinderung\nVeranstaltung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "76bb81e5f866313156f588abe4b0105b85cabaf2cf7b0b49c02f4a79259c4991",
-    "pubDate": "2026-06-04T10:20:22+02:00",
-    "starts_at": "2026-06-04T10:20:35+02:00",
-    "ends_at": "2026-06-04T11:22:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-06-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Veranstaltung Betrieb ab Lange Gasse",
-    "description": "Veranstaltung\nBetrieb ab Lange Gasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "849748a4c9473c68cb24a90fe4b9dd4370fd5e69671678960532ea148ce29751",
-    "pubDate": "2026-06-04T10:20:22+02:00",
-    "starts_at": "2026-06-04T10:20:35+02:00",
-    "ends_at": "2026-06-04T11:23:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-06-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -579,7 +543,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "26A: Veranstaltung",
-    "description": "Linie 26A: Betrieb nur zwischen Kagran U und Eßling, Stadtgrenze. Voraussichtliche Dauer: 11:30 Uhr. Grund: Veranstaltung im Haltestellenbereich Groß-Enzersdorf.",
+    "description": "Linie 26A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c3152d87e229d2ddce55efc5d517a8d089df678c3b739a0e9f227524e4612053",
     "pubDate": "2026-06-04T10:03:00+02:00",
@@ -590,14 +554,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27A/28A/29A: Veranstaltung",
-    "description": "Die Linie 27A wird in beiden Richtungen zwischen Eipeldauer Straße und Sebaldgasse über Kmürschnerstraße - Siemensstraße umgeleitet. Linie 28A: Betrieb nur zwischen Breitenlee Schule und Aderklaaer Straße U. Die Linie 29A wird in Richtung Floridsdorf S U zwischen Sankt-Michael-Gasse und Kefedergrundgasse über Siemenstraße umgeleitet. Voraussichtliche Dauer: 11:30 Uhr. Grund: Veranstaltung im Haltestellenbereich Leopoldauer Platz.",
+    "title": "27A: Veranstaltung",
+    "description": "Linie 27A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "72af08b08449383b3b0674a97d5117273bea08dfbb8d3dbf516c1bacebe21a48",
+    "guid": "72fc05863b43901561b175a4616ac5a59ca51a49d448e962b0881e22b7a3ff23",
     "pubDate": "2026-06-04T10:14:00+02:00",
     "starts_at": "2026-06-04T10:14:00+02:00",
     "ends_at": "2026-06-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=27A,28A,29A|D=2026-06-04"
+    "_identity": "wl|störung|L=27A|D=2026-06-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "28A: Veranstaltung",
+    "description": "Linie 28A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f76c8cd2f1c4a7531e7705ce03d6acf8a183ad66a6aa811ad51ee81ddd8f753d",
+    "pubDate": "2026-06-04T10:14:00+02:00",
+    "starts_at": "2026-06-04T10:14:00+02:00",
+    "ends_at": "2026-06-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=28A|D=2026-06-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Veranstaltung",
+    "description": "Linie 29A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3257dffb6a9eecf564aa68e77dd2f2aa8ff768d1a990901656e0489f4565836b",
+    "pubDate": "2026-06-04T10:14:00+02:00",
+    "starts_at": "2026-06-04T10:14:00+02:00",
+    "ends_at": "2026-06-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=29A|D=2026-06-04"
   },
   {
     "source": "Wiener Linien",
@@ -622,30 +610,6 @@
     "starts_at": "2026-06-01T05:37:22+02:00",
     "ends_at": "2026-06-04T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38A: Veranstaltung Fahrtbehinderung in Richtung Kahlenberg",
-    "description": "Veranstaltung\nFahrtbehinderung in Richtung Kahlenberg",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f91a480269f0cc748b3476952d491488e786c9ed921b0a6787056b175e548dbd",
-    "pubDate": "2026-06-04T10:26:05+02:00",
-    "starts_at": "2026-06-04T10:26:05+02:00",
-    "ends_at": "2026-06-04T11:25:00+02:00",
-    "_identity": "wl|störung|L=38A|D=2026-06-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38A: Fahrtbehinderung Veranstaltung",
-    "description": "Fahrtbehinderung\nVeranstaltung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fdb69cf8e20ed219fac1d00f46557f4c8cc44b7777e454b9498d1417677d757b",
-    "pubDate": "2026-06-04T10:25:36+02:00",
-    "starts_at": "2026-06-04T10:25:36+02:00",
-    "ends_at": "2026-06-04T11:25:00+02:00",
-    "_identity": "wl|störung|L=38A|D=2026-06-04"
   },
   {
     "source": "Wiener Linien",
@@ -830,14 +794,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Fahrtbehinderung Veranstaltung",
-    "description": "Fahrtbehinderung\nVeranstaltung",
+    "title": "49: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3d59b698faff7a803fd813b379eb1562f56b1bc1c94f80f973ab4b4f065d3c1a",
-    "pubDate": "2026-06-04T10:09:46+02:00",
-    "starts_at": "2026-06-04T10:13:50+02:00",
-    "ends_at": "2026-06-04T11:13:00+02:00",
-    "_identity": "wl|störung|L=48A|D=2026-06-04"
+    "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
+    "pubDate": "2026-06-04T11:00:00+02:00",
+    "starts_at": "2026-06-04T11:15:42+02:00",
+    "ends_at": "2026-06-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-06-04"
   },
   {
     "source": "Wiener Linien",
@@ -849,54 +813,6 @@
     "pubDate": "2026-06-04T10:21:00+02:00",
     "starts_at": "2026-06-04T10:21:00+02:00",
     "ends_at": "2026-06-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-06-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Fahrtbehinderung Veranstaltung",
-    "description": "Fahrtbehinderung\nVeranstaltung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "52b85535aa0ae91bcf89644bedd045536935aa321cfd4d2a967b6f83fdcf1f6f",
-    "pubDate": "2026-06-04T10:18:55+02:00",
-    "starts_at": "2026-06-04T10:20:06+02:00",
-    "ends_at": "2026-06-04T11:19:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-06-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Veranstaltung Züge halten bei Linien 43 und 44 Richtung Schottentor",
-    "description": "Veranstaltung\nZüge halten bei Linien 43 und 44 Richtung Schottentor",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "65ce3010a20346136934b21a69b10810457753118b1682980521cb94e03ab4ff",
-    "pubDate": "2026-06-04T10:20:06+02:00",
-    "starts_at": "2026-06-04T10:20:06+02:00",
-    "ends_at": "2026-06-04T11:22:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-06-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Veranstaltung Betrieb ab Lange Gasse",
-    "description": "Veranstaltung\nBetrieb ab Lange Gasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "831f66fec6ac3646fb4e9a3cd7f56d1884e74aae643f73f4004dbfbb97a6b9fc",
-    "pubDate": "2026-06-04T10:20:06+02:00",
-    "starts_at": "2026-06-04T10:22:47+02:00",
-    "ends_at": "2026-06-04T11:21:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-06-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Veranstaltung Betrieb ab Lerchenfelder Straße",
-    "description": "Veranstaltung\nBetrieb ab Lerchenfelder Straße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c9a7f9d92c6ab7685c55420d4a48efde506f228e63b11d7154ac42367565c372",
-    "pubDate": "2026-06-04T10:18:55+02:00",
-    "starts_at": "2026-06-04T10:22:18+02:00",
-    "ends_at": "2026-06-04T11:21:00+02:00",
     "_identity": "wl|störung|L=5|D=2026-06-04"
   },
   {
@@ -958,18 +874,6 @@
     "starts_at": "2026-06-03T17:40:07+02:00",
     "ends_at": "2026-06-04T23:45:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "70A: Veranstaltung",
-    "description": "Linie 70A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8733360f996c960c3b81a490caff354820c4c414ffc6b150d3814e130cd81d73",
-    "pubDate": "2026-06-04T10:46:00+02:00",
-    "starts_at": "2026-06-04T10:46:00+02:00",
-    "ends_at": "2026-06-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=70A|D=2026-06-04"
   },
   {
     "source": "Wiener Linien",
