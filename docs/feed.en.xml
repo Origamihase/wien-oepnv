@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 04 Jun 2026 12:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 12:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[48A: Signalstörung]]></title>
@@ -19,28 +19,6 @@
       <ext:ends_at>Thu, 04 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung. [Am 04.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Am 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: event]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0918aef69bfad1b1887a9991a3c26dd12ac7635097c52f83bc05fece8ffc3cf9</guid>
-      <pubDate>Thu, 04 Jun 2026 10:21:00 +0200</pubDate>
-      <ext:first_seen>Thu, 04 Jun 2026 11:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 10:21:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 12:14:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 04.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 04.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: event]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1992b2fe8017750b0e413fadc0e157b9cd1e076f821a7057e6d80f3120485f87</guid>
-      <pubDate>Thu, 04 Jun 2026 10:21:00 +0200</pubDate>
-      <ext:first_seen>Thu, 04 Jun 2026 11:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 10:21:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 04 Jun 2026 12:08:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 04.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 04.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A: service disruption]]></title>
@@ -117,6 +95,28 @@
       <ext:ends_at>Thu, 04 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[29.05.2026 – 04.06.2026]</description>
       <content:encoded><![CDATA[[29.05.2026 – 04.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[41E: replacement bus 41E stops at Währinger Str 200]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">859fe0941e8bf4468bc802c2aeb56d9f7d635123f70d902547a35e2bf9a98daa</guid>
+      <pubDate>Tue, 02 Jun 2026 00:00:22 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 13:01:25 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 02 Jun 2026 00:00:22 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[02.06.2026 – 04.06.2026]</description>
+      <content:encoded><![CDATA[[02.06.2026 – 04.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: stop Discontinued]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
+      <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 04 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.06.2026 – 04.06.2026]</description>
+      <content:encoded><![CDATA[[01.06.2026 – 04.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
