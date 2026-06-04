@@ -506,6 +506,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "17A: Veranstaltung",
+    "description": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f496aa42b7090916ff101584c2032e367c8c83a5067d371873f5663367027999",
+    "pubDate": "2026-06-04T09:37:00+02:00",
+    "starts_at": "2026-06-04T09:37:00+02:00",
+    "ends_at": "2026-06-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=17A|D=2026-06-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "17A: Fahrtbehinderung Prozession",
+    "description": "Fahrtbehinderung\nProzession",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa62bb9037be9a7c5fffaa50c7cf5c264446c63d6bbfa01daaffb723ab7f4961",
+    "pubDate": "2026-06-04T09:37:44+02:00",
+    "starts_at": "2026-06-04T09:37:46+02:00",
+    "ends_at": "2026-06-04T10:34:00+02:00",
+    "_identity": "wl|störung|L=17A|D=2026-06-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -778,6 +802,18 @@
     "starts_at": "2026-06-03T17:40:07+02:00",
     "ends_at": "2026-06-04T23:45:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "70A: Veranstaltung",
+    "description": "Linie 70A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8733360f996c960c3b81a490caff354820c4c414ffc6b150d3814e130cd81d73",
+    "pubDate": "2026-06-04T09:37:00+02:00",
+    "starts_at": "2026-06-04T09:37:00+02:00",
+    "ends_at": "2026-06-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=70A|D=2026-06-04"
   },
   {
     "source": "Wiener Linien",
