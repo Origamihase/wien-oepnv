@@ -507,7 +507,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "13A: Polizeieinsatz",
-    "description": "Linie 13A: Umleitung in Richtung Alser Straße, Skodagasse zwischen Karl-Popper-Straße und Johann-Strauß-Gasse über Wiedner Gürtel und Wiedner Hauptstraße. Voraussichtliche Dauer: 22:00 Uhr. Grund: Polizeieinsatz im Bereich Weyringergasse.",
+    "description": "Linie 13A: Umleitung in Richtung Alser Straße, Skodagasse zwischen Karl-Popper-Straße und Johann-Strauß-Gasse über Wiedner Gürtel und Wiedner Hauptstraße. Voraussichtliche Dauer: 22:30 Uhr. Grund: Polizeieinsatz im Bereich Weyringergasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
     "pubDate": "2026-06-04T21:13:00+02:00",
@@ -526,6 +526,18 @@
     "starts_at": "2026-06-04T21:16:45+02:00",
     "ends_at": "2026-06-04T22:15:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-06-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46",
+    "pubDate": "2026-06-04T21:54:13+02:00",
+    "starts_at": "2026-06-04T21:54:28+02:00",
+    "ends_at": "2026-06-04T22:54:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-06-04"
   },
   {
     "source": "Wiener Linien",
@@ -819,13 +831,25 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "66A: Fahrtbehinderung Falschparker",
-    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7fdb8d218c98770afcae364ee84c6bae842a6db49d7e944b0574b390a1d1a214",
-    "pubDate": "2026-06-04T21:07:00+02:00",
+    "pubDate": "2026-06-04T21:09:24+02:00",
     "starts_at": "2026-06-04T21:14:41+02:00",
-    "ends_at": "2026-06-04T23:55:00+02:00",
+    "ends_at": "2026-06-04T22:14:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-06-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
+    "pubDate": "2026-06-04T21:54:44+02:00",
+    "starts_at": "2026-06-04T21:54:44+02:00",
+    "ends_at": "2026-06-04T22:54:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-06-04"
   },
   {
     "source": "Wiener Linien",
