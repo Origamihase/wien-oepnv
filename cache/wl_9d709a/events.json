@@ -482,6 +482,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1/2: Verspätungen",
+    "description": "Linie 1: Betrieb nur zwischen Stefan-Fadinger-Platz und Schwedenplatz U. Linie 2: Umleitung in Richtung Friedrich-Engels-Platz zwischen Julius-Raab-Platz und Heinestraße über Praterstern S U. Voraussichtliche Dauer: 13:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schwedenplatz U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d1595b63efb48719f6f1ee495327a98bc23e59449dd94498dbe7b4a53213c980",
+    "pubDate": "2026-06-05T12:56:00+02:00",
+    "starts_at": "2026-06-05T12:56:00+02:00",
+    "ends_at": "2026-06-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=1,2|D=2026-06-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "10A: Busse halten Gregor-Mendel-Straße ggü. 33",
     "description": "Bauarbeiten\nBusse halten Gregor-Mendel-Straße ggü. 33",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -514,6 +526,18 @@
     "starts_at": "2026-06-05T08:56:06+02:00",
     "ends_at": "2026-06-05T13:30:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-06-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "17A: Störung an einem Bahnübergang",
+    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a9a27425e5abc97ac537f8ede7996cb196df826cae17e716388d06154a7c5243",
+    "pubDate": "2026-06-05T12:34:00+02:00",
+    "starts_at": "2026-06-05T12:34:00+02:00",
+    "ends_at": "2026-06-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=17A|D=2026-06-05"
   },
   {
     "source": "Wiener Linien",
@@ -590,18 +614,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40: Fahrtbehinderung Falschparker",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
-    "pubDate": "2026-06-05T11:37:56+02:00",
-    "starts_at": "2026-06-05T11:54:00+02:00",
-    "ends_at": "2026-06-05T23:55:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-06-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "41E: Ersatzbus 41E hält bei Währinger Str 200",
     "description": "Gleisbauarbeiten\nErsatzbus 41E\nhält bei\nWähringer Str 200",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -646,18 +658,6 @@
     "starts_at": "2026-06-02T00:00:22+02:00",
     "ends_at": "2026-06-05T23:59:59+02:00",
     "_identity": "wl|störung|L=41|D=2026-06-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
-    "pubDate": "2026-06-05T11:38:34+02:00",
-    "starts_at": "2026-06-05T11:38:54+02:00",
-    "ends_at": "2026-06-05T12:38:00+02:00",
-    "_identity": "wl|störung|L=41|D=2026-06-05"
   },
   {
     "source": "Wiener Linien",
@@ -806,18 +806,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Schadhaftes Fahrzeug",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "609182136527b3c7baff4b9b43ba2d79979590761dcf61a917f5784db4aba3e6",
-    "pubDate": "2026-06-05T11:04:00+02:00",
-    "starts_at": "2026-06-05T11:04:00+02:00",
-    "ends_at": "2026-06-05T12:52:00+02:00",
-    "_identity": "wl|störung|L=62|D=2026-06-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62: Schadhafter Zug Betrieb ab Dörfelstraße",
     "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -902,18 +890,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Linie U3 Kein Betrieb zwischen Ottakring und Hütteldorfer St.",
-    "description": "Linie U3\nKein Betrieb zwischen Ottakring und Hütteldorfer St.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "25bce34ee830c154d633726f5034a262ec652891617c37076f3b53e722abb65b",
-    "pubDate": "2026-06-05T11:56:15+02:00",
-    "starts_at": "2026-06-05T11:56:41+02:00",
-    "ends_at": "2026-06-05T12:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-06-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Rettungseinsatz",
     "description": "Die Linie U3 fährt derzeit nur zwischen Simmering und Hütteldorfer Straße. Weichen Sie ersatzweise auf die Linien 10, 49, 48A, S45 aus. Voraussichtliche Dauer: 13:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Ottakring.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -932,7 +908,7 @@
     "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
     "pubDate": "2026-06-05T10:56:00+02:00",
     "starts_at": "2026-06-05T10:56:00+02:00",
-    "ends_at": "2026-06-05T23:55:00+02:00",
+    "ends_at": "2026-06-05T13:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-06-05"
   },
   {
