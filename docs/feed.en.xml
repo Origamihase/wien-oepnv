@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 05 Jun 2026 16:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 17:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1A: service obstruction because of police operation]]></title>
+      <title><![CDATA[1A: service obstruction because of rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1728d250973f2515460b23b3c697922114d90ab90874f000d040c5e6b86cfa5e</guid>
-      <pubDate>Fri, 05 Jun 2026 16:12:00 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 16:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 16:20:35 +0200</ext:starts_at>
+      <guid isPermaLink="false">c7fd936044af6023c2a709dc0262721a0b678e6cbd5a59042d48471a2671e255</guid>
+      <pubDate>Fri, 05 Jun 2026 16:15:16 +0200</pubDate>
+      <ext:first_seen>Fri, 05 Jun 2026 17:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 16:35:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction in both directions. expected duration: 16:45 watch. Reason: police operation in the range Habsburgergasse. [On 05.06.2026]</description>
-      <content:encoded><![CDATA[service obstruction in both directions. expected duration: 16:45 watch. Reason: police operation in the range Habsburgergasse.<br/>[On 05.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: traffic accident service from Urban-Loritz-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8f35eb920ab94754e3a261d814815ffb0021afcb15471a5b75c8c01368712943</guid>
-      <pubDate>Fri, 05 Jun 2026 14:30:07 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 16:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 14:30:27 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 19:00:00 +0200</ext:ends_at>
-      <description>[On 05.06.2026]</description>
-      <content:encoded><![CDATA[[On 05.06.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 05.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 05.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔Wien Westbahnhof ↔XSt. Pölten Hauptbahnhof]]></title>
@@ -114,6 +103,17 @@
       <pubDate>Mon, 01 Jun 2026 05:37:22 +0200</pubDate>
       <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
       <ext:starts_at>Mon, 01 Jun 2026 05:37:22 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.06.2026 – 05.06.2026]</description>
+      <content:encoded><![CDATA[[01.06.2026 – 05.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: Buses stop Gregor-Mendel-Straße opp. 33]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
+      <pubDate>Mon, 01 Jun 2026 05:35:55 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:35:55 +0200</ext:starts_at>
       <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[01.06.2026 – 05.06.2026]</description>
       <content:encoded><![CDATA[[01.06.2026 – 05.06.2026]]]></content:encoded>
