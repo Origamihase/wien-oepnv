@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 05 Jun 2026 16:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 16:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1A: service obstruction because of police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1728d250973f2515460b23b3c697922114d90ab90874f000d040c5e6b86cfa5e</guid>
+      <pubDate>Fri, 05 Jun 2026 16:12:00 +0200</pubDate>
+      <ext:first_seen>Fri, 05 Jun 2026 16:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 16:20:35 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction in both directions. expected duration: 16:45 watch. Reason: police operation in the range Habsburgergasse. [On 05.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction in both directions. expected duration: 16:45 watch. Reason: police operation in the range Habsburgergasse.<br/>[On 05.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49: traffic accident service from Urban-Loritz-Platz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,28 +28,6 @@
       <ext:first_seen>Fri, 05 Jun 2026 16:01:09 +0200</ext:first_seen>
       <ext:starts_at>Fri, 05 Jun 2026 14:30:27 +0200</ext:starts_at>
       <ext:ends_at>Fri, 05 Jun 2026 19:00:00 +0200</ext:ends_at>
-      <description>[On 05.06.2026]</description>
-      <content:encoded><![CDATA[[On 05.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Traffic disturbance]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4775bfa98a369b780f1a09f5420484150395f83efcb423571af6311708899658</guid>
-      <pubDate>Fri, 05 Jun 2026 15:05:00 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 15:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 15:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 05.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 05.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Harmful train service from Heinestraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4ce21275e2f5797c0bf6d6d54e651d8bb98c2fdf8d1097edf42d585c1e59b561</guid>
-      <pubDate>Fri, 05 Jun 2026 13:03:58 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 15:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 13:04:11 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 16:15:00 +0200</ext:ends_at>
       <description>[On 05.06.2026]</description>
       <content:encoded><![CDATA[[On 05.06.2026]]]></content:encoded>
     </item>
@@ -114,6 +103,17 @@
       <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
       <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
       <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.06.2026 – 05.06.2026]</description>
+      <content:encoded><![CDATA[[01.06.2026 – 05.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Buses stop Dänenstraße opp. 2]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5</guid>
+      <pubDate>Mon, 01 Jun 2026 05:37:22 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:37:22 +0200</ext:starts_at>
       <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[01.06.2026 – 05.06.2026]</description>
       <content:encoded><![CDATA[[01.06.2026 – 05.06.2026]]]></content:encoded>
