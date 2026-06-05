@@ -482,30 +482,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A: Fremder Verkehrsunfall",
-    "description": "Linie 1A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "393be7e2090c7f6f17307ebee4783f47c3beeb819dc0515abd99896fa91b4808",
-    "pubDate": "2026-06-05T17:14:00+02:00",
-    "starts_at": "2026-06-05T17:14:00+02:00",
-    "ends_at": "2026-06-05T23:55:00+02:00",
-    "_identity": "wl|störung|L=1A|D=2026-06-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c7fd936044af6023c2a709dc0262721a0b678e6cbd5a59042d48471a2671e255",
-    "pubDate": "2026-06-05T16:15:16+02:00",
-    "starts_at": "2026-06-05T16:20:35+02:00",
-    "ends_at": "2026-06-05T17:35:00+02:00",
-    "_identity": "wl|störung|L=1A|D=2026-06-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -518,6 +494,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29A: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 29A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c41a7ddc240ef864b3d3e2dcc4044103985583c35dc8c3f24096d1ae739484d1",
+    "pubDate": "2026-06-05T17:51:19+02:00",
+    "starts_at": "2026-06-05T17:54:00+02:00",
+    "ends_at": "2026-06-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=29A|D=2026-06-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 29B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9c2e735dc54d82511ccf1b10a627f7ea48f3e37436215f12a94c5e3e2be767c",
+    "pubDate": "2026-06-05T17:50:50+02:00",
+    "starts_at": "2026-06-05T17:58:55+02:00",
+    "ends_at": "2026-06-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=29B|D=2026-06-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "2A: Fahrtbehinderung Fremder Verkehrsunfall",
     "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -525,18 +525,6 @@
     "pubDate": "2026-06-05T17:16:10+02:00",
     "starts_at": "2026-06-05T17:16:10+02:00",
     "ends_at": "2026-06-05T18:15:00+02:00",
-    "_identity": "wl|störung|L=2A|D=2026-06-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Fremder Verkehrsunfall",
-    "description": "Linie 2A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2169f90b8103b94e170200c24382f57ebf9a9349a05ecb19adbb70dae8c5d691",
-    "pubDate": "2026-06-05T17:14:00+02:00",
-    "starts_at": "2026-06-05T17:14:00+02:00",
-    "ends_at": "2026-06-05T23:55:00+02:00",
     "_identity": "wl|störung|L=2A|D=2026-06-05"
   },
   {
@@ -590,6 +578,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40: Falschparker",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
+    "pubDate": "2026-06-05T17:44:00+02:00",
+    "starts_at": "2026-06-05T17:44:00+02:00",
+    "ends_at": "2026-06-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=40|D=2026-06-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "41E: Ersatzbus 41E hält bei Währinger Str 200",
     "description": "Gleisbauarbeiten\nErsatzbus 41E\nhält bei\nWähringer Str 200",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -634,6 +634,18 @@
     "starts_at": "2026-06-02T00:00:22+02:00",
     "ends_at": "2026-06-05T23:59:59+02:00",
     "_identity": "wl|störung|L=41|D=2026-06-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Falschparker",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2026-06-05T17:44:00+02:00",
+    "starts_at": "2026-06-05T17:44:00+02:00",
+    "ends_at": "2026-06-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=41|D=2026-06-05"
   },
   {
     "source": "Wiener Linien",
@@ -758,30 +770,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
-    "pubDate": "2026-06-05T16:58:00+02:00",
-    "starts_at": "2026-06-05T17:00:38+02:00",
-    "ends_at": "2026-06-05T23:55:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-06-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8",
-    "pubDate": "2026-06-05T14:29:09+02:00",
-    "starts_at": "2026-06-05T14:29:09+02:00",
-    "ends_at": "2026-06-05T17:45:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-06-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -862,5 +850,17 @@
     "starts_at": "2026-06-02T00:00:27+02:00",
     "ends_at": "2026-06-05T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-02|TK=einstieg brünner strasse 31 31a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
+    "pubDate": "2026-06-05T17:48:03+02:00",
+    "starts_at": "2026-06-05T17:48:22+02:00",
+    "ends_at": "2026-06-05T18:47:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-06-05|TK=falschparker"
   }
 ]

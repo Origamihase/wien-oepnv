@@ -7,29 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 05 Jun 2026 17:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 18:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2A: Fremder Verkehrsunfall]]></title>
+      <title><![CDATA[29A: Fahrtbehinderung wegen Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2169f90b8103b94e170200c24382f57ebf9a9349a05ecb19adbb70dae8c5d691</guid>
-      <pubDate>Fri, 05 Jun 2026 17:14:00 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 17:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 17:14:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">c41a7ddc240ef864b3d3e2dcc4044103985583c35dc8c3f24096d1ae739484d1</guid>
+      <pubDate>Fri, 05 Jun 2026 17:51:19 +0200</pubDate>
+      <ext:first_seen>Fri, 05 Jun 2026 18:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 17:54:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 05.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 05.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1A: Fremder Verkehrsunfall]]></title>
+      <title><![CDATA[29B: Fahrtbehinderung wegen Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">393be7e2090c7f6f17307ebee4783f47c3beeb819dc0515abd99896fa91b4808</guid>
-      <pubDate>Fri, 05 Jun 2026 17:14:00 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 17:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 17:14:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">f9c2e735dc54d82511ccf1b10a627f7ea48f3e37436215f12a94c5e3e2be767c</guid>
+      <pubDate>Fri, 05 Jun 2026 17:50:50 +0200</pubDate>
+      <ext:first_seen>Fri, 05 Jun 2026 18:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 17:58:55 +0200</ext:starts_at>
       <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 05.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 05.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A: Fahrtbehinderung Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">18d6d114169cbf3cf5b8e3afebba728ef24601bd97ecb73cb5a331a912967b02</guid>
+      <pubDate>Fri, 05 Jun 2026 17:16:10 +0200</pubDate>
+      <ext:first_seen>Fri, 05 Jun 2026 18:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 17:16:10 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 18:15:00 +0200</ext:ends_at>
+      <description>[Am 05.06.2026]</description>
+      <content:encoded><![CDATA[[Am 05.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49: Verkehrsunfall Betrieb ab Urban-Loritz-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8f35eb920ab94754e3a261d814815ffb0021afcb15471a5b75c8c01368712943</guid>
+      <pubDate>Fri, 05 Jun 2026 14:30:07 +0200</pubDate>
+      <ext:first_seen>Fri, 05 Jun 2026 16:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 14:30:27 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 19:00:00 +0200</ext:ends_at>
+      <description>[Am 05.06.2026]</description>
+      <content:encoded><![CDATA[[Am 05.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
@@ -95,28 +117,6 @@
       <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[02.06.2026 – 05.06.2026]</description>
       <content:encoded><![CDATA[[02.06.2026 – 05.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Haltestelle aufgelassen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
-      <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.06.2026 – 05.06.2026]</description>
-      <content:encoded><![CDATA[[01.06.2026 – 05.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Busse halten Dänenstraße ggü. 2]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5</guid>
-      <pubDate>Mon, 01 Jun 2026 05:37:22 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:37:22 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.06.2026 – 05.06.2026]</description>
-      <content:encoded><![CDATA[[01.06.2026 – 05.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
