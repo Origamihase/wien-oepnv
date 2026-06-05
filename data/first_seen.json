@@ -1705,6 +1705,16 @@
       "epoch": 2
     }
   },
+  "4775bfa98a369b780f1a09f5420484150395f83efcb423571af6311708899658": {
+    "first_seen": "2026-06-05T13:31:00.652025+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic disturbance.",
+        "title": "63A: Traffic disturbance"
+      },
+      "epoch": 3
+    }
+  },
   "479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c": {
     "first_seen": "2026-05-26T14:30:55.657070+00:00",
     "translations": {
@@ -1807,6 +1817,15 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "62: foreign traffic accident"
+      },
+      "epoch": 3
+    }
+  },
+  "4ce21275e2f5797c0bf6d6d54e651d8bb98c2fdf8d1097edf42d585c1e59b561": {
+    "first_seen": "2026-06-05T13:31:00.652025+00:00",
+    "translations": {
+      "en": {
+        "title": "2: Harmful train service from Heinestra\u00dfe"
       },
       "epoch": 3
     }
