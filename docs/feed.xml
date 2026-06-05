@@ -7,26 +7,37 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 05 Jun 2026 11:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 12:00:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1A: Schadhafter PKW]]></title>
+      <title><![CDATA[1A: Fahrtbehinderung Schadhafter PKW]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">39d863e7d992ca9dedaed419a65775920e3f0bc7c95f3d3aa35fa98003387508</guid>
-      <pubDate>Fri, 05 Jun 2026 11:12:00 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 11:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 05.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 05.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">0eb87dc45798194ad7e8f16f41ff66c503ec5c0a96661140f396ec8ec0e1f62d</guid>
+      <pubDate>Fri, 05 Jun 2026 11:13:06 +0200</pubDate>
+      <ext:first_seen>Fri, 05 Jun 2026 12:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 11:23:44 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 14:45:00 +0200</ext:ends_at>
+      <description>[Am 05.06.2026]</description>
+      <content:encoded><![CDATA[[Am 05.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[31: Fahrtbehinderung Falschparker]]></title>
+      <title><![CDATA[62: Fahrtbehinderung Schadhafter Zug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">11dae11dafaf0878f07d1e1c010007790105e67c155ad06ba2cd6c87388c9e93</guid>
+      <pubDate>Fri, 05 Jun 2026 11:06:34 +0200</pubDate>
+      <ext:first_seen>Fri, 05 Jun 2026 12:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 11:06:34 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 15:30:00 +0200</ext:ends_at>
+      <description>[Am 05.06.2026]</description>
+      <content:encoded><![CDATA[[Am 05.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065</guid>
       <pubDate>Fri, 05 Jun 2026 10:42:00 +0200</pubDate>
       <ext:first_seen>Fri, 05 Jun 2026 11:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 10:43:02 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 05 Jun 2026 10:42:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 05.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 05.06.2026]]]></content:encoded>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[02.06.2026 – 05.06.2026]</description>
       <content:encoded><![CDATA[[02.06.2026 – 05.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Haltestelle aufgelassen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
-      <pubDate>Mon, 01 Jun 2026 05:38:20 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 05:38:20 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.06.2026 – 05.06.2026]</description>
-      <content:encoded><![CDATA[[01.06.2026 – 05.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
