@@ -495,12 +495,36 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "13A: Fremder Verkehrsunfall",
-    "description": "Linie 13A: Umleitung in Richtung Alser Straße, Skodagasse zwischen Karl-Popper-Straße und Johann-Strauß-Gasse über Wiedner Gürtel und Wiedner Hauptstraße. Voraussichtliche Dauer: 09:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Favoritenstraße # Kolschitzkygasse.",
+    "description": "Linie 13A: Betrieb nur zwischen Alser Straße, Skodagasse und Kolschitzkygasse. Weichen Sie ersatzweise auf die Linie U1 aus. Voraussichtliche Dauer: 09:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Favoritenstraße # Kolschitzkygasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "105eff30cb68ec833b2744d5d2c96d612ed10732ab581b9241fc80ee3ef23049",
     "pubDate": "2026-06-05T08:52:00+02:00",
     "starts_at": "2026-06-05T08:52:00+02:00",
     "ends_at": "2026-06-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-06-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Fremdunfall Betrieb ab Johann-Strauß-Gasse",
+    "description": "Fremdunfall\nBetrieb ab Johann-Strauß-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13287d41755eb3abbadf414e6bf8fb04e5de857a317b0d79eab00cff8087e075",
+    "pubDate": "2026-06-05T09:01:25+02:00",
+    "starts_at": "2026-06-05T09:01:25+02:00",
+    "ends_at": "2026-06-05T12:15:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-06-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Fremdunfall Betrieb ab Kolschitzkygasse",
+    "description": "Fremdunfall\nBetrieb ab Kolschitzkygasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8dd03f0832f935f8665cdd56934507f7bc58700edc8d44319f60b30daaf207ea",
+    "pubDate": "2026-06-05T09:04:52+02:00",
+    "starts_at": "2026-06-05T09:04:52+02:00",
+    "ends_at": "2026-06-05T14:30:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-06-05"
   },
   {
@@ -512,7 +536,7 @@
     "guid": "fd63cebb95a600045c6d28ffef7866655f283abf2f0c0d934720c1e03522bea5",
     "pubDate": "2026-06-05T08:56:06+02:00",
     "starts_at": "2026-06-05T08:56:06+02:00",
-    "ends_at": "2026-06-05T09:55:00+02:00",
+    "ends_at": "2026-06-05T13:30:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-06-05"
   },
   {
