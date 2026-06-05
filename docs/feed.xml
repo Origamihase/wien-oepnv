@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 05 Jun 2026 19:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 19:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[2A: Fahrtbehinderung wegen Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f00bcae17764f62582458ff81855410216ab3b96f1a4443be49d05c1dcfefa76</guid>
-      <pubDate>Fri, 05 Jun 2026 18:26:00 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 18:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 18:29:38 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 05.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 05.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A: Fahrtbehinderung wegen Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1728d250973f2515460b23b3c697922114d90ab90874f000d040c5e6b86cfa5e</guid>
-      <pubDate>Fri, 05 Jun 2026 18:29:09 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 16:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 18:29:09 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 19:28:00 +0200</ext:ends_at>
-      <description>[Am 05.06.2026]</description>
-      <content:encoded><![CDATA[[Am 05.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -117,6 +95,28 @@
       <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[01.06.2026 – 05.06.2026]</description>
       <content:encoded><![CDATA[[01.06.2026 – 05.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: Busse halten Gregor-Mendel-Straße ggü. 33]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
+      <pubDate>Mon, 01 Jun 2026 05:35:55 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 05:35:55 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.06.2026 – 05.06.2026]</description>
+      <content:encoded><![CDATA[[01.06.2026 – 05.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Fri, 05 Jun 2026 04:45:19 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 05:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 04:45:19 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 00:35:00 +0200</ext:ends_at>
+      <description>[05.06.2026 – 06.06.2026]</description>
+      <content:encoded><![CDATA[[05.06.2026 – 06.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
