@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 05 Jun 2026 14:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 15:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[48A/49: traffic accident]]></title>
+      <title><![CDATA[48A: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e94f05a824b1f5018ffb819a5a77c936ebd5533cb82a848d82e9609ea34aebca</guid>
+      <guid isPermaLink="false">00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033</guid>
       <pubDate>Fri, 05 Jun 2026 14:25:00 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 14:30:59 +0200</ext:first_seen>
+      <ext:first_seen>Fri, 05 Jun 2026 15:00:49 +0200</ext:first_seen>
       <ext:starts_at>Fri, 05 Jun 2026 14:25:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operation only between Hütteldorf, Bujattigasse and Urban-Loritz-Platz. [On 05.06.2026]</description>
-      <content:encoded><![CDATA[Operation only between Hütteldorf, Bujattigasse and Urban-Loritz-Platz.<br/>[On 05.06.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 05.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 05.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12: service obstruction because of rescue operation]]></title>
@@ -27,7 +27,7 @@
       <pubDate>Fri, 05 Jun 2026 13:57:00 +0200</pubDate>
       <ext:first_seen>Fri, 05 Jun 2026 14:30:59 +0200</ext:first_seen>
       <ext:starts_at>Fri, 05 Jun 2026 14:13:18 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 05 Jun 2026 15:12:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 05.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 05.06.2026]]]></content:encoded>
     </item>
@@ -41,17 +41,6 @@
       <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals towards Stadion U. Reason: rescue operation. [On 05.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals towards Stadion U. Reason: rescue operation.<br/>[On 05.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A: service obstruction Harmful car]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0eb87dc45798194ad7e8f16f41ff66c503ec5c0a96661140f396ec8ec0e1f62d</guid>
-      <pubDate>Fri, 05 Jun 2026 11:23:44 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 12:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 11:23:44 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 14:45:00 +0200</ext:ends_at>
-      <description>[On 05.06.2026]</description>
-      <content:encoded><![CDATA[[On 05.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62: service obstruction Harmful train]]></title>
@@ -106,6 +95,17 @@
       <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
       <description>Because of the rainbow parade, the following traffic measures are taking place. [03.06.2026 – 13.06.2026]</description>
       <content:encoded><![CDATA[Because of the rainbow parade, the following traffic measures are taking place.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: service obstruction False Parker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
+      <pubDate>Fri, 05 Jun 2026 14:33:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 09:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 14:33:46 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Antonigasse. expected duration: 09:50 watch. Reason: wrong parker in the Hormayrgasse range. [On 05.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Antonigasse. expected duration: 09:50 watch. Reason: wrong parker in the Hormayrgasse range.<br/>[On 05.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: service from Thaliastraße]]></title>
