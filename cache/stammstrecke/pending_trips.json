@@ -1,130 +1,122 @@
 {
-  "Meidling|CJX9|2026-06-05T07:53:00+02:00": {
+  "Meidling|CJX9|2026-06-05T08:23:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
     "latest_delay_minutes": 0.0,
     "name": "CJX9",
-    "scheduled": "2026-06-05T07:53:00+02:00"
+    "scheduled": "2026-06-05T08:23:00+02:00"
   },
-  "Meidling|REX1|2026-06-05T07:59:00+02:00": {
+  "Meidling|REX1|2026-06-05T08:29:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
     "latest_delay_minutes": 0.0,
     "name": "REX1",
-    "scheduled": "2026-06-05T07:59:00+02:00"
-  },
-  "Meidling|REX3|2026-06-05T07:39:00+02:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
-    "latest_delay_minutes": 1.0,
-    "name": "REX3",
-    "scheduled": "2026-06-05T07:39:00+02:00"
+    "scheduled": "2026-06-05T08:29:00+02:00"
   },
   "Meidling|REX3|2026-06-05T08:09:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
     "latest_delay_minutes": 0.0,
     "name": "REX3",
     "scheduled": "2026-06-05T08:09:00+02:00"
-  },
-  "Meidling|S2|2026-06-05T07:42:00+02:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
-    "latest_delay_minutes": 1.0,
-    "name": "S2",
-    "scheduled": "2026-06-05T07:42:00+02:00"
   },
   "Meidling|S2|2026-06-05T08:12:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-06-05T08:12:00+02:00"
   },
+  "Meidling|S2|2026-06-05T08:42:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-06-05T08:42:00+02:00"
+  },
   "Meidling|S3|2026-06-05T08:02:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
-    "latest_delay_minutes": 0.0,
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
+    "latest_delay_minutes": 1.0,
     "name": "S3",
     "scheduled": "2026-06-05T08:02:00+02:00"
   },
-  "Meidling|S4|2026-06-05T07:32:00+02:00": {
+  "Meidling|S3|2026-06-05T08:32:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
-    "latest_delay_minutes": 1.0,
-    "name": "S4",
-    "scheduled": "2026-06-05T07:32:00+02:00"
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S3",
+    "scheduled": "2026-06-05T08:32:00+02:00"
   },
   "Praterstern|REX1|2026-06-05T08:03:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
-    "latest_delay_minutes": 0.0,
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
+    "latest_delay_minutes": 1.0,
     "name": "REX1",
     "scheduled": "2026-06-05T08:03:00+02:00"
   },
-  "Praterstern|REX3|2026-06-05T07:33:00+02:00": {
+  "Praterstern|REX1|2026-06-05T08:20:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
-    "latest_delay_minutes": 1.0,
-    "name": "REX3",
-    "scheduled": "2026-06-05T07:33:00+02:00"
-  },
-  "Praterstern|REX3|2026-06-05T07:50:00+02:00": {
-    "cancelled": false,
-    "direction": "Praterstern",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
     "latest_delay_minutes": 0.0,
-    "name": "REX3",
-    "scheduled": "2026-06-05T07:50:00+02:00"
+    "name": "REX1",
+    "scheduled": "2026-06-05T08:20:00+02:00"
   },
-  "Praterstern|S1|2026-06-05T08:00:00+02:00": {
+  "Praterstern|REX1|2026-06-05T08:33:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "REX1",
+    "scheduled": "2026-06-05T08:33:00+02:00"
+  },
+  "Praterstern|S1|2026-06-05T08:30:00+02:00": {
+    "cancelled": false,
+    "direction": "Praterstern",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S1",
-    "scheduled": "2026-06-05T08:00:00+02:00"
-  },
-  "Praterstern|S2|2026-06-05T07:45:00+02:00": {
-    "cancelled": false,
-    "direction": "Praterstern",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-06-05T07:45:00+02:00"
+    "scheduled": "2026-06-05T08:30:00+02:00"
   },
   "Praterstern|S2|2026-06-05T08:15:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-06-05T08:15:00+02:00"
   },
-  "Praterstern|S3|2026-06-05T07:39:00+02:00": {
+  "Praterstern|S2|2026-06-05T08:45:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
     "latest_delay_minutes": 0.0,
-    "name": "S3",
-    "scheduled": "2026-06-05T07:39:00+02:00"
+    "name": "S2",
+    "scheduled": "2026-06-05T08:45:00+02:00"
   },
   "Praterstern|S3|2026-06-05T08:09:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-06-05T07:30:52.498921+02:00",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S3",
     "scheduled": "2026-06-05T08:09:00+02:00"
+  },
+  "Praterstern|S3|2026-06-05T08:39:00+02:00": {
+    "cancelled": false,
+    "direction": "Praterstern",
+    "last_seen_at": "2026-06-05T08:01:01.436623+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S3",
+    "scheduled": "2026-06-05T08:39:00+02:00"
   }
 }
