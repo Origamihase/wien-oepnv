@@ -410,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "N81: Gleisbauarbeiten",
-    "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten am Olympiaplatz wird die Rufbuslinie N81 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 05. Mai 2026 (Nacht von 4. auf 5.) bis 06. Juni 2026, etwa 00:30 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br />Die Linie N81 wird in beiden Richtungen abschnittsweise &uuml;ber den Handelskai umgeleitet.</p> <p>Die <strong>Haltestelle Pensionistenwohnhaus Prater</strong> wird dadurch in beiden Richtungen <strong>ersatzlos aufgelassen</strong>.</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6cb07c7304a9b02c49316003964e6675ee0b068a781b6f5ac81424572887ef36",
-    "pubDate": "2026-04-28T14:05:00+02:00",
-    "starts_at": "2026-05-05T00:00:00+02:00",
-    "ends_at": "2026-06-06T00:30:00+02:00",
-    "_identity": "wl|hinweis|L=N81|D=2026-05-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "N8: Thaliastraße U",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie N8 in Richtung Alterlaa U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Thaliastra&szlig;e U</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Lerchenfelder G&uuml;rtel 35</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Lerchenfelder G&uuml;rtel 41</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp; Ab 20. Juli 2024,&nbsp;</span></span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Dauer derzeit unbekannt</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bauarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -778,6 +766,78 @@
     "starts_at": "2026-06-05T23:00:24+02:00",
     "ends_at": "2026-06-06T05:30:00+02:00",
     "_identity": "wl|störung|L=N29|D=2026-06-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N41: Busse halten Währinger Straße ONr. 200-202",
+    "description": "Bauarbeiten\nBusse halten Währinger Straße ONr. 200-202",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "16c9b94f2a7dcc5c4072612af6c274662b6064c9cf044a66c34c0e242d3ba893",
+    "pubDate": "2026-06-06T00:30:13+02:00",
+    "starts_at": "2026-06-06T00:30:13+02:00",
+    "ends_at": "2026-06-06T05:00:00+02:00",
+    "_identity": "wl|störung|L=N41|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N43: Busse halten Dornbacher Straße 85",
+    "description": "Gleisbauarbeiten\nBusse halten Dornbacher Straße 85",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2d95726ed28fcc964d6860a108a88378e18a16cb625531bc8488223f50b958d7",
+    "pubDate": "2026-06-06T00:30:20+02:00",
+    "starts_at": "2026-06-06T00:30:20+02:00",
+    "ends_at": "2026-06-06T04:50:00+02:00",
+    "_identity": "wl|störung|L=N43|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N43: Busse halten Alszeile 93",
+    "description": "Gleisbauarbeiten\nBusse halten Alszeile 93",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7c175da71f85aad7ffe071ccf58c215f5c088dd9c9d73d351933daae4d3fecb0",
+    "pubDate": "2026-06-06T00:30:20+02:00",
+    "starts_at": "2026-06-06T00:30:20+02:00",
+    "ends_at": "2026-06-06T04:50:00+02:00",
+    "_identity": "wl|störung|L=N43|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N46: Busse halten bei Linie 48A in Neustiftgasse",
+    "description": "Gleisbauarbeiten\nBusse halten bei Linie 48A in Neustiftgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1bc89bc576e114343fbe409de06c7658ab641c9714cb025001dae07c25e9ae89",
+    "pubDate": "2026-06-06T00:30:20+02:00",
+    "starts_at": "2026-06-06T00:30:20+02:00",
+    "ends_at": "2026-06-06T05:00:00+02:00",
+    "_identity": "wl|störung|L=N46|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N46: Busse halten bei Linie 48A in Burggasse",
+    "description": "Gleisbauarbeiten\nBusse halten bei Linie 48A in Burggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a751a157bea2c61bda9406b779159246c8d4f92aa8a9f6765523f38cb2bce878",
+    "pubDate": "2026-06-06T00:30:11+02:00",
+    "starts_at": "2026-06-06T00:30:11+02:00",
+    "ends_at": "2026-06-06T05:00:00+02:00",
+    "_identity": "wl|störung|L=N46|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N46: Busse halten bei Thaliastraße 3",
+    "description": "Gleisbauarbeiten\nBusse halten bei Thaliastraße 3",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eec0551f8fdb99ef47aaa187b0887582c7a09c823187b771a69a8a9928886a86",
+    "pubDate": "2026-06-06T00:30:11+02:00",
+    "starts_at": "2026-06-06T00:30:11+02:00",
+    "ends_at": "2026-06-06T05:00:00+02:00",
+    "_identity": "wl|störung|L=N46|D=2026-06-06"
   },
   {
     "source": "Wiener Linien",
