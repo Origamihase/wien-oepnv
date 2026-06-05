@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 05 Jun 2026 14:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 14:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[48A/49: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e94f05a824b1f5018ffb819a5a77c936ebd5533cb82a848d82e9609ea34aebca</guid>
+      <pubDate>Fri, 05 Jun 2026 14:25:00 +0200</pubDate>
+      <ext:first_seen>Fri, 05 Jun 2026 14:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 14:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb nur zwischen Hütteldorf, Bujattigasse und Urban-Loritz-Platz. [Am 05.06.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Hütteldorf, Bujattigasse und Urban-Loritz-Platz.<br/>[Am 05.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5</guid>
+      <pubDate>Fri, 05 Jun 2026 13:57:00 +0200</pubDate>
+      <ext:first_seen>Fri, 05 Jun 2026 14:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 05 Jun 2026 14:13:18 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 05.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 05.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +39,8 @@
       <ext:first_seen>Fri, 05 Jun 2026 14:01:02 +0200</ext:first_seen>
       <ext:starts_at>Fri, 05 Jun 2026 13:57:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 05 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in Richtung Stadion U. Grund: Rettungseinsatz. [Am 05.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Stadion U. Grund: Rettungseinsatz.<br/>[Am 05.06.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 05.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 05.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A: Fahrtbehinderung Schadhafter PKW]]></title>
@@ -39,17 +61,6 @@
       <ext:first_seen>Fri, 05 Jun 2026 12:00:46 +0200</ext:first_seen>
       <ext:starts_at>Fri, 05 Jun 2026 11:06:34 +0200</ext:starts_at>
       <ext:ends_at>Fri, 05 Jun 2026 15:30:00 +0200</ext:ends_at>
-      <description>[Am 05.06.2026]</description>
-      <content:encoded><![CDATA[[Am 05.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Fremdunfall Betrieb ab Kolschitzkygasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8dd03f0832f935f8665cdd56934507f7bc58700edc8d44319f60b30daaf207ea</guid>
-      <pubDate>Fri, 05 Jun 2026 09:04:52 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 11:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 05 Jun 2026 09:04:52 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 14:30:00 +0200</ext:ends_at>
       <description>[Am 05.06.2026]</description>
       <content:encoded><![CDATA[[Am 05.06.2026]]]></content:encoded>
     </item>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[29.05.2026 – 05.06.2026]</description>
       <content:encoded><![CDATA[[29.05.2026 – 05.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41E: Ersatzbus 41E hält bei Währinger Str 200]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">859fe0941e8bf4468bc802c2aeb56d9f7d635123f70d902547a35e2bf9a98daa</guid>
-      <pubDate>Tue, 02 Jun 2026 00:00:22 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 13:01:25 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 02 Jun 2026 00:00:22 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 05 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[02.06.2026 – 05.06.2026]</description>
-      <content:encoded><![CDATA[[02.06.2026 – 05.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
