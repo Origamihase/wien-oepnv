@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 06 Jun 2026 01:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 01:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
@@ -51,17 +51,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen. [03.06.2026 – 13.06.2026]</description>
       <content:encoded><![CDATA[Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5187d22b726578e7d3ef26f8dfc44dea5d147ba226bc2248251f4a7a40696ab9</guid>
-      <pubDate>Sat, 06 Jun 2026 00:59:00 +0200</pubDate>
-      <ext:first_seen>Tue, 02 Jun 2026 19:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 00:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 01:22:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz im Haltestellenbereich Floridsdorf. [Am 06.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz im Haltestellenbereich Floridsdorf.<br/>[Am 06.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: Betrieb ab Thaliastraße]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Sat, 06 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 06.06.2026]</description>
       <content:encoded><![CDATA[[Am 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6</guid>
+      <pubDate>Mon, 20 Apr 2026 03:02:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung. [20.04.2026 – 08.04.2027]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
