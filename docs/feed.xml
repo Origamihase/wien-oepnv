@@ -7,28 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 06 Jun 2026 22:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 22:31:33 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Wien Bhf. Meidling (WL)]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;883733</guid>
-      <pubDate>Sat, 06 Jun 2026 21:24:16 +0200</pubDate>
-      <ext:first_seen>Sat, 06 Jun 2026 21:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 21:24:16 +0200</ext:starts_at>
-      <description>Wegen eines Polizeieinsatzes waren in Wien Meidling Bahnhof (U) bis 21:22 Uhr keine Fahrten möglich. [Seit 06.06.2026]</description>
-      <content:encoded><![CDATA[Wegen eines Polizeieinsatzes waren in Wien Meidling Bahnhof (U) bis 21:22 Uhr keine Fahrten möglich.<br/>[Seit 06.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: Feuerwehreinsatz Züge fahren bis Hütteldorf, Bujattigasse]]></title>
+      <title><![CDATA[1: Fahrtbehinderung wegen Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8cd90da6b1432730ea620fa8c1e30fe74b77102b1b799c0b57ccf1c6a3b8fed9</guid>
-      <pubDate>Sat, 06 Jun 2026 21:22:43 +0200</pubDate>
-      <ext:first_seen>Sat, 06 Jun 2026 21:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 21:22:43 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 22:21:00 +0200</ext:ends_at>
-      <description>[Am 06.06.2026]</description>
-      <content:encoded><![CDATA[[Am 06.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b</guid>
+      <pubDate>Sat, 06 Jun 2026 21:43:00 +0200</pubDate>
+      <ext:first_seen>Sat, 06 Jun 2026 22:31:33 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 06 Jun 2026 21:43:06 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[47A/N54: Umleitung Richtung Unter St. Veit bzw. Westbahnhof]]></title>
@@ -117,6 +107,17 @@
       <ext:ends_at>Sat, 06 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 06.06.2026]</description>
       <content:encoded><![CDATA[[Am 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Sat, 06 Jun 2026 04:45:13 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 05:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 06 Jun 2026 04:45:13 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 07 Jun 2026 00:35:00 +0200</ext:ends_at>
+      <description>[06.06.2026 – 07.06.2026]</description>
+      <content:encoded><![CDATA[[06.06.2026 – 07.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
