@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 06 Jun 2026 13:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 13:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[60: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9</guid>
-      <pubDate>Sat, 06 Jun 2026 11:55:00 +0200</pubDate>
-      <ext:first_seen>Sat, 06 Jun 2026 12:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 11:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -64,12 +53,12 @@
       <content:encoded><![CDATA[Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[71: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <title><![CDATA[71: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c</guid>
       <pubDate>Sat, 06 Jun 2026 12:08:00 +0200</pubDate>
       <ext:first_seen>Tue, 02 Jun 2026 20:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 12:13:39 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 06 Jun 2026 12:08:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 06 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.06.2026]]]></content:encoded>
@@ -111,6 +100,17 @@
       <title><![CDATA[10A: Busse halten Gregor-Mendel-Straße ggü. 33]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
+      <pubDate>Sat, 06 Jun 2026 00:00:27 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 06 Jun 2026 00:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 06.06.2026]</description>
+      <content:encoded><![CDATA[[Am 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Busse halten Dänenstraße ggü. 2]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5</guid>
       <pubDate>Sat, 06 Jun 2026 00:00:27 +0200</pubDate>
       <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
       <ext:starts_at>Sat, 06 Jun 2026 00:00:27 +0200</ext:starts_at>
