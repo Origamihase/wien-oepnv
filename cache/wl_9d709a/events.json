@@ -506,6 +506,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40A: Verspätungen",
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "11aa33c68f3b235c869f74bc1c41192a0d48a3b681bedab9ef96a1e7b5d4a0d8",
+    "pubDate": "2026-06-06T08:46:00+02:00",
+    "starts_at": "2026-06-06T08:46:00+02:00",
+    "ends_at": "2026-06-06T09:21:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -710,6 +722,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Betriebsstörung",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f772b0a6c66647ee4e80b618f6f009261e873191227b6bfcbf9b58294cc76bd1",
+    "pubDate": "2026-06-06T08:42:00+02:00",
+    "starts_at": "2026-06-06T08:42:00+02:00",
+    "ends_at": "2026-06-06T09:05:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -754,6 +778,30 @@
     "starts_at": "2026-06-06T00:00:24+02:00",
     "ends_at": "2026-06-06T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Linie U2 Kein Betrieb zwischen Museumsquartier und Karlsplatz",
+    "description": "Linie U2\nKein Betrieb zwischen Museumsquartier und Karlsplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6de30dc6932d5b6db9ac27098d314d0f7a7e378b72b8f1f479060e2df0049bc5",
+    "pubDate": "2026-06-06T08:51:40+02:00",
+    "starts_at": "2026-06-06T08:52:07+02:00",
+    "ends_at": "2026-06-06T09:50:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Betrieb nur zwischen Seestadt und Museumsquartier. Voraussichtliche Dauer: 09:00 Uhr. Grund: Betriebsstörung im Haltestellenbereich Karlsplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-06-06T08:34:00+02:00",
+    "starts_at": "2026-06-06T08:34:00+02:00",
+    "ends_at": "2026-06-06T08:58:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-06-06"
   },
   {
     "source": "Wiener Linien",
