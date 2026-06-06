@@ -3507,6 +3507,15 @@
       "epoch": 2
     }
   },
+  "8cd90da6b1432730ea620fa8c1e30fe74b77102b1b799c0b57ccf1c6a3b8fed9": {
+    "first_seen": "2026-06-06T19:30:46.506990+00:00",
+    "translations": {
+      "en": {
+        "title": "52: fire-brigade operation Trains run to H\u00fctteldorf, Bujattigasse"
+      },
+      "epoch": 3
+    }
+  },
   "8d3d2b80e41959a1b4f4ab849a1ae969018f0082776fb587bb2aed9cb04ce1ce": {
     "first_seen": "2026-05-24T20:34:38.763545+00:00",
     "translations": {
@@ -6635,6 +6644,16 @@
       "en": {
         "summary": "Due to a police operation between Wien Meidling station (U) and Wien Liesing station to expected 20:00 o'clock no journeys are possible.",
         "title": "Wien Hauptbahnhof \u2194 Wien Liesing \u2194 Wien Meidling \u2194 Wiener Neustadt Hauptbahnhof"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&883733": {
+    "first_seen": "2026-06-06T19:30:46.506990+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation, no journeys were possible at Wien Meidling station (U) to 21:22 clock.",
+        "title": "Wien Bhf. Meidling (WL)"
       },
       "epoch": 3
     }
