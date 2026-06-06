@@ -494,6 +494,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1A/2A/3A: Demonstration",
+    "description": "Linie 1A: Derzeit ist ein Betrieb der Linie 1A nicht möglich. Linie 2A: Derzeit ist ein Betrieb nicht möglich. Linie 3A: Derzeit ist ein Betrieb der Linie 3A nicht möglich. Voraussichtliche Dauer: Nicht absehbar. Grund: Demonstration im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c0df134f11f9ffbb76833cb3f3d3e21f3ac38dd721681b21790d60a958b9591e",
+    "pubDate": "2026-06-06T14:21:00+02:00",
+    "starts_at": "2026-06-06T14:21:00+02:00",
+    "ends_at": "2026-06-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=1A,2A,3A|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -752,7 +764,7 @@
     "guid": "2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c",
     "pubDate": "2026-06-06T12:08:00+02:00",
     "starts_at": "2026-06-06T12:08:00+02:00",
-    "ends_at": "2026-06-06T23:55:00+02:00",
+    "ends_at": "2026-06-06T14:33:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-06-06"
   },
   {
