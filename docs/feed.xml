@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 06 Jun 2026 09:01:12 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 09:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[52: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806</guid>
+      <pubDate>Sat, 06 Jun 2026 09:12:00 +0200</pubDate>
+      <ext:first_seen>Sat, 06 Jun 2026 09:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 06 Jun 2026 09:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb nur zwischen Westbahnhof S U und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. [Am 06.06.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Westbahnhof S U und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz.<br/>[Am 06.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Linie U2 Kein Betrieb zwischen Museumsquartier und Karlsplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -29,17 +40,6 @@
       <ext:starts_at>Tue, 02 Jun 2026 16:31:24 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 02.11.2026 (20:00 Uhr) bis 14.11.2026 (17:00 Uhr) einige S50-Züge nicht fahren. [Seit 02.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 02.11.2026 (20:00 Uhr) bis 14.11.2026 (17:00 Uhr) einige S50-Züge nicht fahren.<br/>[Seit 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f772b0a6c66647ee4e80b618f6f009261e873191227b6bfcbf9b58294cc76bd1</guid>
-      <pubDate>Sat, 06 Jun 2026 08:42:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 16:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 08:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 09:05:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 06.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 06.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[47A/N54: Umleitung Richtung Unter St. Veit bzw. Westbahnhof]]></title>

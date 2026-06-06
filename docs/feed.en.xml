@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jun 2026 09:01:12 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 09:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[52: defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806</guid>
+      <pubDate>Sat, 06 Jun 2026 09:12:00 +0200</pubDate>
+      <ext:first_seen>Sat, 06 Jun 2026 09:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 06 Jun 2026 09:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation only between Westbahnhof S U and Reinlgasse. Continue via line 10 to Joachimsthalerplatz. [On 06.06.2026]</description>
+      <content:encoded><![CDATA[Operation only between Westbahnhof S U and Reinlgasse. Continue via line 10 to Joachimsthalerplatz.<br/>[On 06.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: line U2 No operation between Museumsquartier and Karlsplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -29,17 +40,6 @@
       <ext:starts_at>Tue, 02 Jun 2026 16:31:24 +0200</ext:starts_at>
       <description>Due to construction works, between Wien Westbahnhof (U) and Wien Hütteldorf Train Station (U) from 02.11.2026 (20:00 o'clock) to 14.11.2026 (17:00 o'clock) some S50 trains … [Since 02.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works, between Wien Westbahnhof (U) and Wien Hütteldorf Train Station (U) from 02.11.2026 (20:00 o'clock) to 14.11.2026 (17:00 o'clock) some S50 trains …<br/>[Since 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6: service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f772b0a6c66647ee4e80b618f6f009261e873191227b6bfcbf9b58294cc76bd1</guid>
-      <pubDate>Sat, 06 Jun 2026 08:42:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 16:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 08:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 09:05:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 06.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 06.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[47A/N54: diversion direction Unter St. Veit or Westbahnhof]]></title>
