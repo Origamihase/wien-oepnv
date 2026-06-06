@@ -470,6 +470,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Verkehrsunfall",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46",
+    "pubDate": "2026-06-06T11:30:00+02:00",
+    "starts_at": "2026-06-06T11:30:00+02:00",
+    "ends_at": "2026-06-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "faa2c75b2aaa3d9a162d6003d0bcec7e9a0d0132a2c6c3f2e5ebd42f317d3882",
+    "pubDate": "2026-06-06T11:32:00+02:00",
+    "starts_at": "2026-06-06T11:40:11+02:00",
+    "ends_at": "2026-06-06T12:39:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -483,10 +507,10 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "2: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
-    "pubDate": "2026-06-06T11:10:00+02:00",
+    "pubDate": "2026-06-06T11:11:21+02:00",
     "starts_at": "2026-06-06T11:19:05+02:00",
     "ends_at": "2026-06-06T12:18:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-06-06"
@@ -694,6 +718,18 @@
     "starts_at": "2026-06-06T00:00:16+02:00",
     "ends_at": "2026-06-06T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 60: Fahrtbehinderung in Richtung Rodaun. Voraussichtliche Dauer: 12:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Dommayergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
+    "pubDate": "2026-06-06T11:55:00+02:00",
+    "starts_at": "2026-06-06T11:57:42+02:00",
+    "ends_at": "2026-06-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-06-06"
   },
   {
     "source": "Wiener Linien",
