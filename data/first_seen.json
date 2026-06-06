@@ -1414,8 +1414,10 @@
     "first_seen": "2026-06-06T16:30:45.521118+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions. Reason: police operation."
-      }
+        "summary": "irregular intervals in both directions. Reason: police operation.",
+        "title": "10: police operation"
+      },
+      "epoch": 3
     }
   },
   "3818d5f9fd64a277036389fd0042bdc0fac535ec905f869cbbcbc306e393bcea": {
@@ -2840,6 +2842,16 @@
         "title": "49: water pipe base replacement service from Satzberggasse to tree garden"
       },
       "epoch": 2
+    }
+  },
+  "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab": {
+    "first_seen": "2026-06-06T17:30:54.399941+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "25: service obstruction because of rescue operation"
+      },
+      "epoch": 3
     }
   },
   "743284ebbe11f8797567e1b1d5053e46a0a377c9140e5c80e3b8e56dc784ca16": {
