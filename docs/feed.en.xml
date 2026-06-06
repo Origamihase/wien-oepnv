@@ -7,26 +7,15 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jun 2026 03:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 03:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N71: rescue operation Waiting times up to 60min]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fb47dd2fea9c2ab538536c97c73b4d20cb22d6bccb39696310ce6b5b781a5aa6</guid>
-      <pubDate>Sat, 06 Jun 2026 02:07:00 +0200</pubDate>
-      <ext:first_seen>Sat, 06 Jun 2026 02:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 02:13:58 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 03:30:00 +0200</ext:ends_at>
-      <description>Currently, the N71 line has different intervals in both directions. Reason: rescue operation in the Simmering S U stop area. [On 06.06.2026]</description>
-      <content:encoded><![CDATA[Currently, the N71 line has different intervals in both directions. Reason: rescue operation in the Simmering S U stop area.<br/>[On 06.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[N60: False parker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5ec30d5c9488e94907fc1a926cb3232541fee4d963c06051a528292cf9cba9b5</guid>
       <pubDate>Sat, 06 Jun 2026 01:57:00 +0200</pubDate>
       <ext:first_seen>Sat, 06 Jun 2026 02:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 02:11:48 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 06 Jun 2026 01:57:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 06 Jun 2026 03:31:00 +0200</ext:ends_at>
       <description>Currently, the N60 line has different intervals in both directions. Reason: False parkers in the Maurer Hauptplatz stop area. [On 06.06.2026]</description>
       <content:encoded><![CDATA[Currently, the N60 line has different intervals in both directions. Reason: False parkers in the Maurer Hauptplatz stop area.<br/>[On 06.06.2026]]]></content:encoded>
@@ -111,6 +100,17 @@
       <title><![CDATA[10A: Buses stop Gregor-Mendel-Straße opp. 33]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
+      <pubDate>Sat, 06 Jun 2026 00:00:27 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 06 Jun 2026 00:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 06.06.2026]</description>
+      <content:encoded><![CDATA[[On 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Buses stop Dänenstraße opp. 2]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5</guid>
       <pubDate>Sat, 06 Jun 2026 00:00:27 +0200</pubDate>
       <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
       <ext:starts_at>Sat, 06 Jun 2026 00:00:27 +0200</ext:starts_at>
