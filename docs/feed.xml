@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 06 Jun 2026 17:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 18:00:45 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[63A: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b50c282c85e739a4248a6b14ea43688db148e85bb8bea175c7c0bf5b6f0c6c0e</guid>
+      <pubDate>Sat, 06 Jun 2026 17:38:00 +0200</pubDate>
+      <ext:first_seen>Sat, 06 Jun 2026 18:00:45 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 06 Jun 2026 17:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 06.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 06.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[48A: Demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Sat, 06 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration. [Am 06.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.<br/>[Am 06.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
-      <pubDate>Sat, 06 Jun 2026 14:45:00 +0200</pubDate>
-      <ext:first_seen>Sat, 06 Jun 2026 15:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 14:45:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
