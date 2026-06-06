@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 06 Jun 2026 14:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 15:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1A/2A/3A: Demonstration]]></title>
+      <title><![CDATA[11: Rettungseinsatz Züge halten bei Linie 6]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c0df134f11f9ffbb76833cb3f3d3e21f3ac38dd721681b21790d60a958b9591e</guid>
+      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
+      <pubDate>Sat, 06 Jun 2026 14:50:55 +0200</pubDate>
+      <ext:first_seen>Sat, 06 Jun 2026 15:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 06 Jun 2026 14:56:25 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 06 Jun 2026 15:55:00 +0200</ext:ends_at>
+      <description>[Am 06.06.2026]</description>
+      <content:encoded><![CDATA[[Am 06.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7d32082b9c65d6a238ea1e4a5c02ececc5eed8f051d5e92f3cf3ce4e131eec89</guid>
       <pubDate>Sat, 06 Jun 2026 14:21:00 +0200</pubDate>
-      <ext:first_seen>Sat, 06 Jun 2026 14:30:49 +0200</ext:first_seen>
+      <ext:first_seen>Sat, 06 Jun 2026 15:01:04 +0200</ext:first_seen>
       <ext:starts_at>Sat, 06 Jun 2026 14:21:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 06 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Derzeit ist ein Betrieb der Linie 1A nicht möglich. Linie 2A: Derzeit ist ein Betrieb nicht möglich. [Am 06.06.2026]</description>
-      <content:encoded><![CDATA[Derzeit ist ein Betrieb der Linie 1A nicht möglich. Linie 2A: Derzeit ist ein Betrieb nicht möglich.<br/>[Am 06.06.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
@@ -62,17 +73,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen. [03.06.2026 – 13.06.2026]</description>
       <content:encoded><![CDATA[Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c</guid>
-      <pubDate>Sat, 06 Jun 2026 12:08:00 +0200</pubDate>
-      <ext:first_seen>Tue, 02 Jun 2026 20:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 06 Jun 2026 12:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 06 Jun 2026 14:33:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: Betrieb ab Thaliastraße]]></title>
