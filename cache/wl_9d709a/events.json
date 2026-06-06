@@ -482,24 +482,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Rettungseinsatz",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2026-06-06T13:06:00+02:00",
-    "starts_at": "2026-06-06T13:06:00+02:00",
-    "ends_at": "2026-06-06T16:01:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-06-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Falschparker Betrieb ab Hintere Zollamtsstraße",
+    "title": "1: Falschparker",
     "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
     "pubDate": "2026-06-06T14:56:00+02:00",
-    "starts_at": "2026-06-06T15:10:35+02:00",
+    "starts_at": "2026-06-06T14:56:00+02:00",
     "ends_at": "2026-06-06T23:55:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-06-06"
   },
@@ -734,12 +722,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "49: Rettungseinsatz",
     "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
     "pubDate": "2026-06-06T15:20:00+02:00",
-    "starts_at": "2026-06-06T15:24:38+02:00",
+    "starts_at": "2026-06-06T15:20:00+02:00",
     "ends_at": "2026-06-06T23:55:00+02:00",
     "_identity": "wl|störung|L=49|D=2026-06-06"
   },
@@ -818,12 +806,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Falschparker Betrieb ab Hinttere Zollamtsstraße",
+    "title": "O: Falschparker",
     "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8",
     "pubDate": "2026-06-06T14:56:00+02:00",
-    "starts_at": "2026-06-06T15:14:07+02:00",
+    "starts_at": "2026-06-06T14:56:00+02:00",
     "ends_at": "2026-06-06T23:55:00+02:00",
     "_identity": "wl|störung|L=O|D=2026-06-06"
   },
