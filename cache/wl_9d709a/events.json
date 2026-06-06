@@ -494,6 +494,78 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Fremder Verkehrsunfall",
+    "description": "Linie 2: Kein Betrieb zwischen Johann-Nepomuk-Berger-Platz und Josefstädter Straße U. Weichen Sie ersatzweise auf die Linien 43, 44, U6 aus. Voraussichtliche Dauer: 19:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Neulerchenfelder Straße 53.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0749610181f65ab0658c177429fbd2fa37ffe19a156e13edf490d50626a4aa1b",
+    "pubDate": "2026-06-06T18:48:00+02:00",
+    "starts_at": "2026-06-06T18:48:00+02:00",
+    "ends_at": "2026-06-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fremdunfall Betrieb bis Johann-Nepomuk-Berger-Platz",
+    "description": "Fremdunfall\nBetrieb bis Johann-Nepomuk-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e60ed6c538931e6a8699ea64b28b3393c7cb52119c339ac398cb16bde1175fb",
+    "pubDate": "2026-06-06T18:58:23+02:00",
+    "starts_at": "2026-06-06T18:58:24+02:00",
+    "ends_at": "2026-06-06T19:57:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9a3191136d8bad796a52ae693389b95d11840d24bc4efea2aa060f02844dccba",
+    "pubDate": "2026-06-06T18:49:12+02:00",
+    "starts_at": "2026-06-06T18:49:13+02:00",
+    "ends_at": "2026-06-06T19:48:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fremdunfall Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "description": "Fremdunfall\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a0a8e7fbd2196a57460bd49eaf24e2cea4c7a8b724b1153be9766b04b97f32d9",
+    "pubDate": "2026-06-06T18:49:10+02:00",
+    "starts_at": "2026-06-06T18:49:10+02:00",
+    "ends_at": "2026-06-06T19:56:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fremdunfall Betrieb bis Josefstädter Straße",
+    "description": "Fremdunfall\nBetrieb bis Josefstädter Straße >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ceb756e9787d82fb13216c40af4a53cef2b6160a9c9fc2b84120a3667e78e024",
+    "pubDate": "2026-06-06T18:57:52+02:00",
+    "starts_at": "2026-06-06T18:57:52+02:00",
+    "ends_at": "2026-06-06T19:57:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fremdunfall Betrieb ab Josefstädter Straße",
+    "description": "Fremdunfall\nBetrieb ab Josefstädter Straße >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d683b0a89aa2c02e5f19b71285f463f019e2cf0fdbfe18835643195f2927667e",
+    "pubDate": "2026-06-06T18:57:24+02:00",
+    "starts_at": "2026-06-06T18:57:24+02:00",
+    "ends_at": "2026-06-06T19:56:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Dänenstraße ggü. 2",
     "description": "Bauarbeiten\nBusse halten Dänenstraße ggü. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -536,7 +608,7 @@
     "guid": "bb250e2c43de487577251bcb8b73b4c5de0652ba27d3f9aacc8555f08612408d",
     "pubDate": "2026-06-06T18:05:00+02:00",
     "starts_at": "2026-06-06T18:05:00+02:00",
-    "ends_at": "2026-06-06T23:55:00+02:00",
+    "ends_at": "2026-06-06T19:04:00+02:00",
     "_identity": "wl|störung|L=40A|D=2026-06-06"
   },
   {
@@ -752,7 +824,7 @@
     "guid": "b50c282c85e739a4248a6b14ea43688db148e85bb8bea175c7c0bf5b6f0c6c0e",
     "pubDate": "2026-06-06T17:38:00+02:00",
     "starts_at": "2026-06-06T17:38:00+02:00",
-    "ends_at": "2026-06-06T23:55:00+02:00",
+    "ends_at": "2026-06-06T19:01:00+02:00",
     "_identity": "wl|störung|L=63A|D=2026-06-06"
   },
   {
