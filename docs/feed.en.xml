@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 07 Jun 2026 20:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2026 20:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[60A/N60: 60A, N60, N61 RB: Willergasse, Schule0X direction Liesing and Rodaun]]></title>
@@ -21,17 +21,6 @@
       <content:encoded><![CDATA[Stop change of lines 60A towards Liesing, N60 towards Rodaun and call bus N61 towards LiesingX Stop: Willergasse, Schule From: WillergasseX 24 To …<br/>[22.05.2026 – 11.11.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[29B: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">926698c2f961fc28e72bfea5a39121734c681178bdca0f0904afd2b0b22ae1d0</guid>
-      <pubDate>Sun, 07 Jun 2026 18:22:00 +0200</pubDate>
-      <ext:first_seen>Sun, 07 Jun 2026 18:30:42 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 07 Jun 2026 18:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 07 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: rescue operation. [On 07.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 07.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[77A/80A: End of track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">012b376bf7921b9add1c29f69d81f45e914299250997e748f2dbc1481fc736a6</guid>
@@ -41,17 +30,6 @@
       <ext:ends_at>Tue, 30 Jun 2026 23:59:00 +0200</ext:ends_at>
       <description>End of the track construction works Lines 77A and 80A return to the normal route after termination of the track construction works for extension of the 18 line. [07.06.2026 – 30.06.2026]</description>
       <content:encoded><![CDATA[End of the track construction works Lines 77A and 80A return to the normal route after termination of the track construction works for extension of the 18 line.<br/>[07.06.2026 – 30.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: service obstruction because of rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b</guid>
-      <pubDate>Sun, 07 Jun 2026 19:03:22 +0200</pubDate>
-      <ext:first_seen>Sat, 06 Jun 2026 22:31:33 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 07 Jun 2026 19:03:32 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 07 Jun 2026 20:02:00 +0200</ext:ends_at>
-      <description>[On 07.06.2026]</description>
-      <content:encoded><![CDATA[[On 07.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔Wien Westbahnhof ↔XSt. Pölten Hauptbahnhof]]></title>
@@ -111,6 +89,28 @@
       <title><![CDATA[40A: stop Discontinued]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
+      <pubDate>Sun, 07 Jun 2026 00:00:17 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 07 Jun 2026 00:00:17 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 07 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 07.06.2026]</description>
+      <content:encoded><![CDATA[[On 07.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: Buses stop Gregor-Mendel-Straße opp. 33]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114</guid>
+      <pubDate>Sun, 07 Jun 2026 00:00:17 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 07 Jun 2026 00:00:17 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 07 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 07.06.2026]</description>
+      <content:encoded><![CDATA[[On 07.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Buses stop Dänenstraße opp. 2]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5</guid>
       <pubDate>Sun, 07 Jun 2026 00:00:17 +0200</pubDate>
       <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
       <ext:starts_at>Sun, 07 Jun 2026 00:00:17 +0200</ext:starts_at>
