@@ -5501,16 +5501,6 @@
       "epoch": 2
     }
   },
-  "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4": {
-    "first_seen": "2026-06-07T09:00:47.049506+00:00",
-    "translations": {
-      "en": {
-        "summary": "Operation only between H\u00fctteldorf, Bujattigasse and Urban-Loritz-Platz.",
-        "title": "49: False Parker service from Urban-Loritz-Platz"
-      },
-      "epoch": 3
-    }
-  },
   "dfa3af5eacd7ecf6f3b864d15ccbe892b2dd7ed23dfedaca0a147c26955c5cc8": {
     "first_seen": "2026-05-29T20:30:52.061515+00:00",
     "translations": {
@@ -6707,6 +6697,16 @@
       "en": {
         "summary": "Due to a police operation, no journeys were possible at Wien Meidling station (U) to 21:22 clock.",
         "title": "Wien Bhf. Meidling (WL)"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&883836": {
+    "first_seen": "2026-06-07T11:30:44.923465+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation, no journeys were possible between Wien Meidling Bahnhof (U) and Wien Hbf (U) to 13:18 o'clock.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Hauptbahnhof / Wien Meidling \u2194 Wien Hauptbahnhof"
       },
       "epoch": 3
     }
