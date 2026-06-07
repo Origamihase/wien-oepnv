@@ -830,6 +830,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-06-07T01:37:00+02:00",
+    "starts_at": "2026-06-07T01:37:00+02:00",
+    "ends_at": "2026-06-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-06-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Einstieg: Brünner Straße 31-31A",
     "description": "Bauarbeiten\nEinstieg: Brünner Straße 31-31A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
