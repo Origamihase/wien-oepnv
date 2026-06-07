@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 07 Jun 2026 04:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2026 05:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔Wien Westbahnhof ↔XSt. Pölten Hauptbahnhof]]></title>
@@ -97,6 +97,17 @@
       <content:encoded><![CDATA[[On 07.06.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[62A: Buses stop at Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Sun, 07 Jun 2026 04:45:24 +0200</pubDate>
+      <ext:first_seen>Mon, 01 Jun 2026 05:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 07 Jun 2026 04:45:24 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 08 Jun 2026 00:35:00 +0200</ext:ends_at>
+      <description>[07.06.2026 – 08.06.2026]</description>
+      <content:encoded><![CDATA[[07.06.2026 – 08.06.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[43: track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6</guid>
@@ -106,17 +117,6 @@
       <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
       <description>Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line. [20.04.2026 – 08.04.2027]</description>
       <content:encoded><![CDATA[Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/71: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d54ea31a8d9717d932bee0e04f74f4ab8f1a96e6f95b9836ba88b750aa1fa25a</guid>
-      <pubDate>Mon, 16 Feb 2026 06:00:00 +0100</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 03 Mar 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 27 Jun 2026 01:30:00 +0200</ext:ends_at>
-      <description>Due to track construction works in the Simmeringer Hauptstraße, short guides are available in the evening hours Monday to Friday at the line 11 and 71 (22:30-01:00). Period: From … [03.03.2026 – 27.06.2026]</description>
-      <content:encoded><![CDATA[Due to track construction works in the Simmeringer Hauptstraße, short guides are available in the evening hours Monday to Friday at the line 11 and 71 (22:30-01:00). Period: From …<br/>[03.03.2026 – 27.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
