@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 07 Jun 2026 06:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2026 07:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[57A: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">760c4d44e7f0133f535b240813aed2818ddce030789eed71feee2b24916f8647</guid>
+      <pubDate>Sun, 07 Jun 2026 06:31:00 +0200</pubDate>
+      <ext:first_seen>Sun, 07 Jun 2026 07:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 07 Jun 2026 06:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 07 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 07.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 07.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Mon, 08 Jun 2026 00:35:00 +0200</ext:ends_at>
       <description>[07.06.2026 – 08.06.2026]</description>
       <content:encoded><![CDATA[[07.06.2026 – 08.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6</guid>
-      <pubDate>Mon, 20 Apr 2026 03:02:00 +0200</pubDate>
-      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung. [20.04.2026 – 08.04.2027]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
