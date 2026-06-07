@@ -6731,6 +6731,16 @@
       "epoch": 3
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&883844": {
+    "first_seen": "2026-06-07T13:30:57.273950+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to persons on the tracks, no journeys are currently possible between Wien Rennweg Bahnhst and Wien Mitte-Landstra\u00dfe Bahnhof (U).",
+        "title": "Wien Rennweg \u2194 Wien Mitte"
+      },
+      "epoch": 3
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },
