@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 07 Jun 2026 06:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2026 06:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔Wien Westbahnhof ↔XSt. Pölten Hauptbahnhof]]></title>
@@ -108,15 +108,15 @@
       <content:encoded><![CDATA[[07.06.2026 – 08.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U2: rescue operation]]></title>
+      <title><![CDATA[43: track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
-      <pubDate>Sun, 07 Jun 2026 05:13:00 +0200</pubDate>
-      <ext:first_seen>Sat, 30 May 2026 19:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 07 Jun 2026 05:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 07 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 07.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 07.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6</guid>
+      <pubDate>Mon, 20 Apr 2026 03:02:00 +0200</pubDate>
+      <ext:first_seen>Fri, 29 May 2026 21:02:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Apr 2027 00:00:00 +0200</ext:ends_at>
+      <description>Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line. [20.04.2026 – 08.04.2027]</description>
+      <content:encoded><![CDATA[Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line.<br/>[20.04.2026 – 08.04.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
