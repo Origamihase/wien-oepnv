@@ -458,12 +458,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Rettungseinsatz Betrieb ab Wallensteinplatz",
-    "description": "Rettungseinsatz\nBetrieb ab Wallensteinplatz",
+    "title": "12: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5",
     "pubDate": "2026-06-07T14:33:51+02:00",
-    "starts_at": "2026-06-07T14:34:05+02:00",
+    "starts_at": "2026-06-07T14:33:51+02:00",
     "ends_at": "2026-06-07T19:00:00+02:00",
     "_identity": "wl|störung|L=12|D=2026-06-07"
   },
@@ -478,6 +478,18 @@
     "starts_at": "2026-06-07T00:00:11+02:00",
     "ends_at": "2026-06-07T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Rettungseinsatz",
+    "description": "Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "926698c2f961fc28e72bfea5a39121734c681178bdca0f0904afd2b0b22ae1d0",
+    "pubDate": "2026-06-07T18:22:00+02:00",
+    "starts_at": "2026-06-07T18:22:00+02:00",
+    "ends_at": "2026-06-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=29B|D=2026-06-07"
   },
   {
     "source": "Wiener Linien",
