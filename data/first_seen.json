@@ -3539,6 +3539,16 @@
       "epoch": 2
     }
   },
+  "899bf6038c3a38ee5193e2d6c7398a8b95520941bd268edc5b6be3fa4cd67f49": {
+    "first_seen": "2026-06-08T11:01:03.946674+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective vehicle.",
+        "title": "31: defective vehicle"
+      },
+      "epoch": 3
+    }
+  },
   "89c7e98b8f27d48cb03c0d0017ab220e860d6d3673e2506ba1f48f6d2eb5a555": {
     "first_seen": "2026-06-02T20:01:12.619353+00:00",
     "translations": {
@@ -3707,6 +3717,16 @@
         "title": "5: service obstruction for police operation"
       },
       "epoch": 2
+    }
+  },
+  "900385c5f036bbfd87a12af5b22611468f29da18f5d7f9bb676b8330fa354ee1": {
+    "first_seen": "2026-06-08T11:01:03.946674+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "12: fire-brigade operation"
+      },
+      "epoch": 3
     }
   },
   "901ed953855b29e0b6c57f141c465798a7b7c37eaa49ceb15e2be2f34351b9f6": {
@@ -4225,6 +4245,16 @@
       "en": {
         "summary": "Stop transfer of lines 10A and 39A towards station Heiligenstadt S U Stop: Barawitzkagasse From: Barawitzkagasse 4-6 To: Barawitzkagasse 10-12 Duration: From \u2026",
         "title": "10A/39A: Barawitzkagasse"
+      },
+      "epoch": 3
+    }
+  },
+  "a11c559bc88082d01d8ecc232b83791677131f39d67e71c682b52aab7c821cf9": {
+    "first_seen": "2026-06-08T11:01:03.946674+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "5: fire-brigade operation"
       },
       "epoch": 3
     }
@@ -5414,6 +5444,15 @@
       "en": {
         "summary": "Due to track construction works in the Dornbacher Stra\u00dfe, the following change occurs with the 43 line.",
         "title": "43: track construction works"
+      },
+      "epoch": 3
+    }
+  },
+  "d639275fed205d39e9265cc9e6b073be44a4952e33d97ef0c1891f996a19ef98": {
+    "first_seen": "2026-06-08T11:01:03.946674+00:00",
+    "translations": {
+      "en": {
+        "title": "11A: service obstruction False Parker"
       },
       "epoch": 3
     }
