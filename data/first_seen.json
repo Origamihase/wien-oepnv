@@ -604,6 +604,16 @@
       "epoch": 2
     }
   },
+  "1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3": {
+    "first_seen": "2026-06-08T16:01:08.293593+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "2: defective vehicle"
+      },
+      "epoch": 3
+    }
+  },
   "15a3cff5acdc4d989e3d3aeb4e5e00ce8f9dce4215a8891a42b5350cd1fbb0c9": {
     "first_seen": "2026-05-26T06:30:47.373564+00:00",
     "translations": {
@@ -2179,8 +2189,10 @@
     "first_seen": "2026-06-08T15:31:02.465917+00:00",
     "translations": {
       "en": {
-        "summary": "service obstruction towards Kaiserebersdorf, Zinnergasse. Reason: service disruption."
-      }
+        "summary": "service obstruction towards Kaiserebersdorf, Zinnergasse. Reason: service disruption.",
+        "title": "11: service disruption"
+      },
+      "epoch": 3
     }
   },
   "55a6d2210edf7006a86ba29cb1618fa5f1c07d264c2f291e173729f4b9f779d9": {
