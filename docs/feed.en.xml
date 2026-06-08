@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 08 Jun 2026 14:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 14:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[4A: Traffic disturbance]]></title>
+      <title><![CDATA[38A: traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">30d6e7963bf6a95a31ee7e6c25b790b3deaa5d9f8be1f15361f9ab7a7b916227</guid>
-      <pubDate>Mon, 08 Jun 2026 13:06:00 +0200</pubDate>
-      <ext:first_seen>Mon, 08 Jun 2026 13:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 13:06:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">5bd9dda7a847330a7d1c36378ab1c1f0e9f6e6e70be1d423e453221b27840f53</guid>
+      <pubDate>Mon, 08 Jun 2026 14:12:00 +0200</pubDate>
+      <ext:first_seen>Mon, 08 Jun 2026 14:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 08 Jun 2026 14:12:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 08.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 08.06.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: traffic congestion. [On 08.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 08.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Traffic disturbance]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: traffic disturbance. [On 08.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 08.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: service obstruction False Parker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
-      <pubDate>Mon, 08 Jun 2026 11:24:00 +0200</pubDate>
-      <ext:first_seen>Mon, 08 Jun 2026 11:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 11:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: wrong parker. [On 08.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: wrong parker.<br/>[On 08.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: Use the line 43A - Dornbacher Straße 85]]></title>
@@ -76,17 +65,6 @@
       <content:encoded><![CDATA[End of the track construction works Lines 77A and 80A return to the normal route after termination of the track construction works for extension of the 18 line.<br/>[07.06.2026 – 30.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[48A: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033</guid>
-      <pubDate>Mon, 08 Jun 2026 11:54:00 +0200</pubDate>
-      <ext:first_seen>Fri, 05 Jun 2026 15:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 11:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 08.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 08.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[S 50: Wien Hütteldorf ↔Wien Westbahnhof ↔XSt. Pölten Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;882601</guid>
@@ -117,6 +95,28 @@
       <ext:ends_at>Sat, 20 Jun 2026 15:00:00 +0200</ext:ends_at>
       <description>Due to construction works in the station area Seestadt, the exit tracks are blocked alternately. [03.06.2026 – 20.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works in the station area Seestadt, the exit tracks are blocked alternately.<br/>[03.06.2026 – 20.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/1A/22X/2A/31/3A/59A/71/74A/D: Rainbow Parade 2026 on 1306.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91879edcd0477704fc6fe70f23daf6ba98704bc97545e28d96fd687387197fa9</guid>
+      <pubDate>Wed, 03 Jun 2026 06:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 12:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 06:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
+      <description>Because of the rainbow parade, the following traffic measures are taking place. [03.06.2026 – 13.06.2026]</description>
+      <content:encoded><![CDATA[Because of the rainbow parade, the following traffic measures are taking place.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: service obstruction because of rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c</guid>
+      <pubDate>Mon, 08 Jun 2026 12:45:00 +0200</pubDate>
+      <ext:first_seen>Tue, 02 Jun 2026 20:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 08 Jun 2026 12:45:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Kaiserebersdorf, Zinnergasse. expected duration: 20:50. Reason: rescue operation in stop area Am Heumarkt. [On 08.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Kaiserebersdorf, Zinnergasse. expected duration: 20:50. Reason: rescue operation in stop area Am Heumarkt.<br/>[On 08.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
