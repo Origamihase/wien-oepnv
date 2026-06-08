@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 08 Jun 2026 17:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 17:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">549e86f86cd3f47a30a4ed85046db20241ab5f3a4cbb5fe713800171adb68805</guid>
+      <pubDate>Mon, 08 Jun 2026 17:09:00 +0200</pubDate>
+      <ext:first_seen>Mon, 08 Jun 2026 17:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 08 Jun 2026 17:09:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Grund: Betriebsstörung. [Am 08.06.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Grund: Betriebsstörung.<br/>[Am 08.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -103,17 +114,6 @@
       <pubDate>Mon, 08 Jun 2026 00:00:27 +0200</pubDate>
       <ext:first_seen>Mon, 01 Jun 2026 13:01:25 +0200</ext:first_seen>
       <ext:starts_at>Mon, 08 Jun 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 08 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 08.06.2026]</description>
-      <content:encoded><![CDATA[[Am 08.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Haltestelle aufgelassen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40</guid>
-      <pubDate>Mon, 08 Jun 2026 00:00:22 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 06:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 00:00:22 +0200</ext:starts_at>
       <ext:ends_at>Mon, 08 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 08.06.2026]</description>
       <content:encoded><![CDATA[[Am 08.06.2026]]]></content:encoded>
