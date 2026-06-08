@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 08 Jun 2026 13:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 13:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[11A: service obstruction False Parker]]></title>
+      <title><![CDATA[4A: Traffic disturbance]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d639275fed205d39e9265cc9e6b073be44a4952e33d97ef0c1891f996a19ef98</guid>
-      <pubDate>Mon, 08 Jun 2026 12:58:47 +0200</pubDate>
-      <ext:first_seen>Mon, 08 Jun 2026 13:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 12:59:09 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 08 Jun 2026 13:58:00 +0200</ext:ends_at>
-      <description>[On 08.06.2026]</description>
-      <content:encoded><![CDATA[[On 08.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">30d6e7963bf6a95a31ee7e6c25b790b3deaa5d9f8be1f15361f9ab7a7b916227</guid>
+      <pubDate>Mon, 08 Jun 2026 13:06:00 +0200</pubDate>
+      <ext:first_seen>Mon, 08 Jun 2026 13:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 08 Jun 2026 13:06:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 08.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 08.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Traffic disturbance]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3aecf9b98cceb587019da4afa11f2dd146ebc75c0dec58d903cfad94a13189e6</guid>
+      <pubDate>Mon, 08 Jun 2026 13:05:00 +0200</pubDate>
+      <ext:first_seen>Mon, 08 Jun 2026 13:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 08 Jun 2026 13:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 08.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 08.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12: fire-brigade operation]]></title>
@@ -41,17 +52,6 @@
       <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 08.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 08.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">899bf6038c3a38ee5193e2d6c7398a8b95520941bd268edc5b6be3fa4cd67f49</guid>
-      <pubDate>Mon, 08 Jun 2026 12:39:00 +0200</pubDate>
-      <ext:first_seen>Mon, 08 Jun 2026 13:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 12:39:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 08.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 08.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: service obstruction False Parker]]></title>

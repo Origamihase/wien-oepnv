@@ -1315,6 +1315,16 @@
       "epoch": 2
     }
   },
+  "30d6e7963bf6a95a31ee7e6c25b790b3deaa5d9f8be1f15361f9ab7a7b916227": {
+    "first_seen": "2026-06-08T11:30:55.984741+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic disturbance.",
+        "title": "4A: Traffic disturbance"
+      },
+      "epoch": 3
+    }
+  },
   "311a3d1d21d0e028a008e02b40ec15cfb9a9f4383510c50597e114937b639358": {
     "first_seen": "2026-06-03T14:00:58.942856+00:00",
     "translations": {
@@ -1523,6 +1533,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "1A: Harmful car"
+      },
+      "epoch": 3
+    }
+  },
+  "3aecf9b98cceb587019da4afa11f2dd146ebc75c0dec58d903cfad94a13189e6": {
+    "first_seen": "2026-06-08T11:30:55.984741+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic disturbance.",
+        "title": "11A: Traffic disturbance"
       },
       "epoch": 3
     }
