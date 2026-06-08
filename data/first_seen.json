@@ -4834,8 +4834,10 @@
     "first_seen": "2026-06-08T04:00:48.801014+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions. Reason: rescue operation."
-      }
+        "summary": "irregular intervals in both directions. Reason: rescue operation.",
+        "title": "15A: rescue operation Currently irregular intervals"
+      },
+      "epoch": 3
     }
   },
   "be8d2380781f3f47e357b9d6eb7d4a923aff0407f16a0b34798f79852945fd54": {
@@ -4904,6 +4906,15 @@
       "en": {
         "summary": "Currently it is not possible to operate the line 1A. Line 2A: Currently it is not possible to operate.",
         "title": "1A/2A/3A: demonstration"
+      },
+      "epoch": 3
+    }
+  },
+  "c14ad7374d16f14cd0154afd971ba66872a46e7f70c45ab6156ec3ada2b6a22a": {
+    "first_seen": "2026-06-08T04:30:52.424452+00:00",
+    "translations": {
+      "en": {
+        "title": "44: service obstruction rescue operation"
       },
       "epoch": 3
     }
