@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 08 Jun 2026 13:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 14:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[4A: Verkehrsstörung]]></title>
@@ -30,28 +30,6 @@
       <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung. [Am 08.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.<br/>[Am 08.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">900385c5f036bbfd87a12af5b22611468f29da18f5d7f9bb676b8330fa354ee1</guid>
-      <pubDate>Mon, 08 Jun 2026 12:43:00 +0200</pubDate>
-      <ext:first_seen>Mon, 08 Jun 2026 13:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 12:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 08.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 08.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a11c559bc88082d01d8ecc232b83791677131f39d67e71c682b52aab7c821cf9</guid>
-      <pubDate>Mon, 08 Jun 2026 12:43:00 +0200</pubDate>
-      <ext:first_seen>Mon, 08 Jun 2026 13:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 12:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 08.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 08.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Falschparker]]></title>
@@ -117,6 +95,28 @@
       <ext:starts_at>Tue, 02 Jun 2026 16:31:24 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 02.11.2026 (20:00 Uhr) bis 14.11.2026 (17:00 Uhr) einige S50-Züge nicht fahren. [Seit 02.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 02.11.2026 (20:00 Uhr) bis 14.11.2026 (17:00 Uhr) einige S50-Züge nicht fahren.<br/>[Seit 02.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[47A/N54: Umleitung Richtung Unter St. Veit bzw. Westbahnhof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dfb473c5628f1277df75175997eecd74bc9cdaab16019d0f070e43c61629ab29</guid>
+      <pubDate>Wed, 03 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 14:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 18 Jun 2026 12:00:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Hietzinger Kai / Baumgartenbrücke wird eine Umleitung eingerichtet. [03.06.2026 – 18.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Hietzinger Kai / Baumgartenbrücke wird eine Umleitung eingerichtet.<br/>[03.06.2026 – 18.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Fassadentausch Sation Seestadt]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0db095703cc7ff5a471a862eb8ba01887913800c2f177d06648a43580a59a5a6</guid>
+      <pubDate>Wed, 03 Jun 2026 12:02:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 13:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 12:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 20 Jun 2026 15:00:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Stationsbereich Seestadt werden wechselweise die Abfahrtsgleise gesperrt. [03.06.2026 – 20.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Stationsbereich Seestadt werden wechselweise die Abfahrtsgleise gesperrt.<br/>[03.06.2026 – 20.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

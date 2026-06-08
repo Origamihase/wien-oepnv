@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 08 Jun 2026 13:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 14:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[4A: Traffic disturbance]]></title>
@@ -30,28 +30,6 @@
       <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: traffic disturbance. [On 08.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 08.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">900385c5f036bbfd87a12af5b22611468f29da18f5d7f9bb676b8330fa354ee1</guid>
-      <pubDate>Mon, 08 Jun 2026 12:43:00 +0200</pubDate>
-      <ext:first_seen>Mon, 08 Jun 2026 13:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 12:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 08.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 08.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a11c559bc88082d01d8ecc232b83791677131f39d67e71c682b52aab7c821cf9</guid>
-      <pubDate>Mon, 08 Jun 2026 12:43:00 +0200</pubDate>
-      <ext:first_seen>Mon, 08 Jun 2026 13:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 12:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 08 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 08.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 08.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: service obstruction False Parker]]></title>
@@ -117,6 +95,28 @@
       <ext:starts_at>Tue, 02 Jun 2026 16:31:24 +0200</ext:starts_at>
       <description>Due to construction works, between Wien Westbahnhof (U) and Wien Hütteldorf Train Station (U) from 02.11.2026 (20:00 o'clock) to 14.11.2026 (17:00 o'clock) some S50 trains … [Since 02.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works, between Wien Westbahnhof (U) and Wien Hütteldorf Train Station (U) from 02.11.2026 (20:00 o'clock) to 14.11.2026 (17:00 o'clock) some S50 trains …<br/>[Since 02.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[47A/N54: diversion direction Unter St. Veit or Westbahnhof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dfb473c5628f1277df75175997eecd74bc9cdaab16019d0f070e43c61629ab29</guid>
+      <pubDate>Wed, 03 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 14:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 18 Jun 2026 12:00:00 +0200</ext:ends_at>
+      <description>Because of construction works in the range Hietzinger Kai / Baumgartenbrücke, an diversion is set up. [03.06.2026 – 18.06.2026]</description>
+      <content:encoded><![CDATA[Because of construction works in the range Hietzinger Kai / Baumgartenbrücke, an diversion is set up.<br/>[03.06.2026 – 18.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Facade exchange Sation Seestadt]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0db095703cc7ff5a471a862eb8ba01887913800c2f177d06648a43580a59a5a6</guid>
+      <pubDate>Wed, 03 Jun 2026 12:02:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 13:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 12:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 20 Jun 2026 15:00:00 +0200</ext:ends_at>
+      <description>Due to construction works in the station area Seestadt, the exit tracks are blocked alternately. [03.06.2026 – 20.06.2026]</description>
+      <content:encoded><![CDATA[Due to construction works in the station area Seestadt, the exit tracks are blocked alternately.<br/>[03.06.2026 – 20.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
