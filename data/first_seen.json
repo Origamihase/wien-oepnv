@@ -5519,8 +5519,10 @@
     "first_seen": "2026-06-09T16:30:55.409121+00:00",
     "translations": {
       "en": {
-        "summary": "After an service obstruction there are different intervals."
-      }
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "3A: traffic accident"
+      },
+      "epoch": 3
     }
   },
   "d1297817ee10718651d484a8940d921a33ea574775f089682c8b7548d336d46d": {
@@ -6333,7 +6335,11 @@
   "eb55f0188639a7cf0ab56ede35706c6fdd1f185c211586abda3d49862f1cf5f8": {
     "first_seen": "2026-06-09T16:30:55.409121+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "irregular intervals in both directions. Line 13A: irregular intervals in both directions.",
+        "title": "12A/13A/14A/16A/17A/20A/22A/33A/47A/77A/77A/92A/93A: traffic congestion"
+      },
+      "epoch": 3
     }
   },
   "eb577e0d3d1b608c11138be5284345e72a7b716213b0732aa8079d8d53ddfdf5": {

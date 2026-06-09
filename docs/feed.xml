@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 09 Jun 2026 18:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 19:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[1: Fahrtbehinderung Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef</guid>
-      <pubDate>Tue, 09 Jun 2026 18:30:33 +0200</pubDate>
-      <ext:first_seen>Tue, 09 Jun 2026 18:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 09 Jun 2026 18:30:33 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 09 Jun 2026 19:30:00 +0200</ext:ends_at>
-      <description>[Am 09.06.2026]</description>
-      <content:encoded><![CDATA[[Am 09.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[3A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +106,17 @@
       <ext:ends_at>Thu, 18 Jun 2026 12:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Hietzinger Kai / Baumgartenbrücke wird eine Umleitung eingerichtet. [03.06.2026 – 18.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Hietzinger Kai / Baumgartenbrücke wird eine Umleitung eingerichtet.<br/>[03.06.2026 – 18.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/1A/2/2A/31/3A/59A/71/74A/D: Regenbogenparade 2026 am 13.06.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91879edcd0477704fc6fe70f23daf6ba98704bc97545e28d96fd687387197fa9</guid>
+      <pubDate>Wed, 03 Jun 2026 06:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 12:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 06:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
+      <description>Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen. [03.06.2026 – 13.06.2026]</description>
+      <content:encoded><![CDATA[Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
