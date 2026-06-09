@@ -7,51 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 09 Jun 2026 09:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 10:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[11: service obstruction traffic accident]]></title>
+      <title><![CDATA[O: fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">faa2c75b2aaa3d9a162d6003d0bcec7e9a0d0132a2c6c3f2e5ebd42f317d3882</guid>
-      <pubDate>Tue, 09 Jun 2026 08:55:32 +0200</pubDate>
-      <ext:first_seen>Tue, 09 Jun 2026 09:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 09 Jun 2026 08:55:32 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 09 Jun 2026 09:55:00 +0200</ext:ends_at>
-      <description>[On 09.06.2026]</description>
-      <content:encoded><![CDATA[[On 09.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">697a3f54961e5d8ef26d6296646ba39567e860f6593279599792b54517de962a</guid>
+      <pubDate>Tue, 09 Jun 2026 09:29:00 +0200</pubDate>
+      <ext:first_seen>Tue, 09 Jun 2026 10:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 09 Jun 2026 09:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 09.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 09.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[98A: traffic congestion]]></title>
+      <title><![CDATA[47A: traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e663c3580bdd57e5c8533e41e8dfeafd6063ad4ba834bf56a6c520a3db633cf3</guid>
-      <pubDate>Tue, 09 Jun 2026 08:17:00 +0200</pubDate>
-      <ext:first_seen>Tue, 09 Jun 2026 08:30:42 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 09 Jun 2026 08:17:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">e743175075a69c391010c55ca5625233efe28c99972fb27fb2af83f2265fa889</guid>
+      <pubDate>Tue, 09 Jun 2026 08:14:00 +0200</pubDate>
+      <ext:first_seen>Tue, 09 Jun 2026 10:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 09 Jun 2026 08:14:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: traffic congestion. [On 09.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 09.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A/47A/92A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">66669dcb8e6fb7c40f57c58dc6890f1b03f1df25d8e55332b3c7e63ee7b955bf</guid>
-      <pubDate>Tue, 09 Jun 2026 08:14:00 +0200</pubDate>
-      <ext:first_seen>Tue, 09 Jun 2026 08:30:42 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 09 Jun 2026 08:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line 47A: irregular intervals in both directions. [On 09.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line 47A: irregular intervals in both directions.<br/>[On 09.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[89A: service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">defc99886942d9793f4bea3d3f4e7364dd95e6d1783e2baa81d10c22f5ebe0ad</guid>
-      <pubDate>Tue, 09 Jun 2026 07:09:00 +0200</pubDate>
-      <ext:first_seen>Tue, 09 Jun 2026 07:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 09 Jun 2026 07:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: service disruption. [On 09.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 09.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: Use the line 43A - Dornbacher Straße 85]]></title>
@@ -117,6 +95,28 @@
       <ext:ends_at>Sat, 20 Jun 2026 15:00:00 +0200</ext:ends_at>
       <description>Due to construction works in the station area Seestadt, the exit tracks are blocked alternately. [03.06.2026 – 20.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works in the station area Seestadt, the exit tracks are blocked alternately.<br/>[03.06.2026 – 20.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/1A/22X/2A/31/3A/59A/71/74A/D: Rainbow Parade 2026 on 1306.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91879edcd0477704fc6fe70f23daf6ba98704bc97545e28d96fd687387197fa9</guid>
+      <pubDate>Wed, 03 Jun 2026 06:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 12:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 06:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
+      <description>Because of the rainbow parade, the following traffic measures are taking place. [03.06.2026 – 13.06.2026]</description>
+      <content:encoded><![CDATA[Because of the rainbow parade, the following traffic measures are taking place.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: service from Thaliastraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18</guid>
+      <pubDate>Sun, 07 Jun 2026 00:00:17 +0200</pubDate>
+      <ext:first_seen>Tue, 02 Jun 2026 00:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 07 Jun 2026 00:00:17 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 09 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[07.06.2026 – 09.06.2026]</description>
+      <content:encoded><![CDATA[[07.06.2026 – 09.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
