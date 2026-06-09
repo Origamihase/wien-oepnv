@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 09 Jun 2026 13:01:14 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 13:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[47A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">31e51e324d0956dfecce2c4506581e5d0f5137cdfb6cffc4e768a7eeef1aafad</guid>
+      <pubDate>Tue, 09 Jun 2026 13:25:00 +0200</pubDate>
+      <ext:first_seen>Tue, 09 Jun 2026 13:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 09 Jun 2026 13:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 09.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 09.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[58B: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen. [03.06.2026 – 13.06.2026]</description>
       <content:encoded><![CDATA[Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Betrieb ab Thaliastraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18</guid>
-      <pubDate>Sun, 07 Jun 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 02 Jun 2026 00:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 07 Jun 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 09 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[07.06.2026 – 09.06.2026]</description>
-      <content:encoded><![CDATA[[07.06.2026 – 09.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
