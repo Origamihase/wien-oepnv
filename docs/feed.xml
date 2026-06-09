@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 09 Jun 2026 10:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 11:02:14 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: Verkehrsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">645d6351de08b54d02868d60b227d12878992e79d97abc48f05ad0a5bf04483e</guid>
+      <pubDate>Tue, 09 Jun 2026 10:33:00 +0200</pubDate>
+      <ext:first_seen>Tue, 09 Jun 2026 11:02:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 09 Jun 2026 10:33:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung. [Am 09.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.<br/>[Am 09.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Verkehrsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -41,17 +52,6 @@
       <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[47A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e743175075a69c391010c55ca5625233efe28c99972fb27fb2af83f2265fa889</guid>
-      <pubDate>Tue, 09 Jun 2026 08:14:00 +0200</pubDate>
-      <ext:first_seen>Tue, 09 Jun 2026 10:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 09 Jun 2026 08:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 09.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 09.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>

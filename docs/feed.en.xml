@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 09 Jun 2026 10:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 11:02:14 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[13A: Verkehrsstörung]]></title>
+      <title><![CDATA[2: Traffic disturbance]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">645d6351de08b54d02868d60b227d12878992e79d97abc48f05ad0a5bf04483e</guid>
+      <pubDate>Tue, 09 Jun 2026 10:33:00 +0200</pubDate>
+      <ext:first_seen>Tue, 09 Jun 2026 11:02:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 09 Jun 2026 10:33:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 09.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 09.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Traffic disturbance]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">70f388519c839f34ca54a9a773e86af4e652bb4aedd41e20d94a49395f4bbd9d</guid>
       <pubDate>Tue, 09 Jun 2026 10:17:00 +0200</pubDate>
       <ext:first_seen>Tue, 09 Jun 2026 10:30:47 +0200</ext:first_seen>
       <ext:starts_at>Tue, 09 Jun 2026 10:17:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung. [Am 09.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.<br/>[Am 09.06.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 09.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 09.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[48A: Betriebsstörung]]></title>
+      <title><![CDATA[48A: service disruption]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">40abe8015540dc340a7006b7131e0f8abed33a83dfde5af7bcbdf50c13a4eeb9</guid>
       <pubDate>Tue, 09 Jun 2026 09:59:00 +0200</pubDate>
       <ext:first_seen>Tue, 09 Jun 2026 10:30:47 +0200</ext:first_seen>
       <ext:starts_at>Tue, 09 Jun 2026 09:59:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Klinik Penzing. Grund: Betriebsstörung im Bereich Koppstraße. [Am 09.06.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Klinik Penzing. Grund: Betriebsstörung im Bereich Koppstraße.<br/>[Am 09.06.2026]]]></content:encoded>
+      <description>service obstruction towards Klinik Penzing. Reason: service disruption in the Koppstraße range. [On 09.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Klinik Penzing. Reason: service disruption in the Koppstraße range.<br/>[On 09.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: fire-brigade operation]]></title>
@@ -41,17 +52,6 @@
       <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 09.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 09.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[47A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e743175075a69c391010c55ca5625233efe28c99972fb27fb2af83f2265fa889</guid>
-      <pubDate>Tue, 09 Jun 2026 08:14:00 +0200</pubDate>
-      <ext:first_seen>Tue, 09 Jun 2026 10:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 09 Jun 2026 08:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion. [On 09.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 09.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: Use the line 43A - Dornbacher Straße 85]]></title>
