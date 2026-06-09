@@ -458,26 +458,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "title": "11A: Veranstaltung",
+    "description": "Die Linie 11A wird in Richtung Stadion U zwischen Sturgasse und Stadion U über Vorgartenstraße umgeleitet. Voraussichtliche Dauer: Betriebsschluss. Grund: Veranstaltung im Bereich Stadion.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
-    "pubDate": "2026-06-09T15:09:50+02:00",
-    "starts_at": "2026-06-09T15:18:24+02:00",
-    "ends_at": "2026-06-09T16:17:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-06-09"
+    "guid": "6863ae5457c6e28dde29d9487a3c710537ba99af561b41d4f3643ce356bae0b6",
+    "pubDate": "2026-06-09T15:29:00+02:00",
+    "starts_at": "2026-06-09T15:29:00+02:00",
+    "ends_at": "2026-06-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-06-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "15A: Rettungseinsatz",
-    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "11: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bc65efc0eaddbdf7e05327a802d1b0275625e76f2f1601244d8cb88fec910412",
-    "pubDate": "2026-06-09T12:32:00+02:00",
-    "starts_at": "2026-06-09T12:32:00+02:00",
+    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
+    "pubDate": "2026-06-09T15:09:00+02:00",
+    "starts_at": "2026-06-09T15:18:24+02:00",
     "ends_at": "2026-06-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-06-09"
+    "_identity": "wl|störung|L=11|D=2026-06-09"
   },
   {
     "source": "Wiener Linien",
@@ -699,7 +699,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "46: Fremder Verkehrsunfall",
-    "description": "Linie 46: Fahrtbehinderung in Richtung Josefstädter Straße U. Voraussichtliche Dauer: 16:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Thaliastraße.",
+    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "eed4ea629d44bb9f67a32b24760e7fc7e9fbb8fab9efd3a43457846fae26b28d",
     "pubDate": "2026-06-09T15:21:00+02:00",
@@ -722,38 +722,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Bauarbeiten",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "48A: Verkehrsüberlastung",
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "12a56c870aa5e8fad079ce0523f514729f4a18617033cc4239de56a18a695efb",
-    "pubDate": "2026-06-09T14:28:00+02:00",
-    "starts_at": "2026-06-09T14:28:00+02:00",
+    "guid": "68437700f8aeaee18ffffa29c3114cdeb4dd158a27bedb1178d146036ce0af2b",
+    "pubDate": "2026-06-09T15:52:00+02:00",
+    "starts_at": "2026-06-09T15:52:00+02:00",
     "ends_at": "2026-06-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-06-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Betrieb ab Baumgarten",
-    "description": "Bauarbeiten\nBetrieb ab Baumgarten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
-    "pubDate": "2026-06-09T14:48:24+02:00",
-    "starts_at": "2026-06-09T14:48:26+02:00",
-    "ends_at": "2026-06-09T15:47:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-06-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Bauarbeiten",
-    "description": "Fahrtbehinderung\nwegen Bauarbeiten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c1c1445decbe5f3186f3846c19f66ea68a5984a27001fc6606b17b7beef318c9",
-    "pubDate": "2026-06-09T14:48:55+02:00",
-    "starts_at": "2026-06-09T14:48:55+02:00",
-    "ends_at": "2026-06-09T15:48:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-06-09"
+    "_identity": "wl|störung|L=48A|D=2026-06-09"
   },
   {
     "source": "Wiener Linien",
@@ -778,18 +754,6 @@
     "starts_at": "2026-06-08T00:00:28+02:00",
     "ends_at": "2026-06-09T23:59:59+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35",
-    "pubDate": "2026-06-09T14:49:24+02:00",
-    "starts_at": "2026-06-09T14:57:38+02:00",
-    "ends_at": "2026-06-09T15:57:00+02:00",
-    "_identity": "wl|störung|L=62|D=2026-06-09"
   },
   {
     "source": "Wiener Linien",
@@ -834,7 +798,7 @@
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
-    "pubDate": "2026-06-09T14:56:25+02:00",
+    "pubDate": "2026-06-09T15:04:38+02:00",
     "starts_at": "2026-06-09T15:04:38+02:00",
     "ends_at": "2026-06-09T16:04:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-06-09"
@@ -843,12 +807,24 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "71: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d",
     "pubDate": "2026-06-09T15:08:59+02:00",
     "starts_at": "2026-06-09T15:18:03+02:00",
-    "ends_at": "2026-06-09T16:17:00+02:00",
+    "ends_at": "2026-06-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-06-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Verkehrsunfall Betrieb ab St. Marx",
+    "description": "Verkehrsunfall\nBetrieb ab St. Marx",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e9671085cf51b1b72851800b8b501f5698f6a6bfae0ad34a6dcd2676730e2f1e",
+    "pubDate": "2026-06-09T15:08:59+02:00",
+    "starts_at": "2026-06-09T15:08:59+02:00",
+    "ends_at": "2026-06-09T16:40:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-06-09"
   },
   {
@@ -907,7 +883,7 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
     "pubDate": "2026-06-09T14:24:00+02:00",
-    "starts_at": "2026-06-09T14:24:00+02:00",
+    "starts_at": "2026-06-09T15:58:00+02:00",
     "ends_at": "2026-06-09T23:55:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-06-09"
   },
@@ -934,5 +910,17 @@
     "starts_at": "2026-06-09T15:30:14+02:00",
     "ends_at": "2026-06-09T16:29:00+02:00",
     "_identity": "wl|störung|L=|D=2026-06-09|TK=verkehrsunfall betrieb ab bhf simmering"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Verkehrsunfall Betrieb ab Enkplatz",
+    "description": "Verkehrsunfall\nBetrieb ab Enkplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2ddc06a6e6a05ef78b0f2974cf124e2ebaf3b1c8dc966945b600a4226548da51",
+    "pubDate": "2026-06-09T15:30:43+02:00",
+    "starts_at": "2026-06-09T15:30:43+02:00",
+    "ends_at": "2026-06-09T16:30:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-06-09|TK=verkehrsunfall betrieb ab enkplatz"
   }
 ]
