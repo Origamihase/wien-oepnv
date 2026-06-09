@@ -722,6 +722,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "89A: Betriebsstörung",
+    "description": "Linie 89A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "defc99886942d9793f4bea3d3f4e7364dd95e6d1783e2baa81d10c22f5ebe0ad",
+    "pubDate": "2026-06-09T07:09:00+02:00",
+    "starts_at": "2026-06-09T07:09:00+02:00",
+    "ends_at": "2026-06-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=89A|D=2026-06-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "9: Fahrtbehinderung wegen Gleisbauarbeiten",
     "description": "Fahrtbehinderung\nwegen Gleisbauarbeiten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -754,6 +766,18 @@
     "starts_at": "2026-06-09T06:31:00+02:00",
     "ends_at": "2026-06-09T23:55:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-06-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Gumpendorfer Straße und Westbahnhof in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 08:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Westbahnhof.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-06-09T07:25:00+02:00",
+    "starts_at": "2026-06-09T07:25:00+02:00",
+    "ends_at": "2026-06-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-06-09"
   },
   {
     "source": "Wiener Linien",
