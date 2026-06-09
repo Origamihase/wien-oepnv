@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 09 Jun 2026 12:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 13:01:14 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[58B: traffic accident]]></title>
@@ -19,6 +19,17 @@
       <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: traffic accident. [On 09.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 09.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: rescue operation Currently irregular intervals]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bc65efc0eaddbdf7e05327a802d1b0275625e76f2f1601244d8cb88fec910412</guid>
+      <pubDate>Tue, 09 Jun 2026 12:32:00 +0200</pubDate>
+      <ext:first_seen>Mon, 08 Jun 2026 06:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 09 Jun 2026 12:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 09.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 09.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: Use the line 43A - Dornbacher Straße 85]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Tue, 09 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[07.06.2026 – 09.06.2026]</description>
       <content:encoded><![CDATA[[07.06.2026 – 09.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41E: replacement bus 41E stops at Währinger Str 200]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">859fe0941e8bf4468bc802c2aeb56d9f7d635123f70d902547a35e2bf9a98daa</guid>
-      <pubDate>Mon, 08 Jun 2026 00:00:27 +0200</pubDate>
-      <ext:first_seen>Mon, 01 Jun 2026 13:01:25 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 08 Jun 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 09 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[08.06.2026 – 09.06.2026]</description>
-      <content:encoded><![CDATA[[08.06.2026 – 09.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
