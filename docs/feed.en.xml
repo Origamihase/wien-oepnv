@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 09 Jun 2026 14:31:06 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 15:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[49: Betrieb derzeit nur bis Baumgarten]]></title>
+      <title><![CDATA[69A: rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a0a4372749cf9a7a98df4c659ee98f48b8246bd5fc950e41fe62ed344d074598</guid>
-      <pubDate>Tue, 09 Jun 2026 14:30:31 +0200</pubDate>
-      <ext:first_seen>Tue, 09 Jun 2026 14:31:06 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 09 Jun 2026 14:30:31 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 09 Jun 2026 15:29:00 +0200</ext:ends_at>
-      <description>[Am 09.06.2026]</description>
-      <content:encoded><![CDATA[[Am 09.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">c3f5724da51a5f97e26106c94e4e4a9c78a6afbf8833a95716caef1b24c5cf6e</guid>
+      <pubDate>Tue, 09 Jun 2026 14:59:00 +0200</pubDate>
+      <ext:first_seen>Tue, 09 Jun 2026 15:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 09 Jun 2026 14:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 09.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 09.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: service obstruction traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35</guid>
+      <pubDate>Tue, 09 Jun 2026 14:57:00 +0200</pubDate>
+      <ext:first_seen>Tue, 09 Jun 2026 15:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 09 Jun 2026 14:57:38 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 09 Jun 2026 15:57:00 +0200</ext:ends_at>
+      <description>service obstruction traffic accident service obstruction towards Oper, Karlsplatz U. expected duration: 15:30 o'clock. Reason: traffic accidentX in the Rosenhügelstraße stop area. [On 09.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction traffic accident service obstruction towards Oper, Karlsplatz U. expected duration: 15:30 o'clock. Reason: traffic accidentX in the Rosenhügelstraße stop area.<br/>[On 09.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">12a56c870aa5e8fad079ce0523f514729f4a18617033cc4239de56a18a695efb</guid>
+      <pubDate>Tue, 09 Jun 2026 14:28:00 +0200</pubDate>
+      <ext:first_seen>Tue, 09 Jun 2026 15:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 09 Jun 2026 14:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 09.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 09.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[58B: traffic accident]]></title>
@@ -95,28 +117,6 @@
       <ext:ends_at>Thu, 18 Jun 2026 12:00:00 +0200</ext:ends_at>
       <description>Because of construction works in the range Hietzinger Kai / Baumgartenbrücke, an diversion is set up. [03.06.2026 – 18.06.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the range Hietzinger Kai / Baumgartenbrücke, an diversion is set up.<br/>[03.06.2026 – 18.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Facade exchange Sation Seestadt]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0db095703cc7ff5a471a862eb8ba01887913800c2f177d06648a43580a59a5a6</guid>
-      <pubDate>Wed, 03 Jun 2026 12:02:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 13:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 12:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 20 Jun 2026 15:00:00 +0200</ext:ends_at>
-      <description>Due to construction works in the station area Seestadt, the exit tracks are blocked alternately. [03.06.2026 – 20.06.2026]</description>
-      <content:encoded><![CDATA[Due to construction works in the station area Seestadt, the exit tracks are blocked alternately.<br/>[03.06.2026 – 20.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/1A/22X/2A/31/3A/59A/71/74A/D: Rainbow Parade 2026 on 1306.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">91879edcd0477704fc6fe70f23daf6ba98704bc97545e28d96fd687387197fa9</guid>
-      <pubDate>Wed, 03 Jun 2026 06:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 12:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 06:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
-      <description>Because of the rainbow parade, the following traffic measures are taking place. [03.06.2026 – 13.06.2026]</description>
-      <content:encoded><![CDATA[Because of the rainbow parade, the following traffic measures are taking place.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
