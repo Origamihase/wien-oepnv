@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 09 Jun 2026 17:30:58 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 18:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[16A/20A/22A/33A/47A/77A/92A/93A: Verkehrsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">73c25b0ff0f0e5544a63397137c232ebab5e44ac93524f1ad2b7f68b049b3b12</guid>
+      <pubDate>Tue, 09 Jun 2026 17:42:00 +0200</pubDate>
+      <ext:first_seen>Tue, 09 Jun 2026 18:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 09 Jun 2026 17:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 20A: Unregelmäßige Intervalle in beiden Richtungen. [Am 09.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 20A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 09.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Fassadentausch Station Seestadt]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Tue, 09 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 09.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 09.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Betrieb ab Thaliastraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18</guid>
-      <pubDate>Sun, 07 Jun 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 02 Jun 2026 00:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 07 Jun 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 09 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[07.06.2026 – 09.06.2026]</description>
-      <content:encoded><![CDATA[[07.06.2026 – 09.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

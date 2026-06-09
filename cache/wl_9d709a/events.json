@@ -476,8 +476,20 @@
     "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
     "pubDate": "2026-06-09T15:09:00+02:00",
     "starts_at": "2026-06-09T15:09:00+02:00",
-    "ends_at": "2026-06-09T23:55:00+02:00",
+    "ends_at": "2026-06-09T18:13:00+02:00",
     "_identity": "wl|störung|L=11|D=2026-06-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A/20A/22A/33A/47A/77A/92A/93A: Verkehrsstörung",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Linie 20A: Unregelmäßige Intervalle in beiden Richtungen. Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Linie 33A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Linie 93A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "73c25b0ff0f0e5544a63397137c232ebab5e44ac93524f1ad2b7f68b049b3b12",
+    "pubDate": "2026-06-09T17:42:00+02:00",
+    "starts_at": "2026-06-09T17:42:00+02:00",
+    "ends_at": "2026-06-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=16A,20A,22A,33A,47A,77A,92A,93A|D=2026-06-09"
   },
   {
     "source": "Wiener Linien",
@@ -802,6 +814,18 @@
     "starts_at": "2026-06-09T16:56:00+02:00",
     "ends_at": "2026-06-09T23:55:00+02:00",
     "_identity": "wl|störung|L=7A|D=2026-06-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "80A: Verkehrsüberlastung",
+    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab",
+    "pubDate": "2026-06-09T17:41:00+02:00",
+    "starts_at": "2026-06-09T17:41:00+02:00",
+    "ends_at": "2026-06-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=80A|D=2026-06-09"
   },
   {
     "source": "Wiener Linien",
