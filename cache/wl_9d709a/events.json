@@ -458,6 +458,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Verkehrsüberlastung",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
+    "pubDate": "2026-06-09T08:20:00+02:00",
+    "starts_at": "2026-06-09T08:20:00+02:00",
+    "ends_at": "2026-06-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-06-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A/47A/92A: Verkehrsüberlastung",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "66669dcb8e6fb7c40f57c58dc6890f1b03f1df25d8e55332b3c7e63ee7b955bf",
+    "pubDate": "2026-06-09T08:14:00+02:00",
+    "starts_at": "2026-06-09T08:14:00+02:00",
+    "ends_at": "2026-06-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=16A,47A,92A|D=2026-06-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -466,6 +490,30 @@
     "starts_at": "2026-06-07T00:00:11+02:00",
     "ends_at": "2026-06-09T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "35A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7a6b5813f02625534069ce29a01493676112844d8b5dd7d5468d7855d943bf8d",
+    "pubDate": "2026-06-09T08:23:11+02:00",
+    "starts_at": "2026-06-09T08:26:41+02:00",
+    "ends_at": "2026-06-09T09:26:00+02:00",
+    "_identity": "wl|störung|L=35A|D=2026-06-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "35A: Verkehrsunfall",
+    "description": "Linie 35A: Fahrtbehinderung in Richtung Salmannsdorf. Voraussichtliche Dauer: 08:45 Uhr. Grund: Verkehrsunfall im Bereich Glatzgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b0a24007474aab764828e2f63bdadfa9f2fa0506bb84bdfcd25263dd7bbb7dca",
+    "pubDate": "2026-06-09T08:23:00+02:00",
+    "starts_at": "2026-06-09T08:23:00+02:00",
+    "ends_at": "2026-06-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=35A|D=2026-06-09"
   },
   {
     "source": "Wiener Linien",
@@ -734,6 +782,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "98A: Verkehrsüberlastung",
+    "description": "Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e663c3580bdd57e5c8533e41e8dfeafd6063ad4ba834bf56a6c520a3db633cf3",
+    "pubDate": "2026-06-09T08:17:00+02:00",
+    "starts_at": "2026-06-09T08:17:00+02:00",
+    "ends_at": "2026-06-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=98A|D=2026-06-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "9: Fahrtbehinderung wegen Gleisbauarbeiten",
     "description": "Fahrtbehinderung\nwegen Gleisbauarbeiten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -764,30 +824,18 @@
     "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
     "pubDate": "2026-06-09T07:51:00+02:00",
     "starts_at": "2026-06-09T07:51:00+02:00",
-    "ends_at": "2026-06-09T23:55:00+02:00",
+    "ends_at": "2026-06-09T08:35:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-06-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-06-09T06:31:00+02:00",
-    "starts_at": "2026-06-09T06:31:00+02:00",
-    "ends_at": "2026-06-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-06-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Dresdner Straße und Handelskai in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 08:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Dresdner Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-06-09T07:25:00+02:00",
-    "starts_at": "2026-06-09T07:25:00+02:00",
+    "pubDate": "2026-06-09T08:14:00+02:00",
+    "starts_at": "2026-06-09T08:14:00+02:00",
     "ends_at": "2026-06-09T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-06-09"
   },
