@@ -107,6 +107,16 @@
       "epoch": 2
     }
   },
+  "031c5d12dca2394457c20c2af2c93388c0958fc1e1482ef1a3325c9cefbd5425": {
+    "first_seen": "2026-06-09T10:01:09.859302+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic accident.",
+        "title": "58B: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "03447008c75fd4128448a561c958c51a6383e59adee59478c6e9ed04eb6d136f": {
     "first_seen": "2026-05-27T06:30:56.858630+00:00",
     "translations": {
@@ -475,6 +485,16 @@
     "translations": {
       "en": {
         "title": "1A: service obstruction Harmful car"
+      },
+      "epoch": 3
+    }
+  },
+  "0fc2e9740a11c2fdb2585deda177aced33228979a6c815d3e7c3b062ec33869a": {
+    "first_seen": "2026-06-09T10:01:09.859302+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: wrong parker.",
+        "title": "5A: False Parker"
       },
       "epoch": 3
     }
