@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 10 Jun 2026 16:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 17:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[71A: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">36725abc8472e53a450d5a7529d9585150c8d3b6f933fd3dc0ee13dcd8082a4d</guid>
+      <pubDate>Wed, 10 Jun 2026 16:56:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 17:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 16:56:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 10 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic accident. [On 10.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 10.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[28A: False Parker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -27,20 +38,9 @@
       <pubDate>Wed, 10 Jun 2026 15:47:00 +0200</pubDate>
       <ext:first_seen>Wed, 10 Jun 2026 16:00:58 +0200</ext:first_seen>
       <ext:starts_at>Wed, 10 Jun 2026 15:47:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Wed, 10 Jun 2026 17:17:00 +0200</ext:ends_at>
       <description>service obstruction towards Hohe Warte. expected duration: 16:10 watch. Reason: harmful car in the Hohe Warte 56. [On 10.06.2026]</description>
       <content:encoded><![CDATA[service obstruction towards Hohe Warte. expected duration: 16:10 watch. Reason: harmful car in the Hohe Warte 56.<br/>[On 10.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: service obstruction False Parker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d2feb2e43a915bc5c355b50989a85dd948e859e49cfed575aee9b774034ace44</guid>
-      <pubDate>Wed, 10 Jun 2026 15:33:50 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 16:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 15:33:50 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 16:33:00 +0200</ext:ends_at>
-      <description>[On 10.06.2026]</description>
-      <content:encoded><![CDATA[[On 10.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N20: Erzherzog-Karl-Straße]]></title>
