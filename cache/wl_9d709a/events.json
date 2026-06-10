@@ -554,18 +554,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsüberlastung",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
-    "pubDate": "2026-06-10T16:45:00+02:00",
-    "starts_at": "2026-06-10T16:45:00+02:00",
-    "ends_at": "2026-06-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-06-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -574,6 +562,18 @@
     "starts_at": "2026-06-07T00:00:11+02:00",
     "ends_at": "2026-06-10T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Falschparker",
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker im Haltestellenbereich Mayssengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9ddf5d1b468f97566b0d71492d70a5743faa129c9553b8165867b8249c7b99da",
+    "pubDate": "2026-06-10T19:15:00+02:00",
+    "starts_at": "2026-06-10T19:15:00+02:00",
+    "ends_at": "2026-06-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-10"
   },
   {
     "source": "Wiener Linien",
@@ -855,7 +855,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U2: Schadhaftes Fahrzeug",
-    "description": "Die Linie U2 fährt derzeit nicht zwischen Volkstheater und Praterstern. Weichen Sie ersatzweise auf die Linien U1, U3 aus. Voraussichtliche Dauer: 19:20 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Schottentor .",
+    "description": "Die Linie U2 ist derzeit zwischen den Stationen Rathaus und Praterstern unterbrochen. Ein Pendelzug wurde in diesem Bereich auf Gleis 2 eingerichtet. Bitte beachten Sie, dass Sie in den Stationen Rathaus und Praterstern jeweils in einen anderen Zug umsteigen müssen. Es kann auf der gesamten Linie U2 zu längeren Wartezeiten und Verzögerungen kommen. Weichen Sie nach Möglichkeit auf andere Linien aus. Voraussichtliche Dauer: 19:40 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Schottentor .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
     "pubDate": "2026-06-10T18:49:00+02:00",
