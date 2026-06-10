@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 10 Jun 2026 10:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 10:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[65A: traffic accident]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Wed, 10 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Currently, the 65A line has different intervals in both directions. Reason: traffic accident. [On 10.06.2026]</description>
       <content:encoded><![CDATA[Currently, the 65A line has different intervals in both directions. Reason: traffic accident.<br/>[On 10.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31A: signal disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00edbbf20abc1514ffbb7b671cc5d4c7cd52e2d79edd8d76d0aa40602859c1f7</guid>
-      <pubDate>Wed, 10 Jun 2026 09:11:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 09:00:54 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 09:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 10:00:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 10.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 10.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: track construction works (phase 1)]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Thu, 18 Jun 2026 12:00:00 +0200</ext:ends_at>
       <description>Because of construction works in the range Hietzinger Kai / Baumgartenbrücke, an diversion is set up. [03.06.2026 – 18.06.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the range Hietzinger Kai / Baumgartenbrücke, an diversion is set up.<br/>[03.06.2026 – 18.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/1A/22X/2A/31/3A/59A/71/74A/D: Rainbow Parade 2026 on 1306.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91879edcd0477704fc6fe70f23daf6ba98704bc97545e28d96fd687387197fa9</guid>
+      <pubDate>Wed, 03 Jun 2026 06:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 12:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 06:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
+      <description>Because of the rainbow parade, the following traffic measures are taking place. [03.06.2026 – 13.06.2026]</description>
+      <content:encoded><![CDATA[Because of the rainbow parade, the following traffic measures are taking place.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
