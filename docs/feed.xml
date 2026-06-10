@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 10 Jun 2026 16:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 16:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[28A: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e62a62fa9de2e6fa5137fca756cab9b0b26c2eb88fce93de80dfc5e59d7cd5aa</guid>
+      <pubDate>Wed, 10 Jun 2026 16:29:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 16:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 16:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 10 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:50 Uhr. Grund: Falschparker im Haltestellenbereich Aderklaaer Straße U. [Am 10.06.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:50 Uhr. Grund: Falschparker im Haltestellenbereich Aderklaaer Straße U.<br/>[Am 10.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[37: Schadhafter PKW]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +28,8 @@
       <ext:first_seen>Wed, 10 Jun 2026 16:00:58 +0200</ext:first_seen>
       <ext:starts_at>Wed, 10 Jun 2026 15:47:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 10 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Hohe Warte. Voraussichtliche Dauer: 16:10 Uhr. Grund: Schadhafter PKW im Bereich Hohe Warte 56. [Am 10.06.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Hohe Warte. Voraussichtliche Dauer: 16:10 Uhr. Grund: Schadhafter PKW im Bereich Hohe Warte 56.<br/>[Am 10.06.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 10.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 10.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Fahrtbehinderung Falschparker]]></title>
@@ -26,10 +37,10 @@
       <guid isPermaLink="false">d2feb2e43a915bc5c355b50989a85dd948e859e49cfed575aee9b774034ace44</guid>
       <pubDate>Wed, 10 Jun 2026 15:33:50 +0200</pubDate>
       <ext:first_seen>Wed, 10 Jun 2026 16:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 15:34:00 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 10 Jun 2026 15:33:50 +0200</ext:starts_at>
       <ext:ends_at>Wed, 10 Jun 2026 16:33:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 10.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 10.06.2026]]]></content:encoded>
+      <description>[Am 10.06.2026]</description>
+      <content:encoded><![CDATA[[Am 10.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N20: Erzherzog-Karl-Straße]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
       <description>Sanierungsarbeiten Wegen der Sanierung der Floridsdorfer Brücke kommt es zu folgenden Maßnahmen auf der Linie 31. Zeitraum: Ab Montag, 06. Juli 2026 bis voraussichtlich Ende … [06.07.2026 – 17.08.2026]</description>
       <content:encoded><![CDATA[Sanierungsarbeiten Wegen der Sanierung der Floridsdorfer Brücke kommt es zu folgenden Maßnahmen auf der Linie 31. Zeitraum: Ab Montag, 06. Juli 2026 bis voraussichtlich Ende …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43/43A: Gleisbauarbeiten (Phase 2)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d45d036dee868f458f5a23ea590ffcde8685aba709355ce877278638ff27f68c</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 29 Aug 2026 04:30:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung. [28.07.2026 – 29.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung.<br/>[28.07.2026 – 29.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
