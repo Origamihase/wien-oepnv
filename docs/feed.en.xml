@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 10 Jun 2026 09:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 09:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[65A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91604c6736684f0d22451554a67ed8dcf423dac3128aa0c83b7bcf4f50344a36</guid>
+      <pubDate>Wed, 10 Jun 2026 09:13:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 09:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 09:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 10 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall. [Am 10.06.2026]</description>
+      <content:encoded><![CDATA[Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall.<br/>[Am 10.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31A: signal disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00edbbf20abc1514ffbb7b671cc5d4c7cd52e2d79edd8d76d0aa40602859c1f7</guid>
+      <pubDate>Wed, 10 Jun 2026 09:11:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 09:00:54 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 09:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 10 Jun 2026 10:00:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 10.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 10.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[24A: service obstruction signal disruption]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +41,6 @@
       <ext:ends_at>Wed, 10 Jun 2026 09:49:00 +0200</ext:ends_at>
       <description>[On 10.06.2026]</description>
       <content:encoded><![CDATA[[On 10.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31A: signal disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00edbbf20abc1514ffbb7b671cc5d4c7cd52e2d79edd8d76d0aa40602859c1f7</guid>
-      <pubDate>Wed, 10 Jun 2026 08:47:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 09:00:54 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 08:47:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 09:10:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 10.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 10.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: track construction works (phase 1)]]></title>
@@ -106,17 +117,6 @@
       <ext:starts_at>Tue, 02 Jun 2026 16:31:24 +0200</ext:starts_at>
       <description>Due to construction works, between Wien Westbahnhof (U) and Wien Hütteldorf Train Station (U) from 02.11.2026 (20:00 o'clock) to 14.11.2026 (17:00 o'clock) some S50 trains … [Since 02.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works, between Wien Westbahnhof (U) and Wien Hütteldorf Train Station (U) from 02.11.2026 (20:00 o'clock) to 14.11.2026 (17:00 o'clock) some S50 trains …<br/>[Since 02.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[47A/N54: diversion direction Unter St. Veit or Westbahnhof]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dfb473c5628f1277df75175997eecd74bc9cdaab16019d0f070e43c61629ab29</guid>
-      <pubDate>Wed, 03 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 14:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 12:00:00 +0200</ext:ends_at>
-      <description>Because of construction works in the range Hietzinger Kai / Baumgartenbrücke, an diversion is set up. [03.06.2026 – 18.06.2026]</description>
-      <content:encoded><![CDATA[Because of construction works in the range Hietzinger Kai / Baumgartenbrücke, an diversion is set up.<br/>[03.06.2026 – 18.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
