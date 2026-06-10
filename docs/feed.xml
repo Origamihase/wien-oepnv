@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 10 Jun 2026 20:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 20:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12: Verkehrsunfall Einstieg bei Linie 5]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6bbba60adc3f31a33df02882f9c12ad2f27d8c2866ed2f8e5dece37cb35155b0</guid>
+      <pubDate>Wed, 10 Jun 2026 19:38:27 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 20:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 19:38:27 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 10 Jun 2026 20:38:00 +0200</ext:ends_at>
+      <description>[Am 10.06.2026]</description>
+      <content:encoded><![CDATA[[Am 10.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N20: Erzherzog-Karl-Straße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 03 Aug 2026 04:00:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten nahe der Station Schwedenplatz kommt es zu folgenden Maßnahmen auf der Linie U4. Zeitraum: Freitag, 03. Juli 2026, 04:00 Uhr bis Montag, 03. August … [03.07.2026 – 03.08.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten nahe der Station Schwedenplatz kommt es zu folgenden Maßnahmen auf der Linie U4. Zeitraum: Freitag, 03. Juli 2026, 04:00 Uhr bis Montag, 03. August …<br/>[03.07.2026 – 03.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5/9/12/37/38/40/41/42: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fb6a819e2711b5728cbb9bdd0941a8d23d54346864c72194acedba8f4fd750d2</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 04:00:00 +0200</ext:ends_at>
-      <description>Wegen umfangreicher Gleisbauarbeiten im Kreuzungsbereich Spitalgasse / Währinger Straße kommt es zu folgenden Verkehrsmaßnahmen. [13.07.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[Wegen umfangreicher Gleisbauarbeiten im Kreuzungsbereich Spitalgasse / Währinger Straße kommt es zu folgenden Verkehrsmaßnahmen.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
