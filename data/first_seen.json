@@ -249,8 +249,10 @@
     "first_seen": "2026-06-10T22:01:05.169489+00:00",
     "translations": {
       "en": {
+        "summary": "irregular intervals in both directions. Reason: vandalism.",
         "title": "U1: Vandalism"
-      }
+      },
+      "epoch": 3
     }
   },
   "08408390c411a0cac6e961a9db5563f61e6dcf89a3effb5fa1d5aa1d66b23019": {
@@ -3235,6 +3237,16 @@
       "en": {
         "title": "42: No operation"
       }
+    }
+  },
+  "72eb75aa42c7e47445cd50c7115766c40679cb9642b1c117c5e7dcae91dab1e4": {
+    "first_seen": "2026-06-10T22:31:00.733016+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "41: defective vehicle"
+      },
+      "epoch": 3
     }
   },
   "72fc05863b43901561b175a4616ac5a59ca51a49d448e962b0881e22b7a3ff23": {
