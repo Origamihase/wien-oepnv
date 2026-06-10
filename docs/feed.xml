@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 10 Jun 2026 14:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 15:01:19 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A: Fremdunfall Betrieb ab Pilgramgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">22586670336bc615e2cef8b5e458b1ff50c274395b0315c41d1ae3e05a906cb4</guid>
+      <pubDate>Wed, 10 Jun 2026 14:50:17 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 15:01:19 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 14:58:30 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 10 Jun 2026 15:57:00 +0200</ext:ends_at>
+      <description>[Am 10.06.2026]</description>
+      <content:encoded><![CDATA[[Am 10.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Arbeiten am Stellwerk am 12.07.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 27 Jun 2026 01:30:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei der Linie 11 und 71 zu Kurzführungen (22:30-01:00). Zeitraum … [03.03.2026 – 27.06.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei der Linie 11 und 71 zu Kurzführungen (22:30-01:00). Zeitraum …<br/>[03.03.2026 – 27.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Fassadentausch Station Seestadt]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">94230027261483fe573e97ce13f84b8a6969a9ffa9b77ab7fd5dcd0cfbe4546f</guid>
-      <pubDate>Wed, 03 Jun 2026 12:02:00 +0200</pubDate>
-      <ext:first_seen>Tue, 09 Jun 2026 16:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 12:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 20 Jun 2026 15:00:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Stationsbereich Seestadt werden wechselweise die Abfahrtsgleise gesperrt. [03.06.2026 – 20.06.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Stationsbereich Seestadt werden wechselweise die Abfahrtsgleise gesperrt.<br/>[03.06.2026 – 20.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
