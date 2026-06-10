@@ -7,16 +7,27 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 10 Jun 2026 08:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 09:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[63A: Rettungseinsatz]]></title>
+      <title><![CDATA[24A: Fahrtbehinderung Signalstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba</guid>
-      <pubDate>Wed, 10 Jun 2026 05:32:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 06:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 05:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <guid isPermaLink="false">af9ac314878d0121b7373edc5ad6e1d85e92227131bec030761f442e82d9b400</guid>
+      <pubDate>Wed, 10 Jun 2026 08:50:46 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 09:00:54 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 08:50:46 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 10 Jun 2026 09:49:00 +0200</ext:ends_at>
+      <description>[Am 10.06.2026]</description>
+      <content:encoded><![CDATA[[Am 10.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31A: Signalstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00edbbf20abc1514ffbb7b671cc5d4c7cd52e2d79edd8d76d0aa40602859c1f7</guid>
+      <pubDate>Wed, 10 Jun 2026 08:47:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 09:00:54 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 08:47:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 10 Jun 2026 09:10:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 10.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 10.06.2026]]]></content:encoded>
     </item>
@@ -106,17 +117,6 @@
       <ext:ends_at>Thu, 18 Jun 2026 12:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Hietzinger Kai / Baumgartenbrücke wird eine Umleitung eingerichtet. [03.06.2026 – 18.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Hietzinger Kai / Baumgartenbrücke wird eine Umleitung eingerichtet.<br/>[03.06.2026 – 18.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/1A/2/2A/31/3A/59A/71/74A/D: Regenbogenparade 2026 am 13.06.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">91879edcd0477704fc6fe70f23daf6ba98704bc97545e28d96fd687387197fa9</guid>
-      <pubDate>Wed, 03 Jun 2026 06:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 03 Jun 2026 12:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 03 Jun 2026 06:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 23:59:00 +0200</ext:ends_at>
-      <description>Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen. [03.06.2026 – 13.06.2026]</description>
-      <content:encoded><![CDATA[Wegen der Regenbogenparade kommt es zu folgenden Verkehrsmaßnahmen.<br/>[03.06.2026 – 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
