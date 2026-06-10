@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 10 Jun 2026 09:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 10:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[65A: Verkehrsunfall]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Wed, 10 Jun 2026 10:00:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung. [Am 10.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Am 10.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[24A: Fahrtbehinderung Signalstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">af9ac314878d0121b7373edc5ad6e1d85e92227131bec030761f442e82d9b400</guid>
-      <pubDate>Wed, 10 Jun 2026 08:50:46 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 09:00:54 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 08:50:46 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 09:49:00 +0200</ext:ends_at>
-      <description>[Am 10.06.2026]</description>
-      <content:encoded><![CDATA[[Am 10.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: Gleisbauarbeiten (Phase 1)]]></title>
@@ -117,6 +106,17 @@
       <ext:starts_at>Tue, 02 Jun 2026 16:31:24 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 02.11.2026 (20:00 Uhr) bis 14.11.2026 (17:00 Uhr) einige S50-Züge nicht fahren. [Seit 02.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 02.11.2026 (20:00 Uhr) bis 14.11.2026 (17:00 Uhr) einige S50-Züge nicht fahren.<br/>[Seit 02.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[47A/N54: Umleitung Richtung Unter St. Veit bzw. Westbahnhof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dfb473c5628f1277df75175997eecd74bc9cdaab16019d0f070e43c61629ab29</guid>
+      <pubDate>Wed, 03 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 03 Jun 2026 14:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 03 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 18 Jun 2026 12:00:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Hietzinger Kai / Baumgartenbrücke wird eine Umleitung eingerichtet. [03.06.2026 – 18.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Hietzinger Kai / Baumgartenbrücke wird eine Umleitung eingerichtet.<br/>[03.06.2026 – 18.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
