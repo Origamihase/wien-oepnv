@@ -7,18 +7,39 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 10 Jun 2026 20:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 21:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[12: Verkehrsunfall Einstieg bei Linie 5]]></title>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Blumental ↔ Wien Meidling]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;884872</guid>
+      <pubDate>Wed, 10 Jun 2026 20:53:44 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 21:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 20:53:44 +0200</ext:starts_at>
+      <description>Wegen eines Polizeieinsatzes waren zwischen Wien Meidling Bahnhof (U) und Wien Blumental Bahnhst bis 20:49 Uhr keine Fahrten möglich. [Seit 10.06.2026]</description>
+      <content:encoded><![CDATA[Wegen eines Polizeieinsatzes waren zwischen Wien Meidling Bahnhof (U) und Wien Blumental Bahnhst bis 20:49 Uhr keine Fahrten möglich.<br/>[Seit 10.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6bbba60adc3f31a33df02882f9c12ad2f27d8c2866ed2f8e5dece37cb35155b0</guid>
-      <pubDate>Wed, 10 Jun 2026 19:38:27 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 20:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 19:38:27 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 20:38:00 +0200</ext:ends_at>
-      <description>[Am 10.06.2026]</description>
-      <content:encoded><![CDATA[[Am 10.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">60f024349a5b7567ffb161e741e1f27a7ae248401b022b3cdd6de8e1659e7d7a</guid>
+      <pubDate>Wed, 10 Jun 2026 21:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 21:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
+      <description>S80 Wegen Bauarbeiten kommt es zu Teilausfällen der S80. Zeitraum: Phase 1: Ab Samstag, 4. Juli 2026 bis Sonntag, 6. September 2026. Phase 2: Ab Montag, 7. September 2026 bis … [Ab 04.07.2026]</description>
+      <content:encoded><![CDATA[S80 Wegen Bauarbeiten kommt es zu Teilausfällen der S80. Zeitraum: Phase 1: Ab Samstag, 4. Juli 2026 bis Sonntag, 6. September 2026. Phase 2: Ab Montag, 7. September 2026 bis …<br/>[Ab 04.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S1/S2/S3/S4/S7: S-Bahn-Stammstrecke (Phase 2)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">67c0b1af9eae6dd360bd21ec2def6f7f39283688065bd9a68672ea714d41cbc7</guid>
+      <pubDate>Wed, 10 Jun 2026 21:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 21:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 21:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 31 Oct 2027 23:59:00 +0100</ext:ends_at>
+      <description>Bauarbeiten Wien Stammstrecke Phase 2 Zeitraum: Ab Montag, 7. September 2026 bis Oktober 2027. Maßnahmen: Wegen Bauarbeiten ist der Bahnabschnitt zwischen Praterstern und … [10.06.2026 – 31.10.2027]</description>
+      <content:encoded><![CDATA[Bauarbeiten Wien Stammstrecke Phase 2 Zeitraum: Ab Montag, 7. September 2026 bis Oktober 2027. Maßnahmen: Wegen Bauarbeiten ist der Bahnabschnitt zwischen Praterstern und …<br/>[10.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N20: Erzherzog-Karl-Straße]]></title>
@@ -96,28 +117,6 @@
       <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
       <description>Sanierungsarbeiten Wegen der Sanierung der Floridsdorfer Brücke kommt es zu folgenden Maßnahmen auf der Linie 31. Zeitraum: Ab Montag, 06. Juli 2026 bis voraussichtlich Ende … [06.07.2026 – 17.08.2026]</description>
       <content:encoded><![CDATA[Sanierungsarbeiten Wegen der Sanierung der Floridsdorfer Brücke kommt es zu folgenden Maßnahmen auf der Linie 31. Zeitraum: Ab Montag, 06. Juli 2026 bis voraussichtlich Ende …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43/43A: Gleisbauarbeiten (Phase 2)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d45d036dee868f458f5a23ea590ffcde8685aba709355ce877278638ff27f68c</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 29 Aug 2026 04:30:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung. [28.07.2026 – 29.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung.<br/>[28.07.2026 – 29.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f68c32d2afe19aebe06f3c5d42a87b42f5ce9c1c9dde59b9e715887a4981a65e</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 03 Aug 2026 04:00:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten nahe der Station Schwedenplatz kommt es zu folgenden Maßnahmen auf der Linie U4. Zeitraum: Freitag, 03. Juli 2026, 04:00 Uhr bis Montag, 03. August … [03.07.2026 – 03.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten nahe der Station Schwedenplatz kommt es zu folgenden Maßnahmen auf der Linie U4. Zeitraum: Freitag, 03. Juli 2026, 04:00 Uhr bis Montag, 03. August …<br/>[03.07.2026 – 03.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

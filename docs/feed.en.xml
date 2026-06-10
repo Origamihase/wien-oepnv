@@ -7,18 +7,39 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 10 Jun 2026 20:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 21:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[12: traffic accident Einstieg for line 5]]></title>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Blumental ↔ Wien Meidling]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;884872</guid>
+      <pubDate>Wed, 10 Jun 2026 20:53:44 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 21:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 20:53:44 +0200</ext:starts_at>
+      <description>Due to a police operation, no journeys were possible between Wien Meidling Station (U) and Wien Blumental Bahnhst to 20:49 watch. [Since 10.06.2026]</description>
+      <content:encoded><![CDATA[Due to a police operation, no journeys were possible between Wien Meidling Station (U) and Wien Blumental Bahnhst to 20:49 watch.<br/>[Since 10.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6bbba60adc3f31a33df02882f9c12ad2f27d8c2866ed2f8e5dece37cb35155b0</guid>
-      <pubDate>Wed, 10 Jun 2026 19:38:27 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 20:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 19:38:27 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 20:38:00 +0200</ext:ends_at>
-      <description>[On 10.06.2026]</description>
-      <content:encoded><![CDATA[[On 10.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">60f024349a5b7567ffb161e741e1f27a7ae248401b022b3cdd6de8e1659e7d7a</guid>
+      <pubDate>Wed, 10 Jun 2026 21:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 21:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
+      <description>S80 Due to construction works partial failures of S80. Period: Phase 1X: From Saturday, 4. July 2026 to Sunday, 6. September 2026. Phase 2: From Monday, 7. September 2026 to … [From 04.07.2026]</description>
+      <content:encoded><![CDATA[S80 Due to construction works partial failures of S80. Period: Phase 1X: From Saturday, 4. July 2026 to Sunday, 6. September 2026. Phase 2: From Monday, 7. September 2026 to …<br/>[From 04.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S1/S2/S3/S4/S7: S-Bahn-StammstreckeX (phase 2)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">67c0b1af9eae6dd360bd21ec2def6f7f39283688065bd9a68672ea714d41cbc7</guid>
+      <pubDate>Wed, 10 Jun 2026 21:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 21:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 21:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 31 Oct 2027 23:59:00 +0100</ext:ends_at>
+      <description>construction works Vienna StammstreckeX Phase 2 Period: From Monday, 7. September 2026 to October 2027. Measures: Due to construction worksX, the railway section between … [10.06.2026 – 31.10.2027]</description>
+      <content:encoded><![CDATA[construction works Vienna StammstreckeX Phase 2 Period: From Monday, 7. September 2026 to October 2027. Measures: Due to construction worksX, the railway section between …<br/>[10.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N20: Erzherzog-Karl-Straße]]></title>
@@ -96,28 +117,6 @@
       <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
       <description>Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 06, 2026 to expected End … [06.07.2026 – 17.08.2026]</description>
       <content:encoded><![CDATA[Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 06, 2026 to expected End …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43/43A: track construction works (phase 2)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d45d036dee868f458f5a23ea590ffcde8685aba709355ce877278638ff27f68c</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 29 Aug 2026 04:30:00 +0200</ext:ends_at>
-      <description>Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line. [28.07.2026 – 29.08.2026]</description>
-      <content:encoded><![CDATA[Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line.<br/>[28.07.2026 – 29.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f68c32d2afe19aebe06f3c5d42a87b42f5ce9c1c9dde59b9e715887a4981a65e</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 03 Aug 2026 04:00:00 +0200</ext:ends_at>
-      <description>Because of track construction works near the station Schwedenplatz the following measures are taken on the line U4. Period: Friday, July 03, 2026, 04:00 to Monday, August 03, … [03.07.2026 – 03.08.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works near the station Schwedenplatz the following measures are taken on the line U4. Period: Friday, July 03, 2026, 04:00 to Monday, August 03, …<br/>[03.07.2026 – 03.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

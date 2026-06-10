@@ -2660,6 +2660,16 @@
       "epoch": 2
     }
   },
+  "60f024349a5b7567ffb161e741e1f27a7ae248401b022b3cdd6de8e1659e7d7a": {
+    "first_seen": "2026-06-10T19:00:50.762008+00:00",
+    "translations": {
+      "en": {
+        "summary": "S80 Due to construction works partial failures of S80. Period: Phase 1X: From Saturday, 4. July 2026 to Sunday, 6. September 2026. Phase 2: From Monday, 7. September 2026 to \u2026",
+        "title": "S80: construction works"
+      },
+      "epoch": 3
+    }
+  },
   "61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f": {
     "first_seen": "2026-05-26T13:01:16.408955+00:00",
     "translations": {
@@ -2822,6 +2832,16 @@
         "summary": "In the Lindengasse / Kirchengasse crossing area and in the Kirchengasse at the height of ON 1 and ON 20-22, the underground station digs into the shafts.",
         "title": "U2/U5: Kirchengasse 1 to 30"
       }
+    }
+  },
+  "67c0b1af9eae6dd360bd21ec2def6f7f39283688065bd9a68672ea714d41cbc7": {
+    "first_seen": "2026-06-10T19:00:50.762008+00:00",
+    "translations": {
+      "en": {
+        "summary": "construction works Vienna StammstreckeX Phase 2 Period: From Monday, 7. September 2026 to October 2027. Measures: Due to construction worksX, the railway section between Praterstern and \u2026",
+        "title": "S1/S2/S3/S4/S7: S-Bahn-StammstreckeX (phase 2)"
+      },
+      "epoch": 3
     }
   },
   "67f6f340526dbbc6c28a07268bd4d4da5596272e34d03f234305749a96c6a33a": {
@@ -7516,6 +7536,16 @@
       "en": {
         "summary": "Due to a police operation in Wien Rennweg train journeys are currently only limited. There are isolated train failures and delays up to 15 minutes.",
         "title": "Wien Rennweg"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&884872": {
+    "first_seen": "2026-06-10T19:00:50.762008+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation, no journeys were possible between Wien Meidling Station (U) and Wien Blumental Bahnhst to 20:49 watch.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Blumental \u2194 Wien Meidling"
       },
       "epoch": 3
     }
