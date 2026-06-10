@@ -686,6 +686,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "63A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba",
+    "pubDate": "2026-06-10T05:32:00+02:00",
+    "starts_at": "2026-06-10T05:36:32+02:00",
+    "ends_at": "2026-06-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=63A|D=2026-06-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -738,8 +750,8 @@
     "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
-    "pubDate": "2026-06-10T05:25:00+02:00",
-    "starts_at": "2026-06-10T05:25:00+02:00",
+    "pubDate": "2026-06-10T06:21:00+02:00",
+    "starts_at": "2026-06-10T06:21:00+02:00",
     "ends_at": "2026-06-10T23:55:00+02:00",
     "_identity": "wl|störung|L=U2|D=2026-06-10"
   },
@@ -750,8 +762,8 @@
     "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-06-10T05:26:00+02:00",
-    "starts_at": "2026-06-10T05:26:00+02:00",
+    "pubDate": "2026-06-10T05:54:00+02:00",
+    "starts_at": "2026-06-10T05:54:00+02:00",
     "ends_at": "2026-06-10T23:55:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-06-10"
   },
