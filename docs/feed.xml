@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 10 Jun 2026 17:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 17:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[71A: Verkehrsunfall]]></title>
@@ -19,28 +19,6 @@
       <ext:ends_at>Wed, 10 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 10.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 10.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[28A: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e62a62fa9de2e6fa5137fca756cab9b0b26c2eb88fce93de80dfc5e59d7cd5aa</guid>
-      <pubDate>Wed, 10 Jun 2026 16:29:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 16:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 16:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 10.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 10.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37: Schadhafter PKW]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">82ec8f1d5d63d2478a5e017206e2ee91446f22e348392166f00ffe89e350fd5e</guid>
-      <pubDate>Wed, 10 Jun 2026 15:47:00 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 16:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 15:47:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 17:17:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 10.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 10.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N20: Erzherzog-Karl-Straße]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
       <description>Sanierungsarbeiten Wegen der Sanierung der Floridsdorfer Brücke kommt es zu folgenden Maßnahmen auf der Linie 31. Zeitraum: Ab Montag, 06. Juli 2026 bis voraussichtlich Ende … [06.07.2026 – 17.08.2026]</description>
       <content:encoded><![CDATA[Sanierungsarbeiten Wegen der Sanierung der Floridsdorfer Brücke kommt es zu folgenden Maßnahmen auf der Linie 31. Zeitraum: Ab Montag, 06. Juli 2026 bis voraussichtlich Ende …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43/43A: Gleisbauarbeiten (Phase 2)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d45d036dee868f458f5a23ea590ffcde8685aba709355ce877278638ff27f68c</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 29 Aug 2026 04:30:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung. [28.07.2026 – 29.08.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Dornbacher Straße kommt es bei der Linie 43 zu folgender Änderung.<br/>[28.07.2026 – 29.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f68c32d2afe19aebe06f3c5d42a87b42f5ce9c1c9dde59b9e715887a4981a65e</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 03 Aug 2026 04:00:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten nahe der Station Schwedenplatz kommt es zu folgenden Maßnahmen auf der Linie U4. Zeitraum: Freitag, 03. Juli 2026, 04:00 Uhr bis Montag, 03. August … [03.07.2026 – 03.08.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten nahe der Station Schwedenplatz kommt es zu folgenden Maßnahmen auf der Linie U4. Zeitraum: Freitag, 03. Juli 2026, 04:00 Uhr bis Montag, 03. August …<br/>[03.07.2026 – 03.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
