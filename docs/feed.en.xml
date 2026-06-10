@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 10 Jun 2026 22:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 23:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[27: Fahrtbehinderung Schadhafter Zug]]></title>
+      <title><![CDATA[26: defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6dca39f1feb5d32935258abc56bd4d6d062549fd34756dca4bc395b16f6c1f4c</guid>
-      <pubDate>Wed, 10 Jun 2026 22:20:17 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 22:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 22:28:46 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 23:28:00 +0200</ext:ends_at>
-      <description>[Am 10.06.2026]</description>
-      <content:encoded><![CDATA[[Am 10.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26: Fahrtbehinderung Schadhafter Zug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f36bfd0bb4774d14d71eac6889b393ad5dd3511aecc7a72a6d56cbd25c43546f</guid>
-      <pubDate>Wed, 10 Jun 2026 22:20:01 +0200</pubDate>
-      <ext:first_seen>Wed, 10 Jun 2026 22:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 22:25:30 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 10 Jun 2026 23:25:00 +0200</ext:ends_at>
-      <description>[Am 10.06.2026]</description>
-      <content:encoded><![CDATA[[Am 10.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">59e208367d2d4abd51c67734b05d4470604d748bf4d8210aec89186b2434cefa</guid>
+      <pubDate>Wed, 10 Jun 2026 22:18:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 23:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 22:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 10 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 10.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 10.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: construction works]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Mon, 07 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Because of track construction works the Badner Bahn operating short-running will be. [04.07.2026 – 07.09.2026]</description>
       <content:encoded><![CDATA[Because of track construction works the Badner Bahn operating short-running will be.<br/>[04.07.2026 – 07.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30/31: renovation work]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cd553a56d178ada4afec5fe61f1cecee2973922a4dadcd754fabdb561211f2ab</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
+      <description>Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 06, 2026 to expected End … [06.07.2026 – 17.08.2026]</description>
+      <content:encoded><![CDATA[Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 06, 2026 to expected End …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
