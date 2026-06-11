@@ -4150,8 +4150,10 @@
     "first_seen": "2026-06-11T08:01:00.601022+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions. Line 2: irregular intervals in both directions."
-      }
+        "summary": "irregular intervals in both directions. Line 2: irregular intervals in both directions.",
+        "title": "1/2/71/D: Traffic disturbance"
+      },
+      "epoch": 3
     }
   },
   "8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4": {
@@ -5346,8 +5348,10 @@
     "first_seen": "2026-06-11T08:01:00.601022+00:00",
     "translations": {
       "en": {
+        "summary": "After an service obstruction there are different intervals.",
         "title": "25: current disturbance"
-      }
+      },
+      "epoch": 3
     }
   },
   "b96bf1b89fa457564acf6d8c73bb05ce025a28809f6e89d1def5f382ceed30fd": {
