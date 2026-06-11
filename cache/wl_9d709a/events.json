@@ -698,6 +698,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "41: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2026-06-11T11:26:23+02:00",
+    "starts_at": "2026-06-11T11:26:39+02:00",
+    "ends_at": "2026-06-11T12:26:00+02:00",
+    "_identity": "wl|störung|L=41|D=2026-06-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "42: Kein Betrieb",
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -831,7 +843,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "67A: Fremder Verkehrsunfall",
-    "description": "Die Linie 67A wird in Richtung Inzersdorf, Slamastraße zwischen Pfarrgasse und Inzersdorf, Slamastraße über Pfarrgasse umgeleitet. Voraussichtliche Dauer: 11:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Richard-Strauss-Straße.",
+    "description": "Die Linie 67A wird in Richtung Inzersdorf, Slamastraße zwischen Traviatagasse und Inzersdorf, Slamastraße über Traviatagasse und Pfarrgasse umgeleitet. Voraussichtliche Dauer: 11:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Richard-Strauss-Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b20e5a480eb99d22320fe1e2d6ba011b0c60ea59dcbf2de5f1a5918d840b1c13",
     "pubDate": "2026-06-11T10:54:00+02:00",
