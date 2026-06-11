@@ -578,6 +578,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "31A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "330fd6568b440ab28ca07aa855771be767c9068ae88ff366c60ccc6038a445f3",
+    "pubDate": "2026-06-11T08:04:05+02:00",
+    "starts_at": "2026-06-11T08:04:20+02:00",
+    "ends_at": "2026-06-11T09:03:00+02:00",
+    "_identity": "wl|störung|L=31A|D=2026-06-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31A: Fremder Verkehrsunfall",
+    "description": "Die Linie 31A wird in beiden Richtungen zwischen Leopoldauer Straße und Heinrich-von-Buol-Gasse über Leopoldauer Straße und Heinrich-von-Boul-Gasse umgeleitet. Die Haltestelle Sorgenthalgasse kann dadurch nicht eingehalten werden. Voraussichtliche Dauer: 08:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Siemensstraße # Richard-Neutra-Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fd68f06ddcf6a954067ee3f569f10f0e2459261f7b34879c0e6996284c650699",
+    "pubDate": "2026-06-11T08:01:00+02:00",
+    "starts_at": "2026-06-11T08:01:00+02:00",
+    "ends_at": "2026-06-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=31A|D=2026-06-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -802,6 +826,18 @@
     "starts_at": "2026-06-08T00:00:28+02:00",
     "ends_at": "2026-06-11T23:59:59+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Störung an einem Bahnübergang",
+    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e35d5468b5da55f276b19ba1039b1f3b32b81aaef2c30d0cce6d60d93536f166",
+    "pubDate": "2026-06-11T08:07:00+02:00",
+    "starts_at": "2026-06-11T08:07:00+02:00",
+    "ends_at": "2026-06-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-06-11"
   },
   {
     "source": "Wiener Linien",
