@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 11 Jun 2026 12:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jun 2026 12:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[67A: foreign traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b20e5a480eb99d22320fe1e2d6ba011b0c60ea59dcbf2de5f1a5918d840b1c13</guid>
-      <pubDate>Thu, 11 Jun 2026 10:54:00 +0200</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 11:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 11 Jun 2026 10:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 11 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>The line 67A is redirected towards Inzersdorf, Slamastraße between Pfarrgasse and Inzersdorf, Slamastraße via Pfarrgasse. [On 11.06.2026]</description>
-      <content:encoded><![CDATA[The line 67A is redirected towards Inzersdorf, Slamastraße between Pfarrgasse and Inzersdorf, Slamastraße via Pfarrgasse.<br/>[On 11.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: current disturbance]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b961ecbeb2b3b310aea6a8f1ead3b3dd6c29a5f4fc8dade51eb9e8f77ed3dcaf</guid>
-      <pubDate>Thu, 11 Jun 2026 09:31:00 +0200</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 10:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 11 Jun 2026 09:31:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 11 Jun 2026 12:13:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 11.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 11.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[S80: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Mon, 07 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Because of track construction works the Badner Bahn operating short-running will be. [04.07.2026 – 07.09.2026]</description>
       <content:encoded><![CDATA[Because of track construction works the Badner Bahn operating short-running will be.<br/>[04.07.2026 – 07.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30/31: renovation work]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cd553a56d178ada4afec5fe61f1cecee2973922a4dadcd754fabdb561211f2ab</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
+      <description>Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 06, 2026 to expected End … [06.07.2026 – 17.08.2026]</description>
+      <content:encoded><![CDATA[Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 06, 2026 to expected End …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43/43A: track construction works (phase 2)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d45d036dee868f458f5a23ea590ffcde8685aba709355ce877278638ff27f68c</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 29 Aug 2026 04:30:00 +0200</ext:ends_at>
+      <description>Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line. [28.07.2026 – 29.08.2026]</description>
+      <content:encoded><![CDATA[Due to track construction works in the Dornbacher Straße, the following change occurs with the 43 line.<br/>[28.07.2026 – 29.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
