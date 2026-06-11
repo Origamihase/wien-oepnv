@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 11 Jun 2026 19:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jun 2026 20:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[11/6: Rettungseinsatz]]></title>
@@ -27,20 +27,9 @@
       <pubDate>Thu, 11 Jun 2026 19:04:00 +0200</pubDate>
       <ext:first_seen>Thu, 11 Jun 2026 19:30:52 +0200</ext:first_seen>
       <ext:starts_at>Thu, 11 Jun 2026 19:04:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 11 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 11 Jun 2026 20:19:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Haltestellenbereich Türkenschanzplatz. [Am 11.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Haltestellenbereich Türkenschanzplatz.<br/>[Am 11.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9</guid>
-      <pubDate>Thu, 11 Jun 2026 18:51:00 +0200</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 19:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 11 Jun 2026 18:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 11 Jun 2026 19:34:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 11.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 11.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[19A: Straßenbauarbeiten Alaudagasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 19 Jun 2026 12:00:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Ratmannsdorfgasse kommt es bei der Linie 53A zu einer Umleitung. [15.06.2026 – 19.06.2026]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Ratmannsdorfgasse kommt es bei der Linie 53A zu einer Umleitung.<br/>[15.06.2026 – 19.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0</guid>
+      <pubDate>Thu, 11 Jun 2026 19:46:31 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 13:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 11 Jun 2026 19:46:31 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 11 Jun 2026 20:45:00 +0200</ext:ends_at>
+      <description>[Am 11.06.2026]</description>
+      <content:encoded><![CDATA[[Am 11.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
