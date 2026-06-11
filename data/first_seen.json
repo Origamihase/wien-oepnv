@@ -304,6 +304,16 @@
       "epoch": 3
     }
   },
+  "091b88a1867b30e7afae6dd0ea450642e7950ad126befc98b0afdffd64423501": {
+    "first_seen": "2026-06-11T15:00:58.192017+00:00",
+    "translations": {
+      "en": {
+        "summary": "Because of construction works in the Alaudagasse range, the 19A line is redirected.",
+        "title": "19A: roadworks Alaudagasse"
+      },
+      "epoch": 3
+    }
+  },
   "09c6c0078992644777b577861d9f330719e87459f19b400f6e30e0497a6e00c1": {
     "first_seen": "2026-05-24T12:30:47.972869+00:00",
     "translations": {
@@ -2147,8 +2157,10 @@
     "first_seen": "2026-06-11T14:30:54.858370+00:00",
     "translations": {
       "en": {
-        "summary": "S-Bahn-Stammstrecke (phase 1) Because of construction works, the Vienna Stammstrecke as well as the northern branches are blocked."
-      }
+        "summary": "S-Bahn-Stammstrecke (phase 1) Because of construction works, the Vienna Stammstrecke as well as the northern branches are blocked.",
+        "title": "S1/S2/S3/S4/S7: S-Bahn-Stammstrecke (phase 1), 2)"
+      },
+      "epoch": 3
     }
   },
   "4c1e89a0a40bfb1e4f7ed705d39d58c43ececa41111e4527719df3c39d677104": {
@@ -5388,6 +5400,16 @@
       "en": {
         "summary": "service obstruction towards P\u00f6tzleinsdorf. expected duration: 11:10. Reason: traffic accident in the area of Gersthofer Stra\u00dfe 28.",
         "title": "41: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
+  "b8af952f30f86883b3b0b3c49ab714b3849482574a9e90ac64d59dd036f4fd21": {
+    "first_seen": "2026-06-11T15:00:58.192017+00:00",
+    "translations": {
+      "en": {
+        "summary": "Because of construction works in the Alaudagasse lines 67A and 67B are redirected.",
+        "title": "67A/67B: construction works Alaudagasse"
       },
       "epoch": 3
     }
