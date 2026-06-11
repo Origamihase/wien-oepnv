@@ -602,30 +602,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "301864fe661402a234c7e28ce57d515a8b73dbea9b2393b14e61bea5451c769d",
-    "pubDate": "2026-06-11T19:05:16+02:00",
-    "starts_at": "2026-06-11T19:05:41+02:00",
-    "ends_at": "2026-06-11T20:04:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-06-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10A: Verkehrsunfall",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Haltestellenbereich Türkenschanzplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4037eb177f53feada9cd8d5d413f9865f66b30fafc51c7e633db6ca36d431e5",
-    "pubDate": "2026-06-11T19:04:00+02:00",
-    "starts_at": "2026-06-11T19:04:00+02:00",
-    "ends_at": "2026-06-11T20:19:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-06-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11/6: Rettungseinsatz",
     "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Reumannplatz U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -950,6 +926,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-06-11T20:13:00+02:00",
+    "starts_at": "2026-06-11T20:13:00+02:00",
+    "ends_at": "2026-06-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-06-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Einstieg: Brünner Straße 31-31A",
     "description": "Bauarbeiten\nEinstieg: Brünner Straße 31-31A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -958,17 +946,5 @@
     "starts_at": "2026-06-07T00:00:23+02:00",
     "ends_at": "2026-06-11T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-07|TK=einstieg brünner strasse 31 31a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Züge halten Favoritenstraße ggü. Mc Donalds",
-    "description": "Züge halten\nFavoritenstraße\nggü. Mc Donalds",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0d5ddd40f9a50875ebcee5cb986bac8971912f490685363c854ed9e42090429a",
-    "pubDate": "2026-06-11T19:15:25+02:00",
-    "starts_at": "2026-06-11T19:15:25+02:00",
-    "ends_at": "2026-06-11T20:14:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-06-11|TK=züge halten favoritenstrasse ggü mc donalds"
   }
 ]
