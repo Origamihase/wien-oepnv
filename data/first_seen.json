@@ -1963,8 +1963,10 @@
     "first_seen": "2026-06-11T20:30:54.042989+00:00",
     "translations": {
       "en": {
-        "summary": "The cable laying work (110 kV conversion as preliminary work for the U5) is carried out during the day, blocking of the pavement and construction of a minimum 2.00 m wide replacement pavement on \u2026"
-      }
+        "summary": "The cable laying work (110 kV conversion as preliminary work for the U5) is carried out during the day, blocking of the pavement and construction of a minimum 2.00 m wide replacement pavement on \u2026",
+        "title": "U5: Spitalgasse from 29 to 33"
+      },
+      "epoch": 3
     }
   },
   "45e9fa055fa6de68f6d4b0b6fe8d6c7618eef983d2f63db426ccca192a040e62": {
@@ -5843,6 +5845,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "1A: service obstruction because of rescue operation"
+      },
+      "epoch": 3
+    }
+  },
+  "c8fe425d7242fb213ce8416c7e36d3307750aef3cd584dd26b6b881c88e54d42": {
+    "first_seen": "2026-06-11T21:00:59.665719+00:00",
+    "translations": {
+      "en": {
+        "summary": "The line U6 currently runs between stations Burggasse - Stadthalle and Thaliastra\u00dfe in both directions via track 2. expected duration: operation close.",
+        "title": "U6: construction works"
       },
       "epoch": 3
     }
