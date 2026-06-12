@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 12 Jun 2026 02:00:44 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 02:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N67: Interference at a level crossing]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">03cb2f8b4fd43afd050dc8c4c235e5ed9613eaf046cbe88ea169ca7eebef08b0</guid>
-      <pubDate>Fri, 12 Jun 2026 01:26:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 01:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 12 Jun 2026 01:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 12 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Currently, the N67 line has different intervals in both directions. Reason: interference at a level crossing. [On 12.06.2026]</description>
-      <content:encoded><![CDATA[Currently, the N67 line has different intervals in both directions. Reason: interference at a level crossing.<br/>[On 12.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U5: Spitalgasse from 29 to 33]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 19 Jun 2026 12:00:00 +0200</ext:ends_at>
       <description>Because of roadworks in the Ratmannsdorfgasse, the diversion line has an diversion. [15.06.2026 – 19.06.2026]</description>
       <content:encoded><![CDATA[Because of roadworks in the Ratmannsdorfgasse, the diversion line has an diversion.<br/>[15.06.2026 – 19.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Work on the interlocking on the 12.07.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2738c983b965c26aa2f83d0f0f8bfda434f4d51adf97066609a34ae38623c759</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 12:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 13 Jul 2026 01:00:00 +0200</ext:ends_at>
+      <description>Working on the interlocking The U2 earlier ends when working on the interlocking. [10.06.2026 – 13.07.2026]</description>
+      <content:encoded><![CDATA[Working on the interlocking The U2 earlier ends when working on the interlocking.<br/>[10.06.2026 – 13.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
