@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 12 Jun 2026 08:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 09:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Meidling ↔ Wien Hauptbahnhof]]></title>
@@ -20,17 +20,6 @@
       <content:encoded><![CDATA[Due to a technical fault on the train, only limited journeys between Wien Meidling Bahnhof (U) and Wien Hbf (U) to 08:12 were possible.<br/>[Since 12.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[33A: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3aa78619e5283f18d7d7dc0464b0258ba9b76ab98b8d602745e9821345b70bed</guid>
-      <pubDate>Fri, 12 Jun 2026 08:17:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 08:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 12 Jun 2026 08:17:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 12 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: service disruption. [On 12.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 12.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[2: service obstruction stranger traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9a3191136d8bad796a52ae693389b95d11840d24bc4efea2aa060f02844dccba</guid>
@@ -38,17 +27,6 @@
       <ext:first_seen>Fri, 12 Jun 2026 08:30:54 +0200</ext:first_seen>
       <ext:starts_at>Fri, 12 Jun 2026 08:02:40 +0200</ext:starts_at>
       <ext:ends_at>Fri, 12 Jun 2026 09:02:00 +0200</ext:ends_at>
-      <description>[On 12.06.2026]</description>
-      <content:encoded><![CDATA[[On 12.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: service obstruction stranger traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1243efb4652b691b3d3aa5331b790bc812edbf2cf03fc428533ee3e7ece338e7</guid>
-      <pubDate>Fri, 12 Jun 2026 08:01:42 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 08:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 12 Jun 2026 08:01:58 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 12 Jun 2026 08:59:00 +0200</ext:ends_at>
       <description>[On 12.06.2026]</description>
       <content:encoded><![CDATA[[On 12.06.2026]]]></content:encoded>
     </item>
@@ -117,6 +95,28 @@
       <ext:ends_at>Tue, 08 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>S-Bahn-Stammstrecke (phase 1) Because of construction works, the Vienna Stammstrecke as well as the northern branches are blocked. [10.06.2026 – 08.09.2026]</description>
       <content:encoded><![CDATA[S-Bahn-Stammstrecke (phase 1) Because of construction works, the Vienna Stammstrecke as well as the northern branches are blocked.<br/>[10.06.2026 – 08.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5B: diversionVolkertplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d5d62e9bb23d3478f0689193fbf8073f6501c7ea81820359e657295a81f8b1b9</guid>
+      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 17 Jun 2026 08:00:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Volkertplatz range, the 5B line is redirected. [11.06.2026 – 17.06.2026]</description>
+      <content:encoded><![CDATA[Because of construction works in the Volkertplatz range, the 5B line is redirected.<br/>[11.06.2026 – 17.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">60f024349a5b7567ffb161e741e1f27a7ae248401b022b3cdd6de8e1659e7d7a</guid>
+      <pubDate>Wed, 10 Jun 2026 21:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 21:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
+      <description>S80 Due to construction works partial failures of S80. Period: Phase 1X: From Saturday, 4. July 2026 to Sunday, 6. September 2026. Phase 2: From Monday, 7. September 2026 to … [From 04.07.2026]</description>
+      <content:encoded><![CDATA[S80 Due to construction works partial failures of S80. Period: Phase 1X: From Saturday, 4. July 2026 to Sunday, 6. September 2026. Phase 2: From Monday, 7. September 2026 to …<br/>[From 04.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
