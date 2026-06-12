@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 12 Jun 2026 06:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 06:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[29A: Schadhaftes Fahrzeug]]></title>
@@ -16,20 +16,9 @@
       <pubDate>Fri, 12 Jun 2026 05:58:00 +0200</pubDate>
       <ext:first_seen>Fri, 12 Jun 2026 06:01:05 +0200</ext:first_seen>
       <ext:starts_at>Fri, 12 Jun 2026 05:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 12 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 12 Jun 2026 06:57:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 12.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 12.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[17A: Fahrtbehinderung wegen Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c33e0268726f3c099001fd39f1a3ae248445339350a40fbdadbf46babaf4e386</guid>
-      <pubDate>Fri, 12 Jun 2026 05:19:59 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 05:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 12 Jun 2026 05:20:25 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 12 Jun 2026 06:19:00 +0200</ext:ends_at>
-      <description>[Am 12.06.2026]</description>
-      <content:encoded><![CDATA[[Am 12.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U5: Spitalgasse von 29 bis 33]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 17 Jun 2026 05:00:00 +0200</ext:ends_at>
       <description>Kanalgebrechen Wegen dringender Sanierungsarbeiten im Stationsbereich wird die Linie N20 in beiden Richtungen über die Hauptfahrbahn geführt und kann die Station … [10.06.2026 – 17.06.2026]</description>
       <content:encoded><![CDATA[Kanalgebrechen Wegen dringender Sanierungsarbeiten im Stationsbereich wird die Linie N20 in beiden Richtungen über die Hauptfahrbahn geführt und kann die Station …<br/>[10.06.2026 – 17.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[53A: Umleitung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">332890d26dd91ec0aff46f2387ec4dad2c4e9d5816fa4050658e60446b7e69b6</guid>
+      <pubDate>Wed, 10 Jun 2026 15:13:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 15:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 15 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 19 Jun 2026 12:00:00 +0200</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten in der Ratmannsdorfgasse kommt es bei der Linie 53A zu einer Umleitung. [15.06.2026 – 19.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Ratmannsdorfgasse kommt es bei der Linie 53A zu einer Umleitung.<br/>[15.06.2026 – 19.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
