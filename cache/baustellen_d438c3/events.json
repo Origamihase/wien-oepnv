@@ -86,6 +86,48 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Donaufelder Straße Kreuzung mit Plateau Theodor-Körner-Gasse und Plankenbüchlergasse",
+    "description": "Der Fahrzeugverkehr einschließlich des öffentlichen Verkehrs kann in allen bestehenden Fahrrelationen aufrecht gehalten werden. In der Theodor-Körner-Gasse auf Höhe ONr. 34 kommt es zu temporären Nachtarbeiten. Dabei wird im Arbeitsbereich (betrifft nur die Theodor-Körner-Gasse) je Fahrtrichtung ein Fahrstreifen freigehalten. \nBeginn: 25.05.2026 00:00 Uhr \nGeplant bis: 26.07.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 21",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "3c3a22e35b75aaa24f34eacad7d7daab8267298b2232903283c10c4e7f9e96cb",
+    "pubDate": "2026-05-25T00:00:00+02:00",
+    "starts_at": "2026-05-25T00:00:00+02:00",
+    "ends_at": "2026-07-26T00:00:00+02:00",
+    "context": {
+      "district": "21",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.25415283,
+        "lon": 16.41085492
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Hernalser Hauptstraße von Redtenbachergasse und Schadinagasse bis Julius-Meinl-Gasse",
+    "description": "Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau)werden im gegenständlichen Bereich der Hernalser Hauptstraßebei bei Tag, in der Nacht und teilweise auch an Wochenenden abschnittsweise und größtenteils im Bereich der Nebenfahrbahnen durchgeführt. Hierfür wird der jeweils betroffene Abschnitt der Nebenfahrbahn für den Fahrzeugverkehr gesperrt. Sofern auch die Hauptfahrbahn betroffen ist, erfolgen die Arbeiten nur in der Nacht und an Wochenenden im Zeitraum von Samstag 19:00 Uhr bis Montag 05:00 Uhr, wobei bei den in die Hernalser Hauptstraße einmündenden Straßen immer eine entsprechende Restfahrbahnbreite in den Querstraßen verbleibt. \nBeginn: 19.10.2025 00:00 Uhr \nGeplant bis: 03.07.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 17",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "3dba297aaeda53f3246d8646be626e6f1a2936058171131cc64c83b66829270b",
+    "pubDate": "2025-10-19T00:00:00+02:00",
+    "starts_at": "2025-10-19T00:00:00+02:00",
+    "ends_at": "2026-07-03T00:00:00+02:00",
+    "context": {
+      "district": "17",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.22220188,
+        "lon": 16.31951363
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Eßlinger Hauptstraße 96",
     "description": "Der Busverkehr der Wiener Linien GmbH & Co KG wird über den Kreisverkehr bei der Gartenheimstraße umgeleitet. Die Rohrlegungsarbeiten werden in der Nacht, in der Zeit von von 20:00 Uhr bis 05:00 Uhr bei Sperre von einem Fahrstreifen durchgeführt. Außerhalb der Arbeitszeiten gibt es keine Behinderungen für den Verkehr. \nBeginn: 25.05.2026 00:00 Uhr \nGeplant bis: 06.09.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 22",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -338,6 +380,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Schultheßgasse von Kreuzung Halirschgasse und Gräffergasse bis Kreuzung Dittersdorfgasse und Fercher",
+    "description": "Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag und bei Freihaltung einer mindestens 3,00 m breiten Restfahrbahn. Im Plateau Dittersdorfgasse / Ferchergasse werden die Arbeiten halbseitig bei Nacht durchgeführt. Die Schultheßgasse wird von der Dittersdorfgasse bzw. Ferchergasse bis und in Richtung zur Hernalser Hauptstraße als provisorische Einbahn eingerichtet. \nBeginn: 19.10.2025 00:00 Uhr \nGeplant bis: 03.07.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 17",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "93471cb506e88d16d946a5c26e206c5cb4a5fb31379ddd1432a89fba56034e7b",
+    "pubDate": "2025-10-19T00:00:00+02:00",
+    "starts_at": "2025-10-19T00:00:00+02:00",
+    "ends_at": "2026-07-03T00:00:00+02:00",
+    "context": {
+      "district": "17",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.22433523,
+        "lon": 16.31764892
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Gentzgasse von Aumannplatz und Lazaristengasse bis Köhlergasse",
     "description": "Da auch die betroffenen Straßenbahnlinien im Zeitraum vom 4. Mai 2026 bis zum 27. Juni 2026 eingestellt werden, wird seitens der Wiener Linien GmbH & Co KG ein Schienenersatzverkehr in diesem Zeitraum eingerichtet. Die Gleisbauarbeiten in der Währinger Straße von der ON 125 bis zum Aumannplatz, am Aumannplatz von der Klostergasse bis zur Gentzgasse und in der Gentzgasse vom Aumannplatz bis zur Köhlergasse werden bei Tag und Nacht und bei Sperre der Währinger Straße von ON 125 bis zur ON 141 und der Gentzgasse von ON 104 bis zur ON 122 für den Individualverkehr durchgeführt. Die bestehenden Einbahnregelungen in den Umleitungsstrecken werden für den Umleitungsverkehr entsprechend angepasst (zum Teil umgedreht). Während der Arbeiten im Bereich Aumannplatz von ON 1 bis ggü ON 1 wird auch dieser Bereich für den Individualverkehr gesperrt. Die dafür notwendigen Fahrgastinformationen und Fahrrouten des Schienenersatzverkehrs werden von den Wiener Linien GmbH & Co KG termingerecht bekanntgegeben. NEU: Ab 19.05.2026 wird der Bereich Gentzgasse von Aumannplatz bis Köhlergasse gesperrt sowie der Bereich vor Aumannplatz 1. Die Umleitung in Fahrtrichtung stadtauswärts erfolgt überWähringer Straße - Weimarer Straße - Gentzgasse - Lazaristengasse - Haizingergasse - Edmund-Weiß-Gasse - Köhlergasse - Gentzgasse. Die Umleitung in Fahrtrichtung stadteinwärts erfolgt über die Gersthofer Straße - Währinger Straße. Die Zufahrt bis zum gesperrten Bereich ist möglich. \nBeginn: 27.04.2026 00:00 Uhr \nGeplant bis: 12.07.2026 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 18",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -458,6 +521,27 @@
       "coordinates": {
         "lat": 48.18571978,
         "lon": 16.35392481
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Gräffergasse von Kreuzung Halirschgasse und Schultheßgasse bis Kreuzung Heigerleinstraße",
+    "description": "Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag, wobei die Gräffergasse von der Halirschgasse und Schultheßgasse bis zur Heigerleinstraße für den Fahrzeugverkehr gesperrt wird. Bei ON 1 werden die Arbeiten in der Nacht und bei Aufhebung der Einbahn in der Heigerleinstraße von der Halirschgasse bis und in Richtung zur Gräffergasse durchgeführt. \nBeginn: 19.10.2025 00:00 Uhr \nGeplant bis: 03.07.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 17",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "c5bdaf67898b58248e144349ad43bb957b8fde0bf4cf50e222026060eadbb7bd",
+    "pubDate": "2025-10-19T00:00:00+02:00",
+    "starts_at": "2025-10-19T00:00:00+02:00",
+    "ends_at": "2026-07-03T00:00:00+02:00",
+    "context": {
+      "district": "17",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.22433523,
+        "lon": 16.31764892
       }
     }
   },

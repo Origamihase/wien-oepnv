@@ -1767,7 +1767,21 @@
   "3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5": {
     "first_seen": "2026-06-12T12:01:11.867227+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "5: service obstruction because of rescue operation"
+      },
+      "epoch": 3
+    }
+  },
+  "3c3a22e35b75aaa24f34eacad7d7daab8267298b2232903283c10c4e7f9e96cb": {
+    "first_seen": "2026-06-12T12:30:50.566189+00:00",
+    "translations": {
+      "en": {
+        "summary": "Vehicle traffic, including public transport, can be maintained in all existing driving relationships.",
+        "title": "Donaufelder Stra\u00dfe crossing with Plateau Theodor-K\u00f6rner-Gasse and Plankenb\u00fcchlergasse"
+      },
+      "epoch": 3
     }
   },
   "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd": {
@@ -1785,6 +1799,16 @@
     "translations": {
       "en": {
         "title": "48A: service obstruction event"
+      },
+      "epoch": 3
+    }
+  },
+  "3dba297aaeda53f3246d8646be626e6f1a2936058171131cc64c83b66829270b": {
+    "first_seen": "2026-06-12T12:30:50.566189+00:00",
+    "translations": {
+      "en": {
+        "summary": "The pipe laying work (preparations for underground construction) will be carried out in the actual area of Hernals main road by day, night and sometimes also on weekends \u2026",
+        "title": "Hernals Hauptstra\u00dfe from Redtenbachergasse and Schadinagasse to Julius-Meinl-Gasse"
       },
       "epoch": 3
     }
@@ -4504,6 +4528,16 @@
       "epoch": 2
     }
   },
+  "93471cb506e88d16d946a5c26e206c5cb4a5fb31379ddd1432a89fba56034e7b": {
+    "first_seen": "2026-06-12T12:30:50.566189+00:00",
+    "translations": {
+      "en": {
+        "summary": "The pipe laying work (preparations for underground construction) is generally carried out during the day and with the release of a minimum 3.00 m wide residual runway.",
+        "title": "Schulthe\u00dfgasse from crossing Halirschgasse and Gr\u00e4ffergasse from crossing Dittersdorfgasse and Fercher"
+      },
+      "epoch": 3
+    }
+  },
   "9360dd62571149f3c66d4dc7049cd6c8f5718ab035b60027fbe1e936919aa8e0": {
     "first_seen": "2026-05-29T21:01:02.513616+00:00",
     "translations": {
@@ -5862,6 +5896,16 @@
         "summary": "The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out during the day and, if necessary, during the night, during the time from 22:00 to 05:00 at \u2026",
         "title": "U5: W\u00e4hringer Stra\u00dfe 40-42 to 54"
       }
+    }
+  },
+  "c5bdaf67898b58248e144349ad43bb957b8fde0bf4cf50e222026060eadbb7bd": {
+    "first_seen": "2026-06-12T12:30:50.566189+00:00",
+    "translations": {
+      "en": {
+        "summary": "The pipe laying work (preparation for underground construction) is carried out in general at day, with the Gr\u00e4ffergasse from the Halirschgasse and Schulthe\u00dfgasse up to the \u2026",
+        "title": "Gr\u00e4ffergasse from crossing Halirschgasse and Schulthe\u00dfgasse from crossing Heigerleinstra\u00dfe"
+      },
+      "epoch": 3
     }
   },
   "c5dfcbf0ac6f53f5aa46354637fce7a274f1b74d1ac997528825ebf6a42a925c": {
