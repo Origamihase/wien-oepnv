@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 12 Jun 2026 09:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 09:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Meidling ↔ Wien Hauptbahnhof]]></title>
@@ -18,17 +18,6 @@
       <ext:starts_at>Fri, 12 Jun 2026 08:17:28 +0200</ext:starts_at>
       <description>Due to a technical fault on the train, only limited journeys between Wien Meidling Bahnhof (U) and Wien Hbf (U) to 08:12 were possible. [Since 12.06.2026]</description>
       <content:encoded><![CDATA[Due to a technical fault on the train, only limited journeys between Wien Meidling Bahnhof (U) and Wien Hbf (U) to 08:12 were possible.<br/>[Since 12.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: service obstruction stranger traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9a3191136d8bad796a52ae693389b95d11840d24bc4efea2aa060f02844dccba</guid>
-      <pubDate>Fri, 12 Jun 2026 08:02:40 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 08:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 12 Jun 2026 08:02:40 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 12 Jun 2026 09:02:00 +0200</ext:ends_at>
-      <description>[On 12.06.2026]</description>
-      <content:encoded><![CDATA[[On 12.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: defective vehicle]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
       <description>S80 Due to construction works partial failures of S80. Period: Phase 1X: From Saturday, 4. July 2026 to Sunday, 6. September 2026. Phase 2: From Monday, 7. September 2026 to … [From 04.07.2026]</description>
       <content:encoded><![CDATA[S80 Due to construction works partial failures of S80. Period: Phase 1X: From Saturday, 4. July 2026 to Sunday, 6. September 2026. Phase 2: From Monday, 7. September 2026 to …<br/>[From 04.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N20: Erzherzog-Karl-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4a9602e129139fe37241474ec19f293ffd3f5b9771238e1d0303dcf792e79819</guid>
+      <pubDate>Wed, 10 Jun 2026 15:21:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 15:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 15:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 17 Jun 2026 05:00:00 +0200</ext:ends_at>
+      <description>Channel breaking Due to urgent renovation work in the station area, the line N20 is run in both directions via the main carriageway and can be the station … [10.06.2026 – 17.06.2026]</description>
+      <content:encoded><![CDATA[Channel breaking Due to urgent renovation work in the station area, the line N20 is run in both directions via the main carriageway and can be the station …<br/>[10.06.2026 – 17.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

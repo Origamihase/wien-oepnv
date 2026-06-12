@@ -602,18 +602,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a3191136d8bad796a52ae693389b95d11840d24bc4efea2aa060f02844dccba",
-    "pubDate": "2026-06-12T08:02:40+02:00",
-    "starts_at": "2026-06-12T08:02:40+02:00",
-    "ends_at": "2026-06-12T09:02:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-06-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Dänenstraße ggü. 2",
     "description": "Bauarbeiten\nBusse halten Dänenstraße ggü. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -645,6 +633,18 @@
     "pubDate": "2026-06-12T00:00:14+02:00",
     "starts_at": "2026-06-12T00:00:14+02:00",
     "ends_at": "2026-06-12T23:59:59+02:00",
+    "_identity": "wl|störung|L=40A|D=2026-06-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Verkehrsunfall",
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f",
+    "pubDate": "2026-06-12T09:25:00+02:00",
+    "starts_at": "2026-06-12T09:25:00+02:00",
+    "ends_at": "2026-06-12T23:55:00+02:00",
     "_identity": "wl|störung|L=40A|D=2026-06-12"
   },
   {
