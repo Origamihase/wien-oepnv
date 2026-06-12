@@ -617,6 +617,15 @@
       "epoch": 3
     }
   },
+  "1243efb4652b691b3d3aa5331b790bc812edbf2cf03fc428533ee3e7ece338e7": {
+    "first_seen": "2026-06-12T06:30:54.690111+00:00",
+    "translations": {
+      "en": {
+        "title": "31: service obstruction stranger traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "12a56c870aa5e8fad079ce0523f514729f4a18617033cc4239de56a18a695efb": {
     "first_seen": "2026-06-09T13:00:53.771834+00:00",
     "translations": {
@@ -1702,6 +1711,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "1A: Harmful car"
+      },
+      "epoch": 3
+    }
+  },
+  "3aa78619e5283f18d7d7dc0464b0258ba9b76ab98b8d602745e9821345b70bed": {
+    "first_seen": "2026-06-12T06:30:54.690111+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: service disruption.",
+        "title": "33A: delays"
       },
       "epoch": 3
     }
@@ -4639,6 +4658,15 @@
         "title": "37: service obstruction traffic accident"
       },
       "epoch": 2
+    }
+  },
+  "9a3191136d8bad796a52ae693389b95d11840d24bc4efea2aa060f02844dccba": {
+    "first_seen": "2026-06-12T06:30:54.690111+00:00",
+    "translations": {
+      "en": {
+        "title": "2: service obstruction stranger traffic accident"
+      },
+      "epoch": 3
     }
   },
   "9aaa5be2cbe80f8b0296a978882b301df191bf3d771a1f7e38c42da1bea569d2": {
@@ -7850,6 +7878,16 @@
       "en": {
         "summary": "Due to a police operation, no journeys were possible between Wien Meidling Station (U) and Wien Blumental Bahnhst to 20:49 watch.",
         "title": "Wien Hauptbahnhof \u2194 Wien Blumental \u2194 Wien Meidling"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&885171": {
+    "first_seen": "2026-06-12T06:30:54.690111+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a technical fault on the train, only limited journeys between Wien Meidling Bahnhof (U) and Wien Hbf (U) to 08:12 were possible.",
+        "title": "Wien Meidling \u2194 Wien Hauptbahnhof"
       },
       "epoch": 3
     }
