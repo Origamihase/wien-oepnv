@@ -2359,6 +2359,16 @@
       "epoch": 3
     }
   },
+  "4f7e200387aae902b6004036e8ecc779f640ebd34cace588a45c5807fff26cd5": {
+    "first_seen": "2026-06-12T08:30:57.084329+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction in both directions. Reason: rescue operation.",
+        "title": "99A: rescue operation"
+      },
+      "epoch": 3
+    }
+  },
   "4fdbb07cec28e7761cde8d3419840d8f7746e56281c9209250f4699fd7e17d53": {
     "first_seen": "2026-05-27T13:01:14.983086+00:00",
     "translations": {
@@ -6349,6 +6359,16 @@
       "epoch": 2
     }
   },
+  "d8160ea662f4ecb51aa4611000d104ec540a8e8f6bb6e65cbee6dcf9628f8752": {
+    "first_seen": "2026-06-12T08:30:57.084329+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: signal disruption.",
+        "title": "1: signal disruption"
+      },
+      "epoch": 3
+    }
+  },
   "d844f34fb4d82ed655e1e48cc96219e271b8e1b13e9013ec9f859a098c27978b": {
     "first_seen": "2026-05-24T03:01:09.493067+00:00",
     "translations": {
@@ -7890,6 +7910,14 @@
         "title": "Wien Meidling \u2194 Wien Hauptbahnhof"
       },
       "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&885222": {
+    "first_seen": "2026-06-12T08:30:57.084329+00:00",
+    "translations": {
+      "en": {
+        "title": "Wien Leopoldau"
+      }
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
