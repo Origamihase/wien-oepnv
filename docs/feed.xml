@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 12 Jun 2026 07:01:06 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 07:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[29A: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">91c51dea7833da7743981786fcc910aef76d4c04ef31a6b1085c4ece197ec424</guid>
-      <pubDate>Fri, 12 Jun 2026 05:58:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 06:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 12 Jun 2026 05:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 12 Jun 2026 06:57:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 12.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 12.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U5: Spitalgasse von 29 bis 33]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 19 Jun 2026 12:00:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Ratmannsdorfgasse kommt es bei der Linie 53A zu einer Umleitung. [15.06.2026 – 19.06.2026]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Ratmannsdorfgasse kommt es bei der Linie 53A zu einer Umleitung.<br/>[15.06.2026 – 19.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Arbeiten am Stellwerk am 12.07.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2738c983b965c26aa2f83d0f0f8bfda434f4d51adf97066609a34ae38623c759</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 12:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 12:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 13 Jul 2026 01:00:00 +0200</ext:ends_at>
+      <description>Arbeiten am Stellwerk Wegen Arbeiten am Stellwerk endet der Betrieb der U2 früher. [10.06.2026 – 13.07.2026]</description>
+      <content:encoded><![CDATA[Arbeiten am Stellwerk Wegen Arbeiten am Stellwerk endet der Betrieb der U2 früher.<br/>[10.06.2026 – 13.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
