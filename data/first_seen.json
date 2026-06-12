@@ -2859,16 +2859,6 @@
       "epoch": 3
     }
   },
-  "61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f": {
-    "first_seen": "2026-05-26T13:01:16.408955+00:00",
-    "translations": {
-      "en": {
-        "summary": "After an service obstruction there are different intervals.",
-        "title": "10: traffic accident"
-      },
-      "epoch": 2
-    }
-  },
   "625312ff0a505ab67720d68ebb14aca83e0a6ed463920bd05b72da054c66ead9": {
     "first_seen": "2026-05-30T22:00:54.402055+00:00",
     "translations": {
@@ -3817,15 +3807,6 @@
         "title": "U4: Front Zollamtsstra\u00dfe from Marxergasse and Small Marxerbr\u00fccke to Unnamed Traffic Area and Wheel"
       },
       "epoch": 2
-    }
-  },
-  "7da472adb0c9b20b8e2972e510f1685b801dbf14fc7f833a9ce7706c934483c1": {
-    "first_seen": "2026-06-12T14:30:54.106885+00:00",
-    "translations": {
-      "en": {
-        "title": "10: traffic accident service from H\u00fctteldorfer Str."
-      },
-      "epoch": 3
     }
   },
   "7da5c613b2d12a20d7869dc68a2b28443932b3386ce707fa25728d82068a8310": {
@@ -5760,16 +5741,6 @@
         "title": "D: demonstration service from Schwarzenbergplatz"
       },
       "epoch": 2
-    }
-  },
-  "c0336f7547025fbb3689d97a09f663e59f843d52e7055572f3b0124425cfe4e7": {
-    "first_seen": "2026-06-12T13:00:57.888085+00:00",
-    "translations": {
-      "en": {
-        "summary": "Operation only between Salmannsdorf and Neustift, Agnesgasse. expected duration: 16:00 o'clock. Reason: event in the Rathstra\u00dfe range.",
-        "title": "35A: event"
-      },
-      "epoch": 3
     }
   },
   "c096146a3e36f06442ccecd2fb9c1ca60e2c8bb835a223bc0a14ba2027f9ed0d": {
@@ -8027,6 +7998,16 @@
       "en": {
         "summary": "Due to persons on the tracks, no journeys were possible in Wien Leopoldau Bahnhst (U) to 10:36 watch.",
         "title": "Wien Leopoldau"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&885305": {
+    "first_seen": "2026-06-12T15:01:17.812228+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an interlocking failure am Bahnhof, only limited rides were possible in Wien Westbahnhof (U) to 16:23 watch.",
+        "title": "Wien Westbahnhof"
       },
       "epoch": 3
     }

@@ -7,18 +7,17 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 12 Jun 2026 16:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 17:01:17 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[10: Verkehrsunfall Betrieb ab Hütteldorfer Str.]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7da472adb0c9b20b8e2972e510f1685b801dbf14fc7f833a9ce7706c934483c1</guid>
-      <pubDate>Fri, 12 Jun 2026 15:44:48 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 16:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 12 Jun 2026 15:44:48 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 12 Jun 2026 16:43:00 +0200</ext:ends_at>
-      <description>[Am 12.06.2026]</description>
-      <content:encoded><![CDATA[[Am 12.06.2026]]]></content:encoded>
+      <title><![CDATA[Wien Westbahnhof]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;885305</guid>
+      <pubDate>Fri, 12 Jun 2026 16:31:08 +0200</pubDate>
+      <ext:first_seen>Fri, 12 Jun 2026 17:01:17 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 12 Jun 2026 16:31:08 +0200</ext:starts_at>
+      <description>Wegen einer Stellwerkstörung am Bahnhof waren in Wien Westbahnhof (U) bis 16:23 Uhr nur eingeschränkt Fahrten möglich. [Seit 12.06.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Stellwerkstörung am Bahnhof waren in Wien Westbahnhof (U) bis 16:23 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 12.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[92A: Verspätungen]]></title>
@@ -30,17 +29,6 @@
       <ext:ends_at>Fri, 12 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 12.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 12.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[35A: Veranstaltung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c0336f7547025fbb3689d97a09f663e59f843d52e7055572f3b0124425cfe4e7</guid>
-      <pubDate>Fri, 12 Jun 2026 14:43:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 15:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 12 Jun 2026 14:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 12 Jun 2026 16:40:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Donaufelder Straße Kreuzung mit Plateau Theodor-Körner-Gasse und Plankenbüchlergasse]]></title>
@@ -118,6 +106,17 @@
       <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Alaudagasse wird die Linie 19A umgeleitet. [11.06.2026 – 17.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Alaudagasse wird die Linie 19A umgeleitet.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[67A/67B: Bauarbeiten Alaudagasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b8af952f30f86883b3b0b3c49ab714b3849482574a9e90ac64d59dd036f4fd21</guid>
+      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 17:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet. [11.06.2026 – 17.07.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
