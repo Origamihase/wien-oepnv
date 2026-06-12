@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 12 Jun 2026 15:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 15:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[18/6: Rettungseinsatz]]></title>
+      <title><![CDATA[92A: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1def9461b8655d7b6f67bdc914523256dd51eef4cde802a2417942e6aeda9a74</guid>
-      <pubDate>Fri, 12 Jun 2026 14:59:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 15:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 12 Jun 2026 14:59:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">ae57ddf66122450ed0315ad21d4eeb1d6080cbace8485803c89ec11215e77dd4</guid>
+      <pubDate>Fri, 12 Jun 2026 15:10:00 +0200</pubDate>
+      <ext:first_seen>Fri, 12 Jun 2026 15:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 12 Jun 2026 15:10:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 12 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Linie 18: Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Voraussichtliche Dauer: 15:30 Uhr. Grund … [Am 12.06.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Linie 18: Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Voraussichtliche Dauer: 15:30 Uhr. Grund …<br/>[Am 12.06.2026]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 12.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 12.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[35A: Veranstaltung]]></title>
@@ -76,17 +76,6 @@
       <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag, wobei die Gräffergasse von der Halirschgasse und Schultheßgasse bis zur …<br/>[19.10.2025 – 03.07.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U4: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">564166d27455e4c3e4f123d5028460adab46b34a5d0c7a8f5651f92aee27ffef</guid>
-      <pubDate>Fri, 12 Jun 2026 12:25:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 12:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 12 Jun 2026 12:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 12 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U5: Spitalgasse von 29 bis 33]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
       <guid isPermaLink="false">45d5bba5b772ec0cb338139ba4e523945163739b54c0365fe65bbfcb6dc8a13c</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Alaudagasse wird die Linie 19A umgeleitet. [11.06.2026 – 17.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Alaudagasse wird die Linie 19A umgeleitet.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[67A/67B: Bauarbeiten Alaudagasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b8af952f30f86883b3b0b3c49ab714b3849482574a9e90ac64d59dd036f4fd21</guid>
+      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 17:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet. [11.06.2026 – 17.07.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
