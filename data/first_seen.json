@@ -2513,6 +2513,16 @@
       "epoch": 3
     }
   },
+  "564166d27455e4c3e4f123d5028460adab46b34a5d0c7a8f5651f92aee27ffef": {
+    "first_seen": "2026-06-12T10:30:50.804371+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction in both directions. expected duration: 13:00 o'clock. Reason: fire-brigade operation in the Spittelau stop area.",
+        "title": "U4: fire-brigade operation"
+      },
+      "epoch": 3
+    }
+  },
   "5663fecbf675128e997aa265491bb433f2c1a3c40b9e5aa509f998b0c368932d": {
     "first_seen": "2026-05-29T20:30:52.061515+00:00",
     "translations": {
@@ -2825,6 +2835,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "27: service obstruction because of police operation"
+      },
+      "epoch": 3
+    }
+  },
+  "625edca72b94ed7db5d30e136bd38f6c06df22815ddbb5f64e4bbf3856dfc90f": {
+    "first_seen": "2026-06-12T10:30:50.804371+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic disturbance.",
+        "title": "57A: Traffic disturbance"
       },
       "epoch": 3
     }

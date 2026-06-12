@@ -602,6 +602,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Schadhaftes Fahrzeug",
+    "description": "",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3",
+    "pubDate": "2026-06-12T12:15:00+02:00",
+    "starts_at": "2026-06-12T12:15:00+02:00",
+    "ends_at": "2026-06-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Schadhafter Zug Betrieb ab Albertgasse",
+    "description": "Schadhafter Zug\nBetrieb ab Albertgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "698ae9f76ae9f0188b6b5e6d7c3f666b10abdff220ba096b458d7561fa333aa4",
+    "pubDate": "2026-06-12T12:14:42+02:00",
+    "starts_at": "2026-06-12T12:14:42+02:00",
+    "ends_at": "2026-06-12T13:14:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Dänenstraße ggü. 2",
     "description": "Bauarbeiten\nBusse halten Dänenstraße ggü. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -818,14 +842,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
+    "title": "57A: Verkehrsstörung",
+    "description": "Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
-    "pubDate": "2026-06-12T11:22:14+02:00",
-    "starts_at": "2026-06-12T11:22:22+02:00",
-    "ends_at": "2026-06-12T12:21:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-06-12"
+    "guid": "625edca72b94ed7db5d30e136bd38f6c06df22815ddbb5f64e4bbf3856dfc90f",
+    "pubDate": "2026-06-12T12:06:00+02:00",
+    "starts_at": "2026-06-12T12:06:00+02:00",
+    "ends_at": "2026-06-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=57A|D=2026-06-12"
   },
   {
     "source": "Wiener Linien",
@@ -890,18 +914,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "99A: Rettungseinsatz",
-    "description": "Linie 99A: Fahrtbehinderung in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4f7e200387aae902b6004036e8ecc779f640ebd34cace588a45c5807fff26cd5",
-    "pubDate": "2026-06-12T10:24:00+02:00",
-    "starts_at": "2026-06-12T10:24:00+02:00",
-    "ends_at": "2026-06-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=99A|D=2026-06-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Betrieb ab Sommarugagasse",
     "description": "Gleisbauarbeiten\nBetrieb ab Sommarugagasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -922,6 +934,18 @@
     "starts_at": "2026-06-12T00:00:12+02:00",
     "ends_at": "2026-06-12T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Feuerwehreinsatz",
+    "description": "Linie U4: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:00 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Spittelau.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "564166d27455e4c3e4f123d5028460adab46b34a5d0c7a8f5651f92aee27ffef",
+    "pubDate": "2026-06-12T12:25:00+02:00",
+    "starts_at": "2026-06-12T12:25:00+02:00",
+    "ends_at": "2026-06-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-06-12"
   },
   {
     "source": "Wiener Linien",
