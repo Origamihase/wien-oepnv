@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 13 Jun 2026 07:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 08:01:09 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12A: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9</guid>
+      <pubDate>Sat, 13 Jun 2026 07:51:00 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 08:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 07:51:06 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 08:00 Uhr. Grund: Polizeieinsatz im Bereich Storkgasse 3. [Am 13.06.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 08:00 Uhr. Grund: Polizeieinsatz im Bereich Storkgasse 3.<br/>[Am 13.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: Veranstaltung Züge halten bei Linie 49]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau)werden im gegenständlichen Bereich der Hernalser Hauptstraßebei bei Tag, in der Nacht und teilweise auch an Wochenenden … [19.10.2025 – 03.07.2026]</description>
       <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau)werden im gegenständlichen Bereich der Hernalser Hauptstraßebei bei Tag, in der Nacht und teilweise auch an Wochenenden …<br/>[19.10.2025 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Schultheßgasse von Kreuzung Halirschgasse und Gräffergasse bis Kreuzung Dittersdorfgasse und Fercher]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">93471cb506e88d16d946a5c26e206c5cb4a5fb31379ddd1432a89fba56034e7b</guid>
-      <pubDate>Sun, 19 Oct 2025 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Oct 2025 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag und bei Freihaltung einer mindestens 3,00 m breiten Restfahrbahn. [19.10.2025 – 03.07.2026]</description>
-      <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag und bei Freihaltung einer mindestens 3,00 m breiten Restfahrbahn.<br/>[19.10.2025 – 03.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
