@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 13 Jun 2026 14:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 14:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
+      <pubDate>Sat, 13 Jun 2026 14:25:00 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 14:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 14:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 13.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Veranstaltung Züge halten bei Li. 18 Ri. Burggasse, Stadthalle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ebc6f747c8dae0c6c2c4640e3107b0d08817a419199ae7935f461d1436a3ae83</guid>
+      <pubDate>Sat, 13 Jun 2026 14:20:02 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 14:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 14:20:02 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>Züge halten bei Li. 18 Ri. Burggasse, Stadthalle [Am 13.06.2026]</description>
+      <content:encoded><![CDATA[Züge halten bei Li. 18 Ri. Burggasse, Stadthalle<br/>[Am 13.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[31: Veranstaltung Züge halten bei Li. 5 Ri. Praterstern S U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -68,11 +90,11 @@
       <title><![CDATA[Kraubath/Mur]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;885482</guid>
-      <pubDate>Sat, 13 Jun 2026 13:32:05 +0200</pubDate>
+      <pubDate>Sat, 13 Jun 2026 14:22:45 +0200</pubDate>
       <ext:first_seen>Sat, 13 Jun 2026 12:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 13:32:05 +0200</ext:starts_at>
-      <description>Wegen einer Stellwerkstörung am Bahnhof sind in Kraubath/Mur Bahnhof bis voraussichtlich 14:00 Uhr keine Fahrten möglich. [Seit 13.06.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Stellwerkstörung am Bahnhof sind in Kraubath/Mur Bahnhof bis voraussichtlich 14:00 Uhr keine Fahrten möglich.<br/>[Seit 13.06.2026]]]></content:encoded>
+      <ext:starts_at>Sat, 13 Jun 2026 14:22:45 +0200</ext:starts_at>
+      <description>Wegen einer Stellwerkstörung am Bahnhof waren in Kraubath/Mur Bahnhof bis 14:20 Uhr keine Fahrten möglich. [Seit 13.06.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Stellwerkstörung am Bahnhof waren in Kraubath/Mur Bahnhof bis 14:20 Uhr keine Fahrten möglich.<br/>[Seit 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[74A: Veranstaltung Betrieb ab Landstraße S U]]></title>
@@ -95,28 +117,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>Betrieb ab Börsegasse, Wipplingerstraße [Am 13.06.2026]</description>
       <content:encoded><![CDATA[Betrieb ab Börsegasse, Wipplingerstraße<br/>[Am 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Veranstaltung Betrieb ab Hintere Zollamtsstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2a8fdc57bb950d4c8920b577557aa6dd5a47f002d58b56c3c045c54237b6191a</guid>
-      <pubDate>Sat, 13 Jun 2026 07:15:04 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 07:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 07:15:26 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>Betrieb ab Hintere Zollamtsstraße [Am 13.06.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Hintere Zollamtsstraße<br/>[Am 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A: Veranstaltung Linie 1A ist ganztägig eingestellt]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">11e8695d44ff6ccebb7503606db2f5eec642ae132f8b000dfbad27fdf0bb6a1f</guid>
-      <pubDate>Sat, 13 Jun 2026 05:30:17 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 05:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 05:30:17 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 20:00:00 +0200</ext:ends_at>
-      <description>Linie 1A ist ganztägig eingestellt [Am 13.06.2026]</description>
-      <content:encoded><![CDATA[Linie 1A ist ganztägig eingestellt<br/>[Am 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

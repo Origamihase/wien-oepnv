@@ -1022,18 +1022,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Veranstaltung Betrieb ab Urban-Loritz-Platz",
-    "description": "Veranstaltung\nBetrieb ab Urban-Loritz-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ad5fdcf444c2aba3290d128bde4e76e51628d892ea602c683f6d5433dfc214ea",
-    "pubDate": "2026-06-13T13:19:11+02:00",
-    "starts_at": "2026-06-13T13:19:13+02:00",
-    "ends_at": "2026-06-13T14:18:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-06-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49: Fahrtbehinderung Veranstaltung",
     "description": "Fahrtbehinderung\nVeranstaltung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1078,6 +1066,42 @@
     "starts_at": "2026-06-12T00:00:28+02:00",
     "ends_at": "2026-06-13T23:59:59+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung Veranstaltung",
+    "description": "Fahrtbehinderung\nVeranstaltung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c0487e8a27d59ab4968f9780f21735bf831c1a21ec8983a04aaa4f95e8a95d0",
+    "pubDate": "2026-06-13T14:18:27+02:00",
+    "starts_at": "2026-06-13T14:18:44+02:00",
+    "ends_at": "2026-06-13T22:00:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-06-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Veranstaltung Betrieb ab Kliebergasse",
+    "description": "Veranstaltung\nBetrieb ab Kliebergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "beb5a3e57b6fe621cabadc8b23c0cacc7ee4314e415606be9ca4e07b1382b1f5",
+    "pubDate": "2026-06-13T14:19:33+02:00",
+    "starts_at": "2026-06-13T14:19:33+02:00",
+    "ends_at": "2026-06-13T22:00:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-06-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Veranstaltung Züge halten bei Li. 18 Ri. Burggasse, Stadthalle",
+    "description": "Veranstaltung\nZüge halten bei Li. 18 Ri. Burggasse, Stadthalle",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ebc6f747c8dae0c6c2c4640e3107b0d08817a419199ae7935f461d1436a3ae83",
+    "pubDate": "2026-06-13T14:20:02+02:00",
+    "starts_at": "2026-06-13T14:20:02+02:00",
+    "ends_at": "2026-06-13T22:00:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-06-13"
   },
   {
     "source": "Wiener Linien",
@@ -1210,6 +1234,54 @@
     "starts_at": "2026-06-13T07:15:09+02:00",
     "ends_at": "2026-06-13T22:00:00+02:00",
     "_identity": "wl|störung|L=D|D=2026-06-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Betriebsstörung",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2026-06-13T14:25:00+02:00",
+    "starts_at": "2026-06-13T14:25:00+02:00",
+    "ends_at": "2026-06-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-06-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "WLB: Veranstaltung Betrieb ab Matzleinsdorfer Platz",
+    "description": "Veranstaltung\nBetrieb ab Matzleinsdorfer Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3527fc53e136d986f293cf9940c005e2fba138a36dd36e5f530f9d5901c9f3f0",
+    "pubDate": "2026-06-13T14:20:49+02:00",
+    "starts_at": "2026-06-13T14:21:00+02:00",
+    "ends_at": "2026-06-13T22:00:00+02:00",
+    "_identity": "wl|störung|L=WLB|D=2026-06-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "WLB: Fahrtbehinderung Veranstaltung",
+    "description": "Fahrtbehinderung\nVeranstaltung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5aeeab5fe473ba261a4ab2745f9939fddd89542a0ff7abe0fb4eab310f9ba16d",
+    "pubDate": "2026-06-13T14:20:11+02:00",
+    "starts_at": "2026-06-13T14:20:38+02:00",
+    "ends_at": "2026-06-13T22:00:00+02:00",
+    "_identity": "wl|störung|L=WLB|D=2026-06-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "WLB: Veranstaltung Züge halten bei Li. 6 Ri. Burggasse, Stadthalle",
+    "description": "Veranstaltung\nZüge halten bei Li. 6 Ri. Burggasse, Stadthalle",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c10abc2148b81fbcc33fa7a339e35d83cd9a392cdec320343a9bf141032973bf",
+    "pubDate": "2026-06-13T14:21:25+02:00",
+    "starts_at": "2026-06-13T14:21:25+02:00",
+    "ends_at": "2026-06-13T22:00:00+02:00",
+    "_identity": "wl|störung|L=WLB|D=2026-06-13"
   },
   {
     "source": "Wiener Linien",

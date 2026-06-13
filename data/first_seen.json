@@ -1669,6 +1669,16 @@
       "epoch": 3
     }
   },
+  "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f": {
+    "first_seen": "2026-06-13T12:30:52.239114+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: service disruption.",
+        "title": "U3: service disruption"
+      },
+      "epoch": 3
+    }
+  },
   "371e7b4dbc7c916a7967038c31ea0fd3711260bb9361592b1b2c6a6672efb3c2": {
     "first_seen": "2026-05-31T06:01:04.401598+00:00",
     "translations": {
@@ -7290,6 +7300,16 @@
         "title": "5: traffic accident"
       },
       "epoch": 2
+    }
+  },
+  "ebc6f747c8dae0c6c2c4640e3107b0d08817a419199ae7935f461d1436a3ae83": {
+    "first_seen": "2026-06-13T12:30:52.239114+00:00",
+    "translations": {
+      "en": {
+        "summary": "Trains stop at Li. 18 Ri. Burggasse, Stadthalle",
+        "title": "62: event Trains stop at Li. 18 Ri. Burggasse, Stadthalle"
+      },
+      "epoch": 3
     }
   },
   "ec35d84f2444a99f2c65ec20af03a293d41787a346c7f1c1a4ff5bf93524ab24": {
