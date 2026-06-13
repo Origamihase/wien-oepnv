@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 13 Jun 2026 11:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 12:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[74A: Veranstaltung Betrieb ab Landstraße S U]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>Züge halten Heinestraße 3 [Am 13.06.2026]</description>
       <content:encoded><![CDATA[Züge halten Heinestraße 3<br/>[Am 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: Fremdunfall Züge halten bei Li. 25 Ri. Floridsdorf S U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8f42ebdfc728062e5ebe7d0322332984a72613344b4f52a8488330ab98feefdb</guid>
-      <pubDate>Sat, 13 Jun 2026 10:58:02 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 11:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 10:58:02 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 12:00:00 +0200</ext:ends_at>
-      <description>[Am 13.06.2026]</description>
-      <content:encoded><![CDATA[[Am 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Veranstaltung Betrieb ab Börsegasse, Wipplingerstraße]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sun, 26 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>Der Fahrzeugverkehr einschließlich des öffentlichen Verkehrs kann in allen bestehenden Fahrrelationen aufrecht gehalten werden. [25.05.2026 – 26.07.2026]</description>
       <content:encoded><![CDATA[Der Fahrzeugverkehr einschließlich des öffentlichen Verkehrs kann in allen bestehenden Fahrrelationen aufrecht gehalten werden.<br/>[25.05.2026 – 26.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Hernalser Hauptstraße von Redtenbachergasse und Schadinagasse bis Julius-Meinl-Gasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">3dba297aaeda53f3246d8646be626e6f1a2936058171131cc64c83b66829270b</guid>
+      <pubDate>Sun, 19 Oct 2025 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 12 Jun 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Oct 2025 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
+      <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau)werden im gegenständlichen Bereich der Hernalser Hauptstraßebei bei Tag, in der Nacht und teilweise auch an Wochenenden … [19.10.2025 – 03.07.2026]</description>
+      <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau)werden im gegenständlichen Bereich der Hernalser Hauptstraßebei bei Tag, in der Nacht und teilweise auch an Wochenenden …<br/>[19.10.2025 – 03.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
