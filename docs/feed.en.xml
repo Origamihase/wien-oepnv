@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 15:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 15:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[57A: event service from Haus des Meeres]]></title>
+      <title><![CDATA[40A: event service from Währinger Straße, Volksoper U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00aa369d949231f55d1508a5f132d8371e70218f7c0d8510050353108a8a675b</guid>
-      <pubDate>Sat, 13 Jun 2026 14:42:24 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 15:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 14:42:24 +0200</ext:starts_at>
+      <guid isPermaLink="false">e856929f1b3372c48234f3971e4272b32d76edfaa2c985d44d2d02e79ca16652</guid>
+      <pubDate>Sat, 13 Jun 2026 15:24:24 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 15:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 15:24:24 +0200</ext:starts_at>
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>service from Haus des Meeres [On 13.06.2026]</description>
-      <content:encoded><![CDATA[service from Haus des Meeres<br/>[On 13.06.2026]]]></content:encoded>
+      <description>service from Währinger Straße, Volksoper U [On 13.06.2026]</description>
+      <content:encoded><![CDATA[service from Währinger Straße, Volksoper U<br/>[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: service obstruction event]]></title>
+      <title><![CDATA[D: event service from Augasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7a20f10541f3ecc1930821219843143fc0796e227daaa20f20a8c1e3aac4bbd</guid>
-      <pubDate>Sat, 13 Jun 2026 14:34:28 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 15:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 14:34:28 +0200</ext:starts_at>
+      <guid isPermaLink="false">ed142e93ea64d75b4a017b538ea4b74c18657ca700f35ca91e0e7097c62a5bee</guid>
+      <pubDate>Sat, 13 Jun 2026 07:15:09 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 15:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 15:22:30 +0200</ext:starts_at>
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>[On 13.06.2026]</description>
-      <content:encoded><![CDATA[[On 13.06.2026]]]></content:encoded>
+      <description>service from Augasse [On 13.06.2026]</description>
+      <content:encoded><![CDATA[service from Augasse<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[57A: event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b664986b70e17f93fa72a280cb7db075700ff059a95fd949e0a263d36ea639b9</guid>
+      <pubDate>Sat, 13 Jun 2026 07:07:00 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 15:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 07:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 13.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: event Trains stop at Li. O Ri. Raxstraße]]></title>
@@ -41,28 +52,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>Trains stop at Li. O Ri. Raxstraße [On 13.06.2026]</description>
       <content:encoded><![CDATA[Trains stop at Li. O Ri. Raxstraße<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: event]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">82f67fc4ae423e511abb8b767eacbf6009f15e0d2c45606f760ea7149593a6ee</guid>
-      <pubDate>Sat, 13 Jun 2026 07:07:00 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 15:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 07:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 13.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
-      <pubDate>Sat, 13 Jun 2026 14:25:00 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 14:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 14:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: service disruption. [On 13.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62: event Trains stop at Li. 18 Ri. Burggasse, Stadthalle]]></title>
@@ -107,6 +96,17 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>service from Volkstheater U [On 13.06.2026]</description>
       <content:encoded><![CDATA[service from Volkstheater U<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49: service obstruction event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d3010571ac04c989770b0c1cfd0ca271b2d0d6c3832e03a82fad8b47c2dc8b4c</guid>
+      <pubDate>Sat, 13 Jun 2026 13:18:42 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 13:18:42 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>[On 13.06.2026]</description>
+      <content:encoded><![CDATA[[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[59A: event service from Bärenmühldurchgang]]></title>
