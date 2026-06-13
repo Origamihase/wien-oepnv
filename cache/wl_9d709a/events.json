@@ -926,18 +926,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40A: Veranstaltung",
-    "description": "Linie 40A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5fab0b80f29057226cc0b35db02257f4e5182055289b955922133371610523ad",
-    "pubDate": "2026-06-13T07:07:00+02:00",
-    "starts_at": "2026-06-13T07:07:00+02:00",
-    "ends_at": "2026-06-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=40A|D=2026-06-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40A: Fahrtbehinderung Veranstaltung",
     "description": "Fahrtbehinderung\nVeranstaltung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1088,31 +1076,19 @@
     "guid": "22429a131df51db91adad3be01f0014270b330b3779219cf005825b741821c30",
     "pubDate": "2026-06-13T15:30:43+02:00",
     "starts_at": "2026-06-13T15:30:43+02:00",
-    "ends_at": "2026-06-13T22:00:00+02:00",
+    "ends_at": "2026-06-13T23:45:00+02:00",
     "_identity": "wl|störung|L=43|D=2026-06-13"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Veranstaltung",
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "43: Veranstaltung Betrieb ab Alser Straße",
+    "description": "Veranstaltung\nBetrieb ab Alser Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4602634136ca78694b8af765a740d3616385dc8e0bfc159ee146c3e325e57442",
-    "pubDate": "2026-06-13T07:07:00+02:00",
-    "starts_at": "2026-06-13T07:07:00+02:00",
-    "ends_at": "2026-06-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=43|D=2026-06-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Veranstaltung Betrieb ab Alser Straße U",
-    "description": "Veranstaltung\nBetrieb ab Alser Straße U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b70b21bb7816f7e93567bea0b5162c83ac6f81df6e9da55aa01c81bab3bd7549",
+    "guid": "fb2c56b79075daf04c426ff3cd6a49dae1ddfde623f8cbadd7dc3330a7fc59d2",
     "pubDate": "2026-06-13T15:31:10+02:00",
     "starts_at": "2026-06-13T15:31:12+02:00",
-    "ends_at": "2026-06-13T22:00:00+02:00",
+    "ends_at": "2026-06-13T23:45:00+02:00",
     "_identity": "wl|störung|L=43|D=2026-06-13"
   },
   {
@@ -1130,25 +1106,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Veranstaltung",
-    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06fbf3e5b9ba504098c15c3fa460d53e9adda6bc2e3571e82840c65c7af2f1fb",
-    "pubDate": "2026-06-13T07:07:00+02:00",
-    "starts_at": "2026-06-13T07:07:00+02:00",
-    "ends_at": "2026-06-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=44|D=2026-06-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "44: Veranstaltung Betrieb ab Johann-Nepomuk-Berger-Platz",
     "description": "Veranstaltung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b6b7635d521773283d4498bb77be2630d410bd76510d125e2a285c3c6a9fdfca",
     "pubDate": "2026-06-13T15:32:22+02:00",
     "starts_at": "2026-06-13T15:32:39+02:00",
-    "ends_at": "2026-06-13T22:00:00+02:00",
+    "ends_at": "2026-06-13T23:45:00+02:00",
     "_identity": "wl|störung|L=44|D=2026-06-13"
   },
   {
@@ -1160,7 +1124,7 @@
     "guid": "c3634a779c4a08bd802d2538c90fd9f25104dfb0965ae6d4e141412f92a7fd10",
     "pubDate": "2026-06-13T15:31:39+02:00",
     "starts_at": "2026-06-13T15:31:41+02:00",
-    "ends_at": "2026-06-13T22:00:00+02:00",
+    "ends_at": "2026-06-13T23:45:00+02:00",
     "_identity": "wl|störung|L=44|D=2026-06-13"
   },
   {
@@ -1414,18 +1378,6 @@
     "starts_at": "2026-06-13T11:20:30+02:00",
     "ends_at": "2026-06-13T22:00:00+02:00",
     "_identity": "wl|störung|L=74A|D=2026-06-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "97A: Verkehrsunfall",
-    "description": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "84179df3b6977c1f2a94231aa650a6c134e1750cbe78746ad0558d3b8a6317b8",
-    "pubDate": "2026-06-13T17:23:00+02:00",
-    "starts_at": "2026-06-13T17:23:00+02:00",
-    "ends_at": "2026-06-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=97A|D=2026-06-13"
   },
   {
     "source": "Wiener Linien",
