@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 15:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 16:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[44: event service from Johann-Nepomuk-Berger-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b6b7635d521773283d4498bb77be2630d410bd76510d125e2a285c3c6a9fdfca</guid>
+      <pubDate>Sat, 13 Jun 2026 15:32:22 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 16:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 15:32:39 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>service from Johann-Nepomuk-Berger-Platz [On 13.06.2026]</description>
+      <content:encoded><![CDATA[service from Johann-Nepomuk-Berger-Platz<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: event service from Alser Straße U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b70b21bb7816f7e93567bea0b5162c83ac6f81df6e9da55aa01c81bab3bd7549</guid>
+      <pubDate>Sat, 13 Jun 2026 15:31:10 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 16:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 15:31:12 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>service from Alser Straße U [On 13.06.2026]</description>
+      <content:encoded><![CDATA[service from Alser Straße U<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e58fda69cf33b948286616399eafba15a53da34c0f102c9bac82477924a95baa</guid>
+      <pubDate>Sat, 13 Jun 2026 07:07:00 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 16:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 07:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 13.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[40A: event service from Währinger Straße, Volksoper U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -54,17 +87,6 @@
       <content:encoded><![CDATA[Trains stop at Li. O Ri. Raxstraße<br/>[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62: event Trains stop at Li. 18 Ri. Burggasse, Stadthalle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ebc6f747c8dae0c6c2c4640e3107b0d08817a419199ae7935f461d1436a3ae83</guid>
-      <pubDate>Sat, 13 Jun 2026 14:20:02 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 14:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 14:20:02 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>Trains stop at Li. 18 Ri. Burggasse, Stadthalle [On 13.06.2026]</description>
-      <content:encoded><![CDATA[Trains stop at Li. 18 Ri. Burggasse, Stadthalle<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[31: event Trains stop at Li. 5 Ri. Praterstern S U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">62b88b14f336cc204019ba2071d68ca47ba8a2df6a2fe76d4b3f12d1a5e2b9fe</guid>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>service from Volkstheater U [On 13.06.2026]</description>
       <content:encoded><![CDATA[service from Volkstheater U<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: service obstruction event]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d3010571ac04c989770b0c1cfd0ca271b2d0d6c3832e03a82fad8b47c2dc8b4c</guid>
-      <pubDate>Sat, 13 Jun 2026 13:18:42 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 13:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 13:18:42 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>[On 13.06.2026]</description>
-      <content:encoded><![CDATA[[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: event service from Bärenmühldurchgang]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6bb4b97f0fcccd936f01a783e036ec38262907eed7b5cb008ebb9b83663bdd5e</guid>
-      <pubDate>Sat, 13 Jun 2026 12:05:40 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 13:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 12:05:40 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>service from Bärenmühldurchgang [On 13.06.2026]</description>
-      <content:encoded><![CDATA[service from Bärenmühldurchgang<br/>[On 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
