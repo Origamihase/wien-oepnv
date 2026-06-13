@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 13 Jun 2026 04:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 05:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[71: Veranstaltung Betrieb ab Schwarzenbergplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8b1e2f187f18995bbf65eba67f26d4902602640fca1243e0baf4e442d8812f93</guid>
+      <pubDate>Sat, 13 Jun 2026 05:00:06 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 05:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 05:00:06 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>Betrieb ab Schwarzenbergplatz [Am 13.06.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz<br/>[Am 13.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +27,7 @@
       <pubDate>Sat, 13 Jun 2026 01:10:00 +0200</pubDate>
       <ext:first_seen>Sat, 13 Jun 2026 01:30:48 +0200</ext:first_seen>
       <ext:starts_at>Sat, 13 Jun 2026 01:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 13 Jun 2026 04:59:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.06.2026]]]></content:encoded>
     </item>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet. [11.06.2026 – 17.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S1/S2/S3/S4/S7: S-Bahn-Stammstrecke (Phase 1)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4b70ce74a11c4f70f09d0367673c22eb36d04af12214b897c4a7e1462ca02170</guid>
-      <pubDate>Wed, 10 Jun 2026 21:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 16:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 10 Jun 2026 21:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 08 Sep 2026 23:59:00 +0200</ext:ends_at>
-      <description>S-Bahn-Stammstrecke (Phase 1) Wegen Bauarbeiten kommt es auf der Wiener Stammstrecke sowie auf den Nordästen zu Sperren. [10.06.2026 – 08.09.2026]</description>
-      <content:encoded><![CDATA[S-Bahn-Stammstrecke (Phase 1) Wegen Bauarbeiten kommt es auf der Wiener Stammstrecke sowie auf den Nordästen zu Sperren.<br/>[10.06.2026 – 08.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
