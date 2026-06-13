@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 17:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 18:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: event Trains stop after Bellariastraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">83d383b72166451875b158a303df1aff92e4ddc0aaa7ac2286ef5c3fcbf10650</guid>
+      <pubDate>Sat, 13 Jun 2026 11:18:15 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 18:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 11:18:15 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:45:00 +0200</ext:ends_at>
+      <description>Trains stop to Bellariastraße [On 13.06.2026]</description>
+      <content:encoded><![CDATA[Trains stop to Bellariastraße<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[97A: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>Trains stop at Li. 5 Ri. Praterstern S U [On 13.06.2026]</description>
       <content:encoded><![CDATA[Trains stop at Li. 5 Ri. Praterstern S U<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: event service from Heinestraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">484ce5932721092108ebc3da37512e7890287e0e78404d82bafb7ca6ecd5213f</guid>
-      <pubDate>Sat, 13 Jun 2026 13:51:38 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 14:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 13:51:48 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>service from Heinestraße U [On 13.06.2026]</description>
-      <content:encoded><![CDATA[service from Heinestraße U<br/>[On 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
