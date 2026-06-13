@@ -7,15 +7,26 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 08:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 09:00:44 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[D: event service from Börsegasse, Wipplingerstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f7e8f3d36ef26e0d81d1e2450958e55ca6310bb35eeb6cb2c0e8ab9e3ca59039</guid>
+      <pubDate>Sat, 13 Jun 2026 07:15:09 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 09:00:44 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 07:15:09 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>service from Börsegasse, Wipplingerstraße [On 13.06.2026]</description>
+      <content:encoded><![CDATA[service from Börsegasse, Wipplingerstraße<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12A: service obstruction because of police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9</guid>
       <pubDate>Sat, 13 Jun 2026 07:51:00 +0200</pubDate>
       <ext:first_seen>Sat, 13 Jun 2026 08:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 07:51:06 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 13 Jun 2026 07:51:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 13.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 13.06.2026]]]></content:encoded>
@@ -30,17 +41,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 23:45:00 +0200</ext:ends_at>
       <description>Trains stop at line 49 [On 13.06.2026]</description>
       <content:encoded><![CDATA[Trains stop at line 49<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: event Operation via Stubentor and Schwedenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">294e86253957638ab3b166ecb63e51879c54bc46f30e5db6fd46f6b84cd7c7e3</guid>
-      <pubDate>Sat, 13 Jun 2026 07:15:09 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 07:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 07:15:09 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>Operation via Stubentor and Schwedenplatz [On 13.06.2026]</description>
-      <content:encoded><![CDATA[Operation via Stubentor and Schwedenplatz<br/>[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: event service from Hintere Zollamtsstraße]]></title>
