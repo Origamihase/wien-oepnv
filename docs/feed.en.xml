@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 16:00:56 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 16:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[44: event service from Johann-Nepomuk-Berger-Platz]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>service from Alser Straße U [On 13.06.2026]</description>
       <content:encoded><![CDATA[service from Alser Straße U<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: event]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e58fda69cf33b948286616399eafba15a53da34c0f102c9bac82477924a95baa</guid>
-      <pubDate>Sat, 13 Jun 2026 07:07:00 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 16:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 07:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 13.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: event service from Währinger Straße, Volksoper U]]></title>
@@ -85,6 +74,17 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>Trains stop at Li. O Ri. Raxstraße [On 13.06.2026]</description>
       <content:encoded><![CDATA[Trains stop at Li. O Ri. Raxstraße<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: event Trains stop at Li. 18 Ri. Burggasse, Stadthalle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ebc6f747c8dae0c6c2c4640e3107b0d08817a419199ae7935f461d1436a3ae83</guid>
+      <pubDate>Sat, 13 Jun 2026 14:20:02 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 14:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 14:20:02 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>Trains stop at Li. 18 Ri. Burggasse, Stadthalle [On 13.06.2026]</description>
+      <content:encoded><![CDATA[Trains stop at Li. 18 Ri. Burggasse, Stadthalle<br/>[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31: event Trains stop at Li. 5 Ri. Praterstern S U]]></title>
