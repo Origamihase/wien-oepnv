@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 13:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 14:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[31: event Trains stop at Li. 5 Ri. Praterstern S U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">62b88b14f336cc204019ba2071d68ca47ba8a2df6a2fe76d4b3f12d1a5e2b9fe</guid>
+      <pubDate>Sat, 13 Jun 2026 13:54:48 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 14:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 13:54:48 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>Trains stop at Li. 5 Ri. Praterstern S U [On 13.06.2026]</description>
+      <content:encoded><![CDATA[Trains stop at Li. 5 Ri. Praterstern S U<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: event service from Heinestraße U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">484ce5932721092108ebc3da37512e7890287e0e78404d82bafb7ca6ecd5213f</guid>
+      <pubDate>Sat, 13 Jun 2026 13:51:38 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 14:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 13:51:48 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>service from Heinestraße U [On 13.06.2026]</description>
+      <content:encoded><![CDATA[service from Heinestraße U<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[48A: event service from Volkstheater U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -46,9 +68,9 @@
       <title><![CDATA[Kraubath/Mur]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;885482</guid>
-      <pubDate>Sat, 13 Jun 2026 13:25:10 +0200</pubDate>
+      <pubDate>Sat, 13 Jun 2026 13:32:05 +0200</pubDate>
       <ext:first_seen>Sat, 13 Jun 2026 12:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 13:25:10 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 13 Jun 2026 13:32:05 +0200</ext:starts_at>
       <description>Due to an interlocking malfunction am Bahnhof, no journeys are possible in Kraubath/Mur station until expected 13:15 clock. [Since 13.06.2026]</description>
       <content:encoded><![CDATA[Due to an interlocking malfunction am Bahnhof, no journeys are possible in Kraubath/Mur station until expected 13:15 clock.<br/>[Since 13.06.2026]]]></content:encoded>
     </item>
@@ -62,17 +84,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>service from Landstraße S U [On 13.06.2026]</description>
       <content:encoded><![CDATA[service from Landstraße S U<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: event Keep trains Heinestraße 3]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">349cfdc17660e14d21fee4bb31ed1804e346346578197b4677fd227e564fb80d</guid>
-      <pubDate>Sat, 13 Jun 2026 11:19:25 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 11:30:39 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 11:19:25 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>Trains stop at Heinestraße 3 [On 13.06.2026]</description>
-      <content:encoded><![CDATA[Trains stop at Heinestraße 3<br/>[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: event service from Börsegasse, Wipplingerstraße]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 20:00:00 +0200</ext:ends_at>
       <description>Line 1A is set all day [On 13.06.2026]</description>
       <content:encoded><![CDATA[Line 1A is set all day<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[3A: event line 3A is set all day]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8a5bf3da170545d62c1d247a0532e02fc337792e6afe77c64f01e275505981ca</guid>
-      <pubDate>Sat, 13 Jun 2026 05:30:17 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 05:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 05:30:17 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 20:00:00 +0200</ext:ends_at>
-      <description>Line 3A is set all day [On 13.06.2026]</description>
-      <content:encoded><![CDATA[Line 3A is set all day<br/>[On 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
