@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 07:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 07:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: event Trains stop at line 49]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a08dd6892a7252b440be08828c52ecaa7124d8e37e576e7b673e90b1376b3c65</guid>
+      <pubDate>Sat, 13 Jun 2026 07:15:38 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 07:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 07:15:38 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:45:00 +0200</ext:ends_at>
+      <description>Trains stop at line 49 [On 13.06.2026]</description>
+      <content:encoded><![CDATA[Trains stop at line 49<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: event Operation via Stubentor and Schwedenplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">294e86253957638ab3b166ecb63e51879c54bc46f30e5db6fd46f6b84cd7c7e3</guid>
+      <pubDate>Sat, 13 Jun 2026 07:15:09 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 07:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 07:15:09 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>Operation via Stubentor and Schwedenplatz [On 13.06.2026]</description>
+      <content:encoded><![CDATA[Operation via Stubentor and Schwedenplatz<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: event service from Hintere Zollamtsstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2a8fdc57bb950d4c8920b577557aa6dd5a47f002d58b56c3c045c54237b6191a</guid>
+      <pubDate>Sat, 13 Jun 2026 07:15:04 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 07:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 07:15:26 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>service from Hintere Zollamtsstraße [On 13.06.2026]</description>
+      <content:encoded><![CDATA[service from Hintere Zollamtsstraße<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1A: event line 1A is set all day]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -85,39 +118,6 @@
       <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>The pipe laying work (preparations for underground construction) is generally carried out during the day and with the release of a minimum 3.00 m wide residual runway. [19.10.2025 – 03.07.2026]</description>
       <content:encoded><![CDATA[The pipe laying work (preparations for underground construction) is generally carried out during the day and with the release of a minimum 3.00 m wide residual runway.<br/>[19.10.2025 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Gräffergasse from crossing Halirschgasse and Schultheßgasse from crossing Heigerleinstraße]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">c5bdaf67898b58248e144349ad43bb957b8fde0bf4cf50e222026060eadbb7bd</guid>
-      <pubDate>Sun, 19 Oct 2025 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Oct 2025 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>The pipe laying work (preparation for underground construction) is carried out in general at day, with the Gräffergasse from the Halirschgasse and Schultheßgasse up to the … [19.10.2025 – 03.07.2026]</description>
-      <content:encoded><![CDATA[The pipe laying work (preparation for underground construction) is carried out in general at day, with the Gräffergasse from the Halirschgasse and Schultheßgasse up to the …<br/>[19.10.2025 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U5: Spitalgasse from 29 to 33]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">45d5bba5b772ec0cb338139ba4e523945163739b54c0365fe65bbfcb6dc8a13c</guid>
-      <pubDate>Sun, 11 Jan 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Jan 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>The cable laying work (110 kV conversion as preliminary work for the U5) is carried out during the day, blocking of the pavement and construction of a minimum 2.00 m wide … [11.01.2026 – 03.07.2026]</description>
-      <content:encoded><![CDATA[The cable laying work (110 kV conversion as preliminary work for the U5) is carried out during the day, blocking of the pavement and construction of a minimum 2.00 m wide …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U5: Währinger Straße 40-42 to 54]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">651ee0c6e6a4e7409ae9be99ad53259b2248e78e30d4b4948e2e6b4127a448b4</guid>
-      <pubDate>Sun, 11 Jan 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Jan 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out at day and, if necessary, at night, at the time of 22:00 to 05:00 at … [11.01.2026 – 03.07.2026]</description>
-      <content:encoded><![CDATA[The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out at day and, if necessary, at night, at the time of 22:00 to 05:00 at …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
