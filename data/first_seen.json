@@ -906,16 +906,6 @@
       "epoch": 2
     }
   },
-  "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1": {
-    "first_seen": "2026-05-26T16:30:55.201766+00:00",
-    "translations": {
-      "en": {
-        "summary": "irregular intervals towards Karlsplatz . Reason: defective vehicle.",
-        "title": "U2: delays"
-      },
-      "epoch": 2
-    }
-  },
   "1ab48baa4d06b55033c1947808e17518905654c7a8db3085734e3226de5b74d2": {
     "first_seen": "2026-05-24T20:30:42.053624+00:00",
     "translations": {
@@ -8194,6 +8184,14 @@
         "title": "Wien Westbahnhof"
       },
       "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&885482": {
+    "first_seen": "2026-06-13T10:30:56.670608+00:00",
+    "translations": {
+      "en": {
+        "title": "Kraubath/Mur"
+      }
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
