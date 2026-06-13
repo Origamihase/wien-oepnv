@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 09:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 10:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[54B: Verspätungen]]></title>
+      <title><![CDATA[46: Fahrtbehinderung wegen Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9b5c9503cdaed1f8c65a6709abc5af81223e058ae5af42dd7d9725376381ece8</guid>
-      <pubDate>Sat, 13 Jun 2026 09:06:00 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 09:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 09:06:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 09:31:00 +0200</ext:ends_at>
-      <description>Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 10:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Ober St. Veit U. [Am 13.06.2026]</description>
-      <content:encoded><![CDATA[Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 10:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Ober St. Veit U.<br/>[Am 13.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">17245375550a341367d59df402e880c1611e9fbb35634da6ea980f6f056c6c9b</guid>
+      <pubDate>Sat, 13 Jun 2026 09:35:26 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 10:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 09:35:26 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 10:35:00 +0200</ext:ends_at>
+      <description>[Am 13.06.2026]</description>
+      <content:encoded><![CDATA[[Am 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cb8f37a153e49e1b9fce9bbe197d868b0f2104c567dea861959f72bf49ba88a7</guid>
+      <pubDate>Sat, 13 Jun 2026 09:34:58 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 10:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 09:35:08 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 10:34:00 +0200</ext:ends_at>
+      <description>[Am 13.06.2026]</description>
+      <content:encoded><![CDATA[[Am 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: event service from Börsegasse, Wipplingerstraße]]></title>
@@ -30,17 +41,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>service from Börsegasse, Wipplingerstraße [On 13.06.2026]</description>
       <content:encoded><![CDATA[service from Börsegasse, Wipplingerstraße<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: service obstruction because of police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9</guid>
-      <pubDate>Sat, 13 Jun 2026 07:51:00 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 08:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 07:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 09:25:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 13.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: event Trains stop at line 49]]></title>
