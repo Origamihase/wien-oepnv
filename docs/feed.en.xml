@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 20:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 20:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2ee54fe9ea772c52984b215f51bc5c3366080c8f13edd19c525fb970bf6467ec</guid>
+      <pubDate>Sat, 13 Jun 2026 20:03:00 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 20:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 20:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: event. [On 13.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: event.<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43: event service from Alser Straße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>Trains stop at Li. 5 Ri. Praterstern S U [On 13.06.2026]</description>
       <content:encoded><![CDATA[Trains stop at Li. 5 Ri. Praterstern S U<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: event service from Volkstheater U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ff2ef3410f23675f31a2719ce867aa8c01bb1b614e9bdb46b490233b1ac43fc3</guid>
-      <pubDate>Sat, 13 Jun 2026 13:20:11 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 13:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 13:20:11 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>service from Volkstheater U [On 13.06.2026]</description>
-      <content:encoded><![CDATA[service from Volkstheater U<br/>[On 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

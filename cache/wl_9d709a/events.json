@@ -1394,6 +1394,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U2: Veranstaltung",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Veranstaltung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2ee54fe9ea772c52984b215f51bc5c3366080c8f13edd19c525fb970bf6467ec",
+    "pubDate": "2026-06-13T20:03:00+02:00",
+    "starts_at": "2026-06-13T20:03:00+02:00",
+    "ends_at": "2026-06-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-06-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "WLB: Veranstaltung Betrieb ab Matzleinsdorfer Platz",
     "description": "Veranstaltung\nBetrieb ab Matzleinsdorfer Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
