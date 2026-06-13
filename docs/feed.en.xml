@@ -7,28 +7,50 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 13:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 13:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[59A: Veranstaltung Betrieb ab Bärenmühldurchgang]]></title>
+      <title><![CDATA[48A: event service from Volkstheater U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ff2ef3410f23675f31a2719ce867aa8c01bb1b614e9bdb46b490233b1ac43fc3</guid>
+      <pubDate>Sat, 13 Jun 2026 13:20:11 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 13:20:11 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>service from Volkstheater U [On 13.06.2026]</description>
+      <content:encoded><![CDATA[service from Volkstheater U<br/>[On 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49: service obstruction event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d3010571ac04c989770b0c1cfd0ca271b2d0d6c3832e03a82fad8b47c2dc8b4c</guid>
+      <pubDate>Sat, 13 Jun 2026 13:18:42 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 13:18:42 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>[On 13.06.2026]</description>
+      <content:encoded><![CDATA[[On 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[59A: event service from Bärenmühldurchgang]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">6bb4b97f0fcccd936f01a783e036ec38262907eed7b5cb008ebb9b83663bdd5e</guid>
       <pubDate>Sat, 13 Jun 2026 12:05:40 +0200</pubDate>
       <ext:first_seen>Sat, 13 Jun 2026 13:00:51 +0200</ext:first_seen>
       <ext:starts_at>Sat, 13 Jun 2026 12:05:40 +0200</ext:starts_at>
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>Betrieb ab Bärenmühldurchgang [Am 13.06.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Bärenmühldurchgang<br/>[Am 13.06.2026]]]></content:encoded>
+      <description>service from Bärenmühldurchgang [On 13.06.2026]</description>
+      <content:encoded><![CDATA[service from Bärenmühldurchgang<br/>[On 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Kraubath/Mur]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;885482</guid>
-      <pubDate>Sat, 13 Jun 2026 12:58:09 +0200</pubDate>
+      <pubDate>Sat, 13 Jun 2026 13:25:10 +0200</pubDate>
       <ext:first_seen>Sat, 13 Jun 2026 12:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 12:58:09 +0200</ext:starts_at>
-      <description>Wegen einer Stellwerkstörung am Bahnhof sind in Kraubath/Mur Bahnhof bis voraussichtlich 13:15 Uhr keine Fahrten möglich. [Seit 13.06.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Stellwerkstörung am Bahnhof sind in Kraubath/Mur Bahnhof bis voraussichtlich 13:15 Uhr keine Fahrten möglich.<br/>[Seit 13.06.2026]]]></content:encoded>
+      <ext:starts_at>Sat, 13 Jun 2026 13:25:10 +0200</ext:starts_at>
+      <description>Due to an interlocking malfunction am Bahnhof, no journeys are possible in Kraubath/Mur station until expected 13:15 clock. [Since 13.06.2026]</description>
+      <content:encoded><![CDATA[Due to an interlocking malfunction am Bahnhof, no journeys are possible in Kraubath/Mur station until expected 13:15 clock.<br/>[Since 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[74A: event service from Landstraße S U]]></title>
@@ -95,28 +117,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 20:00:00 +0200</ext:ends_at>
       <description>Line 3A is set all day [On 13.06.2026]</description>
       <content:encoded><![CDATA[Line 3A is set all day<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: event line 2A is set all day]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4c2e41f1757d6cdd77dad51865136e955fbeb6fcbfdf481a474d9a30bafc824d</guid>
-      <pubDate>Sat, 13 Jun 2026 05:30:00 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 05:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 05:30:17 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 20:00:00 +0200</ext:ends_at>
-      <description>Line 2A is set all day [On 13.06.2026]</description>
-      <content:encoded><![CDATA[Line 2A is set all day<br/>[On 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: event service from Schwarzenbergplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8b1e2f187f18995bbf65eba67f26d4902602640fca1243e0baf4e442d8812f93</guid>
-      <pubDate>Sat, 13 Jun 2026 05:00:06 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 05:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 05:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>service from Schwarzenbergplatz [On 13.06.2026]</description>
-      <content:encoded><![CDATA[service from Schwarzenbergplatz<br/>[On 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
