@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 13 Jun 2026 16:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 17:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[44: Veranstaltung Betrieb ab Johann-Nepomuk-Berger-Platz]]></title>
@@ -54,15 +54,15 @@
       <content:encoded><![CDATA[Betrieb ab Augasse<br/>[Am 13.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[57A: Veranstaltung]]></title>
+      <title><![CDATA[57A: Veranstaltung Betrieb ab Haus des Meeres]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b664986b70e17f93fa72a280cb7db075700ff059a95fd949e0a263d36ea639b9</guid>
-      <pubDate>Sat, 13 Jun 2026 07:07:00 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 15:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 07:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">00aa369d949231f55d1508a5f132d8371e70218f7c0d8510050353108a8a675b</guid>
+      <pubDate>Sat, 13 Jun 2026 14:42:24 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 15:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 14:42:24 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
+      <description>Betrieb ab Haus des Meeres [Am 13.06.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Haus des Meeres<br/>[Am 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Veranstaltung Züge halten bei Li. O Ri. Raxstraße]]></title>
@@ -74,6 +74,17 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>Züge halten bei Li. O Ri. Raxstraße [Am 13.06.2026]</description>
       <content:encoded><![CDATA[Züge halten bei Li. O Ri. Raxstraße<br/>[Am 13.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
+      <pubDate>Sat, 13 Jun 2026 16:31:00 +0200</pubDate>
+      <ext:first_seen>Sat, 13 Jun 2026 14:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 13 Jun 2026 16:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 13 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 13.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 13.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62: Veranstaltung Züge halten bei Li. 18 Ri. Burggasse, Stadthalle]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
       <description>Betrieb ab Heinestraße U [Am 13.06.2026]</description>
       <content:encoded><![CDATA[Betrieb ab Heinestraße U<br/>[Am 13.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Veranstaltung Betrieb ab Volkstheater U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ff2ef3410f23675f31a2719ce867aa8c01bb1b614e9bdb46b490233b1ac43fc3</guid>
-      <pubDate>Sat, 13 Jun 2026 13:20:11 +0200</pubDate>
-      <ext:first_seen>Sat, 13 Jun 2026 13:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 13 Jun 2026 13:20:11 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 13 Jun 2026 22:00:00 +0200</ext:ends_at>
-      <description>Betrieb ab Volkstheater U [Am 13.06.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Volkstheater U<br/>[Am 13.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
