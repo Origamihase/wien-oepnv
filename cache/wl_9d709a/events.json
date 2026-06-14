@@ -632,7 +632,7 @@
     "guid": "2900c1b77b4fe2366a83804b60172b08583e71ae11cb59bd0ba74e39a1f30f49",
     "pubDate": "2026-06-14T17:34:55+02:00",
     "starts_at": "2026-06-14T17:34:55+02:00",
-    "ends_at": "2026-06-14T18:34:00+02:00",
+    "ends_at": "2026-06-14T23:45:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-06-14"
   },
   {
@@ -644,7 +644,7 @@
     "guid": "f2772675c01739525de8d4facb6d3cc6d35aa861ca67364dce69fb8d8b0bd255",
     "pubDate": "2026-06-14T17:34:55+02:00",
     "starts_at": "2026-06-14T17:34:55+02:00",
-    "ends_at": "2026-06-14T18:35:00+02:00",
+    "ends_at": "2026-06-14T23:45:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-06-14"
   },
   {
@@ -922,6 +922,18 @@
     "starts_at": "2026-06-12T00:00:12+02:00",
     "ends_at": "2026-06-14T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-06-14T18:11:00+02:00",
+    "starts_at": "2026-06-14T18:11:00+02:00",
+    "ends_at": "2026-06-14T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-06-14"
   },
   {
     "source": "Wiener Linien",
