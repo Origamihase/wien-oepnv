@@ -590,6 +590,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12: Verkehrsunfall Betrieb ab Wallensteinplatz",
+    "description": "Verkehrsunfall\nBetrieb ab Wallensteinplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "068fbd14ede504c63ce96ad93c8f820ddd441e2bb7653a14828af576d6613ca3",
+    "pubDate": "2026-06-14T17:32:07+02:00",
+    "starts_at": "2026-06-14T17:32:30+02:00",
+    "ends_at": "2026-06-14T20:30:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-06-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Demonstration",
     "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -610,6 +622,30 @@
     "starts_at": "2026-06-12T00:00:18+02:00",
     "ends_at": "2026-06-14T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Verkehrsunfall Betrieb ab Höchstädtplatz",
+    "description": "Verkehrsunfall\nBetrieb ab Höchstädtplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2900c1b77b4fe2366a83804b60172b08583e71ae11cb59bd0ba74e39a1f30f49",
+    "pubDate": "2026-06-14T17:34:55+02:00",
+    "starts_at": "2026-06-14T17:34:55+02:00",
+    "ends_at": "2026-06-14T18:34:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Verkehrsunfall Züge halten vor Am Tabor",
+    "description": "Verkehrsunfall\nZüge halten vor Am Tabor",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f2772675c01739525de8d4facb6d3cc6d35aa861ca67364dce69fb8d8b0bd255",
+    "pubDate": "2026-06-14T17:34:55+02:00",
+    "starts_at": "2026-06-14T17:34:55+02:00",
+    "ends_at": "2026-06-14T18:35:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-14"
   },
   {
     "source": "Wiener Linien",
