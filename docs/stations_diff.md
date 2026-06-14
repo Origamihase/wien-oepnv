@@ -1,23 +1,23 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-06-07T05:23:12+00:00_
+_Erzeugt am: 2026-06-14T05:50:34+00:00_
 
 **Stationen: 2235 → 2235 (Δ +0)**
 
-## Hinzugefügt (2)
+## Hinzugefügt (1)
 
-- `name:Wien Braillegasse (WL)` — Wien Braillegasse \(WL\)
-- `name:Wien Siemensplatz (WL)` — Wien Siemensplatz \(WL\)
+- `name:Wien Torricelligasse (WL)` — Wien Torricelligasse \(WL\)
 
-## Entfernt (2)
+## Entfernt (1)
 
-- `name:Wien Breitenseer Straße, Braillegasse (WL)` — Wien Breitenseer Straße, Braillegasse \(WL\)
-- `name:Wien Carabelligasse, Ruthnergasse (WL)` — Wien Carabelligasse, Ruthnergasse \(WL\)
+- `name:Wien Ameisbachzeile (WL)` — Wien Ameisbachzeile \(WL\)
 
 ## Umbenannt (0)
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (1)
+## Koordinaten verschoben (≥ 100 m) (3)
 
-- `name:Wien Ruthnergasse (WL)` — Wien Ruthnergasse \(WL\) (949 m)
+- `bst:711` — Schwechat (159 m)
+- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
+- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)
