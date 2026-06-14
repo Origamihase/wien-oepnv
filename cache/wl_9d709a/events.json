@@ -590,14 +590,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Verkehrsunfall Betrieb ab Wallensteinplatz",
-    "description": "Verkehrsunfall\nBetrieb ab Wallensteinplatz",
+    "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "068fbd14ede504c63ce96ad93c8f820ddd441e2bb7653a14828af576d6613ca3",
-    "pubDate": "2026-06-14T17:32:07+02:00",
-    "starts_at": "2026-06-14T17:32:30+02:00",
-    "ends_at": "2026-06-14T20:30:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-06-14"
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2026-06-14T20:17:15+02:00",
+    "starts_at": "2026-06-14T20:17:19+02:00",
+    "ends_at": "2026-06-14T21:16:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-06-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Polizeieinsatz",
+    "description": "Linie 18: Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Voraussichtliche Dauer: 20:40 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schlachthausgasse U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46",
+    "pubDate": "2026-06-14T20:18:00+02:00",
+    "starts_at": "2026-06-14T20:18:00+02:00",
+    "ends_at": "2026-06-14T23:55:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-06-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b6c91de6a573124e11d145d18e3e1d2e44abd0ff6a0d3a6eac284f68d68b53ac",
+    "pubDate": "2026-06-14T20:09:04+02:00",
+    "starts_at": "2026-06-14T20:09:26+02:00",
+    "ends_at": "2026-06-14T21:08:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-06-14"
   },
   {
     "source": "Wiener Linien",
@@ -794,6 +818,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "43: Feuerwehreinsatz",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a5d524e0496637839b613eb65e5ff456ba424c90a00d0477bebddc4ab6727a6e",
+    "pubDate": "2026-06-14T20:07:00+02:00",
+    "starts_at": "2026-06-14T20:07:00+02:00",
+    "ends_at": "2026-06-14T23:55:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-06-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "44A: Busse halten Alszeile gegenüber 93",
     "description": "Bauarbeiten\nBusse halten Alszeile gegenüber 93",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -802,6 +838,30 @@
     "starts_at": "2026-06-12T00:00:14+02:00",
     "ends_at": "2026-06-14T23:59:59+02:00",
     "_identity": "wl|störung|L=44A|D=2026-06-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Feuerwehreinsatz",
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ea5b095a77f1d0ae54d57f6944fc398dc421747a2e992caa1b9f4dd678e1e2ec",
+    "pubDate": "2026-06-14T20:07:00+02:00",
+    "starts_at": "2026-06-14T20:07:00+02:00",
+    "ends_at": "2026-06-14T20:29:00+02:00",
+    "_identity": "wl|störung|L=44|D=2026-06-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eb3ae377882744c1a6127826e6cb0ae2ba7766d6adb0b21111f11baa29343229",
+    "pubDate": "2026-06-14T20:09:55+02:00",
+    "starts_at": "2026-06-14T20:10:10+02:00",
+    "ends_at": "2026-06-14T21:09:00+02:00",
+    "_identity": "wl|störung|L=44|D=2026-06-14"
   },
   {
     "source": "Wiener Linien",
