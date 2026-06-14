@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 14 Jun 2026 21:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2026 21:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[44: Fahrtbehinderung wegen Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eb3ae377882744c1a6127826e6cb0ae2ba7766d6adb0b21111f11baa29343229</guid>
-      <pubDate>Sun, 14 Jun 2026 20:09:55 +0200</pubDate>
-      <ext:first_seen>Sun, 14 Jun 2026 20:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 14 Jun 2026 20:10:10 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 14 Jun 2026 21:09:00 +0200</ext:ends_at>
-      <description>[Am 14.06.2026]</description>
-      <content:encoded><![CDATA[[Am 14.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a5d524e0496637839b613eb65e5ff456ba424c90a00d0477bebddc4ab6727a6e</guid>
-      <pubDate>Sun, 14 Jun 2026 20:07:00 +0200</pubDate>
-      <ext:first_seen>Sun, 14 Jun 2026 20:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 14 Jun 2026 20:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 14 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 14.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 14.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[2: Verkehrsunfall Betrieb ab Höchstädtplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Alaudagasse wird die Linie 19A umgeleitet. [11.06.2026 – 17.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Alaudagasse wird die Linie 19A umgeleitet.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[67A/67B: Bauarbeiten Alaudagasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b8af952f30f86883b3b0b3c49ab714b3849482574a9e90ac64d59dd036f4fd21</guid>
+      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 17:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet. [11.06.2026 – 17.07.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S1/S2/S3/S4/S7: S-Bahn-Stammstrecke (Phase 1)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4b70ce74a11c4f70f09d0367673c22eb36d04af12214b897c4a7e1462ca02170</guid>
+      <pubDate>Wed, 10 Jun 2026 21:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 16:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 21:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 08 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>S-Bahn-Stammstrecke (Phase 1) Wegen Bauarbeiten kommt es auf der Wiener Stammstrecke sowie auf den Nordästen zu Sperren. [10.06.2026 – 08.09.2026]</description>
+      <content:encoded><![CDATA[S-Bahn-Stammstrecke (Phase 1) Wegen Bauarbeiten kommt es auf der Wiener Stammstrecke sowie auf den Nordästen zu Sperren.<br/>[10.06.2026 – 08.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
