@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 15 Jun 2026 23:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 23:31:09 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U4/U6: service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0baa0ec5a514c3ea67e9cdddd023a45c9925104012953b58c632f7c9ba86b87a</guid>
-      <pubDate>Mon, 15 Jun 2026 22:32:00 +0200</pubDate>
-      <ext:first_seen>Mon, 15 Jun 2026 23:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 15 Jun 2026 22:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line U6: irregular intervals in both directions. [On 15.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line U6: irregular intervals in both directions.<br/>[On 15.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Donaufelder Straße crossing with Plateau Theodor-Körner-Gasse and Plankenbüchlergasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 17 Jun 2026 08:00:00 +0200</ext:ends_at>
       <description>Because of construction works in the Volkertplatz range, the 5B line is redirected. [11.06.2026 – 17.06.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Volkertplatz range, the 5B line is redirected.<br/>[11.06.2026 – 17.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">60f024349a5b7567ffb161e741e1f27a7ae248401b022b3cdd6de8e1659e7d7a</guid>
+      <pubDate>Wed, 10 Jun 2026 21:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 21:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
+      <description>S80 Due to construction works partial failures of S80. Period: Phase 1X: From Saturday, 4. July 2026 to Sunday, 6. September 2026. Phase 2: From Monday, 7. September 2026 to … [From 04.07.2026]</description>
+      <content:encoded><![CDATA[S80 Due to construction works partial failures of S80. Period: Phase 1X: From Saturday, 4. July 2026 to Sunday, 6. September 2026. Phase 2: From Monday, 7. September 2026 to …<br/>[From 04.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
