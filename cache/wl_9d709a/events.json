@@ -602,13 +602,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Rettungseinsatz Betrieb ab Fickeysstraße",
-    "description": "Rettungseinsatz\nBetrieb ab Fickeysstraße",
+    "title": "11: Schadhaftes Fahrzeug",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
-    "pubDate": "2026-06-15T16:41:13+02:00",
-    "starts_at": "2026-06-15T16:41:42+02:00",
-    "ends_at": "2026-06-15T17:40:00+02:00",
+    "guid": "139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6",
+    "pubDate": "2026-06-15T17:20:00+02:00",
+    "starts_at": "2026-06-15T17:20:00+02:00",
+    "ends_at": "2026-06-15T23:55:00+02:00",
     "_identity": "wl|störung|L=11|D=2026-06-15"
   },
   {
@@ -620,7 +620,7 @@
     "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
     "pubDate": "2026-06-15T16:38:00+02:00",
     "starts_at": "2026-06-15T16:38:00+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
+    "ends_at": "2026-06-15T18:00:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-06-15"
   },
   {
@@ -644,7 +644,7 @@
     "guid": "59e208367d2d4abd51c67734b05d4470604d748bf4d8210aec89186b2434cefa",
     "pubDate": "2026-06-15T16:05:00+02:00",
     "starts_at": "2026-06-15T16:05:00+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
+    "ends_at": "2026-06-15T18:00:00+02:00",
     "_identity": "wl|störung|L=26|D=2026-06-15"
   },
   {
@@ -914,13 +914,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Rettungseinsatz Betrieb ab Fickeysstraße",
-    "description": "Rettungseinsatz\nBetrieb ab Fickeysstraße",
+    "title": "71: Schadhaftes Fahrzeug",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c",
-    "pubDate": "2026-06-15T16:35:54+02:00",
-    "starts_at": "2026-06-15T16:40:15+02:00",
-    "ends_at": "2026-06-15T17:39:00+02:00",
+    "guid": "6386a0a1443709a811da286faca3c110f82cb450fccefa41edfcc91b1f2e483b",
+    "pubDate": "2026-06-15T17:20:00+02:00",
+    "starts_at": "2026-06-15T17:20:00+02:00",
+    "ends_at": "2026-06-15T23:55:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-06-15"
   },
   {
@@ -934,18 +934,6 @@
     "starts_at": "2026-06-12T00:00:18+02:00",
     "ends_at": "2026-06-15T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-06-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7B: Verkehrsunfall",
-    "description": "Linie 7B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b4b491a65d96477889ae128635b88be761ae0826bdaef6e61698c43cccd6738a",
-    "pubDate": "2026-06-15T17:06:00+02:00",
-    "starts_at": "2026-06-15T17:06:00+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=7B|D=2026-06-15"
   },
   {
     "source": "Wiener Linien",
@@ -974,20 +962,56 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "61050604051e6004ec6f1aa1bd456297d7a5a3c423af697a9d36147a6443b43a",
+    "pubDate": "2026-06-15T17:36:11+02:00",
+    "starts_at": "2026-06-15T17:36:18+02:00",
+    "ends_at": "2026-06-15T22:30:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-06-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fremder Verkehrsunfall",
+    "description": "Linie 9: Betrieb nur zwischen Antonigasse und Johann-Nepomuk-Berger-Platz. Weichen Sie ersatzweise auf die Linien 2, 10A aus. Voraussichtliche Dauer: 18:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Camillo-Sitte-Gasse .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8592082f0ee1e02c1752914f4264dc0c7712b06abe68bfff8093855857b88f37",
+    "pubDate": "2026-06-15T17:35:00+02:00",
+    "starts_at": "2026-06-15T17:35:00+02:00",
+    "ends_at": "2026-06-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-06-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fremdunfall Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "description": "Fremdunfall\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "af0654dc1173e27a66bfa684ee36d493fa8578f378fba18050776484e14a389b",
+    "pubDate": "2026-06-15T17:36:40+02:00",
+    "starts_at": "2026-06-15T17:37:08+02:00",
+    "ends_at": "2026-06-15T21:15:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-06-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U1: Rettungseinsatz",
     "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
     "pubDate": "2026-06-15T16:39:00+02:00",
     "starts_at": "2026-06-15T16:39:00+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
+    "ends_at": "2026-06-15T17:59:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-06-15"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U2: Rettungseinsatz",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Stadion.",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
     "pubDate": "2026-06-15T17:09:00+02:00",
@@ -1018,17 +1042,5 @@
     "starts_at": "2026-06-15T17:23:49+02:00",
     "ends_at": "2026-06-15T18:23:00+02:00",
     "_identity": "wl|störung|L=|D=2026-06-15|TK=fahrtbehinderung schadhafter zug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Rettungseinsatz Züge halten Simmeringer Hauptstraße 164",
-    "description": "Rettungseinsatz\nZüge halten Simmeringer Hauptstraße 164",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
-    "pubDate": "2026-06-15T16:42:40+02:00",
-    "starts_at": "2026-06-15T16:43:38+02:00",
-    "ends_at": "2026-06-15T17:42:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-06-15|TK=rettungseinsatz"
   }
 ]
