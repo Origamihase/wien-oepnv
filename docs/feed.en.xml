@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 15 Jun 2026 08:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 09:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[67B: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">230d9dc48412f1df76ccb6e3b6c7f5fd537aba494589857649b2725c10e1e3fd</guid>
+      <pubDate>Mon, 15 Jun 2026 08:58:00 +0200</pubDate>
+      <ext:first_seen>Mon, 15 Jun 2026 09:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 15 Jun 2026 08:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Alterlaa U. expected duration: 09:15. Reason: rescue operation in the Inzersdorf, Großmarkt stop area. [On 15.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Alterlaa U. expected duration: 09:15. Reason: rescue operation in the Inzersdorf, Großmarkt stop area.<br/>[On 15.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Donaufelder Straße crossing with Plateau Theodor-Körner-Gasse and Plankenbüchlergasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Tue, 08 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>S-Bahn-Stammstrecke (phase 1) Because of construction works, the Vienna Stammstrecke as well as the northern branches are blocked. [10.06.2026 – 08.09.2026]</description>
       <content:encoded><![CDATA[S-Bahn-Stammstrecke (phase 1) Because of construction works, the Vienna Stammstrecke as well as the northern branches are blocked.<br/>[10.06.2026 – 08.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5B: diversionVolkertplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d5d62e9bb23d3478f0689193fbf8073f6501c7ea81820359e657295a81f8b1b9</guid>
-      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 13:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 17 Jun 2026 08:00:00 +0200</ext:ends_at>
-      <description>Because of construction works in the Volkertplatz range, the 5B line is redirected. [11.06.2026 – 17.06.2026]</description>
-      <content:encoded><![CDATA[Because of construction works in the Volkertplatz range, the 5B line is redirected.<br/>[11.06.2026 – 17.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
