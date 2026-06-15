@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 15 Jun 2026 10:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 11:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1A: Betriebsstörung]]></title>
+      <title><![CDATA[57A: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1479d69628ad6774aff996064517e6a4ab864e04445cce50bdca7679b4465bb8</guid>
+      <pubDate>Mon, 15 Jun 2026 10:53:00 +0200</pubDate>
+      <ext:first_seen>Mon, 15 Jun 2026 11:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 15 Jun 2026 10:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: police operation. [On 15.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: police operation.<br/>[On 15.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37: service obstruction because of police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">81435586c2728ac85f64e190f4ce6ba0cbb5e28eca6bb2623414210333c443f5</guid>
+      <pubDate>Mon, 15 Jun 2026 10:44:00 +0200</pubDate>
+      <ext:first_seen>Mon, 15 Jun 2026 11:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 15 Jun 2026 10:46:37 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Schottentor U. expected duration: 11:10 o'clock . Reason: police operation in the Hohe Warte stop area. [On 15.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Schottentor U. expected duration: 11:10 o'clock . Reason: police operation in the Hohe Warte stop area.<br/>[On 15.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A: service disruption]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4b2918ad99aed210caba7a735fb4dbba20880a1518a017af7457fa01e1b00b2f</guid>
       <pubDate>Mon, 15 Jun 2026 10:16:00 +0200</pubDate>
       <ext:first_seen>Mon, 15 Jun 2026 10:30:54 +0200</ext:first_seen>
       <ext:starts_at>Mon, 15 Jun 2026 10:16:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 15.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 15.06.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: service disruption. [On 15.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 15.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: service disruption]]></title>
@@ -27,7 +49,7 @@
       <pubDate>Mon, 15 Jun 2026 09:09:00 +0200</pubDate>
       <ext:first_seen>Sat, 13 Jun 2026 14:30:52 +0200</ext:first_seen>
       <ext:starts_at>Mon, 15 Jun 2026 09:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 15 Jun 2026 10:59:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: service disruption. [On 15.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 15.06.2026]]]></content:encoded>
     </item>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out at day and, if necessary, at night, at the time of 22:00 to 05:00 at … [11.01.2026 – 03.07.2026]</description>
       <content:encoded><![CDATA[The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out at day and, if necessary, at night, at the time of 22:00 to 05:00 at …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[19A: roadworks Alaudagasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">091b88a1867b30e7afae6dd0ea450642e7950ad126befc98b0afdffd64423501</guid>
-      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 17:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
-      <description>Because of construction works in the Alaudagasse range, the 19A line is redirected. [11.06.2026 – 17.07.2026]</description>
-      <content:encoded><![CDATA[Because of construction works in the Alaudagasse range, the 19A line is redirected.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[67A/67B: construction works Alaudagasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b8af952f30f86883b3b0b3c49ab714b3849482574a9e90ac64d59dd036f4fd21</guid>
-      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 17:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
-      <description>Because of construction works in the Alaudagasse lines 67A and 67B are redirected. [11.06.2026 – 17.07.2026]</description>
-      <content:encoded><![CDATA[Because of construction works in the Alaudagasse lines 67A and 67B are redirected.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
