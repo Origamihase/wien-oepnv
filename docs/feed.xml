@@ -7,26 +7,15 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 15 Jun 2026 15:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 16:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2: Verunreinigung]]></title>
+      <title><![CDATA[73A: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b006aded318189d4a1ad796aeaa86ab95d007972ea3344db4b50a4fe019c54bc</guid>
-      <pubDate>Mon, 15 Jun 2026 15:06:00 +0200</pubDate>
-      <ext:first_seen>Mon, 15 Jun 2026 15:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 15 Jun 2026 15:06:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 15.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 15.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Fahrtbehinderung wegen Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d</guid>
-      <pubDate>Mon, 15 Jun 2026 14:41:35 +0200</pubDate>
-      <ext:first_seen>Mon, 15 Jun 2026 15:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 15 Jun 2026 14:53:45 +0200</ext:starts_at>
+      <guid isPermaLink="false">209291c90a9a0be80cf9c9ca717be8b2ed2b4132c5508d48d0b6b94d1d482e96</guid>
+      <pubDate>Mon, 15 Jun 2026 15:49:00 +0200</pubDate>
+      <ext:first_seen>Mon, 15 Jun 2026 16:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 15 Jun 2026 15:49:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 15.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 15.06.2026]]]></content:encoded>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet. [11.06.2026 – 17.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5B: Umleitung Volkertplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d5d62e9bb23d3478f0689193fbf8073f6501c7ea81820359e657295a81f8b1b9</guid>
+      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 13:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 17 Jun 2026 08:00:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Volkertplatz wird die Linie 5B umgeleitet. [11.06.2026 – 17.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Volkertplatz wird die Linie 5B umgeleitet.<br/>[11.06.2026 – 17.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
