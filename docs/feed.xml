@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 15 Jun 2026 15:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 15:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b006aded318189d4a1ad796aeaa86ab95d007972ea3344db4b50a4fe019c54bc</guid>
+      <pubDate>Mon, 15 Jun 2026 15:06:00 +0200</pubDate>
+      <ext:first_seen>Mon, 15 Jun 2026 15:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 15 Jun 2026 15:06:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 15.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 15.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62: Fahrtbehinderung wegen Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 15.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 15.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b22dfbbf389bb0a8ea03be177b6fa20b16f32c05b0828f6ae785106649e64f7b</guid>
-      <pubDate>Mon, 15 Jun 2026 13:16:00 +0200</pubDate>
-      <ext:first_seen>Mon, 15 Jun 2026 13:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 15 Jun 2026 13:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 15 Jun 2026 14:58:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 15.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 15.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Donaufelder Straße Kreuzung mit Plateau Theodor-Körner-Gasse und Plankenbüchlergasse]]></title>

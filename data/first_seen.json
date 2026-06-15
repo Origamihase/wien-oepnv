@@ -3840,7 +3840,11 @@
   "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d": {
     "first_seen": "2026-06-15T13:01:04.890977+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "62: service obstruction due to rescue operation"
+      },
+      "epoch": 3
     }
   },
   "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab": {
@@ -5880,6 +5884,16 @@
         "title": "U2/U5: Bacherplatz from Arbeitergasse to Schwarzhorngasse"
       },
       "epoch": 2
+    }
+  },
+  "b006aded318189d4a1ad796aeaa86ab95d007972ea3344db4b50a4fe019c54bc": {
+    "first_seen": "2026-06-15T13:31:02.180602+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "2: impurity"
+      },
+      "epoch": 3
     }
   },
   "b0a24007474aab764828e2f63bdadfa9f2fa0506bb84bdfcd25263dd7bbb7dca": {
