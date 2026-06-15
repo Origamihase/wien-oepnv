@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 15 Jun 2026 10:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 10:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[17A: Polizeieinsatz]]></title>
+      <title><![CDATA[1A: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3aceb9585e33118fa6e61467f016ba8897699d0ad0d16115c5a054edc7c58f10</guid>
-      <pubDate>Mon, 15 Jun 2026 09:41:00 +0200</pubDate>
-      <ext:first_seen>Mon, 15 Jun 2026 10:00:54 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 15 Jun 2026 09:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 15 Jun 2026 09:59:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 15.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 15.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[67B: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">230d9dc48412f1df76ccb6e3b6c7f5fd537aba494589857649b2725c10e1e3fd</guid>
-      <pubDate>Mon, 15 Jun 2026 08:58:00 +0200</pubDate>
-      <ext:first_seen>Mon, 15 Jun 2026 09:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 15 Jun 2026 08:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 15 Jun 2026 09:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 15.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 15.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">4b2918ad99aed210caba7a735fb4dbba20880a1518a017af7457fa01e1b00b2f</guid>
+      <pubDate>Mon, 15 Jun 2026 10:16:00 +0200</pubDate>
+      <ext:first_seen>Mon, 15 Jun 2026 10:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 15 Jun 2026 10:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 15 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 15.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 15.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Betriebsstörung]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Alaudagasse wird die Linie 19A umgeleitet. [11.06.2026 – 17.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Alaudagasse wird die Linie 19A umgeleitet.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[67A/67B: Bauarbeiten Alaudagasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b8af952f30f86883b3b0b3c49ab714b3849482574a9e90ac64d59dd036f4fd21</guid>
+      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 17:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet. [11.06.2026 – 17.07.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Alaudagasse werden die Linien 67A und 67B umgeleitet.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
