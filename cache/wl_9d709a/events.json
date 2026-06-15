@@ -602,30 +602,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Schadhaftes Fahrzeug",
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6",
-    "pubDate": "2026-06-15T17:20:00+02:00",
-    "starts_at": "2026-06-15T17:20:00+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-06-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
-    "pubDate": "2026-06-15T19:15:00+02:00",
-    "starts_at": "2026-06-15T19:20:49+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-06-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -634,18 +610,6 @@
     "starts_at": "2026-06-12T00:00:18+02:00",
     "ends_at": "2026-06-15T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Schadhaftes Fahrzeug",
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8de0171cb5a82c20b0963bf79e2f59c4da0c97e94c58a5fdab5ede435ad86aba",
-    "pubDate": "2026-06-15T16:05:00+02:00",
-    "starts_at": "2026-06-15T16:05:00+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-06-15"
   },
   {
     "source": "Wiener Linien",
@@ -878,13 +842,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "62: Rettungseinsatz",
     "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
     "pubDate": "2026-06-15T19:15:00+02:00",
-    "starts_at": "2026-06-15T19:20:09+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
+    "starts_at": "2026-06-15T19:15:00+02:00",
+    "ends_at": "2026-06-15T20:29:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-15"
   },
   {
@@ -908,7 +872,7 @@
     "guid": "6386a0a1443709a811da286faca3c110f82cb450fccefa41edfcc91b1f2e483b",
     "pubDate": "2026-06-15T17:20:00+02:00",
     "starts_at": "2026-06-15T17:20:00+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
+    "ends_at": "2026-06-15T20:29:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-06-15"
   },
   {
@@ -962,18 +926,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-06-15T18:30:00+02:00",
-    "starts_at": "2026-06-15T18:30:00+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-06-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Fremdunfall Betrieb ab Johann-Nepomuk-Berger-Platz",
     "description": "Fremdunfall\nBetrieb ab Johann-Nepomuk-Berger-Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -992,44 +944,20 @@
     "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
     "pubDate": "2026-06-15T18:08:00+02:00",
     "starts_at": "2026-06-15T18:11:10+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
+    "ends_at": "2026-06-15T22:30:00+02:00",
     "_identity": "wl|störung|L=O|D=2026-06-15"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Rettungseinsatz",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-06-15T17:09:00+02:00",
-    "starts_at": "2026-06-15T17:09:00+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-06-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U6: Betriebsstörung",
-    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Josefstädter Straße und Alser Straße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 20:10 Uhr. Grund: Betriebsstörung im Bereich Alser Straße.",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
     "pubDate": "2026-06-15T19:45:00+02:00",
     "starts_at": "2026-06-15T19:45:00+02:00",
     "ends_at": "2026-06-15T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-06-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "WLB: Rettungseinsatz Betrieb ab Matzleinsdorfer Platz",
-    "description": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "013b99775d5afd765b05fbb4b04c72d7533a8d35cf6eae25198189f424bae72c",
-    "pubDate": "2026-06-15T19:15:00+02:00",
-    "starts_at": "2026-06-15T19:19:42+02:00",
-    "ends_at": "2026-06-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=WLB|D=2026-06-15"
   },
   {
     "source": "Wiener Linien",
