@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 15 Jun 2026 22:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 22:31:08 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[9: Fahrtbehinderung Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">61050604051e6004ec6f1aa1bd456297d7a5a3c423af697a9d36147a6443b43a</guid>
-      <pubDate>Mon, 15 Jun 2026 17:36:11 +0200</pubDate>
-      <ext:first_seen>Mon, 15 Jun 2026 18:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 15 Jun 2026 17:36:18 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 15 Jun 2026 22:30:00 +0200</ext:ends_at>
-      <description>[Am 15.06.2026]</description>
-      <content:encoded><![CDATA[[Am 15.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Donaufelder Straße Kreuzung mit Plateau Theodor-Körner-Gasse und Plankenbüchlergasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 17 Jun 2026 08:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Volkertplatz wird die Linie 5B umgeleitet. [11.06.2026 – 17.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Volkertplatz wird die Linie 5B umgeleitet.<br/>[11.06.2026 – 17.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">60f024349a5b7567ffb161e741e1f27a7ae248401b022b3cdd6de8e1659e7d7a</guid>
+      <pubDate>Wed, 10 Jun 2026 21:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 10 Jun 2026 21:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
+      <description>S80 Wegen Bauarbeiten kommt es zu Teilausfällen der S80. Zeitraum: Phase 1: Ab Samstag, 4. Juli 2026 bis Sonntag, 6. September 2026. Phase 2: Ab Montag, 7. September 2026 bis … [Ab 04.07.2026]</description>
+      <content:encoded><![CDATA[S80 Wegen Bauarbeiten kommt es zu Teilausfällen der S80. Zeitraum: Phase 1: Ab Samstag, 4. Juli 2026 bis Sonntag, 6. September 2026. Phase 2: Ab Montag, 7. September 2026 bis …<br/>[Ab 04.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
