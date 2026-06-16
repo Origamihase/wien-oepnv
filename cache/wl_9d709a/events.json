@@ -878,6 +878,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N20: Haltestelle Aufgelassen",
+    "description": "Bauarbeiten\nHaltestelle Aufgelassen",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d2fac8896f3cb1658ef02d9284e11a1d30ab6a7592f3828f3652caa8acaa18ed",
+    "pubDate": "2026-06-16T03:02:17+02:00",
+    "starts_at": "2026-06-16T03:02:17+02:00",
+    "ends_at": "2026-06-16T23:59:59+02:00",
+    "_identity": "wl|störung|L=N20|D=2026-06-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N29: Busse halten auf der Hauptfahrbahn",
     "description": "Busse halten auf\nder Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
