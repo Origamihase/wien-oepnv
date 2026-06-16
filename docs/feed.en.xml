@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 16 Jun 2026 18:31:03 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2026 19:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[1: impurity]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Tue, 16 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Operation only between Dornbach and Hietzing U. Substitute to the lines U4 and 53A. expected duration: 18:30 watch. Reason: failure at a web crossing … [On 16.06.2026]</description>
       <content:encoded><![CDATA[Operation only between Dornbach and Hietzing U. Substitute to the lines U4 and 53A. expected duration: 18:30 watch. Reason: failure at a web crossing …<br/>[On 16.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44: external traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f53a283f3ee969f2582a7c1c05102b661c4ea8366276196d0cf3bbc0187a3be3</guid>
-      <pubDate>Tue, 16 Jun 2026 17:25:00 +0200</pubDate>
-      <ext:first_seen>Tue, 16 Jun 2026 17:31:04 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 16 Jun 2026 17:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 16 Jun 2026 18:28:00 +0200</ext:ends_at>
-      <description>service obstruction towards Ottakring, Maroltingergasse. expected duration: 17X:45. Reason: Foreign traffic accident in the Ottakringer Straße 232 area. [On 16.06.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Ottakring, Maroltingergasse. expected duration: 17X:45. Reason: Foreign traffic accident in the Ottakringer Straße 232 area.<br/>[On 16.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A/63A: crane works Grieshofgasse on 24.06.2026]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>The pipe laying work (preparation for underground construction) is carried out in general at day, with the Gräffergasse from the Halirschgasse and Schultheßgasse up to the … [19.10.2025 – 03.07.2026]</description>
       <content:encoded><![CDATA[The pipe laying work (preparation for underground construction) is carried out in general at day, with the Gräffergasse from the Halirschgasse and Schultheßgasse up to the …<br/>[19.10.2025 – 03.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U5: Spitalgasse from 29 to 33]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">45d5bba5b772ec0cb338139ba4e523945163739b54c0365fe65bbfcb6dc8a13c</guid>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 22:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 11 Jan 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
+      <description>The cable laying work (110 kV conversion as preliminary work for the U5) is carried out during the day, blocking of the pavement and construction of a minimum 2.00 m wide … [11.01.2026 – 03.07.2026]</description>
+      <content:encoded><![CDATA[The cable laying work (110 kV conversion as preliminary work for the U5) is carried out during the day, blocking of the pavement and construction of a minimum 2.00 m wide …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
