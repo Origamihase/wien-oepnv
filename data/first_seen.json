@@ -7601,6 +7601,15 @@
       "epoch": 3
     }
   },
+  "e5f59e3ff878cbee70065468d0a59c755fe3ffc451ba95b9a350bd057f6d5362": {
+    "first_seen": "2026-06-16T15:31:04.725912+00:00",
+    "translations": {
+      "en": {
+        "title": "U6: line U6 No operation between Dresdner Stra\u00dfe and Nu\u00dfdorfer Stra\u00dfe"
+      },
+      "epoch": 3
+    }
+  },
   "e622e1ea097edd2a82d07a0cd297b0dfccd7d078c46787e129d82f6a42ec64da": {
     "first_seen": "2026-05-28T15:01:07.709192+00:00",
     "translations": {
@@ -8161,6 +8170,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "17A: event"
+      },
+      "epoch": 3
+    }
+  },
+  "f53a283f3ee969f2582a7c1c05102b661c4ea8366276196d0cf3bbc0187a3be3": {
+    "first_seen": "2026-06-16T15:31:04.725912+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards Ottakring, Maroltingergasse. expected duration: 17X:45. Reason: Foreign traffic accident in the Ottakringer Stra\u00dfe 232 area.",
+        "title": "44: external traffic accident"
       },
       "epoch": 3
     }
