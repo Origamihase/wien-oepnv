@@ -626,18 +626,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26A: Polizeieinsatz",
-    "description": "Linie 26A: Unregelmäßige Intervalle in Richtung Groß-Enzersdorf. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cc50dc6a5ca22ae79c6dcc472391441d2a97d10bcf2b47c7cba4c68f563860cc",
-    "pubDate": "2026-06-16T22:16:00+02:00",
-    "starts_at": "2026-06-16T22:16:00+02:00",
-    "ends_at": "2026-06-16T22:58:00+02:00",
-    "_identity": "wl|störung|L=26A|D=2026-06-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Dänenstraße ggü. 2",
     "description": "Bauarbeiten\nBusse halten Dänenstraße ggü. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -922,6 +910,18 @@
     "starts_at": "2026-06-16T23:00:27+02:00",
     "ends_at": "2026-06-17T05:30:00+02:00",
     "_identity": "wl|störung|L=N29|D=2026-06-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-06-16T23:12:00+02:00",
+    "starts_at": "2026-06-16T23:12:00+02:00",
+    "ends_at": "2026-06-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-06-16"
   },
   {
     "source": "Wiener Linien",
