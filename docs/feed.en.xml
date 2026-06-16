@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 16 Jun 2026 13:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2026 13:31:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[6: delays]]></title>
+      <title><![CDATA[60: foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">03b747bc4c57f0d83aba2ed60a1156b616a882a8e9b1ca40258d97373518d195</guid>
-      <pubDate>Tue, 16 Jun 2026 12:43:00 +0200</pubDate>
-      <ext:first_seen>Tue, 16 Jun 2026 13:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 16 Jun 2026 12:43:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">fa13a977753886fe597c353a144a3e24d7a3675a48c2729c300f9be73e720a96</guid>
+      <pubDate>Tue, 16 Jun 2026 13:27:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 16 Jun 2026 13:27:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 16 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 16.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 16.06.2026]]]></content:encoded>
+      <description>Operation only between Westbahnhof S U and Hofwiesengasse. [On 16.06.2026]</description>
+      <content:encoded><![CDATA[Operation only between Westbahnhof S U and Hofwiesengasse.<br/>[On 16.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/63A: crane works Grieshofgasse on 24.06.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cda0fbb9958072fc0461440f1e386e37515f4d13b4b7a4534567d8ec664f1786</guid>
+      <pubDate>Tue, 16 Jun 2026 13:15:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 16 Jun 2026 13:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
+      <description>Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected. [16.06.2026 – 24.06.2026]</description>
+      <content:encoded><![CDATA[Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/37A/40A: construction works Dänenstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">24b9a55433e94ee81eb3b282e685d000f0fcd4a4ac761305f169183e255ac623</guid>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected. [01.06.2026 – 01.06.2027]</description>
+      <content:encoded><![CDATA[Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N20: stop Discontinued]]></title>
@@ -35,12 +57,12 @@
       <title><![CDATA[62: service obstruction due to rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d</guid>
-      <pubDate>Tue, 16 Jun 2026 12:41:53 +0200</pubDate>
+      <pubDate>Tue, 16 Jun 2026 12:39:00 +0200</pubDate>
       <ext:first_seen>Mon, 15 Jun 2026 15:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 16 Jun 2026 12:55:30 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 16 Jun 2026 13:54:00 +0200</ext:ends_at>
-      <description>[On 16.06.2026]</description>
-      <content:encoded><![CDATA[[On 16.06.2026]]]></content:encoded>
+      <ext:starts_at>Tue, 16 Jun 2026 13:04:36 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 16 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 16.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 16.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Donaufelder Straße crossing with Plateau Theodor-Körner-Gasse and Plankenbüchlergasse]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>The cable laying work (110 kV conversion as preliminary work for the U5) is carried out during the day, blocking of the pavement and construction of a minimum 2.00 m wide … [11.01.2026 – 03.07.2026]</description>
       <content:encoded><![CDATA[The cable laying work (110 kV conversion as preliminary work for the U5) is carried out during the day, blocking of the pavement and construction of a minimum 2.00 m wide …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U5: Währinger Straße 40-42 to 54]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">651ee0c6e6a4e7409ae9be99ad53259b2248e78e30d4b4948e2e6b4127a448b4</guid>
-      <pubDate>Sun, 11 Jan 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Jan 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out at day and, if necessary, at night, at the time of 22:00 to 05:00 at … [11.01.2026 – 03.07.2026]</description>
-      <content:encoded><![CDATA[The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out at day and, if necessary, at night, at the time of 22:00 to 05:00 at …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[19A: roadworks Alaudagasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">091b88a1867b30e7afae6dd0ea450642e7950ad126befc98b0afdffd64423501</guid>
-      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 17:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
-      <description>Because of construction works in the Alaudagasse range, the 19A line is redirected. [11.06.2026 – 17.07.2026]</description>
-      <content:encoded><![CDATA[Because of construction works in the Alaudagasse range, the 19A line is redirected.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
