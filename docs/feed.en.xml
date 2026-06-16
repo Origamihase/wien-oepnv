@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 16 Jun 2026 19:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2026 20:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[10: interference at a level crossing]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70fda55609c717c6e33b864081414fe454926fa86793b92ea1e0a1951b6b736d</guid>
-      <pubDate>Tue, 16 Jun 2026 17:34:00 +0200</pubDate>
-      <ext:first_seen>Tue, 16 Jun 2026 18:01:13 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 16 Jun 2026 17:34:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 16 Jun 2026 19:29:00 +0200</ext:ends_at>
-      <description>Operation only between Dornbach and Hietzing U. Substitute to the lines U4 and 53A. expected duration: 18:30 watch. Reason: failure at a web crossing … [On 16.06.2026]</description>
-      <content:encoded><![CDATA[Operation only between Dornbach and Hietzing U. Substitute to the lines U4 and 53A. expected duration: 18:30 watch. Reason: failure at a web crossing …<br/>[On 16.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[10A/63A: crane works Grieshofgasse on 24.06.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out at day and, if necessary, at night, at the time of 22:00 to 05:00 at … [11.01.2026 – 03.07.2026]</description>
       <content:encoded><![CDATA[The cable laying work (110 kV conversion as preliminary work for the U5) will be carried out at day and, if necessary, at night, at the time of 22:00 to 05:00 at …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[19A: roadworks Alaudagasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">091b88a1867b30e7afae6dd0ea450642e7950ad126befc98b0afdffd64423501</guid>
+      <pubDate>Thu, 11 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 17:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 11 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 17 Jul 2026 23:59:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Alaudagasse range, the 19A line is redirected. [11.06.2026 – 17.07.2026]</description>
+      <content:encoded><![CDATA[Because of construction works in the Alaudagasse range, the 19A line is redirected.<br/>[11.06.2026 – 17.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
