@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 17 Jun 2026 15:01:18 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 15:31:07 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[71: track damage service from Schwarzenbergplatz]]></title>
@@ -59,7 +59,7 @@
       <pubDate>Wed, 17 Jun 2026 13:04:00 +0200</pubDate>
       <ext:first_seen>Wed, 17 Jun 2026 13:30:53 +0200</ext:first_seen>
       <ext:starts_at>Wed, 17 Jun 2026 13:04:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 17 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Wed, 17 Jun 2026 15:30:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: defective vehicle. [On 17.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 17.06.2026]]]></content:encoded>
     </item>
@@ -67,17 +67,6 @@
       <title><![CDATA[26: track damage]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">69cffe6b39b2772ee1a6f98a8a596bd010bbe37e4eb986929c5f60726295031b</guid>
-      <pubDate>Wed, 17 Jun 2026 10:28:00 +0200</pubDate>
-      <ext:first_seen>Wed, 17 Jun 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 17 Jun 2026 10:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 17 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 17.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 17.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: track damage]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c6193a3f82dabd63cdfba2ede1497e914a1dc292bccfbd84a03efb47471127ee</guid>
       <pubDate>Wed, 17 Jun 2026 10:28:00 +0200</pubDate>
       <ext:first_seen>Wed, 17 Jun 2026 13:30:53 +0200</ext:first_seen>
       <ext:starts_at>Wed, 17 Jun 2026 10:28:00 +0200</ext:starts_at>
@@ -95,6 +84,17 @@
       <ext:ends_at>Wed, 17 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: interference at a level crossing. [On 17.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: interference at a level crossing.<br/>[On 17.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27: track damage service from Berresgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0ea6e852f1392b7a940576bc735675584d92de79ce9bfc452136e2747381370b</guid>
+      <pubDate>Wed, 17 Jun 2026 10:38:45 +0200</pubDate>
+      <ext:first_seen>Wed, 17 Jun 2026 11:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 17 Jun 2026 10:39:06 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 17 Jun 2026 20:00:00 +0200</ext:ends_at>
+      <description>[On 17.06.2026]</description>
+      <content:encoded><![CDATA[[On 17.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A/63A: crane works Grieshofgasse on 24.06.2026]]></title>
