@@ -1614,6 +1614,16 @@
       "epoch": 2
     }
   },
+  "2d35ff00ca738ec95b1a6bd94f8de3f7105ed897f5d6c4a9dc9d5a971cf3ea5d": {
+    "first_seen": "2026-06-17T20:01:06.831535+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "48A: Impurity"
+      },
+      "epoch": 3
+    }
+  },
   "2d45b6da852b996e0cb7d0a979aae9c19692fc48ec76a7326b0f07b2290320fd": {
     "first_seen": "2026-06-16T08:31:03.344559+00:00",
     "translations": {
@@ -1863,6 +1873,14 @@
         "title": "53A: diversion"
       },
       "epoch": 3
+    }
+  },
+  "33c1d895efade64b63c385d7600e970012a929978fddd4d3c589ed2e534629db": {
+    "first_seen": "2026-06-17T20:01:06.831535+00:00",
+    "translations": {
+      "en": {
+        "summary": "delays towards Westbahnhof S U. Reason: switch fault."
+      }
     }
   },
   "341d643ba33e6a249c500644b47638b0987252bfef4c1f23bcf2f867c00bea06": {

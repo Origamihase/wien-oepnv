@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 17 Jun 2026 21:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 22:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[60: Weichenstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">33c1d895efade64b63c385d7600e970012a929978fddd4d3c589ed2e534629db</guid>
+      <pubDate>Wed, 17 Jun 2026 21:57:00 +0200</pubDate>
+      <ext:first_seen>Wed, 17 Jun 2026 22:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 17 Jun 2026 21:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 17 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Verspätungen in Richtung Westbahnhof S U. Grund: Weichenstörung. [Am 17.06.2026]</description>
+      <content:encoded><![CDATA[Verspätungen in Richtung Westbahnhof S U. Grund: Weichenstörung.<br/>[Am 17.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[48A: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2d35ff00ca738ec95b1a6bd94f8de3f7105ed897f5d6c4a9dc9d5a971cf3ea5d</guid>
+      <pubDate>Wed, 17 Jun 2026 21:51:00 +0200</pubDate>
+      <ext:first_seen>Wed, 17 Jun 2026 22:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 17 Jun 2026 21:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 17 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 17.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 17.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[61A: Liesing, Feuerwache]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -95,28 +117,6 @@
       <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag, wobei die Gräffergasse von der Halirschgasse und Schultheßgasse bis zur … [19.10.2025 – 03.07.2026]</description>
       <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag, wobei die Gräffergasse von der Halirschgasse und Schultheßgasse bis zur …<br/>[19.10.2025 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U5: Spitalgasse von 29 bis 33]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">45d5bba5b772ec0cb338139ba4e523945163739b54c0365fe65bbfcb6dc8a13c</guid>
-      <pubDate>Sun, 11 Jan 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Jan 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag, Sperre des Gehsteiges und Errichtung eines mindestens 2,00 m breiten Ersatzgehsteiges auf … [11.01.2026 – 03.07.2026]</description>
-      <content:encoded><![CDATA[Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag, Sperre des Gehsteiges und Errichtung eines mindestens 2,00 m breiten Ersatzgehsteiges auf …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U5: Währinger Straße 40-42 bis 54]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">651ee0c6e6a4e7409ae9be99ad53259b2248e78e30d4b4948e2e6b4127a448b4</guid>
-      <pubDate>Sun, 11 Jan 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Thu, 11 Jun 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Jan 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag und erforderlichenfalls auch in der Nacht, in der Zeit von 22:00 Uhr bis 05:00 Uhr bei … [11.01.2026 – 03.07.2026]</description>
-      <content:encoded><![CDATA[Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag und erforderlichenfalls auch in der Nacht, in der Zeit von 22:00 Uhr bis 05:00 Uhr bei …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
