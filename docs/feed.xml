@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 17 Jun 2026 18:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 18:31:09 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[43A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8562eef56e6ab785d470ddf87e50c438adade4b6ee3bf01b34c913cee8da3974</guid>
+      <pubDate>Wed, 17 Jun 2026 18:26:00 +0200</pubDate>
+      <ext:first_seen>Wed, 17 Jun 2026 18:31:09 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 17 Jun 2026 18:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 17 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 17.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 17.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[61A: Liesing, Feuerwache]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Max-Emanuel-Straße, Peter-Jordan-Straße und Dänenstraße werden die Linien 10A, 37A und 40A umgeleitet. [01.06.2026 – 01.06.2027]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Max-Emanuel-Straße, Peter-Jordan-Straße und Dänenstraße werden die Linien 10A, 37A und 40A umgeleitet.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Donaufelder Straße Kreuzung mit Plateau Theodor-Körner-Gasse und Plankenbüchlergasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">3c3a22e35b75aaa24f34eacad7d7daab8267298b2232903283c10c4e7f9e96cb</guid>
-      <pubDate>Mon, 25 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 26 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Der Fahrzeugverkehr einschließlich des öffentlichen Verkehrs kann in allen bestehenden Fahrrelationen aufrecht gehalten werden. [25.05.2026 – 26.07.2026]</description>
-      <content:encoded><![CDATA[Der Fahrzeugverkehr einschließlich des öffentlichen Verkehrs kann in allen bestehenden Fahrrelationen aufrecht gehalten werden.<br/>[25.05.2026 – 26.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
