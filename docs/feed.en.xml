@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 17 Jun 2026 15:31:07 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 16:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[43: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b1490c67595f9a7dee31e046bae4aa424ec43051f0d3c2d48b18da2cf7be0b45</guid>
+      <pubDate>Wed, 17 Jun 2026 15:41:00 +0200</pubDate>
+      <ext:first_seen>Wed, 17 Jun 2026 16:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 17 Jun 2026 15:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 17 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: defective vehicle. [On 17.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 17.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[71: track damage service from Schwarzenbergplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -51,17 +62,6 @@
       <ext:starts_at>Wed, 17 Jun 2026 13:52:21 +0200</ext:starts_at>
       <description>Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026. [Since 17.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026.<br/>[Since 17.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">11aa33c68f3b235c869f74bc1c41192a0d48a3b681bedab9ef96a1e7b5d4a0d8</guid>
-      <pubDate>Wed, 17 Jun 2026 13:04:00 +0200</pubDate>
-      <ext:first_seen>Wed, 17 Jun 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 17 Jun 2026 13:04:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 17 Jun 2026 15:30:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 17.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 17.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26: track damage]]></title>
