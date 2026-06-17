@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 17 Jun 2026 11:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 12:00:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[16A/17A/67A/67B: Störung an einem Bahnübergang]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Wed, 17 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang. [Am 17.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang.<br/>[Am 17.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1252a6d03226d3f1d21b0f0e84cdaf2b9637cd4ac88019850214fb459e92e018</guid>
-      <pubDate>Wed, 17 Jun 2026 10:39:00 +0200</pubDate>
-      <ext:first_seen>Wed, 17 Jun 2026 11:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 17 Jun 2026 10:39:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 17 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 17.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 17.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[27: Gleisschaden Betrieb ab Berresgasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag, wobei die Gräffergasse von der Halirschgasse und Schultheßgasse bis zur … [19.10.2025 – 03.07.2026]</description>
       <content:encoded><![CDATA[Die Rohrlegungsarbeiten (Vorarbeiten für den U-Bahnbau) erfolgen grundsätzlich bei Tag, wobei die Gräffergasse von der Halirschgasse und Schultheßgasse bis zur …<br/>[19.10.2025 – 03.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U5: Spitalgasse von 29 bis 33]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">45d5bba5b772ec0cb338139ba4e523945163739b54c0365fe65bbfcb6dc8a13c</guid>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 22:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 11 Jan 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
+      <description>Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag, Sperre des Gehsteiges und Errichtung eines mindestens 2,00 m breiten Ersatzgehsteiges auf … [11.01.2026 – 03.07.2026]</description>
+      <content:encoded><![CDATA[Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag, Sperre des Gehsteiges und Errichtung eines mindestens 2,00 m breiten Ersatzgehsteiges auf …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
