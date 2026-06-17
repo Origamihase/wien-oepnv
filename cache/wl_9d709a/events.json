@@ -878,6 +878,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U6: Stellwerksstörung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5eb36c0bee0e695acde6580e57fa99f70cfb4fbfe2db6be7992e23073a052651",
+    "pubDate": "2026-06-17T08:13:00+02:00",
+    "starts_at": "2026-06-17T08:13:00+02:00",
+    "ends_at": "2026-06-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-06-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Einstieg: Brünner Straße 31-31A",
     "description": "Bauarbeiten\nEinstieg: Brünner Straße 31-31A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
