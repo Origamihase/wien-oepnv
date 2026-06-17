@@ -242,13 +242,13 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "53A: Umleitung",
-    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten in der Ratmannsdorfgasse kommt es bei der Linie 53A zu einer Umleitung.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Montag, 15. Juni 2025, etwa 07:30 Uhr bis Freitag, 19. Juni 2026, etwa 12:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 53A:</strong><br />Umleitung in beiden Richtungen ab Ratmannsdorfgasse # Veitingergasse &uuml;ber Veitingergasse - Rotenberggasse zur Jagdschlo&szlig;gasse.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen in Richtung Stock im Weg:</span><br />- Veitingergasse (Ratmannsdorfgasse gegen&uuml;ber 20, Haus 2)<br />- Ratmannsdorfgasse (Jagdschlo&szlig;gasse 24)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Veitingergasse (Ratmannsdorfgasse gegen&uuml;ber 26, provisorische Haltestelle)</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen in Richtung Bhf. H&uuml;tteldorf S U:</span><br />- Wolkersbergenstra&szlig;e (Jagdschlo&szlig;gasse gegen&uuml;ber 34)<br />-Ratmannsdorfgasse (Jagdschlo&szlig;gasse 41, Haus 2)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Wolkersbergenstra&szlig;e (Rotenberggasse 2-4, provisorische Haltestelle)</p>",
+    "title": "53A: Umleitung Meytensgasse",
+    "description": "<h2>Bauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten und der dazugeh&ouml;rigen Sperre der Meytensgasse kommt es zu einer Umleitung</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 22. Juni 2026, etwa 07:00 Uhr bis Montag, 29. Juni, etwa 08:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>53A in Richtung Stock im Weg:</strong><br />Umleitung ab Hietzinger Hauptstra&szlig;e # Mantlergasse &uuml;ber Mantlergasse - Bossigasse.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Unter St. Veit, Verbindungsbahn (Spohrstra&szlig;e 55)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Unter St. Veit, Verbindungsbahn (Mantlergasse 17-19, provisorische Haltestelle)</p> <p><strong>53A in Richtung Bhf. H&uuml;tteldorf S U:</strong><br />Umleitung ab Spohrstra&szlig;e # Schrutkagasse &uuml;ber Schrutkagasse - Bossigasse.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Schrutkagasse (Spohrstra&szlig;e gegen&uuml;ber 19)<br />- Rossinigasse (Spohrstra&szlig;e gegen&uuml;ber 35)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Schrutkagasse (Spohrstra&szlig;e vor Schrutkagasse, provisorische Haltestelle)<br />- Rossinigasse (Bossigasse 41, provisorische Haltestelle)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "332890d26dd91ec0aff46f2387ec4dad2c4e9d5816fa4050658e60446b7e69b6",
     "pubDate": "2026-06-10T15:13:00+02:00",
-    "starts_at": "2026-06-15T00:00:00+02:00",
-    "ends_at": "2026-06-19T12:00:00+02:00",
+    "starts_at": "2026-06-22T00:00:00+02:00",
+    "ends_at": "2026-06-29T08:00:00+02:00",
     "_identity": "wl|hinweis|L=53A|D=2026-06-15"
   },
   {
@@ -602,6 +602,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "16A/17A/67A/67B: Störung an einem Bahnübergang",
+    "description": "16A, 17A, 67A, 67B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8c5d6ebe3af5aaed99016a85fbfa83149f04b9be6d1d8739e8eeb0a55de46dc0",
+    "pubDate": "2026-06-17T14:04:00+02:00",
+    "starts_at": "2026-06-17T14:04:00+02:00",
+    "ends_at": "2026-06-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=16A,17A,67A,67B|D=2026-06-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Gleisschaden Betrieb ab Resselgasse",
+    "description": "Gleisschaden\nBetrieb ab Resselgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9437a8f88622a60cc6ed541103afb6d09db029578dac693f7e9c8e1528de0a94",
+    "pubDate": "2026-06-17T14:24:28+02:00",
+    "starts_at": "2026-06-17T14:24:28+02:00",
+    "ends_at": "2026-06-17T20:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-06-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -950,6 +974,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "71: Gleisschaden Betrieb ab Schwarzenbergplatz",
+    "description": "Gleisschaden\nBetrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "11d5ab19ae9f390c7501716a01c2092989a5787c644e2798ec96cc1701042bbf",
+    "pubDate": "2026-06-17T14:29:18+02:00",
+    "starts_at": "2026-06-17T14:29:18+02:00",
+    "ends_at": "2026-06-17T20:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-06-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Gleisschaden Züge halten bei Linie 1",
+    "description": "Gleisschaden\nZüge halten bei Linie 1",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cab3b002cd926226a52d4d4d93efb8adbb9cbf8cfcc6b55abe508b41eb901f8b",
+    "pubDate": "2026-06-17T14:27:22+02:00",
+    "starts_at": "2026-06-17T14:27:22+02:00",
+    "ends_at": "2026-06-17T20:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-06-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 116",
     "description": "Bauarbeiten\nBusse halten Landstraßer Hauptstraße 116",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -982,6 +1030,30 @@
     "starts_at": "2026-06-12T00:00:12+02:00",
     "ends_at": "2026-06-17T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Gleisschaden Betrieb ab Schwarzenbergplatz",
+    "description": "Gleisschaden\nBetrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee53c71b51a5f74bba3b647e64f6d8ec26c4e8e42e52eace287b82eb1e463e41",
+    "pubDate": "2026-06-17T14:25:55+02:00",
+    "starts_at": "2026-06-17T14:25:55+02:00",
+    "ends_at": "2026-06-17T20:00:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-06-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-06-17T14:29:00+02:00",
+    "starts_at": "2026-06-17T14:29:00+02:00",
+    "ends_at": "2026-06-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-06-17"
   },
   {
     "source": "Wiener Linien",
