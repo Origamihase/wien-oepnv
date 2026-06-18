@@ -7,27 +7,16 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2026 22:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 23:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[N20: Betrieb ab Konstanziagasse]]></title>
+      <title><![CDATA[N20: service from Konstanziagasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">47ec3b4f248fd9f50f1e3275944a222acd0297e4d168b2fb788189e2908a7c2f</guid>
       <pubDate>Thu, 18 Jun 2026 22:18:28 +0200</pubDate>
       <ext:first_seen>Thu, 18 Jun 2026 22:30:47 +0200</ext:first_seen>
       <ext:starts_at>Thu, 18 Jun 2026 22:18:28 +0200</ext:starts_at>
       <ext:ends_at>Thu, 18 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 18.06.2026]</description>
-      <content:encoded><![CDATA[[Am 18.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38A: fire-brigade operation diversion to Armbrustergasse over Barawitzkagasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9c9898f4edab170a8c8e33f1661562e34490576f61ca89f310cc288c0b0c9ba9</guid>
-      <pubDate>Thu, 18 Jun 2026 21:57:26 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 22:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 21:57:26 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 22:56:00 +0200</ext:ends_at>
       <description>[On 18.06.2026]</description>
       <content:encoded><![CDATA[[On 18.06.2026]]]></content:encoded>
     </item>
@@ -41,17 +30,6 @@
       <ext:ends_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:ends_at>
       <description>Access to the approved pitches is possible.The bus line 7A is redirected over this period via the Rothenhofgasse Sonnleithengasse - Davidgasse. [22.06.2026 – 13.10.2026]</description>
       <content:encoded><![CDATA[Access to the approved pitches is possible.The bus line 7A is redirected over this period via the Rothenhofgasse Sonnleithengasse - Davidgasse.<br/>[22.06.2026 – 13.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ecc03ccc7696b8afa9229fbba65c36683bd483be669443dbdbba3d4dbd4bdaa8</guid>
-      <pubDate>Thu, 18 Jun 2026 22:03:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 22:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 22:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operation only between Absberggasse and Liechtenwerder Platz. Continue via Nußdorfer Straße U to Marsanogasse. [On 18.06.2026]</description>
-      <content:encoded><![CDATA[Operation only between Absberggasse and Liechtenwerder Platz. Continue via Nußdorfer Straße U to Marsanogasse.<br/>[On 18.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N20: construction works Fatty-George-Gasse]]></title>
@@ -117,6 +95,28 @@
       <ext:starts_at>Wed, 17 Jun 2026 13:52:21 +0200</ext:starts_at>
       <description>Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026. [Since 17.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026.<br/>[Since 17.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/63A: crane works Grieshofgasse on 24.06.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cda0fbb9958072fc0461440f1e386e37515f4d13b4b7a4534567d8ec664f1786</guid>
+      <pubDate>Tue, 16 Jun 2026 13:15:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 16 Jun 2026 13:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
+      <description>Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected. [16.06.2026 – 24.06.2026]</description>
+      <content:encoded><![CDATA[Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/37A/40A: construction works Dänenstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">24b9a55433e94ee81eb3b282e685d000f0fcd4a4ac761305f169183e255ac623</guid>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected. [01.06.2026 – 01.06.2027]</description>
+      <content:encoded><![CDATA[Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
