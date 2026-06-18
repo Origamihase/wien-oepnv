@@ -294,6 +294,15 @@
       "epoch": 1
     }
   },
+  "07c644f0bddd94337cbacac5a421bc8cb38e1a7924766bf81ad692cd58bd04d4": {
+    "first_seen": "2026-06-18T07:00:52.981981+00:00",
+    "translations": {
+      "en": {
+        "title": "26: current disturbance service from Nordbr\u00fccke"
+      },
+      "epoch": 3
+    }
+  },
   "080fbd09add2b1122a5bda1d47d95c77b8bc427edd505ab205116a242f7e6d97": {
     "first_seen": "2026-06-10T22:01:05.169489+00:00",
     "translations": {
@@ -2643,6 +2652,15 @@
       "epoch": 2
     }
   },
+  "4a14187abfb9ebd2b7563791b35fa48d8d1efdee9eb02c46484c69e75a45b74c": {
+    "first_seen": "2026-06-18T07:00:52.981981+00:00",
+    "translations": {
+      "en": {
+        "title": "25: service obstruction due to power failure"
+      },
+      "epoch": 3
+    }
+  },
   "4a6d62f335fafb3bc04f55f75bb339a1964f22d39835a1e5f021a60288d62b15": {
     "first_seen": "2026-05-27T03:01:00.094360+00:00",
     "translations": {
@@ -2717,6 +2735,16 @@
     "translations": {
       "en": {
         "title": "2: Harmful train service from Heinestra\u00dfe"
+      },
+      "epoch": 3
+    }
+  },
+  "4d02fd670e1c7add279931f1464782d31daf17186f5ca5755802c738a5af40bc": {
+    "first_seen": "2026-06-18T07:00:52.981981+00:00",
+    "translations": {
+      "en": {
+        "summary": "The line 29B currently runs only between Gro\u00dffeldsiedlung U and Patrizigasse. The line 29A currently runs only between Gro\u00dffeldsiedlung U and Patrizigasse.",
+        "title": "29A/29B: current failure"
       },
       "epoch": 3
     }
@@ -3872,6 +3900,15 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "67A: interference at a level crossing"
+      },
+      "epoch": 3
+    }
+  },
+  "6ec022ebe754eeab8cd6489672594646d642bc2384c6c8921b8bef6d08664170": {
+    "first_seen": "2026-06-18T07:00:52.981981+00:00",
+    "translations": {
+      "en": {
+        "title": "31: current disturbance service from Floridsdorfer Markt"
       },
       "epoch": 3
     }
@@ -5532,6 +5569,15 @@
       "epoch": 2
     }
   },
+  "9b13d9e2c1f6a37622ffc991b8e10e50b27558e84c76ae27476ab07812f270b2": {
+    "first_seen": "2026-06-18T07:00:52.981981+00:00",
+    "translations": {
+      "en": {
+        "title": "30: current disturbance service from Floridsdorfer Markt"
+      },
+      "epoch": 3
+    }
+  },
   "9b311543316b0d89059c9d36807f7f9358eec7bb23971dd2c9159696c175f87e": {
     "first_seen": "2026-05-27T11:01:04.100866+00:00",
     "translations": {
@@ -5916,7 +5962,11 @@
   "a71fc169a65218e40e97e38cf1216a0530e03cb41823f0f6e351949dbeea8a98": {
     "first_seen": "2026-06-18T06:30:53.230998+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "38: service obstruction due to rescue operation"
+      },
+      "epoch": 3
     }
   },
   "a751a157bea2c61bda9406b779159246c8d4f92aa8a9f6765523f38cb2bce878": {
@@ -6013,6 +6063,15 @@
         "title": "11A/37A/39A: traffic congestion"
       },
       "epoch": 2
+    }
+  },
+  "aa33f7b9b0c4a88c1d26507e48700291a06369f634ccf97ce6c1573fac75fcc0": {
+    "first_seen": "2026-06-18T07:00:52.981981+00:00",
+    "translations": {
+      "en": {
+        "title": "41: service obstruction due to power failure"
+      },
+      "epoch": 3
     }
   },
   "aa586bbb3993a3f914597189f62306c768172d223fe7f9f9bc51e36c90d88b73": {
@@ -6390,6 +6449,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: defective vehicle.",
         "title": "63A: defective vehicle"
+      },
+      "epoch": 3
+    }
+  },
+  "b515046f8efc2938e32142bba4c3e0824f0ae216ac5103eef86cc71cf2d91c34": {
+    "first_seen": "2026-06-18T07:00:52.981981+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "37: service obstruction due to rescue operation"
       },
       "epoch": 3
     }
@@ -7535,6 +7604,15 @@
       "epoch": 2
     }
   },
+  "dd878f63823c18c7c6ad17c6a27f68c4b6fccef2a91ea42e0a151ec7aca3da54": {
+    "first_seen": "2026-06-18T07:00:52.981981+00:00",
+    "translations": {
+      "en": {
+        "title": "27: current disturbance service from Nordbr\u00fccke"
+      },
+      "epoch": 3
+    }
+  },
   "ddf4712bb48667c01e929b9fc695a2623731bb6527f728d6bfe0c56c093619fa": {
     "first_seen": "2026-05-29T10:00:48.497970+00:00",
     "translations": {
@@ -7754,6 +7832,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Line 5A: irregular intervals in both directions.",
         "title": "12A/13A/14A2X/33A/5A/5B/65A/77A/80A/94A: traffic congestion0X"
+      },
+      "epoch": 3
+    }
+  },
+  "e5121e7b2c38fcec8dc44e598c421e836e30df52da5bde23dee52e0a485edd84": {
+    "first_seen": "2026-06-18T07:00:52.981981+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: Harmful car.",
+        "title": "57A: Harmful passenger car"
       },
       "epoch": 3
     }
