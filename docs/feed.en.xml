@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2026 17:31:14 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 18:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[37: foreign traffic accident]]></title>
@@ -63,16 +63,6 @@
       <content:encoded><![CDATA[Due to construction works in the Fatty-George-Gasse, the lines 99A and 99B will be redirected. Period: Tuesday, July 07, 2026, around 08:00 a.m. to about nine weeks.<br/>[07.07.2026 – 18.06.2027]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[Wien Mitte ↔ Wien Floridsdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;886725</guid>
-      <pubDate>Thu, 18 Jun 2026 16:33:05 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 13:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 16:33:05 +0200</ext:starts_at>
-      <description>Due to an overhead-line fault, train journeys between Wien Mitte-Landstraße Station (U) and Wien Floridsdorf Station (U) are currently limited. [Since 18.06.2026]</description>
-      <content:encoded><![CDATA[Due to an overhead-line fault, train journeys between Wien Mitte-Landstraße Station (U) and Wien Floridsdorf Station (U) are currently limited.<br/>[Since 18.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[93A/98A: construction works Oberdorfstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">fba62e1f0270c82f7c1616b5104e02706dc7393be8bd93ec84fea39dfa9071ea</guid>
@@ -114,6 +104,17 @@
       <ext:starts_at>Wed, 17 Jun 2026 13:52:21 +0200</ext:starts_at>
       <description>Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026. [Since 17.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026.<br/>[Since 17.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/63A: crane works Grieshofgasse on 24.06.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cda0fbb9958072fc0461440f1e386e37515f4d13b4b7a4534567d8ec664f1786</guid>
+      <pubDate>Tue, 16 Jun 2026 13:15:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 16 Jun 2026 13:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
+      <description>Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected. [16.06.2026 – 24.06.2026]</description>
+      <content:encoded><![CDATA[Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

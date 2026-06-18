@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 18 Jun 2026 17:31:14 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 18:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[37: Fremder Verkehrsunfall]]></title>
@@ -17,8 +17,8 @@
       <ext:first_seen>Thu, 18 Jun 2026 17:31:14 +0200</ext:first_seen>
       <ext:starts_at>Thu, 18 Jun 2026 17:14:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 17:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Hohe Warte. [Am 18.06.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 17:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Hohe Warte.<br/>[Am 18.06.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Mödling ↔ Wien Meidling]]></title>
@@ -63,16 +63,6 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Fatty-George-Gasse werden die Linien 99A und 99B umgeleitet. Zeitraum: Ab Dienstag, 07. Juli 2026, etwa 08:00 Uhr bis etwa neun Wochen.<br/>[07.07.2026 – 18.06.2027]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[Wien Mitte ↔ Wien Floridsdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;886725</guid>
-      <pubDate>Thu, 18 Jun 2026 16:33:05 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 13:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 16:33:05 +0200</ext:starts_at>
-      <description>Wegen einer Oberleitungsstörung waren zwischen Wien Mitte-Landstraße Bahnhof (U) und Wien Floridsdorf Bahnhof (U) bis 16:30 Uhr nur eingeschränkt Fahrten möglich. [Seit 18.06.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Oberleitungsstörung waren zwischen Wien Mitte-Landstraße Bahnhof (U) und Wien Floridsdorf Bahnhof (U) bis 16:30 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 18.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[93A/98A: Bauarbeiten Oberdorfstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">fba62e1f0270c82f7c1616b5104e02706dc7393be8bd93ec84fea39dfa9071ea</guid>
@@ -114,6 +104,17 @@
       <ext:starts_at>Wed, 17 Jun 2026 13:52:21 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 04.07.2026 bis 06.09.2026 keine Züge fahren. [Seit 17.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 04.07.2026 bis 06.09.2026 keine Züge fahren.<br/>[Seit 17.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/63A: Kranarbeiten Grieshofgasse am 24.06.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cda0fbb9958072fc0461440f1e386e37515f4d13b4b7a4534567d8ec664f1786</guid>
+      <pubDate>Tue, 16 Jun 2026 13:15:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 16 Jun 2026 13:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
+      <description>Wegen Kranarbeiten in der Grieshofgasse müssen die Busse der Linien 10A und 63A umgeleitet werden. [16.06.2026 – 24.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Kranarbeiten in der Grieshofgasse müssen die Busse der Linien 10A und 63A umgeleitet werden.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
