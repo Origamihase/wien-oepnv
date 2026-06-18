@@ -1708,7 +1708,11 @@
   "2e438eb04d33ba8b8a1bd27b0b70052379dade756b5db1f349dbb2be9600324b": {
     "first_seen": "2026-06-18T17:00:47.817682+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic accident.",
+        "title": "61A: traffic accident"
+      },
+      "epoch": 3
     }
   },
   "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509": {
@@ -3432,6 +3436,16 @@
     "translations": {
       "en": {
         "title": "9: service obstruction stranger traffic accident"
+      },
+      "epoch": 3
+    }
+  },
+  "61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f": {
+    "first_seen": "2026-06-18T18:01:08.776122+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "10: traffic accident"
       },
       "epoch": 3
     }

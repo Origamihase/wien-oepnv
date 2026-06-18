@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2026 19:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 20:01:08 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f</guid>
+      <pubDate>Thu, 18 Jun 2026 19:37:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 20:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 19:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 18.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 18.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Münchendorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -20,15 +31,15 @@
       <content:encoded><![CDATA[Due to an switch fault, train journeys to expected 19 19:30 watch are limited.<br/>[Since 18.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[61A: Verkehrsunfall]]></title>
+      <title><![CDATA[61A: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2e438eb04d33ba8b8a1bd27b0b70052379dade756b5db1f349dbb2be9600324b</guid>
       <pubDate>Thu, 18 Jun 2026 18:58:00 +0200</pubDate>
       <ext:first_seen>Thu, 18 Jun 2026 19:00:47 +0200</ext:first_seen>
       <ext:starts_at>Thu, 18 Jun 2026 18:58:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 18.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 18.06.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: traffic accident. [On 18.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 18.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N20: construction works Fatty-George-Gasse]]></title>
@@ -105,17 +116,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
       <description>Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected. [16.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/37A/40A: construction works Dänenstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">24b9a55433e94ee81eb3b282e685d000f0fcd4a4ac761305f169183e255ac623</guid>
-      <pubDate>Thu, 28 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected. [01.06.2026 – 01.06.2027]</description>
-      <content:encoded><![CDATA[Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
