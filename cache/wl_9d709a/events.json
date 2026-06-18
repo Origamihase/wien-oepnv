@@ -687,7 +687,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "2: Verkehrsunfall",
-    "description": "Linie 2: Umleitung in Richtung Friedrich-Engels-Platz zwischen Ring, Volkstheater U und Schwedenplatz U über Schottenring. Haltestellen: Schwedenplatz: Einstieg am gegenüberliegenden Gleis. Ring, Volkstheater U: Einstieg am Innenring (Haltestelle Richtung Dornbach) Gredlerstraße: Kein Halt möglich. Weichen Sie ersatzweise auf die Linien U2 und U3 aus. Voraussichtliche Dauer: 16:45 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Stubentor U.",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
     "pubDate": "2026-06-18T16:03:00+02:00",
@@ -735,7 +735,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "32A: Fremder Verkehrsunfall",
-    "description": "Linie 32A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:45 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Hanreitergasse.",
+    "description": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 17:00 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Hanreitergasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2d45b6da852b996e0cb7d0a979aae9c19692fc48ec76a7326b0f07b2290320fd",
     "pubDate": "2026-06-18T16:10:00+02:00",
@@ -962,13 +962,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "48A: Verkehrsüberlastung",
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "68437700f8aeaee18ffffa29c3114cdeb4dd158a27bedb1178d146036ce0af2b",
+    "pubDate": "2026-06-18T16:53:00+02:00",
+    "starts_at": "2026-06-18T16:53:00+02:00",
+    "ends_at": "2026-06-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=48A|D=2026-06-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "58B: Verkehrsunfall",
     "description": "Linie 58B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "031c5d12dca2394457c20c2af2c93388c0958fc1e1482ef1a3325c9cefbd5425",
     "pubDate": "2026-06-18T16:13:00+02:00",
     "starts_at": "2026-06-18T16:13:00+02:00",
-    "ends_at": "2026-06-18T23:55:00+02:00",
+    "ends_at": "2026-06-18T16:55:00+02:00",
     "_identity": "wl|störung|L=58B|D=2026-06-18"
   },
   {
@@ -1028,7 +1040,7 @@
     "guid": "b622a6f58583d853a39bf6930b3bd3f50cff28977bb35f09f6ad856fd47b68a5",
     "pubDate": "2026-06-18T15:19:00+02:00",
     "starts_at": "2026-06-18T15:19:00+02:00",
-    "ends_at": "2026-06-18T23:55:00+02:00",
+    "ends_at": "2026-06-18T16:55:00+02:00",
     "_identity": "wl|störung|L=76B|D=2026-06-18"
   },
   {
@@ -1071,25 +1083,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U4: Polizeieinsatz",
-    "description": "Linie U4: Fahrtbehinderung in Richtung Heiligenstadt. Voraussichtliche Dauer: 16:40 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Roßauer Lände.",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
     "pubDate": "2026-06-18T16:24:00+02:00",
     "starts_at": "2026-06-18T16:24:00+02:00",
-    "ends_at": "2026-06-18T23:55:00+02:00",
+    "ends_at": "2026-06-18T16:59:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-06-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-06-18T15:04:00+02:00",
-    "starts_at": "2026-06-18T15:04:00+02:00",
-    "ends_at": "2026-06-18T16:35:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-06-18"
   },
   {
     "source": "Wiener Linien",
