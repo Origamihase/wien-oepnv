@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 18 Jun 2026 05:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 06:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U6: Stromstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f0916b184eee00654c3fbb50aa56e39700535f39a3ced631b30d6fc7cc8fb795</guid>
-      <pubDate>Thu, 18 Jun 2026 05:14:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 05:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 05:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U6 fährt derzeit zwischen den Stationen Burggasse - Stadthalle und Thaliastraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 05:40 Uhr. Grund … [Am 18.06.2026]</description>
-      <content:encoded><![CDATA[Die Linie U6 fährt derzeit zwischen den Stationen Burggasse - Stadthalle und Thaliastraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 05:40 Uhr. Grund …<br/>[Am 18.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[61A: Liesing, Feuerwache]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +106,17 @@
       <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag, Sperre des Gehsteiges und Errichtung eines mindestens 2,00 m breiten Ersatzgehsteiges auf … [11.01.2026 – 03.07.2026]</description>
       <content:encoded><![CDATA[Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag, Sperre des Gehsteiges und Errichtung eines mindestens 2,00 m breiten Ersatzgehsteiges auf …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U5: Währinger Straße 40-42 bis 54]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">651ee0c6e6a4e7409ae9be99ad53259b2248e78e30d4b4948e2e6b4127a448b4</guid>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Thu, 11 Jun 2026 22:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 11 Jan 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
+      <description>Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag und erforderlichenfalls auch in der Nacht, in der Zeit von 22:00 Uhr bis 05:00 Uhr bei … [11.01.2026 – 03.07.2026]</description>
+      <content:encoded><![CDATA[Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag und erforderlichenfalls auch in der Nacht, in der Zeit von 22:00 Uhr bis 05:00 Uhr bei …<br/>[11.01.2026 – 03.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
