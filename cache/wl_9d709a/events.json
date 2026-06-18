@@ -614,6 +614,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25: Fahrtbehinderung Rettungseinsatz",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
+    "pubDate": "2026-06-18T05:00:00+02:00",
+    "starts_at": "2026-06-18T05:06:42+02:00",
+    "ends_at": "2026-06-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -646,18 +658,6 @@
     "starts_at": "2026-06-12T00:00:18+02:00",
     "ends_at": "2026-06-18T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Falschparker",
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
-    "pubDate": "2026-06-17T23:56:00+02:00",
-    "starts_at": "2026-06-17T23:56:00+02:00",
-    "ends_at": "2026-06-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-06-17"
   },
   {
     "source": "Wiener Linien",
@@ -902,38 +902,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N29: Busse halten auf der Hauptfahrbahn",
-    "description": "Busse halten auf\nder Hauptfahrbahn",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
-    "pubDate": "2026-06-17T23:00:00+02:00",
-    "starts_at": "2026-06-17T23:00:00+02:00",
-    "ends_at": "2026-06-18T05:30:00+02:00",
-    "_identity": "wl|störung|L=N29|D=2026-06-17"
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-06-18T05:24:00+02:00",
+    "starts_at": "2026-06-18T05:24:00+02:00",
+    "ends_at": "2026-06-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-06-18"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N6: Busse halten Neilreichgasse 20-22",
-    "description": "Bauarbeiten Busse halten Neilreichgasse 20-22",
+    "title": "U6: Stromstörung",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Burggasse - Stadthalle und Thaliastraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 05:40 Uhr. Grund: Stromstörung im Bereich Burggasse, Stadthalle.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc",
-    "pubDate": "2026-06-18T00:55:24+02:00",
-    "starts_at": "2026-06-18T00:55:24+02:00",
-    "ends_at": "2026-06-18T05:05:00+02:00",
-    "_identity": "wl|störung|L=N6|D=2026-06-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N6: Busse halten Quellenstraße 189",
-    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "702d63d7625c3038f025628d02f9115371cb86897a042af3fea6ba3fa90b5500",
-    "pubDate": "2026-06-18T00:54:26+02:00",
-    "starts_at": "2026-06-18T00:54:26+02:00",
-    "ends_at": "2026-06-18T05:04:00+02:00",
-    "_identity": "wl|störung|L=N6|D=2026-06-18"
+    "guid": "f0916b184eee00654c3fbb50aa56e39700535f39a3ced631b30d6fc7cc8fb795",
+    "pubDate": "2026-06-18T05:14:00+02:00",
+    "starts_at": "2026-06-18T05:14:00+02:00",
+    "ends_at": "2026-06-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-06-18"
   },
   {
     "source": "Wiener Linien",
