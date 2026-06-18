@@ -3144,6 +3144,16 @@
       "epoch": 2
     }
   },
+  "594c762e1862c2f127c0ccf6fe0a4ab3ce8896fc67b8d91c5680d55db8bffd0a": {
+    "first_seen": "2026-06-18T11:00:55.338192+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between Heiligenstadt S U and Sturgasse.",
+        "title": "11A: service disruption"
+      },
+      "epoch": 3
+    }
+  },
   "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a": {
     "first_seen": "2026-05-26T04:00:58.786713+00:00",
     "translations": {
@@ -4083,6 +4093,16 @@
       "en": {
         "summary": "The line 27A is redirected in both directions between Eipeldauer Stra\u00dfe and Sebaldgasse via Km\u00fcrschnerstra\u00dfe - Siemensstra\u00dfe.",
         "title": "27A/28A/29A: event"
+      },
+      "epoch": 3
+    }
+  },
+  "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61": {
+    "first_seen": "2026-06-18T11:00:55.338192+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: rescue operation.",
+        "title": "32A: rescue operation"
       },
       "epoch": 3
     }
@@ -8827,6 +8847,16 @@
       "epoch": 1
     }
   },
+  "fba62e1f0270c82f7c1616b5104e02706dc7393be8bd93ec84fea39dfa9071ea": {
+    "first_seen": "2026-06-18T11:00:55.338192+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to roadworks in the Oberdorfstra\u00dfe and the associated prov. one-way guide from Langobardenstra\u00dfe to Aspernstra\u00dfe, the buses are redirected.",
+        "title": "93A/98A: construction works Oberdorfstra\u00dfe"
+      },
+      "epoch": 3
+    }
+  },
   "fbd354e21405ab4a30c877326fed20fcdeab4a8d4b2088ed6b9ca1c8ca00967f": {
     "first_seen": "2026-06-17T15:31:02.115263+00:00",
     "translations": {
@@ -9341,6 +9371,16 @@
       "en": {
         "summary": "Due to construction works, no journeys are currently possible between Wien Mitte-Landstra\u00dfe Station (U) and Wien Rennweg Bahnhst.",
         "title": "Wien Mitte \u2194 Wien Rennweg"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&886725": {
+    "first_seen": "2026-06-18T11:00:55.338192+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an overhead-line fault, train journeys between Wien Mitte-Landstra\u00dfe Station (U) and Wien Floridsdorf Station (U) are currently limited.",
+        "title": "Wien Mitte \u2194 Wien Floridsdorf"
       },
       "epoch": 3
     }

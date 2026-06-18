@@ -7,8 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2026 12:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 13:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[32A: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61</guid>
+      <pubDate>Thu, 18 Jun 2026 12:57:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 13:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 12:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 18.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 18.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Mitte ↔ Wien Floridsdorf]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;886725</guid>
+      <pubDate>Thu, 18 Jun 2026 12:40:11 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 13:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 12:40:11 +0200</ext:starts_at>
+      <description>Due to an overhead-line fault, train journeys between Wien Mitte-Landstraße Station (U) and Wien Floridsdorf Station (U) are currently limited. [Since 18.06.2026]</description>
+      <content:encoded><![CDATA[Due to an overhead-line fault, train journeys between Wien Mitte-Landstraße Station (U) and Wien Floridsdorf Station (U) are currently limited.<br/>[Since 18.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">594c762e1862c2f127c0ccf6fe0a4ab3ce8896fc67b8d91c5680d55db8bffd0a</guid>
+      <pubDate>Thu, 18 Jun 2026 12:35:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 13:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 12:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation only between Heiligenstadt S U and Sturgasse. [On 18.06.2026]</description>
+      <content:encoded><![CDATA[Operation only between Heiligenstadt S U and Sturgasse.<br/>[On 18.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[93A/98A: construction works Oberdorfstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fba62e1f0270c82f7c1616b5104e02706dc7393be8bd93ec84fea39dfa9071ea</guid>
+      <pubDate>Thu, 18 Jun 2026 12:55:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 13:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 12:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Due to roadworks in the Oberdorfstraße and the associated prov. one-way guide from Langobardenstraße to Aspernstraße, the buses are redirected. [18.06.2026 – 18.06.2027]</description>
+      <content:encoded><![CDATA[Due to roadworks in the Oberdorfstraße and the associated prov. one-way guide from Langobardenstraße to Aspernstraße, the buses are redirected.<br/>[18.06.2026 – 18.06.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49: service obstruction False Parker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -38,7 +81,7 @@
       <pubDate>Thu, 18 Jun 2026 08:35:00 +0200</pubDate>
       <ext:first_seen>Thu, 18 Jun 2026 10:01:02 +0200</ext:first_seen>
       <ext:starts_at>Thu, 18 Jun 2026 08:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 18 Jun 2026 12:59:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 18.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 18.06.2026]]]></content:encoded>
     </item>
@@ -49,18 +92,7 @@
       <pubDate>Thu, 18 Jun 2026 08:35:00 +0200</pubDate>
       <ext:first_seen>Thu, 18 Jun 2026 10:01:02 +0200</ext:first_seen>
       <ext:starts_at>Thu, 18 Jun 2026 08:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 18.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 18.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: current disturbance]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c4f16fa2aa0c2a2204773a4b3260925fa1c34fbdd2961d5e5c7467c98ade175f</guid>
-      <pubDate>Thu, 18 Jun 2026 08:35:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 09:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 08:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 12:35:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 18 Jun 2026 12:59:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 18.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 18.06.2026]]]></content:encoded>
     </item>
@@ -85,38 +117,6 @@
       <ext:ends_at>Mon, 22 Jun 2026 17:00:00 +0200</ext:ends_at>
       <description>Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration … [17.06.2026 – 22.06.2026]</description>
       <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration …<br/>[17.06.2026 – 22.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Floridsdorf ↔ Wien Praterstern]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;886155</guid>
-      <pubDate>Wed, 17 Jun 2026 13:52:21 +0200</pubDate>
-      <ext:first_seen>Wed, 17 Jun 2026 14:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 17 Jun 2026 13:52:21 +0200</ext:starts_at>
-      <description>Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026. [Since 17.06.2026]</description>
-      <content:encoded><![CDATA[Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026.<br/>[Since 17.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/63A: crane works Grieshofgasse on 24.06.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cda0fbb9958072fc0461440f1e386e37515f4d13b4b7a4534567d8ec664f1786</guid>
-      <pubDate>Tue, 16 Jun 2026 13:15:00 +0200</pubDate>
-      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 16 Jun 2026 13:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
-      <description>Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected. [16.06.2026 – 24.06.2026]</description>
-      <content:encoded><![CDATA[Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/37A/40A: construction works Dänenstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">24b9a55433e94ee81eb3b282e685d000f0fcd4a4ac761305f169183e255ac623</guid>
-      <pubDate>Thu, 28 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected. [01.06.2026 – 01.06.2027]</description>
-      <content:encoded><![CDATA[Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
