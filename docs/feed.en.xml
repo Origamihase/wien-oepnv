@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2026 18:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 18:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[37: foreign traffic accident]]></title>
@@ -16,29 +16,9 @@
       <pubDate>Thu, 18 Jun 2026 17:14:00 +0200</pubDate>
       <ext:first_seen>Thu, 18 Jun 2026 17:31:14 +0200</ext:first_seen>
       <ext:starts_at>Thu, 18 Jun 2026 17:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 18 Jun 2026 18:30:00 +0200</ext:ends_at>
       <description>service obstruction in both directions. expected duration: 17:45 watch. Reason: foreign traffic accident in the Hohe Warte range. [On 18.06.2026]</description>
       <content:encoded><![CDATA[service obstruction in both directions. expected duration: 17:45 watch. Reason: foreign traffic accident in the Hohe Warte range.<br/>[On 18.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Mödling]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;886787</guid>
-      <pubDate>Thu, 18 Jun 2026 17:05:05 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 16:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 17:05:05 +0200</ext:starts_at>
-      <description>Due to an switch fault train journeys between Wien Meidling train station (U) and Mödling train station are currently only limited. [Since 18.06.2026]</description>
-      <content:encoded><![CDATA[Due to an switch fault train journeys between Wien Meidling train station (U) and Mödling train station are currently only limited.<br/>[Since 18.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Penzing ↔ Wien Hütteldorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;886791</guid>
-      <pubDate>Thu, 18 Jun 2026 16:54:57 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 16:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 16:54:57 +0200</ext:starts_at>
-      <description>Due to a fire brigade operation, no journeys were possible between Wien Hütteldorf Station (U) and Wien Penzing Bahnhst to 16:48 watch. [Since 18.06.2026]</description>
-      <content:encoded><![CDATA[Due to a fire brigade operation, no journeys were possible between Wien Hütteldorf Station (U) and Wien Penzing Bahnhst to 16:48 watch.<br/>[Since 18.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N20: construction works Fatty-George-Gasse]]></title>
@@ -115,6 +95,28 @@
       <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
       <description>Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected. [16.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Due to crane works in the Grieshofgasse, the 10A and 63A buses must be redirected.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/37A/40A: construction works Dänenstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">24b9a55433e94ee81eb3b282e685d000f0fcd4a4ac761305f169183e255ac623</guid>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected. [01.06.2026 – 01.06.2027]</description>
+      <content:encoded><![CDATA[Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Donaufelder Straße crossing with Plateau Theodor-Körner-Gasse and Plankenbüchlergasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">3c3a22e35b75aaa24f34eacad7d7daab8267298b2232903283c10c4e7f9e96cb</guid>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 12 Jun 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 25 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 26 Jul 2026 00:00:00 +0200</ext:ends_at>
+      <description>Vehicle traffic, including public transport, can be maintained in all existing driving relationships. [25.05.2026 – 26.07.2026]</description>
+      <content:encoded><![CDATA[Vehicle traffic, including public transport, can be maintained in all existing driving relationships.<br/>[25.05.2026 – 26.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
