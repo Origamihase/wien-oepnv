@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2026 12:00:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 12:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[52: delays]]></title>
+      <title><![CDATA[49: service obstruction False Parker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">347bf9ad635bed065df985f7e527768d84656a8f32637791368fa2d47a92883c</guid>
-      <pubDate>Thu, 18 Jun 2026 11:53:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 12:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 11:53:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4</guid>
+      <pubDate>Thu, 18 Jun 2026 12:26:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 12:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 12:27:28 +0200</ext:starts_at>
       <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operation only between Westbahnhof S U and Reinlgasse. Continue via line 10 to Joachimsthalerplatz. [On 18.06.2026]</description>
-      <content:encoded><![CDATA[Operation only between Westbahnhof S U and Reinlgasse. Continue via line 10 to Joachimsthalerplatz.<br/>[On 18.06.2026]]]></content:encoded>
+      <description>service obstruction towards Ring, Volkstheater U. expected duration: 12:45 watch. Reason: wrong parker in the Siebensterngasse range. [On 18.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Ring, Volkstheater U. expected duration: 12:45 watch. Reason: wrong parker in the Siebensterngasse range.<br/>[On 18.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Harmful train trains stop at Li. 10 Ri. Unter St. Veit]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">990fc15c39cb263a8128b40f4622e307b24dbac539a217f2a3a8616e19690cbd</guid>
+      <pubDate>Thu, 18 Jun 2026 11:56:35 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 12:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 11:56:35 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 18 Jun 2026 13:02:00 +0200</ext:ends_at>
+      <description>[On 18.06.2026]</description>
+      <content:encoded><![CDATA[[On 18.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[27: current disturbance]]></title>
@@ -49,7 +60,7 @@
       <pubDate>Thu, 18 Jun 2026 08:35:00 +0200</pubDate>
       <ext:first_seen>Thu, 18 Jun 2026 09:30:49 +0200</ext:first_seen>
       <ext:starts_at>Thu, 18 Jun 2026 08:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 18 Jun 2026 12:35:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 18.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 18.06.2026]]]></content:encoded>
     </item>
@@ -106,17 +117,6 @@
       <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected. [01.06.2026 – 01.06.2027]</description>
       <content:encoded><![CDATA[Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Donaufelder Straße crossing with Plateau Theodor-Körner-Gasse and Plankenbüchlergasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">3c3a22e35b75aaa24f34eacad7d7daab8267298b2232903283c10c4e7f9e96cb</guid>
-      <pubDate>Mon, 25 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 26 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Vehicle traffic, including public transport, can be maintained in all existing driving relationships. [25.05.2026 – 26.07.2026]</description>
-      <content:encoded><![CDATA[Vehicle traffic, including public transport, can be maintained in all existing driving relationships.<br/>[25.05.2026 – 26.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
