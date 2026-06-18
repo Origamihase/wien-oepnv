@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2026 20:31:12 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 21:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[10: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f</guid>
-      <pubDate>Thu, 18 Jun 2026 19:37:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 20:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 19:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 18.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 18.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Münchendorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -73,6 +62,17 @@
       <ext:ends_at>Wed, 24 Jun 2026 07:00:00 +0200</ext:ends_at>
       <description>Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June … [18.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June …<br/>[18.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38: service obstruction due to rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a71fc169a65218e40e97e38cf1216a0530e03cb41823f0f6e351949dbeea8a98</guid>
+      <pubDate>Thu, 18 Jun 2026 20:45:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 08:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 20:52:43 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 18.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 18.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[61A: Liesing, fire station]]></title>
