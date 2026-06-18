@@ -662,6 +662,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Fahrtbehinderung Falschparker",
+    "description": "Linie 2: Umleitung in Richtung Dornbach zwischen Johann-Nepomuk-Berger-Platz und Dornbach über die Strecke der Linien 9 und 43. Voraussichtliche Dauer: 22:50 Uhr. Grund: Falschparker im Bereich Wilhelminenstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9ddf5d1b468f97566b0d71492d70a5743faa129c9553b8165867b8249c7b99da",
+    "pubDate": "2026-06-18T22:25:00+02:00",
+    "starts_at": "2026-06-18T22:28:40+02:00",
+    "ends_at": "2026-06-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Dänenstraße ggü. 2",
     "description": "Bauarbeiten\nBusse halten Dänenstraße ggü. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -686,30 +698,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38A: Feuerwehreinsatz",
-    "description": "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "23035fbb18cf54e12a91a326f046fd03ee86d614225ee2cf959f27cb1caea0ff",
-    "pubDate": "2026-06-18T21:21:00+02:00",
-    "starts_at": "2026-06-18T21:21:00+02:00",
-    "ends_at": "2026-06-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=38A|D=2026-06-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38A: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6d0d6e75911dcbdb520502c0858186a916a33440b4d40bbfa2b980db06ec81c9",
-    "pubDate": "2026-06-18T21:22:39+02:00",
-    "starts_at": "2026-06-18T21:22:39+02:00",
-    "ends_at": "2026-06-18T22:21:00+02:00",
-    "_identity": "wl|störung|L=38A|D=2026-06-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "38A: Feuerwehreinsatz Umleitung bis Armbrustergasse über Barawitzkagasse",
     "description": "Feuerwehreinsatz\nUmleitung bis Armbrustergasse über Barawitzkagasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -718,18 +706,6 @@
     "starts_at": "2026-06-18T21:57:26+02:00",
     "ends_at": "2026-06-18T22:56:00+02:00",
     "_identity": "wl|störung|L=38A|D=2026-06-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Rettungseinsatz",
-    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a71fc169a65218e40e97e38cf1216a0530e03cb41823f0f6e351949dbeea8a98",
-    "pubDate": "2026-06-18T20:45:00+02:00",
-    "starts_at": "2026-06-18T20:45:00+02:00",
-    "ends_at": "2026-06-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=38|D=2026-06-18"
   },
   {
     "source": "Wiener Linien",
@@ -999,13 +975,37 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "D: Feuerwehreinsatz",
-    "description": "Linie D: Betrieb nur zwischen Absberggasse und Liechtenwerder Platz. Weiterfahrt über Nußdorfer Straße U bis Marsanogasse. Grund: Feuerwehreinsatz im Haltestellenbereich Kreilplatz.",
+    "description": "Linie D: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz im Haltestellenbereich Grinzinger Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ecc03ccc7696b8afa9229fbba65c36683bd483be669443dbdbba3d4dbd4bdaa8",
-    "pubDate": "2026-06-18T21:21:00+02:00",
-    "starts_at": "2026-06-18T21:21:00+02:00",
+    "pubDate": "2026-06-18T22:03:00+02:00",
+    "starts_at": "2026-06-18T22:03:00+02:00",
     "ends_at": "2026-06-18T23:55:00+02:00",
     "_identity": "wl|störung|L=D|D=2026-06-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Betrieb ab Konstanziagasse",
+    "description": "Bauarbeiten\nBetrieb ab Konstanziagasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "47ec3b4f248fd9f50f1e3275944a222acd0297e4d168b2fb788189e2908a7c2f",
+    "pubDate": "2026-06-18T22:18:28+02:00",
+    "starts_at": "2026-06-18T22:18:28+02:00",
+    "ends_at": "2026-06-18T23:59:59+02:00",
+    "_identity": "wl|störung|L=N20|D=2026-06-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Betrieb ab Polgarstraße",
+    "description": "Bauarbeiten\nBetrieb ab Polgarstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7577d319b274c1c6fe7729764f297b579c9b84be50fdda64b446b68b6296b1ee",
+    "pubDate": "2026-06-18T22:17:30+02:00",
+    "starts_at": "2026-06-18T22:17:30+02:00",
+    "ends_at": "2026-06-18T23:59:59+02:00",
+    "_identity": "wl|störung|L=N20|D=2026-06-18"
   },
   {
     "source": "Wiener Linien",
