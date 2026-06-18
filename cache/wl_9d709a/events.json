@@ -614,6 +614,54 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25: Fremder Verkehrsunfall",
+    "description": "Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Weichen Sie ersatzweise auf die Linie 26A aus. Voraussichtliche Dauer: 07:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Siebeckstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "330dc148f49aca3cde6745d2572b9d45f0a7796289fb8cea925864353ecdf49b",
+    "pubDate": "2026-06-18T06:52:00+02:00",
+    "starts_at": "2026-06-18T06:52:00+02:00",
+    "ends_at": "2026-06-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fremdunfall Betrieb ab Kagran U",
+    "description": "Fremdunfall\nBetrieb ab Kagran U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "79e0e1d5624dc51f8d4b718ee926ee96352666fbe067da042cfd1d394e117a69",
+    "pubDate": "2026-06-18T06:55:51+02:00",
+    "starts_at": "2026-06-18T06:55:56+02:00",
+    "ends_at": "2026-06-18T07:55:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fremdunfall Betrieb ab SMZ Ost",
+    "description": "Fremdunfall\nBetrieb ab SMZ Ost",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ae41d7afada58e3e0ba41f0f9586f908dd27078caa81898266fbfec41aa7d1b5",
+    "pubDate": "2026-06-18T06:55:14+02:00",
+    "starts_at": "2026-06-18T06:55:27+02:00",
+    "ends_at": "2026-06-18T07:54:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f5bc1702c60730fce7fd9bf16815816a8a74ec78fa1b23cae6a513d552a51d1d",
+    "pubDate": "2026-06-18T06:52:45+02:00",
+    "starts_at": "2026-06-18T06:52:47+02:00",
+    "ends_at": "2026-06-18T07:52:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -886,6 +934,18 @@
     "starts_at": "2026-06-12T00:00:12+02:00",
     "ends_at": "2026-06-18T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-06-18T06:41:00+02:00",
+    "starts_at": "2026-06-18T06:41:00+02:00",
+    "ends_at": "2026-06-18T06:58:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-06-18"
   },
   {
     "source": "Wiener Linien",
