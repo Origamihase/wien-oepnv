@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 18 Jun 2026 13:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 14:01:21 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9</guid>
+      <pubDate>Thu, 18 Jun 2026 13:52:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 14:01:21 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 13:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 14:15 Uhr. Grund: Verkehrsunfall im Bereich Hormayrgasse. [Am 18.06.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 14:15 Uhr. Grund: Verkehrsunfall im Bereich Hormayrgasse.<br/>[Am 18.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N20: Bauarbeiten Fatty-George-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">965c1a2a4f8c7fa5e1293e00016711ba49837ae52db4ef0c17477fe48c6a0078</guid>
+      <pubDate>Thu, 18 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 14:01:21 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 08 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Fatty-George-Gasse wird die Linie N20 Montag - Freitag umgeleitet. [08.07.2026 – 18.06.2027]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Fatty-George-Gasse wird die Linie N20 Montag - Freitag umgeleitet.<br/>[08.07.2026 – 18.06.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[6: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +52,6 @@
       <ext:ends_at>Fri, 18 Jun 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Fatty-George-Gasse werden die Linien 99A und 99B umgeleitet. Zeitraum: Ab Dienstag, 07. Juli 2026, etwa 08:00 Uhr bis etwa neun Wochen. [07.07.2026 – 18.06.2027]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Fatty-George-Gasse werden die Linien 99A und 99B umgeleitet. Zeitraum: Ab Dienstag, 07. Juli 2026, etwa 08:00 Uhr bis etwa neun Wochen.<br/>[07.07.2026 – 18.06.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[32A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61</guid>
-      <pubDate>Thu, 18 Jun 2026 12:57:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 13:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 12:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Mitte ↔ Wien Floridsdorf]]></title>
@@ -105,17 +116,6 @@
       <ext:starts_at>Wed, 17 Jun 2026 13:52:21 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 04.07.2026 bis 06.09.2026 keine Züge fahren. [Seit 17.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 04.07.2026 bis 06.09.2026 keine Züge fahren.<br/>[Seit 17.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Fahrtbehinderung wegen Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">87cde0ff8f531daad212e230c8873600d36c9a10b0da2554e6fac3c5a24c60e6</guid>
-      <pubDate>Thu, 18 Jun 2026 12:43:00 +0200</pubDate>
-      <ext:first_seen>Tue, 16 Jun 2026 14:01:23 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 12:47:03 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 13:46:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

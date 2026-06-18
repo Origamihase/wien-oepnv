@@ -601,8 +601,10 @@
     "first_seen": "2026-06-18T11:30:48.093701+00:00",
     "translations": {
       "en": {
-        "summary": "After an service obstruction there are different intervals."
-      }
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "6: traffic accident"
+      },
+      "epoch": 3
     }
   },
   "0e7a79c133508f7f3290d629b2969029f7ba3a0b9defcd40f14000ca953a829f": {
@@ -4007,6 +4009,16 @@
       "epoch": 3
     }
   },
+  "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9": {
+    "first_seen": "2026-06-18T12:01:21.848600+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards Westbahnhof S U. expected duration: 14:15 watch. Reason: traffic accident in the Hormayrgasse range.",
+        "title": "9: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "70b2e0c6a98eac247fec82053696d483e3bfe3a15719ca6cac32da7ac70cadfd": {
     "first_seen": "2026-05-31T19:00:50.312434+00:00",
     "translations": {
@@ -5473,8 +5485,10 @@
     "first_seen": "2026-06-18T11:30:48.093701+00:00",
     "translations": {
       "en": {
-        "summary": "Because of construction works in the Fatty-George-Gasse, the lines 99A and 99B will be redirected. Period: From Tuesday, July 07, 2026, around 08:00 a.m. to about nine weeks."
-      }
+        "summary": "Due to construction works in the Fatty-George-Gasse, the lines 99A and 99B will be redirected. Period: Tuesday, July 07, 2026, around 08:00 a.m. to about nine weeks.",
+        "title": "99A/99B: construction works Fatty-George-Gasse"
+      },
+      "epoch": 3
     }
   },
   "9519d3a8dd4972bfbaf8cd1508b670e7bcfde314e055bd7c083b74eeeec1a449": {
@@ -5504,6 +5518,16 @@
         "title": "44: service obstruction traffic accident"
       },
       "epoch": 2
+    }
+  },
+  "965c1a2a4f8c7fa5e1293e00016711ba49837ae52db4ef0c17477fe48c6a0078": {
+    "first_seen": "2026-06-18T12:01:21.848600+00:00",
+    "translations": {
+      "en": {
+        "summary": "Because of construction works in the Fatty-George-Gasse area, line N20 is being redirected Monday - Friday.",
+        "title": "N20: construction works Fatty-George-Gasse"
+      },
+      "epoch": 3
     }
   },
   "968cc0ab7f0544195ad80bb88c1e10a9f3b0fe774d7d0a25a9cef935f5938f7c": {

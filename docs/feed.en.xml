@@ -7,40 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2026 13:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 14:01:21 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[6: Verkehrsunfall]]></title>
+      <title><![CDATA[9: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9</guid>
+      <pubDate>Thu, 18 Jun 2026 13:52:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 14:01:21 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 13:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Westbahnhof S U. expected duration: 14:15 watch. Reason: traffic accident in the Hormayrgasse range. [On 18.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Westbahnhof S U. expected duration: 14:15 watch. Reason: traffic accident in the Hormayrgasse range.<br/>[On 18.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N20: construction works Fatty-George-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">965c1a2a4f8c7fa5e1293e00016711ba49837ae52db4ef0c17477fe48c6a0078</guid>
+      <pubDate>Thu, 18 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 14:01:21 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 08 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Fatty-George-Gasse area, line N20 is being redirected Monday - Friday. [08.07.2026 – 18.06.2027]</description>
+      <content:encoded><![CDATA[Because of construction works in the Fatty-George-Gasse area, line N20 is being redirected Monday - Friday.<br/>[08.07.2026 – 18.06.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff</guid>
       <pubDate>Thu, 18 Jun 2026 13:05:00 +0200</pubDate>
       <ext:first_seen>Thu, 18 Jun 2026 13:30:48 +0200</ext:first_seen>
       <ext:starts_at>Thu, 18 Jun 2026 13:05:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.06.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 18.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 18.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[99A/99B: Bauarbeiten Fatty-George-Gasse]]></title>
+      <title><![CDATA[99A/99B: construction works Fatty-George-Gasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">946a8002746bba0a6764985fef1fdb28cd44c0782039041dea70b54276b01535</guid>
       <pubDate>Thu, 18 Jun 2026 13:15:00 +0200</pubDate>
       <ext:first_seen>Thu, 18 Jun 2026 13:30:48 +0200</ext:first_seen>
       <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 18 Jun 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Fatty-George-Gasse werden die Linien 99A und 99B umgeleitet. Zeitraum: Ab Dienstag, 07. Juli 2026, etwa 08:00 Uhr bis etwa neun Wochen. [07.07.2026 – 18.06.2027]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Fatty-George-Gasse werden die Linien 99A und 99B umgeleitet. Zeitraum: Ab Dienstag, 07. Juli 2026, etwa 08:00 Uhr bis etwa neun Wochen.<br/>[07.07.2026 – 18.06.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[32A: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61</guid>
-      <pubDate>Thu, 18 Jun 2026 12:57:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 13:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 12:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: rescue operation. [On 18.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 18.06.2026]]]></content:encoded>
+      <description>Due to construction works in the Fatty-George-Gasse, the lines 99A and 99B will be redirected. Period: Tuesday, July 07, 2026, around 08:00 a.m. to about nine weeks. [07.07.2026 – 18.06.2027]</description>
+      <content:encoded><![CDATA[Due to construction works in the Fatty-George-Gasse, the lines 99A and 99B will be redirected. Period: Tuesday, July 07, 2026, around 08:00 a.m. to about nine weeks.<br/>[07.07.2026 – 18.06.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Mitte ↔ Wien Floridsdorf]]></title>
@@ -105,17 +116,6 @@
       <ext:starts_at>Wed, 17 Jun 2026 13:52:21 +0200</ext:starts_at>
       <description>Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026. [Since 17.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026.<br/>[Since 17.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">87cde0ff8f531daad212e230c8873600d36c9a10b0da2554e6fac3c5a24c60e6</guid>
-      <pubDate>Thu, 18 Jun 2026 12:43:00 +0200</pubDate>
-      <ext:first_seen>Tue, 16 Jun 2026 14:01:23 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 12:47:03 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 13:46:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: rescue operation. [On 18.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 18.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
