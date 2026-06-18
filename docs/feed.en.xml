@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2026 10:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 11:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[29B: current disturbance]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">673ba6d1b8ffd9dbee33d2b12a5df24173f0374e62e2a525e4bcb3f4cf1f399e</guid>
-      <pubDate>Thu, 18 Jun 2026 08:46:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 10:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 08:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 18 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 18.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 18.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[27: current disturbance]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +106,17 @@
       <ext:ends_at>Sun, 26 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>Vehicle traffic, including public transport, can be maintained in all existing driving relationships. [25.05.2026 – 26.07.2026]</description>
       <content:encoded><![CDATA[Vehicle traffic, including public transport, can be maintained in all existing driving relationships.<br/>[25.05.2026 – 26.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Hernals Hauptstraße from Redtenbachergasse and Schadinagasse to Julius-Meinl-Gasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">3dba297aaeda53f3246d8646be626e6f1a2936058171131cc64c83b66829270b</guid>
+      <pubDate>Sun, 19 Oct 2025 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 12 Jun 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Oct 2025 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:ends_at>
+      <description>The pipe laying work (preparations for underground construction) will be carried out in the actual area of Hernals main road by day, night and sometimes also on weekends … [19.10.2025 – 03.07.2026]</description>
+      <content:encoded><![CDATA[The pipe laying work (preparations for underground construction) will be carried out in the actual area of Hernals main road by day, night and sometimes also on weekends …<br/>[19.10.2025 – 03.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
