@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 19 Jun 2026 00:30:38 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 01:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N20: service from Polgarstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7577d319b274c1c6fe7729764f297b579c9b84be50fdda64b446b68b6296b1ee</guid>
+      <pubDate>Fri, 19 Jun 2026 00:30:25 +0200</pubDate>
+      <ext:first_seen>Fri, 19 Jun 2026 01:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 19 Jun 2026 00:30:25 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 19 Jun 2026 05:15:00 +0200</ext:ends_at>
+      <description>[On 19.06.2026]</description>
+      <content:encoded><![CDATA[[On 19.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Neilreichgasse from Gudrunstraße to Davidgasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected. [01.06.2026 – 01.06.2027]</description>
       <content:encoded><![CDATA[Because of construction works in the Max-Emanuel-Straße, Peter-Jordan-Straße and Dänenstraße lines 10A, 37A and 40A are redirected.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Donaufelder Straße crossing with Plateau Theodor-Körner-Gasse and Plankenbüchlergasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">3c3a22e35b75aaa24f34eacad7d7daab8267298b2232903283c10c4e7f9e96cb</guid>
-      <pubDate>Mon, 25 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 12 Jun 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 26 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Vehicle traffic, including public transport, can be maintained in all existing driving relationships. [25.05.2026 – 26.07.2026]</description>
-      <content:encoded><![CDATA[Vehicle traffic, including public transport, can be maintained in all existing driving relationships.<br/>[25.05.2026 – 26.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
