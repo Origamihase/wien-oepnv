@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 19 Jun 2026 19:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 20:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[O: Fahrtbehinderung wegen Demonstration]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Fri, 19 Jun 2026 20:23:00 +0200</ext:ends_at>
       <description>[Am 19.06.2026]</description>
       <content:encoded><![CDATA[[Am 19.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[73A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cdbb2c916e7a3420d1b8cfdf9e819c4a06643b422833b69f844b37005d0481a9</guid>
-      <pubDate>Fri, 19 Jun 2026 19:07:00 +0200</pubDate>
-      <ext:first_seen>Fri, 19 Jun 2026 19:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 19:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 19 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 19.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 19.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31: Feuerwehreinsatz Betrieb ab Friedrich-Engels-Platz]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Fri, 18 Jun 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Oberdorfstraße und der damit einhergehenden prov. Einbahnführung von Langobardenstraße bis Aspernstraße, werden die Busse umgeleitet. [18.06.2026 – 18.06.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Oberdorfstraße und der damit einhergehenden prov. Einbahnführung von Langobardenstraße bis Aspernstraße, werden die Busse umgeleitet.<br/>[18.06.2026 – 18.06.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[99A: Wehrbrücklstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7439e931aeea5d30cacc86ce10618be0945eb65fcdf0fc3112f9a4c1aa9dca5d</guid>
+      <pubDate>Thu, 18 Jun 2026 09:20:00 +0200</pubDate>
+      <ext:first_seen>Thu, 18 Jun 2026 09:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 18 Jun 2026 09:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 07:00:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 99A in Richtung Eßling, Schule Haltestelle: Wehrbrücklstraße Von: Niklas-Eslarn-Straße 78 Nach: Niklas-Eslarn-Straße 82 Dauer: 22. Juni … [18.06.2026 – 24.06.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 99A in Richtung Eßling, Schule Haltestelle: Wehrbrücklstraße Von: Niklas-Eslarn-Straße 78 Nach: Niklas-Eslarn-Straße 82 Dauer: 22. Juni …<br/>[18.06.2026 – 24.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
