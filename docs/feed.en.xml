@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 19 Jun 2026 18:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 18:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1/2/71/D: Demonstration]]></title>
+      <title><![CDATA[31A: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f87c8d2f1aeddc32e8a24d5fcb114ac588507fe12f00aee5e316d5516307d9ea</guid>
+      <pubDate>Fri, 19 Jun 2026 18:24:00 +0200</pubDate>
+      <ext:first_seen>Fri, 19 Jun 2026 18:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 19 Jun 2026 18:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 19 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. expected duration: 18:55 watch. Reason: rescue operation in the Eipeldauerstraße range. [On 19.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. expected duration: 18:55 watch. Reason: rescue operation in the Eipeldauerstraße range.<br/>[On 19.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7631ff456150706ce963645eb19030d1c8d640444cac29585cccdf1b7cc06b23</guid>
+      <pubDate>Fri, 19 Jun 2026 18:16:00 +0200</pubDate>
+      <ext:first_seen>Fri, 19 Jun 2026 18:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 19 Jun 2026 18:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 19 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 19.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 19.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/71/D: demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f11489bb03527996cd7aeef0e9b9019f65c8e6260132042d3a196516222099d8</guid>
       <pubDate>Fri, 19 Jun 2026 17:59:00 +0200</pubDate>
       <ext:first_seen>Fri, 19 Jun 2026 18:01:07 +0200</ext:first_seen>
       <ext:starts_at>Fri, 19 Jun 2026 17:59:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 19 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. [Am 19.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 19.06.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Line 2: irregular intervals in both directions. [On 19.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line 2: irregular intervals in both directions.<br/>[On 19.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[REX 3: Wien Floridsdorf ↔ Wien Jedlersdorf / Wien Hauptbahnhof ↔ Deutsch Wagram]]></title>
@@ -27,8 +49,8 @@
       <pubDate>Fri, 19 Jun 2026 14:11:12 +0200</pubDate>
       <ext:first_seen>Fri, 19 Jun 2026 14:30:53 +0200</ext:first_seen>
       <ext:starts_at>Fri, 19 Jun 2026 14:11:12 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Jedlersdorf Bahnhst, Wien Süßenbrunn Bahnhst bzw. Gerasdorf b. Wien Bahnhst von 10.08.2026 bis … [Seit 19.06.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Jedlersdorf Bahnhst, Wien Süßenbrunn Bahnhst bzw. Gerasdorf b. Wien Bahnhst von 10.08.2026 bis …<br/>[Seit 19.06.2026]]]></content:encoded>
+      <description>Due to construction works, between Wien Floridsdorf Station (U) and Wien Jedlersdorf Bahnhst, Wien Süßenbrunn Bahnhst and Gerasdorf b. Vienna Bahnhst from 1008.2026 to … [Since 19.06.2026]</description>
+      <content:encoded><![CDATA[Due to construction works, between Wien Floridsdorf Station (U) and Wien Jedlersdorf Bahnhst, Wien Süßenbrunn Bahnhst and Gerasdorf b. Vienna Bahnhst from 1008.2026 to …<br/>[Since 19.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof: Mariahilfer road from Europaplatz and Mariahilfer Gürtel to Palmgasse and Gerstnerstraße]]></title>
@@ -40,17 +62,6 @@
       <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
       <description>The actual area of Mariahilfer Straße is to be closed for vehicle traffic. [25.05.2026 – 25.06.2026]</description>
       <content:encoded><![CDATA[The actual area of Mariahilfer Straße is to be closed for vehicle traffic.<br/>[25.05.2026 – 25.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">748a7fd4a5421241f869780aa9f5e1d09e39d012f8769926583ebfb1bf880707</guid>
-      <pubDate>Fri, 19 Jun 2026 10:45:00 +0200</pubDate>
-      <ext:first_seen>Fri, 19 Jun 2026 11:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 10:45:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 19 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>No operation between Floridsdorf S U and Friedrich-Engels-Platz. [On 19.06.2026]</description>
-      <content:encoded><![CDATA[No operation between Floridsdorf S U and Friedrich-Engels-Platz.<br/>[On 19.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Neilreichgasse from Gudrunstraße to Davidgasse]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 07:00:00 +0200</ext:ends_at>
       <description>Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June … [18.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June …<br/>[18.06.2026 – 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[61A: Liesing, fire station]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fbd354e21405ab4a30c877326fed20fcdeab4a8d4b2088ed6b9ca1c8ca00967f</guid>
-      <pubDate>Wed, 17 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 17 Jun 2026 17:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 17 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 22 Jun 2026 17:00:00 +0200</ext:ends_at>
-      <description>Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration … [17.06.2026 – 22.06.2026]</description>
-      <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration …<br/>[17.06.2026 – 22.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
