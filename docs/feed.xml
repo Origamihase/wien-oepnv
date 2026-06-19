@@ -7,28 +7,17 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 19 Jun 2026 05:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 05:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Raasdorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;886921</guid>
-      <pubDate>Fri, 19 Jun 2026 04:41:03 +0200</pubDate>
+      <pubDate>Fri, 19 Jun 2026 05:04:30 +0200</pubDate>
       <ext:first_seen>Fri, 19 Jun 2026 04:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 04:41:03 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 19 Jun 2026 05:04:30 +0200</ext:starts_at>
       <description>Wegen einer Stellwerkstörung am Bahnhof sind zwischen Wien Hbf (U) und Raasdorf Bahnhof bis voraussichtlich 08:00 Uhr keine Fahrten möglich. Fernverkehrszüge werden umgeleitet. [Seit 19.06.2026]</description>
       <content:encoded><![CDATA[Wegen einer Stellwerkstörung am Bahnhof sind zwischen Wien Hbf (U) und Raasdorf Bahnhof bis voraussichtlich 08:00 Uhr keine Fahrten möglich. Fernverkehrszüge werden umgeleitet.<br/>[Seit 19.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N20: Betrieb ab Polgarstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7577d319b274c1c6fe7729764f297b579c9b84be50fdda64b446b68b6296b1ee</guid>
-      <pubDate>Fri, 19 Jun 2026 00:30:25 +0200</pubDate>
-      <ext:first_seen>Fri, 19 Jun 2026 01:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 00:30:25 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 19 Jun 2026 05:15:00 +0200</ext:ends_at>
-      <description>[Am 19.06.2026]</description>
-      <content:encoded><![CDATA[[Am 19.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Neilreichgasse von Gudrunstraße bis Davidgasse]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
       <description>Wegen Kranarbeiten in der Grieshofgasse müssen die Busse der Linien 10A und 63A umgeleitet werden. [16.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Wegen Kranarbeiten in der Grieshofgasse müssen die Busse der Linien 10A und 63A umgeleitet werden.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/37A/40A: Bauarbeiten Dänenstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">24b9a55433e94ee81eb3b282e685d000f0fcd4a4ac761305f169183e255ac623</guid>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Max-Emanuel-Straße, Peter-Jordan-Straße und Dänenstraße werden die Linien 10A, 37A und 40A umgeleitet. [01.06.2026 – 01.06.2027]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Max-Emanuel-Straße, Peter-Jordan-Straße und Dänenstraße werden die Linien 10A, 37A und 40A umgeleitet.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
