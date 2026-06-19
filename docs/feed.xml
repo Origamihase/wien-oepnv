@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 19 Jun 2026 11:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 12:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[31: Feuerwehreinsatz]]></title>
@@ -19,28 +19,6 @@
       <ext:ends_at>Fri, 19 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Kein Betrieb zwischen Floridsdorf S U und Friedrich-Engels-Platz. [Am 19.06.2026]</description>
       <content:encoded><![CDATA[Kein Betrieb zwischen Floridsdorf S U und Friedrich-Engels-Platz.<br/>[Am 19.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ba542ef47c4a314869d53611ce727014dd524b3928b7e2bc8d9b93aa406f2ecf</guid>
-      <pubDate>Fri, 19 Jun 2026 09:50:00 +0200</pubDate>
-      <ext:first_seen>Fri, 19 Jun 2026 10:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 09:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 19 Jun 2026 11:25:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10: Fahrtbehinderung Defekte ÖBB Bahnschranke]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">04e2c5d80c936d75b8bd92d149ad0cefdbca200de18aea9f2c746d986ccc42d9</guid>
-      <pubDate>Fri, 19 Jun 2026 09:00:42 +0200</pubDate>
-      <ext:first_seen>Fri, 19 Jun 2026 10:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 09:00:42 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 19 Jun 2026 12:00:00 +0200</ext:ends_at>
-      <description>[Am 19.06.2026]</description>
-      <content:encoded><![CDATA[[Am 19.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Neilreichgasse von Gudrunstraße bis Davidgasse]]></title>
@@ -117,6 +95,28 @@
       <ext:starts_at>Wed, 17 Jun 2026 13:52:21 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 04.07.2026 bis 06.09.2026 keine Züge fahren. [Seit 17.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 04.07.2026 bis 06.09.2026 keine Züge fahren.<br/>[Seit 17.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/63A: Kranarbeiten Grieshofgasse am 24.06.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cda0fbb9958072fc0461440f1e386e37515f4d13b4b7a4534567d8ec664f1786</guid>
+      <pubDate>Tue, 16 Jun 2026 13:15:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 16 Jun 2026 13:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
+      <description>Wegen Kranarbeiten in der Grieshofgasse müssen die Busse der Linien 10A und 63A umgeleitet werden. [16.06.2026 – 24.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Kranarbeiten in der Grieshofgasse müssen die Busse der Linien 10A und 63A umgeleitet werden.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/37A/40A: Bauarbeiten Dänenstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">24b9a55433e94ee81eb3b282e685d000f0fcd4a4ac761305f169183e255ac623</guid>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 01 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Max-Emanuel-Straße, Peter-Jordan-Straße und Dänenstraße werden die Linien 10A, 37A und 40A umgeleitet. [01.06.2026 – 01.06.2027]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Max-Emanuel-Straße, Peter-Jordan-Straße und Dänenstraße werden die Linien 10A, 37A und 40A umgeleitet.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
