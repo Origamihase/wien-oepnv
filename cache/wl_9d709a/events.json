@@ -631,20 +631,32 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "17410552b5076b6dbbd3ae46156043cd5032b22edde7e308e5b84105a85b76ff",
     "pubDate": "2026-06-19T21:53:21+02:00",
-    "starts_at": "2026-06-19T21:53:21+02:00",
-    "ends_at": "2026-06-19T22:52:00+02:00",
+    "starts_at": "2026-06-19T22:04:55+02:00",
+    "ends_at": "2026-06-19T23:04:00+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-19"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "25: Fremder Verkehrsunfall",
-    "description": "Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Weichen Sie ersatzweise auf die Linien 26A, U2 aus. Voraussichtliche Dauer: 22:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Genochplatz.",
+    "description": "Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Weichen Sie ersatzweise auf die Linien 26A, U2 aus. Voraussichtliche Dauer: 23:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Genochplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "330dc148f49aca3cde6745d2572b9d45f0a7796289fb8cea925864353ecdf49b",
     "pubDate": "2026-06-19T21:56:00+02:00",
     "starts_at": "2026-06-19T21:56:00+02:00",
     "ends_at": "2026-06-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Verkehrsunfall Betrieb nur bis Donauspital",
+    "description": "Verkehrsunfall\nBetrieb nur bis Donauspital",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "364f7fe808a58177c9bb96398adba423abea4464f5689ca4de80880e03c3dc0b",
+    "pubDate": "2026-06-19T22:00:29+02:00",
+    "starts_at": "2026-06-19T22:00:29+02:00",
+    "ends_at": "2026-06-19T22:54:00+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-19"
   },
   {
@@ -657,6 +669,18 @@
     "pubDate": "2026-06-19T21:54:11+02:00",
     "starts_at": "2026-06-19T21:54:25+02:00",
     "ends_at": "2026-06-19T22:53:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Verkehrsunfall Betrieb ab SMZ Ost",
+    "description": "Verkehrsunfall\nBetrieb ab SMZ Ost",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "782459380e48e2be1c21405705e664e6ac55836cd1b5f2bdfed4ec5bafc48a73",
+    "pubDate": "2026-06-19T22:01:32+02:00",
+    "starts_at": "2026-06-19T22:01:32+02:00",
+    "ends_at": "2026-06-19T23:00:00+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-19"
   },
   {
@@ -742,18 +766,6 @@
     "starts_at": "2026-06-19T00:00:27+02:00",
     "ends_at": "2026-06-19T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38A: Fahrtbehinderung Falschparker",
-    "description": "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62",
-    "pubDate": "2026-06-19T20:26:10+02:00",
-    "starts_at": "2026-06-19T21:13:49+02:00",
-    "ends_at": "2026-06-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=38A|D=2026-06-19"
   },
   {
     "source": "Wiener Linien",
