@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 19 Jun 2026 20:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 20:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[O: service obstruction because of demonstration]]></title>
+      <title><![CDATA[5/O: demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">882cff7dff40bedd1ece0cbb30689a64d03bb5ae0a9196ee7128b2dd79abddb9</guid>
-      <pubDate>Fri, 19 Jun 2026 19:24:44 +0200</pubDate>
-      <ext:first_seen>Fri, 19 Jun 2026 19:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 19:24:56 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 19 Jun 2026 20:24:00 +0200</ext:ends_at>
-      <description>[On 19.06.2026]</description>
-      <content:encoded><![CDATA[[On 19.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: service obstruction because of demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3e2080cd70a0d76702d2e5d867cf4583a4c298dd55297bab5839417d4f60ea50</guid>
-      <pubDate>Fri, 19 Jun 2026 19:24:15 +0200</pubDate>
-      <ext:first_seen>Fri, 19 Jun 2026 19:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 19:24:15 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 19 Jun 2026 20:23:00 +0200</ext:ends_at>
-      <description>[On 19.06.2026]</description>
-      <content:encoded><![CDATA[[On 19.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">87431ad13adf8f96c616b9e47faeb7fdaa886b0bedeb3d59aa41c13afe386aea</guid>
+      <pubDate>Fri, 19 Jun 2026 19:21:00 +0200</pubDate>
+      <ext:first_seen>Fri, 19 Jun 2026 20:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 19 Jun 2026 19:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 19 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Line O: irregular intervals in both directions. [On 19.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line O: irregular intervals in both directions.<br/>[On 19.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31: fire-brigade operation service from Friedrich-Engels-Platz]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Wed, 24 Jun 2026 07:00:00 +0200</ext:ends_at>
       <description>Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June … [18.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June …<br/>[18.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[61A: Liesing, fire station]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fbd354e21405ab4a30c877326fed20fcdeab4a8d4b2088ed6b9ca1c8ca00967f</guid>
+      <pubDate>Wed, 17 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 17 Jun 2026 17:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 17 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 22 Jun 2026 17:00:00 +0200</ext:ends_at>
+      <description>Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration … [17.06.2026 – 22.06.2026]</description>
+      <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration …<br/>[17.06.2026 – 22.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

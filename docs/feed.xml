@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 19 Jun 2026 20:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 20:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[O: Fahrtbehinderung wegen Demonstration]]></title>
+      <title><![CDATA[5/O: Demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">882cff7dff40bedd1ece0cbb30689a64d03bb5ae0a9196ee7128b2dd79abddb9</guid>
-      <pubDate>Fri, 19 Jun 2026 19:24:44 +0200</pubDate>
-      <ext:first_seen>Fri, 19 Jun 2026 19:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 19:24:56 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 19 Jun 2026 20:24:00 +0200</ext:ends_at>
-      <description>[Am 19.06.2026]</description>
-      <content:encoded><![CDATA[[Am 19.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Fahrtbehinderung wegen Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3e2080cd70a0d76702d2e5d867cf4583a4c298dd55297bab5839417d4f60ea50</guid>
-      <pubDate>Fri, 19 Jun 2026 19:24:15 +0200</pubDate>
-      <ext:first_seen>Fri, 19 Jun 2026 19:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 19 Jun 2026 19:24:15 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 19 Jun 2026 20:23:00 +0200</ext:ends_at>
-      <description>[Am 19.06.2026]</description>
-      <content:encoded><![CDATA[[Am 19.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">87431ad13adf8f96c616b9e47faeb7fdaa886b0bedeb3d59aa41c13afe386aea</guid>
+      <pubDate>Fri, 19 Jun 2026 19:21:00 +0200</pubDate>
+      <ext:first_seen>Fri, 19 Jun 2026 20:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 19 Jun 2026 19:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 19 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. [Am 19.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 19.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31: Feuerwehreinsatz Betrieb ab Friedrich-Engels-Platz]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Wed, 24 Jun 2026 07:00:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 99A in Richtung Eßling, Schule Haltestelle: Wehrbrücklstraße Von: Niklas-Eslarn-Straße 78 Nach: Niklas-Eslarn-Straße 82 Dauer: 22. Juni … [18.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 99A in Richtung Eßling, Schule Haltestelle: Wehrbrücklstraße Von: Niklas-Eslarn-Straße 78 Nach: Niklas-Eslarn-Straße 82 Dauer: 22. Juni …<br/>[18.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[61A: Liesing, Feuerwache]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fbd354e21405ab4a30c877326fed20fcdeab4a8d4b2088ed6b9ca1c8ca00967f</guid>
+      <pubDate>Wed, 17 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 17 Jun 2026 17:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 17 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 22 Jun 2026 17:00:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 61A in Richtung Vösendorf, Siebenhirten Haltestelle: Liesing, Feuerwache Von: Siebenhirtenstraße 12 Nach: Siebenhirtenstraße 8-10 Dauer … [17.06.2026 – 22.06.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 61A in Richtung Vösendorf, Siebenhirten Haltestelle: Liesing, Feuerwache Von: Siebenhirtenstraße 12 Nach: Siebenhirtenstraße 8-10 Dauer …<br/>[17.06.2026 – 22.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
