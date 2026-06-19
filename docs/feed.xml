@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 19 Jun 2026 02:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 02:30:39 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N62: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e1c94f9f0baaa9a6f99d729abdb7ecfcaa53673c8d833758a9c4d3307c92cba1</guid>
+      <pubDate>Fri, 19 Jun 2026 02:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 19 Jun 2026 02:30:39 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 19 Jun 2026 02:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 19 Jun 2026 03:02:00 +0200</ext:ends_at>
+      <description>Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall im Haltestellenbereich Oper, Karlsplatz &amp;gt;. [Am 19.06.2026]</description>
+      <content:encoded><![CDATA[Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall im Haltestellenbereich Oper, Karlsplatz &gt;.<br/>[Am 19.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N20: Betrieb ab Polgarstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
       <description>Wegen Kranarbeiten in der Grieshofgasse müssen die Busse der Linien 10A und 63A umgeleitet werden. [16.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Wegen Kranarbeiten in der Grieshofgasse müssen die Busse der Linien 10A und 63A umgeleitet werden.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/37A/40A: Bauarbeiten Dänenstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">24b9a55433e94ee81eb3b282e685d000f0fcd4a4ac761305f169183e255ac623</guid>
-      <pubDate>Thu, 28 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 01 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 01 Jun 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Max-Emanuel-Straße, Peter-Jordan-Straße und Dänenstraße werden die Linien 10A, 37A und 40A umgeleitet. [01.06.2026 – 01.06.2027]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Max-Emanuel-Straße, Peter-Jordan-Straße und Dänenstraße werden die Linien 10A, 37A und 40A umgeleitet.<br/>[01.06.2026 – 01.06.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
