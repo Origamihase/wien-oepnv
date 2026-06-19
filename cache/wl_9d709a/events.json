@@ -866,6 +866,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
+    "pubDate": "2026-06-19T08:10:31+02:00",
+    "starts_at": "2026-06-19T08:10:31+02:00",
+    "ends_at": "2026-06-19T09:10:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-06-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -897,6 +909,18 @@
     "pubDate": "2026-06-19T00:00:09+02:00",
     "starts_at": "2026-06-19T00:00:09+02:00",
     "ends_at": "2026-06-19T23:59:59+02:00",
+    "_identity": "wl|störung|L=9|D=2026-06-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Polizeieinsatz",
+    "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d0e4afae8a76682f9151e0252680d546a58090bd24478041f5804ac6fa3ff1de",
+    "pubDate": "2026-06-19T08:10:00+02:00",
+    "starts_at": "2026-06-19T08:10:00+02:00",
+    "ends_at": "2026-06-19T23:55:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-19"
   },
   {
