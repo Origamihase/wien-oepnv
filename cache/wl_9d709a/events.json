@@ -530,18 +530,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "U2: Fassadentausch Station Seestadt",
-    "description": "<h2>Bauarbeiten</h2> <p>Wegen Bauarbeiten im Stationsbereich Seestadt werden wechselweise die Abfahrtsgleise gesperrt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 15. Juni 2026, ca. 09:00 Uhr bis Samstag, 20. Juni 2026, ca. 15:00 Uhr</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span>Die Abfahrt der Z&uuml;ge von den Bahnsteigen kann variieren.</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "94230027261483fe573e97ce13f84b8a6969a9ffa9b77ab7fd5dcd0cfbe4546f",
-    "pubDate": "2026-06-03T12:02:00+02:00",
-    "starts_at": "2026-06-03T12:02:00+02:00",
-    "ends_at": "2026-06-20T15:00:00+02:00",
-    "_identity": "wl|hinweis|L=U2|D=2026-06-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "U2: Arbeiten am Stellwerk am 12.07.2026",
     "description": "<h2>Arbeiten am Stellwerk</h2> <p>Wegen Arbeiten am Stellwerk endet der Betrieb der U2 fr&uuml;her.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Sonntag, 12. Juli 2026, etwa 20:00 Uhr bis 01:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span></p> <p><span style=\"text-decoration: underline;\">Linie U2:<br /></span>Kein Betrieb zwischen Karlsplatz und Seestadt.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />U1, U3, U4, D, 2, 25, 26, 27, 71, U2E, 5B, 26A, 77A, 84A, 92A und S80.<br />Die Linien U1, 25, 26, 27, 26A und 92A fahren in dichteren Intervallen.</p> <p>Zwischen Praterstern und Donaumarina verkehrt die Ersatzbuslinie U2E.</p> <p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/U2_Kein_Betrieb.png\" alt=\"\" width=\"859\" height=\"888\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -866,18 +854,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "69A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4fdbb07cec28e7761cde8d3419840d8f7746e56281c9209250f4699fd7e17d53",
-    "pubDate": "2026-06-20T13:42:35+02:00",
-    "starts_at": "2026-06-20T13:42:35+02:00",
-    "ends_at": "2026-06-20T14:41:00+02:00",
-    "_identity": "wl|störung|L=69A|D=2026-06-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -950,8 +926,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "D: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "47075b3ab9aea3f9e8790e8326394e6f935beb494cad7b02c64ce5fbe05f3cf6",
+    "pubDate": "2026-06-20T14:31:31+02:00",
+    "starts_at": "2026-06-20T14:40:42+02:00",
+    "ends_at": "2026-06-20T15:40:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-06-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Schadhaftes Fahrzeug",
-    "description": "Linie D: Fahrtbehinderung in Richtung Absberggasse. Voraussichtliche Dauer: 15:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Quartier Belvedere S.",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c",
     "pubDate": "2026-06-20T14:28:00+02:00",
@@ -963,7 +951,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U6: Rettungseinsatz",
-    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Längenfeldgasse und Niederhofstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 15:00 Uhr. Grund: Rettungseinsatz im Bereich Längenfeldgasse.",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
     "pubDate": "2026-06-20T14:26:00+02:00",
