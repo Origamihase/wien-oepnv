@@ -626,13 +626,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "25: Rettungseinsatz",
     "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
     "pubDate": "2026-06-20T12:58:00+02:00",
-    "starts_at": "2026-06-20T13:00:29+02:00",
-    "ends_at": "2026-06-20T23:55:00+02:00",
+    "starts_at": "2026-06-20T12:58:00+02:00",
+    "ends_at": "2026-06-20T14:05:00+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-20"
   },
   {
@@ -866,18 +866,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Schadhafter PKW",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0ba600bcfee185018ef209f9f657eb5b4b9f85c891aa2f6c7dacd09de563aef8",
-    "pubDate": "2026-06-20T12:06:00+02:00",
-    "starts_at": "2026-06-20T12:06:00+02:00",
-    "ends_at": "2026-06-20T13:46:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-06-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -890,13 +878,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "69A: Fremder Verkehrsunfall",
-    "description": "Linie 69A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "69A: Verkehrsunfall",
+    "description": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9c2d8999eea9f81ceccf426b45628544b1ad275f5ebdcce19cfc2e83a426820c",
-    "pubDate": "2026-06-20T11:49:00+02:00",
-    "starts_at": "2026-06-20T11:49:00+02:00",
+    "guid": "0fc85d27689d90831656e0a962f5ee55294a7b1a7fac9f6b82c5a3b2f65b4ae1",
+    "pubDate": "2026-06-20T13:41:00+02:00",
+    "starts_at": "2026-06-20T13:41:00+02:00",
     "ends_at": "2026-06-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=69A|D=2026-06-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "69A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4fdbb07cec28e7761cde8d3419840d8f7746e56281c9209250f4699fd7e17d53",
+    "pubDate": "2026-06-20T13:42:35+02:00",
+    "starts_at": "2026-06-20T13:42:35+02:00",
+    "ends_at": "2026-06-20T14:41:00+02:00",
     "_identity": "wl|störung|L=69A|D=2026-06-20"
   },
   {
@@ -946,18 +946,6 @@
     "starts_at": "2026-06-20T00:00:25+02:00",
     "ends_at": "2026-06-20T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Schadhaftes Fahrzeug",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
-    "pubDate": "2026-06-20T12:33:00+02:00",
-    "starts_at": "2026-06-20T12:33:00+02:00",
-    "ends_at": "2026-06-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-06-20"
   },
   {
     "source": "Wiener Linien",
