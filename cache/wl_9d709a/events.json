@@ -614,18 +614,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1728d250973f2515460b23b3c697922114d90ab90874f000d040c5e6b86cfa5e",
-    "pubDate": "2026-06-20T18:12:22+02:00",
-    "starts_at": "2026-06-20T18:12:22+02:00",
-    "ends_at": "2026-06-20T19:10:00+02:00",
-    "_identity": "wl|störung|L=1A|D=2026-06-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -634,18 +622,6 @@
     "starts_at": "2026-06-19T00:00:28+02:00",
     "ends_at": "2026-06-20T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f00bcae17764f62582458ff81855410216ab3b96f1a4443be49d05c1dcfefa76",
-    "pubDate": "2026-06-20T18:10:26+02:00",
-    "starts_at": "2026-06-20T18:10:26+02:00",
-    "ends_at": "2026-06-20T19:10:00+02:00",
-    "_identity": "wl|störung|L=2A|D=2026-06-20"
   },
   {
     "source": "Wiener Linien",
@@ -934,17 +910,5 @@
     "starts_at": "2026-06-12T00:00:27+02:00",
     "ends_at": "2026-06-20T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-12|TK=einstieg brünner strasse 31 31a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung wegen Signalstörung",
-    "description": "Fahrtbehinderung\nwegen Signalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b6bef18c56849381c155b7aee25b6c16c648913c966f705b3cc68162c0cb56fd",
-    "pubDate": "2026-06-20T18:02:17+02:00",
-    "starts_at": "2026-06-20T18:02:42+02:00",
-    "ends_at": "2026-06-20T19:01:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-06-20|TK=signalstörung"
   }
 ]
