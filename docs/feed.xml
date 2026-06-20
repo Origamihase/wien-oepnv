@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 20 Jun 2026 18:00:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jun 2026 18:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1b09b8c64e85b76d7314d37ec4984b3c553fb50aac8beb5ec08917cf45928806</guid>
+      <pubDate>Sat, 20 Jun 2026 18:06:00 +0200</pubDate>
+      <ext:first_seen>Sat, 20 Jun 2026 18:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 20 Jun 2026 18:06:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 20 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[REX 3: Wien Floridsdorf ↔ Wien Jedlersdorf / Wien Hauptbahnhof ↔ Deutsch Wagram]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -105,17 +116,6 @@
       <ext:starts_at>Wed, 17 Jun 2026 13:52:21 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 04.07.2026 bis 06.09.2026 keine Züge fahren. [Seit 17.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 04.07.2026 bis 06.09.2026 keine Züge fahren.<br/>[Seit 17.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/63A: Kranarbeiten Grieshofgasse am 24.06.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cda0fbb9958072fc0461440f1e386e37515f4d13b4b7a4534567d8ec664f1786</guid>
-      <pubDate>Tue, 16 Jun 2026 13:15:00 +0200</pubDate>
-      <ext:first_seen>Tue, 16 Jun 2026 13:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 16 Jun 2026 13:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
-      <description>Wegen Kranarbeiten in der Grieshofgasse müssen die Busse der Linien 10A und 63A umgeleitet werden. [16.06.2026 – 24.06.2026]</description>
-      <content:encoded><![CDATA[Wegen Kranarbeiten in der Grieshofgasse müssen die Busse der Linien 10A und 63A umgeleitet werden.<br/>[16.06.2026 – 24.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
