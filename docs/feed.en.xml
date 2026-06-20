@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 20 Jun 2026 13:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jun 2026 13:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26: service disruption Einstieg for line 27]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">52c79e84718b15aa2d6b3377bc49bdca2c038eae87e96842601590435b1ca3c3</guid>
+      <pubDate>Sat, 20 Jun 2026 13:27:16 +0200</pubDate>
+      <ext:first_seen>Sat, 20 Jun 2026 13:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 20 Jun 2026 13:27:16 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 20 Jun 2026 14:26:00 +0200</ext:ends_at>
+      <description>[On 20.06.2026]</description>
+      <content:encoded><![CDATA[[On 20.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">80bad3fc9a7c8570d47692cfb99b01d9a0b11e6fe8749b87eeb08ec1a799c3e2</guid>
+      <pubDate>Sat, 20 Jun 2026 13:20:00 +0200</pubDate>
+      <ext:first_seen>Sat, 20 Jun 2026 13:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 20 Jun 2026 13:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 20 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic accident. [On 20.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 20.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49: Harmful passenger car]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +38,7 @@
       <pubDate>Sat, 20 Jun 2026 12:06:00 +0200</pubDate>
       <ext:first_seen>Sat, 20 Jun 2026 12:31:04 +0200</ext:first_seen>
       <ext:starts_at>Sat, 20 Jun 2026 12:06:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 20 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 20 Jun 2026 13:46:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 20.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 20.06.2026]]]></content:encoded>
     </item>
@@ -95,28 +117,6 @@
       <ext:ends_at>Fri, 18 Jun 2027 11:11:00 +0200</ext:ends_at>
       <description>Due to roadworks in the Oberdorfstraße and the associated prov. one-way guide from Langobardenstraße to Aspernstraße, the buses are redirected. [18.06.2026 – 18.06.2027]</description>
       <content:encoded><![CDATA[Due to roadworks in the Oberdorfstraße and the associated prov. one-way guide from Langobardenstraße to Aspernstraße, the buses are redirected.<br/>[18.06.2026 – 18.06.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[99A: Wehrbrücklstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7439e931aeea5d30cacc86ce10618be0945eb65fcdf0fc3112f9a4c1aa9dca5d</guid>
-      <pubDate>Thu, 18 Jun 2026 09:20:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 09:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 09:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 07:00:00 +0200</ext:ends_at>
-      <description>Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June … [18.06.2026 – 24.06.2026]</description>
-      <content:encoded><![CDATA[Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June …<br/>[18.06.2026 – 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[61A: Liesing, fire station]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fbd354e21405ab4a30c877326fed20fcdeab4a8d4b2088ed6b9ca1c8ca00967f</guid>
-      <pubDate>Wed, 17 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 17 Jun 2026 17:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 17 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 22 Jun 2026 17:00:00 +0200</ext:ends_at>
-      <description>Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration … [17.06.2026 – 22.06.2026]</description>
-      <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration …<br/>[17.06.2026 – 22.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
