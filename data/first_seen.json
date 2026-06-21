@@ -3542,7 +3542,11 @@
   "5f513a539121aba0144ae3db61d1081d3720341dd862a137764c2c0e38cf78cb": {
     "first_seen": "2026-06-21T19:01:05.050062+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: police operation.",
+        "title": "5A: police operation"
+      },
+      "epoch": 3
     }
   },
   "5fab0b80f29057226cc0b35db02257f4e5182055289b955922133371610523ad": {
@@ -7954,7 +7958,11 @@
   "d3f78298c0cf7e3adb13e441ed10aff7e1e8b83ad2eeba7885e3b92a6ad6bd69": {
     "first_seen": "2026-06-21T19:30:50.903080+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: police operation.",
+        "title": "74A: police operation"
+      },
+      "epoch": 3
     }
   },
   "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc": {
@@ -10060,8 +10068,10 @@
     "first_seen": "2026-06-21T19:01:05.050062+00:00",
     "translations": {
       "en": {
+        "summary": "Due to damage to the track, only limited train journeys to expected Wien Liesing 22:00 are possible in Wien Liesing train station.",
         "title": "Wien Liesing"
-      }
+      },
+      "epoch": 3
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
