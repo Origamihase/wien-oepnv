@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 21 Jun 2026 11:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2026 12:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[32A: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">02ccd1e80667e6302ee772d9d295c9691fcd3fcc167a0afc5855cb4440ec1d4a</guid>
+      <pubDate>Sun, 21 Jun 2026 11:45:00 +0200</pubDate>
+      <ext:first_seen>Sun, 21 Jun 2026 12:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 21 Jun 2026 11:47:48 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 21 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[42A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 07:00:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 99A in Richtung Eßling, Schule Haltestelle: Wehrbrücklstraße Von: Niklas-Eslarn-Straße 78 Nach: Niklas-Eslarn-Straße 82 Dauer: 22. Juni … [18.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 99A in Richtung Eßling, Schule Haltestelle: Wehrbrücklstraße Von: Niklas-Eslarn-Straße 78 Nach: Niklas-Eslarn-Straße 82 Dauer: 22. Juni …<br/>[18.06.2026 – 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[61A: Liesing, Feuerwache]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fbd354e21405ab4a30c877326fed20fcdeab4a8d4b2088ed6b9ca1c8ca00967f</guid>
-      <pubDate>Wed, 17 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 17 Jun 2026 17:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 17 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 22 Jun 2026 17:00:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 61A in Richtung Vösendorf, Siebenhirten Haltestelle: Liesing, Feuerwache Von: Siebenhirtenstraße 12 Nach: Siebenhirtenstraße 8-10 Dauer … [17.06.2026 – 22.06.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 61A in Richtung Vösendorf, Siebenhirten Haltestelle: Liesing, Feuerwache Von: Siebenhirtenstraße 12 Nach: Siebenhirtenstraße 8-10 Dauer …<br/>[17.06.2026 – 22.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
