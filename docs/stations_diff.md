@@ -1,23 +1,21 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-06-14T05:50:34+00:00_
+_Erzeugt am: 2026-06-21T06:01:56+00:00_
 
 **Stationen: 2235 → 2235 (Δ +0)**
 
-## Hinzugefügt (1)
+## Hinzugefügt (0)
 
-- `name:Wien Torricelligasse (WL)` — Wien Torricelligasse \(WL\)
+_Keine._
 
 ## Entfernt (1)
 
-- `name:Wien Ameisbachzeile (WL)` — Wien Ameisbachzeile \(WL\)
+- `name:Wien Siemensplatz (WL)` — Wien Siemensplatz \(WL\)
 
 ## Umbenannt (0)
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (3)
+## Koordinaten verschoben (≥ 100 m) (0)
 
-- `bst:711` — Schwechat (159 m)
-- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
-- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)
+_Keine._
