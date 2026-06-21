@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 21 Jun 2026 01:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2026 02:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U4/U6: service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6cf95fe5cc66cffaf751fc9a315a5015b41795353c72e8d8ebf484f21b0a5c70</guid>
-      <pubDate>Sun, 21 Jun 2026 01:20:00 +0200</pubDate>
-      <ext:first_seen>Sun, 21 Jun 2026 01:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 21 Jun 2026 01:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 21 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line U6: irregular intervals in both directions. [On 21.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line U6: irregular intervals in both directions.<br/>[On 21.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[11A: event on 11.07.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +106,16 @@
       <ext:ends_at>Mon, 22 Jun 2026 17:00:00 +0200</ext:ends_at>
       <description>Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration … [17.06.2026 – 22.06.2026]</description>
       <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration …<br/>[17.06.2026 – 22.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Floridsdorf ↔ Wien Praterstern]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;886155</guid>
+      <pubDate>Wed, 17 Jun 2026 13:52:21 +0200</pubDate>
+      <ext:first_seen>Wed, 17 Jun 2026 14:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 17 Jun 2026 13:52:21 +0200</ext:starts_at>
+      <description>Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026. [Since 17.06.2026]</description>
+      <content:encoded><![CDATA[Due to construction works there are no trains between Wien Floridsdorf station (U) and Wien Praterstern station (U) from 04.07.2026 to 06.09.2026.<br/>[Since 17.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
