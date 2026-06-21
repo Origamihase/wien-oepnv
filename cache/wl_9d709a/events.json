@@ -710,6 +710,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "42A: Verkehrsunfall",
+    "description": "Linie 42A: Fahrtbehinderung in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f93cfe1c089b300ff7bedbf72f82c4536945f4dc3e3a9ccd3c8e0947c0cb445e",
+    "pubDate": "2026-06-21T11:15:00+02:00",
+    "starts_at": "2026-06-21T11:15:00+02:00",
+    "ends_at": "2026-06-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=42A|D=2026-06-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "42: Kein Betrieb",
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
