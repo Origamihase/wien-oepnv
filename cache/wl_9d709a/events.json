@@ -626,14 +626,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Verspätungen",
-    "description": "Linie 27: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "2: Verkehrsunfall",
+    "description": "Linie 2: Umleitung in Richtung Dornbach zwischen Johann-Nepomuk-Berger-Platz und Dornbach über die Strecke der Linien 9 und 43. Voraussichtliche Dauer: 19:30 Uhr. Grund: Verkehrsunfall im Bereich Wilhelminenstraße 1.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "405ffe0aa2098d8d6d582944507740bd3b2ff950f6553c25606e98f3e6b79d5e",
-    "pubDate": "2026-06-22T18:19:00+02:00",
-    "starts_at": "2026-06-22T18:19:00+02:00",
+    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
+    "pubDate": "2026-06-22T19:06:00+02:00",
+    "starts_at": "2026-06-22T19:06:00+02:00",
     "ends_at": "2026-06-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-06-22"
+    "_identity": "wl|störung|L=2|D=2026-06-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Verkehrsunfall Betrieb ab Dornbach",
+    "description": "Verkehrsunfall\nBetrieb ab Dornbach",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "83e4d25cad120b16ff0ca8a5e60233bcc2921cc59c192cf6a5ba9569bee1952d",
+    "pubDate": "2026-06-22T19:07:50+02:00",
+    "starts_at": "2026-06-22T19:11:26+02:00",
+    "ends_at": "2026-06-22T20:10:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-06-22"
   },
   {
     "source": "Wiener Linien",
