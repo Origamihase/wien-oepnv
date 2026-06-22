@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 22 Jun 2026 11:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2026 11:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[12A: rescue operation]]></title>
+      <title><![CDATA[30/31: renovation work]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7</guid>
-      <pubDate>Mon, 22 Jun 2026 10:26:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 10:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 22 Jun 2026 10:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 22 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction towards Schmelz, Gablenzgasse. expected duration: 10:50 watch. Reason: rescue operation in Mariahilfer Straße / Grenzgasse. [On 22.06.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Schmelz, Gablenzgasse. expected duration: 10:50 watch. Reason: rescue operation in Mariahilfer Straße / Grenzgasse.<br/>[On 22.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">dc9aa38b8918a6eb15c598b6d6096a710aba9a223d744fb0f97f1a076a3fd62a</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
+      <description>Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 6, 2026 to expected End … [06.07.2026 – 17.08.2026]</description>
+      <content:encoded><![CDATA[Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 6, 2026 to expected End …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: 60A, call bus N61: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">961bba9255fa39c97bbf171e6af0b5a2dbecd6156abb8e9bffad429e363c29aa</guid>
+      <pubDate>Mon, 08 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 10 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Elisenstraße range, the lines 60A and Ruffbus N61 are redirected. [10.06.2026 – 29.06.2027]</description>
+      <content:encoded><![CDATA[Because of construction works in the Elisenstraße range, the lines 60A and Ruffbus N61 are redirected.<br/>[10.06.2026 – 29.06.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: event on 11.07.2026]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 07:00:00 +0200</ext:ends_at>
       <description>Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June … [18.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June …<br/>[18.06.2026 – 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[61A: Liesing, fire station]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fbd354e21405ab4a30c877326fed20fcdeab4a8d4b2088ed6b9ca1c8ca00967f</guid>
-      <pubDate>Wed, 17 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 17 Jun 2026 17:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 17 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 22 Jun 2026 17:00:00 +0200</ext:ends_at>
-      <description>Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration … [17.06.2026 – 22.06.2026]</description>
-      <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration …<br/>[17.06.2026 – 22.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
