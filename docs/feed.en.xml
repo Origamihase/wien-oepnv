@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 22 Jun 2026 08:31:06 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2026 09:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[66A: traffic congestion]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Mon, 22 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: traffic congestion. [On 22.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 22.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">54bc809d85229c6a09e43a7de307b52c3b4983748375648087f4d7c0df6854ef</guid>
-      <pubDate>Mon, 22 Jun 2026 08:12:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 08:31:06 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 22 Jun 2026 08:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 22 Jun 2026 08:39:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion on the feed line (Nordbrücke). [On 22.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion on the feed line (Nordbrücke).<br/>[On 22.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: event on 11.07.2026]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Wed, 24 Jun 2026 07:00:00 +0200</ext:ends_at>
       <description>Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June … [18.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Stop change of line 99A towards Eßling, Schule Stop: Wehrbrücklstraße From: Niklas-Eslarn-Straße2XX 78 To: Niklas-Eslarn-Straße 82 Duration: 22 June …<br/>[18.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[61A: Liesing, fire station]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fbd354e21405ab4a30c877326fed20fcdeab4a8d4b2088ed6b9ca1c8ca00967f</guid>
+      <pubDate>Wed, 17 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 17 Jun 2026 17:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 17 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 22 Jun 2026 17:00:00 +0200</ext:ends_at>
+      <description>Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration … [17.06.2026 – 22.06.2026]</description>
+      <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf, Siebenhirten Stop: Liesing, fire station From: Siebenhirtenstraße 12 To: Siebenhirtenstraße 8-10 Duration …<br/>[17.06.2026 – 22.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
