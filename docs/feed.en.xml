@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 22 Jun 2026 10:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2026 10:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12A: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7</guid>
+      <pubDate>Mon, 22 Jun 2026 10:26:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 10:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 22 Jun 2026 10:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 22 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Schmelz, Gablenzgasse. expected duration: 10:50 watch. Reason: rescue operation in Mariahilfer Straße / Grenzgasse. [On 22.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Schmelz, Gablenzgasse. expected duration: 10:50 watch. Reason: rescue operation in Mariahilfer Straße / Grenzgasse.<br/>[On 22.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11A: event on 11.07.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -102,17 +113,6 @@
       <guid isPermaLink="false">b515046f8efc2938e32142bba4c3e0824f0ae216ac5103eef86cc71cf2d91c34</guid>
       <pubDate>Mon, 22 Jun 2026 09:22:00 +0200</pubDate>
       <ext:first_seen>Thu, 18 Jun 2026 09:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 22 Jun 2026 09:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 22 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 22.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 22.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: service obstruction due to rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a71fc169a65218e40e97e38cf1216a0530e03cb41823f0f6e351949dbeea8a98</guid>
-      <pubDate>Mon, 22 Jun 2026 09:22:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 08:30:53 +0200</ext:first_seen>
       <ext:starts_at>Mon, 22 Jun 2026 09:22:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 22 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 22.06.2026]</description>
