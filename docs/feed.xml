@@ -7,17 +7,28 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 22 Jun 2026 14:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2026 15:01:19 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1A/2A: Pollerübung am 25.06.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9760def121aca07fa28ab096195160551e01a88e963a4553635d71082ac90ced</guid>
+      <pubDate>Mon, 22 Jun 2026 14:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 15:01:19 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 22 Jun 2026 14:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 11:00:00 +0200</ext:ends_at>
+      <description>Pollerübung Wegen einer Pollerübung wird die Strauchgasse und die Herrengasse polizeilich gesperrt. [22.06.2026 – 24.06.2026]</description>
+      <content:encoded><![CDATA[Pollerübung Wegen einer Pollerübung wird die Strauchgasse und die Herrengasse polizeilich gesperrt.<br/>[22.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Mödling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;887825</guid>
-      <pubDate>Mon, 22 Jun 2026 14:26:28 +0200</pubDate>
+      <pubDate>Mon, 22 Jun 2026 14:36:51 +0200</pubDate>
       <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 22 Jun 2026 14:26:28 +0200</ext:starts_at>
-      <description>Wegen eines Feuerwehreinsatzes sind in Mödling Bahnhof Zugfahrten derzeit nicht möglich. Es kommt zu vereinzelten Zugausfällen, Verzögerungen und Umleitungen. [Seit 22.06.2026]</description>
-      <content:encoded><![CDATA[Wegen eines Feuerwehreinsatzes sind in Mödling Bahnhof Zugfahrten derzeit nicht möglich. Es kommt zu vereinzelten Zugausfällen, Verzögerungen und Umleitungen.<br/>[Seit 22.06.2026]]]></content:encoded>
+      <ext:starts_at>Mon, 22 Jun 2026 14:36:51 +0200</ext:starts_at>
+      <description>Wegen eines Feuerwehreinsatzes waren in Mödling Bahnhof bis 14:33 Uhr keine Fahrten möglich. [Seit 22.06.2026]</description>
+      <content:encoded><![CDATA[Wegen eines Feuerwehreinsatzes waren in Mödling Bahnhof bis 14:33 Uhr keine Fahrten möglich.<br/>[Seit 22.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Donaufelder Straße 67]]></title>
@@ -105,17 +116,6 @@
       <ext:ends_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:ends_at>
       <description>Eine Zufahrt zu den genehmigten Stellplätzen ist möglich.Die Buslinie 7A wird in diesen Zeitraum über die Rothenhofgasse Sonnleithengasse - Davidgasse umgeleitet. [22.06.2026 – 13.10.2026]</description>
       <content:encoded><![CDATA[Eine Zufahrt zu den genehmigten Stellplätzen ist möglich.Die Buslinie 7A wird in diesen Zeitraum über die Rothenhofgasse Sonnleithengasse - Davidgasse umgeleitet.<br/>[22.06.2026 – 13.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N20: Bauarbeiten Fatty-George-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">965c1a2a4f8c7fa5e1293e00016711ba49837ae52db4ef0c17477fe48c6a0078</guid>
-      <pubDate>Thu, 18 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 14:01:21 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 08 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Jun 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Fatty-George-Gasse wird die Linie N20 Montag - Freitag umgeleitet. [08.07.2026 – 18.06.2027]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Fatty-George-Gasse wird die Linie N20 Montag - Freitag umgeleitet.<br/>[08.07.2026 – 18.06.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
