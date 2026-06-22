@@ -10222,6 +10222,16 @@
       "epoch": 3
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&888006": {
+    "first_seen": "2026-06-22T21:30:50.690964+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation between Wien Meidling station (U) and Wien Liesing station no journeys are possible.",
+        "title": "Wien Meidling \u2194 Wien Liesing"
+      },
+      "epoch": 3
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },
