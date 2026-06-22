@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 22 Jun 2026 15:01:19 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2026 15:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40A: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">07dc30c6a44160a6ac6edaa6777d410d2bec787011a5197738e1f98de368c3eb</guid>
+      <pubDate>Mon, 22 Jun 2026 15:20:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 15:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet. [13.07.2026 – 22.08.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1A/2A: Pollerübung am 25.06.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
       <description>Der gegenständliche Bereich der Mariahilfer Straße ist für den Fahrzeugverkehr zu sperren. [25.05.2026 – 25.06.2026]</description>
       <content:encoded><![CDATA[Der gegenständliche Bereich der Mariahilfer Straße ist für den Fahrzeugverkehr zu sperren.<br/>[25.05.2026 – 25.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Neilreichgasse von Gudrunstraße bis Davidgasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">390a7b339a05827f2515e0fadb8ac9e49bb9f6152829a8e207851f8597d6caa3</guid>
-      <pubDate>Mon, 22 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 22:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 22 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>Eine Zufahrt zu den genehmigten Stellplätzen ist möglich.Die Buslinie 7A wird in diesen Zeitraum über die Rothenhofgasse Sonnleithengasse - Davidgasse umgeleitet. [22.06.2026 – 13.10.2026]</description>
-      <content:encoded><![CDATA[Eine Zufahrt zu den genehmigten Stellplätzen ist möglich.Die Buslinie 7A wird in diesen Zeitraum über die Rothenhofgasse Sonnleithengasse - Davidgasse umgeleitet.<br/>[22.06.2026 – 13.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

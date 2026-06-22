@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 22 Jun 2026 15:01:19 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2026 15:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1A/2A: Pollerübung am 25.06.2026]]></title>
+      <title><![CDATA[40A: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">07dc30c6a44160a6ac6edaa6777d410d2bec787011a5197738e1f98de368c3eb</guid>
+      <pubDate>Mon, 22 Jun 2026 15:20:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 15:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
+      <description>Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected. [13.07.2026 – 22.08.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A/2A: poller exercise at 25.06.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9760def121aca07fa28ab096195160551e01a88e963a4553635d71082ac90ced</guid>
       <pubDate>Mon, 22 Jun 2026 14:30:00 +0200</pubDate>
       <ext:first_seen>Mon, 22 Jun 2026 15:01:19 +0200</ext:first_seen>
       <ext:starts_at>Mon, 22 Jun 2026 14:30:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 24 Jun 2026 11:00:00 +0200</ext:ends_at>
-      <description>Pollerübung Wegen einer Pollerübung wird die Strauchgasse und die Herrengasse polizeilich gesperrt. [22.06.2026 – 24.06.2026]</description>
-      <content:encoded><![CDATA[Pollerübung Wegen einer Pollerübung wird die Strauchgasse und die Herrengasse polizeilich gesperrt.<br/>[22.06.2026 – 24.06.2026]]]></content:encoded>
+      <description>Poller exercise Due to a poller exercise, the Strauchgasse and the Herrengasse are closed by police. [22.06.2026 – 24.06.2026]</description>
+      <content:encoded><![CDATA[Poller exercise Due to a poller exercise, the Strauchgasse and the Herrengasse are closed by police.<br/>[22.06.2026 – 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Mödling]]></title>
@@ -105,17 +116,6 @@
       <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
       <description>The actual area of Mariahilfer Straße is to be closed for vehicle traffic. [25.05.2026 – 25.06.2026]</description>
       <content:encoded><![CDATA[The actual area of Mariahilfer Straße is to be closed for vehicle traffic.<br/>[25.05.2026 – 25.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Neilreichgasse from Gudrunstraße to Davidgasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">390a7b339a05827f2515e0fadb8ac9e49bb9f6152829a8e207851f8597d6caa3</guid>
-      <pubDate>Mon, 22 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 22:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 22 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>Access to the approved pitches is possible.The bus line 7A is redirected over this period via the Rothenhofgasse Sonnleithengasse - Davidgasse. [22.06.2026 – 13.10.2026]</description>
-      <content:encoded><![CDATA[Access to the approved pitches is possible.The bus line 7A is redirected over this period via the Rothenhofgasse Sonnleithengasse - Davidgasse.<br/>[22.06.2026 – 13.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
