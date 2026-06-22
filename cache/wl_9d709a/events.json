@@ -375,7 +375,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "93A/98A: Bauarbeiten Oberdorfstraße",
-    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten in der Oberdorfstra&szlig;e und der damit einhergehenden</p> <p>prov. Einbahnf&uuml;hrung von Langobardenstra&szlig;e bis Aspernstra&szlig;e, werden die Busse umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 6. Juli 2026, etwa 09:00 Uhr bis voraussichtlich neun Wochen.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br />Linie 93A in Richtung Kagran bzw. Linie 98A in Richtung E&szlig;ling, Schippanisiedlung<br />Umleitung ab Erzherzog-Karl-Stra&szlig;e # Oberdorfstra&szlig;e &uuml;ber <span style=\"text-decoration: underline;\"><strong>Aspernstra&szlig;e &ndash; Asperner Heldenplatz &ndash;Biberhaufenweg</strong></span></p> <p><span style=\"text-decoration: underline;\"><strong>Aufgelassene Haltestellen:<br /></strong></span>-Aspernstra&szlig;e, Oberdorfstra&szlig;e (Oberdorfstra&szlig;e 23)<br />-Oberdorfstra&szlig;e (Oberdorfstra&szlig;e 3-5)<br /><br /><span style=\"text-decoration: underline;\"><strong>Ersatzhaltestellen:<br /></strong></span>-Aspernstra&szlig;e, Oberdorfstra&szlig;e (Linien 26A, 97A)<br />-Asperner Heldenplatz (Linien 22A, 92A, 97A)<span style=\"text-decoration: underline;\"><strong><br /><br /><br /></strong></span></p>",
+    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten in der Oberdorfstra&szlig;e und der damit einhergehenden</p> <p>prov. Einbahnf&uuml;hrung von Langobardenstra&szlig;e bis Aspernstra&szlig;e, werden die Busse umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 6. Juli 2026, etwa 09:00 Uhr auf Dauer von voraussichtlich neun Wochen.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br />Linie 93A in Richtung Kagran bzw. Linie 98A in Richtung E&szlig;ling, Schippanisiedlung<br />Umleitung ab Erzherzog-Karl-Stra&szlig;e # Oberdorfstra&szlig;e &uuml;ber <span style=\"text-decoration: underline;\"><strong>Aspernstra&szlig;e &ndash; Asperner Heldenplatz &ndash; Biberhaufenweg</strong></span></p> <p><span style=\"text-decoration: underline;\"><strong>Aufgelassene Haltestellen:<br /></strong></span>- Aspernstra&szlig;e, Oberdorfstra&szlig;e (Oberdorfstra&szlig;e 23)<br />- Oberdorfstra&szlig;e (Oberdorfstra&szlig;e 3-5)<br /><br /><span style=\"text-decoration: underline;\"><strong>Ersatzhaltestellen:<br /></strong></span>- Aspernstra&szlig;e, Oberdorfstra&szlig;e (Linien 26A, 97A)<br />- Asperner Heldenplatz (Linien 22A, 92A, 97A)<span style=\"text-decoration: underline;\"><strong><br /><br /><br /></strong></span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "fba62e1f0270c82f7c1616b5104e02706dc7393be8bd93ec84fea39dfa9071ea",
     "pubDate": "2026-06-18T12:55:00+02:00",
@@ -634,18 +634,6 @@
     "starts_at": "2026-06-19T00:00:28+02:00",
     "ends_at": "2026-06-22T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "94f4eb65518cea7f3596d07523d5e3ba07cc2ee6eadafdf524ef5a92f01f2dc6",
-    "pubDate": "2026-06-22T15:09:06+02:00",
-    "starts_at": "2026-06-22T15:09:07+02:00",
-    "ends_at": "2026-06-22T16:08:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-06-22"
   },
   {
     "source": "Wiener Linien",
@@ -970,29 +958,5 @@
     "starts_at": "2026-06-12T00:00:27+02:00",
     "ends_at": "2026-06-22T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-12|TK=einstieg brünner strasse 31 31a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
-    "pubDate": "2026-06-22T14:46:47+02:00",
-    "starts_at": "2026-06-22T14:46:47+02:00",
-    "ends_at": "2026-06-22T16:30:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-06-22|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Verkehrsunfall Betrieb ab Floridsdorfer Markt",
-    "description": "Verkehrsunfall\nBetrieb ab Floridsdorfer Markt",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "339a78e41964b2b9c4046248bea2bd30be196279ce11f59f2ac9a8b7bf5879b3",
-    "pubDate": "2026-06-22T14:48:14+02:00",
-    "starts_at": "2026-06-22T14:48:14+02:00",
-    "ends_at": "2026-06-22T16:30:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-06-22|TK=verkehrsunfall betrieb ab floridsdorfer markt"
   }
 ]
