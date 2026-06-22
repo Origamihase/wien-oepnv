@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 22 Jun 2026 12:01:19 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2026 12:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11: Schadhafter Zug Züge halten bei Linie 6]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d623bb9a074cf63fb9804105d5a417fd68b212007776d0e37589e3fd7511a35a</guid>
+      <pubDate>Mon, 22 Jun 2026 11:48:50 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 12:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 22 Jun 2026 11:48:50 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 22 Jun 2026 12:48:00 +0200</ext:ends_at>
+      <description>[Am 22.06.2026]</description>
+      <content:encoded><![CDATA[[Am 22.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[30/31: Sanierungsarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 18 Jun 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Oberdorfstraße und der damit einhergehenden prov. Einbahnführung von Langobardenstraße bis Aspernstraße, werden die Busse umgeleitet. [18.06.2026 – 18.06.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Oberdorfstraße und der damit einhergehenden prov. Einbahnführung von Langobardenstraße bis Aspernstraße, werden die Busse umgeleitet.<br/>[18.06.2026 – 18.06.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[99A: Wehrbrücklstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7439e931aeea5d30cacc86ce10618be0945eb65fcdf0fc3112f9a4c1aa9dca5d</guid>
-      <pubDate>Thu, 18 Jun 2026 09:20:00 +0200</pubDate>
-      <ext:first_seen>Thu, 18 Jun 2026 09:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 18 Jun 2026 09:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 07:00:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 99A in Richtung Eßling, Schule Haltestelle: Wehrbrücklstraße Von: Niklas-Eslarn-Straße 78 Nach: Niklas-Eslarn-Straße 82 Dauer: 22. Juni … [18.06.2026 – 24.06.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 99A in Richtung Eßling, Schule Haltestelle: Wehrbrücklstraße Von: Niklas-Eslarn-Straße 78 Nach: Niklas-Eslarn-Straße 82 Dauer: 22. Juni …<br/>[18.06.2026 – 24.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
