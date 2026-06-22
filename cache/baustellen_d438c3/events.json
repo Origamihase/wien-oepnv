@@ -149,6 +149,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Antonsplatz von 13 bis 18",
+    "description": "Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt. \nBeginn: 18.03.2026 00:00 Uhr \nGeplant bis: 29.06.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 10",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1",
+    "pubDate": "2026-03-18T00:00:00+01:00",
+    "starts_at": "2026-03-18T00:00:00+01:00",
+    "ends_at": "2026-06-29T00:00:00+02:00",
+    "context": {
+      "district": "10",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.17027971,
+        "lon": 16.37880257
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Eßlinger Hauptstraße 96",
     "description": "Der Busverkehr der Wiener Linien GmbH & Co KG wird über den Kreisverkehr bei der Gartenheimstraße umgeleitet. Die Rohrlegungsarbeiten werden in der Nacht, in der Zeit von von 20:00 Uhr bis 05:00 Uhr bei Sperre von einem Fahrstreifen durchgeführt. Außerhalb der Arbeitszeiten gibt es keine Behinderungen für den Verkehr. \nBeginn: 25.05.2026 00:00 Uhr \nGeplant bis: 06.09.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 22",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -338,27 +359,6 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
-    "title": "Donaufelder Straße 67",
-    "description": "Die Herstellung einer Fernwärmezuleitung erfolgt grundsätzlich in der Nacht in Zeit von 20:00 Uhr bis 05:00 Uhr bzw. erst in der betriebslosen Zeit der Straßenbahn. Während der Arbeitszeiten wird der Verkehr in Fahrtrichtung Floridsdorf entweder über das richtungsführende Gleis oder über das befahrbare Haltestellenkap geführt. Es verbleben aber alle Abbiegerelationen in die Fultonstraße und Bessemerstraße aufrecht. \nBeginn: 19.04.2026 00:00 Uhr \nGeplant bis: 26.06.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 21",
-    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
-    "guid": "8250ce71f002af677b33ce1e78ee6438f1d1d8658bbbb9676e69a3e5bd40b054",
-    "pubDate": "2026-04-19T00:00:00+02:00",
-    "starts_at": "2026-04-19T00:00:00+02:00",
-    "ends_at": "2026-06-26T00:00:00+02:00",
-    "context": {
-      "district": "21",
-      "measure": "Rohrlegung"
-    },
-    "location": {
-      "coordinates": {
-        "lat": 48.25321971,
-        "lon": 16.41444286
-      }
-    }
-  },
-  {
-    "source": "Stadt Wien – Baustellen",
-    "category": "Baustelle",
     "title": "Mariahilfer Straße von Europaplatz und Mariahilfer Gürtel bis Palmgasse und Gerstnerstraße",
     "description": "Der gegenständliche Bereich der Mariahilfer Straße ist für den Fahrzeugverkehr zu sperren. Die Umleitungen haben über Mariahilfer Gürtel - Gebrüder Lang Gasse - Robert Hamerling Gasse - Haidmannsgasse sowie über Grenzgasse - Grangasse - Zwölfergasse - Gasgasse - Langauergasse - Gerstnerstraße zu erfolgen. Im Arbeitsbereich ist ein kombinierter Geh- und Radweg in der Breite von mindestens 2,5m freizuhalten. \nBeginn: 25.05.2026 00:00 Uhr \nGeplant bis: 25.06.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 15",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -506,6 +506,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Donaufelder Straße 67",
+    "description": "Die Herstellung einer Fernwärmezuleitung erfolgt grundsätzlich in der Nacht in Zeit von 20:00 Uhr bis 05:00 Uhr bzw. erst in der betriebslosen Zeit der Straßenbahn. Während der Arbeitszeiten wird der Verkehr in Fahrtrichtung Floridsdorf entweder über das richtungsführende Gleis oder über das befahrbare Haltestellenkap geführt. Es verbleben aber alle Abbiegerelationen in die Fultonstraße und Bessemerstraße aufrecht. \nBeginn: 19.04.2026 00:00 Uhr \nGeplant bis: 25.06.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 21",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "b01d262a1e2d53ab7ef1419b8e12b443dc9e16b834f2b0c3f8b69170f2e82174",
+    "pubDate": "2026-04-19T00:00:00+02:00",
+    "starts_at": "2026-04-19T00:00:00+02:00",
+    "ends_at": "2026-06-25T00:00:00+02:00",
+    "context": {
+      "district": "21",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.25321971,
+        "lon": 16.41444286
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Simonygasse ggü. 2B",
     "description": "Nur die Hausanschlüsse (Fahrbahnquerungen) werden in der Nacht (maximal 5 Nächte) in der betriebslosen Zeit der Straßenbahn bei Freihaltung einer mindestens 3,50 m breiten Restfahrbahn durchgeführt. Die Rohrlegungsarbeiten in der Parkspur gegenüber der Stiege 1 bis zur Stiege 13 erfolgen grundsätzlich bei Tag ohne Behinderungen für den Fließverkehr. \nBeginn: 26.04.2026 00:00 Uhr \nGeplant bis: 03.07.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 18",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -647,27 +668,6 @@
       "coordinates": {
         "lat": 48.20033132,
         "lon": 16.35591759
-      }
-    }
-  },
-  {
-    "source": "Stadt Wien – Baustellen",
-    "category": "Baustelle",
-    "title": "Antonsplatz von 13 bis 18",
-    "description": "Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt. \nBeginn: 18.03.2026 00:00 Uhr \nGeplant bis: 30.06.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 10",
-    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
-    "guid": "ecc94c028b230d963934bfc5023abd7431b9cec08d3c2f6da55c73b1f5c186b1",
-    "pubDate": "2026-03-18T00:00:00+01:00",
-    "starts_at": "2026-03-18T00:00:00+01:00",
-    "ends_at": "2026-06-30T00:00:00+02:00",
-    "context": {
-      "district": "10",
-      "measure": "Rohrlegung"
-    },
-    "location": {
-      "coordinates": {
-        "lat": 48.17027971,
-        "lon": 16.37880257
       }
     }
   },

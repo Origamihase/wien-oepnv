@@ -2462,6 +2462,16 @@
       "epoch": 1
     }
   },
+  "3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1": {
+    "first_seen": "2026-06-22T12:30:49.077824+00:00",
+    "translations": {
+      "en": {
+        "summary": "The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway.",
+        "title": "Antonsplatz from 13 to 18"
+      },
+      "epoch": 3
+    }
+  },
   "3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab": {
     "first_seen": "2026-05-26T07:30:53.470595+00:00",
     "translations": {
@@ -6840,6 +6850,16 @@
       "epoch": 3
     }
   },
+  "b01d262a1e2d53ab7ef1419b8e12b443dc9e16b834f2b0c3f8b69170f2e82174": {
+    "first_seen": "2026-06-22T12:30:49.077824+00:00",
+    "translations": {
+      "en": {
+        "summary": "The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram.",
+        "title": "Donaufelder Street 67"
+      },
+      "epoch": 3
+    }
+  },
   "b0a24007474aab764828e2f63bdadfa9f2fa0506bb84bdfcd25263dd7bbb7dca": {
     "first_seen": "2026-05-28T15:30:46.000018+00:00",
     "translations": {
@@ -10139,6 +10159,16 @@
       "en": {
         "summary": "Due to damage to the track, only limited train journeys to expected Wien Liesing 22:00 are possible in Wien Liesing train station.",
         "title": "Wien Liesing"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&887825": {
+    "first_seen": "2026-06-22T12:30:49.077824+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a fire brigade operation, trains are currently not possible in M\u00f6dling station. There are isolated train failures, delays and diversions.",
+        "title": "M\u00f6dling"
       },
       "epoch": 3
     }
