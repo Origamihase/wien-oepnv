@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jun 2026 22:30:41 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 23:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62: pollution]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">16d6b8dc74ae6d1521d9f0283503d68b86ac5f2fc9c61405ca9e84975e82fbac</guid>
+      <pubDate>Tue, 23 Jun 2026 22:45:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 23:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 23 Jun 2026 22:45:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 23 Jun 2026 23:19:00 +0200</ext:ends_at>
+      <description>irregular intervals towards Lainz, Wolkersbergenstraße. Reason: contamination. [On 23.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals towards Lainz, Wolkersbergenstraße. Reason: contamination.<br/>[On 23.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[60: track damage service from Winckelmannstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -71,8 +82,8 @@
       <pubDate>Mon, 22 Jun 2026 15:33:31 +0200</pubDate>
       <ext:first_seen>Mon, 22 Jun 2026 16:01:17 +0200</ext:first_seen>
       <ext:starts_at>Mon, 22 Jun 2026 15:33:31 +0200</ext:starts_at>
-      <description>Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien … [Since 22.06.2026]</description>
-      <content:encoded><![CDATA[Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien …<br/>[Since 22.06.2026]]]></content:encoded>
+      <description>Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren. [Seit 22.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.<br/>[Seit 22.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: track construction works]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
       <description>The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram. [19.04.2026 – 25.06.2026]</description>
       <content:encoded><![CDATA[The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram.<br/>[19.04.2026 – 25.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Antonsplatz from 13 to 18]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1</guid>
-      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 18 Mar 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
-      <description>The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway. [18.03.2026 – 29.06.2026]</description>
-      <content:encoded><![CDATA[The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
