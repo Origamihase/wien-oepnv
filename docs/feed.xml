@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 23 Jun 2026 21:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 21:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[47A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8fba8517c364128ea035305bf9a5415b9e1818d21f877a44f3c8da71ca908ee6</guid>
-      <pubDate>Tue, 23 Jun 2026 20:58:00 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 21:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 23 Jun 2026 20:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 23 Jun 2026 21:17:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 23.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 23.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[60: Gleisschaden Betrieb ab Winckelmannstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -27,7 +16,7 @@
       <pubDate>Tue, 23 Jun 2026 18:14:28 +0200</pubDate>
       <ext:first_seen>Tue, 23 Jun 2026 18:30:51 +0200</ext:first_seen>
       <ext:starts_at>Tue, 23 Jun 2026 18:14:28 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 23 Jun 2026 23:45:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 23 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 23.06.2026]</description>
       <content:encoded><![CDATA[[Am 23.06.2026]]]></content:encoded>
     </item>
@@ -38,7 +27,7 @@
       <pubDate>Tue, 23 Jun 2026 18:13:44 +0200</pubDate>
       <ext:first_seen>Tue, 23 Jun 2026 18:30:51 +0200</ext:first_seen>
       <ext:starts_at>Tue, 23 Jun 2026 18:13:59 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 23 Jun 2026 23:45:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 23 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 23.06.2026]</description>
       <content:encoded><![CDATA[[Am 23.06.2026]]]></content:encoded>
     </item>
@@ -49,7 +38,7 @@
       <pubDate>Tue, 23 Jun 2026 18:04:20 +0200</pubDate>
       <ext:first_seen>Tue, 23 Jun 2026 18:30:51 +0200</ext:first_seen>
       <ext:starts_at>Tue, 23 Jun 2026 18:04:20 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 23 Jun 2026 23:45:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 23 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 23.06.2026]</description>
       <content:encoded><![CDATA[[Am 23.06.2026]]]></content:encoded>
     </item>
@@ -117,6 +106,17 @@
       <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Herstellung einer Fernwärmezuleitung erfolgt grundsätzlich in der Nacht in Zeit von 20:00 Uhr bis 05:00 Uhr bzw. erst in der betriebslosen Zeit der Straßenbahn. [19.04.2026 – 25.06.2026]</description>
       <content:encoded><![CDATA[Die Herstellung einer Fernwärmezuleitung erfolgt grundsätzlich in der Nacht in Zeit von 20:00 Uhr bis 05:00 Uhr bzw. erst in der betriebslosen Zeit der Straßenbahn.<br/>[19.04.2026 – 25.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Antonsplatz von 13 bis 18]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 18 Mar 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
+      <description>Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt. [18.03.2026 – 29.06.2026]</description>
+      <content:encoded><![CDATA[Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
