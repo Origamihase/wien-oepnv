@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jun 2026 13:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 13:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[87A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6e5486fc15ed699d2a31936ef215f847110bb7253fe022208520b15f428488d4</guid>
+      <pubDate>Tue, 23 Jun 2026 13:12:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 13:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 23 Jun 2026 13:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 23 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 23.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 23.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[44: fire-brigade operation diversion over line 43 and 9]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,50 +41,6 @@
       <ext:ends_at>Tue, 23 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 23.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 23.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[67B: Fahrtbehinderung Signalstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5dcfeb610d68f34a772e9dab8cb83e87a0d52ba551d6978e4c268381f37521c7</guid>
-      <pubDate>Tue, 23 Jun 2026 12:07:13 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 13:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 23 Jun 2026 12:07:42 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 23 Jun 2026 13:07:00 +0200</ext:ends_at>
-      <description>[Am 23.06.2026]</description>
-      <content:encoded><![CDATA[[Am 23.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[67A: Fahrtbehinderung Signalstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8c6217f3734081f8e926c9979e884673454468f1b1a07fa5e2e3236de593c654</guid>
-      <pubDate>Tue, 23 Jun 2026 12:06:04 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 13:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 23 Jun 2026 12:06:30 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 23 Jun 2026 13:06:00 +0200</ext:ends_at>
-      <description>[Am 23.06.2026]</description>
-      <content:encoded><![CDATA[[Am 23.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[17A: Fahrtbehinderung Signalstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5dfa210ba3291a66edebd31b6cfcfd1d45e1cd37d3c1946494afc52dec0c55d4</guid>
-      <pubDate>Tue, 23 Jun 2026 12:04:49 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 13:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 23 Jun 2026 12:05:18 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 23 Jun 2026 13:04:00 +0200</ext:ends_at>
-      <description>[Am 23.06.2026]</description>
-      <content:encoded><![CDATA[[Am 23.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A: Fahrtbehinderung Signalstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">32c92ab83f0de4027d69c995f2641822ec1a450fec2f45c5d0d5e4e3a1ace708</guid>
-      <pubDate>Tue, 23 Jun 2026 12:03:51 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 13:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 23 Jun 2026 12:04:20 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 23 Jun 2026 13:03:00 +0200</ext:ends_at>
-      <description>[Am 23.06.2026]</description>
-      <content:encoded><![CDATA[[Am 23.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[60A: Bhf. Atzgersdorf S, Knotzenbachgasse]]></title>
@@ -117,6 +84,39 @@
       <ext:ends_at>Wed, 24 Jun 2026 11:00:00 +0200</ext:ends_at>
       <description>Poller exercise Due to a poller exercise, the Strauchgasse and the Herrengasse are closed by police. [22.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Poller exercise Due to a poller exercise, the Strauchgasse and the Herrengasse are closed by police.<br/>[22.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Donaufelder Street 67]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">b01d262a1e2d53ab7ef1419b8e12b443dc9e16b834f2b0c3f8b69170f2e82174</guid>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
+      <description>The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram. [19.04.2026 – 25.06.2026]</description>
+      <content:encoded><![CDATA[The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram.<br/>[19.04.2026 – 25.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Antonsplatz from 13 to 18]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 18 Mar 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
+      <description>The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway. [18.03.2026 – 29.06.2026]</description>
+      <content:encoded><![CDATA[The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30/31: renovation work]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dc9aa38b8918a6eb15c598b6d6096a710aba9a223d744fb0f97f1a076a3fd62a</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
+      <description>Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 6, 2026 to expected End … [06.07.2026 – 17.08.2026]</description>
+      <content:encoded><![CDATA[Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 6, 2026 to expected End …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
