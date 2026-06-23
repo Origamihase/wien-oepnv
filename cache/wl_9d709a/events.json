@@ -158,6 +158,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "36B/N31: Umleitung wegen Gleisbauarbeiten",
+    "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten im Bereich Br&uuml;nner Stra&szlig;e # Trillergasse werden die Linien 36B und N31 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 7. Juli (Nacht von 6. auf 7.) Betriebsbeginn, auf Dauer von voraussichtlich f&uuml;nf Wochen&nbsp;</p> <p><strong><span style=\"text-decoration: underline;\">Ma&szlig;nahmen:</span></strong></p> <p><span style=\"text-decoration: underline;\">Linie 36B in Richtung Leopoldau S U</span><br />Umleitung ab Br&uuml;nner Stra&szlig;e # Trillergasse &uuml;ber Br&uuml;nner Stra&szlig;e zur Stammstrecke</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />Trillergasse<br />Haspingerplatz<br />Gro&szlig;jedlersdorf</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />Trillergasse<br />(Br&uuml;nner Stra&szlig;e 82, prov. Haltestelle)</p> <p>Gro&szlig;jedlersdorf<br />(Br&uuml;nner Stra&szlig;e 118-120, prov. Haltestelle)</p> <p><span style=\"text-decoration: underline;\">Linie N31 in beiden Richtungen</span><br />Die Busse werden auf der Br&uuml;nner Stra&szlig;e zwischen Karl-Sch&auml;fer-Stra&szlig;e und Siemensstra&szlig;e bzw. Carabelligasse &uuml;ber die Fahrspur des Individualverkehrs gef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\">Verlegte Haltestellen in Richtung Stammersdorf:</span></p> <p>Br&uuml;nner Stra&szlig;e<br />von: Br&uuml;nner Stra&szlig;e 66-70&nbsp;(Gleisk&ouml;rper)<br />nach: Br&uuml;nner Stra&szlig;e 70, Haltestelle Linie 36B</p> <p>Shuttleworthstra&szlig;e<br />von: Br&uuml;nner Stra&szlig;e vor Shuttleworthstra&szlig;e (Gleisk&ouml;rper)<br />nach: Br&uuml;nner Stra&szlig;e 72A-74, prov. Haltestlle</p> <p><span style=\"text-decoration: underline;\">Verlegte Haltestellen in Richtung Schwedenplatz:</span></p> <p>Gro&szlig;jedlersdorf<br />von: Br&uuml;nner Stra&szlig;e 139 (Gleisk&ouml;rper)<br />nach: Br&uuml;nner Stra&szlig;e 141, prov. Haltestelle</p> <p>Shuttleworthstra&szlig;e<br />von: Br&uuml;nner Stra&szlig;e 79-81&nbsp;(Gleisk&ouml;rper)<br />nach: Br&uuml;nner Stra&szlig;e 83 (prov. Haltestelle)</p> <p>Br&uuml;nner Stra&szlig;e<br />von: Br&uuml;nner Stra&szlig;e 59-61&nbsp;(Gleisk&ouml;rper)<br />nach: Br&uuml;nner Stra&szlig;e 63-65 (Haltestelle Linie 36B)</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3f446b22184bf8b6deb41f704ea733eba73db18c777abb70b38878d0bab7cd5a",
+    "pubDate": "2026-06-23T00:00:00+02:00",
+    "starts_at": "2026-07-07T00:00:00+02:00",
+    "ends_at": "2027-08-11T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=36B,N31|D=2026-07-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "37A: Bauarbeiten",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Donaueschingenstra&szlig;e wird die Linie 37A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Donnerstag, 21. Mai 2026, etwa 08:30 Uhr bis voraussichtlich Ende August 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 37A in Richtung D&auml;nenstra&szlig;e bzw. Nu&szlig;dorfer Stra&szlig;e U:<br /></strong>Umleitung ab Pasettistra&szlig;e # Donaueschingenstra&szlig;e &uuml;ber Pasettistra&szlig;e &ndash; Hellwagstra&szlig;e &ndash; Dresdner Stra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Lorenz-B&ouml;hler-Unfallkrankenhaus (Donaueschingenstra&szlig;e nach Pasettistra&szlig;e)<br />Dresdner Stra&szlig;e U (Dresdner Stra&szlig;e 47)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Lorenz-B&ouml;hler-Unfallkrankenhaus <br />(Pasettistra&szlig;e 65 nach Donaueschingenstra&szlig;e</p> <p>Pasettistra&szlig;e <br />(Pasettistra&szlig;e vor Hellwagstra&szlig;e)</p> <p>&nbsp;</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -626,18 +638,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Falschparker",
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d5852610e5230534aa875aec60af4a7a1b528ad8f8dd7b2db5fde27fedc59960",
-    "pubDate": "2026-06-23T13:38:00+02:00",
-    "starts_at": "2026-06-23T13:38:00+02:00",
-    "ends_at": "2026-06-23T15:58:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-06-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -694,18 +694,6 @@
     "starts_at": "2026-06-19T00:00:09+02:00",
     "ends_at": "2026-06-23T23:59:59+02:00",
     "_identity": "wl|störung|L=40|D=2026-06-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Falschparker",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
-    "pubDate": "2026-06-23T15:24:00+02:00",
-    "starts_at": "2026-06-23T15:24:00+02:00",
-    "ends_at": "2026-06-23T15:58:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-06-23"
   },
   {
     "source": "Wiener Linien",
@@ -890,12 +878,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung Falschparker",
+    "title": "62: Falschparker",
     "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8c9b2f06082b865070bcbe91b5a5c9af65a5b959cee850e5fe9386874c8fbfb1",
     "pubDate": "2026-06-23T15:29:00+02:00",
-    "starts_at": "2026-06-23T15:31:01+02:00",
+    "starts_at": "2026-06-23T15:29:00+02:00",
     "ends_at": "2026-06-23T23:55:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-06-23"
   },
@@ -950,8 +938,32 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U1: Rettungseinsatz",
+    "description": "Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 16:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Alaudagasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
+    "pubDate": "2026-06-23T16:13:00+02:00",
+    "starts_at": "2026-06-23T16:13:00+02:00",
+    "ends_at": "2026-06-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-06-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-06-23T16:09:00+02:00",
+    "starts_at": "2026-06-23T16:09:00+02:00",
+    "ends_at": "2026-06-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-06-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U6: Rettungseinsatz",
-    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Währinger Straße - Volksoper und Michelbeuern - AKH in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 16:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Michelbeuern - AKH.",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
     "pubDate": "2026-06-23T15:37:00+02:00",
