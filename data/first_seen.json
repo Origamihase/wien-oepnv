@@ -5608,8 +5608,10 @@
     "first_seen": "2026-06-23T11:00:47.899628+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions. Reason: traffic accident."
-      }
+        "summary": "irregular intervals in both directions. Reason: traffic accident.",
+        "title": "32A: traffic accident"
+      },
+      "epoch": 3
     }
   },
   "8dd03f0832f935f8665cdd56934507f7bc58700edc8d44319f60b30daaf207ea": {
@@ -7238,6 +7240,16 @@
         "title": "Simonygasse opp. 2B"
       },
       "epoch": 2
+    }
+  },
+  "b8039faa2fd22f29ff6008d444e4692e71752c95e9a697ccf8267739d3aae3f5": {
+    "first_seen": "2026-06-23T12:01:16.378965+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic accident in the stop area Cobenzl-Parkplatz.",
+        "title": "38A: traffic accident"
+      },
+      "epoch": 3
     }
   },
   "b830f06079b0574a4e60aa97923c93d8003b9dba8324ac0d57fe09babf4766ce": {
