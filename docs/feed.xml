@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 23 Jun 2026 03:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 03:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N29: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">61a774d9179846a506d191b6366c3953867954c9bab2f9d03ccfcfa105080967</guid>
+      <pubDate>Tue, 23 Jun 2026 03:11:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 03:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 23 Jun 2026 03:14:42 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 23 Jun 2026 04:13:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 23.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 23.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[S 40: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -105,17 +116,6 @@
       <ext:starts_at>Fri, 19 Jun 2026 14:11:12 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Jedlersdorf Bahnhst, Wien Süßenbrunn Bahnhst bzw. Gerasdorf b. Wien Bahnhst von 10.08.2026 bis … [Seit 19.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Jedlersdorf Bahnhst, Wien Süßenbrunn Bahnhst bzw. Gerasdorf b. Wien Bahnhst von 10.08.2026 bis …<br/>[Seit 19.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Westbahnhof: Mariahilfer Straße von Europaplatz und Mariahilfer Gürtel bis Palmgasse und Gerstnerstraße]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">895719ded5dde2dfc3d7568f424c7fd2c295fe4079fab7bfedc019c44c483d55</guid>
-      <pubDate>Mon, 25 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 19 Jun 2026 14:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 25 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
-      <description>Der gegenständliche Bereich der Mariahilfer Straße ist für den Fahrzeugverkehr zu sperren. [25.05.2026 – 25.06.2026]</description>
-      <content:encoded><![CDATA[Der gegenständliche Bereich der Mariahilfer Straße ist für den Fahrzeugverkehr zu sperren.<br/>[25.05.2026 – 25.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
