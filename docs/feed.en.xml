@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jun 2026 20:31:01 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 21:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[62: Harmful car]]></title>
+      <title><![CDATA[47A: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">decb45044f2151222a9fb5923844f3147cf93a315a730b2991db70dccde3c830</guid>
-      <pubDate>Tue, 23 Jun 2026 19:43:00 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 20:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 23 Jun 2026 19:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 23 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 23.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 23.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">8fba8517c364128ea035305bf9a5415b9e1818d21f877a44f3c8da71ca908ee6</guid>
+      <pubDate>Tue, 23 Jun 2026 20:58:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 21:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 23 Jun 2026 20:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 23 Jun 2026 21:17:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 23.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 23.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[60: track damage service from Winckelmannstraße]]></title>
@@ -52,17 +52,6 @@
       <ext:ends_at>Tue, 23 Jun 2026 23:45:00 +0200</ext:ends_at>
       <description>[On 23.06.2026]</description>
       <content:encoded><![CDATA[[On 23.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9211cb3d8ce68889c7066532dfb5410be52f492f45bf8c859a2229f0a241d27f</guid>
-      <pubDate>Tue, 23 Jun 2026 17:14:00 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 17:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 23 Jun 2026 17:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 23 Jun 2026 20:40:00 +0200</ext:ends_at>
-      <description>No operation between Quartier Belvedere S and St. Marx S. Switch alternatively to the lines 69A, S7, 71. expected duration: Not foreseeable. [On 23.06.2026]</description>
-      <content:encoded><![CDATA[No operation between Quartier Belvedere S and St. Marx S. Switch alternatively to the lines 69A, S7, 71. expected duration: Not foreseeable.<br/>[On 23.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[36B/N31: diversion because of track construction works]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Wed, 24 Jun 2026 11:00:00 +0200</ext:ends_at>
       <description>Poller exercise Due to a poller exercise, the Strauchgasse and the Herrengasse are closed by police. [22.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Poller exercise Due to a poller exercise, the Strauchgasse and the Herrengasse are closed by police.<br/>[22.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Donaufelder Street 67]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">b01d262a1e2d53ab7ef1419b8e12b443dc9e16b834f2b0c3f8b69170f2e82174</guid>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
+      <description>The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram. [19.04.2026 – 25.06.2026]</description>
+      <content:encoded><![CDATA[The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram.<br/>[19.04.2026 – 25.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
