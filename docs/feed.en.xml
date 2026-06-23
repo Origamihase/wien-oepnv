@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jun 2026 17:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 17:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[18: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9211cb3d8ce68889c7066532dfb5410be52f492f45bf8c859a2229f0a241d27f</guid>
+      <pubDate>Tue, 23 Jun 2026 17:14:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 17:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 23 Jun 2026 17:14:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 23 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Kein Betrieb zwischen Quartier Belvedere S und St. Marx S. Weichen Sie ersatzweise auf die Linien 69A, S7, 71 aus. Voraussichtliche Dauer: 17:50 Uhr. Grund: Schadhaftes … [Am 23.06.2026]</description>
+      <content:encoded><![CDATA[Kein Betrieb zwischen Quartier Belvedere S und St. Marx S. Weichen Sie ersatzweise auf die Linien 69A, S7, 71 aus. Voraussichtliche Dauer: 17:50 Uhr. Grund: Schadhaftes …<br/>[Am 23.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[36B/N31: diversion because of track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Tue, 29 Jun 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of construction works in the Elisenstraße range, the lines 60A and Ruffbus N61 are redirected. [10.06.2026 – 29.06.2027]</description>
       <content:encoded><![CDATA[Because of construction works in the Elisenstraße range, the lines 60A and Ruffbus N61 are redirected.<br/>[10.06.2026 – 29.06.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: event on 11.07.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8d6df4a38ac4b7fb52509bd57ad196f3ce6802627e7b67a61501ea2025abdb02</guid>
-      <pubDate>Mon, 22 Jun 2026 14:30:00 +0200</pubDate>
-      <ext:first_seen>Sun, 21 Jun 2026 01:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 21 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 12 Jul 2026 01:00:00 +0200</ext:ends_at>
-      <description>Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken. [21.06.2026 – 12.07.2026]</description>
-      <content:encoded><![CDATA[Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken.<br/>[21.06.2026 – 12.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
