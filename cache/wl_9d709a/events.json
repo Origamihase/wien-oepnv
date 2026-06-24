@@ -656,7 +656,7 @@
     "guid": "301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5",
     "pubDate": "2026-06-24T17:45:00+02:00",
     "starts_at": "2026-06-24T17:45:00+02:00",
-    "ends_at": "2026-06-24T23:55:00+02:00",
+    "ends_at": "2026-06-24T19:57:00+02:00",
     "_identity": "wl|störung|L=12|D=2026-06-24"
   },
   {
@@ -668,7 +668,7 @@
     "guid": "9bfc09400cbab037ba3921881e740e24b07301b7269331389dfd1fb1718c8618",
     "pubDate": "2026-06-24T15:54:00+02:00",
     "starts_at": "2026-06-24T15:54:00+02:00",
-    "ends_at": "2026-06-24T23:55:00+02:00",
+    "ends_at": "2026-06-24T19:58:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-06-24"
   },
   {
@@ -704,7 +704,7 @@
     "guid": "748a7fd4a5421241f869780aa9f5e1d09e39d012f8769926583ebfb1bf880707",
     "pubDate": "2026-06-24T16:42:00+02:00",
     "starts_at": "2026-06-24T16:42:00+02:00",
-    "ends_at": "2026-06-24T23:55:00+02:00",
+    "ends_at": "2026-06-24T19:58:00+02:00",
     "_identity": "wl|störung|L=31|D=2026-06-24"
   },
   {
@@ -740,7 +740,7 @@
     "guid": "6df17f2af355d4402add5949fca90fb59f2b3a2f3d13f6caa966d5194adefc7c",
     "pubDate": "2026-06-24T17:28:00+02:00",
     "starts_at": "2026-06-24T17:28:00+02:00",
-    "ends_at": "2026-06-24T23:55:00+02:00",
+    "ends_at": "2026-06-24T19:57:00+02:00",
     "_identity": "wl|störung|L=39A|D=2026-06-24"
   },
   {
@@ -968,7 +968,7 @@
     "guid": "d2fb78dfec0b3971d13e72314dc2efcdbccb60650daf7059b954d1bd1800e28b",
     "pubDate": "2026-06-24T16:14:00+02:00",
     "starts_at": "2026-06-24T16:14:00+02:00",
-    "ends_at": "2026-06-24T23:55:00+02:00",
+    "ends_at": "2026-06-24T19:58:00+02:00",
     "_identity": "wl|störung|L=77A|D=2026-06-24"
   },
   {
@@ -1018,6 +1018,18 @@
     "starts_at": "2026-06-24T19:08:00+02:00",
     "ends_at": "2026-06-24T23:55:00+02:00",
     "_identity": "wl|störung|L=U2|D=2026-06-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 20:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Pilgramgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-06-24T19:42:00+02:00",
+    "starts_at": "2026-06-24T19:42:00+02:00",
+    "ends_at": "2026-06-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-06-24"
   },
   {
     "source": "Wiener Linien",
