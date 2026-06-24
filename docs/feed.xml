@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 24 Jun 2026 11:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 12:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: Verkehrsunfall Betrieb ab Mayssengasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d330e1b5a1f9218bc876c09e43b6de8a14f10fb2d9f418ca343b6aa61c39a578</guid>
+      <pubDate>Wed, 24 Jun 2026 11:57:55 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 11:58:11 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 16:00:00 +0200</ext:ends_at>
+      <description>[Am 24.06.2026]</description>
+      <content:encoded><![CDATA[[Am 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A: Fahrtbehinderung Polizeiübung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">651de59f68342ee5b896e4d61d50d2cd2bc093f4c3dff0c8c87a69a14ed052f1</guid>
+      <pubDate>Wed, 24 Jun 2026 10:03:23 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 11:32:26 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 12:32:00 +0200</ext:ends_at>
+      <description>[Am 24.06.2026]</description>
+      <content:encoded><![CDATA[[Am 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A: Fahrtbehinderung Polizeiübung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">642c11acd5e8e4a15db1a8e5dda789b3c70b4b018df9ebdfebcf047d68225f2c</guid>
+      <pubDate>Wed, 24 Jun 2026 10:02:54 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 11:31:57 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 12:30:00 +0200</ext:ends_at>
+      <description>[Am 24.06.2026]</description>
+      <content:encoded><![CDATA[[Am 24.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[60A: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,28 +52,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 24.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: Fahrtbehinderung wegen Polizeiübung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f0fef5f3254b57ae1986e86034f6aaef6d15c58795b00b814ca65fe0352ea05a</guid>
-      <pubDate>Wed, 24 Jun 2026 10:03:23 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 10:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 10:03:23 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 16:30:00 +0200</ext:ends_at>
-      <description>[Am 24.06.2026]</description>
-      <content:encoded><![CDATA[[Am 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A: Fahrtbehinderung wegen Polizeiübung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e15a962eeb01239553b15d055ed66252f7f5eb60de62bc2c08e5ea32ffd8333f</guid>
-      <pubDate>Wed, 24 Jun 2026 10:02:54 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 10:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 10:02:54 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 15:15:00 +0200</ext:ends_at>
-      <description>[Am 24.06.2026]</description>
-      <content:encoded><![CDATA[[Am 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Schadhafter Zug Betrieb ab Julius-Raab-Platz]]></title>
@@ -107,16 +118,6 @@
       <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
       <description>Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach … [23.06.2026 – 31.10.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S 40: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;880311</guid>
-      <pubDate>Mon, 22 Jun 2026 15:33:31 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 16:01:17 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 22 Jun 2026 15:33:31 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren. [Seit 22.06.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.<br/>[Seit 22.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

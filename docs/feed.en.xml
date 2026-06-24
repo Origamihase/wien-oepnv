@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 24 Jun 2026 11:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 12:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: traffic accident service from Mayssengasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d330e1b5a1f9218bc876c09e43b6de8a14f10fb2d9f418ca343b6aa61c39a578</guid>
+      <pubDate>Wed, 24 Jun 2026 11:57:55 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 11:58:11 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 16:00:00 +0200</ext:ends_at>
+      <description>[On 24.06.2026]</description>
+      <content:encoded><![CDATA[[On 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A: service obstruction Police exercise]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">651de59f68342ee5b896e4d61d50d2cd2bc093f4c3dff0c8c87a69a14ed052f1</guid>
+      <pubDate>Wed, 24 Jun 2026 10:03:23 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 11:32:26 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 12:32:00 +0200</ext:ends_at>
+      <description>[On 24.06.2026]</description>
+      <content:encoded><![CDATA[[On 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A: service obstruction Police exercise]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">642c11acd5e8e4a15db1a8e5dda789b3c70b4b018df9ebdfebcf047d68225f2c</guid>
+      <pubDate>Wed, 24 Jun 2026 10:02:54 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 11:31:57 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 12:30:00 +0200</ext:ends_at>
+      <description>[On 24.06.2026]</description>
+      <content:encoded><![CDATA[[On 24.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[60A: defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,28 +52,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: defective vehicle. [On 24.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: service obstruction for police exercise]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f0fef5f3254b57ae1986e86034f6aaef6d15c58795b00b814ca65fe0352ea05a</guid>
-      <pubDate>Wed, 24 Jun 2026 10:03:23 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 10:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 10:03:23 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 16:30:00 +0200</ext:ends_at>
-      <description>[On 24.06.2026]</description>
-      <content:encoded><![CDATA[[On 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A: service obstruction for police exercise]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e15a962eeb01239553b15d055ed66252f7f5eb60de62bc2c08e5ea32ffd8333f</guid>
-      <pubDate>Wed, 24 Jun 2026 10:02:54 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 10:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 10:02:54 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 15:15:00 +0200</ext:ends_at>
-      <description>[On 24.06.2026]</description>
-      <content:encoded><![CDATA[[On 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Harmful train service from Julius-Raab-Platz]]></title>
@@ -105,18 +116,8 @@
       <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
       <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach … [23.06.2026 – 31.10.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S 40: Wien Franz-Josefs-Bahnhof ↔XSt.Andrä-Wördern]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;880311</guid>
-      <pubDate>Mon, 22 Jun 2026 15:33:31 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 16:01:17 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 22 Jun 2026 15:33:31 +0200</ext:starts_at>
-      <description>Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien … [Since 22.06.2026]</description>
-      <content:encoded><![CDATA[Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien …<br/>[Since 22.06.2026]]]></content:encoded>
+      <description>Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking … [23.06.2026 – 31.10.2027]</description>
+      <content:encoded><![CDATA[Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
