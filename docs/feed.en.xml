@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 24 Jun 2026 13:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 13:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[20A: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1d0b92f0a1c96c3a03b383d97d13863111f54690bf9149ac1273cbb457788459</guid>
+      <pubDate>Wed, 24 Jun 2026 13:01:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 13:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 13:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic accident in the Kaisermühlen-VIC U stop area. [On 24.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident in the Kaisermühlen-VIC U stop area.<br/>[On 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: traffic accident service from Mayssengasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d330e1b5a1f9218bc876c09e43b6de8a14f10fb2d9f418ca343b6aa61c39a578</guid>
+      <pubDate>Wed, 24 Jun 2026 11:57:55 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 12:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 11:58:11 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 16:00:00 +0200</ext:ends_at>
+      <description>[On 24.06.2026]</description>
+      <content:encoded><![CDATA[[On 24.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2A: service obstruction Police exercise]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -83,8 +105,8 @@
       <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
       <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
-      <description>Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking … [23.06.2026 – 31.10.2027]</description>
-      <content:encoded><![CDATA[Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
+      <description>Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach … [23.06.2026 – 31.10.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 40: Wien Franz-Josefs-Bahnhof ↔XSt.Andrä-Wördern]]></title>
@@ -95,28 +117,6 @@
       <ext:starts_at>Mon, 22 Jun 2026 15:33:31 +0200</ext:starts_at>
       <description>Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien … [Since 22.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien …<br/>[Since 22.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">07dc30c6a44160a6ac6edaa6777d410d2bec787011a5197738e1f98de368c3eb</guid>
-      <pubDate>Mon, 22 Jun 2026 15:20:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 15:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
-      <description>Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected. [13.07.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Donaufelder Street 67]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">b01d262a1e2d53ab7ef1419b8e12b443dc9e16b834f2b0c3f8b69170f2e82174</guid>
-      <pubDate>Sun, 19 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
-      <description>The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram. [19.04.2026 – 25.06.2026]</description>
-      <content:encoded><![CDATA[The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram.<br/>[19.04.2026 – 25.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
