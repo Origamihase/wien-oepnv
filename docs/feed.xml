@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 24 Jun 2026 23:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 23:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11A: Fahrtbehinderung Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">caad9e268eb418676c7db56fdc61da1e782e3e71b8255532134411fde04028b5</guid>
+      <pubDate>Wed, 24 Jun 2026 23:10:12 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 23:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 23:17:26 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 24.06.2026]</description>
+      <content:encoded><![CDATA[[Am 24.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[9: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -103,17 +114,6 @@
       <ext:starts_at>Mon, 22 Jun 2026 15:33:31 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren. [Seit 22.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.<br/>[Seit 22.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">07dc30c6a44160a6ac6edaa6777d410d2bec787011a5197738e1f98de368c3eb</guid>
-      <pubDate>Mon, 22 Jun 2026 15:20:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 15:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet. [13.07.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

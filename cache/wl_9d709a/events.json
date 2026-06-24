@@ -650,6 +650,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "caad9e268eb418676c7db56fdc61da1e782e3e71b8255532134411fde04028b5",
+    "pubDate": "2026-06-24T23:10:12+02:00",
+    "starts_at": "2026-06-24T23:17:26+02:00",
+    "ends_at": "2026-06-24T23:59:59+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-06-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
+    "pubDate": "2026-06-24T23:06:11+02:00",
+    "starts_at": "2026-06-24T23:19:46+02:00",
+    "ends_at": "2026-06-24T23:59:59+02:00",
+    "_identity": "wl|störung|L=12|D=2026-06-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1030,6 +1054,18 @@
     "starts_at": "2026-06-24T23:00:28+02:00",
     "ends_at": "2026-06-25T05:30:00+02:00",
     "_identity": "wl|störung|L=N29|D=2026-06-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in Richtung Leopoldau. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-06-24T23:21:00+02:00",
+    "starts_at": "2026-06-24T23:21:00+02:00",
+    "ends_at": "2026-06-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-06-24"
   },
   {
     "source": "Wiener Linien",
