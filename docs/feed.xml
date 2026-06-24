@@ -7,17 +7,39 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 24 Jun 2026 07:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 07:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4/U6: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d514d0d01122e32ecf6d9f429db86bc0a64e26f4c6c96248a01bfd1cedc04efa</guid>
+      <pubDate>Wed, 24 Jun 2026 07:11:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 07:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 07:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie U4 fährt derzeit nicht zwischen Pilgramgasse und Meidling, Hauptstraße. [Am 24.06.2026]</description>
+      <content:encoded><![CDATA[Die Linie U4 fährt derzeit nicht zwischen Pilgramgasse und Meidling, Hauptstraße.<br/>[Am 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Kranarbeiten Busse halten bei Längenfeldgasse 20]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1c4dddfdb93c2339daf113e5f6de0cdfb6b70b486e294099369b3fc96e42994b</guid>
+      <pubDate>Wed, 24 Jun 2026 07:04:39 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 07:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 07:04:55 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
+      <description>Busse halten bei Längenfeldgasse 20 [Am 24.06.2026]</description>
+      <content:encoded><![CDATA[Busse halten bei Längenfeldgasse 20<br/>[Am 24.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Mitte ↔ Wien Rennweg]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;888464</guid>
-      <pubDate>Wed, 24 Jun 2026 06:53:30 +0200</pubDate>
+      <pubDate>Wed, 24 Jun 2026 07:09:18 +0200</pubDate>
       <ext:first_seen>Wed, 24 Jun 2026 07:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 06:53:30 +0200</ext:starts_at>
-      <description>Wegen eines defekten Zuges auf der Strecke sind zwischen Wien Mitte-Landstraße Bahnhof (U) und Wien Rennweg Bahnhst Zugfahrten derzeit nur eingeschränkt möglich. [Seit 24.06.2026]</description>
-      <content:encoded><![CDATA[Wegen eines defekten Zuges auf der Strecke sind zwischen Wien Mitte-Landstraße Bahnhof (U) und Wien Rennweg Bahnhst Zugfahrten derzeit nur eingeschränkt möglich.<br/>[Seit 24.06.2026]]]></content:encoded>
+      <ext:starts_at>Wed, 24 Jun 2026 07:09:18 +0200</ext:starts_at>
+      <description>Wegen eines defekten Zuges auf der Strecke waren zwischen Wien Mitte-Landstraße Bahnhof (U) und Wien Rennweg Bahnhst bis 07:03 Uhr nur eingeschränkt Fahrten möglich. [Seit 24.06.2026]</description>
+      <content:encoded><![CDATA[Wegen eines defekten Zuges auf der Strecke waren zwischen Wien Mitte-Landstraße Bahnhof (U) und Wien Rennweg Bahnhst bis 07:03 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Schadhaftes Fahrzeug]]></title>
@@ -31,12 +53,12 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[44: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <title><![CDATA[44: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201</guid>
       <pubDate>Wed, 24 Jun 2026 06:08:00 +0200</pubDate>
       <ext:first_seen>Wed, 24 Jun 2026 06:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 06:12:19 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 24 Jun 2026 06:08:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.06.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.06.2026]]]></content:encoded>
@@ -94,28 +116,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 11:00:00 +0200</ext:ends_at>
       <description>Pollerübung Wegen einer Pollerübung werden die Strauchgasse und die Herrengasse polizeilich gesperrt. [22.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Pollerübung Wegen einer Pollerübung werden die Strauchgasse und die Herrengasse polizeilich gesperrt.<br/>[22.06.2026 – 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Donaufelder Straße 67]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">b01d262a1e2d53ab7ef1419b8e12b443dc9e16b834f2b0c3f8b69170f2e82174</guid>
-      <pubDate>Sun, 19 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Herstellung einer Fernwärmezuleitung erfolgt grundsätzlich in der Nacht in Zeit von 20:00 Uhr bis 05:00 Uhr bzw. erst in der betriebslosen Zeit der Straßenbahn. [19.04.2026 – 25.06.2026]</description>
-      <content:encoded><![CDATA[Die Herstellung einer Fernwärmezuleitung erfolgt grundsätzlich in der Nacht in Zeit von 20:00 Uhr bis 05:00 Uhr bzw. erst in der betriebslosen Zeit der Straßenbahn.<br/>[19.04.2026 – 25.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Antonsplatz von 13 bis 18]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1</guid>
-      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 18 Mar 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt. [18.03.2026 – 29.06.2026]</description>
-      <content:encoded><![CDATA[Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
