@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 24 Jun 2026 15:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 16:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[O/13A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[13A: Harmful passenger car]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3ac7892178b4b465be0a241d992d5a59c87084338f089e2ff842307b26f1fcca</guid>
+      <guid isPermaLink="false">9bfc09400cbab037ba3921881e740e24b07301b7269331389dfd1fb1718c8618</guid>
+      <pubDate>Wed, 24 Jun 2026 15:54:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 16:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 15:54:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 24.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d</guid>
       <pubDate>Wed, 24 Jun 2026 15:02:00 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 15:30:46 +0200</ext:first_seen>
+      <ext:first_seen>Wed, 24 Jun 2026 16:01:04 +0200</ext:first_seen>
       <ext:starts_at>Wed, 24 Jun 2026 15:02:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. [Am 24.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 13A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 24.06.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: traffic congestion. [On 24.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[REX 51: construction works: no stop in Marchtrenk]]></title>
@@ -39,17 +50,6 @@
       <ext:starts_at>Wed, 24 Jun 2026 13:36:53 +0200</ext:starts_at>
       <description>construction works between Wien Floridsdorf train station (U) and Wien Praterstern train station (U) between 1209.2026 to 1309.2026 some local trains cannot operate. [Since 24.06.2026]</description>
       <content:encoded><![CDATA[construction works between Wien Floridsdorf train station (U) and Wien Praterstern train station (U) between 1209.2026 to 1309.2026 some local trains cannot operate.<br/>[Since 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: traffic accident service from Mayssengasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d330e1b5a1f9218bc876c09e43b6de8a14f10fb2d9f418ca343b6aa61c39a578</guid>
-      <pubDate>Wed, 24 Jun 2026 11:57:55 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 12:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 11:58:11 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 16:00:00 +0200</ext:ends_at>
-      <description>[On 24.06.2026]</description>
-      <content:encoded><![CDATA[[On 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[36B/N31: track construction works Brünner Straße]]></title>

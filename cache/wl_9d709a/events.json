@@ -519,12 +519,12 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "N62: Bauarbeiten",
-    "description": "<h2>Rohrleitungsarbeiten</h2> <p>Wegen Bauarbeiten im Bereich der Wiedner Hauptstra&szlig;e wird die Linie N62 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Donnerstag, 08. J&auml;nner 2026 (Nacht von 07.01 auf 08.01) bis voraussichtlich Mitte Juni 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie N62 in Richtung Oper, Karlsplatz U<br /></strong>Umleitung ab Wiedner Hauptstra&szlig;e # Kriehubergasse &uuml;ber Kriehubergasse &ndash; Rainergasse &ndash; Sch&ouml;nburgstra&szlig;e &ndash; Wiedner Hauptstra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:<br /></span>Johann-Strau&szlig;-Gasse (Wiedner Hauptstra&szlig;e 71)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>Johann-Strau&szlig;-Gasse (Sch&ouml;nburgstra&szlig;e vor Wiedner Hauptstra&szlig;e)</p>",
+    "description": "<h2>Rohrleitungsarbeiten</h2> <p>Wegen Bauarbeiten im Bereich der Wiedner Hauptstra&szlig;e wird die Linie N62 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Donnerstag, 08. J&auml;nner 2026 (Nacht von 07.01 auf 08.01) bis 25. Juni 2026, etwa 00:30 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie N62 in Richtung Oper, Karlsplatz U<br /></strong>Umleitung ab Wiedner Hauptstra&szlig;e # Kriehubergasse &uuml;ber Kriehubergasse &ndash; Rainergasse &ndash; Sch&ouml;nburgstra&szlig;e &ndash; Wiedner Hauptstra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:<br /></span>Johann-Strau&szlig;-Gasse (Wiedner Hauptstra&szlig;e 71)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>Johann-Strau&szlig;-Gasse (Sch&ouml;nburgstra&szlig;e vor Wiedner Hauptstra&szlig;e)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "9b78cb17c7f10542a781aad38274a2d200429d0c67a2ba90e0ebfce3846836bb",
     "pubDate": "2025-12-12T13:12:00+01:00",
     "starts_at": "2026-01-08T00:00:00+01:00",
-    "ends_at": "2026-12-12T11:11:00+01:00",
+    "ends_at": "2026-06-25T00:30:00+02:00",
     "_identity": "wl|hinweis|L=N62|D=2026-01-08"
   },
   {
@@ -674,26 +674,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Verkehrsunfall Betrieb ab Maroltingergasse",
-    "description": "Verkehrsunfall\nBetrieb ab Maroltingergasse",
+    "title": "13A: Schadhafter PKW",
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f96a4ddbc3047d3afcdef55660909b4cf9b68a7704d18e49aaeafdc598f474b4",
-    "pubDate": "2026-06-24T11:57:26+02:00",
-    "starts_at": "2026-06-24T11:57:26+02:00",
-    "ends_at": "2026-06-24T16:00:00+02:00",
-    "_identity": "wl|störung|L=10|D=2026-06-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O/13A: Verkehrsüberlastung",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3ac7892178b4b465be0a241d992d5a59c87084338f089e2ff842307b26f1fcca",
-    "pubDate": "2026-06-24T15:02:00+02:00",
-    "starts_at": "2026-06-24T15:02:00+02:00",
+    "guid": "9bfc09400cbab037ba3921881e740e24b07301b7269331389dfd1fb1718c8618",
+    "pubDate": "2026-06-24T15:54:00+02:00",
+    "starts_at": "2026-06-24T15:54:00+02:00",
     "ends_at": "2026-06-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=13A,O|D=2026-06-24"
+    "_identity": "wl|störung|L=13A|D=2026-06-24"
   },
   {
     "source": "Wiener Linien",
@@ -718,18 +706,6 @@
     "starts_at": "2026-06-19T00:00:28+02:00",
     "ends_at": "2026-06-24T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Verkehrsunfall Betrieb ab Mayssengasse",
-    "description": "Verkehrsunfall\nBetrieb ab Mayssengasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d330e1b5a1f9218bc876c09e43b6de8a14f10fb2d9f418ca343b6aa61c39a578",
-    "pubDate": "2026-06-24T11:57:55+02:00",
-    "starts_at": "2026-06-24T11:58:11+02:00",
-    "ends_at": "2026-06-24T16:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-06-24"
   },
   {
     "source": "Wiener Linien",
@@ -939,7 +915,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "49: Verkehrsunfall",
-    "description": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 15:55 Uhr. Grund: Verkehrsunfall im Bereich Hütteldorfer Straße # Pfaffenbergengasse.",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34",
     "pubDate": "2026-06-24T15:27:00+02:00",
@@ -1034,14 +1010,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Schadhaftes Fahrzeug",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "O: Verkehrsüberlastung",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
-    "pubDate": "2026-06-24T13:57:00+02:00",
-    "starts_at": "2026-06-24T13:57:00+02:00",
+    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
+    "pubDate": "2026-06-24T15:02:00+02:00",
+    "starts_at": "2026-06-24T15:02:00+02:00",
     "ends_at": "2026-06-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-06-24"
+    "_identity": "wl|störung|L=O|D=2026-06-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-06-24T15:52:00+02:00",
+    "starts_at": "2026-06-24T15:52:00+02:00",
+    "ends_at": "2026-06-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-06-24"
   },
   {
     "source": "Wiener Linien",
