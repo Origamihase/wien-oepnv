@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 24 Jun 2026 20:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 20:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[28A: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6dd7e340358d9ef0b3ca38d232ac076e3d0e8e6f7a1732c5302878c11d70a381</guid>
+      <pubDate>Wed, 24 Jun 2026 20:26:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 20:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 20:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Currently it is not possible to operate. expected duration: 21:00 o'clock. Reason: construction works in the stop area Aderklaaer Straße U. [On 24.06.2026]</description>
+      <content:encoded><![CDATA[Currently it is not possible to operate. expected duration: 21:00 o'clock. Reason: construction works in the stop area Aderklaaer Straße U.<br/>[On 24.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[30: service obstruction because of fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 21:00:00 +0200</ext:ends_at>
       <description>[On 24.06.2026]</description>
       <content:encoded><![CDATA[[On 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[39A: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6df17f2af355d4402add5949fca90fb59f2b3a2f3d13f6caa966d5194adefc7c</guid>
-      <pubDate>Wed, 24 Jun 2026 17:28:00 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 18:01:16 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 17:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 19:57:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 24.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Soft damage]]></title>
@@ -51,17 +51,6 @@
       <ext:starts_at>Wed, 24 Jun 2026 16:15:35 +0200</ext:starts_at>
       <description>construction works between Gänserndorf train station and Deutsch Wagram train station from Gänserndorf09.2026 (00:10 clock) to 05.10.2026 (04:20 clock) some local trains … [Since 24.06.2026]</description>
       <content:encoded><![CDATA[construction works between Gänserndorf train station and Deutsch Wagram train station from Gänserndorf09.2026 (00:10 clock) to 05.10.2026 (04:20 clock) some local trains …<br/>[Since 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Harmful passenger car]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9bfc09400cbab037ba3921881e740e24b07301b7269331389dfd1fb1718c8618</guid>
-      <pubDate>Wed, 24 Jun 2026 15:54:00 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 16:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 15:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 19:58:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 24.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[REX 51: construction works: no stop in Marchtrenk]]></title>
@@ -115,6 +104,17 @@
       <ext:ends_at>Wed, 11 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected. [07.07.2026 – 11.08.2027]</description>
       <content:encoded><![CDATA[Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected.<br/>[07.07.2026 – 11.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: Bhf. Atzgersdorf S, Knotzenbachgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fe9d15158919ebdedc885b3abdde541db370b4d6e52573d5a59d470147b56a29</guid>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
+      <description>Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking … [23.06.2026 – 31.10.2027]</description>
+      <content:encoded><![CDATA[Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

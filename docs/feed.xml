@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 24 Jun 2026 20:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 20:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[28A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6dd7e340358d9ef0b3ca38d232ac076e3d0e8e6f7a1732c5302878c11d70a381</guid>
+      <pubDate>Wed, 24 Jun 2026 20:26:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 20:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 20:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 21:00 Uhr. Grund: Bauarbeiten im Haltestellenbereich Aderklaaer Straße U. [Am 24.06.2026]</description>
+      <content:encoded><![CDATA[Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 21:00 Uhr. Grund: Bauarbeiten im Haltestellenbereich Aderklaaer Straße U.<br/>[Am 24.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[30: Fahrtbehinderung wegen Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 21:00:00 +0200</ext:ends_at>
       <description>[Am 24.06.2026]</description>
       <content:encoded><![CDATA[[Am 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[39A: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6df17f2af355d4402add5949fca90fb59f2b3a2f3d13f6caa966d5194adefc7c</guid>
-      <pubDate>Wed, 24 Jun 2026 17:28:00 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 18:01:16 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 17:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 19:57:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Weichenschaden]]></title>
@@ -51,17 +51,6 @@
       <ext:starts_at>Wed, 24 Jun 2026 16:15:35 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Gänserndorf Bahnhof und Deutsch Wagram Bahnhof von 11.09.2026 (00:10 Uhr) bis 05.10.2026 (04:20 Uhr) einige Nahverkehrszüge nicht fahren. [Seit 24.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Gänserndorf Bahnhof und Deutsch Wagram Bahnhof von 11.09.2026 (00:10 Uhr) bis 05.10.2026 (04:20 Uhr) einige Nahverkehrszüge nicht fahren.<br/>[Seit 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Schadhafter PKW]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9bfc09400cbab037ba3921881e740e24b07301b7269331389dfd1fb1718c8618</guid>
-      <pubDate>Wed, 24 Jun 2026 15:54:00 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 16:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 15:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 19:58:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[REX 51: Bauarbeiten: kein Halt in Marchtrenk]]></title>
@@ -115,6 +104,17 @@
       <ext:ends_at>Wed, 11 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten im Bereich Brünner Straße / Trillergasse werden die Linien 36B und N31 umgeleitet. [07.07.2026 – 11.08.2027]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Brünner Straße / Trillergasse werden die Linien 36B und N31 umgeleitet.<br/>[07.07.2026 – 11.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: Bhf. Atzgersdorf S, Knotzenbachgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fe9d15158919ebdedc885b3abdde541db370b4d6e52573d5a59d470147b56a29</guid>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach … [23.06.2026 – 31.10.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
