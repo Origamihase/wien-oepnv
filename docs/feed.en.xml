@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 24 Jun 2026 17:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 17:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[30: Feuerwehreinsatz]]></title>
+      <title><![CDATA[38/39A: fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4f5f146836c1f5c76dd4093f63f84bfec213c4bc1ac67b53738897c811c53607</guid>
+      <pubDate>Wed, 24 Jun 2026 17:28:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 17:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 17:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation only between Schottentor U and Nußdorfer Straße U. Line 39A: irregular intervals in both directions. [On 24.06.2026]</description>
+      <content:encoded><![CDATA[Operation only between Schottentor U and Nußdorfer Straße U. Line 39A: irregular intervals in both directions.<br/>[On 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Soft damage]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">51f4b49486684122ae943f491c14c6cbb06e7bcc54ae25fa8839683db91bde9f</guid>
+      <pubDate>Wed, 24 Jun 2026 17:07:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 17:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 17:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>The line U6 currently runs between stations Perfektastraße and Erlaaer Straße1X in both directions via track 1. expected duration: 19:00. Reason … [On 24.06.2026]</description>
+      <content:encoded><![CDATA[The line U6 currently runs between stations Perfektastraße and Erlaaer Straße1X in both directions via track 1. expected duration: 19:00. Reason …<br/>[On 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30: fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e9492f26b2d3963dd8af2b1aeb17bdf5b3b239a16da4aa01d94c365f73fc07cd</guid>
       <pubDate>Wed, 24 Jun 2026 16:42:00 +0200</pubDate>
       <ext:first_seen>Wed, 24 Jun 2026 17:00:53 +0200</ext:first_seen>
       <ext:starts_at>Wed, 24 Jun 2026 16:42:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.06.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 24.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Gänserndorf]]></title>
@@ -40,17 +62,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 24.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d</guid>
-      <pubDate>Wed, 24 Jun 2026 15:02:00 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 16:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 15:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 16:58:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion. [On 24.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[REX 51: construction works: no stop in Marchtrenk]]></title>
@@ -104,17 +115,6 @@
       <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
       <description>Buses stop at Längenfeldgasse 20 [On 24.06.2026]</description>
       <content:encoded><![CDATA[Buses stop at Längenfeldgasse 20<br/>[On 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36B/N31: diversion because of track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3f446b22184bf8b6deb41f704ea733eba73db18c777abb70b38878d0bab7cd5a</guid>
-      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 16:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 11 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected. [07.07.2026 – 11.08.2027]</description>
-      <content:encoded><![CDATA[Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected.<br/>[07.07.2026 – 11.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
