@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 24 Jun 2026 09:01:11 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 09:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[29A/29B/N30: Patrizigasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7c5d3d8d26eced87aae77de99e3c95b11096658dc996c0e5c8aff5ba88c20d05</guid>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 09:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately … [24.06.2026 – 24.06.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: crane works Buses stop at Längenfeldgasse 20]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
       <description>The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway. [18.03.2026 – 29.06.2026]</description>
       <content:encoded><![CDATA[The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30/31: renovation work]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dc9aa38b8918a6eb15c598b6d6096a710aba9a223d744fb0f97f1a076a3fd62a</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
-      <description>Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 6, 2026 to expected End … [06.07.2026 – 17.08.2026]</description>
-      <content:encoded><![CDATA[Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 6, 2026 to expected End …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
