@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 24 Jun 2026 08:01:12 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 08:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U4/U6: rescue operation]]></title>
@@ -21,25 +21,15 @@
       <content:encoded><![CDATA[The U4 line does not currently operate between Pilgramgasse and Meidling, Hauptstraße.<br/>[On 24.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[63A: Kranarbeiten Busse halten bei Längenfeldgasse 20]]></title>
+      <title><![CDATA[63A: crane works Buses stop at Längenfeldgasse 20]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">1c4dddfdb93c2339daf113e5f6de0cdfb6b70b486e294099369b3fc96e42994b</guid>
       <pubDate>Wed, 24 Jun 2026 07:04:39 +0200</pubDate>
       <ext:first_seen>Wed, 24 Jun 2026 07:30:48 +0200</ext:first_seen>
       <ext:starts_at>Wed, 24 Jun 2026 07:04:55 +0200</ext:starts_at>
       <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
-      <description>Busse halten bei Längenfeldgasse 20 [Am 24.06.2026]</description>
-      <content:encoded><![CDATA[Busse halten bei Längenfeldgasse 20<br/>[Am 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Mitte ↔ Wien Rennweg]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;888464</guid>
-      <pubDate>Wed, 24 Jun 2026 07:09:18 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 07:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 07:09:18 +0200</ext:starts_at>
-      <description>Due to a defective train on the line between Wien Mitte-Landstraße Bahnhof (U) and Wien Rennweg Bahnhst train journeys are currently only limited. [Since 24.06.2026]</description>
-      <content:encoded><![CDATA[Due to a defective train on the line between Wien Mitte-Landstraße Bahnhof (U) and Wien Rennweg Bahnhst train journeys are currently only limited.<br/>[Since 24.06.2026]]]></content:encoded>
+      <description>Buses stop at Längenfeldgasse 20 [On 24.06.2026]</description>
+      <content:encoded><![CDATA[Buses stop at Längenfeldgasse 20<br/>[On 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: defective vehicle]]></title>
@@ -48,17 +38,6 @@
       <pubDate>Wed, 24 Jun 2026 06:28:00 +0200</pubDate>
       <ext:first_seen>Wed, 24 Jun 2026 07:01:10 +0200</ext:first_seen>
       <ext:starts_at>Wed, 24 Jun 2026 06:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 24.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44: service obstruction due to police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201</guid>
-      <pubDate>Wed, 24 Jun 2026 06:08:00 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 06:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 06:08:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 24.06.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.06.2026]]]></content:encoded>
@@ -116,6 +95,28 @@
       <ext:ends_at>Wed, 24 Jun 2026 11:00:00 +0200</ext:ends_at>
       <description>Poller exercise Due to a poller exercise, the Strauchgasse and the Herrengasse are closed by police. [22.06.2026 – 24.06.2026]</description>
       <content:encoded><![CDATA[Poller exercise Due to a poller exercise, the Strauchgasse and the Herrengasse are closed by police.<br/>[22.06.2026 – 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Donaufelder Street 67]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">b01d262a1e2d53ab7ef1419b8e12b443dc9e16b834f2b0c3f8b69170f2e82174</guid>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
+      <description>The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram. [19.04.2026 – 25.06.2026]</description>
+      <content:encoded><![CDATA[The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram.<br/>[19.04.2026 – 25.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Antonsplatz from 13 to 18]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 18 Mar 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
+      <description>The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway. [18.03.2026 – 29.06.2026]</description>
+      <content:encoded><![CDATA[The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
