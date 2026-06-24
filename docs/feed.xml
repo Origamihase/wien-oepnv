@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 24 Jun 2026 16:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 17:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[30: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e9492f26b2d3963dd8af2b1aeb17bdf5b3b239a16da4aa01d94c365f73fc07cd</guid>
+      <pubDate>Wed, 24 Jun 2026 16:42:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 17:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 16:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Gänserndorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -37,7 +48,7 @@
       <pubDate>Wed, 24 Jun 2026 15:02:00 +0200</pubDate>
       <ext:first_seen>Wed, 24 Jun 2026 16:01:04 +0200</ext:first_seen>
       <ext:starts_at>Wed, 24 Jun 2026 15:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Wed, 24 Jun 2026 16:58:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 24.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 24.06.2026]]]></content:encoded>
     </item>
@@ -104,17 +115,6 @@
       <ext:ends_at>Wed, 11 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten im Bereich Brünner Straße / Trillergasse werden die Linien 36B und N31 umgeleitet. [07.07.2026 – 11.08.2027]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Brünner Straße / Trillergasse werden die Linien 36B und N31 umgeleitet.<br/>[07.07.2026 – 11.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60A: Bhf. Atzgersdorf S, Knotzenbachgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fe9d15158919ebdedc885b3abdde541db370b4d6e52573d5a59d470147b56a29</guid>
-      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach … [23.06.2026 – 31.10.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
