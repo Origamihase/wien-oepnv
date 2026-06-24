@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 24 Jun 2026 17:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 18:01:16 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[38/39A: Feuerwehreinsatz]]></title>
+      <title><![CDATA[39A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4f5f146836c1f5c76dd4093f63f84bfec213c4bc1ac67b53738897c811c53607</guid>
+      <guid isPermaLink="false">6df17f2af355d4402add5949fca90fb59f2b3a2f3d13f6caa966d5194adefc7c</guid>
       <pubDate>Wed, 24 Jun 2026 17:28:00 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 17:31:02 +0200</ext:first_seen>
+      <ext:first_seen>Wed, 24 Jun 2026 18:01:16 +0200</ext:first_seen>
       <ext:starts_at>Wed, 24 Jun 2026 17:28:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Linie 39A: Unregelmäßige Intervalle in beiden Richtungen. [Am 24.06.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Linie 39A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 24.06.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fb6187f5418284b8f1c12e7f700f7e582646769c7bcd3f588882792fa8b8ac36</guid>
+      <pubDate>Wed, 24 Jun 2026 17:28:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 18:01:16 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 17:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Weichenschaden]]></title>
@@ -104,17 +115,6 @@
       <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Großfeldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30) Haltestelle: Patrizigase Von: Freytaggasse 32 Nach: etwa … [24.06.2026 – 24.06.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Großfeldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30) Haltestelle: Patrizigase Von: Freytaggasse 32 Nach: etwa …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Kranarbeiten Busse halten bei Längenfeldgasse 20]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1c4dddfdb93c2339daf113e5f6de0cdfb6b70b486e294099369b3fc96e42994b</guid>
-      <pubDate>Wed, 24 Jun 2026 07:04:39 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 07:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 07:04:55 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 24 Jun 2026 19:00:00 +0200</ext:ends_at>
-      <description>Busse halten bei Längenfeldgasse 20 [Am 24.06.2026]</description>
-      <content:encoded><![CDATA[Busse halten bei Längenfeldgasse 20<br/>[Am 24.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
