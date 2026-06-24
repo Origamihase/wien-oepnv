@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 24 Jun 2026 22:31:17 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 23:00:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9: fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e32cd5806e5f6595a21fd31d0d7b637a54fc9777e05686842fc754f354322f75</guid>
+      <pubDate>Wed, 24 Jun 2026 22:45:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 23:00:47 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 22:45:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 24 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 24.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Gänserndorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -103,17 +114,6 @@
       <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
       <description>Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected. [13.07.2026 – 22.08.2026]</description>
       <content:encoded><![CDATA[Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Donaufelder Street 67]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">b01d262a1e2d53ab7ef1419b8e12b443dc9e16b834f2b0c3f8b69170f2e82174</guid>
-      <pubDate>Sun, 19 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 25 Jun 2026 00:00:00 +0200</ext:ends_at>
-      <description>The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram. [19.04.2026 – 25.06.2026]</description>
-      <content:encoded><![CDATA[The production of a district heating line takes place in the night in the time of 20:00 o'clock until 05:00 o'clock or only in the idle time of the tram.<br/>[19.04.2026 – 25.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
