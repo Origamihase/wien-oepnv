@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 25 Jun 2026 18:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2026 18:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[9A: impurity]]></title>
@@ -21,17 +21,6 @@
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: contamination.<br/>[On 25.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[31A: police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b1b59ef91c7e5513a7a2362ffbc5f6ec21eb687935ff3e74c62591a531321745</guid>
-      <pubDate>Thu, 25 Jun 2026 17:41:00 +0200</pubDate>
-      <ext:first_seen>Thu, 25 Jun 2026 18:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 25 Jun 2026 17:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 25 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: police operation. [On 25.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: police operation.<br/>[On 25.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[15A: foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8465c4a863695aeea5f77f0199c4bf034c7c302614acab16428cdb62511f8686</guid>
@@ -41,27 +30,6 @@
       <ext:ends_at>Thu, 25 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>The line 15A currently does not operate between Swatoschgasse and Siedlung Südost. expected duration: 16:40 watch. Reason: Foreign traffic accidentX in the Bitterlichstraße. [On 25.06.2026]</description>
       <content:encoded><![CDATA[The line 15A currently does not operate between Swatoschgasse and Siedlung Südost. expected duration: 16:40 watch. Reason: Foreign traffic accidentX in the Bitterlichstraße.<br/>[On 25.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9f165c075986a15f166e33b45b8d944a379e149f1d04cfef623757a51c68a8b2</guid>
-      <pubDate>Thu, 25 Jun 2026 16:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 25 Jun 2026 16:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 25 Jun 2026 16:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 25 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: demonstration. [On 25.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: demonstration.<br/>[On 25.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Liesing]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;889099</guid>
-      <pubDate>Thu, 25 Jun 2026 17:14:09 +0200</pubDate>
-      <ext:first_seen>Thu, 25 Jun 2026 16:01:11 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 25 Jun 2026 17:14:09 +0200</ext:starts_at>
-      <description>Due to an switch fault train journeys are currently only limited in Wien Liesing train station. [Since 25.06.2026]</description>
-      <content:encoded><![CDATA[Due to an switch fault train journeys are currently only limited in Wien Liesing train station.<br/>[Since 25.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Gentzgasse from Aumannplatz and Lazaristengasse to Köhlergasse]]></title>
@@ -114,6 +82,39 @@
       <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
       <description>Due to track construction works in the Brünner Straße, the lines 36B and N31 are redirected. Period: From Tuesday, July 07, 2026 approximately 00:30 o'clock lasting about … [24.06.2026 – 24.06.2027]</description>
       <content:encoded><![CDATA[Due to track construction works in the Brünner Straße, the lines 36B and N31 are redirected. Period: From Tuesday, July 07, 2026 approximately 00:30 o'clock lasting about …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29A/29B/N30: Patrizigasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7c5d3d8d26eced87aae77de99e3c95b11096658dc996c0e5c8aff5ba88c20d05</guid>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 09:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately … [24.06.2026 – 24.06.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36B/N31: diversion because of track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3f446b22184bf8b6deb41f704ea733eba73db18c777abb70b38878d0bab7cd5a</guid>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 16:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected. [07.07.2026 – 11.08.2027]</description>
+      <content:encoded><![CDATA[Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected.<br/>[07.07.2026 – 11.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: Bhf. Atzgersdorf S, Knotzenbachgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fe9d15158919ebdedc885b3abdde541db370b4d6e52573d5a59d470147b56a29</guid>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
+      <description>Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking … [23.06.2026 – 31.10.2027]</description>
+      <content:encoded><![CDATA[Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
