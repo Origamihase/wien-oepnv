@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 25 Jun 2026 13:31:04 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2026 14:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[64A: foreign traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">db92c5ec5526fff2229ec1fcc45f1e18db9adbdc927d53c8b40baec4640a63c3</guid>
+      <pubDate>Thu, 25 Jun 2026 13:49:00 +0200</pubDate>
+      <ext:first_seen>Thu, 25 Jun 2026 14:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 25 Jun 2026 13:49:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 25 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: Foreigner traffic accident. [On 25.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: Foreigner traffic accident.<br/>[On 25.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49: foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -98,22 +109,11 @@
       <title><![CDATA[S 40: Wien Franz-Josefs-Bahnhof ↔XSt.Andrä-Wördern]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;880311</guid>
-      <pubDate>Mon, 22 Jun 2026 15:33:31 +0200</pubDate>
+      <pubDate>Thu, 25 Jun 2026 13:21:05 +0200</pubDate>
       <ext:first_seen>Mon, 22 Jun 2026 16:01:17 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 22 Jun 2026 15:33:31 +0200</ext:starts_at>
-      <description>Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien … [Since 22.06.2026]</description>
-      <content:encoded><![CDATA[Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien …<br/>[Since 22.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">07dc30c6a44160a6ac6edaa6777d410d2bec787011a5197738e1f98de368c3eb</guid>
-      <pubDate>Mon, 22 Jun 2026 15:20:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 15:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
-      <description>Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected. [13.07.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
+      <ext:starts_at>Thu, 25 Jun 2026 13:21:05 +0200</ext:starts_at>
+      <description>Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien … [Since 25.06.2026]</description>
+      <content:encoded><![CDATA[Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien …<br/>[Since 25.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
