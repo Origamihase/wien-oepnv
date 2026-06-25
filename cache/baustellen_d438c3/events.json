@@ -2,6 +2,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Gentzgasse von Aumannplatz und Lazaristengasse bis Köhlergasse",
+    "description": "Da auch die betroffenen Straßenbahnlinien im Zeitraum vom 4. Mai 2026 bis zum 27. Juni 2026 eingestellt werden, wird seitens der Wiener Linien GmbH & Co KG ein Schienenersatzverkehr in diesem Zeitraum eingerichtet. Die Gleisbauarbeiten in der Währinger Straße von der ON 125 bis zum Aumannplatz, am Aumannplatz von der Klostergasse bis zur Gentzgasse und in der Gentzgasse vom Aumannplatz bis zur Köhlergasse werden bei Tag und Nacht und bei Sperre der Währinger Straße von ON 125 bis zur ON 141 und der Gentzgasse von ON 104 bis zur ON 122 für den Individualverkehr durchgeführt. Die bestehenden Einbahnregelungen in den Umleitungsstrecken werden für den Umleitungsverkehr entsprechend angepasst (zum Teil umgedreht). Während der Arbeiten im Bereich Aumannplatz von ON 1 bis ggü ON 1 wird auch dieser Bereich für den Individualverkehr gesperrt. Die dafür notwendigen Fahrgastinformationen und Fahrrouten des Schienenersatzverkehrs werden von den Wiener Linien GmbH & Co KG termingerecht bekanntgegeben. NEU: Ab 19.05.2026 wird der Bereich Gentzgasse von Aumannplatz bis Köhlergasse gesperrt sowie der Bereich vor Aumannplatz 1. Die Umleitung in Fahrtrichtung stadtauswärts erfolgt überWähringer Straße - Weimarer Straße - Gentzgasse - Lazaristengasse - Haizingergasse - Edmund-Weiß-Gasse - Köhlergasse - Gentzgasse. Die Umleitung in Fahrtrichtung stadteinwärts erfolgt über die Gersthofer Straße - Währinger Straße. Die Zufahrt bis zum gesperrten Bereich ist möglich. \nBeginn: 27.04.2026 00:00 Uhr \nGeplant bis: 31.07.2026 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 18",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "00ab0c646d433d40a74330ab21e2ed45d81566dbabe18bcb83400bcf8bcaf382",
+    "pubDate": "2026-04-27T00:00:00+02:00",
+    "starts_at": "2026-04-27T00:00:00+02:00",
+    "ends_at": "2026-07-31T00:00:00+02:00",
+    "context": {
+      "district": "18",
+      "measure": "Gleisbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.22831845,
+        "lon": 16.33678584
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Matzleinsdorfer Platz 3-4 bis 5",
     "description": "Im Zuge des U-Bahnbaus ist seit 28. März 2022, 09:00 Uhr die Rechtsabbiegespur in Richtung 5. Bezirk auf der Abfahrtsrampe des Margaretengürtels vom Hauptbahnhof kommend zum Matzleinsdorfer Platz gesperrt. Die Umleitung des Verkehrs in Richtung 5. Bezirk erfolgt über die Hollgasse. Seit 10. Jänner 2023 wird der Verkehr von der Reinprechtsdorfer Straße bzw. Wiedner Hauptstraße kommend in Richtung Matzleinsdorfer Platz nunmehr rechts an dem neu in der Mitte der öffentlichen Verkehrsfläche eingerichteten Baustellenbereich vorbeigeführt. Die bisherige Verkehrssituation (zwei Fahrspuren in Richtung Margaretengürtel) bleibt unverändert. Ab 29. August 2024, 22:00 Uhr wird in der Unterführung am Matzleinsdorfer Platz die Fahrbahnhälfte im Zuge des Margaretengürtels in Richtung Hauptbahnhof für den Verkehr wieder freigegeben. Der Linksabbiegeverkehr von der Triester Straße bzw. Gudrunstraße kommend zum Margaretengürtel in Richtung Eichenstraße wird dann wieder über das Brückentragwerk und nicht mehr über die Nebenfahrbahn des Margaretengürtels geführt. NEU:Im Zeitraum vom 6. Juli 2025, 22:00 Uhr bis zum 21. Juli 2025 wird in der Unterführung am Matzleinsdorfer Platz in Fahrtrichtung zum 12. Bezirk eine Fahrspur gesperrt. \nBeginn: 27.03.2022 00:00 Uhr \nGeplant bis: 31.12.2028 00:00 Uhr \nMaßnahme: U-Bahnbau \nBezirk: 5",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -437,27 +458,6 @@
       "coordinates": {
         "lat": 48.22433523,
         "lon": 16.31764892
-      }
-    }
-  },
-  {
-    "source": "Stadt Wien – Baustellen",
-    "category": "Baustelle",
-    "title": "Gentzgasse von Aumannplatz und Lazaristengasse bis Köhlergasse",
-    "description": "Da auch die betroffenen Straßenbahnlinien im Zeitraum vom 4. Mai 2026 bis zum 27. Juni 2026 eingestellt werden, wird seitens der Wiener Linien GmbH & Co KG ein Schienenersatzverkehr in diesem Zeitraum eingerichtet. Die Gleisbauarbeiten in der Währinger Straße von der ON 125 bis zum Aumannplatz, am Aumannplatz von der Klostergasse bis zur Gentzgasse und in der Gentzgasse vom Aumannplatz bis zur Köhlergasse werden bei Tag und Nacht und bei Sperre der Währinger Straße von ON 125 bis zur ON 141 und der Gentzgasse von ON 104 bis zur ON 122 für den Individualverkehr durchgeführt. Die bestehenden Einbahnregelungen in den Umleitungsstrecken werden für den Umleitungsverkehr entsprechend angepasst (zum Teil umgedreht). Während der Arbeiten im Bereich Aumannplatz von ON 1 bis ggü ON 1 wird auch dieser Bereich für den Individualverkehr gesperrt. Die dafür notwendigen Fahrgastinformationen und Fahrrouten des Schienenersatzverkehrs werden von den Wiener Linien GmbH & Co KG termingerecht bekanntgegeben. NEU: Ab 19.05.2026 wird der Bereich Gentzgasse von Aumannplatz bis Köhlergasse gesperrt sowie der Bereich vor Aumannplatz 1. Die Umleitung in Fahrtrichtung stadtauswärts erfolgt überWähringer Straße - Weimarer Straße - Gentzgasse - Lazaristengasse - Haizingergasse - Edmund-Weiß-Gasse - Köhlergasse - Gentzgasse. Die Umleitung in Fahrtrichtung stadteinwärts erfolgt über die Gersthofer Straße - Währinger Straße. Die Zufahrt bis zum gesperrten Bereich ist möglich. \nBeginn: 27.04.2026 00:00 Uhr \nGeplant bis: 12.07.2026 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 18",
-    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
-    "guid": "96b7bdc55eaac6b488135b33ae5da5cc70902fc332b2207862be5067332e2638",
-    "pubDate": "2026-04-27T00:00:00+02:00",
-    "starts_at": "2026-04-27T00:00:00+02:00",
-    "ends_at": "2026-07-12T00:00:00+02:00",
-    "context": {
-      "district": "18",
-      "measure": "Gleisbau"
-    },
-    "location": {
-      "coordinates": {
-        "lat": 48.22831845,
-        "lon": 16.33678584
       }
     }
   },
