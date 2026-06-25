@@ -3917,6 +3917,16 @@
       "epoch": 3
     }
   },
+  "62756418fcbdf4e3b83649d0dfb730ca0b4cc640b14c00d9a9e4107b8b5363f9": {
+    "first_seen": "2026-06-25T14:01:11.843925+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic congestion.",
+        "title": "15A: traffic congestion"
+      },
+      "epoch": 3
+    }
+  },
   "62b88b14f336cc204019ba2071d68ca47ba8a2df6a2fe76d4b3f12d1a5e2b9fe": {
     "first_seen": "2026-06-13T12:00:48.811104+00:00",
     "translations": {
@@ -10764,6 +10774,16 @@
       "en": {
         "summary": "construction works between G\u00e4nserndorf train station and Deutsch Wagram train station from G\u00e4nserndorf09.2026 (00:10 clock) to 05.10.2026 (04:20 clock) some local trains cannot operate.",
         "title": "Wien Floridsdorf \u2194 G\u00e4nserndorf"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&889099": {
+    "first_seen": "2026-06-25T14:01:11.843925+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an switch fault train journeys are currently only limited in Wien Liesing train station.",
+        "title": "Wien Liesing"
       },
       "epoch": 3
     }
