@@ -422,18 +422,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "99A: Wehrbrücklstraße",
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 99A in Richtung Aspern Nord S U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wehrbr&uuml;cklstra&szlig;e</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Niklas-Eslarn-Stra&szlig;e 81-83</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Niklas-Eslarn-Stra&szlig;e 89</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 24. Juni 2026, etwa 06:30 Uhr bis 25. Juni 2026, etwa 07:30 Uhr</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kabelarbeiten</span></p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7439e931aeea5d30cacc86ce10618be0945eb65fcdf0fc3112f9a4c1aa9dca5d",
-    "pubDate": "2026-06-23T10:00:00+02:00",
-    "starts_at": "2026-06-23T10:00:00+02:00",
-    "ends_at": "2026-06-25T07:30:00+02:00",
-    "_identity": "wl|hinweis|L=99A|D=2026-06-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "N20: Bauarbeiten Fatty-George-Gasse",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Fatty-George-Gasse wird die Linie N20 Montag - Freitag umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Mittwoch, 08. Juli 2026, Betriebsbeginn bis Ende August</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie N20 in Richtung E&szlig;ling, Schule<br /></strong>Umleitung ab Gartenheimstra&szlig;e # Fatty-George-Gasse &uuml;ber Gartenheimstra&szlig;e</p> <p><strong>Linie N20 in Richtung Kagran&nbsp;<br /></strong>Umleitung ab Gartenheimstra&szlig;e &ndash; wenden im Kreisverkehr Gartenheimstra&szlig;e # Simonsgasse &ndash; Gartenheimstra&szlig;e &ndash; E&szlig;linger Hauptstra&szlig;e</p> <p><span style=\"text-decoration: underline;\"><strong>Aufgelassene Haltestelle:</strong><strong><br /></strong></span>E&szlig;ling, Schule (Fatty-George-Gasse vor E&szlig;linger Hauptstra&szlig;e)</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatzhaltestelle:<br /></strong></span>E&szlig;ling, Schule (Gartenheimstra&szlig;e 13)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -674,6 +662,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "3A: Verspätungen",
+    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
+    "pubDate": "2026-06-25T07:15:00+02:00",
+    "starts_at": "2026-06-25T07:15:00+02:00",
+    "ends_at": "2026-06-25T07:36:00+02:00",
+    "_identity": "wl|störung|L=3A|D=2026-06-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -866,18 +866,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Schadhaftes Fahrzeug",
-    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4281aa32ed45a54c560c823ba6cd35e8febae67fca71fa894a80ce4b806088d3",
-    "pubDate": "2026-06-25T06:45:00+02:00",
-    "starts_at": "2026-06-25T06:45:00+02:00",
-    "ends_at": "2026-06-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "6: Fahrtbehinderung Schadhafter Zug",
     "description": "Fahrtbehinderung\nSchadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -934,6 +922,18 @@
     "starts_at": "2026-06-25T00:00:02+02:00",
     "ends_at": "2026-06-25T23:59:59+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Fahrtbehinderung in Richtung Leopoldau S U. Voraussichtliche Dauer: 07:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Alte Donau.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-06-25T07:22:00+02:00",
+    "starts_at": "2026-06-25T07:22:00+02:00",
+    "ends_at": "2026-06-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-06-25"
   },
   {
     "source": "Wiener Linien",
