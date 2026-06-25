@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 25 Jun 2026 15:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2026 15:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Gentzgasse von Aumannplatz und Lazaristengasse bis Köhlergasse]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Fri, 31 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>Da auch die betroffenen Straßenbahnlinien im Zeitraum vom 4. Mai 2026 bis zum 27. Juni 2026 eingestellt werden, wird seitens der Wiener Linien GmbH &amp;amp; Co KG ein … [27.04.2026 – 31.07.2026]</description>
       <content:encoded><![CDATA[Da auch die betroffenen Straßenbahnlinien im Zeitraum vom 4. Mai 2026 bis zum 27. Juni 2026 eingestellt werden, wird seitens der Wiener Linien GmbH &amp; Co KG ein …<br/>[27.04.2026 – 31.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">db92c5ec5526fff2229ec1fcc45f1e18db9adbdc927d53c8b40baec4640a63c3</guid>
-      <pubDate>Thu, 25 Jun 2026 13:49:00 +0200</pubDate>
-      <ext:first_seen>Thu, 25 Jun 2026 14:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 25 Jun 2026 13:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 25 Jun 2026 15:15:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall. [Am 25.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall.<br/>[Am 25.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Gänserndorf]]></title>
@@ -114,6 +103,17 @@
       <ext:starts_at>Thu, 25 Jun 2026 13:21:05 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren. [Seit 25.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.<br/>[Seit 25.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">07dc30c6a44160a6ac6edaa6777d410d2bec787011a5197738e1f98de368c3eb</guid>
+      <pubDate>Mon, 22 Jun 2026 15:20:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 15:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet. [13.07.2026 – 22.08.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
