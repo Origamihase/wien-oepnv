@@ -5845,6 +5845,16 @@
       "epoch": 3
     }
   },
+  "8d10051ff0803a29b25d85f2aadb96d0cfbd4d9a1f15e9bee8bbd77e5aeff312": {
+    "first_seen": "2026-06-25T16:00:59.205619+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "9A: impurity"
+      },
+      "epoch": 3
+    }
+  },
   "8d3d2b80e41959a1b4f4ab849a1ae969018f0082776fb587bb2aed9cb04ce1ce": {
     "first_seen": "2026-05-24T20:34:38.763545+00:00",
     "translations": {
@@ -7292,6 +7302,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: traffic accident.",
         "title": "77A: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
+  "b1b59ef91c7e5513a7a2362ffbc5f6ec21eb687935ff3e74c62591a531321745": {
+    "first_seen": "2026-06-25T16:00:59.205619+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: police operation.",
+        "title": "31A: police operation"
       },
       "epoch": 3
     }
