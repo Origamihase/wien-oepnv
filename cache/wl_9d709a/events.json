@@ -614,18 +614,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e832b46eec6d19cd652e99a3efa00e678cd32779ad0f0da0378f515eb2651f68",
-    "pubDate": "2026-06-25T06:45:12+02:00",
-    "starts_at": "2026-06-25T06:45:28+02:00",
-    "ends_at": "2026-06-25T07:45:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -658,18 +646,6 @@
     "starts_at": "2026-06-25T00:00:17+02:00",
     "ends_at": "2026-06-25T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "3A: Verspätungen",
-    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
-    "pubDate": "2026-06-25T07:15:00+02:00",
-    "starts_at": "2026-06-25T07:15:00+02:00",
-    "ends_at": "2026-06-25T07:36:00+02:00",
-    "_identity": "wl|störung|L=3A|D=2026-06-25"
   },
   {
     "source": "Wiener Linien",
@@ -854,6 +830,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "50B: Schadhafter LKW",
+    "description": "Linie 50B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhafter LKW.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "df80ffae8d22f1b37ea643e9b438af0892831fd93dc04aac1e43813df70c211b",
+    "pubDate": "2026-06-25T07:54:00+02:00",
+    "starts_at": "2026-06-25T07:54:00+02:00",
+    "ends_at": "2026-06-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=50B|D=2026-06-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -862,18 +850,6 @@
     "starts_at": "2026-06-25T04:45:19+02:00",
     "ends_at": "2026-06-26T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c54650e65ef647f350297bb5f234db6c9420a95be4c9c46b35286f6ec869089",
-    "pubDate": "2026-06-25T06:44:58+02:00",
-    "starts_at": "2026-06-25T06:44:58+02:00",
-    "ends_at": "2026-06-25T07:44:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-06-25"
   },
   {
     "source": "Wiener Linien",
@@ -927,7 +903,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Linie U1: Fahrtbehinderung in Richtung Leopoldau S U. Voraussichtliche Dauer: 07:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Alte Donau.",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
     "pubDate": "2026-06-25T07:22:00+02:00",
