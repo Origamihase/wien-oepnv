@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 26 Jun 2026 18:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 19:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[20A: pollution]]></title>
@@ -15,7 +15,7 @@
       <guid isPermaLink="false">7ebea603d88c804300a3752dfa67392d952f11162b15a7448052e87d87a658e7</guid>
       <pubDate>Fri, 26 Jun 2026 18:26:00 +0200</pubDate>
       <ext:first_seen>Fri, 26 Jun 2026 18:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 26 Jun 2026 18:26:00 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 26 Jun 2026 18:43:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: Impurity in the Kaisermühlen-VIC U stop area. [On 26.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: Impurity in the Kaisermühlen-VIC U stop area.<br/>[On 26.06.2026]]]></content:encoded>
@@ -30,17 +30,6 @@
       <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: police operation. [On 26.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: police operation.<br/>[On 26.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ca7ecb21b276411d80489b5f859d18415ca2be9f40e1dee10a276a9886c9db1f</guid>
-      <pubDate>Fri, 26 Jun 2026 17:51:00 +0200</pubDate>
-      <ext:first_seen>Fri, 26 Jun 2026 18:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 26 Jun 2026 17:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 26 Jun 2026 18:26:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: demonstration. [On 26.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: demonstration.<br/>[On 26.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Gentzgasse from Aumannplatz and Lazaristengasse to Köhlergasse]]></title>
@@ -115,6 +104,17 @@
       <ext:starts_at>Thu, 25 Jun 2026 13:21:05 +0200</ext:starts_at>
       <description>Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien … [Since 25.06.2026]</description>
       <content:encoded><![CDATA[Due to construction works, there are no R Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern trains between 04.07.2026 (02:00 o'clock) and 07.09.2026 (02:00 o'clock) between Wien …<br/>[Since 25.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">07dc30c6a44160a6ac6edaa6777d410d2bec787011a5197738e1f98de368c3eb</guid>
+      <pubDate>Mon, 22 Jun 2026 15:20:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 15:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
+      <description>Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected. [13.07.2026 – 22.08.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
