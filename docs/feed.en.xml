@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 26 Jun 2026 11:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 11:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[69A: police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">96f135154720252b723390157353648f6e722f3498310c762afbb7ad31588d1b</guid>
-      <pubDate>Fri, 26 Jun 2026 10:10:00 +0200</pubDate>
-      <ext:first_seen>Fri, 26 Jun 2026 10:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 26 Jun 2026 10:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 26.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 26.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Gentzgasse from Aumannplatz and Lazaristengasse to Köhlergasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -115,6 +104,17 @@
       <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
       <description>The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway. [18.03.2026 – 29.06.2026]</description>
       <content:encoded><![CDATA[The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30/31: renovation work]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dc9aa38b8918a6eb15c598b6d6096a710aba9a223d744fb0f97f1a076a3fd62a</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
+      <description>Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 6, 2026 to expected End … [06.07.2026 – 17.08.2026]</description>
+      <content:encoded><![CDATA[Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 6, 2026 to expected End …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
