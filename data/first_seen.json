@@ -2818,6 +2818,16 @@
       "epoch": 2
     }
   },
+  "45988bb6c10188efc756035f4a7aeb336d0d4105e2d558e8a03c1d6b5ee52eb8": {
+    "first_seen": "2026-06-26T16:00:55.677727+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic accident.",
+        "title": "28A: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "45d5bba5b772ec0cb338139ba4e523945163739b54c0365fe65bbfcb6dc8a13c": {
     "first_seen": "2026-06-11T20:30:54.042989+00:00",
     "translations": {
@@ -8242,6 +8252,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "36B: defective truck"
+      },
+      "epoch": 3
+    }
+  },
+  "ca7ecb21b276411d80489b5f859d18415ca2be9f40e1dee10a276a9886c9db1f": {
+    "first_seen": "2026-06-26T16:00:55.677727+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: demonstration.",
+        "title": "46: demonstration"
       },
       "epoch": 3
     }
