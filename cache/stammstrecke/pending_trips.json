@@ -2,49 +2,33 @@
   "Meidling|S2|2026-06-27T01:42:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-06-27T01:00:58.517737+02:00",
+    "last_seen_at": "2026-06-27T01:30:47.100598+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-06-27T01:42:00+02:00"
   },
-  "Meidling|S3|2026-06-27T01:12:00+02:00": {
+  "Meidling|S3|2026-06-27T02:12:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-06-27T01:00:58.517737+02:00",
-    "latest_delay_minutes": 3.0,
+    "last_seen_at": "2026-06-27T01:30:47.100598+02:00",
+    "latest_delay_minutes": 0.0,
     "name": "S3",
-    "scheduled": "2026-06-27T01:12:00+02:00"
-  },
-  "Praterstern|S1|2026-06-27T01:09:00+02:00": {
-    "cancelled": false,
-    "direction": "Praterstern",
-    "last_seen_at": "2026-06-27T01:00:58.517737+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S1",
-    "scheduled": "2026-06-27T01:09:00+02:00"
-  },
-  "Praterstern|S1|2026-06-27T01:20:00+02:00": {
-    "cancelled": false,
-    "direction": "Praterstern",
-    "last_seen_at": "2026-06-27T01:00:58.517737+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S1",
-    "scheduled": "2026-06-27T01:20:00+02:00"
+    "scheduled": "2026-06-27T02:12:00+02:00"
   },
   "Praterstern|S1|2026-06-27T01:39:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-06-27T01:00:58.517737+02:00",
+    "last_seen_at": "2026-06-27T01:30:47.100598+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S1",
     "scheduled": "2026-06-27T01:39:00+02:00"
   },
-  "Praterstern|S3|2026-06-27T01:27:00+02:00": {
-    "cancelled": false,
+  "Praterstern|S2|2026-06-27T02:09:00+02:00": {
+    "cancelled": true,
     "direction": "Praterstern",
-    "last_seen_at": "2026-06-27T01:00:58.517737+02:00",
+    "last_seen_at": "2026-06-27T01:30:47.100598+02:00",
     "latest_delay_minutes": 0.0,
-    "name": "S3",
-    "scheduled": "2026-06-27T01:27:00+02:00"
+    "name": "S2",
+    "scheduled": "2026-06-27T02:09:00+02:00"
   }
 }
