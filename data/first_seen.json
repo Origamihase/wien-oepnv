@@ -10970,8 +10970,20 @@
     "first_seen": "2026-06-26T13:30:54.568858+00:00",
     "translations": {
       "en": {
+        "summary": "Due to an switch fault, train journeys to expected 16 16:45 clock are limited.",
         "title": "Korneuburg"
-      }
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&889522": {
+    "first_seen": "2026-06-26T14:31:07.360940+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an switch fault between Wien Heiligenstadt Train Station (U) and Wien Nu\u00dfdorf Train hours to expected 17:00 are limited.",
+        "title": "Wien Heiligenstadt \u2194 Wien Nu\u00dfdorf"
+      },
+      "epoch": 3
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
