@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 26 Jun 2026 20:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 20:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[92A: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d61b08eab1d6336e031e6fff05f3742e04ec50ddf3227e346d7cbefc36c7b8a6</guid>
+      <pubDate>Fri, 26 Jun 2026 20:13:00 +0200</pubDate>
+      <ext:first_seen>Fri, 26 Jun 2026 20:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 26 Jun 2026 20:17:20 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[37: Fahrtbehinderung Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -59,8 +70,8 @@
       <ext:first_seen>Wed, 24 Jun 2026 09:30:47 +0200</ext:first_seen>
       <ext:starts_at>Wed, 24 Jun 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Großfeldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30) Haltestelle: Patrizigase Von: Freytaggasse 32 Nach: etwa … [24.06.2026 – 24.06.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Großfeldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30) Haltestelle: Patrizigase Von: Freytaggasse 32 Nach: etwa …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
+      <description>Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately … [24.06.2026 – 24.06.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[36B/N31: diversion because of track construction works]]></title>
@@ -81,8 +92,8 @@
       <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
       <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach … [23.06.2026 – 31.10.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
+      <description>Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking … [23.06.2026 – 31.10.2027]</description>
+      <content:encoded><![CDATA[Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 40: Wien Franz-Josefs-Bahnhof ↔XSt.Andrä-Wördern]]></title>
@@ -104,17 +115,6 @@
       <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
       <description>Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected. [13.07.2026 – 22.08.2026]</description>
       <content:encoded><![CDATA[Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Antonsplatz from 13 to 18]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1</guid>
-      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 18 Mar 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
-      <description>The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway. [18.03.2026 – 29.06.2026]</description>
-      <content:encoded><![CDATA[The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
