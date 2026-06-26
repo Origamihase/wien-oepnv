@@ -7,8 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 26 Jun 2026 15:01:13 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 15:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[31A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7a2fc58a0e9703ae0845dbd287884295a1c4e146cf7f92e733e658e72b775ab7</guid>
+      <pubDate>Fri, 26 Jun 2026 15:24:00 +0200</pubDate>
+      <ext:first_seen>Fri, 26 Jun 2026 15:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 26 Jun 2026 15:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 26 Jun 2026 16:13:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 26.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 26.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Korneuburg]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;889486</guid>
+      <pubDate>Fri, 26 Jun 2026 15:16:43 +0200</pubDate>
+      <ext:first_seen>Fri, 26 Jun 2026 15:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 26 Jun 2026 15:16:43 +0200</ext:starts_at>
+      <description>Wegen einer Weichenstörung sind in Korneuburg Bahnhof Zugfahrten bis voraussichtlich 16:45 Uhr nur eingeschränkt möglich. [Seit 26.06.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Weichenstörung sind in Korneuburg Bahnhof Zugfahrten bis voraussichtlich 16:45 Uhr nur eingeschränkt möglich.<br/>[Seit 26.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[8A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1b9feb3521bf10053f40e6730c6cb1f4d8b79f2ab069b5767a7926e6f77fd041</guid>
+      <pubDate>Fri, 26 Jun 2026 15:09:00 +0200</pubDate>
+      <ext:first_seen>Fri, 26 Jun 2026 15:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 26 Jun 2026 15:09:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Gentzgasse von Aumannplatz und Lazaristengasse bis Köhlergasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -82,39 +114,6 @@
       <ext:starts_at>Thu, 25 Jun 2026 13:21:05 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren. [Seit 25.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.<br/>[Seit 25.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">07dc30c6a44160a6ac6edaa6777d410d2bec787011a5197738e1f98de368c3eb</guid>
-      <pubDate>Mon, 22 Jun 2026 15:20:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 15:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet. [13.07.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Antonsplatz von 13 bis 18]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1</guid>
-      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 18 Mar 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt. [18.03.2026 – 29.06.2026]</description>
-      <content:encoded><![CDATA[Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30/31: Sanierungsarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dc9aa38b8918a6eb15c598b6d6096a710aba9a223d744fb0f97f1a076a3fd62a</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
-      <description>Sanierungsarbeiten Wegen der Sanierung der Floridsdorfer Brücke kommt es zu folgenden Maßnahmen auf der Linie 31. Zeitraum: Ab Montag, 06. Juli 2026 bis voraussichtlich Ende … [06.07.2026 – 17.08.2026]</description>
-      <content:encoded><![CDATA[Sanierungsarbeiten Wegen der Sanierung der Floridsdorfer Brücke kommt es zu folgenden Maßnahmen auf der Linie 31. Zeitraum: Ab Montag, 06. Juli 2026 bis voraussichtlich Ende …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

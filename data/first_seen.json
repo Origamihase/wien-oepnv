@@ -1298,6 +1298,16 @@
       "epoch": 2
     }
   },
+  "1b9feb3521bf10053f40e6730c6cb1f4d8b79f2ab069b5767a7926e6f77fd041": {
+    "first_seen": "2026-06-26T13:30:54.568858+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "8A: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "1bc89bc576e114343fbe409de06c7658ab641c9714cb025001dae07c25e9ae89": {
     "first_seen": "2026-05-25T22:30:42.552191+00:00",
     "translations": {
@@ -5050,6 +5060,16 @@
         "title": "43: service obstruction for demonstration"
       },
       "epoch": 2
+    }
+  },
+  "7a2fc58a0e9703ae0845dbd287884295a1c4e146cf7f92e733e658e72b775ab7": {
+    "first_seen": "2026-06-26T13:30:54.568858+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective vehicle.",
+        "title": "31A: delays"
+      },
+      "epoch": 3
     }
   },
   "7a6b5813f02625534069ce29a01493676112844d8b5dd7d5468d7855d943bf8d": {
@@ -10934,6 +10954,14 @@
         "title": "Tullnerfeld"
       },
       "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&889486": {
+    "first_seen": "2026-06-26T13:30:54.568858+00:00",
+    "translations": {
+      "en": {
+        "title": "Korneuburg"
+      }
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
