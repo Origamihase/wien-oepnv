@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 26 Jun 2026 19:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 19:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[20A: Verunreinigung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7ebea603d88c804300a3752dfa67392d952f11162b15a7448052e87d87a658e7</guid>
-      <pubDate>Fri, 26 Jun 2026 18:26:00 +0200</pubDate>
-      <ext:first_seen>Fri, 26 Jun 2026 18:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 26 Jun 2026 18:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung im Haltestellenbereich Kaisermühlen-VIC U. [Am 26.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung im Haltestellenbereich Kaisermühlen-VIC U.<br/>[Am 26.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b4b01fbdb56e905c072762a3059ca35e47e30d93c6bd03e6abd4f6e60567ecf9</guid>
-      <pubDate>Fri, 26 Jun 2026 18:20:00 +0200</pubDate>
-      <ext:first_seen>Fri, 26 Jun 2026 18:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 26 Jun 2026 18:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 26.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 26.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Gentzgasse von Aumannplatz und Lazaristengasse bis Köhlergasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -115,6 +93,28 @@
       <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet. [13.07.2026 – 22.08.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Antonsplatz von 13 bis 18]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 18 Mar 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
+      <description>Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt. [18.03.2026 – 29.06.2026]</description>
+      <content:encoded><![CDATA[Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30/31: Sanierungsarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dc9aa38b8918a6eb15c598b6d6096a710aba9a223d744fb0f97f1a076a3fd62a</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 22 Jun 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
+      <description>Sanierungsarbeiten Wegen der Sanierung der Floridsdorfer Brücke kommt es zu folgenden Maßnahmen auf der Linie 31. Zeitraum: Ab Montag, 06. Juli 2026 bis voraussichtlich Ende … [06.07.2026 – 17.08.2026]</description>
+      <content:encoded><![CDATA[Sanierungsarbeiten Wegen der Sanierung der Floridsdorfer Brücke kommt es zu folgenden Maßnahmen auf der Linie 31. Zeitraum: Ab Montag, 06. Juli 2026 bis voraussichtlich Ende …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
