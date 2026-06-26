@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 26 Jun 2026 10:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 10:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[69A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">96f135154720252b723390157353648f6e722f3498310c762afbb7ad31588d1b</guid>
+      <pubDate>Fri, 26 Jun 2026 10:10:00 +0200</pubDate>
+      <ext:first_seen>Fri, 26 Jun 2026 10:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 26 Jun 2026 10:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Gentzgasse von Aumannplatz und Lazaristengasse bis Köhlergasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -104,17 +115,6 @@
       <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet. [13.07.2026 – 22.08.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Antonsplatz von 13 bis 18]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1</guid>
-      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 18 Mar 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt. [18.03.2026 – 29.06.2026]</description>
-      <content:encoded><![CDATA[Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels bei Freihaltung einer mindestens 2,50 m breiten Restfahrbahndurchgeführt.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
