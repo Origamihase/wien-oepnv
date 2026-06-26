@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 27 Jun 2026 00:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jun 2026 00:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[N41: Gleisbauarbeiten Spitalgasse]]></title>
+      <title><![CDATA[40: Impurity]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">95aeec489ad8dd5e5fdf15d79ad47ae93cb877384ba160ac2f2583db76c9d13c</guid>
+      <pubDate>Sat, 27 Jun 2026 00:09:00 +0200</pubDate>
+      <ext:first_seen>Sat, 27 Jun 2026 00:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 27 Jun 2026 00:09:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 27 Jun 2026 00:58:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: contamination. [On 27.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: contamination.<br/>[On 27.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N41: track construction works Spitalgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5475a6ba45d3791ef7e0f4b7d28b664d01325be5b4aa8b510c1cd636c69b09e0</guid>
       <pubDate>Sat, 27 Jun 2026 00:00:00 +0200</pubDate>
       <ext:first_seen>Sat, 27 Jun 2026 00:01:03 +0200</ext:first_seen>
       <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 06 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41. Zeitraum: Ab Dienstag, 8. Juli 2026 Betriebsbeginn … [07.07.2026 – 06.09.2027]</description>
-      <content:encoded><![CDATA[Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41. Zeitraum: Ab Dienstag, 8. Juli 2026 Betriebsbeginn …<br/>[07.07.2026 – 06.09.2027]]]></content:encoded>
+      <description>Due to extensive track construction works in the range Spitalgasse there is an diversion of the line N41. Period: From Tuesday, 8. July 2026 Start of operation … [07.07.2026 – 06.09.2027]</description>
+      <content:encoded><![CDATA[Due to extensive track construction works in the range Spitalgasse there is an diversion of the line N41. Period: From Tuesday, 8. July 2026 Start of operation …<br/>[07.07.2026 – 06.09.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Gentzgasse from Aumannplatz and Lazaristengasse to Köhlergasse]]></title>
@@ -104,17 +115,6 @@
       <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
       <description>Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected. [13.07.2026 – 22.08.2026]</description>
       <content:encoded><![CDATA[Because of track construction works in the Spitalgasse / Währinger Straße and the increased tram traffic on the Währinger belt, the line 40A is redirected.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Antonsplatz from 13 to 18]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">3f574a8dfa9128e43526dc4a5d5b76f29a255e3c762c2a5eb05ddeec5fb4a2a1</guid>
-      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 18 Mar 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
-      <description>The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway. [18.03.2026 – 29.06.2026]</description>
-      <content:encoded><![CDATA[The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

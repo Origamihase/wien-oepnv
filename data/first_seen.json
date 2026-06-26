@@ -3435,8 +3435,10 @@
     "first_seen": "2026-06-26T22:01:03.378010+00:00",
     "translations": {
       "en": {
+        "summary": "Due to extensive track construction works in the range Spitalgasse there is an diversion of the line N41. Period: From Tuesday, 8. July 2026 Start of operation \u2026",
         "title": "N41: track construction works Spitalgasse"
-      }
+      },
+      "epoch": 3
     }
   },
   "549e86f86cd3f47a30a4ed85046db20241ab5f3a4cbb5fe713800171adb68805": {
@@ -6389,6 +6391,16 @@
         "title": "44: demonstration"
       },
       "epoch": 2
+    }
+  },
+  "95aeec489ad8dd5e5fdf15d79ad47ae93cb877384ba160ac2f2583db76c9d13c": {
+    "first_seen": "2026-06-26T22:30:49.736754+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "40: Impurity"
+      },
+      "epoch": 3
     }
   },
   "95f5e733f774706c0b823246524a86bb8b6b48fd50e0ccfc15432e2c4c3225f0": {
