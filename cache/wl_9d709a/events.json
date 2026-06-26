@@ -434,6 +434,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "N41: Gleisbauarbeiten Spitalgasse",
+    "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 8. Juli 2026 Betriebsbeginn (Nacht von 7. auf 8.) bis voraussichtlich Anfang September 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie N41 Richtung P&ouml;tzleinsdorf:</strong><span style=\"text-decoration: underline;\"><br /></span>Umleitung ab Schottengasse # Schottenring &uuml;ber Schottenring - Hohenstaufengasse - Liechtensteinstra&szlig;e - Alserbachstra&szlig;e - Sechsschimmelgasse - &auml;u&szlig;erer W&auml;hringer G&uuml;rtel zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Schwarzspanierstra&szlig;e<br />- Spitalgasse<br />- W&auml;hringer Stra&szlig;e, Volksoper U</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Berggasse (Liechtensteinstra&szlig;e gg&uuml;. 17, Linie 40A)<br />- Bauernfeldplatz (Liechtensteinstra&szlig;e 42, Linie 40A)<br />- Alserbachstra&szlig;e (Alserbachstra&szlig;e 5 nach Pfluggasse, Linie 40A)<br /><br /><strong>Linie N41 Richtung Schottentor:</strong><br />Umleitung ab der Haltestelle W&auml;hringer Stra&szlig;e, Volksoper U &uuml;ber inneren W&auml;hringer G&uuml;rtel - Fuchsthallergasse &ndash; Alserbachstra&szlig;e, Gleisk&ouml;rper &ndash; Liechtensteinstra&szlig;e &ndash; H&ouml;rlgasse &ndash; W&auml;hringer Stra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Spitalgasse<br />- Sensengasse<br />- Schwarzspanierstra&szlig;e</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Alserbachstra&szlig;e (Alserbachstra&szlig;e 4, Linien 5, 12, 40A)<br />- Bauernfeldplatz (Liechtensteinstra&szlig;e 37a, Linie 40A)<br />- Berggasse (Liechtensteinstra&szlig;e 19, Linie 40A)</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/N41_Umleitung_Spitalgasse.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5475a6ba45d3791ef7e0f4b7d28b664d01325be5b4aa8b510c1cd636c69b09e0",
+    "pubDate": "2026-06-27T00:00:00+02:00",
+    "starts_at": "2026-07-07T00:00:00+02:00",
+    "ends_at": "2027-09-06T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=N41|D=2026-07-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "N54: Straßenbauarbeiten",
     "description": "<p class=\"MsoNormal\"><strong><span style=\"font-size: 16.0pt; line-height: 107%;\">Stra&szlig;enbauarbeiten im Bereich Mariahilfer Stra&szlig;e</span></strong></p> <p class=\"MsoNormal\"><strong><u>Zeitraum:</u></strong><br />Ab 10. September 2024, etwa 00:30 Uhr</p> <p class=\"MsoNormal\"><strong><u>Ma&szlig;nahmen:<br /></u></strong><u></u><u></u></p> <p class=\"MsoNormal\">Umleitung in Richtung Ober St. Veit U ab Europaplatz # Mariahilfer Stra&szlig;e &uuml;ber Mariahilfer Stra&szlig;e Gleisk&ouml;rper zur Stammstrecke.</p> <p class=\"MsoNormal\">Umleitung in Richtung Westbahnhof U ab Mariahilfer Stra&szlig;e # Grenzgasse &uuml;ber Grenzgasse &ndash; Schmelzbr&uuml;ckenrampe &ndash; Schmelzbr&uuml;cke &ndash; Felberstra&szlig;e &ndash; Europaplatz zur Stammstrecke</p> <p class=\"MsoNormal\"><span style=\"text-decoration: underline;\">Haltestellen:<br /></span>Die Haltestellen Mariahilfer Stra&szlig;e, Geibelgasse, Staglgasse, Westbahnhof U, Gerstnerstra&szlig;e und Westbahnhof U werden in Richtung Westbahnhof auf Ablenkungsdauer aufgelassen und stattdessen die provisorischen Haltestellen in der Grenzgasse 2 und in der Grenzgasse 14 eingehalten.</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -584,7 +596,7 @@
     "guid": "7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=10A|D=2026-06-25"
   },
   {
@@ -596,32 +608,8 @@
     "guid": "62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92",
     "pubDate": "2026-06-25T00:00:04+02:00",
     "starts_at": "2026-06-25T00:00:04+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Rettungseinsatz",
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac",
-    "pubDate": "2026-06-26T22:05:00+02:00",
-    "starts_at": "2026-06-26T22:05:00+02:00",
-    "ends_at": "2026-06-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=26|D=2026-06-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Rettungseinsatz",
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06ce993d4521983bd6b681492c64487991a39c88ae158c2b651de50a40457063",
-    "pubDate": "2026-06-26T22:05:00+02:00",
-    "starts_at": "2026-06-26T22:05:00+02:00",
-    "ends_at": "2026-06-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-06-26"
   },
   {
     "source": "Wiener Linien",
@@ -632,7 +620,7 @@
     "guid": "884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-25"
   },
   {
@@ -644,7 +632,7 @@
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-06-25T00:00:17+02:00",
     "starts_at": "2026-06-25T00:00:17+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-25"
   },
   {
@@ -656,7 +644,7 @@
     "guid": "5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-06-25"
   },
   {
@@ -668,7 +656,7 @@
     "guid": "0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8",
     "pubDate": "2026-06-25T00:00:22+02:00",
     "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T04:00:00+02:00",
     "_identity": "wl|störung|L=40|D=2026-06-25"
   },
   {
@@ -680,7 +668,7 @@
     "guid": "859fe0941e8bf4468bc802c2aeb56d9f7d635123f70d902547a35e2bf9a98daa",
     "pubDate": "2026-06-25T00:00:22+02:00",
     "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T04:00:00+02:00",
     "_identity": "wl|störung|L=41E|D=2026-06-25"
   },
   {
@@ -692,7 +680,7 @@
     "guid": "c9580bfbc912cf09b6eeeee12be0aa373079f5da155cdf44b1021f1b946414ec",
     "pubDate": "2026-06-25T00:00:22+02:00",
     "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T04:00:00+02:00",
     "_identity": "wl|störung|L=41E|D=2026-06-25"
   },
   {
@@ -704,7 +692,7 @@
     "guid": "3dd2ec4d62d47b447d5556f040f0774144f7f65954d4ab25fa15656df8857568",
     "pubDate": "2026-06-25T00:00:22+02:00",
     "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T04:00:00+02:00",
     "_identity": "wl|störung|L=41|D=2026-06-25"
   },
   {
@@ -716,7 +704,7 @@
     "guid": "8fc2142f96f52b13d5b783366be5422b91f88088ec2b47cd38bbfda2736860f8",
     "pubDate": "2026-06-25T00:00:22+02:00",
     "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T04:00:00+02:00",
     "_identity": "wl|störung|L=41|D=2026-06-25"
   },
   {
@@ -728,7 +716,7 @@
     "guid": "72daecfae156d674f4b17f0865290882105ea9c8dc7f884762c80c1d60a7140d",
     "pubDate": "2026-06-25T00:00:02+02:00",
     "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T04:00:00+02:00",
     "_identity": "wl|störung|L=42|D=2026-06-25"
   },
   {
@@ -752,7 +740,7 @@
     "guid": "00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-06-25"
   },
   {
@@ -764,7 +752,7 @@
     "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-06-25"
   },
   {
@@ -776,7 +764,7 @@
     "guid": "d69dbcd381e73ff23979749766d0ce677cb151b10269f6f878240d11cec54c8f",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-06-25"
   },
   {
@@ -788,7 +776,7 @@
     "guid": "05f43b3cc6e7fc469b2327c420ffd938743c80bae8e543e6b1266ae3efe72301",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=44A|D=2026-06-25"
   },
   {
@@ -812,7 +800,7 @@
     "guid": "2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-06-25"
   },
   {
@@ -824,7 +812,7 @@
     "guid": "ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b",
     "pubDate": "2026-06-25T00:00:27+02:00",
     "starts_at": "2026-06-25T00:00:27+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-06-25"
   },
   {
@@ -848,7 +836,7 @@
     "guid": "c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45",
     "pubDate": "2026-06-25T00:00:09+02:00",
     "starts_at": "2026-06-25T00:00:15+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-06-25"
   },
   {
@@ -860,7 +848,7 @@
     "guid": "af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf",
     "pubDate": "2026-06-25T00:00:17+02:00",
     "starts_at": "2026-06-25T00:00:17+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-06-25"
   },
   {
@@ -872,7 +860,7 @@
     "guid": "9e1da55a84eb2a314bb8ea95e8d7d92a26df6c2fdc0147bedf979d9e42250eb8",
     "pubDate": "2026-06-25T00:00:22+02:00",
     "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T04:00:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-25"
   },
   {
@@ -884,7 +872,7 @@
     "guid": "d280e5ddac0af3382c1b354fb03d282c238bf112358b241357de02731032fe74",
     "pubDate": "2026-06-25T00:00:02+02:00",
     "starts_at": "2026-06-25T00:00:02+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T04:00:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-25"
   },
   {
@@ -902,25 +890,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Simmering.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-06-26T23:01:00+02:00",
-    "starts_at": "2026-06-26T23:01:00+02:00",
-    "ends_at": "2026-06-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-06-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Einstieg: Brünner Straße 31-31A",
     "description": "Bauarbeiten\nEinstieg: Brünner Straße 31-31A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "14d72afa7ef35cf4a782d1b4e669aa9e18ea4c13673e9bbf8d0e47d12f90a4fe",
     "pubDate": "2026-06-25T00:00:09+02:00",
     "starts_at": "2026-06-25T00:00:09+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-25|TK=einstieg brünner strasse 31 31a"
   },
   {
@@ -932,7 +908,7 @@
     "guid": "6896a331b744ca9256fae3badb43dfeb1707a56e1948be882ba70ab77d79e7ab",
     "pubDate": "2026-06-26T07:52:28+02:00",
     "starts_at": "2026-06-26T07:52:28+02:00",
-    "ends_at": "2026-06-26T23:59:59+02:00",
+    "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-26|TK=busse halten hoher markt 3 4"
   }
 ]

@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 26 Jun 2026 23:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jun 2026 00:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N41: Gleisbauarbeiten Spitalgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5475a6ba45d3791ef7e0f4b7d28b664d01325be5b4aa8b510c1cd636c69b09e0</guid>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 27 Jun 2026 00:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 06 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41. Zeitraum: Ab Dienstag, 8. Juli 2026 Betriebsbeginn … [07.07.2026 – 06.09.2027]</description>
+      <content:encoded><![CDATA[Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41. Zeitraum: Ab Dienstag, 8. Juli 2026 Betriebsbeginn …<br/>[07.07.2026 – 06.09.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Gentzgasse from Aumannplatz and Lazaristengasse to Köhlergasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -48,8 +59,8 @@
       <ext:first_seen>Wed, 24 Jun 2026 09:30:47 +0200</ext:first_seen>
       <ext:starts_at>Wed, 24 Jun 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Großfeldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30) Haltestelle: Patrizigase Von: Freytaggasse 32 Nach: etwa … [24.06.2026 – 24.06.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Großfeldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30) Haltestelle: Patrizigase Von: Freytaggasse 32 Nach: etwa …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
+      <description>Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately … [24.06.2026 – 24.06.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[36B/N31: diversion because of track construction works]]></title>
@@ -70,8 +81,8 @@
       <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
       <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach … [23.06.2026 – 31.10.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
+      <description>Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking … [23.06.2026 – 31.10.2027]</description>
+      <content:encoded><![CDATA[Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 40: Wien Franz-Josefs-Bahnhof ↔XSt.Andrä-Wördern]]></title>
@@ -104,17 +115,6 @@
       <ext:ends_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:ends_at>
       <description>The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway. [18.03.2026 – 29.06.2026]</description>
       <content:encoded><![CDATA[The pipe laying work is carried out during the night during the unoccupied time of the public transport system, while keeping a minimum of 2,50 m wide residual runway.<br/>[18.03.2026 – 29.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30/31: renovation work]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dc9aa38b8918a6eb15c598b6d6096a710aba9a223d744fb0f97f1a076a3fd62a</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 17 Aug 2026 04:00:00 +0200</ext:ends_at>
-      <description>Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 6, 2026 to expected End … [06.07.2026 – 17.08.2026]</description>
-      <content:encoded><![CDATA[Renovation work Due to the renovation of the Floridsdorfer Brücke, the following measures are taken on the 31 line. Period: From Monday, July 6, 2026 to expected End …<br/>[06.07.2026 – 17.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
