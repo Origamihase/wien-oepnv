@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 26 Jun 2026 18:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 18:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[20A: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7ebea603d88c804300a3752dfa67392d952f11162b15a7448052e87d87a658e7</guid>
+      <pubDate>Fri, 26 Jun 2026 18:26:00 +0200</pubDate>
+      <ext:first_seen>Fri, 26 Jun 2026 18:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 26 Jun 2026 18:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung im Haltestellenbereich Kaisermühlen-VIC U. [Am 26.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung im Haltestellenbereich Kaisermühlen-VIC U.<br/>[Am 26.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b4b01fbdb56e905c072762a3059ca35e47e30d93c6bd03e6abd4f6e60567ecf9</guid>
+      <pubDate>Fri, 26 Jun 2026 18:20:00 +0200</pubDate>
+      <ext:first_seen>Fri, 26 Jun 2026 18:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 26 Jun 2026 18:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 26.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 26.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[46: Demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,30 +38,9 @@
       <pubDate>Fri, 26 Jun 2026 17:51:00 +0200</pubDate>
       <ext:first_seen>Fri, 26 Jun 2026 18:00:55 +0200</ext:first_seen>
       <ext:starts_at>Fri, 26 Jun 2026 17:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 26 Jun 2026 18:26:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration. [Am 26.06.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.<br/>[Am 26.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[28A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">45988bb6c10188efc756035f4a7aeb336d0d4105e2d558e8a03c1d6b5ee52eb8</guid>
-      <pubDate>Fri, 26 Jun 2026 17:37:00 +0200</pubDate>
-      <ext:first_seen>Fri, 26 Jun 2026 18:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 26 Jun 2026 17:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 26 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 26.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 26.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Heiligenstadt ↔ Wien Nußdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;889522</guid>
-      <pubDate>Fri, 26 Jun 2026 17:50:58 +0200</pubDate>
-      <ext:first_seen>Fri, 26 Jun 2026 16:31:07 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 26 Jun 2026 17:50:58 +0200</ext:starts_at>
-      <description>Wegen einer Weichenstörung waren zwischen Wien Heiligenstadt Bahnhof (U) und Wien Nußdorf Bahnhst bis 17:49 Uhr nur eingeschränkt Fahrten möglich. [Seit 26.06.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Weichenstörung waren zwischen Wien Heiligenstadt Bahnhof (U) und Wien Nußdorf Bahnhst bis 17:49 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 26.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Gentzgasse von Aumannplatz und Lazaristengasse bis Köhlergasse]]></title>
