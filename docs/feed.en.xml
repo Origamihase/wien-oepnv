@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 27 Jun 2026 21:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jun 2026 21:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1: fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5f34ffb95ca00ee307dddaa13ef057499c3642155e6eb52bbc863400c847fab6</guid>
+      <pubDate>Sat, 27 Jun 2026 21:17:00 +0200</pubDate>
+      <ext:first_seen>Sat, 27 Jun 2026 21:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 27 Jun 2026 21:17:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 27 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 27.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: service disruption]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -27,7 +38,7 @@
       <pubDate>Sat, 27 Jun 2026 19:09:00 +0200</pubDate>
       <ext:first_seen>Sat, 27 Jun 2026 19:30:53 +0200</ext:first_seen>
       <ext:starts_at>Sat, 27 Jun 2026 19:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 27 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 27 Jun 2026 21:27:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions U. Reason: rescue operation. [On 27.06.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions U. Reason: rescue operation.<br/>[On 27.06.2026]]]></content:encoded>
     </item>
@@ -92,8 +103,8 @@
       <ext:first_seen>Wed, 24 Jun 2026 09:30:47 +0200</ext:first_seen>
       <ext:starts_at>Wed, 24 Jun 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Großfeldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30) Haltestelle: Patrizigase Von: Freytaggasse 32 Nach: etwa … [24.06.2026 – 24.06.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Großfeldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30) Haltestelle: Patrizigase Von: Freytaggasse 32 Nach: etwa …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
+      <description>Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately … [24.06.2026 – 24.06.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[36B/N31: diversion because of track construction works]]></title>
@@ -105,17 +116,6 @@
       <ext:ends_at>Wed, 11 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected. [07.07.2026 – 11.08.2027]</description>
       <content:encoded><![CDATA[Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected.<br/>[07.07.2026 – 11.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60A: Bhf. Atzgersdorf S, Knotzenbachgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fe9d15158919ebdedc885b3abdde541db370b4d6e52573d5a59d470147b56a29</guid>
-      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach … [23.06.2026 – 31.10.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 60A in Richtung Alterlaa U Haltestelle: Bhf. Atzgersdorf S, Knotzenbachgasse Von: Knotzenbachgasse ggü. 40 vor Parkanlage Nach …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
