@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 27 Jun 2026 14:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jun 2026 14:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[60: service obstruction because of fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4a03b6676118bf0090edf56d72ebb4ee5d7f9437564da42395f29c779198544d</guid>
+      <pubDate>Sat, 27 Jun 2026 13:46:33 +0200</pubDate>
+      <ext:first_seen>Sat, 27 Jun 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 27 Jun 2026 13:46:38 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 27 Jun 2026 14:45:00 +0200</ext:ends_at>
+      <description>[On 27.06.2026]</description>
+      <content:encoded><![CDATA[[On 27.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[52: service obstruction because of fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Sat, 27 Jun 2026 14:47:00 +0200</ext:ends_at>
       <description>[On 27.06.2026]</description>
       <content:encoded><![CDATA[[On 27.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1c3f5e26993cde0aee7f0c6af4e3c0932840f73409de8fcbd9cb46c9b848499a</guid>
-      <pubDate>Sat, 27 Jun 2026 13:45:00 +0200</pubDate>
-      <ext:first_seen>Sat, 27 Jun 2026 14:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 27 Jun 2026 13:45:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 27 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 27.06.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11/71: track construction works (phase 2)]]></title>

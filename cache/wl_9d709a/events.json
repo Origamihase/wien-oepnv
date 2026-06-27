@@ -578,6 +578,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Falschparker",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-06-27T14:24:00+02:00",
+    "starts_at": "2026-06-27T14:24:00+02:00",
+    "ends_at": "2026-06-27T14:26:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-06-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2026-06-27T14:30:19+02:00",
+    "starts_at": "2026-06-27T14:30:19+02:00",
+    "ends_at": "2026-06-27T15:29:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-06-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -586,18 +610,6 @@
     "starts_at": "2026-06-25T00:00:04+02:00",
     "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Verspätungen",
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "02eba5a10b6bfbc053ab8e3cd1f9dabf24000400cc5596a3921352c78e6875e3",
-    "pubDate": "2026-06-27T13:08:00+02:00",
-    "starts_at": "2026-06-27T13:08:00+02:00",
-    "ends_at": "2026-06-27T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-06-27"
   },
   {
     "source": "Wiener Linien",
@@ -626,12 +638,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38A: Fahrtbehinderung Falschparker",
+    "title": "38A: Falschparker",
     "description": "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62",
     "pubDate": "2026-06-27T13:10:00+02:00",
-    "starts_at": "2026-06-27T13:15:04+02:00",
+    "starts_at": "2026-06-27T13:10:00+02:00",
     "ends_at": "2026-06-27T23:55:00+02:00",
     "_identity": "wl|störung|L=38A|D=2026-06-27"
   },
@@ -698,6 +710,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "43: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 43: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 14:40 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Alser Straße U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
+    "pubDate": "2026-06-27T14:21:00+02:00",
+    "starts_at": "2026-06-27T14:28:22+02:00",
+    "ends_at": "2026-06-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-06-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "44A: Busse halten Alszeile gegenüber 93",
     "description": "Bauarbeiten\nBusse halten Alszeile gegenüber 93",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -746,6 +770,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "49: Fahrtbehinderung Falschparker",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
+    "pubDate": "2026-06-27T14:24:00+02:00",
+    "starts_at": "2026-06-27T14:25:22+02:00",
+    "ends_at": "2026-06-27T15:24:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-06-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "52: Fahrtbehinderung wegen Feuerwehreinsatz",
     "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -754,18 +790,6 @@
     "starts_at": "2026-06-27T13:48:24+02:00",
     "ends_at": "2026-06-27T14:47:00+02:00",
     "_identity": "wl|störung|L=52|D=2026-06-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Feuerwehreinsatz",
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1c3f5e26993cde0aee7f0c6af4e3c0932840f73409de8fcbd9cb46c9b848499a",
-    "pubDate": "2026-06-27T13:45:00+02:00",
-    "starts_at": "2026-06-27T13:45:00+02:00",
-    "ends_at": "2026-06-27T23:55:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-06-27"
   },
   {
     "source": "Wiener Linien",
@@ -790,6 +814,18 @@
     "starts_at": "2026-06-27T04:45:23+02:00",
     "ends_at": "2026-06-28T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-06-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2026-06-27T14:29:38+02:00",
+    "starts_at": "2026-06-27T14:29:38+02:00",
+    "ends_at": "2026-06-27T15:29:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-06-27"
   },
   {
     "source": "Wiener Linien",
