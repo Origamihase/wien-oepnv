@@ -626,6 +626,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "42A: Falschparker",
+    "description": "Linie 42A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bc60fc4dac0517900bf5c7b7ec50039f561486457d46bc21b3dcd5e40bb8ec68",
+    "pubDate": "2026-06-27T17:53:00+02:00",
+    "starts_at": "2026-06-27T17:53:00+02:00",
+    "ends_at": "2026-06-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=42A|D=2026-06-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "43: Gleisbauarbeiten",
     "description": "Linie 43: Betrieb nur zwischen Schottentor U und Dornbach. Weichen Sie ersatzweise auf die Linie 43A aus. Voraussichtliche Dauer: 31.07.2026. Grund: Gleisbauarbeiten im Bereich Dornbacher Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
