@@ -590,14 +590,50 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "36B/30A/36A: Fremder Verkehrsunfall",
-    "description": "Die Linie 30A wird in Richtung Neu Leopoldau zwischen Siemensstraße S und Berzeliusgasse über Siemenstraße umgeleitet. Die Linien 36A und 36B werden in Richtung Jedlesee, Bellgasse zwischen Marco-Polo-Promenade und Berzeliusgasse über Siemensstraße umgeleitet. Die Störung dauert voraussichtlich bis 12:15 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Justgasse 9.",
+    "title": "30A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "07c3e54f1710ac9b7c4cb6dad391aeccd92638cadeea2d42b25900b0954a3c4f",
+    "guid": "392992cf704c1e1d81d05e8ee2605415ec313b2ff9c0e06fea9a35575d7157b0",
+    "pubDate": "2026-06-27T11:22:37+02:00",
+    "starts_at": "2026-06-27T11:23:02+02:00",
+    "ends_at": "2026-06-27T12:22:00+02:00",
+    "_identity": "wl|störung|L=30A|D=2026-06-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "30A: Fremder Verkehrsunfall",
+    "description": "Linie 30A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6073a9c5b1642934f82f9cd7f506086954fcc24c10974de4b3c6730b256b38b2",
     "pubDate": "2026-06-27T11:04:00+02:00",
     "starts_at": "2026-06-27T11:04:00+02:00",
     "ends_at": "2026-06-27T23:55:00+02:00",
-    "_identity": "wl|störung|L=30A,36A,36B|D=2026-06-27"
+    "_identity": "wl|störung|L=30A|D=2026-06-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36A: Fremder Verkehrsunfall",
+    "description": "Linie 36A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f611a9452d333e6cdc9eb008e2937d42fed0e3bf526eceb22bedc47cbd8d63e8",
+    "pubDate": "2026-06-27T11:04:00+02:00",
+    "starts_at": "2026-06-27T11:04:00+02:00",
+    "ends_at": "2026-06-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=36A|D=2026-06-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36B: Fremder Verkehrsunfall",
+    "description": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "accce3f21245a64052c8612552c60b23535b04f3067f9faca13213873772742d",
+    "pubDate": "2026-06-27T11:04:00+02:00",
+    "starts_at": "2026-06-27T11:04:00+02:00",
+    "ends_at": "2026-06-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=36B|D=2026-06-27"
   },
   {
     "source": "Wiener Linien",
@@ -634,18 +670,6 @@
     "starts_at": "2026-06-25T00:00:14+02:00",
     "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Falschparker",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
-    "pubDate": "2026-06-27T10:02:00+02:00",
-    "starts_at": "2026-06-27T10:02:00+02:00",
-    "ends_at": "2026-06-27T11:33:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-06-27"
   },
   {
     "source": "Wiener Linien",
