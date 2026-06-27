@@ -170,18 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "40/41/42/9: Gleisbauarbeiten",
-    "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen umfangreicher Gleisbauarbeiten im Bereich Aumannplatz kommt es zu &Auml;nderungen im Liniennetz.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 04. Mai 2026, 04:30 Uhr - Samstag, 27. Juni 2026, 04:00 Uhr.</p> <p><strong><span style=\"text-decoration: underline;\">Ma&szlig;nahmen:</span><br />Linie 9:</strong><br />Betrieb nur zwischen Westbahnhof und Sommarugagasse.<br />Die Z&uuml;ge wenden &uuml;ber die Endstelle Antonigasse der Linie 42.</p> <p><strong>Linien 40 und 41:</strong><br />Umleitung in beiden Richtungen zwischen W&auml;hringer Stra&szlig;e, Volksoper und Gersthof &uuml;ber die Strecke der Linien 42 und 9.</p> <p><strong>Linie 42:</strong><br />Die Linie 42 ist vor&uuml;bergehend eingestellt.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Zwischen W&auml;hringer Stra&szlig;e, Volksoper und Gersthof f&auml;hrt der Ersatzbus 41E.</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/9_40_41_42_Gleisbau_Aumannplatz.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6942b05700c1b4ec1f31e3954722121b41e415f914fec51c9d38355a62796e01",
-    "pubDate": "2026-04-20T00:00:00+02:00",
-    "starts_at": "2026-05-04T00:00:00+02:00",
-    "ends_at": "2026-06-27T04:00:00+02:00",
-    "_identity": "wl|hinweis|L=40,41,42,9|D=2026-05-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "40A: Gleisbauarbeiten",
     "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten im Bereich Spitalgasse # W&auml;hringer Stra&szlig;e und dem dadurch verst&auml;rkten Stra&szlig;enbahnverkehr am W&auml;hringer G&uuml;rtel wird die Linie 40A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 13. Juli 2026, 04:00 Uhr bis Freitag, 21. August 2026, 01:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br />Linie 40A in Richtung Schottentor U:<br />Umleitung &uuml;ber W&auml;hringer G&uuml;rtel Hauptfahrbahn (tempor&auml;re Busspur) direkt zur Fuchsthallergasse.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- W&auml;hringer Stra&szlig;e, Volksoper U (&Auml;u&szlig;erer W&auml;hringer G&uuml;rtel nach Gentzgasse, Gleisk&ouml;rper)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- W&auml;hringer Stra&szlig;e, Volksoper U (U-Bahnunterf&uuml;hrung im Zuge der Fuchsthallergasse, provisorische Haltestelle)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -638,78 +626,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40/41: Betrieb ab Gersthof",
-    "description": "40+41: Betrieb\nab Gersthof <",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0da71090f7beb725a84730f7bac216af8b7e1f955571badc7ea5accc1db487c8",
-    "pubDate": "2026-06-25T00:00:22+02:00",
-    "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-27T04:00:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41E: Ersatzbus 41E hält bei Währinger Str 200",
-    "description": "Gleisbauarbeiten\nErsatzbus 41E\nhält bei\nWähringer Str 200",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "859fe0941e8bf4468bc802c2aeb56d9f7d635123f70d902547a35e2bf9a98daa",
-    "pubDate": "2026-06-25T00:00:22+02:00",
-    "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-27T04:00:00+02:00",
-    "_identity": "wl|störung|L=41E|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41E: Ersatzbus 41E hält gegenüber",
-    "description": "Gleisbauarbeiten\nErsatzbus 41E\nhält gegenüber",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c9580bfbc912cf09b6eeeee12be0aa373079f5da155cdf44b1021f1b946414ec",
-    "pubDate": "2026-06-25T00:00:22+02:00",
-    "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-27T04:00:00+02:00",
-    "_identity": "wl|störung|L=41E|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Einstieg bei Linie 40",
-    "description": "Gleisbauarbeiten\nEinstieg bei Linie 40",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3dd2ec4d62d47b447d5556f040f0774144f7f65954d4ab25fa15656df8857568",
-    "pubDate": "2026-06-25T00:00:22+02:00",
-    "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-27T04:00:00+02:00",
-    "_identity": "wl|störung|L=41|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Gersthof",
-    "description": "Gersthof <",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8fc2142f96f52b13d5b783366be5422b91f88088ec2b47cd38bbfda2736860f8",
-    "pubDate": "2026-06-25T00:00:22+02:00",
-    "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-27T04:00:00+02:00",
-    "_identity": "wl|störung|L=41|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Kein Betrieb",
-    "description": "Gleisbauarbeiten\nKein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "72daecfae156d674f4b17f0865290882105ea9c8dc7f884762c80c1d60a7140d",
-    "pubDate": "2026-06-25T00:00:02+02:00",
-    "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-27T04:00:00+02:00",
-    "_identity": "wl|störung|L=42|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "43: Gleisbauarbeiten",
     "description": "Linie 43: Betrieb nur zwischen Schottentor U und Dornbach. Weichen Sie ersatzweise auf die Linie 43A aus. Voraussichtliche Dauer: 31.07.2026. Grund: Gleisbauarbeiten im Bereich Dornbacher Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -826,30 +742,6 @@
     "starts_at": "2026-06-25T00:00:17+02:00",
     "ends_at": "2026-06-27T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Betrieb ab Sommarugagasse",
-    "description": "Gleisbauarbeiten\nBetrieb ab Sommarugagasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9e1da55a84eb2a314bb8ea95e8d7d92a26df6c2fdc0147bedf979d9e42250eb8",
-    "pubDate": "2026-06-25T00:00:22+02:00",
-    "starts_at": "2026-06-25T00:00:22+02:00",
-    "ends_at": "2026-06-27T04:00:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung wegen Gleisbauarbeiten",
-    "description": "Fahrtbehinderung\nwegen Gleisbauarbeiten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d280e5ddac0af3382c1b354fb03d282c238bf112358b241357de02731032fe74",
-    "pubDate": "2026-06-25T00:00:02+02:00",
-    "starts_at": "2026-06-25T00:00:02+02:00",
-    "ends_at": "2026-06-27T04:00:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-06-25"
   },
   {
     "source": "Wiener Linien",
