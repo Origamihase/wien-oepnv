@@ -5929,6 +5929,16 @@
       "epoch": 3
     }
   },
+  "8c61d1d238976ebb3859bc9f9a2330185c9ae7d2caacd27f862b42bbe624cceb": {
+    "first_seen": "2026-06-27T05:30:53.655055+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards Schottentor U. Line 44: service obstruction towards Schottentor U. expected duration: 08:00 o'clock. Reason: defective vehicle in \u2026",
+        "title": "43/44: defective vehicle"
+      },
+      "epoch": 3
+    }
+  },
   "8c6217f3734081f8e926c9979e884673454468f1b1a07fa5e2e3236de593c654": {
     "first_seen": "2026-06-23T11:00:47.899628+00:00",
     "translations": {
@@ -11068,6 +11078,16 @@
       "en": {
         "summary": "Due to an switch fault between Wien Heiligenstadt Train Station (U) and Wien Nu\u00dfdorf Train hours to expected 17:00 are limited.",
         "title": "Wien Heiligenstadt \u2194 Wien Nu\u00dfdorf"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&889780": {
+    "first_seen": "2026-06-27T05:30:53.655055+00:00",
+    "translations": {
+      "en": {
+        "summary": "Information for passengers between Wien Meidling and Wien Floridsdorf.",
+        "title": "Wien Meidling \u2194 Wien Floridsdorf"
       },
       "epoch": 3
     }
