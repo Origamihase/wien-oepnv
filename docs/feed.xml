@@ -7,8 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 28 Jun 2026 00:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2026 00:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Liesing ↔ Mödling]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;890050</guid>
+      <pubDate>Sun, 28 Jun 2026 00:01:38 +0200</pubDate>
+      <ext:first_seen>Sun, 28 Jun 2026 00:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 28 Jun 2026 00:01:38 +0200</ext:starts_at>
+      <description>Wegen einer Weichenstörung sind zwischen Wien Liesing Bahnhof und Mödling Bahnhof Zugfahrten derzeit nur eingeschränkt möglich. [Seit 28.06.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Weichenstörung sind zwischen Wien Liesing Bahnhof und Mödling Bahnhof Zugfahrten derzeit nur eingeschränkt möglich.<br/>[Seit 28.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11/71: Gleisbauarbeiten (Phase 2)]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +114,6 @@
       <ext:starts_at>Thu, 25 Jun 2026 13:21:05 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren. [Seit 25.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 04.07.2026 (02:00 Uhr) bis 07.09.2026 (02:00 Uhr) zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.<br/>[Seit 25.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">07dc30c6a44160a6ac6edaa6777d410d2bec787011a5197738e1f98de368c3eb</guid>
-      <pubDate>Mon, 22 Jun 2026 15:20:00 +0200</pubDate>
-      <ext:first_seen>Mon, 22 Jun 2026 15:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 01:00:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet. [13.07.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Spitalgasse / Währinger Straße und dem dadurch verstärkten Straßenbahnverkehr am Währinger Gürtel wird die Linie 40A umgeleitet.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
