@@ -1325,6 +1325,16 @@
       "epoch": 2
     }
   },
+  "1c3f5e26993cde0aee7f0c6af4e3c0932840f73409de8fcbd9cb46c9b848499a": {
+    "first_seen": "2026-06-27T12:01:01.736811+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "60: fire-brigade operation"
+      },
+      "epoch": 3
+    }
+  },
   "1c4dddfdb93c2339daf113e5f6de0cdfb6b70b486e294099369b3fc96e42994b": {
     "first_seen": "2026-06-24T05:30:48.081928+00:00",
     "translations": {
@@ -6246,6 +6256,15 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "63A: service obstruction because of rescue operation"
+      },
+      "epoch": 3
+    }
+  },
+  "91eabea6edb3a3177a0a31385a7d5b8d266b729819939ed1907102b9b0e3bace": {
+    "first_seen": "2026-06-27T12:01:01.736811+00:00",
+    "translations": {
+      "en": {
+        "title": "52: service obstruction because of fire-brigade operation"
       },
       "epoch": 3
     }
