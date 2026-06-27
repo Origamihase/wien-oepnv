@@ -590,6 +590,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "36B/30A/36A: Fremder Verkehrsunfall",
+    "description": "Die Linie 30A wird in Richtung Neu Leopoldau zwischen Siemensstraße S und Berzeliusgasse über Siemenstraße umgeleitet. Die Linien 36A und 36B werden in Richtung Jedlesee, Bellgasse zwischen Marco-Polo-Promenade und Berzeliusgasse über Siemensstraße umgeleitet. Die Störung dauert voraussichtlich bis 12:15 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Justgasse 9.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "07c3e54f1710ac9b7c4cb6dad391aeccd92638cadeea2d42b25900b0954a3c4f",
+    "pubDate": "2026-06-27T11:04:00+02:00",
+    "starts_at": "2026-06-27T11:04:00+02:00",
+    "ends_at": "2026-06-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=30A,36A,36B|D=2026-06-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Dänenstraße ggü. 2",
     "description": "Bauarbeiten\nBusse halten Dänenstraße ggü. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -632,32 +644,20 @@
     "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
     "pubDate": "2026-06-27T10:02:00+02:00",
     "starts_at": "2026-06-27T10:02:00+02:00",
-    "ends_at": "2026-06-27T23:55:00+02:00",
+    "ends_at": "2026-06-27T11:33:00+02:00",
     "_identity": "wl|störung|L=40|D=2026-06-27"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "41: Fahrtbehinderung Falschparker",
+    "title": "41: Falschparker",
     "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
     "pubDate": "2026-06-27T10:02:00+02:00",
-    "starts_at": "2026-06-27T10:04:20+02:00",
+    "starts_at": "2026-06-27T10:02:00+02:00",
     "ends_at": "2026-06-27T23:55:00+02:00",
     "_identity": "wl|störung|L=41|D=2026-06-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9/42: Falschparker Umleitung bis Volksoper über Linien 9 und 42!",
-    "description": "Falschparker\nUmleitung bis\nVolksoper über\nLinien 9 und 42!",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d0306412af66249baa2e50a703d32bf283d9f6320fd3f4faaa25f07a5180723d",
-    "pubDate": "2026-06-27T10:08:41+02:00",
-    "starts_at": "2026-06-27T10:09:10+02:00",
-    "ends_at": "2026-06-27T11:08:00+02:00",
-    "_identity": "wl|störung|L=42,9|D=2026-06-27"
   },
   {
     "source": "Wiener Linien",
