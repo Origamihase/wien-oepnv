@@ -578,25 +578,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Schadhafter Zug Betrieb ab Resselgasse (Karlsplatz)",
-    "description": "Schadhafter Zug\nBetrieb ab Resselgasse (Karlsplatz)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c287e14e9ff1a28c7ae26bc508a233f924b23ed45af654f5a2728f055e04601",
-    "pubDate": "2026-06-28T14:51:58+02:00",
-    "starts_at": "2026-06-28T14:51:58+02:00",
-    "ends_at": "2026-06-28T15:30:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-06-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Fahrtbehinderung Schadhafter Zug",
     "description": "Fahrtbehinderung\nSchadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "42136a8e71b4c2b5584fecbaf02e84bbc564028048d64f662ba7e51eec28927a",
     "pubDate": "2026-06-28T14:52:47+02:00",
     "starts_at": "2026-06-28T14:52:56+02:00",
-    "ends_at": "2026-06-28T15:30:00+02:00",
+    "ends_at": "2026-06-28T16:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-06-28"
   },
   {
@@ -620,7 +608,7 @@
     "guid": "d9f0bca02ebdb0dc42ff35ad7973ac0cb5a7298b425323489cf63d823af63b76",
     "pubDate": "2026-06-28T13:34:08+02:00",
     "starts_at": "2026-06-28T13:34:08+02:00",
-    "ends_at": "2026-06-28T15:30:00+02:00",
+    "ends_at": "2026-06-28T16:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-06-28"
   },
   {
@@ -728,7 +716,7 @@
     "guid": "06dbf532b52ef52aa461ecc02932b9abb0d6edb80c5bedce4df61449801db465",
     "pubDate": "2026-06-28T13:57:20+02:00",
     "starts_at": "2026-06-28T13:57:20+02:00",
-    "ends_at": "2026-06-28T15:30:00+02:00",
+    "ends_at": "2026-06-28T16:00:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-06-28"
   },
   {
@@ -740,7 +728,7 @@
     "guid": "3fca48eb36235fa5f57061df4586e56c5b56c502f657a1c5e01fa1639ee4791f",
     "pubDate": "2026-06-28T14:51:58+02:00",
     "starts_at": "2026-06-28T14:51:58+02:00",
-    "ends_at": "2026-06-28T15:30:00+02:00",
+    "ends_at": "2026-06-28T16:00:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-06-28"
   },
   {
@@ -752,7 +740,7 @@
     "guid": "cc0fe76088a1ca306e8d2a76bd7de46a6d1de872d093d3a66b5229b43d0002f4",
     "pubDate": "2026-06-28T14:52:47+02:00",
     "starts_at": "2026-06-28T14:52:47+02:00",
-    "ends_at": "2026-06-28T15:30:00+02:00",
+    "ends_at": "2026-06-28T16:00:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-06-28"
   },
   {
@@ -764,7 +752,7 @@
     "guid": "d3a834fffa4d43da22ab164253bbcabf269c6f12c0d84497e77cd60a92684679",
     "pubDate": "2026-06-28T14:52:27+02:00",
     "starts_at": "2026-06-28T14:52:27+02:00",
-    "ends_at": "2026-06-28T15:30:00+02:00",
+    "ends_at": "2026-06-28T16:00:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-06-28"
   },
   {
@@ -790,18 +778,6 @@
     "starts_at": "2026-06-28T00:00:24+02:00",
     "ends_at": "2026-06-28T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
-    "pubDate": "2026-06-28T13:13:05+02:00",
-    "starts_at": "2026-06-28T13:19:59+02:00",
-    "ends_at": "2026-06-28T15:10:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-06-28"
   },
   {
     "source": "Wiener Linien",
@@ -974,25 +950,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42c7ec1755d18f088f1bee9c988057477b60893cc12ba04be1f16f2ef43191c7",
-    "pubDate": "2026-06-28T14:06:26+02:00",
-    "starts_at": "2026-06-28T14:09:20+02:00",
-    "ends_at": "2026-06-28T15:08:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-06-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U4: Schadhaftes Fahrzeug",
     "description": "Linie U4: Unregelmäßige Intervalle in Richtung Heiligenstadt. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
     "pubDate": "2026-06-28T14:26:00+02:00",
     "starts_at": "2026-06-28T14:26:00+02:00",
-    "ends_at": "2026-06-28T23:55:00+02:00",
+    "ends_at": "2026-06-28T15:32:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-06-28"
   },
   {
