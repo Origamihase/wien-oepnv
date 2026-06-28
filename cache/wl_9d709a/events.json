@@ -806,6 +806,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "52: Verspätungen",
+    "description": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "347bf9ad635bed065df985f7e527768d84656a8f32637791368fa2d47a92883c",
+    "pubDate": "2026-06-28T18:23:00+02:00",
+    "starts_at": "2026-06-28T18:23:00+02:00",
+    "ends_at": "2026-06-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-06-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "60: Schadhafter Zug Betrieb ab Hietzing",
     "description": "Schadhafter Zug\nBetrieb ab Hietzing >",
     "link": "https://www.wienerlinien.at/ogd_realtime",
