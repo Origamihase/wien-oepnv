@@ -578,24 +578,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Gleisschaden Einstieg Tokiostraße bei Linie 25",
-    "description": "Gleisschaden Einstieg Tokiostraße bei Linie 25",
+    "title": "25: Gleisschaden Ersatzverkehr hält bei Linie 29A",
+    "description": "Gleisschaden\nErsatzverkehr hält bei Linie 29A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "046934922bd80e4871dff8c9f36c9b2bd74789f3fd80cd616124af0a00e672d5",
-    "pubDate": "2026-06-28T08:49:41+02:00",
-    "starts_at": "2026-06-28T08:49:41+02:00",
-    "ends_at": "2026-06-28T13:00:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-06-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Gleisschaden Betrieb ab Kagran",
-    "description": "Gleisschaden\nBetrieb ab Kagran >",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4382ad2baceba3db423f37fef2c97addd97d91f298185a3529187fab2420b750",
+    "guid": "4a6b3ea2ecf30a08ced0e06abaf3fdc38993d526e1689a3a3dd3827a2fde7ec8",
     "pubDate": "2026-06-28T08:39:03+02:00",
-    "starts_at": "2026-06-28T08:39:07+02:00",
+    "starts_at": "2026-06-28T09:19:36+02:00",
     "ends_at": "2026-06-28T13:00:00+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-28"
   },
@@ -608,18 +596,6 @@
     "guid": "b6c27bf0288663410c97453b33a027d1cbcdfababb23fd796dc9d9ab78c76ab3",
     "pubDate": "2026-06-28T08:48:14+02:00",
     "starts_at": "2026-06-28T08:48:14+02:00",
-    "ends_at": "2026-06-28T13:00:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-06-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Fahrtbehinderung Gleisschaden",
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cc52a1d98fd5a4016dc8706fb606df8d38aaf31fd5c9b67fe67d0b0e2c941f79",
-    "pubDate": "2026-06-28T08:39:32+02:00",
-    "starts_at": "2026-06-28T08:39:36+02:00",
     "ends_at": "2026-06-28T13:00:00+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-28"
   },
@@ -842,6 +818,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Rettungseinsatz",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2026-06-28T09:19:00+02:00",
+    "starts_at": "2026-06-28T09:19:00+02:00",
+    "ends_at": "2026-06-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-06-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -866,6 +854,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Linie U4: Unregelmäßige Intervalle in Richtung Hütteldorf. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-06-28T09:21:00+02:00",
+    "starts_at": "2026-06-28T09:21:00+02:00",
+    "ends_at": "2026-06-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-06-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Einstieg: Brünner Straße 31-31A",
     "description": "Bauarbeiten\nEinstieg: Brünner Straße 31-31A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -886,5 +886,17 @@
     "starts_at": "2026-06-26T07:52:28+02:00",
     "ends_at": "2026-06-28T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-26|TK=busse halten hoher markt 3 4"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Gleisschaden Bitte Ersatzverkehr nutzen!",
+    "description": "Gleisschaden Bitte Ersatzverkehr nutzen!",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f45195c66312a52c23e66aacf0d9fe8b792eb2a31c4f80f9104c29c6e6a93861",
+    "pubDate": "2026-06-28T09:19:40+02:00",
+    "starts_at": "2026-06-28T09:19:40+02:00",
+    "ends_at": "2026-06-28T13:00:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-06-28|TK=ersatzverkehr"
   }
 ]
