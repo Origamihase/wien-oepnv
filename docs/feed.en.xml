@@ -7,18 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 29 Jun 2026 01:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 01:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[S-Bahn Stammstrecke delays]]></title>
-      <link>https://www.wienerlinien.at/web/wienerlinien/oeffis-stoerungen-strecke</link>
-      <guid isPermaLink="false">a96f90f3e3ae4ff383e247da9943674afaee0a5697dff81fb7686600038ae4d0</guid>
-      <pubDate>Mon, 29 Jun 2026 01:01:10 +0200</pubDate>
-      <ext:first_seen>Mon, 29 Jun 2026 01:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 29 Jun 2026 00:27:00 +0200</ext:starts_at>
-      <description>Average delay of 22 minutes towards Praterstern [since 29.06.2026] [Since 29.06.2026]</description>
-      <content:encoded><![CDATA[Average delay of 22 minutes towards Praterstern [since 29.06.2026]<br/>[Since 29.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -39,28 +29,6 @@
       <ext:ends_at>Tue, 30 Jun 2026 01:30:00 +0200</ext:ends_at>
       <description>Operation only between Aspern, Oberdorfstraße and Kagran U. Trains run only between Aspern Nord and Kagran, and Strebersdorf and Floridsdorf. [28.06.2026 – 30.06.2026]</description>
       <content:encoded><![CDATA[Operation only between Aspern, Oberdorfstraße and Kagran U. Trains run only between Aspern Nord and Kagran, and Strebersdorf and Floridsdorf.<br/>[28.06.2026 – 30.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26: track damage service from Floridsdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">38a4821fb353fdfe61daec7da0db43cac926c634af2203ee620707c6c9096249</guid>
-      <pubDate>Sun, 28 Jun 2026 12:32:41 +0200</pubDate>
-      <ext:first_seen>Sun, 28 Jun 2026 13:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 28 Jun 2026 12:32:41 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 01:15:00 +0200</ext:ends_at>
-      <description>track damage service from Floridsdorf &amp;lt; [28.06.2026 – 29.06.2026]</description>
-      <content:encoded><![CDATA[track damage service from Floridsdorf &lt;<br/>[28.06.2026 – 29.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: track damage service from Floridsdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">33bfbd0a5f9813804c0807e90c773b79c717af11effebf82ace28b93f0873b36</guid>
-      <pubDate>Sun, 28 Jun 2026 08:51:08 +0200</pubDate>
-      <ext:first_seen>Sun, 28 Jun 2026 09:01:24 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 28 Jun 2026 08:51:08 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 01:15:00 +0200</ext:ends_at>
-      <description>track damage service from Floridsdorf &amp;lt; [28.06.2026 – 29.06.2026]</description>
-      <content:encoded><![CDATA[track damage service from Floridsdorf &lt;<br/>[28.06.2026 – 29.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11/71: track construction works (phase 2)]]></title>
@@ -114,6 +82,39 @@
       <ext:starts_at>Wed, 24 Jun 2026 13:36:53 +0200</ext:starts_at>
       <description>construction works between Wien Floridsdorf train station (U) and Wien Praterstern train station (U) between 1209.2026 to 1309.2026 some local trains cannot operate. [Since 24.06.2026]</description>
       <content:encoded><![CDATA[construction works between Wien Floridsdorf train station (U) and Wien Praterstern train station (U) between 1209.2026 to 1309.2026 some local trains cannot operate.<br/>[Since 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29A/29B/N30: Patrizigasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7c5d3d8d26eced87aae77de99e3c95b11096658dc996c0e5c8aff5ba88c20d05</guid>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 09:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately … [24.06.2026 – 24.06.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36B/N31: diversion because of track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3f446b22184bf8b6deb41f704ea733eba73db18c777abb70b38878d0bab7cd5a</guid>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 16:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected. [07.07.2026 – 11.08.2027]</description>
+      <content:encoded><![CDATA[Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected.<br/>[07.07.2026 – 11.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: Bhf. Atzgersdorf S, Knotzenbachgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fe9d15158919ebdedc885b3abdde541db370b4d6e52573d5a59d470147b56a29</guid>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
+      <description>Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking … [23.06.2026 – 31.10.2027]</description>
+      <content:encoded><![CDATA[Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
