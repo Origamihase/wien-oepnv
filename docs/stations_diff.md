@@ -1,21 +1,25 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-06-21T06:01:56+00:00_
+_Erzeugt am: 2026-06-28T05:17:30+00:00_
 
-**Stationen: 2235 → 2235 (Δ +0)**
+**Stationen: 2235 → 2234 (Δ -1)**
 
-## Hinzugefügt (0)
+## Hinzugefügt (2)
 
-_Keine._
+- `name:Wien Ameisbachzeile (WL)` — Wien Ameisbachzeile \(WL\)
+- `name:Wien Carabelligasse, Ruthnergasse (WL)` — Wien Carabelligasse, Ruthnergasse \(WL\)
 
-## Entfernt (1)
+## Entfernt (2)
 
-- `name:Wien Siemensplatz (WL)` — Wien Siemensplatz \(WL\)
+- `name:Wien Stillfriedplatz (WL)` — Wien Stillfriedplatz \(WL\)
+- `name:Wien Torricelligasse (WL)` — Wien Torricelligasse \(WL\)
 
 ## Umbenannt (0)
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (0)
+## Koordinaten verschoben (≥ 100 m) (3)
 
-_Keine._
+- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
+- `name:Wien Ruthnergasse (WL)` — Wien Ruthnergasse \(WL\) (949 m)
+- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)
