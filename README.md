@@ -44,9 +44,9 @@ Mehr Statistiken findest du hier:
 | Kennzahl | Wert |
 | -------- | ---- |
 | Beobachtungen (gesamt) | 3 |
-| Durchschnittliche Verspätung | 0.3 min |
+| Durchschnittliche Verspätung | 0.7 min |
 | Kritische Verspätungen (> 9 min) | 0 |
-| Letzte Aktualisierung | 2026-06-28 02:31 CEST |
+| Letzte Aktualisierung | 2026-06-28 03:00 CEST |
 <!-- STATS:STAMMSTRECKE_LIVE:END -->
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
@@ -54,10 +54,10 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 2.691 |
+| Beobachtungen (gesamt) | 2.692 |
 | Durchschnittliche Verspätung | 1.3 min |
 | Kritische Verspätungen (> 9 min) | 19 |
-| Letzte Aktualisierung | 2026-06-28 02:31 CEST |
+| Letzte Aktualisierung | 2026-06-28 03:00 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
 
 ### Ausfälle auf der S-Bahn-Stammstrecke
@@ -68,7 +68,7 @@ Mehr Statistiken findest du hier:
 | Kennzahl | Wert |
 | -------- | ---- |
 | Ausfälle (gesamt) | 1 |
-| Letzte Aktualisierung | 2026-06-28 02:31 CEST |
+| Letzte Aktualisierung | 2026-06-28 03:00 CEST |
 <!-- STATS:AUSFAELLE_LIVE:END -->
 
 <!-- STATS:AUSFAELLE:BEGIN -->
@@ -76,9 +76,9 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Ausfälle (gesamt) | 660 |
-| Häufigste Linien | S1 (202), S3 (130), REX3 (106) |
-| Letzte Aktualisierung | 2026-06-28 02:31 CEST |
+| Ausfälle (gesamt) | 661 |
+| Häufigste Linien | S1 (203), S3 (130), REX3 (106) |
+| Letzte Aktualisierung | 2026-06-28 03:00 CEST |
 <!-- STATS:AUSFAELLE:END -->
 
 > **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).
