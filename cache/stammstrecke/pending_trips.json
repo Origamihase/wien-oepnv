@@ -1,35 +1,43 @@
 {
-  "Meidling|REX1|2026-06-28T04:29:00+02:00": {
+  "Meidling|REX3|2026-06-28T04:39:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-06-28T04:01:11.741567+02:00",
+    "last_seen_at": "2026-06-28T04:31:01.391236+02:00",
     "latest_delay_minutes": 0.0,
-    "name": "REX1",
-    "scheduled": "2026-06-28T04:29:00+02:00"
-  },
-  "Meidling|S2|2026-06-28T04:12:00+02:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-06-28T04:01:11.741567+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-06-28T04:12:00+02:00"
+    "name": "REX3",
+    "scheduled": "2026-06-28T04:39:00+02:00"
   },
   "Meidling|S2|2026-06-28T04:42:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-06-28T04:01:11.741567+02:00",
+    "last_seen_at": "2026-06-28T04:31:01.391236+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-06-28T04:42:00+02:00"
   },
-  "Praterstern|S1|2026-06-28T04:09:00+02:00": {
+  "Meidling|S2|2026-06-28T05:12:00+02:00": {
     "cancelled": false,
-    "direction": "Praterstern",
-    "last_seen_at": "2026-06-28T04:01:11.741567+02:00",
+    "direction": "Meidling",
+    "last_seen_at": "2026-06-28T04:31:01.391236+02:00",
     "latest_delay_minutes": 0.0,
-    "name": "S1",
-    "scheduled": "2026-06-28T04:09:00+02:00"
+    "name": "S2",
+    "scheduled": "2026-06-28T05:12:00+02:00"
+  },
+  "Meidling|S3|2026-06-28T04:32:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-06-28T04:31:01.391236+02:00",
+    "latest_delay_minutes": 2.0,
+    "name": "S3",
+    "scheduled": "2026-06-28T04:32:00+02:00"
+  },
+  "Meidling|S3|2026-06-28T05:02:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-06-28T04:31:01.391236+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S3",
+    "scheduled": "2026-06-28T05:02:00+02:00"
   },
   "Praterstern|S1|2026-06-28T04:39:00+02:00": {
     "cancelled": true,
