@@ -7,17 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 28 Jun 2026 22:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2026 22:31:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Wien Simmering ↔ Wien Stadlau]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;890315</guid>
-      <pubDate>Sun, 28 Jun 2026 21:25:07 +0200</pubDate>
-      <ext:first_seen>Sun, 28 Jun 2026 20:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 28 Jun 2026 21:25:07 +0200</ext:starts_at>
-      <description>Due to an obstacle in the track range between Wien Simmering Bahnhof (U) and Wien Stadlau Bahnhst (U) train journeys are currently only limited. [Since 28.06.2026]</description>
-      <content:encoded><![CDATA[Due to an obstacle in the track range between Wien Simmering Bahnhof (U) and Wien Stadlau Bahnhst (U) train journeys are currently only limited.<br/>[Since 28.06.2026]]]></content:encoded>
+      <title><![CDATA[2/10: defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">93eff19cd1baa54c9b44170dc1ec93296f872a1ab822a57289ca6078a7443224</guid>
+      <pubDate>Sun, 28 Jun 2026 22:25:00 +0200</pubDate>
+      <ext:first_seen>Sun, 28 Jun 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 28 Jun 2026 22:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 28 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>diversion towards DornbachX between Johann-Nepomuk-Berger-Platz and Dornbach over the line 9 and 43. Line 10: Operation only between Unter St. Veit2X … [On 28.06.2026]</description>
+      <content:encoded><![CDATA[diversion towards DornbachX between Johann-Nepomuk-Berger-Platz and Dornbach over the line 9 and 43. Line 10: Operation only between Unter St. Veit2X …<br/>[On 28.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c64c8e20cf6625a63492931166e74dbba6c06012d5445a807693c215b97298cf</guid>
+      <pubDate>Sun, 28 Jun 2026 22:15:00 +0200</pubDate>
+      <ext:first_seen>Sun, 28 Jun 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 28 Jun 2026 22:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 28 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: service disruption. [On 28.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 28.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26: track damage service from Floridsdorf]]></title>
@@ -104,17 +116,6 @@
       <ext:starts_at>Wed, 24 Jun 2026 13:36:53 +0200</ext:starts_at>
       <description>construction works between Wien Floridsdorf train station (U) and Wien Praterstern train station (U) between 1209.2026 to 1309.2026 some local trains cannot operate. [Since 24.06.2026]</description>
       <content:encoded><![CDATA[construction works between Wien Floridsdorf train station (U) and Wien Praterstern train station (U) between 1209.2026 to 1309.2026 some local trains cannot operate.<br/>[Since 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29A/29B/N30: Patrizigasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7c5d3d8d26eced87aae77de99e3c95b11096658dc996c0e5c8aff5ba88c20d05</guid>
-      <pubDate>Wed, 24 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 09:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately … [24.06.2026 – 24.06.2027]</description>
-      <content:encoded><![CDATA[Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
