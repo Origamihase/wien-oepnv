@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 29 Jun 2026 17:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 18:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d3dc32d95116a344df29b9d029c234687104192559130554ececa8852d4e12bf</guid>
+      <pubDate>Mon, 29 Jun 2026 17:45:00 +0200</pubDate>
+      <ext:first_seen>Mon, 29 Jun 2026 18:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 29 Jun 2026 17:45:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 29 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: service disruption. [On 29.06.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 29.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A/N66: Grenzackerstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -52,17 +63,6 @@
       <ext:ends_at>Mon, 29 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>track damage Einstieg on line 26 (stop direction Floridsdorf &amp;lt;&amp;gt;) [On 29.06.2026]</description>
       <content:encoded><![CDATA[track damage Einstieg on line 26 (stop direction Floridsdorf &lt;&gt;)<br/>[On 29.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10: defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fdcda7ef6a92179bf10d7bc572ea4566627e0563f24d6ad54899c823e3aca356</guid>
-      <pubDate>Mon, 29 Jun 2026 16:02:00 +0200</pubDate>
-      <ext:first_seen>Sun, 28 Jun 2026 23:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 29 Jun 2026 16:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operation only between Dornbach and Hietzing U. expected duration: 17:00. Reason: defective vehicle in the Dommayergasse stop area. [On 29.06.2026]</description>
-      <content:encoded><![CDATA[Operation only between Dornbach and Hietzing U. expected duration: 17:00. Reason: defective vehicle in the Dommayergasse stop area.<br/>[On 29.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11/71: track construction works (phase 2)]]></title>
