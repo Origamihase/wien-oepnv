@@ -602,74 +602,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Fremder Verkehrsunfall",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "25/26/27: Schadhaftes Fahrzeug",
+    "description": "Linie 25: Fahrtbehinderung in Richtung Floridsdorf S U. Linie 26: Fahrtbehinderung in Richtung Strebersdorf, Meriangasse. Linie 27: Fahrtbehinderung in Richtung Strebersdorf, Meriangasse. Voraussichtliche Dauer: 16:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Josef-Baumann-Gasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9d5d830296db380d998cfac3ef2dc6b284f418d9c2fcaf12d004818d82b4f105",
-    "pubDate": "2026-06-29T12:54:00+02:00",
-    "starts_at": "2026-06-29T12:54:00+02:00",
+    "guid": "dee8a89312b2dbcb5cdcdda40ee6e95fda322fa34cf7f05b2170c89c78ed82ba",
+    "pubDate": "2026-06-29T15:27:00+02:00",
+    "starts_at": "2026-06-29T15:27:00+02:00",
     "ends_at": "2026-06-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Hitzebedingte Schäden an der Strecke",
-    "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Weichen Sie ersatzweise auf die Linien U1, 26 und 27 aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Hitzebedingte Schäden an der Strecke im Bereich Josef-Baumann-Gasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3b1890e2cb58433c4d05ae0fc5cab9e840d727120ea3980e08e0b067f4918848",
-    "pubDate": "2026-06-28T08:33:00+02:00",
-    "starts_at": "2026-06-28T08:33:00+02:00",
-    "ends_at": "2026-06-30T01:30:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-06-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Aspern Nord",
-    "description": "Aspern Nord <>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3d3b519bd96fe06dcd84a6a998a1c3f504407a89f56693a35668eb0623cc5653",
-    "pubDate": "2026-06-29T05:51:58+02:00",
-    "starts_at": "2026-06-29T05:51:58+02:00",
-    "ends_at": "2026-06-29T23:45:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Gleisschaden Betrieb ab Josef-Baumann-Gasse",
-    "description": "Gleisschaden\nBetrieb ab Josef-Baumann-Gasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9d79cee4745a67cc05da175737dca693a2e6a44464f5e1ae8cbb90af83b09d2a",
-    "pubDate": "2026-06-29T05:52:42+02:00",
-    "starts_at": "2026-06-29T05:52:42+02:00",
-    "ends_at": "2026-06-29T23:45:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Aspern Nord ü. J.-Baumann-G",
-    "description": "Aspern Nord <>\nü. J.-Baumann-G",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d69c3df66dcd070109404b303a39f0d280b362368203f2c55b7abbe6fd37aa84",
-    "pubDate": "2026-06-29T05:51:58+02:00",
-    "starts_at": "2026-06-29T05:52:09+02:00",
-    "ends_at": "2026-06-29T23:45:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Gleisschaden Einstieg bei Linie 26 (Haltestelle Richtung Floridsdorf )",
-    "description": "Gleisschaden\nEinstieg bei Linie 26 (Haltestelle Richtung Floridsdorf <>)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f90860653212538e44a466860c66e02a81d4b3687dce558aa304e1bfbe0ab40a",
-    "pubDate": "2026-06-29T06:25:33+02:00",
-    "starts_at": "2026-06-29T06:25:33+02:00",
-    "ends_at": "2026-06-29T23:45:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-06-29"
+    "_identity": "wl|störung|L=25,26,27|D=2026-06-29"
   },
   {
     "source": "Wiener Linien",
@@ -682,18 +622,6 @@
     "starts_at": "2026-06-25T00:00:04+02:00",
     "ends_at": "2026-06-29T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31A: Rettungseinsatz",
-    "description": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f87c8d2f1aeddc32e8a24d5fcb114ac588507fe12f00aee5e316d5516307d9ea",
-    "pubDate": "2026-06-29T14:39:00+02:00",
-    "starts_at": "2026-06-29T14:39:00+02:00",
-    "ends_at": "2026-06-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=31A|D=2026-06-29"
   },
   {
     "source": "Wiener Linien",
@@ -730,18 +658,6 @@
     "starts_at": "2026-06-25T00:00:14+02:00",
     "ends_at": "2026-06-29T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Betriebsstörung",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "39c61af4f59bba7918a10e37623db5e5dd9267203c7128da28dad3834ab737f5",
-    "pubDate": "2026-06-29T11:40:00+02:00",
-    "starts_at": "2026-06-29T11:40:00+02:00",
-    "ends_at": "2026-06-29T14:59:00+02:00",
-    "_identity": "wl|störung|L=41|D=2026-06-29"
   },
   {
     "source": "Wiener Linien",
@@ -842,6 +758,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "57A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3193a02e5221f9520597baa57dcb324ff4ff3bd9b3e13d9308087aaccf24d18a",
+    "pubDate": "2026-06-29T15:02:04+02:00",
+    "starts_at": "2026-06-29T15:08:57+02:00",
+    "ends_at": "2026-06-29T16:08:00+02:00",
+    "_identity": "wl|störung|L=57A|D=2026-06-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Fremder Verkehrsunfall",
+    "description": "Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d354c7652a6b29deb96b519f98e62abb5becc90c01b68e51f6409488034e70ec",
+    "pubDate": "2026-06-29T15:01:00+02:00",
+    "starts_at": "2026-06-29T15:01:00+02:00",
+    "ends_at": "2026-06-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=57A|D=2026-06-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5: Fahrtbehinderung wegen Feuerwehreinsatz",
     "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -867,7 +807,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "5: Feuerwehreinsatz",
-    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 15:20 Uhr. Grund: Feuerwehreinsatz im Bereich Kaiserstraße 91.",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a11c559bc88082d01d8ecc232b83791677131f39d67e71c682b52aab7c821cf9",
     "pubDate": "2026-06-29T14:39:00+02:00",
@@ -942,7 +882,7 @@
     "description": "Derzeit können die Züge der Linie U2 die Station Rathaus in beiden Richtungen nicht einhalten. Weichen Sie ersatzweise auf die Linie 2 aus. Grund: Betriebsstörung im Haltestellenbereich Rathaus.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-06-29T14:22:00+02:00",
+    "pubDate": "2026-06-29T14:56:00+02:00",
     "starts_at": "2026-06-29T14:56:00+02:00",
     "ends_at": "2026-06-29T23:55:00+02:00",
     "_identity": "wl|störung|L=U2|D=2026-06-29"

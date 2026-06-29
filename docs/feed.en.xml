@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 29 Jun 2026 15:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 15:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[25/26/27: defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dee8a89312b2dbcb5cdcdda40ee6e95fda322fa34cf7f05b2170c89c78ed82ba</guid>
+      <pubDate>Mon, 29 Jun 2026 15:27:00 +0200</pubDate>
+      <ext:first_seen>Mon, 29 Jun 2026 15:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 29 Jun 2026 15:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 29 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Floridsdorf S U. Line 26: service obstruction towards Strebersdorf, Meriangasse. Line 27: service obstruction towards Strebersdorf, Meriangasse. [On 29.06.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Floridsdorf S U. Line 26: service obstruction towards Strebersdorf, Meriangasse. Line 27: service obstruction towards Strebersdorf, Meriangasse.<br/>[On 29.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A/N66: Grenzackerstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,39 +41,6 @@
       <ext:ends_at>Wed, 01 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of construction works in the Margentinstraße, the lines 76B, 79A and 79B are being redirected. [07.07.2026 – 01.09.2027]</description>
       <content:encoded><![CDATA[Because of construction works in the Margentinstraße, the lines 76B, 79A and 79B are being redirected.<br/>[07.07.2026 – 01.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">39c61af4f59bba7918a10e37623db5e5dd9267203c7128da28dad3834ab737f5</guid>
-      <pubDate>Mon, 29 Jun 2026 11:40:00 +0200</pubDate>
-      <ext:first_seen>Mon, 29 Jun 2026 12:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 29 Jun 2026 11:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 14:59:00 +0200</ext:ends_at>
-      <description>Operation only between Schottentor U and Gersthof S. Continue via line 40 to Gersthof, Herbeckstraße. [On 29.06.2026]</description>
-      <content:encoded><![CDATA[Operation only between Schottentor U and Gersthof S. Continue via line 40 to Gersthof, Herbeckstraße.<br/>[On 29.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: Heat-related damage to the line]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b1890e2cb58433c4d05ae0fc5cab9e840d727120ea3980e08e0b067f4918848</guid>
-      <pubDate>Sun, 28 Jun 2026 08:33:00 +0200</pubDate>
-      <ext:first_seen>Mon, 29 Jun 2026 08:01:21 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 28 Jun 2026 08:33:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 30 Jun 2026 01:30:00 +0200</ext:ends_at>
-      <description>Operation only between Aspern, Oberdorfstraße and Josef-Baumann-Gasse. [28.06.2026 – 30.06.2026]</description>
-      <content:encoded><![CDATA[Operation only between Aspern, Oberdorfstraße and Josef-Baumann-Gasse.<br/>[28.06.2026 – 30.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: track damage Einstieg on line 26 (stop direction Floridsdorf )]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f90860653212538e44a466860c66e02a81d4b3687dce558aa304e1bfbe0ab40a</guid>
-      <pubDate>Mon, 29 Jun 2026 06:25:33 +0200</pubDate>
-      <ext:first_seen>Mon, 29 Jun 2026 06:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 29 Jun 2026 06:25:33 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 23:45:00 +0200</ext:ends_at>
-      <description>track damage Einstieg on line 26 (stop direction Floridsdorf &amp;lt;&amp;gt;) [On 29.06.2026]</description>
-      <content:encoded><![CDATA[track damage Einstieg on line 26 (stop direction Floridsdorf &lt;&gt;)<br/>[On 29.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11/71: track construction works (phase 2)]]></title>
@@ -116,6 +94,28 @@
       <ext:starts_at>Wed, 24 Jun 2026 13:36:53 +0200</ext:starts_at>
       <description>construction works between Wien Floridsdorf train station (U) and Wien Praterstern train station (U) between 1209.2026 to 1309.2026 some local trains cannot operate. [Since 24.06.2026]</description>
       <content:encoded><![CDATA[construction works between Wien Floridsdorf train station (U) and Wien Praterstern train station (U) between 1209.2026 to 1309.2026 some local trains cannot operate.<br/>[Since 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29A/29B/N30: Patrizigasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7c5d3d8d26eced87aae77de99e3c95b11096658dc996c0e5c8aff5ba88c20d05</guid>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 09:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately … [24.06.2026 – 24.06.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36B/N31: diversion because of track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3f446b22184bf8b6deb41f704ea733eba73db18c777abb70b38878d0bab7cd5a</guid>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 23 Jun 2026 16:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected. [07.07.2026 – 11.08.2027]</description>
+      <content:encoded><![CDATA[Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected.<br/>[07.07.2026 – 11.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
