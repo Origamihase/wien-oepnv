@@ -2544,6 +2544,16 @@
       "epoch": 3
     }
   },
+  "39c61af4f59bba7918a10e37623db5e5dd9267203c7128da28dad3834ab737f5": {
+    "first_seen": "2026-06-29T10:30:59.139706+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between Schottentor U and Gersthof S. Continue via line 40 to Gersthof, Herbeckstra\u00dfe.",
+        "title": "41: service disruption"
+      },
+      "epoch": 3
+    }
+  },
   "39d863e7d992ca9dedaed419a65775920e3f0bc7c95f3d3aa35fa98003387508": {
     "first_seen": "2026-06-05T09:30:51.544469+00:00",
     "translations": {
@@ -11573,6 +11583,16 @@
       "en": {
         "summary": "Due to persons on the tracks, no journeys were possible between Vienna Hbf (U) and Bruck/Mur station until 11:52 clock.",
         "title": "Wien Matzleinsdorfer Platz \u2194 Wien Hauptbahnhof"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&890767": {
+    "first_seen": "2026-06-29T10:30:59.139706+00:00",
+    "translations": {
+      "en": {
+        "summary": "Information for passengers between Wien Meidling and Wien Floridsdorf. There are isolated train failures and delays.",
+        "title": "Wien Meidling \u2194 Wien Floridsdorf"
       },
       "epoch": 3
     }
