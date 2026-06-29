@@ -3476,6 +3476,15 @@
       "epoch": 3
     }
   },
+  "4ebfcdeecb63555a7d3eeda6e1144843992faaa428a94f9ee9f79f89dc91e33f": {
+    "first_seen": "2026-06-29T14:30:54.024377+00:00",
+    "translations": {
+      "en": {
+        "title": "60: service obstruction Damaged train"
+      },
+      "epoch": 3
+    }
+  },
   "4f0a00569455b938354830883aaaa1b8329cb5e711044a24de915c4c4ca0bece": {
     "first_seen": "2026-05-25T10:00:46.798313+00:00",
     "translations": {
@@ -10910,8 +10919,10 @@
     "first_seen": "2026-06-28T21:00:49.531132+00:00",
     "translations": {
       "en": {
-        "summary": "After an service obstruction there are different intervals."
-      }
+        "summary": "Operation only between Dornbach and Hietzing U. expected duration: 17:00. Reason: defective vehicle in the Dommayergasse stop area.",
+        "title": "10: defective vehicle"
+      },
+      "epoch": 3
     }
   },
   "fe258337beedde93d0cc868ccf1e17baf66b2ae9641197b10312d8a0b3e7deab": {
