@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 29 Jun 2026 18:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 18:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[13A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d3dc32d95116a344df29b9d029c234687104192559130554ececa8852d4e12bf</guid>
-      <pubDate>Mon, 29 Jun 2026 17:45:00 +0200</pubDate>
-      <ext:first_seen>Mon, 29 Jun 2026 18:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 29 Jun 2026 17:45:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 29 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 29.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 29.06.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[66A/N66: Grenzackerstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -116,6 +105,17 @@
       <ext:starts_at>Wed, 24 Jun 2026 13:36:53 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 12.09.2026 bis 13.09.2026 einige Nahverkehrszüge nicht fahren. [Seit 24.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 12.09.2026 bis 13.09.2026 einige Nahverkehrszüge nicht fahren.<br/>[Seit 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29A/29B/N30: Patrizigasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7c5d3d8d26eced87aae77de99e3c95b11096658dc996c0e5c8aff5ba88c20d05</guid>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 09:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Großfeldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30) Haltestelle: Patrizigase Von: Freytaggasse 32 Nach: etwa … [24.06.2026 – 24.06.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Großfeldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30) Haltestelle: Patrizigase Von: Freytaggasse 32 Nach: etwa …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
