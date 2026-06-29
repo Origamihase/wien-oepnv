@@ -674,12 +674,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "26: Rettungseinsatz",
     "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac",
     "pubDate": "2026-06-29T17:55:00+02:00",
-    "starts_at": "2026-06-29T17:56:33+02:00",
+    "starts_at": "2026-06-29T17:55:00+02:00",
     "ends_at": "2026-06-29T23:55:00+02:00",
     "_identity": "wl|störung|L=26|D=2026-06-29"
   },
@@ -694,18 +694,6 @@
     "starts_at": "2026-06-29T15:27:00+02:00",
     "ends_at": "2026-06-29T23:55:00+02:00",
     "_identity": "wl|störung|L=27|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Polizeieinsatz",
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
-    "pubDate": "2026-06-29T17:06:00+02:00",
-    "starts_at": "2026-06-29T17:06:00+02:00",
-    "ends_at": "2026-06-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-06-29"
   },
   {
     "source": "Wiener Linien",
@@ -746,6 +734,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "39A: Verkehrsunfall Betrieb ab Daringergasse",
+    "description": "Verkehrsunfall\nBetrieb ab Daringergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a092779dd8f539d502bef16103c73e1fb070046ad1f7b129ee89fb23b57a019",
+    "pubDate": "2026-06-29T18:52:44+02:00",
+    "starts_at": "2026-06-29T18:52:44+02:00",
+    "ends_at": "2026-06-29T19:51:00+02:00",
+    "_identity": "wl|störung|L=39A|D=2026-06-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "39A: Verkehrsunfall Betrieb ab Oberdöbling S",
     "description": "Verkehrsunfall\nBetrieb ab Oberdöbling S",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -758,8 +758,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "39A: Verkehrsunfall Ablenkung über Grinzinger Allee",
+    "description": "Verkehrsunfall\nAblenkung über Grinzinger Allee",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7cbf0895c5bb64e8aacc9b59cb74cdf0792d8baa346ca3a13e30a6f8e0ccd9c2",
+    "pubDate": "2026-06-29T18:52:14+02:00",
+    "starts_at": "2026-06-29T18:52:14+02:00",
+    "ends_at": "2026-06-29T19:50:00+02:00",
+    "_identity": "wl|störung|L=39A|D=2026-06-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "39A: Verkehrsunfall",
-    "description": "Die Linie 39A wird in Richtung Bahnhof Heiligenstadt S U zwischen Daringergasse und Oberdöbling S über Daringergasse und Grinzinger Allee umgeleitet. Voraussichtliche Dauer: 19:00 Uhr. Grund: Verkehrsunfall im Bereich Sieveringer Straße.",
+    "description": "Die Linie 39A wird in beiden Richtungen zwischen Daringergasse und Oberdöbling S über Daringergasse und Grinzinger Allee umgeleitet. Voraussichtliche Dauer: 19:30 Uhr. Grund: Verkehrsunfall im Bereich Sieveringer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "dfa3af5eacd7ecf6f3b864d15ccbe892b2dd7ed23dfedaca0a147c26955c5cc8",
     "pubDate": "2026-06-29T18:18:00+02:00",
@@ -826,6 +838,18 @@
     "starts_at": "2026-06-25T00:00:14+02:00",
     "ends_at": "2026-06-29T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-06-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fahrtbehinderung Schadhafter Pkw",
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ddcd5f88f8cfc11f37423a3be76e166cf38290e3a3f8ceaea17ae9a11006f4b2",
+    "pubDate": "2026-06-29T19:00:04+02:00",
+    "starts_at": "2026-06-29T19:00:04+02:00",
+    "ends_at": "2026-06-29T19:59:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-06-29"
   },
   {
     "source": "Wiener Linien",
@@ -938,38 +962,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "9: Fahrtbehinderung Schadhafter Pkw",
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-06-29T14:56:00+02:00",
-    "starts_at": "2026-06-29T14:56:00+02:00",
-    "ends_at": "2026-06-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-06-29T16:45:00+02:00",
-    "starts_at": "2026-06-29T16:45:00+02:00",
-    "ends_at": "2026-06-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-06-29T16:07:00+02:00",
-    "starts_at": "2026-06-29T16:07:00+02:00",
-    "ends_at": "2026-06-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-06-29"
+    "guid": "16b072dd40df82c56241e536ecbe7c613c73c73d601afdcf8db1b49fe92c3fe9",
+    "pubDate": "2026-06-29T18:59:27+02:00",
+    "starts_at": "2026-06-29T18:59:27+02:00",
+    "ends_at": "2026-06-29T19:59:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-06-29"
   },
   {
     "source": "Wiener Linien",
