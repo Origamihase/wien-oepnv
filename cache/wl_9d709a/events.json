@@ -243,13 +243,13 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "53A: Umleitung wegen Bauarbeiten",
-    "description": "<h2>Bauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten und der dazugeh&ouml;rigen Sperre der Meytensgasse kommt es zu einer Umleitung</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 22. Juni 2026, etwa 07:00 Uhr bis Montag, 29. Juni, etwa 08:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>53A in Richtung Stock im Weg:</strong><br />Umleitung ab Hietzinger Hauptstra&szlig;e # Mantlergasse &uuml;ber Mantlergasse - Bossigasse.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Unter St. Veit, Verbindungsbahn (Spohrstra&szlig;e 55)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Unter St. Veit, Verbindungsbahn (Mantlergasse 17-19, provisorische Haltestelle)</p> <p><strong>53A in Richtung Bhf. H&uuml;tteldorf S U:</strong><br />Umleitung ab Spohrstra&szlig;e # Schrutkagasse &uuml;ber Schrutkagasse - Bossigasse.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Schrutkagasse (Spohrstra&szlig;e gegen&uuml;ber 19)<br />- Rossinigasse (Spohrstra&szlig;e gegen&uuml;ber 35)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Schrutkagasse (Spohrstra&szlig;e vor Schrutkagasse, provisorische Haltestelle)<br />- Rossinigasse (Bossigasse 41, provisorische Haltestelle)</p>",
+    "description": "<h2>Bauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Hietzinger Hauptstra&szlig;e # Spohrstra&szlig;e wird die Linie 53A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 13. Juli 2026, etwa 07:00 Uhr, auf Dauer von voraussichtlich zwei Wochen</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>53A in Richtung Stock im Weg:</strong><br />Umleitung ab Hietzinger Hauptstra&szlig;e # Mantlergasse &uuml;ber Mantlergasse - Bossigasse.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Unter St. Veit, Verbindungsbahn (Spohrstra&szlig;e 55)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Unter St. Veit, Verbindungsbahn (Mantlergasse 17-19, provisorische Haltestelle)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "332890d26dd91ec0aff46f2387ec4dad2c4e9d5816fa4050658e60446b7e69b6",
-    "pubDate": "2026-06-17T00:00:00+02:00",
+    "pubDate": "2026-06-23T10:30:00+02:00",
     "starts_at": "2026-07-13T00:00:00+02:00",
     "ends_at": "2027-07-13T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=53A|D=2026-06-22"
+    "_identity": "wl|hinweis|L=53A|D=2026-07-13"
   },
   {
     "source": "Wiener Linien",
@@ -578,10 +578,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Gleisschaden",
-    "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße Josef-Baumanngasse und weiter bis Aspern Nord S U. Weichen Sie ersatzweise auf die Linie 26 und 27 aus. Voraussichtliche Dauer: nicht absehbar. Grund: Hitzebedingte Schäden an der Strecke im Bereich Josef-Baumann-Gasse.",
+    "title": "25: Hitzebedingte Schäden an der Strecke",
+    "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Weichen Sie ersatzweise auf die Linien U1, 26 und 27 aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Hitzebedingte Schäden an der Strecke im Bereich Josef-Baumann-Gasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "04aa731bd1d146dc4bace56f19cc0b24fff503cb6c055f16d4a5d988c5a1729f",
+    "guid": "3b1890e2cb58433c4d05ae0fc5cab9e840d727120ea3980e08e0b067f4918848",
     "pubDate": "2026-06-28T08:33:00+02:00",
     "starts_at": "2026-06-28T08:33:00+02:00",
     "ends_at": "2026-06-30T01:30:00+02:00",
@@ -814,6 +814,18 @@
     "starts_at": "2026-06-28T00:00:24+02:00",
     "ends_at": "2026-06-29T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-06-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Fahrtbehinderung in Richtung Karlsplatz. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-06-29T07:48:00+02:00",
+    "starts_at": "2026-06-29T07:48:00+02:00",
+    "ends_at": "2026-06-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-06-29"
   },
   {
     "source": "Wiener Linien",
