@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 29 Jun 2026 11:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 11:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[14A: Schadhafter LKW]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">03d1be79e6482b012354b3ab11131e2a8d6c5099c55d1f75509ea237307a99eb</guid>
+      <pubDate>Mon, 29 Jun 2026 11:18:00 +0200</pubDate>
+      <ext:first_seen>Mon, 29 Jun 2026 11:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 29 Jun 2026 11:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 29 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhafter LKW. [Am 29.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhafter LKW.<br/>[Am 29.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[25: Heat-related damage to the line]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:ends_at>Wed, 11 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected. [07.07.2026 – 11.08.2027]</description>
       <content:encoded><![CDATA[Because of track construction works in the Brünner Straße / Trillergasse lines 36B and N31 are being redirected.<br/>[07.07.2026 – 11.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60A: Bhf. Atzgersdorf S, Knotzenbachgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fe9d15158919ebdedc885b3abdde541db370b4d6e52573d5a59d470147b56a29</guid>
-      <pubDate>Tue, 23 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 23 Jun 2026 10:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 23 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 31 Oct 2027 11:11:00 +0100</ext:ends_at>
-      <description>Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking … [23.06.2026 – 31.10.2027]</description>
-      <content:encoded><![CDATA[Stop change of line 60A towards Alterlaa U Stop: Bhf. Atzgersdorf S, Knotzenbachgasse From: KnotzenbachgasseX2XX0ee43c90d193e2X0XXXX0ee43c90d193e2X4X in front of the parking …<br/>[23.06.2026 – 31.10.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
