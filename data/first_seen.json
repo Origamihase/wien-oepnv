@@ -8324,6 +8324,15 @@
       "epoch": 3
     }
   },
+  "bd7d8f45186b5060599af6427e03e365de42b2d79056f8d753c1d2f26e5c147c": {
+    "first_seen": "2026-06-29T20:00:58.131655+00:00",
+    "translations": {
+      "en": {
+        "title": "10A: service obstruction Other traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "be42581f83b2d228e63e72c97e3d73ea8aae9984df8e515fea08422bf818bdf7": {
     "first_seen": "2026-06-14T09:30:46.592951+00:00",
     "translations": {
@@ -11775,6 +11784,16 @@
       "en": {
         "summary": "Information for passengers between Wien Meidling and Wien Floridsdorf. There are isolated train failures and delays.",
         "title": "Wien Meidling \u2194 Wien Floridsdorf"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&891185": {
+    "first_seen": "2026-06-29T20:00:58.131655+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an interlocking malfunction am Bahnhof, no journeys were possible in rearmost mode up to 21:54 watch.",
+        "title": "Substances"
       },
       "epoch": 3
     }
