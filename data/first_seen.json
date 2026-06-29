@@ -7591,6 +7591,15 @@
       "epoch": 2
     }
   },
+  "ae1016de61dec0482cd3e32faaaaf49ebf6ce4cd3d113858b9a60c56eb87fd70": {
+    "first_seen": "2026-06-29T03:00:57.430691+00:00",
+    "translations": {
+      "en": {
+        "title": "25: track damage operation only between Oberdorfstr. and Aspern Nord"
+      },
+      "epoch": 3
+    }
+  },
   "ae2073d946be087d4d8e949a9b6171322dab0f401c0edd44d33144cfb67aa3f8": {
     "first_seen": "2026-05-24T21:00:58.083464+00:00",
     "translations": {
@@ -11465,6 +11474,16 @@
       "en": {
         "summary": "Due to a rescue operation, no journeys were possible between Wien Meidling station (U) and Wien Liesing station until 00:21 clock.",
         "title": "Wien Meidling \u2194 Wien Liesing"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&890492": {
+    "first_seen": "2026-06-29T03:00:57.430691+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a fire brigade operation in Wien Rennweg Bahnhst currently no journeys are possible.",
+        "title": "Wien Rennweg"
       },
       "epoch": 3
     }
