@@ -210,7 +210,11 @@
   "03d1be79e6482b012354b3ab11131e2a8d6c5099c55d1f75509ea237307a99eb": {
     "first_seen": "2026-06-29T09:30:52.211768+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective truck.",
+        "title": "14A: defective truck"
+      },
+      "epoch": 3
     }
   },
   "04530c6242ffcafea8e04a61f7fc8fd0a2f0c51a9feb314475c32349f3d8499a": {
@@ -11559,6 +11563,16 @@
       "en": {
         "summary": "Due to a fire brigade operation, no journeys were possible in Wien Rennweg Bahnhst until 05:13 watch. There are still isolated train failures and delays.",
         "title": "Wien Rennweg"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&890727": {
+    "first_seen": "2026-06-29T10:01:04.597607+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to persons on the tracks, no journeys were possible between Vienna Hbf (U) and Bruck/Mur station until 11:52 clock.",
+        "title": "Wien Matzleinsdorfer Platz \u2194 Wien Hauptbahnhof"
       },
       "epoch": 3
     }
