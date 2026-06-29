@@ -578,6 +578,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "18: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f474a4749825fcb2ccf9863b54083f44458a64e3ea577993bc4365b57ea5edfc",
+    "pubDate": "2026-06-29T12:58:20+02:00",
+    "starts_at": "2026-06-29T12:58:20+02:00",
+    "ends_at": "2026-06-29T13:57:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-06-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25: Hitzebedingte Schäden an der Strecke",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Weichen Sie ersatzweise auf die Linien U1, 26 und 27 aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Hitzebedingte Schäden an der Strecke im Bereich Josef-Baumann-Gasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -687,7 +699,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "41: Betriebsstörung",
-    "description": "Linie 41: Betrieb nur zwischen Schottentor U und Gersthof S. Weiterfahrt über Linie 40 bis Gersthof, Herbeckstraße. Voraussichtliche Dauer: 13:00 Uhr. Grund: Betriebsstörung im Bereich Gersthofer Straße 145.",
+    "description": "Linie 41: Betrieb nur zwischen Schottentor U und Gersthof S. Weiterfahrt über Linie 40 bis Gersthof, Herbeckstraße. Voraussichtliche Dauer: 13:20 Uhr. Grund: Betriebsstörung im Bereich Gersthofer Straße 145.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "39c61af4f59bba7918a10e37623db5e5dd9267203c7128da28dad3834ab737f5",
     "pubDate": "2026-06-29T11:40:00+02:00",
@@ -814,6 +826,18 @@
     "starts_at": "2026-06-29T04:45:12+02:00",
     "ends_at": "2026-06-30T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-06-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "64984e93282b5e4785bc39f5b21a0893bb57960bf02dbb6024eaeca9e1d7caf8",
+    "pubDate": "2026-06-29T12:57:51+02:00",
+    "starts_at": "2026-06-29T12:57:51+02:00",
+    "ends_at": "2026-06-29T13:57:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-06-29"
   },
   {
     "source": "Wiener Linien",
