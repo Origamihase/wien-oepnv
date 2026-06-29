@@ -602,18 +602,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "20B: Verspätungen",
-    "description": "Derzeit kommt es bei der Linie 20B in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "588c072261b0468636ee851aee63fc4d1f0b6f14783becb046c2d2363883f8f3",
-    "pubDate": "2026-06-29T19:06:00+02:00",
-    "starts_at": "2026-06-29T19:06:00+02:00",
-    "ends_at": "2026-06-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=20B|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "25: Hitzebedingte Schäden an der Strecke",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Weichen Sie ersatzweise auf die Linien U1, 26 und 27 aus. Grund: Hitzebedingte Schäden an der Strecke im Bereich Josef-Baumann-Gasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -722,42 +710,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "39A: Verkehrsunfall Betrieb ab Daringergasse",
-    "description": "Verkehrsunfall\nBetrieb ab Daringergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1a092779dd8f539d502bef16103c73e1fb070046ad1f7b129ee89fb23b57a019",
-    "pubDate": "2026-06-29T18:52:44+02:00",
-    "starts_at": "2026-06-29T18:52:44+02:00",
-    "ends_at": "2026-06-29T19:51:00+02:00",
-    "_identity": "wl|störung|L=39A|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "39A: Verkehrsunfall Ablenkung über Grinzinger Allee",
-    "description": "Verkehrsunfall\nAblenkung über Grinzinger Allee",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7cbf0895c5bb64e8aacc9b59cb74cdf0792d8baa346ca3a13e30a6f8e0ccd9c2",
-    "pubDate": "2026-06-29T18:52:14+02:00",
-    "starts_at": "2026-06-29T18:52:14+02:00",
-    "ends_at": "2026-06-29T19:50:00+02:00",
-    "_identity": "wl|störung|L=39A|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "39A: Verkehrsunfall",
-    "description": "Linie 39A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dfa3af5eacd7ecf6f3b864d15ccbe892b2dd7ed23dfedaca0a147c26955c5cc8",
-    "pubDate": "2026-06-29T18:18:00+02:00",
-    "starts_at": "2026-06-29T18:18:00+02:00",
-    "ends_at": "2026-06-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=39A|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -814,30 +766,6 @@
     "starts_at": "2026-06-25T00:00:14+02:00",
     "ends_at": "2026-06-29T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Schadhafter PKW",
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8979dcb5273f894c190406680d8ec1cc8c9b8fd308398a5cf646978a37ae764c",
-    "pubDate": "2026-06-29T18:55:00+02:00",
-    "starts_at": "2026-06-29T18:55:00+02:00",
-    "ends_at": "2026-06-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=43|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Fahrtbehinderung Schadhafter Pkw",
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ddcd5f88f8cfc11f37423a3be76e166cf38290e3a3f8ceaea17ae9a11006f4b2",
-    "pubDate": "2026-06-29T19:00:04+02:00",
-    "starts_at": "2026-06-29T19:00:04+02:00",
-    "ends_at": "2026-06-29T19:59:00+02:00",
-    "_identity": "wl|störung|L=43|D=2026-06-29"
   },
   {
     "source": "Wiener Linien",
@@ -938,25 +866,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Schadhafter Pkw",
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "16b072dd40df82c56241e536ecbe7c613c73c73d601afdcf8db1b49fe92c3fe9",
-    "pubDate": "2026-06-29T18:59:27+02:00",
-    "starts_at": "2026-06-29T18:59:27+02:00",
-    "ends_at": "2026-06-29T19:59:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-06-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Schadhafter PKW",
     "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "201d29e8c544566afa85f7d705a9499ec8429ced2324e27a1b61ec5c0cfc8862",
     "pubDate": "2026-06-29T18:55:00+02:00",
     "starts_at": "2026-06-29T18:55:00+02:00",
-    "ends_at": "2026-06-29T23:55:00+02:00",
+    "ends_at": "2026-06-29T19:58:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-06-29"
   },
   {
