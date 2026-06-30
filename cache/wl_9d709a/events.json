@@ -75,7 +75,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "14A: Bauarbeiten Fritz-Grünbaum-Platz",
-    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Fritz-Gr&uuml;nbaum-Platz # Gumpendorfer Stra&szlig;e wird die Linie 14A kurz gef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 07. Juli 2026, Betriebsbeginn bis voraussichtlich Freitag, 14. August 2026 Betriebsschlu&szlig;.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 14A in Richtung Neubaugasse:<br /></strong>Ab Gumpendorfer Stra&szlig;e # Amerlingstra&szlig;e &uuml;ber Gumpendorfer Stra&szlig;e - Kaunitzgasse zur Stammstrecke kurz gef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Neubaugasse (Schadekgasse 3-5)<br /><br /></p> <p><span style=\"text-decoration: underline;\">Vor&uuml;bergehende End- und Anfangshaltestelle:<br /></span>Haus des Meeres (Kaunitzgasse 2)<br /><br /></p>",
+    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Fritz-Gr&uuml;nbaum-Platz # Gumpendorfer Stra&szlig;e wird die Linie 14A kurz gef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 07. Juli 2026, Betriebsbeginn bis voraussichtlich Freitag, 14. August 2026 Betriebsschlu&szlig;.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 14A in Richtung Neubaugasse:<br /></strong>Ab Gumpendorfer Stra&szlig;e # Amerlingstra&szlig;e &uuml;ber Gumpendorfer Stra&szlig;e - Kaunitzgasse zur Stammstrecke kurz gef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Neubaugasse (Schadekgasse 3-5)<br /><br /></p> <p><span style=\"text-decoration: underline;\">Vor&uuml;bergehende End- und Anfangshaltestelle:<br /></span>Haus des Meeres (Kaunitzgasse 2)</p> <p>&nbsp;</p> <p><br /><img title=\"14A_Haus_des_Meeres.png (859&times;859)\" src=\"https://eur04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fstwlciptstruct828prod.blob.core.windows.net%2Ffahrplane%2Fmsteams_f80a1e%2FFreigegebene%2520Dokumente%2FM16%2520Kundeninfo%2520Dateien%2F12%2520externe%2520Synchronisation%2FGrafiken%2520Einschraenkungen%2F14A_Haus_des_Meeres.png&amp;data=05%7C02%7CV41l.BL.Info%40wienerlinien.at%7C6a92e3480a7642accec108ded6a8b3ca%7C2df2bcec20174339b493e3d7b3a460c8%7C0%7C0%7C639184217225426976%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=%2F2TeKDGS0OPh14wPDCn637A4qPYaRjEueTwj%2Fa628kY%3D&amp;reserved=0\" alt=\"\" width=\"859\" height=\"859\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "32809b2554d0b1e22afc0c7c6cb54cfe116db966e9f10fd0991a9127a067760f",
     "pubDate": "2026-06-30T06:00:00+02:00",
@@ -650,18 +650,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d",
-    "pubDate": "2026-06-30T15:24:31+02:00",
-    "starts_at": "2026-06-30T15:24:53+02:00",
-    "ends_at": "2026-06-30T16:23:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-06-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Schadhaftes Fahrzeug",
     "description": "Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -778,6 +766,18 @@
     "starts_at": "2026-06-28T00:00:24+02:00",
     "ends_at": "2026-06-30T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Rettungseinsatz",
+    "description": "Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "67cf05ce8846177e4f3d143c88b0e0c7b91c475498b9731a9668e78e4fae4a88",
+    "pubDate": "2026-06-30T16:21:00+02:00",
+    "starts_at": "2026-06-30T16:21:00+02:00",
+    "ends_at": "2026-06-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
@@ -903,11 +903,11 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "49: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 49: Fahrtbehinderung in Richtung Ring, Volkstheater U. Voraussichtliche Dauer: 16:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hütteldorfer Straße U.",
+    "description": "Linie 49: Fahrtbehinderung in Richtung Ring, Volkstheater U. Voraussichtliche Dauer: 16:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hütteldorfer Straße U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
     "pubDate": "2026-06-30T15:46:00+02:00",
-    "starts_at": "2026-06-30T15:59:04+02:00",
+    "starts_at": "2026-06-30T16:26:42+02:00",
     "ends_at": "2026-06-30T23:55:00+02:00",
     "_identity": "wl|störung|L=49|D=2026-06-30"
   },
@@ -1018,6 +1018,18 @@
     "starts_at": "2026-06-30T14:44:00+02:00",
     "ends_at": "2026-06-30T23:55:00+02:00",
     "_identity": "wl|störung|L=O|D=2026-06-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-06-30T16:04:00+02:00",
+    "starts_at": "2026-06-30T16:04:00+02:00",
+    "ends_at": "2026-06-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
