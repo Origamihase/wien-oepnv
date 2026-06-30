@@ -107,16 +107,6 @@
       "epoch": 2
     }
   },
-  "01a41f05a53e143eca6b02bb90cab71315cbb833b85bf96f9ff238f958072872": {
-    "first_seen": "2026-06-30T19:00:59.547279+00:00",
-    "translations": {
-      "en": {
-        "summary": "irregular intervals in both directions. Reason: fire-brigade operation.",
-        "title": "11A: fire-brigade operation"
-      },
-      "epoch": 3
-    }
-  },
   "01c1edad0db092aed085d667951c6be88cf791b9631f3f4007cfee702ab02beb": {
     "first_seen": "2026-05-28T12:30:53.427781+00:00",
     "translations": {
@@ -4193,16 +4183,6 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: police operation.",
         "title": "5A: police operation"
-      },
-      "epoch": 3
-    }
-  },
-  "5f671ec81f4101e7a69acb74ef323b5826af481e95c7cb595f76f8b7e4676e03": {
-    "first_seen": "2026-06-30T19:00:59.547279+00:00",
-    "translations": {
-      "en": {
-        "summary": "After an service obstruction there are different intervals.",
-        "title": "5B: fire-brigade operation"
       },
       "epoch": 3
     }
@@ -8997,6 +8977,15 @@
       "epoch": 2
     }
   },
+  "c7bbcd94b3ff32b30c2da73c71c22bd48107722bb9034b7b4075a578dd839489": {
+    "first_seen": "2026-06-30T19:31:11.864025+00:00",
+    "translations": {
+      "en": {
+        "title": "5B: fire-brigade operation Buses stop at line 400"
+      },
+      "epoch": 3
+    }
+  },
   "c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45": {
     "first_seen": "2026-05-25T22:01:02.098191+00:00",
     "translations": {
@@ -9965,6 +9954,14 @@
         "title": "N62: traffic accident"
       },
       "epoch": 3
+    }
+  },
+  "e1d8190e4bc45bff393bd68fe6c8835c135a2d0d02394cd2d5728969881d1559": {
+    "first_seen": "2026-06-30T19:31:11.864025+00:00",
+    "translations": {
+      "en": {
+        "title": "4A: rescue operation Bus stops at Wittelsbachstr."
+      }
     }
   },
   "e27bfff5a685530c3cdbe18175fc09c3966a6b9bcc9e69b577c24825825e6558": {
