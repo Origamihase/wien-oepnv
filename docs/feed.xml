@@ -7,14 +7,14 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 30 Jun 2026 12:00:41 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 12:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[25/26/27: Gleisschaden]]></title>
+      <title><![CDATA[25/26/27: Hitzebedingte Schäden an der Strecke]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eeece5230b5b4f1f69c3de5ee12582e73222a9c670cb68c29648b761be297782</guid>
+      <guid isPermaLink="false">96683a967e6db69778b9ec7aea8c1d595c3dabcfa3617237d0c99229d438541b</guid>
       <pubDate>Tue, 30 Jun 2026 11:17:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 11:30:44 +0200</ext:first_seen>
+      <ext:first_seen>Tue, 30 Jun 2026 12:30:46 +0200</ext:first_seen>
       <ext:starts_at>Tue, 30 Jun 2026 11:17:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie: 25 fährt nur zwischen Aspern, Oberdorfstraße und Kagran. Linie: 26 fährt derzeit nicht zwischen Zanggasse und Josef-Baumann-Gasse. [Am 30.06.2026]</description>
@@ -41,17 +41,6 @@
       <ext:ends_at>Mon, 16 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Gumpendorfer Straße zwischen Fritz-Grünbaum-Platz und Laimgrubengasse wird die Linie 57A kurzgeführt. [07.07.2026 – 16.08.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Gumpendorfer Straße zwischen Fritz-Grünbaum-Platz und Laimgrubengasse wird die Linie 57A kurzgeführt.<br/>[07.07.2026 – 16.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7c9302b74c4151c193e8b61e865846e07389f3d8b7b69a75a90f6a2fde5e99f4</guid>
-      <pubDate>Tue, 30 Jun 2026 08:35:00 +0200</pubDate>
-      <ext:first_seen>Mon, 29 Jun 2026 20:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 08:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 30 Jun 2026 11:52:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 30.06.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 30.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A/N66: Grenzackerstraße]]></title>
@@ -117,6 +106,16 @@
       <ext:starts_at>Wed, 24 Jun 2026 16:15:35 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Gänserndorf Bahnhof und Deutsch Wagram Bahnhof von 11.09.2026 (00:10 Uhr) bis 05.10.2026 (04:20 Uhr) einige Nahverkehrszüge nicht fahren. [Seit 24.06.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Gänserndorf Bahnhof und Deutsch Wagram Bahnhof von 11.09.2026 (00:10 Uhr) bis 05.10.2026 (04:20 Uhr) einige Nahverkehrszüge nicht fahren.<br/>[Seit 24.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Floridsdorf ↔ Wien Praterstern]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;888587</guid>
+      <pubDate>Wed, 24 Jun 2026 13:36:53 +0200</pubDate>
+      <ext:first_seen>Wed, 24 Jun 2026 14:01:19 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 24 Jun 2026 13:36:53 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 12.09.2026 bis 13.09.2026 einige Nahverkehrszüge nicht fahren. [Seit 24.06.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) von 12.09.2026 bis 13.09.2026 einige Nahverkehrszüge nicht fahren.<br/>[Seit 24.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

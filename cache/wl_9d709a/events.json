@@ -614,25 +614,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verspätungen",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "10: Fahrtbehinderung Falschparker",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7c9302b74c4151c193e8b61e865846e07389f3d8b7b69a75a90f6a2fde5e99f4",
-    "pubDate": "2026-06-30T08:35:00+02:00",
-    "starts_at": "2026-06-30T08:35:00+02:00",
-    "ends_at": "2026-06-30T11:52:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-06-30"
+    "guid": "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04",
+    "pubDate": "2026-06-30T11:58:00+02:00",
+    "starts_at": "2026-06-30T12:07:06+02:00",
+    "ends_at": "2026-06-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=10|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Falschparker",
-    "description": "Linie 10: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 12:20 Uhr. Grund: Falschparker im Bereich Hietzinger Hauptstraße .",
+    "title": "10: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04",
-    "pubDate": "2026-06-30T11:58:00+02:00",
-    "starts_at": "2026-06-30T11:58:00+02:00",
-    "ends_at": "2026-06-30T23:55:00+02:00",
+    "guid": "8b2268ed2767a36efc584afb53e17a86e0b3ba91e4cecbbda59c4fede640ee4a",
+    "pubDate": "2026-06-30T12:01:08+02:00",
+    "starts_at": "2026-06-30T12:01:08+02:00",
+    "ends_at": "2026-06-30T13:00:00+02:00",
     "_identity": "wl|störung|L=10|D=2026-06-30"
   },
   {
@@ -644,7 +644,7 @@
     "guid": "139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6",
     "pubDate": "2026-06-30T09:40:00+02:00",
     "starts_at": "2026-06-30T09:40:00+02:00",
-    "ends_at": "2026-06-30T23:55:00+02:00",
+    "ends_at": "2026-06-30T12:21:00+02:00",
     "_identity": "wl|störung|L=11|D=2026-06-30"
   },
   {
@@ -656,16 +656,16 @@
     "guid": "d8160ea662f4ecb51aa4611000d104ec540a8e8f6bb6e65cbee6dcf9628f8752",
     "pubDate": "2026-06-30T08:11:00+02:00",
     "starts_at": "2026-06-30T08:11:00+02:00",
-    "ends_at": "2026-06-30T23:55:00+02:00",
+    "ends_at": "2026-06-30T12:21:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25/26/27: Gleisschaden",
-    "description": "Linie: 25 fährt nur zwischen Aspern, Oberdorfstraße und Kagran. Linie: 26 fährt derzeit nicht zwischen Zanggasse und Josef-Baumann-Gasse. Linie: 27 fährt derzeit nicht zwischen Berresgasse und Josef-Baumann-Gasse. Weichen Sie ersatzweise auf die Linien U1, U2, 22A, 24A, 27A, 95A, 97A aus. Die Störung dauert voraussichtlich bis 13:30 Uhr . Grund dafür ist ein Gleisschaden im Bereich Donaufelder Straße 223.",
+    "title": "25/26/27: Hitzebedingte Schäden an der Strecke",
+    "description": "Linie: 25 fährt nur zwischen Aspern, Oberdorfstraße und Kagran. Linie: 26 fährt derzeit nicht zwischen Zanggasse und Josef-Baumann-Gasse. Linie: 27 fährt derzeit nicht zwischen Berresgasse und Josef-Baumann-Gasse. Weichen Sie ersatzweise auf die Linien U1, U2, 22A, 24A, 27A, 95A, 97A aus. Die Störung dauert voraussichtlich bis 13:30 Uhr . Grund dafür: Hitzebedingte Schäden an der Strecke im Bereich Donaufelder Straße 223.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eeece5230b5b4f1f69c3de5ee12582e73222a9c670cb68c29648b761be297782",
+    "guid": "96683a967e6db69778b9ec7aea8c1d595c3dabcfa3617237d0c99229d438541b",
     "pubDate": "2026-06-30T11:17:00+02:00",
     "starts_at": "2026-06-30T11:17:00+02:00",
     "ends_at": "2026-06-30T23:55:00+02:00",
@@ -706,18 +706,6 @@
     "starts_at": "2026-06-28T00:00:24+02:00",
     "ends_at": "2026-06-30T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "39A: Verkehrsunfall",
-    "description": "Linie 39A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dfa3af5eacd7ecf6f3b864d15ccbe892b2dd7ed23dfedaca0a147c26955c5cc8",
-    "pubDate": "2026-06-30T11:05:00+02:00",
-    "starts_at": "2026-06-30T11:05:00+02:00",
-    "ends_at": "2026-06-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=39A|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
@@ -902,18 +890,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Rettungseinsatz",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
-    "pubDate": "2026-06-30T10:28:00+02:00",
-    "starts_at": "2026-06-30T10:28:00+02:00",
-    "ends_at": "2026-06-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-06-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Einstieg: Brünner Straße 31-31A",
     "description": "Bauarbeiten\nEinstieg: Brünner Straße 31-31A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -922,18 +898,6 @@
     "starts_at": "2026-06-30T00:00:22+02:00",
     "ends_at": "2026-06-30T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-30|TK=einstieg brünner strasse 31 31a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
-    "pubDate": "2026-06-30T11:10:36+02:00",
-    "starts_at": "2026-06-30T11:10:36+02:00",
-    "ends_at": "2026-06-30T12:10:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-06-30|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -958,17 +922,5 @@
     "starts_at": "2026-06-30T11:21:11+02:00",
     "ends_at": "2026-06-30T15:30:00+02:00",
     "_identity": "wl|störung|L=|D=2026-06-30|TK=gleisschaden betrieb ab zanggasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Verkehrsunfall Betrieb ab Anschützgasse",
-    "description": "Verkehrsunfall\nBetrieb ab Anschützgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d72accb2c5552f30deeebfa4110710af1dafa54c3ef3ac27d6c82fc96a560b06",
-    "pubDate": "2026-06-30T11:11:33+02:00",
-    "starts_at": "2026-06-30T11:11:34+02:00",
-    "ends_at": "2026-06-30T12:10:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-06-30|TK=verkehrsunfall betrieb ab anschützgasse"
   }
 ]
