@@ -614,20 +614,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Fahrtbehinderung Falschparker",
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04",
-    "pubDate": "2026-06-30T11:58:00+02:00",
-    "starts_at": "2026-06-30T12:07:06+02:00",
-    "ends_at": "2026-06-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=10|D=2026-06-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11: Rettungseinsatz Betrieb ab Enkplatz, Grillgasse",
-    "description": "Linie 11: Umleitung in Richtung Kaiserebersdorf, Zinnergasse zwischen Absberggasse und Enkplatz U, Grillgasse über Quartier Belvedere S und St. Marx S. Voraussichtliche Dauer: 13:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Geiereckstraße.",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
     "pubDate": "2026-06-30T12:39:00+02:00",
@@ -638,7 +626,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "67B/16A/17A/67A: Störung an einem Bahnübergang",
+    "title": "16A/17A/67A/67B: Störung an einem Bahnübergang",
     "description": "16A, 17A, 67A, 67B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8c5d6ebe3af5aaed99016a85fbfa83149f04b9be6d1d8739e8eeb0a55de46dc0",
@@ -650,14 +638,74 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25/26/27: Hitzebedingte Schäden an der Strecke",
-    "description": "Linie: 25 fährt nur zwischen Aspern, Oberdorfstraße und Kagran. Linie: 26 fährt derzeit nicht zwischen Zanggasse und Josef-Baumann-Gasse. Linie: 27 fährt derzeit nicht zwischen Berresgasse und Josef-Baumann-Gasse. Weichen Sie ersatzweise auf die Linien U1, U2, 22A, 24A, 27A, 95A, 97A aus. Die Störung dauert voraussichtlich bis 14:00 Uhr . Grund dafür: Hitzebedingte Schäden an der Strecke im Bereich Donaufelder Straße 223.",
+    "title": "25: Hitzeschäden Linie 25: Einstieg bei Linie 26 (Strebersdorf)",
+    "description": "Hitzeschäden\nLinie 25: Einstieg bei Linie 26 (Strebersdorf)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "96683a967e6db69778b9ec7aea8c1d595c3dabcfa3617237d0c99229d438541b",
-    "pubDate": "2026-06-30T11:17:00+02:00",
-    "starts_at": "2026-06-30T11:17:00+02:00",
-    "ends_at": "2026-06-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=25,26,27|D=2026-06-30"
+    "guid": "859c07ac82d3d56b571c9d40b92715cec9a5e72051ce135494c2ccdab4e04d97",
+    "pubDate": "2026-06-29T06:25:33+02:00",
+    "starts_at": "2026-06-29T06:25:33+02:00",
+    "ends_at": "2026-06-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Hitzeschäden Betrieb ab Josef-Baumann-Gasse",
+    "description": "Hitzeschäden\nBetrieb ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9034151e8763cdf4caf0bec378ab4da622c0f25cbdd1e4bc6e43ef2f71c058cc",
+    "pubDate": "2026-06-29T05:52:42+02:00",
+    "starts_at": "2026-06-29T05:52:42+02:00",
+    "ends_at": "2026-06-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Hitzebedingte Schäden an der Strecke",
+    "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Weichen Sie ersatzweise auf die Linien U1, 26 und 27 aus. Grund: Hitzebedingte Schäden an der Strecke im Bereich Josef-Baumann-Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3b1890e2cb58433c4d05ae0fc5cab9e840d727120ea3980e08e0b067f4918848",
+    "pubDate": "2026-06-30T13:22:00+02:00",
+    "starts_at": "2026-06-30T13:22:00+02:00",
+    "ends_at": "2026-07-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Gleisschaden Betrieb ab Kagran",
+    "description": "Gleisschaden\nBetrieb ab Kagran",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4382ad2baceba3db423f37fef2c97addd97d91f298185a3529187fab2420b750",
+    "pubDate": "2026-06-30T11:20:05+02:00",
+    "starts_at": "2026-06-30T11:20:05+02:00",
+    "ends_at": "2026-06-30T15:30:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Hitzeschäden Kein Betrieb",
+    "description": "Hitzeschäden\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9df06bfc2e48c00874c89af43f4bbfa210411415ca49f7d69bc3fddce508179b",
+    "pubDate": "2026-06-30T11:19:11+02:00",
+    "starts_at": "2026-06-30T11:19:36+02:00",
+    "ends_at": "2026-06-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cc52a1d98fd5a4016dc8706fb606df8d38aaf31fd5c9b67fe67d0b0e2c941f79",
+    "pubDate": "2026-06-30T11:19:36+02:00",
+    "starts_at": "2026-06-30T11:19:36+02:00",
+    "ends_at": "2026-06-30T15:30:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
@@ -670,6 +718,30 @@
     "starts_at": "2026-06-30T00:00:25+02:00",
     "ends_at": "2026-06-30T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Gleisschaden",
+    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "69cffe6b39b2772ee1a6f98a8a596bd010bbe37e4eb986929c5f60726295031b",
+    "pubDate": "2026-06-30T11:17:00+02:00",
+    "starts_at": "2026-06-30T11:17:00+02:00",
+    "ends_at": "2026-06-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-06-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Gleisschaden",
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c6193a3f82dabd63cdfba2ede1497e914a1dc292bccfbd84a03efb47471127ee",
+    "pubDate": "2026-06-30T11:17:00+02:00",
+    "starts_at": "2026-06-30T11:17:00+02:00",
+    "ends_at": "2026-06-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
@@ -706,6 +778,30 @@
     "starts_at": "2026-06-25T00:00:14+02:00",
     "ends_at": "2026-06-30T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-06-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
+    "pubDate": "2026-06-30T13:12:54+02:00",
+    "starts_at": "2026-06-30T13:13:09+02:00",
+    "ends_at": "2026-06-30T14:12:00+02:00",
+    "_identity": "wl|störung|L=40|D=2026-06-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2026-06-30T13:12:40+02:00",
+    "starts_at": "2026-06-30T13:12:40+02:00",
+    "ends_at": "2026-06-30T14:12:00+02:00",
+    "_identity": "wl|störung|L=41|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
@@ -806,30 +902,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52: Verkehrsunfall",
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "01c1edad0db092aed085d667951c6be88cf791b9631f3f4007cfee702ab02beb",
-    "pubDate": "2026-06-30T11:08:00+02:00",
-    "starts_at": "2026-06-30T11:08:00+02:00",
-    "ends_at": "2026-06-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=52|D=2026-06-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Verkehrsunfall",
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d",
-    "pubDate": "2026-06-30T11:08:00+02:00",
-    "starts_at": "2026-06-30T11:08:00+02:00",
-    "ends_at": "2026-06-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-06-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -874,6 +946,18 @@
     "starts_at": "2026-06-30T08:23:00+02:00",
     "ends_at": "2026-06-30T23:55:00+02:00",
     "_identity": "wl|störung|L=98A|D=2026-06-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Betriebsstörung",
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2026-06-30T13:17:00+02:00",
+    "starts_at": "2026-06-30T13:17:00+02:00",
+    "ends_at": "2026-06-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
