@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 30 Jun 2026 23:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 00:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[59A: rescue operation]]></title>
@@ -21,16 +21,6 @@
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 30.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wiener Neustadt Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;891951</guid>
-      <pubDate>Tue, 30 Jun 2026 23:11:44 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 23:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 23:11:44 +0200</ext:starts_at>
-      <description>Due to am Bahnhof, no journeys were possible between Ternitz station and Payerbach-Reichenau at Rax station until 23:08 clock. [Since 30.06.2026]</description>
-      <content:encoded><![CDATA[Due to am Bahnhof, no journeys were possible between Ternitz station and Payerbach-Reichenau at Rax station until 23:08 clock.<br/>[Since 30.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[11: Use rail replacement service 71E]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ada902634b8f201c79dcefb677d9cf487db94fdd63d609fe94f62aba9645aab3</guid>
@@ -40,17 +30,6 @@
       <ext:ends_at>Wed, 01 Jul 2026 04:00:00 +0200</ext:ends_at>
       <description>[30.06.2026 – 01.07.2026]</description>
       <content:encoded><![CDATA[[30.06.2026 – 01.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5B: fire-brigade operation Buses stop at line 400]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c7bbcd94b3ff32b30c2da73c71c22bd48107722bb9034b7b4075a578dd839489</guid>
-      <pubDate>Tue, 30 Jun 2026 20:44:56 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 21:31:11 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 20:44:56 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 30 Jun 2026 23:45:00 +0200</ext:ends_at>
-      <description>[On 30.06.2026]</description>
-      <content:encoded><![CDATA[[On 30.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[69A: construction works Gänsbachergasse]]></title>
@@ -81,9 +60,9 @@
       <pubDate>Mon, 29 Jun 2026 06:25:33 +0200</pubDate>
       <ext:first_seen>Tue, 30 Jun 2026 13:30:57 +0200</ext:first_seen>
       <ext:starts_at>Mon, 29 Jun 2026 06:25:33 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 30 Jun 2026 23:59:59 +0200</ext:ends_at>
-      <description>[29.06.2026 – 30.06.2026]</description>
-      <content:encoded><![CDATA[[29.06.2026 – 30.06.2026]]]></content:encoded>
+      <ext:ends_at>Wed, 01 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[29.06.2026 – 01.07.2026]</description>
+      <content:encoded><![CDATA[[29.06.2026 – 01.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[98A: construction works]]></title>
@@ -117,6 +96,28 @@
       <ext:ends_at>Wed, 01 Jul 2026 04:00:00 +0200</ext:ends_at>
       <description>[30.06.2026 – 01.07.2026]</description>
       <content:encoded><![CDATA[[30.06.2026 – 01.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A/N66: Grenzackerstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4f59ef339aa7720f042f990681bb3d64fa0b6a4040158d46cb9addfc532f0bf0</guid>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 29 Jun 2026 14:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of lines 66A and N66 towards Liesing S Stop: Grenzackerstraße From: Laxenburger Straße 104 to Raxstraße To: about 30 Meter towards … [13.07.2026 – 13.07.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 66A and N66 towards Liesing S Stop: Grenzackerstraße From: Laxenburger Straße 104 to Raxstraße To: about 30 Meter towards …<br/>[13.07.2026 – 13.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[76B/79A/79B: roadworks]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">431e057ca57f91c555271d2221f4da90b3968eb8cadc9754b4e9a03e2aad94a1</guid>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 29 Jun 2026 13:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 01 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Margentinstraße, the lines 76B, 79A and 79B are being redirected. [07.07.2026 – 01.09.2027]</description>
+      <content:encoded><![CDATA[Because of construction works in the Margentinstraße, the lines 76B, 79A and 79B are being redirected.<br/>[07.07.2026 – 01.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

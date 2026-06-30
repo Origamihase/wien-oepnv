@@ -386,14 +386,14 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "77A/80A: Ende der Gleisbauarbeiten",
-    "description": "<h2>Ende der Gleisbauarbeiten</h2> <p>Die Linien 77A und 80A fahren nach Beendigung der Gleisbauarbeiten f&uuml;r die Verl&auml;ngerung der Linie 18 wieder in beiden Richtungen &uuml;ber die normale Fahrtroute.<br /><br /><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Freitag, 5. Juni 2026</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span></p> <p><span style=\"text-decoration: underline;\">Linie 77A:</span></p> <p>Alle aufgelassenen Haltestellen werden wieder eingehalten.</p> <p>Davon ausgenommen:<br />- Stadionbr&uuml;cke (in beiden Richtungen)<br />- Pierre-de-Coubertin-Platz (in beiden Richtungen)</p> <p>Diese Haltestellen entfallen im Zuge des Gleisbauprojekts.</p> <p><span style=\"text-decoration: underline;\">Linie 80A:</span></p> <p>Alle aufgelassenen Haltestellen werden wieder eingehalten.</p> <p>Davon ausgenommen:<br />- Stadionbr&uuml;cke (Richtung Neu Marx)</p> <p>Diese Haltestelle entf&auml;llt im Zuge des Gleisbauprojekts.</p>",
+    "title": "77A: Umleitung wegen Veranstaltungen",
+    "description": "<h2>Veranstaltung</h2> <p>Wegen diversen Veranstaltungen im Ernst-Happel-Stadion kommt es zu Umleitungen der Linie 77A</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />03. Juli 2026, ca. 14:00 Uhr bis Betriebsschluss<br />11. Juli 2026, ca. 14:00 Uhr bis Betriebsschluss</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span></p> <p><span style=\"text-decoration: underline;\">Linie 77A</span></p> <p>Umleitung in beiden Richtungen zwischen Ludwig-Koe&szlig;ler-Platz und Donaumarina &uuml;ber die A23.</p> <p>Die Haltestellen Klaschkaweg, Stadionbad, Ernst-Happel-Stadion, Stadion U und Marathonweg k&ouml;nnen dadurch nicht eingehalten werden.</p> <p>Die Haltestelle STADION U ist &uuml;ber die U2 von der Haltestelle DONAUMARINA U erreichbar.</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span></p> <p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/77A_Umleitung_A23.png\" alt=\"\" width=\"661\" height=\"661\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "012b376bf7921b9add1c29f69d81f45e914299250997e748f2dbc1481fc736a6",
-    "pubDate": "2026-06-07T00:00:00+02:00",
-    "starts_at": "2026-06-07T00:00:00+02:00",
-    "ends_at": "2026-06-30T23:59:00+02:00",
-    "_identity": "wl|hinweis|L=77A,80A|D=2026-06-07"
+    "guid": "d1297817ee10718651d484a8940d921a33ea574775f089682c8b7548d336d46d",
+    "pubDate": "2026-06-02T06:00:00+02:00",
+    "starts_at": "2026-06-02T06:00:00+02:00",
+    "ends_at": "2026-07-12T01:00:00+02:00",
+    "_identity": "wl|hinweis|L=77A|D=2026-06-02"
   },
   {
     "source": "Wiener Linien",
@@ -632,7 +632,7 @@
     "guid": "7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=10A|D=2026-06-25"
   },
   {
@@ -680,7 +680,7 @@
     "guid": "859c07ac82d3d56b571c9d40b92715cec9a5e72051ce135494c2ccdab4e04d97",
     "pubDate": "2026-06-29T06:25:33+02:00",
     "starts_at": "2026-06-29T06:25:33+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-29"
   },
   {
@@ -692,7 +692,7 @@
     "guid": "9034151e8763cdf4caf0bec378ab4da622c0f25cbdd1e4bc6e43ef2f71c058cc",
     "pubDate": "2026-06-29T05:52:42+02:00",
     "starts_at": "2026-06-29T05:52:42+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-29"
   },
   {
@@ -716,7 +716,7 @@
     "guid": "9df06bfc2e48c00874c89af43f4bbfa210411415ca49f7d69bc3fddce508179b",
     "pubDate": "2026-06-30T11:19:11+02:00",
     "starts_at": "2026-06-30T11:19:36+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-30"
   },
   {
@@ -728,7 +728,7 @@
     "guid": "d69c3df66dcd070109404b303a39f0d280b362368203f2c55b7abbe6fd37aa84",
     "pubDate": "2026-06-30T19:25:11+02:00",
     "starts_at": "2026-06-30T19:25:18+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T01:30:00+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-30"
   },
   {
@@ -740,7 +740,7 @@
     "guid": "62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92",
     "pubDate": "2026-06-30T00:00:25+02:00",
     "starts_at": "2026-06-30T00:00:25+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-06-30"
   },
   {
@@ -752,7 +752,7 @@
     "guid": "884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-25"
   },
   {
@@ -764,7 +764,7 @@
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-06-28T00:00:24+02:00",
     "starts_at": "2026-06-28T00:00:24+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-06-28"
   },
   {
@@ -776,7 +776,7 @@
     "guid": "5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-06-25"
   },
   {
@@ -800,7 +800,7 @@
     "guid": "00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-06-25"
   },
   {
@@ -812,7 +812,7 @@
     "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-06-25"
   },
   {
@@ -824,7 +824,7 @@
     "guid": "d69dbcd381e73ff23979749766d0ce677cb151b10269f6f878240d11cec54c8f",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-06-25"
   },
   {
@@ -836,7 +836,7 @@
     "guid": "05f43b3cc6e7fc469b2327c420ffd938743c80bae8e543e6b1266ae3efe72301",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=44A|D=2026-06-25"
   },
   {
@@ -860,7 +860,7 @@
     "guid": "2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18",
     "pubDate": "2026-06-25T00:00:14+02:00",
     "starts_at": "2026-06-25T00:00:14+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-06-25"
   },
   {
@@ -872,7 +872,7 @@
     "guid": "ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b",
     "pubDate": "2026-06-30T00:00:17+02:00",
     "starts_at": "2026-06-30T00:00:17+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-06-30"
   },
   {
@@ -886,18 +886,6 @@
     "starts_at": "2026-06-30T23:19:00+02:00",
     "ends_at": "2026-06-30T23:55:00+02:00",
     "_identity": "wl|störung|L=59A|D=2026-06-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5B: Feuerwehreinsatz Busse halten bei Linie 400",
-    "description": "Feuerwehreinsatz\nBusse halten bei Linie 400",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c7bbcd94b3ff32b30c2da73c71c22bd48107722bb9034b7b4075a578dd839489",
-    "pubDate": "2026-06-30T20:44:56+02:00",
-    "starts_at": "2026-06-30T20:44:56+02:00",
-    "ends_at": "2026-06-30T23:45:00+02:00",
-    "_identity": "wl|störung|L=5B|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
@@ -920,7 +908,7 @@
     "guid": "c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45",
     "pubDate": "2026-06-25T00:00:09+02:00",
     "starts_at": "2026-06-25T00:00:15+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-06-25"
   },
   {
@@ -944,20 +932,8 @@
     "guid": "af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf",
     "pubDate": "2026-06-28T00:00:24+02:00",
     "starts_at": "2026-06-28T00:00:24+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-06-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "87cde0ff8f531daad212e230c8873600d36c9a10b0da2554e6fac3c5a24c60e6",
-    "pubDate": "2026-06-30T22:38:00+02:00",
-    "starts_at": "2026-06-30T22:39:57+02:00",
-    "ends_at": "2026-06-30T23:39:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
@@ -987,7 +963,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U6: Rettungseinsatz",
-    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Am Schöpfwerk und Alterlaa in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 23:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Alterlaa.",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
     "pubDate": "2026-06-30T23:16:00+02:00",
@@ -1004,7 +980,7 @@
     "guid": "14d72afa7ef35cf4a782d1b4e669aa9e18ea4c13673e9bbf8d0e47d12f90a4fe",
     "pubDate": "2026-06-30T00:00:22+02:00",
     "starts_at": "2026-06-30T00:00:22+02:00",
-    "ends_at": "2026-06-30T23:59:59+02:00",
+    "ends_at": "2026-07-01T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-30|TK=einstieg brünner strasse 31 31a"
   }
 ]
