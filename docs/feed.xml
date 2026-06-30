@@ -7,8 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 30 Jun 2026 08:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 09:00:44 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[50A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">82a6fa0603ced13032f3de89c375e9df51698fabf0ac65310910fb5d500d24e1</guid>
+      <pubDate>Tue, 30 Jun 2026 08:55:00 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 09:00:44 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 08:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 30.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 30.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Blumental ↔ Wien Meidling]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;891432</guid>
+      <pubDate>Tue, 30 Jun 2026 08:50:29 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 09:00:44 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 08:50:29 +0200</ext:starts_at>
+      <description>Wegen eines Schadens am Gleis sind zwischen Wien Blumental Bahnhst und Wien Meidling Bahnhof (U) Zugfahrten bis voraussichtlich 10:00 Uhr nur eingeschränkt möglich. [Seit 30.06.2026]</description>
+      <content:encoded><![CDATA[Wegen eines Schadens am Gleis sind zwischen Wien Blumental Bahnhst und Wien Meidling Bahnhof (U) Zugfahrten bis voraussichtlich 10:00 Uhr nur eingeschränkt möglich.<br/>[Seit 30.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[98A: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,28 +42,6 @@
       <content:encoded><![CDATA[Die Linie 98A wird in beiden Richtungen zwischen Aspern, Oberdorfstraße und Jägermaiszufahrt über Biberhaufenweg - Plattensteinergasse - Lobaugasse umgeleitet.<br/>[Am 30.06.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2A: Signalstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9f3db5199f226ab3ba9c52a58ebc4785b97e870a3019788bb2cca3b8a3176deb</guid>
-      <pubDate>Tue, 30 Jun 2026 08:11:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 08:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 08:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Signalstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f6742e2e14a2e570249887c5b57afe641256f9d269c64df8e3fe64db025f2eea</guid>
-      <pubDate>Tue, 30 Jun 2026 08:11:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 08:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 08:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.06.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.06.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[57A: Straßenbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">808d1edbd40ceb6f577c10b2aae47841ce2ea364a1544545f74e06349895558f</guid>
@@ -52,6 +51,17 @@
       <ext:ends_at>Mon, 16 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Gumpendorfer Straße zwischen Fritz-Grünbaum-Platz und Laimgrubengasse wird die Linie 57A kurzgeführt. [07.07.2026 – 16.08.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Gumpendorfer Straße zwischen Fritz-Grünbaum-Platz und Laimgrubengasse wird die Linie 57A kurzgeführt.<br/>[07.07.2026 – 16.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7c9302b74c4151c193e8b61e865846e07389f3d8b7b69a75a90f6a2fde5e99f4</guid>
+      <pubDate>Tue, 30 Jun 2026 08:35:00 +0200</pubDate>
+      <ext:first_seen>Mon, 29 Jun 2026 20:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 08:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 30.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 30.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A/N66: Grenzackerstraße]]></title>
@@ -107,17 +117,6 @@
       <ext:ends_at>Sat, 29 Aug 2026 01:30:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei den Linien 11 und 71 zu Kurzführungen (22:30-01:00 Uhr). Zeitraum … [29.06.2026 – 29.08.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei den Linien 11 und 71 zu Kurzführungen (22:30-01:00 Uhr). Zeitraum …<br/>[29.06.2026 – 29.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N41: Gleisbauarbeiten Spitalgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5475a6ba45d3791ef7e0f4b7d28b664d01325be5b4aa8b510c1cd636c69b09e0</guid>
-      <pubDate>Sat, 27 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Sat, 27 Jun 2026 00:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 06 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41. Zeitraum: Ab Dienstag, 8. Juli 2026 Betriebsbeginn … [07.07.2026 – 06.09.2027]</description>
-      <content:encoded><![CDATA[Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41. Zeitraum: Ab Dienstag, 8. Juli 2026 Betriebsbeginn …<br/>[07.07.2026 – 06.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

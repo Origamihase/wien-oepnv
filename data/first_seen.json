@@ -5811,6 +5811,16 @@
       "epoch": 3
     }
   },
+  "82a6fa0603ced13032f3de89c375e9df51698fabf0ac65310910fb5d500d24e1": {
+    "first_seen": "2026-06-30T07:00:44.311116+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective vehicle.",
+        "title": "50A: delays"
+      },
+      "epoch": 3
+    }
+  },
   "82ec8f1d5d63d2478a5e017206e2ee91446f22e348392166f00ffe89e350fd5e": {
     "first_seen": "2026-06-10T14:00:58.900728+00:00",
     "translations": {
@@ -11880,6 +11890,16 @@
       "en": {
         "summary": "Due to an interlocking malfunction am Bahnhof, no journeys were possible in rearmost mode up to 21:54 watch.",
         "title": "Substances"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&891432": {
+    "first_seen": "2026-06-30T07:00:44.311116+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to damage to the track between Wien Blumental Bahnhst and Wien Meidling Bahnhof (U) Train journeys to expected 10:00 o'clock are limited.",
+        "title": "Wien Blumental \u2194 Wien Meidling"
       },
       "epoch": 3
     }
