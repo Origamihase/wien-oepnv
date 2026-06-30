@@ -614,18 +614,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Verunreinigung",
-    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1f0306b680e5da26f14eb1fee7aed5a4682caac6e0570037c68c42879db4b795",
-    "pubDate": "2026-06-30T06:32:00+02:00",
-    "starts_at": "2026-06-30T06:32:00+02:00",
-    "ends_at": "2026-06-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-06-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "25: Hitzebedingte Schäden an der Strecke",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Weichen Sie ersatzweise auf die Linien U1, 26 und 27 aus. Grund: Hitzebedingte Schäden an der Strecke im Bereich Josef-Baumann-Gasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -842,6 +830,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "97A: Verspätungen",
+    "description": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bd274360a1cf758cd30e6bb756cad0fd6f88a570b3745cad84e66baf887f53dc",
+    "pubDate": "2026-06-30T07:19:00+02:00",
+    "starts_at": "2026-06-30T07:19:00+02:00",
+    "ends_at": "2026-06-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=97A|D=2026-06-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U1: Verspätungen",
     "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -850,6 +850,18 @@
     "starts_at": "2026-06-30T06:00:00+02:00",
     "ends_at": "2026-06-30T23:55:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-06-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Betriebsstörung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
+    "pubDate": "2026-06-30T07:21:00+02:00",
+    "starts_at": "2026-06-30T07:21:00+02:00",
+    "ends_at": "2026-06-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-06-30"
   },
   {
     "source": "Wiener Linien",
