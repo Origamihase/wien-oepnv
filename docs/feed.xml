@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 01 Jul 2026 01:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 01:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N41: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">908a6646477b8f0d474c561c7fb0c344abcb6fd1a7bb9da6851e2ea73e165c97</guid>
+      <pubDate>Wed, 01 Jul 2026 01:12:00 +0200</pubDate>
+      <ext:first_seen>Wed, 01 Jul 2026 01:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 01 Jul 2026 01:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 01 Jul 2026 05:00:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 01.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 01.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11: Benützen Sie den Schienenersatzverkehr 71E]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -52,17 +63,6 @@
       <ext:ends_at>Wed, 01 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[29.06.2026 – 01.07.2026]</description>
       <content:encoded><![CDATA[[29.06.2026 – 01.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[98A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7d3809124c8fb6c9c53edd7fb85c94350e6cb1f20bb0f6db27aa14f334fe4eb8</guid>
-      <pubDate>Tue, 30 Jun 2026 08:23:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 08:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 08:23:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 01 Jul 2026 01:30:00 +0200</ext:ends_at>
-      <description>Die Linie 98A wird in beiden Richtungen zwischen Aspern, Oberdorfstraße und Jägermaiszufahrt über Biberhaufenweg - Plattensteinergasse - Lobaugasse umgeleitet. [30.06.2026 – 01.07.2026]</description>
-      <content:encoded><![CDATA[Die Linie 98A wird in beiden Richtungen zwischen Aspern, Oberdorfstraße und Jägermaiszufahrt über Biberhaufenweg - Plattensteinergasse - Lobaugasse umgeleitet.<br/>[30.06.2026 – 01.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[57A: Straßenbauarbeiten]]></title>
