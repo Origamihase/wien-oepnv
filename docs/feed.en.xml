@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 30 Jun 2026 05:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 06:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[57A: roadworks]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">808d1edbd40ceb6f577c10b2aae47841ce2ea364a1544545f74e06349895558f</guid>
+      <pubDate>Tue, 30 Jun 2026 06:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 06:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 16 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Gumpendorfer Straße between Fritz-Grünbaum-Platz and Laimgrubengasse, the line 57A operating short-running becomes the line Laimgrubengasse. [07.07.2026 – 16.08.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Gumpendorfer Straße between Fritz-Grünbaum-Platz and Laimgrubengasse, the line 57A operating short-running becomes the line Laimgrubengasse.<br/>[07.07.2026 – 16.08.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A/N66: Grenzackerstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:starts_at>Wed, 24 Jun 2026 13:36:53 +0200</ext:starts_at>
       <description>construction works between Wien Floridsdorf train station (U) and Wien Praterstern train station (U) between 1209.2026 to 1309.2026 some local trains cannot operate. [Since 24.06.2026]</description>
       <content:encoded><![CDATA[construction works between Wien Floridsdorf train station (U) and Wien Praterstern train station (U) between 1209.2026 to 1309.2026 some local trains cannot operate.<br/>[Since 24.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29A/29B/N30: Patrizigasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7c5d3d8d26eced87aae77de99e3c95b11096658dc996c0e5c8aff5ba88c20d05</guid>
-      <pubDate>Wed, 24 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 09:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 24 Jun 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately … [24.06.2026 – 24.06.2027]</description>
-      <content:encoded><![CDATA[Stop change of lines 29A, 29B and N30 towards Großfeldsiedlung U (29A, 29B) and Neu Leopoldau (N30) Stop: Patrizigase From: Freytaggasse32X to: approximately …<br/>[24.06.2026 – 24.06.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
