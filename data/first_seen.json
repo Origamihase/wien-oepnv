@@ -6373,6 +6373,16 @@
       "epoch": 2
     }
   },
+  "8c03b8e895b2d4a0128c618aca988a64bddde574c9066f235d0fcf9f069b5e83": {
+    "first_seen": "2026-06-30T21:30:57.676277+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: rescue operation.",
+        "title": "59A: rescue operation"
+      },
+      "epoch": 3
+    }
+  },
   "8c54650e65ef647f350297bb5f234db6c9420a95be4c9c46b35286f6ec869089": {
     "first_seen": "2026-06-25T05:30:50.349977+00:00",
     "translations": {
@@ -12078,6 +12088,16 @@
       "en": {
         "summary": "Due to damage to the track between Wien Blumental Bahnhst and Wien Meidling Bahnhof (U) Train journeys to expected 10:00 o'clock are limited.",
         "title": "Wien Blumental \u2194 Wien Meidling"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&891951": {
+    "first_seen": "2026-06-30T21:30:57.676277+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to am Bahnhof, no journeys were possible between Ternitz station and Payerbach-Reichenau at Rax station until 23:08 clock.",
+        "title": "Wien Hauptbahnhof \u2194 Wiener Neustadt Hauptbahnhof"
       },
       "epoch": 3
     }
