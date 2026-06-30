@@ -7,26 +7,37 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 30 Jun 2026 09:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 10:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[50A: delays]]></title>
+      <title><![CDATA[11: Schadhafter Zug Betrieb ab Zentralfriedhof 3. Tor]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">82a6fa0603ced13032f3de89c375e9df51698fabf0ac65310910fb5d500d24e1</guid>
-      <pubDate>Tue, 30 Jun 2026 08:55:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 09:00:44 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 08:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 30.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 30.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">a90822fcef651f127616c681db5c390a62a5b9ca689e0f1891c3c503d223b60d</guid>
+      <pubDate>Tue, 30 Jun 2026 09:54:11 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 10:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 09:54:33 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 30 Jun 2026 10:54:00 +0200</ext:ends_at>
+      <description>[Am 30.06.2026]</description>
+      <content:encoded><![CDATA[[Am 30.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Schadhafter Zug Betrieb ab Zentralfriedhof 3. Tor]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fc41e806db3b9166888e7c34f943fba22ddd78d81fe68b3b5bacbdec48cbd567</guid>
+      <pubDate>Tue, 30 Jun 2026 09:52:07 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 10:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 09:53:06 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 30 Jun 2026 10:52:00 +0200</ext:ends_at>
+      <description>[Am 30.06.2026]</description>
+      <content:encoded><![CDATA[[Am 30.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Blumental ↔ Wien Meidling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;891432</guid>
-      <pubDate>Tue, 30 Jun 2026 08:50:29 +0200</pubDate>
+      <pubDate>Tue, 30 Jun 2026 09:49:06 +0200</pubDate>
       <ext:first_seen>Tue, 30 Jun 2026 09:00:44 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 08:50:29 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 30 Jun 2026 09:49:06 +0200</ext:starts_at>
       <description>Due to damage to the track between Wien Blumental Bahnhst and Wien Meidling Bahnhof (U) Train journeys to expected 10:00 o'clock are limited. [Since 30.06.2026]</description>
       <content:encoded><![CDATA[Due to damage to the track between Wien Blumental Bahnhst and Wien Meidling Bahnhof (U) Train journeys to expected 10:00 o'clock are limited.<br/>[Since 30.06.2026]]]></content:encoded>
     </item>
@@ -106,17 +117,6 @@
       <ext:ends_at>Tue, 30 Jun 2026 23:59:59 +0200</ext:ends_at>
       <description>track damage Einstieg on line 26 (stop direction Floridsdorf &amp;lt;&amp;gt;) [29.06.2026 – 30.06.2026]</description>
       <content:encoded><![CDATA[track damage Einstieg on line 26 (stop direction Floridsdorf &lt;&gt;)<br/>[29.06.2026 – 30.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/71: track construction works (phase 2)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4c64126f8dcb715300c11f33ab79797ce98fa5c51c402ca312838a3e17b64e16</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Sat, 27 Jun 2026 01:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 29 Aug 2026 01:30:00 +0200</ext:ends_at>
-      <description>Because of track construction works in the Simmeringer Hauptstraße, short tours occur in the evening hours Monday to Friday on the lines 11 and 71 (22:30-01:00). Period … [29.06.2026 – 29.08.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works in the Simmeringer Hauptstraße, short tours occur in the evening hours Monday to Friday on the lines 11 and 71 (22:30-01:00). Period …<br/>[29.06.2026 – 29.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
