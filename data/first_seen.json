@@ -5711,6 +5711,16 @@
       "epoch": 3
     }
   },
+  "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c": {
+    "first_seen": "2026-06-30T20:01:05.107978+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "42: service obstruction False Parker"
+      },
+      "epoch": 3
+    }
+  },
   "7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065": {
     "first_seen": "2026-06-05T09:01:06.526902+00:00",
     "translations": {
@@ -7754,16 +7764,6 @@
         "summary": "The pipe laying work (preparations for underground construction) will be carried out in the actual area of Hernals main road by day, night and sometimes also on weekends \u2026",
         "title": "Hernals Hauptstra\u00dfe from Redtenbachergasse and Schadinagasse to Julius-Meinl-Gasse"
       }
-    }
-  },
-  "aab9bbd6f05e9bae016b80fee4df649e0a53efbaca65de2688b7657f0877d33d": {
-    "first_seen": "2026-06-30T16:00:54.411345+00:00",
-    "translations": {
-      "en": {
-        "summary": "The line 37A is redirected towards Brigittenauer Br\u00fccke between Spittelau S U and H\u00f6chst\u00e4dtplatz via Klosterneuburger Stra\u00dfe, Wexstra\u00dfe, Stromstra\u00dfe.",
-        "title": "37A: fire-brigade operation"
-      },
-      "epoch": 3
     }
   },
   "aacc39f83fe170f26c07ccc402e213333a35b8dff67f135ce2ceafae46631d10": {
@@ -9960,8 +9960,10 @@
     "first_seen": "2026-06-30T19:31:11.864025+00:00",
     "translations": {
       "en": {
-        "title": "4A: rescue operation Bus stops at Wittelsbachstr."
-      }
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "4A: rescue operation Buses stop at the stop towards Wittelsbachstr."
+      },
+      "epoch": 3
     }
   },
   "e27bfff5a685530c3cdbe18175fc09c3966a6b9bcc9e69b577c24825825e6558": {
