@@ -107,6 +107,16 @@
       "epoch": 2
     }
   },
+  "01a41f05a53e143eca6b02bb90cab71315cbb833b85bf96f9ff238f958072872": {
+    "first_seen": "2026-06-30T19:00:59.547279+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: fire-brigade operation.",
+        "title": "11A: fire-brigade operation"
+      },
+      "epoch": 3
+    }
+  },
   "01c1edad0db092aed085d667951c6be88cf791b9631f3f4007cfee702ab02beb": {
     "first_seen": "2026-05-28T12:30:53.427781+00:00",
     "translations": {
@@ -4183,6 +4193,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: police operation.",
         "title": "5A: police operation"
+      },
+      "epoch": 3
+    }
+  },
+  "5f671ec81f4101e7a69acb74ef323b5826af481e95c7cb595f76f8b7e4676e03": {
+    "first_seen": "2026-06-30T19:00:59.547279+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "5B: fire-brigade operation"
       },
       "epoch": 3
     }

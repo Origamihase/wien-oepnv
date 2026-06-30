@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 30 Jun 2026 20:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 21:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5B: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5f671ec81f4101e7a69acb74ef323b5826af481e95c7cb595f76f8b7e4676e03</guid>
+      <pubDate>Tue, 30 Jun 2026 20:34:00 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 21:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 20:34:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.06.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">01a41f05a53e143eca6b02bb90cab71315cbb833b85bf96f9ff238f958072872</guid>
+      <pubDate>Tue, 30 Jun 2026 20:30:00 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 21:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 20:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz. [Am 30.06.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.<br/>[Am 30.06.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62: Fremdunfall Betrieb ab Hofwiesengasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Tue, 13 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 66A und N66 in Richtung Liesing S Haltestelle: Grenzackerstraße Von: Laxenburger Straße 104 nach Raxstraße Nach: etwa 30 Meter in Richtung … [13.07.2026 – 13.07.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 66A und N66 in Richtung Liesing S Haltestelle: Grenzackerstraße Von: Laxenburger Straße 104 nach Raxstraße Nach: etwa 30 Meter in Richtung …<br/>[13.07.2026 – 13.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[76B/79A/79B: Straßenbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">431e057ca57f91c555271d2221f4da90b3968eb8cadc9754b4e9a03e2aad94a1</guid>
-      <pubDate>Mon, 29 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 29 Jun 2026 13:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 01 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten in der Margentinstraße werden die Linien 76B, 79A und 79B umgeleitet. [07.07.2026 – 01.09.2027]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten in der Margentinstraße werden die Linien 76B, 79A und 79B umgeleitet.<br/>[07.07.2026 – 01.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: Hitzebedingte Schäden an der Strecke]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b1890e2cb58433c4d05ae0fc5cab9e840d727120ea3980e08e0b067f4918848</guid>
-      <pubDate>Tue, 30 Jun 2026 13:22:00 +0200</pubDate>
-      <ext:first_seen>Mon, 29 Jun 2026 08:01:21 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 13:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. [30.06.2026 – 04.07.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse.<br/>[30.06.2026 – 04.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
