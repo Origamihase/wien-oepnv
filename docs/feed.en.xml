@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 30 Jun 2026 08:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 08:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[97A: delays]]></title>
+      <title><![CDATA[98A: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bd274360a1cf758cd30e6bb756cad0fd6f88a570b3745cad84e66baf887f53dc</guid>
-      <pubDate>Tue, 30 Jun 2026 07:19:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 07:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 07:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 30 Jun 2026 07:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 30.06.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 30.06.2026]]]></content:encoded>
+      <guid isPermaLink="false">7d3809124c8fb6c9c53edd7fb85c94350e6cb1f20bb0f6db27aa14f334fe4eb8</guid>
+      <pubDate>Tue, 30 Jun 2026 08:23:00 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 08:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 08:23:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>The line 98A is redirected in both directions between Aspern, Oberdorfstraße and Jägermaiszufahrt via Biberhaufenweg - Plattensteinergasse - Lobaugasse. [On 30.06.2026]</description>
+      <content:encoded><![CDATA[The line 98A is redirected in both directions between Aspern, Oberdorfstraße and Jägermaiszufahrt via Biberhaufenweg - Plattensteinergasse - Lobaugasse.<br/>[On 30.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A: signal disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9f3db5199f226ab3ba9c52a58ebc4785b97e870a3019788bb2cca3b8a3176deb</guid>
+      <pubDate>Tue, 30 Jun 2026 08:11:00 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 08:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 08:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 30.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 30.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: signal disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f6742e2e14a2e570249887c5b57afe641256f9d269c64df8e3fe64db025f2eea</guid>
+      <pubDate>Tue, 30 Jun 2026 08:11:00 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 08:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 08:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 30 Jun 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 30.06.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 30.06.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[57A: roadworks]]></title>
@@ -96,27 +118,6 @@
       <ext:ends_at>Mon, 06 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Due to extensive track construction works in the range Spitalgasse there is an diversion of the line N41. Period: From Tuesday, 8. July 2026 Start of operation … [07.07.2026 – 06.09.2027]</description>
       <content:encoded><![CDATA[Due to extensive track construction works in the range Spitalgasse there is an diversion of the line N41. Period: From Tuesday, 8. July 2026 Start of operation …<br/>[07.07.2026 – 06.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Gentzgasse from Aumannplatz and Lazaristengasse to Köhlergasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">00ab0c646d433d40a74330ab21e2ed45d81566dbabe18bcb83400bcf8bcaf382</guid>
-      <pubDate>Mon, 27 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 25 Jun 2026 14:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Since the affected tram lines will also be discontinued during the period from 4. May 2026 to 27. June 2026, Wiener Linien GmbH &amp;amp; Co KG will have a … [27.04.2026 – 31.07.2026]</description>
-      <content:encoded><![CDATA[Since the affected tram lines will also be discontinued during the period from 4. May 2026 to 27. June 2026, Wiener Linien GmbH &amp; Co KG will have a …<br/>[27.04.2026 – 31.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Floridsdorf ↔ Gänserndorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;888637</guid>
-      <pubDate>Wed, 24 Jun 2026 16:15:35 +0200</pubDate>
-      <ext:first_seen>Wed, 24 Jun 2026 16:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 24 Jun 2026 16:15:35 +0200</ext:starts_at>
-      <description>construction works between Gänserndorf train station and Deutsch Wagram train station from Gänserndorf09.2026 (00:10 clock) to 05.10.2026 (04:20 clock) some local trains … [Since 24.06.2026]</description>
-      <content:encoded><![CDATA[construction works between Gänserndorf train station and Deutsch Wagram train station from Gänserndorf09.2026 (00:10 clock) to 05.10.2026 (04:20 clock) some local trains …<br/>[Since 24.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
