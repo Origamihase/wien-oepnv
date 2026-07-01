@@ -782,12 +782,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
+    "title": "42: Falschparker",
     "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
     "pubDate": "2026-07-01T16:09:00+02:00",
-    "starts_at": "2026-07-01T16:22:43+02:00",
+    "starts_at": "2026-07-01T16:09:00+02:00",
     "ends_at": "2026-07-01T23:55:00+02:00",
     "_identity": "wl|störung|L=42|D=2026-07-01"
   },
@@ -890,6 +890,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "48A: Fremdunfall Betrieb ab Guttaterplatz",
+    "description": "Fremdunfall\nBetrieb ab Guttaterplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "addf23f49faa6ea302a97bff6f228e0721c3a7b906d7aea27feb9f543dfc977b",
+    "pubDate": "2026-07-01T17:29:21+02:00",
+    "starts_at": "2026-07-01T17:29:21+02:00",
+    "ends_at": "2026-07-01T18:28:00+02:00",
+    "_identity": "wl|störung|L=48A|D=2026-07-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -902,12 +914,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "62: Rettungseinsatz",
     "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
     "pubDate": "2026-07-01T16:15:00+02:00",
-    "starts_at": "2026-07-01T16:22:14+02:00",
+    "starts_at": "2026-07-01T16:15:00+02:00",
     "ends_at": "2026-07-01T23:55:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-07-01"
   },
@@ -939,25 +951,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 17:20 Uhr. Grund: Falschparker im Haltestellenbereich Blumengasse.",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
     "pubDate": "2026-07-01T16:52:00+02:00",
     "starts_at": "2026-07-01T16:54:58+02:00",
     "ends_at": "2026-07-01T23:55:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "LB: Badner Bahn: Rettungseinsatz",
-    "description": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3fd21a41cf90e091889603d64707f84f70d7247f4a5a1212199842819e9d2754",
-    "pubDate": "2026-07-01T16:15:00+02:00",
-    "starts_at": "2026-07-01T16:15:00+02:00",
-    "ends_at": "2026-07-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=LB|D=2026-07-01"
   },
   {
     "source": "Wiener Linien",
