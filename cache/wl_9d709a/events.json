@@ -782,18 +782,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Falschparker",
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2026-07-01T16:09:00+02:00",
-    "starts_at": "2026-07-01T16:09:00+02:00",
-    "ends_at": "2026-07-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=42|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "43: Gleisbauarbeiten",
     "description": "Linie 43: Betrieb nur zwischen Schottentor U und Dornbach. Weichen Sie ersatzweise auf die Linie 43A aus. Voraussichtliche Dauer: 31.07.2026. Grund: Gleisbauarbeiten im Bereich Dornbacher Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -854,6 +842,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "45A: Feuerwehreinsatz",
+    "description": "Linie 45A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6510c912772a0aa957ccac7b888add6231a2075f3ad3879915e0960a9873eb84",
+    "pubDate": "2026-07-01T17:39:00+02:00",
+    "starts_at": "2026-07-01T17:39:00+02:00",
+    "ends_at": "2026-07-01T18:25:00+02:00",
+    "_identity": "wl|störung|L=45A|D=2026-07-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "45A: Feuerwehreinsatz Betrieb ab Maroltingergasse",
     "description": "Feuerwehreinsatz\nBetrieb ab Maroltingergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -890,6 +890,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "46A: Feuerwehreinsatz",
+    "description": "Linie 46A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ea2b0c394b96bfcb6b5b8dba169dca75565c4b1c842c340537d0ac3099a4841e",
+    "pubDate": "2026-07-01T17:39:00+02:00",
+    "starts_at": "2026-07-01T17:39:00+02:00",
+    "ends_at": "2026-07-01T18:25:00+02:00",
+    "_identity": "wl|störung|L=46A|D=2026-07-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "46A: Feuerwehreinsatz Betrieb ab Maroltingergasse",
     "description": "Feuerwehreinsatz\nBetrieb ab Maroltingergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -909,6 +921,18 @@
     "pubDate": "2026-07-01T17:46:51+02:00",
     "starts_at": "2026-07-01T17:46:51+02:00",
     "ends_at": "2026-07-01T18:46:00+02:00",
+    "_identity": "wl|störung|L=46B|D=2026-07-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46B: Feuerwehreinsatz",
+    "description": "Linie 46B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a50e682e3cc2b160b3ea7db39ce03cdb1e2cf84517a54a28a9181380901a2876",
+    "pubDate": "2026-07-01T17:39:00+02:00",
+    "starts_at": "2026-07-01T17:39:00+02:00",
+    "ends_at": "2026-07-01T18:25:00+02:00",
     "_identity": "wl|störung|L=46B|D=2026-07-01"
   },
   {
@@ -975,24 +999,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "48A: Feuerwehreinsatz",
-    "description": "Die Linie 48A wird in beiden Richtungen zwischen Gutraterplatz und Klinik Ottakring über die Werhardtstraße umgeleitet. Voraussichtliche Dauer: 19:00 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Rankgasse.",
+    "description": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "6992b9a4cf6d5916d616c846f3846697da8006474b1bd77bcf6edf864c0a5bc9",
     "pubDate": "2026-07-01T17:27:00+02:00",
     "starts_at": "2026-07-01T17:27:00+02:00",
     "ends_at": "2026-07-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=48A|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Feuerwehreinsatz Betrieb ab Schmelz, Gablenzgasse",
-    "description": "Feuerwehreinsatz\nBetrieb ab Schmelz, Gablenzgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "edc7d38bf704f451fa3ef661ac151e5eeadd2360e7009e30e746da508416256e",
-    "pubDate": "2026-07-01T17:29:21+02:00",
-    "starts_at": "2026-07-01T17:30:49+02:00",
-    "ends_at": "2026-07-01T18:29:00+02:00",
     "_identity": "wl|störung|L=48A|D=2026-07-01"
   },
   {
@@ -1010,14 +1022,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Rettungseinsatz",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "6: Rettungseinsatz",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
-    "pubDate": "2026-07-01T16:15:00+02:00",
-    "starts_at": "2026-07-01T16:15:00+02:00",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2026-07-01T18:26:00+02:00",
+    "starts_at": "2026-07-01T18:26:00+02:00",
     "ends_at": "2026-07-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=62|D=2026-07-01"
+    "_identity": "wl|störung|L=6|D=2026-07-01"
   },
   {
     "source": "Wiener Linien",
@@ -1046,32 +1058,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-07-01T16:52:00+02:00",
-    "starts_at": "2026-07-01T16:52:00+02:00",
-    "ends_at": "2026-07-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U1: Rettungseinsatz",
     "description": "Linie U1: Fahrtbehinderung in Richtung Leopoldau S U. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
     "pubDate": "2026-07-01T16:35:00+02:00",
     "starts_at": "2026-07-01T16:35:00+02:00",
-    "ends_at": "2026-07-01T23:55:00+02:00",
+    "ends_at": "2026-07-01T18:26:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-07-01"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U2: Betriebsstörung",
-    "description": "Die Linie U2 fährt derzeit nur zwischen Seestadt und Schottentor. Weichen Sie ersatzweise auf die Linien U1, U4, D, 1 aus. Voraussichtliche Dauer: 18:30 Uhr. Grund: Betriebsstörung im Haltestellenbereich Rathaus.",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
     "pubDate": "2026-07-01T17:54:00+02:00",
