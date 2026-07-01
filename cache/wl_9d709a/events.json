@@ -662,30 +662,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Feuerwehreinsatz Betrieb ab Bruno-Marek-Allee",
-    "description": "Feuerwehreinsatz\nBetrieb ab Bruno-Marek-Allee",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3b28d3b8a735c6b0c9a480604d6dcf2f6e065cbf5c773582f9f285057ef0e899",
-    "pubDate": "2026-07-01T06:02:17+02:00",
-    "starts_at": "2026-07-01T06:02:17+02:00",
-    "ends_at": "2026-07-01T07:01:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e01752f13190de2f82114ae013b96314ac2f97e52524124ddac4e08d2e05ab7",
-    "pubDate": "2026-07-01T06:01:48+02:00",
-    "starts_at": "2026-07-01T06:01:48+02:00",
-    "ends_at": "2026-07-01T07:01:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -693,18 +669,6 @@
     "pubDate": "2026-07-01T06:46:01+02:00",
     "starts_at": "2026-07-01T06:46:01+02:00",
     "ends_at": "2026-07-01T07:45:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Feuerwehreinsatz Züge halten bei Linie O",
-    "description": "Feuerwehreinsatz\nZüge halten bei Linie O",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c71a48110a6f91c65cc7a2acad446e886ea885068725ab8d9e255b32cd0b06bc",
-    "pubDate": "2026-07-01T06:02:46+02:00",
-    "starts_at": "2026-07-01T06:02:46+02:00",
-    "ends_at": "2026-07-01T07:02:00+02:00",
     "_identity": "wl|störung|L=12|D=2026-07-01"
   },
   {
@@ -962,6 +926,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62A: Verspätungen",
+    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4c915370426414728152fb20f853c79b453cd1d24b626f29dba35c836c4029c2",
+    "pubDate": "2026-07-01T07:00:00+02:00",
+    "starts_at": "2026-07-01T07:00:00+02:00",
+    "ends_at": "2026-07-01T23:55:00+02:00",
+    "_identity": "wl|störung|L=62A|D=2026-07-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -986,14 +962,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2026-07-01T05:54:00+02:00",
-    "starts_at": "2026-07-01T05:54:00+02:00",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-07-01T07:13:00+02:00",
+    "starts_at": "2026-07-01T07:13:00+02:00",
     "ends_at": "2026-07-01T23:55:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-07-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-07-01T07:13:00+02:00",
+    "starts_at": "2026-07-01T07:13:00+02:00",
+    "ends_at": "2026-07-01T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-07-01"
   },
   {
     "source": "Wiener Linien",
