@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 01 Jul 2026 03:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 04:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N41: rescue operation]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Wed, 01 Jul 2026 05:00:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: rescue operation. [On 01.07.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 01.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Use rail replacement service 71E]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ada902634b8f201c79dcefb677d9cf487db94fdd63d609fe94f62aba9645aab3</guid>
-      <pubDate>Tue, 30 Jun 2026 22:30:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 22:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 22:30:21 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 01 Jul 2026 04:00:00 +0200</ext:ends_at>
-      <description>[30.06.2026 – 01.07.2026]</description>
-      <content:encoded><![CDATA[[30.06.2026 – 01.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[69A: construction works Gänsbachergasse]]></title>
@@ -76,17 +65,6 @@
       <content:encoded><![CDATA[Because of roadworks in the Gumpendorfer Straße between Fritz-Grünbaum-Platz and Laimgrubengasse, the line 57A operating short-running becomes the line Laimgrubengasse.<br/>[07.07.2026 – 16.08.2027]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[71: Use the rail replacement service 71E]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9e6a5649f358321a3f0deb22e5557135fd9cc18eaa7418d24f381d6e2eeb4c83</guid>
-      <pubDate>Tue, 30 Jun 2026 22:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 29 Jun 2026 23:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 30 Jun 2026 22:30:21 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 01 Jul 2026 04:00:00 +0200</ext:ends_at>
-      <description>[30.06.2026 – 01.07.2026]</description>
-      <content:encoded><![CDATA[[30.06.2026 – 01.07.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[66A/N66: Grenzackerstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4f59ef339aa7720f042f990681bb3d64fa0b6a4040158d46cb9addfc532f0bf0</guid>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sat, 04 Jul 2026 23:55:00 +0200</ext:ends_at>
       <description>Operation only between Aspern, Oberdorfstraße and Josef-Baumann-Gasse. [30.06.2026 – 04.07.2026]</description>
       <content:encoded><![CDATA[Operation only between Aspern, Oberdorfstraße and Josef-Baumann-Gasse.<br/>[30.06.2026 – 04.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11/71: track construction works (phase 2)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4c64126f8dcb715300c11f33ab79797ce98fa5c51c402ca312838a3e17b64e16</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 27 Jun 2026 01:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 29 Jun 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 29 Aug 2026 01:30:00 +0200</ext:ends_at>
+      <description>Because of track construction works in the Simmeringer Hauptstraße, short tours occur in the evening hours Monday to Friday on the lines 11 and 71 (22:30-01:00). Period … [29.06.2026 – 29.08.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works in the Simmeringer Hauptstraße, short tours occur in the evening hours Monday to Friday on the lines 11 and 71 (22:30-01:00). Period …<br/>[29.06.2026 – 29.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N41: track construction works Spitalgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5475a6ba45d3791ef7e0f4b7d28b664d01325be5b4aa8b510c1cd636c69b09e0</guid>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 27 Jun 2026 00:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 06 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Due to extensive track construction works in the range Spitalgasse there is an diversion of the line N41. Period: From Tuesday, 8. July 2026 Start of operation … [07.07.2026 – 06.09.2027]</description>
+      <content:encoded><![CDATA[Due to extensive track construction works in the range Spitalgasse there is an diversion of the line N41. Period: From Tuesday, 8. July 2026 Start of operation …<br/>[07.07.2026 – 06.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
