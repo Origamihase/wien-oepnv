@@ -7,18 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 01 Jul 2026 20:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 21:01:18 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[Wien Westbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;892446</guid>
-      <pubDate>Wed, 01 Jul 2026 19:42:10 +0200</pubDate>
-      <ext:first_seen>Wed, 01 Jul 2026 19:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 01 Jul 2026 19:42:10 +0200</ext:starts_at>
-      <description>Wegen einer Stellwerkstörung am Bahnhof waren in Wien Westbahnhof (U) bis 19:38 Uhr keine Fahrten möglich. [Seit 01.07.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Stellwerkstörung am Bahnhof waren in Wien Westbahnhof (U) bis 19:38 Uhr keine Fahrten möglich.<br/>[Seit 01.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[38A: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +107,17 @@
       <ext:ends_at>Wed, 01 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten in der Margentinstraße werden die Linien 76B, 79A und 79B umgeleitet. [07.07.2026 – 01.09.2027]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten in der Margentinstraße werden die Linien 76B, 79A und 79B umgeleitet.<br/>[07.07.2026 – 01.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[25: Hitzebedingte Schäden an der Strecke]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b1890e2cb58433c4d05ae0fc5cab9e840d727120ea3980e08e0b067f4918848</guid>
+      <pubDate>Tue, 30 Jun 2026 13:22:00 +0200</pubDate>
+      <ext:first_seen>Mon, 29 Jun 2026 08:01:21 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 13:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 04 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. [30.06.2026 – 04.07.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse.<br/>[30.06.2026 – 04.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
