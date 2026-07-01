@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 01 Jul 2026 07:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 08:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26/27: Stromstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d851094877b63c92f6834a70f1f3ac4f5d1dd63631b6082b9238ae56d2467fe3</guid>
+      <pubDate>Wed, 01 Jul 2026 07:44:00 +0200</pubDate>
+      <ext:first_seen>Wed, 01 Jul 2026 08:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 01 Jul 2026 07:44:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 01 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Floridsdorf S U. Linie 27: Betrieb nur zwischen Aspern Nord S U und Floridsdorf S U. Weichen Sie ersatzweise auf … [Am 01.07.2026]</description>
+      <content:encoded><![CDATA[Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Floridsdorf S U. Linie 27: Betrieb nur zwischen Aspern Nord S U und Floridsdorf S U. Weichen Sie ersatzweise auf …<br/>[Am 01.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[25: Aspern Nord]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 29 Aug 2026 01:30:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei den Linien 11 und 71 zu Kurzführungen (22:30-01:00 Uhr). Zeitraum … [29.06.2026 – 29.08.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Simmeringer Hauptstraße kommt es in den Abendstunden montags bis freitags bei den Linien 11 und 71 zu Kurzführungen (22:30-01:00 Uhr). Zeitraum …<br/>[29.06.2026 – 29.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N41: Gleisbauarbeiten Spitalgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5475a6ba45d3791ef7e0f4b7d28b664d01325be5b4aa8b510c1cd636c69b09e0</guid>
-      <pubDate>Sat, 27 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Sat, 27 Jun 2026 00:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 06 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41. Zeitraum: Ab Dienstag, 8. Juli 2026 Betriebsbeginn … [07.07.2026 – 06.09.2027]</description>
-      <content:encoded><![CDATA[Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41. Zeitraum: Ab Dienstag, 8. Juli 2026 Betriebsbeginn …<br/>[07.07.2026 – 06.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
