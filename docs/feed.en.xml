@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 01 Jul 2026 20:01:13 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 20:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Westbahnhof]]></title>
@@ -18,17 +18,6 @@
       <ext:starts_at>Wed, 01 Jul 2026 19:42:10 +0200</ext:starts_at>
       <description>am Bahnhof is limited due to interlocking failure Wien Westbahnhof (U) train journeys to expected 19:30 watch. [Since 01.07.2026]</description>
       <content:encoded><![CDATA[am Bahnhof is limited due to interlocking failure Wien Westbahnhof (U) train journeys to expected 19:30 watch.<br/>[Since 01.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[42: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fcc588488bb002040646d8e3e16c972ea0527355952ae563a97ec0dc3153b619</guid>
-      <pubDate>Wed, 01 Jul 2026 19:10:00 +0200</pubDate>
-      <ext:first_seen>Wed, 01 Jul 2026 19:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 01 Jul 2026 19:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 01 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: fire-brigade operation. [On 01.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: fire-brigade operation.<br/>[On 01.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: construction works]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Tue, 13 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of lines 66A and N66 towards Liesing S Stop: Grenzackerstraße From: Laxenburger Straße 104 to Raxstraße To: about 30 Meter towards … [13.07.2026 – 13.07.2027]</description>
       <content:encoded><![CDATA[Stop change of lines 66A and N66 towards Liesing S Stop: Grenzackerstraße From: Laxenburger Straße 104 to Raxstraße To: about 30 Meter towards …<br/>[13.07.2026 – 13.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[76B/79A/79B: roadworks]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">431e057ca57f91c555271d2221f4da90b3968eb8cadc9754b4e9a03e2aad94a1</guid>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 29 Jun 2026 13:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 01 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Margentinstraße, the lines 76B, 79A and 79B are being redirected. [07.07.2026 – 01.09.2027]</description>
+      <content:encoded><![CDATA[Because of construction works in the Margentinstraße, the lines 76B, 79A and 79B are being redirected.<br/>[07.07.2026 – 01.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
