@@ -1643,7 +1643,11 @@
   "210b08a061991185eeff2755a4bd167b6c9a20d1703d1c621da74ef84d96a1b5": {
     "first_seen": "2026-07-02T16:01:10.705299+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: rescue operation.",
+        "title": "9A: service obstruction due to rescue operation"
+      },
+      "epoch": 3
     }
   },
   "2138817ce7dee6c1ab9ec27b0e566a638feb7edc33c7812f5c58764e8b4aa7bc": {
@@ -8198,7 +8202,11 @@
   "aeb0b84ae5e8a62af5d84641c15f91257543dc2b7569bb960589eb875b2fd4cc": {
     "first_seen": "2026-07-02T16:01:10.705299+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: rescue operation.",
+        "title": "73A: rescue operation"
+      },
+      "epoch": 3
     }
   },
   "af694a787390f00efbbba14449b21bed1f739bb14b1a0ac3209ca26594573a83": {
@@ -10020,6 +10028,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: traffic accident.",
         "title": "80A: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
+  "dc030bd7a87025d7c906aa7c111e1fb5c59bdfc7731782039fefaa0c540345bf": {
+    "first_seen": "2026-07-02T16:30:48.279273+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: signal disruption.",
+        "title": "U3: signal disruption"
       },
       "epoch": 3
     }
@@ -12442,6 +12460,16 @@
       "en": {
         "summary": "Due to a delay in the workflow, only limited journeys were possible between Vienna Hbf (U) and Wien Matzleinsdorfer Platz Bahnhst to 17:33 watch.",
         "title": "Wien Hauptbahnhof \u2194 Wien Matzleinsdorfer Platz"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&892937": {
+    "first_seen": "2026-07-02T16:30:48.279273+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an interlocking malfunction am Bahnhof, no journeys are currently possible in Kledering Bahnhst.",
+        "title": "Kledering"
       },
       "epoch": 3
     }
