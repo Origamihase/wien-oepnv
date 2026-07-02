@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:31:05 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 01:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[25/26/27: Heat-related damage to the line]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1dea5e135509d19764405a41b86a6a4ba9d95f32d63dc5f26e73c922f3afec38</guid>
+      <pubDate>Thu, 02 Jul 2026 21:46:00 +0200</pubDate>
+      <ext:first_seen>Fri, 03 Jul 2026 01:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 21:46:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 03 Jul 2026 01:30:00 +0200</ext:ends_at>
+      <description>Operation only between Aspern, Oberdorfstraße and Kagran U. Line 26: Operation only between Hausfeldstraße U and Josef-Baumann-Gasse. [02.07.2026 – 03.07.2026]</description>
+      <content:encoded><![CDATA[Operation only between Aspern, Oberdorfstraße and Kagran U. Line 26: Operation only between Hausfeldstraße U and Josef-Baumann-Gasse.<br/>[02.07.2026 – 03.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Westbahnhof: New construction belt 6-12]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -87,28 +98,6 @@
       <content:encoded><![CDATA[For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[26: Heat damage service from Floridsdorf S U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">65c9d43c46acc2d973ea54fe49fd4ee5a22a2a85e0f0bc50ef14fb1f0d0a4a46</guid>
-      <pubDate>Thu, 02 Jul 2026 21:49:35 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:00:42 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 21:49:35 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 03 Jul 2026 01:00:00 +0200</ext:ends_at>
-      <description>[02.07.2026 – 03.07.2026]</description>
-      <content:encoded><![CDATA[[02.07.2026 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Heat damage rail replacement service from Josef-Baumann-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bb44fb0315955aef9831e0ecd7cb3b92ba776bfaaff79ba4cbef52feb682507b</guid>
-      <pubDate>Thu, 02 Jul 2026 21:48:46 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:00:42 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 21:49:06 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 03 Jul 2026 01:00:00 +0200</ext:ends_at>
-      <description>[02.07.2026 – 03.07.2026]</description>
-      <content:encoded><![CDATA[[02.07.2026 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[1/2/71/D: Parlament]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b2b1b281ab505d94322a4c3115c52176813e47db9e78f08f04dafe9f3849d4b1</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Mon, 31 Aug 2026 23:59:00 +0200</ext:ends_at>
       <description>Stop Parlament For the acceleration of tram lines at the ring, stop Parlament will be permanently Discontinued. [13.07.2026 – 31.08.2026]</description>
       <content:encoded><![CDATA[Stop Parlament For the acceleration of tram lines at the ring, stop Parlament will be permanently Discontinued.<br/>[13.07.2026 – 31.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/37/38/40/41/42/71/D: demonstration on 04.07.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2ef426f7ee49b23a8f686fd2ae86312b94298bbb6c6bd9f03ebcd2826c5806cf</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 12:01:22 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 04 Jul 2026 21:00:00 +0200</ext:ends_at>
+      <description>Demonstrations Traffic is taking place through demonstrations in the inner city, Währinger Straße. [02.07.2026 – 04.07.2026]</description>
+      <content:encoded><![CDATA[Demonstrations Traffic is taking place through demonstrations in the inner city, Währinger Straße.<br/>[02.07.2026 – 04.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
