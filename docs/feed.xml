@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 02 Jul 2026 14:01:20 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 14:31:09 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eaf96db733f004733a9b91b0e04111a3f9331a02f6c30911495b5b22f6e936d3</guid>
+      <pubDate>Thu, 02 Jul 2026 14:14:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 14:31:09 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 14:14:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 02 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 02.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 02.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[10A: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 10 Jul 2026 07:00:00 +0200</ext:ends_at>
       <description>Wegen Rohrleitungsarbeiten im Bereich Gänsbachergasse / Schlechtastraße wird die Linie 69A umgeleitet. [06.07.2026 – 10.07.2026]</description>
       <content:encoded><![CDATA[Wegen Rohrleitungsarbeiten im Bereich Gänsbachergasse / Schlechtastraße wird die Linie 69A umgeleitet.<br/>[06.07.2026 – 10.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[14A: Bauarbeiten Fritz-Grünbaum-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">32809b2554d0b1e22afc0c7c6cb54cfe116db966e9f10fd0991a9127a067760f</guid>
-      <pubDate>Tue, 30 Jun 2026 06:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 14:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 16 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Fritz-Grünbaum-Platz / Gumpendorfer Straße wird die Linie 14A kurz geführt. [07.07.2026 – 16.08.2027]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Fritz-Grünbaum-Platz / Gumpendorfer Straße wird die Linie 14A kurz geführt.<br/>[07.07.2026 – 16.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
