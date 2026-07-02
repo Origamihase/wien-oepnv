@@ -44,6 +44,48 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Neubaugürtel 6-12",
+    "description": "Derrechte Fahrstreifen wird in Fahrtrichtung Burggasse gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. Das Linksabbiegen in Richtung Felberstraße ist nicht möglich. \nBeginn: 05.07.2026 00:00 Uhr \nGeplant bis: 06.09.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 7",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "10dcc4ab3c758ef06cdd152bf10f124846f652a97a02ed4ee1f72387e4175965",
+    "pubDate": "2026-07-05T00:00:00+02:00",
+    "starts_at": "2026-07-05T00:00:00+02:00",
+    "ends_at": "2026-09-06T00:00:00+02:00",
+    "context": {
+      "district": "7",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.1968192,
+        "lon": 16.33960544
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Universitätsring und Schottenring von Rathausplatz bis Heßgasse",
+    "description": "Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt. Bauphase 1a von 4 (07.07.2026 bis 12.07.2026): Die Arbeiten werden im Bereich Schottenring von Kreuzung Schottengasse bis Heßgasse durchgeführt. Es werden zwei Geradeaus-Fahrstreifen aufrecht gehalten. Der Geradeaus-Rechts-Fahrstreifen kommend vom Universitätsring wird zum Rechtsabbiege-Fahrstreifen in die Schottengasse. Bauphase 1b von 4 (07.13.2026 bis 16.07.2026): Die Arbeiten werden im Bereich Schottenring von Kreuzung Schottengasse bis Heßgasse durchgeführt. Es werden zwei Geradeaus-Fahrstreifen aufrecht gehalten, wobei ein Fahrstreifen über den Gleiskörper geführt wird.Nähere Informationen zu Umleitungen sowie Haltestellenverlegungen der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. \nBeginn: 06.07.2026 00:00 Uhr \nGeplant bis: 06.09.2026 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 1",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "18ba53e976e88d9d3cc68ddfba1db1d8f837f8a4ba94cdfe7986f7cb65fbbece",
+    "pubDate": "2026-07-06T00:00:00+02:00",
+    "starts_at": "2026-07-06T00:00:00+02:00",
+    "ends_at": "2026-09-06T00:00:00+02:00",
+    "context": {
+      "district": "1",
+      "measure": "Gleisbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.21212754,
+        "lon": 16.36116285
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Rechte Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und Pilgrambrücke",
     "description": "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile von der Ramperstorffergasse bis zur Pilgramgasse für den Fahrzeugverkehr gesperrt. Die Umleitungsstrecke wird über die Schönbrunner Straße und Pilgramgasse geführt. \nBeginn: 28.02.2021 00:00 Uhr \nGeplant bis: 31.05.2028 00:00 Uhr \nMaßnahme: U-Bahnbau \nBezirk: 5",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -59,6 +101,48 @@
       "coordinates": {
         "lat": 48.19126723,
         "lon": 16.35412942
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Gumpendorfer Straße von Wallgasse bis Laimgrubengasse",
+    "description": "Die Buslinie 57A wird bis zur Kaunitzgasse kurzgeführt. Bauphase 1 von 2 (07.07.2026 bis Mitte August 2026): Die Gumpendorfer Straße wird von Kaunitzgasse bis und in Fahrtrichtung Laimgrubengasse (stadteinwärts) zur Einbahn. Das Rechtsabbiegen kommend von der Schanekgasse in die Gumpendorfer Straße ist nicht möglich. Bauphase 2 von 2 (Mitte August 2026 bis 06.09.2026): Die Gumpendorfer Straße wird von Wallgasse bis und in Fahrtrichtung Morizgasse (stadteinwärts) zur Einbahn. Die Buslinie 57A wird als geteilte Linienführung betrieben. Nähere Informationen zur Umleitung sowie Haltestellenverlegung des betroffenen öffentlichen Verkehrsmittels ist der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. \nBeginn: 06.07.2026 00:00 Uhr \nGeplant bis: 06.09.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 6",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "2fbe0b064c2e41d0af231c9c920d18544170a8e5d0f3e2038099daa3744b7827",
+    "pubDate": "2026-07-06T00:00:00+02:00",
+    "starts_at": "2026-07-06T00:00:00+02:00",
+    "ends_at": "2026-09-06T00:00:00+02:00",
+    "context": {
+      "district": "6",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.19063566,
+        "lon": 16.33888219
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Alaudagasse von Kreuzung Favoritenstraße und Pichelmayergasse bis Kreuzung Ada-Christen-Gasse",
+    "description": "Die Linie 19A wird über Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse umgeleitet. Die Alaudagasse wird von Favoritenstraße bis und in Fahrtrichtung Ada-Christen-Gasse zur Einbahn. Nähere Informationen zur Umleitung sowie Haltestellenverlegung des betroffenen öffentlichen Verkehrsmittels ist der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. \nBeginn: 06.07.2026 00:00 Uhr \nGeplant bis: 24.07.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 10",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "33a7fd783edcb49a0d203fb0f44fbcd4c7014ff1b6c5127d493882dd15706c9a",
+    "pubDate": "2026-07-06T00:00:00+02:00",
+    "starts_at": "2026-07-06T00:00:00+02:00",
+    "ends_at": "2026-07-24T00:00:00+02:00",
+    "context": {
+      "district": "10",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.15420681,
+        "lon": 16.38206276
       }
     }
   },
@@ -254,6 +338,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Nußdorfer Straße Kreuzung Währinger Straße und Spitalgasse",
+    "description": "Im Zeitraum vom 13.07.2026 bis 21.08.2026 wird der Betrieb sämtlicher Straßenbahnlinien im betreffenden Streckenabschnitt eingestellt. Die Arbeiten erfolgen im Kreuzungsplateau Nußdorfer Straße - Spitalgasse - Währinger Straße. Die Währinger Straße wird von Wilhelm-Exner-Gasse bis Strudlhofgasse gesperrt. Die Spitalgasse wird von Michelbeuerngasse bis Währinger Straße gesperrt. Die Nußdorfer Straße wird von Währinger Straße bis Widerhofgasse gesperrt. Die Zufahrt bis zum gesperrten Bereich ist möglich. Die Umleitung für die Nußdorfer Straße Fahrtrichtung 8. Bezirk erfolgt über: Nußdorfer Straße - Sechsschimmelgasse - Wilhelm-Exner-Gasse (temporäre Einbahn) - Michelbeuerngasse. Die empfohlene Route für die Währinger Straße Fahrtrichtung stadtauswärts erfolgt über: Währinger Straße - Berggasse - Liechtensteinstraße - Viriotgasse/Nußdorfer Straße oder Alserbachstraße/Sechsschimmelgasse. Die empfohlene Route für die Währinger Straße Fahrtrichtung stadteinwärts erfolgt über: Fuchsthallergasse - Alserbachstraße - Liechtensteinstraße - Hörlgasse oder Wilhelm-Exner-Gasse/Michelbeuerngasse. Nähere Informationen zu Umleitungen sowie Haltestellenverlegungen der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. \nBeginn: 06.07.2026 00:00 Uhr \nGeplant bis: 04.09.2026 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 9",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "72c2243fdbb73504da8b68c7ab3a7e336f4df2480a57df463ffb5cc569cd7a3b",
+    "pubDate": "2026-07-06T00:00:00+02:00",
+    "starts_at": "2026-07-06T00:00:00+02:00",
+    "ends_at": "2026-09-04T00:00:00+02:00",
+    "context": {
+      "district": "9",
+      "measure": "Gleisbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.22224339,
+        "lon": 16.35330099
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Landstraßer Hauptstraße von Emmerich-Teuber-Platz und Juchgasse und Apostelgasse bis Schlachthausgas",
     "description": "Es wird lediglich die bestehende Bushaltestelle bei der Rabengasse örtlich verlegt. Die Straßenbauarbeiten (Radwegherstellung, Baumpflanzungen, etc.) im gegenständlichen Bereich der Landstraßer Hauptstraße werden in mehreren Bauphasen ausgeführt. In der ersten Bauphase, die bis Ende August 2026 andauert, gibt es für den Fließverkehr keine Behinderungen. Für die nachfolgenden Bauphasen werden gesonderte Meldungen ausgesandt. \nBeginn: 09.03.2026 00:00 Uhr \nGeplant bis: 31.08.2027 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 3",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -290,6 +395,27 @@
       "coordinates": {
         "lat": 48.20826196,
         "lon": 16.38409278
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Währinger Straße 46 bis 54",
+    "description": "Die Arbeiten erfolgen bei Tag und Nacht im Fahrbahnbereich der Währinger Straße zwischen Strudlhofgasse und Nußdorfer Straße, im Zuge der für den Fahrzeugverkehr eingerichteten Sperre seitens der Wiener Linien für die Gleisbauarbeiten. Arbeiten im Bereich der Gleise werden in Abstimmung bzw. im Schatten derGleisbauarbeiten der Wiener Linien in der Nacht sowie an Wochenenden durchgeführt. Der Fußgängerverkehr wird in geeigneter und sicherer Weiseaufrechterhalten. \nBeginn: 06.07.2026 00:00 Uhr \nGeplant bis: 04.09.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 9",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "8979825c19475cf1e68d746f25efd052fb5d9fd14d8fd65ffcda992587686f73",
+    "pubDate": "2026-07-06T00:00:00+02:00",
+    "starts_at": "2026-07-06T00:00:00+02:00",
+    "ends_at": "2026-09-04T00:00:00+02:00",
+    "context": {
+      "district": "9",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.22166513,
+        "lon": 16.35417883
       }
     }
   },
@@ -381,7 +507,7 @@
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
     "title": "Brünner Straße von Schloßhofer Straße und Am Spitz bis Karl-Schäfer-Straße",
-    "description": "DieHaltestelle Peitlgasse (Fahrtrichtung Floridsdorf) des betroffenen öffentlichen Verkehrsmittels wird nach Brünner Straße ONr. Bauphase 1 von 4 (12.05.2026 bis 03.07.2026): DerVerkehr wird in Fahrtrichtung stadteinwärts in den Abschnitten von Bahnsteggasse bis Peitlgasse sowie von Hermann-Bahr-Straße bis Am Spitz über das richtungsführende Gleis geführt. 31 verlegt. Innerhalb dieser Bauphase wird an einem Wochenende zwischen Freitag 20:00 Uhr und Montag, 05:00 Uhr die Geradeausrelation von der Schloßhofer Straße in Richtung Am Spitz gesperrt. Der Verkehr wird dann über die Floridsdorfer Hauptstraße, Jedleseer Straße und Frömmlgasse in die Prager Straße geführt. Entsprechende Vorankündigungen werden rechtzeitig aufgestellt. \nBeginn: 11.05.2026 00:00 Uhr \nGeplant bis: 26.05.2027 00:00 Uhr \nMaßnahme: Straßenbau - Radweg Neuherstellung \nBezirk: 21",
+    "description": "In Fahrtrichtung stadteinwärts wird der Vekehr teilweise über den Gleiskörper geführt.Abschnitt Brünner Straße zwischen Peitlgasse und Hermann-Bahr-Straße: Ab 13.07.2026 wird die provisorische Haltestelle entfernt. NEU: Bauphase 2 von 4 (06.07.2026 bis 07.09.2026): Abschnitt Brünner Straße zwischen Bahnsteggasse und Katsushikastraße: Im Stauraum stadtauswärts vor der Katsushikastraße verbleibt ein Geradeaus-Rechtsabbiege-Fahrstreifen. Die Linksabbiegerelation in die Katsushikastraße wird ab 06.07.2026 bis 16.08.2026 über die Brünner Straße - Karl-Schäfer-Straße - Ignaz-Köck-Straße in die Katsushikastraße umgeleitet. Ab 17.08.2026 stehen der Linksabbiege-Fahrstreifen und ein Geradeaus-Rechtsabbiege-Fahrstreifen zur Verfügung. Im Anschluss beginnen die Straßenbauarbeiten in Fahrtrichtung stadteinwärts. Der Linksabbiege-Fahrstreifen aus der Brünner Straße in die Angerer Straße wird für den Verkehr gesperrt und über die Weisselgasse - Michael-Dietmann-Gasse - Hermann-Bahr-Straße in die Angerer Straße umgeleitet. \nBeginn: 11.05.2026 00:00 Uhr \nGeplant bis: 26.05.2027 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 21",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
     "guid": "a9ff4c17d6db76cc411126f88593644a2ca05540a67a5b3b507c7da67d72fa02",
     "pubDate": "2026-05-11T00:00:00+02:00",
@@ -389,7 +515,7 @@
     "ends_at": "2027-05-26T00:00:00+02:00",
     "context": {
       "district": "21",
-      "measure": "Straßenbau - Radweg Neuherstellung"
+      "measure": "Straßenbau"
     },
     "location": {
       "coordinates": {
@@ -521,6 +647,27 @@
       "coordinates": {
         "lat": 48.20033132,
         "lon": 16.35591759
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Johnstraße von Goldschlagstraße bis Hütteldorfer Straße und Schanzstraße",
+    "description": "Nähere Informationen zur Umleitung sowie Haltestellenverlegung des betroffenen öffentlichen Verkehrsmittels ist der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. Die Johnstraße wird von der Fenzlgasse bis zur Hütteldorfer Straße als Einbahn in Richtung Norden geführt.Die Umleitung in Fahrtrichtung Süden erfolgt über: Oeverseestraße- Matthias-Schönerer-Gasse - Flachgasse - Fenzlgasse zur Johnstraße.Der Fußgängerverkehr bleibt unbehindert. \nBeginn: 06.07.2026 00:00 Uhr \nGeplant bis: 06.09.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 15",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "fdf2ded158fd67f85839dbfc688eb16bc4bc0cf9e36bbdeb9b3a3bcf95b225c2",
+    "pubDate": "2026-07-06T00:00:00+02:00",
+    "starts_at": "2026-07-06T00:00:00+02:00",
+    "ends_at": "2026-09-06T00:00:00+02:00",
+    "context": {
+      "district": "15",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.1943563,
+        "lon": 16.31741086
       }
     }
   },
