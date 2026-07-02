@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 02 Jul 2026 15:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 15:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[11: delays]]></title>
+      <title><![CDATA[7A: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eaf96db733f004733a9b91b0e04111a3f9331a02f6c30911495b5b22f6e936d3</guid>
-      <pubDate>Thu, 02 Jul 2026 14:14:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 14:31:09 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 14:14:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">d9c616ff8eaab98c987f46c03c04b116e60398ec5e67893f172fc419d4d258b5</guid>
+      <pubDate>Thu, 02 Jul 2026 15:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 15:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 15:00:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 02 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 02.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 02.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4ac1d3869bc5b0bb0ac92b1b9d5c90e1d243d203e81f94cd301990e178423b85</guid>
-      <pubDate>Thu, 02 Jul 2026 11:46:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 12:01:22 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 11:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 02 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction towards Heiligenstadt S U. Reason: police operation. [On 02.07.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Heiligenstadt S U. Reason: police operation.<br/>[On 02.07.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: traffic accident. [On 02.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 02.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/71/D: Parlament]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 10 Jul 2026 07:00:00 +0200</ext:ends_at>
       <description>Because of pipeline works in the Gänsbachergasse / Schlechtastraße line is redirected to 69A. [06.07.2026 – 10.07.2026]</description>
       <content:encoded><![CDATA[Because of pipeline works in the Gänsbachergasse / Schlechtastraße line is redirected to 69A.<br/>[06.07.2026 – 10.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[14A: construction works Fritz-Grünbaum-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">32809b2554d0b1e22afc0c7c6cb54cfe116db966e9f10fd0991a9127a067760f</guid>
+      <pubDate>Tue, 30 Jun 2026 06:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 14:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 16 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Due to construction works in the range Fritz-Grünbaum-Platz / Gumpendorfer Straße, the line 14A is short-run. [07.07.2026 – 16.08.2027]</description>
+      <content:encoded><![CDATA[Due to construction works in the range Fritz-Grünbaum-Platz / Gumpendorfer Straße, the line 14A is short-run.<br/>[07.07.2026 – 16.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
