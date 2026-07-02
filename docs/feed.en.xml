@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 02 Jul 2026 05:00:42 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 05:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N71: service obstruction for police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">74eba0a90bfa2b32bc5cc42fe5ae377ca8ba2b28d9fcbb5712ad31be437aa5e5</guid>
-      <pubDate>Thu, 02 Jul 2026 04:05:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 04:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 04:14:36 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 02 Jul 2026 05:13:00 +0200</ext:ends_at>
-      <description>The N71 line is currently blocked in the direction of Kaiserebersdorf, Zinnergasse. [On 02.07.2026]</description>
-      <content:encoded><![CDATA[The N71 line is currently blocked in the direction of Kaiserebersdorf, Zinnergasse.<br/>[On 02.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[25/26/27: Switching]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 01 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of construction works in the Margentinstraße, the lines 76B, 79A and 79B are being redirected. [07.07.2026 – 01.09.2027]</description>
       <content:encoded><![CDATA[Because of construction works in the Margentinstraße, the lines 76B, 79A and 79B are being redirected.<br/>[07.07.2026 – 01.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[25: Heat-related damage to the line]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b1890e2cb58433c4d05ae0fc5cab9e840d727120ea3980e08e0b067f4918848</guid>
+      <pubDate>Tue, 30 Jun 2026 13:22:00 +0200</pubDate>
+      <ext:first_seen>Mon, 29 Jun 2026 08:01:21 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 13:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 04 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation only between Aspern, Oberdorfstraße and Josef-Baumann-Gasse. [30.06.2026 – 04.07.2026]</description>
+      <content:encoded><![CDATA[Operation only between Aspern, Oberdorfstraße and Josef-Baumann-Gasse.<br/>[30.06.2026 – 04.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
