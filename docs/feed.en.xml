@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 02 Jul 2026 19:31:06 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 20:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[14A: service obstruction traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1a6976bf79219f1f0b58f07267a3c2187602b4d5b26e0f338659a755595132d1</guid>
-      <pubDate>Thu, 02 Jul 2026 18:44:11 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 19:31:06 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 18:44:11 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 02 Jul 2026 19:43:00 +0200</ext:ends_at>
-      <description>[On 02.07.2026]</description>
-      <content:encoded><![CDATA[[On 02.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Kledering]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -117,6 +106,17 @@
       <ext:ends_at>Fri, 10 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>Only the house connections (tram crossings) at night (maximum 5 nights) in the idle time of the tram while keeping a minimum 3,50 m wide … [26.04.2026 – 10.07.2026]</description>
       <content:encoded><![CDATA[Only the house connections (tram crossings) at night (maximum 5 nights) in the idle time of the tram while keeping a minimum 3,50 m wide …<br/>[26.04.2026 – 10.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[42: service obstruction False Parker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <pubDate>Thu, 02 Jul 2026 19:54:00 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 22:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 19:57:46 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 02 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 02.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 02.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
