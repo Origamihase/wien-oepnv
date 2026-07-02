@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 02 Jul 2026 04:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 05:00:42 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N71: service obstruction for police operation]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Thu, 02 Jul 2026 05:13:00 +0200</ext:ends_at>
       <description>The N71 line is currently blocked in the direction of Kaiserebersdorf, Zinnergasse. [On 02.07.2026]</description>
       <content:encoded><![CDATA[The N71 line is currently blocked in the direction of Kaiserebersdorf, Zinnergasse.<br/>[On 02.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N60: defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f29e56aa4166e8206e8471c3bed7dd959689a03e33e7661ba22ccb3dd92b8b1c</guid>
-      <pubDate>Thu, 02 Jul 2026 03:29:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 04:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 03:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 02 Jul 2026 04:33:00 +0200</ext:ends_at>
-      <description>Currently, the N60 line has different intervals in both directions. Reason: defective vehicle. [On 02.07.2026]</description>
-      <content:encoded><![CDATA[Currently, the N60 line has different intervals in both directions. Reason: defective vehicle.<br/>[On 02.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25/26/27: Switching]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 13 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of lines 66A and N66 towards Liesing S Stop: Grenzackerstraße From: Laxenburger Straße 104 to Raxstraße To: about 30 Meter towards … [13.07.2026 – 13.07.2027]</description>
       <content:encoded><![CDATA[Stop change of lines 66A and N66 towards Liesing S Stop: Grenzackerstraße From: Laxenburger Straße 104 to Raxstraße To: about 30 Meter towards …<br/>[13.07.2026 – 13.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[76B/79A/79B: roadworks]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">431e057ca57f91c555271d2221f4da90b3968eb8cadc9754b4e9a03e2aad94a1</guid>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 29 Jun 2026 13:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 01 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Margentinstraße, the lines 76B, 79A and 79B are being redirected. [07.07.2026 – 01.09.2027]</description>
+      <content:encoded><![CDATA[Because of construction works in the Margentinstraße, the lines 76B, 79A and 79B are being redirected.<br/>[07.07.2026 – 01.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
