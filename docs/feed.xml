@@ -7,8 +7,52 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 02 Jul 2026 21:31:03 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 22:00:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[25: Hitzeschäden Betrieb ab Josef-Baumann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9034151e8763cdf4caf0bec378ab4da622c0f25cbdd1e4bc6e43ef2f71c058cc</guid>
+      <pubDate>Thu, 02 Jul 2026 21:49:39 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:00:42 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 21:49:39 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 02 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 02.07.2026]</description>
+      <content:encoded><![CDATA[[Am 02.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26: Hitzeschäden Betrieb ab Floridsdorf S U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">65c9d43c46acc2d973ea54fe49fd4ee5a22a2a85e0f0bc50ef14fb1f0d0a4a46</guid>
+      <pubDate>Thu, 02 Jul 2026 21:49:35 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:00:42 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 21:49:35 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 02 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 02.07.2026]</description>
+      <content:encoded><![CDATA[[Am 02.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27: Hitzeschäden Schienenersatzverkehr ab Josef-Baumann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bb44fb0315955aef9831e0ecd7cb3b92ba776bfaaff79ba4cbef52feb682507b</guid>
+      <pubDate>Thu, 02 Jul 2026 21:48:46 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:00:42 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 21:49:06 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 02 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 02.07.2026]</description>
+      <content:encoded><![CDATA[[Am 02.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[25: Hitzeschäden Kein Betrieb]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9df06bfc2e48c00874c89af43f4bbfa210411415ca49f7d69bc3fddce508179b</guid>
+      <pubDate>Tue, 30 Jun 2026 11:19:11 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:00:42 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 30 Jun 2026 11:19:36 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 02 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[30.06.2026 – 02.07.2026]</description>
+      <content:encoded><![CDATA[[30.06.2026 – 02.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[14A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,19 +61,8 @@
       <ext:first_seen>Thu, 02 Jul 2026 21:31:03 +0200</ext:first_seen>
       <ext:starts_at>Thu, 02 Jul 2026 21:19:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 02 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 22:00 Uhr. Grund: Feuerwehreinsatz im Bereich Reinprechtsdorfer Brücke. [Am 02.07.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 22:00 Uhr. Grund: Feuerwehreinsatz im Bereich Reinprechtsdorfer Brücke.<br/>[Am 02.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Signalstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dc030bd7a87025d7c906aa7c111e1fb5c59bdfc7731782039fefaa0c540345bf</guid>
-      <pubDate>Thu, 02 Jul 2026 18:27:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 18:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 18:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 02 Jul 2026 21:24:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung. [Am 02.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Am 02.07.2026]]]></content:encoded>
+      <description>Die Linie 14A wird in Richtung Reumannplatz U zwischen Pilgramgasse U und Fendigasse über Linke Wienzeile, Gaudenzdorfer Gürtel, Arbeitergasse umgeleitet. [Am 02.07.2026]</description>
+      <content:encoded><![CDATA[Die Linie 14A wird in Richtung Reumannplatz U zwischen Pilgramgasse U und Fendigasse über Linke Wienzeile, Gaudenzdorfer Gürtel, Arbeitergasse umgeleitet.<br/>[Am 02.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/71/D: Parlament]]></title>
@@ -85,39 +118,6 @@
       <ext:ends_at>Fri, 03 Jul 2026 02:00:00 +0200</ext:ends_at>
       <description>Wegen dringend notwendigem Weichentausch im Bereich Josef-Baumann-Gasse kommt es bei den Linien 25, 26 und 27 zu folgenden Änderungen. [02.07.2026 – 03.07.2026]</description>
       <content:encoded><![CDATA[Wegen dringend notwendigem Weichentausch im Bereich Josef-Baumann-Gasse kommt es bei den Linien 25, 26 und 27 zu folgenden Änderungen.<br/>[02.07.2026 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b08f70ff9240d18e11f43ace19cddf2c36926f5f1ccd68b6c4dc9f14f698c332</guid>
-      <pubDate>Wed, 01 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 01 Jul 2026 16:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten in der Himmelstraße werden die Busse umgeleitet. Zeitraum: Montag, 6. Juli 2026, etwa 10:00 Uhr für voraussichtlich 4 Wochen. [06.07.2026 – 01.07.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Himmelstraße werden die Busse umgeleitet. Zeitraum: Montag, 6. Juli 2026, etwa 10:00 Uhr für voraussichtlich 4 Wochen.<br/>[06.07.2026 – 01.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Simonygasse ggü. 2B]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">b28af0fb1cd765a6800a996c80f0e68d48b07ecb694246aae48635b4dfab7753</guid>
-      <pubDate>Sun, 26 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 01 Jul 2026 14:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 26 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 10 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Nur die Hausanschlüsse (Fahrbahnquerungen) werden in der Nacht (maximal 5 Nächte) in der betriebslosen Zeit der Straßenbahn bei Freihaltung einer mindestens 3,50 m breiten … [26.04.2026 – 10.07.2026]</description>
-      <content:encoded><![CDATA[Nur die Hausanschlüsse (Fahrbahnquerungen) werden in der Nacht (maximal 5 Nächte) in der betriebslosen Zeit der Straßenbahn bei Freihaltung einer mindestens 3,50 m breiten …<br/>[26.04.2026 – 10.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[42: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
-      <pubDate>Thu, 02 Jul 2026 19:54:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 22:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 19:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 02 Jul 2026 21:24:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 02.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 02.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

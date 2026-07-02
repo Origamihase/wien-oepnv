@@ -722,8 +722,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "14A: Feuerwehreinsatz Betrieb ab Fendigasse",
+    "description": "Feuerwehreinsatz\nBetrieb ab Fendigasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0f122a9fd0185eeeca3bb97f4fdbf9bd95457d5f0fc0fa169968cdfdd57ca795",
+    "pubDate": "2026-07-02T21:18:10+02:00",
+    "starts_at": "2026-07-02T21:18:10+02:00",
+    "ends_at": "2026-07-02T22:38:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-07-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "14A: Feuerwehreinsatz",
-    "description": "Linie 14A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 22:00 Uhr. Grund: Feuerwehreinsatz im Bereich Reinprechtsdorfer Brücke.",
+    "description": "Die Linie 14A wird in Richtung Reumannplatz U zwischen Pilgramgasse U und Fendigasse über Linke Wienzeile, Gaudenzdorfer Gürtel, Arbeitergasse umgeleitet. Voraussichtliche Dauer: Nicht absehbar. Grund: Feuerwehreinsatz im Bereich Reinprechtsdorfer Brücke.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8f0e5bba5a9ca2ce6d415e8a78c59f7d1360a2c498ddda1577f39e76c63657f1",
     "pubDate": "2026-07-02T21:19:00+02:00",
@@ -746,30 +758,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Rettungseinsatz",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
-    "pubDate": "2026-07-02T20:02:00+02:00",
-    "starts_at": "2026-07-02T20:02:00+02:00",
-    "ends_at": "2026-07-02T21:25:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-07-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Verkehrsunfall",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
-    "pubDate": "2026-07-02T17:37:00+02:00",
-    "starts_at": "2026-07-02T17:37:00+02:00",
-    "ends_at": "2026-07-02T21:26:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-07-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "25: Hitzeschäden Linie 25: Einstieg bei Linie 26 (Strebersdorf)",
     "description": "Hitzeschäden\nLinie 25: Einstieg bei Linie 26 (Strebersdorf)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -782,10 +770,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Hitzeschäden Betrieb ab Josef-Baumann-Gasse",
-    "description": "Hitzeschäden\nBetrieb ab Josef-Baumann-Gasse",
+    "title": "25: Gleisschaden Betrieb ab Josef-Baumann-Gasse",
+    "description": "Gleisschaden\nBetrieb ab Josef-Baumann-Gasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9034151e8763cdf4caf0bec378ab4da622c0f25cbdd1e4bc6e43ef2f71c058cc",
+    "guid": "9d79cee4745a67cc05da175737dca693a2e6a44464f5e1ae8cbb90af83b09d2a",
     "pubDate": "2026-06-29T05:52:42+02:00",
     "starts_at": "2026-06-29T05:52:42+02:00",
     "ends_at": "2026-07-02T23:59:59+02:00",
@@ -800,7 +788,7 @@
     "guid": "3b1890e2cb58433c4d05ae0fc5cab9e840d727120ea3980e08e0b067f4918848",
     "pubDate": "2026-06-30T13:22:00+02:00",
     "starts_at": "2026-06-30T13:22:00+02:00",
-    "ends_at": "2026-07-04T23:55:00+02:00",
+    "ends_at": "2026-07-02T21:53:00+02:00",
     "_identity": "wl|störung|L=25|D=2026-06-30"
   },
   {
@@ -818,6 +806,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25: Hitzeschäden Betrieb ab Josef-Baumann-Gasse",
+    "description": "Hitzeschäden\nBetrieb ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9034151e8763cdf4caf0bec378ab4da622c0f25cbdd1e4bc6e43ef2f71c058cc",
+    "pubDate": "2026-07-02T21:49:39+02:00",
+    "starts_at": "2026-07-02T21:49:39+02:00",
+    "ends_at": "2026-07-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=25|D=2026-07-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Hitzeschäden Betrieb ab Kagran U",
+    "description": "Hitzeschäden\nBetrieb ab Kagran U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b361de5c84cfa1e1018cf5c23eaa5d1cc29fa29059feec2968bb63ee4a5cbe09",
+    "pubDate": "2026-07-02T21:48:41+02:00",
+    "starts_at": "2026-07-02T21:48:41+02:00",
+    "ends_at": "2026-07-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=25|D=2026-07-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -830,25 +842,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Verkehrsunfall",
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "26: Hitzeschäden Kein Betrieb",
+    "description": "Hitzeschäden\nKein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e5e4ada309d3d5a39dbcc7b58ba60a9bcfb4f6f0b36f7174fc6f157776ed18b5",
-    "pubDate": "2026-07-02T18:35:00+02:00",
-    "starts_at": "2026-07-02T18:35:00+02:00",
-    "ends_at": "2026-07-02T21:27:00+02:00",
+    "guid": "329a7570d8d5ea90869be879f51b21cb0286af1a236e387595a948add398b332",
+    "pubDate": "2026-07-02T21:49:06+02:00",
+    "starts_at": "2026-07-02T21:49:06+02:00",
+    "ends_at": "2026-07-02T23:59:59+02:00",
     "_identity": "wl|störung|L=26|D=2026-07-02"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Verkehrsunfall",
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "26: Hitzeschäden Betrieb ab Floridsdorf S U",
+    "description": "Hitzeschäden\nBetrieb ab Floridsdorf S U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2944c0ef3d90e6a01626e659ff945114566768f92f2cfcb4aacd173962aa18ee",
-    "pubDate": "2026-07-02T18:35:00+02:00",
-    "starts_at": "2026-07-02T18:35:00+02:00",
-    "ends_at": "2026-07-02T21:26:00+02:00",
+    "guid": "65c9d43c46acc2d973ea54fe49fd4ee5a22a2a85e0f0bc50ef14fb1f0d0a4a46",
+    "pubDate": "2026-07-02T21:49:35+02:00",
+    "starts_at": "2026-07-02T21:49:35+02:00",
+    "ends_at": "2026-07-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=26|D=2026-07-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Hitzeschäden Schienenersatzverkehr ab Josef-Baumann-Gasse",
+    "description": "Hitzeschäden\nSchienenersatzverkehr ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ce3a5777ab6fa90abb946d44f1d4a30520f0e34ee845efa671c4e58c2bb580e3",
+    "pubDate": "2026-07-02T21:48:32+02:00",
+    "starts_at": "2026-07-02T21:48:57+02:00",
+    "ends_at": "2026-07-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=26|D=2026-07-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Hitzeschäden Schienenersatzverkehr ab Josef-Baumann-Gasse",
+    "description": "Hitzeschäden\nSchienenersatzverkehr ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bb44fb0315955aef9831e0ecd7cb3b92ba776bfaaff79ba4cbef52feb682507b",
+    "pubDate": "2026-07-02T21:48:46+02:00",
+    "starts_at": "2026-07-02T21:49:06+02:00",
+    "ends_at": "2026-07-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=27|D=2026-07-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Hitzeschäden Schienenersatzverkehr ab Floridsdorf S U",
+    "description": "Hitzeschäden\nSchienenersatzverkehr ab Floridsdorf S U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c9bbd9f1c3426926c2d9b3a5b654ed1eb0aa6c6bf3dba8b12ae4080f29a16409",
+    "pubDate": "2026-07-02T21:48:50+02:00",
+    "starts_at": "2026-07-02T21:49:06+02:00",
+    "ends_at": "2026-07-02T23:59:59+02:00",
     "_identity": "wl|störung|L=27|D=2026-07-02"
   },
   {
@@ -890,23 +938,11 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a256ddc9071e1be270714d5f6be746d8db040a3968d1eb9ae42aab06ab94ad4",
-    "pubDate": "2026-07-02T20:51:38+02:00",
-    "starts_at": "2026-07-02T20:59:22+02:00",
-    "ends_at": "2026-07-02T21:58:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-07-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "38: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
-    "pubDate": "2026-07-02T20:52:36+02:00",
+    "pubDate": "2026-07-02T21:03:05+02:00",
     "starts_at": "2026-07-02T21:05:01+02:00",
     "ends_at": "2026-07-02T22:04:00+02:00",
     "_identity": "wl|störung|L=38|D=2026-07-02"
@@ -934,18 +970,6 @@
     "starts_at": "2026-06-25T00:00:14+02:00",
     "ends_at": "2026-07-02T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Falschparker",
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2026-07-02T19:54:00+02:00",
-    "starts_at": "2026-07-02T19:54:00+02:00",
-    "ends_at": "2026-07-02T21:24:00+02:00",
-    "_identity": "wl|störung|L=42|D=2026-07-02"
   },
   {
     "source": "Wiener Linien",
@@ -1070,18 +1094,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Rettungseinsatz",
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
-    "pubDate": "2026-07-02T20:02:00+02:00",
-    "starts_at": "2026-07-02T20:02:00+02:00",
-    "ends_at": "2026-07-02T21:25:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-07-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1106,30 +1118,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Polizeieinsatz",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3dd0ec36f6dc8594c9e37e23580bdcf5f82555521c07875e9f83c718912578fc",
-    "pubDate": "2026-07-02T19:16:00+02:00",
-    "starts_at": "2026-07-02T19:16:00+02:00",
-    "ends_at": "2026-07-02T21:28:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-07-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Signalstörung",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dc030bd7a87025d7c906aa7c111e1fb5c59bdfc7731782039fefaa0c540345bf",
-    "pubDate": "2026-07-02T18:27:00+02:00",
-    "starts_at": "2026-07-02T18:27:00+02:00",
-    "ends_at": "2026-07-02T21:24:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-07-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Einstieg: Brünner Straße 31-31A",
     "description": "Bauarbeiten\nEinstieg: Brünner Straße 31-31A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1138,6 +1126,18 @@
     "starts_at": "2026-06-30T00:00:22+02:00",
     "ends_at": "2026-07-02T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-30|TK=einstieg brünner strasse 31 31a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Hitzeschäden Schienenersatzverkehr bis Floridsdorf S U",
+    "description": "Hitzeschäden\nSchienenersatzverkehr bis Floridsdorf S U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c408e8e0cf0778b4d935ca2e133a5565c9c5ad59a4ed8707189a601019d712b3",
+    "pubDate": "2026-07-02T21:48:08+02:00",
+    "starts_at": "2026-07-02T21:48:12+02:00",
+    "ends_at": "2026-07-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=|D=2026-07-02|TK=hitzeschäden schienenersatzverkehr bis floridsdorf s u"
   },
   {
     "source": "Wiener Linien",

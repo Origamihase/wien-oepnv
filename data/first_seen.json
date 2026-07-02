@@ -4628,6 +4628,15 @@
       "epoch": 3
     }
   },
+  "65c9d43c46acc2d973ea54fe49fd4ee5a22a2a85e0f0bc50ef14fb1f0d0a4a46": {
+    "first_seen": "2026-07-02T20:00:42.160621+00:00",
+    "translations": {
+      "en": {
+        "title": "26: Heat damage service from Floridsdorf S U"
+      },
+      "epoch": 3
+    }
+  },
   "65ce3010a20346136934b21a69b10810457753118b1682980521cb94e03ab4ff": {
     "first_seen": "2026-06-04T08:30:53.157150+00:00",
     "translations": {
@@ -6707,7 +6716,11 @@
   "8f0e5bba5a9ca2ce6d415e8a78c59f7d1360a2c498ddda1577f39e76c63657f1": {
     "first_seen": "2026-07-02T19:31:03.949451+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "The line 14A is diverted towards Reumannplatz U between Pilgramgasse U and Fendigasse via left Vienna line, Gaudenzdorfer G\u00fcrtel, Arbeitergasse.",
+        "title": "14A: fire-brigade operation"
+      },
+      "epoch": 3
     }
   },
   "8f35eb920ab94754e3a261d814815ffb0021afcb15471a5b75c8c01368712943": {
@@ -6772,6 +6785,15 @@
         "title": "Schulthe\u00dfgasse from crossing Halirschgasse and Gr\u00e4ffergasse to crossing Dittersdorfgasse and Fercher"
       },
       "epoch": 2
+    }
+  },
+  "9034151e8763cdf4caf0bec378ab4da622c0f25cbdd1e4bc6e43ef2f71c058cc": {
+    "first_seen": "2026-07-02T20:00:42.160621+00:00",
+    "translations": {
+      "en": {
+        "title": "25: Heat damage service from Josef-Baumann-Gasse"
+      },
+      "epoch": 3
     }
   },
   "904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781": {
@@ -7571,6 +7593,15 @@
         "title": "2: service obstruction False Parker"
       },
       "epoch": 2
+    }
+  },
+  "9df06bfc2e48c00874c89af43f4bbfa210411415ca49f7d69bc3fddce508179b": {
+    "first_seen": "2026-07-02T20:00:42.160621+00:00",
+    "translations": {
+      "en": {
+        "title": "25: Heat damage No operation"
+      },
+      "epoch": 3
     }
   },
   "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1": {
@@ -8763,6 +8794,15 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "65A: fire-brigade operation"
+      },
+      "epoch": 3
+    }
+  },
+  "bb44fb0315955aef9831e0ecd7cb3b92ba776bfaaff79ba4cbef52feb682507b": {
+    "first_seen": "2026-07-02T20:00:42.160621+00:00",
+    "translations": {
+      "en": {
+        "title": "27: Heat damage rail replacement service from Josef-Baumann-Gasse"
       },
       "epoch": 3
     }
