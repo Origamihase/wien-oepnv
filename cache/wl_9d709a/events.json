@@ -110,6 +110,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "25/26/27: Weichentausch",
+    "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen dringend notwendigem Weichentausch im Bereich Josef-Baumann-Gasse kommt es&nbsp; bei den Linien 25, 26 und 27 zu folgenden &Auml;nderungen.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Donnerstag, 02. Juli 2026, etwa 22:00 Uhr bis 03. Juli 2026, etwa 01:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span></p> <p><span style=\"text-decoration: underline;\">Linie 25:<br /></span>Betrieb nur zwischen Aspern, Oberdorfstra&szlig;e und Kagran.</p> <p><span style=\"text-decoration: underline;\">Linie 26:<br /></span>Betrieb nur zwischen Hausfeldstra&szlig;e und Josef-Baumann-Gasse, die Z&uuml;ge fahren weiter nach Kagran.</p> <p><span style=\"text-decoration: underline;\">Linie 27:<br /></span>Betrieb nur zwischen Strebersdorf und Floridsdorf sowie zwischen Aspern Nord und Josef-Baumann-Gasse, die Z&uuml;ge fahren weiter nach Kagran.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Weichen Sie auf die Ersatzbusse zwischen Floridsdorf und Josef-Baumann-Gasse, sowie die Linien U1, 29A und die S-Bahn aus.</p> <p><strong>Haltestellen des Ersatzverkehrs:</strong></p> <p><span style=\"text-decoration: underline;\">In Richtung Josef-Baumann-Gasse:</span></p> <p>Floridsdorf&nbsp; S U<br />(<span style=\"font-size: 11pt; font-family: Aptos, sans-serif;\">Schlo&szlig;hofer Stra&szlig;e unter S-Bahn-Br&uuml;cke</span>)</p> <p><span style=\"text-decoration: underline;\">In Richtung Floridsdorf S U:</span></p> <p>Josef-Baumann-Gasse<br />(<span style=\"font-size: 11pt; font-family: Aptos, sans-serif;\">Donaufelder Stra&szlig;e 148, Hauptfahrbahn</span>)</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span></p> <p><span style=\"text-decoration: underline;\"><strong><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/25_26_27_Josef-Baumann-Gasse.png\" alt=\"\" width=\"859\" height=\"888\" /></strong></span></p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9d6d5a37b2a036d4654111478a81203b3513bc0a80e39f64d45a0d202431f434",
+    "pubDate": "2026-07-02T04:00:00+02:00",
+    "starts_at": "2026-07-02T04:00:00+02:00",
+    "ends_at": "2026-07-03T02:00:00+02:00",
+    "_identity": "wl|hinweis|L=25,26,27|D=2026-07-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "29A/29B/N30: Patrizigasse",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 29A, 29B und N30 in Richtung Gro&szlig;feldsiedlung U (29A, 29B) bzw. Neu Leopoldau (N30)</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Patrizigase</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Freytaggasse 32</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> etwa 30 Meter in Richtung Schlo&szlig;hofer Stra&szlig;e</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 29. Juni 2026, etwa 07:00 Uhr bis voraussichtlich Ende August 2026</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -674,42 +686,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Züge halten bei Li. 15A",
-    "description": "Gleisbauarbeiten\nZüge halten bei Li. 15A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a357d69f4eb7f19d80612505230e0a8b5a1c830acc3efdd3d3975ba59c7dcd4",
-    "pubDate": "2026-07-01T22:30:16+02:00",
-    "starts_at": "2026-07-01T22:30:16+02:00",
-    "ends_at": "2026-07-02T04:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Betrieb ab Enkplatz, Grillgasse U",
-    "description": "Gleisbauarbeiten\nBetrieb ab Enkplatz, Grillgasse U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abea439b99914caae1f139ae04541cb8b28bf3253946cd184ea247027a183900",
-    "pubDate": "2026-07-01T22:30:16+02:00",
-    "starts_at": "2026-07-01T22:30:16+02:00",
-    "ends_at": "2026-07-02T04:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Benützen Sie den Schienenersatzverkehr 71E",
-    "description": "Gleisbauarbeiten\nBenützen Sie den Schienenersatzverkehr 71E",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ada902634b8f201c79dcefb677d9cf487db94fdd63d609fe94f62aba9645aab3",
-    "pubDate": "2026-07-01T22:30:01+02:00",
-    "starts_at": "2026-07-01T22:30:26+02:00",
-    "ends_at": "2026-07-02T04:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "25: Hitzeschäden Linie 25: Einstieg bei Linie 26 (Strebersdorf)",
     "description": "Hitzeschäden\nLinie 25: Einstieg bei Linie 26 (Strebersdorf)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -914,18 +890,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Benützen Sie den Schienenersatzverkehr 71E",
-    "description": "Gleisbauarbeiten\nBenützen Sie den Schienenersatzverkehr 71E",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9e6a5649f358321a3f0deb22e5557135fd9cc18eaa7418d24f381d6e2eeb4c83",
-    "pubDate": "2026-07-01T22:30:01+02:00",
-    "starts_at": "2026-07-01T22:30:26+02:00",
-    "ends_at": "2026-07-02T04:00:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-07-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 116",
     "description": "Bauarbeiten\nBusse halten Landstraßer Hauptstraße 116",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1018,6 +982,18 @@
     "starts_at": "2026-07-02T00:30:16+02:00",
     "ends_at": "2026-07-02T05:00:00+02:00",
     "_identity": "wl|störung|L=N46|D=2026-07-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N60: Schadhaftes Fahrzeug",
+    "description": "Derzeit kommt es bei der Linie N60 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f29e56aa4166e8206e8471c3bed7dd959689a03e33e7661ba22ccb3dd92b8b1c",
+    "pubDate": "2026-07-02T03:29:00+02:00",
+    "starts_at": "2026-07-02T03:29:00+02:00",
+    "ends_at": "2026-07-02T04:33:00+02:00",
+    "_identity": "wl|störung|L=N60|D=2026-07-02"
   },
   {
     "source": "Wiener Linien",
