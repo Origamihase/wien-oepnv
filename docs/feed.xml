@@ -7,8 +7,62 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 02 Jul 2026 17:31:20 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 18:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9A: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">210b08a061991185eeff2755a4bd167b6c9a20d1703d1c621da74ef84d96a1b5</guid>
+      <pubDate>Thu, 02 Jul 2026 17:45:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 18:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 17:45:45 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 02 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 02.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 02.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Verkehrsunfall Züge halten bei der Linie 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">536e2c1156b27ab05157c960711a99eafd6075ab1d1ad994d74648e1e2987d2b</guid>
+      <pubDate>Thu, 02 Jul 2026 17:38:32 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 18:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 17:42:53 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 02 Jul 2026 18:42:00 +0200</ext:ends_at>
+      <description>[Am 02.07.2026]</description>
+      <content:encoded><![CDATA[[Am 02.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Matzleinsdorfer Platz]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;892911</guid>
+      <pubDate>Thu, 02 Jul 2026 17:37:08 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 18:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 17:37:08 +0200</ext:starts_at>
+      <description>Wegen einer Verzögerung im Arbeitsablauf waren zwischen Wien Hbf (U) und Wien Matzleinsdorfer Platz Bahnhst bis 17:33 Uhr nur eingeschränkt Fahrten möglich. [Seit 02.07.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Verzögerung im Arbeitsablauf waren zwischen Wien Hbf (U) und Wien Matzleinsdorfer Platz Bahnhst bis 17:33 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 02.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[73A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">aeb0b84ae5e8a62af5d84641c15f91257543dc2b7569bb960589eb875b2fd4cc</guid>
+      <pubDate>Thu, 02 Jul 2026 17:32:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 18:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 17:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 02 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 02.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 02.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Verkehrsunfall Züge halten bei der Linie 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">42528155a65eed70f32dcc04f6feedaefd17938405aa454094d420a3186f2bff</guid>
+      <pubDate>Thu, 02 Jul 2026 16:47:11 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 18:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 16:47:11 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 02 Jul 2026 18:40:00 +0200</ext:ends_at>
+      <description>[Am 02.07.2026]</description>
+      <content:encoded><![CDATA[[Am 02.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1/2/71/D: Parlament]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -63,61 +117,6 @@
       <ext:ends_at>Fri, 03 Jul 2026 02:00:00 +0200</ext:ends_at>
       <description>Wegen dringend notwendigem Weichentausch im Bereich Josef-Baumann-Gasse kommt es bei den Linien 25, 26 und 27 zu folgenden Änderungen. [02.07.2026 – 03.07.2026]</description>
       <content:encoded><![CDATA[Wegen dringend notwendigem Weichentausch im Bereich Josef-Baumann-Gasse kommt es bei den Linien 25, 26 und 27 zu folgenden Änderungen.<br/>[02.07.2026 – 03.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b08f70ff9240d18e11f43ace19cddf2c36926f5f1ccd68b6c4dc9f14f698c332</guid>
-      <pubDate>Wed, 01 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 01 Jul 2026 16:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten in der Himmelstraße werden die Busse umgeleitet. Zeitraum: Montag, 6. Juli 2026, etwa 10:00 Uhr für voraussichtlich 4 Wochen. [06.07.2026 – 01.07.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Himmelstraße werden die Busse umgeleitet. Zeitraum: Montag, 6. Juli 2026, etwa 10:00 Uhr für voraussichtlich 4 Wochen.<br/>[06.07.2026 – 01.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Simonygasse ggü. 2B]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">b28af0fb1cd765a6800a996c80f0e68d48b07ecb694246aae48635b4dfab7753</guid>
-      <pubDate>Sun, 26 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 01 Jul 2026 14:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 26 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 10 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Nur die Hausanschlüsse (Fahrbahnquerungen) werden in der Nacht (maximal 5 Nächte) in der betriebslosen Zeit der Straßenbahn bei Freihaltung einer mindestens 3,50 m breiten … [26.04.2026 – 10.07.2026]</description>
-      <content:encoded><![CDATA[Nur die Hausanschlüsse (Fahrbahnquerungen) werden in der Nacht (maximal 5 Nächte) in der betriebslosen Zeit der Straßenbahn bei Freihaltung einer mindestens 3,50 m breiten …<br/>[26.04.2026 – 10.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[69A: Bauarbeiten Gänsbachergasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">af694a787390f00efbbba14449b21bed1f739bb14b1a0ac3209ca26594573a83</guid>
-      <pubDate>Tue, 30 Jun 2026 06:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 15:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 10 Jul 2026 07:00:00 +0200</ext:ends_at>
-      <description>Wegen Rohrleitungsarbeiten im Bereich Gänsbachergasse / Schlechtastraße wird die Linie 69A umgeleitet. [06.07.2026 – 10.07.2026]</description>
-      <content:encoded><![CDATA[Wegen Rohrleitungsarbeiten im Bereich Gänsbachergasse / Schlechtastraße wird die Linie 69A umgeleitet.<br/>[06.07.2026 – 10.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[14A: Bauarbeiten Fritz-Grünbaum-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">32809b2554d0b1e22afc0c7c6cb54cfe116db966e9f10fd0991a9127a067760f</guid>
-      <pubDate>Tue, 30 Jun 2026 06:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 14:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 16 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Fritz-Grünbaum-Platz / Gumpendorfer Straße wird die Linie 14A kurz geführt. [07.07.2026 – 16.08.2027]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Fritz-Grünbaum-Platz / Gumpendorfer Straße wird die Linie 14A kurz geführt.<br/>[07.07.2026 – 16.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: Hitzeschäden Linie 25: Einstieg bei Linie 26 (Strebersdorf)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">859c07ac82d3d56b571c9d40b92715cec9a5e72051ce135494c2ccdab4e04d97</guid>
-      <pubDate>Mon, 29 Jun 2026 06:25:33 +0200</pubDate>
-      <ext:first_seen>Tue, 30 Jun 2026 13:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 29 Jun 2026 06:25:33 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 02 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[29.06.2026 – 02.07.2026]</description>
-      <content:encoded><![CDATA[[29.06.2026 – 02.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
