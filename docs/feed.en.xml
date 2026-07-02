@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 02 Jul 2026 11:00:56 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 11:31:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[10A: service obstruction False Parker]]></title>
+      <title><![CDATA[6/11: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3bd9f4c68055fa6d9b69495117575dc8f78fabf6d25c7ba67dc6f52114f61816</guid>
-      <pubDate>Thu, 02 Jul 2026 10:16:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 10:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 10:17:16 +0200</ext:starts_at>
+      <guid isPermaLink="false">f0cf60e6e69ee84685e8acf06484629b5b2b16bd6860a853f127248ac4b97031</guid>
+      <pubDate>Thu, 02 Jul 2026 11:06:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 11:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 11:06:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 02 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 02.07.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 02.07.2026]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. [Am 02.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 02.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43/44: Demonstration am 04.07.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7cded4127a036fdbabc5bc9c048c51dceb0231606dbd3b530c68dca065925dc5</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 11:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 02 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 04 Jul 2026 20:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Demonstration kommt es zu Verkehrsmaßnahmen Zeitraum: Samstag, 04. Juli 2026, zwischen 15:00 Uhr und 20:00 Uhr. Maßnahmen: Linie 43: Betrieb nur zwischen Dornbach … [02.07.2026 – 04.07.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Verkehrsmaßnahmen Zeitraum: Samstag, 04. Juli 2026, zwischen 15:00 Uhr und 20:00 Uhr. Maßnahmen: Linie 43: Betrieb nur zwischen Dornbach …<br/>[02.07.2026 – 04.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[92A: construction works from 06 July 2026]]></title>
@@ -30,28 +41,6 @@
       <ext:ends_at>Fri, 02 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of roadworks in the Wulzendorfstraße, the line 92A is redirected in both directions. Period: Monday, 6. July 2026, approximately 08:00 o'clock for expected nine weeks. [06.07.2026 – 02.07.2027]</description>
       <content:encoded><![CDATA[Because of roadworks in the Wulzendorfstraße, the line 92A is redirected in both directions. Period: Monday, 6. July 2026, approximately 08:00 o'clock for expected nine weeks.<br/>[06.07.2026 – 02.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[95A: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">51cce396129aa5d5e2e16db7f0c2488b4d50ee8e7b1f1c5afa26a00e10b3def7</guid>
-      <pubDate>Thu, 02 Jul 2026 09:55:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 10:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 09:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 02 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: rescue operation. [On 02.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 02.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/2A/3A: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0af3d4c4a0ba77aa647b502f6c88fc98b64fdd939aa867f03fd56720160b24dd</guid>
-      <pubDate>Thu, 02 Jul 2026 09:05:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 09:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 09:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 02 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line 2A: irregular intervals in both directions. [On 02.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line 2A: irregular intervals in both directions.<br/>[On 02.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25/26/27: Switching]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 02 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[29.06.2026 – 02.07.2026]</description>
       <content:encoded><![CDATA[[29.06.2026 – 02.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[57A: roadworks]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">808d1edbd40ceb6f577c10b2aae47841ce2ea364a1544545f74e06349895558f</guid>
+      <pubDate>Tue, 30 Jun 2026 06:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 30 Jun 2026 06:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 16 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Gumpendorfer Straße between Fritz-Grünbaum-Platz and Laimgrubengasse, the line 57A operating short-running becomes the line Laimgrubengasse. [07.07.2026 – 16.08.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Gumpendorfer Straße between Fritz-Grünbaum-Platz and Laimgrubengasse, the line 57A operating short-running becomes the line Laimgrubengasse.<br/>[07.07.2026 – 16.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
