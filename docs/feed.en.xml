@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 03 Jul 2026 14:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 15:01:09 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5B: traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e55e4c55db9e80a5fe1558a44e4df1f020f86f204466795652f84a0c8c8d062a</guid>
+      <pubDate>Fri, 03 Jul 2026 14:37:00 +0200</pubDate>
+      <ext:first_seen>Fri, 03 Jul 2026 15:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 03 Jul 2026 14:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 03 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic congestion. [On 03.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 03.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[87A: traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bdbab2244de470fab40c03c4442e1cacd4598c871fef04b19833b28330e1e1a9</guid>
+      <pubDate>Fri, 03 Jul 2026 14:36:00 +0200</pubDate>
+      <ext:first_seen>Fri, 03 Jul 2026 15:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 03 Jul 2026 14:36:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 03 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic congestion. [On 03.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 03.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">de57d7fc844121db03d0e532febfd7d62faf7f8cc5ced1951f3e1470fcd4d6c8</guid>
+      <pubDate>Fri, 03 Jul 2026 14:27:00 +0200</pubDate>
+      <ext:first_seen>Fri, 03 Jul 2026 15:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 03 Jul 2026 14:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 03 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 03.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[18: current disturbance]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -85,39 +118,6 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>In the working area the tram operation is stopped. [06.07.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[In the working area the tram operation is stopped.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Gumpendorfer Straße from Wallgasse to Laimgrubengasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">2fbe0b064c2e41d0af231c9c920d18544170a8e5d0f3e2038099daa3744b7827</guid>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>The bus line 57A is short-run up to the Kaunitzgasse. [06.07.2026 – 06.09.2026]</description>
-      <content:encoded><![CDATA[The bus line 57A is short-run up to the Kaunitzgasse.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Alaudagasse from crossing Favoritenstraße and Pichelmayergasse from crossing Ada-Christen-Gasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">33a7fd783edcb49a0d203fb0f44fbcd4c7014ff1b6c5127d493882dd15706c9a</guid>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>The line 19A is redirected via Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse. [06.07.2026 – 24.07.2026]</description>
-      <content:encoded><![CDATA[The line 19A is redirected via Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse.<br/>[06.07.2026 – 24.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Nußdorfer Straße Crossing Währinger Street and Spitalgasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">72c2243fdbb73504da8b68c7ab3a7e336f4df2480a57df463ffb5cc569cd7a3b</guid>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>During the period from 13.07.2026 to 21.08.2026, all tram lines in the section concerned will cease to operate. [06.07.2026 – 04.09.2026]</description>
-      <content:encoded><![CDATA[During the period from 13.07.2026 to 21.08.2026, all tram lines in the section concerned will cease to operate.<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
