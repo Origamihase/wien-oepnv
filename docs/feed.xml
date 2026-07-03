@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 03 Jul 2026 07:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 07:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[67B/16A/17A/67A: Störung an einem Bahnübergang]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dbeb7c426fae455fbb0229124ff0c10edbd1b724c40d4e9e2ad5d5f62c9ac028</guid>
+      <pubDate>Fri, 03 Jul 2026 07:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 03 Jul 2026 07:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 03 Jul 2026 07:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 03 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. [Am 03.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 16A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 03.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U4: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 31 Aug 2026 23:59:00 +0200</ext:ends_at>
       <description>Auflassung Haltestelle Parlament Für die Beschleunigung der Straßenbahnlinien am Ring wird die Haltestelle Parlament dauerhaft aufgelassen. [13.07.2026 – 31.08.2026]</description>
       <content:encoded><![CDATA[Auflassung Haltestelle Parlament Für die Beschleunigung der Straßenbahnlinien am Ring wird die Haltestelle Parlament dauerhaft aufgelassen.<br/>[13.07.2026 – 31.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/37/38/40/41/42/71/D: Demonstration am 04.07.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2ef426f7ee49b23a8f686fd2ae86312b94298bbb6c6bd9f03ebcd2826c5806cf</guid>
-      <pubDate>Thu, 02 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 12:01:22 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 02 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Jul 2026 21:00:00 +0200</ext:ends_at>
-      <description>Demonstrationen Wegen Demonstrationen im Bereich Innenstadt, Währinger Straße kommt es zu Verkehrsmaßnahmen. [02.07.2026 – 04.07.2026]</description>
-      <content:encoded><![CDATA[Demonstrationen Wegen Demonstrationen im Bereich Innenstadt, Währinger Straße kommt es zu Verkehrsmaßnahmen.<br/>[02.07.2026 – 04.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
