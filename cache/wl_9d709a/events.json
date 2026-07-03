@@ -710,6 +710,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Verkehrsunfall",
+    "description": "Linie 13A: Fahrtbehinderung in Richtung Hauptbahnhof S U. Voraussichtliche Dauer: 12:00 Uhr. Grund: Verkehrsunfall im Bereich Lederergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9",
+    "pubDate": "2026-07-03T11:20:00+02:00",
+    "starts_at": "2026-07-03T11:20:00+02:00",
+    "ends_at": "2026-07-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "16A: Störung an einem Bahnübergang",
     "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -951,7 +963,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "D: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie D: Fahrtbehinderung in Richtung Absberggasse. Voraussichtliche Dauer: 11:30 Uhr. Grund: Rettungseinsatz im Bereich Prinz-Eugen-Straße.",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106",
     "pubDate": "2026-07-03T10:58:00+02:00",
@@ -962,13 +974,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Polizeieinsatz",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "D: Rettungseinsatz Umleitung über 71 und 18 Quartier Belv.",
+    "description": "Rettungseinsatz\nUmleitung über 71 und 18 Quartier Belv.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584",
-    "pubDate": "2026-07-03T09:04:00+02:00",
-    "starts_at": "2026-07-03T09:04:00+02:00",
-    "ends_at": "2026-07-03T10:58:00+02:00",
+    "guid": "60a673bf5b2e0cb2358aecc820348d3d0575f1f5333597444688f5f1b3de0ebd",
+    "pubDate": "2026-07-03T11:04:28+02:00",
+    "starts_at": "2026-07-03T11:04:28+02:00",
+    "ends_at": "2026-07-03T12:03:00+02:00",
     "_identity": "wl|störung|L=D|D=2026-07-03"
   },
   {
