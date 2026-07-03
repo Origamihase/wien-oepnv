@@ -1034,6 +1034,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "80A: Verkehrsüberlastung",
+    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab",
+    "pubDate": "2026-07-03T16:15:00+02:00",
+    "starts_at": "2026-07-03T16:15:00+02:00",
+    "ends_at": "2026-07-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=80A|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "87A: Verkehrsüberlastung",
     "description": "Linie 87A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
