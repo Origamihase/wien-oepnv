@@ -2741,7 +2741,10 @@
   "3a290c8967b717bf066ab8b81381927897476efbd1370ad7d9f3c4d7bf64cb22": {
     "first_seen": "2026-07-03T07:31:00.106401+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "48A: service obstruction foreign traffic accident"
+      },
+      "epoch": 3
     }
   },
   "3aa78619e5283f18d7d7dc0464b0258ba9b76ab98b8d602745e9821345b70bed": {
@@ -3368,6 +3371,16 @@
         "summary": "Pipe laying works are carried out at night, during the period from 20:00 to 05:00 at lock from a lane.",
         "title": "E\u00dflinger Hauptstra\u00dfe 96"
       }
+    }
+  },
+  "49173de64aa2215d87e8e544f1df8b7687c6e8172327e8cd9174b3c727005709": {
+    "first_seen": "2026-07-03T08:00:52.702610+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic accident.",
+        "title": "11A: traffic accident"
+      },
+      "epoch": 3
     }
   },
   "492f1be5274494426ee71498c49c2db3f4b7bb710d8f657773d5c22234c9a41f": {
