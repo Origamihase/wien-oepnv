@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jul 2026 20:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 21:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[38: Demonstration Betrieb ab Nußdorfer Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4beacbe830a1de7efd9d5b2c72cc5a0694b3218156074b6bcfe4e0e6fe9beedd</guid>
-      <pubDate>Sat, 04 Jul 2026 19:12:58 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Jul 2026 20:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 04 Jul 2026 19:12:58 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Jul 2026 21:00:00 +0200</ext:ends_at>
-      <description>Betrieb ab Nußdorfer Straße [Am 04.07.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Nußdorfer Straße<br/>[Am 04.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: Demonstration Betrieb ab Währinger Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d6a0773c725630a90270553192a588d9b82bd272024ea2d177781d4852a56db4</guid>
-      <pubDate>Sat, 04 Jul 2026 19:10:03 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Jul 2026 20:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 04 Jul 2026 19:11:37 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Jul 2026 21:00:00 +0200</ext:ends_at>
-      <description>Betrieb ab Währinger Straße [Am 04.07.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Währinger Straße<br/>[Am 04.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Mödling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -40,28 +18,6 @@
       <ext:starts_at>Sat, 04 Jul 2026 20:00:56 +0200</ext:starts_at>
       <description>Due to a police operation, no journeys were possible in Mödling station to 19:55 clock. [Since 04.07.2026]</description>
       <content:encoded><![CDATA[Due to a police operation, no journeys were possible in Mödling station to 19:55 clock.<br/>[Since 04.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: Trains hold outer belt]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5fbe421889e67fb21d7df94f37b271437376621bcd1a308a8bfe36de1ae84a39</guid>
-      <pubDate>Sat, 04 Jul 2026 19:11:08 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Jul 2026 19:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 04 Jul 2026 19:11:08 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Jul 2026 21:00:00 +0200</ext:ends_at>
-      <description>[On 04.07.2026]</description>
-      <content:encoded><![CDATA[[On 04.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[42: demonstration service from Währinger Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d5457f02e7f69c96f7f096f37c4541bc33d1206ee56b9c123ce1ef260fa84783</guid>
-      <pubDate>Sat, 04 Jul 2026 19:10:32 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Jul 2026 19:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 04 Jul 2026 19:12:06 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Jul 2026 21:00:00 +0200</ext:ends_at>
-      <description>service from Währinger Straße [On 04.07.2026]</description>
-      <content:encoded><![CDATA[service from Währinger Straße<br/>[On 04.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37: demonstration service from Nußdorfer Straße]]></title>
@@ -117,6 +73,50 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>The bus line 57A is short-run up to the Kaunitzgasse. [06.07.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[The bus line 57A is short-run up to the Kaunitzgasse.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Alaudagasse from crossing Favoritenstraße and Pichelmayergasse from crossing Ada-Christen-Gasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">33a7fd783edcb49a0d203fb0f44fbcd4c7014ff1b6c5127d493882dd15706c9a</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Jul 2026 00:00:00 +0200</ext:ends_at>
+      <description>The line 19A is redirected via Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse. [06.07.2026 – 24.07.2026]</description>
+      <content:encoded><![CDATA[The line 19A is redirected via Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse.<br/>[06.07.2026 – 24.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Nußdorfer Straße Crossing Währinger Street and Spitalgasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">72c2243fdbb73504da8b68c7ab3a7e336f4df2480a57df463ffb5cc569cd7a3b</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>During the period from 13.07.2026 to 21.08.2026, all tram lines in the section concerned will cease to operate. [06.07.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[During the period from 13.07.2026 to 21.08.2026, all tram lines in the section concerned will cease to operate.<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Währinger Straße 46 to 54]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">8979825c19475cf1e68d746f25efd052fb5d9fd14d8fd65ffcda992587686f73</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>Work is carried out day and night in the roadway area of Währinger Straße between Strudlhofgasse and Nußdorfer Straße, as part of the … [06.07.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[Work is carried out day and night in the roadway area of Währinger Straße between Strudlhofgasse and Nußdorfer Straße, as part of the …<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Johnstraße from Goldschlagstraße to Hütteldorfer Straße and Schanzstraße]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">fdf2ded158fd67f85839dbfc688eb16bc4bc0cf9e36bbdeb9b3a3bcf95b225c2</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp;amp; Co KG. [06.07.2026 – 06.09.2026]</description>
+      <content:encoded><![CDATA[For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
