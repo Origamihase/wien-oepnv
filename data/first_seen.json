@@ -3919,6 +3919,15 @@
       "epoch": 2
     }
   },
+  "50635a99ab638cce89843343b5b1f6fd4a954014469a1bacf641f717c79a59f8": {
+    "first_seen": "2026-07-04T18:00:45.826201+00:00",
+    "translations": {
+      "en": {
+        "title": "38: service obstruction because of demonstration"
+      },
+      "epoch": 3
+    }
+  },
   "506a840c9c5defab3e7fe0bea92d968b483db011fd2a0d10a6f43215c884c3fd": {
     "first_seen": "2026-06-03T08:30:50.732115+00:00",
     "translations": {
@@ -6071,6 +6080,15 @@
         "title": "U4: Front Zollamtsstra\u00dfe from Marxergasse and Small Marxerbr\u00fccke to Unnamed Traffic Area and Wheel"
       },
       "epoch": 2
+    }
+  },
+  "7d87d2a7dda2177d20df774fda6eb879bf09dfd8c1e33234d8858568647a99e8": {
+    "first_seen": "2026-07-04T18:00:45.826201+00:00",
+    "translations": {
+      "en": {
+        "title": "41: service obstruction because of demonstration"
+      },
+      "epoch": 3
     }
   },
   "7da5c613b2d12a20d7869dc68a2b28443932b3386ce707fa25728d82068a8310": {
@@ -12986,6 +13004,16 @@
       "en": {
         "summary": "Due to a fire brigade operation between Wien Simmering station (U) and Wien Erzherzog-Karl-Stra\u00dfe Bahnhst to expected 18:30 clock no journeys are possible.",
         "title": "Wien Simmering \u2194 Wien Erzherzog Karl-Stra\u00dfe"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&893515": {
+    "first_seen": "2026-07-04T18:00:45.826201+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation, no journeys were possible in M\u00f6dling station to 19:55 clock.",
+        "title": "M\u00f6dling"
       },
       "epoch": 3
     }
