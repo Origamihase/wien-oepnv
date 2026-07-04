@@ -698,8 +698,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10: Verkehrsunfall Züge halten bei Linie 52",
+    "description": "Verkehrsunfall Züge halten bei Linie 52",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4e12ac724fe4959b221541a8af732d356af6db0420bc34d05d1d8ef280b7f350",
+    "pubDate": "2026-07-04T13:38:45+02:00",
+    "starts_at": "2026-07-04T13:38:45+02:00",
+    "ends_at": "2026-07-04T14:37:00+02:00",
+    "_identity": "wl|störung|L=10|D=2026-07-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "10: Fremder Verkehrsunfall",
-    "description": "Die Linie 10 wird in Richtung Unter St. Veit, Hummelgasse zwischen Hütteldorfer Straße U und Reinlgasse über die Strecken der Linien 49 und 52 umgeleitet. Voraussichtliche Dauer: 14:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Reinlgasse.",
+    "description": "Linie 10: Umleitung in Richtung Unter St. Veit zwischen Hütteldorfer Straße und Linzer Straße über die Strecke der Linien 49 und 52. Voraussichtliche Dauer: 14:20 Uhr. Grund: Fremder Verkehrsunfall im Bereich Reinlgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a353875670c81bfb8e057d43db548115ca6c84c08a4b6f4e5ddfed91706f0a44",
     "pubDate": "2026-07-04T13:11:00+02:00",
@@ -722,25 +734,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "14A: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "14A: Rettungseinsatz",
     "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac",
     "pubDate": "2026-07-04T12:39:00+02:00",
-    "starts_at": "2026-07-04T12:46:58+02:00",
+    "starts_at": "2026-07-04T12:39:00+02:00",
     "ends_at": "2026-07-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=14A|D=2026-07-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Verkehrsunfall Betrieb ab Laxenburger/Gudrunstraße",
-    "description": "Verkehrsunfall\nBetrieb ab Laxenburger/Gudrunstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "963380760d6692d277ddb1372c47616d0ee3a7aab086bf73931e099a9baf831d",
-    "pubDate": "2026-07-04T12:46:29+02:00",
-    "starts_at": "2026-07-04T12:46:43+02:00",
-    "ends_at": "2026-07-04T13:45:00+02:00",
     "_identity": "wl|störung|L=14A|D=2026-07-04"
   },
   {
@@ -926,14 +926,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Rettungseinsatz",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-07-04T11:48:00+02:00",
-    "starts_at": "2026-07-04T11:48:00+02:00",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-07-04T13:35:00+02:00",
+    "starts_at": "2026-07-04T13:35:00+02:00",
     "ends_at": "2026-07-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-07-04"
+    "_identity": "wl|störung|L=U1|D=2026-07-04"
   },
   {
     "source": "Wiener Linien",
