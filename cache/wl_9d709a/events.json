@@ -698,6 +698,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Verkehrsunfall",
+    "description": "Linie 1: Fahrtbehinderung in Richtung Prater Hauptallee. Voraussichtliche Dauer: 09:40 Uhr. Grund: Verkehrsunfall im Bereich Uraniastraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
+    "pubDate": "2026-07-04T09:18:00+02:00",
+    "starts_at": "2026-07-04T09:18:00+02:00",
+    "ends_at": "2026-07-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-07-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
+    "pubDate": "2026-07-04T09:19:36+02:00",
+    "starts_at": "2026-07-04T09:25:53+02:00",
+    "ends_at": "2026-07-04T10:25:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-07-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -878,18 +902,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Signalstörung",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "56cfae51576906358ca8b20023d237b58b63c2307392b3a7b06419cfe7314754",
-    "pubDate": "2026-07-04T06:34:00+02:00",
-    "starts_at": "2026-07-04T06:34:00+02:00",
-    "ends_at": "2026-07-04T08:53:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-07-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U4/U6: Betriebsstörung",
     "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -910,5 +922,17 @@
     "starts_at": "2026-06-30T00:00:22+02:00",
     "ends_at": "2026-07-04T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-06-30|TK=einstieg brünner strasse 31 31a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "68bc6af54c6e7221254acf728b57d945990511addcc9f1a0366dc0c96112b806",
+    "pubDate": "2026-07-04T09:02:11+02:00",
+    "starts_at": "2026-07-04T09:02:11+02:00",
+    "ends_at": "2026-07-04T10:01:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-07-04|TK=polizeieinsatz"
   }
 ]
