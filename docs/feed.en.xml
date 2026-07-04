@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jul 2026 18:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 19:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[42: service obstruction because of rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9c6de3fb17063e07f39809d46daba7b1fb7a447006a112e8c1167551cbd51404</guid>
-      <pubDate>Sat, 04 Jul 2026 17:35:00 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Jul 2026 18:01:11 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 04 Jul 2026 17:47:02 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Jul 2026 18:46:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 04.07.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 04.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[94A: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp;amp; Co KG. [06.07.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/71/D: Parlament]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b2b1b281ab505d94322a4c3115c52176813e47db9e78f08f04dafe9f3849d4b1</guid>
+      <pubDate>Thu, 02 Jul 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 12:01:22 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 31 Aug 2026 23:59:00 +0200</ext:ends_at>
+      <description>Stop Parlament For the acceleration of tram lines at the ring, stop Parlament will be permanently Discontinued. [13.07.2026 – 31.08.2026]</description>
+      <content:encoded><![CDATA[Stop Parlament For the acceleration of tram lines at the ring, stop Parlament will be permanently Discontinued.<br/>[13.07.2026 – 31.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
