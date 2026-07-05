@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 05 Jul 2026 23:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 00:00:40 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[43A/44A/N43/44B: Gleisbauarbeiten (Phase 2)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e317703423ffe5ac6ccb62e3a814440080243fd7afebe9430625b2dcfcafe799</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 06 Jul 2026 00:00:40 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten im Bereich Hernalser Hauptstraße / Güpferlingstraße kommt es zu Umleitungen in beiden Richtungen bei den Linien 43A, 44A, 44B und N43. Zeitraum: Linie … [06.07.2026 – 06.07.2027]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Hernalser Hauptstraße / Güpferlingstraße kommt es zu Umleitungen in beiden Richtungen bei den Linien 43A, 44A, 44B und N43. Zeitraum: Linie …<br/>[06.07.2026 – 06.07.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N54: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>Nähere Informationen zur Umleitung sowie Haltestellenverlegung des betroffenen öffentlichen Verkehrsmittels ist der Auskunft der Wiener Linien GmbH &amp;amp; Co KG zu entnehmen. [06.07.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[Nähere Informationen zur Umleitung sowie Haltestellenverlegung des betroffenen öffentlichen Verkehrsmittels ist der Auskunft der Wiener Linien GmbH &amp; Co KG zu entnehmen.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Westbahnhof: Neubaugürtel 6-12]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">10dcc4ab3c758ef06cdd152bf10f124846f652a97a02ed4ee1f72387e4175965</guid>
-      <pubDate>Sun, 05 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 05 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>Derrechte Fahrstreifen wird in Fahrtrichtung Burggasse gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. [05.07.2026 – 06.09.2026]</description>
-      <content:encoded><![CDATA[Derrechte Fahrstreifen wird in Fahrtrichtung Burggasse gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten.<br/>[05.07.2026 – 06.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
