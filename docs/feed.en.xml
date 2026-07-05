@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 05 Jul 2026 23:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 23:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[17A/70A: gas pipe fractures]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5537e4839ffee7dc8978dfa9b809c0aa3033a0eb354d311277e043aca123dd8a</guid>
-      <pubDate>Sun, 05 Jul 2026 12:50:00 +0200</pubDate>
-      <ext:first_seen>Sun, 05 Jul 2026 13:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 05 Jul 2026 12:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 05 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Line 17A is redirected locally in both directions. Line 70A is redirected locally in both directions. [On 05.07.2026]</description>
-      <content:encoded><![CDATA[Line 17A is redirected locally in both directions. Line 70A is redirected locally in both directions.<br/>[On 05.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[N54: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp;amp; Co KG. [06.07.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Westbahnhof: New construction belt 6-12]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">10dcc4ab3c758ef06cdd152bf10f124846f652a97a02ed4ee1f72387e4175965</guid>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 05 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>The right lane is locked in direction Burggasse. The remaining lanes are maintained. [05.07.2026 – 06.09.2026]</description>
+      <content:encoded><![CDATA[The right lane is locked in direction Burggasse. The remaining lanes are maintained.<br/>[05.07.2026 – 06.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
