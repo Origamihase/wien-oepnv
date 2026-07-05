@@ -698,6 +698,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Verkehrsunfall",
+    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 13 Uhr. Grund: Verkehrsunfall im Bereich Hütteldorfer Straße 52.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35",
+    "pubDate": "2026-07-05T12:29:00+02:00",
+    "starts_at": "2026-07-05T12:29:00+02:00",
+    "ends_at": "2026-07-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-07-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "17A/70A: Gasrohrgebrechen",
+    "description": "Die Linie 17A wird in beiden Richtungen örtlich umgeleitet. Die Linie 70A wird in beiden Richtungen örtlich umgeleitet. Die Störung dauert voraussichtlich bis 13:30 Uhr. Grund dafür ist ein Gasrohrgebrechen im Bereich Oberlaaer Straße .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5537e4839ffee7dc8978dfa9b809c0aa3033a0eb354d311277e043aca123dd8a",
+    "pubDate": "2026-07-05T12:50:00+02:00",
+    "starts_at": "2026-07-05T12:50:00+02:00",
+    "ends_at": "2026-07-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=17A,70A|D=2026-07-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -890,23 +914,59 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "title": "49: Verkehrsunfall",
+    "description": "Linie 49: Kein Betrieb zwischen Hütteldorfer Straße U und Urban-Loritz-Platz. Voraussichtliche Dauer: 13:20 Uhr. Grund: Verkehrsunfall im Bereich Hütteldorfer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e1d8190e4bc45bff393bd68fe6c8835c135a2d0d02394cd2d5728969881d1559",
-    "pubDate": "2026-07-05T11:37:04+02:00",
-    "starts_at": "2026-07-05T11:37:04+02:00",
-    "ends_at": "2026-07-05T12:36:00+02:00",
-    "_identity": "wl|störung|L=4A|D=2026-07-05"
+    "guid": "404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34",
+    "pubDate": "2026-07-05T12:36:00+02:00",
+    "starts_at": "2026-07-05T12:36:00+02:00",
+    "ends_at": "2026-07-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-07-05"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "49: Verkehrsunfall Betrieb ab Hütteldorfer Straße",
+    "description": "Verkehrsunfall\nBetrieb ab Hütteldorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6ec34aa49389b0de62a423297ec4b903eb30c8d3cb9de085e97f68b5b24f03c1",
+    "pubDate": "2026-07-05T12:38:27+02:00",
+    "starts_at": "2026-07-05T12:48:08+02:00",
+    "ends_at": "2026-07-05T13:47:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-07-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Verkehrsunfall Betrieb ab Urban-Loritz-Platz",
+    "description": "Verkehrsunfall\nBetrieb ab Urban-Loritz-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8f35eb920ab94754e3a261d814815ffb0021afcb15471a5b75c8c01368712943",
+    "pubDate": "2026-07-05T12:38:27+02:00",
+    "starts_at": "2026-07-05T12:48:37+02:00",
+    "ends_at": "2026-07-05T13:48:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-07-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8",
+    "pubDate": "2026-07-05T12:40:23+02:00",
+    "starts_at": "2026-07-05T12:40:52+02:00",
+    "ends_at": "2026-07-05T13:40:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-07-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Rettungseinsatz",
     "description": "Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a2ac5fae7e3f48a67607975b18dba585c5ef50bbf2cc22863a26b7cf93ff0890",
-    "pubDate": "2026-07-05T11:54:34+02:00",
+    "pubDate": "2026-07-05T11:56:00+02:00",
     "starts_at": "2026-07-05T11:56:00+02:00",
     "ends_at": "2026-07-05T23:55:00+02:00",
     "_identity": "wl|störung|L=57A|D=2026-07-05"
@@ -950,6 +1010,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Gersthof S. Voraussichtliche Dauer: 13:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Panikengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
+    "pubDate": "2026-07-05T12:51:00+02:00",
+    "starts_at": "2026-07-05T12:51:58+02:00",
+    "ends_at": "2026-07-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-07-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U4: Bauarbeiten",
     "description": "Linie U4: Kein Betrieb zwischen Schwedenplatz und Landstraße-Wien Mitte. Weichen Sie ersatzweise auf die Linien U1, U2 und U3 aus. Voraussichtliche Dauer: Montag, 03. August 2026, 04:00 Uhr. Grund: Bauarbeiten im Bereich Schwedenplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -958,6 +1030,18 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Rettungseinsatz",
+    "description": "Linie U4: Unregelmäßige Intervalle im Bereich Hütteldorf und Landstraße Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2026-07-05T12:40:00+02:00",
+    "starts_at": "2026-07-05T12:40:00+02:00",
+    "ends_at": "2026-07-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-07-05"
   },
   {
     "source": "Wiener Linien",

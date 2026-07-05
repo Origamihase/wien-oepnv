@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 05 Jul 2026 12:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 13:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[17A/70A: gas pipe fractures]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5537e4839ffee7dc8978dfa9b809c0aa3033a0eb354d311277e043aca123dd8a</guid>
+      <pubDate>Sun, 05 Jul 2026 12:50:00 +0200</pubDate>
+      <ext:first_seen>Sun, 05 Jul 2026 13:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 05 Jul 2026 12:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 05 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line 17A is redirected locally in both directions. Line 70A is redirected locally in both directions. [On 05.07.2026]</description>
+      <content:encoded><![CDATA[Line 17A is redirected locally in both directions. Line 70A is redirected locally in both directions.<br/>[On 05.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35</guid>
+      <pubDate>Sun, 05 Jul 2026 12:29:00 +0200</pubDate>
+      <ext:first_seen>Sun, 05 Jul 2026 13:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 05 Jul 2026 12:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 05 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. expected duration: 13 watch. Reason: traffic accident in the range Hütteldorfer Straße 52. [On 05.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. expected duration: 13 watch. Reason: traffic accident in the range Hütteldorfer Straße 52.<br/>[On 05.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[30A: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>During the period from 13.07.2026 to 21.08.2026, all tram lines in the section concerned will cease to operate. [06.07.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[During the period from 13.07.2026 to 21.08.2026, all tram lines in the section concerned will cease to operate.<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Währinger Straße 46 to 54]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">8979825c19475cf1e68d746f25efd052fb5d9fd14d8fd65ffcda992587686f73</guid>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>Work is carried out day and night in the roadway area of Währinger Straße between Strudlhofgasse and Nußdorfer Straße, as part of the … [06.07.2026 – 04.09.2026]</description>
-      <content:encoded><![CDATA[Work is carried out day and night in the roadway area of Währinger Straße between Strudlhofgasse and Nußdorfer Straße, as part of the …<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Johnstraße from Goldschlagstraße to Hütteldorfer Straße and Schanzstraße]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">fdf2ded158fd67f85839dbfc688eb16bc4bc0cf9e36bbdeb9b3a3bcf95b225c2</guid>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp;amp; Co KG. [06.07.2026 – 06.09.2026]</description>
-      <content:encoded><![CDATA[For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
