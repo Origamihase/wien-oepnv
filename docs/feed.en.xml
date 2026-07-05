@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 05 Jul 2026 02:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 02:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N65: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b2a6501adcc0d24ee32236d1f9086dd0a478b122bb227913a7344f078411a4fd</guid>
-      <pubDate>Sun, 05 Jul 2026 00:44:00 +0200</pubDate>
-      <ext:first_seen>Sun, 05 Jul 2026 01:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 05 Jul 2026 00:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 05 Jul 2026 01:57:00 +0200</ext:ends_at>
-      <description>Currently, the N65 line has different intervals in both directions. Reason: defective vehicle. [On 05.07.2026]</description>
-      <content:encoded><![CDATA[Currently, the N65 line has different intervals in both directions. Reason: defective vehicle.<br/>[On 05.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U4: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Mon, 31 Aug 2026 23:59:00 +0200</ext:ends_at>
       <description>Stop Parlament For the acceleration of tram lines at the ring, stop Parlament will be permanently Discontinued. [13.07.2026 – 31.08.2026]</description>
       <content:encoded><![CDATA[Stop Parlament For the acceleration of tram lines at the ring, stop Parlament will be permanently Discontinued.<br/>[13.07.2026 – 31.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[92A: construction works from 06 July 2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">991ac68713430d41362def0c5d5bc7d93bb8e443ceac21a22f9c851d00eff1f2</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 10:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Wulzendorfstraße, the line 92A is redirected in both directions. Period: Monday, 6. July 2026, approximately 08:00 o'clock for expected nine weeks. [06.07.2026 – 02.07.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Wulzendorfstraße, the line 92A is redirected in both directions. Period: Monday, 6. July 2026, approximately 08:00 o'clock for expected nine weeks.<br/>[06.07.2026 – 02.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
