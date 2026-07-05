@@ -1,6 +1,6 @@
 # Stationsverzeichnis-Validierungsbericht
 
-*Analysierte Stationen (gesamt)*: 2234
+*Analysierte Stationen (gesamt)*: 2233
 *Geladene GTFS-Stops*: 167
 *Geografische Duplikate*: 0
 *Alias-Probleme*: 0
