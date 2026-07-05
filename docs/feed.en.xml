@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 05 Jul 2026 21:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 21:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[36B: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">510215180113a050ad513a0f9b77606724dfdbcc66561d29e3ba59b2ec09ccab</guid>
-      <pubDate>Sun, 05 Jul 2026 20:16:00 +0200</pubDate>
-      <ext:first_seen>Sun, 05 Jul 2026 20:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 05 Jul 2026 20:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 05 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 05.07.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 05.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">08245d776c6086aeb34234d104f1c9a7c93bccf3eb8915fc23bc32028143c544</guid>
-      <pubDate>Sun, 05 Jul 2026 19:20:00 +0200</pubDate>
-      <ext:first_seen>Sun, 05 Jul 2026 19:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 05 Jul 2026 19:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 05 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: service disruption. [On 05.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 05.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[17A/70A: gas pipe fractures]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>During the period from 13.07.2026 to 21.08.2026, all tram lines in the section concerned will cease to operate. [06.07.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[During the period from 13.07.2026 to 21.08.2026, all tram lines in the section concerned will cease to operate.<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Währinger Straße 46 to 54]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">8979825c19475cf1e68d746f25efd052fb5d9fd14d8fd65ffcda992587686f73</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>Work is carried out day and night in the roadway area of Währinger Straße between Strudlhofgasse and Nußdorfer Straße, as part of the … [06.07.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[Work is carried out day and night in the roadway area of Währinger Straße between Strudlhofgasse and Nußdorfer Straße, as part of the …<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Johnstraße from Goldschlagstraße to Hütteldorfer Straße and Schanzstraße]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">fdf2ded158fd67f85839dbfc688eb16bc4bc0cf9e36bbdeb9b3a3bcf95b225c2</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp;amp; Co KG. [06.07.2026 – 06.09.2026]</description>
+      <content:encoded><![CDATA[For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
