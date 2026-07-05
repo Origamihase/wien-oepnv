@@ -735,7 +735,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "17A/70A: Gasrohrgebrechen",
-    "description": "Die Linie 17A wird in beiden Richtungen örtlich umgeleitet. Die Linie 70A wird in beiden Richtungen örtlich umgeleitet. Die Störung dauert voraussichtlich bis 22:00 Uhr. Grund dafür ist ein Gasrohrgebrechen im Bereich Oberlaaer Straße .",
+    "description": "Die Linie 17A wird in beiden Richtungen örtlich umgeleitet. Die Linie 70A wird in beiden Richtungen örtlich umgeleitet. Die Störung dauert voraussichtlich bis Betriebsschluss. Grund dafür ist ein Gasrohrgebrechen im Bereich Oberlaaer Straße .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5537e4839ffee7dc8978dfa9b809c0aa3033a0eb354d311277e043aca123dd8a",
     "pubDate": "2026-07-05T12:50:00+02:00",
@@ -934,6 +934,18 @@
     "starts_at": "2026-06-28T00:00:24+02:00",
     "ends_at": "2026-07-05T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-06-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf\nder Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-07-05T23:00:07+02:00",
+    "starts_at": "2026-07-05T23:00:07+02:00",
+    "ends_at": "2026-07-06T05:30:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-07-05"
   },
   {
     "source": "Wiener Linien",
