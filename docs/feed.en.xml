@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 06 Jul 2026 21:00:44 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 21:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38A: Mostly moved to Grinzinger Allee 47]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fbdb0923ff29827844c55368e713b7e59730055e8378a00686c6d172b8a20742</guid>
+      <pubDate>Mon, 06 Jul 2026 21:26:40 +0200</pubDate>
+      <ext:first_seen>Mon, 06 Jul 2026 21:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 21:26:40 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 06 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 06.07.2026]</description>
+      <content:encoded><![CDATA[[On 06.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N54: construction works Rail crossing]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 24 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>The line 19A is redirected via Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse. [06.07.2026 – 24.07.2026]</description>
       <content:encoded><![CDATA[The line 19A is redirected via Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse.<br/>[06.07.2026 – 24.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Nußdorfer Straße Crossing Währinger Street and Spitalgasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">72c2243fdbb73504da8b68c7ab3a7e336f4df2480a57df463ffb5cc569cd7a3b</guid>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>During the period from 13.07.2026 to 21.08.2026, all tram lines in the section concerned will cease to operate. [06.07.2026 – 04.09.2026]</description>
-      <content:encoded><![CDATA[During the period from 13.07.2026 to 21.08.2026, all tram lines in the section concerned will cease to operate.<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
