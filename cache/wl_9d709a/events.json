@@ -698,6 +698,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0fb441752223336a3409d8f10b49fb5996d541ddff6fb028aeae1cee90451da3",
+    "pubDate": "2026-07-06T22:38:17+02:00",
+    "starts_at": "2026-07-06T22:53:22+02:00",
+    "ends_at": "2026-07-06T23:52:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "10A: Haltestelle verlegt nach Matthias-Schönerer-Gasse 1",
     "description": "Bauarbeiten\nHaltestelle verlegt nach Matthias-Schönerer-Gasse 1",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -717,6 +729,18 @@
     "pubDate": "2026-07-06T00:00:12+02:00",
     "starts_at": "2026-07-06T00:00:12+02:00",
     "ends_at": "2026-07-06T23:59:59+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Betriebsstörung",
+    "description": "Linie 10A: Fahrtbehinderung in Richtung Niederhofstraße U. Voraussichtliche Dauer: Nicht absehbar. Grund: Betriebsstörung im Bereich Fenzlgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abae72a6ccef48e743b3943d0074059b8e01d4d5248fce2416b74da71e4c4e2b",
+    "pubDate": "2026-07-06T22:38:00+02:00",
+    "starts_at": "2026-07-06T22:38:00+02:00",
+    "ends_at": "2026-07-06T23:55:00+02:00",
     "_identity": "wl|störung|L=10A|D=2026-07-06"
   },
   {
@@ -866,6 +890,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "42: Verunreinigung",
+    "description": "Linie 42: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3cbf6cea2117d911033d5dda0a27209a4dd4184dc73f342a33cba72290ef7b38",
+    "pubDate": "2026-07-06T22:44:00+02:00",
+    "starts_at": "2026-07-06T22:44:00+02:00",
+    "ends_at": "2026-07-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=42|D=2026-07-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "43: Gleisbauarbeiten",
     "description": "Linie 43: Betrieb nur zwischen Schottentor U und Dornbach. Weichen Sie ersatzweise auf die Linie 43A aus. Voraussichtliche Dauer: 31.07.2026. Grund: Gleisbauarbeiten im Bereich Dornbacher Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -975,7 +1011,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "66A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 66A: Umleitung in Richtung Liesing S zwischen Brunner Straße, Erlaaer Straße und Liesing S über die Breitenfurter Straße. Voraussichtliche Dauer: 22:30 Uhr. Grund: Rettungseinsatz im Bereich Levasseurgasse.",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
     "pubDate": "2026-07-06T22:07:00+02:00",
@@ -1018,6 +1054,18 @@
     "starts_at": "2026-07-06T00:00:20+02:00",
     "ends_at": "2026-07-06T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-07-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf\nder Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-07-06T23:00:05+02:00",
+    "starts_at": "2026-07-06T23:00:05+02:00",
+    "ends_at": "2026-07-07T05:30:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-07-06"
   },
   {
     "source": "Wiener Linien",
