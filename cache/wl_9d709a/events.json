@@ -764,7 +764,7 @@
     "guid": "311a3d1d21d0e028a008e02b40ec15cfb9a9f4383510c50597e114937b639358",
     "pubDate": "2026-07-06T09:18:00+02:00",
     "starts_at": "2026-07-06T09:18:00+02:00",
-    "ends_at": "2026-07-06T23:55:00+02:00",
+    "ends_at": "2026-07-06T09:54:00+02:00",
     "_identity": "wl|störung|L=35A|D=2026-07-06"
   },
   {
@@ -934,6 +934,42 @@
     "starts_at": "2026-07-06T00:00:20+02:00",
     "ends_at": "2026-07-06T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-07-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Verkehrsunfall",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 10:15 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Simonygasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9",
+    "pubDate": "2026-07-06T09:57:00+02:00",
+    "starts_at": "2026-07-06T09:57:00+02:00",
+    "ends_at": "2026-07-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-07-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97d36012e56b1e5a07124d6ea367507c8e56424a01571c10477b0691d91eaa87",
+    "pubDate": "2026-07-06T10:00:08+02:00",
+    "starts_at": "2026-07-06T10:00:25+02:00",
+    "ends_at": "2026-07-06T10:59:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-07-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2026-07-06T09:43:00+02:00",
+    "starts_at": "2026-07-06T09:43:00+02:00",
+    "ends_at": "2026-07-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-07-06"
   },
   {
     "source": "Wiener Linien",
