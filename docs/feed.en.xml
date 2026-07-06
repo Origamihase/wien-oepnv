@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 06 Jul 2026 04:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 04:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[31: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0b5a1acf46b9270a57fcd9cbfd116864064c3fe196f0c236566ccf8cf1ea1e84</guid>
+      <pubDate>Mon, 06 Jul 2026 04:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 06 Jul 2026 04:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 04:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 31 Aug 2026 23:59:00 +0200</ext:ends_at>
+      <description>Die Linie 31 fährt derzeit nicht zwischen Stammersdorf und Friedrich-Engels-Platz. [06.07.2026 – 31.08.2026]</description>
+      <content:encoded><![CDATA[Die Linie 31 fährt derzeit nicht zwischen Stammersdorf und Friedrich-Engels-Platz.<br/>[06.07.2026 – 31.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43A/44A/N43/44B: track construction works (phase 2)]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>Work is carried out day and night in the roadway area of Währinger Straße between Strudlhofgasse and Nußdorfer Straße, as part of the … [06.07.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Work is carried out day and night in the roadway area of Währinger Straße between Strudlhofgasse and Nußdorfer Straße, as part of the …<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Johnstraße from Goldschlagstraße to Hütteldorfer Straße and Schanzstraße]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">fdf2ded158fd67f85839dbfc688eb16bc4bc0cf9e36bbdeb9b3a3bcf95b225c2</guid>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp;amp; Co KG. [06.07.2026 – 06.09.2026]</description>
-      <content:encoded><![CDATA[For more information on the diversion and the transfer of the public transport system concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
