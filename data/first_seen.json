@@ -3018,8 +3018,10 @@
     "first_seen": "2026-07-06T21:00:45.600815+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions. Reason: contamination."
-      }
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "42: pollution"
+      },
+      "epoch": 3
     }
   },
   "3d3b519bd96fe06dcd84a6a998a1c3f504407a89f56693a35668eb0623cc5653": {
@@ -5611,6 +5613,15 @@
         "title": "Frauenstiftgasse crossing Baumergasse to Haspingerplatz"
       },
       "epoch": 2
+    }
+  },
+  "71b7237b172a86dbe90fc8032352541e9ac01ade2d5e1d8f23b7dba3ad9e3c7b": {
+    "first_seen": "2026-07-06T21:30:47.534473+00:00",
+    "translations": {
+      "en": {
+        "title": "10A: buses stop Matthias-Sch\u00f6nerer-Gasse 1"
+      },
+      "epoch": 3
     }
   },
   "725a435d88fe1bd9ba201baaa8c371aebf40933d29fc672ea0307c2ae4fbb8b6": {

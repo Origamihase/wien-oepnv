@@ -7,29 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 06 Jul 2026 23:00:45 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 23:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[42: Verunreinigung]]></title>
+      <title><![CDATA[10A: buses stop Matthias-Schönerer-Gasse 1]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">71b7237b172a86dbe90fc8032352541e9ac01ade2d5e1d8f23b7dba3ad9e3c7b</guid>
+      <pubDate>Mon, 06 Jul 2026 22:21:11 +0200</pubDate>
+      <ext:first_seen>Mon, 06 Jul 2026 23:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 22:21:11 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 06 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 06.07.2026]</description>
+      <content:encoded><![CDATA[[On 06.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[42: pollution]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3cbf6cea2117d911033d5dda0a27209a4dd4184dc73f342a33cba72290ef7b38</guid>
       <pubDate>Mon, 06 Jul 2026 22:44:00 +0200</pubDate>
       <ext:first_seen>Mon, 06 Jul 2026 23:00:45 +0200</ext:first_seen>
       <ext:starts_at>Mon, 06 Jul 2026 22:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 06 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 06.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 06.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: stop moved to Matthias-Schönerer-Gasse 1]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">76eb5035d5f6a067c7445ea8aff1c9dc189e3cd8cab414bf01ba73a8daca9b50</guid>
-      <pubDate>Mon, 06 Jul 2026 22:21:11 +0200</pubDate>
-      <ext:first_seen>Mon, 06 Jul 2026 22:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 22:21:11 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 06 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 06.07.2026]</description>
-      <content:encoded><![CDATA[[On 06.07.2026]]]></content:encoded>
+      <ext:ends_at>Mon, 06 Jul 2026 23:39:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: contamination. [On 06.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: contamination.<br/>[On 06.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: Mostly moved to Grinzinger Allee 47]]></title>
