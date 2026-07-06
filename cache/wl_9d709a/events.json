@@ -926,6 +926,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "D: Fahrtbehinderung Schadhafter Pkw",
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "57a3d57064d01b6d8704ac8cfebc4ffc5429b2bfe02ac4a8b98b6f185396c821",
+    "pubDate": "2026-07-06T14:57:04+02:00",
+    "starts_at": "2026-07-06T14:57:04+02:00",
+    "ends_at": "2026-07-06T15:56:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-07-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Schadhafter PKW",
+    "description": "Linie D: Fahrtbehinderung in Richtung Nußdorf, Beethovengang. Voraussichtliche Dauer: 15:15 Uhr. Grund: Schadhafter PKW im Haltestellenbereich Gußhausstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "78a847968ba43541f9f6d3f562a18388c488eb4c40e69ef01cead08a17f2e494",
+    "pubDate": "2026-07-06T14:55:00+02:00",
+    "starts_at": "2026-07-06T14:55:00+02:00",
+    "ends_at": "2026-07-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-07-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U4: Bauarbeiten",
     "description": "Linie U4: Kein Betrieb zwischen Schwedenplatz und Landstraße-Wien Mitte. Weichen Sie ersatzweise auf die Linien U1, U2 und U3 aus. Voraussichtliche Dauer: Montag, 03. August 2026, 04:00 Uhr. Grund: Bauarbeiten im Bereich Schwedenplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
