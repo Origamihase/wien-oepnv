@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 06 Jul 2026 18:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 18:31:10 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1A: Fahrtbehinderung Verkehrsunfall]]></title>
+      <title><![CDATA[40: Fahrtbehinderung wegen Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4c1b006aea8414254450dddfcfe0123aac01eadd08b27641cd2f59da9bc0cfce</guid>
-      <pubDate>Mon, 06 Jul 2026 17:32:59 +0200</pubDate>
-      <ext:first_seen>Mon, 06 Jul 2026 18:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 17:49:54 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 06 Jul 2026 18:49:00 +0200</ext:ends_at>
-      <description>[Am 06.07.2026]</description>
-      <content:encoded><![CDATA[[Am 06.07.2026]]]></content:encoded>
+      <guid isPermaLink="false">a29e671a85c2a6d60f93348738aed861f0787ecaeb052980186da61232ad65c7</guid>
+      <pubDate>Mon, 06 Jul 2026 18:13:00 +0200</pubDate>
+      <ext:first_seen>Mon, 06 Jul 2026 18:31:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 18:26:44 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 06 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.07.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2A: Fahrtbehinderung Verkehrsunfall]]></title>
+      <title><![CDATA[9: Polizeieinsatz Betrieb ab Sommarugagasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">597ad83b2f6ce921e002d19d00bada2f45a7d465164c36344c4e43b70ccbfb7d</guid>
-      <pubDate>Mon, 06 Jul 2026 17:32:59 +0200</pubDate>
-      <ext:first_seen>Mon, 06 Jul 2026 18:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 17:32:59 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 06 Jul 2026 18:32:00 +0200</ext:ends_at>
-      <description>[Am 06.07.2026]</description>
-      <content:encoded><![CDATA[[Am 06.07.2026]]]></content:encoded>
+      <guid isPermaLink="false">d0e4afae8a76682f9151e0252680d546a58090bd24478041f5804ac6fa3ff1de</guid>
+      <pubDate>Mon, 06 Jul 2026 18:13:00 +0200</pubDate>
+      <ext:first_seen>Mon, 06 Jul 2026 18:31:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 18:26:15 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 06 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7153bd0c4f86d5daa0b9fa484bbab50662a40fb9a3f7f706745f8272dc4ce8ec</guid>
+      <pubDate>Mon, 06 Jul 2026 17:34:00 +0200</pubDate>
+      <ext:first_seen>Mon, 06 Jul 2026 18:31:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 17:34:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 06 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Grillgasse]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Mon, 03 Aug 2026 04:00:00 +0200</ext:ends_at>
       <description>Kein Betrieb zwischen Schwedenplatz und Landstraße-Wien Mitte. [03.07.2026 – 03.08.2026]</description>
       <content:encoded><![CDATA[Kein Betrieb zwischen Schwedenplatz und Landstraße-Wien Mitte.<br/>[03.07.2026 – 03.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Universitätsring und Schottenring von Rathausplatz bis Heßgasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">18ba53e976e88d9d3cc68ddfba1db1d8f837f8a4ba94cdfe7986f7cb65fbbece</guid>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt. [06.07.2026 – 06.09.2026]</description>
-      <content:encoded><![CDATA[Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
