@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 06 Jul 2026 20:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 20:31:03 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[40: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a29e671a85c2a6d60f93348738aed861f0787ecaeb052980186da61232ad65c7</guid>
-      <pubDate>Mon, 06 Jul 2026 18:13:00 +0200</pubDate>
-      <ext:first_seen>Mon, 06 Jul 2026 18:31:10 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 18:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 06 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d0e4afae8a76682f9151e0252680d546a58090bd24478041f5804ac6fa3ff1de</guid>
-      <pubDate>Mon, 06 Jul 2026 18:13:00 +0200</pubDate>
-      <ext:first_seen>Mon, 06 Jul 2026 18:31:10 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 18:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 06 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[2A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt. [06.07.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Gumpendorfer Straße von Wallgasse bis Laimgrubengasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">2fbe0b064c2e41d0af231c9c920d18544170a8e5d0f3e2038099daa3744b7827</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>Die Buslinie 57A wird bis zur Kaunitzgasse kurzgeführt. [06.07.2026 – 06.09.2026]</description>
+      <content:encoded><![CDATA[Die Buslinie 57A wird bis zur Kaunitzgasse kurzgeführt.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Alaudagasse von Kreuzung Favoritenstraße und Pichelmayergasse bis Kreuzung Ada-Christen-Gasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">33a7fd783edcb49a0d203fb0f44fbcd4c7014ff1b6c5127d493882dd15706c9a</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Jul 2026 00:00:00 +0200</ext:ends_at>
+      <description>Die Linie 19A wird über Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse umgeleitet. [06.07.2026 – 24.07.2026]</description>
+      <content:encoded><![CDATA[Die Linie 19A wird über Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse umgeleitet.<br/>[06.07.2026 – 24.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
