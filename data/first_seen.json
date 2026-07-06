@@ -3184,6 +3184,15 @@
       "epoch": 2
     }
   },
+  "421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b": {
+    "first_seen": "2026-07-06T23:30:48.087933+00:00",
+    "translations": {
+      "en": {
+        "title": "62: Trains stop at line 18 direction Burggasse"
+      },
+      "epoch": 3
+    }
+  },
   "42270d028cd443977f582a2b48222c38c0603b64b1f2d3ae98143b310e12046e": {
     "first_seen": "2026-05-27T08:30:52.090556+00:00",
     "translations": {
@@ -3976,6 +3985,16 @@
       "en": {
         "summary": "Currently, the N31 line has different intervals in both directions. Reason: contamination.",
         "title": "N31: Impurity"
+      },
+      "epoch": 3
+    }
+  },
+  "4fb2c2e608b61c54fea2854797c8b86db66ce23a071d484de16316ecb06d3521": {
+    "first_seen": "2026-07-06T23:30:48.087933+00:00",
+    "translations": {
+      "en": {
+        "summary": "diversion in both directions between Julius-Raab-Platz and Karlsplatz U over Stubentor and Schwarzenbergplatz. Reason: construction works in the range Akademiestra\u00dfe.",
+        "title": "1: construction works"
       },
       "epoch": 3
     }
@@ -4801,6 +4820,15 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "27: service obstruction because of police operation"
+      },
+      "epoch": 3
+    }
+  },
+  "62540e3a511839981230453380fb7c7af2b4d40fab19503d61f8814d7f8588da": {
+    "first_seen": "2026-07-06T23:30:48.087933+00:00",
+    "translations": {
+      "en": {
+        "title": "N41: Buses stop at Liechtensteinstra\u00dfe 19"
       },
       "epoch": 3
     }
@@ -10761,6 +10789,15 @@
       }
     }
   },
+  "db66ab7bfdc043339024b874dcb0e6d0eb01058f4d37ff7568aa452da5b63b52": {
+    "first_seen": "2026-07-06T23:30:48.087933+00:00",
+    "translations": {
+      "en": {
+        "title": "14A: service from Haus des Meeres"
+      },
+      "epoch": 3
+    }
+  },
   "db92c5ec5526fff2229ec1fcc45f1e18db9adbdc927d53c8b40baec4640a63c3": {
     "first_seen": "2026-06-25T12:01:10.707193+00:00",
     "translations": {
@@ -12090,6 +12127,15 @@
       "epoch": 3
     }
   },
+  "f66150d89f74b5ff07a5973ab86e2f584b96f17ef89a8af11ddf3daecca4e9dc": {
+    "first_seen": "2026-07-06T23:30:48.087933+00:00",
+    "translations": {
+      "en": {
+        "title": "N31: Buses stop at Br\u00fcnner Stra\u00dfe 63-65 (stop of line 36B)"
+      },
+      "epoch": 3
+    }
+  },
   "f6742e2e14a2e570249887c5b57afe641256f9d269c64df8e3fe64db025f2eea": {
     "first_seen": "2026-06-30T06:30:50.392768+00:00",
     "translations": {
@@ -12259,6 +12305,15 @@
       "en": {
         "summary": "service obstruction in both directions. Reason: traffic accident.",
         "title": "42A: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
+  "f9aeac34f1e0f2e3bf95bf1f60e3f9763b7777ec678abdb1bc3888f2a18702a6": {
+    "first_seen": "2026-07-06T23:30:48.087933+00:00",
+    "translations": {
+      "en": {
+        "title": "57A: service from here to Pilgramgasse"
       },
       "epoch": 3
     }
