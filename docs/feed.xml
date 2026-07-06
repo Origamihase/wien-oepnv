@@ -7,18 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 06 Jul 2026 12:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 12:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Rennweg / Wien Meidling ↔ Wien Floridsdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;893840</guid>
-      <pubDate>Mon, 06 Jul 2026 11:59:06 +0200</pubDate>
-      <ext:first_seen>Mon, 06 Jul 2026 12:00:54 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 11:59:06 +0200</ext:starts_at>
-      <description>Eine Information für Fahrgäste zwischen Wien Meidling und Wien Floridsdorf. [Seit 06.07.2026]</description>
-      <content:encoded><![CDATA[Eine Information für Fahrgäste zwischen Wien Meidling und Wien Floridsdorf.<br/>[Seit 06.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[37: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +107,17 @@
       <ext:ends_at>Fri, 24 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Linie 19A wird über Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse umgeleitet. [06.07.2026 – 24.07.2026]</description>
       <content:encoded><![CDATA[Die Linie 19A wird über Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse umgeleitet.<br/>[06.07.2026 – 24.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Nußdorfer Straße Kreuzung Währinger Straße und Spitalgasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">72c2243fdbb73504da8b68c7ab3a7e336f4df2480a57df463ffb5cc569cd7a3b</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>Im Zeitraum vom 13.07.2026 bis 21.08.2026 wird der Betrieb sämtlicher Straßenbahnlinien im betreffenden Streckenabschnitt eingestellt. [06.07.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[Im Zeitraum vom 13.07.2026 bis 21.08.2026 wird der Betrieb sämtlicher Straßenbahnlinien im betreffenden Streckenabschnitt eingestellt.<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
