@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 06 Jul 2026 16:31:01 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 17:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Penzing ↔ Wien Hütteldorf]]></title>
@@ -18,17 +18,6 @@
       <ext:starts_at>Mon, 06 Jul 2026 16:28:28 +0200</ext:starts_at>
       <description>Wegen Personen im Gleisbereich waren zwischen Wien Hütteldorf Bahnhof (U) und Wien Penzing Bahnhst bis 16:26 Uhr keine Fahrten möglich. [Seit 06.07.2026]</description>
       <content:encoded><![CDATA[Wegen Personen im Gleisbereich waren zwischen Wien Hütteldorf Bahnhof (U) und Wien Penzing Bahnhst bis 16:26 Uhr keine Fahrten möglich.<br/>[Seit 06.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10: Schadhafter PKW]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">af5d8f61bc5111287ef09cb5e94750b3d6f7ab1b7f9704ff22ee3df4e5e09d5a</guid>
-      <pubDate>Mon, 06 Jul 2026 15:34:00 +0200</pubDate>
-      <ext:first_seen>Mon, 06 Jul 2026 16:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 15:34:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 06 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N54: Bauarbeiten Eisenbahnübergang]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Buslinie 57A wird bis zur Kaunitzgasse kurzgeführt. [06.07.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[Die Buslinie 57A wird bis zur Kaunitzgasse kurzgeführt.<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Alaudagasse von Kreuzung Favoritenstraße und Pichelmayergasse bis Kreuzung Ada-Christen-Gasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">33a7fd783edcb49a0d203fb0f44fbcd4c7014ff1b6c5127d493882dd15706c9a</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 02 Jul 2026 22:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Jul 2026 00:00:00 +0200</ext:ends_at>
+      <description>Die Linie 19A wird über Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse umgeleitet. [06.07.2026 – 24.07.2026]</description>
+      <content:encoded><![CDATA[Die Linie 19A wird über Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse umgeleitet.<br/>[06.07.2026 – 24.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
