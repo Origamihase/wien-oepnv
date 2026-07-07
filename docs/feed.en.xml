@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 07 Jul 2026 07:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2026 07:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[36B/36A: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1db7296d66e768d3c59e0fd94040559010c9f2a8f030bc9836191f161757eeb4</guid>
-      <pubDate>Tue, 07 Jul 2026 05:53:00 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 06:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 05:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 07 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions U. Line 36A: irregular intervals in both directions. Reason: traffic accident. [On 07.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions U. Line 36A: irregular intervals in both directions. Reason: traffic accident.<br/>[On 07.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6265c36948026a9240c5fa52560e59de9f1f4f9d60cb446ca1c706c43873487a</guid>
-      <pubDate>Tue, 07 Jul 2026 05:18:00 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 05:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 05:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 07 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operation towards Griegstraße only up to Leystraße. expected duration: Not foreseeable. [On 07.07.2026]</description>
-      <content:encoded><![CDATA[Operation towards Griegstraße only up to Leystraße. expected duration: Not foreseeable.<br/>[On 07.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[57A: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 08 Jul 2026 00:30:00 +0200</ext:ends_at>
       <description>[07.07.2026 – 08.07.2026]</description>
       <content:encoded><![CDATA[[07.07.2026 – 08.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36B: buses stop Brünner Straße 118]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">47d352c19d2e123514a007494e2e9a462cadcffdb7d58ec85e0f4f7d374f0632</guid>
+      <pubDate>Tue, 07 Jul 2026 00:17:26 +0200</pubDate>
+      <ext:first_seen>Tue, 07 Jul 2026 00:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:17:26 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 07 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 07.07.2026]</description>
+      <content:encoded><![CDATA[[On 07.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: buses stop Matthias-Schönerer-Gasse 1]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">71b7237b172a86dbe90fc8032352541e9ac01ade2d5e1d8f23b7dba3ad9e3c7b</guid>
+      <pubDate>Mon, 06 Jul 2026 22:21:11 +0200</pubDate>
+      <ext:first_seen>Mon, 06 Jul 2026 23:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 22:21:11 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 07 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[06.07.2026 – 07.07.2026]</description>
+      <content:encoded><![CDATA[[06.07.2026 – 07.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
