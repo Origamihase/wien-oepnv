@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 07 Jul 2026 13:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2026 14:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[51B/51A: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c88289968bd658c69e9e5b022e3b28001e9f9b9e300e23167db4fdced1903668</guid>
+      <pubDate>Tue, 07 Jul 2026 13:41:00 +0200</pubDate>
+      <ext:first_seen>Tue, 07 Jul 2026 14:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 13:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 07 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>The line 51B is redirected in both directions between Leyserstraße and Torricelligasse via Hütteldorfer Straße, Lützowgasse. [On 07.07.2026]</description>
+      <content:encoded><![CDATA[The line 51B is redirected in both directions between Leyserstraße and Torricelligasse via Hütteldorfer Straße, Lützowgasse.<br/>[On 07.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[61B: Lemböckgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1724dfec300af1a2c9787b7edc7711e883e32fd2f9d3321828bde8434293a722</guid>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 07 Jul 2026 14:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Jul 2026 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 61B in Richtung Liesing S Haltestelle: Lemböckgasse Von: Ketzergasse 86-88 Nach: Ketzergasse 82 Dauer: 13. Juli 2026, etwa 06:30 Uhr auf Dauer … [07.07.2026 – 31.07.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 61B in Richtung Liesing S Haltestelle: Lemböckgasse Von: Ketzergasse 86-88 Nach: Ketzergasse 82 Dauer: 13. Juli 2026, etwa 06:30 Uhr auf Dauer …<br/>[07.07.2026 – 31.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -95,28 +117,6 @@
       <ext:ends_at>Tue, 07 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 07.07.2026]</description>
       <content:encoded><![CDATA[[On 07.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Trains stop at line 18 direction Burggasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b</guid>
-      <pubDate>Tue, 07 Jul 2026 01:04:59 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 01:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 01:04:59 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 07 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 07.07.2026]</description>
-      <content:encoded><![CDATA[[On 07.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N41: Buses stop at Liechtensteinstraße 19]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">62540e3a511839981230453380fb7c7af2b4d40fab19503d61f8814d7f8588da</guid>
-      <pubDate>Tue, 07 Jul 2026 01:00:15 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 01:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 01:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 08 Jul 2026 00:30:00 +0200</ext:ends_at>
-      <description>[07.07.2026 – 08.07.2026]</description>
-      <content:encoded><![CDATA[[07.07.2026 – 08.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
