@@ -1855,6 +1855,15 @@
       "epoch": 1
     }
   },
+  "2400658d4891bb6c3af8daa14e0fad5c232b1d433bf70e1ae1fe54893a2e4b7d": {
+    "first_seen": "2026-07-07T03:30:58.883301+00:00",
+    "translations": {
+      "en": {
+        "title": "17A: Buses stop Favoritenstra\u00dfe main carriageway"
+      },
+      "epoch": 3
+    }
+  },
   "244a18be3eebafba16e16928b39b5bde2fa912cc660282cd2e0db80248b8392c": {
     "first_seen": "2026-06-05T19:30:47.559322+00:00",
     "translations": {
@@ -4848,6 +4857,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: traffic disturbance.",
         "title": "57A: Traffic disturbance"
+      },
+      "epoch": 3
+    }
+  },
+  "6265c36948026a9240c5fa52560e59de9f1f4f9d60cb446ca1c706c43873487a": {
+    "first_seen": "2026-07-07T03:30:58.883301+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation towards Griegstra\u00dfe only up to Leystra\u00dfe. expected duration: Not foreseeable.",
+        "title": "5A: fire-brigade operation"
       },
       "epoch": 3
     }
@@ -9865,6 +9884,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "U6: track construction works"
+      },
+      "epoch": 3
+    }
+  },
+  "c58edda4c06e1e6baa8eb4d64c0d63d749384f4cb1c20cb183be8132f7d37aee": {
+    "first_seen": "2026-07-07T03:30:58.883301+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation in the direction of Burgring only to Haus des Meeres. Buses run to Pilgramgasse.",
+        "title": "57A: construction works"
       },
       "epoch": 3
     }
