@@ -1254,8 +1254,10 @@
     "first_seen": "2026-07-07T12:00:52.237595+00:00",
     "translations": {
       "en": {
+        "summary": "Stop change of line 61B towards Liesing S Stop: Lemb\u00f6ckgasse From: Ketzergasse 86-88 To: Ketzergasse 82 Duration: 13 July 2026, approximately 06.30 Clock duration \u2026",
         "title": "61B: Lemb\u00f6ckgasse"
-      }
+      },
+      "epoch": 3
     }
   },
   "1728d250973f2515460b23b3c697922114d90ab90874f000d040c5e6b86cfa5e": {
@@ -4097,6 +4099,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "36B: fire-brigade operation"
+      },
+      "epoch": 3
+    }
+  },
+  "51425aabd4764bc38d012436f21a500d9c2251621a48bf601704aaf4f5cfcf40": {
+    "first_seen": "2026-07-07T12:30:57.408130+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "51A: police operation"
       },
       "epoch": 3
     }
@@ -8650,6 +8662,16 @@
       "epoch": 3
     }
   },
+  "a98ce5b1ad854c6ed3e45e2e7ba8501931ec19b9c65469df145fe9e064f76e2f": {
+    "first_seen": "2026-07-07T12:30:57.408130+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "52: service obstruction False Parker"
+      },
+      "epoch": 3
+    }
+  },
   "a9a27425e5abc97ac537f8ede7996cb196df826cae17e716388d06154a7c5243": {
     "first_seen": "2026-05-31T16:30:55.234857+00:00",
     "translations": {
@@ -9548,6 +9570,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: rescue operation.",
         "title": "15A: rescue operation Currently irregular intervals"
+      },
+      "epoch": 3
+    }
+  },
+  "bc8d646e950eade9107fdb742aacd646006237a4843b630c64f278506afd6d9c": {
+    "first_seen": "2026-07-07T12:30:57.408130+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "51B: police operation"
       },
       "epoch": 3
     }
