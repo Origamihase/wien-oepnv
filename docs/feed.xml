@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 08 Jul 2026 07:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 07:31:11 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10A: Verkehrsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f2c9e9ce370eb86961bf4d6309857e5e1582a6b390c0065f2c34d56405263349</guid>
+      <pubDate>Wed, 08 Jul 2026 07:05:00 +0200</pubDate>
+      <ext:first_seen>Wed, 08 Jul 2026 07:31:11 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 08 Jul 2026 07:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 08 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung. [Am 08.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.<br/>[Am 08.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1: Betrieb ab Julius-Raab-Platz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Thu, 09 Jul 2026 00:30:00 +0200</ext:ends_at>
       <description>[08.07.2026 – 09.07.2026]</description>
       <content:encoded><![CDATA[[08.07.2026 – 09.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4fb2c2e608b61c54fea2854797c8b86db66ce23a071d484de16316ecb06d3521</guid>
-      <pubDate>Tue, 07 Jul 2026 01:15:00 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 01:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 01:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 01 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. Grund: Bauarbeiten im Bereich Akademiestraße. [07.07.2026 – 01.09.2026]</description>
-      <content:encoded><![CDATA[Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. Grund: Bauarbeiten im Bereich Akademiestraße.<br/>[07.07.2026 – 01.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

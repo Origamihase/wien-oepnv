@@ -710,6 +710,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Verkehrsstörung",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f2c9e9ce370eb86961bf4d6309857e5e1582a6b390c0065f2c34d56405263349",
+    "pubDate": "2026-07-08T07:05:00+02:00",
+    "starts_at": "2026-07-08T07:05:00+02:00",
+    "ends_at": "2026-07-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "14A: Betrieb ab Haus des Meeres",
     "description": "Bauarbeiten\nBetrieb ab Haus des Meeres",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1114,6 +1126,18 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Polizeieinsatz",
+    "description": "Linie U4: Fahrtbehinderung in Richtung Hütteldorf. Voraussichtliche Dauer: 07:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Braunschweiggasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
+    "pubDate": "2026-07-08T07:13:00+02:00",
+    "starts_at": "2026-07-08T07:13:00+02:00",
+    "ends_at": "2026-07-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-07-08"
   },
   {
     "source": "Wiener Linien",
