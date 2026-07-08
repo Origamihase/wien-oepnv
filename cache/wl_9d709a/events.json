@@ -710,14 +710,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsstörung",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
+    "title": "12A: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f2c9e9ce370eb86961bf4d6309857e5e1582a6b390c0065f2c34d56405263349",
-    "pubDate": "2026-07-08T07:05:00+02:00",
-    "starts_at": "2026-07-08T07:05:00+02:00",
-    "ends_at": "2026-07-08T08:44:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-07-08"
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-07-08T08:47:38+02:00",
+    "starts_at": "2026-07-08T08:47:38+02:00",
+    "ends_at": "2026-07-08T09:47:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-07-08"
   },
   {
     "source": "Wiener Linien",
@@ -1114,18 +1114,6 @@
     "starts_at": "2026-07-08T01:00:05+02:00",
     "ends_at": "2026-07-09T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-07-08T08:10:00+02:00",
-    "starts_at": "2026-07-08T08:10:00+02:00",
-    "ends_at": "2026-07-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-07-08"
   },
   {
     "source": "Wiener Linien",
