@@ -722,26 +722,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Schadhafter Zug Betrieb ab Zentralfriedhof, 4. Tor",
-    "description": "Schadhafter Zug\nBetrieb ab Zentralfriedhof, 4. Tor",
+    "title": "11/71: Schadhaftes Fahrzeug",
+    "description": "Linie 11: Kein Betrieb zwischen Fickeysstraße und Zentralfriedhof, 4. Tor. Linie 71: Kein Betrieb zwischen Fickeysstraße und Zentralfriedhof, 4. Tor. Weichen Sie ersatzweise auf die Linien U3, 73A und 73B aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Fickeysstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "868a07c4323e93d0fb6b3434a5da615f3918f41d7ad0a460b8f9cdfeeb2f1b28",
-    "pubDate": "2026-07-08T18:30:01+02:00",
-    "starts_at": "2026-07-08T18:30:20+02:00",
-    "ends_at": "2026-07-08T20:19:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-07-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Schadhafter Zug Betrieb ab Fickeysstraße",
-    "description": "Schadhafter Zug\nBetrieb ab Fickeysstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eec61aa423d5531b14c120092a0c8c52aa53747b17e37085d90d45bf5b995942",
-    "pubDate": "2026-07-08T18:54:14+02:00",
-    "starts_at": "2026-07-08T18:54:30+02:00",
-    "ends_at": "2026-07-08T20:18:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-07-08"
+    "guid": "b28fa372d7e4ea422476441932d63eac6de1f499d11d44ccde7db31f3f2027db",
+    "pubDate": "2026-07-08T18:19:00+02:00",
+    "starts_at": "2026-07-08T18:19:00+02:00",
+    "ends_at": "2026-07-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=11,71|D=2026-07-08"
   },
   {
     "source": "Wiener Linien",
@@ -1102,30 +1090,6 @@
     "starts_at": "2026-07-06T00:00:26+02:00",
     "ends_at": "2026-07-08T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-06-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Schadhafter Zug Betrieb ab Fickeysstraße",
-    "description": "Schadhafter Zug\nBetrieb ab Fickeysstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f3beee4afdabd37098c3e833a1c19f0432d664bd3c3b20ca9d8fcf2672f9be6",
-    "pubDate": "2026-07-08T18:40:00+02:00",
-    "starts_at": "2026-07-08T18:53:45+02:00",
-    "ends_at": "2026-07-08T20:18:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-07-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Schadhafter Zug Betrieb ab Zentralfriedhof, 4. Tor",
-    "description": "Schadhafter Zug\nBetrieb ab Zentralfriedhof, 4. Tor",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "51575f7b4ad057f02d76d9a0cfa77e68c6872c33f28a7a74b7a5393d02ba868e",
-    "pubDate": "2026-07-08T18:29:32+02:00",
-    "starts_at": "2026-07-08T18:29:51+02:00",
-    "ends_at": "2026-07-08T20:19:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-07-08"
   },
   {
     "source": "Wiener Linien",
