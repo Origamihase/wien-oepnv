@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 08 Jul 2026 04:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 05:00:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1: Betrieb ab Julius-Raab-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ee4dd174bbd81be9340a933f05a2903ca8733964879d907680bf0cc85ed764fd</guid>
+      <pubDate>Wed, 08 Jul 2026 05:00:26 +0200</pubDate>
+      <ext:first_seen>Wed, 08 Jul 2026 05:00:47 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 08 Jul 2026 05:00:26 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 09 Jul 2026 01:00:00 +0200</ext:ends_at>
+      <description>[08.07.2026 – 09.07.2026]</description>
+      <content:encoded><![CDATA[[08.07.2026 – 09.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[61B: Lemböckgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -64,15 +75,26 @@
       <content:encoded><![CDATA[[07.07.2026 – 08.07.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N31: Buses stop at Brünner Straße 63-65 (stop of line 36B)]]></title>
+      <title><![CDATA[19A: Bus stops at the 16A]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f66150d89f74b5ff07a5973ab86e2f584b96f17ef89a8af11ddf3daecca4e9dc</guid>
-      <pubDate>Wed, 08 Jul 2026 01:00:26 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 01:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 08 Jul 2026 01:00:26 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 08 Jul 2026 04:45:00 +0200</ext:ends_at>
-      <description>[On 08.07.2026]</description>
-      <content:encoded><![CDATA[[On 08.07.2026]]]></content:encoded>
+      <guid isPermaLink="false">fe9d625d324b465919c593f38631cc2ed4df8d37c425b5a7944c5e12373a4380</guid>
+      <pubDate>Wed, 08 Jul 2026 04:45:25 +0200</pubDate>
+      <ext:first_seen>Tue, 07 Jul 2026 05:01:15 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 08 Jul 2026 04:45:25 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 09 Jul 2026 00:55:00 +0200</ext:ends_at>
+      <description>[08.07.2026 – 09.07.2026]</description>
+      <content:encoded><![CDATA[[08.07.2026 – 09.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A: Buses stop at Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Wed, 08 Jul 2026 04:45:22 +0200</pubDate>
+      <ext:first_seen>Tue, 07 Jul 2026 05:01:15 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 08 Jul 2026 04:45:22 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 09 Jul 2026 00:35:00 +0200</ext:ends_at>
+      <description>[08.07.2026 – 09.07.2026]</description>
+      <content:encoded><![CDATA[[08.07.2026 – 09.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N41: Buses stop at Liechtensteinstraße 19]]></title>
@@ -95,28 +117,6 @@
       <ext:ends_at>Tue, 01 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>diversion in both directions between Julius-Raab-Platz and Karlsplatz U over Stubentor and Schwarzenbergplatz. Reason: construction works in the range Akademiestraße. [07.07.2026 – 01.09.2026]</description>
       <content:encoded><![CDATA[diversion in both directions between Julius-Raab-Platz and Karlsplatz U over Stubentor and Schwarzenbergplatz. Reason: construction works in the range Akademiestraße.<br/>[07.07.2026 – 01.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[14A: service from Haus des Meeres]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">db66ab7bfdc043339024b874dcb0e6d0eb01058f4d37ff7568aa452da5b63b52</guid>
-      <pubDate>Tue, 07 Jul 2026 01:14:07 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 01:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 01:14:07 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 08 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[07.07.2026 – 08.07.2026]</description>
-      <content:encoded><![CDATA[[07.07.2026 – 08.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Trains stop at line 18 direction Burggasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b</guid>
-      <pubDate>Tue, 07 Jul 2026 01:04:59 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 01:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 01:04:59 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 08 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[07.07.2026 – 08.07.2026]</description>
-      <content:encoded><![CDATA[[07.07.2026 – 08.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
