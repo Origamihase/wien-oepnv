@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 08 Jul 2026 17:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 17:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -18,17 +18,6 @@
       <ext:starts_at>Wed, 08 Jul 2026 15:36:01 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 03.10.2026 bis 04.10.2026 der Zug REX64(2679) von 03. auf 04.10.2026 bis 04. auf 05.10.2026 die … [Seit 08.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 03.10.2026 bis 04.10.2026 der Zug REX64(2679) von 03. auf 04.10.2026 bis 04. auf 05.10.2026 die …<br/>[Seit 08.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27B: Verkehrsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e25ca98e0301a1d5c39cdbc808027bfefd284d589b41bf21e54b9ad06adbdcc8</guid>
-      <pubDate>Wed, 08 Jul 2026 15:35:00 +0200</pubDate>
-      <ext:first_seen>Wed, 08 Jul 2026 16:01:45 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 08 Jul 2026 15:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 08 Jul 2026 16:54:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 08.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 08.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Floridsdorfer Brücke von Am Rollerdamm bis Friedrich-Engels-Platz]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Wed, 08 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[07.07.2026 – 08.07.2026]</description>
       <content:encoded><![CDATA[[07.07.2026 – 08.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[19A: Busse halten in Haltestelle der Linie 16A]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fe9d625d324b465919c593f38631cc2ed4df8d37c425b5a7944c5e12373a4380</guid>
+      <pubDate>Wed, 08 Jul 2026 04:45:25 +0200</pubDate>
+      <ext:first_seen>Tue, 07 Jul 2026 05:01:15 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 08 Jul 2026 04:45:25 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 09 Jul 2026 00:55:00 +0200</ext:ends_at>
+      <description>[08.07.2026 – 09.07.2026]</description>
+      <content:encoded><![CDATA[[08.07.2026 – 09.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
