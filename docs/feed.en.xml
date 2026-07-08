@@ -7,8 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 08 Jul 2026 15:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 16:01:45 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;894473</guid>
+      <pubDate>Wed, 08 Jul 2026 15:36:01 +0200</pubDate>
+      <ext:first_seen>Wed, 08 Jul 2026 16:01:45 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 08 Jul 2026 15:36:01 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 03.10.2026 bis 04.10.2026 der Zug REX64(2679) von 03. auf 04.10.2026 bis 04. auf 05.10.2026 die … [Seit 08.07.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 03.10.2026 bis 04.10.2026 der Zug REX64(2679) von 03. auf 04.10.2026 bis 04. auf 05.10.2026 die …<br/>[Seit 08.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27B: Traffic disturbance]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e25ca98e0301a1d5c39cdbc808027bfefd284d589b41bf21e54b9ad06adbdcc8</guid>
+      <pubDate>Wed, 08 Jul 2026 15:35:00 +0200</pubDate>
+      <ext:first_seen>Wed, 08 Jul 2026 16:01:45 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 08 Jul 2026 15:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 08 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 08.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 08.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[D/71: traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +37,7 @@
       <pubDate>Wed, 08 Jul 2026 14:43:00 +0200</pubDate>
       <ext:first_seen>Wed, 08 Jul 2026 15:01:02 +0200</ext:first_seen>
       <ext:starts_at>Wed, 08 Jul 2026 14:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 08 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Wed, 08 Jul 2026 15:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Line 71: irregular intervals in both directions. [On 08.07.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Line 71: irregular intervals in both directions.<br/>[On 08.07.2026]]]></content:encoded>
     </item>
@@ -95,28 +116,6 @@
       <ext:ends_at>Tue, 01 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Operation in the direction of Burgring only to Haus des Meeres. Buses run to Pilgramgasse. [07.07.2026 – 01.09.2026]</description>
       <content:encoded><![CDATA[Operation in the direction of Burgring only to Haus des Meeres. Buses run to Pilgramgasse.<br/>[07.07.2026 – 01.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[17A: Buses stop Favoritenstraße main carriageway]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2400658d4891bb6c3af8daa14e0fad5c232b1d433bf70e1ae1fe54893a2e4b7d</guid>
-      <pubDate>Tue, 07 Jul 2026 05:05:01 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 05:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 05:06:57 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 08 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[07.07.2026 – 08.07.2026]</description>
-      <content:encoded><![CDATA[[07.07.2026 – 08.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[19A: Bus stops at the 16A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fe9d625d324b465919c593f38631cc2ed4df8d37c425b5a7944c5e12373a4380</guid>
-      <pubDate>Wed, 08 Jul 2026 04:45:25 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 05:01:15 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 08 Jul 2026 04:45:25 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 09 Jul 2026 00:55:00 +0200</ext:ends_at>
-      <description>[08.07.2026 – 09.07.2026]</description>
-      <content:encoded><![CDATA[[08.07.2026 – 09.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
