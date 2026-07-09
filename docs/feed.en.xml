@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 09 Jul 2026 20:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 20:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[42: traffic accident]]></title>
@@ -19,28 +19,6 @@
       <ext:ends_at>Thu, 09 Jul 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 09.07.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 09.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ecbabcffef794611c039d78b430e9da20219157c755e23f92957b816f8c805bd</guid>
-      <pubDate>Thu, 09 Jul 2026 18:49:00 +0200</pubDate>
-      <ext:first_seen>Thu, 09 Jul 2026 19:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 09 Jul 2026 18:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 09 Jul 2026 19:54:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic accident in the stop area Schwarzenbergplatz. [On 09.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident in the stop area Schwarzenbergplatz.<br/>[On 09.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: fire-brigade operation Currently no operation!]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">355ee88d4f6cc8a5d5571b8b5747ec0e6587603581f73b1f1d74a10f0eadd79a</guid>
-      <pubDate>Thu, 09 Jul 2026 16:54:08 +0200</pubDate>
-      <ext:first_seen>Thu, 09 Jul 2026 19:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 09 Jul 2026 17:10:11 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 09 Jul 2026 20:09:00 +0200</ext:ends_at>
-      <description>[On 09.07.2026]</description>
-      <content:encoded><![CDATA[[On 09.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A: Gadnergasse # Swatoschgasse]]></title>
@@ -116,6 +94,28 @@
       <ext:starts_at>Tue, 07 Jul 2026 10:31:37 +0200</ext:starts_at>
       <description>Due to construction works there are no local trains between Vienna Hbf (U) and Gramatneusiedl station from 05.12 to 07.12.2026 (both from 23:15 o'clock - 04:40 o'clock). [Since 07.07.2026]</description>
       <content:encoded><![CDATA[Due to construction works there are no local trains between Vienna Hbf (U) and Gramatneusiedl station from 05.12 to 07.12.2026 (both from 23:15 o'clock - 04:40 o'clock).<br/>[Since 07.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/2/47A/59A/71/D/7A/9A/13A/14A/53A/54A/54B/63A:]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f5ed8fe28df163e95f0a246ce7f128f4297b5dff5114c2d3ded4c12f8e28bdc6</guid>
+      <pubDate>Tue, 07 Jul 2026 08:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 07 Jul 2026 08:01:12 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 08:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 12 Jul 2026 20:00:00 +0200</ext:ends_at>
+      <description>Because of a cycling tour in the Ring and Schönbrunn there are traffic measures. [07.07.2026 – 12.07.2026]</description>
+      <content:encoded><![CDATA[Because of a cycling tour in the Ring and Schönbrunn there are traffic measures.<br/>[07.07.2026 – 12.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[57A: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c58edda4c06e1e6baa8eb4d64c0d63d749384f4cb1c20cb183be8132f7d37aee</guid>
+      <pubDate>Tue, 07 Jul 2026 05:07:00 +0200</pubDate>
+      <ext:first_seen>Tue, 07 Jul 2026 05:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 05:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation in the direction of Burgring only to Haus des Meeres. Buses run to Pilgramgasse. [07.07.2026 – 01.09.2026]</description>
+      <content:encoded><![CDATA[Operation in the direction of Burgring only to Haus des Meeres. Buses run to Pilgramgasse.<br/>[07.07.2026 – 01.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

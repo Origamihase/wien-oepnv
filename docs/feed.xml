@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 09 Jul 2026 20:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 20:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[42: Verkehrsunfall]]></title>
@@ -19,28 +19,6 @@
       <ext:ends_at>Thu, 09 Jul 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.07.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ecbabcffef794611c039d78b430e9da20219157c755e23f92957b816f8c805bd</guid>
-      <pubDate>Thu, 09 Jul 2026 18:49:00 +0200</pubDate>
-      <ext:first_seen>Thu, 09 Jul 2026 19:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 09 Jul 2026 18:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 09 Jul 2026 19:54:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Haltestellenbereich Schwarzenbergplatz. [Am 09.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Haltestellenbereich Schwarzenbergplatz.<br/>[Am 09.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Feuerwehreinsatz Derzeit kein Betrieb!]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">355ee88d4f6cc8a5d5571b8b5747ec0e6587603581f73b1f1d74a10f0eadd79a</guid>
-      <pubDate>Thu, 09 Jul 2026 16:54:08 +0200</pubDate>
-      <ext:first_seen>Thu, 09 Jul 2026 19:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 09 Jul 2026 17:10:11 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 09 Jul 2026 20:09:00 +0200</ext:ends_at>
-      <description>[Am 09.07.2026]</description>
-      <content:encoded><![CDATA[[Am 09.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A: Gadnergasse # Swatoschgasse]]></title>
@@ -116,6 +94,28 @@
       <ext:starts_at>Tue, 07 Jul 2026 10:31:37 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 05.12.2026 bis 07.12.2026 (jeweils von 23:15 Uhr - 04:40 Uhr) keine Nahverkehrszüge fahren. [Seit 07.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 05.12.2026 bis 07.12.2026 (jeweils von 23:15 Uhr - 04:40 Uhr) keine Nahverkehrszüge fahren.<br/>[Seit 07.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/2/47A/59A/71/D/7A/9A/13A/14A/53A/54A/54B/63A: Radrundfahrt]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f5ed8fe28df163e95f0a246ce7f128f4297b5dff5114c2d3ded4c12f8e28bdc6</guid>
+      <pubDate>Tue, 07 Jul 2026 08:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 07 Jul 2026 08:01:12 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 08:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 12 Jul 2026 20:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Radrundfahrt im Bereich Ring und Schönbrunn kommt es zu Verkehrsmaßnahmen. [07.07.2026 – 12.07.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Radrundfahrt im Bereich Ring und Schönbrunn kommt es zu Verkehrsmaßnahmen.<br/>[07.07.2026 – 12.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[57A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c58edda4c06e1e6baa8eb4d64c0d63d749384f4cb1c20cb183be8132f7d37aee</guid>
+      <pubDate>Tue, 07 Jul 2026 05:07:00 +0200</pubDate>
+      <ext:first_seen>Tue, 07 Jul 2026 05:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 05:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse. [07.07.2026 – 01.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse.<br/>[07.07.2026 – 01.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

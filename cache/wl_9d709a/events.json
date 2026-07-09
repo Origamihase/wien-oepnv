@@ -735,11 +735,11 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "14A: Polizeieinsatz Betrieb ab Laxenburger Straße, Gudrunstraße",
-    "description": "Linie 14A: Betrieb nur zwischen Neubaugasse U und Laxenburger Straße, Gudrunstraße. Voraussichtliche Dauer: 20:15 Uhr. Grund: Polizeieinsatz im Bereich Wielandplatz.",
+    "description": "Linie 14A: Betrieb nur zwischen Neubaugasse U und Laxenburger Straße, Gudrunstraße. Voraussichtliche Dauer: 20:25 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Wielandplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc",
-    "pubDate": "2026-07-09T19:48:00+02:00",
-    "starts_at": "2026-07-09T19:49:53+02:00",
+    "pubDate": "2026-07-09T19:49:24+02:00",
+    "starts_at": "2026-07-09T20:04:00+02:00",
     "ends_at": "2026-07-09T23:55:00+02:00",
     "_identity": "wl|störung|L=14A|D=2026-07-09"
   },
@@ -855,7 +855,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "32A: Rettungseinsatz",
-    "description": "Die Linie 32A wird in Richtung Leopoldau S U zwischen Großjedlersdorf und Schippergasse über Brünner Straße umgeleitet. Voraussichtliche Dauer: 20:00 Uhr. Grund: Rettungseinsatz im Bereich Großjedlersdorf.",
+    "description": "Linie 32A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61",
     "pubDate": "2026-07-09T19:35:00+02:00",
@@ -934,42 +934,6 @@
     "starts_at": "2026-07-06T00:00:12+02:00",
     "ends_at": "2026-07-09T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-07-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Verkehrsunfall Züge halten bei den Linien 40,41",
-    "description": "Verkehrsunfall\nZüge halten bei den Linien 40,41",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7936e777629dee2bb825d35d9aa8d7f57d074466ac7dc608de2d40f0e4328ccd",
-    "pubDate": "2026-07-09T19:06:45+02:00",
-    "starts_at": "2026-07-09T19:06:45+02:00",
-    "ends_at": "2026-07-09T20:13:00+02:00",
-    "_identity": "wl|störung|L=42|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "930d80e075929cf21fe799fda5426fd5228d64088925dc7f7064542f79ff0bc7",
-    "pubDate": "2026-07-09T19:14:36+02:00",
-    "starts_at": "2026-07-09T19:14:36+02:00",
-    "ends_at": "2026-07-09T20:14:00+02:00",
-    "_identity": "wl|störung|L=42|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Verkehrsunfall Betrieb ab Währinger Straße, Volksoper U",
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "db91a1759a2e194cd4b7de4b251cde88b5b0cbf4c1e1307eae4dfc03b84a6366",
-    "pubDate": "2026-07-09T19:06:45+02:00",
-    "starts_at": "2026-07-09T19:06:46+02:00",
-    "ends_at": "2026-07-09T20:12:00+02:00",
-    "_identity": "wl|störung|L=42|D=2026-07-09"
   },
   {
     "source": "Wiener Linien",
@@ -1082,18 +1046,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Verkehrsunfall",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Haltestellenbereich Schwarzenbergplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ecbabcffef794611c039d78b430e9da20219157c755e23f92957b816f8c805bd",
-    "pubDate": "2026-07-09T18:49:00+02:00",
-    "starts_at": "2026-07-09T18:49:00+02:00",
-    "ends_at": "2026-07-09T19:54:00+02:00",
-    "_identity": "wl|störung|L=4A|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "57A: Betrieb ab Hirschengasse",
     "description": "Bauarbeiten\nBetrieb ab Hirschengasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1190,18 +1142,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Feuerwehreinsatz Derzeit kein Betrieb!",
-    "description": "Feuerwehreinsatz\nDerzeit kein Betrieb!",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "355ee88d4f6cc8a5d5571b8b5747ec0e6587603581f73b1f1d74a10f0eadd79a",
-    "pubDate": "2026-07-09T16:54:08+02:00",
-    "starts_at": "2026-07-09T17:10:11+02:00",
-    "ends_at": "2026-07-09T20:09:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Verkehrsunfall",
     "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1209,42 +1149,6 @@
     "pubDate": "2026-07-09T19:05:00+02:00",
     "starts_at": "2026-07-09T19:05:00+02:00",
     "ends_at": "2026-07-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "97d36012e56b1e5a07124d6ea367507c8e56424a01571c10477b0691d91eaa87",
-    "pubDate": "2026-07-09T19:08:41+02:00",
-    "starts_at": "2026-07-09T19:12:36+02:00",
-    "ends_at": "2026-07-09T20:09:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Verkehrsunfall Betrieb ab Rosensteingasse",
-    "description": "Verkehrsunfall\nBetrieb ab Rosensteingasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d9f90523511dcb42aa71a9ec309e904523221b95d32d52f87ad2ca42f8c60799",
-    "pubDate": "2026-07-09T19:11:39+02:00",
-    "starts_at": "2026-07-09T19:11:52+02:00",
-    "ends_at": "2026-07-09T20:11:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Verkehrsunfall Züge halten in der Rosensteingasse 61",
-    "description": "Verkehrsunfall\nZüge halten in der Rosensteingasse 61",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7cba46c45391ef5cc47baafe61c0597a42011d36bc69fe10e3fb07e76712d12",
-    "pubDate": "2026-07-09T19:12:50+02:00",
-    "starts_at": "2026-07-09T19:12:50+02:00",
-    "ends_at": "2026-07-09T20:11:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-07-09"
   },
   {
@@ -1304,7 +1208,7 @@
     "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
     "pubDate": "2026-07-09T19:37:00+02:00",
     "starts_at": "2026-07-09T19:37:00+02:00",
-    "ends_at": "2026-07-09T23:55:00+02:00",
+    "ends_at": "2026-07-09T20:22:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-07-09"
   },
   {
