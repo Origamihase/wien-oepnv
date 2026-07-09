@@ -734,6 +734,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Züge halten bei Li. 15A",
+    "description": "Gleisbauarbeiten\nZüge halten bei Li. 15A",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0a357d69f4eb7f19d80612505230e0a8b5a1c830acc3efdd3d3975ba59c7dcd4",
+    "pubDate": "2026-07-09T22:30:14+02:00",
+    "starts_at": "2026-07-09T22:30:14+02:00",
+    "ends_at": "2026-07-10T04:00:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Betrieb ab Enkplatz, Grillgasse U",
+    "description": "Gleisbauarbeiten\nBetrieb ab Enkplatz, Grillgasse U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abea439b99914caae1f139ae04541cb8b28bf3253946cd184ea247027a183900",
+    "pubDate": "2026-07-09T22:30:14+02:00",
+    "starts_at": "2026-07-09T22:30:14+02:00",
+    "ends_at": "2026-07-10T04:00:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Benützen Sie den Schienenersatzverkehr 71E",
+    "description": "Gleisbauarbeiten\nBenützen Sie den Schienenersatzverkehr 71E",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ada902634b8f201c79dcefb677d9cf487db94fdd63d609fe94f62aba9645aab3",
+    "pubDate": "2026-07-09T22:30:03+02:00",
+    "starts_at": "2026-07-09T22:30:26+02:00",
+    "ends_at": "2026-07-10T04:00:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "14A: Betrieb ab Haus des Meeres",
     "description": "Bauarbeiten\nBetrieb ab Haus des Meeres",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1118,6 +1154,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "71: Benützen Sie den Schienenersatzverkehr 71E",
+    "description": "Gleisbauarbeiten\nBenützen Sie den Schienenersatzverkehr 71E",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9e6a5649f358321a3f0deb22e5557135fd9cc18eaa7418d24f381d6e2eeb4c83",
+    "pubDate": "2026-07-09T22:30:14+02:00",
+    "starts_at": "2026-07-09T22:30:20+02:00",
+    "ends_at": "2026-07-10T04:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 116",
     "description": "Bauarbeiten\nBusse halten Landstraßer Hauptstraße 116",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1150,6 +1198,18 @@
     "starts_at": "2026-07-09T01:00:19+02:00",
     "ends_at": "2026-07-10T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Fahrtbehinderung in Richtung Seestadt. Voraussichtliche Dauer: 22:35 Uhr. Grund: Betriebsstörung im Bereich Museumsquartier.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-07-09T22:26:00+02:00",
+    "starts_at": "2026-07-09T22:26:00+02:00",
+    "ends_at": "2026-07-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-07-09"
   },
   {
     "source": "Wiener Linien",
