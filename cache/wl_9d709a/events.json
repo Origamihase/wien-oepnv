@@ -842,18 +842,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "35A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "80dd9145bec10a24205425c6d0332a699ecb222d25687ee2f6275e37232436b6",
-    "pubDate": "2026-07-09T07:13:43+02:00",
-    "starts_at": "2026-07-09T07:13:49+02:00",
-    "ends_at": "2026-07-09T08:13:00+02:00",
-    "_identity": "wl|störung|L=35A|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "36B: Busse halten Brünner Straße 118",
     "description": "Busse halten\nBrünner Straße 118",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -992,7 +980,7 @@
     "guid": "23b9c583277406dc60337c1e88bbd08a95224f1276b1f732e47f71eae91dd112",
     "pubDate": "2026-07-09T07:53:11+02:00",
     "starts_at": "2026-07-09T07:53:24+02:00",
-    "ends_at": "2026-07-09T08:52:00+02:00",
+    "ends_at": "2026-07-09T09:07:00+02:00",
     "_identity": "wl|störung|L=43|D=2026-07-09"
   },
   {
@@ -1214,18 +1202,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Schadhaftes Fahrzeug",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
-    "pubDate": "2026-07-09T07:33:00+02:00",
-    "starts_at": "2026-07-09T07:33:00+02:00",
-    "ends_at": "2026-07-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U4: Bauarbeiten",
     "description": "Linie U4: Kein Betrieb zwischen Schwedenplatz und Landstraße-Wien Mitte. Weichen Sie ersatzweise auf die Linien U1, U2 und U3 aus. Voraussichtliche Dauer: Montag, 03. August 2026, 04:00 Uhr. Grund: Bauarbeiten im Bereich Schwedenplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1234,6 +1210,18 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-07-09T08:05:00+02:00",
+    "starts_at": "2026-07-09T08:05:00+02:00",
+    "ends_at": "2026-07-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-07-09"
   },
   {
     "source": "Wiener Linien",
