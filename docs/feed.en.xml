@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 09 Jul 2026 10:01:13 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 10:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[20A: Traffic disturbance]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">22eb632b6bd2d6dc028fd441eb580871055b08c9a0e73d27cf585034f5d19de6</guid>
+      <pubDate>Thu, 09 Jul 2026 10:12:00 +0200</pubDate>
+      <ext:first_seen>Thu, 09 Jul 2026 10:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 09 Jul 2026 10:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 09 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: Traffic disruption in the Kaisermühlen-VIC U. [On 09.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: Traffic disruption in the Kaisermühlen-VIC U.<br/>[On 09.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -105,17 +116,6 @@
       <ext:ends_at>Thu, 09 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[07.07.2026 – 09.07.2026]</description>
       <content:encoded><![CDATA[[07.07.2026 – 09.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[19A: Bus stops at the 16A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fe9d625d324b465919c593f38631cc2ed4df8d37c425b5a7944c5e12373a4380</guid>
-      <pubDate>Thu, 09 Jul 2026 04:45:25 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 05:01:15 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 09 Jul 2026 04:45:25 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 10 Jul 2026 00:55:00 +0200</ext:ends_at>
-      <description>[09.07.2026 – 10.07.2026]</description>
-      <content:encoded><![CDATA[[09.07.2026 – 10.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
