@@ -723,7 +723,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10A: Fahrtbehinderung Falschparker",
-    "description": "Linie 10A: Fahrtbehinderung in Richtung Niederhofstraße U. Voraussichtliche Dauer: 18:40 Uhr. Grund: Falschparker im Bereich Fenzlgasse 33.",
+    "description": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3bd9f4c68055fa6d9b69495117575dc8f78fabf6d25c7ba67dc6f52114f61816",
     "pubDate": "2026-07-09T18:18:00+02:00",
@@ -746,12 +746,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Rettungseinsatz Züge halten bei den Linien 52,60",
+    "title": "10: Rettungseinsatz",
     "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9",
     "pubDate": "2026-07-09T17:26:00+02:00",
-    "starts_at": "2026-07-09T17:34:46+02:00",
+    "starts_at": "2026-07-09T17:26:00+02:00",
     "ends_at": "2026-07-09T23:55:00+02:00",
     "_identity": "wl|störung|L=10|D=2026-07-09"
   },
@@ -1034,14 +1034,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "50A: Betriebsstörung",
-    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "4A: Verkehrsunfall",
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Haltestellenbereich Schwarzenbergplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bb67f6a0a477b3b69302ee20b3e3420ff460ce66680601cd8f4f7373b99b2eca",
-    "pubDate": "2026-07-09T18:17:00+02:00",
-    "starts_at": "2026-07-09T18:17:00+02:00",
+    "guid": "ecbabcffef794611c039d78b430e9da20219157c755e23f92957b816f8c805bd",
+    "pubDate": "2026-07-09T18:49:00+02:00",
+    "starts_at": "2026-07-09T18:49:00+02:00",
     "ends_at": "2026-07-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=50A|D=2026-07-09"
+    "_identity": "wl|störung|L=4A|D=2026-07-09"
   },
   {
     "source": "Wiener Linien",
@@ -1082,12 +1082,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Rettungseinsatz Betrieb ab Züge halten bei der Linie 62",
+    "title": "60: Rettungseinsatz",
     "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
     "pubDate": "2026-07-09T17:26:00+02:00",
-    "starts_at": "2026-07-09T17:33:19+02:00",
+    "starts_at": "2026-07-09T17:26:00+02:00",
     "ends_at": "2026-07-09T23:55:00+02:00",
     "_identity": "wl|störung|L=60|D=2026-07-09"
   },
@@ -1130,18 +1130,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7fdb8d218c98770afcae364ee84c6bae842a6db49d7e944b0574b390a1d1a214",
-    "pubDate": "2026-07-09T17:42:32+02:00",
-    "starts_at": "2026-07-09T17:42:32+02:00",
-    "ends_at": "2026-07-09T18:42:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1173,18 +1161,6 @@
     "pubDate": "2026-07-09T16:54:08+02:00",
     "starts_at": "2026-07-09T17:10:11+02:00",
     "ends_at": "2026-07-09T20:09:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Polizeieinsatz",
-    "description": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d3f78298c0cf7e3adb13e441ed10aff7e1e8b83ad2eeba7885e3b92a6ad6bd69",
-    "pubDate": "2026-07-09T16:53:00+02:00",
-    "starts_at": "2026-07-09T16:53:00+02:00",
-    "ends_at": "2026-07-09T23:55:00+02:00",
     "_identity": "wl|störung|L=74A|D=2026-07-09"
   },
   {
@@ -1256,7 +1232,7 @@
     "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
     "pubDate": "2026-07-09T18:06:00+02:00",
     "starts_at": "2026-07-09T18:06:00+02:00",
-    "ends_at": "2026-07-09T23:55:00+02:00",
+    "ends_at": "2026-07-09T18:58:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-09"
   },
   {
