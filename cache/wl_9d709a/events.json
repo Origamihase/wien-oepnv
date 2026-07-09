@@ -722,12 +722,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Fahrtbehinderung Falschparker",
+    "title": "10A: Falschparker",
     "description": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3bd9f4c68055fa6d9b69495117575dc8f78fabf6d25c7ba67dc6f52114f61816",
     "pubDate": "2026-07-09T18:18:00+02:00",
-    "starts_at": "2026-07-09T18:26:51+02:00",
+    "starts_at": "2026-07-09T18:18:00+02:00",
     "ends_at": "2026-07-09T23:55:00+02:00",
     "_identity": "wl|störung|L=10A|D=2026-07-09"
   },
@@ -934,6 +934,42 @@
     "starts_at": "2026-07-06T00:00:12+02:00",
     "ends_at": "2026-07-09T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-07-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Verkehrsunfall Züge halten bei den Linien 40,41",
+    "description": "Verkehrsunfall\nZüge halten bei den Linien 40,41",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7936e777629dee2bb825d35d9aa8d7f57d074466ac7dc608de2d40f0e4328ccd",
+    "pubDate": "2026-07-09T19:06:45+02:00",
+    "starts_at": "2026-07-09T19:06:45+02:00",
+    "ends_at": "2026-07-09T20:13:00+02:00",
+    "_identity": "wl|störung|L=42|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "930d80e075929cf21fe799fda5426fd5228d64088925dc7f7064542f79ff0bc7",
+    "pubDate": "2026-07-09T19:14:36+02:00",
+    "starts_at": "2026-07-09T19:14:36+02:00",
+    "ends_at": "2026-07-09T20:14:00+02:00",
+    "_identity": "wl|störung|L=42|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Verkehrsunfall Betrieb ab Währinger Straße, Volksoper U",
+    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "db91a1759a2e194cd4b7de4b251cde88b5b0cbf4c1e1307eae4dfc03b84a6366",
+    "pubDate": "2026-07-09T19:06:45+02:00",
+    "starts_at": "2026-07-09T19:06:46+02:00",
+    "ends_at": "2026-07-09T20:12:00+02:00",
+    "_identity": "wl|störung|L=42|D=2026-07-09"
   },
   {
     "source": "Wiener Linien",
@@ -1172,8 +1208,44 @@
     "guid": "d2fb78dfec0b3971d13e72314dc2efcdbccb60650daf7059b954d1bd1800e28b",
     "pubDate": "2026-07-09T16:46:00+02:00",
     "starts_at": "2026-07-09T16:46:00+02:00",
-    "ends_at": "2026-07-09T23:55:00+02:00",
+    "ends_at": "2026-07-09T19:30:00+02:00",
     "_identity": "wl|störung|L=77A|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97d36012e56b1e5a07124d6ea367507c8e56424a01571c10477b0691d91eaa87",
+    "pubDate": "2026-07-09T19:08:41+02:00",
+    "starts_at": "2026-07-09T19:12:36+02:00",
+    "ends_at": "2026-07-09T20:09:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Verkehrsunfall Betrieb ab Rosensteingasse",
+    "description": "Verkehrsunfall\nBetrieb ab Rosensteingasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d9f90523511dcb42aa71a9ec309e904523221b95d32d52f87ad2ca42f8c60799",
+    "pubDate": "2026-07-09T19:11:39+02:00",
+    "starts_at": "2026-07-09T19:11:52+02:00",
+    "ends_at": "2026-07-09T20:11:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Verkehrsunfall Züge halten in der Rosensteingasse 61",
+    "description": "Verkehrsunfall\nZüge halten in der Rosensteingasse 61",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7cba46c45391ef5cc47baafe61c0597a42011d36bc69fe10e3fb07e76712d12",
+    "pubDate": "2026-07-09T19:12:50+02:00",
+    "starts_at": "2026-07-09T19:12:50+02:00",
+    "ends_at": "2026-07-09T20:11:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-07-09"
   },
   {
     "source": "Wiener Linien",
@@ -1222,18 +1294,6 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-07-09T18:06:00+02:00",
-    "starts_at": "2026-07-09T18:06:00+02:00",
-    "ends_at": "2026-07-09T18:58:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-07-09"
   },
   {
     "source": "Wiener Linien",
