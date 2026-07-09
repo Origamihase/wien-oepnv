@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 09 Jul 2026 23:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 00:01:34 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[31: Kein Betrieb zwischen Stammersdorf und Friedrich-Engels-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bd505a7409f812c37b139c79de6413e073c46f43788ac8ae42d1b468115bb1eb</guid>
+      <pubDate>Thu, 09 Jul 2026 00:00:23 +0200</pubDate>
+      <ext:first_seen>Fri, 10 Jul 2026 00:01:34 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 10 Jul 2026 00:00:21 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 10 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 10.07.2026]</description>
+      <content:encoded><![CDATA[[Am 10.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Atzgersdorfer Straße von Pantlitschkogasse bis Wastlgasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -106,16 +117,6 @@
       <ext:ends_at>Fri, 31 Jul 2026 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 61B in Richtung Liesing S Haltestelle: Lemböckgasse Von: Ketzergasse 86-88 Nach: Ketzergasse 82 Dauer: 13. Juli 2026, etwa 06:30 Uhr auf Dauer … [07.07.2026 – 31.07.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 61B in Richtung Liesing S Haltestelle: Lemböckgasse Von: Ketzergasse 86-88 Nach: Ketzergasse 82 Dauer: 13. Juli 2026, etwa 06:30 Uhr auf Dauer …<br/>[07.07.2026 – 31.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;894077</guid>
-      <pubDate>Tue, 07 Jul 2026 10:31:37 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 11:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 10:31:37 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 05.12.2026 bis 07.12.2026 (jeweils von 23:15 Uhr - 04:40 Uhr) keine Nahverkehrszüge fahren. [Seit 07.07.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 05.12.2026 bis 07.12.2026 (jeweils von 23:15 Uhr - 04:40 Uhr) keine Nahverkehrszüge fahren.<br/>[Seit 07.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
