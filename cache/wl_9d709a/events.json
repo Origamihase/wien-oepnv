@@ -722,12 +722,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Verkehrsunfall",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Bereich Neubaugasse 35.",
+    "title": "13A: Rettungseinsatz",
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9",
-    "pubDate": "2026-07-09T12:27:00+02:00",
-    "starts_at": "2026-07-09T12:27:00+02:00",
+    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
+    "pubDate": "2026-07-09T12:57:00+02:00",
+    "starts_at": "2026-07-09T12:57:00+02:00",
     "ends_at": "2026-07-09T23:55:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-07-09"
   },
@@ -819,7 +819,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "28A: Verkehrsunfall",
-    "description": "Linie 28A: Fahrtbehinderung in Richtung Breitenlee, Schule. Voraussichtliche Dauer: 13:00 Uhr. Grund: Verkehrsunfall im Bereich Sandauergasse.",
+    "description": "Die Linie 28A wird in Richtung Breitenlee, Schule zwischen St.-Michael-Gasse und Obachgasse über die Kürschnergasse, Aderklaaer Straße, Wagramer Straße umgeleitet. Voraussichtliche Dauer: 13:30 Uhr. Grund: Verkehrsunfall im Bereich Sandauergasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "45988bb6c10188efc756035f4a7aeb336d0d4105e2d558e8a03c1d6b5ee52eb8",
     "pubDate": "2026-07-09T12:20:00+02:00",
@@ -830,37 +830,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Verkehrsunfall",
+    "title": "2: Rettungseinsatz Betrieb ab Ring, Volkstheater",
     "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
-    "pubDate": "2026-07-09T12:02:00+02:00",
-    "starts_at": "2026-07-09T12:02:00+02:00",
-    "ends_at": "2026-07-09T12:22:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
-    "pubDate": "2026-07-09T12:05:07+02:00",
-    "starts_at": "2026-07-09T12:10:02+02:00",
-    "ends_at": "2026-07-09T13:09:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Rettungseinsatz Einstieg bei Linien 46, 49, 48A",
-    "description": "Rettungseinsatz\nEinstieg bei Linien 46, 49, 48A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
     "pubDate": "2026-07-09T12:05:07+02:00",
-    "starts_at": "2026-07-09T12:05:07+02:00",
-    "ends_at": "2026-07-09T13:26:00+02:00",
+    "starts_at": "2026-07-09T12:32:11+02:00",
+    "ends_at": "2026-07-09T23:55:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-07-09"
   },
   {
@@ -1142,25 +1118,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Verkehrsunfall",
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
-    "pubDate": "2026-07-09T12:02:00+02:00",
-    "starts_at": "2026-07-09T12:02:00+02:00",
-    "ends_at": "2026-07-09T12:22:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Rettungseinsatz Betrieb ab Schwarzenbergplatz",
-    "description": "Rettungseinsatz\nBetrieb ab Schwarzenbergplatz",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c",
     "pubDate": "2026-07-09T12:06:05+02:00",
     "starts_at": "2026-07-09T12:28:19+02:00",
-    "ends_at": "2026-07-09T13:27:00+02:00",
+    "ends_at": "2026-07-09T23:55:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-07-09"
   },
   {
@@ -1178,37 +1142,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
-    "pubDate": "2026-07-09T12:04:09+02:00",
-    "starts_at": "2026-07-09T12:10:36+02:00",
-    "ends_at": "2026-07-09T13:10:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Rettungseinsatz Betrieb ab Börse",
-    "description": "Rettungseinsatz\nBetrieb ab Börse",
+    "title": "D: Rettungseinsatz Einstieg Schottenring 19",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106",
     "pubDate": "2026-07-09T12:04:09+02:00",
     "starts_at": "2026-07-09T12:29:17+02:00",
-    "ends_at": "2026-07-09T13:28:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Verkehrsunfall",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e",
-    "pubDate": "2026-07-09T12:02:00+02:00",
-    "starts_at": "2026-07-09T12:02:00+02:00",
-    "ends_at": "2026-07-09T12:22:00+02:00",
+    "ends_at": "2026-07-09T23:55:00+02:00",
     "_identity": "wl|störung|L=D|D=2026-07-09"
   },
   {
@@ -1234,18 +1174,6 @@
     "starts_at": "2026-07-09T01:00:19+02:00",
     "ends_at": "2026-07-10T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2026-07-09T12:03:00+02:00",
-    "starts_at": "2026-07-09T12:03:00+02:00",
-    "ends_at": "2026-07-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-07-09"
   },
   {
     "source": "Wiener Linien",
