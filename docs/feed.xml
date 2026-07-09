@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 09 Jul 2026 07:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 08:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[43: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1205ac22f6bd4faf7c9d1128f045fd29146816a4bd3c883707a404d2c904cd86</guid>
+      <pubDate>Thu, 09 Jul 2026 07:50:00 +0200</pubDate>
+      <ext:first_seen>Thu, 09 Jul 2026 08:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 09 Jul 2026 07:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 09 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb nur zwischen Schottentor und Rosensteingasse. Weiterfahrt bis Johann-Nepomuk-Berger-Platz. [Am 09.07.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Schottentor und Rosensteingasse. Weiterfahrt bis Johann-Nepomuk-Berger-Platz.<br/>[Am 09.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[35A: Fahrtbehinderung wegen Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">80dd9145bec10a24205425c6d0332a699ecb222d25687ee2f6275e37232436b6</guid>
-      <pubDate>Thu, 09 Jul 2026 07:13:00 +0200</pubDate>
+      <pubDate>Thu, 09 Jul 2026 07:13:43 +0200</pubDate>
       <ext:first_seen>Thu, 09 Jul 2026 07:30:53 +0200</ext:first_seen>
       <ext:starts_at>Thu, 09 Jul 2026 07:13:49 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 09 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.07.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 09 Jul 2026 08:13:00 +0200</ext:ends_at>
+      <description>[Am 09.07.2026]</description>
+      <content:encoded><![CDATA[[Am 09.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -105,17 +116,6 @@
       <ext:ends_at>Tue, 01 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse. [07.07.2026 – 01.09.2026]</description>
       <content:encoded><![CDATA[Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse.<br/>[07.07.2026 – 01.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[17A: Busse halten Favoritenstraße Hauptfahrbahn]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2400658d4891bb6c3af8daa14e0fad5c232b1d433bf70e1ae1fe54893a2e4b7d</guid>
-      <pubDate>Tue, 07 Jul 2026 05:05:01 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 05:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 05:06:57 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 09 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[07.07.2026 – 09.07.2026]</description>
-      <content:encoded><![CDATA[[07.07.2026 – 09.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
