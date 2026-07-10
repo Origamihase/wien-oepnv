@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 10 Jul 2026 15:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 15:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9: Fahrtbehinderung Verkehrsunfall]]></title>
+      <title><![CDATA[48A: Schadhafter PKW]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">97d36012e56b1e5a07124d6ea367507c8e56424a01571c10477b0691d91eaa87</guid>
-      <pubDate>Fri, 10 Jul 2026 14:16:40 +0200</pubDate>
-      <ext:first_seen>Fri, 10 Jul 2026 15:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 10 Jul 2026 14:24:24 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 10 Jul 2026 15:24:00 +0200</ext:ends_at>
-      <description>[Am 10.07.2026]</description>
-      <content:encoded><![CDATA[[Am 10.07.2026]]]></content:encoded>
+      <guid isPermaLink="false">fa8abaec6f6d001f4f62d03761b0eae2195fb6503fc0c1c4435a73d4c97df6d7</guid>
+      <pubDate>Fri, 10 Jul 2026 15:03:00 +0200</pubDate>
+      <ext:first_seen>Fri, 10 Jul 2026 15:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 10 Jul 2026 15:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 10 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhafter PKW. [Am 10.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhafter PKW.<br/>[Am 10.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[59A: Straßenbauarbeiten]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Sat, 10 Jul 2027 23:59:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten werden die Busse der Linie 59A umgeleitet. [13.07.2026 – 10.07.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten werden die Busse der Linie 59A umgeleitet.<br/>[13.07.2026 – 10.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56B: Verunreinigung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8927630e038450d6c7ac3a0b01fe60ae666dc2f953bb88e0ed641116fe8c230c</guid>
-      <pubDate>Fri, 10 Jul 2026 12:59:00 +0200</pubDate>
-      <ext:first_seen>Fri, 10 Jul 2026 13:01:16 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 10 Jul 2026 12:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 10 Jul 2026 14:52:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 10.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 10.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31: Kein Betrieb zwischen Stammersdorf und Friedrich-Engels-Platz]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Auffahrt auf die A22 in Richtung Süden ist in diesem Zeitraum nicht möglich.Die Linie 31 wird in der Zeit von 06.07.2026 bis 16.08.2026 kurzgeführt und verkehrt nur … [06.07.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[Die Auffahrt auf die A22 in Richtung Süden ist in diesem Zeitraum nicht möglich.Die Linie 31 wird in der Zeit von 06.07.2026 bis 16.08.2026 kurzgeführt und verkehrt nur …<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[16A/N65/U6E: Straßenbauarbeiten Am Schöpfwerk]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">35707eaf37f60d497a76706cff4fd2d6991ac408a3d2c957dfeb031ff69d4a34</guid>
+      <pubDate>Wed, 08 Jul 2026 10:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 08 Jul 2026 10:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 03 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 01 Jan 2027 11:11:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Am Schöpfwerk und An den Eisteichen werden die Linien 16A, N65 und der Schienenersatzverkehr U6E (spontan) umgeleitet. [03.08.2026 – 01.01.2027]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Am Schöpfwerk und An den Eisteichen werden die Linien 16A, N65 und der Schienenersatzverkehr U6E (spontan) umgeleitet.<br/>[03.08.2026 – 01.01.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
