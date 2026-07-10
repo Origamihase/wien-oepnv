@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 10 Jul 2026 08:31:03 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 09:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[27B: service obstruction Foreigner traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ece4a92ace3a0b7d4d7b74cfda7da46a507141aace7c7412b0a773326a44ce58</guid>
+      <pubDate>Fri, 10 Jul 2026 09:00:32 +0200</pubDate>
+      <ext:first_seen>Fri, 10 Jul 2026 09:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 10 Jul 2026 09:00:32 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 10 Jul 2026 09:59:00 +0200</ext:ends_at>
+      <description>[On 10.07.2026]</description>
+      <content:encoded><![CDATA[[On 10.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[31: No operation between Stammersdorf and Friedrich-Engels-Platz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sat, 11 Jul 2026 01:00:00 +0200</ext:ends_at>
       <description>[10.07.2026 – 11.07.2026]</description>
       <content:encoded><![CDATA[[10.07.2026 – 11.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[61B: Lemböckgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1724dfec300af1a2c9787b7edc7711e883e32fd2f9d3321828bde8434293a722</guid>
-      <pubDate>Tue, 07 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 07 Jul 2026 14:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Jul 2026 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line 61B towards Liesing S Stop: Lemböckgasse From: Ketzergasse 86-88 To: Ketzergasse 82 Duration: 13 July 2026, approximately 06.30 Clock duration … [07.07.2026 – 31.07.2026]</description>
-      <content:encoded><![CDATA[Stop change of line 61B towards Liesing S Stop: Lemböckgasse From: Ketzergasse 86-88 To: Ketzergasse 82 Duration: 13 July 2026, approximately 06.30 Clock duration …<br/>[07.07.2026 – 31.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
