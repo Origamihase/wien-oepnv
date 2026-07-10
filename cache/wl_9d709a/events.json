@@ -1106,6 +1106,66 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "D: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "47075b3ab9aea3f9e8790e8326394e6f935beb494cad7b02c64ce5fbe05f3cf6",
+    "pubDate": "2026-07-10T05:37:51+02:00",
+    "starts_at": "2026-07-10T05:37:51+02:00",
+    "ends_at": "2026-07-10T06:37:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Schadhaftes Fahrzeug",
+    "description": "Linie D: Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien U6, 40, 41, 42, 40A aus. Voraussichtliche Dauer: 06:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Franz-Josefs-Bahnhof S.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c",
+    "pubDate": "2026-07-10T05:38:00+02:00",
+    "starts_at": "2026-07-10T05:38:00+02:00",
+    "ends_at": "2026-07-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Schadhafter Zug Betrieb ab Börse",
+    "description": "Schadhafter Zug\nBetrieb ab Börse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "599123099f442720f6b756b5bcf3cc088d6350d9a9cddc691821e29a19ff2842",
+    "pubDate": "2026-07-10T05:37:51+02:00",
+    "starts_at": "2026-07-10T05:37:51+02:00",
+    "ends_at": "2026-07-10T06:38:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Züge halten Peregringasse",
+    "description": "Züge halten\nPeregringasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5bb8b796282e50fa2b213eee1154e3b23e5ca714c1fd0475bea336841d0c053f",
+    "pubDate": "2026-07-10T05:37:51+02:00",
+    "starts_at": "2026-07-10T05:37:51+02:00",
+    "ends_at": "2026-07-10T06:40:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Schadhafter Zug Betrieb ab Augasse",
+    "description": "Schadhafter Zug\nBetrieb ab Augasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "81af5bf1735ff3c3e7550b8b419ed40e79208e400d2a542183d0acc47c2cec7b",
+    "pubDate": "2026-07-10T05:39:18+02:00",
+    "starts_at": "2026-07-10T05:40:19+02:00",
+    "ends_at": "2026-07-10T06:39:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "LB: Betrieb ab Inzersdorf Lokalbahn",
     "description": "Bauarbeiten\nBetrieb ab Inzersdorf Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1136,7 +1196,7 @@
     "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
     "pubDate": "2026-07-10T05:23:00+02:00",
     "starts_at": "2026-07-10T05:23:00+02:00",
-    "ends_at": "2026-07-10T23:55:00+02:00",
+    "ends_at": "2026-07-10T05:59:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-07-10"
   },
   {
@@ -1148,7 +1208,7 @@
     "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
     "pubDate": "2026-07-10T04:57:00+02:00",
     "starts_at": "2026-07-10T04:57:00+02:00",
-    "ends_at": "2026-07-10T23:55:00+02:00",
+    "ends_at": "2026-07-10T06:10:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-10"
   },
   {
