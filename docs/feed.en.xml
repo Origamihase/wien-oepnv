@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 10 Jul 2026 19:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 20:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[71: Harmful train trains stop at line 18]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5a50601977d0e6296a1a37844e29d0f35f7f047273cdf3f4c0c3d747ed508781</guid>
-      <pubDate>Fri, 10 Jul 2026 17:26:35 +0200</pubDate>
-      <ext:first_seen>Fri, 10 Jul 2026 18:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 10 Jul 2026 17:26:35 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 10 Jul 2026 20:00:00 +0200</ext:ends_at>
-      <description>[On 10.07.2026]</description>
-      <content:encoded><![CDATA[[On 10.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[59A: roadworks]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +106,17 @@
       <ext:ends_at>Fri, 01 Jan 2027 11:11:00 +0100</ext:ends_at>
       <description>Because of roadworks in the range Am Schöpfwerk and At the ice ponds the lines 16A, N65 and the rail replacement service U6E (spontaneously) are redirected. [03.08.2026 – 01.01.2027]</description>
       <content:encoded><![CDATA[Because of roadworks in the range Am Schöpfwerk and At the ice ponds the lines 16A, N65 and the rail replacement service U6E (spontaneously) are redirected.<br/>[03.08.2026 – 01.01.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: service from Julius-Raab-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ee4dd174bbd81be9340a933f05a2903ca8733964879d907680bf0cc85ed764fd</guid>
+      <pubDate>Fri, 10 Jul 2026 05:00:09 +0200</pubDate>
+      <ext:first_seen>Wed, 08 Jul 2026 05:00:47 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 10 Jul 2026 05:00:09 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 11 Jul 2026 01:00:00 +0200</ext:ends_at>
+      <description>[10.07.2026 – 11.07.2026]</description>
+      <content:encoded><![CDATA[[10.07.2026 – 11.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
