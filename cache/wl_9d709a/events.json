@@ -788,19 +788,7 @@
     "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
     "pubDate": "2026-07-10T14:28:00+02:00",
     "starts_at": "2026-07-10T14:28:00+02:00",
-    "ends_at": "2026-07-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-07-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
-    "pubDate": "2026-07-10T14:32:04+02:00",
-    "starts_at": "2026-07-10T14:38:28+02:00",
-    "ends_at": "2026-07-10T15:37:00+02:00",
+    "ends_at": "2026-07-10T15:57:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-07-10"
   },
   {
@@ -854,30 +842,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
-    "pubDate": "2026-07-10T14:32:36+02:00",
-    "starts_at": "2026-07-10T14:36:15+02:00",
-    "ends_at": "2026-07-10T15:35:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a3191136d8bad796a52ae693389b95d11840d24bc4efea2aa060f02844dccba",
-    "pubDate": "2026-07-10T14:45:26+02:00",
-    "starts_at": "2026-07-10T14:45:26+02:00",
-    "ends_at": "2026-07-10T15:44:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "31: Gleisbauarbeiten",
     "description": "Linie 31: Betrieb nur zwischen Schottenring U und Friedrich-Engels-Platz. Weichen Sie ersatzweise auf die Linien U6, 30, 5A und 11A. aus. Voraussichtliche Dauer: Ende August. Grund: Gleisbauarbeiten im Bereich Floridsdorfer Brücke.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -898,6 +862,18 @@
     "starts_at": "2026-07-10T00:00:21+02:00",
     "ends_at": "2026-07-10T23:59:59+02:00",
     "_identity": "wl|störung|L=31|D=2026-07-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33A: Verkehrsüberlastung",
+    "description": "Linie 33A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cd2204c7545719ef367a1d80f100a473cb05ab42b0684f7b7ac6078c99df82c5",
+    "pubDate": "2026-07-10T15:36:00+02:00",
+    "starts_at": "2026-07-10T15:36:00+02:00",
+    "ends_at": "2026-07-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=33A|D=2026-07-10"
   },
   {
     "source": "Wiener Linien",
@@ -1070,13 +1046,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Schadhafter PKW",
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhafter PKW.",
+    "title": "48A: Verkehrsunfall",
+    "description": "Linie 48A: Fahrtbehinderung in Richtung Klinik Penzing. Voraussichtliche Dauer: 16:45 Uhr. Grund: Verkehrsunfall im Bereich Neustiftgasse 129.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa8abaec6f6d001f4f62d03761b0eae2195fb6503fc0c1c4435a73d4c97df6d7",
-    "pubDate": "2026-07-10T15:03:00+02:00",
-    "starts_at": "2026-07-10T15:03:00+02:00",
+    "guid": "00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033",
+    "pubDate": "2026-07-10T15:53:00+02:00",
+    "starts_at": "2026-07-10T15:53:00+02:00",
     "ends_at": "2026-07-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=48A|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3a290c8967b717bf066ab8b81381927897476efbd1370ad7d9f3c4d7bf64cb22",
+    "pubDate": "2026-07-10T15:54:42+02:00",
+    "starts_at": "2026-07-10T15:54:52+02:00",
+    "ends_at": "2026-07-10T16:54:00+02:00",
     "_identity": "wl|störung|L=48A|D=2026-07-10"
   },
   {
@@ -1118,13 +1106,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "58A: Verspätungen",
+    "description": "Linie 58A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "db21235aa50840b1ad2c30131761c86a39067b8343fbea760aab26f0b14c3724",
+    "pubDate": "2026-07-10T15:43:00+02:00",
+    "starts_at": "2026-07-10T15:43:00+02:00",
+    "ends_at": "2026-07-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=58A|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "60: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
-    "pubDate": "2026-07-10T15:20:00+02:00",
+    "pubDate": "2026-07-10T15:24:18+02:00",
     "starts_at": "2026-07-10T15:24:18+02:00",
-    "ends_at": "2026-07-10T23:55:00+02:00",
+    "ends_at": "2026-07-10T16:23:00+02:00",
     "_identity": "wl|störung|L=60|D=2026-07-10"
   },
   {
