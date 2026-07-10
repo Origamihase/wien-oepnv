@@ -728,7 +728,7 @@
     "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
     "pubDate": "2026-07-10T06:48:00+02:00",
     "starts_at": "2026-07-10T06:48:00+02:00",
-    "ends_at": "2026-07-10T23:55:00+02:00",
+    "ends_at": "2026-07-10T08:24:00+02:00",
     "_identity": "wl|störung|L=11|D=2026-07-10"
   },
   {
@@ -1106,18 +1106,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Schadhaftes Fahrzeug",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c",
-    "pubDate": "2026-07-10T05:38:00+02:00",
-    "starts_at": "2026-07-10T05:38:00+02:00",
-    "ends_at": "2026-07-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-07-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "LB: Betrieb ab Inzersdorf Lokalbahn",
     "description": "Bauarbeiten\nBetrieb ab Inzersdorf Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1142,25 +1130,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-07-10T06:17:00+02:00",
-    "starts_at": "2026-07-10T06:17:00+02:00",
-    "ends_at": "2026-07-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-07-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Verspätungen",
     "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
     "pubDate": "2026-07-10T07:09:00+02:00",
     "starts_at": "2026-07-10T07:09:00+02:00",
-    "ends_at": "2026-07-10T23:55:00+02:00",
+    "ends_at": "2026-07-10T08:21:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-10"
   },
   {
