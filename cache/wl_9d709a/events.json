@@ -806,6 +806,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "27B: Fremder Verkehrsunfall",
+    "description": "Linie 27B: Fahrtbehinderung in Richtung Kagran U. Voraussichtliche Dauer: Nicht absehbar. Grund: Fremder Verkehrsunfall im Bereich Dückegasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c052fe2f69d556e20d5a56c6b3f0220e6013eda3d746fc30c1a4dbe4b8272a1f",
+    "pubDate": "2026-07-10T09:01:00+02:00",
+    "starts_at": "2026-07-10T09:01:00+02:00",
+    "ends_at": "2026-07-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=27B|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "27B: Fahrtbehinderung Fremder Verkehrsunfall",
     "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
