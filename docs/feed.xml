@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 10 Jul 2026 22:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 22:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Schottentor: Schottenring von Kreuzung Universitätsring und Schottengasse und Schottenpassage bis Kreuzung Heßgas]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">2b9e2fe3f409170dde80e744bf4c1227abd5d8ce235aede37e9849364bc28309</guid>
+      <pubDate>Mon, 13 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 10 Jul 2026 22:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 07 Aug 2026 00:00:00 +0200</ext:ends_at>
+      <description>Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt. [13.07.2026 – 07.08.2026]</description>
+      <content:encoded><![CDATA[Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt.<br/>[13.07.2026 – 07.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[59A: Straßenbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 01 Jan 2027 11:11:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Am Schöpfwerk und An den Eisteichen werden die Linien 16A, N65 und der Schienenersatzverkehr U6E (spontan) umgeleitet. [03.08.2026 – 01.01.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Am Schöpfwerk und An den Eisteichen werden die Linien 16A, N65 und der Schienenersatzverkehr U6E (spontan) umgeleitet.<br/>[03.08.2026 – 01.01.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Betrieb ab Julius-Raab-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ee4dd174bbd81be9340a933f05a2903ca8733964879d907680bf0cc85ed764fd</guid>
-      <pubDate>Fri, 10 Jul 2026 05:00:09 +0200</pubDate>
-      <ext:first_seen>Wed, 08 Jul 2026 05:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 10 Jul 2026 05:00:09 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 11 Jul 2026 01:00:00 +0200</ext:ends_at>
-      <description>[10.07.2026 – 11.07.2026]</description>
-      <content:encoded><![CDATA[[10.07.2026 – 11.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
