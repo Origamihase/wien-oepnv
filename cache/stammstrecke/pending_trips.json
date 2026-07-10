@@ -10,9 +10,17 @@
   "Meidling|S2|2026-07-10T04:42:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-07-10T04:01:05.830738+02:00",
+    "last_seen_at": "2026-07-10T04:31:09.015136+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-07-10T04:42:00+02:00"
+  },
+  "Praterstern|S2|2026-07-10T04:57:00+02:00": {
+    "cancelled": false,
+    "direction": "Praterstern",
+    "last_seen_at": "2026-07-10T04:31:09.015136+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-07-10T04:57:00+02:00"
   }
 }
