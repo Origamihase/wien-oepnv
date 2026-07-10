@@ -1154,6 +1154,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-07-10T07:09:00+02:00",
+    "starts_at": "2026-07-10T07:09:00+02:00",
+    "ends_at": "2026-07-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U4: Bauarbeiten",
     "description": "Linie U4: Kein Betrieb zwischen Schwedenplatz und Landstraße-Wien Mitte. Weichen Sie ersatzweise auf die Linien U1, U2 und U3 aus. Voraussichtliche Dauer: Montag, 03. August 2026, 04:00 Uhr. Grund: Bauarbeiten im Bereich Schwedenplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
