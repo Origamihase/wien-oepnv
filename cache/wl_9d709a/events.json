@@ -698,13 +698,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Busse halten Matthias-Schönerer-Gasse 1",
-    "description": "Bauarbeiten\nBusse halten Matthias-Schönerer-Gasse 1",
+    "title": "10A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "71b7237b172a86dbe90fc8032352541e9ac01ade2d5e1d8f23b7dba3ad9e3c7b",
+    "guid": "bd7d8f45186b5060599af6427e03e365de42b2d79056f8d753c1d2f26e5c147c",
     "pubDate": "2026-07-09T00:00:25+02:00",
-    "starts_at": "2026-07-09T00:00:25+02:00",
-    "ends_at": "2026-07-11T23:59:59+02:00",
+    "starts_at": "2026-07-11T10:27:20+02:00",
+    "ends_at": "2026-07-11T11:26:00+02:00",
     "_identity": "wl|störung|L=10A|D=2026-07-09"
   },
   {
@@ -718,18 +718,6 @@
     "starts_at": "2026-07-10T00:00:24+02:00",
     "ends_at": "2026-07-11T23:59:59+02:00",
     "_identity": "wl|störung|L=10A|D=2026-07-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Verunreinigung",
-    "description": "Linie 11: Unregelmäßige Intervalle in Richtung Otto-Probst-Platz. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1f0306b680e5da26f14eb1fee7aed5a4682caac6e0570037c68c42879db4b795",
-    "pubDate": "2026-07-11T09:20:00+02:00",
-    "starts_at": "2026-07-11T09:20:00+02:00",
-    "ends_at": "2026-07-11T23:55:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-07-11"
   },
   {
     "source": "Wiener Linien",
@@ -811,7 +799,7 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
     "pubDate": "2026-07-11T09:54:00+02:00",
-    "starts_at": "2026-07-11T09:59:54+02:00",
+    "starts_at": "2026-07-11T10:16:36+02:00",
     "ends_at": "2026-07-11T23:55:00+02:00",
     "_identity": "wl|störung|L=25|D=2026-07-11"
   },
@@ -982,6 +970,42 @@
     "starts_at": "2026-07-10T00:00:24+02:00",
     "ends_at": "2026-07-11T23:59:59+02:00",
     "_identity": "wl|störung|L=44A|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fremdunfall Betrieb ab Urban-Loritz-Platz",
+    "description": "Fremdunfall\nBetrieb ab Urban-Loritz-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "61aafb82f18cc07fb5521d84d3b1ba9f7ed93d8876fcabdda0a0311906ab2d86",
+    "pubDate": "2026-07-11T10:14:56+02:00",
+    "starts_at": "2026-07-11T10:14:56+02:00",
+    "ends_at": "2026-07-11T11:21:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-07-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fremdunfall Betrieb ab Hütteldorfer Straße",
+    "description": "Fremdunfall\nBetrieb ab Hütteldorfer Straße >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "635615b7afd7dd94f7c9620de3d3e783f5b4446f5cfec20f6b1709fb4620d509",
+    "pubDate": "2026-07-11T10:23:37+02:00",
+    "starts_at": "2026-07-11T10:23:37+02:00",
+    "ends_at": "2026-07-11T11:22:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-07-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b50c613612251feea4193dabddf520d95d8fd1c6547b45a685160134aa7d7138",
+    "pubDate": "2026-07-11T10:15:54+02:00",
+    "starts_at": "2026-07-11T10:15:54+02:00",
+    "ends_at": "2026-07-11T11:15:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-07-11"
   },
   {
     "source": "Wiener Linien",
