@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 11 Jul 2026 17:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2026 17:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[34A: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3da74a447e798004d7de0fe7954c3720d223a4088c9715bacf4e90c18d27e257</guid>
+      <pubDate>Sat, 11 Jul 2026 17:30:00 +0200</pubDate>
+      <ext:first_seen>Sat, 11 Jul 2026 17:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 11 Jul 2026 17:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 11 Jul 2026 18:00:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: defective vehicle. [On 11.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 11.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Schottentor: Schottenring from crossing Universitätsring and Schottengasse and bulkhead passage to crossing Heßgas]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>The driveway to the A22 towards the south is not possible during this period.The line 31 is short-run in the period from 06.07.2026 to 16.08.2026 and runs only … [06.07.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[The driveway to the A22 towards the south is not possible during this period.The line 31 is short-run in the period from 06.07.2026 to 16.08.2026 and runs only …<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A/N65/U6E: roadworks Am Schöpfwerk]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">35707eaf37f60d497a76706cff4fd2d6991ac408a3d2c957dfeb031ff69d4a34</guid>
-      <pubDate>Wed, 08 Jul 2026 10:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 08 Jul 2026 10:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 03 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 01 Jan 2027 11:11:00 +0100</ext:ends_at>
-      <description>Because of roadworks in the range Am Schöpfwerk and At the ice ponds the lines 16A, N65 and the rail replacement service U6E (spontaneously) are redirected. [03.08.2026 – 01.01.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the range Am Schöpfwerk and At the ice ponds the lines 16A, N65 and the rail replacement service U6E (spontaneously) are redirected.<br/>[03.08.2026 – 01.01.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
