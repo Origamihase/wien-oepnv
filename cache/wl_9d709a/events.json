@@ -722,6 +722,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Verunreinigung",
+    "description": "Linie 11: Unregelmäßige Intervalle in Richtung Otto-Probst-Platz. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1f0306b680e5da26f14eb1fee7aed5a4682caac6e0570037c68c42879db4b795",
+    "pubDate": "2026-07-11T09:20:00+02:00",
+    "starts_at": "2026-07-11T09:20:00+02:00",
+    "ends_at": "2026-07-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-07-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "14A: Betrieb ab Haus des Meeres",
     "description": "Bauarbeiten\nBetrieb ab Haus des Meeres",
     "link": "https://www.wienerlinien.at/ogd_realtime",
