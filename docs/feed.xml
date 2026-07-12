@@ -7,18 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 12 Jul 2026 13:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 14:01:11 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Liesing ↔ Wien Meidling]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;895424</guid>
-      <pubDate>Sun, 12 Jul 2026 12:42:42 +0200</pubDate>
-      <ext:first_seen>Sun, 12 Jul 2026 13:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 12 Jul 2026 12:42:42 +0200</ext:starts_at>
-      <description>Wegen eines Polizeieinsatzes waren zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof bis 12:38 Uhr keine Fahrten möglich. [Seit 12.07.2026]</description>
-      <content:encoded><![CDATA[Wegen eines Polizeieinsatzes waren zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof bis 12:38 Uhr keine Fahrten möglich.<br/>[Seit 12.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[53A: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -27,8 +17,8 @@
       <ext:first_seen>Sun, 12 Jul 2026 13:00:56 +0200</ext:first_seen>
       <ext:starts_at>Sun, 12 Jul 2026 12:27:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 12 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Liebe Fahrgäste! Die Linie 53A fährt derzeit nur zwischen Stock im Weg und Wolfrathplatz. [Am 12.07.2026]</description>
-      <content:encoded><![CDATA[Liebe Fahrgäste! Die Linie 53A fährt derzeit nur zwischen Stock im Weg und Wolfrathplatz.<br/>[Am 12.07.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 12.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 12.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Veranstaltung Züge halten Steig A]]></title>
@@ -117,6 +107,17 @@
       <ext:ends_at>Tue, 22 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>Nähere Informationen zur Haltestellenverlegungen der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH &amp;amp; Co KG zu entnehmen. [13.07.2026 – 22.09.2026]</description>
       <content:encoded><![CDATA[Nähere Informationen zur Haltestellenverlegungen der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH &amp; Co KG zu entnehmen.<br/>[13.07.2026 – 22.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Meidlinger Hauptstraße von Edelsinnstraße und Eichenstraße bis Sechtergasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">cf9af1d242b1445bf231f8e8995fa5eb781d0dbab69741cbe8f5be87e2a27c90</guid>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 09 Jul 2026 22:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 14 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 15 Aug 2026 00:00:00 +0200</ext:ends_at>
+      <description>ImBaustellenbereich wird eine Restfahrbahn mit 3,50 mfreigehalten. DerFußgängerverkehr kann aufrecht gehalten werden. [14.07.2026 – 15.08.2026]</description>
+      <content:encoded><![CDATA[ImBaustellenbereich wird eine Restfahrbahn mit 3,50 mfreigehalten. DerFußgängerverkehr kann aufrecht gehalten werden.<br/>[14.07.2026 – 15.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
