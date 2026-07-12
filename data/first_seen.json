@@ -4702,6 +4702,14 @@
       "epoch": 3
     }
   },
+  "5a315f55ec94cf1c0d1d145e59954ac7c869b120a645541bfc035d5e92f296b1": {
+    "first_seen": "2026-07-12T11:00:56.430643+00:00",
+    "translations": {
+      "en": {
+        "summary": "Dear passengers! The line 53A currently only runs between Stock im Weg and Wolfrathplatz."
+      }
+    }
+  },
   "5a50601977d0e6296a1a37844e29d0f35f7f047273cdf3f4c0c3d747ed508781": {
     "first_seen": "2026-07-10T16:30:46.599657+00:00",
     "translations": {
@@ -7776,6 +7784,14 @@
         "title": "60: rescue operation service from Ansch\u00fctzgasse"
       },
       "epoch": 2
+    }
+  },
+  "9129d90b0278792e13fd846d71c70c28ef571d4e10fd0dd5baca66be37bd8a20": {
+    "first_seen": "2026-07-12T11:00:56.430643+00:00",
+    "translations": {
+      "en": {
+        "summary": "Average delay of 15.2 minutes towards Praterstern [Since 12.07.2026]"
+      }
     }
   },
   "915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515": {
@@ -14213,6 +14229,16 @@
       "en": {
         "summary": "Due to an interlocking fault am Bahnhof, no journeys are currently possible in Wolfurt Bahnhst. No information can be provided about the duration of the interruption.",
         "title": "Wolfurt"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&895424": {
+    "first_seen": "2026-07-12T11:00:56.430643+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation, no journeys were possible between Wien Meidling station (U) and Wien Liesing station to 12:38 clock.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Liesing \u2194 Wien Meidling"
       },
       "epoch": 3
     }
