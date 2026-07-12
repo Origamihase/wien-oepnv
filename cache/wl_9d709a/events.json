@@ -1034,6 +1034,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "72A: Schadhaftes Fahrzeug",
+    "description": "Linie 72A: Derzeit ist ein Betrieb nicht möglich. Grund: Schadhaftes Fahrzeug im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0b5dcde5f1bf02427f2fc6e1bb560ec0636a8425e340a272111c2de559e5bb42",
+    "pubDate": "2026-07-12T07:29:00+02:00",
+    "starts_at": "2026-07-12T07:29:00+02:00",
+    "ends_at": "2026-07-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=72A|D=2026-07-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 116",
     "description": "Bauarbeiten\nBusse halten Landstraßer Hauptstraße 116",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1042,6 +1054,18 @@
     "starts_at": "2026-07-10T00:00:24+02:00",
     "ends_at": "2026-07-12T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Signalstörung",
+    "description": "Linie 7A: Unregelmäßige Intervalle in Richtung Reumannplatz U. Grund: Signalstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "56cfae51576906358ca8b20023d237b58b63c2307392b3a7b06419cfe7314754",
+    "pubDate": "2026-07-12T07:33:00+02:00",
+    "starts_at": "2026-07-12T07:33:00+02:00",
+    "ends_at": "2026-07-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2026-07-12"
   },
   {
     "source": "Wiener Linien",

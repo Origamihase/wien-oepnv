@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 12 Jul 2026 07:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 08:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[72A: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0b5dcde5f1bf02427f2fc6e1bb560ec0636a8425e340a272111c2de559e5bb42</guid>
+      <pubDate>Sun, 12 Jul 2026 07:29:00 +0200</pubDate>
+      <ext:first_seen>Sun, 12 Jul 2026 08:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 12 Jul 2026 07:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 12 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit ist ein Betrieb nicht möglich. Grund: Schadhaftes Fahrzeug im Bereich . [Am 12.07.2026]</description>
+      <content:encoded><![CDATA[Derzeit ist ein Betrieb nicht möglich. Grund: Schadhaftes Fahrzeug im Bereich .<br/>[Am 12.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[26/27: Corrupted overhead line]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:starts_at>Wed, 08 Jul 2026 15:36:01 +0200</ext:starts_at>
       <description>Due to construction works, between Vienna Hbf (U) and Gramatneusiedl Station from 03.102026 to 04.10.2026 the train REX64(2679) from 03. to 04.102026 to 04. to 05.10.2026 the … [Since 08.07.2026]</description>
       <content:encoded><![CDATA[Due to construction works, between Vienna Hbf (U) and Gramatneusiedl Station from 03.102026 to 04.10.2026 the train REX64(2679) from 03. to 04.102026 to 04. to 05.10.2026 the …<br/>[Since 08.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Floridsdorfer Brücke from Am Rollerdamm to Friedrich-Engels-Platz]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">9269aa765cd13ddfa53f72457be42828891d4fbe61daa6001b86f3a75eae9ae8</guid>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 08 Jul 2026 14:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>The driveway to the A22 towards the south is not possible during this period.The line 31 is short-run in the period from 06.07.2026 to 16.08.2026 and runs only … [06.07.2026 – 06.09.2026]</description>
-      <content:encoded><![CDATA[The driveway to the A22 towards the south is not possible during this period.The line 31 is short-run in the period from 06.07.2026 to 16.08.2026 and runs only …<br/>[06.07.2026 – 06.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
