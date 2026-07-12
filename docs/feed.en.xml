@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 12 Jul 2026 17:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 17:31:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[13A: event]]></title>
@@ -16,17 +16,6 @@
       <pubDate>Sun, 12 Jul 2026 15:16:00 +0200</pubDate>
       <ext:first_seen>Sun, 12 Jul 2026 16:01:19 +0200</ext:first_seen>
       <ext:starts_at>Sun, 12 Jul 2026 15:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 12 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 12.07.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: event]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8bb5527e1ff1c6b69a8de5e6e5b1207fc17a280ca7614ba88b2ffcbc71d589a7</guid>
-      <pubDate>Sun, 12 Jul 2026 14:49:00 +0200</pubDate>
-      <ext:first_seen>Sun, 12 Jul 2026 16:01:19 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 12 Jul 2026 14:49:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 12 Jul 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 12.07.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.07.2026]]]></content:encoded>
@@ -48,6 +37,17 @@
       <pubDate>Sun, 12 Jul 2026 15:27:33 +0200</pubDate>
       <ext:first_seen>Sun, 12 Jul 2026 15:30:55 +0200</ext:first_seen>
       <ext:starts_at>Sun, 12 Jul 2026 15:27:38 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 12 Jul 2026 20:00:00 +0200</ext:ends_at>
+      <description>[On 12.07.2026]</description>
+      <content:encoded><![CDATA[[On 12.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: service obstruction event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f7ea9f1ca84c3d66c613ad1e3f141e5fc8fc27e0c9d8708c8546af1ab97512fe</guid>
+      <pubDate>Sun, 12 Jul 2026 14:55:08 +0200</pubDate>
+      <ext:first_seen>Sun, 12 Jul 2026 15:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 12 Jul 2026 14:55:13 +0200</ext:starts_at>
       <ext:ends_at>Sun, 12 Jul 2026 20:00:00 +0200</ext:ends_at>
       <description>[On 12.07.2026]</description>
       <content:encoded><![CDATA[[On 12.07.2026]]]></content:encoded>
