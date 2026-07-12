@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 12 Jul 2026 19:01:18 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 19:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40/41: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130</guid>
+      <pubDate>Sun, 12 Jul 2026 19:08:00 +0200</pubDate>
+      <ext:first_seen>Sun, 12 Jul 2026 19:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 12 Jul 2026 19:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 12 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Umleitung in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke Linien 42 und 9). Linie 41: Umleitung in … [Am 12.07.2026]</description>
+      <content:encoded><![CDATA[Umleitung in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke Linien 42 und 9). Linie 41: Umleitung in …<br/>[Am 12.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Veranstaltung Betrieb ab Ziegelofengasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -64,28 +75,6 @@
       <content:encoded><![CDATA[Busse halten bei Linie 14A<br/>[Am 12.07.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2: Veranstaltung Züge halten Steig A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f27db0d30f3043a4eb7c32c3f0782a65d2ec8b4af099486780d6bcac9ac65a08</guid>
-      <pubDate>Sun, 12 Jul 2026 08:45:45 +0200</pubDate>
-      <ext:first_seen>Sun, 12 Jul 2026 09:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 12 Jul 2026 08:45:45 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 12 Jul 2026 20:00:00 +0200</ext:ends_at>
-      <description>Züge halten Steig A [Am 12.07.2026]</description>
-      <content:encoded><![CDATA[Züge halten Steig A<br/>[Am 12.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Veranstaltung Züge halten Schottenring 19]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">737ae37df92948b3f2c5656e441e223f70375c4b0a07412c7e3af83567d3efb4</guid>
-      <pubDate>Sun, 12 Jul 2026 08:43:09 +0200</pubDate>
-      <ext:first_seen>Sun, 12 Jul 2026 09:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 12 Jul 2026 08:43:09 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 12 Jul 2026 20:00:00 +0200</ext:ends_at>
-      <description>Züge halten Schottenring 19 [Am 12.07.2026]</description>
-      <content:encoded><![CDATA[Züge halten Schottenring 19<br/>[Am 12.07.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[Wien Schottentor: Schottenring von Kreuzung Universitätsring und Schottengasse und Schottenpassage bis Kreuzung Heßgas]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
       <guid isPermaLink="false">2b9e2fe3f409170dde80e744bf4c1227abd5d8ce235aede37e9849364bc28309</guid>
@@ -117,6 +106,17 @@
       <ext:ends_at>Sun, 12 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[10.07.2026 – 12.07.2026]</description>
       <content:encoded><![CDATA[[10.07.2026 – 12.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Atzgersdorfer Straße von Pantlitschkogasse bis Wastlgasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">463866e892bd2c2eb27ec9eca3376c173300ee5786a2674dc3040c0377d9ae6a</guid>
+      <pubDate>Mon, 13 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 09 Jul 2026 22:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>Die Haltestelle des betroffenen öffentlichen Verkehrsmittels wird von Atzgersdorfer Straße in Höhe ONr.42 nach Atzgersdorfer Straße in Höhe ONr.46 provisorisch verlegt. [13.07.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Die Haltestelle des betroffenen öffentlichen Verkehrsmittels wird von Atzgersdorfer Straße in Höhe ONr.42 nach Atzgersdorfer Straße in Höhe ONr.46 provisorisch verlegt.<br/>[13.07.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
