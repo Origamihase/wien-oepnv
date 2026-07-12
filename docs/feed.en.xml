@@ -7,8 +7,72 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 12 Jul 2026 15:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 15:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Floridsdorf ↔ Wien Leopoldau]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;895446</guid>
+      <pubDate>Sun, 12 Jul 2026 15:29:04 +0200</pubDate>
+      <ext:first_seen>Sun, 12 Jul 2026 15:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 12 Jul 2026 15:29:04 +0200</ext:starts_at>
+      <description>Due to persons on the tracks, no journeys were possible between Wien Floridsdorf Station (U) and Wien Leopoldau Bahnhst (U) to 15:22 Clock. [Since 12.07.2026]</description>
+      <content:encoded><![CDATA[Due to persons on the tracks, no journeys were possible between Wien Floridsdorf Station (U) and Wien Leopoldau Bahnhst (U) to 15:22 Clock.<br/>[Since 12.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: event service from Reinprechtsdorfer Brücke]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d1250cba53cbb524a0b1d6600d4765d6b681bd159a4735c864901c996de0773c</guid>
+      <pubDate>Sun, 12 Jul 2026 15:28:30 +0200</pubDate>
+      <ext:first_seen>Sun, 12 Jul 2026 15:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 12 Jul 2026 15:28:30 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 12 Jul 2026 20:00:00 +0200</ext:ends_at>
+      <description>service from Reinprechtsdorfer Brücke [On 12.07.2026]</description>
+      <content:encoded><![CDATA[service from Reinprechtsdorfer Brücke<br/>[On 12.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[14A: service obstruction event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">808d109d6f2f95c5e0dd1b268ea933b1f62702b7fab9ed4a3178804a0728c1ed</guid>
+      <pubDate>Sun, 12 Jul 2026 15:27:33 +0200</pubDate>
+      <ext:first_seen>Sun, 12 Jul 2026 15:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 12 Jul 2026 15:27:38 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 12 Jul 2026 20:00:00 +0200</ext:ends_at>
+      <description>[On 12.07.2026]</description>
+      <content:encoded><![CDATA[[On 12.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Meidling ↔ St. Pölten Hauptbahnhof]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;895448</guid>
+      <pubDate>Sun, 12 Jul 2026 15:25:56 +0200</pubDate>
+      <ext:first_seen>Sun, 12 Jul 2026 15:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 12 Jul 2026 15:25:56 +0200</ext:starts_at>
+      <description>Due to a rescue operation, no journeys are possible between St.Pölten Hbf and Wien Meidling train station (U) to expected 17:00 clock. [Since 12.07.2026]</description>
+      <content:encoded><![CDATA[Due to a rescue operation, no journeys are possible between St.Pölten Hbf and Wien Meidling train station (U) to expected 17:00 clock.<br/>[Since 12.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26: Corrupted overhead line]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4805bcb29068d3a8e99370289487b756c64f05bd94371afae6d567be7ff74bb0</guid>
+      <pubDate>Sun, 12 Jul 2026 04:30:00 +0200</pubDate>
+      <ext:first_seen>Sun, 12 Jul 2026 15:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 12 Jul 2026 04:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 12 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 12.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27: Corrupted overhead line]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">52ace091a5994cb44641c0aca64a1176f42dacdf6fad0801af9ea0fd9ad5910c</guid>
+      <pubDate>Sun, 12 Jul 2026 04:30:00 +0200</pubDate>
+      <ext:first_seen>Sun, 12 Jul 2026 15:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 12 Jul 2026 04:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 12 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 12.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[10A: event Buses stop Johnstraße, Schuselkagasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -52,72 +116,6 @@
       <ext:ends_at>Sun, 12 Jul 2026 20:00:00 +0200</ext:ends_at>
       <description>Trains keep climbing A [On 12.07.2026]</description>
       <content:encoded><![CDATA[Trains keep climbing A<br/>[On 12.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: event Trains stop Schottenring 19]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">737ae37df92948b3f2c5656e441e223f70375c4b0a07412c7e3af83567d3efb4</guid>
-      <pubDate>Sun, 12 Jul 2026 08:43:09 +0200</pubDate>
-      <ext:first_seen>Sun, 12 Jul 2026 09:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 12 Jul 2026 08:43:09 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 12 Jul 2026 20:00:00 +0200</ext:ends_at>
-      <description>Trains stop at Schottenring 19 [On 12.07.2026]</description>
-      <content:encoded><![CDATA[Trains stop at Schottenring 19<br/>[On 12.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26/27: Corrupted overhead line]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">164627950d61b62a588244263b7e97c9dc0f202e73b9189bd106c881b60e2e1d</guid>
-      <pubDate>Sun, 12 Jul 2026 04:30:00 +0200</pubDate>
-      <ext:first_seen>Sun, 12 Jul 2026 04:31:03 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 12 Jul 2026 04:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 12 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operation only between Hausfeldstraße U and Nordbrücke. Line 27: Operation only between Aspern Nord S U and Nordbrücke. [On 12.07.2026]</description>
-      <content:encoded><![CDATA[Operation only between Hausfeldstraße U and Nordbrücke. Line 27: Operation only between Aspern Nord S U and Nordbrücke.<br/>[On 12.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Schottentor: Schottenring from crossing Universitätsring and Schottengasse and bulkhead passage to crossing Heßgas]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">2b9e2fe3f409170dde80e744bf4c1227abd5d8ce235aede37e9849364bc28309</guid>
-      <pubDate>Mon, 13 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 10 Jul 2026 22:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 07 Aug 2026 00:00:00 +0200</ext:ends_at>
-      <description>In the working area the tram operation is stopped. [13.07.2026 – 07.08.2026]</description>
-      <content:encoded><![CDATA[In the working area the tram operation is stopped.<br/>[13.07.2026 – 07.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: roadworks]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ff1ff7a34b0ab2e67c4acf0abe414637698494ed68180d66f548f1c2cc2c0fed</guid>
-      <pubDate>Fri, 10 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 10 Jul 2026 14:31:07 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Jul 2027 23:59:00 +0200</ext:ends_at>
-      <description>Because of roadworks, the 59A buses are redirected. [13.07.2026 – 10.07.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks, the 59A buses are redirected.<br/>[13.07.2026 – 10.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: No operation between Stammersdorf and Friedrich-Engels-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bd505a7409f812c37b139c79de6413e073c46f43788ac8ae42d1b468115bb1eb</guid>
-      <pubDate>Thu, 09 Jul 2026 00:00:23 +0200</pubDate>
-      <ext:first_seen>Fri, 10 Jul 2026 00:01:34 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 10 Jul 2026 00:00:21 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 12 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[10.07.2026 – 12.07.2026]</description>
-      <content:encoded><![CDATA[[10.07.2026 – 12.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Atzgersdorfer Straße from Pantlitschkogasse to Wastlgasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">463866e892bd2c2eb27ec9eca3376c173300ee5786a2674dc3040c0377d9ae6a</guid>
-      <pubDate>Mon, 13 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 09 Jul 2026 22:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>The stop of the public transport concerned is temporarily moved from Atzgersdorfer Straße at the level of 42 to Atzgersdorfer Straße at the level of 46. [13.07.2026 – 05.09.2026]</description>
-      <content:encoded><![CDATA[The stop of the public transport concerned is temporarily moved from Atzgersdorfer Straße at the level of 42 to Atzgersdorfer Straße at the level of 46.<br/>[13.07.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
