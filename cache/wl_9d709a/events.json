@@ -710,6 +710,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "17A: Polizeieinsatz",
+    "description": "Linie 17A: Fahrtbehinderung in Richtung Inzersdorf, Birostraße. Voraussichtliche Dauer: 22:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Jochen-Rindt-Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3aceb9585e33118fa6e61467f016ba8897699d0ad0d16115c5a054edc7c58f10",
+    "pubDate": "2026-07-12T21:57:00+02:00",
+    "starts_at": "2026-07-12T21:57:00+02:00",
+    "ends_at": "2026-07-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=17A|D=2026-07-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "19A: Busse halten in Haltestelle der Linie 16A",
     "description": "Busse halten\nin Haltestelle der Linie 16A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -922,6 +934,30 @@
     "starts_at": "2026-07-10T00:00:24+02:00",
     "ends_at": "2026-07-12T23:59:59+02:00",
     "_identity": "wl|störung|L=44A|D=2026-07-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13da360ca8a94dcafa0dd3aa043ce5baefa02c1c92c93d57c144cc19166804d0",
+    "pubDate": "2026-07-12T21:46:52+02:00",
+    "starts_at": "2026-07-12T21:47:02+02:00",
+    "ends_at": "2026-07-12T22:46:00+02:00",
+    "_identity": "wl|störung|L=44|D=2026-07-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ca3f320972243b037074321441d828580185f68cae3de0b8d41ea5abc0bd3d31",
+    "pubDate": "2026-07-12T21:45:03+02:00",
+    "starts_at": "2026-07-12T22:00:02+02:00",
+    "ends_at": "2026-07-12T22:59:00+02:00",
+    "_identity": "wl|störung|L=46|D=2026-07-12"
   },
   {
     "source": "Wiener Linien",
