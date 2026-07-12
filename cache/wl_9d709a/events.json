@@ -818,18 +818,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "14A: Veranstaltung",
-    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b109f630e28e7ebd4f35fbe9c0085fa3c8805f4ea1cc6294723a01e38c1cf44b",
-    "pubDate": "2026-07-12T15:16:00+02:00",
-    "starts_at": "2026-07-12T15:16:00+02:00",
-    "ends_at": "2026-07-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=14A|D=2026-07-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "17A: Busse halten Favoritenstraße Hauptfahrbahn",
     "description": "Bauarbeiten\nBusse halten Favoritenstraße Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -838,30 +826,6 @@
     "starts_at": "2026-07-10T00:00:26+02:00",
     "ends_at": "2026-07-12T23:59:59+02:00",
     "_identity": "wl|störung|L=17A|D=2026-07-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Veranstaltung",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4e3a8d81e0aa1509b3a773036f36059bbcc3d84d8e27bbb40c3f4279defe03ba",
-    "pubDate": "2026-07-12T15:40:00+02:00",
-    "starts_at": "2026-07-12T15:40:00+02:00",
-    "ends_at": "2026-07-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-07-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Fahrtbehinderung Veranstaltung",
-    "description": "Fahrtbehinderung\nVeranstaltung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bea3c2ed0b7575ba835216f7d115e0a2a34321f2ccc217c569e9aa8b6638b1d3",
-    "pubDate": "2026-07-12T15:50:30+02:00",
-    "starts_at": "2026-07-12T15:50:51+02:00",
-    "ends_at": "2026-07-12T16:50:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-07-12"
   },
   {
     "source": "Wiener Linien",
@@ -1070,12 +1034,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
+    "title": "42: Falschparker",
     "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
     "pubDate": "2026-07-12T15:57:00+02:00",
-    "starts_at": "2026-07-12T15:57:14+02:00",
+    "starts_at": "2026-07-12T15:57:00+02:00",
     "ends_at": "2026-07-12T17:39:00+02:00",
     "_identity": "wl|störung|L=42|D=2026-07-12"
   },
@@ -1202,18 +1166,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Veranstaltung",
-    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f8966c061f64ee9e6cfc847e56ed66831bf906b3da56a8dca4a50aa3d5e8e749",
-    "pubDate": "2026-07-12T14:49:00+02:00",
-    "starts_at": "2026-07-12T14:49:00+02:00",
-    "ends_at": "2026-07-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-07-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1246,18 +1198,6 @@
     "starts_at": "2026-07-09T00:00:27+02:00",
     "ends_at": "2026-07-12T23:59:59+02:00",
     "_identity": "wl|störung|L=62|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Veranstaltung",
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "418ddad2bd46cc995532798e19abd0b7d4c7a0755b7e9bf0c8c342ceeea13a21",
-    "pubDate": "2026-07-12T15:40:00+02:00",
-    "starts_at": "2026-07-12T15:40:00+02:00",
-    "ends_at": "2026-07-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-07-12"
   },
   {
     "source": "Wiener Linien",
