@@ -1,27 +1,24 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-07-05T04:57:28+00:00_
+_Erzeugt am: 2026-07-12T04:26:23+00:00_
 
-**Stationen: 2234 → 2233 (Δ -1)**
+**Stationen: 2233 → 2235 (Δ +2)**
 
 ## Hinzugefügt (3)
 
-- `name:Wien Rudolfsheim, Anschützg. (WL)` — Wien Rudolfsheim, Anschützg. \(WL\)
-- `name:Wien Torricelligasse (WL)` — Wien Torricelligasse \(WL\)
-- `name:Wien Wasserwiese (WL)` — Wien Wasserwiese \(WL\)
+- `name:Wien Dr.-Natterer-Gasse (WL)` — Wien Dr.-Natterer-Gasse \(WL\)
+- `name:Wien Siemensplatz (WL)` — Wien Siemensplatz \(WL\)
+- `name:Wien Stadion *203, Handelskai (WL)` — Wien Stadion \*203, Handelskai \(WL\)
 
-## Entfernt (5)
+## Entfernt (0)
 
-- `name:Wien Ameisbachzeile (WL)` — Wien Ameisbachzeile \(WL\)
-- `name:Wien Carabelligasse, Ruthnergasse (WL)` — Wien Carabelligasse, Ruthnergasse \(WL\)
-- `name:Wien Klaschkaweg (WL)` — Wien Klaschkaweg \(WL\)
-- `name:Wien Petrusgasse (WL)` — Wien Petrusgasse \(WL\)
-- `name:Wien Rudolfsheim, Anschützgasse (WL)` — Wien Rudolfsheim, Anschützgasse \(WL\)
+_Keine._
 
 ## Umbenannt (0)
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (1)
+## Koordinaten verschoben (≥ 100 m) (2)
 
-- `name:Wien Ruthnergasse (WL)` — Wien Ruthnergasse \(WL\) (949 m)
+- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
+- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)
