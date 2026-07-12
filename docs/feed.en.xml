@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 12 Jul 2026 23:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2026 00:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Schottentor: Schottenring from crossing Universitätsring and Schottengasse and bulkhead passage to crossing Heßgas]]></title>
@@ -35,12 +35,23 @@
       <title><![CDATA[31: No operation between Stammersdorf and Friedrich-Engels-Platz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">bd505a7409f812c37b139c79de6413e073c46f43788ac8ae42d1b468115bb1eb</guid>
-      <pubDate>Thu, 09 Jul 2026 00:00:23 +0200</pubDate>
+      <pubDate>Mon, 13 Jul 2026 00:00:05 +0200</pubDate>
       <ext:first_seen>Fri, 10 Jul 2026 00:01:34 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 10 Jul 2026 00:00:21 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 12 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[10.07.2026 – 12.07.2026]</description>
-      <content:encoded><![CDATA[[10.07.2026 – 12.07.2026]]]></content:encoded>
+      <ext:starts_at>Mon, 13 Jul 2026 00:00:23 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 13 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 13.07.2026]</description>
+      <content:encoded><![CDATA[[On 13.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Meidlinger Hauptstraße from Edelsinnstraße and Eichenstraße to Sechtergasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">cf9af1d242b1445bf231f8e8995fa5eb781d0dbab69741cbe8f5be87e2a27c90</guid>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 09 Jul 2026 22:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 14 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 15 Aug 2026 00:00:00 +0200</ext:ends_at>
+      <description>In the construction site area, a residual runway with 3,50 is kept free. [14.07.2026 – 15.08.2026]</description>
+      <content:encoded><![CDATA[In the construction site area, a residual runway with 3,50 is kept free.<br/>[14.07.2026 – 15.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Atzgersdorfer Straße from Pantlitschkogasse to Wastlgasse]]></title>
@@ -63,17 +74,6 @@
       <ext:ends_at>Tue, 22 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>For further information on the transfer of the public transports concerned, please refer to the information provided by Wiener Linien GmbH &amp;amp; Co KG. [13.07.2026 – 22.09.2026]</description>
       <content:encoded><![CDATA[For further information on the transfer of the public transports concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[13.07.2026 – 22.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Meidlinger Hauptstraße from Edelsinnstraße and Eichenstraße to Sechtergasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">cf9af1d242b1445bf231f8e8995fa5eb781d0dbab69741cbe8f5be87e2a27c90</guid>
-      <pubDate>Tue, 14 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 09 Jul 2026 22:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 15 Aug 2026 00:00:00 +0200</ext:ends_at>
-      <description>In the construction site area, a residual runway with 3,50 is kept free. [14.07.2026 – 15.08.2026]</description>
-      <content:encoded><![CDATA[In the construction site area, a residual runway with 3,50 is kept free.<br/>[14.07.2026 – 15.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A: Gadnergasse # Swatoschgasse]]></title>
