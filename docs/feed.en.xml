@@ -7,18 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 12 Jul 2026 13:00:56 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 13:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[S-Bahn Stammstrecke Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/web/wienerlinien/oeffis-stoerungen-strecke</link>
-      <guid isPermaLink="false">9129d90b0278792e13fd846d71c70c28ef571d4e10fd0dd5baca66be37bd8a20</guid>
-      <pubDate>Sun, 12 Jul 2026 13:00:59 +0200</pubDate>
-      <ext:first_seen>Sun, 12 Jul 2026 13:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 12 Jul 2026 12:27:00 +0200</ext:starts_at>
-      <description>Durchschnittliche Verspätung von 15.2 Minuten in Richtung Praterstern [Seit 12.07.2026] [Seit 12.07.2026]</description>
-      <content:encoded><![CDATA[Durchschnittliche Verspätung von 15.2 Minuten in Richtung Praterstern [Seit 12.07.2026]<br/>[Seit 12.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Liesing ↔ Wien Meidling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -116,6 +106,17 @@
       <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>The stop of the public transport concerned is temporarily moved from Atzgersdorfer Straße at the level of 42 to Atzgersdorfer Straße at the level of 46. [13.07.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[The stop of the public transport concerned is temporarily moved from Atzgersdorfer Straße at the level of 42 to Atzgersdorfer Straße at the level of 46.<br/>[13.07.2026 – 05.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Frauenstiftgasse from Baumergasse to Brünner Straße and Siemensstraße]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">a113c7329d5271b323aa8d8a857b9995f16afd5eab99e03cbe26e232ed26fb37</guid>
+      <pubDate>Mon, 13 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 09 Jul 2026 22:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 22 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>For further information on the transfer of the public transports concerned, please refer to the information provided by Wiener Linien GmbH &amp;amp; Co KG. [13.07.2026 – 22.09.2026]</description>
+      <content:encoded><![CDATA[For further information on the transfer of the public transports concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[13.07.2026 – 22.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
