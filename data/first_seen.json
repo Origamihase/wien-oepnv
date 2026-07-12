@@ -584,6 +584,16 @@
       "epoch": 2
     }
   },
+  "0b342e377e9233e4228253a58b24a11b514c7e0445aa662793466921397180e3": {
+    "first_seen": "2026-07-12T13:00:57.344426+00:00",
+    "translations": {
+      "en": {
+        "summary": "Buses stop at line 14A",
+        "title": "59A: event Buses stop at line 14A"
+      },
+      "epoch": 3
+    }
+  },
   "0b495e377b4f23ba3d7df3bb2ff8ba044893cff3f882129abf9c42f6dc78893b": {
     "first_seen": "2026-06-19T14:01:04.307752+00:00",
     "translations": {
@@ -4221,6 +4231,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "40A: service obstruction False Parker"
+      },
+      "epoch": 3
+    }
+  },
+  "5031506474ae2a5f4ac0a92e342b46e7007cb164e35550819fffb468b6ff0945": {
+    "first_seen": "2026-07-12T13:00:57.344426+00:00",
+    "translations": {
+      "en": {
+        "summary": "Buses stop at Johnstra\u00dfe, Schuselkagasse",
+        "title": "10A: event Buses stop Johnstra\u00dfe, Schuselkagasse"
       },
       "epoch": 3
     }
@@ -12913,6 +12933,15 @@
       "en": {
         "summary": "service from B\u00f6rsegasse, Wipplingerstra\u00dfe",
         "title": "D: event service from B\u00f6rsegasse, Wipplingerstra\u00dfe"
+      },
+      "epoch": 3
+    }
+  },
+  "f7ea9f1ca84c3d66c613ad1e3f141e5fc8fc27e0c9d8708c8546af1ab97512fe": {
+    "first_seen": "2026-07-12T13:00:57.344426+00:00",
+    "translations": {
+      "en": {
+        "title": "10A: service obstruction event"
       },
       "epoch": 3
     }
