@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 13 Jul 2026 10:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2026 10:30:41 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[20A: Signalstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9d8bd8d2352ef4008615d5ad9795de3d7d61a4fe4dca57f19c001b94698b0234</guid>
+      <pubDate>Mon, 13 Jul 2026 10:02:00 +0200</pubDate>
+      <ext:first_seen>Mon, 13 Jul 2026 10:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 10:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 13 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Es kommt zu längeren Wartezeiten. [Am 13.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Es kommt zu längeren Wartezeiten.<br/>[Am 13.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49/9: Schadhafter PKW]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Mon, 13 Jul 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 49: Unregelmäßige Intervalle in beiden Richtungen. [Am 13.07.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 49: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 13.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[89A: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cef7f6c8e82f1708584991392d33f75a2e9b4089216d8622e2ca47d2ddd1bdcb</guid>
-      <pubDate>Mon, 13 Jul 2026 08:26:00 +0200</pubDate>
-      <ext:first_seen>Mon, 13 Jul 2026 08:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 08:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 13 Jul 2026 10:20:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Verkehrsunfall]]></title>
@@ -52,17 +52,6 @@
       <ext:ends_at>Mon, 31 Aug 2026 04:00:00 +0200</ext:ends_at>
       <description>Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. [13.07.2026 – 31.08.2026]</description>
       <content:encoded><![CDATA[Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August.<br/>[13.07.2026 – 31.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Betrieb ab Schwarzenbergplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c28ac67d039c11f6ed031a22f3861ee7f624170abd4e96518e2e45c18ce50b6a</guid>
-      <pubDate>Mon, 13 Jul 2026 04:51:23 +0200</pubDate>
-      <ext:first_seen>Mon, 13 Jul 2026 05:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 04:51:23 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 13 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 13.07.2026]</description>
-      <content:encoded><![CDATA[[Am 13.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Umleitung über Schwedenplatz]]></title>
@@ -113,6 +102,17 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e248a0edc1f597529d2099e4e499669fbd6077d104bbc53931532d683676197a</guid>
       <pubDate>Mon, 13 Jul 2026 04:00:14 +0200</pubDate>
+      <ext:first_seen>Mon, 13 Jul 2026 04:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 04:00:15 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 13 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 13.07.2026]</description>
+      <content:encoded><![CDATA[[Am 13.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[41: Derzeit kein Linienbetrieb]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0cc1c746b4cc478b1431d6b40cadfd8fc82be6c8ed31a58a49f736e4ef715728</guid>
+      <pubDate>Mon, 13 Jul 2026 04:00:13 +0200</pubDate>
       <ext:first_seen>Mon, 13 Jul 2026 04:00:55 +0200</ext:first_seen>
       <ext:starts_at>Mon, 13 Jul 2026 04:00:15 +0200</ext:starts_at>
       <ext:ends_at>Mon, 13 Jul 2026 23:59:59 +0200</ext:ends_at>

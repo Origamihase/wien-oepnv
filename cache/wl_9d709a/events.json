@@ -758,6 +758,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "20A: Signalstörung",
+    "description": "Linie 20A: Unregelmäßige Intervalle in beiden Richtungen. Es kommt zu längeren Wartezeiten. Grund: Signalstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9d8bd8d2352ef4008615d5ad9795de3d7d61a4fe4dca57f19c001b94698b0234",
+    "pubDate": "2026-07-13T10:02:00+02:00",
+    "starts_at": "2026-07-13T10:02:00+02:00",
+    "ends_at": "2026-07-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=20A|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1154,25 +1166,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "71: Polizeieinsatz Züge halten bei Linie O",
     "description": "Linie 71: Betrieb nur zwischen Kaiserebersdorf und Rennweg S. Weiterfahrt über Linie O bis Hintere Zollamtsstraße. Weichen Sie ersatzweise auf die Linien U4 oder 1 aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Polizeieinsatz im Haltestellenbereich Unteres Belvedere.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d",
-    "pubDate": "2026-07-13T04:50:25+02:00",
-    "starts_at": "2026-07-13T09:25:04+02:00",
+    "pubDate": "2026-07-13T09:20:00+02:00",
+    "starts_at": "2026-07-13T10:28:52+02:00",
     "ends_at": "2026-07-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Verkehrsunfall Züge halten bei Linie O",
-    "description": "Verkehrsunfall\nZüge halten bei Linie O",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5fbd6323a6cab8c604f1ef90c04df8e532e5c8aa0ea26fe276631f2fc0dfaa07",
-    "pubDate": "2026-07-13T09:25:36+02:00",
-    "starts_at": "2026-07-13T09:25:36+02:00",
-    "ends_at": "2026-07-13T10:25:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-07-13"
   },
   {
@@ -1182,9 +1182,9 @@
     "description": "Verkehrsunfall\nBetrieb ab Rennweg <",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "633d2bd1c1a011920c09ea8891d8019b4453e712b303bc7318e73bac24f604a4",
-    "pubDate": "2026-07-13T09:20:43+02:00",
-    "starts_at": "2026-07-13T09:20:43+02:00",
-    "ends_at": "2026-07-13T10:20:00+02:00",
+    "pubDate": "2026-07-13T10:28:58+02:00",
+    "starts_at": "2026-07-13T10:28:58+02:00",
+    "ends_at": "2026-07-13T23:00:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-07-13"
   },
   {
@@ -1195,7 +1195,7 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "9143a9ec1912b3bf7ce6c1c2896e3aec93c4eb61930b59f58579b24b3e7f814b",
     "pubDate": "2026-07-13T04:50:25+02:00",
-    "starts_at": "2026-07-13T04:50:25+02:00",
+    "starts_at": "2026-07-13T10:19:15+02:00",
     "ends_at": "2026-07-13T23:59:59+02:00",
     "_identity": "wl|störung|L=71|D=2026-07-13"
   },
@@ -1222,18 +1222,6 @@
     "starts_at": "2026-07-13T00:00:09+02:00",
     "ends_at": "2026-07-13T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "89A: Falschparker",
-    "description": "Linie 89A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cef7f6c8e82f1708584991392d33f75a2e9b4089216d8622e2ca47d2ddd1bdcb",
-    "pubDate": "2026-07-13T08:26:00+02:00",
-    "starts_at": "2026-07-13T08:26:00+02:00",
-    "ends_at": "2026-07-13T10:20:00+02:00",
-    "_identity": "wl|störung|L=89A|D=2026-07-13"
   },
   {
     "source": "Wiener Linien",
