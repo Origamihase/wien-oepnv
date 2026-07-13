@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 13 Jul 2026 21:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2026 21:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[E3: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6c3c6d9ccaeea94d9586cf4ad5b2a326651320935909bae0270c9997c45b3573</guid>
+      <pubDate>Mon, 13 Jul 2026 21:03:00 +0200</pubDate>
+      <ext:first_seen>Mon, 13 Jul 2026 21:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 21:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 13 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 13.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 13.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[18: Stop Stadionbrücke as part of the new tram construction of the line 18 Discontinued. Please avoid at nearby stops.]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +115,6 @@
       <pubDate>Mon, 13 Jul 2026 04:00:13 +0200</pubDate>
       <ext:first_seen>Mon, 13 Jul 2026 04:00:55 +0200</ext:first_seen>
       <ext:starts_at>Mon, 13 Jul 2026 04:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 13 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 13.07.2026]</description>
-      <content:encoded><![CDATA[[On 13.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[42: Currently no line operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d26ce971e68c9431c7d3191df7f3653e8b9664c09923489ed626a5ab7ff57da6</guid>
-      <pubDate>Mon, 13 Jul 2026 04:00:13 +0200</pubDate>
-      <ext:first_seen>Mon, 13 Jul 2026 04:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 04:00:16 +0200</ext:starts_at>
       <ext:ends_at>Mon, 13 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 13.07.2026]</description>
       <content:encoded><![CDATA[[On 13.07.2026]]]></content:encoded>
