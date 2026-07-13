@@ -128,27 +128,6 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
-    "title": "Alaudagasse von Kreuzung Favoritenstraße und Pichelmayergasse bis Kreuzung Ada-Christen-Gasse",
-    "description": "Die Linie 19A wird über Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse umgeleitet. Die Alaudagasse wird von Favoritenstraße bis und in Fahrtrichtung Ada-Christen-Gasse zur Einbahn. Nähere Informationen zur Umleitung sowie Haltestellenverlegung des betroffenen öffentlichen Verkehrsmittels ist der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. \nBeginn: 06.07.2026 00:00 Uhr \nGeplant bis: 24.07.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 10",
-    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
-    "guid": "33a7fd783edcb49a0d203fb0f44fbcd4c7014ff1b6c5127d493882dd15706c9a",
-    "pubDate": "2026-07-06T00:00:00+02:00",
-    "starts_at": "2026-07-06T00:00:00+02:00",
-    "ends_at": "2026-07-24T00:00:00+02:00",
-    "context": {
-      "district": "10",
-      "measure": "Straßenbau"
-    },
-    "location": {
-      "coordinates": {
-        "lat": 48.15420681,
-        "lon": 16.38206276
-      }
-    }
-  },
-  {
-    "source": "Stadt Wien – Baustellen",
-    "category": "Baustelle",
     "title": "Brünner Straße 59",
     "description": "Die Verlegung einer Fernwärmezuleitung erfolgt in der Nacht in der Zeit von 20:00 Uhr bis 05:00 Uhr bei Freihaltung einer entsprechend breiten Restfahrbahn von mindestens 3,20 m aber auch bei Tag im Bereich der Maria-Stromberger-Gasse. \nBeginn: 17.05.2026 00:00 Uhr \nGeplant bis: 14.08.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 21",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -542,6 +521,27 @@
       "coordinates": {
         "lat": 48.2584166,
         "lon": 16.39813239
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Alaudagasse von Kreuzung Favoritenstraße und Pichelmayergasse bis Kreuzung Ada-Christen-Gasse",
+    "description": "Die Linie 19A wird über Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse umgeleitet. Die Alaudagasse wird von Favoritenstraße bis und in Fahrtrichtung Ada-Christen-Gasse zur Einbahn. Nähere Informationen zur Umleitung sowie Haltestellenverlegung des betroffenen öffentlichen Verkehrsmittels ist der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. \nBeginn: 06.07.2026 00:00 Uhr \nGeplant bis: 16.07.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 10",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "bfd5f87760f4c1a626e473c99c22680b752d541b57fba9b32d507035639bbc5e",
+    "pubDate": "2026-07-06T00:00:00+02:00",
+    "starts_at": "2026-07-06T00:00:00+02:00",
+    "ends_at": "2026-07-16T00:00:00+02:00",
+    "context": {
+      "district": "10",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.15420681,
+        "lon": 16.38206276
       }
     }
   },
