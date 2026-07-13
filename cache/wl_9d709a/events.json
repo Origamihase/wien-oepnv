@@ -764,7 +764,7 @@
     "guid": "9d8bd8d2352ef4008615d5ad9795de3d7d61a4fe4dca57f19c001b94698b0234",
     "pubDate": "2026-07-13T10:02:00+02:00",
     "starts_at": "2026-07-13T10:02:00+02:00",
-    "ends_at": "2026-07-13T23:55:00+02:00",
+    "ends_at": "2026-07-13T11:22:00+02:00",
     "_identity": "wl|störung|L=20A|D=2026-07-13"
   },
   {
@@ -873,6 +873,18 @@
     "pubDate": "2026-07-13T00:00:13+02:00",
     "starts_at": "2026-07-13T00:00:13+02:00",
     "ends_at": "2026-07-13T23:59:59+02:00",
+    "_identity": "wl|störung|L=38A|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Verkehrsunfall",
+    "description": "Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b8039faa2fd22f29ff6008d444e4692e71752c95e9a697ccf8267739d3aae3f5",
+    "pubDate": "2026-07-13T11:26:00+02:00",
+    "starts_at": "2026-07-13T11:26:00+02:00",
+    "ends_at": "2026-07-13T12:25:00+02:00",
     "_identity": "wl|störung|L=38A|D=2026-07-13"
   },
   {
@@ -1028,7 +1040,7 @@
     "guid": "d4ffd49e047f248d9758fc8b4b22db2bfb6eb839703256d7f84fe388e84d8bec",
     "pubDate": "2026-07-13T09:24:00+02:00",
     "starts_at": "2026-07-13T09:24:00+02:00",
-    "ends_at": "2026-07-13T23:55:00+02:00",
+    "ends_at": "2026-07-13T11:22:00+02:00",
     "_identity": "wl|störung|L=49,9|D=2026-07-13"
   },
   {
@@ -1172,7 +1184,7 @@
     "guid": "256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733",
     "pubDate": "2026-07-13T06:14:00+02:00",
     "starts_at": "2026-07-13T06:14:00+02:00",
-    "ends_at": "2026-07-13T23:55:00+02:00",
+    "ends_at": "2026-07-13T11:21:00+02:00",
     "_identity": "wl|störung|L=63A|D=2026-07-13"
   },
   {
@@ -1306,6 +1318,18 @@
     "starts_at": "2026-07-13T01:00:21+02:00",
     "ends_at": "2026-07-14T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in Richtung Seestadt. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-07-13T11:12:00+02:00",
+    "starts_at": "2026-07-13T11:12:00+02:00",
+    "ends_at": "2026-07-13T11:29:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-07-13"
   },
   {
     "source": "Wiener Linien",
