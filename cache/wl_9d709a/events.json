@@ -1082,13 +1082,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Umleitung zur Augasse",
-    "description": "Gleisbauarbeiten\nUmleitung zur Augasse",
+    "title": "5: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "73c59b745d1fb1e69050721ce8bb37f1205148045b208db7283fb313779ba83a",
+    "guid": "168370f778966d5a88d1916ae8f63204d9e041e14bccad900ce3fe37dd47e77c",
     "pubDate": "2026-07-13T04:00:14+02:00",
-    "starts_at": "2026-07-13T04:00:14+02:00",
-    "ends_at": "2026-07-13T23:59:59+02:00",
+    "starts_at": "2026-07-13T08:12:02+02:00",
+    "ends_at": "2026-07-13T09:11:00+02:00",
     "_identity": "wl|störung|L=5|D=2026-07-13"
   },
   {
@@ -1098,6 +1098,30 @@
     "description": "Fahrtbehinderung\nGleisbauarbeiten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "938169e00e5f2d82f6ab9cea8bea49079bd842ace6b0fbf2b3c5135a05c1d81b",
+    "pubDate": "2026-07-13T04:00:14+02:00",
+    "starts_at": "2026-07-13T04:00:14+02:00",
+    "ends_at": "2026-07-13T23:59:59+02:00",
+    "_identity": "wl|störung|L=5|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Feuerwehreinsatz",
+    "description": "Linie 5, Abschnitt zwischen Westbahnhof und Josefstädter Straße: Fahrtbehinderung in beiden Richtungen. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Feuerwehreinsatz im Bereich Kaiserstraße 7.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a11c559bc88082d01d8ecc232b83791677131f39d67e71c682b52aab7c821cf9",
+    "pubDate": "2026-07-13T08:12:00+02:00",
+    "starts_at": "2026-07-13T08:12:00+02:00",
+    "ends_at": "2026-07-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Betrieb ab Lerchenfelder Straße",
+    "description": "Gleisbauarbeiten\nBetrieb ab Lerchenfelder Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c11f5415f3aa1b87ebc238119c29ffbf50342eba9979dbcee482efd531592f89",
     "pubDate": "2026-07-13T04:00:14+02:00",
     "starts_at": "2026-07-13T04:00:14+02:00",
     "ends_at": "2026-07-13T23:59:59+02:00",
@@ -1214,14 +1238,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "title": "89A: Falschparker",
+    "description": "Linie 89A: Fahrtbehinderung in Richtung Aspern Nord S U. Voraussichtliche Dauer: 08:50 Uhr. Grund: Falschparker im Haltestellenbereich Invalidensiedlung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
-    "pubDate": "2026-07-13T07:25:15+02:00",
-    "starts_at": "2026-07-13T07:25:15+02:00",
-    "ends_at": "2026-07-13T08:24:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-07-13"
+    "guid": "cef7f6c8e82f1708584991392d33f75a2e9b4089216d8622e2ca47d2ddd1bdcb",
+    "pubDate": "2026-07-13T08:26:00+02:00",
+    "starts_at": "2026-07-13T08:26:00+02:00",
+    "ends_at": "2026-07-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=89A|D=2026-07-13"
   },
   {
     "source": "Wiener Linien",
@@ -1256,7 +1280,7 @@
     "guid": "99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e",
     "pubDate": "2026-07-13T07:25:00+02:00",
     "starts_at": "2026-07-13T07:25:00+02:00",
-    "ends_at": "2026-07-13T23:55:00+02:00",
+    "ends_at": "2026-07-13T08:46:00+02:00",
     "_identity": "wl|störung|L=D|D=2026-07-13"
   },
   {
@@ -1299,7 +1323,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U3: Rettungseinsatz",
-    "description": "Linie U3: Fahrtbehinderung in Richtung Simmering. Voraussichtliche Dauer: 08:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Schlachthausgasse.",
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
     "pubDate": "2026-07-13T07:58:00+02:00",
