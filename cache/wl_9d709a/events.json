@@ -398,6 +398,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "77A: Klaschkaweg",
+    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 77A in Richtung Lusthaus</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Klaschkaweg</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stadionallee nach Klaschkaweg</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> ca. 40 Meter in Fahrtrichtung</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 15. Juli 2026, etwa 07:00 Uhr.</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbauarbeiten im Zusammenhang mit der Verl&auml;ngerung der Linie 18</span></p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "48b738c867a057226c65b8f2ee8e887b248583e48203f56259c3fc3cf95e849b",
+    "pubDate": "2026-07-14T11:15:00+02:00",
+    "starts_at": "2026-07-14T11:15:00+02:00",
+    "ends_at": "2027-07-14T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=77A|D=2026-07-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "85A: Straßenbauarbeiten",
     "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich der Breitenleer Stra&szlig;e wird die Linie 85A (Schulkurs) umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 17. Februar 2026 etwa 09:00 Uhr bis voraussichtlich Mitte Mai 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 85A in Richtung Hausfeldstra&szlig;e U<br /></strong>Umleitung ab Breitenleer Stra&szlig;e # Oleandergasse &uuml;ber Oleandergasse &ndash; Rautenweg &ndash; Ziegelhofstra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Breitenlee, Friedhof (Breitenleer Stra&szlig;e geg. ONr. 226; gem. m. Li. 24A)</p> <p>Breitenlee, Ziegelhofstra&szlig;e (Breitenleer Stra&szlig;e vor Ziegelhofstra&szlig;e)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>Breitenlee, Ziegelhofstra&szlig;e (Ziegelhofstra&szlig;e vor Breitenleer Stra&szlig;e)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -831,24 +843,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "2: Schadhaftes Fahrzeug",
-    "description": "Linie 2: Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtliche Dauer: 11:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Josefstädter Straße U.",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3",
     "pubDate": "2026-07-14T10:48:00+02:00",
     "starts_at": "2026-07-14T10:48:00+02:00",
     "ends_at": "2026-07-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
-    "pubDate": "2026-07-14T10:03:25+02:00",
-    "starts_at": "2026-07-14T10:21:16+02:00",
-    "ends_at": "2026-07-14T11:20:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-07-14"
   },
   {
@@ -1280,7 +1280,7 @@
     "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
     "pubDate": "2026-07-14T10:26:00+02:00",
     "starts_at": "2026-07-14T10:26:00+02:00",
-    "ends_at": "2026-07-14T23:55:00+02:00",
+    "ends_at": "2026-07-14T11:25:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-07-14"
   },
   {
