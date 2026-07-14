@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 14 Jul 2026 21:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 22:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[D: service obstruction False Parker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">123c1792102bf603153d3f83b7ca1dab3ecf7f4872f15ae5c9c6e9e85e8f68ca</guid>
-      <pubDate>Tue, 14 Jul 2026 19:53:00 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 20:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 19:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 14 Jul 2026 21:40:00 +0200</ext:ends_at>
-      <description>service obstruction towards Absberggasse. expected duration: 20:20 watch. Reason: wrong parker in the Kolingasse range. [On 14.07.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Absberggasse. expected duration: 20:20 watch. Reason: wrong parker in the Kolingasse range.<br/>[On 14.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[41: No operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 16 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>The line 19A is redirected via Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse. [06.07.2026 – 16.07.2026]</description>
       <content:encoded><![CDATA[The line 19A is redirected via Favoritenstraße Franz-Koci-Straße Jura-Soyfer-Straße Alaudagasse Walter-Lindenbaum-Gasse Wendstattgasse.<br/>[06.07.2026 – 16.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Stop Stadionbrücke as part of the new tram construction of the line 18 Discontinued. Please avoid at nearby stops.]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7aa6585f41de1e31a87cb7ac606b8cf2e987267b647c972f06a0b4d63e94b1a8</guid>
+      <pubDate>Mon, 13 Jul 2026 14:07:00 +0200</pubDate>
+      <ext:first_seen>Mon, 13 Jul 2026 14:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 14:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 14:07:00 +0100</ext:ends_at>
+      <description>[13.07.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[[13.07.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
