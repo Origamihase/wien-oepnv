@@ -7,41 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 14 Jul 2026 10:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 10:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[86A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9e42e5ccec580785b6aaed6ef6665b7758d15b87dcef3fddbd5d15b4bde26210</guid>
-      <pubDate>Tue, 14 Jul 2026 09:36:00 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 10:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 09:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 14 Jul 2026 10:15:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 14.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 14.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/71: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d4e3fe6c349b665b97cbde4b8d73172b90fcdb011c9cb9d8c80c70350fe1766e</guid>
-      <pubDate>Tue, 14 Jul 2026 09:35:00 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 10:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 09:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 14 Jul 2026 10:00:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. [Am 14.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 14.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[72A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f9d8fead4f33a610f60e90f2dd0614fa36517a82b72bd3ace2c110f4e4334fed</guid>
-      <pubDate>Tue, 14 Jul 2026 08:57:00 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 09:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 08:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 14 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 14.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 14.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U4: Klapprampensperre am 18.07.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +85,39 @@
       <ext:ends_at>Thu, 31 Dec 2026 14:07:00 +0100</ext:ends_at>
       <description>[13.07.2026 – 31.12.2026]</description>
       <content:encoded><![CDATA[[13.07.2026 – 31.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Züge halten Heiligenstädter Straße 197]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">782e756e804c077755d2d18ce025d644fba71415abcdd971fb1009268badd810</guid>
+      <pubDate>Mon, 13 Jul 2026 13:42:54 +0200</pubDate>
+      <ext:first_seen>Mon, 13 Jul 2026 14:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 13:42:54 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 14 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[13.07.2026 – 14.07.2026]</description>
+      <content:encoded><![CDATA[[13.07.2026 – 14.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[59A: Busse halten Reinprechtsdorfer Straße 39-41]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0a39d11121c4d215bc13b2d416331db7da3ffd3869dca45d8968ebad6601756d</guid>
+      <pubDate>Mon, 13 Jul 2026 10:52:38 +0200</pubDate>
+      <ext:first_seen>Mon, 13 Jul 2026 11:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 10:52:38 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 14 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[13.07.2026 – 14.07.2026]</description>
+      <content:encoded><![CDATA[[13.07.2026 – 14.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f1ff4ebe211b0ab042742cfed669d58ae3fc55fd5c1d9ebf99050e193c6bf3a3</guid>
+      <pubDate>Mon, 13 Jul 2026 04:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 13 Jul 2026 05:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 04:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 31 Aug 2026 04:00:00 +0200</ext:ends_at>
+      <description>Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. [13.07.2026 – 31.08.2026]</description>
+      <content:encoded><![CDATA[Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August.<br/>[13.07.2026 – 31.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
