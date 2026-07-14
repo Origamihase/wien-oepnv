@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 14 Jul 2026 16:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 17:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[38A: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ebe0560280e5516e44fb83da6005f47a89b048a288c7031fc1269d833e56eb3f</guid>
-      <pubDate>Tue, 14 Jul 2026 13:44:00 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 14:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 13:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 14 Jul 2026 16:28:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 14.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 14.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[77A: Klaschkaweg]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -115,6 +104,17 @@
       <pubDate>Mon, 13 Jul 2026 13:42:54 +0200</pubDate>
       <ext:first_seen>Mon, 13 Jul 2026 14:01:11 +0200</ext:first_seen>
       <ext:starts_at>Mon, 13 Jul 2026 13:42:54 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 14 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[13.07.2026 – 14.07.2026]</description>
+      <content:encoded><![CDATA[[13.07.2026 – 14.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[59A: Buses stop at Reinprechtsdorfer Straße 39-41]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0a39d11121c4d215bc13b2d416331db7da3ffd3869dca45d8968ebad6601756d</guid>
+      <pubDate>Mon, 13 Jul 2026 10:52:38 +0200</pubDate>
+      <ext:first_seen>Mon, 13 Jul 2026 11:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 10:52:38 +0200</ext:starts_at>
       <ext:ends_at>Tue, 14 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[13.07.2026 – 14.07.2026]</description>
       <content:encoded><![CDATA[[13.07.2026 – 14.07.2026]]]></content:encoded>
