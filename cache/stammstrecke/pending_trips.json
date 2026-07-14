@@ -14,5 +14,21 @@
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-07-14T04:42:00+02:00"
+  },
+  "Praterstern|CJX9|2026-07-14T05:03:00+02:00": {
+    "cancelled": false,
+    "direction": "Praterstern",
+    "last_seen_at": "2026-07-14T04:30:44.470706+02:00",
+    "latest_delay_minutes": 2.0,
+    "name": "CJX9",
+    "scheduled": "2026-07-14T05:03:00+02:00"
+  },
+  "Praterstern|S2|2026-07-14T04:57:00+02:00": {
+    "cancelled": false,
+    "direction": "Praterstern",
+    "last_seen_at": "2026-07-14T04:30:44.470706+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-07-14T04:57:00+02:00"
   }
 }
