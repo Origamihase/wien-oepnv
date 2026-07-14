@@ -758,6 +758,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "15A: Polizeieinsatz",
+    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "71842f84405f237b1ca92ed099f0b8a763b7094e4c58c8d1a7947727dcdc5496",
+    "pubDate": "2026-07-14T15:25:00+02:00",
+    "starts_at": "2026-07-14T15:25:00+02:00",
+    "ends_at": "2026-07-14T23:55:00+02:00",
+    "_identity": "wl|störung|L=15A|D=2026-07-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "17A: Busse halten Favoritenstraße Hauptfahrbahn",
     "description": "Bauarbeiten\nBusse halten Favoritenstraße Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
