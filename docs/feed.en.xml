@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 14 Jul 2026 12:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 12:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11A: service obstruction because of fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6a57f4e6ae19fc18d32bea1f883e8dc233f8fcf6aebba2bdec134a5cbef6e64c</guid>
+      <pubDate>Tue, 14 Jul 2026 12:30:15 +0200</pubDate>
+      <ext:first_seen>Tue, 14 Jul 2026 12:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 14 Jul 2026 12:30:27 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 14 Jul 2026 13:29:00 +0200</ext:ends_at>
+      <description>[On 14.07.2026]</description>
+      <content:encoded><![CDATA[[On 14.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[88B: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">163985620af2d536600dcb4c7bd83855cb2879bce6f846c0324d8cd5a42ce24a</guid>
+      <pubDate>Tue, 14 Jul 2026 12:15:00 +0200</pubDate>
+      <ext:first_seen>Tue, 14 Jul 2026 12:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 14 Jul 2026 12:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 14 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: police operation. [On 14.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: police operation.<br/>[On 14.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[77A: Klaschkaweg]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 14:07:00 +0100</ext:ends_at>
       <description>[13.07.2026 – 31.12.2026]</description>
       <content:encoded><![CDATA[[13.07.2026 – 31.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Trains stop at Heiligenstädter Straße 197]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">782e756e804c077755d2d18ce025d644fba71415abcdd971fb1009268badd810</guid>
-      <pubDate>Mon, 13 Jul 2026 13:42:54 +0200</pubDate>
-      <ext:first_seen>Mon, 13 Jul 2026 14:01:11 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 13:42:54 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 14 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[13.07.2026 – 14.07.2026]</description>
-      <content:encoded><![CDATA[[13.07.2026 – 14.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: Buses stop at Reinprechtsdorfer Straße 39-41]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0a39d11121c4d215bc13b2d416331db7da3ffd3869dca45d8968ebad6601756d</guid>
-      <pubDate>Mon, 13 Jul 2026 10:52:38 +0200</pubDate>
-      <ext:first_seen>Mon, 13 Jul 2026 11:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 10:52:38 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 14 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[13.07.2026 – 14.07.2026]</description>
-      <content:encoded><![CDATA[[13.07.2026 – 14.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
