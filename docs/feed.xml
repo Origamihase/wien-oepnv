@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 14 Jul 2026 03:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 04:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N29: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4bf68d39ac329cc651db32018a56751d69b7f016a457a21ca7c2c67c100e9eae</guid>
+      <pubDate>Tue, 14 Jul 2026 04:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 14 Jul 2026 04:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 14 Jul 2026 04:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 14 Jul 2026 05:14:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 14.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 14.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1/71/D: Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Tue, 14 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 14.07.2026]</description>
       <content:encoded><![CDATA[[Am 14.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: Betrieb ab Nußdorfer Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7afb568f17f1bfbffd0bb84e8a04bf8f0a3e7668ac93baac0309bf75970c8555</guid>
-      <pubDate>Mon, 13 Jul 2026 04:00:14 +0200</pubDate>
-      <ext:first_seen>Mon, 13 Jul 2026 04:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 04:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 14 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[13.07.2026 – 14.07.2026]</description>
-      <content:encoded><![CDATA[[13.07.2026 – 14.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
