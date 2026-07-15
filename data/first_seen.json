@@ -3381,8 +3381,10 @@
     "first_seen": "2026-07-15T07:00:56.018445+00:00",
     "translations": {
       "en": {
+        "summary": "Stop change of line 48A towards station Ring, Volkstheater U Stop: St.-Ulrichs-Platz From: Burggasse 25 To: Burggasse 27 Duration: From 16. July 2026, about \u2026",
         "title": "48A: St.-Ulrichs-Platz"
-      }
+      },
+      "epoch": 3
     }
   },
   "3e2080cd70a0d76702d2e5d867cf4583a4c298dd55297bab5839417d4f60ea50": {
@@ -5257,6 +5259,16 @@
     "translations": {
       "en": {
         "title": "9: service obstruction stranger traffic accident"
+      },
+      "epoch": 3
+    }
+  },
+  "612ada6ec2e59b4905eac6bf93f7eb5637a9ba67727b8442d5cc5f645a06e308": {
+    "first_seen": "2026-07-15T07:30:53.267558+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: police operation.",
+        "title": "3A: police operation"
       },
       "epoch": 3
     }
