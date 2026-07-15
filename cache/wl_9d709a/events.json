@@ -752,7 +752,7 @@
     "guid": "278826ec1389a2274acd4046668727a4496cffab62cc72d4a01066ea95dcfaa3",
     "pubDate": "2026-07-15T16:33:00+02:00",
     "starts_at": "2026-07-15T16:33:00+02:00",
-    "ends_at": "2026-07-15T23:55:00+02:00",
+    "ends_at": "2026-07-15T19:26:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-07-15"
   },
   {
@@ -1100,7 +1100,7 @@
     "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
     "pubDate": "2026-07-15T13:39:00+02:00",
     "starts_at": "2026-07-15T13:39:00+02:00",
-    "ends_at": "2026-07-15T23:55:00+02:00",
+    "ends_at": "2026-07-15T19:26:00+02:00",
     "_identity": "wl|störung|L=49|D=2026-07-15"
   },
   {
@@ -1366,6 +1366,30 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Rettungseinsatz",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2026-07-15T19:09:00+02:00",
+    "starts_at": "2026-07-15T19:09:00+02:00",
+    "ends_at": "2026-07-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-07-15T19:08:00+02:00",
+    "starts_at": "2026-07-15T19:08:00+02:00",
+    "ends_at": "2026-07-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-07-15"
   },
   {
     "source": "Wiener Linien",
