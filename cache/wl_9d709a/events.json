@@ -722,14 +722,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12/37/38/40/41/42/5: Gleisbauarbeiten",
-    "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert voraussichtlich bis Ende August.",
+    "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
+    "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5627b0160e655cb3f00287a1e43fd9bb84f40f90804ad931f4aaa44da4c254a7",
-    "pubDate": "2026-07-13T04:00:00+02:00",
-    "starts_at": "2026-07-13T04:00:00+02:00",
-    "ends_at": "2026-08-31T23:55:00+02:00",
-    "_identity": "wl|störung|L=12,37,38,40,41,42,5|D=2026-07-13"
+    "guid": "da36034d7f682e762efc948fa7832cd5b0a0a520021df8036fbcf428d25dfbf7",
+    "pubDate": "2026-07-13T04:00:16+02:00",
+    "starts_at": "2026-07-15T15:58:29+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=12|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Kein Betrieb",
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7451102d47c1b1972aa31b8301000dc55e940dd24dbb815c063ed55ffd4ae59",
+    "pubDate": "2026-07-13T04:00:14+02:00",
+    "starts_at": "2026-07-15T15:58:52+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=12|D=2026-07-13"
   },
   {
     "source": "Wiener Linien",
@@ -830,30 +842,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Schadhaftes Fahrzeug",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3",
-    "pubDate": "2026-07-15T15:29:00+02:00",
-    "starts_at": "2026-07-15T15:29:00+02:00",
-    "ends_at": "2026-07-15T15:54:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "94f4eb65518cea7f3596d07523d5e3ba07cc2ee6eadafdf524ef5a92f01f2dc6",
-    "pubDate": "2026-07-15T15:29:23+02:00",
-    "starts_at": "2026-07-15T15:29:35+02:00",
-    "ends_at": "2026-07-15T16:29:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "31: Gleisbauarbeiten",
     "description": "Linie 31: Betrieb nur zwischen Schottenring U und Friedrich-Engels-Platz. Weichen Sie ersatzweise auf die Linien U6, 30, 5A und 11A. aus. Voraussichtliche Dauer: Ende August. Grund: Gleisbauarbeiten im Bereich Floridsdorfer Brücke.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -914,6 +902,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37: Kein Betrieb",
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13d72b4bf0cd9ae5af44d6404fcb8793ef77a9eef5063bf25f4217954bdee71b",
+    "pubDate": "2026-07-13T04:00:14+02:00",
+    "starts_at": "2026-07-13T04:00:14+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=37|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Betrieb ab Nußdorfer Straße",
+    "description": "Gleisbauarbeiten\nBetrieb ab Nußdorfer Straße >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e248a0edc1f597529d2099e4e499669fbd6077d104bbc53931532d683676197a",
+    "pubDate": "2026-07-13T04:00:14+02:00",
+    "starts_at": "2026-07-13T04:00:15+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=37|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "38A: Hlst. verlegt nach Cobenzlgasse 8-10",
     "description": "Hlst. verlegt\nnach Cobenzlgasse 8-10",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -938,6 +950,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38: Betrieb ab Nußdorfer Straße",
+    "description": "Gleisbauarbeiten\nBetrieb ab Nußdorfer Straße >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7afb568f17f1bfbffd0bb84e8a04bf8f0a3e7668ac93baac0309bf75970c8555",
+    "pubDate": "2026-07-13T04:00:14+02:00",
+    "starts_at": "2026-07-13T04:00:15+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=38|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Kein Betrieb",
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b89e25433406bf59d0f296406b1e73409e59a6528371a4f4ac58b4bdacc224be",
+    "pubDate": "2026-07-13T04:00:14+02:00",
+    "starts_at": "2026-07-13T04:00:14+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=38|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -946,6 +982,54 @@
     "starts_at": "2026-07-13T00:00:20+02:00",
     "ends_at": "2026-07-15T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Verkehrsunfall",
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f",
+    "pubDate": "2026-07-15T16:19:00+02:00",
+    "starts_at": "2026-07-15T16:19:00+02:00",
+    "ends_at": "2026-07-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Kein Betrieb",
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "25135d5fe1ae6086a9604cf56c1890f62c133f4b68b71a97d05800b07594d743",
+    "pubDate": "2026-07-13T04:00:12+02:00",
+    "starts_at": "2026-07-13T04:00:15+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=40|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Kein Betrieb",
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e83aa491c848c79758b9fa1a7745f107d510638495130ae358d3577a3a06bd70",
+    "pubDate": "2026-07-13T04:00:13+02:00",
+    "starts_at": "2026-07-13T04:00:15+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=41|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Kein Betrieb",
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "72daecfae156d674f4b17f0865290882105ea9c8dc7f884762c80c1d60a7140d",
+    "pubDate": "2026-07-15T16:02:02+02:00",
+    "starts_at": "2026-07-15T16:02:27+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=42|D=2026-07-15"
   },
   {
     "source": "Wiener Linien",
@@ -1078,6 +1162,54 @@
     "starts_at": "2026-07-13T10:52:38+02:00",
     "ends_at": "2026-07-15T23:59:59+02:00",
     "_identity": "wl|störung|L=59A|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Betrieb ab Lerchenfelder Straße",
+    "description": "Gleisbauarbeiten\nBetrieb ab Lerchenfelder Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c11f5415f3aa1b87ebc238119c29ffbf50342eba9979dbcee482efd531592f89",
+    "pubDate": "2026-07-13T04:00:14+02:00",
+    "starts_at": "2026-07-14T00:00:23+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=5|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Betrieb ab Franz-Josefs-Bahnhof",
+    "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cd9dce23e7446f61ecc2b5a7c0710b100987399c2e7f28f888dcee21050531da",
+    "pubDate": "2026-07-13T04:00:16+02:00",
+    "starts_at": "2026-07-14T00:00:23+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=5|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Kein Betrieb",
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
+    "pubDate": "2026-07-14T00:00:23+02:00",
+    "starts_at": "2026-07-14T00:00:23+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=5|D=2026-07-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung Gleisbauarbeiten",
+    "description": "Fahrtbehinderung\nGleisbauarbeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "938169e00e5f2d82f6ab9cea8bea49079bd842ace6b0fbf2b3c5135a05c1d81b",
+    "pubDate": "2026-07-14T00:00:23+02:00",
+    "starts_at": "2026-07-14T00:00:23+02:00",
+    "ends_at": "2026-07-15T23:59:59+02:00",
+    "_identity": "wl|störung|L=5|D=2026-07-14"
   },
   {
     "source": "Wiener Linien",
@@ -1274,13 +1406,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Züge halten bei Währinger Gürtel ggü 164",
-    "description": "Gleisbauarbeiten\nZüge halten bei Währinger Gürtel ggü 164",
+    "title": "Züge halten bei Währinger Gürtel gegenüber 164",
+    "description": "Gleisbauarbeiten\nZüge halten bei\nWähringer Gürtel\ngegenüber 164",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17bfcc875f934b1ad5a0d39b115766a1ffff672edd756d92c7b84dce2f8c0b3c",
+    "guid": "542b668697c2ac0be11b61c4fbb2c5806545f379c7dacab1e5604b0a7a8340de",
     "pubDate": "2026-07-13T04:00:14+02:00",
     "starts_at": "2026-07-13T04:00:14+02:00",
     "ends_at": "2026-07-15T23:59:59+02:00",
-    "_identity": "wl|störung|L=|D=2026-07-13|TK=züge halten bei währinger gürtel ggü 164"
+    "_identity": "wl|störung|L=|D=2026-07-13|TK=züge halten bei währinger gürtel gegenüber 164"
   }
 ]
