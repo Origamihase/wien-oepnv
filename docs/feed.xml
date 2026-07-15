@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 15 Jul 2026 17:01:06 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 17:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[13A: Betriebsstörung]]></title>
@@ -41,17 +41,6 @@
       <ext:ends_at>Wed, 15 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[13.07.2026 – 15.07.2026]</description>
       <content:encoded><![CDATA[[13.07.2026 – 15.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71B: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2a7c25de311cfd54381403775b97b2d14b017d1134c32a0b5d5d903974064663</guid>
-      <pubDate>Wed, 15 Jul 2026 15:49:00 +0200</pubDate>
-      <ext:first_seen>Wed, 15 Jul 2026 16:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 15 Jul 2026 15:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 15.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 15.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N25: Julius-Payer-Gasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 18 Jul 2026 23:00:00 +0200</ext:ends_at>
       <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden. [14.07.2026 – 18.07.2026]</description>
       <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden.<br/>[14.07.2026 – 18.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[57A: Kurt-Pint-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b97f304e3f10484d221b901294138e6c6c1ca25292c7ae0c01490c080ed7288d</guid>
+      <pubDate>Tue, 14 Jul 2026 07:50:00 +0200</pubDate>
+      <ext:first_seen>Tue, 14 Jul 2026 08:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 14 Jul 2026 07:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 57A in Richtung Burgring (bzw. Pilgramgasse U) Haltestelle: Kurt-Pint-Platz Von: Gumpendorfer Straße 103 Nach: Gumpendorfer Straße 117 Dauer … [14.07.2026 – 14.07.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 57A in Richtung Burgring (bzw. Pilgramgasse U) Haltestelle: Kurt-Pint-Platz Von: Gumpendorfer Straße 103 Nach: Gumpendorfer Straße 117 Dauer …<br/>[14.07.2026 – 14.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
