@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 15 Jul 2026 12:01:13 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 12:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[52/60: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9172869cc6e27d04ff7ecb9825c229022390350e35acda24a5b195fd0b9f2e3f</guid>
+      <pubDate>Wed, 15 Jul 2026 12:08:00 +0200</pubDate>
+      <ext:first_seen>Wed, 15 Jul 2026 12:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 15 Jul 2026 12:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 15 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb nur zwischen Baumgarten und Anschützgasse. Linie 60: Betrieb nur zwischen Rodaun und Anschützgasse. [Am 15.07.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Baumgarten und Anschützgasse. Linie 60: Betrieb nur zwischen Rodaun und Anschützgasse.<br/>[Am 15.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[30: delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +115,6 @@
       <pubDate>Mon, 13 Jul 2026 13:42:54 +0200</pubDate>
       <ext:first_seen>Mon, 13 Jul 2026 14:01:11 +0200</ext:first_seen>
       <ext:starts_at>Mon, 13 Jul 2026 13:42:54 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[13.07.2026 – 15.07.2026]</description>
-      <content:encoded><![CDATA[[13.07.2026 – 15.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: Buses stop at Reinprechtsdorfer Straße 39-41]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0a39d11121c4d215bc13b2d416331db7da3ffd3869dca45d8968ebad6601756d</guid>
-      <pubDate>Mon, 13 Jul 2026 10:52:38 +0200</pubDate>
-      <ext:first_seen>Mon, 13 Jul 2026 11:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 10:52:38 +0200</ext:starts_at>
       <ext:ends_at>Wed, 15 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[13.07.2026 – 15.07.2026]</description>
       <content:encoded><![CDATA[[13.07.2026 – 15.07.2026]]]></content:encoded>

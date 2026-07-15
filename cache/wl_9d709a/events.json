@@ -710,6 +710,54 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Fremdunfall Betrieb ab Possingergasse",
+    "description": "Fremdunfall\nBetrieb ab Possingergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "520f396123cf82845c0854d3f7e70f2111a5771d4f78b444fc51761b2b42f954",
+    "pubDate": "2026-07-15T12:15:30+02:00",
+    "starts_at": "2026-07-15T12:20:34+02:00",
+    "ends_at": "2026-07-15T13:20:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Fremder Verkehrsunfall",
+    "description": "Die Linie 10A fährt derzeit nicht zwischen Possingergasse und Gersthof S. Weichen Sie ersatzweise auf die Linien 9, 10, 49, 48A und die S45 aus. Voraussichtliche Dauer: 12:50 Uhr. Grund: Fremder Verkehrsunfall im Bereich Wattgasse 43.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "69bf84ed2d92c43fb9999e573aa34981c804f4c13f0177a30ce634d9c2393458",
+    "pubDate": "2026-07-15T12:14:00+02:00",
+    "starts_at": "2026-07-15T12:14:00+02:00",
+    "ends_at": "2026-07-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Fremdunfall Betrieb ab Gersthof",
+    "description": "Fremdunfall\nBetrieb ab Gersthof <",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "af1c864c646205b820433c93b6eb507df834879e535a870c8ce707b4d152c8e7",
+    "pubDate": "2026-07-15T12:16:57+02:00",
+    "starts_at": "2026-07-15T12:20:09+02:00",
+    "ends_at": "2026-07-15T13:19:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bd7d8f45186b5060599af6427e03e365de42b2d79056f8d753c1d2f26e5c147c",
+    "pubDate": "2026-07-15T12:15:44+02:00",
+    "starts_at": "2026-07-15T12:16:57+02:00",
+    "ends_at": "2026-07-15T13:16:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12/37/38/40/41/42/5: Gleisbauarbeiten",
     "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert voraussichtlich bis Ende August.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -986,6 +1034,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "52/60: Verkehrsunfall",
+    "description": "Linie 52: Betrieb nur zwischen Baumgarten und Anschützgasse. Linie 60: Betrieb nur zwischen Rodaun und Anschützgasse. Weichen Sie ersatzweise auf die Linien U4, U6 und 57A aus. Voraussichtliche Dauer: 12:50 Uhr. Grund: Verkehrsunfall im Bereich Mariahilfer Straße 211.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9172869cc6e27d04ff7ecb9825c229022390350e35acda24a5b195fd0b9f2e3f",
+    "pubDate": "2026-07-15T12:08:00+02:00",
+    "starts_at": "2026-07-15T12:08:00+02:00",
+    "ends_at": "2026-07-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=52,60|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Linie 57A: Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse. In Richtung Ruolfsheim, Anschützgasse Betrieb ab Hirschengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1102,18 +1162,6 @@
     "starts_at": "2026-07-14T00:00:23+02:00",
     "ends_at": "2026-07-15T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-07-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9A: Verunreinigung",
-    "description": "Linie 9A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8d10051ff0803a29b25d85f2aadb96d0cfbd4d9a1f15e9bee8bbd77e5aeff312",
-    "pubDate": "2026-07-15T10:29:00+02:00",
-    "starts_at": "2026-07-15T10:29:00+02:00",
-    "ends_at": "2026-07-15T12:00:00+02:00",
-    "_identity": "wl|störung|L=9A|D=2026-07-15"
   },
   {
     "source": "Wiener Linien",
@@ -1246,5 +1294,17 @@
     "starts_at": "2026-07-13T04:00:14+02:00",
     "ends_at": "2026-07-15T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-07-13|TK=züge halten bei währinger gürtel ggü 164"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Verkehrsunfall Betrieb ab Anschützgasse",
+    "description": "Verkehrsunfall\nBetrieb ab Anschützgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d72accb2c5552f30deeebfa4110710af1dafa54c3ef3ac27d6c82fc96a560b06",
+    "pubDate": "2026-07-15T12:11:02+02:00",
+    "starts_at": "2026-07-15T12:11:02+02:00",
+    "ends_at": "2026-07-15T13:09:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-07-15|TK=verkehrsunfall betrieb ab anschützgasse"
   }
 ]
