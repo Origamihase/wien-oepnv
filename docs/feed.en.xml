@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 15 Jul 2026 09:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 10:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[3A: police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">612ada6ec2e59b4905eac6bf93f7eb5637a9ba67727b8442d5cc5f645a06e308</guid>
-      <pubDate>Wed, 15 Jul 2026 09:18:00 +0200</pubDate>
-      <ext:first_seen>Wed, 15 Jul 2026 09:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 15 Jul 2026 09:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Jul 2026 09:27:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: police operation. [On 15.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: police operation.<br/>[On 15.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[48A: St.-Ulrichs-Platz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +19,6 @@
       <ext:ends_at>Thu, 15 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of line 48A towards station Ring, Volkstheater U Stop: St.-Ulrichs-Platz From: Burggasse 25 To: Burggasse 27 Duration: From 16. July 2026, about … [15.07.2026 – 15.07.2027]</description>
       <content:encoded><![CDATA[Stop change of line 48A towards station Ring, Volkstheater U Stop: St.-Ulrichs-Platz From: Burggasse 25 To: Burggasse 27 Duration: From 16. July 2026, about …<br/>[15.07.2026 – 15.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25A: False Parker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">60a808a4d091dd2c414417770047ef85a31a39fd1311646f83ee1fe771fd8b6c</guid>
-      <pubDate>Wed, 15 Jul 2026 08:08:00 +0200</pubDate>
-      <ext:first_seen>Wed, 15 Jul 2026 08:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 15 Jul 2026 08:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Jul 2026 09:28:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: wrong parker. [On 15.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: wrong parker.<br/>[On 15.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: No operation]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 15 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[13.07.2026 – 15.07.2026]</description>
       <content:encoded><![CDATA[[13.07.2026 – 15.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[59A: Buses stop at Reinprechtsdorfer Straße 39-41]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0a39d11121c4d215bc13b2d416331db7da3ffd3869dca45d8968ebad6601756d</guid>
+      <pubDate>Mon, 13 Jul 2026 10:52:38 +0200</pubDate>
+      <ext:first_seen>Mon, 13 Jul 2026 11:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 10:52:38 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 15 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[13.07.2026 – 15.07.2026]</description>
+      <content:encoded><![CDATA[[13.07.2026 – 15.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f1ff4ebe211b0ab042742cfed669d58ae3fc55fd5c1d9ebf99050e193c6bf3a3</guid>
+      <pubDate>Mon, 13 Jul 2026 04:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 13 Jul 2026 05:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 04:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 31 Aug 2026 04:00:00 +0200</ext:ends_at>
+      <description>Dear passengers! The line U3 does not currently operate between Hütteldorfer Straße and Westbahnhof. [13.07.2026 – 31.08.2026]</description>
+      <content:encoded><![CDATA[Dear passengers! The line U3 does not currently operate between Hütteldorfer Straße and Westbahnhof.<br/>[13.07.2026 – 31.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

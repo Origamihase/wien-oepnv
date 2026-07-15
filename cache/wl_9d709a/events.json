@@ -806,18 +806,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25A: Falschparker",
-    "description": "Linie 25A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "60a808a4d091dd2c414417770047ef85a31a39fd1311646f83ee1fe771fd8b6c",
-    "pubDate": "2026-07-15T08:08:00+02:00",
-    "starts_at": "2026-07-15T08:08:00+02:00",
-    "ends_at": "2026-07-15T09:28:00+02:00",
-    "_identity": "wl|störung|L=25A|D=2026-07-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -910,18 +898,6 @@
     "starts_at": "2026-07-13T00:00:13+02:00",
     "ends_at": "2026-07-15T23:59:59+02:00",
     "_identity": "wl|störung|L=38A|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "3A: Polizeieinsatz",
-    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "612ada6ec2e59b4905eac6bf93f7eb5637a9ba67727b8442d5cc5f645a06e308",
-    "pubDate": "2026-07-15T09:18:00+02:00",
-    "starts_at": "2026-07-15T09:18:00+02:00",
-    "ends_at": "2026-07-15T09:27:00+02:00",
-    "_identity": "wl|störung|L=3A|D=2026-07-15"
   },
   {
     "source": "Wiener Linien",
@@ -1070,6 +1046,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Rettungseinsatz",
+    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
+    "pubDate": "2026-07-15T09:57:00+02:00",
+    "starts_at": "2026-07-15T09:57:00+02:00",
+    "ends_at": "2026-07-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1162,6 +1150,30 @@
     "starts_at": "2026-07-13T04:47:31+02:00",
     "ends_at": "2026-07-15T23:59:59+02:00",
     "_identity": "wl|störung|L=D|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "47075b3ab9aea3f9e8790e8326394e6f935beb494cad7b02c64ce5fbe05f3cf6",
+    "pubDate": "2026-07-15T09:34:20+02:00",
+    "starts_at": "2026-07-15T09:34:23+02:00",
+    "ends_at": "2026-07-15T10:33:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Verspätungen",
+    "description": "Die Linie D fährt derzeit nicht zwischen Schottenring und Schwedenplatz. Weichen Sie ersatzweise auf die Linien U1, U2 und U3 aus. Voraussichtliche Dauer: 10:00 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Salztorbrücke.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c7925ff70d53612e7f52f703b1a2b91345fcc7af95cb98ea1dd62d9ae3a76484",
+    "pubDate": "2026-07-15T09:34:00+02:00",
+    "starts_at": "2026-07-15T09:34:00+02:00",
+    "ends_at": "2026-07-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-07-15"
   },
   {
     "source": "Wiener Linien",
