@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 15 Jul 2026 21:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 21:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[27: Gegenstände auf der Fahrbahn]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">77fa90a80952925f28769c86fcbf3c7a6bd5b1b708238ad549150360df77c6a6</guid>
+      <pubDate>Wed, 15 Jul 2026 21:19:00 +0200</pubDate>
+      <ext:first_seen>Wed, 15 Jul 2026 21:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 15 Jul 2026 21:19:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 15 Jul 2026 21:40:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Gegenstände auf der Fahrbahn. [Am 15.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Gegenstände auf der Fahrbahn.<br/>[Am 15.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12: No operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 14 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop transfer of line 57A towards Burgring (or Pilgramgasse U) Stop: Kurt-Pint-Platz From: Gumpendorfer Straße 103 To: Gumpendorfer Straße 117 Duration … [14.07.2026 – 14.07.2027]</description>
       <content:encoded><![CDATA[Stop transfer of line 57A towards Burgring (or Pilgramgasse U) Stop: Kurt-Pint-Platz From: Gumpendorfer Straße 103 To: Gumpendorfer Straße 117 Duration …<br/>[14.07.2026 – 14.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: service obstruction track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">938169e00e5f2d82f6ab9cea8bea49079bd842ace6b0fbf2b3c5135a05c1d81b</guid>
-      <pubDate>Tue, 14 Jul 2026 00:00:23 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 00:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 00:00:23 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[14.07.2026 – 15.07.2026]</description>
-      <content:encoded><![CDATA[[14.07.2026 – 15.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
