@@ -818,6 +818,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Schadhaftes Fahrzeug",
+    "description": "Linie 2: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 15:50 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Josefstädter Straße # Blindengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3",
+    "pubDate": "2026-07-15T15:29:00+02:00",
+    "starts_at": "2026-07-15T15:29:00+02:00",
+    "ends_at": "2026-07-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "94f4eb65518cea7f3596d07523d5e3ba07cc2ee6eadafdf524ef5a92f01f2dc6",
+    "pubDate": "2026-07-15T15:29:23+02:00",
+    "starts_at": "2026-07-15T15:29:35+02:00",
+    "ends_at": "2026-07-15T16:29:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-07-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "31: Gleisbauarbeiten",
     "description": "Linie 31: Betrieb nur zwischen Schottenring U und Friedrich-Engels-Platz. Weichen Sie ersatzweise auf die Linien U6, 30, 5A und 11A. aus. Voraussichtliche Dauer: Ende August. Grund: Gleisbauarbeiten im Bereich Floridsdorfer Brücke.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
