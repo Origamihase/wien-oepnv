@@ -710,7 +710,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5/12/37/38/40/41/42: Gleisbauarbeiten",
+    "title": "12/37/38/40/41/42/5: Gleisbauarbeiten",
     "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert voraussichtlich bis Ende August.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5627b0160e655cb3f00287a1e43fd9bb84f40f90804ad931f4aaa44da4c254a7",
@@ -718,18 +718,6 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-31T23:55:00+02:00",
     "_identity": "wl|störung|L=12,37,38,40,41,42,5|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Verkehrsunfall",
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35",
-    "pubDate": "2026-07-15T10:36:00+02:00",
-    "starts_at": "2026-07-15T10:36:00+02:00",
-    "ends_at": "2026-07-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-07-15"
   },
   {
     "source": "Wiener Linien",
@@ -1034,18 +1022,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Verkehrsunfall",
-    "description": "Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d735177cc6e0c032bea05c9936fbbc2b7922b9a27c7090d9edb0f0dee69f67b3",
-    "pubDate": "2026-07-15T10:36:00+02:00",
-    "starts_at": "2026-07-15T10:36:00+02:00",
-    "ends_at": "2026-07-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=57A|D=2026-07-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "59A: Busse halten Reinprechtsdorfer Straße 39-41",
     "description": "Busse halten\nReinprechtsdorfer Straße 39-41",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1078,18 +1054,6 @@
     "starts_at": "2026-07-15T04:45:01+02:00",
     "ends_at": "2026-07-16T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-07-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Rettungseinsatz",
-    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
-    "pubDate": "2026-07-15T09:57:00+02:00",
-    "starts_at": "2026-07-15T09:57:00+02:00",
-    "ends_at": "2026-07-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-07-15"
   },
   {
     "source": "Wiener Linien",
