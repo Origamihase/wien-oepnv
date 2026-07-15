@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 15 Jul 2026 19:30:42 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 20:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[13A: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">278826ec1389a2274acd4046668727a4496cffab62cc72d4a01066ea95dcfaa3</guid>
-      <pubDate>Wed, 15 Jul 2026 16:33:00 +0200</pubDate>
-      <ext:first_seen>Wed, 15 Jul 2026 17:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 15 Jul 2026 16:33:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Jul 2026 19:26:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 15.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 15.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[12: Kein Betrieb]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 14 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 57A in Richtung Burgring (bzw. Pilgramgasse U) Haltestelle: Kurt-Pint-Platz Von: Gumpendorfer Straße 103 Nach: Gumpendorfer Straße 117 Dauer … [14.07.2026 – 14.07.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 57A in Richtung Burgring (bzw. Pilgramgasse U) Haltestelle: Kurt-Pint-Platz Von: Gumpendorfer Straße 103 Nach: Gumpendorfer Straße 117 Dauer …<br/>[14.07.2026 – 14.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5: Fahrtbehinderung Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">938169e00e5f2d82f6ab9cea8bea49079bd842ace6b0fbf2b3c5135a05c1d81b</guid>
+      <pubDate>Tue, 14 Jul 2026 00:00:23 +0200</pubDate>
+      <ext:first_seen>Tue, 14 Jul 2026 00:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 14 Jul 2026 00:00:23 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 15 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[14.07.2026 – 15.07.2026]</description>
+      <content:encoded><![CDATA[[14.07.2026 – 15.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
