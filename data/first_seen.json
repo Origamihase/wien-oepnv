@@ -2026,6 +2026,15 @@
       "epoch": 3
     }
   },
+  "241f680463d3a87561871a3af08692ea0a890ee57fd2e13f3b01e7fe93682664": {
+    "first_seen": "2026-07-15T07:00:56.018445+00:00",
+    "translations": {
+      "en": {
+        "title": "U6: Attention U6 interlocking failure no operation between Siebenhirten and Bhf. Meidling"
+      },
+      "epoch": 3
+    }
+  },
   "244a18be3eebafba16e16928b39b5bde2fa912cc660282cd2e0db80248b8392c": {
     "first_seen": "2026-06-05T19:30:47.559322+00:00",
     "translations": {
@@ -3365,6 +3374,14 @@
     "translations": {
       "en": {
         "title": "41: Einstieg for line 40"
+      }
+    }
+  },
+  "3ddc884e71233b206341c1a0ceca3d09281a3d021d80a272119ffecb8048d107": {
+    "first_seen": "2026-07-15T07:00:56.018445+00:00",
+    "translations": {
+      "en": {
+        "title": "48A: St.-Ulrichs-Platz"
       }
     }
   },
@@ -5200,8 +5217,10 @@
     "first_seen": "2026-07-15T06:30:50.903981+00:00",
     "translations": {
       "en": {
+        "summary": "irregular intervals in both directions. Reason: wrong parker.",
         "title": "25A: False Parker"
-      }
+      },
+      "epoch": 3
     }
   },
   "60aa08fe326bddb79308208eb0d68e470980ba7f79d957d73cc7be5ebc7b3a08": {
