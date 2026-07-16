@@ -15097,6 +15097,16 @@
       "epoch": 3
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&896612": {
+    "first_seen": "2026-07-16T17:31:00.928159+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an switch fault, trains to expected 20 20:30 watch are limited.",
+        "title": "Wien Westbahnhof"
+      },
+      "epoch": 3
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },
