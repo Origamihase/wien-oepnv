@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 16 Jul 2026 13:01:16 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2026 13:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">82b2b968365fe18a9edd52433273c0f78ff5079c2218a60fb58c22aa07911b8c</guid>
+      <pubDate>Thu, 16 Jul 2026 13:03:00 +0200</pubDate>
+      <ext:first_seen>Thu, 16 Jul 2026 13:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Jul 2026 13:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 16 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 16.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 16.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[6: Harmful car]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 18 Jul 2026 23:00:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended. [14.07.2026 – 18.07.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended.<br/>[14.07.2026 – 18.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[57A: Kurt-Pint-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b97f304e3f10484d221b901294138e6c6c1ca25292c7ae0c01490c080ed7288d</guid>
-      <pubDate>Tue, 14 Jul 2026 07:50:00 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 08:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 07:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop transfer of line 57A towards Burgring (or Pilgramgasse U) Stop: Kurt-Pint-Platz From: Gumpendorfer Straße 103 To: Gumpendorfer Straße 117 Duration … [14.07.2026 – 14.07.2027]</description>
-      <content:encoded><![CDATA[Stop transfer of line 57A towards Burgring (or Pilgramgasse U) Stop: Kurt-Pint-Platz From: Gumpendorfer Straße 103 To: Gumpendorfer Straße 117 Duration …<br/>[14.07.2026 – 14.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
