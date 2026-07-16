@@ -7,17 +7,50 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 16 Jul 2026 09:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2026 11:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">17348702007ee0800eafbce7d382472c59ee068fa21a4c44fc1f6a6f3ab14d79</guid>
+      <pubDate>Thu, 16 Jul 2026 10:57:00 +0200</pubDate>
+      <ext:first_seen>Thu, 16 Jul 2026 11:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Jul 2026 10:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 16 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker. [Am 16.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.<br/>[Am 16.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[E3: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b771100fe94192708067e4c8ea0e61017fdebd1881aa5bc6f582d7b4dbe91234</guid>
+      <pubDate>Thu, 16 Jul 2026 09:48:00 +0200</pubDate>
+      <ext:first_seen>Thu, 16 Jul 2026 11:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Jul 2026 10:02:13 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 16 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 16.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 16.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Sperre Ausgang beim Keplerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4d7e1c939cba4537c1cbea8b77aab6e84ca308591d0551065f21daacb2248e2e</guid>
+      <pubDate>Thu, 16 Jul 2026 11:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 16 Jul 2026 11:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Jul 2026 11:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 22 Jul 2026 17:00:00 +0200</ext:ends_at>
+      <description>Ausgangssperre Wegen Bauarbeiten auf der Favoritenstraße muss in der Station Keplerplatz der rechte Ausgang Raaber Bahngasse (gegenüber Favoritenstraße 85) gesperrt werden. [16.07.2026 – 22.07.2026]</description>
+      <content:encoded><![CDATA[Ausgangssperre Wegen Bauarbeiten auf der Favoritenstraße muss in der Station Keplerplatz der rechte Ausgang Raaber Bahngasse (gegenüber Favoritenstraße 85) gesperrt werden.<br/>[16.07.2026 – 22.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Aspern Nord ↔ Raasdorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;896473</guid>
-      <pubDate>Thu, 16 Jul 2026 09:29:32 +0200</pubDate>
+      <pubDate>Thu, 16 Jul 2026 10:39:32 +0200</pubDate>
       <ext:first_seen>Thu, 16 Jul 2026 09:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 16 Jul 2026 09:29:32 +0200</ext:starts_at>
-      <description>Wegen eines Verkehrsunfalles sind zwischen Wien Aspern Nord Bahnhof (U) und Raasdorf Bahnhof derzeit keine Fahrten möglich. [Seit 16.07.2026]</description>
-      <content:encoded><![CDATA[Wegen eines Verkehrsunfalles sind zwischen Wien Aspern Nord Bahnhof (U) und Raasdorf Bahnhof derzeit keine Fahrten möglich.<br/>[Seit 16.07.2026]]]></content:encoded>
+      <ext:starts_at>Thu, 16 Jul 2026 10:39:32 +0200</ext:starts_at>
+      <description>Wegen einer Verzögerung auf der Strecke waren zwischen Wien Aspern Nord Bahnhof (U) und Raasdorf Bahnhof bis 10:36 Uhr keine Fahrten möglich. [Seit 16.07.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Verzögerung auf der Strecke waren zwischen Wien Aspern Nord Bahnhof (U) und Raasdorf Bahnhof bis 10:36 Uhr keine Fahrten möglich.<br/>[Seit 16.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12: Kein Betrieb]]></title>
@@ -84,39 +117,6 @@
       <ext:ends_at>Thu, 16 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[13.07.2026 – 16.07.2026]</description>
       <content:encoded><![CDATA[[13.07.2026 – 16.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[77A: Klaschkaweg]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">48b738c867a057226c65b8f2ee8e887b248583e48203f56259c3fc3cf95e849b</guid>
-      <pubDate>Tue, 14 Jul 2026 11:15:00 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 11:31:08 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 11:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 77A in Richtung Lusthaus Haltestelle: Klaschkaweg Von: Stadionallee nach Klaschkaweg Nach: ca. 40 Meter in Fahrtrichtung Dauer: 15. Juli … [14.07.2026 – 14.07.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 77A in Richtung Lusthaus Haltestelle: Klaschkaweg Von: Stadionallee nach Klaschkaweg Nach: ca. 40 Meter in Fahrtrichtung Dauer: 15. Juli …<br/>[14.07.2026 – 14.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Klapprampensperre am 18.07.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f086bd9decbb95a3ebca310aba5dd1ddd0954cff02cffba4b25e83d994309699</guid>
-      <pubDate>Tue, 14 Jul 2026 08:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 08:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 08:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 18 Jul 2026 23:00:00 +0200</ext:ends_at>
-      <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden. [14.07.2026 – 18.07.2026]</description>
-      <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden.<br/>[14.07.2026 – 18.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[57A: Kurt-Pint-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b97f304e3f10484d221b901294138e6c6c1ca25292c7ae0c01490c080ed7288d</guid>
-      <pubDate>Tue, 14 Jul 2026 07:50:00 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 08:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 07:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 57A in Richtung Burgring (bzw. Pilgramgasse U) Haltestelle: Kurt-Pint-Platz Von: Gumpendorfer Straße 103 Nach: Gumpendorfer Straße 117 Dauer … [14.07.2026 – 14.07.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 57A in Richtung Burgring (bzw. Pilgramgasse U) Haltestelle: Kurt-Pint-Platz Von: Gumpendorfer Straße 103 Nach: Gumpendorfer Straße 117 Dauer …<br/>[14.07.2026 – 14.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
