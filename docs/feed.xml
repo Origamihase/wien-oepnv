@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 16 Jul 2026 12:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2026 13:01:16 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[6: Schadhafter PKW]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1b38daeb67687066dfabf731935b64e98b5ceb4456c9a885f1c280219c7a981d</guid>
+      <pubDate>Thu, 16 Jul 2026 12:45:00 +0200</pubDate>
+      <ext:first_seen>Thu, 16 Jul 2026 13:01:16 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Jul 2026 12:45:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 16 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Voraussichtliche Dauer: 13:15 Uhr. Grund: Schadhafter PKW im Haltestellenbereich Knöllgasse. [Am 16.07.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Voraussichtliche Dauer: 13:15 Uhr. Grund: Schadhafter PKW im Haltestellenbereich Knöllgasse.<br/>[Am 16.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Sperre Ausgang beim Keplerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 14 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 57A in Richtung Burgring (bzw. Pilgramgasse U) Haltestelle: Kurt-Pint-Platz Von: Gumpendorfer Straße 103 Nach: Gumpendorfer Straße 117 Dauer … [14.07.2026 – 14.07.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 57A in Richtung Burgring (bzw. Pilgramgasse U) Haltestelle: Kurt-Pint-Platz Von: Gumpendorfer Straße 103 Nach: Gumpendorfer Straße 117 Dauer …<br/>[14.07.2026 – 14.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Betrieb ab Lerchenfelder Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c11f5415f3aa1b87ebc238119c29ffbf50342eba9979dbcee482efd531592f89</guid>
-      <pubDate>Mon, 13 Jul 2026 04:00:14 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 00:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 00:00:23 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 16 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[14.07.2026 – 16.07.2026]</description>
-      <content:encoded><![CDATA[[14.07.2026 – 16.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

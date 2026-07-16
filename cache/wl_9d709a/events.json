@@ -1166,6 +1166,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Schadhafter PKW",
+    "description": "Linie 6: Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Voraussichtliche Dauer: 13:15 Uhr. Grund: Schadhafter PKW im Haltestellenbereich Knöllgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1b38daeb67687066dfabf731935b64e98b5ceb4456c9a885f1c280219c7a981d",
+    "pubDate": "2026-07-16T12:45:00+02:00",
+    "starts_at": "2026-07-16T12:45:00+02:00",
+    "ends_at": "2026-07-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-07-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Schadhafter PKW Betrieb ab Matzleinsdorfer Platz",
+    "description": "Schadhafter PKW\nBetrieb ab Matzleinsdorfer Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1e8e16e881e1a019fda9367f73eac825556056b457267d42b134b419a0128793",
+    "pubDate": "2026-07-16T12:58:24+02:00",
+    "starts_at": "2026-07-16T12:58:24+02:00",
+    "ends_at": "2026-07-16T13:57:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-07-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung Schadhafter PKW",
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3a69baddffd4ac0d3c8497fdd930b04be07220a5dd69105a3cb9c0922050532",
+    "pubDate": "2026-07-16T12:45:49+02:00",
+    "starts_at": "2026-07-16T12:51:08+02:00",
+    "ends_at": "2026-07-16T13:48:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-07-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
