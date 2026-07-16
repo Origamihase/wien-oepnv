@@ -254,6 +254,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Rasumofskygasse von 1 bis 2",
+    "description": "Die Haltestelle Löwengasse der Straßenbahn wird nach Löwengasse 47 bis 51 versetzt. Der Individualverkehr wird über das richtungsführende Gleis geführt. Derrechte Fahrstreifen auf der Weißgerberlände in Fahrtrichtung Rasumofskygasse wird gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. Die Haltestelle der Buslinie 4A wird aufgelassen. DerFußgängerverkehr kann aufrecht gehalten werden. \nBeginn: 20.07.2026 00:00 Uhr \nGeplant bis: 06.09.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 3",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "46d6da50ed74d45d35e1a57f021685dfbffaf46200394d607fa7a5a827fa41c9",
+    "pubDate": "2026-07-20T00:00:00+02:00",
+    "starts_at": "2026-07-20T00:00:00+02:00",
+    "ends_at": "2026-09-06T00:00:00+02:00",
+    "context": {
+      "district": "3",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.20581651,
+        "lon": 16.39566455
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Kirchengasse 1 bis 30",
     "description": "Im Kreuzungsbereich Lindengasse / Kirchengasse sowie in derKirchengasse auf Höhe ON 1 und ON 20-22 werden für die U-Bahn-StationSchächte gegraben. Die Zufahrt zuden verschiedenen Objekten wird jeweils stichartig als Sackgasse möglich sein. Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden. \nBeginn: 28.02.2021 00:00 Uhr \nGeplant bis: 31.12.2029 00:00 Uhr \nMaßnahme: U-Bahnbau \nBezirk: 7",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -458,6 +479,27 @@
       "coordinates": {
         "lat": 48.25022955,
         "lon": 16.39116327
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Wipplingerstraße 13",
+    "description": "Die Arbeiten erfolgen bei Tag bzw. für die Querung bei Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels 1A und 3A von 21:15 bis 04:50 Uhr. Im Baustellenbereich erfolgt eine Fahrspureinengung unter Freihaltung einer Restfahrbahnbreite von 3,5m. Der Gehsteig wird für den Fußgängerinnenverkehr im Baustellenbereich gesperrt und mittels Verkehrszeichen auf den gegenüberliegenden Gehsteig geleitet. Der Radverkehr wird mittels Warnposten am Baustellenbereich vorbeigeschleust. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert. \nBeginn: 20.07.2026 00:00 Uhr \nGeplant bis: 31.07.2026 00:00 Uhr \nMaßnahme: Zuleitungs- Schieber- Hydrantenarbeiten \nBezirk: 1",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "9a6f15508c9e30873ee88942122163470d6ce5f2c758450af357899b8a8f37ff",
+    "pubDate": "2026-07-20T00:00:00+02:00",
+    "starts_at": "2026-07-20T00:00:00+02:00",
+    "ends_at": "2026-07-31T00:00:00+02:00",
+    "context": {
+      "district": "1",
+      "measure": "Zuleitungs- Schieber- Hydrantenarbeiten"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.21221396,
+        "lon": 16.36985025
       }
     }
   },
