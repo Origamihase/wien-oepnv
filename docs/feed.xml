@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 17 Jul 2026 00:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2026 01:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N49: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">debec53179614475378b445e4aadfca4f963cb8b93ceb7e3eb1f6847c3d56a79</guid>
+      <pubDate>Fri, 17 Jul 2026 00:52:00 +0200</pubDate>
+      <ext:first_seen>Fri, 17 Jul 2026 01:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 17 Jul 2026 00:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 17 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug. [Am 17.07.2026]</description>
+      <content:encoded><![CDATA[Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.<br/>[Am 17.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Rasumofskygasse von 1 bis 2]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -82,17 +93,6 @@
       <pubDate>Mon, 13 Jul 2026 04:00:13 +0200</pubDate>
       <ext:first_seen>Tue, 14 Jul 2026 19:30:52 +0200</ext:first_seen>
       <ext:starts_at>Mon, 13 Jul 2026 04:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 17 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[13.07.2026 – 17.07.2026]</description>
-      <content:encoded><![CDATA[[13.07.2026 – 17.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f2d0dfafa26975184d2464bad5a4c07e86d59cdf808d5665236c90bfbe9391ad</guid>
-      <pubDate>Mon, 13 Jul 2026 04:50:25 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 18:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 10:19:15 +0200</ext:starts_at>
       <ext:ends_at>Fri, 17 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[13.07.2026 – 17.07.2026]</description>
       <content:encoded><![CDATA[[13.07.2026 – 17.07.2026]]]></content:encoded>
