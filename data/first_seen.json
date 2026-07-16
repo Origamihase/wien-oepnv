@@ -2761,15 +2761,6 @@
       "epoch": 3
     }
   },
-  "326066bd4681c0785c5a1209c139e7d53faad9485ca545bc4a14759ff89bddf0": {
-    "first_seen": "2026-05-24T09:30:51.924737+00:00",
-    "translations": {
-      "en": {
-        "summary": "After an service obstruction there are different intervals.",
-        "title": "12A: fire-brigade operation"
-      }
-    }
-  },
   "32809b2554d0b1e22afc0c7c6cb54cfe116db966e9f10fd0991a9127a067760f": {
     "first_seen": "2026-06-30T12:30:54.182517+00:00",
     "translations": {
@@ -8077,16 +8068,6 @@
       "epoch": 2
     }
   },
-  "8f0e5bba5a9ca2ce6d415e8a78c59f7d1360a2c498ddda1577f39e76c63657f1": {
-    "first_seen": "2026-07-02T19:31:03.949451+00:00",
-    "translations": {
-      "en": {
-        "summary": "The line 14A is diverted towards Reumannplatz U between Pilgramgasse U and Fendigasse via left Vienna line, Gaudenzdorfer G\u00fcrtel, Arbeitergasse.",
-        "title": "14A: fire-brigade operation"
-      },
-      "epoch": 3
-    }
-  },
   "8f35eb920ab94754e3a261d814815ffb0021afcb15471a5b75c8c01368712943": {
     "first_seen": "2026-06-05T14:01:09.489169+00:00",
     "translations": {
@@ -12517,6 +12498,15 @@
       "en": {
         "summary": "irregular intervals in both directions. Line 5A: irregular intervals in both directions.",
         "title": "12A/13A/14A2X/33A/5A/5B/65A/77A/80A/94A: traffic congestion0X"
+      },
+      "epoch": 3
+    }
+  },
+  "e496a76825964b95a60134f41fbe9a4a428e16d2c6d4e67b4a0f633e73c216ef": {
+    "first_seen": "2026-07-16T18:01:01.643797+00:00",
+    "translations": {
+      "en": {
+        "title": "14A: service obstruction because of fire-brigade operation"
       },
       "epoch": 3
     }
