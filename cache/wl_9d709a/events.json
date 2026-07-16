@@ -1226,6 +1226,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "7A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "35f1c1dae859117ecfd4a8a5bacbe13030aa8781faed62b42b7559892dc0a368",
+    "pubDate": "2026-07-16T07:42:47+02:00",
+    "starts_at": "2026-07-16T07:42:47+02:00",
+    "ends_at": "2026-07-16T08:42:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2026-07-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Fremdunfall Umleitung über Neilreichgasse",
+    "description": "Fremdunfall\nUmleitung über Neilreichgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7c425eb5e7c7094b1ecd8abf2835731c9cc3b39df3196017db647e3e5b56c1c5",
+    "pubDate": "2026-07-16T07:50:02+02:00",
+    "starts_at": "2026-07-16T07:50:02+02:00",
+    "ends_at": "2026-07-16T08:48:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2026-07-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Fremder Verkehrsunfall",
+    "description": "Die Linie 7A wird in Richtung Reumannplatz U zwischen Belgradplatz und Herzgasse über Troststraße, Neilreichgasse umgeleitet. Voraussichtliche Dauer: 08:45 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Inzersdorfer Straße / Bernhardtstalgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2b0eb63942e1f4021934a84d5cd0df84f51ded61fcb83e3bd269465214a9da2",
+    "pubDate": "2026-07-16T07:44:00+02:00",
+    "starts_at": "2026-07-16T07:44:00+02:00",
+    "ends_at": "2026-07-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2026-07-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Züge halten Heiligenstädter Straße 197",
     "description": "Züge halten\nHeiligenstädter Straße 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
