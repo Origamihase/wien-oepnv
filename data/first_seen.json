@@ -6380,6 +6380,12 @@
       "epoch": 3
     }
   },
+  "72ce5eea9231233e05ad7e35043a72288d38327a7f11feb4cdb1d0757199325a": {
+    "first_seen": "2026-07-17T15:00:57.203601+00:00",
+    "translations": {
+      "en": {}
+    }
+  },
   "72daecfae156d674f4b17f0865290882105ea9c8dc7f884762c80c1d60a7140d": {
     "first_seen": "2026-05-24T02:00:55.629662+00:00",
     "translations": {
@@ -9226,6 +9232,16 @@
       "epoch": 2
     }
   },
+  "9e18d835c1cf478c9b05bed13552e0554f2b0c8169f361685c8c11d4fdf7e5a8": {
+    "first_seen": "2026-07-17T15:00:57.203601+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "27: weather"
+      },
+      "epoch": 3
+    }
+  },
   "9e1da55a84eb2a314bb8ea95e8d7d92a26df6c2fdc0147bedf979d9e42250eb8": {
     "first_seen": "2026-05-24T02:30:41.994922+00:00",
     "translations": {
@@ -10772,6 +10788,16 @@
       "epoch": 3
     }
   },
+  "be856b967d1c26c81f954a4357a622b98100d2fb3199d965934f9173ddf0ddae": {
+    "first_seen": "2026-07-17T15:00:57.203601+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "25: weather"
+      },
+      "epoch": 3
+    }
+  },
   "be8d2380781f3f47e357b9d6eb7d4a923aff0407f16a0b34798f79852945fd54": {
     "first_seen": "2026-05-24T21:00:58.083464+00:00",
     "translations": {
@@ -11048,6 +11074,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "29A: service obstruction because of police operation"
+      },
+      "epoch": 3
+    }
+  },
+  "c483aee9f4dc5936b898713d8563ba8b16dd97e07ba74850ebc504e2aaf5fb40": {
+    "first_seen": "2026-07-17T15:00:57.203601+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction in both directions. expected duration: 17:30 watch. Reason: Weather in the Ketzergasse range.",
+        "title": "61B: weather"
       },
       "epoch": 3
     }
@@ -12944,6 +12980,16 @@
     "translations": {
       "en": {
         "title": "11: service obstruction malicious train"
+      },
+      "epoch": 3
+    }
+  },
+  "e8378ecdcd37db66d7e6ba044306e880539b837922458e4b2105f59881c288df": {
+    "first_seen": "2026-07-17T15:00:57.203601+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "26: weather"
       },
       "epoch": 3
     }
