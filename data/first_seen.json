@@ -4341,6 +4341,16 @@
       "epoch": 1
     }
   },
+  "4db9833022d07eada723af55382fd06fec7a7c25c7e223c54d4ca4f151223cf1": {
+    "first_seen": "2026-07-17T17:30:46.931151+00:00",
+    "translations": {
+      "en": {
+        "summary": "The line U6 currently runs only between Siebenhirten and Tscherttegasse and between Floridsdorf and L\u00e4ngenfeldgasse.",
+        "title": "U6: Corrupted overhead line"
+      },
+      "epoch": 3
+    }
+  },
   "4df77afc9ee08367e60bfb0e38babd434d15562b0d11ad1b72ea53a06a860a84": {
     "first_seen": "2026-06-11T14:01:06.671772+00:00",
     "translations": {
@@ -15382,6 +15392,16 @@
       "en": {
         "summary": "Due to construction works trains between St.P\u00f6lten Hbf and Wien H\u00fctteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 trains 1901 and 1947.",
         "title": "Wien H\u00fctteldorf \u2194 St. P\u00f6lten Hauptbahnhof"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&896922": {
+    "first_seen": "2026-07-17T17:30:46.931151+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a rescue operation, between Wien S\u00fc\u00dfenbrunn Bahnhst and Wien Leopoldau Bahnhst (U) and Wien S\u00fc\u00dfenbrunn Bahnhst and Wien Stadlau Bahnhst (U), currently no \u2026",
+        "title": "Wien S\u00fc\u00dfenbrunn \u2194 Wien Stadlau"
       },
       "epoch": 3
     }
