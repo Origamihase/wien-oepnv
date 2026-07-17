@@ -836,20 +836,8 @@
     "guid": "7d539e4838557c10a32de76e18d22141166b34ef51bcd0b9ef5adaefadb620ec",
     "pubDate": "2026-07-17T12:29:00+02:00",
     "starts_at": "2026-07-17T12:29:00+02:00",
-    "ends_at": "2026-07-17T23:55:00+02:00",
+    "ends_at": "2026-07-17T14:13:00+02:00",
     "_identity": "wl|störung|L=26A|D=2026-07-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Verkehrsunfall",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
-    "pubDate": "2026-07-17T12:13:00+02:00",
-    "starts_at": "2026-07-17T12:13:00+02:00",
-    "ends_at": "2026-07-17T13:47:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-17"
   },
   {
     "source": "Wiener Linien",
@@ -1082,18 +1070,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
-    "pubDate": "2026-07-17T12:52:00+02:00",
-    "starts_at": "2026-07-17T12:55:20+02:00",
-    "ends_at": "2026-07-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=43|D=2026-07-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "44A: Busse halten Alszeile gegenüber 93",
     "description": "Bauarbeiten\nBusse halten Alszeile gegenüber 93",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1286,13 +1262,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "74A: Rettungseinsatz",
+    "description": "Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "87cde0ff8f531daad212e230c8873600d36c9a10b0da2554e6fac3c5a24c60e6",
+    "pubDate": "2026-07-17T13:46:00+02:00",
+    "starts_at": "2026-07-17T13:46:00+02:00",
+    "ends_at": "2026-07-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "7A: Verkehrsüberlastung",
     "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
     "pubDate": "2026-07-17T13:11:00+02:00",
     "starts_at": "2026-07-17T13:11:00+02:00",
-    "ends_at": "2026-07-17T23:55:00+02:00",
+    "ends_at": "2026-07-17T14:00:00+02:00",
     "_identity": "wl|störung|L=7A|D=2026-07-17"
   },
   {
