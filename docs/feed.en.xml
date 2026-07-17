@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 17 Jul 2026 04:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2026 05:01:09 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Rekawinkel]]></title>
@@ -97,6 +97,17 @@
       <content:encoded><![CDATA[[13.07.2026 – 17.07.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[71: No operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f2d0dfafa26975184d2464bad5a4c07e86d59cdf808d5665236c90bfbe9391ad</guid>
+      <pubDate>Mon, 13 Jul 2026 04:50:25 +0200</pubDate>
+      <ext:first_seen>Tue, 14 Jul 2026 18:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 13 Jul 2026 10:19:15 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 17 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[13.07.2026 – 17.07.2026]</description>
+      <content:encoded><![CDATA[[13.07.2026 – 17.07.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[77A: Klaschkaweg]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">48b738c867a057226c65b8f2ee8e887b248583e48203f56259c3fc3cf95e849b</guid>
@@ -106,17 +117,6 @@
       <ext:ends_at>Wed, 14 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of line 77A towards Lusthaus Stop: Klaschkaweg From: Stadionallee to Klaschkaweg To: about 40 Meter in direction of travel Duration: 15. July … [14.07.2026 – 14.07.2027]</description>
       <content:encoded><![CDATA[Stop change of line 77A towards Lusthaus Stop: Klaschkaweg From: Stadionallee to Klaschkaweg To: about 40 Meter in direction of travel Duration: 15. July …<br/>[14.07.2026 – 14.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: folding ramp lock on 18.07.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f086bd9decbb95a3ebca310aba5dd1ddd0954cff02cffba4b25e83d994309699</guid>
-      <pubDate>Tue, 14 Jul 2026 08:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 08:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 14 Jul 2026 08:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 18 Jul 2026 23:00:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended. [14.07.2026 – 18.07.2026]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended.<br/>[14.07.2026 – 18.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
