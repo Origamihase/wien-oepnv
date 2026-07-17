@@ -74,18 +74,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "15A: Gadnergasse # Swatoschgasse",
-    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten wird die Linie 15A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Dienstag, 14. Juli 2026, etwa 06:30 Uhr f&uuml;r voraussichtlich eine Woche.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br />Linie 15A in Richtung Enkplatz U, Grillgasse:<br />Umleitung ab Gadnergasse # Swatoschgasse &uuml;ber Swatoschgasse &ndash; Leberstra&szlig;e &ndash; Grillgasse zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:<br /></span>Grillgasse S (Gadnergasse gegen&uuml;ber &Ouml;BB-Bahnhof)</p> <p><strong>Ersatzlos aufgelassen</strong></p> <p>&nbsp;</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "274e7db75a8ffa8de2c43e5f402db89d7ac12cde2bd32f7bb3783367c6813d77",
-    "pubDate": "2026-07-09T00:00:00+02:00",
-    "starts_at": "2026-07-09T00:00:00+02:00",
-    "ends_at": "2027-07-09T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=15A|D=2026-07-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "16A/62: Schloss Hetzendorf",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 62 und 16A in Richtung Oper, Karlsplatz U bzw. Alaudagasse U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Schloss Hetzendorf</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hetzendorfer Stra&szlig;e 79</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hetzendorfer Stra&szlig;e 81</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 11. Mai 2026, etwa 07:00 Uhr bis voraussichtlich Ende August 2026</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bauarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1162,6 +1150,30 @@
     "starts_at": "2026-07-17T04:45:28+02:00",
     "ends_at": "2026-07-18T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "67A: Busse halten in der Busschleife",
+    "description": "Bauarbeiten Busse halten in der Busschleife",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4906b1c9b4f947e4770ebf6cb4e78294a44fb92092bf9290b0575ed905b9b1cb",
+    "pubDate": "2026-07-17T10:10:30+02:00",
+    "starts_at": "2026-07-17T10:10:30+02:00",
+    "ends_at": "2026-07-17T23:59:59+02:00",
+    "_identity": "wl|störung|L=67A|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "67B: Busse halten in der Busschleife",
+    "description": "Bauarbeiten Busse halten in der Busschleife",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "984ee6245281e64c5e572b344af9c9d3d1ed4f2e839e656c6d24753b37897bc1",
+    "pubDate": "2026-07-17T10:09:32+02:00",
+    "starts_at": "2026-07-17T10:09:32+02:00",
+    "ends_at": "2026-07-17T23:59:59+02:00",
+    "_identity": "wl|störung|L=67B|D=2026-07-17"
   },
   {
     "source": "Wiener Linien",
