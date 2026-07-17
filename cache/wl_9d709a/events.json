@@ -710,6 +710,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Feuerwehreinsatz",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3e26483301d1dfa000646b53210fe6284c656448fd1b66db1b51304db1692434",
+    "pubDate": "2026-07-17T16:10:00+02:00",
+    "starts_at": "2026-07-17T16:10:00+02:00",
+    "ends_at": "2026-07-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Feuerwehreinsatz Betrieb ab Dänenstraße",
+    "description": "Feuerwehreinsatz\nBetrieb ab Dänenstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "72ce5eea9231233e05ad7e35043a72288d38327a7f11feb4cdb1d0757199325a",
+    "pubDate": "2026-07-17T16:03:40+02:00",
+    "starts_at": "2026-07-17T16:03:40+02:00",
+    "ends_at": "2026-07-17T17:02:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11A: Feuerwehreinsatz",
+    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "01a41f05a53e143eca6b02bb90cab71315cbb833b85bf96f9ff238f958072872",
+    "pubDate": "2026-07-17T16:14:00+02:00",
+    "starts_at": "2026-07-17T16:14:00+02:00",
+    "ends_at": "2026-07-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -730,6 +766,18 @@
     "starts_at": "2026-07-15T15:58:52+02:00",
     "ends_at": "2026-07-17T23:59:59+02:00",
     "_identity": "wl|störung|L=12|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten Gumpendorfer Straße nach Kopernikusgasse",
+    "description": "Bauarbeiten\nBusse halten Gumpendorfer Straße nach Kopernikusgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "998e444863e2a9015d58a025d90dc80754ebd6fb07c9603aac79f74736112e72",
+    "pubDate": "2026-07-17T16:16:04+02:00",
+    "starts_at": "2026-07-17T16:16:04+02:00",
+    "ends_at": "2026-07-17T23:59:59+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-07-17"
   },
   {
     "source": "Wiener Linien",
@@ -818,6 +866,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25/26/27: Witterung",
+    "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Kagran U. Linie 26: Kein Betrieb zwischen Josef-Baumann-Gasse und Floridsdorf S U. Weiterfahrt ab Josef-Baumann-Gasse bis Kagran U. Linie 27: Kein Betrieb zwischen Josef-Baumann-Gasse und Floridsdorf. Die Züge fahren nur zwischen Aspern Nord und Kagran, bzw. Strebersdorf und Floridsdorf. Weichen Sie ersatzweise auf die Linien U1, U2, 27A und 29A aus. Voraussichtliche Dauer: 17:15 Uhr. Grund: Witterung im Haltestellenbereich Fultonstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3943fbc5e4a20bb89cf0ec3ee1ec7e41b6c218758a2c76b43ae9053d3eb75027",
+    "pubDate": "2026-07-17T16:23:00+02:00",
+    "starts_at": "2026-07-17T16:23:00+02:00",
+    "ends_at": "2026-07-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=25,26,27|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -850,6 +910,18 @@
     "starts_at": "2026-07-13T00:00:23+02:00",
     "ends_at": "2026-07-17T23:59:59+02:00",
     "_identity": "wl|störung|L=31|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Witterung Züge halten Linie 31 Richtugn Stammersdorf",
+    "description": "Witterung Züge halten Linie 31 Richtugn Stammersdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3e3a12ce6309bf1d7ee2de0bdd1a721268491d783c5cfa35829b46af559c830",
+    "pubDate": "2026-07-17T16:29:29+02:00",
+    "starts_at": "2026-07-17T16:29:29+02:00",
+    "ends_at": "2026-07-17T17:28:00+02:00",
+    "_identity": "wl|störung|L=31|D=2026-07-17"
   },
   {
     "source": "Wiener Linien",
@@ -919,8 +991,32 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7ae28e2970cc406851129d8c361f555ac755205687aafba24c240405afbdd636",
     "pubDate": "2026-07-17T15:54:54+02:00",
-    "starts_at": "2026-07-17T15:56:59+02:00",
+    "starts_at": "2026-07-17T15:54:54+02:00",
     "ends_at": "2026-07-17T16:56:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e384fa954573e30d2a5a1b2bc5e8b6fce30cf8a13d0b9939c3bbb3085d44330c",
+    "pubDate": "2026-07-17T15:56:59+02:00",
+    "starts_at": "2026-07-17T16:09:25+02:00",
+    "ends_at": "2026-07-17T17:08:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Feuerwehreinsatz Betrieb ab Nußdorfer Straße",
+    "description": "Feuerwehreinsatz\nBetrieb ab Nußdorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eb67277b163974652821e176c9f15f841943ea331a85e001c34966229404df7f",
+    "pubDate": "2026-07-17T16:11:50+02:00",
+    "starts_at": "2026-07-17T16:12:02+02:00",
+    "ends_at": "2026-07-17T17:10:00+02:00",
     "_identity": "wl|störung|L=37|D=2026-07-17"
   },
   {
@@ -986,37 +1082,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Schadhafter Zug Umleitung über Kreuzgasse",
-    "description": "Schadhafter Zug\nUmleitung über Kreuzgasse",
+    "title": "38: Feuerwehreinsatz Betrieb ab Nußdorfer Straße",
+    "description": "Feuerwehreinsatz\nBetrieb ab Nußdorfer Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a9a97a4c265b4aab0a1a745216bc44c81ca10ed0e9e75f802aa0251522190a18",
-    "pubDate": "2026-07-17T15:41:51+02:00",
-    "starts_at": "2026-07-17T15:41:51+02:00",
-    "ends_at": "2026-07-17T16:41:00+02:00",
-    "_identity": "wl|störung|L=38|D=2026-07-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Schadhaftes Fahrzeug",
-    "description": "Die Linie 38 wird in Richtung Grinzing zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern AKH U umgeleitet. Die Störung dauert voraussichtlich bis 16:10 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Kutschkergasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c16184b68509899faf02a65c374d8c059400404774e2da3970444c5b92e08600",
-    "pubDate": "2026-07-17T15:35:00+02:00",
-    "starts_at": "2026-07-17T15:35:00+02:00",
-    "ends_at": "2026-07-17T15:55:00+02:00",
-    "_identity": "wl|störung|L=38|D=2026-07-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Schadhafter Zug Betrieb ab Währinger Gürtel",
-    "description": "Schadhafter Zug\nBetrieb ab Währinger Gürtel",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fb3e0d31e7c7c49cadc8946bf2e112e969581f522eabb105ead6b45d697e32c8",
+    "guid": "bfe7a9d91f8ea48881bee10ee44e1afb3da17a2c5f102ad66fa20eb0971497b8",
     "pubDate": "2026-07-17T15:36:03+02:00",
-    "starts_at": "2026-07-17T15:41:22+02:00",
-    "ends_at": "2026-07-17T16:40:00+02:00",
+    "starts_at": "2026-07-17T16:07:39+02:00",
+    "ends_at": "2026-07-17T17:06:00+02:00",
     "_identity": "wl|störung|L=38|D=2026-07-17"
   },
   {
@@ -1454,6 +1526,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U6: Schadhaftes Fahrzeug",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
+    "pubDate": "2026-07-17T16:01:00+02:00",
+    "starts_at": "2026-07-17T16:01:00+02:00",
+    "ends_at": "2026-07-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Busse halten Frauenstiftgasse 7",
     "description": "Bauarbeiten\nBusse halten\nFrauenstiftgasse 7",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1486,5 +1570,17 @@
     "starts_at": "2026-07-13T04:00:14+02:00",
     "ends_at": "2026-07-17T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-07-13|TK=züge halten bei währinger gürtel gegenüber 164"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Witterung Betrieb ab Florisdorf",
+    "description": "Witterung Betrieb ab Florisdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d8101987fa013fbb1b6907340c471a2b2aae2a3569ac15a1da66f11cb349b2d0",
+    "pubDate": "2026-07-17T16:28:31+02:00",
+    "starts_at": "2026-07-17T16:28:31+02:00",
+    "ends_at": "2026-07-17T17:27:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-07-17|TK=witterung betrieb ab florisdorf"
   }
 ]
