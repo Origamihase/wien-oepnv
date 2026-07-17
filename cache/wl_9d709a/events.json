@@ -1070,14 +1070,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Verspätungen",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "46: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c488466d4e8c651bfdcfdf462d4fb9251bbd52636edf4eb2c38b9c6842c4ecda",
-    "pubDate": "2026-07-17T07:03:00+02:00",
-    "starts_at": "2026-07-17T07:03:00+02:00",
+    "guid": "ca3f320972243b037074321441d828580185f68cae3de0b8d41ea5abc0bd3d31",
+    "pubDate": "2026-07-17T07:50:14+02:00",
+    "starts_at": "2026-07-17T08:00:22+02:00",
+    "ends_at": "2026-07-17T09:00:00+02:00",
+    "_identity": "wl|störung|L=46|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Fremder Verkehrsunfall",
+    "description": "Linie 46: Fahrtbehinderung in Richtung Joachimsthalerplatz. Voraussichtliche Dauer: 08:15 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Schuhmeierplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eed4ea629d44bb9f67a32b24760e7fc7e9fbb8fab9efd3a43457846fae26b28d",
+    "pubDate": "2026-07-17T07:49:00+02:00",
+    "starts_at": "2026-07-17T07:49:00+02:00",
     "ends_at": "2026-07-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=4A|D=2026-07-17"
+    "_identity": "wl|störung|L=46|D=2026-07-17"
   },
   {
     "source": "Wiener Linien",
