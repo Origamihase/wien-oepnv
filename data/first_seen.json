@@ -107,6 +107,16 @@
       "epoch": 2
     }
   },
+  "0190a938ce684aa7202779ec4700f2b788392366494db0e297efb2bb7adef588": {
+    "first_seen": "2026-07-17T16:00:53.074974+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: weather.",
+        "title": "88B: Weather"
+      },
+      "epoch": 3
+    }
+  },
   "01a41f05a53e143eca6b02bb90cab71315cbb833b85bf96f9ff238f958072872": {
     "first_seen": "2026-07-17T14:30:49.479722+00:00",
     "translations": {
@@ -5072,6 +5082,16 @@
       "epoch": 2
     }
   },
+  "5a70eb8412bd93bf35a57a48d7b103bf262e365f9f644a8b05f2bb8119d5de01": {
+    "first_seen": "2026-07-17T16:00:53.074974+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "37: fire-brigade operation"
+      },
+      "epoch": 3
+    }
+  },
   "5a83a68f71eafce5842edcd92ffa48382941d54f7c9c190b08626b372c1ac89e": {
     "first_seen": "2026-05-25T10:30:56.582144+00:00",
     "translations": {
@@ -7608,6 +7628,16 @@
       "en": {
         "summary": "Currently, the N75 line has different intervals in both directions. Reason: contamination.",
         "title": "N75: Impurity"
+      },
+      "epoch": 3
+    }
+  },
+  "8607e15a3df4b421f54df7b16517837ef9727c528510f97f2e3c3c85bb7dcc7e": {
+    "first_seen": "2026-07-17T16:00:53.074974+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "40A: fire-brigade operation"
       },
       "epoch": 3
     }
