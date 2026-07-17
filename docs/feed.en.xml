@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 17 Jul 2026 17:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2026 17:31:14 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[61B: weather]]></title>
@@ -54,17 +54,6 @@
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 17.07.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10A: Feuerwehreinsatz Betrieb ab Dänenstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">72ce5eea9231233e05ad7e35043a72288d38327a7f11feb4cdb1d0757199325a</guid>
-      <pubDate>Fri, 17 Jul 2026 16:03:40 +0200</pubDate>
-      <ext:first_seen>Fri, 17 Jul 2026 17:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 17 Jul 2026 16:03:40 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 17 Jul 2026 17:02:00 +0200</ext:ends_at>
-      <description>[Am 17.07.2026]</description>
-      <content:encoded><![CDATA[[Am 17.07.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[11A: fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">01a41f05a53e143eca6b02bb90cab71315cbb833b85bf96f9ff238f958072872</guid>
@@ -74,17 +63,6 @@
       <ext:ends_at>Fri, 17 Jul 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 17.07.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 17.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Weather Trains keep line 31 direction Stammersdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b3e3a12ce6309bf1d7ee2de0bdd1a721268491d783c5cfa35829b46af559c830</guid>
-      <pubDate>Fri, 17 Jul 2026 16:29:29 +0200</pubDate>
-      <ext:first_seen>Fri, 17 Jul 2026 16:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 17 Jul 2026 16:29:29 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 17 Jul 2026 17:28:00 +0200</ext:ends_at>
-      <description>[On 17.07.2026]</description>
-      <content:encoded><![CDATA[[On 17.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Buses stop at Gumpendorfer Straße to Kopernikusgasse]]></title>
@@ -117,6 +95,28 @@
       <ext:starts_at>Fri, 17 Jul 2026 11:03:06 +0200</ext:starts_at>
       <description>Due to construction works trains between St.Pölten Hbf and Wien Hütteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 … [Since 17.07.2026]</description>
       <content:encoded><![CDATA[Due to construction works trains between St.Pölten Hbf and Wien Hütteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 …<br/>[Since 17.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[67A: Buses stop in the bus loop]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4906b1c9b4f947e4770ebf6cb4e78294a44fb92092bf9290b0575ed905b9b1cb</guid>
+      <pubDate>Fri, 17 Jul 2026 10:10:30 +0200</pubDate>
+      <ext:first_seen>Fri, 17 Jul 2026 10:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 17 Jul 2026 10:10:30 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 17 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 17.07.2026]</description>
+      <content:encoded><![CDATA[[On 17.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[67B: Buses stop in the bus loop]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">984ee6245281e64c5e572b344af9c9d3d1ed4f2e839e656c6d24753b37897bc1</guid>
+      <pubDate>Fri, 17 Jul 2026 10:09:32 +0200</pubDate>
+      <ext:first_seen>Fri, 17 Jul 2026 10:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 17 Jul 2026 10:09:32 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 17 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 17.07.2026]</description>
+      <content:encoded><![CDATA[[On 17.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

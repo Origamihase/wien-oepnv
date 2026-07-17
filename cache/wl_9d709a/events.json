@@ -710,20 +710,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Feuerwehreinsatz Betrieb ab Dänenstraße",
-    "description": "Feuerwehreinsatz\nBetrieb ab Dänenstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "72ce5eea9231233e05ad7e35043a72288d38327a7f11feb4cdb1d0757199325a",
-    "pubDate": "2026-07-17T16:03:40+02:00",
-    "starts_at": "2026-07-17T16:03:40+02:00",
-    "ends_at": "2026-07-17T17:02:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-07-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Feuerwehreinsatz",
-    "description": "Die Linie 11A wird in beiden Richtungen zwischen Muthgasse und Friedrich-Engels-Platz über Adalbert-Stifter-Straße umgeleitet. Voraussichtliche Dauer: 18:00 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Forsthausgasse.",
+    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "01a41f05a53e143eca6b02bb90cab71315cbb833b85bf96f9ff238f958072872",
     "pubDate": "2026-07-17T16:50:00+02:00",
@@ -866,42 +854,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Fahrtbehinderung wegen Witterung",
-    "description": "Fahrtbehinderung\nwegen Witterung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "00248291f4baa3ac920f670e9547873552e238a837d62b1a1a67aa17fb0559f0",
-    "pubDate": "2026-07-17T16:25:37+02:00",
-    "starts_at": "2026-07-17T16:25:52+02:00",
-    "ends_at": "2026-07-17T17:24:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-07-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Witterung Betrieb ab Kragran",
-    "description": "Witterung\nBetrieb ab Kragran",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6aa63f5c3ac10c3089c82f6fc62925da10183655b441877aeec9b95b677bcf4c",
-    "pubDate": "2026-07-17T16:26:50+02:00",
-    "starts_at": "2026-07-17T16:27:04+02:00",
-    "ends_at": "2026-07-17T17:26:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-07-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Witterung Züge halte bei Linie 25",
-    "description": "Witterung Züge halte bei Linie 25",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b33037cc3751248006eaba91063e30a2da51bf334c6bcce1915e953b8dfe41ce",
-    "pubDate": "2026-07-17T16:30:56+02:00",
-    "starts_at": "2026-07-17T16:30:56+02:00",
-    "ends_at": "2026-07-17T17:30:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-07-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "25: Witterung",
     "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -950,6 +902,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2A: Verkehrsunfall",
+    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7153bd0c4f86d5daa0b9fa484bbab50662a40fb9a3f7f706745f8272dc4ce8ec",
+    "pubDate": "2026-07-17T17:11:00+02:00",
+    "starts_at": "2026-07-17T17:11:00+02:00",
+    "ends_at": "2026-07-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=2A|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "31: Gleisbauarbeiten",
     "description": "Linie 31: Betrieb nur zwischen Schottenring U und Friedrich-Engels-Platz. Weichen Sie ersatzweise auf die Linien U6, 30, 5A und 11A. aus. Voraussichtliche Dauer: Ende August. Grund: Gleisbauarbeiten im Bereich Floridsdorfer Brücke.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -970,18 +934,6 @@
     "starts_at": "2026-07-13T00:00:23+02:00",
     "ends_at": "2026-07-17T23:59:59+02:00",
     "_identity": "wl|störung|L=31|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Witterung Züge halten Linie 31 Richtugn Stammersdorf",
-    "description": "Witterung Züge halten Linie 31 Richtugn Stammersdorf",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b3e3a12ce6309bf1d7ee2de0bdd1a721268491d783c5cfa35829b46af559c830",
-    "pubDate": "2026-07-17T16:29:29+02:00",
-    "starts_at": "2026-07-17T16:29:29+02:00",
-    "ends_at": "2026-07-17T17:28:00+02:00",
-    "_identity": "wl|störung|L=31|D=2026-07-17"
   },
   {
     "source": "Wiener Linien",
@@ -1238,6 +1190,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "52: Verspätungen",
+    "description": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "347bf9ad635bed065df985f7e527768d84656a8f32637791368fa2d47a92883c",
+    "pubDate": "2026-07-17T17:22:00+02:00",
+    "starts_at": "2026-07-17T17:22:00+02:00",
+    "ends_at": "2026-07-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-07-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Linie 57A: Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse. In Richtung Ruolfsheim, Anschützgasse Betrieb ab Hirschengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1323,7 +1287,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "61B: Witterung",
-    "description": "Linie 61B: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 17:30 Uhr. Grund: Witterung im Bereich Ketzergasse.",
+    "description": "Linie 61B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c483aee9f4dc5936b898713d8563ba8b16dd97e07ba74850ebc504e2aaf5fb40",
     "pubDate": "2026-07-17T16:30:00+02:00",
@@ -1490,18 +1454,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2026-07-17T15:46:00+02:00",
-    "starts_at": "2026-07-17T15:46:00+02:00",
-    "ends_at": "2026-07-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-07-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Bauarbeiten",
     "description": "Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. Grund: Bauarbeiten im Bereich zwischen Westbahnhof U und Hütteldorfer Straße U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1526,12 +1478,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Schadhaftes Fahrzeug",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
-    "pubDate": "2026-07-17T16:01:00+02:00",
-    "starts_at": "2026-07-17T16:01:00+02:00",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-07-17T17:18:00+02:00",
+    "starts_at": "2026-07-17T17:18:00+02:00",
     "ends_at": "2026-07-17T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-07-17"
   },
@@ -1570,29 +1522,5 @@
     "starts_at": "2026-07-13T04:00:14+02:00",
     "ends_at": "2026-07-17T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-07-13|TK=züge halten bei währinger gürtel gegenüber 164"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Witterung Betrieb ab Florisdorf",
-    "description": "Witterung Betrieb ab Florisdorf",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d8101987fa013fbb1b6907340c471a2b2aae2a3569ac15a1da66f11cb349b2d0",
-    "pubDate": "2026-07-17T16:28:31+02:00",
-    "starts_at": "2026-07-17T16:28:31+02:00",
-    "ends_at": "2026-07-17T17:27:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-07-17|TK=witterung betrieb ab florisdorf"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Witterung Betrieb ab Josef- Baumann- Gasse",
-    "description": "Witterung\nBetrieb ab Josef- Baumann- Gasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4947d99c9bf78a91f1dd115c9b8ae212c95a473684f4e593420fc1032d756917",
-    "pubDate": "2026-07-17T16:30:27+02:00",
-    "starts_at": "2026-07-17T16:30:27+02:00",
-    "ends_at": "2026-07-17T17:29:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-07-17|TK=witterung betrieb ab josef baumann gasse"
   }
 ]
