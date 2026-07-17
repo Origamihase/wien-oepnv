@@ -1,32 +1,16 @@
 {
-  "Meidling|CJX9|2026-07-17T20:23:00+02:00": {
-    "cancelled": true,
+  "Meidling|CJX9|2026-07-17T20:53:00+02:00": {
+    "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-07-17T20:00:49.917772+02:00",
+    "last_seen_at": "2026-07-17T20:30:45.810214+02:00",
     "latest_delay_minutes": 0.0,
     "name": "CJX9",
-    "scheduled": "2026-07-17T20:23:00+02:00"
-  },
-  "Meidling|S2|2026-07-17T20:02:00+02:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-07-17T20:00:49.917772+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-07-17T20:02:00+02:00"
-  },
-  "Meidling|S2|2026-07-17T20:12:00+02:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-07-17T20:00:49.917772+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-07-17T20:12:00+02:00"
+    "scheduled": "2026-07-17T20:53:00+02:00"
   },
   "Meidling|S2|2026-07-17T20:32:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-07-17T20:00:49.917772+02:00",
+    "last_seen_at": "2026-07-17T20:30:45.810214+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-07-17T20:32:00+02:00"
@@ -34,41 +18,57 @@
   "Meidling|S2|2026-07-17T20:42:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-07-17T20:00:49.917772+02:00",
+    "last_seen_at": "2026-07-17T20:30:45.810214+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-07-17T20:42:00+02:00"
   },
-  "Praterstern|CJX9|2026-07-17T20:03:00+02:00": {
+  "Meidling|S2|2026-07-17T21:02:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-07-17T20:30:45.810214+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-07-17T21:02:00+02:00"
+  },
+  "Meidling|S2|2026-07-17T21:12:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-07-17T20:30:45.810214+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-07-17T21:12:00+02:00"
+  },
+  "Praterstern|CJX9|2026-07-17T21:03:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-07-17T20:00:49.917772+02:00",
-    "latest_delay_minutes": 4.0,
+    "last_seen_at": "2026-07-17T20:30:45.810214+02:00",
+    "latest_delay_minutes": 0.0,
     "name": "CJX9",
-    "scheduled": "2026-07-17T20:03:00+02:00"
-  },
-  "Praterstern|S2|2026-07-17T20:15:00+02:00": {
-    "cancelled": false,
-    "direction": "Praterstern",
-    "last_seen_at": "2026-07-17T20:00:49.917772+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-07-17T20:15:00+02:00"
-  },
-  "Praterstern|S2|2026-07-17T20:27:00+02:00": {
-    "cancelled": false,
-    "direction": "Praterstern",
-    "last_seen_at": "2026-07-17T20:00:49.917772+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-07-17T20:27:00+02:00"
+    "scheduled": "2026-07-17T21:03:00+02:00"
   },
   "Praterstern|S2|2026-07-17T20:45:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-07-17T20:00:49.917772+02:00",
+    "last_seen_at": "2026-07-17T20:30:45.810214+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-07-17T20:45:00+02:00"
+  },
+  "Praterstern|S2|2026-07-17T20:57:00+02:00": {
+    "cancelled": false,
+    "direction": "Praterstern",
+    "last_seen_at": "2026-07-17T20:30:45.810214+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-07-17T20:57:00+02:00"
+  },
+  "Praterstern|S2|2026-07-17T21:15:00+02:00": {
+    "cancelled": false,
+    "direction": "Praterstern",
+    "last_seen_at": "2026-07-17T20:30:45.810214+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-07-17T21:15:00+02:00"
   }
 }
