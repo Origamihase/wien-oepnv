@@ -1334,14 +1334,62 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N41: Busse halten Liechtensteinstraße 19",
-    "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 19",
+    "title": "N43: Busse halten Dornbacher Straße 85",
+    "description": "Gleisbauarbeiten\nBusse halten Dornbacher Straße 85",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "62540e3a511839981230453380fb7c7af2b4d40fab19503d61f8814d7f8588da",
-    "pubDate": "2026-07-17T01:00:15+02:00",
-    "starts_at": "2026-07-17T01:00:15+02:00",
-    "ends_at": "2026-07-18T00:30:00+02:00",
-    "_identity": "wl|störung|L=N41|D=2026-07-17"
+    "guid": "2d95726ed28fcc964d6860a108a88378e18a16cb625531bc8488223f50b958d7",
+    "pubDate": "2026-07-18T00:30:28+02:00",
+    "starts_at": "2026-07-18T00:30:28+02:00",
+    "ends_at": "2026-07-18T04:50:00+02:00",
+    "_identity": "wl|störung|L=N43|D=2026-07-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N43: Busse halten Alszeile 93",
+    "description": "Gleisbauarbeiten\nBusse halten Alszeile 93",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7c175da71f85aad7ffe071ccf58c215f5c088dd9c9d73d351933daae4d3fecb0",
+    "pubDate": "2026-07-18T00:30:28+02:00",
+    "starts_at": "2026-07-18T00:30:28+02:00",
+    "ends_at": "2026-07-18T04:50:00+02:00",
+    "_identity": "wl|störung|L=N43|D=2026-07-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N46: Busse halten bei Linie 48A in Neustiftgasse",
+    "description": "Gleisbauarbeiten\nBusse halten bei Linie 48A in Neustiftgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1bc89bc576e114343fbe409de06c7658ab641c9714cb025001dae07c25e9ae89",
+    "pubDate": "2026-07-18T00:30:28+02:00",
+    "starts_at": "2026-07-18T00:30:28+02:00",
+    "ends_at": "2026-07-18T05:00:00+02:00",
+    "_identity": "wl|störung|L=N46|D=2026-07-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N46: Busse halten bei Linie 48A in Burggasse",
+    "description": "Gleisbauarbeiten\nBusse halten bei Linie 48A in Burggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a751a157bea2c61bda9406b779159246c8d4f92aa8a9f6765523f38cb2bce878",
+    "pubDate": "2026-07-18T00:30:28+02:00",
+    "starts_at": "2026-07-18T00:30:28+02:00",
+    "ends_at": "2026-07-18T05:00:00+02:00",
+    "_identity": "wl|störung|L=N46|D=2026-07-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N46: Busse halten bei Thaliastraße 3",
+    "description": "Gleisbauarbeiten\nBusse halten bei Thaliastraße 3",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eec0551f8fdb99ef47aaa187b0887582c7a09c823187b771a69a8a9928886a86",
+    "pubDate": "2026-07-18T00:30:28+02:00",
+    "starts_at": "2026-07-18T00:30:28+02:00",
+    "ends_at": "2026-07-18T05:00:00+02:00",
+    "_identity": "wl|störung|L=N46|D=2026-07-18"
   },
   {
     "source": "Wiener Linien",
@@ -1371,12 +1419,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U6: Beschädigte Oberleitung",
-    "description": "Die Linie U6 fährt derzeit nur zwischen Siebenhirten und Bahnhof Meidling beziehungsweise zwischen Längenfeldgasse und Floridsdorf. Weichen Sie ersatzweise auf die Linien U4, 7A und 15A aus. Ein Schienenersatzverkehr wird eingerichtet. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist eine beschädigte Oberleitung im Haltestellenbereich Niederhofstraße.",
+    "description": "Die Linie U6 fährt derzeit nicht zwischen Bahnhof Meidling und Längenfeldgasse. Weichen Sie ersatzweise auf die Linien U4, 7A,15A sowie den Schienenersatzverkehr aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Beschädigte Oberleitung im Haltestellenbereich Niederhofstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4db9833022d07eada723af55382fd06fec7a7c25c7e223c54d4ca4f151223cf1",
-    "pubDate": "2026-07-17T19:18:00+02:00",
-    "starts_at": "2026-07-17T19:18:00+02:00",
-    "ends_at": "2026-07-17T23:55:00+02:00",
+    "pubDate": "2026-07-17T23:58:00+02:00",
+    "starts_at": "2026-07-17T23:58:00+02:00",
+    "ends_at": "2026-07-18T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-07-17"
   },
   {
@@ -1402,5 +1450,17 @@
     "starts_at": "2026-07-18T00:00:27+02:00",
     "ends_at": "2026-07-18T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-07-18|TK=busse halten frauenstiftgasse 7"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6a41e8fca6683395e49e9d5dfa5be15dcfaed470ff417fb4138aac10a4d8e6cc",
+    "pubDate": "2026-07-18T00:24:17+02:00",
+    "starts_at": "2026-07-18T00:25:39+02:00",
+    "ends_at": "2026-07-18T01:24:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-07-18|TK=fahrtbehinderung wegen feuerwehreinsatz"
   }
 ]
