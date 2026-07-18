@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 18 Jul 2026 20:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2026 20:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[57A: Betrieb ab Hirschengasse]]></title>
@@ -108,15 +108,15 @@
       <content:encoded><![CDATA[[Am 18.07.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[48A: St.-Ulrichs-Platz]]></title>
+      <title><![CDATA[30: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3ddc884e71233b206341c1a0ceca3d09281a3d021d80a272119ffecb8048d107</guid>
-      <pubDate>Wed, 15 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 15 Jul 2026 09:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 15 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 15 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 48A in Richtung Ring, Volkstheater U Haltestelle: St.-Ulrichs-Platz Von: Burggasse 25 Nach: Burggasse 27 Dauer: Ab 16. Juli 2026, etwa 18:00 … [15.07.2026 – 15.07.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 48A in Richtung Ring, Volkstheater U Haltestelle: St.-Ulrichs-Platz Von: Burggasse 25 Nach: Burggasse 27 Dauer: Ab 16. Juli 2026, etwa 18:00 …<br/>[15.07.2026 – 15.07.2027]]]></content:encoded>
+      <guid isPermaLink="false">5f2a2fae3493a42bf7701e8c26733aff5ee3becce22e10a884c2b42fbdd68c80</guid>
+      <pubDate>Sat, 18 Jul 2026 20:11:00 +0200</pubDate>
+      <ext:first_seen>Wed, 15 Jul 2026 11:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 18 Jul 2026 20:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 18 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 18.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 18.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
