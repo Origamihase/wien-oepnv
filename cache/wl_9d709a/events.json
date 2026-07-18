@@ -938,6 +938,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40A: Verspätungen",
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "11aa33c68f3b235c869f74bc1c41192a0d48a3b681bedab9ef96a1e7b5d4a0d8",
+    "pubDate": "2026-07-18T17:16:00+02:00",
+    "starts_at": "2026-07-18T17:16:00+02:00",
+    "ends_at": "2026-07-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2026-07-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40: Kein Betrieb",
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1274,14 +1286,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Verunreinigung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Die Linie U4 fährt derzeit in der Station Längenfeldgasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 18:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Längenfeldgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515",
-    "pubDate": "2026-07-18T16:36:00+02:00",
-    "starts_at": "2026-07-18T16:36:00+02:00",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-07-18T17:18:00+02:00",
+    "starts_at": "2026-07-18T17:18:00+02:00",
     "ends_at": "2026-07-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-07-18"
+    "_identity": "wl|störung|L=U4|D=2026-07-18"
   },
   {
     "source": "Wiener Linien",
