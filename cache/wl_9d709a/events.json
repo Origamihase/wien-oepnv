@@ -1178,6 +1178,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-07-18T11:39:00+02:00",
+    "starts_at": "2026-07-18T11:40:50+02:00",
+    "ends_at": "2026-07-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-07-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Züge halten Heiligenstädter Straße 197",
     "description": "Züge halten\nHeiligenstädter Straße 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1250,18 +1262,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-07-18T10:42:00+02:00",
-    "starts_at": "2026-07-18T10:42:00+02:00",
-    "ends_at": "2026-07-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-07-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Bauarbeiten",
     "description": "Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. Grund: Bauarbeiten im Bereich zwischen Westbahnhof U und Hütteldorfer Straße U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1286,14 +1286,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "U6: Rettungseinsatz",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Spittelau und Nußdorfer Straße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 12:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Spittelau.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-07-18T11:06:00+02:00",
-    "starts_at": "2026-07-18T11:06:00+02:00",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-07-18T11:41:00+02:00",
+    "starts_at": "2026-07-18T11:41:00+02:00",
     "ends_at": "2026-07-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-07-18"
+    "_identity": "wl|störung|L=U6|D=2026-07-18"
   },
   {
     "source": "Wiener Linien",
