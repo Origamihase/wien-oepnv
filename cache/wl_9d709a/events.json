@@ -686,18 +686,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Fahrtbehinderung Schadhafter PKW",
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b47ab4cfd23abd3cb0fcc0e0a0bae3f04b33cec4a9eb3c530a8b8f1a4decaa8d",
-    "pubDate": "2026-07-18T15:44:28+02:00",
-    "starts_at": "2026-07-18T15:44:28+02:00",
-    "ends_at": "2026-07-18T16:43:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-07-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1142,18 +1130,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Fahrtbehinderung Schadhafter PKW",
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "923dfe3872f0174e1c414eab7da3a9ed89e242de5005b31a30b21e875e602cac",
-    "pubDate": "2026-07-18T15:45:26+02:00",
-    "starts_at": "2026-07-18T15:45:43+02:00",
-    "ends_at": "2026-07-18T16:44:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-07-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1294,6 +1270,18 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verunreinigung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515",
+    "pubDate": "2026-07-18T16:36:00+02:00",
+    "starts_at": "2026-07-18T16:36:00+02:00",
+    "ends_at": "2026-07-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-07-18"
   },
   {
     "source": "Wiener Linien",
