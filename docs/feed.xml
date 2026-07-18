@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 18 Jul 2026 12:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2026 12:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[30: Fahrtbehinderung Schadhafter Zug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">55fa4346a13e51f2667065b4fd8714a5ae0746c890a2b5c171b0777700925929</guid>
+      <pubDate>Sat, 18 Jul 2026 12:27:55 +0200</pubDate>
+      <ext:first_seen>Sat, 18 Jul 2026 12:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 18 Jul 2026 12:27:55 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 18 Jul 2026 13:27:00 +0200</ext:ends_at>
+      <description>[Am 18.07.2026]</description>
+      <content:encoded><![CDATA[[Am 18.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[57A: Betrieb ab Hirschengasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sat, 18 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 18.07.2026]</description>
       <content:encoded><![CDATA[[Am 18.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: St.-Ulrichs-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3ddc884e71233b206341c1a0ceca3d09281a3d021d80a272119ffecb8048d107</guid>
-      <pubDate>Wed, 15 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 15 Jul 2026 09:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 15 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 15 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 48A in Richtung Ring, Volkstheater U Haltestelle: St.-Ulrichs-Platz Von: Burggasse 25 Nach: Burggasse 27 Dauer: Ab 16. Juli 2026, etwa 18:00 … [15.07.2026 – 15.07.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 48A in Richtung Ring, Volkstheater U Haltestelle: St.-Ulrichs-Platz Von: Burggasse 25 Nach: Burggasse 27 Dauer: Ab 16. Juli 2026, etwa 18:00 …<br/>[15.07.2026 – 15.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
