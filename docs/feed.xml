@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 18 Jul 2026 01:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2026 02:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[57A: Betrieb ab Hirschengasse]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Sat, 18 Jul 2026 23:55:00 +0200</ext:ends_at>
       <description>Die Linie U6 fährt derzeit nicht zwischen Bahnhof Meidling und Längenfeldgasse. [17.07.2026 – 18.07.2026]</description>
       <content:encoded><![CDATA[Die Linie U6 fährt derzeit nicht zwischen Bahnhof Meidling und Längenfeldgasse.<br/>[17.07.2026 – 18.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8607e15a3df4b421f54df7b16517837ef9727c528510f97f2e3c3c85bb7dcc7e</guid>
-      <pubDate>Sat, 18 Jul 2026 00:12:00 +0200</pubDate>
-      <ext:first_seen>Fri, 17 Jul 2026 18:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 18 Jul 2026 00:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 18 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Busse halten Gumpendorfer Straße nach Kopernikusgasse]]></title>
@@ -114,6 +103,17 @@
       <pubDate>Sat, 18 Jul 2026 00:00:09 +0200</pubDate>
       <ext:first_seen>Wed, 15 Jul 2026 16:30:51 +0200</ext:first_seen>
       <ext:starts_at>Sat, 18 Jul 2026 00:00:11 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 18 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 18.07.2026]</description>
+      <content:encoded><![CDATA[[Am 18.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40: Kein Betrieb]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">25135d5fe1ae6086a9604cf56c1890f62c133f4b68b71a97d05800b07594d743</guid>
+      <pubDate>Mon, 13 Jul 2026 04:00:12 +0200</pubDate>
+      <ext:first_seen>Wed, 15 Jul 2026 16:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 18 Jul 2026 00:00:27 +0200</ext:starts_at>
       <ext:ends_at>Sat, 18 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 18.07.2026]</description>
       <content:encoded><![CDATA[[Am 18.07.2026]]]></content:encoded>
