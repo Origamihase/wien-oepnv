@@ -1190,6 +1190,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "99B/99A: Schadhaftes Fahrzeug",
+    "description": "Linie 99B: Unregelmäßige Intervalle in beiden Richtungen. Linie 99A: Fahrtbehinderung in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3c1b97342e0e5a36768c64820dac57e84e0b47a87a07670973b4a4bf5aa85aed",
+    "pubDate": "2026-07-18T05:49:00+02:00",
+    "starts_at": "2026-07-18T05:49:00+02:00",
+    "ends_at": "2026-07-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=99A,99B|D=2026-07-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Züge halten Heiligenstädter Straße 197",
     "description": "Züge halten\nHeiligenstädter Straße 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
