@@ -1,1 +1,26 @@
-{}
+{
+  "Meidling|S2|2026-07-18T04:32:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-07-18T04:01:02.077265+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-07-18T04:32:00+02:00"
+  },
+  "Meidling|S2|2026-07-18T04:42:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-07-18T04:01:02.077265+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-07-18T04:42:00+02:00"
+  },
+  "Praterstern|S1|2026-07-18T04:39:00+02:00": {
+    "cancelled": false,
+    "direction": "Praterstern",
+    "last_seen_at": "2026-07-18T04:01:02.077265+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S1",
+    "scheduled": "2026-07-18T04:39:00+02:00"
+  }
+}
