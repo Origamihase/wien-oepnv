@@ -794,13 +794,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "30: Schadhaftes Fahrzeug",
+    "description": "Linie 30: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Floridsdorfer Markt.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2079eed11fb52f3e5d3f26f767acfa075e513cdb0b512e1d46839b2866aa3029",
+    "pubDate": "2026-07-18T12:28:00+02:00",
+    "starts_at": "2026-07-18T12:28:00+02:00",
+    "ends_at": "2026-07-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=30|D=2026-07-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "30: Fahrtbehinderung Schadhafter Zug",
     "description": "Fahrtbehinderung\nSchadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "55fa4346a13e51f2667065b4fd8714a5ae0746c890a2b5c171b0777700925929",
     "pubDate": "2026-07-18T12:27:55+02:00",
-    "starts_at": "2026-07-18T12:27:55+02:00",
-    "ends_at": "2026-07-18T13:27:00+02:00",
+    "starts_at": "2026-07-18T12:58:51+02:00",
+    "ends_at": "2026-07-18T13:55:00+02:00",
     "_identity": "wl|störung|L=30|D=2026-07-18"
   },
   {
@@ -910,6 +922,18 @@
     "starts_at": "2026-07-18T00:00:11+02:00",
     "ends_at": "2026-07-18T23:59:59+02:00",
     "_identity": "wl|störung|L=38A|D=2026-07-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 38: Fahrtbehinderung in Richtung Grinzing. Voraussichtliche Dauer: 13:30 Uhr. Grund: Polizeieinsatz im Bereich Pötzleinsdorf .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "14b787061b8e077e79d48423bff586516bd1c55ab89e303fd510de9c03ccc6d9",
+    "pubDate": "2026-07-18T12:37:51+02:00",
+    "starts_at": "2026-07-18T12:48:00+02:00",
+    "ends_at": "2026-07-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=38|D=2026-07-18"
   },
   {
     "source": "Wiener Linien",
@@ -1030,6 +1054,18 @@
     "starts_at": "2026-07-13T00:00:20+02:00",
     "ends_at": "2026-07-18T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Weichenstörung",
+    "description": "Linie 43: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 13:30 Uhr. Grund: Weichenstörung im Bereich Paschinggasse .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8cc2d65f74d634491dc8cf65807477d0066d1ec400fa937825ffb71d70565323",
+    "pubDate": "2026-07-18T12:51:00+02:00",
+    "starts_at": "2026-07-18T12:51:00+02:00",
+    "ends_at": "2026-07-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-07-18"
   },
   {
     "source": "Wiener Linien",
@@ -1190,12 +1226,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
+    "title": "9: Falschparker",
     "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
     "pubDate": "2026-07-18T11:39:00+02:00",
-    "starts_at": "2026-07-18T11:40:50+02:00",
+    "starts_at": "2026-07-18T11:39:00+02:00",
     "ends_at": "2026-07-18T23:55:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-07-18"
   },
