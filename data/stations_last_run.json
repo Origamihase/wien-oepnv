@@ -1,39 +1,39 @@
 {
   "diff": {
     "added": 3,
-    "coord_shifted": 2,
-    "removed": 0,
+    "coord_shifted": 0,
+    "removed": 3,
     "renamed": 0
   },
   "polygon_vertices": 5637,
   "stations": {
     "after": 2235,
-    "before": 2233,
-    "delta": 2
+    "before": 2235,
+    "delta": 0
   },
   "sub_scripts": [
     {
-      "duration_s": 41.7,
+      "duration_s": 32.59,
       "exit_code": 0,
       "name": "update_station_directory.py"
     },
     {
-      "duration_s": 36.05,
+      "duration_s": 27.9,
       "exit_code": 0,
       "name": "update_wl_stations.py"
     },
     {
-      "duration_s": 18.06,
+      "duration_s": 19.27,
       "exit_code": 0,
       "name": "enrich_station_aliases.py"
     },
     {
-      "duration_s": 0.77,
+      "duration_s": 0.72,
       "exit_code": 0,
       "name": "apply_station_overrides.py"
     }
   ],
-  "timestamp": "2026-07-12T04:26:23+00:00",
+  "timestamp": "2026-07-19T04:24:05+00:00",
   "validation": {
     "alias_issues": 0,
     "coordinate_issues": 0,
