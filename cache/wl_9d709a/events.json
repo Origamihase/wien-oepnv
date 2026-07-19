@@ -650,6 +650,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Rettungseinsatz",
+    "description": "Linie 10A: Fahrtbehinderung in Richtung Niederhofstraße U. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "219e547df2be869f9c5e196043c5ef1b5d356073d50ea5347540dd618f54101f",
+    "pubDate": "2026-07-19T09:38:00+02:00",
+    "starts_at": "2026-07-19T09:38:00+02:00",
+    "ends_at": "2026-07-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "10A: Busse halten Matthias-Schönerer-Gasse 1",
     "description": "Bauarbeiten\nBusse halten Matthias-Schönerer-Gasse 1",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -950,6 +962,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "42A: Verkehrsunfall",
+    "description": "Linie 42A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f93cfe1c089b300ff7bedbf72f82c4536945f4dc3e3a9ccd3c8e0947c0cb445e",
+    "pubDate": "2026-07-19T09:34:00+02:00",
+    "starts_at": "2026-07-19T09:34:00+02:00",
+    "ends_at": "2026-07-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=42A|D=2026-07-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "42: Kein Betrieb",
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1234,18 +1258,6 @@
     "starts_at": "2026-07-19T01:00:27+02:00",
     "ends_at": "2026-07-20T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Polizeieinsatz",
-    "description": "Derzeit kommt es bei der Linie N71 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "74eba0a90bfa2b32bc5cc42fe5ae377ca8ba2b28d9fcbb5712ad31be437aa5e5",
-    "pubDate": "2026-07-19T02:47:00+02:00",
-    "starts_at": "2026-07-19T02:47:00+02:00",
-    "ends_at": "2026-07-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=N71|D=2026-07-19"
   },
   {
     "source": "Wiener Linien",
