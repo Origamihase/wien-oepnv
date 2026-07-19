@@ -1244,7 +1244,7 @@
     "guid": "60d85be6e1b718bd1bbf3bdc27097fa49586ae83a20c5eeeac8d4469bdf039d5",
     "pubDate": "2026-07-19T13:24:00+02:00",
     "starts_at": "2026-07-19T13:24:00+02:00",
-    "ends_at": "2026-07-19T23:55:00+02:00",
+    "ends_at": "2026-07-19T14:29:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-07-19"
   },
   {
@@ -1268,7 +1268,7 @@
     "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
     "pubDate": "2026-07-19T11:19:00+02:00",
     "starts_at": "2026-07-19T11:19:00+02:00",
-    "ends_at": "2026-07-19T23:55:00+02:00",
+    "ends_at": "2026-07-19T14:29:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-19"
   },
   {
@@ -1282,6 +1282,18 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verunreinigung",
+    "description": "Linie U4: Unregelmäßige Intervalle zwischen Hütteldorf und Landstraße-Wien Mitte. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5718e5adfd8ff17a7b75efa1723cae5513a3a9e89e84929ae6d9338f8ba24e1d",
+    "pubDate": "2026-07-19T14:29:00+02:00",
+    "starts_at": "2026-07-19T14:29:00+02:00",
+    "ends_at": "2026-07-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-07-19"
   },
   {
     "source": "Wiener Linien",
