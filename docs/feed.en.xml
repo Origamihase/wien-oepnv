@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 19 Jul 2026 15:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2026 16:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[30: service obstruction because of police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0b04f102bd159f98a41bb7194d24ea5268065185467f63b745203825c9848323</guid>
+      <pubDate>Sun, 19 Jul 2026 15:35:00 +0200</pubDate>
+      <ext:first_seen>Sun, 19 Jul 2026 16:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Jul 2026 15:38:34 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 19 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 19.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 19.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[25: service obstruction because of police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a366c32c65098559124d9098d458131cf3e677c92ae8069e81b721bb4295db1a</guid>
+      <pubDate>Sun, 19 Jul 2026 15:35:00 +0200</pubDate>
+      <ext:first_seen>Sun, 19 Jul 2026 16:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Jul 2026 15:38:11 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 19 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 19.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 19.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[D: service from Schwarzenbergplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -95,28 +117,6 @@
       <ext:ends_at>Wed, 22 Jul 2026 17:00:00 +0200</ext:ends_at>
       <description>Curfew Due to construction works on the Favoritenstraße, the right-hand exit Raaber Bahngasse (compared to Favoritenstraße 85) must be locked at the 85 station. [16.07.2026 – 22.07.2026]</description>
       <content:encoded><![CDATA[Curfew Due to construction works on the Favoritenstraße, the right-hand exit Raaber Bahngasse (compared to Favoritenstraße 85) must be locked at the 85 station.<br/>[16.07.2026 – 22.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: No operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e7451102d47c1b1972aa31b8301000dc55e940dd24dbb815c063ed55ffd4ae59</guid>
-      <pubDate>Sun, 19 Jul 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Wed, 15 Jul 2026 16:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Jul 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 19 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 19.07.2026]</description>
-      <content:encoded><![CDATA[[On 19.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: No operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">25135d5fe1ae6086a9604cf56c1890f62c133f4b68b71a97d05800b07594d743</guid>
-      <pubDate>Sun, 19 Jul 2026 00:00:08 +0200</pubDate>
-      <ext:first_seen>Wed, 15 Jul 2026 16:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Jul 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 19 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 19.07.2026]</description>
-      <content:encoded><![CDATA[[On 19.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
