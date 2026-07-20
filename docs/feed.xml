@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 20 Jul 2026 10:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 11:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[20A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b6a855723f8e813c25c2be75620ae3d0aada8e5630c9e5498a192ae71c421cf6</guid>
+      <pubDate>Mon, 20 Jul 2026 10:44:00 +0200</pubDate>
+      <ext:first_seen>Mon, 20 Jul 2026 11:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Jul 2026 10:44:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 20 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall. [Am 20.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall.<br/>[Am 20.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[19A: Ada-Christen-Gasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Mon, 20 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 20.07.2026]</description>
       <content:encoded><![CDATA[[Am 20.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: St.-Ulrichs-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3ddc884e71233b206341c1a0ceca3d09281a3d021d80a272119ffecb8048d107</guid>
-      <pubDate>Wed, 15 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 15 Jul 2026 09:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 15 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 15 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 48A in Richtung Ring, Volkstheater U Haltestelle: St.-Ulrichs-Platz Von: Burggasse 25 Nach: Burggasse 27 Dauer: Ab 16. Juli 2026, etwa 18:00 … [15.07.2026 – 15.07.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 48A in Richtung Ring, Volkstheater U Haltestelle: St.-Ulrichs-Platz Von: Burggasse 25 Nach: Burggasse 27 Dauer: Ab 16. Juli 2026, etwa 18:00 …<br/>[15.07.2026 – 15.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
