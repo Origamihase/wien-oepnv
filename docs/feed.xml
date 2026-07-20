@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 20 Jul 2026 10:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 10:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[19A: Ada-Christen-Gasse]]></title>
@@ -19,16 +19,6 @@
       <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 19A in Richtung Alaudagasse U Haltestelle: Ada-Christen-Gasse Von: Alaudagasse nach Ada-Christen-Gasse Nach: 20 Meter in Fahrtrichtung Dauer … [20.07.2026 – 20.07.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 19A in Richtung Alaudagasse U Haltestelle: Ada-Christen-Gasse Von: Alaudagasse nach Ada-Christen-Gasse Nach: 20 Meter in Fahrtrichtung Dauer …<br/>[20.07.2026 – 20.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Grillgasse ↔ Kledering]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;897571</guid>
-      <pubDate>Mon, 20 Jul 2026 08:54:18 +0200</pubDate>
-      <ext:first_seen>Mon, 20 Jul 2026 08:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 08:54:18 +0200</ext:starts_at>
-      <description>Wegen eines defekten Zuges auf der Strecke waren zwischen Wien Grillgasse Bahnhst und Kledering Bahnhst bis 08:49 Uhr nur eingeschränkt Fahrten möglich. [Seit 20.07.2026]</description>
-      <content:encoded><![CDATA[Wegen eines defekten Zuges auf der Strecke waren zwischen Wien Grillgasse Bahnhst und Kledering Bahnhst bis 08:49 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 20.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[57A: Betrieb ab Hirschengasse]]></title>
@@ -116,6 +106,17 @@
       <ext:ends_at>Mon, 20 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 20.07.2026]</description>
       <content:encoded><![CDATA[[Am 20.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[48A: St.-Ulrichs-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3ddc884e71233b206341c1a0ceca3d09281a3d021d80a272119ffecb8048d107</guid>
+      <pubDate>Wed, 15 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 15 Jul 2026 09:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 15 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 48A in Richtung Ring, Volkstheater U Haltestelle: St.-Ulrichs-Platz Von: Burggasse 25 Nach: Burggasse 27 Dauer: Ab 16. Juli 2026, etwa 18:00 … [15.07.2026 – 15.07.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 48A in Richtung Ring, Volkstheater U Haltestelle: St.-Ulrichs-Platz Von: Burggasse 25 Nach: Burggasse 27 Dauer: Ab 16. Juli 2026, etwa 18:00 …<br/>[15.07.2026 – 15.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
