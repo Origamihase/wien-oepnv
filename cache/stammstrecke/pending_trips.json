@@ -1,32 +1,16 @@
 {
-  "Meidling|CJX9|2026-07-20T08:23:00+02:00": {
+  "Meidling|CJX9|2026-07-20T08:53:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-07-20T08:01:07.850751+02:00",
+    "last_seen_at": "2026-07-20T08:30:58.545934+02:00",
     "latest_delay_minutes": 0.0,
     "name": "CJX9",
-    "scheduled": "2026-07-20T08:23:00+02:00"
-  },
-  "Meidling|S2|2026-07-20T08:02:00+02:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-07-20T08:01:07.850751+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-07-20T08:02:00+02:00"
-  },
-  "Meidling|S2|2026-07-20T08:12:00+02:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-07-20T08:01:07.850751+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-07-20T08:12:00+02:00"
+    "scheduled": "2026-07-20T08:53:00+02:00"
   },
   "Meidling|S2|2026-07-20T08:32:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-07-20T08:01:07.850751+02:00",
+    "last_seen_at": "2026-07-20T08:30:58.545934+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-07-20T08:32:00+02:00"
@@ -34,47 +18,63 @@
   "Meidling|S2|2026-07-20T08:42:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-07-20T08:01:07.850751+02:00",
+    "last_seen_at": "2026-07-20T08:30:58.545934+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-07-20T08:42:00+02:00"
   },
-  "Praterstern|CJX9|2026-07-20T08:03:00+02:00": {
+  "Meidling|S2|2026-07-20T09:02:00+02:00": {
     "cancelled": false,
-    "direction": "Praterstern",
-    "last_seen_at": "2026-07-20T08:01:07.850751+02:00",
+    "direction": "Meidling",
+    "last_seen_at": "2026-07-20T08:30:58.545934+02:00",
     "latest_delay_minutes": 0.0,
-    "name": "CJX9",
-    "scheduled": "2026-07-20T08:03:00+02:00"
+    "name": "S2",
+    "scheduled": "2026-07-20T09:02:00+02:00"
+  },
+  "Meidling|S2|2026-07-20T09:12:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-07-20T08:30:58.545934+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-07-20T09:12:00+02:00"
   },
   "Praterstern|CJX9|2026-07-20T08:33:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-07-20T08:01:07.850751+02:00",
-    "latest_delay_minutes": 0.0,
+    "last_seen_at": "2026-07-20T08:30:58.545934+02:00",
+    "latest_delay_minutes": 1.0,
     "name": "CJX9",
     "scheduled": "2026-07-20T08:33:00+02:00"
   },
-  "Praterstern|S2|2026-07-20T08:27:00+02:00": {
+  "Praterstern|CJX9|2026-07-20T09:03:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-07-20T08:01:07.850751+02:00",
+    "last_seen_at": "2026-07-20T08:30:58.545934+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "CJX9",
+    "scheduled": "2026-07-20T09:03:00+02:00"
+  },
+  "Praterstern|S2|2026-07-20T08:57:00+02:00": {
+    "cancelled": false,
+    "direction": "Praterstern",
+    "last_seen_at": "2026-07-20T08:30:58.545934+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
-    "scheduled": "2026-07-20T08:27:00+02:00"
+    "scheduled": "2026-07-20T08:57:00+02:00"
   },
-  "Praterstern|S3|2026-07-20T08:15:00+02:00": {
+  "Praterstern|S2|2026-07-20T09:15:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-07-20T07:30:51.798966+02:00",
+    "last_seen_at": "2026-07-20T08:30:58.545934+02:00",
     "latest_delay_minutes": 0.0,
-    "name": "S3",
-    "scheduled": "2026-07-20T08:15:00+02:00"
+    "name": "S2",
+    "scheduled": "2026-07-20T09:15:00+02:00"
   },
   "Praterstern|S3|2026-07-20T08:45:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-07-20T08:01:07.850751+02:00",
+    "last_seen_at": "2026-07-20T08:30:58.545934+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S3",
     "scheduled": "2026-07-20T08:45:00+02:00"
