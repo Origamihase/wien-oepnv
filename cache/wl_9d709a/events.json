@@ -1130,6 +1130,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "69A: Rettungseinsatz",
+    "description": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c3f5724da51a5f97e26106c94e4e4a9c78a6afbf8833a95716caef1b24c5cf6e",
+    "pubDate": "2026-07-20T14:46:00+02:00",
+    "starts_at": "2026-07-20T14:46:00+02:00",
+    "ends_at": "2026-07-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=69A|D=2026-07-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
