@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 20 Jul 2026 09:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 10:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[19A: Ada-Christen-Gasse]]></title>
@@ -96,17 +96,6 @@
       <content:encoded><![CDATA[Die Arbeiten erfolgen bei Tag bzw. für die Querung bei Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels 1A und 3A von 21:15 bis 04:50 Uhr. Im …<br/>[20.07.2026 – 31.07.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[38: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">17348702007ee0800eafbce7d382472c59ee068fa21a4c44fc1f6a6f3ab14d79</guid>
-      <pubDate>Mon, 20 Jul 2026 09:29:00 +0200</pubDate>
-      <ext:first_seen>Thu, 16 Jul 2026 11:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 09:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 20 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Grinzing. Voraussichtliche Dauer: 10:00 Uhr. Grund: Falschparker im Bereich Gersthofer Straße. [Am 20.07.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Grinzing. Voraussichtliche Dauer: 10:00 Uhr. Grund: Falschparker im Bereich Gersthofer Straße.<br/>[Am 20.07.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U1: Sperre Ausgang beim Keplerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4d7e1c939cba4537c1cbea8b77aab6e84ca308591d0551065f21daacb2248e2e</guid>
@@ -116,6 +105,17 @@
       <ext:ends_at>Wed, 22 Jul 2026 17:00:00 +0200</ext:ends_at>
       <description>Ausgangssperre Wegen Bauarbeiten auf der Favoritenstraße muss in der Station Keplerplatz der rechte Ausgang Raaber Bahngasse (gegenüber Favoritenstraße 85) gesperrt werden. [16.07.2026 – 22.07.2026]</description>
       <content:encoded><![CDATA[Ausgangssperre Wegen Bauarbeiten auf der Favoritenstraße muss in der Station Keplerplatz der rechte Ausgang Raaber Bahngasse (gegenüber Favoritenstraße 85) gesperrt werden.<br/>[16.07.2026 – 22.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40: Kein Betrieb]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">25135d5fe1ae6086a9604cf56c1890f62c133f4b68b71a97d05800b07594d743</guid>
+      <pubDate>Sun, 19 Jul 2026 00:00:14 +0200</pubDate>
+      <ext:first_seen>Wed, 15 Jul 2026 16:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Jul 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 20 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 20.07.2026]</description>
+      <content:encoded><![CDATA[[Am 20.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
