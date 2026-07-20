@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 20 Jul 2026 18:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 19:00:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5A: Straßenbauarbeiten26]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8ece1940e1979727af0d90c4952196e5f01688b77f70ccfdf1aa9d71cb916f4b</guid>
+      <pubDate>Mon, 20 Jul 2026 19:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 20 Jul 2026 19:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Rotensterngasse wird die Linie 5A kurzgeführt. Zeitraum: Ab Montag, 27. Juli 2026, etwa 07:00 Uhr bis voraussichtlich zwei Wochen. [27.07.2026 – 20.07.2027]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Rotensterngasse wird die Linie 5A kurzgeführt. Zeitraum: Ab Montag, 27. Juli 2026, etwa 07:00 Uhr bis voraussichtlich zwei Wochen.<br/>[27.07.2026 – 20.07.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[26A: Verunreinigung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Wed, 22 Jul 2026 17:00:00 +0200</ext:ends_at>
       <description>Ausgangssperre Wegen Bauarbeiten auf der Favoritenstraße muss in der Station Keplerplatz der rechte Ausgang Raaber Bahngasse (gegenüber Favoritenstraße 85) gesperrt werden. [16.07.2026 – 22.07.2026]</description>
       <content:encoded><![CDATA[Ausgangssperre Wegen Bauarbeiten auf der Favoritenstraße muss in der Station Keplerplatz der rechte Ausgang Raaber Bahngasse (gegenüber Favoritenstraße 85) gesperrt werden.<br/>[16.07.2026 – 22.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">25135d5fe1ae6086a9604cf56c1890f62c133f4b68b71a97d05800b07594d743</guid>
-      <pubDate>Sun, 19 Jul 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Wed, 15 Jul 2026 16:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 00:00:18 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 20 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 20.07.2026]</description>
-      <content:encoded><![CDATA[[Am 20.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
