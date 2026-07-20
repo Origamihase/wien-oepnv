@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 20 Jul 2026 05:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 06:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
+      <pubDate>Mon, 20 Jul 2026 05:49:00 +0200</pubDate>
+      <ext:first_seen>Mon, 20 Jul 2026 06:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Jul 2026 05:49:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 20 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals towards Leopoldau. Reason: service disruption. [On 20.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals towards Leopoldau. Reason: service disruption.<br/>[On 20.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[57A: service from Hirschengasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Thu, 15 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of line 48A towards station Ring, Volkstheater U Stop: St.-Ulrichs-Platz From: Burggasse 25 To: Burggasse 27 Duration: From 16. July 2026, about … [15.07.2026 – 15.07.2027]</description>
       <content:encoded><![CDATA[Stop change of line 48A towards station Ring, Volkstheater U Stop: St.-Ulrichs-Platz From: Burggasse 25 To: Burggasse 27 Duration: From 16. July 2026, about …<br/>[15.07.2026 – 15.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: No operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e83aa491c848c79758b9fa1a7745f107d510638495130ae358d3577a3a06bd70</guid>
-      <pubDate>Sun, 19 Jul 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Tue, 14 Jul 2026 19:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 19 Jul 2026 00:00:23 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 20 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[19.07.2026 – 20.07.2026]</description>
-      <content:encoded><![CDATA[[19.07.2026 – 20.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
