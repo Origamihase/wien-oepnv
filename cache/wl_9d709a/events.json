@@ -1058,6 +1058,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "49A: Schadhaftes Fahrzeug",
+    "description": "Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c49c7266e7c1e355065cfde194961253eb755381c005f94eaf6138693754daf1",
+    "pubDate": "2026-07-20T21:44:00+02:00",
+    "starts_at": "2026-07-20T21:44:00+02:00",
+    "ends_at": "2026-07-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=49A|D=2026-07-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Linie 57A: Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse. In Richtung Ruolfsheim, Anschützgasse Betrieb ab Hirschengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1258,6 +1270,18 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Polizeieinsatz",
+    "description": "Die Linie U3 fährt derzeit nur zwischen Westbahnhof und Enkplatz. Voraussichtliche Dauer: 22:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Simmering.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182",
+    "pubDate": "2026-07-20T21:52:00+02:00",
+    "starts_at": "2026-07-20T21:52:00+02:00",
+    "ends_at": "2026-07-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-07-20"
   },
   {
     "source": "Wiener Linien",
