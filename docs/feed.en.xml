@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 21 Jul 2026 13:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 14:01:08 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[30: overhead line def. No operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6ceba6b663160f9a60e89eb02a12f739ccbf3d79b732d7a0ff965c337facbb31</guid>
+      <pubDate>Tue, 21 Jul 2026 09:46:46 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Jul 2026 14:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Jul 2026 09:46:49 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Jul 2026 22:15:00 +0200</ext:ends_at>
+      <description>[On 21.07.2026]</description>
+      <content:encoded><![CDATA[[On 21.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[25: overhead line def. service from Kagran]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Tue, 21 Jul 2026 15:45:00 +0200</ext:ends_at>
       <description>[On 21.07.2026]</description>
       <content:encoded><![CDATA[[On 21.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30: Damaged overhead line by a truck]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">82943afd0ea6890e05557e17cf88079bb5c4475171b7d1f457a6a6572c100b66</guid>
-      <pubDate>Tue, 21 Jul 2026 07:57:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Jul 2026 08:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Jul 2026 07:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Currently, operation is not possible. [On 21.07.2026]</description>
-      <content:encoded><![CDATA[Currently, operation is not possible.<br/>[On 21.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N60: Construction26]]></title>
