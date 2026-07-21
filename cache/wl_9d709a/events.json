@@ -710,18 +710,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Verkehrsunfall",
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "49173de64aa2215d87e8e544f1df8b7687c6e8172327e8cd9174b3c727005709",
-    "pubDate": "2026-07-21T17:38:00+02:00",
-    "starts_at": "2026-07-21T17:38:00+02:00",
-    "ends_at": "2026-07-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=11A|D=2026-07-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -814,6 +802,18 @@
     "starts_at": "2026-07-21T09:46:46+02:00",
     "ends_at": "2026-07-22T01:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-07-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "20A: Verkehrsunfall",
+    "description": "Linie 20A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d0b92f0a1c96c3a03b383d97d13863111f54690bf9149ac1273cbb457788459",
+    "pubDate": "2026-07-21T18:24:00+02:00",
+    "starts_at": "2026-07-21T18:24:00+02:00",
+    "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=20A|D=2026-07-21"
   },
   {
     "source": "Wiener Linien",
@@ -1335,11 +1335,11 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Neue Donau.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-07-21T15:20:00+02:00",
-    "starts_at": "2026-07-21T15:20:00+02:00",
+    "pubDate": "2026-07-21T18:15:00+02:00",
+    "starts_at": "2026-07-21T18:15:00+02:00",
     "ends_at": "2026-07-21T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-07-21"
   },
