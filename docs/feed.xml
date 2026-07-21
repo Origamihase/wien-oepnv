@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 21 Jul 2026 19:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 19:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[59A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e09339cfb3094980cbafa9341e8d677466ba3d6e478ce1b4da7e352a8c42c4a</guid>
+      <pubDate>Tue, 21 Jul 2026 19:03:00 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Jul 2026 19:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Jul 2026 19:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Süßenbrunn ↔ Wien Leopoldau]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -93,8 +104,8 @@
       <ext:first_seen>Fri, 17 Jul 2026 16:30:49 +0200</ext:first_seen>
       <ext:starts_at>Tue, 21 Jul 2026 18:41:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 19:20 Uhr. Grund: Feuerwehreinsatz im Bereich Stromstraße. [Am 21.07.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 19:20 Uhr. Grund: Feuerwehreinsatz im Bereich Stromstraße.<br/>[Am 21.07.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Busse halten Gumpendorfer Straße nach Kopernikusgasse]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Tue, 21 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[20.07.2026 – 21.07.2026]</description>
       <content:encoded><![CDATA[[20.07.2026 – 21.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Haus des Meeres]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">63246d37dfa8b8537f556f26b694da774fc3f016ef3613986db8339ec259423c</guid>
-      <pubDate>Fri, 17 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 17 Jul 2026 15:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 17 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 14 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 13A in Richtung Hauptbahnhof Haltestelle: Haus des Meeres Von: Kaunitzgasse 2 Nach: Gumpendorfer Straße nach Kopernikusgasse (57A) Dauer … [17.07.2026 – 14.08.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 13A in Richtung Hauptbahnhof Haltestelle: Haus des Meeres Von: Kaunitzgasse 2 Nach: Gumpendorfer Straße nach Kopernikusgasse (57A) Dauer …<br/>[17.07.2026 – 14.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
