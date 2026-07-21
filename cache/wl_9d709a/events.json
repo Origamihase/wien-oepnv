@@ -722,6 +722,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Verkehrsüberlastung",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
+    "pubDate": "2026-07-21T08:37:00+02:00",
+    "starts_at": "2026-07-21T08:37:00+02:00",
+    "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -794,14 +806,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25/26/27/30: Beschädigte Oberleitung durch einen LKW",
-    "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Kagran U. Linie 26: Betrieb nur zwischen Hausfeldstraße U und Josef-Baumann-Gasse. Weiterfahrt nach Kagran U. Die Linie 27 fährt derzeit nur zwischen Aspern Nord S U und Josef-Baumann-Gasse. Linie 30: Derzeit ist ein Betrieb nicht möglich. Weichen Sie ersatzweise auf die Linien 30A, 32A, 34A, 36B und 500 oder die S3 aus. Voraussichtliche Dauer: 13:00 Uhr. Grund: Beschädigte Oberleitung durch einen LKW im Bereich Brünner Straße 51.",
+    "title": "25: Beschädigte Oberleitung durch einen LKW",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "94af9f8aef61a42e33dabe0e1d4237fcd018bb9f1622a5949cfaff8dd284c45c",
+    "guid": "9c0db662939ea55f9f1973aa107f3ad95b110347e50baffdb43d911c8edfdabb",
     "pubDate": "2026-07-21T07:57:00+02:00",
     "starts_at": "2026-07-21T07:57:00+02:00",
     "ends_at": "2026-07-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=25,26,27,30|D=2026-07-21"
+    "_identity": "wl|störung|L=25|D=2026-07-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Oberleitung def. Betrieb ab Kagran",
+    "description": "Oberleitung def.\nBetrieb ab Kagran",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cfbde74bb9a162f6f5ba4a526f953c25450d573f3cd75ccf900f6a08d89ca599",
+    "pubDate": "2026-07-21T08:00:55+02:00",
+    "starts_at": "2026-07-21T08:00:55+02:00",
+    "ends_at": "2026-07-21T15:45:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-07-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Fahrleitungsgebrechen",
+    "description": "Fahrtbehinderung\nFahrleitungsgebrechen",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f7db62bc78cffa70cd155f374e5c2723cc9c3d1dd8cfc0e888935a5b64a07d74",
+    "pubDate": "2026-07-21T08:00:26+02:00",
+    "starts_at": "2026-07-21T08:00:26+02:00",
+    "ends_at": "2026-07-21T15:30:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-07-21"
   },
   {
     "source": "Wiener Linien",
@@ -818,14 +854,62 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B/29A: Beschädigte Oberleitung durch einen LKW",
-    "description": "Linie 29B: Umleitung in beiden Richtungen zwischen Floridsdorf und Sebastian-Kohl-Gasse über Schloßhofer Straße - Brünner Straße - Angerer Straße. Linie 29A: Umleitung in beiden Richtungen zwischen Floridsdorf und Sebastian-Kohl-Gasse über Schloßhofer Straße - Brünner Straße - Angerer Straße. Voraussichtliche Dauer: 13:00 Uhr. Grund: Beschädigte Oberleitung durch einen LKW im Bereich Brünner Straße 51.",
+    "title": "26: Beschädigte Oberleitung durch einen LKW",
+    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "43aeefac4964b2ec0edd7dfe2034b1fa1e4ea6564c3f7e536a2f47c1a53fb00a",
+    "guid": "a26c3c743e28b17bc5673dc56f545202e4d1298beab086b854b9ec245f42d949",
+    "pubDate": "2026-07-21T07:57:00+02:00",
+    "starts_at": "2026-07-21T07:57:00+02:00",
+    "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-07-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Beschädigte Oberleitung durch einen LKW",
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b50e2caeb1b2394908f463b8ec59b4d62e011f546a015833fefab91132ec3d87",
+    "pubDate": "2026-07-21T07:57:00+02:00",
+    "starts_at": "2026-07-21T07:57:00+02:00",
+    "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-07-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Beschädigte Oberleitung durch einen LKW",
+    "description": "Linie 29A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aef7c0c9bd4b8b2dd9726854555e71b88c66c02bdc21e1b0d2bb9c2d504cb5c7",
     "pubDate": "2026-07-21T08:22:00+02:00",
     "starts_at": "2026-07-21T08:22:00+02:00",
     "ends_at": "2026-07-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=29A,29B|D=2026-07-21"
+    "_identity": "wl|störung|L=29A|D=2026-07-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Beschädigte Oberleitung durch einen LKW",
+    "description": "Linie 29B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3efa5cc3d66247f3cf15dd7917c01b8a0bc9dc39b617fc845eaa6a178d2c8706",
+    "pubDate": "2026-07-21T08:22:00+02:00",
+    "starts_at": "2026-07-21T08:22:00+02:00",
+    "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=29B|D=2026-07-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "30: Beschädigte Oberleitung durch einen LKW",
+    "description": "Linie 30: Derzeit ist ein Betrieb nicht möglich. Weichen Sie ersatzweise auf die Linien 30A, 32A, 34A, 36B und 500 oder die S3 aus. Voraussichtliche Dauer: 13:00 Uhr. Grund: Beschädigte Oberleitung durch einen LKW im Bereich Brünner Straße 51.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "82943afd0ea6890e05557e17cf88079bb5c4475171b7d1f457a6a6572c100b66",
+    "pubDate": "2026-07-21T07:57:00+02:00",
+    "starts_at": "2026-07-21T07:57:00+02:00",
+    "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=30|D=2026-07-21"
   },
   {
     "source": "Wiener Linien",
@@ -1234,18 +1318,6 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle zwischen Hütteldorf und Landstraße-Wien Mitte. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-07-21T06:36:00+02:00",
-    "starts_at": "2026-07-21T06:36:00+02:00",
-    "ends_at": "2026-07-21T08:24:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-07-21"
   },
   {
     "source": "Wiener Linien",
