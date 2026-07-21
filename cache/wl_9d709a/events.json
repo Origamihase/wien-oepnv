@@ -710,30 +710,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsüberlastung",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
-    "pubDate": "2026-07-21T08:37:00+02:00",
-    "starts_at": "2026-07-21T08:37:00+02:00",
-    "ends_at": "2026-07-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-07-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Betriebsstörung",
-    "description": "Linie 10: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "133ffbcd0b2f71b543a2c0f5320fa67ba5678cbcb7eba0ce920a1c3f70a90114",
-    "pubDate": "2026-07-21T10:08:00+02:00",
-    "starts_at": "2026-07-21T10:08:00+02:00",
-    "ends_at": "2026-07-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=10|D=2026-07-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -766,6 +742,18 @@
     "starts_at": "2026-07-20T00:00:25+02:00",
     "ends_at": "2026-07-21T23:59:59+02:00",
     "_identity": "wl|störung|L=13A|D=2026-07-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Verkehrsstörung",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung im Bereich Kirchengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "70f388519c839f34ca54a9a773e86af4e652bb4aedd41e20d94a49395f4bbd9d",
+    "pubDate": "2026-07-21T12:35:00+02:00",
+    "starts_at": "2026-07-21T12:35:00+02:00",
+    "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-07-21"
   },
   {
     "source": "Wiener Linien",
@@ -862,30 +850,6 @@
     "starts_at": "2026-07-19T00:00:12+02:00",
     "ends_at": "2026-07-21T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-07-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Beschädigte Oberleitung durch einen LKW",
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a26c3c743e28b17bc5673dc56f545202e4d1298beab086b854b9ec245f42d949",
-    "pubDate": "2026-07-21T07:57:00+02:00",
-    "starts_at": "2026-07-21T07:57:00+02:00",
-    "ends_at": "2026-07-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=26|D=2026-07-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Beschädigte Oberleitung durch einen LKW",
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b50e2caeb1b2394908f463b8ec59b4d62e011f546a015833fefab91132ec3d87",
-    "pubDate": "2026-07-21T07:57:00+02:00",
-    "starts_at": "2026-07-21T07:57:00+02:00",
-    "ends_at": "2026-07-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-07-21"
   },
   {
     "source": "Wiener Linien",
@@ -1064,7 +1028,7 @@
     "guid": "9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f",
     "pubDate": "2026-07-21T11:30:00+02:00",
     "starts_at": "2026-07-21T11:30:00+02:00",
-    "ends_at": "2026-07-21T23:55:00+02:00",
+    "ends_at": "2026-07-21T12:54:00+02:00",
     "_identity": "wl|störung|L=40A|D=2026-07-21"
   },
   {
@@ -1178,12 +1142,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Fahrtbehinderung Falschparker",
+    "title": "49: Falschparker",
     "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
     "pubDate": "2026-07-21T11:45:00+02:00",
-    "starts_at": "2026-07-21T11:57:31+02:00",
+    "starts_at": "2026-07-21T11:45:00+02:00",
     "ends_at": "2026-07-21T23:55:00+02:00",
     "_identity": "wl|störung|L=49|D=2026-07-21"
   },

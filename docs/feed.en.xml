@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 21 Jul 2026 12:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 13:01:12 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[46: fire-brigade operation]]></title>
@@ -30,39 +30,6 @@
       <ext:ends_at>Tue, 21 Jul 2026 15:45:00 +0200</ext:ends_at>
       <description>[On 21.07.2026]</description>
       <content:encoded><![CDATA[[On 21.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10: service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">133ffbcd0b2f71b543a2c0f5320fa67ba5678cbcb7eba0ce920a1c3f70a90114</guid>
-      <pubDate>Tue, 21 Jul 2026 10:08:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Jul 2026 10:31:05 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Jul 2026 10:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: service disruption. [On 21.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 21.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26: Damaged overhead line by a truck]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a26c3c743e28b17bc5673dc56f545202e4d1298beab086b854b9ec245f42d949</guid>
-      <pubDate>Tue, 21 Jul 2026 07:57:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Jul 2026 09:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Jul 2026 07:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 21.07.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 21.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Damaged overhead line by a truck]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b50e2caeb1b2394908f463b8ec59b4d62e011f546a015833fefab91132ec3d87</guid>
-      <pubDate>Tue, 21 Jul 2026 07:57:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Jul 2026 09:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Jul 2026 07:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 21.07.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 21.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[30: Damaged overhead line by a truck]]></title>
@@ -118,6 +85,39 @@
       <ext:ends_at>Tue, 21 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[20.07.2026 – 21.07.2026]</description>
       <content:encoded><![CDATA[[20.07.2026 – 21.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[57A: service from Hirschengasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6133520d2a82183c6176b6cc6f40b301cd4201ab850a09e0311bb094a73fbae0</guid>
+      <pubDate>Sat, 18 Jul 2026 00:00:13 +0200</pubDate>
+      <ext:first_seen>Sat, 18 Jul 2026 00:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Jul 2026 00:00:12 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[19.07.2026 – 21.07.2026]</description>
+      <content:encoded><![CDATA[[19.07.2026 – 21.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Buses stop at Gumpendorfer Straße to Kopernikusgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">998e444863e2a9015d58a025d90dc80754ebd6fb07c9603aac79f74736112e72</guid>
+      <pubDate>Mon, 20 Jul 2026 00:00:25 +0200</pubDate>
+      <ext:first_seen>Fri, 17 Jul 2026 16:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Jul 2026 00:00:25 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[20.07.2026 – 21.07.2026]</description>
+      <content:encoded><![CDATA[[20.07.2026 – 21.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Haus des Meeres]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">63246d37dfa8b8537f556f26b694da774fc3f016ef3613986db8339ec259423c</guid>
+      <pubDate>Fri, 17 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 17 Jul 2026 15:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 17 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 14 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration … [17.07.2026 – 14.08.2026]</description>
+      <content:encoded><![CDATA[Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration …<br/>[17.07.2026 – 14.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
