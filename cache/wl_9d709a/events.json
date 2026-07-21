@@ -734,18 +734,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Verspätungen",
-    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eaf96db733f004733a9b91b0e04111a3f9331a02f6c30911495b5b22f6e936d3",
-    "pubDate": "2026-07-21T09:54:00+02:00",
-    "starts_at": "2026-07-21T09:54:00+02:00",
-    "ends_at": "2026-07-21T10:57:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-07-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1173,6 +1161,18 @@
     "pubDate": "2026-07-21T10:59:00+02:00",
     "starts_at": "2026-07-21T10:59:00+02:00",
     "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=46|D=2026-07-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Fahrtbehinderung Schadhafter LKW",
+    "description": "Fahrtbehinderung\nSchadhafter LKW",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7d8b5973ad248334d9c76fc5d7700c0a77ea4ea8b405ecd80802df0d8063b77a",
+    "pubDate": "2026-07-21T11:01:26+02:00",
+    "starts_at": "2026-07-21T11:12:07+02:00",
+    "ends_at": "2026-07-21T12:11:00+02:00",
     "_identity": "wl|störung|L=46|D=2026-07-21"
   },
   {
