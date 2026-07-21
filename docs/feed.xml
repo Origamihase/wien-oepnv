@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 21 Jul 2026 10:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 10:31:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">133ffbcd0b2f71b543a2c0f5320fa67ba5678cbcb7eba0ce920a1c3f70a90114</guid>
+      <pubDate>Tue, 21 Jul 2026 10:08:00 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Jul 2026 10:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Jul 2026 10:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 21.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 21.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,39 +27,7 @@
       <pubDate>Tue, 21 Jul 2026 09:25:00 +0200</pubDate>
       <ext:first_seen>Tue, 21 Jul 2026 10:00:57 +0200</ext:first_seen>
       <ext:starts_at>Tue, 21 Jul 2026 09:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Penzing ↔ Wien Hütteldorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;897821</guid>
-      <pubDate>Tue, 21 Jul 2026 09:28:27 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Jul 2026 09:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Jul 2026 09:28:27 +0200</ext:starts_at>
-      <description>Wegen Personen im Gleisbereich waren zwischen Wien Hütteldorf Bahnhof (U) und Wien Penzing Bahnhst bis 09:25 Uhr keine Fahrten möglich. [Seit 21.07.2026]</description>
-      <content:encoded><![CDATA[Wegen Personen im Gleisbereich waren zwischen Wien Hütteldorf Bahnhof (U) und Wien Penzing Bahnhst bis 09:25 Uhr keine Fahrten möglich.<br/>[Seit 21.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B: Beschädigte Oberleitung durch einen LKW]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3efa5cc3d66247f3cf15dd7917c01b8a0bc9dc39b617fc845eaa6a178d2c8706</guid>
-      <pubDate>Tue, 21 Jul 2026 08:22:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Jul 2026 09:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Jul 2026 08:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Jul 2026 09:53:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.07.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29A: Beschädigte Oberleitung durch einen LKW]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aef7c0c9bd4b8b2dd9726854555e71b88c66c02bdc21e1b0d2bb9c2d504cb5c7</guid>
-      <pubDate>Tue, 21 Jul 2026 08:22:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Jul 2026 09:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Jul 2026 08:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Jul 2026 09:53:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 21 Jul 2026 10:27:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.07.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.07.2026]]]></content:encoded>
     </item>
@@ -93,8 +72,8 @@
       <ext:first_seen>Tue, 21 Jul 2026 08:00:57 +0200</ext:first_seen>
       <ext:starts_at>Tue, 21 Jul 2026 07:57:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Derzeit ist ein Betrieb nicht möglich. [Am 21.07.2026]</description>
-      <content:encoded><![CDATA[Derzeit ist ein Betrieb nicht möglich.<br/>[Am 21.07.2026]]]></content:encoded>
+      <description>Derzeit ist ein Betrieb nicht möglich. Ein Ersatzverkehr mit Bussen wird derzeit eingerichtet. [Am 21.07.2026]</description>
+      <content:encoded><![CDATA[Derzeit ist ein Betrieb nicht möglich. Ein Ersatzverkehr mit Bussen wird derzeit eingerichtet.<br/>[Am 21.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N60: Bauarbeiten26]]></title>
@@ -117,6 +96,28 @@
       <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Rotensterngasse wird die Linie 5A kurzgeführt. Zeitraum: Ab Montag, 27. Juli 2026, etwa 07:00 Uhr bis voraussichtlich zwei Wochen. [27.07.2026 – 20.07.2027]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Rotensterngasse wird die Linie 5A kurzgeführt. Zeitraum: Ab Montag, 27. Juli 2026, etwa 07:00 Uhr bis voraussichtlich zwei Wochen.<br/>[27.07.2026 – 20.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[19A: Ada-Christen-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3a6de483f9a876bb1b1232ccbad00fe5d06dcdd0d185f11ea0499a9f9a8d8937</guid>
+      <pubDate>Mon, 20 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 20 Jul 2026 09:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 19A in Richtung Alaudagasse U Haltestelle: Ada-Christen-Gasse Von: Alaudagasse nach Ada-Christen-Gasse Nach: 20 Meter in Fahrtrichtung Dauer … [20.07.2026 – 20.07.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 19A in Richtung Alaudagasse U Haltestelle: Ada-Christen-Gasse Von: Alaudagasse nach Ada-Christen-Gasse Nach: 20 Meter in Fahrtrichtung Dauer …<br/>[20.07.2026 – 20.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Betrieb ab Schwarzenbergplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9801022cffb862d593534ffa59a7d989d643532b3d329f5a79bab6afa5612bb9</guid>
+      <pubDate>Mon, 20 Jul 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Sun, 19 Jul 2026 00:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Jul 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[20.07.2026 – 21.07.2026]</description>
+      <content:encoded><![CDATA[[20.07.2026 – 21.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
