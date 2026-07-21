@@ -903,7 +903,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "30: Beschädigte Oberleitung durch einen LKW",
-    "description": "Linie 30: Derzeit ist ein Betrieb nicht möglich. Weichen Sie ersatzweise auf die Linien 30A, 32A, 34A, 36B und 500 oder die S3, sowie auf den Ersatzverkehr mit Bussen aus. Voraussichtliche Dauer: 13:00 Uhr. Grund: Beschädigte Oberleitung durch einen LKW im Bereich Brünner Straße 51.",
+    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "82943afd0ea6890e05557e17cf88079bb5c4475171b7d1f457a6a6572c100b66",
     "pubDate": "2026-07-21T07:57:00+02:00",
@@ -1178,20 +1178,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Fahrtbehinderung Schadhafter LKW",
-    "description": "Fahrtbehinderung\nSchadhafter LKW",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7d8b5973ad248334d9c76fc5d7700c0a77ea4ea8b405ecd80802df0d8063b77a",
-    "pubDate": "2026-07-21T11:12:05+02:00",
-    "starts_at": "2026-07-21T11:12:07+02:00",
-    "ends_at": "2026-07-21T12:11:00+02:00",
-    "_identity": "wl|störung|L=46|D=2026-07-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49: Fahrtbehinderung Falschparker",
-    "description": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 12:10 Uhr. Grund: Falschparker im Bereich Breitegasse 4.",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
     "pubDate": "2026-07-21T11:45:00+02:00",
@@ -1426,18 +1414,6 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Derzeit sind alle Aufzüge in der Station Simmering außer Betrieb. Bitte benutzen Sie die benachbarten Stationen. Voraussichtliche Dauer: Nicht absehbar. Grund: Betriebsstörung im Haltestellenbereich Simmering.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-07-21T11:47:00+02:00",
-    "starts_at": "2026-07-21T11:47:00+02:00",
-    "ends_at": "2026-07-21T11:51:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-07-21"
   },
   {
     "source": "Wiener Linien",
