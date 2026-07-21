@@ -710,6 +710,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Feuerwehreinsatz",
+    "description": "Linie 11A: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 19:20 Uhr. Grund: Feuerwehreinsatz im Bereich Stromstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "01a41f05a53e143eca6b02bb90cab71315cbb833b85bf96f9ff238f958072872",
+    "pubDate": "2026-07-21T18:41:00+02:00",
+    "starts_at": "2026-07-21T18:41:00+02:00",
+    "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-07-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -982,6 +994,18 @@
     "starts_at": "2026-07-19T00:00:23+02:00",
     "ends_at": "2026-07-21T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-07-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Verkehrsunfall",
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f",
+    "pubDate": "2026-07-21T18:44:00+02:00",
+    "starts_at": "2026-07-21T18:44:00+02:00",
+    "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2026-07-21"
   },
   {
     "source": "Wiener Linien",
