@@ -1214,18 +1214,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Rettungseinsatz",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
-    "pubDate": "2026-07-21T05:16:00+02:00",
-    "starts_at": "2026-07-21T05:16:00+02:00",
-    "ends_at": "2026-07-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-07-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U4: Bauarbeiten",
     "description": "Linie U4: Kein Betrieb zwischen Schwedenplatz und Landstraße-Wien Mitte. Weichen Sie ersatzweise auf die Linien U1, U2 und U3 aus. Voraussichtliche Dauer: Montag, 03. August 2026, 04:00 Uhr. Grund: Bauarbeiten im Bereich Schwedenplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1234,6 +1222,18 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Linie U4: Unregelmäßige Intervalle zwischen Hütteldorf und Landstraße-Wien Mitte. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-07-21T05:41:00+02:00",
+    "starts_at": "2026-07-21T05:41:00+02:00",
+    "ends_at": "2026-07-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-07-21"
   },
   {
     "source": "Wiener Linien",
