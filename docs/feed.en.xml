@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 21 Jul 2026 13:01:12 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 13:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[46: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4d272a8a5105f7fd088821fac2250578e9462a9d6a302a718f5e7740e1113806</guid>
-      <pubDate>Tue, 21 Jul 2026 10:59:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Jul 2026 11:00:39 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Jul 2026 10:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction towards Joachimsthalerplatz. expected duration: 11:30. Reason: fire-brigade operation in the stop area Maroltingergasse. [On 21.07.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Joachimsthalerplatz. expected duration: 11:30. Reason: fire-brigade operation in the stop area Maroltingergasse.<br/>[On 21.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[25: overhead line def. service from Kagran]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,16 @@
       <ext:ends_at>Fri, 14 Aug 2026 23:55:00 +0200</ext:ends_at>
       <description>Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration … [17.07.2026 – 14.08.2026]</description>
       <content:encoded><![CDATA[Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration …<br/>[17.07.2026 – 14.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Hütteldorf ↔ St. Pölten Hauptbahnhof]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;896782</guid>
+      <pubDate>Mon, 20 Jul 2026 13:46:57 +0200</pubDate>
+      <ext:first_seen>Fri, 17 Jul 2026 11:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Jul 2026 13:46:57 +0200</ext:starts_at>
+      <description>Due to construction works trains between St.Pölten Hbf and Wien Hütteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 … [Since 20.07.2026]</description>
+      <content:encoded><![CDATA[Due to construction works trains between St.Pölten Hbf and Wien Hütteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 …<br/>[Since 20.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
