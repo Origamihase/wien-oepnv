@@ -12196,6 +12196,14 @@
       "epoch": 3
     }
   },
+  "d465b42bcc4c49d6f607bc28ea5a9a3eba4d913eb85f0a6ff7c5a6af10c489c9": {
+    "first_seen": "2026-07-21T07:31:01.235768+00:00",
+    "translations": {
+      "en": {
+        "title": "1A/2A/3A: fire-brigade operation"
+      }
+    }
+  },
   "d4e3fe6c349b665b97cbde4b8d73172b90fcdb011c9cb9d8c80c70350fe1766e": {
     "first_seen": "2026-07-14T08:00:57.448942+00:00",
     "translations": {
@@ -15759,6 +15767,16 @@
       "en": {
         "summary": "Due to a rescue operation between Wien Meidling station (U) and Wien Liesing station are currently not possible.",
         "title": "Wien Hauptbahnhof \u2194 Wien Liesing"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&897821": {
+    "first_seen": "2026-07-21T07:31:01.235768+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to persons on the tracks, no journeys were possible between Wien H\u00fctteldorf Station (U) and Wien Penzing Bahnhst until 09:25 clock.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Penzing \u2194 Wien H\u00fctteldorf"
       },
       "epoch": 3
     }
