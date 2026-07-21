@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 21 Jul 2026 07:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 08:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[25: Fahrtbehinderung Fahrleitungsgebrechen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f7db62bc78cffa70cd155f374e5c2723cc9c3d1dd8cfc0e888935a5b64a07d74</guid>
+      <pubDate>Tue, 21 Jul 2026 08:00:26 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Jul 2026 08:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Jul 2026 08:00:26 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Jul 2026 15:30:00 +0200</ext:ends_at>
+      <description>[Am 21.07.2026]</description>
+      <content:encoded><![CDATA[[Am 21.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30: Beschädigte Oberleitung durch einen LKW]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">82943afd0ea6890e05557e17cf88079bb5c4475171b7d1f457a6a6572c100b66</guid>
+      <pubDate>Tue, 21 Jul 2026 07:57:00 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Jul 2026 08:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Jul 2026 07:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit ist ein Betrieb nicht möglich. [Am 21.07.2026]</description>
+      <content:encoded><![CDATA[Derzeit ist ein Betrieb nicht möglich.<br/>[Am 21.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Liesing ↔ Wien Meidling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -94,28 +116,6 @@
       <ext:starts_at>Mon, 20 Jul 2026 13:46:57 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten werden zwischen St.Pölten Hbf und Wien Hütteldorf Bahnhof (U) am 25.07.2026 die Züge 1943 und 1945 sowie am 26.07.2026 die Züge 1901 und 1947 umgeleitet. [Seit 20.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten werden zwischen St.Pölten Hbf und Wien Hütteldorf Bahnhof (U) am 25.07.2026 die Züge 1943 und 1945 sowie am 26.07.2026 die Züge 1901 und 1947 umgeleitet.<br/>[Seit 20.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Rasumofskygasse von 1 bis 2]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">46d6da50ed74d45d35e1a57f021685dfbffaf46200394d607fa7a5a827fa41c9</guid>
-      <pubDate>Mon, 20 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 16 Jul 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Haltestelle Löwengasse der Straßenbahn wird nach Löwengasse 47 bis 51 versetzt. Der Individualverkehr wird über das richtungsführende Gleis geführt. [20.07.2026 – 06.09.2026]</description>
-      <content:encoded><![CDATA[Die Haltestelle Löwengasse der Straßenbahn wird nach Löwengasse 47 bis 51 versetzt. Der Individualverkehr wird über das richtungsführende Gleis geführt.<br/>[20.07.2026 – 06.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wipplingerstraße 13]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">9a6f15508c9e30873ee88942122163470d6ce5f2c758450af357899b8a8f37ff</guid>
-      <pubDate>Mon, 20 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 16 Jul 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Arbeiten erfolgen bei Tag bzw. für die Querung bei Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels 1A und 3A von 21:15 bis 04:50 Uhr. Im … [20.07.2026 – 31.07.2026]</description>
-      <content:encoded><![CDATA[Die Arbeiten erfolgen bei Tag bzw. für die Querung bei Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels 1A und 3A von 21:15 bis 04:50 Uhr. Im …<br/>[20.07.2026 – 31.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
