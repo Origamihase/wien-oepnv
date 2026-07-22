@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 22 Jul 2026 11:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 12:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U1: Folding ramp lock on 30.07.2026]]></title>
@@ -32,17 +32,6 @@
       <content:encoded><![CDATA[[On 22.07.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[80A: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">03546ac2d22f288e328b343db59198c2bfd5f68de33d330745f97b6cff1e572d</guid>
-      <pubDate>Wed, 22 Jul 2026 06:34:00 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Jul 2026 11:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 22 Jul 2026 06:34:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 22 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 22.07.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 22.07.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[77A: track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3dcf0210270641b46748f117a05cae54687efe642e0a4fa99f7baa012c5385a0</guid>
@@ -52,17 +41,6 @@
       <ext:ends_at>Wed, 22 Jul 2026 23:55:00 +0200</ext:ends_at>
       <description>diversion in both directions between Ludwig-Koeßler-Platz and Donaumarina U via the A23. The stops Stadionbrücke to Stadion U cannot be maintained. [On 22.07.2026]</description>
       <content:encoded><![CDATA[diversion in both directions between Ludwig-Koeßler-Platz and Donaumarina U via the A23. The stops Stadionbrücke to Stadion U cannot be maintained.<br/>[On 22.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0885abe718561d36ae2d78a00061d4a208b1631dc52febcc76ea4d3407650065</guid>
-      <pubDate>Wed, 22 Jul 2026 08:15:00 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Jul 2026 08:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 22 Jul 2026 08:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 22 Jul 2026 12:00:00 +0200</ext:ends_at>
-      <description>The line 11A is redirected towards Stadion U between Elderschplatz and Stadion U via Vorgartenstraße. [On 22.07.2026]</description>
-      <content:encoded><![CDATA[The line 11A is redirected towards Stadion U between Elderschplatz and Stadion U via Vorgartenstraße.<br/>[On 22.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N60: Construction26]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 22 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[19.07.2026 – 22.07.2026]</description>
       <content:encoded><![CDATA[[19.07.2026 – 22.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Buses stop at Gumpendorfer Straße to Kopernikusgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">998e444863e2a9015d58a025d90dc80754ebd6fb07c9603aac79f74736112e72</guid>
+      <pubDate>Mon, 20 Jul 2026 00:00:25 +0200</pubDate>
+      <ext:first_seen>Fri, 17 Jul 2026 16:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Jul 2026 00:00:25 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 22 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[20.07.2026 – 22.07.2026]</description>
+      <content:encoded><![CDATA[[20.07.2026 – 22.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Haus des Meeres]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">63246d37dfa8b8537f556f26b694da774fc3f016ef3613986db8339ec259423c</guid>
+      <pubDate>Fri, 17 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 17 Jul 2026 15:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 17 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 23 Jul 2026 12:00:00 +0200</ext:ends_at>
+      <description>Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration … [17.07.2026 – 23.07.2026]</description>
+      <content:encoded><![CDATA[Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration …<br/>[17.07.2026 – 23.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
