@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 22 Jul 2026 04:31:01 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 05:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N60: Bauarbeiten26]]></title>
@@ -41,6 +41,17 @@
       <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 19A in Richtung Alaudagasse U Haltestelle: Ada-Christen-Gasse Von: Alaudagasse nach Ada-Christen-Gasse Nach: 20 Meter in Fahrtrichtung Dauer … [20.07.2026 – 20.07.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 19A in Richtung Alaudagasse U Haltestelle: Ada-Christen-Gasse Von: Alaudagasse nach Ada-Christen-Gasse Nach: 20 Meter in Fahrtrichtung Dauer …<br/>[20.07.2026 – 20.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Betrieb ab Schwarzenbergplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9801022cffb862d593534ffa59a7d989d643532b3d329f5a79bab6afa5612bb9</guid>
+      <pubDate>Mon, 20 Jul 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Sun, 19 Jul 2026 00:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Jul 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 22 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[20.07.2026 – 22.07.2026]</description>
+      <content:encoded><![CDATA[[20.07.2026 – 22.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[57A: Betrieb ab Hirschengasse]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 31 Jul 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Arbeiten erfolgen bei Tag bzw. für die Querung bei Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels 1A und 3A von 21:15 bis 04:50 Uhr. Im … [20.07.2026 – 31.07.2026]</description>
       <content:encoded><![CDATA[Die Arbeiten erfolgen bei Tag bzw. für die Querung bei Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels 1A und 3A von 21:15 bis 04:50 Uhr. Im …<br/>[20.07.2026 – 31.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Sperre Ausgang beim Keplerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4d7e1c939cba4537c1cbea8b77aab6e84ca308591d0551065f21daacb2248e2e</guid>
-      <pubDate>Thu, 16 Jul 2026 11:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 16 Jul 2026 11:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 16 Jul 2026 11:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 22 Jul 2026 17:00:00 +0200</ext:ends_at>
-      <description>Ausgangssperre Wegen Bauarbeiten auf der Favoritenstraße muss in der Station Keplerplatz der rechte Ausgang Raaber Bahngasse (gegenüber Favoritenstraße 85) gesperrt werden. [16.07.2026 – 22.07.2026]</description>
-      <content:encoded><![CDATA[Ausgangssperre Wegen Bauarbeiten auf der Favoritenstraße muss in der Station Keplerplatz der rechte Ausgang Raaber Bahngasse (gegenüber Favoritenstraße 85) gesperrt werden.<br/>[16.07.2026 – 22.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
