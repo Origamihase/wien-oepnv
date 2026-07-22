@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 22 Jul 2026 07:01:21 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 07:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Wed, 22 Jul 2026 07:13:00 +0200</pubDate>
+      <ext:first_seen>Wed, 22 Jul 2026 07:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 22 Jul 2026 07:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 22 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals towards Simmering. Reason: defective vehicle. [On 22.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals towards Simmering. Reason: defective vehicle.<br/>[On 22.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[77A/80A: Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:starts_at>Mon, 20 Jul 2026 13:46:57 +0200</ext:starts_at>
       <description>Due to construction works trains between St.Pölten Hbf and Wien Hütteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 … [Since 20.07.2026]</description>
       <content:encoded><![CDATA[Due to construction works trains between St.Pölten Hbf and Wien Hütteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 …<br/>[Since 20.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Rasumofskygasse from 1 to 2]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">46d6da50ed74d45d35e1a57f021685dfbffaf46200394d607fa7a5a827fa41c9</guid>
-      <pubDate>Mon, 20 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 16 Jul 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>The tram stop Löwengasse is moved to Löwengasse 47 to 51. Individual traffic is carried over the directional track. [20.07.2026 – 06.09.2026]</description>
-      <content:encoded><![CDATA[The tram stop Löwengasse is moved to Löwengasse 47 to 51. Individual traffic is carried over the directional track.<br/>[20.07.2026 – 06.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

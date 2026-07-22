@@ -1154,6 +1154,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Betriebsstörung",
+    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c64c8e20cf6625a63492931166e74dbba6c06012d5445a807693c215b97298cf",
+    "pubDate": "2026-07-22T07:19:00+02:00",
+    "starts_at": "2026-07-22T07:19:00+02:00",
+    "ends_at": "2026-07-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-07-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1306,6 +1318,18 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in Richtung Simmering. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-07-22T07:13:00+02:00",
+    "starts_at": "2026-07-22T07:13:00+02:00",
+    "ends_at": "2026-07-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-07-22"
   },
   {
     "source": "Wiener Linien",
