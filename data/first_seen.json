@@ -420,6 +420,16 @@
       "epoch": 3
     }
   },
+  "070bc6acc1f1e74924ebaae353ba5373b5f8729431cf0d040cf089555a343aaf": {
+    "first_seen": "2026-07-22T14:00:58.371788+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic accident.",
+        "title": "52B: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "0749610181f65ab0658c177429fbd2fa37ffe19a156e13edf490d50626a4aa1b": {
     "first_seen": "2026-05-24T13:30:48.093098+00:00",
     "translations": {
@@ -7029,8 +7039,10 @@
     "first_seen": "2026-07-22T13:30:51.270146+00:00",
     "translations": {
       "en": {
+        "summary": "The line U2 currently does not operate between Schottenring and Schottentor.",
         "title": "U2: switch fault"
-      }
+      },
+      "epoch": 3
     }
   },
   "77ecfa8c145f0fb89b2a84c30fa61795de3084ee5d25a4ce28b47faf3655d261": {

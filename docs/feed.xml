@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 22 Jul 2026 15:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 16:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[52B: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">070bc6acc1f1e74924ebaae353ba5373b5f8729431cf0d040cf089555a343aaf</guid>
+      <pubDate>Wed, 22 Jul 2026 15:37:00 +0200</pubDate>
+      <ext:first_seen>Wed, 22 Jul 2026 16:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 22 Jul 2026 15:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 22 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 22.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 22.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Weichenstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +28,8 @@
       <ext:first_seen>Wed, 22 Jul 2026 15:30:51 +0200</ext:first_seen>
       <ext:starts_at>Wed, 22 Jul 2026 15:22:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 22 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:00 Uhr. Grund: Weichenstörung im Haltestellenbereich Schottentor. [Am 22.07.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:00 Uhr. Grund: Weichenstörung im Haltestellenbereich Schottentor.<br/>[Am 22.07.2026]]]></content:encoded>
+      <description>Die Linie U2 fährt derzeit nicht zwischen Schottenring und Schottentor. [Am 22.07.2026]</description>
+      <content:encoded><![CDATA[Die Linie U2 fährt derzeit nicht zwischen Schottenring und Schottentor.<br/>[Am 22.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/4A/N29: Löwengasse]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 22 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[19.07.2026 – 22.07.2026]</description>
       <content:encoded><![CDATA[[19.07.2026 – 22.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Busse halten Gumpendorfer Straße nach Kopernikusgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">998e444863e2a9015d58a025d90dc80754ebd6fb07c9603aac79f74736112e72</guid>
-      <pubDate>Mon, 20 Jul 2026 00:00:25 +0200</pubDate>
-      <ext:first_seen>Fri, 17 Jul 2026 16:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 00:00:25 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 22 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[20.07.2026 – 22.07.2026]</description>
-      <content:encoded><![CDATA[[20.07.2026 – 22.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

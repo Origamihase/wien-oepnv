@@ -1094,6 +1094,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "52B: Verkehrsunfall",
+    "description": "Linie 52B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "070bc6acc1f1e74924ebaae353ba5373b5f8729431cf0d040cf089555a343aaf",
+    "pubDate": "2026-07-22T15:37:00+02:00",
+    "starts_at": "2026-07-22T15:37:00+02:00",
+    "ends_at": "2026-07-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=52B|D=2026-07-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Linie 57A: Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse. In Richtung Ruolfsheim, Anschützgasse Betrieb ab Hirschengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1346,8 +1358,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U2: Linie U2 Kein Betrieb zwischen Schottenring und Schottentor",
+    "description": "Störung Linie U2\nKein Betrieb zwischen Schottenring und Schottentor",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3a46f1b6d2c093238182ecdf2ecde527bbb37d3b7bf8244d519b25d6bef7144d",
+    "pubDate": "2026-07-22T15:37:42+02:00",
+    "starts_at": "2026-07-22T15:38:10+02:00",
+    "ends_at": "2026-07-22T16:36:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-07-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U2: Weichenstörung",
-    "description": "Linie U2: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:00 Uhr. Grund: Weichenstörung im Haltestellenbereich Schottentor.",
+    "description": "Die Linie U2 fährt derzeit nicht zwischen Schottenring und Schottentor. Weichen Sie ersatzweise auf die Linien U1, U3 und D aus. Voraussichtliche Dauer: 16:20 Uhr. Grund: Weichenstörung im Haltestellenbereich Schottentor.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "77b27c4272114ea067073650d04c977682732e6124442518d04bef2cd04bde5e",
     "pubDate": "2026-07-22T15:22:00+02:00",
