@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 22 Jul 2026 14:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 14:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62: !=+-*#/., &;:_-@'()?]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7f6b68be2a94343e4e847ec01bfc3b6765cfbac51ad48c8679ffb89293e89907</guid>
+      <pubDate>Wed, 22 Jul 2026 14:04:26 +0200</pubDate>
+      <ext:first_seen>Wed, 22 Jul 2026 14:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 22 Jul 2026 14:04:30 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 22 Jul 2026 15:02:00 +0200</ext:ends_at>
+      <description>!=&amp;lt;&amp;gt;+-*#/., &amp;amp;;:_-@'()? [On 22.07.2026]</description>
+      <content:encoded><![CDATA[!=&lt;&gt;+-*#/., &amp;;:_-@'()?<br/>[On 22.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Folding ramp lock on 30.07.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -48,10 +59,10 @@
       <guid isPermaLink="false">8ece1940e1979727af0d90c4952196e5f01688b77f70ccfdf1aa9d71cb916f4b</guid>
       <pubDate>Mon, 20 Jul 2026 19:00:00 +0200</pubDate>
       <ext:first_seen>Mon, 20 Jul 2026 19:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of construction works in the range Rotensterngasse the line 5A operating short-running becomes the line 27. July 2026, about 07:00 to expected two weeks. [27.07.2026 – 20.07.2027]</description>
-      <content:encoded><![CDATA[Because of construction works in the range Rotensterngasse the line 5A operating short-running becomes the line 27. July 2026, about 07:00 to expected two weeks.<br/>[27.07.2026 – 20.07.2027]]]></content:encoded>
+      <description>Because of construction works in the range Rotensterngasse the line 5A operating short-running becomes the line 27. July 2026, about 07:00 to expected two weeks. [28.07.2026 – 20.07.2027]</description>
+      <content:encoded><![CDATA[Because of construction works in the range Rotensterngasse the line 5A operating short-running becomes the line 27. July 2026, about 07:00 to expected two weeks.<br/>[28.07.2026 – 20.07.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[19A: Ada-Christen-Gasse]]></title>
@@ -107,16 +118,6 @@
       <ext:ends_at>Thu, 23 Jul 2026 12:00:00 +0200</ext:ends_at>
       <description>Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration … [17.07.2026 – 23.07.2026]</description>
       <content:encoded><![CDATA[Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration …<br/>[17.07.2026 – 23.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hütteldorf ↔ St. Pölten Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;896782</guid>
-      <pubDate>Mon, 20 Jul 2026 13:46:57 +0200</pubDate>
-      <ext:first_seen>Fri, 17 Jul 2026 11:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 13:46:57 +0200</ext:starts_at>
-      <description>Due to construction works trains between St.Pölten Hbf and Wien Hütteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 … [Since 20.07.2026]</description>
-      <content:encoded><![CDATA[Due to construction works trains between St.Pölten Hbf and Wien Hütteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 …<br/>[Since 20.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

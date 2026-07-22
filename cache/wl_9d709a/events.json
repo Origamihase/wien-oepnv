@@ -315,13 +315,13 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "5A: Straßenbauarbeiten26",
-    "description": "<h2>Bauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Rotensterngasse wird die Linie 5A kurzgef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Montag, 27. Juli 2026, etwa 07:00 Uhr bis voraussichtlich zwei Wochen.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 5A in Richtung Nestroyplatz:<br /></strong>ab Rotensterngasse # Kleine Mohrengasse &uuml;ber Kleine Mohrengasse &ndash; Schmelzgasse zur&uuml;ck in Richtung Griegstra&szlig;e kurzgef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Praterstra&szlig;e (Rotensterngasse geg. ONr. 35-37)<br />Nestroyplatz U (Nestroyplatz vor Praterstra&szlig;e)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>Nestroyplatz U (Kleine Mohrengasse ONr. 1-3A)</p>",
+    "description": "<h2>Bauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Rotensterngasse wird die Linie 5A kurzgef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Montag, 28. Juli 2026, etwa 07:00 Uhr bis voraussichtlich zwei Wochen.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 5A in Richtung Nestroyplatz:<br /></strong>ab Rotensterngasse # Kleine Mohrengasse &uuml;ber Kleine Mohrengasse &ndash; Schmelzgasse zur&uuml;ck in Richtung Griegstra&szlig;e kurzgef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Praterstra&szlig;e (Rotensterngasse geg. ONr. 35-37)<br />Nestroyplatz U (Nestroyplatz vor Praterstra&szlig;e)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>Nestroyplatz U (Kleine Mohrengasse ONr. 1-3A)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8ece1940e1979727af0d90c4952196e5f01688b77f70ccfdf1aa9d71cb916f4b",
     "pubDate": "2026-07-20T19:00:00+02:00",
-    "starts_at": "2026-07-27T00:00:00+02:00",
+    "starts_at": "2026-07-28T00:00:00+02:00",
     "ends_at": "2027-07-20T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=5A|D=2026-07-27"
+    "_identity": "wl|hinweis|L=5A|D=2026-07-28"
   },
   {
     "source": "Wiener Linien",
@@ -771,7 +771,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "13A: Falschparker",
-    "description": "Linie 13A: Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 14:15 Uhr. Grund: Falschparker im Bereich Weyringergasse 27.",
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d",
     "pubDate": "2026-07-22T13:52:00+02:00",
@@ -818,6 +818,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "18: !=+-*#/., &;:_@'()?",
+    "description": "!=<>+-*#/.,\n&;:_@'()?",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "15dd912130712a24d6825522ba5806a805be46e16cd5cca13574f345c8690ad3",
+    "pubDate": "2026-07-22T14:21:00+02:00",
+    "starts_at": "2026-07-22T14:21:00+02:00",
+    "ends_at": "2026-07-22T15:21:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-07-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Schadhaftes Fahrzeug",
     "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -830,13 +842,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: !=+-*#/., &;:_@()?",
-    "description": "!=<>+-*#/.,\n&;:_@()?",
+    "title": "1: !=+-*#/., &;:_-@'()?",
+    "description": "!=<>+-*#/.,\n&;:_-@'()?",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1fc060b6de1012a6a8324e66497c882e500ace7131cd89d34beae70147087c14",
     "pubDate": "2026-07-22T14:00:05+02:00",
     "starts_at": "2026-07-22T14:00:09+02:00",
-    "ends_at": "2026-07-22T14:58:00+02:00",
+    "ends_at": "2026-07-22T15:02:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-07-22"
   },
   {
@@ -874,18 +886,6 @@
     "starts_at": "2026-07-19T00:00:12+02:00",
     "ends_at": "2026-07-22T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-07-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "30: Schadhaftes Fahrzeug",
-    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2079eed11fb52f3e5d3f26f767acfa075e513cdb0b512e1d46839b2866aa3029",
-    "pubDate": "2026-07-22T12:40:00+02:00",
-    "starts_at": "2026-07-22T12:40:00+02:00",
-    "ends_at": "2026-07-22T14:00:00+02:00",
-    "_identity": "wl|störung|L=30|D=2026-07-22"
   },
   {
     "source": "Wiener Linien",
@@ -1018,6 +1018,18 @@
     "starts_at": "2026-07-19T00:00:17+02:00",
     "ends_at": "2026-07-22T23:59:59+02:00",
     "_identity": "wl|störung|L=38|D=2026-07-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Falschparker",
+    "description": "Linie 38: Fahrtbehinderung in Richtung Pötzleinsdorf. Voraussichtliche Dauer: 14:40 Uhr. Grund: Falschparker im Bereich Währinger Straße 120.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17348702007ee0800eafbce7d382472c59ee068fa21a4c44fc1f6a6f3ab14d79",
+    "pubDate": "2026-07-22T14:02:00+02:00",
+    "starts_at": "2026-07-22T14:21:00+02:00",
+    "ends_at": "2026-07-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=38|D=2026-07-22"
   },
   {
     "source": "Wiener Linien",
@@ -1226,6 +1238,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62: !=+-*#/., &;:_-@'()?",
+    "description": "!=<>+-*#/.,\n&;:_-@'()?",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f6b68be2a94343e4e847ec01bfc3b6765cfbac51ad48c8679ffb89293e89907",
+    "pubDate": "2026-07-22T14:04:26+02:00",
+    "starts_at": "2026-07-22T14:04:30+02:00",
+    "ends_at": "2026-07-22T15:02:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-07-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "6: Schadhaftes Fahrzeug",
     "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1233,18 +1257,6 @@
     "pubDate": "2026-07-22T12:43:00+02:00",
     "starts_at": "2026-07-22T12:43:00+02:00",
     "ends_at": "2026-07-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-07-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Schadhafter Zug Betrieb ab Eichenstraße",
-    "description": "Schadhafter Zug\nBetrieb ab Eichenstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a19da1d37cba4f3182e4aadcb033c59555aa2554675ee5bb3adb907219dd1a5",
-    "pubDate": "2026-07-22T13:04:55+02:00",
-    "starts_at": "2026-07-22T13:04:55+02:00",
-    "ends_at": "2026-07-22T14:04:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-07-22"
   },
   {
@@ -1394,18 +1406,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-07-22T11:29:00+02:00",
-    "starts_at": "2026-07-22T11:29:00+02:00",
-    "ends_at": "2026-07-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-07-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Bauarbeiten",
     "description": "Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. Grund: Bauarbeiten im Bereich zwischen Westbahnhof U und Hütteldorfer Straße U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1462,5 +1462,17 @@
     "starts_at": "2026-07-19T00:00:17+02:00",
     "ends_at": "2026-07-22T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-07-19|TK=züge halten bei währinger gürtel gegenüber 164"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "''' '''''''''' ''",
+    "description": "''' '''''''''' ''",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c545fabce212e3537eb44df4afe303b7eba3f22f0acc7d7b639d8431f4b0e919",
+    "pubDate": "2026-07-22T14:06:22+02:00",
+    "starts_at": "2026-07-22T14:06:26+02:00",
+    "ends_at": "2026-07-22T15:05:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-07-22|TK="
   }
 ]
