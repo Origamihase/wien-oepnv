@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 23 Jul 2026 00:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 01:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[37: Kein Betrieb]]></title>
@@ -87,17 +87,6 @@
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 19A in Richtung Alaudagasse U Haltestelle: Ada-Christen-Gasse Von: Alaudagasse nach Ada-Christen-Gasse Nach: 20 Meter in Fahrtrichtung Dauer …<br/>[20.07.2026 – 20.07.2027]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Betrieb ab Schwarzenbergplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9801022cffb862d593534ffa59a7d989d643532b3d329f5a79bab6afa5612bb9</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Sun, 19 Jul 2026 00:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 23 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 23.07.2026]</description>
-      <content:encoded><![CDATA[[Am 23.07.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[57A: Betrieb ab Hirschengasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">6133520d2a82183c6176b6cc6f40b301cd4201ab850a09e0311bb094a73fbae0</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 23 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 23.07.2026]</description>
       <content:encoded><![CDATA[[Am 23.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Haus des Meeres]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">63246d37dfa8b8537f556f26b694da774fc3f016ef3613986db8339ec259423c</guid>
+      <pubDate>Fri, 17 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 17 Jul 2026 15:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 17 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 23 Jul 2026 12:00:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 13A in Richtung Hauptbahnhof Haltestelle: Haus des Meeres Von: Kaunitzgasse 2 Nach: Gumpendorfer Straße nach Kopernikusgasse (57A) Dauer … [17.07.2026 – 23.07.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 13A in Richtung Hauptbahnhof Haltestelle: Haus des Meeres Von: Kaunitzgasse 2 Nach: Gumpendorfer Straße nach Kopernikusgasse (57A) Dauer …<br/>[17.07.2026 – 23.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
