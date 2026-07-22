@@ -1286,6 +1286,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 16:30 Uhr. Grund: Falschparker im Bereich Hormayrgasse 17.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-07-22T16:09:00+02:00",
+    "starts_at": "2026-07-22T16:13:29+02:00",
+    "ends_at": "2026-07-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-07-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Züge halten Heiligenstädter Straße 197",
     "description": "Züge halten\nHeiligenstädter Straße 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1371,7 +1383,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U2: Weichenstörung",
-    "description": "Die Linie U2 fährt derzeit nicht zwischen Schottenring und Schottentor. Weichen Sie ersatzweise auf die Linien U1, U3 und D aus. Voraussichtliche Dauer: 16:20 Uhr. Grund: Weichenstörung im Haltestellenbereich Schottentor.",
+    "description": "Die Linie U2 fährt derzeit nicht zwischen Schottenring und Schottentor. Weichen Sie ersatzweise auf die Linien U1, U3 und D aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Weichenstörung im Haltestellenbereich Schottentor.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "77b27c4272114ea067073650d04c977682732e6124442518d04bef2cd04bde5e",
     "pubDate": "2026-07-22T15:22:00+02:00",
