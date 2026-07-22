@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 22 Jul 2026 06:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 07:01:21 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[77A/80A: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">584b39bfc009e3b4bc4e2d7a4ba1311848ea522a1c2f9459e901bfcef1167013</guid>
+      <pubDate>Wed, 22 Jul 2026 06:34:00 +0200</pubDate>
+      <ext:first_seen>Wed, 22 Jul 2026 07:01:21 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 22 Jul 2026 06:34:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 22 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Umleitung in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina U über die A23. Die Haltestellen Stadionbrücke bis Stadion U können dadurch nicht eingehalten werden. [Am 22.07.2026]</description>
+      <content:encoded><![CDATA[Umleitung in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina U über die A23. Die Haltestellen Stadionbrücke bis Stadion U können dadurch nicht eingehalten werden.<br/>[Am 22.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N60: Construction26]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>The tram stop Löwengasse is moved to Löwengasse 47 to 51. Individual traffic is carried over the directional track. [20.07.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[The tram stop Löwengasse is moved to Löwengasse 47 to 51. Individual traffic is carried over the directional track.<br/>[20.07.2026 – 06.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wipplingerstraße 13]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">9a6f15508c9e30873ee88942122163470d6ce5f2c758450af357899b8a8f37ff</guid>
-      <pubDate>Mon, 20 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 16 Jul 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Jul 2026 00:00:00 +0200</ext:ends_at>
-      <description>Work is carried out on day or night crossings in the unoccupied time of public transport 1A and 3A of 21:15 to 04:50. At … [20.07.2026 – 31.07.2026]</description>
-      <content:encoded><![CDATA[Work is carried out on day or night crossings in the unoccupied time of public transport 1A and 3A of 21:15 to 04:50. At …<br/>[20.07.2026 – 31.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
