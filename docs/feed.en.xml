@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 22 Jul 2026 07:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 08:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U3: delays]]></title>
@@ -21,15 +21,26 @@
       <content:encoded><![CDATA[irregular intervals towards Simmering. Reason: defective vehicle.<br/>[On 22.07.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[77A/80A: Gleisbauarbeiten]]></title>
+      <title><![CDATA[77A/80A: track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">584b39bfc009e3b4bc4e2d7a4ba1311848ea522a1c2f9459e901bfcef1167013</guid>
       <pubDate>Wed, 22 Jul 2026 06:34:00 +0200</pubDate>
       <ext:first_seen>Wed, 22 Jul 2026 07:01:21 +0200</ext:first_seen>
       <ext:starts_at>Wed, 22 Jul 2026 06:34:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 22 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina U über die A23. Die Haltestellen Stadionbrücke bis Stadion U können dadurch nicht eingehalten werden. [Am 22.07.2026]</description>
-      <content:encoded><![CDATA[Umleitung in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina U über die A23. Die Haltestellen Stadionbrücke bis Stadion U können dadurch nicht eingehalten werden.<br/>[Am 22.07.2026]]]></content:encoded>
+      <description>diversion in both directions between Ludwig-Koeßler-Platz and Donaumarina U over the A23. The stops Stadionbrücke to Stadion U cannot be maintained. [On 22.07.2026]</description>
+      <content:encoded><![CDATA[diversion in both directions between Ludwig-Koeßler-Platz and Donaumarina U over the A23. The stops Stadionbrücke to Stadion U cannot be maintained.<br/>[On 22.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30: Damaged overhead line by a truck]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">82943afd0ea6890e05557e17cf88079bb5c4475171b7d1f457a6a6572c100b66</guid>
+      <pubDate>Wed, 22 Jul 2026 07:31:00 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Jul 2026 08:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 22 Jul 2026 07:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 22 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Currently, operation is not possible. [On 22.07.2026]</description>
+      <content:encoded><![CDATA[Currently, operation is not possible.<br/>[On 22.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N60: Construction26]]></title>
@@ -107,16 +118,6 @@
       <ext:ends_at>Fri, 14 Aug 2026 23:55:00 +0200</ext:ends_at>
       <description>Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration … [17.07.2026 – 14.08.2026]</description>
       <content:encoded><![CDATA[Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration …<br/>[17.07.2026 – 14.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hütteldorf ↔ St. Pölten Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;896782</guid>
-      <pubDate>Mon, 20 Jul 2026 13:46:57 +0200</pubDate>
-      <ext:first_seen>Fri, 17 Jul 2026 11:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 13:46:57 +0200</ext:starts_at>
-      <description>Due to construction works trains between St.Pölten Hbf and Wien Hütteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 … [Since 20.07.2026]</description>
-      <content:encoded><![CDATA[Due to construction works trains between St.Pölten Hbf and Wien Hütteldorf train station (U) at 25.07.2026 are diverted from the trains 1943 and 1945 and from the 26.07.2026 …<br/>[Since 20.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
