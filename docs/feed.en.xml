@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 22 Jul 2026 15:01:18 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 15:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[62: !=+-*#/., &;:_-@'()?]]></title>
+      <title><![CDATA[U2: Weichenstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7f6b68be2a94343e4e847ec01bfc3b6765cfbac51ad48c8679ffb89293e89907</guid>
-      <pubDate>Wed, 22 Jul 2026 14:04:26 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Jul 2026 14:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 22 Jul 2026 14:04:30 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 22 Jul 2026 15:02:00 +0200</ext:ends_at>
-      <description>!=&amp;lt;&amp;gt;+-*#/., &amp;amp;;:_-@'()? [On 22.07.2026]</description>
-      <content:encoded><![CDATA[!=&lt;&gt;+-*#/., &amp;;:_-@'()?<br/>[On 22.07.2026]]]></content:encoded>
+      <guid isPermaLink="false">77b27c4272114ea067073650d04c977682732e6124442518d04bef2cd04bde5e</guid>
+      <pubDate>Wed, 22 Jul 2026 15:22:00 +0200</pubDate>
+      <ext:first_seen>Wed, 22 Jul 2026 15:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 22 Jul 2026 15:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 22 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:00 Uhr. Grund: Weichenstörung im Haltestellenbereich Schottentor. [Am 22.07.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:00 Uhr. Grund: Weichenstörung im Haltestellenbereich Schottentor.<br/>[Am 22.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/4A/N29: Löwengasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ab28cfd2abcff844a9f8cac1e5afa07355cdb0b697889b76375094edd879e8ef</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 22 Jul 2026 15:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 22 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 22 Jul 2027 23:59:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 1 und N29 in Richtung Stefan-Fadinger-Platz bzw. Floridsdorf S U Haltestelle: Löwengasse Von: Rasumovskygasse 2 Nach: Löwengasse 47–51 Dauer … [22.07.2026 – 22.07.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 1 und N29 in Richtung Stefan-Fadinger-Platz bzw. Floridsdorf S U Haltestelle: Löwengasse Von: Rasumovskygasse 2 Nach: Löwengasse 47–51 Dauer …<br/>[22.07.2026 – 22.07.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Folding ramp lock on 30.07.2026]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 22 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[20.07.2026 – 22.07.2026]</description>
       <content:encoded><![CDATA[[20.07.2026 – 22.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Haus des Meeres]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">63246d37dfa8b8537f556f26b694da774fc3f016ef3613986db8339ec259423c</guid>
-      <pubDate>Fri, 17 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 17 Jul 2026 15:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 17 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 23 Jul 2026 12:00:00 +0200</ext:ends_at>
-      <description>Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration … [17.07.2026 – 23.07.2026]</description>
-      <content:encoded><![CDATA[Stop transfer of line 13A towards Hauptbahnhof Stop: Haus des Meeres From: KaunitzgasseENT6a722b8cc223fa3dX4X To: Gumpendorfer Straße to Kopernikusgasse (57A) Duration …<br/>[17.07.2026 – 23.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
