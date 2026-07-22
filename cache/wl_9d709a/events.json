@@ -638,6 +638,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "U1: Klapprampensperre am 30.07.2026",
+    "description": "<p class=\"MsoNormal\">Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung k&ouml;nnen die Klapprampen der U-Bahnz&uuml;ge der Linie U1 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig.</p> <p class=\"MsoNormal\">Due to the high number of passengers attending an event, the folding ramps on line U1 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting.</p> <p class=\"MsoNormal\">Zeitraum | Duration:<br />30. 07. 2026 ca. 20:00 Uhr - 24:00 Uhr</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "29befaaeaa59915fcfb4642b13cc7f9adc42d57ebf4d00d2b390abae2d632e64",
+    "pubDate": "2026-07-22T10:30:00+02:00",
+    "starts_at": "2026-07-22T10:30:00+02:00",
+    "ends_at": "2026-07-31T00:10:00+02:00",
+    "_identity": "wl|hinweis|L=U1|D=2026-07-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "U3: Weichentausch",
     "description": "<h2>Weichentausch</h2> <p>Wegen des Weichentauschs zwischen Westbahnhof und Johnstra&szlig;e wird die Linie U3 geteilt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 13. Juli 2026, 04:00 Uhr bis Montag, 31. August, 04:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span></p> <p><span style=\"text-decoration: underline;\">Linie U3:<br /></span>Kein Betrieb zwischen H&uuml;tteldorfer Stra&szlig;e und Westbahnhof.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Ersatzstra&szlig;enbahn E3, 46, 49 und 48A.</p> <p>Die Ersatzstra&szlig;enbahnlinie E3 verkehrt zwischen Westbahnhof S U und Breitensee S und verbindet somit alle Stationen der U3 zwischen Westbahnhof S U und H&uuml;tteldorfer Stra&szlig;e U.<br />Die Linie E3 f&auml;hrt an den Wochenenden durchgehend.</p> <p>Der Einstieg am Westbahnhof befindet sich bei der Linie 9.<br />Die Einstiege bei den Stationen Schweglerstra&szlig;e, Johnstra&szlig;e und H&uuml;tteldorfer Stra&szlig;e befinden sich bei der Linie 49.</p> <p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/U3_Linienteilung_HH_WS.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1351,7 +1363,7 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
     "pubDate": "2026-07-22T09:35:00+02:00",
-    "starts_at": "2026-07-22T09:35:00+02:00",
+    "starts_at": "2026-07-22T11:29:00+02:00",
     "ends_at": "2026-07-22T23:55:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-07-22"
   },
@@ -1364,7 +1376,7 @@
     "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
     "pubDate": "2026-07-22T10:04:00+02:00",
     "starts_at": "2026-07-22T10:04:00+02:00",
-    "ends_at": "2026-07-22T23:55:00+02:00",
+    "ends_at": "2026-07-22T11:29:00+02:00",
     "_identity": "wl|störung|L=U2|D=2026-07-22"
   },
   {
@@ -1395,7 +1407,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U4: Betriebsstörung",
-    "description": "Linie U4: Fahrtbehinderung in Richtung Landstraße-Wien Mitte. Voraussichtliche Dauer: 11:10 Uhr . Grund: Betriebsstörung im Haltestellenbereich Hütteldorf.",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
     "pubDate": "2026-07-22T10:53:00+02:00",
