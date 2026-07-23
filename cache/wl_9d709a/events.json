@@ -794,18 +794,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "15A: Polizeieinsatz",
-    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz im Haltestellenbereich Bhf. Meidling , Schedifkaplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "71842f84405f237b1ca92ed099f0b8a763b7094e4c58c8d1a7947727dcdc5496",
-    "pubDate": "2026-07-23T21:52:00+02:00",
-    "starts_at": "2026-07-23T21:52:00+02:00",
-    "ends_at": "2026-07-23T23:55:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-07-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Pierre-de-Coubertin-Platz im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Pierre-de-Coubertin-Platz im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1318,6 +1306,18 @@
     "starts_at": "2026-07-23T01:00:26+02:00",
     "ends_at": "2026-07-24T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-07-23T22:31:00+02:00",
+    "starts_at": "2026-07-23T22:31:00+02:00",
+    "ends_at": "2026-07-23T23:01:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-07-23"
   },
   {
     "source": "Wiener Linien",
