@@ -722,6 +722,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Verspätungen",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7c9302b74c4151c193e8b61e865846e07389f3d8b7b69a75a90f6a2fde5e99f4",
+    "pubDate": "2026-07-23T14:32:00+02:00",
+    "starts_at": "2026-07-23T14:32:00+02:00",
+    "ends_at": "2026-07-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
