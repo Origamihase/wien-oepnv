@@ -65,27 +65,6 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
-    "title": "Schottenring von Kreuzung Universitätsring und Schottengasse und Schottenpassage bis Kreuzung Heßgas",
-    "description": "Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt. Bauphase 1 (14.07.2026 bis 07.08.2026): Die Arbeiten werden im Bereich Universitätsring ab Höhe Rathausplatz bis Schottenring Kreuzung Heßgasse durchgeführt. Es werden zwei Geradeaus-Fahrstreifen aufrecht gehalten, wobei ein Fahrstreifen über den Gleiskörper geführt wird. Für eine Woche wird die Zufahrt von der Schottenring Hauptfahrbahn in die Heßgasse gesperrt. Die Zufahrt wird auf Dauer der Sperre über Hohenstaufengasse - Nebenfahrbahn Schottenring - Heßgasse ermöglicht. Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. \nBeginn: 13.07.2026 00:00 Uhr \nGeplant bis: 07.08.2026 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 1",
-    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
-    "guid": "2b9e2fe3f409170dde80e744bf4c1227abd5d8ce235aede37e9849364bc28309",
-    "pubDate": "2026-07-13T00:00:00+02:00",
-    "starts_at": "2026-07-13T00:00:00+02:00",
-    "ends_at": "2026-08-07T00:00:00+02:00",
-    "context": {
-      "district": "1",
-      "measure": "Gleisbau"
-    },
-    "location": {
-      "coordinates": {
-        "lat": 48.21394762,
-        "lon": 16.36248624
-      }
-    }
-  },
-  {
-    "source": "Stadt Wien – Baustellen",
-    "category": "Baustelle",
     "title": "Gumpendorfer Straße von Wallgasse bis Laimgrubengasse",
     "description": "Die Buslinie 57A wird bis zur Kaunitzgasse kurzgeführt. Bauphase 1 von 2 (07.07.2026 bis Mitte August 2026): Die Gumpendorfer Straße wird von Kaunitzgasse bis und in Fahrtrichtung Laimgrubengasse (stadteinwärts) zur Einbahn. Das Rechtsabbiegen kommend von der Schanekgasse in die Gumpendorfer Straße ist nicht möglich. Bauphase 2 von 2 (Mitte August 2026 bis 06.09.2026): Die Gumpendorfer Straße wird von Wallgasse bis und in Fahrtrichtung Morizgasse (stadteinwärts) zur Einbahn. Die Buslinie 57A wird als geteilte Linienführung betrieben. Nähere Informationen zur Umleitung sowie Haltestellenverlegung des betroffenen öffentlichen Verkehrsmittels ist der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. \nBeginn: 06.07.2026 00:00 Uhr \nGeplant bis: 06.09.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 6",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -563,6 +542,27 @@
       "coordinates": {
         "lat": 48.20200874,
         "lon": 16.25713409
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Schottenring von Kreuzung Universitätsring und Schottengasse und Schottenpassage bis Kreuzung Heßgas",
+    "description": "Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt. Bauphase 1 (14.07.2026 bis 26.07.2026): Die Arbeiten werden im Bereich Universitätsring ab Höhe Rathausplatz bis Schottenring Kreuzung Heßgasse durchgeführt. Es werden zwei Geradeaus-Fahrstreifen aufrecht gehalten, wobei ein Fahrstreifen über den Gleiskörper geführt wird. Für eine Woche wird die Zufahrt von der Schottenring Hauptfahrbahn in die Heßgasse gesperrt. Die Zufahrt wird auf Dauer der Sperre über Hohenstaufengasse - Nebenfahrbahn Schottenring - Heßgasse ermöglicht. Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. NEU: Im Zeitraum von 24.07.2026 bis 27.07.2026 ist die Geradeausrelation kommend von Schottengasse in Richtung Währinger Straße gesperrt. Bauphase 2 (27.07.2026 bis 22.08.2026): Die Arbeiten werden im Bereich Universitätsring ab Höhe Rathausplatz bis Schottenring Kreuzung Währinger Straße durchgeführt. Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt. Es werden zwei Geradeaus-Fahrstreifen aufrecht gehalten, wobei ein Fahrstreifen über den Gleiskörper geführt wird. Vor dem Kreuzungsbereich mit der Währinger Straße wird ein Linksabbiege-Fahrstreifen aufrecht gehalten und das Rechtsabbiegen in die Schottengasse ist über den rechten Fahrstreifen möglich. Für zwei Wochen ist in der Währinger Straße in Fahrtrichtung Schottenring und Schottengasse nur ein Fahrstreifen frei. Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. \nBeginn: 13.07.2026 00:00 Uhr \nGeplant bis: 22.08.2026 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 1",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "c16ccc98d3c124892816101adcf405925e8561a82607632059e160ebae207a92",
+    "pubDate": "2026-07-13T00:00:00+02:00",
+    "starts_at": "2026-07-13T00:00:00+02:00",
+    "ends_at": "2026-08-22T00:00:00+02:00",
+    "context": {
+      "district": "1",
+      "measure": "Gleisbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.21394762,
+        "lon": 16.36248624
       }
     }
   },
