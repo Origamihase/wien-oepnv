@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 23 Jul 2026 11:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 11:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1/2/3A/71/D: demonstration on 2507.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a9e40358659f6a21f28c538e371036306bab794bf636fd3aea869c5f1bc1ce4a</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 23 Jul 2026 11:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 22 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 25 Jul 2026 18:00:00 +0200</ext:ends_at>
+      <description>Because of an demonstration at the ring, the following traffic measures are taken. [22.07.2026 – 25.07.2026]</description>
+      <content:encoded><![CDATA[Because of an demonstration at the ring, the following traffic measures are taken.<br/>[22.07.2026 – 25.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[37: No operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +115,6 @@
       <pubDate>Sat, 18 Jul 2026 00:00:13 +0200</pubDate>
       <ext:first_seen>Sat, 18 Jul 2026 00:00:56 +0200</ext:first_seen>
       <ext:starts_at>Thu, 23 Jul 2026 00:00:10 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 23 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 23.07.2026]</description>
-      <content:encoded><![CDATA[[On 23.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Buses stop at Gumpendorfer Straße to Kopernikusgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">998e444863e2a9015d58a025d90dc80754ebd6fb07c9603aac79f74736112e72</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:22 +0200</pubDate>
-      <ext:first_seen>Fri, 17 Jul 2026 16:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:22 +0200</ext:starts_at>
       <ext:ends_at>Thu, 23 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 23.07.2026]</description>
       <content:encoded><![CDATA[[On 23.07.2026]]]></content:encoded>
