@@ -734,42 +734,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Züge halten bei Li. 15A",
-    "description": "Gleisbauarbeiten\nZüge halten bei Li. 15A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a357d69f4eb7f19d80612505230e0a8b5a1c830acc3efdd3d3975ba59c7dcd4",
-    "pubDate": "2026-07-22T22:30:10+02:00",
-    "starts_at": "2026-07-22T22:30:10+02:00",
-    "ends_at": "2026-07-23T04:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-07-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Betrieb ab Enkplatz, Grillgasse U",
-    "description": "Gleisbauarbeiten\nBetrieb ab Enkplatz, Grillgasse U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abea439b99914caae1f139ae04541cb8b28bf3253946cd184ea247027a183900",
-    "pubDate": "2026-07-22T22:30:10+02:00",
-    "starts_at": "2026-07-22T22:30:10+02:00",
-    "ends_at": "2026-07-23T04:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-07-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Benützen Sie den Schienenersatzverkehr 71E",
-    "description": "Gleisbauarbeiten\nBenützen Sie den Schienenersatzverkehr 71E",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ada902634b8f201c79dcefb677d9cf487db94fdd63d609fe94f62aba9645aab3",
-    "pubDate": "2026-07-22T22:30:10+02:00",
-    "starts_at": "2026-07-22T22:30:24+02:00",
-    "ends_at": "2026-07-23T04:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-07-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1214,6 +1178,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N29: Verunreinigung Derzeit längere Wartezeiten",
+    "description": "Verunreinigung\nDerzeit längere Wartezeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3fe8fbe62eaa724eaa0f5693ba50d28e3b14af4374ce49cc8d0d711c2617a005",
+    "pubDate": "2026-07-22T23:00:23+02:00",
+    "starts_at": "2026-07-23T03:45:31+02:00",
+    "ends_at": "2026-07-23T04:44:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-07-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N29: Busse halten auf der Hauptfahrbahn",
     "description": "Busse halten auf\nder Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1222,6 +1198,18 @@
     "starts_at": "2026-07-22T23:00:23+02:00",
     "ends_at": "2026-07-23T05:30:00+02:00",
     "_identity": "wl|störung|L=N29|D=2026-07-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Verunreinigung",
+    "description": "Linie N29: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "93be45f109d6feea8fc1e0e53e803c943689dba2f1567c4b7fe56e80a1261a1f",
+    "pubDate": "2026-07-23T03:40:00+02:00",
+    "starts_at": "2026-07-23T03:40:00+02:00",
+    "ends_at": "2026-07-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-07-23"
   },
   {
     "source": "Wiener Linien",
