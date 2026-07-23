@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 23 Jul 2026 13:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 14:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[60A: 60A. Liesing S]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Fri, 23 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of line 61A towards Vösendorf-Siebenhirten Stop: Liesing S From: Liesinger square 2, Bussteig A After: Liesinger square 1 Duration: From 29. July … [23.07.2026 – 23.07.2027]</description>
       <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf-Siebenhirten Stop: Liesing S From: Liesinger square 2, Bussteig A After: Liesinger square 1 Duration: From 29. July …<br/>[23.07.2026 – 23.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A/N65: Liesing S]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f229118868825c0379c3ea14f5d7d074a915eb097f23ab543544dde774941b0d</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 13:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop transfer of line 62A towards station Meidling S U and line N65 towards Quellenplatz Stop: Liesing S From: Liesinger Platz, Bussteig H After … [23.07.2026 – 23.07.2027]</description>
-      <content:encoded><![CDATA[Stop transfer of line 62A towards station Meidling S U and line N65 towards Quellenplatz Stop: Liesing S From: Liesinger Platz, Bussteig H After …<br/>[23.07.2026 – 23.07.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12A/14A: demonstration on 24.07.2026]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of construction works in the range Willergasse / Ketzergasse the line N60 is being redirected. Period: From Saturday, 25. July 2026, approximately 06:00 o'clock to … [25.07.2026 – 20.07.2027]</description>
       <content:encoded><![CDATA[Because of construction works in the range Willergasse / Ketzergasse the line N60 is being redirected. Period: From Saturday, 25. July 2026, approximately 06:00 o'clock to …<br/>[25.07.2026 – 20.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5A: road works26]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8ece1940e1979727af0d90c4952196e5f01688b77f70ccfdf1aa9d71cb916f4b</guid>
+      <pubDate>Mon, 20 Jul 2026 19:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 20 Jul 2026 19:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of construction works in the range Rotensterngasse the line 5A operating short-running becomes the line 27. July 2026, about 07:00 to expected two weeks. [28.07.2026 – 20.07.2027]</description>
+      <content:encoded><![CDATA[Because of construction works in the range Rotensterngasse the line 5A operating short-running becomes the line 27. July 2026, about 07:00 to expected two weeks.<br/>[28.07.2026 – 20.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
