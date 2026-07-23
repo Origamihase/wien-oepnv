@@ -1118,18 +1118,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Verkehrsunfall",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Bereich Margaretenplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c1ce89fc07a31460a53947346c1d250614e6661635d844985802869cc35c9214",
-    "pubDate": "2026-07-23T20:32:00+02:00",
-    "starts_at": "2026-07-23T20:32:00+02:00",
-    "ends_at": "2026-07-23T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-07-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5: Betrieb ab Lerchenfelder Straße",
     "description": "Gleisbauarbeiten\nBetrieb ab Lerchenfelder Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1162,18 +1150,6 @@
     "starts_at": "2026-07-23T04:45:03+02:00",
     "ends_at": "2026-07-24T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-07-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Verkehrsunfall",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733",
-    "pubDate": "2026-07-23T19:31:00+02:00",
-    "starts_at": "2026-07-23T19:31:00+02:00",
-    "ends_at": "2026-07-23T23:55:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-07-23"
   },
   {
     "source": "Wiener Linien",
@@ -1268,7 +1244,7 @@
     "guid": "f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584",
     "pubDate": "2026-07-23T20:32:00+02:00",
     "starts_at": "2026-07-23T20:46:09+02:00",
-    "ends_at": "2026-07-23T23:55:00+02:00",
+    "ends_at": "2026-07-23T21:45:00+02:00",
     "_identity": "wl|störung|L=D|D=2026-07-23"
   },
   {
@@ -1294,18 +1270,6 @@
     "starts_at": "2026-07-23T01:00:26+02:00",
     "ends_at": "2026-07-24T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2026-07-23T19:02:00+02:00",
-    "starts_at": "2026-07-23T19:02:00+02:00",
-    "ends_at": "2026-07-23T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-07-23"
   },
   {
     "source": "Wiener Linien",
