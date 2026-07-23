@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 23 Jul 2026 11:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 12:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12A/14A: Demonstration am 24.07.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0671e1a4e717d41d856ff5a9e6e354ec8b825349006d22e01b7e297bf7eca59b</guid>
+      <pubDate>Thu, 23 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 23 Jul 2026 12:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 23 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Jul 2026 22:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Demonstration kommt es zu folgenden Verkehrsmaßnahmen. [23.07.2026 – 24.07.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu folgenden Verkehrsmaßnahmen.<br/>[23.07.2026 – 24.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1/2/3A/71/D: Demonstration am 25.07.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +115,6 @@
       <pubDate>Thu, 23 Jul 2026 00:00:20 +0200</pubDate>
       <ext:first_seen>Sun, 19 Jul 2026 00:00:57 +0200</ext:first_seen>
       <ext:starts_at>Thu, 23 Jul 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 23 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 23.07.2026]</description>
-      <content:encoded><![CDATA[[Am 23.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[57A: Betrieb ab Hirschengasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6133520d2a82183c6176b6cc6f40b301cd4201ab850a09e0311bb094a73fbae0</guid>
-      <pubDate>Sat, 18 Jul 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Sat, 18 Jul 2026 00:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:10 +0200</ext:starts_at>
       <ext:ends_at>Thu, 23 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 23.07.2026]</description>
       <content:encoded><![CDATA[[Am 23.07.2026]]]></content:encoded>
