@@ -710,6 +710,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Fremder Verkehrsunfall",
+    "description": "Linie 10A: Fahrtbehinderung in Richtung Niederhofstraße U. Voraussichtliche Dauer: 10:10 Uhr. Grund: Fremder Verkehrsunfall im Bereich Schanzstraße # Matthias-Schönerer-Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "69bf84ed2d92c43fb9999e573aa34981c804f4c13f0177a30ce634d9c2393458",
+    "pubDate": "2026-07-24T09:19:00+02:00",
+    "starts_at": "2026-07-24T09:19:00+02:00",
+    "ends_at": "2026-07-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bd7d8f45186b5060599af6427e03e365de42b2d79056f8d753c1d2f26e5c147c",
+    "pubDate": "2026-07-24T09:25:16+02:00",
+    "starts_at": "2026-07-24T09:25:16+02:00",
+    "ends_at": "2026-07-24T10:24:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12: Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
