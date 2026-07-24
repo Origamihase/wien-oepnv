@@ -794,6 +794,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "26A: Fremder Verkehrsunfall",
+    "description": "Linie 26A: Fahrtbehinderung in Richtung Kagran U. Voraussichtliche Dauer: 17:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Erzherzog-Karl-Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7d539e4838557c10a32de76e18d22141166b34ef51bcd0b9ef5adaefadb620ec",
+    "pubDate": "2026-07-24T16:23:00+02:00",
+    "starts_at": "2026-07-24T16:23:00+02:00",
+    "ends_at": "2026-07-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=26A|D=2026-07-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f0ca4477b49a334b73cf88b1756b4ffcf1babba4928b8f7d3d01d6c80b26afdc",
+    "pubDate": "2026-07-24T16:26:15+02:00",
+    "starts_at": "2026-07-24T16:26:35+02:00",
+    "ends_at": "2026-07-24T17:25:00+02:00",
+    "_identity": "wl|störung|L=26A|D=2026-07-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "31: Gleisbauarbeiten",
     "description": "Linie 31: Betrieb nur zwischen Schottenring U und Friedrich-Engels-Platz. Weichen Sie ersatzweise auf die Linien U6, 30, 5A und 11A. aus. Voraussichtliche Dauer: Ende August. Grund: Gleisbauarbeiten im Bereich Floridsdorfer Brücke.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
