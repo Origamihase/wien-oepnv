@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 25 Jul 2026 00:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jul 2026 00:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: switch fault]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3169c7392ae5bf8671badefab08375f7a1babfb42f658591deb18bc6c7b7e6c0</guid>
+      <pubDate>Sat, 25 Jul 2026 00:20:00 +0200</pubDate>
+      <ext:first_seen>Sat, 25 Jul 2026 00:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 25 Jul 2026 00:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 25 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>The line U1 currently operates at station Praterstern in both directions via track 1. Reason: switch fault in stop area Praterstern. [On 25.07.2026]</description>
+      <content:encoded><![CDATA[The line U1 currently operates at station Praterstern in both directions via track 1. Reason: switch fault in stop area Praterstern.<br/>[On 25.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Karlsplatz 5 - 4]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 31 Jul 2026 00:10:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [22.07.2026 – 31.07.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[22.07.2026 – 31.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N60: Construction26]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cd9a9f2adaad4734703439a59d23669039f6df05ba5f1c192338148711f473a7</guid>
-      <pubDate>Mon, 20 Jul 2026 19:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 20 Jul 2026 19:31:08 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 25 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of construction works in the range Willergasse / Ketzergasse the line N60 is being redirected. Period: From Saturday, 25. July 2026, approximately 06:00 o'clock to … [25.07.2026 – 20.07.2027]</description>
-      <content:encoded><![CDATA[Because of construction works in the range Willergasse / Ketzergasse the line N60 is being redirected. Period: From Saturday, 25. July 2026, approximately 06:00 o'clock to …<br/>[25.07.2026 – 20.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
