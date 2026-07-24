@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 24 Jul 2026 16:31:03 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 17:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26A: Fahrtbehinderung Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f0ca4477b49a334b73cf88b1756b4ffcf1babba4928b8f7d3d01d6c80b26afdc</guid>
+      <pubDate>Fri, 24 Jul 2026 16:26:15 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Jul 2026 17:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Jul 2026 16:26:35 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Jul 2026 17:25:00 +0200</ext:ends_at>
+      <description>[Am 24.07.2026]</description>
+      <content:encoded><![CDATA[[Am 24.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[38: Stromstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +27,7 @@
       <pubDate>Fri, 24 Jul 2026 12:59:00 +0200</pubDate>
       <ext:first_seen>Fri, 24 Jul 2026 15:30:56 +0200</ext:first_seen>
       <ext:starts_at>Fri, 24 Jul 2026 12:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 24 Jul 2026 16:58:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.07.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.07.2026]]]></content:encoded>
     </item>
@@ -27,7 +38,7 @@
       <pubDate>Fri, 24 Jul 2026 12:59:00 +0200</pubDate>
       <ext:first_seen>Fri, 24 Jul 2026 15:30:56 +0200</ext:first_seen>
       <ext:starts_at>Fri, 24 Jul 2026 12:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 24 Jul 2026 16:58:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.07.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.07.2026]]]></content:encoded>
     </item>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 24 Jul 2026 22:00:00 +0200</ext:ends_at>
       <description>Wegen einer Demonstration kommt es zu folgenden Verkehrsmaßnahmen. [23.07.2026 – 24.07.2026]</description>
       <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu folgenden Verkehrsmaßnahmen.<br/>[23.07.2026 – 24.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/3A/71/D: Demonstration am 25.07.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a9e40358659f6a21f28c538e371036306bab794bf636fd3aea869c5f1bc1ce4a</guid>
-      <pubDate>Wed, 22 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 11:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 22 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 25 Jul 2026 18:00:00 +0200</ext:ends_at>
-      <description>Wegen einer Demonstration am Ring kommt es zu folgenden Verkehrsmaßnahmen. [22.07.2026 – 25.07.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Demonstration am Ring kommt es zu folgenden Verkehrsmaßnahmen.<br/>[22.07.2026 – 25.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
