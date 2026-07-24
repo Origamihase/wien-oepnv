@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 24 Jul 2026 21:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 22:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Karlsplatz 5 - 4]]></title>
@@ -76,17 +76,6 @@
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 61A in Richtung Vösendorf-Siebenhirten Haltestelle: Liesing S Von: Liesinger Platz 2, Bussteig A Nach: Liesinger Platz 1 Dauer: Ab 29. Juli …<br/>[23.07.2026 – 23.07.2027]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[12A/14A: Demonstration am 24.07.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0671e1a4e717d41d856ff5a9e6e354ec8b825349006d22e01b7e297bf7eca59b</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 12:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Jul 2026 22:00:00 +0200</ext:ends_at>
-      <description>Wegen einer Demonstration kommt es zu folgenden Verkehrsmaßnahmen. [23.07.2026 – 24.07.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu folgenden Verkehrsmaßnahmen.<br/>[23.07.2026 – 24.07.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[1/2/3A/71/D: Demonstration am 25.07.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a9e40358659f6a21f28c538e371036306bab794bf636fd3aea869c5f1bc1ce4a</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 24 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[23.07.2026 – 24.07.2026]</description>
       <content:encoded><![CDATA[[23.07.2026 – 24.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/4A/N29: Löwengasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ab28cfd2abcff844a9f8cac1e5afa07355cdb0b697889b76375094edd879e8ef</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 22 Jul 2026 15:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 22 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 22 Jul 2027 23:59:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 1 und N29 in Richtung Stefan-Fadinger-Platz bzw. Floridsdorf S U Haltestelle: Löwengasse Von: Rasumovskygasse 2 Nach: Löwengasse 47–51 Dauer … [22.07.2026 – 22.07.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 1 und N29 in Richtung Stefan-Fadinger-Platz bzw. Floridsdorf S U Haltestelle: Löwengasse Von: Rasumovskygasse 2 Nach: Löwengasse 47–51 Dauer …<br/>[22.07.2026 – 22.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

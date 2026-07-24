@@ -62,14 +62,14 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "12A/14A: Demonstration am 24.07.2026",
-    "description": "<h2>Demonstration</h2> <p>Wegen einer Demonstration kommt es zu folgenden Verkehrsma&szlig;nahmen.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Freitag, 24. Juli 2026, von etwa 17:00 Uhr bis 22:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span></p> <p><strong>Linie 12A:<br /></strong>Betrieb nur zwischen Possingergasse und Ramperstorffergasse.</p> <p><strong>Linie 14A:<br /></strong>Betrieb nur zwischen Reumannplatz U und Wiedner Hauptstra&szlig;e bzw. Ramperstorffergasse. (Busse werden ab Spengergasse &uuml;ber Wiedner Hauptstra&szlig;e und weiter &uuml;ber die Strecke der Linie 13A umgeleitet.)</p> <p>Hinweis:<br />Beachten Sie unsere Lautsprecherdurchsagen und unsere Echtzeitinformationen in WienMobil und weichen Sie auf die U-Bahn Linien aus.</p>",
+    "title": "12A: Bauarbeiten",
+    "description": "<h2>Bauarbeiten</h2> <p>Wegen <span style=\"font-family: Arial, sans-serif; font-size: 12pt;\">Stra&szlig;enbauarbeiten und der damit einhergehenden teilweisen Sperre der Mariahilfer Stra&szlig;e wird die Linie 12A umgeleitet.</span></p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Mittwoch, 15. Juli Betriebsbeginn bis voraussichtlich Mitte August 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 12A:<br /></strong>Umleitung in Richtung Eichenstra&szlig;e ab Schmelzbr&uuml;ckenrampe # Grenzgasse &uuml;ber Avedikstra&szlig;e &ndash; Zollernsperggasse &ndash; Ansch&uuml;tzgasse &ndash; Schwendergasse &ndash; Jheringgasse &ndash; Sechshauser Stra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span></p> <p>Grenzgasse - (Grenzgasse 15 nach Avedikstra&szlig;e)<br />Geibelgasse - (Mariahilfer Stra&szlig;e 189 vor Arnsteingasse)<br />Henriettenplatz - (Arnsteingasse 23 nach Meinhartsdorfer Gasse)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span></p> <p>Grenzgasse - (Schmelzbr&uuml;ckenrampe gegen&uuml;ber Sperrgasse 5-27, prov. Haltestelle)<br />Rudolfsheim, Ansch&uuml;tzgasse - (Schwendergasse gegen&uuml;ber 51)</p> <p>Umleitung in Richtung Schmelz, Gablenzgasse ab Sechshauser Stra&szlig;e # Geibelgasse &uuml;ber Sechshauser Stra&szlig;e &ndash; Ansch&uuml;tzgasse &ndash; Linzer Stra&szlig;e &ndash; Avedikstra&szlig;e &ndash; Schmelzbr&uuml;ckenrampe zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span></p> <p>- Stiegergasse (Geibelgasse 2-4 nach Sechshauser Stra&szlig;e)<br />- Henriettenplatz (Geibelgasse nach Henriettenplatz)<br />- Geibelgasse (Mariahilfer Stra&szlig;e 174 nach W&uuml;rffelgasse)<br />- Grenzgasse (Grenzgasse 14)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span></p> <p>- Stiegergasse (Sechshauser Stra&szlig;e 42-44, provisorische Haltestelle)<br />- Rudolfsheim, Ansch&uuml;tzgasse (Zollernsperggasse gegen&uuml;ber 2-4, provisorische Haltestelle)<br />- Grenzgasse (Avedikstra&szlig;e 1-3, provisorische Haltestelle)</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene Dokumente/M16 Kundeninfo Dateien/12 externe Synchronisation/Grafiken Einschraenkungen/12A_Mariahilfer_Strasse.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0671e1a4e717d41d856ff5a9e6e354ec8b825349006d22e01b7e297bf7eca59b",
-    "pubDate": "2026-07-23T00:00:00+02:00",
-    "starts_at": "2026-07-23T00:00:00+02:00",
-    "ends_at": "2026-07-24T22:00:00+02:00",
-    "_identity": "wl|hinweis|L=12A,14A|D=2026-07-23"
+    "guid": "8bb8fc00dfd118df3f3553ca74e76a2bb8c179151b8973c243065be8e7dcc16f",
+    "pubDate": "2026-07-05T06:00:00+02:00",
+    "starts_at": "2026-07-15T00:00:00+02:00",
+    "ends_at": "2027-08-15T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=12A|D=2026-07-15"
   },
   {
     "source": "Wiener Linien",
@@ -1238,13 +1238,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Betriebsstörung im Haltestellenbereich Siebenhirten.",
+    "title": "U6: Rettungseinsatz",
+    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 22:05 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Längenfeldgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
-    "pubDate": "2026-07-24T21:21:00+02:00",
-    "starts_at": "2026-07-24T21:21:00+02:00",
-    "ends_at": "2026-07-24T21:40:00+02:00",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-07-24T21:46:00+02:00",
+    "starts_at": "2026-07-24T21:46:00+02:00",
+    "ends_at": "2026-07-24T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-07-24"
   },
   {
