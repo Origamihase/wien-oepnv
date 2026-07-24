@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 24 Jul 2026 13:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 13:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[D: Power disturbance service from Augasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">27ef5a8d792bdabf1168292ba10362be28484c527401f0a37a123287591ab361</guid>
+      <pubDate>Fri, 24 Jul 2026 13:02:47 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Jul 2026 13:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Jul 2026 13:02:47 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Jul 2026 14:02:00 +0200</ext:ends_at>
+      <description>[On 24.07.2026]</description>
+      <content:encoded><![CDATA[[On 24.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Burggasse 67]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 24 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[23.07.2026 – 24.07.2026]</description>
       <content:encoded><![CDATA[[23.07.2026 – 24.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11X/4A/N29: Löwengasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ab28cfd2abcff844a9f8cac1e5afa07355cdb0b697889b76375094edd879e8ef</guid>
-      <pubDate>Wed, 22 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Jul 2026 15:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 22 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Jul 2027 23:59:00 +0200</ext:ends_at>
-      <description>Stop change of lines 1 and N29 towards Stefan-Fadinger-Platz or Floridsdorf S U Stop: Löwengasse From: Rasumovskygasse 2 To: Löwengasse 47–51 Duration … [22.07.2026 – 22.07.2027]</description>
-      <content:encoded><![CDATA[Stop change of lines 1 and N29 towards Stefan-Fadinger-Platz or Floridsdorf S U Stop: Löwengasse From: Rasumovskygasse 2 To: Löwengasse 47–51 Duration …<br/>[22.07.2026 – 22.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
