@@ -824,7 +824,7 @@
     "guid": "cd2204c7545719ef367a1d80f100a473cb05ab42b0684f7b7ac6078c99df82c5",
     "pubDate": "2026-07-24T14:06:00+02:00",
     "starts_at": "2026-07-24T14:06:00+02:00",
-    "ends_at": "2026-07-24T23:55:00+02:00",
+    "ends_at": "2026-07-24T15:23:00+02:00",
     "_identity": "wl|störung|L=33A|D=2026-07-24"
   },
   {
@@ -914,6 +914,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37: Stromstörung",
+    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a568f008fe34b3251af149f243456091de6d900d56228d517ae44836215e2252",
+    "pubDate": "2026-07-24T12:59:00+02:00",
+    "starts_at": "2026-07-24T12:59:00+02:00",
+    "ends_at": "2026-07-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-07-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "38: Betrieb ab Nußdorfer Straße",
     "description": "Gleisbauarbeiten\nBetrieb ab Nußdorfer Straße >",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -957,6 +969,18 @@
     "pubDate": "2026-07-24T13:05:00+02:00",
     "starts_at": "2026-07-24T13:05:10+02:00",
     "ends_at": "2026-07-24T16:00:00+02:00",
+    "_identity": "wl|störung|L=38|D=2026-07-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Stromstörung",
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "91931852629c56734de9ebb890a6d08fe3fa4bc03f486764b8ba9382f17388b5",
+    "pubDate": "2026-07-24T12:59:00+02:00",
+    "starts_at": "2026-07-24T12:59:00+02:00",
+    "ends_at": "2026-07-24T23:55:00+02:00",
     "_identity": "wl|störung|L=38|D=2026-07-24"
   },
   {
@@ -1214,6 +1238,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "77A: Verkehrsüberlastung",
+    "description": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d2fb78dfec0b3971d13e72314dc2efcdbccb60650daf7059b954d1bd1800e28b",
+    "pubDate": "2026-07-24T15:23:00+02:00",
+    "starts_at": "2026-07-24T15:23:00+02:00",
+    "ends_at": "2026-07-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=77A|D=2026-07-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Betrieb ab Börse",
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1270,6 +1306,18 @@
     "starts_at": "2026-07-24T01:00:06+02:00",
     "ends_at": "2026-07-25T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-07-24T15:06:00+02:00",
+    "starts_at": "2026-07-24T15:06:00+02:00",
+    "ends_at": "2026-07-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-07-24"
   },
   {
     "source": "Wiener Linien",

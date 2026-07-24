@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 24 Jul 2026 15:01:13 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 15:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38: current disturbance]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91931852629c56734de9ebb890a6d08fe3fa4bc03f486764b8ba9382f17388b5</guid>
+      <pubDate>Fri, 24 Jul 2026 12:59:00 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Jul 2026 15:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Jul 2026 12:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 24.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37: current disturbance]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a568f008fe34b3251af149f243456091de6d900d56228d517ae44836215e2252</guid>
+      <pubDate>Fri, 24 Jul 2026 12:59:00 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Jul 2026 15:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Jul 2026 12:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 24.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Karlsplatz 5 - 4]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sat, 25 Jul 2026 18:00:00 +0200</ext:ends_at>
       <description>Because of an demonstration at the ring, the following traffic measures are taken. [22.07.2026 – 25.07.2026]</description>
       <content:encoded><![CDATA[Because of an demonstration at the ring, the following traffic measures are taken.<br/>[22.07.2026 – 25.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37: No operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">13d72b4bf0cd9ae5af44d6404fcb8793ef77a9eef5063bf25f4217954bdee71b</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 00:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[23.07.2026 – 24.07.2026]</description>
-      <content:encoded><![CDATA[[23.07.2026 – 24.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: No operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b89e25433406bf59d0f296406b1e73409e59a6528371a4f4ac58b4bdacc224be</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 00:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[23.07.2026 – 24.07.2026]</description>
-      <content:encoded><![CDATA[[23.07.2026 – 24.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
