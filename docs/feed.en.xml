@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 24 Jul 2026 22:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 22:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[24A: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3541adaecb9b2789804fffc053a3ad43e3431fa1b81f452662b2e107aff22bf1</guid>
+      <pubDate>Fri, 24 Jul 2026 22:24:00 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Jul 2026 22:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Jul 2026 22:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic accident in the range Agavenweg. [On 24.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident in the range Agavenweg.<br/>[On 24.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[16A: police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bddea0983b2db5a0fe7561ce5a6d4149b903b23044a0e300481fa6a79c8cd0cb</guid>
+      <pubDate>Fri, 24 Jul 2026 22:16:00 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Jul 2026 22:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Jul 2026 22:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Jul 2026 22:25:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 24.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Karlsplatz 5 - 4]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 24 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[23.07.2026 – 24.07.2026]</description>
       <content:encoded><![CDATA[[23.07.2026 – 24.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: No operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b89e25433406bf59d0f296406b1e73409e59a6528371a4f4ac58b4bdacc224be</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 00:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Jul 2026 23:59:59 +0200</ext:ends_at>
-      <description>[23.07.2026 – 24.07.2026]</description>
-      <content:encoded><![CDATA[[23.07.2026 – 24.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11X/4A/N29: Löwengasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ab28cfd2abcff844a9f8cac1e5afa07355cdb0b697889b76375094edd879e8ef</guid>
-      <pubDate>Wed, 22 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Jul 2026 15:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 22 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Jul 2027 23:59:00 +0200</ext:ends_at>
-      <description>Stop change of lines 1 and N29 towards Stefan-Fadinger-Platz or Floridsdorf S U Stop: Löwengasse From: Rasumovskygasse 2 To: Löwengasse 47–51 Duration … [22.07.2026 – 22.07.2027]</description>
-      <content:encoded><![CDATA[Stop change of lines 1 and N29 towards Stefan-Fadinger-Platz or Floridsdorf S U Stop: Löwengasse From: Rasumovskygasse 2 To: Löwengasse 47–51 Duration …<br/>[22.07.2026 – 22.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -3073,6 +3073,16 @@
       "epoch": 2
     }
   },
+  "3541adaecb9b2789804fffc053a3ad43e3431fa1b81f452662b2e107aff22bf1": {
+    "first_seen": "2026-07-24T20:30:52.705073+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic accident in the range Agavenweg.",
+        "title": "24A: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "355ee88d4f6cc8a5d5571b8b5747ec0e6587603581f73b1f1d74a10f0eadd79a": {
     "first_seen": "2026-07-09T17:00:50.518299+00:00",
     "translations": {
@@ -11455,6 +11465,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: traffic congestion.",
         "title": "87A: traffic congestion"
+      },
+      "epoch": 3
+    }
+  },
+  "bddea0983b2db5a0fe7561ce5a6d4149b903b23044a0e300481fa6a79c8cd0cb": {
+    "first_seen": "2026-07-24T20:30:52.705073+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "16A: police operation"
       },
       "epoch": 3
     }
