@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 25 Jul 2026 15:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jul 2026 15:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">862e3f211c3ceef265b5482217590de31a4543c847f52549b4bb94355c32c947</guid>
+      <pubDate>Sat, 25 Jul 2026 15:13:00 +0200</pubDate>
+      <ext:first_seen>Sat, 25 Jul 2026 15:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 25 Jul 2026 15:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 25 Jul 2026 15:28:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 25.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 25.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43: Betrieb ab Dornbach]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 22 Jul 2027 23:59:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 1 und N29 in Richtung Stefan-Fadinger-Platz bzw. Floridsdorf S U Haltestelle: Löwengasse Von: Rasumovskygasse 2 Nach: Löwengasse 47–51 Dauer … [22.07.2026 – 22.07.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 1 und N29 in Richtung Stefan-Fadinger-Platz bzw. Floridsdorf S U Haltestelle: Löwengasse Von: Rasumovskygasse 2 Nach: Löwengasse 47–51 Dauer …<br/>[22.07.2026 – 22.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Klapprampensperre am 30.07.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">29befaaeaa59915fcfb4642b13cc7f9adc42d57ebf4d00d2b390abae2d632e64</guid>
-      <pubDate>Wed, 22 Jul 2026 10:30:00 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Jul 2026 11:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 22 Jul 2026 10:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Jul 2026 00:10:00 +0200</ext:ends_at>
-      <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. [22.07.2026 – 31.07.2026]</description>
-      <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden.<br/>[22.07.2026 – 31.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
