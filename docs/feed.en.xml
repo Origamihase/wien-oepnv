@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 25 Jul 2026 20:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jul 2026 21:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[O: Traffic disturbance]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Sat, 25 Jul 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: traffic disturbance. [On 25.07.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 25.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A: demonstration No operation!]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ccccd997ff504c1b8013f123fd5e2cce7b33c44a83d539badf84976766775443</guid>
-      <pubDate>Sat, 25 Jul 2026 16:34:55 +0200</pubDate>
-      <ext:first_seen>Sat, 25 Jul 2026 17:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 25 Jul 2026 16:34:55 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 25 Jul 2026 20:45:00 +0200</ext:ends_at>
-      <description>No operation! [On 25.07.2026]</description>
-      <content:encoded><![CDATA[No operation!<br/>[On 25.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43: service from Dornbach]]></title>
@@ -107,6 +96,17 @@
       <ext:ends_at>Fri, 23 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of line 61A towards Vösendorf-Siebenhirten Stop: Liesing S From: Liesinger square 2, Bussteig A After: Liesinger square 1 Duration: From 29. July … [23.07.2026 – 23.07.2027]</description>
       <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf-Siebenhirten Stop: Liesing S From: Liesinger square 2, Bussteig A After: Liesinger square 1 Duration: From 29. July …<br/>[23.07.2026 – 23.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37: No operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">13d72b4bf0cd9ae5af44d6404fcb8793ef77a9eef5063bf25f4217954bdee71b</guid>
+      <pubDate>Thu, 23 Jul 2026 00:00:14 +0200</pubDate>
+      <ext:first_seen>Thu, 23 Jul 2026 00:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 23 Jul 2026 00:00:14 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 25 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[23.07.2026 – 25.07.2026]</description>
+      <content:encoded><![CDATA[[23.07.2026 – 25.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11X/4A/N29: Löwengasse]]></title>
