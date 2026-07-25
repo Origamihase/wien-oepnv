@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 25 Jul 2026 18:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jul 2026 19:01:08 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[32A: Verkehrsunfall Betrieb nur bis Großjedlersdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">77fb363ede74e130bc303e7ebf4d13bf49a94d64f75e0d1742440235396a7ba5</guid>
+      <pubDate>Sat, 25 Jul 2026 18:18:39 +0200</pubDate>
+      <ext:first_seen>Sat, 25 Jul 2026 19:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 25 Jul 2026 18:19:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 25 Jul 2026 19:16:00 +0200</ext:ends_at>
+      <description>[Am 25.07.2026]</description>
+      <content:encoded><![CDATA[[Am 25.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[O: Verkehrsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 22 Aug 2026 00:00:00 +0200</ext:ends_at>
       <description>Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt. [13.07.2026 – 22.08.2026]</description>
       <content:encoded><![CDATA[Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60A: 60A. Liesing S]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5367de9e718e9be388b6e1c4b17e95e7b2fdbc265d96a5cf35ded91b8f3e8415</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 13:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 60A und RB61 in Richtung Alterlaa U bzw. Maurer Hauptplatz Haltestelle: Liesing S Von: Liesinger Platz 2 a, Bussteig B Nach: Perchtoldsdorfer … [23.07.2026 – 23.07.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 60A und RB61 in Richtung Alterlaa U bzw. Maurer Hauptplatz Haltestelle: Liesing S Von: Liesinger Platz 2 a, Bussteig B Nach: Perchtoldsdorfer …<br/>[23.07.2026 – 23.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
