@@ -2,14 +2,14 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "1/2/3A/71/D: Demonstration am 25.07.2026",
-    "description": "<h2>Demonstration</h2> <p>Wegen einer Demonstration am Ring kommt es zu folgenden Verkehrsma&szlig;nahmen.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Samstag, 25. Juli 2026, ab ca. 14:30 Uhr bis ca. 18:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie D:</strong><br />Derzeit kein Betrieb zwischen B&ouml;rse und Schwarzenbergplatz.</p> <p><strong>Linie 1 in Richtung Stefan-Fadinger-Platz:</strong><br />Umleitung in beiden Richtungen zwischen Karlsplatz U und Julius-Raab-Platz &uuml;ber Schwarzenbergplatz und Stubentor U.</p> <p><strong>Linie 2:</strong><br />Linienteilung, kein Betrieb zwischen Ring, Volkstheater und Schwarzenbergplatz, die Z&uuml;ge werden zum Karlsplatz U umgeleitet..</p> <p><strong>Linie 71:<br /></strong>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p> <p><strong>Linie 3A:<br /></strong>Betrieb nur zwischen Stubentor U und Hoher Markt.</p> <p>Hinweis:<br />Beachten Sie unsere Lautsprecherdurchsagen und unsere Echtzeitinformationen in WienMobil und weichen Sie auf die U-Bahn Linien aus.</p>",
+    "title": "1/2/71/D: Parlament",
+    "description": "<h2>Auflassung Haltestelle Parlament</h2> <p>F&uuml;r die Beschleunigung der Stra&szlig;enbahnlinien am Ring wird die Haltestelle Parlament dauerhaft aufgelassen.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Montag, 13. Juli 2026</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span></p> <p>Die Haltestelle Parlament der Linien D, 1, 2 und 71 wird in beiden Richtungen dauerhaft aufgelassen. Mit dieser Ma&szlig;nahme wird die Stra&szlig;enbahn am Ring beschleunigt.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Weichen Sie auf die nahegelegenen Haltestellen Ring, Volkstheater; Rathausplatz, Burgtheater und Rathaus aus.</p> <p><span style=\"text-decoration: underline;\"><strong>Weiteres:</strong></span><span style=\"text-decoration: underline;\"><br /></span>Auf Grund von Gleisbauarbeiten werden die Linien D, 1 und 71 bis Ende August umgeleitet.</p> <p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/D_1_2_71_Parlament.png\" alt=\"\" width=\"859\" height=\"837\" /></p> <p>&nbsp;</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a9e40358659f6a21f28c538e371036306bab794bf636fd3aea869c5f1bc1ce4a",
-    "pubDate": "2026-07-22T00:00:00+02:00",
-    "starts_at": "2026-07-22T00:00:00+02:00",
-    "ends_at": "2026-07-25T18:00:00+02:00",
-    "_identity": "wl|hinweis|L=1,2,3A,71,D|D=2026-07-22"
+    "guid": "b2b1b281ab505d94322a4c3115c52176813e47db9e78f08f04dafe9f3849d4b1",
+    "pubDate": "2026-07-02T12:00:00+02:00",
+    "starts_at": "2026-07-13T00:00:00+02:00",
+    "ends_at": "2026-08-31T23:59:00+02:00",
+    "_identity": "wl|hinweis|L=1,2,71,D|D=2026-07-13"
   },
   {
     "source": "Wiener Linien",
@@ -722,6 +722,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "67B/16A/17A/67A: Störung an einem Bahnübergang",
+    "description": "Linie 67B: Fahrtbehinderung in beiden Richtungen. Linie 16A: Fahrtbehinderung in beiden Richtungen. Linie 17A: Fahrtbehinderung in beiden Richtungen. Linie 67A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 18:10 Uhr. Grund: Störung an einem Bahnübergang im Bereich Himberger Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8c5d6ebe3af5aaed99016a85fbfa83149f04b9be6d1d8739e8eeb0a55de46dc0",
+    "pubDate": "2026-07-25T17:49:00+02:00",
+    "starts_at": "2026-07-25T17:49:00+02:00",
+    "ends_at": "2026-07-25T17:52:00+02:00",
+    "_identity": "wl|störung|L=16A,17A,67A,67B|D=2026-07-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Pierre-de-Coubertin-Platz im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Pierre-de-Coubertin-Platz im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -752,7 +764,7 @@
     "guid": "ccccd997ff504c1b8013f123fd5e2cce7b33c44a83d539badf84976766775443",
     "pubDate": "2026-07-25T16:34:55+02:00",
     "starts_at": "2026-07-25T16:34:55+02:00",
-    "ends_at": "2026-07-25T20:00:00+02:00",
+    "ends_at": "2026-07-25T20:45:00+02:00",
     "_identity": "wl|störung|L=1A|D=2026-07-25"
   },
   {
@@ -1088,7 +1100,7 @@
     "guid": "d3f78298c0cf7e3adb13e441ed10aff7e1e8b83ad2eeba7885e3b92a6ad6bd69",
     "pubDate": "2026-07-25T16:29:00+02:00",
     "starts_at": "2026-07-25T16:29:00+02:00",
-    "ends_at": "2026-07-25T23:55:00+02:00",
+    "ends_at": "2026-07-25T17:53:00+02:00",
     "_identity": "wl|störung|L=74A|D=2026-07-25"
   },
   {
@@ -1234,5 +1246,17 @@
     "starts_at": "2026-07-23T00:00:14+02:00",
     "ends_at": "2026-07-25T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-07-23|TK=züge halten bei währinger gürtel gegenüber 164"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Schadhafter Signalanlage",
+    "description": "Fahrtbehinderung\nSchadhafter Signalanlage",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b9b2ff85a5840e6e82a452f955d19c1d60baafaeef96def119dec8a4cbe3f089",
+    "pubDate": "2026-07-25T17:50:42+02:00",
+    "starts_at": "2026-07-25T17:50:48+02:00",
+    "ends_at": "2026-07-25T18:50:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-07-25|TK=fahrtbehinderung schadhafter signalanlage"
   }
 ]
