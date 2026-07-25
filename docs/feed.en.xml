@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 25 Jul 2026 17:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jul 2026 17:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: Traffic disturbance]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b04661fbb967de0a6abd3383e55031da43eff67dc145c5cd56b854643094b44f</guid>
+      <pubDate>Sat, 25 Jul 2026 17:28:00 +0200</pubDate>
+      <ext:first_seen>Sat, 25 Jul 2026 17:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 25 Jul 2026 17:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 25 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 25.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 25.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[3A: demonstration No operation!]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +27,7 @@
       <pubDate>Sat, 25 Jul 2026 16:36:51 +0200</pubDate>
       <ext:first_seen>Sat, 25 Jul 2026 17:01:10 +0200</ext:first_seen>
       <ext:starts_at>Sat, 25 Jul 2026 16:36:51 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 25 Jul 2026 17:35:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 25 Jul 2026 20:00:00 +0200</ext:ends_at>
       <description>No operation! [On 25.07.2026]</description>
       <content:encoded><![CDATA[No operation!<br/>[On 25.07.2026]]]></content:encoded>
     </item>
@@ -27,7 +38,7 @@
       <pubDate>Sat, 25 Jul 2026 16:35:53 +0200</pubDate>
       <ext:first_seen>Sat, 25 Jul 2026 17:01:10 +0200</ext:first_seen>
       <ext:starts_at>Sat, 25 Jul 2026 16:35:53 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 25 Jul 2026 17:34:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 25 Jul 2026 20:00:00 +0200</ext:ends_at>
       <description>No operation! [On 25.07.2026]</description>
       <content:encoded><![CDATA[No operation!<br/>[On 25.07.2026]]]></content:encoded>
     </item>
@@ -38,7 +49,7 @@
       <pubDate>Sat, 25 Jul 2026 16:34:55 +0200</pubDate>
       <ext:first_seen>Sat, 25 Jul 2026 17:01:10 +0200</ext:first_seen>
       <ext:starts_at>Sat, 25 Jul 2026 16:34:55 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 25 Jul 2026 17:33:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 25 Jul 2026 20:00:00 +0200</ext:ends_at>
       <description>No operation! [On 25.07.2026]</description>
       <content:encoded><![CDATA[No operation!<br/>[On 25.07.2026]]]></content:encoded>
     </item>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 23 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of line 60A towards Alterlaa U Stop: Liesing S From: Liesinger Platz 2 a, Bussteig B After: Perchtoldsdorfer Straße 2 Duration: From 29. July … [23.07.2026 – 23.07.2027]</description>
       <content:encoded><![CDATA[Stop change of line 60A towards Alterlaa U Stop: Liesing S From: Liesinger Platz 2 a, Bussteig B After: Perchtoldsdorfer Straße 2 Duration: From 29. July …<br/>[23.07.2026 – 23.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[61A1X: Liesing S]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">968496c6529b6b8a24b789d233a3129eb7568dfa56f53bd5a2de00d3d1269ec0</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 13:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line 61A towards Vösendorf-Siebenhirten Stop: Liesing S From: Liesinger square 2, Bussteig A After: Liesinger square 1 Duration: From 29. July … [23.07.2026 – 23.07.2027]</description>
-      <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf-Siebenhirten Stop: Liesing S From: Liesinger square 2, Bussteig A After: Liesinger square 1 Duration: From 29. July …<br/>[23.07.2026 – 23.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

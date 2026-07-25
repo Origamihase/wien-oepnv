@@ -752,7 +752,7 @@
     "guid": "ccccd997ff504c1b8013f123fd5e2cce7b33c44a83d539badf84976766775443",
     "pubDate": "2026-07-25T16:34:55+02:00",
     "starts_at": "2026-07-25T16:34:55+02:00",
-    "ends_at": "2026-07-25T17:33:00+02:00",
+    "ends_at": "2026-07-25T20:00:00+02:00",
     "_identity": "wl|störung|L=1A|D=2026-07-25"
   },
   {
@@ -800,7 +800,7 @@
     "guid": "3aee12203511e3e72227f33e472c060347fdf40d75db9f684ab5d01d932e2e7f",
     "pubDate": "2026-07-25T16:35:53+02:00",
     "starts_at": "2026-07-25T16:35:53+02:00",
-    "ends_at": "2026-07-25T17:34:00+02:00",
+    "ends_at": "2026-07-25T20:00:00+02:00",
     "_identity": "wl|störung|L=2A|D=2026-07-25"
   },
   {
@@ -872,7 +872,7 @@
     "guid": "ac6225b2b5a6a1fc86fb0a36e0019bf087db67a069e4fe4b51409d0a3252fa60",
     "pubDate": "2026-07-25T16:36:51+02:00",
     "starts_at": "2026-07-25T16:36:51+02:00",
-    "ends_at": "2026-07-25T17:35:00+02:00",
+    "ends_at": "2026-07-25T20:00:00+02:00",
     "_identity": "wl|störung|L=3A|D=2026-07-25"
   },
   {
@@ -1162,6 +1162,18 @@
     "starts_at": "2026-07-25T01:00:04+02:00",
     "ends_at": "2026-07-26T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Verkehrsstörung",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b04661fbb967de0a6abd3383e55031da43eff67dc145c5cd56b854643094b44f",
+    "pubDate": "2026-07-25T17:28:00+02:00",
+    "starts_at": "2026-07-25T17:28:00+02:00",
+    "ends_at": "2026-07-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=O|D=2026-07-25"
   },
   {
     "source": "Wiener Linien",
