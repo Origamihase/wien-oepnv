@@ -698,6 +698,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Verunreinigung",
+    "description": "Linie 10A: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "017058dd074e4422c0c8dcb5495b900e2989ef189c6775d28f43f027ca4115e9",
+    "pubDate": "2026-07-26T20:37:00+02:00",
+    "starts_at": "2026-07-26T20:37:00+02:00",
+    "ends_at": "2026-07-26T21:14:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-07-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "10: Polizeieinsatz",
     "description": "Linie 10: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -814,18 +826,6 @@
     "starts_at": "2026-07-26T05:00:19+02:00",
     "ends_at": "2026-07-27T01:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-07-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "24A: Rettungseinsatz",
-    "description": "Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Markomannenstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f4c1b4ef83da76021bb0785c9dec0bd0c89d9d662290a89dfc04cd87726fc44f",
-    "pubDate": "2026-07-26T19:34:00+02:00",
-    "starts_at": "2026-07-26T19:34:00+02:00",
-    "ends_at": "2026-07-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=24A|D=2026-07-26"
   },
   {
     "source": "Wiener Linien",
