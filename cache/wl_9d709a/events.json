@@ -1046,6 +1046,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "98A: Verkehrsunfall",
+    "description": "Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4b8c72496be1158ec9ee125f86e36b40978a6306a7b68abed745d918fd9592c6",
+    "pubDate": "2026-07-26T07:01:00+02:00",
+    "starts_at": "2026-07-26T07:01:00+02:00",
+    "ends_at": "2026-07-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=98A|D=2026-07-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Betrieb ab Börse",
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
