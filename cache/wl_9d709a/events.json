@@ -1142,14 +1142,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N41: Busse halten Liechtensteinstraße 19",
-    "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 19",
+    "title": "N43: Busse halten Dornbacher Straße 85",
+    "description": "Gleisbauarbeiten\nBusse halten Dornbacher Straße 85",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "62540e3a511839981230453380fb7c7af2b4d40fab19503d61f8814d7f8588da",
-    "pubDate": "2026-07-26T01:00:26+02:00",
-    "starts_at": "2026-07-26T01:00:26+02:00",
-    "ends_at": "2026-07-27T00:30:00+02:00",
-    "_identity": "wl|störung|L=N41|D=2026-07-26"
+    "guid": "2d95726ed28fcc964d6860a108a88378e18a16cb625531bc8488223f50b958d7",
+    "pubDate": "2026-07-27T00:30:02+02:00",
+    "starts_at": "2026-07-27T00:30:02+02:00",
+    "ends_at": "2026-07-27T04:50:00+02:00",
+    "_identity": "wl|störung|L=N43|D=2026-07-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N43: Busse halten Alszeile 93",
+    "description": "Gleisbauarbeiten\nBusse halten Alszeile 93",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7c175da71f85aad7ffe071ccf58c215f5c088dd9c9d73d351933daae4d3fecb0",
+    "pubDate": "2026-07-27T00:30:02+02:00",
+    "starts_at": "2026-07-27T00:30:02+02:00",
+    "ends_at": "2026-07-27T04:50:00+02:00",
+    "_identity": "wl|störung|L=N43|D=2026-07-27"
   },
   {
     "source": "Wiener Linien",
