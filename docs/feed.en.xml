@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 26 Jul 2026 18:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2026 18:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1/4A: external traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d1777d6332742617cfcecf463d83d436aa3c8c4b7188d9fbd15b66b57005507d</guid>
+      <pubDate>Sun, 26 Jul 2026 18:09:00 +0200</pubDate>
+      <ext:first_seen>Sun, 26 Jul 2026 18:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 26 Jul 2026 18:09:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 26 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation only between Stefan-Fadinger-Platz and Radetzkyplatz. Continue to Praterstern S U. Line 4A: Operation only between Karlsplatz U and Rasumofskygasse. [On 26.07.2026]</description>
+      <content:encoded><![CDATA[Operation only between Stefan-Fadinger-Platz and Radetzkyplatz. Continue to Praterstern S U. Line 4A: Operation only between Karlsplatz U and Rasumofskygasse.<br/>[On 26.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: U2 Station Volkstheater cannot be maintained!]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 22 Jul 2027 23:59:00 +0200</ext:ends_at>
       <description>Stop change of lines 1 and N29 towards Stefan-Fadinger-Platz or Floridsdorf S U Stop: Löwengasse From: Rasumovskygasse 2 To: Löwengasse 47–51 Duration … [22.07.2026 – 22.07.2027]</description>
       <content:encoded><![CDATA[Stop change of lines 1 and N29 towards Stefan-Fadinger-Platz or Floridsdorf S U Stop: Löwengasse From: Rasumovskygasse 2 To: Löwengasse 47–51 Duration …<br/>[22.07.2026 – 22.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Folding ramp lock on 30.07.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">29befaaeaa59915fcfb4642b13cc7f9adc42d57ebf4d00d2b390abae2d632e64</guid>
-      <pubDate>Wed, 22 Jul 2026 10:30:00 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Jul 2026 11:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 22 Jul 2026 10:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Jul 2026 00:10:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [22.07.2026 – 31.07.2026]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[22.07.2026 – 31.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
