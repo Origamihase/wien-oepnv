@@ -998,6 +998,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Rettungseinsatz",
+    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
+    "pubDate": "2026-07-27T05:53:00+02:00",
+    "starts_at": "2026-07-27T05:53:00+02:00",
+    "ends_at": "2026-07-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-07-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1138,6 +1150,18 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Polizeieinsatz",
+    "description": "Linie U4: Unregelmäßige Intervalle in Richtung Schwedenplatz U. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
+    "pubDate": "2026-07-27T05:35:00+02:00",
+    "starts_at": "2026-07-27T05:35:00+02:00",
+    "ends_at": "2026-07-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-07-27"
   },
   {
     "source": "Wiener Linien",
