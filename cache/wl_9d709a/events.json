@@ -782,6 +782,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Polizeieinsatz",
+    "description": "Linie 2: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 07:50 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Burgring.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
+    "pubDate": "2026-07-27T07:27:00+02:00",
+    "starts_at": "2026-07-27T07:27:00+02:00",
+    "ends_at": "2026-07-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-07-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "31: Gleisbauarbeiten",
     "description": "Linie 31: Betrieb nur zwischen Schottenring U und Friedrich-Engels-Platz. Weichen Sie ersatzweise auf die Linien U6, 30, 5A und 11A. aus. Voraussichtliche Dauer: Ende August. Grund: Gleisbauarbeiten im Bereich Floridsdorfer Brücke.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1150,6 +1162,18 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Schadhaftes Fahrzeug",
+    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 07:40 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Thaliastraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
+    "pubDate": "2026-07-27T07:27:00+02:00",
+    "starts_at": "2026-07-27T07:27:00+02:00",
+    "ends_at": "2026-07-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-07-27"
   },
   {
     "source": "Wiener Linien",
