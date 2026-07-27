@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 27 Jul 2026 11:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2026 11:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[94A: Kagraner Anger]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1706594fa3bfef8bc5afb23e56f42e2ce8adc02b2f13d7955af7cc61a34ce8c4</guid>
+      <pubDate>Mon, 27 Jul 2026 11:25:00 +0200</pubDate>
+      <ext:first_seen>Mon, 27 Jul 2026 11:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Jul 2026 11:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 30 Jul 2026 07:00:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 94A in Richtung Kagran U Haltestelle: Kagraner Anger Von: Siebenbürgerstraße 28-48, Stiege 17 Nach: Siebenbürgerstraße gegenüber 47A-49A … [27.07.2026 – 30.07.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 94A in Richtung Kagran U Haltestelle: Kagraner Anger Von: Siebenbürgerstraße 28-48, Stiege 17 Nach: Siebenbürgerstraße gegenüber 47A-49A …<br/>[27.07.2026 – 30.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Karlsplatz 5 - 4]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -59,10 +70,10 @@
       <guid isPermaLink="false">5367de9e718e9be388b6e1c4b17e95e7b2fdbc265d96a5cf35ded91b8f3e8415</guid>
       <pubDate>Thu, 23 Jul 2026 00:00:00 +0200</pubDate>
       <ext:first_seen>Thu, 23 Jul 2026 13:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 60A und RB61 in Richtung Alterlaa U bzw. Maurer Hauptplatz Haltestelle: Liesing S Von: Liesinger Platz 2 a, Bussteig B Nach: Perchtoldsdorfer … [23.07.2026 – 23.07.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 60A und RB61 in Richtung Alterlaa U bzw. Maurer Hauptplatz Haltestelle: Liesing S Von: Liesinger Platz 2 a, Bussteig B Nach: Perchtoldsdorfer …<br/>[23.07.2026 – 23.07.2027]]]></content:encoded>
+      <ext:starts_at>Mon, 27 Jul 2026 11:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 27 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 60A und RB61 in Richtung Alterlaa U bzw. Maurer Hauptplatz Haltestelle: Liesing S Von: Liesinger Platz 2 a, Bussteig B Nach: Perchtoldsdorfer … [27.07.2026 – 27.07.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 60A und RB61 in Richtung Alterlaa U bzw. Maurer Hauptplatz Haltestelle: Liesing S Von: Liesinger Platz 2 a, Bussteig B Nach: Perchtoldsdorfer …<br/>[27.07.2026 – 27.07.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[61A: Liesing S]]></title>
@@ -74,6 +85,17 @@
       <ext:ends_at>Fri, 23 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 61A in Richtung Vösendorf-Siebenhirten Haltestelle: Liesing S Von: Liesinger Platz 2, Bussteig A Nach: Liesinger Platz 1 Dauer: Ab 29. Juli … [23.07.2026 – 23.07.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 61A in Richtung Vösendorf-Siebenhirten Haltestelle: Liesing S Von: Liesinger Platz 2, Bussteig A Nach: Liesinger Platz 1 Dauer: Ab 29. Juli …<br/>[23.07.2026 – 23.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37: Kein Betrieb]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">13d72b4bf0cd9ae5af44d6404fcb8793ef77a9eef5063bf25f4217954bdee71b</guid>
+      <pubDate>Mon, 27 Jul 2026 00:00:13 +0200</pubDate>
+      <ext:first_seen>Thu, 23 Jul 2026 00:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Jul 2026 00:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 27 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 27.07.2026]</description>
+      <content:encoded><![CDATA[[Am 27.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/4A/N29: Löwengasse]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 31 Jul 2026 00:10:00 +0200</ext:ends_at>
       <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. [22.07.2026 – 31.07.2026]</description>
       <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden.<br/>[22.07.2026 – 31.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N60: Bauarbeiten26]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cd9a9f2adaad4734703439a59d23669039f6df05ba5f1c192338148711f473a7</guid>
-      <pubDate>Mon, 20 Jul 2026 19:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 20 Jul 2026 19:31:08 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 25 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Willergasse / Ketzergasse wird die Linie N60 umgeleitet. Zeitraum: Ab Samstag, 25. Juli 2026, etwa 06:00 Uhr bis voraussichtlich einer Woche. [25.07.2026 – 20.07.2027]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Willergasse / Ketzergasse wird die Linie N60 umgeleitet. Zeitraum: Ab Samstag, 25. Juli 2026, etwa 06:00 Uhr bis voraussichtlich einer Woche.<br/>[25.07.2026 – 20.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A: Straßenbauarbeiten26]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8ece1940e1979727af0d90c4952196e5f01688b77f70ccfdf1aa9d71cb916f4b</guid>
-      <pubDate>Mon, 20 Jul 2026 19:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 20 Jul 2026 19:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Rotensterngasse wird die Linie 5A kurzgeführt. Zeitraum: Ab Montag, 28. Juli 2026, etwa 07:00 Uhr bis voraussichtlich zwei Wochen. [28.07.2026 – 20.07.2027]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Rotensterngasse wird die Linie 5A kurzgeführt. Zeitraum: Ab Montag, 28. Juli 2026, etwa 07:00 Uhr bis voraussichtlich zwei Wochen.<br/>[28.07.2026 – 20.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
