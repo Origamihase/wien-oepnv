@@ -734,42 +734,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung\nSignalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "32c92ab83f0de4027d69c995f2641822ec1a450fec2f45c5d0d5e4e3a1ace708",
-    "pubDate": "2026-07-28T11:32:03+02:00",
-    "starts_at": "2026-07-28T11:32:19+02:00",
-    "ends_at": "2026-07-28T12:31:00+02:00",
-    "_identity": "wl|störung|L=16A|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "16A: Störung an einem Bahnübergang",
-    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78cfc305e07fdf703edca3374236eb576bf584080a19450b6f7f78fade7ec1e8",
-    "pubDate": "2026-07-28T11:30:00+02:00",
-    "starts_at": "2026-07-28T11:30:00+02:00",
-    "ends_at": "2026-07-28T12:30:00+02:00",
-    "_identity": "wl|störung|L=16A|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "17A: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung\nSignalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dfa210ba3291a66edebd31b6cfcfd1d45e1cd37d3c1946494afc52dec0c55d4",
-    "pubDate": "2026-07-28T11:32:33+02:00",
-    "starts_at": "2026-07-28T11:32:48+02:00",
-    "ends_at": "2026-07-28T12:32:00+02:00",
-    "_identity": "wl|störung|L=17A|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Pierre-de-Coubertin-Platz im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Pierre-de-Coubertin-Platz im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -962,18 +926,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "13da360ca8a94dcafa0dd3aa043ce5baefa02c1c92c93d57c144cc19166804d0",
-    "pubDate": "2026-07-28T12:00:51+02:00",
-    "starts_at": "2026-07-28T12:01:04+02:00",
-    "ends_at": "2026-07-28T13:00:00+02:00",
-    "_identity": "wl|störung|L=44|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Linie 57A: Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse. In Richtung Ruolfsheim, Anschützgasse Betrieb ab Hirschengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1042,30 +994,6 @@
     "starts_at": "2026-07-28T04:45:27+02:00",
     "ends_at": "2026-07-29T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67A: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung\nSignalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c6217f3734081f8e926c9979e884673454468f1b1a07fa5e2e3236de593c654",
-    "pubDate": "2026-07-28T11:33:09+02:00",
-    "starts_at": "2026-07-28T11:33:31+02:00",
-    "ends_at": "2026-07-28T12:32:00+02:00",
-    "_identity": "wl|störung|L=67A|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67B: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung\nSignalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dcfeb610d68f34a772e9dab8cb83e87a0d52ba551d6978e4c268381f37521c7",
-    "pubDate": "2026-07-28T11:33:31+02:00",
-    "starts_at": "2026-07-28T11:33:46+02:00",
-    "ends_at": "2026-07-28T12:33:00+02:00",
-    "_identity": "wl|störung|L=67B|D=2026-07-28"
   },
   {
     "source": "Wiener Linien",
