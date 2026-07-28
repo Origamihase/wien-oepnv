@@ -770,18 +770,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Schadhafter Zug Betrieb ab Hintere Zollamtsstraße",
-    "description": "Schadhafter Zug\nBetrieb ab Hintere Zollamtsstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d721937811e896cb5d41ab16e78f7e672914912f1fef6d558258b53fd2590b0f",
-    "pubDate": "2026-07-28T18:09:50+02:00",
-    "starts_at": "2026-07-28T18:10:04+02:00",
-    "ends_at": "2026-07-28T20:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Betrieb ab Resselgasse",
     "description": "Bauarbeiten\nBetrieb ab Resselgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -814,54 +802,6 @@
     "starts_at": "2026-07-27T00:00:16+02:00",
     "ends_at": "2026-07-28T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-07-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Schadhafter Zug Züge halten Steg A",
-    "description": "Schadhafter Zug\nZüge halten Steg A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4d514b36afffbab748c8e1573356c9153863403b78424b7af32e64692092afd4",
-    "pubDate": "2026-07-28T18:17:27+02:00",
-    "starts_at": "2026-07-28T18:17:27+02:00",
-    "ends_at": "2026-07-28T20:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Schadhafter Zug Züge halten bei Linie 46",
-    "description": "Schadhafter Zug\nZüge halten bei Linie 46",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbdf2af53ea40e59493344a9bd7ee2e5c655e6a88a0611b6537ea2e374941de8",
-    "pubDate": "2026-07-28T18:16:39+02:00",
-    "starts_at": "2026-07-28T18:16:39+02:00",
-    "ends_at": "2026-07-28T20:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Schadhafter Zug Betrieb ab Schwedenplatz",
-    "description": "Schadhafter Zug\nBetrieb ab Schwedenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d3a834fffa4d43da22ab164253bbcabf269c6f12c0d84497e77cd60a92684679",
-    "pubDate": "2026-07-28T18:17:08+02:00",
-    "starts_at": "2026-07-28T18:17:08+02:00",
-    "ends_at": "2026-07-28T20:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Schadhafter Zug Betrieb ab Ring, Volkstheater U",
-    "description": "Schadhafter Zug\nBetrieb ab Ring, Volkstheater U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dff53a462919ba54d3706c58d86ea0ba41423b5a3c08656da556ca35fc0621df",
-    "pubDate": "2026-07-28T18:15:41+02:00",
-    "starts_at": "2026-07-28T18:15:41+02:00",
-    "ends_at": "2026-07-28T20:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-28"
   },
   {
     "source": "Wiener Linien",
@@ -1150,30 +1090,6 @@
     "starts_at": "2026-07-27T00:00:14+02:00",
     "ends_at": "2026-07-28T23:59:59+02:00",
     "_identity": "wl|störung|L=D|D=2026-07-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Schadhafter Zug Betrieb ab Julius -Raab-Platz",
-    "description": "Schadhafter Zug\nBetrieb ab Julius -Raab-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "366eea8c68e806d39dcf656380993826456969bafedae5ac157612171bd300b9",
-    "pubDate": "2026-07-28T18:07:55+02:00",
-    "starts_at": "2026-07-28T18:07:55+02:00",
-    "ends_at": "2026-07-28T20:00:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Schadhafter Zug Betrieb ab Schwarzenbergplatz",
-    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d8183fb7400e2dc94fd9dfe537c9f7763a38de287b88446e9f662a385fd44e81",
-    "pubDate": "2026-07-28T18:07:25+02:00",
-    "starts_at": "2026-07-28T18:07:25+02:00",
-    "ends_at": "2026-07-28T20:00:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-07-28"
   },
   {
     "source": "Wiener Linien",
