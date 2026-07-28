@@ -3250,6 +3250,16 @@
       "epoch": 3
     }
   },
+  "3735dd03dfbaa97b59f38640c3a37c876de820c66e0147838f8138c986dfb4e0": {
+    "first_seen": "2026-07-28T20:31:01.674702+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: defective vehicle.",
+        "title": "24A: defective vehicle"
+      },
+      "epoch": 3
+    }
+  },
   "374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9": {
     "first_seen": "2026-06-13T06:01:09.538875+00:00",
     "translations": {
@@ -16543,6 +16553,14 @@
         "title": "Wiener Neustadt Hauptbahnhof"
       },
       "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&899505": {
+    "first_seen": "2026-07-28T20:31:01.674702+00:00",
+    "translations": {
+      "en": {
+        "title": "Wien Liesing"
+      }
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
