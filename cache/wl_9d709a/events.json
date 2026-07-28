@@ -770,18 +770,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Schadhaftes Fahrzeug",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "73357b6320dfec1f26a86c63469d119b40e8f17ed69fcf1491dd8ae09deab193",
-    "pubDate": "2026-07-28T18:04:00+02:00",
-    "starts_at": "2026-07-28T18:04:00+02:00",
-    "ends_at": "2026-07-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Schadhafter Zug Betrieb ab Hintere Zollamtsstraße",
     "description": "Schadhafter Zug\nBetrieb ab Hintere Zollamtsstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -789,18 +777,6 @@
     "pubDate": "2026-07-28T18:09:50+02:00",
     "starts_at": "2026-07-28T18:10:04+02:00",
     "ends_at": "2026-07-28T20:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Schadhafter Zug Betrieb ab Züge halten bei Linie O",
-    "description": "Schadhafter Zug\nBetrieb ab Züge halten bei Linie O",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e1a74cc89382d417bd4bc026b5050db2cf0e0a976058dd5bd50d8dce80770ec4",
-    "pubDate": "2026-07-28T18:14:13+02:00",
-    "starts_at": "2026-07-28T18:14:13+02:00",
-    "ends_at": "2026-07-28T19:13:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-07-28"
   },
   {
@@ -838,18 +814,6 @@
     "starts_at": "2026-07-27T00:00:16+02:00",
     "ends_at": "2026-07-28T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-07-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Schadhaftes Fahrzeug",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3",
-    "pubDate": "2026-07-28T18:04:00+02:00",
-    "starts_at": "2026-07-28T18:04:00+02:00",
-    "ends_at": "2026-07-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-07-28"
   },
   {
     "source": "Wiener Linien",
@@ -1202,18 +1166,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Schadhaftes Fahrzeug",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c",
-    "pubDate": "2026-07-28T18:04:00+02:00",
-    "starts_at": "2026-07-28T18:04:00+02:00",
-    "ends_at": "2026-07-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Schadhafter Zug Betrieb ab Schwarzenbergplatz",
     "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1250,20 +1202,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-07-28T15:45:00+02:00",
-    "starts_at": "2026-07-28T15:45:00+02:00",
-    "ends_at": "2026-07-28T19:00:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U2: Betriebsstörung",
-    "description": "Jeder zweite Zug der Linie U2 fährt derzeit nur zwischen Seestadt und Museumsquartier. Zwischen Museumsquartier und Karlsplatz kommt es zu längeren Wartezeiten. Voraussichtliche Dauer: 19:15 Uhr. Grund: Betriebsstörung im Bereich Karlsplatz.",
+    "description": "Die Linie U2 fährt derzeit nur zwischen Seestadt und Museumsquartier. Weichen Sie ersatzweise auf die Linie 2 aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Betriebsstörung im Bereich Karlsplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
     "pubDate": "2026-07-28T16:30:00+02:00",
@@ -1330,5 +1270,17 @@
     "starts_at": "2026-07-27T00:00:13+02:00",
     "ends_at": "2026-07-28T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-07-27|TK=züge halten bei währinger gürtel gegenüber 164"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Betriebsstörung Kein Betrieb zwischen Karlsplatz und Museumsquartier",
+    "description": "Betriebsstörung\nKein Betrieb zwischen Karlsplatz und Museumsquartier",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4be5dae5d00f14478f73f4b3d2a31d76876a64b8d093bc3a76d33acd26561c4e",
+    "pubDate": "2026-07-28T19:18:20+02:00",
+    "starts_at": "2026-07-28T19:18:47+02:00",
+    "ends_at": "2026-07-28T20:15:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-07-28|TK=betriebsstörung kein betrieb zwischen karlsplatz und museumsquartier"
   }
 ]
