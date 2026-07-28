@@ -734,6 +734,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Rettungseinsatz",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
+    "pubDate": "2026-07-28T19:00:00+02:00",
+    "starts_at": "2026-07-28T19:00:00+02:00",
+    "ends_at": "2026-07-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-07-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Pierre-de-Coubertin-Platz im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Pierre-de-Coubertin-Platz im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1244,14 +1256,14 @@
     "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
     "pubDate": "2026-07-28T15:45:00+02:00",
     "starts_at": "2026-07-28T15:45:00+02:00",
-    "ends_at": "2026-07-28T23:55:00+02:00",
+    "ends_at": "2026-07-28T19:00:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-07-28"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U2: Betriebsstörung",
-    "description": "Linie U2: Jeder zweite Zug Betrieb nur zwischen Seestadt und Museumsquartier. Zwischen Karlsplatz und Museumsquartier kommt es zu längeren Wartezeiten. Voraussichtliche Dauer: 19:15 Uhr. Grund: Betriebsstörung im Bereich Karlsplatz.",
+    "description": "Jeder zweite Zug der Linie U2 fährt derzeit nur zwischen Seestadt und Museumsquartier. Zwischen Museumsquartier und Karlsplatz kommt es zu längeren Wartezeiten. Voraussichtliche Dauer: 19:15 Uhr. Grund: Betriebsstörung im Bereich Karlsplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
     "pubDate": "2026-07-28T16:30:00+02:00",
