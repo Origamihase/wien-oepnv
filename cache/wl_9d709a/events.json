@@ -674,6 +674,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "U4: Klapprampensperre am 29.07.2026",
+    "description": "<p class=\"MsoNormal\">Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung k&ouml;nnen die Klapprampen der U-Bahnz&uuml;ge der Linie U4 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig.</p> <p class=\"MsoNormal\">Due to the high number of passengers attending an event, the folding ramps on line U4 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting.</p> <p class=\"MsoNormal\">Zeitraum | Duration:<br />29.07.2026, ca. 20:30 Uhr - 00:00 Uhr</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "09c684048915c4b93c9efb654e33ac1eb6961f99f8773bb09e499b78d1689797",
+    "pubDate": "2026-07-28T08:00:00+02:00",
+    "starts_at": "2026-07-28T08:00:00+02:00",
+    "ends_at": "2026-07-29T23:59:00+02:00",
+    "_identity": "wl|hinweis|L=U4|D=2026-07-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "U6: U6 Stützmauersanierung: Thaliastraße, Burggasse-Stadthalle Sperre Gleis 1",
     "description": "<h2>Gleiswechselbetrieb</h2> <p>Wegen Sanierungsarbeiten kommt es zu einer Bahnsteigsperre der Linie U6&nbsp; ab ca. 22:30 Uhr in den Stationen Thaliastra&szlig;e und Burggasse, Stadthalle in Richtung Floridsdorf.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:<br /></strong></span>Von 01. Juni 2026 bis voraussichtlich Mitte September 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span>Die Linie U6 kann die Stationen Thaliastra&szlig;e und Burggasse, Stadthalle in Richtung Floridsdorf Montag - Donnerstag (Werktags und vor Werktagen) ab ca. 22:30 Uhr nicht einhalten. Ein eingleisiger Betrieb ist zwischen Thaliastra&szlig;e und Burggasse, Stadthalle &uuml;ber Gleis 2 notwendig. Die Z&uuml;ge halten in beiden Richtungen auf Gleis 2.&nbsp; &nbsp;</p> <p><span style=\"text-decoration: underline;\"><strong>&nbsp;</strong></span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1102,6 +1114,18 @@
     "starts_at": "2026-07-28T01:00:05+02:00",
     "ends_at": "2026-07-29T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Verspätungen",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "178cf2e06d6bf9e3207e789e31504019ebfed19bf91191929c7996b4b8b6d1a7",
+    "pubDate": "2026-07-28T07:35:00+02:00",
+    "starts_at": "2026-07-28T07:35:00+02:00",
+    "ends_at": "2026-07-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=O|D=2026-07-28"
   },
   {
     "source": "Wiener Linien",
