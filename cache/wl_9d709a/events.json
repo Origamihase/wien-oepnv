@@ -770,7 +770,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12/37/38/40/41/42/5: Gleisbauarbeiten",
+    "title": "5/12/37/38/40/41/42: Gleisbauarbeiten",
     "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert voraussichtlich bis Ende August.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5627b0160e655cb3f00287a1e43fd9bb84f40f90804ad931f4aaa44da4c254a7",
@@ -891,12 +891,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "43: Gleisbauarbeiten",
-    "description": "Linie 43: Betrieb nur zwischen Schottentor U und Dornbach. Weichen Sie ersatzweise auf die Linie 43A aus. Voraussichtliche Dauer: 31.07.2026. Grund: Gleisbauarbeiten im Bereich Dornbacher Straße.",
+    "description": "Linie 43: Betrieb nur zwischen Schottentor U und Hernals, Wattgasse. Zwischen Neuwaldegg und Hernals, Wattgasse fährt ersatzweise die verlängerte Linie 43A. Voraussichtliche Dauer: Anfang September. Grund: Gleisbauarbeiten im Bereich Dornbacher Straße und Hernalser Hauptstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ac09c54f6a65bdd72023d3dd8512f8d3ed9aed2136092cfa9f12613323b29d65",
     "pubDate": "2026-04-20T03:02:00+02:00",
     "starts_at": "2026-04-20T03:02:00+02:00",
-    "ends_at": "2026-08-01T01:00:00+02:00",
+    "ends_at": "2026-09-02T01:00:00+02:00",
     "_identity": "wl|störung|L=43|D=2026-04-20"
   },
   {
@@ -919,19 +919,19 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
     "pubDate": "2026-07-27T00:00:11+02:00",
-    "starts_at": "2026-07-27T00:00:11+02:00",
+    "starts_at": "2026-07-28T02:14:16+02:00",
     "ends_at": "2026-07-28T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-07-27"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Betrieb ab Dornbach",
-    "description": "Gleisbauarbeiten\nBetrieb ab Dornbach",
+    "title": "43: Betrieb ab Hernals, Wattgasse",
+    "description": "Gleisbauarbeiten\nBetrieb ab Hernals, Wattgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "55ca85b0519576256cf2e1267cccfc26319052310dc5f73822ba934d7922754a",
+    "guid": "5ecb5099ebeeb7a7526be5305f51e82a4fa77af3c0d6704dbb0b28703cbf5184",
     "pubDate": "2026-07-27T00:00:11+02:00",
-    "starts_at": "2026-07-27T00:00:11+02:00",
+    "starts_at": "2026-07-28T02:12:42+02:00",
     "ends_at": "2026-07-28T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-07-27"
   },
