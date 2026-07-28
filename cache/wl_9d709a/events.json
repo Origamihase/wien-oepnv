@@ -734,18 +734,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Rettungseinsatz",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2026-07-28T19:00:00+02:00",
-    "starts_at": "2026-07-28T19:00:00+02:00",
-    "ends_at": "2026-07-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Pierre-de-Coubertin-Platz im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Pierre-de-Coubertin-Platz im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -766,6 +754,18 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Rettungseinsatz",
+    "description": "Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Blechturmgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2026-07-28T20:05:00+02:00",
+    "starts_at": "2026-07-28T20:05:00+02:00",
+    "ends_at": "2026-07-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-07-28"
   },
   {
     "source": "Wiener Linien",
@@ -1119,7 +1119,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U2: Betriebsstörung",
-    "description": "Die Linie U2 fährt derzeit nur zwischen Seestadt und Museumsquartier. Weichen Sie ersatzweise auf die Linie 2 aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Betriebsstörung im Bereich Karlsplatz.",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
     "pubDate": "2026-07-28T16:30:00+02:00",
@@ -1186,17 +1186,5 @@
     "starts_at": "2026-07-27T00:00:13+02:00",
     "ends_at": "2026-07-28T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-07-27|TK=züge halten bei währinger gürtel gegenüber 164"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Betriebsstörung Kein Betrieb zwischen Karlsplatz und Museumsquartier",
-    "description": "Betriebsstörung\nKein Betrieb zwischen Karlsplatz und Museumsquartier",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4be5dae5d00f14478f73f4b3d2a31d76876a64b8d093bc3a76d33acd26561c4e",
-    "pubDate": "2026-07-28T19:18:20+02:00",
-    "starts_at": "2026-07-28T19:18:47+02:00",
-    "ends_at": "2026-07-28T20:15:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-07-28|TK=betriebsstörung kein betrieb zwischen karlsplatz und museumsquartier"
   }
 ]
