@@ -722,6 +722,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10: Baumgarten",
+    "description": "Baumgarten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "438d309b0789a6be1dd5f2b00c46b46081220e62188effcd48ae813fd7e8fa5f",
+    "pubDate": "2026-07-29T05:00:09+02:00",
+    "starts_at": "2026-07-29T06:32:12+02:00",
+    "ends_at": "2026-07-29T23:45:00+02:00",
+    "_identity": "wl|störung|L=10|D=2026-07-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "10: Betrieb ab Hütteldorfer Straße U",
     "description": "Bauarbeiten\nBetrieb ab Hütteldorfer Straße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -740,6 +752,18 @@
     "guid": "55ad69cd9682a6f27b2c541b7b0f19fcfcb57481649ef9b58954c91404ed1bb7",
     "pubDate": "2026-07-29T05:00:09+02:00",
     "starts_at": "2026-07-29T05:00:15+02:00",
+    "ends_at": "2026-07-29T23:45:00+02:00",
+    "_identity": "wl|störung|L=10|D=2026-07-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Dornbach",
+    "description": "Dornbach",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97ffa7a80e2c52f70627d3abcfbfce5f9a66f7c81fc1a819981c95ed21c95597",
+    "pubDate": "2026-07-29T06:32:12+02:00",
+    "starts_at": "2026-07-29T06:32:12+02:00",
     "ends_at": "2026-07-29T23:45:00+02:00",
     "_identity": "wl|störung|L=10|D=2026-07-29"
   },
