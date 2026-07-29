@@ -962,6 +962,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37A: Verkehrsüberlastung",
+    "description": "Linie 37A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e24fe695c2fcaad6e5ed7a7b5c99cf7721f9e207bf50fca8d03103f6e0c8159",
+    "pubDate": "2026-07-29T16:12:00+02:00",
+    "starts_at": "2026-07-29T16:12:00+02:00",
+    "ends_at": "2026-07-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-07-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1046,6 +1058,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "52: Schadhaftes Fahrzeug",
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806",
+    "pubDate": "2026-07-29T16:14:00+02:00",
+    "starts_at": "2026-07-29T16:14:00+02:00",
+    "ends_at": "2026-07-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-07-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "52: Fahrbahnschaden Kein Betrieb! Ersatzverkehr hält bei Linie 10A (Johnstraße)",
     "description": "Fahrbahnschaden\nKein Betrieb! Ersatzverkehr hält bei Linie 10A (Johnstraße)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1114,6 +1138,30 @@
     "starts_at": "2026-07-27T00:00:21+02:00",
     "ends_at": "2026-07-29T23:59:59+02:00",
     "_identity": "wl|störung|L=59A|D=2026-07-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhaftes Fahrzeug",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
+    "pubDate": "2026-07-29T16:14:00+02:00",
+    "starts_at": "2026-07-29T16:14:00+02:00",
+    "ends_at": "2026-07-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-07-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "61A: Verspätungen",
+    "description": "Linie 61A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2abb8f49c371274d012156348735011d23cd99f56dc4253281f93a1f03e4842",
+    "pubDate": "2026-07-29T16:01:00+02:00",
+    "starts_at": "2026-07-29T16:01:00+02:00",
+    "ends_at": "2026-07-29T16:35:00+02:00",
+    "_identity": "wl|störung|L=61A|D=2026-07-29"
   },
   {
     "source": "Wiener Linien",
@@ -1244,20 +1292,8 @@
     "guid": "ee9d3f3d2f7894fa11d971e1ac5f847be3f219359a43a6a87138d443f4bb3996",
     "pubDate": "2026-07-29T14:27:00+02:00",
     "starts_at": "2026-07-29T14:27:00+02:00",
-    "ends_at": "2026-07-29T23:55:00+02:00",
+    "ends_at": "2026-07-29T16:21:00+02:00",
     "_identity": "wl|störung|L=O|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Rettungseinsatz",
-    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Lina-Loos-Platz und Hausfeldstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 16:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Lina-Loos-Platz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-07-29T15:43:00+02:00",
-    "starts_at": "2026-07-29T15:43:00+02:00",
-    "ends_at": "2026-07-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-07-29"
   },
   {
     "source": "Wiener Linien",
@@ -1274,18 +1310,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Herrengasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-07-29T14:51:00+02:00",
-    "starts_at": "2026-07-29T14:51:00+02:00",
-    "ends_at": "2026-07-29T15:56:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U4: Bauarbeiten",
     "description": "Linie U4: Kein Betrieb zwischen Schwedenplatz und Landstraße-Wien Mitte. Weichen Sie ersatzweise auf die Linien U1, U2 und U3 aus. Voraussichtliche Dauer: Montag, 03. August 2026, 04:00 Uhr. Grund: Bauarbeiten im Bereich Schwedenplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1294,18 +1318,6 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Landstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-07-29T15:31:00+02:00",
-    "starts_at": "2026-07-29T15:31:00+02:00",
-    "ends_at": "2026-07-29T15:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-07-29"
   },
   {
     "source": "Wiener Linien",
