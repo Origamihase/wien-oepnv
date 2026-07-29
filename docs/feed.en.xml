@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 29 Jul 2026 15:01:15 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 15:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Meidling ↔ Gramatneusiedl / Wien Hauptbahnhof ↔ Kledering]]></title>
@@ -29,17 +29,6 @@
       <ext:ends_at>Mon, 31 Aug 2026 04:30:00 +0200</ext:ends_at>
       <description>Due to cable work in the Phillipsgasse the call bus line N54 is redirected.. Period: On Friday, 31. July 2026 from start of operation (night from 30. on 31.) to … [29.07.2026 – 31.08.2026]</description>
       <content:encoded><![CDATA[Due to cable work in the Phillipsgasse the call bus line N54 is redirected.. Period: On Friday, 31. July 2026 from start of operation (night from 30. on 31.) to …<br/>[29.07.2026 – 31.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/71: Fickeysstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a87c9ff0d0ac7324304b8dee3fc739b7877cc4038af6c90c5dc90284fb0b0f5b</guid>
-      <pubDate>Wed, 29 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 12:32:59 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 29 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 12 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of lines 11 and 71 towards Kaiserebersdorf Stop: Fickeysstraße From: Simmeringer Hauptstraße 164 To: Simmeringer Hauptstraße 166 Duration: from … [29.07.2026 – 12.08.2027]</description>
-      <content:encoded><![CDATA[Stop change of lines 11 and 71 towards Kaiserebersdorf Stop: Fickeysstraße From: Simmeringer Hauptstraße 164 To: Simmeringer Hauptstraße 166 Duration: from …<br/>[29.07.2026 – 12.08.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10: Baumgarten]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
       <description>The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city. [27.07.2026 – 02.10.2026]</description>
       <content:encoded><![CDATA[The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Hernals Hauptstraße from Dornbacher Straße and Güpferlingstraße to Urbangasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">c622792c5600ba8914b99ca51075bd45417b66f4aa8ef11610ebf53889e24757</guid>
+      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>The diversion in the direction of the city inwards is via: Dornbacher Straße - Güpferlingstraße - Lascygasse - Urbangasse - Hernalser Hauptstraße.More information about the … [27.07.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[The diversion in the direction of the city inwards is via: Dornbacher Straße - Güpferlingstraße - Lascygasse - Urbangasse - Hernalser Hauptstraße.More information about the …<br/>[27.07.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
