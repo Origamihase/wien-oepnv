@@ -758,18 +758,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Betrieb ab Hütteldorfer Straße U",
-    "description": "Bauarbeiten\nBetrieb ab Hütteldorfer Straße U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "487a5a69347464ec8d7bff5504d27fffc8045eec741073d23d1f4be8e6d0840e",
-    "pubDate": "2026-07-29T05:00:09+02:00",
-    "starts_at": "2026-07-29T05:00:15+02:00",
-    "ends_at": "2026-07-29T22:00:00+02:00",
-    "_identity": "wl|störung|L=10|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10: Fahrbahnschaden Kein Betrieb, Linie 52 benutzen",
     "description": "Fahrbahnschaden\nKein Betrieb, Linie 52 benutzen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -789,18 +777,6 @@
     "pubDate": "2026-07-29T06:32:12+02:00",
     "starts_at": "2026-07-29T06:32:12+02:00",
     "ends_at": "2026-07-29T23:45:00+02:00",
-    "_identity": "wl|störung|L=10|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Kein Betrieb Bauarbeiten",
-    "description": "Kein Betrieb\nBauarbeiten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9c9043c2efe8385c72951bbfbfc2673732eacc02d6a3e56abd8d9a0000e3ba5b",
-    "pubDate": "2026-07-29T05:00:09+02:00",
-    "starts_at": "2026-07-29T05:00:15+02:00",
-    "ends_at": "2026-07-29T22:00:00+02:00",
     "_identity": "wl|störung|L=10|D=2026-07-29"
   },
   {
@@ -838,18 +814,6 @@
     "starts_at": "2026-07-29T20:46:00+02:00",
     "ends_at": "2026-07-29T23:55:00+02:00",
     "_identity": "wl|störung|L=16A|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "17A: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung\nSignalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dfa210ba3291a66edebd31b6cfcfd1d45e1cd37d3c1946494afc52dec0c55d4",
-    "pubDate": "2026-07-29T20:56:12+02:00",
-    "starts_at": "2026-07-29T20:56:35+02:00",
-    "ends_at": "2026-07-29T21:55:00+02:00",
-    "_identity": "wl|störung|L=17A|D=2026-07-29"
   },
   {
     "source": "Wiener Linien",
@@ -1046,23 +1010,11 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52: Betrieb ab Anschützgasse",
-    "description": "Bauarbeiten\nBetrieb ab Anschützgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1ba2010c7a3b8bbd982ea1274e866a51345664f161ce3be17e9eee1bb277f588",
-    "pubDate": "2026-07-29T05:00:15+02:00",
-    "starts_at": "2026-07-29T05:00:15+02:00",
-    "ends_at": "2026-07-29T22:00:00+02:00",
-    "_identity": "wl|störung|L=52|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Fahrbahnschaden Kein Betrieb! Ersatzverkehr hält bei Linie 10A (Johnstraße)",
     "description": "Fahrbahnschaden\nKein Betrieb! Ersatzverkehr hält bei Linie 10A (Johnstraße)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "d37d6c39dd220840e8aaadfbe1bda7bcdf3239164d633ca9337c9959e9a00c04",
-    "pubDate": "2026-07-29T03:22:02+02:00",
+    "pubDate": "2026-07-29T03:22:19+02:00",
     "starts_at": "2026-07-29T05:00:15+02:00",
     "ends_at": "2026-07-29T23:45:00+02:00",
     "_identity": "wl|störung|L=52|D=2026-07-29"
@@ -1198,30 +1150,6 @@
     "starts_at": "2026-07-29T20:46:00+02:00",
     "ends_at": "2026-07-29T23:55:00+02:00",
     "_identity": "wl|störung|L=67A|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67A: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung\nSignalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c6217f3734081f8e926c9979e884673454468f1b1a07fa5e2e3236de593c654",
-    "pubDate": "2026-07-29T20:52:34+02:00",
-    "starts_at": "2026-07-29T20:52:49+02:00",
-    "ends_at": "2026-07-29T21:52:00+02:00",
-    "_identity": "wl|störung|L=67A|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67B: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung\nSignalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dcfeb610d68f34a772e9dab8cb83e87a0d52ba551d6978e4c268381f37521c7",
-    "pubDate": "2026-07-29T20:50:18+02:00",
-    "starts_at": "2026-07-29T20:50:38+02:00",
-    "ends_at": "2026-07-29T21:50:00+02:00",
-    "_identity": "wl|störung|L=67B|D=2026-07-29"
   },
   {
     "source": "Wiener Linien",
