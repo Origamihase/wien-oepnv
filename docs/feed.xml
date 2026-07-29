@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 29 Jul 2026 14:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 14:31:06 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[16A/77A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fb841596a76b2467b86352d0fe4fa0ddd46b2e134f131f7b1ef87fe5c7f336e0</guid>
-      <pubDate>Wed, 29 Jul 2026 13:20:00 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 13:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 29 Jul 2026 13:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 29 Jul 2026 14:00:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. [Am 29.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 77A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 29.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Gramatneusiedl / Wien Hauptbahnhof ↔ Kledering]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -116,6 +105,17 @@
       <ext:ends_at>Thu, 30 Jul 2026 07:00:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 94A in Richtung Kagran U Haltestelle: Kagraner Anger Von: Siebenbürgerstraße 28-48, Stiege 17 Nach: Siebenbürgerstraße gegenüber 47A-49A … [27.07.2026 – 30.07.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 94A in Richtung Kagran U Haltestelle: Kagraner Anger Von: Siebenbürgerstraße 28-48, Stiege 17 Nach: Siebenbürgerstraße gegenüber 47A-49A …<br/>[27.07.2026 – 30.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Burggasse 67]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">394c32bde84507f8bc30b06ef112c6140c4adacde31b067755f539411731dc8b</guid>
+      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
+      <description>DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. [27.07.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
