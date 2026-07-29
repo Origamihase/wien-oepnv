@@ -7,29 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 29 Jul 2026 17:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 17:34:25 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[37A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e24fe695c2fcaad6e5ed7a7b5c99cf7721f9e207bf50fca8d03103f6e0c8159</guid>
-      <pubDate>Wed, 29 Jul 2026 16:12:00 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 16:31:13 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 29 Jul 2026 16:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 29 Jul 2026 16:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 29.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 29.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Kaiserebersdorf ↔ Schwechat]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;899741</guid>
-      <pubDate>Wed, 29 Jul 2026 16:34:39 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 16:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 29 Jul 2026 16:34:39 +0200</ext:starts_at>
-      <description>Due to a defective train on the line, trains between Wien Kaiserebersdorf Bahnhst and Schwechat Bahnhof train journeys to expected 16:30 clock are not possible. [Since 29.07.2026]</description>
-      <content:encoded><![CDATA[Due to a defective train on the line, trains between Wien Kaiserebersdorf Bahnhst and Schwechat Bahnhof train journeys to expected 16:30 clock are not possible.<br/>[Since 29.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[11A: diversion because of track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -69,6 +48,17 @@
       <pubDate>Wed, 29 Jul 2026 05:00:09 +0200</pubDate>
       <ext:first_seen>Wed, 29 Jul 2026 07:01:03 +0200</ext:first_seen>
       <ext:starts_at>Wed, 29 Jul 2026 06:32:12 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 29 Jul 2026 23:45:00 +0200</ext:ends_at>
+      <description>[On 29.07.2026]</description>
+      <content:encoded><![CDATA[[On 29.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Road damage No operation! replacement service stops on line 10A (Johnstraße)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d37d6c39dd220840e8aaadfbe1bda7bcdf3239164d633ca9337c9959e9a00c04</guid>
+      <pubDate>Wed, 29 Jul 2026 03:22:02 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Jul 2026 06:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 29 Jul 2026 05:00:15 +0200</ext:starts_at>
       <ext:ends_at>Wed, 29 Jul 2026 23:45:00 +0200</ext:ends_at>
       <description>[On 29.07.2026]</description>
       <content:encoded><![CDATA[[On 29.07.2026]]]></content:encoded>
@@ -115,6 +105,17 @@
       <ext:ends_at>Thu, 30 Jul 2026 07:00:00 +0200</ext:ends_at>
       <description>Stop change of line 94A towards Kagran U Stop: Kagraner Anger From: Siebenbürgerstraße 28-48, Stiege 17 To: Siebenbürgerstraße vs. 47AX-49A … [27.07.2026 – 30.07.2026]</description>
       <content:encoded><![CDATA[Stop change of line 94A towards Kagran U Stop: Kagraner Anger From: Siebenbürgerstraße 28-48, Stiege 17 To: Siebenbürgerstraße vs. 47AX-49A …<br/>[27.07.2026 – 30.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Burggasse 67]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">394c32bde84507f8bc30b06ef112c6140c4adacde31b067755f539411731dc8b</guid>
+      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
+      <description>The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city. [27.07.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
