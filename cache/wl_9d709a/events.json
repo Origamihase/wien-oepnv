@@ -842,30 +842,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Störung an einem Bahnübergang",
-    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78cfc305e07fdf703edca3374236eb576bf584080a19450b6f7f78fade7ec1e8",
-    "pubDate": "2026-07-29T20:46:00+02:00",
-    "starts_at": "2026-07-29T20:46:00+02:00",
-    "ends_at": "2026-07-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=16A|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "17A: Störung an einem Bahnübergang",
-    "description": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a9a27425e5abc97ac537f8ede7996cb196df826cae17e716388d06154a7c5243",
-    "pubDate": "2026-07-29T20:46:00+02:00",
-    "starts_at": "2026-07-29T20:46:00+02:00",
-    "ends_at": "2026-07-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=17A|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1046,8 +1022,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52: Fahrbahnschaden Kein Betrieb! Ersatzverkehr hält bei Linie 10A (Johnstraße)",
-    "description": "Fahrbahnschaden\nKein Betrieb! Ersatzverkehr hält bei Linie 10A (Johnstraße)",
+    "title": "52: Fahrbahnschaden Kein Betrieb! Ersatzverkehr hält bei Linie 10 (Reinlgasse)",
+    "description": "Fahrbahnschaden\nKein Betrieb! Ersatzverkehr hält bei Linie 10 (Reinlgasse)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "d37d6c39dd220840e8aaadfbe1bda7bcdf3239164d633ca9337c9959e9a00c04",
     "pubDate": "2026-07-29T03:22:19+02:00",
@@ -1162,18 +1138,6 @@
     "starts_at": "2026-07-29T20:46:00+02:00",
     "ends_at": "2026-07-29T23:55:00+02:00",
     "_identity": "wl|störung|L=67A|D=2026-07-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67B: Störung an einem Bahnübergang",
-    "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "64adf3f111f665b0756e206081b736c33bee655dba42034dde513aed6f0ef56b",
-    "pubDate": "2026-07-29T20:46:00+02:00",
-    "starts_at": "2026-07-29T20:46:00+02:00",
-    "ends_at": "2026-07-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=67B|D=2026-07-29"
   },
   {
     "source": "Wiener Linien",
@@ -1294,6 +1258,30 @@
     "starts_at": "2026-07-29T01:00:09+02:00",
     "ends_at": "2026-07-30T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-07-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verkehrsstörung",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5b1df8891a60086296c704c61ee23886a7ba249df494470d7395ade659f41239",
+    "pubDate": "2026-07-29T22:42:00+02:00",
+    "starts_at": "2026-07-29T22:42:00+02:00",
+    "ends_at": "2026-07-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-07-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Fahrtbehinderung in Richtung Seestadt. Grund: Betriebsstörung im Haltestellenbereich Rathaus.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-07-29T22:54:00+02:00",
+    "starts_at": "2026-07-29T22:54:00+02:00",
+    "ends_at": "2026-07-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-07-29"
   },
   {
     "source": "Wiener Linien",
