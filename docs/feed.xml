@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 29 Jul 2026 09:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 10:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5/O: Rettungseinsatz]]></title>
+      <title><![CDATA[1A: Staatsbesuch]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6540eff74b10864939e868050c1257d79ba427d5a56cecede5648ac527c3ca20</guid>
-      <pubDate>Wed, 29 Jul 2026 08:55:00 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 09:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 29 Jul 2026 08:55:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">3076bf4635f1f1a10bdd01285136b757ed2b6bb547377d4eebff9d9671f3df2e</guid>
+      <pubDate>Wed, 29 Jul 2026 09:38:00 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Jul 2026 10:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 29 Jul 2026 09:38:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 29 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. [Am 29.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 29.07.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A: Staatsbesuch]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f1567e656d3e30e03b5dfe5ad2660e3b59f831749e9b16260b00b7d4d0121f13</guid>
+      <pubDate>Wed, 29 Jul 2026 09:38:00 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Jul 2026 10:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 29 Jul 2026 09:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 29 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10: Baumgarten]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Umleitung in Fahrtrichtung stadteinwärts erfolgt über: Dornbacher Straße - Güpferlingstraße - Lascygasse - Urbangasse - Hernalser Hauptstraße.Nähere Informationen zur … [27.07.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Die Umleitung in Fahrtrichtung stadteinwärts erfolgt über: Dornbacher Straße - Güpferlingstraße - Lascygasse - Urbangasse - Hernalser Hauptstraße.Nähere Informationen zur …<br/>[27.07.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Schottentor: Schottenring von Kreuzung Universitätsring und Schottengasse und Schottenpassage bis Kreuzung Heßgas]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">c16ccc98d3c124892816101adcf405925e8561a82607632059e160ebae207a92</guid>
-      <pubDate>Mon, 13 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 14:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 00:00:00 +0200</ext:ends_at>
-      <description>Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt. [13.07.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

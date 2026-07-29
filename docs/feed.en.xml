@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 29 Jul 2026 09:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 10:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5/O: rescue operation]]></title>
+      <title><![CDATA[1A: state visit]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6540eff74b10864939e868050c1257d79ba427d5a56cecede5648ac527c3ca20</guid>
-      <pubDate>Wed, 29 Jul 2026 08:55:00 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 09:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 29 Jul 2026 08:55:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">3076bf4635f1f1a10bdd01285136b757ed2b6bb547377d4eebff9d9671f3df2e</guid>
+      <pubDate>Wed, 29 Jul 2026 09:38:00 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Jul 2026 10:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 29 Jul 2026 09:38:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 29 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line O: irregular intervals in both directions. [On 29.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line O: irregular intervals in both directions.<br/>[On 29.07.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 29.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A: state visit]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f1567e656d3e30e03b5dfe5ad2660e3b59f831749e9b16260b00b7d4d0121f13</guid>
+      <pubDate>Wed, 29 Jul 2026 09:38:00 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Jul 2026 10:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 29 Jul 2026 09:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 29 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 29.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 29.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10: Baumgarten]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>The diversion in the direction of the city inwards is via: Dornbacher Straße - Güpferlingstraße - Lascygasse - Urbangasse - Hernalser Hauptstraße.More information about the … [27.07.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[The diversion in the direction of the city inwards is via: Dornbacher Straße - Güpferlingstraße - Lascygasse - Urbangasse - Hernalser Hauptstraße.More information about the …<br/>[27.07.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Schottentor: Schottenring from crossing Universitätsring and Schottengasse and bulkhead passage to crossing Heßgas]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">c16ccc98d3c124892816101adcf405925e8561a82607632059e160ebae207a92</guid>
-      <pubDate>Mon, 13 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 14:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 00:00:00 +0200</ext:ends_at>
-      <description>In the working area the tram operation is stopped. [13.07.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[In the working area the tram operation is stopped.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
