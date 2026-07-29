@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 29 Jul 2026 04:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 05:01:20 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[10/52: Bauarbeiten]]></title>
+      <title><![CDATA[52: Betrieb ab Anschützgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c1ddc8cc9b99242df6c4d3da2520c231e4f6019b2ad86fb39fadc11bdd7ee717</guid>
-      <pubDate>Wed, 29 Jul 2026 02:46:00 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 04:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 29 Jul 2026 02:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 29 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Liebe Fahrgäste! Die Linie 10 fährt derzeit nicht zwischen Hütteldorfer Straße und Unter St. Veit. [Am 29.07.2026]</description>
-      <content:encoded><![CDATA[Liebe Fahrgäste! Die Linie 10 fährt derzeit nicht zwischen Hütteldorfer Straße und Unter St. Veit.<br/>[Am 29.07.2026]]]></content:encoded>
+      <guid isPermaLink="false">1ba2010c7a3b8bbd982ea1274e866a51345664f161ce3be17e9eee1bb277f588</guid>
+      <pubDate>Wed, 29 Jul 2026 05:00:09 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Jul 2026 05:01:20 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 29 Jul 2026 05:00:15 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 29 Jul 2026 22:00:00 +0200</ext:ends_at>
+      <description>[Am 29.07.2026]</description>
+      <content:encoded><![CDATA[[Am 29.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10: Betrieb ab Hütteldorfer Straße U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">487a5a69347464ec8d7bff5504d27fffc8045eec741073d23d1f4be8e6d0840e</guid>
+      <pubDate>Wed, 29 Jul 2026 05:00:09 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Jul 2026 05:01:20 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 29 Jul 2026 05:00:15 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 29 Jul 2026 22:00:00 +0200</ext:ends_at>
+      <description>[Am 29.07.2026]</description>
+      <content:encoded><![CDATA[[Am 29.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Klapprampensperre am 29.07.2026]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Tue, 27 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 60A und RB61 in Richtung Alterlaa U bzw. Maurer Hauptplatz Haltestelle: Liesing S Von: Liesinger Platz 2 a, Bussteig B Nach: Perchtoldsdorfer … [27.07.2026 – 27.07.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 60A und RB61 in Richtung Alterlaa U bzw. Maurer Hauptplatz Haltestelle: Liesing S Von: Liesinger Platz 2 a, Bussteig B Nach: Perchtoldsdorfer …<br/>[27.07.2026 – 27.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[61A: Liesing S]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">968496c6529b6b8a24b789d233a3129eb7568dfa56f53bd5a2de00d3d1269ec0</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 13:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 23 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 61A in Richtung Vösendorf-Siebenhirten Haltestelle: Liesing S Von: Liesinger Platz 2, Bussteig A Nach: Liesinger Platz 1 Dauer: Ab 29. Juli … [23.07.2026 – 23.07.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 61A in Richtung Vösendorf-Siebenhirten Haltestelle: Liesing S Von: Liesinger Platz 2, Bussteig A Nach: Liesinger Platz 1 Dauer: Ab 29. Juli …<br/>[23.07.2026 – 23.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
