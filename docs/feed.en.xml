@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 29 Jul 2026 08:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 09:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5/O: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6540eff74b10864939e868050c1257d79ba427d5a56cecede5648ac527c3ca20</guid>
+      <pubDate>Wed, 29 Jul 2026 08:55:00 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Jul 2026 09:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 29 Jul 2026 08:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 29 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Line O: irregular intervals in both directions. [On 29.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line O: irregular intervals in both directions.<br/>[On 29.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[10: Baumgarten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sat, 22 Aug 2026 00:00:00 +0200</ext:ends_at>
       <description>In the working area the tram operation is stopped. [13.07.2026 – 22.08.2026]</description>
       <content:encoded><![CDATA[In the working area the tram operation is stopped.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60A: 60A. LiesingS]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5367de9e718e9be388b6e1c4b17e95e7b2fdbc265d96a5cf35ded91b8f3e8415</guid>
-      <pubDate>Thu, 23 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 13:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Jul 2026 11:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 27 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line 60A towards Alterlaa U Stop: Liesing S From: Liesinger Platz 2 a, Bussteig B After: Perchtoldsdorfer Straße 2 Duration: From 29. July … [27.07.2026 – 27.07.2027]</description>
-      <content:encoded><![CDATA[Stop change of line 60A towards Alterlaa U Stop: Liesing S From: Liesinger Platz 2 a, Bussteig B After: Perchtoldsdorfer Straße 2 Duration: From 29. July …<br/>[27.07.2026 – 27.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
