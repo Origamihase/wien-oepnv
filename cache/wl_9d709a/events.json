@@ -830,18 +830,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "36B: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "09fe1f9b752837e06884ef10f5ce7ba3079cf3a35033ee18ae470ba48e91f164",
-    "pubDate": "2026-07-30T19:17:02+02:00",
-    "starts_at": "2026-07-30T19:17:02+02:00",
-    "ends_at": "2026-07-30T20:16:00+02:00",
-    "_identity": "wl|störung|L=36B|D=2026-07-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "36B: Busse halten Brünner Straße 118",
     "description": "Busse halten\nBrünner Straße 118",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -946,6 +934,18 @@
     "starts_at": "2026-07-30T00:00:19+02:00",
     "ends_at": "2026-07-30T23:59:59+02:00",
     "_identity": "wl|störung|L=44A|D=2026-07-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung Falschparker",
+    "description": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 20:30 Uhr. Grund: Falschparker im Bereich Breite Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
+    "pubDate": "2026-07-30T20:08:00+02:00",
+    "starts_at": "2026-07-30T20:20:41+02:00",
+    "ends_at": "2026-07-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-07-30"
   },
   {
     "source": "Wiener Linien",
