@@ -7346,6 +7346,16 @@
       "epoch": 3
     }
   },
+  "765d920406d73de89c8bac80eb60f590700fce060df74a2ef2bf9a1ec32ba2ee": {
+    "first_seen": "2026-07-30T10:30:54.693545+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: service disruption.",
+        "title": "82A: delays"
+      },
+      "epoch": 3
+    }
+  },
   "768461a2343f5119d016489dfb44d3712c4015d2641a3508b44628eda87fa681": {
     "first_seen": "2026-05-26T06:30:47.373564+00:00",
     "translations": {
@@ -11718,6 +11728,16 @@
     "translations": {
       "en": {
         "title": "30: service obstruction because of fire-brigade operation"
+      },
+      "epoch": 3
+    }
+  },
+  "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306": {
+    "first_seen": "2026-07-30T10:30:54.693545+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards Floridsdorf. expected duration: 12:50 watch. Reason: rescue operation in the Am Sch\u00f6pfwerk stop area.",
+        "title": "U6: rescue operation"
       },
       "epoch": 3
     }

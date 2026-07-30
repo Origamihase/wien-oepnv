@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 30 Jul 2026 12:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 12:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U6: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Thu, 30 Jul 2026 12:27:00 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Jul 2026 12:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 12:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 30 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Floridsdorf. expected duration: 12:50 watch. Reason: rescue operation in the Am Schöpfwerk stop area. [On 30.07.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Floridsdorf. expected duration: 12:50 watch. Reason: rescue operation in the Am Schöpfwerk stop area.<br/>[On 30.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[82A: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">765d920406d73de89c8bac80eb60f590700fce060df74a2ef2bf9a1ec32ba2ee</guid>
+      <pubDate>Thu, 30 Jul 2026 12:08:00 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Jul 2026 12:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 12:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 30 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: service disruption. [On 30.07.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 30.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[85A: Rautenweg]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -94,28 +116,6 @@
       <ext:starts_at>Mon, 27 Jul 2026 16:05:59 +0200</ext:starts_at>
       <description>construction works between Wien Liesing train station and Wien Meidling train station (U) on 02.08.2026, S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2… [Since 27.07.2026]</description>
       <content:encoded><![CDATA[construction works between Wien Liesing train station and Wien Meidling train station (U) on 02.08.2026, S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2…<br/>[Since 27.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Burggasse 67]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">394c32bde84507f8bc30b06ef112c6140c4adacde31b067755f539411731dc8b</guid>
-      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city. [27.07.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Hernals Hauptstraße from Dornbacher Straße and Güpferlingstraße to Urbangasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">c622792c5600ba8914b99ca51075bd45417b66f4aa8ef11610ebf53889e24757</guid>
-      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>The diversion in the direction of the city inwards is via: Dornbacher Straße - Güpferlingstraße - Lascygasse - Urbangasse - Hernalser Hauptstraße.More information about the … [27.07.2026 – 04.09.2026]</description>
-      <content:encoded><![CDATA[The diversion in the direction of the city inwards is via: Dornbacher Straße - Güpferlingstraße - Lascygasse - Urbangasse - Hernalser Hauptstraße.More information about the …<br/>[27.07.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
