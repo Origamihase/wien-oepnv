@@ -7,18 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 30 Jul 2026 17:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 17:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[Wien Penzing ↔ Wien Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;900015</guid>
-      <pubDate>Thu, 30 Jul 2026 16:18:21 +0200</pubDate>
-      <ext:first_seen>Thu, 30 Jul 2026 15:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Jul 2026 16:18:21 +0200</ext:starts_at>
-      <description>Due to an switch fault, no journeys are currently possible between Wien Penzing Bahnhst and Wien Hütteldorf Bahnhof (U). [Since 30.07.2026]</description>
-      <content:encoded><![CDATA[Due to an switch fault, no journeys are currently possible between Wien Penzing Bahnhst and Wien Hütteldorf Bahnhof (U).<br/>[Since 30.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[8A: Montecuccoliplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -45,10 +35,10 @@
       <title><![CDATA[U6: rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
-      <pubDate>Thu, 30 Jul 2026 12:27:00 +0200</pubDate>
+      <pubDate>Thu, 30 Jul 2026 17:12:00 +0200</pubDate>
       <ext:first_seen>Thu, 30 Jul 2026 12:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Jul 2026 12:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 30 Jul 2026 16:54:00 +0200</ext:ends_at>
+      <ext:starts_at>Thu, 30 Jul 2026 17:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 30 Jul 2026 23:55:00 +0200</ext:ends_at>
       <description>service obstruction towards Floridsdorf. expected duration: 12:50 watch. Reason: rescue operation in the Am Schöpfwerk stop area. [On 30.07.2026]</description>
       <content:encoded><![CDATA[service obstruction towards Floridsdorf. expected duration: 12:50 watch. Reason: rescue operation in the Am Schöpfwerk stop area.<br/>[On 30.07.2026]]]></content:encoded>
     </item>
@@ -116,6 +106,17 @@
       <ext:ends_at>Mon, 31 Aug 2026 04:30:00 +0200</ext:ends_at>
       <description>Due to cable work in the Phillipsgasse the call bus line N54 is redirected.. Period: On Friday, 31. July 2026 from start of operation (night from 30. on 31.) to … [29.07.2026 – 31.08.2026]</description>
       <content:encoded><![CDATA[Due to cable work in the Phillipsgasse the call bus line N54 is redirected.. Period: On Friday, 31. July 2026 from start of operation (night from 30. on 31.) to …<br/>[29.07.2026 – 31.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44A: Buses stop Dornbacher Straße 3-5]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e6eb6c069247a573ffa0acae078d76ef0a59e51c763e2a0a9260553265d2635a</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:19 +0200</pubDate>
+      <ext:first_seen>Tue, 28 Jul 2026 05:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 00:00:19 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 30 Jul 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 30.07.2026]</description>
+      <content:encoded><![CDATA[[On 30.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
