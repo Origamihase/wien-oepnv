@@ -830,14 +830,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "36B/36A: Verspätungen",
-    "description": "Linie 36B: Unregelmäßige Intervalle in beiden Richtungen U. Linie 36A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "title": "36B: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "298e37fd2c1f91ee2f01eea09c2c0866938171173c19e2ededd370cd190edab8",
-    "pubDate": "2026-07-30T19:16:00+02:00",
-    "starts_at": "2026-07-30T19:16:00+02:00",
-    "ends_at": "2026-07-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=36A,36B|D=2026-07-30"
+    "guid": "09fe1f9b752837e06884ef10f5ce7ba3079cf3a35033ee18ae470ba48e91f164",
+    "pubDate": "2026-07-30T19:17:02+02:00",
+    "starts_at": "2026-07-30T19:17:02+02:00",
+    "ends_at": "2026-07-30T20:16:00+02:00",
+    "_identity": "wl|störung|L=36B|D=2026-07-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36B: Busse halten Brünner Straße 118",
+    "description": "Busse halten\nBrünner Straße 118",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "47d352c19d2e123514a007494e2e9a462cadcffdb7d58ec85e0f4f7d374f0632",
+    "pubDate": "2026-07-30T00:00:19+02:00",
+    "starts_at": "2026-07-30T00:00:19+02:00",
+    "ends_at": "2026-07-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=36B|D=2026-07-30"
   },
   {
     "source": "Wiener Linien",

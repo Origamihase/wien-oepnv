@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 30 Jul 2026 19:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 20:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[36B/36A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">298e37fd2c1f91ee2f01eea09c2c0866938171173c19e2ededd370cd190edab8</guid>
-      <pubDate>Thu, 30 Jul 2026 19:16:00 +0200</pubDate>
-      <ext:first_seen>Thu, 30 Jul 2026 19:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Jul 2026 19:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 30 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen U. Linie 36A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 30.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen U. Linie 36A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 30.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[8A: Montecuccoliplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +106,16 @@
       <ext:ends_at>Thu, 30 Jul 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 30.07.2026]</description>
       <content:encoded><![CDATA[[Am 30.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S 80: Wien Liesing ↔ Wien Meidling / Wien Hauptbahnhof ↔ Wien Stadlau]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;899246</guid>
+      <pubDate>Mon, 27 Jul 2026 16:05:59 +0200</pubDate>
+      <ext:first_seen>Mon, 27 Jul 2026 16:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Jul 2026 16:05:59 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten können zwischen Wien Liesing Bahnhof und Wien Meidling Bahnhof (U) am 02.08.2026 die Züge S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2 … [Seit 27.07.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Liesing Bahnhof und Wien Meidling Bahnhof (U) am 02.08.2026 die Züge S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2 …<br/>[Seit 27.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
