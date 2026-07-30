@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 30 Jul 2026 08:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 09:01:09 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11A: event on 12.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">561845cd6f3d6b7c032d62d52c38ce4dec6c1bc2f5dcaa630765071149f88006</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Jul 2026 09:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken. [30.07.2026 – 12.09.2026]</description>
+      <content:encoded><![CDATA[Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[16A/66A/67A/N66/N67: Kolbegasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,19 +28,8 @@
       <ext:first_seen>Thu, 30 Jul 2026 08:30:46 +0200</ext:first_seen>
       <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 07 Aug 2026 16:00:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Kolbegasse werden die Linien 16A, 66A, 67A und N66 umgeleitet. [30.07.2026 – 07.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Kolbegasse werden die Linien 16A, 66A, 67A und N66 umgeleitet.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[98A: water pipe fractures]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">94fed11bb2352903dc8a42abfdb9064fe5252fdeb6104e19de591c9c90bc5c86</guid>
-      <pubDate>Thu, 30 Jul 2026 05:14:00 +0200</pubDate>
-      <ext:first_seen>Thu, 30 Jul 2026 05:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Jul 2026 05:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 30 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Local diversion in the Gartenheimstraße area. The Adam-Betz-Gasse stop cannot be maintained. [On 30.07.2026]</description>
-      <content:encoded><![CDATA[Local diversion in the Gartenheimstraße area. The Adam-Betz-Gasse stop cannot be maintained.<br/>[On 30.07.2026]]]></content:encoded>
+      <description>Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected. [30.07.2026 – 07.08.2026]</description>
+      <content:encoded><![CDATA[Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: diversion because of track construction works]]></title>

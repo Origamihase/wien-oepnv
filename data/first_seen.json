@@ -4279,8 +4279,10 @@
     "first_seen": "2026-07-30T06:30:46.307211+00:00",
     "translations": {
       "en": {
+        "summary": "Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected.",
         "title": "16A/66A/67A/N66/N67: Kolbegasse"
-      }
+      },
+      "epoch": 3
     }
   },
   "46d6da50ed74d45d35e1a57f021685dfbffaf46200394d607fa7a5a827fa41c9": {
@@ -5348,6 +5350,16 @@
     "translations": {
       "en": {
         "title": "30: service obstruction Damaged train"
+      },
+      "epoch": 3
+    }
+  },
+  "561845cd6f3d6b7c032d62d52c38ce4dec6c1bc2f5dcaa630765071149f88006": {
+    "first_seen": "2026-07-30T07:01:09.712488+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken.",
+        "title": "11A: event on 12.09.2026"
       },
       "epoch": 3
     }

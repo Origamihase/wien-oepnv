@@ -50,6 +50,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "11A: Veranstaltung am 12.09.2026",
+    "description": "<h2>Veranstaltung</h2> <p>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsma&szlig;nahmen.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Am 12. September 2026, ab etwa 15:00 Uhr bis etwa 01:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 11A in Richtung Stadion U:</strong><br />Umleitung ab <span style=\"font-size: 12pt; font-family: Arial, sans-serif;\">Engerthstra&szlig;e # Sturgasse &uuml;ber </span>Sturgasse &ndash; Vorgartenstra&szlig;e &ndash; Olympiaplatz.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Pensionistenwohnhaus Prater (Engerthstra&szlig;e 232-238, Stiege 9)<br />- Stadion U (Olympiaplatz gegen&uuml;ber 2)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Pensionistenwohnhaus Prater (Vorgartenstra&szlig;e vor Stella-Klein-L&ouml;w-Weg)</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "561845cd6f3d6b7c032d62d52c38ce4dec6c1bc2f5dcaa630765071149f88006",
+    "pubDate": "2026-07-30T00:00:00+02:00",
+    "starts_at": "2026-07-30T00:00:00+02:00",
+    "ends_at": "2026-09-12T23:59:00+02:00",
+    "_identity": "wl|hinweis|L=11A|D=2026-07-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "11A: Umleitung wegen Gleisbauarbeiten",
     "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten (Linie 18) am Olympiaplatz kommt es bei der Linie 11A zu folgender &Auml;nderung.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 10. August2026 (Betriebsbeginn) bis Donnerstag, 27. August 2026, etwa 18:00 Uhr</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><span style=\"text-decoration: underline;\">Linie 11A in Richtung Stadion U<span>:<br /></span></span>Umleitung ab Engerthstra&szlig;e # Sturgasse &uuml;ber Sturgasse &ndash; Vorgartenstra&szlig;e - Olympiaplatz zur End- und Anfangshaltestelle.</p> <p><span style=\"text-decoration: underline;\"><strong>Aufgelassene Haltestellen:<br /></strong></span>Pensionistenwohnhaus Prater (Engerthstra&szlig;e 232-238)<br />Stadion U (Olympiaplatz gg&uuml;. 2, Endhaltestelle)</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatzhaltestellen:<br /></strong></span>Pensionistenwohnhaus Prater (Vorgartenstra&szlig;e vor Stell-Klein-L&ouml;w-Weg)<br />Stadion U (Olympiaplatz 2 - Haltestelleninsel der Linie 77A)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -406,6 +418,18 @@
     "starts_at": "2026-07-14T11:15:00+02:00",
     "ends_at": "2027-07-14T11:11:00+02:00",
     "_identity": "wl|hinweis|L=77A|D=2026-07-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "77A: Umleitung wegen Veranstaltung",
+    "description": "<h2>Veranstaltung</h2> <p>Wegen diversen Veranstaltungen im Ernst-Happel-Stadion kommt es zu Umleitungen der Linie 77A</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />11. Juli 2026, ca. 14:00 Uhr bis Betriebsschluss</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span></p> <p><span style=\"text-decoration: underline;\">Linie 77A</span></p> <p>Umleitung in beiden Richtungen zwischen Ludwig-Koe&szlig;ler-Platz und Donaumarina &uuml;ber die A23.</p> <p>Die Haltestellen Klaschkaweg, Stadionbad, Ernst-Happel-Stadion, Stadion U und Marathonweg k&ouml;nnen dadurch nicht eingehalten werden.</p> <p>Die Haltestelle STADION U ist &uuml;ber die U2 von der Haltestelle DONAUMARINA U erreichbar.</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span></p> <p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/77A_Umleitung_A23.png\" alt=\"\" width=\"661\" height=\"661\" /></p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d1297817ee10718651d484a8940d921a33ea574775f089682c8b7548d336d46d",
+    "pubDate": "2026-07-30T09:00:00+02:00",
+    "starts_at": "2026-07-30T09:00:00+02:00",
+    "ends_at": "2026-08-23T01:00:00+02:00",
+    "_identity": "wl|hinweis|L=77A|D=2026-07-30"
   },
   {
     "source": "Wiener Linien",
@@ -1010,30 +1034,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "98A: Wasserrohrgebrechen",
-    "description": "Linie 98A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "94fed11bb2352903dc8a42abfdb9064fe5252fdeb6104e19de591c9c90bc5c86",
-    "pubDate": "2026-07-30T05:14:00+02:00",
-    "starts_at": "2026-07-30T05:14:00+02:00",
-    "ends_at": "2026-07-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=98A|D=2026-07-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-07-30T07:03:00+02:00",
-    "starts_at": "2026-07-30T07:03:00+02:00",
-    "ends_at": "2026-07-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-07-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Betrieb ab Börse",
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1150,6 +1150,18 @@
     "starts_at": "2026-07-30T00:00:19+02:00",
     "ends_at": "2026-07-30T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-07-30|TK=busse halten frauenstiftgasse 7"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Straßenbau Busse halten Gymnasiumstraße 64-66",
+    "description": "Straßenbau\nBusse halten Gymnasiumstraße 64-66",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1ac1a526e9d1deee1880e006ace721078fe8a1192440906cac776dc6f4fd7ca2",
+    "pubDate": "2026-07-30T09:00:03+02:00",
+    "starts_at": "2026-07-30T09:00:03+02:00",
+    "ends_at": "2026-07-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=|D=2026-07-30|TK=strassenbau busse halten gymnasiumstrasse 64 66"
   },
   {
     "source": "Wiener Linien",
