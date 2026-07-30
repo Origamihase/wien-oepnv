@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 30 Jul 2026 06:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 07:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[98A: Wasserrohrgebrechen]]></title>
@@ -17,8 +17,8 @@
       <ext:first_seen>Thu, 30 Jul 2026 05:30:54 +0200</ext:first_seen>
       <ext:starts_at>Thu, 30 Jul 2026 05:14:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 30 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>Örtliche Umleitung im Bereich Gartenheimstraße. Die Haltestelle Adam-Betz-Gasse kann nicht eingehalten werden. [Am 30.07.2026]</description>
-      <content:encoded><![CDATA[Örtliche Umleitung im Bereich Gartenheimstraße. Die Haltestelle Adam-Betz-Gasse kann nicht eingehalten werden.<br/>[Am 30.07.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.07.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.07.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Umleitung wegen Gleisbauarbeiten]]></title>
@@ -74,17 +74,6 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Liesing Bahnhof und Wien Meidling Bahnhof (U) am 02.08.2026 die Züge S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2 …<br/>[Seit 27.07.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[94A: Kagraner Anger]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1706594fa3bfef8bc5afb23e56f42e2ce8adc02b2f13d7955af7cc61a34ce8c4</guid>
-      <pubDate>Mon, 27 Jul 2026 11:25:00 +0200</pubDate>
-      <ext:first_seen>Mon, 27 Jul 2026 11:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Jul 2026 11:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 30 Jul 2026 07:00:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 94A in Richtung Kagran U Haltestelle: Kagraner Anger Von: Siebenbürgerstraße 28-48, Stiege 17 Nach: Siebenbürgerstraße gegenüber 47A-49A … [27.07.2026 – 30.07.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 94A in Richtung Kagran U Haltestelle: Kagraner Anger Von: Siebenbürgerstraße 28-48, Stiege 17 Nach: Siebenbürgerstraße gegenüber 47A-49A …<br/>[27.07.2026 – 30.07.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[Burggasse 67]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
       <guid isPermaLink="false">394c32bde84507f8bc30b06ef112c6140c4adacde31b067755f539411731dc8b</guid>
@@ -116,6 +105,17 @@
       <ext:ends_at>Sat, 22 Aug 2026 00:00:00 +0200</ext:ends_at>
       <description>Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt. [13.07.2026 – 22.08.2026]</description>
       <content:encoded><![CDATA[Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: 60A. Liesing S]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5367de9e718e9be388b6e1c4b17e95e7b2fdbc265d96a5cf35ded91b8f3e8415</guid>
+      <pubDate>Thu, 23 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 23 Jul 2026 13:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Jul 2026 11:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 27 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 60A und RB61 in Richtung Alterlaa U bzw. Maurer Hauptplatz Haltestelle: Liesing S Von: Liesinger Platz 2 a, Bussteig B Nach: Perchtoldsdorfer … [27.07.2026 – 27.07.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 60A und RB61 in Richtung Alterlaa U bzw. Maurer Hauptplatz Haltestelle: Liesing S Von: Liesinger Platz 2 a, Bussteig B Nach: Perchtoldsdorfer …<br/>[27.07.2026 – 27.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
