@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 30 Jul 2026 10:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 11:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ee9d3f3d2f7894fa11d971e1ac5f847be3f219359a43a6a87138d443f4bb3996</guid>
+      <pubDate>Thu, 30 Jul 2026 10:33:00 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Jul 2026 11:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 10:33:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 30 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 30.07.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 30.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[85A: Rautenweg]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">37213fd813da16225454c91ce6b5e3c0ff2dc09520627e3ba3775766c0243a3f</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Jul 2026 11:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 07 Aug 2026 01:00:00 +0200</ext:ends_at>
+      <description>Due to roadworks in the range Rautenweg / Ziegelhofstraße the buses of the line 85A in the direction Breitenlee, Rautenweg operating short-running. [30.07.2026 – 07.08.2026]</description>
+      <content:encoded><![CDATA[Due to roadworks in the range Rautenweg / Ziegelhofstraße the buses of the line 85A in the direction Breitenlee, Rautenweg operating short-running.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11A: event on 12.09.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -28,8 +50,8 @@
       <ext:first_seen>Thu, 30 Jul 2026 08:30:46 +0200</ext:first_seen>
       <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 07 Aug 2026 16:00:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Kolbegasse werden die Linien 16A, 66A, 67A und N66 umgeleitet. [30.07.2026 – 07.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Kolbegasse werden die Linien 16A, 66A, 67A und N66 umgeleitet.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
+      <description>Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected. [30.07.2026 – 07.08.2026]</description>
+      <content:encoded><![CDATA[Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: diversion because of track construction works]]></title>
@@ -94,28 +116,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
       <description>The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city. [27.07.2026 – 02.10.2026]</description>
       <content:encoded><![CDATA[The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Hernals Hauptstraße from Dornbacher Straße and Güpferlingstraße to Urbangasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">c622792c5600ba8914b99ca51075bd45417b66f4aa8ef11610ebf53889e24757</guid>
-      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>The diversion in the direction of the city inwards is via: Dornbacher Straße - Güpferlingstraße - Lascygasse - Urbangasse - Hernalser Hauptstraße.More information about the … [27.07.2026 – 04.09.2026]</description>
-      <content:encoded><![CDATA[The diversion in the direction of the city inwards is via: Dornbacher Straße - Güpferlingstraße - Lascygasse - Urbangasse - Hernalser Hauptstraße.More information about the …<br/>[27.07.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Schottentor: Schottenring from crossing Universitätsring and Schottengasse and bulkhead passage to crossing Heßgas]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">c16ccc98d3c124892816101adcf405925e8561a82607632059e160ebae207a92</guid>
-      <pubDate>Mon, 13 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 14:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 13 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 00:00:00 +0200</ext:ends_at>
-      <description>In the working area the tram operation is stopped. [13.07.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[In the working area the tram operation is stopped.<br/>[13.07.2026 – 22.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
