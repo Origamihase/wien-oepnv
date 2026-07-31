@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 31 Jul 2026 14:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 14:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Linzer Straße von Kreuzung Hüttelbergstraße und Bergmillergasse bis Kreuzung Wolfersberggasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">0cffc5bed239d660fe31be1b6785791df2548c1d145a9ad1cde9742f5f044894</guid>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 31 Jul 2026 14:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 31 Aug 2026 00:00:00 +0200</ext:ends_at>
+      <description>Die Haltestelleder betroffenen Buslinien bei der Bujattigasse wird provisorisch in dieWolfersberggasse ON 1 verlegt. [19.04.2026 – 31.08.2026]</description>
+      <content:encoded><![CDATA[Die Haltestelleder betroffenen Buslinien bei der Bujattigasse wird provisorisch in dieWolfersberggasse ON 1 verlegt.<br/>[19.04.2026 – 31.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[8A: Montecuccoliplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:starts_at>Mon, 27 Jul 2026 16:05:59 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Liesing Bahnhof und Wien Meidling Bahnhof (U) am 02.08.2026 die Züge S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2 … [Seit 27.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Liesing Bahnhof und Wien Meidling Bahnhof (U) am 02.08.2026 die Züge S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2 …<br/>[Seit 27.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Burggasse 67]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">394c32bde84507f8bc30b06ef112c6140c4adacde31b067755f539411731dc8b</guid>
-      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. [27.07.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

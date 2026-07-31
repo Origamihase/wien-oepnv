@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 31 Jul 2026 14:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 14:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Linzer Straße from crossing Hüttelbergstraße and Bergmillergasse from crossing Wolfersberggasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">0cffc5bed239d660fe31be1b6785791df2548c1d145a9ad1cde9742f5f044894</guid>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 31 Jul 2026 14:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 19 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 31 Aug 2026 00:00:00 +0200</ext:ends_at>
+      <description>The stops of the affected bus lines at the Bujattigasse will be temporarily moved to theWolfersberggasse ON 1. [19.04.2026 – 31.08.2026]</description>
+      <content:encoded><![CDATA[The stops of the affected bus lines at the Bujattigasse will be temporarily moved to theWolfersberggasse ON 1.<br/>[19.04.2026 – 31.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[8A: Montecuccoliplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:starts_at>Mon, 27 Jul 2026 16:05:59 +0200</ext:starts_at>
       <description>construction works between Wien Liesing train station and Wien Meidling train station (U) on 02.08.2026, S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2… [Since 27.07.2026]</description>
       <content:encoded><![CDATA[construction works between Wien Liesing train station and Wien Meidling train station (U) on 02.08.2026, S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2…<br/>[Since 27.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Burggasse 67]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">394c32bde84507f8bc30b06ef112c6140c4adacde31b067755f539411731dc8b</guid>
-      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city. [27.07.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
