@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 31 Jul 2026 12:01:11 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 12:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[98A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2c7d36134e7b3d71ae9da7c04d74769d188fb2715a3697b7d895eb059084ea9e</guid>
+      <pubDate>Fri, 31 Jul 2026 12:21:00 +0200</pubDate>
+      <ext:first_seen>Fri, 31 Jul 2026 12:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 31 Jul 2026 12:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Jul 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Heustadelgasse, Schule. [Am 31.07.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Heustadelgasse, Schule.<br/>[Am 31.07.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[8A: Montecuccoliplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:starts_at>Mon, 27 Jul 2026 16:05:59 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Liesing Bahnhof und Wien Meidling Bahnhof (U) am 02.08.2026 die Züge S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2 … [Seit 27.07.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Liesing Bahnhof und Wien Meidling Bahnhof (U) am 02.08.2026 die Züge S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2 …<br/>[Seit 27.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">862e3f211c3ceef265b5482217590de31a4543c847f52549b4bb94355c32c947</guid>
-      <pubDate>Fri, 31 Jul 2026 11:09:00 +0200</pubDate>
-      <ext:first_seen>Sat, 25 Jul 2026 15:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 31 Jul 2026 11:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Jul 2026 11:56:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 31.07.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 31.07.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
