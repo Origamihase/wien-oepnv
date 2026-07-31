@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 31 Jul 2026 13:31:06 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 14:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[98A: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2c7d36134e7b3d71ae9da7c04d74769d188fb2715a3697b7d895eb059084ea9e</guid>
-      <pubDate>Fri, 31 Jul 2026 12:21:00 +0200</pubDate>
-      <ext:first_seen>Fri, 31 Jul 2026 12:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 31 Jul 2026 12:21:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Jul 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: rescue operation in the stop area Heustadelgasse, Schule. [On 31.07.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation in the stop area Heustadelgasse, Schule.<br/>[On 31.07.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[8A: Montecuccoliplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -116,6 +105,17 @@
       <ext:starts_at>Mon, 27 Jul 2026 16:05:59 +0200</ext:starts_at>
       <description>construction works between Wien Liesing train station and Wien Meidling train station (U) on 02.08.2026, S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2… [Since 27.07.2026]</description>
       <content:encoded><![CDATA[construction works between Wien Liesing train station and Wien Meidling train station (U) on 02.08.2026, S1(28632), S1(28684), S1(28656), S1(28664), S1(28672), S2…<br/>[Since 27.07.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Burggasse 67]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">394c32bde84507f8bc30b06ef112c6140c4adacde31b067755f539411731dc8b</guid>
+      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
+      <description>The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city. [27.07.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

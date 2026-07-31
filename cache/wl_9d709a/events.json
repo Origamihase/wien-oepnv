@@ -746,6 +746,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "14A: Rettungseinsatz",
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac",
+    "pubDate": "2026-07-31T13:30:00+02:00",
+    "starts_at": "2026-07-31T13:30:00+02:00",
+    "ends_at": "2026-07-31T23:55:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-07-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -790,6 +802,18 @@
     "starts_at": "2026-07-30T00:00:19+02:00",
     "ends_at": "2026-07-31T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-07-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Schadhaftes Fahrzeug",
+    "description": "Linie 27: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8de0171cb5a82c20b0963bf79e2f59c4da0c97e94c58a5fdab5ede435ad86aba",
+    "pubDate": "2026-07-31T13:47:00+02:00",
+    "starts_at": "2026-07-31T13:47:00+02:00",
+    "ends_at": "2026-07-31T23:55:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-07-31"
   },
   {
     "source": "Wiener Linien",
@@ -1046,18 +1070,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "98A: Rettungseinsatz",
-    "description": "Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Heustadelgasse, Schule.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2c7d36134e7b3d71ae9da7c04d74769d188fb2715a3697b7d895eb059084ea9e",
-    "pubDate": "2026-07-31T12:21:00+02:00",
-    "starts_at": "2026-07-31T12:21:00+02:00",
-    "ends_at": "2026-07-31T23:55:00+02:00",
-    "_identity": "wl|störung|L=98A|D=2026-07-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Betrieb ab Börse",
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1142,6 +1154,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-07-31T13:35:00+02:00",
+    "starts_at": "2026-07-31T13:35:00+02:00",
+    "ends_at": "2026-07-31T13:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-07-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U4: Bauarbeiten",
     "description": "Linie U4: Kein Betrieb zwischen Schwedenplatz und Landstraße-Wien Mitte. Weichen Sie ersatzweise auf die Linien U1, U2 und U3 aus. Voraussichtliche Dauer: Montag, 03. August 2026, 04:00 Uhr. Grund: Bauarbeiten im Bereich Schwedenplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1150,6 +1174,18 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Betriebsstörung",
+    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 14:00 Uhr. Grund: Betriebsstörung im Haltestellenbereich Währinger Straße - Volksoper.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
+    "pubDate": "2026-07-31T13:51:00+02:00",
+    "starts_at": "2026-07-31T13:51:00+02:00",
+    "ends_at": "2026-07-31T14:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-07-31"
   },
   {
     "source": "Wiener Linien",
