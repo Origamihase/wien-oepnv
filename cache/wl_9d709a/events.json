@@ -818,6 +818,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 2: Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtliche Dauer: 23:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Oper, Karlsplatz U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
+    "pubDate": "2026-07-31T22:53:00+02:00",
+    "starts_at": "2026-07-31T22:57:24+02:00",
+    "ends_at": "2026-07-31T23:57:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-07-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "31: Gleisbauarbeiten",
     "description": "Linie 31: Betrieb nur zwischen Schottenring U und Friedrich-Engels-Platz. Weichen Sie ersatzweise auf die Linien U6, 30, 5A und 11A. aus. Voraussichtliche Dauer: Ende August. Grund: Gleisbauarbeiten im Bereich Floridsdorfer Brücke.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1040,7 +1052,7 @@
     "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
     "pubDate": "2026-07-31T20:55:00+02:00",
     "starts_at": "2026-07-31T20:55:00+02:00",
-    "ends_at": "2026-07-31T23:55:00+02:00",
+    "ends_at": "2026-07-31T23:02:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-07-31"
   },
   {
