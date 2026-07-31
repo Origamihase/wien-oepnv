@@ -734,7 +734,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5/12/37/38/40/41/42: Gleisbauarbeiten",
+    "title": "12/37/38/40/41/42/5: Gleisbauarbeiten",
     "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert voraussichtlich bis Ende August.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5627b0160e655cb3f00287a1e43fd9bb84f40f90804ad931f4aaa44da4c254a7",
@@ -1150,6 +1150,18 @@
     "starts_at": "2026-07-03T04:00:00+02:00",
     "ends_at": "2026-08-03T04:00:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-07-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Polizeieinsatz",
+    "description": "Linie U4: Unregelmäßige Intervalle zwischen Hütteldorf und Landstraße-Wien Mitte. Grund: Polizeieinsatz im Haltestellenbereich Landstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
+    "pubDate": "2026-07-31T07:35:00+02:00",
+    "starts_at": "2026-07-31T07:35:00+02:00",
+    "ends_at": "2026-07-31T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-07-31"
   },
   {
     "source": "Wiener Linien",
