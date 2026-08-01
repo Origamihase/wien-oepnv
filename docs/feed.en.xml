@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 01 Aug 2026 13:31:03 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 01 Aug 2026 14:01:16 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U4: folding ramp lock on 02.08.2026]]></title>
@@ -52,6 +52,17 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Because of construction works in the Motecuccoliplatz and Stranzenbergstraße line is redirected to 8A. [30.07.2026 – 30.09.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Motecuccoliplatz and Stranzenbergstraße line is redirected to 8A.<br/>[30.07.2026 – 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Sat, 01 Aug 2026 13:43:00 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Jul 2026 12:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 01 Aug 2026 13:43:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 01 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction towards Floridsdorf. expected duration: 12:50 watch. Reason: rescue operation in the Am Schöpfwerk stop area. [On 01.08.2026]</description>
+      <content:encoded><![CDATA[service obstruction towards Floridsdorf. expected duration: 12:50 watch. Reason: rescue operation in the Am Schöpfwerk stop area.<br/>[On 01.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[85A: Rautenweg]]></title>
@@ -106,17 +117,6 @@
       <ext:starts_at>Wed, 29 Jul 2026 12:59:33 +0200</ext:starts_at>
       <description>Due to construction works on 02.08.2026 between Wien Meidling train station (U) and Gramatneusiedl train station REX6(7799) between Vienna Hbf and Kledering train S60(26093) not … [Since 29.07.2026]</description>
       <content:encoded><![CDATA[Due to construction works on 02.08.2026 between Wien Meidling train station (U) and Gramatneusiedl train station REX6(7799) between Vienna Hbf and Kledering train S60(26093) not …<br/>[Since 29.07.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N54: Cable work on 31.07.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">948dbfb75d8f5c9b8be3e4066f6dc1ecdfd3137396087fef6f8b15c858b2992d</guid>
-      <pubDate>Wed, 29 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 12:32:59 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 29 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 31 Aug 2026 04:30:00 +0200</ext:ends_at>
-      <description>Due to cable work in the Phillipsgasse the call bus line N54 is redirected.. Period: On Friday, 31. July 2026 from start of operation (night from 30. on 31.) to … [29.07.2026 – 31.08.2026]</description>
-      <content:encoded><![CDATA[Due to cable work in the Phillipsgasse the call bus line N54 is redirected.. Period: On Friday, 31. July 2026 from start of operation (night from 30. on 31.) to …<br/>[29.07.2026 – 31.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
