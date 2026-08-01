@@ -1022,18 +1022,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "99A: Verunreinigung",
-    "description": "Linie 99A: Fahrtbehinderung in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "860a1fcc4a83f82cd7645a4ce3b547c014d4d1871befbb044e95934c18dabc47",
-    "pubDate": "2026-08-01T05:38:00+02:00",
-    "starts_at": "2026-08-01T05:38:00+02:00",
-    "ends_at": "2026-08-01T05:53:00+02:00",
-    "_identity": "wl|störung|L=99A|D=2026-08-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "LB: Betrieb ab Inzersdorf Lokalbahn",
     "description": "Bauarbeiten\nBetrieb ab Inzersdorf Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1090,6 +1078,18 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-08-01T06:10:00+02:00",
+    "starts_at": "2026-08-01T06:10:00+02:00",
+    "ends_at": "2026-08-01T07:15:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-08-01"
   },
   {
     "source": "Wiener Linien",
