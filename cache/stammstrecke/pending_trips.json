@@ -1,18 +1,18 @@
 {
-  "Praterstern|CJX9|2026-08-01T05:03:00+02:00": {
-    "cancelled": false,
-    "direction": "Praterstern",
-    "last_seen_at": "2026-08-01T05:01:04.474456+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "CJX9",
-    "scheduled": "2026-08-01T05:03:00+02:00"
-  },
   "Praterstern|CJX9|2026-08-01T05:33:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-08-01T05:01:04.474456+02:00",
+    "last_seen_at": "2026-08-01T05:30:50.216930+02:00",
     "latest_delay_minutes": 0.0,
     "name": "CJX9",
     "scheduled": "2026-08-01T05:33:00+02:00"
+  },
+  "Praterstern|S3|2026-08-01T05:45:00+02:00": {
+    "cancelled": false,
+    "direction": "Praterstern",
+    "last_seen_at": "2026-08-01T05:30:50.216930+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S3",
+    "scheduled": "2026-08-01T05:45:00+02:00"
   }
 }
