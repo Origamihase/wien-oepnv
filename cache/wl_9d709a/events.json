@@ -698,18 +698,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "U4: Klapprampensperre am 02.08.2026",
-    "description": "<p class=\"MsoNormal\">Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung k&ouml;nnen die Klapprampen der U-Bahnz&uuml;ge der Linie U4 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig.</p> <p class=\"MsoNormal\">Due to the high number of passengers attending an event, the folding ramps on line U4 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting.</p> <p class=\"MsoNormal\">Zeitraum | Duration:<br />02.08.2026, ca. 19:00 Uhr - 23:00 Uhr</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "afb72a6500666d3879bfd12ce9441110a9ed34c320289a140248fd0d0264b5c4",
-    "pubDate": "2026-08-01T00:00:00+02:00",
-    "starts_at": "2026-08-01T00:00:00+02:00",
-    "ends_at": "2026-08-02T23:00:00+02:00",
-    "_identity": "wl|hinweis|L=U4|D=2026-08-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "U6: U6 Stützmauersanierung: Thaliastraße, Burggasse-Stadthalle Sperre Gleis 1",
     "description": "<h2>Gleiswechselbetrieb</h2> <p>Wegen Sanierungsarbeiten kommt es zu einer Bahnsteigsperre der Linie U6&nbsp; ab ca. 22:30 Uhr in den Stationen Thaliastra&szlig;e und Burggasse, Stadthalle in Richtung Floridsdorf.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:<br /></strong></span>Von 01. Juni 2026 bis voraussichtlich Mitte September 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span>Die Linie U6 kann die Stationen Thaliastra&szlig;e und Burggasse, Stadthalle in Richtung Floridsdorf Montag - Donnerstag (Werktags und vor Werktagen) ab ca. 22:30 Uhr nicht einhalten. Ein eingleisiger Betrieb ist zwischen Thaliastra&szlig;e und Burggasse, Stadthalle &uuml;ber Gleis 2 notwendig. Die Z&uuml;ge halten in beiden Richtungen auf Gleis 2.&nbsp; &nbsp;</p> <p><span style=\"text-decoration: underline;\"><strong>&nbsp;</strong></span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -794,7 +782,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5/12/37/38/40/41/42: Gleisbauarbeiten",
+    "title": "12/37/38/40/41/42/5: Gleisbauarbeiten",
     "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert voraussichtlich bis Ende August.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5627b0160e655cb3f00287a1e43fd9bb84f40f90804ad931f4aaa44da4c254a7",
@@ -998,18 +986,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a2ac5fae7e3f48a67607975b18dba585c5ef50bbf2cc22863a26b7cf93ff0890",
-    "pubDate": "2026-08-02T21:35:12+02:00",
-    "starts_at": "2026-08-02T21:35:13+02:00",
-    "ends_at": "2026-08-02T22:34:00+02:00",
-    "_identity": "wl|störung|L=57A|D=2026-08-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "59A: Busse halten Reinprechtsdorfer Straße 39-41",
     "description": "Busse halten\nReinprechtsdorfer Straße 39-41",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1034,6 +1010,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "60: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
+    "pubDate": "2026-08-02T22:45:49+02:00",
+    "starts_at": "2026-08-02T22:45:53+02:00",
+    "ends_at": "2026-08-02T23:45:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-08-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1042,18 +1030,6 @@
     "starts_at": "2026-08-02T04:45:04+02:00",
     "ends_at": "2026-08-03T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-08-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67B: Fahrtbehinderung Störung am Bahnübergang",
-    "description": "Fahrtbehinderung\nStörung am Bahnübergang",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d058bb7ad2c68e6f71caa4160e6ea6b36bd444c5861737d114a72c3908510a93",
-    "pubDate": "2026-08-02T21:32:13+02:00",
-    "starts_at": "2026-08-02T21:32:16+02:00",
-    "ends_at": "2026-08-02T22:31:00+02:00",
-    "_identity": "wl|störung|L=67B|D=2026-08-02"
   },
   {
     "source": "Wiener Linien",
