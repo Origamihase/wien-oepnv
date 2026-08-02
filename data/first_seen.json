@@ -10441,6 +10441,16 @@
       "epoch": 3
     }
   },
+  "a27df425b921c1ffad6b051c50f627c2f62fc44ae99bd5ed196649d21c522831": {
+    "first_seen": "2026-08-02T08:30:47.849596+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction in the direction of Neue\u00dfling. expected duration: 10:35 watch. Reason: event in the area of latitude empty road.",
+        "title": "24A: event"
+      },
+      "epoch": 3
+    }
+  },
   "a29e671a85c2a6d60f93348738aed861f0787ecaeb052980186da61232ad65c7": {
     "first_seen": "2026-07-06T16:31:10.400822+00:00",
     "translations": {
@@ -14879,6 +14889,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: defective vehicle.",
         "title": "49: delays"
+      },
+      "epoch": 3
+    }
+  },
+  "ef90501a3fb925c65a2cd98e6341b2c2e4b3d86f8dea54f73053cb555dd07649": {
+    "first_seen": "2026-08-02T08:30:47.849596+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: signal disruption.",
+        "title": "63A: signal disruption"
       },
       "epoch": 3
     }
