@@ -1,23 +1,28 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-07-26T04:27:58+00:00_
+_Erzeugt am: 2026-08-02T04:23:53+00:00_
 
-**Stationen: 2235 → 2235 (Δ +0)**
+**Stationen: 2235 → 2242 (Δ +7)**
 
-## Hinzugefügt (2)
+## Hinzugefügt (7)
 
-- `name:Wien Rudolfsheim, Anschützgasse (WL)` — Wien Rudolfsheim, Anschützgasse \(WL\)
-- `name:Wien Wasserwiese (WL)` — Wien Wasserwiese \(WL\)
+- `name:Wien Bhf. Atzgersdorf S, Knotzenbachgasse (WL)` — Wien Bhf. Atzgersdorf S, Knotzenbachgasse \(WL\)
+- `name:Wien Himmelpfortgasse (WL)` — Wien Himmelpfortgasse \(WL\)
+- `name:Wien Hollandstraße (WL)` — Wien Hollandstraße \(WL\)
+- `name:Wien Liebenberggasse (WL)` — Wien Liebenberggasse \(WL\)
+- `name:Wien Schellinggasse (WL)` — Wien Schellinggasse \(WL\)
+- `name:Wien Stubenbastei (WL)` — Wien Stubenbastei \(WL\)
+- `name:Wien Walter-Lindenbaum-Gasse (WL)` — Wien Walter-Lindenbaum-Gasse \(WL\)
 
-## Entfernt (2)
+## Entfernt (0)
 
-- `name:Wien Klaschkaweg (WL)` — Wien Klaschkaweg \(WL\)
-- `name:Wien Rudolfsheim, Anschützg. (WL)` — Wien Rudolfsheim, Anschützg. \(WL\)
+_Keine._
 
 ## Umbenannt (0)
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (0)
+## Koordinaten verschoben (≥ 100 m) (2)
 
-_Keine._
+- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
+- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)
