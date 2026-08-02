@@ -818,18 +818,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "35A: Schadhaftes Fahrzeug",
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e01723d3d09d7a28df192342b8f386a6737bf9dd25fb97499f0a57428eb81540",
-    "pubDate": "2026-08-02T17:27:00+02:00",
-    "starts_at": "2026-08-02T17:27:00+02:00",
-    "ends_at": "2026-08-02T20:25:00+02:00",
-    "_identity": "wl|störung|L=35A|D=2026-08-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "36B: Busse halten Brünner Straße 118",
     "description": "Busse halten\nBrünner Straße 118",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1066,6 +1054,18 @@
     "starts_at": "2026-08-02T01:00:11+02:00",
     "ends_at": "2026-08-03T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-08-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 21:00 Uhr. Grund: Betriebsstörung im Bereich Donaustadtbrücke.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-08-02T20:46:00+02:00",
+    "starts_at": "2026-08-02T20:46:00+02:00",
+    "ends_at": "2026-08-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-08-02"
   },
   {
     "source": "Wiener Linien",
