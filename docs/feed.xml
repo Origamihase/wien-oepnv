@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 03 Aug 2026 00:01:11 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 00:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[D: Einstieg Schottenring 19]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a9cca7dd9005a9e78bf3092bc4377bffe3e428b43fa525909405c7b500a5af9c</guid>
+      <pubDate>Mon, 03 Aug 2026 00:07:28 +0200</pubDate>
+      <ext:first_seen>Mon, 03 Aug 2026 00:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 03 Aug 2026 00:07:28 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 03 Aug 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 03.08.2026]</description>
+      <content:encoded><![CDATA[[Am 03.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[74A/N75: Veranstaltung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 03 Aug 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 03.08.2026]</description>
       <content:encoded><![CDATA[[Am 03.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Burggasse 67]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">394c32bde84507f8bc30b06ef112c6140c4adacde31b067755f539411731dc8b</guid>
-      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. [27.07.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
