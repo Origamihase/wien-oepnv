@@ -1,4 +1,12 @@
 {
+  "Meidling|CJX9|2026-08-02T04:53:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-08-02T04:30:57.443694+02:00",
+    "latest_delay_minutes": 11.0,
+    "name": "CJX9",
+    "scheduled": "2026-08-02T04:53:00+02:00"
+  },
   "Meidling|S2|2026-08-02T04:42:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
@@ -10,8 +18,8 @@
   "Praterstern|S1|2026-08-02T04:39:00+02:00": {
     "cancelled": false,
     "direction": "Praterstern",
-    "last_seen_at": "2026-08-02T04:00:55.914540+02:00",
-    "latest_delay_minutes": 0.0,
+    "last_seen_at": "2026-08-02T04:30:57.443694+02:00",
+    "latest_delay_minutes": 8.0,
     "name": "S1",
     "scheduled": "2026-08-02T04:39:00+02:00"
   }
