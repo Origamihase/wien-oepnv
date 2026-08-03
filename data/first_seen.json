@@ -919,6 +919,16 @@
       "epoch": 2
     }
   },
+  "0d4e18dfe3ef0da857e24fbdb72e23f68dfbad771561ae5c04bf43ce1a5665a9": {
+    "first_seen": "2026-08-03T08:01:49.349425+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "18: current disturbance"
+      },
+      "epoch": 3
+    }
+  },
   "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04": {
     "first_seen": "2026-06-19T15:30:52.071375+00:00",
     "translations": {
@@ -6102,6 +6112,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "10: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
+  "61e509ec6671bda43b58e979536f2501fd8c8838532959449953aebc388dc1e7": {
+    "first_seen": "2026-08-03T08:01:49.349425+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "62: current disturbance"
       },
       "epoch": 3
     }
@@ -13888,6 +13908,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: defective vehicle.",
         "title": "35A: defective vehicle"
+      },
+      "epoch": 3
+    }
+  },
+  "e0729beaf2f3e5aa854be289f84c2fd1317c30a43c9fe733380b840478d4ae8b": {
+    "first_seen": "2026-08-03T08:01:49.349425+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals towards Carabelligasse. Reason: traffic accident.",
+        "title": "36A: traffic accident"
       },
       "epoch": 3
     }
