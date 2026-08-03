@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 03 Aug 2026 14:00:49 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 14:31:03 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Klapprampensperre am 09.08.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f6886909c3b0de85cbb484f680f1de66d16b9d541e6d628fb0642ac87ca172b8</guid>
+      <pubDate>Mon, 03 Aug 2026 14:05:00 +0200</pubDate>
+      <ext:first_seen>Mon, 03 Aug 2026 14:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 03 Aug 2026 14:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 09 Aug 2026 23:00:00 +0200</ext:ends_at>
+      <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. [03.08.2026 – 09.08.2026]</description>
+      <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden.<br/>[03.08.2026 – 09.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A/N62: Gasrohrgebrechen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 07 Aug 2026 16:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Kolbegasse werden die Linien 16A, 66A, 67A und N66 umgeleitet. [30.07.2026 – 07.08.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Kolbegasse werden die Linien 16A, 66A, 67A und N66 umgeleitet.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Umleitung wegen Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7458cad6f053dd22fb8d797e6870a19d692061d5248ab03e9d7d5b465a46a021</guid>
-      <pubDate>Wed, 29 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 16:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 10 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 18:00:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten (Linie 18) am Olympiaplatz kommt es bei der Linie 11A zu folgender Änderung. [10.08.2026 – 27.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten (Linie 18) am Olympiaplatz kommt es bei der Linie 11A zu folgender Änderung.<br/>[10.08.2026 – 27.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

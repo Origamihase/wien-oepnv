@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 03 Aug 2026 14:00:49 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 14:31:03 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: folding ramp lock on 09.08.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f6886909c3b0de85cbb484f680f1de66d16b9d541e6d628fb0642ac87ca172b8</guid>
+      <pubDate>Mon, 03 Aug 2026 14:05:00 +0200</pubDate>
+      <ext:first_seen>Mon, 03 Aug 2026 14:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 03 Aug 2026 14:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 09 Aug 2026 23:00:00 +0200</ext:ends_at>
+      <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [03.08.2026 – 09.08.2026]</description>
+      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[03.08.2026 – 09.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A/N62: gas pipe fractures]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 07 Aug 2026 16:00:00 +0200</ext:ends_at>
       <description>Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected. [30.07.2026 – 07.08.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: diversion because of track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7458cad6f053dd22fb8d797e6870a19d692061d5248ab03e9d7d5b465a46a021</guid>
-      <pubDate>Wed, 29 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 16:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 10 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 18:00:00 +0200</ext:ends_at>
-      <description>Because of track construction works (line 18) on the Olympiaplatz the following change occurs for the 11A line. [10.08.2026 – 27.08.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works (line 18) on the Olympiaplatz the following change occurs for the 11A line.<br/>[10.08.2026 – 27.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
