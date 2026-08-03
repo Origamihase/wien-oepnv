@@ -675,12 +675,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10A: Fremder Verkehrsunfall",
-    "description": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "69bf84ed2d92c43fb9999e573aa34981c804f4c13f0177a30ce634d9c2393458",
     "pubDate": "2026-08-03T23:03:00+02:00",
     "starts_at": "2026-08-03T23:03:00+02:00",
-    "ends_at": "2026-08-03T23:55:00+02:00",
+    "ends_at": "2026-08-04T00:48:00+02:00",
     "_identity": "wl|störung|L=10A|D=2026-08-03"
   },
   {
@@ -690,22 +690,10 @@
     "description": "Bauarbeiten\nBusse halten Gregor-Mendel-Straße ggü. 33",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7a90b0b90a8c432a60e77329086deef4021502c4df92abd01cbcd46d27a9d114",
-    "pubDate": "2026-08-03T00:00:26+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-08-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10A: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bd7d8f45186b5060599af6427e03e365de42b2d79056f8d753c1d2f26e5c147c",
-    "pubDate": "2026-08-03T23:04:30+02:00",
-    "starts_at": "2026-08-03T23:16:47+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -798,10 +786,10 @@
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92",
-    "pubDate": "2026-08-03T00:00:29+02:00",
-    "starts_at": "2026-08-03T00:00:29+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=26A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=26A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -822,10 +810,10 @@
     "description": "Gleisbauarbeiten\nKein Betrieb zwischen Stammersdorf und Friedrich-Engels-Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "bd505a7409f812c37b139c79de6413e073c46f43788ac8ae42d1b468115bb1eb",
-    "pubDate": "2026-08-03T00:00:27+02:00",
-    "starts_at": "2026-08-03T00:00:28+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=31|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:21+02:00",
+    "starts_at": "2026-08-04T00:00:21+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=31|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -834,10 +822,10 @@
     "description": "Busse halten\nBrünner Straße 118",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "47d352c19d2e123514a007494e2e9a462cadcffdb7d58ec85e0f4f7d374f0632",
-    "pubDate": "2026-08-03T00:00:27+02:00",
-    "starts_at": "2026-08-03T00:00:27+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=36B|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=36B|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -846,10 +834,10 @@
     "description": "Bauarbeiten\nBusse halten Dänenstraße ggü. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "884dc6cc92c152b9b0f234922ea70ba6afad347f55896c157734ed94168124d5",
-    "pubDate": "2026-08-03T00:00:26+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=37A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -858,10 +846,10 @@
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-08-03T00:00:26+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=37A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:19+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -870,22 +858,10 @@
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5200bbbba6e3367901ddab400d26d7669937f0f98cf15717b25ef20ef893cb40",
-    "pubDate": "2026-08-03T00:00:26+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=40A|D=2026-08-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42A: Fremder Verkehrsunfall",
-    "description": "Linie 42A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5c43645e71514b79e677e1dcb880bcfc1a29885cefdd2a67dfac07b7423e5753",
-    "pubDate": "2026-08-03T23:03:00+02:00",
-    "starts_at": "2026-08-03T23:03:00+02:00",
-    "ends_at": "2026-08-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=42A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=40A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -906,10 +882,10 @@
     "description": "Gleisbauarbeiten\nBenutzen Sie die Linie 43A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
-    "pubDate": "2026-08-03T00:00:26+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=43|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=43|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -918,10 +894,10 @@
     "description": "Bauarbeiten\nBusse halten Alszeile gegenüber 93",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "05f43b3cc6e7fc469b2327c420ffd938743c80bae8e543e6b1266ae3efe72301",
-    "pubDate": "2026-08-03T00:00:26+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=44A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=44A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -930,10 +906,10 @@
     "description": "Gleisbauarbeiten\nBusse halten in der Nebenfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "74519215356afd8031d01982127583ac57351bc87a036da7ca29042510f5629a",
-    "pubDate": "2026-08-03T00:00:26+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=44A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=44A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -942,10 +918,10 @@
     "description": "Gleisbauarbeiten\nBusse halten Dornbacher Straße 3-5",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e6eb6c069247a573ffa0acae078d76ef0a59e51c763e2a0a9260553265d2635a",
-    "pubDate": "2026-08-03T00:00:26+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=44A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=44A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -966,10 +942,10 @@
     "description": "Bauarbeiten\nBetrieb ab Hirschengasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "6133520d2a82183c6176b6cc6f40b301cd4201ab850a09e0311bb094a73fbae0",
-    "pubDate": "2026-08-03T00:00:27+02:00",
-    "starts_at": "2026-08-03T00:00:28+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=57A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:21+02:00",
+    "starts_at": "2026-08-04T00:00:22+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=57A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -978,10 +954,10 @@
     "description": "Bauarbeiten\nBetrieb ab hier bis Pilgramgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "f9aeac34f1e0f2e3bf95bf1f60e3f9763b7777ec678abdb1bc3888f2a18702a6",
-    "pubDate": "2026-08-03T00:00:27+02:00",
-    "starts_at": "2026-08-03T00:00:27+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=57A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:21+02:00",
+    "starts_at": "2026-08-04T00:00:21+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=57A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -990,10 +966,10 @@
     "description": "Busse halten\nReinprechtsdorfer Straße 39-41",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0a39d11121c4d215bc13b2d416331db7da3ffd3869dca45d8968ebad6601756d",
-    "pubDate": "2026-08-01T00:00:29+02:00",
-    "starts_at": "2026-08-01T00:00:29+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-08-01"
+    "pubDate": "2026-08-04T00:00:21+02:00",
+    "starts_at": "2026-08-04T00:00:21+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=59A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1002,10 +978,10 @@
     "description": "Busse halten\nArbeitergasse 19",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "25e45af3be6b62612f5c8c98e5321bd7a0aa6329602dcf891041c3f75a30e4fd",
-    "pubDate": "2026-08-01T00:00:29+02:00",
-    "starts_at": "2026-08-01T00:00:29+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-08-01"
+    "pubDate": "2026-08-04T00:00:21+02:00",
+    "starts_at": "2026-08-04T00:00:21+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=59A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1022,26 +998,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Gasrohrgebrechen Busse halten Hetzendorfer Straße 79A",
-    "description": "Gasrohrgebrechen\nBusse halten Hetzendorfer Straße 79A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3b50cfb1d1441a82301d0b0e5fb4fb791d76a3ba42f6ab9afc814fb3fb3b7ce4",
-    "pubDate": "2026-08-03T11:33:15+02:00",
-    "starts_at": "2026-08-03T11:33:15+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-08-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45",
-    "pubDate": "2026-07-30T00:00:22+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=71E|D=2026-07-30"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:22+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=71E|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1062,10 +1026,10 @@
     "description": "Gleisbauarbeiten\nBetrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c28ac67d039c11f6ed031a22f3861ee7f624170abd4e96518e2e45c18ce50b6a",
-    "pubDate": "2026-08-03T00:00:27+02:00",
-    "starts_at": "2026-08-03T00:00:27+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=71|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:19+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=71|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1074,10 +1038,10 @@
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "f2d0dfafa26975184d2464bad5a4c07e86d59cdf808d5665236c90bfbe9391ad",
-    "pubDate": "2026-08-03T00:00:27+02:00",
-    "starts_at": "2026-08-03T00:00:27+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=71|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:19+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=71|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1086,10 +1050,10 @@
     "description": "Bauarbeiten\nBusse halten Landstraßer Hauptstraße 116",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "af85a7800d27cfcd8e2867019028019a010cbaf186e877615a2c4ab3a19b43bf",
-    "pubDate": "2026-08-03T00:00:26+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:19+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1098,10 +1062,10 @@
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "90216ce9a3141ea415e982acdbf2ac35ab5921c926996bf52a7ad7a52f539c0e",
-    "pubDate": "2026-08-03T00:02:27+02:00",
-    "starts_at": "2026-08-03T00:02:27+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=D|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:19+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=D|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1110,10 +1074,10 @@
     "description": "Gleisbauarbeiten\nBetrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "9801022cffb862d593534ffa59a7d989d643532b3d329f5a79bab6afa5612bb9",
-    "pubDate": "2026-08-03T00:04:28+02:00",
-    "starts_at": "2026-08-03T00:04:28+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=D|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:19+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=D|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1122,10 +1086,10 @@
     "description": "Gleisbauarbeiten\nEinstieg Schottenring 19",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a9cca7dd9005a9e78bf3092bc4377bffe3e428b43fa525909405c7b500a5af9c",
-    "pubDate": "2026-08-03T00:07:28+02:00",
-    "starts_at": "2026-08-03T00:07:28+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=D|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:19+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=D|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1134,10 +1098,10 @@
     "description": "Gleisbauarbeiten\nEinstieg Wipplingerstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "d480dad3a1434424b8118dab9a2f10b37adfbab83e62b53ae66a1ffe1b5145e2",
-    "pubDate": "2026-08-03T00:03:27+02:00",
-    "starts_at": "2026-08-03T00:03:27+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=D|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:19+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=D|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1146,10 +1110,10 @@
     "description": "Gleisbauarbeiten\nUmleitung über Schwedenplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5",
-    "pubDate": "2026-08-03T00:01:57+02:00",
-    "starts_at": "2026-08-03T00:01:57+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=D|D=2026-08-03"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:19+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=D|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1158,10 +1122,10 @@
     "description": "Bauarbeiten\nBetrieb ab Inzersdorf Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0a261bd9bac89ebef4ed45fc30f979f2b7a7d69273e78f37c1956c5e671a47e2",
-    "pubDate": "2026-08-01T00:00:29+02:00",
-    "starts_at": "2026-08-03T00:00:29+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=LB|D=2026-08-01"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:21+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=LB|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1170,10 +1134,10 @@
     "description": "Gleisbauarbeiten\nkein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ccaf2b90af2295f60ce86b09abf99f4a22cd711554268e9af608855f96421ecb",
-    "pubDate": "2026-08-01T00:00:29+02:00",
-    "starts_at": "2026-08-03T00:00:29+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=LB|D=2026-08-01"
+    "pubDate": "2026-08-04T00:00:19+02:00",
+    "starts_at": "2026-08-04T00:00:22+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=LB|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
@@ -1186,18 +1150,6 @@
     "starts_at": "2026-08-03T01:00:02+02:00",
     "ends_at": "2026-08-04T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-08-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2026-08-03T22:29:00+02:00",
-    "starts_at": "2026-08-03T22:29:00+02:00",
-    "ends_at": "2026-08-04T01:00:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-08-03"
   },
   {
     "source": "Wiener Linien",
@@ -1230,10 +1182,10 @@
     "description": "Bauarbeiten\nBusse halten\nFrauenstiftgasse 7",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c8573b355269cc4e2c23ab302bf7ded0db2f53c120e490997c30e0aa2ff51b59",
-    "pubDate": "2026-08-03T00:00:27+02:00",
-    "starts_at": "2026-08-03T00:00:27+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=|D=2026-08-03|TK=busse halten frauenstiftgasse 7"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=|D=2026-08-04|TK=busse halten frauenstiftgasse 7"
   },
   {
     "source": "Wiener Linien",
@@ -1242,9 +1194,9 @@
     "description": "Gleisbauarbeiten\nZüge halten bei\nWähringer Gürtel\ngegenüber 164",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "542b668697c2ac0be11b61c4fbb2c5806545f379c7dacab1e5604b0a7a8340de",
-    "pubDate": "2026-08-03T00:00:26+02:00",
-    "starts_at": "2026-08-03T00:00:26+02:00",
-    "ends_at": "2026-08-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=|D=2026-08-03|TK=züge halten bei währinger gürtel gegenüber 164"
+    "pubDate": "2026-08-04T00:00:20+02:00",
+    "starts_at": "2026-08-04T00:00:20+02:00",
+    "ends_at": "2026-08-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=|D=2026-08-04|TK=züge halten bei währinger gürtel gegenüber 164"
   }
 ]

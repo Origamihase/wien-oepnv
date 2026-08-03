@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 03 Aug 2026 23:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 00:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[42A: foreign traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5c43645e71514b79e677e1dcb880bcfc1a29885cefdd2a67dfac07b7423e5753</guid>
-      <pubDate>Mon, 03 Aug 2026 23:03:00 +0200</pubDate>
-      <ext:first_seen>Mon, 03 Aug 2026 23:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 03 Aug 2026 23:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 03 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 03.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 03.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Gas pipe broken buses stop Hetzendorfer Straße 79A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b50cfb1d1441a82301d0b0e5fb4fb791d76a3ba42f6ab9afc814fb3fb3b7ce4</guid>
-      <pubDate>Mon, 03 Aug 2026 11:33:15 +0200</pubDate>
-      <ext:first_seen>Mon, 03 Aug 2026 17:31:14 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 03 Aug 2026 11:33:15 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 03 Aug 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 03.08.2026]</description>
-      <content:encoded><![CDATA[[On 03.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U1: folding ramp lock on 09.08.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -41,17 +19,6 @@
       <ext:ends_at>Sun, 09 Aug 2026 23:00:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [03.08.2026 – 09.08.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[03.08.2026 – 09.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Einstieg Schottenring 19]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a9cca7dd9005a9e78bf3092bc4377bffe3e428b43fa525909405c7b500a5af9c</guid>
-      <pubDate>Mon, 03 Aug 2026 00:07:28 +0200</pubDate>
-      <ext:first_seen>Mon, 03 Aug 2026 00:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 03 Aug 2026 00:07:28 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 03 Aug 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 03.08.2026]</description>
-      <content:encoded><![CDATA[[On 03.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[74A/N75: event]]></title>
@@ -118,6 +85,39 @@
       <ext:ends_at>Fri, 07 Aug 2026 16:00:00 +0200</ext:ends_at>
       <description>Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected. [30.07.2026 – 07.08.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: diversion because of track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7458cad6f053dd22fb8d797e6870a19d692061d5248ab03e9d7d5b465a46a021</guid>
+      <pubDate>Wed, 29 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Jul 2026 16:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 10 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 27 Aug 2026 18:00:00 +0200</ext:ends_at>
+      <description>Because of track construction works (line 18) on the Olympiaplatz the following change occurs for the 11A line. [10.08.2026 – 27.08.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works (line 18) on the Olympiaplatz the following change occurs for the 11A line.<br/>[10.08.2026 – 27.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44A: Buses stop Dornbacher Straße 3-5]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e6eb6c069247a573ffa0acae078d76ef0a59e51c763e2a0a9260553265d2635a</guid>
+      <pubDate>Tue, 04 Aug 2026 00:00:20 +0200</pubDate>
+      <ext:first_seen>Tue, 28 Jul 2026 05:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 04 Aug 2026 00:00:20 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 04 Aug 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 04.08.2026]</description>
+      <content:encoded><![CDATA[[On 04.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Burggasse 67]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">394c32bde84507f8bc30b06ef112c6140c4adacde31b067755f539411731dc8b</guid>
+      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
+      <description>The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city. [27.07.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[The stop of the public transport concerned is from Burggasse ONr.67 to Burggasse ONr. The right lane is blocked in the direction of the city.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
