@@ -686,18 +686,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "U4: Gleisbauarbeiten",
-    "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten nahe der Station Schwedenplatz kommt es zu folgenden Ma&szlig;nahmen auf der Linie U4.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Freitag, 03. Juli 2026, 04:00 Uhr bis Montag, 03. August, 04:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span></p> <p><span style=\"text-decoration: underline;\">Linie U4:<br /></span>Kein Betrieb zwischen Schwedenplatz und Landstra&szlig;e-Wien Mitte.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />U1, U2 und U3.<br />Die Linien U1 und U2 werden verdichtet.</p> <p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/U4_Linienteilung_SP_LA.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f68c32d2afe19aebe06f3c5d42a87b42f5ce9c1c9dde59b9e715887a4981a65e",
-    "pubDate": "2026-06-10T12:00:00+02:00",
-    "starts_at": "2026-07-03T00:00:00+02:00",
-    "ends_at": "2026-08-03T04:00:00+02:00",
-    "_identity": "wl|hinweis|L=U4|D=2026-07-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "U6: U6 Stützmauersanierung: Thaliastraße, Burggasse-Stadthalle Sperre Gleis 1",
     "description": "<h2>Gleiswechselbetrieb</h2> <p>Wegen Sanierungsarbeiten kommt es zu einer Bahnsteigsperre der Linie U6&nbsp; ab ca. 22:30 Uhr in den Stationen Thaliastra&szlig;e und Burggasse, Stadthalle in Richtung Floridsdorf.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:<br /></strong></span>Von 01. Juni 2026 bis voraussichtlich Mitte September 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span>Die Linie U6 kann die Stationen Thaliastra&szlig;e und Burggasse, Stadthalle in Richtung Floridsdorf Montag - Donnerstag (Werktags und vor Werktagen) ab ca. 22:30 Uhr nicht einhalten. Ein eingleisiger Betrieb ist zwischen Thaliastra&szlig;e und Burggasse, Stadthalle &uuml;ber Gleis 2 notwendig. Die Z&uuml;ge halten in beiden Richtungen auf Gleis 2.&nbsp; &nbsp;</p> <p><span style=\"text-decoration: underline;\"><strong>&nbsp;</strong></span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -742,42 +730,6 @@
     "starts_at": "2026-08-03T00:00:26+02:00",
     "ends_at": "2026-08-03T23:59:59+02:00",
     "_identity": "wl|störung|L=10A|D=2026-08-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Züge halten bei Li. 15A",
-    "description": "Gleisbauarbeiten\nZüge halten bei Li. 15A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a357d69f4eb7f19d80612505230e0a8b5a1c830acc3efdd3d3975ba59c7dcd4",
-    "pubDate": "2026-08-02T22:30:17+02:00",
-    "starts_at": "2026-08-02T22:30:17+02:00",
-    "ends_at": "2026-08-03T04:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-08-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Betrieb ab Enkplatz, Grillgasse U",
-    "description": "Gleisbauarbeiten\nBetrieb ab Enkplatz, Grillgasse U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abea439b99914caae1f139ae04541cb8b28bf3253946cd184ea247027a183900",
-    "pubDate": "2026-08-02T22:30:17+02:00",
-    "starts_at": "2026-08-02T22:30:17+02:00",
-    "ends_at": "2026-08-03T04:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-08-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Benützen Sie den Schienenersatzverkehr 71E",
-    "description": "Gleisbauarbeiten\nBenützen Sie den Schienenersatzverkehr 71E",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ada902634b8f201c79dcefb677d9cf487db94fdd63d609fe94f62aba9645aab3",
-    "pubDate": "2026-08-02T22:30:17+02:00",
-    "starts_at": "2026-08-02T22:30:21+02:00",
-    "ends_at": "2026-08-03T04:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-08-02"
   },
   {
     "source": "Wiener Linien",
@@ -1210,18 +1162,6 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Bauarbeiten",
-    "description": "Linie U4: Kein Betrieb zwischen Schwedenplatz und Landstraße-Wien Mitte. Weichen Sie ersatzweise auf die Linien U1, U2 und U3 aus. Voraussichtliche Dauer: Montag, 03. August 2026, 04:00 Uhr. Grund: Bauarbeiten im Bereich Schwedenplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "764d27c15bdb3bd3868fa37a024661bca55e2394a77bba17e0c6dbf42f5e023c",
-    "pubDate": "2026-07-03T04:00:00+02:00",
-    "starts_at": "2026-07-03T04:00:00+02:00",
-    "ends_at": "2026-08-03T04:00:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-07-03"
   },
   {
     "source": "Wiener Linien",
