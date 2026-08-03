@@ -783,7 +783,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "30: Schadhaftes Fahrzeug",
-    "description": "Linie 30: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 14:45 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Shuttleworthstraße.",
+    "description": "Linie 30: Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 15:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Shuttleworthstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2079eed11fb52f3e5d3f26f767acfa075e513cdb0b512e1d46839b2866aa3029",
     "pubDate": "2026-08-03T13:58:00+02:00",
@@ -798,7 +798,7 @@
     "description": "Fahrtbehinderung\nSchadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "55fa4346a13e51f2667065b4fd8714a5ae0746c890a2b5c171b0777700925929",
-    "pubDate": "2026-08-03T13:58:44+02:00",
+    "pubDate": "2026-08-03T14:07:15+02:00",
     "starts_at": "2026-08-03T14:19:16+02:00",
     "ends_at": "2026-08-03T15:19:00+02:00",
     "_identity": "wl|störung|L=30|D=2026-08-03"
@@ -1186,18 +1186,6 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2026-08-03T13:48:00+02:00",
-    "starts_at": "2026-08-03T13:48:00+02:00",
-    "ends_at": "2026-08-03T14:27:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-08-03"
   },
   {
     "source": "Wiener Linien",
