@@ -710,6 +710,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Verspätungen",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7c9302b74c4151c193e8b61e865846e07389f3d8b7b69a75a90f6a2fde5e99f4",
+    "pubDate": "2026-08-03T07:57:00+02:00",
+    "starts_at": "2026-08-03T07:57:00+02:00",
+    "ends_at": "2026-08-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-08-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Schadhaftes Fahrzeug",
+    "description": "Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Frödenplatz. Weichen Sie ersatzweise auf die Linien 16A und 66A aus. Voraussichtliche Dauer: 08:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Tesarekplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6",
+    "pubDate": "2026-08-03T07:45:00+02:00",
+    "starts_at": "2026-08-03T07:45:00+02:00",
+    "ends_at": "2026-08-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-08-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Schadhafter Zug Betrieb ab Frödenplatz",
+    "description": "Schadhafter Zug\nBetrieb ab Frödenplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e0b07ea52042b877a4e833bbf0d4d704b6e86a8edd24fa8beb9bca264097f3ec",
+    "pubDate": "2026-08-03T07:46:54+02:00",
+    "starts_at": "2026-08-03T07:46:54+02:00",
+    "ends_at": "2026-08-03T08:46:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-08-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12/37/38/40/41/42/5: Gleisbauarbeiten",
     "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert voraussichtlich bis Ende August.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1150,18 +1186,6 @@
     "starts_at": "2026-08-03T00:00:27+02:00",
     "ends_at": "2026-08-03T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-08-03|TK=busse halten frauenstiftgasse 7"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Straßenbau Busse halten Gymnasiumstraße 64-66",
-    "description": "Straßenbau\nBusse halten Gymnasiumstraße 64-66",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1ac1a526e9d1deee1880e006ace721078fe8a1192440906cac776dc6f4fd7ca2",
-    "pubDate": "2026-08-03T00:00:27+02:00",
-    "starts_at": "2026-08-03T00:00:27+02:00",
-    "ends_at": "2026-08-03T08:00:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-08-03|TK=strassenbau busse halten gymnasiumstrasse 64 66"
   },
   {
     "source": "Wiener Linien",
