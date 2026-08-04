@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 04 Aug 2026 20:01:36 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 20:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[6: Gleisschaden]]></title>
@@ -17,19 +17,8 @@
       <ext:first_seen>Tue, 04 Aug 2026 18:31:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 04 Aug 2026 18:23:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 04 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung in Richtung Burggasse, Stadthalle U zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 20:30 Uhr. Grund: Gleisschaden … [Am 04.08.2026]</description>
-      <content:encoded><![CDATA[Umleitung in Richtung Burggasse, Stadthalle U zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 20:30 Uhr. Grund: Gleisschaden …<br/>[Am 04.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5B: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5f671ec81f4101e7a69acb74ef323b5826af481e95c7cb595f76f8b7e4676e03</guid>
-      <pubDate>Tue, 04 Aug 2026 17:21:00 +0200</pubDate>
-      <ext:first_seen>Tue, 04 Aug 2026 18:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 04 Aug 2026 17:21:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 04 Aug 2026 19:56:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 04.08.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 04.08.2026]]]></content:encoded>
+      <description>Umleitung in Richtung Burggasse, Stadthalle U zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 21:30 Uhr. Grund: Gleisschaden … [Am 04.08.2026]</description>
+      <content:encoded><![CDATA[Umleitung in Richtung Burggasse, Stadthalle U zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 21:30 Uhr. Grund: Gleisschaden …<br/>[Am 04.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[68A/68B/N68: Kronawettergasse]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen. [30.07.2026 – 12.09.2026]</description>
       <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[16A/66A/67A/N66/N67: Kolbegasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">46b42303f91ae27d3bd5beb001a77dc50883c3e3605ab8442dcb664b390f57e2</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Jul 2026 08:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 08 Aug 2026 07:00:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Kolbegasse werden die Linien 16A, 66A, 67A und N66 umgeleitet. [30.07.2026 – 08.08.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Kolbegasse werden die Linien 16A, 66A, 67A und N66 umgeleitet.<br/>[30.07.2026 – 08.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
