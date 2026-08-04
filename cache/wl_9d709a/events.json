@@ -998,6 +998,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "82A: Verkehrsunfall",
+    "description": "Linie 82A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "121bff6d87b50bdd0f29f5a0af38b8d6e0781566d1b1d34d8ff2dea4066e2143",
+    "pubDate": "2026-08-04T09:21:00+02:00",
+    "starts_at": "2026-08-04T09:21:00+02:00",
+    "ends_at": "2026-08-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=82A|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9A: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2",
+    "pubDate": "2026-08-04T09:08:42+02:00",
+    "starts_at": "2026-08-04T09:08:44+02:00",
+    "ends_at": "2026-08-04T10:08:00+02:00",
+    "_identity": "wl|störung|L=9A|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Betrieb ab Börse",
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1090,6 +1114,18 @@
     "starts_at": "2026-08-04T01:00:25+02:00",
     "ends_at": "2026-08-05T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-08-04T09:27:00+02:00",
+    "starts_at": "2026-08-04T09:27:00+02:00",
+    "ends_at": "2026-08-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
