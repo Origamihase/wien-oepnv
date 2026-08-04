@@ -7,8 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 04 Aug 2026 13:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 14:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;901477</guid>
+      <pubDate>Tue, 04 Aug 2026 13:34:21 +0200</pubDate>
+      <ext:first_seen>Tue, 04 Aug 2026 14:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 04 Aug 2026 13:34:21 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten fahren zwischen Salzburg Hbf und Flughafen Wien bzw. Hegyeshalom von 17.10.2026 (22:30 Uhr) bis 21.10.2026 (04:00 Uhr) die Fernverkehrszüge in Fahrtrichtung … [Seit 04.08.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten fahren zwischen Salzburg Hbf und Flughafen Wien bzw. Hegyeshalom von 17.10.2026 (22:30 Uhr) bis 21.10.2026 (04:00 Uhr) die Fernverkehrszüge in Fahrtrichtung …<br/>[Seit 04.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Klapprampensperre am 09.08.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +117,6 @@
       <ext:ends_at>Tue, 04 Aug 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 04.08.2026]</description>
       <content:encoded><![CDATA[[Am 04.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Burggasse 67]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">394c32bde84507f8bc30b06ef112c6140c4adacde31b067755f539411731dc8b</guid>
-      <pubDate>Mon, 27 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Jul 2026 22:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. [27.07.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt.<br/>[27.07.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
