@@ -698,6 +698,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
+    "pubDate": "2026-08-04T19:56:49+02:00",
+    "starts_at": "2026-08-04T19:56:51+02:00",
+    "ends_at": "2026-08-04T20:56:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5/12/37/38/40/41/42: Gleisbauarbeiten",
     "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert voraussichtlich bis Ende August.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -890,18 +902,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Verspätungen",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c488466d4e8c651bfdcfdf462d4fb9251bbd52636edf4eb2c38b9c6842c4ecda",
-    "pubDate": "2026-08-04T18:23:00+02:00",
-    "starts_at": "2026-08-04T18:23:00+02:00",
-    "ends_at": "2026-08-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=4A|D=2026-08-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Linie 57A: Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse. In Richtung Ruolfsheim, Anschützgasse Betrieb ab Hirschengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -968,7 +968,7 @@
     "guid": "5f671ec81f4101e7a69acb74ef323b5826af481e95c7cb595f76f8b7e4676e03",
     "pubDate": "2026-08-04T17:21:00+02:00",
     "starts_at": "2026-08-04T17:21:00+02:00",
-    "ends_at": "2026-08-04T23:55:00+02:00",
+    "ends_at": "2026-08-04T19:56:00+02:00",
     "_identity": "wl|störung|L=5B|D=2026-08-04"
   },
   {
@@ -986,13 +986,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Gleisschaden Linie 18 benutzen!",
+    "description": "Gleisschaden\nLinie 18 benutzen!",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6f5d4a628daa630dc646f5f43b7e0949ee172685b3ae18cb1f4fce73e878eee0",
+    "pubDate": "2026-08-04T19:39:14+02:00",
+    "starts_at": "2026-08-04T19:39:14+02:00",
+    "ends_at": "2026-08-04T23:30:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "6: Gleisschaden",
-    "description": "Linie 6: Umleitung in Richtung Burggasse, Stadthalle U zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 20:00 Uhr. Grund: Gleisschaden im Bereich Quellenstraße 114.",
+    "description": "Linie 6: Umleitung in Richtung Burggasse, Stadthalle U zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 20:30 Uhr. Grund: Gleisschaden im Bereich Quellenstraße 114.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "903c2f5b11fba4918a23b80775f0948bf551316a7bfb89e017f127cf85795ba3",
     "pubDate": "2026-08-04T18:23:00+02:00",
     "starts_at": "2026-08-04T18:23:00+02:00",
     "ends_at": "2026-08-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Gleisschaden Betrieb ab Matzleinsdorfer Platz",
+    "description": "Gleisschaden\nBetrieb ab Matzleinsdorfer Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a27c777f4d590a183d8146448293981f5f02e1175813092dc17bca8b6b15a10b",
+    "pubDate": "2026-08-04T19:38:44+02:00",
+    "starts_at": "2026-08-04T19:38:44+02:00",
+    "ends_at": "2026-08-04T23:15:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-08-04"
   },
   {
@@ -1064,7 +1088,7 @@
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
     "pubDate": "2026-08-04T17:18:00+02:00",
     "starts_at": "2026-08-04T17:18:00+02:00",
-    "ends_at": "2026-08-04T23:55:00+02:00",
+    "ends_at": "2026-08-04T19:57:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-08-04"
   },
   {
@@ -1162,6 +1186,30 @@
     "starts_at": "2026-08-04T01:00:25+02:00",
     "ends_at": "2026-08-05T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
+    "pubDate": "2026-08-04T19:56:19+02:00",
+    "starts_at": "2026-08-04T19:56:31+02:00",
+    "ends_at": "2026-08-04T20:56:00+02:00",
+    "_identity": "wl|störung|L=O|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Derzeit längere Wartezeiten zwischen Oberlaa und Alaudagasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-08-04T19:54:00+02:00",
+    "starts_at": "2026-08-04T19:54:00+02:00",
+    "ends_at": "2026-08-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-08-04"
   },
   {
     "source": "Wiener Linien",
