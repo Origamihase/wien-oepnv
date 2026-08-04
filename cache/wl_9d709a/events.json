@@ -111,12 +111,12 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "16A/66A/67A/N66/N67: Kolbegasse",
-    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Kolbegasse werden die Linien 16A, 66A, 67A und N66 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab 05. August 2026, etwa 07:00 Uhr, bis 07. August 2026, etwa 16:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 16A und 67A in Richtung Alaudagasse U, 66A in Richtung Reumannplatz U und N66 in Richtung Ring, Kai:<br /></strong>Umleitung ab Sterngasse # Pfarrgasse &uuml;ber Beyfusgasse &ndash; Dr.-Pirnitzer-Platz &ndash; Beyfusgasse &ndash; Schwemmingergasse &ndash; Kolbegasse.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:<br /></span>Pfarrgasse (Kolbegasse nach Pfarrgasse)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>Pfarrgasse (Beyfusgasse 2-4)</p>",
+    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Kolbegasse werden die Linien 16A, 66A, 67A und N66 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab 05. August 2026, etwa 07:00 Uhr, bis 08. August 2026, etwa 07:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 16A und 67A in Richtung Alaudagasse U, 66A in Richtung Reumannplatz U und N66 in Richtung Ring, Kai:<br /></strong>Umleitung ab Sterngasse # Pfarrgasse &uuml;ber Beyfusgasse &ndash; Dr.-Pirnitzer-Platz &ndash; Beyfusgasse &ndash; Schwemmingergasse &ndash; Kolbegasse.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:<br /></span>Pfarrgasse (Kolbegasse nach Pfarrgasse)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>Pfarrgasse (Beyfusgasse 2-4)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "46b42303f91ae27d3bd5beb001a77dc50883c3e3605ab8442dcb664b390f57e2",
     "pubDate": "2026-07-30T00:00:00+02:00",
     "starts_at": "2026-07-30T00:00:00+02:00",
-    "ends_at": "2026-08-07T16:00:00+02:00",
+    "ends_at": "2026-08-08T07:00:00+02:00",
     "_identity": "wl|hinweis|L=16A,66A,67A,N66|D=2026-07-30"
   },
   {
@@ -734,6 +734,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25: Schadhaftes Fahrzeug",
+    "description": "Linie 25: Betrieb nur zwischen Floridsdorf S U und Donauspital U. Weichen Sie ersatzweise auf die Linien 26A, U2 aus. Voraussichtliche Dauer: 12:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Oberdorfstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "76ec352854b559b2d1c07ec729df49b28debe6671b359e8312bc178e8f701468",
+    "pubDate": "2026-08-04T11:34:00+02:00",
+    "starts_at": "2026-08-04T11:34:00+02:00",
+    "ends_at": "2026-08-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc260bf756a8d0275a4ce51c5b124812c4c380b787e4c627f39df2747b1c157",
+    "pubDate": "2026-08-04T11:35:29+02:00",
+    "starts_at": "2026-08-04T11:35:29+02:00",
+    "ends_at": "2026-08-04T12:34:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -950,6 +974,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Rettungseinsatz",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2026-08-04T11:33:00+02:00",
+    "starts_at": "2026-08-04T11:33:00+02:00",
+    "ends_at": "2026-08-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-08-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1112,7 +1148,7 @@
     "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
     "pubDate": "2026-08-04T11:12:00+02:00",
     "starts_at": "2026-08-04T11:12:00+02:00",
-    "ends_at": "2026-08-04T23:55:00+02:00",
+    "ends_at": "2026-08-04T11:53:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-04"
   },
   {
