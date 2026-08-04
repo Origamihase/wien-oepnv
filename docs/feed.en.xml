@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 04 Aug 2026 15:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 15:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1/6: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8a58a87b3a575f34305a8d134728e0eafcf74842aa7384831173dea111ad7173</guid>
+      <pubDate>Tue, 04 Aug 2026 15:02:00 +0200</pubDate>
+      <ext:first_seen>Tue, 04 Aug 2026 15:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 04 Aug 2026 15:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 04 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Line 6: irregular intervals in both directions. [On 04.08.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line 6: irregular intervals in both directions.<br/>[On 04.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[68A/68B/N68: Kronawettergasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">31238cfb146f10c276b439f0442328595c812a35e99dcf87a9ba738ce3e52542</guid>
+      <pubDate>Tue, 04 Aug 2026 15:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 04 Aug 2026 15:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 04 Aug 2026 15:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 10 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of line 68A towards Laaer Berg, spa park, northeast entrance, and 68B and call bus N68 towards Oberlaa U Stop: Kronawettergasse From … [04.08.2026 – 10.08.2027]</description>
+      <content:encoded><![CDATA[Stop change of line 68A towards Laaer Berg, spa park, northeast entrance, and 68B and call bus N68 towards Oberlaa U Stop: Kronawettergasse From …<br/>[04.08.2026 – 10.08.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -95,28 +117,6 @@
       <ext:ends_at>Sat, 08 Aug 2026 07:00:00 +0200</ext:ends_at>
       <description>Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected. [30.07.2026 – 08.08.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected.<br/>[30.07.2026 – 08.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: diversion because of track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7458cad6f053dd22fb8d797e6870a19d692061d5248ab03e9d7d5b465a46a021</guid>
-      <pubDate>Wed, 29 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 29 Jul 2026 16:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 10 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 18:00:00 +0200</ext:ends_at>
-      <description>Because of track construction works (line 18) on the Olympiaplatz the following change occurs for the 11A line. [10.08.2026 – 27.08.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works (line 18) on the Olympiaplatz the following change occurs for the 11A line.<br/>[10.08.2026 – 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44A: Buses stop Dornbacher Straße 3-5]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e6eb6c069247a573ffa0acae078d76ef0a59e51c763e2a0a9260553265d2635a</guid>
-      <pubDate>Tue, 04 Aug 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Tue, 28 Jul 2026 05:31:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 04 Aug 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 04 Aug 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 04.08.2026]</description>
-      <content:encoded><![CDATA[[On 04.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
