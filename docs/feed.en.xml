@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 04 Aug 2026 23:01:12 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 23:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[6: track damage Line 18 use!]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f5d4a628daa630dc646f5f43b7e0949ee172685b3ae18cb1f4fce73e878eee0</guid>
-      <pubDate>Tue, 04 Aug 2026 19:39:14 +0200</pubDate>
-      <ext:first_seen>Tue, 04 Aug 2026 22:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 04 Aug 2026 19:39:14 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 04 Aug 2026 23:30:00 +0200</ext:ends_at>
-      <description>[On 04.08.2026]</description>
-      <content:encoded><![CDATA[[On 04.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[68A/68B/N68: Kronawettergasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +106,17 @@
       <ext:ends_at>Sat, 08 Aug 2026 07:00:00 +0200</ext:ends_at>
       <description>Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected. [30.07.2026 – 08.08.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Kolbegasse, the lines 16A, 66A, 67A and N66 are being redirected.<br/>[30.07.2026 – 08.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: diversion because of track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7458cad6f053dd22fb8d797e6870a19d692061d5248ab03e9d7d5b465a46a021</guid>
+      <pubDate>Wed, 29 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Jul 2026 16:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 10 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 27 Aug 2026 18:00:00 +0200</ext:ends_at>
+      <description>Because of track construction works (line 18) on the Olympiaplatz the following change occurs for the 11A line. [10.08.2026 – 27.08.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works (line 18) on the Olympiaplatz the following change occurs for the 11A line.<br/>[10.08.2026 – 27.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
