@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 05 Aug 2026 19:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 19:31:06 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62: service obstruction Violent car]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c5b9cb8548f9b12902faefd84af7448973374e6f432bd319b4e85fee81b80e36</guid>
+      <pubDate>Wed, 05 Aug 2026 19:01:57 +0200</pubDate>
+      <ext:first_seen>Wed, 05 Aug 2026 19:31:06 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 05 Aug 2026 19:02:13 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 05 Aug 2026 20:01:00 +0200</ext:ends_at>
+      <description>[On 05.08.2026]</description>
+      <content:encoded><![CDATA[[On 05.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[65A/66A/7A: Inzersdorfer Straße # Leibnitzgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -95,17 +106,6 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Because of construction works in the Motecuccoliplatz and Stranzenbergstraße line is redirected to 8A. [30.07.2026 – 30.09.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Motecuccoliplatz and Stranzenbergstraße line is redirected to 8A.<br/>[30.07.2026 – 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
-      <pubDate>Wed, 05 Aug 2026 15:36:00 +0200</pubDate>
-      <ext:first_seen>Thu, 30 Jul 2026 12:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 15:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 05 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction towards Floridsdorf. expected duration: 12:50 watch. Reason: rescue operation in the Am Schöpfwerk stop area. [On 05.08.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Floridsdorf. expected duration: 12:50 watch. Reason: rescue operation in the Am Schöpfwerk stop area.<br/>[On 05.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[85A: Rautenweg]]></title>
