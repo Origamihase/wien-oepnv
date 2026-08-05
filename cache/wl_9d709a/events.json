@@ -722,14 +722,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Verspätungen",
-    "description": "Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "1A: Verkehrsunfall",
+    "description": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08245d776c6086aeb34234d104f1c9a7c93bccf3eb8915fc23bc32028143c544",
-    "pubDate": "2026-08-05T00:27:00+02:00",
-    "starts_at": "2026-08-05T00:27:00+02:00",
+    "guid": "9c4b20eeb0989a8f43e6b6aa56a0761d9fd3f3c3c7627ef6c508b6ef4287118a",
+    "pubDate": "2026-08-05T08:39:00+02:00",
+    "starts_at": "2026-08-05T08:39:00+02:00",
     "ends_at": "2026-08-05T23:55:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-08-05"
+    "_identity": "wl|störung|L=1A|D=2026-08-05"
   },
   {
     "source": "Wiener Linien",
@@ -1126,6 +1126,30 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-08-05T09:00:00+02:00",
+    "starts_at": "2026-08-05T09:00:00+02:00",
+    "ends_at": "2026-08-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-08-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Rettungseinsatz",
+    "description": "Die Linie U4 fährt derzeit in der Station Ober St. Veit in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 09:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Ober St. Veit.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2026-08-05T08:46:00+02:00",
+    "starts_at": "2026-08-05T08:46:00+02:00",
+    "ends_at": "2026-08-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-08-05"
   },
   {
     "source": "Wiener Linien",
