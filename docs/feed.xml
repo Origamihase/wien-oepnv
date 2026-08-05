@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 05 Aug 2026 11:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 12:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[53A: Erzbischofgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4024b9eccf3df84a192e511a10a295c5438057a67d82c4df9f93ed0db621ba49</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 05 Aug 2026 12:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten in der Erzbischofgasse wird die Linie 53A umgeleitet. [05.08.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Erzbischofgasse wird die Linie 53A umgeleitet.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Liesing ↔ Wien Meidling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -105,17 +116,6 @@
       <ext:ends_at>Fri, 07 Aug 2026 01:00:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Rautenweg / Ziegelhofstraße werden die Busse der Linie 85A in Richtung Breitenlee, Rautenweg kurzgeführt. [30.07.2026 – 07.08.2026]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Rautenweg / Ziegelhofstraße werden die Busse der Linie 85A in Richtung Breitenlee, Rautenweg kurzgeführt.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Veranstaltung am 12.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">561845cd6f3d6b7c032d62d52c38ce4dec6c1bc2f5dcaa630765071149f88006</guid>
-      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 30 Jul 2026 09:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
-      <description>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen. [30.07.2026 – 12.09.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
