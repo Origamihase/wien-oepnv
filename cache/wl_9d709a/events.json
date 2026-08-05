@@ -975,12 +975,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "60: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
-    "pubDate": "2026-08-05T20:55:09+02:00",
+    "pubDate": "2026-08-05T21:01:39+02:00",
     "starts_at": "2026-08-05T21:07:40+02:00",
-    "ends_at": "2026-08-05T23:55:00+02:00",
+    "ends_at": "2026-08-05T22:07:00+02:00",
     "_identity": "wl|störung|L=60|D=2026-08-05"
   },
   {
@@ -1106,18 +1106,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "E3: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b771100fe94192708067e4c8ea0e61017fdebd1881aa5bc6f582d7b4dbe91234",
-    "pubDate": "2026-08-05T20:58:38+02:00",
-    "starts_at": "2026-08-05T20:59:38+02:00",
-    "ends_at": "2026-08-05T21:59:00+02:00",
-    "_identity": "wl|störung|L=E3|D=2026-08-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "LB: Betrieb ab Inzersdorf Lokalbahn",
     "description": "Bauarbeiten\nBetrieb ab Inzersdorf Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1155,10 +1143,10 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U2: Rettungseinsatz",
-    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Lina-Loos-Platz und Hausfeldstraße in beiden Richtungen über Gleis 1. 21:30 Uhr Grund: Rettungseinsatz im Haltestellenbereich Lina-Loos-Platz.",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Lina-Loos-Platz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-08-05T21:06:00+02:00",
+    "pubDate": "2026-08-05T21:22:00+02:00",
     "starts_at": "2026-08-05T21:22:00+02:00",
     "ends_at": "2026-08-05T23:55:00+02:00",
     "_identity": "wl|störung|L=U2|D=2026-08-05"
@@ -1174,18 +1162,6 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Polizeieinsatz",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
-    "pubDate": "2026-08-05T20:21:00+02:00",
-    "starts_at": "2026-08-05T20:21:00+02:00",
-    "ends_at": "2026-08-05T21:24:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-08-05"
   },
   {
     "source": "Wiener Linien",
