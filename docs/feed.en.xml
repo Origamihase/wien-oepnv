@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 05 Aug 2026 20:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 20:31:04 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[62: service obstruction Violent car]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c5b9cb8548f9b12902faefd84af7448973374e6f432bd319b4e85fee81b80e36</guid>
-      <pubDate>Wed, 05 Aug 2026 19:01:57 +0200</pubDate>
-      <ext:first_seen>Wed, 05 Aug 2026 19:31:06 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 19:02:13 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 05 Aug 2026 20:01:00 +0200</ext:ends_at>
-      <description>[On 05.08.2026]</description>
-      <content:encoded><![CDATA[[On 05.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[65A/66A/7A: Inzersdorfer Straße # Leibnitzgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +106,17 @@
       <ext:ends_at>Fri, 07 Aug 2026 01:00:00 +0200</ext:ends_at>
       <description>Due to roadworks in the range Rautenweg / Ziegelhofstraße the buses of the line 85A in the direction Breitenlee, Rautenweg operating short-running. [30.07.2026 – 07.08.2026]</description>
       <content:encoded><![CDATA[Due to roadworks in the range Rautenweg / Ziegelhofstraße the buses of the line 85A in the direction Breitenlee, Rautenweg operating short-running.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: event on 12.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">561845cd6f3d6b7c032d62d52c38ce4dec6c1bc2f5dcaa630765071149f88006</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Jul 2026 09:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken. [30.07.2026 – 12.09.2026]</description>
+      <content:encoded><![CDATA[Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
