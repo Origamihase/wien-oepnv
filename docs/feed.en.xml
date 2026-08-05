@@ -7,18 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 05 Aug 2026 13:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 13:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[S-Bahn Stammstrecke delays]]></title>
-      <link>https://www.wienerlinien.at/web/wienerlinien/oeffis-stoerungen-strecke</link>
-      <guid isPermaLink="false">249f786693f583079ad5d88ffbe6b918b1e6325df6fa96d72ee6eb93e935403e</guid>
-      <pubDate>Wed, 05 Aug 2026 13:01:05 +0200</pubDate>
-      <ext:first_seen>Wed, 05 Aug 2026 13:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 12:27:00 +0200</ext:starts_at>
-      <description>Average delay of 19.7 minutes towards Praterstern [since 05.08.2026] [Since 05.08.2026]</description>
-      <content:encoded><![CDATA[Average delay of 19.7 minutes towards Praterstern [since 05.08.2026]<br/>[Since 05.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[65A/66A/7A: Inzersdorfer Straße # Leibnitzgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -115,6 +105,17 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Because of construction works in the Motecuccoliplatz and Stranzenbergstraße line is redirected to 8A. [30.07.2026 – 30.09.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Motecuccoliplatz and Stranzenbergstraße line is redirected to 8A.<br/>[30.07.2026 – 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[85A: Rautenweg]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">37213fd813da16225454c91ce6b5e3c0ff2dc09520627e3ba3775766c0243a3f</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Jul 2026 11:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 07 Aug 2026 01:00:00 +0200</ext:ends_at>
+      <description>Due to roadworks in the range Rautenweg / Ziegelhofstraße the buses of the line 85A in the direction Breitenlee, Rautenweg operating short-running. [30.07.2026 – 07.08.2026]</description>
+      <content:encoded><![CDATA[Due to roadworks in the range Rautenweg / Ziegelhofstraße the buses of the line 85A in the direction Breitenlee, Rautenweg operating short-running.<br/>[30.07.2026 – 07.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
