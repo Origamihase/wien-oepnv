@@ -9924,6 +9924,14 @@
       "en": {}
     }
   },
+  "9742c146b684bbad9f5953a9b01c910b36e9e978d5f8b096f743dbff36ed7d5c": {
+    "first_seen": "2026-08-06T23:00:28.218477+00:00",
+    "translations": {
+      "en": {
+        "title": "Inzersdorfer Stra\u00dfe junction Leibnizgasse"
+      }
+    }
+  },
   "974d928cbf329ed9135fa310f98bffcf6df021fc043453b040ca3029a4cafaa6": {
     "first_seen": "2026-07-10T12:31:07.336578+00:00",
     "translations": {
@@ -17373,6 +17381,16 @@
       "en": {
         "summary": "Due to a defective train on the line, no journeys were possible between Wien Jedlersdorf Bahnhst and Korneuburg Bahnhof to 14:01 Uhr.",
         "title": "Wien Jedlersdorf \u2194 Korneuburg"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&902355": {
+    "first_seen": "2026-08-06T23:00:28.218477+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an overhead-line fault, no journeys are possible between Wien H\u00fctteldorf Station (U) and Wien Handelskai Bahnhst (U) to expected 07.08.2026, 01:30 watch.",
+        "title": "Wien H\u00fctteldorf \u2194 Wien Handelskai"
       },
       "epoch": 3
     }
