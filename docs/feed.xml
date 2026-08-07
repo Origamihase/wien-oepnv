@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 07 Aug 2026 12:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 13:01:17 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62: Fremdunfall Betrieb ab Wattmanngasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">785aecc7ef866a183b3f279ee213990f9c840c758b928a4a8f6564229a0bd266</guid>
+      <pubDate>Fri, 07 Aug 2026 12:49:32 +0200</pubDate>
+      <ext:first_seen>Fri, 07 Aug 2026 13:01:17 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 07 Aug 2026 12:49:33 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 07 Aug 2026 13:49:00 +0200</ext:ends_at>
+      <description>[Am 07.08.2026]</description>
+      <content:encoded><![CDATA[[Am 07.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N60: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:starts_at>Fri, 07 Aug 2026 12:24:33 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten fahren zwischen Salzburg Hbf und Flughafen Wien Bahnhof bzw. Hegyeshalom von 10.10.2026 (22:30 Uhr) bis 14.10.2026 (04:00 Uhr) und von 17.10.2026 … [Seit 07.08.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten fahren zwischen Salzburg Hbf und Flughafen Wien Bahnhof bzw. Hegyeshalom von 10.10.2026 (22:30 Uhr) bis 14.10.2026 (04:00 Uhr) und von 17.10.2026 …<br/>[Seit 07.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Klapprampensperre am 09.08.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f6886909c3b0de85cbb484f680f1de66d16b9d541e6d628fb0642ac87ca172b8</guid>
-      <pubDate>Mon, 03 Aug 2026 14:05:00 +0200</pubDate>
-      <ext:first_seen>Mon, 03 Aug 2026 14:31:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 03 Aug 2026 14:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 09 Aug 2026 23:00:00 +0200</ext:ends_at>
-      <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. [03.08.2026 – 09.08.2026]</description>
-      <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden.<br/>[03.08.2026 – 09.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

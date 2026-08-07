@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 07 Aug 2026 12:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 13:01:17 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62: foreign accident service from Wattmanngasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">785aecc7ef866a183b3f279ee213990f9c840c758b928a4a8f6564229a0bd266</guid>
+      <pubDate>Fri, 07 Aug 2026 12:49:32 +0200</pubDate>
+      <ext:first_seen>Fri, 07 Aug 2026 13:01:17 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 07 Aug 2026 12:49:33 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 07 Aug 2026 13:49:00 +0200</ext:ends_at>
+      <description>[On 07.08.2026]</description>
+      <content:encoded><![CDATA[[On 07.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N60: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:starts_at>Fri, 07 Aug 2026 12:24:33 +0200</ext:starts_at>
       <description>Because of construction works, between Salzburg Hbf and Flughafen Wien and Hegyeshalom from 17.10.2026 (22:30 o'clock) to 21.10.2026 (04:00 o'clock) long-distance trains in … [Since 07.08.2026]</description>
       <content:encoded><![CDATA[Because of construction works, between Salzburg Hbf and Flughafen Wien and Hegyeshalom from 17.10.2026 (22:30 o'clock) to 21.10.2026 (04:00 o'clock) long-distance trains in …<br/>[Since 07.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: folding ramp lock on 09.08.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f6886909c3b0de85cbb484f680f1de66d16b9d541e6d628fb0642ac87ca172b8</guid>
-      <pubDate>Mon, 03 Aug 2026 14:05:00 +0200</pubDate>
-      <ext:first_seen>Mon, 03 Aug 2026 14:31:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 03 Aug 2026 14:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 09 Aug 2026 23:00:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [03.08.2026 – 09.08.2026]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[03.08.2026 – 09.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
