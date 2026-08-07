@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 08 Aug 2026 01:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2026 01:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N46: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d2d7e5c5bcfeb2d7ad3f55aa68f651eb8262b9942f397826837b10c59c540384</guid>
+      <pubDate>Sat, 08 Aug 2026 01:16:00 +0200</pubDate>
+      <ext:first_seen>Sat, 08 Aug 2026 01:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 08 Aug 2026 01:18:49 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 08 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 08.08.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 08.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Penzing]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 5A in Richtung Nestroyplatz U und der Linie 5B in Richtung Praterstern S U Haltestelle: Obere Augartenstraße Von: Obere Augartenstraße … [06.08.2026 – 06.08.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 5A in Richtung Nestroyplatz U und der Linie 5B in Richtung Praterstern S U Haltestelle: Obere Augartenstraße Von: Obere Augartenstraße …<br/>[06.08.2026 – 06.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49A/50A/50B/N49: Rohrleitungsarbeiten bis 18.08.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8fc758ed69ab4d0d4bb9b9b68d47ecd0de11ac3d2e3790a7b0580a6f3ce49dfe</guid>
-      <pubDate>Thu, 09 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 06 Aug 2026 15:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 09 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 18 Aug 2026 04:30:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Linzer Straße 422-442 werden die Linien 49A, 50A, 50B und N49 (Sa, So und Feiertags) umgeleitet. [09.04.2026 – 18.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Linzer Straße 422-442 werden die Linien 49A, 50A, 50B und N49 (Sa, So und Feiertags) umgeleitet.<br/>[09.04.2026 – 18.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
