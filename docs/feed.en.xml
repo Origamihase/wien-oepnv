@@ -7,28 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 07 Aug 2026 02:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 02:31:03 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[N43: Traffic disturbance]]></title>
+      <title><![CDATA[N43: Fahrtbehinderung wegen LKW - Ladetätigkeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e7c5dd850b99889fdd8eca655ca10a245b8d32c1d938c44ffc326508e1b25fc8</guid>
-      <pubDate>Fri, 07 Aug 2026 01:42:00 +0200</pubDate>
-      <ext:first_seen>Fri, 07 Aug 2026 02:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 07 Aug 2026 01:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 07 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 07.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 07.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hütteldorf ↔ Wien Handelskai]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;902355</guid>
-      <pubDate>Thu, 06 Aug 2026 21:38:38 +0200</pubDate>
-      <ext:first_seen>Fri, 07 Aug 2026 01:00:28 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 06 Aug 2026 21:38:38 +0200</ext:starts_at>
-      <description>Due to an overhead-line fault, no journeys are possible between Wien Hütteldorf Station (U) and Wien Handelskai Bahnhst (U) to expected 07.08.2026, 01:30 watch. [Since 06.08.2026]</description>
-      <content:encoded><![CDATA[Due to an overhead-line fault, no journeys are possible between Wien Hütteldorf Station (U) and Wien Handelskai Bahnhst (U) to expected 07.08.2026, 01:30 watch.<br/>[Since 06.08.2026]]]></content:encoded>
+      <guid isPermaLink="false">4f9ff4c9f8d1a08ed1e110f671b14803f369587a4bdfce1786d0ec08cbda0288</guid>
+      <pubDate>Fri, 07 Aug 2026 01:45:08 +0200</pubDate>
+      <ext:first_seen>Fri, 07 Aug 2026 02:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 07 Aug 2026 01:45:33 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 07 Aug 2026 02:44:00 +0200</ext:ends_at>
+      <description>[Am 07.08.2026]</description>
+      <content:encoded><![CDATA[[Am 07.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Inzersdorfer Straße junction Leibnizgasse]]></title>
@@ -116,6 +106,17 @@
       <ext:starts_at>Wed, 05 Aug 2026 09:06:48 +0200</ext:starts_at>
       <description>Because of construction works, between Salzburg Hbf and Flughafen Wien and Hegyeshalom from 17.10.2026 (22:30 o'clock) to 21.10.2026 (04:00 o'clock) long-distance trains in … [Since 05.08.2026]</description>
       <content:encoded><![CDATA[Because of construction works, between Salzburg Hbf and Flughafen Wien and Hegyeshalom from 17.10.2026 (22:30 o'clock) to 21.10.2026 (04:00 o'clock) long-distance trains in …<br/>[Since 05.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: folding ramp lock on 09.08.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f6886909c3b0de85cbb484f680f1de66d16b9d541e6d628fb0642ac87ca172b8</guid>
+      <pubDate>Mon, 03 Aug 2026 14:05:00 +0200</pubDate>
+      <ext:first_seen>Mon, 03 Aug 2026 14:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 03 Aug 2026 14:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 09 Aug 2026 23:00:00 +0200</ext:ends_at>
+      <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [03.08.2026 – 09.08.2026]</description>
+      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[03.08.2026 – 09.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
