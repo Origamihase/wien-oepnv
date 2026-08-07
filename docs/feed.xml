@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 07 Aug 2026 17:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 18:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[60A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">33fd85bcd4fdfb9d66b76c18d72c48cd932cdcd905b6b00f0cfd68bd83e20960</guid>
+      <pubDate>Fri, 07 Aug 2026 17:50:00 +0200</pubDate>
+      <ext:first_seen>Fri, 07 Aug 2026 18:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 07 Aug 2026 17:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 07 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 07.08.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 07.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Margaretengürtel Unterführung Matzleinsdorfer Platz]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Erzbischofgasse wird die Linie 53A umgeleitet. [05.08.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Erzbischofgasse wird die Linie 53A umgeleitet.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[68A/68B/N68: Kronawettergasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">31238cfb146f10c276b439f0442328595c812a35e99dcf87a9ba738ce3e52542</guid>
-      <pubDate>Tue, 04 Aug 2026 15:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 04 Aug 2026 15:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 04 Aug 2026 15:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 10 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Kurpark, Nordosteingang, sowie 68B und Rufbus N68 in Richtung Oberlaa U Haltestelle: Kronawettergasse Von … [04.08.2026 – 10.08.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Kurpark, Nordosteingang, sowie 68B und Rufbus N68 in Richtung Oberlaa U Haltestelle: Kronawettergasse Von …<br/>[04.08.2026 – 10.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
