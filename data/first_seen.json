@@ -4920,6 +4920,16 @@
       "epoch": 3
     }
   },
+  "4cb13b8321b16cf6c4b3d75e323270ebacb8f6184a33d37ffb3b80aaa5779b59": {
+    "first_seen": "2026-08-08T02:01:00.537150+00:00",
+    "translations": {
+      "en": {
+        "summary": "Currently, the N46 line has different intervals in both directions. Reason: traffic accident.",
+        "title": "N46: traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "4ce21275e2f5797c0bf6d6d54e651d8bb98c2fdf8d1097edf42d585c1e59b561": {
     "first_seen": "2026-06-05T13:31:00.652025+00:00",
     "translations": {
@@ -17565,8 +17575,10 @@
     "first_seen": "2026-08-08T01:30:52.154250+00:00",
     "translations": {
       "en": {
+        "summary": "Due to an official order, no journeys were possible in Vienna Hbf (U) until 02:47 clock.",
         "title": "Wien Hauptbahnhof"
-      }
+      },
+      "epoch": 3
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
