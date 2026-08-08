@@ -17581,6 +17581,16 @@
       "epoch": 3
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&902791": {
+    "first_seen": "2026-08-08T13:30:50.017690+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to persons on the tracks, no journeys were possible between Wien Wolf in der Au Bahnhst and Wien Hadersdorf Bahnhst to 14:55 watch.",
+        "title": "Wien Wolf in der Au \u2194 Wien Hadersdorf"
+      },
+      "epoch": 3
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },
