@@ -902,6 +902,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "44A: Verkehrsunfall",
+    "description": "Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "52ad1ed10ad7e0b3c2de55776236f0ccb147ac2e33de1bb7d36a108f10129df5",
+    "pubDate": "2026-08-08T19:46:00+02:00",
+    "starts_at": "2026-08-08T19:46:00+02:00",
+    "ends_at": "2026-08-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=44A|D=2026-08-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "44A: Busse halten in der Nebenfahrbahn",
     "description": "Gleisbauarbeiten\nBusse halten in der Nebenfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1131,7 +1143,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U3: Bauarbeiten",
-    "description": "Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. Grund: Bauarbeiten im Bereich zwischen Westbahnhof U und Hütteldorfer Straße U.",
+    "description": "Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. Grund: Bauarbeiten im Bereich zwischen Hütteldorfer Straße und Westbahnhof.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "f1ff4ebe211b0ab042742cfed669d58ae3fc55fd5c1d9ebf99050e193c6bf3a3",
     "pubDate": "2026-08-07T10:18:00+02:00",
