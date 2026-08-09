@@ -818,18 +818,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "28416811674223dffea17c8e1123f10c8cde318972731b305adf2230865ea500",
-    "pubDate": "2026-08-09T10:23:47+02:00",
-    "starts_at": "2026-08-09T10:23:47+02:00",
-    "ends_at": "2026-08-09T11:23:00+02:00",
-    "_identity": "wl|störung|L=26|D=2026-08-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26: Feuerwehreinsatz Betrieb ab Zanggasse",
     "description": "Feuerwehreinsatz\nBetrieb ab Zanggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -849,30 +837,6 @@
     "pubDate": "2026-08-09T10:32:47+02:00",
     "starts_at": "2026-08-09T10:32:50+02:00",
     "ends_at": "2026-08-09T11:32:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-08-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Feuerwehreinsatz Betrieb ab Berresgasse",
-    "description": "Feuerwehreinsatz\nBetrieb ab Berresgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2533b43653fd068a5899183f4dbbcfd20821e22ccc0ab04b8152430a272659ae",
-    "pubDate": "2026-08-09T10:31:17+02:00",
-    "starts_at": "2026-08-09T10:31:17+02:00",
-    "ends_at": "2026-08-09T11:29:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-08-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b7a88e44b3493fd810389817eaf165b1d4ac809367eeb604dee22904135097f0",
-    "pubDate": "2026-08-09T10:23:17+02:00",
-    "starts_at": "2026-08-09T10:23:19+02:00",
-    "ends_at": "2026-08-09T11:22:00+02:00",
     "_identity": "wl|störung|L=27|D=2026-08-09"
   },
   {
@@ -1100,7 +1064,7 @@
     "guid": "4281aa32ed45a54c560c823ba6cd35e8febae67fca71fa894a80ce4b806088d3",
     "pubDate": "2026-08-09T10:13:00+02:00",
     "starts_at": "2026-08-09T10:13:00+02:00",
-    "ends_at": "2026-08-09T23:55:00+02:00",
+    "ends_at": "2026-08-09T11:23:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-08-09"
   },
   {
@@ -1172,8 +1136,20 @@
     "guid": "e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037",
     "pubDate": "2026-08-09T10:34:00+02:00",
     "starts_at": "2026-08-09T10:34:00+02:00",
-    "ends_at": "2026-08-09T23:55:00+02:00",
+    "ends_at": "2026-08-09T11:26:00+02:00",
     "_identity": "wl|störung|L=74A|D=2026-08-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 11:50 Uhr. Grund: Falschparker im Bereich Habichergasse 9.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-08-09T11:24:00+02:00",
+    "starts_at": "2026-08-09T11:24:53+02:00",
+    "ends_at": "2026-08-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-08-09"
   },
   {
     "source": "Wiener Linien",
