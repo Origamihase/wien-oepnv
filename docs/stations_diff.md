@@ -1,22 +1,20 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-08-02T04:23:53+00:00_
+_Erzeugt am: 2026-08-09T03:02:47+00:00_
 
-**Stationen: 2235 → 2242 (Δ +7)**
+**Stationen: 2242 → 2242 (Δ +0)**
 
-## Hinzugefügt (7)
+## Hinzugefügt (3)
 
-- `name:Wien Bhf. Atzgersdorf S, Knotzenbachgasse (WL)` — Wien Bhf. Atzgersdorf S, Knotzenbachgasse \(WL\)
-- `name:Wien Himmelpfortgasse (WL)` — Wien Himmelpfortgasse \(WL\)
-- `name:Wien Hollandstraße (WL)` — Wien Hollandstraße \(WL\)
-- `name:Wien Liebenberggasse (WL)` — Wien Liebenberggasse \(WL\)
-- `name:Wien Schellinggasse (WL)` — Wien Schellinggasse \(WL\)
-- `name:Wien Stubenbastei (WL)` — Wien Stubenbastei \(WL\)
-- `name:Wien Walter-Lindenbaum-Gasse (WL)` — Wien Walter-Lindenbaum-Gasse \(WL\)
+- `name:Wien Lavaterstraße (WL)` — Wien Lavaterstraße \(WL\)
+- `name:Wien Plankenmaisstraße (WL)` — Wien Plankenmaisstraße \(WL\)
+- `name:Wien Westbahnstr., Zieglerg. (WL)` — Wien Westbahnstr., Zieglerg. \(WL\)
 
-## Entfernt (0)
+## Entfernt (3)
 
-_Keine._
+- `name:Wien Amongasse (WL)` — Wien Amongasse \(WL\)
+- `name:Wien Haschafeld (WL)` — Wien Haschafeld \(WL\)
+- `name:Wien Westbahnstraße, Zieglergasse (WL)` — Wien Westbahnstraße, Zieglergasse \(WL\)
 
 ## Umbenannt (0)
 
