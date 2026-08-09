@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 09 Aug 2026 20:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2026 21:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Liesing]]></title>
@@ -20,17 +20,6 @@
       <content:encoded><![CDATA[Due to an interlocking fault am Bahnhof, no journeys are currently possible between Wien Meidling station (U) and Wien Liesing station.<br/>[Since 09.08.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11: stranger traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b8a31ac4a2a78ac67c7ef0f491f11f7f86b70b8920889662b4d8a091e702fba</guid>
-      <pubDate>Sun, 09 Aug 2026 18:07:00 +0200</pubDate>
-      <ext:first_seen>Sun, 09 Aug 2026 19:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 09 Aug 2026 18:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 09 Aug 2026 20:21:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 09.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 09.08.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[65A/66A/7A: Inzersdorfer Straße # Leibnizgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">39922b5e840cbf135ab0919abedffb5c9ec9e39561bd66de9e8ae1118a0b0db7</guid>
@@ -38,8 +27,8 @@
       <ext:first_seen>Fri, 07 Aug 2026 21:01:07 +0200</ext:first_seen>
       <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
+      <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected. [05.08.2026 – 31.08.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Margaretengürtel Underpass Matzleinsdorfer Platz]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
       <description>Because of roadworks in the Erzbischofgasse, the line 53A is redirected. [05.08.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Because of roadworks in the Erzbischofgasse, the line 53A is redirected.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[68A/68B/N68: Kronawettergasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">31238cfb146f10c276b439f0442328595c812a35e99dcf87a9ba738ce3e52542</guid>
+      <pubDate>Tue, 04 Aug 2026 15:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 04 Aug 2026 15:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 04 Aug 2026 15:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 10 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of line 68A towards Laaer Berg, spa park, northeast entrance, and 68B and call bus N68 towards Oberlaa U Stop: Kronawettergasse From … [04.08.2026 – 10.08.2027]</description>
+      <content:encoded><![CDATA[Stop change of line 68A towards Laaer Berg, spa park, northeast entrance, and 68B and call bus N68 towards Oberlaa U Stop: Kronawettergasse From …<br/>[04.08.2026 – 10.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
