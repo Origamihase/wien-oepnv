@@ -7,15 +7,25 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 09 Aug 2026 19:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2026 19:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[S-Bahn Stammstrecke Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/web/wienerlinien/oeffis-stoerungen-strecke</link>
+      <guid isPermaLink="false">8c60dc481a53892c6d9a0e9c56bd5536816fbd8f32a4f63dd40236bce82f5c75</guid>
+      <pubDate>Sun, 09 Aug 2026 19:30:55 +0200</pubDate>
+      <ext:first_seen>Sun, 09 Aug 2026 19:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 09 Aug 2026 18:57:00 +0200</ext:starts_at>
+      <description>Durchschnittliche Verspätung von 16.4 Minuten in Richtung Praterstern [Seit 09.08.2026] [Seit 09.08.2026]</description>
+      <content:encoded><![CDATA[Durchschnittliche Verspätung von 16.4 Minuten in Richtung Praterstern [Seit 09.08.2026]<br/>[Seit 09.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Liesing]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;903023</guid>
-      <pubDate>Sun, 09 Aug 2026 18:58:30 +0200</pubDate>
+      <pubDate>Sun, 09 Aug 2026 19:25:05 +0200</pubDate>
       <ext:first_seen>Sun, 09 Aug 2026 19:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 09 Aug 2026 18:58:30 +0200</ext:starts_at>
+      <ext:starts_at>Sun, 09 Aug 2026 19:25:05 +0200</ext:starts_at>
       <description>Wegen einer Stellwerkstörung am Bahnhof sind zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof derzeit keine Fahrten möglich. [Seit 09.08.2026]</description>
       <content:encoded><![CDATA[Wegen einer Stellwerkstörung am Bahnhof sind zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof derzeit keine Fahrten möglich.<br/>[Seit 09.08.2026]]]></content:encoded>
     </item>
@@ -106,17 +116,6 @@
       <ext:ends_at>Tue, 18 Aug 2026 04:30:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Linzer Straße 422-442 werden die Linien 49A, 50A, 50B und N49 (Sa, So und Feiertags) umgeleitet. [09.04.2026 – 18.08.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Linzer Straße 422-442 werden die Linien 49A, 50A, 50B und N49 (Sa, So und Feiertags) umgeleitet.<br/>[09.04.2026 – 18.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[53A: Erzbischofgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4024b9eccf3df84a192e511a10a295c5438057a67d82c4df9f93ed0db621ba49</guid>
-      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 05 Aug 2026 12:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten in der Erzbischofgasse wird die Linie 53A umgeleitet. [05.08.2026 – 04.09.2026]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Erzbischofgasse wird die Linie 53A umgeleitet.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
