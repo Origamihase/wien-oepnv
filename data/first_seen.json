@@ -3809,6 +3809,16 @@
       "epoch": 2
     }
   },
+  "3b8a31ac4a2a78ac67c7ef0f491f11f7f86b70b8920889662b4d8a091e702fba": {
+    "first_seen": "2026-08-09T17:00:59.074252+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "11: stranger traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "3bac24a8a2a5b76bad8a695f1eb9877ee8019a8a3bdc471f63c6fa4a50b9162c": {
     "first_seen": "2026-05-25T09:30:44.068845+00:00",
     "translations": {
@@ -17699,6 +17709,16 @@
       "en": {
         "summary": "Due to persons on the tracks, no rides were possible in Wien Quartier Belvedere train hours to 23:26 watch.",
         "title": "Wien Quartier Belvedere"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&903023": {
+    "first_seen": "2026-08-09T17:00:59.074252+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an interlocking fault am Bahnhof, no journeys are currently possible between Wien Meidling station (U) and Wien Liesing station.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Liesing"
       },
       "epoch": 3
     }
