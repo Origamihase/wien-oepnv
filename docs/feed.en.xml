@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 09 Aug 2026 10:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2026 10:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26: service obstruction because of fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">28416811674223dffea17c8e1123f10c8cde318972731b305adf2230865ea500</guid>
+      <pubDate>Sun, 09 Aug 2026 10:23:47 +0200</pubDate>
+      <ext:first_seen>Sun, 09 Aug 2026 10:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 09 Aug 2026 10:23:49 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 09 Aug 2026 11:23:00 +0200</ext:ends_at>
+      <description>[On 09.08.2026]</description>
+      <content:encoded><![CDATA[[On 09.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27: service obstruction because of fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b7a88e44b3493fd810389817eaf165b1d4ac809367eeb604dee22904135097f0</guid>
+      <pubDate>Sun, 09 Aug 2026 10:23:17 +0200</pubDate>
+      <ext:first_seen>Sun, 09 Aug 2026 10:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 09 Aug 2026 10:23:19 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 09 Aug 2026 11:22:00 +0200</ext:ends_at>
+      <description>[On 09.08.2026]</description>
+      <content:encoded><![CDATA[[On 09.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[65A/66A/7A: Inzersdorfer Straße # Leibnizgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,27 +118,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
       <description>Because of roadworks in the Erzbischofgasse, the line 53A is redirected. [05.08.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Because of roadworks in the Erzbischofgasse, the line 53A is redirected.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[68A/68B/N68: Kronawettergasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">31238cfb146f10c276b439f0442328595c812a35e99dcf87a9ba738ce3e52542</guid>
-      <pubDate>Tue, 04 Aug 2026 15:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 04 Aug 2026 15:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 04 Aug 2026 15:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 10 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line 68A towards Laaer Berg, spa park, northeast entrance, and 68B and call bus N68 towards Oberlaa U Stop: Kronawettergasse From … [04.08.2026 – 10.08.2027]</description>
-      <content:encoded><![CDATA[Stop change of line 68A towards Laaer Berg, spa park, northeast entrance, and 68B and call bus N68 towards Oberlaa U Stop: Kronawettergasse From …<br/>[04.08.2026 – 10.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;901477</guid>
-      <pubDate>Fri, 07 Aug 2026 12:24:33 +0200</pubDate>
-      <ext:first_seen>Tue, 04 Aug 2026 14:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 07 Aug 2026 12:24:33 +0200</ext:starts_at>
-      <description>Because of construction works, between Salzburg Hbf and Flughafen Wien and Hegyeshalom from 17.10.2026 (22:30 o'clock) to 21.10.2026 (04:00 o'clock) long-distance trains in … [Since 07.08.2026]</description>
-      <content:encoded><![CDATA[Because of construction works, between Salzburg Hbf and Flughafen Wien and Hegyeshalom from 17.10.2026 (22:30 o'clock) to 21.10.2026 (04:00 o'clock) long-distance trains in …<br/>[Since 07.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
