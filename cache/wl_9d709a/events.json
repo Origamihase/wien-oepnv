@@ -794,6 +794,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "27: Verkehrsunfall",
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2944c0ef3d90e6a01626e659ff945114566768f92f2cfcb4aacd173962aa18ee",
+    "pubDate": "2026-08-09T15:24:00+02:00",
+    "starts_at": "2026-08-09T15:24:00+02:00",
+    "ends_at": "2026-08-09T15:53:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-08-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "27: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1010,30 +1022,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Feuerwehreinsatz",
-    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0075854372c9aded82d0d242d8bf0c53c6d1e2c910cde4d45cb70c9cc1a8aaca",
-    "pubDate": "2026-08-09T14:39:00+02:00",
-    "starts_at": "2026-08-09T14:39:00+02:00",
-    "ends_at": "2026-08-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-08-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8758fe9a6d6a89cc13568a097d5267736cc485706fa04454bd5b1ac8d2be655c",
-    "pubDate": "2026-08-09T14:40:11+02:00",
-    "starts_at": "2026-08-09T14:40:11+02:00",
-    "ends_at": "2026-08-09T15:39:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-08-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1162,18 +1150,6 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Rettungseinsatz",
-    "description": "Linie U4: Unregelmäßige Intervalle in Richtung Hütteldorf. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
-    "pubDate": "2026-08-09T15:08:00+02:00",
-    "starts_at": "2026-08-09T15:08:00+02:00",
-    "ends_at": "2026-08-09T15:23:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-08-09"
   },
   {
     "source": "Wiener Linien",
