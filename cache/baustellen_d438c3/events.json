@@ -65,6 +65,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Brünner Straße 59",
+    "description": "Die Verlegung einer Fernwärmezuleitung erfolgt in der Nacht in der Zeit von 20:00 Uhr bis 05:00 Uhr bei Freihaltung einer entsprechend breiten Restfahrbahn von mindestens 3,20 m aber auch bei Tag im Bereich der Maria-Stromberger-Gasse. \nBeginn: 17.05.2026 00:00 Uhr \nGeplant bis: 13.08.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 21",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "19d5db44be25c488569228ac1b7aa81b8c479d59b8856fba7819160b3669296c",
+    "pubDate": "2026-05-17T00:00:00+02:00",
+    "starts_at": "2026-05-17T00:00:00+02:00",
+    "ends_at": "2026-08-13T00:00:00+02:00",
+    "context": {
+      "district": "21",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.26827166,
+        "lon": 16.4038999
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Rechte Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und Pilgrambrücke",
     "description": "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile von der Ramperstorffergasse bis zur Pilgramgasse für den Fahrzeugverkehr gesperrt. Die Umleitungsstrecke wird über die Schönbrunner Straße und Pilgramgasse geführt. \nBeginn: 28.02.2021 00:00 Uhr \nGeplant bis: 31.05.2028 00:00 Uhr \nMaßnahme: U-Bahnbau \nBezirk: 5",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -101,27 +122,6 @@
       "coordinates": {
         "lat": 48.19063566,
         "lon": 16.33888219
-      }
-    }
-  },
-  {
-    "source": "Stadt Wien – Baustellen",
-    "category": "Baustelle",
-    "title": "Brünner Straße 59",
-    "description": "Die Verlegung einer Fernwärmezuleitung erfolgt in der Nacht in der Zeit von 20:00 Uhr bis 05:00 Uhr bei Freihaltung einer entsprechend breiten Restfahrbahn von mindestens 3,20 m aber auch bei Tag im Bereich der Maria-Stromberger-Gasse. \nBeginn: 17.05.2026 00:00 Uhr \nGeplant bis: 14.08.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 21",
-    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
-    "guid": "38c61ada1d2613c83001d4bb979184633a2621328c5a1e10582671e6ace5986a",
-    "pubDate": "2026-05-17T00:00:00+02:00",
-    "starts_at": "2026-05-17T00:00:00+02:00",
-    "ends_at": "2026-08-14T00:00:00+02:00",
-    "context": {
-      "district": "21",
-      "measure": "Rohrlegung"
-    },
-    "location": {
-      "coordinates": {
-        "lat": 48.26827166,
-        "lon": 16.4038999
       }
     }
   },
@@ -542,6 +542,27 @@
       "coordinates": {
         "lat": 48.180751,
         "lon": 16.35843789
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Schottenring 11",
+    "description": "Die Arbeiten erfolgen in der Nebenfahrbahn in der Nacht in der betriebslosen Zeit des betroffenen öffentlichen Verkehrsmittels sowie von Freitag 15:00 Uhr bis Montag 05:00 Uhr.Im Baustellenbereich wird ein Fahrstreifen mit einer Restfahrbahn von 3,50 m freigehalten. DerFußgängerverkehr kann aufrecht gehalten werden. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert. \nBeginn: 02.08.2026 00:00 Uhr \nGeplant bis: 30.11.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 1",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "ba095aad9268c9b8f4d0b9484b8c9c19d17906a705484f4430bd3d76a908dbf6",
+    "pubDate": "2026-08-02T00:00:00+02:00",
+    "starts_at": "2026-08-02T00:00:00+02:00",
+    "ends_at": "2026-11-30T00:00:00+01:00",
+    "context": {
+      "district": "1",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.21513596,
+        "lon": 16.36507792
       }
     }
   },
