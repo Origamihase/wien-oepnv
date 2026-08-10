@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 10 Aug 2026 12:00:43 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 12:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: Harmful train service from Julius Raab place]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0d0cec34feba1714f2ecf740cd64064b46e2ce115a8ccee372492e233cfede0c</guid>
+      <pubDate>Mon, 10 Aug 2026 11:40:35 +0200</pubDate>
+      <ext:first_seen>Mon, 10 Aug 2026 12:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 10 Aug 2026 11:40:36 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 10 Aug 2026 12:39:00 +0200</ext:ends_at>
+      <description>[On 10.08.2026]</description>
+      <content:encoded><![CDATA[[On 10.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[59A: Harmful car]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,16 +30,6 @@
       <ext:ends_at>Mon, 10 Aug 2026 23:55:00 +0200</ext:ends_at>
       <description>service obstruction towards the station Meidling S U. expected duration: 11:30 o'clock. Reason: Harmful car in the area Margaretenstraße / Reinprechtsdorfer Straße. [On 10.08.2026]</description>
       <content:encoded><![CDATA[service obstruction towards the station Meidling S U. expected duration: 11:30 o'clock. Reason: Harmful car in the area Margaretenstraße / Reinprechtsdorfer Straße.<br/>[On 10.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hetzendorf ↔ Wien Atzgersdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;903156</guid>
-      <pubDate>Mon, 10 Aug 2026 10:09:54 +0200</pubDate>
-      <ext:first_seen>Mon, 10 Aug 2026 10:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 10 Aug 2026 10:09:54 +0200</ext:starts_at>
-      <description>Due to a defective train on the line, train journeys between Wien Hetzendorf Bahnhst and Wien Atzgersdorf Bahnhst are currently only limited. [Since 10.08.2026]</description>
-      <content:encoded><![CDATA[Due to a defective train on the line, train journeys between Wien Hetzendorf Bahnhst and Wien Atzgersdorf Bahnhst are currently only limited.<br/>[Since 10.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[65A/66A/7A: Inzersdorfer Straße # Leibnizgasse]]></title>
