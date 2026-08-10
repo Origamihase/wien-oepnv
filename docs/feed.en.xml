@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 11 Aug 2026 00:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 00:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[17A: interference at a level crossing]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a9a27425e5abc97ac537f8ede7996cb196df826cae17e716388d06154a7c5243</guid>
-      <pubDate>Mon, 10 Aug 2026 23:41:00 +0200</pubDate>
-      <ext:first_seen>Tue, 11 Aug 2026 00:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 10 Aug 2026 23:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 11 Aug 2026 01:00:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [10.08.2026 – 11.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[10.08.2026 – 11.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: Vandalism]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e2e892a815fa4ef8bf4e5b4eb17dae882bb675214e660021c2731d939841420f</guid>
-      <pubDate>Mon, 10 Aug 2026 22:52:00 +0200</pubDate>
-      <ext:first_seen>Mon, 10 Aug 2026 23:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 10 Aug 2026 22:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 10 Aug 2026 23:51:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: vandalism. [On 10.08.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: vandalism.<br/>[On 10.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Schottenring 11]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop transfer of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U Stop: Obere Augartenstraße From: Obere Augartenstraße … [06.08.2026 – 06.08.2027]</description>
       <content:encoded><![CDATA[Stop transfer of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U Stop: Obere Augartenstraße From: Obere Augartenstraße …<br/>[06.08.2026 – 06.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49A/50A/50B/N49: pipeline works to 1808.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8fc758ed69ab4d0d4bb9b9b68d47ecd0de11ac3d2e3790a7b0580a6f3ce49dfe</guid>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 06 Aug 2026 15:01:14 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 09 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 18 Aug 2026 04:30:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Linzer Straße 422-442, the lines 49A, 50A, 50B and N49 (Sa, So and Festive). [09.04.2026 – 18.08.2026]</description>
+      <content:encoded><![CDATA[Because of construction works in the Linzer Straße 422-442, the lines 49A, 50A, 50B and N49 (Sa, So and Festive).<br/>[09.04.2026 – 18.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[53A: Erzbischofgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4024b9eccf3df84a192e511a10a295c5438057a67d82c4df9f93ed0db621ba49</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 05 Aug 2026 12:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Erzbischofgasse, the line 53A is redirected. [05.08.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Erzbischofgasse, the line 53A is redirected.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

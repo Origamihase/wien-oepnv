@@ -740,20 +740,8 @@
     "guid": "78cfc305e07fdf703edca3374236eb576bf584080a19450b6f7f78fade7ec1e8",
     "pubDate": "2026-08-10T23:41:00+02:00",
     "starts_at": "2026-08-10T23:41:00+02:00",
-    "ends_at": "2026-08-11T01:00:00+02:00",
+    "ends_at": "2026-08-11T00:30:00+02:00",
     "_identity": "wl|störung|L=16A|D=2026-08-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "17A: Störung an einem Bahnübergang",
-    "description": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a9a27425e5abc97ac537f8ede7996cb196df826cae17e716388d06154a7c5243",
-    "pubDate": "2026-08-10T23:41:00+02:00",
-    "starts_at": "2026-08-10T23:41:00+02:00",
-    "ends_at": "2026-08-11T01:00:00+02:00",
-    "_identity": "wl|störung|L=17A|D=2026-08-10"
   },
   {
     "source": "Wiener Linien",
@@ -938,18 +926,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Vandalismus",
-    "description": "Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2e892a815fa4ef8bf4e5b4eb17dae882bb675214e660021c2731d939841420f",
-    "pubDate": "2026-08-10T22:52:00+02:00",
-    "starts_at": "2026-08-10T22:52:00+02:00",
-    "ends_at": "2026-08-10T23:51:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-08-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Linie 57A: Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse. In Richtung Ruolfsheim, Anschützgasse Betrieb ab Hirschengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1018,30 +994,6 @@
     "starts_at": "2026-08-10T04:45:25+02:00",
     "ends_at": "2026-08-11T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-08-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67A: Störung an einem Bahnübergang",
-    "description": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e99216299a61049561d5a4425452f6c84cc32619ff3840ff8b07559a0c13400",
-    "pubDate": "2026-08-10T23:41:00+02:00",
-    "starts_at": "2026-08-10T23:41:00+02:00",
-    "ends_at": "2026-08-11T01:00:00+02:00",
-    "_identity": "wl|störung|L=67A|D=2026-08-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67B: Störung an einem Bahnübergang",
-    "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "64adf3f111f665b0756e206081b736c33bee655dba42034dde513aed6f0ef56b",
-    "pubDate": "2026-08-10T23:41:00+02:00",
-    "starts_at": "2026-08-10T23:41:00+02:00",
-    "ends_at": "2026-08-11T01:00:00+02:00",
-    "_identity": "wl|störung|L=67B|D=2026-08-10"
   },
   {
     "source": "Wiener Linien",
@@ -1162,18 +1114,6 @@
     "starts_at": "2026-08-09T00:00:27+02:00",
     "ends_at": "2026-08-11T23:59:59+02:00",
     "_identity": "wl|störung|L=LB|D=2026-08-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N41: Busse halten Liechtensteinstraße 19",
-    "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 19",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "62540e3a511839981230453380fb7c7af2b4d40fab19503d61f8814d7f8588da",
-    "pubDate": "2026-08-10T01:00:12+02:00",
-    "starts_at": "2026-08-10T01:00:12+02:00",
-    "ends_at": "2026-08-11T00:30:00+02:00",
-    "_identity": "wl|störung|L=N41|D=2026-08-10"
   },
   {
     "source": "Wiener Linien",
