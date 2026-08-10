@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 10 Aug 2026 14:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 15:01:29 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Schottenring 11]]></title>
@@ -32,17 +32,6 @@
       <content:encoded><![CDATA[The installation of a district heating line takes place during the night in the time of 20:00 to 05:00 o'clock with the release of a correspondingly wide residual runway of …<br/>[17.05.2026 – 13.08.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[71: foreign traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">358388ed9cce33f9f3e1b29e2cd0946d5c73b2e74dc535752c3c8a6b57b85f25</guid>
-      <pubDate>Mon, 10 Aug 2026 13:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 10 Aug 2026 13:31:09 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 10 Aug 2026 13:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 10 Aug 2026 14:23:00 +0200</ext:ends_at>
-      <description>Operating only between Kaiserebersdorf, Zinnergasse and St. Marx S. Switch alternatively to the lines U3, 18, 4A, 74A and 77A. expected duration: 13:40X … [On 10.08.2026]</description>
-      <content:encoded><![CDATA[Operating only between Kaiserebersdorf, Zinnergasse and St. Marx S. Switch alternatively to the lines U3, 18, 4A, 74A and 77A. expected duration: 13:40X …<br/>[On 10.08.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[65A/66A/7A: Inzersdorfer Straße # Leibnizgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">39922b5e840cbf135ab0919abedffb5c9ec9e39561bd66de9e8ae1118a0b0db7</guid>
@@ -50,8 +39,8 @@
       <ext:first_seen>Fri, 07 Aug 2026 21:01:07 +0200</ext:first_seen>
       <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
+      <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected. [05.08.2026 – 31.08.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Margaretengürtel Underpass Matzleinsdorfer Platz]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 18 Aug 2026 04:30:00 +0200</ext:ends_at>
       <description>Because of construction works in the Linzer Straße 422-442, the lines 49A, 50A, 50B and N49 (Sa, So and Festive). [09.04.2026 – 18.08.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Linzer Straße 422-442, the lines 49A, 50A, 50B and N49 (Sa, So and Festive).<br/>[09.04.2026 – 18.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[53A: Erzbischofgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4024b9eccf3df84a192e511a10a295c5438057a67d82c4df9f93ed0db621ba49</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 05 Aug 2026 12:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Erzbischofgasse, the line 53A is redirected. [05.08.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Erzbischofgasse, the line 53A is redirected.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
