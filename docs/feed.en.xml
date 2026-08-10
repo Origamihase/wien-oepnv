@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 10 Aug 2026 11:31:01 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 12:00:43 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[12A: Vulnerable cars]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7df6c8d7e36678714ef6edb8540c2025e02d0833ece6574270bbd694dac133eb</guid>
-      <pubDate>Mon, 10 Aug 2026 10:59:00 +0200</pubDate>
-      <ext:first_seen>Mon, 10 Aug 2026 11:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 10 Aug 2026 10:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 10 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 10.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 10.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[59A: Harmful car]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -40,17 +29,6 @@
       <ext:starts_at>Mon, 10 Aug 2026 10:09:54 +0200</ext:starts_at>
       <description>Due to a defective train on the line, train journeys between Wien Hetzendorf Bahnhst and Wien Atzgersdorf Bahnhst are currently only limited. [Since 10.08.2026]</description>
       <content:encoded><![CDATA[Due to a defective train on the line, train journeys between Wien Hetzendorf Bahnhst and Wien Atzgersdorf Bahnhst are currently only limited.<br/>[Since 10.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[50A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9b7203420c27ec8933dbb8d68ea8c86c9459e6c25888564e4b284bf9836f6eb9</guid>
-      <pubDate>Mon, 10 Aug 2026 09:51:00 +0200</pubDate>
-      <ext:first_seen>Mon, 10 Aug 2026 10:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 10 Aug 2026 09:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 10 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion. [On 10.08.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 10.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[65A/66A/7A: Inzersdorfer Straße # Leibnizgasse]]></title>
@@ -117,6 +95,28 @@
       <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop transfer of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U Stop: Obere Augartenstraße From: Obere Augartenstraße … [06.08.2026 – 06.08.2027]</description>
       <content:encoded><![CDATA[Stop transfer of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U Stop: Obere Augartenstraße From: Obere Augartenstraße …<br/>[06.08.2026 – 06.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49A/50A/50B/N49: pipeline works to 1808.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8fc758ed69ab4d0d4bb9b9b68d47ecd0de11ac3d2e3790a7b0580a6f3ce49dfe</guid>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 06 Aug 2026 15:01:14 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 09 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 18 Aug 2026 04:30:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Linzer Straße 422-442, the lines 49A, 50A, 50B and N49 (Sa, So and Festive). [09.04.2026 – 18.08.2026]</description>
+      <content:encoded><![CDATA[Because of construction works in the Linzer Straße 422-442, the lines 49A, 50A, 50B and N49 (Sa, So and Festive).<br/>[09.04.2026 – 18.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[53A: Erzbischofgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4024b9eccf3df84a192e511a10a295c5438057a67d82c4df9f93ed0db621ba49</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 05 Aug 2026 12:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Erzbischofgasse, the line 53A is redirected. [05.08.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Erzbischofgasse, the line 53A is redirected.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
