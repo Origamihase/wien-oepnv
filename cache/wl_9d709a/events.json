@@ -650,6 +650,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "U4: U4 Klapprampensperre am 12.08.2026",
+    "description": "<p class=\"MsoNormal\">Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung k&ouml;nnen die Klapprampen der U-Bahnz&uuml;ge der Linie U4 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig.</p> <p class=\"MsoNormal\">Due to the high number of passengers attending an event, the folding ramps on line U4 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting.</p> <p class=\"MsoNormal\">Zeitraum | Duration:<br />12.08.2026, ca. 19:00 Uhr - 22:00 Uhr</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "86b602a41462b287fc4774e88c6052db3562dfe25c9666a5bb30b6b898e070b8",
+    "pubDate": "2026-08-11T19:00:00+02:00",
+    "starts_at": "2026-08-11T19:00:00+02:00",
+    "ends_at": "2026-08-12T22:00:00+02:00",
+    "_identity": "wl|hinweis|L=U4|D=2026-08-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "U6: U6 Stützmauersanierung: Thaliastraße, Burggasse-Stadthalle Sperre Gleis 1",
     "description": "<h2>Gleiswechselbetrieb</h2> <p>Wegen Sanierungsarbeiten kommt es zu einer Bahnsteigsperre der Linie U6 ab ca. 22:30 Uhr in den Stationen Thaliastra&szlig;e und Burggasse, Stadthalle in Richtung Floridsdorf.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:<br /></strong></span>Von 01. Juni 2026 bis voraussichtlich Mitte September 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span>Die Linie U6 kann die Stationen Thaliastra&szlig;e und Burggasse, Stadthalle in Richtung Floridsdorf Montag - Donnerstag (Werktags und vor Werktagen) ab ca. 22:30 Uhr nicht einhalten. Ein eingleisiger Betrieb ist zwischen Thaliastra&szlig;e und Burggasse, Stadthalle &uuml;ber Gleis 2 notwendig. Die Z&uuml;ge halten in beiden Richtungen auf Gleis 2.&nbsp; &nbsp;</p> <p><span style=\"text-decoration: underline;\"><strong>&nbsp;</strong></span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -682,6 +694,18 @@
     "starts_at": "2026-08-08T00:00:11+02:00",
     "ends_at": "2026-08-11T23:59:59+02:00",
     "_identity": "wl|störung|L=10A|D=2026-08-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11A: Rettungseinsatz Betrieb über Lorenz-Müller-Gasse",
+    "description": "Die Linie 11A wird in Richtung Bahnhof Heiligenstadt S U zwischen Friedrich-Engels-Platz und Muthgasse über Adalbert-Stifter-Straße umgeleitet. Voraussichtliche Dauer: 19:30 Uhr. Grund: Rettungseinsatz im Bereich Forsthausgasse # Leystraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd",
+    "pubDate": "2026-08-11T18:57:00+02:00",
+    "starts_at": "2026-08-11T19:00:07+02:00",
+    "ends_at": "2026-08-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-08-11"
   },
   {
     "source": "Wiener Linien",
@@ -766,6 +790,18 @@
     "starts_at": "2026-08-08T00:00:12+02:00",
     "ends_at": "2026-08-11T23:59:59+02:00",
     "_identity": "wl|störung|L=31|D=2026-08-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fremdunfall Züge halten bei Li. 31 Ri. Schottenring",
+    "description": "Fremdunfall\nZüge halten bei Li. 31 Ri. Schottenring",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eafb3c6f49c2981121ae7ebf68ec5b212c57197bc69d4d4df99a5ef482e1e912",
+    "pubDate": "2026-08-11T18:43:34+02:00",
+    "starts_at": "2026-08-11T18:43:34+02:00",
+    "ends_at": "2026-08-11T19:41:00+02:00",
+    "_identity": "wl|störung|L=31|D=2026-08-11"
   },
   {
     "source": "Wiener Linien",
@@ -874,42 +910,6 @@
     "starts_at": "2026-08-08T00:00:11+02:00",
     "ends_at": "2026-08-11T23:59:59+02:00",
     "_identity": "wl|störung|L=44A|D=2026-08-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Feuerwehreinsatz Betrieb ab Urban-Loritz-Platz",
-    "description": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "32803b219fbe4a3e5ff01414145792ef6343e11e1aeb23e6ef88b196a344b430",
-    "pubDate": "2026-08-11T17:46:29+02:00",
-    "starts_at": "2026-08-11T17:46:29+02:00",
-    "ends_at": "2026-08-11T18:45:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-08-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "915d95b28add9fd37cc8db6aad0ee0d4df44918b9054eecdbccbdf5187711016",
-    "pubDate": "2026-08-11T17:45:29+02:00",
-    "starts_at": "2026-08-11T17:45:29+02:00",
-    "ends_at": "2026-08-11T18:45:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-08-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Feuerwehreinsatz",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dfbcff6d2f1e7787cd358ec3802a6df025d3ce1964c93c763b232441bac6da65",
-    "pubDate": "2026-08-11T16:29:00+02:00",
-    "starts_at": "2026-08-11T16:29:00+02:00",
-    "ends_at": "2026-08-11T23:55:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-08-11"
   },
   {
     "source": "Wiener Linien",
@@ -1112,7 +1112,7 @@
     "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
     "pubDate": "2026-08-11T17:14:00+02:00",
     "starts_at": "2026-08-11T17:14:00+02:00",
-    "ends_at": "2026-08-11T23:55:00+02:00",
+    "ends_at": "2026-08-11T19:11:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-08-11"
   },
   {
@@ -1136,7 +1136,7 @@
     "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
     "pubDate": "2026-08-11T18:29:00+02:00",
     "starts_at": "2026-08-11T18:29:00+02:00",
-    "ends_at": "2026-08-11T23:55:00+02:00",
+    "ends_at": "2026-08-11T19:48:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-11"
   },
   {

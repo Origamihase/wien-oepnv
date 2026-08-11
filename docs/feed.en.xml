@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 11 Aug 2026 18:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 19:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[31: Foreign accident trains stop at Li. 31 Ri. Schottenring]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eafb3c6f49c2981121ae7ebf68ec5b212c57197bc69d4d4df99a5ef482e1e912</guid>
+      <pubDate>Tue, 11 Aug 2026 18:43:34 +0200</pubDate>
+      <ext:first_seen>Tue, 11 Aug 2026 19:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 11 Aug 2026 18:43:34 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 11 Aug 2026 19:41:00 +0200</ext:ends_at>
+      <description>[On 11.08.2026]</description>
+      <content:encoded><![CDATA[[On 11.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: U4 folding ramp lock on 12.08.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">86b602a41462b287fc4774e88c6052db3562dfe25c9666a5bb30b6b898e070b8</guid>
+      <pubDate>Tue, 11 Aug 2026 19:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 11 Aug 2026 19:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 11 Aug 2026 19:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 12 Aug 2026 22:00:00 +0200</ext:ends_at>
+      <description>Due to the high passenger volume associated with an event, the folding ramps of the U4 underground trains cannot be extended. [11.08.2026 – 12.08.2026]</description>
+      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U4 underground trains cannot be extended.<br/>[11.08.2026 – 12.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Schottenring 11]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -39,8 +61,8 @@
       <ext:first_seen>Fri, 07 Aug 2026 21:01:07 +0200</ext:first_seen>
       <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
+      <description>Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet. [05.08.2026 – 31.08.2027]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Margaretengürtel Underpass Matzleinsdorfer Platz]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop transfer of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U Stop: Obere Augartenstraße From: Obere Augartenstraße … [06.08.2026 – 06.08.2027]</description>
       <content:encoded><![CDATA[Stop transfer of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U Stop: Obere Augartenstraße From: Obere Augartenstraße …<br/>[06.08.2026 – 06.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49A/50A/50B/N49: pipeline works to 1808.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8fc758ed69ab4d0d4bb9b9b68d47ecd0de11ac3d2e3790a7b0580a6f3ce49dfe</guid>
-      <pubDate>Thu, 09 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 06 Aug 2026 15:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 09 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 18 Aug 2026 04:30:00 +0200</ext:ends_at>
-      <description>Because of construction works in the Linzer Straße 422-442, the lines 49A, 50A, 50B and N49 (Sa, So and Festive). [09.04.2026 – 18.08.2026]</description>
-      <content:encoded><![CDATA[Because of construction works in the Linzer Straße 422-442, the lines 49A, 50A, 50B and N49 (Sa, So and Festive).<br/>[09.04.2026 – 18.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[53A: Erzbischofgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4024b9eccf3df84a192e511a10a295c5438057a67d82c4df9f93ed0db621ba49</guid>
-      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 05 Aug 2026 12:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the Erzbischofgasse, the line 53A is redirected. [05.08.2026 – 04.09.2026]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Erzbischofgasse, the line 53A is redirected.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
