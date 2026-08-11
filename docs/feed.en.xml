@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 11 Aug 2026 09:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 10:01:09 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[64A: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2b43b2cf270ad0eb82141dcac02a8b63277141db79e08f4221106b9f3fd4836e</guid>
+      <pubDate>Tue, 11 Aug 2026 09:34:00 +0200</pubDate>
+      <ext:first_seen>Tue, 11 Aug 2026 10:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 11 Aug 2026 09:34:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 11 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic accident. [On 11.08.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 11.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Quartier Belvedere]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -105,17 +116,6 @@
       <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Unreplaced stop release of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U stop: Obere Augartenstraße From: Upper … [11.08.2026 – 06.08.2027]</description>
       <content:encoded><![CDATA[Unreplaced stop release of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U stop: Obere Augartenstraße From: Upper …<br/>[11.08.2026 – 06.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A/5B: Obere Augartenstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2546ceb20d737242b5efa3e0061acc15607044cdd0437d67b2b6b699d17e634f</guid>
-      <pubDate>Thu, 06 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 06 Aug 2026 15:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 06 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop transfer of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U Stop: Obere Augartenstraße From: Obere Augartenstraße … [06.08.2026 – 06.08.2027]</description>
-      <content:encoded><![CDATA[Stop transfer of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U Stop: Obere Augartenstraße From: Obere Augartenstraße …<br/>[06.08.2026 – 06.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
