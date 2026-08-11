@@ -710,18 +710,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Test - nicht beachten",
-    "description": "Test - nicht beachten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9dc081e5b73fa86188b46b37e3e0bad8a5cb39d1bba8064afd45cf44a0d1c1c0",
-    "pubDate": "2026-08-11T13:17:00+02:00",
-    "starts_at": "2026-08-11T13:19:01+02:00",
-    "ends_at": "2026-08-11T14:18:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-08-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Betrieb ab Resselgasse",
     "description": "Bauarbeiten\nBetrieb ab Resselgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1042,6 +1030,18 @@
     "starts_at": "2026-08-05T00:00:25+02:00",
     "ends_at": "2026-08-11T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-08-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "77A: Verkehrsüberlastung",
+    "description": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d2fb78dfec0b3971d13e72314dc2efcdbccb60650daf7059b954d1bd1800e28b",
+    "pubDate": "2026-08-11T14:27:00+02:00",
+    "starts_at": "2026-08-11T14:27:00+02:00",
+    "ends_at": "2026-08-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=77A|D=2026-08-11"
   },
   {
     "source": "Wiener Linien",
