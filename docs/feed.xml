@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 11 Aug 2026 12:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 13:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[73B: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2025147db8e844734834786c4464dfc80126da4f3c1308248e27150cc3f6f01e</guid>
-      <pubDate>Tue, 11 Aug 2026 11:39:00 +0200</pubDate>
-      <ext:first_seen>Tue, 11 Aug 2026 12:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 11 Aug 2026 11:39:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 11 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 11.08.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 11.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Schottenring 11]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 18 Aug 2026 04:30:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Linzer Straße 422-442 werden die Linien 49A, 50A, 50B und N49 (Sa, So und Feiertags) umgeleitet. [09.04.2026 – 18.08.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Linzer Straße 422-442 werden die Linien 49A, 50A, 50B und N49 (Sa, So und Feiertags) umgeleitet.<br/>[09.04.2026 – 18.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[53A: Erzbischofgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4024b9eccf3df84a192e511a10a295c5438057a67d82c4df9f93ed0db621ba49</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 05 Aug 2026 12:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten in der Erzbischofgasse wird die Linie 53A umgeleitet. [05.08.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Erzbischofgasse wird die Linie 53A umgeleitet.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
