@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 11 Aug 2026 19:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 19:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5A: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d258ff7d5652ab4b644bb21310e4ad5d8e6f2cf3eb8900d253510caf5b2ba769</guid>
+      <pubDate>Tue, 11 Aug 2026 18:57:00 +0200</pubDate>
+      <ext:first_seen>Tue, 11 Aug 2026 19:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 11 Aug 2026 19:03:07 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 11 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 11.08.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 11.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[31: Fremdunfall Züge halten bei Li. 31 Ri. Schottenring]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Ersatzlose Haltestellenauflassung der Linie 5A in Richtung Nestroyplatz U und der Linie 5B in Richtung Praterstern S U Haltestelle: Obere Augartenstraße Von: Obere … [11.08.2026 – 06.08.2027]</description>
       <content:encoded><![CDATA[Ersatzlose Haltestellenauflassung der Linie 5A in Richtung Nestroyplatz U und der Linie 5B in Richtung Praterstern S U Haltestelle: Obere Augartenstraße Von: Obere …<br/>[11.08.2026 – 06.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A/5B: Obere Augartenstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2546ceb20d737242b5efa3e0061acc15607044cdd0437d67b2b6b699d17e634f</guid>
-      <pubDate>Thu, 06 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 06 Aug 2026 15:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 06 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 5A in Richtung Nestroyplatz U und der Linie 5B in Richtung Praterstern S U Haltestelle: Obere Augartenstraße Von: Obere Augartenstraße … [06.08.2026 – 06.08.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 5A in Richtung Nestroyplatz U und der Linie 5B in Richtung Praterstern S U Haltestelle: Obere Augartenstraße Von: Obere Augartenstraße …<br/>[06.08.2026 – 06.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
