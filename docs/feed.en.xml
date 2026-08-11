@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 11 Aug 2026 13:01:06 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 13:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[44: This is a test]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b1962ef35724a153a19efe861e27ee337ff5fe1e1adb0e216603b89fd6777da7</guid>
+      <pubDate>Tue, 11 Aug 2026 13:21:31 +0200</pubDate>
+      <ext:first_seen>Tue, 11 Aug 2026 13:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 11 Aug 2026 13:21:31 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 11 Aug 2026 14:20:00 +0200</ext:ends_at>
+      <description>[On 11.08.2026]</description>
+      <content:encoded><![CDATA[[On 11.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Schottenring 11]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Tue, 18 Aug 2026 04:30:00 +0200</ext:ends_at>
       <description>Because of construction works in the Linzer Straße 422-442, the lines 49A, 50A, 50B and N49 (Sa, So and Festive). [09.04.2026 – 18.08.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Linzer Straße 422-442, the lines 49A, 50A, 50B and N49 (Sa, So and Festive).<br/>[09.04.2026 – 18.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[53A: Erzbischofgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4024b9eccf3df84a192e511a10a295c5438057a67d82c4df9f93ed0db621ba49</guid>
-      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 05 Aug 2026 12:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the Erzbischofgasse, the line 53A is redirected. [05.08.2026 – 04.09.2026]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Erzbischofgasse, the line 53A is redirected.<br/>[05.08.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
