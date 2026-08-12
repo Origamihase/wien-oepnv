@@ -638,6 +638,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "U1: U1 Klapprampensperre am 13.08.2026",
+    "description": "<p class=\"MsoNormal\">Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung k&ouml;nnen die Klapprampen der U-Bahnz&uuml;ge der Linie U1 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig.</p> <p class=\"MsoNormal\">Due to the high number of passengers attending an event, the folding ramps on line U1 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting.</p> <p class=\"MsoNormal\">Zeitraum | Duration:<br />13.08.2026 ca. 20:00 Uhr - 00:00 Uhr</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4a18d408b7fc28712885aaf3e1b1a5ada596812b89dd9f8276073040eeee662d",
+    "pubDate": "2026-08-12T20:00:00+02:00",
+    "starts_at": "2026-08-12T20:00:00+02:00",
+    "ends_at": "2026-08-13T23:59:00+02:00",
+    "_identity": "wl|hinweis|L=U1|D=2026-08-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "U3: Weichentausch",
     "description": "<h2>Weichentausch</h2> <p>Wegen des Weichentauschs zwischen Westbahnhof und Johnstra&szlig;e wird die Linie U3 geteilt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 13. Juli 2026, 04:00 Uhr, bis Montag, 31. August 2026, 04:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span></p> <p><strong>Linie U3:</strong><span style=\"text-decoration: underline;\"><br /></span>Kein Betrieb zwischen H&uuml;tteldorfer Stra&szlig;e und Westbahnhof.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Ersatzstra&szlig;enbahnlinie E3, 46, 49 und 48A.</p> <p>Die Ersatzstra&szlig;enbahnlinie E3 verkehrt zwischen Westbahnhof S U und Breitensee S und verbindet somit alle Stationen der U3 zwischen Westbahnhof S U und H&uuml;tteldorfer Stra&szlig;e U.<br />Die Linie E3 f&auml;hrt an den Wochenenden durchgehend.</p> <p>Der Einstieg am Westbahnhof befindet sich bei der Linie 9.<br />Die Einstiege bei den Stationen Schweglerstra&szlig;e, Johnstra&szlig;e und H&uuml;tteldorfer Stra&szlig;e befinden sich bei der Linie 49.</p> <p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/U3_Linienteilung_HH_WS.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -694,6 +706,18 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-31T23:55:00+02:00",
     "_identity": "wl|störung|L=12,37,38,40,41,42,5|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "17A: Verkehrsunfall",
+    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5663fecbf675128e997aa265491bb433f2c1a3c40b9e5aa509f998b0c368932d",
+    "pubDate": "2026-08-12T19:52:00+02:00",
+    "starts_at": "2026-08-12T19:52:00+02:00",
+    "ends_at": "2026-08-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=17A|D=2026-08-12"
   },
   {
     "source": "Wiener Linien",
@@ -806,13 +830,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38A: Falschparker Betrieb ab Krapfenwaldgasse",
+    "description": "Die Linie 38A wird in beiden Richtungen zwischen Wagenwiese und Krapfenwaldgasse über die Cobenzlgasse umgeleitet. Die Haltestelle Cobenzl-Parkplatz kann derzeit in beiden Richtungen nicht eingehalten werden. Voraussichtliche Dauer: 21:00 Uhr. Grund: Falschparker im Haltestellenbereich Cobenzl-Parkplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62",
+    "pubDate": "2026-08-12T19:44:35+02:00",
+    "starts_at": "2026-08-12T19:48:00+02:00",
+    "ends_at": "2026-08-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2026-08-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "38A: Verkehrsüberlastung",
     "description": "Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5bd9dda7a847330a7d1c36378ab1c1f0e9f6e6e70be1d423e453221b27840f53",
     "pubDate": "2026-08-12T19:03:00+02:00",
     "starts_at": "2026-08-12T19:03:00+02:00",
-    "ends_at": "2026-08-12T23:55:00+02:00",
+    "ends_at": "2026-08-12T19:55:00+02:00",
     "_identity": "wl|störung|L=38A|D=2026-08-12"
   },
   {
