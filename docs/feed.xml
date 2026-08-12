@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 12 Aug 2026 17:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 17:31:27 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Weichenschaden]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9ea08b17ad8ad4a4cc58e824c68f4203e3aa8b6a147cb0eea0a6b151a6f8eb57</guid>
+      <pubDate>Wed, 12 Aug 2026 17:19:00 +0200</pubDate>
+      <ext:first_seen>Wed, 12 Aug 2026 17:31:27 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 12 Aug 2026 17:19:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 12 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie U2 fährt derzeit zwischen den Stationen Volkstheater und Schottentor in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 18:00 Uhr. Grund: Weichenschaden im … [Am 12.08.2026]</description>
+      <content:encoded><![CDATA[Die Linie U2 fährt derzeit zwischen den Stationen Volkstheater und Schottentor in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 18:00 Uhr. Grund: Weichenschaden im …<br/>[Am 12.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[33A: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 13 Aug 2026 00:00:00 +0200</ext:ends_at>
       <description>Die Verlegung einer Fernwärmezuleitung erfolgt in der Nacht in der Zeit von 20:00 Uhr bis 05:00 Uhr bei Freihaltung einer entsprechend breiten Restfahrbahn von mindestens … [17.05.2026 – 13.08.2026]</description>
       <content:encoded><![CDATA[Die Verlegung einer Fernwärmezuleitung erfolgt in der Nacht in der Zeit von 20:00 Uhr bis 05:00 Uhr bei Freihaltung einer entsprechend breiten Restfahrbahn von mindestens …<br/>[17.05.2026 – 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A/66A/7A: Inzersdorfer Straße # Leibnizgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">39922b5e840cbf135ab0919abedffb5c9ec9e39561bd66de9e8ae1118a0b0db7</guid>
-      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 07 Aug 2026 21:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
