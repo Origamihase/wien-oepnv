@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 13 Aug 2026 00:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 00:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U1: U1 folding ramp lock on 13.08.2026]]></title>
@@ -76,17 +76,6 @@
       <content:encoded><![CDATA[The work is carried out at the sidecar at night during the busy time of the public transport concerned and from Friday 15:00 a.m. to Monday 05:00 …<br/>[02.08.2026 – 30.11.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[Brünner Straße 59]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">19d5db44be25c488569228ac1b7aa81b8c479d59b8856fba7819160b3669296c</guid>
-      <pubDate>Sun, 17 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 10 Aug 2026 14:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 17 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 13 Aug 2026 00:00:00 +0200</ext:ends_at>
-      <description>The installation of a district heating line takes place during the night in the time of 20:00 to 05:00 o'clock with the release of a correspondingly wide residual runway of … [17.05.2026 – 13.08.2026]</description>
-      <content:encoded><![CDATA[The installation of a district heating line takes place during the night in the time of 20:00 to 05:00 o'clock with the release of a correspondingly wide residual runway of …<br/>[17.05.2026 – 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[65A/66A/7A: Inzersdorfer Straße # Leibnizgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">39922b5e840cbf135ab0919abedffb5c9ec9e39561bd66de9e8ae1118a0b0db7</guid>
@@ -94,8 +83,8 @@
       <ext:first_seen>Fri, 07 Aug 2026 21:01:07 +0200</ext:first_seen>
       <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
+      <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected. [05.08.2026 – 31.08.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Margaretengürtel Underpass Matzleinsdorfer Platz]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
       <description>Due to construction works in the range Willergasse / Ketzergasse the line N60 is being redirected. Period: From Saturday, 25. July 2026, about 06:00 o'clock, for expected one week. [25.07.2026 – 20.07.2027]</description>
       <content:encoded><![CDATA[Due to construction works in the range Willergasse / Ketzergasse the line N60 is being redirected. Period: From Saturday, 25. July 2026, about 06:00 o'clock, for expected one week.<br/>[25.07.2026 – 20.07.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Inzersdorfer Straße junction Leibnizgasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">9742c146b684bbad9f5953a9b01c910b36e9e978d5f8b096f743dbff36ed7d5c</guid>
+      <pubDate>Mon, 10 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 07 Aug 2026 01:00:28 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 10 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 21 Aug 2026 00:00:00 +0200</ext:ends_at>
+      <description>The Leibnizgasse is blocked from junction Schröttergasse to junction Angeligasse. Access to the approved pitches is possible.The affected bus lines 7A, 65A … [10.08.2026 – 21.08.2026]</description>
+      <content:encoded><![CDATA[The Leibnizgasse is blocked from junction Schröttergasse to junction Angeligasse. Access to the approved pitches is possible.The affected bus lines 7A, 65A …<br/>[10.08.2026 – 21.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
