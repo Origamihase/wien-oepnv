@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 12 Aug 2026 13:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 13:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[42: stop moved to Obere Augartenstr. 42]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e886ce64095fb504ba0ed863b78d6c8e5048ecd170aadd5e8bba662191a14df7</guid>
+      <pubDate>Tue, 11 Aug 2026 07:15:56 +0200</pubDate>
+      <ext:first_seen>Wed, 12 Aug 2026 13:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 11 Aug 2026 07:15:56 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 12 Aug 2026 23:59:59 +0200</ext:ends_at>
+      <description>[11.08.2026 – 12.08.2026]</description>
+      <content:encoded><![CDATA[[11.08.2026 – 12.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[17A: Josef-Enslein-Platz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 21 Aug 2026 00:00:00 +0200</ext:ends_at>
       <description>The Leibnizgasse is blocked from junction Schröttergasse to junction Angeligasse. Access to the approved pitches is possible.The affected bus lines 7A, 65A … [10.08.2026 – 21.08.2026]</description>
       <content:encoded><![CDATA[The Leibnizgasse is blocked from junction Schröttergasse to junction Angeligasse. Access to the approved pitches is possible.The affected bus lines 7A, 65A …<br/>[10.08.2026 – 21.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A/5B: Malzgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c24962dac327066a39dccd9a32f5340c501a08f0c3a53a1d337c3e0fa1aec30</guid>
-      <pubDate>Thu, 06 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 06 Aug 2026 15:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 11 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Unreplaced stop release of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U stop: Obere Augartenstraße From: Upper … [11.08.2026 – 06.08.2027]</description>
-      <content:encoded><![CDATA[Unreplaced stop release of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U stop: Obere Augartenstraße From: Upper …<br/>[11.08.2026 – 06.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
