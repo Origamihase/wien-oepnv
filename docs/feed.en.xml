@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 12 Aug 2026 20:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 21:01:12 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U1: U1 folding ramp lock on 13.08.2026]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Thu, 13 Aug 2026 23:59:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [12.08.2026 – 13.08.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[12.08.2026 – 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Soft damage]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9ea08b17ad8ad4a4cc58e824c68f4203e3aa8b6a147cb0eea0a6b151a6f8eb57</guid>
-      <pubDate>Wed, 12 Aug 2026 17:19:00 +0200</pubDate>
-      <ext:first_seen>Wed, 12 Aug 2026 17:31:27 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 12 Aug 2026 17:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 12 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>The line U2 currently runs between stations Volkstheater and Schottentor in both directions via track 2. expected duration: 18:00 o'clock. Reason: Soft damage in the … [On 12.08.2026]</description>
-      <content:encoded><![CDATA[The line U2 currently runs between stations Volkstheater and Schottentor in both directions via track 2. expected duration: 18:00 o'clock. Reason: Soft damage in the …<br/>[On 12.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[43A/44A/44BR/N43/44B: track construction works (phase 2)]]></title>
@@ -116,8 +105,19 @@
       <ext:first_seen>Fri, 07 Aug 2026 21:01:07 +0200</ext:first_seen>
       <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
+      <description>Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet. [05.08.2026 – 31.08.2027]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 7A, 65A und 66A umgeleitet.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Margaretengürtel Underpass Matzleinsdorfer Platz]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">b4894186a06f6049668f658a2d9b2605165b73bdc121e4e55f8d215a4a6d3bf5</guid>
+      <pubDate>Fri, 31 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 07 Aug 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 31 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 14 Aug 2026 00:00:00 +0200</ext:ends_at>
+      <description>In the underpass, one lane per direction is blocked and the remaining lanes remain upright. [31.07.2026 – 14.08.2026]</description>
+      <content:encoded><![CDATA[In the underpass, one lane per direction is blocked and the remaining lanes remain upright.<br/>[31.07.2026 – 14.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
