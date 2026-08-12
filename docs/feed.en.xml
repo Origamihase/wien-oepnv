@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 12 Aug 2026 07:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 08:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[19A: Max-Fleischer-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">539e511f8ca084329565afc2470c67f344a99a2873b2194d67bae6f78ee24fea</guid>
+      <pubDate>Mon, 20 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 12 Aug 2026 08:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 12 Aug 2026 11:00:00 +0200</ext:ends_at>
+      <description>Stop transfer of line 19A towards Alaudagasse U Stop: Max-Fleischer-Gasse From: Alaudagasse to Max-Fleischer-Gasse To: 20 Meter in direction … [20.07.2026 – 12.08.2026]</description>
+      <content:encoded><![CDATA[Stop transfer of line 19A towards Alaudagasse U Stop: Max-Fleischer-Gasse From: Alaudagasse to Max-Fleischer-Gasse To: 20 Meter in direction …<br/>[20.07.2026 – 12.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[7A: service from Antonsplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Unreplaced stop release of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U stop: Obere Augartenstraße From: Upper … [11.08.2026 – 06.08.2027]</description>
       <content:encoded><![CDATA[Unreplaced stop release of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U stop: Obere Augartenstraße From: Upper …<br/>[11.08.2026 – 06.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A/5B: Obere Augartenstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2546ceb20d737242b5efa3e0061acc15607044cdd0437d67b2b6b699d17e634f</guid>
-      <pubDate>Thu, 06 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 06 Aug 2026 15:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 06 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop transfer of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U Stop: Obere Augartenstraße From: Obere Augartenstraße … [06.08.2026 – 06.08.2027]</description>
-      <content:encoded><![CDATA[Stop transfer of line 5A towards Nestroyplatz U and line 5B towards Praterstern S U Stop: Obere Augartenstraße From: Obere Augartenstraße …<br/>[06.08.2026 – 06.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
