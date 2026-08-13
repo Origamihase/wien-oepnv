@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 13 Aug 2026 15:30:58 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 16:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[60: Power failure Trains stop at line 62]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f8073df4ffbd688ab15ee72dfa8134740910f21e6af8be7a55ce2e17c6cda98c</guid>
+      <pubDate>Thu, 13 Aug 2026 13:46:44 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 16:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 13 Aug 2026 13:46:44 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 13 Aug 2026 23:15:00 +0200</ext:ends_at>
+      <description>[On 13.08.2026]</description>
+      <content:encoded><![CDATA[[On 13.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[53A: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -39,8 +50,8 @@
       <ext:first_seen>Thu, 13 Aug 2026 14:30:58 +0200</ext:first_seen>
       <ext:starts_at>Fri, 10 Jul 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 10 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 29B in Richtung Großfeldsiedlung U Haltestelle: Paukerwerkstraße Von: Giefinggasse 6 Nach: Giefinggasse 4 Dauer: Ab 15. Juli 2026, etwa 07:00 … [10.07.2026 – 10.07.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 29B in Richtung Großfeldsiedlung U Haltestelle: Paukerwerkstraße Von: Giefinggasse 6 Nach: Giefinggasse 4 Dauer: Ab 15. Juli 2026, etwa 07:00 …<br/>[10.07.2026 – 10.07.2027]]]></content:encoded>
+      <description>Stop transfer of line 29B towards Großfeldsiedlung U Stop: Paukerwerkstraße From: Giefinggasse 6 To: Giefinggasse 4 Duration: From 15. July 2026, about 07:00 … [10.07.2026 – 10.07.2027]</description>
+      <content:encoded><![CDATA[Stop transfer of line 29B towards Großfeldsiedlung U Stop: Paukerwerkstraße From: Giefinggasse 6 To: Giefinggasse 4 Duration: From 15. July 2026, about 07:00 …<br/>[10.07.2026 – 10.07.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[29B: construction works]]></title>
@@ -83,17 +94,6 @@
       <ext:first_seen>Thu, 13 Aug 2026 13:30:58 +0200</ext:first_seen>
       <ext:starts_at>Thu, 13 Aug 2026 13:28:13 +0200</ext:starts_at>
       <ext:ends_at>Thu, 13 Aug 2026 23:30:00 +0200</ext:ends_at>
-      <description>[On 13.08.2026]</description>
-      <content:encoded><![CDATA[[On 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Power disturbance service from Hofwiesengasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4d600c55995017a57d58ce6ae09245ee47bacdbe9e10fe8f4fc5f75091c27f93</guid>
-      <pubDate>Thu, 13 Aug 2026 13:26:12 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 13:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 13 Aug 2026 13:26:15 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 13 Aug 2026 23:15:00 +0200</ext:ends_at>
       <description>[On 13.08.2026]</description>
       <content:encoded><![CDATA[[On 13.08.2026]]]></content:encoded>
     </item>

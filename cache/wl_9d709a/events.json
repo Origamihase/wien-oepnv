@@ -830,6 +830,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25: Verspätungen",
+    "description": "Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1fada7614a788ccf1a33277fc05d810e42ffa22f80e787d1c7f2415eb1f42b8c",
+    "pubDate": "2026-08-13T15:41:00+02:00",
+    "starts_at": "2026-08-13T15:41:00+02:00",
+    "ends_at": "2026-08-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-08-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -842,8 +854,56 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "28A: Falschparker",
+    "description": "Linie 28A: Fahrtbehinderung in Richtung Breitenlee, Schule. Voraussichtliche Dauer: 16:30 Uhr. Grund: Falschparker im Haltestellenbereich Aderklaaer Straße U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e62a62fa9de2e6fa5137fca756cab9b0b26c2eb88fce93de80dfc5e59d7cd5aa",
+    "pubDate": "2026-08-13T15:59:00+02:00",
+    "starts_at": "2026-08-13T15:59:00+02:00",
+    "ends_at": "2026-08-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=28A|D=2026-08-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "30: schadhafter Zug Züge halten in der Peitlgasse",
+    "description": "schadhafter Zug\nZüge halten in der Peitlgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13b78ee049b5d1471333809c9ab9c2391333cd8269714511526903e41bc84259",
+    "pubDate": "2026-08-13T15:47:58+02:00",
+    "starts_at": "2026-08-13T15:47:58+02:00",
+    "ends_at": "2026-08-13T16:45:00+02:00",
+    "_identity": "wl|störung|L=30|D=2026-08-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "30: Schadhafter Zug Betrieb ab Floridsdorfer Markt",
+    "description": "Schadhafter Zug\nBetrieb ab Floridsdorfer Markt",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "50522c34d4aa46e2718ad2d99a719502af868b273ae589b0a898d98cc8d57bc3",
+    "pubDate": "2026-08-13T15:44:56+02:00",
+    "starts_at": "2026-08-13T15:44:56+02:00",
+    "ends_at": "2026-08-13T16:44:00+02:00",
+    "_identity": "wl|störung|L=30|D=2026-08-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "30: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55fa4346a13e51f2667065b4fd8714a5ae0746c890a2b5c171b0777700925929",
+    "pubDate": "2026-08-13T15:44:27+02:00",
+    "starts_at": "2026-08-13T15:44:28+02:00",
+    "ends_at": "2026-08-13T16:43:00+02:00",
+    "_identity": "wl|störung|L=30|D=2026-08-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "30: Verspätungen",
-    "description": "Linie 30: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "description": "Linie 30: Betrieb nur zwischen Stammersdorf und Floridsdorfer Markt. Voraussichtliche Dauer: 16:15 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Floridsdorf.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5f2a2fae3493a42bf7701e8c26733aff5ee3becce22e10a884c2b42fbdd68c80",
     "pubDate": "2026-08-13T15:27:00+02:00",
@@ -1088,7 +1148,7 @@
     "guid": "f8073df4ffbd688ab15ee72dfa8134740910f21e6af8be7a55ce2e17c6cda98c",
     "pubDate": "2026-08-13T13:46:44+02:00",
     "starts_at": "2026-08-13T13:46:44+02:00",
-    "ends_at": "2026-08-13T16:15:00+02:00",
+    "ends_at": "2026-08-13T23:15:00+02:00",
     "_identity": "wl|störung|L=60|D=2026-08-13"
   },
   {

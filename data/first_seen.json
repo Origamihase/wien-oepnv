@@ -10158,8 +10158,10 @@
     "first_seen": "2026-08-13T12:30:58.404489+00:00",
     "translations": {
       "en": {
+        "summary": "Stop transfer of line 29B towards Gro\u00dffeldsiedlung U Stop: Paukerwerkstra\u00dfe From: Giefinggasse 6 To: Giefinggasse 4 Duration: From 15. July 2026, about 07:00 \u2026",
         "title": "29B: Paukerwerkstra\u00dfe"
-      }
+      },
+      "epoch": 3
     }
   },
   "94af9f8aef61a42e33dabe0e1d4237fcd018bb9f1622a5949cfaff8dd284c45c": {
@@ -16430,6 +16432,15 @@
     "translations": {
       "en": {
         "title": "10A: service obstruction event"
+      },
+      "epoch": 3
+    }
+  },
+  "f8073df4ffbd688ab15ee72dfa8134740910f21e6af8be7a55ce2e17c6cda98c": {
+    "first_seen": "2026-08-13T14:00:58.592350+00:00",
+    "translations": {
+      "en": {
+        "title": "60: Power failure Trains stop at line 62"
       },
       "epoch": 3
     }
