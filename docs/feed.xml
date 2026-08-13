@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 13 Aug 2026 23:31:07 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2026 00:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[7A: Busse halten bei Neilreichgasse 56]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e4ca6c3e552a63b627c6596d124e724795aba61de138be6917542ed2a239c26b</guid>
+      <pubDate>Fri, 14 Aug 2026 00:00:16 +0200</pubDate>
+      <ext:first_seen>Fri, 14 Aug 2026 00:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 14 Aug 2026 00:00:16 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 14 Aug 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 14.08.2026]</description>
+      <content:encoded><![CDATA[[Am 14.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Bullgasse Kreuzung Josef-Enslein-Platz und Per-Albin-Hansson-Straße]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -24,22 +35,11 @@
       <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;904585</guid>
-      <pubDate>Thu, 13 Aug 2026 23:02:22 +0200</pubDate>
+      <pubDate>Thu, 13 Aug 2026 23:52:00 +0200</pubDate>
       <ext:first_seen>Thu, 13 Aug 2026 22:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 13 Aug 2026 23:02:22 +0200</ext:starts_at>
-      <description>Wegen eines Schadens am Gleis sind zwischen Wien Meidling Bahnhof (U) und Liesing (Wien) Zugfahrten voraussichtlich 23:00 Uhr nur eingeschränkt möglich. [Seit 13.08.2026]</description>
-      <content:encoded><![CDATA[Wegen eines Schadens am Gleis sind zwischen Wien Meidling Bahnhof (U) und Liesing (Wien) Zugfahrten voraussichtlich 23:00 Uhr nur eingeschränkt möglich.<br/>[Seit 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[68A/68B: Bauarbeiten Quellenstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a5a44b199abb0da5cfb5c35df0134020c0ce70d76345a56bc16c0f8203e95b1b</guid>
-      <pubDate>Thu, 13 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 16:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 19 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 13 Aug 2026 23:59:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten in der Quellenstraße 46-48 werden die Linien 68A und 68B in Richtung Reumannplatz umgeleitet. [Ab 19.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten in der Quellenstraße 46-48 werden die Linien 68A und 68B in Richtung Reumannplatz umgeleitet.<br/>[Ab 19.08.2026]]]></content:encoded>
+      <ext:starts_at>Thu, 13 Aug 2026 23:52:00 +0200</ext:starts_at>
+      <description>Wegen eines Schadens am Gleis waren zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof bis 23:44 Uhr nur eingeschränkt Fahrten möglich. Wir bitten um Entschuldigung. [Seit 13.08.2026]</description>
+      <content:encoded><![CDATA[Wegen eines Schadens am Gleis waren zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof bis 23:44 Uhr nur eingeschränkt Fahrten möglich. Wir bitten um Entschuldigung.<br/>[Seit 13.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[53A: Bauarbeiten]]></title>
