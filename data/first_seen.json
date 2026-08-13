@@ -12153,6 +12153,16 @@
       "epoch": 3
     }
   },
+  "b3058c5093b1bbd159b36922b390792530ab5e9c4bfe52c041cccc95ba024abc": {
+    "first_seen": "2026-08-13T11:01:20.756398+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: rescue operation.",
+        "title": "53A: rescue operation"
+      },
+      "epoch": 3
+    }
+  },
   "b3259c3ee95d4bc68d33c8e0bfb3b4541128a5bbf769225a0a614fdb3e018fbc": {
     "first_seen": "2026-05-24T02:30:41.994922+00:00",
     "translations": {
@@ -18178,6 +18188,16 @@
       "en": {
         "summary": "Due to a damaged bridge by an traffic accident between Wien Meidling station (U) and Wien Liesing station train journeys to expected 10:45 watch only \u2026",
         "title": "Wien Hauptbahnhof \u2194 Wien Liesing"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&904162": {
+    "first_seen": "2026-08-13T11:01:20.756398+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to construction works, no Wien H\u00fctteldorf Train Station (U) and Wien Handelskai Trainhst (U) can run between 01.112026 (from 01:10 Clock to 04:10 Clock) .",
+        "title": "S 45: Wien H\u00fctteldorf \u2194 Wien Handelskai"
       },
       "epoch": 3
     }
