@@ -18338,6 +18338,16 @@
       "epoch": 3
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&904585": {
+    "first_seen": "2026-08-13T20:01:02.259674+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to damage on the track between Wien Meidling Station (U) and Liesing (Vienna) Train journeys expected 22:00 o'clock are limited.",
+        "title": "Wien Meidling \u2194 Wien Liesing"
+      },
+      "epoch": 3
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },

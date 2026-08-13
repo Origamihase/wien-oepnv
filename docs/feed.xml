@@ -7,8 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 13 Aug 2026 21:31:14 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 22:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;904585</guid>
+      <pubDate>Thu, 13 Aug 2026 21:55:19 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 22:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 13 Aug 2026 21:55:19 +0200</ext:starts_at>
+      <description>Wegen eines Schadens am Gleis sind zwischen Wien Meidling Bahnhof (U) und Liesing (Wien) Zugfahrten voraussichtlich 22:00 Uhr nur eingeschränkt möglich. [Seit 13.08.2026]</description>
+      <content:encoded><![CDATA[Wegen eines Schadens am Gleis sind zwischen Wien Meidling Bahnhof (U) und Liesing (Wien) Zugfahrten voraussichtlich 22:00 Uhr nur eingeschränkt möglich.<br/>[Seit 13.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[68A/68B: Bauarbeiten Quellenstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -76,6 +86,17 @@
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Giefinggasse und Paukerwerkstraße werden die Busse der Linie 29B in Richtung Floridsdorf S U umgeleitet.<br/>[20.07.2026 – 01.01.2027]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[62: Stromstörung Züge halten bei Linie 62]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00854ec9b097d957f15c656f25f23ef323531711f23234e8d880ff693fb2266d</guid>
+      <pubDate>Thu, 13 Aug 2026 13:59:46 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 14:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 13 Aug 2026 13:59:46 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 13 Aug 2026 23:15:00 +0200</ext:ends_at>
+      <description>[Am 13.08.2026]</description>
+      <content:encoded><![CDATA[[Am 13.08.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[62A/N65: 62A, N65 Leopoldigasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ad03a29c9955facc49e314eda00a71f4e7f6d8de69534c4f4feff86030bc5d81</guid>
@@ -96,27 +117,6 @@
       <ext:ends_at>Thu, 13 Aug 2026 23:30:00 +0200</ext:ends_at>
       <description>[Am 13.08.2026]</description>
       <content:encoded><![CDATA[[Am 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S 45: Wien Hütteldorf ↔ Wien Handelskai]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;904162</guid>
-      <pubDate>Thu, 13 Aug 2026 10:48:27 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 13:01:20 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 13 Aug 2026 10:48:27 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Hütteldorf Bahnhof (U) und Wien Handelskai Bahnhst (U) am 01.11.2026 (von 01:10 Uhr bis 04:10 Uhr) keine S45-Züge fahren. [Seit 13.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hütteldorf Bahnhof (U) und Wien Handelskai Bahnhst (U) am 01.11.2026 (von 01:10 Uhr bis 04:10 Uhr) keine S45-Züge fahren.<br/>[Seit 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26/27: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3e1d11937d825307b73e5648ab1bb3565749be3c6e0a3d31611f44791ada2c5a</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 12:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei den Linien 25, 26 und 27. Planen Sie ca. 15 Minuten mehr Fahrzeit ein. Zeitraum … [14.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei den Linien 25, 26 und 27. Planen Sie ca. 15 Minuten mehr Fahrzeit ein. Zeitraum …<br/>[14.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
