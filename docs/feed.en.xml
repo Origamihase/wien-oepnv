@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 13 Aug 2026 11:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 12:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[25/26/27: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3e1d11937d825307b73e5648ab1bb3565749be3c6e0a3d31611f44791ada2c5a</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 12:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>The tracks in Donaufelder Straße are being renewed, therefore there are restrictions on the lines 25, 26 and 27. Plan about 15 minutes more driving time. Period … [14.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[The tracks in Donaufelder Straße are being renewed, therefore there are restrictions on the lines 25, 26 and 27. Plan about 15 minutes more driving time. Period …<br/>[14.09.2026 – 31.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[61A: 61A Liesing]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">27d322c43b844572689904422fe2fec35b8ac44b2b9034f65925658eb5db4d5e</guid>
+      <pubDate>Thu, 13 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 12:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 13 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 14 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of line 61A towards Vösendorf-Siebenhirten Stop: Liesing S From: Liesinger square 2, Bussteig A To: Liesinger square 1 Duration: From 18. August … [13.08.2026 – 14.08.2027]</description>
+      <content:encoded><![CDATA[Stop change of line 61A towards Vösendorf-Siebenhirten Stop: Liesing S From: Liesinger square 2, Bussteig A To: Liesinger square 1 Duration: From 18. August …<br/>[13.08.2026 – 14.08.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[53A: delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected. [05.08.2026 – 31.08.2027]</description>
       <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse the lines 7A, 65A and 66A are redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Margaretengürtel Underpass Matzleinsdorfer Platz]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">b4894186a06f6049668f658a2d9b2605165b73bdc121e4e55f8d215a4a6d3bf5</guid>
-      <pubDate>Fri, 31 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 07 Aug 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 31 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 14 Aug 2026 00:00:00 +0200</ext:ends_at>
-      <description>In the underpass, one lane per direction is blocked and the remaining lanes remain upright. [31.07.2026 – 14.08.2026]</description>
-      <content:encoded><![CDATA[In the underpass, one lane per direction is blocked and the remaining lanes remain upright.<br/>[31.07.2026 – 14.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N60: construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4361b8edb446cb67f4a0b449a39d226a82791fabb21dd83e98c31629de9c10fb</guid>
-      <pubDate>Mon, 20 Jul 2026 19:10:00 +0200</pubDate>
-      <ext:first_seen>Fri, 07 Aug 2026 12:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 25 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Due to construction works in the range Willergasse / Ketzergasse the line N60 is being redirected. Period: From Saturday, 25. July 2026, about 06:00 o'clock, for expected one week. [25.07.2026 – 20.07.2027]</description>
-      <content:encoded><![CDATA[Due to construction works in the range Willergasse / Ketzergasse the line N60 is being redirected. Period: From Saturday, 25. July 2026, about 06:00 o'clock, for expected one week.<br/>[25.07.2026 – 20.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
