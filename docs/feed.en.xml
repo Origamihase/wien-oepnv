@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 13 Aug 2026 18:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 18:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[68B/68A: event]]></title>
@@ -21,28 +21,6 @@
       <content:encoded><![CDATA[The line 68B currently runs only between Oberlaa U and Theodor-Sickel-Gasse. The line 68A currently runs only between Laaer Berg, Kurpark Nordosteingang and Theodor-Sickel-Gasse.<br/>[On 13.08.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10: Damaged overhead line by a truck]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1cc03f58871e439c60f7d1c4c3c910e4b48387a025061f9ac3cf402dad33b706</guid>
-      <pubDate>Thu, 13 Aug 2026 13:21:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 17:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 13 Aug 2026 13:21:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 13 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 13.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Damaged overhead line by a truck]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6eb59fc215d13023a42acfaafb6e9849d367390dee89668a795a28a38e7a935c</guid>
-      <pubDate>Thu, 13 Aug 2026 13:21:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 17:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 13 Aug 2026 13:21:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 13 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 13.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[68A/68B: construction works Quellenstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a5a44b199abb0da5cfb5c35df0134020c0ce70d76345a56bc16c0f8203e95b1b</guid>
@@ -52,6 +30,17 @@
       <ext:ends_at>Thu, 13 Aug 2026 23:59:00 +0200</ext:ends_at>
       <description>Because of construction works in the Quellenstraße 46-48, the lines 68A and 68B are redirected towards Reumannplatz. [From 19.08.2026]</description>
       <content:encoded><![CDATA[Because of construction works in the Quellenstraße 46-48, the lines 68A and 68B are redirected towards Reumannplatz.<br/>[From 19.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Power failure Trains stop at line 62]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f8073df4ffbd688ab15ee72dfa8134740910f21e6af8be7a55ce2e17c6cda98c</guid>
+      <pubDate>Thu, 13 Aug 2026 13:46:44 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 16:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 13 Aug 2026 13:46:44 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 13 Aug 2026 23:15:00 +0200</ext:ends_at>
+      <description>[On 13.08.2026]</description>
+      <content:encoded><![CDATA[[On 13.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[53A: construction works]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sun, 13 Dec 2026 11:11:00 +0100</ext:ends_at>
       <description>Stop change of lines 62A towards Liesing S and N65 towards Liesing Stop: Leopoldigasse From: Breitenfurter Straße 298-300 To: Breitenfurter Straße … [13.08.2026 – 13.12.2026]</description>
       <content:encoded><![CDATA[Stop change of lines 62A towards Liesing S and N65 towards Liesing Stop: Leopoldigasse From: Breitenfurter Straße 298-300 To: Breitenfurter Straße …<br/>[13.08.2026 – 13.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10: service obstruction due to power failure]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">03904adffffa10dfd49c8686d95b1660bf5dbf0d71210e737e56444f6c1e5ec0</guid>
+      <pubDate>Thu, 13 Aug 2026 13:28:13 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 13:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 13 Aug 2026 13:28:13 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 13 Aug 2026 23:30:00 +0200</ext:ends_at>
+      <description>[On 13.08.2026]</description>
+      <content:encoded><![CDATA[[On 13.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
