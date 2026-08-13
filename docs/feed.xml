@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 13 Aug 2026 15:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 15:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[53A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0de159965a11ab9f6a71267be82f9c84c83854b95b099d20a6677b1d57601111</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 15:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 10 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten in der Erzbischofgasse wird die Linie 53A umgeleitet. [10.08.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Erzbischofgasse wird die Linie 53A umgeleitet.<br/>[10.08.2026 – 04.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[29A: 29A Serpentingasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:starts_at>Thu, 13 Aug 2026 10:48:27 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Hütteldorf Bahnhof (U) und Wien Handelskai Bahnhst (U) am 01.11.2026 (von 01:10 Uhr bis 04:10 Uhr) keine S45-Züge fahren. [Seit 13.08.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hütteldorf Bahnhof (U) und Wien Handelskai Bahnhst (U) am 01.11.2026 (von 01:10 Uhr bis 04:10 Uhr) keine S45-Züge fahren.<br/>[Seit 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26/27: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3e1d11937d825307b73e5648ab1bb3565749be3c6e0a3d31611f44791ada2c5a</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 12:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei den Linien 25, 26 und 27. Planen Sie ca. 15 Minuten mehr Fahrzeit ein. Zeitraum … [14.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei den Linien 25, 26 und 27. Planen Sie ca. 15 Minuten mehr Fahrzeit ein. Zeitraum …<br/>[14.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
