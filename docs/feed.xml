@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 13 Aug 2026 13:01:20 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 13:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10: Fahrtbehinderung wegen Stromstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">03904adffffa10dfd49c8686d95b1660bf5dbf0d71210e737e56444f6c1e5ec0</guid>
+      <pubDate>Thu, 13 Aug 2026 13:28:13 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 13:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 13 Aug 2026 13:28:13 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 13 Aug 2026 15:30:00 +0200</ext:ends_at>
+      <description>[Am 13.08.2026]</description>
+      <content:encoded><![CDATA[[Am 13.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Stromstörung Betrieb ab Hofwiesengasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4d600c55995017a57d58ce6ae09245ee47bacdbe9e10fe8f4fc5f75091c27f93</guid>
+      <pubDate>Thu, 13 Aug 2026 13:26:12 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 13:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 13 Aug 2026 13:26:15 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 13 Aug 2026 18:00:00 +0200</ext:ends_at>
+      <description>[Am 13.08.2026]</description>
+      <content:encoded><![CDATA[[Am 13.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[53A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -95,28 +117,6 @@
       <ext:ends_at>Thu, 12 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 17A in Richtung Inzersdorf, Birostraße Haltestelle: Josef-Enslein-Platz Von: Per-Albin-Hansson-Straße vor Bullgasse Nach … [12.08.2026 – 12.08.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 17A in Richtung Inzersdorf, Birostraße Haltestelle: Josef-Enslein-Platz Von: Per-Albin-Hansson-Straße vor Bullgasse Nach …<br/>[12.08.2026 – 12.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Betrieb ab Antonsplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">667f6aa23c692fd9c950e11afb05c8e6196a0cd1d11118e56facb23ed7872d29</guid>
-      <pubDate>Wed, 12 Aug 2026 07:09:42 +0200</pubDate>
-      <ext:first_seen>Wed, 12 Aug 2026 07:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 12 Aug 2026 07:09:42 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 13 Aug 2026 23:59:59 +0200</ext:ends_at>
-      <description>[12.08.2026 – 13.08.2026]</description>
-      <content:encoded><![CDATA[[12.08.2026 – 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Schottenring 11]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">ba095aad9268c9b8f4d0b9484b8c9c19d17906a705484f4430bd3d76a908dbf6</guid>
-      <pubDate>Sun, 02 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 10 Aug 2026 14:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 02 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
-      <description>Die Arbeiten erfolgen in der Nebenfahrbahn in der Nacht in der betriebslosen Zeit des betroffenen öffentlichen Verkehrsmittels sowie von Freitag 15:00 Uhr bis Montag 05:00 … [02.08.2026 – 30.11.2026]</description>
-      <content:encoded><![CDATA[Die Arbeiten erfolgen in der Nebenfahrbahn in der Nacht in der betriebslosen Zeit des betroffenen öffentlichen Verkehrsmittels sowie von Freitag 15:00 Uhr bis Montag 05:00 …<br/>[02.08.2026 – 30.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
