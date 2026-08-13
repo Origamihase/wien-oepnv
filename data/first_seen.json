@@ -6427,6 +6427,12 @@
       }
     }
   },
+  "60cba7d8c6478065a14fb3194c503b6a4d2391e16dfdc054b2f4c68c1edac6cf": {
+    "first_seen": "2026-08-13T12:30:58.404489+00:00",
+    "translations": {
+      "en": {}
+    }
+  },
   "60d85be6e1b718bd1bbf3bdc27097fa49586ae83a20c5eeeac8d4469bdf039d5": {
     "first_seen": "2026-07-19T11:01:05.150226+00:00",
     "translations": {
@@ -10132,6 +10138,14 @@
         "title": "2: track damage service from Johann Nepomuk Berger Platz"
       },
       "epoch": 3
+    }
+  },
+  "94ac940b0f22225978b883a7b393f5c45f792b0d961eaf2710da26f2fb4b3ba0": {
+    "first_seen": "2026-08-13T12:30:58.404489+00:00",
+    "translations": {
+      "en": {
+        "title": "29B: Paukerwerkstra\u00dfe"
+      }
     }
   },
   "94af9f8aef61a42e33dabe0e1d4237fcd018bb9f1622a5949cfaff8dd284c45c": {
@@ -14529,6 +14543,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: Foreigner traffic accident.",
         "title": "64A: foreign traffic accident"
+      },
+      "epoch": 3
+    }
+  },
+  "dbe752b13863e833c77ad89fbbdb28c622e773159aa2cad49c1f64055e069013": {
+    "first_seen": "2026-08-13T12:30:58.404489+00:00",
+    "translations": {
+      "en": {
+        "summary": "Stop transfer of line 29A towards Gro\u00dffeldsiedlung Stop: Serpentingasse From: Leopoldauer Stra\u00dfe 132-134 To: Leopoldauer Stra\u00dfe 126-128 Duration: From \u2026",
+        "title": "29A: 29A Serpentingasse"
       },
       "epoch": 3
     }
