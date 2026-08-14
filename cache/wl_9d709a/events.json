@@ -974,14 +974,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Rettungseinsatz",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "66A: Verspätungen",
+    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba",
-    "pubDate": "2026-08-14T05:26:00+02:00",
-    "starts_at": "2026-08-14T05:26:00+02:00",
+    "guid": "904eb1da0094665df067e238ab8518bdc3fe7d1cc02fb7b29584fd0e6f198e7a",
+    "pubDate": "2026-08-14T06:42:00+02:00",
+    "starts_at": "2026-08-14T06:42:00+02:00",
     "ends_at": "2026-08-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-08-14"
+    "_identity": "wl|störung|L=66A|D=2026-08-14"
   },
   {
     "source": "Wiener Linien",
@@ -1030,18 +1030,6 @@
     "starts_at": "2026-08-14T00:00:15+02:00",
     "ends_at": "2026-08-14T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-08-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Verspätungen",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "214cec6cae971effd21b47b0b3859b88354324a6fc53301d0ac43a41c2f9bb78",
-    "pubDate": "2026-08-14T05:13:00+02:00",
-    "starts_at": "2026-08-14T05:13:00+02:00",
-    "ends_at": "2026-08-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-08-14"
   },
   {
     "source": "Wiener Linien",
