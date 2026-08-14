@@ -902,18 +902,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52A: Polizeieinsatz",
-    "description": "Linie 52A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0b50b4ce18e678b7099fa405bf0a5dfc6c522adb5d36cff2f1daf85d0419ba2b",
-    "pubDate": "2026-08-14T07:14:00+02:00",
-    "starts_at": "2026-08-14T07:14:00+02:00",
-    "ends_at": "2026-08-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=52A|D=2026-08-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Linie 57A: Betrieb in Richtung Burgring nur bis Haus des Meeres. Die Busse fahren zur Pilgramgasse. In Richtung Ruolfsheim, Anschützgasse Betrieb ab Hirschengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -982,18 +970,6 @@
     "starts_at": "2026-08-14T04:45:25+02:00",
     "ends_at": "2026-08-15T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-08-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Verspätungen",
-    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "904eb1da0094665df067e238ab8518bdc3fe7d1cc02fb7b29584fd0e6f198e7a",
-    "pubDate": "2026-08-14T06:42:00+02:00",
-    "starts_at": "2026-08-14T06:42:00+02:00",
-    "ends_at": "2026-08-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-08-14"
   },
   {
     "source": "Wiener Linien",
@@ -1162,6 +1138,18 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-08-14T08:00:00+02:00",
+    "starts_at": "2026-08-14T08:00:00+02:00",
+    "ends_at": "2026-08-14T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-08-14"
   },
   {
     "source": "Wiener Linien",
