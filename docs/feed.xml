@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 15 Aug 2026 16:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 16:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Liesing ↔ Mödling]]></title>
@@ -18,16 +18,6 @@
       <ext:starts_at>Sat, 15 Aug 2026 15:33:26 +0200</ext:starts_at>
       <description>Wegen eines Rettungseinsatzes waren zwischen Wien Meidling Bahnhof (U) und Bruck/Mur Bahnhof bis 15:20 Uhr keine Fahrten möglich. [Seit 15.08.2026]</description>
       <content:encoded><![CDATA[Wegen eines Rettungseinsatzes waren zwischen Wien Meidling Bahnhof (U) und Bruck/Mur Bahnhof bis 15:20 Uhr keine Fahrten möglich.<br/>[Seit 15.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Jedlersdorf ↔ Korneuburg]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;904852</guid>
-      <pubDate>Sat, 15 Aug 2026 15:05:32 +0200</pubDate>
-      <ext:first_seen>Sat, 15 Aug 2026 11:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 15 Aug 2026 15:05:32 +0200</ext:starts_at>
-      <description>Wegen einer Oberleitungsstörung waren zwischen Wien Jedlersdorf Bahnhst und Korneuburg Bahnhof bis 15:02 Uhr nur eingeschränkt Fahrten möglich. [Seit 15.08.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Oberleitungsstörung waren zwischen Wien Jedlersdorf Bahnhst und Korneuburg Bahnhof bis 15:02 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 15.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[57A: Busse halten Mariahilfer Gürtel 1]]></title>
@@ -116,6 +106,17 @@
       <ext:ends_at>Fri, 01 Jan 2027 11:11:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Giefinggasse und Paukerwerkstraße werden die Busse der Linie 29B in Richtung Floridsdorf S U umgeleitet. [20.07.2026 – 01.01.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Giefinggasse und Paukerwerkstraße werden die Busse der Linie 29B in Richtung Floridsdorf S U umgeleitet.<br/>[20.07.2026 – 01.01.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A/N65: 62A, N65 Leopoldigasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ad03a29c9955facc49e314eda00a71f4e7f6d8de69534c4f4feff86030bc5d81</guid>
+      <pubDate>Thu, 13 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 13 Aug 2026 14:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 13 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 13 Dec 2026 11:11:00 +0100</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 62A in Richtung Liesing S und N65 in Richtung Liesing Haltestelle: Leopoldigasse Von: Breitenfurter Straße 298-300 Nach: Breitenfurter Straße … [13.08.2026 – 13.12.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 62A in Richtung Liesing S und N65 in Richtung Liesing Haltestelle: Leopoldigasse Von: Breitenfurter Straße 298-300 Nach: Breitenfurter Straße …<br/>[13.08.2026 – 13.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
