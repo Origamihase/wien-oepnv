@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 15 Aug 2026 12:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 13:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[29A: traffic accident diversion over Brünner Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7181fc73ca7b6f6f3f459d7de8e7228786db9338a074fae6ae34fd6f73e0a68a</guid>
+      <pubDate>Sat, 15 Aug 2026 12:53:35 +0200</pubDate>
+      <ext:first_seen>Sat, 15 Aug 2026 13:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 15 Aug 2026 12:53:36 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 15 Aug 2026 15:00:00 +0200</ext:ends_at>
+      <description>[On 15.08.2026]</description>
+      <content:encoded><![CDATA[[On 15.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29B: traffic accident diversion over Brünner Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">718731a9c0eb4912b9f700efc989b30c0a0e103748defd46e00f3b89044d8a7e</guid>
+      <pubDate>Sat, 15 Aug 2026 12:52:35 +0200</pubDate>
+      <ext:first_seen>Sat, 15 Aug 2026 13:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 15 Aug 2026 12:52:36 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 15 Aug 2026 15:00:00 +0200</ext:ends_at>
+      <description>[On 15.08.2026]</description>
+      <content:encoded><![CDATA[[On 15.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: impurity]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">69e4389a30b19b8a7dad29db47dec2aad0b288426e5f426d4490396563ef425d</guid>
+      <pubDate>Sat, 15 Aug 2026 12:33:00 +0200</pubDate>
+      <ext:first_seen>Sat, 15 Aug 2026 13:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 15 Aug 2026 12:33:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 15 Aug 2026 14:03:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: contamination. [On 15.08.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: contamination.<br/>[On 15.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Jedlersdorf ↔ Korneuburg]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -18,17 +51,6 @@
       <ext:starts_at>Sat, 15 Aug 2026 11:49:15 +0200</ext:starts_at>
       <description>Due to an overhead-line fault train journeys between Wien Jedlersdorf Bahnhst and Korneuburg train station to expected 12:00 are limited. [Since 15.08.2026]</description>
       <content:encoded><![CDATA[Due to an overhead-line fault train journeys between Wien Jedlersdorf Bahnhst and Korneuburg train station to expected 12:00 are limited.<br/>[Since 15.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49A: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e4e2bce486b2816261fb0ebcc39af12c14f984df87382465a1b524fcb79afaf0</guid>
-      <pubDate>Sat, 15 Aug 2026 10:59:00 +0200</pubDate>
-      <ext:first_seen>Sat, 15 Aug 2026 11:00:54 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 15 Aug 2026 10:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 15 Aug 2026 12:35:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: rescue operation. [On 15.08.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 15.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[57A: Buses stop Mariahilfer Gürtel 1]]></title>
@@ -95,28 +117,6 @@
       <ext:ends_at>Sun, 13 Dec 2026 11:11:00 +0100</ext:ends_at>
       <description>Stop transfer of line 29A towards Großfeldsiedlung Stop: Serpentingasse From: Leopoldauer Straße 132-134 To: Leopoldauer Straße 126-128 Duration: From … [13.08.2026 – 13.12.2026]</description>
       <content:encoded><![CDATA[Stop transfer of line 29A towards Großfeldsiedlung Stop: Serpentingasse From: Leopoldauer Straße 132-134 To: Leopoldauer Straße 126-128 Duration: From …<br/>[13.08.2026 – 13.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B: Paukerwerkstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">94ac940b0f22225978b883a7b393f5c45f792b0d961eaf2710da26f2fb4b3ba0</guid>
-      <pubDate>Fri, 10 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 14:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 10 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop transfer of line 29B towards Großfeldsiedlung U Stop: Paukerwerkstraße From: Giefinggasse 6 To: Giefinggasse 4 Duration: From 15. July 2026, about 07:00 … [10.07.2026 – 10.07.2027]</description>
-      <content:encoded><![CDATA[Stop transfer of line 29B towards Großfeldsiedlung U Stop: Paukerwerkstraße From: Giefinggasse 6 To: Giefinggasse 4 Duration: From 15. July 2026, about 07:00 …<br/>[10.07.2026 – 10.07.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B: construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">60cba7d8c6478065a14fb3194c503b6a4d2391e16dfdc054b2f4c68c1edac6cf</guid>
-      <pubDate>Wed, 08 Jul 2026 16:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 14:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 20 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 01 Jan 2027 11:11:00 +0100</ext:ends_at>
-      <description>Because of roadworks in the Giefinggasse and Paukerwerkstraße, the 29B buses are redirected towards Floridsdorf S U. [20.07.2026 – 01.01.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Giefinggasse and Paukerwerkstraße, the 29B buses are redirected towards Floridsdorf S U.<br/>[20.07.2026 – 01.01.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
