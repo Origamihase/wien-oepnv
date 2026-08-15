@@ -776,7 +776,7 @@
     "guid": "1d3414b1e3cc28842526c11ed2f6bc808d703447c6c64603053764ec08ab1b50",
     "pubDate": "2026-08-15T18:13:00+02:00",
     "starts_at": "2026-08-15T18:13:00+02:00",
-    "ends_at": "2026-08-15T23:55:00+02:00",
+    "ends_at": "2026-08-15T19:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-08-15"
   },
   {
@@ -930,7 +930,7 @@
     "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "13da360ca8a94dcafa0dd3aa043ce5baefa02c1c92c93d57c144cc19166804d0",
-    "pubDate": "2026-08-15T18:00:34+02:00",
+    "pubDate": "2026-08-15T18:02:34+02:00",
     "starts_at": "2026-08-15T18:02:34+02:00",
     "ends_at": "2026-08-15T19:02:00+02:00",
     "_identity": "wl|störung|L=44|D=2026-08-15"
@@ -1102,6 +1102,18 @@
     "starts_at": "2026-08-14T00:00:16+02:00",
     "ends_at": "2026-08-15T23:59:59+02:00",
     "_identity": "wl|störung|L=7A|D=2026-08-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Verunreinigung",
+    "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "69e4389a30b19b8a7dad29db47dec2aad0b288426e5f426d4490396563ef425d",
+    "pubDate": "2026-08-15T18:58:00+02:00",
+    "starts_at": "2026-08-15T18:58:00+02:00",
+    "ends_at": "2026-08-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-08-15"
   },
   {
     "source": "Wiener Linien",
