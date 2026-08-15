@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 15 Aug 2026 03:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 04:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[57A: Buses stop Mariahilfer Gürtel 1]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">401c80029f53b458800195915253a5e17c0239b4027977ab2bf1bb930d96bb1e</guid>
+      <pubDate>Sat, 15 Aug 2026 04:00:12 +0200</pubDate>
+      <ext:first_seen>Sat, 15 Aug 2026 04:00:54 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 15 Aug 2026 04:00:12 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 15 Aug 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 15.08.2026]</description>
+      <content:encoded><![CDATA[[On 15.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62: diversion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:starts_at>Thu, 13 Aug 2026 10:48:27 +0200</ext:starts_at>
       <description>Due to construction works, no Wien Hütteldorf Train Station (U) and Wien Handelskai Trainhst (U) can run between 01.112026 (from 01:10 Clock to 04:10 Clock) . [Since 13.08.2026]</description>
       <content:encoded><![CDATA[Due to construction works, no Wien Hütteldorf Train Station (U) and Wien Handelskai Trainhst (U) can run between 01.112026 (from 01:10 Clock to 04:10 Clock) .<br/>[Since 13.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26/27: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3e1d11937d825307b73e5648ab1bb3565749be3c6e0a3d31611f44791ada2c5a</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 12:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>The tracks in Donaufelder Straße are being renewed, therefore there are restrictions on the lines 25, 26 and 27. Plan about 15 minutes more driving time. Period … [14.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[The tracks in Donaufelder Straße are being renewed, therefore there are restrictions on the lines 25, 26 and 27. Plan about 15 minutes more driving time. Period …<br/>[14.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
