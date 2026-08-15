@@ -7,18 +7,17 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 15 Aug 2026 13:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 14:01:09 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[29A: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7c8f87684407b28b956fd7680a32a002f13b981f0a4885354696cee22dbc327e</guid>
-      <pubDate>Sat, 15 Aug 2026 12:48:00 +0200</pubDate>
-      <ext:first_seen>Sat, 15 Aug 2026 13:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 15 Aug 2026 12:48:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 15 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 15.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 15.08.2026]]]></content:encoded>
+      <title><![CDATA[Wien Liesing ↔ Mödling]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;904874</guid>
+      <pubDate>Sat, 15 Aug 2026 13:58:11 +0200</pubDate>
+      <ext:first_seen>Sat, 15 Aug 2026 14:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 15 Aug 2026 13:58:11 +0200</ext:starts_at>
+      <description>Due to a rescue operation, no journeys are possible between Wien Meidling station (U) and Bruck/Mur station up to expected 15:30 clock. [Since 15.08.2026]</description>
+      <content:encoded><![CDATA[Due to a rescue operation, no journeys are possible between Wien Meidling station (U) and Bruck/Mur station up to expected 15:30 clock.<br/>[Since 15.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[29B: traffic accident]]></title>
@@ -30,6 +29,17 @@
       <ext:ends_at>Sat, 15 Aug 2026 23:55:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 15.08.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 15.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29A: traffic accident diversion over Brünner Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7181fc73ca7b6f6f3f459d7de8e7228786db9338a074fae6ae34fd6f73e0a68a</guid>
+      <pubDate>Sat, 15 Aug 2026 12:53:35 +0200</pubDate>
+      <ext:first_seen>Sat, 15 Aug 2026 13:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 15 Aug 2026 12:53:36 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 15 Aug 2026 15:00:00 +0200</ext:ends_at>
+      <description>[On 15.08.2026]</description>
+      <content:encoded><![CDATA[[On 15.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9: impurity]]></title>
@@ -46,9 +56,9 @@
       <title><![CDATA[Wien Jedlersdorf ↔ Korneuburg]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;904852</guid>
-      <pubDate>Sat, 15 Aug 2026 13:24:35 +0200</pubDate>
+      <pubDate>Sat, 15 Aug 2026 13:55:06 +0200</pubDate>
       <ext:first_seen>Sat, 15 Aug 2026 11:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 15 Aug 2026 13:24:35 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 15 Aug 2026 13:55:06 +0200</ext:starts_at>
       <description>Due to an overhead-line fault train journeys between Wien Jedlersdorf Bahnhst and Korneuburg train station to expected 12:00 are limited. [Since 15.08.2026]</description>
       <content:encoded><![CDATA[Due to an overhead-line fault train journeys between Wien Jedlersdorf Bahnhst and Korneuburg train station to expected 12:00 are limited.<br/>[Since 15.08.2026]]]></content:encoded>
     </item>
@@ -106,17 +116,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 08:00:00 +0200</ext:ends_at>
       <description>Because of roadworks in the Erzbischofgasse, the line 53A is redirected. [10.08.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Because of roadworks in the Erzbischofgasse, the line 53A is redirected.<br/>[10.08.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29A: 29A Serpentingasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dbe752b13863e833c77ad89fbbdb28c622e773159aa2cad49c1f64055e069013</guid>
-      <pubDate>Thu, 13 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 14:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 13 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 13 Dec 2026 11:11:00 +0100</ext:ends_at>
-      <description>Stop transfer of line 29A towards Großfeldsiedlung Stop: Serpentingasse From: Leopoldauer Straße 132-134 To: Leopoldauer Straße 126-128 Duration: From … [13.08.2026 – 13.12.2026]</description>
-      <content:encoded><![CDATA[Stop transfer of line 29A towards Großfeldsiedlung Stop: Serpentingasse From: Leopoldauer Straße 132-134 To: Leopoldauer Straße 126-128 Duration: From …<br/>[13.08.2026 – 13.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
