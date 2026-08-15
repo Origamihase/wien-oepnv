@@ -770,18 +770,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Polizeieinsatz Züge halten bei Li. 6 Richtung Burggasse, Stadthalle",
-    "description": "Polizeieinsatz\nZüge halten bei Li. 6 Richtung Burggasse, Stadthalle",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
-    "pubDate": "2026-08-15T16:34:57+02:00",
-    "starts_at": "2026-08-15T16:37:28+02:00",
-    "ends_at": "2026-08-15T17:36:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-08-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Betrieb ab Resselgasse",
     "description": "Bauarbeiten\nBetrieb ab Resselgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -910,6 +898,18 @@
     "starts_at": "2026-08-14T00:00:16+02:00",
     "ends_at": "2026-08-15T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-08-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13da360ca8a94dcafa0dd3aa043ce5baefa02c1c92c93d57c144cc19166804d0",
+    "pubDate": "2026-08-15T18:00:34+02:00",
+    "starts_at": "2026-08-15T18:00:35+02:00",
+    "ends_at": "2026-08-15T19:00:00+02:00",
+    "_identity": "wl|störung|L=44|D=2026-08-15"
   },
   {
     "source": "Wiener Linien",
