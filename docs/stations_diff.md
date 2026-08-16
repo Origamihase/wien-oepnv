@@ -1,20 +1,22 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-08-09T03:02:47+00:00_
+_Erzeugt am: 2026-08-16T02:22:23+00:00_
 
-**Stationen: 2242 → 2242 (Δ +0)**
+**Stationen: 2242 → 2244 (Δ +2)**
 
-## Hinzugefügt (3)
+## Hinzugefügt (5)
 
-- `name:Wien Lavaterstraße (WL)` — Wien Lavaterstraße \(WL\)
-- `name:Wien Plankenmaisstraße (WL)` — Wien Plankenmaisstraße \(WL\)
-- `name:Wien Westbahnstr., Zieglerg. (WL)` — Wien Westbahnstr., Zieglerg. \(WL\)
+- `name:Wien Gfrornergasse (WL)` — Wien Gfrornergasse \(WL\)
+- `name:Wien Haschafeld (WL)` — Wien Haschafeld \(WL\)
+- `name:Wien Lazargasse (WL)` — Wien Lazargasse \(WL\)
+- `name:Wien Parlament, U Volkstheater (WL)` — Wien Parlament, U Volkstheater \(WL\)
+- `name:Wien Valentingasse (WL)` — Wien Valentingasse \(WL\)
 
 ## Entfernt (3)
 
-- `name:Wien Amongasse (WL)` — Wien Amongasse \(WL\)
-- `name:Wien Haschafeld (WL)` — Wien Haschafeld \(WL\)
-- `name:Wien Westbahnstraße, Zieglergasse (WL)` — Wien Westbahnstraße, Zieglergasse \(WL\)
+- `name:Wien Lavaterstraße (WL)` — Wien Lavaterstraße \(WL\)
+- `name:Wien Maurer-Lange-Gasse (WL)` — Wien Maurer-Lange-Gasse \(WL\)
+- `name:Wien Ring, Volkstheater (WL)` — Wien Ring, Volkstheater \(WL\)
 
 ## Umbenannt (0)
 
