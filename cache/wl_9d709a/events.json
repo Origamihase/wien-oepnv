@@ -842,6 +842,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "32A: Rettungseinsatz",
+    "description": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Gerasdorfer Straße 156.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61",
+    "pubDate": "2026-08-16T17:50:00+02:00",
+    "starts_at": "2026-08-16T17:50:00+02:00",
+    "ends_at": "2026-08-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=32A|D=2026-08-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "36B: Busse halten Brünner Straße 118",
     "description": "Busse halten\nBrünner Straße 118",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -914,6 +926,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "43: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cc281c6508ba062820ee6ec97a11514a795c1ba829397c43d3f8f6719026c771",
+    "pubDate": "2026-08-16T17:48:15+02:00",
+    "starts_at": "2026-08-16T17:59:46+02:00",
+    "ends_at": "2026-08-16T18:59:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-08-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Verkehrsunfall",
+    "description": "Die Linie 43 ist derzeit in Richtung Hernals/Wattgasse an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 18:30 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Jörgerstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "de57d7fc844121db03d0e532febfd7d62faf7f8cc5ced1951f3e1470fcd4d6c8",
+    "pubDate": "2026-08-16T17:47:00+02:00",
+    "starts_at": "2026-08-16T17:47:00+02:00",
+    "ends_at": "2026-08-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-08-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Die Linie 57A fährt derzeit nicht zwischen Gumpendorfer Straße U und Haus des Meeres. Weichen Sie ersatzweise auf die Linien U2, U3, U4, U6 aus. Voraussichtliche Dauer: 04. September 2026 . Grund: Bauarbeiten im Bereich Gumpendorfer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -969,6 +1005,18 @@
     "pubDate": "2026-08-16T00:00:17+02:00",
     "starts_at": "2026-08-16T00:00:17+02:00",
     "ends_at": "2026-08-16T23:59:59+02:00",
+    "_identity": "wl|störung|L=59A|D=2026-08-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Verspätungen",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bbf31a68061bfd0881f02a66b144b8f6c7e19668ddd11e8dc8d9ef56e900dee5",
+    "pubDate": "2026-08-16T17:31:00+02:00",
+    "starts_at": "2026-08-16T17:31:00+02:00",
+    "ends_at": "2026-08-16T23:55:00+02:00",
     "_identity": "wl|störung|L=59A|D=2026-08-16"
   },
   {
@@ -1126,6 +1174,18 @@
     "starts_at": "2026-08-16T01:00:16+02:00",
     "ends_at": "2026-08-17T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-08-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-08-16T17:38:00+02:00",
+    "starts_at": "2026-08-16T17:38:00+02:00",
+    "ends_at": "2026-08-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-08-16"
   },
   {
     "source": "Wiener Linien",
