@@ -1070,6 +1070,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N20: Verspätungen",
+    "description": "Linie N20: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0ccd96dc4e0e3090404b9600f3b932ad41c9caa07f11c214d06ca658c3f86047",
+    "pubDate": "2026-08-16T02:50:00+02:00",
+    "starts_at": "2026-08-16T02:50:00+02:00",
+    "ends_at": "2026-08-16T04:20:00+02:00",
+    "_identity": "wl|störung|L=N20|D=2026-08-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N31: Busse halten Brünner Straße 83 (Hauptfahrbahn)",
     "description": "Busse halten\nBrünner Straße 83 (Hauptfahrbahn)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1210,18 +1222,6 @@
     "starts_at": "2026-08-16T00:54:17+02:00",
     "ends_at": "2026-08-16T05:04:00+02:00",
     "_identity": "wl|störung|L=N6|D=2026-08-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Rettungseinsatz",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-08-16T01:49:00+02:00",
-    "starts_at": "2026-08-16T01:49:00+02:00",
-    "ends_at": "2026-08-16T02:40:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-08-16"
   },
   {
     "source": "Wiener Linien",
