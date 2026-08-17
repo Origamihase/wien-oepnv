@@ -7,8 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 17 Aug 2026 05:01:25 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2026 05:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Westbahnhof ↔ Wien Meidling]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;905147</guid>
+      <pubDate>Mon, 17 Aug 2026 05:15:08 +0200</pubDate>
+      <ext:first_seen>Mon, 17 Aug 2026 05:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 17 Aug 2026 05:15:08 +0200</ext:starts_at>
+      <description>Due to a police operation between Wien Meidling train station (U) and Wien Westbahnhof (U) to 05:14 clock no journeys were possible. [Since 17.08.2026]</description>
+      <content:encoded><![CDATA[Due to a police operation between Wien Meidling train station (U) and Wien Westbahnhof (U) to 05:14 clock no journeys were possible.<br/>[Since 17.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[57A: Buses stop Mariahilfer Gürtel 1]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,6 +40,17 @@
       <ext:ends_at>Mon, 21 Sep 2026 03:00:00 +0200</ext:ends_at>
       <description>Because of track construction works in the Akademiestraße and as a substitute for the S-Bahn-Stammstrecke lock, the 62 line is redirected. [07.07.2026 – 21.09.2026]</description>
       <content:encoded><![CDATA[Because of track construction works in the Akademiestraße and as a substitute for the S-Bahn-Stammstrecke lock, the 62 line is redirected.<br/>[07.07.2026 – 21.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">904eb1da0094665df067e238ab8518bdc3fe7d1cc02fb7b29584fd0e6f198e7a</guid>
+      <pubDate>Mon, 17 Aug 2026 05:11:00 +0200</pubDate>
+      <ext:first_seen>Fri, 14 Aug 2026 07:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 17 Aug 2026 05:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 17 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: service disruption. [On 17.08.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: service disruption.<br/>[On 17.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: buses stop at Neilreichgasse 56]]></title>
@@ -96,27 +117,6 @@
       <ext:ends_at>Fri, 01 Jan 2027 11:11:00 +0100</ext:ends_at>
       <description>Because of roadworks in the Giefinggasse and Paukerwerkstraße, the 29B buses are redirected towards Floridsdorf S U. [20.07.2026 – 01.01.2027]</description>
       <content:encoded><![CDATA[Because of roadworks in the Giefinggasse and Paukerwerkstraße, the 29B buses are redirected towards Floridsdorf S U.<br/>[20.07.2026 – 01.01.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A1X/N65: 62A, N65 Leopoldigasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad03a29c9955facc49e314eda00a71f4e7f6d8de69534c4f4feff86030bc5d81</guid>
-      <pubDate>Thu, 13 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 14:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 13 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 13 Dec 2026 11:11:00 +0100</ext:ends_at>
-      <description>Stop change of lines 62A towards Liesing S and N65 towards Liesing Stop: Leopoldigasse From: Breitenfurter Straße 298-300 To: Breitenfurter Straße … [13.08.2026 – 13.12.2026]</description>
-      <content:encoded><![CDATA[Stop change of lines 62A towards Liesing S and N65 towards Liesing Stop: Leopoldigasse From: Breitenfurter Straße 298-300 To: Breitenfurter Straße …<br/>[13.08.2026 – 13.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[45: Wien Hütteldorf ↔ Wien Handelskai]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;904162</guid>
-      <pubDate>Thu, 13 Aug 2026 10:48:27 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 13:01:20 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 13 Aug 2026 10:48:27 +0200</ext:starts_at>
-      <description>Due to construction works, no Wien Hütteldorf Train Station (U) and Wien Handelskai Trainhst (U) can run between 01.112026 (from 01:10 Clock to 04:10 Clock) . [Since 13.08.2026]</description>
-      <content:encoded><![CDATA[Due to construction works, no Wien Hütteldorf Train Station (U) and Wien Handelskai Trainhst (U) can run between 01.112026 (from 01:10 Clock to 04:10 Clock) .<br/>[Since 13.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
