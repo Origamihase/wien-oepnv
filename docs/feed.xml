@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 17 Aug 2026 16:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2026 17:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[50B: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8c4430e0ee267693704b1bcbe6cc77a0b3cf34ed006f2831366145fb4cb3c018</guid>
+      <pubDate>Mon, 17 Aug 2026 16:40:00 +0200</pubDate>
+      <ext:first_seen>Mon, 17 Aug 2026 17:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 17 Aug 2026 16:40:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 17 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 17.08.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 17.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U4: Gasrohrgebrechen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +28,8 @@
       <ext:first_seen>Mon, 17 Aug 2026 12:00:58 +0200</ext:first_seen>
       <ext:starts_at>Mon, 17 Aug 2026 11:58:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 17 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U4 fährt derzeit nicht zwischen Landstraße und Schwedenplatz. [Am 17.08.2026]</description>
-      <content:encoded><![CDATA[Die Linie U4 fährt derzeit nicht zwischen Landstraße und Schwedenplatz.<br/>[Am 17.08.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 17.08.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 17.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Westbahnhof]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sun, 13 Dec 2026 11:11:00 +0100</ext:ends_at>
       <description>Haltestellenverlegung der Linie 29A in Richtung Großfeldsiedlung Haltestelle: Serpentingasse Von: Leopoldauer Straße 132-134 Nach: Leopoldauer Straße 126-128 Dauer: Ab … [13.08.2026 – 13.12.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 29A in Richtung Großfeldsiedlung Haltestelle: Serpentingasse Von: Leopoldauer Straße 132-134 Nach: Leopoldauer Straße 126-128 Dauer: Ab …<br/>[13.08.2026 – 13.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B: Paukerwerkstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">94ac940b0f22225978b883a7b393f5c45f792b0d961eaf2710da26f2fb4b3ba0</guid>
-      <pubDate>Fri, 10 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 13 Aug 2026 14:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 10 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Jul 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 29B in Richtung Großfeldsiedlung U Haltestelle: Paukerwerkstraße Von: Giefinggasse 6 Nach: Giefinggasse 4 Dauer: Ab 15. Juli 2026, etwa 07:00 … [10.07.2026 – 10.07.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 29B in Richtung Großfeldsiedlung U Haltestelle: Paukerwerkstraße Von: Giefinggasse 6 Nach: Giefinggasse 4 Dauer: Ab 15. Juli 2026, etwa 07:00 …<br/>[10.07.2026 – 10.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
