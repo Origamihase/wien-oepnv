@@ -3380,7 +3380,10 @@
   "31a044d14d2b23849255fb04f6ebe70bec664715434b37dc9d981b59ab369603": {
     "first_seen": "2026-08-18T12:31:11.159321+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "40A: foreign accident service from Gymnasiumstra\u00dfe"
+      },
+      "epoch": 3
     }
   },
   "31e51e324d0956dfecce2c4506581e5d0f5137cdfb6cffc4e768a7eeef1aafad": {
@@ -8409,6 +8412,16 @@
     "translations": {
       "en": {
         "title": "12: Harmful train service from Bruno-Marek-Allee"
+      },
+      "epoch": 3
+    }
+  },
+  "78be1872607e5884de42aa3e5e2afde7020be562975709d124962a944c277288": {
+    "first_seen": "2026-08-18T13:01:01.724556+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Line 36A: irregular intervals in both directions.",
+        "title": "31A/36A: traffic congestion"
       },
       "epoch": 3
     }
