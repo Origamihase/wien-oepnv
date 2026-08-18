@@ -807,7 +807,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "32A: Fremder Verkehrsunfall",
-    "description": "Die Linie 32A fährt derzeit nur zwischen Bhf. Strebersdorf S und Draugasse. Voraussichtliche Dauer: 18:00 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Illgasse.",
+    "description": "Die Linie 32A fährt derzeit nur zwischen Bhf. Strebersdorf S und Draugasse. Voraussichtliche Dauer: Nicht absehbar. Grund: Fremder Verkehrsunfall im Haltestellenbereich Illgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2d45b6da852b996e0cb7d0a979aae9c19692fc48ec76a7326b0f07b2290320fd",
     "pubDate": "2026-08-18T15:32:00+02:00",
@@ -962,6 +962,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "60: Fahrtbehinderung Falschparker",
+    "description": "Linie 60: Fahrtbehinderung in Richtung Rodaun. Voraussichtliche Dauer: 18:15 Uhr. Grund: Falschparker im Bereich Speisinger Straße 70.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
+    "pubDate": "2026-08-18T17:48:00+02:00",
+    "starts_at": "2026-08-18T17:49:46+02:00",
+    "ends_at": "2026-08-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-08-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -982,6 +994,42 @@
     "starts_at": "2026-08-18T07:09:12+02:00",
     "ends_at": "2026-08-18T23:59:59+02:00",
     "_identity": "wl|störung|L=62A|D=2026-08-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Polizeieinsatz",
+    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aba904564d19959e0ddb3e2e002949d8d9e98e2655696c852ae1597077a1d78b",
+    "pubDate": "2026-08-18T17:46:00+02:00",
+    "starts_at": "2026-08-18T17:46:00+02:00",
+    "ends_at": "2026-08-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-08-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Schadhaftes Fahrzeug",
+    "description": "Linie 6: Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Voraussichtliche Dauer: 18:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Neilreichgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4281aa32ed45a54c560c823ba6cd35e8febae67fca71fa894a80ce4b806088d3",
+    "pubDate": "2026-08-18T17:51:00+02:00",
+    "starts_at": "2026-08-18T17:51:00+02:00",
+    "ends_at": "2026-08-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-08-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8c54650e65ef647f350297bb5f234db6c9420a95be4c9c46b35286f6ec869089",
+    "pubDate": "2026-08-18T17:47:42+02:00",
+    "starts_at": "2026-08-18T17:57:12+02:00",
+    "ends_at": "2026-08-18T18:57:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-08-18"
   },
   {
     "source": "Wiener Linien",
