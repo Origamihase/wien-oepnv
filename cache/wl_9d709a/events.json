@@ -746,6 +746,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "14A: Polizeieinsatz Betrieb ab Pilgramgasse",
+    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc",
+    "pubDate": "2026-08-18T12:04:00+02:00",
+    "starts_at": "2026-08-18T12:07:09+02:00",
+    "ends_at": "2026-08-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-08-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Polizeieinsatz Umleitung über Linie 13A zur Pilgramgasse",
+    "description": "Polizeieinsatz\nUmleitung über Linie 13A zur Pilgramgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5ab03ff83982b6b1af8c5485a12a6a5c6e46ef6027159d2909b26175c1f7e1ec",
+    "pubDate": "2026-08-18T12:07:39+02:00",
+    "starts_at": "2026-08-18T12:07:39+02:00",
+    "ends_at": "2026-08-18T13:06:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-08-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -790,18 +814,6 @@
     "starts_at": "2026-08-16T00:00:16+02:00",
     "ends_at": "2026-08-18T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-08-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "32A: Feuerwehreinsatz",
-    "description": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c18a0cdca0df6d274eb59a4cc48a84e4ca537eb959567c41ac92a50f86e8601c",
-    "pubDate": "2026-08-18T11:16:00+02:00",
-    "starts_at": "2026-08-18T11:16:00+02:00",
-    "ends_at": "2026-08-18T11:58:00+02:00",
-    "_identity": "wl|störung|L=32A|D=2026-08-18"
   },
   {
     "source": "Wiener Linien",
@@ -1138,18 +1150,6 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Polizeieinsatz",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz im Haltestellenbereich Thaliastraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
-    "pubDate": "2026-08-18T11:37:00+02:00",
-    "starts_at": "2026-08-18T11:37:00+02:00",
-    "ends_at": "2026-08-18T12:05:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-08-18"
   },
   {
     "source": "Wiener Linien",
