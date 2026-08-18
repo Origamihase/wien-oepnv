@@ -747,12 +747,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "14A: Polizeieinsatz Betrieb ab Pilgramgasse",
-    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Polizeieinsatz\nBetrieb ab Pilgramgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc",
-    "pubDate": "2026-08-18T12:04:00+02:00",
+    "pubDate": "2026-08-18T12:07:09+02:00",
     "starts_at": "2026-08-18T12:07:09+02:00",
-    "ends_at": "2026-08-18T23:55:00+02:00",
+    "ends_at": "2026-08-18T13:06:00+02:00",
     "_identity": "wl|störung|L=14A|D=2026-08-18"
   },
   {
@@ -974,18 +974,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c9b2f06082b865070bcbe91b5a5c9af65a5b959cee850e5fe9386874c8fbfb1",
-    "pubDate": "2026-08-18T11:58:40+02:00",
-    "starts_at": "2026-08-18T11:58:42+02:00",
-    "ends_at": "2026-08-18T12:58:00+02:00",
-    "_identity": "wl|störung|L=62|D=2026-08-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1150,6 +1138,18 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 13:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Alterlaa.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-08-18T12:55:00+02:00",
+    "starts_at": "2026-08-18T12:55:00+02:00",
+    "ends_at": "2026-08-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-08-18"
   },
   {
     "source": "Wiener Linien",
