@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 18 Aug 2026 18:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 18:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[32A: foreign accident service from Grellgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ce80db5153173c27e68675f95e0d7961c899dcd6d96ca11ccfdba7436b359876</guid>
+      <pubDate>Tue, 18 Aug 2026 15:33:31 +0200</pubDate>
+      <ext:first_seen>Tue, 18 Aug 2026 18:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 18 Aug 2026 15:33:33 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 18 Aug 2026 20:32:00 +0200</ext:ends_at>
+      <description>[On 18.08.2026]</description>
+      <content:encoded><![CDATA[[On 18.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -29,16 +40,6 @@
       <ext:ends_at>Mon, 30 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Due to track construction works in the Märzstraße and Huglgasse the lines 12A and N49 are redirected. [18.08.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Due to track construction works in the Märzstraße and Huglgasse the lines 12A and N49 are redirected.<br/>[18.08.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;905659</guid>
-      <pubDate>Tue, 18 Aug 2026 15:46:09 +0200</pubDate>
-      <ext:first_seen>Tue, 18 Aug 2026 16:01:43 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 18 Aug 2026 15:46:09 +0200</ext:starts_at>
-      <description>Due to an interlocking disturbance am Bahnhof, no journeys were possible in Vienna Hbf (U) to 15:44 watch. [Since 18.08.2026]</description>
-      <content:encoded><![CDATA[Due to an interlocking disturbance am Bahnhof, no journeys were possible in Vienna Hbf (U) to 15:44 watch.<br/>[Since 18.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[36B/36A: traffic congestion]]></title>
