@@ -734,6 +734,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Schadhafter Zug Züge halten bei Linie 71",
+    "description": "Schadhafter Zug\nZüge halten bei Linie 71",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b2804ab060c4582a7bf91b69714e42d18f411e35bd396ff061a896a3311118ee",
+    "pubDate": "2026-08-18T08:13:19+02:00",
+    "starts_at": "2026-08-18T08:13:19+02:00",
+    "ends_at": "2026-08-18T09:12:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-08-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5/12/37/38/40/41/42: Gleisbauarbeiten",
     "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert bis Samstag, 22. August 2026 etwa 04:00 Uhr.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -742,6 +754,18 @@
     "starts_at": "2026-07-13T04:00:00+02:00",
     "ends_at": "2026-08-22T04:00:00+02:00",
     "_identity": "wl|störung|L=12,37,38,40,41,42,5|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A: Verkehrsüberlastung",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7",
+    "pubDate": "2026-08-18T08:05:00+02:00",
+    "starts_at": "2026-08-18T08:05:00+02:00",
+    "ends_at": "2026-08-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=16A|D=2026-08-18"
   },
   {
     "source": "Wiener Linien",
@@ -790,6 +814,30 @@
     "starts_at": "2026-08-16T00:00:16+02:00",
     "ends_at": "2026-08-18T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-08-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27B: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ece4a92ace3a0b7d4d7b74cfda7da46a507141aace7c7412b0a773326a44ce58",
+    "pubDate": "2026-08-18T08:00:47+02:00",
+    "starts_at": "2026-08-18T08:00:47+02:00",
+    "ends_at": "2026-08-18T09:00:00+02:00",
+    "_identity": "wl|störung|L=27B|D=2026-08-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "30A: Verspätungen",
+    "description": "Linie 30A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc80fa90b4aab1a1b5715cdeaf5f4d4ea3ddc63ca44bc404e7240d9c59e08ed",
+    "pubDate": "2026-08-18T08:28:00+02:00",
+    "starts_at": "2026-08-18T08:28:00+02:00",
+    "ends_at": "2026-08-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=30A|D=2026-08-18"
   },
   {
     "source": "Wiener Linien",
@@ -946,18 +994,6 @@
     "starts_at": "2026-08-18T07:09:12+02:00",
     "ends_at": "2026-08-18T23:59:59+02:00",
     "_identity": "wl|störung|L=62A|D=2026-08-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Rettungseinsatz",
-    "description": "Linie 66A: Umleitung in Richtung Liesing S zwischen Brunner Straße, Erlaaer Straße und Liesing S über die Breitenfurter Straße. Voraussichtliche Dauer: 08:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Atzgersdorf, Kirchenplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
-    "pubDate": "2026-08-18T07:50:00+02:00",
-    "starts_at": "2026-08-18T07:50:00+02:00",
-    "ends_at": "2026-08-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-08-18"
   },
   {
     "source": "Wiener Linien",
@@ -1126,18 +1162,6 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-08-18T07:07:00+02:00",
-    "starts_at": "2026-08-18T07:07:00+02:00",
-    "ends_at": "2026-08-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-08-18"
   },
   {
     "source": "Wiener Linien",

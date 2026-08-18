@@ -8235,8 +8235,10 @@
     "first_seen": "2026-08-18T05:31:06.638040+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions U. Line 36A: irregular intervals in both directions. Reason: traffic congestion."
-      }
+        "summary": "irregular intervals in both directions U. Line 36A: irregular intervals in both directions. Reason: traffic congestion.",
+        "title": "36B/36A: traffic congestion"
+      },
+      "epoch": 3
     }
   },
   "776192f7c3ca7315686b60ffc73ddb86e58a8b5c1d0e5356b2472edc3684c361": {
@@ -12504,6 +12506,15 @@
         "title": "U2/U5: Mariahilfer Street from Stiftgasse to Erika-Weinzierl-Platz and Kirchengasse"
       },
       "epoch": 2
+    }
+  },
+  "b2804ab060c4582a7bf91b69714e42d18f411e35bd396ff061a896a3311118ee": {
+    "first_seen": "2026-08-18T06:30:51.347500+00:00",
+    "translations": {
+      "en": {
+        "title": "11: Damaged train Trains stop at line 71"
+      },
+      "epoch": 3
     }
   },
   "b28fa372d7e4ea422476441932d63eac6de1f499d11d44ccde7db31f3f2027db": {
