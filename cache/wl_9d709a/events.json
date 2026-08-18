@@ -807,7 +807,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "32A: Fremder Verkehrsunfall",
-    "description": "Die Linie 32A fährt derzeit nur zwischen Bhf. Strebersdorf S und Draugasse. Voraussichtliche Dauer: 17:00 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Illgasse.",
+    "description": "Die Linie 32A fährt derzeit nur zwischen Bhf. Strebersdorf S und Draugasse. Voraussichtliche Dauer: 18:00 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Illgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2d45b6da852b996e0cb7d0a979aae9c19692fc48ec76a7326b0f07b2290320fd",
     "pubDate": "2026-08-18T15:32:00+02:00",
@@ -824,7 +824,7 @@
     "guid": "ce80db5153173c27e68675f95e0d7961c899dcd6d96ca11ccfdba7436b359876",
     "pubDate": "2026-08-18T15:33:31+02:00",
     "starts_at": "2026-08-18T15:33:33+02:00",
-    "ends_at": "2026-08-18T17:32:00+02:00",
+    "ends_at": "2026-08-18T20:32:00+02:00",
     "_identity": "wl|störung|L=32A|D=2026-08-18"
   },
   {
@@ -958,18 +958,6 @@
     "starts_at": "2026-08-16T00:00:17+02:00",
     "ends_at": "2026-08-18T23:59:59+02:00",
     "_identity": "wl|störung|L=59A|D=2026-08-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "59A: Polizeieinsatz",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e09339cfb3094980cbafa9341e8d677466ba3d6e478ce1b4da7e352a8c42c4a",
-    "pubDate": "2026-08-18T15:55:00+02:00",
-    "starts_at": "2026-08-18T15:55:00+02:00",
-    "ends_at": "2026-08-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-08-18"
   },
   {
     "source": "Wiener Linien",
