@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 18 Aug 2026 19:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 20:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[32A: foreign accident service from Grellgasse]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Mon, 30 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Due to track construction works in the Märzstraße and Huglgasse the lines 12A and N49 are redirected. [18.08.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Due to track construction works in the Märzstraße and Huglgasse the lines 12A and N49 are redirected.<br/>[18.08.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36B/36A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">908507ff7290d0b82b4bc5c9ea2fa564c108380dee5242861cae8e2e19921a3c</guid>
-      <pubDate>Tue, 18 Aug 2026 14:47:00 +0200</pubDate>
-      <ext:first_seen>Tue, 18 Aug 2026 15:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 18 Aug 2026 14:47:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 18 Aug 2026 19:26:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line 36A: irregular intervals in both directions. [On 18.08.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line 36A: irregular intervals in both directions.<br/>[On 18.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[92B: Kleehäufel in both directions]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Tue, 18 Aug 2026 23:59:59 +0200</ext:ends_at>
       <description>[16.08.2026 – 18.08.2026]</description>
       <content:encoded><![CDATA[[16.08.2026 – 18.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: diversion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">683582975a016c44868e518bd806ca96fc5e751ad45c4af4374f57bfc0fe20f6</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 14 Aug 2026 08:01:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 21 Sep 2026 03:00:00 +0200</ext:ends_at>
+      <description>Because of track construction works in the Akademiestraße and as a substitute for the S-Bahn-Stammstrecke lock, the 62 line is redirected. [07.07.2026 – 21.09.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works in the Akademiestraße and as a substitute for the S-Bahn-Stammstrecke lock, the 62 line is redirected.<br/>[07.07.2026 – 21.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
