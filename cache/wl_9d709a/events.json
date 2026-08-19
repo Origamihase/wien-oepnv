@@ -758,7 +758,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12/37/38/40/41/42/5: Gleisbauarbeiten",
+    "title": "5/12/37/38/40/41/42: Gleisbauarbeiten",
     "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert bis Samstag, 22. August 2026 etwa 04:00 Uhr.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5627b0160e655cb3f00287a1e43fd9bb84f40f90804ad931f4aaa44da4c254a7",
@@ -770,25 +770,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "title": "13A: Polizeieinsatz Betrieb ab Pilgramgasse U",
+    "description": "Polizeieinsatz\nBetrieb ab Pilgramgasse U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
     "pubDate": "2026-08-19T22:27:18+02:00",
-    "starts_at": "2026-08-19T22:27:18+02:00",
-    "ends_at": "2026-08-19T23:26:00+02:00",
+    "starts_at": "2026-08-19T22:42:50+02:00",
+    "ends_at": "2026-08-19T23:42:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-08-19"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "14A: Polizeieinsatz Betrieb ab Esterhazygasse",
-    "description": "Polizeieinsatz\nBetrieb ab Esterhazygasse",
+    "title": "14A: Polizeieinsatz Betrieb ab Pilgramgasse U",
+    "description": "Polizeieinsatz\nBetrieb ab Pilgramgasse U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc",
     "pubDate": "2026-08-19T22:25:18+02:00",
-    "starts_at": "2026-08-19T22:25:18+02:00",
-    "ends_at": "2026-08-19T23:24:00+02:00",
+    "starts_at": "2026-08-19T22:37:19+02:00",
+    "ends_at": "2026-08-19T23:36:00+02:00",
     "_identity": "wl|störung|L=14A|D=2026-08-19"
   },
   {
@@ -914,6 +914,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "49: Polizeieinsatz",
+    "description": "Linie 49: Fahrtbehinderung in Richtung Ring, Volkstheater U. Voraussichtliche Dauer: 23:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Hochsatzengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1252a6d03226d3f1d21b0f0e84cdaf2b9637cd4ac88019850214fb459e92e018",
+    "pubDate": "2026-08-19T22:38:00+02:00",
+    "starts_at": "2026-08-19T22:38:00+02:00",
+    "ends_at": "2026-08-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
+    "pubDate": "2026-08-19T22:40:21+02:00",
+    "starts_at": "2026-08-19T22:40:21+02:00",
+    "ends_at": "2026-08-19T23:39:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Die Linie 57A fährt derzeit nicht zwischen Gumpendorfer Straße U und Haus des Meeres. Weichen Sie ersatzweise auf die Linien U2, U3, U4, U6 aus. Voraussichtliche Dauer: 04. September 2026 . Grund: Bauarbeiten im Bereich Gumpendorfer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -926,13 +950,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "title": "57A: Polizeieinsatz Betrieb ab Gumpendorfer Straße U",
+    "description": "Polizeieinsatz\nBetrieb ab Gumpendorfer Straße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1479d69628ad6774aff996064517e6a4ab864e04445cce50bdca7679b4465bb8",
     "pubDate": "2026-08-19T00:00:22+02:00",
-    "starts_at": "2026-08-19T22:15:46+02:00",
-    "ends_at": "2026-08-19T23:15:00+02:00",
+    "starts_at": "2026-08-19T22:49:20+02:00",
+    "ends_at": "2026-08-19T23:48:00+02:00",
     "_identity": "wl|störung|L=57A|D=2026-08-19"
   },
   {
@@ -1162,6 +1186,18 @@
     "starts_at": "2026-08-19T01:00:26+02:00",
     "ends_at": "2026-08-20T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
+    "pubDate": "2026-08-19T22:37:00+02:00",
+    "starts_at": "2026-08-19T22:39:52+02:00",
+    "ends_at": "2026-08-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=O|D=2026-08-19"
   },
   {
     "source": "Wiener Linien",
