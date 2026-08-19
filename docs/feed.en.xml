@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 19 Aug 2026 05:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2026 05:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[17A: foreign traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8814d9a7457d5f1b51223654d2eb553faf942e11303eb7281ae4745db4b16e02</guid>
+      <pubDate>Wed, 19 Aug 2026 05:09:00 +0200</pubDate>
+      <ext:first_seen>Wed, 19 Aug 2026 05:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 19 Aug 2026 05:09:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 19 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>service obstruction in both directions. expected duration: 05:40 watch. Reason: Foreigner traffic accident in the stop area Himberger Straße . [On 19.08.2026]</description>
+      <content:encoded><![CDATA[service obstruction in both directions. expected duration: 05:40 watch. Reason: Foreigner traffic accident in the stop area Himberger Straße .<br/>[On 19.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62A: Buses stop Bussteig B]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Wed, 19 Aug 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 19.08.2026]</description>
       <content:encoded><![CDATA[[On 19.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: diversion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">683582975a016c44868e518bd806ca96fc5e751ad45c4af4374f57bfc0fe20f6</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 14 Aug 2026 08:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 21 Sep 2026 03:00:00 +0200</ext:ends_at>
-      <description>Because of track construction works in the Akademiestraße and as a substitute for the S-Bahn-Stammstrecke lock, the 62 line is redirected. [07.07.2026 – 21.09.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works in the Akademiestraße and as a substitute for the S-Bahn-Stammstrecke lock, the 62 line is redirected.<br/>[07.07.2026 – 21.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
