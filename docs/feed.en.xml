@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 19 Aug 2026 02:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2026 02:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[62A: Buses stop Bussteig B]]></title>
@@ -97,6 +97,17 @@
       <content:encoded><![CDATA[Lines S1, S2, S3 and S4: No operation between Praterstern and Quartier Belvedere. Line S7: No operation between Praterstern and Geiselbergstraße.<br/>[17.08.2026 – 07.09.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[N65: service obstruction False Parker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">02e3c9eb50b853e23424f45b40e0d785fe78a700643d0442c7be40b4be360664</guid>
+      <pubDate>Wed, 19 Aug 2026 02:16:00 +0200</pubDate>
+      <ext:first_seen>Mon, 17 Aug 2026 01:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 19 Aug 2026 02:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 19 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>The N65 line is currently blocked in the direction of Quellenplatz. expected duration: 02:00. Reason: False parker in the area Stachegasse. [On 19.08.2026]</description>
+      <content:encoded><![CDATA[The N65 line is currently blocked in the direction of Quellenplatz. expected duration: 02:00. Reason: False parker in the area Stachegasse.<br/>[On 19.08.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[57A: Buses stop Mariahilfer Gürtel 1]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">401c80029f53b458800195915253a5e17c0239b4027977ab2bf1bb930d96bb1e</guid>
@@ -106,17 +117,6 @@
       <ext:ends_at>Wed, 19 Aug 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 19.08.2026]</description>
       <content:encoded><![CDATA[[On 19.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: diversion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">683582975a016c44868e518bd806ca96fc5e751ad45c4af4374f57bfc0fe20f6</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 14 Aug 2026 08:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 21 Sep 2026 03:00:00 +0200</ext:ends_at>
-      <description>Because of track construction works in the Akademiestraße and as a substitute for the S-Bahn-Stammstrecke lock, the 62 line is redirected. [07.07.2026 – 21.09.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works in the Akademiestraße and as a substitute for the S-Bahn-Stammstrecke lock, the 62 line is redirected.<br/>[07.07.2026 – 21.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
