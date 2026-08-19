@@ -722,18 +722,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/71/D: Gleisbauarbeiten",
-    "description": "Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U. Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U und Julius-Raab-Platz über Schwarzenbergplatz und Stubentor U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatzweise benutzen Sie die Linien U1, U2, U3, U4 und 2. Die Intervalle der Linien U2 und 2 werden verdichtet. Die Störung dauert bis Samstag, 22. August 2026, etwa 04:00 Uhr.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "398b2bc1ec19bb2ffd62002079135f2887d9b455258808125d2cbd0ac3a39cc4",
-    "pubDate": "2026-07-13T04:00:00+02:00",
-    "starts_at": "2026-07-13T04:00:00+02:00",
-    "ends_at": "2026-08-22T04:00:00+02:00",
-    "_identity": "wl|störung|L=1,71,D|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10A: Busse halten Gregor-Mendel-Straße ggü. 33",
     "description": "Bauarbeiten\nBusse halten Gregor-Mendel-Straße ggü. 33",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -794,30 +782,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Polizeieinsatz",
-    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
-    "pubDate": "2026-08-19T22:15:00+02:00",
-    "starts_at": "2026-08-19T22:15:00+02:00",
-    "ends_at": "2026-08-20T00:15:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-08-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Polizeieinsatz",
-    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc",
-    "pubDate": "2026-08-19T22:15:00+02:00",
-    "starts_at": "2026-08-19T22:15:00+02:00",
-    "ends_at": "2026-08-19T23:59:00+02:00",
-    "_identity": "wl|störung|L=14A|D=2026-08-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -826,6 +790,54 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Betrieb ab Resselgasse",
+    "description": "Bauarbeiten\nBetrieb ab Resselgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e94757849f5242f0a3e71ad385f2701db828993a3c2241ec1223e9ef212c3796",
+    "pubDate": "2026-08-19T05:00:06+02:00",
+    "starts_at": "2026-08-19T05:00:06+02:00",
+    "ends_at": "2026-08-20T01:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Betrieb ab Julius-Raab-Platz",
+    "description": "Bauarbeiten\nBetrieb ab Julius-Raab-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee4dd174bbd81be9340a933f05a2903ca8733964879d907680bf0cc85ed764fd",
+    "pubDate": "2026-08-19T05:00:06+02:00",
+    "starts_at": "2026-08-19T05:00:06+02:00",
+    "ends_at": "2026-08-20T01:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
+    "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92",
+    "pubDate": "2026-08-19T00:00:23+02:00",
+    "starts_at": "2026-08-19T00:00:23+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=26A|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36B: Busse halten Brünner Straße 118",
+    "description": "Busse halten\nBrünner Straße 118",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "47d352c19d2e123514a007494e2e9a462cadcffdb7d58ec85e0f4f7d374f0632",
+    "pubDate": "2026-08-19T00:00:24+02:00",
+    "starts_at": "2026-08-19T00:00:24+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=36B|D=2026-08-19"
   },
   {
     "source": "Wiener Linien",
@@ -882,22 +894,10 @@
     "description": "Gleisbauarbeiten\nBenutzen Sie die Linie 43A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
-    "pubDate": "2026-08-19T00:00:22+02:00",
+    "pubDate": "2026-08-19T00:00:20+02:00",
     "starts_at": "2026-08-19T00:00:22+02:00",
     "ends_at": "2026-08-20T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-08-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Polizeieinsatz",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1252a6d03226d3f1d21b0f0e84cdaf2b9637cd4ac88019850214fb459e92e018",
-    "pubDate": "2026-08-19T22:38:00+02:00",
-    "starts_at": "2026-08-19T22:38:00+02:00",
-    "ends_at": "2026-08-19T23:59:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-08-19"
   },
   {
     "source": "Wiener Linien",
@@ -914,13 +914,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Polizeieinsatz",
-    "description": "Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "57A: Busse halten Mariahilfer Gürtel 1",
+    "description": "Bauarbeiten\nBusse halten Mariahilfer Gürtel 1",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1479d69628ad6774aff996064517e6a4ab864e04445cce50bdca7679b4465bb8",
-    "pubDate": "2026-08-19T22:15:00+02:00",
-    "starts_at": "2026-08-19T22:15:00+02:00",
-    "ends_at": "2026-08-19T23:59:00+02:00",
+    "guid": "401c80029f53b458800195915253a5e17c0239b4027977ab2bf1bb930d96bb1e",
+    "pubDate": "2026-08-19T00:00:22+02:00",
+    "starts_at": "2026-08-19T00:00:22+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=57A|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Betrieb ab Gumpendorfer Straße",
+    "description": "Bauarbeiten\nBetrieb ab Gumpendorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f560cc8a31d1034fee7dc5e377e626edddb5a000c45b8887b80e3d96f4178e27",
+    "pubDate": "2026-08-19T00:00:22+02:00",
+    "starts_at": "2026-08-19T00:00:22+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
     "_identity": "wl|störung|L=57A|D=2026-08-19"
   },
   {
@@ -974,14 +986,50 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71E: Ersatzverkehr Busse halten bei Haltestelle N71",
-    "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
+    "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
+    "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45",
     "pubDate": "2026-08-19T00:00:23+02:00",
-    "starts_at": "2026-08-19T00:00:23+02:00",
+    "starts_at": "2026-08-19T00:00:24+02:00",
     "ends_at": "2026-08-20T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Benützen Sie den Schienenersatzverkehr 71E",
+    "description": "Gleisbauarbeiten\nBenützen Sie den Schienenersatzverkehr 71E",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9e6a5649f358321a3f0deb22e5557135fd9cc18eaa7418d24f381d6e2eeb4c83",
+    "pubDate": "2026-08-19T22:30:18+02:00",
+    "starts_at": "2026-08-19T22:30:23+02:00",
+    "ends_at": "2026-08-20T04:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Betrieb ab Schwarzenbergplatz",
+    "description": "Gleisbauarbeiten\nBetrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c28ac67d039c11f6ed031a22f3861ee7f624170abd4e96518e2e45c18ce50b6a",
+    "pubDate": "2026-08-19T00:00:20+02:00",
+    "starts_at": "2026-08-19T00:00:20+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=71|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Kein Betrieb",
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f2d0dfafa26975184d2464bad5a4c07e86d59cdf808d5665236c90bfbe9391ad",
+    "pubDate": "2026-08-19T00:00:20+02:00",
+    "starts_at": "2026-08-19T00:00:20+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=71|D=2026-08-19"
   },
   {
     "source": "Wiener Linien",
@@ -998,12 +1046,72 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "7A: Betrieb ab Antonsplatz",
+    "description": "Bauarbeiten Betrieb ab Antonsplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "667f6aa23c692fd9c950e11afb05c8e6196a0cd1d11118e56facb23ed7872d29",
+    "pubDate": "2026-08-19T00:00:20+02:00",
+    "starts_at": "2026-08-19T00:00:20+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=7A|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Busse halten bei Neilreichgasse 56",
+    "description": "Gleisbauarbeiten\nBusse halten bei Neilreichgasse 56",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e4ca6c3e552a63b627c6596d124e724795aba61de138be6917542ed2a239c26b",
+    "pubDate": "2026-08-19T00:00:20+02:00",
+    "starts_at": "2026-08-19T00:00:20+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=7A|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Betrieb ab Börse",
+    "description": "Gleisbauarbeiten\nBetrieb ab Börse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "90216ce9a3141ea415e982acdbf2ac35ab5921c926996bf52a7ad7a52f539c0e",
+    "pubDate": "2026-08-19T00:00:20+02:00",
+    "starts_at": "2026-08-19T00:00:20+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=D|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Betrieb ab Schwarzenbergplatz",
+    "description": "Gleisbauarbeiten\nBetrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9801022cffb862d593534ffa59a7d989d643532b3d329f5a79bab6afa5612bb9",
+    "pubDate": "2026-08-19T00:00:20+02:00",
+    "starts_at": "2026-08-19T00:00:20+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=D|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Umleitung über Schwedenplatz",
+    "description": "Gleisbauarbeiten\nUmleitung über Schwedenplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5",
+    "pubDate": "2026-08-19T00:00:20+02:00",
+    "starts_at": "2026-08-19T00:00:20+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=D|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "LB: Betrieb ab Inzersdorf Lokalbahn",
     "description": "Bauarbeiten\nBetrieb ab Inzersdorf Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0a261bd9bac89ebef4ed45fc30f979f2b7a7d69273e78f37c1956c5e671a47e2",
     "pubDate": "2026-08-16T00:00:17+02:00",
-    "starts_at": "2026-08-16T00:00:17+02:00",
+    "starts_at": "2026-08-19T00:00:23+02:00",
     "ends_at": "2026-08-20T23:59:59+02:00",
     "_identity": "wl|störung|L=LB|D=2026-08-16"
   },
@@ -1015,21 +1123,9 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ccaf2b90af2295f60ce86b09abf99f4a22cd711554268e9af608855f96421ecb",
     "pubDate": "2026-08-16T00:00:17+02:00",
-    "starts_at": "2026-08-19T00:00:22+02:00",
+    "starts_at": "2026-08-19T00:00:23+02:00",
     "ends_at": "2026-08-20T23:59:59+02:00",
     "_identity": "wl|störung|L=LB|D=2026-08-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N41: Busse halten Liechtensteinstraße 19",
-    "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 19",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "62540e3a511839981230453380fb7c7af2b4d40fab19503d61f8814d7f8588da",
-    "pubDate": "2026-08-19T01:00:26+02:00",
-    "starts_at": "2026-08-19T01:00:26+02:00",
-    "ends_at": "2026-08-20T00:30:00+02:00",
-    "_identity": "wl|störung|L=N41|D=2026-08-19"
   },
   {
     "source": "Wiener Linien",
@@ -1064,7 +1160,7 @@
     "guid": "c8fe425d7242fb213ce8416c7e36d3307750aef3cd584dd26b6b881c88e54d42",
     "pubDate": "2026-08-19T23:01:00+02:00",
     "starts_at": "2026-08-19T23:01:00+02:00",
-    "ends_at": "2026-08-20T00:35:00+02:00",
+    "ends_at": "2026-08-20T00:40:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-08-19"
   },
   {
@@ -1078,5 +1174,29 @@
     "starts_at": "2026-07-13T13:59:00+02:00",
     "ends_at": "2026-12-31T13:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-07-13|TK=haltestelle parlament zur beschleunigung der strassenbahnlinien dauerhaft aufgelassen bitte auf nahegelegene haltestellen ausweichen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Busse halten Frauenstiftgasse 7",
+    "description": "Bauarbeiten\nBusse halten\nFrauenstiftgasse 7",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c8573b355269cc4e2c23ab302bf7ded0db2f53c120e490997c30e0aa2ff51b59",
+    "pubDate": "2026-08-19T00:00:24+02:00",
+    "starts_at": "2026-08-19T00:00:24+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=|D=2026-08-19|TK=busse halten frauenstiftgasse 7"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Züge halten bei Währinger Gürtel gegenüber 164",
+    "description": "Gleisbauarbeiten\nZüge halten bei\nWähringer Gürtel\ngegenüber 164",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "542b668697c2ac0be11b61c4fbb2c5806545f379c7dacab1e5604b0a7a8340de",
+    "pubDate": "2026-08-19T00:00:20+02:00",
+    "starts_at": "2026-08-19T00:00:20+02:00",
+    "ends_at": "2026-08-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=|D=2026-08-19|TK=züge halten bei währinger gürtel gegenüber 164"
   }
 ]
