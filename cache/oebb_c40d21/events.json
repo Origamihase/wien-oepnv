@@ -38,18 +38,6 @@
   {
     "source": "ÖBB",
     "category": "Störung",
-    "title": "S 50: Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof",
-    "description": "02.11.2026 - 14.11.2026<br/><br/>Wegen Bauarbeiten können zwischen <b>Wien Westbahnhof (U)</b> und <b>Wien Hütteldorf Bahnhof (U)</b><span> von <b>02.11.2026</b> (20:00 Uhr) bis <b>14.11.2026</b> (17:00 Uhr) einige S50-Züge nicht fahren</span>. Zwischen <b>Wien Westbahnhof (U)</b> und <b>St.Pölten Hbf</b> können einige REX50-Züge nicht fahren.<br>Wir bitten um Entschuldigung.",
-    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
-    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&882601",
-    "pubDate": "2026-06-02T16:31:24+02:00",
-    "starts_at": "2026-06-02T16:31:24+02:00",
-    "ends_at": null,
-    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&882601"
-  },
-  {
-    "source": "ÖBB",
-    "category": "Störung",
     "title": "REX 3: Wien Floridsdorf ↔ Wien Jedlersdorf / Wien Hauptbahnhof ↔ Deutsch Wagram",
     "description": "10.08.2026 - 06.09.2026<br/><br/>Wegen Bauarbeiten können <br>zwischen <b>Wien Floridsdorf Bahnhof (U)</b> und <b>Wien Jedlersdorf Bahnhst, Wien Süßenbrunn Bahnhst </b><span>bzw.</span><b> Gerasdorf b. Wien Bahnhst</b><br>von <b>10.08.2026</b> bis <b>06.09.2026 </b>keine Züge fahren.<br>Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<br><br>REX 2 und REX 3-Züge enden bereits in <b>Wolkersdorf im Weinviertel Bahnhof</b> bzw. <b>Korneuburg Bahnhof</b>.<br>Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<br><br>REX 1-Züge werden zwischen <b>Deutsch Wagram Bahnhof</b> und <b>Wien Hbf (U) </b>über <b>Wien Stadlau Bahnhst (U)</b> umgeleitet.<br><br>Reisende mit einem gültigen ÖBB-Ticket haben außerdem die Möglichkeit, Alternativverbindungen der <b>WIENER LINIEN</b> zu nutzen.<b><br><br>ACHTUNG:</b><br>Anschlussverbindungen können nicht gewährleistet werden.<br><b>HINWEISE:</b><br>Bitte beachten Sie, dass der Zustieg in Stationen mit Ticketautomaten oder Ticketschalter ausschließlich mit einem gültigen Ticket gestattet ist. Der Ticketverkauf in den Bussen des Schienenersatzverkehres ist nur eingeschränkt möglich.<br>Fahrräder können nicht befördert werden.<b><br><br>Mobilitätseingeschränkten Fahrgästen,</b> die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter 05-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten. <br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://kundeninformation-pv.oebb.at/dam/kundeninformation/extern/OEBB/2026/2026_07/VAB65389_Gesamt.pdf\">Details finden Sie hier...</a><br/><a href=\"https://www.oebb.at/de/fahrplan/baustelleninformation/bauarbeiten-stammstrecke/bauphase1\">Weitere Informationen (u.a. zur Ticketanerkenntnis) finden Sie hier...</a>",
     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
@@ -130,5 +118,29 @@
     "starts_at": "2026-08-17T11:57:03+02:00",
     "ends_at": null,
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&905283"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "REX 50: Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof",
+    "description": "02.11.2026 - 11.11.2026<br/><br/>Wegen Bauarbeiten können <br>zwischen <b>St.Pölten Hbf</b> und <b>Wien Westbahnhof (U)</b><br>von <b>03.11.2026</b> bis <b>10.11.2026 </b><br>keine REX50-Züge fahren.<br>Zwischen <b> Wien Westbahnhof (U) </b>und <b>Wien Hütteldorf Bahnhof (U) </b>können<br>von <b>03.11.2026</b> bis <b>10.11.2026</b><br>die REX51-Züge 1604, 1608, 1612, 1614, 1618, 1622, 1626, 1630, 1634, 1638, 1642, 1646, 1650, 1654, 1658, 1662, 1601, 1605, 1609, 1613, 1617, 1621, 1625, 1629, 1633, 1637, 1641, 1645, 1649, 1653 und 1657 <br>von <b>02.11.2026</b> bis <b>10.11.2026</b><br>die REX51-Züge 1670, 1674, 1661, 1665 und 1675<br>von <b>03.11.2026</b> bis <b>11.11.2026</b><br>der REX51-Zug 1679<br>von <b>03.11.2026</b> bis <b>10.11.2026</b><br>keine S50-Züge<br>von <b>02.11.2026</b> bis <b>10.11.2026</b><br>die S50-Züge 20063, 20161, 20065, 20163, 20067, 20165, 20069, 20071, 20073, 20075, 20077, 20081, 20062, 20064, 20066, 20068, 20070, 20072, 20074, 20076 und 20078<br>von <b>03.11.2026</b> bis <b>11.11.2026</b><br>die S50-Züge 20083 und 20080<br>nicht fahren.<br>Als Ersatz haben Sie die Möglichkeit den nächsten fahrplanmäßigen Zug zu nehmen. <br><br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&905884",
+    "pubDate": "2026-08-19T16:05:49+02:00",
+    "starts_at": "2026-08-19T16:05:49+02:00",
+    "ends_at": null,
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&905884"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Verkehrseinschränkung: Haltausfall in Wien Matzleinsdorfer Platz",
+    "description": "19.08.2026<br/><br/>Wegen einer Stellwerkstörung am Bahnhof sind in <b>Wien Matzleinsdorfer Platz Bahnhst</b><b> Zugfahrten</b> bis voraussichtlich <b>17:00 Uhr nur eingeschränkt </b>möglich. <b>Der Halt</b> in <b>Wien Matzleinsdorfer Platz Bahnhst </b><b>entfällt</b> für <b>alle </b>Züge. Fahrgäste mit gültigen <b>ÖBB-Tickets</b> können die <b>Wiener Linien</b> benutzen. Planen Sie bis zu<b> 15 Minuten </b>mehr Reisezeit ein. Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&905920",
+    "pubDate": "2026-08-19T16:34:56+02:00",
+    "starts_at": "2026-08-19T16:34:56+02:00",
+    "ends_at": null,
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&905920"
   }
 ]

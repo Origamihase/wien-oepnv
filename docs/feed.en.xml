@@ -7,8 +7,28 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 19 Aug 2026 16:31:04 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2026 17:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Traffic restriction: stoppage in Wien Matzleinsdorfer Platz]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;905920</guid>
+      <pubDate>Wed, 19 Aug 2026 16:34:56 +0200</pubDate>
+      <ext:first_seen>Wed, 19 Aug 2026 17:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 19 Aug 2026 16:34:56 +0200</ext:starts_at>
+      <description>Due to interlocking interference am Bahnhof, train journeys to expected am Bahnhof 17:00 are limited. [Since 19.08.2026]</description>
+      <content:encoded><![CDATA[Due to interlocking interference am Bahnhof, train journeys to expected am Bahnhof 17:00 are limited.<br/>[Since 19.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[REX 50: Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;905884</guid>
+      <pubDate>Wed, 19 Aug 2026 16:05:49 +0200</pubDate>
+      <ext:first_seen>Wed, 19 Aug 2026 17:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 19 Aug 2026 16:05:49 +0200</ext:starts_at>
+      <description>Due to construction works there are no REX50 trains between St.Pölten Hbf and Wien Westbahnhof (U) from 03.112026 to 10.11.2026. [Since 19.08.2026]</description>
+      <content:encoded><![CDATA[Due to construction works there are no REX50 trains between St.Pölten Hbf and Wien Westbahnhof (U) from 03.112026 to 10.11.2026.<br/>[Since 19.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62A: Buses stop Bussteig B]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -95,28 +115,6 @@
       <ext:ends_at>Mon, 07 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Lines S1, S2, S3 and S4: No operation between Praterstern and Quartier Belvedere. Line S7: No operation between Praterstern and Geiselbergstraße. [17.08.2026 – 07.09.2026]</description>
       <content:encoded><![CDATA[Lines S1, S2, S3 and S4: No operation between Praterstern and Quartier Belvedere. Line S7: No operation between Praterstern and Geiselbergstraße.<br/>[17.08.2026 – 07.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[57A: Buses stop Mariahilfer Gürtel 1]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">401c80029f53b458800195915253a5e17c0239b4027977ab2bf1bb930d96bb1e</guid>
-      <pubDate>Wed, 19 Aug 2026 00:00:22 +0200</pubDate>
-      <ext:first_seen>Sat, 15 Aug 2026 04:00:54 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 19 Aug 2026 00:00:22 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 19 Aug 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 19.08.2026]</description>
-      <content:encoded><![CDATA[[On 19.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: diversion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">683582975a016c44868e518bd806ca96fc5e751ad45c4af4374f57bfc0fe20f6</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 14 Aug 2026 08:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 07 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 21 Sep 2026 03:00:00 +0200</ext:ends_at>
-      <description>Because of track construction works in the Akademiestraße and as a substitute for the S-Bahn-Stammstrecke lock, the 62 line is redirected. [07.07.2026 – 21.09.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works in the Akademiestraße and as a substitute for the S-Bahn-Stammstrecke lock, the 62 line is redirected.<br/>[07.07.2026 – 21.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
