@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 19 Aug 2026 23:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 00:00:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[28A: Julius-Ficker-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4c08044cec0ac8dacfab6b506aa0be84fbbfead6b959e06f05d5a4fa8c0599dd</guid>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 00:00:43 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 20 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 14 Dec 2026 11:11:00 +0100</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 28A in Richtung Leopoldauer Platz Haltestelle: Julius-Ficker-Straße Von: Julius-Ficker-Straße vor Kürschnergasse Nach: Julius-Ficker-Straße … [20.08.2026 – 14.12.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 28A in Richtung Leopoldauer Platz Haltestelle: Julius-Ficker-Straße Von: Julius-Ficker-Straße vor Kürschnergasse Nach: Julius-Ficker-Straße …<br/>[20.08.2026 – 14.12.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[94A: 94A, Rufbus N90: Straßenbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -48,9 +59,9 @@
       <pubDate>Tue, 18 Aug 2026 07:09:12 +0200</pubDate>
       <ext:first_seen>Wed, 19 Aug 2026 00:00:58 +0200</ext:first_seen>
       <ext:starts_at>Tue, 18 Aug 2026 07:09:12 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 19 Aug 2026 23:59:59 +0200</ext:ends_at>
-      <description>[18.08.2026 – 19.08.2026]</description>
-      <content:encoded><![CDATA[[18.08.2026 – 19.08.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 20 Aug 2026 23:59:59 +0200</ext:ends_at>
+      <description>[18.08.2026 – 20.08.2026]</description>
+      <content:encoded><![CDATA[[18.08.2026 – 20.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12A/N49: Gleisbauarbeiten Märzstraße]]></title>
@@ -106,16 +117,6 @@
       <ext:ends_at>Fri, 21 Aug 2026 07:00:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 26A in Richtung Kagran U Haltestelle: Konstanziagasse Von: Erzherzog-Karl-Straße 135 Nach: ca. 30 Meter gegen die Fahrtrichtung Dauer: Ab … [17.08.2026 – 21.08.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 26A in Richtung Kagran U Haltestelle: Konstanziagasse Von: Erzherzog-Karl-Straße 135 Nach: ca. 30 Meter gegen die Fahrtrichtung Dauer: Ab …<br/>[17.08.2026 – 21.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Westbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;905283</guid>
-      <pubDate>Mon, 17 Aug 2026 11:57:03 +0200</pubDate>
-      <ext:first_seen>Mon, 17 Aug 2026 12:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 17 Aug 2026 11:57:03 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Wien Westbahnhof (U) von 23.10.2026 (23:00 Uhr) bis 27.10.2026 (04:00 Uhr) keine Fernverkehrszüge fahren. [Seit 17.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Wien Westbahnhof (U) von 23.10.2026 (23:00 Uhr) bis 27.10.2026 (04:00 Uhr) keine Fernverkehrszüge fahren.<br/>[Seit 17.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
