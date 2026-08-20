@@ -11996,6 +11996,14 @@
       "en": {}
     }
   },
+  "a932ac9f099edd99e7efdc79ded934e9e87e7fecc4827db0f013b1f30df2a19d": {
+    "first_seen": "2026-08-20T03:30:51.965927+00:00",
+    "translations": {
+      "en": {
+        "summary": "Buses stop at Invalidenstra\u00dfe 13"
+      }
+    }
+  },
   "a96f90f3e3ae4ff383e247da9943674afaee0a5697dff81fb7686600038ae4d0": {
     "first_seen": "2026-06-28T23:01:07.215046+00:00",
     "translations": {
@@ -19088,6 +19096,16 @@
       "en": {
         "summary": "Due to interlocking interference am Bahnhof, train journeys to expected am Bahnhof 17:00 are limited.",
         "title": "Traffic restriction: stoppage in Wien Matzleinsdorfer Platz"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&906015": {
+    "first_seen": "2026-08-20T03:30:51.965927+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a fire brigade operation between Wien Westbahnhof (U) and Wien H\u00fctteldorf Station (U) are currently not possible.",
+        "title": "Wien Westbahnhof \u2194 Wien Hauptbahnhof"
       },
       "epoch": 3
     }
