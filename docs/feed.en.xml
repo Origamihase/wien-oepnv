@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 20 Aug 2026 18:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 18:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[66A: service obstruction due to weather conditions]]></title>
@@ -17,28 +17,6 @@
       <ext:first_seen>Thu, 20 Aug 2026 18:00:51 +0200</ext:first_seen>
       <ext:starts_at>Thu, 20 Aug 2026 14:56:25 +0200</ext:starts_at>
       <ext:ends_at>Thu, 20 Aug 2026 20:55:00 +0200</ext:ends_at>
-      <description>[On 20.08.2026]</description>
-      <content:encoded><![CDATA[[On 20.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Harmful train service from Josef-Baumann-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">931b18d217b744b85803b32442d65677046eabc71dad76d37623c71e0684e8b7</guid>
-      <pubDate>Thu, 20 Aug 2026 16:38:32 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 17:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 20 Aug 2026 16:38:38 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 20 Aug 2026 20:38:00 +0200</ext:ends_at>
-      <description>[On 20.08.2026]</description>
-      <content:encoded><![CDATA[[On 20.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26: Harmful train service from Josef-Baumann-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dd678fa77e110acf19fef6f19b98671a11fbd949be46f80b99550da78e381b9b</guid>
-      <pubDate>Thu, 20 Aug 2026 16:36:32 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 17:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 20 Aug 2026 16:36:38 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 20 Aug 2026 20:35:00 +0200</ext:ends_at>
       <description>[On 20.08.2026]</description>
       <content:encoded><![CDATA[[On 20.08.2026]]]></content:encoded>
     </item>
@@ -118,6 +96,28 @@
       <ext:ends_at>Mon, 14 Dec 2026 11:11:00 +0100</ext:ends_at>
       <description>Stop transfer of line 28A towards Leopoldauer Platz Stop: Julius-Ficker-Straße From: Julius-Ficker-Straße before Kürschnergasse To: Julius-Ficker-Straße … [20.08.2026 – 14.12.2026]</description>
       <content:encoded><![CDATA[Stop transfer of line 28A towards Leopoldauer Platz Stop: Julius-Ficker-Straße From: Julius-Ficker-Straße before Kürschnergasse To: Julius-Ficker-Straße …<br/>[20.08.2026 – 14.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[94A: 94A, call bus N90: roadworks]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">94cac53fd63e7de3d6847e992e5e5b90c13e1e032ee1c7fbd744501db265993d</guid>
+      <pubDate>Wed, 19 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 19 Aug 2026 17:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 24 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 19 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Erzherzog-Karl-Straße in the Polgarstraße, Smolagasse, the lines 94A and the N90 call bus are redirected or operating short-running. [24.08.2026 – 19.08.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Erzherzog-Karl-Straße in the Polgarstraße, Smolagasse, the lines 94A and the N90 call bus are redirected or operating short-running.<br/>[24.08.2026 – 19.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[25/26/27/N20: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">87899f7aaf434c2835a8f79f35e6dc309e36fc0c309fd31954dfa22200616a59</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 19 Aug 2026 17:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>The tracks in Donaufelder Straße are being renewed, so there are restrictions on the lines 25, 26, 27 and N20. Plan about 15 minutes more driving time … [14.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[The tracks in Donaufelder Straße are being renewed, so there are restrictions on the lines 25, 26, 27 and N20. Plan about 15 minutes more driving time …<br/>[14.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
