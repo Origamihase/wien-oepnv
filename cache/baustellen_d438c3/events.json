@@ -296,6 +296,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Rosenhügelstraße von Bertégasse bis Karl-Schwed-Gasse",
+    "description": "Die Rosenhügelstraße wird von Bertégasse bis und in Richtung Karl-Schwed-Gasse zur Einbahn.Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. \nBeginn: 26.08.2026 00:00 Uhr \nGeplant bis: 01.09.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 13",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "5e91154753943a0c8c183b305e5d5f40f9378e16d38e553e44cc39c42d03f9a8",
+    "pubDate": "2026-08-26T00:00:00+02:00",
+    "starts_at": "2026-08-26T00:00:00+02:00",
+    "ends_at": "2026-09-01T00:00:00+02:00",
+    "context": {
+      "district": "13",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.15913084,
+        "lon": 16.28472054
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Volksgartenstraße 2",
     "description": "Zur Abwicklung des Baustellenverkehrs für den U-Bahnbau wird In der Volksgartenstraße zwischen der Hansenstraße und der Museumstraße eine Fahrspur gesperrt. Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden. \nBeginn: 28.02.2021 00:00 Uhr \nGeplant bis: 31.12.2029 00:00 Uhr \nMaßnahme: U-Bahnbau \nBezirk: 1",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -395,6 +416,27 @@
       "coordinates": {
         "lat": 48.20826196,
         "lon": 16.38409278
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Erzherzog-Karl-Straße Kreuzung Polgarstraße bis Smolagasse",
+    "description": "Die Zufahrt zur Sport & Fun Halle Donaustadt ist möglich.Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. Die Arbeiten werden in zwei Bauabschnitten durchgeführt. Bauabschnitt 1 (24.08.2026 bis 06.09.2026): Die Nebenfahrbahn der Erzherzog-Karl-Straße wird im Bereich zwischen Polgarstraße und Smolagasse gesperrt. Bauabschnitt 2 (07.09.2026 bis 05.10.2026): Der rechte Fahrstreifen der Erzherzog-Karl-Straße in Fahrtrichtung stadtauswärts wird gesperrt. Die restlichen Fahrstreifen werden aufrechtgehalten. Ein Fahrstreifen in der Polgarstraße wird gesperrt. \nBeginn: 23.08.2026 00:00 Uhr \nGeplant bis: 05.10.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 22",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "83daab8216d5a9e45ccefbd9d8b6bde84cb923b4e45c95c5311ceb6912f2222d",
+    "pubDate": "2026-08-23T00:00:00+02:00",
+    "starts_at": "2026-08-23T00:00:00+02:00",
+    "ends_at": "2026-10-05T00:00:00+02:00",
+    "context": {
+      "district": "22",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.23123461,
+        "lon": 16.44969991
       }
     }
   },
