@@ -7,8 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 20 Aug 2026 15:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 15:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Blumental ↔ Wien Meidling]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;906124</guid>
+      <pubDate>Thu, 20 Aug 2026 15:23:04 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 15:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 20 Aug 2026 15:23:04 +0200</ext:starts_at>
+      <description>Wegen eines Hindernisses im Gleisbereich sind zwischen Wien Meidling Bahnhof (U) und Wien Blumental Bahnhst bis voraussichtlich 15:30 Uhr keine Fahrten möglich. [Seit 20.08.2026]</description>
+      <content:encoded><![CDATA[Wegen eines Hindernisses im Gleisbereich sind zwischen Wien Meidling Bahnhof (U) und Wien Blumental Bahnhst bis voraussichtlich 15:30 Uhr keine Fahrten möglich.<br/>[Seit 20.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[77A: Sturmschaden]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2f10d3446c486e7198b94bda98fc149b2b7edc1d4aaa832199788d41bb402fe5</guid>
+      <pubDate>Thu, 20 Aug 2026 15:02:00 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 15:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 20 Aug 2026 15:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 20 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.08.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A: Witterung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +38,8 @@
       <ext:first_seen>Thu, 20 Aug 2026 15:01:07 +0200</ext:first_seen>
       <ext:starts_at>Thu, 20 Aug 2026 14:52:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 20 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 15:10 Uhr. Grund: Witterung im Haltestellenbereich Bhf. Atzgersdorf S. [Am 20.08.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 15:10 Uhr. Grund: Witterung im Haltestellenbereich Bhf. Atzgersdorf S.<br/>[Am 20.08.2026]]]></content:encoded>
+      <description>Die Linie 66A wird in Richtung Liesing zwischen Brunner Straße / Erlaaer Straße und Liesing über Breitenfurter Straße umgeleitet. [Am 20.08.2026]</description>
+      <content:encoded><![CDATA[Die Linie 66A wird in Richtung Liesing zwischen Brunner Straße / Erlaaer Straße und Liesing über Breitenfurter Straße umgeleitet.<br/>[Am 20.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Feuerwehreinsatz]]></title>
@@ -28,8 +49,8 @@
       <ext:first_seen>Thu, 20 Aug 2026 15:01:07 +0200</ext:first_seen>
       <ext:starts_at>Thu, 20 Aug 2026 14:39:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 20 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>[Am 20.08.2026]</description>
-      <content:encoded><![CDATA[[Am 20.08.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.08.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Klapprampensperre am 27.08.2026]]></title>
@@ -96,28 +117,6 @@
       <ext:ends_at>Mon, 14 Dec 2026 11:11:00 +0100</ext:ends_at>
       <description>Haltestellenverlegung der Linie 28A in Richtung Leopoldauer Platz Haltestelle: Julius-Ficker-Straße Von: Julius-Ficker-Straße vor Kürschnergasse Nach: Julius-Ficker-Straße … [20.08.2026 – 14.12.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 28A in Richtung Leopoldauer Platz Haltestelle: Julius-Ficker-Straße Von: Julius-Ficker-Straße vor Kürschnergasse Nach: Julius-Ficker-Straße …<br/>[20.08.2026 – 14.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[94A: 94A, Rufbus N90: Straßenbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">94cac53fd63e7de3d6847e992e5e5b90c13e1e032ee1c7fbd744501db265993d</guid>
-      <pubDate>Wed, 19 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 19 Aug 2026 17:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 24 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 19 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten in der Erzherzog-Karl-Straße im Bereich Polgarstraße, Smolagasse werden die Linien 94A und Rufbus N90 umgeleitet bzw. kurzgeführt. [24.08.2026 – 19.08.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Erzherzog-Karl-Straße im Bereich Polgarstraße, Smolagasse werden die Linien 94A und Rufbus N90 umgeleitet bzw. kurzgeführt.<br/>[24.08.2026 – 19.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26/27/N20: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">87899f7aaf434c2835a8f79f35e6dc309e36fc0c309fd31954dfa22200616a59</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 19 Aug 2026 17:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei den Linien 25, 26, 27 und N20. Planen Sie ca. 15 Minuten mehr Fahrzeit … [14.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei den Linien 25, 26, 27 und N20. Planen Sie ca. 15 Minuten mehr Fahrzeit …<br/>[14.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

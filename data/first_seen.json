@@ -3211,6 +3211,16 @@
       "epoch": 2
     }
   },
+  "2f10d3446c486e7198b94bda98fc149b2b7edc1d4aaa832199788d41bb402fe5": {
+    "first_seen": "2026-08-20T13:30:59.773982+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "77A: Storm damage"
+      },
+      "epoch": 3
+    }
+  },
   "2f191d21c0d0849bae5f45636f829e362892d5f1e2a850e596d24ee0c1306bd8": {
     "first_seen": "2026-05-24T01:04:40.542482+00:00",
     "translations": {
@@ -16631,6 +16641,7 @@
     "first_seen": "2026-08-20T13:01:07.307023+00:00",
     "translations": {
       "en": {
+        "summary": "After an service obstruction there are different intervals.",
         "title": "64A: fire-brigade operation"
       },
       "epoch": 3
@@ -19185,6 +19196,16 @@
       "en": {
         "summary": "Due to a fire brigade operation between Wien Westbahnhof (U) and Wien H\u00fctteldorf Station (U) are currently not possible.",
         "title": "Wien Westbahnhof \u2194 Wien Hauptbahnhof"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&906124": {
+    "first_seen": "2026-08-20T13:30:59.773982+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an obstacle in the track range between Wien Meidling train station (U) and Wien Blumental train hours to expected 15:30 clock no journeys are possible.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Blumental \u2194 Wien Meidling"
       },
       "epoch": 3
     }
