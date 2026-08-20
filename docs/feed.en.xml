@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 20 Aug 2026 10:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 11:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[54A/54B: diversion towards Ober St. Veit]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5fccbe718b662fb0a6fc401e0625ddd918b95e4e5e26f7cffe79d1f599ddd7d1</guid>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 11:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 20 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 21 Aug 2026 01:00:00 +0200</ext:ends_at>
+      <description>Because of construction works in the Einsiedeleigasse, the 54A and 54B buses will be rerouted. Period: From Thursday, the 2008.2026, approximately 20:00 o'clock until the end … [20.08.2026 – 21.08.2026]</description>
+      <content:encoded><![CDATA[Because of construction works in the Einsiedeleigasse, the 54A and 54B buses will be rerouted. Period: From Thursday, the 2008.2026, approximately 20:00 o'clock until the end …<br/>[20.08.2026 – 21.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[35A: event service from Neustift, Agnesgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Tue, 08 Sep 2026 00:30:00 +0200</ext:ends_at>
       <description>Due to extensive track construction works in the range Spitalgasse there is an diversion of the line N41. Period: From Wednesday, 8. July 2026, start of operation … [27.06.2026 – 08.09.2026]</description>
       <content:encoded><![CDATA[Due to extensive track construction works in the range Spitalgasse there is an diversion of the line N41. Period: From Wednesday, 8. July 2026, start of operation …<br/>[27.06.2026 – 08.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Konstanziagasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e39f3e4457693930da4f38f1e00daf9198731532148bab098bcdf09cca69aa3d</guid>
-      <pubDate>Mon, 17 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 17 Aug 2026 17:39:53 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 17 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 21 Aug 2026 07:00:00 +0200</ext:ends_at>
-      <description>Stop transfer of line 26A towards Kagran U Stop: Konstanziagasse From: Erzherzog-Karl-Straße 135 After: approx.30 Meter versus direction Duration: From … [17.08.2026 – 21.08.2026]</description>
-      <content:encoded><![CDATA[Stop transfer of line 26A towards Kagran U Stop: Konstanziagasse From: Erzherzog-Karl-Straße 135 After: approx.30 Meter versus direction Duration: From …<br/>[17.08.2026 – 21.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
