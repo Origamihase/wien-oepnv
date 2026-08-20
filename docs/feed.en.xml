@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 21 Aug 2026 00:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 01:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N75: event Buses stop Invalidenstraße 13]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7c6b99b395e2ad9e7ca36093c1463b710d6a1ed33fd03546dd5dc48de05306e0</guid>
+      <pubDate>Fri, 21 Aug 2026 00:35:21 +0200</pubDate>
+      <ext:first_seen>Fri, 21 Aug 2026 01:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 00:35:21 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 21 Aug 2026 05:45:00 +0200</ext:ends_at>
+      <description>Buses stop at Invalidenstraße 13 [On 21.08.2026]</description>
+      <content:encoded><![CDATA[Buses stop at Invalidenstraße 13<br/>[On 21.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Rosenhügelstraße from Bertégasse to Karl-Schwed-Gasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -63,17 +74,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 17:00:00 +0200</ext:ends_at>
       <description>Due to construction works in the Zedlitzgasse, the 3A operating short-running buses are used. [20.08.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Due to construction works in the Zedlitzgasse, the 3A operating short-running buses are used.<br/>[20.08.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[54A/54B: diversion towards Ober St. Veit]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5fccbe718b662fb0a6fc401e0625ddd918b95e4e5e26f7cffe79d1f599ddd7d1</guid>
-      <pubDate>Thu, 20 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 11:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 20 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 21 Aug 2026 01:00:00 +0200</ext:ends_at>
-      <description>Because of construction works in the Einsiedeleigasse, the 54A and 54B buses will be rerouted. Period: From Thursday, the 2008.2026, approximately 20:00 o'clock until the end … [20.08.2026 – 21.08.2026]</description>
-      <content:encoded><![CDATA[Because of construction works in the Einsiedeleigasse, the 54A and 54B buses will be rerouted. Period: From Thursday, the 2008.2026, approximately 20:00 o'clock until the end …<br/>[20.08.2026 – 21.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[35A: event service from Neustift, Agnesgasse]]></title>
