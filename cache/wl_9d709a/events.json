@@ -794,6 +794,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "33A: Verkehrsunfall Derzeit kein Betrieb",
+    "description": "Verkehrsunfall\nDerzeit kein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0d5e4f7b3a1600943ea2a0d3ea476da89f3f37338842434798134f98305f5406",
+    "pubDate": "2026-08-20T07:39:12+02:00",
+    "starts_at": "2026-08-20T07:39:12+02:00",
+    "ends_at": "2026-08-20T08:38:00+02:00",
+    "_identity": "wl|störung|L=33A|D=2026-08-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33A: Verkehrsunfall",
+    "description": "Linie 33A: Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 08:00 Uhr. Grund: Verkehrsunfall im Bereich Floridusgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d3a49b62c3f1f00bd2ce128fcd055d4c5865ec006c8578a3d141dac4ca73cd73",
+    "pubDate": "2026-08-20T07:32:00+02:00",
+    "starts_at": "2026-08-20T07:32:00+02:00",
+    "ends_at": "2026-08-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=33A|D=2026-08-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "35A: Veranstaltung Betrieb ab Neustift, Agnesgasse",
     "description": "Veranstaltung\nBetrieb ab Neustift, Agnesgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1174,6 +1198,18 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Rochusgasse und Kardinal-Nagl-Platz in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 08:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Rochusgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-08-20T07:47:00+02:00",
+    "starts_at": "2026-08-20T07:47:00+02:00",
+    "ends_at": "2026-08-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-08-20"
   },
   {
     "source": "Wiener Linien",

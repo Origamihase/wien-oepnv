@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 20 Aug 2026 07:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 08:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[33A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d3a49b62c3f1f00bd2ce128fcd055d4c5865ec006c8578a3d141dac4ca73cd73</guid>
+      <pubDate>Thu, 20 Aug 2026 07:32:00 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 08:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 20 Aug 2026 07:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 20 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 08:00 Uhr. Grund: Verkehrsunfall im Bereich Floridusgasse. [Am 20.08.2026]</description>
+      <content:encoded><![CDATA[Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 08:00 Uhr. Grund: Verkehrsunfall im Bereich Floridusgasse.<br/>[Am 20.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[35A: Veranstaltung Betrieb ab Neustift, Agnesgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:ends_at>Tue, 25 Aug 2026 17:00:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 92B in Richtung Kaisermühlen, V.I.C. U Haltestelle: Kleehäufl Von: Am Kaisermühlendamm vor Zufahrt zum Campingplatz Nach: etwa 50 Meter gegen … [18.08.2026 – 25.08.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 92B in Richtung Kaisermühlen, V.I.C. U Haltestelle: Kleehäufl Von: Am Kaisermühlendamm vor Zufahrt zum Campingplatz Nach: etwa 50 Meter gegen …<br/>[18.08.2026 – 25.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N41: Gleisbauarbeiten Spitalgasse bis 08.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">57e841e415b0722376e004ad0916d700eb23bd27f1546846ddd0d2efdd220c8f</guid>
-      <pubDate>Sat, 27 Jun 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 18 Aug 2026 13:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 27 Jun 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 08 Sep 2026 00:30:00 +0200</ext:ends_at>
-      <description>Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41. Zeitraum: Ab Mittwoch, 8. Juli 2026, Betriebsbeginn … [27.06.2026 – 08.09.2026]</description>
-      <content:encoded><![CDATA[Wegen umfangreicher Gleisbauarbeiten im Bereich Spitalgasse kommt es zu einer Umleitung der Linie N41. Zeitraum: Ab Mittwoch, 8. Juli 2026, Betriebsbeginn …<br/>[27.06.2026 – 08.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
