@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 20 Aug 2026 14:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 14:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Folding ramp lock on 2708.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2554a3ce6541d8cfac37c1160139fe8dc9ea593f34a78b0ebf19fdc50da04f61</guid>
+      <pubDate>Thu, 20 Aug 2026 14:05:00 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 20 Aug 2026 14:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 27 Aug 2026 23:59:00 +0200</ext:ends_at>
+      <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [20.08.2026 – 27.08.2026]</description>
+      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[20.08.2026 – 27.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[65A/66A: Inzersdorfer Straße # Leibnizgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d368be17853011da8c175531f69794a71009a1449d2f606dfe427e8a566e146e</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse lines 65A and 66A are being redirected. [05.08.2026 – 31.08.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse lines 65A and 66A are being redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[3A: short-running service]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -95,28 +117,6 @@
       <ext:ends_at>Thu, 20 Aug 2026 23:59:59 +0200</ext:ends_at>
       <description>[18.08.2026 – 20.08.2026]</description>
       <content:encoded><![CDATA[[18.08.2026 – 20.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A/N49: track construction works Märzstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4d20323a45c5f784149198df09d52463b04b928a70b7f9fb5dfa920ffd875b32</guid>
-      <pubDate>Tue, 18 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 18 Aug 2026 16:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 18 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 30 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Due to track construction works in the Märzstraße and Huglgasse the lines 12A and N49 are redirected. [18.08.2026 – 30.11.2026]</description>
-      <content:encoded><![CDATA[Due to track construction works in the Märzstraße and Huglgasse the lines 12A and N49 are redirected.<br/>[18.08.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[92B: Kleehäufel in both directions]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7e1015575c2b13af8532ee38b6407b06b533c927a78472f8a79ad6808d50db62</guid>
-      <pubDate>Tue, 18 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 18 Aug 2026 14:31:11 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 18 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 25 Aug 2026 17:00:00 +0200</ext:ends_at>
-      <description>Stop relocation of the line 92B towards Kaisermühlen, V.I.C. U Stop: Kleeauffl From: At Kaisermühlendamm before access to Campingplatz To: about 50 meters against … [18.08.2026 – 25.08.2026]</description>
-      <content:encoded><![CDATA[Stop relocation of the line 92B towards Kaisermühlen, V.I.C. U Stop: Kleeauffl From: At Kaisermühlendamm before access to Campingplatz To: about 50 meters against …<br/>[18.08.2026 – 25.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
