@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 21 Aug 2026 11:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 12:00:46 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[92A/92B: diversion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cd323f56e064a9f97b22be8b42096744762599fc25bc685fda779e4de00281d7</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 21 Aug 2026 12:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 27 Aug 2026 17:30:00 +0200</ext:ends_at>
+      <description>Because of filming in the Mendelssohngasse range, the buses are redirected towards Aspern, Zachgasse or Ölhafen. [21.08.2026 – 27.08.2026]</description>
+      <content:encoded><![CDATA[Because of filming in the Mendelssohngasse range, the buses are redirected towards Aspern, Zachgasse or Ölhafen.<br/>[21.08.2026 – 27.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: U4 folding ramp lock on 2608.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4ba09dc56eee83cba6cd0a0ff2696bc05497ed4c0b809358fbb920efb8b46d1e</guid>
+      <pubDate>Sat, 15 Aug 2026 20:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 21 Aug 2026 12:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 15 Aug 2026 20:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 26 Aug 2026 23:00:00 +0200</ext:ends_at>
+      <description>Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended. [15.08.2026 – 26.08.2026]</description>
+      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended.<br/>[15.08.2026 – 26.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -94,28 +116,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 17:00:00 +0200</ext:ends_at>
       <description>Due to construction works in the Zedlitzgasse, the 3A operating short-running buses are used. [20.08.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Due to construction works in the Zedlitzgasse, the 3A operating short-running buses are used.<br/>[20.08.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[35A: event service from Neustift, Agnesgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8add86ae80406aba4463c188a5159f96c8656ea87cdc88223c976d02bbfb6787</guid>
-      <pubDate>Fri, 21 Aug 2026 05:15:10 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 06:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 21 Aug 2026 05:15:10 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 01:55:00 +0200</ext:ends_at>
-      <description>service from Neustift, Agnesgasse [21.08.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[service from Neustift, Agnesgasse<br/>[21.08.2026 – 22.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: event Buses stop Invalidenstraße 13]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a932ac9f099edd99e7efdc79ded934e9e87e7fecc4827db0f013b1f30df2a19d</guid>
-      <pubDate>Thu, 20 Aug 2026 05:14:26 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 05:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 20 Aug 2026 05:14:26 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 21 Aug 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at Invalidenstraße 13 [20.08.2026 – 21.08.2026]</description>
-      <content:encoded><![CDATA[Buses stop at Invalidenstraße 13<br/>[20.08.2026 – 21.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
