@@ -1035,7 +1035,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "6: Polizeieinsatz Betrieb ab Matzleinsdorfer Platz",
-    "description": "Linie 6: Umleitung in Richtung Burggasse, Stadthalle U zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 18:05 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Bernhardtstalgasse.",
+    "description": "Linie 6: Umleitung in Richtung Burggasse, Stadthalle U zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 18:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Bernhardtstalgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
     "pubDate": "2026-08-21T17:45:00+02:00",
@@ -1210,6 +1210,18 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Polizeieinsatz",
+    "description": "Derzeit ist ein Betrieb zwischen Ottakring und Hütteldorfer Straße nicht möglich. Die Störung dauert voraussichtlich bis 18:40 Uhr. Grund dafür ist ein Polizeieinsatz im Haltestellenbereich Kendlerstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182",
+    "pubDate": "2026-08-21T18:12:00+02:00",
+    "starts_at": "2026-08-21T18:12:00+02:00",
+    "ends_at": "2026-08-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-08-21"
   },
   {
     "source": "Wiener Linien",
