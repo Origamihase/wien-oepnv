@@ -7,8 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 21 Aug 2026 18:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 19:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Matzleinsdorfer Platz]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;906481</guid>
+      <pubDate>Fri, 21 Aug 2026 18:46:39 +0200</pubDate>
+      <ext:first_seen>Fri, 21 Aug 2026 19:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 18:46:39 +0200</ext:starts_at>
+      <description>Due to an interlocking disturbance am Bahnhof, no journeys were possible between Vienna Hbf (U) and Wien Matzleinsdorfer Platz Bahnhst to 18:39 watch. [Since 21.08.2026]</description>
+      <content:encoded><![CDATA[Due to an interlocking disturbance am Bahnhof, no journeys were possible between Vienna Hbf (U) and Wien Matzleinsdorfer Platz Bahnhst to 18:39 watch.<br/>[Since 21.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[31A: Kagraner Friedhof]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +117,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 17:00:00 +0200</ext:ends_at>
       <description>Due to construction works in the Zedlitzgasse, the 3A operating short-running buses are used. [20.08.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Due to construction works in the Zedlitzgasse, the 3A operating short-running buses are used.<br/>[20.08.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[35A: event service from Neustift, Agnesgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8add86ae80406aba4463c188a5159f96c8656ea87cdc88223c976d02bbfb6787</guid>
-      <pubDate>Fri, 21 Aug 2026 05:15:10 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 06:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 21 Aug 2026 05:15:10 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 01:55:00 +0200</ext:ends_at>
-      <description>service from Neustift, Agnesgasse [21.08.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[service from Neustift, Agnesgasse<br/>[21.08.2026 – 22.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
