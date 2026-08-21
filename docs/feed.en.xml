@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 21 Aug 2026 05:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 05:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N75: event Buses stop Invalidenstraße 13]]></title>
@@ -61,8 +61,8 @@
       <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
       <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse lines 65A and 66A are being redirected. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse lines 65A and 66A are being redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
+      <description>Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 65A und 66A umgeleitet. [05.08.2026 – 31.08.2027]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 65A und 66A umgeleitet.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[3A: short-running service]]></title>
@@ -74,6 +74,17 @@
       <ext:ends_at>Fri, 04 Sep 2026 17:00:00 +0200</ext:ends_at>
       <description>Due to construction works in the Zedlitzgasse, the 3A operating short-running buses are used. [20.08.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Due to construction works in the Zedlitzgasse, the 3A operating short-running buses are used.<br/>[20.08.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[35A: event service from Neustift, Agnesgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8add86ae80406aba4463c188a5159f96c8656ea87cdc88223c976d02bbfb6787</guid>
+      <pubDate>Fri, 21 Aug 2026 05:15:10 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 06:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 05:15:10 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 01:55:00 +0200</ext:ends_at>
+      <description>service from Neustift, Agnesgasse [21.08.2026 – 22.08.2026]</description>
+      <content:encoded><![CDATA[service from Neustift, Agnesgasse<br/>[21.08.2026 – 22.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[74A: event Buses stop Invalidenstraße 13]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 19 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of roadworks in the Erzherzog-Karl-Straße in the Polgarstraße, Smolagasse, the lines 94A and the N90 call bus are redirected or operating short-running. [24.08.2026 – 19.08.2027]</description>
       <content:encoded><![CDATA[Because of roadworks in the Erzherzog-Karl-Straße in the Polgarstraße, Smolagasse, the lines 94A and the N90 call bus are redirected or operating short-running.<br/>[24.08.2026 – 19.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26/27/N20: track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">87899f7aaf434c2835a8f79f35e6dc309e36fc0c309fd31954dfa22200616a59</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 19 Aug 2026 17:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>The tracks in Donaufelder Straße are being renewed, so there are restrictions on the lines 25, 26, 27 and N20. Plan about 15 minutes more driving time … [14.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[The tracks in Donaufelder Straße are being renewed, so there are restrictions on the lines 25, 26, 27 and N20. Plan about 15 minutes more driving time …<br/>[14.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

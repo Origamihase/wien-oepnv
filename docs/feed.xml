@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 21 Aug 2026 05:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 05:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N75: Veranstaltung Busse halten Invalidenstraße 13]]></title>
@@ -76,6 +76,17 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Zedlitzgasse werden die Busse der Linie 3A kurzgeführt.<br/>[20.08.2026 – 04.09.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[35A: Veranstaltung Betrieb ab Neustift, Agnesgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8add86ae80406aba4463c188a5159f96c8656ea87cdc88223c976d02bbfb6787</guid>
+      <pubDate>Fri, 21 Aug 2026 05:15:10 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 06:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 05:15:10 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 01:55:00 +0200</ext:ends_at>
+      <description>Betrieb ab Neustift, Agnesgasse [21.08.2026 – 22.08.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Neustift, Agnesgasse<br/>[21.08.2026 – 22.08.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[74A: Veranstaltung Busse halten Invalidenstraße 13]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a932ac9f099edd99e7efdc79ded934e9e87e7fecc4827db0f013b1f30df2a19d</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 19 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Erzherzog-Karl-Straße im Bereich Polgarstraße, Smolagasse werden die Linien 94A und Rufbus N90 umgeleitet bzw. kurzgeführt. [24.08.2026 – 19.08.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Erzherzog-Karl-Straße im Bereich Polgarstraße, Smolagasse werden die Linien 94A und Rufbus N90 umgeleitet bzw. kurzgeführt.<br/>[24.08.2026 – 19.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26/27/N20: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">87899f7aaf434c2835a8f79f35e6dc309e36fc0c309fd31954dfa22200616a59</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 19 Aug 2026 17:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei den Linien 25, 26, 27 und N20. Planen Sie ca. 15 Minuten mehr Fahrzeit … [14.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei den Linien 25, 26, 27 und N20. Planen Sie ca. 15 Minuten mehr Fahrzeit …<br/>[14.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
