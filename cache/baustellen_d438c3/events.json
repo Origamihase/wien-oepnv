@@ -44,27 +44,6 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
-    "title": "Währinger Straße 46 bis 54",
-    "description": "Die Arbeiten erfolgen bei Tag und Nacht im Fahrbahnbereich der Währinger Straße zwischen Strudlhofgasse und Nußdorfer Straße, im Zuge der für den Fahrzeugverkehr eingerichteten Sperre seitens der Wiener Linien für die Gleisbauarbeiten. Arbeiten im Bereich der Gleise werden in Abstimmung bzw. im Schatten derGleisbauarbeiten der Wiener Linien in der Nacht sowie an Wochenenden durchgeführt. Der Fußgängerverkehr wird in geeigneter und sicherer Weiseaufrechterhalten. \nBeginn: 06.07.2026 00:00 Uhr \nGeplant bis: 20.08.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 9",
-    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
-    "guid": "108f4d124ff7062968c55ae298644b3c88b7728e95250725536b3258f01a2d54",
-    "pubDate": "2026-07-06T00:00:00+02:00",
-    "starts_at": "2026-07-06T00:00:00+02:00",
-    "ends_at": "2026-08-20T00:00:00+02:00",
-    "context": {
-      "district": "9",
-      "measure": "Rohrlegung"
-    },
-    "location": {
-      "coordinates": {
-        "lat": 48.22166513,
-        "lon": 16.35417883
-      }
-    }
-  },
-  {
-    "source": "Stadt Wien – Baustellen",
-    "category": "Baustelle",
     "title": "Neubaugürtel 6-12",
     "description": "Derrechte Fahrstreifen wird in Fahrtrichtung Burggasse gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. Das Linksabbiegen in Richtung Felberstraße ist nicht möglich. \nBeginn: 05.07.2026 00:00 Uhr \nGeplant bis: 06.09.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 7",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -479,27 +458,6 @@
       "coordinates": {
         "lat": 48.25022955,
         "lon": 16.39116327
-      }
-    }
-  },
-  {
-    "source": "Stadt Wien – Baustellen",
-    "category": "Baustelle",
-    "title": "Inzersdorfer Straße Kreuzung Leibnizgasse",
-    "description": "Die Leibnizgasse wird von Kreuzung Schröttergasse bis Kreuzung Angeligasse gesperrt.Eine Zufahrt zu den genehmigten Stellplätzen ist möglich.Die betroffenen Buslinien 7A, 65A und 66A werden örtlich umgeleitet.Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. Die Arbeiten erfolgen im Kreuzungsplateau.Die Inzersdorfer Straße wird von Kreuzung Senefeldergasse bis Kreuzung Ettenreichgasse gesperrt. \nBeginn: 10.08.2026 00:00 Uhr \nGeplant bis: 21.08.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 10",
-    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
-    "guid": "9742c146b684bbad9f5953a9b01c910b36e9e978d5f8b096f743dbff36ed7d5c",
-    "pubDate": "2026-08-10T00:00:00+02:00",
-    "starts_at": "2026-08-10T00:00:00+02:00",
-    "ends_at": "2026-08-21T00:00:00+02:00",
-    "context": {
-      "district": "10",
-      "measure": "Straßenbau"
-    },
-    "location": {
-      "coordinates": {
-        "lat": 48.17084839,
-        "lon": 16.37507552
       }
     }
   },
