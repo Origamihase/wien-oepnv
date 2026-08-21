@@ -7,8 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 21 Aug 2026 09:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 09:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;906325</guid>
+      <pubDate>Fri, 21 Aug 2026 09:23:43 +0200</pubDate>
+      <ext:first_seen>Fri, 21 Aug 2026 09:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 09:23:43 +0200</ext:starts_at>
+      <description>Due to an interlocking fault am Bahnhof, train journeys in the Vienna Railway Station (U) area are currently only limited. [Since 21.08.2026]</description>
+      <content:encoded><![CDATA[Due to an interlocking fault am Bahnhof, train journeys in the Vienna Railway Station (U) area are currently only limited.<br/>[Since 21.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Street festival]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f7d2256aa70632035d2b60383076e5059deab1d7168b85845f14daf07a3b963a</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 21 Aug 2026 09:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 20:30:00 +0200</ext:ends_at>
+      <description>Because of a road festival in the area of the wool line there are traffic measures. Period: Saturday, 05 September 2026, from the start of operation to the end of operation. [21.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Because of a road festival in the area of the wool line there are traffic measures. Period: Saturday, 05 September 2026, from the start of operation to the end of operation.<br/>[21.08.2026 – 05.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Simmering]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -95,28 +116,6 @@
       <ext:ends_at>Fri, 21 Aug 2026 23:59:59 +0200</ext:ends_at>
       <description>Buses stop at Invalidenstraße 13 [20.08.2026 – 21.08.2026]</description>
       <content:encoded><![CDATA[Buses stop at Invalidenstraße 13<br/>[20.08.2026 – 21.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[28A: Julius-Ficker-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4c08044cec0ac8dacfab6b506aa0be84fbbfead6b959e06f05d5a4fa8c0599dd</guid>
-      <pubDate>Thu, 20 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 00:00:43 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 20 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 14 Dec 2026 11:11:00 +0100</ext:ends_at>
-      <description>Stop transfer of line 28A towards Leopoldauer Platz Stop: Julius-Ficker-Straße From: Julius-Ficker-Straße before Kürschnergasse To: Julius-Ficker-Straße … [20.08.2026 – 14.12.2026]</description>
-      <content:encoded><![CDATA[Stop transfer of line 28A towards Leopoldauer Platz Stop: Julius-Ficker-Straße From: Julius-Ficker-Straße before Kürschnergasse To: Julius-Ficker-Straße …<br/>[20.08.2026 – 14.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[94A: 94A, call bus N90: roadworks]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">94cac53fd63e7de3d6847e992e5e5b90c13e1e032ee1c7fbd744501db265993d</guid>
-      <pubDate>Wed, 19 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 19 Aug 2026 17:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 24 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 19 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the Erzherzog-Karl-Straße in the Polgarstraße, Smolagasse, the lines 94A and the N90 call bus are redirected or operating short-running. [24.08.2026 – 19.08.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Erzherzog-Karl-Straße in the Polgarstraße, Smolagasse, the lines 94A and the N90 call bus are redirected or operating short-running.<br/>[24.08.2026 – 19.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
