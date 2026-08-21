@@ -1010,18 +1010,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
-    "pubDate": "2026-08-21T17:46:24+02:00",
-    "starts_at": "2026-08-21T17:46:24+02:00",
-    "ends_at": "2026-08-21T21:45:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-08-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1190,6 +1178,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Fahrtbehinderung in Richtung Karlsplatz. Voraussichtliche Dauer: 22:30 Uhr. Grund: Betriebsstörung im Haltestellenbereich Messe.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-08-21T21:55:00+02:00",
+    "starts_at": "2026-08-21T21:55:00+02:00",
+    "ends_at": "2026-08-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-08-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U3: Bauarbeiten",
     "description": "Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. Grund: Bauarbeiten im Bereich zwischen Hütteldorfer Straße und Westbahnhof.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1203,10 +1203,10 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U4: Schadhaftes Fahrzeug",
-    "description": "Linie U4: Fahrtbehinderung in Richtung Heiligenstadt. Voraussichtliche Dauer: 22:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Ober St. Veit.",
+    "description": "Die Linie U4 fährt derzeit nur zwischen Heiligenstadt und Unter St. Veit. Voraussichtliche Dauer: 22:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Ober St. Veit.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
-    "pubDate": "2026-08-21T19:36:00+02:00",
+    "pubDate": "2026-08-21T21:27:00+02:00",
     "starts_at": "2026-08-21T21:27:00+02:00",
     "ends_at": "2026-08-21T23:55:00+02:00",
     "_identity": "wl|störung|L=U4|D=2026-08-21"
