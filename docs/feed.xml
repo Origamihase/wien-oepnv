@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 22 Aug 2026 00:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 00:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[12A: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">326066bd4681c0785c5a1209c139e7d53faad9485ca545bc4a14759ff89bddf0</guid>
-      <pubDate>Fri, 21 Aug 2026 23:54:00 +0200</pubDate>
-      <ext:first_seen>Sat, 22 Aug 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 21 Aug 2026 23:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 22 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 00:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Akkonplatz. [21.08.2026 – 22.08.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 00:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Akkonplatz.<br/>[21.08.2026 – 22.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[31A: Kagraner Friedhof]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 04 Sep 2026 17:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Zedlitzgasse werden die Busse der Linie 3A kurzgeführt. [20.08.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Zedlitzgasse werden die Busse der Linie 3A kurzgeführt.<br/>[20.08.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[35A: Veranstaltung Betrieb ab Neustift, Agnesgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8add86ae80406aba4463c188a5159f96c8656ea87cdc88223c976d02bbfb6787</guid>
+      <pubDate>Fri, 21 Aug 2026 05:15:10 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 06:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 05:15:10 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 01:55:00 +0200</ext:ends_at>
+      <description>Betrieb ab Neustift, Agnesgasse [21.08.2026 – 22.08.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Neustift, Agnesgasse<br/>[21.08.2026 – 22.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
