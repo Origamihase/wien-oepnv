@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 22 Aug 2026 10:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 11:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[18/62/O: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[E3: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2a15c4cf9ffa9725ceae625394d66517a1a868a9a5631dbb929e9657ad8d118f</guid>
+      <guid isPermaLink="false">be97a3730d67ded9a492dc002b7a21340e8ac4cf354bdb26c67d608fca38e631</guid>
+      <pubDate>Sat, 22 Aug 2026 10:37:00 +0200</pubDate>
+      <ext:first_seen>Sat, 22 Aug 2026 11:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 22 Aug 2026 10:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 22.08.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 22.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5310c1ab3bb6c02af86e4265bbdd1dc8bc2363c2cc5eb579e2d9befcef8f4926</guid>
       <pubDate>Sat, 22 Aug 2026 10:22:00 +0200</pubDate>
-      <ext:first_seen>Sat, 22 Aug 2026 10:30:49 +0200</ext:first_seen>
+      <ext:first_seen>Sat, 22 Aug 2026 08:30:42 +0200</ext:first_seen>
       <ext:starts_at>Sat, 22 Aug 2026 10:22:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 22 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung in Richtung Schlachthausgasse U zwischen Matzleinsdorfer Plaz S und Hauptbahnhof S U über die Linien 6 und O. Die Haltestelle Hauptbahnhof S U wird bei der Linie … [Am 22.08.2026]</description>
-      <content:encoded><![CDATA[Umleitung in Richtung Schlachthausgasse U zwischen Matzleinsdorfer Plaz S und Hauptbahnhof S U über die Linien 6 und O. Die Haltestelle Hauptbahnhof S U wird bei der Linie …<br/>[Am 22.08.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 22.08.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 22.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37/42: Michelbeuern-AKH]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 27 Aug 2026 23:59:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [20.08.2026 – 27.08.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[20.08.2026 – 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A/66A: Inzersdorfer Straße # Leibnizgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d368be17853011da8c175531f69794a71009a1449d2f606dfe427e8a566e146e</guid>
-      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse lines 65A and 66A are being redirected. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse lines 65A and 66A are being redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
