@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 22 Aug 2026 20:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 21:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[57A: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ea62c449327bf335e63a7d607bb714e6ac14750aff28e2890f1af90455e231e6</guid>
+      <pubDate>Sat, 22 Aug 2026 20:57:30 +0200</pubDate>
+      <ext:first_seen>Sat, 22 Aug 2026 21:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 22 Aug 2026 20:57:30 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 21:57:00 +0200</ext:ends_at>
+      <description>[Am 22.08.2026]</description>
+      <content:encoded><![CDATA[[Am 22.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">65e41d4ee2138d1551141fe9980a59c0c75540522493118158db325df8ecbdd9</guid>
+      <pubDate>Sat, 22 Aug 2026 20:38:00 +0200</pubDate>
+      <ext:first_seen>Sat, 22 Aug 2026 21:00:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 22 Aug 2026 20:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 22.08.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 22.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[37/42: Michelbeuern-AKH]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Thu, 27 Aug 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. [20.08.2026 – 27.08.2026]</description>
       <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden.<br/>[20.08.2026 – 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A/66A: Inzersdorfer Straße # Leibnizgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d368be17853011da8c175531f69794a71009a1449d2f606dfe427e8a566e146e</guid>
-      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 65A und 66A umgeleitet. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 65A und 66A umgeleitet.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[3A: Kurzführung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f9efb4bddd35b0caa16e3f4aebc9fceaf0f0bf369cf6ce9277f49b358de77a0</guid>
-      <pubDate>Thu, 20 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 11:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 20 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 17:00:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Zedlitzgasse werden die Busse der Linie 3A kurzgeführt. [20.08.2026 – 04.09.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Zedlitzgasse werden die Busse der Linie 3A kurzgeführt.<br/>[20.08.2026 – 04.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
