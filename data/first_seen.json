@@ -17639,6 +17639,16 @@
       "epoch": 3
     }
   },
+  "fb4c0753b383c833bc940838e7d5193ad18d65173100c2986868ae8a6e001359": {
+    "first_seen": "2026-08-22T22:30:48.026419+00:00",
+    "translations": {
+      "en": {
+        "summary": "service from Landstra\u00dfe",
+        "title": "74A: event service from Landstra\u00dfe"
+      },
+      "epoch": 3
+    }
+  },
   "fb6187f5418284b8f1c12e7f700f7e582646769c7bcd3f588882792fa8b8ac36": {
     "first_seen": "2026-06-24T16:01:16.841477+00:00",
     "translations": {
@@ -17836,7 +17846,11 @@
   "fe34047eac32190683d870a440a2f3a8637a9a98ec80c5f1619f621aaa6223e2": {
     "first_seen": "2026-08-22T22:00:56.936000+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "The line 77A is redirected in both directions between Ludwig-Koe\u00dfler-Platz and Donaumarina U via A23. expected duration: operation close.",
+        "title": "77A: event"
+      },
+      "epoch": 3
     }
   },
   "fe3f8a2312d30d0eb23797471476e03f976bf63c554e15883b76157878946da9": {

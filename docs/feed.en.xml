@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 23 Aug 2026 00:00:56 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2026 00:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[77A: Veranstaltung]]></title>
+      <title><![CDATA[74A: event service from Landstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fb4c0753b383c833bc940838e7d5193ad18d65173100c2986868ae8a6e001359</guid>
+      <pubDate>Sat, 22 Aug 2026 04:00:19 +0200</pubDate>
+      <ext:first_seen>Sun, 23 Aug 2026 00:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 22 Aug 2026 04:00:19 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 23 Aug 2026 00:40:00 +0200</ext:ends_at>
+      <description>service from Landstraße [22.08.2026 – 23.08.2026]</description>
+      <content:encoded><![CDATA[service from Landstraße<br/>[22.08.2026 – 23.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[77A: event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">fe34047eac32190683d870a440a2f3a8637a9a98ec80c5f1619f621aaa6223e2</guid>
       <pubDate>Sat, 22 Aug 2026 15:34:00 +0200</pubDate>
       <ext:first_seen>Sun, 23 Aug 2026 00:00:56 +0200</ext:first_seen>
       <ext:starts_at>Sat, 22 Aug 2026 15:34:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 23 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 77A wird in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina U über A23 umgeleitet. Voraussichtliche Dauer: Betriebsschluß. [22.08.2026 – 23.08.2026]</description>
-      <content:encoded><![CDATA[Die Linie 77A wird in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina U über A23 umgeleitet. Voraussichtliche Dauer: Betriebsschluß.<br/>[22.08.2026 – 23.08.2026]]]></content:encoded>
+      <ext:ends_at>Sun, 23 Aug 2026 00:25:00 +0200</ext:ends_at>
+      <description>The line 77A is redirected in both directions between Ludwig-Koeßler-Platz and Donaumarina U via A23. expected duration: operation close. [22.08.2026 – 23.08.2026]</description>
+      <content:encoded><![CDATA[The line 77A is redirected in both directions between Ludwig-Koeßler-Platz and Donaumarina U via A23. expected duration: operation close.<br/>[22.08.2026 – 23.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56A/60A: Maurer Waldorf Lauf 13.09.2026]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:ends_at>
       <description>The access to the Sport &amp;amp; Fun Hall Donaustadt is possible.Further information about the diversion and the transfer of the public transports concerned are the … [23.08.2026 – 05.10.2026]</description>
       <content:encoded><![CDATA[The access to the Sport &amp; Fun Hall Donaustadt is possible.Further information about the diversion and the transfer of the public transports concerned are the …<br/>[23.08.2026 – 05.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Folding ramp lock on 2708.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2554a3ce6541d8cfac37c1160139fe8dc9ea593f34a78b0ebf19fdc50da04f61</guid>
-      <pubDate>Thu, 20 Aug 2026 14:05:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 20 Aug 2026 14:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 23:59:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [20.08.2026 – 27.08.2026]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[20.08.2026 – 27.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
