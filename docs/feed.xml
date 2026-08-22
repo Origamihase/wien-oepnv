@@ -7,18 +7,62 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 22 Aug 2026 18:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 19:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1/2/D/71/40A: Veranstaltung]]></title>
+      <title><![CDATA[2: Veranstaltung Betrieb ab Schwedenplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ce17225608ce5799e35ae8c1409824ca8957f749fe4f4219ceb7d94b19f212ab</guid>
-      <pubDate>Sat, 22 Aug 2026 18:19:00 +0200</pubDate>
-      <ext:first_seen>Sat, 22 Aug 2026 18:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 22 Aug 2026 18:19:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">39a4e23ded170c8129efe72a2471b1d4b2a7d98424bc3a55b3e12e849178a8bc</guid>
+      <pubDate>Sat, 22 Aug 2026 18:53:17 +0200</pubDate>
+      <ext:first_seen>Sat, 22 Aug 2026 19:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 22 Aug 2026 18:53:18 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 19:47:00 +0200</ext:ends_at>
+      <description>Betrieb ab Schwedenplatz [Am 22.08.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Schwedenplatz<br/>[Am 22.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Veranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">960ec17e0b0ba7ebf6d27532d534eec29f54e9dc249a46ce171c5ede0585307d</guid>
+      <pubDate>Sat, 22 Aug 2026 18:36:00 +0200</pubDate>
+      <ext:first_seen>Sat, 22 Aug 2026 19:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 22 Aug 2026 18:36:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 22 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. [Am 22.08.2026]</description>
-      <content:encoded><![CDATA[Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz.<br/>[Am 22.08.2026]]]></content:encoded>
+      <description>Fahrtbehinderung in Richtung Schottenring U. Weichen Sie ersatzweise auf die Linien U2 und U3 aus. Voraussichtliche Dauer: 19:15 Uhr. Grund: Veranstaltung im Bereich Innere … [Am 22.08.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Schottenring U. Weichen Sie ersatzweise auf die Linien U2 und U3 aus. Voraussichtliche Dauer: 19:15 Uhr. Grund: Veranstaltung im Bereich Innere …<br/>[Am 22.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Fahrtbehinderung Veranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3f7ca9d2dddd979dcffcf7549ad72bae2007242e5a6b4a1216f569c850245b8f</guid>
+      <pubDate>Sat, 22 Aug 2026 18:35:46 +0200</pubDate>
+      <ext:first_seen>Sat, 22 Aug 2026 19:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 22 Aug 2026 18:35:46 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 19:35:00 +0200</ext:ends_at>
+      <description>[Am 22.08.2026]</description>
+      <content:encoded><![CDATA[[Am 22.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A: Veranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">05828e40609e92265c7268996ad2e0f95dc6b46270801b19aac119f674867429</guid>
+      <pubDate>Sat, 22 Aug 2026 18:32:00 +0200</pubDate>
+      <ext:first_seen>Sat, 22 Aug 2026 19:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 22 Aug 2026 18:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Veranstaltung. [Am 22.08.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Veranstaltung.<br/>[Am 22.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Fahrtbehinderung Veranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8656d30d6a2b8668e475d87998dbffcd235b529752e65ab23969910838d1adc5</guid>
+      <pubDate>Sat, 22 Aug 2026 18:15:14 +0200</pubDate>
+      <ext:first_seen>Sat, 22 Aug 2026 19:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 22 Aug 2026 18:30:17 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 22 Aug 2026 19:29:00 +0200</ext:ends_at>
+      <description>[Am 22.08.2026]</description>
+      <content:encoded><![CDATA[[Am 22.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37/42: Michelbeuern-AKH]]></title>
@@ -74,50 +118,6 @@
       <ext:ends_at>Sat, 05 Sep 2026 20:30:00 +0200</ext:ends_at>
       <description>Wegen eines Straßenfestes im Bereich der Wollzeile kommt es zu Verkehrsmaßnahmen. Zeitraum: Samstag, 05. September 2026, von Betriebsbeginn bis Betriebsschluss. [21.08.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[Wegen eines Straßenfestes im Bereich der Wollzeile kommt es zu Verkehrsmaßnahmen. Zeitraum: Samstag, 05. September 2026, von Betriebsbeginn bis Betriebsschluss.<br/>[21.08.2026 – 05.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Rosenhügelstraße von Bertégasse bis Karl-Schwed-Gasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">5e91154753943a0c8c183b305e5d5f40f9378e16d38e553e44cc39c42d03f9a8</guid>
-      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 22:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 26 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 01 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Rosenhügelstraße wird von Bertégasse bis und in Richtung Karl-Schwed-Gasse zur Einbahn.Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen … [26.08.2026 – 01.09.2026]</description>
-      <content:encoded><![CDATA[Die Rosenhügelstraße wird von Bertégasse bis und in Richtung Karl-Schwed-Gasse zur Einbahn.Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen …<br/>[26.08.2026 – 01.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Erzherzog-Karl-Straße Kreuzung Polgarstraße bis Smolagasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">83daab8216d5a9e45ccefbd9d8b6bde84cb923b4e45c95c5311ceb6912f2222d</guid>
-      <pubDate>Sun, 23 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 22:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 23 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Zufahrt zur Sport &amp;amp; Fun Halle Donaustadt ist möglich.Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der … [23.08.2026 – 05.10.2026]</description>
-      <content:encoded><![CDATA[Die Zufahrt zur Sport &amp; Fun Halle Donaustadt ist möglich.Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der …<br/>[23.08.2026 – 05.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Klapprampensperre am 27.08.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2554a3ce6541d8cfac37c1160139fe8dc9ea593f34a78b0ebf19fdc50da04f61</guid>
-      <pubDate>Thu, 20 Aug 2026 14:05:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 20 Aug 2026 14:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 23:59:00 +0200</ext:ends_at>
-      <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. [20.08.2026 – 27.08.2026]</description>
-      <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden.<br/>[20.08.2026 – 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A/66A: Inzersdorfer Straße # Leibnizgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d368be17853011da8c175531f69794a71009a1449d2f606dfe427e8a566e146e</guid>
-      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 65A und 66A umgeleitet. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 65A und 66A umgeleitet.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
