@@ -758,14 +758,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
+    "title": "11: Züge halten bei Li. 15A",
+    "description": "Gleisbauarbeiten\nZüge halten bei Li. 15A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
-    "pubDate": "2026-08-22T21:07:00+02:00",
-    "starts_at": "2026-08-22T21:13:31+02:00",
-    "ends_at": "2026-08-22T22:13:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-08-22"
+    "guid": "0a357d69f4eb7f19d80612505230e0a8b5a1c830acc3efdd3d3975ba59c7dcd4",
+    "pubDate": "2026-08-22T22:30:11+02:00",
+    "starts_at": "2026-08-22T22:30:11+02:00",
+    "ends_at": "2026-08-23T04:00:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-08-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Betrieb ab Enkplatz, Grillgasse U",
+    "description": "Gleisbauarbeiten\nBetrieb ab Enkplatz, Grillgasse U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abea439b99914caae1f139ae04541cb8b28bf3253946cd184ea247027a183900",
+    "pubDate": "2026-08-22T22:30:11+02:00",
+    "starts_at": "2026-08-22T22:30:11+02:00",
+    "ends_at": "2026-08-23T04:00:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-08-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Benützen Sie den Schienenersatzverkehr 71E",
+    "description": "Gleisbauarbeiten\nBenützen Sie den Schienenersatzverkehr 71E",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ada902634b8f201c79dcefb677d9cf487db94fdd63d609fe94f62aba9645aab3",
+    "pubDate": "2026-08-22T22:30:06+02:00",
+    "starts_at": "2026-08-22T22:30:12+02:00",
+    "ends_at": "2026-08-23T04:00:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-08-22"
   },
   {
     "source": "Wiener Linien",
@@ -950,18 +974,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ea62c449327bf335e63a7d607bb714e6ac14750aff28e2890f1af90455e231e6",
-    "pubDate": "2026-08-22T20:57:30+02:00",
-    "starts_at": "2026-08-22T20:57:30+02:00",
-    "ends_at": "2026-08-22T22:22:00+02:00",
-    "_identity": "wl|störung|L=57A|D=2026-08-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "59A: Busse halten Reinprechtsdorfer Straße 39-41",
     "description": "Busse halten\nReinprechtsdorfer Straße 39-41",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1018,6 +1030,18 @@
     "starts_at": "2026-08-19T00:00:24+02:00",
     "ends_at": "2026-08-22T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Benützen Sie den Schienenersatzverkehr 71E",
+    "description": "Gleisbauarbeiten\nBenützen Sie den Schienenersatzverkehr 71E",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9e6a5649f358321a3f0deb22e5557135fd9cc18eaa7418d24f381d6e2eeb4c83",
+    "pubDate": "2026-08-22T22:30:06+02:00",
+    "starts_at": "2026-08-22T22:30:12+02:00",
+    "ends_at": "2026-08-23T04:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-08-22"
   },
   {
     "source": "Wiener Linien",
