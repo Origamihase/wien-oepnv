@@ -746,18 +746,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/71/D: Gleisbauarbeiten",
-    "description": "Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U. Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U und Julius-Raab-Platz über Schwarzenbergplatz und Stubentor U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatzweise benutzen Sie die Linien U1, U2, U3, U4 und 2. Die Intervalle der Linien U2 und 2 werden verdichtet. Die Störung dauert bis Samstag, 22. August 2026, etwa 04:00 Uhr.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "398b2bc1ec19bb2ffd62002079135f2887d9b455258808125d2cbd0ac3a39cc4",
-    "pubDate": "2026-07-13T04:00:00+02:00",
-    "starts_at": "2026-07-13T04:00:00+02:00",
-    "ends_at": "2026-08-22T04:00:00+02:00",
-    "_identity": "wl|störung|L=1,71,D|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10A: Busse halten Gregor-Mendel-Straße ggü. 33",
     "description": "Bauarbeiten\nBusse halten Gregor-Mendel-Straße ggü. 33",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -802,18 +790,6 @@
     "starts_at": "2026-08-21T22:30:24+02:00",
     "ends_at": "2026-08-22T04:00:00+02:00",
     "_identity": "wl|störung|L=11|D=2026-08-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5/12/37/38/40/41/42: Gleisbauarbeiten",
-    "description": "Linie 5: Kein Betrieb zwischen Lerchenfelder Straße und Franz-Josefs-Bahnhof S. Betrieb zwischen Westbahnhof S U und Lerchenfelder Straße. Weiterfahrt bis Josefstädter Straße U. Betrieb zwischen Praterstern S U und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linien 40 und 42 über Währinger Straße, Volksoper U - Linien 42 und 9 - Gersthof S bis Herbeckstraße. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Weiterfahrt als Ersatz für die Linie 41 über Währinger Straße, Volksoper U und Gersthof S bis Pötzleinsdorf. Linien 40, 41, 42: Kein Betrieb. Die Außenäste werden von den Linien 37 und 38 übernommen. Ersatzweise benutzen Sie die Linien U2, U4, U6, D, 2, 43, 44, 13A und 40A. Die Linie 40A ist in dichteren Intervallen unterwegs. Die Störung dauert bis Samstag, 22. August 2026 etwa 04:00 Uhr.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5627b0160e655cb3f00287a1e43fd9bb84f40f90804ad931f4aaa44da4c254a7",
-    "pubDate": "2026-07-13T04:00:00+02:00",
-    "starts_at": "2026-07-13T04:00:00+02:00",
-    "ends_at": "2026-08-22T04:00:00+02:00",
-    "_identity": "wl|störung|L=12,37,38,40,41,42,5|D=2026-07-13"
   },
   {
     "source": "Wiener Linien",
@@ -878,6 +854,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37: Kein Betrieb",
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13d72b4bf0cd9ae5af44d6404fcb8793ef77a9eef5063bf25f4217954bdee71b",
+    "pubDate": "2026-08-19T00:00:20+02:00",
+    "starts_at": "2026-08-19T00:00:20+02:00",
+    "ends_at": "2026-08-22T04:00:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Betrieb ab Nußdorfer Straße",
+    "description": "Gleisbauarbeiten\nBetrieb ab Nußdorfer Straße >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e248a0edc1f597529d2099e4e499669fbd6077d104bbc53931532d683676197a",
+    "pubDate": "2026-08-19T00:00:20+02:00",
+    "starts_at": "2026-08-19T00:00:24+02:00",
+    "ends_at": "2026-08-22T04:00:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -886,6 +886,18 @@
     "starts_at": "2026-08-19T00:00:22+02:00",
     "ends_at": "2026-08-22T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Haltestelle verlegt nach Obere Augartenstr. 42",
+    "description": "Haltestelle\nverlegt\nnach Obere\nAugartenstr. 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e886ce64095fb504ba0ed863b78d6c8e5048ecd170aadd5e8bba662191a14df7",
+    "pubDate": "2026-08-19T00:00:22+02:00",
+    "starts_at": "2026-08-19T00:00:22+02:00",
+    "ends_at": "2026-08-22T23:59:59+02:00",
+    "_identity": "wl|störung|L=42|D=2026-08-19"
   },
   {
     "source": "Wiener Linien",
@@ -1006,6 +1018,18 @@
     "starts_at": "2026-08-19T00:00:24+02:00",
     "ends_at": "2026-08-22T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Benützen Sie den Schienenersatzverkehr 71E",
+    "description": "Gleisbauarbeiten\nBenützen Sie den Schienenersatzverkehr 71E",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9e6a5649f358321a3f0deb22e5557135fd9cc18eaa7418d24f381d6e2eeb4c83",
+    "pubDate": "2026-08-21T22:30:22+02:00",
+    "starts_at": "2026-08-21T22:30:23+02:00",
+    "ends_at": "2026-08-22T04:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-08-21"
   },
   {
     "source": "Wiener Linien",
