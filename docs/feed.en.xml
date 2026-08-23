@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 23 Aug 2026 01:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2026 02:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[56A/60A: Maurer Waldorf Lauf 13.09.2026]]></title>
@@ -76,6 +76,17 @@
       <content:encoded><![CDATA[Because of a road festival in the area of the wool line there are traffic measures. Period: Saturday, 05 September 2026, from the start of operation to the end of operation.<br/>[21.08.2026 – 05.09.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[N35: event service from Neustift, Agnesgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a6b0d375c2dad8d652b1e1eb623f52895f0c27ec78a295eb0c7135eb638e1f27</guid>
+      <pubDate>Sun, 23 Aug 2026 01:55:30 +0200</pubDate>
+      <ext:first_seen>Fri, 21 Aug 2026 02:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 23 Aug 2026 01:55:30 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 23 Aug 2026 05:00:00 +0200</ext:ends_at>
+      <description>service from Neustift, Agnesgasse [On 23.08.2026]</description>
+      <content:encoded><![CDATA[service from Neustift, Agnesgasse<br/>[On 23.08.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[Rosenhügelstraße from Bertégasse to Karl-Schwed-Gasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
       <guid isPermaLink="false">5e91154753943a0c8c183b305e5d5f40f9378e16d38e553e44cc39c42d03f9a8</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 27 Aug 2026 23:59:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [20.08.2026 – 27.08.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[20.08.2026 – 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A/66A: Inzersdorfer Straße # Leibnizgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d368be17853011da8c175531f69794a71009a1449d2f606dfe427e8a566e146e</guid>
-      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse lines 65A and 66A are being redirected. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse lines 65A and 66A are being redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
