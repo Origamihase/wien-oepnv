@@ -854,18 +854,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "50A: Falschparker",
-    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker im Haltestellenbereich Auhof.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d8237ec6ad4aa37e360bd01d080083b93bf5aad5bba8399c6b4e72de49b31dd8",
-    "pubDate": "2026-08-23T11:46:00+02:00",
-    "starts_at": "2026-08-23T11:46:00+02:00",
-    "ends_at": "2026-08-23T23:55:00+02:00",
-    "_identity": "wl|störung|L=50A|D=2026-08-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Die Linie 57A fährt derzeit nicht zwischen Gumpendorfer Straße U und Haus des Meeres. Weichen Sie ersatzweise auf die Linien U2, U3, U4, U6 aus. Voraussichtliche Dauer: 04. September 2026 . Grund: Bauarbeiten im Bereich Gumpendorfer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1030,6 +1018,18 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-08-23T12:18:00+02:00",
+    "starts_at": "2026-08-23T12:18:00+02:00",
+    "ends_at": "2026-08-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-08-23"
   },
   {
     "source": "Wiener Linien",
