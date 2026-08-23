@@ -854,6 +854,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "49: Verunreinigung",
+    "description": "Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2fbbea16f60476909b3dad2d4bf80f6a0c66cc8583cd80c4c5431baf3ee4a98",
+    "pubDate": "2026-08-23T15:11:00+02:00",
+    "starts_at": "2026-08-23T15:11:00+02:00",
+    "ends_at": "2026-08-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-08-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Die Linie 57A fährt derzeit nicht zwischen Gumpendorfer Straße U und Haus des Meeres. Weichen Sie ersatzweise auf die Linien U2, U3, U4, U6 aus. Voraussichtliche Dauer: 04. September 2026 . Grund: Bauarbeiten im Bereich Gumpendorfer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -926,6 +938,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5: Betriebsstörung Betrieb ab Albertgasse",
+    "description": "Betriebsstörung\nBetrieb ab Albertgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "625e6f9803c6c4f0b9b8b205133b176fac8e716ae0ea811e7b5eea02f69e894a",
+    "pubDate": "2026-08-23T15:28:11+02:00",
+    "starts_at": "2026-08-23T15:28:12+02:00",
+    "ends_at": "2026-08-23T16:27:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-08-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung Falschparker",
+    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 16:00 Uhr . Grund: Falschparker im Bereich Kaiserstraße 8.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
+    "pubDate": "2026-08-23T15:22:00+02:00",
+    "starts_at": "2026-08-23T15:29:11+02:00",
+    "ends_at": "2026-08-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-08-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -958,6 +994,18 @@
     "starts_at": "2026-08-19T00:00:24+02:00",
     "ends_at": "2026-08-23T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Rettungseinsatz",
+    "description": "Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c",
+    "pubDate": "2026-08-23T15:00:00+02:00",
+    "starts_at": "2026-08-23T15:00:00+02:00",
+    "ends_at": "2026-08-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-08-23"
   },
   {
     "source": "Wiener Linien",
@@ -1030,18 +1078,6 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-08-23T14:24:00+02:00",
-    "starts_at": "2026-08-23T14:24:00+02:00",
-    "ends_at": "2026-08-23T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-08-23"
   },
   {
     "source": "Wiener Linien",
