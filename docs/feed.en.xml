@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 23 Aug 2026 16:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2026 17:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[30: external traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3621654c60cf24b3f3c5221527a36c97dce514a6b050e4d754928984eabd2e20</guid>
-      <pubDate>Sun, 23 Aug 2026 15:35:00 +0200</pubDate>
-      <ext:first_seen>Sun, 23 Aug 2026 16:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 23 Aug 2026 15:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 23 Aug 2026 16:23:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 23.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 23.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[56A/60A: Maurer Waldorf Lauf 13.09.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 27 Aug 2026 23:59:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [20.08.2026 – 27.08.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[20.08.2026 – 27.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[65A/66A: Inzersdorfer Straße # Leibnizgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d368be17853011da8c175531f69794a71009a1449d2f606dfe427e8a566e146e</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Inzersdorfer Straße / Leibnizgasse lines 65A and 66A are being redirected. [05.08.2026 – 31.08.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Inzersdorfer Straße / Leibnizgasse lines 65A and 66A are being redirected.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

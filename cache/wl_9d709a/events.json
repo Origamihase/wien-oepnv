@@ -746,12 +746,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Rettungseinsatz Züge halten Leberstraße (74A)",
+    "title": "18: Rettungseinsatz",
     "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
     "pubDate": "2026-08-23T15:54:00+02:00",
-    "starts_at": "2026-08-23T15:57:14+02:00",
+    "starts_at": "2026-08-23T15:54:00+02:00",
     "ends_at": "2026-08-23T23:55:00+02:00",
     "_identity": "wl|störung|L=18|D=2026-08-23"
   },
@@ -766,18 +766,6 @@
     "starts_at": "2026-08-23T00:00:21+02:00",
     "ends_at": "2026-08-23T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-08-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "30: Fremder Verkehrsunfall",
-    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3621654c60cf24b3f3c5221527a36c97dce514a6b050e4d754928984eabd2e20",
-    "pubDate": "2026-08-23T15:35:00+02:00",
-    "starts_at": "2026-08-23T15:35:00+02:00",
-    "ends_at": "2026-08-23T16:23:00+02:00",
-    "_identity": "wl|störung|L=30|D=2026-08-23"
   },
   {
     "source": "Wiener Linien",
@@ -854,14 +842,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Haltestelle verlegt nach Obere Augartenstr. 42",
-    "description": "Haltestelle\nverlegt\nnach Obere\nAugartenstr. 42",
+    "title": "40: Falschparker",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e886ce64095fb504ba0ed863b78d6c8e5048ecd170aadd5e8bba662191a14df7",
-    "pubDate": "2026-08-23T00:00:20+02:00",
-    "starts_at": "2026-08-23T00:00:20+02:00",
-    "ends_at": "2026-08-23T23:59:59+02:00",
-    "_identity": "wl|störung|L=42|D=2026-08-23"
+    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
+    "pubDate": "2026-08-23T16:43:00+02:00",
+    "starts_at": "2026-08-23T16:43:00+02:00",
+    "ends_at": "2026-08-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=40|D=2026-08-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Falschparker Züge halten bei Linie 40",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2026-08-23T16:43:00+02:00",
+    "starts_at": "2026-08-23T16:52:20+02:00",
+    "ends_at": "2026-08-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=41|D=2026-08-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42/9: Falschparker Umleitung über 42 und 9 Züge halten bei Linie 42",
+    "description": "Falschparker Umleitung über 42 und 9\nZüge halten bei Linie 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d0306412af66249baa2e50a703d32bf283d9f6320fd3f4faaa25f07a5180723d",
+    "pubDate": "2026-08-23T16:51:20+02:00",
+    "starts_at": "2026-08-23T16:51:20+02:00",
+    "ends_at": "2026-08-23T17:50:00+02:00",
+    "_identity": "wl|störung|L=42,9|D=2026-08-23"
   },
   {
     "source": "Wiener Linien",
@@ -1070,6 +1082,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-08-23T16:33:00+02:00",
+    "starts_at": "2026-08-23T16:33:00+02:00",
+    "ends_at": "2026-08-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-08-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U3: Bauarbeiten",
     "description": "Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. Grund: Bauarbeiten im Bereich zwischen Hütteldorfer Straße und Westbahnhof.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1106,37 +1130,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Fahrtbehindertung Fremdunfall",
-    "description": "Fahrtbehindertung Fremdunfall",
+    "title": "Falschparker Betrieb ab Gersthof",
+    "description": "Falschparker Betrieb ab Gersthof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "795dea2233e3e28dfecaccc0985ada6af845406e9e83259a03749d1494341569",
-    "pubDate": "2026-08-23T15:46:16+02:00",
-    "starts_at": "2026-08-23T15:46:16+02:00",
-    "ends_at": "2026-08-23T16:45:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-08-23|TK=fahrtbehindertung fremdunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fremdunfall Betrieb ab Floridsdorfer Markt",
-    "description": "Fremdunfall\nBetrieb ab Floridsdorfer Markt",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8cffe0be3e97d2a8a34fca7f76f1f03c82206b68ea70d9ee2788240b6c1772f9",
-    "pubDate": "2026-08-23T15:44:13+02:00",
-    "starts_at": "2026-08-23T15:44:15+02:00",
-    "ends_at": "2026-08-23T16:46:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-08-23|TK=fremdunfall betrieb ab floridsdorfer markt"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fremdunfall Züge halten Peitlgasse",
-    "description": "Fremdunfall\nZüge halten Peitlgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "70f6be9a8321a77d31fa565fa39ade0eda9c30624f8c657ce1d4e1275735d714",
-    "pubDate": "2026-08-23T15:45:16+02:00",
-    "starts_at": "2026-08-23T15:45:16+02:00",
-    "ends_at": "2026-08-23T16:44:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-08-23|TK=fremdunfall züge halten peitlgasse"
+    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
+    "pubDate": "2026-08-23T16:50:50+02:00",
+    "starts_at": "2026-08-23T16:50:50+02:00",
+    "ends_at": "2026-08-23T17:49:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-08-23|TK=falschparker"
   }
 ]
