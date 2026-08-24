@@ -782,18 +782,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "32A: Rettungseinsatz",
-    "description": "Linie 32A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61",
-    "pubDate": "2026-08-24T13:27:00+02:00",
-    "starts_at": "2026-08-24T13:27:00+02:00",
-    "ends_at": "2026-08-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=32A|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "36B: Busse halten Brünner Straße 118",
     "description": "Busse halten\nBrünner Straße 118",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -902,18 +890,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52: Schadhaftes Fahrzeug",
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806",
-    "pubDate": "2026-08-24T13:19:00+02:00",
-    "starts_at": "2026-08-24T13:19:00+02:00",
-    "ends_at": "2026-08-24T13:56:00+02:00",
-    "_identity": "wl|störung|L=52|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "57A: Bauarbeiten",
     "description": "Die Linie 57A fährt derzeit nicht zwischen Gumpendorfer Straße U und Haus des Meeres. Weichen Sie ersatzweise auf die Linien U2, U3, U4, U6 aus. Voraussichtliche Dauer: 04. September 2026 . Grund: Bauarbeiten im Bereich Gumpendorfer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1010,6 +986,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "71: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c",
+    "pubDate": "2026-08-24T14:09:00+02:00",
+    "starts_at": "2026-08-24T14:12:21+02:00",
+    "ends_at": "2026-08-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-08-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 116",
     "description": "Bauarbeiten\nBusse halten Landstraßer Hauptstraße 116",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1066,6 +1054,18 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in Richtung Seestadt. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-08-24T14:05:00+02:00",
+    "starts_at": "2026-08-24T14:05:00+02:00",
+    "ends_at": "2026-08-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-08-24"
   },
   {
     "source": "Wiener Linien",
