@@ -9659,8 +9659,10 @@
     "first_seen": "2026-08-24T10:30:47.099773+00:00",
     "translations": {
       "en": {
-        "summary": "After an service obstruction there are different intervals."
-      }
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "1: foreign traffic accident"
+      },
+      "epoch": 3
     }
   },
   "86020124ebae3523ffadf6a2402a14638e1920a0d8ce4b3b1c11ab5f3e271000": {
@@ -16531,8 +16533,10 @@
     "first_seen": "2026-08-24T11:30:46.482253+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions. Reason: vandalism."
-      }
+        "summary": "irregular intervals in both directions. Reason: vandalism.",
+        "title": "U6: Vandalism"
+      },
+      "epoch": 3
     }
   },
   "e8bf3126bf9a825a7f5b50161ab48e0385929d240bf167dcab856f541ad49cc2": {
@@ -19837,8 +19841,10 @@
     "first_seen": "2026-08-24T11:00:55.867989+00:00",
     "translations": {
       "en": {
+        "summary": "Due to construction works, between Vienna Hbf (U) and Gramatneusiedl Station of 31.10.2026 to 30.11.2026 \u2026",
         "title": "Wien Hauptbahnhof \u2194 Gramatneusiedl"
-      }
+      },
+      "epoch": 3
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
