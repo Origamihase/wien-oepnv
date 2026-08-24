@@ -770,18 +770,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fremdunfall Umleitung bis Julius - Raab - Platz über Linie 2",
-    "description": "Fremdunfall\nUmleitung bis Julius - Raab - Platz über Linie 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
-    "pubDate": "2026-08-24T11:54:06+02:00",
-    "starts_at": "2026-08-24T12:03:09+02:00",
-    "ends_at": "2026-08-24T13:01:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -790,6 +778,18 @@
     "starts_at": "2026-08-23T00:00:21+02:00",
     "ends_at": "2026-08-24T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-08-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Rettungseinsatz",
+    "description": "Linie 32A: Fahrtbehinderung in Richtung Bahnhof Strebersdorf S. Voraussichtliche Dauer: 13:40 Uhr. Grund: Rettungseinsatz im Bereich Kainachgasse 37.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61",
+    "pubDate": "2026-08-24T13:27:00+02:00",
+    "starts_at": "2026-08-24T13:27:00+02:00",
+    "ends_at": "2026-08-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=32A|D=2026-08-24"
   },
   {
     "source": "Wiener Linien",
@@ -878,25 +878,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Stromstörung Betrieb ab Breitensee S",
-    "description": "Stromstörung\nBetrieb ab Breitensee S",
+    "title": "49: Stromstörung",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "266e0274da5405936a0899064b3516a2c9744955bb776695dd95c60d4a43ea08",
-    "pubDate": "2026-08-24T12:29:41+02:00",
-    "starts_at": "2026-08-24T12:29:42+02:00",
-    "ends_at": "2026-08-24T13:29:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Stromstörung",
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e5553176ac9c6c526dd97f7a465c0deef6d38a7f3093dbf336415f3b936fc6c9",
-    "pubDate": "2026-08-24T12:30:41+02:00",
-    "starts_at": "2026-08-24T12:30:42+02:00",
-    "ends_at": "2026-08-24T13:30:00+02:00",
+    "guid": "2f1d96771a58b88da2b9d317522e8929cb6579f7ec8d9df6b334cac5e78f5ec6",
+    "pubDate": "2026-08-24T12:27:00+02:00",
+    "starts_at": "2026-08-24T12:27:00+02:00",
+    "ends_at": "2026-08-24T23:55:00+02:00",
     "_identity": "wl|störung|L=49|D=2026-08-24"
   },
   {
@@ -909,6 +897,30 @@
     "pubDate": "2026-08-24T12:33:40+02:00",
     "starts_at": "2026-08-24T12:33:40+02:00",
     "ends_at": "2026-08-24T13:33:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-08-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Schadhaftes Fahrzeug",
+    "description": "Linie 52: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Gruschaplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806",
+    "pubDate": "2026-08-24T13:19:00+02:00",
+    "starts_at": "2026-08-24T13:19:00+02:00",
+    "ends_at": "2026-08-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-08-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Stromstörung",
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ca96c400f34d3f459ece5e303d5437126f2f229be63b4fe1525fb361fc7ed47d",
+    "pubDate": "2026-08-24T12:27:00+02:00",
+    "starts_at": "2026-08-24T12:27:00+02:00",
+    "ends_at": "2026-08-24T13:27:00+02:00",
     "_identity": "wl|störung|L=52|D=2026-08-24"
   },
   {
@@ -1058,30 +1070,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Fremdunfall Betrieb ab Schwarzenbergplatz",
-    "description": "Fremdunfall\nBetrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4414bbdca0d0ddd98f061a6e67d3edd1a9042ebd9562cb2b16c4a6f05b8dd0bd",
-    "pubDate": "2026-08-24T12:04:07+02:00",
-    "starts_at": "2026-08-24T12:04:07+02:00",
-    "ends_at": "2026-08-24T13:03:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7baa8d9ff91217cb25c5f1e8cab870f11bf46d1017173d29193320738f5e79d6",
-    "pubDate": "2026-08-24T12:03:36+02:00",
-    "starts_at": "2026-08-24T12:03:36+02:00",
-    "ends_at": "2026-08-24T13:03:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 116",
     "description": "Bauarbeiten\nBusse halten Landstraßer Hauptstraße 116",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1100,7 +1088,7 @@
     "guid": "f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd",
     "pubDate": "2026-08-24T11:51:00+02:00",
     "starts_at": "2026-08-24T11:51:00+02:00",
-    "ends_at": "2026-08-24T23:55:00+02:00",
+    "ends_at": "2026-08-24T13:27:00+02:00",
     "_identity": "wl|störung|L=D|D=2026-08-24"
   },
   {
@@ -1166,12 +1154,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Verunreinigung",
-    "description": "Linie U6: Unregelmäßige Intervalle in Richtung Siebenhirten. Grund: Verunreinigung.",
+    "title": "U6: Vandalismus",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515",
-    "pubDate": "2026-08-24T12:30:00+02:00",
-    "starts_at": "2026-08-24T12:30:00+02:00",
+    "guid": "e8901cc9e29cdbdff37b60e1a186ea84cfcae63da145aa8e8cd5bef374a87a0d",
+    "pubDate": "2026-08-24T13:28:00+02:00",
+    "starts_at": "2026-08-24T13:28:00+02:00",
     "ends_at": "2026-08-24T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-08-24"
   },

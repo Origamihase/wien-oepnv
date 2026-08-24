@@ -3275,6 +3275,16 @@
       }
     }
   },
+  "2f1d96771a58b88da2b9d317522e8929cb6579f7ec8d9df6b334cac5e78f5ec6": {
+    "first_seen": "2026-08-24T11:30:46.482253+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "49: current disturbance"
+      },
+      "epoch": 3
+    }
+  },
   "2f211a56060e7940b7c7ddda3184bb386f2d89917b0dda3b44b8febf1660a7ec": {
     "first_seen": "2026-07-17T11:01:03.645411+00:00",
     "translations": {
@@ -9648,7 +9658,9 @@
   "85ef2a0baf69650a1a8085cc90d290ed25d87e7295927f37db4a458c23e43499": {
     "first_seen": "2026-08-24T10:30:47.099773+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "After an service obstruction there are different intervals."
+      }
     }
   },
   "86020124ebae3523ffadf6a2402a14638e1920a0d8ce4b3b1c11ab5f3e271000": {
@@ -12071,7 +12083,7 @@
     "first_seen": "2026-08-24T10:30:47.099773+00:00",
     "translations": {
       "en": {
-        "title": "58A: Harmful passenger car"
+        "summary": "After an service obstruction there are different intervals."
       }
     }
   },
@@ -16515,11 +16527,19 @@
       "epoch": 3
     }
   },
+  "e8901cc9e29cdbdff37b60e1a186ea84cfcae63da145aa8e8cd5bef374a87a0d": {
+    "first_seen": "2026-08-24T11:30:46.482253+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: vandalism."
+      }
+    }
+  },
   "e8bf3126bf9a825a7f5b50161ab48e0385929d240bf167dcab856f541ad49cc2": {
     "first_seen": "2026-08-24T10:30:47.099773+00:00",
     "translations": {
       "en": {
-        "title": "58B: Harmful passenger car"
+        "summary": "After an service obstruction there are different intervals."
       }
     }
   },
@@ -17131,7 +17151,9 @@
   "f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd": {
     "first_seen": "2026-08-24T10:30:47.099773+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "After an service obstruction there are different intervals."
+      }
     }
   },
   "f0fef5f3254b57ae1986e86034f6aaef6d15c58795b00b814ca65fe0352ea05a": {

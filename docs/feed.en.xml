@@ -7,29 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 24 Aug 2026 13:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 13:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[52: Current interference Trains stop at line 10]]></title>
+      <title><![CDATA[U6: Vandalismus]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7d7710f1d598d3759f09d76a0bfa6a4ca57859de1288aea306a4cbfc0145d9ba</guid>
-      <pubDate>Mon, 24 Aug 2026 12:33:40 +0200</pubDate>
-      <ext:first_seen>Mon, 24 Aug 2026 13:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 24 Aug 2026 12:33:40 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 24 Aug 2026 13:33:00 +0200</ext:ends_at>
-      <description>[On 24.08.2026]</description>
-      <content:encoded><![CDATA[[On 24.08.2026]]]></content:encoded>
+      <guid isPermaLink="false">e8901cc9e29cdbdff37b60e1a186ea84cfcae63da145aa8e8cd5bef374a87a0d</guid>
+      <pubDate>Mon, 24 Aug 2026 13:28:00 +0200</pubDate>
+      <ext:first_seen>Mon, 24 Aug 2026 13:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 24 Aug 2026 13:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 24 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus. [Am 24.08.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.<br/>[Am 24.08.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[49: Fahrtbehinderung wegen Stromstörung]]></title>
+      <title><![CDATA[49: current disturbance]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e5553176ac9c6c526dd97f7a465c0deef6d38a7f3093dbf336415f3b936fc6c9</guid>
-      <pubDate>Mon, 24 Aug 2026 12:30:41 +0200</pubDate>
-      <ext:first_seen>Mon, 24 Aug 2026 13:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 24 Aug 2026 12:30:42 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 24 Aug 2026 13:30:00 +0200</ext:ends_at>
-      <description>[Am 24.08.2026]</description>
-      <content:encoded><![CDATA[[Am 24.08.2026]]]></content:encoded>
+      <guid isPermaLink="false">2f1d96771a58b88da2b9d317522e8929cb6579f7ec8d9df6b334cac5e78f5ec6</guid>
+      <pubDate>Mon, 24 Aug 2026 12:27:00 +0200</pubDate>
+      <ext:first_seen>Mon, 24 Aug 2026 13:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 24 Aug 2026 12:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 24 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>After an service obstruction there are different intervals. [On 24.08.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -64,17 +64,6 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.08.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[71: Fremdunfall Betrieb ab Schwarzenbergplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4414bbdca0d0ddd98f061a6e67d3edd1a9042ebd9562cb2b16c4a6f05b8dd0bd</guid>
-      <pubDate>Mon, 24 Aug 2026 12:04:07 +0200</pubDate>
-      <ext:first_seen>Mon, 24 Aug 2026 12:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 24 Aug 2026 12:04:07 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 24 Aug 2026 13:03:00 +0200</ext:ends_at>
-      <description>[Am 24.08.2026]</description>
-      <content:encoded><![CDATA[[Am 24.08.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[1: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">85ef2a0baf69650a1a8085cc90d290ed25d87e7295927f37db4a458c23e43499</guid>
@@ -92,7 +81,7 @@
       <pubDate>Mon, 24 Aug 2026 11:51:00 +0200</pubDate>
       <ext:first_seen>Mon, 24 Aug 2026 12:30:47 +0200</ext:first_seen>
       <ext:starts_at>Mon, 24 Aug 2026 11:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 24 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 24 Aug 2026 13:27:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.08.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.08.2026]]]></content:encoded>
     </item>
@@ -104,8 +93,8 @@
       <ext:first_seen>Mon, 24 Aug 2026 10:30:52 +0200</ext:first_seen>
       <ext:starts_at>Mon, 24 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 05 Sep 2026 04:30:00 +0200</ext:ends_at>
-      <description>Station relocation of lines 30, 31 and N31 towards Stammersdrof Station: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße … [24.08.2026 – 05.09.2026]</description>
-      <content:encoded><![CDATA[Station relocation of lines 30, 31 and N31 towards Stammersdrof Station: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße …<br/>[24.08.2026 – 05.09.2026]]]></content:encoded>
+      <description>Haltestellenverlegung der Linien 30, 31 und N31 in Richtung Stammersdrof Haltestelle: Shuttleworthstraße Von: Brünner Straße 74 vor Shuttleworthstraße Nach: Brünner Straße … [24.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 30, 31 und N31 in Richtung Stammersdrof Haltestelle: Shuttleworthstraße Von: Brünner Straße 74 vor Shuttleworthstraße Nach: Brünner Straße …<br/>[24.08.2026 – 05.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56A/60A: Maurer Waldorf Lauf 1309.2026]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Sun, 13 Sep 2026 13:00:00 +0200</ext:ends_at>
       <description>Due to the stopping of the Maurer Waldorf course at the Maurer Hauptplatz there are diversions on the bus lines running there. [23.08.2026 – 13.09.2026]</description>
       <content:encoded><![CDATA[Due to the stopping of the Maurer Waldorf course at the Maurer Hauptplatz there are diversions on the bus lines running there.<br/>[23.08.2026 – 13.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37/42: Michelbeuern-AKH]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8fea00376a96efccb63c124ded33f8613606ead6839704d8f33bf31834dcdd4a</guid>
+      <pubDate>Thu, 04 Jun 2026 07:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 22 Aug 2026 04:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 04 Jun 2026 07:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
+      <description>Stop change of line 42 towards Antonigasse, or 37 towards Herbeckstraße stop: 4 From: Kreuzgasse 2-4 To: Kreuzgasse 8-10 Duration … [04.06.2026 – 11.11.2026]</description>
+      <content:encoded><![CDATA[Stop change of line 42 towards Antonigasse, or 37 towards Herbeckstraße stop: 4 From: Kreuzgasse 2-4 To: Kreuzgasse 8-10 Duration …<br/>[04.06.2026 – 11.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
