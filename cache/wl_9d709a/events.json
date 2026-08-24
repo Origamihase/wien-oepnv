@@ -734,6 +734,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-08-24T08:03:45+02:00",
+    "starts_at": "2026-08-24T08:03:45+02:00",
+    "ends_at": "2026-08-24T09:03:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-08-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -754,30 +766,6 @@
     "starts_at": "2026-08-23T00:00:21+02:00",
     "ends_at": "2026-08-24T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-08-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "35A: Veranstaltung Betrieb ab Neustift, Agnesgasse",
-    "description": "Veranstaltung\nBetrieb ab Neustift, Agnesgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8add86ae80406aba4463c188a5159f96c8656ea87cdc88223c976d02bbfb6787",
-    "pubDate": "2026-08-24T07:33:40+02:00",
-    "starts_at": "2026-08-24T07:33:40+02:00",
-    "ends_at": "2026-08-24T08:30:00+02:00",
-    "_identity": "wl|störung|L=35A|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "35A: Veranstaltung",
-    "description": "Linie 35A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c0336f7547025fbb3689d97a09f663e59f843d52e7055572f3b0124425cfe4e7",
-    "pubDate": "2026-08-24T06:38:00+02:00",
-    "starts_at": "2026-08-24T06:38:00+02:00",
-    "ends_at": "2026-08-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=35A|D=2026-08-24"
   },
   {
     "source": "Wiener Linien",
@@ -1022,18 +1010,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-08-24T06:48:00+02:00",
-    "starts_at": "2026-08-24T06:48:00+02:00",
-    "ends_at": "2026-08-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Bauarbeiten",
     "description": "Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. Grund: Bauarbeiten im Bereich zwischen Hütteldorfer Straße und Westbahnhof.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1054,6 +1030,18 @@
     "starts_at": "2026-08-24T07:14:00+02:00",
     "ends_at": "2026-08-24T23:55:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-08-24T08:10:00+02:00",
+    "starts_at": "2026-08-24T08:10:00+02:00",
+    "ends_at": "2026-08-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-08-24"
   },
   {
     "source": "Wiener Linien",
