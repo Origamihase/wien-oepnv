@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 24 Aug 2026 11:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 12:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1/71/D: stranger traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">78fdbfd765c6c70601dfaae6aa8f1cd7cdac4a2f10233f309f006cd50b9ee8b4</guid>
+      <pubDate>Mon, 24 Aug 2026 11:51:00 +0200</pubDate>
+      <ext:first_seen>Mon, 24 Aug 2026 12:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 24 Aug 2026 11:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 24 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>diversion in both directions between Julius-Raab-Platz and Karlsplatz U over Stubentor U and Schwarzenbergplatz. [On 24.08.2026]</description>
+      <content:encoded><![CDATA[diversion in both directions between Julius-Raab-Platz and Karlsplatz U over Stubentor U and Schwarzenbergplatz.<br/>[On 24.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[30/31/N31: Shuttleworthstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:ends_at>
       <description>The access to the Sport &amp;amp; Fun Hall Donaustadt is possible.Further information about the diversion and the transfer of the public transports concerned are the … [23.08.2026 – 05.10.2026]</description>
       <content:encoded><![CDATA[The access to the Sport &amp; Fun Hall Donaustadt is possible.Further information about the diversion and the transfer of the public transports concerned are the …<br/>[23.08.2026 – 05.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Folding ramp lock on 2708.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2554a3ce6541d8cfac37c1160139fe8dc9ea593f34a78b0ebf19fdc50da04f61</guid>
-      <pubDate>Thu, 20 Aug 2026 14:05:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 20 Aug 2026 14:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 23:59:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [20.08.2026 – 27.08.2026]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[20.08.2026 – 27.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
