@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 24 Aug 2026 10:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 10:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[30/31/N31: Shuttleworthstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">aaca44e87b6d7a85d3412af5aa6da94094a087798a8a1745f55e48951b2fdab1</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 24 Aug 2026 10:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 24 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 04:30:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 30, 31 und N31 in Richtung Stammersdrof Haltestelle: Shuttleworthstraße Von: Brünner Straße 74 vor Shuttleworthstraße Nach: Brünner Straße … [24.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 30, 31 und N31 in Richtung Stammersdrof Haltestelle: Shuttleworthstraße Von: Brünner Straße 74 vor Shuttleworthstraße Nach: Brünner Straße …<br/>[24.08.2026 – 05.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[56A/60A: Maurer Waldorf Lauf 13.09.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 27 Aug 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. [20.08.2026 – 27.08.2026]</description>
       <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden.<br/>[20.08.2026 – 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A/66A: Inzersdorfer Straße # Leibnizgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d368be17853011da8c175531f69794a71009a1449d2f606dfe427e8a566e146e</guid>
-      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 20 Aug 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 05 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 65A und 66A umgeleitet. [05.08.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Inzersdorfer Straße / Leibnizgasse werden die Linien 65A und 66A umgeleitet.<br/>[05.08.2026 – 31.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
