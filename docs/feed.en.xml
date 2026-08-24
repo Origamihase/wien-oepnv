@@ -7,29 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 24 Aug 2026 15:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 16:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;906945</guid>
-      <pubDate>Mon, 24 Aug 2026 15:07:28 +0200</pubDate>
-      <ext:first_seen>Mon, 24 Aug 2026 15:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 24 Aug 2026 15:07:28 +0200</ext:starts_at>
-      <description>Due to an accident, no journeys are possible between Meidling (Vienna) and Liesing (Vienna) to expected 17:00 o'clock. [Since 24.08.2026]</description>
-      <content:encoded><![CDATA[Due to an accident, no journeys are possible between Meidling (Vienna) and Liesing (Vienna) to expected 17:00 o'clock.<br/>[Since 24.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: current disturbance]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2f1d96771a58b88da2b9d317522e8929cb6579f7ec8d9df6b334cac5e78f5ec6</guid>
-      <pubDate>Mon, 24 Aug 2026 12:27:00 +0200</pubDate>
-      <ext:first_seen>Mon, 24 Aug 2026 13:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 24 Aug 2026 12:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 24 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 24.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -39,17 +18,6 @@
       <ext:starts_at>Mon, 24 Aug 2026 12:15:39 +0200</ext:starts_at>
       <description>Due to construction works, between Vienna Hbf (U) and Gramatneusiedl Station of 31.10.2026 to 30.11.2026 … [Since 24.08.2026]</description>
       <content:encoded><![CDATA[Due to construction works, between Vienna Hbf (U) and Gramatneusiedl Station of 31.10.2026 to 30.11.2026 …<br/>[Since 24.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: foreign traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">85ef2a0baf69650a1a8085cc90d290ed25d87e7295927f37db4a458c23e43499</guid>
-      <pubDate>Mon, 24 Aug 2026 11:51:00 +0200</pubDate>
-      <ext:first_seen>Mon, 24 Aug 2026 12:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 24 Aug 2026 11:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 24 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 24.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 24.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[30/31/N31: Shuttleworthstraße]]></title>
@@ -116,6 +84,39 @@
       <ext:ends_at>Wed, 26 Aug 2026 23:00:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended. [15.08.2026 – 26.08.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended.<br/>[15.08.2026 – 26.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Street festival]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f7d2256aa70632035d2b60383076e5059deab1d7168b85845f14daf07a3b963a</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 21 Aug 2026 09:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 20:30:00 +0200</ext:ends_at>
+      <description>Because of a road festival in the area of the wool line there are traffic measures. Period: Saturday, 05 September 2026, from the start of operation to the end of operation. [21.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Because of a road festival in the area of the wool line there are traffic measures. Period: Saturday, 05 September 2026, from the start of operation to the end of operation.<br/>[21.08.2026 – 05.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Rosenhügelstraße from Bertégasse to Karl-Schwed-Gasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">5e91154753943a0c8c183b305e5d5f40f9378e16d38e553e44cc39c42d03f9a8</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 22:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 26 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>The Rosenhügelstraße becomes a monorail from Bertégasse to and towards Karl-Schwed-Gasse.More information about the diversion as well as transfer of the … [26.08.2026 – 01.09.2026]</description>
+      <content:encoded><![CDATA[The Rosenhügelstraße becomes a monorail from Bertégasse to and towards Karl-Schwed-Gasse.More information about the diversion as well as transfer of the …<br/>[26.08.2026 – 01.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Erzherzog-Karl-Straße Crossing Polgarstraße to Smolagasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">83daab8216d5a9e45ccefbd9d8b6bde84cb923b4e45c95c5311ceb6912f2222d</guid>
+      <pubDate>Sun, 23 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 22:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 23 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:ends_at>
+      <description>The access to the Sport &amp;amp; Fun Hall Donaustadt is possible.Further information about the diversion and the transfer of the public transports concerned are the … [23.08.2026 – 05.10.2026]</description>
+      <content:encoded><![CDATA[The access to the Sport &amp; Fun Hall Donaustadt is possible.Further information about the diversion and the transfer of the public transports concerned are the …<br/>[23.08.2026 – 05.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
