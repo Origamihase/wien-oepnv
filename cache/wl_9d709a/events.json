@@ -758,18 +758,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5e6d31296da4cc9967fdfbd537f45ccaab2f5b7e2f686f3f0997d13c25738a97",
-    "pubDate": "2026-08-24T11:54:06+02:00",
-    "starts_at": "2026-08-24T11:54:06+02:00",
-    "ends_at": "2026-08-24T12:53:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Fremder Verkehrsunfall",
     "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -890,14 +878,62 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49/52: Stromstörung",
-    "description": "Linie 49: Betrieb nur zwischen Ring, Volkstheater U und Breitensee S. Linie 52: Betrieb nur zwischen Westbahnhof S U und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Voraussichtliche Dauer: 13:00 Uhr. Grund: Stromstörung im Bereich Linzer Straße.",
+    "title": "49: Stromstörung Betrieb ab Breitensee S",
+    "description": "Stromstörung\nBetrieb ab Breitensee S",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2562da75e78d3e99695a0c1dd84000e8e1b9582eb4727708ffec929357599a22",
-    "pubDate": "2026-08-24T12:27:00+02:00",
-    "starts_at": "2026-08-24T12:27:00+02:00",
-    "ends_at": "2026-08-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=49,52|D=2026-08-24"
+    "guid": "266e0274da5405936a0899064b3516a2c9744955bb776695dd95c60d4a43ea08",
+    "pubDate": "2026-08-24T12:29:41+02:00",
+    "starts_at": "2026-08-24T12:29:42+02:00",
+    "ends_at": "2026-08-24T13:29:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-08-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e5553176ac9c6c526dd97f7a465c0deef6d38a7f3093dbf336415f3b936fc6c9",
+    "pubDate": "2026-08-24T12:30:41+02:00",
+    "starts_at": "2026-08-24T12:30:42+02:00",
+    "ends_at": "2026-08-24T13:30:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-08-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Stromstörung Züge halten bei Linie 10",
+    "description": "Stromstörung\nZüge halten bei Linie 10",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7d7710f1d598d3759f09d76a0bfa6a4ca57859de1288aea306a4cbfc0145d9ba",
+    "pubDate": "2026-08-24T12:33:40+02:00",
+    "starts_at": "2026-08-24T12:33:40+02:00",
+    "ends_at": "2026-08-24T13:33:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-08-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d7960a00919295e93fe4136daf1b5b1573735558ab6554bf0bbd95a04217f38c",
+    "pubDate": "2026-08-24T12:32:40+02:00",
+    "starts_at": "2026-08-24T12:32:41+02:00",
+    "ends_at": "2026-08-24T13:32:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-08-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Stromstörung Betrieb ab Reinlgasse",
+    "description": "Stromstörung\nBetrieb ab Reinlgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fc5b75ab65da20f0b1524c3d70aa0d8667a5a2e2caa86d753963c3245ee9e3d7",
+    "pubDate": "2026-08-24T12:33:10+02:00",
+    "starts_at": "2026-08-24T12:33:11+02:00",
+    "ends_at": "2026-08-24T13:32:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-08-24"
   },
   {
     "source": "Wiener Linien",
@@ -1022,18 +1058,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Fremder Verkehrsunfall",
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "358388ed9cce33f9f3e1b29e2cd0946d5c73b2e74dc535752c3c8a6b57b85f25",
-    "pubDate": "2026-08-24T11:51:00+02:00",
-    "starts_at": "2026-08-24T11:51:00+02:00",
-    "ends_at": "2026-08-24T12:35:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Fremdunfall Betrieb ab Schwarzenbergplatz",
     "description": "Fremdunfall\nBetrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1066,42 +1090,6 @@
     "starts_at": "2026-08-23T00:00:21+02:00",
     "ends_at": "2026-08-24T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-08-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fremdunfall Züge halten Schottenring 19",
-    "description": "Fremdunfall\nZüge halten Schottenring 19",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "92c230e61155511eb1b8310c7665eb9a912d3206e3ab1f644b59a65d1b5c9f8d",
-    "pubDate": "2026-08-24T11:54:36+02:00",
-    "starts_at": "2026-08-24T11:54:36+02:00",
-    "ends_at": "2026-08-24T13:00:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c4d5ef0c25b44b7246d48ec4d938e77441185b7dcca81b50ad6b2cc945ac9595",
-    "pubDate": "2026-08-24T11:54:36+02:00",
-    "starts_at": "2026-08-24T11:54:36+02:00",
-    "ends_at": "2026-08-24T12:54:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fremdunfall Umleitung bis Börse über Franz - Josefs - Kai",
-    "description": "Fremdunfall\nUmleitung bis Börse über Franz - Josefs - Kai",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5",
-    "pubDate": "2026-08-24T11:54:36+02:00",
-    "starts_at": "2026-08-24T12:00:36+02:00",
-    "ends_at": "2026-08-24T12:59:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-08-24"
   },
   {
     "source": "Wiener Linien",
@@ -1174,6 +1162,18 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verunreinigung",
+    "description": "Linie U6: Unregelmäßige Intervalle in Richtung Siebenhirten. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515",
+    "pubDate": "2026-08-24T12:30:00+02:00",
+    "starts_at": "2026-08-24T12:30:00+02:00",
+    "ends_at": "2026-08-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-08-24"
   },
   {
     "source": "Wiener Linien",
