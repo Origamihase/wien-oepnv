@@ -758,18 +758,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "35A: Veranstaltung Betrieb ab Agnesgasse",
-    "description": "Veranstaltung\nBetrieb ab Agnesgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bf9d58c915a4df579064a9c345205c27878dc512404b347ebfb9200a8ba69743",
-    "pubDate": "2026-08-24T06:21:34+02:00",
-    "starts_at": "2026-08-24T06:21:34+02:00",
-    "ends_at": "2026-08-24T07:30:00+02:00",
-    "_identity": "wl|störung|L=35A|D=2026-08-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "35A: Veranstaltung",
     "description": "Linie 35A: Betrieb nur zwischen Spittelau S U und Neustift, Agnesgasse. Voraussichtliche Dauer: 07:30 Uhr. Grund: Veranstaltung im Bereich Neustift am Walde.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1042,6 +1030,18 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Linie U3: Betrieb zwischen den Stationen Zieglergasse und Volkstheater in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 07:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Zieglergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-08-24T07:14:00+02:00",
+    "starts_at": "2026-08-24T07:14:00+02:00",
+    "ends_at": "2026-08-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-08-24"
   },
   {
     "source": "Wiener Linien",
