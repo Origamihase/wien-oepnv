@@ -962,6 +962,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "af8da18af2520869e55e267435aca7031a4e3d91dcc3c94d7f122c1788bde38e",
+    "pubDate": "2026-08-25T15:25:46+02:00",
+    "starts_at": "2026-08-25T15:25:48+02:00",
+    "ends_at": "2026-08-25T16:25:00+02:00",
+    "_identity": "wl|störung|L=62A|D=2026-08-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62A: Fremder Verkehrsunfall",
+    "description": "Linie 62A: Fahrtbehinderung in Richtung Liesing S. Voraussichtliche Dauer: 16:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Breitenfurter Straße 164.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bc039fa5913655986c1c874cfa1ac6ac4cd39ae02cf15edecddc420004bcffdc",
+    "pubDate": "2026-08-25T15:26:00+02:00",
+    "starts_at": "2026-08-25T15:26:00+02:00",
+    "ends_at": "2026-08-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=62A|D=2026-08-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1030,6 +1054,18 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Polizeieinsatz",
+    "description": "Die Linie U1 fährt derzeit nur zwischen Leopoldau und Altes Landgut. Weichen Sie ersatzweise auf die Linien 15A, 16A, 17A und 68B aus. Voraussichtliche Dauer: 15:45 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Alaudagasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
+    "pubDate": "2026-08-25T15:10:00+02:00",
+    "starts_at": "2026-08-25T15:10:00+02:00",
+    "ends_at": "2026-08-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-08-25"
   },
   {
     "source": "Wiener Linien",
