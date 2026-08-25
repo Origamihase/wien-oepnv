@@ -758,6 +758,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "14A: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 14A: Fahrtbehinderung in Richtung Neubaugasse U. Voraussichtliche Dauer: 12:00 Uhr. Grund: Polizeieinsatz im Bereich Spengergasse 23.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc",
+    "pubDate": "2026-08-25T11:28:00+02:00",
+    "starts_at": "2026-08-25T11:28:24+02:00",
+    "ends_at": "2026-08-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-08-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -970,18 +982,6 @@
     "starts_at": "2026-08-23T00:00:21+02:00",
     "ends_at": "2026-08-25T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-08-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Verkehrsüberlastung",
-    "description": "Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5186edf4c14199ffa2add1bad85d01d118b16b0a35937894ef8c07771bbd6d42",
-    "pubDate": "2026-08-25T09:53:00+02:00",
-    "starts_at": "2026-08-25T09:53:00+02:00",
-    "ends_at": "2026-08-25T10:57:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-08-25"
   },
   {
     "source": "Wiener Linien",

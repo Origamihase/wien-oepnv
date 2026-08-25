@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 25 Aug 2026 11:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 11:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[S 4: Bauarbeiten: kein Halt in Lind-Rosegg Föderlach: Lind-Rosegg Föderlach]]></title>
@@ -29,17 +29,6 @@
       <ext:ends_at>Wed, 25 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw, Auhof Haltestelle: Mondweg Von: Anzbachgasse 130 Nach: Anzbachgasse 138 Dauer: ab 31. August … [25.08.2026 – 25.08.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw, Auhof Haltestelle: Mondweg Von: Anzbachgasse 130 Nach: Anzbachgasse 138 Dauer: ab 31. August …<br/>[25.08.2026 – 25.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5186edf4c14199ffa2add1bad85d01d118b16b0a35937894ef8c07771bbd6d42</guid>
-      <pubDate>Tue, 25 Aug 2026 09:53:00 +0200</pubDate>
-      <ext:first_seen>Tue, 25 Aug 2026 10:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 25 Aug 2026 09:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 25 Aug 2026 10:57:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 25.08.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 25.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Wed, 26 Aug 2026 23:00:00 +0200</ext:ends_at>
       <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden. [15.08.2026 – 26.08.2026]</description>
       <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden.<br/>[15.08.2026 – 26.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Straßenfest]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f7d2256aa70632035d2b60383076e5059deab1d7168b85845f14daf07a3b963a</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 21 Aug 2026 09:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 20:30:00 +0200</ext:ends_at>
+      <description>Wegen eines Straßenfestes im Bereich der Wollzeile kommt es zu Verkehrsmaßnahmen. Zeitraum: Samstag, 05. September 2026, von Betriebsbeginn bis Betriebsschluss. [21.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Wegen eines Straßenfestes im Bereich der Wollzeile kommt es zu Verkehrsmaßnahmen. Zeitraum: Samstag, 05. September 2026, von Betriebsbeginn bis Betriebsschluss.<br/>[21.08.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
