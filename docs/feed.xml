@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 25 Aug 2026 14:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 14:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Bullgasse Kreuzung Josef-Enslein-Platz und Per-Albin-Hansson-Straße]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">ca06b022dc68320e182e24026adf10ef8b988650092bc9cdf2b26e82ece304d0</guid>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 25 Aug 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 17 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 26 Aug 2026 00:00:00 +0200</ext:ends_at>
+      <description>DerFußgängerverkehr kann aufrecht gehalten werden.Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der Auskunft … [17.08.2026 – 26.08.2026]</description>
+      <content:encoded><![CDATA[DerFußgängerverkehr kann aufrecht gehalten werden.Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der Auskunft …<br/>[17.08.2026 – 26.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[74A: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:ends_at>Thu, 27 Aug 2026 17:30:00 +0200</ext:ends_at>
       <description>Wegen Filmaufnahmen im Bereich Mendelssohngasse werden die Busse in Richtung Aspern, Zachgasse bzw. Ölhafen umgeleitet. [21.08.2026 – 27.08.2026]</description>
       <content:encoded><![CDATA[Wegen Filmaufnahmen im Bereich Mendelssohngasse werden die Busse in Richtung Aspern, Zachgasse bzw. Ölhafen umgeleitet.<br/>[21.08.2026 – 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: U4 Klapprampensperre am 26.08.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4ba09dc56eee83cba6cd0a0ff2696bc05497ed4c0b809358fbb920efb8b46d1e</guid>
-      <pubDate>Sat, 15 Aug 2026 20:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 21 Aug 2026 12:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 15 Aug 2026 20:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 26 Aug 2026 23:00:00 +0200</ext:ends_at>
-      <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden. [15.08.2026 – 26.08.2026]</description>
-      <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden.<br/>[15.08.2026 – 26.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
