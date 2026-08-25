@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 25 Aug 2026 12:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 13:01:13 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[37: Fahrtbehinderung wegen Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e384fa954573e30d2a5a1b2bc5e8b6fce30cf8a13d0b9939c3bbb3085d44330c</guid>
+      <pubDate>Tue, 25 Aug 2026 12:44:01 +0200</pubDate>
+      <ext:first_seen>Tue, 25 Aug 2026 13:01:13 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 25 Aug 2026 12:44:01 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 25 Aug 2026 13:41:00 +0200</ext:ends_at>
+      <description>[Am 25.08.2026]</description>
+      <content:encoded><![CDATA[[Am 25.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[74A: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -59,8 +70,8 @@
       <ext:first_seen>Mon, 24 Aug 2026 10:30:52 +0200</ext:first_seen>
       <ext:starts_at>Mon, 24 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 05 Sep 2026 04:30:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 30, 31 und N31 in Richtung Stammersdrof Haltestelle: Shuttleworthstraße Von: Brünner Straße 74 vor Shuttleworthstraße Nach: Brünner Straße … [24.08.2026 – 05.09.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 30, 31 und N31 in Richtung Stammersdrof Haltestelle: Shuttleworthstraße Von: Brünner Straße 74 vor Shuttleworthstraße Nach: Brünner Straße …<br/>[24.08.2026 – 05.09.2026]]]></content:encoded>
+      <description>Station relocation of lines 30, 31 and N31 towards Stammersdrof Station: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße … [24.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Station relocation of lines 30, 31 and N31 towards Stammersdrof Station: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße …<br/>[24.08.2026 – 05.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56A/60A: Maurer Waldorf Lauf 1309.2026]]></title>
@@ -105,17 +116,6 @@
       <ext:ends_at>Thu, 27 Aug 2026 17:30:00 +0200</ext:ends_at>
       <description>Because of filming in the Mendelssohngasse range, the buses are redirected towards Aspern, Zachgasse or Ölhafen. [21.08.2026 – 27.08.2026]</description>
       <content:encoded><![CDATA[Because of filming in the Mendelssohngasse range, the buses are redirected towards Aspern, Zachgasse or Ölhafen.<br/>[21.08.2026 – 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: U4 folding ramp lock on 2608.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4ba09dc56eee83cba6cd0a0ff2696bc05497ed4c0b809358fbb920efb8b46d1e</guid>
-      <pubDate>Sat, 15 Aug 2026 20:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 21 Aug 2026 12:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 15 Aug 2026 20:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 26 Aug 2026 23:00:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended. [15.08.2026 – 26.08.2026]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended.<br/>[15.08.2026 – 26.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
