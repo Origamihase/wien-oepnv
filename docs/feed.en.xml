@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 25 Aug 2026 08:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 08:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[74A: Test Test Test]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">77c13b224c09ee1530033e265c74e0ff7461aa70dea09e4aab886183f48aa377</guid>
-      <pubDate>Tue, 25 Aug 2026 07:29:28 +0200</pubDate>
-      <ext:first_seen>Tue, 25 Aug 2026 07:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 25 Aug 2026 07:29:28 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 25 Aug 2026 08:28:00 +0200</ext:ends_at>
-      <description>[On 25.08.2026]</description>
-      <content:encoded><![CDATA[[On 25.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -117,6 +106,17 @@
       <ext:ends_at>Tue, 01 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>The Rosenhügelstraße becomes a monorail from Bertégasse to and towards Karl-Schwed-Gasse.More information about the diversion as well as transfer of the … [26.08.2026 – 01.09.2026]</description>
       <content:encoded><![CDATA[The Rosenhügelstraße becomes a monorail from Bertégasse to and towards Karl-Schwed-Gasse.More information about the diversion as well as transfer of the …<br/>[26.08.2026 – 01.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Erzherzog-Karl-Straße Crossing Polgarstraße to Smolagasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">83daab8216d5a9e45ccefbd9d8b6bde84cb923b4e45c95c5311ceb6912f2222d</guid>
+      <pubDate>Sun, 23 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 20 Aug 2026 22:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 23 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:ends_at>
+      <description>The access to the Sport &amp;amp; Fun Hall Donaustadt is possible.Further information about the diversion and the transfer of the public transports concerned are the … [23.08.2026 – 05.10.2026]</description>
+      <content:encoded><![CDATA[The access to the Sport &amp; Fun Hall Donaustadt is possible.Further information about the diversion and the transfer of the public transports concerned are the …<br/>[23.08.2026 – 05.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
