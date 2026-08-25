@@ -12490,6 +12490,16 @@
       "epoch": 2
     }
   },
+  "ab006f6d0f448131a1899231948c363f42425d505deaf5d4c39a82030d709e46": {
+    "first_seen": "2026-08-25T04:30:52.917633+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals towards Leopoldau S U. Reason: Traffic disturbance.",
+        "title": "36B: Traffic disturbance"
+      },
+      "epoch": 3
+    }
+  },
   "ab28cfd2abcff844a9f8cac1e5afa07355cdb0b697889b76375094edd879e8ef": {
     "first_seen": "2026-07-22T13:30:51.270146+00:00",
     "translations": {
@@ -19862,6 +19872,16 @@
     "translations": {
       "en": {
         "summary": "Due to an interlocking malfunction am Bahnhof, no rides were possible in Vienna Hbf (U) until 19:09 o'clock.",
+        "title": "Wien Hauptbahnhof"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&907161": {
+    "first_seen": "2026-08-25T04:30:52.917633+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an interlocking fault am Bahnhof, no journeys are currently possible in Vienna Hbf (U).",
         "title": "Wien Hauptbahnhof"
       },
       "epoch": 3
