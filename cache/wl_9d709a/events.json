@@ -866,6 +866,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 17:20 Uhr. Grund: Falschparker im Bereich Kreuzgasse 28.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2026-08-25T16:59:00+02:00",
+    "starts_at": "2026-08-25T17:00:28+02:00",
+    "ends_at": "2026-08-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=42|D=2026-08-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "43: Gleisbauarbeiten",
     "description": "Linie 43: Betrieb nur zwischen Schottentor U und Hernals, Wattgasse. Zwischen Neuwaldegg und Hernals, Wattgasse fährt ersatzweise die verlängerte Linie 43A. Voraussichtliche Dauer: Anfang September. Grund: Gleisbauarbeiten im Bereich Dornbacher Straße und Hernalser Hauptstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -886,6 +898,18 @@
     "starts_at": "2026-08-23T00:00:18+02:00",
     "ends_at": "2026-08-25T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
+    "pubDate": "2026-08-25T16:40:00+02:00",
+    "starts_at": "2026-08-25T16:51:27+02:00",
+    "ends_at": "2026-08-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-08-25"
   },
   {
     "source": "Wiener Linien",
@@ -998,30 +1022,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "64A: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d3d0062affa8f6f741b4c77806992cbf465062b8a5504a9c099ae291ce1d1d9f",
-    "pubDate": "2026-08-25T15:35:17+02:00",
-    "starts_at": "2026-08-25T15:35:18+02:00",
-    "ends_at": "2026-08-25T16:35:00+02:00",
-    "_identity": "wl|störung|L=64A|D=2026-08-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "64A: Fremder Verkehrsunfall",
-    "description": "Linie 64A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "db92c5ec5526fff2229ec1fcc45f1e18db9adbdc927d53c8b40baec4640a63c3",
-    "pubDate": "2026-08-25T15:26:00+02:00",
-    "starts_at": "2026-08-25T15:26:00+02:00",
-    "ends_at": "2026-08-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=64A|D=2026-08-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1094,18 +1094,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Polizeieinsatz",
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
-    "pubDate": "2026-08-25T15:10:00+02:00",
-    "starts_at": "2026-08-25T15:10:00+02:00",
-    "ends_at": "2026-08-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-08-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Bauarbeiten",
     "description": "Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. Grund: Bauarbeiten im Bereich zwischen Hütteldorfer Straße und Westbahnhof.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1114,6 +1102,18 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Polizeieinsatz",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
+    "pubDate": "2026-08-25T16:34:00+02:00",
+    "starts_at": "2026-08-25T16:34:00+02:00",
+    "ends_at": "2026-08-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-08-25"
   },
   {
     "source": "Wiener Linien",
