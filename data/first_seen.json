@@ -624,7 +624,7 @@
     "first_seen": "2026-08-26T09:00:57.193871+00:00",
     "translations": {
       "en": {
-        "summary": "Due to a flea market on Margaretenplatz, the following transport measures are taken."
+        "title": "13A/59A: event on 05.09.2026"
       }
     }
   },
@@ -10216,6 +10216,14 @@
       "epoch": 3
     }
   },
+  "8c134ca47a2f9556b4b2c701707dfb58b855f382a3658a88b21b430ac0e28fad": {
+    "first_seen": "2026-08-26T10:30:46.183590+00:00",
+    "translations": {
+      "en": {
+        "title": "37/42: Michelbeuern-AKH"
+      }
+    }
+  },
   "8c4430e0ee267693704b1bcbe6cc77a0b3cf34ed006f2831366145fb4cb3c018": {
     "first_seen": "2026-08-17T15:00:52.517451+00:00",
     "translations": {
@@ -11894,6 +11902,16 @@
       "epoch": 3
     }
   },
+  "9f8a52a91a148408c14beae4789bc8665328a9a5ccdbe9b4947e188ba03543f1": {
+    "first_seen": "2026-08-26T10:30:46.183590+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "40: current disturbance"
+      },
+      "epoch": 3
+    }
+  },
   "9f9e6187c209c35f7459a15952d47555cbf84b2191172cf18db8d559f94cca69": {
     "first_seen": "2026-05-28T11:30:54.626213+00:00",
     "translations": {
@@ -12426,7 +12444,11 @@
   "a92d02495778b5484a3e92febf004d3ddcf871aa0beaaa9d608926a55480dfb4": {
     "first_seen": "2026-08-26T08:30:48.881377+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "Because of track construction works in the Taborstra\u00dfe, the lines 5B and N29 are redirected.",
+        "title": "5B/N29: diversion due to track construction works"
+      },
+      "epoch": 3
     }
   },
   "a932ac9f099edd99e7efdc79ded934e9e87e7fecc4827db0f013b1f30df2a19d": {
@@ -12550,6 +12572,16 @@
         "title": "18/6: defective vehicle"
       },
       "epoch": 2
+    }
+  },
+  "aafcc4807c3bd89ccccac1f40288722310ef09e8d062f945c0c5ee8c7fbd753c": {
+    "first_seen": "2026-08-26T10:30:46.183590+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "41: current disturbance"
+      },
+      "epoch": 3
     }
   },
   "ab006f6d0f448131a1899231948c363f42425d505deaf5d4c39a82030d709e46": {
@@ -14661,6 +14693,16 @@
         "title": "26A: traffic congestion"
       },
       "epoch": 2
+    }
+  },
+  "ccb539ba253a1c73eebb81d92696b29a7244d9643251511360210517eccfd39c": {
+    "first_seen": "2026-08-26T10:30:46.183590+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "42: current disturbance"
+      },
+      "epoch": 3
     }
   },
   "ccccd997ff504c1b8013f123fd5e2cce7b33c44a83d539badf84976766775443": {
@@ -20013,6 +20055,14 @@
         "title": "Wien Hauptbahnhof"
       },
       "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&907495": {
+    "first_seen": "2026-08-26T10:30:46.183590+00:00",
+    "translations": {
+      "en": {
+        "title": "Wien Hauptbahnhof \u2194 Gramatneusiedl"
+      }
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
