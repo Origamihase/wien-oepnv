@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 26 Aug 2026 10:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2026 11:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A/59A: Veranstaltung am 05.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">08ad72cd3395d750f28b73460ddd7c4c5074b57af0ef1593c1ab37714c339255</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 26 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 22:00:00 +0200</ext:ends_at>
+      <description>Wegen eines Flohmarktes am Margaretenplatz kommt es zu folgenden Verkehrsmaßnahmen. [26.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Wegen eines Flohmarktes am Margaretenplatz kommt es zu folgenden Verkehrsmaßnahmen.<br/>[26.08.2026 – 05.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[5B/N29: Umleitung wegen Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Haltestellenverlegung der Linie 42 in Richtung Antonigasse, bzw. 37 in Richtung Herbeckstraße Haltestelle: Michelbeuern-AKH Von: Kreuzgasse 2-4 Nach: Kreuzgasse 8-10 Dauer … [04.06.2026 – 11.11.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 42 in Richtung Antonigasse, bzw. 37 in Richtung Herbeckstraße Haltestelle: Michelbeuern-AKH Von: Kreuzgasse 2-4 Nach: Kreuzgasse 8-10 Dauer …<br/>[04.06.2026 – 11.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31A: Kagraner Friedhof]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4709ccad0bd67a1a5c563657780111ec616fa6c7d47f7d024810829b5bde0a50</guid>
-      <pubDate>Mon, 17 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 21 Aug 2026 16:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 17 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 17 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 31A in Richtung Kagraner Platz U Haltestelle: Kagraner Friedhof Von: Eipeldauer Straße vor Wagramer Straße Nach: Eipeldauer Straße 52 bis … [17.08.2026 – 17.08.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 31A in Richtung Kagraner Platz U Haltestelle: Kagraner Friedhof Von: Eipeldauer Straße vor Wagramer Straße Nach: Eipeldauer Straße 52 bis …<br/>[17.08.2026 – 17.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
