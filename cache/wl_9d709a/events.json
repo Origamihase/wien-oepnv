@@ -806,6 +806,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
+    "pubDate": "2026-08-26T18:02:52+02:00",
+    "starts_at": "2026-08-26T18:16:27+02:00",
+    "ends_at": "2026-08-26T19:15:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-08-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Verkehrsunfall",
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a",
+    "pubDate": "2026-08-26T18:01:00+02:00",
+    "starts_at": "2026-08-26T18:01:00+02:00",
+    "ends_at": "2026-08-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-08-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -914,18 +938,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2026-08-26T16:54:46+02:00",
-    "starts_at": "2026-08-26T16:54:49+02:00",
-    "ends_at": "2026-08-26T17:54:00+02:00",
-    "_identity": "wl|störung|L=42|D=2026-08-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "43: Gleisbauarbeiten",
     "description": "Linie 43: Betrieb nur zwischen Schottentor U und Hernals, Wattgasse. Zwischen Neuwaldegg und Hernals, Wattgasse fährt ersatzweise die verlängerte Linie 43A. Voraussichtliche Dauer: Anfang September. Grund: Gleisbauarbeiten im Bereich Dornbacher Straße und Hernalser Hauptstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1022,6 +1034,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf",
+    "pubDate": "2026-08-26T17:59:53+02:00",
+    "starts_at": "2026-08-26T18:15:23+02:00",
+    "ends_at": "2026-08-26T19:15:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-08-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Verkehrsunfall",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6",
+    "pubDate": "2026-08-26T18:01:00+02:00",
+    "starts_at": "2026-08-26T18:01:00+02:00",
+    "ends_at": "2026-08-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-08-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1054,30 +1090,6 @@
     "starts_at": "2026-08-23T00:00:21+02:00",
     "ends_at": "2026-08-26T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-08-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-08-26T16:54:46+02:00",
-    "starts_at": "2026-08-26T16:54:46+02:00",
-    "ends_at": "2026-08-26T17:54:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-08-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fremder Verkehrsunfall",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd",
-    "pubDate": "2026-08-26T16:22:00+02:00",
-    "starts_at": "2026-08-26T16:22:00+02:00",
-    "ends_at": "2026-08-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-08-26"
   },
   {
     "source": "Wiener Linien",
@@ -1126,6 +1138,18 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Polizeieinsatz",
+    "description": "Linie U1: Fahrtbehinderung in Richtung Leopoldau S U. Voraussichtliche Dauer: 18:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Karlsplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
+    "pubDate": "2026-08-26T17:54:00+02:00",
+    "starts_at": "2026-08-26T18:19:00+02:00",
+    "ends_at": "2026-08-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-08-26"
   },
   {
     "source": "Wiener Linien",
