@@ -962,6 +962,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3ae90c0c64b5c7d1855f6d65b70c2fac58c3368abd559cb27a64de60c6b7a7c5",
+    "pubDate": "2026-08-26T05:32:08+02:00",
+    "starts_at": "2026-08-26T05:32:08+02:00",
+    "ends_at": "2026-08-26T06:31:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-08-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Schadhafter Zug Betrieb ab Albertgasse",
+    "description": "Schadhafter Zug\nBetrieb ab Albertgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "945881b932732f5c81f75115ee9edec4fc612e9216cf98c7169a95d9e9d4338d",
+    "pubDate": "2026-08-26T05:31:38+02:00",
+    "starts_at": "2026-08-26T05:31:39+02:00",
+    "ends_at": "2026-08-26T06:31:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-08-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5: Schadhaftes Fahrzeug",
     "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 06:00 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Kaiserstraße # Stollgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
