@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 27 Aug 2026 20:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 20:31:03 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[26: Fremdunfall Betrieb ab Nordbrücke]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fda96f44eadd7757da90e833f0377daf3f0f634dae447101f246c6da5975bf32</guid>
-      <pubDate>Thu, 27 Aug 2026 19:38:25 +0200</pubDate>
-      <ext:first_seen>Thu, 27 Aug 2026 20:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 27 Aug 2026 19:43:55 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 20:41:00 +0200</ext:ends_at>
-      <description>[Am 27.08.2026]</description>
-      <content:encoded><![CDATA[[Am 27.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[N75: N75, SEV U3: Nottendorfer Gasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -115,6 +104,17 @@
       <ext:ends_at>Thu, 30 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet. [09.09.2026 – 30.09.2027]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet.<br/>[09.09.2026 – 30.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1c0944c7ba72cc6ec5dbef5498f0536cdeebf208be76b4556119ca563f709087</guid>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 25 Aug 2026 12:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 20 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 30 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Landstraßer Hauptstraße werden die Busse der Linie 74A umgeleitet. [20.08.2026 – 30.04.2027]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Landstraßer Hauptstraße werden die Busse der Linie 74A umgeleitet.<br/>[20.08.2026 – 30.04.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
