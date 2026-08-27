@@ -455,6 +455,15 @@
       "epoch": 3
     }
   },
+  "0677f737d7f19ede341420def45d717936d9f8d64db12b6b5deec833c2c50a99": {
+    "first_seen": "2026-08-27T09:00:57.864706+00:00",
+    "translations": {
+      "en": {
+        "title": "12: Foreign accident trains stop at Li. 31 Ri. Schottenring"
+      },
+      "epoch": 3
+    }
+  },
   "06817ade86d1a1933bbe0d61cb95b6a6235420db1b9474f70939e73f51c11a2f": {
     "first_seen": "2026-05-29T10:30:55.408711+00:00",
     "translations": {
@@ -8936,7 +8945,10 @@
   "7b060aefbb4377860e98df5b9df6f28017b8d6403ba5e207fb4db797fb6bb506": {
     "first_seen": "2026-08-27T08:31:01.724043+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "38A: fire-brigade operation service from Grinzing"
+      },
+      "epoch": 3
     }
   },
   "7b4152fcf3d4de7cd3f7a37029187507465e8ca59ce9d2d80774006b8e287f27": {
@@ -15439,8 +15451,10 @@
     "first_seen": "2026-08-27T08:31:01.724043+00:00",
     "translations": {
       "en": {
+        "summary": "After an service obstruction there are different intervals.",
         "title": "U2: Animals on track"
-      }
+      },
+      "epoch": 3
     }
   },
   "d514d0d01122e32ecf6d9f429db86bc0a64e26f4c6c96248a01bfd1cedc04efa": {

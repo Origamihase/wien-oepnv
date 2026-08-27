@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 27 Aug 2026 10:31:01 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 11:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12: Fremdunfall Züge halten bei Li. 31 Ri. Schottenring]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0677f737d7f19ede341420def45d717936d9f8d64db12b6b5deec833c2c50a99</guid>
+      <pubDate>Thu, 27 Aug 2026 10:04:55 +0200</pubDate>
+      <ext:first_seen>Thu, 27 Aug 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 27 Aug 2026 10:04:55 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 27 Aug 2026 11:09:00 +0200</ext:ends_at>
+      <description>[Am 27.08.2026]</description>
+      <content:encoded><![CDATA[[Am 27.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Tiere im Gleis]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +28,8 @@
       <ext:first_seen>Thu, 27 Aug 2026 10:31:01 +0200</ext:first_seen>
       <ext:starts_at>Thu, 27 Aug 2026 10:12:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 27 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Donaustadtbrücke in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 10:40 Uhr. Grund: Tiere im Gleis … [Am 27.08.2026]</description>
-      <content:encoded><![CDATA[Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Donaustadtbrücke in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 10:40 Uhr. Grund: Tiere im Gleis …<br/>[Am 27.08.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 27.08.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 27.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: Feuerwehreinsatz Betrieb ab Grinzing]]></title>
@@ -104,17 +115,6 @@
       <ext:ends_at>Sat, 05 Sep 2026 20:00:00 +0200</ext:ends_at>
       <description>Wegen eines Flohmarktes am Margaretenplatz kommt es zu folgenden Verkehrsmaßnahmen. [26.08.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[Wegen eines Flohmarktes am Margaretenplatz kommt es zu folgenden Verkehrsmaßnahmen.<br/>[26.08.2026 – 05.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5B/N29: Umleitung wegen Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a92d02495778b5484a3e92febf004d3ddcf871aa0beaaa9d608926a55480dfb4</guid>
-      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 26 Aug 2026 10:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 09 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 30 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet. [09.09.2026 – 30.09.2027]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet.<br/>[09.09.2026 – 30.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
