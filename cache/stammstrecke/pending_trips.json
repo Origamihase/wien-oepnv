@@ -1,42 +1,42 @@
 {
-  "Meidling|CJX9|2026-08-27T04:53:00+02:00": {
+  "Meidling|CJX9|2026-08-27T05:23:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-08-27T04:31:02.440408+02:00",
+    "last_seen_at": "2026-08-27T05:01:13.210865+02:00",
     "latest_delay_minutes": 0.0,
     "name": "CJX9",
-    "scheduled": "2026-08-27T04:53:00+02:00"
-  },
-  "Meidling|S2|2026-08-27T04:42:00+02:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-08-27T04:31:02.440408+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-08-27T04:42:00+02:00"
+    "scheduled": "2026-08-27T05:23:00+02:00"
   },
   "Meidling|S2|2026-08-27T05:12:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-08-27T04:31:02.440408+02:00",
+    "last_seen_at": "2026-08-27T05:01:13.210865+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-08-27T05:12:00+02:00"
   },
-  "Meidling|S4|2026-08-27T04:32:00+02:00": {
-    "cancelled": false,
+  "Meidling|S2|2026-08-27T05:42:00+02:00": {
+    "cancelled": true,
     "direction": "Meidling",
-    "last_seen_at": "2026-08-27T04:31:02.440408+02:00",
+    "last_seen_at": "2026-08-27T05:01:13.210865+02:00",
     "latest_delay_minutes": 0.0,
-    "name": "S4",
-    "scheduled": "2026-08-27T04:32:00+02:00"
+    "name": "S2",
+    "scheduled": "2026-08-27T05:42:00+02:00"
   },
   "Meidling|S4|2026-08-27T05:02:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-08-27T04:31:02.440408+02:00",
+    "last_seen_at": "2026-08-27T05:01:13.210865+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S4",
     "scheduled": "2026-08-27T05:02:00+02:00"
+  },
+  "Meidling|S4|2026-08-27T05:32:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-08-27T05:01:13.210865+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S4",
+    "scheduled": "2026-08-27T05:32:00+02:00"
   }
 }
