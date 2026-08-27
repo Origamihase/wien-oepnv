@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 27 Aug 2026 17:31:37 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 18:01:46 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[4A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c</guid>
-      <pubDate>Thu, 27 Aug 2026 15:28:00 +0200</pubDate>
-      <ext:first_seen>Thu, 27 Aug 2026 15:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 27 Aug 2026 15:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion. [On 27.08.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 27.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[N75: N75, SEV U3: Nottendorfer Gasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -49,8 +38,8 @@
       <pubDate>Wed, 26 Aug 2026 15:34:51 +0200</pubDate>
       <ext:first_seen>Wed, 26 Aug 2026 15:31:05 +0200</ext:first_seen>
       <ext:starts_at>Wed, 26 Aug 2026 15:34:51 +0200</ext:starts_at>
-      <description>construction works between Deutsch Wagram station and Gänserndorf station of 24.10.2026 to 26X.10.2026 from 31.112026 to 01.11.2026 from 14ENT533caff021c08caff02a43X. [Since 26.08.2026]</description>
-      <content:encoded><![CDATA[construction works between Deutsch Wagram station and Gänserndorf station of 24.10.2026 to 26X.10.2026 from 31.112026 to 01.11.2026 from 14ENT533caff021c08caff02a43X.<br/>[Since 26.08.2026]]]></content:encoded>
+      <description>Wegen Bauarbeiten kann zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof von 24.10.2026 bis 26.10.2026 von 31.10.2026 bis 01.11.2026 von 14.11.2026 bis 15.11.2026 von … [Seit 26.08.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten kann zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof von 24.10.2026 bis 26.10.2026 von 31.10.2026 bis 01.11.2026 von 14.11.2026 bis 15.11.2026 von …<br/>[Seit 26.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 40: Wien Franz-Josefs-Bahnhof ↔ Wien Heiligenstadt]]></title>
@@ -59,8 +48,8 @@
       <pubDate>Wed, 26 Aug 2026 14:12:19 +0200</pubDate>
       <ext:first_seen>Wed, 26 Aug 2026 14:30:50 +0200</ext:first_seen>
       <ext:starts_at>Wed, 26 Aug 2026 14:12:19 +0200</ext:starts_at>
-      <description>construction works between Wien Franz-Josefs-Bahnhof and Wien Heiligenstadt Station (U) from 31.10.2026 (22:00 o'clock) to 06.11.2026 (04:00 o'clock) no R40 and S40 trains. [Since 26.08.2026]</description>
-      <content:encoded><![CDATA[construction works between Wien Franz-Josefs-Bahnhof and Wien Heiligenstadt Station (U) from 31.10.2026 (22:00 o'clock) to 06.11.2026 (04:00 o'clock) no R40 and S40 trains.<br/>[Since 26.08.2026]]]></content:encoded>
+      <description>Wegen Bauarbeiten können zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt Bahnhof (U) von 31.10.2026 (22:00 Uhr) bis 06.11.2026 (04:00 Uhr) keine R40- und S40-Züge fahren. [Seit 26.08.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt Bahnhof (U) von 31.10.2026 (22:00 Uhr) bis 06.11.2026 (04:00 Uhr) keine R40- und S40-Züge fahren.<br/>[Seit 26.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[34A: event]]></title>
@@ -115,6 +104,17 @@
       <ext:ends_at>Thu, 30 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of track construction works in the Taborstraße, the lines 5B and N29 are redirected. [09.09.2026 – 30.09.2027]</description>
       <content:encoded><![CDATA[Because of track construction works in the Taborstraße, the lines 5B and N29 are redirected.<br/>[09.09.2026 – 30.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: operation up to Riemergasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">add27f63424a5893ef67c5fa24f7802ad64a0ebf658035de96ef8c9146577d66</guid>
+      <pubDate>Thu, 27 Aug 2026 06:00:04 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 09:01:13 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 27 Aug 2026 06:00:04 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 27 Aug 2026 20:30:00 +0200</ext:ends_at>
+      <description>[On 27.08.2026]</description>
+      <content:encoded><![CDATA[[On 27.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

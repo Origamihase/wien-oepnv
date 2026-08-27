@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 27 Aug 2026 17:31:37 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 18:01:46 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[4A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c</guid>
-      <pubDate>Thu, 27 Aug 2026 15:28:00 +0200</pubDate>
-      <ext:first_seen>Thu, 27 Aug 2026 15:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 27 Aug 2026 15:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 27.08.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 27.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[N75: N75, SEV U3: Nottendorfer Gasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -115,6 +104,17 @@
       <ext:ends_at>Thu, 30 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet. [09.09.2026 – 30.09.2027]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet.<br/>[09.09.2026 – 30.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Betrieb bis Riemergasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">add27f63424a5893ef67c5fa24f7802ad64a0ebf658035de96ef8c9146577d66</guid>
+      <pubDate>Thu, 27 Aug 2026 06:00:04 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 09:01:13 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 27 Aug 2026 06:00:04 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 27 Aug 2026 20:30:00 +0200</ext:ends_at>
+      <description>[Am 27.08.2026]</description>
+      <content:encoded><![CDATA[[Am 27.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
