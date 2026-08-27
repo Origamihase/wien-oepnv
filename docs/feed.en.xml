@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 27 Aug 2026 13:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 14:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[12: Harmful bus service from Bruno-Marek-Allee]]></title>
@@ -17,28 +17,6 @@
       <ext:first_seen>Thu, 27 Aug 2026 13:30:53 +0200</ext:first_seen>
       <ext:starts_at>Thu, 27 Aug 2026 13:30:18 +0200</ext:starts_at>
       <ext:ends_at>Thu, 27 Aug 2026 14:29:00 +0200</ext:ends_at>
-      <description>[On 27.08.2026]</description>
-      <content:encoded><![CDATA[[On 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49/52: defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f405c473ffd6c27a95f0f60b98dbed4cadeae8fa6fe57c97945f1b4f0958204f</guid>
-      <pubDate>Thu, 27 Aug 2026 13:07:00 +0200</pubDate>
-      <ext:first_seen>Thu, 27 Aug 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 27 Aug 2026 13:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 14:14:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line 52: irregular intervals in both directions. [On 27.08.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line 52: irregular intervals in both directions.<br/>[On 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: service obstruction Harmful bus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5c2749f296f32ca1449afb9bbf1cf37b593290324c5f660c55e9b3137953b747</guid>
-      <pubDate>Thu, 27 Aug 2026 12:36:45 +0200</pubDate>
-      <ext:first_seen>Thu, 27 Aug 2026 13:01:13 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 27 Aug 2026 12:36:45 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 13:35:00 +0200</ext:ends_at>
       <description>[On 27.08.2026]</description>
       <content:encoded><![CDATA[[On 27.08.2026]]]></content:encoded>
     </item>
@@ -115,6 +93,28 @@
       <ext:starts_at>Thu, 27 Aug 2026 11:32:51 +0200</ext:starts_at>
       <description>Due to an accident between Vienna Hbf (U) and Gramatneusiedl train station train journeys to expected 18:00 clock are limited. [Since 27.08.2026]</description>
       <content:encoded><![CDATA[Due to an accident between Vienna Hbf (U) and Gramatneusiedl train station train journeys to expected 18:00 clock are limited.<br/>[Since 27.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37/42: Michelbeuern-AKH]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8c134ca47a2f9556b4b2c701707dfb58b855f382a3658a88b21b430ac0e28fad</guid>
+      <pubDate>Thu, 04 Jun 2026 07:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 12:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 04 Jun 2026 07:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
+      <description>Stop transfer of line 42 towards Antonigasse Stop: Michelbeuern-AKH From: Kreuzgasse 24 After: Kreuzgasse 8ENTec7964a4f365daabX6X Duration: June 8, 2026, approximately 08:00 … [04.06.2026 – 11.11.2026]</description>
+      <content:encoded><![CDATA[Stop transfer of line 42 towards Antonigasse Stop: Michelbeuern-AKH From: Kreuzgasse 24 After: Kreuzgasse 8ENTec7964a4f365daabX6X Duration: June 8, 2026, approximately 08:00 …<br/>[04.06.2026 – 11.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A/59A: event on 05.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">08ad72cd3395d750f28b73460ddd7c4c5074b57af0ef1593c1ab37714c339255</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 26 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 20:00:00 +0200</ext:ends_at>
+      <description>Due to a flea market on the Margaretenplatz, the following transport measures are taken. [26.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Due to a flea market on the Margaretenplatz, the following transport measures are taken.<br/>[26.08.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
