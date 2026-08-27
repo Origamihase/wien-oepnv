@@ -7,40 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 27 Aug 2026 15:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 16:01:11 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[4A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[4A: traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c</guid>
       <pubDate>Thu, 27 Aug 2026 15:28:00 +0200</pubDate>
       <ext:first_seen>Thu, 27 Aug 2026 15:30:59 +0200</ext:first_seen>
       <ext:starts_at>Thu, 27 Aug 2026 15:28:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 27 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 27.08.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 27.08.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: traffic congestion. [On 27.08.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 27.08.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[80A: Feuerwehreinsatz]]></title>
+      <title><![CDATA[80A: fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">d8d5837f96828305b7b30bf29b83b482fde4f946091467603b8aa366c9eb8885</guid>
       <pubDate>Thu, 27 Aug 2026 15:16:00 +0200</pubDate>
       <ext:first_seen>Thu, 27 Aug 2026 15:30:59 +0200</ext:first_seen>
       <ext:starts_at>Thu, 27 Aug 2026 15:16:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 27 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz. [Am 27.08.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.<br/>[Am 27.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[3A: defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c34f5e5dd3ff7a1d65b4e242f1c7a2485ba1574fc241002cd83197071facd200</guid>
-      <pubDate>Thu, 27 Aug 2026 14:14:00 +0200</pubDate>
-      <ext:first_seen>Thu, 27 Aug 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 27 Aug 2026 14:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 27 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 27.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 27.08.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: fire-brigade operation. [On 27.08.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: fire-brigade operation.<br/>[On 27.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N75: N75, SEV U3: Nottendorfer Gasse]]></title>
@@ -115,6 +104,17 @@
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Stop transfer of line 42 towards Antonigasse Stop: Michelbeuern-AKH From: Kreuzgasse 24 After: Kreuzgasse 8ENTec7964a4f365daabX6X Duration: June 8, 2026, approximately 08:00 … [04.06.2026 – 11.11.2026]</description>
       <content:encoded><![CDATA[Stop transfer of line 42 towards Antonigasse Stop: Michelbeuern-AKH From: Kreuzgasse 24 After: Kreuzgasse 8ENTec7964a4f365daabX6X Duration: June 8, 2026, approximately 08:00 …<br/>[04.06.2026 – 11.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A/59A: event on 05.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">08ad72cd3395d750f28b73460ddd7c4c5074b57af0ef1593c1ab37714c339255</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 26 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 20:00:00 +0200</ext:ends_at>
+      <description>Due to a flea market on the Margaretenplatz, the following transport measures are taken. [26.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Due to a flea market on the Margaretenplatz, the following transport measures are taken.<br/>[26.08.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

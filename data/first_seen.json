@@ -14473,8 +14473,10 @@
     "first_seen": "2026-08-27T13:30:59.547733+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions. Reason: traffic congestion."
-      }
+        "summary": "irregular intervals in both directions. Reason: traffic congestion.",
+        "title": "4A: traffic congestion"
+      },
+      "epoch": 3
     }
   },
   "c57071fe7f4cf8cade4da40fb53f27d49a181aa9399ddd5d782ef9d5fac61fec": {
@@ -15767,8 +15769,10 @@
     "first_seen": "2026-08-27T13:30:59.547733+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions. Reason: fire-brigade operation."
-      }
+        "summary": "irregular intervals in both directions. Reason: fire-brigade operation.",
+        "title": "80A: fire-brigade operation"
+      },
+      "epoch": 3
     }
   },
   "d8f0db85709a49432c37d02adcff7bf27e6af1acf6de5611dffe6bb14c200cdb": {
