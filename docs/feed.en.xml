@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 27 Aug 2026 07:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 08:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1/2/71/D: Austrian brass music festival 05.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c23ec73a0daa6fd28b4af6da49d117ea58e5c9741d8e8ec8edd30e742255f0d8</guid>
+      <pubDate>Thu, 27 Aug 2026 08:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 27 Aug 2026 08:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 27 Aug 2026 08:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 17:00:00 +0200</ext:ends_at>
+      <description>Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken. [27.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken.<br/>[27.08.2026 – 05.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[S 1: Wien Leopoldau ↔ Deutsch Wagram]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -104,16 +115,6 @@
       <ext:ends_at>Fri, 30 Apr 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of construction works in the area of highway Hauptstraße the buses of the line 74A are redirected. [20.08.2026 – 30.04.2027]</description>
       <content:encoded><![CDATA[Because of construction works in the area of highway Hauptstraße the buses of the line 74A are redirected.<br/>[20.08.2026 – 30.04.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S 4: construction works: no stop in Lind-Rosegg Föderlach: Lind-Rosegg Föderlach]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;907201</guid>
-      <pubDate>Tue, 25 Aug 2026 08:43:40 +0200</pubDate>
-      <ext:first_seen>Tue, 25 Aug 2026 10:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 25 Aug 2026 08:43:40 +0200</ext:starts_at>
-      <description>Due to construction works, from 23.11.2026 (08:00h) to 30.11.2026 (23:00h) at Lind-Rosegg Bahnhst and Föderlach Bahnhof, the S4 trains 4205, 4209, 4213, 4217, 4221, 4225 and … [Since 25.08.2026]</description>
-      <content:encoded><![CDATA[Due to construction works, from 23.11.2026 (08:00h) to 30.11.2026 (23:00h) at Lind-Rosegg Bahnhst and Föderlach Bahnhof, the S4 trains 4205, 4209, 4213, 4217, 4221, 4225 and …<br/>[Since 25.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
