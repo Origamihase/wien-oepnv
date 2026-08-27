@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 27 Aug 2026 05:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 06:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[S 1: Wien Leopoldau ↔ Deutsch Wagram]]></title>
@@ -16,8 +16,8 @@
       <pubDate>Wed, 26 Aug 2026 15:34:51 +0200</pubDate>
       <ext:first_seen>Wed, 26 Aug 2026 15:31:05 +0200</ext:first_seen>
       <ext:starts_at>Wed, 26 Aug 2026 15:34:51 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten kann zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof von 24.10.2026 bis 26.10.2026 von 31.10.2026 bis 01.11.2026 von 14.11.2026 bis 15.11.2026 von … [Seit 26.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten kann zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof von 24.10.2026 bis 26.10.2026 von 31.10.2026 bis 01.11.2026 von 14.11.2026 bis 15.11.2026 von …<br/>[Seit 26.08.2026]]]></content:encoded>
+      <description>construction works between Deutsch Wagram station and Gänserndorf station of 24.10.2026 to 26X.10.2026 from 31.112026 to 01.11.2026 from 14ENT533caff021c08caff02a43X. [Since 26.08.2026]</description>
+      <content:encoded><![CDATA[construction works between Deutsch Wagram station and Gänserndorf station of 24.10.2026 to 26X.10.2026 from 31.112026 to 01.11.2026 from 14ENT533caff021c08caff02a43X.<br/>[Since 26.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 40: Wien Franz-Josefs-Bahnhof ↔ Wien Heiligenstadt]]></title>
@@ -26,8 +26,8 @@
       <pubDate>Wed, 26 Aug 2026 14:12:19 +0200</pubDate>
       <ext:first_seen>Wed, 26 Aug 2026 14:30:50 +0200</ext:first_seen>
       <ext:starts_at>Wed, 26 Aug 2026 14:12:19 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt Bahnhof (U) von 31.10.2026 (22:00 Uhr) bis 06.11.2026 (04:00 Uhr) keine R40- und S40-Züge fahren. [Seit 26.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt Bahnhof (U) von 31.10.2026 (22:00 Uhr) bis 06.11.2026 (04:00 Uhr) keine R40- und S40-Züge fahren.<br/>[Seit 26.08.2026]]]></content:encoded>
+      <description>construction works between Wien Franz-Josefs-Bahnhof and Wien Heiligenstadt Station (U) from 31.10.2026 (22:00 o'clock) to 06.11.2026 (04:00 o'clock) no R40 and S40 trains. [Since 26.08.2026]</description>
+      <content:encoded><![CDATA[construction works between Wien Franz-Josefs-Bahnhof and Wien Heiligenstadt Station (U) from 31.10.2026 (22:00 o'clock) to 06.11.2026 (04:00 o'clock) no R40 and S40 trains.<br/>[Since 26.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[34A: event]]></title>
@@ -84,6 +84,17 @@
       <content:encoded><![CDATA[Because of track construction works in the Taborstraße, the lines 5B and N29 are redirected.<br/>[09.09.2026 – 30.09.2027]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[3A: operation up to Riemergasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">add27f63424a5893ef67c5fa24f7802ad64a0ebf658035de96ef8c9146577d66</guid>
+      <pubDate>Thu, 27 Aug 2026 06:00:04 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 09:01:13 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 27 Aug 2026 06:00:04 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 27 Aug 2026 20:30:00 +0200</ext:ends_at>
+      <description>[On 27.08.2026]</description>
+      <content:encoded><![CDATA[[On 27.08.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[74A: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">1c0944c7ba72cc6ec5dbef5498f0536cdeebf208be76b4556119ca563f709087</guid>
@@ -103,17 +114,6 @@
       <ext:starts_at>Tue, 25 Aug 2026 08:43:40 +0200</ext:starts_at>
       <description>Due to construction works, from 23.11.2026 (08:00h) to 30.11.2026 (23:00h) at Lind-Rosegg Bahnhst and Föderlach Bahnhof, the S4 trains 4205, 4209, 4213, 4217, 4221, 4225 and … [Since 25.08.2026]</description>
       <content:encoded><![CDATA[Due to construction works, from 23.11.2026 (08:00h) to 30.11.2026 (23:00h) at Lind-Rosegg Bahnhst and Föderlach Bahnhof, the S4 trains 4205, 4209, 4213, 4217, 4221, 4225 and …<br/>[Since 25.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49A/50B: Mondweg]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">72042c69bad0a64b95437fbab1c50b4e1381586330179b2d929fa3298d6d15fa</guid>
-      <pubDate>Tue, 25 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 25 Aug 2026 10:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 25 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 25 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of lines 49A and 50B towards Wolfersberg and Auhof Stop: Mondweg From: Anzbachgasse 130 To: Anzbachgasse 138 Duration: from 31 August … [25.08.2026 – 25.08.2027]</description>
-      <content:encoded><![CDATA[Stop change of lines 49A and 50B towards Wolfersberg and Auhof Stop: Mondweg From: Anzbachgasse 130 To: Anzbachgasse 138 Duration: from 31 August …<br/>[25.08.2026 – 25.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

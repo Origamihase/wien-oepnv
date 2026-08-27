@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 27 Aug 2026 05:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 06:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[S 1: Wien Leopoldau ↔ Deutsch Wagram]]></title>
@@ -84,6 +84,17 @@
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet.<br/>[09.09.2026 – 30.09.2027]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[3A: Betrieb bis Riemergasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">add27f63424a5893ef67c5fa24f7802ad64a0ebf658035de96ef8c9146577d66</guid>
+      <pubDate>Thu, 27 Aug 2026 06:00:04 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 09:01:13 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 27 Aug 2026 06:00:04 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 27 Aug 2026 20:30:00 +0200</ext:ends_at>
+      <description>[Am 27.08.2026]</description>
+      <content:encoded><![CDATA[[Am 27.08.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[74A: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">1c0944c7ba72cc6ec5dbef5498f0536cdeebf208be76b4556119ca563f709087</guid>
@@ -103,17 +114,6 @@
       <ext:starts_at>Tue, 25 Aug 2026 08:43:40 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können von 23.11.2026 (08:00 Uhr) bis 30.11.2026 (23:00 Uhr) in Lind-Rosegg Bahnhst und Föderlach Bahnhof die S4-Züge 4205, 4209, 4213, 4217, 4221, 4225 und … [Seit 25.08.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 23.11.2026 (08:00 Uhr) bis 30.11.2026 (23:00 Uhr) in Lind-Rosegg Bahnhst und Föderlach Bahnhof die S4-Züge 4205, 4209, 4213, 4217, 4221, 4225 und …<br/>[Seit 25.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49A/50B: Mondweg]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">72042c69bad0a64b95437fbab1c50b4e1381586330179b2d929fa3298d6d15fa</guid>
-      <pubDate>Tue, 25 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 25 Aug 2026 10:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 25 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 25 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw, Auhof Haltestelle: Mondweg Von: Anzbachgasse 130 Nach: Anzbachgasse 138 Dauer: ab 31. August … [25.08.2026 – 25.08.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw, Auhof Haltestelle: Mondweg Von: Anzbachgasse 130 Nach: Anzbachgasse 138 Dauer: ab 31. August …<br/>[25.08.2026 – 25.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
