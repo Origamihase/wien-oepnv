@@ -806,6 +806,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12: Schadhafter Bus Betrieb ab Bruno-Marek-Allee",
+    "description": "Schadhafter Bus\nBetrieb ab Bruno-Marek-Allee",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7759c98fa43166227a7bf88c2664ca1b65d01f3983b6c7f303dcfe44866505ee",
+    "pubDate": "2026-08-27T13:30:18+02:00",
+    "starts_at": "2026-08-27T13:30:18+02:00",
+    "ends_at": "2026-08-27T14:29:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-08-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Schadhafter Bus",
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c7efa743edc57e1bb672fb48dcad27dfb62e23bd982ab5e652cf55a41d32b9da",
+    "pubDate": "2026-08-27T13:29:48+02:00",
+    "starts_at": "2026-08-27T13:29:48+02:00",
+    "ends_at": "2026-08-27T14:29:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-08-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -819,7 +843,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "1A: Schadhaftes Fahrzeug",
-    "description": "Linie 1A: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 13:00 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Rotenturmstraße 2.",
+    "description": "Linie 1A: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 14:00 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Rotenturmstraße 2.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1c738e982802f15fa84e6f9d9568b7fbc6558edf7e9eade1b36e52001546e171",
     "pubDate": "2026-08-27T12:36:00+02:00",
@@ -836,7 +860,7 @@
     "guid": "f1914c07ec0a7ef137f23ab4a9d3b2abbb8efcd4cd10ed18fa7a99e960f0c0cf",
     "pubDate": "2026-08-27T12:35:45+02:00",
     "starts_at": "2026-08-27T12:44:45+02:00",
-    "ends_at": "2026-08-27T13:44:00+02:00",
+    "ends_at": "2026-08-27T15:00:00+02:00",
     "_identity": "wl|störung|L=1A|D=2026-08-27"
   },
   {
@@ -862,18 +886,6 @@
     "starts_at": "2026-08-27T12:36:45+02:00",
     "ends_at": "2026-08-27T13:35:00+02:00",
     "_identity": "wl|störung|L=2A|D=2026-08-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "33A: Verkehrsüberlastung",
-    "description": "Linie 33A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cd2204c7545719ef367a1d80f100a473cb05ab42b0684f7b7ac6078c99df82c5",
-    "pubDate": "2026-08-27T12:59:00+02:00",
-    "starts_at": "2026-08-27T12:59:00+02:00",
-    "ends_at": "2026-08-27T23:55:00+02:00",
-    "_identity": "wl|störung|L=33A|D=2026-08-27"
   },
   {
     "source": "Wiener Linien",
@@ -910,6 +922,18 @@
     "starts_at": "2026-08-23T00:00:21+02:00",
     "ends_at": "2026-08-27T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-08-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Polizeieinsatz",
+    "description": "Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dded550fba663cf534f9fd553a582a61f5261229fb6341636d30aa082e91657d",
+    "pubDate": "2026-08-27T13:07:00+02:00",
+    "starts_at": "2026-08-27T13:07:00+02:00",
+    "ends_at": "2026-08-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2026-08-27"
   },
   {
     "source": "Wiener Linien",
@@ -982,6 +1006,18 @@
     "starts_at": "2026-08-23T00:00:18+02:00",
     "ends_at": "2026-08-27T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-08-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49/52: Schadhaftes Fahrzeug",
+    "description": "Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f405c473ffd6c27a95f0f60b98dbed4cadeae8fa6fe57c97945f1b4f0958204f",
+    "pubDate": "2026-08-27T13:07:00+02:00",
+    "starts_at": "2026-08-27T13:07:00+02:00",
+    "ends_at": "2026-08-27T14:14:00+02:00",
+    "_identity": "wl|störung|L=49,52|D=2026-08-27"
   },
   {
     "source": "Wiener Linien",

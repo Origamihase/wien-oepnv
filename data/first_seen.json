@@ -2129,7 +2129,11 @@
   "1c738e982802f15fa84e6f9d9568b7fbc6558edf7e9eade1b36e52001546e171": {
     "first_seen": "2026-08-27T11:01:13.660155+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "service obstruction towards Schottentor U. expected duration: 14:00 o'clock. Reason: defective vehicle in the Rotenturmstra\u00dfe 2.",
+        "title": "1A: defective vehicle"
+      },
+      "epoch": 3
     }
   },
   "1c8a978cf49a76f2a6cd8082d03ab0cb6e9c8e518c0b8389f590fcf2bc3076d1": {
@@ -6684,7 +6688,10 @@
   "5c2749f296f32ca1449afb9bbf1cf37b593290324c5f660c55e9b3137953b747": {
     "first_seen": "2026-08-27T11:01:13.660155+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "2A: service obstruction Harmful bus"
+      },
+      "epoch": 3
     }
   },
   "5c43645e71514b79e677e1dcb880bcfc1a29885cefdd2a67dfac07b7423e5753": {
@@ -7892,7 +7899,11 @@
   "6e3212cdfbb2100debc82518e9e2548c140016950ee6eff54020af8572a0a70d": {
     "first_seen": "2026-08-27T10:00:59.038959+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "Stop change of lines N75 and SEV U3 towards Gasometer Stop: Nottendorfer Gasse From: Erdbergstra\u00dfe before Nottendorfer Gasse To: Erdbergstra\u00dfe 192-196 \u2026",
+        "title": "N75: N75, SEV U3: Nottendorfer Gasse"
+      },
+      "epoch": 3
     }
   },
   "6e5486fc15ed699d2a31936ef215f847110bb7253fe022208520b15f428488d4": {
@@ -8677,6 +8688,15 @@
       "en": {
         "summary": "irregular intervals in both directions U. Line 36A: irregular intervals in both directions. Reason: traffic congestion.",
         "title": "36B/36A: traffic congestion"
+      },
+      "epoch": 3
+    }
+  },
+  "7759c98fa43166227a7bf88c2664ca1b65d01f3983b6c7f303dcfe44866505ee": {
+    "first_seen": "2026-08-27T11:30:53.890114+00:00",
+    "translations": {
+      "en": {
+        "title": "12: Harmful bus service from Bruno-Marek-Allee"
       },
       "epoch": 3
     }
@@ -17659,6 +17679,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: defective vehicle.",
         "title": "12: defective vehicle"
+      },
+      "epoch": 3
+    }
+  },
+  "f405c473ffd6c27a95f0f60b98dbed4cadeae8fa6fe57c97945f1b4f0958204f": {
+    "first_seen": "2026-08-27T11:30:53.890114+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Line 52: irregular intervals in both directions.",
+        "title": "49/52: defective vehicle"
       },
       "epoch": 3
     }
