@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 27 Aug 2026 23:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 23:31:31 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Klapprampensperre am 02.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ebe03eb05c4d9e81c36e95426c86b8961df06349c2989dd0e5aea1e329ae11a8</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 27 Aug 2026 23:31:31 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 26 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 02 Sep 2026 22:15:00 +0200</ext:ends_at>
+      <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. [26.08.2026 – 02.09.2026]</description>
+      <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden.<br/>[26.08.2026 – 02.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N75: N75, SEV U3: Nottendorfer Gasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -66,11 +77,11 @@
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;907495</guid>
-      <pubDate>Thu, 27 Aug 2026 17:17:03 +0200</pubDate>
+      <pubDate>Thu, 27 Aug 2026 23:14:21 +0200</pubDate>
       <ext:first_seen>Wed, 26 Aug 2026 12:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 27 Aug 2026 17:17:03 +0200</ext:starts_at>
-      <description>Wegen Reparaturarbeiten nach einem Unfall sind zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof Zugfahrten bis voraussichtlich 29.08.2026, 22:00 Uhr nur eingeschränkt möglich. [Seit 27.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Reparaturarbeiten nach einem Unfall sind zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof Zugfahrten bis voraussichtlich 29.08.2026, 22:00 Uhr nur eingeschränkt möglich.<br/>[Seit 27.08.2026]]]></content:encoded>
+      <ext:starts_at>Thu, 27 Aug 2026 23:14:21 +0200</ext:starts_at>
+      <description>Wegen Reparaturarbeiten nach einem Unfall sind zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof Zugfahrten derzeit nur eingeschränkt möglich. [Seit 27.08.2026]</description>
+      <content:encoded><![CDATA[Wegen Reparaturarbeiten nach einem Unfall sind zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof Zugfahrten derzeit nur eingeschränkt möglich.<br/>[Seit 27.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37/42: Michelbeuern-AKH]]></title>
@@ -104,17 +115,6 @@
       <ext:ends_at>Thu, 30 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet. [09.09.2026 – 30.09.2027]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet.<br/>[09.09.2026 – 30.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1c0944c7ba72cc6ec5dbef5498f0536cdeebf208be76b4556119ca563f709087</guid>
-      <pubDate>Thu, 20 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 25 Aug 2026 12:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 20 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 30 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Landstraßer Hauptstraße werden die Busse der Linie 74A umgeleitet. [20.08.2026 – 30.04.2027]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Landstraßer Hauptstraße werden die Busse der Linie 74A umgeleitet.<br/>[20.08.2026 – 30.04.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
