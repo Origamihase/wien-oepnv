@@ -878,6 +878,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "43A: Falschparker",
+    "description": "Linie 43A: Fahrtbehinderung in Richtung Hernals, Wattgasse. Voraussichtliche Dauer: 19:00 Uhr. Grund: Falschparker im Haltestellenbereich Dreimarkstein.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "af38cf017f81b25b38554336bb8c4c69b59a62ce2f8229a41a5de95253129c03",
+    "pubDate": "2026-08-28T18:25:00+02:00",
+    "starts_at": "2026-08-28T18:25:00+02:00",
+    "ends_at": "2026-08-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=43A|D=2026-08-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "43: Gleisbauarbeiten",
     "description": "Linie 43: Betrieb nur zwischen Schottentor U und Hernals, Wattgasse. Zwischen Neuwaldegg und Hernals, Wattgasse fährt ersatzweise die verlängerte Linie 43A. Voraussichtliche Dauer: Anfang September. Grund: Gleisbauarbeiten im Bereich Dornbacher Straße und Hernalser Hauptstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -975,10 +987,10 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "60: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
-    "pubDate": "2026-08-28T17:39:00+02:00",
+    "pubDate": "2026-08-28T17:41:39+02:00",
     "starts_at": "2026-08-28T17:44:09+02:00",
     "ends_at": "2026-08-28T18:43:00+02:00",
     "_identity": "wl|störung|L=60|D=2026-08-28"
@@ -1090,6 +1102,18 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Tiere im Gleis",
+    "description": "Linie U2: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 18:40 Uhr. Grund: Tiere im Gleis im Haltestellenbereich Lina-Loos-Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d508c150afc70829f95e57a120c6d4437e9b7a65cc36b2b364370cc0c2e0691c",
+    "pubDate": "2026-08-28T18:21:00+02:00",
+    "starts_at": "2026-08-28T18:21:00+02:00",
+    "ends_at": "2026-08-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-08-28"
   },
   {
     "source": "Wiener Linien",
