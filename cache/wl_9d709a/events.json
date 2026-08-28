@@ -866,6 +866,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40/41: Verkehrsunfall",
+    "description": "Linie 40: Fahrtbehinderung in Richtung Gersthof, Herbeckstraße. Linie 41: Fahrtbehinderung in Richtung Pötzleinsdorf. Voraussichtliche Dauer: 01:30 Uhr. Grund: Verkehrsunfall im Bereich Währinger Straße 80-82.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2eb68f371c0d737b7a5ab3e158e473973cc35e96b9aefc6807cce70740d62e8e",
+    "pubDate": "2026-08-29T00:28:00+02:00",
+    "starts_at": "2026-08-29T00:28:00+02:00",
+    "ends_at": "2026-08-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=40,41|D=2026-08-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1082,14 +1094,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N41: Busse halten Liechtensteinstraße 19",
-    "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 19",
+    "title": "N65: Busse halten Bussteig B",
+    "description": "Bauarbeiten\nBusse halten Bussteig B",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "62540e3a511839981230453380fb7c7af2b4d40fab19503d61f8814d7f8588da",
-    "pubDate": "2026-08-28T01:00:24+02:00",
-    "starts_at": "2026-08-28T01:00:24+02:00",
-    "ends_at": "2026-08-29T00:30:00+02:00",
-    "_identity": "wl|störung|L=N41|D=2026-08-28"
+    "guid": "5e95b88eb59bd30d7611b97d7110d9ae020e72e64bc91263179a7bf4bbc8ff5b",
+    "pubDate": "2026-08-29T00:30:20+02:00",
+    "starts_at": "2026-08-29T00:30:20+02:00",
+    "ends_at": "2026-08-29T05:30:00+02:00",
+    "_identity": "wl|störung|L=N65|D=2026-08-29"
   },
   {
     "source": "Wiener Linien",
@@ -1114,18 +1126,6 @@
     "starts_at": "2026-08-07T10:18:00+02:00",
     "ends_at": "2026-08-31T04:00:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-08-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in Richtung Heiligenstadt. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-08-28T23:41:00+02:00",
-    "starts_at": "2026-08-28T23:41:00+02:00",
-    "ends_at": "2026-08-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-08-28"
   },
   {
     "source": "Wiener Linien",
