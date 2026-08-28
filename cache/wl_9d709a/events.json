@@ -788,19 +788,7 @@
     "guid": "75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35",
     "pubDate": "2026-08-28T12:03:00+02:00",
     "starts_at": "2026-08-28T12:03:00+02:00",
-    "ends_at": "2026-08-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-08-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d918f82f99d4acc9c2e9969d73dafc129c9eb0c902f19f570d931d36e6cf04f0",
-    "pubDate": "2026-08-28T12:04:06+02:00",
-    "starts_at": "2026-08-28T12:04:06+02:00",
-    "ends_at": "2026-08-28T13:03:00+02:00",
+    "ends_at": "2026-08-28T13:30:00+02:00",
     "_identity": "wl|störung|L=12A|D=2026-08-28"
   },
   {
@@ -898,18 +886,6 @@
     "starts_at": "2026-08-19T00:00:22+02:00",
     "ends_at": "2026-08-28T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-08-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40A: Verspätungen",
-    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "11aa33c68f3b235c869f74bc1c41192a0d48a3b681bedab9ef96a1e7b5d4a0d8",
-    "pubDate": "2026-08-28T12:13:00+02:00",
-    "starts_at": "2026-08-28T12:13:00+02:00",
-    "ends_at": "2026-08-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=40A|D=2026-08-28"
   },
   {
     "source": "Wiener Linien",
@@ -1142,14 +1118,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U3: Betriebsstörung",
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
-    "pubDate": "2026-08-28T12:34:00+02:00",
-    "starts_at": "2026-08-28T12:34:00+02:00",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2026-08-28T13:07:00+02:00",
+    "starts_at": "2026-08-28T13:07:00+02:00",
     "ends_at": "2026-08-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-08-28"
+    "_identity": "wl|störung|L=U3|D=2026-08-28"
   },
   {
     "source": "Wiener Linien",
