@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 28 Aug 2026 15:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2026 15:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Hetzendorf: Altmannsdorfer Straße ONo76 to ONo76A]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Mon, 31 Aug 2026 00:00:00 +0200</ext:ends_at>
       <description>The Rosenhügelstraße is used from Bertégasse to and towards Karl-Schwed-Gasse.More information about the diversion as well as the transfer of the … [26.08.2026 – 31.08.2026]</description>
       <content:encoded><![CDATA[The Rosenhügelstraße is used from Bertégasse to and towards Karl-Schwed-Gasse.More information about the diversion as well as the transfer of the …<br/>[26.08.2026 – 31.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">efb7fda2bee4851ff1b6c083ce7930fb0893897126569c8481a6cda2e1134d04</guid>
-      <pubDate>Fri, 28 Aug 2026 13:49:00 +0200</pubDate>
-      <ext:first_seen>Fri, 28 Aug 2026 14:01:18 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 28 Aug 2026 13:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 28 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 28.08.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 28.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Mon, 07 Sep 2026 00:30:00 +0200</ext:ends_at>
       <description>Because of the Jedlese Kirtag, the line 34A is redirected in both directions. [04.09.2026 – 07.09.2026]</description>
       <content:encoded><![CDATA[Because of the Jedlese Kirtag, the line 34A is redirected in both directions.<br/>[04.09.2026 – 07.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37/42: Michelbeuern-AKH]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8c134ca47a2f9556b4b2c701707dfb58b855f382a3658a88b21b430ac0e28fad</guid>
+      <pubDate>Thu, 04 Jun 2026 07:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 12:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 04 Jun 2026 07:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
+      <description>Stop transfer of line 42 towards Antonigasse Stop: Michelbeuern-AKH From: Kreuzgasse 24 After: Kreuzgasse 8ENTec7964a4f365daabX6X Duration: June 8, 2026, approximately 08:00 … [04.06.2026 – 11.11.2026]</description>
+      <content:encoded><![CDATA[Stop transfer of line 42 towards Antonigasse Stop: Michelbeuern-AKH From: Kreuzgasse 24 After: Kreuzgasse 8ENTec7964a4f365daabX6X Duration: June 8, 2026, approximately 08:00 …<br/>[04.06.2026 – 11.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
