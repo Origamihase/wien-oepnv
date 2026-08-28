@@ -8679,6 +8679,15 @@
       "epoch": 3
     }
   },
+  "76bb81e5f866313156f588abe4b0105b85cabaf2cf7b0b49c02f4a79259c4991": {
+    "first_seen": "2026-08-28T20:30:42.380535+00:00",
+    "translations": {
+      "en": {
+        "title": "12: service obstruction event"
+      },
+      "epoch": 3
+    }
+  },
   "76c136b71818fd0dc187c8a2cb730e46d3b85dcc71301c791f1c311c1245376a": {
     "first_seen": "2026-07-08T12:30:51.182278+00:00",
     "translations": {
@@ -20412,6 +20421,16 @@
       "en": {
         "summary": "Due to an interlocking malfunction am Bahnhof, no journeys are possible at Hinterstoder Bahnhof [in St.Pankraz] to expected 16:30 watch.",
         "title": "Substances"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&908197": {
+    "first_seen": "2026-08-28T20:30:42.380535+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation in Wr.Neustadt Hbf currently no trips are possible.",
+        "title": "Wiener Neustadt Hauptbahnhof"
       },
       "epoch": 3
     }
