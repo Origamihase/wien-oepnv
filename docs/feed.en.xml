@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 28 Aug 2026 10:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2026 11:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[72A: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3e70e4bbf713fcdd4cc095fbdfff6414327c3b6ba5f04ca7de2ff298fcb90bef</guid>
-      <pubDate>Fri, 28 Aug 2026 09:17:00 +0200</pubDate>
-      <ext:first_seen>Fri, 28 Aug 2026 09:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 28 Aug 2026 09:17:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 28 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. expected duration: 09:45 watch. Reason: traffic accident in the Kaiserebersdorfer Straße area. [On 28.08.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. expected duration: 09:45 watch. Reason: traffic accident in the Kaiserebersdorfer Straße area.<br/>[On 28.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -116,6 +105,17 @@
       <ext:ends_at>Sat, 05 Sep 2026 20:00:00 +0200</ext:ends_at>
       <description>Due to a flea market on the Margaretenplatz, the following transport measures are taken. [26.08.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[Due to a flea market on the Margaretenplatz, the following transport measures are taken.<br/>[26.08.2026 – 05.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5B/N29: diversion due to track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a92d02495778b5484a3e92febf004d3ddcf871aa0beaaa9d608926a55480dfb4</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 10:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 09 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 30 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of track construction works in the Taborstraße, the lines 5B and N29 are redirected. [09.09.2026 – 30.09.2027]</description>
+      <content:encoded><![CDATA[Because of track construction works in the Taborstraße, the lines 5B and N29 are redirected.<br/>[09.09.2026 – 30.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
