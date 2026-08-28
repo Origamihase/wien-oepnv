@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 28 Aug 2026 05:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2026 05:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Sat, 29 Aug 2026 01:00:00 +0200</ext:ends_at>
       <description>[28.08.2026 – 29.08.2026]</description>
       <content:encoded><![CDATA[[28.08.2026 – 29.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N65: Busse halten Bussteig B]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5e95b88eb59bd30d7611b97d7110d9ae020e72e64bc91263179a7bf4bbc8ff5b</guid>
-      <pubDate>Fri, 28 Aug 2026 02:15:34 +0200</pubDate>
-      <ext:first_seen>Fri, 28 Aug 2026 05:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 28 Aug 2026 02:15:34 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 28 Aug 2026 05:30:00 +0200</ext:ends_at>
-      <description>[Am 28.08.2026]</description>
-      <content:encoded><![CDATA[[Am 28.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Klapprampensperre am 02.09.2026]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Sat, 05 Sep 2026 20:00:00 +0200</ext:ends_at>
       <description>Wegen eines Flohmarktes am Margaretenplatz kommt es zu folgenden Verkehrsmaßnahmen. [26.08.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[Wegen eines Flohmarktes am Margaretenplatz kommt es zu folgenden Verkehrsmaßnahmen.<br/>[26.08.2026 – 05.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5B/N29: Umleitung wegen Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a92d02495778b5484a3e92febf004d3ddcf871aa0beaaa9d608926a55480dfb4</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 10:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 09 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 30 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet. [09.09.2026 – 30.09.2027]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Taborstraße werden die Linien 5B und N29 umgeleitet.<br/>[09.09.2026 – 30.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
