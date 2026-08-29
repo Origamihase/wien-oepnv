@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 29 Aug 2026 02:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 02:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[N31: Polizeieinsatz]]></title>
+      <title><![CDATA[N31: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ed75080354ef5aa0fcd14bfeb66c59c8a3c0f6bd6ba0587ce371ca5027f0c0ca</guid>
+      <guid isPermaLink="false">bc50b61d7ca86fae29f7f5ccbad110ff439785e6bda43863833edf4b354ece26</guid>
       <pubDate>Sat, 29 Aug 2026 01:43:00 +0200</pubDate>
-      <ext:first_seen>Sat, 29 Aug 2026 02:00:57 +0200</ext:first_seen>
+      <ext:first_seen>Sat, 29 Aug 2026 02:30:55 +0200</ext:first_seen>
       <ext:starts_at>Sat, 29 Aug 2026 01:43:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 29 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Derzeit kommt es bei der Linie N31 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Polizeieinsatz. [Am 29.08.2026]</description>
-      <content:encoded><![CDATA[Derzeit kommt es bei der Linie N31 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Polizeieinsatz.<br/>[Am 29.08.2026]]]></content:encoded>
+      <description>Derzeit kommt es bei der Linie N31 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Rettungseinsatz. [Am 29.08.2026]</description>
+      <content:encoded><![CDATA[Derzeit kommt es bei der Linie N31 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Rettungseinsatz.<br/>[Am 29.08.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44A: Kurzführung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">922b4af1b9331fff9893d877fea6430921e2756178e2670f0d01bb4f89a4e096</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 29 Aug 2026 02:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 03 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 22 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt. [03.08.2026 – 22.07.2027]</description>
+      <content:encoded><![CDATA[Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt.<br/>[03.08.2026 – 22.07.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11/71: Gleisbauarbeiten (Phase 3)]]></title>
@@ -107,16 +118,6 @@
       <ext:ends_at>Sat, 05 Sep 2026 17:00:00 +0200</ext:ends_at>
       <description>Wegen des österreichischen Blasmusikfestes im Bereich der Ringstraße kommt es zu folgenden Verkehrsmaßnahmen. [27.08.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[Wegen des österreichischen Blasmusikfestes im Bereich der Ringstraße kommt es zu folgenden Verkehrsmaßnahmen.<br/>[27.08.2026 – 05.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S 1: Wien Leopoldau ↔ Deutsch Wagram]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;907513</guid>
-      <pubDate>Wed, 26 Aug 2026 15:34:51 +0200</pubDate>
-      <ext:first_seen>Wed, 26 Aug 2026 15:31:05 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 26 Aug 2026 15:34:51 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten kann zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof von 24.10.2026 bis 26.10.2026 von 31.10.2026 bis 01.11.2026 von 14.11.2026 bis 15.11.2026 von … [Seit 26.08.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten kann zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof von 24.10.2026 bis 26.10.2026 von 31.10.2026 bis 01.11.2026 von 14.11.2026 bis 15.11.2026 von …<br/>[Seit 26.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
