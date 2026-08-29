@@ -806,30 +806,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Stromstörung",
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a568f008fe34b3251af149f243456091de6d900d56228d517ae44836215e2252",
-    "pubDate": "2026-08-29T19:22:00+02:00",
-    "starts_at": "2026-08-29T19:22:00+02:00",
-    "ends_at": "2026-08-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-08-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Stromstörung",
-    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "91931852629c56734de9ebb890a6d08fe3fa4bc03f486764b8ba9382f17388b5",
-    "pubDate": "2026-08-29T19:22:00+02:00",
-    "starts_at": "2026-08-29T19:22:00+02:00",
-    "ends_at": "2026-08-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=38|D=2026-08-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -838,42 +814,6 @@
     "starts_at": "2026-08-29T00:00:25+02:00",
     "ends_at": "2026-08-29T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-08-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Stromstörung",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9f8a52a91a148408c14beae4789bc8665328a9a5ccdbe9b4947e188ba03543f1",
-    "pubDate": "2026-08-29T19:22:00+02:00",
-    "starts_at": "2026-08-29T19:22:00+02:00",
-    "ends_at": "2026-08-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-08-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Stromstörung",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aafcc4807c3bd89ccccac1f40288722310ef09e8d062f945c0c5ee8c7fbd753c",
-    "pubDate": "2026-08-29T19:22:00+02:00",
-    "starts_at": "2026-08-29T19:22:00+02:00",
-    "ends_at": "2026-08-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=41|D=2026-08-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Stromstörung",
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ccb539ba253a1c73eebb81d92696b29a7244d9643251511360210517eccfd39c",
-    "pubDate": "2026-08-29T19:22:00+02:00",
-    "starts_at": "2026-08-29T19:22:00+02:00",
-    "ends_at": "2026-08-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=42|D=2026-08-29"
   },
   {
     "source": "Wiener Linien",
@@ -1035,12 +975,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "D: Fahrtbehinderung Falschparker",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "123c1792102bf603153d3f83b7ca1dab3ecf7f4872f15ae5c9c6e9e85e8f68ca",
-    "pubDate": "2026-08-29T20:33:00+02:00",
+    "pubDate": "2026-08-29T20:35:42+02:00",
     "starts_at": "2026-08-29T20:39:13+02:00",
-    "ends_at": "2026-08-29T23:55:00+02:00",
+    "ends_at": "2026-08-29T21:38:00+02:00",
     "_identity": "wl|störung|L=D|D=2026-08-29"
   },
   {
@@ -1090,18 +1030,6 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2026-08-29T19:41:00+02:00",
-    "starts_at": "2026-08-29T19:41:00+02:00",
-    "ends_at": "2026-08-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-08-29"
   },
   {
     "source": "Wiener Linien",
