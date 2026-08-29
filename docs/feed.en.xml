@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 29 Aug 2026 02:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 03:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N31: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bc50b61d7ca86fae29f7f5ccbad110ff439785e6bda43863833edf4b354ece26</guid>
-      <pubDate>Sat, 29 Aug 2026 01:43:00 +0200</pubDate>
-      <ext:first_seen>Sat, 29 Aug 2026 02:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 29 Aug 2026 01:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 29 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>Currently, the N31 line has different intervals in both directions. Reason: rescue operation. [On 29.08.2026]</description>
-      <content:encoded><![CDATA[Currently, the N31 line has different intervals in both directions. Reason: rescue operation.<br/>[On 29.08.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[44A: short-running service]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,16 @@
       <ext:ends_at>Sat, 05 Sep 2026 17:00:00 +0200</ext:ends_at>
       <description>Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken. [27.08.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken.<br/>[27.08.2026 – 05.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S 1: Wien Leopoldau ↔X648bf33863c543a0X1X]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;907513</guid>
+      <pubDate>Wed, 26 Aug 2026 15:34:51 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 15:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 26 Aug 2026 15:34:51 +0200</ext:starts_at>
+      <description>construction works between Deutsch Wagram station and Gänserndorf station of 24.10.2026 to 26X.10.2026 from 31.112026 to 01.11.2026 from 14ENT533caff021c08caff02a43X. [Since 26.08.2026]</description>
+      <content:encoded><![CDATA[construction works between Deutsch Wagram station and Gänserndorf station of 24.10.2026 to 26X.10.2026 from 31.112026 to 01.11.2026 from 14ENT533caff021c08caff02a43X.<br/>[Since 26.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
