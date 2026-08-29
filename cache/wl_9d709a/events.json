@@ -782,6 +782,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37/38/40/41/42: Stromstörung",
+    "description": "Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Linie 38: Betrieb nur zwischen Grinzing und Spitalgasse. Weiterfahrt bis Alser Straße U. Linie 40: Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U. Linie 41: Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U. Linie 42: Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U. Weichen Sie ersatzweise auf die Linien D, 43, 44. U6 aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Stromstörung im Haltestellenbereich Schwarzspanierstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "05a72cf761c443d5facb2504eed58ebc7d87f8401e7753d03a75453e7b686329",
+    "pubDate": "2026-08-29T19:22:00+02:00",
+    "starts_at": "2026-08-29T19:22:00+02:00",
+    "ends_at": "2026-08-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=37,38,40,41,42|D=2026-08-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Dänenstraße ggü. 2",
     "description": "Bauarbeiten\nBusse halten Dänenstraße ggü. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -838,18 +850,6 @@
     "starts_at": "2026-08-29T00:00:25+02:00",
     "ends_at": "2026-08-29T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2026-08-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Haltestelle verlegt nach Obere Augartenstr. 42",
-    "description": "Haltestelle\nverlegt\nnach Obere\nAugartenstr. 42",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e886ce64095fb504ba0ed863b78d6c8e5048ecd170aadd5e8bba662191a14df7",
-    "pubDate": "2026-08-29T00:00:15+02:00",
-    "starts_at": "2026-08-29T00:00:15+02:00",
-    "ends_at": "2026-08-29T23:59:59+02:00",
-    "_identity": "wl|störung|L=42|D=2026-08-29"
   },
   {
     "source": "Wiener Linien",
