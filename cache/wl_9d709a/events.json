@@ -746,6 +746,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25: Verunreinigung",
+    "description": "Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5142e280b9254a5d6c4795fbaf7550c029777e1f957a6d40ee61d2d9858dda0e",
+    "pubDate": "2026-08-30T17:47:00+02:00",
+    "starts_at": "2026-08-30T17:47:00+02:00",
+    "ends_at": "2026-08-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-08-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -766,6 +778,18 @@
     "starts_at": "2026-08-29T00:00:24+02:00",
     "ends_at": "2026-08-30T23:59:59+02:00",
     "_identity": "wl|störung|L=36B|D=2026-08-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36B: Betriebsstörung",
+    "description": "Linie 36B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f1a8d4ebfae84c505c2cf18065342541aae7091d0628cc0a3ee771492031773",
+    "pubDate": "2026-08-30T17:46:00+02:00",
+    "starts_at": "2026-08-30T17:46:00+02:00",
+    "ends_at": "2026-08-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=36B|D=2026-08-30"
   },
   {
     "source": "Wiener Linien",
@@ -794,14 +818,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5B/38A: Feuerwehreinsatz",
-    "description": "Linie 5B: Fahrtbehinderung in Richtung Praterstern S U. Die Linie 38A wird in Richtung Leopoldsberg zwischen Bahnhof Heiligenstadt S U und Grinzinger Straße über Mooslackengasse , Muthgasse , Grinzinger Straße umgeleitet. Voraussichtliche Dauer: Nicht absehbar. Grund: Feuerwehreinsatz im Bereich Boschstraße # Kreilplatz.",
+    "title": "38A: Feuerwehreinsatz",
+    "description": "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a61a98ff32ed213b6febbfc59f819351baa920272ff5af799b6578fa7663b0f2",
+    "guid": "23035fbb18cf54e12a91a326f046fd03ee86d614225ee2cf959f27cb1caea0ff",
     "pubDate": "2026-08-30T17:18:00+02:00",
     "starts_at": "2026-08-30T17:18:00+02:00",
     "ends_at": "2026-08-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=38A,5B|D=2026-08-30"
+    "_identity": "wl|störung|L=38A|D=2026-08-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6d0d6e75911dcbdb520502c0858186a916a33440b4d40bbfa2b980db06ec81c9",
+    "pubDate": "2026-08-30T17:20:22+02:00",
+    "starts_at": "2026-08-30T17:20:22+02:00",
+    "ends_at": "2026-08-30T18:19:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2026-08-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Feuerwehreinsatz Umleitung über Mooslackeng./Muthgasse",
+    "description": "Feuerwehreinsatz\nUmleitung über Mooslackeng./Muthgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9c9898f4edab170a8c8e33f1661562e34490576f61ca89f310cc288c0b0c9ba9",
+    "pubDate": "2026-08-30T17:26:22+02:00",
+    "starts_at": "2026-08-30T17:26:22+02:00",
+    "ends_at": "2026-08-30T18:24:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2026-08-30"
   },
   {
     "source": "Wiener Linien",
@@ -938,6 +986,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5B: Feuerwehreinsatz",
+    "description": "Linie 5B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5f671ec81f4101e7a69acb74ef323b5826af481e95c7cb595f76f8b7e4676e03",
+    "pubDate": "2026-08-30T17:18:00+02:00",
+    "starts_at": "2026-08-30T17:18:00+02:00",
+    "ends_at": "2026-08-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=5B|D=2026-08-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -982,6 +1042,18 @@
     "starts_at": "2026-08-29T00:00:21+02:00",
     "ends_at": "2026-08-30T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-08-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Schadhaftes Fahrzeug",
+    "description": "Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6386a0a1443709a811da286faca3c110f82cb450fccefa41edfcc91b1f2e483b",
+    "pubDate": "2026-08-30T17:52:00+02:00",
+    "starts_at": "2026-08-30T17:52:00+02:00",
+    "ends_at": "2026-08-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-08-30"
   },
   {
     "source": "Wiener Linien",

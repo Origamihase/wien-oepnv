@@ -6048,6 +6048,16 @@
       "epoch": 3
     }
   },
+  "5142e280b9254a5d6c4795fbaf7550c029777e1f957a6d40ee61d2d9858dda0e": {
+    "first_seen": "2026-08-30T16:00:52.272807+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "25: Impurity"
+      },
+      "epoch": 3
+    }
+  },
   "51575f7b4ad057f02d76d9a0cfa77e68c6872c33f28a7a74b7a5393d02ba868e": {
     "first_seen": "2026-07-08T17:30:52.452564+00:00",
     "translations": {
@@ -9411,6 +9421,16 @@
       "en": {
         "summary": "Operation only between Westbahnhof S U and Reinlgasse. Continue via line 10 to Joachimsthalerplatz.",
         "title": "52: defective vehicle"
+      },
+      "epoch": 3
+    }
+  },
+  "7f1a8d4ebfae84c505c2cf18065342541aae7091d0628cc0a3ee771492031773": {
+    "first_seen": "2026-08-30T16:00:52.272807+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: service disruption.",
+        "title": "36B: service disruption"
       },
       "epoch": 3
     }
