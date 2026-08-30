@@ -7,29 +7,17 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 30 Aug 2026 08:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 09:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[40: Corrupted overhead line]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">02dfa4fb52a0a22894140ff606abde3aaf08f96c2437662db317a9345c960ea6</guid>
-      <pubDate>Sun, 30 Aug 2026 07:22:00 +0200</pubDate>
-      <ext:first_seen>Sun, 30 Aug 2026 08:01:16 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 30 Aug 2026 07:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 30 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 30.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 30.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: Corrupted overhead line]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">864445423ceb9243f0ff08c7f3e2ab6552736204fbfa87f1ea9321c77e76b63a</guid>
-      <pubDate>Sun, 30 Aug 2026 07:22:00 +0200</pubDate>
-      <ext:first_seen>Sun, 30 Aug 2026 08:01:16 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 30 Aug 2026 07:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 30 Aug 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 30.08.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 30.08.2026]]]></content:encoded>
+      <title><![CDATA[Wien Matzleinsdorfer Platz ↔ Wien Hauptbahnhof]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;908425</guid>
+      <pubDate>Sun, 30 Aug 2026 08:59:28 +0200</pubDate>
+      <ext:first_seen>Sun, 30 Aug 2026 09:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 30 Aug 2026 08:59:28 +0200</ext:starts_at>
+      <description>Due to persons on the tracks, no journeys are possible between Wien Matzleinsdorfer Platz Bahnhst and Vienna Railway Station (U) to expected 09:15 watch. [Since 30.08.2026]</description>
+      <content:encoded><![CDATA[Due to persons on the tracks, no journeys are possible between Wien Matzleinsdorfer Platz Bahnhst and Vienna Railway Station (U) to expected 09:15 watch.<br/>[Since 30.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44A: short-running service]]></title>
@@ -118,6 +106,16 @@
       <ext:ends_at>Sat, 05 Sep 2026 17:00:00 +0200</ext:ends_at>
       <description>Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken. [27.08.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken.<br/>[27.08.2026 – 05.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S 1: Wien Leopoldau ↔X648bf33863c543a0X1X]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;907513</guid>
+      <pubDate>Wed, 26 Aug 2026 15:34:51 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 15:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 26 Aug 2026 15:34:51 +0200</ext:starts_at>
+      <description>construction works between Deutsch Wagram station and Gänserndorf station of 24.10.2026 to 26X.10.2026 from 31.112026 to 01.11.2026 from 14ENT533caff021c08caff02a43X. [Since 26.08.2026]</description>
+      <content:encoded><![CDATA[construction works between Deutsch Wagram station and Gänserndorf station of 24.10.2026 to 26X.10.2026 from 31.112026 to 01.11.2026 from 14ENT533caff021c08caff02a43X.<br/>[Since 26.08.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
