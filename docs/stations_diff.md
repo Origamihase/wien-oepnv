@@ -1,24 +1,23 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-08-23T02:24:20+00:00_
+_Erzeugt am: 2026-08-30T06:17:12+00:00_
 
 **Stationen: 2244 → 2244 (Δ +0)**
 
 ## Hinzugefügt (2)
 
-- `name:Wien Klaschkaweg (WL)` — Wien Klaschkaweg \(WL\)
-- `name:Wien Lavaterstraße (WL)` — Wien Lavaterstraße \(WL\)
+- `name:Wien Haschafeld (WL)` — Wien Haschafeld \(WL\)
+- `name:Wien Schemmerlstraße, Unterfeld (WL)` — Wien Schemmerlstraße, Unterfeld \(WL\)
 
 ## Entfernt (2)
 
-- `name:Wien Haschafeld (WL)` — Wien Haschafeld \(WL\)
-- `name:Wien Wasserwiese (WL)` — Wien Wasserwiese \(WL\)
+- `name:Wien Lavaterstraße (WL)` — Wien Lavaterstraße \(WL\)
+- `name:Wien Schemmerlstraße/Unterfeld (WL)` — Wien Schemmerlstraße/Unterfeld \(WL\)
 
 ## Umbenannt (0)
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (2)
+## Koordinaten verschoben (≥ 100 m) (0)
 
-- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
-- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)
+_Keine._
