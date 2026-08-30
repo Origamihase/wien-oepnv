@@ -830,6 +830,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40/41: Beschädigte Oberleitung",
+    "description": "Linie 40: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke Linien 9 und 42). Linie 41: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke der Linien 9 und 42). Voraussichtliche Dauer: 07:40 Uhr. Grund: Beschädigte Oberleitung im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "61b80a07247a89772c77a7732a90efc6011f5945b24bb02eabf6a8649b5417fb",
+    "pubDate": "2026-08-30T07:22:00+02:00",
+    "starts_at": "2026-08-30T07:22:00+02:00",
+    "ends_at": "2026-08-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=40,41|D=2026-08-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -842,14 +854,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Haltestelle verlegt nach Obere Augartenstr. 42",
-    "description": "Haltestelle\nverlegt\nnach Obere\nAugartenstr. 42",
+    "title": "9/42: Fahrleitungsgebrechen Umleitung bis Währinger Straße über 9 und 42",
+    "description": "Fahrleitungsgebrechen\nUmleitung bis Währinger Straße\nüber 9 und 42",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e886ce64095fb504ba0ed863b78d6c8e5048ecd170aadd5e8bba662191a14df7",
-    "pubDate": "2026-08-29T00:00:15+02:00",
-    "starts_at": "2026-08-29T00:00:15+02:00",
-    "ends_at": "2026-08-30T23:59:59+02:00",
-    "_identity": "wl|störung|L=42|D=2026-08-29"
+    "guid": "c16c031a4402a30aff864e17701208b7b9b21898bb539351ea24ab0ae432494c",
+    "pubDate": "2026-08-30T07:27:51+02:00",
+    "starts_at": "2026-08-30T07:27:51+02:00",
+    "ends_at": "2026-08-30T08:24:00+02:00",
+    "_identity": "wl|störung|L=42,9|D=2026-08-30"
   },
   {
     "source": "Wiener Linien",
