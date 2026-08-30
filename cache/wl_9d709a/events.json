@@ -758,18 +758,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "36B: Busse halten Brünner Straße 118",
-    "description": "Busse halten\nBrünner Straße 118",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "47d352c19d2e123514a007494e2e9a462cadcffdb7d58ec85e0f4f7d374f0632",
-    "pubDate": "2026-08-29T00:00:24+02:00",
-    "starts_at": "2026-08-29T00:00:24+02:00",
-    "ends_at": "2026-08-31T01:16:00+02:00",
-    "_identity": "wl|störung|L=36B|D=2026-08-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Dänenstraße ggü. 2",
     "description": "Bauarbeiten\nBusse halten Dänenstraße ggü. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -814,6 +802,18 @@
     "starts_at": "2026-08-29T00:00:15+02:00",
     "ends_at": "2026-08-31T23:59:59+02:00",
     "_identity": "wl|störung|L=42|D=2026-08-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "45707199f93ff4683281aab521b5dd7f64c348fa82fc6b7113e98b6572382511",
+    "pubDate": "2026-08-31T01:01:32+02:00",
+    "starts_at": "2026-08-31T01:01:36+02:00",
+    "ends_at": "2026-08-31T02:01:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-08-31"
   },
   {
     "source": "Wiener Linien",
@@ -938,30 +938,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten Brünner Straße 83 (Hauptfahrbahn)",
-    "description": "Busse halten\nBrünner Straße 83 (Hauptfahrbahn)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "05ffa3344d1b4d78cf9d7b523de67c40cac12c942005978c25d3602ffcd4a2a4",
-    "pubDate": "2026-08-31T01:00:06+02:00",
-    "starts_at": "2026-08-31T01:00:06+02:00",
-    "ends_at": "2026-08-31T01:08:00+02:00",
-    "_identity": "wl|störung|L=N31|D=2026-08-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N31: Busse halten Brünner Straße 63-65 (Haltestelle der Linie 36B)",
-    "description": "Busse halten\nBrünner Straße 63-65 (Haltestelle der Linie 36B)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f66150d89f74b5ff07a5973ab86e2f584b96f17ef89a8af11ddf3daecca4e9dc",
-    "pubDate": "2026-08-31T01:00:06+02:00",
-    "starts_at": "2026-08-31T01:00:06+02:00",
-    "ends_at": "2026-08-31T01:09:00+02:00",
-    "_identity": "wl|störung|L=N31|D=2026-08-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N41: Busse halten Alserbachstraße 4",
     "description": "Bauarbeiten\nBusse halten Alserbachstraße 4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1022,12 +998,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N43: Falschparker",
+    "title": "N43: Fahrtbehinderung Falschparker",
     "description": "Die Linie N43 ist derzeit in Richtung Schottentor U an der Weiterfahrt gehindert. Voraussichtliche Dauer: 01:30 Uhr. Grund: Falschparker im Bereich Lascygasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b84118ea7e7b5c1a67057e464a8bc31cd2fc4cb31833384f3191f6883aae1e66",
     "pubDate": "2026-08-31T00:58:00+02:00",
-    "starts_at": "2026-08-31T00:58:00+02:00",
+    "starts_at": "2026-08-31T01:23:38+02:00",
     "ends_at": "2026-08-31T23:55:00+02:00",
     "_identity": "wl|störung|L=N43|D=2026-08-31"
   },
