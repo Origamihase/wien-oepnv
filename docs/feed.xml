@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 31 Aug 2026 05:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2026 05:31:06 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[44A: Kurzführung]]></title>
@@ -52,17 +52,6 @@
       <ext:ends_at>Tue, 01 Sep 2026 01:00:00 +0200</ext:ends_at>
       <description>[31.08.2026 – 01.09.2026]</description>
       <content:encoded><![CDATA[[31.08.2026 – 01.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N65: Busse halten Bussteig B]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5e95b88eb59bd30d7611b97d7110d9ae020e72e64bc91263179a7bf4bbc8ff5b</guid>
-      <pubDate>Mon, 31 Aug 2026 00:30:04 +0200</pubDate>
-      <ext:first_seen>Fri, 28 Aug 2026 05:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 31 Aug 2026 00:30:04 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 31 Aug 2026 05:30:00 +0200</ext:ends_at>
-      <description>[Am 31.08.2026]</description>
-      <content:encoded><![CDATA[[Am 31.08.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Klapprampensperre am 02.09.2026]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Mon, 07 Sep 2026 00:30:00 +0200</ext:ends_at>
       <description>Wegen des Jedleseer Kirtags wird die Linie 34A in beiden Richtungen umgeleitet. [04.09.2026 – 07.09.2026]</description>
       <content:encoded><![CDATA[Wegen des Jedleseer Kirtags wird die Linie 34A in beiden Richtungen umgeleitet.<br/>[04.09.2026 – 07.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37/42: Michelbeuern-AKH]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8c134ca47a2f9556b4b2c701707dfb58b855f382a3658a88b21b430ac0e28fad</guid>
+      <pubDate>Thu, 04 Jun 2026 07:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 26 Aug 2026 12:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 04 Jun 2026 07:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 42 in Richtung Antonigasse Haltestelle: Michelbeuern-AKH Von: Kreuzgasse 2-4 Nach: Kreuzgasse 8-10 Dauer: 08. Juni 2026, etwa 08:00 Uhr, bis … [04.06.2026 – 11.11.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 42 in Richtung Antonigasse Haltestelle: Michelbeuern-AKH Von: Kreuzgasse 2-4 Nach: Kreuzgasse 8-10 Dauer: 08. Juni 2026, etwa 08:00 Uhr, bis …<br/>[04.06.2026 – 11.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
