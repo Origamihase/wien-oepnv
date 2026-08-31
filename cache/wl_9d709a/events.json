@@ -698,18 +698,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "U3: Weichentausch",
-    "description": "<h2>Weichentausch</h2> <p>Wegen des Weichentauschs zwischen Westbahnhof und Johnstra&szlig;e wird die Linie U3 geteilt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 13. Juli 2026, 04:00 Uhr, bis Montag, 31. August 2026, 04:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span></p> <p><strong>Linie U3:</strong><span style=\"text-decoration: underline;\"><br /></span>Kein Betrieb zwischen H&uuml;tteldorfer Stra&szlig;e und Westbahnhof.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Ersatzstra&szlig;enbahnlinie E3, 46, 49 und 48A.</p> <p>Die Ersatzstra&szlig;enbahnlinie E3 verkehrt zwischen Westbahnhof S U und Breitensee S und verbindet somit alle Stationen der U3 zwischen Westbahnhof S U und H&uuml;tteldorfer Stra&szlig;e U.<br />Die Linie E3 f&auml;hrt an den Wochenenden durchgehend.</p> <p>Der Einstieg am Westbahnhof befindet sich bei der Linie 9.<br />Die Einstiege bei den Stationen Schweglerstra&szlig;e, Johnstra&szlig;e und H&uuml;tteldorfer Stra&szlig;e befinden sich bei der Linie 49.</p> <p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/U3_Linienteilung_HH_WS.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7beaa72a38024699c087a8c9989fa536f561bedf3f6bf1fd0dd8eb3e93594e16",
-    "pubDate": "2026-06-10T12:00:00+02:00",
-    "starts_at": "2026-07-13T00:00:00+02:00",
-    "ends_at": "2026-08-31T04:00:00+02:00",
-    "_identity": "wl|hinweis|L=U3|D=2026-07-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "U6: U6 Stützmauersanierung: Thaliastraße, Burggasse-Stadthalle Sperre Gleis 1",
     "description": "<h2>Gleiswechselbetrieb</h2> <p>Wegen Sanierungsarbeiten kommt es zu einer Bahnsteigsperre der Linie U6 ab ca. 22:30 Uhr in den Stationen Thaliastra&szlig;e und Burggasse, Stadthalle in Richtung Floridsdorf.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:<br /></strong></span>Von 01. Juni 2026 bis voraussichtlich Mitte September 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span>Die Linie U6 kann die Stationen Thaliastra&szlig;e und Burggasse, Stadthalle in Richtung Floridsdorf Montag - Donnerstag (Werktags und vor Werktagen) ab ca. 22:30 Uhr nicht einhalten. Ein eingleisiger Betrieb ist zwischen Thaliastra&szlig;e und Burggasse, Stadthalle &uuml;ber Gleis 2 notwendig. Die Z&uuml;ge halten in beiden Richtungen auf Gleis 2.&nbsp; &nbsp;</p> <p><span style=\"text-decoration: underline;\"><strong>&nbsp;</strong></span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -878,6 +866,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62A: Busse halten Bussteig B",
+    "description": "Bauarbeiten\nBusse halten Bussteig B",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2c3d1f0c4d2c4bd75a13bf6c77bf6eeadf790c70398f3b461fcbe17f94662bae",
+    "pubDate": "2026-08-31T04:00:22+02:00",
+    "starts_at": "2026-08-31T04:00:22+02:00",
+    "ends_at": "2026-09-01T00:40:00+02:00",
+    "_identity": "wl|störung|L=62A|D=2026-08-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1042,18 +1042,6 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Bauarbeiten",
-    "description": "Die Linie U3 fährt derzeit nicht zwischen Hütteldorfer Straße und Westbahnhof. Weichen Sie ersatzweise auf die Linien E3, 46, 49 und 48A aus. Voraussichtliche Dauer: 31. August. Grund: Bauarbeiten im Bereich zwischen Hütteldorfer Straße und Westbahnhof.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f1ff4ebe211b0ab042742cfed669d58ae3fc55fd5c1d9ebf99050e193c6bf3a3",
-    "pubDate": "2026-08-07T10:18:00+02:00",
-    "starts_at": "2026-08-07T10:18:00+02:00",
-    "ends_at": "2026-08-31T04:00:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-08-07"
   },
   {
     "source": "Wiener Linien",
