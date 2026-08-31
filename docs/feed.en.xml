@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 01 Sep 2026 00:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 01:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: service obstruction due to power failure]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e40b6b732d05935713a3251ae9bfad89bec9021122b7d49b2a044c285d5c23f</guid>
+      <pubDate>Tue, 01 Sep 2026 00:37:49 +0200</pubDate>
+      <ext:first_seen>Tue, 01 Sep 2026 01:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 01 Sep 2026 00:37:50 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Sep 2026 01:37:00 +0200</ext:ends_at>
+      <description>[On 01.09.2026]</description>
+      <content:encoded><![CDATA[[On 01.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N54R/N54: construction works, railway crossing]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -39,8 +50,8 @@
       <ext:first_seen>Mon, 31 Aug 2026 14:00:52 +0200</ext:first_seen>
       <ext:starts_at>Fri, 03 Jul 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 01 Sep 2026 08:00:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 11 in Richtung Otto-Probst-Platz Haltestelle: Enkplatz U, Gottschalkgasse Von: Gottschalkgasse 4-6 nach Simmeringer Hauptstraße Nach … [03.07.2026 – 01.09.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 11 in Richtung Otto-Probst-Platz Haltestelle: Enkplatz U, Gottschalkgasse Von: Gottschalkgasse 4-6 nach Simmeringer Hauptstraße Nach …<br/>[03.07.2026 – 01.09.2026]]]></content:encoded>
+      <description>Stop change of line 11 towards Otto-Probst-Platz Stop: Enkplatz U, Gottschalkgasse From: Gottschalkgasse 4-6 to Simmeringer Hauptstraße To … [03.07.2026 – 01.09.2026]</description>
+      <content:encoded><![CDATA[Stop change of line 11 towards Otto-Probst-Platz Stop: Enkplatz U, Gottschalkgasse From: Gottschalkgasse 4-6 to Simmeringer Hauptstraße To …<br/>[03.07.2026 – 01.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44A: short-running service]]></title>
@@ -87,15 +98,15 @@
       <content:encoded><![CDATA[[On 01.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
+      <title><![CDATA[N66: Buses stop at Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Mon, 31 Aug 2026 04:40:27 +0200</pubDate>
-      <ext:first_seen>Fri, 28 Aug 2026 05:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 31 Aug 2026 04:40:27 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 01 Sep 2026 01:00:00 +0200</ext:ends_at>
-      <description>[31.08.2026 – 01.09.2026]</description>
-      <content:encoded><![CDATA[[31.08.2026 – 01.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c</guid>
+      <pubDate>Tue, 01 Sep 2026 01:00:24 +0200</pubDate>
+      <ext:first_seen>Fri, 28 Aug 2026 04:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 01 Sep 2026 01:00:24 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Sep 2026 04:20:00 +0200</ext:ends_at>
+      <description>[On 01.09.2026]</description>
+      <content:encoded><![CDATA[[On 01.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: folding ramp lock on 02.09.2026]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 02 Sep 2026 22:15:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [26.08.2026 – 02.09.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[26.08.2026 – 02.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/71/D: Austrian brass music festival 05.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c23ec73a0daa6fd28b4af6da49d117ea58e5c9741d8e8ec8edd30e742255f0d8</guid>
-      <pubDate>Thu, 27 Aug 2026 08:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 27 Aug 2026 08:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 27 Aug 2026 08:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Sep 2026 17:00:00 +0200</ext:ends_at>
-      <description>Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken. [27.08.2026 – 05.09.2026]</description>
-      <content:encoded><![CDATA[Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken.<br/>[27.08.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
