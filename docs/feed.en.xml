@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 31 Aug 2026 12:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2026 12:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[24A: foreign traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b064d7a77a5435dbeaf58c524f631363e605bf4552527a87d27048cfd84e4a9e</guid>
+      <pubDate>Mon, 31 Aug 2026 12:26:00 +0200</pubDate>
+      <ext:first_seen>Mon, 31 Aug 2026 12:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 31 Aug 2026 12:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 31 Aug 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: Foreigner traffic accident. [On 31.08.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: Foreigner traffic accident.<br/>[On 31.08.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Telfs-Pfaffenhofen]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -104,17 +115,6 @@
       <ext:starts_at>Wed, 26 Aug 2026 14:12:19 +0200</ext:starts_at>
       <description>construction works between Wien Franz-Josefs-Bahnhof and Wien Heiligenstadt Station (U) from 31.10.2026 (22:00 o'clock) to 06.11.2026 (04:00 o'clock) no R40 and S40 trains. [Since 26.08.2026]</description>
       <content:encoded><![CDATA[construction works between Wien Franz-Josefs-Bahnhof and Wien Heiligenstadt Station (U) from 31.10.2026 (22:00 o'clock) to 06.11.2026 (04:00 o'clock) no R40 and S40 trains.<br/>[Since 26.08.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[34A: event]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1989239c512d7ef076d9776fbacfb168b5114ae857c45f925d1c3a86b5936649</guid>
-      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 26 Aug 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 07 Sep 2026 00:30:00 +0200</ext:ends_at>
-      <description>Because of the Jedlese Kirtag, the line 34A is redirected in both directions. [04.09.2026 – 07.09.2026]</description>
-      <content:encoded><![CDATA[Because of the Jedlese Kirtag, the line 34A is redirected in both directions.<br/>[04.09.2026 – 07.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
