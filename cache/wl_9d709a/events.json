@@ -698,42 +698,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Fremdunfall Züge halten bei Linie 43 Richtung Schottentor",
-    "description": "Fremdunfall\nZüge halten bei Linie 43 Richtung Schottentor",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3d985ab191f10e6471cdd3443d4f865825a3acc9c1f4788661ddbd9ec424036c",
-    "pubDate": "2026-09-01T14:22:59+02:00",
-    "starts_at": "2026-09-01T14:22:59+02:00",
-    "ends_at": "2026-09-01T15:22:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-09-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fremdunfall Betrieb ab Lange Gasse",
-    "description": "Fremdunfall\nBetrieb ab Lange Gasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5feb093026adcf29825b344959b35c53aa0bf16f3513606228a93acf85d1b2bd",
-    "pubDate": "2026-09-01T14:22:29+02:00",
-    "starts_at": "2026-09-01T14:22:29+02:00",
-    "ends_at": "2026-09-01T15:21:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-09-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "70b2e0c6a98eac247fec82053696d483e3bfe3a15719ca6cac32da7ac70cadfd",
-    "pubDate": "2026-09-01T14:22:01+02:00",
-    "starts_at": "2026-09-01T14:22:01+02:00",
-    "ends_at": "2026-09-01T15:21:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-09-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Fremder Verkehrsunfall",
     "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -790,30 +754,6 @@
     "starts_at": "2026-09-01T14:53:06+02:00",
     "ends_at": "2026-09-01T15:52:00+02:00",
     "_identity": "wl|störung|L=26A|D=2026-09-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac",
-    "pubDate": "2026-09-01T14:04:01+02:00",
-    "starts_at": "2026-09-01T14:05:00+02:00",
-    "ends_at": "2026-09-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=26|D=2026-09-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06ce993d4521983bd6b681492c64487991a39c88ae158c2b651de50a40457063",
-    "pubDate": "2026-09-01T14:03:30+02:00",
-    "starts_at": "2026-09-01T14:05:00+02:00",
-    "ends_at": "2026-09-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-09-01"
   },
   {
     "source": "Wiener Linien",
@@ -950,18 +890,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fremdunfall Betrieb ab Josefstädter Straße",
-    "description": "Fremdunfall\nBetrieb ab Josefstädter Straße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1d57b89b36565dba3a035c9532a1a1fa84a3175c8505b200134360db50b7ca9d",
-    "pubDate": "2026-09-01T14:19:31+02:00",
-    "starts_at": "2026-09-01T14:19:31+02:00",
-    "ends_at": "2026-09-01T15:17:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-09-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5: Fremder Verkehrsunfall",
     "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -969,18 +897,6 @@
     "pubDate": "2026-09-01T14:18:00+02:00",
     "starts_at": "2026-09-01T14:18:00+02:00",
     "ends_at": "2026-09-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-09-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Fremdunfall Betrieb ab Franz Josefs Bahnhof S",
-    "description": "Fremdunfall\nBetrieb ab Franz Josefs Bahnhof S",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b0c32117513a6fb1763e12eadb87d2eee6dd4d06896828ccf8375f2c6270913e",
-    "pubDate": "2026-09-01T14:21:29+02:00",
-    "starts_at": "2026-09-01T14:21:29+02:00",
-    "ends_at": "2026-09-01T15:20:00+02:00",
     "_identity": "wl|störung|L=5|D=2026-09-01"
   },
   {
@@ -1082,14 +998,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verunreinigung",
-    "description": "Linie U3: Unregelmäßige Intervalle in Richtung Simmering. Grund: Verunreinigung.",
+    "title": "U4: Verspätungen",
+    "description": "Linie U4: Unregelmäßige Intervalle in Richtung Heiligenstadt. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
-    "pubDate": "2026-09-01T10:15:00+02:00",
-    "starts_at": "2026-09-01T10:15:00+02:00",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-09-01T15:26:00+02:00",
+    "starts_at": "2026-09-01T15:26:00+02:00",
     "ends_at": "2026-09-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-09-01"
+    "_identity": "wl|störung|L=U4|D=2026-09-01"
   },
   {
     "source": "Wiener Linien",
