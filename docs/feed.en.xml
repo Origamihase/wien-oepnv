@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 01 Sep 2026 21:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 21:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[140/142: Stop transfer buses stop at house number 140 - 142]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cff20247d677b67d40acf68108dbc7f20a61b64a987888db9d0237b76b4c23fe</guid>
+      <pubDate>Tue, 01 Sep 2026 21:26:13 +0200</pubDate>
+      <ext:first_seen>Tue, 01 Sep 2026 21:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 01 Sep 2026 21:26:13 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 01 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 01.09.2026]</description>
+      <content:encoded><![CDATA[[On 01.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43: Vehicle on track]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 02 Sep 2026 22:15:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [26.08.2026 – 02.09.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[26.08.2026 – 02.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/71/D: Austrian brass music festival 05.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c23ec73a0daa6fd28b4af6da49d117ea58e5c9741d8e8ec8edd30e742255f0d8</guid>
-      <pubDate>Thu, 27 Aug 2026 08:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 27 Aug 2026 08:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 27 Aug 2026 08:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Sep 2026 17:00:00 +0200</ext:ends_at>
-      <description>Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken. [27.08.2026 – 05.09.2026]</description>
-      <content:encoded><![CDATA[Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken.<br/>[27.08.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
