@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 03 Sep 2026 01:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 01:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[18: Soft damage diversion to Bhf. Meidling]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">17a5c68b3f1413105176d3bd3197a07898779b47a4d2b06ecc8093e73f67cbf3</guid>
-      <pubDate>Thu, 03 Sep 2026 00:00:15 +0200</pubDate>
-      <ext:first_seen>Thu, 03 Sep 2026 00:01:22 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 03 Sep 2026 00:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 03 Sep 2026 01:30:00 +0200</ext:ends_at>
-      <description>[On 03.09.2026]</description>
-      <content:encoded><![CDATA[[On 03.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Soft damage service from Matzleinsdorfer Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d4642bcfc95049d7054995a34f48598a911528157dc4b64ec3eb4164f97892a5</guid>
-      <pubDate>Wed, 02 Sep 2026 20:07:30 +0200</pubDate>
-      <ext:first_seen>Thu, 03 Sep 2026 00:01:22 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 03 Sep 2026 00:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 03 Sep 2026 01:30:00 +0200</ext:ends_at>
-      <description>[On 03.09.2026]</description>
-      <content:encoded><![CDATA[[On 03.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[31: water pipe fracture service from Wexstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -65,28 +43,6 @@
       <content:encoded><![CDATA[The route 31 is short-run from 06.07.2026 to 16.08.2026 and runs only …<br/>[06.07.2026 – 05.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[18: Soft Damage service from Arbeitergasse, Gürtel]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e1ba161ca3b21e8f3028808e7a8b99d3def9dbc9af6e22306a31e78a71f53085</guid>
-      <pubDate>Wed, 02 Sep 2026 20:16:00 +0200</pubDate>
-      <ext:first_seen>Wed, 02 Sep 2026 21:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 03 Sep 2026 00:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 03 Sep 2026 01:30:00 +0200</ext:ends_at>
-      <description>[On 03.09.2026]</description>
-      <content:encoded><![CDATA[[On 03.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Soft damage on line 6 (direction Burggasse)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c00b7f851e8543c9376c63b04a2249594c4cfae733a14cc8a434314618976aa</guid>
-      <pubDate>Thu, 03 Sep 2026 00:00:15 +0200</pubDate>
-      <ext:first_seen>Wed, 02 Sep 2026 20:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 03 Sep 2026 00:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 03 Sep 2026 01:30:00 +0200</ext:ends_at>
-      <description>[On 03.09.2026]</description>
-      <content:encoded><![CDATA[[On 03.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[2: Water pipe breakage Trains stop at line 31 direction Stammersdorf]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a06acc16c23c6543c83f50a6ef6ed7242334e7a0d65a86f003e17dcdbe607a3d</guid>
@@ -117,6 +73,50 @@
       <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>The right lane is locked in the direction of Burggasse. The remaining lanes are maintained. [05.07.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[The right lane is locked in the direction of Burggasse. The remaining lanes are maintained.<br/>[05.07.2026 – 05.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[140/142: Stop transfer buses stop at house number 140 - 142]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cff20247d677b67d40acf68108dbc7f20a61b64a987888db9d0237b76b4c23fe</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:14 +0200</pubDate>
+      <ext:first_seen>Tue, 01 Sep 2026 21:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 03 Sep 2026 00:00:14 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 03 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 03.09.2026]</description>
+      <content:encoded><![CDATA[[On 03.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N46/N49: Changed lines or new stops]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">661c550f1328aa8913e804568846242394059c88c93eb9131ec08050b7f8481b</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 01 Sep 2026 17:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 01 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 15 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>Change of network date: September 8, 2026, approximately 00:30 o'clock. Measures: Line N46 towards Joachimsthalerplatz (Mo-FR) or Otto Wagner Areal (Sat, Sun, holiday) From … [01.09.2026 – 15.09.2026]</description>
+      <content:encoded><![CDATA[Change of network date: September 8, 2026, approximately 00:30 o'clock. Measures: Line N46 towards Joachimsthalerplatz (Mo-FR) or Otto Wagner Areal (Sat, Sun, holiday) From …<br/>[01.09.2026 – 15.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N54R/N54: construction works, railway crossing]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a12b0d73f244570cbab729939a664290f9de63059c3aa1e9918304bbd99c6e68</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 31 Aug 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 05:00:00 +0200</ext:ends_at>
+      <description>Because of construction works at the railway crossing Hietzinger Hauptstraße / Spohrstraße, the N54 call bus line is redirected. [06.07.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[Because of construction works at the railway crossing Hietzinger Hauptstraße / Spohrstraße, the N54 call bus line is redirected.<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N54R/N54: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">891a44125e322e05f53f2f89c016c15f8fb0ce6b05b9814936a601b68b90c76b</guid>
+      <pubDate>Sun, 05 Jul 2026 06:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 31 Aug 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks and the associated partial barrier of Mariahilfer Straße, the N54 call bus line is diverted. [16.07.2026 – 15.08.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks and the associated partial barrier of Mariahilfer Straße, the N54 call bus line is diverted.<br/>[16.07.2026 – 15.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
