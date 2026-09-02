@@ -3,7 +3,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "1/2/71/D: Österreichisches Blasmusikfest 05.09.2026",
-    "description": "<h2>Veranstaltung</h2> <p>Wegen des &ouml;sterreichischen Blasmusikfestes im Bereich der Ringstra&szlig;e kommt es zu folgenden Verkehrsma&szlig;nahmen.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Samstag, 05. September 2026, ab etwa 15:15 Uhr bis etwa 17:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span></p> <p><span style=\"text-decoration: underline;\">Linie D</span><br />Umleitung in beiden Richtungen<br />zwischen Schwarzenbergplatz und B&ouml;rse<br />&uuml;ber Schwedenplatz U.</p> <p><span style=\"text-decoration: underline;\">Linie 1</span><br />Umleitung in Richtung Prater Hauptallee<br />zwischen Karlsplatz U und Julius-Raab-Platz<br />&uuml;ber Schubertring und Stubenring.</p> <p>Umleitung in Richtung Stefan-Fadinger-Platz<br />zwischen B&ouml;rse und Resselgasse<br />&uuml;ber Schwedenplatz U - Stubenring - Schubertring.</p> <p><span style=\"text-decoration: underline;\">Linie 2</span><br />Kein Betrieb zwischen Ring, Volkstheater U und Schwedenplatz U.</p> <p><span style=\"text-decoration: underline;\">Linie 71</span><br />Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p> <p><span style=\"text-decoration: underline;\"><strong>Weiteres:</strong></span><br />Je nach Fortschritt der Veranstaltung und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf <a href=\"https://www.wienerlinen.at\">www.wienerlinien.at</a>.</p>",
+    "description": "<h2>Veranstaltung</h2> <p>Wegen des &ouml;sterreichischen Blasmusikfestes im Bereich der Ringstra&szlig;e kommt es zu folgenden Verkehrsma&szlig;nahmen.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Samstag, 05. September 2026, ab etwa 15:15 Uhr bis etwa 17:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span></p> <p><span style=\"text-decoration: underline;\">Linie D</span><br />Umleitung in beiden Richtungen<br />zwischen Schwarzenbergplatz und B&ouml;rse<br />&uuml;ber Schwedenplatz U.</p> <p><span style=\"text-decoration: underline;\">Linie 1</span><br />Umleitung in Richtung Prater Hauptallee<br />zwischen Karlsplatz U und Julius-Raab-Platz<br />&uuml;ber Schubertring und Stubenring.</p> <p>Umleitung in Richtung Stefan-Fadinger-Platz<br />zwischen B&ouml;rse und Resselgasse<br />&uuml;ber Schwedenplatz U - Stubenring - Schubertring.</p> <p><span style=\"text-decoration: underline;\">Linie 2</span><br />Kein Betrieb zwischen Parlament, U Volkstheater und Schwedenplatz U.</p> <p><span style=\"text-decoration: underline;\">Linie 71</span><br />Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p> <p><span style=\"text-decoration: underline;\"><strong>Weiteres:</strong></span><br />Je nach Fortschritt der Veranstaltung und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf <a href=\"https://www.wienerlinen.at\">www.wienerlinien.at</a>.</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c23ec73a0daa6fd28b4af6da49d117ea58e5c9741d8e8ec8edd30e742255f0d8",
     "pubDate": "2026-08-27T08:00:00+02:00",
@@ -1006,6 +1006,18 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verunreinigung",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9779e7ace261e01ddc018942c222784a1d556276f8f642723bab39617b6cccfc",
+    "pubDate": "2026-09-02T14:39:00+02:00",
+    "starts_at": "2026-09-02T14:39:00+02:00",
+    "ends_at": "2026-09-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-09-02"
   },
   {
     "source": "Wiener Linien",
