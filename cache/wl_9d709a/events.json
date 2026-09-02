@@ -746,6 +746,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "31: Wasserrohrgebrechen Betrieb ab Floridsdorf U",
+    "description": "Wasserrohrgebrechen\nBetrieb ab Floridsdorf U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6629563e7f5b2bb9dce702c210500448d137ed7785e681a05e7b950c010e2f9e",
+    "pubDate": "2026-09-02T06:43:16+02:00",
+    "starts_at": "2026-09-02T06:43:16+02:00",
+    "ends_at": "2026-09-02T14:00:00+02:00",
+    "_identity": "wl|störung|L=31|D=2026-09-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Wasserrohrgebrechen Betrieb ab Wexstraße",
+    "description": "Wasserrohrgebrechen\nBetrieb ab Wexstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "70a5ad70b55f1c5d6d55c61a8595647b35fbda2a94963075da3931878be2995b",
+    "pubDate": "2026-09-02T06:43:14+02:00",
+    "starts_at": "2026-09-02T06:43:16+02:00",
+    "ends_at": "2026-09-02T14:00:00+02:00",
+    "_identity": "wl|störung|L=31|D=2026-09-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Dänenstraße ggü. 2",
     "description": "Bauarbeiten\nBusse halten Dänenstraße ggü. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -922,18 +946,6 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Weichenstörung",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3169c7392ae5bf8671badefab08375f7a1babfb42f658591deb18bc6c7b7e6c0",
-    "pubDate": "2026-09-02T05:13:00+02:00",
-    "starts_at": "2026-09-02T05:13:00+02:00",
-    "ends_at": "2026-09-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-09-02"
   },
   {
     "source": "Wiener Linien",
