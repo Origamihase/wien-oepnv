@@ -842,42 +842,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Verspätungen",
-    "description": "Derzeit kommt es bei der Linie N31 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "007b843904e60457cb211b848ec50b2178a706bd56b8da6006ea2cbaedd4ca17",
-    "pubDate": "2026-09-02T03:52:00+02:00",
-    "starts_at": "2026-09-02T03:52:00+02:00",
-    "ends_at": "2026-09-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=N31|D=2026-09-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N41: Busse halten Alserbachstraße 4",
-    "description": "Bauarbeiten\nBusse halten Alserbachstraße 4",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1d94b6ceb6bfe77c36b24759c498142eb2811556ad789e580b8ee45419ce9cf9",
-    "pubDate": "2026-09-02T01:00:03+02:00",
-    "starts_at": "2026-09-02T01:00:03+02:00",
-    "ends_at": "2026-09-02T04:30:00+02:00",
-    "_identity": "wl|störung|L=N41|D=2026-09-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N41: Busse halten Währinger Gürtel 89",
-    "description": "Bauarbeiten\nBusse halten Währinger Gürtel 89",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4792557c2c16f30772f0c78305646ba7efe55b010ef27de6eb11bce3eb02b795",
-    "pubDate": "2026-09-02T01:00:03+02:00",
-    "starts_at": "2026-09-02T01:00:03+02:00",
-    "ends_at": "2026-09-02T04:30:00+02:00",
-    "_identity": "wl|störung|L=N41|D=2026-09-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N41: Busse halten Liechtensteinstraße 19",
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 19",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -885,30 +849,6 @@
     "pubDate": "2026-09-02T01:00:03+02:00",
     "starts_at": "2026-09-02T01:00:03+02:00",
     "ends_at": "2026-09-03T00:30:00+02:00",
-    "_identity": "wl|störung|L=N41|D=2026-09-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N41: Busse halten Liechtensteinstraße gegenüber 17",
-    "description": "Bauarbeiten\nBusse halten Liechtensteinstraße gegenüber 17",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "712474b5cbc968cb4cea44560c840559618a4ddcd15799e040990c97c29c3410",
-    "pubDate": "2026-09-02T01:00:03+02:00",
-    "starts_at": "2026-09-02T01:00:03+02:00",
-    "ends_at": "2026-09-02T04:30:00+02:00",
-    "_identity": "wl|störung|L=N41|D=2026-09-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N41: Busse halten Alserbachstraße 5",
-    "description": "Bauarbeiten\nBusse halten Alserbachstraße 5",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9b4b575ddbf7d9024f9d017b2954bf2d3efbb9afb9bb5708a4cb264d7c180559",
-    "pubDate": "2026-09-02T01:00:03+02:00",
-    "starts_at": "2026-09-02T01:00:03+02:00",
-    "ends_at": "2026-09-02T04:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-09-02"
   },
   {
@@ -922,18 +862,6 @@
     "starts_at": "2026-09-02T00:30:03+02:00",
     "ends_at": "2026-09-02T05:30:00+02:00",
     "_identity": "wl|störung|L=N65|D=2026-09-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N66: Busse halten Salvatorianerplatz",
-    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c",
-    "pubDate": "2026-09-02T01:00:05+02:00",
-    "starts_at": "2026-09-02T01:00:05+02:00",
-    "ends_at": "2026-09-02T04:20:00+02:00",
-    "_identity": "wl|störung|L=N66|D=2026-09-02"
   },
   {
     "source": "Wiener Linien",
@@ -1006,5 +934,29 @@
     "starts_at": "2026-09-01T00:00:16+02:00",
     "ends_at": "2026-09-02T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-09-01|TK=haltestelle nach der kreuzung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Wasserrohrgebrechen Betrieb ab Floridsdorf U",
+    "description": "Wasserrohrgebrechen\nBetrieb ab Floridsdorf U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "242df2a9a667a0dd21fb18d504d8f06276fb8c431fdc6ac4eb4ec4ee9cd8f222",
+    "pubDate": "2026-09-02T04:28:29+02:00",
+    "starts_at": "2026-09-02T04:28:29+02:00",
+    "ends_at": "2026-09-02T05:27:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-09-02|TK=wasserrohrgebrechen betrieb ab floridsdorf u"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Wasserrohrgebrechen Betrieb ab Friedrich-Engels-Platz",
+    "description": "Wasserrohrgebrechen\nBetrieb ab Friedrich-Engels-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "08e5e1b4b1c7733de306cf7baed70ad9c46bc040033b8d0a24d59d6955f3321f",
+    "pubDate": "2026-09-02T04:27:29+02:00",
+    "starts_at": "2026-09-02T04:27:29+02:00",
+    "ends_at": "2026-09-02T05:26:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-09-02|TK=wasserrohrgebrechen betrieb ab friedrich engels platz"
   }
 ]

@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 02 Sep 2026 04:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 04:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N31: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">007b843904e60457cb211b848ec50b2178a706bd56b8da6006ea2cbaedd4ca17</guid>
-      <pubDate>Wed, 02 Sep 2026 03:52:00 +0200</pubDate>
-      <ext:first_seen>Wed, 02 Sep 2026 04:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 02 Sep 2026 03:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 02 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Currently, the N31 line has different intervals in both directions. Reason: service disruption. [On 02.09.2026]</description>
-      <content:encoded><![CDATA[Currently, the N31 line has different intervals in both directions. Reason: service disruption.<br/>[On 02.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[140/142: Stop transfer buses stop at house number 140 - 142]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -109,15 +98,26 @@
       <content:encoded><![CDATA[[On 02.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N66: Buses stop at Salvatorianerplatz]]></title>
+      <title><![CDATA[U1: folding ramp lock on 02.09.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c</guid>
-      <pubDate>Wed, 02 Sep 2026 01:00:05 +0200</pubDate>
-      <ext:first_seen>Fri, 28 Aug 2026 04:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 02 Sep 2026 01:00:05 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 02 Sep 2026 04:20:00 +0200</ext:ends_at>
-      <description>[On 02.09.2026]</description>
-      <content:encoded><![CDATA[[On 02.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">ebe03eb05c4d9e81c36e95426c86b8961df06349c2989dd0e5aea1e329ae11a8</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 27 Aug 2026 23:31:31 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 26 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 02 Sep 2026 22:15:00 +0200</ext:ends_at>
+      <description>Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended. [26.08.2026 – 02.09.2026]</description>
+      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U1 underground trains cannot be extended.<br/>[26.08.2026 – 02.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/71/D: Austrian brass music festival 05.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c23ec73a0daa6fd28b4af6da49d117ea58e5c9741d8e8ec8edd30e742255f0d8</guid>
+      <pubDate>Thu, 27 Aug 2026 08:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 27 Aug 2026 08:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 27 Aug 2026 08:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 17:00:00 +0200</ext:ends_at>
+      <description>Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken. [27.08.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[Due to the Austrian brass music festival in the area of the Ringstraße, the following transport measures are taken.<br/>[27.08.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
