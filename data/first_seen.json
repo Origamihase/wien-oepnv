@@ -753,6 +753,16 @@
       "epoch": 3
     }
   },
+  "09dcc2a28bfc10ca29d2642fe80c02d42696eca2b05b3130650b8f4b0cf68e88": {
+    "first_seen": "2026-09-02T05:30:43.920865+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic congestion.",
+        "title": "28A: traffic congestion"
+      },
+      "epoch": 3
+    }
+  },
   "0a357d69f4eb7f19d80612505230e0a8b5a1c830acc3efdd3d3975ba59c7dcd4": {
     "first_seen": "2026-06-29T21:00:49.058431+00:00",
     "translations": {
@@ -7628,6 +7638,15 @@
       "en": {
         "summary": "Change of network date: September 8, 2026, approximately 00:30 o'clock. Measures: Line N46 towards Joachimsthalerplatz (Mo-FR) or Otto Wagner Areal (Sat, Sun, holiday) From \u2026",
         "title": "N46/N49: Changed lines or new stops"
+      },
+      "epoch": 3
+    }
+  },
+  "6629563e7f5b2bb9dce702c210500448d137ed7785e681a05e7b950c010e2f9e": {
+    "first_seen": "2026-09-02T05:30:43.920865+00:00",
+    "translations": {
+      "en": {
+        "title": "31: water pipe fractures service from Floridsdorf U"
       },
       "epoch": 3
     }

@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 02 Sep 2026 07:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 07:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[31: Wasserrohrgebrechen]]></title>
+      <title><![CDATA[28A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5d5c3c553352fe808dd656933ca990fb4d17fef91221b500b7bbb24c8301e488</guid>
-      <pubDate>Wed, 02 Sep 2026 04:30:00 +0200</pubDate>
-      <ext:first_seen>Wed, 02 Sep 2026 05:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 02 Sep 2026 04:30:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">09dcc2a28bfc10ca29d2642fe80c02d42696eca2b05b3130650b8f4b0cf68e88</guid>
+      <pubDate>Wed, 02 Sep 2026 07:18:00 +0200</pubDate>
+      <ext:first_seen>Wed, 02 Sep 2026 07:30:43 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 02 Sep 2026 07:18:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 02 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Kein Betrieb zwischen Floridsdorf S U und Wexstraße. [Am 02.09.2026]</description>
-      <content:encoded><![CDATA[Kein Betrieb zwischen Floridsdorf S U und Wexstraße.<br/>[Am 02.09.2026]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 02.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 02.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Wasserrohrgebrechen Betrieb ab Floridsdorf U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6629563e7f5b2bb9dce702c210500448d137ed7785e681a05e7b950c010e2f9e</guid>
+      <pubDate>Wed, 02 Sep 2026 06:43:16 +0200</pubDate>
+      <ext:first_seen>Wed, 02 Sep 2026 07:30:43 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 02 Sep 2026 06:43:16 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 02 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 02.09.2026]</description>
+      <content:encoded><![CDATA[[Am 02.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[140/142: Haltestellenverlegung Busse halten bei Hausnummer 140 - 142]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 03 Sep 2026 01:00:00 +0200</ext:ends_at>
       <description>[02.09.2026 – 03.09.2026]</description>
       <content:encoded><![CDATA[[02.09.2026 – 03.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Klapprampensperre am 02.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ebe03eb05c4d9e81c36e95426c86b8961df06349c2989dd0e5aea1e329ae11a8</guid>
-      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 27 Aug 2026 23:31:31 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 26 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 02 Sep 2026 22:15:00 +0200</ext:ends_at>
-      <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. [26.08.2026 – 02.09.2026]</description>
-      <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden.<br/>[26.08.2026 – 02.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
