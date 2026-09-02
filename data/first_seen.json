@@ -965,6 +965,15 @@
       "epoch": 3
     }
   },
+  "0c00b7f851e8543c9376c63b04a2249594c4cfae733a14cc8a434314618976aa": {
+    "first_seen": "2026-09-02T18:30:51.392360+00:00",
+    "translations": {
+      "en": {
+        "title": "O: Soft damage on line 6 (direction Burggasse)"
+      },
+      "epoch": 3
+    }
+  },
   "0c24962dac327066a39dccd9a32f5340c501a08f0c3a53a1d337c3e0fa1aec30": {
     "first_seen": "2026-08-06T13:01:14.829856+00:00",
     "translations": {
@@ -10325,6 +10334,15 @@
         "title": "29A: delays"
       },
       "epoch": 2
+    }
+  },
+  "86ae623d308e2be52a79024d40c560a4d22cfc982334c750129333d664b76c7d": {
+    "first_seen": "2026-09-02T18:30:51.392360+00:00",
+    "translations": {
+      "en": {
+        "title": "62: service obstruction Soft damage"
+      },
+      "epoch": 3
     }
   },
   "86b602a41462b287fc4774e88c6052db3562dfe25c9666a5bb30b6b898e070b8": {
@@ -21180,6 +21198,16 @@
       "en": {
         "summary": "Due to a police operation, no journeys were possible between Wien Franz-Josefs-Bahnhof and Wien Heiligenstadt station (U) to 18:33 clock.",
         "title": "Wien Franz-Josefs-Bahnhof \u2194 Wien Heiligenstadt"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&909130": {
+    "first_seen": "2026-09-02T18:30:51.392360+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an interlocking disturbance am Bahnhof, no journeys were possible between Wien Stadlau Bahnhst (U) and Wien Hbf (U) to 20:15 watch.",
+        "title": "Wien Stadlau \u2194 Wien Hauptbahnhof"
       },
       "epoch": 3
     }
