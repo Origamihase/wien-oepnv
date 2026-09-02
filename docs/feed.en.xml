@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 02 Sep 2026 22:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 22:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Gumpendorfer Straße from Wallgasse to Laimgrubengasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">c39005f3283e4b45164e83aa1b69da3c7bcf8fdbcee0c60f4144361332e92301</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 02 Sep 2026 22:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>The bus line 57A is shortened to the Kaunitzgasse. [06.07.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[The bus line 57A is shortened to the Kaunitzgasse.<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Floridsdorfer Brücke from Am Rollerdam to Friedrich-Engels-Platz]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">f0e6c9ccc29e95bd7fa8df421c17ba4f0adb4f6f41e7745c75f367473ed9d529</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 02 Sep 2026 22:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>The route 31 is short-run from 06.07.2026 to 16.08.2026 and runs only … [06.07.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[The route 31 is short-run from 06.07.2026 to 16.08.2026 and runs only …<br/>[06.07.2026 – 05.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Stadlau ↔ Wien Simmering]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -94,28 +116,6 @@
       <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>The right lane is locked in the direction of Burggasse. The remaining lanes are maintained. [05.07.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[The right lane is locked in the direction of Burggasse. The remaining lanes are maintained.<br/>[05.07.2026 – 05.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Buses stop Victor Braun Square 1]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b680fc36ab24dd3e3f079558c25e04b6eb4b8a21a099723d4dd034c7334479bc</guid>
-      <pubDate>Wed, 02 Sep 2026 10:56:52 +0200</pubDate>
-      <ext:first_seen>Wed, 02 Sep 2026 11:00:45 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 02 Sep 2026 10:56:52 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 02 Sep 2026 23:59:00 +0200</ext:ends_at>
-      <description>[On 02.09.2026]</description>
-      <content:encoded><![CDATA[[On 02.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[140/142: Stop transfer buses stop at house number 140 - 142]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cff20247d677b67d40acf68108dbc7f20a61b64a987888db9d0237b76b4c23fe</guid>
-      <pubDate>Tue, 01 Sep 2026 21:26:13 +0200</pubDate>
-      <ext:first_seen>Tue, 01 Sep 2026 21:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 01 Sep 2026 21:26:13 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 02 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[01.09.2026 – 02.09.2026]</description>
-      <content:encoded><![CDATA[[01.09.2026 – 02.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
