@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 02 Sep 2026 05:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 05:31:05 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[31: Wasserrohrgebrechen]]></title>
@@ -17,8 +17,8 @@
       <ext:first_seen>Wed, 02 Sep 2026 05:01:08 +0200</ext:first_seen>
       <ext:starts_at>Wed, 02 Sep 2026 04:30:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 02 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Kein Betrieb zwischen Floridsdorf S U und Friedrich-Engels-Platz. [Am 02.09.2026]</description>
-      <content:encoded><![CDATA[Kein Betrieb zwischen Floridsdorf S U und Friedrich-Engels-Platz.<br/>[Am 02.09.2026]]]></content:encoded>
+      <description>Kein Betrieb zwischen Floridsdorf S U und Wexstraße. [Am 02.09.2026]</description>
+      <content:encoded><![CDATA[Kein Betrieb zwischen Floridsdorf S U und Wexstraße.<br/>[Am 02.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[140/142: Haltestellenverlegung Busse halten bei Hausnummer 140 - 142]]></title>
@@ -109,15 +109,15 @@
       <content:encoded><![CDATA[[02.09.2026 – 03.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N65: Busse halten Bussteig B]]></title>
+      <title><![CDATA[U1: Klapprampensperre am 02.09.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5e95b88eb59bd30d7611b97d7110d9ae020e72e64bc91263179a7bf4bbc8ff5b</guid>
-      <pubDate>Wed, 02 Sep 2026 00:30:03 +0200</pubDate>
-      <ext:first_seen>Fri, 28 Aug 2026 05:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 02 Sep 2026 00:30:03 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 02 Sep 2026 05:30:00 +0200</ext:ends_at>
-      <description>[Am 02.09.2026]</description>
-      <content:encoded><![CDATA[[Am 02.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">ebe03eb05c4d9e81c36e95426c86b8961df06349c2989dd0e5aea1e329ae11a8</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 27 Aug 2026 23:31:31 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 26 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 02 Sep 2026 22:15:00 +0200</ext:ends_at>
+      <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. [26.08.2026 – 02.09.2026]</description>
+      <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden.<br/>[26.08.2026 – 02.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
