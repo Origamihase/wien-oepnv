@@ -746,8 +746,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "31: Wasserrohrbruch Betrieb ab Floriodsdorf",
+    "description": "Wasserrohrbruch\nBetrieb ab Floriodsdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "130ad480f1aa2700c6667b8fa6e0929f2c7e32452255f838afe472d0e313f6a8",
+    "pubDate": "2026-09-02T06:43:16+02:00",
+    "starts_at": "2026-09-02T06:43:16+02:00",
+    "ends_at": "2026-09-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=31|D=2026-09-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "31: Wasserrohrgebrechen",
-    "description": "Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 12:00 Uhr. Grund: Wasserrohrgebrechen im Haltestellenbereich Friedrich-Engels-Platz.",
+    "description": "Linie 31: Kein Betrieb zwischen Floridsdorf S U und Friedrich-Engels-Platz. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Wasserrohrgebrechen im Haltestellenbereich Friedrich-Engels-Platz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5d5c3c553352fe808dd656933ca990fb4d17fef91221b500b7bbb24c8301e488",
     "pubDate": "2026-09-02T04:30:00+02:00",
@@ -775,6 +787,18 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "70a5ad70b55f1c5d6d55c61a8595647b35fbda2a94963075da3931878be2995b",
     "pubDate": "2026-09-02T06:43:14+02:00",
+    "starts_at": "2026-09-02T06:43:16+02:00",
+    "ends_at": "2026-09-02T23:59:59+02:00",
+    "_identity": "wl|störung|L=31|D=2026-09-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Wasserrohrbruch Betrieb ab Freidrich-Engels-Platz",
+    "description": "Wasserrohrbruch\nBetrieb ab Freidrich-Engels-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2ab50d02570532615a3a813fa3b2e094d0b74a10fd08b101f45634c35944c67",
+    "pubDate": "2026-09-02T06:43:16+02:00",
     "starts_at": "2026-09-02T06:43:16+02:00",
     "ends_at": "2026-09-02T23:59:59+02:00",
     "_identity": "wl|störung|L=31|D=2026-09-02"
