@@ -1,42 +1,34 @@
 {
-  "Meidling|CJX9|2026-09-02T08:23:00+02:00": {
+  "Meidling|CJX9|2026-09-02T08:53:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-09-02T08:01:08.539217+02:00",
+    "last_seen_at": "2026-09-02T08:30:50.368411+02:00",
     "latest_delay_minutes": 0.0,
     "name": "CJX9",
-    "scheduled": "2026-09-02T08:23:00+02:00"
-  },
-  "Meidling|S2|2026-09-02T08:12:00+02:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-09-02T08:01:08.539217+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-09-02T08:12:00+02:00"
+    "scheduled": "2026-09-02T08:53:00+02:00"
   },
   "Meidling|S2|2026-09-02T08:42:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-09-02T08:01:08.539217+02:00",
+    "last_seen_at": "2026-09-02T08:30:50.368411+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-09-02T08:42:00+02:00"
   },
-  "Meidling|S4|2026-09-02T08:02:00+02:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-09-02T08:01:08.539217+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S4",
-    "scheduled": "2026-09-02T08:02:00+02:00"
-  },
   "Meidling|S4|2026-09-02T08:32:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-09-02T08:01:08.539217+02:00",
+    "last_seen_at": "2026-09-02T08:30:50.368411+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S4",
     "scheduled": "2026-09-02T08:32:00+02:00"
+  },
+  "Meidling|S4|2026-09-02T09:02:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-09-02T08:30:50.368411+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S4",
+    "scheduled": "2026-09-02T09:02:00+02:00"
   }
 }
