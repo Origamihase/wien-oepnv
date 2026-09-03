@@ -914,6 +914,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N43: Verunreinigung",
+    "description": "Derzeit kommt es bei der Linie N43 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "16bc18f10872a15de43e0f32dc3d486bcf5daebebdeab4716deea7d835ea3820",
+    "pubDate": "2026-09-03T01:58:00+02:00",
+    "starts_at": "2026-09-03T01:58:00+02:00",
+    "ends_at": "2026-09-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=N43|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N65: Busse halten Bussteig B",
     "description": "Bauarbeiten\nBusse halten Bussteig B",
     "link": "https://www.wienerlinien.at/ogd_realtime",
