@@ -722,14 +722,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "1: Verunreinigung",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46",
-    "pubDate": "2026-09-03T20:27:00+02:00",
-    "starts_at": "2026-09-03T20:32:03+02:00",
+    "guid": "393a2a809b00f01d691846042c79d62a3a68c7af8c71ee5f38dc43c54f48e759",
+    "pubDate": "2026-09-03T21:48:00+02:00",
+    "starts_at": "2026-09-03T21:48:00+02:00",
     "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-03"
+    "_identity": "wl|störung|L=1|D=2026-09-03"
   },
   {
     "source": "Wiener Linien",
@@ -746,26 +746,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B/28A/29A: Fremder Verkehrsunfall",
-    "description": "Die Linie 29B wird in Richtung Floridsdorf S U zwischen Dopschstraße und Kefergrundgasse örtlich umgeleitet. Die Linie 28A wird in beiden Richtungen zwischen Julius-Ficker-Straße und Leopoldauer Platz örtlich umgeleitet. Die Linie 29A wird in beiden Richtungen zwischen Kefedergrundgasse und Dopschstraße örtlich umgeleitet. Voraussichtliche Dauer: 21:40 Uhr. Grund: Fremder Verkehrsunfall im Bereich Großfeldstraße # Julius-Ficker-Straße.",
+    "title": "28A: Fremder Verkehrsunfall",
+    "description": "Linie 28A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "af9cf3e240b2ca998b229a6e84afa928a83ba03f0ecca10ae854399b3413b616",
+    "guid": "b56d9dc3e666a206b702a4ebc1ea36f8ff96b01584f20b8213950da0cf40d129",
     "pubDate": "2026-09-03T20:44:00+02:00",
     "starts_at": "2026-09-03T20:44:00+02:00",
     "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=28A,29A,29B|D=2026-09-03"
+    "_identity": "wl|störung|L=28A|D=2026-09-03"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "29A: Fremder Verkehrsunfall",
+    "description": "Linie 29A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2026-09-03T20:28:00+02:00",
-    "starts_at": "2026-09-03T20:29:33+02:00",
+    "guid": "1534e244024c6fb9e3253e471eb9562f405710d4c44c22618d4cc9462129a50b",
+    "pubDate": "2026-09-03T20:44:00+02:00",
+    "starts_at": "2026-09-03T20:44:00+02:00",
     "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-09-03"
+    "_identity": "wl|störung|L=29A|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Fremder Verkehrsunfall",
+    "description": "Linie 29B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "71c6038e79ff1a0d1ae69bd7198188af32d83ccbb7225dd446b74fe5b4b215ed",
+    "pubDate": "2026-09-03T20:44:00+02:00",
+    "starts_at": "2026-09-03T20:44:00+02:00",
+    "ends_at": "2026-09-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=29B|D=2026-09-03"
   },
   {
     "source": "Wiener Linien",
@@ -866,18 +878,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Verkehrsunfall",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c1ce89fc07a31460a53947346c1d250614e6661635d844985802869cc35c9214",
-    "pubDate": "2026-09-03T20:47:00+02:00",
-    "starts_at": "2026-09-03T20:59:00+02:00",
-    "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -902,12 +902,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "62: Polizeieinsatz",
     "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2563cb7e5e67c7016a99b581b604e1f7ef686490b44625d39ce5e66b47c20dc1",
     "pubDate": "2026-09-03T20:27:00+02:00",
-    "starts_at": "2026-09-03T20:40:05+02:00",
+    "starts_at": "2026-09-03T20:27:00+02:00",
     "ends_at": "2026-09-03T23:55:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-09-03"
   },
@@ -986,18 +986,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
-    "pubDate": "2026-09-03T20:27:00+02:00",
-    "starts_at": "2026-09-03T20:37:33+02:00",
-    "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "S1/S2/S3/S4/S7: Betriebsstörung",
     "description": "Linien S1, S2, S3 und S4: Kein Betrieb zwischen Praterstern und Quartier Belvedere. Linie S7: Kein Betrieb zwischen Praterstern und Geiselbergstraße. Weiterfahrt als Ersatz für S7 mit Schienenersatzverkehr von Wien Mitte nach Geiselbergstraße. Ersatzweise benutzen Sie die Linien U1, U3 und U4. Dauer: Die Störung dauert voraussichtlich bis 7. September 2026. Grund: Reparaturarbeiten nach einem Kabelbrand im Bereich Praterstern.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1006,18 +994,6 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-09-03T20:08:00+02:00",
-    "starts_at": "2026-09-03T20:08:00+02:00",
-    "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-09-03"
   },
   {
     "source": "Wiener Linien",
