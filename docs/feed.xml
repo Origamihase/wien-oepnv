@@ -7,25 +7,14 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 03 Sep 2026 06:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 06:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[77A: Feuerwehreinsatz]]></title>
+      <title><![CDATA[1/18: Signalstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">45604353595570e28bf59d38a2b535cd6e845e2e05a5277583d4f715fab6969c</guid>
-      <pubDate>Thu, 03 Sep 2026 05:43:00 +0200</pubDate>
-      <ext:first_seen>Thu, 03 Sep 2026 06:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 03 Sep 2026 05:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 03 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/18/62: Signalstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">af9c8984a287742c91e3916318679fe7566c8daac3853c0ceaa63220fd9b3aaa</guid>
+      <guid isPermaLink="false">e3d81c7de31e02a1e02e70ea7fdef2b60c6fabfb7bcd328d73d9295c93c5638c</guid>
       <pubDate>Thu, 03 Sep 2026 05:39:00 +0200</pubDate>
-      <ext:first_seen>Thu, 03 Sep 2026 06:00:53 +0200</ext:first_seen>
+      <ext:first_seen>Thu, 03 Sep 2026 06:30:48 +0200</ext:first_seen>
       <ext:starts_at>Thu, 03 Sep 2026 05:39:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 03 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 18: Unregelmäßige Intervalle in beiden Richtungen. [Am 03.09.2026]</description>
@@ -117,6 +106,17 @@
       <ext:ends_at>Thu, 03 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 03.09.2026]</description>
       <content:encoded><![CDATA[[Am 03.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N46/N49: Geänderte Linienführung bzw. neue Haltestellen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">661c550f1328aa8913e804568846242394059c88c93eb9131ec08050b7f8481b</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 01 Sep 2026 17:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 01 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 15 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>Netzänderung Zeitpunkt: Ab 08. September 2026, etwa 00:30 Uhr. Maßnahmen: Linie N46 in Richtung Joachimsthalerplatz (Mo-FR) bzw. Otto Wagner Areal (Sa., So., Feiertag) Ab … [01.09.2026 – 15.09.2026]</description>
+      <content:encoded><![CDATA[Netzänderung Zeitpunkt: Ab 08. September 2026, etwa 00:30 Uhr. Maßnahmen: Linie N46 in Richtung Joachimsthalerplatz (Mo-FR) bzw. Otto Wagner Areal (Sa., So., Feiertag) Ab …<br/>[01.09.2026 – 15.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
