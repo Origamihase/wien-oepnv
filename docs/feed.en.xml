@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 03 Sep 2026 13:01:14 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 13:31:07 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40/41: Währinger Road Festival 2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2a560983767be461f039e42f6c79f363c49a2286c30cb1856d6ae1f13511fea6</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 03 Sep 2026 13:31:07 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 03 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 23:00:00 +0200</ext:ends_at>
+      <description>The lines 40 and 41 are diverted in both directions due to the maintenance of the road fence in Währinger Straße. [03.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[The lines 40 and 41 are diverted in both directions due to the maintenance of the road fence in Währinger Straße.<br/>[03.09.2026 – 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[78A: diversion and stop release]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a19cad3ad115dcd1abcddeda5ba10f8582f09ce0048618e9579e24ab8533e045</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 03 Sep 2026 13:31:07 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 03 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 20 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>Change of network Line78A gets a new line. [03.09.2026 – 20.09.2026]</description>
+      <content:encoded><![CDATA[Change of network Line78A gets a new line.<br/>[03.09.2026 – 20.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -94,28 +116,6 @@
       <ext:starts_at>Wed, 02 Sep 2026 16:40:31 +0200</ext:starts_at>
       <description>Because of construction works, the Kledering can't drive between Vienna Hbf (U) and Kledering on 06.09.2026. An rail replacement service with buses will be set up for you. [Since 02.09.2026]</description>
       <content:encoded><![CDATA[Because of construction works, the Kledering can't drive between Vienna Hbf (U) and Kledering on 06.09.2026. An rail replacement service with buses will be set up for you.<br/>[Since 02.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Westbahnhof: New belt 6-12]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">285343ebb2c89cc3001fac61d873d67e24890a570cf4e228724fecbf58e2fd79</guid>
-      <pubDate>Sun, 05 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 02 Sep 2026 14:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 05 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>The right lane is locked in the direction of Burggasse. The remaining lanes are maintained. [05.07.2026 – 05.09.2026]</description>
-      <content:encoded><![CDATA[The right lane is locked in the direction of Burggasse. The remaining lanes are maintained.<br/>[05.07.2026 – 05.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[140/142: Stop transfer buses stop at house number 140 - 142]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cff20247d677b67d40acf68108dbc7f20a61b64a987888db9d0237b76b4c23fe</guid>
-      <pubDate>Thu, 03 Sep 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Tue, 01 Sep 2026 21:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 03 Sep 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 03 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 03.09.2026]</description>
-      <content:encoded><![CDATA[[On 03.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
