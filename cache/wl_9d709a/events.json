@@ -506,18 +506,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "76B/79A/79B: Straßenbauarbeiten",
-    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Bauarbeiten in der Margetinstra&szlig;e werden die Linien 76B, 79A und 79B umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab 07. Juli 2026 (Betriebsbeginn) bis 03. Spetember 2026, etwa 16:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 76B in Richtung Albern:<br /></strong>Umleitung ab Jedletzbergerstra&szlig;e # Landwehrstra&szlig;e &uuml;ber Landwehrstra&szlig;e - Alberner Hafenzufahrtsstra&szlig;e - Zinnergasse zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:<br /></span>- Jedletzbergerstra&szlig;e (Margetinstra&szlig;e nach Landwehrstra&szlig;e)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>- Landwehrstra&szlig;e (Landwehrstra&szlig;e gegen&uuml;ber 5, Haltestelle 73A)</p> <p><strong>Linie 79A in Richtung Kaiserebersdorf, M&uuml;nichplatz:<br /></strong>Umleitung ab Freudenauer Hafenbr&uuml;cke # Zinnergasse &uuml;ber Zinnergasse zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>- Freudenauer Hafenbr&uuml;cke (Zinnergasse vor Alberner Hafenzufahrtsstra&szlig;e)<br />- Alberner Hafenzufahrtsstra&szlig;e (Landwehrstra&szlig;e nach Alberner Hafenzufahrtsstra&szlig;e)<br />- Landwehrstra&szlig;e (Landwehrstra&szlig;e 3)<br />- Jedletzbergerstra&szlig;e (Margetinstra&szlig;e nach Landwehrstra&szlig;e)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>- Zinnergasse, Kaserne (Zinnergasse 29, Haltestelle 73A)</p> <p><strong>Linie 79B in Richtung Kaiserebersdorf, M&uuml;nichplatz:<br /></strong>Umleitung ab Alberner Hafenzufahrtsstra&szlig;e # Landwehrstra&szlig;e &uuml;ber Alberner Hafenzufahrtsstra&szlig;e - Zinnergasse zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>- Alberner Hafenzufahrtsstra&szlig;e (Landwehrstra&szlig;e nach Alberner Hafenzufahrtsstra&szlig;e)<br />- Landwehrstra&szlig;e (Landwehrstra&szlig;e 3)<br />- Jedletzbergerstra&szlig;e (Margetinstra&szlig;e nach Landwehrstra&szlig;e)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>- Alberner Hafenzufahrtsstra&szlig;e (Alberner Hafenzufahrtsstra&szlig;e nach Landwehrstra&szlig;e, Haltestelle 73A)<br />- Freudenauer Hafenbr&uuml;cke (Zinnergasse nach Alberner Hafenzufahrtsstra&szlig;e, Haltestelle 79A)<br />- Zinnergasse, Kaserne (Zinnergasse 29)</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "431e057ca57f91c555271d2221f4da90b3968eb8cadc9754b4e9a03e2aad94a1",
-    "pubDate": "2026-06-29T00:00:00+02:00",
-    "starts_at": "2026-07-07T00:00:00+02:00",
-    "ends_at": "2026-09-03T16:00:00+02:00",
-    "_identity": "wl|hinweis|L=76B,79A,79B|D=2026-07-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "78A: Umleitung und Haltestellenauflassung",
     "description": "<h2>Netz&auml;nderung</h2> <p>Die Linie78A bekommt eine neue Linienf&uuml;hrung.&nbsp;</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitpunkt:</strong></span><br />Ab 05. September 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 78A:</strong><br />Die Linie 78A wird ab Handelskai # Marathonweg &uuml;ber Handelskai &ndash; Chrastekgasse &ndash; Wehlistra&szlig;e umgeleitet.</p> <p><span style=\"text-decoration: underline;\">Ersatzlos aufgelassene Haltestelle Richtung Lusthaus:</span><br />- Marathonweg (Wehlistra&szlig;e 316)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -842,6 +830,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40A: Verspätungen",
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "11aa33c68f3b235c869f74bc1c41192a0d48a3b681bedab9ef96a1e7b5d4a0d8",
+    "pubDate": "2026-09-03T15:49:00+02:00",
+    "starts_at": "2026-09-03T15:49:00+02:00",
+    "ends_at": "2026-09-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "59A: Busse halten Reinprechtsdorfer Straße 39-41",
     "description": "Busse halten\nReinprechtsdorfer Straße 39-41",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -938,18 +938,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Betriebsstörung Einstieg Rosensteingasse",
-    "description": "Betriebsstörung\nEinstieg Rosensteingasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "09c429a1e84434a9952833126c542ecb22b494ca27679e0d399f1ce274d717fe",
-    "pubDate": "2026-09-03T14:55:24+02:00",
-    "starts_at": "2026-09-03T14:55:24+02:00",
-    "ends_at": "2026-09-03T15:54:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Gegenstände auf der Fahrbahn",
     "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -957,30 +945,6 @@
     "pubDate": "2026-09-03T14:31:00+02:00",
     "starts_at": "2026-09-03T14:31:00+02:00",
     "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Gegenstand auf Fahrleitung",
-    "description": "Fahrtbehinderung\nGegenstand auf Fahrleitung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8a8598f411fadd34533822ecc0453a598076caa4f50c9c13a554c04e453d3ac0",
-    "pubDate": "2026-09-03T14:13:50+02:00",
-    "starts_at": "2026-09-03T14:36:22+02:00",
-    "ends_at": "2026-09-03T15:33:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Betriebsstörung Betrieb ab Rosensteingasse",
-    "description": "Betriebsstörung\nBetrieb ab Rosensteingasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c285d0eeb05e316147a1488682f8d13d5a51dcc4046a7fd0d67abf1d17ce337",
-    "pubDate": "2026-09-03T14:13:49+02:00",
-    "starts_at": "2026-09-03T14:54:24+02:00",
-    "ends_at": "2026-09-03T15:53:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-09-03"
   },
   {
@@ -1018,6 +982,30 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-09-03T15:43:00+02:00",
+    "starts_at": "2026-09-03T15:43:00+02:00",
+    "ends_at": "2026-09-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-09-03T15:54:00+02:00",
+    "starts_at": "2026-09-03T15:54:00+02:00",
+    "ends_at": "2026-09-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-09-03"
   },
   {
     "source": "Wiener Linien",
