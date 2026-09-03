@@ -710,14 +710,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18/62/O: Polizeieinsatz",
-    "description": "Linie 18: Fahrtbehinderung in Richtung Schlachthausgasse U. Linie 62: Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße. Linie O: Fahrtbehinderung in Richtung Bruno-Marek-Allee. Voraussichtliche Dauer: 21:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Quartier Belvedere S.",
+    "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
+    "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4b073f5821c549f220fa235ecdb5f27a95598ffdaa106945489b953f29a156e8",
+    "guid": "7aa6585f41de1e31a87cb7ac606b8cf2e987267b647c972f06a0b4d63e94b1a8",
+    "pubDate": "2026-07-13T14:07:00+02:00",
+    "starts_at": "2026-07-13T14:07:00+02:00",
+    "ends_at": "2026-12-31T14:07:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46",
     "pubDate": "2026-09-03T20:27:00+02:00",
-    "starts_at": "2026-09-03T20:27:00+02:00",
+    "starts_at": "2026-09-03T20:32:03+02:00",
     "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=18,62,O|D=2026-09-03"
+    "_identity": "wl|störung|L=18|D=2026-09-03"
   },
   {
     "source": "Wiener Linien",
@@ -734,11 +746,23 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29B/28A/29A: Fremder Verkehrsunfall",
+    "description": "Die Linie 29B wird in Richtung Floridsdorf S U zwischen Dopschstraße und Kefergrundgasse örtlich umgeleitet. Die Linie 28A wird in beiden Richtungen zwischen Julius-Ficker-Straße und Leopoldauer Platz örtlich umgeleitet. Die Linie 29A wird in beiden Richtungen zwischen Kefedergrundgasse und Dopschstraße örtlich umgeleitet. Voraussichtliche Dauer: 21:40 Uhr. Grund: Fremder Verkehrsunfall im Bereich Großfeldstraße # Julius-Ficker-Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "af9cf3e240b2ca998b229a6e84afa928a83ba03f0ecca10ae854399b3413b616",
+    "pubDate": "2026-09-03T20:44:00+02:00",
+    "starts_at": "2026-09-03T20:44:00+02:00",
+    "ends_at": "2026-09-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=28A,29A,29B|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "2: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 2: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 21:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Mayssengasse.",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2026-09-03T18:57:00+02:00",
+    "pubDate": "2026-09-03T20:28:00+02:00",
     "starts_at": "2026-09-03T20:29:33+02:00",
     "ends_at": "2026-09-03T23:55:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-09-03"
@@ -806,42 +830,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung\nBetriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d25d36e6fffb4b0e5b61b388d6ea7700ed53b34b9f53af30bbc9d193b315701d",
-    "pubDate": "2026-09-03T19:35:57+02:00",
-    "starts_at": "2026-09-03T19:35:57+02:00",
-    "ends_at": "2026-09-03T20:35:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Gegenstände im Gleis",
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "de7475c624fb5cbc2bbaf040f64dbea6d97f18a70ba6af0b925abdf207e5a45c",
-    "pubDate": "2026-09-03T19:32:00+02:00",
-    "starts_at": "2026-09-03T19:32:00+02:00",
-    "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung\nBetriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ede99a0bdc5bc502b80c255533a500015a6c82e1c22230a57903e4735af761e9",
-    "pubDate": "2026-09-03T19:35:57+02:00",
-    "starts_at": "2026-09-03T19:40:28+02:00",
-    "ends_at": "2026-09-03T20:40:00+02:00",
-    "_identity": "wl|störung|L=38|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40A: Haltestelle aufgelassen",
     "description": "Bauarbeiten\nHaltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -878,6 +866,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "59A: Verkehrsunfall",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c1ce89fc07a31460a53947346c1d250614e6661635d844985802869cc35c9214",
+    "pubDate": "2026-09-03T20:47:00+02:00",
+    "starts_at": "2026-09-03T20:59:00+02:00",
+    "ends_at": "2026-09-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=59A|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -898,6 +898,18 @@
     "starts_at": "2026-09-03T04:00:19+02:00",
     "ends_at": "2026-09-04T00:40:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2563cb7e5e67c7016a99b581b604e1f7ef686490b44625d39ce5e66b47c20dc1",
+    "pubDate": "2026-09-03T20:27:00+02:00",
+    "starts_at": "2026-09-03T20:40:05+02:00",
+    "ends_at": "2026-09-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-09-03"
   },
   {
     "source": "Wiener Linien",
@@ -974,6 +986,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "O: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
+    "pubDate": "2026-09-03T20:27:00+02:00",
+    "starts_at": "2026-09-03T20:37:33+02:00",
+    "ends_at": "2026-09-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=O|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "S1/S2/S3/S4/S7: Betriebsstörung",
     "description": "Linien S1, S2, S3 und S4: Kein Betrieb zwischen Praterstern und Quartier Belvedere. Linie S7: Kein Betrieb zwischen Praterstern und Geiselbergstraße. Weiterfahrt als Ersatz für S7 mit Schienenersatzverkehr von Wien Mitte nach Geiselbergstraße. Ersatzweise benutzen Sie die Linien U1, U3 und U4. Dauer: Die Störung dauert voraussichtlich bis 7. September 2026. Grund: Reparaturarbeiten nach einem Kabelbrand im Bereich Praterstern.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -982,18 +1006,6 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2026-09-03T19:44:00+02:00",
-    "starts_at": "2026-09-03T19:44:00+02:00",
-    "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-09-03"
   },
   {
     "source": "Wiener Linien",
