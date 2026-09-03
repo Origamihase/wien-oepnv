@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 03 Sep 2026 11:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 12:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Matzleinsdorfer Platz]]></title>
@@ -29,16 +29,6 @@
       <ext:ends_at>Thu, 03 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 03.09.2026]</description>
       <content:encoded><![CDATA[[Am 03.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Stadlau]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;909252</guid>
-      <pubDate>Thu, 03 Sep 2026 09:38:37 +0200</pubDate>
-      <ext:first_seen>Thu, 03 Sep 2026 10:00:53 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 03 Sep 2026 09:38:37 +0200</ext:starts_at>
-      <description>Wegen einer Stellwerkstörung am Bahnhof waren zwischen Wien Hbf (U) und Wien Stadlau Bahnhst (U) bis 09:34 Uhr keine Fahrten möglich. [Seit 03.09.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Stellwerkstörung am Bahnhof waren zwischen Wien Hbf (U) und Wien Stadlau Bahnhst (U) bis 09:34 Uhr keine Fahrten möglich.<br/>[Seit 03.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11/71: Zentralfriedhof, 4. Tor]]></title>
@@ -115,6 +105,17 @@
       <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
       <description>Derrechte Fahrstreifen wird in Fahrtrichtung Burggasse gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. [05.07.2026 – 05.09.2026]</description>
       <content:encoded><![CDATA[Derrechte Fahrstreifen wird in Fahrtrichtung Burggasse gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten.<br/>[05.07.2026 – 05.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[140/142: Haltestellenverlegung Busse halten bei Hausnummer 140 - 142]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cff20247d677b67d40acf68108dbc7f20a61b64a987888db9d0237b76b4c23fe</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:14 +0200</pubDate>
+      <ext:first_seen>Tue, 01 Sep 2026 21:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 03 Sep 2026 00:00:14 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 03 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 03.09.2026]</description>
+      <content:encoded><![CDATA[[Am 03.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
