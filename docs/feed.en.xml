@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 03 Sep 2026 22:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 22:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[29A: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1534e244024c6fb9e3253e471eb9562f405710d4c44c22618d4cc9462129a50b</guid>
-      <pubDate>Thu, 03 Sep 2026 20:44:00 +0200</pubDate>
-      <ext:first_seen>Thu, 03 Sep 2026 22:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 03 Sep 2026 20:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 03 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[28A: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b56d9dc3e666a206b702a4ebc1ea36f8ff96b01584f20b8213950da0cf40d129</guid>
-      <pubDate>Thu, 03 Sep 2026 20:44:00 +0200</pubDate>
-      <ext:first_seen>Thu, 03 Sep 2026 22:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 03 Sep 2026 20:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 03 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[11A/18: event on 12.09.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Thu, 03 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 03.09.2026]</description>
       <content:encoded><![CDATA[[On 03.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Gumpendorfer Straße from Wallgasse to Laimgrubengasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">c39005f3283e4b45164e83aa1b69da3c7bcf8fdbcee0c60f4144361332e92301</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 02 Sep 2026 22:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>The bus line 57A is shortened to the Kaunitzgasse. [06.07.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[The bus line 57A is shortened to the Kaunitzgasse.<br/>[06.07.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Floridsdorfer Brücke from Am Rollerdam to Friedrich-Engels-Platz]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">f0e6c9ccc29e95bd7fa8df421c17ba4f0adb4f6f41e7745c75f367473ed9d529</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 02 Sep 2026 22:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>The route 31 is short-run from 06.07.2026 to 16.08.2026 and runs only … [06.07.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[The route 31 is short-run from 06.07.2026 to 16.08.2026 and runs only …<br/>[06.07.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

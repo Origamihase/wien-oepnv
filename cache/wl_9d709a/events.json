@@ -746,42 +746,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "28A: Fremder Verkehrsunfall",
-    "description": "Linie 28A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b56d9dc3e666a206b702a4ebc1ea36f8ff96b01584f20b8213950da0cf40d129",
-    "pubDate": "2026-09-03T20:44:00+02:00",
-    "starts_at": "2026-09-03T20:44:00+02:00",
-    "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=28A|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29A: Fremder Verkehrsunfall",
-    "description": "Linie 29A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1534e244024c6fb9e3253e471eb9562f405710d4c44c22618d4cc9462129a50b",
-    "pubDate": "2026-09-03T20:44:00+02:00",
-    "starts_at": "2026-09-03T20:44:00+02:00",
-    "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=29A|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29B: Fremder Verkehrsunfall",
-    "description": "Linie 29B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "71c6038e79ff1a0d1ae69bd7198188af32d83ccbb7225dd446b74fe5b4b215ed",
-    "pubDate": "2026-09-03T20:44:00+02:00",
-    "starts_at": "2026-09-03T20:44:00+02:00",
-    "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=29B|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Wasserrohrbruch Betrieb ab Höchstädtplatz",
     "description": "Wasserrohrbruch\nBetrieb ab Höchstädtplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -854,6 +818,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "49: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1252a6d03226d3f1d21b0f0e84cdaf2b9637cd4ac88019850214fb459e92e018",
+    "pubDate": "2026-09-03T22:17:19+02:00",
+    "starts_at": "2026-09-03T22:17:19+02:00",
+    "ends_at": "2026-09-03T23:16:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "59A: Busse halten Reinprechtsdorfer Straße 39-41",
     "description": "Busse halten\nReinprechtsdorfer Straße 39-41",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -898,18 +874,6 @@
     "starts_at": "2026-09-03T04:00:19+02:00",
     "ends_at": "2026-09-04T00:40:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Polizeieinsatz",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2563cb7e5e67c7016a99b581b604e1f7ef686490b44625d39ce5e66b47c20dc1",
-    "pubDate": "2026-09-03T20:27:00+02:00",
-    "starts_at": "2026-09-03T20:27:00+02:00",
-    "ends_at": "2026-09-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=62|D=2026-09-03"
   },
   {
     "source": "Wiener Linien",
