@@ -7,15 +7,26 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 04 Sep 2026 21:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 21:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Meidling ↔ Wien Matzleinsdorfer Platz]]></title>
+      <title><![CDATA[1/2: Veranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7c782a10494c892112ef96f0d0ff3ad42258990c7a80b50ce1a7e424c06f14d0</guid>
+      <pubDate>Fri, 04 Sep 2026 21:13:00 +0200</pubDate>
+      <ext:first_seen>Fri, 04 Sep 2026 21:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 04 Sep 2026 21:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. [Am 04.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Meidling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;909562</guid>
-      <pubDate>Fri, 04 Sep 2026 20:48:46 +0200</pubDate>
+      <pubDate>Fri, 04 Sep 2026 21:02:15 +0200</pubDate>
       <ext:first_seen>Fri, 04 Sep 2026 19:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 04 Sep 2026 20:48:46 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 04 Sep 2026 21:02:15 +0200</ext:starts_at>
       <description>Wegen eines Rettungseinsatzes sind zwischen Wien Meidling Bahnhof (U) und Wien Hbf (U) bis voraussichtlich 22:00 Uhr keine Fahrten möglich. [Seit 04.09.2026]</description>
       <content:encoded><![CDATA[Wegen eines Rettungseinsatzes sind zwischen Wien Meidling Bahnhof (U) und Wien Hbf (U) bis voraussichtlich 22:00 Uhr keine Fahrten möglich.<br/>[Seit 04.09.2026]]]></content:encoded>
     </item>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 04 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[03.09.2026 – 04.09.2026]</description>
       <content:encoded><![CDATA[[03.09.2026 – 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Floridsdorfer Brücke von Am Rollerdamm bis Friedrich-Engels-Platz]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">f0e6c9ccc29e95bd7fa8df421c17ba4f0adb4f6f41e7745c75f367473ed9d529</guid>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 02 Sep 2026 22:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
-      <description>Die Auffahrt auf die A22 in Richtung Süden ist in diesem Zeitraum nicht möglich.Die Linie 31 wird in der Zeit von 06.07.2026 bis 16.08.2026 kurzgeführt und verkehrt nur … [06.07.2026 – 05.09.2026]</description>
-      <content:encoded><![CDATA[Die Auffahrt auf die A22 in Richtung Süden ist in diesem Zeitraum nicht möglich.Die Linie 31 wird in der Zeit von 06.07.2026 bis 16.08.2026 kurzgeführt und verkehrt nur …<br/>[06.07.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
