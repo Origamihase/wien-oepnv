@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 04 Sep 2026 23:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 23:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[94A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1d966e09fb9636c1df4d837b16c680b46ab28a49b95b2a41c4f2fc935e7a26af</guid>
-      <pubDate>Fri, 04 Sep 2026 22:39:00 +0200</pubDate>
-      <ext:first_seen>Fri, 04 Sep 2026 23:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 04 Sep 2026 22:39:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 04.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 04.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2: event]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7c782a10494c892112ef96f0d0ff3ad42258990c7a80b50ce1a7e424c06f14d0</guid>
-      <pubDate>Fri, 04 Sep 2026 21:13:00 +0200</pubDate>
-      <ext:first_seen>Fri, 04 Sep 2026 21:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 04 Sep 2026 21:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 04 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Line 2: irregular intervals in both directions. [On 04.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Line 2: irregular intervals in both directions.<br/>[On 04.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Wien Matzleinsdorfer Platz]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -117,6 +95,28 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Station departure of lines 11 and 71 towards Kaiserebersdorf Station: Zentralfriedhof, 4. Gate Duration: From 03 September 2026, 04:30 Clock, duration unknown Reason … [03.09.2026 – 26.09.2026]</description>
       <content:encoded><![CDATA[Station departure of lines 11 and 71 towards Kaiserebersdorf Station: Zentralfriedhof, 4. Gate Duration: From 03 September 2026, 04:30 Clock, duration unknown Reason …<br/>[03.09.2026 – 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: water pipe fracture service from Wexstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1cac0ba45b300e21ac0f27e4bd32f34524f71fce3743c0593f39e1d95ee9abf6</guid>
+      <pubDate>Wed, 02 Sep 2026 06:43:16 +0200</pubDate>
+      <ext:first_seen>Thu, 03 Sep 2026 00:01:22 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 03 Sep 2026 00:00:15 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 04 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[03.09.2026 – 04.09.2026]</description>
+      <content:encoded><![CDATA[[03.09.2026 – 04.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Floridsdorfer Brücke from Am Rollerdam to Friedrich-Engels-Platz]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">f0e6c9ccc29e95bd7fa8df421c17ba4f0adb4f6f41e7745c75f367473ed9d529</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 02 Sep 2026 22:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 00:00:00 +0200</ext:ends_at>
+      <description>The route 31 is short-run from 06.07.2026 to 16.08.2026 and runs only … [06.07.2026 – 05.09.2026]</description>
+      <content:encoded><![CDATA[The route 31 is short-run from 06.07.2026 to 16.08.2026 and runs only …<br/>[06.07.2026 – 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
