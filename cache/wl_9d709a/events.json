@@ -230,6 +230,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "3A: Kurzführung",
+    "description": "<h2>Bauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Zedlitzgasse werden die Busse der Linie 3A kurzgef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Mittwoch, den 26. August 2026, etwa 7:00 Uhr bis Freitag, den 4. September 2026, Betriebsschluss.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span>Betrieb nur zwischen Schottenring und Riemergasse (Wollzeile).</p> <p><span style=\"text-decoration: underline;\"><strong>Haltestelle:</strong></span><br />Die Haltestellen Stubentor und Riemergasse (Zedlitzgasse) werden aufgelassen.</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6f9efb4bddd35b0caa16e3f4aebc9fceaf0f0bf369cf6ce9277f49b358de77a0",
+    "pubDate": "2026-08-20T00:00:00+02:00",
+    "starts_at": "2026-08-20T00:00:00+02:00",
+    "ends_at": "2026-09-04T20:15:00+02:00",
+    "_identity": "wl|hinweis|L=3A|D=2026-08-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "3A: Straßenfest",
     "description": "<h2>Veranstaltung</h2> <p>Wegen eines Stra&szlig;enfestes im Bereich der Wollzeile kommt es zu Verkehrsma&szlig;nahmen.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Samstag, 05. September 2026, von Betriebsbeginn bis Betriebsschluss.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><span style=\"text-decoration: underline;\">Linie 3A</span><br />Betrieb nur zwischen Schottenring U und Stephansplatz U.</p> <p>Die Haltestellen auf dem nicht befahrenen Streckenabschnitt werden auf Dauer der Kurzf&uuml;hrung aufgelassen.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />U3.</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -716,7 +728,19 @@
     "guid": "9fc8e9559964f3982f53d5e165a9757ae36d37503ab721272e512729c48b54fb",
     "pubDate": "2026-09-04T17:38:21+02:00",
     "starts_at": "2026-09-04T17:38:21+02:00",
-    "ends_at": "2026-09-04T19:37:00+02:00",
+    "ends_at": "2026-09-04T20:10:00+02:00",
+    "_identity": "wl|störung|L=3A|D=2026-09-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Betrieb bis Riemergasse",
+    "description": "Bauarbeiten\nBetrieb bis Riemergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "add27f63424a5893ef67c5fa24f7802ad64a0ebf658035de96ef8c9146577d66",
+    "pubDate": "2026-09-04T18:12:55+02:00",
+    "starts_at": "2026-09-04T18:12:55+02:00",
+    "ends_at": "2026-09-04T20:15:00+02:00",
     "_identity": "wl|störung|L=3A|D=2026-09-04"
   },
   {
