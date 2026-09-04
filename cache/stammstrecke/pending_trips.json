@@ -1,41 +1,41 @@
 {
-  "Meidling|CJX9|2026-09-04T22:53:00+02:00": {
+  "Meidling|CJX9|2026-09-04T23:23:00+02:00": {
     "cancelled": true,
     "direction": "Meidling",
-    "last_seen_at": "2026-09-04T22:30:45.958524+02:00",
+    "last_seen_at": "2026-09-04T23:00:56.444669+02:00",
     "latest_delay_minutes": 0.0,
     "name": "CJX9",
-    "scheduled": "2026-09-04T22:53:00+02:00"
-  },
-  "Meidling|S2|2026-09-04T22:32:00+02:00": {
-    "cancelled": true,
-    "direction": "Meidling",
-    "last_seen_at": "2026-09-04T22:30:45.958524+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-09-04T22:32:00+02:00"
-  },
-  "Meidling|S2|2026-09-04T22:42:00+02:00": {
-    "cancelled": true,
-    "direction": "Meidling",
-    "last_seen_at": "2026-09-04T22:30:45.958524+02:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-09-04T22:42:00+02:00"
+    "scheduled": "2026-09-04T23:23:00+02:00"
   },
   "Meidling|S2|2026-09-04T23:12:00+02:00": {
-    "cancelled": false,
+    "cancelled": true,
     "direction": "Meidling",
-    "last_seen_at": "2026-09-04T22:30:45.958524+02:00",
+    "last_seen_at": "2026-09-04T23:00:56.444669+02:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-09-04T23:12:00+02:00"
   },
+  "Meidling|S2|2026-09-04T23:32:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-09-04T23:00:56.444669+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-09-04T23:32:00+02:00"
+  },
+  "Meidling|S2|2026-09-04T23:42:00+02:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-09-04T23:00:56.444669+02:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-09-04T23:42:00+02:00"
+  },
   "Meidling|S4|2026-09-04T23:02:00+02:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-09-04T22:30:45.958524+02:00",
-    "latest_delay_minutes": 0.0,
+    "last_seen_at": "2026-09-04T23:00:56.444669+02:00",
+    "latest_delay_minutes": 24.0,
     "name": "S4",
     "scheduled": "2026-09-04T23:02:00+02:00"
   }
