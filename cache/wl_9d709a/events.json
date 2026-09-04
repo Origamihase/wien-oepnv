@@ -711,10 +711,10 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "71: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c",
-    "pubDate": "2026-09-05T00:38:00+02:00",
+    "pubDate": "2026-09-05T00:40:33+02:00",
     "starts_at": "2026-09-05T00:40:33+02:00",
     "ends_at": "2026-09-05T01:40:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-09-05"
@@ -850,6 +850,18 @@
     "starts_at": "2026-09-05T00:54:03+02:00",
     "ends_at": "2026-09-05T05:04:00+02:00",
     "_identity": "wl|störung|L=N6|D=2026-09-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Polizeieinsatz",
+    "description": "Derzeit kommt es bei der Linie N71 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "74eba0a90bfa2b32bc5cc42fe5ae377ca8ba2b28d9fcbb5712ad31be437aa5e5",
+    "pubDate": "2026-09-05T01:14:00+02:00",
+    "starts_at": "2026-09-05T01:14:00+02:00",
+    "ends_at": "2026-09-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=N71|D=2026-09-05"
   },
   {
     "source": "Wiener Linien",
