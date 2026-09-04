@@ -638,18 +638,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Polizeieinsatz",
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
-    "pubDate": "2026-09-04T11:03:00+02:00",
-    "starts_at": "2026-09-04T11:03:00+02:00",
-    "ends_at": "2026-09-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-09-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Polizeieinsatz",
     "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -682,6 +670,18 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42136a8e71b4c2b5584fecbaf02e84bbc564028048d64f662ba7e51eec28927a",
+    "pubDate": "2026-09-04T12:45:19+02:00",
+    "starts_at": "2026-09-04T12:45:19+02:00",
+    "ends_at": "2026-09-04T13:45:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-04"
   },
   {
     "source": "Wiener Linien",
@@ -722,8 +722,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "30A: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7da5c845dde342e85455e46b0b77a4f17cf765bbbd42d622772c3ff5827ac44c",
+    "pubDate": "2026-09-04T12:34:18+02:00",
+    "starts_at": "2026-09-04T12:34:18+02:00",
+    "ends_at": "2026-09-04T15:00:00+02:00",
+    "_identity": "wl|störung|L=30A|D=2026-09-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "31A: Polizeieinsatz Betrieb ab Leopoldauer Straße",
-    "description": "Linie 31A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:30 Uhr. Grund: Polizeieinsatz im Bereich Siemensplatz.",
+    "description": "Linie 31A: Betrieb nur zwischen Kagraner Platz U und Leopoldauer Straße. Weichen Sie ersatzweise auf die Linien 26, 27, 31, 30A, 32A sowie die S-Bahn aus. Voraussichtliche Dauer: 13:30 Uhr. Grund: Polizeieinsatz im Bereich Siemensplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b1b59ef91c7e5513a7a2362ffbc5f6ec21eb687935ff3e74c62591a531321745",
     "pubDate": "2026-09-04T12:15:00+02:00",
@@ -830,18 +842,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Polizeieinsatz",
-    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e09339cfb3094980cbafa9341e8d677466ba3d6e478ce1b4da7e352a8c42c4a",
-    "pubDate": "2026-09-04T10:54:00+02:00",
-    "starts_at": "2026-09-04T10:54:00+02:00",
-    "ends_at": "2026-09-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-09-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -878,18 +878,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "69A: Polizeieinsatz",
-    "description": "Linie 69A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "96f135154720252b723390157353648f6e722f3498310c762afbb7ad31588d1b",
-    "pubDate": "2026-09-04T11:03:00+02:00",
-    "starts_at": "2026-09-04T11:03:00+02:00",
-    "ends_at": "2026-09-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=69A|D=2026-09-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -898,6 +886,54 @@
     "starts_at": "2026-09-03T00:00:26+02:00",
     "ends_at": "2026-09-04T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Schadhafter Zug Züge halten Wipplingerstraße",
+    "description": "Schadhafter Zug\nZüge halten Wipplingerstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "00102a8d13006b97e0572727de65b4f04ca51cc83f55147914fb9670aa879982",
+    "pubDate": "2026-09-04T12:51:49+02:00",
+    "starts_at": "2026-09-04T12:51:49+02:00",
+    "ends_at": "2026-09-04T13:51:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-09-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Schadhaftes Fahrzeug",
+    "description": "Linie 71: Betrieb nur zwischen Kaiserebersdorf und Börse. Weichen Sie ersatzweise auf die Linien 1 und 3A aus. Voraussichtliche Dauer: 13:20 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schottenring U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6386a0a1443709a811da286faca3c110f82cb450fccefa41edfcc91b1f2e483b",
+    "pubDate": "2026-09-04T12:45:00+02:00",
+    "starts_at": "2026-09-04T12:45:00+02:00",
+    "ends_at": "2026-09-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-09-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Schadhafter Zug Betrieb ab Börse",
+    "description": "Schadhafter Zug\nBetrieb ab Börse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e82e86aa1b53c2ae56dee9489d0da3ed8b6806253a639e2d569b431c70f6e820",
+    "pubDate": "2026-09-04T12:51:19+02:00",
+    "starts_at": "2026-09-04T12:51:19+02:00",
+    "ends_at": "2026-09-04T13:50:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-09-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ec43fe93de3687cd6b41ed3e161ecdbf78722df221d55ecf3d92bd4faf7d3814",
+    "pubDate": "2026-09-04T12:51:19+02:00",
+    "starts_at": "2026-09-04T12:51:19+02:00",
+    "ends_at": "2026-09-04T13:50:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-09-04"
   },
   {
     "source": "Wiener Linien",
@@ -958,6 +994,30 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-09-04T12:49:00+02:00",
+    "starts_at": "2026-09-04T12:49:00+02:00",
+    "ends_at": "2026-09-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-09-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Landstraße und Herrengasse in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: Nicht absehbar. Grund: Rettungseinsatz im Bereich Stephansplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-09-04T12:55:00+02:00",
+    "starts_at": "2026-09-04T12:55:00+02:00",
+    "ends_at": "2026-09-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-09-04"
   },
   {
     "source": "Wiener Linien",
