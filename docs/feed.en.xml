@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 06 Sep 2026 00:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 06 Sep 2026 00:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[3: rescue operation service from Zentralfriedhof 3. Gate]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Sun, 06 Sep 2026 00:50:00 +0200</ext:ends_at>
       <description>[05.09.2026 – 06.09.2026]</description>
       <content:encoded><![CDATA[[05.09.2026 – 06.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/71: rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a5619d9772cc883cb1b953f9355ba9588b9aa33f5715349337cf66be3aa61fd2</guid>
-      <pubDate>Sat, 05 Sep 2026 23:44:00 +0200</pubDate>
-      <ext:first_seen>Sun, 06 Sep 2026 00:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 05 Sep 2026 23:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operation only between Otto-Probst-Platz and Zentralfriedhof, 3. Tor. Line 71: Operation only between Schottenring U and Zentralfriedhof, 3. Tor. [05.09.2026 – 06.09.2026]</description>
-      <content:encoded><![CDATA[Operation only between Otto-Probst-Platz and Zentralfriedhof, 3. Tor. Line 71: Operation only between Schottenring U and Zentralfriedhof, 3. Tor.<br/>[05.09.2026 – 06.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[4A: Rasumofskygasse]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Tue, 15 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Change of network date: September 8, 2026, approximately 00:30 o'clock. Measures: Line N46 towards Joachimsthalerplatz (Mo-FR) or Otto Wagner Areal (Sat, Sun, holiday) From … [01.09.2026 – 15.09.2026]</description>
       <content:encoded><![CDATA[Change of network date: September 8, 2026, approximately 00:30 o'clock. Measures: Line N46 towards Joachimsthalerplatz (Mo-FR) or Otto Wagner Areal (Sat, Sun, holiday) From …<br/>[01.09.2026 – 15.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N54R/N54: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">891a44125e322e05f53f2f89c016c15f8fb0ce6b05b9814936a601b68b90c76b</guid>
+      <pubDate>Sun, 05 Jul 2026 06:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 31 Aug 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks and the associated partial barrier of Mariahilfer Straße, the N54 call bus line is diverted. [16.07.2026 – 15.08.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks and the associated partial barrier of Mariahilfer Straße, the N54 call bus line is diverted.<br/>[16.07.2026 – 15.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
