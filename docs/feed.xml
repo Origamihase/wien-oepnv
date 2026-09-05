@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 05 Sep 2026 19:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 20:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1: Veranstaltung Betrieb ab Julius-Raab-Platz]]></title>
+      <title><![CDATA[13A/59A: Veranstaltung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">639a865a11693ec952db5a9d4538d6544d85c1169897cde4dd6ecfb566a01924</guid>
-      <pubDate>Sat, 05 Sep 2026 15:20:52 +0200</pubDate>
-      <ext:first_seen>Sat, 05 Sep 2026 15:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 05 Sep 2026 15:20:52 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Sep 2026 20:00:00 +0200</ext:ends_at>
-      <description>Betrieb ab Julius-Raab-Platz [Am 05.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Julius-Raab-Platz<br/>[Am 05.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: Veranstaltung Betrieb ab Margaretenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b613287cfbd96d50dc248469a0a4db504e733859d1628e9eef37ad6905027d17</guid>
-      <pubDate>Sat, 05 Sep 2026 04:15:48 +0200</pubDate>
-      <ext:first_seen>Sat, 05 Sep 2026 04:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 05 Sep 2026 04:15:48 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Sep 2026 20:00:00 +0200</ext:ends_at>
-      <description>Betrieb ab Margaretenplatz [Am 05.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Margaretenplatz<br/>[Am 05.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">7f795b1319511e4c7d8e2744d1a4045648adb17266b79817a5f49650062dd12d</guid>
+      <pubDate>Sat, 05 Sep 2026 04:30:00 +0200</pubDate>
+      <ext:first_seen>Sat, 05 Sep 2026 20:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 05 Sep 2026 04:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie 13A fährt derzeit nicht zwischen Ziegelofengasse und Neubaugasse / Burggasse. [Am 05.09.2026]</description>
+      <content:encoded><![CDATA[Die Linie 13A fährt derzeit nicht zwischen Ziegelofengasse und Neubaugasse / Burggasse.<br/>[Am 05.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[4A: Rasumofskygasse]]></title>
@@ -115,6 +104,17 @@
       <ext:first_seen>Wed, 02 Sep 2026 16:30:59 +0200</ext:first_seen>
       <ext:starts_at>Sat, 05 Sep 2026 00:00:28 +0200</ext:starts_at>
       <ext:ends_at>Sat, 05 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>[Am 05.09.2026]</description>
+      <content:encoded><![CDATA[[Am 05.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[140/142: Haltestellenverlegung Busse halten bei Hausnummer 140 - 142]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cff20247d677b67d40acf68108dbc7f20a61b64a987888db9d0237b76b4c23fe</guid>
+      <pubDate>Sat, 05 Sep 2026 00:00:27 +0200</pubDate>
+      <ext:first_seen>Tue, 01 Sep 2026 21:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 05 Sep 2026 00:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 05.09.2026]</description>
       <content:encoded><![CDATA[[Am 05.09.2026]]]></content:encoded>
     </item>
