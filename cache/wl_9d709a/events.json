@@ -590,6 +590,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Falschparker",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-09-05T14:22:00+02:00",
+    "starts_at": "2026-09-05T14:22:00+02:00",
+    "ends_at": "2026-09-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-09-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "13A: Veranstaltung Betrieb ab Kellermanngasse",
     "description": "Veranstaltung\nBetrieb ab Kellermanngasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -626,42 +638,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "15A: Verkehrsunfall Betrieb ab Daumegasse",
-    "description": "Verkehrsunfall\nBetrieb ab Daumegasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0b684f37eb5f6c7b29774b22e4130eb93d4f422cce1606d0fa47e3ac53649635",
-    "pubDate": "2026-09-05T13:11:41+02:00",
-    "starts_at": "2026-09-05T13:11:41+02:00",
-    "ends_at": "2026-09-05T14:10:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "15A: Verkehrsunfall Betrieb ab Neulandschule",
-    "description": "Verkehrsunfall\nBetrieb ab Neulandschule",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "77bddbee1fac6ae83cd483de1230ecc56ee9eb48953d72b5d3202f96dbb4c2f2",
-    "pubDate": "2026-09-05T13:03:10+02:00",
-    "starts_at": "2026-09-05T13:03:10+02:00",
-    "ends_at": "2026-09-05T14:02:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "15A: Verkehrsunfall",
-    "description": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b22dfbbf389bb0a8ea03be177b6fa20b16f32c05b0828f6ae785106649e64f7b",
-    "pubDate": "2026-09-05T12:50:00+02:00",
-    "starts_at": "2026-09-05T12:50:00+02:00",
-    "ends_at": "2026-09-05T23:55:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -682,30 +658,6 @@
     "starts_at": "2026-09-05T00:00:29+02:00",
     "ends_at": "2026-09-05T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Verkehrsunfall",
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e5e4ada309d3d5a39dbcc7b58ba60a9bcfb4f6f0b36f7174fc6f157776ed18b5",
-    "pubDate": "2026-09-05T12:59:00+02:00",
-    "starts_at": "2026-09-05T12:59:00+02:00",
-    "ends_at": "2026-09-05T23:55:00+02:00",
-    "_identity": "wl|störung|L=26|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Verkehrsunfall",
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2944c0ef3d90e6a01626e659ff945114566768f92f2cfcb4aacd173962aa18ee",
-    "pubDate": "2026-09-05T12:59:00+02:00",
-    "starts_at": "2026-09-05T12:59:00+02:00",
-    "ends_at": "2026-09-05T14:05:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-09-05"
   },
   {
     "source": "Wiener Linien",
@@ -770,18 +722,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38A: Rettungseinsatz",
-    "description": "Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "67cf05ce8846177e4f3d143c88b0e0c7b91c475498b9731a9668e78e4fae4a88",
-    "pubDate": "2026-09-05T13:45:00+02:00",
-    "starts_at": "2026-09-05T13:45:00+02:00",
-    "ends_at": "2026-09-05T23:55:00+02:00",
-    "_identity": "wl|störung|L=38A|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: Veranstaltung",
     "description": "Die Linie 3A fährt derzeit nur zwischen Schottenring U und Stephansplatz U. Weichen Sie ersatzweise auf die Linie U3 aus. Voraussichtliche Dauer: Betriebsschluß. Grund: Veranstaltung im Bereich Wollzeile .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -838,6 +778,18 @@
     "starts_at": "2026-09-05T04:40:21+02:00",
     "ends_at": "2026-09-06T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-09-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
+    "pubDate": "2026-09-05T14:06:45+02:00",
+    "starts_at": "2026-09-05T14:06:45+02:00",
+    "ends_at": "2026-09-05T15:05:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-09-05"
   },
   {
     "source": "Wiener Linien",
@@ -934,18 +886,6 @@
     "starts_at": "2026-09-05T00:00:26+02:00",
     "ends_at": "2026-09-05T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-09-05|TK=busse halten frauenstiftgasse 7"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
-    "pubDate": "2026-09-05T13:02:42+02:00",
-    "starts_at": "2026-09-05T13:02:42+02:00",
-    "ends_at": "2026-09-05T14:02:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-09-05|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
