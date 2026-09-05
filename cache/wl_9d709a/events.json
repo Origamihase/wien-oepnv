@@ -578,18 +578,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Polizeieinsatz",
-    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
-    "pubDate": "2026-09-05T18:24:00+02:00",
-    "starts_at": "2026-09-05T18:24:00+02:00",
-    "ends_at": "2026-09-05T18:58:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Veranstaltung Betrieb ab Kellermanngasse",
     "description": "Veranstaltung\nBetrieb ab Kellermanngasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -778,30 +766,6 @@
     "starts_at": "2026-09-05T00:00:25+02:00",
     "ends_at": "2026-09-05T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38A: Verspätungen",
-    "description": "Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ebe0560280e5516e44fb83da6005f47a89b048a288c7031fc1269d833e56eb3f",
-    "pubDate": "2026-09-05T17:55:00+02:00",
-    "starts_at": "2026-09-05T17:55:00+02:00",
-    "ends_at": "2026-09-05T18:58:00+02:00",
-    "_identity": "wl|störung|L=38A|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "3A: Veranstaltung",
-    "description": "Die Linie 3A fährt derzeit nur zwischen Schottenring U und Stephansplatz U. Weichen Sie ersatzweise auf die Linie U3 aus. Voraussichtliche Dauer: Betriebsschluß. Grund: Veranstaltung im Bereich Wollzeile .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "960ec17e0b0ba7ebf6d27532d534eec29f54e9dc249a46ce171c5ede0585307d",
-    "pubDate": "2026-09-05T06:32:00+02:00",
-    "starts_at": "2026-09-05T06:32:00+02:00",
-    "ends_at": "2026-09-05T19:16:00+02:00",
-    "_identity": "wl|störung|L=3A|D=2026-09-05"
   },
   {
     "source": "Wiener Linien",
