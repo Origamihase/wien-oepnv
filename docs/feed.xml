@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 05 Sep 2026 23:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 23:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[4A: Rasumofskygasse]]></title>
@@ -86,17 +86,6 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten kann am 06.09.2026 zwischen Wien Hbf (U) und Kledering Bahnhst der S60-Zug 26093 nicht fahren. Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<br/>[Seit 02.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[31: Wasserrohrbruch Betrieb ab Floridsdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ee41c7ef0816b896be2450b8485e9f859dafe3398acbe33534701a80c3a49949</guid>
-      <pubDate>Sat, 05 Sep 2026 00:00:28 +0200</pubDate>
-      <ext:first_seen>Wed, 02 Sep 2026 16:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 05 Sep 2026 00:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Sep 2026 23:59:00 +0200</ext:ends_at>
-      <description>[Am 05.09.2026]</description>
-      <content:encoded><![CDATA[[Am 05.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[140/142: Haltestellenverlegung Busse halten bei Hausnummer 140 - 142]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">cff20247d677b67d40acf68108dbc7f20a61b64a987888db9d0237b76b4c23fe</guid>
@@ -117,6 +106,17 @@
       <ext:ends_at>Tue, 15 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Netzänderung Zeitpunkt: Ab 08. September 2026, etwa 00:30 Uhr. Maßnahmen: Linie N46 in Richtung Joachimsthalerplatz (Mo-FR) bzw. Otto Wagner Areal (Sa., So., Feiertag) Ab … [01.09.2026 – 15.09.2026]</description>
       <content:encoded><![CDATA[Netzänderung Zeitpunkt: Ab 08. September 2026, etwa 00:30 Uhr. Maßnahmen: Linie N46 in Richtung Joachimsthalerplatz (Mo-FR) bzw. Otto Wagner Areal (Sa., So., Feiertag) Ab …<br/>[01.09.2026 – 15.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N54R/N54: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">891a44125e322e05f53f2f89c016c15f8fb0ce6b05b9814936a601b68b90c76b</guid>
+      <pubDate>Sun, 05 Jul 2026 06:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 31 Aug 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 16 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten und der damit einhergehenden teilweisen Sperre der Mariahilfer Straße wird die Rufbuslinie N54 umgeleitet. [16.07.2026 – 15.08.2027]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten und der damit einhergehenden teilweisen Sperre der Mariahilfer Straße wird die Rufbuslinie N54 umgeleitet.<br/>[16.07.2026 – 15.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
