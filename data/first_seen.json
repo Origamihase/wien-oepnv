@@ -423,6 +423,16 @@
       "epoch": 3
     }
   },
+  "058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea": {
+    "first_seen": "2026-09-05T13:30:47.580687+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic congestion.",
+        "title": "22A: traffic congestion"
+      },
+      "epoch": 3
+    }
+  },
   "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d": {
     "first_seen": "2026-06-24T14:01:04.966896+00:00",
     "translations": {
@@ -7668,6 +7678,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals.",
         "title": "71: defective vehicle"
+      },
+      "epoch": 3
+    }
+  },
+  "639a865a11693ec952db5a9d4538d6544d85c1169897cde4dd6ecfb566a01924": {
+    "first_seen": "2026-09-05T13:30:47.580687+00:00",
+    "translations": {
+      "en": {
+        "summary": "service from Julius-Raab-Platz",
+        "title": "1: event service from Julius-Raab-Platz"
       },
       "epoch": 3
     }
