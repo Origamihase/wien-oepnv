@@ -686,14 +686,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Verspätungen",
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "title": "26A: Veranstaltung",
+    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Veranstaltung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "02eba5a10b6bfbc053ab8e3cd1f9dabf24000400cc5596a3921352c78e6875e3",
-    "pubDate": "2026-09-05T15:01:00+02:00",
-    "starts_at": "2026-09-05T15:01:00+02:00",
+    "guid": "c3152d87e229d2ddce55efc5d517a8d089df678c3b739a0e9f227524e4612053",
+    "pubDate": "2026-09-05T15:35:00+02:00",
+    "starts_at": "2026-09-05T15:35:00+02:00",
     "ends_at": "2026-09-05T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-09-05"
+    "_identity": "wl|störung|L=26A|D=2026-09-05"
   },
   {
     "source": "Wiener Linien",
@@ -705,18 +705,6 @@
     "pubDate": "2026-09-05T15:22:22+02:00",
     "starts_at": "2026-09-05T15:22:22+02:00",
     "ends_at": "2026-09-05T20:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
-    "pubDate": "2026-09-05T15:00:50+02:00",
-    "starts_at": "2026-09-05T15:00:50+02:00",
-    "ends_at": "2026-09-05T16:00:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-09-05"
   },
   {
@@ -854,18 +842,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf",
-    "pubDate": "2026-09-05T14:58:50+02:00",
-    "starts_at": "2026-09-05T14:58:50+02:00",
-    "ends_at": "2026-09-05T15:58:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5: Verkehrsunfall Betrieb ab Albertgasse",
     "description": "Verkehrsunfall\nBetrieb ab Albertgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -980,7 +956,7 @@
     "guid": "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9",
     "pubDate": "2026-09-05T15:04:00+02:00",
     "starts_at": "2026-09-05T15:04:00+02:00",
-    "ends_at": "2026-09-05T23:55:00+02:00",
+    "ends_at": "2026-09-05T16:35:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-09-05"
   },
   {
