@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 06 Sep 2026 00:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 06 Sep 2026 01:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[3: rescue operation service from Zentralfriedhof 3. Gate]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f31eb7908922229f7ef5a3da18a1c5682d71ecf0913c4ff4e56994507be49822</guid>
-      <pubDate>Sat, 05 Sep 2026 23:50:45 +0200</pubDate>
-      <ext:first_seen>Sun, 06 Sep 2026 00:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 05 Sep 2026 23:50:47 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 00:50:00 +0200</ext:ends_at>
-      <description>[05.09.2026 – 06.09.2026]</description>
-      <content:encoded><![CDATA[[05.09.2026 – 06.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[4A: Rasumofskygasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +106,17 @@
       <ext:ends_at>Sun, 15 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of roadworks and the associated partial barrier of Mariahilfer Straße, the N54 call bus line is diverted. [16.07.2026 – 15.08.2027]</description>
       <content:encoded><![CDATA[Because of roadworks and the associated partial barrier of Mariahilfer Straße, the N54 call bus line is diverted.<br/>[16.07.2026 – 15.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44A: short-running service]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">922b4af1b9331fff9893d877fea6430921e2756178e2670f0d01bb4f89a4e096</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 29 Aug 2026 02:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 03 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 22 Jul 2027 11:11:00 +0200</ext:ends_at>
+      <description>Due to repair work in the Röntgengasse, the line 44A operating short-running is replaced by the line Röntgengasse. [03.08.2026 – 22.07.2027]</description>
+      <content:encoded><![CDATA[Due to repair work in the Röntgengasse, the line 44A operating short-running is replaced by the line Röntgengasse.<br/>[03.08.2026 – 22.07.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
