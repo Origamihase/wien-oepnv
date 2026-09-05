@@ -121,6 +121,10 @@ def main() -> int:
         "PYSEC-2025-217",
         "PYSEC-2025-218",
         "CVE-2026-1839",
+        "PYSEC-2026-2288",
+        "PYSEC-2026-2289",
+        "PYSEC-2026-2290",
+        "CVE-2026-9856",
     )
     pip_audit_cmd = [
         "pip-audit",
