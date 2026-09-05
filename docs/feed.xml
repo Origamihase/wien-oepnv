@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 05 Sep 2026 17:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 17:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[1: Veranstaltung Betrieb ab Julius-Raab-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">639a865a11693ec952db5a9d4538d6544d85c1169897cde4dd6ecfb566a01924</guid>
-      <pubDate>Sat, 05 Sep 2026 15:20:52 +0200</pubDate>
-      <ext:first_seen>Sat, 05 Sep 2026 15:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 05 Sep 2026 15:20:52 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Sep 2026 20:00:00 +0200</ext:ends_at>
-      <description>Betrieb ab Julius-Raab-Platz [Am 05.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Julius-Raab-Platz<br/>[Am 05.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[22A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea</guid>
-      <pubDate>Sat, 05 Sep 2026 15:02:00 +0200</pubDate>
-      <ext:first_seen>Sat, 05 Sep 2026 15:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 05 Sep 2026 15:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 05.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 05.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[59A: Veranstaltung Betrieb ab Margaretenplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +95,28 @@
       <ext:starts_at>Wed, 02 Sep 2026 16:40:31 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten kann am 06.09.2026 zwischen Wien Hbf (U) und Kledering Bahnhst der S60-Zug 26093 nicht fahren. Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet. [Seit 02.09.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten kann am 06.09.2026 zwischen Wien Hbf (U) und Kledering Bahnhst der S60-Zug 26093 nicht fahren. Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<br/>[Seit 02.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Wasserrohrbruch Betrieb ab Floridsdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ee41c7ef0816b896be2450b8485e9f859dafe3398acbe33534701a80c3a49949</guid>
+      <pubDate>Sat, 05 Sep 2026 00:00:28 +0200</pubDate>
+      <ext:first_seen>Wed, 02 Sep 2026 16:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 05 Sep 2026 00:00:28 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>[Am 05.09.2026]</description>
+      <content:encoded><![CDATA[[Am 05.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[140/142: Haltestellenverlegung Busse halten bei Hausnummer 140 - 142]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cff20247d677b67d40acf68108dbc7f20a61b64a987888db9d0237b76b4c23fe</guid>
+      <pubDate>Sat, 05 Sep 2026 00:00:27 +0200</pubDate>
+      <ext:first_seen>Tue, 01 Sep 2026 21:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 05 Sep 2026 00:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 05.09.2026]</description>
+      <content:encoded><![CDATA[[Am 05.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
