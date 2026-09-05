@@ -698,6 +698,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "35A: Verunreinigung",
+    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "374ea805cfa530fcf8bc57d5762d181519c06643a2509c6cc694b8d6c92e56ff",
+    "pubDate": "2026-09-05T06:18:00+02:00",
+    "starts_at": "2026-09-05T06:18:00+02:00",
+    "ends_at": "2026-09-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=35A|D=2026-09-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -814,6 +826,18 @@
     "starts_at": "2026-09-05T01:00:03+02:00",
     "ends_at": "2026-09-06T00:30:00+02:00",
     "_identity": "wl|störung|L=N41|D=2026-09-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie O: Fahrtbehinderung in Richtung Bruno-Marek-Allee. Voraussichtliche Dauer: 07:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Rennweg S.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
+    "pubDate": "2026-09-05T06:23:00+02:00",
+    "starts_at": "2026-09-05T06:27:03+02:00",
+    "ends_at": "2026-09-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=O|D=2026-09-05"
   },
   {
     "source": "Wiener Linien",
