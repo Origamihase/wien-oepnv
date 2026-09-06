@@ -698,6 +698,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U3: Verunreinigung",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
+    "pubDate": "2026-09-06T10:23:00+02:00",
+    "starts_at": "2026-09-06T10:23:00+02:00",
+    "ends_at": "2026-09-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-09-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verunreinigung",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5718e5adfd8ff17a7b75efa1723cae5513a3a9e89e84929ae6d9338f8ba24e1d",
+    "pubDate": "2026-09-06T10:24:00+02:00",
+    "starts_at": "2026-09-06T10:24:00+02:00",
+    "ends_at": "2026-09-06T11:09:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-09-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
