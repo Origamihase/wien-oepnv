@@ -965,12 +965,6 @@
           "longitude": 16.3990509
         },
         {
-          "stop_id": "7348",
-          "name": "Floridsdorf S U",
-          "latitude": 48.2572663,
-          "longitude": 16.4015033
-        },
-        {
           "stop_id": "7350",
           "name": "Floridsdorf S U",
           "latitude": 48.2565426,
@@ -981,6 +975,12 @@
           "name": "Floridsdorf S U",
           "latitude": 48.2563512,
           "longitude": 16.4007577
+        },
+        {
+          "stop_id": "7435",
+          "name": "Floridsdorf S U",
+          "latitude": 48.2572663,
+          "longitude": 16.4015033
         },
         {
           "stop_id": "8781",
@@ -7789,6 +7789,7 @@
         "bf Wien-Hirschstetten",
         "Bf Wien-Hirschstetten-(WL)",
         "bf Wien-Hirschstetten-(WL)",
+        "Bhf. Hirschstetten S",
         "Hirschstetten",
         "Hirschstetten (VOR)",
         "Hirschstetten (VOR) Bahnhof",
@@ -7850,13 +7851,13 @@
       "wl_stops": [
         {
           "stop_id": "1071",
-          "name": "Hirschstetten S",
+          "name": "Bhf. Hirschstetten S",
           "latitude": 48.2324636,
           "longitude": 16.4682302
         },
         {
           "stop_id": "1084",
-          "name": "Hirschstetten S",
+          "name": "Bhf. Hirschstetten S",
           "latitude": 48.2329304,
           "longitude": 16.4678439
         },
@@ -60034,6 +60035,12 @@
           "name": "Carminweg",
           "latitude": 48.2531453,
           "longitude": 16.4207632
+        },
+        {
+          "stop_id": "7436",
+          "name": "Carminweg",
+          "latitude": 48.2531453,
+          "longitude": 16.4207632
         }
       ],
       "aliases": [
@@ -60096,8 +60103,8 @@
         "Wien-Carminweg-(WL) bf"
       ],
       "source": "wl",
-      "latitude": 48.253155,
-      "longitude": 16.420961
+      "latitude": 48.253153,
+      "longitude": 16.420911
     },
     {
       "name": "Wien Castelligasse (WL)",
@@ -62233,7 +62240,7 @@
       "wl_stops": [
         {
           "stop_id": "1072",
-          "name": "Amongasse",
+          "name": "Contiweg",
           "latitude": 48.2303274,
           "longitude": 16.4694789
         },
@@ -79576,6 +79583,12 @@
           "longitude": 16.4192002
         },
         {
+          "stop_id": "3498",
+          "name": "Ernst-Happel-Stadion (Bedarf)",
+          "latitude": 48.2088582,
+          "longitude": 16.4188947
+        },
+        {
           "stop_id": "3604",
           "name": "Ernst-Happel-Stadion",
           "latitude": 48.2087923,
@@ -79592,6 +79605,7 @@
         "Wien Ernst-Happel-Stadion (WL)",
         "Bahnhof Ernst Happel Stadion",
         "Bahnhof Ernst-Happel-Stadion",
+        "Bahnhof Ernst-Happel-Stadion (Bedarf)",
         "Bahnhof Ernst-Happel-Stadion (WL)",
         "Bahnhof Ernst-Happel-Stadion Station",
         "Bahnhof Wien Ernst-Happel-Stadion",
@@ -79601,6 +79615,8 @@
         "bf Ernst Happel Stadion",
         "Bf Ernst-Happel-Stadion",
         "bf Ernst-Happel-Stadion",
+        "Bf Ernst-Happel-Stadion (Bedarf)",
+        "bf Ernst-Happel-Stadion (Bedarf)",
         "Bf Ernst-Happel-Stadion (WL)",
         "bf Ernst-Happel-Stadion (WL)",
         "Bf Ernst-Happel-Stadion Station",
@@ -79616,6 +79632,10 @@
         "Ernst Happel Stadion Bf",
         "Ernst Happel Stadion bf",
         "Ernst-Happel-Stadion",
+        "Ernst-Happel-Stadion (Bedarf)",
+        "Ernst-Happel-Stadion (Bedarf) Bahnhof",
+        "Ernst-Happel-Stadion (Bedarf) Bf",
+        "Ernst-Happel-Stadion (Bedarf) bf",
         "Ernst-Happel-Stadion (WL)",
         "Ernst-Happel-Stadion (WL) Bahnhof",
         "Ernst-Happel-Stadion (WL) Bf",
@@ -79659,8 +79679,8 @@
         "Wien-Ernst-Happel-Stadion-(WL) bf"
       ],
       "source": "wl",
-      "latitude": 48.208797,
-      "longitude": 16.419227
+      "latitude": 48.208809,
+      "longitude": 16.419161
     },
     {
       "name": "Wien Ernst-Krenek-Gasse (WL)",
@@ -112199,13 +112219,13 @@
       "wl_stops": [
         {
           "stop_id": "1073",
-          "name": "Haschafeld",
+          "name": "Lavaterstraße",
           "latitude": 48.2253664,
           "longitude": 16.4751113
         },
         {
           "stop_id": "8649",
-          "name": "Haschafeld",
+          "name": "Lavaterstraße",
           "latitude": 48.2249893,
           "longitude": 16.475282
         }
@@ -112242,6 +112262,7 @@
         "Haschafeld Station Bahnhof",
         "Haschafeld Station Bf",
         "Haschafeld Station bf",
+        "Lavaterstraße",
         "Vienna Haschafeld",
         "Vienna Haschafeld (WL)",
         "Vienna Haschafeld Station",
@@ -125121,6 +125142,12 @@
           "name": "Hoßplatz",
           "latitude": 48.2550234,
           "longitude": 16.4078634
+        },
+        {
+          "stop_id": "7486",
+          "name": "Hoßplatz",
+          "latitude": 48.2550234,
+          "longitude": 16.4078634
         }
       ],
       "aliases": [
@@ -125333,8 +125360,8 @@
         "Wien-Hoßplatz-(WL) bf"
       ],
       "source": "wl",
-      "latitude": 48.254999,
-      "longitude": 16.407859
+      "latitude": 48.255007,
+      "longitude": 16.40786
     },
     {
       "name": "Wien Hubermanngasse (WL)",
@@ -152630,89 +152657,6 @@
       "source": "wl",
       "latitude": 48.132377,
       "longitude": 16.418221
-    },
-    {
-      "name": "Wien Klaschkaweg (WL)",
-      "in_vienna": true,
-      "pendler": false,
-      "wl_diva": "60201568",
-      "wl_stops": [
-        {
-          "stop_id": "3603",
-          "name": "Wasserwiese",
-          "latitude": 48.1994645,
-          "longitude": 16.4143313
-        },
-        {
-          "stop_id": "3608",
-          "name": "Wasserwiese",
-          "latitude": 48.1994166,
-          "longitude": 16.4144391
-        }
-      ],
-      "aliases": [
-        "Wien Klaschkaweg (WL)",
-        "Bahnhof Klaschkaweg",
-        "Bahnhof Klaschkaweg (WL)",
-        "Bahnhof Klaschkaweg Station",
-        "Bahnhof Wien Klaschkaweg",
-        "Bahnhof Wien-Klaschkaweg",
-        "Bahnhof Wien-Klaschkaweg-(WL)",
-        "Bf Klaschkaweg",
-        "bf Klaschkaweg",
-        "Bf Klaschkaweg (WL)",
-        "bf Klaschkaweg (WL)",
-        "Bf Klaschkaweg Station",
-        "bf Klaschkaweg Station",
-        "Bf Wien Klaschkaweg",
-        "bf Wien Klaschkaweg",
-        "Bf Wien-Klaschkaweg",
-        "bf Wien-Klaschkaweg",
-        "Bf Wien-Klaschkaweg-(WL)",
-        "bf Wien-Klaschkaweg-(WL)",
-        "Klaschkaweg",
-        "Klaschkaweg (WL)",
-        "Klaschkaweg (WL) Bahnhof",
-        "Klaschkaweg (WL) Bf",
-        "Klaschkaweg (WL) bf",
-        "Klaschkaweg Bahnhof",
-        "Klaschkaweg Bf",
-        "Klaschkaweg bf",
-        "Klaschkaweg Station",
-        "Klaschkaweg Station Bahnhof",
-        "Klaschkaweg Station Bf",
-        "Klaschkaweg Station bf",
-        "Vienna Klaschkaweg",
-        "Vienna Klaschkaweg (WL)",
-        "Vienna Klaschkaweg Station",
-        "Vienna Klaschkaweg U",
-        "Vienna Klaschkaweg U (VOR)",
-        "Wasserwiese",
-        "Wien Klaschkaweg",
-        "Wien Klaschkaweg (WL) Bahnhof",
-        "Wien Klaschkaweg (WL) Bf",
-        "Wien Klaschkaweg (WL) bf",
-        "Wien Klaschkaweg Bahnhof",
-        "Wien Klaschkaweg Bf",
-        "Wien Klaschkaweg bf",
-        "Wien Klaschkaweg Station",
-        "Wien Klaschkaweg Station Bahnhof",
-        "Wien Klaschkaweg Station Bf",
-        "Wien Klaschkaweg Station bf",
-        "Wien Klaschkaweg U",
-        "Wien Klaschkaweg U (VOR)",
-        "Wien-Klaschkaweg",
-        "Wien-Klaschkaweg Bahnhof",
-        "Wien-Klaschkaweg Bf",
-        "Wien-Klaschkaweg bf",
-        "Wien-Klaschkaweg-(WL)",
-        "Wien-Klaschkaweg-(WL) Bahnhof",
-        "Wien-Klaschkaweg-(WL) Bf",
-        "Wien-Klaschkaweg-(WL) bf"
-      ],
-      "source": "wl",
-      "latitude": 48.199441,
-      "longitude": 16.414385
     },
     {
       "name": "Wien Klebindergraben (WL)",
@@ -214159,6 +214103,12 @@
           "name": "Pensionistenwohnhaus Prater",
           "latitude": 48.2136472,
           "longitude": 16.4184815
+        },
+        {
+          "stop_id": "8191",
+          "name": "Pensionistenwohnhaus Prater",
+          "latitude": 48.2137789,
+          "longitude": 16.4180144
         }
       ],
       "aliases": [
@@ -214221,8 +214171,8 @@
         "Wien-Pensionistenwohnhaus-Prater-(WL) bf"
       ],
       "source": "wl",
-      "latitude": 48.213713,
-      "longitude": 16.418248
+      "latitude": 48.213735,
+      "longitude": 16.41817
     },
     {
       "name": "Wien Pensionistenwohnhaus Rosenberg (WL)",
@@ -262074,82 +262024,6 @@
       "longitude": 16.421338
     },
     {
-      "name": "Wien Stadion U, Handelskai (WL)",
-      "in_vienna": true,
-      "pendler": false,
-      "wl_diva": "60202502",
-      "wl_stops": [
-        {
-          "stop_id": "3605",
-          "name": "Stadion U, Handelskai",
-          "latitude": 48.212031,
-          "longitude": 16.4230809
-        }
-      ],
-      "aliases": [
-        "Wien Stadion U, Handelskai (WL)",
-        "Bahnhof Stadion U, Handelskai",
-        "Bahnhof Stadion U, Handelskai (WL)",
-        "Bahnhof Stadion U, Handelskai Station",
-        "Bahnhof Wien Stadion U, Handelskai",
-        "Bahnhof Wien-Stadion-U,-Handelskai",
-        "Bahnhof Wien-Stadion-U,-Handelskai-(WL)",
-        "Bf Stadion U, Handelskai",
-        "bf Stadion U, Handelskai",
-        "Bf Stadion U, Handelskai (WL)",
-        "bf Stadion U, Handelskai (WL)",
-        "Bf Stadion U, Handelskai Station",
-        "bf Stadion U, Handelskai Station",
-        "Bf Wien Stadion U, Handelskai",
-        "bf Wien Stadion U, Handelskai",
-        "Bf Wien-Stadion-U,-Handelskai",
-        "bf Wien-Stadion-U,-Handelskai",
-        "Bf Wien-Stadion-U,-Handelskai-(WL)",
-        "bf Wien-Stadion-U,-Handelskai-(WL)",
-        "Stadion U, Handelskai",
-        "Stadion U, Handelskai (WL)",
-        "Stadion U, Handelskai (WL) Bahnhof",
-        "Stadion U, Handelskai (WL) Bf",
-        "Stadion U, Handelskai (WL) bf",
-        "Stadion U, Handelskai Bahnhof",
-        "Stadion U, Handelskai Bf",
-        "Stadion U, Handelskai bf",
-        "Stadion U, Handelskai Station",
-        "Stadion U, Handelskai Station Bahnhof",
-        "Stadion U, Handelskai Station Bf",
-        "Stadion U, Handelskai Station bf",
-        "Vienna Stadion U, Handelskai",
-        "Vienna Stadion U, Handelskai (WL)",
-        "Vienna Stadion U, Handelskai Station",
-        "Vienna Stadion U, Handelskai U",
-        "Vienna Stadion U, Handelskai U (VOR)",
-        "Wien Stadion U, Handelskai",
-        "Wien Stadion U, Handelskai (WL) Bahnhof",
-        "Wien Stadion U, Handelskai (WL) Bf",
-        "Wien Stadion U, Handelskai (WL) bf",
-        "Wien Stadion U, Handelskai Bahnhof",
-        "Wien Stadion U, Handelskai Bf",
-        "Wien Stadion U, Handelskai bf",
-        "Wien Stadion U, Handelskai Station",
-        "Wien Stadion U, Handelskai Station Bahnhof",
-        "Wien Stadion U, Handelskai Station Bf",
-        "Wien Stadion U, Handelskai Station bf",
-        "Wien Stadion U, Handelskai U",
-        "Wien Stadion U, Handelskai U (VOR)",
-        "Wien-Stadion-U,-Handelskai",
-        "Wien-Stadion-U,-Handelskai Bahnhof",
-        "Wien-Stadion-U,-Handelskai Bf",
-        "Wien-Stadion-U,-Handelskai bf",
-        "Wien-Stadion-U,-Handelskai-(WL)",
-        "Wien-Stadion-U,-Handelskai-(WL) Bahnhof",
-        "Wien-Stadion-U,-Handelskai-(WL) Bf",
-        "Wien-Stadion-U,-Handelskai-(WL) bf"
-      ],
-      "source": "wl",
-      "latitude": 48.212031,
-      "longitude": 16.423081
-    },
-    {
       "name": "Wien Stadionbad (WL)",
       "in_vienna": true,
       "pendler": false,
@@ -288229,6 +288103,88 @@
       "longitude": 15.578745
     },
     {
+      "name": "Wien Wasserwiese (WL)",
+      "in_vienna": true,
+      "pendler": false,
+      "wl_diva": "60201568",
+      "wl_stops": [
+        {
+          "stop_id": "3603",
+          "name": "Wasserwiese",
+          "latitude": 48.1994645,
+          "longitude": 16.4143313
+        },
+        {
+          "stop_id": "3608",
+          "name": "Wasserwiese",
+          "latitude": 48.1994166,
+          "longitude": 16.4144391
+        }
+      ],
+      "aliases": [
+        "Wien Wasserwiese (WL)",
+        "Bahnhof Wasserwiese",
+        "Bahnhof Wasserwiese (WL)",
+        "Bahnhof Wasserwiese Station",
+        "Bahnhof Wien Wasserwiese",
+        "Bahnhof Wien-Wasserwiese",
+        "Bahnhof Wien-Wasserwiese-(WL)",
+        "Bf Wasserwiese",
+        "bf Wasserwiese",
+        "Bf Wasserwiese (WL)",
+        "bf Wasserwiese (WL)",
+        "Bf Wasserwiese Station",
+        "bf Wasserwiese Station",
+        "Bf Wien Wasserwiese",
+        "bf Wien Wasserwiese",
+        "Bf Wien-Wasserwiese",
+        "bf Wien-Wasserwiese",
+        "Bf Wien-Wasserwiese-(WL)",
+        "bf Wien-Wasserwiese-(WL)",
+        "Vienna Wasserwiese",
+        "Vienna Wasserwiese (WL)",
+        "Vienna Wasserwiese Station",
+        "Vienna Wasserwiese U",
+        "Vienna Wasserwiese U (VOR)",
+        "Wasserwiese",
+        "Wasserwiese (WL)",
+        "Wasserwiese (WL) Bahnhof",
+        "Wasserwiese (WL) Bf",
+        "Wasserwiese (WL) bf",
+        "Wasserwiese Bahnhof",
+        "Wasserwiese Bf",
+        "Wasserwiese bf",
+        "Wasserwiese Station",
+        "Wasserwiese Station Bahnhof",
+        "Wasserwiese Station Bf",
+        "Wasserwiese Station bf",
+        "Wien Wasserwiese",
+        "Wien Wasserwiese (WL) Bahnhof",
+        "Wien Wasserwiese (WL) Bf",
+        "Wien Wasserwiese (WL) bf",
+        "Wien Wasserwiese Bahnhof",
+        "Wien Wasserwiese Bf",
+        "Wien Wasserwiese bf",
+        "Wien Wasserwiese Station",
+        "Wien Wasserwiese Station Bahnhof",
+        "Wien Wasserwiese Station Bf",
+        "Wien Wasserwiese Station bf",
+        "Wien Wasserwiese U",
+        "Wien Wasserwiese U (VOR)",
+        "Wien-Wasserwiese",
+        "Wien-Wasserwiese Bahnhof",
+        "Wien-Wasserwiese Bf",
+        "Wien-Wasserwiese bf",
+        "Wien-Wasserwiese-(WL)",
+        "Wien-Wasserwiese-(WL) Bahnhof",
+        "Wien-Wasserwiese-(WL) Bf",
+        "Wien-Wasserwiese-(WL) bf"
+      ],
+      "source": "wl",
+      "latitude": 48.199441,
+      "longitude": 16.414385
+    },
+    {
       "name": "Wien Wattmanngasse (WL)",
       "in_vienna": true,
       "pendler": false,
@@ -297964,7 +297920,7 @@
           "longitude": 16.4851095
         },
         {
-          "stop_id": "7389",
+          "stop_id": "7388",
           "name": "Zanggasse",
           "latitude": 48.2388,
           "longitude": 16.4845346

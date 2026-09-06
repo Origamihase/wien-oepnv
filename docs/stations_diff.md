@@ -1,18 +1,17 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-08-30T06:17:12+00:00_
+_Erzeugt am: 2026-09-06T05:33:12+00:00_
 
-**Stationen: 2244 → 2244 (Δ +0)**
+**Stationen: 2244 → 2243 (Δ -1)**
 
-## Hinzugefügt (2)
+## Hinzugefügt (1)
 
-- `name:Wien Haschafeld (WL)` — Wien Haschafeld \(WL\)
-- `name:Wien Schemmerlstraße, Unterfeld (WL)` — Wien Schemmerlstraße, Unterfeld \(WL\)
+- `name:Wien Wasserwiese (WL)` — Wien Wasserwiese \(WL\)
 
 ## Entfernt (2)
 
-- `name:Wien Lavaterstraße (WL)` — Wien Lavaterstraße \(WL\)
-- `name:Wien Schemmerlstraße/Unterfeld (WL)` — Wien Schemmerlstraße/Unterfeld \(WL\)
+- `name:Wien Klaschkaweg (WL)` — Wien Klaschkaweg \(WL\)
+- `name:Wien Stadion U, Handelskai (WL)` — Wien Stadion U, Handelskai \(WL\)
 
 ## Umbenannt (0)
 
