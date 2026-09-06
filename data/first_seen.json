@@ -14277,6 +14277,16 @@
       "epoch": 3
     }
   },
+  "b4f980eae8aa646c0db51b50f22db1e7adbd9fcdddbead17055414d369c867af": {
+    "first_seen": "2026-09-06T04:30:52.063163+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: Foreigner traffic accident.",
+        "title": "72A: foreign traffic accident"
+      },
+      "epoch": 3
+    }
+  },
   "b50c282c85e739a4248a6b14ea43688db148e85bb8bea175c7c0bf5b6f0c6c0e": {
     "first_seen": "2026-06-06T16:00:45.572105+00:00",
     "translations": {
@@ -14861,8 +14871,10 @@
     "first_seen": "2026-09-06T04:01:09.499761+00:00",
     "translations": {
       "en": {
+        "summary": "After an service obstruction there are different intervals.",
         "title": "18: Corrupted overhead line"
-      }
+      },
+      "epoch": 3
     }
   },
   "be8d2380781f3f47e357b9d6eb7d4a923aff0407f16a0b34798f79852945fd54": {
