@@ -554,30 +554,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Rettungseinsatz Betrieb ab Enkplatz U, Grillgasse",
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
-    "pubDate": "2026-09-06T20:15:00+02:00",
-    "starts_at": "2026-09-06T20:16:43+02:00",
-    "ends_at": "2026-09-06T21:15:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Polizeieinsatz",
-    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9",
-    "pubDate": "2026-09-06T20:43:00+02:00",
-    "starts_at": "2026-09-06T20:43:00+02:00",
-    "ends_at": "2026-09-06T21:18:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "140/142: Busse halten bei Hausnummer 140 - 142",
     "description": "Bauarbeiten\nBusse halten bei Hausnummer 140 - 142",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -614,30 +590,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Schadhafter Zug Betrieb ab Kagran U",
-    "description": "Schadhafter Zug\nBetrieb ab Kagran U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eb44700d41724447870da438a8278779a3325b27096b9a7b0cb5ab1c9f64da27",
-    "pubDate": "2026-09-06T20:30:16+02:00",
-    "starts_at": "2026-09-06T20:30:16+02:00",
-    "ends_at": "2026-09-06T21:29:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Schadhafter Zug Betrieb ab SMZ-Ost",
-    "description": "Schadhafter Zug\nBetrieb ab SMZ-Ost",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "edabf988e66bdde81f13a44c0fed4a9c0fa7dc4593583d37830917ed7d76d6d4",
-    "pubDate": "2026-09-06T20:31:14+02:00",
-    "starts_at": "2026-09-06T20:31:16+02:00",
-    "ends_at": "2026-09-06T21:30:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -663,7 +615,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Linie 42: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 21:15 Uhr. Grund: Falschparker im Bereich Kreuzgasse 56.",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
     "pubDate": "2026-09-06T20:46:15+02:00",
@@ -681,18 +633,6 @@
     "pubDate": "2026-09-06T20:05:44+02:00",
     "starts_at": "2026-09-06T20:05:44+02:00",
     "ends_at": "2026-09-06T23:45:00+02:00",
-    "_identity": "wl|störung|L=4A|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "4A: Feuerwehreinsatz",
-    "description": "Linie 4A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e3205c237a7e0bcee020303bda2853e066767fad7d057b286d6a97bcf77a15d8",
-    "pubDate": "2026-09-06T20:01:00+02:00",
-    "starts_at": "2026-09-06T20:01:00+02:00",
-    "ends_at": "2026-09-06T22:02:00+02:00",
     "_identity": "wl|störung|L=4A|D=2026-09-06"
   },
   {
@@ -718,18 +658,6 @@
     "starts_at": "2026-09-06T04:40:11+02:00",
     "ends_at": "2026-09-07T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Rettungseinsatz",
-    "description": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c3f5724da51a5f97e26106c94e4e4a9c78a6afbf8833a95716caef1b24c5cf6e",
-    "pubDate": "2026-09-06T19:45:00+02:00",
-    "starts_at": "2026-09-06T19:45:00+02:00",
-    "ends_at": "2026-09-06T21:03:00+02:00",
-    "_identity": "wl|störung|L=69A|D=2026-09-06"
   },
   {
     "source": "Wiener Linien",
@@ -766,6 +694,18 @@
     "starts_at": "2026-09-05T00:00:25+02:00",
     "ends_at": "2026-09-06T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "95aeb4ba16e2fb0146735f3a2338723d5a267bb386f96f10ddd9c6072e133994",
+    "pubDate": "2026-09-06T21:09:20+02:00",
+    "starts_at": "2026-09-06T21:09:20+02:00",
+    "ends_at": "2026-09-06T22:09:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-09-06"
   },
   {
     "source": "Wiener Linien",
