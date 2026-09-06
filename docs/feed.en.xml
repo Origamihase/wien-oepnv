@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 06 Sep 2026 18:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 06 Sep 2026 18:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[76B: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dd418c2f104262ebbc93244f3fb004028180498175f7487dfa49d2d37e91c79e</guid>
+      <pubDate>Sun, 06 Sep 2026 18:24:00 +0200</pubDate>
+      <ext:first_seen>Sun, 06 Sep 2026 18:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 06 Sep 2026 18:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 06 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic accident. [On 06.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 06.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29B/29A: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bbe5ef50c2240c914c3dce1d180ddae47d557fdcc203689af3890bc880dbf44d</guid>
+      <pubDate>Sun, 06 Sep 2026 18:19:00 +0200</pubDate>
+      <ext:first_seen>Sun, 06 Sep 2026 18:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 06 Sep 2026 18:19:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 06 Sep 2026 19:01:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Line 29A: irregular intervals in both directions. [On 06.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line 29A: irregular intervals in both directions.<br/>[On 06.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[84A: traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +38,7 @@
       <pubDate>Sun, 06 Sep 2026 17:42:00 +0200</pubDate>
       <ext:first_seen>Sun, 06 Sep 2026 18:00:57 +0200</ext:first_seen>
       <ext:starts_at>Sun, 06 Sep 2026 17:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 06 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sun, 06 Sep 2026 19:31:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: traffic accident. [On 06.09.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 06.09.2026]]]></content:encoded>
     </item>
@@ -95,28 +117,6 @@
       <ext:starts_at>Wed, 02 Sep 2026 16:40:31 +0200</ext:starts_at>
       <description>Because of construction works, the Kledering can't drive between Vienna Hbf (U) and Kledering on 06.09.2026. An rail replacement service with buses will be set up for you. [Since 02.09.2026]</description>
       <content:encoded><![CDATA[Because of construction works, the Kledering can't drive between Vienna Hbf (U) and Kledering on 06.09.2026. An rail replacement service with buses will be set up for you.<br/>[Since 02.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N46/N49: Changed lines or new stops]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">661c550f1328aa8913e804568846242394059c88c93eb9131ec08050b7f8481b</guid>
-      <pubDate>Tue, 01 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 01 Sep 2026 17:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 01 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 15 Sep 2026 23:59:00 +0200</ext:ends_at>
-      <description>Change of network date: September 8, 2026, approximately 00:30 o'clock. Measures: Line N46 towards Joachimsthalerplatz (Mo-FR) or Otto Wagner Areal (Sat, Sun, holiday) From … [01.09.2026 – 15.09.2026]</description>
-      <content:encoded><![CDATA[Change of network date: September 8, 2026, approximately 00:30 o'clock. Measures: Line N46 towards Joachimsthalerplatz (Mo-FR) or Otto Wagner Areal (Sat, Sun, holiday) From …<br/>[01.09.2026 – 15.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N54R/N54: construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">891a44125e322e05f53f2f89c016c15f8fb0ce6b05b9814936a601b68b90c76b</guid>
-      <pubDate>Sun, 05 Jul 2026 06:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 31 Aug 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 16 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 15 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks and the associated partial barrier of Mariahilfer Straße, the N54 call bus line is diverted. [16.07.2026 – 15.08.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks and the associated partial barrier of Mariahilfer Straße, the N54 call bus line is diverted.<br/>[16.07.2026 – 15.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

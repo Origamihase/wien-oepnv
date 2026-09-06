@@ -14730,6 +14730,16 @@
       "epoch": 3
     }
   },
+  "bbe5ef50c2240c914c3dce1d180ddae47d557fdcc203689af3890bc880dbf44d": {
+    "first_seen": "2026-09-06T16:30:55.162482+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Line 29A: irregular intervals in both directions.",
+        "title": "29B/29A: delays"
+      },
+      "epoch": 3
+    }
+  },
   "bbf31a68061bfd0881f02a66b144b8f6c7e19668ddd11e8dc8d9ef56e900dee5": {
     "first_seen": "2026-06-19T14:30:46.127093+00:00",
     "translations": {
@@ -16975,6 +16985,16 @@
       "en": {
         "summary": "irregular intervals in both directions. Line 71: irregular intervals in both directions.",
         "title": "D/71: traffic congestion"
+      },
+      "epoch": 3
+    }
+  },
+  "dd418c2f104262ebbc93244f3fb004028180498175f7487dfa49d2d37e91c79e": {
+    "first_seen": "2026-09-06T16:30:55.162482+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic accident.",
+        "title": "76B: traffic accident"
       },
       "epoch": 3
     }

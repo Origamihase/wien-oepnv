@@ -590,6 +590,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29B/29A: Verspätungen",
+    "description": "Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bbe5ef50c2240c914c3dce1d180ddae47d557fdcc203689af3890bc880dbf44d",
+    "pubDate": "2026-09-06T18:19:00+02:00",
+    "starts_at": "2026-09-06T18:19:00+02:00",
+    "ends_at": "2026-09-06T19:01:00+02:00",
+    "_identity": "wl|störung|L=29A,29B|D=2026-09-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -662,13 +674,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "76B: Verkehrsunfall",
+    "description": "Linie 76B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dd418c2f104262ebbc93244f3fb004028180498175f7487dfa49d2d37e91c79e",
+    "pubDate": "2026-09-06T18:24:00+02:00",
+    "starts_at": "2026-09-06T18:24:00+02:00",
+    "ends_at": "2026-09-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=76B|D=2026-09-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "84A: Verkehrsunfall",
     "description": "Linie 84A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5d702aa13277ee935b7d4f0b9d4455572013ee81e209df9b678bbff8032d361f",
     "pubDate": "2026-09-06T17:42:00+02:00",
     "starts_at": "2026-09-06T17:42:00+02:00",
-    "ends_at": "2026-09-06T23:55:00+02:00",
+    "ends_at": "2026-09-06T19:31:00+02:00",
     "_identity": "wl|störung|L=84A|D=2026-09-06"
   },
   {
