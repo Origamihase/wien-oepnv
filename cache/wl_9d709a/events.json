@@ -554,18 +554,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2026-09-06T05:58:00+02:00",
-    "starts_at": "2026-09-06T05:58:18+02:00",
-    "ends_at": "2026-09-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "140/142: Haltestellenverlegung Busse halten bei Hausnummer 140 - 142",
     "description": "Haltestellenverlegung\nBusse halten bei Hausnummer 140 - 142",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -590,18 +578,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Fahrtbehinderung Fahrleitunsgebrechen",
-    "description": "Fahrtbehinderung\nFahrleitunsgebrechen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "67769c7c41270004c34958be0f4186065a41542a14b7d313f453b61f4467ae68",
-    "pubDate": "2026-09-06T05:40:18+02:00",
-    "starts_at": "2026-09-06T05:40:19+02:00",
-    "ends_at": "2026-09-06T06:39:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Beschädigte Oberleitung",
     "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -609,18 +585,6 @@
     "pubDate": "2026-09-06T05:16:00+02:00",
     "starts_at": "2026-09-06T05:16:00+02:00",
     "ends_at": "2026-09-06T06:58:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Fahrtbehinderung Fahrleitungsgebrechen",
-    "description": "Fahrtbehinderung\nFahrleitungsgebrechen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ec76dc05dc7768aa47981831836cd22764146cce8685dbed24052638f4c99030",
-    "pubDate": "2026-09-06T05:22:13+02:00",
-    "starts_at": "2026-09-06T05:36:18+02:00",
-    "ends_at": "2026-09-06T06:35:00+02:00",
     "_identity": "wl|störung|L=18|D=2026-09-06"
   },
   {
@@ -698,30 +662,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Beschädigte Oberleitung",
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "725a435d88fe1bd9ba201baaa8c371aebf40933d29fc672ea0307c2ae4fbb8b6",
-    "pubDate": "2026-09-06T05:16:00+02:00",
-    "starts_at": "2026-09-06T05:16:00+02:00",
-    "ends_at": "2026-09-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fahrtbehinderung Fahrleitungsgebrechen",
-    "description": "Fahrtbehinderung\nFahrleitungsgebrechen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8dadb1f1c00cdda6e15c00e7e52205b8c3c53d1486d8bcbd96f724a7b68213c1",
-    "pubDate": "2026-09-06T05:36:45+02:00",
-    "starts_at": "2026-09-06T05:40:45+02:00",
-    "ends_at": "2026-09-06T06:40:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -730,18 +670,6 @@
     "starts_at": "2026-09-05T00:00:29+02:00",
     "ends_at": "2026-09-06T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-09-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "72A: Fremder Verkehrsunfall",
-    "description": "Linie 72A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b4f980eae8aa646c0db51b50f22db1e7adbd9fcdddbead17055414d369c867af",
-    "pubDate": "2026-09-06T06:27:00+02:00",
-    "starts_at": "2026-09-06T06:27:00+02:00",
-    "ends_at": "2026-09-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=72A|D=2026-09-06"
   },
   {
     "source": "Wiener Linien",
@@ -802,18 +730,6 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Polizeieinsatz",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
-    "pubDate": "2026-09-06T06:13:00+02:00",
-    "starts_at": "2026-09-06T06:13:00+02:00",
-    "ends_at": "2026-09-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-09-06"
   },
   {
     "source": "Wiener Linien",
