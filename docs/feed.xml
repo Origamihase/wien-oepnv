@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 07 Sep 2026 15:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 16:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40A: Schottentor U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">206d0eecb61e433aaf79fa4d873777e6baeb5e2e89d300e6ba30c3d2acb93e1d</guid>
+      <pubDate>Mon, 07 Sep 2026 15:42:00 +0200</pubDate>
+      <ext:first_seen>Mon, 07 Sep 2026 16:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 07 Sep 2026 15:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 14 Sep 2026 06:00:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 40A in Richtung Döblinger Friedhof Haltestelle: Schottentor U Von: Hohenstauffengasse nach Schottenring Nach: Liechtensteinstraße 2 Dauer … [07.09.2026 – 14.09.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 40A in Richtung Döblinger Friedhof Haltestelle: Schottentor U Von: Hohenstauffengasse nach Schottenring Nach: Liechtensteinstraße 2 Dauer …<br/>[07.09.2026 – 14.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[3A: 3A Netzänderung Betrieb ab Riemergasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sat, 21 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 4A in Richtung Wittelsbachstraße Haltestelle: Rasumofskygasse Von: Marxergasse 35 Nach: Marxergasse 37-39 Dauer: Ab 27. August 2026, ca. 07:00 … [21.08.2026 – 21.08.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 4A in Richtung Wittelsbachstraße Haltestelle: Rasumofskygasse Von: Marxergasse 35 Nach: Marxergasse 37-39 Dauer: Ab 27. August 2026, ca. 07:00 …<br/>[21.08.2026 – 21.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/18: Veranstaltung am 12.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ed146ef431c5d3c2c2a3bc6d5392edf5a821b4ecb63337d3b2cdf7d01358a0e2</guid>
-      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 03 Sep 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
-      <description>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen. [30.07.2026 – 12.09.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
