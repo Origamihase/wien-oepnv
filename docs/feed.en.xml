@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 07 Sep 2026 10:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 11:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien St. Marx ↔ Wien Geiselbergstraße]]></title>
@@ -18,17 +18,6 @@
       <ext:starts_at>Mon, 07 Sep 2026 09:01:30 +0200</ext:starts_at>
       <description>Due to a technical fault on the route between Vienna St.Marx Bahnhst and Wien Geiselbergstraße Bahnhst to expected 23:59 clock no rides are possible. [Since 07.09.2026]</description>
       <content:encoded><![CDATA[Due to a technical fault on the route between Vienna St.Marx Bahnhst and Wien Geiselbergstraße Bahnhst to expected 23:59 clock no rides are possible.<br/>[Since 07.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Bhf. Hütteldorf ÖBB-replacement bus for 80]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Mon, 07 Sep 2026 05:42:05 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 06:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 07 Sep 2026 05:42:05 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 07 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf ÖBB-replacement bus for &amp;lt;80 [On 07.09.2026]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf ÖBB-replacement bus for &lt;80<br/>[On 07.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[8A: Bhf. Hütteldorf ÖBB-replacement bus for 80]]></title>
@@ -60,8 +49,8 @@
       <ext:first_seen>Mon, 07 Sep 2026 00:00:49 +0200</ext:first_seen>
       <ext:starts_at>Mon, 07 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 17 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Running sports event Because of the Erste Bank Vienna Night Run 2026 traffic restrictions occur. [07.09.2026 – 17.09.2026]</description>
-      <content:encoded><![CDATA[Running sports event Because of the Erste Bank Vienna Night Run 2026 traffic restrictions occur.<br/>[07.09.2026 – 17.09.2026]]]></content:encoded>
+      <description>Laufsportveranstaltung Wegen des Erste Bank Vienna Night Run 2026 kommt es zu Verkehrseinschränkungen. [07.09.2026 – 17.09.2026]</description>
+      <content:encoded><![CDATA[Laufsportveranstaltung Wegen des Erste Bank Vienna Night Run 2026 kommt es zu Verkehrseinschränkungen.<br/>[07.09.2026 – 17.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[140/142: Buses stop at house number 140 - 142]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Sun, 20 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Change of network Line78A gets a new line. [03.09.2026 – 20.09.2026]</description>
       <content:encoded><![CDATA[Change of network Line78A gets a new line.<br/>[03.09.2026 – 20.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11/71: Zentralfriedhof, 4. Gate]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1e53a4ec5ec1fa188eef9ad6a2d7f4b1510730f0bcc708ea2f54a08c5a3527da</guid>
+      <pubDate>Thu, 03 Sep 2026 04:30:00 +0200</pubDate>
+      <ext:first_seen>Thu, 03 Sep 2026 05:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 03 Sep 2026 04:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>Station departure of lines 11 and 71 towards Kaiserebersdorf Station: Zentralfriedhof, 4. Gate Duration: From 03 September 2026, 04:30 Clock, duration unknown Reason … [03.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Station departure of lines 11 and 71 towards Kaiserebersdorf Station: Zentralfriedhof, 4. Gate Duration: From 03 September 2026, 04:30 Clock, duration unknown Reason …<br/>[03.09.2026 – 26.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
