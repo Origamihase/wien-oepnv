@@ -530,6 +530,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Stromstörung Betrieb ab Karlsplatz",
+    "description": "Stromstörung\nBetrieb ab Karlsplatz >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c419e5a87e2efc0f51617b26479a06d1aab3ec94286734c278536615a1cd4dce",
+    "pubDate": "2026-09-07T19:44:01+02:00",
+    "starts_at": "2026-09-07T19:44:02+02:00",
+    "ends_at": "2026-09-07T20:43:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Stromstörung Betrieb ab Kliebergasse",
+    "description": "Stromstörung\nBetrieb ab Kliebergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e6c2f93c0d525cf3c5488a9ba718407b92f512a4b820cc7a5f38fa7b169ed146",
+    "pubDate": "2026-09-07T19:43:32+02:00",
+    "starts_at": "2026-09-07T19:43:32+02:00",
+    "ends_at": "2026-09-07T22:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -543,7 +567,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "2: Weichenschaden",
-    "description": "Linie 2: Kein Betrieb zwischen Josefstädter Straße U und Parlament, U Volkstheater. Weichen Sie ersatzweise auf die Linien U3, U6, 46, 49, 13A aus. Voraussichtliche Dauer: 21:30 Uhr. Grund: Weichenschaden im Bereich Stadiongasse .",
+    "description": "Linie 2: Umleitung in Richtung Dornbach zwischen Parlament, U Volkstheater und Rathaus U über die Reichsratsstraße. Haltestelle Ring, Volkstheater: Die Züge halten in der Haltestelle der Linien 46, 49 und 48A. Die Haltestelle Parlament kann nicht eingehalten werden. Weichen Sie ersatzweise auf die Linien U3, U6, 46, 49, 13A aus. Voraussichtliche Dauer: 21:30 Uhr. Grund: Weichenschaden im Bereich Stadiongasse .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "10ea3436246aeb32cb2cb97e02317c69249dc5eac7d640942d62f3f2e21c1898",
     "pubDate": "2026-09-07T19:11:00+02:00",
@@ -561,6 +585,18 @@
     "pubDate": "2026-09-07T19:12:59+02:00",
     "starts_at": "2026-09-07T19:12:59+02:00",
     "ends_at": "2026-09-07T21:30:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Weichenschaden Züge halten bei Linie 49",
+    "description": "Weichenschaden\nZüge halten bei Linie 49",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cd7033ea1b458d7b5bdcfe9c076588e93cf9fe5f840659ceadae5a91c14907ce",
+    "pubDate": "2026-09-07T19:58:33+02:00",
+    "starts_at": "2026-09-07T19:58:33+02:00",
+    "ends_at": "2026-09-07T20:57:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-09-07"
   },
   {
@@ -694,6 +730,18 @@
     "starts_at": "2026-09-07T05:41:35+02:00",
     "ends_at": "2026-09-07T23:00:00+02:00",
     "_identity": "wl|störung|L=8A|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "LB: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1f8e50a2d8dfcdea268f85f3f9c7c359dc9a4914f74c1f755762e6a5d4219f1e",
+    "pubDate": "2026-09-07T19:49:01+02:00",
+    "starts_at": "2026-09-07T19:49:03+02:00",
+    "ends_at": "2026-09-07T20:48:00+02:00",
+    "_identity": "wl|störung|L=LB|D=2026-09-07"
   },
   {
     "source": "Wiener Linien",
