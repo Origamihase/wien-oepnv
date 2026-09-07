@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 07 Sep 2026 06:30:58 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 07:01:09 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80]]></title>
@@ -46,21 +46,11 @@
       <title><![CDATA[Wien Geiselbergstraße ↔ Flughafen Wien]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;909864</guid>
-      <pubDate>Mon, 07 Sep 2026 06:05:18 +0200</pubDate>
+      <pubDate>Mon, 07 Sep 2026 06:54:35 +0200</pubDate>
       <ext:first_seen>Mon, 07 Sep 2026 04:00:44 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 07 Sep 2026 06:05:18 +0200</ext:starts_at>
+      <ext:starts_at>Mon, 07 Sep 2026 06:54:35 +0200</ext:starts_at>
       <description>Wegen Verlängerung der Bauarbeiten sind zwischen Wien St.Marx Bahnhst und Flughafen Wien Bahnhof bzw. Wien Hbf (U) und Flughafen Wien Bahnhof, bis voraussichtlich 08:00 … [Seit 07.09.2026]</description>
       <content:encoded><![CDATA[Wegen Verlängerung der Bauarbeiten sind zwischen Wien St.Marx Bahnhst und Flughafen Wien Bahnhof bzw. Wien Hbf (U) und Flughafen Wien Bahnhof, bis voraussichtlich 08:00 …<br/>[Seit 07.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Hauptbahnhof / Wien Hauptbahnhof ↔ Wien Meidling]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;909865</guid>
-      <pubDate>Mon, 07 Sep 2026 05:44:46 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 04:00:44 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 07 Sep 2026 05:44:46 +0200</ext:starts_at>
-      <description>Wegen Verlängerung der Bauarbeiten waren zwischen Wien Hbf (U) und Wien Meidling Bahnhof (U) bis 05:42 Uhr keine Fahrten möglich. [Seit 07.09.2026]</description>
-      <content:encoded><![CDATA[Wegen Verlängerung der Bauarbeiten waren zwischen Wien Hbf (U) und Wien Meidling Bahnhof (U) bis 05:42 Uhr keine Fahrten möglich.<br/>[Seit 07.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/1A/2/2A/31/3A/71/74A/D: Erste Bank Vienna Night Run 2026]]></title>
@@ -116,6 +106,17 @@
       <ext:ends_at>Fri, 18 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Wegen Abhaltung des Straßenfestes in der Währinger Straße werden die Linien 40 und 41 in beiden Richtungen umgeleitet. [03.09.2026 – 18.09.2026]</description>
       <content:encoded><![CDATA[Wegen Abhaltung des Straßenfestes in der Währinger Straße werden die Linien 40 und 41 in beiden Richtungen umgeleitet.<br/>[03.09.2026 – 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[78A: Umleitung und Haltestellenauflassung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a19cad3ad115dcd1abcddeda5ba10f8582f09ce0048618e9579e24ab8533e045</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 03 Sep 2026 13:31:07 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 03 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 20 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>Netzänderung Die Linie78A bekommt eine neue Linienführung. [03.09.2026 – 20.09.2026]</description>
+      <content:encoded><![CDATA[Netzänderung Die Linie78A bekommt eine neue Linienführung.<br/>[03.09.2026 – 20.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
