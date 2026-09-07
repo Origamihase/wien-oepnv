@@ -14,6 +14,8 @@ The investigation revealed that upstream Wiener Linien OGD Realtime payloads (`c
 
 While `_extract_prefix_lines` in `src/providers/wl_lines.py` correctly parses and consumes the first token (`"3A:"`), it leaves the second, bare token (`"3A"`) untouched at the start of the title body because strict line-prefix regexes require a trailing separator. When the feed pipeline subsequently reconstructs the canonical title (`rebuilt = f"{canonical}: {body}"`), the line number is duplicated. The MarianMT translation pipeline protects these tokens via entity masking, thereby reflecting the identical duplication into `docs/feed.en.xml`.
 
+**Cross-Provider Diagnostic Check**: A brief inspection of `src/providers/oebb.py` and `src/providers/vor.py` confirmed that this issue is strictly isolated to Wiener Linien OGD payloads. ÖBB uses a different mechanism (`_apply_route_title`) and VAO/VOR data formats differently, meaning they do not exhibit this specific `line: line body` duplicate prefix bug.
+
 ---
 
 ## 2. Source vs. Output Data Comparison
@@ -65,7 +67,13 @@ Any future fix must account for the following architectural and regex edge cases
    - Upstream descriptions frequently repeat only *one* of the lines (e.g., `"11A, 11B: 11A Gleisschaden..."`). Stripping only against `canonical` (`"11A/11B"`) would fail to remove the redundant `"11A"`.
    - Stripping candidates must include `canonical` **and** each element of `prefix_lines`.
 
-3. **Architectural Placement (Provider vs. Feed Builder):**
+3. **Candidate Order / Prefix Shadowing:**
+   - The list of candidates MUST be sorted by length descending (`sorted(..., key=len, reverse=True)`). Otherwise, a shorter prefix might shadow a longer one (e.g. `1` could match before `11A`), leading to partial strips or failing to strip the most specific redundant prefix.
+
+4. **Leading Whitespace & Dash Variations:**
+   - The regex must support optional leading whitespace (`^\s*`) and full dash variants (hyphen `-`, en-dash `–`, em-dash `—`) between the line identifier and the rest of the text, so `3A - Netzänderung` correctly reduces to `Netzänderung`.
+
+5. **Architectural Placement (Provider vs. Feed Builder):**
    - While `_post_filter_wl()` in `src/build_feed.py` could fix the title, placing the normalization directly inside `_extract_prefix_lines()` in `src/providers/wl_lines.py` is architecturally superior:
      - It ensures `body` is consistently clean across all downstream consumers and export formats.
      - It allows isolated, lightweight unit testing in `tests/test_parse_lines_from_title.py` without mocking the feed generator.
@@ -83,8 +91,11 @@ if prefix_lines and body:
     canonical = "/".join(prefix_lines)
     candidates = [re.escape(canonical)] + [re.escape(line) for line in prefix_lines]
 
-    # Strip redundant leading line identifier with strict word boundary
-    redundant_pattern = rf"^(?:{'|'.join(candidates)})\b\s*[:\-–]?\s*"
+    # Sort candidates by length descending to prevent prefix shadowing
+    candidates = sorted(candidates, key=len, reverse=True)
+
+    # Strip redundant leading line identifier with strict word boundary, supporting whitespace and dash variants
+    redundant_pattern = rf"^\s*(?:{'|'.join(candidates)})\b\s*[:\-–—]?\s*"
     body = re.sub(redundant_pattern, "", body, count=1, flags=re.IGNORECASE).strip()
 
 ```
