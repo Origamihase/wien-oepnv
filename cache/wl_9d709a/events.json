@@ -158,18 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "37/42: Michelbeuern-AKH",
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 42 in Richtung Antonigasse</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Michelbeuern-AKH</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kreuzgasse 2-4</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kreuzgasse 8-10</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 08. Juni 2026, etwa 08:00 Uhr, bis 08. September 2026, etwa 07:00 Uhr</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c134ca47a2f9556b4b2c701707dfb58b855f382a3658a88b21b430ac0e28fad",
-    "pubDate": "2026-06-04T07:00:00+02:00",
-    "starts_at": "2026-06-04T07:00:00+02:00",
-    "ends_at": "2026-09-08T07:00:00+02:00",
-    "_identity": "wl|hinweis|L=37,42|D=2026-06-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "37A: Bauarbeiten",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Donaueschingenstra&szlig;e wird die Linie 37A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Donnerstag, 21. Mai 2026, etwa 08:30 Uhr, bis voraussichtlich Ende August 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 37A in Richtung D&auml;nenstra&szlig;e bzw. Nu&szlig;dorfer Stra&szlig;e U:<br /></strong>Umleitung ab Pasettistra&szlig;e # Donaueschingenstra&szlig;e &uuml;ber Pasettistra&szlig;e &ndash; Hellwagstra&szlig;e &ndash; Dresdner Stra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>- Lorenz-B&ouml;hler-Unfallkrankenhaus (Donaueschingenstra&szlig;e nach Pasettistra&szlig;e)<br />- Dresdner Stra&szlig;e U (Dresdner Stra&szlig;e 47)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>- Lorenz-B&ouml;hler-Unfallkrankenhaus (Pasettistra&szlig;e 65 nach Donaueschingenstra&szlig;e)<br />- Pasettistra&szlig;e (Pasettistra&szlig;e vor Hellwagstra&szlig;e)</p> <p>&nbsp;</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -190,6 +178,18 @@
     "starts_at": "2026-09-03T00:00:00+02:00",
     "ends_at": "2026-09-18T23:00:00+02:00",
     "_identity": "wl|hinweis|L=40,41|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "42: Michelbeuern-AKH",
+    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 42 in Richtung Antonigasse</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Michelbeuern-AKH</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kreuzgasse 2-4</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kreuzgasse 8-10</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 08. Juni 2026, etwa 08:00 Uhr, bis 08. September 2026, etwa 07:00 Uhr</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e4f690683f316f4749e55e511220a7589ab1c4c4160ee8ff2fdaeef244cf013c",
+    "pubDate": "2026-06-04T07:00:00+02:00",
+    "starts_at": "2026-06-04T07:00:00+02:00",
+    "ends_at": "2026-09-08T07:00:00+02:00",
+    "_identity": "wl|hinweis|L=42|D=2026-06-04"
   },
   {
     "source": "Wiener Linien",
@@ -274,18 +274,6 @@
     "starts_at": "2026-07-14T07:50:00+02:00",
     "ends_at": "2027-07-14T11:11:00+02:00",
     "_identity": "wl|hinweis|L=57A|D=2026-07-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "59A: Straßenbauarbeiten",
-    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten werden die Busse der Linie 59A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 13. Juli 2026, etwa 08:30 Uhr, bis voraussichtlich Freitag, 04. September 2026, etwa 12:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><span style=\"text-decoration: underline;\">Linie 59A in Richtung Bahnhof Meidling S U:</span><br />Umleitung ab Margaretenstra&szlig;e # Ramperstorffergasse &uuml;ber Margaretenstra&szlig;e &ndash; Reinprechtsdorfer Stra&szlig;e &ndash; Arbeitergasse zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Bacherplatz (Ramperstorffergasse nach Castelligasse)<br />Reinprechtsdorfer Stra&szlig;e, Arbeitergasse (Arbeitergasse 12-14)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Bacherplatz (Margaretenstra&szlig;e 104-106)<br />Reinprechtsdorfer Stra&szlig;e, Arbeitergasse (Reinprechtsdorfer Stra&szlig;e 39-41)</p> <p><span style=\"text-decoration: underline;\">Linie 59A in Richtung Oper, Karlsplatz U:</span></p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />Reinprechtsdorfer Stra&szlig;e, Arbeitergasse (Arbeitergasse 15-17)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />Reinprechtsdorfer Stra&szlig;e, Arbeitergasse (Arbeitergasse 19)</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/59A%20Rampersdtorfferstra%C3%9Fe.png\" alt=\"\" width=\"859\" height=\"859\" /></p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ff1ff7a34b0ab2e67c4acf0abe414637698494ed68180d66f548f1c2cc2c0fed",
-    "pubDate": "2026-07-10T00:00:00+02:00",
-    "starts_at": "2026-07-13T00:00:00+02:00",
-    "ends_at": "2027-09-04T12:00:00+02:00",
-    "_identity": "wl|hinweis|L=59A|D=2026-07-13"
   },
   {
     "source": "Wiener Linien",
@@ -566,6 +554,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Verkehrsunfall",
+    "description": "Die Linie 1 fährt derzeit nur zwischen Stefan-Fadinger-Platz und Julius-Raab-Platz. Die Züge werden weiters zum Karlsplatz geführt. Weichen Sie ersatzweise auf die Linien O, 4A, 80A aus. Voraussichtliche Dauer: 15:00 Uhr. Grund: Verkehrsunfall im Bereich Julius-Raab-Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
+    "pubDate": "2026-09-07T13:56:00+02:00",
+    "starts_at": "2026-09-07T13:56:00+02:00",
+    "ends_at": "2026-09-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Verkehrsunfall Züge halten bei Linie 2",
+    "description": "Verkehrsunfall\nZüge halten bei Linie 2",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "981177885bdb662ed8cd193fd76778d2c2e692814c66b7f7efcca2fb4afa832b",
+    "pubDate": "2026-09-07T14:00:24+02:00",
+    "starts_at": "2026-09-07T14:00:24+02:00",
+    "ends_at": "2026-09-07T14:59:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -573,6 +585,30 @@
     "pubDate": "2026-09-07T05:42:05+02:00",
     "starts_at": "2026-09-07T05:42:05+02:00",
     "ends_at": "2026-09-07T23:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Verkehrsunfall Betrieb ab Julius Raab Platz",
+    "description": "Verkehrsunfall\nBetrieb ab Julius Raab Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dd6d0bc61549fa7af8d80f6fc550458c3525ec91ea12e8676ce787dfb53cc43d",
+    "pubDate": "2026-09-07T13:59:56+02:00",
+    "starts_at": "2026-09-07T13:59:56+02:00",
+    "ends_at": "2026-09-07T14:58:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
+    "pubDate": "2026-09-07T13:58:54+02:00",
+    "starts_at": "2026-09-07T13:58:56+02:00",
+    "ends_at": "2026-09-07T14:58:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-09-07"
   },
   {
@@ -598,6 +634,18 @@
     "starts_at": "2026-09-05T00:00:25+02:00",
     "ends_at": "2026-09-07T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-09-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Haltest. verlegt nacht Kärntner Ring 5",
+    "description": "Haltest. verlegt\nnacht Kärntner Ring 5",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "00ca4a94bc86e5d08af483c920dc46db53a93f2a79033c15fe92298d39f738c3",
+    "pubDate": "2026-09-07T13:46:56+02:00",
+    "starts_at": "2026-09-07T13:46:56+02:00",
+    "ends_at": "2026-09-07T23:59:59+02:00",
+    "_identity": "wl|störung|L=3A|D=2026-09-07"
   },
   {
     "source": "Wiener Linien",
@@ -682,6 +730,18 @@
     "starts_at": "2026-08-17T11:47:00+02:00",
     "ends_at": "2026-09-07T23:55:00+02:00",
     "_identity": "wl|störung|L=S1,S2,S3,S4,S7|D=2026-08-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Die Linie U4 fährt derzeit zwischen den Stationen Kettenbrückengasse und Pilgramgasse in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 14:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Pilgramgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-09-07T13:56:00+02:00",
+    "starts_at": "2026-09-07T13:56:00+02:00",
+    "ends_at": "2026-09-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-09-07"
   },
   {
     "source": "Wiener Linien",
