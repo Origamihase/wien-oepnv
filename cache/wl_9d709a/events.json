@@ -518,6 +518,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Beschädigte Oberleitung",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fahrleitungsgebrechen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0ab8c0801bf043482820932a286f9e7499ff070911a45b9d6fbb3b1c06e0ab18",
+    "pubDate": "2026-09-07T20:13:00+02:00",
+    "starts_at": "2026-09-07T20:13:00+02:00",
+    "ends_at": "2026-09-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -596,7 +608,7 @@
     "guid": "cd7033ea1b458d7b5bdcfe9c076588e93cf9fe5f840659ceadae5a91c14907ce",
     "pubDate": "2026-09-07T19:58:33+02:00",
     "starts_at": "2026-09-07T19:58:33+02:00",
-    "ends_at": "2026-09-07T20:57:00+02:00",
+    "ends_at": "2026-09-07T23:59:59+02:00",
     "_identity": "wl|störung|L=2|D=2026-09-07"
   },
   {

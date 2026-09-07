@@ -839,6 +839,16 @@
       "epoch": 3
     }
   },
+  "0ab8c0801bf043482820932a286f9e7499ff070911a45b9d6fbb3b1c06e0ab18": {
+    "first_seen": "2026-09-07T18:30:39.732548+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: overhead line failure.",
+        "title": "1: Corrupted overhead line"
+      },
+      "epoch": 3
+    }
+  },
   "0af3d4c4a0ba77aa647b502f6c88fc98b64fdd939aa867f03fd56720160b24dd": {
     "first_seen": "2026-07-02T07:30:46.284097+00:00",
     "translations": {
@@ -15973,6 +15983,15 @@
       "en": {
         "summary": "irregular intervals in both directions. Reason: contamination.",
         "title": "30: Impurity"
+      },
+      "epoch": 3
+    }
+  },
+  "cd7033ea1b458d7b5bdcfe9c076588e93cf9fe5f840659ceadae5a91c14907ce": {
+    "first_seen": "2026-09-07T18:30:39.732548+00:00",
+    "translations": {
+      "en": {
+        "title": "2: Soft Damage Trains hold on line 49"
       },
       "epoch": 3
     }
