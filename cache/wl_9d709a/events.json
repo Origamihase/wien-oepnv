@@ -602,6 +602,54 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "26: Stromstörung Betrieb ab Nordbrücke",
+    "description": "Stromstörung\nBetrieb ab Nordbrücke",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "07c644f0bddd94337cbacac5a421bc8cb38e1a7924766bf81ad692cd58bd04d4",
+    "pubDate": "2026-09-07T06:14:40+02:00",
+    "starts_at": "2026-09-07T06:14:40+02:00",
+    "ends_at": "2026-09-07T07:14:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "beeb7ba5ea9598a7746ff3eb710af9b0a0c40d24d97e86490f49f7d84ab14b7b",
+    "pubDate": "2026-09-07T06:12:10+02:00",
+    "starts_at": "2026-09-07T06:12:10+02:00",
+    "ends_at": "2026-09-07T07:11:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Stromstörung Betrieb ab Nordbrücke",
+    "description": "Stromstörung\nBetrieb ab Nordbrücke",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dd878f63823c18c7c6ad17c6a27f68c4b6fccef2a91ea42e0a151ec7aca3da54",
+    "pubDate": "2026-09-07T06:14:10+02:00",
+    "starts_at": "2026-09-07T06:14:12+02:00",
+    "ends_at": "2026-09-07T07:13:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "deee1babf5dc7b811f812928e2030700a354c24599a97fdb5fb4b755a5527310",
+    "pubDate": "2026-09-07T06:12:40+02:00",
+    "starts_at": "2026-09-07T06:12:40+02:00",
+    "ends_at": "2026-09-07T07:11:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-09-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -610,18 +658,6 @@
     "starts_at": "2026-09-05T00:00:25+02:00",
     "ends_at": "2026-09-07T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-09-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Verspätungen",
-    "description": "Linie 60: Verspätungen in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ed273bb9b3ad9ca9955a318015cde52f70c2fd133a1b085c49a27877e35affcb",
-    "pubDate": "2026-09-07T04:49:00+02:00",
-    "starts_at": "2026-09-07T04:49:00+02:00",
-    "ends_at": "2026-09-07T23:55:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-09-07"
   },
   {
     "source": "Wiener Linien",
