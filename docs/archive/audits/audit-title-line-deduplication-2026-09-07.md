@@ -1,54 +1,97 @@
-# Audit: Title Line Deduplication
+# Audit: Title Line Deduplication & Redundant Prefix Analysis
 
-## Executive Summary
-This report analyzes a bug where redundant line prefixes are rendering in feed titles (e.g., `3A: 3A Netzänderung Betrieb ab Riemergasse`). The investigation revealed that Wiener Linien sometimes provides upstream titles where the line identifier appears twice (once with a colon, once without). The `_extract_prefix_lines` function correctly extracts the first line identifier (`3A`) due to the presence of a colon, but leaves the second, colon-less identifier (`3A`) in the title body since it does not match the strict line-prefix extraction regexes (`LINES_COMPLEX_PREFIX_RE` and `LINE_PREFIX_STRIP_RE`). As a result, the feed re-prepends the canonical line prefix to the body, producing the duplicated `3A: 3A` output. The translation pipeline preserves this structure, resulting in a mirrored duplicated string in the English feed.
+**Date:** 2026-09-07
+**Scope:** Wiener Linien Provider (`src/providers/wl_lines.py`, `src/providers/wl_fetch.py`) & Feed Processing (`src/build_feed.py`)
+**Status:** Diagnostic Audit (Read-Only)
 
-## Data Comparison
+---
 
-The following table compares the raw data returned by Wiener Linien (extracted from `cache/wl_9d709a/events.json`) with the output in the generated RSS feeds.
+## 1. Executive Summary
 
-| Field / Output | Value |
-| :--- | :--- |
-| **Raw Upstream JSON Title** | `3A: 3A Netzänderung Betrieb ab Riemergasse` |
-| **German Feed Output (`docs/feed.xml`)** | `3A: 3A Netzänderung Betrieb ab Riemergasse` |
-| **English Feed Output (`docs/feed.en.xml`)** | `3A: 3A Network change service from Riemergasse` |
+This diagnostic audit investigates redundant line identifiers rendering in feed item titles (e.g., `<title><![CDATA[ 3A: 3A Netzänderung Betrieb ab Riemergasse ]]>`).
 
-## Code Pipeline Tracing
+The investigation revealed that upstream Wiener Linien OGD Realtime payloads (`cache/wl_9d709a/events.json`) occasionally provide titles where the line identifier is stated twice at the beginning: once with a colon, immediately followed by the bare line identifier (e.g., `"3A: 3A Netzänderung..."`).
 
-The path of the title through the pipeline reveals why the duplication is preserved rather than collapsed:
+While `_extract_prefix_lines` in `src/providers/wl_lines.py` correctly parses and consumes the first token (`"3A:"`), it leaves the second, bare token (`"3A"`) untouched at the start of the title body because strict line-prefix regexes require a trailing separator. When the feed pipeline subsequently reconstructs the canonical title (`rebuilt = f"{canonical}: {body}"`), the line number is duplicated. The MarianMT translation pipeline protects these tokens via entity masking, thereby reflecting the identical duplication into `docs/feed.en.xml`.
 
-1. **Extraction from Source (`src/providers/wl_fetch.py`)**:
-   - Upstream data provides the field `title` or `name` which gets fetched and assigned to `title_raw`.
-   - The value is originally `3A: 3A Netzänderung Betrieb ab Riemergasse`.
-   - `_tidy_title_wl(title_raw)` cleans it slightly, but does not alter this structure.
-2. **Prefix Extraction (`src/providers/wl_lines.py`)**:
-   - `_extract_prefix_lines(title)` looks for a colon-delimited line prefix block at the start of the title using `LINES_COMPLEX_PREFIX_RE` and `LINE_PREFIX_STRIP_RE`.
-   - It successfully matches `3A:` because of the colon.
-   - The body is parsed as `3A Netzänderung Betrieb ab Riemergasse` and returned along with `['3A']` as the `prefix_lines`.
-   - The regex does not consume the second `3A` because there is no colon or separator pattern matching it in `LINE_PREFIX_STRIP_RE`.
-3. **Recombination (`src/build_feed.py`)**:
-   - In `_post_filter_wl`, the pipeline reconstructs the title: `rebuilt = f"{canonical}: {body}"`.
-   - Since `canonical` is `"3A"` and `body` is `"3A Netzänderung Betrieb ab Riemergasse"`, the final string remains `3A: 3A Netzänderung Betrieb ab Riemergasse`.
-4. **Translation**:
-   - In `src/build_feed.py`, the MarianMT translation pipeline receives the string. The entity masking regex captures `3A` as an entity to prevent mangling. The translated suffix `Network change service from Riemergasse` is appended to the restored mask, resulting in `3A: 3A Network change service from Riemergasse`.
+---
 
-## Recommended Fix
+## 2. Source vs. Output Data Comparison
 
-A targeted sanitization step must be applied to the remaining `body` string to strip an exact duplicate of the canonical line prefix if it occurs without a colon.
+| Stage | Path / Source | Title Representation |
+| :--- | :--- | :--- |
+| **Upstream Source** | `cache/wl_9d709a/events.json` (`title` / `name`) | `3A: 3A Netzänderung Betrieb ab Riemergasse` |
+| **Provider Parsed** | `_extract_prefix_lines()` output | `prefix_lines = ['3A']`<br>`body = '3A Netzänderung Betrieb ab Riemergasse'` |
+| **German Feed** | `docs/feed.xml` (`<title>`) | `3A: 3A Netzänderung Betrieb ab Riemergasse` |
+| **English Feed** | `docs/feed.en.xml` (`<title>`) | `3A: 3A Network change service from Riemergasse` |
 
-Modify `_post_filter_wl` in `src/build_feed.py` when reconstructing the rebuilt string:
+---
+
+## 3. Code Pipeline Tracing & Root Cause
+
+1. **Upstream Ingestion (`src/providers/wl_fetch.py`)**
+   - The raw JSON title string is captured as `title_raw`.
+   - Function `_tidy_title_wl(title_raw)` performs baseline whitespace and punctuation normalization, but intentionally does not alter line numbers or semantics.
+
+2. **Prefix Extraction (`src/providers/wl_lines.py`)**
+   - `_extract_prefix_lines(title)` uses `LINES_COMPLEX_PREFIX_RE` and `LINE_PREFIX_STRIP_RE`.
+   - It matches and strips `"3A:"` based on the colon delimiter.
+   - The remaining string `"3A Netzänderung Betrieb ab Riemergasse"` is returned as `body`. The regex does not match the second `"3A"` because it is not followed by a recognized separator (e.g. `:`, `,`, `/`).
+
+3. **Feed Recombination (`src/build_feed.py`)**
+   - Inside `_post_filter_wl()`, the canonical representation is computed as `canonical = "/".join(prefix_lines)`.
+   - The title is reformatted:
+     ```python
+     rebuilt = f"{canonical}: {body}"
+     ```
+   - Since `body` still starts with `"3A"`, the result is `"3A: 3A Netzänderung..."`.
+
+4. **NMT Pipeline (`src/build_feed.py`)**
+   - The translation module masks proper nouns and line markers (e.g., using `XENT` placeholders).
+   - Both occurrences of `"3A"` are masked and preserved verbatim, locking the duplication into the English output.
+
+---
+
+## 4. Nuances & Edge Cases (Identified Weaknesses in Naive Fixes)
+
+Any future fix must account for the following architectural and regex edge cases:
+
+1. **Word Boundary Protection (`\b`):**
+   - A naive stripping regex like `^{line}` would erroneously truncate line numbers on single-digit routes (e.g., route `1` followed by `"10er Garnitur getauscht"` or `"10. Bezirk"` would be corrupted into `"0er Garnitur..."` or `"0. Bezirk"`).
+   - A strict word boundary `\b` is mandatory.
+
+2. **Multi-Line Disruptions:**
+   - When multiple lines are affected (e.g. `prefix_lines = ['11A', '11B']`), the canonical prefix is `"11A/11B"`.
+   - Upstream descriptions frequently repeat only *one* of the lines (e.g., `"11A, 11B: 11A Gleisschaden..."`). Stripping only against `canonical` (`"11A/11B"`) would fail to remove the redundant `"11A"`.
+   - Stripping candidates must include `canonical` **and** each element of `prefix_lines`.
+
+3. **Architectural Placement (Provider vs. Feed Builder):**
+   - While `_post_filter_wl()` in `src/build_feed.py` could fix the title, placing the normalization directly inside `_extract_prefix_lines()` in `src/providers/wl_lines.py` is architecturally superior:
+     - It ensures `body` is consistently clean across all downstream consumers and export formats.
+     - It allows isolated, lightweight unit testing in `tests/test_parse_lines_from_title.py` without mocking the feed generator.
+
+---
+
+## 5. Recommended Solution (For Future Implementation)
+
+When ready to implement, `_extract_prefix_lines()` in `src/providers/wl_lines.py` should be augmented to strip immediate residual leading line identifiers from `body`:
+
 ```python
-import re
-
-body, prefix_lines = _extract_prefix_lines(cleaned)
+# Conceptual fix for src/providers/wl_lines.py:
 if prefix_lines and body:
+    # Build candidate tokens: joined canonical + individual route identifiers
     canonical = "/".join(prefix_lines)
+    candidates = [re.escape(canonical)] + [re.escape(line) for line in prefix_lines]
 
-    # NEW SANITIZATION STEP: Strip redundant line prefix at start of body
-    escaped_canonical = re.escape(canonical)
-    body = re.sub(rf"^{escaped_canonical}\s*[:\-–]?\s*", "", body, count=1, flags=re.IGNORECASE)
+    # Strip redundant leading line identifier with strict word boundary
+    redundant_pattern = rf"^(?:{'|'.join(candidates)})\b\s*[:\-–]?\s*"
+    body = re.sub(redundant_pattern, "", body, count=1, flags=re.IGNORECASE).strip()
 
-    rebuilt = f"{canonical}: {body}"
 ```
 
-This safely normalizes cases where the line is repeated without affecting non-duplicative text. Since the task is read-only, this code change has **not** been applied to the project.
+### Proposed Regression Test Cases:
+
+* **Single-Line Duplicate:** `"3A: 3A Netzänderung"` -> Line: `3A`, Body: `"Netzänderung"`
+* **Multi-Line Duplicate:** `"11A, 11B: 11A Gleisschaden"` -> Lines: `['11A', '11B']`, Body: `"Gleisschaden"`
+* **Word Boundary Guard:** `"1: 10er Garnitur im Einsatz"` -> Line: `1`, Body: `"10er Garnitur im Einsatz"` (must not alter `10`)
+* **Colon Variations:** `"U1: U1 - Gleisarbeiten"` -> Line: `U1`, Body: `"Gleisarbeiten"`
