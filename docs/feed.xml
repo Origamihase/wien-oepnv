@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 07 Sep 2026 15:01:13 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 15:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[3A: 3A Netzänderung Betrieb ab Riemergasse]]></title>
@@ -40,6 +40,17 @@
       <ext:starts_at>Mon, 07 Sep 2026 14:53:12 +0200</ext:starts_at>
       <description>Wegen einer technischen Störung auf der Strecke sind zwischen Wien St.Marx Bahnhst und Wien Geiselbergstraße Bahnhst bis voraussichtlich 23:59 Uhr keine Fahrten möglich. [Seit 07.09.2026]</description>
       <content:encoded><![CDATA[Wegen einer technischen Störung auf der Strecke sind zwischen Wien St.Marx Bahnhst und Wien Geiselbergstraße Bahnhst bis voraussichtlich 23:59 Uhr keine Fahrten möglich.<br/>[Seit 07.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Mon, 07 Sep 2026 05:42:05 +0200</pubDate>
+      <ext:first_seen>Mon, 07 Sep 2026 06:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 07 Sep 2026 05:42:05 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 07 Sep 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf ÖBB-Ersatzbus für &amp;lt;80 [Am 07.09.2026]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf ÖBB-Ersatzbus für &lt;80<br/>[Am 07.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[8A: Bhf. Hütteldorf ÖBB-Ersatzbus für 80]]></title>
@@ -106,17 +117,6 @@
       <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen. [30.07.2026 – 12.09.2026]</description>
       <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40/41: Währinger Straßenfest 2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2a560983767be461f039e42f6c79f363c49a2286c30cb1856d6ae1f13511fea6</guid>
-      <pubDate>Thu, 03 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 03 Sep 2026 13:31:07 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 03 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Wegen Abhaltung des Straßenfestes in der Währinger Straße werden die Linien 40 und 41 in beiden Richtungen umgeleitet. [03.09.2026 – 18.09.2026]</description>
-      <content:encoded><![CDATA[Wegen Abhaltung des Straßenfestes in der Währinger Straße werden die Linien 40 und 41 in beiden Richtungen umgeleitet.<br/>[03.09.2026 – 18.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
