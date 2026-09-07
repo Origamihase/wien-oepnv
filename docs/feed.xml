@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 07 Sep 2026 17:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 18:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12A: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c525a7b5bb30461b905f06c6a6a2cf2790b99d04ecc4e12f4a3764bb68466f7b</guid>
+      <pubDate>Mon, 07 Sep 2026 17:53:00 +0200</pubDate>
+      <ext:first_seen>Mon, 07 Sep 2026 18:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 07 Sep 2026 17:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 07 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 07.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 07.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[40A: Schottentor U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Mon, 07 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[05.09.2026 – 07.09.2026]</description>
       <content:encoded><![CDATA[[05.09.2026 – 07.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A: Rasumofskygasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">758352da9a275a08c35e0ac339917edb5294738f80bc3b48cb3a315a38f43d8b</guid>
-      <pubDate>Fri, 21 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 04 Sep 2026 07:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 21 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 21 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 4A in Richtung Wittelsbachstraße Haltestelle: Rasumofskygasse Von: Marxergasse 35 Nach: Marxergasse 37-39 Dauer: Ab 27. August 2026, ca. 07:00 … [21.08.2026 – 21.08.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 4A in Richtung Wittelsbachstraße Haltestelle: Rasumofskygasse Von: Marxergasse 35 Nach: Marxergasse 37-39 Dauer: Ab 27. August 2026, ca. 07:00 …<br/>[21.08.2026 – 21.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
