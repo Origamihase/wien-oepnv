@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 07 Sep 2026 20:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 21:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[1: Corrupted overhead line]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Mon, 07 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 07.09.2026]</description>
       <content:encoded><![CDATA[[On 07.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[34A: traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">43c1f3d1297e12d2b02a962e730fd341a9b6a2b34bf4f228093b2fdb0ef25d00</guid>
-      <pubDate>Mon, 07 Sep 2026 18:56:00 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 19:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 07 Sep 2026 18:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 07 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic accident. [On 07.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 07.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: Schottentor U]]></title>
@@ -98,7 +87,7 @@
       <content:encoded><![CDATA[U1: strong demand The U1 is more popular than usual because of the ÖBB S-Bahn-block between Hauptbahnhof and Praterstern.<br/>[07.09.2026 – 30.11.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1/1A/2/2A/31/3A/71/74A/D: Erste Bank Vienna Night Run 2026]]></title>
+      <title><![CDATA[1/2A/2/2A/31/3A/71/74A/D: Erste Bank Vienna Night Run 2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">dd142e4255c6c5362a33e6bf1c3bc3cae54bce9f3dcc24c36f45b1071906fd9f</guid>
       <pubDate>Mon, 07 Sep 2026 00:00:00 +0200</pubDate>
@@ -118,6 +107,17 @@
       <ext:ends_at>Mon, 07 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[05.09.2026 – 07.09.2026]</description>
       <content:encoded><![CDATA[[05.09.2026 – 07.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A: Rasumofskygasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">758352da9a275a08c35e0ac339917edb5294738f80bc3b48cb3a315a38f43d8b</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 04 Sep 2026 07:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 21 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of line 4A towards Wittelsbachstraße Stop: Rasumofskygasse From: 37-39 To: Marxergasse 37-39 Duration: From 27 August 2026, ca. 07:00 … [21.08.2026 – 21.08.2027]</description>
+      <content:encoded><![CDATA[Stop change of line 4A towards Wittelsbachstraße Stop: Rasumofskygasse From: 37-39 To: Marxergasse 37-39 Duration: From 27 August 2026, ca. 07:00 …<br/>[21.08.2026 – 21.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
