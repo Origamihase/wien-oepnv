@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 08 Sep 2026 06:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 07:01:09 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[40A: Schottentor U]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Tue, 08 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[07.09.2026 – 08.09.2026]</description>
       <content:encoded><![CDATA[[07.09.2026 – 08.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[42: Michelbeuern-AKH]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e4f690683f316f4749e55e511220a7589ab1c4c4160ee8ff2fdaeef244cf013c</guid>
-      <pubDate>Thu, 04 Jun 2026 07:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 14:01:13 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 04 Jun 2026 07:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 08 Sep 2026 07:00:00 +0200</ext:ends_at>
-      <description>Stop transfer of line 42 towards Antonigasse Stop: Michelbeuern-AKH From: Kreuzgasse 8-4 To: KreuzgasseX 8-10 Duration: 08 June 2026, approximately 08:00 hrs, until … [04.06.2026 – 08.09.2026]</description>
-      <content:encoded><![CDATA[Stop transfer of line 42 towards Antonigasse Stop: Michelbeuern-AKH From: Kreuzgasse 8-4 To: KreuzgasseX 8-10 Duration: 08 June 2026, approximately 08:00 hrs, until …<br/>[04.06.2026 – 08.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: strong demand]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 08 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 08.09.2026]</description>
       <content:encoded><![CDATA[[On 08.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11/71: Zentralfriedhof, 4. Gate]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1e53a4ec5ec1fa188eef9ad6a2d7f4b1510730f0bcc708ea2f54a08c5a3527da</guid>
+      <pubDate>Thu, 03 Sep 2026 04:30:00 +0200</pubDate>
+      <ext:first_seen>Thu, 03 Sep 2026 05:00:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 03 Sep 2026 04:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>Station departure of lines 11 and 71 towards Kaiserebersdorf Station: Zentralfriedhof, 4. Gate Duration: From 03 September 2026, 04:30 Clock, duration unknown Reason … [03.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Station departure of lines 11 and 71 towards Kaiserebersdorf Station: Zentralfriedhof, 4. Gate Duration: From 03 September 2026, 04:30 Clock, duration unknown Reason …<br/>[03.09.2026 – 26.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
