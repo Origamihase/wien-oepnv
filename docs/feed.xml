@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 08 Sep 2026 17:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 17:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[31: Züge halten bei Linie 31]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e96ac7baad74856412e6d0617c7254a066a79f50477617f356cbec4d3f9654d</guid>
+      <pubDate>Tue, 08 Sep 2026 17:03:30 +0200</pubDate>
+      <ext:first_seen>Tue, 08 Sep 2026 17:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 08 Sep 2026 17:03:30 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 08 Sep 2026 18:02:00 +0200</ext:ends_at>
+      <description>[Am 08.09.2026]</description>
+      <content:encoded><![CDATA[[Am 08.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,9 +27,9 @@
       <pubDate>Tue, 08 Sep 2026 16:00:00 +0200</pubDate>
       <ext:first_seen>Tue, 08 Sep 2026 16:31:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 08 Sep 2026 16:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 08 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Liebe Fahrgäste! Die Linie 49A fährt derzeit nur zwischen Bhf. Hütteldorf S U und Cottagestraße. [Am 08.09.2026]</description>
-      <content:encoded><![CDATA[Liebe Fahrgäste! Die Linie 49A fährt derzeit nur zwischen Bhf. Hütteldorf S U und Cottagestraße.<br/>[Am 08.09.2026]]]></content:encoded>
+      <ext:ends_at>Tue, 08 Sep 2026 17:30:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 08.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 08.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Züge halten bei Linie O]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 30 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>U1: starke Nachfrage Die U1 wird aufgrund der ÖBB S-Bahn-Sperre zwischen Hauptbahnhof und Praterstern stärker nachgefragt als üblich. [07.09.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[U1: starke Nachfrage Die U1 wird aufgrund der ÖBB S-Bahn-Sperre zwischen Hauptbahnhof und Praterstern stärker nachgefragt als üblich.<br/>[07.09.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/1A/2/2A/31/3A/71/74A/D: Erste Bank Vienna Night Run 2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dd142e4255c6c5362a33e6bf1c3bc3cae54bce9f3dcc24c36f45b1071906fd9f</guid>
-      <pubDate>Mon, 07 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 00:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 07 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Laufsportveranstaltung Wegen des Erste Bank Vienna Night Run 2026 kommt es zu Verkehrseinschränkungen. [07.09.2026 – 17.09.2026]</description>
-      <content:encoded><![CDATA[Laufsportveranstaltung Wegen des Erste Bank Vienna Night Run 2026 kommt es zu Verkehrseinschränkungen.<br/>[07.09.2026 – 17.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
