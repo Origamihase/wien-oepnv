@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 09 Sep 2026 00:00:56 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 00:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[25/27: Damaged overhead line by a truck]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">48e8c7dc17927e1b5c879b7236d2587e56f08d06c11319aafde1d7ec27b49fee</guid>
-      <pubDate>Tue, 08 Sep 2026 23:49:00 +0200</pubDate>
-      <ext:first_seen>Wed, 09 Sep 2026 00:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 08 Sep 2026 23:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 08 Sep 2026 23:59:00 +0200</ext:ends_at>
-      <description>Operation only between Aspern, Oberdorfstraße and Kagran U. The line 27 currently does not operate between Floridsdorf S U and Berresgasse. [On 08.09.2026]</description>
-      <content:encoded><![CDATA[Operation only between Aspern, Oberdorfstraße and Kagran U. The line 27 currently does not operate between Floridsdorf S U and Berresgasse.<br/>[On 08.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[26: service obstruction Soft Damage]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -27,6 +16,17 @@
       <pubDate>Tue, 08 Sep 2026 19:33:16 +0200</pubDate>
       <ext:first_seen>Tue, 08 Sep 2026 20:01:07 +0200</ext:first_seen>
       <ext:starts_at>Tue, 08 Sep 2026 19:33:45 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 09 Sep 2026 01:30:00 +0200</ext:ends_at>
+      <description>[08.09.2026 – 09.09.2026]</description>
+      <content:encoded><![CDATA[[08.09.2026 – 09.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27: Soft Damage Trains hold on line 25]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">253822ea1aac4ce49c97e029a3d2f3b3c0077549f4f60b2647f42806140cdf7c</guid>
+      <pubDate>Tue, 08 Sep 2026 19:31:14 +0200</pubDate>
+      <ext:first_seen>Tue, 08 Sep 2026 20:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 08 Sep 2026 19:31:14 +0200</ext:starts_at>
       <ext:ends_at>Wed, 09 Sep 2026 01:30:00 +0200</ext:ends_at>
       <description>[08.09.2026 – 09.09.2026]</description>
       <content:encoded><![CDATA[[08.09.2026 – 09.09.2026]]]></content:encoded>
@@ -87,6 +87,17 @@
       <content:encoded><![CDATA[[07.09.2026 – 09.09.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[1: Bhf. Hütteldorf ÖBB-replacement bus for 80]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Wed, 09 Sep 2026 00:30:15 +0200</pubDate>
+      <ext:first_seen>Mon, 07 Sep 2026 06:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 09 Sep 2026 00:30:15 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 09 Sep 2026 04:59:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf ÖBB-replacement bus for &amp;lt;80 [On 09.09.2026]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf ÖBB-replacement bus for &lt;80<br/>[On 09.09.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[U1: strong demand]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ac3fb1161330a0cef50c7cd3b774679ae51bdfe2334a1ae3ce3de5789d312a64</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 17 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Running sports event Because of the Erste Bank Vienna Night Run 2026 traffic restrictions occur. [07.09.2026 – 17.09.2026]</description>
       <content:encoded><![CDATA[Running sports event Because of the Erste Bank Vienna Night Run 2026 traffic restrictions occur.<br/>[07.09.2026 – 17.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A: Rasumofskygasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">758352da9a275a08c35e0ac339917edb5294738f80bc3b48cb3a315a38f43d8b</guid>
-      <pubDate>Fri, 21 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 04 Sep 2026 07:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 21 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 21 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of line 4A towards Wittelsbachstraße Stop: Rasumofskygasse From: 37-39 To: Marxergasse 37-39 Duration: From 27 August 2026, ca. 07:00 … [21.08.2026 – 21.08.2027]</description>
-      <content:encoded><![CDATA[Stop change of line 4A towards Wittelsbachstraße Stop: Rasumofskygasse From: 37-39 To: Marxergasse 37-39 Duration: From 27 August 2026, ca. 07:00 …<br/>[21.08.2026 – 21.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

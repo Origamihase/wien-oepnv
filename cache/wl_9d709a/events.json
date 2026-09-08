@@ -482,14 +482,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25/27: Beschädigte Oberleitung durch einen LKW",
-    "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Kagran U. Die Linie 27 fährt derzeit nicht zwischen Floridsdorf S U und Berresgasse. Voraussichtliche Dauer: 00:30 Uhr. Grund: Beschädigte Oberleitung durch einen LKW im Bereich Tokiostraße.",
+    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "48e8c7dc17927e1b5c879b7236d2587e56f08d06c11319aafde1d7ec27b49fee",
-    "pubDate": "2026-09-08T23:49:00+02:00",
-    "starts_at": "2026-09-08T23:49:00+02:00",
-    "ends_at": "2026-09-08T23:59:00+02:00",
-    "_identity": "wl|störung|L=25,27|D=2026-09-08"
+    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
+    "pubDate": "2026-09-09T00:30:15+02:00",
+    "starts_at": "2026-09-09T00:30:15+02:00",
+    "ends_at": "2026-09-09T04:59:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-09"
   },
   {
     "source": "Wiener Linien",
@@ -526,6 +526,42 @@
     "starts_at": "2026-09-08T19:33:45+02:00",
     "ends_at": "2026-09-09T01:30:00+02:00",
     "_identity": "wl|störung|L=26|D=2026-09-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Weichenschaden Betrieb ab Berresgasse",
+    "description": "Weichenschaden\nBetrieb ab Berresgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "06c8f8addf7fcf138ce04baad0d8b62c7cfc8c43e621b12154247af0712b823e",
+    "pubDate": "2026-09-08T19:29:13+02:00",
+    "starts_at": "2026-09-08T19:29:15+02:00",
+    "ends_at": "2026-09-09T01:30:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-09-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Weichenschaden Züge halten bei Linie 25",
+    "description": "Weichenschaden\nZüge halten bei Linie 25",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "253822ea1aac4ce49c97e029a3d2f3b3c0077549f4f60b2647f42806140cdf7c",
+    "pubDate": "2026-09-08T19:31:14+02:00",
+    "starts_at": "2026-09-08T19:31:14+02:00",
+    "ends_at": "2026-09-09T01:30:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-09-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Gleisschaden Betrieb ab Josef-Baumann-Gasse",
+    "description": "Gleisschaden\nBetrieb ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "419e4209ae0b9ccf229091aeb1ea9172ef811a5dfe7c7813e295f93df69a4eda",
+    "pubDate": "2026-09-08T19:30:42+02:00",
+    "starts_at": "2026-09-08T19:30:46+02:00",
+    "ends_at": "2026-09-09T01:30:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-09-08"
   },
   {
     "source": "Wiener Linien",
