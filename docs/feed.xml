@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 09 Sep 2026 01:01:14 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 01:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[26: Fahrtbehinderung Weichenschaden]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">686a9e917e0686963de589d1ebe56c5626cfb0fe52abe712e1405d4744f855f2</guid>
-      <pubDate>Tue, 08 Sep 2026 19:33:16 +0200</pubDate>
-      <ext:first_seen>Tue, 08 Sep 2026 20:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 08 Sep 2026 19:33:45 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 09 Sep 2026 01:30:00 +0200</ext:ends_at>
-      <description>[08.09.2026 – 09.09.2026]</description>
-      <content:encoded><![CDATA[[08.09.2026 – 09.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Weichenschaden Züge halten bei Linie 25]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">253822ea1aac4ce49c97e029a3d2f3b3c0077549f4f60b2647f42806140cdf7c</guid>
-      <pubDate>Tue, 08 Sep 2026 19:31:14 +0200</pubDate>
-      <ext:first_seen>Tue, 08 Sep 2026 20:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 08 Sep 2026 19:31:14 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 09 Sep 2026 01:30:00 +0200</ext:ends_at>
-      <description>[08.09.2026 – 09.09.2026]</description>
-      <content:encoded><![CDATA[[08.09.2026 – 09.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[86A/86AR/87A: Veranstaltung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Thu, 17 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Laufsportveranstaltung Wegen des Erste Bank Vienna Night Run 2026 kommt es zu Verkehrseinschränkungen. [07.09.2026 – 17.09.2026]</description>
       <content:encoded><![CDATA[Laufsportveranstaltung Wegen des Erste Bank Vienna Night Run 2026 kommt es zu Verkehrseinschränkungen.<br/>[07.09.2026 – 17.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A: Rasumofskygasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">758352da9a275a08c35e0ac339917edb5294738f80bc3b48cb3a315a38f43d8b</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 04 Sep 2026 07:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 21 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 21 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 4A in Richtung Wittelsbachstraße Haltestelle: Rasumofskygasse Von: Marxergasse 35 Nach: Marxergasse 37-39 Dauer: Ab 27. August 2026, ca. 07:00 … [21.08.2026 – 21.08.2027]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 4A in Richtung Wittelsbachstraße Haltestelle: Rasumofskygasse Von: Marxergasse 35 Nach: Marxergasse 37-39 Dauer: Ab 27. August 2026, ca. 07:00 …<br/>[21.08.2026 – 21.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A/18: Veranstaltung am 12.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ed146ef431c5d3c2c2a3bc6d5392edf5a821b4ecb63337d3b2cdf7d01358a0e2</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 03 Sep 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen. [30.07.2026 – 12.09.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
