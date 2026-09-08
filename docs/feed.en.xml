@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 08 Sep 2026 19:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 19:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[27: Soft Damage service from Berresgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">06c8f8addf7fcf138ce04baad0d8b62c7cfc8c43e621b12154247af0712b823e</guid>
+      <pubDate>Tue, 08 Sep 2026 19:29:13 +0200</pubDate>
+      <ext:first_seen>Tue, 08 Sep 2026 19:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 08 Sep 2026 19:29:15 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 08 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 08.09.2026]</description>
+      <content:encoded><![CDATA[[On 08.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[86A/86AR/87A: event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 21 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop change of line 4A towards Wittelsbachstraße Stop: Rasumofskygasse From: 37-39 To: Marxergasse 37-39 Duration: From 27 August 2026, ca. 07:00 … [21.08.2026 – 21.08.2027]</description>
       <content:encoded><![CDATA[Stop change of line 4A towards Wittelsbachstraße Stop: Rasumofskygasse From: 37-39 To: Marxergasse 37-39 Duration: From 27 August 2026, ca. 07:00 …<br/>[21.08.2026 – 21.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/18: event on 12.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ed146ef431c5d3c2c2a3bc6d5392edf5a821b4ecb63337d3b2cdf7d01358a0e2</guid>
-      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 03 Sep 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
-      <description>Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken. [30.07.2026 – 12.09.2026]</description>
-      <content:encoded><![CDATA[Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
