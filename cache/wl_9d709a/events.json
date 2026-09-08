@@ -482,6 +482,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A/22A/51A/51B/56A/80A/95A/95B/98A: Verkehrsüberlastung",
+    "description": "Linie 51B: Unregelmäßige Intervalle in beiden Richtungen. Linie 95B: Unregelmäßige Intervalle in beiden Richtungen. Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Linie 51A: Unregelmäßige Intervalle in beiden Richtungen. Linie 56A: Unregelmäßige Intervalle in beiden Richtungen. Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Linie 95A: Unregelmäßige Intervalle in beiden Richtungen. Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b37bff4dfcdc93cfa0d716588f36291ec79afff37ad1c610f22c5d93b4c29103",
+    "pubDate": "2026-09-08T08:06:00+02:00",
+    "starts_at": "2026-09-08T08:06:00+02:00",
+    "ends_at": "2026-09-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=12A,22A,51A,51B,56A,80A,95A,95B,98A|D=2026-09-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -554,6 +566,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2026-09-08T08:25:00+02:00",
+    "starts_at": "2026-09-08T08:25:00+02:00",
+    "ends_at": "2026-09-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=59A|D=2026-09-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten\nBusse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -602,14 +626,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "82A: Rettungseinsatz",
+    "description": "Linie 82A: Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 08:50 Uhr. Grund: Rettungseinsatz im Bereich Harkortstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2026-09-08T07:18:00+02:00",
-    "starts_at": "2026-09-08T07:18:00+02:00",
+    "guid": "6c6df01f728bb8aab3b5e9f99da6da24150803a8b8822d7d31d0f946469efb11",
+    "pubDate": "2026-09-08T08:27:00+02:00",
+    "starts_at": "2026-09-08T08:27:00+02:00",
     "ends_at": "2026-09-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-09-08"
+    "_identity": "wl|störung|L=82A|D=2026-09-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-09-08T08:16:00+02:00",
+    "starts_at": "2026-09-08T08:16:00+02:00",
+    "ends_at": "2026-09-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-09-08"
   },
   {
     "source": "Wiener Linien",
