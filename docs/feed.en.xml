@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 09 Sep 2026 17:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 18:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[51A: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f78d0b74472be6846b85f2cf8b83096c770eaa8ed2a63e41f17b05c62dcb9804</guid>
+      <pubDate>Wed, 09 Sep 2026 17:34:00 +0200</pubDate>
+      <ext:first_seen>Wed, 09 Sep 2026 18:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 09 Sep 2026 17:34:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 09 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 09.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 09.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U3: current disturbance]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 09 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[08.09.2026 – 09.09.2026]</description>
       <content:encoded><![CDATA[[08.09.2026 – 09.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Schottentor U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">206d0eecb61e433aaf79fa4d873777e6baeb5e2e89d300e6ba30c3d2acb93e1d</guid>
-      <pubDate>Mon, 07 Sep 2026 15:42:00 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 16:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 07 Sep 2026 15:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 14 Sep 2026 06:00:00 +0200</ext:ends_at>
-      <description>Stop change of line 40A towards Döblinger Friedhof Stop: Schottentor U From: Hohenstauffengasse to Schottenring To: Liechtensteinstraße 2 Duration … [07.09.2026 – 14.09.2026]</description>
-      <content:encoded><![CDATA[Stop change of line 40A towards Döblinger Friedhof Stop: Schottentor U From: Hohenstauffengasse to Schottenring To: Liechtensteinstraße 2 Duration …<br/>[07.09.2026 – 14.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
