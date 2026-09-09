@@ -554,14 +554,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Falschparker",
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "title": "44: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "05cf9172ebe6fc7a467eea803881948e45730565b15dc39bfed831bbf9a36b87",
-    "pubDate": "2026-09-09T19:34:00+02:00",
-    "starts_at": "2026-09-09T19:34:00+02:00",
+    "guid": "95f5e733f774706c0b823246524a86bb8b6b48fd50e0ccfc15432e2c4c3225f0",
+    "pubDate": "2026-09-09T20:29:47+02:00",
+    "starts_at": "2026-09-09T20:29:49+02:00",
+    "ends_at": "2026-09-09T21:29:00+02:00",
+    "_identity": "wl|störung|L=44|D=2026-09-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Verkehrsunfall",
+    "description": "Linie 44: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 20:50 Uhr. Grund: Verkehrsunfall im Bereich Ottakringer Straße # Lienfeldergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e78eaae06ed5d3cf090d4186a3c0813bd59271e475fa87f71ff2ee4b48e3d505",
+    "pubDate": "2026-09-09T20:28:00+02:00",
+    "starts_at": "2026-09-09T20:28:00+02:00",
     "ends_at": "2026-09-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=48A|D=2026-09-09"
+    "_identity": "wl|störung|L=44|D=2026-09-09"
   },
   {
     "source": "Wiener Linien",
@@ -582,7 +594,7 @@
     "description": "Rettungseinsatz\nBetrieb ab Urban-Loritz-Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
-    "pubDate": "2026-09-09T15:58:10+02:00",
+    "pubDate": "2026-09-09T15:58:40+02:00",
     "starts_at": "2026-09-09T15:58:42+02:00",
     "ends_at": "2026-09-09T21:15:00+02:00",
     "_identity": "wl|störung|L=49|D=2026-09-09"
