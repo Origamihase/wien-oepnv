@@ -16441,7 +16441,11 @@
   "d20ff386ab1e11a659a346f984560e3f690bbb373e87124cc91f01cf81da7064": {
     "first_seen": "2026-09-09T09:00:57.716623+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "Due to track construction works in the Hernalser range Hauptstra\u00dfe / G\u00fcpferlingstra\u00dfe, there are redirections in both directions on the lines 43A, 44A, 44B and N43. Period: line \u2026",
+        "title": "43A/44A/844/N43/44B: track construction works (phase 2)"
+      },
+      "epoch": 3
     }
   },
   "d22f8a5721cb328952fc07b28fc40f91ea591ee68bafe657d779bd5fbff1b8bc": {
@@ -22225,6 +22229,16 @@
       "en": {
         "summary": "Due to a technical fault on the route between Vienna St.Marx Bahnhst and Wien Geiselbergstra\u00dfe Bahnhst to expected 23:59 clock no rides are possible.",
         "title": "Wien St. Marx \u2194 Wien Geiselbergstra\u00dfe"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&910437": {
+    "first_seen": "2026-09-09T10:01:06.847651+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an accident, only limited journeys were possible between Vienna Hbf (U) and Wien Grillgasse Bahnhst to 11:39 watch.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Grillgasse"
       },
       "epoch": 3
     }
