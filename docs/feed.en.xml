@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 09 Sep 2026 10:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 11:00:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26E: Busse halten auf Hauptfahrbahn]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ac3f67a397251fa2a37c819272b49caa18fcdf7a3ad2549a06fb2282a6303041</guid>
+      <pubDate>Wed, 09 Sep 2026 10:46:12 +0200</pubDate>
+      <ext:first_seen>Wed, 09 Sep 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 09 Sep 2026 10:46:12 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 09 Sep 2026 11:44:00 +0200</ext:ends_at>
+      <description>[Am 09.09.2026]</description>
+      <content:encoded><![CDATA[[Am 09.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[17A: works26]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c5c744758fe786bdf11f0b18d15086921621b7a63fed790d658f3d67af8a2001</guid>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 09 Sep 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 15:00:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected. [14.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43A/44A/844/N43/44B: Gleisbauarbeiten (Phase 2)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d20ff386ab1e11a659a346f984560e3f690bbb373e87124cc91f01cf81da7064</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 09 Sep 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 14 Sep 2026 02:11:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten im Bereich Hernalser Hauptstraße / Güpferlingstraße kommt es zu Umleitungen in beiden Richtungen bei den Linien 43A, 44A, 44B und N43. Zeitraum: Linie … [06.07.2026 – 14.09.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Hernalser Hauptstraße / Güpferlingstraße kommt es zu Umleitungen in beiden Richtungen bei den Linien 43A, 44A, 44B und N43. Zeitraum: Linie …<br/>[06.07.2026 – 14.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wiener Neustadt Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -18,17 +51,6 @@
       <ext:starts_at>Wed, 09 Sep 2026 10:12:26 +0200</ext:starts_at>
       <description>Due to a police operation in Wr.Neustadt Hbf to 10:10 clock no journeys were possible. [Since 09.09.2026]</description>
       <content:encoded><![CDATA[Due to a police operation in Wr.Neustadt Hbf to 10:10 clock no journeys were possible.<br/>[Since 09.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[93A: traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4a92a310dfb470a44814523ebee6ba32b3e27755f92ae340759e50ebaf3531e7</guid>
-      <pubDate>Wed, 09 Sep 2026 09:09:00 +0200</pubDate>
-      <ext:first_seen>Wed, 09 Sep 2026 10:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 09 Sep 2026 09:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 09 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 09.09.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 09.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[86A/86AR/87A: event]]></title>
@@ -95,28 +117,6 @@
       <ext:ends_at>Wed, 09 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf ÖBB-replacement bus for &amp;lt;80 [On 09.09.2026]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf ÖBB-replacement bus for &lt;80<br/>[On 09.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: strong demand]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ac3fb1161330a0cef50c7cd3b774679ae51bdfe2334a1ae3ce3de5789d312a64</guid>
-      <pubDate>Mon, 07 Sep 2026 04:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 04:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 07 Sep 2026 04:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 30 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>U1: strong demand The U1 is more popular than usual because of the ÖBB S-Bahn-block between Hauptbahnhof and Praterstern. [07.09.2026 – 30.11.2026]</description>
-      <content:encoded><![CDATA[U1: strong demand The U1 is more popular than usual because of the ÖBB S-Bahn-block between Hauptbahnhof and Praterstern.<br/>[07.09.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2A/2/2A/31/3A/71/74A/D: Erste Bank Vienna Night Run 2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dd142e4255c6c5362a33e6bf1c3bc3cae54bce9f3dcc24c36f45b1071906fd9f</guid>
-      <pubDate>Mon, 07 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 00:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 07 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Running sports event Because of the Erste Bank Vienna Night Run 2026 traffic restrictions occur. [07.09.2026 – 17.09.2026]</description>
-      <content:encoded><![CDATA[Running sports event Because of the Erste Bank Vienna Night Run 2026 traffic restrictions occur.<br/>[07.09.2026 – 17.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
