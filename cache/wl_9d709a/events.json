@@ -482,6 +482,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10: Störung an einem Bahnübergang",
+    "description": "Linie 10: Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "70fda55609c717c6e33b864081414fe454926fa86793b92ea1e0a1951b6b736d",
+    "pubDate": "2026-09-09T17:19:00+02:00",
+    "starts_at": "2026-09-09T17:19:00+02:00",
+    "ends_at": "2026-09-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=10|D=2026-09-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11A: Einstieg bei Vorgartenstraße vor Meiereistraße",
     "description": "Bauarbeiten\nEinstieg bei Vorgartenstraße vor Meiereistraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -494,13 +506,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12: Betriebsstörung Betrieb ab Höchstädtplatz",
+    "description": "Betriebsstörung\nBetrieb ab Höchstädtplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "50631129a22eb0f7044f9ae0371b957fc562f33cdacab572e4add0fa98c8a1b3",
+    "pubDate": "2026-09-09T17:01:13+02:00",
+    "starts_at": "2026-09-09T17:01:19+02:00",
+    "ends_at": "2026-09-09T18:12:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-09-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12: Gegenstand auf der Fahrleitung",
-    "description": "Linie 12: Fahrtbehinderung in Richtung Josefstädter Straße U. Voraussichtliche Dauer: 17:30 Uhr. Grund: Gegenstand auf der Fahrleitung im Haltestellenbereich Bruno-Marek-Allee.",
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "937c4dbe77d5fa2a041e5f725cbef29916dd4aeb536a3cade99fdada6c814d7b",
     "pubDate": "2026-09-09T16:58:00+02:00",
     "starts_at": "2026-09-09T16:58:00+02:00",
     "ends_at": "2026-09-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-09-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung wegen Fremdkörper auf der Fahrleitung",
+    "description": "Fahrtbehinderung\nwegen Fremdkörper auf der Fahrleitung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c9635ca05a140eb9aecfd1a125b60661b0d4c0736f6ed17004faeaba2e4e2fef",
+    "pubDate": "2026-09-09T17:01:13+02:00",
+    "starts_at": "2026-09-09T17:01:30+02:00",
+    "ends_at": "2026-09-09T20:00:00+02:00",
     "_identity": "wl|störung|L=12|D=2026-09-09"
   },
   {
@@ -650,6 +686,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40: Falschparker",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
+    "pubDate": "2026-09-09T17:06:00+02:00",
+    "starts_at": "2026-09-09T17:06:00+02:00",
+    "ends_at": "2026-09-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=40|D=2026-09-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40: Stromstörung Betrieb ab Volksoper",
     "description": "Stromstörung\nBetrieb ab Volksoper",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -674,6 +722,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "41: Falschparker",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2026-09-09T17:06:00+02:00",
+    "starts_at": "2026-09-09T17:06:00+02:00",
+    "ends_at": "2026-09-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=41|D=2026-09-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Linie 42: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 17:45 Uhr. Grund: Falschparker im Bereich Kreuzgasse 30.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2026-09-09T14:38:03+02:00",
+    "starts_at": "2026-09-09T17:17:30+02:00",
+    "ends_at": "2026-09-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=42|D=2026-09-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "42: Stromstörung Betrieb ab Volksoper",
     "description": "Stromstörung\nBetrieb ab Volksoper",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -686,12 +758,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "44: Polizeieinsatz",
     "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
     "pubDate": "2026-09-09T16:03:00+02:00",
-    "starts_at": "2026-09-09T16:14:40+02:00",
+    "starts_at": "2026-09-09T16:03:00+02:00",
     "ends_at": "2026-09-09T23:55:00+02:00",
     "_identity": "wl|störung|L=44|D=2026-09-09"
   },
@@ -723,12 +795,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "5: Fahrtbehinderung Falschparker",
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
-    "pubDate": "2026-09-09T15:53:00+02:00",
+    "pubDate": "2026-09-09T15:55:57+02:00",
     "starts_at": "2026-09-09T15:55:57+02:00",
-    "ends_at": "2026-09-09T23:55:00+02:00",
+    "ends_at": "2026-09-09T19:00:00+02:00",
     "_identity": "wl|störung|L=5|D=2026-09-09"
   },
   {
@@ -788,6 +860,18 @@
     "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
     "pubDate": "2026-09-09T16:41:00+02:00",
     "starts_at": "2026-09-09T16:41:00+02:00",
+    "ends_at": "2026-09-09T17:29:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-09-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Stromstörung",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Landstraße und Volkstheater in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 18:00 Uhr. Grund: Stromstörung im Haltestellenbereich Landstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e5afc3d4d87de268169574d3f2a1454609b5961092564dc0c302594e96cafcd",
+    "pubDate": "2026-09-09T17:21:00+02:00",
+    "starts_at": "2026-09-09T17:21:00+02:00",
     "ends_at": "2026-09-09T23:55:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-09-09"
   },
@@ -836,7 +920,19 @@
     "guid": "a833cc9d450f4182d98193474b5dc52555fb1bb2f0535bfab99fe6768c66eb9e",
     "pubDate": "2026-09-09T14:37:00+02:00",
     "starts_at": "2026-09-09T14:41:01+02:00",
-    "ends_at": "2026-09-09T20:45:00+02:00",
+    "ends_at": "2026-09-09T20:00:00+02:00",
     "_identity": "wl|störung|L=|D=2026-09-09|TK=fahrtbehinderung stromstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Falschparker",
+    "description": "Fahrtbehinderung\nwegen Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
+    "pubDate": "2026-09-09T14:37:00+02:00",
+    "starts_at": "2026-09-09T17:09:30+02:00",
+    "ends_at": "2026-09-09T18:08:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-09-09|TK=falschparker"
   }
 ]

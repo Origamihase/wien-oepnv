@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 09 Sep 2026 17:01:36 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 17:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: current disturbance]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7e5afc3d4d87de268169574d3f2a1454609b5961092564dc0c302594e96cafcd</guid>
+      <pubDate>Wed, 09 Sep 2026 17:21:00 +0200</pubDate>
+      <ext:first_seen>Wed, 09 Sep 2026 17:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 09 Sep 2026 17:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 09 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>The line U3 currently runs between stations Landstraße and Volkstheater in both directions via track 1. expected duration: 18:00 o'clock. Reason: power failure in … [On 09.09.2026]</description>
+      <content:encoded><![CDATA[The line U3 currently runs between stations Landstraße and Volkstheater in both directions via track 1. expected duration: 18:00 o'clock. Reason: power failure in …<br/>[On 09.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12: Object on the overhead contact line]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -39,39 +50,6 @@
       <ext:first_seen>Wed, 09 Sep 2026 15:01:06 +0200</ext:first_seen>
       <ext:starts_at>Wed, 09 Sep 2026 14:41:33 +0200</ext:starts_at>
       <ext:ends_at>Wed, 09 Sep 2026 19:45:00 +0200</ext:ends_at>
-      <description>[On 09.09.2026]</description>
-      <content:encoded><![CDATA[[On 09.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: Power disturbance service from Volksoper]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c467f28128a5107f0c5b64be5d0b13dee12a70e9b5101a781d22ebfac7409708</guid>
-      <pubDate>Wed, 09 Sep 2026 14:40:31 +0200</pubDate>
-      <ext:first_seen>Wed, 09 Sep 2026 15:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 09 Sep 2026 14:40:33 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 09 Sep 2026 19:30:00 +0200</ext:ends_at>
-      <description>[On 09.09.2026]</description>
-      <content:encoded><![CDATA[[On 09.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: Power disturbance service from Volksoper]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">91a4a8834c92a202cb813a4683040719abed66fd2bc7df73bac1bf8a996aab0c</guid>
-      <pubDate>Wed, 09 Sep 2026 14:38:31 +0200</pubDate>
-      <ext:first_seen>Wed, 09 Sep 2026 15:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 09 Sep 2026 14:38:33 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 09 Sep 2026 19:45:00 +0200</ext:ends_at>
-      <description>[On 09.09.2026]</description>
-      <content:encoded><![CDATA[[On 09.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[42: Power disturbance service from Volksoper]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eac85a3af891282fbbf038a6a8c228a2c377e7e48b852dc7d09c4b50f23000e5</guid>
-      <pubDate>Wed, 09 Sep 2026 14:38:01 +0200</pubDate>
-      <ext:first_seen>Wed, 09 Sep 2026 15:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 09 Sep 2026 14:38:03 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 09 Sep 2026 21:00:00 +0200</ext:ends_at>
       <description>[On 09.09.2026]</description>
       <content:encoded><![CDATA[[On 09.09.2026]]]></content:encoded>
     </item>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 08 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>The tracks in Donaufelder Straße are renewed, therefore there are restrictions on the N20 line. Period: Friday,11. September 2026 to the end of 2026. Measure: Line … [11.09.2026 – 08.09.2027]</description>
       <content:encoded><![CDATA[The tracks in Donaufelder Straße are renewed, therefore there are restrictions on the N20 line. Period: Friday,11. September 2026 to the end of 2026. Measure: Line …<br/>[11.09.2026 – 08.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Einstieg for Vorgartenstraße before Meiereistraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2158898c549c0f30a157915615cd7f952d751c3b776ca6747799be32ec127935</guid>
+      <pubDate>Tue, 08 Sep 2026 07:11:02 +0200</pubDate>
+      <ext:first_seen>Tue, 08 Sep 2026 07:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 08 Sep 2026 07:13:02 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 09 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[08.09.2026 – 09.09.2026]</description>
+      <content:encoded><![CDATA[[08.09.2026 – 09.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Schottentor U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">206d0eecb61e433aaf79fa4d873777e6baeb5e2e89d300e6ba30c3d2acb93e1d</guid>
+      <pubDate>Mon, 07 Sep 2026 15:42:00 +0200</pubDate>
+      <ext:first_seen>Mon, 07 Sep 2026 16:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 07 Sep 2026 15:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 14 Sep 2026 06:00:00 +0200</ext:ends_at>
+      <description>Stop change of line 40A towards Döblinger Friedhof Stop: Schottentor U From: Hohenstauffengasse to Schottenring To: Liechtensteinstraße 2 Duration … [07.09.2026 – 14.09.2026]</description>
+      <content:encoded><![CDATA[Stop change of line 40A towards Döblinger Friedhof Stop: Schottentor U From: Hohenstauffengasse to Schottenring To: Liechtensteinstraße 2 Duration …<br/>[07.09.2026 – 14.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
