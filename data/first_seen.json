@@ -16009,7 +16009,10 @@
   "ca9495cbcbaea124cd99a089d03bb79bd15d42a9508ca8342662aafddfda2da6": {
     "first_seen": "2026-09-09T13:01:06.572534+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "38: Power disturbance service from Spitalgasse"
+      },
+      "epoch": 3
     }
   },
   "ca96c400f34d3f459ece5e303d5437126f2f229be63b4fe1525fb361fc7ed47d": {
@@ -22300,6 +22303,16 @@
     "translations": {
       "en": {
         "summary": "Due to a police operation in Wr.Neustadt Hbf to 10:10 clock no journeys were possible.",
+        "title": "Wiener Neustadt Hauptbahnhof"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&910629": {
+    "first_seen": "2026-09-09T13:31:44.635325+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to persons on the tracks, no journeys were possible in Wr.Neustadt Hbf to 15:13 watch.",
         "title": "Wiener Neustadt Hauptbahnhof"
       },
       "epoch": 3
