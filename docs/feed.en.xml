@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 10 Sep 2026 18:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 19:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[71: fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">55decc0b7f142050de65e35d35137faddad686db30de497c2a1c3cb4fc6052b4</guid>
+      <pubDate>Thu, 10 Sep 2026 18:51:00 +0200</pubDate>
+      <ext:first_seen>Thu, 10 Sep 2026 19:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 10 Sep 2026 18:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 10 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: fire-brigade operation. [On 10.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: fire-brigade operation.<br/>[On 10.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[72: fire-brigade operation diversion from Schwarzenbergplatz via lines D and 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2332f69c32dc7955b085be76ecb11111c3aaf1ad818ad568331c15a0e1bc8307</guid>
+      <pubDate>Thu, 10 Sep 2026 18:40:47 +0200</pubDate>
+      <ext:first_seen>Thu, 10 Sep 2026 19:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 10 Sep 2026 18:40:47 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 10 Sep 2026 19:39:00 +0200</ext:ends_at>
+      <description>[On 10.09.2026]</description>
+      <content:encoded><![CDATA[[On 10.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -95,28 +117,6 @@
       <ext:ends_at>Thu, 10 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[08.09.2026 – 10.09.2026]</description>
       <content:encoded><![CDATA[[08.09.2026 – 10.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Schottentor U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">206d0eecb61e433aaf79fa4d873777e6baeb5e2e89d300e6ba30c3d2acb93e1d</guid>
-      <pubDate>Mon, 07 Sep 2026 15:42:00 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 16:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 07 Sep 2026 15:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 14 Sep 2026 06:00:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 40A in Richtung Döblinger Friedhof Haltestelle: Schottentor U Von: Hohenstauffengasse nach Schottenring Nach: Liechtensteinstraße 2 Dauer … [07.09.2026 – 14.09.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 40A in Richtung Döblinger Friedhof Haltestelle: Schottentor U Von: Hohenstauffengasse nach Schottenring Nach: Liechtensteinstraße 2 Dauer …<br/>[07.09.2026 – 14.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[3A: 3A Network change service from Riemergasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">649036ab231fd70fe1fb62879abf29ee3b2b4d8d4e063ea503a7ae37212aa03b</guid>
-      <pubDate>Mon, 07 Sep 2026 14:24:59 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 07 Sep 2026 14:24:59 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 10 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[07.09.2026 – 10.09.2026]</description>
-      <content:encoded><![CDATA[[07.09.2026 – 10.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
