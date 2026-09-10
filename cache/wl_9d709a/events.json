@@ -602,6 +602,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "87A: Schadhafter Bus Derzeit längere Wartezeiten",
+    "description": "Schadhafter Bus\nDerzeit längere Wartezeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a9123d7127db795bb635ee54ebdf8ee5bc11250aaaad3f778caff065024c6b80",
+    "pubDate": "2026-09-10T05:51:29+02:00",
+    "starts_at": "2026-09-10T05:51:29+02:00",
+    "ends_at": "2026-09-10T06:50:00+02:00",
+    "_identity": "wl|störung|L=87A|D=2026-09-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "87A: Schadhaftes Fahrzeug",
+    "description": "Linie 87A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fcf2dc71bc4ff2a09875abeadd2674df52c3f4e1b4b2ab5428294cf173a2d816",
+    "pubDate": "2026-09-10T05:47:00+02:00",
+    "starts_at": "2026-09-10T05:47:00+02:00",
+    "ends_at": "2026-09-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=87A|D=2026-09-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
