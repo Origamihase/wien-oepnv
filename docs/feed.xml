@@ -7,8 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 10 Sep 2026 12:01:06 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 12:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;910806</guid>
+      <pubDate>Thu, 10 Sep 2026 12:16:29 +0200</pubDate>
+      <ext:first_seen>Thu, 10 Sep 2026 12:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 10 Sep 2026 12:16:29 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 05.12.2026 bis 07.12.2026 (jeweils von 23:15 Uhr bis 04:40 Uhr) keine Nahverkehrszüge fahren. [Seit 10.09.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 05.12.2026 bis 07.12.2026 (jeweils von 23:15 Uhr bis 04:40 Uhr) keine Nahverkehrszüge fahren.<br/>[Seit 10.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N71: Umleitung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +117,6 @@
       <ext:ends_at>Thu, 10 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[07.09.2026 – 10.09.2026]</description>
       <content:encoded><![CDATA[[07.09.2026 – 10.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Thu, 10 Sep 2026 05:00:23 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 06:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 10 Sep 2026 05:00:23 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 10 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf ÖBB-Ersatzbus für &amp;lt;80 [Am 10.09.2026]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf ÖBB-Ersatzbus für &lt;80<br/>[Am 10.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
