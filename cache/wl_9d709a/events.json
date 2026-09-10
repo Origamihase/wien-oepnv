@@ -470,18 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/18/62/LB: 1, 18, 62, Badner Bahn: Signalstörung",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Badner Bahn: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "484c3cb08f580c73ae16c208788553205843306d627c4e703b1ad9eabb7649f0",
-    "pubDate": "2026-09-10T06:46:00+02:00",
-    "starts_at": "2026-09-10T06:46:00+02:00",
-    "ends_at": "2026-09-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=1,18,62,LB|D=2026-09-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Einstieg bei Vorgartenstraße vor Meiereistraße",
     "description": "Bauarbeiten\nEinstieg bei Vorgartenstraße vor Meiereistraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -490,6 +478,42 @@
     "starts_at": "2026-09-08T07:13:02+02:00",
     "ends_at": "2026-09-10T23:59:59+02:00",
     "_identity": "wl|störung|L=11A|D=2026-09-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
+    "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7aa6585f41de1e31a87cb7ac606b8cf2e987267b647c972f06a0b4d63e94b1a8",
+    "pubDate": "2026-07-13T14:07:00+02:00",
+    "starts_at": "2026-07-13T14:07:00+02:00",
+    "ends_at": "2026-12-31T14:07:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-07-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
+    "pubDate": "2026-09-10T05:00:23+02:00",
+    "starts_at": "2026-09-10T05:00:23+02:00",
+    "ends_at": "2026-09-10T23:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Signalstörung",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d8160ea662f4ecb51aa4611000d104ec540a8e8f6bb6e65cbee6dcf9628f8752",
+    "pubDate": "2026-09-10T06:46:00+02:00",
+    "starts_at": "2026-09-10T06:46:00+02:00",
+    "ends_at": "2026-09-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-10"
   },
   {
     "source": "Wiener Linien",
@@ -554,6 +578,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62: Signalstörung",
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1322e4b69486f4a937f25515ea31d796d876eda2a05a8f0afe692f57364a42bb",
+    "pubDate": "2026-09-10T06:46:00+02:00",
+    "starts_at": "2026-09-10T06:46:00+02:00",
+    "ends_at": "2026-09-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-09-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -610,17 +646,5 @@
     "starts_at": "2026-09-05T00:00:26+02:00",
     "ends_at": "2026-09-10T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-09-05|TK=busse halten frauenstiftgasse 7"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung\nSignalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b6bef18c56849381c155b7aee25b6c16c648913c966f705b3cc68162c0cb56fd",
-    "pubDate": "2026-09-10T06:47:33+02:00",
-    "starts_at": "2026-09-10T06:47:36+02:00",
-    "ends_at": "2026-09-10T07:47:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-09-10|TK=signalstörung"
   }
 ]
