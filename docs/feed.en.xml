@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 10 Sep 2026 06:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 07:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[87A: Harmful bus Currently longer waiting times]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a9123d7127db795bb635ee54ebdf8ee5bc11250aaaad3f778caff065024c6b80</guid>
-      <pubDate>Thu, 10 Sep 2026 05:51:29 +0200</pubDate>
-      <ext:first_seen>Thu, 10 Sep 2026 06:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 10 Sep 2026 05:51:29 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 10 Sep 2026 06:50:00 +0200</ext:ends_at>
-      <description>[On 10.09.2026]</description>
-      <content:encoded><![CDATA[[On 10.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[N31/30/31: Shuttleworthstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -109,15 +98,26 @@
       <content:encoded><![CDATA[[07.09.2026 – 10.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1: Bhf. Hütteldorf ÖBB-replacement bus for 80]]></title>
+      <title><![CDATA[U1: strong demand]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Thu, 10 Sep 2026 05:00:23 +0200</pubDate>
-      <ext:first_seen>Mon, 07 Sep 2026 06:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 10 Sep 2026 05:00:23 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 10 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf ÖBB-replacement bus for &amp;lt;80 [On 10.09.2026]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf ÖBB-replacement bus for &lt;80<br/>[On 10.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">ac3fb1161330a0cef50c7cd3b774679ae51bdfe2334a1ae3ce3de5789d312a64</guid>
+      <pubDate>Mon, 07 Sep 2026 04:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 07 Sep 2026 04:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 07 Sep 2026 04:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 30 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>U1: strong demand The U1 is more popular than usual because of the ÖBB S-Bahn-block between Hauptbahnhof and Praterstern. [07.09.2026 – 30.11.2026]</description>
+      <content:encoded><![CDATA[U1: strong demand The U1 is more popular than usual because of the ÖBB S-Bahn-block between Hauptbahnhof and Praterstern.<br/>[07.09.2026 – 30.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2A/2/2A/31/3A/71/74A/D: Erste Bank Vienna Night Run 2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dd142e4255c6c5362a33e6bf1c3bc3cae54bce9f3dcc24c36f45b1071906fd9f</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 07 Sep 2026 00:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 07 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 23:00:00 +0200</ext:ends_at>
+      <description>Running sports event Because of the Erste Bank Vienna Night Run 2026 traffic restrictions occur. [07.09.2026 – 17.09.2026]</description>
+      <content:encoded><![CDATA[Running sports event Because of the Erste Bank Vienna Night Run 2026 traffic restrictions occur.<br/>[07.09.2026 – 17.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
