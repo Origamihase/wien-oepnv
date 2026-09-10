@@ -23,6 +23,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Märzstraße 49 bis Kreuzung Huglgasse sowie Kreuzung Huglgasse bis Kreuzung Hütteldorfer Straße",
+    "description": "DerFußgängerverkehr kann aufrecht gehalten werden.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. DieArbeiten erfolgen bei Sperre der Huglgasse von Kreuzung Hütteldorfer Straße bis KreuzungMärzstraße und Sperre der Märzstraße von Kreuzung Huglgasse bis Kreuzung Stättermayergasse. Die angrenzenden Straßenzüge werden als Sackgassen ausgebildet und die Zufahrt bis zum gesperrten Bereich ist möglich. Die Umleitung erfolgt über: Hütteldorfer Straße - Schweglerstraße. \nBeginn: 14.09.2026 00:00 Uhr \nGeplant bis: 15.11.2026 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 15",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "0dfddd258ab4ba06599c87586ca7087268ea73a4f62ffc43de13acf6c950d687",
+    "pubDate": "2026-09-14T00:00:00+02:00",
+    "starts_at": "2026-09-14T00:00:00+02:00",
+    "ends_at": "2026-11-15T00:00:00+01:00",
+    "context": {
+      "district": "15",
+      "measure": "Gleisbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.19861052,
+        "lon": 16.32479348
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Rechte Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und Pilgrambrücke",
     "description": "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile von der Ramperstorffergasse bis zur Pilgramgasse für den Fahrzeugverkehr gesperrt. Die Umleitungsstrecke wird über die Schönbrunner Straße und Pilgramgasse geführt. \nBeginn: 28.02.2021 00:00 Uhr \nGeplant bis: 31.05.2028 00:00 Uhr \nMaßnahme: U-Bahnbau \nBezirk: 5",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -38,6 +59,27 @@
       "coordinates": {
         "lat": 48.19126723,
         "lon": 16.35412942
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Kennedybrücke zwischen Schönbrunner Schloßstraße und Hadikgasse, auf Seite \"Otto Wagner Hofpavillon",
+    "description": "Die Umleitung erfolgt über: Schönbrunner Schloßstraße - SchönbrunnerSchloßbrücke - Hadikgasse.DerFußgänger- und Radverkehr kann aufrecht gehalten werden.NähereInformationen zu den betroffenenöffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & CoKG zu entnehmen. Die Kennedybrücke wird in Fahrtrichtung 14. Bezirk(Hadikgasse) gesperrt. \nBeginn: 14.09.2026 00:00 Uhr \nGeplant bis: 06.10.2026 00:00 Uhr \nMaßnahme: Brückenbau \nBezirk: 13",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "31aa5ca965c3c54043d7dae9d485829374762833c665a6326f247ec37b5e82b1",
+    "pubDate": "2026-09-14T00:00:00+02:00",
+    "starts_at": "2026-09-14T00:00:00+02:00",
+    "ends_at": "2026-10-06T00:00:00+02:00",
+    "context": {
+      "district": "13",
+      "measure": "Brückenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.18739032,
+        "lon": 16.3040369
       }
     }
   },
@@ -227,6 +269,27 @@
       "coordinates": {
         "lat": 48.23123461,
         "lon": 16.44969991
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Donaufelder Straße 79 bis 137",
+    "description": "Die Umleitung in Fahrtrichtung 21. Bezirk erfolgt über: Angyalföldstraße - Leopoldauer Straße.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. Die Donaufelder Straße wird ab Kreuzung Fultonstraße bis und in Fahrtrichtung Angyalföldstraße zur Einbahn. \nBeginn: 10.09.2026 00:00 Uhr \nGeplant bis: 11.12.2026 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 21",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "8abd474fd840ee3ed4769b5db7b6f8ad44ba64332764c40a0808448b69adb2b2",
+    "pubDate": "2026-09-10T00:00:00+02:00",
+    "starts_at": "2026-09-10T00:00:00+02:00",
+    "ends_at": "2026-12-11T00:00:00+01:00",
+    "context": {
+      "district": "21",
+      "measure": "Gleisbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.25319766,
+        "lon": 16.41715199
       }
     }
   },
