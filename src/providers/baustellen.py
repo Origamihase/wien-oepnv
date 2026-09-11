@@ -29,13 +29,8 @@ __all__ = [
     "mentions_oepnv",
     "oepnv_lead",
     "relevant_station",
-    "tidy_title",
     "u_bahn_lines",
 ]
-
-# Title shortening patterns for overly long City of Vienna construction titles.
-_KREUZUNG_RE: Final = re.compile(r"\bKreuzung\s+", re.IGNORECASE)
-_ADDENDA_RE: Final = re.compile(r",\s*(?:auf Seite|Höhe)\b.*$", re.IGNORECASE)
 
 # U-Bahn line labels (U1–U6) are the one line identifier that can be pulled
 # from the free text reliably — unambiguous token, no negation traps, and
@@ -215,16 +210,3 @@ def is_transit_relevant(item: Any, *, radius_m: float | None = None) -> bool:
         return True
     text = f"{item.get('title') or ''} {item.get('description') or ''}"
     return mentions_oepnv(text)
-
-
-def tidy_title(title: str) -> str:
-    """Shorten overly long construction site titles by removing redundant filler
-    words and extraneous location addenda.
-    """
-    if not title:
-        return title
-
-    t = _KREUZUNG_RE.sub("", title)
-    t = _ADDENDA_RE.sub("", t)
-    t = re.sub(r"\s{2,}", " ", t).strip()
-    return t
