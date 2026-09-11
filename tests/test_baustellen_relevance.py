@@ -21,6 +21,7 @@ from src.providers.baustellen import (
     mentions_oepnv,
     oepnv_lead,
     relevant_station,
+    tidy_title,
     u_bahn_lines,
 )
 from src.utils import stations
@@ -394,6 +395,22 @@ def test_first_lonlat_descends_geometries(
 )
 def test_first_lonlat_rejects_bad_geometries(coordinates: object) -> None:
     assert update_baustellen_cache._first_lonlat(coordinates) is None
+
+
+def test_tidy_title() -> None:
+    assert tidy_title("") == ""
+    # "Kreuzung " removed
+    raw = "Märzstraße 49 bis Kreuzung Huglgasse sowie Kreuzung Huglgasse bis Kreuzung Hütteldorfer Straße"
+    tidy = "Märzstraße 49 bis Huglgasse sowie Huglgasse bis Hütteldorfer Straße"
+    assert tidy_title(raw) == tidy
+    # ", auf Seite" and everything after removed
+    raw2 = 'Kennedybrücke zwischen Schönbrunner Schloßstraße und Hadikgasse, auf Seite "Otto Wagner Hofpavillon'
+    tidy2 = "Kennedybrücke zwischen Schönbrunner Schloßstraße und Hadikgasse"
+    assert tidy_title(raw2) == tidy2
+    # ", Höhe" and everything after removed
+    assert tidy_title("Linzer Straße, Höhe Hausnummer 10") == "Linzer Straße"
+    # double spaces removed after stripping
+    assert tidy_title("Kreuzung A bis  Kreuzung  B") == "A bis B"
 
 
 # --- end-to-end on the bundled sample -----------------------------------------

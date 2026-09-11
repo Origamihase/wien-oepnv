@@ -33,7 +33,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
-from src.providers.baustellen import is_transit_relevant, oepnv_lead  # noqa: E402
+from src.providers.baustellen import is_transit_relevant, oepnv_lead, tidy_title  # noqa: E402
 from utils.cache import DataDegradationError, write_cache  # noqa: E402
 from utils.files import loads_finite, read_capped_json  # noqa: E402
 from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
@@ -774,6 +774,7 @@ def _feature_to_event(feature: dict[str, Any]) -> ConstructionEvent | None:
             title = f"Baustelle {street}"
         else:
             return None
+    title = tidy_title(title)
     start, end = _parse_range(properties)
     start = _normalize_datetime(start)
     end = _normalize_datetime(end)
