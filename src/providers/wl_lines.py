@@ -105,6 +105,67 @@ RUF_BUS_PREFIX_RE = re.compile(
 )
 
 
+# Nouns that turn a leading bare number into a QUANTITY rather than a
+# repeated line code — a duration (``5: 5 Minuten Verspätung``) or a
+# count (``44: 44 Fahrten entfallen``). The duration half mirrors the
+# sibling guard in :data:`DURATION_RE` further down.
+_REDUNDANT_LINE_UNIT_RE = re.compile(
+    r"^(?:Minuten?|Min\.?|Stunden?|Std\.?|Sekunden?|Sek\.?|Tage?n?|Wochen?|"
+    r"Monate?n?|Uhr|Prozent|Meter|Grad|km|"
+    r"Fahrten?|Z(?:ug|üge)|Busse?|Kurse?|Garnituren?|Haltestellen?|Personen?)\b",
+    re.IGNORECASE,
+)
+
+
+def _strip_redundant_line_token(body: str, lines: list[str]) -> str:
+    """Drop a line identifier that the body repeats right after the prefix.
+
+    Upstream WL OGD payloads occasionally state the line twice at the
+    start of a title — once as the colon-terminated prefix and once as
+    a bare token opening the body (real cache item:
+    ``"3A: 3A Netzänderung Betrieb ab Riemergasse"``). The prefix loop
+    above consumes only the colon-terminated first token, so the bare
+    repeat survives in ``body`` and :func:`_ensure_line_prefix` renders
+    the line twice (``"3A: 3A Netzänderung …"`` — published verbatim in
+    ``docs/feed.xml`` and, via entity masking, in ``docs/feed.en.xml``).
+
+    Guards (see ``docs/archive/audits/audit-title-line-deduplication-2026-09-07.md``):
+
+    * Candidates are the canonical joined form (``11A/11B``) **and**
+      each individual line, longest first, so a multi-line prefix whose
+      body repeats only ONE of the lines is still cleaned and a short
+      code cannot shadow a longer one.
+    * A word boundary plus an explicit separator/whitespace requirement
+      keeps ``"1: 10er Garnitur"`` and ``"10: 10. Bezirk gesperrt"``
+      intact — the token must be followed by whitespace, a dash/colon,
+      or end-of-string, never by a digit, a letter or a period.
+    * A leading bare number followed by a unit noun is a duration
+      (``"5: 5 Minuten Verspätung"``), not a repeated line code.
+    * The strip never empties the body — ``"3A: 3A"`` keeps its body so
+      the empty-body contract of :func:`_ensure_line_prefix` is not
+      silently changed.
+    """
+    if not (body and lines):
+        return body
+    candidates = ["/".join(lines), *lines]
+    alternation = "|".join(
+        re.escape(candidate)
+        for candidate in sorted(set(candidates), key=len, reverse=True)
+    )
+    pattern = re.compile(
+        rf"^(?:{alternation})(?:\s*[:\-–—]\s*|\s+|$)", re.IGNORECASE
+    )
+    match = pattern.match(body)
+    if not match:
+        return body
+    remainder = body[match.end():].strip()
+    if not remainder:
+        return body
+    if _REDUNDANT_LINE_UNIT_RE.match(remainder):
+        return body
+    return remainder
+
+
 def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
     """Strip leading line prefix(es) and return (body, lines_in_order).
 
@@ -179,7 +240,7 @@ def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
                 continue
             break
         break
-    return body, lines
+    return _strip_redundant_line_token(body, lines), lines
 
 
 def _strip_existing_line_block(title: str) -> str:
