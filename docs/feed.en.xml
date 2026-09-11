@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 11 Sep 2026 10:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 10:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9A: foreign traffic accident]]></title>
+      <title><![CDATA[9A: service obstruction Foreigner traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bec3d4bf3b3b42e0a2ce7d0835c0df549b41187301194ad10172275ee8ec44d6</guid>
-      <pubDate>Fri, 11 Sep 2026 09:37:00 +0200</pubDate>
-      <ext:first_seen>Fri, 11 Sep 2026 10:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 11 Sep 2026 09:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 11 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 11.09.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 11.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">1555342c6c62fac019e48fc68f16c22cbe873b235136efe400e1cf31dcd96c9e</guid>
+      <pubDate>Fri, 11 Sep 2026 09:38:39 +0200</pubDate>
+      <ext:first_seen>Fri, 11 Sep 2026 10:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 11 Sep 2026 09:38:40 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 11 Sep 2026 10:37:00 +0200</ext:ends_at>
+      <description>[On 11.09.2026]</description>
+      <content:encoded><![CDATA[[On 11.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: event Trains stop Rosensteingasse on line 9 direction Westbahnhof]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Fri, 11 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Trains stop at Rosensteingasse on line 9 direction Westbahnhof [On 11.09.2026]</description>
       <content:encoded><![CDATA[Trains stop at Rosensteingasse on line 9 direction Westbahnhof<br/>[On 11.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c46a69725165dedae1a469952d6d53429efb6c1a6b5df26f0b78ef6794e184c2</guid>
-      <pubDate>Fri, 11 Sep 2026 08:56:00 +0200</pubDate>
-      <ext:first_seen>Fri, 11 Sep 2026 09:01:11 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 11 Sep 2026 08:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 11 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 11.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 11.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Märzstraße 49 to crossing Huglgasse and crossing Huglgasse to crossing Hütteldorfer Straße]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Fri, 18 Sep 2026 15:00:00 +0200</ext:ends_at>
       <description>Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected. [14.09.2026 – 18.09.2026]</description>
       <content:encoded><![CDATA[Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43A/44A/844/N43/44B: track construction works (phase 2)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d20ff386ab1e11a659a346f984560e3f690bbb373e87124cc91f01cf81da7064</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 09 Sep 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 14 Sep 2026 02:11:00 +0200</ext:ends_at>
+      <description>Due to track construction works in the Hernalser range Hauptstraße / Güpferlingstraße, there are redirections in both directions on the lines 43A, 44A, 44B and N43. Period: line … [06.07.2026 – 14.09.2026]</description>
+      <content:encoded><![CDATA[Due to track construction works in the Hernalser range Hauptstraße / Güpferlingstraße, there are redirections in both directions on the lines 43A, 44A, 44B and N43. Period: line …<br/>[06.07.2026 – 14.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
