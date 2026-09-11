@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 11 Sep 2026 13:00:49 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 13:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[40A: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bb250e2c43de487577251bcb8b73b4c5de0652ba27d3f9aacc8555f08612408d</guid>
-      <pubDate>Fri, 11 Sep 2026 12:20:00 +0200</pubDate>
-      <ext:first_seen>Fri, 11 Sep 2026 12:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 11 Sep 2026 12:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 11 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 11.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 11.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[44: Veranstaltung Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +106,17 @@
       <ext:ends_at>Mon, 14 Sep 2026 02:11:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten im Bereich Hernalser Hauptstraße / Güpferlingstraße kommt es zu Umleitungen in beiden Richtungen bei den Linien 43A, 44A, 44B und N43. Zeitraum: Linie … [06.07.2026 – 14.09.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Hernalser Hauptstraße / Güpferlingstraße kommt es zu Umleitungen in beiden Richtungen bei den Linien 43A, 44A, 44B und N43. Zeitraum: Linie …<br/>[06.07.2026 – 14.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[86A/86AR/87A: Veranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e00bc93d1de191c401384005b8a11629abe74a75abd844fd64ad879ba597d172</guid>
+      <pubDate>Tue, 08 Sep 2026 10:26:00 +0200</pubDate>
+      <ext:first_seen>Tue, 08 Sep 2026 11:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 21 Sep 2026 05:00:00 +0200</ext:ends_at>
+      <description>Wegen der Stadlauer Kirtage in der Stadlauer Straße, werden die Linien 86A, 87A und Rufbus 86A umgeleitet. [17.09.2026 – 21.09.2026]</description>
+      <content:encoded><![CDATA[Wegen der Stadlauer Kirtage in der Stadlauer Straße, werden die Linien 86A, 87A und Rufbus 86A umgeleitet.<br/>[17.09.2026 – 21.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
