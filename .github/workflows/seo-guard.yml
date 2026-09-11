@@ -172,13 +172,27 @@ jobs:
             exit 1
           fi
 
+      # NO ``push_options: --force-with-lease`` — it cannot protect this
+      # push and actively destroyed history on 2026-09-11. The action runs
+      # its own ``git fetch`` immediately before pushing, which re-arms the
+      # lease against the very commit the lease is meant to protect:
+      #
+      #   + f576d7cc6...a62fa59c1 main -> origin/main  (forced update)
+      #   Your branch and 'origin/main' have diverged … 1 different commits
+      #   + a62fa59c1...82c421f01 main -> main         (forced update)
+      #
+      # That second line silently dropped the merge commit of PR #1783 from
+      # main. A plain push cannot do that: after the rebase in the step
+      # above it fast-forwards, and if a concurrent writer wins the race it
+      # is rejected — this run then leaves the remote untouched and the next
+      # trigger regenerates the same output. See
+      # ``docs/archive/audits/audit-2026-09-12-force-push-history-loss.md``.
       - name: Commit sitemap changes
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: 'chore(seo): refresh sitemap.xml & llms.txt [skip ci]'
           file_pattern: 'docs/sitemap.xml docs/llms.txt'
-          push_options: '--force-with-lease'
 
       - name: Verify feed file (repo) – exactly one self & one alternate
         shell: bash

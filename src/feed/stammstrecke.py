@@ -413,7 +413,7 @@ def _build_event(
     iso_first_seen = episode_start.isoformat()
     description = (
         f"Durchschnittliche Verspätung von "
-        f"{_format_minutes(avg_delay_minutes)} Minuten "
+        f"{_format_minutes(avg_delay_minutes)} min "
         f"in Richtung {direction.target_label} "
         f"[Seit {episode_start.strftime('%d.%m.%Y')}]"
     )

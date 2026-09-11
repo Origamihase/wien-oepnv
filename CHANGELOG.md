@@ -5,6 +5,36 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: Force-Push-Race löschte einen gemergten PR aus `main` (2026-09-12)**:
+  Der Merge-Commit von PR #1783 (`a62fa59`) war zwei Sekunden nach dem Merge aus
+  `main` verschwunden — überschrieben vom `SEO Verify`-Workflow. Ursache:
+  `git-auto-commit-action` führt unmittelbar vor dem Push einen eigenen
+  `git fetch` aus und schärft damit das `--force-with-lease` auf genau den
+  Commit nach, den es schützen soll; der Push degradiert faktisch zu `--force`
+  (die Action protokolliert die Divergenz sogar und pusht trotzdem). Das Option
+  wurde in `seo-guard.yml`, `update-stations.yml` und `manual-full-refresh.yml`
+  ersatzlos entfernt — nach dem vorgelagerten Rebase ist der Push ein
+  Fast-Forward, und bei einem Rennen wird er abgelehnt statt fremde Commits zu
+  überschreiben. `update-cycle.yml` ist nicht betroffen (eigene Retry-Schleife
+  mit Rebase vor jedem Versuch). Vollständige Analyse samt Job-Log-Nachweis:
+  [`docs/archive/audits/audit-2026-09-12-force-push-history-loss.md`](docs/archive/audits/audit-2026-09-12-force-push-history-loss.md).
+  Die verlorene Datei `docs/archive/audits/audit-2026-09-11.md` ist aus dem
+  verwaisten Commit wiederhergestellt.
+* **Bugfix: Anzeigefehler aus `audit-2026-09-11.md` (2026-09-12)**:
+  * **Doppelt escapte `&` im `<description>`**: Der Sink escapte `&`, `<` und
+    `>`, ElementTree escapte danach ein zweites Mal — veröffentlicht wurde
+    `GmbH &amp;amp; Co KG`. Der neue `_escape_description_markup` escapt nur
+    noch die spitzen Klammern und überlässt `&` dem XML-Serialisierer. Der
+    Injection-Schutz bleibt vollständig: Ein Tag kann ausschließlich aus einem
+    **rohen** `<` entstehen, und das passiert diesen Sink weiterhin nicht (der
+    End-to-End-PoC in `tests/test_description_html_injection.py` bleibt grün).
+  * **`Minuten` statt `min` im Stammstrecken-Event** (`src/feed/stammstrecke.py`):
+    Die Description der Feed-Items lautete „Durchschnittliche Verspätung von
+    1.5 Minuten …" und widersprach damit der `min`-Konvention. Betraf den Feed
+    selbst, nicht nur das Dashboard.
+  * **Wiener Bezirke im EN-Feed**: `Bezirk` wurde je nach Satzkontext mal als
+    „District", mal als „Area" übersetzt. Glossar-Einträge machen es
+    deterministisch; `_TRANSLATION_CACHE_EPOCH` auf 5 angehoben.
 * **Bugfix: Anzeigefehler im Feed — Titel-Verstümmelung, doppelte Linienkürzel,
   zusammengeklebte Wörter, EN-Übersetzungsartefakte (2026-09-11)**:
   Sammelbehebung der in den 2026-09-Audits
