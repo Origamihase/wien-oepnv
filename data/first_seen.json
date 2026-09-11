@@ -2941,9 +2941,9 @@
     "first_seen": "2026-09-10T23:30:50.164084+00:00",
     "translations": {
       "en": {
-        "title": "N20: Buses stop at the main carriageway"
+        "title": "N20: Buses stop on the main carriageway"
       },
-      "epoch": 3
+      "epoch": 5
     }
   },
   "2470c6f08684e3842a6c0e1bd5c2103c1492758657ad2aeb93814da554c8569c": {
@@ -3392,8 +3392,11 @@
   "29d08fd01cdc74937e3b4614fdcea187b2ada9e40ffa86e4d1b4b03d9bcbab99": {
     "first_seen": "2026-09-11T12:01:07.767792+00:00",
     "translations": {
-      "en": {},
-      "epoch": 4
+      "en": {
+        "summary": "Due to track construction works in the area ofX M\u00e4rzstra\u00dfe and Huglgasse the following measures are taken on the lines 46, 49 and 52.",
+        "title": "46/49/52: track construction works"
+      },
+      "epoch": 5
     }
   },
   "2a15c4cf9ffa9725ceae625394d66517a1a868a9a5631dbb929e9657ad8d118f": {
@@ -6350,9 +6353,10 @@
     "first_seen": "2026-09-11T21:59:34.293675+00:00",
     "translations": {
       "en": {
-        "summary": "Because of roadworks in the K\u00e4stenbaumgasse, the line 17A is redirected."
+        "summary": "Because of roadworks in the K\u00e4stenbaumgasse, the line 17A is redirected.",
+        "title": "17A: construction works"
       },
-      "epoch": 4
+      "epoch": 5
     }
   },
   "4e5dfcbaf375de68da425987f230467e2e0e09f633598ed87196b91a0679d170": {
@@ -19501,7 +19505,7 @@
       "en": {
         "title": "N29: Buses stop at Taborstra\u00dfe 62"
       },
-      "epoch": 4
+      "epoch": 5
     }
   },
   "f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d": {
