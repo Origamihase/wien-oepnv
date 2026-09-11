@@ -1,6 +1,6 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-09-11T23:59+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-09-12T00:01+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
