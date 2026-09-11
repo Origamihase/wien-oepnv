@@ -5,6 +5,26 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: Dashboard zählte Schwerverspätungen anders als der Feed (2026-09-12)**:
+  `docs/assets/site.js` filterte `r.delay >= 9` und beschriftete die Kachel mit
+  „≥ 9 Minuten" / „≥ 9 minutes". Das Backend (`src/feed/stammstrecke.py`) und
+  alle daraus abgeleiteten Ausgaben — Feed, `docs/statistik.md`, README-Block —
+  zählen dagegen **strikt** `obs.delay_minutes > DELAY_THRESHOLD_MINUTES` und
+  schreiben `Kritische Verspätungen (> 9 min)`. Eine Beobachtung von exakt
+  9.0 min erschien damit auf der Website, aber nirgends sonst: dieselben Daten
+  ergaben je nach Ansicht zwei verschiedene Zahlen.
+  Die Website zeigt jetzt, was die Logik tut:
+  * Neue Konstante `DELAY_THRESHOLD_MIN` (spiegelt `DELAY_THRESHOLD_MINUTES`),
+    Filter auf `> DELAY_THRESHOLD_MIN` umgestellt.
+  * Das Kachel-Label wird aus derselben Konstante gebaut
+    (`` `> ${DELAY_THRESHOLD_MIN} min` ``) statt aus einem fest verdrahteten
+    Übersetzungs-String — Anzeige und Filter können nicht mehr auseinanderlaufen.
+    Die damit unbenutzte `sub-over-9`-Übersetzung ist entfernt; „min" ist in
+    beiden Sprachen identisch.
+  * `docs/assets/site.min.js` neu erzeugt (inkl. Cache-Busting-Hash in
+    `docs/site.html`).
+  * `tests/test_dashboard_delay_threshold.py` pinnt die JS-Konstante an den
+    Python-Wert und die Vergleichsrichtung an `>`.
 * **Bugfix: Force-Push-Race löschte einen gemergten PR aus `main` (2026-09-12)**:
   Der Merge-Commit von PR #1783 (`a62fa59`) war zwei Sekunden nach dem Merge aus
   `main` verschwunden — überschrieben vom `SEO Verify`-Workflow. Ursache:

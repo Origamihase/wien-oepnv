@@ -17,6 +17,16 @@
   const FEED_URL_EN = "feed.en.xml";
   const REFRESH_MS = 5 * 60 * 1000; // 5 Minuten
   const LANG_STORAGE_KEY = "wienoepnv:lang";
+  // Spiegelt ``DELAY_THRESHOLD_MINUTES`` aus ``src/feed/stammstrecke.py``.
+  // Eine Beobachtung zählt als Schwerverspätung, wenn sie STRIKT darüber
+  // liegt — genau wie im Backend (``obs.delay_minutes > DELAY_THRESHOLD_MINUTES``)
+  // und im Markdown-Dashboard (``Kritische Verspätungen (> 9 min)``).
+  // Das Kachel-Label unten wird aus derselben Konstante gebaut, damit
+  // Anzeige und Filter nicht wieder auseinanderlaufen: vorher zählte die
+  // Kachel ``>= 9`` unter der Beschriftung „≥ 9 Minuten", während jeder
+  // Backend-Konsument ``> 9`` zählte.
+  // ``tests/test_dashboard_delay_threshold.py`` pinnt beide Werte aneinander.
+  const DELAY_THRESHOLD_MIN = 9;
 
   // ----- Wetter (Wien) ------------------------------------------------
   // Open-Meteo (GeoSphere-Austria-Modell AROME). Wird im Browser des
@@ -280,7 +290,6 @@
     "sub-no-data": "keine Daten",
     "sub-all-observations": "alle Beobachtungen",
     "sub-tick-value": "Tickwert",
-    "sub-over-9": "≥ 9 Minuten",
     "tile-na": "N/A",
     "tile-em-dash": "–",
   };
@@ -301,7 +310,6 @@
     "sub-no-data": "no data",
     "sub-all-observations": "all observations",
     "sub-tick-value": "tick value",
-    "sub-over-9": "≥ 9 minutes",
     "tile-na": "N/A",
     "tile-em-dash": "–",
   };
@@ -821,7 +829,7 @@
     const total = valid.length;
     const avg = total ? valid.reduce((a, r) => a + r.delay, 0) / total : 0;
     const max = total ? valid.reduce((m, r) => (r.delay > m ? r.delay : m), 0) : 0;
-    const over9 = valid.filter((r) => r.delay >= 9).length;
+    const overThreshold = valid.filter((r) => r.delay > DELAY_THRESHOLD_MIN).length;
     const byDirection = countBy(valid, (r) => r.direction || "unbekannt");
 
     const avgByWeekday = averageBy(valid, (r) => r.weekday, (r) => r.delay, WEEKDAYS);
@@ -831,7 +839,7 @@
       { label: ct("kpi-observations"), value: nfInt.format(total), sub: `${ct("sub-year")} ${year}` },
       { label: ct("kpi-avg-delay"), value: `${nf1.format(avg)} min`, sub: ct("sub-all-observations") },
       { label: ct("kpi-max-delay"), value: `${nf1.format(max)} min`, sub: ct("sub-tick-value") },
-      { label: ct("kpi-heavy-delays"), value: nfInt.format(over9), sub: ct("sub-over-9") },
+      { label: ct("kpi-heavy-delays"), value: nfInt.format(overThreshold), sub: `> ${DELAY_THRESHOLD_MIN} min` },
     ]);
 
     renderBars("#stammstrecke-hour",
