@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 11 Sep 2026 16:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 17:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[48A: service obstruction traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d5de43fa164490d094ac66bb07fe6668ccd8e82e980e34eb6ccbbf006f8f0e7e</guid>
-      <pubDate>Fri, 11 Sep 2026 15:34:12 +0200</pubDate>
-      <ext:first_seen>Fri, 11 Sep 2026 16:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 11 Sep 2026 15:34:12 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 11 Sep 2026 16:33:00 +0200</ext:ends_at>
-      <description>[On 11.09.2026]</description>
-      <content:encoded><![CDATA[[On 11.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: service obstruction traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f0a5202aebcedb2c45b5a95a90329d9bbb2fc42a2427eaac726333ae671a4181</guid>
-      <pubDate>Fri, 11 Sep 2026 15:33:42 +0200</pubDate>
-      <ext:first_seen>Fri, 11 Sep 2026 16:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 11 Sep 2026 15:36:12 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 11 Sep 2026 16:35:00 +0200</ext:ends_at>
-      <description>[On 11.09.2026]</description>
-      <content:encoded><![CDATA[[On 11.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[46/49/52: track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +95,28 @@
       <ext:ends_at>Sat, 12 Sep 2026 17:00:00 +0200</ext:ends_at>
       <description>Stop change of line N31 towards Stammersdrif Stop: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße 76-78X Duration … [24.08.2026 – 12.09.2026]</description>
       <content:encoded><![CDATA[Stop change of line N31 towards Stammersdrif Stop: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße 76-78X Duration …<br/>[24.08.2026 – 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[17A: works26]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c5c744758fe786bdf11f0b18d15086921621b7a63fed790d658f3d67af8a2001</guid>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 09 Sep 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 15:00:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected. [14.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43A/44A/844/N43/44B: track construction works (phase 2)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d20ff386ab1e11a659a346f984560e3f690bbb373e87124cc91f01cf81da7064</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 09 Sep 2026 11:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 06 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 14 Sep 2026 02:11:00 +0200</ext:ends_at>
+      <description>Due to track construction works in the Hernalser range Hauptstraße / Güpferlingstraße, there are redirections in both directions on the lines 43A, 44A, 44B and N43. Period: line … [06.07.2026 – 14.09.2026]</description>
+      <content:encoded><![CDATA[Due to track construction works in the Hernalser range Hauptstraße / Güpferlingstraße, there are redirections in both directions on the lines 43A, 44A, 44B and N43. Period: line …<br/>[06.07.2026 – 14.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
