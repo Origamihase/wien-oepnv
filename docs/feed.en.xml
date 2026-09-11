@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 12 Sep 2026 00:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 00:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[17A: construction works]]></title>
@@ -51,6 +51,17 @@
       <ext:ends_at>Sat, 12 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Trains stop at Rosensteingasse on line 9 direction Westbahnhof [11.09.2026 – 12.09.2026]</description>
       <content:encoded><![CDATA[Trains stop at Rosensteingasse on line 9 direction Westbahnhof<br/>[11.09.2026 – 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N29: Buses stop at Taborstraße 35-37]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5acd2efa281e77e083e560ff5c6ca6c5fab4a01026252a262345d9fe21cd6ed2</guid>
+      <pubDate>Sat, 12 Sep 2026 00:13:02 +0200</pubDate>
+      <ext:first_seen>Fri, 11 Sep 2026 00:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 00:13:02 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 04:53:00 +0200</ext:ends_at>
+      <description>[On 12.09.2026]</description>
+      <content:encoded><![CDATA[[On 12.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Märzstraße 49 to crossing Huglgasse and crossing Huglgasse to crossing Hütteldorfer Straße]]></title>
@@ -105,17 +116,6 @@
       <ext:ends_at>Fri, 10 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of track construction works in the area of Simmeringer Hauptstraße / Fickeysstraße there is an diversion of line N71. Period: From Saturday, 12. September 2026, start … [12.09.2026 – 10.09.2027]</description>
       <content:encoded><![CDATA[Because of track construction works in the area of Simmeringer Hauptstraße / Fickeysstraße there is an diversion of line N71. Period: From Saturday, 12. September 2026, start …<br/>[12.09.2026 – 10.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N31/30/31: Shuttleworthstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bc5be11c0f4501590eb77f1ffa868f8c2c0398cc9ad82c31fc77bc5b0a1113ca</guid>
-      <pubDate>Mon, 24 Aug 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 10 Sep 2026 01:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 24 Aug 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 17:00:00 +0200</ext:ends_at>
-      <description>Stop transfer of line N31 towards Stammersdrif Stop: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße 76-78 … [24.08.2026 – 12.09.2026]</description>
-      <content:encoded><![CDATA[Stop transfer of line N31 towards Stammersdrif Stop: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße 76-78 …<br/>[24.08.2026 – 12.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
