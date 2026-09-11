@@ -5,6 +5,81 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: Anzeigefehler im Feed — Titel-Verstümmelung, doppelte Linienkürzel,
+  zusammengeklebte Wörter, EN-Übersetzungsartefakte (2026-09-11)**:
+  Sammelbehebung der in den 2026-09-Audits
+  (`docs/archive/audits/audit-2026-09-05.md` … `audit-2026-09-10.md`,
+  `audit-title-bauarbeiten26-2026-09-09.md`,
+  `audit-title-line-deduplication-2026-09-07.md`) dokumentierten
+  Darstellungsfehler. Alle Befunde wurden vor dem Fix gegen die live
+  ausgelieferten `docs/feed.xml` / `docs/feed.en.xml` und die Provider-Caches
+  verifiziert; jeder Fix ist durch Regressionstests in
+  `tests/test_feed_display_defects_2026_09.py` abgesichert.
+  * **`17A: Bauarbeiten26`** (`src/providers/wl_text.py`): Die Datums-Regex in
+    `_tidy_title_wl` kannte nur vierstellige Jahre, entfernte aus
+    `"Bauarbeiten ab 14.09.26"` also nur `" ab 14.09."` und ließ die `26`
+    stehen — der anschließende Whitespace-Collapse klebte sie an das
+    vorangehende Wort. Die Jahres-Alternation deckt jetzt zwei- **und**
+    vierstellige Jahre ab (geordnet, mit `(?!\d)`-Guard, damit ein
+    missgebildetes Jahr den Titel unangetastet lässt statt ihn halb zu
+    strippen). Zusätzlich läuft der Datums-Strip nun **vor** dem generischen
+    Label-Strip: sonst verlor `"Bauarbeiten ab 14.09.2026"` zuerst sein Label
+    und der Rest `"ab 14.09.2026"` stand am String-Anfang, wo die Regex
+    (`\s+ab`) nicht mehr griff — veröffentlicht wurde der inhaltsleere Titel
+    `"17A: ab 14.09.2026"`.
+  * **`3A: 3A Netzänderung …`** (`src/providers/wl_lines.py`,
+    `src/build_feed.py`): WL-Payloads nennen die Linie gelegentlich doppelt
+    (einmal als Doppelpunkt-Präfix, einmal als erstes Wort des Titelrumpfs).
+    `_extract_prefix_lines` konsumierte nur das Präfix, `_ensure_line_prefix`
+    setzte es erneut davor. Neu: `_strip_redundant_line_token` entfernt die
+    Wiederholung aus Titelrumpf **und** Beschreibung — mit den im Audit
+    geforderten Guards (kanonische **und** einzelne Linien als Kandidaten,
+    längste zuerst; Wortgrenze plus Separator-Pflicht, damit `1: 10er
+    Garnitur` und `10: 10. Bezirk` unangetastet bleiben; Dauer-Guard für
+    `5: 5 Minuten Verspätung`; nie leerer Rumpf).
+  * **Zusammengeklebte Wörter** (`src/utils/text.py`, `src/build_feed.py`):
+    Die OGD-Baustellen-Beschreibungen verlieren upstream ihre Zeilenumbrüche
+    ohne Ersatz-Leerzeichen; ausgeliefert wurde u. a.
+    `"DerFußgängerverkehr kann aufrecht gehalten werden.Nähere Informationen"`
+    und `"Bezirk(Hadikgasse)"`. `repair_glued_words()` fügt die fehlenden
+    Leerzeichen rein additiv wieder ein (Satzzeichen + Großbuchstabe,
+    Klammer-Klebung, lower→Upper innerhalb eines Wortes) und schützt dabei
+    Ordinalzahlen, Datums-/Zeitangaben, Abkürzungen (`Gerasdorf b. Wien`),
+    Firmierungen (`GmbH`) und Binnen-I-Formen (`MitarbeiterInnen`).
+    Nebeneffekt: Weil die Satzgrenzen wieder erkennbar sind, endet die
+    Summary dieser Items nicht mehr mitten im Satz mit `…`.
+  * **Abgeschnittene Label** (`src/build_feed.py`): Endete die
+    180-Zeichen-Kürzung direkt hinter einem Label, blieb im Feed
+    `"… Zentralfriedhof. Grund …"` stehen — angekündigt, aber
+    weggeschnitten. `_trim_truncation_tail` verwirft jetzt das Label
+    selbst statt nur seinen Doppelpunkt.
+  * **EN-Feed — nackter Sentinel `X4X`** (`src/build_feed.py`): Das
+    NMT-Modell verstümmelte `XENT…X4X` bis auf den bloßen Index; der
+    Rest-Detektor verlangte das Präfix und sah ihn nicht, sodass
+    `"… ↔X4X Wien Stadlau"` gecacht und ausgeliefert wurde.
+    `_RESIDUAL_PLACEHOLDER_RE` erkennt jetzt auch die präfixlose Form
+    (beidseitig begrenzt, kurzer Index) — die Übersetzung gilt damit als
+    fehlgeschlagen und das Item fällt auf den deutschen Quelltext zurück.
+  * **EN-Feed — `Uhr` → „clock"/„watch"** (`src/build_feed.py`): Die
+    Uhrzeit-Nachsilbe hat kein englisches Gegenstück; jede Modell-Ausgabe war
+    falsch. `_normalise_for_translation` entfernt sie (nur zeit-verankert)
+    vor Glossar und Masking — der deutsche Feed bleibt unberührt, weil der
+    gesamte Übersetzungspfad EN-only ist.
+  * **EN-Feed — `Einstieg`, `Bereich`, `Straßenfest`, `Bahnhst`**
+    (`src/build_feed.py`): Neue Glossar-Einträge. `Einstieg` endete bislang
+    im Straßennamen-Schild (`…stieg`) und blieb deutsch
+    (`"Einstieg for Vorgartenstraße"`); `Bereich` wurde als Zahlenbereich
+    gelesen (`"Hernalser range Hauptstraße"`); `Straßenfest` zerfiel in
+    `Straße` + `fest` (`"maintenance of the road fence"`); `Bahnhst` blieb
+    unübersetzt.
+  * **EN-Feed — `4. Tor` vs. `4. Gate`** (`src/build_feed.py`): Die
+    Tor-Nummer im WL-Haltestellennamen (`Zentralfriedhof, 4. Tor`) wird als
+    Einheit maskiert und bleibt verbatim — vorher übersetzte dasselbe Feed
+    die gleiche Haltestelle mal mit „Gate", mal mit „Tor". Der Pass läuft
+    **vor** dem Linien-Pass, dessen Zahlen-Shape sonst nur die Ziffer
+    maskiert und das Substantiv übersetzbar zurücklässt.
+  * `_TRANSLATION_CACHE_EPOCH` auf 4 angehoben, damit bereits gecachte
+    EN-Übersetzungen durch die verbesserte Pipeline neu berechnet werden.
 * **Bugfix: EN-Feed — verstümmelte Masking-Platzhalter beseitigt (2026-06-01)**:
   Im englischen Feed (`docs/feed.en.xml`) erschienen in manchen Item-Titeln rohe
   Masking-Sentinels (z. B. `XENT…X1X/XENT…X2X: XENT…X0X`) statt der übersetzten

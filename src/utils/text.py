@@ -551,3 +551,61 @@ def safe_markdown_codespan(text: str, *, max_len: int = 200) -> str:
     ``\\n```\\n`` into the label.
     """
     return normalise_markdown_text(text, max_len=max_len).replace("`", "'")
+
+
+# ---------------------------------------------------------------------------
+# Repair of run-together words in upstream prose
+# ---------------------------------------------------------------------------
+#
+# The Stadt-Wien OGD Baustellen feed ships descriptions whose line breaks were
+# dropped WITHOUT a replacement space somewhere upstream, so neighbouring words
+# collide. Live examples from ``cache/baustellen_d438c3/events.json`` that
+# reached ``docs/feed.xml`` verbatim:
+#
+#   * ``"… kann aufrecht gehalten werden.Nähere Informationen …"``
+#   * ``"… - Hadikgasse.DerFußgänger- und Radverkehr …"``
+#   * ``"Schönbrunner Schloßstraße - SchönbrunnerSchloßbrücke"``
+#   * ``"Die Kennedybrücke wird in Fahrtrichtung 14. Bezirk(Hadikgasse) gesperrt."``
+#
+# Three independent repairs, all deliberately conservative — a false split is
+# a worse display bug than the glue it fixes:
+#
+#   1. Sentence punctuation immediately followed by an uppercase letter. The
+#      character BEFORE the punctuation must be a letter (at least two
+#      lower-case ones for ``.``) or a closing bracket, which rules out
+#      ordinals and dates (``14. Bezirk``, ``14.09.2026``), decimal numbers
+#      and times (``1,5``, ``14:30``), and single-letter abbreviations
+#      (``Gerasdorf b. Wien``, ``Karlsplatz U.``).
+#   2. An opening bracket glued to the preceding word.
+#   3. A lower→upper transition INSIDE a word, with two guards: the
+#      upper-case letter must be followed by another lower-case letter (so
+#      the company forms ``GmbH`` / ``mbH`` and any trailing acronym stay
+#      intact), and the Binnen-I gender form (``MitarbeiterInnen``,
+#      ``SchülerIn``) is excluded.
+_GLUED_SENTENCE_RE = re.compile(
+    r"(?<=[a-zäöüß]{2}[.!?])(?=[A-ZÄÖÜ])"
+    r"|(?<=[A-Za-zÄÖÜäöüß)][:;,])(?=[A-ZÄÖÜ])"
+    # ``Freitag,11. September 2026`` — a digit may follow the separator too,
+    # but only when a LETTER precedes it, so a decimal comma ("1,5 Mio")
+    # and a time ("14:30") are never touched.
+    r"|(?<=[A-Za-zÄÖÜäöüß][:;,])(?=\d)"
+)
+_GLUED_BRACKET_RE = re.compile(r"(?<=[A-Za-zÄÖÜäöüß0-9])(?=\()")
+_GLUED_WORD_RE = re.compile(
+    r"(?<=[a-zäöüß]{2})(?!I(?:nnen|n)\b)(?=[A-ZÄÖÜ][a-zäöüß])"
+)
+
+
+def repair_glued_words(text: str) -> str:
+    """Insert the spaces an upstream feed dropped between words.
+
+    Purely additive: the function only ever inserts a single space at a
+    position where two words collided, never removes or reorders
+    characters. Input that carries no glue round-trips unchanged, so it
+    is safe to run over every provider's text.
+    """
+    if not text:
+        return text
+    repaired = _GLUED_SENTENCE_RE.sub(" ", text)
+    repaired = _GLUED_BRACKET_RE.sub(" ", repaired)
+    return _GLUED_WORD_RE.sub(" ", repaired)

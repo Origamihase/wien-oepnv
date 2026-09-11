@@ -66,7 +66,7 @@ from .utils.http import validate_http_url
 from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
 from .utils.stats import append_disruption_row, extract_location_name
-from .utils.text import html_to_text, truncate_html
+from .utils.text import html_to_text, repair_glued_words, truncate_html
 
 
 __all__ = ["RunReport", "ThreadPoolExecutor", "feed_config"]
@@ -217,7 +217,10 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
        canonical ``40/41: …`` prefix so the user immediately sees
        which lines are affected.
     """
-    from .providers.wl_lines import _extract_prefix_lines
+    from .providers.wl_lines import (
+        _extract_prefix_lines,
+        _strip_redundant_line_token,
+    )
 
     out: list[Any] = []
     for original in items:
@@ -225,6 +228,7 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
             out.append(original)
             continue
         item = original
+        prefix_lines: list[str] = []
         title = item.get("title")
         if isinstance(title, str) and title:
             cleaned = re.sub(r"\s+", " ", title).strip()
@@ -269,6 +273,13 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
         desc = item.get("description")
         if isinstance(desc, str) and desc:
             stripped = _strip_wl_description_line_prefix(desc)
+            # Störung descriptions repeat the line code without the colon
+            # the regexes above require (``"3A Netzänderung\nBetrieb ab
+            # Riemergasse"``). The title already attributes the line, so
+            # the repeat is noise — and leaving it in also defeats the
+            # summary/title duplicate check in ``_format_item_content``,
+            # which would surface the same sentence twice per item.
+            stripped = _strip_redundant_line_token(stripped, prefix_lines)
             if stripped != desc:
                 if item is original:
                     item = dict(item)
@@ -973,7 +984,7 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       ``Schloss Hetzendorf`` from ``Wien Schloss Hetzendorf (WL)``),
 #       so Vienna stop names with a translatable component are no
 #       longer mistranslated ("Schloss Hetzendorf" → "lock Hetzendorf").
-_TRANSLATION_CACHE_EPOCH = 3
+_TRANSLATION_CACHE_EPOCH = 4
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1158,6 +1169,36 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Aufgelassen": "Discontinued",
     "Aufgelassene": "Discontinued",
     "Personen im Gleisbereich": "persons on the tracks",
+    # --- Boarding / stop-access vocabulary ---------------------------
+    # WL Störung items are headlined with the bare noun ("Einstieg bei
+    # Vorgartenstraße vor Meiereistraße"). Without a glossary entry the
+    # token reaches the ENTITY masker, where it matches the street
+    # suffix ``…stieg`` of :data:`_STREET_SUFFIX_RE` and is preserved
+    # verbatim — the EN feed published the half-German "Einstieg for
+    # Vorgartenstraße before Meiereistraße"
+    # (``docs/archive/audits/audit-2026-09-10.md``). The glossary runs
+    # BEFORE the masker, so mapping the word here both fixes the
+    # translation and keeps it out of the street-name shield.
+    "Einstieg": "boarding",
+    "Ausstieg": "alighting",
+    "Umstieg": "interchange",
+    "Zustieg": "boarding",
+    # --- Area / section phrasing -------------------------------------
+    # "Bereich" in front of a street name marks a section of the
+    # network, not a numeric range; Marian's "range" reading produced
+    # "Hernalser range Hauptstraße" for "Bereich Hernalser
+    # Hauptstraße" (``docs/archive/audits/audit-2026-09-09.md``). The
+    # longest-first alternation makes the "im Bereich" phrase win over
+    # the bare noun.
+    "im Bereich": "in the area of",
+    "Bereich": "area",
+    # --- Events ------------------------------------------------------
+    # "Straßenfest" is a compound of two words Marian knows separately
+    # ("Straße" + "fest"), which is how "Währinger Straßenfest" became
+    # "maintenance of the road fence"
+    # (``docs/archive/audits/audit-2026-09-06.md``).
+    "Straßenfest": "street festival",
+    "Straßenfestes": "street festival",
     "Umleitung": "diversion",
     "Unregelmäßige Intervalle": "irregular intervals",
     "Eingeschränkter Betrieb": "restricted service",
@@ -1211,6 +1252,12 @@ _GLOSSARY_BY_SOURCE: dict[str, dict[str, str]] = {
         "Bahnsteigwechsel": "platform change",
         "Anschlussverlust": "missed connection",
         "Tunnelsperre": "tunnel closure",
+        # ÖBB ticker shorthand for "Bahnhaltestelle". Marian has never
+        # seen the abbreviation and left it verbatim, so the EN feed
+        # carried the German jargon
+        # (``docs/archive/audits/audit-2026-09-07.md``).
+        "Bahnhst.": "station",
+        "Bahnhst": "station",
     },
     # Road construction sites (Stadt Wien open-data Baustellen feed).
     # Talks about lane closures and routing in road-traffic vocabulary
@@ -1341,6 +1388,17 @@ _STREET_SUFFIX_RE: re.Pattern[str] = re.compile(
     r"|[Pp]romenade|[Kk]ai|[Gg]raben"
     r")\b"
 )
+
+# WL numbers the gates of the Zentralfriedhof and addresses the stops
+# by them ("Zentralfriedhof, 4. Tor" — the name printed on the stop
+# sign). ``Tor`` is not a street suffix, so :data:`_STREET_SUFFIX_RE`
+# never shielded it and Marian rendered the SAME stop inconsistently
+# across items of one feed: "Zentralfriedhof, 3. Gate" in one title,
+# "Zentralfriedhof, 3. Tor" in another
+# (``docs/archive/audits/audit-2026-09-05.md`` §6). Masking the whole
+# ``<Ziffer>. Tor`` group keeps the official stop designation verbatim,
+# which is also what a traveller reads on site.
+_GATE_SUFFIX_RE: re.Pattern[str] = re.compile(r"\b\d{1,2}\.\s?[Tt]or\b")
 
 # Placeholder pattern recognised by :func:`_unmask_entities` and the
 # ``X``-bookended form deliberately avoids ``_`` (which the
@@ -1584,12 +1642,17 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
       1. **Brands** — static operator / network names.
       2. **Stations** — canonical names + bare forms + curated
          ``Wien X`` aliases from the project's station directory.
-      3. **Line tokens** — ``U6``, ``S40``, ``5A``, …
-      4. **Street suffixes** — capitalised compound nouns ending in a
+      3. **Gate designations** — the ``3. Tor`` group in WL's
+         Zentralfriedhof stop names, preserved verbatim so one feed
+         cannot render the same stop as both "3. Tor" and "3. Gate".
+         Runs before the line pass, whose bare-ordinal shape would
+         otherwise mask the digit and leave the noun translatable.
+      4. **Line tokens** — ``U6``, ``S40``, ``5A``, …
+      5. **Street suffixes** — capitalised compound nouns ending in a
          German street/place suffix (``…straße``, ``…gasse``,
          ``…platz``, …) are preserved verbatim. This catches every
          street name that is NOT also a registered station alias.
-      5. **Preserved Unicode symbols** — arrows, bullets, em-/en-
+      6. **Preserved Unicode symbols** — arrows, bullets, em-/en-
          dashes, the ellipsis: glyphs that Marian's SentencePiece
          tokenizer otherwise maps to ``<unk>`` and drops.
 
@@ -1632,6 +1695,12 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     station_pattern = _station_entity_pattern()
     if station_pattern is not None:
         working = station_pattern.sub(_replace, working)
+    # The gate pass MUST precede the line pass: the bare ordinal in
+    # ``4. Tor`` is itself a valid line-code shape, so ``_LINE_ENTITY_RE``
+    # would mask the digit alone and leave the ``Tor`` noun exposed to
+    # the translator — exactly the half-masked state that produced
+    # "4. Gate".
+    working = _GATE_SUFFIX_RE.sub(_replace, working)
     working = _LINE_ENTITY_RE.sub(_replace, working)
     working = _STREET_SUFFIX_RE.sub(_replace, working)
     working = _PRESERVED_SYMBOLS_RE.sub(_replace, working)
@@ -1671,10 +1740,48 @@ _UNMASK_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
 # keeping the false-positive rate effectively zero on ÖPNV text (every station,
 # line and operator is masked before translation). Used as a post-unmask
 # safety net and a cache-hit self-heal trigger.
+# The second alternative catches the SEVERE corruption in which the model
+# dropped the prefix AND the nonce and kept only the bookended index — the
+# ÖBB item ``S 60: Wien Meidling ↔ Wien Hauptbahnhof ↔X4X Wien Stadlau``
+# published on 2026-09-05 (see ``docs/archive/audits/audit-2026-09-05.md`` §5).
+# The prefix-anchored alternative above cannot see it, so the bare sentinel
+# was cached and served to subscribers. The bare form is bounded by
+# non-alphanumeric lookarounds and a short index so it cannot match inside a
+# real word or a line code (``X`` is not a Vienna/ÖBB line letter, and every
+# station, line and operator token is entity-masked before translation).
 _RESIDUAL_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
-    r"(?:XENT|XGLO)[A-Za-z0-9]*X",
+    r"(?:XENT|XGLO)[A-Za-z0-9]*X"
+    r"|(?<![A-Za-z0-9])X\d{1,3}X(?![A-Za-z0-9])",
     re.IGNORECASE,
 )
+
+
+# German clock-time suffix. ``15:13 Uhr`` has no English equivalent —
+# the bare time IS the English idiom — but Marian has to render the
+# token somehow and picks the everyday-prose sense of the noun, so the
+# EN feed published "Wr.Neustadt Hbf to 15:13 watch" and "to expected
+# 23:59 clock" (``docs/archive/audits/audit-2026-09-09.md``,
+# ``audit-2026-09-07.md``). Dropping the word together with its
+# leading space BEFORE the model sees it removes the failure mode at
+# the source; a glossary entry could not, because every English
+# rendering of the token is wrong. Only a time-anchored ``Uhr`` is
+# dropped, so ``Uhrzeit`` / ``Turmuhr`` / a standalone noun are
+# untouched.
+_CLOCK_SUFFIX_RE: re.Pattern[str] = re.compile(
+    r"(?<=\d)(?<!\d\d\d)\s*Uhr\b|(?<=\d\d:\d\d)\s*Uhr\b"
+)
+
+
+def _normalise_for_translation(text: str) -> str:
+    """Strip German-only surface forms the NMT model cannot render.
+
+    Runs BEFORE glossary substitution and entity masking in
+    :func:`_translate_text_attempt`; the German feed is unaffected
+    because the whole translation path is EN-only.
+    """
+    if not text:
+        return text
+    return _CLOCK_SUFFIX_RE.sub("", text)
 
 
 def _apply_domain_glossary(
@@ -1910,7 +2017,7 @@ def _translate_text_attempt(
     # (each pass uses a distinct placeholder format so indices cannot
     # collide).
     glossary_processed, glossary_mapping = _apply_domain_glossary(
-        text, source=source, category=category,
+        _normalise_for_translation(text), source=source, category=category,
     )
     masked_text, entity_mapping = _mask_entities(glossary_processed)
     combined_mapping = {**glossary_mapping, **entity_mapping}
@@ -3767,6 +3874,19 @@ def _should_drop_trailing_tail(tail: str) -> bool:
 def _trim_truncation_tail(truncated: str) -> str:
     """Iteratively drop noise tokens at the end of a hard-truncated summary."""
     for _ in range(8):
+        # A label whose value the cut swallowed ("… Grund:", "… Ersatz:",
+        # "… Zeitraum:") announces information that is no longer there —
+        # the published summary read "… Grund …", which is strictly worse
+        # than ending one word earlier (see
+        # ``docs/archive/audits/audit-2026-09-06.md`` §4). Drop the label
+        # itself, not just its colon, before the generic punctuation strip
+        # below removes the ``:`` that identifies it.
+        label_candidate = truncated.rstrip(" ")
+        if label_candidate.endswith(":"):
+            label_start = label_candidate.rfind(" ")
+            if label_start > 0:
+                truncated = label_candidate[:label_start]
+                continue
         truncated = truncated.rstrip(_TRUNCATION_PUNCT_STRIP)
         last_space = truncated.rfind(" ")
         if last_space <= 0:
@@ -4038,6 +4158,15 @@ def _format_item_content(
     # Line 1: Concise plain text summary (no HTML artifacts)
     summary = html_to_text(raw_desc, collapse_newlines=True)
     summary = _sanitize_text(summary).strip()
+    # Upstream prose sometimes arrives with the spaces between words
+    # missing — the Stadt-Wien OGD Baustellen descriptions lost their
+    # line breaks somewhere upstream, so the published feed carried
+    # ``"… gehalten werden.Nähere Informationen …"`` and
+    # ``"DerFußgängerverkehr …"`` verbatim. Repairing it here (before
+    # sentence splitting and the 180-char truncation) also feeds the EN
+    # translation pipeline readable German instead of run-together
+    # tokens the NMT model has never seen.
+    summary = repair_glued_words(summary)
 
     # ÖBB-spezifische Datumspräfixe (z.B. "17.09.2026 - 19.11.2026 • ") entfernen
     summary = _DATE_RANGE_PREFIX_RE.sub("", summary)
