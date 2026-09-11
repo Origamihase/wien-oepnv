@@ -453,7 +453,7 @@ def test_extract_location_name_rejects_disruption_type_garbage(
         ),
         # Stammstrecke renderer phrasing
         (
-            "Durchschnittliche Verspätung von 12 Minuten in Richtung Meidling [Seit 09.05.2026]",
+            "Durchschnittliche Verspätung von 12 min in Richtung Meidling [Seit 09.05.2026]",
             "Wien Meidling",
         ),
         # Plain free-text mention of a directory-known Vienna station

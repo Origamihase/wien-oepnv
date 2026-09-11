@@ -12,16 +12,20 @@ Each test pins one visible defect that reached the published feeds
   off the reason it announces
 * ``audit-2026-09-09.md`` — ``Bereich`` → "range"
 * ``audit-2026-09-10.md`` — ``Einstieg`` kept German in the EN feed
+* ``audit-2026-09-11.md`` — ``&`` double-escaped in ``<description>``,
+  ``Minuten`` instead of ``min`` in the Stammstrecke feed event
 """
 
 from src.build_feed import (
     _RESIDUAL_PLACEHOLDER_RE,
     _apply_domain_glossary,
+    _escape_description_markup,
     _mask_entities,
     _normalise_for_translation,
     _truncate_summary_180,
     _unmask_entities,
 )
+from src.feed.stammstrecke import _build_event
 from src.providers.wl_lines import _ensure_line_prefix, _extract_prefix_lines
 from src.providers.wl_text import _tidy_title_wl
 from src.utils.text import repair_glued_words
@@ -275,3 +279,70 @@ def test_oebb_station_abbreviation_resolves_to_english() -> None:
     )
     assert "Bahnhst" not in processed
     assert "station" in mapping.values()
+
+
+# --------------------------------------------------------------------------
+# 7. Double-escaped ampersands in the published <description>
+# --------------------------------------------------------------------------
+
+
+def test_ampersand_is_not_escaped_at_the_description_sink() -> None:
+    # ElementTree applies the single XML escape on serialise; escaping ``&``
+    # here too published "GmbH &amp;amp; Co KG"
+    # (``docs/archive/audits/audit-2026-09-11.md`` §2).
+    assert (
+        _escape_description_markup("Wiener Linien GmbH & Co KG")
+        == "Wiener Linien GmbH & Co KG"
+    )
+
+
+def test_angle_brackets_are_still_escaped_at_the_description_sink() -> None:
+    # The injection defence is unchanged: a tag can only be formed by a RAW
+    # ``<``, and that never survives this sink. (The end-to-end proof lives in
+    # tests/test_description_html_injection.py, which drives _emit_item.)
+    assert (
+        _escape_description_markup("<img src=x onerror=alert(1)>")
+        == "&lt;img src=x onerror=alert(1)&gt;"
+    )
+    assert _escape_description_markup("Ersatzbus für <80") == "Ersatzbus für &lt;80"
+
+
+def test_already_encoded_entity_stays_inert_without_double_escaping() -> None:
+    # An entity in the source text is inert in the HTML context by itself —
+    # it can never become a tag — so it needs no second layer of escaping.
+    assert _escape_description_markup("&lt;script&gt;") == "&lt;script&gt;"
+
+
+# --------------------------------------------------------------------------
+# 8. "min" instead of "Minuten" in the Stammstrecke feed event
+# --------------------------------------------------------------------------
+
+
+def test_stammstrecke_event_uses_the_min_abbreviation() -> None:
+    from datetime import UTC, datetime
+
+    from src.feed.stammstrecke import DIRECTIONS
+
+    now = datetime(2026, 9, 12, 8, 0, tzinfo=UTC)
+    event = _build_event(
+        direction=DIRECTIONS[0],
+        avg_delay_minutes=1.5,
+        now=now,
+        episode_start=now,
+    )
+    description = event["description"]
+    assert "1.5 min" in description
+    assert "Minuten" not in description
+
+
+# --------------------------------------------------------------------------
+# 9. Vienna districts in the EN feed
+# --------------------------------------------------------------------------
+
+
+def test_district_resolves_deterministically() -> None:
+    processed, mapping = _apply_domain_glossary(
+        "Die Umleitung in Fahrtrichtung 21. Bezirk erfolgt über die Angyalföldstraße"
+    )
+    assert "Bezirk" not in processed
+    assert "district" in mapping.values()

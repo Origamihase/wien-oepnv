@@ -984,7 +984,7 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       ``Schloss Hetzendorf`` from ``Wien Schloss Hetzendorf (WL)``),
 #       so Vienna stop names with a translatable component are no
 #       longer mistranslated ("Schloss Hetzendorf" → "lock Hetzendorf").
-_TRANSLATION_CACHE_EPOCH = 4
+_TRANSLATION_CACHE_EPOCH = 5
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1192,6 +1192,14 @@ _GLOSSARY_BASE: dict[str, str] = {
     # the bare noun.
     "im Bereich": "in the area of",
     "Bereich": "area",
+    # Vienna's numbered districts. Marian renders the bare noun as "Area" or
+    # "District" depending on the surrounding sentence — the SAME stop text
+    # came out as "in direction 21. District" and, after the sentence was
+    # shortened by the glue repair, as "in the direction of 21. Area". The
+    # glossary entry makes it deterministic.
+    "Bezirk": "district",
+    "Bezirke": "districts",
+    "Bezirken": "districts",
     # --- Events ------------------------------------------------------
     # "Straßenfest" is a compound of two words Marian knows separately
     # ("Straße" + "fest"), which is how "Währinger Straßenfest" became
@@ -4287,6 +4295,34 @@ def _format_item_content(
     )
 
 
+# Angle brackets only — NOT ``&``. ``<description>`` is an XML text node that
+# readers render as HTML, so the body needs contextual output-encoding for the
+# HTML context (see the 2026-05-25 Sentinel round and
+# ``tests/test_description_html_injection.py``). A tag can ONLY be formed by a
+# RAW ``<``, so escaping ``<`` and ``>`` is the complete defence:
+#
+#   * ``<img onerror=…>``      -> ``&lt;img onerror=…&gt;`` -> XML-escaped to
+#     ``&amp;lt;…`` -> the reader's single XML-decode yields ``&lt;…`` -> the
+#     HTML renderer shows inert source text. Unchanged by this refinement.
+#   * text that already carries an entity (``&lt;script&gt;`` as literal
+#     characters, or a numeric ``&#60;``) stays entity-form through both
+#     layers and renders as inert text too — an entity can never become a tag.
+#
+# ``&`` was collateral: ``html.escape`` turned ``GmbH & Co KG`` into
+# ``&amp;`` and ElementTree escaped that again, so the published feed carried
+# ``GmbH &amp;amp; Co KG``. HTML-rendering readers resolve that back to ``&``,
+# but plain-text readers display the raw entity — the defect three audits
+# flagged (2026-09-07, 2026-09-08, 2026-09-11 §2). Leaving ``&`` to
+# ElementTree's single XML escape fixes the display in both reader classes and
+# removes nothing from the injection defence.
+_DESCRIPTION_MARKUP_ESCAPES = str.maketrans({"<": "&lt;", ">": "&gt;"})
+
+
+def _escape_description_markup(text: str) -> str:
+    """Neutralise markup characters for the HTML-rendered ``<description>``."""
+    return text.translate(_DESCRIPTION_MARKUP_ESCAPES)
+
+
 def _emit_item(
     it: FeedItem,
     now: datetime,
@@ -4394,12 +4430,15 @@ def _emit_item(
     # plain display text in which an upstream ``&lt;img onerror=…&gt;`` has already
     # been decoded by ``html_to_text`` into a live ``<img onerror=…>``; without
     # output-encoding here that tag would execute in the subscriber's reader after
-    # its single XML-decode. HTML-escape at this sink so the reader's lone
-    # XML-decode yields inert ``&lt;img…&gt;`` *source* text. This is the single
-    # per-item ``<description>`` sink for both the DE and EN feeds (``_emit_item``
-    # is invoked once per language with the language-resolved ``formatted``).
-    ET.SubElement(item, "description").text = html.escape(
-        formatted.desc_text_truncated, quote=False
+    # its single XML-decode. Escape the markup characters at this sink so the
+    # reader's lone XML-decode yields inert ``&lt;img…&gt;`` *source* text. This
+    # is the single per-item ``<description>`` sink for both the DE and EN feeds
+    # (``_emit_item`` is invoked once per language with the language-resolved
+    # ``formatted``). ``&`` is deliberately NOT escaped here — see
+    # :func:`_escape_description_markup` for why that is complete and why
+    # escaping it was a display bug.
+    ET.SubElement(item, "description").text = _escape_description_markup(
+        formatted.desc_text_truncated
     )
 
     # content:encoded

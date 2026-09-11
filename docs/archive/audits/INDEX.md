@@ -17,6 +17,10 @@ Chronologische Übersicht aller archivierten Audits dieses Projekts.
 
 | Datum | Bericht | Schwerpunkt |
 |---|---|---|
+| 2026-09-12 | [audit-2026-09-12-force-push-history-loss.md](audit-2026-09-12-force-push-history-loss.md) | CI/CD-Integrität: `--force-with-lease` löschte den Merge-Commit von PR #1783 aus `main` (Job-Log-Nachweis, Fix in drei Workflows) |
+| 2026-09 | [audit-2026-09-05.md](audit-2026-09-05.md), [-06](audit-2026-09-06.md), [-07](audit-2026-09-07.md), [-08](audit-2026-09-08.md), [-09](audit-2026-09-09.md), [-10](audit-2026-09-10.md), [-11](audit-2026-09-11.md) | Tägliche Diagnose-Audits zu Anzeigefehlern im Feed (Titel-Verstümmelung, Wort-Verklebungen, EN-Übersetzungsartefakte) — behoben in PR [#1785](https://github.com/Origamihase/wien-oepnv/pull/1785) und dem zugehörigen Folge-PR |
+| 2026-09-09 | [audit-title-bauarbeiten26-2026-09-09.md](audit-title-bauarbeiten26-2026-09-09.md) | `17A: Bauarbeiten26` — gestrandetes 2-stelliges Jahr im WL-Titel |
+| 2026-09-07 | [audit-title-line-deduplication-2026-09-07.md](audit-title-line-deduplication-2026-09-07.md) | `3A: 3A …` — vom Upstream doppelt genanntes Linienkürzel |
 | 2025-07 | [audit-2025-07-08.md](audit-2025-07-08.md) | Manueller Review der Feed-Builder-Robustheit (keine Findings) |
 | 2025-06 | [audit-2025-06-02.md](audit-2025-06-02.md) | `ruff check` als statisches Lint-Gate aufgenommen |
 | 2025-05 | [audit-2025-05-29.md](audit-2025-05-29.md), [audit-2025-05-22.md](audit-2025-05-22.md), [system_audit.md](system_audit.md) | Codebasis-Audits + allgemeiner System-Audit |
