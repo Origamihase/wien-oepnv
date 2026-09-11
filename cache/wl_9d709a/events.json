@@ -446,6 +446,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Schadhaftes Fahrzeug",
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6",
+    "pubDate": "2026-09-11T11:01:00+02:00",
+    "starts_at": "2026-09-11T11:01:00+02:00",
+    "ends_at": "2026-09-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-09-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -478,6 +490,18 @@
     "starts_at": "2026-09-11T00:00:28+02:00",
     "ends_at": "2026-09-11T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-09-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "35A: Rettungseinsatz",
+    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "03b7d773a613c65dc47884517046d555d006e6e24abebc2d3c4c6a50e91e901f",
+    "pubDate": "2026-09-11T11:00:00+02:00",
+    "starts_at": "2026-09-11T11:00:00+02:00",
+    "ends_at": "2026-09-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=35A|D=2026-09-11"
   },
   {
     "source": "Wiener Linien",
@@ -562,18 +586,6 @@
     "starts_at": "2026-09-11T04:45:09+02:00",
     "ends_at": "2026-09-12T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-09-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "600c23823ba55d54f22677265cc0f785a575d611b1a39c75a30126418a017b0f",
-    "pubDate": "2026-09-11T10:21:42+02:00",
-    "starts_at": "2026-09-11T10:21:42+02:00",
-    "ends_at": "2026-09-11T11:20:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-09-11"
   },
   {
     "source": "Wiener Linien",
