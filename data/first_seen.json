@@ -16171,6 +16171,16 @@
       "epoch": 3
     }
   },
+  "ca37a3c3365726d1c449c7aa2c37e1b237568b270cf6b0e362c5e0777696d40b": {
+    "first_seen": "2026-09-11T06:01:05.976042+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "60: Harmful passenger car"
+      },
+      "epoch": 3
+    }
+  },
   "ca3f320972243b037074321441d828580185f68cae3de0b8d41ea5abc0bd3d31": {
     "first_seen": "2026-07-12T20:00:43.758781+00:00",
     "translations": {
@@ -22564,6 +22574,16 @@
       "en": {
         "summary": "Due to a power failure, no rides are possible in Wien Franz-Josefs-Bahnhof to expected 07:00 o'clock.",
         "title": "Wien Franz-Josefs-Bahnhof"
+      },
+      "epoch": 3
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&911065": {
+    "first_seen": "2026-09-11T06:01:05.976042+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an interlocking malfunction am Bahnhof, no journeys are currently possible in Wien Meidling station (U).",
+        "title": "Wien Bhf. Meidling (WL)"
       },
       "epoch": 3
     }
