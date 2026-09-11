@@ -1,22 +1,25 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-09-06T05:33:12+00:00_
+_Erzeugt am: 2026-09-11T21:59:30+00:00_
 
-**Stationen: 2244 → 2243 (Δ -1)**
+**Stationen: 2243 → 2244 (Δ +1)**
 
-## Hinzugefügt (1)
+## Hinzugefügt (3)
 
-- `name:Wien Wasserwiese (WL)` — Wien Wasserwiese \(WL\)
+- `name:Wien Lavaterstraße (WL)` — Wien Lavaterstraße \(WL\)
+- `name:Wien Stadion U, Handelskai (WL)` — Wien Stadion U, Handelskai \(WL\)
+- `name:Wien Westbahnstraße, Zieglergasse (WL)` — Wien Westbahnstraße, Zieglergasse \(WL\)
 
 ## Entfernt (2)
 
-- `name:Wien Klaschkaweg (WL)` — Wien Klaschkaweg \(WL\)
-- `name:Wien Stadion U, Handelskai (WL)` — Wien Stadion U, Handelskai \(WL\)
+- `name:Wien Haschafeld (WL)` — Wien Haschafeld \(WL\)
+- `name:Wien Westbahnstr., Zieglerg. (WL)` — Wien Westbahnstr., Zieglerg. \(WL\)
 
 ## Umbenannt (0)
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (0)
+## Koordinaten verschoben (≥ 100 m) (2)
 
-_Keine._
+- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
+- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)

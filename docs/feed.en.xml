@@ -7,17 +7,28 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 11 Sep 2026 23:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 23:59:34 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Liesing]]></title>
+      <title><![CDATA[17A: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4e4ac1d3cb4bc917fea71f50345872e58878aa82bc54b27034a1c202771ae756</guid>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 11 Sep 2026 23:59:34 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 15:00:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected. [14.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Liesing ↔ Wien Meidling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;911249</guid>
       <pubDate>Fri, 11 Sep 2026 23:12:21 +0200</pubDate>
       <ext:first_seen>Fri, 11 Sep 2026 21:30:52 +0200</ext:first_seen>
       <ext:starts_at>Fri, 11 Sep 2026 23:12:21 +0200</ext:starts_at>
-      <description>Due to damage to the track, train journeys between Wien Meidling station (U) and Wien Liesing station are currently limited. [Since 11.09.2026]</description>
-      <content:encoded><![CDATA[Due to damage to the track, train journeys between Wien Meidling station (U) and Wien Liesing station are currently limited.<br/>[Since 11.09.2026]]]></content:encoded>
+      <description>Due to damage to the track, only limited journeys between Wien Meidling station (U) and Wien Liesing station to 23:09 were possible. [Since 11.09.2026]</description>
+      <content:encoded><![CDATA[Due to damage to the track, only limited journeys between Wien Meidling station (U) and Wien Liesing station to 23:09 were possible.<br/>[Since 11.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46/49/52: track construction works]]></title>
@@ -27,8 +38,8 @@
       <ext:first_seen>Fri, 11 Sep 2026 14:01:07 +0200</ext:first_seen>
       <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 31 Oct 2026 04:30:00 +0100</ext:ends_at>
-      <description>Because of track construction works in the Märzstraße and Huglgasse lines 46, 49 and 52 the following measures are taken. [21.09.2026 – 31.10.2026]</description>
-      <content:encoded><![CDATA[Because of track construction works in the Märzstraße and Huglgasse lines 46, 49 and 52 the following measures are taken.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
+      <description>Because of track construction works in the area of Märzstraße and Huglgasse the following measures are taken for the lines 46, 49 and 52. [21.09.2026 – 31.10.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works in the area of Märzstraße and Huglgasse the following measures are taken for the lines 46, 49 and 52.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: event Trains stop Rosensteingasse on line 9 direction Westbahnhof]]></title>
@@ -49,8 +60,8 @@
       <ext:first_seen>Thu, 10 Sep 2026 22:31:03 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
-      <description>More information on the public transports concerned can be found in the information provided by Wiener Linien GmbH &amp;amp; Co KG. [14.09.2026 – 15.11.2026]</description>
-      <content:encoded><![CDATA[More information on the public transports concerned can be found in the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[14.09.2026 – 15.11.2026]]]></content:encoded>
+      <description>The pedestrian traffic can be maintained. [14.09.2026 – 15.11.2026]</description>
+      <content:encoded><![CDATA[The pedestrian traffic can be maintained.<br/>[14.09.2026 – 15.11.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Kennedybrücke between Schönbrunner Schloßstraße and Hadikgasse, on page "Otto Wagner Hofpavillon]]></title>
@@ -60,8 +71,8 @@
       <ext:first_seen>Thu, 10 Sep 2026 22:31:03 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>The diversion takes place via: Schönbrunner Schloßstraße - SchönbrunnerSchloßbrücke - Hadikgasse.The pedestrian and cycling traffic can be maintained.More information … [14.09.2026 – 06.10.2026]</description>
-      <content:encoded><![CDATA[The diversion takes place via: Schönbrunner Schloßstraße - SchönbrunnerSchloßbrücke - Hadikgasse.The pedestrian and cycling traffic can be maintained.More information …<br/>[14.09.2026 – 06.10.2026]]]></content:encoded>
+      <description>The diversion takes place via: Schönbrunner Schloßstraße - Schönbrunner Schloßbrücke - Hadikgasse. The pedestrian and cycling traffic can be maintained. [14.09.2026 – 06.10.2026]</description>
+      <content:encoded><![CDATA[The diversion takes place via: Schönbrunner Schloßstraße - Schönbrunner Schloßbrücke - Hadikgasse. The pedestrian and cycling traffic can be maintained.<br/>[14.09.2026 – 06.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Donaufelder Straße 79 up to 137]]></title>
@@ -71,8 +82,8 @@
       <ext:first_seen>Thu, 10 Sep 2026 22:31:03 +0200</ext:first_seen>
       <ext:starts_at>Thu, 10 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 11 Dec 2026 00:00:00 +0100</ext:ends_at>
-      <description>The diversion in direction 21. District is via: Angyalföldstraße - Leopoldauer Straße.Further information on the public transport concerned is the … [10.09.2026 – 11.12.2026]</description>
-      <content:encoded><![CDATA[The diversion in direction 21. District is via: Angyalföldstraße - Leopoldauer Straße.Further information on the public transport concerned is the …<br/>[10.09.2026 – 11.12.2026]]]></content:encoded>
+      <description>The diversion in the direction of 21. Area is via: Angyalföldstraße - Leopoldauer Straße. [10.09.2026 – 11.12.2026]</description>
+      <content:encoded><![CDATA[The diversion in the direction of 21. Area is via: Angyalföldstraße - Leopoldauer Straße.<br/>[10.09.2026 – 11.12.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -81,8 +92,8 @@
       <pubDate>Thu, 10 Sep 2026 12:16:29 +0200</pubDate>
       <ext:first_seen>Thu, 10 Sep 2026 12:30:48 +0200</ext:first_seen>
       <ext:starts_at>Thu, 10 Sep 2026 12:16:29 +0200</ext:starts_at>
-      <description>Due to construction works, trains between Vienna Hbf (U) and Gramatneusiedl train station from 05.122026 to 07.12.2026 (both from 23:15 clock to 04:40 clock) can not be operated. [Since 10.09.2026]</description>
-      <content:encoded><![CDATA[Due to construction works, trains between Vienna Hbf (U) and Gramatneusiedl train station from 05.122026 to 07.12.2026 (both from 23:15 clock to 04:40 clock) can not be operated.<br/>[Since 10.09.2026]]]></content:encoded>
+      <description>Due to construction works there are no local trains between Vienna Hbf (U) and Gramatneusiedl station from 05.12.2026 to 07.12.2026 (both from 23:15 to 04:40). [Since 10.09.2026]</description>
+      <content:encoded><![CDATA[Due to construction works there are no local trains between Vienna Hbf (U) and Gramatneusiedl station from 05.12.2026 to 07.12.2026 (both from 23:15 to 04:40).<br/>[Since 10.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: diversion]]></title>
@@ -92,8 +103,8 @@
       <ext:first_seen>Thu, 10 Sep 2026 09:30:48 +0200</ext:first_seen>
       <ext:starts_at>Sat, 12 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 10 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of track construction works in the Simmeringer Hauptstraße / Fickeysstraße there is an diversion of line N71. Period: From Saturday, 12. September 2026, start of … [12.09.2026 – 10.09.2027]</description>
-      <content:encoded><![CDATA[Because of track construction works in the Simmeringer Hauptstraße / Fickeysstraße there is an diversion of line N71. Period: From Saturday, 12. September 2026, start of …<br/>[12.09.2026 – 10.09.2027]]]></content:encoded>
+      <description>Because of track construction works in the area of Simmeringer Hauptstraße / Fickeysstraße there is an diversion of line N71. Period: From Saturday, 12. September 2026, start … [12.09.2026 – 10.09.2027]</description>
+      <content:encoded><![CDATA[Because of track construction works in the area of Simmeringer Hauptstraße / Fickeysstraße there is an diversion of line N71. Period: From Saturday, 12. September 2026, start …<br/>[12.09.2026 – 10.09.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N31/30/31: Shuttleworthstraße]]></title>
@@ -103,19 +114,8 @@
       <ext:first_seen>Thu, 10 Sep 2026 01:30:58 +0200</ext:first_seen>
       <ext:starts_at>Mon, 24 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 12 Sep 2026 17:00:00 +0200</ext:ends_at>
-      <description>Stop change of line N31 towards Stammersdrif Stop: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße 76-78X Duration … [24.08.2026 – 12.09.2026]</description>
-      <content:encoded><![CDATA[Stop change of line N31 towards Stammersdrif Stop: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße 76-78X Duration …<br/>[24.08.2026 – 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[17A: works26]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c5c744758fe786bdf11f0b18d15086921621b7a63fed790d658f3d67af8a2001</guid>
-      <pubDate>Wed, 09 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 09 Sep 2026 11:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 15:00:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected. [14.09.2026 – 18.09.2026]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
+      <description>Stop transfer of line N31 towards Stammersdrif Stop: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße 76-78 … [24.08.2026 – 12.09.2026]</description>
+      <content:encoded><![CDATA[Stop transfer of line N31 towards Stammersdrif Stop: Shuttleworthstraße From: Brünner Straße 74 before Shuttleworthstraße To: Brünner Straße 76-78 …<br/>[24.08.2026 – 12.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
