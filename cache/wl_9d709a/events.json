@@ -433,18 +433,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "U2: Klapprampensperre am 12.09.2026",
-    "description": "<p class=\"MsoNormal\">Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung k&ouml;nnen die Klapprampen der U-Bahnz&uuml;ge der Linie U2 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig.</p> <p class=\"MsoNormal\">Due to the high number of passengers attending an event, the folding ramps on line U2 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting.</p> <p class=\"MsoNormal\">Zeitraum | Duration:<br />12.09.2026, 17:15 Uhr - 13.09.2026, 01:00 Uhr</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aca2ae9a776ada7e02c1116471d385d194099a66886e76078d9340efdfca2dc3",
-    "pubDate": "2026-09-12T00:00:00+02:00",
-    "starts_at": "2026-09-12T00:00:00+02:00",
-    "ends_at": "2026-09-13T01:00:00+02:00",
-    "_identity": "wl|hinweis|L=U2|D=2026-09-12|TK=u2 klapprampensperre am 12 09 2026"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "11A: Einstieg bei Vorgartenstraße vor Meiereistraße",
     "description": "Bauarbeiten\nEinstieg bei Vorgartenstraße vor Meiereistraße",
@@ -466,18 +454,6 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Veranstaltung Betrieb ab Ernst-Happel-Stadion",
-    "description": "Veranstaltung\nBetrieb ab Ernst-Happel-Stadion",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d2995b04c903bb084f2bfb47e72067defed09d1b288eaf3deecb9883a85cd47e",
-    "pubDate": "2026-09-12T15:52:05+02:00",
-    "starts_at": "2026-09-12T21:54:41+02:00",
-    "ends_at": "2026-09-13T01:00:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-12|TK=veranstaltung"
   },
   {
     "source": "Wiener Linien",
@@ -518,6 +494,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37: Fremder Verkehrsunfall",
+    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c5967a225000cfa70f0360204f0e15a3823fbe67437b4556e2214a6146b37072",
+    "pubDate": "2026-09-13T00:20:00+02:00",
+    "starts_at": "2026-09-13T00:20:00+02:00",
+    "ends_at": "2026-09-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-09-13|TK=37 fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37: Fahrtbehinderung Fremder Verkehrsunfall",
     "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -526,6 +514,18 @@
     "starts_at": "2026-09-13T00:24:56+02:00",
     "ends_at": "2026-09-13T01:24:00+02:00",
     "_identity": "wl|störung|L=37|D=2026-09-13|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fremder Verkehrsunfall",
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1b09b8c64e85b76d7314d37ec4984b3c553fb50aac8beb5ec08917cf45928806",
+    "pubDate": "2026-09-13T00:20:00+02:00",
+    "starts_at": "2026-09-13T00:20:00+02:00",
+    "ends_at": "2026-09-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=38|D=2026-09-13|TK=38 fremder verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -578,18 +578,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Busse halten Salvatorianerplatz",
-    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
-    "pubDate": "2026-09-12T04:40:29+02:00",
-    "starts_at": "2026-09-12T04:40:29+02:00",
-    "ends_at": "2026-09-13T01:00:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-09-12|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -622,6 +610,54 @@
     "starts_at": "2026-09-13T00:13:25+02:00",
     "ends_at": "2026-09-13T04:53:00+02:00",
     "_identity": "wl|störung|L=N29|D=2026-09-13|TK=busse halten bei taborstrasse 35 37"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten bei Taborstraße 62",
+    "description": "Gleisbauarbeiten\nBusse halten bei Taborstraße 62",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f1d82d92bcc63225e234351a8adc4d3a2b4eb3cf96d140e60e90fd228c1b2a22",
+    "pubDate": "2026-09-13T00:42:28+02:00",
+    "starts_at": "2026-09-13T00:42:28+02:00",
+    "ends_at": "2026-09-13T05:08:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-09-13|TK=busse halten bei taborstrasse 62"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N66: Busse halten Salvatorianerplatz",
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c",
+    "pubDate": "2026-09-13T01:00:27+02:00",
+    "starts_at": "2026-09-13T01:00:27+02:00",
+    "ends_at": "2026-09-13T04:20:00+02:00",
+    "_identity": "wl|störung|L=N66|D=2026-09-13|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N6: Busse halten Neilreichgasse 20-22",
+    "description": "Bauarbeiten Busse halten Neilreichgasse 20-22",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc",
+    "pubDate": "2026-09-13T00:55:27+02:00",
+    "starts_at": "2026-09-13T00:55:27+02:00",
+    "ends_at": "2026-09-13T05:05:00+02:00",
+    "_identity": "wl|störung|L=N6|D=2026-09-13|TK=busse halten neilreichgasse 20 22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N6: Busse halten Quellenstraße 189",
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "702d63d7625c3038f025628d02f9115371cb86897a042af3fea6ba3fa90b5500",
+    "pubDate": "2026-09-13T00:54:27+02:00",
+    "starts_at": "2026-09-13T00:54:27+02:00",
+    "ends_at": "2026-09-13T05:04:00+02:00",
+    "_identity": "wl|störung|L=N6|D=2026-09-13|TK=busse halten quellenstrasse 189"
   },
   {
     "source": "Wiener Linien",
