@@ -4,7 +4,7 @@
 **Schwerpunkt:** Feed — Quellen, Pipeline, Darstellung in `docs/feed.xml` / `docs/feed.en.xml`
 **Datenbasis:** Manual-Full-Refresh Run 93948230655 (Checkout `275ed8d586`, 08:02–08:05 UTC),
 Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
-**Status:** Befunde 1, 2, 8 und 9 behoben (PR #1790, #1791, #1792, #1794), Befunde 3–7 offen und nach Feed-Wirkung neu priorisiert (s. Abschnitt 11)
+**Status:** Befunde 1, 2, 5, 8 und 9 behoben (PR #1790, #1791, #1792, #1794, #1795), Befunde 3, 4, 6, 7 offen und nach Feed-Wirkung priorisiert (s. Abschnitt 11)
 
 ---
 
@@ -362,7 +362,8 @@ für die Quelle „Stadt Wien".
 
 ## 7. Befund 5 — Drei verschiedene Sperren, ein identischer Titel
 
-**Schweregrad: niedrig** · **Status: offen**
+**Wirkung auf den deutschen Feed: verdrängt Meldungen** · **Status: behoben**
+([PR #1795](https://github.com/Origamihase/wien-oepnv/pull/1795))
 
 Im ÖBB-Cache stehen drei Items mit exakt demselben Titel
 `Wien Hauptbahnhof ↔ Gramatneusiedl`. Es sind drei verschiedene Bauzeiträume:
@@ -373,10 +374,61 @@ Im ÖBB-Cache stehen drei Items mit exakt demselben Titel
 | `906928` | 31.10.–30.11.2026 |
 | `910806` | 05.12.–07.12.2026 |
 
-`_apply_route_title` rekonstruiert den Titel aus den Endpunkten und verwirft
-dabei Kategorie und Zeitraum. Im Feed-Reader stehen dann drei ununterscheidbare
-Einträge; der Unterschied steht nur in der Beschreibung. Aktuell fällt es nicht
-auf, weil `MaxItems=10` derzeit nur einen davon durchlässt.
+### Die Ursache war größer als der Befund
+
+Ursprünglich als reines Titel-Problem notiert (`_apply_route_title` verwirft
+Kategorie und Zeitraum). Beim Beheben zeigte sich: Der Zeitraum ist nicht nur
+im Titel abwesend, sondern **nirgends im Item**. ÖBB stellt ihn jeder
+Beschreibung voran —
+
+```
+03.10.2026 - 05.10.2026<br/><br/>Wegen Bauarbeiten können …
+```
+
+— und `build_feed` hat dieses Präfix als Metadatum erkannt, aber ausschließlich
+**verworfen** (`_DATE_RANGE_PREFIX_RE` / `_DATE_SINGLE_PREFIX_RE`). Also blieb
+`starts_at` das **Veröffentlichungsdatum** und `ends_at` leer. Das traf nicht
+drei Items, sondern **alle elf**:
+
+| Titel | Zeitzeile vorher | tatsächlicher Zeitraum |
+| --- | --- | --- |
+| Wien Hauptbahnhof ↔ Felixdorf | `Seit 19.12.2025` | 10.02.–10.11.2026 |
+| Wien Hauptbahnhof ↔ Gramatneusiedl | `Seit 24.08.2026` | 03.10.–05.10.2026 |
+| Wien Hauptbahnhof ↔ Gramatneusiedl | `Seit 10.09.2026` | 05.12.–07.12.2026 |
+| … | … | … |
+
+Die Klammer behauptete „seit August laufend" für eine Sperre, die erst im
+Dezember beginnt. Auf einem Info-Display, das genau diese Klammer zeigt, ist
+das nicht bloß uninformativ, sondern **falsch**.
+
+Dritte Folge: `_drop_old_items` Regel 1 („`ends_at` in der Vergangenheit →
+sofort raus") konnte nie greifen, weil `ends_at` immer `None` war. Erledigte
+Bauarbeiten verschwanden erst über die FIFO-Alterung.
+
+### Korrektur
+
+`src/providers/oebb.py` liest den Zeitraum über `_parse_period` in
+`starts_at`/`ends_at` (Beginn 00:00, Ende 23:59:59 Europe/Vienna, damit ein
+Item am letzten Tag nicht um Mitternacht verschwindet).
+
+**Neue Renderlogik brauchte es keine** — `format_local_times` konnte das längst:
+
+```
+vorher (3x)                    nachher
+  Seit 24.08.2026                03.10.2026 – 05.10.2026
+  Seit 24.08.2026                31.10.2026 – 30.11.2026
+  Seit 10.09.2026                05.12.2026 – 07.12.2026
+```
+
+Ein einzelnes Datum wird zu `Am 01.11.2026`, ein künftiger Beginn ohne Ende zu
+`Ab …`. Fehlt das Präfix, bleibt das bisherige Verhalten; unmögliche
+(`31.02.`) und verdrehte Zeiträume werden abgewiesen, statt den Abruf
+abzubrechen. `pubDate` behält seine RSS-Bedeutung.
+
+Geprüft: Sortierung (`_recency_sort_key`) und Altersfilter richten sich nach
+`first_seen`, nicht nach `starts_at` — ein künftiges Startdatum wirft also
+nichts aus dem Feed. Gegenprobe am echten Pfad: ohne den Fix **eine**
+unterscheidbare Zeitzeile für drei Sperren, mit ihm **drei**.
 
 ---
 
@@ -581,11 +633,11 @@ verstümmelter Eintrag verdrängt dort eine andere Störung vollständig.
 | 8 | Dieselbe Störung zweimal im Feed (38A Demonstration) | verdrängt Meldungen | — | **behoben** |
 | 9 | Ein Feuerwehreinsatz belegt zwei Feed-Plätze (64A) | verdrängt Meldungen | — | **behoben** |
 | 1 | ÖBB-Titel nennt Station doppelt | verstümmelter Titel | — | **behoben** |
-| **5** | **Drei Sperren, ein identischer Titel** | **verdrängt Meldungen (latent)** | **1** | offen |
-| **4** | **Baustellen-Titel bricht mitten im Zitat ab** | **verstümmelter Titel** | **2** | offen (Ursache upstream) |
-| 3 | Übersetzung verstümmelt Liniennummern | keine — nur `feed.en.xml` | 3 | offen |
-| 7 | Übersetzung läuft für Stationstitel endlos neu | keine — nur Laufzeitkosten | 4 | offen |
-| 6 | 444 Warnzeilen/Lauf; Validator meldet 0 | keine — nur Logs | 5 | offen |
+| 5 | Drei Sperren, ein identischer Titel | verdrängt Meldungen | — | **behoben** |
+| **4** | **Baustellen-Titel bricht mitten im Zitat ab** | **verstümmelter Titel** | **1** | offen (Ursache upstream) |
+| 3 | Übersetzung verstümmelt Liniennummern | keine — nur `feed.en.xml` | 2 | offen |
+| 7 | Übersetzung läuft für Stationstitel endlos neu | keine — nur Laufzeitkosten | 3 | offen |
+| 6 | 444 Warnzeilen/Lauf; Validator meldet 0 | keine — nur Logs | 4 | offen |
 
 ---
 
@@ -595,15 +647,14 @@ verstümmelter Eintrag verdrängt dort eine andere Störung vollständig.
 Rangfolge der Ausgaben. Maßgeblich ist nicht mehr, welcher Befund technisch
 schwerer wiegt, sondern **ob er den deutschen Feed betrifft**.
 
-1. **Befund 5 — drei Sperren, ein identischer Titel.** Jetzt an erster Stelle.
-   Drei ÖBB-Items heißen gleich (`Wien Hauptbahnhof ↔ Gramatneusiedl`), ihr
-   Unterschied — der Bauzeitraum — steht nur in der Beschreibung. Auf einem
-   Display, das Titel aus Entfernung und ohne Interaktion zeigt, sind das drei
-   ununterscheidbare Einträge, die zusammen drei der zehn Plätze belegen.
-   Derzeit verdeckt `MaxItems=10`, dass nur einer durchkommt; sobald zwei
-   gleichzeitig durchrutschen, ist es sichtbar. Vorschlag: den Zeitraum in den
-   Titel ziehen, wie es die WL-Items mit `am TT.MM.JJJJ` bereits tun.
-2. **Befund 4 — Baustellen-Titel bricht mitten im Zitat ab.** Der Abbruch kommt
+1. ~~**Befund 5**~~ — erledigt. Beim Beheben zeigte sich, dass die Ursache
+   größer war als der Befund: Nicht nur die drei Titel waren gleich, **allen
+   elf** ÖBB-Items fehlte der Zeitraum, und die Zeitzeile behauptete
+   stattdessen ein „Seit \<Veröffentlichungsdatum\>", das für künftige Sperren
+   schlicht falsch war (s. Abschnitt 7).
+
+2. **Befund 4 — Baustellen-Titel bricht mitten im Zitat ab.** Damit der
+   nächste offene Punkt. Der Abbruch kommt
    aus dem `BEZEICHNUNG`-Feld der Stadt Wien (dort bei 100 Zeichen gekappt),
    steht aber wörtlich im deutschen Feed und sieht auf dem Display wie ein
    Darstellungsfehler aus. Ein Ellipsen-Marker und das Entfernen eines

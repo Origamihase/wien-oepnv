@@ -5,6 +5,42 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: ÖBB-Items trugen das Veröffentlichungsdatum statt des Bauzeitraums
+  (2026-09-12)**:
+  Drei gleichzeitig laufende Sperren auf derselben Strecke standen im Feed
+  ununterscheidbar nebeneinander:
+
+  ```
+  Wien Hauptbahnhof ↔ Gramatneusiedl   [Seit 24.08.2026]
+  Wien Hauptbahnhof ↔ Gramatneusiedl   [Seit 24.08.2026]
+  Wien Hauptbahnhof ↔ Gramatneusiedl   [Seit 10.09.2026]
+  ```
+
+  Ihr einziger Unterschied — der Bauzeitraum — stand ungeparst am Anfang der
+  Beschreibung (`03.10.2026 - 05.10.2026<br/><br/>Wegen Bauarbeiten …`).
+  `build_feed` hat dieses Präfix als Metadatum erkannt, aber nur **verworfen**
+  (`_DATE_RANGE_PREFIX_RE` / `_DATE_SINGLE_PREFIX_RE`). Drei Folgen:
+
+  * `starts_at` blieb das Veröffentlichungsdatum und `ends_at` leer — die
+    Zeitzeile las sich „[Seit 10.09.2026]" für eine Sperre, die erst am
+    05.12.2026 beginnt. Auf einem Info-Display, das genau diese Klammer zeigt,
+    ist das nicht bloß uninformativ, sondern **falsch**. Betroffen waren
+    **alle elf** gecachten ÖBB-Items.
+  * Die drei Sperren waren ohne Öffnen der Beschreibung nicht zu unterscheiden.
+  * Erledigte Bauarbeiten schieden nie aus: `_drop_old_items` Regel 1 braucht
+    ein `ends_at`.
+
+  `src/providers/oebb.py` liest den Zeitraum jetzt über `_parse_period` in
+  `starts_at`/`ends_at` (Beginn 00:00, Ende 23:59:59 Europe/Vienna, damit ein
+  Item am letzten Tag nicht um Mitternacht verschwindet). Neue Renderlogik
+  brauchte es nicht: `format_local_times` erzeugt daraus von sich aus
+  `03.10.2026 – 05.10.2026`, `Am 01.11.2026` oder `Ab …`.
+  Fehlt das Präfix, bleibt das bisherige Verhalten (Veröffentlichungsdatum als
+  Start, kein Ende); unmögliche (`31.02.`) und verdrehte Zeiträume werden
+  abgewiesen, statt den Abruf abzubrechen. `pubDate` behält seine
+  RSS-Bedeutung. Sortierung und Altersfilter sind nicht betroffen — beide
+  richten sich nach `first_seen`, nicht nach `starts_at`.
+  Damit ist Audit-Befund 5 erledigt.
 * **Prioritätsregel: der deutsche RSS-Feed hat Vorrang (2026-09-12)**:
   `AGENTS.md` hält jetzt unter „Priorität der Ausgaben" fest, dass
   `docs/feed.xml` das Produkt ist und alles andere — englische Übersetzung,
