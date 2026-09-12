@@ -233,19 +233,39 @@ def _wl_identity(
 ) -> str:
     """Build a stable, collision-resistant ``_identity`` for a WL item.
 
-    The base key is line-set + start-day, kept deliberately title-/
-    description-insensitive so a disruption's identity (and thus its
-    ``first_seen`` age) stays stable across builds as upstream edits its
-    wording. But that base key is too weak when an item has NO parseable
-    line set OR no start date: two genuinely distinct line-less Hinweise, or
-    two distinct date-less Störungen sharing a line set, then collapse to the
-    same key and ``_dedupe_items`` (which keys on ``_identity`` first —
-    build_feed.py) silently drops one. In those weak cases fold the
-    normalized ``topic_key`` into the key — mirroring the line-less
-    title/hash discriminator the central ``_identity_for_item`` already
-    applies — so distinct topics stay distinct (and true duplicates, which
-    share a topic_key, still dedup). The common lines+date case is left
-    byte-identical, so existing identities (and their first_seen) don't churn.
+    The key is line-set + start-day + ``topic_key``. ``_dedupe_items``
+    (``build_feed.py``) keys on ``_identity`` FIRST and never reaches the
+    finer ``guid``, so whatever this function conflates is dropped from the
+    feed without a trace.
+
+    ``topic_key`` used to be folded in only when the line set or the start
+    date was missing, on the assumption that lines + day identify a
+    disruption on their own. The live data disproves it — the Wiener Linien
+    routinely publish several unrelated disruptions for one line on one day
+    (2026-09-12, ``feed lint``: 4 of 83 items dropped):
+
+        wl|störung|L=44|D=2026-09-11
+            44: Veranstaltung Züge halten Rosensteingasse …
+            44: Veranstaltung Betrieb ab Johann-Nepomuk-Berger-Platz
+            44: Fahrtbehinderung Veranstaltung
+        wl|hinweis|L=49A,50B|D=2026-08-25
+            49A/50B: Mondweg
+            49A/50B: Hüttergasse        <- anderer Ort, verworfen
+
+    Folding ``topic_key`` in unconditionally costs no stability, because it
+    is not a new signal at this layer: the bucket key in :func:`fetch_events`
+    and the per-item ``guid`` are BOTH already built from
+    ``(category, topic_key, line set)``. So
+
+    * true duplicates never reach this comparison — they were merged into one
+      bucket upstream, by exactly that triple;
+    * ``first_seen`` does not churn: :func:`_state_key_for_item` keys it on
+      the ``guid``, which already moves whenever ``topic_key`` moves.
+
+    What the change does drop is the legacy ``_identity``-keyed ``first_seen``
+    fallback in ``_lookup_state`` for pre-guid entries. Measured on the live
+    state: of 53 cached WL items, 48 resolve via ``guid``, 5 are new and 0
+    depend on that fallback.
     """
     id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
     id_day = (
@@ -253,10 +273,7 @@ def _wl_identity(
         if isinstance(real_start, datetime)
         else "None"
     )
-    identity = f"wl|{prefix}|L={id_lines}|D={id_day}"
-    if not id_lines or id_day == "None":
-        identity = f"{identity}|TK={topic_key}"
-    return identity
+    return f"wl|{prefix}|L={id_lines}|D={id_day}|TK={topic_key}"
 
 
 def _is_active(start: datetime | None, end: datetime | None, now: datetime) -> bool:

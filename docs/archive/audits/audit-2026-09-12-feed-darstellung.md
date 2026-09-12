@@ -4,7 +4,7 @@
 **Schwerpunkt:** Feed — Quellen, Pipeline, Darstellung in `docs/feed.xml` / `docs/feed.en.xml`
 **Datenbasis:** Manual-Full-Refresh Run 93948230655 (Checkout `275ed8d586`, 08:02–08:05 UTC),
 Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
-**Status:** Befund 1 in diesem PR behoben, Befunde 2–7 dokumentiert, nicht behoben
+**Status:** Befund 1 behoben (PR #1790), Befund 2 behoben (Nachtrag), Befunde 3–7 dokumentiert, nicht behoben
 
 ---
 
@@ -150,7 +150,7 @@ explizit fest, statt eine Idempotenz zu behaupten, die die Funktion nicht hat.
 
 ## 4. Befund 2 — Verschiedene Störungen werden als Duplikat verworfen
 
-**Schweregrad: hoch** (Informationsverlust) · **Status: offen**
+**Schweregrad: hoch** (Informationsverlust) · **Status: behoben (Nachtrag 2026-09-12)**
 
 `python -m src.cli feed lint` meldet für den aktuellen Datenstand:
 
@@ -194,14 +194,62 @@ selben Tag. Die Absicherung deckt nur die Randfälle ab.
 sofort ab — die feinere `guid` wird nie erreicht. Dabei hat **jedes** der
 kollidierenden Items eine eigene, stabile SHA-256-`guid`.
 
-### Vorschlag
+### Korrektur (Nachtrag 2026-09-12)
 
-Den `topic_key` immer einmischen, nicht nur in den Randfällen — oder in
-`_dedupe_items` den Inhalts-Hash als Tiebreaker nutzen, während `_identity` für
-`first_seen` grob bleibt. Beides trennt die zwei Aufgaben sauber, die der
-Schlüssel derzeit gleichzeitig erfüllen soll (stabile Alterung **und**
-Duplikaterkennung). Wichtig: `first_seen` darf dabei nicht zurückgesetzt
-werden.
+Der `topic_key` wird jetzt **immer** eingemischt.
+
+Die Sorge, das koste `first_seen`-Stabilität, hat sich beim Nachmessen
+aufgelöst — der `topic_key` ist auf dieser Ebene kein neues Signal:
+
+* Der **Bucket-Key** in `fetch_events` ist
+  `make_guid("wl", category, topic_key, Linien-Set)`.
+* Der **`guid`** jedes Items ist aus denselben drei Feldern gebaut.
+* `_state_key_for_item` führt `first_seen` am **`guid`** — nicht an
+  `_identity`. Der Schlüssel bewegt sich also ohnehin mit, sobald sich der
+  `topic_key` bewegt.
+
+Daraus folgt beides, was den Fix trägt: Echte Duplikate erreichen den
+`_identity`-Vergleich gar nicht erst, weil das Bucketing sie vorher zu einem
+Item verschmilzt; und `_identity` ist jetzt eine **Verfeinerung des
+Bucket-Keys**, kann also nichts mehr verwerfen, was der Provider nicht schon
+selbst zusammengeführt hat.
+
+Was tatsächlich entfällt, ist der Legacy-`_identity`-Fallback in
+`_lookup_state` für Einträge aus der Zeit vor der `guid`-Umstellung. Gemessen:
+Von 53 gecachten WL-Items lösen **48** über den `guid` auf, **5** sind neu und
+**0** hängen an diesem Fallback.
+
+**Wirkung**, mit aufgefrischtem Cache gegengeprüft:
+
+| | vorher | nachher |
+| --- | --- | --- |
+| entfernte Duplikate | 4 | **0** |
+| Items im Lint | 79 von 83 | **84 von 84** |
+| Lint-Befund | 3 Duplikat-Gruppen | „Keine strukturellen Probleme gefunden" |
+| Run-Status | `error` | `success` |
+
+Abgesichert durch `tests/test_wl_dedupe_distinct_disruptions.py`. Die Tests
+fahren bewusst den **echten Pfad** — `fetch_events` (Identity-Bildung **und**
+Bucketing) und danach `_dedupe_items` —, nicht `_wl_identity` allein: Ein
+Unit-Test auf der Identity-Funktion wäre vor wie nach dem Fix grün gewesen,
+weil der Defekt erst im Zusammenspiel der beiden Ebenen sichtbar wird. Genau
+diese Lücke hat bei Befund 1 dazu geführt, dass ein Fix als erledigt galt, der
+es nicht war. Gegenprobe: Die drei Regressionstests fallen gegen den
+ungefixten Code um.
+
+### Abgrenzung: die Ebene darunter bleibt
+
+Tragen zwei Titel dasselbe Wort aus `TITLE_TOPIC_TOKENS` (etwa „Umleitung"),
+reduziert `_topic_key_from_title` beide auf dieses Token, und das **Bucketing**
+fasst sie zu einem Item zusammen — mit dem besser bewerteten Titel und der
+Vereinigung von Haltestellen und Extras. Das ist eine gewollte Aggregation
+(„ein Item pro Kategorie + Topic + Linienset") und passiert eine Ebene vor
+`_identity`. Dieser Fix verursacht sie nicht und hebt sie nicht auf; ein Test
+hält die Grenze fest, damit beide Ebenen nicht verwechselt werden.
+
+Die echten 49A/50B-Titel sind davon nicht betroffen: „Mondweg" und
+„Hüttergasse" enthalten kein Topic-Token, fallen auf den Titel-Kern zurück und
+bleiben damit unterscheidbar.
 
 ---
 
@@ -372,7 +420,7 @@ von 50 MB, Retention 600 Tage.
 | # | Befund | Schwere | Sichtbar im Feed | Status |
 | --- | --- | --- | --- | --- |
 | 1 | ÖBB-Titel nennt Station doppelt | hoch | ja | **behoben** |
-| 2 | Verschiedene Störungen als Duplikat verworfen (4/83) | hoch | ja (fehlend) | offen |
+| 2 | Verschiedene Störungen als Duplikat verworfen (4/83) | hoch | ja (fehlend) | **behoben** |
 | 3 | Übersetzung verstümmelt Liniennummern | mittel | ja (EN) | offen |
 | 4 | Baustellen-Titel bricht mitten im Zitat ab | niedrig | ja | offen (upstream) |
 | 5 | Drei Sperren, ein Titel | niedrig | latent | offen |
@@ -383,10 +431,9 @@ von 50 MB, Retention 600 Tage.
 
 ## 11. Empfohlene Reihenfolge
 
-1. **Befund 2** zuerst — es ist der einzige, bei dem Abonnenten Meldungen
-   **gar nicht** zu sehen bekommen. Fehlende Information wiegt schwerer als
-   falsch formatierte.
-2. **Befund 3** danach — klar abgegrenzt, eine Regex plus Tests.
+1. ~~**Befund 2**~~ — erledigt (Nachtrag 2026-09-12). Es war der einzige, bei
+   dem Abonnenten Meldungen **gar nicht** zu sehen bekamen.
+2. **Befund 3** ist damit der nächste — klar abgegrenzt, eine Regex plus Tests.
 3. **Befund 6** als Aufräumarbeit: erst wenn die Logs ruhig sind, fällt die
    nächste echte Warnung auf.
 4. Befunde 4, 5, 7 nach Bedarf.
