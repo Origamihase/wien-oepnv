@@ -483,25 +483,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "18: Veranstaltung Betrieb ab Ernst-Happel-Stadion",
-    "description": "Veranstaltung\nBetrieb ab Ernst-Happel-Stadion",
+    "description": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Ernst-Happel-Stadion. Voraussichtliche Dauer: 22:00 Uhr. Grund: Veranstaltung im Bereich Ernst-Happel-Stadion.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "d2995b04c903bb084f2bfb47e72067defed09d1b288eaf3deecb9883a85cd47e",
     "pubDate": "2026-09-12T15:52:05+02:00",
-    "starts_at": "2026-09-12T15:53:35+02:00",
-    "ends_at": "2026-09-12T22:00:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-12|TK=veranstaltung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Verkehrsunfall",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
-    "pubDate": "2026-09-12T15:19:00+02:00",
-    "starts_at": "2026-09-12T15:19:00+02:00",
+    "starts_at": "2026-09-12T16:23:40+02:00",
     "ends_at": "2026-09-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-09-12|TK=1 verkehrsunfall"
+    "_identity": "wl|störung|L=18|D=2026-09-12|TK=veranstaltung"
   },
   {
     "source": "Wiener Linien",
@@ -514,18 +502,6 @@
     "starts_at": "2026-09-12T05:00:29+02:00",
     "ends_at": "2026-09-12T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-09-12|TK=bhf hütteldorf öbb ersatzbus für 80"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
-    "pubDate": "2026-09-12T15:21:31+02:00",
-    "starts_at": "2026-09-12T15:21:31+02:00",
-    "ends_at": "2026-09-12T16:20:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-09-12|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -555,7 +531,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "38A: Demonstration Haltestelle Kahlenberg wird nicht eingehalten",
-    "description": "Linie 38A: Die Haltestelle Kahlenberg kann derzeit in beiden Fahrtrichtungen nicht eingehalten werden. Busse mit Fahrziel Kahlenberg werden Cobenzl-Parkplatz kurzgeführt. Voraussichtliche Dauer: 19:00 Uhr. Grund: Demonstration im Haltestellenbereich Kahlenberg",
+    "description": "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "18d3b2e3d318b5fb452221ec4faedb0567dc4c837b2fe370747095af60cf8402",
     "pubDate": "2026-09-12T11:47:00+02:00",
@@ -608,20 +584,8 @@
     "guid": "6fff906190d24de7ff0bab120edcb9a23372ef45c19581e5b0b055218cae3990",
     "pubDate": "2026-09-12T13:43:00+02:00",
     "starts_at": "2026-09-12T13:43:00+02:00",
-    "ends_at": "2026-09-12T23:55:00+02:00",
+    "ends_at": "2026-09-12T16:29:00+02:00",
     "_identity": "wl|störung|L=60A|D=2026-09-12|TK=feuerwehreinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "64A: Feuerwehreinsatz",
-    "description": "Linie 64A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "86729781e6529f95c124afe7cfece6eea446738a603320a6025e584589a03f51",
-    "pubDate": "2026-09-12T13:43:00+02:00",
-    "starts_at": "2026-09-12T13:43:00+02:00",
-    "ends_at": "2026-09-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=64A|D=2026-09-12|TK=feuerwehreinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -662,30 +626,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Verkehrsunfall",
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
-    "pubDate": "2026-09-12T15:19:00+02:00",
-    "starts_at": "2026-09-12T15:19:00+02:00",
-    "ends_at": "2026-09-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-09-12|TK=71 verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
-    "pubDate": "2026-09-12T15:23:31+02:00",
-    "starts_at": "2026-09-12T15:23:31+02:00",
-    "ends_at": "2026-09-12T16:23:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-09-12|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -698,18 +638,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Rettungseinsatz",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be8d2380781f3f47e357b9d6eb7d4a923aff0407f16a0b34798f79852945fd54",
-    "pubDate": "2026-09-12T14:03:00+02:00",
-    "starts_at": "2026-09-12T14:03:00+02:00",
-    "ends_at": "2026-09-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-09-12|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Verkehrsunfall",
     "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -718,18 +646,6 @@
     "starts_at": "2026-09-12T15:19:00+02:00",
     "ends_at": "2026-09-12T23:55:00+02:00",
     "_identity": "wl|störung|L=D|D=2026-09-12|TK=d verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
-    "pubDate": "2026-09-12T15:22:31+02:00",
-    "starts_at": "2026-09-12T15:22:31+02:00",
-    "ends_at": "2026-09-12T16:22:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-09-12|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
