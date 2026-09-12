@@ -308,17 +308,6 @@ _LEADING_LINE_PREFIX_RE = re.compile(
 )
 
 
-# ``HH:MM`` ist eine Uhrzeit, kein ``Label: Rest``-Trenner. Ohne diesen
-# Guard zerschneidet die Präfix-Schleife in :func:`_clean_title_keep_places`
-# den Titel „Sperre 17:30 Uhr Wien Hbf" am Doppelpunkt der UHRZEIT: Als
-# Präfix bleibt „Sperre 17", und das akzeptiert :func:`_is_category`, weil
-# es nur die WÖRTER prüft („sperre" steht in ``NON_LOCATION_PREFIXES``).
-# Übrig blieb „30 Uhr Wien Hbf" — die Stunde war weg und der Feed zeigte
-# „30 Uhr Wien".
-_CLOCK_PREFIX_TAIL_RE = re.compile(r"\d{1,2}\s*$")
-_CLOCK_MINUTES_RE = re.compile(r"\d{2}")
-
-
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
     t = html.unescape(t)
@@ -371,14 +360,17 @@ def _clean_title_keep_places(t: str) -> str:
 
         # NEU: Präfix iterativ vom jeweiligen Segment abtrennen
         while True:
-            match = re.match(r"^\s*([^:]+):\s*", segment)
+            # ``:(?!\d)`` — ein Doppelpunkt direkt vor einer Ziffer gehört zu
+            # einer UHRZEIT, nicht zu einem ``Label: Rest``-Präfix. Ohne diese
+            # Bedingung zerschnitt die Schleife „Sperre 17:30 Uhr Wien Hbf" am
+            # Doppelpunkt der Uhrzeit: Als Präfix blieb „Sperre 17", und das
+            # akzeptiert :func:`_is_category`, weil es nur die WÖRTER prüft
+            # („sperre" steht in ``NON_LOCATION_PREFIXES``). Übrig blieb
+            # „30 Uhr Wien Hbf" — die Stunde war weg und der Feed zeigte
+            # „30 Uhr Wien". Echte Label-Präfixe sind nicht betroffen, auch
+            # nicht solche, die auf einer Ziffer enden („Linie 5: kein Halt").
+            match = re.match(r"^\s*([^:]+):(?!\d)\s*", segment)
             if not match:
-                break
-
-            # Nie innerhalb einer Uhrzeit schneiden (s. _CLOCK_PREFIX_TAIL_RE).
-            if _CLOCK_PREFIX_TAIL_RE.search(match.group(1)) and _CLOCK_MINUTES_RE.match(
-                segment[match.end():]
-            ):
                 break
 
             prefix = match.group(1).strip()
