@@ -4,7 +4,7 @@
 **Schwerpunkt:** Feed — Quellen, Pipeline, Darstellung in `docs/feed.xml` / `docs/feed.en.xml`
 **Datenbasis:** Manual-Full-Refresh Run 93948230655 (Checkout `275ed8d586`, 08:02–08:05 UTC),
 Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
-**Status:** Befunde 1, 2, 3, 4, 5, 8 und 9 behoben (PR #1790–#1799). Offen: 7 und 6 — beide ohne Feed-Wirkung (s. Abschnitt 11)
+**Status:** Befunde 1, 2, 3, 4, 5, 7, 8 und 9 behoben (PR #1790–#1800). Offen: nur noch 6 — Log-Rauschen, keine Feed-Wirkung (s. Abschnitt 11)
 
 ---
 
@@ -16,8 +16,8 @@ Die Pipeline ist stabil, die CI ist grün, der Feed ist wohlgeformt.
 
 **Die Darstellung hat Mängel.** Neun Befunde — zwei davon kamen erst beim
 Beheben der anderen dazu (8 beim Nachprüfen von 2, 9 beim Neupriorisieren).
-**Sieben sind behoben.** Sechs davon wirkten auf den deutschen Feed, der
-siebte (Befund 3) auf die englische Übersetzung:
+**Acht sind behoben.** Sechs davon wirkten auf den deutschen Feed, Befund 3
+auf die englische Übersetzung, Befund 7 auf die Laufzeit:
 
 | # | Befund | PR |
 | --- | --- | --- |
@@ -28,6 +28,7 @@ siebte (Befund 3) auf die englische Übersetzung:
 | 5 | ÖBB-Items trugen das Veröffentlichungsdatum statt des Bauzeitraums | [#1795](https://github.com/Origamihase/wien-oepnv/pull/1795) |
 | 4 | Drei von 22 Baustellen-Titeln brachen mitten im Wort ab | [#1798](https://github.com/Origamihase/wien-oepnv/pull/1798) |
 | 3 | Übersetzung erfand Liniennummern (nur EN) | [#1799](https://github.com/Origamihase/wien-oepnv/pull/1799) |
+| 7 | Übersetzung lief für Stationstitel bei jedem Build neu | [#1800](https://github.com/Origamihase/wien-oepnv/pull/1800) |
 
 Zwei Muster ziehen sich durch:
 
@@ -54,9 +55,9 @@ fielen erst beim Abzählen der Live-Tokens auf (s. Abschnitt 5). **Dreimal von
 sieben war der Befund beim Beheben größer als beim Notieren** — Nachmessen an
 den Live-Daten lohnt sich vor jeder Korrektur.
 
-**Offen bleiben die Befunde 7 und 6** — beide ohne jede Feed-Wirkung: 7 kostet
-Laufzeit, 6 erzeugt Log-Rauschen. Beide sind belegt und mit Reproduktion
-dokumentiert; jeder gehört in eine eigene, einzeln prüfbare Änderung.
+**Offen bleibt nur noch Befund 6** — Log-Rauschen ohne jede Feed-Wirkung:
+444 Warnzeilen pro Lauf über doppelte Stations-Aliase. Belegt und mit
+Reproduktion dokumentiert.
 
 ---
 
@@ -547,7 +548,8 @@ Warnung dargestellt. Sinnvoller wäre `INFO` mit einer eigenen Kennzeichnung
 
 ## 9. Befund 7 — Übersetzung, die nie konvergiert
 
-**Schweregrad: niedrig (Kosten)** · **Status: offen**
+**Wirkung auf den deutschen Feed: keine** (nur Laufzeitkosten) · **Status: behoben**
+([PR #1800](https://github.com/Origamihase/wien-oepnv/pull/1800))
 
 Im Build-Log, jedes Mal:
 
@@ -563,9 +565,33 @@ identisch mit der deutschen. Die Bedingung ist damit dauerhaft erfüllt: Das
 Modell läuft für diese Items bei **jedem** Build erneut, ohne je ein anderes
 Ergebnis zu erzeugen.
 
-Bei einem Build alle 30 Minuten summiert sich das. Ein Marker „geprüft,
-identisch ist korrekt" (etwa ein Flag neben `epoch`) würde die Schleife
-schließen.
+Bei einem Build alle 30 Minuten summiert sich das. Gemessen: fünf Builds,
+fünf Modellläufe, fünfmal dasselbe Ergebnis. Im gespeicherten Zustand tragen
+**227** Einträge einen solchen Streckentitel.
+
+### Korrektur
+
+Ein gespeicherter String allein kann die beiden Fälle nicht trennen — „ein
+kaputter Build hat hier die Quelle hinterlegt" sieht aus wie „das Modell lief
+und seine Ausgabe entspricht der Quelle". Ein Marker kann es, weil er **nur
+dort** geschrieben wird, wo sich die Fälle unterscheiden: nachdem
+`_translate_text_attempt` ein Ergebnis ungleich `None` geliefert hat. Ein
+fehlgeschlagener Versuch liefert `None` und speichert nichts; ein Build, der
+nicht übersetzen konnte, kann ein Feld also nie als „identisch ist korrekt"
+markieren.
+
+**Der Drift-Schutz wird eingegrenzt, nicht entfernt.** Bestandseinträge ohne
+Marker — genau der kaputte Altbestand, für den der Guard existiert — werden
+weiterhin einmal neu übersetzt und dabei markiert. Ein Test pinnt beide
+Richtungen.
+
+Der Marker liegt neben `en` statt darin, damit die `en`-Teilstruktur eine
+homogene Feld-zu-String-Abbildung bleibt. Er ist epoch-gebunden und wird bei
+der Eviction zusammen mit `en` verworfen: Eine spätere Epoch mit besserem
+Glossar kann denselben Text sehr wohl übersetzen. Er wird zurückgenommen,
+sobald ein Lauf doch eine echte Übersetzung liefert, und der Self-Heal für
+Rest-Platzhalter (s. Audit 2026-09-05 §5) schlägt ihn weiterhin — ein rohes
+Sentinel darf nie aus dem Cache kommen.
 
 Der Epoch-Mechanismus selbst arbeitet korrekt: `_TRANSLATION_CACHE_EPOCH = 5`,
 veraltete Einträge werden bei Verwendung verworfen. Von den 2531 gespeicherten
@@ -719,8 +745,8 @@ verstümmelter Eintrag verdrängt dort eine andere Störung vollständig.
 | 5 | Drei Sperren, ein identischer Titel | verdrängt Meldungen | — | **behoben** |
 | 4 | Baustellen-Titel bricht mitten im Zitat ab (3 von 22) | verstümmelter Titel | — | **behoben** |
 | 3 | Übersetzung erfand Liniennummern (13 von 71 Tokens ungeschützt) | keine — nur `feed.en.xml` | — | **behoben** |
-| **7** | **Übersetzung läuft für Stationstitel endlos neu** | **keine — nur Laufzeitkosten** | **1** | offen |
-| 6 | 444 Warnzeilen/Lauf; Validator meldet 0 | keine — nur Logs | 2 | offen |
+| 7 | Übersetzung lief für Stationstitel endlos neu | keine — nur Laufzeitkosten | — | **behoben** |
+| **6** | **444 Warnzeilen/Lauf; Validator meldet 0** | **keine — nur Logs** | **1** | offen |
 
 ---
 
@@ -746,15 +772,16 @@ schwerer wiegt, sondern **ob er den deutschen Feed betrifft**.
    Formen, die im Befund fehlten (s. Abschnitt 5).
 
 **Damit ist kein offener Befund mehr übrig, der einen der beiden Feeds
-berührt.** Die verbleibenden zwei kosten Laufzeit und erzeugen Log-Rauschen:
+berührt.** Was blieb, kostete Laufzeit oder erzeugte Log-Rauschen:
 
-1. **Befund 7** — die Übersetzung läuft für Stationstitel bei jedem Lauf neu,
-   weil `cached == text` als Fehlschlag gewertet wird und einen erneuten
-   Versuch auslöst. Keine Feed-Wirkung, nur Laufzeit.
-2. **Befund 6** — 444 Warnzeilen pro Lauf über doppelte Stations-Aliase,
-   während der Validator „0 alias issues" meldet. Bleibt sinnvoll, weil ruhige
-   Logs die nächste echte Warnung sichtbar machen, aber es steht keine Anzeige
-   daran.
+4. ~~**Befund 7**~~ — erledigt. `cached == text` galt als Beleg für einen
+   kaputten Build; für Titel aus reinen Stationsnamen ist die Gleichheit aber
+   die richtige Antwort, und die Schleife schloss sich nie (s. Abschnitt 9).
+
+**Offen ist damit nur noch Befund 6** — 444 Warnzeilen pro Lauf über doppelte
+Stations-Aliase, während der Validator „0 alias issues" meldet. Bleibt
+sinnvoll, weil ruhige Logs die nächste echte Warnung sichtbar machen, aber es
+steht keine Anzeige daran.
 
 Unverändert offen und außerhalb jedes PRs: In den Branch-Protection-Regeln für
 `main` ist **„Allow force pushes" weiterhin aktiv** — die Ursache des
