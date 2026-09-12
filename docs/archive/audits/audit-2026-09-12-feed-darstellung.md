@@ -4,7 +4,7 @@
 **Schwerpunkt:** Feed — Quellen, Pipeline, Darstellung in `docs/feed.xml` / `docs/feed.en.xml`
 **Datenbasis:** Manual-Full-Refresh Run 93948230655 (Checkout `275ed8d586`, 08:02–08:05 UTC),
 Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
-**Status:** Befund 1 behoben (PR #1790), Befund 2 behoben (Nachtrag), Befunde 3–7 dokumentiert, nicht behoben
+**Status:** Befunde 1, 2 und 8 behoben (PR #1790, #1791 und Nachtrag), Befunde 3–7 dokumentiert, nicht behoben
 
 ---
 
@@ -169,10 +169,17 @@ Nach Deduplizierung: 79 (entfernte Duplikate: 4)
     3A: Busse halten Kärntner Ring 5
 ```
 
-Das sind keine Duplikate. „Mondweg" und „Hüttergasse" sind zwei verschiedene
-Orte; „Netzänderung ab Riemergasse" und „Busse halten Kärntner Ring 5" zwei
-verschiedene Sachverhalte. Jeweils einer wird veröffentlicht, die anderen
-verschwinden — **4 von 83 Items, rund 5 %**.
+Jeweils einer wird veröffentlicht, die anderen verschwinden — **4 von 83
+Items, rund 5 %**.
+
+> **Korrektur (Nachtrag 2026-09-12, nach dem Fix):** Der Satz „Das sind keine
+> Duplikate" stand hier ursprünglich für alle vier Items und war zu
+> selbstsicher. Belastbar ist er für **`49A/50B`** — „Mondweg" und
+> „Hüttergasse" sind zwei verschiedene Straßen. Die **Linie-44-Trias** dagegen
+> ist bei genauerem Hinsehen **ein** Ereignis, aus drei Blickwinkeln gemeldet;
+> sie gehört zusammengeführt, nur eben qualitätsbewusst und nicht durch blindes
+> Verwerfen. Das ist in Befund 8 nachgetragen. `3A` bleibt offen — dort gibt es
+> kein gemeinsames Ursachenwort, an dem sich das entscheiden ließe.
 
 ### Ursache
 
@@ -415,6 +422,74 @@ von 50 MB, Retention 600 Tage.
 
 ---
 
+## 9a. Befund 8 — Dieselbe Störung zweimal im Feed (Nachtrag)
+
+**Schweregrad: mittel** (sichtbar im Feed) · **Status: behoben (Nachtrag)**
+
+Nach dem Fix zu Befund 2 standen im Refresh vom 2026-09-12, 10:30 UTC zwei
+Meldungen zur selben Sperre im Feed:
+
+```
+38A: Demonstration
+38A: Demonstration Haltestelle Kahlenberg wird nicht eingehalten
+```
+
+Beide beschreiben, dass die Haltestelle Kahlenberg nicht bedient wird.
+
+### Ursache
+
+Eine Lücke in `TITLE_TOPIC_TOKENS` (`src/providers/wl_text.py`). Steht das
+Ursachen-Wort nicht in dieser Menge, fällt `_topic_key_from_title` auf den
+ganzen Titel-Kern zurück — dann ist jede Formulierungsvariante ein eigenes
+Topic, ein eigener Bucket, am Ende ein eigenes Item. `demonstration` und
+`veranstaltung` fehlten, obwohl sie in dieselbe Klasse gehören wie die bereits
+gelisteten `polizeieinsatz` und `rettungseinsatz`.
+
+Vor dem Fix zu Befund 2 fiel das nicht auf: `_dedupe_items` warf solche Paare
+über den groben `_identity` (Linie + Tag) blind zusammen. Das war **keine
+Zusammenführung, sondern eine Maskierung** — sie traf genauso Meldungen, die
+wirklich verschieden waren. Der Fix hat die Maskierung entfernt und damit
+sichtbar gemacht, was darunter lag.
+
+### Korrektur
+
+`demonstration` und `veranstaltung` ergänzt — nur diese beiden, beide durch
+Live-Daten belegt. Zusammengeführt wird damit an der richtigen Stelle: im
+Bucketing von `fetch_events`, wo der bessere Titel **und** die bessere
+Beschreibung gewinnen (`_title_quality_key` / `_description_info_score`) und
+Haltestellen wie Extras vereinigt werden.
+
+Das Ergebnis schlägt beide Eingaben:
+
+| | Titel | Text |
+| --- | --- | --- |
+| Meldung A | `38A: Demonstration` | ausführlich, gut lesbar |
+| Meldung B | `38A: Demonstration Haltestelle Kahlenberg …` | knapp |
+| **zusammengeführt** | **wie B** | **wie A** |
+
+Wirkung auf die vier Gruppen aus Befund 2:
+
+| Gruppe | vorher | nachher | richtig? |
+| --- | --- | --- | --- |
+| `38A: Demonstration` ×2 | 2 Items | **1** | ja — dieselbe Sperre |
+| `44: Veranstaltung` ×3 | 3 Items | **1** | ja — ein Ereignis, drei Facetten |
+| `49A/50B: Mondweg`/`Hüttergasse` | 2 Items | **2** | ja — zwei Straßen |
+| `3A: Netzänderung`/`Busse halten` | 2 Items | **2** | kein gemeinsames Ursachenwort |
+
+### Was daran zu lernen ist
+
+Befund 2 und Befund 8 sind zwei Hälften derselben Sache. Der grobe
+`_identity`-Schlüssel hat **beide** Fehler gleichzeitig verdeckt: Er warf
+Verschiedenes weg und ließ Gleiches zusammenfallen — und weil das Ergebnis
+zufällig oft passabel aussah, fiel keiner der beiden auf. Erst das Entfernen
+der Maskierung hat die zweite Hälfte sichtbar gemacht.
+
+Die Tests halten jetzt beide Richtungen fest: Verschiedenes muss überleben,
+Gleiches muss zusammengeführt werden — und zwar im Bucketing, wo der Merge
+qualitätsbewusst ist, nicht weiter unten durch blindes Verwerfen.
+
+---
+
 ## 10. Befundübersicht
 
 | # | Befund | Schwere | Sichtbar im Feed | Status |
@@ -426,6 +501,7 @@ von 50 MB, Retention 600 Tage.
 | 5 | Drei Sperren, ein Titel | niedrig | latent | offen |
 | 6 | 444 Warnzeilen/Lauf; Validator meldet 0 | niedrig | nein | offen |
 | 7 | Übersetzung läuft für Stationstitel endlos neu | niedrig | nein | offen |
+| 8 | Dieselbe Störung zweimal im Feed (38A Demonstration) | mittel | ja | **behoben** |
 
 ---
 
