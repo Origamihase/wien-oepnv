@@ -5,6 +5,46 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Sentinel-Allowlists brechen nicht mehr an fremden Änderungen (2026-09-12)**:
+  Zwei Sentinel-Walker adressierten ihre Ausnahmen über **absolute
+  Zeilennummern**. Jede Einfügung oberhalb einer Fundstelle verschob sie, und
+  der Test schlug dann mit einer Meldung fehl, die auf einen `json.dumps()`
+  zeigte, den die Änderung nie berührt hatte.
+
+  Das ist an einem Nachmittag zweimal passiert: PR #1799 (zwei erweiterte
+  Regex-Konstanten) verschob die Fundstellen in `_identity_for_item` von
+  2689/2698 auf 2744/2753, PR #1800 (zwei neue Hilfsfunktionen) erneut auf
+  2809/2818. Jedes Mal kostete es einen vollen CI-Durchlauf zur Diagnose und
+  eine Korrektur an drei Stellen. Beide Walker pinnten zudem dieselbe Zeile
+  `src/places/hafas_client.py:289` — eine Einfügung dort brach zwei Sentinels
+  gleichzeitig.
+
+  Die ALLOWLIST ist jetzt eine Abbildung von **(Pfad, umschließender Scope)**
+  auf die dort erwartete **Anzahl** ausgenommener Fundstellen:
+
+  ```
+  ("src/build_feed.py", "_identity_for_item"): 2
+  ```
+
+  Die Anzahl hält den gröberen Schlüssel ehrlich: Eine ganze Funktion
+  freizugeben würde einen **neuen** ungeschützten Writer durchwinken, der
+  später dort hinzukommt. Mit der Anzahl wird genau der gemeldet, während die
+  dokumentierten still bleiben. Eine Anzahl anzuheben ist damit eine bewusste
+  Handlung, die wie bisher in einen PR mit eigener Begründung gehört.
+
+  Beide Richtungen sind nachgewiesen: 60 Leerzeilen oberhalb der Fundstellen
+  lassen die Sentinels grün, ein zusätzlicher ungepinnter `json.dumps()` in
+  derselben Funktion lässt sie fehlschlagen.
+
+  Die Fehlermeldung sagt im Überschreitungsfall ausdrücklich, dass die
+  genannte Zeile **die überzählige nach Position** ist und nicht zwingend die
+  neu hinzugekommene — innerhalb eines Scopes sind die Fundstellen für den
+  Walker ununterscheidbar, und das vorzutäuschen wäre schlechter als es zu
+  sagen.
+
+  Betrifft nur die Testinfrastruktur: `test_sentinel_allow_nan_writer_audit_walker`
+  und `test_sentinel_trojan_source_audit_walker`. Kein Produktionscode, kein
+  Feed-Inhalt.
 * **Stationsalias-Kollisionen: Log beruhigt, Prüfung nachgerüstet (2026-09-12)**:
   `_station_lookup` protokollierte pro Prozess **111 WARNING-Zeilen** über
   doppelte Stationsaliase — bei vier Provider-Läufen pro Build genug, um eine

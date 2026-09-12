@@ -119,7 +119,9 @@ shape so the allowlist cannot silently grow.
 from __future__ import annotations
 
 import ast
+from collections.abc import Mapping
 from pathlib import Path
+from types import MappingProxyType
 
 import pytest
 
@@ -130,20 +132,36 @@ SCAN_TREES = ("src", "scripts")
 # tolerates. Each entry pairs a documented sibling defence that
 # replaces the explicit ``allow_nan=False`` pin. See the module
 # docstring above for the rationale narrative on each entry.
-ALLOWLIST: frozenset[tuple[str, int]] = frozenset(
+# Keyed on ``(relative_path, enclosing scope)`` with the number of
+# unprotected sites expected there — NOT on line numbers.
+#
+# Line numbers were the original key and they made this sentinel fail for
+# reasons that had nothing to do with JSON writers: any edit above an
+# allowlisted site shifted it, and the failure message then pointed at a
+# ``json.dumps()`` the change had never touched. It happened twice in one
+# afternoon on 2026-09-12 (PR #1799 moved 2689/2698 → 2744/2753, PR #1800
+# moved them again to 2809/2818), each time costing a full CI cycle to
+# diagnose and an edit in three places to silence.
+#
+# The count is what keeps the coarser key honest: allowlisting a whole
+# function would wave through a NEW unprotected writer added to it later.
+# With the count, that new site is reported while the documented ones stay
+# silent. Raising a count is therefore a deliberate act that belongs in a PR
+# with its own justification, exactly as adding an entry always did.
+ALLOWLIST: Mapping[tuple[str, str], int] = MappingProxyType(
     {
         # HAFAS wire-format request body; bytes are MAC-signed by the
         # Mgate protocol and sent to the upstream HAFAS endpoint, not
         # committed to any operator-facing sidecar. The threat model
         # for the non-finite-literal axis (committed-to-main artefact)
         # does not apply.
-        ("src/places/hafas_client.py", 289),
+        ("src/places/hafas_client.py", "_serialise_payload"): 1,
         # Feed-item identity hash compute — the serialised bytes flow
         # into ``hashlib.sha256(...).hexdigest()`` on the very next
         # line and are not retained anywhere else. No parser-consumed
-        # artefact, so the threat model does not apply.
-        ("src/build_feed.py", 2809),
-        ("src/build_feed.py", 2818),
+        # artefact, so the threat model does not apply. Two sites: the
+        # lines-present and the lines-absent branch.
+        ("src/build_feed.py", "_identity_for_item"): 2,
     }
 )
 
@@ -216,12 +234,44 @@ def _has_explicit_allow_nan_false(node: ast.Call) -> bool:
     return False
 
 
-def _audit_module(path: Path, tree: ast.AST) -> list[tuple[int, str]]:
-    """Return ``[(lineno, method), ...]`` for every unprotected JSON
-    writer site in *path*. The caller is responsible for filtering
-    against ``ALLOWLIST``."""
-    findings: list[tuple[int, str]] = []
+def _build_parent_map(tree: ast.AST) -> dict[int, ast.AST]:
+    parents: dict[int, ast.AST] = {}
+    for parent in ast.walk(tree):
+        for child in ast.iter_child_nodes(parent):
+            parents[id(child)] = parent
+    return parents
+
+
+def _enclosing_scope(parents: dict[int, ast.AST], node: ast.AST) -> str:
+    """Return the dotted name of the smallest enclosing def/class.
+
+    This is the allowlist key, deliberately NOT the line number: a site is
+    identified by where it lives in the code, not by how far down the file it
+    happens to sit. Any edit above it used to shift every entry and fail this
+    sentinel for a reason that had nothing to do with JSON writers.
+
+    Module-level calls get ``"<module>"`` so they are addressable too.
+    """
+    names: list[str] = []
+    cur = parents.get(id(node))
+    while cur is not None:
+        if isinstance(cur, ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef):
+            names.append(cur.name)
+        cur = parents.get(id(cur))
+    return ".".join(reversed(names)) or "<module>"
+
+
+def _audit_module(path: Path, tree: ast.AST) -> list[tuple[int, str, str]]:
+    """Return ``[(lineno, method, scope), ...]`` for every unprotected JSON
+    writer site in *path*.
+
+    ``scope`` is the dotted name of the enclosing def/class and is what the
+    caller filters on; ``lineno`` is carried for the failure message only, so
+    a reader can still jump straight to the site.
+    """
+    findings: list[tuple[int, str, str]] = []
     json_aliases = _collect_json_module_aliases(tree)
+    parents = _build_parent_map(tree)
 
     for node in ast.walk(tree):
         if not isinstance(node, ast.Call) or not _is_json_writer_call(
@@ -232,7 +282,7 @@ def _audit_module(path: Path, tree: ast.AST) -> list[tuple[int, str]]:
             continue
         func = node.func
         assert isinstance(func, ast.Attribute)  # narrowed by _is_json_writer_call
-        findings.append((node.lineno, func.attr))
+        findings.append((node.lineno, func.attr, _enclosing_scope(parents, node)))
     return findings
 
 
@@ -257,7 +307,7 @@ def test_every_json_writer_pins_allow_nan_false() -> None:
     sites and MAC-signed wire-protocol bytes; see :data:`ALLOWLIST`
     docstring for the documented justifications.
     """
-    all_findings: list[tuple[Path, int, str]] = []
+    by_scope: dict[tuple[str, str], list[tuple[Path, int, str]]] = {}
     for path in _all_python_files():
         rel = path.relative_to(REPO_ROOT)
         try:
@@ -268,11 +318,29 @@ def test_every_json_writer_pins_allow_nan_false() -> None:
             tree = ast.parse(source, filename=str(path))
         except SyntaxError:
             continue
-        for lineno, method in _audit_module(path, tree):
-            key = (str(rel), lineno)
-            if key in ALLOWLIST:
-                continue
-            all_findings.append((rel, lineno, method))
+        for lineno, method, scope in _audit_module(path, tree):
+            by_scope.setdefault((str(rel), scope), []).append((rel, lineno, method))
+
+    # An allowlisted scope absorbs only as many sites as it is documented for.
+    # Anything beyond that budget is a NEW unprotected writer in a place that
+    # was vetted for a smaller number, so it is reported.
+    all_findings: list[tuple[Path, int, str]] = []
+    over_budget: list[str] = []
+    for key, sites in sorted(by_scope.items()):
+        allowed = ALLOWLIST.get(key, 0)
+        surplus = sorted(sites)[allowed:]
+        all_findings.extend(surplus)
+        if allowed and surplus:
+            # Honest about what the line number means here: the sites inside
+            # one scope are indistinguishable to this walker — all are
+            # unprotected writers — so the surplus is reported positionally
+            # and the line shown need not be the one that was just added.
+            over_budget.append(
+                f"  {key[0]}:{key[1]} holds {len(sites)} unprotected site(s), "
+                f"ALLOWLIST documents {allowed}. The line(s) listed above are "
+                "the surplus by position, not necessarily the new call — "
+                "check every writer in that scope."
+            )
 
     if not all_findings:
         return
@@ -281,9 +349,10 @@ def test_every_json_writer_pins_allow_nan_false() -> None:
         "— add the kwarg or document a justification in ALLOWLIST."
         for p, lineno, method in all_findings
     )
+    budget_note = ("\n\n" + "\n".join(over_budget)) if over_budget else ""
     pytest.fail(
         f"{len(all_findings)} JSON writer site(s) without the "
-        f"non-finite-literal defence-in-depth pin:\n{rendered}\n\n"
+        f"non-finite-literal defence-in-depth pin:\n{rendered}{budget_note}\n\n"
         "Each site must pin ``allow_nan=False`` so Python's lenient "
         "default cannot emit non-standard ``NaN`` / ``Infinity`` / "
         "``-Infinity`` literals (invalid per RFC 8259 §6) into any "
@@ -519,24 +588,24 @@ def test_collect_json_module_aliases_includes_canonical_and_aliased() -> None:
 
 
 def test_allowlist_is_minimal_and_documented() -> None:
-    """The ALLOWLIST is intentionally small — three legitimate
-    transient / signed-payload sites today. If a future PR needs to
-    add an entry, this test pins the requirement that the addition is
-    intentional (not accidental) by failing if the allowlist drifts
-    beyond the documented size. Update this assertion alongside any
-    legitimate allowlist addition AND the module docstring."""
-    assert len(ALLOWLIST) == 3, (
-        f"ALLOWLIST drifted from the documented size of 3 entries — "
-        f"got {len(ALLOWLIST)}. Any new entry must come with a "
+    """The ALLOWLIST is intentionally small — three legitimate transient /
+    signed-payload sites today, in two scopes. If a future PR needs to add
+    one, this test pins the requirement that the addition is intentional
+    (not accidental) by failing if the allowlist drifts beyond the documented
+    size. Update this assertion alongside any legitimate allowlist addition
+    AND the module docstring."""
+    # Two scopes covering three sites. Both numbers are pinned: the entry
+    # count catches a new scope being waved through, the site total catches a
+    # count being quietly raised inside an existing one.
+    assert sum(ALLOWLIST.values()) == 3, (
+        f"ALLOWLIST drifted from the documented 3 exempt sites — got "
+        f"{sum(ALLOWLIST.values())}. Any new site must come with a "
         "justification comment AND an update to this assertion + the "
         "module docstring's allowlist semantics section."
     )
     # Pin the exact entries so a future PR that swaps one allowlisted
     # site for another (without updating the docstring) also fails.
-    assert ALLOWLIST == frozenset(
-        {
-            ("src/places/hafas_client.py", 289),
-            ("src/build_feed.py", 2809),
-            ("src/build_feed.py", 2818),
-        }
-    )
+    assert dict(ALLOWLIST) == {
+        ("src/places/hafas_client.py", "_serialise_payload"): 1,
+        ("src/build_feed.py", "_identity_for_item"): 2,
+    }
