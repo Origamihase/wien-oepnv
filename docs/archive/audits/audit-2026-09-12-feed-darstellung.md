@@ -48,8 +48,12 @@ veröffentlicht (`MaxItems=10`), 8,4 s gesamt. Alle Provider `ok` außer
 `stammstrecke:empty`.
 
 Ergänzend: `Health check` (Run 403) grün, `Update cycle` grün, CI auf `main`
-grün. Die volle Testsuite läuft lokal mit 8946 Tests durch (2 Fehlschläge nur in
-dieser Sandbox, verursacht vom `HTTPS_PROXY`; in CI grün).
+grün. Die volle Testsuite: **8936 bestanden, 2 übersprungen**. Drei Fehlschläge
+treten nur in dieser Sandbox auf (`test_client_ssrf_protection`,
+`test_dns_rebinding_bypass_prevented`, `test_fetch_content_safe_charset`) — alle
+drei laufen über die DNS-/SSRF-Prüfung in `request_safe`, die der `HTTPS_PROXY`
+dieser Umgebung stört; der dritte ist einzeln grün und fällt nur im Volllauf um.
+In CI sind alle drei grün.
 
 **Eine Einschränkung:** `stammstrecke` liefert seit dem Umbau konsequent
 0 Items (`cache/stammstrecke/events.json` hat nie existiert). Das ist korrektes
