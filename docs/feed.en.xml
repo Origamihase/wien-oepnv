@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 12 Sep 2026 13:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 13:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[26A: rescue operation]]></title>
@@ -16,19 +16,9 @@
       <pubDate>Sat, 12 Sep 2026 11:36:00 +0200</pubDate>
       <ext:first_seen>Sat, 12 Sep 2026 13:01:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 12 Sep 2026 11:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 12 Sep 2026 13:30:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: rescue operation. [On 12.09.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Update 1 (1209.2026 12:29) Removal of line interruption: Flughafen Wien]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;911329</guid>
-      <pubDate>Sat, 12 Sep 2026 12:29:03 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 12:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 12:29:03 +0200</ext:starts_at>
-      <description>Due to a police operation, no journeys were possible in Flughafen Wien station up to 12:26. [Since 12.09.2026]</description>
-      <content:encoded><![CDATA[Due to a police operation, no journeys were possible in Flughafen Wien station up to 12:26.<br/>[Since 12.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: demonstration Stop Kahlenberg not complied with]]></title>
@@ -82,8 +72,8 @@
       <ext:first_seen>Sat, 12 Sep 2026 12:01:06 +0200</ext:first_seen>
       <ext:starts_at>Tue, 25 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 25 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw. Auhof Haltestelle: Hüttergasse Von: Anzengruberstraße gegenüber 77 a Nach: Hüttergasse 6A-6B … [25.08.2026 – 25.08.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw. Auhof Haltestelle: Hüttergasse Von: Anzengruberstraße gegenüber 77 a Nach: Hüttergasse 6A-6B …<br/>[25.08.2026 – 25.08.2027]]]></content:encoded>
+      <description>Stop change of lines 49A and 50B towards Wolfersberg and Auhof stop: Hüttergasse from: Anzengruberstraße opposite 77 a to: Hüttergasse 6A-6B … [25.08.2026 – 25.08.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 49A and 50B towards Wolfersberg and Auhof stop: Hüttergasse from: Anzengruberstraße opposite 77 a to: Hüttergasse 6A-6B …<br/>[25.08.2026 – 25.08.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[17A: construction works]]></title>
@@ -117,6 +107,17 @@
       <ext:ends_at>Sat, 12 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Trains stop at Rosensteingasse on line 9 direction Westbahnhof [11.09.2026 – 12.09.2026]</description>
       <content:encoded><![CDATA[Trains stop at Rosensteingasse on line 9 direction Westbahnhof<br/>[11.09.2026 – 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Märzstraße 49 to junction Huglgasse and junction Huglgasse to junction Hütteldorfer Straße]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">0dfddd258ab4ba06599c87586ca7087268ea73a4f62ffc43de13acf6c950d687</guid>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 10 Sep 2026 22:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>The pedestrian traffic can be maintained. [14.09.2026 – 15.11.2026]</description>
+      <content:encoded><![CDATA[The pedestrian traffic can be maintained.<br/>[14.09.2026 – 15.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
