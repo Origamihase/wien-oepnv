@@ -4,7 +4,7 @@
 **Schwerpunkt:** Feed — Quellen, Pipeline, Darstellung in `docs/feed.xml` / `docs/feed.en.xml`
 **Datenbasis:** Manual-Full-Refresh Run 93948230655 (Checkout `275ed8d586`, 08:02–08:05 UTC),
 Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
-**Status:** Befunde 1, 2, 3, 4, 5, 7, 8 und 9 behoben (PR #1790–#1800). Offen: nur noch 6 — Log-Rauschen, keine Feed-Wirkung (s. Abschnitt 11)
+**Status:** Befunde 1, 2, 3, 4, 5, 7, 8 und 9 behoben (PR #1790–#1801), Befund 6 zur Hälfte. Offen: nur der Stammstrecke-Teil von 6 — keine Feed-Wirkung (s. Abschnitt 11)
 
 ---
 
@@ -518,7 +518,8 @@ unterscheidbare Zeitzeile für drei Sperren, mit ihm **drei**.
 
 ## 8. Befund 6 — Warnungen ohne Aussagekraft
 
-**Schweregrad: niedrig (Beobachtbarkeit)** · **Status: offen**
+**Wirkung auf den deutschen Feed: keine** (nur Logs) · **Status: Alias-Teil behoben**
+([PR #1801](https://github.com/Origamihase/wien-oepnv/pull/1801)), Stammstrecke-Teil offen
 
 Zwei Muster verrauschen die Logs so stark, dass echte Warnungen darin untergehen:
 
@@ -535,14 +536,65 @@ im selben Lauf
 0 cross-name alias collisions
 ```
 
-Der Validator sieht also nichts, während der Loader 83-mal warnt. Entweder ist
-die Kollision harmlos — dann gehört sie auf `DEBUG` und der Validator hat recht
-— oder sie ist es nicht, dann sollte der Validator sie melden. Beides
-gleichzeitig ist irreführend.
+### Korrektur — und eine Korrektur am Befund selbst
 
-**Leerer Stammstrecke-Provider.** Siehe Abschnitt 2: kein Vorfall wird als
-Warnung dargestellt. Sinnvoller wäre `INFO` mit einer eigenen Kennzeichnung
-(etwa `ok-empty`), damit „läuft normal" nicht wie „defekt" aussieht.
+**Der Widerspruch war keiner.** Die beiden Zahlen messen Verschiedenes:
+`_find_alias_issues` prüft, ob ein Eintrag *überhaupt* eine brauchbare
+Aliasliste hat (vorhanden, nicht leer, enthält Name/`bst_code`/`vor_id`).
+Stationsübergreifende Kollisionen hat der Validator **nie** geprüft — die 0 war
+also gar keine Aussage darüber. Zwei ähnlich benannte Größen, die nie dieselbe
+Sache gemessen haben; die Fehldeutung steckte im Befund, nicht im Code.
+
+Nachgemessen zerfallen die 111 Zeilen (22 eindeutige Schlüssel) in zwei
+Klassen:
+
+| Klasse | Zeilen | Bewertung |
+| --- | --- | --- |
+| Dieselbe Station unter zwei Namen (`Wien Bhf. Hütteldorf (WL)` / `Wien Hütteldorf`) | 69 | harmlos — egal wer gewinnt, der Lookup landet richtig |
+| Vier Badner-Bahn-Stationen mit generischem `Lokalbahn`-Alias | 42 | echte Kollision zwischen **verschiedenen Orten** |
+
+Und der Lookup ist nicht kosmetisch: `station_info` speist `is_in_vienna`, das
+im ÖBB-Provider entscheidet, ob eine Meldung überhaupt in den Feed kommt.
+
+**Trotzdem heute folgenlos, und das ist nachgemessen:** In allen **44**
+(Schlüssel, Verlierer, Gewinner)-Tripeln stimmen beide Seiten in `in_vienna`
+überein. Ausgerechnet `Wien Inzersdorf Lokalbahn (WL)` — die einzige dieser
+Stationen **in** Wien — beansprucht den generischen Schlüssel gar nicht, weil
+alle ihre Aliase `Inzersdorf` tragen. Das ist Glück in der Datenlage, keine
+Eigenschaft des Codes.
+
+Die Antwort auf die Frage des Befunds lautet damit: **harmlos — aber
+ungesichert.** Also beides, und die zweite Hälfte macht die erste vertretbar:
+
+1. **Loader**: `WARNING` → `DEBUG`, eine Zeile je normalisiertem Schlüssel
+   statt je Schreibweise (111 → 22).
+2. **Validator**: neue Prüfung `_find_alias_collision_issues`, die nur meldet,
+   wenn die Kandidaten sich in `in_vienna` unterscheiden **oder** weiter als
+   2 km auseinanderliegen. Beide Signale werden gebraucht — eine Station knapp
+   außerhalb der Stadtgrenze liegt Meter neben einer innerhalb, und zwei
+   Stopps mit gleichem Urteil können 30 km trennen. Gruppiert nach
+   Kandidatenmenge, nicht nach Schlüssel, sonst stünde dieselbe Tatsache
+   elfmal da.
+
+Live meldet der Validator damit **eine** Kollision. Kein Aufrufer nutzt
+`--fail-on-issues`, die CI bleibt grün. Ein Test pinnt, dass der Validator den
+Normalisierer des Loaders **weiterverwendet** statt einen eigenen zu haben —
+`stations_validation` importiert `_normalize_token` aus `stations`, es ist
+dieselbe Funktion. Ein eigener später eingeführter würde still auseinander
+driften. Genau diese Verwechslung zweier ähnlich benannter Größen hat den
+Befund ursprünglich falsch gerahmt.
+
+### Offen: leerer Stammstrecke-Provider
+
+Siehe Abschnitt 2: kein Vorfall wird als Warnung dargestellt. `build_feed.py`
+behandelt **jeden** Provider mit null Items gleich — `log.warning` plus ein
+Eintrag in der Warnungsliste des Reports. Für die Stammstrecke ist „nichts zu
+melden" aber der Normalzustand, für einen WL-/ÖBB-Cache dagegen verdächtig.
+Sinnvoll wäre `INFO` mit eigener Kennzeichnung (etwa `ok-empty`) für Provider,
+die das erklären.
+
+**Bewusst nicht in derselben Änderung behoben:** Das ändert die Empty-Semantik
+für alle Provider und gehört eigenständig geprüft.
 
 ---
 
@@ -746,7 +798,8 @@ verstümmelter Eintrag verdrängt dort eine andere Störung vollständig.
 | 4 | Baustellen-Titel bricht mitten im Zitat ab (3 von 22) | verstümmelter Titel | — | **behoben** |
 | 3 | Übersetzung erfand Liniennummern (13 von 71 Tokens ungeschützt) | keine — nur `feed.en.xml` | — | **behoben** |
 | 7 | Übersetzung lief für Stationstitel endlos neu | keine — nur Laufzeitkosten | — | **behoben** |
-| **6** | **444 Warnzeilen/Lauf; Validator meldet 0** | **keine — nur Logs** | **1** | offen |
+| 6a | 444 Warnzeilen/Lauf über Alias-Kollisionen | keine — nur Logs | — | **behoben** |
+| **6b** | **Leerer Stammstrecke-Provider gilt als Warnung** | **keine — nur Logs** | **1** | offen |
 
 ---
 
@@ -778,10 +831,16 @@ berührt.** Was blieb, kostete Laufzeit oder erzeugte Log-Rauschen:
    kaputten Build; für Titel aus reinen Stationsnamen ist die Gleichheit aber
    die richtige Antwort, und die Schleife schloss sich nie (s. Abschnitt 9).
 
-**Offen ist damit nur noch Befund 6** — 444 Warnzeilen pro Lauf über doppelte
-Stations-Aliase, während der Validator „0 alias issues" meldet. Bleibt
-sinnvoll, weil ruhige Logs die nächste echte Warnung sichtbar machen, aber es
-steht keine Anzeige daran.
+5. ~~**Befund 6, Alias-Teil**~~ — erledigt. Der vermutete Widerspruch war
+   keiner: Der Validator prüfte nie, was der Loader meldete. Von den 111
+   Zeilen waren 69 harmlos, 42 eine echte Kollision zwischen verschiedenen
+   Orten — heute folgenlos, aber ungesichert. Loader beruhigt, Prüfung
+   nachgerüstet (s. Abschnitt 8).
+
+**Offen bleibt nur der Stammstrecke-Teil von Befund 6:** Ein Provider ohne
+Vorfälle wird als Warnung dargestellt, sodass „läuft normal" wie „defekt"
+aussieht. Bleibt sinnvoll, weil ruhige Logs die nächste echte Warnung sichtbar
+machen, aber es steht keine Anzeige daran.
 
 Unverändert offen und außerhalb jedes PRs: In den Branch-Protection-Regeln für
 `main` ist **„Allow force pushes" weiterhin aktiv** — die Ursache des

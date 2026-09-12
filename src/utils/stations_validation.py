@@ -145,6 +145,40 @@ class IdentityFieldConflict:
 
 
 @dataclass(frozen=True)
+class AliasCollisionIssue:
+    """One normalized alias key claimed by stations that disagree about where
+    they are.
+
+    ``src.utils.stations._station_lookup`` maps normalized alias → station and
+    keeps exactly one winner per key; every later claimant is dropped. That is
+    fine while the claimants describe the same place (``Wien Bhf. Hütteldorf
+    (WL)`` and ``Wien Hütteldorf``) and a silent misresolution when they do
+    not — ``station_info`` feeds ``is_in_vienna``, which decides whether an
+    ÖBB disruption reaches the feed at all.
+
+    Audit 2026-09-12, Befund 6: the loader logged 111 lines per process for
+    22 contested keys and the validator reported none of it, because
+    :func:`_find_alias_issues` checks something else entirely (whether an
+    entry *has* a usable alias list). Nothing anywhere compared the
+    claimants. Measured at the time: all 44 (key, loser, winner) triples
+    agreed on ``in_vienna``, so no collision could change an answer — which
+    is a fact about the data, not a property of the code. This check turns it
+    into one.
+
+    Reported only when the claimants actually disagree: a different
+    ``in_vienna`` verdict, or coordinates further apart than
+    :data:`_ALIAS_COLLISION_DISTANCE_THRESHOLD_M`. A key contested by two
+    records for the same place stays silent, so the count means "a lookup
+    could resolve to the wrong place", not "aliases overlap".
+    """
+
+    alias_keys: tuple[str, ...]
+    names: tuple[str, ...]
+    identifiers: tuple[str, ...]
+    reason: str
+
+
+@dataclass(frozen=True)
 class CrossNameAliasIssue:
     """Alias or ``wl_stop`` label that doubles as a *different*, far-away
     station's canonical name.
@@ -227,6 +261,7 @@ class ValidationReport:
     # constructors in the test suite keep working without the new key —
     # same rationale as ``identity_field_conflicts`` above.
     cross_name_alias_issues: tuple[CrossNameAliasIssue, ...] = ()
+    alias_collision_issues: tuple[AliasCollisionIssue, ...] = ()
 
     @property
     def has_issues(self) -> bool:
@@ -241,6 +276,7 @@ class ValidationReport:
             or self.naming_issues
             or self.identity_field_conflicts
             or self.cross_name_alias_issues
+            or self.alias_collision_issues
         )
 
     def to_markdown(self) -> str:
@@ -288,6 +324,7 @@ class ValidationReport:
         lines.append(f"*Identity-Field-Konflikte*: {len(self.identity_field_conflicts)}")
         lines.append(f"*Namens-Probleme*: {len(self.naming_issues)}")
         lines.append(f"*Namens-Alias-Kollisionen*: {len(self.cross_name_alias_issues)}")
+        lines.append(f"*Alias-Schl\u00fcssel-Kollisionen*: {len(self.alias_collision_issues)}")
         lines.append("")
 
         if self.security_issues:
@@ -362,6 +399,7 @@ class ValidationReport:
             lines.append("")
 
         lines.extend(self._render_cross_name_alias_issues())
+        lines.extend(self._render_alias_collision_issues())
 
         if not self.has_issues:
             lines.append("Keine Probleme festgestellt.")
@@ -384,6 +422,26 @@ class ValidationReport:
             lines.append(
                 f"- {_safe_md(conflict.field)}={_safe_md(conflict.value)} "
                 f"gemeinsam genutzt von [{joined_ids}] ({joined_names})"
+            )
+        lines.append("")
+        return lines
+
+    def _render_alias_collision_issues(self) -> list[str]:
+        """Render the ``## Alias-Schlüssel-Kollisionen`` section.
+
+        Split out like its two siblings so :meth:`to_markdown` keeps its
+        C901 baseline instead of gaining a branch per section.
+        """
+        if not self.alias_collision_issues:
+            return []
+        lines = ["## Alias-Schlüssel-Kollisionen"]
+        for issue in self.alias_collision_issues:
+            joined_ids = ", ".join(_safe_md(ident) for ident in issue.identifiers)
+            joined_names = ", ".join(_safe_md(name) for name in issue.names)
+            joined_keys = ", ".join(_safe_md(key) for key in issue.alias_keys)
+            lines.append(
+                f"- {joined_keys}: {_safe_md(issue.reason)} "
+                f"— [{joined_ids}] ({joined_names})"
             )
         lines.append("")
         return lines
@@ -439,6 +497,7 @@ def validate_stations(
     naming_issues = tuple(_find_naming_issues(stations))
     identity_field_conflicts = tuple(_find_identity_field_conflicts(stations))
     cross_name_alias_issues = tuple(_find_cross_name_alias_issues(stations))
+    alias_collision_issues = tuple(_find_alias_collision_issues(stations))
 
     return ValidationReport(
         total_stations=len(stations),
@@ -453,6 +512,7 @@ def validate_stations(
         gtfs_stop_count=gtfs_count,
         identity_field_conflicts=identity_field_conflicts,
         cross_name_alias_issues=cross_name_alias_issues,
+        alias_collision_issues=alias_collision_issues,
     )
 
 
@@ -1238,6 +1298,102 @@ def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
 # cluster at <= ~500 m, so 2 km leaves a wide margin and yields zero hits
 # on the current clean directory in every matching variant.
 _CROSS_NAME_DISTANCE_THRESHOLD_M = 2000.0
+
+# Two claimants further apart than this are describing different places, so
+# whichever one the loader happens to keep is a coin toss. Same value as the
+# cross-name guard above: both answer "is this label pointing somewhere else?"
+_ALIAS_COLLISION_DISTANCE_THRESHOLD_M = 2000.0
+
+
+def _find_alias_collision_issues(
+    stations: Sequence[Mapping[str, object]],
+    *,
+    threshold_m: float = _ALIAS_COLLISION_DISTANCE_THRESHOLD_M,
+) -> Iterator[AliasCollisionIssue]:
+    """Yield normalized alias keys whose claimants disagree about location.
+
+    Mirrors the key derivation in ``src.utils.stations._station_lookup``:
+    :func:`_normalize_token` over every alias and ``wl_stop`` label. The two
+    normalisers are byte-identical over all 249047 label surfaces in the live
+    directory — pinned by
+    ``test_the_validator_derives_the_same_keys_as_the_loader`` so this check
+    cannot drift into measuring something the loader never does. That drift is
+    exactly what made the old "0 alias issues" reading misleading.
+
+    Silent for a key claimed by several records describing the same place:
+    the loser is dropped, the lookup still lands right.
+    """
+    claimants: dict[str, list[Mapping[str, object]]] = {}
+    for entry in stations:
+        seen_keys: set[str] = set()
+        for _kind, label in _iter_entry_labels(entry):
+            key = _normalize_token(label)
+            # One entry claiming a key through seven cosmetic spellings is
+            # one claimant, not seven.
+            if not key or key in seen_keys:
+                continue
+            seen_keys.add(key)
+            claimants.setdefault(key, []).append(entry)
+
+    # Group by the set of claimants, not by key. The four Badner-Bahn stops
+    # that share a generic "Lokalbahn" alias contest eleven spellings of it
+    # ("lokalbahn", "wien lokalbahn", "vienna lokalbahn u vor", …); reporting
+    # each separately would restate one fact eleven times — the same noise the
+    # loader used to produce.
+    grouped: dict[tuple[str, ...], tuple[list[Mapping[str, object]], list[str]]] = {}
+    for key, entries in sorted(claimants.items()):
+        if len(entries) < 2:
+            continue
+        if _describe_claimant_disagreement(entries, threshold_m) is None:
+            continue
+        signature = tuple(_format_identifier(e) for e in entries)
+        grouped.setdefault(signature, (entries, []))[1].append(key)
+
+    for signature, (entries, keys) in grouped.items():
+        reason = _describe_claimant_disagreement(entries, threshold_m)
+        if reason is None:  # pragma: no cover - re-checked above
+            continue
+        yield AliasCollisionIssue(
+            alias_keys=tuple(keys),
+            names=tuple(
+                str(e.get("name", "")).strip() or "<unknown>" for e in entries
+            ),
+            identifiers=signature,
+            reason=reason,
+        )
+
+
+def _describe_claimant_disagreement(
+    entries: Sequence[Mapping[str, object]], threshold_m: float
+) -> str | None:
+    """Return why these claimants conflict, or ``None`` if they agree.
+
+    Two independent signals, because either one on its own leaves a real
+    conflict unreported: a station just outside the city boundary sits within
+    metres of one inside it (distance alone would miss the flipped
+    ``in_vienna``), and two stops that share an ``in_vienna`` verdict can still
+    be 30 km apart (the verdict alone would miss that).
+    """
+    verdicts = {bool(e.get("in_vienna")) for e in entries}
+    if len(verdicts) > 1:
+        return "claimants disagree on in_vienna"
+
+    coords = [
+        (lat, lon)
+        for e in entries
+        if (lat := _extract_float(e.get("latitude"))) is not None
+        and (lon := _extract_float(e.get("longitude"))) is not None
+    ]
+    if len(coords) < 2:
+        return None
+    worst = max(
+        _haversine_m(a[0], a[1], b[0], b[1])
+        for i, a in enumerate(coords)
+        for b in coords[i + 1 :]
+    )
+    if worst > threshold_m:
+        return f"claimants {round(worst)} m apart"
+    return None
 
 _WL_VOR_SUFFIX_RE = re.compile(r"\s*\((?:WL|VOR)\)\s*$")
 _WIEN_PREFIX_RE = re.compile(r"^Wien\s+")

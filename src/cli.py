@@ -356,6 +356,7 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
         f"{len(report.provider_issues)} provider issues, "
         f"{len(report.naming_issues)} naming issues, "
         f"{len(report.cross_name_alias_issues)} cross-name alias collisions, "
+        f"{len(report.alias_collision_issues)} alias-key collisions, "
         f"{len(report.security_issues)} security warnings.\n"
     )
 
