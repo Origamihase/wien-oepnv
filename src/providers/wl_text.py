@@ -333,12 +333,23 @@ def extract_date_from_title(
 # Extras werden vereinigt. Aus den beiden 38A-Meldungen wird dadurch ein
 # Item, das beide schlägt: der informative Titel mit dem ausführlichen Text.
 #
+# ``feuerwehreinsatz`` fehlte aus derselben Reihe (``polizeieinsatz`` und
+# ``rettungseinsatz`` standen längst hier) und kostete am 2026-09-12 zwei der
+# zehn Plätze im deutschen Feed für EINEN Einsatz:
+#
+#     64A: Fahrtbehinderung wegen Feuerwehreinsatz
+#     64A: Feuerwehreinsatz Betrieb ab Gregorygasse
+#
 # Neue Tokens deshalb nur mit Beleg aus den Live-Daten aufnehmen — jedes
-# zusätzliche Wort führt Meldungen aggressiver zusammen.
+# zusätzliche Wort führt Meldungen aggressiver zusammen. Der deutsche Feed
+# (``docs/feed.xml``) hat dabei Vorrang: Er läuft auf Info-Displays mit fest
+# begrenzter Item-Zahl, dort ist jeder doppelte Eintrag ein verlorener Platz
+# (s. AGENTS.md, „Priorität der Ausgaben").
 TITLE_TOPIC_TOKENS = {
     "falschparker",
     "polizeieinsatz",
     "rettungseinsatz",
+    "feuerwehreinsatz",
     "demonstration",
     "veranstaltung",
     "unfall",

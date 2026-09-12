@@ -270,3 +270,51 @@ def test_one_event_reported_in_several_facets_merges(
     ]
 
     assert len(_run(monkeypatch, infos)) == 1
+
+
+def test_one_fire_brigade_callout_does_not_take_two_feed_slots(
+    monkeypatch: pytest.MonkeyPatch, _no_news: None
+) -> None:
+    """Live 2026-09-12: one 64A callout occupied two of the ten feed slots.
+
+        64A: Fahrtbehinderung wegen Feuerwehreinsatz
+        64A: Feuerwehreinsatz Betrieb ab Gregorygasse
+
+    Same gap as the 38A ``Demonstration`` case — ``feuerwehreinsatz`` was
+    missing from ``TITLE_TOPIC_TOKENS`` while its siblings ``polizeieinsatz``
+    and ``rettungseinsatz`` were already there.
+
+    The German feed is the priority output (AGENTS.md): it drives info
+    displays with a hard item cap, so a duplicate is not just noise, it
+    displaces a different disruption entirely.
+    """
+    start = "2026-09-12T09:00:00+02:00"
+    infos = [
+        _traffic_info("Fahrtbehinderung wegen Feuerwehreinsatz", line="64A", start=start),
+        _traffic_info("Feuerwehreinsatz Betrieb ab Gregorygasse", line="64A", start=start),
+    ]
+
+    events = _run(monkeypatch, infos)
+    assert len(events) == 1, [e["title"] for e in events]
+    assert "Gregorygasse" in str(events[0]["title"]), "der informative Titel gewinnt"
+
+
+def test_the_same_callout_on_different_lines_stays_separate(
+    monkeypatch: pytest.MonkeyPatch, _no_news: None
+) -> None:
+    """Over-merge guard for the token above.
+
+    Three lines were hit by fire-brigade callouts on 2026-09-12. They are
+    separate disruptions for a reader waiting at a specific stop, and the
+    line set keeps them apart — the new token must not change that.
+    """
+    start = "2026-09-12T09:00:00+02:00"
+    infos = [
+        _traffic_info("Feuerwehreinsatz Betrieb ab Carlbergergasse", line="60A", start=start),
+        _traffic_info(
+            "Feuerwehreinsatz Betrieb ab Atzgersdorf, Kirchenplatz", line="66A", start=start
+        ),
+        _traffic_info("Feuerwehreinsatz Betrieb ab Gregorygasse", line="64A", start=start),
+    ]
+
+    assert len(_run(monkeypatch, infos)) == 3
