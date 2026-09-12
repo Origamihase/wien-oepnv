@@ -7,41 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 12 Sep 2026 18:01:24 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 18:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[12: service obstruction because of demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">17f4b51508b60a984877fb80ad7df87936250ea47d678f99e484f269c691c33c</guid>
-      <pubDate>Sat, 12 Sep 2026 16:56:00 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 17:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 17:09:43 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 12.09.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: service obstruction because of demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3f848b305f7e5348073201d236d38c52525af0d92bf4dd693288dc56c298f7b6</guid>
-      <pubDate>Sat, 12 Sep 2026 16:56:00 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 17:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 17:09:12 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 12.09.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: service obstruction because of demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3f4fee107862aeb11a3eec5702befffc4bc25ff027e7075518500e4f6c7606be</guid>
-      <pubDate>Sat, 12 Sep 2026 16:56:00 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 17:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 17:11:12 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 12.09.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[18: event service from Ernst-Happel-Stadion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -52,17 +19,6 @@
       <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Operation only between Burggasse, Stadthalle U and Ernst-Happel-Stadion. expected duration: 22:00. Reason: event in the area of Ernst-Happel-Stadion. [On 12.09.2026]</description>
       <content:encoded><![CDATA[Operation only between Burggasse, Stadthalle U and Ernst-Happel-Stadion. expected duration: 22:00. Reason: event in the area of Ernst-Happel-Stadion.<br/>[On 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: service obstruction because of fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">11c860f3f02e4dd83a6557e082cdea5c1a1bc33e5b21562974041148aead9260</guid>
-      <pubDate>Sat, 12 Sep 2026 15:47:00 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 16:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 15:47:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 12.09.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Folding ramp lock on 13.09.2026]]></title>
@@ -118,6 +74,50 @@
       <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
       <description>Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken. [30.07.2026 – 12.09.2026]</description>
       <content:encoded><![CDATA[Due to an event in the Ernst-Happel-Stadion, the following transport measures are taken.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: buses stop Kärntner Ring 5]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c535a3f28bfd3a8f7e49e96b63ccb14c2a0224c47e5ee638d569ae0296a64855</guid>
+      <pubDate>Mon, 07 Sep 2026 13:46:56 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 12:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 07 Sep 2026 13:46:56 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[07.09.2026 – 12.09.2026]</description>
+      <content:encoded><![CDATA[[07.09.2026 – 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49A/50B: Hüttergasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9191a97257abb1d342127da061b463fd8a11a22387f3b662cf85c8d2e69dc64d</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 12:01:06 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 25 Aug 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 25 Aug 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop change of lines 49A and 50B towards Wolfersberg and Auhof stop: Hüttergasse from: Anzengruberstraße opposite 77 a to: Hüttergasse 6A-6B … [25.08.2026 – 25.08.2027]</description>
+      <content:encoded><![CDATA[Stop change of lines 49A and 50B towards Wolfersberg and Auhof stop: Hüttergasse from: Anzengruberstraße opposite 77 a to: Hüttergasse 6A-6B …<br/>[25.08.2026 – 25.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[17A: construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4e4ac1d3cb4bc917fea71f50345872e58878aa82bc54b27034a1c202771ae756</guid>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 11 Sep 2026 23:59:34 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 15:00:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the Kästenbaumgasse, the line 17A is redirected. [14.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Kästenbaumgasse, the line 17A is redirected.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46/49/52: track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">29d08fd01cdc74937e3b4614fdcea187b2ada9e40ffa86e4d1b4b03d9bcbab99</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 11 Sep 2026 14:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 31 Oct 2026 04:30:00 +0100</ext:ends_at>
+      <description>Due to track construction works in the area ofX Märzstraße and Huglgasse the following measures are taken on the lines 46, 49 and 52. [21.09.2026 – 31.10.2026]</description>
+      <content:encoded><![CDATA[Due to track construction works in the area ofX Märzstraße and Huglgasse the following measures are taken on the lines 46, 49 and 52.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
