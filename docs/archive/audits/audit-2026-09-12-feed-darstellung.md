@@ -4,7 +4,7 @@
 **Schwerpunkt:** Feed — Quellen, Pipeline, Darstellung in `docs/feed.xml` / `docs/feed.en.xml`
 **Datenbasis:** Manual-Full-Refresh Run 93948230655 (Checkout `275ed8d586`, 08:02–08:05 UTC),
 Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
-**Status:** Befunde 1, 2, 4, 5, 8 und 9 behoben (PR #1790–#1798). Offen: 3, 7, 6 — keiner davon berührt den deutschen Feed (s. Abschnitt 11)
+**Status:** Befunde 1, 2, 3, 4, 5, 8 und 9 behoben (PR #1790–#1799). Offen: 7 und 6 — beide ohne Feed-Wirkung (s. Abschnitt 11)
 
 ---
 
@@ -16,7 +16,8 @@ Die Pipeline ist stabil, die CI ist grün, der Feed ist wohlgeformt.
 
 **Die Darstellung hat Mängel.** Neun Befunde — zwei davon kamen erst beim
 Beheben der anderen dazu (8 beim Nachprüfen von 2, 9 beim Neupriorisieren).
-**Sechs sind behoben**, alle sechs mit Wirkung auf den deutschen Feed:
+**Sieben sind behoben.** Sechs davon wirkten auf den deutschen Feed, der
+siebte (Befund 3) auf die englische Übersetzung:
 
 | # | Befund | PR |
 | --- | --- | --- |
@@ -26,6 +27,7 @@ Beheben der anderen dazu (8 beim Nachprüfen von 2, 9 beim Neupriorisieren).
 | 9 | Ein Feuerwehreinsatz belegte zwei Feed-Plätze (64A) | [#1794](https://github.com/Origamihase/wien-oepnv/pull/1794) |
 | 5 | ÖBB-Items trugen das Veröffentlichungsdatum statt des Bauzeitraums | [#1795](https://github.com/Origamihase/wien-oepnv/pull/1795) |
 | 4 | Drei von 22 Baustellen-Titeln brachen mitten im Wort ab | [#1798](https://github.com/Origamihase/wien-oepnv/pull/1798) |
+| 3 | Übersetzung erfand Liniennummern (nur EN) | [#1799](https://github.com/Origamihase/wien-oepnv/pull/1799) |
 
 Zwei Muster ziehen sich durch:
 
@@ -44,17 +46,17 @@ das Paar `49A/50B` wirklich verschieden — die Linie-44-Trias ist ein Ereignis
 aus drei Blickwinkeln (s. Korrektur in Abschnitt 4). Befund 9 zeigte dann, dass
 die Wortliste aus 8 nur halb zu Ende gedacht war.
 
-Befund 4 fügt dem ersten Muster einen dritten Fall hinzu: notiert war **ein**
-abgebrochener Titel, tatsächlich waren es **drei von 22** — und die Reparatur
-hätte beinahe die GUID mitverschoben (s. Abschnitt 6).
+Befund 4 und 3 fügen dem ersten Muster zwei weitere Fälle hinzu. Bei 4 war
+**ein** abgebrochener Titel notiert, tatsächlich waren es **drei von 22** — und
+die Reparatur hätte beinahe die GUID mitverschoben (s. Abschnitt 6). Bei 3
+waren drei Lückenklassen notiert, tatsächlich waren es fünf: `86AR` und `U6E`
+fielen erst beim Abzählen der Live-Tokens auf (s. Abschnitt 5). **Dreimal von
+sieben war der Befund beim Beheben größer als beim Notieren** — Nachmessen an
+den Live-Daten lohnt sich vor jeder Korrektur.
 
-**Offen bleiben die Befunde 3, 7 und 6** — in dieser Reihenfolge, seit dem
-2026-09-12 **nach Feed-Wirkung** statt nach technischem Gewicht sortiert
-(s. `AGENTS.md` → „Priorität der Ausgaben" und Abschnitt 11). **Keiner der
-drei berührt den deutschen Feed:** 3 verstümmelt Liniennummern ausschließlich
-in `docs/feed.en.xml`, 7 kostet Laufzeit, 6 erzeugt Log-Rauschen. Alle sind
-belegt und mit Reproduktion dokumentiert; jeder gehört in eine eigene, einzeln
-prüfbare Änderung.
+**Offen bleiben die Befunde 7 und 6** — beide ohne jede Feed-Wirkung: 7 kostet
+Laufzeit, 6 erzeugt Log-Rauschen. Beide sind belegt und mit Reproduktion
+dokumentiert; jeder gehört in eine eigene, einzeln prüfbare Änderung.
 
 ---
 
@@ -289,7 +291,8 @@ bleiben damit unterscheidbar.
 
 ## 5. Befund 3 — Übersetzung verstümmelt Liniennummern
 
-**Schweregrad: mittel** (sichtbar im EN-Feed) · **Status: offen**
+**Wirkung auf den deutschen Feed: keine** (nur `feed.en.xml`) · **Status: behoben**
+([PR #1799](https://github.com/Origamihase/wien-oepnv/pull/1799))
 
 Live in `docs/feed.en.xml`, Item 10:
 
@@ -334,11 +337,47 @@ keine Garantie.
 Nebenbefund: die `2` aus „(Phase 2)" wird als Linien-Token maskiert. Hier
 folgenlos, aber ein Hinweis, dass das Muster auch zu breit greift.
 
-### Vorschlag
+### Korrektur
 
-`N\d{1,3}[A-Z]?` und dreistellige Nummern ergänzen, die Straßenbahn-Buchstaben
-`O`/`D` nur in Linienkontext (mit Präfix oder vor `:`), damit nicht jedes
-alleinstehende „D" maskiert wird.
+Beim Nachmessen an den Live-Caches war die Lücke größer als notiert. Von den
+**71** Linien-Tokens, die dort als Titel-Präfix vorkommen, schützte das alte
+Muster **58**. Die 13 Fehlstellen — vier davon standen nicht im ursprünglichen
+Befund:
+
+| Token | Was fehlte | im Befund notiert? |
+| --- | --- | --- |
+| `844` | dreistellige Nummern — nur zwei Stellen erlaubt | ja |
+| `N8`, `N20`, `N29`, `N43`, `N46`, `N49`, `N65`, `N66`, `N71` | Nachtbusse — kein `N`-Präfix | ja |
+| `D` | Straßenbahn D | ja |
+| `86AR` | **zweibuchstabiges Suffix** — nur ein Buchstabe erlaubt | **nein** |
+| `U6E` | **U-Bahn-Verstärker** — nach `U<n>` kein Suffix erlaubt | **nein** |
+
+`86AR` und `U6E` standen am 2026-09-12 im Feed und kamen heil durch — wie
+`N71` und `N31`. Das ist kein Schutz, sondern Glück: Ein unmaskiertes Token
+überlebt nur so lange, wie das Modell es zufällig in Ruhe lässt. Die Tests
+prüfen deshalb die **Maskierung**, nicht die Modellausgabe; ein Test auf das
+Übersetzungsergebnis wäre an einem guten Tag grün geworden.
+
+Jede Alternative des neuen Musters ist eine **echte Obermenge** der alten,
+kein bisher geschütztes Token verliert seinen Schutz — ein Test pinnt das.
+Insbesondere behält `S[0-9]+` seinen unbegrenzten Ziffernlauf, statt auf den
+real verkehrenden Bereich S1–S80 verengt zu werden: Verengen ist die einzige
+Richtung, die etwas ungeschützt lassen könnte.
+
+`D` und `O` bekommen ein eigenes Muster mit Kontext-Gate
+(`_TRAM_LETTER_LINE_RE`), weil ein einzelner Buchstabe keine erkennbare Form
+hat. Maskiert wird nur am Titelanfang vor dem Doppelpunkt, neben einem
+Schrägstrich oder nach „Linie"; „Vitamin D" und „Ausgang D" bleiben
+unangetastet. Getrennt gehalten, weil `_LINE_ENTITY_RE` zusätzlich als
+`fullmatch`-Prädikat dient, das linienförmige Stationsnamen aus dem
+Stations-Schutzmuster hält — dort hat ein kontextabhängiges Muster keine
+sinnvolle Bedeutung. Gegen das Live-Verzeichnis geprüft: Die Verbreiterung
+filtert **keinen** zusätzlichen Stationsnamen heraus.
+
+**Nicht mitbehoben:** Der Nebenbefund oben bleibt bestehen — die `2` aus
+„(Phase 2)" wird weiterhin als Linien-Token maskiert. Folgenlos, und die
+Gegenmaßnahme wäre ein Verengen des Musters, also genau die riskante
+Richtung.
 
 ---
 
@@ -679,9 +718,9 @@ verstümmelter Eintrag verdrängt dort eine andere Störung vollständig.
 | 1 | ÖBB-Titel nennt Station doppelt | verstümmelter Titel | — | **behoben** |
 | 5 | Drei Sperren, ein identischer Titel | verdrängt Meldungen | — | **behoben** |
 | 4 | Baustellen-Titel bricht mitten im Zitat ab (3 von 22) | verstümmelter Titel | — | **behoben** |
-| **3** | **Übersetzung verstümmelt Liniennummern** | **keine — nur `feed.en.xml`** | **1** | offen |
-| 7 | Übersetzung läuft für Stationstitel endlos neu | keine — nur Laufzeitkosten | 2 | offen |
-| 6 | 444 Warnzeilen/Lauf; Validator meldet 0 | keine — nur Logs | 3 | offen |
+| 3 | Übersetzung erfand Liniennummern (13 von 71 Tokens ungeschützt) | keine — nur `feed.en.xml` | — | **behoben** |
+| **7** | **Übersetzung läuft für Stationstitel endlos neu** | **keine — nur Laufzeitkosten** | **1** | offen |
+| 6 | 444 Warnzeilen/Lauf; Validator meldet 0 | keine — nur Logs | 2 | offen |
 
 ---
 
@@ -701,16 +740,21 @@ schwerer wiegt, sondern **ob er den deutschen Feed betrifft**.
    Kappung bleibt upstream; wir machen sie jetzt kenntlich, statt sie
    wortwörtlich als vermeintlich eigenen Fehler auszuliefern (s. Abschnitt 6).
 
-**Damit ist kein offener Befund mehr übrig, der den deutschen Feed berührt.**
-Die verbleibenden drei betreffen die englische Übersetzung, Laufzeitkosten und
-Logs — in dieser Reihenfolge:
+3. ~~**Befund 3**~~ — erledigt. Betraf ausschließlich `docs/feed.en.xml` und
+   stand deshalb hinten an; nach Befund 4 war er der nächste. Die Lücke war
+   größer als notiert: 13 von 71 Live-Tokens ungeschützt, darunter zwei
+   Formen, die im Befund fehlten (s. Abschnitt 5).
 
-1. **Befund 3 — EN-Übersetzung verstümmelt Liniennummern.** Betrifft
-   ausschließlich `docs/feed.en.xml`. Fachlich unverändert gültig und gut
-   abgegrenzt (eine Regex plus Tests) — nur eben nicht das Produkt.
-2. **Befund 7** — Laufzeitkosten, keine Feed-Wirkung.
-3. **Befund 6** — Log-Rauschen. Bleibt sinnvoll, weil ruhige Logs die nächste
-   echte Warnung sichtbar machen, aber es steht keine Anzeige daran.
+**Damit ist kein offener Befund mehr übrig, der einen der beiden Feeds
+berührt.** Die verbleibenden zwei kosten Laufzeit und erzeugen Log-Rauschen:
+
+1. **Befund 7** — die Übersetzung läuft für Stationstitel bei jedem Lauf neu,
+   weil `cached == text` als Fehlschlag gewertet wird und einen erneuten
+   Versuch auslöst. Keine Feed-Wirkung, nur Laufzeit.
+2. **Befund 6** — 444 Warnzeilen pro Lauf über doppelte Stations-Aliase,
+   während der Validator „0 alias issues" meldet. Bleibt sinnvoll, weil ruhige
+   Logs die nächste echte Warnung sichtbar machen, aber es steht keine Anzeige
+   daran.
 
 Unverändert offen und außerhalb jedes PRs: In den Branch-Protection-Regeln für
 `main` ist **„Allow force pushes" weiterhin aktiv** — die Ursache des

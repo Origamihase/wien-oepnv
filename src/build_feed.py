@@ -1045,8 +1045,59 @@ _BRAND_ENTITIES: tuple[str, ...] = (
     "Stammstrecke",
 )
 
+# Line identifiers must reach the EN feed byte-for-byte: they are names,
+# not words. Anything this pattern misses goes to the NMT model unprotected.
+#
+# Live regression, 2026-09-12 — ``docs/feed.en.xml`` item 10:
+#
+#   DE  43A/44A/844/N43/44B: Gleisbauarbeiten (Phase 2)
+#   EN  43A/44A844/N43/44B: track construction works (phase 2)
+#
+# The model swallowed the slash between the masked ``44A`` and the
+# unprotected ``844``, inventing the line ``44A844``.
+#
+# The previous shape ``U[1-6]|S[0-9]+|[1-9][0-9]?[A-Z]?`` covered 58 of the
+# 71 line tokens present in the live caches. The 13 it missed:
+#
+#   844          three-digit regional bus  (only two digits were allowed)
+#   86AR         two-letter suffix         (only one letter was allowed)
+#   U6E          U-Bahn Verstärker         (no suffix was allowed after U<n>)
+#   N8 N20 N29 N43 N46 N49 N65 N66 N71     night buses (no N prefix at all)
+#   D            tram D — see _TRAM_LETTER_LINE_RE below
+#
+# ``86AR``, ``N71`` and ``N31`` came through intact on the audited run. That
+# was luck, not protection: an unmasked token survives only as long as the
+# model happens to leave it alone.
+#
+# Every alternative below is a strict SUPERSET of the shape it replaces, so
+# no token that used to be protected can lose its protection —
+# ``test_the_pattern_is_a_strict_superset_of_the_old_one`` pins that.
+# ``S[0-9]+`` deliberately keeps its unbounded digit run rather than being
+# tightened to the S1–S80 range actually in service: narrowing is the one
+# change here that could unprotect something.
 _LINE_ENTITY_RE: re.Pattern[str] = re.compile(
-    r"\b(U[1-6]|S[0-9]+|[1-9][0-9]?[A-Z]?)\b"
+    r"\b("
+    r"U[1-6][A-Z]?"  # U1 … U6, plus Verstärker wie U6E
+    r"|S[0-9]+[A-Z]?"  # S1 … S80
+    r"|N?[1-9][0-9]{0,2}[A-Z]{0,2}"  # 18, 43A, 844, 86AR, N8, N43
+    r")\b"
+)
+
+# Trams D and O are line identifiers whose surface form is a single letter,
+# so they cannot be matched on shape alone — a bare ``D`` is far more often
+# prose ("Vitamin D", "Ausgang D") than a tram. They are masked only inside
+# a line context: leading a title before the colon, adjacent to a slash in a
+# line group, or spelled out after "Linie".
+#
+# Kept separate from _LINE_ENTITY_RE on purpose. That pattern is also used
+# as a ``fullmatch`` predicate to keep line-shaped station names out of the
+# station protection regex (see _station_entity_pattern), and a
+# context-dependent alternative has no meaningful fullmatch semantics there.
+_TRAM_LETTER_LINE_RE: re.Pattern[str] = re.compile(
+    r"(?<=/)[DO]\b"  # 43A/D
+    r"|\b[DO](?=/)"  # D/43A
+    r"|^[DO](?=:)"  # "D: Gleisbauarbeiten"
+    r"|(?<=Linie )[DO]\b"  # "Linie D"
 )
 
 # ÖPNV domain glossary. The Helsinki opus-mt-de-en model has only
@@ -1710,6 +1761,10 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     # "4. Gate".
     working = _GATE_SUFFIX_RE.sub(_replace, working)
     working = _LINE_ENTITY_RE.sub(_replace, working)
+    # After the line pass, so that ``43A/D`` has already become
+    # ``XENT…X0X/D`` and the slash context the tram letters are recognised
+    # by is still intact — placeholders keep the separators in place.
+    working = _TRAM_LETTER_LINE_RE.sub(_replace, working)
     working = _STREET_SUFFIX_RE.sub(_replace, working)
     working = _PRESERVED_SYMBOLS_RE.sub(_replace, working)
     return working, mapping

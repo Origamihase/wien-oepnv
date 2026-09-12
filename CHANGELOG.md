@@ -5,6 +5,44 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: Die englische Übersetzung erfand Liniennummern (2026-09-12)**:
+  Im EN-Feed verschmolzen zwei Linien zu einer Nummer, die es nicht gibt:
+
+  ```
+  DE  43A/44A/844/N43/44B: Gleisbauarbeiten (Phase 2)
+  EN  43A/44A844/N43/44B: track construction works (phase 2)
+  ```
+
+  `_LINE_ENTITY_RE` in `src/build_feed.py` maskiert Linien-Tokens, damit das
+  Übersetzungsmodell sie nie zu sehen bekommt. Die alte Form
+  `U[1-6]|S[0-9]+|[1-9][0-9]?[A-Z]?` deckte nur **58 der 71** Linien-Tokens
+  ab, die in den Live-Caches vorkommen. `844` ging ungeschützt ans Modell,
+  und das hat den Schrägstrich daneben verschluckt.
+  Die 13 Lücken, davon vier erst beim Nachmessen an den Live-Daten gefunden:
+
+  | Token | Was fehlte |
+  | --- | --- |
+  | `844` | dreistellige Regionalbusse — nur zwei Stellen erlaubt |
+  | `86AR` | zweibuchstabiges Suffix — nur ein Buchstabe erlaubt |
+  | `U6E` | U-Bahn-Verstärker — nach `U<n>` war kein Suffix erlaubt |
+  | `N8`, `N20`, `N29`, `N43`, `N46`, `N49`, `N65`, `N66`, `N71` | Nachtbusse — das `N`-Präfix fehlte ganz |
+  | `D` | Straßenbahn D — ein einzelner Buchstabe hat keine erkennbare Form |
+
+  Jede Alternative ist eine **echte Obermenge** der bisherigen, kein Token
+  verliert seinen Schutz; ein Test pinnt das. Insbesondere behält `S[0-9]+`
+  seinen unbegrenzten Ziffernlauf, statt auf den real verkehrenden Bereich
+  S1–S80 verengt zu werden — Verengen ist die einzige Richtung, die etwas
+  ungeschützt lassen könnte.
+  Die Straßenbahnlinien `D` und `O` bekommen ein eigenes Muster mit
+  Kontext-Gate (`_TRAM_LETTER_LINE_RE`): maskiert wird nur im Linienkontext —
+  am Titelanfang vor dem Doppelpunkt, neben einem Schrägstrich oder nach
+  „Linie". In „Vitamin D" oder „Ausgang D" bleibt der Buchstabe unangetastet.
+  Dass `86AR`, `N71` und `N31` im auditierten Lauf heil durchkamen, war
+  Glück, kein Schutz: Ein unmaskiertes Token überlebt nur so lange, wie das
+  Modell es zufällig in Ruhe lässt. Die Tests prüfen deshalb die
+  **Maskierung**, nicht die Modellausgabe.
+  Betrifft ausschließlich `docs/feed.en.xml`; der deutsche Feed entsteht aus
+  dem unübersetzten Text. Damit ist Audit-Befund 3 erledigt.
 * **Bugfix: Abgeschnittene Baustellen-Titel sahen nach unserem Fehler aus
   (2026-09-12)**:
   Drei von 22 Titeln standen gekappt im deutschen Feed, einer davon mit einem
