@@ -7,51 +7,95 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 12 Sep 2026 14:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 14:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[60A/64A/66A: Feuerwehreinsatz]]></title>
+      <title><![CDATA[60A: Feuerwehreinsatz Betrieb ab Carlbergergasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">744ae647b3a9f6ecfd2f0d7d297989aa6c7848318f59ee2913ca22f3ca1605cc</guid>
-      <pubDate>Sat, 12 Sep 2026 13:43:00 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 14:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 13:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Liesing S. Die Linie 64A wird in Richtung Atzgersdorf, Ziedlergasse zwischen Steinsee und Gregorygasse über die Altmannsdorfer Straße … [Am 12.09.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Liesing S. Die Linie 64A wird in Richtung Atzgersdorf, Ziedlergasse zwischen Steinsee und Gregorygasse über die Altmannsdorfer Straße …<br/>[Am 12.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">164722c66a31d764723d9fb182608dac055196c62a3bdfefeae8ced58fa22094</guid>
+      <pubDate>Sat, 12 Sep 2026 14:01:54 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 14:01:54 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 15:00:00 +0200</ext:ends_at>
+      <description>[Am 12.09.2026]</description>
+      <content:encoded><![CDATA[[Am 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Feuerwehreinsatz Betrieb ab Atzgersdorf, Kirchenplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d9956200eda63a06821fdbefdf9ab1110eb06d32d78c6050d937cbbb16b0e120</guid>
+      <pubDate>Sat, 12 Sep 2026 13:47:52 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 13:47:53 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 14:56:00 +0200</ext:ends_at>
+      <description>[Am 12.09.2026]</description>
+      <content:encoded><![CDATA[[Am 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Fahrtbehinderung wegen Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b3569622241b3b291cb45a214c5e05e3b336ec14a8979783964565bd3563988</guid>
+      <pubDate>Sat, 12 Sep 2026 13:46:53 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 13:46:53 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 14:46:00 +0200</ext:ends_at>
+      <description>[Am 12.09.2026]</description>
+      <content:encoded><![CDATA[[Am 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Feuerwehreinsatz Betrieb ab Gregorygasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fb3d569c78cf427307eac0f5b6939df76c80572f2e2269e28f6955f9094dd633</guid>
+      <pubDate>Sat, 12 Sep 2026 13:46:53 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 13:46:53 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 14:55:00 +0200</ext:ends_at>
+      <description>[Am 12.09.2026]</description>
+      <content:encoded><![CDATA[[Am 12.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: Demonstration Haltestelle Kahlenberg wird nicht eingehalten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e55ce5d9b8291d6f5f007375460ecbaaa34ff56181ee4c66b7677ef67763ccd</guid>
-      <pubDate>Sat, 12 Sep 2026 12:25:15 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 12:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 12:25:15 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 19:00:00 +0200</ext:ends_at>
-      <description>Haltestelle Kahlenberg wird nicht eingehalten [Am 12.09.2026]</description>
-      <content:encoded><![CDATA[Haltestelle Kahlenberg wird nicht eingehalten<br/>[Am 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38A: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">02aa65bb2a42b78d8f039231ebadb9c66d7c2d19afa88273c07176cc07690991</guid>
+      <guid isPermaLink="false">18d3b2e3d318b5fb452221ec4faedb0567dc4c837b2fe370747095af60cf8402</guid>
       <pubDate>Sat, 12 Sep 2026 11:47:00 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 12:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 11:47:00 +0200</ext:starts_at>
+      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 12:25:15 +0200</ext:starts_at>
       <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Heiligenstadt S U und Cobenzl, Parkplatz. Voraussichtliche Dauer: 19:00 Uhr. Grund: Demonstration im Haltestellenbereich Kahlenberg. [Am 12.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Heiligenstadt S U und Cobenzl, Parkplatz. Voraussichtliche Dauer: 19:00 Uhr. Grund: Demonstration im Haltestellenbereich Kahlenberg.<br/>[Am 12.09.2026]]]></content:encoded>
+      <description>Die Haltestelle Kahlenberg kann derzeit in beiden Fahrtrichtungen nicht eingehalten werden. Busse mit Fahrziel Kahlenberg werden Cobenzl-Parkplatz kurzgeführt. [Am 12.09.2026]</description>
+      <content:encoded><![CDATA[Die Haltestelle Kahlenberg kann derzeit in beiden Fahrtrichtungen nicht eingehalten werden. Busse mit Fahrziel Kahlenberg werden Cobenzl-Parkplatz kurzgeführt.<br/>[Am 12.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[44: Fahrtbehinderung Veranstaltung]]></title>
+      <title><![CDATA[44: Veranstaltung Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c3634a779c4a08bd802d2538c90fd9f25104dfb0965ae6d4e141412f92a7fd10</guid>
-      <pubDate>Fri, 11 Sep 2026 09:16:36 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 12:01:06 +0200</ext:first_seen>
+      <guid isPermaLink="false">51060c6ba3ca32a4e6fcd06d658aec2b10193d80a5a141c1f9cd2c4213efa7db</guid>
+      <pubDate>Fri, 11 Sep 2026 09:16:35 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
       <ext:starts_at>Fri, 11 Sep 2026 09:16:36 +0200</ext:starts_at>
       <ext:ends_at>Sat, 12 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[11.09.2026 – 12.09.2026]</description>
-      <content:encoded><![CDATA[[11.09.2026 – 12.09.2026]]]></content:encoded>
+      <description>Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof [11.09.2026 – 12.09.2026]</description>
+      <content:encoded><![CDATA[Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof<br/>[11.09.2026 – 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[86A/86AR/87A: Veranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c10a61693b1899feb3a034dc038a53979093e43461e6b325c25676dc47f07144</guid>
+      <pubDate>Tue, 08 Sep 2026 10:26:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 21 Sep 2026 05:00:00 +0200</ext:ends_at>
+      <description>Wegen der Stadlauer Kirtage in der Stadlauer Straße, werden die Linien 86A, 87A und Rufbus 86A umgeleitet. [17.09.2026 – 21.09.2026]</description>
+      <content:encoded><![CDATA[Wegen der Stadlauer Kirtage in der Stadlauer Straße, werden die Linien 86A, 87A und Rufbus 86A umgeleitet.<br/>[17.09.2026 – 21.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A/18: Veranstaltung am 12.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70b7d5f22def1eccd31f13402bcbd54860e6fca98521d2a5920d540b73e0ce33</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
+      <description>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen. [30.07.2026 – 12.09.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[3A: Busse halten Kärntner Ring 5]]></title>
@@ -74,50 +118,6 @@
       <ext:ends_at>Wed, 25 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw. Auhof Haltestelle: Hüttergasse Von: Anzengruberstraße gegenüber 77 a Nach: Hüttergasse 6A-6B … [25.08.2026 – 25.08.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw. Auhof Haltestelle: Hüttergasse Von: Anzengruberstraße gegenüber 77 a Nach: Hüttergasse 6A-6B …<br/>[25.08.2026 – 25.08.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[17A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4e4ac1d3cb4bc917fea71f50345872e58878aa82bc54b27034a1c202771ae756</guid>
-      <pubDate>Wed, 09 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 11 Sep 2026 23:59:34 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 15:00:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten in der Kästenbaumgasse wird die Linie 17A umgeleitet. [14.09.2026 – 18.09.2026]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Kästenbaumgasse wird die Linie 17A umgeleitet.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46/49/52: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">29d08fd01cdc74937e3b4614fdcea187b2ada9e40ffa86e4d1b4b03d9bcbab99</guid>
-      <pubDate>Fri, 11 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 11 Sep 2026 14:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 31 Oct 2026 04:30:00 +0100</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten im Bereich Märzstraße und Huglgasse kommt es bei den Linien 46, 49 und 52 zu folgenden Maßnahmen. [21.09.2026 – 31.10.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Märzstraße und Huglgasse kommt es bei den Linien 46, 49 und 52 zu folgenden Maßnahmen.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44: Veranstaltung Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5effa18cfdf1958a5ecb04c3569ad355e282215b9c7a1e89c3658516a2bfb9f8</guid>
-      <pubDate>Fri, 11 Sep 2026 09:16:36 +0200</pubDate>
-      <ext:first_seen>Fri, 11 Sep 2026 09:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 11 Sep 2026 09:16:36 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof [11.09.2026 – 12.09.2026]</description>
-      <content:encoded><![CDATA[Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof<br/>[11.09.2026 – 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Märzstraße 49 bis Kreuzung Huglgasse sowie Kreuzung Huglgasse bis Kreuzung Hütteldorfer Straße]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">0dfddd258ab4ba06599c87586ca7087268ea73a4f62ffc43de13acf6c950d687</guid>
-      <pubDate>Mon, 14 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 10 Sep 2026 22:31:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
-      <description>Der Fußgängerverkehr kann aufrecht gehalten werden. [14.09.2026 – 15.11.2026]</description>
-      <content:encoded><![CDATA[Der Fußgängerverkehr kann aufrecht gehalten werden.<br/>[14.09.2026 – 15.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
