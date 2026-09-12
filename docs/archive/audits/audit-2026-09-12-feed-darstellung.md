@@ -4,7 +4,7 @@
 **Schwerpunkt:** Feed — Quellen, Pipeline, Darstellung in `docs/feed.xml` / `docs/feed.en.xml`
 **Datenbasis:** Manual-Full-Refresh Run 93948230655 (Checkout `275ed8d586`, 08:02–08:05 UTC),
 Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
-**Status:** Befunde 1, 2, 4, 5, 8 und 9 behoben (PR #1790–#1796). Offen: 3, 7, 6 — keiner davon berührt den deutschen Feed (s. Abschnitt 11)
+**Status:** Befunde 1, 2, 4, 5, 8 und 9 behoben (PR #1790–#1798). Offen: 3, 7, 6 — keiner davon berührt den deutschen Feed (s. Abschnitt 11)
 
 ---
 
@@ -25,7 +25,7 @@ Beheben der anderen dazu (8 beim Nachprüfen von 2, 9 beim Neupriorisieren).
 | 8 | Dieselbe Störung zweimal im Feed (38A) | [#1792](https://github.com/Origamihase/wien-oepnv/pull/1792) |
 | 9 | Ein Feuerwehreinsatz belegte zwei Feed-Plätze (64A) | [#1794](https://github.com/Origamihase/wien-oepnv/pull/1794) |
 | 5 | ÖBB-Items trugen das Veröffentlichungsdatum statt des Bauzeitraums | [#1795](https://github.com/Origamihase/wien-oepnv/pull/1795) |
-| 4 | Drei von 22 Baustellen-Titeln brachen mitten im Wort ab | [#1796](https://github.com/Origamihase/wien-oepnv/pull/1796) |
+| 4 | Drei von 22 Baustellen-Titeln brachen mitten im Wort ab | [#1798](https://github.com/Origamihase/wien-oepnv/pull/1798) |
 
 Zwei Muster ziehen sich durch:
 
@@ -345,7 +345,7 @@ alleinstehende „D" maskiert wird.
 ## 6. Befund 4 — Baustellen-Titel brechen mitten im Zitat ab
 
 **Wirkung auf den deutschen Feed: verstümmelter Titel** · **Status: behoben**
-([PR #1796](https://github.com/Origamihase/wien-oepnv/pull/1796))
+([PR #1798](https://github.com/Origamihase/wien-oepnv/pull/1798))
 
 Nicht ein Titel, sondern **drei von 22**:
 
