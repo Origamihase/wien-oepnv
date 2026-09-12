@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 12 Sep 2026 04:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 04:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N67: delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bee09a46e96c5cc5703e0db9b57d23979b68e4e7b81337aac02705ac91f04698</guid>
+      <pubDate>Sat, 12 Sep 2026 04:02:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 04:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 04:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Currently, the N67 line has different intervals in both directions. Reason: defective vehicle. [On 12.09.2026]</description>
+      <content:encoded><![CDATA[Currently, the N67 line has different intervals in both directions. Reason: defective vehicle.<br/>[On 12.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[17A: construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:starts_at>Thu, 10 Sep 2026 12:16:29 +0200</ext:starts_at>
       <description>Due to construction works, trains between Vienna Hbf (U) and Gramatneusiedl Train Station from 05.122026 to 07.12.2026 (both from 23:15 to 04:40) cannot run local trains. [Since 10.09.2026]</description>
       <content:encoded><![CDATA[Due to construction works, trains between Vienna Hbf (U) and Gramatneusiedl Train Station from 05.122026 to 07.12.2026 (both from 23:15 to 04:40) cannot run local trains.<br/>[Since 10.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: diversion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">834111bf377fab939eabd14bd1e7f1ba0989eafb655507b367cdbfc64a3c5fe4</guid>
-      <pubDate>Thu, 10 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 10 Sep 2026 09:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 10 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of track construction works in the area of Simmeringer Hauptstraße / Fickeysstraße there is an diversion of line N71. Period: From Saturday, 12. September 2026, start … [12.09.2026 – 10.09.2027]</description>
-      <content:encoded><![CDATA[Because of track construction works in the area of Simmeringer Hauptstraße / Fickeysstraße there is an diversion of line N71. Period: From Saturday, 12. September 2026, start …<br/>[12.09.2026 – 10.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

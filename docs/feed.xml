@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 12 Sep 2026 04:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 04:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N67: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bee09a46e96c5cc5703e0db9b57d23979b68e4e7b81337aac02705ac91f04698</guid>
+      <pubDate>Sat, 12 Sep 2026 04:02:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 04:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 04:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit kommt es bei der Linie N67 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug. [Am 12.09.2026]</description>
+      <content:encoded><![CDATA[Derzeit kommt es bei der Linie N67 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.<br/>[Am 12.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[17A: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:starts_at>Thu, 10 Sep 2026 12:16:29 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 05.12.2026 bis 07.12.2026 (jeweils von 23:15 Uhr bis 04:40 Uhr) keine Nahverkehrszüge fahren. [Seit 10.09.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 05.12.2026 bis 07.12.2026 (jeweils von 23:15 Uhr bis 04:40 Uhr) keine Nahverkehrszüge fahren.<br/>[Seit 10.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Umleitung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">834111bf377fab939eabd14bd1e7f1ba0989eafb655507b367cdbfc64a3c5fe4</guid>
-      <pubDate>Thu, 10 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 10 Sep 2026 09:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 10 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten im Bereich Simmeringer Hauptstraße / Fickeysstraße kommt es zu einer Umleitung der Linie N71. Zeitraum: Ab Samstag, 12. September 2026, Betriebsbeginn … [12.09.2026 – 10.09.2027]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Simmeringer Hauptstraße / Fickeysstraße kommt es zu einer Umleitung der Linie N71. Zeitraum: Ab Samstag, 12. September 2026, Betriebsbeginn …<br/>[12.09.2026 – 10.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
