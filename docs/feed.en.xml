@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 12 Sep 2026 16:31:05 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 17:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3f4fee107862aeb11a3eec5702befffc4bc25ff027e7075518500e4f6c7606be</guid>
+      <pubDate>Sat, 12 Sep 2026 16:56:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 17:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 16:56:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Döblinger Friedhof, Felix-Dahn-Straße. Voraussichtliche Dauer: 17:20 Uhr. Grund: Demonstration im Bereich Liechtensteinstraße . [Am 12.09.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Döblinger Friedhof, Felix-Dahn-Straße. Voraussichtliche Dauer: 17:20 Uhr. Grund: Demonstration im Bereich Liechtensteinstraße .<br/>[Am 12.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[18: event service from Ernst-Happel-Stadion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -26,19 +37,8 @@
       <guid isPermaLink="false">11c860f3f02e4dd83a6557e082cdea5c1a1bc33e5b21562974041148aead9260</guid>
       <pubDate>Sat, 12 Sep 2026 15:47:00 +0200</pubDate>
       <ext:first_seen>Sat, 12 Sep 2026 16:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 15:47:33 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 12 Sep 2026 15:47:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 12.09.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60A: fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6fff906190d24de7ff0bab120edcb9a23372ef45c19581e5b0b055218cae3990</guid>
-      <pubDate>Sat, 12 Sep 2026 13:43:00 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 15:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 13:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 16:29:00 +0200</ext:ends_at>
       <description>After an service obstruction there are different intervals. [On 12.09.2026]</description>
       <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.09.2026]]]></content:encoded>
     </item>
@@ -71,7 +71,7 @@
       <pubDate>Sat, 12 Sep 2026 11:47:00 +0200</pubDate>
       <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
       <ext:starts_at>Sat, 12 Sep 2026 12:25:15 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 12 Sep 2026 19:00:00 +0200</ext:ends_at>
       <description>The stop Kahlenberg currently cannot be met in both directions. Buses with destination Kahlenberg will be Cobenzl-Parkplatz operating short-running. [On 12.09.2026]</description>
       <content:encoded><![CDATA[The stop Kahlenberg currently cannot be met in both directions. Buses with destination Kahlenberg will be Cobenzl-Parkplatz operating short-running.<br/>[On 12.09.2026]]]></content:encoded>
     </item>
