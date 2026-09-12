@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 12 Sep 2026 12:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 13:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26A: rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0245b6164e8aeaf5bf219cd1cff1358fe2406e2c522e5ac88f5e5fc5c5e87abe</guid>
+      <pubDate>Sat, 12 Sep 2026 11:36:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 13:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 11:36:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: rescue operation. [On 12.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: rescue operation.<br/>[On 12.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Update 1 (1209.2026 12:29) Removal of line interruption: Flughafen Wien]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -40,17 +51,6 @@
       <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>The stop Kahlenberg currently cannot be met in both directions. Buses with destination Kahlenberg will be Cobenzl-Parkplatz operating short-running. [On 12.09.2026]</description>
       <content:encoded><![CDATA[The stop Kahlenberg currently cannot be met in both directions. Buses with destination Kahlenberg will be Cobenzl-Parkplatz operating short-running.<br/>[On 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Traffic disturbance]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1a83f40242f4fe2a61c94eb4176ded36b2f53fed946428f494a7d09691a0966e</guid>
-      <pubDate>Sat, 12 Sep 2026 11:36:00 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 12:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 11:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 12.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 12.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: service obstruction event]]></title>
