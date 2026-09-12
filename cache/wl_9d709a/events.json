@@ -554,6 +554,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "52/60: Verspätungen",
+    "description": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Verspätungen in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f34a4e88ca9c7f315898a336e077beeeb8ad45ebe7bfa4d970429faf576a69d7",
+    "pubDate": "2026-09-12T05:22:00+02:00",
+    "starts_at": "2026-09-12T05:22:00+02:00",
+    "ends_at": "2026-09-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=52,60|D=2026-09-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -602,62 +614,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N29: Busse halten bei Taborstraße 62",
-    "description": "Gleisbauarbeiten\nBusse halten bei Taborstraße 62",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f1d82d92bcc63225e234351a8adc4d3a2b4eb3cf96d140e60e90fd228c1b2a22",
-    "pubDate": "2026-09-12T00:42:05+02:00",
-    "starts_at": "2026-09-12T00:42:05+02:00",
-    "ends_at": "2026-09-12T05:08:00+02:00",
-    "_identity": "wl|störung|L=N29|D=2026-09-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N6: Busse halten Neilreichgasse 20-22",
-    "description": "Bauarbeiten Busse halten Neilreichgasse 20-22",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc",
-    "pubDate": "2026-09-12T00:55:09+02:00",
-    "starts_at": "2026-09-12T00:55:09+02:00",
-    "ends_at": "2026-09-12T05:05:00+02:00",
-    "_identity": "wl|störung|L=N6|D=2026-09-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N6: Busse halten Quellenstraße 189",
-    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "702d63d7625c3038f025628d02f9115371cb86897a042af3fea6ba3fa90b5500",
-    "pubDate": "2026-09-12T00:54:09+02:00",
-    "starts_at": "2026-09-12T00:54:09+02:00",
-    "ends_at": "2026-09-12T05:04:00+02:00",
-    "_identity": "wl|störung|L=N6|D=2026-09-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Busse halten Auf der Hauptfahrbahn",
-    "description": "Busse halten\nAuf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a72ac18fe94358f1623c899652a559b28776e9c499166309e4591779708cc95",
-    "pubDate": "2026-09-12T04:46:59+02:00",
-    "starts_at": "2026-09-12T04:46:59+02:00",
-    "ends_at": "2026-09-12T05:04:00+02:00",
-    "_identity": "wl|störung|L=N71|D=2026-09-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Busse halten Simmeringer Hauptstr. ggü 197",
-    "description": "Busse halten\nSimmeringer Hauptstr. ggü 197",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c6e5660b4ca5565b5c84f20f7325537dda40f7b36378899a21abefe17ba276b7",
-    "pubDate": "2026-09-12T04:44:29+02:00",
-    "starts_at": "2026-09-12T04:44:29+02:00",
-    "ends_at": "2026-09-12T05:09:00+02:00",
-    "_identity": "wl|störung|L=N71|D=2026-09-12"
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-09-12T05:28:00+02:00",
+    "starts_at": "2026-09-12T05:28:00+02:00",
+    "ends_at": "2026-09-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-09-12"
   },
   {
     "source": "Wiener Linien",
