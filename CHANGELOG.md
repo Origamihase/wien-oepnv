@@ -5,6 +5,35 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: Dieselbe Störung stand zweimal im Feed (2026-09-12)**:
+  Nach dem Dedupe-Fix (PR #1791) standen zwei Meldungen zur selben Sperre im
+  Feed:
+
+  ```
+  38A: Demonstration
+  38A: Demonstration Haltestelle Kahlenberg wird nicht eingehalten
+  ```
+
+  Ursache ist eine Lücke in `TITLE_TOPIC_TOKENS` (`src/providers/wl_text.py`):
+  Fehlt das Ursachen-Wort dort, fällt `_topic_key_from_title` auf den ganzen
+  Titel-Kern zurück — dann ist jede Formulierungsvariante ein eigenes Topic,
+  ein eigener Bucket und am Ende ein eigenes Feed-Item. `demonstration` und
+  `veranstaltung` fehlten, obwohl sie in dieselbe Klasse gehören wie
+  `polizeieinsatz` oder `rettungseinsatz`.
+  Vorher fiel das nicht auf, weil `_dedupe_items` solche Paare über den groben
+  `_identity` (Linie + Tag) blind zusammenwarf. Das war keine Lösung, sondern
+  eine Maskierung — es traf genauso Meldungen, die wirklich verschieden waren
+  (`49A/50B: Mondweg` gegen `49A/50B: Hüttergasse`, zwei Straßen).
+  Zusammengeführt wird jetzt an der richtigen Stelle, im Bucketing von
+  `fetch_events`: Dort gewinnen der bessere Titel **und** die bessere
+  Beschreibung, Haltestellen und Extras werden vereinigt. Aus den beiden
+  38A-Meldungen wird ein Item, das beide schlägt — der informative Titel mit
+  dem ausführlichen Text.
+  **Korrektur am Eintrag zu PR #1791:** Die dort als „drei verschiedene
+  Störungen" bezeichnete Linie-44-Trias (`Veranstaltung …`) ist keine — es ist
+  ein Ereignis, aus drei Blickwinkeln gemeldet. Mit `veranstaltung` als Token
+  wird daraus ebenfalls ein Item. Der belastbare Fall für „wirklich
+  verschieden" bleibt `49A/50B`.
 * **Bugfix: Verschiedene WL-Störungen wurden als „Duplikat" verworfen
   (2026-09-12)**:
   `python -m src.cli feed lint` meldete `entfernte Duplikate: 4` bei 83

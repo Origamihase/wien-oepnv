@@ -309,10 +309,38 @@ def extract_date_from_title(
 
 # ---------------- „Kernbegriff/Topic“ für Dedupe ----------------
 
+# Ursachen-Wörter, an denen zwei Upstream-Meldungen als DASSELBE Ereignis
+# erkannt werden. Fehlt das Wort hier, fällt :func:`_topic_key_from_title` auf
+# den ganzen Titel-Kern zurück — dann ist jede Formulierungsvariante ein
+# eigenes Topic, ein eigener Bucket und am Ende ein eigenes Feed-Item.
+#
+# ``demonstration`` und ``veranstaltung`` fehlten und standen deshalb am
+# 2026-09-12 doppelt im Feed:
+#
+#     38A: Demonstration
+#     38A: Demonstration Haltestelle Kahlenberg wird nicht eingehalten
+#
+# Beide beschreiben dieselbe Sperre der Haltestelle Kahlenberg. Vor PR #1791
+# fiel das nicht auf, weil ``_dedupe_items`` sie über den groben
+# ``_identity`` (Linie + Tag) blind zusammenwarf und eines davon verwarf.
+# Dieses Verwerfen war keine Lösung, sondern eine Maskierung: Es traf
+# genauso Meldungen, die wirklich verschieden waren (``49A/50B: Mondweg``
+# gegen ``49A/50B: Hüttergasse`` — zwei Straßen).
+#
+# Der richtige Ort zum Zusammenführen ist dieser hier: Im Bucketing von
+# ``fetch_events`` gewinnt der bessere Titel UND die bessere Beschreibung
+# (``_title_quality_key`` / ``_description_info_score``), Haltestellen und
+# Extras werden vereinigt. Aus den beiden 38A-Meldungen wird dadurch ein
+# Item, das beide schlägt: der informative Titel mit dem ausführlichen Text.
+#
+# Neue Tokens deshalb nur mit Beleg aus den Live-Daten aufnehmen — jedes
+# zusätzliche Wort führt Meldungen aggressiver zusammen.
 TITLE_TOPIC_TOKENS = {
     "falschparker",
     "polizeieinsatz",
     "rettungseinsatz",
+    "demonstration",
+    "veranstaltung",
     "unfall",
     "signalstörung",
     "signalstoerung",

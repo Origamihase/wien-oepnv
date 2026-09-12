@@ -4,19 +4,29 @@ Live regression, 2026-09-12 (``python -m src.cli feed lint``)::
 
     Nach Deduplizierung: 79 (entfernte Duplikate: 4)
 
-    - 3x Schluessel wl|stoerung|L=44|D=2026-09-11:
-        44: Veranstaltung Zuege halten Rosensteingasse ...
-        44: Veranstaltung Betrieb ab Johann-Nepomuk-Berger-Platz
-        44: Fahrtbehinderung Veranstaltung
     - 2x Schluessel wl|hinweis|L=49A,50B|D=2026-08-25:
         49A/50B: Mondweg
-        49A/50B: Huettergasse
+        49A/50B: Huettergasse        <- andere Strasse, verworfen
 
-Four of 83 items were dropped as "duplicates" although they describe
-different disruptions at different places. ``_wl_identity`` folded the
-``topic_key`` into the key only when the line set or the start date was
-missing; ``_dedupe_items`` keys on ``_identity`` first and never reaches the
-finer per-item ``guid``, so everything the key conflated vanished silently.
+``_wl_identity`` folded the ``topic_key`` into the key only when the line set
+or the start date was missing; ``_dedupe_items`` keys on ``_identity`` first
+and never reaches the finer per-item ``guid``, so everything the coarse
+line+day key conflated vanished silently.
+
+That blind drop was never a merge. It hit genuinely distinct messages — two
+different streets above — just as hard as it hit repeated reports of ONE
+incident. Both failure modes are pinned here:
+
+* distinct messages must all survive (``..._survive_dedupe``);
+* several messages about one incident must join into a single item, and they
+  must do so in the PROVIDER'S bucketing, where the better title and the
+  better description win (``..._merge_into_one``) — not by dropping one at
+  random further downstream.
+
+Correction to the original write-up: the line-44 ``Veranstaltung`` trio was
+first cited as three *distinct* disruptions. It is not — it is one event
+reported from three angles, and it now belongs to the merge tests. The
+49A/50B pair is the genuine "distinct" case.
 
 These tests drive the REAL path — ``fetch_events`` (identity construction +
 bucketing) and then ``_dedupe_items`` — rather than ``_wl_identity`` alone.
@@ -63,23 +73,24 @@ def _run(monkeypatch: pytest.MonkeyPatch, infos: list[dict[str, Any]]) -> list[A
 def test_three_distinct_disruptions_on_one_line_all_survive_dedupe(
     monkeypatch: pytest.MonkeyPatch, _no_news: None
 ) -> None:
+    """Three unrelated incidents on one line on one day must all survive.
+
+    Originally written with the live line-44 ``Veranstaltung`` trio, which
+    turned out to be ONE event described three times — see the module
+    docstring. Three genuinely unrelated causes make the point without
+    relying on that misreading.
+    """
     start = "2026-09-11T09:16:36+02:00"
     infos = [
-        _traffic_info(
-            "Veranstaltung Züge halten Rosensteingasse bei Linie 9",
-            line="44",
-            start=start,
-        ),
-        _traffic_info(
-            "Veranstaltung Betrieb ab Johann-Nepomuk-Berger-Platz",
-            line="44",
-            start=start,
-        ),
-        _traffic_info("Fahrtbehinderung Veranstaltung", line="44", start=start),
+        _traffic_info("Weichenstörung Schottentor", line="44", start=start),
+        _traffic_info("Gleisbauarbeiten Hernalser Hauptstraße", line="44", start=start),
+        # NB: kein "Aufzug …" — ``_is_facility_only`` verwirft reine
+        # Aufzugs-/Rolltreppenmeldungen, bevor sie ein Item werden.
+        _traffic_info("Falschparker Kreuzgasse", line="44", start=start),
     ]
 
     events = _run(monkeypatch, infos)
-    assert len(events) == 3, "die drei Meldungen dürfen nicht schon im Provider verschmelzen"
+    assert len(events) == 3, "drei verschiedene Ursachen dürfen nicht verschmelzen"
 
     # The identities must already differ — this is what _dedupe_items keys on.
     assert len({e["_identity"] for e in events}) == 3
@@ -169,12 +180,93 @@ def test_identity_refines_the_bucket_key(
     """
     start = "2026-09-11T09:16:36+02:00"
     infos = [
-        _traffic_info("Fahrtbehinderung Veranstaltung", line="44", start=start),
+        _traffic_info("Weichenstörung Schottentor", line="44", start=start),
         _traffic_info("Gleisbauarbeiten Hernalser Hauptstraße", line="44", start=start),
-        _traffic_info("Aufzug defekt Station Schottentor", line="44", start=start),
+        # NB: kein "Aufzug …" — ``_is_facility_only`` verwirft reine
+        # Aufzugs-/Rolltreppenmeldungen, bevor sie ein Item werden.
+        _traffic_info("Falschparker Kreuzgasse", line="44", start=start),
     ]
 
     events = _run(monkeypatch, infos)
     identities = [e["_identity"] for e in events]
     guids = [e["guid"] for e in events]
     assert len(set(identities)) == len(identities) == len(set(guids))
+
+
+def test_two_messages_about_one_demonstration_merge_into_one(
+    monkeypatch: pytest.MonkeyPatch, _no_news: None
+) -> None:
+    """Live regression 2026-09-12: the same closure, published twice.
+
+        38A: Demonstration
+        38A: Demonstration Haltestelle Kahlenberg wird nicht eingehalten
+
+    Both describe the Kahlenberg stop being skipped. Before the dedupe fix
+    this stayed hidden — ``_dedupe_items`` blindly dropped one of them via
+    the coarse line+day ``_identity``. That was masking, not merging: it hit
+    genuinely distinct messages just as hard (see the 49A/50B test above).
+
+    The right place to join them is the topic: with ``demonstration`` in
+    ``TITLE_TOPIC_TOKENS`` both land in one bucket, and the bucketing picks
+    the better title AND the better description — so the single item beats
+    either input.
+    """
+    infos = [
+        {
+            "title": "Demonstration",
+            "description": (
+                "Linie 38A: Die Haltestelle Kahlenberg kann derzeit in beiden "
+                "Fahrtrichtungen nicht eingehalten werden. Busse mit Fahrziel "
+                "Kahlenberg werden Cobenzl-Parkplatz kurzgeführt."
+            ),
+            "relatedLines": ["38A"],
+            "time": {
+                "start": "2026-09-12T11:47:00+02:00",
+                "end": "2026-09-12T23:55:00+02:00",
+            },
+            "attributes": {},
+        },
+        {
+            "title": "Demonstration Haltestelle Kahlenberg wird nicht eingehalten",
+            "description": "Demonstration\nHaltestelle Kahlenberg wird nicht eingehalten",
+            "relatedLines": ["38A"],
+            "time": {
+                "start": "2026-09-12T12:25:15+02:00",
+                "end": "2026-09-12T19:00:00+02:00",
+            },
+            "attributes": {},
+        },
+    ]
+
+    events = _run(monkeypatch, infos)
+    assert len(events) == 1, [e["title"] for e in events]
+
+    item = events[0]
+    # The informative title wins …
+    assert "Kahlenberg" in str(item["title"])
+    # … and so does the readable description, not the terse one.
+    assert "Cobenzl-Parkplatz" in str(item["description"])
+
+
+def test_one_event_reported_in_several_facets_merges(
+    monkeypatch: pytest.MonkeyPatch, _no_news: None
+) -> None:
+    """The line-44 trio: one Veranstaltung, three upstream messages.
+
+    ``tests`` above keep genuinely distinct messages apart; this one keeps
+    the other error in check. Upstream describes a single event from three
+    angles, and ``veranstaltung`` in ``TITLE_TOPIC_TOKENS`` folds them into
+    one item instead of three near-identical feed entries.
+    """
+    start = "2026-09-11T09:16:36+02:00"
+    infos = [
+        _traffic_info(
+            "Veranstaltung Züge halten Rosensteingasse bei Linie 9", line="44", start=start
+        ),
+        _traffic_info(
+            "Veranstaltung Betrieb ab Johann-Nepomuk-Berger-Platz", line="44", start=start
+        ),
+        _traffic_info("Fahrtbehinderung Veranstaltung", line="44", start=start),
+    ]
+
+    assert len(_run(monkeypatch, infos)) == 1
