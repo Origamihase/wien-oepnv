@@ -434,6 +434,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1/D/71: Verkehrsunfall",
+    "description": "Linie 1: Unregelmäßige Intervalle in Richtung Prater Hauptallee. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4ed10aaa5b0190c620f38b46fd15fde382eaff7b29e1e8e1ecf3ddf67b235ee",
+    "pubDate": "2026-09-12T14:40:00+02:00",
+    "starts_at": "2026-09-12T14:40:00+02:00",
+    "ends_at": "2026-09-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=1,71,D|D=2026-09-12|TK=d 1 71 verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11A: Einstieg bei Vorgartenstraße vor Meiereistraße",
     "description": "Bauarbeiten\nEinstieg bei Vorgartenstraße vor Meiereistraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,18 +466,6 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
-    "pubDate": "2026-09-12T05:00:29+02:00",
-    "starts_at": "2026-09-12T05:00:29+02:00",
-    "ends_at": "2026-09-12T23:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-09-12|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
     "source": "Wiener Linien",
@@ -542,74 +542,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5B: Rettungseinsatz",
-    "description": "Linie 5B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "60A/64A/66A: Feuerwehreinsatz",
+    "description": "Die Linie 60A wird in Richtung Liesing S zwischen Alterlaa U und Carlbergergasse über die Carlbergergasse umgeleitet. Die Linie 64A wird in Richtung Atzgersdorf, Ziedlergasse zwischen Steinsee und Gregorygasse über die Altmannsdorfer Straße, Sagedergasse und Breitenfurter Straße umgeleitet. Die Linie 66A wird in Richtung Liesing zwischen Steinsee und Atzgersdorf, Kirchenplatz über die Altmannsdorfer Straße, Sagedergasse und Breitenfurter Straße umgeleitet. Voraussichtliche Dauer: 15:00 Uhr. Grund: Feuerwehreinsatz im Bereich Anton-Baumgartner-Straße # Wohnparkstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "026034b61e72b8d6446ed6a38d301b8d35dab3ccc028632401c2c456a02db76a",
-    "pubDate": "2026-09-12T13:39:00+02:00",
-    "starts_at": "2026-09-12T13:39:00+02:00",
+    "guid": "744ae647b3a9f6ecfd2f0d7d297989aa6c7848318f59ee2913ca22f3ca1605cc",
+    "pubDate": "2026-09-12T13:43:00+02:00",
+    "starts_at": "2026-09-12T13:43:00+02:00",
     "ends_at": "2026-09-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=5B|D=2026-09-12|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60A: Feuerwehreinsatz Betrieb ab Carlbergergasse",
-    "description": "Feuerwehreinsatz\nBetrieb ab Carlbergergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "164722c66a31d764723d9fb182608dac055196c62a3bdfefeae8ced58fa22094",
-    "pubDate": "2026-09-12T14:01:54+02:00",
-    "starts_at": "2026-09-12T14:01:54+02:00",
-    "ends_at": "2026-09-12T15:00:00+02:00",
-    "_identity": "wl|störung|L=60A|D=2026-09-12|TK=feuerwehreinsatz betrieb ab carlbergergasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "64A: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3b3569622241b3b291cb45a214c5e05e3b336ec14a8979783964565bd3563988",
-    "pubDate": "2026-09-12T13:46:53+02:00",
-    "starts_at": "2026-09-12T13:46:53+02:00",
-    "ends_at": "2026-09-12T14:46:00+02:00",
-    "_identity": "wl|störung|L=64A|D=2026-09-12|TK=fahrtbehinderung wegen feuerwehreinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "64A: Feuerwehreinsatz Betrieb ab Gregorygasse",
-    "description": "Feuerwehreinsatz\nBetrieb ab Gregorygasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fb3d569c78cf427307eac0f5b6939df76c80572f2e2269e28f6955f9094dd633",
-    "pubDate": "2026-09-12T13:46:53+02:00",
-    "starts_at": "2026-09-12T13:46:53+02:00",
-    "ends_at": "2026-09-12T14:55:00+02:00",
-    "_identity": "wl|störung|L=64A|D=2026-09-12|TK=feuerwehreinsatz betrieb ab gregorygasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Busse halten Salvatorianerplatz",
-    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
-    "pubDate": "2026-09-12T04:40:29+02:00",
-    "starts_at": "2026-09-12T04:40:29+02:00",
-    "ends_at": "2026-09-13T01:00:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-09-12|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Feuerwehreinsatz Betrieb ab Atzgersdorf, Kirchenplatz",
-    "description": "Feuerwehreinsatz\nBetrieb ab Atzgersdorf, Kirchenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d9956200eda63a06821fdbefdf9ab1110eb06d32d78c6050d937cbbb16b0e120",
-    "pubDate": "2026-09-12T13:47:52+02:00",
-    "starts_at": "2026-09-12T13:47:53+02:00",
-    "ends_at": "2026-09-12T14:56:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-09-12|TK=feuerwehreinsatz betrieb ab atzgersdorf kirchenplatz"
+    "_identity": "wl|störung|L=60A,64A,66A|D=2026-09-12|TK=60a 64a 66a feuerwehreinsatz"
   },
   {
     "source": "Wiener Linien",

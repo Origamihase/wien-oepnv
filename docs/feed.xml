@@ -7,51 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 12 Sep 2026 14:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 15:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[60A: Feuerwehreinsatz Betrieb ab Carlbergergasse]]></title>
+      <title><![CDATA[1/D/71: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">164722c66a31d764723d9fb182608dac055196c62a3bdfefeae8ced58fa22094</guid>
-      <pubDate>Sat, 12 Sep 2026 14:01:54 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 14:01:54 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 15:00:00 +0200</ext:ends_at>
-      <description>[Am 12.09.2026]</description>
-      <content:encoded><![CDATA[[Am 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Feuerwehreinsatz Betrieb ab Atzgersdorf, Kirchenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d9956200eda63a06821fdbefdf9ab1110eb06d32d78c6050d937cbbb16b0e120</guid>
-      <pubDate>Sat, 12 Sep 2026 13:47:52 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 13:47:53 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 14:56:00 +0200</ext:ends_at>
-      <description>[Am 12.09.2026]</description>
-      <content:encoded><![CDATA[[Am 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Fahrtbehinderung wegen Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b3569622241b3b291cb45a214c5e05e3b336ec14a8979783964565bd3563988</guid>
-      <pubDate>Sat, 12 Sep 2026 13:46:53 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 13:46:53 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 14:46:00 +0200</ext:ends_at>
-      <description>[Am 12.09.2026]</description>
-      <content:encoded><![CDATA[[Am 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Feuerwehreinsatz Betrieb ab Gregorygasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fb3d569c78cf427307eac0f5b6939df76c80572f2e2269e28f6955f9094dd633</guid>
-      <pubDate>Sat, 12 Sep 2026 13:46:53 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 13:46:53 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 14:55:00 +0200</ext:ends_at>
-      <description>[Am 12.09.2026]</description>
-      <content:encoded><![CDATA[[Am 12.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">a4ed10aaa5b0190c620f38b46fd15fde382eaff7b29e1e8e1ecf3ddf67b235ee</guid>
+      <pubDate>Sat, 12 Sep 2026 14:40:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 15:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 14:40:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in Richtung Prater Hauptallee. Linie D: Unregelmäßige Intervalle in beiden Richtungen. [Am 12.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Prater Hauptallee. Linie D: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 12.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: Demonstration Haltestelle Kahlenberg wird nicht eingehalten]]></title>
@@ -98,6 +65,17 @@
       <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[60A/64A/66A: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">744ae647b3a9f6ecfd2f0d7d297989aa6c7848318f59ee2913ca22f3ca1605cc</guid>
+      <pubDate>Sat, 12 Sep 2026 13:43:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 14:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 13:43:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie 60A wird in Richtung Liesing S zwischen Alterlaa U und Carlbergergasse über die Carlbergergasse umgeleitet. [Am 12.09.2026]</description>
+      <content:encoded><![CDATA[Die Linie 60A wird in Richtung Liesing S zwischen Alterlaa U und Carlbergergasse über die Carlbergergasse umgeleitet.<br/>[Am 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[3A: Busse halten Kärntner Ring 5]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c535a3f28bfd3a8f7e49e96b63ccb14c2a0224c47e5ee638d569ae0296a64855</guid>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 25 Aug 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw. Auhof Haltestelle: Hüttergasse Von: Anzengruberstraße gegenüber 77 a Nach: Hüttergasse 6A-6B … [25.08.2026 – 25.08.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw. Auhof Haltestelle: Hüttergasse Von: Anzengruberstraße gegenüber 77 a Nach: Hüttergasse 6A-6B …<br/>[25.08.2026 – 25.08.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[17A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4e4ac1d3cb4bc917fea71f50345872e58878aa82bc54b27034a1c202771ae756</guid>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 11 Sep 2026 23:59:34 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 15:00:00 +0200</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten in der Kästenbaumgasse wird die Linie 17A umgeleitet. [14.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Kästenbaumgasse wird die Linie 17A umgeleitet.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46/49/52: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">29d08fd01cdc74937e3b4614fdcea187b2ada9e40ffa86e4d1b4b03d9bcbab99</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 11 Sep 2026 14:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 31 Oct 2026 04:30:00 +0100</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten im Bereich Märzstraße und Huglgasse kommt es bei den Linien 46, 49 und 52 zu folgenden Maßnahmen. [21.09.2026 – 31.10.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Märzstraße und Huglgasse kommt es bei den Linien 46, 49 und 52 zu folgenden Maßnahmen.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
