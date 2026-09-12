@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 12 Sep 2026 18:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 19:01:12 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[18: event service from Ernst-Happel-Stadion]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Sun, 13 Sep 2026 18:15:00 +0200</ext:ends_at>
       <description>Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U1 cannot be extended. [12.09.2026 – 13.09.2026]</description>
       <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U1 cannot be extended.<br/>[12.09.2026 – 13.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38A: demonstration Stop Kahlenberg not complied with]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">18d3b2e3d318b5fb452221ec4faedb0567dc4c837b2fe370747095af60cf8402</guid>
-      <pubDate>Sat, 12 Sep 2026 12:25:15 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 12:25:15 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 19:00:00 +0200</ext:ends_at>
-      <description>The stop Kahlenberg currently cannot be met in both directions. Buses with destination Kahlenberg will be Cobenzl-Parkplatz operating short-running. [On 12.09.2026]</description>
-      <content:encoded><![CDATA[The stop Kahlenberg currently cannot be met in both directions. Buses with destination Kahlenberg will be Cobenzl-Parkplatz operating short-running.<br/>[On 12.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: event Trains stop Rosensteingasse on line 9 direction Westbahnhof]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 31 Oct 2026 04:30:00 +0100</ext:ends_at>
       <description>Due to track construction works in the area ofX Märzstraße and Huglgasse the following measures are taken on the lines 46, 49 and 52. [21.09.2026 – 31.10.2026]</description>
       <content:encoded><![CDATA[Due to track construction works in the area ofX Märzstraße and Huglgasse the following measures are taken on the lines 46, 49 and 52.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Märzstraße 49 to junction Huglgasse and junction Huglgasse to junction Hütteldorfer Straße]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">0dfddd258ab4ba06599c87586ca7087268ea73a4f62ffc43de13acf6c950d687</guid>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 10 Sep 2026 22:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>The pedestrian traffic can be maintained. [14.09.2026 – 15.11.2026]</description>
+      <content:encoded><![CDATA[The pedestrian traffic can be maintained.<br/>[14.09.2026 – 15.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
