@@ -14,40 +14,41 @@ Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
 geantwortet, keine einzige Fehlermeldung, keine Netzwerk- oder Auth-Störung.
 Die Pipeline ist stabil, die CI ist grün, der Feed ist wohlgeformt.
 
-**Die Darstellung hat Mängel.** Neun Befunde — Befund 8 kam beim Nachprüfen
-der Korrektur zu Befund 2 dazu, Befund 9 beim Neupriorisieren. Vier mit
-sichtbarer Auswirkung auf das, was Abonnenten lesen, sind behoben:
+**Die Darstellung hat Mängel.** Neun Befunde — zwei davon kamen erst beim
+Beheben der anderen dazu (8 beim Nachprüfen von 2, 9 beim Neupriorisieren).
+**Fünf sind behoben**, alle fünf mit Wirkung auf den deutschen Feed:
 
-- **Befund 1** — ein ÖBB-Titel, der eine Station doppelt nennt. Derselbe Titel,
-  den [PR #1789](https://github.com/Origamihase/wien-oepnv/pull/1789)
-  beheben sollte und nachweislich nicht behoben hat; erledigt in
-  [PR #1790](https://github.com/Origamihase/wien-oepnv/pull/1790).
-- **Befund 2** — vier von 83 Meldungen (≈ 5 %) wurden als „Duplikat" verworfen,
-  weil der Dedupe-Schlüssel nur Linie und Tag kannte
-  ([PR #1791](https://github.com/Origamihase/wien-oepnv/pull/1791)).
-- **Befund 8** — die Kehrseite davon: Ohne die grobe Maskierung stand dieselbe
-  Störung zweimal im Feed, weil zwei Ursachen-Wörter in
-  `TITLE_TOPIC_TOKENS` fehlten
-  ([PR #1792](https://github.com/Origamihase/wien-oepnv/pull/1792)).
+| # | Befund | PR |
+| --- | --- | --- |
+| 1 | ÖBB-Titel nennt eine Station doppelt | [#1790](https://github.com/Origamihase/wien-oepnv/pull/1790) |
+| 2 | Vier von 83 Meldungen als „Duplikat" verworfen | [#1791](https://github.com/Origamihase/wien-oepnv/pull/1791) |
+| 8 | Dieselbe Störung zweimal im Feed (38A) | [#1792](https://github.com/Origamihase/wien-oepnv/pull/1792) |
+| 9 | Ein Feuerwehreinsatz belegte zwei Feed-Plätze (64A) | [#1794](https://github.com/Origamihase/wien-oepnv/pull/1794) |
+| 5 | ÖBB-Items trugen das Veröffentlichungsdatum statt des Bauzeitraums | [#1795](https://github.com/Origamihase/wien-oepnv/pull/1795) |
 
-Befunde 2 und 8 sind zwei Hälften derselben Sache: Ein Schlüssel, der zu grob
-war, hat gleichzeitig Verschiedenes weggeworfen **und** Gleiches zusammenfallen
-lassen. Weil das Ergebnis oft passabel aussah, fiel keine der beiden Hälften
-auf. Von den vier ursprünglich verworfenen Meldungen war nur das Paar
-`49A/50B` wirklich verschieden — die Linie-44-Trias ist ein Ereignis aus drei
-Blickwinkeln (s. Korrektur in Abschnitt 4).
+Zwei Muster ziehen sich durch:
 
-- **Befund 9** — dieselbe Lücke noch einmal: `feuerwehreinsatz` fehlte in
-  derselben Wortreihe und belegte zwei der zehn Feed-Plätze für einen Einsatz
-  auf der 64A ([PR #1794](https://github.com/Origamihase/wien-oepnv/pull/1794)).
+**Befund 1 und 5 wurden zu klein notiert.** Bei 1 galt ein Fix als erledigt,
+der den Live-Pfad nie erreichte — verifiziert war die Funktion, nicht die
+Pipeline. Bei 5 war „drei gleiche Titel" nur die Spitze: Allen **elf**
+ÖBB-Items fehlte der Zeitraum, und die Zeitzeile behauptete stattdessen ein
+„Seit \<Veröffentlichungsdatum\>", das bei künftigen Sperren schlicht falsch
+war.
 
-Offen bleiben die Befunde 3–7. Sie sind am 2026-09-12 **nach Feed-Wirkung neu
-geordnet** (s. Abschnitt 11): Vorn stehen jetzt Befund 5 und 4, die den
-deutschen Feed betreffen; Befund 3 — die verstümmelten Liniennummern in der
-englischen Übersetzung — ist fachlich unverändert gültig, rückt aber nach
-hinten, weil er das Produkt nicht berührt. Alle sind belegt und mit
-Reproduktion dokumentiert; jeder gehört in eine eigene, einzeln prüfbare
-Änderung.
+**Befund 2 und 8 sind zwei Hälften derselben Sache.** Ein zu grober
+Dedupe-Schlüssel hat gleichzeitig Verschiedenes weggeworfen **und** Gleiches
+zusammenfallen lassen; weil das Ergebnis oft passabel aussah, fiel keine der
+beiden Hälften auf. Von den vier ursprünglich verworfenen Meldungen war nur
+das Paar `49A/50B` wirklich verschieden — die Linie-44-Trias ist ein Ereignis
+aus drei Blickwinkeln (s. Korrektur in Abschnitt 4). Befund 9 zeigte dann, dass
+die Wortliste aus 8 nur halb zu Ende gedacht war.
+
+**Offen bleiben die Befunde 4, 3, 7 und 6** — in dieser Reihenfolge, seit dem
+2026-09-12 **nach Feed-Wirkung** statt nach technischem Gewicht sortiert
+(s. `AGENTS.md` → „Priorität der Ausgaben" und Abschnitt 11). Nur Befund 4
+berührt den deutschen Feed; 3, 7 und 6 betreffen englische Übersetzung,
+Laufzeit und Logs. Alle sind belegt und mit Reproduktion dokumentiert; jeder
+gehört in eine eigene, einzeln prüfbare Änderung.
 
 ---
 
