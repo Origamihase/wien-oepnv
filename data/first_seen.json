@@ -189,6 +189,16 @@
       "epoch": 2
     }
   },
+  "02aa65bb2a42b78d8f039231ebadb9c66d7c2d19afa88273c07176cc07690991": {
+    "first_seen": "2026-09-12T10:30:49.409565+00:00",
+    "translations": {
+      "en": {
+        "summary": "The stop Kahlenberg currently cannot be met in both directions. Buses with destination Kahlenberg will be Cobenzl-Parkplatz operating short-running.",
+        "title": "38A: demonstration"
+      },
+      "epoch": 5
+    }
+  },
   "02ccd1e80667e6302ee772d9d295c9691fcd3fcc167a0afc5855cb4440ec1d4a": {
     "first_seen": "2026-06-21T10:01:07.432464+00:00",
     "translations": {
@@ -3726,6 +3736,16 @@
       "en": {
         "summary": "After an service obstruction there are different intervals."
       }
+    }
+  },
+  "2e55ce5d9b8291d6f5f007375460ecbaaa34ff56181ee4c66b7677ef67763ccd": {
+    "first_seen": "2026-09-12T10:30:49.409565+00:00",
+    "translations": {
+      "en": {
+        "summary": "Stop Kahlenberg is not complied with",
+        "title": "38A: demonstration Stop Kahlenberg not complied with"
+      },
+      "epoch": 5
     }
   },
   "2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18": {
@@ -22795,6 +22815,16 @@
       "en": {
         "summary": "Due to damage to the track between Wien Meidling station (U) and Wien Liesing station to 23:09 only limited journeys were possible.",
         "title": "Wien Hauptbahnhof \u2194 Wien Liesing \u2194 Wien Meidling"
+      },
+      "epoch": 5
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&911329": {
+    "first_seen": "2026-09-12T10:30:49.409565+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation, no journeys were possible in Flughafen Wien station up to 12:26.",
+        "title": "Update 1 (1209.2026 12:29) Removal of line interruption: Flughafen Wien"
       },
       "epoch": 5
     }

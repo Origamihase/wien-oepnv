@@ -506,6 +506,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38A: Demonstration",
+    "description": "Linie 38A: Die Haltestelle Kahlenberg kann derzeit in beiden Fahrtrichtungen nicht eingehalten werden. Busse mit Fahrziel Kahlenberg werden Cobenzl-Parkplatz kurzgeführt. Voraussichtliche Dauer: 19:00 Uhr. Grund: Demonstration im Haltestellenbereich Kahlenberg.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "02aa65bb2a42b78d8f039231ebadb9c66d7c2d19afa88273c07176cc07690991",
+    "pubDate": "2026-09-12T11:47:00+02:00",
+    "starts_at": "2026-09-12T11:47:00+02:00",
+    "ends_at": "2026-09-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2026-09-12|TK=38a demonstration"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Demonstration Haltestelle Kahlenberg wird nicht eingehalten",
+    "description": "Demonstration\nHaltestelle Kahlenberg wird nicht eingehalten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e55ce5d9b8291d6f5f007375460ecbaaa34ff56181ee4c66b7677ef67763ccd",
+    "pubDate": "2026-09-12T12:25:15+02:00",
+    "starts_at": "2026-09-12T12:25:15+02:00",
+    "ends_at": "2026-09-12T19:00:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2026-09-12|TK=demonstration haltestelle kahlenberg wird nicht eingehalten"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "3A: 3A Netzänderung Betrieb ab Riemergasse",
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -526,18 +550,6 @@
     "starts_at": "2026-09-07T13:46:56+02:00",
     "ends_at": "2026-09-12T23:59:59+02:00",
     "_identity": "wl|störung|L=3A|D=2026-09-07|TK=busse halten kärntner ring 5"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "3A: Falschparker",
-    "description": "Linie 3A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "27097228e710414aa25dc5a1a05ce08e7df8f5739c3b291a99c867134fc9ecd2",
-    "pubDate": "2026-09-12T11:37:00+02:00",
-    "starts_at": "2026-09-12T11:37:00+02:00",
-    "ends_at": "2026-09-12T12:05:00+02:00",
-    "_identity": "wl|störung|L=3A|D=2026-09-12|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -610,6 +622,18 @@
     "starts_at": "2026-09-10T00:00:23+02:00",
     "ends_at": "2026-09-12T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-10|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verunreinigung",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5718e5adfd8ff17a7b75efa1723cae5513a3a9e89e84929ae6d9338f8ba24e1d",
+    "pubDate": "2026-09-12T12:11:00+02:00",
+    "starts_at": "2026-09-12T12:11:00+02:00",
+    "ends_at": "2026-09-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-09-12|TK=u4 verunreinigung"
   },
   {
     "source": "Wiener Linien",
