@@ -762,16 +762,70 @@ def _format_description(properties: dict[str, Any], start: datetime | None, end:
     return " \n".join(segments) if segments else "Baustelle ohne weitere Angaben"
 
 
+# Die Stadt Wien kappt ``BEZEICHNUNG`` bei 100 Zeichen. Wir kürzen nicht selbst
+# — der Abbruch steht so im WFS und landete bisher wörtlich im deutschen Feed:
+#
+#     Landstraßer Hauptstraße von … und Apostelgasse bis Sch      (100 Zeichen)
+#     Vordere Zollamtsstraße von … bis Unbenannte Verkehrsfl      (100 Zeichen)
+#     Kennedybrücke zwischen … auf Seite "Otto Wagner Hofpavillon  (99 Zeichen)
+#
+# Auf einem Info-Display, das Titel aus Entfernung und ohne Interaktion zeigt
+# (s. AGENTS.md, „Priorität der Ausgaben"), sieht das nach einem Fehler von uns
+# aus. Wiederherstellen können wir den fehlenden Text nicht; kenntlich machen
+# schon.
+#
+# Erkannt wird an zwei UNABHÄNGIGEN Signalen, nicht an der Länge allein:
+#
+# 1. ``len >= 100`` — die harte Obergrenze ist erreicht.
+# 2. Ein unpaariges ``"`` — ein vollständiger Titel hat keines. Das fängt den
+#    99-Zeichen-Fall: Upstream kappt bei 100 und entfernt danach Leerraum, ein
+#    gekappter Titel kann also auch bei 99 landen. Über die Länge allein wäre
+#    das nicht von einem echten 99-Zeichen-Titel zu unterscheiden — über das
+#    offene Anführungszeichen schon.
+_UPSTREAM_TITLE_CAP = 100
+
+
+def _mark_upstream_truncation(title: str) -> str:
+    """Make an upstream-truncated title read as shortened, not as broken.
+
+    Adds an ellipsis and drops an unpaired quotation mark. Der Text selbst
+    bleibt unangetastet: Ein abgeschnittenes Wort („… bis Sch…") sieht zwar
+    unschön aus, ist aber die Wahrheit über das, was die Quelle liefert —
+    es wegzukürzen würde Information vernichten, die sich nicht
+    zurückholen lässt, und zwar auf Verdacht.
+
+    NICHT für die GUID verwenden: Die leitet sich weiterhin vom ROHTITEL ab
+    (s. :func:`_feature_to_event`), sonst verschöbe diese Kosmetik die
+    Identität der Baustelle und setzte ihr ``first_seen`` zurück.
+    """
+    if not title:
+        return title
+    has_unpaired_quote = title.count('"') % 2 == 1
+    if len(title) < _UPSTREAM_TITLE_CAP and not has_unpaired_quote:
+        return title
+
+    repaired = title
+    if has_unpaired_quote:
+        # Das letzte ``"`` ist im Kappungsfall das öffnende, dessen Partner
+        # abgeschnitten wurde. Ein Schließendes zu ERGÄNZEN wäre erfunden.
+        cut = repaired.rfind('"')
+        repaired = repaired[:cut] + repaired[cut + 1:]
+    repaired = repaired.rstrip()
+    if repaired.endswith("…"):
+        return repaired
+    return f"{repaired}…"
+
+
 def _feature_to_event(feature: dict[str, Any]) -> ConstructionEvent | None:
     properties = feature.get("properties") or {}
     geometry = feature.get("geometry") or {}
     if not isinstance(properties, dict):
         return None
-    title = _first_match(properties, TITLE_KEYS)
-    if not title:
+    raw_title = _first_match(properties, TITLE_KEYS)
+    if not raw_title:
         street = _first_match(properties, STREET_KEYS)
         if street:
-            title = f"Baustelle {street}"
+            raw_title = f"Baustelle {street}"
         else:
             return None
     start, end = _parse_range(properties)
@@ -789,12 +843,14 @@ def _feature_to_event(feature: dict[str, Any]) -> ConstructionEvent | None:
     # (identical title + start + end, three different OBJECTIDs). Derive the
     # identity from a stable open-data id when the layer offers one, otherwise
     # from the stable title; never from the volatile OBJECTID/ID row number.
-    identifier = properties.get("OGD_ID") or title
+    # ROHTITEL, nicht der reparierte: Die Kosmetik darf die Identität der
+    # Baustelle nicht verschieben (und damit first_seen zurücksetzen).
+    identifier = properties.get("OGD_ID") or raw_title
     guid = make_guid("baustellen", str(identifier), start.isoformat() if start else "", end.isoformat() if end else "")
     pub_date = start or end or datetime.now(tz=VIENNA_TZ)
     return ConstructionEvent(
         guid=guid,
-        title=title,
+        title=_mark_upstream_truncation(raw_title),
         description=description,
         starts_at=start,
         ends_at=end,

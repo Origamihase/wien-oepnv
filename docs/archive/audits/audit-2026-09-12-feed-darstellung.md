@@ -4,7 +4,7 @@
 **Schwerpunkt:** Feed — Quellen, Pipeline, Darstellung in `docs/feed.xml` / `docs/feed.en.xml`
 **Datenbasis:** Manual-Full-Refresh Run 93948230655 (Checkout `275ed8d586`, 08:02–08:05 UTC),
 Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
-**Status:** Befunde 1, 2, 5, 8 und 9 behoben (PR #1790, #1791, #1792, #1794, #1795), Befunde 3, 4, 6, 7 offen und nach Feed-Wirkung priorisiert (s. Abschnitt 11)
+**Status:** Befunde 1, 2, 4, 5, 8 und 9 behoben (PR #1790–#1796). Offen: 3, 7, 6 — keiner davon berührt den deutschen Feed (s. Abschnitt 11)
 
 ---
 
@@ -16,7 +16,7 @@ Die Pipeline ist stabil, die CI ist grün, der Feed ist wohlgeformt.
 
 **Die Darstellung hat Mängel.** Neun Befunde — zwei davon kamen erst beim
 Beheben der anderen dazu (8 beim Nachprüfen von 2, 9 beim Neupriorisieren).
-**Fünf sind behoben**, alle fünf mit Wirkung auf den deutschen Feed:
+**Sechs sind behoben**, alle sechs mit Wirkung auf den deutschen Feed:
 
 | # | Befund | PR |
 | --- | --- | --- |
@@ -25,6 +25,7 @@ Beheben der anderen dazu (8 beim Nachprüfen von 2, 9 beim Neupriorisieren).
 | 8 | Dieselbe Störung zweimal im Feed (38A) | [#1792](https://github.com/Origamihase/wien-oepnv/pull/1792) |
 | 9 | Ein Feuerwehreinsatz belegte zwei Feed-Plätze (64A) | [#1794](https://github.com/Origamihase/wien-oepnv/pull/1794) |
 | 5 | ÖBB-Items trugen das Veröffentlichungsdatum statt des Bauzeitraums | [#1795](https://github.com/Origamihase/wien-oepnv/pull/1795) |
+| 4 | Drei von 22 Baustellen-Titeln brachen mitten im Wort ab | [#1796](https://github.com/Origamihase/wien-oepnv/pull/1796) |
 
 Zwei Muster ziehen sich durch:
 
@@ -43,12 +44,17 @@ das Paar `49A/50B` wirklich verschieden — die Linie-44-Trias ist ein Ereignis
 aus drei Blickwinkeln (s. Korrektur in Abschnitt 4). Befund 9 zeigte dann, dass
 die Wortliste aus 8 nur halb zu Ende gedacht war.
 
-**Offen bleiben die Befunde 4, 3, 7 und 6** — in dieser Reihenfolge, seit dem
+Befund 4 fügt dem ersten Muster einen dritten Fall hinzu: notiert war **ein**
+abgebrochener Titel, tatsächlich waren es **drei von 22** — und die Reparatur
+hätte beinahe die GUID mitverschoben (s. Abschnitt 6).
+
+**Offen bleiben die Befunde 3, 7 und 6** — in dieser Reihenfolge, seit dem
 2026-09-12 **nach Feed-Wirkung** statt nach technischem Gewicht sortiert
-(s. `AGENTS.md` → „Priorität der Ausgaben" und Abschnitt 11). Nur Befund 4
-berührt den deutschen Feed; 3, 7 und 6 betreffen englische Übersetzung,
-Laufzeit und Logs. Alle sind belegt und mit Reproduktion dokumentiert; jeder
-gehört in eine eigene, einzeln prüfbare Änderung.
+(s. `AGENTS.md` → „Priorität der Ausgaben" und Abschnitt 11). **Keiner der
+drei berührt den deutschen Feed:** 3 verstümmelt Liniennummern ausschließlich
+in `docs/feed.en.xml`, 7 kostet Laufzeit, 6 erzeugt Log-Rauschen. Alle sind
+belegt und mit Reproduktion dokumentiert; jeder gehört in eine eigene, einzeln
+prüfbare Änderung.
 
 ---
 
@@ -338,21 +344,58 @@ alleinstehende „D" maskiert wird.
 
 ## 6. Befund 4 — Baustellen-Titel brechen mitten im Zitat ab
 
-**Schweregrad: niedrig** · **Status: offen, Ursache upstream**
+**Wirkung auf den deutschen Feed: verstümmelter Titel** · **Status: behoben**
+([PR #1796](https://github.com/Origamihase/wien-oepnv/pull/1796))
 
-```
-Kennedybrücke zwischen Schönbrunner Schloßstraße und Hadikgasse, auf Seite "Otto Wagner Hofpavillon
-```
+Nicht ein Titel, sondern **drei von 22**:
 
-99 Zeichen, öffnendes Anführungszeichen ohne schließendes. Der Titel kommt
-unverändert aus dem Feld `BEZEICHNUNG` der Stadt-Wien-WFS-Daten
-(`scripts/update_baustellen_cache.py:770`), das dort offenbar bei 100 Zeichen
-abgeschnitten wird. Im Projekt gibt es keine Titel-Kappung an dieser Stelle.
+| Länge | Titel (gekürzt dargestellt) |
+| --- | --- |
+| 100 | `… und Apostelgasse bis Schlachthausgas` |
+| 100 | `… bis Unbenannte Verkehrsfläche und Rad` |
+| 99 | `… auf Seite "Otto Wagner Hofpavillon` |
 
-Der Feed übernimmt den Abbruch wortwörtlich, sodass er wie ein Darstellungs-
-fehler aussieht. Ein Ellipsen-Marker und das Entfernen eines unpaarigen
-Anführungszeichens würden den Titel als „gekürzt" kenntlich machen, statt ihn
-kaputt aussehen zu lassen.
+Die Stadt Wien kappt `BEZEICHNUNG` bei 100 Zeichen; das Projekt kürzt Titel an
+dieser Stelle nicht selbst. Die Längenverteilung der 22 Live-Titel belegt die
+Obergrenze: 100, 100, 99 — dann Sprung auf 94. Zwei der drei enden mitten im
+Wort, der dritte mit einem Anführungszeichen, das nie schließt.
+
+### Korrektur
+
+Den fehlenden Text kann niemand zurückholen; kenntlich machen schon.
+`_mark_upstream_truncation` hängt eine Ellipse an und entfernt ein unpaariges
+Anführungszeichen.
+
+Erkannt wird an **zwei unabhängigen Signalen** statt an der Länge allein:
+
+1. `len >= 100` — die harte Obergrenze ist erreicht.
+2. ein unpaariges `"` — ein vollständiger Titel hat keines.
+
+Das zweite Signal fängt den 99-Zeichen-Fall. Upstream kappt bei 100 und
+entfernt danach Leerraum, ein gekappter Titel kann also auch bei 99 landen —
+über die Länge allein nicht von einem echten 99-Zeichen-Titel zu
+unterscheiden, über das offene Anführungszeichen schon.
+
+**Der Text selbst bleibt unangetastet.** „… bis Schlachthausgas…" sieht unschön
+aus, ist aber die Wahrheit über das, was die Quelle liefert. Das abgeschnittene
+Wort wegzukürzen würde auf Verdacht Information vernichten, die sich nicht
+zurückholen lässt.
+
+### Die Falle an dieser Stelle
+
+`_feature_to_event` nutzt den Titel als **GUID-Fallback**, wenn die WFS-Ebene
+keine `OGD_ID` liefert — der Kommentar dort warnt ausdrücklich davor, die
+Identität an etwas Volatiles zu hängen. Wäre die Kosmetik in die GUID
+geflossen, hätte **jede gekappte Baustelle beim Deploy schlagartig neu
+ausgesehen** und ihr `first_seen` wäre zurückgesetzt worden — mit dem Effekt,
+dass sie den first_seen-sortierten Feed dominiert.
+
+Die GUID leitet sich deshalb weiterhin vom **Rohtitel** ab, der reparierte
+Titel geht ausschließlich in die Anzeige. Ein Test pinnt das und schlägt gegen
+die naive Umsetzung fehl.
+
+Von 22 Live-Titeln ändern sich genau die drei gekappten; der längste
+unbeschädigte (94 Zeichen) bleibt unberührt.
 
 Im Englischen kommt erschwerend hinzu, dass „auf Seite" im Sinne von
 *Brückenseite* als „on page" übersetzt wird. Ein Glossareintrag wäre hier
@@ -635,10 +678,10 @@ verstümmelter Eintrag verdrängt dort eine andere Störung vollständig.
 | 9 | Ein Feuerwehreinsatz belegt zwei Feed-Plätze (64A) | verdrängt Meldungen | — | **behoben** |
 | 1 | ÖBB-Titel nennt Station doppelt | verstümmelter Titel | — | **behoben** |
 | 5 | Drei Sperren, ein identischer Titel | verdrängt Meldungen | — | **behoben** |
-| **4** | **Baustellen-Titel bricht mitten im Zitat ab** | **verstümmelter Titel** | **1** | offen (Ursache upstream) |
-| 3 | Übersetzung verstümmelt Liniennummern | keine — nur `feed.en.xml` | 2 | offen |
-| 7 | Übersetzung läuft für Stationstitel endlos neu | keine — nur Laufzeitkosten | 3 | offen |
-| 6 | 444 Warnzeilen/Lauf; Validator meldet 0 | keine — nur Logs | 4 | offen |
+| 4 | Baustellen-Titel bricht mitten im Zitat ab (3 von 22) | verstümmelter Titel | — | **behoben** |
+| **3** | **Übersetzung verstümmelt Liniennummern** | **keine — nur `feed.en.xml`** | **1** | offen |
+| 7 | Übersetzung läuft für Stationstitel endlos neu | keine — nur Laufzeitkosten | 2 | offen |
+| 6 | 444 Warnzeilen/Lauf; Validator meldet 0 | keine — nur Logs | 3 | offen |
 
 ---
 
@@ -654,18 +697,19 @@ schwerer wiegt, sondern **ob er den deutschen Feed betrifft**.
    stattdessen ein „Seit \<Veröffentlichungsdatum\>", das für künftige Sperren
    schlicht falsch war (s. Abschnitt 7).
 
-2. **Befund 4 — Baustellen-Titel bricht mitten im Zitat ab.** Damit der
-   nächste offene Punkt. Der Abbruch kommt
-   aus dem `BEZEICHNUNG`-Feld der Stadt Wien (dort bei 100 Zeichen gekappt),
-   steht aber wörtlich im deutschen Feed und sieht auf dem Display wie ein
-   Darstellungsfehler aus. Ein Ellipsen-Marker und das Entfernen eines
-   unpaarigen Anführungszeichens machen daraus einen erkennbar gekürzten Titel.
-3. **Befund 3 — EN-Übersetzung verstümmelt Liniennummern.** Bis zur
-   Neupriorisierung der nächste Kandidat, jetzt nachrangig: Er betrifft
+2. ~~**Befund 4**~~ — erledigt. Es waren drei von 22 Titeln, nicht einer. Die
+   Kappung bleibt upstream; wir machen sie jetzt kenntlich, statt sie
+   wortwörtlich als vermeintlich eigenen Fehler auszuliefern (s. Abschnitt 6).
+
+**Damit ist kein offener Befund mehr übrig, der den deutschen Feed berührt.**
+Die verbleibenden drei betreffen die englische Übersetzung, Laufzeitkosten und
+Logs — in dieser Reihenfolge:
+
+1. **Befund 3 — EN-Übersetzung verstümmelt Liniennummern.** Betrifft
    ausschließlich `docs/feed.en.xml`. Fachlich unverändert gültig und gut
    abgegrenzt (eine Regex plus Tests) — nur eben nicht das Produkt.
-4. **Befund 7** — Laufzeitkosten, keine Feed-Wirkung.
-5. **Befund 6** — Log-Rauschen. Bleibt sinnvoll, weil ruhige Logs die nächste
+2. **Befund 7** — Laufzeitkosten, keine Feed-Wirkung.
+3. **Befund 6** — Log-Rauschen. Bleibt sinnvoll, weil ruhige Logs die nächste
    echte Warnung sichtbar machen, aber es steht keine Anzeige daran.
 
 Unverändert offen und außerhalb jedes PRs: In den Branch-Protection-Regeln für

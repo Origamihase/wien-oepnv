@@ -5,6 +5,39 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: Abgeschnittene Baustellen-Titel sahen nach unserem Fehler aus
+  (2026-09-12)**:
+  Drei von 22 Titeln standen gekappt im deutschen Feed, einer davon mit einem
+  Anführungszeichen, das nie schließt:
+
+  ```
+  … und Apostelgasse bis Schlachthausgas          (100 Zeichen)
+  … bis Unbenannte Verkehrsfläche und Rad         (100 Zeichen)
+  … auf Seite "Otto Wagner Hofpavillon             (99 Zeichen)
+  ```
+
+  Die Stadt Wien kappt `BEZEICHNUNG` bei 100 Zeichen; das Projekt kürzt Titel
+  nicht selbst. Den fehlenden Text kann niemand zurückholen — aber ein
+  unangekündigter Abbruch sieht auf einem Info-Display wie ein Defekt auf
+  unserer Seite aus.
+  `scripts/update_baustellen_cache.py` markiert solche Titel jetzt mit einer
+  Ellipse und entfernt ein unpaariges Anführungszeichen. Erkannt wird an zwei
+  **unabhängigen** Signalen statt an der Länge allein: `len >= 100` (harte
+  Obergrenze erreicht) **oder** ein unpaariges `"`. Das zweite fängt den
+  99-Zeichen-Fall — upstream kappt bei 100 und entfernt danach Leerraum, und
+  über die Länge allein wäre das nicht von einem echten 99-Zeichen-Titel zu
+  unterscheiden.
+  Der Text selbst bleibt unangetastet: Ein abgeschnittenes Wort („… bis
+  Schlachthausgas…") ist die Wahrheit über das, was die Quelle liefert; es
+  wegzukürzen würde auf Verdacht Information vernichten.
+  **Wichtig für die Identität:** Die GUID leitet sich weiterhin vom
+  **Rohtitel** ab. `_feature_to_event` nutzt den Titel als Fallback, wenn die
+  Ebene keine `OGD_ID` liefert — käme die Kosmetik dort an, sähe jede gekappte
+  Baustelle beim Deploy schlagartig neu aus und ihr `first_seen` würde
+  zurückgesetzt. Ein Test pinnt das.
+  Von 22 Live-Titeln ändern sich genau die drei gekappten; der längste
+  unbeschädigte (94 Zeichen) bleibt unberührt. Damit ist Audit-Befund 4
+  erledigt.
 * **Bugfix: ÖBB-Items trugen das Veröffentlichungsdatum statt des Bauzeitraums
   (2026-09-12)**:
   Drei gleichzeitig laufende Sperren auf derselben Strecke standen im Feed
