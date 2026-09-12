@@ -4,7 +4,7 @@
 **Schwerpunkt:** Feed — Quellen, Pipeline, Darstellung in `docs/feed.xml` / `docs/feed.en.xml`
 **Datenbasis:** Manual-Full-Refresh Run 93948230655 (Checkout `275ed8d586`, 08:02–08:05 UTC),
 Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
-**Status:** Befunde 1, 2 und 8 behoben (PR #1790, #1791 und Nachtrag), Befunde 3–7 dokumentiert, nicht behoben
+**Status:** Befunde 1, 2, 8 und 9 behoben (PR #1790, #1791, #1792, #1794), Befunde 3–7 offen und nach Feed-Wirkung neu priorisiert (s. Abschnitt 11)
 
 ---
 
@@ -14,9 +14,9 @@ Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
 geantwortet, keine einzige Fehlermeldung, keine Netzwerk- oder Auth-Störung.
 Die Pipeline ist stabil, die CI ist grün, der Feed ist wohlgeformt.
 
-**Die Darstellung hat Mängel.** Acht Befunde — Befund 8 kam beim Nachprüfen
-der Korrektur zu Befund 2 dazu. Drei mit sichtbarer Auswirkung auf das, was
-Abonnenten lesen, sind behoben:
+**Die Darstellung hat Mängel.** Neun Befunde — Befund 8 kam beim Nachprüfen
+der Korrektur zu Befund 2 dazu, Befund 9 beim Neupriorisieren. Vier mit
+sichtbarer Auswirkung auf das, was Abonnenten lesen, sind behoben:
 
 - **Befund 1** — ein ÖBB-Titel, der eine Station doppelt nennt. Derselbe Titel,
   den [PR #1789](https://github.com/Origamihase/wien-oepnv/pull/1789)
@@ -37,10 +37,17 @@ auf. Von den vier ursprünglich verworfenen Meldungen war nur das Paar
 `49A/50B` wirklich verschieden — die Linie-44-Trias ist ein Ereignis aus drei
 Blickwinkeln (s. Korrektur in Abschnitt 4).
 
-Offen bleiben die Befunde 3–7. Der gewichtigste davon: Liniennummern, die die
-englische Übersetzung verstümmelt (`44A/844` → `44A844`). Sie sind belegt und
-mit Reproduktion dokumentiert, aber bewusst nicht mitbehoben — jeder gehört in
-eine eigene, einzeln prüfbare Änderung.
+- **Befund 9** — dieselbe Lücke noch einmal: `feuerwehreinsatz` fehlte in
+  derselben Wortreihe und belegte zwei der zehn Feed-Plätze für einen Einsatz
+  auf der 64A ([PR #1794](https://github.com/Origamihase/wien-oepnv/pull/1794)).
+
+Offen bleiben die Befunde 3–7. Sie sind am 2026-09-12 **nach Feed-Wirkung neu
+geordnet** (s. Abschnitt 11): Vorn stehen jetzt Befund 5 und 4, die den
+deutschen Feed betreffen; Befund 3 — die verstümmelten Liniennummern in der
+englischen Übersetzung — ist fachlich unverändert gültig, rückt aber nach
+hinten, weil er das Produkt nicht berührt. Alle sind belegt und mit
+Reproduktion dokumentiert; jeder gehört in eine eigene, einzeln prüfbare
+Änderung.
 
 ---
 
@@ -503,29 +510,111 @@ qualitätsbewusst ist, nicht weiter unten durch blindes Verwerfen.
 
 ---
 
+## 9b. Befund 9 — Ein Feuerwehreinsatz belegt zwei Feed-Plätze (Nachtrag)
+
+**Wirkung auf den deutschen Feed: verdrängt Meldungen** · **Status: behoben**
+
+Beim Neupriorisieren der Befunde nach der Feed-Rangfolge (s. `AGENTS.md`) fiel
+im **live ausgelieferten** `docs/feed.xml` auf:
+
+```
+ 3. 64A: Fahrtbehinderung wegen Feuerwehreinsatz
+ 4. 64A: Feuerwehreinsatz Betrieb ab Gregorygasse
+```
+
+Zwei der zehn Plätze für **einen** Einsatz. Auf einem Display mit fester
+Item-Zahl heißt das: Eine andere Störung erscheint gar nicht.
+
+### Ursache
+
+Dieselbe wie bei Befund 8 — eine Lücke in `TITLE_TOPIC_TOKENS`. `feuerwehr‑
+einsatz` fehlte, obwohl seine Geschwister `polizeieinsatz` und
+`rettungseinsatz` längst dort standen. Der Fix zu Befund 8 hatte nur die zwei
+damals belegten Wörter ergänzt (`demonstration`, `veranstaltung`) und die
+Reihe nicht zu Ende gedacht.
+
+### Korrektur
+
+`feuerwehreinsatz` ergänzt. Wirkung auf die live vorhandenen Meldungen:
+
+```
+vorher (5 Items)                              nachher (4 Items)
+  60A: Feuerwehreinsatz ab Carlbergergasse      60A: … Carlbergergasse
+  66A: Feuerwehreinsatz ab Atzgersdorf          66A: … Atzgersdorf
+  64A: Fahrtbehinderung wegen Feuerwehreinsatz  64A: … Betrieb ab Gregorygasse
+  64A: Feuerwehreinsatz ab Gregorygasse         66A: Busse halten Salvatorianerplatz
+  66A: Busse halten Salvatorianerplatz
+```
+
+Nur die beiden 64A-Meldungen verschmelzen — der informative Titel gewinnt.
+Gleiche Einsätze auf **anderen** Linien bleiben getrennt, weil das Linien-Set
+Teil des Bucket-Keys ist; ein Test hält das fest.
+
+### Was offen bleibt
+
+Zwei Gruppen im aktuellen Cache bleiben getrennt, und das ist bewusst so:
+
+| Gruppe | warum getrennt |
+| --- | --- |
+| `49A/50B: Mondweg` / `Hüttergasse` | zwei verschiedene Straßen — richtig so |
+| `66A: Busse halten Salvatorianerplatz` / `66A: Feuerwehreinsatz …` | könnte derselbe Einsatz sein, aber nur eine der beiden Meldungen nennt eine Ursache. Ohne gemeinsames Wort gibt es nichts, woran sich das belegen ließe — Raten wäre hier teurer als Nichtstun. |
+| `3A: Netzänderung …` / `3A: Busse halten …` | dasselbe Muster |
+
+Das ist die Grenze dieses Mechanismus: Er führt zusammen, was ein gemeinsames
+Ursachen-Wort trägt. Meldungen, die dieselbe Störung aus reiner
+Betriebsperspektive beschreiben („Busse halten X"), erreicht er nicht. Ob das
+den Aufwand einer stärkeren Heuristik wert ist, entscheidet sich daran, wie oft
+es vorkommt — derzeit zweimal von 56 Items.
+
+---
+
 ## 10. Befundübersicht
 
-| # | Befund | Schwere | Sichtbar im Feed | Status |
+Priorisiert nach der Rangfolge in `AGENTS.md` → „Priorität der Ausgaben":
+**Was den deutschen Feed betrifft, kommt zuerst.** Er läuft über EasySignage
+auf Full-HD-Displays mit hart begrenzter Item-Zahl — ein doppelter oder
+verstümmelter Eintrag verdrängt dort eine andere Störung vollständig.
+
+| # | Befund | Wirkung auf `docs/feed.xml` (DE) | Prio | Status |
 | --- | --- | --- | --- | --- |
-| 1 | ÖBB-Titel nennt Station doppelt | hoch | ja | **behoben** |
-| 2 | Verschiedene Störungen als Duplikat verworfen (4/83) | hoch | ja (fehlend) | **behoben** |
-| 3 | Übersetzung verstümmelt Liniennummern | mittel | ja (EN) | offen |
-| 4 | Baustellen-Titel bricht mitten im Zitat ab | niedrig | ja | offen (upstream) |
-| 5 | Drei Sperren, ein Titel | niedrig | latent | offen |
-| 6 | 444 Warnzeilen/Lauf; Validator meldet 0 | niedrig | nein | offen |
-| 7 | Übersetzung läuft für Stationstitel endlos neu | niedrig | nein | offen |
-| 8 | Dieselbe Störung zweimal im Feed (38A Demonstration) | mittel | ja | **behoben** |
+| 2 | Verschiedene Störungen als Duplikat verworfen (4/83) | verdrängt Meldungen | — | **behoben** |
+| 8 | Dieselbe Störung zweimal im Feed (38A Demonstration) | verdrängt Meldungen | — | **behoben** |
+| 9 | Ein Feuerwehreinsatz belegt zwei Feed-Plätze (64A) | verdrängt Meldungen | — | **behoben** |
+| 1 | ÖBB-Titel nennt Station doppelt | verstümmelter Titel | — | **behoben** |
+| **5** | **Drei Sperren, ein identischer Titel** | **verdrängt Meldungen (latent)** | **1** | offen |
+| **4** | **Baustellen-Titel bricht mitten im Zitat ab** | **verstümmelter Titel** | **2** | offen (Ursache upstream) |
+| 3 | Übersetzung verstümmelt Liniennummern | keine — nur `feed.en.xml` | 3 | offen |
+| 7 | Übersetzung läuft für Stationstitel endlos neu | keine — nur Laufzeitkosten | 4 | offen |
+| 6 | 444 Warnzeilen/Lauf; Validator meldet 0 | keine — nur Logs | 5 | offen |
 
 ---
 
 ## 11. Empfohlene Reihenfolge
 
-1. ~~**Befund 2**~~ — erledigt (Nachtrag 2026-09-12). Es war der einzige, bei
-   dem Abonnenten Meldungen **gar nicht** zu sehen bekamen.
-2. **Befund 3** ist damit der nächste — klar abgegrenzt, eine Regex plus Tests.
-3. **Befund 6** als Aufräumarbeit: erst wenn die Logs ruhig sind, fällt die
-   nächste echte Warnung auf.
-4. Befunde 4, 5, 7 nach Bedarf.
+**Neu geordnet am 2026-09-12** nach der in `AGENTS.md` festgehaltenen
+Rangfolge der Ausgaben. Maßgeblich ist nicht mehr, welcher Befund technisch
+schwerer wiegt, sondern **ob er den deutschen Feed betrifft**.
+
+1. **Befund 5 — drei Sperren, ein identischer Titel.** Jetzt an erster Stelle.
+   Drei ÖBB-Items heißen gleich (`Wien Hauptbahnhof ↔ Gramatneusiedl`), ihr
+   Unterschied — der Bauzeitraum — steht nur in der Beschreibung. Auf einem
+   Display, das Titel aus Entfernung und ohne Interaktion zeigt, sind das drei
+   ununterscheidbare Einträge, die zusammen drei der zehn Plätze belegen.
+   Derzeit verdeckt `MaxItems=10`, dass nur einer durchkommt; sobald zwei
+   gleichzeitig durchrutschen, ist es sichtbar. Vorschlag: den Zeitraum in den
+   Titel ziehen, wie es die WL-Items mit `am TT.MM.JJJJ` bereits tun.
+2. **Befund 4 — Baustellen-Titel bricht mitten im Zitat ab.** Der Abbruch kommt
+   aus dem `BEZEICHNUNG`-Feld der Stadt Wien (dort bei 100 Zeichen gekappt),
+   steht aber wörtlich im deutschen Feed und sieht auf dem Display wie ein
+   Darstellungsfehler aus. Ein Ellipsen-Marker und das Entfernen eines
+   unpaarigen Anführungszeichens machen daraus einen erkennbar gekürzten Titel.
+3. **Befund 3 — EN-Übersetzung verstümmelt Liniennummern.** Bis zur
+   Neupriorisierung der nächste Kandidat, jetzt nachrangig: Er betrifft
+   ausschließlich `docs/feed.en.xml`. Fachlich unverändert gültig und gut
+   abgegrenzt (eine Regex plus Tests) — nur eben nicht das Produkt.
+4. **Befund 7** — Laufzeitkosten, keine Feed-Wirkung.
+5. **Befund 6** — Log-Rauschen. Bleibt sinnvoll, weil ruhige Logs die nächste
+   echte Warnung sichtbar machen, aber es steht keine Anzeige daran.
 
 Unverändert offen und außerhalb jedes PRs: In den Branch-Protection-Regeln für
 `main` ist **„Allow force pushes" weiterhin aktiv** — die Ursache des

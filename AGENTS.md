@@ -8,6 +8,52 @@ Das Projekt `wien-oepnv` aggregiert Verkehrsmeldungen (Wiener Linien, ÖBB, Stad
 
 > **Hinweis zum VOR-Scope:** Seit der Konsolidierung vom 2026-05-11 ist VOR **kein eigenständiger Disruption-Provider** mehr (das frühere `src/providers/vor.py:fetch_events` wurde entfernt). Die VOR/VAO ReST API wird ausschließlich vom Stammstrecken-Verspätungs- und Ausfall-Monitor (`scripts/update_stammstrecke_hbf.py`) konsumiert. Wer einen neuen VOR-Konsumenten plant, muss zwei Quota-Schichten beachten: (a) das Workflow-Pre-Flight-Gate `scripts/preflight_quota_check.py` (verhindert Cron-Ticks, sobald der persistierte Counter das Tagesbudget reißen würde), und (b) die per-Call-Funktion `_charge_one_request` in `scripts/update_stammstrecke_status.py` (importierbar; reserviert einen Quota-Slot **vor** jedem Network Call). Tagesbudget: 100 Requests, aktuell 48 davon vom Hbf-Monitor belegt — Details in `docs/architecture.md` §7.
 
+### Priorität der Ausgaben
+
+Das Projekt erzeugt mehrere Artefakte. Sie sind **nicht gleichwertig**:
+
+| Rang | Ausgabe | Rolle |
+| --- | --- | --- |
+| **1** | `docs/feed.xml` — **der deutsche RSS-Feed** | Das Produkt. https://origamihase.github.io/wien-oepnv/feed.xml |
+| 2 | `docs/feed.en.xml` | Englische Übersetzung des Feeds |
+| 3 | `docs/statistik.md`, README-Block, Website-Dashboard | Auswertung und Darstellung |
+| 4 | Logs, Validierungs-Reports, Heartbeats | Betrieb und Diagnose |
+
+**Der deutsche Feed hat Vorrang vor allem anderen.** Ein Fehler, der ihn
+betrifft, wird vor jedem Fehler bearbeitet, der ihn nicht betrifft — unabhängig
+davon, welcher technisch interessanter ist. Ein Befund, der ausschließlich die
+englische Übersetzung, die Statistik oder die Logs betrifft, ist wertvoll und
+soll dokumentiert werden, wandert in der Reihenfolge aber nach hinten.
+
+#### Warum: der Feed läuft auf Info-Displays
+
+Der deutsche Feed wird unter anderem über **EasySignage auf Full-HD-Fernsehern**
+ausgespielt. Daraus folgen Eigenschaften, die ein Feed-Reader am Schreibtisch
+nicht hat und die bei jeder Änderung am Feed-Inhalt mitzudenken sind:
+
+- **Die Item-Zahl ist hart begrenzt** (`MaxItems`, aktuell 10). Ein doppelter
+  Eintrag ist kein Schönheitsfehler, sondern **verdrängt eine andere Störung
+  vollständig** — sie erscheint gar nicht.
+- **Gelesen wird aus Entfernung, ohne Interaktion.** Der Titel muss für sich
+  allein stehen: kein Aufklappen, kein Nachschlagen in der Beschreibung, kein
+  Zurückscrollen. Abgeschnittene, verstümmelte oder mehrfach identische Titel
+  wirken hier stärker als in einer Liste am Bildschirm.
+- **Die Anzeige rotiert.** Jedes Item kostet Bildschirmzeit; redundante Items
+  kosten sie doppelt.
+
+Konkret heißt das für die Bewertung eines Befunds — in dieser Reihenfolge:
+
+1. **Verdrängt er Meldungen aus dem deutschen Feed?** (Duplikate, fälschlich
+   verworfene Items, Dedupe-Fehler) — höchste Priorität.
+2. **Verfälscht oder verstümmelt er, was im deutschen Feed steht?**
+   (Titel-Kosmetik, Wort-Verklebungen, Abbrüche) — hohe Priorität.
+3. **Betrifft er nur EN, Statistik, Dashboard?** — dokumentieren, nachrangig.
+4. **Betrifft er nur Logs, Reports oder Laufzeitkosten?** — dokumentieren,
+   zuletzt.
+
+Sicherheits- und Datenintegritätsfragen stehen außerhalb dieser Rangfolge und
+behalten ihren eigenen Vorrang.
+
 ### Wichtige Verzeichnisse
 - `src/`: Der gesamte Quellcode des Pakets.
   - `src/build_feed.py`: Hauptlogik zur Feed-Generierung.

@@ -5,6 +5,39 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Prioritätsregel: der deutsche RSS-Feed hat Vorrang (2026-09-12)**:
+  `AGENTS.md` hält jetzt unter „Priorität der Ausgaben" fest, dass
+  `docs/feed.xml` das Produkt ist und alles andere — englische Übersetzung,
+  Statistik, Dashboard, Logs — dahinter zurücktritt. Hintergrund: Der Feed wird
+  über **EasySignage auf Full-HD-Fernsehern** ausgespielt. Daraus folgen
+  Eigenschaften, die ein Feed-Reader nicht hat und die bei jeder Änderung am
+  Feed-Inhalt mitzudenken sind — die Item-Zahl ist hart begrenzt (`MaxItems`,
+  aktuell 10), gelesen wird aus Entfernung und ohne Interaktion, und die
+  Anzeige rotiert. Ein doppelter Eintrag ist dort kein Schönheitsfehler,
+  sondern **verdrängt eine andere Störung vollständig**.
+  Das Feed-Audit `docs/archive/audits/audit-2026-09-12-feed-darstellung.md` ist
+  entsprechend neu geordnet: Die Übersichtstabelle weist pro Befund die Wirkung
+  auf den deutschen Feed aus, und die Reihenfolge richtet sich danach statt
+  nach technischem Gewicht. Befund 3 (EN-Übersetzung verstümmelt
+  Liniennummern) war der nächste Kandidat und rückt nach hinten; nach vorn
+  rücken Befund 5 und 4, die den deutschen Feed betreffen.
+* **Bugfix: Ein Feuerwehreinsatz belegte zwei Feed-Plätze (2026-09-12)**:
+  Beim Neupriorisieren im live ausgelieferten `docs/feed.xml` gefunden:
+
+  ```
+   3. 64A: Fahrtbehinderung wegen Feuerwehreinsatz
+   4. 64A: Feuerwehreinsatz Betrieb ab Gregorygasse
+  ```
+
+  Zwei der zehn Plätze für **einen** Einsatz — also eine andere Störung, die
+  gar nicht erscheint. Dieselbe Ursache wie beim 38A-Fall: `feuerwehreinsatz`
+  fehlte in `TITLE_TOPIC_TOKENS` (`src/providers/wl_text.py`), obwohl seine
+  Geschwister `polizeieinsatz` und `rettungseinsatz` längst dort standen. Der
+  vorige Fix hatte nur die zwei damals belegten Wörter ergänzt und die Reihe
+  nicht zu Ende gedacht. Ergänzt; die beiden 64A-Meldungen werden jetzt im
+  Bucketing zum informativeren Titel zusammengeführt. Gleiche Einsätze auf
+  anderen Linien bleiben getrennt — das Linien-Set ist Teil des Bucket-Keys,
+  ein Test hält das fest.
 * **Bugfix: Dieselbe Störung stand zweimal im Feed (2026-09-12)**:
   Nach dem Dedupe-Fix (PR #1791) standen zwei Meldungen zur selben Sperre im
   Feed:
