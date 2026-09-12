@@ -1479,6 +1479,16 @@
       "epoch": 1
     }
   },
+  "11c860f3f02e4dd83a6557e082cdea5c1a1bc33e5b21562974041148aead9260": {
+    "first_seen": "2026-09-12T14:01:09.807485+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "13A: service obstruction because of fire-brigade operation"
+      },
+      "epoch": 5
+    }
+  },
   "11c91abd20a742235a297775a80010358f6c25c83dee7407d8f7bc461941f9dd": {
     "first_seen": "2026-07-12T16:30:56.953558+00:00",
     "translations": {
@@ -2103,6 +2113,16 @@
         "title": "43: rescue operation"
       },
       "epoch": 2
+    }
+  },
+  "17f4b51508b60a984877fb80ad7df87936250ea47d678f99e484f269c691c33c": {
+    "first_seen": "2026-09-12T15:30:49.791438+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "12: service obstruction because of demonstration"
+      },
+      "epoch": 5
     }
   },
   "18034fd3eead8edd91cbdc015719b09572a0f8766c522b5c67edadc9d5ae03be": {
@@ -5161,6 +5181,16 @@
       "epoch": 1
     }
   },
+  "3f4fee107862aeb11a3eec5702befffc4bc25ff027e7075518500e4f6c7606be": {
+    "first_seen": "2026-09-12T15:00:59.214913+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "40A: service obstruction because of demonstration"
+      },
+      "epoch": 5
+    }
+  },
   "3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab": {
     "first_seen": "2026-05-26T07:30:53.470595+00:00",
     "translations": {
@@ -5178,6 +5208,16 @@
         "title": "71: service obstruction event"
       },
       "epoch": 3
+    }
+  },
+  "3f848b305f7e5348073201d236d38c52525af0d92bf4dd693288dc56c298f7b6": {
+    "first_seen": "2026-09-12T15:30:49.791438+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "5: service obstruction because of demonstration"
+      },
+      "epoch": 5
     }
   },
   "3f86886b555d7056de7a7b4762c1e700d24dad5c50cc8ca7fbd1c1214ae5d9d6": {
@@ -8954,8 +8994,10 @@
     "first_seen": "2026-09-12T13:30:52.720901+00:00",
     "translations": {
       "en": {
-        "summary": "After an service obstruction there are different intervals."
-      }
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "60A: fire-brigade operation"
+      },
+      "epoch": 5
     }
   },
   "700b0dfba3e9e58abbbf61995233f46d4683adf83d043580848c5792e49e9c43": {
@@ -11016,8 +11058,10 @@
     "first_seen": "2026-09-12T13:30:52.720901+00:00",
     "translations": {
       "en": {
-        "summary": "After an service obstruction there are different intervals."
-      }
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "64A: fire-brigade operation"
+      },
+      "epoch": 5
     }
   },
   "8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6": {
@@ -11723,8 +11767,10 @@
     "first_seen": "2026-09-12T13:30:52.720901+00:00",
     "translations": {
       "en": {
-        "summary": "After an service obstruction there are different intervals."
-      }
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "66A: fire-brigade operation service from Atzgersdorf, Kirchenplatz"
+      },
+      "epoch": 5
     }
   },
   "8ece1940e1979727af0d90c4952196e5f01688b77f70ccfdf1aa9d71cb916f4b": {
@@ -17034,6 +17080,16 @@
       "en": {
         "title": "9: Disability due to track construction"
       }
+    }
+  },
+  "d2995b04c903bb084f2bfb47e72067defed09d1b288eaf3deecb9883a85cd47e": {
+    "first_seen": "2026-09-12T14:01:09.807485+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between Burggasse, Stadthalle U and Ernst-Happel-Stadion. expected duration: 22:00. Reason: event in the area of Ernst-Happel-Stadion.",
+        "title": "18: event service from Ernst-Happel-Stadion"
+      },
+      "epoch": 5
     }
   },
   "d29e731483a18efdd703b0caecd6dfb506453ec24e610504bf25c89695b86dfe": {
