@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 12 Sep 2026 23:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 00:01:38 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Update 2 (12.09.2026 23:15) Aufhebung Streckenunterbrechung: Wien Meidling]]></title>
@@ -38,9 +38,9 @@
       <pubDate>Sat, 12 Sep 2026 15:52:05 +0200</pubDate>
       <ext:first_seen>Sat, 12 Sep 2026 16:01:09 +0200</ext:first_seen>
       <ext:starts_at>Sat, 12 Sep 2026 21:54:41 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Die Retourfahrt von der Haltestelle Ernst-Happel-Stadion ist möglich. [Am 12.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Die Retourfahrt von der Haltestelle Ernst-Happel-Stadion ist möglich.<br/>[Am 12.09.2026]]]></content:encoded>
+      <ext:ends_at>Sun, 13 Sep 2026 01:00:00 +0200</ext:ends_at>
+      <description>Betrieb ab Ernst-Happel-Stadion [12.09.2026 – 13.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Ernst-Happel-Stadion<br/>[12.09.2026 – 13.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Klapprampensperre am 13.09.2026]]></title>
@@ -60,9 +60,9 @@
       <pubDate>Fri, 11 Sep 2026 09:16:35 +0200</pubDate>
       <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
       <ext:starts_at>Fri, 11 Sep 2026 09:16:36 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof [11.09.2026 – 12.09.2026]</description>
-      <content:encoded><![CDATA[Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof<br/>[11.09.2026 – 12.09.2026]]]></content:encoded>
+      <ext:ends_at>Sun, 13 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof [11.09.2026 – 13.09.2026]</description>
+      <content:encoded><![CDATA[Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof<br/>[11.09.2026 – 13.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[86A/86AR/87A: Veranstaltung]]></title>
@@ -76,26 +76,15 @@
       <content:encoded><![CDATA[Wegen der Stadlauer Kirtage in der Stadlauer Straße, werden die Linien 86A, 87A und Rufbus 86A umgeleitet.<br/>[17.09.2026 – 21.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11A/18: Veranstaltung am 12.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70b7d5f22def1eccd31f13402bcbd54860e6fca98521d2a5920d540b73e0ce33</guid>
-      <pubDate>Thu, 30 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:59:00 +0200</ext:ends_at>
-      <description>Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen. [30.07.2026 – 12.09.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Veranstaltung im Ernst-Happel-Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[30.07.2026 – 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[3A: Busse halten Kärntner Ring 5]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c535a3f28bfd3a8f7e49e96b63ccb14c2a0224c47e5ee638d569ae0296a64855</guid>
       <pubDate>Mon, 07 Sep 2026 13:46:56 +0200</pubDate>
       <ext:first_seen>Sat, 12 Sep 2026 12:01:06 +0200</ext:first_seen>
       <ext:starts_at>Mon, 07 Sep 2026 13:46:56 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[07.09.2026 – 12.09.2026]</description>
-      <content:encoded><![CDATA[[07.09.2026 – 12.09.2026]]]></content:encoded>
+      <ext:ends_at>Sun, 13 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[07.09.2026 – 13.09.2026]</description>
+      <content:encoded><![CDATA[[07.09.2026 – 13.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[49A/50B: Hüttergasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 18 Sep 2026 15:00:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Kästenbaumgasse wird die Linie 17A umgeleitet. [14.09.2026 – 18.09.2026]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Kästenbaumgasse wird die Linie 17A umgeleitet.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46/49/52: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">29d08fd01cdc74937e3b4614fdcea187b2ada9e40ffa86e4d1b4b03d9bcbab99</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 11 Sep 2026 14:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 31 Oct 2026 04:30:00 +0100</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten im Bereich Märzstraße und Huglgasse kommt es bei den Linien 46, 49 und 52 zu folgenden Maßnahmen. [21.09.2026 – 31.10.2026]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Märzstraße und Huglgasse kommt es bei den Linien 46, 49 und 52 zu folgenden Maßnahmen.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
