@@ -110,13 +110,50 @@ def test_weak_identity_discriminates_distinct_topics() -> None:
     assert "|D=None|TK=" in c
 
 
-def test_strong_identity_is_unchanged_so_first_seen_does_not_churn() -> None:
-    """Lines + date present → byte-identical to the pre-fix format (no TK)."""
+def test_strong_identity_also_carries_the_topic_key() -> None:
+    """Lines + date present → ``topic_key`` is folded in as well.
+
+    This test previously asserted the opposite (``"TK=" not in ident``) to keep
+    ``first_seen`` from churning. That premise was wrong: for a WL item
+    ``_state_key_for_item`` keys ``first_seen`` on the ``guid``, and that guid
+    is itself built from ``(category, topic_key, line set)`` — so it already
+    moves whenever ``topic_key`` moves. Withholding the same signal from
+    ``_identity`` bought no stability and cost real feed items, because
+    ``_dedupe_items`` keys on ``_identity`` first and drops the rest (live on
+    2026-09-12: three distinct line-44 disruptions on one day collapsed to one).
+    """
     ident = _wl_identity(
         "störung", [("U6", "U6")], datetime(2026, 1, 1, tzinfo=UTC), "anything"
     )
-    assert ident == "wl|störung|L=U6|D=2026-01-01"
-    assert "TK=" not in ident
+    assert ident == "wl|störung|L=U6|D=2026-01-01|TK=anything"
+
+
+def test_strong_identity_discriminates_same_line_same_day_topics() -> None:
+    """The live regression: one line, one day, several unrelated disruptions.
+
+    Before the fix all three shared ``wl|störung|L=44|D=2026-09-11`` and
+    ``_dedupe_items`` published exactly one of them.
+    """
+    day = datetime(2026, 9, 11, tzinfo=UTC)
+    lines = [("44", "44")]
+    idents = {
+        _wl_identity("störung", lines, day, tk)
+        for tk in (
+            "44 veranstaltung züge halten rosensteingasse",
+            "44 veranstaltung betrieb ab johann nepomuk berger platz",
+            "44 fahrtbehinderung veranstaltung",
+        )
+    }
+    assert len(idents) == 3
+
+
+def test_strong_identity_still_dedupes_a_genuine_repeat() -> None:
+    """Over-splitting guard for the common case: same topic → same identity."""
+    day = datetime(2026, 9, 11, tzinfo=UTC)
+    lines = [("44", "44")]
+    a = _wl_identity("störung", lines, day, "gleisbauarbeiten")
+    b = _wl_identity("störung", lines, day, "gleisbauarbeiten")
+    assert a == b
 
 
 def test_identical_weak_items_still_dedupe() -> None:

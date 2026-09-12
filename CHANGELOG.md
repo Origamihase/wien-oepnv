@@ -5,6 +5,31 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: Verschiedene WL-Störungen wurden als „Duplikat" verworfen
+  (2026-09-12)**:
+  `python -m src.cli feed lint` meldete `entfernte Duplikate: 4` bei 83
+  Rohitems — und es waren keine Duplikate. Drei verschiedene Störungen auf
+  Linie 44 am selben Tag teilten den Schlüssel `wl|störung|L=44|D=2026-09-11`,
+  ebenso `49A/50B: Mondweg` und `49A/50B: Hüttergasse` (zwei verschiedene
+  Straßen). Jeweils eines wurde veröffentlicht, die übrigen verschwanden
+  spurlos aus dem Feed.
+  `_wl_identity` (`src/providers/wl_fetch.py`) mischte den `topic_key` nur
+  dann in den Schlüssel, wenn das Linien-Set **oder** das Startdatum fehlte —
+  in der Annahme, Linie + Tag identifizierten eine Störung bereits eindeutig.
+  Die Wiener Linien veröffentlichen aber regelmäßig mehrere unabhängige
+  Störungen für eine Linie an einem Tag. `_dedupe_items` (`build_feed.py`)
+  vergleicht `_identity` zuerst und erreicht den feineren `guid` nie.
+  Der `topic_key` wird jetzt **immer** eingemischt. Das kostet keine
+  Stabilität, weil er auf dieser Ebene kein neues Signal ist: Der Bucket-Key
+  in `fetch_events` und der `guid` jedes Items werden beide bereits aus
+  `(category, topic_key, Linien-Set)` gebaut. Daraus folgt zweierlei — echte
+  Duplikate erreichen den Vergleich gar nicht erst, weil das Bucketing sie
+  vorher zu einem Item verschmilzt; und `first_seen` wandert nicht, weil
+  `_state_key_for_item` es am `guid` führt, der sich ohnehin mitbewegt.
+  Gemessen am Live-Stand: Von 53 gecachten WL-Items lösen 48 über den `guid`
+  auf, 5 sind neu, **0** hingen am Legacy-`_identity`-Fallback.
+  Wirkung, mit aufgefrischtem Cache gegengeprüft: `entfernte Duplikate: 4` →
+  **0**, „Keine strukturellen Probleme gefunden", `Status=error` → `success`.
 * **Bugfix: ÖBB-Doppelstation — der Fix davor griff im Live-Pfad nicht
   (2026-09-12)**:
   Nach dem Merge des vorigen Fixes lief ein voller Refresh, und
