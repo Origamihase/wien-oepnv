@@ -5,6 +5,68 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stationsalias-Kollisionen: Log beruhigt, Prüfung nachgerüstet (2026-09-12)**:
+  `_station_lookup` protokollierte pro Prozess **111 WARNING-Zeilen** über
+  doppelte Stationsaliase — bei vier Provider-Läufen pro Build genug, um eine
+  echte Warnung zu begraben. Es waren **22** eindeutige Schlüssel; der Rest
+  war Wiederholung, weil die Aliaslisten bis zu sieben Schreibweisen derselben
+  Sache tragen (`Bhf. Hütteldorf`, `Bahnhof Bhf. Hütteldorf`,
+  `Bhf. Hütteldorf Bahnhof`), die jede für sich auf denselben normalisierten
+  Schlüssel kollidieren.
+
+  **Der im Audit vermutete Widerspruch war keiner.** „0 alias issues" des
+  Validators und 111 Loader-Warnungen messen Verschiedenes:
+  `_find_alias_issues` prüft, ob ein Eintrag überhaupt eine brauchbare
+  Aliasliste hat (vorhanden, nicht leer, enthält Name/`bst_code`/`vor_id`).
+  Stationsübergreifende Kollisionen hat es nie geprüft — die 0 war also gar
+  keine Aussage darüber.
+
+  Nachgemessen an den Live-Daten: Die 111 Zeilen zerfallen in zwei Klassen.
+  69 betreffen **dieselbe Station unter zwei Namen** (`Wien Bhf. Hütteldorf
+  (WL)` gegen `Wien Hütteldorf`) — harmlos, egal wer gewinnt. 42 betreffen
+  **vier verschiedene Badner-Bahn-Stationen**, die alle einen generischen
+  `Lokalbahn`-Alias beanspruchen. Das ist eine echte Kollision zwischen
+  verschiedenen Orten, und der Lookup ist nicht kosmetisch: `station_info`
+  speist `is_in_vienna`, das im ÖBB-Provider darüber entscheidet, ob eine
+  Meldung überhaupt in den Feed kommt.
+
+  In allen **44** (Schlüssel, Verlierer, Gewinner)-Tripeln stimmen beide
+  Seiten in `in_vienna` überein — heute kann keine Kollision eine Antwort
+  ändern. Das ist eine Tatsache über die Daten, keine Eigenschaft des Codes.
+  Ausgerechnet `Wien Inzersdorf Lokalbahn (WL)`, die einzige dieser Stationen
+  **in** Wien, beansprucht den generischen Schlüssel gar nicht, weil alle ihre
+  Aliase `Inzersdorf` tragen. Glück in der Datenlage, nicht Absicht.
+
+  Deshalb zwei Hälften, und die zweite macht die erste vertretbar:
+
+  * **Loader** (`src/utils/stations.py`): `WARNING` → `DEBUG`, und eine Zeile
+    je normalisiertem Schlüssel statt je Schreibweise. 111 → 22, und raus aus
+    dem Warnungsstrom.
+  * **Validator** (`src/utils/stations_validation.py`): neue Prüfung
+    `_find_alias_collision_issues`, die eine Kollision nur meldet, wenn die
+    Kandidaten sich in `in_vienna` unterscheiden **oder** weiter als 2 km
+    auseinanderliegen. Beide Signale werden gebraucht: Eine Station knapp
+    außerhalb der Stadtgrenze liegt Meter neben einer innerhalb (Distanz
+    allein würde das gekippte Urteil verfehlen), und zwei Stopps mit gleichem
+    Urteil können 30 km trennen (das Urteil allein würde die Distanz
+    verfehlen). Gruppiert nach Kandidatenmenge, nicht nach Schlüssel — sonst
+    stünde dieselbe Tatsache elfmal da, genau das Rauschen, das gerade
+    beseitigt wurde.
+
+  Auf dem Live-Verzeichnis meldet der Validator damit **eine** Kollision: die
+  vier Lokalbahn-Stationen. Kein Aufrufer nutzt `--fail-on-issues`, die CI
+  bleibt also grün; die Kollision steht ab jetzt im Report und in der
+  Zusammenfassungszeile. Ein Test pinnt, dass der Validator den Normalisierer des
+  Loaders **weiterverwendet** — `stations_validation` importiert
+  `_normalize_token` aus `stations`, es ist dieselbe Funktion. Bekommt der
+  Validator später einen eigenen, driften beide still auseinander und die
+  Prüfung meldet Kollisionen, die der Loader nie hat. Genau diese
+  Verwechslung zweier ähnlich benannter Größen hat den Befund ursprünglich
+  falsch gerahmt.
+
+  Nicht mitbehoben: der zweite Teil des Befunds (leerer Stammstrecke-Provider
+  als Warnung). Er ändert die Empty-Semantik für alle Provider und gehört in
+  eine eigene Änderung. Damit ist Audit-Befund 6 zur Hälfte erledigt.
 * **Bugfix: Übersetzung lief für Stationstitel bei jedem Build neu
   (2026-09-12)**:
   Im Build-Log stand jedes Mal dieselbe Zeile:

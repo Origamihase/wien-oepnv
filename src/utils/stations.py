@@ -609,6 +609,31 @@ def nearest_rail_station(
     return best
 
 
+def _log_alias_collision(
+    reported: set[str],
+    key: str,
+    alias_text: str,
+    loser: StationInfo,
+    winner: StationInfo,
+) -> None:
+    """Log a contested alias key once, at DEBUG.
+
+    A separate function rather than an inline guard so ``_station_lookup``
+    does not gain a branch: it sits on the C901 baseline at 29 and that
+    baseline is meant to ratchet down, never up.
+    """
+    if key in reported:
+        return
+    reported.add(key)
+    logger.debug(
+        "Duplicate station alias %r normalized to %r for %s conflicts with %s",
+        alias_text,
+        key,
+        loser.name,
+        winner.name,
+    )
+
+
 @lru_cache(maxsize=1)
 def _station_lookup() -> dict[str, StationInfo]:
     """Return a mapping from normalized aliases to :class:`StationInfo` records.
@@ -621,6 +646,9 @@ def _station_lookup() -> dict[str, StationInfo]:
     """
 
     mapping: dict[str, tuple[StationInfo, _MatchStrength]] = {}
+    # Normalized keys already reported as contested, so one collision costs
+    # one log line instead of one per cosmetic alias variant.
+    reported_collisions: set[str] = set()
 
     for entry in _station_entries():
         name = str(entry.get("name", "")).strip()
@@ -787,12 +815,24 @@ def _station_lookup() -> dict[str, StationInfo]:
                 continue
             if record_is_vor and not existing_is_vor:
                 continue
-            logger.warning(
-                "Duplicate station alias %r normalized to %r for %s conflicts with %s",
-                alias_text,
-                key,
-                alias_record.name,
-                existing_record.name,
+            # DEBUG, and once per normalized KEY rather than once per alias
+            # surface. Measured on the live directory (audit 2026-09-12,
+            # Befund 6): 111 WARNING lines per process for 22 distinct keys,
+            # because the alias generator emits up to seven cosmetic variants
+            # of one fact — "Bhf. Hütteldorf", "Bahnhof Bhf. Hütteldorf",
+            # "Bhf. Hütteldorf Bahnhof", … — each colliding separately.
+            #
+            # Harmless is not the same as unguarded. What the losing alias
+            # costs is a resolution: ``station_info`` feeds ``is_in_vienna``,
+            # which decides whether an ÖBB disruption reaches the feed at all.
+            # Across all 44 (key, loser, winner) triples in the live data the
+            # two sides agree on ``in_vienna``, so today no collision can
+            # change an answer — but nothing in this loop checks that. The
+            # check lives in the validator instead
+            # (``_find_alias_collision_issues``), where it can fail a run;
+            # a log line never could.
+            _log_alias_collision(
+                reported_collisions, key, alias_text, alias_record, existing_record
             )
 
     # Drop the strength annotation from the public mapping.
