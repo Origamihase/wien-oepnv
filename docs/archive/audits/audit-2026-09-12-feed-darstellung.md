@@ -14,20 +14,33 @@ Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
 geantwortet, keine einzige Fehlermeldung, keine Netzwerk- oder Auth-Störung.
 Die Pipeline ist stabil, die CI ist grün, der Feed ist wohlgeformt.
 
-**Die Darstellung hat Mängel.** Sieben Befunde, davon zwei mit sichtbarer
-Auswirkung auf das, was Abonnenten lesen:
+**Die Darstellung hat Mängel.** Acht Befunde — Befund 8 kam beim Nachprüfen
+der Korrektur zu Befund 2 dazu. Drei mit sichtbarer Auswirkung auf das, was
+Abonnenten lesen, sind behoben:
 
-- ein ÖBB-Titel, der eine Station doppelt nennt — **derselbe Titel, den
-  [PR #1789](https://github.com/Origamihase/wien-oepnv/pull/1789) heute früh
-  beheben sollte** und nachweislich nicht behoben hat;
-- vier von 83 Meldungen (≈ 5 %), die als „Duplikat" verworfen werden, obwohl es
-  verschiedene Störungen sind;
-- Liniennummern, die die englische Übersetzung verstümmelt (`44A/844` → `44A844`).
+- **Befund 1** — ein ÖBB-Titel, der eine Station doppelt nennt. Derselbe Titel,
+  den [PR #1789](https://github.com/Origamihase/wien-oepnv/pull/1789)
+  beheben sollte und nachweislich nicht behoben hat; erledigt in
+  [PR #1790](https://github.com/Origamihase/wien-oepnv/pull/1790).
+- **Befund 2** — vier von 83 Meldungen (≈ 5 %) wurden als „Duplikat" verworfen,
+  weil der Dedupe-Schlüssel nur Linie und Tag kannte
+  ([PR #1791](https://github.com/Origamihase/wien-oepnv/pull/1791)).
+- **Befund 8** — die Kehrseite davon: Ohne die grobe Maskierung stand dieselbe
+  Störung zweimal im Feed, weil zwei Ursachen-Wörter in
+  `TITLE_TOPIC_TOKENS` fehlten
+  ([PR #1792](https://github.com/Origamihase/wien-oepnv/pull/1792)).
 
-Die Korrektur von Befund 1 ist Teil dieses PRs. Die übrigen sind belegt und mit
-Reproduktion dokumentiert, aber bewusst nicht mitbehoben — sie berühren
-Dedupe-Identität und Übersetzungs-Masking und gehören in eigene, einzeln
-prüfbare Änderungen.
+Befunde 2 und 8 sind zwei Hälften derselben Sache: Ein Schlüssel, der zu grob
+war, hat gleichzeitig Verschiedenes weggeworfen **und** Gleiches zusammenfallen
+lassen. Weil das Ergebnis oft passabel aussah, fiel keine der beiden Hälften
+auf. Von den vier ursprünglich verworfenen Meldungen war nur das Paar
+`49A/50B` wirklich verschieden — die Linie-44-Trias ist ein Ereignis aus drei
+Blickwinkeln (s. Korrektur in Abschnitt 4).
+
+Offen bleiben die Befunde 3–7. Der gewichtigste davon: Liniennummern, die die
+englische Übersetzung verstümmelt (`44A/844` → `44A844`). Sie sind belegt und
+mit Reproduktion dokumentiert, aber bewusst nicht mitbehoben — jeder gehört in
+eine eigene, einzeln prüfbare Änderung.
 
 ---
 
@@ -66,7 +79,7 @@ Siehe Befund 6.
 
 ## 3. Befund 1 — ÖBB-Titel nennt die Station doppelt (behoben)
 
-**Schweregrad: hoch** (sichtbar im Feed) · **Status: in diesem PR behoben**
+**Schweregrad: hoch** (sichtbar im Feed) · **Status: behoben** ([PR #1790](https://github.com/Origamihase/wien-oepnv/pull/1790))
 
 ### Symptom
 
