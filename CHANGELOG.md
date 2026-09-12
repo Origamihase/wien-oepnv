@@ -5,6 +5,43 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: Übersetzung lief für Stationstitel bei jedem Build neu
+  (2026-09-12)**:
+  Im Build-Log stand jedes Mal dieselbe Zeile:
+
+  ```
+  Cached EN translation for …TRACKINFO&910806/title equals source; retrying.
+  ```
+
+  `_cached_translation` wertet „gespeicherte Übersetzung ist identisch mit der
+  Quelle" als Beleg für einen früheren kaputten Build, der den deutschen Text
+  als „Übersetzung" abgelegt hat — und übersetzt neu. Für einen Titel, der nur
+  aus Stationsnamen besteht (`Wien Hauptbahnhof ↔ Felixdorf`), **ist** die
+  korrekte englische Fassung aber die deutsche. Die Bedingung galt damit
+  dauerhaft: Das Modell lief bei jedem Build erneut und lieferte nie ein
+  anderes Ergebnis. Gemessen vor dem Fix: fünf Builds, fünf Modellläufe. Im
+  gespeicherten Zustand tragen 227 Einträge einen solchen Titel; gebaut wird
+  alle 30 Minuten.
+
+  Ein gespeicherter String allein kann „ein kaputter Build hat hier die Quelle
+  hinterlegt" nicht von „das Modell lief und seine Ausgabe entspricht der
+  Quelle" unterscheiden. Ein Marker kann es, weil er **nur dort** geschrieben
+  wird, wo sich die beiden Fälle trennen: nachdem `_translate_text_attempt`
+  ein Ergebnis ungleich `None` geliefert hat. Ein fehlgeschlagener Versuch
+  liefert `None` und speichert nichts — ein Build, der nicht übersetzen
+  konnte, kann ein Feld also nie als „identisch ist korrekt" markieren. Der
+  Drift-Schutz behält damit seine Zähne; er wird eingegrenzt, nicht entfernt.
+  Bestandseinträge ohne Marker werden weiterhin einmal neu übersetzt und dabei
+  markiert.
+  Der Marker liegt neben `en` statt darin, damit die `en`-Teilstruktur eine
+  homogene Feld-zu-String-Abbildung bleibt, und wird bei der Epoch-Eviction
+  zusammen mit `en` verworfen: Eine spätere Epoch mit besserem Glossar kann
+  denselben Text sehr wohl übersetzen. Er wird außerdem zurückgenommen, sobald
+  ein Lauf doch eine echte Übersetzung liefert, und der Self-Heal für
+  Rest-Platzhalter schlägt ihn weiterhin — ein rohes Sentinel darf nie aus dem
+  Cache kommen.
+  Reine Laufzeitkosten, kein Feed-Inhalt: Ein schleifendes Item erzeugt so oder
+  so dieselbe englische Ausgabe. Damit ist Audit-Befund 7 erledigt.
 * **Bugfix: Die englische Übersetzung erfand Liniennummern (2026-09-12)**:
   Im EN-Feed verschmolzen zwei Linien zu einer Nummer, die es nicht gibt:
 

@@ -2026,6 +2026,62 @@ def _is_non_translatable_content(masked_text: str) -> bool:
     return not any(ch.isalpha() for ch in remaining)
 
 
+# Fields whose correct English translation IS the German source, verified by
+# an actual model run. Lives beside ``en`` in ``translations`` rather than
+# inside it, so the ``en`` sub-dict stays a homogeneous field→string map.
+#
+# Why this marker has to exist (audit 2026-09-12, Befund 7). The cache lookup
+# treats "stored translation equals the source" as evidence of an earlier
+# BROKEN build that persisted the German text as the translation, and
+# re-translates. For a title made only of station names — ``Wien Hauptbahnhof
+# ↔ Felixdorf`` — the correct English *is* the German, so the condition holds
+# forever and the model re-ran on every build without ever producing a
+# different answer. Measured before the fix: five builds, five model runs.
+#
+# A stored string alone cannot tell the two cases apart. The marker can,
+# because it is written ONLY where the two differ: after
+# ``_translate_text_attempt`` returned a non-``None`` result. A failed attempt
+# returns ``None`` and persists nothing, so a build that could not translate
+# can never mark a field verbatim — the drift guard keeps its teeth.
+#
+# Epoch-scoped like the translations themselves: a later epoch may well
+# translate the same text differently, so ``_evict_stale_translations`` drops
+# this key together with ``en``.
+_VERBATIM_FIELDS_KEY = "en_verbatim"
+
+
+def _verbatim_fields(translations: dict[str, Any]) -> set[str]:
+    """Return the field names recorded as legitimately untranslated."""
+    raw = translations.get(_VERBATIM_FIELDS_KEY)
+    if not isinstance(raw, list):
+        return set()
+    return {name for name in raw if isinstance(name, str)}
+
+
+def _record_verbatim(
+    translations: dict[str, Any], field: str, *, identical: bool
+) -> None:
+    """Record — or withdraw — ``field``'s verbatim mark after a model run.
+
+    Withdrawing matters as much as setting: once a glossary or masking
+    change makes a previously untranslatable text translate, the stale mark
+    would otherwise keep asserting "identical is correct" about output that
+    is no longer identical.
+
+    The key is removed entirely when no field is left, so the 2500+ entries
+    in the persisted state do not each grow an empty list.
+    """
+    fields = _verbatim_fields(translations)
+    if identical:
+        fields.add(field)
+    else:
+        fields.discard(field)
+    if fields:
+        translations[_VERBATIM_FIELDS_KEY] = sorted(fields)
+    else:
+        translations.pop(_VERBATIM_FIELDS_KEY, None)
+
+
 def _translate_text_attempt(
     text: str,
     ident: str = "",
@@ -2216,9 +2272,11 @@ def _cached_translation(
 
       * If the persisted "translation" is byte-identical to the
         German source, treat it as a stale fallback from an earlier
-        buggy build and retry. Real translations from a successful
-        ML pass almost never equal the source verbatim (and the few
-        that do — e.g. ``ÖBB`` alone — round-trip safely).
+        buggy build and retry — UNLESS the field is marked verbatim
+        (:data:`_VERBATIM_FIELDS_KEY`), i.e. a real model run already
+        produced that identical output. Without the mark the retry can
+        never converge for a text whose correct English is the German,
+        such as a title made only of station names.
       * If ``state`` or ``ident`` is missing, fall through to a
         cache-less translation via :func:`_translate_text_attempt`.
 
@@ -2258,7 +2316,13 @@ def _cached_translation(
             sanitize_log_arg(field),
             sanitize_log_arg(ident),
         )
+    verbatim = _verbatim_fields(translations_raw)
     if isinstance(cached, str) and cached == text:
+        if field in verbatim and not _RESIDUAL_PLACEHOLDER_RE.search(cached):
+            # Verified verbatim: the model DID run on this text and returned
+            # it unchanged, because the correct English is the German. Serving
+            # the cache here is what closes the loop below.
+            return cached, True
         # Stale-fallback heuristic: a prior run cached the German
         # source as the "translation" — re-attempt now that the
         # pipeline may be healthy.
@@ -2275,6 +2339,7 @@ def _cached_translation(
         # the "translation". The next run gets a clean retry.
         return text, False
     en_raw[field] = attempt
+    _record_verbatim(translations_raw, field, identical=attempt == text)
     return attempt, True
 
 
@@ -4059,6 +4124,11 @@ def _evict_stale_translations(
                 _TRANSLATION_CACHE_EPOCH,
             )
         translations.pop("en", None)
+        # The verbatim marks belong to the evicted translations: they assert
+        # what THIS epoch's pipeline produced. A newer epoch with a better
+        # glossary may translate the same text after all, so the marks go
+        # with the strings rather than outliving them.
+        translations.pop(_VERBATIM_FIELDS_KEY, None)
 
 
 def _stamp_translation_epoch(
