@@ -308,6 +308,17 @@ _LEADING_LINE_PREFIX_RE = re.compile(
 )
 
 
+# ``HH:MM`` ist eine Uhrzeit, kein ``Label: Rest``-Trenner. Ohne diesen
+# Guard zerschneidet die Präfix-Schleife in :func:`_clean_title_keep_places`
+# den Titel „Sperre 17:30 Uhr Wien Hbf" am Doppelpunkt der UHRZEIT: Als
+# Präfix bleibt „Sperre 17", und das akzeptiert :func:`_is_category`, weil
+# es nur die WÖRTER prüft („sperre" steht in ``NON_LOCATION_PREFIXES``).
+# Übrig blieb „30 Uhr Wien Hbf" — die Stunde war weg und der Feed zeigte
+# „30 Uhr Wien".
+_CLOCK_PREFIX_TAIL_RE = re.compile(r"\d{1,2}\s*$")
+_CLOCK_MINUTES_RE = re.compile(r"\d{2}")
+
+
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
     t = html.unescape(t)
@@ -324,7 +335,24 @@ def _clean_title_keep_places(t: str) -> str:
 
     # Redundanz-Check: Wenn Titel „Text: Station“ ist und Station im Text vorkommt,
     # dann nur Text nehmen (z.B. "Aufzug in X defekt: X").
-    match = re.search(r"^([^:]+):\s+(.+)$", t)
+    #
+    # Verankert am LETZTEN ``: `` — nicht am ersten. ÖBB stellt dem Titel
+    # häufig ein Kategorie-Label voran, und dann liegt das redundante Paar
+    # hinter dem zweiten Doppelpunkt:
+    #
+    #   "Bauarbeiten: kein Halt in Lind-Rosegg Föderlach: Lind-Rosegg Föderlach"
+    #
+    # Mit dem First-Colon-Anker verglich der Check „Bauarbeiten" gegen den
+    # gesamten Rest, fand keine Redundanz und ließ die Dopplung stehen — sie
+    # stand so live im Feed (``cache/oebb_c40d21/events.json``, Titel über
+    # 60 Cache-Refreshes byte-identisch). Der greedy Kopf ``(.+)`` verschiebt
+    # den Anker ans letzte ``: `` und findet das Paar.
+    #
+    # Uhrzeiten bleiben unberührt, weil das Muster ein Leerzeichen NACH dem
+    # Doppelpunkt verlangt: "Sperre 17:30 Uhr" matcht weder vorher noch
+    # nachher. Für Titel mit genau einem Doppelpunkt ist das Verhalten
+    # unverändert.
+    match = re.search(r"^(.+):\s+([^:]+)$", t)
     if match:
         text_part, suffix_part = match.group(1), match.group(2)
         # Check ob suffix im Text enthalten ist (case-sensitive)
@@ -345,6 +373,12 @@ def _clean_title_keep_places(t: str) -> str:
         while True:
             match = re.match(r"^\s*([^:]+):\s*", segment)
             if not match:
+                break
+
+            # Nie innerhalb einer Uhrzeit schneiden (s. _CLOCK_PREFIX_TAIL_RE).
+            if _CLOCK_PREFIX_TAIL_RE.search(match.group(1)) and _CLOCK_MINUTES_RE.match(
+                segment[match.end():]
+            ):
                 break
 
             prefix = match.group(1).strip()
