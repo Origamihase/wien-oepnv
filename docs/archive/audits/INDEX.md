@@ -17,6 +17,7 @@ Chronologische Übersicht aller archivierten Audits dieses Projekts.
 
 | Datum | Bericht | Schwerpunkt |
 |---|---|---|
+| 2026-09-12 | [audit-2026-09-12-feed-darstellung.md](audit-2026-09-12-feed-darstellung.md) | Feed-Gesamtaudit (Quellen, Verarbeitung, Darstellung): 7 Befunde — ÖBB-Doppelstation (Fix von PR #1789 griff nicht, hier behoben), 4/83 echte Meldungen als „Duplikat" verworfen, EN-Übersetzung verstümmelt Liniennummern |
 | 2026-09-12 | [audit-2026-09-12-force-push-history-loss.md](audit-2026-09-12-force-push-history-loss.md) | CI/CD-Integrität: `--force-with-lease` löschte den Merge-Commit von PR #1783 aus `main` (Job-Log-Nachweis, Fix in drei Workflows) |
 | 2026-09 | [audit-2026-09-05.md](audit-2026-09-05.md), [-06](audit-2026-09-06.md), [-07](audit-2026-09-07.md), [-08](audit-2026-09-08.md), [-09](audit-2026-09-09.md), [-10](audit-2026-09-10.md), [-11](audit-2026-09-11.md) | Tägliche Diagnose-Audits zu Anzeigefehlern im Feed (Titel-Verstümmelung, Wort-Verklebungen, EN-Übersetzungsartefakte) — behoben in PR [#1785](https://github.com/Origamihase/wien-oepnv/pull/1785) und dem zugehörigen Folge-PR |
 | 2026-09-09 | [audit-title-bauarbeiten26-2026-09-09.md](audit-title-bauarbeiten26-2026-09-09.md) | `17A: Bauarbeiten26` — gestrandetes 2-stelliges Jahr im WL-Titel |
