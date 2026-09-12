@@ -22,6 +22,7 @@ import os
 import re
 import time
 from datetime import datetime, UTC
+from zoneinfo import ZoneInfo
 from email.utils import parsedate_to_datetime
 from itertools import pairwise
 from urllib.parse import urlparse
@@ -1820,6 +1821,70 @@ def _resolve_poor_title(title: str, link: str, guid: str, desc: str) -> str:
     return title
 
 
+_OEBB_TZ = ZoneInfo("Europe/Vienna")
+
+# ÖBB stellt jeder Beschreibung den Gültigkeitszeitraum voran:
+#
+#     "03.10.2026 - 05.10.2026<br/><br/>Wegen Bauarbeiten können …"
+#     "01.11.2026<br/><br/>Wegen Bauarbeiten können …"        (ein Tag)
+#
+# ``build_feed`` hat diesen Präfix bisher nur WEGGEWORFEN
+# (``_DATE_RANGE_PREFIX_RE`` / ``_DATE_SINGLE_PREFIX_RE``), also als
+# Metadatum erkannt, ohne es zu verwenden. Die Folge war doppelt schlecht:
+#
+# * ``starts_at`` blieb das VERÖFFENTLICHUNGSDATUM und ``ends_at`` leer.
+#   Die Zeitzeile im Feed las sich dann „[Seit 10.09.2026]" für eine
+#   Sperre, die erst am 05.12.2026 beginnt — auf einem Info-Display, das
+#   genau diese Klammer zeigt, eine falsche Aussage.
+# * Drei gleichzeitig laufende Bauvorhaben auf derselben Strecke trugen
+#   denselben Titel (``Wien Hauptbahnhof ↔ Gramatneusiedl``) und waren
+#   ohne Öffnen der Beschreibung nicht zu unterscheiden.
+#
+# Beides löst sich, sobald der Zeitraum in ``starts_at``/``ends_at``
+# landet: :func:`build_feed.format_local_times` rendert daraus von sich
+# aus „03.10.2026 – 05.10.2026", „Am 01.11.2026" oder „Ab …".
+_PERIOD_PREFIX_RE = re.compile(
+    r"^\s*(\d{2})\.(\d{2})\.(\d{4})"
+    r"(?:\s*-\s*(\d{2})\.(\d{2})\.(\d{4}))?"
+    r"\s*(?:<br\s*/?>|\u2022|$)",
+    re.IGNORECASE,
+)
+
+
+def _parse_period(desc: str) -> tuple[datetime | None, datetime | None]:
+    """Read the validity period ÖBB prepends to every description.
+
+    Returns ``(start, end)`` in Europe/Vienna — start at 00:00, end at
+    23:59:59 so an item stays visible for the whole final day rather than
+    vanishing at midnight. Returns ``(None, None)`` when the description
+    carries no such prefix; the caller then keeps the previous behaviour
+    (publication date as start, no end).
+
+    A single date means a one-day disruption: start and end fall on the
+    same day, which :func:`build_feed.format_local_times` renders as
+    ``"Am TT.MM.JJJJ"``.
+    """
+    match = _PERIOD_PREFIX_RE.match(desc or "")
+    if not match:
+        return None, None
+    try:
+        d1, m1, y1 = (int(match.group(i)) for i in (1, 2, 3))
+        start = datetime(y1, m1, d1, tzinfo=_OEBB_TZ)
+        if match.group(4):
+            d2, m2, y2 = (int(match.group(i)) for i in (4, 5, 6))
+            end_day = datetime(y2, m2, d2, tzinfo=_OEBB_TZ)
+        else:
+            end_day = start
+    except ValueError:
+        # Defensive: an upstream typo like "31.02.2026" must not abort the
+        # whole fetch — fall back to the previous field semantics.
+        return None, None
+    if end_day < start:
+        return None, None
+    end = end_day.replace(hour=23, minute=59, second=59)
+    return start, end
+
+
 def _build_item_from_xml(item: ET.Element) -> FeedItem | None:
     """Convert one ``<item>`` XML element into a normalised ``FeedItem``,
     or return ``None`` when the item is dropped by the Wien-relevance
@@ -1836,6 +1901,7 @@ def _build_item_from_xml(item: ET.Element) -> FeedItem | None:
     raw_guid = _get_text(item, "guid").strip()
     desc = _clean_description(_get_text(item, "description"))
     pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
+    period_start, period_end = _parse_period(desc)
 
     # GUID derivation MUST use the upstream RAW title (and link), not the
     # post-cleanup ``title``. The cleanup output depends on station-alias
@@ -1863,8 +1929,8 @@ def _build_item_from_xml(item: ET.Element) -> FeedItem | None:
         "link": link,
         "guid": guid,
         "pubDate": pub,
-        "starts_at": pub,
-        "ends_at": None,
+        "starts_at": period_start or pub,
+        "ends_at": period_end,
         "_identity": f"oebb|{guid}",
     }
 
