@@ -324,7 +324,24 @@ def _clean_title_keep_places(t: str) -> str:
 
     # Redundanz-Check: Wenn Titel „Text: Station“ ist und Station im Text vorkommt,
     # dann nur Text nehmen (z.B. "Aufzug in X defekt: X").
-    match = re.search(r"^([^:]+):\s+(.+)$", t)
+    #
+    # Verankert am LETZTEN ``: `` — nicht am ersten. ÖBB stellt dem Titel
+    # häufig ein Kategorie-Label voran, und dann liegt das redundante Paar
+    # hinter dem zweiten Doppelpunkt:
+    #
+    #   "Bauarbeiten: kein Halt in Lind-Rosegg Föderlach: Lind-Rosegg Föderlach"
+    #
+    # Mit dem First-Colon-Anker verglich der Check „Bauarbeiten" gegen den
+    # gesamten Rest, fand keine Redundanz und ließ die Dopplung stehen — sie
+    # stand so live im Feed (``cache/oebb_c40d21/events.json``, Titel über
+    # 60 Cache-Refreshes byte-identisch). Der greedy Kopf ``(.+)`` verschiebt
+    # den Anker ans letzte ``: `` und findet das Paar.
+    #
+    # Uhrzeiten bleiben unberührt, weil das Muster ein Leerzeichen NACH dem
+    # Doppelpunkt verlangt: "Sperre 17:30 Uhr" matcht weder vorher noch
+    # nachher. Für Titel mit genau einem Doppelpunkt ist das Verhalten
+    # unverändert.
+    match = re.search(r"^(.+):\s+([^:]+)$", t)
     if match:
         text_part, suffix_part = match.group(1), match.group(2)
         # Check ob suffix im Text enthalten ist (case-sensitive)
@@ -343,7 +360,16 @@ def _clean_title_keep_places(t: str) -> str:
 
         # NEU: Präfix iterativ vom jeweiligen Segment abtrennen
         while True:
-            match = re.match(r"^\s*([^:]+):\s*", segment)
+            # ``:(?!\d)`` — ein Doppelpunkt direkt vor einer Ziffer gehört zu
+            # einer UHRZEIT, nicht zu einem ``Label: Rest``-Präfix. Ohne diese
+            # Bedingung zerschnitt die Schleife „Sperre 17:30 Uhr Wien Hbf" am
+            # Doppelpunkt der Uhrzeit: Als Präfix blieb „Sperre 17", und das
+            # akzeptiert :func:`_is_category`, weil es nur die WÖRTER prüft
+            # („sperre" steht in ``NON_LOCATION_PREFIXES``). Übrig blieb
+            # „30 Uhr Wien Hbf" — die Stunde war weg und der Feed zeigte
+            # „30 Uhr Wien". Echte Label-Präfixe sind nicht betroffen, auch
+            # nicht solche, die auf einer Ziffer enden („Linie 5: kein Halt").
+            match = re.match(r"^\s*([^:]+):(?!\d)\s*", segment)
             if not match:
                 break
 

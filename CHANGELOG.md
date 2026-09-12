@@ -5,6 +5,30 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: ÖBB-Titel nannte die Station doppelt (2026-09-12)**:
+  Im Feed stand `S 4: Bauarbeiten: kein Halt in Lind-Rosegg Föderlach:
+  Lind-Rosegg Föderlach`. `_clean_title_keep_places` in
+  `src/providers/oebb.py` hat für genau dieses Muster einen Redundanz-Check
+  („Text: Station" → nur Text, wenn die Station im Text vorkommt), er war
+  aber am **ersten** Doppelpunkt verankert. Stellt der Upstream dem Titel ein
+  Kategorie-Label voran, liegt das redundante Paar hinter dem zweiten
+  Doppelpunkt: Der Check verglich „Bauarbeiten" gegen den gesamten Rest, fand
+  keine Redundanz und ließ die Dopplung stehen. Der greedy Kopf
+  (`^(.+):\s+([^:]+)$` statt `^([^:]+):\s+(.+)$`) verschiebt den Anker ans
+  letzte `: ` und findet das Paar; für Titel mit genau einem Doppelpunkt ist
+  das Verhalten unverändert, Uhrzeiten (`17:30`) bleiben unberührt, weil das
+  Muster ein Leerzeichen nach dem Doppelpunkt verlangt. Der Titel lautet jetzt
+  `S 4: kein Halt in Lind-Rosegg Föderlach`. Der Cache heilt beim nächsten
+  `update_oebb_cache`-Lauf, weil die Titel dort ohnehin pro Zyklus neu aus dem
+  Upstream abgeleitet werden.
+* **Bugfix: ÖBB-Titel verlor die Stunde einer Uhrzeit (2026-09-12)**:
+  Beim Verifizieren des Titel-Fixes aufgefallen. Die Präfix-Schleife in
+  `_clean_title_keep_places` entfernt ein führendes `Kategorie: `-Label und
+  hat dabei auch den Doppelpunkt einer **Uhrzeit** getroffen: `_is_category`
+  prüft nur die Wörter, also gilt `"Sperre 17"` als Kategorie. Aus
+  `"Sperre 17:30 Uhr Wien Hbf"` wurde `"30 Uhr Wien"` — die Stunde war weg.
+  Die Schleife bricht jetzt ab, wenn der Doppelpunkt zwischen `HH` und `MM`
+  steht; das gewöhnliche Label-Stripping (`"Störung: A ↔ B"`) ist unverändert.
 * **Bugfix: Dashboard zählte Schwerverspätungen anders als der Feed (2026-09-12)**:
   `docs/assets/site.js` filterte `r.delay >= 9` und beschriftete die Kachel mit
   „≥ 9 Minuten" / „≥ 9 minutes". Das Backend (`src/feed/stammstrecke.py`) und
