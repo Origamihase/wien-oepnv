@@ -482,6 +482,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
+    "pubDate": "2026-09-13T00:30:25+02:00",
+    "starts_at": "2026-09-13T00:30:25+02:00",
+    "ends_at": "2026-09-13T04:59:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-13|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26A: Busse halten Erzherzog-Karl-Straße 78",
     "description": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -502,6 +514,30 @@
     "starts_at": "2026-09-10T00:00:23+02:00",
     "ends_at": "2026-09-13T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-09-10|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "89120d0470ea18b91557ad7fb1b2bbd655bec5746442fac646a071a183fbd310",
+    "pubDate": "2026-09-13T00:24:55+02:00",
+    "starts_at": "2026-09-13T00:24:56+02:00",
+    "ends_at": "2026-09-13T01:24:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-09-13|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7ac7e1b509acf7bdaa50335522e14359cfb0162dadc105c4ced573d500dc7ab8",
+    "pubDate": "2026-09-13T00:24:55+02:00",
+    "starts_at": "2026-09-13T00:24:56+02:00",
+    "ends_at": "2026-09-13T01:24:00+02:00",
+    "_identity": "wl|störung|L=38|D=2026-09-13|TK=fahrtbehinderung fremder verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -574,6 +610,30 @@
     "starts_at": "2026-09-10T00:00:23+02:00",
     "ends_at": "2026-09-13T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-10|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten bei Taborstraße 35-37",
+    "description": "Gleisbauarbeiten\nBusse halten bei Taborstraße 35-37",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5acd2efa281e77e083e560ff5c6ca6c5fab4a01026252a262345d9fe21cd6ed2",
+    "pubDate": "2026-09-13T00:13:25+02:00",
+    "starts_at": "2026-09-13T00:13:25+02:00",
+    "ends_at": "2026-09-13T04:53:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-09-13|TK=busse halten bei taborstrasse 35 37"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Busse halten Simmeringer Hauptstr. ggü 197",
+    "description": "Busse halten\nSimmeringer Hauptstr. ggü 197",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c6e5660b4ca5565b5c84f20f7325537dda40f7b36378899a21abefe17ba276b7",
+    "pubDate": "2026-09-13T00:30:24+02:00",
+    "starts_at": "2026-09-13T00:30:24+02:00",
+    "ends_at": "2026-09-13T05:09:00+02:00",
+    "_identity": "wl|störung|L=N71|D=2026-09-13|TK=busse halten simmeringer hauptstr ggü 197"
   },
   {
     "source": "Wiener Linien",
