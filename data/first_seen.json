@@ -23050,6 +23050,16 @@
       "epoch": 5
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&911366": {
+    "first_seen": "2026-09-12T21:00:53.391746+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to persons on the tracks, no journeys are possible in Wien Meidling train station (U) to expected 23:30.",
+        "title": "Update 1 (12.09.2026 22:40) Route interruption: Wien Meidling"
+      },
+      "epoch": 5
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },

@@ -130,5 +130,17 @@
     "starts_at": "2026-12-05T00:00:00+01:00",
     "ends_at": "2026-12-07T23:59:59+01:00",
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&910806"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Update 1 (12.09.2026 22:40) Streckenunterbrechung: Wien Meidling",
+    "description": "12.09.2026 - 13.09.2026<br/><br/>Wegen Personen im Gleisbereich sind <b>in </b><b>Wien Meidling Bahnhof (U) </b>bis voraussichtlich <b>23:30 Uhr keine Fahrten</b> möglich. Die <b>Züge warten </b>die Sperre <b>vorerst ab</b>.<br>Sobald uns weitere Informationen vorliegen, informieren wir Sie.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&911366",
+    "pubDate": "2026-09-12T22:40:05+02:00",
+    "starts_at": "2026-09-12T00:00:00+02:00",
+    "ends_at": "2026-09-13T23:59:59+02:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&911366"
   }
 ]
