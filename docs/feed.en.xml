@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 12 Sep 2026 04:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 05:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[N67: delays]]></title>
+      <title><![CDATA[N71: Buses stop at Simmeringer Hauptstr. opp 197]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bee09a46e96c5cc5703e0db9b57d23979b68e4e7b81337aac02705ac91f04698</guid>
-      <pubDate>Sat, 12 Sep 2026 04:02:00 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 04:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 04:02:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">c6e5660b4ca5565b5c84f20f7325537dda40f7b36378899a21abefe17ba276b7</guid>
+      <pubDate>Sat, 12 Sep 2026 04:44:29 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 05:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 04:44:29 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Sep 2026 05:09:00 +0200</ext:ends_at>
+      <description>[On 12.09.2026]</description>
+      <content:encoded><![CDATA[[On 12.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[73B/73A: traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dcb9dbeebd86678e210e72cbd0a4e289da2eca41e2da7b82a9b5e014a6ec3607</guid>
+      <pubDate>Sat, 12 Sep 2026 04:40:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 05:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 04:40:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 12 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Currently, the N67 line has different intervals in both directions. Reason: defective vehicle. [On 12.09.2026]</description>
-      <content:encoded><![CDATA[Currently, the N67 line has different intervals in both directions. Reason: defective vehicle.<br/>[On 12.09.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Line 73A: irregular intervals in both directions. [On 12.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line 73A: irregular intervals in both directions.<br/>[On 12.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[17A: construction works]]></title>
@@ -52,17 +63,6 @@
       <ext:ends_at>Sat, 12 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Trains stop at Rosensteingasse on line 9 direction Westbahnhof [11.09.2026 – 12.09.2026]</description>
       <content:encoded><![CDATA[Trains stop at Rosensteingasse on line 9 direction Westbahnhof<br/>[11.09.2026 – 12.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N20: Buses stop on the main carriageway]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae</guid>
-      <pubDate>Sat, 12 Sep 2026 01:16:12 +0200</pubDate>
-      <ext:first_seen>Fri, 11 Sep 2026 01:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 01:16:12 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 04:52:00 +0200</ext:ends_at>
-      <description>[On 12.09.2026]</description>
-      <content:encoded><![CDATA[[On 12.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N29: Buses stop at Taborstraße 62]]></title>

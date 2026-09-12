@@ -462,9 +462,9 @@
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
-    "pubDate": "2026-09-12T00:30:06+02:00",
-    "starts_at": "2026-09-12T00:30:06+02:00",
-    "ends_at": "2026-09-12T04:59:00+02:00",
+    "pubDate": "2026-09-12T05:00:29+02:00",
+    "starts_at": "2026-09-12T05:00:29+02:00",
+    "ends_at": "2026-09-12T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-09-12"
   },
   {
@@ -554,6 +554,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
+    "pubDate": "2026-09-12T04:40:29+02:00",
+    "starts_at": "2026-09-12T04:40:29+02:00",
+    "ends_at": "2026-09-13T01:00:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-09-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -562,6 +574,18 @@
     "starts_at": "2026-09-10T00:00:09+02:00",
     "ends_at": "2026-09-12T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-09-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "73B/73A: Verkehrsunfall",
+    "description": "Linie 73B: Unregelmäßige Intervalle in beiden Richtungen. Linie 73A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dcb9dbeebd86678e210e72cbd0a4e289da2eca41e2da7b82a9b5e014a6ec3607",
+    "pubDate": "2026-09-12T04:40:00+02:00",
+    "starts_at": "2026-09-12T04:40:00+02:00",
+    "ends_at": "2026-09-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=73A,73B|D=2026-09-12"
   },
   {
     "source": "Wiener Linien",
@@ -578,42 +602,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N20: Busse halten auf der Hauptfahrbahn",
-    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae",
-    "pubDate": "2026-09-12T01:16:12+02:00",
-    "starts_at": "2026-09-12T01:16:12+02:00",
-    "ends_at": "2026-09-12T04:52:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2026-09-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten Bessemerstraße 1-3",
-    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f3142d4f32419f4772ec66186ea9d3101fb32548016973434774ef3660ca4236",
-    "pubDate": "2026-09-12T01:30:14+02:00",
-    "starts_at": "2026-09-12T01:30:14+02:00",
-    "ends_at": "2026-09-12T04:35:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2026-09-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N29: Busse halten bei Taborstraße 35-37",
-    "description": "Gleisbauarbeiten\nBusse halten bei Taborstraße 35-37",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5acd2efa281e77e083e560ff5c6ca6c5fab4a01026252a262345d9fe21cd6ed2",
-    "pubDate": "2026-09-12T00:13:02+02:00",
-    "starts_at": "2026-09-12T00:13:02+02:00",
-    "ends_at": "2026-09-12T04:53:00+02:00",
-    "_identity": "wl|störung|L=N29|D=2026-09-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N29: Busse halten bei Taborstraße 62",
     "description": "Gleisbauarbeiten\nBusse halten bei Taborstraße 62",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -622,18 +610,6 @@
     "starts_at": "2026-09-12T00:42:05+02:00",
     "ends_at": "2026-09-12T05:08:00+02:00",
     "_identity": "wl|störung|L=N29|D=2026-09-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N67: Verspätungen",
-    "description": "Derzeit kommt es bei der Linie N67 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bee09a46e96c5cc5703e0db9b57d23979b68e4e7b81337aac02705ac91f04698",
-    "pubDate": "2026-09-12T04:02:00+02:00",
-    "starts_at": "2026-09-12T04:02:00+02:00",
-    "ends_at": "2026-09-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=N67|D=2026-09-12"
   },
   {
     "source": "Wiener Linien",
@@ -658,6 +634,42 @@
     "starts_at": "2026-09-12T00:54:09+02:00",
     "ends_at": "2026-09-12T05:04:00+02:00",
     "_identity": "wl|störung|L=N6|D=2026-09-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Busse halten Auf der Hauptfahrbahn",
+    "description": "Busse halten\nAuf der Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9a72ac18fe94358f1623c899652a559b28776e9c499166309e4591779708cc95",
+    "pubDate": "2026-09-12T04:46:59+02:00",
+    "starts_at": "2026-09-12T04:46:59+02:00",
+    "ends_at": "2026-09-12T05:04:00+02:00",
+    "_identity": "wl|störung|L=N71|D=2026-09-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Busse halten Simmeringer Hauptstr. ggü 197",
+    "description": "Busse halten\nSimmeringer Hauptstr. ggü 197",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c6e5660b4ca5565b5c84f20f7325537dda40f7b36378899a21abefe17ba276b7",
+    "pubDate": "2026-09-12T04:44:29+02:00",
+    "starts_at": "2026-09-12T04:44:29+02:00",
+    "ends_at": "2026-09-12T05:09:00+02:00",
+    "_identity": "wl|störung|L=N71|D=2026-09-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-09-12T04:59:00+02:00",
+    "starts_at": "2026-09-12T04:59:00+02:00",
+    "ends_at": "2026-09-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-09-12"
   },
   {
     "source": "Wiener Linien",
