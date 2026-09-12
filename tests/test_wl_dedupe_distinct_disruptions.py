@@ -37,12 +37,49 @@ provider's bucketing and the central dedupe run over the same items.
 
 from __future__ import annotations
 
+from datetime import UTC, datetime, tzinfo
 from typing import Any
 
 import pytest
 
 from src.build_feed import _dedupe_items
 from src.providers import wl_fetch
+
+# Die Zeitstempel unten stehen wörtlich so in den Live-Daten vom 2026-09-12 —
+# genau das macht sie als Beleg wertvoll. Sie sind aber absolut, und
+# ``fetch_events`` filtert über ``_is_active(start, end, datetime.now(UTC))``.
+# Ohne eingefrorene Uhr laufen die Fenster im Lauf des Tages ab und die Tests
+# fangen an zu scheitern, ohne dass sich am Code etwas geändert hätte:
+#
+#   Der Demonstrations-Test lief bis 19:00 Wiener Zeit grün und kippte dann —
+#   die informativere der beiden Meldungen endet um 19:00, wurde ab da als
+#   inaktiv verworfen, und übrig blieb ausgerechnet der dürftige Titel, dessen
+#   Verdrängung der Test verhindern soll (CI-Lauf 34706586476).
+#
+# Eingefroren auf 2026-09-12 15:00 Wiener Zeit: nach jedem ``start`` und vor
+# jedem ``end`` in dieser Datei. Bitte nicht durch relative Zeitstempel
+# ersetzen — die Tages-Komponente geht in ``_wl_identity`` ein (``D=…``), und
+# ein Lauf kurz vor Mitternacht würde Meldungen auf zwei Tage verteilen.
+class _FrozenDatetime(datetime):
+    """``datetime`` mit stehengebliebenem ``now()``; alles andere unverändert.
+
+    ``now`` gibt den Subtyp zurück, nicht ``datetime`` — ``datetime.now`` ist
+    als ``Self`` typisiert, und ein breiterer Rückgabetyp verletzt den
+    Liskov-Vertrag (mypy ``[override]``).
+    """
+
+    @classmethod
+    def now(cls, tz: tzinfo | None = None) -> _FrozenDatetime:
+        return _FROZEN_NOW if tz is None else _FROZEN_NOW.astimezone(tz)
+
+
+_FROZEN_NOW = _FrozenDatetime(2026, 9, 12, 13, 0, tzinfo=UTC)
+
+
+@pytest.fixture(autouse=True)
+def _frozen_clock(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Hält ``fetch_events`` auf 2026-09-12 15:00 Wiener Zeit fest."""
+    monkeypatch.setattr(wl_fetch, "datetime", _FrozenDatetime, raising=True)
 
 
 def _traffic_info(title: str, *, line: str, start: str) -> dict[str, Any]:
