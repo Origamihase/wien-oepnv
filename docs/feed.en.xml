@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 12 Sep 2026 20:00:40 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 20:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Folding ramp lock on 12.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">aca2ae9a776ada7e02c1116471d385d194099a66886e76078d9340efdfca2dc3</guid>
+      <pubDate>Sat, 12 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Sat, 12 Sep 2026 20:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 12 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 13 Sep 2026 01:00:00 +0200</ext:ends_at>
+      <description>Due to the high passenger volume associated with an event, the folding ramps of the U2 underground trains cannot be extended. [12.09.2026 – 13.09.2026]</description>
+      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U2 underground trains cannot be extended.<br/>[12.09.2026 – 13.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[18: event service from Ernst-Happel-Stadion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 31 Oct 2026 04:30:00 +0100</ext:ends_at>
       <description>Due to track construction works in the area ofX Märzstraße and Huglgasse the following measures are taken on the lines 46, 49 and 52. [21.09.2026 – 31.10.2026]</description>
       <content:encoded><![CDATA[Due to track construction works in the area ofX Märzstraße and Huglgasse the following measures are taken on the lines 46, 49 and 52.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[32A: service obstruction because of police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e7c83441f75a4e79213dc74497d534a0ae14537b1901e683b8c8c96c12038205</guid>
-      <pubDate>Sat, 12 Sep 2026 19:47:00 +0200</pubDate>
-      <ext:first_seen>Fri, 11 Sep 2026 00:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 12 Sep 2026 19:54:59 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Sep 2026 20:54:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. [On 12.09.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 12.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
