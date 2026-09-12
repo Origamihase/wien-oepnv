@@ -308,6 +308,51 @@ _LEADING_LINE_PREFIX_RE = re.compile(
 )
 
 
+# Verankert am LETZTEN ``: `` — nicht am ersten. ÖBB stellt dem Titel häufig
+# ein Kategorie-Label voran, und dann liegt das redundante Paar hinter dem
+# zweiten Doppelpunkt:
+#
+#   "Bauarbeiten: kein Halt in Lind-Rosegg Föderlach: Lind-Rosegg Föderlach"
+#
+# Mit einem First-Colon-Anker verglich der Check „Bauarbeiten" gegen den
+# gesamten Rest und fand keine Redundanz. Der greedy Kopf ``(.+)`` verschiebt
+# den Anker ans letzte ``: ``.
+#
+# Uhrzeiten bleiben unberührt, weil das Muster ein Leerzeichen NACH dem
+# Doppelpunkt verlangt: "Sperre 17:30 Uhr" matcht nicht.
+_REDUNDANT_SUFFIX_RE = re.compile(r"^(.+):\s+([^:]+)$")
+
+
+def _drop_redundant_suffix(t: str) -> str:
+    """Collapse ``"Text: Station"`` to ``"Text"`` when the station already
+    appears in the text (z.B. ``"Aufzug in X defekt: X"``).
+
+    Wird in :func:`_clean_title_keep_places` ZWEIMAL aufgerufen: einmal auf
+    dem Rohtitel und einmal auf dem fertig zusammengesetzten Titel. Der
+    zweite Durchlauf ist der entscheidende — die Dopplung ist im Rohtitel
+    oft noch gar nicht wörtlich:
+
+        "Bauarbeiten - kein Halt in Lind-Rosegg Bahnhst Föderlach Bahnhof:
+         Lind-Rosegg Föderlach"
+
+    Beide Hälften meinen dieselben zwei Stationen, aber erst
+    :func:`_clean_endpoint` entfernt die Bahnhofs-Zusätze und macht aus der
+    linken Hälfte buchstäblich „Lind-Rosegg Föderlach". Ein Check, der nur
+    vor der Normalisierung läuft, vergleicht die UNnormalisierten Formen,
+    findet keine Übereinstimmung und lässt die Dopplung stehen — genau so
+    stand sie live im Feed (``cache/oebb_c40d21/events.json``, Titel über
+    60 Cache-Refreshes byte-identisch).
+    """
+    match = _REDUNDANT_SUFFIX_RE.search(t)
+    if not match:
+        return t
+    text_part, suffix_part = match.group(1), match.group(2)
+    # Check ob suffix im Text enthalten ist (case-sensitive)
+    if suffix_part.strip() in text_part or text_part.strip() in suffix_part:
+        return text_part if len(text_part) > len(suffix_part) else suffix_part
+    return t
+
+
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
     t = html.unescape(t)
@@ -322,31 +367,7 @@ def _clean_title_keep_places(t: str) -> str:
         line_prefix = line_match.group(1).strip()
         t = t[line_match.end():]
 
-    # Redundanz-Check: Wenn Titel „Text: Station“ ist und Station im Text vorkommt,
-    # dann nur Text nehmen (z.B. "Aufzug in X defekt: X").
-    #
-    # Verankert am LETZTEN ``: `` — nicht am ersten. ÖBB stellt dem Titel
-    # häufig ein Kategorie-Label voran, und dann liegt das redundante Paar
-    # hinter dem zweiten Doppelpunkt:
-    #
-    #   "Bauarbeiten: kein Halt in Lind-Rosegg Föderlach: Lind-Rosegg Föderlach"
-    #
-    # Mit dem First-Colon-Anker verglich der Check „Bauarbeiten" gegen den
-    # gesamten Rest, fand keine Redundanz und ließ die Dopplung stehen — sie
-    # stand so live im Feed (``cache/oebb_c40d21/events.json``, Titel über
-    # 60 Cache-Refreshes byte-identisch). Der greedy Kopf ``(.+)`` verschiebt
-    # den Anker ans letzte ``: `` und findet das Paar.
-    #
-    # Uhrzeiten bleiben unberührt, weil das Muster ein Leerzeichen NACH dem
-    # Doppelpunkt verlangt: "Sperre 17:30 Uhr" matcht weder vorher noch
-    # nachher. Für Titel mit genau einem Doppelpunkt ist das Verhalten
-    # unverändert.
-    match = re.search(r"^(.+):\s+([^:]+)$", t)
-    if match:
-        text_part, suffix_part = match.group(1), match.group(2)
-        # Check ob suffix im Text enthalten ist (case-sensitive)
-        if suffix_part.strip() in text_part or text_part.strip() in suffix_part:
-            t = text_part if len(text_part) > len(suffix_part) else suffix_part
+    t = _drop_redundant_suffix(t)
 
     # Allgemeiner Fall: „X und Y“ → „X ↔ Y“ für Stationen
     t = re.sub(r"\b([^,;|]+?)\s+und\s+([^,;|]+?)\b", r"\1 ↔ \2", t)
@@ -437,6 +458,9 @@ def _clean_title_keep_places(t: str) -> str:
             t = " ↔ ".join(parts)
     elif parts:
         t = parts[0]
+    # Zweiter Redundanz-Durchlauf: s. Docstring von _drop_redundant_suffix —
+    # die Dopplung wird oft erst durch die Normalisierung oben wörtlich.
+    t = _drop_redundant_suffix(t)
     t = MULTI_ARROW_RE.sub(" ↔ ", t)
     t = re.sub(r"\s{2,}", " ", t)
     t = re.sub(r"&lt;|&gt;|&#60;|&#x3C;|&#62;|&#x3E;|[<>«»‹›]+", "", t)

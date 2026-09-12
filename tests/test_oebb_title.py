@@ -62,3 +62,52 @@ def test_clean_title_still_strips_a_real_category_label() -> None:
         _clean_title_keep_places("Störung: Wien Meidling ↔ Wien Liesing")
         == "Wien Meidling ↔ Wien Liesing"
     )
+
+
+def test_clean_title_drops_a_duplicate_that_only_normalisation_makes_literal() -> None:
+    # Regression for the defect that SURVIVED the first fix (PR #1789) and
+    # stayed live in ``cache/oebb_c40d21/events.json``.
+    #
+    # The earlier fix only re-anchored the redundancy check, which runs on the
+    # RAW title. But upstream writes the two halves with different station
+    # spellings, so at that point they are not literally equal:
+    #
+    #   "… kein Halt in Lind-Rosegg Bahnhst Föderlach Bahnhof: Lind-Rosegg Föderlach"
+    #        ^^^^^^^ Bahnhofs-Zusätze noch dran            ^^^^ schon ohne
+    #
+    # Only ``_clean_endpoint`` strips "Bahnhst"/"Bahnhof", and by then the
+    # check had long since passed. The second pass over the assembled title
+    # is what catches it.
+    t = (
+        "Bauarbeiten - kein Halt in Lind-Rosegg Bahnhst Föderlach Bahnhof: "
+        "Lind-Rosegg Föderlach"
+    )
+    assert _clean_title_keep_places(t) == "Bauarbeiten: kein Halt in Lind-Rosegg Föderlach"
+
+
+def test_clean_title_drops_the_duplicate_regardless_of_which_half_is_abbreviated() -> None:
+    # Mirror image of the case above: the un-abbreviated half is the tail.
+    t = (
+        "Bauarbeiten - kein Halt in Lind-Rosegg Föderlach: "
+        "Lind-Rosegg Bahnhst Föderlach Bahnhof"
+    )
+    assert _clean_title_keep_places(t) == "Bauarbeiten: kein Halt in Lind-Rosegg Föderlach"
+
+
+def test_clean_title_never_reintroduces_the_duplicate_on_a_second_pass() -> None:
+    # The cleaner is NOT a fixed point on its own output: the category-join
+    # branch emits "Bauarbeiten: <Rest>", and a second pass strips that label
+    # via the prefix loop. That is pre-existing and harmless — the live
+    # pipeline always starts from the RAW upstream title
+    # (``_build_item_from_xml``), never from a previous result.
+    #
+    # What must hold is the weaker, actually load-bearing property: repeated
+    # cleaning converges and never brings the duplication back.
+    once = _clean_title_keep_places(
+        "Bauarbeiten - kein Halt in Lind-Rosegg Bahnhst Föderlach Bahnhof: "
+        "Lind-Rosegg Föderlach"
+    )
+    twice = _clean_title_keep_places(once)
+    assert twice == "kein Halt in Lind-Rosegg Föderlach"
+    assert _clean_title_keep_places(twice) == twice
+    assert twice.count("Lind-Rosegg Föderlach") == 1

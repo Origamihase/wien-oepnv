@@ -5,6 +5,33 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Bugfix: ÖBB-Doppelstation — der Fix davor griff im Live-Pfad nicht
+  (2026-09-12)**:
+  Nach dem Merge des vorigen Fixes lief ein voller Refresh, und
+  `cache/oebb_c40d21/events.json` blieb **byte-identisch**: `fetch_events()`
+  erzeugte `S 4: Bauarbeiten: kein Halt in Lind-Rosegg Föderlach: Lind-Rosegg
+  Föderlach` unverändert weiter. Ursache ist die Reihenfolge in
+  `_clean_title_keep_places`: Der Redundanz-Check lief nur auf dem **Rohtitel**,
+  die Normalisierung der Stationsnamen (`_clean_endpoint`, entfernt
+  „Bahnhst"/„Bahnhof") erst danach. Upstream schreibt die beiden Hälften in
+  unterschiedlicher Schreibweise — `… Lind-Rosegg Bahnhst Föderlach Bahnhof:
+  Lind-Rosegg Föderlach` —, also sind sie zum Prüfzeitpunkt nicht wörtlich
+  gleich; erst die Normalisierung macht die Dopplung buchstäblich, und der
+  Kategorie-Join-Zweig setzt sie wieder zusammen. Der Check ist jetzt die
+  Funktion `_drop_redundant_suffix` und läuft **zweimal**: auf dem Rohtitel wie
+  bisher und erneut auf dem fertig zusammengesetzten Titel. Ergebnis:
+  `S 4: Bauarbeiten: kein Halt in Lind-Rosegg Föderlach`. Das Herausziehen in
+  eine Funktion senkt die Komplexität von `_clean_title_keep_places`, der zweite
+  Aufruf fügt keinen Zweig hinzu — C901-Baseline (26) unverändert.
+* **Audit: Feed-Quellen, Verarbeitung und Darstellung (2026-09-12)**:
+  `docs/archive/audits/audit-2026-09-12-feed-darstellung.md`. Alle fünf Quellen
+  antworten fehlerfrei; sieben Befunde in der Darstellung, davon einer (oben)
+  behoben. Offen und belegt: vier von 83 Meldungen werden als „Duplikat"
+  verworfen, obwohl es verschiedene Störungen sind (`_wl_identity` mischt den
+  `topic_key` nur in Randfällen ein); die EN-Übersetzung verstümmelt
+  Liniennummern, weil `_LINE_ENTITY_RE` dreistellige Linien (`844`), Nachtbusse
+  (`N43`) und die Straßenbahnlinien `O`/`D` nicht maskiert (`43A/44A/844/…` →
+  `43A/44A844/…`).
 * **Bugfix: ÖBB-Titel nannte die Station doppelt (2026-09-12)**:
   Im Feed stand `S 4: Bauarbeiten: kein Halt in Lind-Rosegg Föderlach:
   Lind-Rosegg Föderlach`. `_clean_title_keep_places` in
@@ -18,9 +45,9 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   letzte `: ` und findet das Paar; für Titel mit genau einem Doppelpunkt ist
   das Verhalten unverändert, Uhrzeiten (`17:30`) bleiben unberührt, weil das
   Muster ein Leerzeichen nach dem Doppelpunkt verlangt. Der Titel lautet jetzt
-  `S 4: kein Halt in Lind-Rosegg Föderlach`. Der Cache heilt beim nächsten
-  `update_oebb_cache`-Lauf, weil die Titel dort ohnehin pro Zyklus neu aus dem
-  Upstream abgeleitet werden.
+  `S 4: kein Halt in Lind-Rosegg Föderlach`. **Nachtrag 2026-09-12:** Die hier
+  ursprünglich behauptete Selbstheilung des Caches ist nicht eingetreten — der
+  Live-Titel entsteht über einen anderen Pfad, siehe den folgenden Eintrag.
 * **Bugfix: ÖBB-Titel verlor die Stunde einer Uhrzeit (2026-09-12)**:
   Beim Verifizieren des Titel-Fixes aufgefallen. Die Präfix-Schleife in
   `_clean_title_keep_places` entfernt ein führendes `Kategorie: `-Label und
