@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 13 Sep 2026 16:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 16:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[71: Demonstration Umleitung bis St. Marx über Linie D und 18]]></title>
+      <title><![CDATA[31: service obstruction Harmful train]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fab64d37b33153d652781bdf655a1bb8c2906198e754bcbf5ac1af5236584df6</guid>
+      <pubDate>Sun, 13 Sep 2026 16:24:25 +0200</pubDate>
+      <ext:first_seen>Sun, 13 Sep 2026 16:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 13 Sep 2026 16:24:29 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 13 Sep 2026 17:23:00 +0200</ext:ends_at>
+      <description>[On 13.09.2026]</description>
+      <content:encoded><![CDATA[[On 13.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: demonstration diversion to St. Marx over line D and 18]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">da84575e403987cf05ebf512e9805cba174d01928b37ed81d4eeb626f203023a</guid>
       <pubDate>Sun, 13 Sep 2026 15:34:49 +0200</pubDate>
       <ext:first_seen>Sun, 13 Sep 2026 16:00:55 +0200</ext:first_seen>
       <ext:starts_at>Sun, 13 Sep 2026 15:34:53 +0200</ext:starts_at>
       <ext:ends_at>Sun, 13 Sep 2026 16:33:00 +0200</ext:ends_at>
-      <description>Umleitung bis St. Marx über Linie D und 18 [Am 13.09.2026]</description>
-      <content:encoded><![CDATA[Umleitung bis St. Marx über Linie D und 18<br/>[Am 13.09.2026]]]></content:encoded>
+      <description>diversion to St. Marx over line D and 18 [On 13.09.2026]</description>
+      <content:encoded><![CDATA[diversion to St. Marx over line D and 18<br/>[On 13.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[71: Demonstration]]></title>
+      <title><![CDATA[71: demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c3bc1799723b116ebf4b83b471a9da3fca2e1fd490f9c8a631a88fa52b77863a</guid>
       <pubDate>Sun, 13 Sep 2026 15:32:00 +0200</pubDate>
       <ext:first_seen>Sun, 13 Sep 2026 16:00:55 +0200</ext:first_seen>
       <ext:starts_at>Sun, 13 Sep 2026 15:32:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 13 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung in Richtung Kaiserebersdorf zwischen Schwarzenbergplatz und St. Marx S über Quartier Belvedere S. Voraussichtliche Dauer: 16:30 Uhr. Grund: Demonstration im Bereich … [Am 13.09.2026]</description>
-      <content:encoded><![CDATA[Umleitung in Richtung Kaiserebersdorf zwischen Schwarzenbergplatz und St. Marx S über Quartier Belvedere S. Voraussichtliche Dauer: 16:30 Uhr. Grund: Demonstration im Bereich …<br/>[Am 13.09.2026]]]></content:encoded>
+      <description>After an service obstruction there are different intervals. [On 13.09.2026]</description>
+      <content:encoded><![CDATA[After an service obstruction there are different intervals.<br/>[On 13.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Folding ramp lock on 13.09.2026]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 31 Oct 2026 04:30:00 +0100</ext:ends_at>
       <description>Due to track construction works in the area ofX Märzstraße and Huglgasse the following measures are taken on the lines 46, 49 and 52. [21.09.2026 – 31.10.2026]</description>
       <content:encoded><![CDATA[Due to track construction works in the area ofX Märzstraße and Huglgasse the following measures are taken on the lines 46, 49 and 52.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Märzstraße 49 to junction Huglgasse and junction Huglgasse to junction Hütteldorfer Straße]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">0dfddd258ab4ba06599c87586ca7087268ea73a4f62ffc43de13acf6c950d687</guid>
-      <pubDate>Mon, 14 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 10 Sep 2026 22:31:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
-      <description>The pedestrian traffic can be maintained. [14.09.2026 – 15.11.2026]</description>
-      <content:encoded><![CDATA[The pedestrian traffic can be maintained.<br/>[14.09.2026 – 15.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
