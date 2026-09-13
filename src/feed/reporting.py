@@ -175,7 +175,9 @@ class ProviderReport:
     name: str
     enabled: bool
     fetch_type: str = "unknown"
-    status: str = "pending"  # ok, empty, error, disabled, skipped
+    # ok, ok-empty (nothing to report, healthy), empty (no data, suspect),
+    # error, disabled, skipped
+    status: str = "pending"
     detail: str | None = None
     items: int | None = None
     duration: float | None = None
@@ -436,6 +438,10 @@ class RunReport:
         for name in sorted(self.providers):
             entry = self.providers[name]
             details: list[str] = []
+            # ``ok-empty`` is deliberately absent: the status already states
+            # that the provider had nothing to report, so "0 Items" next to
+            # "Keine Vorfälle" would say it a third time. ``empty`` keeps the
+            # count because there the zero is the symptom being reported.
             if entry.items is not None and entry.status in {"ok", "empty"}:
                 details.append(f"{entry.items} Items")
             if entry.detail:
@@ -455,11 +461,14 @@ class RunReport:
                 else:
                     summaries.append(f"{name}:error")
                 continue
-            if entry.status == "empty":
+            # "nothing to report" and "no data" both used to render as
+            # ``:empty``, so a dashboard could not tell a healthy quiet
+            # provider from a provider that failed to deliver.
+            if entry.status in ("empty", "ok-empty"):
                 if details_str:
-                    summaries.append(f"{name}:empty({details_str})")
+                    summaries.append(f"{name}:{entry.status}({details_str})")
                 else:
-                    summaries.append(f"{name}:empty")
+                    summaries.append(f"{name}:{entry.status}")
                 continue
             if entry.status == "ok":
                 if details_str:

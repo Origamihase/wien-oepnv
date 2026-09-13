@@ -2870,6 +2870,64 @@ def _categorize_providers(report: RunReport) -> _ProviderBuckets:
     return _ProviderBuckets(cache_fetchers, network_fetchers, provider_names, provider_envs)
 
 
+def _report_empty_provider(
+    fetch: Any,
+    provider_name: str,
+    report: RunReport,
+    cache_alerts: dict[str, list[str]],
+) -> None:
+    """Record a provider that returned zero items.
+
+    Two different things wear the same shape here, and conflating them is the
+    defect this splits apart (audit 2026-09-12, Befund 6):
+
+    * A cache-backed provider with nothing in it has a problem — the cache
+      should hold data and does not. That stays a ``WARNING`` plus an entry in
+      the run report's warning list, and the detail carries whatever the cache
+      alerts say went wrong.
+    * The Stammstrecke provider with nothing to report is the S-Bahn trunk
+      line running normally. Most builds look like this. Logging it as a
+      warning every 30 minutes made "working" indistinguishable from "broken"
+      on the dashboard and buried the warnings that mean something.
+
+    Which one a provider is, is declared at registration
+    (``register_provider(..., empty_is_normal=True)``) rather than guessed
+    here from its name, so a new provider has to state its own contract and
+    the safe default applies until it does.
+
+    The distinction survives into the run-report summary as a status of its
+    own (``ok-empty`` vs ``empty``): a dashboard that only sees ``:empty``
+    cannot tell "nothing to report" from "no data".
+    """
+    if getattr(fetch, "_provider_empty_is_normal", False):
+        log.info(
+            "Provider '%s' meldet keine Vorfälle – Normalzustand, kein Fehler.",
+            provider_name,
+        )
+        report.provider_success(
+            provider_name,
+            items=0,
+            status="ok-empty",
+            detail="Keine Vorfälle",
+        )
+        return
+
+    log.warning(
+        "Cache für Provider '%s' leer – generiere Feed ohne aktuelle Daten.",
+        provider_name,
+    )
+    detail = "Keine aktuellen Daten"
+    cache_name = getattr(fetch, "_provider_cache_name", None)
+    if cache_name is not None:
+        alerts = cache_alerts.get(str(cache_name), [])
+        if alerts:
+            detail = "; ".join(dict.fromkeys(alerts))
+    report.provider_success(
+        provider_name, items=0, status="empty", detail=detail
+    )
+    report.add_warning(f"Provider {provider_name}: {detail}")
+
+
 def _run_cache_fetchers(
     cache_fetchers: list[Any],
     provider_names: dict[Any, str],
@@ -3274,25 +3332,7 @@ def _collect_items(report: RunReport | None = None) -> list[FeedItem]:
             items.extend(typed_result)
             count = len(result)
             if count == 0:
-                log.warning(
-                    "Cache für Provider '%s' leer – generiere Feed ohne aktuelle Daten.",
-                    provider_name,
-                )
-                detail = "Keine aktuellen Daten"
-                cache_name = getattr(fetch, "_provider_cache_name", None)
-                if cache_name is not None:
-                    alerts = cache_alerts.get(str(cache_name), [])
-                    if alerts:
-                        unique_alerts = list(dict.fromkeys(alerts))
-                        detail = "; ".join(unique_alerts)
-                report.provider_success(
-                    provider_name,
-                    items=count,
-                    status="empty",
-                    detail=detail,
-                )
-                if detail:
-                    report.add_warning(f"Provider {provider_name}: {detail}")
+                _report_empty_provider(fetch, provider_name, report, cache_alerts)
             else:
                 report.provider_success(provider_name, items=count)
 

@@ -5,6 +5,42 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **„Nichts zu melden" gilt nicht mehr als Fehler (2026-09-12)**:
+  `_merge_result` behandelte jeden Provider mit null Items gleich — eine
+  `WARNING`-Zeile plus ein Eintrag in der Warnungsliste des Laufberichts. Zwei
+  verschiedene Dinge tragen aber dieselbe Form:
+
+  * Ein leerer **Cache** für Wiener Linien, ÖBB oder Baustellen ist ein
+    Problem — der Cache sollte Daten halten und tut es nicht.
+  * Ein leeres **Stammstrecke**-Ergebnis ist die S-Bahn-Stammstrecke im
+    Normalbetrieb. Die meisten Builds sehen so aus.
+
+  Gebaut wird alle 30 Minuten, der gesunde Fall erzeugte also rund um die Uhr
+  eine Warnung. Damit war „läuft" von „defekt" nicht mehr zu unterscheiden —
+  das Gegenteil dessen, wozu eine Warnung da ist.
+
+  Welcher Fall vorliegt, wird jetzt **bei der Registrierung erklärt**
+  (`register_provider(..., empty_is_normal=True)`) statt hier am Namen
+  geraten. Die Vorgabe ist die strenge: Ein Provider, der nichts sagt, behält
+  die Warnung — ein künftiger Provider kann also nicht durch Unterlassung in
+  den leisen Zweig rutschen. Gesetzt ist das Flag ausschließlich für die
+  Stammstrecke.
+
+  Die Unterscheidung überlebt bis in die Zusammenfassungszeile, weil ein
+  Dashboard, das nur `:empty` sieht, „nichts zu melden" nicht von „keine
+  Daten" trennen kann:
+
+  ```
+  oebb:ok(11 Items); stammstrecke:ok-empty(Keine Vorfälle); wl:empty(0 Items, Keine aktuellen Daten)
+  ```
+
+  Beide Richtungen sind gepinnt. Ein Fix, der nur das Rauschen abstellt,
+  hätte das Signal mit abgestellt: Der leere WL-Cache warnt weiterhin, die
+  Cache-Alerts landen unverändert im Detail, und ein Provider ohne Flag wird
+  streng behandelt.
+
+  Reine Beobachtbarkeit, kein Feed-Inhalt. Damit ist Audit-Befund 6
+  vollständig erledigt — und das Audit vom 2026-09-12 abgearbeitet.
 * **Sentinel-Allowlists brechen nicht mehr an fremden Änderungen (2026-09-12)**:
   Zwei Sentinel-Walker adressierten ihre Ausnahmen über **absolute
   Zeilennummern**. Jede Einfügung oberhalb einer Fundstelle verschob sie, und

@@ -41,8 +41,26 @@ _REGISTRY: dict[str, ProviderSpec] = {}
 _LOADED_PLUGINS: set[str] = set()
 
 
-def register_provider(env_var: str, loader: ProviderLoader, *, cache_key: str) -> None:
-    """Register ``loader`` as disruption provider controlled via ``env_var``."""
+def register_provider(
+    env_var: str,
+    loader: ProviderLoader,
+    *,
+    cache_key: str,
+    empty_is_normal: bool = False,
+) -> None:
+    """Register ``loader`` as disruption provider controlled via ``env_var``.
+
+    ``empty_is_normal`` declares that returning zero items is a healthy
+    outcome for this provider, not a symptom. The feed build then reports it
+    as ``ok-empty`` at ``INFO`` instead of ``empty`` at ``WARNING`` with an
+    entry in the run report's warning list.
+
+    Default ``False``, and that default is the safe one: for a cache-backed
+    provider an empty result means the cache holds nothing, which is exactly
+    the condition the warning exists for. Only a provider whose subject can
+    legitimately be quiet — the Stammstrecke reports incidents, and most of
+    the time there are none — should set it.
+    """
 
     spec = ProviderSpec(env_var=env_var, loader=loader, cache_key=cache_key)
     _REGISTRY[env_var] = spec
@@ -52,6 +70,10 @@ def register_provider(env_var: str, loader: ProviderLoader, *, cache_key: str) -
         pass
     try:
         loader._provider_cache_name = cache_key  # type: ignore[attr-defined]
+    except (AttributeError, TypeError):  # pragma: no cover - defensive only
+        pass
+    try:
+        loader._provider_empty_is_normal = empty_is_normal  # type: ignore[attr-defined]
     except (AttributeError, TypeError):  # pragma: no cover - defensive only
         pass
 
@@ -99,8 +121,14 @@ def register_default_providers() -> None:
     # VOR is intentionally absent — see DEFAULT_PROVIDERS in build_feed.py.
     # VOR API is Stammstrecke-only since 2026-05-11.
     register_provider("BAUSTELLEN_ENABLE", read_cache_baustellen, cache_key="baustellen")
+    # The Stammstrecke provider reports S-Bahn trunk-line incidents. Most
+    # builds find none, and that is the line running normally — not a
+    # provider that failed to deliver.
     register_provider(
-        "STAMMSTRECKE_ENABLE", read_cache_stammstrecke, cache_key="stammstrecke"
+        "STAMMSTRECKE_ENABLE",
+        read_cache_stammstrecke,
+        cache_key="stammstrecke",
+        empty_is_normal=True,
     )
 
 
