@@ -871,8 +871,118 @@ def read_recent_stammstrecke_observations(
     return observations
 
 
+# --- direction-silence detection (audit B.1 / B.2) ---------------------------
+#
+# The Stammstrecke monitor writes one delay row per direction per tick. On
+# 2026-08-14 the northbound direction stopped producing rows entirely (a real
+# closure: construction plus the cable-fire aftermath diverted those services
+# off the two trunk platforms at Wien Hbf). Nothing noticed for 30 days, and the
+# published 30-day figures kept presenting a single-direction sample as a
+# whole-corridor one. These helpers are the detector that was missing.
+#
+# Why "no rows at all in the window" is NOT the rule: the corridor legitimately
+# goes quiet at night, so an absolute threshold has to be set above the longest
+# normal gap. Measured over the healthy period (2026-05-17 .. 08-13, 7589 rows):
+# median gap 0.5 h, p99 3.5-3.7 h, but the observed maxima are 7.8 h (Meidling)
+# and 11.5 h (Praterstern). A 6 h absolute rule would therefore have fired 5
+# false alarms; only a >= 12 h threshold is quiet, and that halves the detection
+# speed.
+#
+# The rule below compares the directions against each other instead: a direction
+# counts as silent when it has NO rows while a peer direction is demonstrably
+# active in the same window. Both directions going quiet together (night, a full
+# upstream outage, a dead cron) is not a direction fault and is left to the
+# feed-freshness and updater checks. Replayed over the same healthy period at a
+# 6 h window this rule produces ZERO false alarms across 2113 hourly samples,
+# while still flagging the 2026-08-14 outage at every one of the 692 samples
+# after it began — first alarm 6 h after the last northbound row.
+DIRECTION_SILENCE_WINDOW_HOURS: Final = 6.0
+#: Rows a peer direction must show before a silent direction is called a fault.
+#: Guards the boundary case where the corridor is only just waking up and the
+#: peer happens to have exactly one row.
+DIRECTION_SILENCE_MIN_PEER_ROWS: Final = 3
+
+
+@dataclass(frozen=True)
+class DirectionActivity:
+    """Row count for one direction inside the inspected window."""
+
+    direction: str
+    rows: int
+
+
+def summarise_direction_activity(
+    *,
+    directions: tuple[str, ...],
+    now: datetime,
+    window: timedelta | None = None,
+    stats_dir: Path | None = None,
+) -> list[DirectionActivity]:
+    """Count recent delay-ledger rows per direction.
+
+    Reads the *delay* ledger only. The cancellation ledger is deliberately not
+    consulted: it records rows only when trains are actually cancelled, so a
+    direction with no cancellations is normal and would make any staleness rule
+    fire constantly.
+
+    Best-effort, like the reader it builds on — an unreadable ledger yields zero
+    counts rather than raising, and the caller degrades to "cannot tell".
+    """
+    span = window if window is not None else timedelta(hours=DIRECTION_SILENCE_WINDOW_HOURS)
+    observations = read_recent_stammstrecke_observations(
+        now=now, window=span, stats_dir=stats_dir
+    )
+    counts = dict.fromkeys(directions, 0)
+    for obs in observations:
+        if obs.direction in counts:
+            counts[obs.direction] += 1
+    return [DirectionActivity(direction=d, rows=counts[d]) for d in directions]
+
+
+def find_silent_directions(
+    *,
+    directions: tuple[str, ...],
+    now: datetime,
+    window: timedelta | None = None,
+    min_peer_rows: int = DIRECTION_SILENCE_MIN_PEER_ROWS,
+    stats_dir: Path | None = None,
+) -> list[str]:
+    """Return the directions that are silent while a peer direction is active.
+
+    A direction is *silent* when it contributed no rows to the window and some
+    other direction contributed at least *min_peer_rows*. See the module-level
+    rationale above for why this relative rule is used instead of an absolute
+    staleness threshold.
+
+    Returns an empty list when every direction is active, when all of them are
+    quiet together, or when fewer than two directions are supplied (there is no
+    peer to compare against).
+    """
+    if len(directions) < 2:
+        return []
+    activity = {a.direction: a.rows for a in summarise_direction_activity(
+        directions=directions, now=now, window=window, stats_dir=stats_dir
+    )}
+    silent: list[str] = []
+    for direction in directions:
+        if activity.get(direction, 0) != 0:
+            continue
+        peer_best = max(
+            (activity.get(other, 0) for other in directions if other != direction),
+            default=0,
+        )
+        if peer_best >= min_peer_rows:
+            silent.append(direction)
+    return silent
+
+
 __all__ = [
     "AUSFAELLE_HEADER",
+    "DIRECTION_SILENCE_MIN_PEER_ROWS",
+    "DIRECTION_SILENCE_WINDOW_HOURS",
+    "DirectionActivity",
+    "find_silent_directions",
+    "summarise_direction_activity",
     "STAMMSTRECKE_HEADER",
     "STOERUNGEN_HEADER",
     "WEEKDAY_LABELS",

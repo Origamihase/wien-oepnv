@@ -152,6 +152,7 @@ of mixed-shape CSV rows during the one-shot transition window; the
 from __future__ import annotations
 
 import logging
+import os
 import re
 import statistics
 import sys
@@ -179,8 +180,10 @@ from src.utils.http import request_safe  # noqa: E402
 from src.utils import logging as utils_logging  # noqa: E402
 from src.utils.stations import station_info  # noqa: E402
 from src.utils.stats import (  # noqa: E402
+    DIRECTION_SILENCE_WINDOW_HOURS,
     append_ausfall_row,
     append_stammstrecke_row,
+    find_silent_directions,
 )
 
 # Reuse pending-state + ledger infrastructure from the legacy /trip-
@@ -1074,6 +1077,68 @@ def _process_tick(
     return "ok"
 
 
+def _emit_workflow_warning(title: str, message: str) -> None:
+    """Emit a GitHub Actions ``::warning`` annotation when running in CI.
+
+    Annotations surface in the run summary and the job UI, which is what makes
+    a degraded state visible without anyone grepping INFO logs. Suppressed
+    outside Actions so local runs stay clean.
+    """
+    if not os.environ.get("GITHUB_ACTIONS"):
+        return
+    safe_title = utils_logging.sanitize_log_arg(title).replace("\n", " ")
+    safe_message = utils_logging.sanitize_log_arg(message).replace("\n", " ")
+    print(f"::warning title={safe_title}::{safe_message}", flush=True)
+
+
+def _report_silent_directions(now: datetime) -> list[str]:
+    """Warn loudly when one direction has gone silent while the other reports.
+
+    Audit B.1/B.2: the northbound direction stopped producing rows on
+    2026-08-14 and nothing flagged it for 30 days, while the published 30-day
+    figures kept presenting the surviving southbound sample as a whole-corridor
+    one. ``_process_tick`` logs per-direction counts at INFO and returns ``ok``
+    regardless, which is invisible in practice.
+
+    The detection rule lives in :func:`src.utils.stats.find_silent_directions`
+    so this script and ``scripts/health_check.py`` cannot drift apart; see that
+    module for why a relative (direction-vs-peer) rule is used rather than an
+    absolute staleness threshold.
+
+    Returns the silent directions (empty when healthy) so callers and tests can
+    act on the degraded state.
+    """
+    try:
+        silent = find_silent_directions(directions=DIRECTION_LABELS, now=now)
+    except Exception as exc:  # pragma: no cover - observability must not crash the tick
+        LOGGER.warning(
+            "Stammstrecke (Hbf): Richtungs-Abdeckung konnte nicht geprüft "
+            "werden: %s.",
+            utils_logging.sanitize_log_arg(str(exc)),
+        )
+        return []
+
+    if not silent:
+        return []
+
+    joined = ", ".join(silent)
+    LOGGER.warning(
+        "Stammstrecke (Hbf): DEGRADED — Richtung %s ohne Messwerte in den "
+        "letzten %.0f h, während die Gegenrichtung weiterhin liefert. "
+        "Veröffentlichte Korridor-Kennzahlen decken derzeit nur die aktive "
+        "Richtung ab.",
+        utils_logging.sanitize_log_arg(joined),
+        DIRECTION_SILENCE_WINDOW_HOURS,
+    )
+    _emit_workflow_warning(
+        "stammstrecke-direction",
+        f"Richtung {joined} liefert seit >= {DIRECTION_SILENCE_WINDOW_HOURS:.0f} h "
+        "keine Messwerte, die Gegenrichtung schon — Kennzahlen decken nur den "
+        "aktiven Korridor ab.",
+    )
+    return silent
+
+
 def main() -> int:
     """Entry point. Returns ``0`` on success (incl. degraded), ``1`` on full failure.
 
@@ -1263,8 +1328,18 @@ def main() -> int:
         len(recently_finalised),
     )
 
+    degraded_directions = _report_silent_directions(when)
+
     if successes == 0 and errors > 0:
         return 1
+    # A silent direction is reported, never fatal. Returning non-zero here
+    # would abort the ``Refresh Stammstrecke status`` step (the workflow runs
+    # it under ``bash -e``) and with it the rest of the cycle — so a known,
+    # weeks-long closure would stop the feed build every 30 minutes. Data
+    # collection must keep running precisely while half the corridor is down;
+    # the alarm belongs in ``scripts/health_check.py``, which exists to go red
+    # and is polled by ``health-check.yml`` every 6 h.
+    _ = degraded_directions
     return 0
 
 
