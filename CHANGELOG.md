@@ -5,6 +5,39 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Doku-Nachprüfung der Audit-Runde (2026-09-13)**:
+  Eigene Kontrolle, ob die Änderungen aus PR #1790–#1803 vollständig
+  dokumentiert sind. Vier Lücken gefunden und geschlossen:
+
+  * **`docs/architecture.md` §5 war der ernste Fall.** Der Abschnitt
+    „Namens-Eindeutigkeits-Vertrag" nennt `Lokalbahn` × 4 verteilt über
+    5,6 km ausdrücklich als **legitime** WL-Datenlage, deren Validator-Gate
+    in PR #1452 bewusst entfernt wurde. Genau diese Gruppe meldet der in
+    PR #1801 ergänzte Alias-Kollisions-Check seit 2026-09-12 wieder — ohne
+    Notiz las sich das wie eine Rücknahme jener Entscheidung. Der Abschnitt
+    trennt beides jetzt: Der Name-Vertrag bleibt aufgehoben, der neue Check
+    fragt etwas anderes (beanspruchen mehrere Stationen denselben
+    **normalisierten Alias** und sind sich über den Ort uneins?) und meldet,
+    statt zu blockieren. In PR #1801 stand „`architecture.md` nicht
+    betroffen" — das war falsch.
+  * **`docs/development.md`** nannte „zehn Issue-Kategorien" und listete
+    zehn; mit `alias-key collisions` sind es elf.
+  * **Der Uhr-Einfrier-Fix** (`_FrozenDatetime`, PR #1798) hatte keinen
+    eigenen Eintrag, während der strukturgleiche Sentinel-Fix einen bekam —
+    nachgetragen.
+  * **Das Audit** führte Befund 6 in der Abschnittsüberschrift noch als
+    „Alias-Teil behoben, Stammstrecke-Teil offen", obwohl die
+    Übersichtstabelle beide Hälften bereits als erledigt zeigte.
+
+  Geprüft und in Ordnung: `AGENTS.md` („Priorität der Ausgaben"), der
+  persistierte `docs/stations_validation_report.md` (vom Workflow bereits
+  regeneriert, enthält den neuen Abschnitt), keine Platzhalter-Reste, und
+  `README.md` berührt keines der geänderten Themen.
+
+  Nicht geändert, aber erwähnenswert: `python -m src.cli stations validate
+  --fail-on-issues` bricht ab — schon **vor** dieser Runde, wegen des
+  bestehenden `1 geographic duplicates`. Der neue Check hat den Exit-Code
+  nicht gekippt.
 * **„Nichts zu melden" gilt nicht mehr als Fehler (2026-09-12)**:
   `_merge_result` behandelte jeden Provider mit null Items gleich — eine
   `WARNING`-Zeile plus ein Eintrag in der Warnungsliste des Laufberichts. Zwei
@@ -41,6 +74,26 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
 
   Reine Beobachtbarkeit, kein Feed-Inhalt. Damit ist Audit-Befund 6
   vollständig erledigt — und das Audit vom 2026-09-12 abgearbeitet.
+* **Testinfrastruktur: Uhr im WL-Dedupe-Test eingefroren (2026-09-12,
+  nachdokumentiert)**:
+  `test_two_messages_about_one_demonstration_merge_into_one` lief den ganzen
+  Nachmittag grün und kippte um 19:00 Wiener Zeit von selbst. Der Test trägt
+  die Live-Zeitstempel vom 2026-09-12, und die **informativere** der beiden
+  Meldungen endet um `19:00:00+02:00`. `fetch_events` filtert über
+  `_is_active(start, end, datetime.now(UTC))` — ab da fiel genau die Meldung
+  weg, deren Titel gewinnen soll, und übrig blieb der dürftige Titel, dessen
+  Verdrängung der Test verhindern soll.
+
+  `_FrozenDatetime` hält `now()` auf 2026-09-12 15:00 Wiener Zeit fest: nach
+  jedem `start` und vor jedem `end` in dieser Datei. Eingefroren statt relativ
+  gerechnet, weil die absoluten Zeitstempel der Beleg sind und weil die
+  Tages-Komponente über `D=…` in `_wl_identity` eingeht — ein Lauf kurz vor
+  Mitternacht verteilte die Meldungen sonst auf zwei Tage. Entschärft
+  zugleich die zweite, noch nicht gezündete Bombe: `_traffic_info` setzte
+  `end` auf 2026-09-30, die Datei wäre am 1. Oktober komplett rot geworden.
+
+  Ging in PR #1798 mit, hatte aber keinen eigenen Eintrag — nachgetragen,
+  damit die Testinfrastruktur-Fixes dieser Runde vollständig verzeichnet sind.
 * **Sentinel-Allowlists brechen nicht mehr an fremden Änderungen (2026-09-12)**:
   Zwei Sentinel-Walker adressierten ihre Ausnahmen über **absolute
   Zeilennummern**. Jede Einfügung oberhalb einer Fundstelle verschob sie, und

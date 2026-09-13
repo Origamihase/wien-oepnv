@@ -518,8 +518,9 @@ unterscheidbare Zeitzeile für drei Sperren, mit ihm **drei**.
 
 ## 8. Befund 6 — Warnungen ohne Aussagekraft
 
-**Wirkung auf den deutschen Feed: keine** (nur Logs) · **Status: Alias-Teil behoben**
-([PR #1801](https://github.com/Origamihase/wien-oepnv/pull/1801)), Stammstrecke-Teil offen
+**Wirkung auf den deutschen Feed: keine** (nur Logs) · **Status: behoben**
+(Alias-Teil [PR #1801](https://github.com/Origamihase/wien-oepnv/pull/1801),
+Stammstrecke-Teil [PR #1803](https://github.com/Origamihase/wien-oepnv/pull/1803))
 
 Zwei Muster verrauschen die Logs so stark, dass echte Warnungen darin untergehen:
 
