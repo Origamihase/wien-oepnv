@@ -5,6 +5,45 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **i18n-Gate prüft jetzt auch die JS-eigenen Wörterbücher (2026-09-13)**:
+  `check_i18n_coverage.py` verglich bisher ausschließlich die
+  `data-i18n*`-Attribute der `site.html` gegen `I18N_EN`. Zeichenketten, die
+  das JavaScript selbst erzeugt, haben aber keinen solchen Knoten und liegen
+  in DE/EN-Wörterbuchpaaren: `CHART_TEXT_DE`/`_EN`, `WEATHER_TEXT_DE`/`_EN`,
+  `COVERAGE_TEXT_DE`/`_EN`, `WEEKDAY_LONG_DE`/`_EN` und `STATUS_TEXT.de`/`.en`
+  — zusammen 47 Schlüssel, vom Gate bislang keiner.
+
+  Alle fünf lösen nach demselben Muster auf:
+
+      dict[key] || <DE-Wörterbuch>[key] || key
+
+  Ein Schlüssel, den nur die deutsche Seite führt, zeigt einem englischen
+  Besucher also den **deutschen** Text — stumm, ohne Fehler in der Konsole.
+  Genau diese Fehlerform hat der Eintrag darüber (Fehlermeldungen) gerade
+  behoben; das Gate deckt sie jetzt für alle Wörterbücher ab, in beide
+  Richtungen (ein nur-englischer Schlüssel lässt die deutsche Seite auf den
+  nackten Schlüsselnamen zurückfallen) sowie leere EN-Werte.
+
+  Die Paare werden **gefunden, nicht aufgezählt**: Ein künftiges
+  `FOO_TEXT_DE`/`FOO_TEXT_EN` ist ab dem Tag seiner Einführung abgedeckt.
+  Erkannt werden beide Bauformen — zwei Geschwister-Konstanten und ein
+  verschachteltes `{ de: {…}, en: {…} }`.
+
+  Schlüssel liest ein kleiner Scanner statt eines Musters. `WEEKDAY_LONG_DE`
+  packt mehrere Einträge in eine Zeile; ein zeilenverankertes Muster hätte
+  2 von 7 Wochentagen geprüft und das als Abdeckung ausgewiesen — schlimmer
+  als gar kein Gate. Ein nicht verankertes Muster wiederum hätte `Hinweis:`
+  **innerhalb** eines Werts als Schlüssel gelesen und Fehlalarm geschlagen.
+  Der Scanner überspringt Zeichenketten und Kommentare am Stück und erkennt
+  Schlüssel nur dort, wo welche stehen können: auf Ebene 0, am Anfang oder
+  nach einem Komma.
+
+  Heute sind alle fünf Paare deckungsgleich — der Befund war latent, nicht
+  akut. `tests/test_i18n_coverage_gate.py` wächst um 11 Tests: je ein
+  einseitiger Schlüssel pro Richtung, leerer EN-Wert, verschachtelte Form,
+  mehrere Einträge pro Zeile, und drei Gegenproben gegen Fehlalarm
+  (Doppelpunkt im Wert, Kommentare zwischen Einträgen, verschachtelte
+  Wertobjekte).
 * **Fehlermeldungen der Website blieben deutsch (2026-09-13)**:
   Das Dashboard rendert jede Störung als `<Präfix> <Detail>`. Das Präfix war
   immer ein Übersetzungsschlüssel, das **Detail** dagegen die rohe
