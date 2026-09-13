@@ -362,25 +362,26 @@
     {
       "op": "patch_coords",
       "wl_diva": "60201955",
-      "reason": "Wiener Linien OGD lists DIVA 60201955 (Wien Halblehenweg) at (48.723579, 15.067882) — geographically northern Lower Austria, not Vienna. The actual Halblehenweg street is in the 22nd district (Donaustadt, Hirschstetten). Coordinates verified against neighbouring WL stops (Bibernellweg, Kapellergasse, Kalmusweg) and confirmed by the is_in_vienna polygon check.",
+      "reason": "Wiener Linien OGD lists DIVA 60201955 (Wien Halblehenweg) at (48.723579, 15.067882) — geographically northern Lower Austria, not Vienna. The actual stop is in the 22nd district (Donaustadt, Katastralgemeinde Hirschstetten), on Rautenweg at the corner where Halblehenweg branches off south. CORRECTED 2026-09-13: the original entry of 2026-05-16 placed the stop at (48.249175, 16.482824), ~904 m south-west of its real position. That value was verified against the neighbouring stops Bibernellweg, Kapellergasse and Kalmusweg — a cluster that turned out to be the wrong one. Three independent checks overturned it: OpenStreetMap carries the stop as node 12690676528 (highway=bus_stop, name=Halblehenweg, Rautenweg) at (48.256935, 16.486469); Nominatim puts the street Halblehenweg in the latitude band 48.251444-48.256587, so the old value sat ~252 m south of the street it is named after while the new one sits ~39 m off its northern end; and a Google Maps lookup shows the 28A stop Halblehenweg on Rautenweg at that corner. The old position also placed the stop 66 m from Kapellergasse — only 2% of the 1805 WL stations sit that close to their nearest neighbour (median 222 m), whereas the new position's neighbours (Breitenlee Rautenweg 319 m, Spargelfeldstrasse Nord 326 m) are unremarkable.",
       "added": "2026-05-16",
       "expires_when": "Wiener Linien fixes the coordinates in data/wienerlinien-ogd-haltestellen.csv (currently lat=48.7235788, lon=15.0677477) and data/wienerlinien-ogd-haltepunkte.csv (StopIDs 3973/3974 at the same wrong coordinates)",
-      "latitude": 48.249175,
-      "longitude": 16.482824,
+      "latitude": 48.256935,
+      "longitude": 16.486469,
       "in_vienna": true,
       "pendler": false,
       "wl_stops_patch": [
         {
           "stop_id": "3973",
-          "latitude": 48.2491755,
-          "longitude": 16.4828244
+          "latitude": 48.2569354,
+          "longitude": 16.4864688
         },
         {
           "stop_id": "3974",
-          "latitude": 48.2491755,
-          "longitude": 16.4829143
+          "latitude": 48.2569354,
+          "longitude": 16.4865587
         }
-      ]
+      ],
+      "corrected": "2026-09-13"
     },
     {
       "op": "patch_coords",
