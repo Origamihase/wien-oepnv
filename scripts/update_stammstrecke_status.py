@@ -913,22 +913,32 @@ def _build_session(stack: ExitStack) -> requests.Session:
 def _charge_one_request(now: datetime) -> None:
     """Reserve one VAO request slot or raise :class:`_QuotaExceeded`.
 
-    Threading: the ``_QUOTA_LOCK`` from :mod:`src.providers.vor` is
-    held across the read-then-increment so two parallel script
-    invocations cannot race past the cap. The Stammstrecke cron does
-    not run in parallel (concurrency group ``external-api-fetch``),
-    but the lock keeps the contract identical to every other VOR
-    consumer for free.
+    Delegates to :func:`src.providers.vor.reserve_request_slot`, which runs
+    the budget check, the increment and the ledger write inside a single
+    exclusive-file-lock critical section.
+
+    Audit A.2 — why the check is no longer done here: the previous shape read
+    the counter via ``load_request_count()`` (a per-process in-memory cache),
+    compared it against the cap, and only then called ``save_request_count``.
+    Those were three separate steps with no cross-process lock held across
+    them, so two concurrent runs could both observe ``MAX - 1``, both pass the
+    check and both fire a request. The ``external-api-fetch`` concurrency
+    group makes that unlikely for the cron path, but it does not cover every
+    workflow, and a silent contractual breach is not something to leave to
+    workflow configuration.
+
+    Audit A.3 — a refused reservation now also covers the case where the
+    ledger could not be written or locked at all: ``granted`` is ``False``
+    there too, so the caller fails closed instead of issuing an unaccounted
+    request.
     """
 
-    with vor_provider._QUOTA_LOCK:
-        _, current_usage = vor_provider.load_request_count()
-        if current_usage >= vor_provider.MAX_REQUESTS_PER_DAY:
-            raise _QuotaExceeded(
-                f"VAO daily quota exhausted ({current_usage}/"
-                f"{vor_provider.MAX_REQUESTS_PER_DAY})"
-            )
-        vor_provider.save_request_count(now)
+    granted, usage = vor_provider.reserve_request_slot(now)
+    if not granted:
+        raise _QuotaExceeded(
+            f"VAO daily quota exhausted ({usage}/"
+            f"{vor_provider.MAX_REQUESTS_PER_DAY})"
+        )
 
 
 def _query_trips(

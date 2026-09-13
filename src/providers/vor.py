@@ -857,49 +857,187 @@ def _persist_quota_to_disk(force_date: str | None = None) -> int:
             "Failed to save request count (lock error): %s",
             sanitize_log_arg(str(e)),
         )
+        # Audit A.3: poison the in-memory cache on the LOCK-failure path too.
+        # Pre-fix only the inner ``OSError`` (write/replace failure) branch
+        # above poisoned the cache; this outer branch merely *returned* the
+        # ``MAX + 1`` sentinel. Because the sole caller
+        # (``_charge_one_request``) gates on ``load_request_count()`` — which
+        # reads the cache — an unreadable lockfile left the gate wide open:
+        # every subsequent call re-read an unchanged, low cache value, passed
+        # the fail-fast and fired a real VAO request, while nothing was ever
+        # persisted. Poisoning here makes the sentinel effective in-process
+        # and fails closed, symmetric with the write-failure branch.
+        _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
+        _QUOTA_CACHE["unsaved_delta"] = 0
+        _QUOTA_CACHE["date"] = date_iso
         return MAX_REQUESTS_PER_DAY + 1
 
     return cast(int, new_total)
 
 
-def save_request_count(now_ignored: datetime | None = None) -> int:
-    # We ignore the passed 'now' to enforce UTC consistency internally.
-    # But keep the signature compatible if callers pass it.
-    # FIX: Use Vienna timezone for day boundaries
-    vienna_tz = ZoneInfo("Europe/Vienna")
-    now_local = datetime.now(vienna_tz)
-    date_iso = now_local.strftime("%Y-%m-%d")
+def _read_quota_file_unlocked() -> tuple[str | None, int]:
+    """Return ``(stored_date, requests)`` from the on-disk quota ledger.
 
-    with _QUOTA_LOCK:
-        # Fail-fast check using memory cache
-        if _QUOTA_CACHE["date"] == date_iso and _QUOTA_CACHE["count"] + _QUOTA_CACHE["unsaved_delta"] >= MAX_REQUESTS_PER_DAY:
-            return cast(int, _QUOTA_CACHE["count"] + _QUOTA_CACHE["unsaved_delta"])
+    Shared by the locked reservation path below. Uses the same TOCTOU-safe,
+    size-capped loader as :func:`load_request_count` and applies the same
+    negative-count clamp, so a poisoned ledger cannot drive the counter below
+    zero and bypass the cap. Returns ``(None, 0)`` for a missing / corrupt /
+    oversized file; the next successful write rewrites the canonical schema.
+    """
+    data = read_capped_json(
+        REQUEST_COUNT_FILE,
+        MAX_VOR_QUOTA_FILE_BYTES,
+        label="VOR quota",
+        logger=log,
+    )
+    if not isinstance(data, dict):
+        return (None, 0)
+    stored_date = data.get("date")
+    date_str = stored_date if isinstance(stored_date, str) else None
+    raw_count = data.get("requests")
+    if isinstance(raw_count, bool):
+        # ``int(True) == 1`` would silently credit a boolean ledger value as a
+        # real reservation. Mirrors ``preflight_quota_check._coerce_int``.
+        return (date_str, 0)
+    try:
+        count = int(raw_count)  # type: ignore[arg-type]
+    except (ValueError, TypeError):
+        count = 0
+    return (date_str, max(0, count))
 
-        # Fast path: update memory cache and defer file writes to reduce I/O bottleneck
-        if _QUOTA_CACHE["date"] != date_iso:
-            # Flush any pending prior-day delta BEFORE resetting, booking it
-            # under the prior day's date. A long-lived process that crosses
-            # the Vienna midnight boundary would otherwise silently discard
-            # up to QUOTA_FLUSH_BATCH_SIZE-1 reserved-but-unflushed requests,
-            # under-counting the prior day's on-disk ledger.
-            prior_date = _QUOTA_CACHE["date"]
-            if prior_date and _QUOTA_CACHE.get("unsaved_delta", 0) > 0:
-                _persist_quota_to_disk(force_date=cast(str, prior_date))
+
+def _reserve_request_slot_locked(date_iso: str) -> tuple[bool, int]:
+    """Reserve one VAO request slot atomically. Caller MUST hold :data:`_QUOTA_LOCK`.
+
+    Returns ``(granted, total)`` — ``granted`` is ``False`` when the daily
+    budget is already spent or the ledger could not be updated, in which case
+    ``total`` carries the observed count (or the ``MAX + 1`` poison sentinel).
+
+    Audit A.2 — why this replaces the previous check-then-flush split:
+    ``_QUOTA_LOCK`` is a :class:`threading.RLock` and therefore scopes to ONE
+    process. The old shape checked the budget against the per-process cache,
+    incremented in memory, and only took the *file* lock later, at flush time,
+    where an over-budget total was silently clamped to
+    :data:`MAX_REQUESTS_PER_DAY`. That clamp bounded the number written to the
+    ledger — it never bounded the number of requests actually put on the wire.
+    Reproduced before this fix with six concurrent processes: 104 real
+    reservations were granted while the ledger reported exactly 100, hiding
+    four calls beyond the contractual VAO Start cap.
+
+    Read, budget check, increment and persist now all happen inside a single
+    ``file_lock(..., exclusive=True)`` critical section, so two processes
+    racing at ``count == MAX - 1`` serialise: the first is granted the last
+    slot, the second observes ``MAX`` on disk and is refused *before* it can
+    issue a request. The clamp is gone because it can no longer be reached.
+    """
+    REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
+
+    try:
+        with (
+            lock_path.open("a+", encoding="utf-8") as lock_file,
+            file_lock(lock_file, exclusive=True),
+        ):
+            disk_date, disk_count = _read_quota_file_unlocked()
+            if disk_date != date_iso:
+                disk_count = 0
+
+            # Fold a still-pending in-memory delta booked for the SAME day so
+            # a legacy batched reservation cannot be lost when a caller mixes
+            # ``save_request_count`` with the atomic path.
+            pending = 0
+            if _QUOTA_CACHE.get("date") == date_iso:
+                pending = max(0, int(_QUOTA_CACHE.get("unsaved_delta", 0) or 0))
+            base = min(disk_count + pending, MAX_REQUESTS_PER_DAY)
+
+            if base >= MAX_REQUESTS_PER_DAY:
+                _QUOTA_CACHE["date"] = date_iso
+                _QUOTA_CACHE["count"] = base
+                _QUOTA_CACHE["unsaved_delta"] = 0
+                return (False, base)
+
+            new_total = base + 1
+            try:
+                # Centralised atomic + ASCII-safe write — see
+                # ``_write_request_count_file`` for the Trojan-Source threat
+                # model. The reservation is only granted once this returns:
+                # a request is never put on the wire against a slot that
+                # could not be persisted.
+                _write_request_count_file(
+                    REQUEST_COUNT_FILE, {"date": date_iso, "requests": new_total}
+                )
+            except OSError:
+                log.critical(
+                    "Failed to write to request count file. Quota mechanism poisoned."
+                )
+                _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
+                _QUOTA_CACHE["unsaved_delta"] = 0
+                _QUOTA_CACHE["date"] = date_iso
+                return (False, MAX_REQUESTS_PER_DAY + 1)
+
             _QUOTA_CACHE["date"] = date_iso
-            _QUOTA_CACHE["count"] = 0
+            _QUOTA_CACHE["count"] = new_total
             _QUOTA_CACHE["unsaved_delta"] = 0
+            return (True, new_total)
+    except (OSError, TimeoutError) as exc:
+        # Sentinel: lock errors can carry attacker-controlled path fragments
+        # from a planted lockfile name; sanitise before logging.
+        log.warning(
+            "Failed to reserve request slot (lock error): %s",
+            sanitize_log_arg(str(exc)),
+        )
+        # Audit A.3: fail closed. Without a usable lock the budget cannot be
+        # accounted for, so refuse the reservation AND poison the cache so a
+        # cache-reading gate cannot wave through the next call either.
+        _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
+        _QUOTA_CACHE["unsaved_delta"] = 0
+        _QUOTA_CACHE["date"] = date_iso
+        return (False, MAX_REQUESTS_PER_DAY + 1)
 
-        _QUOTA_CACHE["unsaved_delta"] += 1
-        current_total = _QUOTA_CACHE["count"] + _QUOTA_CACHE["unsaved_delta"]
 
-        # Tests set WIEN_OEPNV_TEST_QUOTA_BATCH=1 to force a flush per call.
-        batch_limit = 1 if os.getenv("WIEN_OEPNV_TEST_QUOTA_BATCH") == "1" else QUOTA_FLUSH_BATCH_SIZE
+def reserve_request_slot(now: datetime | None = None) -> tuple[bool, int]:
+    """Atomically reserve one VAO request slot.
 
-        # Only perform expensive file I/O periodically (every X requests) or on the first request
-        if current_total == 1 or _QUOTA_CACHE["unsaved_delta"] >= batch_limit or current_total >= MAX_REQUESTS_PER_DAY:
-            return _persist_quota_to_disk()
+    This is the primitive every VOR consumer should use before issuing a
+    request: it performs the budget check and the increment in a single
+    exclusive-file-lock critical section, so the decision cannot be raced by a
+    concurrent process (see :func:`_reserve_request_slot_locked`).
 
-        return cast(int, current_total)
+    Args:
+        now: Optional reference instant. Only its Europe/Vienna calendar date
+            is used, to pick the ledger day. Defaults to the current time.
+
+    Returns:
+        ``(granted, total)``. When ``granted`` is ``True`` the caller owns one
+        reservation and may issue exactly one request. When it is ``False`` the
+        caller MUST NOT issue a request; ``total`` is the observed daily count,
+        or ``MAX_REQUESTS_PER_DAY + 1`` when the ledger could not be updated.
+    """
+    vienna_tz = ZoneInfo("Europe/Vienna")
+    reference = now.astimezone(vienna_tz) if now is not None else datetime.now(vienna_tz)
+    date_iso = reference.strftime("%Y-%m-%d")
+    with _QUOTA_LOCK:
+        return _reserve_request_slot_locked(date_iso)
+
+
+def save_request_count(now_ignored: datetime | None = None) -> int:
+    """Reserve one request slot and return the resulting daily total.
+
+    Thin backwards-compatible wrapper around :func:`reserve_request_slot`.
+    The historical contract is preserved exactly: the return value is the
+    daily total after the call, an exhausted budget returns the unchanged
+    total without incrementing, and a lock/write failure returns the
+    ``MAX_REQUESTS_PER_DAY + 1`` poison sentinel.
+
+    What changed (audit A.2) is the *timing*: reservations are no longer
+    buffered in memory and flushed in batches — every call now persists
+    inside the exclusive file lock. The batched shape traded a cross-process
+    budget guarantee for file I/O that the production cadence never needed
+    (the Stammstrecke monitor makes a single request per cron tick, so the
+    old code flushed on that very first call anyway).
+    """
+    _granted, total = reserve_request_slot()
+    return total
 
 
 
@@ -916,6 +1054,7 @@ __all__ = [
     "VorAuth",
     "apply_authentication",
     "load_request_count",
+    "reserve_request_slot",
     "save_request_count",
     "refresh_access_credentials",
     "refresh_base_configuration",
