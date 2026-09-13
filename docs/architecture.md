@@ -701,7 +701,9 @@ auch bei adversarial Provider-Input noch.
 Die VOR/VAO-ReST-API erlaubt **100 Requests pro Tag** (`VAO Start`-
 Kontingent). Seit 2026-05-11 (Operator-Policy „VOR nur noch für die
 Verspätungen der Stammstrecke") ist der Stammstrecken-Monitor der
-**einzige** automatisierte VOR-Konsument im Projekt. Der frühere
+**dominierende** automatisierte VOR-Konsument im Projekt; daneben
+steht nur noch der CI-Smoke-Test in `test-vor-api.yml` (siehe
+Tabelle). Der frühere
 wöchentliche Station-Enrichment-Pfad und das optionale
 Disruption-Polling sind aus den automatisierten Pfaden entfernt;
 die zugehörigen Helper-Skripte (`update_vor_cache.py`,
@@ -719,10 +721,23 @@ für Details zum Stammstrecken-Monitor.
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
 | **Stammstrecke `/departureBoard`** (ca. alle 30 Min × 1 Hbf-Call) | 48 | IFTTT-Cadence des `update-cycle.yml`-Triggers |
+| **CI-Smoke-Test `location.name`** (`test-vor-api.yml`) | **0–4** | feuert nur bei Push auf VOR-Pfade; Pre-flight-Gate + `external-api-fetch`-Concurrency |
 | **Station-Enrichment `location.name`** | **0** (Pfad und Skript 2026-05-11 entfernt) | — |
 | **Disruption-Polling `departureBoard`** | **0** (Pfad und Skript 2026-05-11 entfernt) | — |
 | **Auth-Diagnose** (`verify_vor_access_id.py`, `check_vor_auth.py`) | **0–2** | nur manueller Operator-Aufruf, einmalige Smoke-Tests |
-| **Tagesbudget gesamt** | **48 / 100** | — |
+| **Tagesbudget gesamt** | **48–54 / 100** | — |
+
+> **Korrektur 2026-09-13 (Audit A.1/F.1).** Diese Tabelle führte den
+> CI-Smoke-Test zuvor nicht auf und schrieb `location.name` pauschal auf
+> **0** Calls/Tag. Tatsächlich setzte `test-vor-api.yml` bei jedem Push auf
+> `scripts/**` (ein Filter, der ~40 Dateien traf) einen echten
+> `location.name`-Request per rohem `curl` ab — an `save_request_count`
+> vorbei, ohne Pre-flight-Gate und außerhalb der
+> `external-api-fetch`-Concurrency-Gruppe. Der Verbrauch war damit real,
+> aber für den Zähler unsichtbar. Behoben am 2026-09-13: Pfad-Filter auf die
+> VOR-relevanten Skripte verengt, Concurrency-Gruppe ergänzt, Pre-flight-Gate
+> davorgeschaltet und der `curl` durch `scripts/verify_vor_access_id.py`
+> ersetzt, das den Request über `reserve_request_slot()` bucht.
 
 Zwei zusammenwirkende Mechanismen schützen das Budget:
 
@@ -732,7 +747,13 @@ Zwei zusammenwirkende Mechanismen schützen das Budget:
    VOR-Station-Enrichment auf. Die früheren Helper-Skripte existieren
    nicht mehr; nur die Auth-Diagnose-Helfer
    (`scripts/verify_vor_access_id.py`, `scripts/check_vor_auth.py`)
-   bleiben für gezielte manuelle Smoke-Tests verfügbar.
+   bleiben für gezielte manuelle Smoke-Tests verfügbar. Der einzige
+   weitere automatisierte Pfad ist `test-vor-api.yml`: er ruft
+   `verify_vor_access_id.py` auf, ist seit 2026-09-13 auf die
+   VOR-relevanten Pfade verengt, hängt in derselben
+   `external-api-fetch`-Concurrency-Gruppe und wird vom selben
+   Pre-flight-Gate abgeschaltet, sobald der Zähler keinen Slot mehr
+   lässt.
 
 2. **`_charge_one_request`** (definiert in
    `scripts/update_stammstrecke_status.py`, vom aktiven

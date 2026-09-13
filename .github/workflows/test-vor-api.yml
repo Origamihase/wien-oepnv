@@ -3,13 +3,29 @@ name: Test VOR API
 on:
   workflow_dispatch:
   push:
+    # Narrowed 2026-09-13 (audit A.1). The previous ``scripts/**`` filter
+    # matched ~40 files, so any push touching an unrelated helper fired a real
+    # VAO ``location.name`` request. Only the paths that can actually change
+    # VOR behaviour belong here.
     paths:
       - "src/providers/vor.py"
-      - "scripts/**"
+      - "scripts/update_stammstrecke_hbf.py"
+      - "scripts/update_stammstrecke_status.py"
+      - "scripts/verify_vor_access_id.py"
+      - "scripts/check_vor_auth.py"
+      - "scripts/preflight_quota_check.py"
       - ".github/workflows/test-vor-api.yml"
 
 permissions:
   contents: read
+
+# Audit A.1: the smoke test below spends real VAO budget, so it must queue
+# behind every other quota-bound job instead of racing them. ``update-cycle``,
+# ``build-feed`` and ``manual-full-refresh`` already share this group; this
+# workflow sat outside it and could run concurrently with a Stammstrecke tick.
+concurrency:
+  group: external-api-fetch
+  cancel-in-progress: false
 
 jobs:
   test:
@@ -71,19 +87,43 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
 
-      - name: Smoke test VOR endpoint
+      # Audit A.1 gate: refuse to spend a VAO slot the committed counter says
+      # we do not have. Reads data/vor_request_count.json from the checkout,
+      # so it sees whatever the last update-cycle tick committed.
+      - name: VAO quota pre-flight
+        id: preflight
         if: steps.secrets.outputs.have_secrets == 'true'
+        run: python scripts/preflight_quota_check.py --check vor --margin 1
+
+      - name: Smoke test VOR endpoint
+        if: >-
+          steps.secrets.outputs.have_secrets == 'true' &&
+          steps.preflight.outputs.quota_ok == 'true'
         shell: bash
         run: |
           set -euo pipefail
-          code=$(curl -sS -o /dev/null -w "%{http_code}" -G \
-            --max-time 15 \
-            "${VOR_BASE_URL}location.name" \
-            --data-urlencode "input=Wien Hauptbahnhof" \
-            --data-urlencode "format=json" \
-            --data-urlencode "accessId=${VOR_ACCESS_ID}")
-          echo "location.name -> HTTP ${code}" | tee vor_api_status.txt
-          test "$code" = "200"
+          # Audit A.1: this replaces a raw ``curl`` that interpolated
+          # ``accessId=${VOR_ACCESS_ID}`` straight onto the command line. The
+          # helper issues the same ``location.name`` probe, but through
+          # ``src.providers.vor`` — so the request is charged against the
+          # 100/day budget via ``reserve_request_slot`` (the curl was entirely
+          # invisible to the counter), carries the SSRF/host-pinning checks in
+          # ``fetch_content_safe``, and keeps the credential out of the process
+          # command line and out of any error text.
+          set +e
+          python scripts/verify_vor_access_id.py
+          rc=$?
+          set -e
+          case "$rc" in
+            0) echo "location.name -> OK (credentials accepted)" ;;
+            3) echo "location.name -> SKIPPED (VAO daily budget exhausted)" ;;
+            *) echo "location.name -> FAILED (exit ${rc})" ;;
+          esac | tee vor_api_status.txt
+          # Exit 3 (budget exhausted) is not a credential fault — do not fail
+          # the job over it, the pre-flight already reported the budget state.
+          if [ "$rc" != "0" ] && [ "$rc" != "3" ]; then
+            exit "$rc"
+          fi
 
       - name: Upload VOR API Status
         if: ${{ always() }}
