@@ -108,6 +108,14 @@ def _load_sanitize_log_arg() -> Callable[..., Any]:
     return cast(Callable[..., Any], module.sanitize_log_arg)
 
 
+def _load_calculate_distance_meters() -> Callable[..., float]:
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:
+        sys.path.insert(0, str(base_dir))
+    module = import_module("src.utils.geo")
+    return cast(Callable[..., float], module.calculate_distance_meters)
+
+
 def _load_resolve_at_coordinate() -> Callable[..., Any]:
     base_dir = _project_root()
     if str(base_dir) not in sys.path:
@@ -145,6 +153,7 @@ def _load_osm_place_fetchers() -> tuple[Callable[..., Any], Callable[..., Any]]:
 
 BASE_DIR = _project_root()
 is_in_vienna = _load_is_in_vienna()
+calculate_distance_meters = _load_calculate_distance_meters()
 atomic_write = _load_atomic_write()
 read_capped_json = _load_read_capped_json()
 read_capped_text = _load_read_capped_text()
@@ -657,11 +666,84 @@ def _derive_station_label(platform_text: str, stops: Iterable[Haltepunkt]) -> st
     return platform_text
 
 
+# Plausibility gate for a single Wiener-Linien stop coordinate, applied
+# where per-stop values become the station's authoritative coordinate.
+#
+# The existing gates (``_coerce_float``'s finiteness check and the WGS-84
+# range check on the VOR branch) only reject values that are not
+# coordinates at all. They cannot catch a well-formed coordinate that
+# points at the wrong place — and the WL OGD export does ship those.
+#
+# Measured on the 2026-09-13 snapshot (4581 stops): the furthest genuine
+# stop is the Badner-Bahn terminus at Leesdorf/Baden, 24.9 km from
+# Stephansplatz. Beyond that the distribution is empty until 76.2 km,
+# where six rows across three consecutive DIVAs (60201954 Leopoldine-
+# Padaurek-Straße, 60201955 Halblehenweg, 60201956 Wassermanngasse) sit
+# 76-112 km away in the Waldviertel while still declaring
+# ``Municipality=Wien``. Both OGD files agree on those values, so the
+# defect is upstream, not a local corruption.
+#
+# 50 km sits in that gap with ~2x headroom over the real network and a
+# 1.5x margin below the nearest bad value, so it separates the two
+# populations without any judgement call about individual stops.
+_WL_NETWORK_CENTRE_LAT: float = 48.2082
+_WL_NETWORK_CENTRE_LON: float = 16.3738
+MAX_WL_STOP_DISTANCE_M: float = 50_000.0
+
+
+def _is_plausible_wl_stop(latitude: float, longitude: float) -> bool:
+    """Return ``True`` when a stop coordinate can belong to the WL network.
+
+    Args:
+        latitude: WGS-84 latitude of the stop.
+        longitude: WGS-84 longitude of the stop.
+
+    Returns:
+        ``True`` while the point lies within :data:`MAX_WL_STOP_DISTANCE_M`
+        of the network centre, ``False`` for a well-formed coordinate that
+        cannot plausibly be a Wiener-Linien stop.
+    """
+
+    distance = calculate_distance_meters(
+        latitude, longitude, _WL_NETWORK_CENTRE_LAT, _WL_NETWORK_CENTRE_LON
+    )
+    return distance <= MAX_WL_STOP_DISTANCE_M
+
+
 def _aggregate_coordinates(stops: Iterable[Haltepunkt]) -> tuple[float | None, float | None]:
+    """Return the mean coordinate of *stops*, ignoring implausible ones.
+
+    Stops without coordinates are skipped, as are stops whose coordinate
+    fails :func:`_is_plausible_wl_stop` — averaging a Waldviertel outlier
+    into a Vienna station drags the result kilometres off and, because
+    ``in_vienna`` is derived from this aggregate, silently drops the
+    station out of the feed's Vienna-relevance filtering.
+
+    The offending value is only excluded from the aggregate, not deleted
+    from ``wl_stops``: that array stays a faithful mirror of the upstream
+    export so the defect remains visible to the validator and to anyone
+    comparing against the OGD source.
+
+    Args:
+        stops: The haltepunkte belonging to one DIVA.
+
+    Returns:
+        The rounded ``(latitude, longitude)`` mean, or ``(None, None)``
+        when no usable stop remains.
+    """
+
     latitudes: list[float] = []
     longitudes: list[float] = []
     for stop in stops:
         if stop.latitude is None or stop.longitude is None:
+            continue
+        if not _is_plausible_wl_stop(stop.latitude, stop.longitude):
+            log.warning(
+                "Implausible WL stop coordinate for stop %s (%s); "
+                "excluded from the station aggregate",
+                sanitize_log_arg(str(stop.stop_id)),
+                sanitize_log_arg(str(stop.name)),
+            )
             continue
         latitudes.append(stop.latitude)
         longitudes.append(stop.longitude)

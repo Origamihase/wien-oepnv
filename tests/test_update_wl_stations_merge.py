@@ -1028,3 +1028,79 @@ def test_drop_distant_name_contamination() -> None:
     # nearby interchange name and own name are preserved
     assert "Grinzinger Allee" in aliases
     assert "Grinzing" in aliases
+
+
+# ---------------------------------------------------------------------------
+# Plausibility gate on WL stop coordinates.
+#
+# The WL OGD export ships well-formed coordinates that point at the wrong
+# place: audit 2026-09-13 found six rows across three consecutive DIVAs
+# (60201954 Leopoldine-Padaurek-Straße, 60201955 Halblehenweg, 60201956
+# Wassermanngasse) sitting 76-112 km away in the Waldviertel while declaring
+# ``Municipality=Wien``. Finiteness and WGS-84 range checks cannot catch that.
+#
+# Wassermanngasse shows the consequence: its bad value reached the directory
+# (its coordinate slot happened to be empty), the station was classified
+# ``in_vienna=False``, and "Störung in der Wassermanngasse" stopped counting
+# as a Vienna message — a genuine Vienna disruption would drop out of the feed.
+# ---------------------------------------------------------------------------
+
+
+def _stop(
+    stop_id: str, latitude: float | None, longitude: float | None
+) -> update_wl_stations.Haltepunkt:
+    return update_wl_stations.Haltepunkt(
+        station_id="60201956",
+        stop_id=stop_id,
+        name="Wassermanngasse",
+        latitude=latitude,
+        longitude=longitude,
+    )
+
+
+def test_aggregate_coordinates_excludes_implausible_stop() -> None:
+    """A Waldviertel outlier must not drag the station aggregate."""
+    stops = [
+        _stop("1", 48.2600, 16.4200),
+        _stop("2", 48.2602, 16.4204),
+        _stop("3", 48.6945799, 15.5787004),  # the corrupt upstream row
+    ]
+    assert update_wl_stations._aggregate_coordinates(stops) == (48.2601, 16.4202)
+
+
+def test_aggregate_coordinates_returns_none_when_all_implausible() -> None:
+    """Three corrupt rows yield no coordinate rather than a wrong one."""
+    stops = [_stop("1", 48.6945799, 15.5787004), _stop("2", 48.7235788, 15.0678375)]
+    assert update_wl_stations._aggregate_coordinates(stops) == (None, None)
+
+
+def test_aggregate_coordinates_keeps_badner_bahn_terminus() -> None:
+    """The furthest genuine WL stop stays inside the gate.
+
+    Leesdorf/Baden is the Badner-Bahn terminus at ~24.9 km from the network
+    centre — the real extent the threshold must not clip.
+    """
+    stops = [_stop("1", 47.9926, 16.2434)]
+    latitude, longitude = update_wl_stations._aggregate_coordinates(stops)
+    assert latitude == 47.9926
+    assert longitude == 16.2434
+
+
+def test_aggregate_coordinates_still_skips_missing_coordinates() -> None:
+    """The pre-existing ``None`` skip is unchanged by the gate."""
+    stops = [_stop("1", 48.2600, 16.4200), _stop("2", None, None)]
+    assert update_wl_stations._aggregate_coordinates(stops) == (48.26, 16.42)
+
+
+@pytest.mark.parametrize(
+    "latitude, longitude, expected",
+    [
+        (48.2082, 16.3738, True),    # Stephansplatz — network centre
+        (47.9926, 16.2434, True),    # Leesdorf/Baden — furthest genuine stop
+        (48.6945799, 15.5787004, False),  # Wassermanngasse, corrupt upstream
+        (48.7235788, 15.0678375, False),  # Halblehenweg, corrupt upstream
+        (48.4036711, 15.3864340, False),  # Leopoldine-Padaurek-Str., corrupt
+    ],
+)
+def test_is_plausible_wl_stop(latitude: float, longitude: float, expected: bool) -> None:
+    assert update_wl_stations._is_plausible_wl_stop(latitude, longitude) is expected
