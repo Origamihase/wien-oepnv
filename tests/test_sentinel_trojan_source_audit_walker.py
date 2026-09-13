@@ -58,10 +58,11 @@ neutralises the Trojan-Source primitives at the serialiser.
 
 Allowlist semantics
 -------------------
-The ``ALLOWLIST`` set lists ``(relative_path, lineno)`` tuples where
-``ensure_ascii=False`` is preserved without an in-function
+The ``ALLOWLIST`` maps ``(relative_path, enclosing scope)`` to the number of
+sites where ``ensure_ascii=False`` is preserved without an in-function
 ``scrub_trojan_source_primitives`` call because an EQUIVALENT sibling
-defence is in place. Three documented cases live here today:
+defence is in place. Three documented cases live here today, covering four
+sites:
 
 * ``src/places/hafas_client.py:_serialise_payload`` — the function
   builds the HAFAS wire-format request body whose bytes are hashed
@@ -106,36 +107,45 @@ shape so the allowlist cannot silently grow.
 from __future__ import annotations
 
 import ast
+from collections.abc import Mapping
 from pathlib import Path
+from types import MappingProxyType
 
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SCAN_TREES = ("src", "scripts")
 
-# Allowlist of ``(relative_path, lineno)`` pairs that the walker
-# tolerates. Each entry pairs a documented sibling defence that
-# replaces the in-function ``scrub_trojan_source_primitives`` call.
-# See the module docstring above for the rationale narrative on each
-# entry. Adding a new entry without an in-PR justification comment
-# violates the documented allowlist contract.
-ALLOWLIST: frozenset[tuple[str, int]] = frozenset(
+# Each entry pairs a documented sibling defence that replaces the in-function
+# ``scrub_trojan_source_primitives`` call. See the module docstring above for
+# the rationale narrative on each. Adding an entry without an in-PR
+# justification comment violates the documented allowlist contract.
+#
+# Keyed on ``(relative_path, enclosing scope)`` with the number of exempt
+# sites expected there — NOT on line numbers. See the sibling sentinel
+# ``tests/test_sentinel_allow_nan_writer_audit_walker.py`` for the full
+# rationale: line-number keys made both walkers fail for reasons unrelated to
+# their subject, because any edit above an allowlisted site shifted it. Both
+# pinned ``src/places/hafas_client.py:289``, so one insertion there used to
+# break two sentinels at once.
+#
+# The count keeps the coarser key honest: allowlisting a whole scope would
+# wave through a NEW unscrubbed writer added to it later.
+ALLOWLIST: Mapping[tuple[str, str], int] = MappingProxyType(
     {
         # HAFAS wire-format request body; bytes are hashed by the MAC
         # signing protocol and sent to the upstream HAFAS endpoint,
         # not committed to any operator-facing sidecar.
-        ("src/places/hafas_client.py", 289),
+        ("src/places/hafas_client.py", "_serialise_payload"): 1,
         # Feed-health JSON sink; per-field ``_CONTROL_CHARS_RE.sub("",
-        # ...)`` calls at lines 730 / 733 / 781 strip the canonical
-        # attack-byte union from every user-controlled string field
-        # before ``json.dump``.
-        ("src/feed/reporting.py", 850),
+        # ...)`` calls strip the canonical attack-byte union from every
+        # user-controlled string field before ``json.dump``.
+        ("src/feed/reporting.py", "write_feed_health_json"): 1,
         # JSON log formatter; ``sanitize_log_message(dumped,
         # strip_control_chars=False)`` always strips the canonical
         # attack-byte union via ``_INVISIBLE_DANGEROUS_RE.sub("",
-        # sanitized)`` post-serialisation.
-        ("src/feed/logging_safe.py", 260),
-        ("src/feed/logging_safe.py", 273),
+        # sanitized)`` post-serialisation. Two sites in the one method.
+        ("src/feed/logging_safe.py", "SafeJSONFormatter.format"): 2,
     }
 )
 
@@ -255,11 +265,29 @@ def _scope_calls_scrub(scope: ast.AST) -> bool:
     return False
 
 
-def _audit_module(path: Path, tree: ast.AST) -> list[tuple[int, str]]:
-    """Return ``[(lineno, reason), ...]`` for every unprotected JSON
-    writer site in *path*. The caller is responsible for filtering
-    against ``ALLOWLIST``."""
-    findings: list[tuple[int, str]] = []
+def _enclosing_scope(parents: dict[int, ast.AST], node: ast.AST) -> str:
+    """Return the dotted name of the smallest enclosing def/class.
+
+    The allowlist key. Line numbers are deliberately not used — see the
+    ALLOWLIST comment above.
+    """
+    names: list[str] = []
+    cur = parents.get(id(node))
+    while cur is not None:
+        if isinstance(cur, ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef):
+            names.append(cur.name)
+        cur = parents.get(id(cur))
+    return ".".join(reversed(names)) or "<module>"
+
+
+def _audit_module(path: Path, tree: ast.AST) -> list[tuple[int, str, str]]:
+    """Return ``[(lineno, reason, scope), ...]`` for every unprotected JSON
+    writer site in *path*.
+
+    ``scope`` is what the caller filters on; ``lineno`` is carried for the
+    failure message only.
+    """
+    findings: list[tuple[int, str, str]] = []
     parents = _build_parent_map(tree)
     json_aliases = _collect_json_module_aliases(tree)
 
@@ -285,6 +313,7 @@ def _audit_module(path: Path, tree: ast.AST) -> list[tuple[int, str]]:
                 f"json.dump/dumps(..., ensure_ascii=False, ...) in "
                 f"{scope_name!r} without scrub_trojan_source_primitives "
                 f"call in the same scope",
+                _enclosing_scope(parents, node),
             )
         )
     return findings
@@ -312,7 +341,7 @@ def test_every_ensure_ascii_false_writer_has_scrub() -> None:
     defence. The canonical scrubber lives at
     :func:`src.utils.serialize.scrub_trojan_source_primitives`.
     """
-    all_findings: list[tuple[Path, int, str]] = []
+    by_scope: dict[tuple[str, str], list[tuple[Path, int, str]]] = {}
     for path in _all_python_files():
         rel = path.relative_to(REPO_ROOT)
         try:
@@ -323,11 +352,24 @@ def test_every_ensure_ascii_false_writer_has_scrub() -> None:
             tree = ast.parse(source, filename=str(path))
         except SyntaxError:
             continue
-        for lineno, reason in _audit_module(path, tree):
-            key = (str(rel), lineno)
-            if key in ALLOWLIST:
-                continue
-            all_findings.append((rel, lineno, reason))
+        for lineno, reason, scope in _audit_module(path, tree):
+            by_scope.setdefault((str(rel), scope), []).append((rel, lineno, reason))
+
+    # An allowlisted scope absorbs only as many sites as it is documented for;
+    # anything beyond that budget is a NEW unscrubbed writer and is reported.
+    all_findings: list[tuple[Path, int, str]] = []
+    over_budget: list[str] = []
+    for key, sites in sorted(by_scope.items()):
+        allowed = ALLOWLIST.get(key, 0)
+        surplus = sorted(sites)[allowed:]
+        all_findings.extend(surplus)
+        if allowed and surplus:
+            over_budget.append(
+                f"  {key[0]}:{key[1]} holds {len(sites)} unscrubbed site(s), "
+                f"ALLOWLIST documents {allowed}. The line(s) listed above are "
+                "the surplus by position, not necessarily the new call — "
+                "check every writer in that scope."
+            )
 
     if not all_findings:
         return
@@ -335,9 +377,10 @@ def test_every_ensure_ascii_false_writer_has_scrub() -> None:
         f"  {p}:{lineno}: {reason}"
         for p, lineno, reason in all_findings
     )
+    budget_note = ("\n\n" + "\n".join(over_budget)) if over_budget else ""
     pytest.fail(
         f"{len(all_findings)} ``ensure_ascii=False`` writer site(s) "
-        f"without the Trojan-Source scrub:\n{rendered}\n\n"
+        f"without the Trojan-Source scrub:\n{rendered}{budget_note}\n\n"
         "Each site must either call ``scrub_trojan_source_primitives`` "
         "in the same function (canonical fix shape — see "
         "``src/places/merge.py:write_stations`` and the eight named "
@@ -619,24 +662,24 @@ def test_collect_json_module_aliases_includes_canonical_and_aliased() -> None:
 
 def test_allowlist_is_minimal_and_documented() -> None:
     """The ALLOWLIST is intentionally small — three legitimate
-    sibling-defence sites today. If a future PR needs to add an
-    entry, this test pins the requirement that the addition is
+    sibling-defence cases today, covering four sites. If a future PR needs
+    to add one, this test pins the requirement that the addition is
     intentional (not accidental) by failing if the allowlist drifts
     beyond the documented size. Update this assertion alongside any
     legitimate allowlist addition AND the module docstring."""
-    assert len(ALLOWLIST) == 4, (
-        f"ALLOWLIST drifted from the documented size of 4 entries — "
-        f"got {len(ALLOWLIST)}. Any new entry must come with a "
+    # Both numbers are pinned: the entry count catches a new scope being
+    # waved through, the site total catches a count being quietly raised
+    # inside an existing one.
+    assert sum(ALLOWLIST.values()) == 4, (
+        f"ALLOWLIST drifted from the documented 4 exempt sites — got "
+        f"{sum(ALLOWLIST.values())}. Any new site must come with a "
         "justification comment AND an update to this assertion + the "
         "module docstring's allowlist semantics section."
     )
     # Pin the exact entries so a future PR that swaps one allowlisted
     # site for another (without updating the docstring) also fails.
-    assert ALLOWLIST == frozenset(
-        {
-            ("src/places/hafas_client.py", 289),
-            ("src/feed/reporting.py", 850),
-            ("src/feed/logging_safe.py", 260),
-            ("src/feed/logging_safe.py", 273),
-        }
-    )
+    assert dict(ALLOWLIST) == {
+        ("src/places/hafas_client.py", "_serialise_payload"): 1,
+        ("src/feed/reporting.py", "write_feed_health_json"): 1,
+        ("src/feed/logging_safe.py", "SafeJSONFormatter.format"): 2,
+    }
