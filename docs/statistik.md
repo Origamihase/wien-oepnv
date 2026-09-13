@@ -1,16 +1,16 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-09-13T00:01+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-09-13T02:08+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
 | Kennzahl | Wert |
 | --- | ---: |
-| Stammstrecke-Beobachtungen (2026) | 8871 |
+| Stammstrecke-Beobachtungen (2026) | 8873 |
 | Verspätungen > 9 min (2026) | 117 |
 | ⌀ Verspätung (2026) | 1.1 min |
 | Stammstrecke-Ausfälle (2026) | 1836 |
-| Erfasste Störungen (2026) | 2964 |
+| Erfasste Störungen (2026) | 2967 |
 
 ## Stammstrecke
 
@@ -18,7 +18,7 @@ _Automatisch erzeugt am 2026-09-13T00:01+02:00 (Europe/Vienna)._
 
 | Richtung | Anzahl |
 | --- | ---: |
-| Meidling | 5040 |
+| Meidling | 5042 |
 | Praterstern | 3831 |
 
 ### Beobachtungen je Wochentag
@@ -30,14 +30,14 @@ _Automatisch erzeugt am 2026-09-13T00:01+02:00 (Europe/Vienna)._
 `Do  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦···  1204
 `Fr  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦···  1219
 `Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  1366
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·  1314
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·  1316
 ```
 
 ### Beobachtungen je Stunde
 
 ```
-`00h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  416
-`01h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧········  276
+`00h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  417
+`01h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧········  277
 `02h ` │ 🟧🟧🟧·····················  61
 `03h ` │ 🟧🟧🟧·····················  61
 `04h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·········  270
@@ -186,7 +186,7 @@ _Automatisch erzeugt am 2026-09-13T00:01+02:00 (Europe/Vienna)._
 
 | Quelle | Anzahl |
 | --- | ---: |
-| Wiener Linien | 2536 |
+| Wiener Linien | 2539 |
 | ÖBB | 241 |
 | Stadt Wien – Baustellen | 176 |
 | VOR/VAO | 11 |
@@ -200,14 +200,14 @@ _Automatisch erzeugt am 2026-09-13T00:01+02:00 (Europe/Vienna)._
 `Do  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  475
 `Fr  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·  455
 `Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·····  368
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·····  367
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·····  370
 ```
 
 ### Störungen je Stunde
 
 ```
-`00h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧········  140
-`01h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧··············  82
+`00h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧········  142
+`01h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧··············  83
 `02h ` │ 🟧🟧🟧·····················  23
 `03h ` │ 🟧🟧······················  20
 `04h ` │ 🟧🟧🟧🟧🟧🟧🟧·················  63
