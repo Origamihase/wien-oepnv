@@ -7,10 +7,10 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 14 Sep 2026 01:01:43 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 01:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[86A/86AR/87A: event]]></title>
+      <title><![CDATA[86A/86AR/87A: Event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c10a61693b1899feb3a034dc038a53979093e43461e6b325c25676dc47f07144</guid>
       <pubDate>Tue, 08 Sep 2026 10:26:00 +0200</pubDate>
@@ -21,7 +21,7 @@
       <content:encoded><![CDATA[Because of the Stadlauer Kirtage in Stadlauer Straße, the lines 86A, 87A and the call bus 86A are redirected.<br/>[17.09.2026 – 21.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[3A: buses stop Kärntner Ring 5]]></title>
+      <title><![CDATA[3A: Buses stop at Kärntner Ring 5]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c535a3f28bfd3a8f7e49e96b63ccb14c2a0224c47e5ee638d569ae0296a64855</guid>
       <pubDate>Mon, 07 Sep 2026 13:46:56 +0200</pubDate>
@@ -39,33 +39,44 @@
       <ext:first_seen>Sat, 12 Sep 2026 12:01:06 +0200</ext:first_seen>
       <ext:starts_at>Tue, 25 Aug 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 25 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop change of lines 49A and 50B towards Wolfersberg and Auhof stop: Hüttergasse from: Anzengruberstraße opposite 77 a to: Hüttergasse 6A-6B … [25.08.2026 – 25.08.2027]</description>
-      <content:encoded><![CDATA[Stop change of lines 49A and 50B towards Wolfersberg and Auhof stop: Hüttergasse from: Anzengruberstraße opposite 77 a to: Hüttergasse 6A-6B …<br/>[25.08.2026 – 25.08.2027]]]></content:encoded>
+      <description>Station relocation of lines 49A and 50B towards Wolfersberg and Auhof Stop: Hüttergasse From: Anzengruberstraße opposite 77 a After: HüttergasseX 6A-6B … [25.08.2026 – 25.08.2027]</description>
+      <content:encoded><![CDATA[Station relocation of lines 49A and 50B towards Wolfersberg and Auhof Stop: Hüttergasse From: Anzengruberstraße opposite 77 a After: HüttergasseX 6A-6B …<br/>[25.08.2026 – 25.08.2027]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[17A: construction works]]></title>
+      <title><![CDATA[17A: Construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4e4ac1d3cb4bc917fea71f50345872e58878aa82bc54b27034a1c202771ae756</guid>
       <pubDate>Wed, 09 Sep 2026 00:00:00 +0200</pubDate>
       <ext:first_seen>Fri, 11 Sep 2026 23:59:34 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 18 Sep 2026 15:00:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the Kästenbaumgasse, the line 17A is redirected. [14.09.2026 – 18.09.2026]</description>
-      <content:encoded><![CDATA[Because of roadworks in the Kästenbaumgasse, the line 17A is redirected.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
+      <description>Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected. [14.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[Because of roadworks in the Kästenbaumgasse, the line 17A is being redirected.<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[46/49/52: track construction works]]></title>
+      <title><![CDATA[46/49/52: Track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">29d08fd01cdc74937e3b4614fdcea187b2ada9e40ffa86e4d1b4b03d9bcbab99</guid>
       <pubDate>Fri, 11 Sep 2026 00:00:00 +0200</pubDate>
       <ext:first_seen>Fri, 11 Sep 2026 14:01:07 +0200</ext:first_seen>
       <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 31 Oct 2026 04:30:00 +0100</ext:ends_at>
-      <description>Due to track construction works in the area ofX Märzstraße and Huglgasse the following measures are taken on the lines 46, 49 and 52. [21.09.2026 – 31.10.2026]</description>
-      <content:encoded><![CDATA[Due to track construction works in the area ofX Märzstraße and Huglgasse the following measures are taken on the lines 46, 49 and 52.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
+      <description>Because of track construction works in the area of Märzstraße and Huglgasse, 46, 49 and 52, the following measures are taken. [21.09.2026 – 31.10.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works in the area of Märzstraße and Huglgasse, 46, 49 and 52, the following measures are taken.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N29: Buses stop at Taborstraße 35-37]]></title>
+      <title><![CDATA[N20: Busse halten auf der Hauptfahrbahn, Bessemerstraße 1-3]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae</guid>
+      <pubDate>Mon, 14 Sep 2026 01:30:19 +0200</pubDate>
+      <ext:first_seen>Fri, 11 Sep 2026 01:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 01:16:18 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 14 Sep 2026 04:52:00 +0200</ext:ends_at>
+      <description>Busse halten auf der Hauptfahrbahn Gleisbauarbeiten Busse halten Bessemerstraße 1-3 [Am 14.09.2026]</description>
+      <content:encoded><![CDATA[Busse halten auf der Hauptfahrbahn Gleisbauarbeiten Busse halten Bessemerstraße 1-3<br/>[Am 14.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N29: Buses stop at Taborstraße 35-37, 62]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5acd2efa281e77e083e560ff5c6ca6c5fab4a01026252a262345d9fe21cd6ed2</guid>
       <pubDate>Mon, 14 Sep 2026 00:42:18 +0200</pubDate>
@@ -76,7 +87,7 @@
       <content:encoded><![CDATA[Buses stop at Taborstraße 35-37 track construction works Buses stop at Taborstraße 62<br/>[On 14.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[Märzstraße 49 to junction Huglgasse and junction Huglgasse to junction Hütteldorfer Straße]]></title>
+      <title><![CDATA[Märzstraße 49 to crossing Huglgasse and crossing Huglgasse to crossing Hütteldorfer Straße]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
       <guid isPermaLink="false">0dfddd258ab4ba06599c87586ca7087268ea73a4f62ffc43de13acf6c950d687</guid>
       <pubDate>Mon, 14 Sep 2026 00:00:00 +0200</pubDate>
@@ -87,37 +98,26 @@
       <content:encoded><![CDATA[The pedestrian traffic can be maintained.<br/>[14.09.2026 – 15.11.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[Kennedybrücke between Schönbrunner Schloßstraße and Hadikgasse, on page "Otto Wagner Hofpavillon]]></title>
+      <title><![CDATA[Kennedybrücke between Schönbrunner Schloßstraße and Hadikgasse, on page Otto Wagner Hofpavillon…]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
       <guid isPermaLink="false">31aa5ca965c3c54043d7dae9d485829374762833c665a6326f247ec37b5e82b1</guid>
       <pubDate>Mon, 14 Sep 2026 00:00:00 +0200</pubDate>
       <ext:first_seen>Thu, 10 Sep 2026 22:31:03 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>The diversion takes place via: Schönbrunner Schloßstraße - Schönbrunner Schloßbrücke - Hadikgasse. The pedestrian and cycling traffic can be maintained. [14.09.2026 – 06.10.2026]</description>
-      <content:encoded><![CDATA[The diversion takes place via: Schönbrunner Schloßstraße - Schönbrunner Schloßbrücke - Hadikgasse. The pedestrian and cycling traffic can be maintained.<br/>[14.09.2026 – 06.10.2026]]]></content:encoded>
+      <description>The diversion takes place via: Schönbrunner Schloßstraße - Schönbrunner Schloßbrücke - Hadikgasse. Pedestrian and cycling traffic can be maintained. [14.09.2026 – 06.10.2026]</description>
+      <content:encoded><![CDATA[The diversion takes place via: Schönbrunner Schloßstraße - Schönbrunner Schloßbrücke - Hadikgasse. Pedestrian and cycling traffic can be maintained.<br/>[14.09.2026 – 06.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[Donaufelder Straße 79 up to 137]]></title>
+      <title><![CDATA[Donaufelder Straße 79 to 137]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
       <guid isPermaLink="false">8abd474fd840ee3ed4769b5db7b6f8ad44ba64332764c40a0808448b69adb2b2</guid>
       <pubDate>Thu, 10 Sep 2026 00:00:00 +0200</pubDate>
       <ext:first_seen>Thu, 10 Sep 2026 22:31:03 +0200</ext:first_seen>
       <ext:starts_at>Thu, 10 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 11 Dec 2026 00:00:00 +0100</ext:ends_at>
-      <description>The diversion in the direction of 21. district takes place via: Angyalföldstraße - Leopoldauer Straße. [10.09.2026 – 11.12.2026]</description>
-      <content:encoded><![CDATA[The diversion in the direction of 21. district takes place via: Angyalföldstraße - Leopoldauer Straße.<br/>[10.09.2026 – 11.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;910806</guid>
-      <pubDate>Thu, 10 Sep 2026 12:16:29 +0200</pubDate>
-      <ext:first_seen>Thu, 10 Sep 2026 12:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 05 Dec 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 07 Dec 2026 23:59:59 +0100</ext:ends_at>
-      <description>Due to construction works, trains between Vienna Hbf (U) and Gramatneusiedl Train Station from 05.122026 to 07.12.2026 (both from 23:15 to 04:40) cannot run local trains. [05.12.2026 – 07.12.2026]</description>
-      <content:encoded><![CDATA[Due to construction works, trains between Vienna Hbf (U) and Gramatneusiedl Train Station from 05.122026 to 07.12.2026 (both from 23:15 to 04:40) cannot run local trains.<br/>[05.12.2026 – 07.12.2026]]]></content:encoded>
+      <description>The diversion in direction 21. district takes place via: Angyalföldstraße - Leopoldauer Straße. [10.09.2026 – 11.12.2026]</description>
+      <content:encoded><![CDATA[The diversion in direction 21. district takes place via: Angyalföldstraße - Leopoldauer Straße.<br/>[10.09.2026 – 11.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
