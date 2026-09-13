@@ -984,7 +984,12 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       ``Schloss Hetzendorf`` from ``Wien Schloss Hetzendorf (WL)``),
 #       so Vienna stop names with a translatable component are no
 #       longer mistranslated ("Schloss Hetzendorf" → "lock Hetzendorf").
-_TRANSLATION_CACHE_EPOCH = 5
+#   6 — per-field source fingerprints (``_SOURCE_DIGEST_KEY``) added, so a
+#       reworded German source invalidates its cached English instead of
+#       serving it for the item's lifetime. The bump exists to stamp a
+#       digest onto the ~2500 entries cached without one; it asserts no
+#       change in translation quality.
+_TRANSLATION_CACHE_EPOCH = 6
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -2082,6 +2087,78 @@ def _record_verbatim(
         translations.pop(_VERBATIM_FIELDS_KEY, None)
 
 
+# Per-field fingerprint of the GERMAN source a cached translation was made
+# from — the axis the cache was missing.
+#
+# The cache is keyed ``(ident, field)``. ``ident`` identifies the disruption,
+# not its wording, and upstream rewords a live disruption freely as the
+# situation develops while keeping the same identity. Nothing compared the
+# cached English against the German it came from (``cached != text`` compares
+# an English string to a German one, which is essentially always true), so the
+# first translation of an item was served for the item's whole lifetime.
+#
+# Observed live on 2026-09-13, ``docs/feed.en.xml`` item 1: the German title
+# had become "44: Veranstaltung Betrieb ab Johann-Nepomuk-Berger-Platz" while
+# the English still read "44: event Trains stop Rosensteingasse on line 9
+# direction Westbahnhof" — the translation of a title the DE feed had already
+# replaced. The two feeds were telling subscribers different things about the
+# same GUID, which is worse than an untranslated item: it is a wrong one.
+#
+# ``_TRANSLATION_CACHE_EPOCH`` could not catch this. It invalidates when *our*
+# glossary or masking changes; it knows nothing about upstream edits. The
+# digest is the complementary signal, and the two are deliberately kept
+# separate: bumping the epoch here would assert a translation-quality change
+# that did not happen.
+#
+# A missing digest is TRUSTED rather than treated as a miss, and the rollout
+# rides the epoch bump to 6 instead. Making "no digest" a miss would have
+# worked too, but it duplicates what the epoch already does — invalidate
+# everything once — and it would have broken the documented contract that a
+# current-epoch cache is served without touching the pipeline. After the
+# epoch-6 rebuild every entry carries a digest, and the two mechanisms keep
+# one job each: the epoch for changes on our side, the digest for changes on
+# upstream's. An entry cannot end up at epoch 6 without a digest —
+# ``_record_source_digest`` runs in lockstep with the stored string, and the
+# epoch is stamped only after every field succeeded.
+#
+# 16 hex chars (64 bits) is ample for change detection and keeps the persisted
+# state (2500+ entries × 2 fields) from growing by a full digest each.
+_SOURCE_DIGEST_KEY = "en_src"
+_SOURCE_DIGEST_CHARS = 16
+
+
+def _source_digest(text: str) -> str:
+    """Return the short fingerprint of a German source string."""
+    return hashlib.sha256(
+        text.encode("utf-8", "surrogatepass")
+    ).hexdigest()[:_SOURCE_DIGEST_CHARS]
+
+
+def _source_digests(translations: dict[str, Any]) -> dict[str, str]:
+    """Return the per-field source fingerprints recorded for ``translations``."""
+    raw = translations.get(_SOURCE_DIGEST_KEY)
+    if not isinstance(raw, dict):
+        return {}
+    return {
+        field: value
+        for field, value in raw.items()
+        if isinstance(field, str) and isinstance(value, str)
+    }
+
+
+def _record_source_digest(
+    translations: dict[str, Any], field: str, text: str
+) -> None:
+    """Stamp the source fingerprint ``field``'s cached translation came from.
+
+    Written in lockstep with the translation itself, so a field can never
+    carry a translation without the digest that validates it.
+    """
+    digests = _source_digests(translations)
+    digests[field] = _source_digest(text)
+    translations[_SOURCE_DIGEST_KEY] = dict(sorted(digests.items()))
+
+
 def _translate_text_attempt(
     text: str,
     ident: str = "",
@@ -2304,6 +2381,26 @@ def _cached_translation(
         en_raw = {}
         translations_raw["en"] = en_raw
     cached = en_raw.get(field)
+    # Source-drift guard. A cached translation is only valid for the exact
+    # German text it was produced from; upstream rewords live disruptions
+    # under an unchanged identity. A digest that does not match — or is
+    # absent, i.e. the entry predates this guard — is a MISS, so the item
+    # re-translates instead of serving English for a headline the German
+    # feed no longer carries. See ``_SOURCE_DIGEST_KEY``.
+    stored_digest = _source_digests(translations_raw).get(field)
+    if (
+        isinstance(cached, str)
+        and cached
+        and stored_digest is not None
+        and stored_digest != _source_digest(text)
+    ):
+        log.info(
+            "Source text changed for %s/%s — re-translating (cached EN was "
+            "made from a different German source).",
+            sanitize_log_arg(ident),
+            sanitize_log_arg(field),
+        )
+        cached = None
     if isinstance(cached, str) and cached and cached != text:
         if not _RESIDUAL_PLACEHOLDER_RE.search(cached):
             return cached, True
@@ -2340,7 +2437,38 @@ def _cached_translation(
         return text, False
     en_raw[field] = attempt
     _record_verbatim(translations_raw, field, identical=attempt == text)
+    # Stamp the source this translation was made from, so a later reword of
+    # the same disruption is detected as a miss rather than served stale.
+    _record_source_digest(translations_raw, field, text)
     return attempt, True
+
+
+def _capitalise_title_body(title: str) -> str:
+    """Upper-case the first letter of an EN title's body.
+
+    German capitalises every noun, so a headline like ``44: Veranstaltung``
+    or ``3A: Busse halten …`` starts its body with a capital. The English
+    equivalents are ordinary common nouns, and the NMT model renders them in
+    lower case — giving ``44: event`` and ``3A: buses stop …``. After the
+    ``NN:`` line prefix that reads like a typo, and it is the first thing an
+    English subscriber sees on every item.
+
+    Only the single leading letter is touched. ``str.capitalize`` would lower
+    the rest and destroy line codes, station names and acronyms
+    (``46/49/52: Track construction works`` must not become ``… works`` with
+    a lower-cased ``Kärntner Ring``). A body that starts with a digit or
+    symbol is left alone, as is one that is already capitalised.
+    """
+    if not title:
+        return title
+    match = _LINE_PREFIX_RE.match(title)
+    start = match.end() if match else 0
+    if start >= len(title):
+        return title
+    head = title[start]
+    if not head.islower():
+        return title
+    return title[:start] + head.upper() + title[start + 1:]
 
 
 def _parse_lines_from_title(title: str) -> list[str]:
@@ -4169,6 +4297,12 @@ def _evict_stale_translations(
         # glossary may translate the same text after all, so the marks go
         # with the strings rather than outliving them.
         translations.pop(_VERBATIM_FIELDS_KEY, None)
+        # Same reasoning for the source fingerprints: they validate the
+        # strings that were just dropped. Leaving them behind would pair a
+        # matching digest with no translation — harmless today (the lookup
+        # needs both) but exactly the kind of half-state that invites a
+        # later "the digest matches, trust it" shortcut.
+        translations.pop(_SOURCE_DIGEST_KEY, None)
 
 
 def _stamp_translation_epoch(
@@ -4279,6 +4413,9 @@ def _apply_lang_overlay(
     if len(title_en) > feed_config.TITLE_CHAR_LIMIT:
         title_en = title_en[: feed_config.TITLE_CHAR_LIMIT].rstrip() + " …"
     title_en = _WHITESPACE_RE.sub(" ", title_en).strip()
+    # Applied after the cap and the whitespace collapse so it acts on the
+    # string that actually ships, not on an intermediate one.
+    title_en = _capitalise_title_body(title_en)
     summary_en = _truncate_summary_180(_sanitize_text(summary_raw))
     time_line_en = _translate_time_line_en(time_line_de)
     desc_text_truncated_en, desc_html_en = _compose_description(
