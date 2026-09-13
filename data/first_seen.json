@@ -1287,9 +1287,13 @@
     "translations": {
       "en": {
         "summary": "The pedestrian traffic can be maintained.",
-        "title": "M\u00e4rzstra\u00dfe 49 to junction Huglgasse and junction Huglgasse to junction H\u00fctteldorfer Stra\u00dfe"
+        "title": "M\u00e4rzstra\u00dfe 49 to crossing Huglgasse and crossing Huglgasse to crossing H\u00fctteldorfer Stra\u00dfe"
       },
-      "epoch": 5
+      "en_src": {
+        "summary": "ff33e30cbd2fb277",
+        "title": "5610c6e4b9635e5a"
+      },
+      "epoch": 6
     }
   },
   "0e7a79c133508f7f3290d629b2969029f7ba3a0b9defcd40f14000ca953a829f": {
@@ -3473,10 +3477,14 @@
     "first_seen": "2026-09-11T12:01:07.767792+00:00",
     "translations": {
       "en": {
-        "summary": "Due to track construction works in the area ofX M\u00e4rzstra\u00dfe and Huglgasse the following measures are taken on the lines 46, 49 and 52.",
+        "summary": "Because of track construction works in the area of M\u00e4rzstra\u00dfe and Huglgasse, 46, 49 and 52, the following measures are taken.",
         "title": "46/49/52: track construction works"
       },
-      "epoch": 5
+      "en_src": {
+        "summary": "723308e5cb21ecbb",
+        "title": "e514368eb2e055b7"
+      },
+      "epoch": 6
     }
   },
   "2a15c4cf9ffa9725ceae625394d66517a1a868a9a5631dbb929e9657ad8d118f": {
@@ -4121,10 +4129,14 @@
     "first_seen": "2026-09-10T20:31:03.599728+00:00",
     "translations": {
       "en": {
-        "summary": "The diversion takes place via: Sch\u00f6nbrunner Schlo\u00dfstra\u00dfe - Sch\u00f6nbrunner Schlo\u00dfbr\u00fccke - Hadikgasse. The pedestrian and cycling traffic can be maintained.",
-        "title": "Kennedybr\u00fccke between Sch\u00f6nbrunner Schlo\u00dfstra\u00dfe and Hadikgasse, on page \"Otto Wagner Hofpavillon"
+        "summary": "The diversion takes place via: Sch\u00f6nbrunner Schlo\u00dfstra\u00dfe - Sch\u00f6nbrunner Schlo\u00dfbr\u00fccke - Hadikgasse. Pedestrian and cycling traffic can be maintained.",
+        "title": "Kennedybr\u00fccke between Sch\u00f6nbrunner Schlo\u00dfstra\u00dfe and Hadikgasse, on page Otto Wagner Hofpavillon\u2026"
       },
-      "epoch": 5
+      "en_src": {
+        "summary": "5ba6bd407467582b",
+        "title": "c55c2c760ccc1a3f"
+      },
+      "epoch": 6
     }
   },
   "31e51e324d0956dfecce2c4506581e5d0f5137cdfb6cffc4e768a7eeef1aafad": {
@@ -6482,10 +6494,14 @@
     "first_seen": "2026-09-11T21:59:34.293675+00:00",
     "translations": {
       "en": {
-        "summary": "Because of roadworks in the K\u00e4stenbaumgasse, the line 17A is redirected.",
+        "summary": "Because of roadworks in the K\u00e4stenbaumgasse, the line 17A is being redirected.",
         "title": "17A: construction works"
       },
-      "epoch": 5
+      "en_src": {
+        "summary": "e7cb0dd8c7d82950",
+        "title": "55a0d71854ad95f0"
+      },
+      "epoch": 6
     }
   },
   "4e5dfcbaf375de68da425987f230467e2e0e09f633598ed87196b91a0679d170": {
@@ -7432,9 +7448,13 @@
     "translations": {
       "en": {
         "summary": "Buses stop at Taborstra\u00dfe 35-37 track construction works Buses stop at Taborstra\u00dfe 62",
-        "title": "N29: Buses stop at Taborstra\u00dfe 35-37"
+        "title": "N29: buses stop at Taborstra\u00dfe 35-37, 62"
       },
-      "epoch": 5
+      "en_src": {
+        "summary": "91db5d256ff02c5a",
+        "title": "7c61a266b9a3db44"
+      },
+      "epoch": 6
     }
   },
   "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac": {
@@ -11476,10 +11496,14 @@
     "first_seen": "2026-09-10T20:31:03.599728+00:00",
     "translations": {
       "en": {
-        "summary": "The diversion in the direction of 21. district takes place via: Angyalf\u00f6ldstra\u00dfe - Leopoldauer Stra\u00dfe.",
-        "title": "Donaufelder Stra\u00dfe 79 up to 137"
+        "summary": "The diversion in direction 21. district takes place via: Angyalf\u00f6ldstra\u00dfe - Leopoldauer Stra\u00dfe.",
+        "title": "Donaufelder Stra\u00dfe 79 to 137"
       },
-      "epoch": 5
+      "en_src": {
+        "summary": "d9c9ebbcd832e1b6",
+        "title": "72c211d6cda9e851"
+      },
+      "epoch": 6
     }
   },
   "8add86ae80406aba4463c188a5159f96c8656ea87cdc88223c976d02bbfb6787": {
@@ -12128,13 +12152,17 @@
     "first_seen": "2026-09-12T10:01:06.772906+00:00",
     "translations": {
       "en": {
-        "summary": "Stop change of lines 49A and 50B towards Wolfersberg and Auhof stop: H\u00fcttergasse from: Anzengruberstra\u00dfe opposite 77 a to: H\u00fcttergasse 6A-6B \u2026",
+        "summary": "Station relocation of lines 49A and 50B towards Wolfersberg and Auhof Stop: H\u00fcttergasse From: Anzengruberstra\u00dfe opposite 77 a After: H\u00fcttergasseX 6A-6B \u2026",
         "title": "49A/50B: H\u00fcttergasse"
+      },
+      "en_src": {
+        "summary": "9772612536d7cd4c",
+        "title": "b1ba1cc41f877fcd"
       },
       "en_verbatim": [
         "title"
       ],
-      "epoch": 5
+      "epoch": 6
     }
   },
   "91931852629c56734de9ebb890a6d08fe3fa4bc03f486764b8ba9382f17388b5": {
@@ -15930,7 +15958,11 @@
         "summary": "Because of the Stadlauer Kirtage in Stadlauer Stra\u00dfe, the lines 86A, 87A and the call bus 86A are redirected.",
         "title": "86A/86AR/87A: event"
       },
-      "epoch": 5
+      "en_src": {
+        "summary": "7107cf2ee21abc00",
+        "title": "65aa9c88303dbb64"
+      },
+      "epoch": 6
     }
   },
   "c11f5415f3aa1b87ebc238119c29ffbf50342eba9979dbcee482efd531592f89": {
@@ -16294,9 +16326,12 @@
     "first_seen": "2026-09-12T10:01:06.772906+00:00",
     "translations": {
       "en": {
-        "title": "3A: buses stop K\u00e4rntner Ring 5"
+        "title": "3A: buses stop at K\u00e4rntner Ring 5"
       },
-      "epoch": 5
+      "en_src": {
+        "title": "61a64513d97b0726"
+      },
+      "epoch": 6
     }
   },
   "c54d35dd4954accb5a14c66c52fb6275d644afa17d58e6796ee43ecec085d8dd": {
@@ -23086,13 +23121,17 @@
     "first_seen": "2026-09-10T10:30:48.258004+00:00",
     "translations": {
       "en": {
-        "summary": "Due to construction works, trains between Vienna Hbf (U) and Gramatneusiedl Train Station from 05.122026 to 07.12.2026 (both from 23:15 to 04:40) cannot run local trains.",
+        "summary": "Due to construction works there are no local trains between Vienna Hbf (U) and Gramatneusiedl station from 05.121X2026 to 07.12.2026 (both from 23:15 to 04:40).",
         "title": "Wien Hauptbahnhof \u2194 Gramatneusiedl"
+      },
+      "en_src": {
+        "summary": "24bd6160770e0493",
+        "title": "610ea1339cd6e827"
       },
       "en_verbatim": [
         "title"
       ],
-      "epoch": 5
+      "epoch": 6
     }
   },
   "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&911030": {
