@@ -1751,7 +1751,7 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         metavar="PATH",
         default=DEFAULT_VOR_STOPS_PATH,
-        help="Path to the VOR stop CSV used for VOR_STATION_IDS",
+        help="Path to the VOR stop CSV used to enrich stations with their vor_id",
     )
     parser.add_argument(
         "--geonetz-stops",

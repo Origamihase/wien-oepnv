@@ -9,7 +9,16 @@ This module implements the logic to fetch transport alerts from the VOR (Verkehr
 - Safe HTTP fetching with retries and DoS protection
 - Parsing of complex JSON responses into standardized feed items.
 
-Configuration is primarily driven by environment variables (e.g., ``VOR_ACCESS_ID``, ``VOR_STATION_IDS``).
+Configuration is primarily driven by environment variables (e.g.,
+``VOR_ACCESS_ID``, ``VOR_HTTP_TIMEOUT``, ``VOR_MAX_REQUESTS_PER_DAY``).
+
+Scope: since the operator policy of 2026-05-11 the VOR/VAO API is used for
+the S-Bahn-Stammstrecke monitor only — ``scripts/update_stammstrecke_status.py``
+is this module's sole consumer, and it names its stops directly. There is no
+repository-wide VOR station list any more; the ``VOR_STATION_IDS`` variable
+this docstring used to advertise was never read by this module and its
+directory-derived default (``src.utils.stations.vor_station_ids``) was removed
+in 2026-09-13 as dead code.
 """
 
 from __future__ import annotations
