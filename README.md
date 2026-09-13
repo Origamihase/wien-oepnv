@@ -43,21 +43,23 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 2 |
+| Beobachtungen (gesamt) | 1 |
 | Durchschnittliche Verspätung | 0.0 min |
 | Kritische Verspätungen (> 9 min) | 0 |
-| Letzte Aktualisierung | 2026-09-13 20:01 CEST |
+| Letzte Aktualisierung | 2026-09-13 20:46 CEST |
 <!-- STATS:STAMMSTRECKE_LIVE:END -->
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
+> ⚠️ **Eingeschränkte Abdeckung:** Richtung **Praterstern** seit 14.08.2026 ohne Messwerte (Streckensperre – Bauarbeiten und Kabelbrand-Folgen). Dargestellt sind ausschließlich Fahrten in Richtung **Meidling** — die Zahlen unten sind daher **kein Korridor-Gesamtwert**.
+
 > _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 1.214 |
+| Beobachtungen (gesamt) | 1.213 |
 | Durchschnittliche Verspätung | 0.4 min |
 | Kritische Verspätungen (> 9 min) | 14 |
-| Letzte Aktualisierung | 2026-09-13 20:01 CEST |
+| Letzte Aktualisierung | 2026-09-13 20:46 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
 
 ### Ausfälle auf der S-Bahn-Stammstrecke
@@ -68,17 +70,19 @@ Mehr Statistiken findest du hier:
 | Kennzahl | Wert |
 | -------- | ---- |
 | Ausfälle (gesamt) | 0 |
-| Letzte Aktualisierung | 2026-09-13 20:01 CEST |
+| Letzte Aktualisierung | 2026-09-13 20:46 CEST |
 <!-- STATS:AUSFAELLE_LIVE:END -->
 
 <!-- STATS:AUSFAELLE:BEGIN -->
+> ⚠️ **Eingeschränkte Abdeckung:** Richtung **Praterstern** seit 14.08.2026 ohne Messwerte (Streckensperre – Bauarbeiten und Kabelbrand-Folgen). Dargestellt sind ausschließlich Fahrten in Richtung **Meidling** — die Zahlen unten sind daher **kein Korridor-Gesamtwert**.
+
 > _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Ausfälle (gesamt) | 204 |
-| Häufigste Linien | S2 (78), CJX9 (69), S4 (46) |
-| Letzte Aktualisierung | 2026-09-13 20:01 CEST |
+| Ausfälle (gesamt) | 200 |
+| Häufigste Linien | S2 (75), CJX9 (68), S4 (46) |
+| Letzte Aktualisierung | 2026-09-13 20:46 CEST |
 <!-- STATS:AUSFAELLE:END -->
 
 > **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).

@@ -29,8 +29,10 @@ an absolute threshold.
 from __future__ import annotations
 
 import csv
+import logging
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Any
 
 import pytest
 from zoneinfo import ZoneInfo
@@ -244,6 +246,21 @@ def test_health_check_is_registered_in_the_report() -> None:
 # --- monitor-script integration --------------------------------------------
 
 
+def _degraded_records(caplog: pytest.LogCaptureFixture) -> list[str]:
+    """DEGRADED lines captured on the monitor's logger.
+
+    Uses ``record.getMessage()`` rather than ``record.message``: the latter is
+    only populated once some handler has formatted the record, which depends on
+    what the rest of the session left attached to the root logger. Interpolating
+    here is deterministic regardless of handler state.
+    """
+    return [
+        rec.getMessage()
+        for rec in caplog.records
+        if "DEGRADED" in rec.getMessage()
+    ]
+
+
 def test_monitor_reports_silent_direction(
     stats_dir: Path, caplog: pytest.LogCaptureFixture
 ) -> None:
@@ -251,11 +268,13 @@ def test_monitor_reports_silent_direction(
 
     _write_ledger(stats_dir, _ticks(NOW, 8, "Meidling"))
 
-    with caplog.at_level("WARNING"):
+    with caplog.at_level(logging.WARNING, logger=hbf.LOGGER.name):
         silent = hbf._report_silent_directions(NOW)
 
     assert silent == ["Praterstern"]
-    assert any("DEGRADED" in rec.message for rec in caplog.records)
+    degraded = _degraded_records(caplog)
+    assert degraded, "the monitor must log the degraded state loudly"
+    assert "Praterstern" in degraded[0]
 
 
 def test_monitor_silent_when_healthy(
@@ -267,9 +286,9 @@ def test_monitor_silent_when_healthy(
         stats_dir, _ticks(NOW, 8, "Meidling") + _ticks(NOW, 8, "Praterstern")
     )
 
-    with caplog.at_level("WARNING"):
+    with caplog.at_level(logging.WARNING, logger=hbf.LOGGER.name):
         assert hbf._report_silent_directions(NOW) == []
-    assert not [r for r in caplog.records if "DEGRADED" in r.message]
+    assert not _degraded_records(caplog)
 
 
 def test_monitor_emits_actions_annotation_only_in_ci(
@@ -312,3 +331,130 @@ def test_monitor_degradation_never_fails_the_tick(
         hbf, "find_silent_directions", lambda **_kw: (_ for _ in ()).throw(OSError("boom"))
     )
     assert hbf._report_silent_directions(NOW) == []
+
+
+# --- published-figure transparency (audit B.1, Aufgabe 1.2) -----------------
+
+
+def _sm_row(ts: datetime, direction: str, delay: float = 0.0) -> Any:
+    from scripts.generate_markdown_stats import StammstreckeRow
+
+    return StammstreckeRow(
+        timestamp=ts,
+        weekday=WEEKDAY_LABELS[ts.weekday()],
+        hour=ts.hour,
+        direction=direction,
+        delay_minutes=delay,
+    )
+
+
+def test_canonical_directions_match_the_producer() -> None:
+    """The stats tuple and the monitor's labels must not drift apart.
+
+    ``src.utils.stats`` re-declares the labels instead of importing them (it is
+    stdlib-only and the monitor pulls in ``requests``), so this is the guard
+    that keeps the copy honest.
+    """
+    from scripts.update_stammstrecke_hbf import DIRECTION_LABELS
+    from src.utils.stats import STAMMSTRECKE_DIRECTIONS
+
+    assert tuple(DIRECTION_LABELS) == tuple(STAMMSTRECKE_DIRECTIONS)
+
+
+def test_coverage_note_names_direction_and_last_seen_date() -> None:
+    from scripts.generate_markdown_stats import render_direction_coverage_note
+
+    window = [_sm_row(NOW - timedelta(hours=h), "Meidling") for h in range(1, 9)]
+    older = [_sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern")]
+
+    note = render_direction_coverage_note(window, all_rows=window + older)
+
+    assert "Eingeschränkte Abdeckung" in note
+    assert "Praterstern" in note
+    assert "14.08.2026" in note, "the note must name when the direction was last seen"
+    assert "Meidling" in note
+    assert "kein Korridor-Gesamtwert" in note
+
+
+def test_coverage_note_is_empty_when_both_directions_report() -> None:
+    """Self-clearing: the caveat must vanish the moment coverage is complete."""
+    from scripts.generate_markdown_stats import render_direction_coverage_note
+
+    window = [
+        _sm_row(NOW - timedelta(hours=h), d)
+        for h in range(1, 5)
+        for d in DIRECTIONS
+    ]
+
+    assert render_direction_coverage_note(window, all_rows=window) == ""
+
+
+def test_coverage_note_is_empty_for_an_empty_or_fully_dark_window() -> None:
+    from scripts.generate_markdown_stats import render_direction_coverage_note
+
+    assert render_direction_coverage_note([], all_rows=[]) == ""
+    # Rows exist but none for any canonical direction → not a coverage caveat.
+    odd = [_sm_row(NOW - timedelta(hours=1), "Unbekannt")]
+    assert render_direction_coverage_note(odd, all_rows=odd) == ""
+
+
+def test_readme_blocks_carry_the_coverage_note() -> None:
+    from scripts.generate_markdown_stats import (
+        render_readme_ausfaelle_block,
+        render_readme_stammstrecke_block,
+    )
+
+    window = [_sm_row(NOW - timedelta(hours=h), "Meidling") for h in range(1, 9)]
+    note = "> ⚠️ **Eingeschränkte Abdeckung:** Testhinweis.\n\n"
+
+    sm_block = render_readme_stammstrecke_block(window, now=NOW, coverage_note=note)
+    assert sm_block.startswith("> ⚠️ **Eingeschränkte Abdeckung:**")
+    assert "| Beobachtungen (gesamt) |" in sm_block
+
+    au_block = render_readme_ausfaelle_block([], now=NOW, coverage_note=note)
+    assert au_block.startswith("> ⚠️ **Eingeschränkte Abdeckung:**")
+
+
+def test_dashboard_direction_section_carries_the_coverage_note() -> None:
+    from scripts.generate_markdown_stats import (
+        StammstreckeAggregate,
+        _format_directions_section,
+    )
+
+    agg = StammstreckeAggregate(by_direction={"Meidling": 500, "Praterstern": 400})
+    note = "> ⚠️ **Eingeschränkte Abdeckung:** Testhinweis."
+
+    # The annual aggregate still holds pre-outage rows for both directions, so
+    # only the caller-supplied (window-derived) note can surface the problem.
+    lines = _format_directions_section(agg, coverage_note=note)
+    assert any("Eingeschränkte Abdeckung" in line for line in lines)
+
+    clean = _format_directions_section(agg)
+    assert not any("Eingeschränkte Abdeckung" in line for line in clean)
+
+
+def test_dashboard_flags_a_direction_absent_from_the_whole_year() -> None:
+    from scripts.generate_markdown_stats import (
+        StammstreckeAggregate,
+        _format_directions_section,
+    )
+
+    agg = StammstreckeAggregate(by_direction={"Meidling": 500})
+    lines = _format_directions_section(agg)
+    assert any("Praterstern" in line for line in lines)
+
+
+def test_site_js_and_python_agree_on_the_directions() -> None:
+    """The static site re-declares the labels; keep it in step with Python."""
+    import re
+    from pathlib import Path
+
+    from src.utils.stats import STAMMSTRECKE_DIRECTIONS
+
+    js = (
+        Path(__file__).resolve().parents[1] / "docs" / "assets" / "site.js"
+    ).read_text(encoding="utf-8")
+    match = re.search(r"const STAMMSTRECKE_DIRECTIONS = \[([^\]]*)\]", js)
+    assert match, "site.js no longer declares STAMMSTRECKE_DIRECTIONS"
+    js_dirs = tuple(re.findall(r'"([^"]+)"', match.group(1)))
+    assert js_dirs == tuple(STAMMSTRECKE_DIRECTIONS)

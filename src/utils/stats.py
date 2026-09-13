@@ -896,6 +896,14 @@ def read_recent_stammstrecke_observations(
 # 6 h window this rule produces ZERO false alarms across 2113 hourly samples,
 # while still flagging the 2026-08-14 outage at every one of the 692 samples
 # after it began — first alarm 6 h after the last northbound row.
+#: Canonical Stammstrecke direction labels, in report order.
+#:
+#: Mirrors ``scripts.update_stammstrecke_hbf.DIRECTION_LABELS``; that module is
+#: the producer, but importing it here would drag ``requests`` into this
+#: stdlib-only module. ``tests/test_stammstrecke_direction_health.py`` pins the
+#: two tuples together so they cannot drift.
+STAMMSTRECKE_DIRECTIONS: Final = ("Meidling", "Praterstern")
+
 DIRECTION_SILENCE_WINDOW_HOURS: Final = 6.0
 #: Rows a peer direction must show before a silent direction is called a fault.
 #: Guards the boundary case where the corridor is only just waking up and the
@@ -981,6 +989,7 @@ __all__ = [
     "DIRECTION_SILENCE_MIN_PEER_ROWS",
     "DIRECTION_SILENCE_WINDOW_HOURS",
     "DirectionActivity",
+    "STAMMSTRECKE_DIRECTIONS",
     "find_silent_directions",
     "summarise_direction_activity",
     "STAMMSTRECKE_HEADER",

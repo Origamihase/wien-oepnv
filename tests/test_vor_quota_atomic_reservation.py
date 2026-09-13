@@ -296,19 +296,19 @@ def test_charge_one_request_raises_when_reservation_refused(
     """``_charge_one_request`` fails closed on every refusal reason."""
     import scripts.update_stammstrecke_status as status
 
+    # ``status.vor_provider`` IS ``src.providers.vor``; patch the module itself
+    # so the lookup the script performs at call time sees the stub.
     monkeypatch.setattr(
-        status.vor_provider,
-        "reserve_request_slot",
-        lambda _now=None: (False, status.vor_provider.MAX_REQUESTS_PER_DAY),
+        vor, "reserve_request_slot", lambda _now=None: (False, vor.MAX_REQUESTS_PER_DAY)
     )
     with pytest.raises(status._QuotaExceeded):
         status._charge_one_request(datetime.now(VIENNA))
 
     # Sentinel refusal (lock/write failure) must raise too, not slip through.
     monkeypatch.setattr(
-        status.vor_provider,
+        vor,
         "reserve_request_slot",
-        lambda _now=None: (False, status.vor_provider.MAX_REQUESTS_PER_DAY + 1),
+        lambda _now=None: (False, vor.MAX_REQUESTS_PER_DAY + 1),
     )
     with pytest.raises(status._QuotaExceeded):
         status._charge_one_request(datetime.now(VIENNA))
@@ -320,9 +320,7 @@ def test_charge_one_request_passes_when_granted(
     """A granted reservation returns without raising."""
     import scripts.update_stammstrecke_status as status
 
-    monkeypatch.setattr(
-        status.vor_provider, "reserve_request_slot", lambda _now=None: (True, 1)
-    )
+    monkeypatch.setattr(vor, "reserve_request_slot", lambda _now=None: (True, 1))
     status._charge_one_request(datetime.now(VIENNA))
 
 

@@ -143,16 +143,16 @@ def test_verify_script_skips_the_probe_when_budget_is_spent(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """A refused reservation returns exit 3 and issues no request."""
+    import src.providers.vor as vor
+
     import scripts.verify_vor_access_id as verify
 
-    monkeypatch.setattr(verify.vor_module, "refresh_base_configuration", lambda: "")
+    # ``verify.vor_module`` IS ``src.providers.vor``; patch the module directly
+    # so the attribute lookup inside ``main`` resolves to the stub.
+    monkeypatch.setattr(vor, "refresh_base_configuration", lambda: "")
+    monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "token")
     monkeypatch.setattr(
-        verify.vor_module, "refresh_access_credentials", lambda: "token"
-    )
-    monkeypatch.setattr(
-        verify.vor_module,
-        "reserve_request_slot",
-        lambda: (False, verify.vor_module.MAX_REQUESTS_PER_DAY),
+        vor, "reserve_request_slot", lambda: (False, vor.MAX_REQUESTS_PER_DAY)
     )
 
     def _must_not_fetch(*args: object, **kwargs: object) -> bytes:
