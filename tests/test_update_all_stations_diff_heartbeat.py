@@ -416,3 +416,36 @@ def test_wrapper_writes_heartbeat_and_diff_on_success(
     diff_path = tmp_path / "diff.md"
     assert diff_path.exists()
     assert "stations.json — Diff-Bericht" in diff_path.read_text(encoding="utf-8")
+
+
+def test_last_run_sidecar_persists_every_validation_category() -> None:
+    """The heartbeat's ``validation`` block must mirror all report categories.
+
+    The sidecar (``data/stations_last_run.json``) is what an operator reads
+    after a cron run. A category that is not written there reads as "clean"
+    regardless of what the run found — audit 2026-09-13 hit exactly that:
+    ``alias_collision_issues`` was the only non-zero category and was one of
+    three that the block omitted. This guards against the same drift when a
+    new category is added to :class:`ValidationReport`.
+    """
+    import dataclasses
+    import inspect
+    import re
+
+    from src.utils.stations_validation import ValidationReport
+
+    source = inspect.getsource(wrapper)
+    block = re.search(r'"validation": \{(.*?)\n        \}', source, re.S)
+    assert block is not None, "validation block not found in update_all_stations"
+    persisted = set(re.findall(r"len\(report\.(\w+)\)", block.group(1)))
+
+    # Everything on the report except the two plain counters is an issue list.
+    categories = {f.name for f in dataclasses.fields(ValidationReport)} - {
+        "total_stations",
+        "gtfs_stop_count",
+    }
+
+    assert categories - persisted == set(), (
+        "validation categories missing from the last-run sidecar: "
+        f"{sorted(categories - persisted)}"
+    )

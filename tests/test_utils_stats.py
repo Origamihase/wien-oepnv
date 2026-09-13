@@ -750,3 +750,102 @@ def test_read_recent_observations_localizes_year_at_new_year_boundary(
     )
     assert len(observations) == 1
     assert observations[0].direction == "Meidling"
+
+
+# ---------------------------------------------------------------------------
+# Regression: the WL ``| Haltestelle: …`` marker must survive a long
+# description.
+#
+# ``src/providers/wl_fetch.py`` appends the marker to the *end* of the built
+# description. Audit 2026-09-13 measured 69% of live WL descriptions above
+# 1024 chars (max 4972), so the single 1024-char search window silently
+# dropped the most authoritative signal the WL API provides (the curated
+# ``relatedStops`` list) and filed those incidents under ``unbekannt`` in the
+# dashboard's "Häufigste Störungsorte" table.
+# ---------------------------------------------------------------------------
+
+_LONG_WL_DESCRIPTION = (
+    "<p>Wegen Gleisbauarbeiten kommt es zu Einschr&auml;nkungen. "
+    "Ersatzverkehr eingerichtet. </p> " * 22
+)
+
+
+def _wl_item(description: str) -> dict[str, object]:
+    return {
+        "title": "43A: Gleisbauarbeiten",
+        "description": description,
+        "source": "Wiener Linien",
+    }
+
+
+def test_extract_location_name_reads_haltestelle_after_long_description() -> None:
+    """The label is honoured even when it sits far past the 1024-char mark."""
+    description = _LONG_WL_DESCRIPTION + " | Haltestelle: Dornbach"
+    assert len(description) > 1024
+    assert stats_utils.extract_location_name(_wl_item(description)) == "Wien Dornbach (WL)"
+
+
+def test_extract_location_name_haltestelle_result_is_length_independent() -> None:
+    """Same marker, short vs. long description — identical result."""
+    short = stats_utils.extract_location_name(
+        _wl_item("<p>Kurze Meldung.</p> | Haltestelle: Dornbach")
+    )
+    long = stats_utils.extract_location_name(
+        _wl_item(_LONG_WL_DESCRIPTION + " | Haltestelle: Dornbach")
+    )
+    assert short == long == "Wien Dornbach (WL)"
+
+
+def test_extract_location_name_labelled_scan_stays_bounded() -> None:
+    """Beyond ``MAX_LABELLED_SCAN_CHARS`` the marker is still out of scope."""
+    description = "x" * (stats_utils.MAX_LABELLED_SCAN_CHARS + 100) + " | Haltestelle: Dornbach"
+    assert stats_utils.extract_location_name(_wl_item(description)) == "unbekannt"
+
+
+def test_extract_location_name_station_label_after_long_description() -> None:
+    """The ``| Station:`` fallback shares the widened window."""
+    description = _LONG_WL_DESCRIPTION + " | Station: Wien Floridsdorf"
+    assert stats_utils.extract_location_name(_wl_item(description)) == "Wien Floridsdorf"
+
+
+def test_extract_location_name_unanchored_scan_keeps_1024_bound() -> None:
+    """Widening the label window must not widen the fuzzy scan.
+
+    Without a label, a station mentioned only past 1024 chars stays
+    unresolved — the scan returns the first directory hit in reading order,
+    which that deep into a description is typically a street mentioned in
+    passing rather than the affected stop.
+    """
+    description = ("Arbeiten im Bereich der Nebenfahrbahn. " * 40) + " Dornbach"
+    assert len(description) > 1024
+    assert stats_utils.extract_location_name(_wl_item(description)) == "unbekannt"
+
+
+def test_extract_location_name_generic_lokalbahn_does_not_pick_a_winner() -> None:
+    """A bare "Lokalbahn" must not collapse onto one Badner-Bahn stop.
+
+    Four stops up to 5.6 km apart claim that alias; before audit 2026-09-13
+    the tie-break silently filed every generic Badner-Bahn mention under
+    "Wien Guntramsdorf Lokalbahn (WL)".
+    """
+    item = {
+        "title": "Badner Bahn: Störung Lokalbahn",
+        "description": "",
+        "source": "Wiener Linien",
+    }
+    assert stats_utils.extract_location_name(item) == "unbekannt"
+
+
+@pytest.mark.parametrize(
+    "title, expected",
+    [
+        ("Störung Wien Traiskirchen Lokalbahn", "Wien Traiskirchen Lokalbahn (WL)"),
+        ("Störung Wien Guntramsdorf Lokalbahn", "Wien Guntramsdorf Lokalbahn (WL)"),
+    ],
+)
+def test_extract_location_name_named_lokalbahn_stops_still_resolve(
+    title: str, expected: str
+) -> None:
+    """Filtering the generic token must not hide the fully-named stops."""
+    item = {"title": title, "description": "", "source": "Wiener Linien"}
+    assert stats_utils.extract_location_name(item) == expected

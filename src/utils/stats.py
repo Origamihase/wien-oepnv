@@ -240,6 +240,17 @@ def _sanitize_csv_text_field(value: str) -> str:
     return cleaned
 
 
+# Upper bound for the *anchored* label scans in
+# :func:`extract_location_name` (``| Haltestelle:`` / ``| Station:`` /
+# ``| Location:``). Sized against live data: WL descriptions in
+# ``cache/wl_*/events.json`` topped out at 4972 chars on 2026-09-13,
+# with 69% above the 1024-char bound that the unanchored scans still
+# use. 8192 leaves ~1.6x headroom over that observed maximum while
+# keeping an explicit ceiling on adversarial input — the label regexes
+# are anchored on a literal and cap their capture at 200 chars, so the
+# cost here is a bounded literal search, not a backtracking scan.
+MAX_LABELLED_SCAN_CHARS: Final = 8192
+
 # Structured-signal patterns. Each captures a *labelled* location segment
 # that the providers already serialise into ``description`` (or ``title``)
 # in a deterministic shape — these are the cleanest signals because the
@@ -312,6 +323,14 @@ _GENERIC_DIRECTORY_TOKENS: Final = frozenset(
         "station",
         "wien",
         "vor",
+        # Audit 2026-09-13: four Badner-Bahn stops up to 5.6 km apart
+        # ("Wien Guntramsdorf Lokalbahn (WL)", "Wien Neu Guntramsdorf
+        # (WL)", "Wien Möllersdorf (WL)", "Wien Traiskirchen Lokalbahn
+        # (WL)") all claim the bare "lokalbahn" alias, so a generic
+        # mention collapsed every Badner-Bahn incident onto whichever
+        # one won the tie-break (Guntramsdorf) — the same flagship-node
+        # skew this set exists to prevent for "hbf".
+        "lokalbahn",
     }
 )
 
@@ -619,6 +638,11 @@ def extract_location_name(item: dict[str, Any]) -> str:
        round demonstrated that any such fallback re-pollutes the
        statistics ledger.
 
+    Steps 1-2 scan up to :data:`MAX_LABELLED_SCAN_CHARS` characters so a
+    long provider description cannot push the label out of view; steps
+    3-6 stay bounded to the first 1024 characters. See the inline
+    comment below for why the two windows differ.
+
     The function never raises — a malformed item just returns the
     fallback string.
     """
@@ -628,12 +652,32 @@ def extract_location_name(item: dict[str, Any]) -> str:
     if not haystack:
         return "unbekannt"
 
-    # Bound the search window: providers cap descriptions at a few
-    # hundred chars but a defensive cap also keeps the regex engine
-    # bounded on adversarial inputs.
+    # Two search windows, deliberately different in size.
+    #
+    # ``labelled_haystack`` feeds the *anchored* label regexes
+    # (``_HALTESTELLE_RE`` / ``_LABELED_LOCATION_RE``). Those match on a
+    # literal ``| <Label>:`` prefix and cap their capture at 200 chars,
+    # so they stay linear-time on long input and need no tight bound.
+    # They must see the whole description: the WL provider appends
+    # ``" | Haltestelle: …"`` to the *end* of the built description
+    # (``src/providers/wl_fetch.py`` — ``desc += f" | Haltestelle: …"``),
+    # and 69% of live WL descriptions exceed 1024 chars (observed max
+    # 4972 on 2026-09-13). Under the previous single 1024-char window
+    # that marker fell outside the haystack and the most authoritative
+    # signal the WL API gives us — the curated ``relatedStops`` list —
+    # was silently dropped, landing the incident in the dashboard's
+    # "Häufigste Störungsorte" table as ``unbekannt``.
+    #
+    # ``haystack`` keeps the historical 1024-char bound for the
+    # *unanchored* heuristics and the sliding-window scan below. Those
+    # are the ReDoS-sensitive ones, and widening them would also hurt
+    # precision: the scan returns the first directory hit in reading
+    # order, which deep inside a long description is typically a street
+    # mentioned in passing rather than the affected stop.
+    labelled_haystack = haystack[:MAX_LABELLED_SCAN_CHARS]
     haystack = haystack[:1024]
 
-    halt = _HALTESTELLE_RE.search(haystack)
+    halt = _HALTESTELLE_RE.search(labelled_haystack)
     if halt:
         first_stop = halt.group(1).split(",")[0].strip()
         resolved = _resolve_via_directory(first_stop)
@@ -643,7 +687,7 @@ def extract_location_name(item: dict[str, Any]) -> str:
         if normalised:
             return normalised
 
-    labeled = _LABELED_LOCATION_RE.search(haystack)
+    labeled = _LABELED_LOCATION_RE.search(labelled_haystack)
     if labeled:
         first_label = labeled.group(1).split(",")[0].strip()
         resolved = _resolve_via_directory(first_label)
@@ -833,6 +877,7 @@ __all__ = [
     "STOERUNGEN_HEADER",
     "WEEKDAY_LABELS",
     "DEFAULT_STATS_DIR",
+    "MAX_LABELLED_SCAN_CHARS",
     "MAX_STAMMSTRECKE_CSV_BYTES",
     "StammstreckeObservation",
     "VIENNA_TZ",

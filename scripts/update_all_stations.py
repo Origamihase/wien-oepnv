@@ -420,6 +420,11 @@ def _build_heartbeat(
             "after": after_count,
             "delta": after_count - before_count,
         },
+        # Mirror *every* category the report carries. The sidecar is what an
+        # operator reads after a cron run, so a category missing here reads as
+        # "clean" no matter what the run actually found. Audit 2026-09-13:
+        # ``alias_collision_issues`` was the only non-zero category and was
+        # one of the three omitted ones.
         "validation": {
             "duplicates": len(report.duplicates),
             "alias_issues": len(report.alias_issues),
@@ -427,8 +432,11 @@ def _build_heartbeat(
             "gtfs_issues": len(report.gtfs_issues),
             "security_issues": len(report.security_issues),
             "cross_station_id_issues": len(report.cross_station_id_issues),
+            "identity_field_conflicts": len(report.identity_field_conflicts),
             "provider_issues": len(report.provider_issues),
             "naming_issues": len(report.naming_issues),
+            "cross_name_alias_issues": len(report.cross_name_alias_issues),
+            "alias_collision_issues": len(report.alias_collision_issues),
         },
         "diff": {
             "added": len(diff["added"]),
