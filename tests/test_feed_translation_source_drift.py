@@ -24,8 +24,9 @@ glossary or masking changes and knows nothing about upstream edits. The fix adds
 a per-field fingerprint of the German source (``_SOURCE_DIGEST_KEY``); the two
 mechanisms keep one job each.
 
-This module also covers the capitalisation of EN titles (audit C.3), the other
-thing an English subscriber sees on every single item.
+This module also covers two smaller things an English subscriber sees on the
+items themselves: the capitalisation of EN titles (audit C.3), and the stray
+unpaired ``"`` the NMT model occasionally opens and never closes.
 """
 
 from __future__ import annotations
@@ -305,3 +306,62 @@ def test_overlay_capitalises_the_shipped_title(
 
     assert out.title_out == "44: Event trains stop Rosensteingasse"
     assert out.title_cdata.find("44: Event") != -1, "the rendered CDATA must match"
+
+
+# --- unpaired quotes from the NMT model -------------------------------------
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        # The live case: the model opened a quotation and never closed it.
+        (
+            'Kennedybrücke between Schönbrunner Schloßstraße and Hadikgasse, '
+            'on page "Otto Wagner Hofpavillon',
+            "Kennedybrücke between Schönbrunner Schloßstraße and Hadikgasse, "
+            "on page Otto Wagner Hofpavillon",
+        ),
+        ('"Otto Wagner Hofpavillon', "Otto Wagner Hofpavillon"),
+        ('He said "hello', "He said hello"),
+        # Three quotes: the last one is the one left open.
+        ('"a" and "b', '"a" and b'),
+    ],
+)
+def test_unpaired_quote_is_dropped(raw: str, expected: str) -> None:
+    assert build_feed._drop_unpaired_quote(raw) == expected
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "no quotes at all",
+        'a balanced "quotation" here',
+        '"fully quoted"',
+        '"a" and "b"',
+        "",
+    ],
+)
+def test_balanced_text_is_untouched(text: str) -> None:
+    assert build_feed._drop_unpaired_quote(text) == text
+
+
+def test_overlay_drops_the_unpaired_quote(monkeypatch: pytest.MonkeyPatch) -> None:
+    """End-to-end: the stray quote never reaches the rendered title."""
+    monkeypatch.setattr(
+        build_feed,
+        "_translate_text_attempt",
+        lambda text, **_kw: 'Kennedybrücke, on page "Otto Wagner Hofpavillon',
+    )
+    state: dict[str, dict[str, Any]] = {}
+
+    out = build_feed._apply_lang_overlay(
+        _fc("Kennedybrücke, auf Seite Otto Wagner Hofpavillon…"),
+        "",
+        "",
+        "baustellen|kb|1",
+        "en",
+        state,
+    )
+
+    assert '"' not in out.title_out
+    assert out.title_out == "Kennedybrücke, on page Otto Wagner Hofpavillon"

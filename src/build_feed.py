@@ -2471,6 +2471,35 @@ def _capitalise_title_body(title: str) -> str:
     return title[:start] + head.upper() + title[start + 1:]
 
 
+def _drop_unpaired_quote(text: str) -> str:
+    """Remove a lone unmatched ``"`` from translated output.
+
+    The NMT model occasionally opens a quotation it never closes. Observed
+    live on 2026-09-13, ``docs/feed.en.xml`` item 8::
+
+        DE  … Hadikgasse, auf Seite Otto Wagner Hofpavillon…
+        EN  … Hadikgasse, on page "Otto Wagner Hofpavillon
+
+    The title was 96 characters against a 256-character limit, so this is not
+    our truncation cutting a closing quote off — the model simply emitted an
+    opener and dropped the trailing ellipsis.
+
+    An odd number of ``"`` is unambiguously wrong regardless of how the
+    sentence is worded, so dropping the unmatched one is a safe repair that
+    needs no judgement about meaning. The LAST quote is removed: it is the one
+    left open. Balanced text (including text with no quotes at all) is
+    returned untouched, and only the ASCII quote is considered — the German
+    typographic pair is not something the model has been seen to unbalance,
+    and inventing handling for it would be guesswork.
+    """
+    if text.count('"') % 2 == 0:
+        return text
+    cut = text.rfind('"')
+    if cut < 0:  # pragma: no cover - unreachable while the count is odd
+        return text
+    return (text[:cut] + text[cut + 1:]).strip()
+
+
 def _parse_lines_from_title(title: str) -> list[str]:
     m = _LINE_PREFIX_RE.match(title or "")
     if not m:
@@ -4415,8 +4444,10 @@ def _apply_lang_overlay(
     title_en = _WHITESPACE_RE.sub(" ", title_en).strip()
     # Applied after the cap and the whitespace collapse so it acts on the
     # string that actually ships, not on an intermediate one.
-    title_en = _capitalise_title_body(title_en)
-    summary_en = _truncate_summary_180(_sanitize_text(summary_raw))
+    title_en = _capitalise_title_body(_drop_unpaired_quote(title_en))
+    summary_en = _drop_unpaired_quote(
+        _truncate_summary_180(_sanitize_text(summary_raw))
+    )
     time_line_en = _translate_time_line_en(time_line_de)
     desc_text_truncated_en, desc_html_en = _compose_description(
         summary_en, time_line_en
