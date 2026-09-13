@@ -318,6 +318,39 @@
     return dict[key] || CHART_TEXT_DE[key] || key;
   }
 
+  // Canonical Stammstrecke directions. Mirrors ``STAMMSTRECKE_DIRECTIONS`` in
+  // ``src/utils/stats.py`` — kept in sync by hand because the site is static.
+  const STAMMSTRECKE_DIRECTIONS = ["Meidling", "Praterstern"];
+  // Window used to decide whether a direction has gone silent. Matches the
+  // 30-day README/dashboard window so the site tells the same story as the
+  // generated Markdown.
+  const COVERAGE_WINDOW_DAYS = 30;
+  // Operator-maintained cause, mirroring ``DIRECTION_OUTAGE_CAUSE`` in
+  // ``scripts/generate_markdown_stats.py``. Shown only while a direction is
+  // actually missing, so it cannot outlive the outage it describes.
+  const COVERAGE_TEXT_DE = {
+    "coverage-title": "Eingeschränkte Abdeckung",
+    "coverage-cause": "Streckensperre – Bauarbeiten und Kabelbrand-Folgen",
+    "coverage-since": "seit",
+    "coverage-body": (missing, since, covered, cause) =>
+      `Richtung ${missing} ${since}ohne Messwerte (${cause}). ` +
+      `Dargestellt sind ausschließlich Fahrten in Richtung ${covered} — ` +
+      "die Kennzahlen sind daher kein Korridor-Gesamtwert.",
+  };
+  const COVERAGE_TEXT_EN = {
+    "coverage-title": "Limited coverage",
+    "coverage-cause": "line closure – engineering works and cable-fire aftermath",
+    "coverage-since": "since",
+    "coverage-body": (missing, since, covered, cause) =>
+      `No measurements for the ${missing} direction ${since}(${cause}). ` +
+      `Only services towards ${covered} are shown — the figures are ` +
+      "therefore not a whole-corridor total.",
+  };
+  function cov(key) {
+    const dict = currentLang === "en" ? COVERAGE_TEXT_EN : COVERAGE_TEXT_DE;
+    return dict[key] || COVERAGE_TEXT_DE[key] || key;
+  }
+
   // Weather-widget strings rendered dynamically (icon tooltip + aria
   // label), analogous to CHART_TEXT — NOT covered by ``data-i18n`` because
   // the header widget's text is built at runtime by ``renderWeather``. The
@@ -853,6 +886,66 @@
     renderBars("#stammstrecke-direction",
       sortedEntries(byDirection),
       { unit: "", formatValue: (v) => nfInt.format(v) });
+
+    renderCoverageNotice(valid);
+  }
+
+  // Audit B.1: the northbound direction stopped reporting on 2026-08-14 while
+  // the southbound one kept going, and every published figure silently became
+  // a half-corridor sample. This banner says so on the site, using the same
+  // rule and window as ``render_direction_coverage_note`` in
+  // ``scripts/generate_markdown_stats.py``.
+  //
+  // Derived from the loaded rows, never hard-coded: it appears only while a
+  // canonical direction is missing from the recent window while another one
+  // reports, names the date that direction was last seen, and disappears by
+  // itself the moment it reports again. The closure is temporary and the
+  // restart has to show up without anyone editing the page.
+  function renderCoverageNotice(rows) {
+    const node = $("#stammstrecke-coverage");
+    if (!node) return;
+    const cutoff = Date.now() - COVERAGE_WINDOW_DAYS * 86400000;
+
+    const recent = new Set();
+    const lastSeen = new Map();
+    for (const row of rows) {
+      const ts = Date.parse(row.timestamp);
+      if (!Number.isFinite(ts)) continue;
+      const dir = row.direction;
+      if (!dir) continue;
+      const prev = lastSeen.get(dir);
+      if (prev === undefined || ts > prev) lastSeen.set(dir, ts);
+      if (ts >= cutoff) recent.add(dir);
+    }
+
+    const missing = STAMMSTRECKE_DIRECTIONS.filter((d) => !recent.has(d));
+    const covered = STAMMSTRECKE_DIRECTIONS.filter((d) => recent.has(d));
+    // Nothing missing, or the whole corridor quiet (a full outage is the
+    // freshness check's business, not a coverage caveat).
+    if (!missing.length || !covered.length) {
+      node.hidden = true;
+      node.textContent = "";
+      return;
+    }
+
+    const joiner = currentLang === "en" ? " and " : " und ";
+    const missingTxt = missing.join(joiner);
+    const coveredTxt = covered.join(joiner);
+    const stamp = lastSeen.get(missing[0]);
+    const since = Number.isFinite(stamp)
+      ? `${cov("coverage-since")} ${new Date(stamp).toLocaleDateString(localeTag())} `
+      : "";
+
+    node.textContent = "";
+    const strong = document.createElement("strong");
+    strong.textContent = `⚠️ ${cov("coverage-title")}: `;
+    node.appendChild(strong);
+    node.appendChild(
+      document.createTextNode(
+        cov("coverage-body")(missingTxt, since, coveredTxt, cov("coverage-cause")),
+      ),
+    );
+    node.hidden = false;
   }
 
   function renderAusfaelleStats(year, rows) {

@@ -43,18 +43,20 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 2 |
+| Beobachtungen (gesamt) | 1 |
 | Durchschnittliche Verspätung | 0.0 min |
 | Kritische Verspätungen (> 9 min) | 0 |
 | Letzte Aktualisierung | 2026-09-13 21:31 CEST |
 <!-- STATS:STAMMSTRECKE_LIVE:END -->
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
+> ⚠️ **Eingeschränkte Abdeckung:** Richtung **Praterstern** seit 14.08.2026 ohne Messwerte (Streckensperre – Bauarbeiten und Kabelbrand-Folgen). Dargestellt sind ausschließlich Fahrten in Richtung **Meidling** — die Zahlen unten sind daher **kein Korridor-Gesamtwert**.
+
 > _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 1.214 |
+| Beobachtungen (gesamt) | 1.213 |
 | Durchschnittliche Verspätung | 0.4 min |
 | Kritische Verspätungen (> 9 min) | 14 |
 | Letzte Aktualisierung | 2026-09-13 21:31 CEST |
@@ -72,6 +74,8 @@ Mehr Statistiken findest du hier:
 <!-- STATS:AUSFAELLE_LIVE:END -->
 
 <!-- STATS:AUSFAELLE:BEGIN -->
+> ⚠️ **Eingeschränkte Abdeckung:** Richtung **Praterstern** seit 14.08.2026 ohne Messwerte (Streckensperre – Bauarbeiten und Kabelbrand-Folgen). Dargestellt sind ausschließlich Fahrten in Richtung **Meidling** — die Zahlen unten sind daher **kein Korridor-Gesamtwert**.
+
 > _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
 
 | Kennzahl | Wert |

@@ -18,7 +18,7 @@
   <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
   <link rel="alternate" type="application/rss+xml" title="Vienna Public Transport Feed (English)" href="feed.en.xml">
   <link rel="icon" type="image/svg+xml" href="assets/site-favicon.svg">
-  <link rel="stylesheet" href="assets/site.min.css?v=2ba857116103">
+  <link rel="stylesheet" href="assets/site.min.css?v=1161dcae1570">
   <!-- The dashboard fetches the statistics CSVs from raw.githubusercontent.com
        once site.min.js has executed; resolving the DNS upfront shaves ~50–200 ms
        off the first CSV request on cold connections. The ``preconnect`` hint
@@ -260,6 +260,14 @@
         </p>
       </header>
 
+      <!-- Coverage caveat, filled by ``renderCoverageNotice`` in site.js when
+           one Stammstrecke direction has stopped reporting while the other
+           still does. Hidden (and emptied) whenever coverage is complete, so
+           it disappears on its own once the closed direction returns. Text is
+           built in JS because it carries the affected direction and the date
+           it was last seen — see COVERAGE_TEXT_DE/EN. -->
+      <p class="coverage-notice" id="stammstrecke-coverage" role="status" hidden></p>
+
       <div class="kpis" id="stammstrecke-kpis" role="group" aria-label="Kennzahlen Stammstrecke" data-i18n-aria-label="aria-stammstrecke-kpis">
         <article class="kpi skeleton"></article>
         <article class="kpi skeleton"></article>
@@ -353,6 +361,6 @@
     </div>
   </footer>
 
-  <script src="assets/site.min.js?v=0327248538c0" defer></script>
+  <script src="assets/site.min.js?v=a1e9f6d56d57" defer></script>
 </body>
 </html>

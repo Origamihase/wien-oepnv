@@ -51,7 +51,7 @@ import re
 import subprocess  # nosec B404
 import sys
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -340,6 +340,86 @@ def check_stations(now: datetime) -> Check:
                  summary=f"OK — {age_txt}aktualisiert, alle Teilschritte sauber")
 
 
+def check_stammstrecke_directions(now: datetime) -> Check:
+    """Fail when one Stammstrecke direction has gone silent while the other reports.
+
+    Audit B.1/B.2: the northbound direction stopped producing delay rows on
+    2026-08-14 and no check noticed for 30 days. The feed-freshness probe above
+    cannot catch this — the feed keeps building every 30 min from the surviving
+    direction — and the live-canary probes only cover the three free providers.
+    Meanwhile README and dashboard kept publishing a half-corridor sample as a
+    whole-corridor figure.
+
+    The rule itself lives in :func:`src.utils.stats.find_silent_directions`, so
+    this check and the monitor script (which logs the same condition per tick)
+    cannot drift apart. It compares the directions against each other rather
+    than against an absolute age: the corridor legitimately goes quiet at night
+    (measured maxima 7.8 h / 11.5 h between rows during healthy operation), so
+    a plain "last row older than N hours" rule either false-alarms or has to be
+    set so high it stops being useful. See that module for the measurements.
+    """
+    name = "Stammstrecke-Richtungen"
+    try:
+        from src.utils.stats import (
+            DIRECTION_SILENCE_WINDOW_HOURS,
+            find_silent_directions,
+            summarise_direction_activity,
+        )
+        from scripts.update_stammstrecke_hbf import DIRECTION_LABELS
+    except Exception as exc:  # pragma: no cover - import-environment guard
+        return Check(
+            name,
+            ok=False,
+            summary="FEHLER — Richtungs-Prüfung nicht lauffähig",
+            detail=_clean_line(str(exc)),
+        )
+
+    window_h = _env_float(
+        "HEALTH_STAMMSTRECKE_WINDOW_HOURS", DIRECTION_SILENCE_WINDOW_HOURS
+    )
+    window = timedelta(hours=window_h)
+
+    activity = summarise_direction_activity(
+        directions=DIRECTION_LABELS, now=now, window=window
+    )
+    breakdown = ", ".join(f"{a.direction}={a.rows}" for a in activity)
+    silent = find_silent_directions(
+        directions=DIRECTION_LABELS, now=now, window=window
+    )
+
+    if silent:
+        return Check(
+            name,
+            ok=False,
+            summary=(
+                f"FEHLER — Richtung {', '.join(silent)} ohne Messwerte in den "
+                f"letzten {_fmt_age(window_h * 3600)}, Gegenrichtung liefert"
+            ),
+            detail=(
+                f"Zeilen im Fenster: {breakdown}. Veröffentlichte "
+                "Korridor-Kennzahlen decken derzeit nur die aktive Richtung ab."
+            ),
+        )
+
+    if all(a.rows == 0 for a in activity):
+        # Both directions quiet: night-time, or an outage the feed-freshness
+        # and updater checks own. Not a direction fault — do not double-alarm.
+        return Check(
+            name,
+            ok=True,
+            summary=(
+                f"OK — beide Richtungen im {_fmt_age(window_h * 3600)}-Fenster "
+                "ruhig (kein Richtungs-Ausfall)"
+            ),
+        )
+
+    return Check(
+        name,
+        ok=True,
+        summary=f"OK — beide Richtungen liefern ({breakdown})",
+    )
+
+
 def _render_plain(now: datetime, sources: list[Check], outputs: list[Check]) -> str:
     line = "=" * 64
     when = now.strftime("%Y-%m-%d %H:%M UTC")
@@ -392,7 +472,11 @@ def main() -> int:
     now = datetime.now(UTC)
 
     sources = [check_source(name, script) for name, script in UPDATERS]
-    outputs = [check_feed_freshness(now), check_stations(now)]
+    outputs = [
+        check_feed_freshness(now),
+        check_stations(now),
+        check_stammstrecke_directions(now),
+    ]
     all_checks = sources + outputs
     failed = [c for c in all_checks if not c.ok]
 

@@ -63,6 +63,7 @@ from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.stats import (  # noqa: E402
     AUSFAELLE_HEADER,
     DEFAULT_STATS_DIR,
+    STAMMSTRECKE_DIRECTIONS,
     STAMMSTRECKE_HEADER,
     STOERUNGEN_HEADER,
     WEEKDAY_LABELS,
@@ -664,7 +665,9 @@ def _format_summary_section(
     ]
 
 
-def _format_directions_section(stammstrecke: StammstreckeAggregate) -> list[str]:
+def _format_directions_section(
+    stammstrecke: StammstreckeAggregate, *, coverage_note: str = ""
+) -> list[str]:
     """Render the per-direction breakdown table.
 
     Routes ``direction`` through :func:`normalise_markdown_text` +
@@ -680,7 +683,38 @@ def _format_directions_section(stammstrecke: StammstreckeAggregate) -> list[str]
         stammstrecke.by_direction.items(),
         key=lambda pair: (-pair[1], pair[0]),
     )
-    lines: list[str] = ["### Beobachtungen je Richtung", "", "| Richtung | Anzahl |", "| --- | ---: |"]
+    lines: list[str] = ["### Beobachtungen je Richtung", ""]
+    # Audit B.1: say so when a direction has stopped contributing, rather than
+    # letting its absence pass as "no disruptions there". Two sources, in order
+    # of precedence:
+    #
+    #   1. ``coverage_note`` from the caller, derived from the recent 30-day
+    #      window. This is the one that fires in practice: the ANNUAL aggregate
+    #      still contains the pre-outage rows, so a direction that went silent
+    #      mid-year is present in ``by_direction`` and invisible here.
+    #   2. A direction missing from the aggregate entirely (a direction that
+    #      never reported in the whole year).
+    #
+    # Both are self-clearing — they disappear as soon as the direction reports
+    # again, which the temporary nature of the closure requires.
+    if coverage_note:
+        lines.extend([coverage_note.rstrip("\n"), ""])
+    else:
+        missing = [
+            d for d in STAMMSTRECKE_DIRECTIONS if d not in stammstrecke.by_direction
+        ]
+        if missing and len(missing) < len(STAMMSTRECKE_DIRECTIONS):
+            cause = f" ({DIRECTION_OUTAGE_CAUSE})" if DIRECTION_OUTAGE_CAUSE else ""
+            names = " und ".join(f"**{escape_markdown_cell(d)}**" for d in missing)
+            lines.extend(
+                [
+                    f"> ⚠️ **Eingeschränkte Abdeckung:** Richtung {names} ohne "
+                    f"Messwerte in diesem Zeitraum{cause}. Die Zahlen unten sind "
+                    "daher **kein Korridor-Gesamtwert**.",
+                    "",
+                ]
+            )
+    lines.extend(["| Richtung | Anzahl |", "| --- | ---: |"])
     for direction, count in items:
         cell = escape_markdown_cell(
             normalise_markdown_text(direction, max_len=_DASHBOARD_FIELD_MAX_LEN)
@@ -785,6 +819,7 @@ def render_markdown(
     stammstrecke: StammstreckeAggregate,
     stoerungen: StoerungAggregate,
     ausfaelle: AusfallAggregate,
+    coverage_note: str = "",
 ) -> str:
     """Compose the full Markdown dashboard string from the aggregates."""
     sections: list[str] = []
@@ -799,7 +834,9 @@ def render_markdown(
     )
 
     sections.extend(["## Stammstrecke", ""])
-    sections.extend(_format_directions_section(stammstrecke))
+    sections.extend(
+        _format_directions_section(stammstrecke, coverage_note=coverage_note)
+    )
     sections.extend(
         render_weekday_bars(
             stammstrecke.by_weekday_count,
@@ -923,6 +960,79 @@ def _format_window_timestamp(now: datetime) -> str:
     return now.strftime("%Y-%m-%d %H:%M %Z").rstrip()
 
 
+# Operator-maintained cause for the current direction outage, rendered into the
+# coverage note below. It appears ONLY while a direction is actually missing
+# from the window and disappears by itself the moment that direction reports
+# again — so a stale cause cannot outlive the outage it describes. Update the
+# text (or clear it) if the cause changes.
+DIRECTION_OUTAGE_CAUSE: Final = (
+    "Streckensperre – Bauarbeiten und Kabelbrand-Folgen"
+)
+
+
+def _last_seen_per_direction(
+    rows: list[StammstreckeRow],
+) -> dict[str, datetime]:
+    """Newest timestamp per direction across *rows*."""
+    latest: dict[str, datetime] = {}
+    for row in rows:
+        current = latest.get(row.direction)
+        if current is None or row.timestamp > current:
+            latest[row.direction] = row.timestamp
+    return latest
+
+
+def render_direction_coverage_note(
+    window_rows: list[StammstreckeRow],
+    *,
+    all_rows: list[StammstreckeRow] | None = None,
+    directions: tuple[str, ...] = STAMMSTRECKE_DIRECTIONS,
+) -> str:
+    """Return a Markdown warning when the window covers only some directions.
+
+    Audit B.1: the northbound direction stopped reporting on 2026-08-14, but
+    README and dashboard kept presenting the surviving southbound sample as a
+    whole-corridor figure — in the time series the measurement gap reads like a
+    drop in disruptions. This note makes the restricted coverage explicit.
+
+    Derived entirely from the data, never hard-coded: the note appears when a
+    direction contributes no rows to the window while another one does, names
+    the date that direction was last seen (looked up in *all_rows*, which spans
+    the whole loaded ledger rather than just the window), and vanishes on its
+    own as soon as the direction reports again. That self-clearing behaviour is
+    a requirement, not a nicety — the closure is temporary and the restart has
+    to be picked up without anyone editing Markdown.
+
+    Returns an empty string when coverage is complete, when the window is empty,
+    or when *every* direction is missing (a whole-corridor gap is not a coverage
+    caveat; the freshness checks own that case).
+    """
+    if not window_rows:
+        return ""
+    present = {row.direction for row in window_rows}
+    missing = [d for d in directions if d not in present]
+    covered = [d for d in directions if d in present]
+    if not missing or not covered:
+        return ""
+
+    latest = _last_seen_per_direction(list(all_rows) if all_rows else window_rows)
+    parts: list[str] = []
+    for direction in missing:
+        last = latest.get(direction)
+        since = f" seit {last.strftime('%d.%m.%Y')}" if last else ""
+        parts.append(f"**{escape_markdown_cell(direction)}**{since}")
+
+    cause = f" ({DIRECTION_OUTAGE_CAUSE})" if DIRECTION_OUTAGE_CAUSE else ""
+    covered_txt = ", ".join(f"**{escape_markdown_cell(d)}**" for d in covered)
+    return (
+        f"> ⚠️ **Eingeschränkte Abdeckung:** Richtung {' und '.join(parts)} "
+        f"ohne Messwerte{cause}. Dargestellt sind ausschließlich Fahrten in "
+        f"Richtung {covered_txt} — die Zahlen unten sind daher **kein "
+        "Korridor-Gesamtwert**.\n"
+        "\n"
+    )
+
+
 def render_readme_stammstrecke_live_block(
     rows: list[StammstreckeRow],
     *,
@@ -972,6 +1082,7 @@ def render_readme_stammstrecke_block(
     now: datetime,
     window_days: int = DEFAULT_README_WINDOW_DAYS,
     threshold_minutes: float = STAMMSTRECKE_THRESHOLD_MINUTES,
+    coverage_note: str = "",
 ) -> str:
     """Render the inner content of the ``STATS:STAMMSTRECKE`` README block.
 
@@ -996,7 +1107,8 @@ def render_readme_stammstrecke_block(
         else f"{threshold_minutes:g}"
     )
     header = (
-        f"> _Letzte {window_days} Tage – automatisch aktualisiert vom Workflow_ "
+        coverage_note
+        + f"> _Letzte {window_days} Tage – automatisch aktualisiert vom Workflow_ "
         "[`update-cycle.yml`](.github/workflows/update-cycle.yml).\n"
         "\n"
         "| Kennzahl | Wert |\n"
@@ -1058,6 +1170,7 @@ def render_readme_ausfaelle_block(
     *,
     now: datetime,
     window_days: int = DEFAULT_README_WINDOW_DAYS,
+    coverage_note: str = "",
 ) -> str:
     """Render the inner content of the ``STATS:AUSFAELLE`` README block.
 
@@ -1071,7 +1184,8 @@ def render_readme_ausfaelle_block(
     """
 
     header = (
-        f"> _Letzte {window_days} Tage – automatisch aktualisiert vom Workflow_ "
+        coverage_note
+        + f"> _Letzte {window_days} Tage – automatisch aktualisiert vom Workflow_ "
         "[`update-cycle.yml`](.github/workflows/update-cycle.yml).\n"
         "\n"
         "| Kennzahl | Wert |\n"
@@ -1353,6 +1467,42 @@ def main(argv: list[str] | None = None) -> int:
         sanitize_log_arg(str(args.stats_dir)),
     )
 
+    # Load the cross-year Stammstrecke window for the README snapshot.
+    # The nightly workflow runs at 00:15 Europe/Vienna, so a 30-day
+    # cutoff in early January legitimately spans the previous calendar
+    # year. ``collect_year_data`` returns empty lists for missing files,
+    # so eagerly loading both years is safe even mid-year.
+    cutoff = now - timedelta(days=args.readme_window_days)
+    extra_years = sorted({cutoff.year, now.year} - {args.year})
+    window_sm: list[StammstreckeRow] = list(sm_rows)
+    window_au: list[AusfallRow] = list(au_rows)
+    for extra_year in extra_years:
+        extra_sm, _, extra_au = collect_year_data(
+            extra_year, stats_dir=args.stats_dir
+        )
+        window_sm.extend(extra_sm)
+        window_au.extend(extra_au)
+    sm_window = _filter_rows_by_window(
+        window_sm, days=args.readme_window_days, now=now
+    )
+    au_window = _filter_rows_by_window(
+        window_au, days=args.readme_window_days, now=now
+    )
+    # Audit B.1: the coverage caveat is derived from the delay ledger (the
+    # cancellation ledger only carries rows when trains are actually cancelled,
+    # so it cannot tell "no cancellations" apart from "direction not measured").
+    # Computed here — before the dashboard branch — so the same wording feeds
+    # docs/statistik.md and both 30-day README blocks. The annual dashboard
+    # aggregate still contains the pre-outage rows, so absence-from-aggregate
+    # alone would never fire there; the recent window is what reveals it.
+    coverage_note = render_direction_coverage_note(sm_window, all_rows=window_sm)
+    if coverage_note:
+        LOGGER.warning(
+            "Eingeschränkte Richtungs-Abdeckung im %d-Tage-Fenster — "
+            "veröffentlichte Kennzahlen decken nicht den gesamten Korridor ab.",
+            args.readme_window_days,
+        )
+
     if args.skip_dashboard:
         # ``update-cycle.yml`` passes this flag on every 30-min tick
         # except the one that lands inside the 00:00 Europe/Vienna hour.
@@ -1375,6 +1525,7 @@ def main(argv: list[str] | None = None) -> int:
             stammstrecke=sm_agg,
             stoerungen=st_agg,
             ausfaelle=au_agg,
+            coverage_note=coverage_note,
         )
 
         try:
@@ -1396,27 +1547,6 @@ def main(argv: list[str] | None = None) -> int:
     if args.skip_readme:
         return 0
 
-    # Load the cross-year Stammstrecke window for the README snapshot.
-    # The nightly workflow runs at 00:15 Europe/Vienna, so a 30-day
-    # cutoff in early January legitimately spans the previous calendar
-    # year. ``collect_year_data`` returns empty lists for missing files,
-    # so eagerly loading both years is safe even mid-year.
-    cutoff = now - timedelta(days=args.readme_window_days)
-    extra_years = sorted({cutoff.year, now.year} - {args.year})
-    window_sm: list[StammstreckeRow] = list(sm_rows)
-    window_au: list[AusfallRow] = list(au_rows)
-    for extra_year in extra_years:
-        extra_sm, _, extra_au = collect_year_data(
-            extra_year, stats_dir=args.stats_dir
-        )
-        window_sm.extend(extra_sm)
-        window_au.extend(extra_au)
-    sm_window = _filter_rows_by_window(
-        window_sm, days=args.readme_window_days, now=now
-    )
-    au_window = _filter_rows_by_window(
-        window_au, days=args.readme_window_days, now=now
-    )
     # Defense-in-depth: only patch the Stammstrecke marker when the
     # window actually carries rows. Without this gate, an unrelated
     # caller of ``main()`` that supplies a stats directory but forgets
@@ -1432,6 +1562,7 @@ def main(argv: list[str] | None = None) -> int:
             sm_window,
             now=now,
             window_days=args.readme_window_days,
+            coverage_note=coverage_note,
         )
     else:
         LOGGER.info(
@@ -1463,6 +1594,7 @@ def main(argv: list[str] | None = None) -> int:
         au_window,
         now=now,
         window_days=args.readme_window_days,
+        coverage_note=coverage_note,
     )
     if not sm_window and not sm_live_window:
         LOGGER.info(

@@ -8,6 +8,12 @@ loads from the environment. Exits with:
     0 — credentials accepted, response indicates a known stop
     1 — request failed (HTTP error, network issue, or unexpected payload)
     2 — no credentials configured (``VOR_ACCESS_ID`` / ``VAO_ACCESS_ID``)
+    3 — VAO daily budget exhausted; no request was made
+
+The probe charges one slot of the contractual 100/day VAO Start budget via
+:func:`src.providers.vor.reserve_request_slot` before it goes on the wire, so
+diagnostic runs show up in ``data/vor_request_count.json`` like every other
+VOR request (audit A.1).
 """
 
 from __future__ import annotations
@@ -79,6 +85,24 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     probe_url = _build_probe_url()
     params = {"input": PROBE_QUERY, "format": "json"}
+
+    # Audit A.1: this probe spends a real slot of the contractual 100/day VAO
+    # Start budget, so it has to be charged like every other VOR request.
+    # Pre-fix the CI smoke test in ``test-vor-api.yml`` issued the identical
+    # ``location.name`` call through raw ``curl``, which bypassed the counter
+    # entirely — the budget model in ``docs/architecture.md`` §7 listed this
+    # endpoint at 0 calls/day while CI was quietly spending it on every push.
+    # ``reserve_request_slot`` performs the check and the increment inside one
+    # exclusive-file-lock section, so this cannot race the Stammstrecke cron.
+    granted, usage = vor_module.reserve_request_slot()
+    if not granted:
+        LOGGER.error(
+            "VAO daily quota exhausted (%d/%d) — skipping the verification "
+            "probe rather than breaching the contractual budget.",
+            usage,
+            vor_module.MAX_REQUESTS_PER_DAY,
+        )
+        return 3
 
     LOGGER.info("Probing %s with input=%r", probe_url, PROBE_QUERY)
 
