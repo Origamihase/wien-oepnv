@@ -1,15 +1,15 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-09-13T20:46+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-09-14T00:00+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
 | Kennzahl | Wert |
 | --- | ---: |
-| Stammstrecke-Beobachtungen (2026) | 8907 |
+| Stammstrecke-Beobachtungen (2026) | 8915 |
 | Verspätungen > 9 min (2026) | 117 |
 | ⌀ Verspätung (2026) | 1.1 min |
-| Stammstrecke-Ausfälle (2026) | 1837 |
+| Stammstrecke-Ausfälle (2026) | 1838 |
 | Erfasste Störungen (2026) | 2976 |
 
 ## Stammstrecke
@@ -20,7 +20,7 @@ _Automatisch erzeugt am 2026-09-13T20:46+02:00 (Europe/Vienna)._
 
 | Richtung | Anzahl |
 | --- | ---: |
-| Meidling | 5076 |
+| Meidling | 5084 |
 | Praterstern | 3831 |
 
 ### Beobachtungen je Wochentag
@@ -32,7 +32,7 @@ _Automatisch erzeugt am 2026-09-13T20:46+02:00 (Europe/Vienna)._
 `Do  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦···  1204
 `Fr  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦···  1219
 `Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  1366
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  1350
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  1358
 ```
 
 ### Beobachtungen je Stunde
@@ -58,10 +58,10 @@ _Automatisch erzeugt am 2026-09-13T20:46+02:00 (Europe/Vienna)._
 `17h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  417
 `18h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  416
 `19h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  414
-`20h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  418
-`21h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  410
-`22h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  417
-`23h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  412
+`20h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  420
+`21h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  412
+`22h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  419
+`23h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  414
 ```
 
 ### Verspätungen ⌀ Minuten je Wochentag
@@ -111,14 +111,14 @@ _Automatisch erzeugt am 2026-09-13T20:46+02:00 (Europe/Vienna)._
 
 | Richtung | Anzahl |
 | --- | ---: |
-| Meidling | 921 |
+| Meidling | 922 |
 | Praterstern | 916 |
 
 ### Ausfälle je Linie
 
 | Linie | Anzahl |
 | --- | ---: |
-| S1 | 384 |
+| S1 | 385 |
 | CJX9 | 365 |
 | S2 | 300 |
 | S3 | 245 |
@@ -150,7 +150,7 @@ _Automatisch erzeugt am 2026-09-13T20:46+02:00 (Europe/Vienna)._
 `Do  ` │ 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪···  319
 `Fr  ` │ 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪  359
 `Sa  ` │ 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪··············  149
-`So  ` │ 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪·············  158
+`So  ` │ 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪·············  159
 ```
 
 ### Ausfälle je Stunde
@@ -179,7 +179,7 @@ _Automatisch erzeugt am 2026-09-13T20:46+02:00 (Europe/Vienna)._
 `20h ` │ 🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫····  104
 `21h ` │ 🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫···  107
 `22h ` │ 🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫·····  98
-`23h ` │ 🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫········  85
+`23h ` │ 🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫·······  86
 ```
 
 ## Störungen
