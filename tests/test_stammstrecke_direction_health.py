@@ -237,9 +237,12 @@ def test_health_check_is_registered_in_the_report() -> None:
     """The check must actually run — an unwired check alarms on nothing."""
     import inspect
 
-    import scripts.health_check as hc
+    # ``from``-style to match the other ``scripts.health_check`` imports in this
+    # file. Mixing ``import x`` and ``from x import y`` for one module trips
+    # CodeQL's py/import-and-import-from.
+    from scripts.health_check import main as health_check_main
 
-    source = inspect.getsource(hc.main)
+    source = inspect.getsource(health_check_main)
     assert "check_stammstrecke_directions(now)" in source
 
 
@@ -355,10 +358,15 @@ def test_canonical_directions_match_the_producer() -> None:
     stdlib-only and the monitor pulls in ``requests``), so this is the guard
     that keeps the copy honest.
     """
-    from scripts.update_stammstrecke_hbf import DIRECTION_LABELS
+    # Module-style to match the other ``scripts.update_stammstrecke_hbf``
+    # imports in this file (the monitor tests below monkeypatch attributes on
+    # the module object, so that style has to stay). Mixing both trips CodeQL's
+    # py/import-and-import-from.
+    import scripts.update_stammstrecke_hbf as hbf
+
     from src.utils.stats import STAMMSTRECKE_DIRECTIONS
 
-    assert tuple(DIRECTION_LABELS) == tuple(STAMMSTRECKE_DIRECTIONS)
+    assert tuple(hbf.DIRECTION_LABELS) == tuple(STAMMSTRECKE_DIRECTIONS)
 
 
 def test_coverage_note_names_direction_and_last_seen_date() -> None:
