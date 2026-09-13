@@ -5,6 +5,69 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Fehlermeldungen der Website blieben deutsch (2026-09-13)**:
+  Das Dashboard rendert jede Störung als `<Präfix> <Detail>`. Das Präfix war
+  immer ein Übersetzungsschlüssel, das **Detail** dagegen die rohe
+  `Error.message` — und die waren fest verdrahtete deutsche Sätze. Ein
+  englischsprachiger Besucher, dessen Feed nicht lud, las:
+
+  > Feed could not be loaded: Feed konnte nicht geparst werden
+
+  Schlimmer noch: `showError()` legte genau diesen deutschen Satz in
+  `dataset.errorDetail` ab. `applyTranslationsToDom()` baut die Zeile bei
+  jedem Sprachwechsel aus diesem Datensatz neu auf — der deutsche Teil blieb
+  also für den Rest der Sitzung stehen, egal wie oft umgeschaltet wurde.
+
+  Betroffen waren alle vier Fehlerzeilen (Feed, Störungen, Stammstrecke,
+  Ausfälle) und drei Quellen: `Feed konnte nicht geparst werden`,
+  `Feed ohne <channel>-Element` und `Keine CSV-Daten für … verfügbar.`
+
+  Geworfen werden jetzt **Schlüssel** statt Sätze (`err-feed-parse`,
+  `err-feed-no-channel`, `err-csv-missing`); `resolveErrorDetail()` löst sie
+  zur Renderzeit in der aktuellen Sprache auf, und im Datensatz steht der
+  Schlüssel — damit übersetzt der Sprachwechsel die Zeile vollständig mit.
+  Der CSV-Fall braucht ein Argument (den Datensatznamen), das über einen
+  C0-Trenner (`\u0001`) an den Schlüssel gehängt und in die `{name}`-Stelle
+  der Vorlage gesetzt wird. Ein druckbares Trennzeichen (`:`, `|`) wäre hier
+  falsch gewesen: Es kommt in echten Browser-Meldungen und in URLs vor.
+
+  Meldungen **ohne** Schlüssel (`HTTP 503 – …`, `Failed to fetch`) kann das
+  Projekt nicht übersetzen; sie werden unverändert durchgereicht statt
+  verschluckt — `statusText()` liefert für einen unbekannten Schlüssel `""`,
+  und genau daran hängt der Durchreiche-Zweig.
+
+  `tests/test_site_error_i18n.py` (17 Tests) hält den Vertrag fest: geworfen
+  werden Schlüssel und keine deutschen Sätze, beide Sprachen führen jeden
+  `err-*`-Schlüssel, die englischen Texte unterscheiden sich von den
+  deutschen und enthalten keine Umlaute, der Datensatz speichert den
+  Schlüssel statt des fertigen Satzes, und der Sprachwechsel läuft über den
+  Resolver. Sieben gezielte Mutationen der `site.js` wurden gegengeprüft —
+  jede fällt auf.
+
+  Mit im Modul: ein Abgleich des **ausgelieferten** Bundles gegen die Quelle
+  (`optimize_site_assets.py --check`). Dieser Drift-Check lief bisher nur als
+  Pre-Commit-Hook; wer ohne Hook committet, hätte eine veraltete
+  `site.min.js` ausgeliefert und die Korrektur oben wäre für Besucher
+  unsichtbar geblieben. Jetzt läuft er in der Test-Suite und damit in der CI.
+* **EN-Feed zeigte Übersetzungen bereits ersetzter Schlagzeilen (2026-09-13)**:
+  Der Übersetzungs-Cache in `data/first_seen.json` ist auf `(ident, field)`
+  geschlüsselt. Ändert die Quelle den Text einer bestehenden Meldung — bei
+  den Wiener Linien der Normalfall, etwa wenn aus einer angekündigten
+  Sperre der laufende Betrieb wird —, blieb die alte englische Übersetzung
+  stehen: Der deutsche Feed zeigte den neuen Stand, der englische den alten.
+  Die Epoche (`_TRANSLATION_CACHE_EPOCH`) fängt das nicht ab, sie erkennt nur
+  Änderungen an der Pipeline, nicht an der Eingabe.
+
+  Der Cache merkt sich jetzt zusätzlich einen gekürzten SHA-256 des
+  **Quelltexts** (`en_src`). Weicht er beim nächsten Lauf ab, wird neu
+  übersetzt. Fehlt er (Alt-Einträge), gilt der Eintrag als gültig — das
+  Fehlen bedeutet „vor dieser Änderung geschrieben" und nicht „falsch";
+  entwertet werden die Alt-Einträge einmalig über die Epoche 5 → 6.
+
+  Zwei kleinere Mängel an denselben Zeilen: Das Modell lieferte gelegentlich
+  einen Titel, dessen Rumpf nach dem Linien-Präfix kleingeschrieben begann
+  (`44: event Trains stop …`), und gelegentlich ein einzelnes, unpaariges
+  Anführungszeichen. Beides wird jetzt nach der Übersetzung korrigiert.
 * **Doku-Nachprüfung der Audit-Runde (2026-09-13)**:
   Eigene Kontrolle, ob die Änderungen aus PR #1790–#1803 vollständig
   dokumentiert sind. Vier Lücken gefunden und geschlossen:
