@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 14 Sep 2026 00:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 01:01:43 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[44: Veranstaltung Betrieb ab Johann-Nepomuk-Berger-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">51060c6ba3ca32a4e6fcd06d658aec2b10193d80a5a141c1f9cd2c4213efa7db</guid>
-      <pubDate>Fri, 11 Sep 2026 09:16:35 +0200</pubDate>
-      <ext:first_seen>Sat, 12 Sep 2026 14:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 11 Sep 2026 09:16:36 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 14 Sep 2026 01:00:00 +0200</ext:ends_at>
-      <description>Züge halten Rosensteingasse bei Linie 9 [11.09.2026 – 14.09.2026]</description>
-      <content:encoded><![CDATA[Züge halten Rosensteingasse bei Linie 9<br/>[11.09.2026 – 14.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[86A/86AR/87A: Veranstaltung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -76,15 +65,15 @@
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Märzstraße und Huglgasse kommt es bei den Linien 46, 49 und 52 zu folgenden Maßnahmen.<br/>[21.09.2026 – 31.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N29: Busse halten bei Taborstraße 35-37]]></title>
+      <title><![CDATA[N29: Busse halten bei Taborstraße 35-37, 62]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5acd2efa281e77e083e560ff5c6ca6c5fab4a01026252a262345d9fe21cd6ed2</guid>
-      <pubDate>Mon, 14 Sep 2026 00:13:15 +0200</pubDate>
+      <pubDate>Mon, 14 Sep 2026 00:42:18 +0200</pubDate>
       <ext:first_seen>Fri, 11 Sep 2026 00:30:58 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 00:13:15 +0200</ext:starts_at>
       <ext:ends_at>Mon, 14 Sep 2026 04:53:00 +0200</ext:ends_at>
-      <description>[Am 14.09.2026]</description>
-      <content:encoded><![CDATA[[Am 14.09.2026]]]></content:encoded>
+      <description>Busse halten bei Taborstraße 35-37 Gleisbauarbeiten Busse halten bei Taborstraße 62 [Am 14.09.2026]</description>
+      <content:encoded><![CDATA[Busse halten bei Taborstraße 35-37 Gleisbauarbeiten Busse halten bei Taborstraße 62<br/>[Am 14.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Märzstraße 49 bis Kreuzung Huglgasse sowie Kreuzung Huglgasse bis Kreuzung Hütteldorfer Straße]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 11 Dec 2026 00:00:00 +0100</ext:ends_at>
       <description>Die Umleitung in Fahrtrichtung 21. Bezirk erfolgt über: Angyalföldstraße - Leopoldauer Straße. [10.09.2026 – 11.12.2026]</description>
       <content:encoded><![CDATA[Die Umleitung in Fahrtrichtung 21. Bezirk erfolgt über: Angyalföldstraße - Leopoldauer Straße.<br/>[10.09.2026 – 11.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;910806</guid>
+      <pubDate>Thu, 10 Sep 2026 12:16:29 +0200</pubDate>
+      <ext:first_seen>Thu, 10 Sep 2026 12:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 05 Dec 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 07 Dec 2026 23:59:59 +0100</ext:ends_at>
+      <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 05.12.2026 bis 07.12.2026 (jeweils von 23:15 Uhr bis 04:40 Uhr) keine Nahverkehrszüge fahren. [05.12.2026 – 07.12.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 05.12.2026 bis 07.12.2026 (jeweils von 23:15 Uhr bis 04:40 Uhr) keine Nahverkehrszüge fahren.<br/>[05.12.2026 – 07.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
