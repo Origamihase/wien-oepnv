@@ -23097,6 +23097,19 @@
       "epoch": 5
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&911457": {
+    "first_seen": "2026-09-13T07:00:47.223045+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an interlocking disturbance am Bahnhof, no journeys were possible in Vienna Hbf (U) until 08:43.",
+        "title": "Wien Hauptbahnhof"
+      },
+      "en_verbatim": [
+        "title"
+      ],
+      "epoch": 5
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },
