@@ -288077,21 +288077,21 @@
     },
     {
       "name": "Wien Wassermanngasse (WL)",
-      "in_vienna": false,
-      "pendler": true,
+      "in_vienna": true,
+      "pendler": false,
       "wl_diva": "60201956",
       "wl_stops": [
         {
           "stop_id": "3953",
           "name": "Wassermanngasse",
-          "latitude": 48.6945799,
-          "longitude": 15.5787004
+          "latitude": 48.2686785,
+          "longitude": 16.4528264
         },
         {
           "stop_id": "3954",
           "name": "Wassermanngasse",
-          "latitude": 48.6945799,
-          "longitude": 15.5787903
+          "latitude": 48.2686785,
+          "longitude": 16.4529163
         }
       ],
       "aliases": [
@@ -288204,8 +288204,8 @@
         "Wien-Wassermanngasse-(WL) bf"
       ],
       "source": "wl",
-      "latitude": 48.69458,
-      "longitude": 15.578745
+      "latitude": 48.268679,
+      "longitude": 16.452826
     },
     {
       "name": "Wien Wasserwiese (WL)",

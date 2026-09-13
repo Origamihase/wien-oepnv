@@ -418,6 +418,29 @@
       "reason": "The build re-creates a standalone oebb_geonetz Betriebsstelle record 'Handelskai' (bst_code 'Nw  H2', no wl_diva) each run; it duplicates the canonical 'Wien Handelskai' Verkehrsstation by eva_nr 8101934 and is a pure subset (same eva_nr/ifopt_id/address — the canonical entry additionally carries wl_diva 60201705, vor_id and WL stops). The duplicate trips the eva_nr identity-conflict gate (validate_stations.py exits 1) and makes the bare 'Handelskai' lookup resolve to the impoverished record. Keyed on bst_code because the record has no wl_diva and its eva_nr is shared with the canonical entry; removes every match so a regenerated copy cannot survive into the validator.",
       "added": "2026-05-26",
       "expires_when": "The build no longer emits a standalone oebb_geonetz 'Handelskai' (bst_code 'Nw  H2') record separate from the canonical 'Wien Handelskai' — e.g. the GeoNetz/OSM merge reconciles Betriebsstellen against the Verkehrsstation by eva_nr."
+    },
+    {
+      "op": "patch_coords",
+      "wl_diva": "60201956",
+      "added": "2026-09-13",
+      "expires_when": "Wiener Linien fixes the coordinates in data/wienerlinien-ogd-haltestellen.csv (currently lat=48.6945799, lon=15.5786106) and data/wienerlinien-ogd-haltepunkte.csv (StopIDs 3953/3954 at the same wrong coordinates)",
+      "latitude": 48.268679,
+      "longitude": 16.452826,
+      "in_vienna": true,
+      "pendler": false,
+      "wl_stops_patch": [
+        {
+          "stop_id": "3953",
+          "latitude": 48.2686785,
+          "longitude": 16.4528264
+        },
+        {
+          "stop_id": "3954",
+          "latitude": 48.2686785,
+          "longitude": 16.4529163
+        }
+      ],
+      "reason": "Wiener Linien OGD lists DIVA 60201956 (Wien Wassermanngasse) at (48.694580, 15.578745) — the Waldviertel in Lower Austria, ~80 km from Vienna, yet tagged Municipality=Wien. The actual stop is in the 21st district (Floridsdorf, Katastralgemeinde Leopoldau, Grossfeldsiedlung). Unlike DIVA 60201954/60201955 this one had an empty coordinate slot, so the bad value reached stations.json: the entry carried in_vienna=False and text_has_vienna_connection(\"Stoerung in der Wassermanngasse\") returned False, dropping genuine Vienna disruptions naming only this stop out of the feed. Coordinates taken from OpenStreetMap node 12038323326 (highway=bus_stop, name=Wassermanngasse, Adolf-Loos-Gasse, Grossfeldsiedlung, 1210) via Nominatim. Cross-checked three ways: the same Nominatim query reproduced the already verified DIVA 60201954 stop to within 22 m; the nearest directory stops are Bubergasse (184 m), Doderergasse (285 m) and Uhlirzgasse (308 m), all Grossfeldsiedlung stops; and the is_in_vienna polygon check passes. The per-platform offset of 0.0000899 deg lon between StopIDs 3953 and 3954 is carried over from the source, matching the convention of the sibling overrides."
     }
   ]
 }
