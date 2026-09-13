@@ -530,6 +530,31 @@ darunter `Lokalbahn` × 4 verteilt über 5,6 km und `Bahnhof` × 2 mit
 hat den RSS-Feed zugemüllt und wurde zusammen mit dem Validator-Gate
 entfernt.
 
+**Alias-Schlüssel-Kollisionen** (PR #1801, Audit 2026-09-12 Befund 6):
+Dieselbe `Lokalbahn`-Gruppe taucht seitdem im Validierungsbericht wieder
+auf — als **gemeldeter**, nicht als blockierender Befund, und aus einem
+anderen Grund. Der oben entfernte Vertrag betraf die Eindeutigkeit des
+kanonischen `name`. Der neue Check `_find_alias_collision_issues` fragt
+etwas anderes: ob mehrere Stationen denselben **normalisierten Alias**
+beanspruchen und dabei über den Ort uneins sind — verschiedene
+`in_vienna`-Urteile oder mehr als 2 km Abstand. Das ist relevant, weil
+`_station_lookup` je Schlüssel genau einen Gewinner behält und
+`station_info` über `is_in_vienna` mitentscheidet, ob eine ÖBB-Meldung
+überhaupt in den Feed kommt.
+
+Die vier Badner-Bahn-Stopps sind heute folgenlos: Alle vier liegen
+außerhalb Wiens, stimmen also in `in_vienna` überein — nachgemessen über
+alle 44 (Schlüssel, Verlierer, Gewinner)-Tripel des Live-Verzeichnisses.
+Gemeldet werden sie, weil das eine Eigenschaft der **Daten** ist und
+keine des Codes: Käme ein Lokalbahn-Stopp innerhalb Wiens hinzu, der den
+generischen Schlüssel ebenfalls beansprucht, kippte die Auflösung still.
+`Wien Inzersdorf Lokalbahn (WL)` liegt in Wien und beansprucht ihn
+heute nur deshalb nicht, weil alle seine Aliase `Inzersdorf` tragen.
+
+Der Name-Eindeutigkeits-Vertrag aus PR #1452 bleibt davon unberührt —
+duplizierte `PlatformText`-Werte sind weiterhin legitim und werden
+weiterhin nicht erzwungen.
+
 **Resilienz**: derselbe `session_with_retries` +
 `fetch_content_safe`-Stack wie die anderen Quellen, plus gepinnter
 Snapshot-Fallback. Anders als das ÖBB-Workbook (bis PR #1450) haben
