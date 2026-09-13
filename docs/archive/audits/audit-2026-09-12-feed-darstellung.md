@@ -4,7 +4,7 @@
 **Schwerpunkt:** Feed — Quellen, Pipeline, Darstellung in `docs/feed.xml` / `docs/feed.en.xml`
 **Datenbasis:** Manual-Full-Refresh Run 93948230655 (Checkout `275ed8d586`, 08:02–08:05 UTC),
 Repo-Stand `afc72b5f6c`, Live-Caches in `cache/`
-**Status:** Befunde 1, 2, 3, 4, 5, 7, 8 und 9 behoben (PR #1790–#1801), Befund 6 zur Hälfte. Offen: nur der Stammstrecke-Teil von 6 — keine Feed-Wirkung (s. Abschnitt 11)
+**Status:** **Alle neun Befunde behoben** (PR #1790–#1803). Das Audit ist abgearbeitet.
 
 ---
 
@@ -584,17 +584,32 @@ dieselbe Funktion. Ein eigener später eingeführter würde still auseinander
 driften. Genau diese Verwechslung zweier ähnlich benannter Größen hat den
 Befund ursprünglich falsch gerahmt.
 
-### Offen: leerer Stammstrecke-Provider
+### Leerer Stammstrecke-Provider — behoben ([PR #1803](https://github.com/Origamihase/wien-oepnv/pull/1803))
 
-Siehe Abschnitt 2: kein Vorfall wird als Warnung dargestellt. `build_feed.py`
-behandelt **jeden** Provider mit null Items gleich — `log.warning` plus ein
-Eintrag in der Warnungsliste des Reports. Für die Stammstrecke ist „nichts zu
-melden" aber der Normalzustand, für einen WL-/ÖBB-Cache dagegen verdächtig.
-Sinnvoll wäre `INFO` mit eigener Kennzeichnung (etwa `ok-empty`) für Provider,
-die das erklären.
+Siehe Abschnitt 2: kein Vorfall wurde als Warnung dargestellt. `build_feed.py`
+behandelte **jeden** Provider mit null Items gleich — `log.warning` plus ein
+Eintrag in der Warnungsliste des Reports. Bei einem Build alle 30 Minuten
+erzeugte der Normalzustand damit rund um die Uhr eine Warnung, und „läuft" war
+von „defekt" nicht mehr zu unterscheiden.
 
-**Bewusst nicht in derselben Änderung behoben:** Das ändert die Empty-Semantik
-für alle Provider und gehört eigenständig geprüft.
+Welcher Fall vorliegt, wird jetzt **bei der Registrierung erklärt**
+(`register_provider(..., empty_is_normal=True)`) statt am Namen geraten. Die
+Vorgabe ist die strenge: Ein Provider, der nichts sagt, behält die Warnung —
+ein künftiger kann also nicht durch Unterlassung in den leisen Zweig rutschen.
+Gesetzt ist das Flag ausschließlich für die Stammstrecke.
+
+Die Unterscheidung überlebt bis in die Zusammenfassungszeile, weil ein
+Dashboard, das nur `:empty` sieht, „nichts zu melden" nicht von „keine Daten"
+trennen kann:
+
+```
+oebb:ok(11 Items); stammstrecke:ok-empty(Keine Vorfälle); wl:empty(0 Items, Keine aktuellen Daten)
+```
+
+Beide Richtungen sind gepinnt: Der leere WL-Cache warnt weiterhin, die
+Cache-Alerts landen unverändert im Detail, und ein Provider ohne Flag wird
+streng behandelt. Ein Fix, der nur das Rauschen abstellt, hätte das Signal
+mit abgestellt.
 
 ---
 
@@ -799,7 +814,7 @@ verstümmelter Eintrag verdrängt dort eine andere Störung vollständig.
 | 3 | Übersetzung erfand Liniennummern (13 von 71 Tokens ungeschützt) | keine — nur `feed.en.xml` | — | **behoben** |
 | 7 | Übersetzung lief für Stationstitel endlos neu | keine — nur Laufzeitkosten | — | **behoben** |
 | 6a | 444 Warnzeilen/Lauf über Alias-Kollisionen | keine — nur Logs | — | **behoben** |
-| **6b** | **Leerer Stammstrecke-Provider gilt als Warnung** | **keine — nur Logs** | **1** | offen |
+| 6b | Leerer Stammstrecke-Provider galt als Warnung | keine — nur Logs | — | **behoben** |
 
 ---
 
@@ -837,10 +852,11 @@ berührt.** Was blieb, kostete Laufzeit oder erzeugte Log-Rauschen:
    Orten — heute folgenlos, aber ungesichert. Loader beruhigt, Prüfung
    nachgerüstet (s. Abschnitt 8).
 
-**Offen bleibt nur der Stammstrecke-Teil von Befund 6:** Ein Provider ohne
-Vorfälle wird als Warnung dargestellt, sodass „läuft normal" wie „defekt"
-aussieht. Bleibt sinnvoll, weil ruhige Logs die nächste echte Warnung sichtbar
-machen, aber es steht keine Anzeige daran.
+6. ~~**Befund 6, Stammstrecke-Teil**~~ — erledigt. Ein Provider ohne Vorfälle
+   wurde als Warnung dargestellt, sodass „läuft normal" wie „defekt" aussah
+   (s. Abschnitt 8).
+
+**Damit ist kein Befund aus diesem Audit mehr offen.**
 
 Unverändert offen und außerhalb jedes PRs: In den Branch-Protection-Regeln für
 `main` ist **„Allow force pushes" weiterhin aktiv** — die Ursache des
