@@ -16,7 +16,7 @@ but the inverse enumeration grep
   1. ``src/utils/stations.py:_station_entries`` — module-level
      ``@lru_cache`` loader for ``data/stations.json``. Called from EVERY
      station-name lookup repo-wide (``canonical_name``, ``station_info``,
-     ``station_by_oebb_id``, ``vor_station_ids``, ``is_in_vienna``…).
+     ``station_by_oebb_id``, ``is_pendler``, ``is_in_vienna``…).
      A planted-huge ``stations.json`` (compromised CI runner / partial
      flush + power loss / corrupted previous run) propagates
      ``MemoryError`` past the ``except (OSError, json.JSONDecodeError,

@@ -28,7 +28,6 @@ __all__ = [
     "station_by_oebb_id",
     "station_info",
     "text_has_vienna_connection",
-    "vor_station_ids",
 ]
 
 
@@ -534,7 +533,7 @@ def _station_entries() -> tuple[dict[str, Any], ...]:
     # depth-bomb catch tuple. Module-import-time blast radius via
     # ``@lru_cache`` is critical — every station-name lookup
     # (``canonical_name``, ``station_info``, ``station_by_oebb_id``,
-    # ``vor_station_ids``, …) routes through this loader.
+    # ``is_pendler``, …) routes through this loader.
     entries = _read_capped_json(
         _STATIONS_PATH,
         MAX_STATIONS_FILE_BYTES,
@@ -963,44 +962,26 @@ def is_in_vienna(lat: object, lon: object | None = None) -> bool:
 
 
 def is_pendler(name: str) -> bool:
-    """Return ``True`` if *name* is part of the configured commuter belt."""
+    """Return ``True`` if *name* is part of the configured commuter belt.
+
+    ``pendler`` is a *manually curated* marking, unlike ``in_vienna`` which
+    :func:`is_in_vienna` derives automatically from the station's coordinates
+    against the official LANDESGRENZE polygon. An operator nominates a
+    commuter station by bst_id in ``data/pendler_bst_ids.json`` or by name in
+    ``data/pendler_candidates.json``; ``scripts/update_station_directory.py``
+    (``_annotate_station_flags``) then sets the flag, with ``in_vienna``
+    winning when both would apply — the two are mutually exclusive.
+
+    Args:
+        name: A station name or alias; resolved via :func:`station_info`.
+
+    Returns:
+        ``True`` when the resolved directory entry carries ``pendler: true``,
+        ``False`` when it does not or the name does not resolve at all.
+    """
 
     info = station_info(name)
     return bool(info and info.pendler)
-
-
-@lru_cache(maxsize=1)
-def vor_station_ids() -> tuple[str, ...]:
-    """Return the configured VOR station IDs from ``stations.json``.
-
-    The function collects entries that lie inside Vienna or in the commuter
-    belt (``in_vienna`` or ``pendler``) and provide a ``vor_id``, returning a
-    sorted tuple of distinct identifiers. Numeric aliases are also included to
-    preserve legacy identifiers that may still be referenced externally. This
-    centralizes the list of
-    departure board locations that should be queried by the VOR provider and is
-    used as a repository default when no explicit ``VOR_STATION_IDS``
-    environment variable is configured.
-    """
-
-    ids: set[str] = set()
-    for entry in _station_entries():
-        if not (entry.get("in_vienna") or entry.get("pendler")):
-            continue
-        vor_id_raw = entry.get("vor_id") or entry.get("id")
-        if vor_id_raw is not None:
-            vor_id = str(vor_id_raw).strip()
-            if vor_id:
-                ids.add(vor_id)
-        aliases_field = entry.get("aliases")
-        if isinstance(aliases_field, list):
-            for alias in aliases_field:
-                if alias is None:
-                    continue
-                alias_text = str(alias).strip()
-                if alias_text.isdigit():
-                    ids.add(alias_text)
-    return tuple(sorted(ids))
 
 
 @lru_cache(maxsize=1)
