@@ -483,7 +483,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "31: Schadhaftes Fahrzeug",
-    "description": "Linie 31: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 16:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Hubertusdamm.",
+    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "899bf6038c3a38ee5193e2d6c7398a8b95520941bd268edc5b6be3fa4cd67f49",
     "pubDate": "2026-09-13T16:22:00+02:00",
@@ -499,8 +499,8 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "fab64d37b33153d652781bdf655a1bb8c2906198e754bcbf5ac1af5236584df6",
     "pubDate": "2026-09-13T16:24:25+02:00",
-    "starts_at": "2026-09-13T16:24:29+02:00",
-    "ends_at": "2026-09-13T17:23:00+02:00",
+    "starts_at": "2026-09-13T16:31:26+02:00",
+    "ends_at": "2026-09-13T17:30:00+02:00",
     "_identity": "wl|störung|L=31|D=2026-09-13|TK=fahrtbehinderung schadhafter zug"
   },
   {
@@ -514,6 +514,18 @@
     "starts_at": "2026-09-10T00:00:23+02:00",
     "ends_at": "2026-09-13T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-09-10|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Schadhaftes Fahrzeug",
+    "description": "Linie 37A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "77b20ee03e6a69328ee68eb4e90af7a0e896ba887724ecf904cdb85f9fad94c0",
+    "pubDate": "2026-09-13T16:51:00+02:00",
+    "starts_at": "2026-09-13T16:51:00+02:00",
+    "ends_at": "2026-09-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-09-13|TK=37a schadhaftes fahrzeug"
   },
   {
     "source": "Wiener Linien",
@@ -538,30 +550,6 @@
     "starts_at": "2026-09-07T13:46:56+02:00",
     "ends_at": "2026-09-13T23:59:59+02:00",
     "_identity": "wl|störung|L=3A|D=2026-09-07|TK=busse halten kärntner ring 5"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Verkehrsunfall",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e3e13c6b90be5e66804691a6a7901f8c83e37548e7fcba2b3b5336dc0f8722db",
-    "pubDate": "2026-09-13T15:11:00+02:00",
-    "starts_at": "2026-09-13T15:11:00+02:00",
-    "ends_at": "2026-09-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-09-13|TK=40 verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Verkehrsunfall",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92",
-    "pubDate": "2026-09-13T15:11:00+02:00",
-    "starts_at": "2026-09-13T15:11:00+02:00",
-    "ends_at": "2026-09-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=41|D=2026-09-13|TK=41 verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -614,18 +602,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Demonstration Umleitung bis St. Marx über Linie D und 18",
-    "description": "Demonstration\nUmleitung bis St. Marx über Linie D und 18",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "da84575e403987cf05ebf512e9805cba174d01928b37ed81d4eeb626f203023a",
-    "pubDate": "2026-09-13T15:34:49+02:00",
-    "starts_at": "2026-09-13T15:34:53+02:00",
-    "ends_at": "2026-09-13T16:33:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-09-13|TK=demonstration umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -634,6 +610,30 @@
     "starts_at": "2026-09-10T00:00:23+02:00",
     "ends_at": "2026-09-13T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-10|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "80A: Falschparker",
+    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "499783eca858d8184c1002f0cb01b0ffeb4862f9757cc6d141c90afbdf8392d2",
+    "pubDate": "2026-09-13T16:39:00+02:00",
+    "starts_at": "2026-09-13T16:39:00+02:00",
+    "ends_at": "2026-09-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=80A|D=2026-09-13|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Polizeieinsatz",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
+    "pubDate": "2026-09-13T16:37:00+02:00",
+    "starts_at": "2026-09-13T16:37:00+02:00",
+    "ends_at": "2026-09-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-09-13|TK=polizeieinsatz"
   },
   {
     "source": "Wiener Linien",
