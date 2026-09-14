@@ -758,18 +758,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60A: Rettungseinsatz",
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7ea7b7e88e9d5c99b7507dbe5112c345878b2378b59599c67bf954ad52c6b36e",
-    "pubDate": "2026-09-14T16:23:00+02:00",
-    "starts_at": "2026-09-14T16:23:00+02:00",
-    "ends_at": "2026-09-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=60A|D=2026-09-14|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -806,14 +794,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "7A: Verkehrsüberlastung",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-09-14T16:21:00+02:00",
-    "starts_at": "2026-09-14T16:21:00+02:00",
+    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
+    "pubDate": "2026-09-14T16:37:00+02:00",
+    "starts_at": "2026-09-14T16:37:00+02:00",
     "ends_at": "2026-09-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-09-14|TK=u1 verspätungen"
+    "_identity": "wl|störung|L=7A|D=2026-09-14|TK=7a verkehrsüberlastung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Schadhaftes Fahrzeug",
+    "description": "Linie U2: Fahrtbehinderung in Richtung Karlsplatz. Voraussichtliche Dauer: 17:20 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Hausfeldstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
+    "pubDate": "2026-09-14T16:59:00+02:00",
+    "starts_at": "2026-09-14T16:59:00+02:00",
+    "ends_at": "2026-09-14T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-09-14|TK=u2 schadhaftes fahrzeug"
   },
   {
     "source": "Wiener Linien",
