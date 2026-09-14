@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 14 Sep 2026 10:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 11:01:15 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 14 Sep 2026 11:01:15 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 01 Nov 2026 05:00:00 +0100</ext:ends_at>
+      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [15.09.2026 – 01.11.2026]</description>
+      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[15.09.2026 – 01.11.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[37A: Construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,17 +115,6 @@
       <pubDate>Mon, 14 Sep 2026 04:30:18 +0200</pubDate>
       <ext:first_seen>Mon, 14 Sep 2026 04:30:50 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 04:30:19 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 14 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 14.09.2026]</description>
-      <content:encoded><![CDATA[[On 14.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Line 25 in Tokiostraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">850d1ea5a2f242340850bbce64f4516a1e196325253cc145d45d09c3a0832c88</guid>
-      <pubDate>Mon, 14 Sep 2026 04:30:18 +0200</pubDate>
-      <ext:first_seen>Mon, 14 Sep 2026 04:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 04:30:18 +0200</ext:starts_at>
       <ext:ends_at>Mon, 14 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 14.09.2026]</description>
       <content:encoded><![CDATA[[On 14.09.2026]]]></content:encoded>
