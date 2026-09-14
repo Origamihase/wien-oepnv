@@ -7,40 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 14 Sep 2026 12:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 13:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[16A: Falschparker]]></title>
+      <title><![CDATA[16A: False Parker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9504588e9bd0130d5b36d30b650792a41282725dac56f279f104b549336f8aeb</guid>
       <pubDate>Mon, 14 Sep 2026 12:18:00 +0200</pubDate>
       <ext:first_seen>Mon, 14 Sep 2026 12:30:56 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 12:18:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 14 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker. [Am 14.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.<br/>[Am 14.09.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: wrong parker. [On 14.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: wrong parker.<br/>[On 14.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[31A: Service obstruction traffic accident]]></title>
+      <title><![CDATA[31A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7a5002edcae3000c19f7b2e8c75135a2348b751874043889e05a5b54e25f5d70</guid>
-      <pubDate>Mon, 14 Sep 2026 11:37:58 +0200</pubDate>
+      <pubDate>Mon, 14 Sep 2026 11:36:00 +0200</pubDate>
       <ext:first_seen>Mon, 14 Sep 2026 12:01:03 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 11:36:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 14 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic accident in the area of . service obstruction traffic accident [On 14.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident in the area of . service obstruction traffic accident<br/>[On 14.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[32A: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eaf3fece4146000bad12b1d1abc5b0824a43e78d06f9376719be3244658a7bd2</guid>
-      <pubDate>Mon, 14 Sep 2026 11:31:00 +0200</pubDate>
-      <ext:first_seen>Mon, 14 Sep 2026 12:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 11:31:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 14 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 14.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 14.09.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Reason: traffic accident in the area of . [On 14.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident in the area of .<br/>[On 14.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Diversion because of crane works]]></title>
@@ -112,6 +101,17 @@
       <title><![CDATA[25: Line 26E stops Donaufelder road 148]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">44a02aa52cc8c483cf9ee82f243d4a974b14b9b12203ae2740f0d36f0ede2178</guid>
+      <pubDate>Mon, 14 Sep 2026 04:30:19 +0200</pubDate>
+      <ext:first_seen>Mon, 14 Sep 2026 04:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 04:30:19 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 14 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 14.09.2026]</description>
+      <content:encoded><![CDATA[[On 14.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26: Replacement bus from Josef-Baumann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">aa763a6f1448e81823fd431e69e30f0e5d6799ddb74f89508b971f7acb10f349</guid>
       <pubDate>Mon, 14 Sep 2026 04:30:19 +0200</pubDate>
       <ext:first_seen>Mon, 14 Sep 2026 04:30:50 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 04:30:19 +0200</ext:starts_at>

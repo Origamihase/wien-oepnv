@@ -10165,12 +10165,12 @@
     "first_seen": "2026-09-14T10:01:03.213445+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions. Reason: traffic accident in the area of . service obstruction traffic accident",
-        "title": "31A: service obstruction traffic accident"
+        "summary": "irregular intervals in both directions. Reason: traffic accident in the area of .",
+        "title": "31A: traffic accident"
       },
       "en_src": {
-        "summary": "ede15641652bdd19",
-        "title": "d463de75e665340c"
+        "summary": "5306ad52c391ee17",
+        "title": "65815cba4d98831b"
       },
       "epoch": 6
     }
@@ -12733,11 +12733,14 @@
     "first_seen": "2026-09-14T10:30:56.977567+00:00",
     "translations": {
       "en": {
+        "summary": "irregular intervals in both directions. Reason: wrong parker.",
         "title": "16A: False Parker"
       },
       "en_src": {
+        "summary": "897f37ab551ad838",
         "title": "301676a8707af868"
-      }
+      },
+      "epoch": 6
     }
   },
   "9519d3a8dd4972bfbaf8cd1508b670e7bcfde314e055bd7c083b74eeeec1a449": {
