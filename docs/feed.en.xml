@@ -7,29 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 14 Sep 2026 08:30:58 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 09:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[7A/10A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[22A/92A/93A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">76010d40f341aa7c958c92ac51825367f028a06c1a5e9a2b74f44862c681283d</guid>
+      <pubDate>Mon, 14 Sep 2026 08:31:00 +0200</pubDate>
+      <ext:first_seen>Mon, 14 Sep 2026 09:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 08:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 14 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Line 92A: irregular intervals in both directions. [On 14.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line 92A: irregular intervals in both directions.<br/>[On 14.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A/10A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">bccc9f4fd73097cbfc17838a141db4d3d8c4bc9bc5b18d51b5899d8061deff68</guid>
       <pubDate>Mon, 14 Sep 2026 08:17:00 +0200</pubDate>
       <ext:first_seen>Mon, 14 Sep 2026 08:30:58 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 08:17:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 14 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. [Am 14.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 14.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[32A: Traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0a1cc7e1866c830b0ee37cf35c7becb6bd1293c91d7ef6ada131e48fd6cfb901</guid>
-      <pubDate>Mon, 14 Sep 2026 08:16:00 +0200</pubDate>
-      <ext:first_seen>Mon, 14 Sep 2026 08:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 08:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 14 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion. [On 14.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 14.09.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Line 10A: irregular intervals in both directions. [On 14.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line 10A: irregular intervals in both directions.<br/>[On 14.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31A: Traffic congestion]]></title>
@@ -43,26 +43,15 @@
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 14.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[39A: Traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b74cd55e07015a732b2763d5b9037500b1e34b202c8733ad8e0033dcf79e9f06</guid>
-      <pubDate>Mon, 14 Sep 2026 08:11:00 +0200</pubDate>
-      <ext:first_seen>Mon, 14 Sep 2026 08:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 08:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 14 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: traffic congestion. [On 14.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic congestion.<br/>[On 14.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[51B/16A/51A/53A/60A/86A/87A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[51B/16A/51A/53A/60A/86A/87A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">24a355cb167e546d2f5ea958c6f8a45858f4f81b2c8d11004ae739f29ba954fc</guid>
       <pubDate>Mon, 14 Sep 2026 08:00:00 +0200</pubDate>
       <ext:first_seen>Mon, 14 Sep 2026 08:01:20 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 08:00:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 14 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. [Am 14.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 16A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 14.09.2026]]]></content:encoded>
+      <description>irregular intervals in both directions. Line 16A: irregular intervals in both directions. [On 14.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line 16A: irregular intervals in both directions.<br/>[On 14.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26E: Replacement bus stops Karl-Waldbrunner-Platz in front of Schloßhofer Straße, Kurt-Waldbrunner-Platz in front of Schloßhofer Straße]]></title>
@@ -112,6 +101,17 @@
       <title><![CDATA[25: Line 26E stops Donaufelder road 148]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">44a02aa52cc8c483cf9ee82f243d4a974b14b9b12203ae2740f0d36f0ede2178</guid>
+      <pubDate>Mon, 14 Sep 2026 04:30:19 +0200</pubDate>
+      <ext:first_seen>Mon, 14 Sep 2026 04:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 04:30:19 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 14 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 14.09.2026]</description>
+      <content:encoded><![CDATA[[On 14.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26: Replacement bus from Josef-Baumann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">aa763a6f1448e81823fd431e69e30f0e5d6799ddb74f89508b971f7acb10f349</guid>
       <pubDate>Mon, 14 Sep 2026 04:30:19 +0200</pubDate>
       <ext:first_seen>Mon, 14 Sep 2026 04:30:50 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 04:30:19 +0200</ext:starts_at>
