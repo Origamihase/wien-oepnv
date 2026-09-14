@@ -662,6 +662,31 @@ verunreinigen kann. Tests, die explizit ein anderes `stats_dir` ansetzen
 unberührt, weil das explizite Keyword innerhalb von `stats_path` immer
 gewinnt.
 
+### Woher das Live-Dashboard seine Zahlen nimmt
+
+`docs/site.html` las die drei Jahres-Ledger bis 2026-09-14 direkt von
+`raw.githubusercontent.com` und verdichtete sie im Browser — rund
+**705 KB pro Seitenaufruf** (und über das Jahr wachsend), um ein paar
+KPI-Kacheln und Balken zu zeichnen. Seit Audit-Befund **E.3** schreibt
+`scripts/generate_markdown_stats.py` bei jedem Tick zusätzlich
+`docs/stats-summary.json` (~3 KB, feste Dimensionen: 7 Wochentage,
+24 Stunden, eine Handvoll Provider, Linien und Richtungen) und die Seite
+rendert ausschließlich daraus. Zwei Konsequenzen über die Bytes hinaus:
+
+* **Gleiche Origin.** `raw.githubusercontent.com` ist kein
+  Auslieferungs-CDN, hat eigene Rate-Limits und liegt außerhalb der
+  Pages-Zusage. Der Host steht deshalb nicht mehr im `connect-src` der
+  Seite.
+* **Eine Rechenstelle.** Kennzahlen wie „kritische Verspätungen"
+  (`delay_minutes > DELAY_THRESHOLD_MINUTES`) werden nur noch in Python
+  gebildet; die frühere JS-Zweitimplementierung — die Quelle einer
+  echten Drift (`>=` auf der Website, `>` im Backend) — ist entfallen.
+
+Die Roh-Ledger bleiben unverändert unter `data/stats/` und sind auf der
+Seite weiterhin verlinkt. `SUMMARY_SCHEMA_VERSION` versioniert das
+Format; die Seite verweigert ein unbekanntes, statt eine halbe
+Auswertung zu rendern.
+
 ### Was das Dashboard beantwortet
 
 | Frage | Sektion in `docs/statistik.md` |

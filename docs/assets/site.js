@@ -2,17 +2,39 @@
  *
  * Vanilla JS, kein Build, keine Drittabhängigkeiten. Lädt:
  *  - feed.xml (same-origin)
- *  - data/stats/<datei>_<jahr>.csv via raw.githubusercontent.com
+ *  - stats-summary.json (same-origin, vorverdichtet)
  * und rendert alles im Browser. Alle Fremddaten werden ausschließlich
  * über textContent in den DOM eingefügt – keine innerHTML-Pfade für
- * Daten aus Feed oder CSV. URLs werden vor der Verwendung als href
- * mit dem WHATWG-URL-Parser geprüft.
+ * Daten aus Feed oder Statistik. URLs werden vor der Verwendung als
+ * href mit dem WHATWG-URL-Parser geprüft.
  */
 "use strict";
 
 (() => {
-  const REPO = "Origamihase/wien-oepnv";
-  const RAW_BASE = `https://raw.githubusercontent.com/${REPO}/main/data/stats`;
+  // Audit E.3: the statistics panels used to pull the three raw yearly
+  // ledgers straight from ``raw.githubusercontent.com`` — ~705 KB in
+  // September, growing every tick, to render a few KPI tiles and bar
+  // charts. They now read one pre-computed document written by
+  // ``scripts/generate_markdown_stats.py`` on the same 30-minute tick
+  // that appends to those ledgers: ~3 KB, same origin as the page, and
+  // flat all year because its dimensions are fixed (7 weekdays,
+  // 24 hours, a handful of providers, lines and directions).
+  //
+  // Same origin matters beyond the bytes: raw.githubusercontent.com is
+  // not a delivery CDN, carries its own rate limits, and sits outside
+  // the GitHub Pages availability promise — when it throttled, the page
+  // stayed up but every chart failed. It is no longer in the page's
+  // ``connect-src`` at all.
+  //
+  // The raw ledgers stay under ``data/stats/`` and stay linked below
+  // for anyone who wants to analyse them.
+  const SUMMARY_URL = "stats-summary.json";
+  // Must match ``SUMMARY_SCHEMA_VERSION`` in
+  // ``scripts/generate_markdown_stats.py``. A document from a newer
+  // generator is refused outright rather than rendered from whichever
+  // fields happen to still be recognisable — half a dashboard of stale
+  // numbers reads as data, not as an error.
+  const SUMMARY_SCHEMA_VERSION = 1;
   const FEED_URL_DE = "feed.xml";
   const FEED_URL_EN = "feed.en.xml";
   const REFRESH_MS = 5 * 60 * 1000; // 5 Minuten
@@ -174,9 +196,10 @@
   // ``data-i18n``-Knoten — sie werden via ``setStatus`` gesetzt. Wir
   // halten daher eine ergänzende DE-Übersicht für die JS-internen Texte.
   // Separator between an error-detail key and its single argument, e.g.
-  // ``err-csv-missing\u0001stoerungen``. A C0 control character can never
+  // ``err-summary-version\u00012``. A C0 control character can never
   // occur in a browser/network error message or in a URL, so an unknown
-  // detail can never be mistaken for a parameterised key of ours.
+  // detail can never be mistaken for a parameterised key of ours. The
+  // argument lands in the template's ``{arg}`` placeholder.
   const DETAIL_ARG_SEP = "\u0001";
 
   const STATUS_TEXT = {
@@ -193,7 +216,8 @@
       // ``resolveErrorDetail``.
       "err-feed-parse": "Der Feed konnte nicht geparst werden.",
       "err-feed-no-channel": "Der Feed enthält kein <channel>-Element.",
-      "err-csv-missing": "Keine CSV-Daten für {name} verfügbar.",
+      "err-summary-parse": "Die Statistik-Daten konnten nicht gelesen werden.",
+      "err-summary-version": "Die Statistik-Daten liegen im unbekannten Format {arg} vor.",
     },
     en: {
       "status-loading": I18N_EN["status-loading"],
@@ -209,7 +233,8 @@
       // CHART_TEXT / WEATHER_TEXT / COVERAGE_TEXT.
       "err-feed-parse": "The feed could not be parsed.",
       "err-feed-no-channel": "The feed contains no <channel> element.",
-      "err-csv-missing": "No CSV data available for {name}.",
+      "err-summary-parse": "The statistics data could not be read.",
+      "err-summary-version": "The statistics data uses unknown format {arg}.",
     },
   };
 
@@ -340,10 +365,6 @@
   // Canonical Stammstrecke directions. Mirrors ``STAMMSTRECKE_DIRECTIONS`` in
   // ``src/utils/stats.py`` — kept in sync by hand because the site is static.
   const STAMMSTRECKE_DIRECTIONS = ["Meidling", "Praterstern"];
-  // Window used to decide whether a direction has gone silent. Matches the
-  // 30-day README/dashboard window so the site tells the same story as the
-  // generated Markdown.
-  const COVERAGE_WINDOW_DAYS = 30;
   // Operator-maintained cause, mirroring ``DIRECTION_OUTAGE_CAUSE`` in
   // ``scripts/generate_markdown_stats.py``. Shown only while a direction is
   // actually missing, so it cannot outlive the outage it describes.
@@ -477,7 +498,7 @@
   // Resolve an error detail for display. ``raw`` is one of
   //   * an ``err-*`` key thrown by parseFeed and friends,
   //   * such a key plus one argument (``key`` + DETAIL_ARG_SEP + value),
-  //     substituted into the template's ``{name}`` placeholder, or
+  //     substituted into the template's ``{arg}`` placeholder, or
   //   * a message from the browser/network layer, which we cannot
   //     translate and therefore pass through as-is.
   // ``statusText`` returns "" for an unknown key, which is what makes the
@@ -487,7 +508,7 @@
     const sep = raw.indexOf(DETAIL_ARG_SEP);
     if (sep > 0) {
       const template = statusText(raw.slice(0, sep));
-      if (template) return template.replace("{name}", raw.slice(sep + 1));
+      if (template) return template.replace("{arg}", raw.slice(sep + 1));
     }
     return statusText(raw) || raw;
   }
@@ -534,62 +555,45 @@
     return await res.text();
   }
 
-  async function fetchCsvForYear(name, { signal } = {}) {
-    const year = new Date().getFullYear();
-    for (const candidate of [year, year - 1]) {
-      try {
-        const text = await fetchText(`${RAW_BASE}/${name}_${candidate}.csv`, { signal });
-        return { year: candidate, text };
-      } catch (err) {
-        if (signal && signal.aborted) throw err;
-        // try previous year
-      }
-    }
-    throw new Error(`err-csv-missing${DETAIL_ARG_SEP}${name}`);
+  // ----- Statistics summary -----
+
+  // One document feeds all three statistics panels, so the fetch is
+  // shared per refresh cycle rather than repeated once per panel.
+  // ``loadAll`` clears the cache at the start of every cycle; a section
+  // that becomes visible between cycles fetches on its own.
+  let summaryRequest = null;
+
+  function resetSummaryCache() {
+    summaryRequest = null;
   }
 
-  // ----- CSV parser (RFC-4180 light) -----
-
-  function parseCSV(text) {
-    const rows = [];
-    let i = 0;
-    let field = "";
-    let row = [];
-    let inQuotes = false;
-    const len = text.length;
-    while (i < len) {
-      const c = text[i];
-      if (inQuotes) {
-        if (c === '"') {
-          if (text[i + 1] === '"') { field += '"'; i += 2; continue; }
-          inQuotes = false; i++; continue;
-        }
-        field += c; i++; continue;
-      }
-      if (c === '"') { inQuotes = true; i++; continue; }
-      if (c === ",") { row.push(field); field = ""; i++; continue; }
-      if (c === "\r") { i++; continue; }
-      if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; i++; continue; }
-      field += c; i++;
+  function parseSummary(text) {
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      throw new Error("err-summary-parse");
     }
-    if (field !== "" || row.length > 0) { row.push(field); rows.push(row); }
-    return rows;
+    if (!data || typeof data !== "object") throw new Error("err-summary-parse");
+    if (data.schema_version !== SUMMARY_SCHEMA_VERSION) {
+      throw new Error(`err-summary-version${DETAIL_ARG_SEP}${data.schema_version}`);
+    }
+    return data;
   }
 
-  function rowsToObjects(rows) {
-    if (rows.length === 0) return [];
-    const header = rows[0].map((h) => h.trim());
-    const out = [];
-    for (let i = 1; i < rows.length; i++) {
-      const r = rows[i];
-      if (r.length === 1 && r[0] === "") continue;
-      const o = {};
-      for (let j = 0; j < header.length; j++) {
-        o[header[j]] = (r[j] ?? "").trim();
-      }
-      out.push(o);
+  function fetchSummary(signal) {
+    if (!summaryRequest) {
+      summaryRequest = fetchText(SUMMARY_URL, { signal })
+        .then(parseSummary)
+        .catch((err) => {
+          // Do not cache a failure: the next panel (or the next refresh)
+          // must be free to try again rather than inherit this rejection
+          // for the rest of the session.
+          summaryRequest = null;
+          throw err;
+        });
     }
-    return out;
+    return summaryRequest;
   }
 
   // ----- XML/RSS parser -----
@@ -828,20 +832,33 @@
   // ``--c-baustellen`` bar fill in site.css (both strings are matched).
   const providerLabel = (p) => (/Baustellen/.test(p) ? sourceLabel("baustellen") : p);
 
-  function renderStoerungenStats(year, rows) {
+  // The summary's per-dimension maps are sparse: the generator only
+  // emits a key it actually observed. A missing bucket therefore means
+  // "no observations", which is a zero — not missing data.
+  function bucket(dict, key) {
+    const value = dict ? dict[key] : undefined;
+    return Number.isFinite(value) ? value : 0;
+  }
+
+  function numberOr(value, fallback) {
+    return Number.isFinite(value) ? value : fallback;
+  }
+
+  function renderStoerungenStats(year, stats) {
     setYearLabels(year);
 
-    const total = rows.length;
-    const byProvider = countBy(rows, (r) => r.provider || "Unbekannt");
-    const byWeekday = countByKey(rows, (r) => r.weekday, WEEKDAYS);
-    const byHour = countByKey(rows, (r) => r.hour, HOURS);
+    const byProvider = stats.by_provider || {};
+    const byWeekday = stats.by_weekday || {};
+    const byHour = stats.by_hour || {};
 
     const topProvider = topEntry(byProvider);
     const peakHour = topEntry(byHour);
     const peakWeekday = topEntry(byWeekday);
 
     renderKpis("#stoerungen-kpis", [
-      { label: ct("kpi-stoerungen-total"), value: nfInt.format(total), sub: `${ct("sub-year")} ${year}` },
+      { label: ct("kpi-stoerungen-total"),
+        value: nfInt.format(numberOr(stats.total, 0)),
+        sub: `${ct("sub-year")} ${year}` },
       { label: ct("kpi-top-provider"),
         value: topProvider ? providerLabel(topProvider[0]) : ct("tile-em-dash"),
         sub: topProvider ? `${nfInt.format(topProvider[1])} ${ct("sub-meldungen")}` : "" },
@@ -858,34 +875,32 @@
       { variant: "provider", formatValue: (v) => nfInt.format(v) });
 
     renderBars("#stoerungen-weekday",
-      WEEKDAYS.map((d) => [weekdayLong(d), byWeekday[d] || 0]),
+      WEEKDAYS.map((d) => [weekdayLong(d), bucket(byWeekday, d)]),
       { unit: "", formatValue: (v) => nfInt.format(v) });
 
     renderBars("#stoerungen-hour",
-      HOURS.map((h) => [`${h}:00`, byHour[h] || 0]),
+      HOURS.map((h) => [`${h}:00`, bucket(byHour, h)]),
       { unit: "", formatValue: (v) => nfInt.format(v) });
   }
 
-  function renderStammstreckeLiveTile(rows) {
-    // Mirrors ``render_readme_stammstrecke_live_block`` in
-    // ``scripts/generate_markdown_stats.py``: arithmetic mean of
-    // ``delay_minutes`` over the rolling 60-minute window. We compute it
-    // client-side instead of fetching a pre-rendered fragment so the tile
-    // stays accurate between the workflow's 30-minute README refreshes.
+  // Mirrors ``render_readme_stammstrecke_live_block`` in
+  // ``scripts/generate_markdown_stats.py``: arithmetic mean of
+  // ``delay_minutes`` over the rolling 60-minute window.
+  //
+  // The mean used to be computed here, from the raw ledger, with the
+  // stated reason that it would otherwise go stale between the
+  // workflow's 30-minute refreshes. That reasoning did not hold: the
+  // ledger this page read is written by that same workflow, so the
+  // browser was recomputing a window over data that only ever changed
+  // on the tick. The value now arrives pre-computed from the tick that
+  // appended the newest sample — the same freshness, 705 KB cheaper.
+  function renderStammstreckeLiveTile(live) {
     const node = $("#stammstrecke-live-avg");
     if (!node) return;
-    const cutoff = Date.now() - 60 * 60 * 1000;
-    let sum = 0;
-    let count = 0;
-    for (const r of rows) {
-      const ts = Date.parse(r.timestamp);
-      if (!Number.isFinite(ts) || ts < cutoff) continue;
-      const d = parseFloat(r.delay_minutes);
-      if (!Number.isFinite(d)) continue;
-      sum += d;
-      count += 1;
-    }
-    node.textContent = count === 0 ? ct("tile-na") : `${nf1.format(sum / count)} min`;
+    const avg = live ? live.avg_delay_minutes : undefined;
+    // ``null`` is the generator's explicit "window held no sample" and
+    // must render as n/a, never as a zero-minute delay.
+    node.textContent = Number.isFinite(avg) ? `${nf1.format(avg)} min` : ct("tile-na");
   }
 
   function resetStammstreckeLiveTile(text) {
@@ -893,43 +908,47 @@
     if (node) node.textContent = text;
   }
 
-  function renderStammstreckeStats(year, rows) {
+  function renderStammstreckeStats(year, stats) {
     setYearLabels(year);
 
-    renderStammstreckeLiveTile(rows);
+    renderStammstreckeLiveTile(stats.live);
 
-    const valid = rows
-      .map((r) => ({ ...r, delay: parseFloat(r.delay_minutes) }))
-      .filter((r) => Number.isFinite(r.delay));
-    const total = valid.length;
-    const avg = total ? valid.reduce((a, r) => a + r.delay, 0) / total : 0;
-    const max = total ? valid.reduce((m, r) => (r.delay > m ? r.delay : m), 0) : 0;
-    const overThreshold = valid.filter((r) => r.delay > DELAY_THRESHOLD_MIN).length;
-    const byDirection = countBy(valid, (r) => r.direction || "unbekannt");
-
-    const avgByWeekday = averageBy(valid, (r) => r.weekday, (r) => r.delay, WEEKDAYS);
-    const avgByHour = averageBy(valid, (r) => r.hour, (r) => r.delay, HOURS);
-
+    const avgByWeekday = stats.by_weekday_avg || {};
+    const avgByHour = stats.by_hour_avg || {};
+    const byDirection = stats.by_direction || {};
+    // The count of severe delays is now made in Python, against
+    // ``DELAY_THRESHOLD_MINUTES``. ``DELAY_THRESHOLD_MIN`` still labels
+    // the tile and is pinned to that same constant by
+    // ``tests/test_dashboard_delay_threshold.py``, so the label cannot
+    // describe a different threshold than the number above it.
     renderKpis("#stammstrecke-kpis", [
-      { label: ct("kpi-observations"), value: nfInt.format(total), sub: `${ct("sub-year")} ${year}` },
-      { label: ct("kpi-avg-delay"), value: `${nf1.format(avg)} min`, sub: ct("sub-all-observations") },
-      { label: ct("kpi-max-delay"), value: `${nf1.format(max)} min`, sub: ct("sub-tick-value") },
-      { label: ct("kpi-heavy-delays"), value: nfInt.format(overThreshold), sub: `> ${DELAY_THRESHOLD_MIN} min` },
+      { label: ct("kpi-observations"),
+        value: nfInt.format(numberOr(stats.total_observations, 0)),
+        sub: `${ct("sub-year")} ${year}` },
+      { label: ct("kpi-avg-delay"),
+        value: `${nf1.format(numberOr(stats.avg_delay_minutes, 0))} min`,
+        sub: ct("sub-all-observations") },
+      { label: ct("kpi-max-delay"),
+        value: `${nf1.format(numberOr(stats.max_delay_minutes, 0))} min`,
+        sub: ct("sub-tick-value") },
+      { label: ct("kpi-heavy-delays"),
+        value: nfInt.format(numberOr(stats.threshold_exceedances, 0)),
+        sub: `> ${DELAY_THRESHOLD_MIN} min` },
     ]);
 
     renderBars("#stammstrecke-hour",
-      HOURS.map((h) => [`${h}:00`, avgByHour[h] || 0]),
+      HOURS.map((h) => [`${h}:00`, bucket(avgByHour, h)]),
       { unit: " min", variant: "delay", formatValue: (v) => nf1.format(v) });
 
     renderBars("#stammstrecke-weekday",
-      WEEKDAYS.map((d) => [weekdayLong(d), avgByWeekday[d] || 0]),
+      WEEKDAYS.map((d) => [weekdayLong(d), bucket(avgByWeekday, d)]),
       { unit: " min", variant: "delay", formatValue: (v) => nf1.format(v) });
 
     renderBars("#stammstrecke-direction",
       sortedEntries(byDirection),
       { unit: "", formatValue: (v) => nfInt.format(v) });
 
-    renderCoverageNotice(valid);
+    renderCoverageNotice(stats.coverage);
   }
 
   // Audit B.1: the northbound direction stopped reporting on 2026-08-14 while
@@ -938,30 +957,25 @@
   // rule and window as ``render_direction_coverage_note`` in
   // ``scripts/generate_markdown_stats.py``.
   //
-  // Derived from the loaded rows, never hard-coded: it appears only while a
-  // canonical direction is missing from the recent window while another one
-  // reports, names the date that direction was last seen, and disappears by
-  // itself the moment it reports again. The closure is temporary and the
-  // restart has to show up without anyone editing the page.
-  function renderCoverageNotice(rows) {
+  // Derived from the data, never hard-coded: the generator ships the
+  // *evidence* per direction (rows inside the window, last timestamp
+  // seen) and the verdict is made here, so both sides apply one rule.
+  // The banner appears only while a canonical direction is missing from
+  // the recent window while another one reports, names the date that
+  // direction was last seen, and disappears by itself the moment it
+  // reports again. The closure is temporary and the restart has to show
+  // up without anyone editing the page.
+  function renderCoverageNotice(coverage) {
     const node = $("#stammstrecke-coverage");
     if (!node) return;
-    const cutoff = Date.now() - COVERAGE_WINDOW_DAYS * 86400000;
+    const perDirection = (coverage && coverage.directions) || {};
+    const rowsIn = (dir) => {
+      const entry = perDirection[dir];
+      return entry ? numberOr(entry.rows_in_window, 0) : 0;
+    };
 
-    const recent = new Set();
-    const lastSeen = new Map();
-    for (const row of rows) {
-      const ts = Date.parse(row.timestamp);
-      if (!Number.isFinite(ts)) continue;
-      const dir = row.direction;
-      if (!dir) continue;
-      const prev = lastSeen.get(dir);
-      if (prev === undefined || ts > prev) lastSeen.set(dir, ts);
-      if (ts >= cutoff) recent.add(dir);
-    }
-
-    const missing = STAMMSTRECKE_DIRECTIONS.filter((d) => !recent.has(d));
-    const covered = STAMMSTRECKE_DIRECTIONS.filter((d) => recent.has(d));
+    const covered = STAMMSTRECKE_DIRECTIONS.filter((d) => rowsIn(d) > 0);
+    const missing = STAMMSTRECKE_DIRECTIONS.filter((d) => rowsIn(d) === 0);
     // Nothing missing, or the whole corridor quiet (a full outage is the
     // freshness check's business, not a coverage caveat).
     if (!missing.length || !covered.length) {
@@ -973,7 +987,8 @@
     const joiner = currentLang === "en" ? " and " : " und ";
     const missingTxt = missing.join(joiner);
     const coveredTxt = covered.join(joiner);
-    const stamp = lastSeen.get(missing[0]);
+    const entry = perDirection[missing[0]];
+    const stamp = entry && entry.last_seen ? Date.parse(entry.last_seen) : NaN;
     const since = Number.isFinite(stamp)
       ? `${cov("coverage-since")} ${new Date(stamp).toLocaleDateString(localeTag())} `
       : "";
@@ -990,19 +1005,20 @@
     node.hidden = false;
   }
 
-  function renderAusfaelleStats(year, rows) {
+  function renderAusfaelleStats(year, stats) {
     setYearLabels(year);
-    const total = rows.length;
-    const byLine = countBy(rows, (r) => r.line || "unbekannt");
-    const byDirection = countBy(rows, (r) => r.direction || "unbekannt");
-    const byHour = countByKey(rows, (r) => r.hour, HOURS);
-    const byWeekday = countByKey(rows, (r) => r.weekday, WEEKDAYS);
+    const byLine = stats.by_line || {};
+    const byDirection = stats.by_direction || {};
+    const byHour = stats.by_hour || {};
+    const byWeekday = stats.by_weekday || {};
 
     const topLine = topEntry(byLine);
     const topWeekday = topEntry(byWeekday);
 
     renderKpis("#ausfaelle-kpis", [
-      { label: ct("kpi-cancellations"), value: nfInt.format(total), sub: `${ct("sub-year")} ${year}` },
+      { label: ct("kpi-cancellations"),
+        value: nfInt.format(numberOr(stats.total, 0)),
+        sub: `${ct("sub-year")} ${year}` },
       { label: ct("kpi-top-line"),
         value: topLine ? topLine[0] : ct("tile-em-dash"),
         sub: topLine ? `${nfInt.format(topLine[1])} ${ct("sub-ausfaelle")}` : ct("sub-no-data") },
@@ -1020,50 +1036,15 @@
       { unit: "", variant: "cancel", formatValue: (v) => nfInt.format(v) });
 
     renderBars("#ausfaelle-weekday",
-      WEEKDAYS.map((d) => [weekdayLong(d), byWeekday[d] || 0]),
+      WEEKDAYS.map((d) => [weekdayLong(d), bucket(byWeekday, d)]),
       { unit: "", variant: "cancel", formatValue: (v) => nfInt.format(v) });
 
     renderBars("#ausfaelle-hour",
-      HOURS.map((h) => [`${h}:00`, byHour[h] || 0]),
+      HOURS.map((h) => [`${h}:00`, bucket(byHour, h)]),
       { unit: "", variant: "cancel", formatValue: (v) => nfInt.format(v) });
   }
 
   // ----- Aggregation helpers -----
-
-  function countBy(rows, keyFn) {
-    const out = Object.create(null);
-    for (const r of rows) {
-      const k = keyFn(r);
-      out[k] = (out[k] || 0) + 1;
-    }
-    return out;
-  }
-
-  function countByKey(rows, keyFn, order) {
-    const out = Object.create(null);
-    for (const k of order) out[k] = 0;
-    for (const r of rows) {
-      const k = keyFn(r);
-      if (k in out) out[k] += 1;
-    }
-    return out;
-  }
-
-  function averageBy(rows, keyFn, valueFn, order) {
-    const sum = Object.create(null);
-    const cnt = Object.create(null);
-    for (const k of order) { sum[k] = 0; cnt[k] = 0; }
-    for (const r of rows) {
-      const k = keyFn(r);
-      const v = valueFn(r);
-      if (!(k in sum) || !Number.isFinite(v)) continue;
-      sum[k] += v;
-      cnt[k] += 1;
-    }
-    const out = Object.create(null);
-    for (const k of order) out[k] = cnt[k] ? sum[k] / cnt[k] : 0;
-    return out;
-  }
 
   function sortedEntries(obj) {
     return Object.entries(obj).sort((a, b) => b[1] - a[1]);
@@ -1405,6 +1386,9 @@
     if (currentAbort) currentAbort.abort();
     const ctrl = new AbortController();
     currentAbort = ctrl;
+    // Fresh cycle, fresh numbers: the three statistics panels share one
+    // fetch *within* a cycle, never across cycles.
+    resetSummaryCache();
 
     setStatus("loading", "status-loading");
     const refreshBtn = $("#refresh-btn");
@@ -1472,9 +1456,8 @@
   async function loadStoerungen(signal) {
     try {
       hideError("stoerungen-error");
-      const { year, text } = await fetchCsvForYear("stoerungen", { signal });
-      const rows = rowsToObjects(parseCSV(text));
-      renderStoerungenStats(year, rows);
+      const summary = await fetchSummary(signal);
+      renderStoerungenStats(summary.year, summary.stoerungen || {});
     } catch (err) {
       if (err.name === "AbortError") throw err;
       showError("stoerungen-error", "stoerungen-error-prefix", err.message);
@@ -1485,9 +1468,8 @@
   async function loadStammstrecke(signal) {
     try {
       hideError("stammstrecke-error");
-      const { year, text } = await fetchCsvForYear("stammstrecke", { signal });
-      const rows = rowsToObjects(parseCSV(text));
-      renderStammstreckeStats(year, rows);
+      const summary = await fetchSummary(signal);
+      renderStammstreckeStats(summary.year, summary.stammstrecke || {});
     } catch (err) {
       // Bei Abort die Live-Kachel nicht auf "–" zurücksetzen – der neue
       // Request wird sie ohnehin in Kürze mit frischen Daten füllen.
@@ -1501,9 +1483,8 @@
   async function loadAusfaelle(signal) {
     try {
       hideError("ausfaelle-error");
-      const { year, text } = await fetchCsvForYear("ausfaelle", { signal });
-      const rows = rowsToObjects(parseCSV(text));
-      renderAusfaelleStats(year, rows);
+      const summary = await fetchSummary(signal);
+      renderAusfaelleStats(summary.year, summary.ausfaelle || {});
     } catch (err) {
       if (err.name === "AbortError") throw err;
       showError("ausfaelle-error", "ausfaelle-error-prefix", err.message);
@@ -1513,7 +1494,9 @@
 
   // Lazy loaders only – stammstrecke is intentionally absent because it
   // is loaded eagerly inside loadAll() to keep the live tile in the feed
-  // header populated above the fold.
+  // header populated above the fold. All three now read the same
+  // ``fetchSummary`` document, so a lazy section that scrolls into view
+  // during a refresh cycle costs no extra request.
   const SECTION_LOADERS = {
     stoerungen: loadStoerungen,
     ausfaelle: loadAusfaelle,
