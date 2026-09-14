@@ -470,14 +470,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "14A: Rettungseinsatz",
-    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "13A: Verkehrsstörung",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac",
-    "pubDate": "2026-09-14T15:55:00+02:00",
-    "starts_at": "2026-09-14T15:55:00+02:00",
+    "guid": "70f388519c839f34ca54a9a773e86af4e652bb4aedd41e20d94a49395f4bbd9d",
+    "pubDate": "2026-09-14T18:07:00+02:00",
+    "starts_at": "2026-09-14T18:07:00+02:00",
     "ends_at": "2026-09-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=14A|D=2026-09-14|TK=rettungseinsatz"
+    "_identity": "wl|störung|L=13A|D=2026-09-14|TK=13a verkehrsstörung"
   },
   {
     "source": "Wiener Linien",
@@ -758,18 +758,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Verkehrsunfall",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34",
-    "pubDate": "2026-09-14T15:18:00+02:00",
-    "starts_at": "2026-09-14T15:18:00+02:00",
-    "ends_at": "2026-09-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-09-14|TK=49 verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -790,66 +778,6 @@
     "starts_at": "2026-09-14T17:15:00+02:00",
     "ends_at": "2026-09-14T23:55:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-09-14|TK=6 fremder verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fremdunfall Betrieb ab Matzleinsdorfer Platz",
-    "description": "Fremdunfall\nBetrieb ab Matzleinsdorfer Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "69d9f3fb80ab935f7996170a133e33ff45922c70b2ec21954092add9781e2d7a",
-    "pubDate": "2026-09-14T17:16:00+02:00",
-    "starts_at": "2026-09-14T17:16:00+02:00",
-    "ends_at": "2026-09-14T18:17:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-14|TK=fremdunfall betrieb ab matzleinsdorfer platz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fremdunfall Betrieb ab Quellenplatz",
-    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "849d05bc5997cd34cdddf958effb2bc47b5001e8c8e3a00bc6b95eb1e4b86e62",
-    "pubDate": "2026-09-14T17:16:00+02:00",
-    "starts_at": "2026-09-14T17:19:01+02:00",
-    "ends_at": "2026-09-14T18:18:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-14|TK=fremdunfall betrieb ab quellenplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fremdunfall Züge halten bei den Linien 1,18,62 WLB",
-    "description": "Fremdunfall\nZüge halten bei den Linien 1,18,62 WLB",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "99de3b29bcf0818b7f5d9b5779a41cac6a96636375c70594a96e31b94ea6a383",
-    "pubDate": "2026-09-14T17:16:00+02:00",
-    "starts_at": "2026-09-14T17:16:00+02:00",
-    "ends_at": "2026-09-14T18:17:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-14|TK=fremdunfall züge halten bei den linien 1 18 62 wlb"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fremdunfall Züge halten bei der Linie O",
-    "description": "Fremdunfall\nZüge halten bei der Linie O",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9e6061b7bad8c5381f30d03c8425e22e5b922b1dc0cdebc952a9d2c652ed7594",
-    "pubDate": "2026-09-14T17:16:00+02:00",
-    "starts_at": "2026-09-14T17:16:00+02:00",
-    "ends_at": "2026-09-14T18:18:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-14|TK=fremdunfall züge halten bei der linie o"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
-    "pubDate": "2026-09-14T17:16:00+02:00",
-    "starts_at": "2026-09-14T17:16:00+02:00",
-    "ends_at": "2026-09-14T18:15:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-14|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -878,38 +806,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Verkehrsüberlastung",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
-    "pubDate": "2026-09-14T16:37:00+02:00",
-    "starts_at": "2026-09-14T16:37:00+02:00",
-    "ends_at": "2026-09-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-09-14|TK=7a verkehrsüberlastung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U2: Schadhaftes Fahrzeug",
     "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
     "pubDate": "2026-09-14T16:59:00+02:00",
     "starts_at": "2026-09-14T16:59:00+02:00",
-    "ends_at": "2026-09-14T23:55:00+02:00",
+    "ends_at": "2026-09-14T18:59:00+02:00",
     "_identity": "wl|störung|L=U2|D=2026-09-14|TK=u2 schadhaftes fahrzeug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2026-09-14T15:52:00+02:00",
-    "starts_at": "2026-09-14T15:52:00+02:00",
-    "ends_at": "2026-09-14T17:59:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-09-14|TK=u4 betriebsstörung"
   },
   {
     "source": "Wiener Linien",
@@ -920,7 +824,7 @@
     "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
     "pubDate": "2026-09-14T17:31:00+02:00",
     "starts_at": "2026-09-14T17:31:00+02:00",
-    "ends_at": "2026-09-14T23:55:00+02:00",
+    "ends_at": "2026-09-14T18:45:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-09-14|TK=rettungseinsatz"
   },
   {
