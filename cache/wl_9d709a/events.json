@@ -710,26 +710,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5B: Falschparker",
-    "description": "Linie 5B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "title": "57A: Verkehrsunfall",
+    "description": "Linie 57A: Unregelmäßige Intervalle in Richtung Rudolfsheim, Anschützgasse. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6f2fe1e933b94c1a12afde9a2d517b8be52680e46d798a0016e5fbb36a659a92",
-    "pubDate": "2026-09-14T06:07:00+02:00",
-    "starts_at": "2026-09-14T06:07:00+02:00",
+    "guid": "d735177cc6e0c032bea05c9936fbbc2b7922b9a27c7090d9edb0f0dee69f67b3",
+    "pubDate": "2026-09-14T07:20:00+02:00",
+    "starts_at": "2026-09-14T07:20:00+02:00",
     "ends_at": "2026-09-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=5B|D=2026-09-14|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "61A: Verkehrsunfall",
-    "description": "Linie 61A: Unregelmäßige Intervalle in Richtung Liesing S. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e438eb04d33ba8b8a1bd27b0b70052379dade756b5db1f349dbb2be9600324b",
-    "pubDate": "2026-09-14T06:34:00+02:00",
-    "starts_at": "2026-09-14T06:34:00+02:00",
-    "ends_at": "2026-09-14T07:09:00+02:00",
-    "_identity": "wl|störung|L=61A|D=2026-09-14|TK=61a verkehrsunfall"
+    "_identity": "wl|störung|L=57A|D=2026-09-14|TK=57a verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
