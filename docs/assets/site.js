@@ -173,6 +173,12 @@
   // Status-Strings können sich zur Laufzeit ändern und sind kein
   // ``data-i18n``-Knoten — sie werden via ``setStatus`` gesetzt. Wir
   // halten daher eine ergänzende DE-Übersicht für die JS-internen Texte.
+  // Separator between an error-detail key and its single argument, e.g.
+  // ``err-csv-missing\u0001stoerungen``. A C0 control character can never
+  // occur in a browser/network error message or in a URL, so an unknown
+  // detail can never be mistaken for a parameterised key of ours.
+  const DETAIL_ARG_SEP = "\u0001";
+
   const STATUS_TEXT = {
     de: {
       "status-loading": "Daten werden geladen …",
@@ -182,6 +188,12 @@
       "stoerungen-error-prefix": "Störungs-Statistik nicht verfügbar:",
       "stammstrecke-error-prefix": "Stammstrecke-Statistik nicht verfügbar:",
       "ausfaelle-error-prefix": "Ausfall-Statistik nicht verfügbar:",
+      // Error *details*. Thrown as keys rather than as ready-made sentences
+      // so the whole error line follows the language switch — see
+      // ``resolveErrorDetail``.
+      "err-feed-parse": "Der Feed konnte nicht geparst werden.",
+      "err-feed-no-channel": "Der Feed enthält kein <channel>-Element.",
+      "err-csv-missing": "Keine CSV-Daten für {name} verfügbar.",
     },
     en: {
       "status-loading": I18N_EN["status-loading"],
@@ -191,6 +203,13 @@
       "stoerungen-error-prefix": I18N_EN["stoerungen-error-prefix"],
       "stammstrecke-error-prefix": I18N_EN["stammstrecke-error-prefix"],
       "ausfaelle-error-prefix": I18N_EN["ausfaelle-error-prefix"],
+      // Kept as literals rather than routed through ``I18N_EN``: that
+      // dictionary pairs with ``data-i18n`` nodes in the HTML, and these two
+      // strings have none — they are raised from JS. Same split as
+      // CHART_TEXT / WEATHER_TEXT / COVERAGE_TEXT.
+      "err-feed-parse": "The feed could not be parsed.",
+      "err-feed-no-channel": "The feed contains no <channel> element.",
+      "err-csv-missing": "No CSV data available for {name}.",
     },
   };
 
@@ -455,13 +474,36 @@
     t.textContent = dtfFull.format(date) + suffix;
   }
 
-  function showError(elId, prefixKey, detail) {
+  // Resolve an error detail for display. ``raw`` is one of
+  //   * an ``err-*`` key thrown by parseFeed and friends,
+  //   * such a key plus one argument (``key`` + DETAIL_ARG_SEP + value),
+  //     substituted into the template's ``{name}`` placeholder, or
+  //   * a message from the browser/network layer, which we cannot
+  //     translate and therefore pass through as-is.
+  // ``statusText`` returns "" for an unknown key, which is what makes the
+  // fall-through work.
+  function resolveErrorDetail(raw) {
+    if (!raw) return "";
+    const sep = raw.indexOf(DETAIL_ARG_SEP);
+    if (sep > 0) {
+      const template = statusText(raw.slice(0, sep));
+      if (template) return template.replace("{name}", raw.slice(sep + 1));
+    }
+    return statusText(raw) || raw;
+  }
+
+  // The KEY is stored, not the resolved sentence: ``applyTranslationsToDom``
+  // re-renders this line from ``dataset.errorDetail`` on every language
+  // switch. Storing the sentence is what used to leave a German detail
+  // stranded under an English prefix ("Feed could not be loaded: Feed konnte
+  // nicht geparst werden") for the rest of the session.
+  function showError(elId, prefixKey, detailKey) {
     const node = document.getElementById(elId);
     if (!node) return;
     node.hidden = false;
-    node.textContent = `${statusText(prefixKey)} ${detail}`;
+    node.textContent = `${statusText(prefixKey)} ${resolveErrorDetail(detailKey)}`;
     node.dataset.errorPrefixKey = prefixKey;
-    node.dataset.errorDetail = detail;
+    node.dataset.errorDetail = detailKey;
   }
 
   function hideError(elId) {
@@ -503,7 +545,7 @@
         // try previous year
       }
     }
-    throw new Error(`Keine CSV-Daten für ${name} verfügbar.`);
+    throw new Error(`err-csv-missing${DETAIL_ARG_SEP}${name}`);
   }
 
   // ----- CSV parser (RFC-4180 light) -----
@@ -562,9 +604,9 @@
   function parseFeed(xmlText) {
     const doc = domParser.parseFromString(xmlText, "application/xml");
     const err = doc.querySelector("parsererror");
-    if (err) throw new Error("Feed konnte nicht geparst werden");
+    if (err) throw new Error("err-feed-parse");
     const channel = doc.querySelector("channel");
-    if (!channel) throw new Error("Feed ohne <channel>-Element");
+    if (!channel) throw new Error("err-feed-no-channel");
 
     const lastBuild = channelChildText(channel, "lastBuildDate");
     const items = Array.from(doc.getElementsByTagName("item")).map((it) => {
@@ -1663,7 +1705,12 @@
     for (const sel of ["#feed-error", "#stoerungen-error", "#stammstrecke-error", "#ausfaelle-error"]) {
       const node = $(sel);
       if (node && node.dataset.errorPrefixKey) {
-        node.textContent = `${statusText(node.dataset.errorPrefixKey)} ${node.dataset.errorDetail || ""}`;
+        // Detail goes through the same resolver as in ``showError`` so an
+        // ``err-*`` key re-renders in the newly selected language instead of
+        // staying in the one it was raised under.
+        node.textContent =
+          `${statusText(node.dataset.errorPrefixKey)} ` +
+          `${resolveErrorDetail(node.dataset.errorDetail)}`;
       }
     }
     // Re-render last-update timestamp suffix (de "Uhr" vs en blank).

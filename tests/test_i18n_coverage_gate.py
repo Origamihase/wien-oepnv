@@ -371,8 +371,238 @@ def test_module_exports_expected_callables() -> None:
         "_extract_js_dict_block",
         "_value_is_empty",
         "_js_source_minus_dict",
+        "_locale_pairs",
+        "_locale_pair_errors",
+        "_dict_entries",
+        "_scan_object_keys",
         "main",
         "HTML_PATH",
         "JS_PATH",
     ):
         assert hasattr(gate, name), f"gate.{name} missing"
+
+
+# --- JS-only DE/EN dictionary pairs (drift mode 4) --------------------
+#
+# ``I18N_EN`` only covers strings that have a ``data-i18n*`` node in the
+# HTML. Everything the JavaScript raises itself — chart labels, weather
+# words, weekday names, status and error lines — lives in DE/EN pairs
+# resolved as ``dict[key] || DE[key] || key``. A one-sided key there is
+# invisible: nothing throws, the page just renders the other language.
+
+_PAIR_JS = """
+  const WEEKDAY_LONG_DE = {
+    Mo: "Montag", Di: "Dienstag", Mi: "Mittwoch",
+  };
+  const WEEKDAY_LONG_EN = {
+    Mo: "Monday", Di: "Tuesday", Mi: "Wednesday",
+  };
+  const I18N_EN = {};
+"""
+
+
+def _pair_gate(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    js: str,
+) -> tuple[int, str, str]:
+    html_path, js_path = _write_fixture(
+        tmp_path, "<html><body></body></html>", js
+    )
+    return _run_gate_against(monkeypatch, capsys, html_path, js_path)
+
+
+def test_sibling_pair_in_sync_passes(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    exit_code, _, stderr = _pair_gate(tmp_path, monkeypatch, capsys, _PAIR_JS)
+    assert exit_code == 0, stderr
+
+
+def test_key_missing_from_the_en_dictionary_fails(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """The user-visible symptom: an English visitor reads German."""
+    js = _PAIR_JS.replace('Mi: "Wednesday",', "")
+    exit_code, _, stderr = _pair_gate(tmp_path, monkeypatch, capsys, js)
+    assert exit_code == 1
+    assert "WEEKDAY_LONG" in stderr
+    assert "'Mi'" in stderr
+    assert "EN dictionary" in stderr
+
+
+def test_key_missing_from_the_de_dictionary_fails(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """The mirror case falls back to the bare key, not to a translation."""
+    js = _PAIR_JS.replace('Di: "Dienstag",', "")
+    exit_code, _, stderr = _pair_gate(tmp_path, monkeypatch, capsys, js)
+    assert exit_code == 1
+    assert "DE dictionary" in stderr
+    assert "'Di'" in stderr
+
+
+def test_empty_english_value_fails(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    js = _PAIR_JS.replace('Mi: "Wednesday",', 'Mi: "",')
+    exit_code, _, stderr = _pair_gate(tmp_path, monkeypatch, capsys, js)
+    assert exit_code == 1
+    assert "empty" in stderr
+
+
+def test_nested_locale_object_is_checked(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """``STATUS_TEXT`` nests its locales instead of using two consts."""
+    js = """
+  const STATUS_TEXT = {
+    de: {
+      "status-ok": "Live-Feed aktualisiert.",
+      "err-boom": "Kaputt.",
+    },
+    en: {
+      "status-ok": "Live feed updated.",
+    },
+  };
+  const I18N_EN = {};
+"""
+    exit_code, _, stderr = _pair_gate(tmp_path, monkeypatch, capsys, js)
+    assert exit_code == 1
+    assert "STATUS_TEXT" in stderr
+    assert "'err-boom'" in stderr
+
+
+def test_several_entries_on_one_line_are_all_checked(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """``WEEKDAY_LONG_DE`` packs several entries per line.
+
+    A line-anchored key pattern would see only the first of them and
+    wave the rest through — a gate that checks 2 of 7 weekdays is worse
+    than no gate, because it reads as coverage.
+    """
+    js = """
+  const DAY_DE = { Mo: "Montag", Di: "Dienstag", Mi: "Mittwoch" };
+  const DAY_EN = { Mo: "Monday", Di: "Tuesday" };
+  const I18N_EN = {};
+"""
+    exit_code, _, stderr = _pair_gate(tmp_path, monkeypatch, capsys, js)
+    assert exit_code == 1, "drift on a non-first entry of the line was missed"
+    assert "'Mi'" in stderr
+
+
+def test_colon_inside_a_value_is_not_read_as_a_key(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """A false key is a false alarm, and a gate that cries wolf gets
+    disabled. Values here legitimately contain ``word:``."""
+    js = """
+  const NOTE_DE = {
+    a: "Hinweis: Betrieb eingestellt",
+    b: "Achtung: ab 9:00",
+  };
+  const NOTE_EN = {
+    a: "Note: service suspended",
+    b: "Attention: from 9:00",
+  };
+  const I18N_EN = {};
+"""
+    exit_code, _, stderr = _pair_gate(tmp_path, monkeypatch, capsys, js)
+    assert exit_code == 0, stderr
+
+
+def test_comments_between_entries_do_not_become_keys(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    js = """
+  const NOTE_DE = {
+    // Hinweis: der Kommentar darf kein Schluessel werden.
+    a: "eins",
+    /* block: auch nicht */
+    b: "zwei",
+  };
+  const NOTE_EN = {
+    a: "one",
+    b: "two",
+  };
+  const I18N_EN = {};
+"""
+    exit_code, _, stderr = _pair_gate(tmp_path, monkeypatch, capsys, js)
+    assert exit_code == 0, stderr
+
+
+def test_nested_object_values_do_not_leak_keys(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Only TOP-LEVEL keys are compared; a nested value object's own
+    keys belong to the value, not to the dictionary."""
+    js = """
+  const CFG_DE = {
+    a: { inner: "tief" },
+    b: "zwei",
+  };
+  const CFG_EN = {
+    a: { other: "deep" },
+    b: "two",
+  };
+  const I18N_EN = {};
+"""
+    exit_code, _, stderr = _pair_gate(tmp_path, monkeypatch, capsys, js)
+    assert exit_code == 0, stderr
+
+
+def test_an_unpaired_dictionary_is_ignored(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Only a genuine DE/EN pair carries the fallback failure mode. An
+    unrelated upper-case object must not be dragged into the check."""
+    js = """
+  const HOURS = { open: "06:00", close: "23:00" };
+  const I18N_EN = {};
+"""
+    exit_code, _, stderr = _pair_gate(tmp_path, monkeypatch, capsys, js)
+    assert exit_code == 0, stderr
+
+
+def test_every_locale_pair_in_the_real_site_js_is_discovered() -> None:
+    """Pins the discovery itself.
+
+    If a refactor renames the dictionaries out of the recognised shapes,
+    the gate would go quietly green on zero pairs — the failure mode
+    this assertion exists to prevent.
+    """
+    js = gate.JS_PATH.read_text(encoding="utf-8")
+    pairs = gate._locale_pairs(js)
+    assert set(pairs) >= {
+        "CHART_TEXT",
+        "COVERAGE_TEXT",
+        "STATUS_TEXT",
+        "WEATHER_TEXT",
+        "WEEKDAY_LONG",
+    }, f"locale pair discovery lost a dictionary: found {sorted(pairs)}"
+    for label, (de_body, en_body) in pairs.items():
+        keys = gate._dict_entries(de_body)
+        assert keys, f"{label}_DE parsed as empty — the key scanner broke"
+        assert set(keys) == set(gate._dict_entries(en_body))
