@@ -23728,6 +23728,23 @@
       "epoch": 6
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&911913": {
+    "first_seen": "2026-09-15T06:31:25.766283+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to persons on the tracks, no journeys were possible between Wien Meidling station (U) and Wien Liesing station until 08:21.",
+        "title": "Wien Meidling \u2194 Wien Liesing"
+      },
+      "en_src": {
+        "summary": "97d86cb705c827e9",
+        "title": "741486e541917e92"
+      },
+      "en_verbatim": [
+        "title"
+      ],
+      "epoch": 6
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },
