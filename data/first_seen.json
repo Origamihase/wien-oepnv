@@ -23880,6 +23880,23 @@
       "epoch": 6
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&912112": {
+    "first_seen": "2026-09-15T20:00:58.138162+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a police operation, no journeys were possible between Vienna Hbf (U) and Wien Meidling Bahnhof (U) to 21:48.",
+        "title": "Wien Hetzendorf \u2194 Wien Hauptbahnhof \u2194 Wien Meidling"
+      },
+      "en_src": {
+        "summary": "79fda98c30b17a21",
+        "title": "02e907889f7678f7"
+      },
+      "en_verbatim": [
+        "title"
+      ],
+      "epoch": 6
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },
