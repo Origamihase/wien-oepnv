@@ -994,11 +994,14 @@
     "first_seen": "2026-09-15T14:01:05.113073+00:00",
     "translations": {
       "en": {
-        "summary": "The line 79B is redirected in both directions between Haidequerstra\u00dfe and Gr\u00fcnhaufenbr\u00fccke via Freudenauer Hafenstra\u00dfe."
+        "summary": "The line 79B is redirected in both directions between Haidequerstra\u00dfe and Gr\u00fcnhaufenbr\u00fccke via Freudenauer Hafenstra\u00dfe.",
+        "title": "79B: traffic accident"
       },
       "en_src": {
-        "summary": "6bdd1e114552adf6"
-      }
+        "summary": "6bdd1e114552adf6",
+        "title": "23ab3f3a9e4c737f"
+      },
+      "epoch": 6
     }
   },
   "0b9378d0124f3d6bc61c870fd2f963f6906f5b93e9568612b2d7b8477156412a": {
@@ -23827,6 +23830,23 @@
       "en_src": {
         "summary": "97d86cb705c827e9",
         "title": "741486e541917e92"
+      },
+      "en_verbatim": [
+        "title"
+      ],
+      "epoch": 6
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&912033": {
+    "first_seen": "2026-09-15T14:30:59.204545+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an interlocking malfunction am Bahnhof, no journeys are possible between Vienna Hbf (U) and Wien Stadlau expected Wien Stadlau 16:30.",
+        "title": "Wien Hauptbahnhof \u2194 Wien Stadlau"
+      },
+      "en_src": {
+        "summary": "0ac8cce8c16946ae",
+        "title": "7c103b606a9802df"
       },
       "en_verbatim": [
         "title"
