@@ -734,6 +734,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Verspätungen",
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "02eba5a10b6bfbc053ab8e3cd1f9dabf24000400cc5596a3921352c78e6875e3",
+    "pubDate": "2026-09-15T14:52:00+02:00",
+    "starts_at": "2026-09-15T14:52:00+02:00",
+    "ends_at": "2026-09-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-09-15|TK=2 verspätungen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -862,5 +874,17 @@
     "starts_at": "2026-09-11T00:00:25+02:00",
     "ends_at": "2026-09-15T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-09-11|TK=busse halten frauenstiftgasse 7"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Sperre Bahnsteig Richtung Floridsdorf",
+    "description": "Sperre Bahnsteig Richtung Floridsdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9314b3336e24038dd9d3502a1fdae86d0b008636438d39ac2eade24b1e972b16",
+    "pubDate": "2026-09-14T04:00:00+02:00",
+    "starts_at": "2026-09-14T04:00:00+02:00",
+    "ends_at": "2026-12-31T23:59:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
   }
 ]
