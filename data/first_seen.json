@@ -7705,6 +7705,20 @@
       "epoch": 3
     }
   },
+  "5b409515bbdbcac314bb8c316471e4b560b8a050e77adf2199f7e4a1fe0e3a1f": {
+    "first_seen": "2026-09-15T15:01:02.637134+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to Thanksgiving, the lines 27A, 28A and 29A are redirected.",
+        "title": "27A/28A/29A: event at 27.09.2026"
+      },
+      "en_src": {
+        "summary": "621df14a2e18809d",
+        "title": "8729bdddcf354967"
+      },
+      "epoch": 6
+    }
+  },
   "5b850889c3be64e3e1179dae057cb377156f38943ac1e3633fdda72a6fa4f333": {
     "first_seen": "2026-05-24T01:32:20.355557+00:00",
     "translations": {
@@ -23841,11 +23855,11 @@
     "first_seen": "2026-09-15T14:30:59.204545+00:00",
     "translations": {
       "en": {
-        "summary": "Due to an interlocking malfunction am Bahnhof, no journeys are possible between Vienna Hbf (U) and Wien Stadlau expected Wien Stadlau 16:30.",
+        "summary": "Due to an interlocking fault am Bahnhof, no journeys were possible between Vienna Hbf (U) and Wien Stadlau station (U) to 16:22.",
         "title": "Wien Hauptbahnhof \u2194 Wien Stadlau"
       },
       "en_src": {
-        "summary": "0ac8cce8c16946ae",
+        "summary": "1d1f9c5a4faccfec",
         "title": "7c103b606a9802df"
       },
       "en_verbatim": [
