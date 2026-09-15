@@ -734,18 +734,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Verspätungen",
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "02eba5a10b6bfbc053ab8e3cd1f9dabf24000400cc5596a3921352c78e6875e3",
-    "pubDate": "2026-09-15T14:52:00+02:00",
-    "starts_at": "2026-09-15T14:52:00+02:00",
-    "ends_at": "2026-09-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-09-15|TK=2 verspätungen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "32A: Verkehrsunfall",
     "description": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Haltestellenbereich Hanreitergasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -830,14 +818,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "79B/79A: Verkehrsunfall",
-    "description": "Linie 79B: Unregelmäßige Intervalle in beiden Richtungen. Linie 79A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "title": "79B: Verkehrsunfall",
+    "description": "Die Linie 79B wird in beiden Richtungen zwischen Haidequerstraße und Grünhaufenbrücke über Freudenauer Hafenstraße umgeleitet. Voraussichtliche Dauer: 17:00 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Seitenhafenstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aaa235e98feffeaaa46541a7f175671c9b8960d4df39b75bf50dd443cd897e65",
+    "guid": "0b666dde48827cb098b92d8694b0262b4f0e2cf5a9c6dfc1f68f476f61153718",
     "pubDate": "2026-09-15T15:24:00+02:00",
     "starts_at": "2026-09-15T15:24:00+02:00",
     "ends_at": "2026-09-15T23:55:00+02:00",
-    "_identity": "wl|störung|L=79A,79B|D=2026-09-15|TK=79a 79b verkehrsunfall"
+    "_identity": "wl|störung|L=79B|D=2026-09-15|TK=79b verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
