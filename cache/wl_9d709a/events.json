@@ -722,6 +722,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "35A: Verspätungen",
+    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "67c751137c6566f442303d569ccfcae2618b18c074923f44066938ab05204482",
+    "pubDate": "2026-09-15T20:24:00+02:00",
+    "starts_at": "2026-09-15T20:24:00+02:00",
+    "ends_at": "2026-09-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=35A|D=2026-09-15|TK=35a verspätungen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -754,18 +766,6 @@
     "starts_at": "2026-09-07T13:46:56+02:00",
     "ends_at": "2026-09-15T23:59:59+02:00",
     "_identity": "wl|störung|L=3A|D=2026-09-07|TK=busse halten kärntner ring 5"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "52: Rettungseinsatz",
-    "description": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "135dc138ba98273ad144d64ca134b6893a89c99daba5bd7077ef978a587e1c53",
-    "pubDate": "2026-09-15T19:54:00+02:00",
-    "starts_at": "2026-09-15T19:54:00+02:00",
-    "ends_at": "2026-09-15T20:27:00+02:00",
-    "_identity": "wl|störung|L=52|D=2026-09-15|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -850,6 +850,18 @@
     "starts_at": "2026-09-15T19:51:00+02:00",
     "ends_at": "2026-09-15T23:55:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-09-15|TK=u3 betriebsstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Betriebsstörung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
+    "pubDate": "2026-09-15T20:10:00+02:00",
+    "starts_at": "2026-09-15T20:10:00+02:00",
+    "ends_at": "2026-09-15T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-09-15|TK=u6 betriebsstörung"
   },
   {
     "source": "Wiener Linien",
