@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 16 Sep 2026 23:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 00:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[2: Service obstruction Harmful car]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">90140fe0dfe5f1357b962625855ef13c74d3f5ef1009ef24916d28b3d235f8fd</guid>
-      <pubDate>Wed, 16 Sep 2026 22:44:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 23:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 22:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 16 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After an service obstruction there are different intervals. service obstruction Bad car [On 16.09.2026]</description>
-      <content:encoded><![CDATA[After an service obstruction there are different intervals. service obstruction Bad car<br/>[On 16.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Interlocking failure]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d264cf297118f15193acf542540f7ba8a223f20092400da6f3686e026fb42613</guid>
-      <pubDate>Wed, 16 Sep 2026 17:53:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 18:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 17:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 16 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: interlocking failure. [On 16.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: interlocking failure.<br/>[On 16.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[36A/36B: Roadworks]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -60,9 +38,9 @@
       <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
       <ext:first_seen>Wed, 16 Sep 2026 00:01:03 +0200</ext:first_seen>
       <ext:starts_at>Mon, 14 Sep 2026 04:30:18 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Lines 25 and 26 service from Josef-Baumann-Gasse replacement bus from Josef-Baumann-Gasse [14.09.2026 – 16.09.2026]</description>
-      <content:encoded><![CDATA[Lines 25 and 26 service from Josef-Baumann-Gasse replacement bus from Josef-Baumann-Gasse<br/>[14.09.2026 – 16.09.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Lines 25 and 26 service from Josef-Baumann-Gasse replacement bus from Josef-Baumann-Gasse [14.09.2026 – 17.09.2026]</description>
+      <content:encoded><![CDATA[Lines 25 and 26 service from Josef-Baumann-Gasse replacement bus from Josef-Baumann-Gasse<br/>[14.09.2026 – 17.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[27A/28A/29A: Event at 27.09.2026]]></title>
@@ -93,9 +71,9 @@
       <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
       <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
       <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 16.09.2026]</description>
-      <content:encoded><![CDATA[[On 16.09.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[16.09.2026 – 17.09.2026]</description>
+      <content:encoded><![CDATA[[16.09.2026 – 17.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12A: Service from Schweglerstraße 19-21]]></title>
@@ -104,9 +82,9 @@
       <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
       <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
       <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 16.09.2026]</description>
-      <content:encoded><![CDATA[[On 16.09.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[16.09.2026 – 17.09.2026]</description>
+      <content:encoded><![CDATA[[16.09.2026 – 17.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N49: Service from Johnstraße U]]></title>
@@ -115,9 +93,31 @@
       <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
       <ext:first_seen>Tue, 15 Sep 2026 01:00:46 +0200</ext:first_seen>
       <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 16.09.2026]</description>
-      <content:encoded><![CDATA[[On 16.09.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[16.09.2026 – 17.09.2026]</description>
+      <content:encoded><![CDATA[[16.09.2026 – 17.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N49: Service from Schweglerstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2bb63e86a6366d616958e9c07d55e93631da5aea27e8aba60ef218fd8f38dca9</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 00:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[16.09.2026 – 17.09.2026]</description>
+      <content:encoded><![CDATA[[16.09.2026 – 17.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Diversion because of crane works & crane works stop Discontinued]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
+      <pubDate>Wed, 16 Sep 2026 20:00:03 +0200</pubDate>
+      <ext:first_seen>Mon, 14 Sep 2026 11:01:15 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 01 Nov 2026 05:00:00 +0100</ext:ends_at>
+      <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse the line 63A is redirected. [15.09.2026 – 01.11.2026]</description>
+      <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse the line 63A is redirected.<br/>[15.09.2026 – 01.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
