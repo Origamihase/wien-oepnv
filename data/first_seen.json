@@ -7689,14 +7689,17 @@
     "first_seen": "2026-09-16T06:01:02.274477+00:00",
     "translations": {
       "en": {
+        "summary": "Stop change of lines 4A towards Wittelsabchstra\u00dfe, 80A towards Praterstern S U and N29 towards Wittelsbachstra\u00dfe stop: Wittelsbachstra\u00dfe \u2026",
         "title": "4A/80A/N29: 4A. 80A, N29: Wittelsbachstra\u00dfe"
       },
       "en_src": {
+        "summary": "1e50ff720b90907c",
         "title": "af2d03d63bb00882"
       },
       "en_verbatim": [
         "title"
-      ]
+      ],
+      "epoch": 6
     }
   },
   "5afa3b30ad82a8c534e2cb827f27eac396fbde544691590f04a8889aa1a39028": {
@@ -11452,6 +11455,20 @@
       "epoch": 3
     }
   },
+  "8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b": {
+    "first_seen": "2026-09-16T06:31:01.055828+00:00",
+    "translations": {
+      "en": {
+        "summary": "Because of roadworksGLOb8dbaed1acd4a22bX1X Justgasse #Ruthnergasse the lines 36A and 36B are being redirected.",
+        "title": "36A/36B: roadworks"
+      },
+      "en_src": {
+        "summary": "ed321e46ea39379a",
+        "title": "16f4fb01eeea6afb"
+      },
+      "epoch": 6
+    }
+  },
   "864445423ceb9243f0ff08c7f3e2ab6552736204fbfa87f1ea9321c77e76b63a": {
     "first_seen": "2026-08-30T06:01:16.314470+00:00",
     "translations": {
@@ -14318,6 +14335,20 @@
         "title": "33A: foreign traffic accident"
       },
       "epoch": 3
+    }
+  },
+  "a5405c833791b3a555b69c14a028502afc9e587ddb7159f77f9c9f6746fe02d8": {
+    "first_seen": "2026-09-16T06:31:01.055828+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Line 11: irregular intervals in both directions.",
+        "title": "6/11: defective vehicle"
+      },
+      "en_src": {
+        "summary": "a995208b58238297",
+        "title": "992d09caa4889134"
+      },
+      "epoch": 6
     }
   },
   "a5619d9772cc883cb1b953f9355ba9588b9aa33f5715349337cf66be3aa61fd2": {
@@ -19065,6 +19096,20 @@
         "title": "4A: rescue operation Buses stop at the stop towards Wittelsbachstr."
       },
       "epoch": 3
+    }
+  },
+  "e244707826bee6da3555ff4c0cc0fa9d0f00c674f1229e4d4376ffceec0e97be": {
+    "first_seen": "2026-09-16T06:31:01.055828+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Line 59A: irregular intervals in both directions.",
+        "title": "10A/59A/63A: traffic congestion"
+      },
+      "en_src": {
+        "summary": "5f86a19e83155a84",
+        "title": "0ab8d251400d21a6"
+      },
+      "epoch": 6
     }
   },
   "e248a0edc1f597529d2099e4e499669fbd6077d104bbc53931532d683676197a": {
