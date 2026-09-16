@@ -482,14 +482,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A/94A: Verkehrsüberlastung",
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "11A: Einstieg bei Vorgartenstraße vor Meiereistraße",
+    "description": "Bauarbeiten\nEinstieg bei Vorgartenstraße vor Meiereistraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "736b47ca2466b6af0f3a1e368b5839a1a4b6a6cbdb942868c6f10448065eaf1d",
+    "guid": "2158898c549c0f30a157915615cd7f952d751c3b776ca6747799be32ec127935",
+    "pubDate": "2026-09-08T07:11:02+02:00",
+    "starts_at": "2026-09-08T07:13:02+02:00",
+    "ends_at": "2026-09-16T23:59:59+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-09-08|TK=einstieg bei vorgartenstrasse vor meiereistrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11A: Verkehrsüberlastung",
+    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b",
     "pubDate": "2026-09-16T07:54:00+02:00",
     "starts_at": "2026-09-16T07:54:00+02:00",
     "ends_at": "2026-09-16T23:55:00+02:00",
-    "_identity": "wl|störung|L=11A,94A|D=2026-09-16|TK=11a 94a verkehrsüberlastung"
+    "_identity": "wl|störung|L=11A|D=2026-09-16|TK=11a verkehrsüberlastung"
   },
   {
     "source": "Wiener Linien",
@@ -778,18 +790,6 @@
     "starts_at": "2026-09-16T00:00:07+02:00",
     "ends_at": "2026-09-16T23:59:59+02:00",
     "_identity": "wl|störung|L=3A|D=2026-09-16|TK=busse halten kärntner ring 5"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40A: Verkehrsüberlastung",
-    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9bf5343b39ded7dc7ca142844f951a241fc0e1d681fa0c0e2ed28db2ac8efe38",
-    "pubDate": "2026-09-16T07:06:00+02:00",
-    "starts_at": "2026-09-16T07:06:00+02:00",
-    "ends_at": "2026-09-16T23:55:00+02:00",
-    "_identity": "wl|störung|L=40A|D=2026-09-16|TK=40a verkehrsüberlastung"
   },
   {
     "source": "Wiener Linien",

@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 16 Sep 2026 09:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 09:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[10A/59A/63A: Verkehrsüberlastung]]></title>
@@ -43,17 +43,6 @@
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Justgasse #Ruthnergasse werden die Linien 36A und 36B umgeleitet.<br/>[Ab 21.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11A/94A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">736b47ca2466b6af0f3a1e368b5839a1a4b6a6cbdb942868c6f10448065eaf1d</guid>
-      <pubDate>Wed, 16 Sep 2026 07:54:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 07:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 16 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. [Am 16.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 16.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
@@ -63,17 +52,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Haltestellenverlegung der Linien 4A in Richtung Wittelsabchstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 4A in Richtung Wittelsabchstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Update 4 (16.09.2026 07:55) Aufhebung Verkehrseinschränkung: Wien Floridsdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;912197</guid>
-      <pubDate>Wed, 16 Sep 2026 07:55:24 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 07:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Wegen einer Weichenstörung waren in Wien Floridsdorf Bahnhof (U) bis 07:49 Uhr nur eingeschränkt Fahrten möglich. [Am 16.09.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Weichenstörung waren in Wien Floridsdorf Bahnhof (U) bis 07:49 Uhr nur eingeschränkt Fahrten möglich.<br/>[Am 16.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25: Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse & Ersatzbus ab Josef-Baumann-Gasse]]></title>
@@ -114,6 +92,28 @@
       <guid isPermaLink="false">841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643</guid>
       <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
       <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 16.09.2026]</description>
+      <content:encoded><![CDATA[[Am 16.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Betrieb ab Schweglerstraße 19-21]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ca51ff9a0bc16a53883dfb140775b92521f7650658e94d4729934cdb43721549</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 16.09.2026]</description>
+      <content:encoded><![CDATA[[Am 16.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N49: Betrieb ab Johnstraße U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1963f82ac93d144e418b1738c647d7dac8d1d5dd078a20877ba74368c0ae79ae</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 01:00:46 +0200</ext:first_seen>
       <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
       <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 16.09.2026]</description>
