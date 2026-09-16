@@ -734,6 +734,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "31A: Verkehrsüberlastung",
+    "description": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9b3b9554d6b4a14e102d9dc1c24aad5b257fba0af00467f4c2651f24320baa99",
+    "pubDate": "2026-09-16T16:43:00+02:00",
+    "starts_at": "2026-09-16T16:43:00+02:00",
+    "ends_at": "2026-09-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=31A|D=2026-09-16|TK=31a verkehrsüberlastung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -830,14 +842,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "9: Verkehrsunfall",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-09-16T14:55:00+02:00",
-    "starts_at": "2026-09-16T14:55:00+02:00",
-    "ends_at": "2026-09-16T16:44:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-09-16|TK=falschparker"
+    "guid": "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9",
+    "pubDate": "2026-09-16T16:50:00+02:00",
+    "starts_at": "2026-09-16T16:50:00+02:00",
+    "ends_at": "2026-09-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-09-16|TK=9 verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
