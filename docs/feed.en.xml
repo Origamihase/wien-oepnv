@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 16 Sep 2026 07:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 08:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Update 1 (1609.2026 07:22) Traffic restriction: Wien Floridsdorf]]></title>
+      <title><![CDATA[11A/94A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">736b47ca2466b6af0f3a1e368b5839a1a4b6a6cbdb942868c6f10448065eaf1d</guid>
+      <pubDate>Wed, 16 Sep 2026 07:54:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 07:54:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 16 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Line 94A: irregular intervals in both directions. [On 16.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line 94A: irregular intervals in both directions.<br/>[On 16.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 4A in Richtung Wittelsabchstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 4A in Richtung Wittelsabchstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Update 4 (16.09.2026 07.55) Removal of traffic restrictions: Wien Floridsdorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;912197</guid>
-      <pubDate>Wed, 16 Sep 2026 07:22:37 +0200</pubDate>
+      <pubDate>Wed, 16 Sep 2026 07:55:24 +0200</pubDate>
       <ext:first_seen>Wed, 16 Sep 2026 07:30:48 +0200</ext:first_seen>
       <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Due to an switch fault, train journeys are currently limited in Wien Floridsdorf station (U). [On 16.09.2026]</description>
-      <content:encoded><![CDATA[Due to an switch fault, train journeys are currently limited in Wien Floridsdorf station (U).<br/>[On 16.09.2026]]]></content:encoded>
+      <description>Due to an switch fault, only limited journeys were possible at Wien Floridsdorf train station (U) to 07:49. [On 16.09.2026]</description>
+      <content:encoded><![CDATA[Due to an switch fault, only limited journeys were possible at Wien Floridsdorf train station (U) to 07:49.<br/>[On 16.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25: Lines 25 and 26X service from Josef-Baumann-Gasse & replacement bus from Josef-Baumann-Gasse]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 16.09.2026]</description>
       <content:encoded><![CDATA[[On 16.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Diversion because of crane works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
-      <pubDate>Tue, 21 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 14 Sep 2026 11:01:15 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 01 Nov 2026 05:00:00 +0100</ext:ends_at>
-      <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse the line 63A is redirected. [15.09.2026 – 01.11.2026]</description>
-      <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse the line 63A is redirected.<br/>[15.09.2026 – 01.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a38e2ca7a84ce8085bdcf58d06bbb25125fbcf936ce29cd6a5915116418fcdae</guid>
-      <pubDate>Thu, 21 May 2026 08:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 14 Sep 2026 10:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 21 May 2026 08:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 31 Aug 2027 11:11:00 +0200</ext:ends_at>
-      <description>Due to construction works in the area of Donaueschingenstraße the line 37A is being redirected. Period: From Thursday, 21. May 2026, approximately 08:30, for currently … [21.05.2026 – 31.08.2027]</description>
-      <content:encoded><![CDATA[Due to construction works in the area of Donaueschingenstraße the line 37A is being redirected. Period: From Thursday, 21. May 2026, approximately 08:30, for currently …<br/>[21.05.2026 – 31.08.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

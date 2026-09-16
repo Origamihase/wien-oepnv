@@ -7685,6 +7685,20 @@
       "epoch": 2
     }
   },
+  "5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38": {
+    "first_seen": "2026-09-16T06:01:02.274477+00:00",
+    "translations": {
+      "en": {
+        "title": "4A/80A/N29: 4A. 80A, N29: Wittelsbachstra\u00dfe"
+      },
+      "en_src": {
+        "title": "af2d03d63bb00882"
+      },
+      "en_verbatim": [
+        "title"
+      ]
+    }
+  },
   "5afa3b30ad82a8c534e2cb827f27eac396fbde544691590f04a8889aa1a39028": {
     "first_seen": "2026-07-28T05:01:00.220462+00:00",
     "translations": {
@@ -9618,6 +9632,20 @@
         "title": "1: defective vehicle"
       },
       "epoch": 3
+    }
+  },
+  "736b47ca2466b6af0f3a1e368b5839a1a4b6a6cbdb942868c6f10448065eaf1d": {
+    "first_seen": "2026-09-16T06:01:02.274477+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Line 94A: irregular intervals in both directions.",
+        "title": "11A/94A: traffic congestion"
+      },
+      "en_src": {
+        "summary": "163b2bc551a8077c",
+        "title": "478d5ad5a8d12127"
+      },
+      "epoch": 6
     }
   },
   "736f71855b66e15dcb71393b98107316c160008d90ede78fd29f17ea17d81afe": {
@@ -23927,12 +23955,12 @@
     "first_seen": "2026-09-16T05:30:48.844809+00:00",
     "translations": {
       "en": {
-        "summary": "Due to an switch fault, train journeys are currently limited in Wien Floridsdorf station (U).",
-        "title": "Update 1 (1609.2026 07:22) Traffic restriction: Wien Floridsdorf"
+        "summary": "Due to an switch fault, only limited journeys were possible at Wien Floridsdorf train station (U) to 07:49.",
+        "title": "Update 4 (16.09.2026 07.55) Removal of traffic restrictions: Wien Floridsdorf"
       },
       "en_src": {
-        "summary": "2c35c821a2e1b3fa",
-        "title": "9d7d6e8d776ff84c"
+        "summary": "ab1900abb604c574",
+        "title": "06de6b9929de6623"
       },
       "epoch": 6
     }
