@@ -23923,6 +23923,20 @@
       "epoch": 6
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&912197": {
+    "first_seen": "2026-09-16T05:30:48.844809+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an switch fault, train journeys are currently limited in Wien Floridsdorf station (U).",
+        "title": "Update 1 (1609.2026 07:22) Traffic restriction: Wien Floridsdorf"
+      },
+      "en_src": {
+        "summary": "2c35c821a2e1b3fa",
+        "title": "9d7d6e8d776ff84c"
+      },
+      "epoch": 6
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },
