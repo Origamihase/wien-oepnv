@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 16 Sep 2026 13:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 14:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[93A: Verspätungen]]></title>
+      <title><![CDATA[36B: Fahrtbehinderung Signalstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7149fa5013680fd8895dd9716559e72b08c6e805f7fcaa4b58a054c8cd6cccd4</guid>
-      <pubDate>Wed, 16 Sep 2026 13:04:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 13:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 13:04:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 16 Sep 2026 14:13:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 16.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 16.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">73730be54ec75c88bebd42ceb74ea6ac39d7aa025a2757b979b8162d985b1ef2</guid>
+      <pubDate>Wed, 16 Sep 2026 13:43:25 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 14:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 13:43:28 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 16 Sep 2026 14:42:00 +0200</ext:ends_at>
+      <description>[Am 16.09.2026]</description>
+      <content:encoded><![CDATA[[Am 16.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36A/36B: Straßenbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet. [21.09.2026 – 16.09.2027]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 16.09.2026]</description>
       <content:encoded><![CDATA[[Am 16.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
-      <pubDate>Tue, 21 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 14 Sep 2026 11:01:15 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 01 Nov 2026 05:00:00 +0100</ext:ends_at>
-      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [15.09.2026 – 01.11.2026]</description>
-      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[15.09.2026 – 01.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
