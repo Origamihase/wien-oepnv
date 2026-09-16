@@ -6208,7 +6208,15 @@
   "49cdb90fa7e14a4927d4c73990d8053e26aeb3b60d15ac889303ef4b4ecbf54c": {
     "first_seen": "2026-09-16T16:30:56.530657+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: signal disruption.",
+        "title": "59A: signal disruption"
+      },
+      "en_src": {
+        "summary": "fde8191a7008b258",
+        "title": "f2ead84d37f66740"
+      },
+      "epoch": 6
     }
   },
   "49eb2c1bd433616d13cea08a9a3a32b0222f9729f31aaece42aac218211be2da": {
