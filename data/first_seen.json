@@ -14089,7 +14089,15 @@
   "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0": {
     "first_seen": "2026-09-16T13:01:19.504172+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "13A: rescue operation service from Neubaugasse/ Burggasse"
+      },
+      "en_src": {
+        "summary": "eb1bdc2703fe6f1b",
+        "title": "fe6a0b4664f5aeef"
+      },
+      "epoch": 6
     }
   },
   "a1ef8ce30ad0f3717a8e5d52c3f2008749cd322b737c79ffaa5b98dfe80292a4": {
@@ -17706,11 +17714,11 @@
     "first_seen": "2026-09-16T12:30:55.735953+00:00",
     "translations": {
       "en": {
-        "summary": "irregular intervals in both directions. Base: water pipe fracture in the stop area Riemergasse.",
+        "summary": "irregular intervals in both directions. Base: water pipe fracture in the area of wool line.",
         "title": "3A: water pipe fractures"
       },
       "en_src": {
-        "summary": "c097c072e4177b8d",
+        "summary": "a94e5841b0c21fd8",
         "title": "bc41415f3cf13278"
       },
       "epoch": 6
