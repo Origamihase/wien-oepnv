@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 16 Sep 2026 17:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 18:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Stellwerksstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d264cf297118f15193acf542540f7ba8a223f20092400da6f3686e026fb42613</guid>
+      <pubDate>Wed, 16 Sep 2026 17:53:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 18:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 17:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 16 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung. [Am 16.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung.<br/>[Am 16.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -103,17 +114,6 @@
       <guid isPermaLink="false">ca51ff9a0bc16a53883dfb140775b92521f7650658e94d4729934cdb43721549</guid>
       <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
       <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 16.09.2026]</description>
-      <content:encoded><![CDATA[[Am 16.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N49: Betrieb ab Johnstraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1963f82ac93d144e418b1738c647d7dac8d1d5dd078a20877ba74368c0ae79ae</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 01:00:46 +0200</ext:first_seen>
       <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
       <ext:ends_at>Wed, 16 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 16.09.2026]</description>
