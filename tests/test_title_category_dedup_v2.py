@@ -47,28 +47,38 @@ def _format(raw_title: str, raw_desc: str) -> tuple[str, str]:
 
 
 class TestCategoryPrefixSecondPattern:
+    # Both cases below end in the same place: Round 25 strips the leading
+    # category word, the remainder equals the title body, and Round 27 drops
+    # it so the user does not read the same sentence twice.
+    #
+    # What Round 27 left behind was an empty body. For the WL *Hinweise* this
+    # rule was built for that is right — their text continues after the
+    # heading word. For the display-ticker *Störungen* it is not: there the
+    # category word IS the reason and the only thing the title does not
+    # already say. 11 of the 75 items in the 2026-09-17 cache reached the
+    # feed as a headline over a bare ``[Seit 06.05.2026]``, never saying why.
+    #
+    # The assertions therefore pin what they always meant — the awkward
+    # ``Bauarbeiten Busse halten …`` prefix must be gone and the title body
+    # must not be repeated — while the reason is kept in WL's own wording.
+    # ``assert "Bauarbeiten" not in out`` was only ever a proxy for that.
     def test_bauarbeiten_busse_halten_stripped(self) -> None:
-        # Cache item #38. After Round 25 strips the leading
-        # "Bauarbeiten", the remaining summary equals the title body
-        # exactly. Round 27 then drops the whole summary so the user
-        # doesn't see the same text twice — desc becomes just the
-        # timeframe.
+        # Cache item #38.
         title = "62A: Busse halten Breitenfurter Straße 236-238"
         desc = "Bauarbeiten Busse halten Breitenfurter Straße 236-238"
         _, out = _format(title, desc)
-        # Either the leading category was stripped (Round 25) and the
-        # title-body duplicate was then dropped (Round 27) — verify
-        # the awkward "Bauarbeiten" prefix is gone.
-        assert "Bauarbeiten" not in out
+        assert not out.startswith("Bauarbeiten Busse halten")
+        assert "Busse halten Breitenfurter" not in out, "title body restated"
+        assert out.startswith("Grund: Bauarbeiten."), out
 
     def test_gleisbauarbeiten_ersatzbus_stripped(self) -> None:
-        # Cache item #28. Round 25 strips "Gleisbauarbeiten", the
-        # remaining text equals the title body, Round 27 drops the
-        # duplicate.
+        # Cache item #28.
         title = "41E: Ersatzbus 41E hält gegenüber"
         desc = "Gleisbauarbeiten Ersatzbus 41E hält gegenüber"
         _, out = _format(title, desc)
-        assert "Gleisbauarbeiten" not in out
+        assert not out.startswith("Gleisbauarbeiten Ersatzbus")
+        assert "Ersatzbus 41E hält gegenüber" not in out, "title body restated"
+        assert out.startswith("Grund: Gleisbauarbeiten."), out
 
     def test_category_wegen_pattern_stripped_independent_of_title(self) -> None:
         # Description starts with a category word AND the next word is

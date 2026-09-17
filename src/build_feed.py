@@ -4107,6 +4107,47 @@ def _drop_category_word(summary: str, word: str) -> str:
     return summary
 
 
+def _leading_category_word(summary: str) -> str:
+    """Das führende WL-Kategoriewort einer Beschreibung, sonst ``""``."""
+    words = summary.split() if summary else []
+    if not words:
+        return ""
+    first = words[0]
+    return first if first.casefold() in _CATEGORY_PREFIX_WORDS else ""
+
+
+def _reason_only_summary(category_word: str) -> str:
+    """Rettet den Grund, wenn sonst ein leerer Rumpf übrig bliebe.
+
+    ``_strip_summary_category_prefix`` wurde für die WL-*Hinweise* gebaut,
+    deren HTML ein ``<h2>Gleisbauarbeiten</h2>`` vor den Fließtext setzt —
+    dort ist das Wort eine durchgesickerte Überschrift und danach folgt
+    weiterhin ein Satz. Die *Kurzmeldungen* der Anzeigetafeln haben
+    dieselbe Form, meinen aber etwas anderes::
+
+        T: 12A: Betrieb ab Johnstraße U
+        D: Gleisbauarbeiten
+           Betrieb ab Johnstraße U
+
+    Hier ist „Gleisbauarbeiten“ der GRUND und das Einzige, was der Titel
+    nicht ohnehin sagt. Nach dem Streichen bleibt exakt der Titel übrig,
+    ``_summary_duplicates_title`` leert ihn folgerichtig — und das Item
+    stand am 2026-09-17 als Schlagzeile über ``[16.09.2026 – 17.09.2026]``
+    im Feed, ohne dem Leser zu verraten, warum.
+
+    Greift ausschließlich dort, wo der Rumpf sonst leer bliebe: Solange
+    nach dem Streichen noch ein Satz steht („Wegen Fortschreiten der
+    …“), ist nichts zu retten und diese Funktion wird nie gefragt. Das
+    Streichen selbst bleibt unangetastet.
+
+    „Grund: X.“ ist dabei WLs eigene Formulierung — der Langtext derselben
+    Störung endet auf „Grund: Gleisschaden im Bereich Märzstraße 62.“
+    """
+    if not category_word:
+        return ""
+    return f"Grund: {category_word.rstrip('.,;:')}."
+
+
 def _strip_summary_category_prefix(summary: str, raw_title: str) -> str:
     """Remove a leading category H2 word that duplicates the title body
     or signals an HTML-heading leak.
@@ -4529,6 +4570,10 @@ def _format_item_content(
     summary = _WHITESPACE_CLEANUP_RE.sub(" ", summary).strip()
 
     # Doppelte Kategorie-Wortpräfixe entfernen (siehe Helper-Docstring).
+    # Das Wort vorher merken: Bei WL-Kurzmeldungen ist es der Grund und
+    # damit das Einzige, was der Titel nicht schon trägt — siehe
+    # :func:`_reason_only_summary`.
+    category_word = _leading_category_word(summary)
     summary = _strip_summary_category_prefix(summary, raw_title)
 
     # Extrahiere maximal die ersten zwei Sätze.
@@ -4604,7 +4649,7 @@ def _format_item_content(
     # ``Linie 11A: Verspätung.`` and ``Verspätung`` are not flagged
     # as duplicates (different content).
     if _summary_duplicates_title(summary, title_out):
-        summary = ""
+        summary = _reason_only_summary(category_word)
 
     desc_text_truncated, desc_html = _compose_description(summary, time_line)
 

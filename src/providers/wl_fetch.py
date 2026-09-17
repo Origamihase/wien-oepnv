@@ -629,6 +629,202 @@ def _fetch_news(
     return _extract_wl_items(data, "pois")
 
 
+# ---------------- Anzeigetafel-Doppel („stoerungkurz“) ----------------
+
+# ``_fetch_traffic_infos`` fragt bewusst ZWEI WL-Feeds in einem Aufruf ab:
+# ``stoerunglang`` (der ausformulierte Meldungstext) und ``stoerungkurz``
+# (die Kurztexte der Anzeigetafeln). Für dieselbe Störung liefern beide
+# einen Eintrag — die Kurzform je Ast sogar einen eigenen. Am 2026-09-17
+# stand die Linie 49 deshalb dreifach im Feed:
+#
+#     49: Gleisschaden                                ← stoerunglang
+#     49: Gleisschaden Betrieb ab Hütteldorfer Straße  ← stoerungkurz
+#     49: Gleisschaden Betrieb ab Urban-Loritz-Platz   ← stoerungkurz
+#
+# Die beiden Kurzformen erschienen dabei OHNE Text. Ihre Beschreibung
+# („Gleisschaden\nBetrieb ab Hütteldorfer Straße >“) wiederholt nur den
+# eigenen Titel, und ``_summary_duplicates_title`` in ``build_feed`` leert
+# sie folgerichtig — sichtbar blieb eine Schlagzeile über einem leeren
+# Rumpf. Zwei der zehn Plätze des deutschen Feeds trugen damit null
+# Information, während der Langtext danebenstand und alles sagte: „Kein
+# Betrieb zwischen Hütteldorfer Straße U und Urban-Loritz-Platz. Die Züge
+# fahren ab Hütteldorfer Straße bis Joachimsthalerplatz. …“
+#
+# Das Bucketing über ``topic_key`` fasst sie nicht: Ohne Treffer in
+# ``TITLE_TOPIC_TOKENS`` fällt der Schlüssel auf den ganzen Titelkern
+# zurück, und der unterscheidet sich je Ast. Jedes neue Ursachenwort
+# („Gleisschaden“, „Oberleitungsschaden“, „Weichenstörung“, …) einzeln
+# nachzupflegen wäre die dritte Runde desselben Spiels — die beiden
+# vorigen sind bei ``TITLE_TOPIC_TOKENS`` dokumentiert.
+#
+# Die Regel hier braucht kein Ursachenwort. Sie stellt zweimal dieselbe
+# Frage: Sagt dieser Text etwas, das jener nicht schon sagt?
+#
+#   1. Die Beschreibung der Meldung fügt ihrem EIGENEN Titel nichts hinzu
+#      → sie ist eine reine Schlagzeile.
+#   2. Ihr Titel steht bereits vollständig in der Beschreibung einer
+#      anderen Meldung derselben Linien, derselben Kategorie, mit
+#      überlappendem Zeitraum → jene sagt alles, was diese sagt.
+#
+# Nur wenn BEIDES gilt, wandert die Schlagzeile in die andere Meldung:
+# Haltestellen und Extras werden übernommen, der Zeitraum geweitet, Titel
+# und Text der ausführlichen Meldung bleiben. Verworfen wird nichts, was
+# nicht nachweislich woanders steht.
+#
+# Gegenproben an den Live-Daten (Cache 2026-09-17, 37 Störungen):
+#
+#   * ``49A/50B: Mondweg`` und ``49A/50B: Hüttergasse`` — zwei Straßen,
+#     ein Linienpaar. Beide tragen eigenen Text und scheitern schon an
+#     (1). Genau der Fall, an dem das frühere pauschale
+#     ``_identity``-Dedupe scheiterte (s. ``TITLE_TOPIC_TOKENS``).
+#   * ``12A: Betrieb ab Johnstraße U`` — Schlagzeile ohne Langtext
+#     daneben, scheitert an (2). Sie ist die einzige Information zu ihrer
+#     Linie und bleibt.
+#   * Über den ganzen Cache greift die Regel bei genau einer Linie: 49.
+#     34 der 37 Störungen sind Schlagzeilen, aber nur dort steht eine
+#     ausführliche Meldung daneben, die sie abdeckt.
+
+_WORD_SPLIT_RE = re.compile(r"[^\w]+", re.UNICODE)
+
+
+def _content_tokens(text: str) -> frozenset[str]:
+    """Kleingeschriebene Wortmenge von *text*, Satzzeichen entfernt.
+
+    Trägt die Umbrüche und Pfeile der Anzeigetafel-Texte mit ab
+    (``"Gleisschaden\\nBetrieb ab Hütteldorfer Straße >"``) und macht
+    ``Urban-Loritz-Platz`` mit ``Urban Loritz Platz`` vergleichbar — WL
+    schreibt denselben Ort in Titel und Fließtext verschieden.
+    """
+    if not text:
+        return frozenset()
+    return frozenset(
+        tok for tok in _WORD_SPLIT_RE.sub(" ", text).casefold().split() if tok
+    )
+
+
+def _covered_by(tokens: frozenset[str], text: str) -> bool:
+    """True, wenn jedes Wort aus *tokens* schon in *text* vorkommt.
+
+    Eine leere Wortmenge ergibt False: Fehlender Text ist keine
+    Redundanz, sondern fehlende Information. Eine Meldung ohne Titel oder
+    ohne Beschreibung darf darüber nicht stillschweigend verschwinden.
+    """
+    return bool(tokens) and tokens <= _content_tokens(text)
+
+
+def _says_nothing_new(text: str, *, beyond: str) -> bool:
+    """True, wenn *text* kein Wort enthält, das nicht schon in *beyond* steht."""
+    return _covered_by(_content_tokens(text), beyond)
+
+
+def _is_headline_only(bucket: dict[str, Any]) -> bool:
+    """Bedingung (1): Die Beschreibung sagt nichts über den Titel hinaus."""
+    return _says_nothing_new(
+        bucket.get("desc_base", ""), beyond=bucket.get("title", "")
+    )
+
+
+def _ticker_fold_target(
+    src: dict[str, Any], buckets: dict[str, dict[str, Any]], *, skip: str
+) -> str | None:
+    """Schlüssel der Meldung, die alles sagt, was die Schlagzeile *src* sagt.
+
+    ``None``, wenn es keine gibt. Kandidaten müssen dieselben Linien und
+    dieselbe Kategorie tragen, sich zeitlich überlappen und selbst mehr
+    als eine Schlagzeile sein — sonst würden zwei inhaltsleere
+    Kurzmeldungen einander „abdecken“ und eine davon grundlos
+    verschwinden. Bei mehreren Treffern gewinnt die wortreichste
+    Beschreibung; der Schlüssel bricht den Gleichstand, damit dieselbe
+    Eingabe immer dasselbe Ergebnis liefert.
+    """
+    lines = frozenset(_line_tokens_from_pairs(src["lines_pairs"]))
+    if not lines:
+        return None
+    # Die Liniennummer trägt der Titel als Präfix („49: Gleisschaden …“),
+    # der Zieltext muss sie nicht wiederholen — welche Linien gemeint sind,
+    # ist über den Linien-Vergleich unten bereits abschließend geklärt.
+    # Bliebe sie im Vergleich, hinge die Regel daran, ob WL den Langtext
+    # zufällig mit „Linie 49: …“ eröffnet; tut er es nicht, bliebe die
+    # Doppelmeldung stehen.
+    title_tokens = _content_tokens(src.get("title", "")) - {
+        tok.casefold() for tok in lines
+    }
+    matches: list[tuple[int, str]] = []
+    for key, cand in buckets.items():
+        if key == skip or cand["category"] != src["category"]:
+            continue
+        if frozenset(_line_tokens_from_pairs(cand["lines_pairs"])) != lines:
+            continue
+        if _is_headline_only(cand):
+            continue
+        if not _intervals_overlap(
+            src.get("starts_at"),
+            src.get("ends_at"),
+            cand.get("starts_at"),
+            cand.get("ends_at"),
+        ):
+            continue
+        desc = cand.get("desc_base", "")
+        if not _covered_by(title_tokens, desc):
+            continue
+        matches.append((len(_content_tokens(desc)), key))
+    if not matches:
+        return None
+    return max(matches)[1]
+
+
+def _absorb_headline(target: dict[str, Any], src: dict[str, Any]) -> None:
+    """Übernimm Haltestellen, Extras und Zeitraum von *src* nach *target*.
+
+    Titel, Beschreibung und ``starts_at`` bleiben unangetastet: *target*
+    ist die ausführliche Meldung und damit die maßgebliche. ``ends_at``
+    wird nur geweitet, wenn BEIDE Enden bekannt sind — ein offenes Ende
+    der Kurzmeldung darf ein bekanntes Ende der ausführlichen nicht
+    aufweichen, und ein bekanntes darf ein offenes nicht verengen.
+    """
+    target["stop_names"].update(src["stop_names"])
+    for extra in src["extras"]:
+        if extra not in target["extras"]:
+            target["extras"].append(extra)
+    src_pub, target_pub = src.get("pubDate"), target.get("pubDate")
+    if src_pub and (not target_pub or src_pub < target_pub):
+        target["pubDate"] = src_pub
+    src_end, target_end = src.get("ends_at"), target.get("ends_at")
+    if src_end is not None and target_end is not None:
+        target["ends_at"] = max(target_end, src_end)
+
+
+def _fold_display_tickers(buckets: dict[str, dict[str, Any]]) -> None:
+    """Führe reine Schlagzeilen in die ausführliche Meldung derselben Störung.
+
+    Verändert *buckets* an Ort und Stelle. Ein Ziel ist nie selbst
+    Kandidat — ``_ticker_fold_target`` verlangt, dass es mehr als eine
+    Schlagzeile ist —, kann also während des Laufs nicht wegfallen; welche
+    Meldungen übrig bleiben, hängt daher nicht von der Reihenfolge ab. Das
+    ``sorted`` ordnet allein die Logzeile, damit zwei Läufe über dieselben
+    Daten dieselbe Meldung schreiben.
+    """
+    headlines = [key for key, b in sorted(buckets.items()) if _is_headline_only(b)]
+    folded: list[str] = []
+    for key in headlines:
+        src = buckets.get(key)
+        if src is None:  # pragma: no cover - Ziele sind nie Kandidaten
+            continue
+        target_key = _ticker_fold_target(src, buckets, skip=key)
+        if target_key is None:
+            continue
+        _absorb_headline(buckets[target_key], src)
+        del buckets[key]
+        folded.append(str(src.get("title", "")))
+    if folded:
+        log.info(
+            "WL: %d Anzeigetafel-Kurzmeldung(en) in die ausführliche Meldung "
+            "übernommen: %s",
+            len(folded),
+            sanitize_log_arg(" | ".join(folded)),
+        )
+
+
 # ---------------- Public API ----------------
 
 def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
@@ -921,6 +1117,10 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             for x in ev["extras"]:
                 if x not in b["extras"]:
                     b["extras"].append(x)
+
+    # Anzeigetafel-Kurzmeldungen in die ausführliche Meldung derselben
+    # Störung übernehmen (Begründung am Helfer).
+    _fold_display_tickers(buckets)
 
     # D) Finale Items mit Linien-Präfix im Titel
     items: list[dict[str, Any]] = []

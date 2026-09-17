@@ -5,6 +5,94 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Eine Störung, ein Item: WL-Anzeigetafel-Doppel werden zusammengeführt
+  (2026-09-17)**:
+  `_fetch_traffic_infos` fragt bewusst **zwei** WL-Feeds in einem Aufruf ab —
+  `stoerunglang` (der ausformulierte Meldungstext) und `stoerungkurz` (die
+  Kurztexte der Anzeigetafeln). Für dieselbe Störung liefern beide einen
+  Eintrag, die Kurzform je Ast sogar einen eigenen. Die Linie 49 stand
+  deshalb **dreifach** im Feed:
+
+  ```
+  49: Gleisschaden                                ← stoerunglang
+  49: Gleisschaden Betrieb ab Hütteldorfer Straße  ← stoerungkurz
+  49: Gleisschaden Betrieb ab Urban-Loritz-Platz   ← stoerungkurz
+  ```
+
+  Die beiden Kurzformen erschienen **ohne jeden Text**. Ihre Beschreibung
+  (`"Gleisschaden\nBetrieb ab Hütteldorfer Straße >"`) wiederholt nur den
+  eigenen Titel, und `_summary_duplicates_title` leert sie folgerichtig —
+  sichtbar blieb eine Schlagzeile über einem leeren Rumpf. Von den **zehn**
+  Plätzen des deutschen Feeds trugen damit **drei** null Information,
+  während der Langtext danebenstand und alles sagte: „Kein Betrieb zwischen
+  Hütteldorfer Straße U und Urban-Loritz-Platz …“
+
+  Das Bucketing über `topic_key` fasst sie nicht: Ohne Treffer in
+  `TITLE_TOPIC_TOKENS` fällt der Schlüssel auf den ganzen Titelkern zurück,
+  und der unterscheidet sich je Ast. `gleisschaden` dort nachzutragen wäre
+  die **dritte** Runde desselben Spiels gewesen (`demonstration` und
+  `feuerwehreinsatz` stehen für die beiden vorigen), und das nächste
+  Ursachenwort — Oberleitungsschaden, Weichenstörung, Fahrzeuggebrechen —
+  hätte Runde vier eröffnet.
+
+  Die neue Regel braucht **kein Ursachenwort**. Sie stellt zweimal dieselbe
+  Frage: *Sagt dieser Text etwas, das jener nicht schon sagt?*
+
+  1. Die Beschreibung fügt ihrem **eigenen** Titel nichts hinzu → eine reine
+     Schlagzeile.
+  2. Ihr Titel steht bereits vollständig in der Beschreibung einer anderen
+     Meldung derselben Linien, derselben Kategorie, mit überlappendem
+     Zeitraum → jene sagt alles, was diese sagt.
+
+  Nur wenn **beides** gilt, wandert die Schlagzeile in die andere Meldung:
+  Haltestellen und Extras werden übernommen, der Zeitraum geweitet, Titel und
+  Text der ausführlichen Meldung bleiben. Verworfen wird nichts, was nicht
+  nachweislich woanders steht. Die Linien gehen dabei **nicht** in den
+  Textvergleich ein — welche gemeint sind, klärt der Linien-Vergleich
+  abschließend; sonst hinge die Regel daran, ob WL den Langtext zufällig mit
+  „Linie 49: …“ eröffnet.
+
+  Gegenprobe am gesamten Cache (75 Meldungen, davon 37 Störungen): Die Regel
+  entfernt **genau die beiden** reklamierten Items und sonst nichts — auch
+  nicht im Härtetest, der alle 75 in eine Kategorie zwingt. 34 der 37
+  Störungen sind Schlagzeilen, aber nur bei Linie 49 steht eine ausführliche
+  Meldung daneben, die sie abdeckt. `49A/50B: Mondweg` und
+  `49A/50B: Hüttergasse` (zwei Straßen, ein Linienpaar) scheitern schon an
+  (1) — genau der Fall, an dem das frühere pauschale `_identity`-Dedupe
+  scheiterte.
+
+* **Der Grund einer Kurzmeldung geht nicht mehr verloren (2026-09-17)**:
+  `_strip_summary_category_prefix` wurde für die WL-*Hinweise* gebaut, deren
+  HTML ein `<h2>Gleisbauarbeiten</h2>` vor den Fließtext setzt — dort ist das
+  Wort eine durchgesickerte Überschrift, und dahinter geht der Satz weiter.
+  Die *Kurzmeldungen* der Anzeigetafeln haben dieselbe Form und meinen etwas
+  anderes:
+
+  ```
+  T: 12A: Betrieb ab Johnstraße U
+  D: Gleisbauarbeiten
+     Betrieb ab Johnstraße U
+  ```
+
+  Hier ist „Gleisbauarbeiten“ der **Grund** und das Einzige, was der Titel
+  nicht ohnehin sagt. Nach dem Streichen blieb exakt der Titel übrig,
+  `_summary_duplicates_title` leerte ihn folgerichtig — und das Item stand als
+  Schlagzeile über einem nackten `[16.09.2026 – 17.09.2026]` im Feed, ohne zu
+  verraten, warum. **11 der 75** Cache-Meldungen waren in diesem Zustand.
+
+  Der Grund wird jetzt gerettet, in WLs eigener Formulierung
+  (`Grund: Gleisbauarbeiten.` — der Langtext derselben Störung endet auf
+  „Grund: Gleisschaden im Bereich Märzstraße 62.“). Das Streichen selbst
+  bleibt **unangetastet**: Die Rettung greift ausschließlich dort, wo der
+  Rumpf sonst leer bliebe. Solange nach dem Streichen noch ein Satz steht
+  („Wegen Fortschreiten der …“), ändert sich nichts.
+
+  Nur die kuratierten `_CATEGORY_PREFIX_WORDS` werden dabei zum `Grund:`. Der
+  Zeilenumbruch in den Ticker-Texten ist nämlich **kein** Trenner, sondern ein
+  Display-Umbruch mitten im Satz (`"Ersatzbus ab\nFloridsdorf <"`,
+  `"Züge halten in\nTokiostraße"`) — eine Regel, die die erste Zeile blind als
+  Grund läse, würde dort Unsinn erfinden. Diese 23 Meldungen bleiben deshalb
+  bewusst ohne Rumpf.
 * **Abdeckungshinweis: allgemein formuliert, beidseitig, und erst nach einer
   Stunde ohne Fahrt (2026-09-17)**:
   Der Hinweis über den Statistiken trug bis jetzt eine fest verdrahtete
