@@ -375,7 +375,7 @@ def test_coverage_note_names_direction_and_last_seen_date() -> None:
     window = [_sm_row(NOW - timedelta(hours=h), "Meidling") for h in range(1, 9)]
     older = [_sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern")]
 
-    note = render_direction_coverage_note(window, all_rows=window + older)
+    note = render_direction_coverage_note(window, now=NOW, all_rows=window + older)
 
     assert "Eingeschränkte Abdeckung" in note
     assert "Praterstern" in note
@@ -389,21 +389,375 @@ def test_coverage_note_is_empty_when_both_directions_report() -> None:
     from scripts.generate_markdown_stats import render_direction_coverage_note
 
     window = [
-        _sm_row(NOW - timedelta(hours=h), d)
-        for h in range(1, 5)
+        _sm_row(NOW - timedelta(minutes=m), d)
+        for m in range(5, 125, 20)
         for d in DIRECTIONS
     ]
 
-    assert render_direction_coverage_note(window, all_rows=window) == ""
+    assert render_direction_coverage_note(window, now=NOW, all_rows=window) == ""
 
 
-def test_coverage_note_is_empty_for_an_empty_or_fully_dark_window() -> None:
+def test_coverage_note_works_for_either_direction() -> None:
+    """Symmetric by construction, in both directions.
+
+    The note is derived from the data, so whichever direction goes silent
+    reads the same way. Pinned because the 2026 outage only ever exercised
+    one of the two, and a hard-coded "Praterstern" would have passed every
+    test written against it.
+    """
     from scripts.generate_markdown_stats import render_direction_coverage_note
 
-    assert render_direction_coverage_note([], all_rows=[]) == ""
-    # Rows exist but none for any canonical direction → not a coverage caveat.
+    for silent, reporting in (("Praterstern", "Meidling"), ("Meidling", "Praterstern")):
+        window = [_sm_row(NOW - timedelta(hours=h), reporting) for h in range(1, 9)]
+        older = [_sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), silent)]
+
+        note = render_direction_coverage_note(window, now=NOW, all_rows=window + older)
+
+        assert f"Richtung **{silent}** auf der Stammstrecke" in note
+        assert f"nur Richtung **{reporting}** ab" in note
+        assert "14.08.2026" in note, "the note must name when it was last seen"
+        assert "kein Korridor-Gesamtwert" in note
+
+
+def test_coverage_note_covers_both_directions_at_once() -> None:
+    """The case the banner used to suppress.
+
+    A whole-corridor gap was treated as the freshness checks' business — but
+    those live in ``scripts/health_check.py`` and reach an operator, never a
+    reader. The README and the website simply showed stale numbers with no
+    caveat at all, which is the worse failure of the two: a partial sample at
+    least still describes *something* current.
+    """
+    from scripts.generate_markdown_stats import render_direction_coverage_note
+
+    history = [
+        _sm_row(datetime(2026, 8, 20, 5, 30, tzinfo=VIENNA), "Meidling"),
+        _sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern"),
+    ]
+
+    note = render_direction_coverage_note([], now=NOW, all_rows=history)
+
+    assert "Richtung **Meidling** und **Praterstern** auf der Stammstrecke" in note
+    assert "20.08.2026" in note and "14.08.2026" in note, (
+        "with several directions silent each one needs its own date — a single "
+        "date would stand for a sentence covering all of them"
+    )
+    assert "älteren Daten" in note, (
+        "with nothing reporting the figures are not restricted, they are old"
+    )
+    assert "Korridor-Gesamtwert" not in note, (
+        "that clause belongs to the partial case, where something IS shown"
+    )
+
+
+def test_coverage_note_stays_silent_without_any_history() -> None:
+    """A fresh clone has nothing to caveat.
+
+    Distinguishing this from the whole-corridor gap is the reason the note
+    consults *all_rows* and not just the window: "never measured" and
+    "stopped measuring" look identical inside the window alone.
+    """
+    from scripts.generate_markdown_stats import render_direction_coverage_note
+
+    assert render_direction_coverage_note([], now=NOW, all_rows=[]) == ""
+    # Rows exist, but for no canonical direction → still nothing that stopped.
     odd = [_sm_row(NOW - timedelta(hours=1), "Unbekannt")]
-    assert render_direction_coverage_note(odd, all_rows=odd) == ""
+    assert render_direction_coverage_note(odd, now=NOW, all_rows=odd) == ""
+
+
+def test_coverage_note_asserts_no_cause() -> None:
+    """The note reports the observation, never a reason.
+
+    It used to carry an operator-maintained cause ("Streckensperre –
+    Bauarbeiten und Kabelbrand-Folgen"), which was right for the 2026 outage
+    and wrong for every other way a direction falls silent — a timetable
+    change, a provider renaming the platform, our own monitor failing. The
+    ledger records that measurements stopped, never why.
+    """
+    import scripts.generate_markdown_stats as gms
+    from scripts.generate_markdown_stats import render_direction_coverage_note
+
+    assert not hasattr(gms, "DIRECTION_OUTAGE_CAUSE"), (
+        "the hard-coded cause is gone; re-adding it re-creates a caption that "
+        "outlives the outage it describes"
+    )
+
+    window = [_sm_row(NOW - timedelta(hours=h), "Meidling") for h in range(1, 9)]
+    older = [_sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern")]
+    note = render_direction_coverage_note(window, now=NOW, all_rows=window + older)
+
+    for word in ("Kabelbrand", "Bauarbeiten", "Streckensperre"):
+        assert word not in note, f"the note names a specific cause: {word}"
+
+
+def test_site_coverage_texts_name_no_cause_and_match_python() -> None:
+    """Both surfaces say the same thing, and neither invents a reason."""
+    import re
+    from pathlib import Path
+
+    from scripts.generate_markdown_stats import COVERAGE_ORIGIN_LABEL
+
+    js = (
+        Path(__file__).resolve().parents[1] / "docs" / "assets" / "site.js"
+    ).read_text(encoding="utf-8")
+    code_only = re.sub(r"//.*", "", js)
+
+    for word in ("Kabelbrand", "cable-fire", "Bauarbeiten", "Streckensperre"):
+        assert word not in code_only, f"site.js still names a cause: {word}"
+
+    match = re.search(r'const COVERAGE_ORIGIN = "([^"]+)";', js)
+    assert match is not None, "site.js must declare COVERAGE_ORIGIN"
+    assert match.group(1) == COVERAGE_ORIGIN_LABEL, (
+        "the measurement point must read the same on both surfaces"
+    )
+
+
+def _peer_run(now: datetime, direction: str, count: int, *, step_minutes: int = 20) -> list[Any]:
+    """*count* journeys in *direction*, newest ``step_minutes`` before *now*."""
+    return [
+        _sm_row(now - timedelta(minutes=step_minutes * (i + 1)), direction)
+        for i in range(count)
+    ]
+
+
+def test_coverage_note_waits_an_hour_before_it_appears() -> None:
+    """Below the hour there is no story yet.
+
+    A gap of a few minutes is the corridor's normal rhythm — observations
+    arrive every ~30 min at best — so anything shorter than the hour would
+    describe the sampler, not the service.
+    """
+    from scripts.generate_markdown_stats import (
+        DIRECTION_SILENCE_NOTICE_HOURS,
+        render_direction_coverage_note,
+    )
+
+    assert DIRECTION_SILENCE_NOTICE_HOURS == 1.0
+
+    for minutes, expected in ((30, False), (59, False), (61, True)):
+        rows = [
+            *_peer_run(NOW, "Meidling", 12, step_minutes=5),
+            _sm_row(NOW - timedelta(minutes=minutes), "Praterstern"),
+        ]
+        note = render_direction_coverage_note(rows, now=NOW, all_rows=rows)
+        assert bool(note) is expected, (
+            f"{minutes} min of silence should "
+            f"{'raise' if expected else 'not raise'} the note"
+        )
+
+
+def test_coverage_note_clears_the_moment_the_direction_returns() -> None:
+    """The restart has to be picked up without anyone editing Markdown.
+
+    This is the requirement the whole rule exists to serve: the closure is
+    temporary, and a caveat that outlives it is worse than none at all.
+    """
+    from scripts.generate_markdown_stats import render_direction_coverage_note
+
+    silent = [
+        *_peer_run(NOW, "Meidling", 12, step_minutes=5),
+        _sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern"),
+    ]
+    assert render_direction_coverage_note(silent, now=NOW, all_rows=silent) != ""
+
+    # One northbound journey, and the caveat is gone on the next tick.
+    resumed = [*silent, _sm_row(NOW - timedelta(minutes=4), "Praterstern")]
+    assert render_direction_coverage_note(resumed, now=NOW, all_rows=resumed) == ""
+
+
+def test_a_quiet_night_in_both_directions_raises_nothing() -> None:
+    """The reason the hour is not applied to the clock alone.
+
+    The Stammstrecke stops for about 3:41 h every night (01:12 -> 04:53,
+    strikingly consistent across 2026). A bare "quiet for an hour" rule
+    raised the banner at 10.6 % of 4 324 replayed healthy ticks, 87 % of them
+    in the small hours — a caveat that appears every night is one readers
+    stop seeing. Silence only counts against evidence that trains are in
+    fact running.
+    """
+    from scripts.generate_markdown_stats import (
+        CORRIDOR_SILENCE_NOTICE_HOURS,
+        find_silent_coverage_directions,
+        render_direction_coverage_note,
+    )
+
+    for hours in (1.5, 3.0, 5.0, 7.5):
+        rows = [
+            _sm_row(NOW - timedelta(hours=hours) - timedelta(minutes=20 * i), d)
+            for i in range(20)
+            for d in DIRECTIONS
+        ]
+        assert find_silent_coverage_directions(rows, now=NOW) == [], (
+            f"a corridor-wide pause of {hours} h is a timetable, not a fault"
+        )
+        assert render_direction_coverage_note(rows, now=NOW, all_rows=rows) == ""
+
+    # Past any healthy pause it is no longer a night — then it must be said.
+    long_gap = [
+        _sm_row(
+            NOW
+            - timedelta(hours=CORRIDOR_SILENCE_NOTICE_HOURS + 1)
+            - timedelta(minutes=20 * i),
+            d,
+        )
+        for i in range(20)
+        for d in DIRECTIONS
+    ]
+    assert find_silent_coverage_directions(long_gap, now=NOW) == list(DIRECTIONS)
+
+
+def test_silence_counts_only_against_proof_that_trains_are_running() -> None:
+    """A peer direction is what turns an hour of quiet into a statement.
+
+    Without it the rule cannot tell "this direction stopped" from "nothing
+    was sampled" — and it is the asymmetry, not the clock, that makes the
+    northbound gap worth a reader's attention.
+    """
+    from scripts.generate_markdown_stats import (
+        DIRECTION_SILENCE_NOTICE_PEER_ROWS,
+        find_silent_coverage_directions,
+    )
+
+    below = DIRECTION_SILENCE_NOTICE_PEER_ROWS - 1
+    rows = [
+        *_peer_run(NOW, "Meidling", below, step_minutes=5),
+        _sm_row(NOW - timedelta(hours=3), "Praterstern"),
+    ]
+    assert find_silent_coverage_directions(rows, now=NOW) == [], (
+        f"{below} peer journeys do not yet prove the corridor is running"
+    )
+
+    enough = [
+        *_peer_run(NOW, "Meidling", DIRECTION_SILENCE_NOTICE_PEER_ROWS, step_minutes=5),
+        _sm_row(NOW - timedelta(hours=3), "Praterstern"),
+    ]
+    assert find_silent_coverage_directions(enough, now=NOW) == ["Praterstern"]
+
+
+def test_peer_evidence_does_not_expire_overnight() -> None:
+    """The banner must not blink off during the nightly pause of an outage.
+
+    Peer rows are counted over the whole silent stretch rather than over a
+    trailing window, so an ongoing outage stays flagged at 03:00 — when the
+    peer is asleep too — exactly as it is at noon. Pinned because the
+    obvious implementation (is a peer reporting *right now*?) flickers off
+    every night, and a caveat that comes and goes reads like a glitch.
+    """
+    from scripts.generate_markdown_stats import find_silent_coverage_directions
+
+    # Southbound ran all day, then stopped for the night; northbound has been
+    # gone for weeks. It is 03:00 and nothing is moving in either direction.
+    night = datetime(2026, 9, 14, 3, 0, tzinfo=VIENNA)
+    rows = [
+        *_peer_run(night - timedelta(hours=2), "Meidling", 40, step_minutes=20),
+        _sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern"),
+    ]
+
+    assert find_silent_coverage_directions(rows, now=night) == ["Praterstern"], (
+        "the northbound gap is still the story at 03:00, and southbound "
+        "being asleep is not evidence that it recovered"
+    )
+
+
+def test_coverage_note_does_not_call_fresh_figures_a_partial_sample() -> None:
+    """Two statements, true at different times.
+
+    A direction that fell quiet an hour ago still contributes thousands of
+    rows to a 30-day window. Saying those figures "cover only the other
+    direction" would be plainly false, so the note states the observation and
+    stops there until the silence has actually hollowed out the window.
+    """
+    from scripts.generate_markdown_stats import render_direction_coverage_note
+
+    window = [
+        *_peer_run(NOW, "Meidling", 12, step_minutes=5),
+        # Northbound is quiet now, but reported plenty inside the window.
+        *_peer_run(NOW - timedelta(hours=3), "Praterstern", 300, step_minutes=20),
+    ]
+    note = render_direction_coverage_note(window, now=NOW, all_rows=window)
+
+    assert "Aktuell keine Fahrten" in note and "Praterstern" in note
+    assert "Korridor-Gesamtwert" not in note, (
+        "the window still holds northbound rows — the figures are not a "
+        "part-corridor sample yet"
+    )
+    assert "älteren Daten" not in note
+
+    # Once the silence has outlived the window, the caveat lands. The window
+    # is the 30-day slice; the ledger still remembers when it stopped.
+    southbound = _peer_run(NOW, "Meidling", 12, step_minutes=5)
+    ledger = [
+        *southbound,
+        _sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern"),
+    ]
+    assert "kein Korridor-Gesamtwert" in render_direction_coverage_note(
+        southbound, now=NOW, all_rows=ledger
+    )
+
+
+def test_summary_ships_the_evidence_the_browser_cannot_derive() -> None:
+    """``site.js`` re-decides on the reader's clock, so it needs the inputs.
+
+    The raw ledger stopped being shipped when the dashboard moved to
+    ``stats-summary.json``; ``peer_rows_since`` is the one number the page
+    cannot recompute. The thresholds travel with it so the two surfaces
+    cannot drift into different rules.
+    """
+    from scripts.generate_markdown_stats import (
+        CORRIDOR_SILENCE_NOTICE_HOURS,
+        DIRECTION_SILENCE_NOTICE_HOURS,
+        DIRECTION_SILENCE_NOTICE_PEER_ROWS,
+        _direction_coverage,
+    )
+
+    rows = [
+        *_peer_run(NOW, "Meidling", 9, step_minutes=20),
+        _sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern"),
+    ]
+    payload = _direction_coverage(rows, all_rows=rows, window_days=30)
+
+    assert payload["silence_hours"] == DIRECTION_SILENCE_NOTICE_HOURS
+    assert payload["peer_rows_required"] == DIRECTION_SILENCE_NOTICE_PEER_ROWS
+    assert payload["corridor_silence_hours"] == CORRIDOR_SILENCE_NOTICE_HOURS
+
+    directions = payload["directions"]
+    assert isinstance(directions, dict)
+    assert directions["Praterstern"]["peer_rows_since"] == 9, (
+        "every southbound journey since the last northbound one is evidence"
+    )
+    assert directions["Meidling"]["peer_rows_since"] == 0, (
+        "nothing ran after the newest southbound row"
+    )
+
+
+def test_site_applies_the_same_thresholds_as_python() -> None:
+    """The rule lives on both surfaces; only one of them may define it."""
+    import re
+    from pathlib import Path
+
+    from scripts.generate_markdown_stats import (
+        CORRIDOR_SILENCE_NOTICE_HOURS,
+        DIRECTION_SILENCE_NOTICE_PEER_ROWS,
+    )
+
+    js = (
+        Path(__file__).resolve().parents[1] / "docs" / "assets" / "site.js"
+    ).read_text(encoding="utf-8")
+
+    # Each threshold must actually be READ off the payload. A bare substring
+    # check would pass on "corridor_silence_hours" alone, and on a page that
+    # merely mentions the key while applying a constant of its own.
+    for key in ("silence_hours", "corridor_silence_hours", "peer_rows_required"):
+        assert re.search(rf"coverage\s*&&\s*coverage\.{key}\b", js), (
+            f"site.js must read {key!r} from the summary, not hard-code it"
+        )
+
+    # The hard-coded fallbacks guard a stale cached summary; they must agree
+    # with Python, or a cached page would quietly apply a different rule.
+    corridor = re.search(r"coverage\.corridor_silence_hours,\s*(\d+)", js)
+    peers = re.search(r"coverage\.peer_rows_required,\s*(\d+)", js)
+    assert corridor and int(corridor.group(1)) == int(CORRIDOR_SILENCE_NOTICE_HOURS)
+    assert peers and int(peers.group(1)) == DIRECTION_SILENCE_NOTICE_PEER_ROWS
 
 
 def test_readme_blocks_carry_the_coverage_note() -> None:
