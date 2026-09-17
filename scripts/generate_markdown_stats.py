@@ -706,12 +706,12 @@ def _format_directions_section(
             d for d in STAMMSTRECKE_DIRECTIONS if d not in stammstrecke.by_direction
         ]
         if missing and len(missing) < len(STAMMSTRECKE_DIRECTIONS):
-            cause = f" ({DIRECTION_OUTAGE_CAUSE})" if DIRECTION_OUTAGE_CAUSE else ""
             names = " und ".join(f"**{escape_markdown_cell(d)}**" for d in missing)
             lines.extend(
                 [
-                    f"> ⚠️ **Eingeschränkte Abdeckung:** Richtung {names} ohne "
-                    f"Messwerte in diesem Zeitraum{cause}. Die Zahlen unten sind "
+                    "> ⚠️ **Eingeschränkte Abdeckung:** In diesem Zeitraum "
+                    f"keine Fahrten von {COVERAGE_ORIGIN_LABEL} Richtung "
+                    f"{names} auf der Stammstrecke. Die Zahlen unten sind "
                     "daher **kein Korridor-Gesamtwert**.",
                     "",
                 ]
@@ -962,14 +962,39 @@ def _format_window_timestamp(now: datetime) -> str:
     return now.strftime("%Y-%m-%d %H:%M %Z").rstrip()
 
 
-# Operator-maintained cause for the current direction outage, rendered into the
-# coverage note below. It appears ONLY while a direction is actually missing
-# from the window and disappears by itself the moment that direction reports
-# again — so a stale cause cannot outlive the outage it describes. Update the
-# text (or clear it) if the cause changes.
-DIRECTION_OUTAGE_CAUSE: Final = (
-    "Streckensperre – Bauarbeiten und Kabelbrand-Folgen"
-)
+# The coverage note names NO cause. It used to carry an operator-maintained
+# one ("Streckensperre – Bauarbeiten und Kabelbrand-Folgen"), which was
+# accurate for the 2026 outage and wrong for every other way a direction can
+# fall silent: a timetable change, a provider renaming the platform, our own
+# monitor failing. The note states the observation instead, in one sentence
+# shape that fits every case — one direction, the other, or both.
+#
+# Measurement point of the Stammstrecke observations. Named here so the note
+# and the website say the same thing; mirrors the footer wording in
+# ``docs/site.html`` ("Stammstrecken-Beobachtungen am Wien Hbf").
+COVERAGE_ORIGIN_LABEL: Final = "Wien Hbf"
+
+
+def _last_seen_suffix(
+    missing: list[str], latest: dict[str, datetime]
+) -> str:
+    """Parenthetical naming when the silent direction(s) last reported.
+
+    One direction gets the short form; several get one date each, because a
+    single date would otherwise stand for a sentence covering all of them.
+    Directions that never reported are simply left out — there is no "last"
+    for them.
+    """
+    dated = [d for d in missing if d in latest]
+    if not dated:
+        return ""
+    if len(dated) == 1 and len(missing) == 1:
+        return f" (zuletzt am {latest[dated[0]].strftime('%d.%m.%Y')})"
+    inner = ", ".join(
+        f"{escape_markdown_cell(d)} am {latest[d].strftime('%d.%m.%Y')}"
+        for d in dated
+    )
+    return f" (zuletzt {inner})"
 
 
 def _last_seen_per_direction(
@@ -984,53 +1009,182 @@ def _last_seen_per_direction(
     return latest
 
 
+# The banner waits ONE HOUR without a journey before it appears, and clears
+# as soon as the direction reports again. One hour on its own is far below
+# the corridor's own rhythm, though: observations arrive every ~30 min at
+# best, the p99 gap per direction is 3.5 h, and the Stammstrecke pauses
+# entirely for about 3:41 h every night (01:12 -> 04:53, strikingly
+# consistent). Replayed over 4 324 half-hourly ticks of healthy 2026
+# operation, a bare "quiet for 1 h" rule raised the banner at 10.6 % of them
+# — 87 % in the small hours, when nothing is running by design. A caveat that
+# shows up every night is one readers stop seeing.
+#
+# So the hour is measured against EVIDENCE THAT TRAINS ARE RUNNING, not
+# against the clock alone, and the evidence differs by case:
+#
+#   * One direction quiet, the other reporting — the peer is the evidence.
+#     The quiet direction is named once a peer has logged
+#     ``DIRECTION_SILENCE_NOTICE_PEER_ROWS`` journeys since its own last one:
+#     trains demonstrably ran through the corridor and this direction was not
+#     among them. Peer rows accumulate and never expire, so the banner does
+#     not flicker off during the nightly pause of an ongoing outage (replay:
+#     zero interruptions across all 1 628 ticks since 2026-08-14).
+#   * Every direction quiet — no peer is left to compare against, and a dark
+#     corridor at 03:00 is a timetable, not a fault. Only a stretch longer
+#     than any healthy pause says otherwise.
+#
+# With the values below the replay raises the banner at 3 of 4 324 healthy
+# ticks, and all three are the same episode: 2026-08-14 06:27 -> 11:27, a real
+# five-hour northbound gap on the morning the outage set in. Outside that,
+# normal operation produces no banner at all. The 2026-08-14 outage is caught
+# 3:03 h after the last northbound journey and stays caught.
+#
+# Note what the rule can and cannot claim. With a peer reporting, "no
+# journeys in this direction" is sound: the peer proves our own collector was
+# alive. With the whole corridor dark the ledger cannot tell "no trains ran"
+# from "we observed nothing" — that distinction belongs to
+# ``scripts/health_check.py``. The corridor wording therefore only claims the
+# figures are old, which holds either way.
+#: Hours a direction must go without a journey before the banner names it.
+DIRECTION_SILENCE_NOTICE_HOURS: Final = 1.0
+#: Journeys a peer direction must log in that stretch to prove service is
+#: running. Each extra row buys quiet at ~30 min of detection delay: at 4 the
+#: replay shows 4 episodes, at 5 three, at 6 only the outage onset itself.
+#: Six is the first value with no banner at all in normal operation.
+DIRECTION_SILENCE_NOTICE_PEER_ROWS: Final = 6
+#: Hours the WHOLE corridor must be quiet before the banner names every
+#: direction — needed because the peer rule cannot fire with no peer left.
+#: The nightly pause is a consistent 3:41 h and the longest corridor-wide
+#: silence healthy 2026 operation produced was 7:45 h (2026-08-06 17:27, a
+#: collection outage rather than a timetable). Eight hours is the smallest
+#: whole-hour threshold clear of both, at 2.2x the nightly pause, and the
+#: replay never reaches it outside a real gap. Deliberately far above the
+#: one-hour per-direction rule: a dark corridor is normal every night, a dark
+#: *direction* beside a running one never is.
+CORRIDOR_SILENCE_NOTICE_HOURS: Final = 8.0
+
+
+def find_silent_coverage_directions(
+    rows: list[StammstreckeRow],
+    *,
+    now: datetime,
+    directions: tuple[str, ...] = STAMMSTRECKE_DIRECTIONS,
+) -> list[str]:
+    """Directions with no journey for long enough to be worth saying so.
+
+    Returns them in *directions* order. Empty when every direction has
+    reported within the hour, and empty for a direction that was never
+    measured at all — a fresh clone has nothing that stopped.
+
+    See the constants above for why the hour is gated on evidence that
+    trains are running rather than applied to the clock alone.
+    """
+    latest = _last_seen_per_direction(rows)
+    threshold = timedelta(hours=DIRECTION_SILENCE_NOTICE_HOURS)
+    quiet = [
+        d
+        for d in directions
+        if d in latest and now - latest[d] >= threshold
+    ]
+    if not quiet:
+        return []
+
+    silent = [
+        d
+        for d in quiet
+        if sum(
+            1
+            for row in rows
+            if row.direction != d
+            and row.direction in directions
+            and latest[d] < row.timestamp <= now
+        )
+        >= DIRECTION_SILENCE_NOTICE_PEER_ROWS
+    ]
+    if silent:
+        return silent
+
+    # No peer to compare against: only a stretch longer than any healthy
+    # pause distinguishes a stopped corridor from a sleeping one.
+    if len(quiet) == len([d for d in directions if d in latest]):
+        corridor = timedelta(hours=CORRIDOR_SILENCE_NOTICE_HOURS)
+        if all(now - latest[d] >= corridor for d in quiet):
+            return quiet
+    return []
+
+
 def render_direction_coverage_note(
     window_rows: list[StammstreckeRow],
     *,
+    now: datetime,
     all_rows: list[StammstreckeRow] | None = None,
     directions: tuple[str, ...] = STAMMSTRECKE_DIRECTIONS,
 ) -> str:
-    """Return a Markdown warning when the window covers only some directions.
+    """Return a Markdown warning while a direction has no journeys.
 
     Audit B.1: the northbound direction stopped reporting on 2026-08-14, but
     README and dashboard kept presenting the surviving southbound sample as a
     whole-corridor figure — in the time series the measurement gap reads like a
     drop in disruptions. This note makes the restricted coverage explicit.
 
-    Derived entirely from the data, never hard-coded: the note appears when a
-    direction contributes no rows to the window while another one does, names
-    the date that direction was last seen (looked up in *all_rows*, which spans
-    the whole loaded ledger rather than just the window), and vanishes on its
-    own as soon as the direction reports again. That self-clearing behaviour is
-    a requirement, not a nicety — the closure is temporary and the restart has
-    to be picked up without anyone editing Markdown.
+    Derived entirely from the data, never hard-coded. It names no cause: the
+    ledger records that journeys stopped, never why. The trigger is
+    :func:`find_silent_coverage_directions` — one hour without a journey,
+    gated on evidence that trains are actually running — and the note vanishes
+    on its own as soon as the direction reports again. That self-clearing
+    behaviour is a requirement, not a nicety: the closure is temporary and the
+    restart has to be picked up without anyone editing Markdown.
 
-    Returns an empty string when coverage is complete, when the window is empty,
-    or when *every* direction is missing (a whole-corridor gap is not a coverage
-    caveat; the freshness checks own that case).
+    The note is built from two independent statements, because they can be
+    true at different times:
+
+    * The **lead** is about service right now — no journeys in this direction
+      for at least an hour. It is the whole note while the figures below are
+      still sound, which they are for the first hours of a gap.
+    * The **caveat** is about the figures, and is added only once the silence
+      has actually hollowed out the window: a direction that fell quiet an
+      hour ago still contributes thousands of rows to a 30-day window, and
+      calling those figures a part-corridor sample would be false. Once a
+      direction really is absent from the window the figures are either a
+      part-corridor sample (some direction still reporting) or simply old
+      (none is) — a reader needs different things from those two.
+
+    Returns an empty string when every direction has reported within the hour,
+    and when no canonical direction was ever measured (a fresh clone has
+    nothing to caveat).
     """
-    if not window_rows:
+    ledger = list(all_rows) if all_rows else window_rows
+    missing = find_silent_coverage_directions(
+        ledger, now=now, directions=directions
+    )
+    if not missing:
         return ""
+
+    latest = _last_seen_per_direction(ledger)
+    missing_txt = " und ".join(f"**{escape_markdown_cell(d)}**" for d in missing)
+    lead = (
+        "> ⚠️ **Eingeschränkte Abdeckung:** Aktuell keine Fahrten von "
+        f"{COVERAGE_ORIGIN_LABEL} Richtung {missing_txt} auf der Stammstrecke"
+        f"{_last_seen_suffix(missing, latest)}."
+    )
+
+    # Does the silence reach the figures below, or only the present moment?
     present = {row.direction for row in window_rows}
-    missing = [d for d in directions if d not in present]
+    absent = [d for d in missing if d not in present]
+    if not absent:
+        return f"{lead}\n\n"
+
     covered = [d for d in directions if d in present]
-    if not missing or not covered:
-        return ""
-
-    latest = _last_seen_per_direction(list(all_rows) if all_rows else window_rows)
-    parts: list[str] = []
-    for direction in missing:
-        last = latest.get(direction)
-        since = f" seit {last.strftime('%d.%m.%Y')}" if last else ""
-        parts.append(f"**{escape_markdown_cell(direction)}**{since}")
-
-    cause = f" ({DIRECTION_OUTAGE_CAUSE})" if DIRECTION_OUTAGE_CAUSE else ""
-    covered_txt = ", ".join(f"**{escape_markdown_cell(d)}**" for d in covered)
+    if covered:
+        covered_txt = " und ".join(f"**{escape_markdown_cell(d)}**" for d in covered)
+        return (
+            f"{lead} Die Zahlen unten decken daher nur Richtung "
+            f"{covered_txt} ab — **kein Korridor-Gesamtwert**.\n"
+            "\n"
+        )
     return (
-        f"> ⚠️ **Eingeschränkte Abdeckung:** Richtung {' und '.join(parts)} "
-        f"ohne Messwerte{cause}. Dargestellt sind ausschließlich Fahrten in "
-        f"Richtung {covered_txt} — die Zahlen unten sind daher **kein "
-        "Korridor-Gesamtwert**.\n"
+        f"{lead} Die Zahlen unten beruhen daher ausschließlich auf "
+        "**älteren Daten**.\n"
         "\n"
     )
 
@@ -1411,13 +1565,22 @@ def _direction_coverage(
 ) -> dict[str, object]:
     """Per-direction evidence for the coverage banner.
 
-    Deliberately ships the *evidence*, not the verdict: row counts in the
-    window and the last timestamp seen per direction. ``site.js`` applies
-    the same relative rule as :func:`render_direction_coverage_note`
-    (a direction counts as silent only while a peer is still reporting),
-    so both sides stay derived from the data. When the northbound
-    direction resumes, the banner disappears on the next tick with
-    nobody editing anything — which is the whole point.
+    Deliberately ships the *evidence*, not the verdict: when each direction
+    was last seen, how many journeys a peer direction logged since then, how
+    many rows it contributes to the window — plus the thresholds, so the
+    browser applies the rule of :func:`find_silent_coverage_directions`
+    rather than a copy of it that can drift. ``site.js`` evaluates it against
+    the reader's own clock, which is why the verdict is not baked in here.
+
+    ``peer_rows_since`` is the one number the browser cannot derive: the raw
+    ledger stopped being shipped when the dashboard moved to this summary. It
+    counts journeys in *other* canonical directions after this direction's
+    last one — the evidence that trains were running while this direction
+    logged nothing.
+
+    When a silent direction resumes, its ``last_seen`` moves and the banner
+    disappears on the next tick with nobody editing anything — which is the
+    whole point.
     """
     last_seen = _last_seen_per_direction(all_rows)
     in_window: dict[str, int] = defaultdict(int)
@@ -1427,6 +1590,9 @@ def _direction_coverage(
     known = sorted({*directions, *last_seen, *in_window})
     return {
         "window_days": window_days,
+        "silence_hours": DIRECTION_SILENCE_NOTICE_HOURS,
+        "peer_rows_required": DIRECTION_SILENCE_NOTICE_PEER_ROWS,
+        "corridor_silence_hours": CORRIDOR_SILENCE_NOTICE_HOURS,
         "directions": {
             direction: {
                 "rows_in_window": in_window.get(direction, 0),
@@ -1434,6 +1600,17 @@ def _direction_coverage(
                     last_seen[direction].isoformat(timespec="seconds")
                     if direction in last_seen
                     else None
+                ),
+                "peer_rows_since": (
+                    sum(
+                        1
+                        for row in all_rows
+                        if row.direction != direction
+                        and row.direction in directions
+                        and row.timestamp > last_seen[direction]
+                    )
+                    if direction in last_seen
+                    else 0
                 ),
             }
             for direction in known
@@ -1762,7 +1939,9 @@ def main(argv: list[str] | None = None) -> int:
     # docs/statistik.md and both 30-day README blocks. The annual dashboard
     # aggregate still contains the pre-outage rows, so absence-from-aggregate
     # alone would never fire there; the recent window is what reveals it.
-    coverage_note = render_direction_coverage_note(sm_window, all_rows=window_sm)
+    coverage_note = render_direction_coverage_note(
+        sm_window, now=now, all_rows=window_sm
+    )
     if coverage_note:
         LOGGER.warning(
             "Eingeschränkte Richtungs-Abdeckung im %d-Tage-Fenster — "
@@ -1929,9 +2108,13 @@ if __name__ == "__main__":  # pragma: no cover - CLI entry point
 
 # Exposed for tests; intentionally module-private otherwise.
 __all__ = [
+    "CORRIDOR_SILENCE_NOTICE_HOURS",
+    "COVERAGE_ORIGIN_LABEL",
     "DEFAULT_OUTPUT_PATH",
     "DEFAULT_README_PATH",
     "DEFAULT_README_WINDOW_DAYS",
+    "DIRECTION_SILENCE_NOTICE_HOURS",
+    "DIRECTION_SILENCE_NOTICE_PEER_ROWS",
     "LOCATION_UNKNOWN",
     "MAX_CSV_BYTES",
     "README_MAX_BYTES",
@@ -1947,8 +2130,10 @@ __all__ = [
     "aggregate_stammstrecke",
     "aggregate_stoerungen",
     "collect_year_data",
+    "find_silent_coverage_directions",
     "main",
     "patch_readme_stats",
+    "render_direction_coverage_note",
     "render_hour_bars",
     "render_markdown",
     "render_readme_ausfaelle_block",

@@ -46,11 +46,11 @@ Mehr Statistiken findest du hier:
 | Beobachtungen (gesamt) | 2 |
 | Durchschnittliche Verspätung | 0.0 min |
 | Kritische Verspätungen (> 9 min) | 0 |
-| Letzte Aktualisierung | 2026-09-17 16:30 CEST |
+| Letzte Aktualisierung | 2026-09-17 16:39 CEST |
 <!-- STATS:STAMMSTRECKE_LIVE:END -->
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
-> ⚠️ **Eingeschränkte Abdeckung:** Richtung **Praterstern** seit 14.08.2026 ohne Messwerte (Streckensperre – Bauarbeiten und Kabelbrand-Folgen). Dargestellt sind ausschließlich Fahrten in Richtung **Meidling** — die Zahlen unten sind daher **kein Korridor-Gesamtwert**.
+> ⚠️ **Eingeschränkte Abdeckung:** Aktuell keine Fahrten von Wien Hbf Richtung **Praterstern** auf der Stammstrecke (zuletzt am 14.08.2026). Die Zahlen unten decken daher nur Richtung **Meidling** ab — **kein Korridor-Gesamtwert**.
 
 > _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
 
@@ -59,7 +59,7 @@ Mehr Statistiken findest du hier:
 | Beobachtungen (gesamt) | 1.207 |
 | Durchschnittliche Verspätung | 0.4 min |
 | Kritische Verspätungen (> 9 min) | 14 |
-| Letzte Aktualisierung | 2026-09-17 16:30 CEST |
+| Letzte Aktualisierung | 2026-09-17 16:39 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
 
 ### Ausfälle auf der S-Bahn-Stammstrecke
@@ -70,11 +70,11 @@ Mehr Statistiken findest du hier:
 | Kennzahl | Wert |
 | -------- | ---- |
 | Ausfälle (gesamt) | 1 |
-| Letzte Aktualisierung | 2026-09-17 16:30 CEST |
+| Letzte Aktualisierung | 2026-09-17 16:39 CEST |
 <!-- STATS:AUSFAELLE_LIVE:END -->
 
 <!-- STATS:AUSFAELLE:BEGIN -->
-> ⚠️ **Eingeschränkte Abdeckung:** Richtung **Praterstern** seit 14.08.2026 ohne Messwerte (Streckensperre – Bauarbeiten und Kabelbrand-Folgen). Dargestellt sind ausschließlich Fahrten in Richtung **Meidling** — die Zahlen unten sind daher **kein Korridor-Gesamtwert**.
+> ⚠️ **Eingeschränkte Abdeckung:** Aktuell keine Fahrten von Wien Hbf Richtung **Praterstern** auf der Stammstrecke (zuletzt am 14.08.2026). Die Zahlen unten decken daher nur Richtung **Meidling** ab — **kein Korridor-Gesamtwert**.
 
 > _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`update-cycle.yml`](.github/workflows/update-cycle.yml).
 
@@ -82,7 +82,7 @@ Mehr Statistiken findest du hier:
 | -------- | ---- |
 | Ausfälle (gesamt) | 165 |
 | Häufigste Linien | CJX9 (66), S2 (50), S4 (35) |
-| Letzte Aktualisierung | 2026-09-17 16:30 CEST |
+| Letzte Aktualisierung | 2026-09-17 16:39 CEST |
 <!-- STATS:AUSFAELLE:END -->
 
 > **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).

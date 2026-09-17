@@ -365,26 +365,58 @@
   // Canonical Stammstrecke directions. Mirrors ``STAMMSTRECKE_DIRECTIONS`` in
   // ``src/utils/stats.py`` — kept in sync by hand because the site is static.
   const STAMMSTRECKE_DIRECTIONS = ["Meidling", "Praterstern"];
-  // Operator-maintained cause, mirroring ``DIRECTION_OUTAGE_CAUSE`` in
-  // ``scripts/generate_markdown_stats.py``. Shown only while a direction is
-  // actually missing, so it cannot outlive the outage it describes.
+  // The banner names NO cause. It used to carry an operator-maintained one
+  // ("Streckensperre – Bauarbeiten und Kabelbrand-Folgen"), which was
+  // accurate for the 2026 outage and wrong for every other way a direction
+  // can fall silent: a timetable change, a provider renaming the platform,
+  // our own monitor failing. It states the observation instead, in one
+  // sentence shape that fits every case — one direction, the other, or both.
+  // Mirrors ``render_direction_coverage_note`` in
+  // ``scripts/generate_markdown_stats.py``.
+  //
+  // Measurement point of the observations. Same wording as the footer
+  // ("Stammstrecken-Beobachtungen am Wien Hbf") and as
+  // ``COVERAGE_ORIGIN_LABEL`` on the Python side.
+  const COVERAGE_ORIGIN = "Wien Hbf";
   const COVERAGE_TEXT_DE = {
     "coverage-title": "Eingeschränkte Abdeckung",
-    "coverage-cause": "Streckensperre – Bauarbeiten und Kabelbrand-Folgen",
-    "coverage-since": "seit",
-    "coverage-body": (missing, since, covered, cause) =>
-      `Richtung ${missing} ${since}ohne Messwerte (${cause}). ` +
-      `Dargestellt sind ausschließlich Fahrten in Richtung ${covered} — ` +
-      "die Kennzahlen sind daher kein Korridor-Gesamtwert.",
+    "coverage-last-one": "zuletzt am",
+    "coverage-last-many": "zuletzt",
+    "coverage-at": "am",
+    // Three consequences, because the silence reaches the figures at a
+    // different pace than it reaches the present moment. A direction that
+    // fell quiet an hour ago still contributes thousands of rows to a
+    // 30-day window, so "live" states the observation and stops there;
+    // only once the direction really is absent from the window are the
+    // figures a PART-corridor sample ("partial") or simply OLD ("none").
+    "coverage-body-live": (missing, since) =>
+      `Aktuell keine Fahrten von ${COVERAGE_ORIGIN} Richtung ${missing} ` +
+      `auf der Stammstrecke${since}.`,
+    "coverage-body-partial": (missing, since, covered) =>
+      `Aktuell keine Fahrten von ${COVERAGE_ORIGIN} Richtung ${missing} ` +
+      `auf der Stammstrecke${since}. Die Kennzahlen decken daher nur ` +
+      `Richtung ${covered} ab — kein Korridor-Gesamtwert.`,
+    "coverage-body-none": (missing, since) =>
+      `Aktuell keine Fahrten von ${COVERAGE_ORIGIN} Richtung ${missing} ` +
+      `auf der Stammstrecke${since}. Die Kennzahlen beruhen daher ` +
+      "ausschließlich auf älteren Daten.",
   };
   const COVERAGE_TEXT_EN = {
     "coverage-title": "Limited coverage",
-    "coverage-cause": "line closure – engineering works and cable-fire aftermath",
-    "coverage-since": "since",
-    "coverage-body": (missing, since, covered, cause) =>
-      `No measurements for the ${missing} direction ${since}(${cause}). ` +
-      `Only services towards ${covered} are shown — the figures are ` +
-      "therefore not a whole-corridor total.",
+    "coverage-last-one": "last seen",
+    "coverage-last-many": "last seen:",
+    "coverage-at": "on",
+    "coverage-body-live": (missing, since) =>
+      `Currently no departures from ${COVERAGE_ORIGIN} towards ${missing} ` +
+      `on the Stammstrecke${since}.`,
+    "coverage-body-partial": (missing, since, covered) =>
+      `Currently no departures from ${COVERAGE_ORIGIN} towards ${missing} ` +
+      `on the Stammstrecke${since}. The figures therefore cover the ` +
+      `${covered} direction only — not a whole-corridor total.`,
+    "coverage-body-none": (missing, since) =>
+      `Currently no departures from ${COVERAGE_ORIGIN} towards ${missing} ` +
+      `on the Stammstrecke${since}. The figures therefore rest on older ` +
+      "data alone.",
   };
   function cov(key) {
     const dict = currentLang === "en" ? COVERAGE_TEXT_EN : COVERAGE_TEXT_DE;
@@ -954,54 +986,122 @@
   // Audit B.1: the northbound direction stopped reporting on 2026-08-14 while
   // the southbound one kept going, and every published figure silently became
   // a half-corridor sample. This banner says so on the site, using the same
-  // rule and window as ``render_direction_coverage_note`` in
-  // ``scripts/generate_markdown_stats.py``.
+  // rule as ``render_direction_coverage_note`` in
+  // ``scripts/generate_markdown_stats.py``, evaluated here against the
+  // reader's own clock.
   //
-  // Derived from the data, never hard-coded: the generator ships the
-  // *evidence* per direction (rows inside the window, last timestamp
-  // seen) and the verdict is made here, so both sides apply one rule.
-  // The banner appears only while a canonical direction is missing from
-  // the recent window while another one reports, names the date that
-  // direction was last seen, and disappears by itself the moment it
-  // reports again. The closure is temporary and the restart has to show
-  // up without anyone editing the page.
+  // Derived from the data, never hard-coded: the summary ships the
+  // *evidence* per direction (rows in the window, last timestamp seen,
+  // peer journeys since) plus the thresholds, and the verdict is made here.
+  // That way a page left open overnight re-decides on every refresh instead
+  // of showing a frozen answer, and neither surface can drift into a rule of
+  // its own.
+  //
+  // The banner names the date the direction was last seen and disappears by
+  // itself the moment it reports again: the closure is temporary and the
+  // restart has to show up without anyone editing the page.
+  //
+  // One hour without a journey is the trigger, but it is only believed once
+  // something proves trains were actually running: a peer direction that
+  // logged ``peer_rows_required`` journeys in the same stretch, or — when no
+  // peer is left — a corridor silence longer than any normal pause. Without
+  // that gate the banner would appear every night, when the Stammstrecke
+  // stops for about 3:41 h by timetable.
   function renderCoverageNotice(coverage) {
     const node = $("#stammstrecke-coverage");
     if (!node) return;
+    const hide = () => {
+      node.hidden = true;
+      node.textContent = "";
+    };
     const perDirection = (coverage && coverage.directions) || {};
+    // Fall back to the Python defaults when an older cached summary omits
+    // the thresholds; the rule must not silently become "never fires".
+    const silenceMs = numberOr(coverage && coverage.silence_hours, 1) * 3600000;
+    const corridorMs =
+      numberOr(coverage && coverage.corridor_silence_hours, 8) * 3600000;
+    const peerNeeded = numberOr(coverage && coverage.peer_rows_required, 6);
+
     const rowsIn = (dir) => {
       const entry = perDirection[dir];
       return entry ? numberOr(entry.rows_in_window, 0) : 0;
     };
+    const lastSeenOf = (dir) => {
+      const entry = perDirection[dir];
+      const stamp = entry && entry.last_seen ? Date.parse(entry.last_seen) : NaN;
+      return Number.isFinite(stamp) ? stamp : null;
+    };
+    const peerRowsSince = (dir) => {
+      const entry = perDirection[dir];
+      return entry ? numberOr(entry.peer_rows_since, 0) : 0;
+    };
 
-    const covered = STAMMSTRECKE_DIRECTIONS.filter((d) => rowsIn(d) > 0);
-    const missing = STAMMSTRECKE_DIRECTIONS.filter((d) => rowsIn(d) === 0);
-    // Nothing missing, or the whole corridor quiet (a full outage is the
-    // freshness check's business, not a coverage caveat).
-    if (!missing.length || !covered.length) {
-      node.hidden = true;
-      node.textContent = "";
+    const now = Date.now();
+    // A direction never measured is not a direction that stopped — a fresh
+    // deployment has nothing to caveat.
+    const everSeen = STAMMSTRECKE_DIRECTIONS.filter((d) => lastSeenOf(d) !== null);
+    const quiet = everSeen.filter((d) => now - lastSeenOf(d) >= silenceMs);
+    if (!quiet.length) {
+      hide();
       return;
     }
+    // Peer route: trains demonstrably ran and this direction was not among
+    // them. Corridor route: nothing left to compare against, so only a
+    // stretch longer than any healthy pause counts.
+    let missing = quiet.filter((d) => peerRowsSince(d) >= peerNeeded);
+    if (
+      !missing.length &&
+      quiet.length === everSeen.length &&
+      quiet.every((d) => now - lastSeenOf(d) >= corridorMs)
+    ) {
+      missing = quiet.slice();
+    }
+    if (!missing.length) {
+      hide();
+      return;
+    }
+    missing = STAMMSTRECKE_DIRECTIONS.filter((d) => missing.indexOf(d) !== -1);
 
     const joiner = currentLang === "en" ? " and " : " und ";
-    const missingTxt = missing.join(joiner);
-    const coveredTxt = covered.join(joiner);
-    const entry = perDirection[missing[0]];
-    const stamp = entry && entry.last_seen ? Date.parse(entry.last_seen) : NaN;
-    const since = Number.isFinite(stamp)
-      ? `${cov("coverage-since")} ${new Date(stamp).toLocaleDateString(localeTag())} `
-      : "";
+    const onDate = (stamp) => new Date(stamp).toLocaleDateString(localeTag());
+    // One silent direction gets the short form; several get one date each,
+    // because a single date would otherwise stand for a sentence covering
+    // all of them.
+    const dated = missing.filter((d) => lastSeenOf(d) !== null);
+    let since = "";
+    if (dated.length === 1 && missing.length === 1) {
+      since = ` (${cov("coverage-last-one")} ${onDate(lastSeenOf(dated[0]))})`;
+    } else if (dated.length) {
+      const inner = dated
+        .map((d) => `${d} ${cov("coverage-at")} ${onDate(lastSeenOf(d))}`)
+        .join(", ");
+      since = ` (${cov("coverage-last-many")} ${inner})`;
+    }
 
+    const missingTxt = missing.join(joiner);
+    // Does the silence reach the figures below, or only the present moment?
+    const absent = missing.filter((d) => rowsIn(d) === 0);
+    const covered = STAMMSTRECKE_DIRECTIONS.filter((d) => rowsIn(d) > 0);
+    let body;
+    if (!absent.length) {
+      // Silent now, but still thousands of rows in the window: stating the
+      // observation is the whole of the honest claim.
+      body = cov("coverage-body-live")(missingTxt, since);
+    } else if (covered.length) {
+      body = cov("coverage-body-partial")(missingTxt, since, covered.join(joiner));
+    } else {
+      // The whole corridor is absent from the window: the figures are not
+      // restricted, they are old. This used to be suppressed on the grounds
+      // that the freshness checks own it — but those live in
+      // ``scripts/health_check.py`` and never reach a visitor, so the page
+      // simply showed stale numbers with no caveat at all.
+      body = cov("coverage-body-none")(missingTxt, since);
+    }
     node.textContent = "";
     const strong = document.createElement("strong");
     strong.textContent = `⚠️ ${cov("coverage-title")}: `;
     node.appendChild(strong);
-    node.appendChild(
-      document.createTextNode(
-        cov("coverage-body")(missingTxt, since, coveredTxt, cov("coverage-cause")),
-      ),
-    );
+    node.appendChild(document.createTextNode(body));
     node.hidden = false;
   }
 

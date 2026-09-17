@@ -5,6 +5,72 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Abdeckungshinweis: allgemein formuliert, beidseitig, und erst nach einer
+  Stunde ohne Fahrt (2026-09-17)**:
+  Der Hinweis über den Statistiken trug bis jetzt eine fest verdrahtete
+  Ursache („Streckensperre – Bauarbeiten und Kabelbrand-Folgen") und war
+  faktisch auf **eine** Richtung zugeschnitten. Beides ist jetzt weg. Er
+  nennt **keine Ursache** mehr — das Ledger hält fest, *dass* Fahrten
+  ausbleiben, nie *warum* —, funktioniert in **beide Richtungen** und
+  fasst sie zusammen, wenn beide still sind:
+
+  > Aktuell keine Fahrten von Wien Hbf Richtung **Praterstern** auf der
+  > Stammstrecke (zuletzt am 14.08.2026). …
+  >
+  > Aktuell keine Fahrten von Wien Hbf Richtung **Meidling** und
+  > **Praterstern** auf der Stammstrecke …
+
+  **Auslöser ist eine Stunde ohne Fahrt**, und der Hinweis verschwindet von
+  selbst, sobald die Richtung wieder meldet — ohne dass jemand Markdown
+  anfasst. Genau das ist der Zweck: Die Sperre ist vorübergehend, der
+  Wiederanlauf muss automatisch erfasst werden.
+
+  Die Stunde allein wäre allerdings unbrauchbar gewesen. Beobachtungen
+  treffen bestenfalls alle ~30 min ein, die p99-Lücke je Richtung liegt bei
+  **3,5 h**, und die Stammstrecke pausiert **jede Nacht rund 3:41 h**
+  (01:12 → 04:53, über 2026 hinweg bemerkenswert konstant). Über 4.324
+  halbstündliche Ticks des gesunden Betriebs nachgespielt, hätte eine reine
+  „seit 1 h still"-Regel den Hinweis bei **10,6 %** davon gezeigt — 87 %
+  in den frühen Morgenstunden, wenn planmäßig nichts fährt. Ein Hinweis,
+  der jede Nacht erscheint, ist einer, den niemand mehr liest.
+
+  Die Stunde wird deshalb **gegen den Nachweis gemessen, dass überhaupt
+  gefahren wird**, nicht gegen die Uhr:
+  * **Eine Richtung still, die andere meldet** — die Gegenrichtung ist der
+    Nachweis. Die stille Richtung wird genannt, sobald die Gegenrichtung
+    seit deren letzter Fahrt **6 Fahrten** protokolliert hat. Diese Belege
+    verfallen nicht, weshalb der Hinweis in der nächtlichen Pause einer
+    laufenden Störung **nicht flackert**.
+  * **Beide Richtungen still** — es gibt keine Gegenrichtung mehr, und ein
+    dunkler Korridor um 03:00 ist ein Fahrplan, keine Störung. Erst **8 h**
+    sagen etwas anderes: Die längste korridorweite Stille im gesunden
+    Betrieb war 7:45 h (06.08.2026, eher ein Erfassungsausfall als ein
+    Fahrplan), die Nachtpause 3:41 h. Acht Stunden sind der kleinste volle
+    Stundenwert über beidem.
+
+  Ergebnis derselben Nachspielung: **3 von 4.324 Ticks** — und alle drei
+  sind dieselbe Episode, 14.08.2026 06:27 → 11:27, eine echte fünfstündige
+  Lücke Richtung Praterstern am Morgen des Ausfalls. Im Normalbetrieb
+  erscheint **kein** Hinweis. Der Ausfall selbst wird 3:03 h nach der
+  letzten Fahrt erkannt und bleibt danach lückenlos erkannt.
+
+  Getrennt davon die zweite Aussage: Dass eine Richtung *jetzt* still ist,
+  heißt nicht, dass die **Zahlen darunter** verzerrt sind — eine vor einer
+  Stunde verstummte Richtung steuert weiterhin Tausende Zeilen zum
+  30-Tage-Fenster bei. Der Zusatz „kein Korridor-Gesamtwert" bzw.
+  „ausschließlich ältere Daten" erscheint deshalb erst, wenn die Stille das
+  Fenster tatsächlich ausgehöhlt hat.
+
+  Was die Regel **nicht** behaupten kann: Bei dunklem Gesamtkorridor
+  unterscheidet das Ledger nicht zwischen „es fuhr nichts" und „wir haben
+  nichts beobachtet" — das ist Sache von `scripts/health_check.py`. Die
+  Korridor-Formulierung behauptet daher nur, dass die Zahlen alt sind, und
+  das stimmt in beiden Fällen.
+
+  `docs/stats-summary.json` liefert der Website die **Belege** statt des
+  Urteils (`last_seen`, `peer_rows_since`, dazu die Schwellen), damit
+  `site.js` dieselbe Regel gegen die Uhr des Lesers auswertet und eine über
+  Nacht offene Seite nicht eine eingefrorene Antwort zeigt.
 * **Test-Job lief gegen seine Zeitgrenze (2026-09-17)**:
   Der `Run test suite`-Job in `.github/workflows/test.yml` trug
   `timeout-minutes: 20` mit der Begründung „~8000 Tests, 6–10 min auf einem
