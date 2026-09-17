@@ -474,8 +474,11 @@ def test_coverage_note_asserts_no_cause() -> None:
     change, a provider renaming the platform, our own monitor failing. The
     ledger records that measurements stopped, never why.
     """
-    import scripts.generate_markdown_stats as gms
-    from scripts.generate_markdown_stats import render_direction_coverage_note
+    # Bound as a module rather than by name: the point is that a name is
+    # ABSENT, which ``from ... import`` cannot express. Imported off the
+    # package so the module path is not pulled in by two different import
+    # forms in one file (CodeQL py/import-and-import-from).
+    from scripts import generate_markdown_stats as gms
 
     assert not hasattr(gms, "DIRECTION_OUTAGE_CAUSE"), (
         "the hard-coded cause is gone; re-adding it re-creates a caption that "
@@ -484,7 +487,7 @@ def test_coverage_note_asserts_no_cause() -> None:
 
     window = [_sm_row(NOW - timedelta(hours=h), "Meidling") for h in range(1, 9)]
     older = [_sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern")]
-    note = render_direction_coverage_note(window, now=NOW, all_rows=window + older)
+    note = gms.render_direction_coverage_note(window, now=NOW, all_rows=window + older)
 
     for word in ("Kabelbrand", "Bauarbeiten", "Streckensperre"):
         assert word not in note, f"the note names a specific cause: {word}"
