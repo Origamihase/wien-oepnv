@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 17 Sep 2026 08:30:58 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 09:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11A/48A/59A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">48602aaaecd6f1491e12ca1883d94913e7ffe74c82befc0d4064e0f58568546a</guid>
+      <pubDate>Thu, 17 Sep 2026 08:52:00 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 09:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 08:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. [Am 17.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 48A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 17.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49: Gleisschaden Betrieb ab Urban-Loritz-Platz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet. [15.09.2026 – 15.09.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Betrieb ab Johnstraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[16.09.2026 – 17.09.2026]</description>
-      <content:encoded><![CDATA[[16.09.2026 – 17.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

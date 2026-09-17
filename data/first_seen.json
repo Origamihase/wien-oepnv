@@ -1143,7 +1143,13 @@
   "0c8c38d7450fd20f9df0beb7024c91b962e431c05bc16a295c6b782f5d113b8b": {
     "first_seen": "2026-09-17T06:30:58.415946+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "49: track damage service from H\u00fctteldorfer Stra\u00dfe"
+      },
+      "en_src": {
+        "title": "81b4cfb3bf27295f"
+      },
+      "epoch": 6
     }
   },
   "0c920f13771249751ad48495a6eed10ebb782799d8434da800734f562a747faa": {
@@ -5817,11 +5823,14 @@
     "first_seen": "2026-09-17T06:30:58.415946+00:00",
     "translations": {
       "en": {
+        "summary": "irregular intervals in both directions. Reason: wrong parker.",
         "title": "24A: False Parker"
       },
       "en_src": {
+        "summary": "897f37ab551ad838",
         "title": "6b02cf02c28ee178"
-      }
+      },
+      "epoch": 6
     }
   },
   "45988bb6c10188efc756035f4a7aeb336d0d4105e2d558e8a03c1d6b5ee52eb8": {
@@ -6106,6 +6115,20 @@
         "title": "2: event service from Heinestra\u00dfe U"
       },
       "epoch": 3
+    }
+  },
+  "48602aaaecd6f1491e12ca1883d94913e7ffe74c82befc0d4064e0f58568546a": {
+    "first_seen": "2026-09-17T07:01:01.330581+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Line 48A: irregular intervals in both directions.",
+        "title": "11A/48A/59A: traffic congestion"
+      },
+      "en_src": {
+        "summary": "c44998d2a229b139",
+        "title": "7850ad8dced108ce"
+      },
+      "epoch": 6
     }
   },
   "487a5a69347464ec8d7bff5504d27fffc8045eec741073d23d1f4be8e6d0840e": {
@@ -10759,11 +10782,14 @@
     "first_seen": "2026-09-17T06:30:58.415946+00:00",
     "translations": {
       "en": {
-        "summary": "No operation between H\u00fctteldorfer Stra\u00dfe U and Urban-Loritz-Platz. Trains run from H\u00fctteldorfer Stra\u00dfe to Joachimsthalerplatz."
+        "summary": "No operation between H\u00fctteldorfer Stra\u00dfe U and Urban-Loritz-Platz. Trains run from H\u00fctteldorfer Stra\u00dfe to Joachimsthalerplatz.",
+        "title": "49: track damage"
       },
       "en_src": {
-        "summary": "e6dbf0479a2956af"
-      }
+        "summary": "e6dbf0479a2956af",
+        "title": "d1aca18904e1451a"
+      },
+      "epoch": 6
     }
   },
   "7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35": {
@@ -18728,7 +18754,13 @@
   "daebfc84e978ba997bf9db03242e337ce2c13f18932a3d0cc38b273b66698b73": {
     "first_seen": "2026-09-17T06:30:58.415946+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "49: track damage service from Urban-Loritz-Platz"
+      },
+      "en_src": {
+        "title": "10cd56d083aae469"
+      },
+      "epoch": 6
     }
   },
   "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a": {

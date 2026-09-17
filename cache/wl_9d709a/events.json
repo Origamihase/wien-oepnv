@@ -470,14 +470,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Einstieg bei Vorgartenstraße vor Meiereistraße",
-    "description": "Bauarbeiten\nEinstieg bei Vorgartenstraße vor Meiereistraße",
+    "title": "11A/48A/59A: Verkehrsüberlastung",
+    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2158898c549c0f30a157915615cd7f952d751c3b776ca6747799be32ec127935",
-    "pubDate": "2026-09-08T07:11:02+02:00",
-    "starts_at": "2026-09-08T07:13:02+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
-    "_identity": "wl|störung|L=11A|D=2026-09-08|TK=einstieg bei vorgartenstrasse vor meiereistrasse"
+    "guid": "48602aaaecd6f1491e12ca1883d94913e7ffe74c82befc0d4064e0f58568546a",
+    "pubDate": "2026-09-17T08:52:00+02:00",
+    "starts_at": "2026-09-17T08:52:00+02:00",
+    "ends_at": "2026-09-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=11A,48A,59A|D=2026-09-17|TK=11a 59a 48a verkehrsüberlastung"
   },
   {
     "source": "Wiener Linien",
@@ -783,7 +783,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "49: Gleisschaden",
-    "description": "Linie 49: Kein Betrieb zwischen Hütteldorfer Straße U und Urban-Loritz-Platz. Die Züge fahren ab Hütteldorfer Straße bis Joachimsthalerplatz. Weichen Sie ersatzweise auf die Linie U3 aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Bereich Märzstraße 62.",
+    "description": "Linie 49: Kein Betrieb zwischen Hütteldorfer Straße U und Urban-Loritz-Platz. Die Züge fahren ab Hütteldorfer Straße bis Joachimsthalerplatz. Weichen Sie ersatzweise auf die Linien U3, 9 und 12A aus. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Bereich Märzstraße 62.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7e01fc848976d0d587e141957de9da7afd74e084db6077e61c5f28daaa72b86e",
     "pubDate": "2026-09-17T08:14:00+02:00",
