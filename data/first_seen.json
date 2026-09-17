@@ -3309,6 +3309,18 @@
       "epoch": 2
     }
   },
+  "264e70e481d3e299aafebeff859426d38f9165ac47e70fdd84786b9c94fde68c": {
+    "first_seen": "2026-09-17T11:00:59.042312+00:00",
+    "translations": {
+      "en": {
+        "title": "48A: foreign accident service from Possingergasse"
+      },
+      "en_src": {
+        "title": "6a05365efdb4136b"
+      },
+      "epoch": 6
+    }
+  },
   "267d8ac0fe0e918bc720863d4680bf12d69b3eb17068704575a5fdc39d9687a1": {
     "first_seen": "2026-05-27T16:00:59.822989+00:00",
     "translations": {
@@ -13120,6 +13132,18 @@
         "title": "Simonygasse opp. 2B"
       },
       "epoch": 2
+    }
+  },
+  "953a494ca46faffb9eb6ca407b8f763c0c1c6aa2556269530b34fbb11b59c8fa": {
+    "first_seen": "2026-09-17T11:00:59.042312+00:00",
+    "translations": {
+      "en": {
+        "title": "48A: foreign accident service from Burggasse, Stadthalle"
+      },
+      "en_src": {
+        "title": "85f9436c803522af"
+      },
+      "epoch": 6
     }
   },
   "9550a2712ea4c541a6a12524b96c767dd0d9748e547b04214b031879d5d173ef": {
@@ -24240,12 +24264,12 @@
     "first_seen": "2026-09-17T10:30:52.254658+00:00",
     "translations": {
       "en": {
-        "summary": "Due to a defective train on the line, train journeys between Wien Meidling Bahnhof (U) and Tullnerfeld Bahnhof are currently only limited.",
-        "title": "Wien Hauptbahnhof \u2194 Tullnerfeld"
+        "summary": "Due to a defective train on the line between Wien Meidling station (U) and Tullnerfeld station to 12:15 only limited journeys were possible.",
+        "title": "Wien Meidling \u2194 Tullnerfeld"
       },
       "en_src": {
-        "summary": "cf1166d0a375b7a4",
-        "title": "f789655886266d5e"
+        "summary": "d86c8fdfc04195a8",
+        "title": "7b783535cce5e40f"
       },
       "en_verbatim": [
         "title"
