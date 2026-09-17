@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 17 Sep 2026 14:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 14:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38: Züge halten Währinger Gütel ggü. 164]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3acd211cd28b70dfb6e58ba09a401aec748cba2cb6b43cefb2eec90a23d59324</guid>
+      <pubDate>Thu, 17 Sep 2026 14:06:45 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 14:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 14:06:45 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 15:06:00 +0200</ext:ends_at>
+      <description>[Am 17.09.2026]</description>
+      <content:encoded><![CDATA[[Am 17.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Vordere Zollamtsstraße von Marxergasse und Kleine Marxerbrücke bis Unbenannte Verkehrsfläche und Rad…]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">35a2bf6293387737ed920111491ea53c3fd0c9e8f0003d6e2a69287d3ff60605</guid>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 14:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 01 Feb 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener … [01.02.2026 – 30.11.2026]</description>
+      <content:encoded><![CDATA[Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[49: Gleisschaden Betrieb ab Urban-Loritz-Platz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet. [15.09.2026 – 15.09.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Betrieb ab Johnstraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[16.09.2026 – 17.09.2026]</description>
-      <content:encoded><![CDATA[[16.09.2026 – 17.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Betrieb ab Schweglerstraße 19-21]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ca51ff9a0bc16a53883dfb140775b92521f7650658e94d4729934cdb43721549</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[16.09.2026 – 17.09.2026]</description>
-      <content:encoded><![CDATA[[16.09.2026 – 17.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
