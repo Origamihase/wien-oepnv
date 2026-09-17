@@ -6724,11 +6724,11 @@
     "first_seen": "2026-09-17T17:30:59.531207+00:00",
     "translations": {
       "en": {
-        "summary": "After an service obstruction there are different intervals.",
+        "summary": "Operation only up to Wallensteinstra\u00dfe - continue up to Augasse",
         "title": "31: event operation only up to Wallensteinstra\u00dfe - continue to Augasse"
       },
       "en_src": {
-        "summary": "eb1bdc2703fe6f1b",
+        "summary": "72667f60d5ee12a5",
         "title": "cbfa3c1844d49e54"
       },
       "epoch": 7
@@ -8098,11 +8098,11 @@
     "first_seen": "2026-09-17T18:01:01.414699+00:00",
     "translations": {
       "en": {
-        "summary": "Operation only between St. Marx S and Landstra\u00dfe S U. expected duration: approximately 23:00. Reason: event in the area ofX Ringstra\u00dfe.",
+        "summary": "Operation only up to Landstra\u00dfe S U",
         "title": "74A: event operation only up to Landstra\u00dfe S U"
       },
       "en_src": {
-        "summary": "14d9c4265cdc7064",
+        "summary": "287169870867d49f",
         "title": "ae2fa6420bf8f0ee"
       },
       "epoch": 7
@@ -14396,11 +14396,11 @@
     "first_seen": "2026-09-17T16:30:51.784023+00:00",
     "translations": {
       "en": {
-        "summary": "diversion from Hintere Zollamtsstr. from O and 18 event service from Hintere Zollamtsstra\u00dfe",
+        "summary": "diversion from Hintere Zollamtsstr. via O and 18 After an service obstruction different intervals occur.",
         "title": "1: event diversion from Hintere Zollamtsstr. from O and 18, service from Hintere Zollamtsstra\u00dfe"
       },
       "en_src": {
-        "summary": "0dfff32690dce831",
+        "summary": "141d276870d2ab1d",
         "title": "503091e5c2b9f611"
       },
       "epoch": 7
@@ -15801,6 +15801,20 @@
         "title": "15A: traffic accident"
       },
       "epoch": 3
+    }
+  },
+  "b25a186e245503549fc296499ec26d8767efe4538f6a4c7ed75b7774611305b3": {
+    "first_seen": "2026-09-17T21:01:11.849987+00:00",
+    "translations": {
+      "en": {
+        "summary": "Because of track construction works in the Althanstra\u00dfe, the line D is divided.",
+        "title": "D: track construction works Althanstra\u00dfe"
+      },
+      "en_src": {
+        "summary": "0cd217946d571c31",
+        "title": "7f989587b1673180"
+      },
+      "epoch": 7
     }
   },
   "b27d0e9569b2ed2ea394007c61624619b8d769e2a6711991724493556dd4f1bf": {
@@ -17698,11 +17712,11 @@
     "first_seen": "2026-09-17T16:30:51.784023+00:00",
     "translations": {
       "en": {
-        "summary": "Operation only up to Schwarzenbergplatz",
+        "summary": "After an service obstruction there are different intervals.",
         "title": "D: event Trains stop at Schottenring 19"
       },
       "en_src": {
-        "summary": "7fd179d0fd9e3356",
+        "summary": "eb1bdc2703fe6f1b",
         "title": "4d517d39e2cd8456"
       },
       "epoch": 7
@@ -18948,11 +18962,11 @@
     "first_seen": "2026-09-17T16:30:51.784023+00:00",
     "translations": {
       "en": {
-        "summary": "Operation only up to Parlament, Volkstheater",
+        "summary": "After an service obstruction there are different intervals.",
         "title": "2: event operation only up to Parlament, Volkstheater"
       },
       "en_src": {
-        "summary": "8ddf167a57b5dc4c",
+        "summary": "eb1bdc2703fe6f1b",
         "title": "2d8527b85e89e1e4"
       },
       "epoch": 7
@@ -20471,11 +20485,11 @@
     "first_seen": "2026-09-17T16:30:51.784023+00:00",
     "translations": {
       "en": {
-        "summary": "Operation only up to Schwarzenbergplatz",
+        "summary": "After an service obstruction there are different intervals.",
         "title": "71: event operation only up to Schwarzenbergplatz"
       },
       "en_src": {
-        "summary": "7fd179d0fd9e3356",
+        "summary": "eb1bdc2703fe6f1b",
         "title": "2dc6e6a09c988438"
       },
       "epoch": 7

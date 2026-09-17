@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 17 Sep 2026 22:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 23:01:11 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[D: Gleisbauarbeiten Althanstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b25a186e245503549fc296499ec26d8767efe4538f6a4c7ed75b7774611305b3</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 23:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt. [15.09.2026 – 15.09.2027]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Ruthnergasse Kreuzung Justgasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
@@ -32,81 +43,70 @@
       <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden.<br/>[17.09.2026 – 18.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1A/2A/3A: Veranstaltung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">473ee0bcd4d872a15a99bba7f22b7cebed62789e05a08d721694e7c2822b6a8b</guid>
-      <pubDate>Thu, 17 Sep 2026 18:33:00 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 20:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 17 Sep 2026 18:33:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Derzeit ist ein Betrieb nicht möglich. Linie 2A: Derzeit ist ein Betrieb nicht möglich. [Am 17.09.2026]</description>
-      <content:encoded><![CDATA[Derzeit ist ein Betrieb nicht möglich. Linie 2A: Derzeit ist ein Betrieb nicht möglich.<br/>[Am 17.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[74A: Veranstaltung Betrieb nur bis Landstraße S U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5e7582fc9aecef6b98ab8ba8b759b8e356039a3abc0c5d9248ef91b588019e15</guid>
-      <pubDate>Thu, 10 Sep 2026 00:00:23 +0200</pubDate>
+      <pubDate>Thu, 17 Sep 2026 19:38:47 +0200</pubDate>
       <ext:first_seen>Thu, 17 Sep 2026 20:01:01 +0200</ext:first_seen>
       <ext:starts_at>Thu, 17 Sep 2026 21:31:57 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen St. Marx S und Landstraße S U. Voraussichtliche Dauer: ca. 23:00 Uhr. Grund: Veranstaltung im Bereich Ringstraße. [Am 17.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen St. Marx S und Landstraße S U. Voraussichtliche Dauer: ca. 23:00 Uhr. Grund: Veranstaltung im Bereich Ringstraße.<br/>[Am 17.09.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 17 Sep 2026 23:45:00 +0200</ext:ends_at>
+      <description>Betrieb nur bis Landstraße S U [Am 17.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur bis Landstraße S U<br/>[Am 17.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31: Veranstaltung Betrieb nur bis Wallensteinstraße - weiter bis Augasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4d8a60fe376f247af6a41dbd1a06bce2249b16dff40bc1f34aea90550ae3bcb3</guid>
-      <pubDate>Thu, 17 Sep 2026 19:30:00 +0200</pubDate>
+      <pubDate>Thu, 17 Sep 2026 19:31:16 +0200</pubDate>
       <ext:first_seen>Thu, 17 Sep 2026 19:30:59 +0200</ext:first_seen>
       <ext:starts_at>Thu, 17 Sep 2026 19:44:51 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 17.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 17.09.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 17 Sep 2026 23:45:00 +0200</ext:ends_at>
+      <description>Betrieb nur bis Wallensteinstraße - weiter bis Augasse [Am 17.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur bis Wallensteinstraße - weiter bis Augasse<br/>[Am 17.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Veranstaltung Umleitung ab Hintere Zollamtsstr. über O und 18, Betrieb ab Hintere Zollamtsstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a1ecb7338880e3ed9fa86dc0668f5c69e8c6747b6af85210d40d8afb6aa84103</guid>
-      <pubDate>Thu, 17 Sep 2026 18:21:12 +0200</pubDate>
+      <pubDate>Thu, 17 Sep 2026 18:15:41 +0200</pubDate>
       <ext:first_seen>Thu, 17 Sep 2026 18:30:51 +0200</ext:first_seen>
       <ext:starts_at>Thu, 17 Sep 2026 18:17:10 +0200</ext:starts_at>
       <ext:ends_at>Thu, 17 Sep 2026 23:45:00 +0200</ext:ends_at>
-      <description>Umleitung ab Hintere Zollamtsstr. über O und 18 Veranstaltung Betrieb ab Hintere Zollamtsstraße [Am 17.09.2026]</description>
-      <content:encoded><![CDATA[Umleitung ab Hintere Zollamtsstr. über O und 18 Veranstaltung Betrieb ab Hintere Zollamtsstraße<br/>[Am 17.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Veranstaltung Betrieb nur bis Schwarzenbergplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eb5352749f5402b9be865827a7f6c82d7a9144a1198fd2eaa52624749c28d4eb</guid>
-      <pubDate>Thu, 17 Sep 2026 18:11:41 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 18:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 17 Sep 2026 18:27:13 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:45:00 +0200</ext:ends_at>
-      <description>Betrieb nur bis Schwarzenbergplatz [Am 17.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur bis Schwarzenbergplatz<br/>[Am 17.09.2026]]]></content:encoded>
+      <description>Umleitung ab Hintere Zollamtsstr. über O und 18 Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 17.09.2026]</description>
+      <content:encoded><![CDATA[Umleitung ab Hintere Zollamtsstr. über O und 18 Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 17.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Veranstaltung Züge halten bei Schottenring 19]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">cbccd572c7698d5a413feb14d2019f15208b4d7edc264c044999337675e4f502</guid>
-      <pubDate>Thu, 17 Sep 2026 18:09:41 +0200</pubDate>
+      <pubDate>Thu, 17 Sep 2026 18:04:00 +0200</pubDate>
       <ext:first_seen>Thu, 17 Sep 2026 18:30:51 +0200</ext:first_seen>
       <ext:starts_at>Thu, 17 Sep 2026 18:20:12 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:45:00 +0200</ext:ends_at>
-      <description>Betrieb nur bis Schwarzenbergplatz [Am 17.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur bis Schwarzenbergplatz<br/>[Am 17.09.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 17 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 17.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 17.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Veranstaltung Betrieb nur bis Parlament, Volkstheater]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">da06652192db50e60e2c0caf4aab16f97c75650e7ec7dbff93820040828b7b3c</guid>
-      <pubDate>Thu, 17 Sep 2026 18:03:07 +0200</pubDate>
+      <pubDate>Thu, 17 Sep 2026 18:04:00 +0200</pubDate>
       <ext:first_seen>Thu, 17 Sep 2026 18:30:51 +0200</ext:first_seen>
       <ext:starts_at>Thu, 17 Sep 2026 18:24:42 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:45:00 +0200</ext:ends_at>
-      <description>Betrieb nur bis Parlament, Volkstheater [Am 17.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur bis Parlament, Volkstheater<br/>[Am 17.09.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 17 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 17.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 17.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Veranstaltung Betrieb nur bis Schwarzenbergplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eb5352749f5402b9be865827a7f6c82d7a9144a1198fd2eaa52624749c28d4eb</guid>
+      <pubDate>Thu, 17 Sep 2026 18:04:00 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 18:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 18:27:13 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 17.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 17.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Vordere Zollamtsstraße von Marxergasse und Kleine Marxerbrücke bis Unbenannte Verkehrsfläche und Rad…]]></title>
