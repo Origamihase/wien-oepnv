@@ -5,6 +5,160 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Eine Störung, ein Item: WL-Anzeigetafel-Doppel werden zusammengeführt
+  (2026-09-17)**:
+  `_fetch_traffic_infos` fragt bewusst **zwei** WL-Feeds in einem Aufruf ab —
+  `stoerunglang` (der ausformulierte Meldungstext) und `stoerungkurz` (die
+  Kurztexte der Anzeigetafeln). Für dieselbe Störung liefern beide einen
+  Eintrag, die Kurzform je Ast sogar einen eigenen. Die Linie 49 stand
+  deshalb **dreifach** im Feed:
+
+  ```
+  49: Gleisschaden                                ← stoerunglang
+  49: Gleisschaden Betrieb ab Hütteldorfer Straße  ← stoerungkurz
+  49: Gleisschaden Betrieb ab Urban-Loritz-Platz   ← stoerungkurz
+  ```
+
+  Die beiden Kurzformen erschienen **ohne jeden Text**. Ihre Beschreibung
+  (`"Gleisschaden\nBetrieb ab Hütteldorfer Straße >"`) wiederholt nur den
+  eigenen Titel, und `_summary_duplicates_title` leert sie folgerichtig —
+  sichtbar blieb eine Schlagzeile über einem leeren Rumpf. Von den **zehn**
+  Plätzen des deutschen Feeds trugen damit **drei** null Information,
+  während der Langtext danebenstand und alles sagte: „Kein Betrieb zwischen
+  Hütteldorfer Straße U und Urban-Loritz-Platz …“
+
+  Das Bucketing über `topic_key` fasst sie nicht: Ohne Treffer in
+  `TITLE_TOPIC_TOKENS` fällt der Schlüssel auf den ganzen Titelkern zurück,
+  und der unterscheidet sich je Ast. `gleisschaden` dort nachzutragen wäre
+  die **dritte** Runde desselben Spiels gewesen (`demonstration` und
+  `feuerwehreinsatz` stehen für die beiden vorigen), und das nächste
+  Ursachenwort — Oberleitungsschaden, Weichenstörung, Fahrzeuggebrechen —
+  hätte Runde vier eröffnet.
+
+  Die neue Regel braucht **kein Ursachenwort**. Sie stellt zweimal dieselbe
+  Frage: *Sagt dieser Text etwas, das jener nicht schon sagt?*
+
+  1. Die Beschreibung fügt ihrem **eigenen** Titel nichts hinzu → eine reine
+     Schlagzeile.
+  2. Ihr Titel steht bereits vollständig in der Beschreibung einer anderen
+     Meldung derselben Linien, derselben Kategorie, mit überlappendem
+     Zeitraum → jene sagt alles, was diese sagt.
+
+  Nur wenn **beides** gilt, wandert die Schlagzeile in die andere Meldung:
+  Haltestellen und Extras werden übernommen, der Zeitraum geweitet, Titel und
+  Text der ausführlichen Meldung bleiben. Verworfen wird nichts, was nicht
+  nachweislich woanders steht. Die Linien gehen dabei **nicht** in den
+  Textvergleich ein — welche gemeint sind, klärt der Linien-Vergleich
+  abschließend; sonst hinge die Regel daran, ob WL den Langtext zufällig mit
+  „Linie 49: …“ eröffnet.
+
+  Gegenprobe am gesamten Cache (75 Meldungen, davon 37 Störungen): Die Regel
+  entfernt **genau die beiden** reklamierten Items und sonst nichts — auch
+  nicht im Härtetest, der alle 75 in eine Kategorie zwingt. 34 der 37
+  Störungen sind Schlagzeilen, aber nur bei Linie 49 steht eine ausführliche
+  Meldung daneben, die sie abdeckt. `49A/50B: Mondweg` und
+  `49A/50B: Hüttergasse` (zwei Straßen, ein Linienpaar) scheitern schon an
+  (1) — genau der Fall, an dem das frühere pauschale `_identity`-Dedupe
+  scheiterte.
+
+* **Der Grund einer Kurzmeldung geht nicht mehr verloren (2026-09-17)**:
+  `_strip_summary_category_prefix` wurde für die WL-*Hinweise* gebaut, deren
+  HTML ein `<h2>Gleisbauarbeiten</h2>` vor den Fließtext setzt — dort ist das
+  Wort eine durchgesickerte Überschrift, und dahinter geht der Satz weiter.
+  Die *Kurzmeldungen* der Anzeigetafeln haben dieselbe Form und meinen etwas
+  anderes:
+
+  ```
+  T: 12A: Betrieb ab Johnstraße U
+  D: Gleisbauarbeiten
+     Betrieb ab Johnstraße U
+  ```
+
+  Hier ist „Gleisbauarbeiten“ der **Grund** und das Einzige, was der Titel
+  nicht ohnehin sagt. Nach dem Streichen blieb exakt der Titel übrig,
+  `_summary_duplicates_title` leerte ihn folgerichtig — und das Item stand als
+  Schlagzeile über einem nackten `[16.09.2026 – 17.09.2026]` im Feed, ohne zu
+  verraten, warum. **11 der 75** Cache-Meldungen waren in diesem Zustand.
+
+  Der Grund wird jetzt gerettet, in WLs eigener Formulierung
+  (`Grund: Gleisbauarbeiten.` — der Langtext derselben Störung endet auf
+  „Grund: Gleisschaden im Bereich Märzstraße 62.“). Das Streichen selbst
+  bleibt **unangetastet**: Die Rettung greift ausschließlich dort, wo der
+  Rumpf sonst leer bliebe. Solange nach dem Streichen noch ein Satz steht
+  („Wegen Fortschreiten der …“), ändert sich nichts.
+
+  Nur die kuratierten `_CATEGORY_PREFIX_WORDS` werden dabei zum `Grund:`. Der
+  Zeilenumbruch in den Ticker-Texten ist nämlich **kein** Trenner, sondern ein
+  Display-Umbruch mitten im Satz (`"Ersatzbus ab\nFloridsdorf <"`,
+  `"Züge halten in\nTokiostraße"`) — eine Regel, die die erste Zeile blind als
+  Grund läse, würde dort Unsinn erfinden. Diese 23 Meldungen bleiben deshalb
+  bewusst ohne Rumpf.
+* **Abdeckungshinweis: allgemein formuliert, beidseitig, und erst nach einer
+  Stunde ohne Fahrt (2026-09-17)**:
+  Der Hinweis über den Statistiken trug bis jetzt eine fest verdrahtete
+  Ursache („Streckensperre – Bauarbeiten und Kabelbrand-Folgen") und war
+  faktisch auf **eine** Richtung zugeschnitten. Beides ist jetzt weg. Er
+  nennt **keine Ursache** mehr — das Ledger hält fest, *dass* Fahrten
+  ausbleiben, nie *warum* —, funktioniert in **beide Richtungen** und
+  fasst sie zusammen, wenn beide still sind:
+
+  > Aktuell keine Fahrten von Wien Hbf Richtung **Praterstern** auf der
+  > Stammstrecke (zuletzt am 14.08.2026). …
+  >
+  > Aktuell keine Fahrten von Wien Hbf Richtung **Meidling** und
+  > **Praterstern** auf der Stammstrecke …
+
+  **Auslöser ist eine Stunde ohne Fahrt**, und der Hinweis verschwindet von
+  selbst, sobald die Richtung wieder meldet — ohne dass jemand Markdown
+  anfasst. Genau das ist der Zweck: Die Sperre ist vorübergehend, der
+  Wiederanlauf muss automatisch erfasst werden.
+
+  Die Stunde allein wäre allerdings unbrauchbar gewesen. Beobachtungen
+  treffen bestenfalls alle ~30 min ein, die p99-Lücke je Richtung liegt bei
+  **3,5 h**, und die Stammstrecke pausiert **jede Nacht rund 3:41 h**
+  (01:12 → 04:53, über 2026 hinweg bemerkenswert konstant). Über 4.324
+  halbstündliche Ticks des gesunden Betriebs nachgespielt, hätte eine reine
+  „seit 1 h still"-Regel den Hinweis bei **10,6 %** davon gezeigt — 87 %
+  in den frühen Morgenstunden, wenn planmäßig nichts fährt. Ein Hinweis,
+  der jede Nacht erscheint, ist einer, den niemand mehr liest.
+
+  Die Stunde wird deshalb **gegen den Nachweis gemessen, dass überhaupt
+  gefahren wird**, nicht gegen die Uhr:
+  * **Eine Richtung still, die andere meldet** — die Gegenrichtung ist der
+    Nachweis. Die stille Richtung wird genannt, sobald die Gegenrichtung
+    seit deren letzter Fahrt **6 Fahrten** protokolliert hat. Diese Belege
+    verfallen nicht, weshalb der Hinweis in der nächtlichen Pause einer
+    laufenden Störung **nicht flackert**.
+  * **Beide Richtungen still** — es gibt keine Gegenrichtung mehr, und ein
+    dunkler Korridor um 03:00 ist ein Fahrplan, keine Störung. Erst **8 h**
+    sagen etwas anderes: Die längste korridorweite Stille im gesunden
+    Betrieb war 7:45 h (06.08.2026, eher ein Erfassungsausfall als ein
+    Fahrplan), die Nachtpause 3:41 h. Acht Stunden sind der kleinste volle
+    Stundenwert über beidem.
+
+  Ergebnis derselben Nachspielung: **3 von 4.324 Ticks** — und alle drei
+  sind dieselbe Episode, 14.08.2026 06:27 → 11:27, eine echte fünfstündige
+  Lücke Richtung Praterstern am Morgen des Ausfalls. Im Normalbetrieb
+  erscheint **kein** Hinweis. Der Ausfall selbst wird 3:03 h nach der
+  letzten Fahrt erkannt und bleibt danach lückenlos erkannt.
+
+  Getrennt davon die zweite Aussage: Dass eine Richtung *jetzt* still ist,
+  heißt nicht, dass die **Zahlen darunter** verzerrt sind — eine vor einer
+  Stunde verstummte Richtung steuert weiterhin Tausende Zeilen zum
+  30-Tage-Fenster bei. Der Zusatz „kein Korridor-Gesamtwert" bzw.
+  „ausschließlich ältere Daten" erscheint deshalb erst, wenn die Stille das
+  Fenster tatsächlich ausgehöhlt hat.
+
+  Was die Regel **nicht** behaupten kann: Bei dunklem Gesamtkorridor
+  unterscheidet das Ledger nicht zwischen „es fuhr nichts" und „wir haben
+  nichts beobachtet" — das ist Sache von `scripts/health_check.py`. Die
+  Korridor-Formulierung behauptet daher nur, dass die Zahlen alt sind, und
+  das stimmt in beiden Fällen.
+
+  `docs/stats-summary.json` liefert der Website die **Belege** statt des
+  Urteils (`last_seen`, `peer_rows_since`, dazu die Schwellen), damit
+  `site.js` dieselbe Regel gegen die Uhr des Lesers auswertet und eine über
+  Nacht offene Seite nicht eine eingefrorene Antwort zeigt.
 * **Test-Job lief gegen seine Zeitgrenze (2026-09-17)**:
   Der `Run test suite`-Job in `.github/workflows/test.yml` trug
   `timeout-minutes: 20` mit der Begründung „~8000 Tests, 6–10 min auf einem

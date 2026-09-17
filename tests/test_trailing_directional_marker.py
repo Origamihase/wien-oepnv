@@ -75,17 +75,25 @@ class TestTrailingDirectionalMarkerStripped:
         assert "Volkstheater" in out
 
     def test_thaliastrasse_marker_strip_enables_dedup(self) -> None:
-        # When stripping the trailing ">" makes the summary match the
-        # title body verbatim, Round 27 dedup kicks in and drops the
-        # summary entirely — description becomes just the timeframe.
+        # Stripping the trailing ">" makes the summary match the title body
+        # verbatim, so the Round 27 duplicate check fires and the restatement
+        # is dropped. That is what this test is about, and the first
+        # assertion below is what proves it: without the strip the summary
+        # would still read "Betrieb ab Thaliastraße >" and survive.
+        #
+        # What the strip leaves behind changed afterwards. "Gleisbauarbeiten"
+        # is the REASON of this WL display ticker, not a leaked HTML heading,
+        # and dropping it too left the item as a headline over a bare
+        # timeframe — never saying why. It is now kept as "Grund: …" (see
+        # ``_reason_only_summary``); the old ``startswith("[")`` assertion
+        # pinned that empty leftover, not the marker strip this file tests.
         title = "46: Betrieb ab Thaliastraße"
         desc = "Gleisbauarbeiten\nBetrieb ab Thaliastraße >"
         _, out = _format(title, desc)
-        # "Betrieb ab Thaliastraße" must NOT appear in description —
-        # it's now recognised as a duplicate of the title body.
+        # The title body must NOT be restated in the description.
         assert "Betrieb ab Thaliastraße" not in out
-        # Only the timeframe survives.
-        assert out.strip().startswith("[")
+        assert ">" not in out, "the dangling marker must be gone either way"
+        assert out.startswith("Grund: Gleisbauarbeiten."), out
 
 
 class TestMidTextDirectionalMarkerPreserved:

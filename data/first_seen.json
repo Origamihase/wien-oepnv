@@ -6069,6 +6069,20 @@
       "epoch": 2
     }
   },
+  "473ee0bcd4d872a15a99bba7f22b7cebed62789e05a08d721694e7c2822b6a8b": {
+    "first_seen": "2026-09-17T18:01:01.414699+00:00",
+    "translations": {
+      "en": {
+        "summary": "Currently, operation is not possible. Line 2A: Currently, operation is not possible.",
+        "title": "1A/2A/3A: event"
+      },
+      "en_src": {
+        "summary": "fb3dc3f3ac8bc1f9",
+        "title": "73443556c450b203"
+      },
+      "epoch": 6
+    }
+  },
   "474c6f8bb0e432949cae7226eb01aad78541598785bc38e306e5fa7c2119a730": {
     "first_seen": "2026-08-09T20:31:03.131079+00:00",
     "translations": {
@@ -6704,6 +6718,20 @@
         "title": "U1: Lock output on Keplerplatz"
       },
       "epoch": 3
+    }
+  },
+  "4d8a60fe376f247af6a41dbd1a06bce2249b16dff40bc1f34aea90550ae3bcb3": {
+    "first_seen": "2026-09-17T17:30:59.531207+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between Stammersdorf and Klosterneuburger Stra\u00dfe, Wallensteinstra\u00dfe. Continue via Friedensbr\u00fccke U to Augasse.",
+        "title": "31: event operation only up to Wallensteinstra\u00dfe - continue to Augasse"
+      },
+      "en_src": {
+        "summary": "6a8d0efd7b2b6cbe",
+        "title": "cbfa3c1844d49e54"
+      },
+      "epoch": 6
     }
   },
   "4db1cbfc7a7a7199079ac523c53a2b6c847e00327e9db7c12346fa76cb418bfa": {
@@ -8064,6 +8092,20 @@
         "title": "16A: service disruption"
       },
       "epoch": 5
+    }
+  },
+  "5e7582fc9aecef6b98ab8ba8b759b8e356039a3abc0c5d9248ef91b588019e15": {
+    "first_seen": "2026-09-17T18:01:01.414699+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between St. Marx S and Landstra\u00dfe S U. expected duration: approximately 23:00. Reason: event in the area of Ringstra\u00dfe.",
+        "title": "74A: event operation only up to Landstra\u00dfe S U"
+      },
+      "en_src": {
+        "summary": "14d9c4265cdc7064",
+        "title": "ae2fa6420bf8f0ee"
+      },
+      "epoch": 6
     }
   },
   "5e91154753943a0c8c183b305e5d5f40f9378e16d38e553e44cc39c42d03f9a8": {
@@ -10132,6 +10174,20 @@
       "epoch": 3
     }
   },
+  "764922ffc60674d3cd5283f14e4206f60cf446e572f2692a38fdfeb37fd849d5": {
+    "first_seen": "2026-09-17T17:30:59.531207+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: traffic disturbance.",
+        "title": "24A: Traffic disturbance"
+      },
+      "en_src": {
+        "summary": "cab34ee739ca96f2",
+        "title": "cb0a9caac3327424"
+      },
+      "epoch": 6
+    }
+  },
   "764d27c15bdb3bd3868fa37a024661bca55e2394a77bba17e0c6dbf42f5e023c": {
     "first_seen": "2026-07-03T02:00:58.208932+00:00",
     "translations": {
@@ -10492,6 +10548,20 @@
         "title": "31A: delays"
       },
       "epoch": 3
+    }
+  },
+  "7a4bf89b7131a67a3d76b80979474712696c8f3c5dd2a7f593354feb34776ec4": {
+    "first_seen": "2026-09-17T17:01:04.263021+00:00",
+    "translations": {
+      "en": {
+        "summary": "No holding",
+        "title": "1A: event No operation"
+      },
+      "en_src": {
+        "summary": "5333154d85ea63f7",
+        "title": "2fbe887f9b29a5ab"
+      },
+      "epoch": 6
     }
   },
   "7a5002edcae3000c19f7b2e8c75135a2348b751874043889e05a5b54e25f5d70": {
@@ -12309,6 +12379,20 @@
       "epoch": 3
     }
   },
+  "8cf0915b00e844feb53e030254222275bb1b7fb7526718d846521e1686dd72d9": {
+    "first_seen": "2026-09-17T17:01:04.263021+00:00",
+    "translations": {
+      "en": {
+        "summary": "No holding",
+        "title": "2A: event No operation"
+      },
+      "en_src": {
+        "summary": "5333154d85ea63f7",
+        "title": "598360463fd92de0"
+      },
+      "epoch": 6
+    }
+  },
   "8d027bd0136563db15b013c0aa4de03c0f2ff6b7c33eb3469e64b319bd6a584c": {
     "first_seen": "2026-07-11T11:30:47.218673+00:00",
     "translations": {
@@ -13353,6 +13437,20 @@
       "epoch": 3
     }
   },
+  "96e10d36d8cd3f32e4f391ee170e202907da3d662b373221db3bbb8cb9692b86": {
+    "first_seen": "2026-09-17T18:30:48.962798+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to the high passenger volume associated with an event, the folding ramps of the U4 underground trains cannot be extended.",
+        "title": "U4: folding ramp lock on 18.09.2026"
+      },
+      "en_src": {
+        "summary": "b8ec6cca9e52f766",
+        "title": "00ba1fdaf560da90"
+      },
+      "epoch": 6
+    }
+  },
   "96f135154720252b723390157353648f6e722f3498310c762afbb7ad31588d1b": {
     "first_seen": "2026-06-26T08:30:55.282612+00:00",
     "translations": {
@@ -14290,6 +14388,20 @@
       "en_src": {
         "summary": "eb1bdc2703fe6f1b",
         "title": "b472858f21bd5a72"
+      },
+      "epoch": 6
+    }
+  },
+  "a1ecb7338880e3ed9fa86dc0668f5c69e8c6747b6af85210d40d8afb6aa84103": {
+    "first_seen": "2026-09-17T16:30:51.784023+00:00",
+    "translations": {
+      "en": {
+        "summary": "diversion from Hintere Zollamtsstr. via O and 18 event service from Hintere Zollamtsstra\u00dfe",
+        "title": "1: event diversion from rear customs office via O and 18, service from Hintere Zollamtsstra\u00dfe"
+      },
+      "en_src": {
+        "summary": "0dfff32690dce831",
+        "title": "503091e5c2b9f611"
       },
       "epoch": 6
     }
@@ -17568,6 +17680,20 @@
       }
     }
   },
+  "cbccd572c7698d5a413feb14d2019f15208b4d7edc264c044999337675e4f502": {
+    "first_seen": "2026-09-17T16:30:51.784023+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only up to Schwarzenbergplatz",
+        "title": "D: event Trains stop at Schottenring 19"
+      },
+      "en_src": {
+        "summary": "7fd179d0fd9e3356",
+        "title": "4d517d39e2cd8456"
+      },
+      "epoch": 6
+    }
+  },
   "cbeba1983ad65e737c59f5155784a0adb83243b00a2de04117c7515086d5df79": {
     "first_seen": "2026-05-09T14:14:50.600064+00:00"
   },
@@ -18562,6 +18688,20 @@
       "en": {}
     }
   },
+  "d6da4323f1c4b9702eaa2ce7aad753426a4a0a4f012b29047be9d368194a04a9": {
+    "first_seen": "2026-09-17T17:01:04.263021+00:00",
+    "translations": {
+      "en": {
+        "summary": "No holding",
+        "title": "3A: event No operation"
+      },
+      "en_src": {
+        "summary": "5333154d85ea63f7",
+        "title": "c4e3c46fd9eb55ff"
+      },
+      "epoch": 6
+    }
+  },
   "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a": {
     "first_seen": "2026-07-20T04:01:00.300249+00:00",
     "translations": {
@@ -18788,6 +18928,20 @@
         "title": "1: Harmful train Einstieg Climb C"
       },
       "epoch": 3
+    }
+  },
+  "da06652192db50e60e2c0caf4aab16f97c75650e7ec7dbff93820040828b7b3c": {
+    "first_seen": "2026-09-17T16:30:51.784023+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only up to Parlament, Volkstheater",
+        "title": "2: event operation only up to Parlament, Volkstheater"
+      },
+      "en_src": {
+        "summary": "8ddf167a57b5dc4c",
+        "title": "2d8527b85e89e1e4"
+      },
+      "epoch": 6
     }
   },
   "da36034d7f682e762efc948fa7832cd5b0a0a520021df8036fbcf428d25dfbf7": {
@@ -20297,6 +20451,20 @@
         "title": "25: Damaged train service from Kagran U"
       },
       "epoch": 3
+    }
+  },
+  "eb5352749f5402b9be865827a7f6c82d7a9144a1198fd2eaa52624749c28d4eb": {
+    "first_seen": "2026-09-17T16:30:51.784023+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only up to Schwarzenbergplatz",
+        "title": "71: event operation only up to Schwarzenbergplatz"
+      },
+      "en_src": {
+        "summary": "7fd179d0fd9e3356",
+        "title": "2dc6e6a09c988438"
+      },
+      "epoch": 6
     }
   },
   "eb55f0188639a7cf0ab56ede35706c6fdd1f185c211586abda3d49862f1cf5f8": {
@@ -21959,6 +22127,18 @@
         "title": "18: track damage"
       },
       "epoch": 3
+    }
+  },
+  "fff4a48495419b0f1b528463f4724c530848d3b5b924c2ca1e29ef59e8bad6e6": {
+    "first_seen": "2026-09-17T15:00:54.423940+00:00",
+    "translations": {
+      "en": {
+        "title": "31: Trains stop at line 12"
+      },
+      "en_src": {
+        "title": "55f1af614cc852cb"
+      },
+      "epoch": 6
     }
   },
   "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&829791": {
