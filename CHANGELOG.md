@@ -5,6 +5,65 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Straßennamen bleiben Straßennamen — auch im englischen Feed
+  (2026-09-17)**:
+  Im EN-Feed stand **„rear customs office"**, wo „Hintere Zollamtsstr."
+  gemeint war. Aus einem Straßennamen wurde die Bezeichnung eines
+  Gebäudetyps: Wer danach sucht, findet die Straße nicht, und wer es liest,
+  sucht ein Zollamt.
+
+  ```
+  DE: 1: Veranstaltung Umleitung ab Hintere Zollamtsstr. über O und 18
+  EN: 1: Event diversion from rear customs office via O and 18
+  ```
+
+  Der Masker schützt Straßennamen eigentlich vor der Übersetzung. Zwei
+  Lücken in `_STREET_SUFFIX_RE` ließen sie durch, und sie versagen
+  **unterschiedlich**:
+
+  * **Abgekürztes Suffix.** WL kürzt `Straße` routinemäßig zu `Str.` ab.
+    Die Abkürzung stand nicht in der Alternation, also wurde
+    `Hintere Zollamtsstr.` **gar nicht** maskiert und ging vollständig
+    durchs Modell.
+  * **Vorangestelltes Adjektiv.** Das Muster verlangte, dass das Suffix am
+    selben Wort klebt. `Vordere Zollamtsstraße` maskierte daher nur
+    `Zollamtsstraße` und ließ `Vordere` los — „Front Zollamtsstraße". Ebenso
+    `Kleine Marxerbrücke` → „Small Marxerbrücke".
+
+  **Der Schutz, der bisher griff, griff aus dem falschen Grund.**
+  `Hintere Zollamtsstraße` — ausgeschrieben — blieb heil, aber nicht wegen
+  des Straßen-Musters: Es existiert zufällig eine Haltestelle
+  `Wien Hintere Zollamtsstraße (WL)`, und Pass 2 (Stationsverzeichnis) fing
+  sie ab. Ein Test gegen den fertigen Feed hätte aus ebendiesem Zufall
+  bestanden und über das Schild nichts ausgesagt; die Tests prüfen deshalb
+  `_mask_entities` direkt.
+
+  Gegenprobe über den gesamten Cache (112 Meldungen, 108.034 Zeichen): Neu
+  geschützt sind genau die fünf lecken Namen (`Hintere Zollamtsstr.`,
+  `Hintere Zollamtsstraße`, `Vordere Zollamtsstraße`, `Kleine
+  Marxerbrücke`, `Rechte Wienzeile`). `Zollamtsstraße` und `Marxerbrücke`
+  erscheinen nicht mehr als eigene Spannen — sie gehen in den längeren
+  Treffer auf, wie es die dokumentierte „longest-matching span"-Regel
+  vorsieht; freistehend werden sie weiterhin erfasst.
+
+  **Bewusst nicht mitgefixt:** Freistehende Namen wie `Mariahilfer Straße`
+  bleiben ungeschützt. Sie bräuchten einen Zweig für einen bloßen Suffix
+  nach einem Attribut, und jeder Kopf, der `Mariahilfer`, `Donaufelder` und
+  `Schloßhofer` fasst (sie teilen nur die `-er`-Endung, und die Menge ist
+  produktiv), fängt deutsche Determinative mit ein: `Dieser Platz`, `Jeder
+  Weg`. Diese Namen sind heute ungeschützt, aber nachweislich **nicht
+  kaputt** — das Modell reicht sie unverändert durch. Ein latentes Loch mit
+  einer neuen Übergriffs-Klasse zu schließen wäre der falsche Tausch; der
+  Fall gehört ins Stationsverzeichnis, das `Hütteldorfer Straße` und
+  `Matzleinsdorfer Platz` bereits abdeckt.
+
+  `_TRANSLATION_CACHE_EPOCH` steigt auf **7**. Ohne den Schritt bliebe die
+  falsche Übersetzung stehen: `_cached_translation` erzwingt eine
+  Neuberechnung nur, wenn der Cache-Wert dem deutschen Quelltext gleicht —
+  „rear customs office" ist falsch, aber nicht deutsch, und die U4-Meldung,
+  die ihn trägt, läuft bis 30.11.2026.
+
+  Schließt **C.4** aus `docs/archive/audits/audit-2026-09-17.md`.
 * **Eine Störung, ein Item: WL-Anzeigetafel-Doppel werden zusammengeführt
   (2026-09-17)**:
   `_fetch_traffic_infos` fragt bewusst **zwei** WL-Feeds in einem Aufruf ab —

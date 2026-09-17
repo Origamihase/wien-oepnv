@@ -989,7 +989,13 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       serving it for the item's lifetime. The bump exists to stamp a
 #       digest onto the ~2500 entries cached without one; it asserts no
 #       change in translation quality.
-_TRANSLATION_CACHE_EPOCH = 6
+#   7 — street-suffix masker learned the abbreviated ``…str.`` form and
+#       the leading adjective (``Vordere``/``Hintere``/``Kleine`` …), so
+#       ``Hintere Zollamtsstr.`` stops rendering as "rear customs office"
+#       and ``Vordere Zollamtsstraße`` as "Front Zollamtsstraße". Without
+#       the bump the affected items keep serving the wrong English for
+#       their lifetime — a U4 construction notice runs until 30.11.2026.
+_TRANSLATION_CACHE_EPOCH = 7
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1444,13 +1450,63 @@ def _norm_metadata(value: Any) -> str | None:
 # The Latin-1 supplement umlauts (``ä``/``ö``/``ü``/``ß``) are part of
 # ``\w`` under Python 3 ``re`` so the ``\b`` word boundary works
 # naturally on tokens like ``Hellwagstraße``.
-_STREET_SUFFIX_RE: re.Pattern[str] = re.compile(
-    r"\b[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-.]{1,30}"
-    r"(?:"
+#
+# Zwei Lücken kosteten das Schild am 2026-09-17 im Livefeed (Befund C.4,
+# ``docs/archive/audits/audit-2026-09-17.md``):
+#
+#   * ``Hintere Zollamtsstr.`` → **"rear customs office"**. WL kürzt
+#     ``Straße`` routinemäßig zu ``Str.`` ab; die Abkürzung stand nicht in
+#     der Alternation, der Name wurde also GAR NICHT maskiert und
+#     vollständig übersetzt. Aus einem Straßennamen wurde die Bezeichnung
+#     eines Gebäudetyps — wer im EN-Feed danach sucht, findet die Straße
+#     nicht, und wer es liest, sucht ein Zollamt.
+#   * ``Vordere Zollamtsstraße`` → "Front Zollamtsstraße",
+#     ``Kleine Marxerbrücke`` → "Small Marxerbrücke". Das Muster verlangte,
+#     dass das Suffix am selben Wort klebt, also blieb ein vorangestelltes
+#     Adjektiv außerhalb der Spanne und wurde übersetzt.
+#
+# Dass ``Hintere Zollamtsstraße`` (ausgeschrieben) heil blieb, war Zufall:
+# Der Schutz kam aus dem Stationsverzeichnis (Pass 2), weil zufällig eine
+# Haltestelle dieses Namens existiert — nicht von diesem Muster. Ein Test,
+# der gegen den fertigen Feed statt gegen den Masker prüft, bestünde aus
+# ebendiesem Zufallsgrund; ``tests/test_street_name_masking.py`` prüft
+# deshalb direkt hier.
+#
+# Der Adjektiv-Kopf ist bewusst eine GESCHLOSSENE Liste. Die naheliegende
+# Verallgemeinerung — ein beliebiges vorangestelltes Wort auf ``-er``, das
+# auch ``Mariahilfer Straße`` und ``Donaufelder Straße`` fassen würde —
+# zieht deutsche Determinative mit herein (``Dieser Platz``, ``Jeder
+# Weg``) und bräuchte ihrerseits eine Ausschlussliste. Diese freistehenden
+# Namen sind heute ungeschützt, aber nachweislich NICHT kaputt: Sie
+# durchlaufen das Modell unverändert, weil es das Attribut nicht kennt.
+# Ein latentes Loch mit einer neuen Übergriffs-Klasse zu schließen wäre
+# ein schlechter Tausch — der Fall gehört ins Verzeichnis, nicht in diese
+# Heuristik.
+#: Suffixe, die ein Wort als Straßen-/Platznamen ausweisen.
+_STREET_SUFFIX_CORE = (
     r"[Ss]traße|[Ss]trasse|[Gg]asse|[Pp]latz|[Bb]rücke|[Bb]rucke"
     r"|[Mm]arkt|[Ww]eg|[Rr]ing|[Aa]llee|[Ss]tieg|[Ss]teig"
-    r"|[Pp]romenade|[Kk]ai|[Gg]raben"
-    r")\b"
+    r"|[Pp]romenade|[Kk]ai|[Gg]raben|[Zz]eile"
+)
+#: Deklinierte Adjektive, die in Wiener Straßennamen vor dem Namen stehen.
+#: Nur solche, die als eigenes Wort ein echtes englisches Wort ergeben —
+#: genau die, die das Modell übersetzt.
+_STREET_ATTRIBUTE = (
+    r"Vordere|Hintere|Obere|Untere|Große|Grosse|Kleine|Alte|Neue"
+    r"|Linke|Rechte|Lange|Kurze|Innere|Äußere|Aeussere"
+)
+#: Zusammengesetzt (``Zollamtsstraße``) oder abgekürzt (``Zollamtsstr.``).
+#: Beim abgekürzten Zweig sitzt ``\b`` VOR dem Punkt: Nach ``str.`` folgt
+#: meist ein Leerzeichen, und zwischen zwei Nicht-Wort-Zeichen gibt es
+#: keine Wortgrenze — ein nachgestelltes ``\b`` würde den Zweig nie greifen
+#: lassen.
+_STREET_NAME_BODY = (
+    r"[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-.]{1,30}(?:" + _STREET_SUFFIX_CORE + r")\b"
+    r"|[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-]{1,30}[Ss]tr\b\.?"
+)
+_STREET_SUFFIX_RE: re.Pattern[str] = re.compile(
+    r"\b(?:" + _STREET_ATTRIBUTE + r")\s+(?:" + _STREET_NAME_BODY + r")"
+    r"|\b(?:" + _STREET_NAME_BODY + r")"
 )
 
 # WL numbers the gates of the Zentralfriedhof and addresses the stops
