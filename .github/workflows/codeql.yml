@@ -74,12 +74,12 @@ jobs:
     # Two attempts; remove once v6.0.3+ is pinned.
     - name: Check out repository (attempt 1/2)
       id: checkout
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
       continue-on-error: true
 
     - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
       if: steps.checkout.outcome == 'failure'
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
 
     # Add any setup steps before running the `github/codeql-action/init` action.
     # This includes steps like installing compilers or runtimes (`actions/setup-node`
