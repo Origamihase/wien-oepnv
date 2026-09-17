@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 17 Sep 2026 20:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 20:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Folding ramp lock on 18.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">96e10d36d8cd3f32e4f391ee170e202907da3d662b373221db3bbb8cb9692b86</guid>
+      <pubDate>Thu, 17 Sep 2026 20:30:00 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 20:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 20:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 23:00:00 +0200</ext:ends_at>
+      <description>Due to the high passenger volume associated with an event, the folding ramps of the U4 underground trains cannot be extended. [17.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U4 underground trains cannot be extended.<br/>[17.09.2026 – 18.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1A/2A/3A: Event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna … [01.02.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: Track damage service from Urban-Loritz-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">daebfc84e978ba997bf9db03242e337ce2c13f18932a3d0cc38b273b66698b73</guid>
-      <pubDate>Thu, 17 Sep 2026 08:18:13 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 08:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 17 Sep 2026 08:18:13 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 17.09.2026]</description>
-      <content:encoded><![CDATA[[On 17.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
