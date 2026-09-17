@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 17 Sep 2026 22:01:06 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 22:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Ruthnergasse Crossing Justgasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">aa9998ab5faa86b356b845ead32f6781fc00f60bec1ef21ab9a811971b3da088</guid>
+      <pubDate>Sun, 20 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 22:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 20 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:ends_at>
+      <description>For more information on the public transports concerned, please refer to the Wiener Linien GmbH &amp; Co KG. [20.09.2026 – 16.10.2026]</description>
+      <content:encoded><![CDATA[For more information on the public transports concerned, please refer to the Wiener Linien GmbH &amp; Co KG.<br/>[20.09.2026 – 16.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U4: Folding ramp lock on 18.09.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna … [01.02.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: Track damage]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7e01fc848976d0d587e141957de9da7afd74e084db6077e61c5f28daaa72b86e</guid>
-      <pubDate>Thu, 17 Sep 2026 08:14:00 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 08:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 17 Sep 2026 08:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 00:55:00 +0200</ext:ends_at>
-      <description>No operation between Hütteldorfer Straße U and Urban-Loritz-Platz. Trains run from Hütteldorfer Straße to Joachimsthalerplatz. [17.09.2026 – 18.09.2026]</description>
-      <content:encoded><![CDATA[No operation between Hütteldorfer Straße U and Urban-Loritz-Platz. Trains run from Hütteldorfer Straße to Joachimsthalerplatz.<br/>[17.09.2026 – 18.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
