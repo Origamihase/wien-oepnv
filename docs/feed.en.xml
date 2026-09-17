@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 17 Sep 2026 18:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 19:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2A: Event No operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8cf0915b00e844feb53e030254222275bb1b7fb7526718d846521e1686dd72d9</guid>
+      <pubDate>Thu, 17 Sep 2026 18:31:43 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 19:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 18:31:46 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 20:00:00 +0200</ext:ends_at>
+      <description>No holding [On 17.09.2026]</description>
+      <content:encoded><![CDATA[No holding<br/>[On 17.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A: Event No operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7a4bf89b7131a67a3d76b80979474712696c8f3c5dd2a7f593354feb34776ec4</guid>
+      <pubDate>Thu, 17 Sep 2026 18:31:13 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 19:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 18:31:13 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 21:00:00 +0200</ext:ends_at>
+      <description>No holding [On 17.09.2026]</description>
+      <content:encoded><![CDATA[No holding<br/>[On 17.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Event No operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d6da4323f1c4b9702eaa2ce7aad753426a4a0a4f012b29047be9d368194a04a9</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:07 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 19:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 18:32:16 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 20:00:00 +0200</ext:ends_at>
+      <description>No holding [On 17.09.2026]</description>
+      <content:encoded><![CDATA[No holding<br/>[On 17.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1: Event diversion from rear customs office via O and 18, service from Hintere Zollamtsstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -85,39 +118,6 @@
       <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>[On 17.09.2026]</description>
       <content:encoded><![CDATA[[On 17.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: Track damage]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7e01fc848976d0d587e141957de9da7afd74e084db6077e61c5f28daaa72b86e</guid>
-      <pubDate>Thu, 17 Sep 2026 08:14:00 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 08:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 17 Sep 2026 08:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 00:55:00 +0200</ext:ends_at>
-      <description>No operation between Hütteldorfer Straße U and Urban-Loritz-Platz. Trains run from Hütteldorfer Straße to Joachimsthalerplatz. [17.09.2026 – 18.09.2026]</description>
-      <content:encoded><![CDATA[No operation between Hütteldorfer Straße U and Urban-Loritz-Platz. Trains run from Hütteldorfer Straße to Joachimsthalerplatz.<br/>[17.09.2026 – 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36A/36B: Roadworks]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the area of Justgasse / Ruthnergasse the lines 36A and 36B are redirected. [21.09.2026 – 16.09.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the area of Justgasse / Ruthnergasse the lines 36A and 36B are redirected.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Stop change of lines 4A towards Wittelsabchstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[Stop change of lines 4A towards Wittelsabchstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
