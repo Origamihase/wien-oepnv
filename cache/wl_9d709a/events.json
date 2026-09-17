@@ -458,18 +458,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "537e1c6887b1c4413eea88250c3abf02adc575a540ab895807090cae43d76a2a",
-    "pubDate": "2026-09-17T14:33:19+02:00",
-    "starts_at": "2026-09-17T14:33:19+02:00",
-    "ends_at": "2026-09-17T15:33:00+02:00",
-    "_identity": "wl|störung|L=10|D=2026-09-17|TK=fahrtbehinderung fremder verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Einstieg bei Vorgartenstraße vor Meiereistraße",
     "description": "Bauarbeiten\nEinstieg bei Vorgartenstraße vor Meiereistraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -514,30 +502,6 @@
     "starts_at": "2026-09-17T14:32:00+02:00",
     "ends_at": "2026-09-17T23:55:00+02:00",
     "_identity": "wl|störung|L=15A|D=2026-09-17|TK=15a verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "15A: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "61d800321a9f38a8a83860f1cca614446871ecfcaec5339554797d7f29c03bf9",
-    "pubDate": "2026-09-17T14:34:20+02:00",
-    "starts_at": "2026-09-17T14:34:20+02:00",
-    "ends_at": "2026-09-17T15:33:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-09-17|TK=fahrtbehinderung fremder verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "15A: Fremdunfall Betrieb ab Eibesbrunnergasse",
-    "description": "Fremdunfall\nBetrieb ab Eibesbrunnergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8b6dc83ebbd60634bc5c1ac337f81dca6162ffdc47b252ca8446b3388cf6f672",
-    "pubDate": "2026-09-17T14:36:19+02:00",
-    "starts_at": "2026-09-17T14:36:21+02:00",
-    "ends_at": "2026-09-17T15:35:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-09-17|TK=fremdunfall betrieb ab eibesbrunnergasse"
   },
   {
     "source": "Wiener Linien",
@@ -806,18 +770,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Rettungseinsatz",
-    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a71fc169a65218e40e97e38cf1216a0530e03cb41823f0f6e351949dbeea8a98",
-    "pubDate": "2026-09-17T13:45:00+02:00",
-    "starts_at": "2026-09-17T13:45:00+02:00",
-    "ends_at": "2026-09-17T15:29:00+02:00",
-    "_identity": "wl|störung|L=38|D=2026-09-17|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: 3A Netzänderung Betrieb ab Riemergasse",
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -846,7 +798,7 @@
     "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2026-09-17T14:56:50+02:00",
+    "pubDate": "2026-09-17T15:01:00+02:00",
     "starts_at": "2026-09-17T15:08:53+02:00",
     "ends_at": "2026-09-17T23:55:00+02:00",
     "_identity": "wl|störung|L=42|D=2026-09-17|TK=falschparker"
@@ -958,18 +910,6 @@
     "starts_at": "2026-09-17T14:32:00+02:00",
     "ends_at": "2026-09-17T23:55:00+02:00",
     "_identity": "wl|störung|L=7A|D=2026-09-17|TK=7a verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "35f1c1dae859117ecfd4a8a5bacbe13030aa8781faed62b42b7559892dc0a368",
-    "pubDate": "2026-09-17T14:37:48+02:00",
-    "starts_at": "2026-09-17T14:37:51+02:00",
-    "ends_at": "2026-09-17T15:37:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-09-17|TK=fahrtbehinderung fremder verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
