@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 17 Sep 2026 10:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 10:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[71: Traffic accident service from Enkplatz, Grillgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6c38b00a73ed607a42502270983ac271f7dc250c93e38cf7e9d19d45c6ee03d3</guid>
+      <pubDate>Thu, 17 Sep 2026 10:23:55 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 10:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 10:23:55 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 11:23:00 +0200</ext:ends_at>
+      <description>[On 17.09.2026]</description>
+      <content:encoded><![CDATA[[On 17.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Traffic accident service from St. Marx]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e9671085cf51b1b72851800b8b501f5698f6a6bfae0ad34a6dcd2676730e2f1e</guid>
+      <pubDate>Thu, 17 Sep 2026 10:22:56 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 10:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 10:22:56 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 11:22:00 +0200</ext:ends_at>
+      <description>[On 17.09.2026]</description>
+      <content:encoded><![CDATA[[On 17.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11A/48A/59A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -54,17 +76,6 @@
       <content:encoded><![CDATA[No operation between Hütteldorfer Straße U and Urban-Loritz-Platz. Trains run from Hütteldorfer Straße to Joachimsthalerplatz.<br/>[On 17.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[24A: False Parker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">457fb8aa2c6b032edb909df2614f6acffc24b58b6e92c4a3d5db7fee1a8a174f</guid>
-      <pubDate>Thu, 17 Sep 2026 08:12:00 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 08:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 17 Sep 2026 08:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 10:10:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: wrong parker. [On 17.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: wrong parker.<br/>[On 17.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[36A/36B: Roadworks]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
       <description>Due to Thanksgiving, the lines 27A, 28A and 29A are redirected. [15.09.2026 – 27.09.2026]</description>
       <content:encoded><![CDATA[Due to Thanksgiving, the lines 27A, 28A and 29A are redirected.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56A/56B/58A/58B: Diversion towards Hietzing U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">448cd28e5b6e46e9031d5b7d469e439bb6d640a548691fa7e52b2cfebe245957</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 09:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the area of Kennedybrücke the bus lines are being redirected. [15.09.2026 – 15.09.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the area of Kennedybrücke the bus lines are being redirected.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
