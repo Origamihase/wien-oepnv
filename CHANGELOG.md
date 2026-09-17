@@ -5,6 +5,36 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Test-Job lief gegen seine Zeitgrenze (2026-09-17)**:
+  Der `Run test suite`-Job in `.github/workflows/test.yml` trug
+  `timeout-minutes: 20` mit der Begründung „~8000 Tests, 6–10 min auf einem
+  GH-Runner, ~2x Reserve". Beides stimmt nicht mehr: Die Suite zählt
+  **9.316 Tests**, `pytest` allein braucht auf dem Runner **18:13**, der
+  ganze Job rund **20:12** samt Checkout, Installation, statischen Checks
+  und Stations-Validierung. Die Grenze lag damit **unter** dem, was ein
+  gesunder Lauf legitim benötigt.
+
+  Die Folge war kein ehrliches Rot, sondern ein Münzwurf: Ob ein Lauf
+  durchging, entschied die Tagesform des Runners und nicht die geprüfte
+  Änderung. **Vier der zwölf Läufe davor wurden an der Wand abgebrochen**
+  (4696, 4703, 4704, 4706 — auf PRs *und* auf `main`, quer über Autoren),
+  und Lauf 4702 kam mit vier Sekunden Reserve durch. Am deutlichsten war
+  Lauf 4706: `pytest` meldete `9316 passed, 2 skipped in 1093.97s`, und
+  eine Sekunde später schlug der Timeout während des Coverage-Uploads zu —
+  eine grüne Suite, als roter Check ausgewiesen. Das ist genau die Sorte
+  Rauschen, nach der man aufhört hinzusehen.
+
+  Die Grenze steht jetzt auf **35 Minuten**, etwa dem 1,7-fachen des
+  langsamsten beobachteten gesunden Laufs. Ihr Zweck bleibt unangetastet:
+  einen Hänger (feststeckender Test, Endlosrekursion, entlaufene Fixture)
+  abfangen, statt GitHubs 360-Minuten-Vorgabe zu erben. Der feinere Riegel
+  — `--timeout=60` pro Test aus der `pyproject.toml` — ist unverändert.
+
+  Ausdrücklich **keine** Dauerlösung für die Laufzeit selbst: Wenn die
+  Wandzeit stört, ist Parallelisierung der Hebel, nicht die nächste
+  Erhöhung. Das wäre allerdings ein eigenes Vorhaben mit eigener
+  Prüfrunde — die `isolate_stats_writes`-Fixture, die Datei-Lock-Tests und
+  die Coverage-Erfassung müssten erst auf xdist-Sicherheit geprüft werden.
 * **Dashboard lädt ~700 KB CSV weniger — und redet nicht mehr mit einer
   fremden Origin (2026-09-14)**:
   Die drei Statistik-Panels der Website zogen bei **jedem Seitenaufruf** die

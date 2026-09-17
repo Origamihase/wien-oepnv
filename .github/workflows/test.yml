@@ -13,15 +13,31 @@ jobs:
   pytest:
     name: Run test suite
     runs-on: ubuntu-latest
-    # Defense-in-depth ceiling: the full pytest suite (~8000 tests +
-    # static checks + station validation + Overpass smoke check) runs
-    # in 4-6 min locally and 6-10 min on a GH runner. 20 min gives ~2x
-    # headroom while catching hangs (stuck test, infinite recursion,
-    # runaway fixture) quickly. The per-test pytest-timeout (60 s in
-    # pyproject.toml) is a finer-grained gate; the job-level cap is the
-    # defence-in-depth backstop. Without the cap the workflow inherits
-    # GitHub's 360-min default. Mirrors update-cycle.yml.
-    timeout-minutes: 20
+    # Defense-in-depth ceiling against a hang (stuck test, infinite
+    # recursion, runaway fixture). Without it the workflow inherits
+    # GitHub's 360-min default. The per-test pytest-timeout (60 s in
+    # pyproject.toml) is the finer-grained gate; this is the backstop.
+    #
+    # Raised from 20 to 35 on 2026-09-17. The old value assumed
+    # "~8000 tests, 6-10 min on a GH runner, ~2x headroom" — that
+    # stopped being true as the suite grew. Measured on the runner:
+    # 9316 tests, pytest alone 18:13, whole job ~20:12 including
+    # checkout, install, static checks and station validation. The cap
+    # had drifted *below* what a healthy run legitimately needs, so
+    # whether a run passed came down to runner speed rather than to the
+    # change under test: four of the twelve runs before this one were
+    # cancelled at the wall (4696, 4703, 4704, 4706 — on PRs AND on
+    # main, across different authors), and run 4702 finished with four
+    # seconds to spare. Run 4706 was the clearest case: pytest reported
+    # "9316 passed, 2 skipped in 1093.97s" and the timeout fired one
+    # second later, during the coverage upload — a green suite reported
+    # as a red check.
+    #
+    # 35 min is ~1.7x the slowest observed healthy run, which keeps the
+    # hang-catching purpose intact while leaving room for the suite to
+    # keep growing. If the wall clock itself becomes the problem,
+    # parallelising the suite is the fix — not another bump.
+    timeout-minutes: 35
 
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
