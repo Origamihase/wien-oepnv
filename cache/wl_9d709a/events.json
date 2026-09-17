@@ -482,25 +482,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Einstieg bei Vorgartenstraße vor Meiereistraße",
-    "description": "Bauarbeiten\nEinstieg bei Vorgartenstraße vor Meiereistraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2158898c549c0f30a157915615cd7f952d751c3b776ca6747799be32ec127935",
-    "pubDate": "2026-09-08T07:11:02+02:00",
-    "starts_at": "2026-09-08T07:13:02+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
-    "_identity": "wl|störung|L=11A|D=2026-09-08|TK=einstieg bei vorgartenstrasse vor meiereistrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643",
     "pubDate": "2026-09-16T00:00:06+02:00",
     "starts_at": "2026-09-16T00:00:06+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=12A|D=2026-09-16|TK=betrieb ab johnstrasse u"
   },
   {
@@ -512,7 +500,7 @@
     "guid": "ca51ff9a0bc16a53883dfb140775b92521f7650658e94d4729934cdb43721549",
     "pubDate": "2026-09-16T00:00:06+02:00",
     "starts_at": "2026-09-16T00:00:06+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=12A|D=2026-09-16|TK=betrieb ab schweglerstrasse 19 21"
   },
   {
@@ -530,37 +518,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Veranstaltung Umleitung ab Hintere Zollamtsstr. über O und 18",
-    "description": "Veranstaltung\nUmleitung ab Hintere Zollamtsstr. über O und 18",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a1ecb7338880e3ed9fa86dc0668f5c69e8c6747b6af85210d40d8afb6aa84103",
-    "pubDate": "2026-09-17T18:15:41+02:00",
-    "starts_at": "2026-09-17T18:17:10+02:00",
-    "ends_at": "2026-09-17T23:45:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-09-17|TK=umleitung veranstaltung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Veranstaltung Betrieb ab Hintere Zollamtsstraße",
-    "description": "Veranstaltung\nBetrieb ab Hintere Zollamtsstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8d5900ef92a574782fe74285eb66398ea813c767e512b8b79094aafaabb4d342",
-    "pubDate": "2026-09-17T18:21:12+02:00",
-    "starts_at": "2026-09-17T18:21:43+02:00",
-    "ends_at": "2026-09-17T23:45:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-09-17|TK=veranstaltung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "25: Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "description": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "92b3e1526626662f64af03a055d226fd12ea9f9ee7f18ad3adc6d69e6127aa8f",
     "pubDate": "2026-09-14T04:30:18+02:00",
     "starts_at": "2026-09-14T04:30:18+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-09-14|TK=ersatzbus 26e hält karl waldbrunner platz vor schlosshofer strasse"
   },
   {
@@ -572,7 +536,7 @@
     "guid": "44a02aa52cc8c483cf9ee82f243d4a974b14b9b12203ae2740f0d36f0ede2178",
     "pubDate": "2026-09-14T04:30:19+02:00",
     "starts_at": "2026-09-14T04:30:19+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-09-14|TK=linie 26e hält donaufelder strasse 148"
   },
   {
@@ -584,7 +548,7 @@
     "guid": "d5eedc7e659855bb270421333c54cb8e61ff965becddd05436cff03e385f7a15",
     "pubDate": "2026-09-14T04:30:18+02:00",
     "starts_at": "2026-09-14T04:30:18+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-09-14|TK=linien 25 und 26 betrieb ab josef baumann gasse"
   },
   {
@@ -596,7 +560,7 @@
     "guid": "b1de336024668692cfc392366c00463863c75ca201ea3e3f1095df9b15711853",
     "pubDate": "2026-09-14T04:30:18+02:00",
     "starts_at": "2026-09-14T04:30:18+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-09-14|TK=züge halten donaufelder strasse 175 177"
   },
   {
@@ -608,7 +572,7 @@
     "guid": "aebd0dcde51b83458f026d2249438fed8a2913db91b9a5ff0e980082128533ca",
     "pubDate": "2026-09-16T00:00:06+02:00",
     "starts_at": "2026-09-16T00:00:06+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-09-16|TK=ersatzbus ab josef baumann gasse"
   },
   {
@@ -620,7 +584,7 @@
     "guid": "62ec73f9f903d199dba2c884f8311f89aa82e5d3238fa2a3715f98b8a4bc6d92",
     "pubDate": "2026-09-16T00:00:06+02:00",
     "starts_at": "2026-09-16T00:00:06+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=26A|D=2026-09-16|TK=busse halten erzherzog karl strasse 78"
   },
   {
@@ -632,7 +596,7 @@
     "guid": "ac3f67a397251fa2a37c819272b49caa18fcdf7a3ad2549a06fb2282a6303041",
     "pubDate": "2026-09-14T04:30:18+02:00",
     "starts_at": "2026-09-14T04:30:18+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=26E|D=2026-09-14|TK=busse halten auf hauptfahrbahn"
   },
   {
@@ -644,7 +608,7 @@
     "guid": "74ed68a20871c9df99a595b2acb24eda6475c9b75f4c5324e420a36b068f03d7",
     "pubDate": "2026-09-14T04:30:18+02:00",
     "starts_at": "2026-09-14T04:30:18+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=26E|D=2026-09-14|TK=busse halten bessemerstrasse 1 3"
   },
   {
@@ -656,7 +620,7 @@
     "guid": "d69ee1efc28bc606f7aa2a731eedcb97ba6b6353c22eca615aa68fa75d27c771",
     "pubDate": "2026-09-14T04:30:18+02:00",
     "starts_at": "2026-09-14T04:30:18+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=26E|D=2026-09-14|TK=busse halten hossplatz 11"
   },
   {
@@ -668,7 +632,7 @@
     "guid": "2008cbaf36893e0d453fc689a916eff611bcdc08a4fc946ad2a11efd0db1eb3c",
     "pubDate": "2026-09-14T04:00:15+02:00",
     "starts_at": "2026-09-14T04:00:15+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=26E|D=2026-09-14|TK=busse halten satzingerweg 41"
   },
   {
@@ -680,7 +644,7 @@
     "guid": "cf73c65995ea0c4918cc88d67855f7a7749c1551a4fef3f02ba7c54c8550d609",
     "pubDate": "2026-09-14T05:55:56+02:00",
     "starts_at": "2026-09-14T05:55:56+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=26E|D=2026-09-14|TK=ersatzbus hält karl waldbrunner platz vor schlosshofer strasse"
   },
   {
@@ -692,7 +656,7 @@
     "guid": "544df376802b1177e5b0248149f682aaa8e4c43cffba470c30fbb130a531b8d8",
     "pubDate": "2026-09-14T04:30:18+02:00",
     "starts_at": "2026-09-14T04:30:18+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=26|D=2026-09-14|TK=züge halten in tokiostrasse"
   },
   {
@@ -704,7 +668,7 @@
     "guid": "aa763a6f1448e81823fd431e69e30f0e5d6799ddb74f89508b971f7acb10f349",
     "pubDate": "2026-09-16T00:00:07+02:00",
     "starts_at": "2026-09-16T00:00:08+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=26|D=2026-09-16|TK=ersatzbus ab josef baumann gasse"
   },
   {
@@ -716,7 +680,7 @@
     "guid": "648d4ec96289db6f3993147f1a53db898054c9b3b56c5250df4dbe2b15900bf6",
     "pubDate": "2026-09-14T04:30:18+02:00",
     "starts_at": "2026-09-14T04:30:19+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=27|D=2026-09-14|TK=ersatzbus ab floridsdorf"
   },
   {
@@ -728,7 +692,7 @@
     "guid": "850d1ea5a2f242340850bbce64f4516a1e196325253cc145d45d09c3a0832c88",
     "pubDate": "2026-09-14T04:30:18+02:00",
     "starts_at": "2026-09-14T04:30:18+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=27|D=2026-09-14|TK=linie 25 in tokiostrasse benützen"
   },
   {
@@ -740,7 +704,7 @@
     "guid": "a31338a0ecb32781b4cf40a6af8ec75d291bf050aaaa43964e8ab0ac144747a7",
     "pubDate": "2026-09-14T04:30:18+02:00",
     "starts_at": "2026-09-14T04:30:18+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=27|D=2026-09-14|TK=züge halten bei linie 31"
   },
   {
@@ -752,32 +716,20 @@
     "guid": "09a3af22ca49b7a7b5c5e0b84e75d3af6ade2423c6c3a8e46736b66be016c0f5",
     "pubDate": "2026-09-16T00:00:07+02:00",
     "starts_at": "2026-09-16T00:00:07+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=27|D=2026-09-16|TK=ersatzbus ab josef baumann gasse"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Veranstaltung Betrieb nur bis Parlament, Volkstheater",
+    "title": "2: Veranstaltung",
     "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "da06652192db50e60e2c0caf4aab16f97c75650e7ec7dbff93820040828b7b3c",
     "pubDate": "2026-09-17T18:04:00+02:00",
-    "starts_at": "2026-09-17T18:24:42+02:00",
-    "ends_at": "2026-09-17T23:55:00+02:00",
+    "starts_at": "2026-09-17T18:04:00+02:00",
+    "ends_at": "2026-09-18T00:36:00+02:00",
     "_identity": "wl|störung|L=2|D=2026-09-17|TK=veranstaltung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Veranstaltung Betrieb nur bis Wallensteinstraße - weiter bis Augasse",
-    "description": "Veranstaltung\nBetrieb nur bis Wallensteinstraße - weiter bis Augasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4d8a60fe376f247af6a41dbd1a06bce2249b16dff40bc1f34aea90550ae3bcb3",
-    "pubDate": "2026-09-17T19:31:16+02:00",
-    "starts_at": "2026-09-17T19:44:51+02:00",
-    "ends_at": "2026-09-17T23:45:00+02:00",
-    "_identity": "wl|störung|L=31|D=2026-09-17|TK=veranstaltung"
   },
   {
     "source": "Wiener Linien",
@@ -788,7 +740,7 @@
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-09-10T00:00:23+02:00",
     "starts_at": "2026-09-10T00:00:23+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-09-10|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
   },
   {
@@ -800,7 +752,7 @@
     "guid": "649036ab231fd70fe1fb62879abf29ee3b2b4d8d4e063ea503a7ae37212aa03b",
     "pubDate": "2026-09-16T00:00:07+02:00",
     "starts_at": "2026-09-16T00:00:07+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=3A|D=2026-09-16|TK=3a netzänderung betrieb ab riemergasse"
   },
   {
@@ -812,7 +764,7 @@
     "guid": "c535a3f28bfd3a8f7e49e96b63ccb14c2a0224c47e5ee638d569ae0296a64855",
     "pubDate": "2026-09-16T00:00:07+02:00",
     "starts_at": "2026-09-16T00:00:07+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=3A|D=2026-09-16|TK=busse halten kärntner ring 5"
   },
   {
@@ -824,7 +776,7 @@
     "guid": "7e01fc848976d0d587e141957de9da7afd74e084db6077e61c5f28daaa72b86e",
     "pubDate": "2026-09-17T08:14:00+02:00",
     "starts_at": "2026-09-17T08:14:00+02:00",
-    "ends_at": "2026-09-18T00:55:00+02:00",
+    "ends_at": "2026-09-18T01:00:00+02:00",
     "_identity": "wl|störung|L=49|D=2026-09-17|TK=49 gleisschaden"
   },
   {
@@ -860,20 +812,8 @@
     "guid": "c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45",
     "pubDate": "2026-09-16T00:00:06+02:00",
     "starts_at": "2026-09-16T00:00:07+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-09-16|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Veranstaltung Betrieb nur bis Schwarzenbergplatz",
-    "description": "Veranstaltung\nBetrieb nur bis Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eb5352749f5402b9be865827a7f6c82d7a9144a1198fd2eaa52624749c28d4eb",
-    "pubDate": "2026-09-17T18:11:41+02:00",
-    "starts_at": "2026-09-17T18:27:13+02:00",
-    "ends_at": "2026-09-17T23:45:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-09-17|TK=veranstaltung"
   },
   {
     "source": "Wiener Linien",
@@ -884,32 +824,8 @@
     "guid": "2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e",
     "pubDate": "2026-09-10T00:00:23+02:00",
     "starts_at": "2026-09-10T00:00:23+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-10|TK=einstieg leberstrasse vor s bahn gebäude"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Veranstaltung Betrieb nur bis Landstraße S U",
-    "description": "Veranstaltung\nBetrieb nur bis Landstraße S U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5e7582fc9aecef6b98ab8ba8b759b8e356039a3abc0c5d9248ef91b588019e15",
-    "pubDate": "2026-09-17T19:38:47+02:00",
-    "starts_at": "2026-09-17T19:38:47+02:00",
-    "ends_at": "2026-09-17T23:45:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-09-17|TK=veranstaltung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Veranstaltung Züge halten bei Schottenring 19",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbccd572c7698d5a413feb14d2019f15208b4d7edc264c044999337675e4f502",
-    "pubDate": "2026-09-17T18:04:00+02:00",
-    "starts_at": "2026-09-17T18:20:12+02:00",
-    "ends_at": "2026-09-17T23:45:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-09-17|TK=veranstaltung"
   },
   {
     "source": "Wiener Linien",
@@ -920,7 +836,7 @@
     "guid": "1963f82ac93d144e418b1738c647d7dac8d1d5dd078a20877ba74368c0ae79ae",
     "pubDate": "2026-09-16T00:00:06+02:00",
     "starts_at": "2026-09-16T00:00:06+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=N49|D=2026-09-16|TK=betrieb ab johnstrasse u"
   },
   {
@@ -932,20 +848,8 @@
     "guid": "2bb63e86a6366d616958e9c07d55e93631da5aea27e8aba60ef218fd8f38dca9",
     "pubDate": "2026-09-16T00:00:06+02:00",
     "starts_at": "2026-09-16T00:00:06+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=N49|D=2026-09-16|TK=betrieb ab schweglerstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-09-17T21:56:00+02:00",
-    "starts_at": "2026-09-17T21:56:00+02:00",
-    "ends_at": "2026-09-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-09-17|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -968,7 +872,7 @@
     "guid": "c8573b355269cc4e2c23ab302bf7ded0db2f53c120e490997c30e0aa2ff51b59",
     "pubDate": "2026-09-11T00:00:25+02:00",
     "starts_at": "2026-09-11T00:00:25+02:00",
-    "ends_at": "2026-09-17T23:59:59+02:00",
+    "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-09-11|TK=busse halten frauenstiftgasse 7"
   },
   {

@@ -7847,7 +7847,7 @@
     "first_seen": "2026-09-16T06:01:02.274477+00:00",
     "translations": {
       "en": {
-        "summary": "Stop change of lines 4A towards Wittelsabchstra\u00dfe, 80A towards Praterstern S U and N29 towards Wittelsbachstra\u00dfe stop: Wittelsbachstra\u00dfe \u2026",
+        "summary": "Stop change of lines 4A towards Wittelsabchstra\u00dfe, 80A towards Praterstern S U and N29 towards Wittelsbachstra\u00dfe stop: Wittelsbachstra\u00dfe",
         "title": "4A/80A/N29: 4A. 80A, N29: Wittelsbachstra\u00dfe"
       },
       "en_src": {
@@ -7857,7 +7857,7 @@
       "en_verbatim": [
         "title"
       ],
-      "epoch": 6
+      "epoch": 7
     }
   },
   "5afa3b30ad82a8c534e2cb827f27eac396fbde544691590f04a8889aa1a39028": {
@@ -7885,13 +7885,13 @@
     "translations": {
       "en": {
         "summary": "Due to Thanksgiving, the lines 27A, 28A and 29A are redirected.",
-        "title": "27A/28A/29A: event at 27.09.2026"
+        "title": "27A/28A/29A: event on 2709.2026"
       },
       "en_src": {
         "summary": "621df14a2e18809d",
         "title": "8729bdddcf354967"
       },
-      "epoch": 6
+      "epoch": 7
     }
   },
   "5b850889c3be64e3e1179dae057cb377156f38943ac1e3633fdda72a6fa4f333": {
@@ -10921,7 +10921,7 @@
         "summary": "e6dbf0479a2956af",
         "title": "d1aca18904e1451a"
       },
-      "epoch": 6
+      "epoch": 7
     }
   },
   "7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35": {
@@ -11711,14 +11711,14 @@
     "first_seen": "2026-09-16T06:31:01.055828+00:00",
     "translations": {
       "en": {
-        "summary": "Because of roadworks in the area of Justgasse / Ruthnergasse the lines 36A and 36B are redirected.",
+        "summary": "Because of roadworks in the area ofXJustgasse / Ruthnergasse the lines 36A and 36B are redirected.",
         "title": "36A/36B: roadworks"
       },
       "en_src": {
         "summary": "c037304ef6dfc7f5",
         "title": "16f4fb01eeea6afb"
       },
-      "epoch": 6
+      "epoch": 7
     }
   },
   "864445423ceb9243f0ff08c7f3e2ab6552736204fbfa87f1ea9321c77e76b63a": {
@@ -18634,13 +18634,13 @@
     "translations": {
       "en": {
         "summary": "Lines 25 and 26 service from Josef-Baumann-Gasse replacement bus from Josef-Baumann-Gasse",
-        "title": "25: Lines 25 and 26X service from Josef-Baumann-Gasse & replacement bus from Josef-Baumann-Gasse"
+        "title": "25: Lines 25 and 26 service from Josef-Baumann-Gasse & replacement bus from Josef-Baumann-Gasse"
       },
       "en_src": {
         "summary": "621e098b37cf71b7",
         "title": "b53c084cea9fe13d"
       },
-      "epoch": 6
+      "epoch": 7
     }
   },
   "d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6": {
@@ -18963,11 +18963,11 @@
     "translations": {
       "en": {
         "summary": "After an service obstruction there are different intervals.",
-        "title": "2: event operation only up to Parlament, Volkstheater"
+        "title": "2: event"
       },
       "en_src": {
         "summary": "eb1bdc2703fe6f1b",
-        "title": "2d8527b85e89e1e4"
+        "title": "f5fddf426e9b7fc4"
       },
       "epoch": 7
     }
