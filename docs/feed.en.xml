@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 17 Sep 2026 19:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 19:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[31: Event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4d8a60fe376f247af6a41dbd1a06bce2249b16dff40bc1f34aea90550ae3bcb3</guid>
+      <pubDate>Thu, 17 Sep 2026 19:30:00 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 19:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 19:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation only between Stammersdorf and Klosterneuburger Straße, Wallensteinstraße. Continue to Wallensteinplatz. [On 17.09.2026]</description>
+      <content:encoded><![CDATA[Operation only between Stammersdorf and Klosterneuburger Straße, Wallensteinstraße. Continue to Wallensteinplatz.<br/>[On 17.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[24A: Traffic disturbance]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">764922ffc60674d3cd5283f14e4206f60cf446e572f2692a38fdfeb37fd849d5</guid>
+      <pubDate>Thu, 17 Sep 2026 19:06:00 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 19:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 17 Sep 2026 19:06:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 17 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: traffic disturbance. [On 17.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic disturbance.<br/>[On 17.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2A: Event No operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna … [01.02.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: Track damage service from Urban-Loritz-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">daebfc84e978ba997bf9db03242e337ce2c13f18932a3d0cc38b273b66698b73</guid>
-      <pubDate>Thu, 17 Sep 2026 08:18:13 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 08:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 17 Sep 2026 08:18:13 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 17.09.2026]</description>
-      <content:encoded><![CDATA[[On 17.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: Track damage service from Hütteldorfer Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c8c38d7450fd20f9df0beb7024c91b962e431c05bc16a295c6b782f5d113b8b</guid>
-      <pubDate>Thu, 17 Sep 2026 08:14:13 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 08:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 17 Sep 2026 08:14:13 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 17 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 17.09.2026]</description>
-      <content:encoded><![CDATA[[On 17.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
