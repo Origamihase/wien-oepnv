@@ -5,6 +5,87 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Dashboard lädt ~700 KB CSV weniger — und redet nicht mehr mit einer
+  fremden Origin (2026-09-14)**:
+  Die drei Statistik-Panels der Website zogen bei **jedem Seitenaufruf** die
+  rohen Jahres-Ledger direkt von `raw.githubusercontent.com` —
+  `stammstrecke_2026.csv`, `stoerungen_2026.csv`, `ausfaelle_2026.csv`,
+  zusammen **705.085 Bytes** (gemessen am 13.09.) — und verdichteten sie im
+  Browser zu ein paar KPI-Kacheln und Balken. Zwei Probleme, eines im
+  Wachstum und eines in der Herkunft:
+
+  * Die Ledger sind **Jahresdateien**. Ein Besucher im Dezember lädt die
+    Januar-Zeilen mit; hochgerechnet ~1,3 MB allein für die Stammstrecke.
+    Das Wachstum ist nicht theoretisch: Dieselben drei Dateien wogen am
+    17.09. bereits **716.283 Bytes** — 11 KB in vier Tagen, die jeder
+    Besucher mitlädt.
+  * `raw.githubusercontent.com` ist **kein Auslieferungs-CDN**, hat eigene
+    Rate-Limits und liegt außerhalb der GitHub-Pages-Zusage. Drosselte es,
+    blieb die Seite erreichbar und jedes Diagramm scheiterte.
+
+  Die Verdichtung lief ohnehin schon — einmal pro Tick, in
+  `generate_markdown_stats.py`, für das Markdown-Dashboard. Dieselben Zahlen
+  zusätzlich als `docs/stats-summary.json` zu schreiben kostet nichts und
+  ersetzt 705 KB durch **~3 KB, die über das Jahr nicht wachsen**: Die
+  Dimensionen sind fest (7 Wochentage, 24 Stunden, eine Handvoll Provider,
+  Linien und Richtungen).
+
+  **Die Aggregation ist dafür aus dem `--skip-dashboard`-Zweig heraus­gewandert.**
+  Der Workflow rendert das Markdown nur im 00:00-Tick; eine Summary, die
+  dort mitgehangen hätte, wäre auf einer Seite, die sich alle fünf Minuten
+  aktualisiert, bis zu 24 Stunden alt gewesen. Gespart wird jetzt nur noch
+  der Markdown-Render — der Teil, der den `_Automatisch erzeugt am ..._`-
+  Zeitstempel alle 30 Minuten durch den Commit-Log treibt.
+
+  Nebenwirkungen, alle in dieselbe Richtung:
+
+  * **`connect-src` ist enger.** `raw.githubusercontent.com` steht nicht mehr
+    in der CSP der Seite — eine Origin weniger, mit der die Seite überhaupt
+    sprechen darf. Die `preconnect`/`dns-prefetch`-Hinweise auf diesen Host
+    sind mit ihr entfallen.
+  * **Eine Rechenstelle statt zwei.** Die „kritischen Verspätungen" wurden im
+    Browser ein zweites Mal gezählt — genau die Doppelung, aus der einmal
+    eine echte Drift entstand (`>=` auf der Website, `>` im Backend, eine
+    9,0-Minuten-Beobachtung also mal gezählt und mal nicht). Die JS-Fassung
+    ist entfallen; die Kachel zeigt, was das Backend gezählt hat.
+  * **Die Live-Kachel wurde nicht ungenauer.** Der Mittelwert der letzten
+    Stunde wurde bisher im Browser gebildet, mit der Begründung, er würde
+    zwischen den 30-Minuten-Läufen sonst veralten. Die Begründung trug
+    nicht: Der Ledger, aus dem gerechnet wurde, wird von genau diesem Lauf
+    geschrieben. Der Wert kommt jetzt aus dem Tick, der den jüngsten
+    Messwert angehängt hat — dieselbe Frische, 705 KB billiger.
+  * **Der Abdeckungs-Hinweis bleibt abgeleitet.** Die Summary liefert je
+    Richtung die *Belege* (Zeilen im Fenster, zuletzt gesehen), nicht das
+    Urteil. Die Regel steht weiterhin nur an einer Stelle, und der Banner
+    verschwindet von selbst, sobald die Nordrichtung wieder meldet — ohne
+    dass jemand die Seite anfasst.
+
+  `SUMMARY_SCHEMA_VERSION` versioniert das Format. Die Seite verweigert ein
+  unbekanntes Format ausdrücklich, statt aus den Feldern zu rendern, die sie
+  zufällig noch wiedererkennt — ein halbes Dashboard aus alten Zahlen liest
+  sich wie Daten, nicht wie ein Fehler.
+
+  Zwei projektweite Schreib-Regeln greifen bei der neuen Datei
+  ausdrücklich, beide von den Sentinel-Walkern eingefordert und beide hier
+  nicht bloß formal: `allow_nan=False` verhindert `NaN`/`Infinity` im
+  Dokument — `JSON.parse` wirft darauf, ein einzelner nicht-endlicher
+  Mittelwert hätte also nicht eine Kachel, sondern das **ganze** Dashboard
+  in die Fehlerzeile geschickt (`_round_floats` bildet sie zusätzlich auf
+  `null` ab). Und `scrub_trojan_source_primitives` entfernt die
+  CVE-2021-42574-Angriffsbytes aus jedem erreichbaren String, bevor
+  geschrieben wird: Provider-, Linien- und Richtungsnamen stammen aus
+  fremden Feeds, und die Datei wird nach `main` committet und von Pages
+  ausgeliefert. `ensure_ascii=False` bleibt, damit deutsche Inhalte im
+  30-Minuten-Diff kompakt bleiben.
+
+  `tests/test_dashboard_summary_source.py` (21 Tests) hält beide Seiten
+  zusammen: Summary auch bei `--skip-dashboard`, leeres Live-Fenster als
+  „n/a" statt „0,0 min", nullgepolsterte Stunden-Schlüssel (`"08"`, nicht
+  `"8"` — die einzige Stelle, an der die beiden Schreibweisen auseinander­
+  gehen), gerundete Floats gegen Commit-Rauschen, ein Feld-Vertrag gegen die
+  ausgelieferte `site.js`, die CSP ohne den Fremd-Host sowie die beiden
+  Schreib-Abwehren oben. Zwölf gezielte Mutationen wurden gegengeprüft —
+  jede fällt auf.
 * **i18n-Gate prüft jetzt auch die JS-eigenen Wörterbücher (2026-09-13)**:
   `check_i18n_coverage.py` verglich bisher ausschließlich die
   `data-i18n*`-Attribute der `site.html` gegen `I18N_EN`. Zeichenketten, die

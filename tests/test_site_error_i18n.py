@@ -89,12 +89,13 @@ def test_feed_parse_failures_are_thrown_as_translation_keys() -> None:
     assert 'throw new Error("err-feed-no-channel");' in js
 
 
-def test_missing_csv_is_thrown_as_a_parameterised_key() -> None:
-    # The year-fallback loader names the dataset it could not find, so the
-    # detail carries one argument rather than being a ready-made sentence.
+def test_unknown_summary_version_is_thrown_as_a_parameterised_key() -> None:
+    # The detail names the version it found, so it carries one argument
+    # rather than being a ready-made sentence.
     assert (
-        "throw new Error(`err-csv-missing${DETAIL_ARG_SEP}${name}`);" in _site_js()
-    ), "fetchCsvForYear must throw the key + argument, not a German sentence"
+        "throw new Error(`err-summary-version${DETAIL_ARG_SEP}${data.schema_version}`);"
+        in _site_js()
+    ), "the schema guard must throw the key + argument, not a German sentence"
 
 
 def test_no_thrown_error_message_is_a_german_sentence() -> None:
@@ -141,8 +142,8 @@ def test_english_detail_has_no_german_orthography(key: str) -> None:
 
 def test_parameterised_detail_keeps_its_placeholder_in_both_locales() -> None:
     de, en = _detail_keys("de"), _detail_keys("en")
-    assert "{name}" in de["err-csv-missing"]
-    assert "{name}" in en["err-csv-missing"]
+    assert "{arg}" in de["err-summary-version"]
+    assert "{arg}" in en["err-summary-version"]
 
 
 # ----- rendering and re-rendering ------------------------------------
