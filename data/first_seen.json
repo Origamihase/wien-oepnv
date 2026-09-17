@@ -6069,6 +6069,20 @@
       "epoch": 2
     }
   },
+  "473ee0bcd4d872a15a99bba7f22b7cebed62789e05a08d721694e7c2822b6a8b": {
+    "first_seen": "2026-09-17T18:01:01.414699+00:00",
+    "translations": {
+      "en": {
+        "summary": "Currently, operation is not possible. Line 2A: Currently, operation is not possible.",
+        "title": "1A/2A/3A: event"
+      },
+      "en_src": {
+        "summary": "fb3dc3f3ac8bc1f9",
+        "title": "73443556c450b203"
+      },
+      "epoch": 6
+    }
+  },
   "474c6f8bb0e432949cae7226eb01aad78541598785bc38e306e5fa7c2119a730": {
     "first_seen": "2026-08-09T20:31:03.131079+00:00",
     "translations": {
@@ -6710,12 +6724,12 @@
     "first_seen": "2026-09-17T17:30:59.531207+00:00",
     "translations": {
       "en": {
-        "summary": "Operation only between Stammersdorf and Klosterneuburger Stra\u00dfe, Wallensteinstra\u00dfe. Continue to Wallensteinplatz.",
-        "title": "31: event"
+        "summary": "Operation only between Stammersdorf and Klosterneuburger Stra\u00dfe, Wallensteinstra\u00dfe. Continue via Friedensbr\u00fccke U to Augasse.",
+        "title": "31: event operation only up to Wallensteinstra\u00dfe - continue to Augasse"
       },
       "en_src": {
-        "summary": "7b6b34311b116508",
-        "title": "f323c127d1209b56"
+        "summary": "6a8d0efd7b2b6cbe",
+        "title": "cbfa3c1844d49e54"
       },
       "epoch": 6
     }
@@ -8078,6 +8092,20 @@
         "title": "16A: service disruption"
       },
       "epoch": 5
+    }
+  },
+  "5e7582fc9aecef6b98ab8ba8b759b8e356039a3abc0c5d9248ef91b588019e15": {
+    "first_seen": "2026-09-17T18:01:01.414699+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between St. Marx S and Landstra\u00dfe S U. expected duration: approximately 23:00. Reason: event in the area of Ringstra\u00dfe.",
+        "title": "74A: event operation only up to Landstra\u00dfe S U"
+      },
+      "en_src": {
+        "summary": "14d9c4265cdc7064",
+        "title": "ae2fa6420bf8f0ee"
+      },
+      "epoch": 6
     }
   },
   "5e91154753943a0c8c183b305e5d5f40f9378e16d38e553e44cc39c42d03f9a8": {
