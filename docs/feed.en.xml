@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 18 Sep 2026 01:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 01:30:59 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[11: Service obstruction Passenger car in track & car in track service from Raxstraße]]></title>
+      <title><![CDATA[N41: Busse halten Gersthofer Straße 55-57 (Linie 10A)]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70690cb456cc756da87f693c3ae61616951b39080d9f1b33a6dae8c1b4440a42</guid>
-      <pubDate>Fri, 18 Sep 2026 00:14:47 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 00:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 00:19:19 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 01:19:00 +0200</ext:ends_at>
-      <description>service obstruction Car on track Car on track service from Raxstraße [On 18.09.2026]</description>
-      <content:encoded><![CDATA[service obstruction Car on track Car on track service from Raxstraße<br/>[On 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Vehicle on track]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ba73955b222f2d8be246fa121bfdc69e23ade919309c097d48b4948b7a4ed70a</guid>
-      <pubDate>Fri, 18 Sep 2026 00:14:00 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 00:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 00:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction in both directions. expected duration: Not foreseeable. [On 18.09.2026]</description>
-      <content:encoded><![CDATA[service obstruction in both directions. expected duration: Not foreseeable.<br/>[On 18.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">842d88b9694f361400c8113e5dc81939f3502ebd49976e7e2f1bdf7670bead35</guid>
+      <pubDate>Fri, 18 Sep 2026 01:10:28 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 01:30:59 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 01:10:28 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 04:50:00 +0200</ext:ends_at>
+      <description>Grund: Gleisbauarbeiten. [Am 18.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Gleisbauarbeiten.<br/>[Am 18.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Track construction works Althanstraße]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
       <description>Due to Thanksgiving, the lines 27A, 28A and 29A are redirected. [15.09.2026 – 27.09.2026]</description>
       <content:encoded><![CDATA[Due to Thanksgiving, the lines 27A, 28A and 29A are redirected.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[56A/56B/58A/58B: Diversion towards Hietzing U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">448cd28e5b6e46e9031d5b7d469e439bb6d640a548691fa7e52b2cfebe245957</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 09:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>The bus lines are being redirected because of roadworks in the area of Kennedybrücke. [15.09.2026 – 15.09.2027]</description>
+      <content:encoded><![CDATA[The bus lines are being redirected because of roadworks in the area of Kennedybrücke.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
