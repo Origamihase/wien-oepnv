@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 18 Sep 2026 16:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 16:32:54 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[1/2/2A/3A/4A/71/D: Demonstration am 19.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e5c3a94f572edd1558cafd97a5c3960aa38b6cc2f23678370681c6b0e2d43278</guid>
-      <pubDate>Fri, 18 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 16:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 21:30:00 +0200</ext:ends_at>
-      <description>Wegen einer Demonstration im Bereich Schwarzenbergplatz und Ring kommt es zu folgenden Verkehrsmaßnahmen. [18.09.2026 – 19.09.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Demonstration im Bereich Schwarzenbergplatz und Ring kommt es zu folgenden Verkehrsmaßnahmen.<br/>[18.09.2026 – 19.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[12A: Impurity]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -27,9 +16,20 @@
       <pubDate>Fri, 18 Sep 2026 15:42:00 +0200</pubDate>
       <ext:first_seen>Fri, 18 Sep 2026 16:00:56 +0200</ext:first_seen>
       <ext:starts_at>Fri, 18 Sep 2026 15:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 16:35:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 18 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: contamination. [On 18.09.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: contamination.<br/>[On 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5B/7A/16A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">296f950fcae28a9dc03c9100f5d9be0f3000de7a92816037005b35a60e7ba300</guid>
+      <pubDate>Fri, 18 Sep 2026 14:41:00 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 16:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 14:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Line 7A: irregular intervals in both directions. [On 18.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Line 7A: irregular intervals in both directions.<br/>[On 18.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Tullnerfeld]]></title>
@@ -39,8 +39,8 @@
       <ext:first_seen>Fri, 18 Sep 2026 14:31:03 +0200</ext:first_seen>
       <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 18 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Due to an switch fault, only limited journeys between Tullnerfeld station and Wien Meidling station (U) to 15:43 were possible. [On 18.09.2026]</description>
-      <content:encoded><![CDATA[Due to an switch fault, only limited journeys between Tullnerfeld station and Wien Meidling station (U) to 15:43 were possible.<br/>[On 18.09.2026]]]></content:encoded>
+      <description>Due to an switch fault, only limited journeys were possible between Tullnerfeld station and Wien Meidling station (U) to 15:43. [On 18.09.2026]</description>
+      <content:encoded><![CDATA[Due to an switch fault, only limited journeys were possible between Tullnerfeld station and Wien Meidling station (U) to 15:43.<br/>[On 18.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
@@ -98,6 +98,17 @@
       <content:encoded><![CDATA[[On 18.09.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[D: Track construction works Althanstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b25a186e245503549fc296499ec26d8767efe4538f6a4c7ed75b7774611305b3</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 23:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of track construction works in the Althanstraße, the line D is divided. [15.09.2026 – 15.09.2027]</description>
+      <content:encoded><![CDATA[Because of track construction works in the Althanstraße, the line D is divided.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[Ruthnergasse Crossing Justgasse]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
       <guid isPermaLink="false">aa9998ab5faa86b356b845ead32f6781fc00f60bec1ef21ab9a811971b3da088</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:ends_at>
       <description>For more information on the public transports concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG. [20.09.2026 – 16.10.2026]</description>
       <content:encoded><![CDATA[For more information on the public transports concerned, please refer to the information provided by Wiener Linien GmbH &amp; Co KG.<br/>[20.09.2026 – 16.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Folding ramp lock at 18.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">96e10d36d8cd3f32e4f391ee170e202907da3d662b373221db3bbb8cb9692b86</guid>
-      <pubDate>Thu, 17 Sep 2026 20:30:00 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 20:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 17 Sep 2026 20:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the U4 underground trains cannot be extended. [17.09.2026 – 18.09.2026]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U4 underground trains cannot be extended.<br/>[17.09.2026 – 18.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
