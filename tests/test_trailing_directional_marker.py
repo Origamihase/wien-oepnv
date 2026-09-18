@@ -67,12 +67,36 @@ class TestTrailingDirectionalMarkerStripped:
         # And the timeframe is still present.
         assert "[Am" in out or "[Seit" in out
 
-    def test_volkstheater_marker_stripped(self) -> None:
+    def test_volkstheater_marker_strip_enables_dedup_across_the_category_word(
+        self,
+    ) -> None:
+        """Same proof as Thaliastraße above, one branch over.
+
+        What changed here: this test used to assert ``"Volkstheater" in
+        out``, i.e. that the marker went and the text stayed. It stayed
+        only because the duplicate check compared a summary with its
+        category word stripped against a title body that still carried
+        one, so ``Veranstaltung`` on both sides made the two look
+        different. They are not — the reader saw ``Betrieb ab Ring,
+        Volkstheater`` in the headline and again underneath it. The check
+        now strips on both sides and the restatement is dropped, which is
+        exactly what this file's docstring says the strip exists to
+        enable.
+
+        The assertion below still proves the marker strip: without it the
+        summary would read ``Betrieb ab Ring, Volkstheater >``, would not
+        match the title body, and would survive.
+
+        The difference to Thaliastraße is the branch, and it is why both
+        tests earn their place: there the title does NOT name the reason,
+        so it is kept as ``Grund: Gleisbauarbeiten.``; here the title
+        opens with ``Veranstaltung`` itself, so nothing is left to save.
+        """
         title = "2: Veranstaltung Betrieb ab Ring, Volkstheater"
         desc = "Veranstaltung\nBetrieb ab Ring, Volkstheater >"
         _, out = _format(title, desc)
-        assert "Volkstheater >" not in out
-        assert "Volkstheater" in out
+        assert "Volkstheater" not in out
+        assert out.strip().startswith("["), out
 
     def test_thaliastrasse_marker_strip_enables_dedup(self) -> None:
         # Stripping the trailing ">" makes the summary match the title body
