@@ -758,6 +758,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40/41/9/42: Veranstaltung Linien 40 und 41 Umleitung über Linien 9 und 42",
+    "description": "Veranstaltung\nLinien 40 und 41\nUmleitung über\nLinien 9 und 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b542492b16ff35641eb5630a1f4e27881f68361be46830b764241b823c61bcf4",
+    "pubDate": "2026-09-18T08:30:29+02:00",
+    "starts_at": "2026-09-18T08:30:29+02:00",
+    "ends_at": "2026-09-18T22:00:00+02:00",
+    "_identity": "wl|störung|L=40,41,42,9|D=2026-09-18|TK=umleitung veranstaltung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -766,6 +778,18 @@
     "starts_at": "2026-09-18T04:30:00+02:00",
     "ends_at": "2026-10-31T01:00:00+01:00",
     "_identity": "wl|störung|L=46,49,52|D=2026-09-18|TK=46 49 52 gleisbauarbeiten"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Feuerwehreinsatz Züge halten bei Linie 62",
+    "description": "Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Voraussichtliche Dauer: 09:00 Uhr. Grund: Feuerwehreinsatz im Bereich Hofwiesengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f3a25e31c636e08b8727947f73c94cdcf0c8d6b06b266f2b7341cd2709861eb1",
+    "pubDate": "2026-09-18T08:19:59+02:00",
+    "starts_at": "2026-09-18T08:24:31+02:00",
+    "ends_at": "2026-09-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-09-18|TK=feuerwehreinsatz"
   },
   {
     "source": "Wiener Linien",

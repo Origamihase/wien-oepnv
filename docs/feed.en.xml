@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 18 Sep 2026 08:00:44 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 08:31:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40/41/9/42: Event lines 40 and 41 diversion over lines 9 and 42]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b542492b16ff35641eb5630a1f4e27881f68361be46830b764241b823c61bcf4</guid>
+      <pubDate>Fri, 18 Sep 2026 08:30:29 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 08:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 08:30:29 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 22:00:00 +0200</ext:ends_at>
+      <description>Lines 40 and 41 diversion over lines 9 and 42 [On 18.09.2026]</description>
+      <content:encoded><![CDATA[Lines 40 and 41 diversion over lines 9 and 42<br/>[On 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Fire-brigade operation Trains stop at line 62]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f3a25e31c636e08b8727947f73c94cdcf0c8d6b06b266f2b7341cd2709861eb1</guid>
+      <pubDate>Fri, 18 Sep 2026 08:19:59 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 08:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 08:24:31 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>No operation between Hofwiesengasse and Hietzing U. expected duration: 09:00. Reason: fire-brigade operation in the area of Hofwiesengasse. [On 18.09.2026]</description>
+      <content:encoded><![CDATA[No operation between Hofwiesengasse and Hietzing U. expected duration: 09:00. Reason: fire-brigade operation in the area of Hofwiesengasse.<br/>[On 18.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11A: Buses stop Vorgartenstraße before Meiereistraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 18 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Lines 25 and 26 service from Josef-Baumann-Gasse replacement bus from Josef-Baumann-Gasse [14.09.2026 – 18.09.2026]</description>
       <content:encoded><![CDATA[Lines 25 and 26 service from Josef-Baumann-Gasse replacement bus from Josef-Baumann-Gasse<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27A/28A/29A: Event on 2709.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5b409515bbdbcac314bb8c316471e4b560b8a050e77adf2199f7e4a1fe0e3a1f</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 17:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
-      <description>Due to Thanksgiving, the lines 27A, 28A and 29A are redirected. [15.09.2026 – 27.09.2026]</description>
-      <content:encoded><![CDATA[Due to Thanksgiving, the lines 27A, 28A and 29A are redirected.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56A/56B/58A/58B: Diversion towards Hietzing U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">448cd28e5b6e46e9031d5b7d469e439bb6d640a548691fa7e52b2cfebe245957</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 09:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>The bus lines are being redirected because of roadworks in the area of Kennedybrücke. [15.09.2026 – 15.09.2027]</description>
-      <content:encoded><![CDATA[The bus lines are being redirected because of roadworks in the area of Kennedybrücke.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

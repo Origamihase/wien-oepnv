@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 931,
+      "Meidling": 932,
       "Praterstern": 916
     },
     "by_hour": {
@@ -13,7 +13,7 @@
       "05": 72,
       "06": 77,
       "07": 111,
-      "08": 126,
+      "08": 127,
       "09": 87,
       "10": 80,
       "11": 69,
@@ -43,7 +43,7 @@
       "REX2277": 1,
       "REX3": 195,
       "REX92": 3,
-      "S1": 387,
+      "S1": 388,
       "S2": 300,
       "S27016": 1,
       "S28044": 1,
@@ -57,20 +57,20 @@
     "by_weekday": {
       "Di": 283,
       "Do": 320,
-      "Fr": 359,
+      "Fr": 360,
       "Mi": 298,
       "Mo": 279,
       "Sa": 149,
       "So": 159
     },
-    "total": 1847
+    "total": 1848
   },
-  "generated_at": "2026-09-18T08:00:46+02:00",
+  "generated_at": "2026-09-18T08:31:26+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.07,
     "by_direction": {
-      "Meidling": 5249,
+      "Meidling": 5250,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -112,13 +112,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-09-18T07:55:00+02:00",
+          "last_seen": "2026-09-18T08:25:00+02:00",
           "peer_rows_since": 0,
           "rows_in_window": 1205
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 1399,
+          "peer_rows_since": 1400,
           "rows_in_window": 0
         }
       },
@@ -134,7 +134,7 @@
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 119,
     "threshold_minutes": 9.0,
-    "total_observations": 9080
+    "total_observations": 9081
   },
   "stoerungen": {
     "by_hour": {
@@ -146,7 +146,7 @@
       "05": 106,
       "06": 81,
       "07": 84,
-      "08": 145,
+      "08": 147,
       "09": 155,
       "10": 168,
       "11": 169,
@@ -166,19 +166,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 178,
       "VOR/VAO": 11,
-      "Wiener Linien": 2640,
+      "Wiener Linien": 2642,
       "ÖBB": 251
     },
     "by_weekday": {
       "Di": 454,
       "Do": 505,
-      "Fr": 460,
+      "Fr": 462,
       "Mi": 481,
       "Mo": 433,
       "Sa": 368,
       "So": 379
     },
-    "total": 3080
+    "total": 3082
   },
   "year": 2026
 }
