@@ -1022,7 +1022,13 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       stop reaching subscribers. 15 occurrences across 314 published EN
 #       texts, every one of them cached as a success — the article is wrong
 #       without being German, so nothing else would evict it.
-_TRANSLATION_CACHE_EPOCH = 11
+#  12 — measured gaps in the disruption vocabulary closed: Schadhafter
+#       Zug/Bus/PKW ("Harmful train/bus/car"), Fremdunfall ("Foreign
+#       accident"), Falschparker ("False Parker"), Verunreinigung
+#       ("Impurity"), Wasserrohrgebrechen, Klapprampensperre ("Folding ramp
+#       lock") and Verkehrsstörung. 31 published items carry one of these
+#       and every one of them is cached as a success.
+_TRANSLATION_CACHE_EPOCH = 12
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1314,6 +1320,31 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Notarzteinsatz": "ambulance operation",
     "Feuerwehreinsatz": "fire-brigade operation",
     "Verkehrsunfall": "traffic accident",
+    # Measured gaps in the disruption vocabulary, each with its published
+    # mistranslation. They are ordinary German compounds, so the model
+    # renders them literally and lands somewhere between odd and wrong:
+    #
+    #   Fremdunfall          → "Foreign accident"   (9 items)
+    #   Falschparker         → "False Parker" /
+    #                          "wrong parker"       (7 items, two renderings)
+    #   Verunreinigung       → "Impurity" /
+    #                          "contamination"      (4 items, two renderings)
+    #   Wasserrohrgebrechen  → "Water pipe fractures" (2 items)
+    #   Klapprampensperre    → "Folding ramp lock"  (3 items)
+    #
+    # ``Fremdunfall`` is WL's term for an accident caused by someone outside
+    # the network; "Foreign accident" reads as one that happened abroad.
+    # ``Falschparker`` is a vehicle parked in the way — "False Parker" reads
+    # as a surname. ``Klapprampensperre`` means the wheelchair ramps cannot
+    # be extended, which "lock" does not convey.
+    "Fremdunfall": "third-party accident",
+    "Falschparker": "illegally parked vehicle",
+    "Verunreinigung": "contamination",
+    "Wasserrohrgebrechen": "burst water pipe",
+    "Klapprampensperre": "folding ramps out of service",
+    # Consistent with ``Betriebsstörung`` → "service disruption" above; the
+    # model said "Traffic disturbance".
+    "Verkehrsstörung": "traffic disruption",
     "Verkehrsüberlastung": "traffic congestion",
     "Staatsbesuch": "state visit",
     "Veranstaltung": "event",
@@ -1324,6 +1355,17 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Schadhaftem Fahrzeug": "defective vehicle",
     "Schadhafter LKW": "defective truck",
     "Schadhaftem LKW": "defective truck",
+    # The same family, and the gap was visible: without these the model
+    # rendered ``Schadhafter Zug`` as "Harmful train", ``Schadhafter Bus`` as
+    # "Harmful bus" and ``Schadhafter PKW`` as "Harmful car" — 7 published
+    # items telling English readers the vehicle is dangerous rather than
+    # broken. Both inflections, mirroring how ``LKW`` above is handled.
+    "Schadhafter Zug": "defective train",
+    "Schadhaftem Zug": "defective train",
+    "Schadhafter Bus": "defective bus",
+    "Schadhaftem Bus": "defective bus",
+    "Schadhafter PKW": "defective car",
+    "Schadhaftem PKW": "defective car",
     "Hauptfahrbahn": "main carriageway",
     "Aufgelassen": "Discontinued",
     "Aufgelassene": "Discontinued",
