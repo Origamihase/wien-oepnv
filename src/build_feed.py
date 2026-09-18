@@ -4806,14 +4806,17 @@ def _compose_description(summary: str, time_line: str) -> tuple[str, str]:
     return desc_text_truncated, desc_html
 
 
+def _title_body(title_out: str) -> str:
+    """Return ``title_out`` without its ``11A: ``-style line prefix."""
+    match = _TITLE_BODY_RE.match(title_out)
+    return match.group(1).strip() if match else title_out
+
+
 def _summary_duplicates_title(summary: str, title_out: str) -> bool:
     """Return True when summary is just the title body restated verbatim."""
     if not (summary and title_out):
         return False
-    title_body_match = _TITLE_BODY_RE.match(title_out)
-    title_body_compare = (
-        title_body_match.group(1).strip() if title_body_match else title_out
-    )
+    title_body_compare = _title_body(title_out)
     if not title_body_compare:
         return False
     return summary.casefold() == title_body_compare.casefold()
@@ -5148,6 +5151,36 @@ def _format_item_content(
     # as duplicates (different content).
     if _summary_duplicates_title(summary, title_out):
         summary = _reason_only_summary(category_word)
+    elif category_word and summary.casefold() == _drop_category_word(
+        _title_body(title_out), category_word
+    ).casefold():
+        # Dieselbe Redundanz, nur eine Stufe versetzt. Das Kategoriewort
+        # wird oben aus der ZUSAMMENFASSUNG gestrichen, nicht aus dem
+        # Titel — steht es in beiden, vergleicht der Test oben Äpfel mit
+        # Birnen und schlägt fehl, obwohl der Leser dasselbe zweimal
+        # sieht::
+        #
+        #     T: 2A: Veranstaltung Kein Betrieb
+        #     D: Kein Betrieb [Am 18.09.2026]
+        #
+        # 12 von 222 veröffentlichten deutschen Items hatten diese Form,
+        # jedes einzelne mit genau dem Kategoriewort als Unterschied.
+        #
+        # Hier bleibt der Rumpf LEER statt ``Grund: …`` — anders als im
+        # Zweig darüber. ``_reason_only_summary`` rettet den Grund, weil
+        # der Titel ihn dort nicht nennt; in diesem Zweig nennt er ihn
+        # per Definition, sonst wäre das Streichen wirkungslos gewesen.
+        # Ein ``Grund: Veranstaltung.`` unter einer Schlagzeile, die mit
+        # „Veranstaltung" beginnt, tauscht nur eine Wiederholung gegen
+        # eine kürzere.
+        #
+        # ``category_word and`` ist eine Kurzschluss-Bedingung, keine
+        # Absicherung: ohne Kategoriewort gibt ``_drop_category_word``
+        # den Rumpf unverändert zurück, und dieser Fall ist eine Zeile
+        # weiter oben bereits abgehandelt. Sie spart den Regex-Aufbau im
+        # Normalfall und sagt, woran dieser Zweig hängt — eine Mutation,
+        # die sie streicht, ändert das Verhalten nicht.
+        summary = ""
 
     desc_text_truncated, desc_html = _compose_description(summary, time_line)
 

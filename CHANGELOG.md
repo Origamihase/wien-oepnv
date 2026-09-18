@@ -5,6 +5,57 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Die Beschreibung, die nur den Titel noch einmal vorliest (2026-09-18)**:
+  Item 5 von zehn im deutschen Feed:
+
+  ```
+  40/41/9/42: Veranstaltung Linien 40 und 41 Umleitung über Linien 9 und 42
+  Linien 40 und 41 Umleitung über Linien 9 und 42 [Am 18.09.2026]
+  ```
+
+  Die zweite Zeile steht vollständig in der ersten. Auf einem rotierenden
+  Display liest man dieselben Worte zweimal und erfährt beim zweiten Mal
+  nichts.
+
+  Der Mechanismus ist eine **Asymmetrie**: das führende WL-Kategoriewort
+  (`Veranstaltung`, `Demonstration`, `Kranarbeiten` …) wird aus der
+  *Zusammenfassung* gestrichen, nie aus dem *Titel*. Steht es in beiden,
+  vergleicht `_summary_duplicates_title` einen gestrichenen String mit einem
+  ungestrichenen, findet keine Übereinstimmung und lässt die Wiederholung
+  durch. Die Prüfung vergleicht jetzt auf gleicher Grundlage.
+
+  Größenordnung: **12 von 222** eindeutigen veröffentlichten deutschen Items
+  hatten genau diese Form — und in jedem einzelnen war das Kategoriewort der
+  einzige Unterschied. Die kürzesten sind die deutlichsten:
+
+  | Titel | Beschreibung |
+  | --- | --- |
+  | `2A: Veranstaltung Kein Betrieb` | `Kein Betrieb` |
+  | `1A: Veranstaltung Kein Betrieb` | `Kein Betrieb` |
+  | `3A: Veranstaltung Kein Betrieb` | `Kein Betrieb` |
+
+  In diesem Zweig bleibt der Rumpf **leer**, im bestehenden daneben rettet
+  `_reason_only_summary` den Grund als `Grund: …`. Das ist kein Widerspruch:
+  dort nennt der Titel das Kategoriewort nicht, hier per Definition schon —
+  sonst wäre das Streichen wirkungslos gewesen. Ein `Grund: Veranstaltung.`
+  unter einer Schlagzeile, die mit „Veranstaltung" beginnt, tauscht nur eine
+  Wiederholung gegen eine kürzere.
+
+  Geprüft: **2 von 110** gerenderten Cache-Items ändern sich, beide korrekt,
+  null Regressionen. Fünf Mutationen — Zweig entfernt, `Grund:` statt leer,
+  Kurzschluss entfernt, Titel ohne Linienpräfix-Strip, Helfer ohne Strip —
+  werden bis auf die nachweislich verhaltensneutrale Kurzschluss-Bedingung
+  alle von den Tests gefangen.
+
+  Ein bestehender Test hielt die alte Erwartung fest: der Volkstheater-Fall in
+  `test_trailing_directional_marker.py` prüfte, dass nach dem Entfernen des
+  WL-Richtungspfeils der Text **stehen bleibt** — er blieb aber nur wegen
+  genau dieser Lücke stehen. Der Test ist angepasst **und begründet**, nicht
+  stillschweigend umgeschrieben, und beweist den Pfeil-Strip jetzt über das
+  Greifen der Dedupe-Prüfung: ohne den Strip passt die Zusammenfassung nicht
+  auf den Titelrumpf und überlebt. Eine Mutation, die den Strip entfernt,
+  lässt ihn weiterhin fehlschlagen.
+
 * **Die Baustellen-Meldung, die nur „fragen Sie woanders" sagte (2026-09-18)**:
   Item 8 von zehn im deutschen Feed, vollständig:
 
