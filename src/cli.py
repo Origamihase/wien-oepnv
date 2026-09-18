@@ -340,10 +340,12 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
 
     # Avoid printing potentially sensitive coordinate details to stdout.
     # Instead, print a high-level summary; full details are available in the
-    # optional report file. All ten categories are listed so the summary
+    # optional report file. All twelve categories are listed so the summary
     # matches ``report.has_issues`` / ``--fail-on-issues`` — previously it
     # omitted cross-station-ID, identity-field, provider and naming issues,
-    # so a clean-looking summary could hide a non-zero exit.
+    # so a clean-looking summary could hide a non-zero exit. The count in
+    # this comment is load-bearing: it went stale once already, which is how
+    # a category can silently drop out of the line below again.
     sys.stdout.write(
         "Stations validation summary: "
         f"{report.total_stations} stations analysed, "
@@ -357,6 +359,7 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
         f"{len(report.naming_issues)} naming issues, "
         f"{len(report.cross_name_alias_issues)} cross-name alias collisions, "
         f"{len(report.alias_collision_issues)} alias-key collisions, "
+        f"{len(report.name_ownership_issues)} name-ownership conflicts, "
         f"{len(report.security_issues)} security warnings.\n"
     )
 

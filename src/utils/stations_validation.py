@@ -212,6 +212,73 @@ class CrossNameAliasIssue:
     distance_m: int
 
 
+@dataclass(frozen=True)
+class NameOwnershipIssue:
+    """Two entries share a canonical name and the wrong one wins the lookup.
+
+    ``src.utils.stations._station_lookup`` registers every entry's canonical
+    name as a lookup key. Where a later entry claims a key an earlier one
+    already holds, the match-strength and source tie-break decides — except
+    for one shortcut taken before any of it runs::
+
+        if existing_record == alias_record or existing_record.name == alias_record.name:
+            continue
+
+    Same name, so there is nothing to choose between: the first registration
+    keeps the key, the later one is dropped, and unlike every other collision
+    on that path it is not even logged.
+
+    The shortcut is sound while both entries describe the same place, which
+    is what the 2026-05-12 removal of the canonical-name uniqueness gate
+    relied on. That removal was right: Vienna genuinely runs distinct stops
+    under one name — ``Märzstraße`` appears twice, 479 m apart — and gating
+    on the name itself produced the ``Wien Bahnhof (WL 60205022)`` feed
+    clutter that PR #1448 then had to paper over with DIVA suffixes, and
+    once fanned 30 name issues out into 1759 quarantined WL entries (see
+    ``_format_identifier``).
+
+    What the shortcut cannot see is *which* of the two the name belongs to.
+    Measured over the 2026-09-18 directory (2243 entries, 8 same-name
+    groups): in seven, both members carry a ``wl_stops`` entry of that name
+    — genuine twins, and the lookup lands on a stop of the right name either
+    way. One group does not. ``Wien Heizwerkstraße (WL)`` / ``wl_diva
+    60200228`` holds two stops, both named ``Deutschstraße``, and takes the
+    key from ``wl_diva 60201742``, whose stops *are* ``Heizwerkstraße``,
+    463 m to the east. Two live consequences:
+    ``station_info("Heizwerkstraße")`` hands back the DIVA, stop IDs and
+    coordinates of a different stop, and ``station_info("Deutschstraße")``
+    — the directory holds no other entry for that label — answers under the
+    name ``Wien Heizwerkstraße (WL)``.
+
+    Fires only when a *sibling* bears the name, which is what separates this
+    from the gate that was removed. A group where nobody carries a matching
+    stop stays silent (the ``Betriebshof X`` entries, whose stops are all
+    ``Bahnhof X``), and so does one where the winner carries it — the
+    ``Schottenring`` pair, where the loser's sole stop is ``Schottenring,
+    Herminengasse``. The count means "this name resolves to the wrong one of
+    two", never "this name occurs twice".
+
+    Restricted to identical canonical names on purpose: that is exactly the
+    region where the winner is predictable without re-implementing the
+    tie-break, because the shortcut above returns before the tie-break is
+    reached. Winner therefore means *first in directory order*, which
+    ``test_the_validator_agrees_with_the_loader_about_the_winner`` pins
+    against the real loader for every group in the live directory.
+
+    Report-only, deliberately, and not wired into
+    ``update_all_stations.py:_collect_blocking_issues``. That path quarantines
+    by deleting the offending entry from ``stations.json``; deleting 60200228
+    would take the directory's only ``Deutschstraße`` stops with it and cost
+    more than the misresolution does. The repair is a data decision — rename
+    the mislabelled entry or merge the pair — not a deletion.
+    """
+
+    name: str
+    winner_identifier: str
+    winner_stop_names: tuple[str, ...]
+    owner_identifiers: tuple[str, ...]
+
+
 # Per-cell length cap applied at every ``stations.json``-derived
 # Markdown sink in :meth:`ValidationReport.to_markdown`. Mirrors the
 # canonical ``_DASHBOARD_FIELD_MAX_LEN`` constant in
@@ -262,6 +329,7 @@ class ValidationReport:
     # same rationale as ``identity_field_conflicts`` above.
     cross_name_alias_issues: tuple[CrossNameAliasIssue, ...] = ()
     alias_collision_issues: tuple[AliasCollisionIssue, ...] = ()
+    name_ownership_issues: tuple[NameOwnershipIssue, ...] = ()
 
     @property
     def has_issues(self) -> bool:
@@ -277,6 +345,7 @@ class ValidationReport:
             or self.identity_field_conflicts
             or self.cross_name_alias_issues
             or self.alias_collision_issues
+            or self.name_ownership_issues
         )
 
     def to_markdown(self) -> str:
@@ -325,6 +394,9 @@ class ValidationReport:
         lines.append(f"*Namens-Probleme*: {len(self.naming_issues)}")
         lines.append(f"*Namens-Alias-Kollisionen*: {len(self.cross_name_alias_issues)}")
         lines.append(f"*Alias-Schl\u00fcssel-Kollisionen*: {len(self.alias_collision_issues)}")
+        lines.append(
+            f"*Namens-Zuordnungskonflikte*: {len(self.name_ownership_issues)}"
+        )
         lines.append("")
 
         if self.security_issues:
@@ -400,6 +472,7 @@ class ValidationReport:
 
         lines.extend(self._render_cross_name_alias_issues())
         lines.extend(self._render_alias_collision_issues())
+        lines.extend(self._render_name_ownership_issues())
 
         if not self.has_issues:
             lines.append("Keine Probleme festgestellt.")
@@ -442,6 +515,31 @@ class ValidationReport:
             lines.append(
                 f"- {joined_keys}: {_safe_md(issue.reason)} "
                 f"— [{joined_ids}] ({joined_names})"
+            )
+        lines.append("")
+        return lines
+
+    def _render_name_ownership_issues(self) -> list[str]:
+        """Render the ``## Namens-Zuordnungskonflikte`` section.
+
+        Split out like its three siblings so :meth:`to_markdown` keeps its
+        C901 baseline of 18 instead of gaining a branch per section.
+        """
+        if not self.name_ownership_issues:
+            return []
+        lines = ["## Namens-Zuordnungskonflikte"]
+        for issue in self.name_ownership_issues:
+            joined_owners = ", ".join(
+                _safe_md(ident) for ident in issue.owner_identifiers
+            )
+            joined_stops = ", ".join(
+                _safe_md(stop) for stop in issue.winner_stop_names
+            ) or "—"
+            lines.append(
+                f"- {_safe_md(issue.name)}: Nachschlag landet auf "
+                f"{_safe_md(issue.winner_identifier)} (Haltestellen: "
+                f"{joined_stops}), den Namen tr\u00e4gt aber "
+                f"[{joined_owners}]"
             )
         lines.append("")
         return lines
@@ -498,6 +596,7 @@ def validate_stations(
     identity_field_conflicts = tuple(_find_identity_field_conflicts(stations))
     cross_name_alias_issues = tuple(_find_cross_name_alias_issues(stations))
     alias_collision_issues = tuple(_find_alias_collision_issues(stations))
+    name_ownership_issues = tuple(_find_name_ownership_issues(stations))
 
     return ValidationReport(
         total_stations=len(stations),
@@ -513,6 +612,7 @@ def validate_stations(
         identity_field_conflicts=identity_field_conflicts,
         cross_name_alias_issues=cross_name_alias_issues,
         alias_collision_issues=alias_collision_issues,
+        name_ownership_issues=name_ownership_issues,
     )
 
 
@@ -1360,6 +1460,87 @@ def _find_alias_collision_issues(
             ),
             identifiers=signature,
             reason=reason,
+        )
+
+
+def _entry_stop_names(entry: Mapping[str, object]) -> tuple[str, ...]:
+    """Return the ``wl_stops`` labels of *entry*, stripped, in file order.
+
+    Deliberately not ``_iter_entry_labels(entry)`` filtered to ``wl_stop``:
+    that generator feeds a different check and yields alias labels verbatim,
+    blanks included. Here the labels are also reported to an operator as
+    :attr:`NameOwnershipIssue.winner_stop_names`, so they are stripped and
+    empties dropped. Keeping the two apart is the point — widening either to
+    serve both is how one check starts measuring the other's surface.
+    """
+    stops = entry.get("wl_stops")
+    if not isinstance(stops, Sequence) or isinstance(stops, str | bytes):
+        return ()
+    names: list[str] = []
+    for stop in stops:
+        if isinstance(stop, Mapping):
+            stop_name = stop.get("name")
+            if isinstance(stop_name, str) and stop_name.strip():
+                names.append(stop_name.strip())
+    return tuple(names)
+
+
+def _bears_name(entry: Mapping[str, object], token: str) -> bool:
+    """Return ``True`` when one of *entry*'s stops is actually called *token*.
+
+    Compared through :func:`_bare_station_name` on both sides, so the
+    ``Wien`` prefix and the ``(WL)`` suffix that every canonical name carries
+    do not have to appear on the stop label. Equality, not containment:
+    ``Schottenring, Herminengasse`` is a neighbouring stop that merely
+    mentions ``Schottenring``, and treating it as bearing the name would
+    silence the one case this check exists for.
+    """
+    return any(_bare_station_name(name) == token for name in _entry_stop_names(entry))
+
+
+def _find_name_ownership_issues(
+    stations: Sequence[Mapping[str, object]]
+) -> Iterator[NameOwnershipIssue]:
+    """Yield same-name groups whose lookup winner does not bear the name.
+
+    See :class:`NameOwnershipIssue` for what the check is for and why it is
+    this narrow. Mechanically:
+
+    1. Group entries by ``_normalize_token(name)`` — the same key
+       :func:`src.utils.stations._station_lookup` files the canonical name
+       under. Groups of one are the overwhelming majority and are skipped.
+    2. Within a group the loader's same-name shortcut keeps the *first*
+       registration, and ``_station_entries`` preserves file order, so
+       ``group[0]`` is the entry the name resolves to.
+    3. Report only when that winner bears no stop of the name while at least
+       one sibling does — an unowned name (no member bears it) is a labelling
+       convention, not a misresolution, and an owned one is already right.
+    """
+    grouped: dict[str, list[Mapping[str, object]]] = {}
+    for entry in stations:
+        key = _normalize_token(str(entry.get("name", "")).strip())
+        if key:
+            grouped.setdefault(key, []).append(entry)
+
+    for _key, group in grouped.items():
+        # Short-circuit, not a guard: a group of one has no ``rest``, so the
+        # ``if not owners`` test below already discards it. It is here to
+        # skip the ``_bare_station_name`` call for the 2227 singleton groups
+        # that make up the directory, and removing it changes no result.
+        if len(group) < 2:
+            continue
+        winner, *rest = group
+        token = _bare_station_name(winner.get("name"))
+        if not token or _bears_name(winner, token):
+            continue
+        owners = [entry for entry in rest if _bears_name(entry, token)]
+        if not owners:
+            continue
+        yield NameOwnershipIssue(
+            name=str(winner.get("name", "")).strip() or "<unknown>",
+            winner_identifier=_format_identifier(winner),
+            winner_stop_names=_entry_stop_names(winner),
+            owner_identifiers=tuple(_format_identifier(e) for e in owners),
         )
 
 
