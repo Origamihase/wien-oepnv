@@ -4716,6 +4716,46 @@ def _trim_truncation_tail(truncated: str) -> str:
     return truncated
 
 
+# Stadt-Wien roadworks descriptions open with a referral that tells the reader
+# to ask somebody else. It carries no information about the disruption, and at
+# 130 characters it eats most of the 180-character summary budget — so the
+# sentence that says what actually happens never fits.
+#
+# Published 2026-09-18, the whole of item 8 of ten::
+#
+#     Ruthnergasse Kreuzung Justgasse
+#     Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind
+#     der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. [20.09. – 16.10.]
+#
+# while the source's second sentence — "Im Baustellenbereich wird ein
+# Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal
+# während der Spitzenzeiten oder Verkehrszeichen durchgeschleust" — was
+# dropped for want of room. On a rotating info display that slot cost a real
+# disruption its airtime and told the viewer nothing.
+#
+# Dropped before sentence splitting so the informative sentence becomes
+# sentence one.
+#
+# The phrase is not a fixed string. Five cache descriptions carry it in three
+# wordings, which differ only in the middle::
+#
+#     Nähere Informationen zu den ...................... betroffenen ... (x3)
+#     Nähere Informationen zur Umleitung sowie Haltestellenverlegung der ...
+#     Nähere Informationen zur Haltestellenverlegungen der .................
+#
+# so the pattern anchors on the two invariant ends — "Nähere Informationen zu"
+# and "betroffenen öffentlichen Verkehrsmittel(n) sind der Auskunft der Wiener
+# Linien ... zu entnehmen" — and lets the middle vary within a bounded,
+# non-greedy, dot-free run. Dot-free keeps a runaway match inside one sentence
+# even if an upstream wording drops the tail.
+_WL_REFERRAL_BOILERPLATE_RE: re.Pattern[str] = re.compile(
+    r"N[äa]here\s+Informationen\s+zu\w*\s+[^.]{0,80}?"
+    r"betroffenen\s+öffentlichen\s+Verkehrsmittel\w*\s+sind\s+der\s+Auskunft\s+"
+    r"der\s+Wiener\s+Linien\b[^.]{0,40}?zu\s+entnehmen\.?\s*",
+    re.IGNORECASE,
+)
+
+
 def _truncate_summary_180(summary: str) -> str:
     """Hard-limit ``summary`` to 180 characters with TV-friendly tail cleanup."""
     if len(summary) <= 180:
@@ -5000,6 +5040,13 @@ def _format_item_content(
     # translation pipeline readable German instead of run-together
     # tokens the NMT model has never seen.
     summary = repair_glued_words(summary)
+    # Drop the "ask Wiener Linien" referral before the sentence split, or it
+    # takes sentence one and the 180-char budget with it. Keep the referral
+    # when it is all the description has: a useless sentence still beats an
+    # item that shows a headline and nothing underneath it.
+    without_referral = _WL_REFERRAL_BOILERPLATE_RE.sub("", summary).strip()
+    if without_referral:
+        summary = without_referral
 
     # ÖBB-spezifische Datumspräfixe (z.B. "17.09.2026 - 19.11.2026 • ") entfernen
     summary = _DATE_RANGE_PREFIX_RE.sub("", summary)

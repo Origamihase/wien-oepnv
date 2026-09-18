@@ -591,8 +591,22 @@ _GLUED_SENTENCE_RE = re.compile(
     r"|(?<=[A-Za-zÄÖÜäöüß][:;,])(?=\d)"
 )
 _GLUED_BRACKET_RE = re.compile(r"(?<=[A-Za-zÄÖÜäöüß0-9])(?=\()")
+# The lookbehind demands TWO lowercase letters, which silently excludes a
+# whole shape: a two-letter capitalised function word glued to the next one.
+# ``DerFußgängerverkehr`` has ``er`` in front of the break and is repaired;
+# ``ImBaustellenbereich`` has ``Im``, whose ``I`` is uppercase, so only ONE
+# lowercase letter precedes the position and the rule cannot fire. The Stadt-
+# Wien roadworks feed publishes exactly that word.
+#
+# The second alternative closes it with a CLOSED LIST rather than a relaxed
+# lookbehind. ``(?<=[A-ZÄÖÜ][a-zäöüß])`` would be shorter and would also split
+# ``McDonalds`` into ``Mc Donalds``; naming the function words that actually
+# open a German clause cannot. Checked over 848 texts — the whole cache plus
+# the complete published history of both feeds — the list fires on exactly one
+# place, ``ImBaustellenbereich``, and on nothing else.
 _GLUED_WORD_RE = re.compile(
-    r"(?<=[a-zäöüß]{2})(?!I(?:nnen|n)\b)(?=[A-ZÄÖÜ][a-zäöüß])"
+    r"(?:(?<=[a-zäöüß]{2})|(?<=\b(?:Im|Am|An|Um|Ab|In|Zu|Es)))"
+    r"(?!I(?:nnen|n)\b)(?=[A-ZÄÖÜ][a-zäöüß])"
 )
 
 
