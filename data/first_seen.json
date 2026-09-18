@@ -4608,6 +4608,23 @@
       "epoch": 7
     }
   },
+  "35bf402812b713b3ca2cfb4047d0416c127ab0dbb7894e5338139bfc3a930f18": {
+    "first_seen": "2026-09-18T12:31:03.156806+00:00",
+    "translations": {
+      "en": {
+        "summary": "Stop change of line 72A towards Hasenleitengasse Stop: Kraftwerk Simmering From: 1. Haidequerstra\u00dfe 510 Duration: From 1. Haidequerstra\u00dfe 510 Duration: From \u2026",
+        "title": "72A: Kraftwerk Simmering"
+      },
+      "en_src": {
+        "summary": "2a021c296ef60a36",
+        "title": "6895ecc643f1b3d1"
+      },
+      "en_verbatim": [
+        "title"
+      ],
+      "epoch": 7
+    }
+  },
   "35f1c1dae859117ecfd4a8a5bacbe13030aa8781faed62b42b7559892dc0a368": {
     "first_seen": "2026-06-28T08:30:57.083157+00:00",
     "translations": {
@@ -24793,6 +24810,37 @@
         "title"
       ],
       "epoch": 6
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&912884": {
+    "first_seen": "2026-09-18T12:31:03.156806+00:00",
+    "translations": {
+      "en": {
+        "title": "Wien Praterstern \u2194 Wien Floridsdorf"
+      },
+      "en_src": {
+        "title": "5b6516cc0c9fa5ed"
+      },
+      "en_verbatim": [
+        "title"
+      ]
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&912887": {
+    "first_seen": "2026-09-18T12:31:03.156806+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an switch fault between Tullnerfeld station and Wien Meidling station (U) train journeys to expected 15:00 are limited.",
+        "title": "Wien Meidling \u2194 Tullnerfeld"
+      },
+      "en_src": {
+        "summary": "8021bab6b470f46b",
+        "title": "7b783535cce5e40f"
+      },
+      "en_verbatim": [
+        "title"
+      ],
+      "epoch": 7
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {

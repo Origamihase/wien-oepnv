@@ -314,6 +314,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "72A: Kraftwerk Simmering",
+    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 72A in Richtung Hasenleitengasse</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kraftwerk Simmering</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 1. Haidequerstra&szlig;e 2</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">1. Haidequerstra&szlig;e 510</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 22. September 2026, etwa 08:00 Uhr auf Dauer von etwa drei Monaten</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kabelarbeiten</span></p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "35bf402812b713b3ca2cfb4047d0416c127ab0dbb7894e5338139bfc3a930f18",
+    "pubDate": "2026-09-18T00:00:00+02:00",
+    "starts_at": "2026-09-18T00:00:00+02:00",
+    "ends_at": "2027-09-18T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=72A|D=2026-09-18|TK=72a kraftwerk simmering"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "74A: Bauarbeiten",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Landstra&szlig;er Hauptstra&szlig;e werden die Busse der Linie 74A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Mittwoch, den 2. September 2026, Betriebsbeginn, bis voraussichtlich Ende April 2027.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span>Umleitung in Richtung Stubentor ab Leberstra&szlig;e # Landstra&szlig;er Hauptstra&szlig;e &uuml;ber Landstra&szlig;er Hauptstra&szlig;e, Fahrspur des Individualverkehrs &ndash; Rennweg &ndash; Oberzellergasse.</p> <p><span style=\"text-decoration: underline;\"><strong>Aufgelassene Haltestelle:</strong></span><br />- St. Marx<br />- Viehmarktgasse<br />- Rabengasse<br /><span style=\"text-decoration: underline;\"><strong><br />Ersatzhaltestelle:</strong></span><br />- Rabengasse (Victor-Braun-Platz 1, provisorische Haltestelle)</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:<br /></strong></span><span style=\"text-decoration: underline;\"><strong><img title=\"Umleitungs Skizze 74A\" src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/74A_Landstrasser_Hauptstrasse.png\" alt=\"Umleitungs Skizze 74A\" width=\"859\" height=\"859\" /></strong></span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -507,12 +519,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "12A: Fahrtbehinderung Falschparker",
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
-    "pubDate": "2026-09-18T13:30:00+02:00",
+    "pubDate": "2026-09-18T13:38:01+02:00",
     "starts_at": "2026-09-18T13:39:31+02:00",
-    "ends_at": "2026-09-18T23:55:00+02:00",
+    "ends_at": "2026-09-18T14:38:00+02:00",
     "_identity": "wl|störung|L=12A|D=2026-09-18|TK=falschparker"
   },
   {
@@ -534,22 +546,10 @@
     "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e94432c96ceb2bf714fdb2aeb039719615f03e39a59552cafb0d232ee11539fc",
-    "pubDate": "2026-09-18T13:29:00+02:00",
+    "pubDate": "2026-09-18T13:30:00+02:00",
     "starts_at": "2026-09-18T13:36:31+02:00",
     "ends_at": "2026-09-18T23:55:00+02:00",
     "_identity": "wl|störung|L=14A|D=2026-09-18|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "15A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2ba7372ec735edb5799272fa3492b87c41610ae79a3ebd798228ea20ed7c6cb0",
-    "pubDate": "2026-09-18T13:01:58+02:00",
-    "starts_at": "2026-09-18T13:01:58+02:00",
-    "ends_at": "2026-09-18T14:01:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-09-18|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -782,18 +782,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Rettungseinsatz",
-    "description": "Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "926698c2f961fc28e72bfea5a39121734c681178bdca0f0904afd2b0b22ae1d0",
-    "pubDate": "2026-09-18T13:44:00+02:00",
-    "starts_at": "2026-09-18T13:44:00+02:00",
-    "ends_at": "2026-09-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=29B|D=2026-09-18|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -802,18 +790,6 @@
     "starts_at": "2026-09-10T00:00:23+02:00",
     "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-09-10|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
-    "pubDate": "2026-09-18T13:02:26+02:00",
-    "starts_at": "2026-09-18T13:02:26+02:00",
-    "ends_at": "2026-09-18T14:02:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-09-18|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -902,18 +878,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Schadhaftes Fahrzeug",
-    "description": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0d7b621daa27479002dfb1acc83e23264254f1b919cfe7739280980d5578a23c",
-    "pubDate": "2026-09-18T13:01:00+02:00",
-    "starts_at": "2026-09-18T13:01:00+02:00",
-    "ends_at": "2026-09-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-09-18|TK=74a schadhaftes fahrzeug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N49: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -946,30 +910,6 @@
     "starts_at": "2026-09-18T13:01:00+02:00",
     "ends_at": "2026-09-18T23:55:00+02:00",
     "_identity": "wl|störung|L=O|D=2026-09-18|TK=o schadhaftes fahrzeug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Schadhafter Bus Betrieb ab Praterstern",
-    "description": "Schadhafter Bus\nBetrieb ab Praterstern <>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c51bd2d369cdf2591853d0eeef2afa837d3d0e25d325b34b068db262116fe2d9",
-    "pubDate": "2026-09-18T13:05:56+02:00",
-    "starts_at": "2026-09-18T13:05:57+02:00",
-    "ends_at": "2026-09-18T14:04:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-09-18|TK=schadhafter bus betrieb ab praterstern"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Schadhafter Bus Betrieb ab Quartier Belvedere",
-    "description": "Schadhafter Bus\nBetrieb ab Quartier Belvedere",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e592a52c7a3ac5cc5e110249c225a0557784bf443e93bcfdfbd46142b28f2b71",
-    "pubDate": "2026-09-18T13:01:26+02:00",
-    "starts_at": "2026-09-18T13:06:28+02:00",
-    "ends_at": "2026-09-18T14:05:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-09-18|TK=schadhafter bus betrieb ab quartier belvedere"
   },
   {
     "source": "Wiener Linien",
