@@ -1,16 +1,19 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-09-13T05:42:52+00:00_
+_Erzeugt am: 2026-09-18T18:52:12+00:00_
 
-**Stationen: 2243 → 2243 (Δ +0)**
+**Stationen: 2243 → 2244 (Δ +1)**
 
-## Hinzugefügt (0)
+## Hinzugefügt (3)
 
-_Keine._
+- `name:Wien Basler Gasse (WL)` — Wien Basler Gasse \(WL\)
+- `name:Wien Linzer Straße, Flötzersteig (WL)` — Wien Linzer Straße, Flötzersteig \(WL\)
+- `name:Wien Stadion U, Handelskai (WL)` — Wien Stadion U, Handelskai \(WL\)
 
-## Entfernt (0)
+## Entfernt (2)
 
-_Keine._
+- `name:Wien Linzer Straße/Flötzersteig (WL)` — Wien Linzer Straße/Flötzersteig \(WL\)
+- `name:Wien Siebenhirten, Basler Gasse (WL)` — Wien Siebenhirten, Basler Gasse \(WL\)
 
 ## Umbenannt (0)
 
