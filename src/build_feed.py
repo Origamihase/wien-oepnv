@@ -1002,7 +1002,15 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       ``72A`` stop relocation names 510 as the address it moves *from*
 #       (the source says 2) and runs until 18.09.2027, and the ``12A/14A``
 #       notice advertises a line ``14AX`` that does not exist.
-_TRANSLATION_CACHE_EPOCH = 8
+#   9 — WL's structured field labels (``Von:`` / ``Nach:`` / ``Haltestelle:``
+#       / ``Dauer:`` / ``Zeitraum:`` / ``Grund:``) and the term
+#       ``Haltestellenverlegung`` now resolve through the glossary instead
+#       of being guessed at. ``Nach:`` was rendering as "After:" beside a
+#       correct "From:" — a relocation with an origin and no destination —
+#       and the opening term came back as "Stop change", "Station
+#       relocation", "Stop transfer" or untranslated, depending on the item.
+#       Cached items keep every one of those until the epoch moves.
+_TRANSLATION_CACHE_EPOCH = 9
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1196,6 +1204,54 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Halt entfällt": "stop omitted",
     "Halt entfallen": "stop omitted",
     "Halte entfallen": "stops omitted",
+    # --- Structured field labels ------------------------------------
+    # WL publishes stop relocations as a label block rather than prose::
+    #
+    #     Haltestelle: Kraftwerk Simmering
+    #     Von: 1. Haidequerstraße 2
+    #     Nach: 1. Haidequerstraße 510
+    #     Dauer: Ab …
+    #
+    # Marian has only seen everyday prose, where ``Nach`` is overwhelmingly
+    # temporal, so it renders the label as "After:" — published 2026-09-18::
+    #
+    #     DE: Von: Anzengruberstraße gegenüber 77a  Nach: Hüttergasse 6A-6B
+    #     EN: From: Anzengruberstraße opposite 77 a  After: Hüttergasse 6A-6B
+    #
+    # Paired with a correct "From:" that reads as nonsense: a relocation with
+    # an origin and no destination. ``Dauer:`` alone came back as "expected
+    # duration:", borrowing the "expected" from the neighbouring
+    # ``voraussichtliche Dauer`` entry and asserting a qualifier the source
+    # never made.
+    #
+    # The trailing colon is load-bearing, and it is the whole reason these
+    # can live in a global glossary at all. ``Nach`` and ``Von`` are ordinary
+    # prepositions; keyed bare they would rewrite "Umleitung nach
+    # Hofmühlgasse" and "Von Montag bis Freitag". Keyed WITH the colon they
+    # match only where the word is a field label — the glossary pattern
+    # ``re.escape``s each key and closes with ``(?!\w)``, which a colon
+    # satisfies. Verified against those three phrases in
+    # ``test_structured_field_labels.py``.
+    #
+    # Scope is what reaches a subscriber: these six labels are the ones
+    # attested across 154 distinct published items. The Stadt-Wien
+    # roadworks source also emits ``Beginn:`` / ``Maßnahme:`` / ``Bezirk:``,
+    # but those sit past the description truncation and appear in no
+    # published item, so their English is unverified and they are left out.
+    # The term these blocks open with, and the model renders it a different
+    # way every time: across the published history one item said "Stop
+    # change", one "Station relocation", the live 12A/14A item "Stop
+    # transfer", and two were not translated at all. One WL term, four
+    # English faces — exactly what this glossary exists to stop.
+    "Haltestellenverlegungen": "stop relocations",
+    "Haltestellenverlegung": "stop relocation",
+    "Haltestellen:": "Stops:",
+    "Haltestelle:": "Stop:",
+    "Zeitraum:": "Period:",
+    "Dauer:": "Duration:",
+    "Grund:": "Reason:",
+    "Nach:": "To:",
+    "Von:": "From:",
     # --- Construction / works ---------------------------------------
     "Gleisbauarbeiten": "track construction works",
     "Gleisarbeiten": "track works",
