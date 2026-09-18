@@ -54,7 +54,7 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   stillschweigend umgeschrieben, und beweist den Pfeil-Strip jetzt über das
   Greifen der Dedupe-Prüfung: ohne den Strip passt die Zusammenfassung nicht
   auf den Titelrumpf und überlebt. Eine Mutation, die den Strip entfernt,
-  lässt ihn weiterhin fehlschlagen.
+  lässt ihn weiterhin fehlschlagen. (PR #1836)
 
 * **Die Baustellen-Meldung, die nur „fragen Sie woanders" sagte (2026-09-18)**:
   Item 8 von zehn im deutschen Feed, vollständig:
