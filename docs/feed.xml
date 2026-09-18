@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 19 Sep 2026 00:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 01:00:45 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[1/2/2A/3A/4A/71/D: Demonstration am 19.09.2026]]></title>
@@ -41,17 +41,6 @@
       <ext:ends_at>Tue, 22 Sep 2026 15:00:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 12A und 14A in Richtung Schmelz, Gablenzgasse bzw. Reumannplatz U Haltestelle: Pilgramgasse U Von: Linke Wienzeile 106-108 nach Hofmühlgasse … [18.09.2026 – 22.09.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 12A und 14A in Richtung Schmelz, Gablenzgasse bzw. Reumannplatz U Haltestelle: Pilgramgasse U Von: Linke Wienzeile 106-108 nach Hofmühlgasse …<br/>[18.09.2026 – 22.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12/2: Veranstaltung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5cd943fc73477dff9b9d81ed783a34dfa92e1b744af78da14d0f2efc07a62a7b</guid>
-      <pubDate>Fri, 18 Sep 2026 09:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 09:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 09:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 01:00:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Friedrich-Engels-Platz und Schwarzenbergplatz. Die Züge werden weiter zum Karlsplatz umgeleitet. [18.09.2026 – 19.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Friedrich-Engels-Platz und Schwarzenbergplatz. Die Züge werden weiter zum Karlsplatz umgeleitet.<br/>[18.09.2026 – 19.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Busse halten Vorgartenstraße vor Meiereistraße]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 19 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse Ersatzbus ab Josef-Baumann-Gasse [14.09.2026 – 19.09.2026]</description>
       <content:encoded><![CDATA[Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse Ersatzbus ab Josef-Baumann-Gasse<br/>[14.09.2026 – 19.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27A/28A/29A: Veranstaltung am 27.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5b409515bbdbcac314bb8c316471e4b560b8a050e77adf2199f7e4a1fe0e3a1f</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 17:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
+      <description>Wegen eines Erntedankfestes werden die Linien 27A, 28A und 29A umgeleitet. [15.09.2026 – 27.09.2026]</description>
+      <content:encoded><![CDATA[Wegen eines Erntedankfestes werden die Linien 27A, 28A und 29A umgeleitet.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
