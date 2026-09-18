@@ -9804,7 +9804,18 @@
   "721b3d16a1af645be1d24427c62ee0cf72a1589e4ab16465f23aca5e11f61164": {
     "first_seen": "2026-09-18T10:01:03.484052+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "Stop transfer of lines 12A and 14AX towards Schmelz, Gablenzgasse or Reumannplatz U stop: Pilgramgasse U From: Linke Wienzeile 106-108 to Hofm\u00fchlgasse \u2026",
+        "title": "12A/14A: Pilgramgasse U"
+      },
+      "en_src": {
+        "summary": "b0506c494e2c43a5",
+        "title": "bed0b6905d6417b4"
+      },
+      "en_verbatim": [
+        "title"
+      ],
+      "epoch": 7
     }
   },
   "725a435d88fe1bd9ba201baaa8c371aebf40933d29fc672ea0307c2ae4fbb8b6": {
@@ -17880,6 +17891,18 @@
         "title": "2: Harmful train Einstieg Climb C"
       },
       "epoch": 3
+    }
+  },
+  "cc281c6508ba062820ee6ec97a11514a795c1ba829397c43d3f8f6719026c771": {
+    "first_seen": "2026-09-18T10:30:46.560686+00:00",
+    "translations": {
+      "en": {
+        "title": "43: service obstruction traffic accident"
+      },
+      "en_src": {
+        "title": "396dadf25fbc7839"
+      },
+      "epoch": 7
     }
   },
   "cc32c5312c60cb870d40f5f3817aa731ce2772dcfdb98e913927ebe57074d5b8": {
