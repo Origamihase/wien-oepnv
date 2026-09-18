@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 18 Sep 2026 05:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 05:31:30 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9: **Verspätung** Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7f3b2ea80598b2387ac83f736b82e49cfe7f488c5527fe39ecc525fc7f89ef2</guid>
+      <pubDate>Fri, 18 Sep 2026 05:23:41 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 05:31:30 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 05:23:42 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 06:22:00 +0200</ext:ends_at>
+      <description>[Am 18.09.2026]</description>
+      <content:encoded><![CDATA[[Am 18.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[D: Gleisbauarbeiten Althanstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet. [15.09.2026 – 15.09.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Betrieb ab Johnstraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Grund: Gleisbauarbeiten. [16.09.2026 – 18.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Gleisbauarbeiten.<br/>[16.09.2026 – 18.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
