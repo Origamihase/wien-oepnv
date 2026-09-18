@@ -437,6 +437,7 @@ def _build_heartbeat(
             "naming_issues": len(report.naming_issues),
             "cross_name_alias_issues": len(report.cross_name_alias_issues),
             "alias_collision_issues": len(report.alias_collision_issues),
+            "name_ownership_issues": len(report.name_ownership_issues),
         },
         "diff": {
             "added": len(diff["added"]),

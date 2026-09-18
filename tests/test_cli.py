@@ -89,6 +89,7 @@ def test_cli_stations_validate_writes_report(tmp_path: Path, monkeypatch: pytest
         naming_issues: list[str] = []
         cross_name_alias_issues: list[str] = []
         alias_collision_issues: list[str] = []
+        name_ownership_issues: list[str] = []
 
         def to_markdown(self) -> str:
             return "dummy-report\n"
@@ -141,6 +142,7 @@ def test_cli_stations_validate_rejects_output_outside_repo(
         naming_issues: list[str] = []
         cross_name_alias_issues: list[str] = []
         alias_collision_issues: list[str] = []
+        name_ownership_issues: list[str] = []
 
         def to_markdown(self) -> str:
             return "report\n"
