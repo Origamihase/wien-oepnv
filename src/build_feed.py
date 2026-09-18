@@ -995,7 +995,14 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       and ``Vordere Zollamtsstraße`` as "Front Zollamtsstraße". Without
 #       the bump the affected items keep serving the wrong English for
 #       their lifetime — a U4 construction notice runs until 30.11.2026.
-_TRANSLATION_CACHE_EPOCH = 7
+#   8 — the translation is now rejected when the model drops a verbatim
+#       entity, and repaired when it doubles a placeholder's closing ``X``.
+#       Both defects were cached as successes, so without the bump the two
+#       items that exposed them keep serving the wrong English: the
+#       ``72A`` stop relocation names 510 as the address it moves *from*
+#       (the source says 2) and runs until 18.09.2027, and the ``12A/14A``
+#       notice advertises a line ``14AX`` that does not exist.
+_TRANSLATION_CACHE_EPOCH = 8
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1880,6 +1887,49 @@ _RESIDUAL_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
 )
 
 
+# A placeholder the model re-emitted with its closing ``X`` doubled.
+#
+# Published 2026-09-18, ``docs/feed.en.xml``::
+#
+#     DE: Haltestellenverlegung der Linien 12A und 14A …
+#     EN: Stop transfer of lines 12A and 14AX …
+#
+# ``14AX`` is not a Vienna line. The model returned
+# ``XENT<nonce>X4XX``; :data:`_UNMASK_PLACEHOLDER_RE` matched the valid
+# ``…X4X`` prefix, restored ``14A``, and left the surplus ``X`` glued to it.
+# :data:`_RESIDUAL_PLACEHOLDER_RE` cannot see it either — the leftover is a
+# bare ``X`` with no prefix and no index, so neither alternative matches. The
+# corruption is therefore invisible to both existing guards and reached
+# subscribers for five consecutive builds.
+#
+# Repaired rather than rejected: the placeholder itself survived intact, so
+# the entity is recoverable and the translation is otherwise sound. Falling
+# back to German here would throw away a good sentence over one stray
+# character.
+#
+# The trailing run is only absorbed when a non-alphanumeric follows, which is
+# what keeps two adjacent placeholders safe: in
+# ``…X4XXENT<nonce>X5X`` the ``X`` that opens the next placeholder is
+# followed by ``ENT``, so the lookahead fails and the pair is left alone.
+_PLACEHOLDER_DEBRIS_RE: re.Pattern[str] = re.compile(
+    "((?:XENT|XGLO)" + _PLACEHOLDER_NONCE + r"X\d+X)X+(?![A-Za-z0-9])"
+)
+
+# Any word character. Used to tell a verbatim entity that MUST survive
+# translation (``14A``, ``Justgasse``, the house number ``2``) from a masked
+# punctuation glyph (``…``, ``–``) that the model may legitimately drop.
+_MASK_WORD_CHAR_RE: re.Pattern[str] = re.compile(r"\w")
+
+
+def _normalise_placeholder_debris(text: str) -> str:
+    """Strip the surplus ``X`` from placeholders the model doubled.
+
+    Idempotent, so it is safe to apply on both the translation path and
+    inside :func:`_unmask_entities`.
+    """
+    return _PLACEHOLDER_DEBRIS_RE.sub(r"\1", text)
+
+
 # German clock-time suffix. ``15:13 Uhr`` has no English equivalent —
 # the bare time IS the English idiom — but Marian has to render the
 # token somehow and picks the everyday-prose sense of the noun, so the
@@ -2015,7 +2065,54 @@ def _unmask_entities(text: str, mapping: dict[str, str]) -> str:
         placeholder = match.group(0)
         return mapping.get(placeholder, "")
 
-    return _UNMASK_PLACEHOLDER_RE.sub(_restore, text)
+    # Repair a doubled closing ``X`` before matching, or the valid prefix is
+    # restored and the surplus character survives as part of the entity —
+    # the ``14AX`` leak of 2026-09-18 (see _PLACEHOLDER_DEBRIS_RE).
+    return _UNMASK_PLACEHOLDER_RE.sub(
+        _restore, _normalise_placeholder_debris(text)
+    )
+
+
+def _entities_dropped_by_translation(
+    masked_text: str, translated: str, mapping: dict[str, str]
+) -> list[str]:
+    """Return the verbatim entities the model failed to carry through.
+
+    :func:`_unmask_entities` is deliberately tolerant of a dropped
+    placeholder: it restores what it finds and discards the rest, so no raw
+    sentinel can reach a subscriber. That tolerance is right for the output
+    and wrong as a verdict on the translation — a dropped placeholder is a
+    dropped *fact*, and the sentence that survives reads as authoritative.
+
+    Published 2026-09-18, ``docs/feed.en.xml``::
+
+        DE: Von: 1. Haidequerstraße 2   Nach: 1. Haidequerstraße 510
+        EN: From: 1. Haidequerstraße 510   Duration: From 1. Haidequerstraße 510
+
+    The model dropped the placeholder holding ``2`` and looped on the rest.
+    The English does not merely lose the origin — it presents the
+    destination as the origin, so a reader is told the stop is moving away
+    from number 510. Nothing in the pipeline objected, because every
+    placeholder still present unmasked cleanly.
+
+    Only ``XENT`` (verbatim) placeholders count: a ``XGLO`` glossary term is
+    *supposed* to come back as different text. Only surfaces carrying a word
+    character count, which is the calibration that makes the check usable —
+    over 400 published DE/EN pairs, requiring every mask to survive fires on
+    12.5% of them, 21 of those losses being nothing but a dropped ``…`` or
+    ``–``. Restricted to word-bearing surfaces it fires on 7.2%, and those
+    are exactly three distinct items: the two above and a ``Justgasse`` the
+    model swallowed.
+    """
+    dropped: list[str] = []
+    for placeholder, surface in mapping.items():
+        if not placeholder.startswith("XENT"):
+            continue
+        if not _MASK_WORD_CHAR_RE.search(surface):
+            continue
+        if translated.count(placeholder) < masked_text.count(placeholder):
+            dropped.append(surface)
+    return dropped
 
 
 def _get_translation_pipeline() -> Any:
@@ -2313,6 +2410,24 @@ def _translate_text_attempt(
         log.warning(
             "Translation failed for identity %s — translator returned empty text.",
             sanitize_log_arg(ident or "<unknown>"),
+        )
+        return None
+    translated = _normalise_placeholder_debris(translated)
+    dropped = _entities_dropped_by_translation(
+        masked_text, translated, combined_mapping
+    )
+    if dropped:
+        # The sentence that came back is missing a station, a line or a house
+        # number the source carried. Discarding it costs an English rendering;
+        # keeping it ships a confident statement of the wrong fact. Same
+        # verdict and same fallback as the residual-sentinel check below.
+        log.warning(
+            "Translation for identity %s dropped %d verbatim entit%s (%s); "
+            "discarding and falling back to source.",
+            sanitize_log_arg(ident or "<unknown>"),
+            len(dropped),
+            "y" if len(dropped) == 1 else "ies",
+            sanitize_log_arg(", ".join(sorted(dropped)[:5])),
         )
         return None
     unmasked = _unmask_entities(translated, combined_mapping)
