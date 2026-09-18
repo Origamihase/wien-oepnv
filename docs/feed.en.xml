@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 18 Sep 2026 04:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 05:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N41: Buses stop at Gersthofer Straße 55-57 (line 10A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">842d88b9694f361400c8113e5dc81939f3502ebd49976e7e2f1bdf7670bead35</guid>
-      <pubDate>Fri, 18 Sep 2026 01:10:28 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 01:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 01:10:28 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 04:50:00 +0200</ext:ends_at>
-      <description>Reason: track construction works. [On 18.09.2026]</description>
-      <content:encoded><![CDATA[Reason: track construction works.<br/>[On 18.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[D: Track construction works Althanstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>The bus lines are being redirected because of roadworks in the area of Kennedybrücke. [15.09.2026 – 15.09.2027]</description>
       <content:encoded><![CDATA[The bus lines are being redirected because of roadworks in the area of Kennedybrücke.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Service from Johnstraße U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:06 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: track construction works. [16.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[Reason: track construction works.<br/>[16.09.2026 – 18.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
