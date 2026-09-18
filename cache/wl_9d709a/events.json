@@ -518,6 +518,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "18: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c4ff54c3b81f092db9e3f86b483b94bfb76b1f3b6604ae6ea46041520f44b20",
+    "pubDate": "2026-09-18T09:56:08+02:00",
+    "starts_at": "2026-09-18T09:56:09+02:00",
+    "ends_at": "2026-09-18T10:55:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-09-18|TK=fahrtbehinderung betriebsstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Rettungseinsatz",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2026-09-18T09:54:00+02:00",
+    "starts_at": "2026-09-18T09:54:00+02:00",
+    "ends_at": "2026-09-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-09-18|TK=rettungseinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -526,6 +550,30 @@
     "starts_at": "2026-09-18T05:00:09+02:00",
     "ends_at": "2026-09-18T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-09-18|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "900061cbd8db151f50d26801bbffbeb72f1860734c57d696a4d98e2f333dc7d6",
+    "pubDate": "2026-09-18T09:56:08+02:00",
+    "starts_at": "2026-09-18T09:56:09+02:00",
+    "ends_at": "2026-09-18T10:56:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-18|TK=fahrtbehinderung betriebsstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Rettungseinsatz",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
+    "pubDate": "2026-09-18T09:54:00+02:00",
+    "starts_at": "2026-09-18T09:54:00+02:00",
+    "ends_at": "2026-09-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-18|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -794,38 +842,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "56A: Feuerwehreinsatz",
-    "description": "Linie 56A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "62: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung\nBetriebsstörung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bc307179cd694213537dc3bdaf8c0c842d6845f858aa539892c54b5350f97b2f",
-    "pubDate": "2026-09-18T08:21:00+02:00",
-    "starts_at": "2026-09-18T08:21:00+02:00",
-    "ends_at": "2026-09-18T09:45:00+02:00",
-    "_identity": "wl|störung|L=56A|D=2026-09-18|TK=feuerwehreinsatz"
+    "guid": "fcdf3a91c7d337a1beae12d0681a02e09f5bb4f31d1c94e3683a9eef9d3cf255",
+    "pubDate": "2026-09-18T09:56:38+02:00",
+    "starts_at": "2026-09-18T09:56:39+02:00",
+    "ends_at": "2026-09-18T10:56:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-09-18|TK=fahrtbehinderung betriebsstörung"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "56B: Feuerwehreinsatz",
-    "description": "Linie 56B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "62: Rettungseinsatz",
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "533577f77f3b142509b952b12e5eeb59d9bf478116b292d3c16551ba809fa581",
-    "pubDate": "2026-09-18T08:21:00+02:00",
-    "starts_at": "2026-09-18T08:21:00+02:00",
-    "ends_at": "2026-09-18T09:45:00+02:00",
-    "_identity": "wl|störung|L=56B|D=2026-09-18|TK=feuerwehreinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Feuerwehreinsatz",
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f3a25e31c636e08b8727947f73c94cdcf0c8d6b06b266f2b7341cd2709861eb1",
-    "pubDate": "2026-09-18T08:21:00+02:00",
-    "starts_at": "2026-09-18T08:21:00+02:00",
-    "ends_at": "2026-09-18T09:45:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-09-18|TK=feuerwehreinsatz"
+    "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
+    "pubDate": "2026-09-18T09:54:00+02:00",
+    "starts_at": "2026-09-18T09:54:00+02:00",
+    "ends_at": "2026-09-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-09-18|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -862,6 +898,30 @@
     "starts_at": "2026-09-10T00:00:23+02:00",
     "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-10|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "LB: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4f456abbbfdac70d5080b1716ed3a0770692dcd47a8b35b3a100dd355b793131",
+    "pubDate": "2026-09-18T09:57:38+02:00",
+    "starts_at": "2026-09-18T09:57:39+02:00",
+    "ends_at": "2026-09-18T10:57:00+02:00",
+    "_identity": "wl|störung|L=LB|D=2026-09-18|TK=fahrtbehinderung betriebsstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "LB: Badner Bahn: Rettungseinsatz",
+    "description": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3fd21a41cf90e091889603d64707f84f70d7247f4a5a1212199842819e9d2754",
+    "pubDate": "2026-09-18T09:54:00+02:00",
+    "starts_at": "2026-09-18T09:54:00+02:00",
+    "ends_at": "2026-09-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=LB|D=2026-09-18|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
