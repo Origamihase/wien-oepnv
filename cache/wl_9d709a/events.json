@@ -506,6 +506,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "14A: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e94432c96ceb2bf714fdb2aeb039719615f03e39a59552cafb0d232ee11539fc",
+    "pubDate": "2026-09-18T13:29:00+02:00",
+    "starts_at": "2026-09-18T13:29:00+02:00",
+    "ends_at": "2026-09-18T14:28:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-09-18|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "15A: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2ba7372ec735edb5799272fa3492b87c41610ae79a3ebd798228ea20ed7c6cb0",
+    "pubDate": "2026-09-18T13:01:58+02:00",
+    "starts_at": "2026-09-18T13:01:58+02:00",
+    "ends_at": "2026-09-18T14:01:00+02:00",
+    "_identity": "wl|störung|L=15A|D=2026-09-18|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -751,8 +775,8 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
     "pubDate": "2026-09-18T12:59:56+02:00",
-    "starts_at": "2026-09-18T12:59:56+02:00",
-    "ends_at": "2026-09-18T13:59:00+02:00",
+    "starts_at": "2026-09-18T13:02:26+02:00",
+    "ends_at": "2026-09-18T14:02:00+02:00",
     "_identity": "wl|störung|L=37|D=2026-09-18|TK=falschparker"
   },
   {
@@ -842,14 +866,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Verunreinigung",
-    "description": "Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "title": "D: Verspätungen",
+    "description": "Linie D: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "34fd6288963ee00cbfe8f4d71873d9fd37a0bf7b6367633e3ebb0e6a927bfed5",
-    "pubDate": "2026-09-18T12:57:00+02:00",
-    "starts_at": "2026-09-18T12:57:00+02:00",
+    "guid": "c7925ff70d53612e7f52f703b1a2b91345fcc7af95cb98ea1dd62d9ae3a76484",
+    "pubDate": "2026-09-18T13:11:00+02:00",
+    "starts_at": "2026-09-18T13:11:00+02:00",
     "ends_at": "2026-09-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-09-18|TK=74a verunreinigung"
+    "_identity": "wl|störung|L=D|D=2026-09-18|TK=d verspätungen"
   },
   {
     "source": "Wiener Linien",
@@ -874,6 +898,42 @@
     "starts_at": "2026-09-16T00:00:06+02:00",
     "ends_at": "2026-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=N49|D=2026-09-16|TK=betrieb ab schweglerstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "32954b41abd148544322e0cc027955a7a6a2ba447f6671f113810c4df9b7dc4a",
+    "pubDate": "2026-09-18T13:01:26+02:00",
+    "starts_at": "2026-09-18T13:01:26+02:00",
+    "ends_at": "2026-09-18T14:00:00+02:00",
+    "_identity": "wl|störung|L=O|D=2026-09-18|TK=fahrtbehinderung betriebsstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Schadhafter Bus Betrieb ab Praterstern",
+    "description": "Schadhafter Bus\nBetrieb ab Praterstern <>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c51bd2d369cdf2591853d0eeef2afa837d3d0e25d325b34b068db262116fe2d9",
+    "pubDate": "2026-09-18T13:05:56+02:00",
+    "starts_at": "2026-09-18T13:05:57+02:00",
+    "ends_at": "2026-09-18T14:04:00+02:00",
+    "_identity": "wl|störung|L=O|D=2026-09-18|TK=schadhafter bus betrieb ab praterstern"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Schadhafter Bus Betrieb ab Quartier Belvedere",
+    "description": "Schadhafter Bus\nBetrieb ab Quartier Belvedere",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e592a52c7a3ac5cc5e110249c225a0557784bf443e93bcfdfbd46142b28f2b71",
+    "pubDate": "2026-09-18T13:01:26+02:00",
+    "starts_at": "2026-09-18T13:06:28+02:00",
+    "ends_at": "2026-09-18T14:05:00+02:00",
+    "_identity": "wl|störung|L=O|D=2026-09-18|TK=schadhafter bus betrieb ab quartier belvedere"
   },
   {
     "source": "Wiener Linien",

@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 18 Sep 2026 13:01:12 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 13:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[74A: Verunreinigung]]></title>
+      <title><![CDATA[O: Schadhafter Bus Betrieb ab Praterstern, Quartier Belvedere]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">34fd6288963ee00cbfe8f4d71873d9fd37a0bf7b6367633e3ebb0e6a927bfed5</guid>
-      <pubDate>Fri, 18 Sep 2026 12:57:00 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 13:01:12 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 12:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 18.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 18.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">c51bd2d369cdf2591853d0eeef2afa837d3d0e25d325b34b068db262116fe2d9</guid>
+      <pubDate>Fri, 18 Sep 2026 13:05:56 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 13:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 13:05:57 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 14:04:00 +0200</ext:ends_at>
+      <description>Schadhafter Bus Betrieb ab Praterstern Schadhafter Bus Betrieb ab Quartier Belvedere [Am 18.09.2026]</description>
+      <content:encoded><![CDATA[Schadhafter Bus Betrieb ab Praterstern Schadhafter Bus Betrieb ab Quartier Belvedere<br/>[Am 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2ba7372ec735edb5799272fa3492b87c41610ae79a3ebd798228ea20ed7c6cb0</guid>
+      <pubDate>Fri, 18 Sep 2026 13:01:58 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 13:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 13:01:58 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 14:01:00 +0200</ext:ends_at>
+      <description>[Am 18.09.2026]</description>
+      <content:encoded><![CDATA[[Am 18.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: Fahrtbehinderung Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">32954b41abd148544322e0cc027955a7a6a2ba447f6671f113810c4df9b7dc4a</guid>
+      <pubDate>Fri, 18 Sep 2026 13:01:26 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 13:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 13:01:26 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 14:00:00 +0200</ext:ends_at>
+      <description>[Am 18.09.2026]</description>
+      <content:encoded><![CDATA[[Am 18.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12A/14A: Pilgramgasse U]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 18 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden. [17.09.2026 – 18.09.2026]</description>
       <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U4 nicht ausgefahren werden.<br/>[17.09.2026 – 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Vordere Zollamtsstraße von Marxergasse und Kleine Marxerbrücke bis Unbenannte Verkehrsfläche und Rad…]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">35a2bf6293387737ed920111491ea53c3fd0c9e8f0003d6e2a69287d3ff60605</guid>
-      <pubDate>Sun, 01 Feb 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 14:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 01 Feb 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
-      <description>Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener … [01.02.2026 – 30.11.2026]</description>
-      <content:encoded><![CDATA[Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36A/36B: Straßenbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet. [21.09.2026 – 16.09.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
