@@ -61,7 +61,7 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
 
   Keine Cache-Epoche nötig: der deutsche Quelltext ändert sich, und die
   Quell-Fingerprints (`_SOURCE_DIGEST_KEY`) invalidieren die englische
-  Übersetzung von selbst.
+  Übersetzung von selbst. (PR #1835)
 
 * **Störungsvokabular: aus „Harmful train" wird „defective train" (2026-09-18)**:
   Gewöhnliche deutsche Komposita, die das Übersetzungsmodell wörtlich nimmt
