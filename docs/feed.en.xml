@@ -7,41 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 18 Sep 2026 10:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 11:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[62: Service obstruction service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fcdf3a91c7d337a1beae12d0681a02e09f5bb4f31d1c94e3683a9eef9d3cf255</guid>
-      <pubDate>Fri, 18 Sep 2026 09:56:38 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 10:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 09:56:39 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 10:56:00 +0200</ext:ends_at>
-      <description>[On 18.09.2026]</description>
-      <content:encoded><![CDATA[[On 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Service obstruction service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c4ff54c3b81f092db9e3f86b483b94bfb76b1f3b6604ae6ea46041520f44b20</guid>
-      <pubDate>Fri, 18 Sep 2026 09:56:08 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 10:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 09:56:09 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 10:55:00 +0200</ext:ends_at>
-      <description>[On 18.09.2026]</description>
-      <content:encoded><![CDATA[[On 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Service obstruction service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">900061cbd8db151f50d26801bbffbeb72f1860734c57d696a4d98e2f333dc7d6</guid>
-      <pubDate>Fri, 18 Sep 2026 09:56:08 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 10:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 09:56:09 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 10:56:00 +0200</ext:ends_at>
-      <description>[On 18.09.2026]</description>
-      <content:encoded><![CDATA[[On 18.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[12/2: Event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +85,39 @@
       <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna … [01.02.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36A/36B: Roadworks]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the area ofXJustgasse / Ruthnergasse the lines 36A and 36B are redirected. [21.09.2026 – 16.09.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the area ofXJustgasse / Ruthnergasse the lines 36A and 36B are redirected.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Stop change of lines 4A towards Wittelsabchstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße stop: Wittelsbachstraße [16.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[Stop change of lines 4A towards Wittelsabchstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße stop: Wittelsbachstraße<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[25: Lines 25 and 26 service from Josef-Baumann-Gasse & replacement bus from Josef-Baumann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d5eedc7e659855bb270421333c54cb8e61ff965becddd05436cff03e385f7a15</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 00:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 04:30:18 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Lines 25 and 26 service from Josef-Baumann-Gasse replacement bus from Josef-Baumann-Gasse [14.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[Lines 25 and 26 service from Josef-Baumann-Gasse replacement bus from Josef-Baumann-Gasse<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

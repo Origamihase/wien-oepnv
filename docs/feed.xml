@@ -7,41 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 18 Sep 2026 10:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 11:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[62: Fahrtbehinderung Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fcdf3a91c7d337a1beae12d0681a02e09f5bb4f31d1c94e3683a9eef9d3cf255</guid>
-      <pubDate>Fri, 18 Sep 2026 09:56:38 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 10:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 09:56:39 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 10:56:00 +0200</ext:ends_at>
-      <description>[Am 18.09.2026]</description>
-      <content:encoded><![CDATA[[Am 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Fahrtbehinderung Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c4ff54c3b81f092db9e3f86b483b94bfb76b1f3b6604ae6ea46041520f44b20</guid>
-      <pubDate>Fri, 18 Sep 2026 09:56:08 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 10:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 09:56:09 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 10:55:00 +0200</ext:ends_at>
-      <description>[Am 18.09.2026]</description>
-      <content:encoded><![CDATA[[Am 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Fahrtbehinderung Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">900061cbd8db151f50d26801bbffbeb72f1860734c57d696a4d98e2f333dc7d6</guid>
-      <pubDate>Fri, 18 Sep 2026 09:56:08 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 10:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 09:56:09 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 10:56:00 +0200</ext:ends_at>
-      <description>[Am 18.09.2026]</description>
-      <content:encoded><![CDATA[[Am 18.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[12/2: Veranstaltung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +85,39 @@
       <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener … [01.02.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36A/36B: Straßenbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet. [21.09.2026 – 16.09.2027]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 4A in Richtung Wittelsabchstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 4A in Richtung Wittelsabchstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[25: Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse & Ersatzbus ab Josef-Baumann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d5eedc7e659855bb270421333c54cb8e61ff965becddd05436cff03e385f7a15</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:06 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 00:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 04:30:18 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse Ersatzbus ab Josef-Baumann-Gasse [14.09.2026 – 18.09.2026]</description>
+      <content:encoded><![CDATA[Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse Ersatzbus ab Josef-Baumann-Gasse<br/>[14.09.2026 – 18.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
