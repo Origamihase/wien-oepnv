@@ -7269,6 +7269,20 @@
       "en": {}
     }
   },
+  "533577f77f3b142509b952b12e5eeb59d9bf478116b292d3c16551ba809fa581": {
+    "first_seen": "2026-09-18T07:01:02.841106+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "56B: fire-brigade operation"
+      },
+      "en_src": {
+        "summary": "eb1bdc2703fe6f1b",
+        "title": "b5b1761dabfa35f4"
+      },
+      "epoch": 7
+    }
+  },
   "534f5676bcc13395223579647bf2cefebb0f7306356be239fbfe388a5f9cc6f7": {
     "first_seen": "2026-05-24T01:32:20.355557+00:00",
     "translations": {
@@ -8022,6 +8036,20 @@
         "title": "U4: defective vehicle"
       },
       "epoch": 2
+    }
+  },
+  "5cd943fc73477dff9b9d81ed783a34dfa92e1b744af78da14d0f2efc07a62a7b": {
+    "first_seen": "2026-09-18T07:01:02.841106+00:00",
+    "translations": {
+      "en": {
+        "summary": "Operation only between Friedrich-Engels-Platz and Schwarzenbergplatz. Trains will be redirected to the Karlsplatz.",
+        "title": "12/2: event"
+      },
+      "en_src": {
+        "summary": "9c9f65fbc851814d",
+        "title": "3bd6a7e9d19122f7"
+      },
+      "epoch": 7
     }
   },
   "5ce8024bfe968714ce7abbcadc8585c668777812913a1317c9893d29e446444d": {
@@ -16631,6 +16659,20 @@
       "epoch": 3
     }
   },
+  "bc307179cd694213537dc3bdaf8c0c842d6845f858aa539892c54b5350f97b2f": {
+    "first_seen": "2026-09-18T07:01:02.841106+00:00",
+    "translations": {
+      "en": {
+        "summary": "After an service obstruction there are different intervals.",
+        "title": "56A: fire-brigade operation"
+      },
+      "en_src": {
+        "summary": "eb1bdc2703fe6f1b",
+        "title": "0926adf354dc097a"
+      },
+      "epoch": 7
+    }
+  },
   "bc50b61d7ca86fae29f7f5ccbad110ff439785e6bda43863833edf4b354ece26": {
     "first_seen": "2026-08-29T00:30:55.031518+00:00",
     "translations": {
@@ -21385,11 +21427,11 @@
     "first_seen": "2026-09-18T06:31:01.637991+00:00",
     "translations": {
       "en": {
-        "summary": "No operation between Hofwiesengasse and Hietzing U. expected duration: 09:00. Reason: fire-brigade operation in the area of Hofwiesengasse.",
+        "summary": "After an service obstruction there are different intervals.",
         "title": "60: fire-brigade operation Trains stop at line 62"
       },
       "en_src": {
-        "summary": "d2f59727c8f1247f",
+        "summary": "eb1bdc2703fe6f1b",
         "title": "a640337735102759"
       },
       "epoch": 7
