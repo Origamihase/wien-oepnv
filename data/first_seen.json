@@ -1844,8 +1844,15 @@
   "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d": {
     "first_seen": "2026-09-18T16:30:50.546930+00:00",
     "translations": {
-      "en": {},
-      "epoch": 11
+      "en": {
+        "summary": "service obstruction towards Schottenring U. Expected Duration: 19:05. Reason: police operation im Haltestellenbereich Oberzellergasse.",
+        "title": "71: service obstruction because of police operation"
+      },
+      "en_src": {
+        "summary": "2759d27699427628",
+        "title": "8d54c6b606a35de0"
+      },
+      "epoch": 12
     }
   },
   "13c7e9ae9dda1413c6734b0d7e8d0b74c026fa8779e27bc4be507109165e130f": {
@@ -4628,15 +4635,17 @@
     "first_seen": "2026-09-18T12:31:03.156806+00:00",
     "translations": {
       "en": {
+        "summary": "stop relocation of line 72A towards Hasenleitengasse Stop: Kraftwerk Simmering From: 1. Haidequerstra\u00dfe 2 To: 1. Haidequerstra\u00dfe 510 Duration: Ab \u2026",
         "title": "72A: Kraftwerk Simmering"
       },
       "en_src": {
+        "summary": "2a021c296ef60a36",
         "title": "6895ecc643f1b3d1"
       },
       "en_verbatim": [
         "title"
       ],
-      "epoch": 11
+      "epoch": 12
     }
   },
   "35f1c1dae859117ecfd4a8a5bacbe13030aa8781faed62b42b7559892dc0a368": {
@@ -8124,12 +8133,14 @@
     "first_seen": "2026-09-18T07:01:02.841106+00:00",
     "translations": {
       "en": {
-        "summary": "Operation only between Friedrich-Engels-Platz and Schwarzenbergplatz. Trains are redirected to the Karlsplatz."
+        "summary": "Operation only between Friedrich-Engels-Platz and Schwarzenbergplatz. Trains will be redirected to the Karlsplatz.",
+        "title": "12/2: event"
       },
       "en_src": {
-        "summary": "9c9f65fbc851814d"
+        "summary": "9c9f65fbc851814d",
+        "title": "3bd6a7e9d19122f7"
       },
-      "epoch": 11
+      "epoch": 12
     }
   },
   "5ce8024bfe968714ce7abbcadc8585c668777812913a1317c9893d29e446444d": {
@@ -9873,15 +9884,17 @@
     "first_seen": "2026-09-18T10:01:03.484052+00:00",
     "translations": {
       "en": {
+        "summary": "stop relocation of lines 12A and 14A towards Schmelz, Gablenzgasse and Reumannplatz U Stop: Pilgramgasse U From: Linke Wienzeile 106-108 nach Hofm\u00fchlgasse \u2026",
         "title": "12A/14A: Pilgramgasse U"
       },
       "en_src": {
+        "summary": "b0506c494e2c43a5",
         "title": "bed0b6905d6417b4"
       },
       "en_verbatim": [
         "title"
       ],
-      "epoch": 11
+      "epoch": 12
     }
   },
   "725a435d88fe1bd9ba201baaa8c371aebf40933d29fc672ea0307c2ae4fbb8b6": {
@@ -13618,12 +13631,14 @@
     "first_seen": "2026-09-17T18:30:48.962798+00:00",
     "translations": {
       "en": {
-        "summary": "Due to the high passenger volume associated with an event, the folding ramps of the U4 underground trains cannot be extended."
+        "summary": "Due to the high passenger volume associated with an event, the folding ramps of the U4 underground trains cannot be extended.",
+        "title": "U4: folding ramps out of service on 18.09.2026"
       },
       "en_src": {
-        "summary": "b8ec6cca9e52f766"
+        "summary": "b8ec6cca9e52f766",
+        "title": "00ba1fdaf560da90"
       },
-      "epoch": 11
+      "epoch": 12
     }
   },
   "96f135154720252b723390157353648f6e722f3498310c762afbb7ad31588d1b": {
@@ -16301,8 +16316,15 @@
   "b542492b16ff35641eb5630a1f4e27881f68361be46830b764241b823c61bcf4": {
     "first_seen": "2026-09-18T06:31:01.637991+00:00",
     "translations": {
-      "en": {},
-      "epoch": 11
+      "en": {
+        "summary": "Lines 40 and 41 diversion over lines 9 and 42",
+        "title": "40/41/9/42: event lines 40 and 41Xdiversion over lines 9 and 42"
+      },
+      "en_src": {
+        "summary": "8b7234202f279032",
+        "title": "764038df525d1507"
+      },
+      "epoch": 12
     }
   },
   "b56d9dc3e666a206b702a4ebc1ea36f8ff96b01584f20b8213950da0cf40d129": {
@@ -20205,12 +20227,14 @@
     "first_seen": "2026-09-18T14:31:02.985717+00:00",
     "translations": {
       "en": {
-        "summary": "Due to a demonstration in the area of Schwarzenbergplatz and Ring, the following transport measures are taken."
+        "summary": "Due to a demonstration in the area of Schwarzenbergplatz and Ring, the following transport measures are taken.",
+        "title": "1/2/2A/3A/4A/71/D: demonstration on 19.09.2026"
       },
       "en_src": {
-        "summary": "aa4d8ec04a9f686c"
+        "summary": "aa4d8ec04a9f686c",
+        "title": "02e446d67769c463"
       },
-      "epoch": 11
+      "epoch": 12
     }
   },
   "e5e4ada309d3d5a39dbcc7b58ba60a9bcfb4f6f0b36f7174fc6f157776ed18b5": {
