@@ -5,6 +5,170 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Störungsvokabular: aus „Harmful train" wird „defective train" (2026-09-18)**:
+  Gewöhnliche deutsche Komposita, die das Übersetzungsmodell wörtlich nimmt
+  und dabei zwischen schräg und alarmierend landet. Gezählt über **314**
+  veröffentlichte EN-Texte:
+
+  | Deutsch | Wie veröffentlicht | Items |
+  | --- | --- | --- |
+  | `Schadhafter Zug` | „**Harmful** train" | 4 |
+  | `Schadhafter Bus` | „**Harmful** bus" | 3 |
+  | `Schadhafter PKW` | „**Harmful** car" | 2 |
+  | `Fremdunfall` | „Foreign accident" | 9 |
+  | `Falschparker` | „False Parker" / „wrong parker" | 7 |
+  | `Verunreinigung` | „Impurity" / „contamination" | 4 |
+  | `Wasserrohrgebrechen` | „Water pipe fractures" | 2 |
+  | `Klapprampensperre` | „Folding ramp **lock**" | 3 |
+  | `Verkehrsstörung` | „Traffic disturbance" | 2 |
+
+  „Harmful train" ist das schlimmste: es sagt einem englischen Leser, der Zug
+  sei **gefährlich**, nicht defekt. `Fremdunfall` ist WL-Sprache für einen von
+  außen verursachten Unfall — „Foreign accident" liest sich, als wäre er im
+  Ausland passiert. `Falschparker` klingt als „False Parker" wie ein Nachname.
+  Und `Klapprampensperre` heißt, dass die Rollstuhlrampen nicht ausgefahren
+  werden können; „lock" transportiert das nicht — ausgerechnet bei den
+  Leser:innen, die am wenigsten ausweichen können.
+
+  Zwei Familien waren **halb** abgedeckt: `Schadhaftes Fahrzeug` und
+  `Schadhafter LKW` standen im Glossar, `Zug`/`Bus`/`PKW` nicht;
+  `Betriebsstörung` → „service disruption" stand drin, `Verkehrsstörung`
+  nicht. Die Ergänzungen folgen dem bestehenden Muster statt einem zweiten.
+
+  Nicht aufgenommen: `Busse`, `Betrieb`, `Linie`, `Fahrzeug` — sie übersetzen
+  in ihren Kontexten korrekt, ein Glossareintrag würde das zerstören.
+  `Klapprampen` allein ebenfalls nicht: kaputt war nur das Kompositum.
+
+  Derselbe Durchlauf hat einen Befund des automatisierten Tages-Audits
+  **widerlegt**. Das dort beschriebene Verkleben durch entferntes HTML
+  (`DerFußgängerverkehr`, `werden.Nähere`) existiert — in **32 %** der
+  Cache-Beschreibungen — und erreicht **null von 314** veröffentlichten
+  Texten. Nachgewiesen, indem eine verklebte Cache-Beschreibung durch
+  `_format_item_content` geschickt wurde; die Pipeline trennt bereits
+  korrekt. (PR #1833, Cache-Epoche 11 → 12)
+
+* **Der unbestimmte Artikel richtet sich wieder nach dem Wort dahinter
+  (2026-09-18)**:
+  Im EN-Feed stand zeitweise in **zwei von zehn** Items gleichzeitig:
+
+  ```
+  Due to an switch fault between Tullnerfeld … und Wien Meidling …
+  Due to an demonstration in the area of Schwarzenbergplatz and Ring
+  ```
+
+  **Das Modell macht dabei nichts falsch.** Jeder Platzhalter beginnt mit
+  `X`, und der Buchstabenname „ex" fängt mit einem Vokallaut an — `an
+  XGLO…X0X` ist korrekt für den Token, den das Modell gesehen hat. Erst das
+  Unmasking setzt ein konsonantisch beginnendes Wort ein und lässt den
+  Artikel stehen. Ein Nebeneffekt der Architektur, kein Übersetzungsfehler.
+
+  Gemessen über 314 EN-Texte: **15** falsche Artikel, drei Wörter, alle drei
+  Glossarwerte — und acht korrekte Paare (`an event`, `a defective`,
+  `an interlocking`, `a police`, `an obstacle`), die unangetastet bleiben.
+
+  Bewusst eng gefasst: nur Glossar-Ersetzungen. Die Erstbuchstaben-Regel
+  trägt für alle 97 Glossarwerte (ein Test prüft das gegen das echte
+  Glossar), allgemein aber nicht — „a U-Bahn" und „an hour" gehen jeweils
+  andersherum, und Entity-Platzhalter liefern genau solche Tokens. Prosa,
+  die das Modell selbst geschrieben hat, wird nie umgeschrieben. Der Korpus
+  enthält zudem `77 a After:`, eine vom Modell zerlegte Hausnummer; eine
+  textweite Suche nach einem alleinstehenden `a` hätte sie zerstört.
+  (PR #1832, Cache-Epoche 10 → 11)
+
+* **Haltestellenverlegungen im EN-Feed: drei Anläufe, und die ersten zwei
+  haben es nicht gelöst (2026-09-18)**:
+  Ein Item, drei Runden, jede mit einem anderen Versagensgrund. Der
+  Ausgangszustand, veröffentlicht:
+
+  ```
+  DE: Von: 1. Haidequerstraße 2     Nach: 1. Haidequerstraße 510
+  EN: From: 1. Haidequerstraße 510  Duration: From 1. Haidequerstraße 510
+  ```
+
+  Das Modell ließ den Platzhalter mit der `2` weg und loopte auf dem Rest.
+  Das Englische **verschwieg die Herkunft nicht nur, es beförderte das Ziel
+  an deren Stelle** — der Leser erfuhr, die Haltestelle wandere *von* 510
+  weg. Über rund 500 Hausnummern ist das ein langer Weg in die falsche
+  Richtung. Dazu im Schwester-Item die Linie `14AX`, die es nicht gibt: das
+  Modell hatte das schließende `X` des Platzhalters verdoppelt, der Unmasker
+  ersetzte den gültigen Teil und ließ das überzählige Zeichen angeklebt.
+
+  **Runde 1 (PR #1828)** — ein Wächter verwirft eine Übersetzung, die eine
+  verbatim maskierte Entität verliert, und fällt auf die deutsche Quelle
+  zurück; das verdoppelte `X` wird repariert statt verworfen, weil der
+  Platzhalter heil ankam. Kalibriert über 400 DE/EN-Paare: „jede Maske muss
+  überleben" schlägt bei 12,5 % an, davon 21 Verluste nur ein `…` oder `–`;
+  auf Masken mit Wortzeichen eingeschränkt 7,2 % — exakt drei kaputte Items.
+  Ergebnis: keine Falschaussage mehr, aber das Item stand **deutsch** da.
+
+  **Runde 2 (PR #1829)** — die Feldlabels (`Von:`, `Nach:`, `Haltestelle:`,
+  `Dauer:`, `Zeitraum:`, `Grund:`) und `Haltestellenverlegung` ins Glossar.
+  `Nach:` war zu „**After:**" geworden, neben einem korrekten „From:" — eine
+  Verlegung mit Herkunft und ohne Ziel. Der Doppelpunkt im Schlüssel ist
+  dabei tragend: `Von` und `Nach` sind gewöhnliche Präpositionen, bloß als
+  Wort eingetragen würden sie „Umleitung nach Hofmühlgasse" zerlegen.
+  Ergebnis: Labels korrekt — und das Item stand über **fünf Builds hinweg
+  weiter deutsch**. Die Vorhersage, es werde damit englisch, war falsch.
+
+  **Runde 3 (PR #1831)** — der Record geht gar nicht mehr ans Modell. Übrig
+  geblieben waren elf Platzhalter und drei deutsche Fragmente, kein Satz,
+  an dem sich das Modell festhalten kann; den Rest mitzuglossarisieren war
+  nicht verfügbar, weil der Korpus `bei der Linie` enthält, wo „of line"
+  falsch wäre. Stattdessen: Label-Block abtrennen, aus Glossar und Masking
+  deterministisch rendern, nur die Prosa davor übersetzen lassen. Die
+  Schwelle ist gemessen — von 157 veröffentlichten Beschreibungen tragen 130
+  kein Label, 24 genau eines (der `Grund:`-Schluss, der korrekt übersetzt
+  und Prosa bleibt), und **genau 3** zwei oder mehr: die Verlegungs-Items.
+
+  Im Feed seit dem Build um 18:30 nachweisbar:
+
+  ```
+  stop relocation of line 72A towards Hasenleitengasse Stop: Kraftwerk
+  Simmering From: 1. Haidequerstraße 2 To: 1. Haidequerstraße 510 …
+  ```
+
+  Offen geblieben: `nach Hofmühlgasse` innerhalb eines Wertes bleibt
+  deutsch — ein bloßes `nach` global zu glossarisieren ist aus demselben
+  Grund unsicher wie `der Linie`. (PRs #1828, #1829, #1831, Cache-Epochen
+  7 → 10)
+
+* **Der Stationsvalidator meldet die eine Namenskollision, die wirklich
+  falsch auflöst (2026-09-18)**:
+  `station_info("Heizwerkstraße")` liefert DIVA, Stop-IDs und Koordinaten
+  einer **anderen** Haltestelle, 463 m weiter westlich — und
+  `station_info("Deutschstraße")`, im Verzeichnis nirgends sonst zu Hause,
+  antwortet unter dem Namen `Wien Heizwerkstraße (WL)`.
+
+  ```
+  Wien Heizwerkstraße (WL) / wl_diva 60200228 → Haltestellen "Deutschstraße" ×2
+  Wien Heizwerkstraße (WL) / wl_diva 60201742 → Haltestellen "Heizwerkstraße" ×2
+  ```
+
+  `_station_lookup` nimmt bei gleichem Namen eine Abkürzung, bevor der
+  Tie-Break läuft: die erste Registrierung behält den Schlüssel, die spätere
+  wird verworfen — und anders als jede andere Kollision auf diesem Pfad
+  nicht einmal geloggt.
+
+  **Der auslösende Audit-Befund war in zwei Punkten falsch**, und beides
+  ändert, was der Check tun darf. Erstens der Mechanismus: die Duplikat-
+  prüfung ist nicht rein koordinatenbasiert, `_find_alias_collision_issues`
+  gruppiert alle acht Kollisionen bereits und schweigt nach seinem eigenen
+  Kontrakt. Zweitens die Größe: sieben der acht sind **keine** Defekte —
+  Wien betreibt verschiedene Haltestellen unter einem Namen (`Märzstraße`
+  zweimal, 479 m auseinander), und in diesen sieben trägt jedes Mitglied
+  eine Haltestelle des gemeinsamen Namens. Sie zu melden hieße, das am
+  2026-05-12 bewusst entfernte Eindeutigkeitsgate wiederherzustellen, das
+  einmal 30 Namensbefunde zu **1759 quarantänisierten WL-Einträgen**
+  auffächerte.
+
+  Der Check feuert deshalb nur, wenn der Eintrag, der den Namen gewinnt, ihn
+  **nicht trägt**, ein Geschwistereintrag aber schon: 1 Treffer live, 0 auf
+  den anderen sieben Gruppen, 0 auf den 105 Einträgen ohne Haltestelle
+  eigenen Namens. Bewusst **nicht** an den Quarantäne-Pfad gehängt — der
+  löscht den beanstandeten Eintrag, und das nähme dem Verzeichnis seine
+  einzigen `Deutschstraße`-Haltestellen. Die Reparatur der Daten bleibt
+  offen (Audit-Befund D.1). (PR #1827)
+
 * **Straßennamen bleiben Straßennamen — auch im englischen Feed
   (2026-09-17)**:
   Im EN-Feed stand **„rear customs office"**, wo „Hintere Zollamtsstr."
