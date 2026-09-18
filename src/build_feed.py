@@ -1017,7 +1017,12 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       a failed attempt persists nothing — so the bump is for the items
 #       cached BEFORE that rejection began, and for every cached item
 #       carrying a spelled-out ``gegenüber``.
-_TRANSLATION_CACHE_EPOCH = 10
+#  11 — ``a``/``an`` now agrees with the word the glossary substitutes, so
+#       "an switch fault", "an demonstration" and "an service obstruction"
+#       stop reaching subscribers. 15 occurrences across 314 published EN
+#       texts, every one of them cached as a success — the article is wrong
+#       without being German, so nothing else would evict it.
+_TRANSLATION_CACHE_EPOCH = 11
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -2158,6 +2163,58 @@ def _unmask_entities(text: str, mapping: dict[str, str]) -> str:
     )
 
 
+def _agreeing_article(article: str, following: str) -> str:
+    """Return ``a``/``an`` agreeing with *following*, keeping *article*'s case."""
+    want = "an" if following[:1].lower() in "aeiou" else "a"
+    return want.capitalize() if article[:1].isupper() else want
+
+
+def _fix_glossary_articles(text: str, mapping: dict[str, str]) -> str:
+    """Repair ``a``/``an`` in front of a word the glossary put there.
+
+    The model is not being careless here — it is being correct about what it
+    was shown. Every placeholder starts with ``X``, whose letter name begins
+    with a vowel sound, so "an XGLO…X0X" is the right article for the token
+    in front of it. Unmasking then swaps in a consonant-initial English term
+    and strands the article. Published 2026-09-18::
+
+        Due to an switch fault between Tullnerfeld … and Wien Meidling …
+        Due to an demonstration in the area of Schwarzenbergplatz and Ring
+        After an service obstruction there are different intervals.
+
+    Measured over 314 published EN texts: 15 occurrences, three distinct
+    words — ``service obstruction`` (11), ``switch fault`` (3),
+    ``demonstration`` (1) — and every one of them a glossary value. Against
+    that, the eight article pairs the model got right are left alone.
+
+    Restricted to glossary substitutions on purpose. The naive letter rule
+    is safe for all 97 glossary values (checked: the only vowel-lettered
+    entries are genuinely vowel-sounding, and none begin with a silent
+    ``h``), but it is NOT safe in general — "a U-Bahn" and "an hour" both
+    go the other way, and entity placeholders restore exactly that kind of
+    token (``U6``, ``S45``). Prose the model wrote itself is never touched.
+    """
+    for placeholder, value in mapping.items():
+        if not placeholder.startswith("XGLO") or not value:
+            continue
+        pattern = re.compile(
+            r"\b(an?)(\s+)(" + re.escape(value) + r")", re.IGNORECASE
+        )
+        # ``value`` is bound as a default so the closure cannot read a later
+        # iteration's value (ruff B023). ``sub`` runs immediately here, so the
+        # two are equivalent today — the binding keeps them equivalent if the
+        # call ever becomes lazy.
+        def _agree(match: re.Match[str], term: str = value) -> str:
+            return (
+                _agreeing_article(match.group(1), term)
+                + match.group(2)
+                + match.group(3)
+            )
+
+        text = pattern.sub(_agree, text)
+    return text
+
+
 def _entities_dropped_by_translation(
     masked_text: str, translated: str, mapping: dict[str, str]
 ) -> list[str]:
@@ -2609,7 +2666,9 @@ def _translate_text_attempt(
             sanitize_log_arg(", ".join(sorted(dropped)[:5])),
         )
         return None
-    unmasked = _unmask_entities(translated, combined_mapping)
+    unmasked = _fix_glossary_articles(
+        _unmask_entities(translated, combined_mapping), combined_mapping
+    )
     if _RESIDUAL_PLACEHOLDER_RE.search(unmasked):
         # The model mangled a placeholder so badly the exact-nonce unmask could
         # not restore it (dropped/translated nonce chars, lower-cased prefix,
