@@ -181,6 +181,58 @@ def test_repair_is_idempotent() -> None:
     assert repair_glued_words(once) == once
 
 
+# The two-lowercase lookbehind cannot fire behind a two-letter capitalised
+# function word: ``Im`` offers only one lowercase letter. ``ImBaustellen-
+# bereich`` reached the published feed for that reason, while ``DerFuß-
+# gängerverkehr`` (``er``) and ``DieArbeiten`` (``ie``) in the very same
+# descriptions were repaired.
+
+
+def test_two_letter_function_word_glue_is_repaired() -> None:
+    # Cache item "Ruthnergasse Kreuzung Justgasse", published 2026-09-18.
+    assert (
+        repair_glued_words("ImBaustellenbereich wird ein Fahrstreifen freigehalten")
+        == "Im Baustellenbereich wird ein Fahrstreifen freigehalten"
+    )
+
+
+def test_the_longer_function_words_in_the_same_prose_still_work() -> None:
+    """The new alternative must not shadow the one that already fired."""
+    assert repair_glued_words("DerFußgängerverkehr") == "Der Fußgängerverkehr"
+    assert repair_glued_words("DieArbeiten erfolgen") == "Die Arbeiten erfolgen"
+    assert repair_glued_words("KreuzungMärzstraße") == "Kreuzung Märzstraße"
+
+
+def test_a_capitalised_prefix_that_is_not_a_function_word_is_left_alone() -> None:
+    """Why a closed list and not ``(?<=[A-ZÄÖÜ][a-zäöüß])``.
+
+    The relaxed lookbehind would be shorter and would split every name
+    built from a capitalised two-letter particle. Naming the function
+    words that actually open a German clause cannot.
+
+    (``MacGyver`` is absent on purpose: ``ac`` is two lowercase letters,
+    so the pre-existing rule already splits it. That is not this change's
+    doing and not this change's to fix.)
+    """
+    for text in ("McDonalds", "DeSimone", "LaRoche", "StPölten"):
+        assert repair_glued_words(text) == text
+
+
+def test_the_function_word_is_only_a_glue_site_as_a_whole_word() -> None:
+    """The list is anchored on a word boundary, so it cannot fire mid-word.
+
+    Every one of these carries a listed particle as its first syllable —
+    ``Import``, ``Amtshaus``, ``Umbau``, ``Inbetriebnahme`` — and none is
+    a glue site, because what follows is lowercase. The boundary keeps the
+    rule from reaching a ``…wortAmBeispiel`` shape as well; no such text
+    exists in the corpus, and a rule that only fires after a space is the
+    conservative half of that trade.
+    """
+    for text in ("Import", "Amtshaus", "Anwesen", "Umbau", "Inbetriebnahme", "Zufahrt"):
+        assert repair_glued_words(text) == text
+    assert repair_glued_words("BahnhofAmSchedifkaplatz") == "Bahnhof AmSchedifkaplatz"
+
+
 # --------------------------------------------------------------------------
 # 4. Truncation that announces information it then cuts off
 # --------------------------------------------------------------------------

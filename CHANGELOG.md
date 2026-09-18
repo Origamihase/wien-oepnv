@@ -5,6 +5,64 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Die Baustellen-Meldung, die nur „fragen Sie woanders" sagte (2026-09-18)**:
+  Item 8 von zehn im deutschen Feed, vollständig:
+
+  ```
+  Ruthnergasse Kreuzung Justgasse
+  Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind
+  der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. [20.09. – 16.10.]
+  ```
+
+  Der Satz ist **130 Zeichen** lang, das Summary-Budget **180**. Die
+  Zusammenfassung besteht aus Satz 1 plus Satz 2, letzterer nur, wenn beide
+  zusammen noch hineinpassen. Stand der Baustein vorne, **war** er die ganze
+  Meldung — und der Satz, der sagt, was auf der Straße passiert, kam nie vor:
+
+  ```
+  Im Baustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr
+  wechselweise mittels Personal während der Spitzenzeiten oder
+  Verkehrszeichen durchgeschleust.
+  ```
+
+  Auf einem rotierenden Info-Display kostet das nicht nur einen schlecht
+  lesbaren Eintrag: `MaxItems` ist 10, der Platz hat also **eine andere
+  Störung verdrängt**, die sonst zu sehen gewesen wäre.
+
+  Der Baustein ist **kein fester String**. Drei Wortlaute stehen im Cache und
+  unterscheiden sich nur in der Mitte — `zu den …`, `zur Umleitung sowie
+  Haltestellenverlegung der …`, `zur Haltestellenverlegungen der …` — deshalb
+  verankert das Muster die beiden invarianten Enden und lässt die Mitte in
+  einem begrenzten, punktfreien Lauf variieren. Punktfrei hält einen
+  entgleisten Treffer innerhalb eines Satzes.
+
+  Größenordnung, ehrlich: **5 von 22** Baustellen-Beschreibungen im Cache
+  tragen den Baustein, **3 von 110** gerenderten Cache-Items ändern sich
+  dadurch. Kein systemisches Problem — aber bis 16.10.2026 live auf einem
+  öffentlichen Display, im deutschen Feed, den `AGENTS.md` an erste Stelle
+  setzt.
+
+  **Gekoppelt dazu ein zweiter Fix in `_GLUED_WORD_RE`.** Der Lookbehind
+  verlangt **zwei** Kleinbuchstaben und kann deshalb hinter einem
+  zweibuchstabigen großgeschriebenen Funktionswort nicht greifen:
+  `DerFußgängerverkehr` (`er`) und `DieArbeiten` (`ie`) wurden repariert,
+  `ImBaustellenbereich` (`Im`, das `I` ist groß) nicht. Das fiel bisher nicht
+  auf, weil genau dieser Satz nie veröffentlicht wurde — ohne den zweiten Fix
+  hätte der erste die Verklebung erstmals **sichtbar gemacht**. Die Ergänzung
+  ist eine **geschlossene Liste** von Funktionswörtern, kein gelockerter
+  Lookbehind: `(?<=[A-ZÄÖÜ][a-zäöüß])` wäre kürzer und würde auch `McDonalds`
+  trennen. Über **1192** Texte geprüft — den gesamten Cache plus die komplette
+  veröffentlichte Historie beider Feeds — greift die Liste an genau **einer**
+  Stelle und sonst nirgends.
+
+  Das Entfernen tritt zurück, wenn der Baustein alles ist, was die
+  Beschreibung hat: ein nutzloser Satz ist immer noch besser als ein Item mit
+  Überschrift und nichts darunter.
+
+  Keine Cache-Epoche nötig: der deutsche Quelltext ändert sich, und die
+  Quell-Fingerprints (`_SOURCE_DIGEST_KEY`) invalidieren die englische
+  Übersetzung von selbst.
+
 * **Störungsvokabular: aus „Harmful train" wird „defective train" (2026-09-18)**:
   Gewöhnliche deutsche Komposita, die das Übersetzungsmodell wörtlich nimmt
   und dabei zwischen schräg und alarmierend landet. Gezählt über **314**
