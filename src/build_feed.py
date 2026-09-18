@@ -1010,7 +1010,14 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       and the opening term came back as "Stop change", "Station
 #       relocation", "Stop transfer" or untranslated, depending on the item.
 #       Cached items keep every one of those until the epoch moves.
-_TRANSLATION_CACHE_EPOCH = 9
+#  10 — a trailing ``Label: value`` record is now split off and rendered
+#       without the NMT model at all, and ``gegenüber`` joined its ``ggü.``
+#       sibling in the glossary. The three relocation items themselves were
+#       not cached — since epoch 8 their translation is rejected outright and
+#       a failed attempt persists nothing — so the bump is for the items
+#       cached BEFORE that rejection began, and for every cached item
+#       carrying a spelled-out ``gegenüber``.
+_TRANSLATION_CACHE_EPOCH = 10
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1167,6 +1174,28 @@ _TRAM_LETTER_LINE_RE: re.Pattern[str] = re.compile(
 # regex alternation so e.g. ``Schadhaftem Fahrzeug`` beats the
 # single-word ``Schadhaftem`` and the model receives one placeholder
 # per concept rather than two.
+# WL's structured field labels, German → English, in ONE place.
+#
+# Two consumers derive from this table and must never drift apart:
+# :data:`_GLOSSARY_BASE` (which translates the label) and
+# :data:`_LABEL_RECORD_RE` (which finds the record so it can be kept away
+# from the NMT model). A label present in one but not the other either
+# translates inside a block the model still mangles, or is torn out of a
+# block whose label then stays German.
+#
+# Order is irrelevant here — the glossary pattern sorts longest-first, which
+# is what makes ``Haltestellen:`` beat ``Haltestelle:``.
+_FIELD_LABEL_EN: dict[str, str] = {
+    "Haltestellen": "Stops",
+    "Haltestelle": "Stop",
+    "Zeitraum": "Period",
+    "Dauer": "Duration",
+    "Grund": "Reason",
+    "Nach": "To",
+    "Von": "From",
+}
+
+
 _GLOSSARY_BASE: dict[str, str] = {
     # --- Disruption-type nouns --------------------------------------
     "Betriebsstörung": "service disruption",
@@ -1245,13 +1274,13 @@ _GLOSSARY_BASE: dict[str, str] = {
     # English faces — exactly what this glossary exists to stop.
     "Haltestellenverlegungen": "stop relocations",
     "Haltestellenverlegung": "stop relocation",
-    "Haltestellen:": "Stops:",
-    "Haltestelle:": "Stop:",
-    "Zeitraum:": "Period:",
-    "Dauer:": "Duration:",
-    "Grund:": "Reason:",
-    "Nach:": "To:",
-    "Von:": "From:",
+    **{f"{de}:": f"{en}:" for de, en in _FIELD_LABEL_EN.items()},
+    # Spelled-out sibling of the ``ggü.`` entry above. WL uses both forms in
+    # relocation addresses ("Anzengruberstraße gegenüber 77a"); only the
+    # abbreviation was covered, so the model had to guess at the long form —
+    # and once the record stops going through the model, guessing is not an
+    # option any more.
+    "gegenüber": "opposite",
     # --- Construction / works ---------------------------------------
     "Gleisbauarbeiten": "track construction works",
     "Gleisarbeiten": "track works",
@@ -2368,6 +2397,84 @@ def _record_source_digest(
     translations[_SOURCE_DIGEST_KEY] = dict(sorted(digests.items()))
 
 
+# Finds a WL field label. Built from :data:`_FIELD_LABEL_EN` so the splitter
+# and the glossary can never disagree about what a label is.
+#
+# Sorted longest-first for symmetry with :func:`_domain_glossary_pattern`,
+# where the order IS load-bearing. Here it is not: the required ``:`` makes
+# the engine backtrack out of ``Haltestelle`` when the text says
+# ``Haltestellen:``, so either order matches the same spans. Kept so the two
+# patterns read alike, and stated plainly so nobody later "relies" on it.
+_LABEL_RECORD_RE: re.Pattern[str] = re.compile(
+    r"(?<!\w)(?:"
+    + "|".join(
+        re.escape(label)
+        for label in sorted(_FIELD_LABEL_EN, key=len, reverse=True)
+    )
+    + r"):\s"
+)
+
+# How many labels make a run a *record* rather than a sentence that happens to
+# end in one. Measured over 157 distinct published descriptions: 130 carry no
+# label at all, 24 carry exactly one — almost all of them the ``Grund: …``
+# tail, which translates correctly today and must keep going through the model
+# as prose. Only 3 carry two or more, and those three are precisely the
+# relocation items this split exists for.
+_MIN_LABELS_FOR_RECORD = 2
+
+
+def _split_label_record(text: str) -> tuple[str, str]:
+    """Split *text* into prose and a trailing ``Label: value`` record.
+
+    Returns ``(text, "")`` when there is no record, so the caller's normal
+    path is untouched for the 154 of 157 published descriptions that have
+    fewer than :data:`_MIN_LABELS_FOR_RECORD` labels.
+    """
+    matches = list(_LABEL_RECORD_RE.finditer(text))
+    if len(matches) < _MIN_LABELS_FOR_RECORD:
+        return text, ""
+    cut = matches[0].start()
+    return text[:cut].rstrip(), text[cut:].strip()
+
+
+def _render_label_record(
+    record: str, *, source: str | None, category: str | None
+) -> str:
+    """Render a label record to English WITHOUT the NMT model.
+
+    The record is a machine-written table, not prose: every label resolves
+    through the glossary and every value is a stop name, a street or a house
+    number that :func:`_mask_entities` carries verbatim. Nothing in it needs
+    a language model, and handing it to one is what broke it — Marian has no
+    sentence to hold on to, degenerates on the placeholder run, and drops or
+    doubles entities. Published 2026-09-18::
+
+        DE: Von: 1. Haidequerstraße 2     Nach: 1. Haidequerstraße 510
+        EN: From: 1. Haidequerstraße 510  Duration: From 1. Haidequerstraße 510
+
+    The origin was dropped and the destination promoted into its place. The
+    entity guard in :func:`_entities_dropped_by_translation` caught that and
+    fell back to German, which is where the item has sat since — correct, and
+    still not English. This is the half that makes it English: mask, resolve,
+    done. Same two passes the model path uses, minus the model, so the
+    rendering is deterministic and the addresses cannot move.
+    """
+    glossed, glossary_mapping = _apply_domain_glossary(
+        _normalise_for_translation(record), source=source, category=category
+    )
+    masked, entity_mapping = _mask_entities(glossed)
+    return _unmask_entities(masked, {**glossary_mapping, **entity_mapping})
+
+
+def _join_record(translated: str, record_en: str) -> str:
+    """Re-attach a rendered record to the translated prose in front of it."""
+    if not record_en:
+        return translated
+    if not translated:
+        return record_en
+    return f"{translated} {record_en}"
+
+
 def _translate_text_attempt(
     text: str,
     ident: str = "",
@@ -2409,6 +2516,20 @@ def _translate_text_attempt(
     pipe = _get_translation_pipeline()
     if pipe is None:
         return None
+    # A trailing ``Label: value`` record is a table, not prose. Split it off
+    # and render it without the model (see ``_render_label_record``); only the
+    # prose in front of it goes through Marian. Untouched for the 154 of 157
+    # published descriptions that carry fewer than two labels.
+    prose, label_record = _split_label_record(text)
+    record_en = (
+        _render_label_record(label_record, source=source, category=category)
+        if label_record
+        else ""
+    )
+    if not prose:
+        # Nothing but the record — there is no prose left to translate.
+        return record_en
+    text = prose
     # Compose two mask passes:
     #   1. Domain-glossary substitution — DE jargon → ``XGLO<n>X``
     #      placeholders that resolve to canonical English terms. Runs
@@ -2433,7 +2554,9 @@ def _translate_text_attempt(
     # gain — unmasking the masked text reproduces the correct, language-neutral
     # surface forms directly.
     if _is_non_translatable_content(masked_text):
-        return _unmask_entities(masked_text, combined_mapping)
+        return _join_record(
+            _unmask_entities(masked_text, combined_mapping), record_en
+        )
     try:
         # ``truncation=True`` enforces the model's input cap (512 tokens
         # for opus-mt-de-en) BEFORE Marian asserts and crashes the
@@ -2499,7 +2622,7 @@ def _translate_text_attempt(
             sanitize_log_arg(ident or "<unknown>"),
         )
         return None
-    return unmasked
+    return _join_record(unmasked, record_en)
 
 
 def _translate_text(

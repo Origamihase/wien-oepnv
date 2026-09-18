@@ -221,11 +221,21 @@ def test_glossary_placeholders_are_exempt() -> None:
 
 
 def test_a_dropping_translation_falls_back_to_german(monkeypatch: Any) -> None:
-    """End to end: the wrong-address item must not reach a subscriber.
+    """End to end: a sentence missing an entity must not reach a subscriber.
 
     Same contract as the residual-sentinel guard beside it — discard, do not
     cache, serve the source. German is a visible shortcoming; a confident
-    English sentence naming the wrong address is a false one.
+    English sentence missing a station or a house number is a false one.
+
+    **Probed with prose, and that changed after this test was written.** It
+    used to use ``DE_ADDRESS``, a bare ``Label: value`` record. A later round
+    stopped routing such records through the model at all (see
+    ``test_label_record_split.py``), so a dropping model can no longer touch
+    one — ``_translate_text_attempt`` now renders it deterministically and
+    returns a string. That is the intended improvement, not a weakening of
+    this guard: the record's own dropped-house-number case is still pinned
+    directly by ``test_the_dropped_house_number_is_caught`` above. What this
+    test must exercise is the path where a model still runs, which is prose.
     """
     def dropping_pipeline(text: str, **kwargs: Any) -> list[dict[str, str]]:
         # Model echoes its input but swallows the first entity placeholder.
@@ -237,9 +247,28 @@ def test_a_dropping_translation_falls_back_to_german(monkeypatch: Any) -> None:
         build_feed, "_get_translation_pipeline", lambda: dropping_pipeline
     )
 
-    assert build_feed._translate_text_attempt(DE_ADDRESS) is None
+    assert build_feed._translate_text_attempt(DE_LINES) is None
     # The single-string API converts that into the untouched German source.
-    assert build_feed._translate_text(DE_ADDRESS) == DE_ADDRESS
+    assert build_feed._translate_text(DE_LINES) == DE_LINES
+
+
+def test_a_bare_record_no_longer_depends_on_the_model(monkeypatch: Any) -> None:
+    """The flip side of the test above, pinned so the change is visible.
+
+    A pure record survives a model that drops everything it is given,
+    because it is never given anything.
+    """
+    def dropping_pipeline(text: str, **kwargs: Any) -> list[dict[str, str]]:
+        return [{"translation_text": ""}]
+
+    monkeypatch.setattr(
+        build_feed, "_get_translation_pipeline", lambda: dropping_pipeline
+    )
+
+    out = build_feed._translate_text_attempt(DE_ADDRESS)
+    assert out is not None
+    assert "From: 1. Haidequerstraße 2" in out
+    assert "To: 1. Haidequerstraße 510" in out
 
 
 def test_a_debris_translation_still_succeeds(monkeypatch: Any) -> None:
