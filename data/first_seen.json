@@ -4607,14 +4607,14 @@
     "first_seen": "2026-09-17T12:30:54.389686+00:00",
     "translations": {
       "en": {
-        "summary": "Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna \u2026",
-        "title": "U4: Vordere Zollamtsstra\u00dfe from Marxergasse and Kleine Marxerbr\u00fccke to unnamed traffic area and Rad\u2026"
+        "summary": "Due to the renovation of the tunnel ceiling of the U4 path and the necessary preparatory work in the road area as well as the repair of shafts by the Vienna \u2026",
+        "title": "U4: Vordere Zollamtsstra\u00dfe from Marxergasse and Kleine Marxerbr\u00fccke to unnamed traffic area and wheel\u2026"
       },
       "en_src": {
         "summary": "6c6a9018de216660",
         "title": "734014f39448b1b7"
       },
-      "epoch": 7
+      "epoch": 9
     }
   },
   "35bf402812b713b3ca2cfb4047d0416c127ab0dbb7894e5338139bfc3a930f18": {
@@ -11871,14 +11871,14 @@
     "first_seen": "2026-09-16T06:31:01.055828+00:00",
     "translations": {
       "en": {
-        "summary": "Because of roadworks in the area ofXJustgasse / Ruthnergasse the lines 36A and 36B are redirected.",
+        "summary": "Due to roadworks in the area of Justgasse / Ruthnergasse the lines 36A and 36B are redirected.",
         "title": "36A/36B: roadworks"
       },
       "en_src": {
         "summary": "c037304ef6dfc7f5",
         "title": "16f4fb01eeea6afb"
       },
-      "epoch": 7
+      "epoch": 9
     }
   },
   "864445423ceb9243f0ff08c7f3e2ab6552736204fbfa87f1ea9321c77e76b63a": {
@@ -13613,14 +13613,14 @@
     "first_seen": "2026-09-17T18:30:48.962798+00:00",
     "translations": {
       "en": {
-        "summary": "Due to the high passenger volume associated with an event, the folding ramps of the U4 underground trains cannot be extended.",
-        "title": "U4: folding ramp lock at 18.09.2026"
+        "summary": "Due to the high passenger volume associated with an event, the folding ramps of the underground trains of the line U4 cannot be extended.",
+        "title": "U4: folding ramp lock on 18.09.2026"
       },
       "en_src": {
         "summary": "b8ec6cca9e52f766",
         "title": "00ba1fdaf560da90"
       },
-      "epoch": 8
+      "epoch": 9
     }
   },
   "96f135154720252b723390157353648f6e722f3498310c762afbb7ad31588d1b": {
@@ -16298,8 +16298,15 @@
   "b542492b16ff35641eb5630a1f4e27881f68361be46830b764241b823c61bcf4": {
     "first_seen": "2026-09-18T06:31:01.637991+00:00",
     "translations": {
-      "en": {},
-      "epoch": 7
+      "en": {
+        "summary": "Lines 40 and 41 diversion over lines 9 and 42",
+        "title": "40/41/9/42: event Lines 40 and 41 diversion Lines 9 and 42"
+      },
+      "en_src": {
+        "summary": "8b7234202f279032",
+        "title": "764038df525d1507"
+      },
+      "epoch": 9
     }
   },
   "b56d9dc3e666a206b702a4ebc1ea36f8ff96b01584f20b8213950da0cf40d129": {
@@ -20201,7 +20208,15 @@
   "e5c3a94f572edd1558cafd97a5c3960aa38b6cc2f23678370681c6b0e2d43278": {
     "first_seen": "2026-09-18T14:31:02.985717+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "summary": "Due to an demonstration in the area of Schwarzenbergplatz and Ring, the following transport measures are taken.",
+        "title": "1/2/2A/3A/4A/71/D: demonstration on 19.09.2026"
+      },
+      "en_src": {
+        "summary": "aa4d8ec04a9f686c",
+        "title": "02e446d67769c463"
+      },
+      "epoch": 9
     }
   },
   "e5e4ada309d3d5a39dbcc7b58ba60a9bcfb4f6f0b36f7174fc6f157776ed18b5": {
