@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 18 Sep 2026 23:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 23:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40: Veranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5b277d2f7bf2900616fcae2d9d5bbcf6c0de5893242c378c1fce2a27af3b0f98</guid>
+      <pubDate>Fri, 18 Sep 2026 08:30:00 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 23:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 08:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 18.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 18.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1/2/2A/3A/4A/71/D: Demonstration am 19.09.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -54,17 +65,6 @@
       <content:encoded><![CDATA[Betrieb nur zwischen Friedrich-Engels-Platz und Schwarzenbergplatz. Die Züge werden weiter zum Karlsplatz umgeleitet.<br/>[18.09.2026 – 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40/41/9/42: Veranstaltung Linien 40 und 41 Umleitung über Linien 9 und 42]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b542492b16ff35641eb5630a1f4e27881f68361be46830b764241b823c61bcf4</guid>
-      <pubDate>Fri, 18 Sep 2026 08:30:29 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 08:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 08:30:29 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 23:30:00 +0200</ext:ends_at>
-      <description>Linien 40 und 41 Umleitung über Linien 9 und 42 [Am 18.09.2026]</description>
-      <content:encoded><![CDATA[Linien 40 und 41 Umleitung über Linien 9 und 42<br/>[Am 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[11A: Busse halten Vorgartenstraße vor Meiereistraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">064178a34de7623184079052e86f1eb5efbf23f243d8f7c0c55d47e8edac689c</guid>
@@ -83,8 +83,8 @@
       <ext:first_seen>Thu, 17 Sep 2026 22:30:55 +0200</ext:first_seen>
       <ext:starts_at>Sun, 20 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH &amp; Co KG zu entnehmen. [20.09.2026 – 16.10.2026]</description>
-      <content:encoded><![CDATA[Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH &amp; Co KG zu entnehmen.<br/>[20.09.2026 – 16.10.2026]]]></content:encoded>
+      <description>Im Baustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal während der Spitzenzeiten oder Verkehrszeichen durchgeschleust. [20.09.2026 – 16.10.2026]</description>
+      <content:encoded><![CDATA[Im Baustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal während der Spitzenzeiten oder Verkehrszeichen durchgeschleust.<br/>[20.09.2026 – 16.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Vordere Zollamtsstraße von Marxergasse und Kleine Marxerbrücke bis Unbenannte Verkehrsfläche und Rad…]]></title>

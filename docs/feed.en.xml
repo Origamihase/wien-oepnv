@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 18 Sep 2026 23:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 23:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40: Event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5b277d2f7bf2900616fcae2d9d5bbcf6c0de5893242c378c1fce2a27af3b0f98</guid>
+      <pubDate>Fri, 18 Sep 2026 08:30:00 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 23:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 08:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 18 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 18.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 18.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1/2/2A/3A/4A/71/D: Demonstration on 19.09.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -54,17 +65,6 @@
       <content:encoded><![CDATA[Operation only between Friedrich-Engels-Platz and Schwarzenbergplatz. Trains will be redirected to the Karlsplatz.<br/>[18.09.2026 – 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40/41/9/42: Event lines 40 and 41Xdiversion over lines 9 and 42]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b542492b16ff35641eb5630a1f4e27881f68361be46830b764241b823c61bcf4</guid>
-      <pubDate>Fri, 18 Sep 2026 08:30:29 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 08:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 08:30:29 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 18 Sep 2026 23:30:00 +0200</ext:ends_at>
-      <description>Lines 40 and 41 diversion over lines 9 and 42 [On 18.09.2026]</description>
-      <content:encoded><![CDATA[Lines 40 and 41 diversion over lines 9 and 42<br/>[On 18.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[11A: Buses stop Vorgartenstraße before Meiereistraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">064178a34de7623184079052e86f1eb5efbf23f243d8f7c0c55d47e8edac689c</guid>
@@ -83,8 +83,8 @@
       <ext:first_seen>Thu, 17 Sep 2026 22:30:55 +0200</ext:first_seen>
       <ext:starts_at>Sun, 20 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>For more information on the public transports concerned, please refer to the Wiener Linien GmbH &amp; Co KG. [20.09.2026 – 16.10.2026]</description>
-      <content:encoded><![CDATA[For more information on the public transports concerned, please refer to the Wiener Linien GmbH &amp; Co KG.<br/>[20.09.2026 – 16.10.2026]]]></content:encoded>
+      <description>In the construction site area, a lane is kept clear and traffic is diverted alternately by means of staff during peak hours or traffic signs. [20.09.2026 – 16.10.2026]</description>
+      <content:encoded><![CDATA[In the construction site area, a lane is kept clear and traffic is diverted alternately by means of staff during peak hours or traffic signs.<br/>[20.09.2026 – 16.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Vordere Zollamtsstraße from Marxergasse and Kleine Marxerbrücke to unnamed traffic area and Rad…]]></title>
