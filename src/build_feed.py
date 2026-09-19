@@ -152,6 +152,22 @@ _TRAILING_DIRECTIONAL_MARKER_RE = re.compile(r"\s*[<>]+\s*$")
 # comparison cannot mangle anything.
 _DIRECTIONAL_MARKER_RE = re.compile(r"[<>]+")
 
+# When two items merge, ``src/feed/merge.py`` joins the two bodies with
+# ``f"{ex_name} & {name}"`` for the TITLE, while the merged description
+# carries the same two clauses separated by a plain space. The reader
+# then gets the identical words twice, and the verbatim comparison below
+# misses it because one side has an ``&`` the other has not::
+#
+#     T: 25: Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse & Ersatzbus ab …
+#     D: Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse Ersatzbus ab …
+#
+# Counted over the published German feed: 8 of 232 unique items carry a
+# ``&`` in title or body, 6 of them are this restatement. The other two
+# are ordinary prose — ``Die Zufahrt zur Sport & Fun Halle Donaustadt ist
+# möglich.`` — and stay untouched, because the rule demands the rest of
+# the sentence match exactly once the joiner is levelled on BOTH sides.
+_MERGE_JOINER_RE = re.compile(r"\s+&\s+")
+
 # Line prefixes WL puts at the start of descriptions are redundant
 # noise — the title already carries the line attribution via the
 # canonical ``40/41:`` prefix. Real cache examples:
@@ -4851,9 +4867,20 @@ def _summary_duplicates_title(summary: str, title_out: str) -> bool:
     # line number would be inventing data, and this feed has published an
     # invented ``14AX`` before.
     stripped = _DIRECTIONAL_MARKER_RE.sub("", summary)
-    if stripped == summary:
+    if stripped != summary and stripped.casefold() == title_body_compare.casefold():
+        return True
+    # Joiner-insensitive third attempt — the merge ``&`` against the plain
+    # space of the merged body (see :data:`_MERGE_JOINER_RE`). Levelled on
+    # both sides so it does not matter which of the two halves won.
+    joined_summary = _MERGE_JOINER_RE.sub(" ", summary)
+    joined_title = _MERGE_JOINER_RE.sub(" ", title_body_compare)
+    # Short-circuit, not a guard: with no joiner on either side both
+    # strings come back unchanged and the comparison would only repeat
+    # the verbatim one above. Removing it changes no behaviour — it
+    # saves the work and names what this branch hangs on.
+    if (joined_summary, joined_title) == (summary, title_body_compare):
         return False
-    return stripped.casefold() == title_body_compare.casefold()
+    return joined_summary.casefold() == joined_title.casefold()
 
 
 def _evict_stale_translations(
