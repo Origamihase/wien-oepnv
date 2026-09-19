@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: der C.5-Gedankenstrich reist nicht mehr ins Übersetzungsmodell (2026-09-19)**:
+  Der erste Bau nach dem Merge von C.5 (21:20) zeigte im englischen Feed
+  `31: Demonstration –Xservice from Wallensteinstraße`, und im Zyklus 21:30
+  fielen drei weitere Strich-Titel auf Deutsch zurück. Der Gedankenstrich ist
+  ein geschütztes Zeichen und erreichte das Modell als Platzhalter zwischen
+  zwei Wörtern; das Modell gab ihn mit Anhängsel („X" am Folgewort, für keine
+  Nachkontrolle sichtbar, als Erfolg gecacht) oder verstümmelt zurück. Titel
+  der Form `<Linien>: <Ursachenwort> – <Fragment>` werden jetzt in zwei
+  Hälften übersetzt (`_translate_title_attempt`, `_split_reason_title` in
+  `src/build_feed.py`) und der Strich wird wörtlich wieder eingesetzt; beide
+  Hälften sind Texte, die das Modell schon vor dem Trennzeichen beherrschte.
+  Nur der Titel-Pfad des Übersetzungs-Caches nimmt diesen Weg, Beschreibungen
+  bleiben unberührt. `_TRANSLATION_CACHE_EPOCH` → 15, damit das gecachte
+  Anhängsel verschwindet. Tests: `tests/test_reason_title_translated_in_halves.py`.
 * **Baustellen: der Stadt-Wien-Verweissatz zählt nicht mehr als ÖPNV-Bezug (2026-09-19)**:
   Stadt-Wien-Baustellen kommen in den Feed, wenn sie nahe einem Bahnhof liegen
   oder ihr Text den öffentlichen Verkehr nennt. Als „Nennung" galt bisher auch

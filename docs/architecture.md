@@ -893,6 +893,14 @@ Nicht jeder Text gehört in ein NMT-Modell:
 * **Nicht-übersetzbarer Inhalt.** `_is_non_translatable_content` erkennt
   maskierte Texte, in denen nach dem Maskieren nichts mehr steht, was ein
   Modell übersetzen könnte (reine Linien- und Stationsfolgen).
+* **Der Gedankenstrich der Ticker-Titel.** `_separate_reason_word` schreibt
+  `31: Demonstration – Betrieb ab Wallensteinstraße`. Der Strich ist ein
+  geschütztes Zeichen und stünde im Modell als Platzhalter zwischen zwei
+  Wörtern — eine Form, die Marian mit Anhängsel oder verstümmelt zurückgibt
+  (EN-Feed 19.09.2026: „Demonstration –Xservice from …"). Darum übersetzt
+  `_translate_title_attempt` solche Titel in zwei Hälften (`_split_reason_title`:
+  Linienpräfix mit Ursachenwort, dann das Fragment) und setzt den Strich
+  wörtlich wieder ein. Nur der Titel-Pfad des Caches nimmt diesen Weg.
 
 ### Die Platzhalter
 

@@ -12,7 +12,7 @@ import secrets
 import sys
 import xml.etree.ElementTree as ET  # nosec B405
 from collections import defaultdict
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from concurrent.futures import (
     FIRST_COMPLETED,
     CancelledError,
@@ -1297,7 +1297,14 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       own ``_STREET_SUFFIX_RE``, so "the Ernst-Happel-Stadion" and "the
 #       Wiener Linien" — where the article is defensible English — are
 #       untouched.
-_TRANSLATION_CACHE_EPOCH = 14
+#  15 — the C.5 separator. "31: Demonstration – Betrieb ab …" reached the
+#       model with the en dash masked as a placeholder wedged between two
+#       words; the model re-emitted it with debris ("Demonstration –Xservice
+#       from …", published 2026-09-19 21:30, cached as a success because the
+#       stray X is glued to a word and no guard sees it). Titles of that
+#       shape are now translated in two halves and never carry the dash
+#       into the model; the cached debris has to go.
+_TRANSLATION_CACHE_EPOCH = 15
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -3099,6 +3106,68 @@ def _translate_text(
     return attempt if attempt is not None else text
 
 
+def _split_reason_title(title: str) -> tuple[str, str] | None:
+    """Split a ``<lines>: <Reason> – <fragment>`` title into its two halves.
+
+    The shape is the one :func:`_separate_reason_word` produces: after the
+    line prefix, exactly one word from :data:`_CATEGORY_PREFIX_WORDS`, then
+    the en dash, then the ticker fragment. Anything else — no dash, a
+    multi-word head, a head that is not a reason word (``Wien – Mödling``),
+    an empty tail — returns ``None`` and is translated whole.
+    """
+    if not title or " – " not in title:
+        return None
+    match = _TITLE_BODY_RE.match(title)
+    body = match.group(1) if match else title
+    prefix = title[: match.start(1)] if match else ""
+    head, _sep, tail = body.partition(" – ")
+    head = head.strip()
+    tail = tail.strip()
+    if not head or not tail or " " in head:
+        return None
+    if head.casefold() not in _CATEGORY_PREFIX_WORDS:
+        return None
+    return f"{prefix}{head}", tail
+
+
+def _translate_title_attempt(
+    text: str,
+    ident: str = "",
+    *,
+    source: str | None = None,
+    category: str | None = None,
+) -> str | None:
+    """Translate a title; the C.5 reason/fragment halves go through the model apart.
+
+    The en dash is a preserved symbol (:data:`_PRESERVED_SYMBOLS_RE`), so
+    ``31: Demonstration – Betrieb ab Wallensteinstraße`` would reach the
+    model as ``31: Demonstration XENT…X1X Betrieb ab XENT…X2X`` — a
+    placeholder wedged between two words. Published 2026-09-19 21:30 in
+    ``docs/feed.en.xml``: the model re-emitted it with debris,
+    ``31: Demonstration –Xservice from Wallensteinstraße``, and mangled
+    three more such titles into residuals that failed their items back to
+    German. Translating ``31: Demonstration`` and ``Betrieb ab
+    Wallensteinstraße`` on their own gives the model the two texts it
+    handled before the separator existed; the dash is re-inserted verbatim
+    and never travels. Either half failing fails the title, as before.
+    """
+    halves = _split_reason_title(text)
+    if halves is None:
+        return _translate_text_attempt(text, ident=ident, source=source, category=category)
+    head_en = _translate_text_attempt(halves[0], ident=ident, source=source, category=category)
+    if head_en is None:
+        return None
+    tail_en = _translate_text_attempt(halves[1], ident=ident, source=source, category=category)
+    if tail_en is None:
+        return None
+    return f"{head_en.rstrip()} – {tail_en.lstrip()}"
+
+
+def _attempt_for_field(field: str) -> Callable[..., str | None]:
+    """The translation attempt a cached field goes through: titles may split."""
+    return _translate_title_attempt if field == "title" else _translate_text_attempt
+
+
 def _translate_time_line_en(time_line: str) -> str:
     """Swap a leading German time-line prefix (e.g. ``Seit``) for English.
 
@@ -3162,7 +3231,7 @@ def _cached_translation(
     if not text:
         return text, True  # empty input is trivially "translated"
     if state is None or not ident:
-        attempt = _translate_text_attempt(
+        attempt = _attempt_for_field(field)(
             text, ident=ident, source=source, category=category,
         )
         return (attempt, True) if attempt is not None else (text, False)
@@ -3223,7 +3292,7 @@ def _cached_translation(
             sanitize_log_arg(ident),
             sanitize_log_arg(field),
         )
-    attempt = _translate_text_attempt(
+    attempt = _attempt_for_field(field)(
         text, ident=ident, source=source, category=category,
     )
     if attempt is None:
