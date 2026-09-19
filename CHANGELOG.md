@@ -5,6 +5,26 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Baustellen: der Stadt-Wien-Verweissatz zählt nicht mehr als ÖPNV-Bezug (2026-09-19)**:
+  Stadt-Wien-Baustellen kommen in den Feed, wenn sie nahe einem Bahnhof liegen
+  oder ihr Text den öffentlichen Verkehr nennt. Als „Nennung" galt bisher auch
+  der Verweissatz „Nähere Informationen zu den betroffenen öffentlichen
+  Verkehrsmittel sind der Auskunft der Wiener Linien … zu entnehmen" — derselbe
+  Satz, den der Feed-Bau seit 18.09. aus der Beschreibung streicht, weil er
+  weder Linie noch Haltestelle nennt. Fünf von 22 Cache-Einträgen erreichten
+  den Feed allein über diesen Satz; vier davon belegten in sieben Tagen 151 von
+  338 Revisionen einen der zehn Plätze, jedes Mal ohne Verkehrsbezug in Titel
+  oder Beschreibung („Ruthnergasse Kreuzung Justgasse", Audit 19.09., F.1).
+  Das Muster ist jetzt einmal im Provider definiert
+  (`src/providers/baustellen.py`, `REFERRAL_BOILERPLATE_RE`); Relevanzprüfung
+  (`mentions_oepnv`, `is_transit_relevant`, Cache-Update und Feed-Bau) und
+  Anzeige-Kürzung benutzen dasselbe. Der Satz wird nach der Wortreparatur
+  entfernt, und das Muster duldet den fehlenden Leerraum in
+  „betroffenenöffentlichen", den die Reparatur nicht sehen kann. `oepnv_lead`
+  stellt den Satz nicht mehr an den Anfang der Beschreibung; führt jetzt der
+  Satz, der eine Linie oder Haltestelle nennt. Erwartung auf dem Cache vom
+  19.09.: 22 → 16 Einträge, kein Eintrag mit konkretem Linien- oder
+  Haltestellenbezug betroffen. Tests: `tests/test_baustellen_referral_not_a_signal.py`.
 * **DE- und EN-Feed: Gedankenstrich zwischen Ursachenwort und Ticker-Fragment (2026-09-19)**:
   WLs Anzeigetafel-Kurzmeldungen stellen den Grund ohne Fuge vor die Folge:
   `31: Demonstration Betrieb ab Wallensteinstraße`. Aus der Entfernung gelesen

@@ -67,6 +67,7 @@ from .utils.http import validate_http_url
 from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
 from .utils.stats import append_disruption_row, extract_location_name
+from .providers.baustellen import REFERRAL_BOILERPLATE_RE
 from .utils.text import html_to_text, repair_glued_words, truncate_html
 
 
@@ -5158,10 +5159,12 @@ def _trim_truncation_tail(truncated: str) -> str:
     return truncated
 
 
-# Stadt-Wien roadworks descriptions open with a referral that tells the reader
-# to ask somebody else. It carries no information about the disruption, and at
-# 130 characters it eats most of the 180-character summary budget — so the
-# sentence that says what actually happens never fits.
+# The Stadt-Wien referral ("Nähere Informationen zu den betroffenen
+# öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien … zu
+# entnehmen") tells the reader to ask somebody else. It carries no
+# information about the disruption, and at 130 characters it eats most of
+# the 180-character summary budget — so the sentence that says what actually
+# happens never fits.
 #
 # Published 2026-09-18, the whole of item 8 of ten::
 #
@@ -5169,33 +5172,15 @@ def _trim_truncation_tail(truncated: str) -> str:
 #     Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind
 #     der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. [20.09. – 16.10.]
 #
-# while the source's second sentence — "Im Baustellenbereich wird ein
-# Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal
-# während der Spitzenzeiten oder Verkehrszeichen durchgeschleust" — was
-# dropped for want of room. On a rotating info display that slot cost a real
-# disruption its airtime and told the viewer nothing.
+# On a rotating info display that slot cost a real disruption its airtime and
+# told the viewer nothing. Dropped before sentence splitting so the
+# informative sentence becomes sentence one.
 #
-# Dropped before sentence splitting so the informative sentence becomes
-# sentence one.
-#
-# The phrase is not a fixed string. Five cache descriptions carry it in three
-# wordings, which differ only in the middle::
-#
-#     Nähere Informationen zu den ...................... betroffenen ... (x3)
-#     Nähere Informationen zur Umleitung sowie Haltestellenverlegung der ...
-#     Nähere Informationen zur Haltestellenverlegungen der .................
-#
-# so the pattern anchors on the two invariant ends — "Nähere Informationen zu"
-# and "betroffenen öffentlichen Verkehrsmittel(n) sind der Auskunft der Wiener
-# Linien ... zu entnehmen" — and lets the middle vary within a bounded,
-# non-greedy, dot-free run. Dot-free keeps a runaway match inside one sentence
-# even if an upstream wording drops the tail.
-_WL_REFERRAL_BOILERPLATE_RE: re.Pattern[str] = re.compile(
-    r"N[äa]here\s+Informationen\s+zu\w*\s+[^.]{0,80}?"
-    r"betroffenen\s+öffentlichen\s+Verkehrsmittel\w*\s+sind\s+der\s+Auskunft\s+"
-    r"der\s+Wiener\s+Linien\b[^.]{0,40}?zu\s+entnehmen\.?\s*",
-    re.IGNORECASE,
-)
+# The pattern lives in the provider module because two decisions hang on it:
+# the relevance gate (``is_transit_relevant``) must not count the sentence as
+# an ÖPNV mention, and the summary here must not spend its budget on it
+# (audit 2026-09-19, F.1). The local name is kept for the tests.
+_WL_REFERRAL_BOILERPLATE_RE: re.Pattern[str] = REFERRAL_BOILERPLATE_RE
 
 
 def _truncate_summary_180(summary: str) -> str:

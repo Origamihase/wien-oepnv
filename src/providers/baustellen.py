@@ -3,16 +3,22 @@
 The upstream WFS feed (``ogdwien:BAUSTELLEOGD``) lists *every* road
 construction site in Vienna — the overwhelming majority of which never
 touch public transport. To keep the feed a focused ÖPNV signal we admit
-a construction site only when it sits at (or right next to) a rail
-*Bahnhof*: a Wien station or a Pendlerbahnhof from the curated station
-directory. A lane closure on the forecourt of Wien Floridsdorf is worth
-surfacing; one in a back courtyard 2 km from any station is not.
+a construction site on one of two grounds:
 
-The decision is purely geographic — it compares the construction site's
-coordinate against the rail-station coordinates already maintained in
-``data/stations.json`` (see :func:`src.utils.stations.nearest_rail_station`).
-There is no free-text matching, so there is no ReDoS surface and no
-ambiguity from street names that merely echo a station name.
+* **Geographic** — it sits within a small radius of a rail *Bahnhof*: a
+  Wien station or a Pendlerbahnhof from the curated station directory
+  (see :func:`src.utils.stations.nearest_rail_station`). A lane closure
+  on the forecourt of Wien Floridsdorf is worth surfacing; one in a back
+  courtyard 2 km from any station is not.
+* **Textual** — its own description names public transport: a stop, a
+  line, a bus, a tram, the U-/S-Bahn. The Stadt-Wien referral sentence
+  ("Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel
+  sind der Auskunft der Wiener Linien … zu entnehmen") is *not* such a
+  mention — it names nothing, and the feed does not display it either
+  (see :data:`REFERRAL_BOILERPLATE_RE`).
+
+Both checks are linear: a coordinate scan over ~160 stations and a
+literal-alternation regex with bounded runs. No backtracking surface.
 """
 from __future__ import annotations
 
@@ -22,13 +28,16 @@ import re
 from typing import Any, Final
 
 from ..utils.stations import nearest_rail_station
+from ..utils.text import repair_glued_words
 
 __all__ = [
     "DEFAULT_STATION_RADIUS_M",
+    "REFERRAL_BOILERPLATE_RE",
     "is_transit_relevant",
     "mentions_oepnv",
     "oepnv_lead",
     "relevant_station",
+    "transit_text",
     "u_bahn_lines",
 ]
 
@@ -91,6 +100,35 @@ _OEPNV_RE: Final = re.compile(
     re.IGNORECASE,
 )
 
+# The Stadt-Wien referral. Roadworks descriptions carry a sentence that tells
+# the reader to ask Wiener Linien about "the affected public transport", in
+# three wordings that differ only in the middle::
+#
+#     Nähere Informationen zu den ...................... betroffenen ...
+#     Nähere Informationen zur Umleitung sowie Haltestellenverlegung der ...
+#     Nähere Informationen zur Haltestellenverlegungen der .................
+#
+# It names no line and no stop. The feed emitter drops it from the summary
+# for that reason (``build_feed._format_item_content``, since 2026-09-18) —
+# yet at the relevance gate the same sentence still counted as the ÖPNV
+# mention: 5 of 22 cached sites reached the feed on it alone and showed the
+# viewer a street name with nothing about transit underneath ("Ruthnergasse
+# Kreuzung Justgasse", 151 of 338 feed revisions over seven days held such an
+# item; audit 2026-09-19, F.1). One definition for both decisions: what says
+# nothing about ÖPNV on the display says nothing about ÖPNV at the gate.
+#
+# Anchored on the two invariant ends; the middle varies within a bounded,
+# dot-free, non-greedy run so a match can never cross a sentence boundary.
+# ``\s*`` before ``öffentlichen``: the upstream text loses spaces
+# ("betroffenenöffentlichen"), and that lowercase collision is the one
+# :func:`repair_glued_words` cannot see.
+REFERRAL_BOILERPLATE_RE: Final = re.compile(
+    r"N[äa]here\s+Informationen\s+zu\w*\s+[^.]{0,80}?"
+    r"betroffenen\s*öffentlichen\s+Verkehrsmittel\w*\s+sind\s+der\s+Auskunft\s+"
+    r"der\s+Wiener\s+Linien\b[^.]{0,40}?zu\s+entnehmen\.?\s*",
+    re.IGNORECASE,
+)
+
 #: Default proximity (in metres) between a construction site and a rail
 #: Bahnhof for the site to count as ÖPNV-relevant. 150 m mirrors the
 #: project's existing "effectively at the station" threshold
@@ -143,11 +181,29 @@ def relevant_station(location: Any, *, radius_m: float | None = None) -> str | N
     return match[0] if match else None
 
 
+def transit_text(text: str) -> str:
+    """Return ``text`` as the ÖPNV vocabulary check should see it.
+
+    Glued words are repaired first so the referral's run-together spelling
+    ("NähereInformationen") is recognised, then the referral is removed.
+    What remains is the part of the description that can name a line, a
+    stop or a mode.
+    """
+
+    if not text:
+        return ""
+    return REFERRAL_BOILERPLATE_RE.sub("", repair_glued_words(text))
+
+
 def mentions_oepnv(text: str) -> bool:
     """Return ``True`` if ``text`` mentions public transport (a stop, line,
-    bus, tram/Bim, U-/S-Bahn, …)."""
+    bus, tram/Bim, U-/S-Bahn, …) in its own words.
 
-    return bool(_OEPNV_RE.search(text or ""))
+    The Stadt-Wien referral to Wiener Linien does not count: it is removed
+    before the vocabulary check (see :data:`REFERRAL_BOILERPLATE_RE`).
+    """
+
+    return bool(_OEPNV_RE.search(transit_text(text)))
 
 
 def u_bahn_lines(text: str) -> list[str]:
@@ -179,14 +235,16 @@ def oepnv_lead(text: str) -> str:
     The construction feed entries are truncated for display, so the ÖPNV
     impact ("Bus X umgeleitet", "Haltestelle Y verlegt") must lead or it is
     cut off. Returns the text unchanged if no sentence matches or it already
-    leads.
+    leads. The Stadt-Wien referral never leads: it says nothing, and the
+    emitter drops it from the summary anyway — letting it take sentence one
+    would push the sentence that does say something behind the truncation.
     """
 
     if not text:
         return text
     sentences = _split_into_sentences(text.strip())
     for index, sentence in enumerate(sentences):
-        if _OEPNV_RE.search(sentence):
+        if mentions_oepnv(sentence):
             if index == 0:
                 return text
             reordered = [sentences[index], *sentences[:index], *sentences[index + 1 :]]
