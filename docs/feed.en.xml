@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 19 Sep 2026 19:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 20:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[2: Trains stop in Mühlfeldgasse]]></title>
@@ -49,9 +49,9 @@
       <pubDate>Sat, 19 Sep 2026 13:17:49 +0200</pubDate>
       <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
       <ext:starts_at>Sat, 19 Sep 2026 13:17:20 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 19.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 19.09.2026]]]></content:encoded>
+      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
+      <description>service from Schwedenplatz [On 19.09.2026]</description>
+      <content:encoded><![CDATA[service from Schwedenplatz<br/>[On 19.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[3A: Demonstration Buses stop towards Schottenring]]></title>
@@ -65,37 +65,15 @@
       <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[66A: Demonstration service from Quartier Belvedere]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aa15a615bcbfd6333cd7e84606b5661f479b660e4d23552a9d5fe9467fb7651b</guid>
-      <pubDate>Sat, 19 Sep 2026 13:04:48 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:04:48 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>[On 19.09.2026]</description>
-      <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Demonstration service from Landstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ff886c76c96e01de889fa37a4c3d1d0532d8f39863506d901e228ffbaefb4114</guid>
-      <pubDate>Sat, 19 Sep 2026 12:58:16 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 13:01:11 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 12:58:16 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>service from Landstraße &amp;lt; [On 19.09.2026]</description>
-      <content:encoded><![CDATA[service from Landstraße &lt;<br/>[On 19.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/2A/3A/4A/71/D: Demonstration am 19.09.2026]]></title>
+      <title><![CDATA[1/2/2A/3A/4A/71/D: Demonstration on 19.09.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e5c3a94f572edd1558cafd97a5c3960aa38b6cc2f23678370681c6b0e2d43278</guid>
       <pubDate>Fri, 18 Sep 2026 00:00:00 +0200</pubDate>
       <ext:first_seen>Fri, 18 Sep 2026 16:31:02 +0200</ext:first_seen>
       <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 19 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie D: Derzeit kein Betrieb zwischen Börse und Quartier Belvedere; Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße … [18.09.2026 – 19.09.2026]</description>
-      <content:encoded><![CDATA[Linie D: Derzeit kein Betrieb zwischen Börse und Quartier Belvedere; Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße …<br/>[18.09.2026 – 19.09.2026]]]></content:encoded>
+      <description>Line D: Currently no operation between Börse and Quartier Belvedere; line 1: diversion in both directions between Kliebergasse and Hintere Zollamtsstraße over Landstraße … [18.09.2026 – 19.09.2026]</description>
+      <content:encoded><![CDATA[Line D: Currently no operation between Börse and Quartier Belvedere; line 1: diversion in both directions between Kliebergasse and Hintere Zollamtsstraße over Landstraße …<br/>[18.09.2026 – 19.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Tue, 22 Sep 2026 15:00:00 +0200</ext:ends_at>
       <description>stop relocation of lines 12A and 14A towards Schmelz, Gablenzgasse and Reumannplatz U Stop: Pilgramgasse U From: Linke Wienzeile 106-108 nach Hofmühlgasse … [18.09.2026 – 22.09.2026]</description>
       <content:encoded><![CDATA[stop relocation of lines 12A and 14A towards Schmelz, Gablenzgasse and Reumannplatz U Stop: Pilgramgasse U From: Linke Wienzeile 106-108 nach Hofmühlgasse …<br/>[18.09.2026 – 22.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Buses stop Vorgartenstraße before Meiereistraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">064178a34de7623184079052e86f1eb5efbf23f243d8f7c0c55d47e8edac689c</guid>
+      <pubDate>Fri, 18 Sep 2026 06:45:20 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 07:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 06:45:20 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 19 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[18.09.2026 – 19.09.2026]</description>
+      <content:encoded><![CDATA[[18.09.2026 – 19.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Ruthnergasse crossing Justgasse]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">aa9998ab5faa86b356b845ead32f6781fc00f60bec1ef21ab9a811971b3da088</guid>
+      <pubDate>Sun, 20 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 22:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 20 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:ends_at>
+      <description>In the construction site area, a lane is kept clear and traffic is diverted alternately by means of staff during peak hours or traffic signs. [20.09.2026 – 16.10.2026]</description>
+      <content:encoded><![CDATA[In the construction site area, a lane is kept clear and traffic is diverted alternately by means of staff during peak hours or traffic signs.<br/>[20.09.2026 – 16.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
