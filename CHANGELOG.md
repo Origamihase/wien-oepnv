@@ -5,6 +5,48 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Die Architektur-Karte kannte den englischen Feed nicht (2026-09-19)**:
+  `docs/architecture.md` beschreibt auf 829 Zeilen die Abrufpipeline, die
+  `request_safe`-State-Machine, den Resilienz-Stack, die Stationsanreicherung,
+  die Statistik und den VOR-Scope — und erwähnte **Übersetzung, Glossar,
+  Masking und Marian mit null Treffern**. Die README nannte
+  `docs/feed.en.xml` ebenfalls **kein einziges Mal**, obwohl `AGENTS.md` den
+  englischen Feed als Ausgabe Nummer zwei führt.
+
+  Neu ist **§8 „Der zweisprachige Feed (DE → EN)"** mit Mermaid-Diagramm und
+  Fließtext, wie das Dokument es für jeden anderen Abschnitt hält. Beschrieben
+  sind die Kaskade (`_normalise_for_translation` → `_apply_domain_glossary` →
+  `_mask_entities` → Marian → `_unmask_entities`), die beiden Platzhalter-
+  Sorten samt Prozess-Nonce, die Nachkontrollen und der Betrieb.
+
+  Zwei Dinge stehen dort, weil sie ein späterer Bearbeiter sonst kaputt macht:
+
+  1. **Ein Item ist ganz englisch oder ganz deutsch.** `_apply_lang_overlay`
+     gibt bei einem Fehlschlag in irgendeinem Feld das unveränderte Original
+     zurück. Eine „wenigstens teilweise"-Logik bricht die Content-Parität.
+  2. **Wer Masking oder Glossar verbessert, erhöht `_TRANSLATION_CACHE_EPOCH`
+     im selben PR.** Die Sticky-German-Bremse erzwingt einen neuen Versuch nur,
+     wenn der gecachte Wert *gleich dem deutschen Quelltext* ist — eine
+     falsche, aber englische Übersetzung wird sonst für die Lebensdauer des
+     Items weiter ausgeliefert.
+
+  Dazu die Arbeitsteilung, die beim Lesen des Codes nicht sofort auffällt:
+  die **Epoche** invalidiert Änderungen auf *unserer* Seite, die
+  **Quell-Fingerprints** (`_SOURCE_DIGEST_KEY`) solche *upstreams*.
+
+  Die Abschnittsnummern sind nicht verschoben: §2–§7 werden aus Code und
+  Tests heraus referenziert (`test_vor_ci_quota_gate.py` liest die Datei und
+  prüft §7), das bisherige §8 „Querverweise" wandert als **§9** ans Ende.
+
+  Gegen stilles Verrotten sichert `tests/test_architecture_bilingual_section.py`
+  den Abschnitt ab: jedes der **17** dort genannten `_symbol`e muss in
+  `src/build_feed.py` weiterhin existieren, und die beiden Regeln oben müssen
+  benannt bleiben. Das Muster folgt dem bestehenden §7-Test.
+
+  In der README steht der englische Feed jetzt an beiden Stellen, an denen
+  schon die Feed-URL steht — außerhalb der auto-generierten Statistikblöcke,
+  damit der Generator sie nicht überschreibt.
+
 * **Zusammengeführte Meldungen lasen sich doppelt (2026-09-19)**:
   Wenn zwei Items verschmelzen, verbindet `src/feed/merge.py` die beiden
   Rümpfe für den **Titel** mit `f"{ex_name} & {name}"`, während die

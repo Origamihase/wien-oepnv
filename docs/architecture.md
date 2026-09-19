@@ -806,7 +806,158 @@ Zukunft enger werden, sind die niedrig hängenden Hebel:
 
 ---
 
-## 8. Querverweise
+## 8. Der zweisprachige Feed (DE → EN)
+
+`docs/feed.en.xml` ist kein eigener Feed, sondern ein **Spiegel** von
+`docs/feed.xml`: dieselben Items, dieselbe Reihenfolge, dieselben Zeiträume
+— nur Titel und Rumpf auf Englisch. Beide Dateien entstehen im selben
+Build-Lauf (`build_feed.main`, Ende von `src/build_feed.py`), der den
+fertigen deutschen Feed schreibt und danach denselben Item-Satz ein zweites
+Mal durch `_make_rss(..., lang="en")` schickt.
+
+Übersetzt wird **auf Item-Ebene, nach der deutschen Formatierung**. Das ist
+wichtig für das Verständnis der ganzen Kette: Kürzung auf 180 Zeichen,
+Satz-Auswahl, Dedupe gegen den Titel und `MaxItems` sind zu diesem Zeitpunkt
+längst passiert. Die Übersetzung sieht genau den Text, den auch ein deutscher
+Leser sieht — nicht den Rohtext des Providers.
+
+```mermaid
+flowchart TD
+    DE["Fertiger DE-Item-Text<br/>(title_out, summary, time_line)"]
+    Overlay["_apply_lang_overlay<br/>(pro Item, lang='en')"]
+    Evict["_evict_stale_translations<br/>Epoche veraltet? → verwerfen"]
+    Cache{"_cached_translation<br/>Treffer?"}
+    Digest["Quell-Fingerprint geprüft<br/>(_SOURCE_DIGEST_KEY)"]
+    Split["_split_label_record<br/>Prosa | Label-Record"]
+    Record["_render_label_record<br/>OHNE Modell"]
+    Norm["_normalise_for_translation"]
+    Glo["_apply_domain_glossary<br/>XGLO-Platzhalter"]
+    Mask["_mask_entities<br/>XENT-Platzhalter"]
+    Marian["Helsinki-NLP/opus-mt-de-en<br/>(transformers-Pipeline, lazy)"]
+    Unmask["_unmask_entities<br/>+ _normalise_placeholder_debris"]
+    Guards["Nachkontrollen:<br/>_entities_dropped_by_translation<br/>_fix_glossary_articles<br/>Rest-Platzhalter"]
+    OK{"Alle Felder<br/>übersetzt?"}
+    EN["EN-Item"]
+    Fallback["Item bleibt DEUTSCH<br/>(byte-identisch zum DE-Feed)"]
+    Stamp["_stamp_translation_epoch<br/>+ _record_source_digest"]
+
+    DE --> Overlay --> Evict --> Cache
+    Cache -- ja --> Digest --> OK
+    Cache -- nein --> Split
+    Split -- Record --> Record --> Guards
+    Split -- Prosa --> Norm --> Glo --> Mask --> Marian --> Unmask --> Guards
+    Guards --> OK
+    OK -- ja --> EN --> Stamp
+    OK -- nein --> Fallback
+```
+
+### Die beiden Invarianten
+
+**1. Ein Item ist ganz englisch oder ganz deutsch.** `_apply_lang_overlay`
+gibt bei einem Fehlschlag in *irgendeinem* Feld (`title`, `summary`,
+`time_line`) das unveränderte `base` zurück. Ein gemischtsprachiges Item oder
+ein „Partially translated"-Marker würde bedeuten, dass der englische Abonnent
+etwas anderes liest als der deutsche — genau das verbietet der
+Content-Parity-Vertrag. Wer hier eine „wenigstens teilweise"-Logik einbaut,
+bricht ihn.
+
+**2. Der Cache wird pro Identität geführt, nicht pro Text.** Die EN-Strings
+liegen in `state[ident]["translations"]["en"]` und überleben Builds — bei
+einer mehrjährigen Baustelle also Jahre. Zwei Mechanismen brechen diese
+Persistenz auf, und sie haben **getrennte Zuständigkeiten**:
+
+| Mechanismus | Invalidiert bei | Wer ihn zieht |
+| --- | --- | --- |
+| `_TRANSLATION_CACHE_EPOCH` | Änderungen auf **unserer** Seite (Masking, Glossar, Entity-Muster) | du, von Hand, im selben PR |
+| `_SOURCE_DIGEST_KEY` | Änderungen **upstreams** (WL formuliert dieselbe Störung um) | automatisch, pro Feld |
+
+Die „Sticky-German"-Bremse erzwingt einen neuen Versuch nur, wenn der
+gecachte Wert *gleich dem deutschen Quelltext* ist. Eine **falsche, aber
+nicht-deutsche** Übersetzung — `Schlachthausgasse` als „slaughterhouse gas",
+bevor der Straßen-Suffix-Masker existierte — wird ohne Epochen-Bump für die
+Lebensdauer des Items weiter ausgeliefert. Das ist die praktische Regel:
+**wer Masking oder Glossar verbessert, erhöht die Epoche im selben PR**,
+sonst sieht niemand die Verbesserung. Die Epochen-Historie steht als
+Kommentar bei der Konstante in `src/build_feed.py` und ist dort zu ergänzen.
+
+### Was am Modell vorbeigeht
+
+Nicht jeder Text gehört in ein NMT-Modell:
+
+* **Label-Records.** Endet der Text auf mindestens
+  `_MIN_LABELS_FOR_RECORD` (= 2) `Label: Wert`-Paare — die WL-Haltestellen-
+  verlegungen mit `Haltestelle:` / `Von:` / `Nach:` / `Dauer:` —, trennt
+  `_split_label_record` sie ab und `_render_label_record` setzt sie **ohne
+  Modell** aus dem Glossar zusammen. Nur die Prosa davor geht durch Marian.
+  Ein Modell, das eine Tabelle als Satz liest, erfindet Zusammenhänge.
+* **Nicht-übersetzbarer Inhalt.** `_is_non_translatable_content` erkennt
+  maskierte Texte, in denen nach dem Maskieren nichts mehr steht, was ein
+  Modell übersetzen könnte (reine Linien- und Stationsfolgen).
+
+### Die Platzhalter
+
+Zwei Sorten, bewusst unterscheidbar:
+
+* `XENT<nonce>X<n>X` — **Entitäten** (Marken, Stationsnamen, Linienkennungen).
+  Werden nach dem Modelllauf **wortgleich** zurückgesetzt.
+* `XGLO<nonce>X<n>X` — **Glossar-Treffer**. Werden durch die *englische*
+  Entsprechung ersetzt; die Auswahl ist nach `(source, category)` geschichtet
+  (`_GLOSSARY_BASE`, `_GLOSSARY_BY_SOURCE`, `_GLOSSARY_BY_CATEGORY`, aufgelöst
+  von `_resolve_glossary`), damit betreiberspezifisches Vokabular nur bei
+  Items dieses Betreibers greift.
+
+Die Reihenfolge ist kein Zufall: **Glossar zuerst, Entitäten danach.** Nach
+dem Glossar-Durchlauf stehen dort `XGLO…`-Platzhalter, die der Entity-Masker
+als undurchsichtige Eigennamen sieht und in Ruhe lässt. Umgekehrt würde das
+Glossar in bereits maskiertem Text nach deutschen Wörtern suchen, die nicht
+mehr da sind.
+
+Beide tragen einen **prozess-zufälligen Nonce** (`_PLACEHOLDER_NONCE`). Ohne
+ihn könnte ein Quelltext, der selbst `XENT0X` enthält, die Rückersetzung
+kapern oder zerstören. Das Format ist alphanumerisch und beginnt mit einem
+Buchstaben, weil der SentencePiece-Tokenizer sonst dazu neigt, es zu zerlegen.
+
+### Nachkontrollen
+
+Nach dem Modelllauf wird nicht blind vertraut:
+
+* `_normalise_placeholder_debris` repariert Platzhalter, die das Modell
+  verdoppelt hat (`X4XX` → `X4X`).
+* `_entities_dropped_by_translation` verwirft die Übersetzung, wenn das
+  Modell eine wortgleiche Entität **verloren** hat — lieber deutsch als eine
+  englische Meldung, in der eine Haltestelle fehlt.
+* `_fix_glossary_articles` gleicht `a`/`an` an das Wort an, das das Glossar
+  eingesetzt hat. Das Modell macht dabei nichts falsch: es sah den
+  Platzhalter, nicht das Ergebnis.
+* Übrig gebliebene Platzhalter (`_RESIDUAL_PLACEHOLDER_RE`) lassen das Feld
+  scheitern — und damit das Item deutsch bleiben.
+
+### Betrieb
+
+Die `transformers`-Pipeline wird **lazy** geladen
+(`_get_translation_pipeline`), damit CLI-Kommandos ohne Übersetzungsbedarf
+kein PyTorch anfassen.
+
+`torch` steht **absichtlich nicht** in `requirements.txt` — es ist ein
+mehrere hundert MB schweres Backend, das nur der EN-Pfad braucht. Beide
+feed-schreibenden Workflows installieren es deshalb getrennt und CPU-only,
+auf zwei verschiedenen Wegen:
+
+* `build-feed.yml` als eigener Schritt *Install PyTorch (CPU-only)*,
+* `update-cycle.yml` innerhalb des gecachten venv (`.venv/bin/pip install
+  torch --index-url https://download.pytorch.org/whl/cpu`) — der
+  Cache-Schlüssel dort bezieht die Workflow-Datei bewusst mit ein, weil ein
+  früherer Schlüssel die `torch`-Zeile nicht abdeckte und der EN-Feed nach
+  einem Cache-Treffer ohne Backend dastand.
+
+Beide cachen zusätzlich den Hugging-Face-Hub, damit das Modell nicht bei
+jedem Lauf neu geladen wird. Ist die Pipeline nicht verfügbar, liefert
+`_get_translation_pipeline` `None`, jedes Feld scheitert, und der EN-Feed
+enthält deutsche Items — sichtbar, aber nicht kaputt.
+
+---
+
+## 9. Querverweise
 
 Die laufende Audit- und Refactoring-Historie liegt in `CHANGELOG.md`
 (aktuelle und unveröffentlichte Einträge) und unter
