@@ -24899,6 +24899,23 @@
       "epoch": 9
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&913054": {
+    "first_seen": "2026-09-19T05:01:06.156115+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a defective train on the route, only limited train journeys are currently possible in Wien Handelskai station (U) train journeys.",
+        "title": "Wien Handelskai"
+      },
+      "en_src": {
+        "summary": "f8259c2e54c1876f",
+        "title": "1446ec78a5d27808"
+      },
+      "en_verbatim": [
+        "title"
+      ],
+      "epoch": 12
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },
