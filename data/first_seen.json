@@ -4651,13 +4651,13 @@
     "translations": {
       "en": {
         "summary": "Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna \u2026",
-        "title": "U4: Vordere Zollamtsstra\u00dfe from Marxergasse and Kleine Marxerbr\u00fccke to unnamed traffic area and Rad\u2026"
+        "title": "U4: Vordere Zollamtsstra\u00dfe from Marxergasse and Kleine Marxerbr\u00fccke to unnamed traffic area and wheel\u2026"
       },
       "en_src": {
         "summary": "6c6a9018de216660",
         "title": "734014f39448b1b7"
       },
-      "epoch": 12
+      "epoch": 14
     }
   },
   "35bf402812b713b3ca2cfb4047d0416c127ab0dbb7894e5338139bfc3a930f18": {
@@ -4711,11 +4711,11 @@
     "translations": {
       "en": {
         "summary": "service from Schwedenplatz",
-        "title": "2: demonstration Trains stop Steig A & Trains stop at line 46"
+        "title": "2: demonstration \u2013 Trains stop Steig A & Trains stop at line 46"
       },
       "en_src": {
         "summary": "5c0edd9fdb7764a6",
-        "title": "b4b3f78c30de5e3d"
+        "title": "dc4a99901f70ea45"
       },
       "epoch": 14
     }
@@ -12642,11 +12642,11 @@
     "translations": {
       "en": {
         "summary": "After a service obstruction there are different intervals.",
-        "title": "1: demonstration service from Hintere Zollamtsstra\u00dfe"
+        "title": "1: demonstration \u2013 service from Hintere Zollamtsstra\u00dfe"
       },
       "en_src": {
         "summary": "eb1bdc2703fe6f1b",
-        "title": "df2229c033bf2969"
+        "title": "1dcd2a7100ffd755"
       },
       "epoch": 14
     }
@@ -15322,20 +15322,6 @@
       "epoch": 3
     }
   },
-  "a92b3112df04fa1a75af2e50696960d8bd222be930417f6e31dfb7b89e30a720": {
-    "first_seen": "2026-09-19T19:30:41.111453+00:00",
-    "translations": {
-      "en": {
-        "summary": "irregular intervals in both directions. Reason: contamination.",
-        "title": "5B: contamination"
-      },
-      "en_src": {
-        "summary": "c718d041bb8d7d8a",
-        "title": "bd79da146cd97869"
-      },
-      "epoch": 14
-    }
-  },
   "a92d02495778b5484a3e92febf004d3ddcf871aa0beaaa9d608926a55480dfb4": {
     "first_seen": "2026-08-26T08:30:48.881377+00:00",
     "translations": {
@@ -16212,12 +16198,14 @@
     "first_seen": "2026-09-17T21:01:11.849987+00:00",
     "translations": {
       "en": {
-        "summary": "Because of track construction works in Althanstra\u00dfe, line D is divided."
+        "summary": "Because of track construction works in Althanstra\u00dfe, line D is divided.",
+        "title": "D: track construction works \u2013 Althanstra\u00dfe"
       },
       "en_src": {
-        "summary": "0cd217946d571c31"
+        "summary": "0cd217946d571c31",
+        "title": "9bfee0f5339ce500"
       },
-      "epoch": 9
+      "epoch": 14
     }
   },
   "b27d0e9569b2ed2ea394007c61624619b8d769e2a6711991724493556dd4f1bf": {
