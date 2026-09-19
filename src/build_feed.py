@@ -1070,7 +1070,15 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       masked placeholder. 23 of 294 published EN texts carry it, all cached
 #       as a success — the article is wrong without being German, so nothing
 #       else would evict it.
-_TRANSLATION_CACHE_EPOCH = 13
+#  14 — the same article, one word class over: German articles its street
+#       and square names ("in der Althanstraße", "zum Karlsplatz") and
+#       English leaves them bare. 5 of 310 published EN texts carry it,
+#       all cached as a success. Only the article goes; the preposition
+#       stays as the model chose it, and the street test is the masker's
+#       own ``_STREET_SUFFIX_RE``, so "the Ernst-Happel-Stadion" and "the
+#       Wiener Linien" — where the article is defensible English — are
+#       untouched.
+_TRANSLATION_CACHE_EPOCH = 14
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -2280,6 +2288,34 @@ _ARTICLE_BEFORE_LINE_RE: re.Pattern[str] = re.compile(
 )
 
 
+# The same convention gap, one word class over: German articles its street
+# and square names — ``in der Althanstraße``, ``zum Karlsplatz`` — and
+# English leaves them bare. Published::
+#
+#     Because of roadworks in the Kästenbaumgasse, …
+#     Trains will be redirected to the Karlsplatz.
+#
+# 5 occurrences across 310 published EN items. Only the ARTICLE is
+# dropped; the preposition is left exactly as the model chose it. Whether
+# "in Althanstraße" should read "on Althanstraße" is a separate question
+# with a far less certain answer, and this rule does not touch it.
+#
+# The test for "is this a street name" is :data:`_STREET_SUFFIX_RE` — the
+# very pattern the masker uses to shield these names in the first place,
+# reused rather than re-invented as a second suffix list that could drift
+# away from it. That is also what keeps the rule off the cases where the
+# article is defensible English: ``the Ernst-Happel-Stadion`` and ``the
+# Wiener Linien`` are not street names and stay untouched.
+_ARTICLE_BEFORE_STREET_RE: re.Pattern[str] = re.compile(
+    r"(?<!\w)[Tt]he\s+(?=" + _STREET_SUFFIX_RE.pattern + r")"
+)
+
+
+def _drop_article_before_street(text: str) -> str:
+    """Drop the definite article in front of a German street or square name."""
+    return _ARTICLE_BEFORE_STREET_RE.sub("", text)
+
+
 def _drop_article_before_line(text: str) -> str:
     """Drop the definite article in front of ``line <identifier>``.
 
@@ -2793,9 +2829,11 @@ def _translate_text_attempt(
             sanitize_log_arg(", ".join(sorted(dropped)[:5])),
         )
         return None
-    unmasked = _drop_article_before_line(
-        _fix_glossary_articles(
-            _unmask_entities(translated, combined_mapping), combined_mapping
+    unmasked = _drop_article_before_street(
+        _drop_article_before_line(
+            _fix_glossary_articles(
+                _unmask_entities(translated, combined_mapping), combined_mapping
+            )
         )
     )
     if _RESIDUAL_PLACEHOLDER_RE.search(unmasked):
