@@ -5,6 +5,46 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Ein Item, zwei Aussagen: der Pfeil, den nur der Titel verlor (2026-09-19)**:
+  Im Cache des manuellen Full-Refresh:
+
+  ```
+  T: 1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80
+  D: Bhf. Hütteldorf ÖBB-Ersatzbus für <80
+  ```
+
+  Dieselbe Meldung sagt in der Überschrift `für 80` und darunter `für <80`.
+  Die Ursache ist eine **Asymmetrie zwischen Titel und Rumpf**: `_tidy_title_wl`
+  endet auf `re.sub(r"[<>«»‹›]+", "", t)` und `wl_fetch` wiederholt das auf dem
+  zusammengesetzten Titel — die Beschreibung lief nie durch dieselbe Reinigung.
+
+  Behoben wird das im **Vergleich**, nicht im Text: `_summary_duplicates_title`
+  ignoriert `<`/`>`, erkennt die Wiederholung und lässt sie fallen. Der Titel
+  sagt ohnehin alles; übrig bleibt der Zeitraum.
+
+  **Der erste Anlauf war falsch und ist es wert, festgehalten zu werden.** Er
+  entfernte das Zeichen aus der Zusammenfassung selbst — und riss damit
+  **fünf Injection-Tests** um: `&lt;b&gt;x&lt;/b&gt;` wird von `html_to_text`
+  zu den *Literalzeichen* `<b>x</b>` dekodiert, die die Pipeline bewusst als
+  Text weiterträgt und erst am `_emit_item`-Sink erneut escapet. Eine Regel,
+  die `<` vor einem Wort streicht, zerstört genau diesen Beleg. Ein Vergleich
+  kann nichts verstümmeln — deshalb jetzt dort. Zwei neue Tests
+  (`TestLiteralAngleBracketTextIsNeverRewritten`) halten die Lektion fest, und
+  eine Mutation, die das Streichen zurückholt, lässt **11** Tests fallen.
+
+  **Was der Fix nicht tut: raten, was `<80` heißen sollte.** `S80` ist eine
+  echte Linie in Hütteldorf, das Zeichen könnte ein verstümmeltes `S` sein.
+  Daraus `S80` zu machen hieße, eine Liniennummer zu erfinden — der Feed hatte
+  schon einmal ein frei erfundenes `14AX`. Wo Titel und Rumpf **nicht**
+  dieselbe Aussage sind, bleibt der veröffentlichte Text unverändert.
+
+  Gemessen: **1 von 108** gerenderten Cache-Items ändert sich, null
+  Regressionen. Über **232** veröffentlichte deutsche Items trug bisher keines
+  einen Marker in der Beschreibung — das Item stand schlicht noch nie unter
+  den ersten zehn. Vier Mutationen geprüft; drei fallen, die vierte
+  (Kurzschluss-Bedingung) ist nachweislich verhaltensneutral und im Code als
+  solche kommentiert.
+
 * **Die Beschreibung, die nur den Titel noch einmal vorliest (2026-09-18)**:
   Item 5 von zehn im deutschen Feed:
 

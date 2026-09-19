@@ -134,6 +134,24 @@ _INCOMPLETE_TITLE_TAIL_RE = re.compile(
 # stay put.
 _TRAILING_DIRECTIONAL_MARKER_RE = re.compile(r"\s*[<>]+\s*$")
 
+# The same glyph also turns up GLUED to the token after it, and there it
+# makes the two halves of ONE item disagree: ``_tidy_title_wl`` ends on
+# ``re.sub(r"[<>«»‹›]+", "", t)``, the description never ran through that.
+# Live in the cache on 2026-09-19::
+#
+#     T: 1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80
+#     D: Bhf. Hütteldorf ÖBB-Ersatzbus für <80
+#
+# This pattern is used for the COMPARISON in
+# :func:`_summary_duplicates_title` only — it never rewrites published
+# text. The first attempt did strip the glyph from the summary itself and
+# broke five injection tests: ``&lt;b&gt;x&lt;/b&gt;`` decodes to the
+# literal text ``<b>x</b>``, which the pipeline deliberately carries as
+# plain text, and a rule that removes ``<`` before a word ate it.
+# Reconciling the two halves is what the defect actually calls for, and a
+# comparison cannot mangle anything.
+_DIRECTIONAL_MARKER_RE = re.compile(r"[<>]+")
+
 # Line prefixes WL puts at the start of descriptions are redundant
 # noise — the title already carries the line attribution via the
 # canonical ``40/41:`` prefix. Real cache examples:
@@ -4819,7 +4837,23 @@ def _summary_duplicates_title(summary: str, title_out: str) -> bool:
     title_body_compare = _title_body(title_out)
     if not title_body_compare:
         return False
-    return summary.casefold() == title_body_compare.casefold()
+    if summary.casefold() == title_body_compare.casefold():
+        return True
+    # Marker-insensitive second attempt. The title has no ``<``/``>`` by
+    # construction (see :data:`_DIRECTIONAL_MARKER_RE`), so a body that
+    # differs from it by nothing else is the same sentence with one stray
+    # glyph — and a headline that already says it all.
+    #
+    # Only the SUMMARY is normalised, and only for this comparison: the
+    # published text keeps whatever upstream wrote. In particular nothing
+    # here decides what ``<80`` was meant to be. ``S80`` is a real line at
+    # Hütteldorf, so the glyph may be a mangled ``S``; turning it into a
+    # line number would be inventing data, and this feed has published an
+    # invented ``14AX`` before.
+    stripped = _DIRECTIONAL_MARKER_RE.sub("", summary)
+    if stripped == summary:
+        return False
+    return stripped.casefold() == title_body_compare.casefold()
 
 
 def _evict_stale_translations(
