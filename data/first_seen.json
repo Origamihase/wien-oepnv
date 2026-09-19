@@ -3120,10 +3120,10 @@
     "first_seen": "2026-09-19T11:30:53.956273+00:00",
     "translations": {
       "en": {
-        "title": "D: demonstration service from Quartier Belvedere"
+        "title": "D: demonstration service from B\u00f6rsegasse, Wipplingerstra\u00dfe"
       },
       "en_src": {
-        "title": "f0b6cd792f10ae78"
+        "title": "b7d55380f9bf91f1"
       },
       "epoch": 13
     }
@@ -4710,12 +4710,12 @@
     "first_seen": "2026-09-19T11:30:53.956273+00:00",
     "translations": {
       "en": {
-        "summary": "service from Volkstheater",
-        "title": "2: demonstration service from Heinestra\u00dfe"
+        "summary": "service from Schwedenplatz Trains stop at line 46",
+        "title": "2: demonstration Trains stop Steig A & Trains stop at line 46"
       },
       "en_src": {
-        "summary": "b0bd43e2128c84a9",
-        "title": "5526911e79bb5bc0"
+        "summary": "2cd62d16b6bbc514",
+        "title": "b4b3f78c30de5e3d"
       },
       "epoch": 13
     }
@@ -13724,9 +13724,11 @@
     "first_seen": "2026-09-19T11:30:53.956273+00:00",
     "translations": {
       "en": {
+        "summary": "After a service obstruction there are different intervals.",
         "title": "3A: demonstration Buses stop towards Schottenring"
       },
       "en_src": {
+        "summary": "eb1bdc2703fe6f1b",
         "title": "757aafc7c739f4fa"
       },
       "epoch": 13
@@ -17537,6 +17539,18 @@
         "title": "26A: event"
       },
       "epoch": 3
+    }
+  },
+  "c31d06fab90bae2c7eda18946c5e0b6cfb777c730384e0ac91ca089d1e731c1c": {
+    "first_seen": "2026-09-19T14:01:10.930255+00:00",
+    "translations": {
+      "en": {
+        "title": "2: Trains stop in the M\u00fchlfeldgasse"
+      },
+      "en_src": {
+        "title": "1edd4a10cdd7e6d7"
+      },
+      "epoch": 13
     }
   },
   "c31d348d86188264a4028a87f54d29035937e5a1beb0ea98730e61bf22e95ed1": {
