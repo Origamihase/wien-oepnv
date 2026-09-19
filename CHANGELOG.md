@@ -5,6 +5,42 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: „the lines 36A and 36B" → „lines 36A and 36B" (2026-09-19)**:
+  Deutsch artikuliert seine Linien — `die Linie 17A`, `die Linien 36A und 36B`
+  —, englischer Verkehrssprachgebrauch nicht. Die Wiener Linien schreiben auf
+  ihren eigenen englischen Seiten „line U4". Das Modell macht dabei **nichts
+  falsch**: hinter dem Artikel steht ein maskierter Platzhalter, es hat also
+  nichts, woran es die Konvention erkennen könnte.
+
+  Gezählt über **294** veröffentlichte EN-Items ändern sich **23** Texte:
+
+  ```
+  the lines 36A and 36B are being redirected     → lines 36A and 36B …
+  The line 79B is redirected in both directions  → Line 79B …
+  Trains stop on the lines 1, 18, 62 WLB, the line O → … on lines 1, 18, 62 WLB, line O
+  ```
+
+  Der Lookahead auf eine Linienkennung hält die Regel ehrlich: `the line is
+  divided` und `at the end of the line` sind normales Englisch und bleiben.
+  Nur ein Artikel **direkt** vor `line`/`lines` **plus Kennung** fällt weg. In
+  `the lines 86A, 87A and the call bus 86A` geht genau der erste.
+
+  Ein satzeröffnendes `The line 79B …` gibt seine Großschreibung an das
+  Substantiv weiter statt sie zu verlieren.
+
+  **Cache-Epoche 12 → 13.** Alle 23 Vorkommen sind als Erfolg gecacht — der
+  Artikel ist falsch, ohne deutsch zu sein, also greift weder die
+  Sticky-German-Bremse noch der Entity-Wächter. Ohne Bump behielten die Items
+  ihren Artikel für ihre Lebensdauer; ein U4-Hinweis läuft bis 11/2026. Das
+  ist genau die Regel, die einen PR zuvor in `docs/architecture.md` §8
+  aufgeschrieben wurde — erste Anwendung.
+
+  Fünf Mutationen geprüft, **alle** gefangen. Eine davon hätte ohne
+  Integrationstest niemand bemerkt: den Aufruf aus `_translate_text_attempt`
+  zu entfernen, ließ zunächst jeden Test grün. Der Test dafür folgt dem
+  Muster aus `test_indefinite_article_agreement.py`, wo dieselbe Lücke schon
+  einmal auftrat.
+
 * **Die Architektur-Karte kannte den englischen Feed nicht (2026-09-19)**:
   `docs/architecture.md` beschreibt auf 829 Zeilen die Abrufpipeline, die
   `request_safe`-State-Machine, den Resilienz-Stack, die Stationsanreicherung,

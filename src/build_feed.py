@@ -1062,7 +1062,15 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       ("Impurity"), Wasserrohrgebrechen, Klapprampensperre ("Folding ramp
 #       lock") and Verkehrsstörung. 31 published items carry one of these
 #       and every one of them is cached as a success.
-_TRANSLATION_CACHE_EPOCH = 12
+#  13 — the definite article in front of a line identifier is dropped:
+#       "the lines 36A and 36B are being redirected" becomes "lines 36A and
+#       36B …", the way Wiener Linien write it in English themselves. German
+#       requires the article, English transit usage does not, and the model
+#       cannot resolve the difference because the identifier it precedes is a
+#       masked placeholder. 23 of 294 published EN texts carry it, all cached
+#       as a success — the article is wrong without being German, so nothing
+#       else would evict it.
+_TRANSLATION_CACHE_EPOCH = 13
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -2245,6 +2253,49 @@ def _agreeing_article(article: str, following: str) -> str:
     return want.capitalize() if article[:1].isupper() else want
 
 
+# German names its transit lines with an article — ``die Linie 17A``,
+# ``die Linien 36A und 36B`` — and the model renders that faithfully.
+# English transit usage does not: it is "line 17A is diverted", the way
+# Wiener Linien write it on their own English pages. The article is not a
+# model error, it is a convention difference the model cannot resolve,
+# because the identifier after it is a masked placeholder.
+#
+# Measured over 294 published EN items::
+#
+#     the lines 36A and 36B are being redirected
+#     The line 79B is redirected in both directions
+#     trains stop on the lines 1, 18, 62 WLB, the line O
+#     the folding ramps of the underground trains of the line U4
+#
+# 11 occurrences of ``the line <X>`` across 10 items, plus 12 items with
+# ``the lines …`` — together 22 of 294.
+#
+# The lookahead for an identifier is what keeps the rule honest: ``the
+# line is divided`` and ``at the end of the line`` are ordinary English and
+# stay. Only an article directly in front of ``line``/``lines`` plus a
+# line identifier is dropped. In ``the lines 86A, 87A and the call bus
+# 86A`` exactly the first article goes.
+_ARTICLE_BEFORE_LINE_RE: re.Pattern[str] = re.compile(
+    r"(?<!\w)([Tt])he\s+([Ll]ines?)\s+(?=[A-Z0-9])"
+)
+
+
+def _drop_article_before_line(text: str) -> str:
+    """Drop the definite article in front of ``line <identifier>``.
+
+    Sentence-initial ``The line D is divided.`` becomes ``Line D is
+    divided.`` — the capital moves onto the noun rather than being lost.
+    """
+
+    def _swap(match: re.Match[str]) -> str:
+        article, noun = match.group(1), match.group(2)
+        if article.isupper():
+            noun = noun[0].upper() + noun[1:]
+        return noun + " "
+
+    return _ARTICLE_BEFORE_LINE_RE.sub(_swap, text)
+
+
 def _fix_glossary_articles(text: str, mapping: dict[str, str]) -> str:
     """Repair ``a``/``an`` in front of a word the glossary put there.
 
@@ -2742,8 +2793,10 @@ def _translate_text_attempt(
             sanitize_log_arg(", ".join(sorted(dropped)[:5])),
         )
         return None
-    unmasked = _fix_glossary_articles(
-        _unmask_entities(translated, combined_mapping), combined_mapping
+    unmasked = _drop_article_before_line(
+        _fix_glossary_articles(
+            _unmask_entities(translated, combined_mapping), combined_mapping
+        )
     )
     if _RESIDUAL_PLACEHOLDER_RE.search(unmasked):
         # The model mangled a placeholder so badly the exact-nonce unmask could
