@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE-Feed: Richtungspfeil und nackte Titel-Wiederholung in der Beschreibung (2026-09-19)**:
+  Item 7 des Tages zeigte unter `74A: Demonstration Betrieb ab Landstraße`
+  die Beschreibung `Betrieb ab Landstraße <`. Zwei Ursachen: WLs
+  Anzeigetafeln schreiben „in beiden Richtungen" als `< >` mit Leerzeichen,
+  und die beiden Muster für abschließende Pfeile (`src/build_feed.py`,
+  `src/feed/merge.py`) kannten nur zusammenhängende Pfeile — das `>` fiel, das
+  `<` blieb. Und der Rest war der Titelkörper ohne sein Ursachenwort; der
+  Emitter fing das bisher nur, wenn die Beschreibung das Wort selbst getragen
+  hatte. Beide Muster akzeptieren jetzt `(?:\s*[<>]+)+`, und
+  `_summary_is_title_without_reason` prüft gegen das Ursachenwort des
+  **Titels** — eine Beschreibung mit einem *anderen* Ursachenwort bleibt, das
+  ist Information. 10 von 247 veröffentlichten Paaren vom 17.–19.09. waren
+  solche Wiederholungen.
+
 * **DE-Feed: Platzbudget je Ursache und Tag (2026-09-19)**:
   Am 19.09. gingen alle zehn Plätze des Feeds an Kurzmeldungen einer
   Demonstration, je Linie eine; über 300 veröffentlichte Revisionen wiederholte

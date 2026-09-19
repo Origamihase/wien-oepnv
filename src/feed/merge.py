@@ -457,7 +457,8 @@ def _collapse_description_prefix(desc1: str, desc2: str) -> str | None:
     return _collapse_common_prefix(desc1, desc2)
 
 
-_TRAILING_DIRECTIONAL_RE = re.compile(r"\s*[<>]+\s*$")
+# ``(?:\s*[<>]+)+``: WL writes "both directions" as ``< >``, with a space.
+_TRAILING_DIRECTIONAL_RE = re.compile(r"(?:\s*[<>]+)+\s*$")
 
 
 def _trim_trailing_directional(text: str) -> str:

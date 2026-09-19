@@ -132,7 +132,11 @@ _INCOMPLETE_TITLE_TAIL_RE = re.compile(
 # glyph or truncation artifact next to the ``[Am …]`` timeframe
 # bracket. We only strip the *trailing* form — mid-text occurrences
 # stay put.
-_TRAILING_DIRECTIONAL_MARKER_RE = re.compile(r"\s*[<>]+\s*$")
+# ``(?:\s*[<>]+)+`` rather than ``[<>]+``: WL's display boards write a
+# stop served in BOTH directions as ``< >`` — two arrows with a space
+# between them. Published 2026-09-19, ``74A: Demonstration Betrieb ab
+# Landstraße``: only the ``>`` came off, the ``<`` reached the display.
+_TRAILING_DIRECTIONAL_MARKER_RE = re.compile(r"(?:\s*[<>]+)+\s*$")
 
 # The same glyph also turns up GLUED to the token after it, and there it
 # makes the two halves of ONE item disagree: ``_tidy_title_wl`` ends on
@@ -5211,6 +5215,36 @@ def _title_body(title_out: str) -> str:
     return match.group(1).strip() if match else title_out
 
 
+def _summary_is_title_without_reason(
+    summary: str, title_out: str, category_word: str
+) -> bool:
+    """True when *summary* is the title body minus the title's reason word.
+
+    The reason word is stripped from the SUMMARY upstream, never from the
+    title — so with the word on both sides the verbatim check compares
+    ``Kein Betrieb`` against ``Veranstaltung Kein Betrieb`` and fails,
+    although the reader sees the same text twice. Until 2026-09-19 this
+    was only caught when the summary itself had carried the word
+    (*category_word* non-empty). WL's tickers also ship the bare text::
+
+        T: 1A: Veranstaltung Kein Betrieb
+        D: Kein Betrieb
+
+    Ten of 247 published pairs from 17.–19.09. looked like this. Now the
+    title's own reason word decides; a summary that carried a DIFFERENT
+    reason word keeps it — that is information the title lacks.
+    """
+    if not summary:
+        return False
+    body = _title_body(title_out)
+    reason = _leading_category_word(body)
+    if not reason:
+        return False
+    if category_word and category_word.casefold() != reason.casefold():
+        return False
+    return summary.casefold() == _drop_category_word(body, reason).casefold()
+
+
 def _summary_duplicates_title(summary: str, title_out: str) -> bool:
     """Return True when summary is just the title body restated verbatim."""
     if not (summary and title_out):
@@ -5577,9 +5611,7 @@ def _format_item_content(
     # as duplicates (different content).
     if _summary_duplicates_title(summary, title_out):
         summary = _reason_only_summary(category_word)
-    elif category_word and summary.casefold() == _drop_category_word(
-        _title_body(title_out), category_word
-    ).casefold():
+    elif _summary_is_title_without_reason(summary, title_out, category_word):
         # Dieselbe Redundanz, nur eine Stufe versetzt. Das Kategoriewort
         # wird oben aus der ZUSAMMENFASSUNG gestrichen, nicht aus dem
         # Titel — steht es in beiden, vergleicht der Test oben Äpfel mit
