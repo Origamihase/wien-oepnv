@@ -294,15 +294,18 @@ def test_a_notice_that_does_not_cover_the_headline_leaves_it_alone(
     ]
 
 
-def test_a_hinweis_never_absorbs_a_stoerung_headline(
+def test_a_hinweis_absorbs_the_stoerung_headline_it_covers(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """Categories are kept apart, even when the texts line up perfectly.
+    """A planned notice that says everything the live ticker says wins.
 
-    The Hinweis below repeats every word of the ticker's title, so only the
-    category check separates them. Folding a live disruption into a planned
-    notice would file it under the wrong heading and, downstream, under the
-    wrong ranking — the feed treats the two categories differently.
+    Until 2026-09-19 the categories were kept apart here, on the argument
+    that a live disruption filed under ``Hinweis`` would rank wrongly.
+    The category never reaches the display (no ``<category>`` in the
+    RSS) and only breaks ties in the ``first_seen`` order; what the
+    display showed instead was the ticker AND the notice, two slots for
+    one disruption. The Hinweis below repeats every word of the ticker's
+    title, so the ticker folds — see ``_categories_compatible``.
     """
     hinweis = {
         "title": "49: Ersatzverkehr",
@@ -318,11 +321,9 @@ def test_a_hinweis_never_absorbs_a_stoerung_headline(
 
     events = _run(monkeypatch, [_TICKER_WEST])
 
-    by_category = {e["category"]: e["title"] for e in events}
-    assert by_category == {
-        "Störung": "49: Gleisschaden Betrieb ab Hütteldorfer Straße",
-        "Hinweis": "49: Ersatzverkehr",
-    }
+    assert [(e["category"], e["title"]) for e in events] == [
+        ("Hinweis", "49: Ersatzverkehr"),
+    ]
 
 
 def test_a_headline_is_not_absorbed_by_an_unrelated_line(

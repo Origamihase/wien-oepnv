@@ -4,6 +4,7 @@
 
 from __future__ import annotations
 
+import html
 import json
 import logging
 import os
@@ -683,8 +684,34 @@ def _fetch_news(
 #   * Über den ganzen Cache greift die Regel bei genau einer Linie: 49.
 #     34 der 37 Störungen sind Schlagzeilen, aber nur dort steht eine
 #     ausführliche Meldung daneben, die sie abdeckt.
+#
+# Am 2026-09-19 zeigte sich die Grenze dieser Fassung. Eine Demonstration
+# am Ring: WL schickte EINE ausführliche Meldung für sieben Linien
+# (``1/2/2A/3A/4A/71/D: Demonstration am 19.09.2026``, Kategorie
+# ``Hinweis``, mit Maßnahme je Linie) und je Linie eine Kurzmeldung
+# (``1: Demonstration Betrieb ab Hintere Zollamtsstraße``, Kategorie
+# ``Störung``, darunter WLs Textbaustein „Nach einer Fahrtbehinderung
+# kommt es zu unterschiedlichen Intervallen."). Drei Gatter, drei Nein:
+# die Linienmengen waren nicht gleich, die Kategorien nicht gleich, und
+# der Textbaustein galt als eigener Inhalt. Ergebnis im Feed: zehn von
+# zehn Plätzen für Kurzmeldungen eines Ereignisses, die Langmeldung auf
+# Platz 12, alles andere verdrängt. Seither:
+#
+#   1. Die Linien der Schlagzeile müssen in denen der Langmeldung
+#      ENTHALTEN sein, nicht gleich. Was die Langmeldung zu genau dieser
+#      Linie sagt, deckt die Schlagzeile ab; der Wortvergleich bleibt.
+#   2. Eine ``Störung``-Schlagzeile darf in einen ``Hinweis`` wandern —
+#      nur in diese Richtung (``_categories_compatible``).
+#   3. Der Textbaustein zählt als nichts (``_is_headline_only``).
+#
+# Gemessen am Cache des 2026-09-19 (47 Kurzmeldungen): 9 falten, vier in
+# die Demonstration, fünf in ``25/26/27: Gleisbauarbeiten``. Keine davon
+# sagt etwas, das ihre Langmeldung nicht sagt — das prüft weiterhin der
+# Wortvergleich, jetzt mit aufgelösten HTML-Entities, weil der Langtext
+# als HTML im Bucket liegt (``Zollamtsstra&szlig;e``).
 
 _WORD_SPLIT_RE = re.compile(r"[^\w]+", re.UNICODE)
+_HTML_TAG_RE = re.compile(r"<[^>]+>")
 
 
 def _content_tokens(text: str) -> frozenset[str]:
@@ -693,12 +720,16 @@ def _content_tokens(text: str) -> frozenset[str]:
     Trägt die Umbrüche und Pfeile der Anzeigetafel-Texte mit ab
     (``"Gleisschaden\\nBetrieb ab Hütteldorfer Straße >"``) und macht
     ``Urban-Loritz-Platz`` mit ``Urban Loritz Platz`` vergleichbar — WL
-    schreibt denselben Ort in Titel und Fließtext verschieden.
+    schreibt denselben Ort in Titel und Fließtext verschieden. HTML-Tags
+    und -Entities werden vorher aufgelöst: Die ausführliche Meldung liegt
+    als HTML im Bucket, und ohne Auflösung fände sich ``zollamtsstraße``
+    aus einem Kurztitel im Langtext ``Zollamtsstra&szlig;e`` nie wieder.
     """
     if not text:
         return frozenset()
+    plain = html.unescape(_HTML_TAG_RE.sub(" ", text))
     return frozenset(
-        tok for tok in _WORD_SPLIT_RE.sub(" ", text).casefold().split() if tok
+        tok for tok in _WORD_SPLIT_RE.sub(" ", plain).casefold().split() if tok
     )
 
 
@@ -717,10 +748,45 @@ def _says_nothing_new(text: str, *, beyond: str) -> bool:
     return _covered_by(_content_tokens(text), beyond)
 
 
+# WLs Textbaustein unter Anzeigetafel-Kurzmeldungen. Er stand am
+# 2026-09-19 unter 7 von 47 Kurzmeldungen wortgleich, nennt keine Linie,
+# keinen Ort und keine Maßnahme — die Information ist der Titel. Das
+# vorangestellte ``Linie`` deckt das ``Linie 2:``-Präfix ab, das WL dem
+# Baustein voranstellt; die Nummer dahinter steht ohnehin im Titel.
+_WL_TICKER_BOILERPLATE = (
+    "Linie Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen"
+)
+
+
 def _is_headline_only(bucket: dict[str, Any]) -> bool:
-    """Bedingung (1): Die Beschreibung sagt nichts über den Titel hinaus."""
+    """Bedingung (1): Die Beschreibung sagt nichts über den Titel hinaus.
+
+    WLs Textbaustein (``_WL_TICKER_BOILERPLATE``) zählt dabei als nichts,
+    ebenso die eigenen Liniennummern: Die Beschreibung trägt sie als
+    ``Linie 1:``-Präfix, der Bucket-Titel je nach Quelle mit oder ohne
+    Präfix — welche Linien gemeint sind, steht in ``lines_pairs``.
+    """
+    lines = " ".join(_line_tokens_from_pairs(bucket.get("lines_pairs", [])))
     return _says_nothing_new(
-        bucket.get("desc_base", ""), beyond=bucket.get("title", "")
+        bucket.get("desc_base", ""),
+        beyond=f"{bucket.get('title', '')} {lines} {_WL_TICKER_BOILERPLATE}",
+    )
+
+
+def _categories_compatible(src_category: str, cand_category: str) -> bool:
+    """Darf eine Schlagzeile der Kategorie *src* in *cand* wandern?
+
+    Gleiche Kategorie immer. Dazu die eine Richtung, die die Daten
+    verlangen: WL führt die ausformulierte Meldung zu einem Ereignis als
+    ``Hinweis`` (Vorankündigung aus ``_fetch_news``) und die Kurztexte der
+    Anzeigetafeln am Tag selbst als ``Störung``. Die Kategorie erreicht
+    das Display nie — der RSS-Eintrag trägt kein ``<category>`` —, sie
+    bricht nur Gleichstände in der Sortierung nach ``first_seen``. Der
+    umgekehrte Weg bleibt zu: Ein ``Hinweis`` ist eine Ankündigung, und
+    eine ``Störung``-Langmeldung sagt nichts über ihn aus.
+    """
+    return src_category == cand_category or (
+        src_category == "Störung" and cand_category == "Hinweis"
     )
 
 
@@ -729,11 +795,12 @@ def _ticker_fold_target(
 ) -> str | None:
     """Schlüssel der Meldung, die alles sagt, was die Schlagzeile *src* sagt.
 
-    ``None``, wenn es keine gibt. Kandidaten müssen dieselben Linien und
-    dieselbe Kategorie tragen, sich zeitlich überlappen und selbst mehr
-    als eine Schlagzeile sein — sonst würden zwei inhaltsleere
-    Kurzmeldungen einander „abdecken“ und eine davon grundlos
-    verschwinden. Bei mehreren Treffern gewinnt die wortreichste
+    ``None``, wenn es keine gibt. Kandidaten müssen mindestens die Linien
+    der Schlagzeile tragen (``_line_tokens_from_pairs``, Obermenge), eine
+    verträgliche Kategorie haben (``_categories_compatible``), sich
+    zeitlich überlappen und selbst mehr als eine Schlagzeile sein — sonst
+    würden zwei inhaltsleere Kurzmeldungen einander „abdecken“ und eine
+    davon grundlos verschwinden. Bei mehreren Treffern gewinnt die wortreichste
     Beschreibung; der Schlüssel bricht den Gleichstand, damit dieselbe
     Eingabe immer dasselbe Ergebnis liefert.
     """
@@ -751,9 +818,11 @@ def _ticker_fold_target(
     }
     matches: list[tuple[int, str]] = []
     for key, cand in buckets.items():
-        if key == skip or cand["category"] != src["category"]:
+        if key == skip or not _categories_compatible(
+            src["category"], cand["category"]
+        ):
             continue
-        if frozenset(_line_tokens_from_pairs(cand["lines_pairs"])) != lines:
+        if not lines <= frozenset(_line_tokens_from_pairs(cand["lines_pairs"])):
             continue
         if _is_headline_only(cand):
             continue
