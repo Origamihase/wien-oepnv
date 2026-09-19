@@ -4631,6 +4631,72 @@ def _category_feed_rank(item: FeedItem) -> int:
     return _DEFAULT_CATEGORY_FEED_RANK
 
 
+_TOPIC_REASON_TAIL_RE = re.compile(r"\bwegen\s+(\S+)\s*$", re.IGNORECASE)
+
+
+def _topic_budget_key(item: FeedItem) -> tuple[str, str] | None:
+    """The (reason word, local day) an item is budgeted under, or ``None``.
+
+    The reason word is the WL ticker's leading category word
+    (``Demonstration Betrieb ab …``, see ``_CATEGORY_PREFIX_WORDS``) or the
+    one after a trailing ``wegen`` (``Fahrtbehinderung wegen
+    Demonstration``). The day is the Vienna date of ``starts_at``, falling
+    back to ``pubDate``. Items without a reason word or without a date are
+    never budgeted — the budget exists for the one shape that floods the
+    feed: one event, one ticker per line, all on the same day.
+    """
+    body = _title_body(str(item.get("title") or ""))
+    reason = _leading_category_word(body).casefold()
+    if not reason:
+        tail = _TOPIC_REASON_TAIL_RE.search(body)
+        candidate = tail.group(1).casefold().strip(".,!") if tail else ""
+        reason = candidate if candidate in _CATEGORY_PREFIX_WORDS else ""
+    if not reason:
+        return None
+    when = _parse_datetime(item.get("starts_at")) or _parse_datetime(item.get("pubDate"))
+    if not isinstance(when, datetime):
+        return None
+    return reason, _to_utc(when).astimezone(_VIENNA_TZ).date().isoformat()
+
+
+def _apply_topic_budget(items: list[FeedItem], limit: int) -> list[FeedItem]:
+    """Let no single reason-and-day fill more than *limit* of the leading slots.
+
+    Published 2026-09-19: one demonstration, one Wiener-Linien ticker per
+    line, and — sorted newest-first — the ten slots of the feed went to
+    that one event; the 25/26/27 replacement service, every ÖBB notice and
+    the two construction-site items directly below the cap were invisible.
+    Over 300 published revisions the same shape recurred on two of eight
+    days (a Veranstaltung on 17.09., the demonstration on 19.09.), each time
+    with eight same-reason tickers in the top ten.
+
+    This pass keeps the sorted order and moves every item beyond the
+    *limit*-th of its ``_topic_budget_key`` behind all the others, in their
+    original order. Nothing is dropped: with a larger ``MAX_ITEMS`` the
+    deferred items still appear, just later. ``limit`` 0 disables the pass.
+    Items without a key (no reason word, no date) are never deferred.
+    """
+    if limit <= 0:
+        return items
+    seen: dict[tuple[str, str], int] = {}
+    kept: list[FeedItem] = []
+    deferred: list[FeedItem] = []
+    for item in items:
+        key = _topic_budget_key(item)
+        if key is None:
+            kept.append(item)
+            continue
+        seen[key] = seen.get(key, 0) + 1
+        (kept if seen[key] <= limit else deferred).append(item)
+    if deferred:
+        log.info(
+            "Platzbudget: %d Item(s) hinter das Feld gestellt (höchstens %d je Ursache und Tag).",
+            len(deferred),
+            limit,
+        )
+    return kept + deferred
+
+
 def _recency_sort_key(
     item: FeedItem, state: dict[str, dict[str, Any]], now_utc: datetime
 ) -> tuple[float, int, float, str]:
@@ -6086,6 +6152,8 @@ def main() -> int:
             log.debug("Sortiere %d Items nach Priorität (first_seen, neueste zuerst).", len(items))
         now_utc = _to_utc(now)
         items.sort(key=lambda it: _recency_sort_key(it, state, now_utc))
+        # One event must not take every slot — see ``_apply_topic_budget``.
+        items = _apply_topic_budget(items, feed_config.MAX_ITEMS_PER_TOPIC)
 
         new_items_count = _count_new_items(items, state)
 
