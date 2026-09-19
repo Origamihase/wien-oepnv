@@ -26,6 +26,8 @@ Dieses Projekt bündelt Störungs- und Baustellenmeldungen der Wiener Linien (WL
 | **Stabile JSON-API** | Sofort nutzbare Cache-Dateien (`events.json`) für eigene Projekte und Analysen. |
 
 > 📡 **Direkt zum Feed:** [`https://origamihase.github.io/wien-oepnv/feed.xml`](https://origamihase.github.io/wien-oepnv/feed.xml)
+>
+> 🇬🇧 **Englischer Spiegel:** [`https://origamihase.github.io/wien-oepnv/feed.en.xml`](https://origamihase.github.io/wien-oepnv/feed.en.xml) — dieselben Items, dieselbe Reihenfolge, nur übersetzt. Wie die Übersetzung arbeitet, steht in [`docs/architecture.md`](docs/architecture.md) §8.
 
 ---
 
@@ -121,6 +123,7 @@ Begleitende Stamm-/Identifier-Quellen: das **ÖBB-Excel** „Verzeichnis der Ver
 ### 📥 Feed & Daten nutzen
 
 - **RSS-Feed abonnieren:** [`https://origamihase.github.io/wien-oepnv/feed.xml`](https://origamihase.github.io/wien-oepnv/feed.xml)
+- **Englischer Feed:** [`https://origamihase.github.io/wien-oepnv/feed.en.xml`](https://origamihase.github.io/wien-oepnv/feed.en.xml) _(Spiegel des deutschen Feeds; bei fehlgeschlagener Übersetzung bleibt das betroffene Item deutsch)_
 - **Projekt-Website:** <https://origamihase.github.io/wien-oepnv/>
 - **JSON-Schema der Events:** [`docs/schema/events.schema.json`](docs/schema/events.schema.json)
 - **Feed-Health-Report:** `docs/feed-health.md` (+ `docs/feed-health.json` für maschinelle Konsumenten) _(beide werden lokal nach jedem Feed-Build erzeugt; nicht im Repository versioniert)_
