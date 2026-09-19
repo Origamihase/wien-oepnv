@@ -4650,7 +4650,7 @@
     "first_seen": "2026-09-17T12:30:54.389686+00:00",
     "translations": {
       "en": {
-        "summary": "Due to the renovation of the tunnel ceiling of the U4 path or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna \u2026",
+        "summary": "Due to the renovation of the tunnel ceiling of the U4 line or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna \u2026",
         "title": "U4: Vordere Zollamtsstra\u00dfe from Marxergasse and Kleine Marxerbr\u00fccke to unnamed traffic area and wheel\u2026"
       },
       "en_src": {
@@ -4711,11 +4711,11 @@
     "translations": {
       "en": {
         "summary": "service from Schwedenplatz",
-        "title": "2: demonstration \u2013 Trains stop Steig A & Trains stop at line 46"
+        "title": "2: demonstration Trains stop Steig A & Trains stop at line 46"
       },
       "en_src": {
         "summary": "5c0edd9fdb7764a6",
-        "title": "dc4a99901f70ea45"
+        "title": "b4b3f78c30de5e3d"
       },
       "epoch": 14
     }
@@ -5958,7 +5958,7 @@
         "summary": "a50c3d3562e25979",
         "title": "942cf6b642ca65d3"
       },
-      "epoch": 7
+      "epoch": 14
     }
   },
   "449032e1a240d13dffee850ad04dbd4af41c07c4d58361102a570645c032f8ad": {
@@ -8032,7 +8032,7 @@
     "first_seen": "2026-09-16T06:01:02.274477+00:00",
     "translations": {
       "en": {
-        "summary": "stop relocation of lines 4A towards Wittelsbachstra\u00dfe, 80A towards PratersternS U and N29 towards Wittelsbachstra\u00dfe Stop:XWittelsbachstra\u00dfe \u2026",
+        "summary": "stop relocation of lines 4A towards Wittelsbachstra\u00dfe, 80A towards Praterstern U and N29 towards Wittelsbachstra\u00dfe Stop:1XWittelsbachstra\u00dfe \u2026",
         "title": "4A/80A/N29: 4A. 80A, N29: Wittelsbachstra\u00dfe"
       },
       "en_src": {
@@ -8042,7 +8042,7 @@
       "en_verbatim": [
         "title"
       ],
-      "epoch": 12
+      "epoch": 14
     }
   },
   "5afa3b30ad82a8c534e2cb827f27eac396fbde544691590f04a8889aa1a39028": {
@@ -8083,14 +8083,14 @@
     "first_seen": "2026-09-15T15:01:02.637134+00:00",
     "translations": {
       "en": {
-        "summary": "Due to a Thanksgiving feast, the lines 27A, 28A and 29A are redirected.",
+        "summary": "Due to Thanksgiving, lines 27A, 28A and 29A are redirected.",
         "title": "27A/28A/29A: event on 2709.2026"
       },
       "en_src": {
         "summary": "621df14a2e18809d",
         "title": "8729bdddcf354967"
       },
-      "epoch": 12
+      "epoch": 14
     }
   },
   "5b850889c3be64e3e1179dae057cb377156f38943ac1e3633fdda72a6fa4f333": {
@@ -11714,7 +11714,7 @@
         "summary": "0ea3b8f101f5df86",
         "title": "dc57687b502bdbd8"
       },
-      "epoch": 7
+      "epoch": 14
     }
   },
   "842d88b9694f361400c8113e5dc81939f3502ebd49976e7e2f1bdf7670bead35": {
@@ -11988,14 +11988,14 @@
     "first_seen": "2026-09-16T06:31:01.055828+00:00",
     "translations": {
       "en": {
-        "summary": "Because of roadworks in the area of Justgasse / Ruthnergasse the lines 36A and 36B are being redirected.",
+        "summary": "Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are redirected.",
         "title": "36A/36B: roadworks"
       },
       "en_src": {
         "summary": "c037304ef6dfc7f5",
         "title": "16f4fb01eeea6afb"
       },
-      "epoch": 12
+      "epoch": 14
     }
   },
   "864445423ceb9243f0ff08c7f3e2ab6552736204fbfa87f1ea9321c77e76b63a": {
@@ -12642,11 +12642,11 @@
     "translations": {
       "en": {
         "summary": "After a service obstruction there are different intervals.",
-        "title": "1: demonstration \u2013 service from Hintere Zollamtsstra\u00dfe"
+        "title": "1: demonstration service from Hintere Zollamtsstra\u00dfe"
       },
       "en_src": {
         "summary": "eb1bdc2703fe6f1b",
-        "title": "1dcd2a7100ffd755"
+        "title": "df2229c033bf2969"
       },
       "epoch": 14
     }
@@ -15320,6 +15320,20 @@
         "title": "87A: Harmful bus Currently longer waiting times"
       },
       "epoch": 3
+    }
+  },
+  "a92b3112df04fa1a75af2e50696960d8bd222be930417f6e31dfb7b89e30a720": {
+    "first_seen": "2026-09-19T19:30:41.111453+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "5B: contamination"
+      },
+      "en_src": {
+        "summary": "c718d041bb8d7d8a",
+        "title": "bd79da146cd97869"
+      },
+      "epoch": 14
     }
   },
   "a92d02495778b5484a3e92febf004d3ddcf871aa0beaaa9d608926a55480dfb4": {
