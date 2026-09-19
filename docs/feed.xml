@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 19 Sep 2026 14:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 14:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5B/49A/50A: Verkehrsstörung]]></title>
+      <title><![CDATA[Wien Liesing ↔ Wien Meidling]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;913119</guid>
+      <pubDate>Sat, 19 Sep 2026 14:26:10 +0200</pubDate>
+      <ext:first_seen>Sat, 19 Sep 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 19 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 19 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Wegen Personen im Gleisbereich waren zwischen Wien Liesing Bahnhof und Wien Meidling Bahnhof (U) bis 14:23 Uhr keine Fahrten möglich. [Am 19.09.2026]</description>
+      <content:encoded><![CDATA[Wegen Personen im Gleisbereich waren zwischen Wien Liesing Bahnhof und Wien Meidling Bahnhof (U) bis 14:23 Uhr keine Fahrten möglich.<br/>[Am 19.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Demonstration Betrieb ab Wallensteinstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b382eee39e7937ca90d1b3a3fc797e67167da3fea2d52bb48ffa500f1b74c49</guid>
-      <pubDate>Sat, 19 Sep 2026 12:47:00 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 14:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 12:47:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">07ee13646ae33c2da98a821de809b3136bb4fdc7e454840658ffc8afaccd1e5f</guid>
+      <pubDate>Sat, 19 Sep 2026 14:03:00 +0200</pubDate>
+      <ext:first_seen>Sat, 19 Sep 2026 14:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 19 Sep 2026 14:15:56 +0200</ext:starts_at>
       <ext:ends_at>Sat, 19 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. [Am 19.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 19.09.2026]]]></content:encoded>
+      <description>Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt über Friedensbrücke U bis Augasse. [Am 19.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt über Friedensbrücke U bis Augasse.<br/>[Am 19.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Züge halten bei Linie O]]></title>
@@ -76,6 +87,17 @@
       <content:encoded><![CDATA[[Am 19.09.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[4A: Demonstration Betrieb ab Lisztstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">79b936e8248544e9b51be04d1a8ac4a6913dbd6fcf3755cb0240923428f60051</guid>
+      <pubDate>Sat, 19 Sep 2026 13:05:49 +0200</pubDate>
+      <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 19 Sep 2026 13:05:49 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
+      <description>[Am 19.09.2026]</description>
+      <content:encoded><![CDATA[[Am 19.09.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[3A: Demonstration Busse halten in Richtung Schottenring]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">969183453a1471d23feb3836e17ffc4d679e0facf90c89fc62f25e3d883968e0</guid>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sat, 19 Sep 2026 20:30:00 +0200</ext:ends_at>
       <description>[Am 19.09.2026]</description>
       <content:encoded><![CDATA[[Am 19.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Demonstration Betrieb ab Quartier Belvedere]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aa15a615bcbfd6333cd7e84606b5661f479b660e4d23552a9d5fe9467fb7651b</guid>
-      <pubDate>Sat, 19 Sep 2026 13:04:48 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:04:48 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>[Am 19.09.2026]</description>
-      <content:encoded><![CDATA[[Am 19.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A: Demonstration Betrieb ab Lisztstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">79b936e8248544e9b51be04d1a8ac4a6913dbd6fcf3755cb0240923428f60051</guid>
-      <pubDate>Sat, 19 Sep 2026 11:27:00 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:05:49 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Wittelsbachstraße und Lisztstraße. [Am 19.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Wittelsbachstraße und Lisztstraße.<br/>[Am 19.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
