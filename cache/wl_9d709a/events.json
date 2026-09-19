@@ -446,6 +446,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1/2/D/71: Demonstration",
+    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Linie 2: Kein Betrieb zwischen Parlament, U Volkstheater und Heinestraße. Weiterfahrt ab Heinestraße bis Praterstern S U. Linie D: Kein Betrieb zwischen Börse und Quartier Belvedere. Züge werden im Anschluss nach St. Marx geführt. Linie 71: Betrieb nur zwischen Kaiserebersdorf und St. Marx S. Weiterfahrt über Linie 18 bis Schlachthausgasse. Weichen Sie ersatzweise auf die Linien U1, U2, U3 und U4 aus. Voraussichtliche Dauer: 22:00 Uhr. Grund: Demonstration im Bereich Schwarzenbergplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bd71556f0b3999c4b9221f396e4a62b33873bc5ae8eb0b8775cbaad78170136b",
+    "pubDate": "2026-09-19T11:12:00+02:00",
+    "starts_at": "2026-09-19T11:12:00+02:00",
+    "ends_at": "2026-09-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=1,2,71,D|D=2026-09-19|TK=demonstration"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "10A: Verkehrsstörung",
     "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -514,18 +526,6 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
-    "pubDate": "2026-09-19T05:00:26+02:00",
-    "starts_at": "2026-09-19T05:00:26+02:00",
-    "ends_at": "2026-09-19T23:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-09-19|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
     "source": "Wiener Linien",
@@ -746,18 +746,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
-    "pubDate": "2026-09-19T11:40:40+02:00",
-    "starts_at": "2026-09-19T11:40:40+02:00",
-    "ends_at": "2026-09-19T12:40:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-09-19|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: 3A Netzänderung Betrieb ab Riemergasse",
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -794,6 +782,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5B: Verkehrsstörung",
+    "description": "Linie 5B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "53b71914d2b8e8358c3af58ce3192a503ce7a82b1683f3fdc23f87e185b159fd",
+    "pubDate": "2026-09-19T12:47:00+02:00",
+    "starts_at": "2026-09-19T12:47:00+02:00",
+    "ends_at": "2026-09-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=5B|D=2026-09-19|TK=5b verkehrsstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5: Verspätungen",
     "description": "Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -818,6 +818,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 66A wird in Richtung Reumannplatz U zwischen Liesing und Bhf. Atzgersdorf S über Dirmhirngasse, Knotzenbachgasse und Gatteredergasse umgeleitet. Voraussichtliche Dauer: 13:00 Uhr. Grund: Falschparker im Bereich Mehlführergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7fdb8d218c98770afcae364ee84c6bae842a6db49d7e944b0574b390a1d1a214",
+    "pubDate": "2026-09-19T12:40:00+02:00",
+    "starts_at": "2026-09-19T12:42:46+02:00",
+    "ends_at": "2026-09-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-09-19|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -838,6 +850,18 @@
     "starts_at": "2026-09-10T00:00:23+02:00",
     "ends_at": "2026-09-19T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-10|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Demonstration Betrieb ab Landstraße",
+    "description": "Linie 74A: Betrieb nur zwischen St. Marx S und Landstraße S U. Weichen Sie ersatzweise auf die Linien U1, U2, U3 und U4 aus. Voraussichtliche Dauer: 22:00 Uhr. Grund: Demonstration im Haltestellenbereich Stubentor U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ff886c76c96e01de889fa37a4c3d1d0532d8f39863506d901e228ffbaefb4114",
+    "pubDate": "2026-09-19T12:55:00+02:00",
+    "starts_at": "2026-09-19T12:58:16+02:00",
+    "ends_at": "2026-09-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-09-19|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
