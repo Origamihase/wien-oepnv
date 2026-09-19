@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 20 Sep 2026 01:01:21 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2026 01:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[N6: Buses stop NeilreichgasseENTec2b2350d0e7e61aX2X-22, QuellenstraßeENTec2b2350d0e7e61aX4X]]></title>
+      <title><![CDATA[N65: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">65ccacde85edc0d175000462289480ad171b04988bbf0682cd7a901bd61df1aa</guid>
+      <pubDate>Sun, 20 Sep 2026 01:28:00 +0200</pubDate>
+      <ext:first_seen>Sun, 20 Sep 2026 01:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 20 Sep 2026 01:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 20 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Currently, the N65 line has different intervals in both directions. Reason: rescue operation. [On 20.09.2026]</description>
+      <content:encoded><![CDATA[Currently, the N65 line has different intervals in both directions. Reason: rescue operation.<br/>[On 20.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N6: Buses stop Neilreichgasse 20-22, Quellenstraße 189]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc</guid>
       <pubDate>Sun, 20 Sep 2026 00:55:29 +0200</pubDate>
       <ext:first_seen>Sun, 20 Sep 2026 01:01:21 +0200</ext:first_seen>
       <ext:starts_at>Sun, 20 Sep 2026 00:55:29 +0200</ext:starts_at>
       <ext:ends_at>Sun, 20 Sep 2026 05:05:00 +0200</ext:ends_at>
-      <description>Buses stop NeilreichgasseENTec2b2350d0e7e61aX1X-22 construction works Buses stop QuellenstraßeENTec2b2350d0e7e61aX3X [On 20.09.2026]</description>
-      <content:encoded><![CDATA[Buses stop NeilreichgasseENTec2b2350d0e7e61aX1X-22 construction works Buses stop QuellenstraßeENTec2b2350d0e7e61aX3X<br/>[On 20.09.2026]]]></content:encoded>
+      <description>Buses stop at Neilreichgasse 20-22 construction works Buses stop at Quellenstraße 189 [On 20.09.2026]</description>
+      <content:encoded><![CDATA[Buses stop at Neilreichgasse 20-22 construction works Buses stop at Quellenstraße 189<br/>[On 20.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
@@ -72,8 +83,8 @@
       <ext:first_seen>Thu, 17 Sep 2026 14:30:54 +0200</ext:first_seen>
       <ext:starts_at>Sun, 01 Feb 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
-      <description>Due to the renovation of the tunnel ceiling of the U4 line or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna … [01.02.2026 – 30.11.2026]</description>
-      <content:encoded><![CDATA[Due to the renovation of the tunnel ceiling of the U4 line or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
+      <description>Due to the renovation of the tunnel ceiling of the U4 route or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna … [01.02.2026 – 30.11.2026]</description>
+      <content:encoded><![CDATA[Due to the renovation of the tunnel ceiling of the U4 route or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[36A/36B: Roadworks]]></title>
@@ -83,8 +94,8 @@
       <ext:first_seen>Wed, 16 Sep 2026 08:31:01 +0200</ext:first_seen>
       <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are redirected. [21.09.2026 – 16.09.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are redirected.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
+      <description>Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected. [21.09.2026 – 16.09.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße]]></title>
@@ -94,8 +105,8 @@
       <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
       <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern U and N29 towards Wittelsbachstraße Stop:1XWittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern U and N29 towards Wittelsbachstraße Stop:1XWittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
+      <description>stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[27A/28A/29A: Event on 2709.2026]]></title>
@@ -105,19 +116,8 @@
       <ext:first_seen>Tue, 15 Sep 2026 17:01:02 +0200</ext:first_seen>
       <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
-      <description>Due to Thanksgiving, lines 27A, 28A and 29A are redirected. [15.09.2026 – 27.09.2026]</description>
-      <content:encoded><![CDATA[Due to Thanksgiving, lines 27A, 28A and 29A are redirected.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56A/56B/58A/58B: Diversion towards Hietzing U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">448cd28e5b6e46e9031d5b7d469e439bb6d640a548691fa7e52b2cfebe245957</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 09:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>The bus lines are being redirected because of roadworks in the area of Kennedybrücke. [15.09.2026 – 15.09.2027]</description>
-      <content:encoded><![CDATA[The bus lines are being redirected because of roadworks in the area of Kennedybrücke.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
+      <description>Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected. [15.09.2026 – 27.09.2026]</description>
+      <content:encoded><![CDATA[Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
