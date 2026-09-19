@@ -436,6 +436,27 @@ def _collapse_common_prefix(
     return f"{prefix.rstrip()} " + ", ".join(all_parts)
 
 
+_SENTENCE_TERMINATOR_RE = re.compile(r"[.!?](?=\s|$)")
+
+
+def _collapse_description_prefix(desc1: str, desc2: str) -> str | None:
+    """Collapse two merged descriptions on a shared prefix — or decline.
+
+    The rule the title already follows (:func:`_collapse_common_prefix`),
+    with one boundary the title never needed: a description written as
+    a **sentence** keeps the blank-line join. The comma the collapse
+    inserts would otherwise land behind the full stop —
+    ``Details about Lauf., Pfad.`` — and a text of several sentences
+    would see two different second sentences glued into one statement.
+    WL's clause-form descriptions (``Schadhafter Bus Betrieb ab
+    Praterstern``) carry no terminator and collapse cleanly; those are
+    the measured cases.
+    """
+    if _SENTENCE_TERMINATOR_RE.search(desc1) or _SENTENCE_TERMINATOR_RE.search(desc2):
+        return None
+    return _collapse_common_prefix(desc1, desc2)
+
+
 _TRAILING_DIRECTIONAL_RE = re.compile(r"\s*[<>]+\s*$")
 
 
@@ -759,8 +780,29 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                                 # a stray glyph in the user's feed).
                                 clean1 = _trim_trailing_directional(desc1)
                                 clean2 = _trim_trailing_directional(desc2)
+                                # The TITLE above collapses a shared
+                                # word-aligned prefix via
+                                # ``_join_merged_names``; the description
+                                # used to concatenate verbatim, shared
+                                # prefix and all. Published side by side::
+                                #
+                                #   T: O: Schadhafter Bus Betrieb ab
+                                #      Praterstern, Quartier Belvedere
+                                #   D: Schadhafter Bus Betrieb ab
+                                #      Praterstern Schadhafter Bus Betrieb
+                                #      ab Quartier Belvedere
+                                #
+                                # Same collapse, same constraints (≥10
+                                # shared chars on a word boundary, new
+                                # suffix ≤60, no ÖBB ``↔`` chain) plus
+                                # one of its own: sentence-form texts
+                                # decline. When it declines, the legacy
+                                # blank-line join stands — two long,
+                                # unrelated sentences read better
+                                # stacked than comma-joined.
                                 existing_copy["description"] = (
-                                    f"{clean1}\n\n{clean2}".strip()
+                                    _collapse_description_prefix(clean1, clean2)
+                                    or f"{clean1}\n\n{clean2}".strip()
                                 )
                         elif desc2:
                             existing_copy["description"] = desc2
