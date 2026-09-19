@@ -5,6 +5,49 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE-Feed: der Titel fasste zusammen, die Beschreibung wiederholte (2026-09-19)**:
+  Werden zwei Meldungen derselben Linie zusammengeführt, faktorisiert der
+  **Titel** den gemeinsamen Anfang seit jeher heraus (`_join_merged_names` →
+  `_collapse_common_prefix`) und hängt nur die abweichenden Enden an. Die
+  **Beschreibung** tat das nicht — sie verkettete beide Quelltexte wortwörtlich,
+  gemeinsamen Anfang inklusive. Beides stand nebeneinander im Feed:
+
+  ```
+  T: O: Schadhafter Bus Betrieb ab Praterstern, Quartier Belvedere
+  D: Schadhafter Bus Betrieb ab Praterstern
+     Schadhafter Bus Betrieb ab Quartier Belvedere
+  ```
+
+  **Mindestens 6 von 250** veröffentlichten deutschen Items. Der Fix ist keine
+  neue Regel, sondern **die Regel des Titels, ein Feld weiter angewandt** —
+  mit denselben Schranken: mindestens 10 gemeinsame Zeichen, endend auf einer
+  Wortgrenze, neues Suffix höchstens 60 Zeichen, keine ÖBB-`↔`-Kette.
+
+  Vier der sechs Fälle kollabieren damit, zwei lehnen **absichtlich** ab und
+  gehören zu anderen Mechanismen — in einen eigenen PR, nicht in diesen:
+
+  * `Fahrtbehinderung PKW im Gleis` + `PKW im Gleis Betrieb ab Raxstraße` —
+    die Überlappung ist *Suffix* des ersten und *Präfix* des zweiten.
+  * `Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse` + `Ersatzbus ab
+    Josef-Baumann-Gasse` — der gemeinsame Teil ist *Suffix* beider.
+
+  Wo der Collapse ablehnt, bleibt die bisherige Leerzeilen-Verkettung: zwei
+  lange, unverwandte Sätze lesen sich gestapelt besser als komma-verbunden.
+  Eine Schranke braucht die Beschreibung, die der Titel nie brauchte: Texte in
+  **Satzform** bleiben gestapelt — sonst landete das Komma hinter dem Punkt
+  (`Details about Lauf., Pfad.`), und bei mehreren Sätzen würden zwei
+  verschiedene zweite Sätze zu einer Aussage verklebt. Die gemessenen Fälle
+  sind alle satzzeichenfrei. Die 10-Zeichen-Schwelle ist dabei kein Detail — `Kein Betrieb ab
+  Praterstern` und `Kein Halt in Floridsdorf` teilen nur `Kein `, und sie
+  komma-zu-verbinden machte aus zwei Tatsachen eine falsche. Als Test
+  festgeschrieben, ebenso die ÖBB-Kette, bei der `↔` eine Route verbindet
+  statt zwei Alternativen zu trennen.
+
+  Sechs Mutationen geprüft, alle gefangen: Aufruf entfernt · immer kollabiert ·
+  `↔`-Schutz entfernt · Mindest-Präfix auf 1 · Wortgrenzen-Rücksprung entfernt ·
+  Enthaltenseins-Prüfung übersprungen. Die vierte entkam im ersten Durchgang,
+  weil kein Testfall eine *kurze* gemeinsame Eröffnung hatte — nachgereicht.
+
 * **DE-Feed: dieselbe Meldung stand dreimal untereinander (2026-09-19)**:
   Wiener Linien führt eine Störung, die mehrere Linien trifft, in **einer**
   Beschreibung auf — je Linie ein Segment mit eigenem `Linie X:`-Präfix.
