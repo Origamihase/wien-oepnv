@@ -512,7 +512,7 @@
     "guid": "8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c",
     "pubDate": "2026-09-19T11:12:00+02:00",
     "starts_at": "2026-09-19T13:23:49+02:00",
-    "ends_at": "2026-09-19T23:55:00+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-09-19|TK=demonstration"
   },
   {
@@ -734,13 +734,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29A: Rettungseinsatz",
+    "description": "Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fd28b60b0d399a255267aca8e0564e4a131b7ccaa011c57449a8324ef18484f3",
+    "pubDate": "2026-09-19T17:56:00+02:00",
+    "starts_at": "2026-09-19T17:56:00+02:00",
+    "ends_at": "2026-09-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=29A|D=2026-09-19|TK=rettungseinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "2A: Demonstration Kein Betrieb",
     "description": "Linie 2A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "d1a268df5ac9a44ef7c7be7becc76b31a46ca1f4dd5066770952ce59932897ba",
     "pubDate": "2026-09-19T11:24:00+02:00",
     "starts_at": "2026-09-19T13:05:20+02:00",
-    "ends_at": "2026-09-19T23:55:00+02:00",
+    "ends_at": "2026-09-19T20:30:00+02:00",
     "_identity": "wl|störung|L=2A|D=2026-09-19|TK=demonstration"
   },
   {
@@ -860,7 +872,7 @@
     "guid": "79b936e8248544e9b51be04d1a8ac4a6913dbd6fcf3755cb0240923428f60051",
     "pubDate": "2026-09-19T13:05:49+02:00",
     "starts_at": "2026-09-19T16:05:00+02:00",
-    "ends_at": "2026-09-19T23:55:00+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
     "_identity": "wl|störung|L=4A|D=2026-09-19|TK=demonstration"
   },
   {
@@ -908,7 +920,7 @@
     "guid": "c3bc1799723b116ebf4b83b471a9da3fca2e1fd490f9c8a631a88fa52b77863a",
     "pubDate": "2026-09-19T11:12:00+02:00",
     "starts_at": "2026-09-19T13:30:52+02:00",
-    "ends_at": "2026-09-19T23:55:00+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-09-19|TK=demonstration"
   },
   {
@@ -932,7 +944,7 @@
     "guid": "ff886c76c96e01de889fa37a4c3d1d0532d8f39863506d901e228ffbaefb4114",
     "pubDate": "2026-09-19T12:55:00+02:00",
     "starts_at": "2026-09-19T12:58:16+02:00",
-    "ends_at": "2026-09-19T23:55:00+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-19|TK=demonstration"
   },
   {
