@@ -214,6 +214,132 @@ def _strip_wl_description_line_prefix(desc: str) -> str:
     return cleaned
 
 
+# WL attributes a multi-line disruption by listing every affected line in
+# ONE description, each with its own ``Linie X:`` prefix. When the lines
+# are hit the same way, every segment carries the IDENTICAL sentence::
+#
+#     Linie 5B: Unregelmäßige Intervalle in beiden Richtungen.
+#     Linie 49A: Unregelmäßige Intervalle in beiden Richtungen.
+#     Linie 50A: Unregelmäßige Intervalle in beiden Richtungen.
+#     Grund: Verkehrsstörung.
+#
+# :func:`_strip_wl_description_line_prefix` removes only the FIRST prefix
+# — the title already attributes the lines — so what reached the feed was
+# the same sentence twice, one arbitrary line out of three named as if it
+# were special, and ``Grund: Verkehrsstörung.`` pushed past the
+# 180-character limit::
+#
+#     Unregelmäßige Intervalle in beiden Richtungen. Linie 49A:
+#     Unregelmäßige Intervalle in beiden Richtungen. …
+#
+# 13 of 250 published German items looked like this. Dropping the repeats
+# leaves ``Unregelmäßige Intervalle in beiden Richtungen. Grund:
+# Verkehrsstörung.`` — shorter, and it finally says why.
+#
+# The segment boundary reuses :data:`_WL_DESC_LINE_TOKEN`, the same token
+# shape the two prefix patterns above use, rather than a second list that
+# could drift away from them.
+_WL_DESC_LINE_SEGMENT_SPLIT_RE: re.Pattern[str] = re.compile(
+    rf"(?<=[.!?])\s+(?=Linien?\s+(?:{_WL_DESC_LINE_TOKEN})"
+    rf"(?:\s*[/+,]\s*(?:{_WL_DESC_LINE_TOKEN})){{0,20}}\s*:\s)",
+    re.IGNORECASE,
+)
+
+# First sentence end inside a segment body. Deliberately not a general
+# sentence splitter: it is only ever applied to the text of one segment,
+# and the split above already happens at a ``Linie X:`` boundary, so a
+# date like ``30.10.2026`` in a later sentence can never become a
+# segment boundary.
+_WL_DESC_SENTENCE_END_RE: re.Pattern[str] = re.compile(r"[.!?](?:\s|$)")
+
+
+def _collapse_repeated_wl_line_segments(desc: str) -> str:
+    """Drop ``Linie X:`` segments that repeat an earlier segment's sentence.
+
+    The title names every affected line, so a segment whose sentence is
+    word-identical to one already in the description carries no
+    information — it only crowds out the trailing ``Grund: …`` field,
+    which does.
+
+    Only the repeated *leading sentence* of a segment is dropped;
+    whatever follows it is kept in place. Measured over 267 revisions of
+    the WL cache, that remainder is always the global ``Grund: …`` field
+    and never line-specific text, so nothing loses its attribution.
+
+    Segments whose sentences differ are left completely untouched,
+    prefix included — there the ``Linie X:`` attribution is the whole
+    point.
+
+    Args:
+        desc: A Wiener-Linien description, before the leading prefix is
+            stripped by :func:`_strip_wl_description_line_prefix`.
+
+    Returns:
+        The description with repeated line segments removed, or *desc*
+        unchanged when it holds fewer than two line segments.
+    """
+    segments = _WL_DESC_LINE_SEGMENT_SPLIT_RE.split(desc)
+    if len(segments) < 2:
+        return desc
+    kept: list[str] = []
+    seen: set[str] = set()
+    for segment in segments:
+        body = _WL_DESC_LINIE_PREFIX_RE.sub("", segment, count=1)
+        end = _WL_DESC_SENTENCE_END_RE.search(body)
+        lead = body[: end.end()] if end else body
+        normalised = " ".join(lead.split())
+        if normalised in seen:
+            remainder = body[end.end() :].strip() if end else ""
+            if remainder:
+                kept.append(remainder)
+            continue
+        seen.add(normalised)
+        kept.append(segment.strip())
+    return " ".join(part for part in kept if part)
+
+
+# WL sometimes ships the location slot of a ``Grund: …`` field empty::
+#
+#     Grund: Verkehrsüberlastung im Bereich .
+#
+# and sometimes ships it filled but with a stray space before the full
+# stop::
+#
+#     Grund: Polizeieinsatz im Haltestellenbereich Atzgersdorfer Straße .
+#
+# 9 of 417 cached descriptions carry one of the two. Both used to sit
+# past the 180-character limit and were cut away unseen; collapsing the
+# repeated line segments above brings the ``Grund: …`` field back into
+# view, so they would now reach the display. The dangling ``im Bereich``
+# is only dropped when NOTHING follows it — a named location keeps its
+# preposition.
+_WL_DESC_EMPTY_LOCATION_RE: re.Pattern[str] = re.compile(
+    r"\s+im\s+(?:Haltestellen)?[Bb]ereich\s*(?=[.!?]|$)"
+)
+_WL_DESC_SPACE_BEFORE_STOP_RE: re.Pattern[str] = re.compile(r"\s+(?=[.!?])")
+
+
+def _tidy_wl_dangling_location(desc: str) -> str:
+    """Repair a ``Grund: …`` field whose location slot WL left empty.
+
+    Drops an ``im Bereich`` / ``im Haltestellenbereich`` that is followed
+    by nothing, then removes the space WL leaves in front of the full
+    stop. A location that IS named keeps its preposition and only loses
+    the stray space.
+
+    Args:
+        desc: A Wiener-Linien description.
+
+    Returns:
+        The tidied description.
+    """
+    if not desc:
+        return desc
+    return _WL_DESC_SPACE_BEFORE_STOP_RE.sub(
+        "", _WL_DESC_EMPTY_LOCATION_RE.sub("", desc)
+    )
+
+
 def _strip_trailing_directional_marker(summary: str) -> str:
     """Drop a trailing WL ``>`` / ``<`` arrow with surrounding whitespace.
 
@@ -306,7 +432,14 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
         # description — the title already attributes the line(s).
         desc = item.get("description")
         if isinstance(desc, str) and desc:
-            stripped = _strip_wl_description_line_prefix(desc)
+            # Collapse repeated ``Linie X:`` segments BEFORE the leading
+            # prefix is stripped — the comparison needs every segment to
+            # still carry its own prefix.
+            stripped = _tidy_wl_dangling_location(
+                _strip_wl_description_line_prefix(
+                    _collapse_repeated_wl_line_segments(desc)
+                )
+            )
             # Störung descriptions repeat the line code without the colon
             # the regexes above require (``"3A Netzänderung\nBetrieb ab
             # Riemergasse"``). The title already attributes the line, so
