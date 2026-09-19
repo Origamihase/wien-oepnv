@@ -5,6 +5,27 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE-Feed: die zusammengeführte Beschreibung las einen Titelteil noch einmal vor (2026-09-19)**:
+  Werden zwei Meldungen derselben Linie zusammengeführt, bringt eine
+  Schlagzeilen-Meldung — Beschreibung gleich eigener Titel — diese Wiederholung
+  mit, und nach dem Merge steht sie unter dem echten Text der anderen:
+
+  ```
+  T: 2: Demonstration Züge halten Steig A & Züge halten bei Linie 46
+  D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.
+     Züge halten bei Linie 46
+  ```
+
+  Allein hätte `_summary_duplicates_title` (#1836) den zweiten Absatz bei der
+  Ausgabe geleert; die Regel sieht aber nur die ganze Beschreibung, und dort
+  sind die Absätze längst eine Zeile. Der Merge lässt eine Beschreibung, die
+  wortgleich im zusammengeführten Titel steht, jetzt vor dem Stapeln fallen —
+  auf beiden Seiten, damit die Reihenfolge der Meldungen keine Rolle spielt.
+  Nur ganze Wörter zählen: `Betrieb ab Gersthof` wird von `Betrieb ab
+  Gersthofer Straße` nicht wiederholt. Über 300 Feed-Revisionen gemessen: Der
+  Fall „ganze Beschreibung = Titel" war seit #1836 geschlossen, der
+  Ein-Absatz-Fall ist dieses Item in zwei Varianten.
+
 * **DE-Feed: der Titel fasste zusammen, die Beschreibung wiederholte (2026-09-19)**:
   Werden zwei Meldungen derselben Linie zusammengeführt, faktorisiert der
   **Titel** den gemeinsamen Anfang seit jeher heraus (`_join_merged_names` →

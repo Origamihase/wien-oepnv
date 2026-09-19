@@ -473,6 +473,44 @@ def _trim_trailing_directional(text: str) -> str:
     return _TRAILING_DIRECTIONAL_RE.sub("", text).rstrip()
 
 
+def _restates_title(desc: str, title_body: str) -> bool:
+    """True when *desc* says nothing the merged title does not already say.
+
+    The emitter's ``_summary_duplicates_title`` drops a description that
+    IS the title (#1836). It cannot see one paragraph of a stacked
+    description, because by the time it runs the paragraphs have been
+    collapsed into a single line. So the check happens here, before the
+    stacking: a description that appears word for word in the merged
+    title body is dropped and the other one stands alone.
+
+    Published 2026-09-19::
+
+        T: 2: Demonstration Züge halten Steig A & Züge halten bei Linie 46
+        D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen
+           Intervallen. Züge halten bei Linie 46
+
+    The second paragraph is the second item's headline-only description;
+    alone it would have been emptied at emission, merged it survived and
+    repeated what the title says three centimetres above it.
+
+    Whole words only: ``Betrieb ab Gersthof`` is restated by ``… Betrieb ab
+    Gersthof & …``, not by ``… Betrieb ab Gersthofer Straße``.
+    """
+    words = " ".join(_trim_trailing_directional(desc).split()).casefold().strip(" .!?")
+    if not words:
+        return False
+    haystack = " ".join(title_body.split()).casefold()
+    return re.search(rf"(?<!\w){re.escape(words)}(?!\w)", haystack) is not None
+
+
+def _drop_restated(desc1: str, desc2: str, title_body: str) -> tuple[str, str]:
+    """Empty whichever of the two descriptions the merged title restates."""
+    return (
+        "" if _restates_title(desc1, title_body) else desc1,
+        "" if _restates_title(desc2, title_body) else desc2,
+    )
+
+
 def _join_merged_names(ex_name: str, name: str) -> str:
     """Combine two non-identical bodies — prefer prefix collapse, else ``&``.
 
@@ -759,6 +797,17 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     # 3. Merge Descriptions
                     desc1 = existing_copy.get("description", "") or ""
                     desc2 = item.get("description", "") or ""
+
+                    # A description the merged title already states adds
+                    # nothing and must not be stacked under the other
+                    # one — see ``_restates_title``. Checked on both
+                    # sides so the result does not depend on which item
+                    # happened to arrive first. ``desc1`` is written
+                    # back unconditionally: it is either unchanged or
+                    # emptied, and a branch here would push this
+                    # baselined function's C901 up.
+                    desc1, desc2 = _drop_restated(desc1, desc2, new_name)
+                    existing_copy["description"] = desc1
 
                     if desc1 != desc2:
                         if desc1 and desc2:

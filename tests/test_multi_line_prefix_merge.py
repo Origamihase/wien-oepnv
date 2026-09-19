@@ -283,8 +283,14 @@ class TestEndToEndGersthofMessageReadableAfterFix:
         assert "40+41:" not in desc
         assert "Linie 40:" not in desc
 
-        # The actual content survives.
-        assert "Betrieb" in desc
+        # The actual content survives — in the title. ``Betrieb ab
+        # Gersthof`` is the merged title's own body, and a description
+        # that only restates the title is dropped at the merge
+        # (``_restates_title``, 2026-09-19) instead of being stacked
+        # under the other item's text. What the title does not say
+        # stays.
+        assert "Betrieb ab Gersthof" in item["title"]
+        assert "Betrieb ab Gersthof" not in desc
         assert "Nach einer Fahrtbehinderung" in desc
 
     def test_rendered_title_and_description_clean(self) -> None:
