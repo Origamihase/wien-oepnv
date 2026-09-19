@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 19 Sep 2026 19:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 19:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[2: Trains stop in Mühlfeldgasse]]></title>
@@ -54,45 +54,12 @@
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1: Demonstration service from Hintere Zollamtsstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c</guid>
-      <pubDate>Sat, 19 Sep 2026 13:12:48 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:23:49 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>[On 19.09.2026]</description>
-      <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A: Demonstration service from Lisztstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">79b936e8248544e9b51be04d1a8ac4a6913dbd6fcf3755cb0240923428f60051</guid>
-      <pubDate>Sat, 19 Sep 2026 13:05:49 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:05:49 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>[On 19.09.2026]</description>
-      <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[3A: Demonstration Buses stop towards Schottenring]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">969183453a1471d23feb3836e17ffc4d679e0facf90c89fc62f25e3d883968e0</guid>
       <pubDate>Sat, 19 Sep 2026 13:05:20 +0200</pubDate>
       <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
       <ext:starts_at>Sat, 19 Sep 2026 13:05:50 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 20:30:00 +0200</ext:ends_at>
-      <description>[On 19.09.2026]</description>
-      <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: Demonstration No operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d1a268df5ac9a44ef7c7be7becc76b31a46ca1f4dd5066770952ce59932897ba</guid>
-      <pubDate>Sat, 19 Sep 2026 13:05:20 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:05:20 +0200</ext:starts_at>
       <ext:ends_at>Sat, 19 Sep 2026 20:30:00 +0200</ext:ends_at>
       <description>[On 19.09.2026]</description>
       <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
@@ -109,15 +76,48 @@
       <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Demonstration service from Quartier Belvedere S]]></title>
+      <title><![CDATA[74A: Demonstration service from Landstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e</guid>
-      <pubDate>Sat, 19 Sep 2026 11:12:00 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 15:56:05 +0200</ext:starts_at>
+      <guid isPermaLink="false">ff886c76c96e01de889fa37a4c3d1d0532d8f39863506d901e228ffbaefb4114</guid>
+      <pubDate>Sat, 19 Sep 2026 12:58:16 +0200</pubDate>
+      <ext:first_seen>Sat, 19 Sep 2026 13:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 19 Sep 2026 12:58:16 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
+      <description>service from Landstraße &amp;lt; [On 19.09.2026]</description>
+      <content:encoded><![CDATA[service from Landstraße &lt;<br/>[On 19.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/2A/3A/4A/71/D: Demonstration am 19.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e5c3a94f572edd1558cafd97a5c3960aa38b6cc2f23678370681c6b0e2d43278</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 16:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 19 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 19.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 19.09.2026]]]></content:encoded>
+      <description>Linie D: Derzeit kein Betrieb zwischen Börse und Quartier Belvedere; Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße … [18.09.2026 – 19.09.2026]</description>
+      <content:encoded><![CDATA[Linie D: Derzeit kein Betrieb zwischen Börse und Quartier Belvedere; Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße …<br/>[18.09.2026 – 19.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[72A: Kraftwerk Simmering]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">35bf402812b713b3ca2cfb4047d0416c127ab0dbb7894e5338139bfc3a930f18</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 14:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 18 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>stop relocation of line 72A towards Hasenleitengasse Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 To: 1. Haidequerstraße 510 Duration: Ab … [18.09.2026 – 18.09.2027]</description>
+      <content:encoded><![CDATA[stop relocation of line 72A towards Hasenleitengasse Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 To: 1. Haidequerstraße 510 Duration: Ab …<br/>[18.09.2026 – 18.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A/14A: Pilgramgasse U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">721b3d16a1af645be1d24427c62ee0cf72a1589e4ab16465f23aca5e11f61164</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 12:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 22 Sep 2026 15:00:00 +0200</ext:ends_at>
+      <description>stop relocation of lines 12A and 14A towards Schmelz, Gablenzgasse and Reumannplatz U Stop: Pilgramgasse U From: Linke Wienzeile 106-108 nach Hofmühlgasse … [18.09.2026 – 22.09.2026]</description>
+      <content:encoded><![CDATA[stop relocation of lines 12A and 14A towards Schmelz, Gablenzgasse and Reumannplatz U Stop: Pilgramgasse U From: Linke Wienzeile 106-108 nach Hofmühlgasse …<br/>[18.09.2026 – 22.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
