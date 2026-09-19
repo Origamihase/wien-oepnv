@@ -245,4 +245,7 @@ def test_the_budget_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp
         "12A: Betrieb ab Johnstraße U",
         "N49: Betrieb ab Schweglerstraße",
     ], titles
-    assert titles[6:] == [f"{line}: Demonstration Betrieb ab Ort {i}" for i, line in ((3, "3A"), (4, "4A"), (5, "31"), (6, "66A"))], titles
+    # The emitter separates the reason word from the measure with an en dash
+    # (C.5); the ordering contract of this test is unaffected by that.
+    deferred = ((3, "3A"), (4, "4A"), (5, "31"), (6, "66A"))
+    assert titles[6:] == [f"{line}: Demonstration – Betrieb ab Ort {i}" for i, line in deferred], titles
