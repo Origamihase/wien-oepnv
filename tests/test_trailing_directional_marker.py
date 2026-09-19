@@ -120,6 +120,89 @@ class TestTrailingDirectionalMarkerStripped:
         assert out.startswith("Grund: Gleisbauarbeiten."), out
 
 
+class TestGluedMarkerReconcilesTitleAndBody:
+    """The arrow glued to the next token — where title and body disagree.
+
+    ``_tidy_title_wl`` ends on ``re.sub(r"[<>«»‹›]+", "", t)``, so the
+    title never carries the glyph. The description did. Live in the
+    cache on 2026-09-19::
+
+        T: 1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80
+        D: Bhf. Hütteldorf ÖBB-Ersatzbus für <80
+
+    One item said two different things about the same replacement bus.
+    The fix is in the *comparison*, not in the text: the duplicate check
+    ignores ``<``/``>`` so the restatement is recognised and dropped.
+
+    The first attempt stripped the glyph from the summary itself and
+    broke five injection tests — ``&lt;b&gt;x&lt;/b&gt;`` decodes to the
+    literal text ``<b>x</b>``, which the pipeline carries as plain text
+    on purpose. ``TestLiteralAngleBracketTextIsNeverRewritten`` below
+    pins that lesson.
+    """
+
+    def test_the_restatement_is_recognised_despite_the_glyph(self) -> None:
+        title = "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80"
+        desc = "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+        _, out = _format(title, desc)
+        assert "<80" not in out
+        # The headline already says it: only the timeframe remains.
+        assert out.strip().startswith("[")
+
+    def test_a_body_that_says_more_keeps_its_text_verbatim(self) -> None:
+        """No match, no rewrite — the glyph is upstream's, not ours to edit.
+
+        Deliberately narrower than "strip every stray marker": the only
+        thing established here is that title and body were the same
+        sentence. Where they are not, the published text stays exactly
+        as upstream wrote it.
+        """
+        _, out = _format("1: Ersatzbus für 80 ab Hütteldorf", "Ersatzbus für <80 ab Penzing")
+        assert "für <80 ab Penzing" in out
+
+    def test_a_body_that_only_differs_in_words_is_still_no_duplicate(self) -> None:
+        _, out = _format("1: Ersatzbus für 80", "Ersatzbus für <90")
+        assert "für <90" in out
+
+    def test_the_comparison_stays_case_insensitive(self) -> None:
+        """The first comparison casefolds; the marker-blind one must too.
+
+        WL writes the same words with different capitalisation in title
+        and ticker text often enough that a case-sensitive second attempt
+        would quietly stop recognising the restatement.
+        """
+        _, out = _format("1: Ersatzbus für 80", "ersatzbus für <80")
+        assert "ersatzbus" not in out.casefold()
+        assert out.strip().startswith("[")
+
+
+class TestLiteralAngleBracketTextIsNeverRewritten:
+    """Regression guard for the five injection tests this change broke once.
+
+    ``html_to_text`` decodes an entity-escaped ``&lt;b&gt;`` into the
+    literal characters ``<b>``, which stay in the body as TEXT and are
+    escaped again at the ``_emit_item`` sink. Any rule that removes
+    ``<`` before a word destroys that text — and with it the evidence
+    that the sink, not the body, is what makes an injected tag inert.
+    """
+
+    def test_literal_tag_text_survives_the_summary_stage(self) -> None:
+        _, out = _format("31: Hinweis", "&lt;b&gt;x&lt;/b&gt; upstream")
+        assert "<b>x</b> upstream" in out
+
+    def test_a_script_payload_keeps_its_angle_brackets(self) -> None:
+        """Only the brackets are this file's business.
+
+        ``alert(1)`` comes out as ``alert (1)`` — ``repair_glued_words``
+        puts a space before an opening bracket glued to a word. That is
+        pre-existing and unrelated; asserting the payload verbatim would
+        pin someone else's rule by accident.
+        """
+        _, out = _format("31: Hinweis", "&lt;script&gt;alert(1)&lt;/script&gt; Text")
+        assert "<script>" in out
+        assert "</script>" in out
+
+
 class TestMidTextDirectionalMarkerPreserved:
     def test_arrow_with_destination_kept(self) -> None:
         # ``A > B`` is a legitimate WL directional clause — preserve.
