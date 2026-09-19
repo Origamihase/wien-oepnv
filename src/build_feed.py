@@ -4976,6 +4976,39 @@ def _leading_category_word(summary: str) -> str:
     return first if first.casefold() in _CATEGORY_PREFIX_WORDS else ""
 
 
+def _separate_reason_word(title_out: str) -> str:
+    """``31: Demonstration Betrieb ab Wallensteinstraße`` → ``31: Demonstration – Betrieb ab …``.
+
+    WL's display-board tickers put the reason in front of the consequence
+    with nothing between them. Read from a distance that is two fragments
+    laid end to end, and word for word in English it becomes
+    ``Demonstration service from Wallensteinstraße`` — as if „Demonstration
+    service" were a kind of service (C.5, audit 2026-09-17). Over 300
+    published revisions 26 of 188 distinct titles had this shape, the
+    longest 99 characters against a limit of 256.
+
+    The joint gets an en dash when the title body opens with a word from
+    ``_CATEGORY_PREFIX_WORDS`` and the next word starts with a capital —
+    a fragment, not prose (``Demonstration am 19.09.2026`` keeps its
+    sentence). Applied to the finished German title, after the duplicate
+    checks that compare summaries against the title body, so those see
+    the text WL wrote and nothing downstream has to know about the dash
+    (``_drop_category_word`` happens to tolerate one today — that is
+    luck, not a contract). The English title is translated from the
+    result and inherits the dash. Idempotent: an existing dash is not a
+    capital.
+    """
+    match = _TITLE_BODY_RE.match(title_out)
+    body = match.group(1) if match else title_out
+    prefix = title_out[: match.start(1)] if match else ""
+    words = body.split(maxsplit=1)
+    if len(words) < 2 or words[0].casefold() not in _CATEGORY_PREFIX_WORDS:
+        return title_out
+    if not words[1][:1].isupper():
+        return title_out
+    return f"{prefix}{words[0]} – {words[1]}"
+
+
 def _reason_only_summary(category_word: str) -> str:
     """Rettet den Grund, wenn sonst ein leerer Rumpf übrig bliebe.
 
@@ -5650,6 +5683,11 @@ def _format_item_content(
 
     # Prepare CDATA content (handle ]]> in content)
     desc_cdata = _cdata_content(desc_html)
+
+    # Last, after every comparison of the summary against the title body:
+    # the joint between reason word and ticker fragment gets its dash.
+    title_out = _separate_reason_word(title_out)
+    title_cdata = _cdata_content(title_out)
 
     base = FormattedContent(
         guid, link, title_cdata, desc_text_truncated, desc_cdata,

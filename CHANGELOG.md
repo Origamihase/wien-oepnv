@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE- und EN-Feed: Gedankenstrich zwischen Ursachenwort und Ticker-Fragment (2026-09-19)**:
+  WLs Anzeigetafel-Kurzmeldungen stellen den Grund ohne Fuge vor die Folge:
+  `31: Demonstration Betrieb ab Wallensteinstraße`. Aus der Entfernung gelesen
+  sind das zwei aneinandergelegte Fetzen, und wortweise übersetzt wurde daraus
+  `Demonstration service from Wallensteinstraße` — als wäre „Demonstration
+  service" eine Betriebsart (C.5, Audit vom 17.09.). Über 300 veröffentlichte
+  Revisionen hatten 26 von 188 verschiedenen Titeln diese Form; der längste hat
+  99 Zeichen, die Grenze liegt bei 256 — die Platzsorge ist ausgeräumt.
+  `_separate_reason_word` zieht im fertigen deutschen Titel ein ` – ` ein, wenn
+  der Titelkörper mit einem Wort aus `_CATEGORY_PREFIX_WORDS` beginnt und ein
+  großgeschriebenes Fragment folgt (`Demonstration am 19.09.2026` bleibt ein
+  Satz). Es läuft **nach** den Duplikat-Prüfungen, die Beschreibungen gegen den
+  Titelkörper vergleichen; der englische Titel wird aus dem Ergebnis übersetzt
+  und erbt den Strich: `Demonstration – service from Wallensteinstraße`.
+
 * **DE-Feed: Richtungspfeil und nackte Titel-Wiederholung in der Beschreibung (2026-09-19)**:
   Item 7 des Tages zeigte unter `74A: Demonstration Betrieb ab Landstraße`
   die Beschreibung `Betrieb ab Landstraße <`. Zwei Ursachen: WLs
