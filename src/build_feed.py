@@ -340,6 +340,81 @@ def _tidy_wl_dangling_location(desc: str) -> str:
     )
 
 
+# A real sentence end for the summary extract: a period after at least
+# FOUR letters — not a digit (``17. Februar``), not a 1–3-letter
+# abbreviation (``Gerasdorf b. Wien``, ``Wien Hbf.``, ``Karlsplatz U.``) —
+# followed by whitespace and an uppercase letter. Shared by the extract in
+# ``_format_item_content`` and by ``_prefer_measures`` below, so the two
+# can never disagree on where a sentence ends.
+_SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(
+    r"(?<=[A-Za-zÄÖÜäöüß]{4}[.!?])\s+(?=[A-ZÄÖÜ])"
+)
+
+# A per-line measure sentence in a WL notice — ``Linie D: …``,
+# ``Linien 56A und 56B: …`` — at the text start or right after a sentence
+# end or a label colon (``Maßnahmen: Linie D: …``). Built on the shared
+# ``_WL_DESC_LINE_TOKEN`` so it recognises exactly the line codes the
+# other WL description rules do.
+_WL_MEASURE_START_RE: re.Pattern[str] = re.compile(
+    rf"(?:^|(?<=[.!?:])\s+)(?=Linien?\s+{_WL_DESC_LINE_TOKEN}"
+    rf"(?:\s*(?:,|und|/|\+)\s*{_WL_DESC_LINE_TOKEN}){{0,20}}\s*:\s)"
+)
+_WL_MEASURE_JOIN_RE: re.Pattern[str] = re.compile(
+    rf"[.!?]\s+(?=Linien?\s+{_WL_DESC_LINE_TOKEN}"
+    rf"(?:\s*(?:,|und|/|\+)\s*{_WL_DESC_LINE_TOKEN}){{0,20}}\s*:\s)"
+)
+# The sentence that only announces the list: ``… kommt es zu folgenden
+# Verkehrsmaßnahmen.`` The title already names the reason.
+_WL_ANNOUNCEMENT_RE: re.Pattern[str] = re.compile(
+    r"\bfolgenden\s+\w*(?:maßnahmen|änderungen|einschränkungen|umleitungen)\b",
+    re.IGNORECASE,
+)
+# A bare label left over before the measures: ``Maßnahmen:``.
+_WL_LABEL_SENTENCE_RE: re.Pattern[str] = re.compile(r"^(?:\w+\s*){1,3}:$")
+
+
+def _prefer_measures(summary: str) -> str:
+    """Put a WL notice's per-line measures first — the display budget is 180.
+
+    WL writes its full notices in one shape: an announcement, a period,
+    then one measure per line. Published 2026-09-19 for the seven-line
+    demonstration notice, the extract kept the announcement and nothing
+    else::
+
+        Wegen einer Demonstration im Bereich Schwarzenbergplatz und Ring
+        kommt es zu folgenden Verkehrsmaßnahmen.
+
+    ``folgenden`` — and then the 180 characters were spent. The measures
+    (``Linie D: Derzeit kein Betrieb zwischen Börse und Quartier
+    Belvedere. Linie 1: Umleitung …``) never reached the display, and 20
+    of the 37 notices in the cache have that block.
+
+    When a text carries a measure block, the sentences before it lose
+    the announcement (the title names the reason) and the ``Zeitraum:``
+    sentence (the item's own date line renders the period); a sentence
+    with content of its own — ``Wegen Instandsetzungsarbeiten in der
+    Röntgengasse wird die Linie 44A kurzgeführt.`` — stays. The measures
+    are joined with ``;`` so the two-sentence extract downstream treats
+    them as one and ``_truncate_summary_180`` cuts them with an ellipsis
+    instead of stopping after the first line's measure. Texts without a
+    measure block are returned unchanged.
+    """
+    match = _WL_MEASURE_START_RE.search(summary)
+    if match is None:
+        return summary
+    head = summary[: match.start()].strip()
+    measures = _WL_MEASURE_JOIN_RE.sub("; ", summary[match.end() :].strip())
+    kept = [
+        sentence
+        for sentence in (part.strip() for part in _SENTENCE_SPLIT_RE.split(head))
+        if sentence
+        and not sentence.startswith("Zeitraum:")
+        and not _WL_ANNOUNCEMENT_RE.search(sentence)
+        and not _WL_LABEL_SENTENCE_RE.match(sentence)
+    ]
+    return " ".join([*kept, measures])
+
+
 def _strip_trailing_directional_marker(summary: str) -> str:
     """Drop a trailing WL ``>`` / ``<`` arrow with surrounding whitespace.
 
@@ -5361,6 +5436,8 @@ def _format_item_content(
     # :func:`_reason_only_summary`.
     category_word = _leading_category_word(summary)
     summary = _strip_summary_category_prefix(summary, raw_title)
+    # A WL notice with a measure block: measures first, see the helper.
+    summary = _prefer_measures(summary)
 
     # Extrahiere maximal die ersten zwei Sätze.
     # Boundary regex: a real sentence end is a period after at least
@@ -5379,9 +5456,7 @@ def _format_item_content(
     # ``ausgefallen. Wir bitten …``.
     sentences = [
         s.strip()
-        for s in re.split(
-            r'(?<=[A-Za-zÄÖÜäöüß]{4}[.!?])\s+(?=[A-ZÄÖÜ])', summary
-        )
+        for s in _SENTENCE_SPLIT_RE.split(summary)
         if s.strip()
     ]
     if sentences:

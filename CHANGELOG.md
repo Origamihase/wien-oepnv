@@ -5,6 +5,42 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE-Feed: ein Ereignis, alle zehn Plätze (2026-09-19)**:
+  Wiener Linien schickt zu einem Großereignis **eine** ausführliche Meldung
+  für alle betroffenen Linien (`1/2/2A/3A/4A/71/D: Demonstration am
+  19.09.2026`, Kategorie `Hinweis`, mit Maßnahme je Linie) und am Tag selbst
+  je Linie eine Anzeigetafel-Kurzmeldung (`1: Demonstration Betrieb ab Hintere
+  Zollamtsstraße`, Kategorie `Störung`, darunter WLs Textbaustein „Nach einer
+  Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."). Die Faltung
+  Kurz→Lang (`_ticker_fold_target`) verlangte gleiche Linienmenge, gleiche
+  Kategorie und eine Beschreibung ohne eigenen Text — drei Nein, und der Feed
+  bestand zu zehn von zehn Items aus Kurzmeldungen eines Ereignisses; die
+  Langmeldung lag auf Platz 12. Seither: Die Linien der Kurzmeldung müssen in
+  denen der Langmeldung **enthalten** sein; eine `Störung`-Kurzmeldung darf in
+  einen `Hinweis` wandern (nur in diese Richtung — die Kategorie erreicht das
+  Display nie, sie bricht nur Gleichstände in der Sortierung); der Textbaustein
+  zählt als leer. Der Wortvergleich bleibt und löst jetzt HTML-Entities auf,
+  weil der Langtext als HTML im Bucket liegt (`Zollamtsstra&szlig;e`). Am Cache
+  des 19.09. falten 9 von 47 Kurzmeldungen; die Langmeldung wird sichtbar. Der
+  Test, der bisher `Hinweis` und `Störung` auseinanderhielt, pinnt jetzt den
+  neuen Vertrag.
+
+* **DE-Feed: die Langmeldung zeigte die Ankündigung statt der Maßnahmen (2026-09-19)**:
+  Der 180-Zeichen-Auszug nimmt den ersten Satz und den zweiten nur, wenn beide
+  passen. Bei WLs ausführlichen Meldungen ist der erste Satz die Ankündigung
+  („… kommt es zu folgenden Verkehrsmaßnahmen."), der zweite der Zeitraum —
+  und die Maßnahmen je Linie kamen nie an die Reihe; 20 von 37 Langmeldungen im
+  Cache tragen so einen Block. `_prefer_measures` stellt ihn voran: Die
+  Ankündigung entfällt (der Titel nennt den Grund), der `Zeitraum:`-Satz
+  entfällt (die Datumszeile des Items zeigt ihn), ein Einleitungssatz mit
+  eigenem Inhalt bleibt. Die Maßnahmen werden mit `;` verbunden, damit der
+  Schnitt mit Auslassungspunkten in der Liste landet statt nach der ersten
+  Linie: `Linie D: Derzeit kein Betrieb zwischen Börse und Quartier Belvedere;
+  Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere
+  Zollamtsstraße über Landstraße …`. Die Satzgrenze ist jetzt eine geteilte
+  Konstante (`_SENTENCE_SPLIT_RE`), damit Auszug und Helfer nie verschieden
+  trennen.
+
 * **DE-Feed: die zusammengeführte Beschreibung las einen Titelteil noch einmal vor (2026-09-19)**:
   Werden zwei Meldungen derselben Linie zusammengeführt, bringt eine
   Schlagzeilen-Meldung — Beschreibung gleich eigener Titel — diese Wiederholung
