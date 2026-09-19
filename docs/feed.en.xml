@@ -7,10 +7,10 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 19 Sep 2026 16:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 16:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2: Trains stop in the Mühlfeldgasse]]></title>
+      <title><![CDATA[2: Trains stop in Mühlfeldgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c31d06fab90bae2c7eda18946c5e0b6cfb777c730384e0ac91ca089d1e731c1c</guid>
       <pubDate>Sat, 19 Sep 2026 13:15:50 +0200</pubDate>
@@ -21,26 +21,15 @@
       <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[57A: Service obstruction because of demonstration]]></title>
+      <title><![CDATA[57A: Demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">96286a7f0df4710fd02917d4828da01c6be2f4262ae3bab0fc285406a2243348</guid>
       <pubDate>Sat, 19 Sep 2026 15:22:00 +0200</pubDate>
       <ext:first_seen>Sat, 19 Sep 2026 15:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 15:23:35 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 19 Sep 2026 15:22:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 19 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 19.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 19.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Liesing ↔ Wien Meidling]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;913119</guid>
-      <pubDate>Sat, 19 Sep 2026 14:26:10 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 14:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Due to persons on the tracks, no journeys were possible between Wien Liesing station and Wien Meidling station (U) to 14:23. [On 19.09.2026]</description>
-      <content:encoded><![CDATA[Due to persons on the tracks, no journeys were possible between Wien Liesing station and Wien Meidling station (U) to 14:23.<br/>[On 19.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31: Demonstration service from Wallensteinstraße]]></title>
@@ -81,8 +70,19 @@
       <guid isPermaLink="false">79b936e8248544e9b51be04d1a8ac4a6913dbd6fcf3755cb0240923428f60051</guid>
       <pubDate>Sat, 19 Sep 2026 13:05:49 +0200</pubDate>
       <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:05:49 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
+      <ext:starts_at>Sat, 19 Sep 2026 16:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 19 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation only between Wittelsbachstraße and Lisztstraße. Duration: 22:00. Reason: demonstration in the area of Schwarzenbergplatz. [On 19.09.2026]</description>
+      <content:encoded><![CDATA[Operation only between Wittelsbachstraße and Lisztstraße. Duration: 22:00. Reason: demonstration in the area of Schwarzenbergplatz.<br/>[On 19.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Demonstration Buses stop towards Schottenring]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">969183453a1471d23feb3836e17ffc4d679e0facf90c89fc62f25e3d883968e0</guid>
+      <pubDate>Sat, 19 Sep 2026 13:05:20 +0200</pubDate>
+      <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 19 Sep 2026 13:05:50 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 19 Sep 2026 20:30:00 +0200</ext:ends_at>
       <description>[On 19.09.2026]</description>
       <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
     </item>
@@ -109,12 +109,12 @@
       <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[3A: Demonstration Buses stop towards Schottenring]]></title>
+      <title><![CDATA[2A: Demonstration No operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">969183453a1471d23feb3836e17ffc4d679e0facf90c89fc62f25e3d883968e0</guid>
+      <guid isPermaLink="false">d1a268df5ac9a44ef7c7be7becc76b31a46ca1f4dd5066770952ce59932897ba</guid>
       <pubDate>Sat, 19 Sep 2026 11:24:00 +0200</pubDate>
       <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:05:50 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 19 Sep 2026 13:05:20 +0200</ext:starts_at>
       <ext:ends_at>Sat, 19 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 19.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 19.09.2026]]]></content:encoded>
