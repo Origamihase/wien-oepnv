@@ -65,7 +65,7 @@
     },
     "total": 1850
   },
-  "generated_at": "2026-09-19T05:32:19+02:00",
+  "generated_at": "2026-09-19T06:02:29+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.07,
@@ -127,8 +127,8 @@
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 0.0,
-      "observations": 1,
+      "avg_delay_minutes": null,
+      "observations": 0,
       "window_minutes": 60
     },
     "max_delay_minutes": 395.33,
