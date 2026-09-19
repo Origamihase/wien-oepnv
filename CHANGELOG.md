@@ -5,6 +5,36 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Zusammengeführte Meldungen lasen sich doppelt (2026-09-19)**:
+  Wenn zwei Items verschmelzen, verbindet `src/feed/merge.py` die beiden
+  Rümpfe für den **Titel** mit `f"{ex_name} & {name}"`, während die
+  zusammengeführte Beschreibung dieselben zwei Teile mit einem einfachen
+  Leerzeichen trägt:
+
+  ```
+  T: 25: Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse & Ersatzbus ab Josef-Baumann-Gasse
+  D: Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse Ersatzbus ab Josef-Baumann-Gasse
+  ```
+
+  Wort für Wort dasselbe — der wörtliche Vergleich in
+  `_summary_duplicates_title` verfehlt es an **einem Zeichen**. Der Vergleich
+  gleicht das Trennzeichen jetzt auf **beiden** Seiten an.
+
+  Größenordnung: **8 von 232** eindeutigen veröffentlichten deutschen Items
+  tragen ein `&` in Titel oder Rumpf, **6** davon sind diese Wiederholung.
+  Die übrigen zwei sind gewöhnliche Prosa — `Die Zufahrt zur Sport & Fun
+  Halle Donaustadt ist möglich.` — und bleiben unberührt: nach dem Angleichen
+  muss der restliche Satz weiterhin exakt übereinstimmen.
+
+  Der aktuelle Cache enthält keinen zusammengeführten Titel, entsprechend
+  ändert sich dort **0 von 106** Items — der Beleg steckt in der
+  veröffentlichten Historie, nicht im Tagesbestand.
+
+  Fünf Mutationen geprüft, vier fallen: dritter Vergleich entfernt (3 Tests) ·
+  nur die Titelseite angeglichen (1) · `&` statt ` & ` getroffen (3) ·
+  zweiter Vergleich zerstört (2). Die fünfte, die Kurzschluss-Bedingung, ist
+  nachweislich verhaltensneutral und im Code als solche kommentiert.
+
 * **Ein Item, zwei Aussagen: der Pfeil, den nur der Titel verlor (2026-09-19)**:
   Im Cache des manuellen Full-Refresh:
 

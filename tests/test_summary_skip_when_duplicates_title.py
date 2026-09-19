@@ -183,3 +183,79 @@ class TestCategoryWordOnBothSides:
         desc = "Betriebsstörung\nKein Betrieb"
         _, out = _format(title, desc)
         assert out.startswith("Betriebsstörung Kein Betrieb")
+
+
+class TestMergeJoinerOnOneSideOnly:
+    """Two merged items: ``&`` in the title, a plain space in the body.
+
+    ``src/feed/merge.py`` joins two bodies as ``f"{ex_name} & {name}"``
+    for the title while the merged description carries the same two
+    clauses separated by a space. The reader gets the identical words
+    twice, and the verbatim comparison misses it over one character::
+
+        T: 25: Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse & Ersatzbus …
+        D: Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse Ersatzbus …
+
+    Counted over the published German feed: 8 of 232 unique items carry a
+    ``&`` in title or body; 6 of them are this restatement.
+    """
+
+    def test_the_merged_restatement_is_recognised(self) -> None:
+        title = (
+            "25: Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse "
+            "& Ersatzbus ab Josef-Baumann-Gasse"
+        )
+        desc = (
+            "Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse\n"
+            "Ersatzbus ab Josef-Baumann-Gasse"
+        )
+        _, out = _format(title, desc)
+        assert "Josef-Baumann-Gasse" not in out
+        assert out.strip().startswith("[")
+
+    def test_the_order_of_the_two_halves_does_not_matter(self) -> None:
+        """Whichever half won the merge, the restatement is the same."""
+        title = (
+            "25: Ersatzbus ab Josef-Baumann-Gasse "
+            "& Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse"
+        )
+        desc = (
+            "Ersatzbus ab Josef-Baumann-Gasse\n"
+            "Linien 25 und 26 Betrieb ab Josef-Baumann-Gasse"
+        )
+        _, out = _format(title, desc)
+        assert "Ersatzbus" not in out
+
+    def test_an_ampersand_inside_ordinary_prose_survives(self) -> None:
+        """The other two of the eight — a place name, not a merge.
+
+        ``Sport & Fun Halle`` is one of exactly two published items whose
+        ``&`` is prose. Levelling the joiner on BOTH sides is what keeps
+        them apart: the rest of the sentence still has to match.
+        """
+        _, out = _format(
+            "X: Erzherzog-Karl-Straße",
+            "Die Zufahrt zur Sport & Fun Halle Donaustadt ist möglich.",
+        )
+        assert "Sport & Fun Halle Donaustadt" in out
+
+    def test_the_joiner_is_levelled_on_whichever_side_carries_it(self) -> None:
+        """Symmetry, on purpose rather than by accident.
+
+        Every one of the six published cases has the ``&`` in the title
+        and the plain space in the body — that is how ``merge.py`` builds
+        them. Levelling only the title side would cover all six. The
+        comparison levels both anyway, so the rule keeps working if a
+        future merge hands the joiner to the other half; without this
+        test that symmetry would be untested decoration.
+        """
+        _, out = _format("25: Betrieb ab Kagran Ersatzbus ab Kagran",
+                         "Betrieb ab Kagran & Ersatzbus ab Kagran")
+        assert "Kagran" not in out
+        assert out.strip().startswith("[")
+
+    def test_a_merged_body_that_says_more_is_kept(self) -> None:
+        title = "25: Betrieb ab Josef-Baumann-Gasse & Ersatzbus"
+        desc = "Betrieb ab Josef-Baumann-Gasse Ersatzbus ab Floridsdorf"
+        _, out = _format(title, desc)
+        assert "ab Floridsdorf" in out
