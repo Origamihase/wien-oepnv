@@ -140454,7 +140454,7 @@
           "longitude": 16.3390255
         },
         {
-          "stop_id": "365",
+          "stop_id": "3477",
           "name": "Josefstädter Straße U",
           "latitude": 48.2116299,
           "longitude": 16.3395286
@@ -234041,15 +234041,14 @@
           "longitude": 16.3232601
         },
         {
-          "stop_id": "6024",
-          "name": "Bahnhof Rudolfsheim (Bedarf)",
+          "stop_id": "7008",
+          "name": "Bhf.Rdh. / Halle III - A",
           "latitude": 48.19059,
           "longitude": 16.3226762
         }
       ],
       "aliases": [
         "Wien Rudolfsheim, Anschützgasse (WL)",
-        "Bahnhof Rudolfsheim (Bedarf)",
         "Bahnhof Rudolfsheim, Anschuetzg.",
         "Bahnhof Rudolfsheim, Anschuetzg. (WL)",
         "Bahnhof Rudolfsheim, Anschuetzg. Station",
@@ -234122,6 +234121,7 @@
         "bf Wien-Rudolfsheim,-Anschützgasse",
         "Bf Wien-Rudolfsheim,-Anschützgasse-(WL)",
         "bf Wien-Rudolfsheim,-Anschützgasse-(WL)",
+        "Bhf.Rdh. / Halle III - A",
         "Rudolfsheim, Anschuetzg.",
         "Rudolfsheim, Anschuetzg. (WL)",
         "Rudolfsheim, Anschuetzg. (WL) Bahnhof",
@@ -262067,82 +262067,6 @@
       "source": "wl",
       "latitude": 48.210963,
       "longitude": 16.421338
-    },
-    {
-      "name": "Wien Stadion U, Handelskai (WL)",
-      "in_vienna": true,
-      "pendler": false,
-      "wl_diva": "60202502",
-      "wl_stops": [
-        {
-          "stop_id": "3605",
-          "name": "Stadion U, Handelskai",
-          "latitude": 48.212031,
-          "longitude": 16.4230809
-        }
-      ],
-      "aliases": [
-        "Wien Stadion U, Handelskai (WL)",
-        "Bahnhof Stadion U, Handelskai",
-        "Bahnhof Stadion U, Handelskai (WL)",
-        "Bahnhof Stadion U, Handelskai Station",
-        "Bahnhof Wien Stadion U, Handelskai",
-        "Bahnhof Wien-Stadion-U,-Handelskai",
-        "Bahnhof Wien-Stadion-U,-Handelskai-(WL)",
-        "Bf Stadion U, Handelskai",
-        "bf Stadion U, Handelskai",
-        "Bf Stadion U, Handelskai (WL)",
-        "bf Stadion U, Handelskai (WL)",
-        "Bf Stadion U, Handelskai Station",
-        "bf Stadion U, Handelskai Station",
-        "Bf Wien Stadion U, Handelskai",
-        "bf Wien Stadion U, Handelskai",
-        "Bf Wien-Stadion-U,-Handelskai",
-        "bf Wien-Stadion-U,-Handelskai",
-        "Bf Wien-Stadion-U,-Handelskai-(WL)",
-        "bf Wien-Stadion-U,-Handelskai-(WL)",
-        "Stadion U, Handelskai",
-        "Stadion U, Handelskai (WL)",
-        "Stadion U, Handelskai (WL) Bahnhof",
-        "Stadion U, Handelskai (WL) Bf",
-        "Stadion U, Handelskai (WL) bf",
-        "Stadion U, Handelskai Bahnhof",
-        "Stadion U, Handelskai Bf",
-        "Stadion U, Handelskai bf",
-        "Stadion U, Handelskai Station",
-        "Stadion U, Handelskai Station Bahnhof",
-        "Stadion U, Handelskai Station Bf",
-        "Stadion U, Handelskai Station bf",
-        "Vienna Stadion U, Handelskai",
-        "Vienna Stadion U, Handelskai (WL)",
-        "Vienna Stadion U, Handelskai Station",
-        "Vienna Stadion U, Handelskai U",
-        "Vienna Stadion U, Handelskai U (VOR)",
-        "Wien Stadion U, Handelskai",
-        "Wien Stadion U, Handelskai (WL) Bahnhof",
-        "Wien Stadion U, Handelskai (WL) Bf",
-        "Wien Stadion U, Handelskai (WL) bf",
-        "Wien Stadion U, Handelskai Bahnhof",
-        "Wien Stadion U, Handelskai Bf",
-        "Wien Stadion U, Handelskai bf",
-        "Wien Stadion U, Handelskai Station",
-        "Wien Stadion U, Handelskai Station Bahnhof",
-        "Wien Stadion U, Handelskai Station Bf",
-        "Wien Stadion U, Handelskai Station bf",
-        "Wien Stadion U, Handelskai U",
-        "Wien Stadion U, Handelskai U (VOR)",
-        "Wien-Stadion-U,-Handelskai",
-        "Wien-Stadion-U,-Handelskai Bahnhof",
-        "Wien-Stadion-U,-Handelskai Bf",
-        "Wien-Stadion-U,-Handelskai bf",
-        "Wien-Stadion-U,-Handelskai-(WL)",
-        "Wien-Stadion-U,-Handelskai-(WL) Bahnhof",
-        "Wien-Stadion-U,-Handelskai-(WL) Bf",
-        "Wien-Stadion-U,-Handelskai-(WL) bf"
-      ],
-      "source": "wl",
-      "latitude": 48.212031,
-      "longitude": 16.423081
     },
     {
       "name": "Wien Stadionbad (WL)",
@@ -298190,7 +298114,7 @@
           "longitude": 16.4851095
         },
         {
-          "stop_id": "7388",
+          "stop_id": "7389",
           "name": "Zanggasse",
           "latitude": 48.2388,
           "longitude": 16.4845346
