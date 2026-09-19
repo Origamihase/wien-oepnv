@@ -5,6 +5,40 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: „to the Karlsplatz" → „to Karlsplatz" (2026-09-19)**:
+  Die kleinere Hälfte der Artikel-Familie, deren größere (#1842,
+  `the line 17A`) einen PR zuvor fiel. Deutsch artikuliert auch seine
+  Straßen- und Platznamen — `in der Althanstraße`, `zum Karlsplatz` —,
+  Englisch lässt sie bloß:
+
+  ```
+  Because of roadworks in the Kästenbaumgasse, …   → in Kästenbaumgasse
+  Trains will be redirected to the Karlsplatz.     → to Karlsplatz
+  ```
+
+  **5 Vorkommen über 310** veröffentlichte EN-Items.
+
+  Zwei Entscheidungen, die den Unterschied zur größeren Familie ausmachen:
+
+  1. **Nur der Artikel fällt.** Ob `in Althanstraße` eigentlich
+     `on Althanstraße` heißen müsste, ist eine eigene Frage mit deutlich
+     unsichererer Antwort. Die Präposition bleibt, wie das Modell sie
+     gewählt hat.
+  2. **Der Straßentest ist `_STREET_SUFFIX_RE`** — genau das Muster, mit
+     dem der Masker diese Namen ohnehin schützt, **wiederverwendet statt
+     nachgebaut**. Eine zweite Suffix-Liste könnte von der ersten
+     wegdriften; ein Test pinnt die Wiederverwendung. Und genau diese
+     Wiederverwendung hält die Regel von den Fällen fern, in denen der
+     Artikel vertretbar ist: `the Ernst-Happel-Stadion` und
+     `the Wiener Linien` sind keine Straßennamen und bleiben unberührt.
+
+  **Cache-Epoche 13 → 14** — alle fünf Vorkommen sind als Erfolg gecacht;
+  der Artikel ist falsch, ohne deutsch zu sein.
+
+  Fünf Mutationen geprüft, alle gefangen: Aufruf entfernt · eigene
+  Suffix-Liste statt Wiederverwendung · Wortgrenze entfernt · jedes
+  großgeschriebene Wort getroffen · Epoche nicht erhöht.
+
 * **EN-Feed: „the lines 36A and 36B" → „lines 36A and 36B" (2026-09-19)**:
   Deutsch artikuliert seine Linien — `die Linie 17A`, `die Linien 36A und 36B`
   —, englischer Verkehrssprachgebrauch nicht. Die Wiener Linien schreiben auf
