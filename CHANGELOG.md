@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE-Feed: Platzbudget je Ursache und Tag (2026-09-19)**:
+  Am 19.09. gingen alle zehn Plätze des Feeds an Kurzmeldungen einer
+  Demonstration, je Linie eine; über 300 veröffentlichte Revisionen wiederholte
+  sich das Bild an zwei von acht Tagen mit je acht gleich begründeten Items in
+  den Top 10. Neu läuft nach der Sortierung und vor dem Deckel
+  `_apply_topic_budget`: Vom vierten Item desselben Ursachenworts
+  (`_CATEGORY_PREFIX_WORDS`, am Titelanfang oder nach `wegen`) am selben
+  Wiener Kalendertag an rutschen die weiteren hinter das Feld, in ihrer
+  Reihenfolge — nichts wird verworfen, mit größerem `MAX_ITEMS` erscheinen sie
+  später. Items ohne Ursachenwort oder Datum sind nie betroffen. Konfiguration
+  `MAX_ITEMS_PER_TOPIC` (Standard 3, 0 schaltet ab), dokumentiert in
+  `docs/development.md`. Ergänzt die Faltung Kurz→Lang aus dem Vor-PR für
+  Ereignisse ohne Langmeldung. Betreiber-Entscheid vom 19.09. (A + G.6, dann C).
+
 * **DE-Feed: ein Ereignis, alle zehn Plätze (2026-09-19)**:
   Wiener Linien schickt zu einem Großereignis **eine** ausführliche Meldung
   für alle betroffenen Linien (`1/2/2A/3A/4A/71/D: Demonstration am

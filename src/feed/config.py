@@ -21,6 +21,7 @@ from ..config.defaults import (
     DEFAULT_TITLE_CHAR_LIMIT,
     DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
     DEFAULT_MAX_ITEMS,
+    DEFAULT_MAX_ITEMS_PER_TOPIC,
     DEFAULT_MAX_ITEM_AGE_DAYS,
     DEFAULT_OUT_PATH,
     DEFAULT_PAGES_BASE_URL,
@@ -323,6 +324,7 @@ class FeedSettings:
     description_char_limit: int
     fresh_pubdate_window_min: int
     max_items: int
+    max_items_per_topic: int
     max_item_age_days: int
     absolute_max_age_days: int
     ends_at_grace_minutes: int
@@ -348,6 +350,7 @@ TITLE_CHAR_LIMIT: int = DEFAULT_TITLE_CHAR_LIMIT
 DESCRIPTION_CHAR_LIMIT: int = DEFAULT_DESCRIPTION_CHAR_LIMIT
 FRESH_PUBDATE_WINDOW_MIN: int = DEFAULT_FRESH_PUBDATE_WINDOW_MIN
 MAX_ITEMS: int = DEFAULT_MAX_ITEMS
+MAX_ITEMS_PER_TOPIC: int = DEFAULT_MAX_ITEMS_PER_TOPIC
 MAX_ITEM_AGE_DAYS: int = DEFAULT_MAX_ITEM_AGE_DAYS
 ABSOLUTE_MAX_AGE_DAYS: int = DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS
 ENDS_AT_GRACE_MINUTES: int = DEFAULT_ENDS_AT_GRACE_MINUTES
@@ -362,6 +365,7 @@ def _load_from_env() -> None:
     global LOG_LEVEL, LOG_FORMAT, LOG_DIR_PATH, LOG_MAX_BYTES, LOG_BACKUP_COUNT
     global OUT_PATH, FEED_HEALTH_PATH, FEED_HEALTH_JSON_PATH, FEED_TITLE, FEED_LINK, PAGES_BASE_URL, FEED_DESC, FEED_TTL
     global TITLE_CHAR_LIMIT, DESCRIPTION_CHAR_LIMIT, FRESH_PUBDATE_WINDOW_MIN, MAX_ITEMS
+    global MAX_ITEMS_PER_TOPIC
     global MAX_ITEM_AGE_DAYS, ABSOLUTE_MAX_AGE_DAYS, ENDS_AT_GRACE_MINUTES
     global PROVIDER_TIMEOUT, PROVIDER_MAX_WORKERS, STATE_FILE, STATE_RETENTION_DAYS
     global CACHE_MAX_AGE_HOURS
@@ -446,6 +450,9 @@ def _load_from_env() -> None:
         MAX_FRESH_PUBDATE_WINDOW_MIN,
     )
     MAX_ITEMS = max(get_int_env("MAX_ITEMS", DEFAULT_MAX_ITEMS), 0)
+    MAX_ITEMS_PER_TOPIC = max(
+        get_int_env("MAX_ITEMS_PER_TOPIC", DEFAULT_MAX_ITEMS_PER_TOPIC), 0
+    )
     MAX_ITEM_AGE_DAYS = max(
         get_int_env("MAX_ITEM_AGE_DAYS", DEFAULT_MAX_ITEM_AGE_DAYS), 0
     )
@@ -524,6 +531,7 @@ def build_settings() -> FeedSettings:
         description_char_limit=DESCRIPTION_CHAR_LIMIT,
         fresh_pubdate_window_min=FRESH_PUBDATE_WINDOW_MIN,
         max_items=MAX_ITEMS,
+        max_items_per_topic=MAX_ITEMS_PER_TOPIC,
         max_item_age_days=MAX_ITEM_AGE_DAYS,
         absolute_max_age_days=ABSOLUTE_MAX_AGE_DAYS,
         ends_at_grace_minutes=ENDS_AT_GRACE_MINUTES,
@@ -558,6 +566,7 @@ __all__ = [
     "MAX_FRESH_PUBDATE_WINDOW_MIN",
     "MAX_ITEM_AGE_DAYS",
     "MAX_ITEMS",
+    "MAX_ITEMS_PER_TOPIC",
     "MAX_LOG_BACKUP_COUNT",
     "MAX_LOG_BYTES",
     "MAX_PROVIDER_TIMEOUT",

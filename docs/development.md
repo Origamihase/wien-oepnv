@@ -157,6 +157,7 @@ schreibt. Die wichtigsten Parameter:
 | `FEED_LINK`              | Referenz-URL (nur http/https, Standard: GitHub-Repository).                     |
 | `PAGES_BASE_URL`         | Basis-URL der GitHub-Pages-Site für absolute Permalinks (Standard `https://origamihase.github.io/wien-oepnv`). Wird gegen die Pages-Host-Allow-List validiert; abweichende Werte fallen auf den Standard zurück. |
 | `MAX_ITEMS`              | Anzahl der Einträge im Feed (Standard 10).                                      |
+| `MAX_ITEMS_PER_TOPIC`    | Höchstens so viele Einträge je Ursachenwort und Tag in den vorderen Plätzen; weitere rutschen hinter das Feld (Standard 3, 0 schaltet ab). |
 | `FEED_TTL`               | Cache-Hinweis für Clients in Minuten (Standard 15).                             |
 | `MAX_ITEM_AGE_DAYS`      | Maximales Alter von Meldungen aus den Caches (Standard 365).                    |
 | `ABSOLUTE_MAX_AGE_DAYS`  | Harte Altersgrenze für Meldungen (Standard 540).                                |
