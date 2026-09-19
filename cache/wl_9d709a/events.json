@@ -445,6 +445,18 @@
   },
   {
     "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "Wichtiger Hinweis: Keine Echtzeit-Abfahrtszeiten verfügbar",
+    "description": "<p data-path-to-node=\"1\">Derzeit stehen für Busse und Straßenbahnen leider keine Echtzeit-Abfahrtsdaten zur Verfügung. Bitte orientieren Sie sich bis auf Weiteres an den regulären Aushangfahrplänen an den jeweiligen Haltestellen.</p> <p data-path-to-node=\"2\">Wir arbeiten bereits an einer Lösung und bitten um Ihr Verständnis.</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a0abd32701aebbb40a1b0a388b2634a9cdfd4c0f4b7b8a2a67684051a65ff6cf",
+    "pubDate": "2026-09-19T00:00:00+02:00",
+    "starts_at": "2026-09-19T00:00:00+02:00",
+    "ends_at": "2026-09-19T23:59:00+02:00",
+    "_identity": "wl|hinweis|L=|D=2026-09-19|TK=wichtiger hinweis keine echtzeit abfahrtszeiten verfügbar"
+  },
+  {
+    "source": "Wiener Linien",
     "category": "Störung",
     "title": "11A: Busse halten Vorgartenstraße vor Meiereistraße",
     "description": "Busse halten\nVorgartenstraße vor Meiereistraße",
@@ -826,6 +838,18 @@
     "starts_at": "2026-09-16T00:00:06+02:00",
     "ends_at": "2026-09-19T23:59:59+02:00",
     "_identity": "wl|störung|L=N49|D=2026-09-16|TK=betrieb ab schweglerstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-09-19T07:32:00+02:00",
+    "starts_at": "2026-09-19T07:32:00+02:00",
+    "ends_at": "2026-09-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-09-19|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",

@@ -14522,6 +14522,20 @@
       "en": {}
     }
   },
+  "a0abd32701aebbb40a1b0a388b2634a9cdfd4c0f4b7b8a2a67684051a65ff6cf": {
+    "first_seen": "2026-09-19T06:00:53.371328+00:00",
+    "translations": {
+      "en": {
+        "summary": "Currently, no real-time departure data is available for buses and trams.",
+        "title": "Important note: No real-time departure times available"
+      },
+      "en_src": {
+        "summary": "8d51e5bcbbcf05e9",
+        "title": "6e1ac7e00d055f49"
+      },
+      "epoch": 12
+    }
+  },
   "a0d74ca1342e309d9d443b96b7a745e1415ce8fc2575d392488ccd447fbde179": {
     "first_seen": "2026-09-07T07:30:55.589471+00:00",
     "translations": {
@@ -24903,16 +24917,13 @@
     "first_seen": "2026-09-19T05:01:06.156115+00:00",
     "translations": {
       "en": {
-        "summary": "Due to a defective train on the route, only limited train journeys are currently possible in Wien Handelskai station (U) train journeys.",
-        "title": "Wien Handelskai"
+        "summary": "Due to a defective train on the route, only limited journeys were possible in Wien Handelskai station (U) to 07.40.",
+        "title": "Update 1 (19.09.2026 07:43) Removing traffic restrictions: Wien Handelskai"
       },
       "en_src": {
-        "summary": "f8259c2e54c1876f",
-        "title": "1446ec78a5d27808"
+        "summary": "c9c7f975b31e0115",
+        "title": "d54f8b919dfdea5f"
       },
-      "en_verbatim": [
-        "title"
-      ],
       "epoch": 12
     }
   },
