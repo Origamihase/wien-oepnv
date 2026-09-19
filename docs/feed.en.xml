@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 19 Sep 2026 21:00:56 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 21:30:41 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5B: Contamination]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a92b3112df04fa1a75af2e50696960d8bd222be930417f6e31dfb7b89e30a720</guid>
+      <pubDate>Sat, 19 Sep 2026 21:03:00 +0200</pubDate>
+      <ext:first_seen>Sat, 19 Sep 2026 21:30:41 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 19 Sep 2026 21:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 19 Sep 2026 21:49:00 +0200</ext:ends_at>
+      <description>irregular intervals in both directions. Reason: contamination. [On 19.09.2026]</description>
+      <content:encoded><![CDATA[irregular intervals in both directions. Reason: contamination.<br/>[On 19.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: Trains stop in Mühlfeldgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,7 +32,7 @@
       <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[31: Demonstration service from Wallensteinstraße]]></title>
+      <title><![CDATA[31: Demonstration –Xservice from Wallensteinstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">07ee13646ae33c2da98a821de809b3136bb4fdc7e454840658ffc8afaccd1e5f</guid>
       <pubDate>Sat, 19 Sep 2026 14:07:26 +0200</pubDate>
@@ -43,37 +54,26 @@
       <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2: Demonstration Trains stop Steig A & Trains stop at line 46]]></title>
+      <title><![CDATA[2: Demonstration – Züge halten Steig A & Züge halten bei Linie 46]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3629ca20a95831a63570d0cdaf8f90603b749ac7933bdfaee0e7e19c548af3ca</guid>
       <pubDate>Sat, 19 Sep 2026 13:17:49 +0200</pubDate>
       <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
       <ext:starts_at>Sat, 19 Sep 2026 13:17:20 +0200</ext:starts_at>
       <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>service from Schwedenplatz [On 19.09.2026]</description>
-      <content:encoded><![CDATA[service from Schwedenplatz<br/>[On 19.09.2026]]]></content:encoded>
+      <description>Betrieb ab Schwedenplatz [Am 19.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Schwedenplatz<br/>[Am 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[66A: Demonstration service from Quartier Belvedere]]></title>
+      <title><![CDATA[1: Demonstration – Betrieb ab Hintere Zollamtsstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aa15a615bcbfd6333cd7e84606b5661f479b660e4d23552a9d5fe9467fb7651b</guid>
-      <pubDate>Sat, 19 Sep 2026 13:04:48 +0200</pubDate>
+      <guid isPermaLink="false">8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c</guid>
+      <pubDate>Sat, 19 Sep 2026 13:12:48 +0200</pubDate>
       <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:04:48 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 19 Sep 2026 13:23:49 +0200</ext:starts_at>
       <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>[On 19.09.2026]</description>
-      <content:encoded><![CDATA[[On 19.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/2A/3A/4A/71/D: Demonstration on 19.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e5c3a94f572edd1558cafd97a5c3960aa38b6cc2f23678370681c6b0e2d43278</guid>
-      <pubDate>Fri, 18 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 16:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>Line D: Currently no operation between Börse and Quartier Belvedere; line 1: diversion in both directions between Kliebergasse and Hintere Zollamtsstraße over Landstraße … [18.09.2026 – 19.09.2026]</description>
-      <content:encoded><![CDATA[Line D: Currently no operation between Börse and Quartier Belvedere; line 1: diversion in both directions between Kliebergasse and Hintere Zollamtsstraße over Landstraße …<br/>[18.09.2026 – 19.09.2026]]]></content:encoded>
+      <description>[Am 19.09.2026]</description>
+      <content:encoded><![CDATA[[Am 19.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
@@ -109,15 +109,15 @@
       <content:encoded><![CDATA[[18.09.2026 – 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[Ruthnergasse crossing Justgasse]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">aa9998ab5faa86b356b845ead32f6781fc00f60bec1ef21ab9a811971b3da088</guid>
-      <pubDate>Sun, 20 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 22:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 20 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:ends_at>
-      <description>In the construction site area, a lane is kept clear and traffic is diverted alternately by means of staff during peak hours or traffic signs. [20.09.2026 – 16.10.2026]</description>
-      <content:encoded><![CDATA[In the construction site area, a lane is kept clear and traffic is diverted alternately by means of staff during peak hours or traffic signs.<br/>[20.09.2026 – 16.10.2026]]]></content:encoded>
+      <title><![CDATA[D: Gleisbauarbeiten – Althanstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b25a186e245503549fc296499ec26d8767efe4538f6a4c7ed75b7774611305b3</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 23:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt. [15.09.2026 – 15.09.2027]</description>
+      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -15322,6 +15322,20 @@
       "epoch": 3
     }
   },
+  "a92b3112df04fa1a75af2e50696960d8bd222be930417f6e31dfb7b89e30a720": {
+    "first_seen": "2026-09-19T19:30:41.111453+00:00",
+    "translations": {
+      "en": {
+        "summary": "irregular intervals in both directions. Reason: contamination.",
+        "title": "5B: contamination"
+      },
+      "en_src": {
+        "summary": "c718d041bb8d7d8a",
+        "title": "bd79da146cd97869"
+      },
+      "epoch": 14
+    }
+  },
   "a92d02495778b5484a3e92febf004d3ddcf871aa0beaaa9d608926a55480dfb4": {
     "first_seen": "2026-08-26T08:30:48.881377+00:00",
     "translations": {
@@ -16198,12 +16212,10 @@
     "first_seen": "2026-09-17T21:01:11.849987+00:00",
     "translations": {
       "en": {
-        "summary": "Because of track construction works in the Althanstra\u00dfe, the line D is divided.",
-        "title": "D: track construction works Althanstra\u00dfe"
+        "summary": "Because of track construction works in Althanstra\u00dfe, line D is divided."
       },
       "en_src": {
-        "summary": "0cd217946d571c31",
-        "title": "7f989587b1673180"
+        "summary": "0cd217946d571c31"
       },
       "epoch": 9
     }
