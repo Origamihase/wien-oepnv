@@ -5,6 +5,68 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE-Feed: dieselbe Meldung stand dreimal untereinander (2026-09-19)**:
+  Wiener Linien führt eine Störung, die mehrere Linien trifft, in **einer**
+  Beschreibung auf — je Linie ein Segment mit eigenem `Linie X:`-Präfix.
+  Trifft es alle gleich, trägt jedes Segment denselben Satz:
+
+  ```
+  Linie 5B:  Unregelmäßige Intervalle in beiden Richtungen.
+  Linie 49A: Unregelmäßige Intervalle in beiden Richtungen.
+  Linie 50A: Unregelmäßige Intervalle in beiden Richtungen.
+  Grund: Verkehrsstörung.
+  ```
+
+  `_strip_wl_description_line_prefix` entfernt nur das **erste** Präfix — den
+  Rest trug der Feed mit. Auf dem Display stand:
+
+  ```
+  5B/49A/50A: Verkehrsstörung
+  Unregelmäßige Intervalle in beiden Richtungen. Linie 49A:
+  Unregelmäßige Intervalle in beiden Richtungen. …
+  ```
+
+  Derselbe Satz zweimal, eine von drei Linien willkürlich herausgegriffen,
+  als wäre sie besonders betroffen — und `Grund: Verkehrsstörung.`, das
+  einzige, was etwas Neues sagt, von der 180-Zeichen-Grenze abgeschnitten.
+
+  **13 von 250** veröffentlichten deutschen Items sahen so aus; bei **7**
+  davon fiel der Grund der Kürzung zum Opfer. Nach dem Fix:
+
+  ```
+  Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.
+  ```
+
+  Zwei Grenzen sichern die Regel ab:
+
+  1. **Segmente mit unterschiedlichem Text bleiben vollständig**, Präfix
+     inklusive — dort ist die Linienzuordnung der ganze Sinn. Der Fall
+     `46/49/52: Gleisbauarbeiten` (drei verschiedene Anweisungen) ist als
+     Test festgeschrieben.
+  2. **Nur der wiederholte Anfangssatz eines Segments fällt**, der Rest
+     bleibt stehen. Über 267 Cache-Revisionen gemessen ist dieser Rest
+     **immer** das globale `Grund: …`-Feld und nie linienspezifischer Text.
+
+  Dazu ein Nebeneffekt, der mitbehoben werden musste: WL liefert die
+  Ortsangabe des Grundes gelegentlich leer (`Grund: Verkehrsüberlastung im
+  Bereich .`) oder mit einem Leerzeichen vor dem Punkt (`… Atzgersdorfer
+  Straße .`) — 9 von 417 Beschreibungen. Beides lag bisher hinter der
+  Kürzung und wäre durch diesen Fix erstmals sichtbar geworden. Ein
+  hängendes `im Bereich` fällt jetzt, **wenn nichts darauf folgt**; ein
+  benannter Ort behält seine Präposition.
+
+  Die Segmentgrenze verwendet `_WL_DESC_LINE_TOKEN` wieder, dieselbe
+  Token-Form wie die beiden Präfix-Muster — keine dritte Liste. Ein Test
+  prüft die Übereinstimmung beider Muster an neun Linienkennungen
+  (einschließlich `WLB` und `Ersatzbus`, die keine sind), ein zweiter liest
+  die Zuweisung im Quelltext, weil eine wortgleiche Kopie sich
+  verhaltensmäßig nicht unterscheidet.
+
+  Acht Mutationen geprüft, alle gefangen: beide Aufrufe entfernt · eigene
+  Token-Liste · Token-Form driftet · ganzes Segment statt erstem Satz
+  verglichen · Rest mitverworfen · Ortsangabe zu gierig entfernt · an jedem
+  Satzende statt am Linien-Präfix getrennt.
+
 * **EN-Feed: „to the Karlsplatz" → „to Karlsplatz" (2026-09-19)**:
   Die kleinere Hälfte der Artikel-Familie, deren größere (#1842,
   `the line 17A`) einen PR zuvor fiel. Deutsch artikuliert auch seine
