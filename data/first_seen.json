@@ -700,12 +700,14 @@
     "first_seen": "2026-09-19T12:30:53.140776+00:00",
     "translations": {
       "en": {
+        "summary": "After a service obstruction there are different intervals.",
         "title": "31: demonstration service from Wallensteinstra\u00dfe"
       },
       "en_src": {
+        "summary": "eb1bdc2703fe6f1b",
         "title": "aef46ed20ea0cb45"
       },
-      "epoch": 12
+      "epoch": 13
     }
   },
   "080fbd09add2b1122a5bda1d47d95c77b8bc427edd505ab205116a242f7e6d97": {
@@ -13655,6 +13657,20 @@
       "epoch": 3
     }
   },
+  "96286a7f0df4710fd02917d4828da01c6be2f4262ae3bab0fc285406a2243348": {
+    "first_seen": "2026-09-19T13:30:49.181225+00:00",
+    "translations": {
+      "en": {
+        "summary": "After a service obstruction there are different intervals.",
+        "title": "57A: service obstruction because of demonstration"
+      },
+      "en_src": {
+        "summary": "eb1bdc2703fe6f1b",
+        "title": "b017c8edf4f3ef3c"
+      },
+      "epoch": 13
+    }
+  },
   "965c1a2a4f8c7fa5e1293e00016711ba49837ae52db4ef0c17477fe48c6a0078": {
     "first_seen": "2026-06-18T12:01:21.848600+00:00",
     "translations": {
@@ -15404,7 +15420,7 @@
       "en_src": {
         "title": "b9d038482f71e9b9"
       },
-      "epoch": 12
+      "epoch": 13
     }
   },
   "aa33f7b9b0c4a88c1d26507e48700291a06369f634ccf97ce6c1573fac75fcc0": {
@@ -25125,15 +25141,17 @@
     "first_seen": "2026-09-19T12:30:53.140776+00:00",
     "translations": {
       "en": {
+        "summary": "Due to persons on the tracks, no journeys were possible between Wien Liesing station and Wien Meidling station (U) to 14:23.",
         "title": "Wien Liesing \u2194 Wien Meidling"
       },
       "en_src": {
+        "summary": "7a44c172d2d78fe8",
         "title": "93bfc41eed28f26f"
       },
       "en_verbatim": [
         "title"
       ],
-      "epoch": 12
+      "epoch": 13
     }
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {

@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 19 Sep 2026 15:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 15:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[57A: Fahrtbehinderung wegen Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">96286a7f0df4710fd02917d4828da01c6be2f4262ae3bab0fc285406a2243348</guid>
+      <pubDate>Sat, 19 Sep 2026 15:22:00 +0200</pubDate>
+      <ext:first_seen>Sat, 19 Sep 2026 15:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 19 Sep 2026 15:23:35 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 19 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Liesing ↔ Wien Meidling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -28,8 +39,8 @@
       <ext:first_seen>Sat, 19 Sep 2026 14:30:53 +0200</ext:first_seen>
       <ext:starts_at>Sat, 19 Sep 2026 14:15:56 +0200</ext:starts_at>
       <ext:ends_at>Sat, 19 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt über Friedensbrücke U bis Augasse. [Am 19.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt über Friedensbrücke U bis Augasse.<br/>[Am 19.09.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 19.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 19.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Züge halten bei Linie O]]></title>
@@ -98,24 +109,13 @@
       <content:encoded><![CDATA[[Am 19.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[3A: Demonstration Busse halten in Richtung Schottenring]]></title>
+      <title><![CDATA[66A: Demonstration Betrieb ab Quartier Belvedere]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">969183453a1471d23feb3836e17ffc4d679e0facf90c89fc62f25e3d883968e0</guid>
-      <pubDate>Sat, 19 Sep 2026 13:05:20 +0200</pubDate>
+      <guid isPermaLink="false">aa15a615bcbfd6333cd7e84606b5661f479b660e4d23552a9d5fe9467fb7651b</guid>
+      <pubDate>Sat, 19 Sep 2026 13:04:48 +0200</pubDate>
       <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:05:50 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 20:30:00 +0200</ext:ends_at>
-      <description>[Am 19.09.2026]</description>
-      <content:encoded><![CDATA[[Am 19.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: Demonstration Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d1a268df5ac9a44ef7c7be7becc76b31a46ca1f4dd5066770952ce59932897ba</guid>
-      <pubDate>Sat, 19 Sep 2026 13:05:20 +0200</pubDate>
-      <ext:first_seen>Sat, 19 Sep 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 19 Sep 2026 13:05:20 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 19 Sep 2026 20:30:00 +0200</ext:ends_at>
+      <ext:starts_at>Sat, 19 Sep 2026 13:04:48 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 19 Sep 2026 22:00:00 +0200</ext:ends_at>
       <description>[Am 19.09.2026]</description>
       <content:encoded><![CDATA[[Am 19.09.2026]]]></content:encoded>
     </item>
