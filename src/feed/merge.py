@@ -1,4 +1,5 @@
 import re
+import string
 from typing import Any
 
 # Line-prefix grammar tolerant of two real-world spellings:
@@ -457,8 +458,11 @@ def _collapse_description_prefix(desc1: str, desc2: str) -> str | None:
     return _collapse_common_prefix(desc1, desc2)
 
 
-# ``(?:\s*[<>]+)+``: WL writes "both directions" as ``< >``, with a space.
-_TRAILING_DIRECTIONAL_RE = re.compile(r"(?:\s*[<>]+)+\s*$")
+# The arrows and the whitespace between and around them: WL writes "both
+# directions" as ``< >``, with a space. A character set for ``str.rstrip``
+# rather than a regex — ``(?:\s*[<>]+)+`` backtracked exponentially on a
+# long run of arrows (CodeQL, PR #1850).
+_TRAILING_DIRECTIONAL_CHARS = string.whitespace + "<>"
 
 
 def _trim_trailing_directional(text: str) -> str:
@@ -471,7 +475,7 @@ def _trim_trailing_directional(text: str) -> str:
     """
     if not text:
         return text
-    return _TRAILING_DIRECTIONAL_RE.sub("", text).rstrip()
+    return text.rstrip(_TRAILING_DIRECTIONAL_CHARS)
 
 
 def _restates_title(desc: str, title_body: str) -> bool:

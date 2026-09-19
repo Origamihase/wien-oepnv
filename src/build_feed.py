@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import re
+import string
 import secrets
 import sys
 import xml.etree.ElementTree as ET  # nosec B405
@@ -132,11 +133,16 @@ _INCOMPLETE_TITLE_TAIL_RE = re.compile(
 # glyph or truncation artifact next to the ``[Am …]`` timeframe
 # bracket. We only strip the *trailing* form — mid-text occurrences
 # stay put.
-# ``(?:\s*[<>]+)+`` rather than ``[<>]+``: WL's display boards write a
-# stop served in BOTH directions as ``< >`` — two arrows with a space
-# between them. Published 2026-09-19, ``74A: Demonstration Betrieb ab
-# Landstraße``: only the ``>`` came off, the ``<`` reached the display.
-_TRAILING_DIRECTIONAL_MARKER_RE = re.compile(r"(?:\s*[<>]+)+\s*$")
+# The characters a trailing WL direction marker is made of: the arrows
+# and the whitespace between and around them. WL's display boards write a
+# stop served in BOTH directions as ``< >`` — two arrows with a space —
+# and the pattern ``\s*[<>]+\s*$`` used until 2026-09-19 took only the
+# last arrow off; ``74A: Demonstration Betrieb ab Landstraße`` published
+# ``Betrieb ab Landstraße <``. The replacement ``(?:\s*[<>]+)+`` nested two
+# quantifiers over the same characters and backtracked exponentially on a
+# long run of arrows (CodeQL, PR #1850). Stripping a character set from
+# the end is what ``str.rstrip`` does, in one pass and without a regex.
+_TRAILING_DIRECTIONAL_CHARS = string.whitespace + "<>"
 
 # The same glyph also turns up GLUED to the token after it, and there it
 # makes the two halves of ONE item disagree: ``_tidy_title_wl`` ends on
@@ -429,7 +435,7 @@ def _strip_trailing_directional_marker(summary: str) -> str:
     """
     if not summary:
         return summary
-    return _TRAILING_DIRECTIONAL_MARKER_RE.sub("", summary).rstrip()
+    return summary.rstrip(_TRAILING_DIRECTIONAL_CHARS)
 
 
 def _post_filter_wl(items: list[Any]) -> list[Any]:

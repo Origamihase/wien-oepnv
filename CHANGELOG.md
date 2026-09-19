@@ -13,8 +13,10 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   `src/feed/merge.py`) kannten nur zusammenhängende Pfeile — das `>` fiel, das
   `<` blieb. Und der Rest war der Titelkörper ohne sein Ursachenwort; der
   Emitter fing das bisher nur, wenn die Beschreibung das Wort selbst getragen
-  hatte. Beide Muster akzeptieren jetzt `(?:\s*[<>]+)+`, und
-  `_summary_is_title_without_reason` prüft gegen das Ursachenwort des
+  hatte. Beide Helfer streichen die Pfeile jetzt per `str.rstrip` über die
+  Zeichenmenge „Leerraum und Pfeile" — linear, ohne Regex; der erste Entwurf
+  `(?:\s*[<>]+)+` hätte bei langen Pfeilfolgen exponentiell zurückgesetzt
+  (CodeQL). `_summary_is_title_without_reason` prüft gegen das Ursachenwort des
   **Titels** — eine Beschreibung mit einem *anderen* Ursachenwort bleibt, das
   ist Information. 10 von 247 veröffentlichten Paaren vom 17.–19.09. waren
   solche Wiederholungen.

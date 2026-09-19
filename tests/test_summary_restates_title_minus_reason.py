@@ -86,6 +86,24 @@ def test_both_trailing_arrow_patterns_agree(text: str, expected: str) -> None:
     assert _trim_trailing_directional(text) == expected
 
 
+def test_a_long_run_of_arrows_is_stripped_in_linear_time() -> None:
+    """The first fix used ``(?:\\s*[<>]+)+`` — nested quantifiers over the
+    same characters, exponential on a long run of arrows that does NOT end
+    the string (CodeQL on PR #1850). Stripping a character set from the end
+    is one pass, and the arrows still come off when they do end the string."""
+    import time
+
+    hostile = "Betrieb ab Landstraße " + "<" * 5000 + " x"
+    started = time.perf_counter()
+    assert _strip_trailing_directional_marker(hostile) == hostile
+    assert _trim_trailing_directional(hostile) == hostile
+    assert time.perf_counter() - started < 1.0
+
+    many = "Betrieb ab Landstraße " + "< " * 2000
+    assert _strip_trailing_directional_marker(many) == "Betrieb ab Landstraße"
+    assert _trim_trailing_directional(many) == "Betrieb ab Landstraße"
+
+
 # ---------------- the check ----------------
 
 
