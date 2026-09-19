@@ -446,18 +446,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/D/71: Demonstration",
-    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Linie 2: Kein Betrieb zwischen Parlament, U Volkstheater und Heinestraße. Weiterfahrt ab Heinestraße bis Praterstern S U. Linie D: Kein Betrieb zwischen Börse und Quartier Belvedere. Züge werden im Anschluss nach St. Marx geführt. Linie 71: Betrieb nur zwischen Kaiserebersdorf und St. Marx S. Weiterfahrt über Linie 18 bis Schlachthausgasse. Weichen Sie ersatzweise auf die Linien U1, U2, U3 und U4 aus. Voraussichtliche Dauer: 22:00 Uhr. Grund: Demonstration im Bereich Schwarzenbergplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bd71556f0b3999c4b9221f396e4a62b33873bc5ae8eb0b8775cbaad78170136b",
-    "pubDate": "2026-09-19T11:12:00+02:00",
-    "starts_at": "2026-09-19T11:12:00+02:00",
-    "ends_at": "2026-09-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=1,2,71,D|D=2026-09-19|TK=demonstration"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10A: Verkehrsstörung",
     "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -526,6 +514,42 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
+    "pubDate": "2026-09-19T05:00:26+02:00",
+    "starts_at": "2026-09-19T05:00:26+02:00",
+    "ends_at": "2026-09-19T23:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-19|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Demonstration Betrieb ab Hintere Zollamtsstraße",
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c",
+    "pubDate": "2026-09-19T13:12:48+02:00",
+    "starts_at": "2026-09-19T13:23:49+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-19|TK=demonstration"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Züge halten bei Linie O",
+    "description": "Züge halten\nbei Linie O",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "07b13db22f693397ebfab2556a7f9e7f873b344f135b20448d918a6f54ce6a0b",
+    "pubDate": "2026-09-19T13:23:19+02:00",
+    "starts_at": "2026-09-19T13:23:19+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-19|TK=züge halten bei linie o"
   },
   {
     "source": "Wiener Linien",
@@ -734,6 +758,54 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2A: Demonstration Kein Betrieb",
+    "description": "Demonstration\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d1a268df5ac9a44ef7c7be7becc76b31a46ca1f4dd5066770952ce59932897ba",
+    "pubDate": "2026-09-19T13:05:20+02:00",
+    "starts_at": "2026-09-19T13:05:20+02:00",
+    "ends_at": "2026-09-19T20:30:00+02:00",
+    "_identity": "wl|störung|L=2A|D=2026-09-19|TK=demonstration"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Demonstration Betrieb ab Heinestraße",
+    "description": "Demonstration\nBetrieb ab Volkstheater >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3629ca20a95831a63570d0cdaf8f90603b749ac7933bdfaee0e7e19c548af3ca",
+    "pubDate": "2026-09-19T13:07:48+02:00",
+    "starts_at": "2026-09-19T13:17:20+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-09-19|TK=demonstration"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Züge halten bei Linie 46",
+    "description": "Züge halten\nbei Linie 46",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f7e02a87d591a3610b36b5acdff98167b066f8e7cbd803d7f891aee85b8fc79e",
+    "pubDate": "2026-09-19T13:17:49+02:00",
+    "starts_at": "2026-09-19T13:17:49+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-09-19|TK=züge halten bei linie 46"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Züge halten in der Mühlfeldgasse",
+    "description": "Züge halten in\nder Mühlfeldgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c31d06fab90bae2c7eda18946c5e0b6cfb777c730384e0ac91ca089d1e731c1c",
+    "pubDate": "2026-09-19T13:15:50+02:00",
+    "starts_at": "2026-09-19T13:15:50+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-09-19|TK=züge halten in der mühlfeldgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -770,6 +842,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "3A: Demonstration Busse halten in Richtung Schottenring",
+    "description": "Demonstration\nBusse halten in Richtung Schottenring >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "969183453a1471d23feb3836e17ffc4d679e0facf90c89fc62f25e3d883968e0",
+    "pubDate": "2026-09-19T13:05:20+02:00",
+    "starts_at": "2026-09-19T13:05:50+02:00",
+    "ends_at": "2026-09-19T20:30:00+02:00",
+    "_identity": "wl|störung|L=3A|D=2026-09-19|TK=demonstration"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -778,6 +862,18 @@
     "starts_at": "2026-09-18T04:30:00+02:00",
     "ends_at": "2026-10-31T01:00:00+01:00",
     "_identity": "wl|störung|L=46,49,52|D=2026-09-18|TK=46 49 52 gleisbauarbeiten"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "4A: Demonstration Betrieb ab Lisztstraße",
+    "description": "Linie 4A: Betrieb nur zwischen Wittelsbachstraße und Lisztstraße. Weichen Sie ersatzweise auf die Linien U1, U2, U3 und U4 aus. Voraussichtliche Dauer: 22:00 Uhr. Grund: Demonstration im Bereich Schwarzenbergplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "79b936e8248544e9b51be04d1a8ac4a6913dbd6fcf3755cb0240923428f60051",
+    "pubDate": "2026-09-19T11:27:00+02:00",
+    "starts_at": "2026-09-19T13:05:49+02:00",
+    "ends_at": "2026-09-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=4A|D=2026-09-19|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -818,8 +914,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Demonstration Betrieb ab Quartier Belvedere",
+    "description": "Demonstration\nBetrieb ab Quartier Belvedere",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aa15a615bcbfd6333cd7e84606b5661f479b660e4d23552a9d5fe9467fb7651b",
+    "pubDate": "2026-09-19T13:04:48+02:00",
+    "starts_at": "2026-09-19T13:04:48+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-09-19|TK=demonstration"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Fahrtbehinderung Falschparker",
-    "description": "Die Linie 66A wird in Richtung Reumannplatz U zwischen Liesing und Bhf. Atzgersdorf S über Dirmhirngasse, Knotzenbachgasse und Gatteredergasse umgeleitet. Voraussichtliche Dauer: 13:00 Uhr. Grund: Falschparker im Bereich Mehlführergasse.",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7fdb8d218c98770afcae364ee84c6bae842a6db49d7e944b0574b390a1d1a214",
     "pubDate": "2026-09-19T12:40:00+02:00",
@@ -838,6 +946,18 @@
     "starts_at": "2026-09-16T00:00:07+02:00",
     "ends_at": "2026-09-19T23:59:59+02:00",
     "_identity": "wl|störung|L=71E|D=2026-09-16|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung wegen Demonstration",
+    "description": "Demonstration\nBetrieb ab St. Marx <",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c3bc1799723b116ebf4b83b471a9da3fca2e1fd490f9c8a631a88fa52b77863a",
+    "pubDate": "2026-09-19T13:18:19+02:00",
+    "starts_at": "2026-09-19T13:25:49+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-09-19|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -862,6 +982,30 @@
     "starts_at": "2026-09-19T12:58:16+02:00",
     "ends_at": "2026-09-19T23:55:00+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-19|TK=demonstration"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Demonstration Betrieb ab Quartier Belvedere",
+    "description": "Demonstration\nBetrieb ab Quartier Belvedere",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e",
+    "pubDate": "2026-09-19T13:06:18+02:00",
+    "starts_at": "2026-09-19T13:07:18+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-09-19|TK=demonstration"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Züge halten gegenüber",
+    "description": "Züge halten\ngegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "39a069d6b8bf5d1cf9556857a6bf249b6444bbbba7a6a49f7b3cbd42ba73cd96",
+    "pubDate": "2026-09-19T13:03:18+02:00",
+    "starts_at": "2026-09-19T13:03:18+02:00",
+    "ends_at": "2026-09-19T22:00:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-09-19|TK=züge halten gegenüber"
   },
   {
     "source": "Wiener Linien",
