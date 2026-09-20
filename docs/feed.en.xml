@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 20 Sep 2026 09:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2026 09:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[49: Service from Hütteldorfer Straße with line 46]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">123f3ec41d37c82b1cb680b6e9f1c83a2bac197e145422c4289e2bcd81173f3d</guid>
+      <pubDate>Sun, 20 Sep 2026 00:00:26 +0200</pubDate>
+      <ext:first_seen>Sun, 20 Sep 2026 09:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 20 Sep 2026 00:00:26 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 20 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>service from Hütteldorfer Straße &amp;gt; with line 46 [On 20.09.2026]</description>
+      <content:encoded><![CDATA[service from Hütteldorfer Straße &gt; with line 46<br/>[On 20.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49: Service from Urban-Loritz-Platz with line 52]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b30bec21ad9ff445d41e824ead3b5402c2dd1cdd63d6210037adf1f7e4d8b5f4</guid>
+      <pubDate>Sun, 20 Sep 2026 00:00:26 +0200</pubDate>
+      <ext:first_seen>Sun, 20 Sep 2026 09:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 20 Sep 2026 00:00:26 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 20 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: track construction works. [On 20.09.2026]</description>
+      <content:encoded><![CDATA[Reason: track construction works.<br/>[On 20.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +52,6 @@
       <ext:ends_at>Tue, 22 Sep 2026 15:00:00 +0200</ext:ends_at>
       <description>stop relocation of lines 12A and 14A towards Schmelz, Gablenzgasse and Reumannplatz U Stop: Pilgramgasse U From: Linke Wienzeile 106-108 nach Hofmühlgasse … [18.09.2026 – 22.09.2026]</description>
       <content:encoded><![CDATA[stop relocation of lines 12A and 14A towards Schmelz, Gablenzgasse and Reumannplatz U Stop: Pilgramgasse U From: Linke Wienzeile 106-108 nach Hofmühlgasse …<br/>[18.09.2026 – 22.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f3a25e31c636e08b8727947f73c94cdcf0c8d6b06b266f2b7341cd2709861eb1</guid>
-      <pubDate>Sun, 20 Sep 2026 08:17:00 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 08:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 20 Sep 2026 08:17:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 20 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 20.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 20.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Buses stop Vorgartenstraße before Meiereistraße]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
       <description>Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected. [15.09.2026 – 27.09.2026]</description>
       <content:encoded><![CDATA[Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56A/56B/58A/58B: Diversion towards Hietzing U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">448cd28e5b6e46e9031d5b7d469e439bb6d640a548691fa7e52b2cfebe245957</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 09:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the area of Kennedybrücke the bus lines are being redirected. [15.09.2026 – 15.09.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the area of Kennedybrücke the bus lines are being redirected.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
