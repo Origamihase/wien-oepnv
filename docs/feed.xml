@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 20 Sep 2026 23:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 00:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Tue, 22 Sep 2026 15:00:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linien 12A und 14A in Richtung Schmelz, Gablenzgasse bzw. Reumannplatz U Haltestelle: Pilgramgasse U Von: Linke Wienzeile 106-108 nach Hofmühlgasse … [18.09.2026 – 22.09.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linien 12A und 14A in Richtung Schmelz, Gablenzgasse bzw. Reumannplatz U Haltestelle: Pilgramgasse U Von: Linke Wienzeile 106-108 nach Hofmühlgasse …<br/>[18.09.2026 – 22.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Busse halten Vorgartenstraße vor Meiereistraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">064178a34de7623184079052e86f1eb5efbf23f243d8f7c0c55d47e8edac689c</guid>
-      <pubDate>Sun, 20 Sep 2026 00:00:23 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 07:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 20 Sep 2026 00:00:23 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 20 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 20.09.2026]</description>
-      <content:encoded><![CDATA[[Am 20.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Gleisbauarbeiten – Althanstraße]]></title>
@@ -112,12 +101,23 @@
       <title><![CDATA[12A: Betrieb ab Johnstraße U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643</guid>
-      <pubDate>Sun, 20 Sep 2026 00:00:26 +0200</pubDate>
+      <pubDate>Mon, 21 Sep 2026 00:00:22 +0200</pubDate>
       <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 20 Sep 2026 00:00:26 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 20 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Grund: Gleisbauarbeiten. [Am 20.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Gleisbauarbeiten.<br/>[Am 20.09.2026]]]></content:encoded>
+      <ext:starts_at>Mon, 21 Sep 2026 00:00:22 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 21 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Gleisbauarbeiten. [Am 21.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Gleisbauarbeiten.<br/>[Am 21.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Betrieb ab Schweglerstraße 19-21]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ca51ff9a0bc16a53883dfb140775b92521f7650658e94d4729934cdb43721549</guid>
+      <pubDate>Mon, 21 Sep 2026 00:00:22 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 00:00:22 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 21 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Gleisbauarbeiten. [Am 21.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Gleisbauarbeiten.<br/>[Am 21.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
