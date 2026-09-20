@@ -459,7 +459,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "5/12/43/44: Stromstörung",
-    "description": "Linie 5: Kein Betrieb zwischen Franz-Josefs-Bahnhof S und Lerchenfelder Straße. Weiterfahrt ab Franz-Josefs-Bahnhof S bis Augasse. Weiterfahrt ab Lerchenfelder Straße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 43: Betrieb nur zwischen Neuwaldegg und Rosensteingasse. Weiterfahrt bis Johann-Nepomuk-Berger-Platz. Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Voraussichtliche Dauer: 16:00 Uhr. Grund: Stromstörung im Bereich Alser Straße bzw. Lange Gasse.",
+    "description": "Linie 5: Kein Betrieb zwischen Franz-Josefs-Bahnhof S und Lerchenfelder Straße. Weiterfahrt ab Franz-Josefs-Bahnhof S bis Augasse. Weiterfahrt ab Lerchenfelder Straße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Linie 43: Betrieb nur zwischen Neuwaldegg und Rosensteingasse. Weiterfahrt bis Johann-Nepomuk-Berger-Platz. Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Weichen Sie ersatzweise auf die Linien U1, U2, U3, U4, U6, 2, 40, 41, 42 und 40A aus. Voraussichtliche Dauer: 16:00 Uhr. Grund: Stromstörung im Bereich Alser Straße bzw. Lange Gasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "39ed65fe8e50341adc8dc7ef30bad9eb5ae420536602cbc2dece1ae3ecb40608",
     "pubDate": "2026-09-20T14:52:00+02:00",
@@ -538,6 +538,18 @@
     "starts_at": "2026-09-20T00:00:23+02:00",
     "ends_at": "2026-09-20T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-09-20|TK=züge halten donaufelder strasse 175 177"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26A: Verkehrsunfall",
+    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3dcbbc6e19d96361d56bc3f3ee29d72b2f90f08ddab0ffb34e6788945fb613c",
+    "pubDate": "2026-09-20T15:15:00+02:00",
+    "starts_at": "2026-09-20T15:15:00+02:00",
+    "ends_at": "2026-09-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=26A|D=2026-09-20|TK=26a verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -706,6 +718,18 @@
     "starts_at": "2026-09-20T04:40:22+02:00",
     "ends_at": "2026-09-21T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-09-20|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Polizeieinsatz",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
+    "pubDate": "2026-09-20T15:19:00+02:00",
+    "starts_at": "2026-09-20T15:19:00+02:00",
+    "ends_at": "2026-09-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-09-20|TK=polizeieinsatz"
   },
   {
     "source": "Wiener Linien",
