@@ -938,7 +938,14 @@ Nach dem Modelllauf wird nicht blind vertraut:
   eingesetzt hat. Das Modell macht dabei nichts falsch: es sah den
   Platzhalter, nicht das Ergebnis.
 * Übrig gebliebene Platzhalter (`_RESIDUAL_PLACEHOLDER_RE`) lassen das Feld
-  scheitern — und damit das Item deutsch bleiben.
+  scheitern — und damit das Item deutsch bleiben. Das schließt eine
+  Platzhalter-Form ein, der das Modell das führende `X` genommen hat
+  (`ENT<nonce>X4X` statt `XENT<nonce>X4X`) — beobachtet, als zwei
+  Platzhalter ohne Leerzeichen an einem Bindestrich aneinanderstießen
+  (`_LINE_ENTITY_RE` maskiert auch bloße Hausnummern als Linienkennung).
+  Verankert auf der Form der Nonce selbst (8–32 Hex-Zeichen), nicht auf dem
+  laxeren Muster der `XENT`/`XGLO`-Varianten — ein nacktes `ENT`/`GLO` ist
+  sonst ein gewöhnliches Wortfragment.
 
 ### Betrieb
 

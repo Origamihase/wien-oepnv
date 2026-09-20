@@ -2290,7 +2290,31 @@ _UNMASK_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
 # station, line and operator token is entity-masked before translation).
 _RESIDUAL_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
     r"(?:XENT|XGLO)[A-Za-z0-9]*X"
-    r"|(?<![A-Za-z0-9])X\d{1,3}X(?![A-Za-z0-9])",
+    r"|(?<![A-Za-z0-9])X\d{1,3}X(?![A-Za-z0-9])"
+    # A placeholder whose OPENING ``X`` the model dropped, leaving a bare
+    # ``ENT``/``GLO`` glued straight onto the previous word.
+    #
+    # Published 2026-09-19 23:01, ``docs/feed.en.xml``, first build after the
+    # C.5 epoch bump (14 → 15) forced a re-translation::
+    #
+    #     N6: Buses stop NeilreichgasseENTec2b2350d0e7e61aX2X-22, …
+    #
+    # Root cause: ``Neilreichgasse 20-22`` masks to
+    # ``XENT…X0X XENT…X2X-XENT…X3X`` — ``_LINE_ENTITY_RE`` treats the bare
+    # house numbers ``20``/``22`` as line-shaped and masks them too, so two
+    # placeholders sit back to back across a bare hyphen with NO separating
+    # whitespace. Marian detokenized the pair and dropped the leading ``X``
+    # of the second one; the result kept its nonce and index, so the entity
+    # WAS recoverable, but the shape no longer matched either alternative
+    # above (neither starts with ``X``) and the corrupted string reached
+    # subscribers.
+    #
+    # Anchored on the nonce's own shape (8–32 lowercase hex chars) rather
+    # than on ``[A-Za-z0-9]*`` like the sibling alternatives above: unlike
+    # ``XENT``/``XGLO``, a bare ``ENT``/``GLO`` is an ordinary word fragment
+    # (``content``, ``Ereignis`` after casefolding, …), so the pattern needs
+    # the hex nonce immediately after it to stay effectively unambiguous.
+    r"|(?:ENT|GLO)[0-9a-f]{8,32}X\d{1,3}X",
     re.IGNORECASE,
 )
 

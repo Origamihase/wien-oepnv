@@ -5,6 +5,27 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: ein Platzhalter ohne führendes „X" gilt jetzt als Rest-Platzhalter (2026-09-19)**:
+  Erster Bau nach dem C.5-Epochen-Sprung (14 → 15, siehe unten) zeigte im
+  englischen Feed `N6: Buses stop NeilreichgasseENTec2b2350d0e7e61aX2X-22,
+  QuellenstraßeENTec2b2350d0e7e61aX4X`. Ursache: „Neilreichgasse 20-22"
+  maskiert zu `XENT…X0X XENT…X2X-XENT…X3X` — `_LINE_ENTITY_RE` hält die
+  bloßen Hausnummern 20/22 für Linienkennungen und maskiert sie mit —, zwei
+  Platzhalter stehen dadurch ohne Leerzeichen an einem Bindestrich
+  aneinander. Marian gab das Paar mit fehlendem führenden „X" des zweiten
+  Platzhalters zurück; Nonce und Index blieben erhalten, die Form passte
+  aber auf keine der beiden bisherigen `_RESIDUAL_PLACEHOLDER_RE`-Varianten
+  (beide verlangen ein führendes „X"), und der rohe String erreichte drei
+  Bau-Zyklen lang die Abonnenten. Eine dritte Variante verankert auf der
+  Form der Nonce selbst (8–32 Kleinbuchstaben-Hex) statt auf dem laxeren
+  `[A-Za-z0-9]*` der bestehenden Varianten — ein nacktes „ENT"/„GLO" ist ein
+  gewöhnliches Wortfragment, daher die schärfere Verankerung. Der
+  Selbstheilungs-Pfad des Caches greift automatisch beim nächsten Zugriff,
+  kein Epochen-Sprung nötig. `_LINE_ENTITY_RE`s Übermaskierung von
+  Hausnummern bleibt bestehen (eigenes Problem, nicht Ziel dieser Änderung);
+  ein Modell, das die Platzhalter jetzt verstümmelt, lässt das Feld
+  fehlschlagen und das Item auf Deutsch zurückfallen, statt Rohtext
+  auszuliefern. Tests: `tests/test_translation_dropped_leading_x_placeholder.py`.
 * **EN-Feed: der C.5-Gedankenstrich reist nicht mehr ins Übersetzungsmodell (2026-09-19)**:
   Der erste Bau nach dem Merge von C.5 (21:20) zeigte im englischen Feed
   `31: Demonstration –Xservice from Wallensteinstraße`, und im Zyklus 21:30
