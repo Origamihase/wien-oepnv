@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 20 Sep 2026 04:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2026 05:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N62: Police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f31b587541d671fe17d921c67636f21c311646750d5c7bd88bf8e3cebc9a5622</guid>
-      <pubDate>Sun, 20 Sep 2026 03:43:00 +0200</pubDate>
-      <ext:first_seen>Sun, 20 Sep 2026 04:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 20 Sep 2026 03:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 20 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Currently, the N62 line has different intervals in both directions. Reason: police operation. [On 20.09.2026]</description>
-      <content:encoded><![CDATA[Currently, the N62 line has different intervals in both directions. Reason: police operation.<br/>[On 20.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[N65: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
       <content:encoded><![CDATA[stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27A/28A/29A: Event on 2709.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5b409515bbdbcac314bb8c316471e4b560b8a050e77adf2199f7e4a1fe0e3a1f</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 17:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
+      <description>Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected. [15.09.2026 – 27.09.2026]</description>
+      <content:encoded><![CDATA[Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
