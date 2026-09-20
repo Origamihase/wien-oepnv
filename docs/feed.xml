@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 20 Sep 2026 16:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2026 17:01:15 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[5: Stromstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">24ea65f023dccee4466c22f1b1d17a838fe4e2f5cbf203cbc04f719f512ab17d</guid>
-      <pubDate>Sun, 20 Sep 2026 14:52:00 +0200</pubDate>
-      <ext:first_seen>Sun, 20 Sep 2026 16:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 20 Sep 2026 14:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 20 Sep 2026 16:28:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: Stromstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">71b888ecc4fc2ad32d5e10837e29489b08748cae8f18630aabac027746ad7ed7</guid>
-      <pubDate>Sun, 20 Sep 2026 14:52:00 +0200</pubDate>
-      <ext:first_seen>Sun, 20 Sep 2026 16:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 20 Sep 2026 14:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 20 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 20.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 20.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
       <description>Wegen eines Erntedankfestes werden die Linien 27A, 28A und 29A umgeleitet. [15.09.2026 – 27.09.2026]</description>
       <content:encoded><![CDATA[Wegen eines Erntedankfestes werden die Linien 27A, 28A und 29A umgeleitet.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[56A/56B/58A/58B: Umleitung in Richtung Hietzing U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">448cd28e5b6e46e9031d5b7d469e439bb6d640a548691fa7e52b2cfebe245957</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 09:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet. [15.09.2026 – 15.09.2027]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Betrieb ab Johnstraße U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643</guid>
+      <pubDate>Sun, 20 Sep 2026 00:00:26 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 20 Sep 2026 00:00:26 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 20 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Gleisbauarbeiten. [Am 20.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Gleisbauarbeiten.<br/>[Am 20.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
