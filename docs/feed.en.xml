@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 20 Sep 2026 05:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2026 05:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N65: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">65ccacde85edc0d175000462289480ad171b04988bbf0682cd7a901bd61df1aa</guid>
-      <pubDate>Sun, 20 Sep 2026 01:28:00 +0200</pubDate>
-      <ext:first_seen>Sun, 20 Sep 2026 01:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 20 Sep 2026 01:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 20 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Currently, the N65 line has different intervals in both directions. Reason: rescue operation. [On 20.09.2026]</description>
-      <content:encoded><![CDATA[Currently, the N65 line has different intervals in both directions. Reason: rescue operation.<br/>[On 20.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N6: Buses stop Neilreichgasse 20-22, Quellenstraße 189]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc</guid>
-      <pubDate>Sun, 20 Sep 2026 00:55:29 +0200</pubDate>
-      <ext:first_seen>Sun, 20 Sep 2026 01:01:21 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 20 Sep 2026 00:55:29 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 20 Sep 2026 05:05:00 +0200</ext:ends_at>
-      <description>Buses stop at Neilreichgasse 20-22 construction works Buses stop at Quellenstraße 189 [On 20.09.2026]</description>
-      <content:encoded><![CDATA[Buses stop at Neilreichgasse 20-22 construction works Buses stop at Quellenstraße 189<br/>[On 20.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
       <description>Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected. [15.09.2026 – 27.09.2026]</description>
       <content:encoded><![CDATA[Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[56A/56B/58A/58B: Diversion towards Hietzing U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">448cd28e5b6e46e9031d5b7d469e439bb6d640a548691fa7e52b2cfebe245957</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 09:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the area of Kennedybrücke the bus lines are being redirected. [15.09.2026 – 15.09.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the area of Kennedybrücke the bus lines are being redirected.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Service from Johnstraße U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643</guid>
+      <pubDate>Sun, 20 Sep 2026 00:00:26 +0200</pubDate>
+      <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 20 Sep 2026 00:00:26 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 20 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: track construction works. [On 20.09.2026]</description>
+      <content:encoded><![CDATA[Reason: track construction works.<br/>[On 20.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
