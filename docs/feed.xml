@@ -7,18 +7,73 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 21 Sep 2026 08:31:06 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 09:01:11 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[43/44: Stromstörung]]></title>
+      <title><![CDATA[43: Stromstörung Umleitung zur Antonigasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">87faba2cb32974f5d1bb6e7b956917975f7c8a3686d00121859384b2ba98f8a1</guid>
-      <pubDate>Mon, 21 Sep 2026 08:25:00 +0200</pubDate>
-      <ext:first_seen>Mon, 21 Sep 2026 08:31:06 +0200</ext:first_seen>
+      <guid isPermaLink="false">2af1720e6852cdb9df5176571052e179e8c35f4588fc7fe3db541ae8a95e0592</guid>
+      <pubDate>Mon, 21 Sep 2026 08:48:00 +0200</pubDate>
+      <ext:first_seen>Mon, 21 Sep 2026 09:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 08:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 21 Sep 2026 09:27:00 +0200</ext:ends_at>
+      <description>[Am 21.09.2026]</description>
+      <content:encoded><![CDATA[[Am 21.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44: Stromstörung Betrieb ab Johann-Nepomuk-Berger-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">76f9bf4cb0c9fb65f20fabb4a606f9a973d33fe3c5a77c6d8a636014165acb78</guid>
+      <pubDate>Mon, 21 Sep 2026 08:48:00 +0200</pubDate>
+      <ext:first_seen>Mon, 21 Sep 2026 09:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 08:48:01 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 21 Sep 2026 09:25:00 +0200</ext:ends_at>
+      <description>[Am 21.09.2026]</description>
+      <content:encoded><![CDATA[[Am 21.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44: Stromstörung Züge halten Rosensteingasse bei Linie 9 Richtung Westbahnhof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d92372a0eec9cbad217ec93819335975bf486c79959af064057d2ac0e2af1fa6</guid>
+      <pubDate>Mon, 21 Sep 2026 08:48:00 +0200</pubDate>
+      <ext:first_seen>Mon, 21 Sep 2026 09:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 08:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 21 Sep 2026 09:25:00 +0200</ext:ends_at>
+      <description>[Am 21.09.2026]</description>
+      <content:encoded><![CDATA[[Am 21.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Stromstörung Züge halten bei Linie 9 Richtung Westbahnhof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fba4375b2f30da0265ca85f1ef8d69dd460bdc8e0f4a058f9bf1ef855edd15fa</guid>
+      <pubDate>Mon, 21 Sep 2026 08:48:00 +0200</pubDate>
+      <ext:first_seen>Mon, 21 Sep 2026 09:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 08:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 21 Sep 2026 09:28:00 +0200</ext:ends_at>
+      <description>[Am 21.09.2026]</description>
+      <content:encoded><![CDATA[[Am 21.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[61A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f01f6bfc539d737cfb9352804fe8a7b3feacc86b339269e1284ac631eaa221ae</guid>
+      <pubDate>Mon, 21 Sep 2026 08:41:00 +0200</pubDate>
+      <ext:first_seen>Mon, 21 Sep 2026 09:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 08:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 21 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44: Fahrtbehinderung wegen Stromstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ae758d1e1b34d4c93c09e918b6a3a5c204897f98413205fd924e3a00e7d1700a</guid>
+      <pubDate>Mon, 21 Sep 2026 08:48:00 +0200</pubDate>
+      <ext:first_seen>Sun, 20 Sep 2026 16:00:51 +0200</ext:first_seen>
       <ext:starts_at>Mon, 21 Sep 2026 08:25:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 21 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Neuwaldegg und Elterleinplatz. Die Züge fahren weiter über die Linie 9 bis Antonigasse. [Am 21.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Neuwaldegg und Elterleinplatz. Die Züge fahren weiter über die Linie 9 bis Antonigasse.<br/>[Am 21.09.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
@@ -63,61 +118,6 @@
       <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener … [01.02.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36A/36B: Straßenbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet. [21.09.2026 – 16.09.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27A/28A/29A: Veranstaltung am 27.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5b409515bbdbcac314bb8c316471e4b560b8a050e77adf2199f7e4a1fe0e3a1f</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 17:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
-      <description>Wegen eines Erntedankfestes werden die Linien 27A, 28A und 29A umgeleitet. [15.09.2026 – 27.09.2026]</description>
-      <content:encoded><![CDATA[Wegen eines Erntedankfestes werden die Linien 27A, 28A und 29A umgeleitet.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56A/56B/58A/58B: Umleitung in Richtung Hietzing U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">448cd28e5b6e46e9031d5b7d469e439bb6d640a548691fa7e52b2cfebe245957</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 09:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet. [15.09.2026 – 15.09.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Betrieb ab Johnstraße U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643</guid>
-      <pubDate>Mon, 21 Sep 2026 00:00:22 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 05:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 21 Sep 2026 00:00:22 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 21 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Grund: Gleisbauarbeiten. [Am 21.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Gleisbauarbeiten.<br/>[Am 21.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

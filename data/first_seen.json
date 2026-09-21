@@ -3805,6 +3805,18 @@
       "epoch": 2
     }
   },
+  "2af1720e6852cdb9df5176571052e179e8c35f4588fc7fe3db541ae8a95e0592": {
+    "first_seen": "2026-09-21T07:01:11.078944+00:00",
+    "translations": {
+      "en": {
+        "title": "43: Power disturbance diversion to Antonigasse"
+      },
+      "en_src": {
+        "title": "1b2e85e762bcb174"
+      },
+      "epoch": 15
+    }
+  },
   "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab": {
     "first_seen": "2026-05-27T12:03:07.020489+00:00",
     "translations": {
@@ -10648,6 +10660,18 @@
       "epoch": 3
     }
   },
+  "76f9bf4cb0c9fb65f20fabb4a606f9a973d33fe3c5a77c6d8a636014165acb78": {
+    "first_seen": "2026-09-21T07:01:11.078944+00:00",
+    "translations": {
+      "en": {
+        "title": "44: Power disturbance service from Johann-Nepomuk-Berger-Platz"
+      },
+      "en_src": {
+        "title": "680a41ef0acd0f4c"
+      },
+      "epoch": 15
+    }
+  },
   "77391cb4f98fba825416ed6df243c59aeccf63e19aed18e775fc47f60528f36e": {
     "first_seen": "2026-06-04T18:30:46.871029+00:00",
     "translations": {
@@ -16062,11 +16086,14 @@
     "first_seen": "2026-09-20T14:00:51.618560+00:00",
     "translations": {
       "en": {
-        "title": "44: current disturbance"
+        "summary": "After a service obstruction there are different intervals.",
+        "title": "44: service obstruction due to power failure"
       },
       "en_src": {
-        "title": "9e67660fc67f2063"
-      }
+        "summary": "eb1bdc2703fe6f1b",
+        "title": "a556738bb871b46d"
+      },
+      "epoch": 15
     }
   },
   "aeb0b84ae5e8a62af5d84641c15f91257543dc2b7569bb960589eb875b2fd4cc": {
@@ -19646,6 +19673,18 @@
       "epoch": 3
     }
   },
+  "d92372a0eec9cbad217ec93819335975bf486c79959af064057d2ac0e2af1fa6": {
+    "first_seen": "2026-09-21T07:01:11.078944+00:00",
+    "translations": {
+      "en": {
+        "title": "44: Power interference trains stop Rosensteingasse on line 9 direction Westbahnhof"
+      },
+      "en_src": {
+        "title": "5a6809fa8a54d43f"
+      },
+      "epoch": 15
+    }
+  },
   "d9956200eda63a06821fdbefdf9ab1110eb06d32d78c6050d937cbbb16b0e120": {
     "first_seen": "2026-09-12T12:30:53.747617+00:00",
     "translations": {
@@ -21731,6 +21770,20 @@
       "en": {}
     }
   },
+  "f01f6bfc539d737cfb9352804fe8a7b3feacc86b339269e1284ac631eaa221ae": {
+    "first_seen": "2026-09-21T07:01:11.078944+00:00",
+    "translations": {
+      "en": {
+        "summary": "After a service obstruction there are different intervals.",
+        "title": "61A: stranger traffic accident"
+      },
+      "en_src": {
+        "summary": "eb1bdc2703fe6f1b",
+        "title": "4562897c86b0fe0a"
+      },
+      "epoch": 15
+    }
+  },
   "f06daab75a12008c9580f4a82495a76afea1b33309e338fe34dc3a3a53856f17": {
     "first_seen": "2026-08-20T13:01:07.307023+00:00",
     "translations": {
@@ -22689,6 +22742,18 @@
         "title": "42: traffic accident"
       },
       "epoch": 3
+    }
+  },
+  "fba4375b2f30da0265ca85f1ef8d69dd460bdc8e0f4a058f9bf1ef855edd15fa": {
+    "first_seen": "2026-09-21T07:01:11.078944+00:00",
+    "translations": {
+      "en": {
+        "title": "43: Power failure Trains stop at line 9 direction Westbahnhof"
+      },
+      "en_src": {
+        "title": "37bbfbacbf0a10b5"
+      },
+      "epoch": 15
     }
   },
   "fba62e1f0270c82f7c1616b5104e02706dc7393be8bd93ec84fea39dfa9071ea": {
