@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 936,
+      "Meidling": 937,
       "Praterstern": 916
     },
     "by_hour": {
@@ -12,7 +12,7 @@
       "04": 33,
       "05": 72,
       "06": 78,
-      "07": 111,
+      "07": 112,
       "08": 127,
       "09": 88,
       "10": 80,
@@ -35,7 +35,7 @@
       "CJX2917": 1,
       "CJX2932": 1,
       "CJX2946": 1,
-      "CJX9": 374,
+      "CJX9": 375,
       "R3": 22,
       "R4": 1,
       "REX1": 156,
@@ -59,18 +59,18 @@
       "Do": 320,
       "Fr": 362,
       "Mi": 298,
-      "Mo": 279,
+      "Mo": 280,
       "Sa": 150,
       "So": 160
     },
-    "total": 1852
+    "total": 1853
   },
-  "generated_at": "2026-09-21T07:01:09+02:00",
+  "generated_at": "2026-09-21T07:31:11+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.06,
     "by_direction": {
-      "Meidling": 5376,
+      "Meidling": 5377,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -112,13 +112,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-09-21T06:55:00+02:00",
+          "last_seen": "2026-09-21T07:17:00+02:00",
           "peer_rows_since": 0,
           "rows_in_window": 1212
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 1526,
+          "peer_rows_since": 1527,
           "rows_in_window": 0
         }
       },
@@ -134,7 +134,7 @@
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 120,
     "threshold_minutes": 9.0,
-    "total_observations": 9207
+    "total_observations": 9208
   },
   "stoerungen": {
     "by_hour": {
@@ -145,7 +145,7 @@
       "04": 75,
       "05": 107,
       "06": 81,
-      "07": 85,
+      "07": 86,
       "08": 150,
       "09": 160,
       "10": 171,
@@ -166,7 +166,7 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 178,
       "VOR/VAO": 11,
-      "Wiener Linien": 2699,
+      "Wiener Linien": 2700,
       "ÖBB": 257
     },
     "by_weekday": {
@@ -174,11 +174,11 @@
       "Do": 505,
       "Fr": 486,
       "Mi": 481,
-      "Mo": 434,
+      "Mo": 435,
       "Sa": 391,
       "So": 394
     },
-    "total": 3145
+    "total": 3146
   },
   "year": 2026
 }
