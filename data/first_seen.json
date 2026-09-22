@@ -6885,6 +6885,18 @@
       "epoch": 3
     }
   },
+  "4cdc1f3d6f116ac2a2acd37d3c12aacec0c8874f2d918b9df48384729d2d0ff0": {
+    "first_seen": "2026-09-22T08:01:04.595183+00:00",
+    "translations": {
+      "en": {
+        "title": "60: defective train Trains stop at line 62 Direction Lainz"
+      },
+      "en_src": {
+        "title": "8f1fb365f4a6531c"
+      },
+      "epoch": 15
+    }
+  },
   "4ce21275e2f5797c0bf6d6d54e651d8bb98c2fdf8d1097edf42d585c1e59b561": {
     "first_seen": "2026-06-05T13:31:00.652025+00:00",
     "translations": {
@@ -11072,6 +11084,20 @@
         "title": "38A: fire-brigade operation service from Grinzing"
       },
       "epoch": 3
+    }
+  },
+  "7b2b51107dae0920ff8ddd25f90ed56ecbc505f6574f7472f92369661afcacc5": {
+    "first_seen": "2026-09-22T08:01:04.595183+00:00",
+    "translations": {
+      "en": {
+        "summary": "Currently, operation is not possible. Duration: 11:00. Reason: Polizei\u00fcbung in the area of Herrengasse.",
+        "title": "1A: Police exercise No operation"
+      },
+      "en_src": {
+        "summary": "a42f4381976aa81f",
+        "title": "a6ea766be99ec233"
+      },
+      "epoch": 15
     }
   },
   "7b4152fcf3d4de7cd3f7a37029187507465e8ca59ce9d2d80774006b8e287f27": {
@@ -17197,6 +17223,20 @@
         "title": "a8b0825d748a9632"
       },
       "epoch": 7
+    }
+  },
+  "bb11fa66d6059b7ebb5307f0e795c43cd7b36f011b63e398fed1b76c0716babb": {
+    "first_seen": "2026-09-22T08:01:04.595183+00:00",
+    "translations": {
+      "en": {
+        "summary": "service obstruction towards Hetzendorf S. Line 64A: service obstruction towards Atzgersdorf, Ziedlergasse; Line 66A: service obstruction towards Reumannplatz U; Line \u2026",
+        "title": "64B/64A/66A/67A: police operation"
+      },
+      "en_src": {
+        "summary": "c690708a7188bf52",
+        "title": "4b7dab56f4ec26a0"
+      },
+      "epoch": 15
     }
   },
   "bb250e2c43de487577251bcb8b73b4c5de0652ba27d3f9aacc8555f08612408d": {

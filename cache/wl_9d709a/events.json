@@ -434,6 +434,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Polizeieinsatz Betrieb ab Pilgramgasse U",
+    "description": "Linie 13A: Umleitung in Richtung Alser Straße, Skodagasse zwischen Hauptbahnhof S U und Pilgramgasse U über Wiedner Gürtel, Kliebergasse, Wiedner Hauptstraße und die Strecke der Linie 14A . Voraussichtliche Dauer: 10:20 Uhr. Grund: Polizeieinsatz im Bereich Leibenfrostgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
+    "pubDate": "2026-09-22T09:51:00+02:00",
+    "starts_at": "2026-09-22T10:00:34+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-09-22|TK=polizeieinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "14A: Busse halten Linke Wienzeile 110",
     "description": "Bauarbeiten\nBusse halten Linke Wienzeile 110",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,6 +466,30 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Polizeiübung",
+    "description": "Linie 1A: Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 11:00 Uhr. Grund: Polizeiübung im Bereich Herrengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7b2b51107dae0920ff8ddd25f90ed56ecbc505f6574f7472f92369661afcacc5",
+    "pubDate": "2026-09-22T09:55:00+02:00",
+    "starts_at": "2026-09-22T09:55:00+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=1A|D=2026-09-22|TK=1a polizeiübung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Polizeiübung Kein Betrieb",
+    "description": "Polizeiübung\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b80b7692d6b0cef7287e362b880483c191f8406e5f7e26acbf5742cd1179f56b",
+    "pubDate": "2026-09-22T09:54:35+02:00",
+    "starts_at": "2026-09-22T09:54:35+02:00",
+    "ends_at": "2026-09-22T10:53:00+02:00",
+    "_identity": "wl|störung|L=1A|D=2026-09-22|TK=polizeiübung kein betrieb"
   },
   {
     "source": "Wiener Linien",
@@ -662,26 +698,62 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Verkehrsüberlastung",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "60: Schadhaftes Fahrzeug",
+    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Weichen Sie ersatzweise auf die Linien 56A, 56B, 58B und 60A aus. Voraussichtliche Dauer: 10:00 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Speisinger Straße 230.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
-    "pubDate": "2026-09-22T09:11:00+02:00",
-    "starts_at": "2026-09-22T09:11:00+02:00",
+    "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
+    "pubDate": "2026-09-22T09:38:00+02:00",
+    "starts_at": "2026-09-22T09:38:00+02:00",
     "ends_at": "2026-09-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-09-22|TK=59a verkehrsüberlastung"
+    "_identity": "wl|störung|L=60|D=2026-09-22|TK=60 schadhaftes fahrzeug"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Busse halten Salvatorianerplatz",
-    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
+    "title": "60: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
-    "pubDate": "2026-09-22T04:40:23+02:00",
-    "starts_at": "2026-09-22T04:40:23+02:00",
-    "ends_at": "2026-09-23T01:00:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-09-22|TK=busse halten salvatorianerplatz"
+    "guid": "4ebfcdeecb63555a7d3eeda6e1144843992faaa428a94f9ee9f79f89dc91e33f",
+    "pubDate": "2026-09-22T09:38:33+02:00",
+    "starts_at": "2026-09-22T09:42:03+02:00",
+    "ends_at": "2026-09-22T10:41:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-09-22|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Zug Betrieb ab Hofwiesengasse",
+    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3ba4c6494be8dc0e55d7daa610f5f3b2f958bae603c38cf922f86623dddd062b",
+    "pubDate": "2026-09-22T09:38:33+02:00",
+    "starts_at": "2026-09-22T09:42:33+02:00",
+    "ends_at": "2026-09-22T10:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-09-22|TK=schadhafter zug betrieb ab hofwiesengasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Zug Züge halten bei der Linie 62 Fahrtrichtung Lainz",
+    "description": "Schadhafter Zug\nZüge halten bei der Linie 62 Fahrtrichtung Lainz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4cdc1f3d6f116ac2a2acd37d3c12aacec0c8874f2d918b9df48384729d2d0ff0",
+    "pubDate": "2026-09-22T09:57:05+02:00",
+    "starts_at": "2026-09-22T09:57:05+02:00",
+    "ends_at": "2026-09-22T10:56:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-09-22|TK=schadhafter zug züge halten bei der linie 62 fahrtrichtung lainz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "64B/64A/66A/67A: Polizeieinsatz",
+    "description": "Linie 64B: Fahrtbehinderung in Richtung Hetzendorf S. Linie 64A: Fahrtbehinderung in Richtung Atzgersdorf, Ziedlergasse. Linie 66A: Fahrtbehinderung in Richtung Reumannplatz U. Linie 67A: Fahrtbehinderung in Richtung Alaudagasse U. Voraussichtliche Dauer: 10:15 Uhr. Grund: Polizeieinsatz im Bereich Anton-Baumgartner-Straße # Altmannsdorfer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bb11fa66d6059b7ebb5307f0e795c43cd7b36f011b63e398fed1b76c0716babb",
+    "pubDate": "2026-09-22T09:52:00+02:00",
+    "starts_at": "2026-09-22T09:52:00+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=64A,64B,66A,67A|D=2026-09-22|TK=polizeieinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -742,18 +814,6 @@
     "starts_at": "2026-09-22T06:45:00+02:00",
     "ends_at": "2026-09-22T23:55:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-09-22|TK=u1 verspätungen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-09-22T08:09:00+02:00",
-    "starts_at": "2026-09-22T08:09:00+02:00",
-    "ends_at": "2026-09-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-09-22|TK=u3 verspätungen"
   },
   {
     "source": "Wiener Linien",
