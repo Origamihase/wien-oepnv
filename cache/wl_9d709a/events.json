@@ -398,18 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Fremdunfall Betrieb ab Schönbrunn",
-    "description": "Fremdunfall\nBetrieb ab Schönbrunn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bbb71ef3c4105a3dd40a5a32677b5e5482ffa1b6cea060f16e165dbe88d608ef",
-    "pubDate": "2026-09-22T15:11:34+02:00",
-    "starts_at": "2026-09-22T15:11:34+02:00",
-    "ends_at": "2026-09-22T16:09:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-09-22|TK=fremdunfall betrieb ab schönbrunn"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Verkehrsunfall",
     "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -680,7 +668,7 @@
     "guid": "a29e671a85c2a6d60f93348738aed861f0787ecaeb052980186da61232ad65c7",
     "pubDate": "2026-09-22T15:36:00+02:00",
     "starts_at": "2026-09-22T15:40:38+02:00",
-    "ends_at": "2026-09-22T23:55:00+02:00",
+    "ends_at": "2026-09-22T16:40:00+02:00",
     "_identity": "wl|störung|L=40|D=2026-09-22|TK=polizeieinsatz"
   },
   {
@@ -794,13 +782,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "74A: Fahrtbehinderung Signalstörung",
+    "description": "Fahrtbehinderung\nSignalstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037",
+    "pubDate": "2026-09-22T15:50:38+02:00",
+    "starts_at": "2026-09-22T16:30:11+02:00",
+    "ends_at": "2026-09-22T17:29:00+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-09-22|TK=signalstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-09-22T15:41:00+02:00",
+    "pubDate": "2026-09-22T15:42:07+02:00",
     "starts_at": "2026-09-22T15:42:09+02:00",
-    "ends_at": "2026-09-22T23:55:00+02:00",
+    "ends_at": "2026-09-22T16:41:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-09-22|TK=falschparker"
   },
   {
