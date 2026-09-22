@@ -416,8 +416,20 @@
     "guid": "70fda55609c717c6e33b864081414fe454926fa86793b92ea1e0a1951b6b736d",
     "pubDate": "2026-09-22T12:43:00+02:00",
     "starts_at": "2026-09-22T12:43:00+02:00",
-    "ends_at": "2026-09-22T23:55:00+02:00",
+    "ends_at": "2026-09-22T14:30:00+02:00",
     "_identity": "wl|störung|L=10|D=2026-09-22|TK=10 störung an einem bahnübergang"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11A: Verkehrsunfall",
+    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "49173de64aa2215d87e8e544f1df8b7687c6e8172327e8cd9174b3c727005709",
+    "pubDate": "2026-09-22T14:13:00+02:00",
+    "starts_at": "2026-09-22T14:13:00+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-09-22|TK=11a verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -694,6 +706,18 @@
     "starts_at": "2026-09-21T00:00:10+02:00",
     "ends_at": "2026-09-22T23:59:59+02:00",
     "_identity": "wl|störung|L=3A|D=2026-09-21|TK=busse halten kärntner ring 5"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Verunreinigung",
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e44390ff5ef9e4d4268820ebb9ad67c4b0b3b371373e5b43af9d510a69284d8a",
+    "pubDate": "2026-09-22T14:26:00+02:00",
+    "starts_at": "2026-09-22T14:26:00+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2026-09-22|TK=40a verunreinigung"
   },
   {
     "source": "Wiener Linien",
