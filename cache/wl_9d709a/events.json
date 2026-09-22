@@ -482,6 +482,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1A: Verkehrsunfall",
+    "description": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9c4b20eeb0989a8f43e6b6aa56a0761d9fd3f3c3c7627ef6c508b6ef4287118a",
+    "pubDate": "2026-09-22T13:27:00+02:00",
+    "starts_at": "2026-09-22T13:27:00+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=1A|D=2026-09-22|TK=1a verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -646,6 +658,18 @@
     "starts_at": "2026-09-21T00:00:23+02:00",
     "ends_at": "2026-09-22T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-09-21|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Schadhaftes Fahrzeug",
+    "description": "Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "70091138a7ffd10e070ec8ab8dc2bf58be312bb1c49f7b829ed2aa4053b90e87",
+    "pubDate": "2026-09-22T13:23:00+02:00",
+    "starts_at": "2026-09-22T13:23:00+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2026-09-22|TK=38a schadhaftes fahrzeug"
   },
   {
     "source": "Wiener Linien",
