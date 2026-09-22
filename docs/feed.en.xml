@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 22 Sep 2026 07:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 07:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[14A: Buses stop Linke Wienzeile 110]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">53dcf3171e146166a98e452b2440e53b0087141a8ebe30de169e9f91efd3fcec</guid>
+      <pubDate>Tue, 22 Sep 2026 07:23:03 +0200</pubDate>
+      <ext:first_seen>Tue, 22 Sep 2026 07:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 22 Sep 2026 07:23:03 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 22 Sep 2026 16:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [On 22.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[On 22.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Buses stop Linke Wienzeile 110]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">60547c236582d8893c2219ecb1620305d2c763626c79eb415b13882c3e194106</guid>
+      <pubDate>Tue, 22 Sep 2026 07:22:03 +0200</pubDate>
+      <ext:first_seen>Tue, 22 Sep 2026 07:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 22 Sep 2026 07:22:03 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 22 Sep 2026 16:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [On 22.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[On 22.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[REX 6: Wien Baumgarten (WL) ↔ Ebenfurth]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;913609</guid>
+      <pubDate>Mon, 21 Sep 2026 15:37:44 +0200</pubDate>
+      <ext:first_seen>Tue, 22 Sep 2026 07:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 30 Oct 2026 23:59:59 +0100</ext:ends_at>
+      <description>Wegen Bauarbeiten können von 27.10.2026 (08:30 Uhr) bis 30.10.2026 (23:59 Uhr) zwischen Ebenfurth Bahnhof und Baumgarten im Bgld-Schattendorf Bahnhof keine REX 6-Züge fahren. [27.10.2026 – 30.10.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können von 27.10.2026 (08:30 Uhr) bis 30.10.2026 (23:59 Uhr) zwischen Ebenfurth Bahnhof und Baumgarten im Bgld-Schattendorf Bahnhof keine REX 6-Züge fahren.<br/>[27.10.2026 – 30.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Wien Handelskai]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -85,39 +118,6 @@
       <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected. [21.09.2026 – 16.09.2027]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A/80A/N29: Wittelsbachstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27A/28A/29A: Event on 2709.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5b409515bbdbcac314bb8c316471e4b560b8a050e77adf2199f7e4a1fe0e3a1f</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 17:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
-      <description>Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected. [15.09.2026 – 27.09.2026]</description>
-      <content:encoded><![CDATA[Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56A/56B/58A/58B: Diversion towards Hietzing U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">448cd28e5b6e46e9031d5b7d469e439bb6d640a548691fa7e52b2cfebe245957</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 09:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of roadworks in the area of Kennedybrücke the bus lines are being redirected. [15.09.2026 – 15.09.2027]</description>
-      <content:encoded><![CDATA[Because of roadworks in the area of Kennedybrücke the bus lines are being redirected.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
