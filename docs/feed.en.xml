@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 22 Sep 2026 14:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 15:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[38A: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70091138a7ffd10e070ec8ab8dc2bf58be312bb1c49f7b829ed2aa4053b90e87</guid>
-      <pubDate>Tue, 22 Sep 2026 13:23:00 +0200</pubDate>
-      <ext:first_seen>Tue, 22 Sep 2026 13:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 22 Sep 2026 13:23:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 22 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: defective vehicle. [On 22.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: defective vehicle.<br/>[On 22.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[14A: Buses stop Linke Wienzeile 110]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -87,17 +76,6 @@
       <content:encoded><![CDATA[stop relocation of line 72A towards Hasenleitengasse Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 To: 1. Haidequerstraße 510 Duration: Ab …<br/>[18.09.2026 – 18.09.2027]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[12A/14A: Pilgramgasse U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">721b3d16a1af645be1d24427c62ee0cf72a1589e4ab16465f23aca5e11f61164</guid>
-      <pubDate>Fri, 18 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 12:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 22 Sep 2026 15:00:00 +0200</ext:ends_at>
-      <description>stop relocation of lines 12A and 14A towards Schmelz, Gablenzgasse and Reumannplatz U Stop: Pilgramgasse U From: Linke Wienzeile 106-108 nach Hofmühlgasse … [18.09.2026 – 22.09.2026]</description>
-      <content:encoded><![CDATA[stop relocation of lines 12A and 14A towards Schmelz, Gablenzgasse and Reumannplatz U Stop: Pilgramgasse U From: Linke Wienzeile 106-108 nach Hofmühlgasse …<br/>[18.09.2026 – 22.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[D: Track construction works – Althanstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b25a186e245503549fc296499ec26d8767efe4538f6a4c7ed75b7774611305b3</guid>
@@ -118,6 +96,28 @@
       <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Due to the renovation of the tunnel ceiling of the U4 route or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna … [01.02.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Due to the renovation of the tunnel ceiling of the U4 route or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36A/36B: Roadworks]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected. [21.09.2026 – 16.09.2027]</description>
+      <content:encoded><![CDATA[Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A/80A/N29: Wittelsbachstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
