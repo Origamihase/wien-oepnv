@@ -25563,6 +25563,23 @@
       "epoch": 15
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&913728": {
+    "first_seen": "2026-09-22T05:00:59.401558+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a defective train on the line between Wien Floridsdorf Station (U) and Wien Handelskai station (U) to 06:38 only limited journeys were possible.",
+        "title": "Wien Floridsdorf \u2194 Wien Handelskai"
+      },
+      "en_src": {
+        "summary": "af5169001cc13edb",
+        "title": "194395ce06b72ba0"
+      },
+      "en_verbatim": [
+        "title"
+      ],
+      "epoch": 15
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },

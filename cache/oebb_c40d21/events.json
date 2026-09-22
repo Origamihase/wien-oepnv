@@ -118,5 +118,17 @@
     "starts_at": "2026-12-05T00:00:00+01:00",
     "ends_at": "2026-12-07T23:59:59+01:00",
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&910806"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Floridsdorf ↔ Wien Handelskai",
+    "description": "22.09.2026<br/><br/>Wegen eines defekten Zuges auf der Strecke <b>waren</b> zwischen Wien Floridsdorf Bahnhof (U) und Wien Handelskai Bahnhst (U) <b>bis </b><b>06:38 Uhr</b> nur eingeschränkt Fahrten möglich. Es kommt noch zu <b>vereinzelten Zugausfällen und Verzögerungen</b>. Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&913728",
+    "pubDate": "2026-09-22T06:39:39+02:00",
+    "starts_at": "2026-09-22T00:00:00+02:00",
+    "ends_at": "2026-09-22T23:59:59+02:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&913728"
   }
 ]
