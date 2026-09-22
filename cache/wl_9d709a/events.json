@@ -435,25 +435,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "13A: Fahrtbehinderung Falschparker",
-    "description": "Linie 13A: Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Grund: Falschparker im Bereich Kellermanngasse.",
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d",
     "pubDate": "2026-09-22T10:27:00+02:00",
     "starts_at": "2026-09-22T10:28:07+02:00",
     "ends_at": "2026-09-22T23:55:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-09-22|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Polizeieinsatz Betrieb ab Pilgramgasse U",
-    "description": "Polizeieinsatz\nBetrieb ab Pilgramgasse U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
-    "pubDate": "2026-09-22T09:52:03+02:00",
-    "starts_at": "2026-09-22T10:00:34+02:00",
-    "ends_at": "2026-09-22T10:59:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-09-22|TK=polizeieinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -483,25 +471,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "1A: Polizeiübung",
-    "description": "Linie 1A: Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 11:00 Uhr. Grund: Polizeiübung im Bereich Herrengasse.",
+    "description": "Linie 1A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7b2b51107dae0920ff8ddd25f90ed56ecbc505f6574f7472f92369661afcacc5",
     "pubDate": "2026-09-22T09:55:00+02:00",
     "starts_at": "2026-09-22T09:55:00+02:00",
     "ends_at": "2026-09-22T23:55:00+02:00",
     "_identity": "wl|störung|L=1A|D=2026-09-22|TK=1a polizeiübung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1A: Polizeiübung Kein Betrieb",
-    "description": "Polizeiübung\nKein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b80b7692d6b0cef7287e362b880483c191f8406e5f7e26acbf5742cd1179f56b",
-    "pubDate": "2026-09-22T09:54:35+02:00",
-    "starts_at": "2026-09-22T09:54:35+02:00",
-    "ends_at": "2026-09-22T10:53:00+02:00",
-    "_identity": "wl|störung|L=1A|D=2026-09-22|TK=polizeiübung kein betrieb"
   },
   {
     "source": "Wiener Linien",
@@ -550,6 +526,18 @@
     "starts_at": "2026-09-21T08:48:02+02:00",
     "ends_at": "2026-09-22T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-09-21|TK=züge halten donaufelder strasse 175 177"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Verspätungen",
+    "description": "Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1fada7614a788ccf1a33277fc05d810e42ffa22f80e787d1c7f2415eb1f42b8c",
+    "pubDate": "2026-09-22T10:44:00+02:00",
+    "starts_at": "2026-09-22T10:44:00+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-09-22|TK=25 verspätungen"
   },
   {
     "source": "Wiener Linien",
@@ -716,44 +704,8 @@
     "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
     "pubDate": "2026-09-22T09:38:00+02:00",
     "starts_at": "2026-09-22T09:38:00+02:00",
-    "ends_at": "2026-09-22T23:55:00+02:00",
+    "ends_at": "2026-09-22T11:32:00+02:00",
     "_identity": "wl|störung|L=60|D=2026-09-22|TK=60 schadhaftes fahrzeug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebfcdeecb63555a7d3eeda6e1144843992faaa428a94f9ee9f79f89dc91e33f",
-    "pubDate": "2026-09-22T09:38:33+02:00",
-    "starts_at": "2026-09-22T09:42:03+02:00",
-    "ends_at": "2026-09-22T10:41:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-09-22|TK=fahrtbehinderung schadhafter zug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Schadhafter Zug Betrieb ab Hofwiesengasse",
-    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3ba4c6494be8dc0e55d7daa610f5f3b2f958bae603c38cf922f86623dddd062b",
-    "pubDate": "2026-09-22T09:38:33+02:00",
-    "starts_at": "2026-09-22T09:42:33+02:00",
-    "ends_at": "2026-09-22T10:55:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-09-22|TK=schadhafter zug betrieb ab hofwiesengasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Schadhafter Zug Züge halten bei der Linie 62 Fahrtrichtung Lainz",
-    "description": "Schadhafter Zug\nZüge halten bei der Linie 62 Fahrtrichtung Lainz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4cdc1f3d6f116ac2a2acd37d3c12aacec0c8874f2d918b9df48384729d2d0ff0",
-    "pubDate": "2026-09-22T09:57:05+02:00",
-    "starts_at": "2026-09-22T09:57:05+02:00",
-    "ends_at": "2026-09-22T10:56:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-09-22|TK=schadhafter zug züge halten bei der linie 62 fahrtrichtung lainz"
   },
   {
     "source": "Wiener Linien",
@@ -776,7 +728,7 @@
     "guid": "aba904564d19959e0ddb3e2e002949d8d9e98e2655696c852ae1597077a1d78b",
     "pubDate": "2026-09-22T09:52:00+02:00",
     "starts_at": "2026-09-22T09:52:00+02:00",
-    "ends_at": "2026-09-22T23:55:00+02:00",
+    "ends_at": "2026-09-22T11:30:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-09-22|TK=polizeieinsatz"
   },
   {
@@ -806,6 +758,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "77A: Falschparker",
+    "description": "Linie 77A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 11:10 Uhr. Grund: Falschparker im Bereich Rabengasse 10.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "660f28330b16b21973d919d0ca7b3d0827062ed7398171f828b0ccfbf543928b",
+    "pubDate": "2026-09-22T10:53:00+02:00",
+    "starts_at": "2026-09-22T10:53:00+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=77A|D=2026-09-22|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N49: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -826,18 +790,6 @@
     "starts_at": "2026-09-21T00:00:22+02:00",
     "ends_at": "2026-09-22T23:59:59+02:00",
     "_identity": "wl|störung|L=N49|D=2026-09-21|TK=betrieb ab schweglerstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-09-22T06:45:00+02:00",
-    "starts_at": "2026-09-22T06:45:00+02:00",
-    "ends_at": "2026-09-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-09-22|TK=u1 verspätungen"
   },
   {
     "source": "Wiener Linien",
