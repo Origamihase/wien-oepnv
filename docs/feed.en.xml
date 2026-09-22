@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 22 Sep 2026 10:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 10:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[60: Defective train Trains stop at line 62 Direction Lainz]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Tue, 22 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Currently, operation is not possible. Duration: 11:00. Reason: Polizeiübung in the area of Herrengasse. [On 22.09.2026]</description>
       <content:encoded><![CDATA[Currently, operation is not possible. Duration: 11:00. Reason: Polizeiübung in the area of Herrengasse.<br/>[On 22.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64B/64A/66A/67A: Police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bb11fa66d6059b7ebb5307f0e795c43cd7b36f011b63e398fed1b76c0716babb</guid>
-      <pubDate>Tue, 22 Sep 2026 09:52:00 +0200</pubDate>
-      <ext:first_seen>Tue, 22 Sep 2026 10:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 22 Sep 2026 09:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 22 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction towards Hetzendorf S. Line 64A: service obstruction towards Atzgersdorf, Ziedlergasse; Line 66A: service obstruction towards Reumannplatz U; Line … [On 22.09.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Hetzendorf S. Line 64A: service obstruction towards Atzgersdorf, Ziedlergasse; Line 66A: service obstruction towards Reumannplatz U; Line …<br/>[On 22.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[14A: Buses stop Linke Wienzeile 110]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of track construction works in Althanstraße, line D is divided. [15.09.2026 – 15.09.2027]</description>
       <content:encoded><![CDATA[Because of track construction works in Althanstraße, line D is divided.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Vordere Zollamtsstraße from Marxergasse and Kleine Marxerbrücke to unnamed traffic area and wheel…]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">35a2bf6293387737ed920111491ea53c3fd0c9e8f0003d6e2a69287d3ff60605</guid>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 14:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 01 Feb 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>Due to the renovation of the tunnel ceiling of the U4 route or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna … [01.02.2026 – 30.11.2026]</description>
+      <content:encoded><![CDATA[Due to the renovation of the tunnel ceiling of the U4 route or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
