@@ -422,14 +422,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6/18: Weichenschaden",
-    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenschaden im Bereich .",
+    "title": "6/18/62: Weichenschaden",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenschaden.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "db5b4d5e0524e8dd6c283ba9e2f9a958f8dee1e322677c1d1368e94398dd0519",
+    "guid": "04105ce0d2fb8b5def07e1731dbbac4df4e218a0ca98bee54333740101012a96",
     "pubDate": "2026-09-22T18:24:00+02:00",
     "starts_at": "2026-09-22T18:24:00+02:00",
     "ends_at": "2026-09-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=18,6|D=2026-09-22|TK=6 18 weichenschaden"
+    "_identity": "wl|störung|L=18,6,62|D=2026-09-22|TK=6 18 62 weichenschaden"
   },
   {
     "source": "Wiener Linien",
@@ -674,18 +674,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Signalstörung",
-    "description": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037",
-    "pubDate": "2026-09-22T16:29:00+02:00",
-    "starts_at": "2026-09-22T16:29:00+02:00",
-    "ends_at": "2026-09-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-09-22|TK=signalstörung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N49: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -706,6 +694,18 @@
     "starts_at": "2026-09-21T00:00:22+02:00",
     "ends_at": "2026-09-22T23:59:59+02:00",
     "_identity": "wl|störung|L=N49|D=2026-09-21|TK=betrieb ab schweglerstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Schadhaftes Fahrzeug",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
+    "pubDate": "2026-09-22T18:49:00+02:00",
+    "starts_at": "2026-09-22T18:49:00+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-09-22|TK=u2 schadhaftes fahrzeug"
   },
   {
     "source": "Wiener Linien",
