@@ -7,40 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 22 Sep 2026 15:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 16:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[10A: Fremdunfall Betrieb ab Schönbrunn]]></title>
+      <title><![CDATA[74A: Service obstruction Other traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dd158557d4d51009511f0b105a93def3c893eca9f5e75097fafff2878a05a78e</guid>
+      <pubDate>Tue, 22 Sep 2026 15:50:38 +0200</pubDate>
+      <ext:first_seen>Tue, 22 Sep 2026 16:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 22 Sep 2026 15:49:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 22 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 22.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 22.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[42: Service obstruction because of police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5d0479fbee24a6170595345617adac2832b089a4749522b366de941b72d82321</guid>
+      <pubDate>Tue, 22 Sep 2026 15:41:36 +0200</pubDate>
+      <ext:first_seen>Tue, 22 Sep 2026 16:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 22 Sep 2026 15:41:38 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 22 Sep 2026 16:41:00 +0200</ext:ends_at>
+      <description>[On 22.09.2026]</description>
+      <content:encoded><![CDATA[[On 22.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: Third-party accident service from Schönbrunn]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">bbb71ef3c4105a3dd40a5a32677b5e5482ffa1b6cea060f16e165dbe88d608ef</guid>
       <pubDate>Tue, 22 Sep 2026 15:11:34 +0200</pubDate>
       <ext:first_seen>Tue, 22 Sep 2026 15:30:59 +0200</ext:first_seen>
       <ext:starts_at>Tue, 22 Sep 2026 15:11:34 +0200</ext:starts_at>
       <ext:ends_at>Tue, 22 Sep 2026 16:09:00 +0200</ext:ends_at>
-      <description>[Am 22.09.2026]</description>
-      <content:encoded><![CDATA[[Am 22.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[14A: Buses stop Linke Wienzeile 110]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">53dcf3171e146166a98e452b2440e53b0087141a8ebe30de169e9f91efd3fcec</guid>
-      <pubDate>Tue, 22 Sep 2026 07:23:03 +0200</pubDate>
-      <ext:first_seen>Tue, 22 Sep 2026 07:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 22 Sep 2026 07:23:03 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 22 Sep 2026 16:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [On 22.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[On 22.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Buses stop Linke Wienzeile 110]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">60547c236582d8893c2219ecb1620305d2c763626c79eb415b13882c3e194106</guid>
-      <pubDate>Tue, 22 Sep 2026 07:22:03 +0200</pubDate>
-      <ext:first_seen>Tue, 22 Sep 2026 07:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 22 Sep 2026 07:22:03 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 22 Sep 2026 16:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [On 22.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[On 22.09.2026]]]></content:encoded>
+      <description>[On 22.09.2026]</description>
+      <content:encoded><![CDATA[[On 22.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[REX 6: Wien Baumgarten (WL) ↔ Ebenfurth]]></title>
@@ -52,17 +52,6 @@
       <ext:ends_at>Fri, 30 Oct 2026 23:59:59 +0100</ext:ends_at>
       <description>Wegen Bauarbeiten können von 27.10.2026 (08:30 Uhr) bis 30.10.2026 (23:59 Uhr) zwischen Ebenfurth Bahnhof und Baumgarten im Bgld-Schattendorf Bahnhof keine REX 6-Züge fahren. [27.10.2026 – 30.10.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 27.10.2026 (08:30 Uhr) bis 30.10.2026 (23:59 Uhr) zwischen Ebenfurth Bahnhof und Baumgarten im Bgld-Schattendorf Bahnhof keine REX 6-Züge fahren.<br/>[27.10.2026 – 30.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Contamination]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e44390ff5ef9e4d4268820ebb9ad67c4b0b3b371373e5b43af9d510a69284d8a</guid>
-      <pubDate>Tue, 22 Sep 2026 14:26:00 +0200</pubDate>
-      <ext:first_seen>Mon, 21 Sep 2026 21:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 22 Sep 2026 14:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 22 Sep 2026 15:33:00 +0200</ext:ends_at>
-      <description>irregular intervals in both directions. Reason: contamination. [On 22.09.2026]</description>
-      <content:encoded><![CDATA[irregular intervals in both directions. Reason: contamination.<br/>[On 22.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: An den Steinfeldern]]></title>
@@ -93,9 +82,9 @@
       <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
       <ext:first_seen>Thu, 17 Sep 2026 23:01:11 +0200</ext:first_seen>
       <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Because of track construction works in Althanstraße, line D is divided. [15.09.2026 – 15.09.2027]</description>
-      <content:encoded><![CDATA[Because of track construction works in Althanstraße, line D is divided.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
+      <ext:ends_at>Sat, 07 Nov 2026 03:00:00 +0100</ext:ends_at>
+      <description>Because of track construction works in Althanstraße line D is divided. Line D: Operation only between Absberggasse and Börse and between Augasse and Nußdorf. [15.09.2026 – 07.11.2026]</description>
+      <content:encoded><![CDATA[Because of track construction works in Althanstraße line D is divided. Line D: Operation only between Absberggasse and Börse and between Augasse and Nußdorf.<br/>[15.09.2026 – 07.11.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Vordere Zollamtsstraße from Marxergasse and Kleine Marxerbrücke to unnamed traffic area and wheel…]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected. [21.09.2026 – 16.09.2027]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A/80A/N29: Wittelsbachstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

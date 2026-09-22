@@ -65,12 +65,12 @@
     },
     "total": 1854
   },
-  "generated_at": "2026-09-22T15:31:19+02:00",
+  "generated_at": "2026-09-22T16:01:34+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.05,
     "by_direction": {
-      "Meidling": 5428,
+      "Meidling": 5429,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -89,7 +89,7 @@
       "12": 0.8,
       "13": 0.69,
       "14": 0.84,
-      "15": 1.43,
+      "15": 1.42,
       "16": 1.04,
       "17": 1.26,
       "18": 1.18,
@@ -100,7 +100,7 @@
       "23": 1.01
     },
     "by_weekday_avg": {
-      "Di": 1.13,
+      "Di": 1.12,
       "Do": 1.06,
       "Fr": 0.96,
       "Mi": 1.34,
@@ -112,13 +112,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-09-22T15:25:00+02:00",
+          "last_seen": "2026-09-22T15:55:00+02:00",
           "peer_rows_since": 0,
           "rows_in_window": 1206
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 1578,
+          "peer_rows_since": 1579,
           "rows_in_window": 0
         }
       },
@@ -128,13 +128,13 @@
     },
     "live": {
       "avg_delay_minutes": 0.0,
-      "observations": 1,
+      "observations": 2,
       "window_minutes": 60
     },
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 120,
     "threshold_minutes": 9.0,
-    "total_observations": 9259
+    "total_observations": 9260
   },
   "stoerungen": {
     "by_hour": {
@@ -154,7 +154,7 @@
       "13": 213,
       "14": 197,
       "15": 208,
-      "16": 200,
+      "16": 202,
       "17": 142,
       "18": 175,
       "19": 127,
@@ -166,11 +166,11 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 178,
       "VOR/VAO": 11,
-      "Wiener Linien": 2715,
+      "Wiener Linien": 2717,
       "ÖBB": 259
     },
     "by_weekday": {
-      "Di": 463,
+      "Di": 465,
       "Do": 505,
       "Fr": 486,
       "Mi": 481,
@@ -178,7 +178,7 @@
       "Sa": 391,
       "So": 394
     },
-    "total": 3163
+    "total": 3165
   },
   "year": 2026
 }

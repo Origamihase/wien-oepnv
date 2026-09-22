@@ -8353,6 +8353,18 @@
       "epoch": 2
     }
   },
+  "5d0479fbee24a6170595345617adac2832b089a4749522b366de941b72d82321": {
+    "first_seen": "2026-09-22T14:01:04.364528+00:00",
+    "translations": {
+      "en": {
+        "title": "42: service obstruction because of police operation"
+      },
+      "en_src": {
+        "title": "a8c5540230e9f966"
+      },
+      "epoch": 15
+    }
+  },
   "5d5c3c553352fe808dd656933ca990fb4d17fef91221b500b7bbb24c8301e488": {
     "first_seen": "2026-09-02T03:01:08.759982+00:00",
     "translations": {
@@ -16503,11 +16515,11 @@
     "first_seen": "2026-09-17T21:01:11.849987+00:00",
     "translations": {
       "en": {
-        "summary": "Because of track construction works in Althanstra\u00dfe, line D is divided.",
+        "summary": "Because of track construction works in Althanstra\u00dfe line D is divided. Line D: Operation only between Absberggasse and B\u00f6rse and between Augasse and Nu\u00dfdorf.",
         "title": "D: track construction works \u2013 Althanstra\u00dfe"
       },
       "en_src": {
-        "summary": "0cd217946d571c31",
+        "summary": "18a68c7bc10b0e40",
         "title": "9bfee0f5339ce500"
       },
       "epoch": 15
@@ -17304,7 +17316,13 @@
   "bbb71ef3c4105a3dd40a5a32677b5e5482ffa1b6cea060f16e165dbe88d608ef": {
     "first_seen": "2026-09-22T13:30:59.599706+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "10A: third-party accident service from Sch\u00f6nbrunn"
+      },
+      "en_src": {
+        "title": "f5f9af9cd87c66cc"
+      },
+      "epoch": 15
     }
   },
   "bbe5ef50c2240c914c3dce1d180ddae47d557fdcc203689af3890bc880dbf44d": {
@@ -20056,6 +20074,20 @@
         "title": "1/2A/2/2A/31/3A/71/74A/D: Erste Bank Vienna Night Run 2026"
       },
       "epoch": 3
+    }
+  },
+  "dd158557d4d51009511f0b105a93def3c893eca9f5e75097fafff2878a05a78e": {
+    "first_seen": "2026-09-22T14:01:04.364528+00:00",
+    "translations": {
+      "en": {
+        "summary": "After a service obstruction there are different intervals.",
+        "title": "74A: service obstruction Other traffic accident"
+      },
+      "en_src": {
+        "summary": "eb1bdc2703fe6f1b",
+        "title": "6b5d3e86c4f98c5a"
+      },
+      "epoch": 15
     }
   },
   "dd38929367ed31868fe8ae222003d695d87bb0f8f2ed16d13586ef06d8ebca6f": {
