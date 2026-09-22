@@ -25712,14 +25712,17 @@
     "first_seen": "2026-09-22T05:30:51.648439+00:00",
     "translations": {
       "en": {
+        "summary": "construction works from 27.10.2026 (08:30) to 30.10.2026 (23:59) between Ebenfurth train station and Baumgarten in BGld-Schattendorf station no REX 6 trains.",
         "title": "REX 6: Wien Baumgarten (WL) \u2194 Ebenfurth"
       },
       "en_src": {
+        "summary": "fb624daff05a99df",
         "title": "371046360d2e96ae"
       },
       "en_verbatim": [
         "title"
-      ]
+      ],
+      "epoch": 15
     }
   },
   "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&913728": {
