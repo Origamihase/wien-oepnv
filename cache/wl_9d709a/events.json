@@ -470,42 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Fahrtbehinderung Oberleitungsgebrechen",
-    "description": "Fahrtbehinderung\nOberleitungsgebrechen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "76e2401f3d54d369f429945b0f998032fc7bcb836e5762f4e40bb5f5bb083299",
-    "pubDate": "2026-09-23T16:11:34+02:00",
-    "starts_at": "2026-09-23T16:11:34+02:00",
-    "ends_at": "2026-09-23T17:11:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-09-23|TK=fahrtbehinderung oberleitungsgebrechen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Oberleitungsgebr Betrieb ab Lange Gasse",
-    "description": "Oberleitungsgebr\nBetrieb ab Lange Gasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b322e01907e87ba900c141bd69377be9c1fee4aad6e2f9b51b46eda753b68469",
-    "pubDate": "2026-09-23T16:11:01+02:00",
-    "starts_at": "2026-09-23T16:11:01+02:00",
-    "ends_at": "2026-09-23T17:10:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-09-23|TK=oberleitungsgebr betrieb ab lange gasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Oberleitungsgebr Züge halten bei Linien 43 und 44 Richtung Schottentor",
-    "description": "Oberleitungsgebr\nZüge halten bei Linien 43 und 44 Richtung Schottentor",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "127afcfb887f1677cf25b9522db9ac5689ed23223d048f16b09f71481b1d2d75",
-    "pubDate": "2026-09-23T16:12:02+02:00",
-    "starts_at": "2026-09-23T16:12:02+02:00",
-    "ends_at": "2026-09-23T17:11:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-09-23|TK=oberleitungsgebr züge halten bei linien 43 und 44 richtung schottentor"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Feuerwehreinsatz",
     "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -698,6 +662,54 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37: Verkehrsunfall",
+    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "469b9778d4214dbbbd09d8ed008c51981bf9682b6a81d9e95d111392e71be734",
+    "pubDate": "2026-09-23T17:14:00+02:00",
+    "starts_at": "2026-09-23T17:14:00+02:00",
+    "ends_at": "2026-09-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-09-23|TK=37 verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9a256ddc9071e1be270714d5f6be746d8db040a3968d1eb9ae42aab06ab94ad4",
+    "pubDate": "2026-09-23T17:13:40+02:00",
+    "starts_at": "2026-09-23T17:19:08+02:00",
+    "ends_at": "2026-09-23T18:18:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-09-23|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Verkehrsunfall",
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "31f255c87f5a1575177df04a76beabf6426a71727ee2fef75eb69ab752e4775f",
+    "pubDate": "2026-09-23T17:14:00+02:00",
+    "starts_at": "2026-09-23T17:14:00+02:00",
+    "ends_at": "2026-09-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=38|D=2026-09-23|TK=38 verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
+    "pubDate": "2026-09-23T17:13:38+02:00",
+    "starts_at": "2026-09-23T17:18:38+02:00",
+    "ends_at": "2026-09-23T18:18:00+02:00",
+    "_identity": "wl|störung|L=38|D=2026-09-23|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "3A: 3A Netzänderung Betrieb ab Riemergasse",
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -722,6 +734,138 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40: Verkehrsunfall",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e3e13c6b90be5e66804691a6a7901f8c83e37548e7fcba2b3b5336dc0f8722db",
+    "pubDate": "2026-09-23T17:14:00+02:00",
+    "starts_at": "2026-09-23T17:14:00+02:00",
+    "ends_at": "2026-09-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=40|D=2026-09-23|TK=40 verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "171280fe175191f4b2c1a62b7dc57c3520423e50d712bbc87c62209842a74580",
+    "pubDate": "2026-09-23T17:18:08+02:00",
+    "starts_at": "2026-09-23T17:18:08+02:00",
+    "ends_at": "2026-09-23T18:17:00+02:00",
+    "_identity": "wl|störung|L=40|D=2026-09-23|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Verkehrsunfall",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92",
+    "pubDate": "2026-09-23T17:14:00+02:00",
+    "starts_at": "2026-09-23T17:14:00+02:00",
+    "ends_at": "2026-09-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=41|D=2026-09-23|TK=41 verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1e687669355f2ef165e274ee1dc721668120a3f488ae695b99053b29ea59dc02",
+    "pubDate": "2026-09-23T17:17:38+02:00",
+    "starts_at": "2026-09-23T17:17:38+02:00",
+    "ends_at": "2026-09-23T18:17:00+02:00",
+    "_identity": "wl|störung|L=41|D=2026-09-23|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Verkehrsunfall",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fb8ee4d5a29493e27f80e3db638fbbff263fc1757a809406ca73ec8b5d665786",
+    "pubDate": "2026-09-23T17:14:00+02:00",
+    "starts_at": "2026-09-23T17:14:00+02:00",
+    "ends_at": "2026-09-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=42|D=2026-09-23|TK=42 verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "930d80e075929cf21fe799fda5426fd5228d64088925dc7f7064542f79ff0bc7",
+    "pubDate": "2026-09-23T17:13:07+02:00",
+    "starts_at": "2026-09-23T17:13:10+02:00",
+    "ends_at": "2026-09-23T18:12:00+02:00",
+    "_identity": "wl|störung|L=42|D=2026-09-23|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f7b242148f289329f509f0d03e65c8e9ae4f37c90685f04e672586a792510ba4",
+    "pubDate": "2026-09-23T17:08:37+02:00",
+    "starts_at": "2026-09-23T17:08:37+02:00",
+    "ends_at": "2026-09-23T18:08:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-09-23|TK=fahrtbehinderung wegen stromstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Stromstörung Betrieb ab Rosensteingasse",
+    "description": "Stromstörung\nBetrieb ab Rosensteingasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4591e870b513254dc06debd4d2aea5c37e74330d9b8437166c31029244924d39",
+    "pubDate": "2026-09-23T17:09:07+02:00",
+    "starts_at": "2026-09-23T17:09:09+02:00",
+    "ends_at": "2026-09-23T18:08:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-09-23|TK=stromstörung betrieb ab rosensteingasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Stromstörung Züge fahren bis Johann-Nepomuk-Berger-Platz",
+    "description": "Stromstörung\nZüge fahren bis Johann-Nepomuk-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "52e39abee6b5ddd3ac7bd8d33684e2ca0ce3aca6ea4adddba5f0447b01483a52",
+    "pubDate": "2026-09-23T17:10:07+02:00",
+    "starts_at": "2026-09-23T17:10:07+02:00",
+    "ends_at": "2026-09-23T18:09:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-09-23|TK=stromstörung züge fahren bis johann nepomuk berger platz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9e70d6dd9a64c448028f0fc1fd3e46a24b5abb8fcfe6f436c247ebb882147e94",
+    "pubDate": "2026-09-23T17:07:07+02:00",
+    "starts_at": "2026-09-23T17:07:09+02:00",
+    "ends_at": "2026-09-23T18:06:00+02:00",
+    "_identity": "wl|störung|L=44|D=2026-09-23|TK=fahrtbehinderung wegen stromstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Stromstörung Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "76f9bf4cb0c9fb65f20fabb4a606f9a973d33fe3c5a77c6d8a636014165acb78",
+    "pubDate": "2026-09-23T17:07:37+02:00",
+    "starts_at": "2026-09-23T17:07:39+02:00",
+    "ends_at": "2026-09-23T18:07:00+02:00",
+    "_identity": "wl|störung|L=44|D=2026-09-23|TK=stromstörung betrieb ab johann nepomuk berger platz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -730,18 +874,6 @@
     "starts_at": "2026-09-18T04:30:00+02:00",
     "ends_at": "2026-10-31T01:00:00+01:00",
     "_identity": "wl|störung|L=46,49,52|D=2026-09-18|TK=46 49 52 gleisbauarbeiten"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "47B: Verspätungen",
-    "description": "Linie 47B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1deabd976f17dc5c34c773fe262c298fde7ccb7b1e9e454ed10178d2889c9970",
-    "pubDate": "2026-09-23T16:55:00+02:00",
-    "starts_at": "2026-09-23T16:55:00+02:00",
-    "ends_at": "2026-09-23T17:24:00+02:00",
-    "_identity": "wl|störung|L=47B|D=2026-09-23|TK=47b verspätungen"
   },
   {
     "source": "Wiener Linien",
@@ -766,30 +898,6 @@
     "starts_at": "2026-09-23T16:10:00+02:00",
     "ends_at": "2026-09-23T23:55:00+02:00",
     "_identity": "wl|störung|L=5|D=2026-09-23|TK=5 beschädigte oberleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Oberleitungsgebr Betrieb ab Franz-Josefs-Bahnhof",
-    "description": "Oberleitungsgebr\nBetrieb ab Franz-Josefs-Bahnhof",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6b6359df9e9203bf78ba942da283f32fd9697c50073e9114d90047a9d9404e74",
-    "pubDate": "2026-09-23T16:10:01+02:00",
-    "starts_at": "2026-09-23T16:10:01+02:00",
-    "ends_at": "2026-09-23T17:09:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-09-23|TK=oberleitungsgebr betrieb ab franz josefs bahnhof"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Oberleitungsgebr Betrieb ab Lerchenfelder Straße",
-    "description": "Oberleitungsgebr\nBetrieb ab Lerchenfelder Straße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e99c4c44c72ed6386ac08dc74067f646053d2e52985cef576b3c8a76382529c2",
-    "pubDate": "2026-09-23T16:10:32+02:00",
-    "starts_at": "2026-09-23T16:10:34+02:00",
-    "ends_at": "2026-09-23T17:10:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-09-23|TK=oberleitungsgebr betrieb ab lerchenfelder strasse"
   },
   {
     "source": "Wiener Linien",
@@ -902,6 +1010,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U6: Polizeieinsatz",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
+    "pubDate": "2026-09-23T17:10:00+02:00",
+    "starts_at": "2026-09-23T17:10:00+02:00",
+    "ends_at": "2026-09-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-09-23|TK=polizeieinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -934,5 +1054,17 @@
     "starts_at": "2026-09-23T00:00:27+02:00",
     "ends_at": "2026-09-23T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-09-23|TK=busse halten frauenstiftgasse 7"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
+    "pubDate": "2026-09-23T17:11:37+02:00",
+    "starts_at": "2026-09-23T17:11:40+02:00",
+    "ends_at": "2026-09-23T18:11:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-09-23|TK=fahrtbehinderung verkehrsunfall"
   }
 ]
