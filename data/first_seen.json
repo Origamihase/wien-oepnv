@@ -26044,6 +26044,23 @@
       "epoch": 15
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&914189": {
+    "first_seen": "2026-09-23T20:30:48.424208+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to an obstacle in the track range between Wien Geiselbergstra\u00dfe station and Wien Zentralfriedhof currently no journeys are possible.",
+        "title": "Wien Geiselbergstra\u00dfe \u2194 Wien Zentralfriedhof"
+      },
+      "en_src": {
+        "summary": "9f065eb0852c5968",
+        "title": "97c5e68c8c48f496"
+      },
+      "en_verbatim": [
+        "title"
+      ],
+      "epoch": 15
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },

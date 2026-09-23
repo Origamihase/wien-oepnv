@@ -130,5 +130,17 @@
     "starts_at": "2026-10-27T00:00:00+01:00",
     "ends_at": "2026-10-30T23:59:59+01:00",
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&913609"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Geiselbergstraße ↔ Wien Zentralfriedhof",
+    "description": "23.09.2026<br/><br/>Wegen eines Hindernisses im Gleisbereich sind zwischen <b>Wien Geiselbergstraße Bahnhst</b> und <b>Wien Zentralfriedhof</b> <b>derzeit keine Fahrten</b> möglich. Über die Dauer der Unterbrechung kann derzeit noch keine Angabe gemacht werden. Die <b>Züge warten</b> die Sperre <b>vorerst ab</b>.<br>Sobald uns weitere Informationen vorliegen, informieren wir Sie.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&914189",
+    "pubDate": "2026-09-23T22:25:44+02:00",
+    "starts_at": "2026-09-23T00:00:00+02:00",
+    "ends_at": "2026-09-23T23:59:59+02:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&914189"
   }
 ]
