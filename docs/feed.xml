@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 23 Sep 2026 05:01:06 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 05:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Stromstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">681e352bfcee1569f067fb1fd922f29b1573c5194397630dce9a49ab451f0255</guid>
+      <pubDate>Wed, 23 Sep 2026 05:06:00 +0200</pubDate>
+      <ext:first_seen>Wed, 23 Sep 2026 05:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 23 Sep 2026 05:06:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 23 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Stromstörung. [Am 23.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Stromstörung.<br/>[Am 23.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[REX 6: Wien Baumgarten (WL) ↔ Ebenfurth]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -30,17 +41,6 @@
       <ext:ends_at>Tue, 21 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse Haltestelle: An den Steinfeldern Von: Perfektastraße 89 Nach: etwa 20 Meter in Richtung … [21.09.2026 – 21.09.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse Haltestelle: An den Steinfeldern Von: Perfektastraße 89 Nach: etwa 20 Meter in Richtung …<br/>[21.09.2026 – 21.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N6: Busse halten Neilreichgasse 20-22, Quellenstraße 189]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc</guid>
-      <pubDate>Wed, 23 Sep 2026 00:55:01 +0200</pubDate>
-      <ext:first_seen>Sun, 20 Sep 2026 01:01:21 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 23 Sep 2026 00:55:01 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 23 Sep 2026 05:05:00 +0200</ext:ends_at>
-      <description>Busse halten Neilreichgasse 20-22 Bauarbeiten Busse halten Quellenstraße 189 [Am 23.09.2026]</description>
-      <content:encoded><![CDATA[Busse halten Neilreichgasse 20-22 Bauarbeiten Busse halten Quellenstraße 189<br/>[Am 23.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
