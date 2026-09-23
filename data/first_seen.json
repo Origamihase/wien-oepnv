@@ -18315,6 +18315,20 @@
       "epoch": 2
     }
   },
+  "c6414f05e0d7316905e3faa36cf0ae3462bb94b5012ef094ee688e0b738e70df": {
+    "first_seen": "2026-09-23T12:30:56.393760+00:00",
+    "translations": {
+      "en": {
+        "summary": "Station departure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Br\u00fcnnerstra\u00dfe opposite 262 Ersatzlos Discontinued Duration: Ab 30. September \u2026",
+        "title": "N31: Stammersdorf replacementless Discontinued"
+      },
+      "en_src": {
+        "summary": "3de9d0b1202334ec",
+        "title": "f86bc8b3519f0041"
+      },
+      "epoch": 15
+    }
+  },
   "c64c8e20cf6625a63492931166e74dbba6c06012d5445a807693c215b97298cf": {
     "first_seen": "2026-06-28T20:31:01.878780+00:00",
     "translations": {
@@ -25800,11 +25814,11 @@
     "first_seen": "2026-09-23T11:01:17.685401+00:00",
     "translations": {
       "en": {
-        "summary": "Due to a rescue operation, no journeys are possible between Wien Meidling station (U) and Hennersdorf b.Wien station to expected 13:20.",
+        "summary": "Due to a rescue operation, only limited journeys were possible between Wien Meidling Station (U) and Hennersdorf b.Wien station to 13:59.",
         "title": "Wien Meidling \u2194 Hennersdorf"
       },
       "en_src": {
-        "summary": "a17def88f511f947",
+        "summary": "ad5db8e81c0929af",
         "title": "c8c754512c5d3b06"
       },
       "en_verbatim": [
