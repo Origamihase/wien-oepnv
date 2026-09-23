@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 23 Sep 2026 15:01:15 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 15:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[71/72: This is a test report]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bde19cec7febc01dde649460a92e30addf4b87c8ae3abd49741627999db4f567</guid>
-      <pubDate>Wed, 23 Sep 2026 15:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 23 Sep 2026 15:01:15 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 23 Sep 2026 15:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 23 Sep 2026 23:59:00 +0200</ext:ends_at>
-      <description>This is a test [On 23.09.2026]</description>
-      <content:encoded><![CDATA[This is a test<br/>[On 23.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[68B/68A: Fremder Verkehrsunfall]]></title>
+      <title><![CDATA[68A/68B: Foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7f28b543e6ca82df50c248f444caeabbe7dfdfa49d705fb61a0ffee1e9c69926</guid>
       <pubDate>Wed, 23 Sep 2026 14:49:00 +0200</pubDate>
       <ext:first_seen>Wed, 23 Sep 2026 15:01:15 +0200</ext:first_seen>
       <ext:starts_at>Wed, 23 Sep 2026 14:49:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 23 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 15:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Laaer-Berg-Straße / Kennergasse. [Am 23.09.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 15:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Laaer-Berg-Straße / Kennergasse.<br/>[Am 23.09.2026]]]></content:encoded>
+      <description>Currently, operation is not possible. [On 23.09.2026]</description>
+      <content:encoded><![CDATA[Currently, operation is not possible.<br/>[On 23.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N31: Stammersdorf replacementless Discontinued]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected. [21.09.2026 – 16.09.2027]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A/80A/N29: Wittelsbachstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
