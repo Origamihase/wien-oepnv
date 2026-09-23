@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 23 Sep 2026 12:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 12:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12A: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2513938b72db793fec75e59976c4da41d4fac33f1318eb4edd60511ffdcfb5f0</guid>
+      <pubDate>Wed, 23 Sep 2026 11:58:00 +0200</pubDate>
+      <ext:first_seen>Wed, 23 Sep 2026 12:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 23 Sep 2026 11:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 23 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 23.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 23.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12A: Fahrtbehinderung Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
       <description>Wegen eines Erntedankfestes werden die Linien 27A, 28A und 29A umgeleitet. [15.09.2026 – 27.09.2026]</description>
       <content:encoded><![CDATA[Wegen eines Erntedankfestes werden die Linien 27A, 28A und 29A umgeleitet.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56A/56B/58A/58B: Umleitung in Richtung Hietzing U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">448cd28e5b6e46e9031d5b7d469e439bb6d640a548691fa7e52b2cfebe245957</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 09:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 15 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet. [15.09.2026 – 15.09.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Kennedybrücke werden die Autobuslinien umgeleitet.<br/>[15.09.2026 – 15.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
