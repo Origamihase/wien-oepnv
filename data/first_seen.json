@@ -4760,11 +4760,11 @@
     "first_seen": "2026-09-18T12:31:03.156806+00:00",
     "translations": {
       "en": {
-        "summary": "stop relocation of line 72A towards Hasenleitengasse Stop: Kraftwerk Simmering From: 1. Haidequerstra\u00dfe 2 To: 1. Haidequerstra\u00dfe 510 Duration: Ab \u2026",
+        "summary": "stop relocation of line 72A towards Hasenleiten Stop: Kraftwerk Simmering From: 1. Haidequerstra\u00dfe 2 To: 1. Haidequerstra\u00dfe 510 Duration: Ab 22. September \u2026",
         "title": "72A: Kraftwerk Simmering"
       },
       "en_src": {
-        "summary": "2a021c296ef60a36",
+        "summary": "2b9bc05d7215ed0c",
         "title": "6895ecc643f1b3d1"
       },
       "en_verbatim": [
@@ -15793,6 +15793,20 @@
         "title": "41: service obstruction due to power failure"
       },
       "epoch": 3
+    }
+  },
+  "aa349c99b725b7354f26a3bd3546353bf0a484c4156d7642515ed8ae14d68e51": {
+    "first_seen": "2026-09-23T12:00:56.602671+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to the high passenger volume associated with an event, the folding ramps of the U2 underground trains cannot be extended.",
+        "title": "U2: folding ramps out of service on 27.09.2026"
+      },
+      "en_src": {
+        "summary": "ef497f351be01114",
+        "title": "2e34f84430fd1dd4"
+      },
+      "epoch": 15
     }
   },
   "aa586bbb3993a3f914597189f62306c768172d223fe7f9f9bc51e36c90d88b73": {
