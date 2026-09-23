@@ -446,6 +446,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cb8f37a153e49e1b9fce9bbe197d868b0f2104c567dea861959f72bf49ba88a7",
+    "pubDate": "2026-09-24T00:06:52+02:00",
+    "starts_at": "2026-09-24T00:06:52+02:00",
+    "ends_at": "2026-09-24T01:06:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-09-24|TK=polizeieinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,6 +466,18 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
+    "pubDate": "2026-09-24T00:30:20+02:00",
+    "starts_at": "2026-09-24T00:30:20+02:00",
+    "ends_at": "2026-09-24T04:59:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-24|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
     "source": "Wiener Linien",
@@ -646,6 +670,18 @@
     "starts_at": "2026-09-18T04:30:00+02:00",
     "ends_at": "2026-10-31T01:00:00+01:00",
     "_identity": "wl|störung|L=46,49,52|D=2026-09-18|TK=46 49 52 gleisbauarbeiten"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4",
+    "pubDate": "2026-09-24T00:09:22+02:00",
+    "starts_at": "2026-09-24T00:09:22+02:00",
+    "ends_at": "2026-09-24T01:08:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-09-24|TK=polizeieinsatz"
   },
   {
     "source": "Wiener Linien",
