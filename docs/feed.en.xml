@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 24 Sep 2026 00:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 01:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N31: Stammersdorf replacementless Discontinued]]></title>
@@ -52,6 +52,17 @@
       <ext:ends_at>Tue, 21 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>stop relocation of line 64A towards Atzgersdorf, Ziedlergasse Stop: An den Steinfeldern From: Perfektastraße 89 To: etwa 20 Meter in Richtung … [21.09.2026 – 21.09.2027]</description>
       <content:encoded><![CDATA[stop relocation of line 64A towards Atzgersdorf, Ziedlergasse Stop: An den Steinfeldern From: Perfektastraße 89 To: etwa 20 Meter in Richtung …<br/>[21.09.2026 – 21.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N6: Buses stop Neilreichgasse 20-22, Quellenstraße 189]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc</guid>
+      <pubDate>Thu, 24 Sep 2026 00:55:23 +0200</pubDate>
+      <ext:first_seen>Sun, 20 Sep 2026 01:01:21 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 00:55:23 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 24 Sep 2026 05:05:00 +0200</ext:ends_at>
+      <description>Buses stop at Neilreichgasse 20-22 construction works Buses stop at Quellenstraße 189 [On 24.09.2026]</description>
+      <content:encoded><![CDATA[Buses stop at Neilreichgasse 20-22 construction works Buses stop at Quellenstraße 189<br/>[On 24.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
       <content:encoded><![CDATA[stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27A/28A/29A: Event on 2709.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5b409515bbdbcac314bb8c316471e4b560b8a050e77adf2199f7e4a1fe0e3a1f</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 15 Sep 2026 17:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
-      <description>Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected. [15.09.2026 – 27.09.2026]</description>
-      <content:encoded><![CDATA[Due to a Thanksgiving feast, lines 27A, 28A and 29A are redirected.<br/>[15.09.2026 – 27.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
