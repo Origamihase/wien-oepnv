@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 23 Sep 2026 18:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 18:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[43: Stromstörung Züge fahren bis Johann-Nepomuk-Berger-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">52e39abee6b5ddd3ac7bd8d33684e2ca0ce3aca6ea4adddba5f0447b01483a52</guid>
-      <pubDate>Wed, 23 Sep 2026 17:10:07 +0200</pubDate>
-      <ext:first_seen>Wed, 23 Sep 2026 17:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 23 Sep 2026 17:10:07 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 23 Sep 2026 18:09:00 +0200</ext:ends_at>
-      <description>[Am 23.09.2026]</description>
-      <content:encoded><![CDATA[[Am 23.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[N31: Stammersdorf ersatzlos aufgelassen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -65,21 +54,10 @@
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse Haltestelle: An den Steinfeldern Von: Perfektastraße 89 Nach: etwa 20 Meter in Richtung …<br/>[21.09.2026 – 21.09.2027]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[44: Stromstörung Betrieb ab Johann-Nepomuk-Berger-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">76f9bf4cb0c9fb65f20fabb4a606f9a973d33fe3c5a77c6d8a636014165acb78</guid>
-      <pubDate>Wed, 23 Sep 2026 17:07:37 +0200</pubDate>
-      <ext:first_seen>Mon, 21 Sep 2026 09:01:11 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 23 Sep 2026 17:07:39 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 23 Sep 2026 18:07:00 +0200</ext:ends_at>
-      <description>[Am 23.09.2026]</description>
-      <content:encoded><![CDATA[[Am 23.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44: Fahrtbehinderung wegen Stromstörung]]></title>
+      <title><![CDATA[44: Stromstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ae758d1e1b34d4c93c09e918b6a3a5c204897f98413205fd924e3a00e7d1700a</guid>
-      <pubDate>Wed, 23 Sep 2026 17:07:07 +0200</pubDate>
+      <pubDate>Wed, 23 Sep 2026 17:06:00 +0200</pubDate>
       <ext:first_seen>Sun, 20 Sep 2026 16:00:51 +0200</ext:first_seen>
       <ext:starts_at>Wed, 23 Sep 2026 17:06:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 23 Sep 2026 23:55:00 +0200</ext:ends_at>
@@ -118,6 +96,28 @@
       <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener … [01.02.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36A/36B: Straßenbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet. [21.09.2026 – 16.09.2027]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A/80A/N29: Wittelsbachstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
