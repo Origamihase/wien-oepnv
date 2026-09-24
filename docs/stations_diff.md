@@ -1,12 +1,12 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-09-20T09:28:24+00:00_
+_Erzeugt am: 2026-09-24T18:59:42+00:00_
 
-**Stationen: 2243 → 2243 (Δ +0)**
+**Stationen: 2243 → 2244 (Δ +1)**
 
-## Hinzugefügt (0)
+## Hinzugefügt (1)
 
-_Keine._
+- `name:Wien Stadion U, Handelskai (WL)` — Wien Stadion U, Handelskai \(WL\)
 
 ## Entfernt (0)
 

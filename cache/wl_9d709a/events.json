@@ -686,30 +686,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Feuerwehreinsatz Betrieb ab Johann-Nepomuk-Berger-Platz",
-    "description": "Feuerwehreinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1e1b9b70c09acc75dc4f48844d05a84e695802c3efcddb03f89fbea62d95a265",
-    "pubDate": "2026-09-24T19:38:05+02:00",
-    "starts_at": "2026-09-24T19:38:35+02:00",
-    "ends_at": "2026-09-24T20:37:00+02:00",
-    "_identity": "wl|störung|L=44|D=2026-09-24|TK=feuerwehreinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "44: Feuerwehreinsatz Umleitung über die Linien 43 und 9",
-    "description": "Feuerwehreinsatz Umleitung über die Linien 43 und 9",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1f415412a3eefbaaf4e2a70bf8b666c8940b4b1f7c8767323765adf6313fc989",
-    "pubDate": "2026-09-24T19:37:04+02:00",
-    "starts_at": "2026-09-24T19:37:04+02:00",
-    "ends_at": "2026-09-24T20:35:00+02:00",
-    "_identity": "wl|störung|L=44|D=2026-09-24|TK=feuerwehreinsatz umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -730,18 +706,6 @@
     "starts_at": "2026-09-24T20:00:07+02:00",
     "ends_at": "2026-09-25T05:00:00+02:00",
     "_identity": "wl|störung|L=63A|D=2026-09-24|TK=kranarbeiten haltestelle aufgelassen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Fremder Verkehrsunfall",
-    "description": "Linie 66A: Fahrtbehinderung in Richtung Liesing S. Grund: Fremder Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "05a8cb727ca73bb01df781f7ab67a47f7452b75e040b6b9029c8a1839f707cc2",
-    "pubDate": "2026-09-24T19:03:00+02:00",
-    "starts_at": "2026-09-24T19:03:00+02:00",
-    "ends_at": "2026-09-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-09-24|TK=66a fremder verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -806,14 +770,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U1: Polizeieinsatz",
+    "description": "Die Linie U1 fährt derzeit nicht zwischen Vorgartenstraße und Stephansplatz. Weichen Sie ersatzweise auf die Linien U2, U4, 1 , 2, 5, 11A aus. Voraussichtliche Dauer: 21:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Praterstern.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-09-24T18:27:00+02:00",
-    "starts_at": "2026-09-24T18:27:00+02:00",
+    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
+    "pubDate": "2026-09-24T20:44:00+02:00",
+    "starts_at": "2026-09-24T20:44:00+02:00",
     "ends_at": "2026-09-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-09-24|TK=u2 betriebsstörung"
+    "_identity": "wl|störung|L=U1|D=2026-09-24|TK=polizeieinsatz"
   },
   {
     "source": "Wiener Linien",

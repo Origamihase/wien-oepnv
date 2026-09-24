@@ -2089,8 +2089,8 @@
         "Wien-Schwechat,-Bahnhof",
         "Wien-Schwechat,-Bahnhof-(WL)"
       ],
-      "latitude": 48.142514,
-      "longitude": 16.482684,
+      "latitude": 48.143654,
+      "longitude": 16.481389,
       "source": "hafas,oebb,oebb_geonetz,osm,wl",
       "_in_vienna_basis": [
         48.143195,
@@ -4326,8 +4326,8 @@
         "Wien-Leopoldau-(WL) Bf",
         "Wien-Leopoldau-(WL) bf"
       ],
-      "latitude": 48.277451,
-      "longitude": 16.450888,
+      "latitude": 48.277314,
+      "longitude": 16.448327,
       "source": "hafas,oebb,oebb_geonetz,osm,wl",
       "_in_vienna_basis": [
         48.277593,
@@ -4585,8 +4585,8 @@
         "Wien-Hetzendorf-(WL) Bf",
         "Wien-Hetzendorf-(WL) bf"
       ],
-      "latitude": 48.165789,
-      "longitude": 16.314073,
+      "latitude": 48.167008,
+      "longitude": 16.315853,
       "source": "hafas,oebb,oebb_geonetz,osm,wl",
       "_in_vienna_basis": [
         48.166226,
@@ -120793,12 +120793,6 @@
       "wl_diva": "60200523",
       "wl_stops": [
         {
-          "stop_id": "3572",
-          "name": "Hillerstraße",
-          "latitude": 48.2208239,
-          "longitude": 16.4073693
-        },
-        {
           "stop_id": "598",
           "name": "Hillerstraße",
           "latitude": 48.2208837,
@@ -120971,8 +120965,8 @@
         "Wien-Hillerstraße-(WL) bf"
       ],
       "source": "wl",
-      "latitude": 48.221023,
-      "longitude": 16.407654
+      "latitude": 48.221123,
+      "longitude": 16.407796
     },
     {
       "name": "Wien Himberger Straße (WL)",
@@ -234041,14 +234035,15 @@
           "longitude": 16.3232601
         },
         {
-          "stop_id": "7008",
-          "name": "Bhf.Rdh. / Halle III - A",
+          "stop_id": "6024",
+          "name": "Bahnhof Rudolfsheim (Bedarf)",
           "latitude": 48.19059,
           "longitude": 16.3226762
         }
       ],
       "aliases": [
         "Wien Rudolfsheim, Anschützgasse (WL)",
+        "Bahnhof Rudolfsheim (Bedarf)",
         "Bahnhof Rudolfsheim, Anschuetzg.",
         "Bahnhof Rudolfsheim, Anschuetzg. (WL)",
         "Bahnhof Rudolfsheim, Anschuetzg. Station",
@@ -234121,7 +234116,6 @@
         "bf Wien-Rudolfsheim,-Anschützgasse",
         "Bf Wien-Rudolfsheim,-Anschützgasse-(WL)",
         "bf Wien-Rudolfsheim,-Anschützgasse-(WL)",
-        "Bhf.Rdh. / Halle III - A",
         "Rudolfsheim, Anschuetzg.",
         "Rudolfsheim, Anschuetzg. (WL)",
         "Rudolfsheim, Anschuetzg. (WL) Bahnhof",
@@ -262067,6 +262061,82 @@
       "source": "wl",
       "latitude": 48.210963,
       "longitude": 16.421338
+    },
+    {
+      "name": "Wien Stadion U, Handelskai (WL)",
+      "in_vienna": true,
+      "pendler": false,
+      "wl_diva": "60202502",
+      "wl_stops": [
+        {
+          "stop_id": "3605",
+          "name": "Stadion U, Handelskai",
+          "latitude": 48.212031,
+          "longitude": 16.4230809
+        }
+      ],
+      "aliases": [
+        "Wien Stadion U, Handelskai (WL)",
+        "Bahnhof Stadion U, Handelskai",
+        "Bahnhof Stadion U, Handelskai (WL)",
+        "Bahnhof Stadion U, Handelskai Station",
+        "Bahnhof Wien Stadion U, Handelskai",
+        "Bahnhof Wien-Stadion-U,-Handelskai",
+        "Bahnhof Wien-Stadion-U,-Handelskai-(WL)",
+        "Bf Stadion U, Handelskai",
+        "bf Stadion U, Handelskai",
+        "Bf Stadion U, Handelskai (WL)",
+        "bf Stadion U, Handelskai (WL)",
+        "Bf Stadion U, Handelskai Station",
+        "bf Stadion U, Handelskai Station",
+        "Bf Wien Stadion U, Handelskai",
+        "bf Wien Stadion U, Handelskai",
+        "Bf Wien-Stadion-U,-Handelskai",
+        "bf Wien-Stadion-U,-Handelskai",
+        "Bf Wien-Stadion-U,-Handelskai-(WL)",
+        "bf Wien-Stadion-U,-Handelskai-(WL)",
+        "Stadion U, Handelskai",
+        "Stadion U, Handelskai (WL)",
+        "Stadion U, Handelskai (WL) Bahnhof",
+        "Stadion U, Handelskai (WL) Bf",
+        "Stadion U, Handelskai (WL) bf",
+        "Stadion U, Handelskai Bahnhof",
+        "Stadion U, Handelskai Bf",
+        "Stadion U, Handelskai bf",
+        "Stadion U, Handelskai Station",
+        "Stadion U, Handelskai Station Bahnhof",
+        "Stadion U, Handelskai Station Bf",
+        "Stadion U, Handelskai Station bf",
+        "Vienna Stadion U, Handelskai",
+        "Vienna Stadion U, Handelskai (WL)",
+        "Vienna Stadion U, Handelskai Station",
+        "Vienna Stadion U, Handelskai U",
+        "Vienna Stadion U, Handelskai U (VOR)",
+        "Wien Stadion U, Handelskai",
+        "Wien Stadion U, Handelskai (WL) Bahnhof",
+        "Wien Stadion U, Handelskai (WL) Bf",
+        "Wien Stadion U, Handelskai (WL) bf",
+        "Wien Stadion U, Handelskai Bahnhof",
+        "Wien Stadion U, Handelskai Bf",
+        "Wien Stadion U, Handelskai bf",
+        "Wien Stadion U, Handelskai Station",
+        "Wien Stadion U, Handelskai Station Bahnhof",
+        "Wien Stadion U, Handelskai Station Bf",
+        "Wien Stadion U, Handelskai Station bf",
+        "Wien Stadion U, Handelskai U",
+        "Wien Stadion U, Handelskai U (VOR)",
+        "Wien-Stadion-U,-Handelskai",
+        "Wien-Stadion-U,-Handelskai Bahnhof",
+        "Wien-Stadion-U,-Handelskai Bf",
+        "Wien-Stadion-U,-Handelskai bf",
+        "Wien-Stadion-U,-Handelskai-(WL)",
+        "Wien-Stadion-U,-Handelskai-(WL) Bahnhof",
+        "Wien-Stadion-U,-Handelskai-(WL) Bf",
+        "Wien-Stadion-U,-Handelskai-(WL) bf"
+      ],
+      "source": "wl",
+      "latitude": 48.212031,
+      "longitude": 16.423081
     },
     {
       "name": "Wien Stadionbad (WL)",
@@ -298114,7 +298184,7 @@
           "longitude": 16.4851095
         },
         {
-          "stop_id": "7389",
+          "stop_id": "7388",
           "name": "Zanggasse",
           "latitude": 48.2388,
           "longitude": 16.4845346
