@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 24 Sep 2026 19:03:49 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 19:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11: Rettungseinsatz Umleitung über die Linien 71, 18 und D]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">94c0d1955303c8d540c9c9afa77a2030bba33bc21bb25b16911131ffcd3b1579</guid>
+      <pubDate>Thu, 24 Sep 2026 19:16:35 +0200</pubDate>
+      <ext:first_seen>Thu, 24 Sep 2026 19:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 19:16:35 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 24 Sep 2026 20:17:00 +0200</ext:ends_at>
+      <description>[Am 24.09.2026]</description>
+      <content:encoded><![CDATA[[Am 24.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet. [21.09.2026 – 16.09.2027]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A/80A/N29: Wittelsbachstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
