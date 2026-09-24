@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 24 Sep 2026 10:01:06 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 10:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[10/46: Traffic accident]]></title>
@@ -16,7 +16,7 @@
       <pubDate>Thu, 24 Sep 2026 07:49:00 +0200</pubDate>
       <ext:first_seen>Thu, 24 Sep 2026 08:00:59 +0200</ext:first_seen>
       <ext:starts_at>Thu, 24 Sep 2026 07:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 24 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 24 Sep 2026 10:29:00 +0200</ext:ends_at>
       <description>irregular intervals in both directions. Reason: traffic accident. [On 24.09.2026]</description>
       <content:encoded><![CDATA[irregular intervals in both directions. Reason: traffic accident.<br/>[On 24.09.2026]]]></content:encoded>
     </item>
@@ -98,6 +98,17 @@
       <content:encoded><![CDATA[Due to the renovation of the tunnel ceiling of the U4 route or the necessary preparatory work in the road area as well as the repair of shafts by the Vienna …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[13A: Service obstruction because of rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
+      <pubDate>Thu, 24 Sep 2026 10:19:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 15:01:19 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 10:22:22 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 24 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 24.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 24.09.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[36A/36B: Roadworks]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected. [21.09.2026 – 16.09.2027]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A/80A/N29: Wittelsbachstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
