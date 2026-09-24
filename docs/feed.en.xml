@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 25 Sep 2026 00:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 01:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
@@ -65,6 +65,17 @@
       <content:encoded><![CDATA[Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse Stop: An den Steinfeldern From: Perfektastraße 89 To: Approx. 20 metres towards …<br/>[21.09.2026 – 21.09.2027]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[N6: Buses stop Neilreichgasse 20-22, Quellenstraße 189]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc</guid>
+      <pubDate>Fri, 25 Sep 2026 00:55:05 +0200</pubDate>
+      <ext:first_seen>Sun, 20 Sep 2026 01:01:21 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 00:55:05 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 05:05:00 +0200</ext:ends_at>
+      <description>Buses stop at Neilreichgasse 20-22 construction works Buses stop at Quellenstraße 189 [On 25.09.2026]</description>
+      <content:encoded><![CDATA[Buses stop at Neilreichgasse 20-22 construction works Buses stop at Quellenstraße 189<br/>[On 25.09.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[72A: Kraftwerk Simmering]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">35bf402812b713b3ca2cfb4047d0416c127ab0dbb7894e5338139bfc3a930f18</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Roadworks in the area of Justgasse / Ruthnergasse are redirected to lines 36A and 36B. [21.09.2026 – 16.09.2027]</description>
       <content:encoded><![CDATA[Roadworks in the area of Justgasse / Ruthnergasse are redirected to lines 36A and 36B.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A/80A/N29: Wittelsbachstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[Stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
