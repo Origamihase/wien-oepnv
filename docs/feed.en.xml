@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 24 Sep 2026 14:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 14:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[42/9: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9ded21edd54ec0e3a1f351b48d66193d9727ef9573d767e7aba342b65021d51a</guid>
-      <pubDate>Thu, 24 Sep 2026 13:58:00 +0200</pubDate>
-      <ext:first_seen>Thu, 24 Sep 2026 14:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 24 Sep 2026 13:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 24 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>service obstruction towards Gersthof S. Line 42: service obstruction towards Antonigasse. Duration: 14:30. Reason: illegally parked vehicle in the area of Kreuzgasse. [On 24.09.2026]</description>
-      <content:encoded><![CDATA[service obstruction towards Gersthof S. Line 42: service obstruction towards Antonigasse. Duration: 14:30. Reason: illegally parked vehicle in the area of Kreuzgasse.<br/>[On 24.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected. [21.09.2026 – 16.09.2027]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Justgasse / Ruthnergasse lines 36A and 36B are being redirected.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A/80A/N29: Wittelsbachstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5af5bfa56434dcb8f0ad8a6c6a2f22ca95b8754135175458eb254520c8123f38</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 16 Sep 2026 08:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 16 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße … [16.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[stop relocation of lines 4A towards Wittelsbachstraße, 80A towards Praterstern S U and N29 towards Wittelsbachstraße Stop: Wittelsbachstraße …<br/>[16.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

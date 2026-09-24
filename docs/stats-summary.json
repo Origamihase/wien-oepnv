@@ -65,12 +65,12 @@
     },
     "total": 1856
   },
-  "generated_at": "2026-09-24T14:01:17+02:00",
+  "generated_at": "2026-09-24T14:30:55+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.04,
     "by_direction": {
-      "Meidling": 5494,
+      "Meidling": 5495,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -101,7 +101,7 @@
     },
     "by_weekday_avg": {
       "Di": 1.12,
-      "Do": 1.05,
+      "Do": 1.04,
       "Fr": 0.96,
       "Mi": 1.31,
       "Mo": 1.41,
@@ -112,13 +112,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-09-24T13:55:00+02:00",
+          "last_seen": "2026-09-24T14:25:00+02:00",
           "peer_rows_since": 0,
           "rows_in_window": 1194
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 1644,
+          "peer_rows_since": 1645,
           "rows_in_window": 0
         }
       },
@@ -134,7 +134,7 @@
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 120,
     "threshold_minutes": 9.0,
-    "total_observations": 9325
+    "total_observations": 9326
   },
   "stoerungen": {
     "by_hour": {
