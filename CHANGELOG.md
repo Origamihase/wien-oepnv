@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE- und EN-Feed: eine ÖBB-Strecke mit mehreren Bauphasen belegt nur noch einen Platz (2026-09-24)**:
+  Der ÖBB-Cache trägt dreimal `Wien Hauptbahnhof ↔ Gramatneusiedl`
+  (03.–05.10., 31.10.–30.11., 05.–07.12.2026; drei GUIDs, drei Texte). Alle
+  drei überstehen beide Dedupe-Stufen und das Platzbudget (ein Routentitel
+  trägt kein Ursachenwort). Bisher hielt allein die Menge neuerer
+  WL-Meldungen sie unter den zehn Plätzen; an einem ruhigen Tag stünde
+  dieselbe Zeile dreimal auf den Displays und zwei andere Störungen fielen
+  weg. `_defer_repeated_route_titles` (`src/build_feed.py`) lässt von
+  mehreren ÖBB-Items mit wortgleichem Titel nur das mit dem frühesten
+  Zeitfenster an seinem Platz und stellt die übrigen hinter das Feld, wie es
+  das Platzbudget tut. Zusammengeführt wird bewusst nicht: Die Phasen sind
+  verschiedene Maßnahmen (Einzelzüge im Oktober, nachts keine Nahverkehrszüge
+  danach), ein gemeinsamer Text verfälschte zwei davon. Nichts fällt weg:
+  Endet die erste Phase, rückt die nächste nach. Tests:
+  `tests/test_repeated_route_titles.py`.
 * **ÖBB: ein Ortsname mit „im"/„am" bleibt als zweiter Routen-Endpunkt ganz (2026-09-24)**:
   Seit dem 22.09. stand `REX 6: Wien Baumgarten (WL) ↔ Ebenfurth` im
   deutschen Feed (Platz 4). Die Meldung betrifft Baumgarten im Burgenland:
