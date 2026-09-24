@@ -674,14 +674,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "42/9: Falschparker",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Gersthof S. Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 14:30 Uhr. Grund: Falschparker im Bereich Kreuzgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2026-09-24T12:39:00+02:00",
-    "starts_at": "2026-09-24T12:56:56+02:00",
+    "guid": "9ded21edd54ec0e3a1f351b48d66193d9727ef9573d767e7aba342b65021d51a",
+    "pubDate": "2026-09-24T13:58:00+02:00",
+    "starts_at": "2026-09-24T13:58:00+02:00",
     "ends_at": "2026-09-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=42|D=2026-09-24|TK=falschparker"
+    "_identity": "wl|störung|L=42,9|D=2026-09-24|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -706,6 +706,18 @@
     "starts_at": "2026-09-24T04:40:15+02:00",
     "ends_at": "2026-09-25T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-09-24|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Rettungseinsatz",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
+    "pubDate": "2026-09-24T13:47:00+02:00",
+    "starts_at": "2026-09-24T13:47:00+02:00",
+    "ends_at": "2026-09-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-09-24|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -770,18 +782,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-09-24T13:11:00+02:00",
-    "starts_at": "2026-09-24T13:11:00+02:00",
-    "ends_at": "2026-09-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-09-24|TK=u3 verspätungen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -814,5 +814,17 @@
     "starts_at": "2026-09-23T00:00:27+02:00",
     "ends_at": "2026-09-24T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-09-23|TK=busse halten frauenstiftgasse 7"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Falschparker",
+    "description": "Fahrtbehinderung\nwegen Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
+    "pubDate": "2026-09-24T13:59:01+02:00",
+    "starts_at": "2026-09-24T13:59:01+02:00",
+    "ends_at": "2026-09-24T14:58:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-09-24|TK=falschparker"
   }
 ]
