@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 24 Sep 2026 20:26:04 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 20:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[44: Feuerwehreinsatz Betrieb ab Johann-Nepomuk-Berger-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1e1b9b70c09acc75dc4f48844d05a84e695802c3efcddb03f89fbea62d95a265</guid>
+      <pubDate>Thu, 24 Sep 2026 19:38:05 +0200</pubDate>
+      <ext:first_seen>Thu, 24 Sep 2026 20:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 19:38:35 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 24 Sep 2026 20:37:00 +0200</ext:ends_at>
+      <description>[Am 24.09.2026]</description>
+      <content:encoded><![CDATA[[Am 24.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[44: Feuerwehreinsatz Umleitung über die Linien 43 und 9]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,28 +28,6 @@
       <ext:first_seen>Thu, 24 Sep 2026 20:00:57 +0200</ext:first_seen>
       <ext:starts_at>Thu, 24 Sep 2026 19:37:04 +0200</ext:starts_at>
       <ext:ends_at>Thu, 24 Sep 2026 20:35:00 +0200</ext:ends_at>
-      <description>[Am 24.09.2026]</description>
-      <content:encoded><![CDATA[[Am 24.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44: Feuerwehreinsatz Betrieb ab Johann-Nepomuk-Berger-Platz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1e1b9b70c09acc75dc4f48844d05a84e695802c3efcddb03f89fbea62d95a265</guid>
-      <pubDate>Thu, 24 Sep 2026 19:35:00 +0200</pubDate>
-      <ext:first_seen>Thu, 24 Sep 2026 20:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 24 Sep 2026 19:38:35 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 24 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Rettungseinsatz Umleitung über die Linien 71, 18 und D]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">94c0d1955303c8d540c9c9afa77a2030bba33bc21bb25b16911131ffcd3b1579</guid>
-      <pubDate>Thu, 24 Sep 2026 19:16:35 +0200</pubDate>
-      <ext:first_seen>Thu, 24 Sep 2026 19:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 24 Sep 2026 19:16:35 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 24 Sep 2026 20:17:00 +0200</ext:ends_at>
       <description>[Am 24.09.2026]</description>
       <content:encoded><![CDATA[[Am 24.09.2026]]]></content:encoded>
     </item>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 07 Nov 2026 03:00:00 +0100</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt. Linie D: Betrieb nur zwischen Absberggasse und Börse sowie zwischen Augasse und Nußdorf. [15.09.2026 – 07.11.2026]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt. Linie D: Betrieb nur zwischen Absberggasse und Börse sowie zwischen Augasse und Nußdorf.<br/>[15.09.2026 – 07.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Vordere Zollamtsstraße von Marxergasse und Kleine Marxerbrücke bis Unbenannte Verkehrsfläche und Rad…]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">35a2bf6293387737ed920111491ea53c3fd0c9e8f0003d6e2a69287d3ff60605</guid>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0100</pubDate>
+      <ext:first_seen>Thu, 17 Sep 2026 14:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 01 Feb 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener … [01.02.2026 – 30.11.2026]</description>
+      <content:encoded><![CDATA[Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
