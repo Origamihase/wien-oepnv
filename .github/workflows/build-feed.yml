@@ -148,75 +148,117 @@ jobs:
       - name: Refresh README snapshot (dashboard handled by update-cycle.yml)
         run: python scripts/generate_markdown_stats.py --skip-dashboard
 
-      - name: Pull concurrent remote changes
+      # Publish the rebuilt outputs with plain ``git``, mirroring the
+      # "Validate and publish cycle outputs" step of update-cycle.yml.
+      #
+      # Why not ``git-auto-commit-action`` any more: since this workflow was
+      # (re)introduced on 2026-09-12 every ``chore: rebuild feed`` commit it
+      # produced carried only ``data/first_seen.json``. The action listed
+      # ``M docs/feed.xml`` / ``M docs/feed.en.xml`` / ``M README.md`` in its
+      # own status output and then committed "1 file changed" (run
+      # 36003339176, 2026-09-24 13:07 UTC; the same on all six rebuild
+      # commits since 2026-09-13). Its multi-line ``file_pattern`` evidently
+      # stages no more than the first entry, so the public feed reached
+      # subscribers only with the next update-cycle tick, up to 30 minutes
+      # after the merge that fixed it — while the state file with the new
+      # EN translations was already on ``main``. Staging the allowlist
+      # ourselves has no such ambiguity, and — as update-cycle.yml found on
+      # 2026-05-26 — a ``uses:`` action is one more download that can fail
+      # before any step runs.
+      #
+      # Robustness contract (same as update-cycle.yml):
+      #   * VALIDATE first — a malformed or empty feed XML skips the publish
+      #     (warning + exit 0) so the last-good feed stays online.
+      #   * stage ONLY the allowlist below. ``docs/statistik.md`` stays out
+      #     (see ``--skip-dashboard`` above); ``docs/stats-summary.json`` is
+      #     a by-product of the README patch and stays out as before.
+      #   * no changes -> clean no-op (exit 0).
+      #   * push with up to 4 attempts and exponential backoff; on a
+      #     non-fast-forward, ``git pull --rebase`` replays our commit and
+      #     a conflict resolves to the locally-built regeneration.
+      #   * if every attempt fails -> warning + exit 0; the next cycle tick
+      #     rebuilds and publishes from fresh caches.
+      - name: Validate and publish feed outputs
         if: github.ref == 'refs/heads/main'
         shell: bash
+        env:
+          # Keep ``git rebase --continue`` non-interactive.
+          GIT_EDITOR: 'true'
+          # Abort a stalled push/pull transfer (< 1 KB/s for 30 s).
+          GIT_HTTP_LOW_SPEED_LIMIT: '1000'
+          GIT_HTTP_LOW_SPEED_TIME: '30'
         run: |
-          set -euo pipefail
+          # NOTE: intentionally NO ``-e`` — every failure below is handled
+          # explicitly so the step can guarantee exit 0.
+          set -uo pipefail
+          shopt -s nullglob
 
-          # ``git pull --rebase --autostash`` does NOT fail when the
-          # autostash RE-APPLY conflicts: the rebase (fast-forward onto a
-          # concurrent push) succeeds, the failed ``git stash apply`` is
-          # only a warning, and the step still exits 0 — leaving an UNMERGED
-          # index. The next step (git-auto-commit-action) then dies with the
-          # opaque "error: you need to resolve your current index first"
-          # (observed 2026-05-25 on update-cycle.yml, the mirror of this
-          # commit pattern). The shared ``external-api-fetch`` concurrency
-          # lane now serialises the feed-writing workflows so this collision
-          # should not recur; the block below is the defense-in-depth
-          # backstop that keeps ANY residual concurrent push (a manual push,
-          # a future workflow) from re-introducing the silent-unmerged-index
-          # failure.
-          git pull --rebase --autostash
+          # actions/checkout sets no committer identity; without this
+          # ``git commit`` fails with "Please tell me who you are".
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Append-only ledgers (``data/stats/*.csv``) auto-resolve via the
-          # ``merge=union`` driver in ``.gitattributes`` — both sides' rows
-          # are kept, so they never surface as unmerged here. Everything
-          # else this build writes (feed XMLs, README, the ``first_seen``
-          # state) is a full regeneration from the on-disk caches, so on the
-          # rare residual conflict the locally built copy is authoritative.
-          mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
-          if [ "${#conflicts[@]}" -gt 0 ]; then
-            echo "::warning title=reconcile::autostash re-apply conflicted on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"
-            # In a stash-apply conflict, stage 3 ("--theirs") is the stashed
-            # locally-built version; stage 2 is the just-pulled upstream.
-            git checkout --theirs -- "${conflicts[@]}"
-            git add -- "${conflicts[@]}"
-            # A conflicted ``git stash apply`` leaves the autostash entry on
-            # the stash stack; drop it so it cannot leak into a later run.
-            git stash drop || true
+          # 1) Pre-publish sanity gate. Never ship a malformed or empty feed.
+          for feed in docs/feed.xml docs/feed.en.xml; do
+            [ -f "${feed}" ] || continue
+            if [ ! -s "${feed}" ]; then
+              echo "::warning title=feed-validate::${feed} is empty — skipping publish (last-good feed stays online)."
+              exit 0
+            fi
+            if ! python -c "import sys, xml.etree.ElementTree as ET; ET.parse(sys.argv[1])" "${feed}"; then
+              echo "::warning title=feed-validate::${feed} is not well-formed XML — skipping publish (last-good feed stays online)."
+              exit 0
+            fi
+          done
+
+          # 2) Stage the allowlist + commit. ``docs/feed.xml`` is the public
+          #    output; ``data/first_seen.json`` is the build state and must
+          #    commit alongside it; the ``stoerungen_<YYYY>.csv`` ledgers are
+          #    appended by ``append_disruption_row`` for every new disruption
+          #    identity (audit finding 2026-05-09); ``README.md`` carries the
+          #    regenerated 30-day snapshot.
+          for path in data/first_seen.json docs/feed.xml docs/feed.en.xml README.md data/stats/stoerungen_*.csv; do
+            [ -e "${path}" ] && git add -- "${path}"
+          done
+          if git diff --cached --quiet; then
+            echo "Rebuild produced no changes — nothing to commit or push."
+            exit 0
           fi
+          git commit -m "chore: rebuild feed"
 
-          # Never hand an unmerged index to the auto-commit step.
-          if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
-            echo "::error title=reconcile::unresolved merge conflicts remain after reconcile" >&2
-            git diff --name-only --diff-filter=U >&2
-            exit 1
-          fi
-
-      - name: Commit and push changes
-        if: github.ref == 'refs/heads/main'
-        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
-        with:
-          commit_message: 'chore: rebuild feed'
-          # ``docs/feed.xml`` is the public output; ``data/first_seen.json``
-          # is the build-feed state file tracking item ages and must
-          # commit alongside the feed to keep the merge stable.
-          # ``data/stats/stoerungen_<YYYY>.csv`` is appended by
-          # ``build_feed.py:append_disruption_row`` whenever a strictly-
-          # new disruption identity arrives; without committing it
-          # here every Build-feed run silently drops those rows on the
-          # ephemeral runner and the dashboard never grows past what
-          # ``manual-full-refresh.yml`` happens to commit (audit
-          # finding 2026-05-09 — this was the reason ``Häufigste
-          # Störungsorte`` was sparse in the README until the manual
-          # refresh ran). ``README.md`` carries the regenerated 30-day
-          # snapshot from the same CSV ledger.
-          # ``docs/statistik.md`` is intentionally *not* in this
-          # allowlist — see the ``--skip-dashboard`` rationale above.
-          file_pattern: |
-            data/first_seen.json
-            data/stats/stoerungen_*.csv
-            docs/feed.xml
-            docs/feed.en.xml
-            README.md
+          # 3) Push with retry + concurrent-push reconcile + never-fail.
+          branch="${GITHUB_REF_NAME}"
+          max_attempts=4
+          delay=2
+          attempt=1
+          while :; do
+            if git push --force-with-lease origin "HEAD:${branch}"; then
+              echo "Feed outputs published on attempt ${attempt}/${max_attempts}."
+              exit 0
+            fi
+            if [ "${attempt}" -ge "${max_attempts}" ]; then
+              echo "::warning title=feed-publish::git push failed after ${max_attempts} attempts; this rebuild's outputs were NOT published. The next update-cycle tick rebuilds and publishes from fresh caches. Not failing the workflow."
+              exit 0
+            fi
+            echo "Push attempt ${attempt}/${max_attempts} failed; re-syncing with origin/${branch} and retrying in ${delay}s."
+            sleep "${delay}"
+            if ! git pull --rebase --autostash origin "${branch}"; then
+              # A rebase replay can stop on a conflict. Every output here is
+              # a full regeneration, so the locally-built copy (the commit
+              # being replayed = "theirs" in rebase terms) wins; the
+              # ``merge=union`` CSV ledgers auto-resolve and never reach here.
+              mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
+              if [ "${#conflicts[@]}" -gt 0 ]; then
+                echo "::warning title=feed-reconcile::rebase conflict on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"
+                git checkout --theirs -- "${conflicts[@]}"
+                git add -- "${conflicts[@]}"
+                git rebase --continue || git rebase --abort || true
+              else
+                # Not a conflict (the fetch itself failed) — abort any
+                # half-started rebase and just retry the push.
+                git rebase --abort 2>/dev/null || true
+              fi
+            fi
+            attempt=$((attempt + 1))
+            delay=$((delay * 2))
+          done
