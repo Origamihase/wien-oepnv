@@ -1,12 +1,12 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-09-24T20:59+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-09-25T00:00+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
 | Kennzahl | Wert |
 | --- | ---: |
-| Stammstrecke-Beobachtungen (2026) | 9339 |
+| Stammstrecke-Beobachtungen (2026) | 9345 |
 | Verspätungen > 9 min (2026) | 120 |
 | ⌀ Verspätung (2026) | 1.0 min |
 | Stammstrecke-Ausfälle (2026) | 1856 |
@@ -20,7 +20,7 @@ _Automatisch erzeugt am 2026-09-24T20:59+02:00 (Europe/Vienna)._
 
 | Richtung | Anzahl |
 | --- | ---: |
-| Meidling | 5508 |
+| Meidling | 5514 |
 | Praterstern | 3831 |
 
 ### Beobachtungen je Wochentag
@@ -29,7 +29,7 @@ _Automatisch erzeugt am 2026-09-24T20:59+02:00 (Europe/Vienna)._
 `Mo  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·  1341
 `Di  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦··  1313
 `Mi  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·  1337
-`Do  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦··  1277
+`Do  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦··  1283
 `Fr  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦···  1258
 `Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  1411
 `So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  1402
@@ -59,9 +59,9 @@ _Automatisch erzeugt am 2026-09-24T20:59+02:00 (Europe/Vienna)._
 `18h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  437
 `19h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  435
 `20h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  441
-`21h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  430
-`22h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  437
-`23h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  433
+`21h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  432
+`22h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  439
+`23h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·  435
 ```
 
 ### Verspätungen ⌀ Minuten je Wochentag
