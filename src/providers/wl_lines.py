@@ -195,7 +195,10 @@ def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
 
     Handles stacked prefixes (``40: 40+41: …`` — a previous
     ``_ensure_line_prefix`` mishap that we now correct) and multiple
-    separator styles (``/``, ``+``, ``,``). The lines returned are
+    separator styles (``/``, ``+``, ``,`` and ``.`` followed by
+    whitespace, as in ``4A. 80A, N29:``). A ``Rufbus N68`` in the list
+    whose twin ``N68R`` is already known counts as that line
+    (:func:`_is_rufbus_twin`). The lines returned are
     cleaned via :func:`_clean_line_token` and de-duplicated while
     preserving the order in which they first appear in the title —
     so ``41E/10A:`` extracts to ``["41E", "10A"]`` (original WL
@@ -281,7 +284,9 @@ def _ensure_line_prefix(title: str, lines_disp: list[str]) -> str:
     API field only carries ``["40"]`` still surfaces with both lines
     in the rendered title (``40/41: Betrieb ab Gersthof``). Without
     the union the API value would silently drop the ``41`` info that
-    WL itself put into the title text.
+    WL itself put into the title text. A ``Rufbus N68`` the title names
+    while ``lines_disp`` carries ``N68R`` is the same line and is not
+    added twice (:func:`_is_rufbus_twin`).
     """
     if len(title) > 500:
         title = title[:500]
