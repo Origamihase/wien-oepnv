@@ -551,6 +551,20 @@ generischen Schlüssel ebenfalls beansprucht, kippte die Auflösung still.
 `Wien Inzersdorf Lokalbahn (WL)` liegt in Wien und beansprucht ihn
 heute nur deshalb nicht, weil alle seine Aliase `Inzersdorf` tragen.
 
+Dieselbe Abhängigkeit gilt für **abgeschnittene Endpunkte**. Die
+Routenregeln in `src/providers/oebb.py` beenden einen Endpunkt an
+Zeitpräpositionen wie `im`/`am`; ein Ortsname, der eine davon trägt, fiel
+dadurch auf sein erstes Wort zurück, und dieses Wort löste über einen
+Wiener-Linien-Alias auf. Am 2026-09-22 wurde so aus „Baumgarten im
+Bgld-Schattendorf" die Haltestelle „Wien Baumgarten (WL)", und eine
+Burgenland-Route stand als `REX 6: Wien Baumgarten (WL) ↔ Ebenfurth` im
+Feed. `_with_place_qualifier` hängt den Zusatz wieder an, wenn direkt
+danach das Stationssuffix folgt (`… im Bgld-Schattendorf Bahnhof`);
+Zeitangaben haben diese Form nie. Die 1751 reinen WL-Einträge des
+Verzeichnisses bleiben als ÖBB-Endpunkt grundsätzlich auflösbar — einige
+tragen Namen, die auch S-Bahn-Halte sein könnten, ein pauschaler
+Ausschluss könnte echte Meldungen verwerfen.
+
 Der Name-Eindeutigkeits-Vertrag aus PR #1452 bleibt davon unberührt —
 duplizierte `PlatformText`-Werte sind weiterhin legitim und werden
 weiterhin nicht erzwungen.

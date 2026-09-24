@@ -5,6 +5,24 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **ÖBB: ein Ortsname mit „im"/„am" bleibt als zweiter Routen-Endpunkt ganz (2026-09-24)**:
+  Seit dem 22.09. stand `REX 6: Wien Baumgarten (WL) ↔ Ebenfurth` im
+  deutschen Feed (Platz 4). Die Meldung betrifft Baumgarten im Burgenland:
+  „zwischen Ebenfurth Bahnhof und Baumgarten im Bgld-Schattendorf Bahnhof".
+  `im`/`am` beenden in `_ZWISCHEN_PLAIN_RE` und `_VON_NACH_PLAIN_RE` einen
+  Endpunkt (als Zeitpräposition: „Felixdorf Bahnhof am 10.02.2026"), der
+  zweite Endpunkt schrumpfte auf „Baumgarten", und das löste auf die
+  WL-Haltestelle „Wien Baumgarten (WL)" auf. Eine Route ohne Wiener Ende galt
+  damit als Wien ↔ Pendler, bekam einen falschen Titel und belegte einen der
+  zehn Plätze. `_with_place_qualifier` hängt ein großgeschriebenes
+  Zusatzwort wieder an, wenn direkt danach `Bahnhof`/`Bf`/`Hbf` folgt; die
+  Route wird unbekannt und fällt nach der strengen Routenregel heraus.
+  Nebenwirkung: „Brunn am Gebirge" und „Neusiedl am See" lösen als zweiter
+  Endpunkt jetzt vollständig auf statt als unbekanntes „Brunn"/„Neusiedl".
+  In der Cache-Historie (32 ÖBB-Meldungen) war REX 6 der einzige so
+  abgeschnittene Endpunkt; die übrigen Schnitte an `im`/`am` sind echte
+  Zeitangaben und bleiben unverändert. Tests:
+  `tests/test_oebb_place_qualifier_endpoint.py`.
 * **EN-Feed: ein Platzhalter ohne führendes „X" gilt jetzt als Rest-Platzhalter (2026-09-19)**:
   Erster Bau nach dem C.5-Epochen-Sprung (14 → 15, siehe unten) zeigte im
   englischen Feed `N6: Buses stop NeilreichgasseENTec2b2350d0e7e61aX2X-22,

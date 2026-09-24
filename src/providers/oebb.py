@@ -618,6 +618,28 @@ _BAHNHOF_TRAILING_END_RE = re.compile(
 )
 _PARENS_TRAILING_RE = re.compile(r"\s*\(\s*[A-Za-z]\d*\s*\)\s*$")
 
+# ``im``/``am`` sit in the boundary alternations above as time prepositions
+# ("… und Felixdorf Bahnhof am 10.02.2026"), so a place name carrying one —
+# "Baumgarten im Bgld-Schattendorf", "Brunn am Gebirge", "Neusiedl am See" —
+# was cut to its first word when it stood second. Published 2026-09-22:
+# "zwischen Ebenfurth Bahnhof und Baumgarten im Bgld-Schattendorf Bahnhof"
+# became the endpoint "Baumgarten", which resolves to the Wiener-Linien stop
+# "Wien Baumgarten (WL)"; the Burgenland route passed as Wien ↔ Pendler and
+# took a slot in the German feed as "REX 6: Wien Baumgarten (WL) ↔ Ebenfurth".
+#
+# ÖBB writes the station suffix after the full name, so a single capitalised
+# word followed directly by it marks the qualifier as part of the name. A
+# date, a weekday or "im Bereich Wien Hbf" never has that shape.
+_PLACE_QUALIFIER_TAIL_RE = re.compile(
+    r"\s+(?:im|am)\s+[A-ZÄÖÜ][\w.\-]*(?=\s+(?:Hauptbahnhof|Bahnhof|Bahnhst|Hbf|Bhf|Bf)\b)"
+)
+
+
+def _with_place_qualifier(plain: str, match: re.Match[str], group: str) -> str:
+    """Return *group* of *match*, re-attaching a place qualifier the boundary cut off."""
+    tail = _PLACE_QUALIFIER_TAIL_RE.match(plain, match.end(group))
+    return match.group(group) + (tail.group(0) if tail else "")
+
 
 def _normalize_endpoint_name(name: str) -> str:
     """Strip HTML, trailing parenthetical markers and Bahnhof-suffixes.
@@ -747,7 +769,7 @@ def _extract_zwischen_routes(description: str) -> list[tuple[str, str]]:
     for regex in (_ZWISCHEN_PLAIN_RE, _STRECKE_PLAIN_RE, _VON_NACH_PLAIN_RE):
         for match in regex.finditer(plain):
             a_norm = _normalize_endpoint_name(match.group("a"))
-            b_norm = _normalize_endpoint_name(match.group("b"))
+            b_norm = _normalize_endpoint_name(_with_place_qualifier(plain, match, "b"))
             if not _looks_like_station_name(a_norm) or not _looks_like_station_name(b_norm):
                 continue
             # Deduplicate regardless of A/B order
