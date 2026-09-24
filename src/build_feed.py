@@ -1304,7 +1304,13 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       stray X is glued to a word and no guard sees it). Titles of that
 #       shape are now translated in two halves and never carry the dash
 #       into the model; the cached debris has to go.
-_TRANSLATION_CACHE_EPOCH = 15
+#  16 — the values of a label record are English too. The record never
+#       reaches the model, so "Ab", "etwa", "bis", the month names and the
+#       open-end phrases ("Dauer unbekannt", "bis auf Widerruf") stayed
+#       German in every rendered record — 3 of the 10 EN items on
+#       2026-09-24, all cached as a success. Same push: "ersatzlos
+#       aufgelassen" as one phrase ("replacementless Discontinued").
+_TRANSLATION_CACHE_EPOCH = 16
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1645,6 +1651,14 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Hauptfahrbahn": "main carriageway",
     "Aufgelassen": "Discontinued",
     "Aufgelassene": "Discontinued",
+    # The full WL phrase for a stop withdrawn for good. Longest match wins
+    # over the bare "Aufgelassen" above, whose fixed capital otherwise lands
+    # mid-sentence: the N31 title reached the EN feed as "Stammersdorf
+    # replacementless Discontinued" (2026-09-24).
+    "ersatzlos aufgelassen": "closed without replacement",
+    # "bis Betriebsschluss": the model rendered it "operation close" (77A,
+    # 2026-08); inside a label record nothing renders it at all.
+    "Betriebsschluss": "end of service",
     "Personen im Gleisbereich": "persons on the tracks",
     # --- Boarding / stop-access vocabulary ---------------------------
     # WL Störung items are headlined with the bare noun ("Einstieg bei
@@ -2907,6 +2921,97 @@ def _split_label_record(text: str) -> tuple[str, str]:
     return text[:cut].rstrip(), text[cut:].strip()
 
 
+# What ``_render_label_record`` still left German once the labels and the
+# nouns had gone through the glossary, measured over 557 distinct WL items
+# (60 carry a record, 40 of them a ``Dauer:``)::
+#
+#     Duration: Ab 30. September 2026, etwa 13:00, bis expected Mai 2027
+#     To: etwa 20 Meter in Richtung Eduard-Kittenberger-Gasse
+#     Duration: Ab 3. Juli 2026 bis auf Widerruf
+#
+# The values follow a small grammar — a date preposition, a day, a month,
+# "etwa", a clock time, one of four open-end phrases — and the model never
+# sees them, so nothing else will translate them. These rules apply ONLY
+# inside a record: "ab", "am", "bis", "vor" and "nach" are ordinary German in
+# prose ("Betrieb ab Hütteldorf", "bei der Linie"), and a global glossary
+# entry would hit every sentence. The date prepositions are anchored to the
+# digit (or the "…" of a truncated value) that follows them, so the stop
+# names "Am Schöpfwerk" and "Am Bahnhof" stay what they are.
+#
+# Order matters: a phrase is listed before the word it starts with, so
+# "bis auf Widerruf" wins over "bis". The third field says whether the
+# English keeps a fixed spelling (month names) or takes a capital only at
+# the start of a value ("Duration: From …", but "…, until further notice").
+_RECORD_VALUE_RULES: tuple[tuple[str, str, bool], ...] = (
+    (r"bis auf Widerruf", "until further notice", False),
+    (r"auf (?:derzeit )?unbestimmte Zeit", "until further notice", False),
+    (r"Dauer derzeit unbekannt", "duration currently unknown", False),
+    (r"Dauer unbekannt", "duration unknown", False),
+    (r"Nicht absehbar", "not foreseeable", False),
+    (r"in Richtung", "towards", False),
+    (r"im Zuge", "along", False),
+    (r"provisorische Haltestelle", "temporary stop", False),
+    (r"Nebenfahrbahn", "service road", False),
+    (r"ab(?=\s+(?:\d|…))", "from", False),
+    (r"am(?=\s+\d)", "on", False),
+    (r"von(?=\s+(?:\d|etwa|ca\.))", "from", False),
+    (r"bis", "until", False),
+    (r"etwa", "approx.", False),
+    (r"ca\.", "approx.", False),
+    (r"Ende", "end of", False),
+    (r"heute", "today", False),
+    (r"Meter", "metres", False),
+    (r"vor", "before", False),
+    (r"nach", "after", False),
+    (r"J[äa]nner|Januar", "January", True),
+    (r"Februar", "February", True),
+    (r"März", "March", True),
+    (r"Mai", "May", True),
+    (r"Juni", "June", True),
+    (r"Juli", "July", True),
+    (r"Oktober", "October", True),
+    (r"Dezember", "December", True),
+)
+_RECORD_VALUE_RE: re.Pattern[str] = re.compile(
+    r"(?<!\w)(?:"
+    + "|".join(f"(?P<r{i}>{pattern})" for i, (pattern, _, _) in enumerate(_RECORD_VALUE_RULES))
+    + r")(?!\w)",
+    re.IGNORECASE,
+)
+# "Eipeldauer Straße 12 bis 14" is a house-number range and WL writes it
+# "12-14" elsewhere; a clock-time range ("09:00 bis 21:30") is not touched.
+_HOUSE_NUMBER_RANGE_RE: re.Pattern[str] = re.compile(
+    r"(?<![\d:])(\d{1,4}[A-Za-z]?)\s+bis\s+(\d{1,4}[A-Za-z]?)(?![\d:])"
+)
+# "30. September" → "30 September": the day's period is German only. Runs
+# after the month names are English, and needs the month to follow, so
+# "1. Haidequerstraße" and "27.09.2026" keep their periods.
+_DAY_PERIOD_RE: re.Pattern[str] = re.compile(
+    r"\b(\d{1,2})\.(?=\s+(?:January|February|March|April|May|June|July|"
+    r"August|September|October|November|December)\b)"
+)
+
+
+def _gloss_record_values(text: str, label_placeholders: frozenset[str]) -> str:
+    """Put the values of a glossed label record into English, without a model.
+
+    *text* is the record after :func:`_apply_domain_glossary`, so the labels
+    are already placeholders; *label_placeholders* names them, which is how
+    a match knows it stands at the start of a value and takes a capital.
+    """
+    text = _HOUSE_NUMBER_RANGE_RE.sub(r"\1-\2", text)
+
+    def _replace(match: re.Match[str]) -> str:
+        _, english, fixed = _RECORD_VALUE_RULES[int(str(match.lastgroup)[1:])]
+        if fixed:
+            return english
+        before = match.string[: match.start()].split()
+        at_value_start = not before or before[-1] in label_placeholders
+        return english[0].upper() + english[1:] if at_value_start else english
+
+    return _DAY_PERIOD_RE.sub(r"\1", _RECORD_VALUE_RE.sub(_replace, text))
+
+
 def _render_label_record(
     record: str, *, source: str | None, category: str | None
 ) -> str:
@@ -2932,6 +3037,12 @@ def _render_label_record(
     glossed, glossary_mapping = _apply_domain_glossary(
         _normalise_for_translation(record), source=source, category=category
     )
+    labels = frozenset(
+        placeholder
+        for placeholder, english in glossary_mapping.items()
+        if english.endswith(":")
+    )
+    glossed = _gloss_record_values(glossed, labels)
     masked, entity_mapping = _mask_entities(glossed)
     return _unmask_entities(masked, {**glossary_mapping, **entity_mapping})
 

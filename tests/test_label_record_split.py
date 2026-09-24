@@ -123,7 +123,7 @@ def test_the_whole_record_renders() -> None:
     _, record = _split_label_record(DE_72A)
     assert _render(record) == (
         "Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 "
-        "To: 1. Haidequerstraße 510 Duration: Ab …"
+        "To: 1. Haidequerstraße 510 Duration: From …"
     )
 
 
@@ -198,7 +198,7 @@ def test_prose_and_record_are_rejoined(monkeypatch: Any) -> None:
 
     assert out is not None
     assert out.startswith("stop relocation")
-    assert out.endswith("Duration: Ab …")
+    assert out.endswith("Duration: From …")
     assert "Stop: Kraftwerk Simmering" in out
 
 
