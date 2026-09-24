@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: „Haltestellenauflassung" im Glossar (2026-09-24)**: Nach dem
+  Epochensprung 16 kam die N31-Prosa „Haltestellenauflassung der Linie N31
+  in Richtung Schwedenplatz U" aus dem Modell als „Stop stop on line N31
+  towards Schwedenplatz U" (vorher „Station departure of line N31").
+  „Haltestellenverlegung" stand im Glossar („stop relocation"), das
+  Schwesterwort nicht; das Modell zerlegt das Kompositum sinnlos. Neu:
+  „Haltestellenauflassung" → „stop closure", Plural → „stop closures"
+  (4 bzw. 1 von 563 WL-Items der Cache-Historie). Epoche 16 → 17, damit
+  das gecachte N31-Item neu übersetzt wird. Tests:
+  `tests/test_glossary_haltestellenauflassung.py`.
 * **Betrieb: `build-feed.yml` veröffentlicht die Feed-XMLs wieder (2026-09-24)**:
   Seit Anlage der Datei am 12.09. trug jeder `chore: rebuild feed`-Commit
   nur `data/first_seen.json`. Die `git-auto-commit-action` meldete

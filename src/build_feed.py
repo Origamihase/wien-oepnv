@@ -1310,7 +1310,11 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       German in every rendered record — 3 of the 10 EN items on
 #       2026-09-24, all cached as a success. Same push: "ersatzlos
 #       aufgelassen" as one phrase ("replacementless Discontinued").
-_TRANSLATION_CACHE_EPOCH = 16
+#  17 — "Haltestellenauflassung" joins its sister "Haltestellenverlegung"
+#       in the glossary. The N31 prose was re-translated under epoch 16 and
+#       cached as "Stop stop on line N31 towards Schwedenplatz U"; only a
+#       bump evicts it, the source digest is unchanged.
+_TRANSLATION_CACHE_EPOCH = 17
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1567,6 +1571,13 @@ _GLOSSARY_BASE: dict[str, str] = {
     # English faces — exactly what this glossary exists to stop.
     "Haltestellenverlegungen": "stop relocations",
     "Haltestellenverlegung": "stop relocation",
+    # The sister compound for a stop withdrawn for good. Without an entry
+    # the model took it apart: "Haltestellenauflassung der Linie N31" reached
+    # the EN feed as "Stop stop on line N31" (2026-09-24 16:30, after the
+    # epoch-16 re-translation; "Station departure of line N31" before).
+    # 4 of 563 WL items in the cache history carry it, 1 the plural.
+    "Haltestellenauflassungen": "stop closures",
+    "Haltestellenauflassung": "stop closure",
     **{f"{de}:": f"{en}:" for de, en in _FIELD_LABEL_EN.items()},
     # Spelled-out sibling of the ``ggü.`` entry above. WL uses both forms in
     # relocation addresses ("Anzengruberstraße gegenüber 77a"); only the
