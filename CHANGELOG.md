@@ -5,6 +5,39 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Betrieb: `build-feed.yml` veröffentlicht die Feed-XMLs wieder (2026-09-24)**:
+  Seit Anlage der Datei am 12.09. trug jeder `chore: rebuild feed`-Commit
+  nur `data/first_seen.json`. Die `git-auto-commit-action` meldete
+  `docs/feed.xml`, `docs/feed.en.xml` und `README.md` als geändert und
+  committete dann „1 file changed" (Lauf 36003339176, 24.09. 15:07) — das
+  mehrzeilige `file_pattern` stagte offenbar nur den ersten Eintrag. Ein
+  Code-Merge erreichte die Öffentlichkeit deshalb erst mit dem nächsten
+  Zyklus, bis 30 Minuten später, während der Zustand mit den neuen
+  EN-Übersetzungen schon auf `main` lag. Die zwei Schritte „Pull concurrent
+  remote changes" und „Commit and push changes" sind durch einen
+  Plain-git-Schritt nach dem Muster von `update-cycle.yml` ersetzt:
+  XML-Validierung, Staging der Allowlist, Commit, Push mit bis zu vier
+  Versuchen und Rebase-Abgleich, nie rot. Rebuild-Commits tragen jetzt wie
+  Zyklus-Commits den Bot als Autor.
+* **EN-Feed: die Werte eines Label-Records sind jetzt Englisch (2026-09-24)**:
+  Drei der zehn EN-Items trugen deutsche Reste im Record: „Duration: Ab 30.
+  September 2026, etwa 13:00, bis expected Mai 2027", „To: etwa 20 Meter in
+  Richtung …", „Ersatzlos Discontinued". Der Record erreicht das Modell
+  bewusst nicht (`_render_label_record`, seit 18.09.); Labels und Nomen
+  kommen aus dem Glossar, die Werte blieben wörtlich. Über 557 verschiedene
+  WL-Items gemessen (60 mit Record, 40 mit `Dauer:`) folgen die Werte einer
+  kleinen Grammatik: Datumspräposition, Tag, Monat, „etwa", Uhrzeit, eine von
+  vier Endformeln. `_gloss_record_values` (`src/build_feed.py`) setzt genau
+  diese Formen um — nur im Record, nicht in Prosa, wo „ab", „bis", „vor",
+  „nach" gewöhnliches Deutsch sind; die Datumspräpositionen sind an die
+  folgende Ziffer gebunden, damit „Am Schöpfwerk" ein Haltestellenname
+  bleibt. Groß geschrieben wird nur am Wertanfang („Duration: From …", aber
+  „…, until further notice"); Monatsnamen behalten ihre Schreibweise; ein
+  Hausnummernbereich „12 bis 14" wird zu „12-14", eine Uhrzeitspanne nicht.
+  Dazu zwei globale Phrasen: „ersatzlos aufgelassen" → „closed without
+  replacement" (bisher „replacementless Discontinued", auch im N31-Titel)
+  und „Betriebsschluss" → „end of service". Epoche 15 → 16. Tests:
+  `tests/test_label_record_values_en.py`.
 * **DE- und EN-Feed: eine WL-Linienliste nach dem Präfix wird erkannt und gestrichen (2026-09-24)**:
   Live im deutschen Feed standen `N66/N68R: N66, Rufbus N68: Quellenplatz`
   (24.09., Platz 2) und `4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße`
