@@ -5,6 +5,28 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE-Feed: abgeschnittene Baustellen-Titel aus der Beschreibung vervollständigt (2026-09-24)**:
+  Item 8 lautete „U4: Vordere Zollamtsstraße von Marxergasse und Kleine
+  Marxerbrücke bis Unbenannte Verkehrsfläche und Rad…" — die Stadt Wien
+  kappt `BEZEICHNUNG` bei 100 Zeichen, der Cache markiert den Schnitt nur
+  (`_mark_upstream_truncation`). Die Beschreibung desselben Items nennt den
+  Endpunkt aber vollständig („… bis und in Richtung zur Radetzkybrücke …").
+  Neu in `_post_filter_baustellen`: `_repair_baustellen_title` ergänzt das
+  abgeschnittene Wort aus der eigenen Beschreibung — nur wenn es dort
+  eindeutig ist (Fragment ≥ 3 Buchstaben; bei mehreren Kandidaten wie
+  „Radetzkybrücke"/„Radweg" zählt allein einer hinter einer
+  Bereichspräposition wie „bis", „zur", „Richtung"; sonst bleibt der Titel
+  wie geliefert) — und streicht „Unbenannte Verkehrsfläche", den
+  Platzhalter der Stadt für ein namenloses Straßenstück, aus einer
+  Endpunkt-Liste, die auch einen echten Namen nennt (als einziger Endpunkt
+  bleibt er). Ergebnis: „U4: Vordere Zollamtsstraße von Marxergasse und
+  Kleine Marxerbrücke bis Radetzkybrücke". Messung über die 22 verschiedenen
+  Baustellen-Titel seit Juni: 3 gekappt, 2 davon vervollständigbar
+  („Schlachthausgas…" → „Schlachthausgasse"), 1 nicht („Hofpavillon…" ist
+  ein ganzes Wort und bleibt). GUID, `first_seen` und Feed-Position sind
+  unberührt (Schlüssel ist die GUID aus dem Rohtitel); der englische Titel
+  wird über den Quelltext-Digest einmal neu übersetzt. Tests:
+  `tests/test_baustellen_title_repair.py`.
 * **EN-Feed: Kalenderdaten als ein Platzhalter, Satzanfang groß (2026-09-24)**:
   Der Zyklus 19:31 veröffentlichte „U2: Folding ramps out of service on
   2709.2026" (deutsch: „am 27.09.2026") und cachte dieselbe Verstümmelung

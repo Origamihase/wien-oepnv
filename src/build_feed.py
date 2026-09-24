@@ -593,6 +593,101 @@ def read_cache_oebb() -> list[Any]:
     return _post_filter_oebb(list(read_cache("oebb") or []))
 
 
+# ---- Baustellen title repair ------------------------------------------------
+#
+# Stadt Wien caps ``BEZEICHNUNG`` at 100 characters; the cache marks the cut
+# with an ellipsis and leaves the text alone (``_mark_upstream_truncation`` in
+# ``scripts/update_baustellen_cache.py``). Published 2026-09-24, ``docs/feed.xml``
+# item 8, on a display read from a distance::
+#
+#     U4: Vordere Zollamtsstraße von Marxergasse und Kleine Marxerbrücke bis
+#     Unbenannte Verkehrsfläche und Rad…
+#
+# The description of the same item spells the endpoint out ("… von der Kleine
+# Marxerbrücke bis und in Richtung zur Radetzkybrücke …"), so the cut word is
+# not lost: it is completed from the item's own text, never guessed. The
+# fragment must be at least three letters, and when the description offers
+# more than one completion ("Radetzkybrücke" and "Radweg" here) only a single
+# candidate that follows a range preposition (``bis``, ``zur``, ``Richtung`` …)
+# is taken; two such candidates, or none, leave the title as delivered.
+# Measured over the 22 distinct titles cached since June 2026: 3 truncated,
+# 2 completable (``Rad…`` → ``Radetzkybrücke``, ``Schlachthausgas…`` →
+# ``Schlachthausgasse``), 1 not (``Hofpavillon…`` is already a whole word).
+#
+# ``Unbenannte Verkehrsfläche`` is the city's placeholder for a road segment
+# without a name. Next to a named endpoint it tells the reader nothing
+# ("bis Unbenannte Verkehrsfläche und Radetzkybrücke"), so it is dropped from
+# such a list; as the only endpoint it stays.
+#
+# Neither repair touches the identity of the item: ``first_seen`` and the
+# translation cache are keyed on the guid (``_state_key_for_item``), which the
+# cache derives from the RAW title. The English title re-translates once,
+# through the source-digest guard, because its German source changed.
+_TITLE_CUT_FRAGMENT_RE: re.Pattern[str] = re.compile(
+    r"(?<![^\W\d_])([^\W\d_]{3,}(?:-[^\W\d_]+)*)…$"
+)
+_RANGE_PREPOSITION_RE: re.Pattern[str] = re.compile(
+    r"\b(?:bis|zur|zum|zu|nach|von|vom|ab|zwischen|Richtung)\s+"
+    r"(?:(?:der|die|das|dem|den|des)\s+)?$"
+)
+_UNNAMED_AREA = r"Unbenannte\s+Verkehrsfläche"
+_UNNAMED_AREA_LEADING_RE: re.Pattern[str] = re.compile(
+    r"\b(von|bis|zwischen|und)\s+" + _UNNAMED_AREA + r"\s+und\s+", re.IGNORECASE
+)
+_UNNAMED_AREA_TRAILING_RE: re.Pattern[str] = re.compile(
+    r"\s+und\s+" + _UNNAMED_AREA + r"\b(?=\s*(?:,|bis\b|und\b|$))", re.IGNORECASE
+)
+
+
+def _completion_from_description(fragment: str, description: str) -> str | None:
+    """Return the one word of ``description`` that completes ``fragment``.
+
+    A candidate starts with ``fragment`` at a word boundary and is longer
+    than it. One distinct candidate is the answer. Several are narrowed to
+    those that follow a range preposition in the description (``bis``,
+    ``zur``, ``Richtung`` …) — the position a cut endpoint of a
+    "von … bis …" title occupies — and only a single survivor counts.
+    ``None`` means: leave the title as delivered.
+    """
+    pattern = re.compile(
+        r"(?<![^\W\d_-])" + re.escape(fragment) + r"[^\W\d_]*(?:-[^\W\d_]+)*"
+    )
+    found = [
+        (m.group(0), m.start())
+        for m in pattern.finditer(description)
+        if len(m.group(0)) > len(fragment)
+    ]
+    distinct = list(dict.fromkeys(word for word, _ in found))
+    if len(distinct) == 1:
+        return distinct[0]
+    after_preposition = list(
+        dict.fromkeys(
+            word for word, pos in found if _RANGE_PREPOSITION_RE.search(description[:pos])
+        )
+    )
+    return after_preposition[0] if len(after_preposition) == 1 else None
+
+
+def _repair_baustellen_title(title: str, description: str) -> str:
+    """Complete an upstream-cut last word and drop a placeholder endpoint.
+
+    ``title`` is the cached Baustellen title (the ellipsis marks the city's
+    100-character cut), ``description`` the item's own description. Returns
+    the title unchanged when neither repair applies or the completion would
+    be a guess (see :func:`_completion_from_description`).
+    """
+    if not title:
+        return title
+    repaired = title
+    cut = _TITLE_CUT_FRAGMENT_RE.search(repaired)
+    if cut:
+        word = _completion_from_description(cut.group(1), description)
+        if word:
+            repaired = repaired[: cut.start(1)] + word
+    repaired = _UNNAMED_AREA_LEADING_RE.sub(r"\1 ", repaired)
+    return _UNNAMED_AREA_TRAILING_RE.sub("", repaired)
+
+
 def _baustellen_title_names_station(title: str, label: str) -> bool:
     """Return ``True`` if ``title`` already mentions a distinctive token of
     the station/line ``label``, so the prefix isn't doubled up (e.g. avoid
@@ -644,6 +739,11 @@ def _post_filter_baustellen(items: list[Any]) -> list[Any]:
             # Stub / metadata item — leave it alone.
             out.append(item)
             continue
+        repaired = _repair_baustellen_title(title, description)
+        if repaired != title:
+            item = dict(item)
+            item["title"] = repaired
+            title = repaired
         blob = f"{title} {description}"
         station = relevant_station(item.get("location"))
         if station is None and not mentions_oepnv(blob):
