@@ -1960,6 +1960,23 @@ _STREET_SUFFIX_RE: re.Pattern[str] = re.compile(
 # which is also what a traveller reads on site.
 _GATE_SUFFIX_RE: re.Pattern[str] = re.compile(r"\b\d{1,2}\.\s?[Tt]or\b")
 
+# A calendar date is one token to a reader and three to the line masker.
+# ``_LINE_ENTITY_RE`` treats the day of ``27.09.2026`` as a line-shaped bare
+# number and masks it alone, so the model sees ``XENT…X3X.09.2026`` — a
+# placeholder glued to a bare period, the shape that already cost the ``N6``
+# item its house number (see ``_RESIDUAL_PLACEHOLDER_RE``). Marian drops the
+# period in that position: of the 8 dated titles translated since
+# mid-August 2026, 3 shipped without it — ``U2: Folding ramps out of service
+# on 2709.2026`` and ``27A/28A/29A: Event on 2709.2026`` (both 2026-09-24
+# 19:31, the day before the 16:15 build had kept the same date intact) and
+# ``Update 1 (1609.2026 07:22) …`` (ÖBB, 2026-09-16).
+#
+# Masked as ONE verbatim entity ahead of the line pass, the date is restored
+# exactly, and a date the model drops fails the translation through
+# ``_entities_dropped_by_translation`` instead of shipping mutilated. Day and
+# month with one or two digits, the year with four, as WL and ÖBB write them.
+_DATE_ENTITY_RE: re.Pattern[str] = re.compile(r"\b\d{1,2}\.\d{1,2}\.\d{4}\b")
+
 # Placeholder pattern recognised by :func:`_unmask_entities` and the
 # ``X``-bookended form deliberately avoids ``_`` (which the
 # SentencePiece tokenizer used by Marian models treats specially).
@@ -2195,7 +2212,7 @@ def _brand_entity_pattern() -> re.Pattern[str]:
 def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     """Replace known entities in ``text`` with stable placeholders.
 
-    The masker applies five passes in priority order — each pass is a
+    The masker applies seven passes in priority order — each pass is a
     **verbatim shield**: the placeholder restores to the original
     German surface form on unmask:
 
@@ -2207,12 +2224,15 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
          cannot render the same stop as both "3. Tor" and "3. Gate".
          Runs before the line pass, whose bare-ordinal shape would
          otherwise mask the digit and leave the noun translatable.
-      4. **Line tokens** — ``U6``, ``S40``, ``5A``, …
-      5. **Street suffixes** — capitalised compound nouns ending in a
+      4. **Calendar dates** — ``27.09.2026`` as one verbatim token,
+         ahead of the line pass that would otherwise mask its day alone
+         and hand the model ``<placeholder>.09.2026`` to tear apart.
+      5. **Line tokens** — ``U6``, ``S40``, ``5A``, …
+      6. **Street suffixes** — capitalised compound nouns ending in a
          German street/place suffix (``…straße``, ``…gasse``,
          ``…platz``, …) are preserved verbatim. This catches every
          street name that is NOT also a registered station alias.
-      6. **Preserved Unicode symbols** — arrows, bullets, em-/en-
+      7. **Preserved Unicode symbols** — arrows, bullets, em-/en-
          dashes, the ellipsis: glyphs that Marian's SentencePiece
          tokenizer otherwise maps to ``<unk>`` and drops.
 
@@ -2261,6 +2281,7 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     # the translator — exactly the half-masked state that produced
     # "4. Gate".
     working = _GATE_SUFFIX_RE.sub(_replace, working)
+    working = _DATE_ENTITY_RE.sub(_replace, working)
     working = _LINE_ENTITY_RE.sub(_replace, working)
     # After the line pass, so that ``43A/D`` has already become
     # ``XENT…X0X/D`` and the slash context the tram letters are recognised
@@ -2724,8 +2745,15 @@ def _get_translation_pipeline() -> Any:
         _TRANSLATION_STATE["pipeline"] = pipeline(  # type: ignore[call-overload, unused-ignore]
             "translation_de_to_en", model=_TRANSLATION_MODEL_NAME,
         )
+        # The nonce is logged so a build whose translations fail on residual
+        # placeholders (see ``_RESIDUAL_PLACEHOLDER_RE``) can be correlated
+        # with the nonce the model saw. It is worthless outside this process,
+        # and every source text of this run was fetched before this point.
         log.info(
-            "Übersetzungs-Pipeline %s geladen.", _TRANSLATION_MODEL_NAME
+            "Übersetzungs-Pipeline %s geladen (Platzhalter-Nonce dieses "
+            "Builds: %s).",
+            _TRANSLATION_MODEL_NAME,
+            _PLACEHOLDER_NONCE,
         )
     except Exception as exc:
         _TRANSLATION_STATE["load_failed"] = True
@@ -3335,6 +3363,30 @@ def _translate_time_line_en(time_line: str) -> str:
     return time_line
 
 
+def _cached_translation_defect(source: str, cached: str) -> str | None:
+    """Return why a persisted EN value must not be served, or ``None``.
+
+    Two defects can sit in ``data/first_seen.json`` as a cached *success*:
+
+    * a residual placeholder — the model mangled a sentinel so badly that
+      the exact-nonce unmask could not restore it (2026-06-01);
+    * a calendar date the German source carries that the cached English
+      does not — the day used to be masked alone and the model dropped the
+      period, giving ``on 2709.2026`` for ``am 27.09.2026`` (published
+      2026-09-24 19:31, two items). Dates are verbatim entities since then
+      (:data:`_DATE_ENTITY_RE`), so a retry renders them correctly; without
+      this check the value would sit in the cache until the item expires
+      or the epoch moves — and an epoch move re-translates every item.
+
+    Either way :func:`_cached_translation` treats the hit as a miss.
+    """
+    if _RESIDUAL_PLACEHOLDER_RE.search(cached):
+        return "residual placeholder"
+    if set(_DATE_ENTITY_RE.findall(source)) - set(_DATE_ENTITY_RE.findall(cached)):
+        return "missing or mangled date"
+    return None
+
+
 def _cached_translation(
     text: str,
     field: str,
@@ -3412,14 +3464,15 @@ def _cached_translation(
         )
         cached = None
     if isinstance(cached, str) and cached and cached != text:
-        if not _RESIDUAL_PLACEHOLDER_RE.search(cached):
+        defect = _cached_translation_defect(text, cached)
+        if defect is None:
             return cached, True
-        # Self-heal: a value persisted by an earlier build carries a residual
-        # placeholder (the NMT model mangled it, defeating the exact-nonce
-        # unmask). Treat the hit as a MISS and re-translate below so a raw
-        # sentinel is never served from cache to subscribers.
+        # Self-heal: a value persisted by an earlier build is unfit to serve
+        # (see ``_cached_translation_defect``). Treat the hit as a MISS and
+        # re-translate below so the defect is never served from cache.
         log.info(
-            "Cache self-heal: residual placeholder in EN %s for %s; retrying.",
+            "Cache self-heal: %s in EN %s for %s; retrying.",
+            defect,
             sanitize_log_arg(field),
             sanitize_log_arg(ident),
         )
@@ -3473,12 +3526,34 @@ def _capitalise_title_body(title: str) -> str:
         return title
     match = _LINE_PREFIX_RE.match(title)
     start = match.end() if match else 0
-    if start >= len(title):
-        return title
-    head = title[start]
-    if not head.islower():
-        return title
-    return title[:start] + head.upper() + title[start + 1:]
+    return title[:start] + _capitalise_sentence_start(title[start:])
+
+
+def _capitalise_sentence_start(text: str) -> str:
+    """Upper-case the first letter of an EN text that opens in lower case.
+
+    German capitalises every noun, so a description that opens with one —
+    "Haltestellenverlegung der Linie 7A …", "Intervallschwankungen …" —
+    starts with a capital. The glossary renders those nouns as English
+    common nouns in lower case, because the same words also occur
+    mid-sentence, and nothing after the unmask capitalised the sentence
+    start: the C.3 fix (:func:`_capitalise_title_body`) reached the title
+    only. Published 2026-09-24 in ``docs/feed.en.xml``, 5 of 10 items::
+
+        stop relocation of line 7A towards Meidling Hauptstraße U …
+        stop closure of line N31 towards Schwedenplatz U …
+
+    Over the 169 distinct EN descriptions published since 2026-09-10, 45
+    opened in lower case while their German source did not ("irregular
+    intervals" 22 times, "stop relocation" 14).
+
+    Only the single leading letter is touched — ``str.capitalize`` would
+    lower the rest and destroy line codes, station names and acronyms. A
+    text that starts with a digit, a symbol or a capital is left alone.
+    """
+    if not text or not text[0].islower():
+        return text
+    return text[0].upper() + text[1:]
 
 
 def _drop_unpaired_quote(text: str) -> str:
@@ -5739,8 +5814,8 @@ def _apply_lang_overlay(
     # Applied after the cap and the whitespace collapse so it acts on the
     # string that actually ships, not on an intermediate one.
     title_en = _capitalise_title_body(_drop_unpaired_quote(title_en))
-    summary_en = _drop_unpaired_quote(
-        _truncate_summary_180(_sanitize_text(summary_raw))
+    summary_en = _capitalise_sentence_start(
+        _drop_unpaired_quote(_truncate_summary_180(_sanitize_text(summary_raw)))
     )
     time_line_en = _translate_time_line_en(time_line_de)
     desc_text_truncated_en, desc_html_en = _compose_description(

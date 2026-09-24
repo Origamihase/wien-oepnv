@@ -5,6 +5,34 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: Kalenderdaten als ein Platzhalter, Satzanfang groß (2026-09-24)**:
+  Der Zyklus 19:31 veröffentlichte „U2: Folding ramps out of service on
+  2709.2026" (deutsch: „am 27.09.2026") und cachte dieselbe Verstümmelung
+  für „27A/28A/29A: Event on 2709.2026". Ursache: `_LINE_ENTITY_RE`
+  maskiert den Tag „27" als linienförmige Zahl allein, das Modell sieht
+  `XENT…X3X.09.2026` — einen Platzhalter, der ohne Leerzeichen an einem
+  Punkt klebt — und lässt den Punkt fallen; von 8 seit Mitte August
+  übersetzten Titeln mit Datum kamen 3 so heraus (auch ÖBB „Update 1
+  (1609.2026 07:22)" am 16.09.). Neu: `_DATE_ENTITY_RE` maskiert
+  `TT.MM.JJJJ` **vor** dem Linien-Durchlauf als eine wortgleiche Entität;
+  ein verlorenes Datum lässt die Übersetzung über
+  `_entities_dropped_by_translation` scheitern statt verstümmelt zu
+  erscheinen. Cache-Self-Heal (`_cached_translation_defect`): ein
+  gecachter EN-Wert, dem ein Datum des deutschen Quelltexts fehlt, gilt
+  als Miss und wird neu übersetzt — ohne Epochensprung, der alle Items
+  neu durch das Modell schicken würde (siehe Audit 2026-09-24, N.1).
+  Zweitens: 5 der 10 EN-Beschreibungen begannen klein („stop relocation
+  of line 7A …"), weil das Glossar Substantive als englische Gattungswörter
+  klein einsetzt und nur der Titel (C.3) nachträglich groß geschrieben
+  wurde; über 169 verschiedene EN-Beschreibungen seit 10.09. waren es 45.
+  `_capitalise_sentence_start` hebt den ersten Buchstaben der
+  gerenderten EN-Beschreibung an (ein Buchstabe, kein `str.capitalize`);
+  `_capitalise_title_body` delegiert daran. Greift beim Rendern, also auch
+  für gecachte Werte. Drittens loggt die Pipeline-Ladezeile jetzt das
+  Platzhalter-Nonce des Builds, damit Residual-Fehlschläge eines Laufs
+  mit dem Nonce korreliert werden können. Tests:
+  `tests/test_translation_date_entity.py`,
+  `tests/test_en_summary_sentence_start.py`.
 * **EN-Feed: „Haltestellenauflassung" im Glossar (2026-09-24)**: Nach dem
   Epochensprung 16 kam die N31-Prosa „Haltestellenauflassung der Linie N31
   in Richtung Schwedenplatz U" aus dem Modell als „Stop stop on line N31

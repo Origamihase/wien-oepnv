@@ -925,8 +925,12 @@ Nicht jeder Text gehört in ein NMT-Modell:
 
 Zwei Sorten, bewusst unterscheidbar:
 
-* `XENT<nonce>X<n>X` — **Entitäten** (Marken, Stationsnamen, Linienkennungen).
-  Werden nach dem Modelllauf **wortgleich** zurückgesetzt.
+* `XENT<nonce>X<n>X` — **Entitäten** (Marken, Stationsnamen, Kalenderdaten
+  wie `27.09.2026`, Linienkennungen, Straßennamen, geschützte Symbole).
+  Werden nach dem Modelllauf **wortgleich** zurückgesetzt. Ein Datum wird
+  **vor** den Linienkennungen maskiert: sonst wäre nur sein Tag ein
+  Platzhalter, der am Punkt klebt, und das Modell verliert den Punkt
+  (`on 2709.2026`, 2026-09-24).
 * `XGLO<nonce>X<n>X` — **Glossar-Treffer**. Werden durch die *englische*
   Entsprechung ersetzt; die Auswahl ist nach `(source, category)` geschichtet
   (`_GLOSSARY_BASE`, `_GLOSSARY_BY_SOURCE`, `_GLOSSARY_BY_CATEGORY`, aufgelöst
@@ -956,6 +960,13 @@ Nach dem Modelllauf wird nicht blind vertraut:
 * `_fix_glossary_articles` gleicht `a`/`an` an das Wort an, das das Glossar
   eingesetzt hat. Das Modell macht dabei nichts falsch: es sah den
   Platzhalter, nicht das Ergebnis.
+* `_capitalise_sentence_start` hebt den ersten Buchstaben von Titelrumpf
+  und Beschreibung an: Glossar-Substantive sind klein, weil sie auch
+  mitten im Satz stehen; am Satzanfang liest sich das als Tippfehler.
+* Ein gecachter EN-Wert wird vor dem Ausliefern geprüft
+  (`_cached_translation_defect`): ein Rest-Platzhalter oder ein Datum des
+  deutschen Quelltexts, das im Englischen fehlt, macht den Treffer zum
+  Miss — gezielt für dieses Feld, ohne Epochensprung.
 * Übrig gebliebene Platzhalter (`_RESIDUAL_PLACEHOLDER_RE`) lassen das Feld
   scheitern — und damit das Item deutsch bleiben. Das schließt eine
   Platzhalter-Form ein, der das Modell das führende `X` genommen hat
