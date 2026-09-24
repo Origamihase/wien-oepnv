@@ -722,6 +722,12 @@ def _post_filter_baustellen(items: list[Any]) -> list[Any]:
     :func:`_post_filter_oebb` performs. The prefix is skipped when the title
     already names the station, keeping the headline compact.
 
+    Before the prefix, :func:`_repair_baustellen_title` completes a last
+    word the city's 100-character cap cut off — from the item's own
+    description, and only when that is unambiguous — and drops the
+    placeholder ``Unbenannte Verkehrsfläche`` from an endpoint list that
+    also names a real place.
+
     Items carrying neither a title nor a description are treated as
     stubs/metadata and passed through unchanged.
     """

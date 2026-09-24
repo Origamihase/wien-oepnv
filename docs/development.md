@@ -192,6 +192,23 @@ schreibt. Die wichtigsten Parameter:
 
 Alle Pfade werden durch `resolve_env_path` (in `src/feed/config.py`) auf `docs/`, `data/` oder `log/` beschränkt, um Path-Traversal zu verhindern.
 
+### Reihenfolge im Feed
+
+Nach Altersfilter und beiden Dedupe-Stufen sortiert der Build die Items nach
+`first_seen` (neueste zuerst; Gleichstand: Störung vor Baustelle, dann
+`pubDate`). Danach greifen zwei Regeln, die Plätze freihalten, ohne etwas zu
+löschen — beide stellen Items nur hinter das Feld, von wo sie nachrücken:
+
+1. `_defer_repeated_route_titles`: Von mehreren ÖBB-Items mit wortgleichem
+   Titel (dieselbe Strecke in mehreren Bauphasen, z. B. dreimal
+   `Wien Hauptbahnhof ↔ Gramatneusiedl`) bleibt nur das mit dem frühesten
+   Zeitfenster vorn. Zusammengeführt wird nicht — die Phasen sind
+   verschiedene Maßnahmen.
+2. `_apply_topic_budget`: höchstens `MAX_ITEMS_PER_TOPIC` Einträge je
+   Ursachenwort und Tag in den vorderen Plätzen.
+
+Erst dann schneidet `MAX_ITEMS` ab.
+
 ### Logging-Initialisierung als Bibliothek verwenden
 
 Wird `build_feed` als Skript ausgeführt (`python -m src.cli feed build`), richtet es seine Logging-Handler automatisch über
@@ -242,6 +259,7 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 - **Umsetzung**: Der Provider verarbeitet sämtliche Meldungen der Realtime-Schnittstelle. Es erfolgt lediglich eine Filterung nach Status (aktiv) sowie eine Ausschlussprüfung für irrelevante Wartungsinformationen. Eine explizite Geo-Filterung ist nicht notwendig und findet nicht statt.
 - **Quelle**: Realtime-Störungs-Endpoint (`WL_RSS_URL`, Default: `https://www.wienerlinien.at/ogd_realtime`).
 - **Cache**: `cache/wl/events.json`.
+- **Titel-Präfix**: Der Feed-Build parst gecachte Titel bei jedem Lauf neu (`_post_filter_wl`) und setzt die Linien aus `relatedLines` als `L1/L2:`-Präfix davor (`src/providers/wl_lines.py`). Wiederholt der Titeltext die Linienliste selbst (`4A. 80A, N29: …`, `N66, Rufbus N68: …`), wird sie in das Präfix gefaltet — Trenner `/`, `+`, `,` und `.` mit folgendem Leerraum, damit `13.10:` keine Linienliste ist; `Rufbus N68` im Text und `N68R` aus `relatedLines` gelten als eine Linie.
 
 ### ÖBB
 
@@ -256,6 +274,7 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
   - Mit `OEBB_ONLY_VIENNA=1` lässt sich der Fallback auf reine Pendler-Bahnhof-Routen abschalten — siehe [`docs/reference/oebb_provider_logic.md`](reference/oebb_provider_logic.md).
 - **Quelle**: Offizielle ÖBB-Störungsinformationen (RSS-Feed; Default-URL via `OEBB_RSS_URL` überschreibbar, validiert gegen die `fahrplan.oebb.at`-Allow-List).
 - **Cache**: `cache/oebb/events.json`.
+- **Routentitel**: Aus „zwischen A und B" bzw. „von A nach B" leitet der Provider `A ↔ B`-Titel ab. Ein großgeschriebener Ortszusatz mit „im"/„am" direkt vor `Bahnhof`/`Bf`/`Hbf` („Baumgarten im Bgld-Schattendorf Bahnhof") bleibt Teil des Endpunkts (`_with_place_qualifier`), sonst schrumpft der Endpunkt auf ein Wort und löst auf eine falsche Wiener Haltestelle auf.
 
 ### Verkehrsverbund Ost-Region (VOR)
 
@@ -269,6 +288,7 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 - **Cache**: `cache/baustellen/events.json`, gepflegt via `scripts/update_baustellen_cache.py`.
 - **Fallback**: Schlägt der Remote-Abruf fehl (z. B. wegen Rate-Limits), nutzt das Skript `data/samples/baustellen_sample.geojson` als Grunddatensatz, damit der Feed konsistent bleibt.
 - **Kontext**: Die Meldungen enthalten Metadaten zu Bezirk, Maßnahme, Zeitraum sowie geokodierte Adressen und ergänzen damit ÖPNV-Störungsmeldungen um bauzeitliche Einschränkungen.
+- **Titel**: Die Stadt kappt `BEZEICHNUNG` bei 100 Zeichen; das Cache-Skript markiert den Schnitt mit „…" und lässt den Text unangetastet (die GUID leitet sich vom Rohtitel ab). Beim Bauen des Feeds vervollständigt `_repair_baustellen_title` (`src/build_feed.py`) ein abgeschnittenes Wort aus der Beschreibung desselben Items, wenn es dort eindeutig ist („… bis Rad…" → „… bis Radetzkybrücke"), und streicht den Platzhalter „Unbenannte Verkehrsfläche" aus einer Endpunkt-Liste, die auch einen echten Namen nennt. Danach stellt `_post_filter_baustellen` den betroffenen Bahnhof oder die genannten U-Bahn-Linien als Präfix voran.
 
 ### Eigene Provider-Plugins
 
