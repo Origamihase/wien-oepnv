@@ -4801,6 +4801,66 @@ def _apply_topic_budget(items: list[FeedItem], limit: int) -> list[FeedItem]:
     return kept + deferred
 
 
+_FAR_FUTURE = datetime.max.replace(tzinfo=UTC)
+
+
+def _repeated_route_title_key(item: FeedItem) -> str | None:
+    """The key an ÖBB item shares with its other time windows, or ``None``."""
+    if str(item.get("source") or "").strip().casefold() != "öbb":
+        return None
+    title = _WHITESPACE_RE.sub(" ", str(item.get("title") or "")).strip().casefold()
+    return title or None
+
+
+def _defer_repeated_route_titles(items: list[FeedItem]) -> list[FeedItem]:
+    """Give one slot to each ÖBB title, held by its earliest time window.
+
+    ÖBB titles are the route and nothing else, so one route closed in three
+    separate construction phases arrives as three items with one title::
+
+        Wien Hauptbahnhof ↔ Gramatneusiedl    03.10. – 05.10.
+        Wien Hauptbahnhof ↔ Gramatneusiedl    31.10. – 30.11.
+        Wien Hauptbahnhof ↔ Gramatneusiedl    05.12. – 07.12.
+
+    Each survives the dedupe passes (three GUIDs, three different texts)
+    and the topic budget (a route title carries no reason word). On the
+    displays the same line would stand three times and cost two other
+    disruptions their slot.
+
+    The items are not merged: the phases are different measures (single
+    trains in October, no local trains at night later), and one text for
+    all three would misstate two of them. Instead the item whose window
+    starts first keeps its own place in the sorted order and the others
+    move behind the field, in their original order — exactly like
+    :func:`_apply_topic_budget`. Nothing is dropped: once the first phase
+    has ended it leaves the feed and the next one holds the slot.
+    """
+    groups: dict[str, list[int]] = {}
+    for index, item in enumerate(items):
+        key = _repeated_route_title_key(item)
+        if key is not None:
+            groups.setdefault(key, []).append(index)
+
+    def window_start(index: int) -> tuple[datetime, int]:
+        when = _parse_datetime(items[index].get("starts_at"))
+        return (_to_utc(when) if isinstance(when, datetime) else _FAR_FUTURE, index)
+
+    deferred_indices: set[int] = set()
+    for members in groups.values():
+        if len(members) > 1:
+            lead = min(members, key=window_start)
+            deferred_indices.update(m for m in members if m != lead)
+    if not deferred_indices:
+        return items
+    log.info(
+        "Gleiche ÖBB-Titel: %d weitere(s) Zeitfenster hinter das Feld gestellt.",
+        len(deferred_indices),
+    )
+    kept = [item for index, item in enumerate(items) if index not in deferred_indices]
+    deferred = [item for index, item in enumerate(items) if index in deferred_indices]
+    return kept + deferred
+
+
 def _recency_sort_key(
     item: FeedItem, state: dict[str, dict[str, Any]], now_utc: datetime
 ) -> tuple[float, int, float, str]:
@@ -6306,6 +6366,9 @@ def main() -> int:
             log.debug("Sortiere %d Items nach Priorität (first_seen, neueste zuerst).", len(items))
         now_utc = _to_utc(now)
         items.sort(key=lambda it: _recency_sort_key(it, state, now_utc))
+        # One route must not stand in the feed once per construction phase —
+        # see ``_defer_repeated_route_titles``.
+        items = _defer_repeated_route_titles(items)
         # One event must not take every slot — see ``_apply_topic_budget``.
         items = _apply_topic_budget(items, feed_config.MAX_ITEMS_PER_TOPIC)
 
