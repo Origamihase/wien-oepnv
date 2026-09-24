@@ -5,6 +5,23 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE- und EN-Feed: eine WL-Linienliste nach dem Präfix wird erkannt und gestrichen (2026-09-24)**:
+  Live im deutschen Feed standen `N66/N68R: N66, Rufbus N68: Quellenplatz`
+  (24.09., Platz 2) und `4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße`
+  (19./20.09.). WL schreibt die Linien an den Titelanfang, der Provider
+  setzt den `relatedLines`-Präfix davor, und `_extract_prefix_lines`
+  (`src/providers/wl_lines.py`) soll die Liste des Titels darin aufgehen
+  lassen. Zwei Formen fielen durch: `. ` als Trenner und ein einzelner Code
+  vor `Rufbus X` (`LINES_COMPLEX_PREFIX_RE` verlangte zwei). Beide werden
+  jetzt erkannt; der Punkt zählt nur mit folgendem Leerraum, damit `13.10:`
+  keine Linienliste wird, und das strenge Token-Gate lehnt Wörter wie in
+  `10. Bezirk:` weiter ab. Zusätzlich gilt `Rufbus N68` im Titel als
+  dieselbe Linie wie `N68R` aus `relatedLines` (`_is_rufbus_twin`), sonst
+  hieße der Präfix `N66/N68R/N68`. Über 453 WL-Cache-Revisionen (608
+  Titel) sind das die einzigen zwei betroffenen Titel. Weil der Feed-Build
+  gecachte Titel über `_post_filter_wl` neu parst, wirkt die Korrektur
+  schon beim nächsten Bau. Tests:
+  `tests/test_wl_line_list_repeated_in_title.py`.
 * **DE- und EN-Feed: eine ÖBB-Strecke mit mehreren Bauphasen belegt nur noch einen Platz (2026-09-24)**:
   Der ÖBB-Cache trägt dreimal `Wien Hauptbahnhof ↔ Gramatneusiedl`
   (03.–05.10., 31.10.–30.11., 05.–07.12.2026; drei GUIDs, drei Texte). Alle

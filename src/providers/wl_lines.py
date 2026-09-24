@@ -94,9 +94,21 @@ LINE_PREFIX_STRIP_RE = re.compile(
 # ``56A, 60A, N60, Rufbus N61:`` uses the ``,`` form, and pre-fix
 # the regex required ``und`` so the prefix slipped through
 # unrecognised and surfaced as a stacked title.
+#
+# Two further shapes, both published 2026-09 with the list repeated after
+# the prefix (``4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße``,
+# ``N66/N68R: N66, Rufbus N68: Quellenplatz``):
+#
+# * ``. `` (period + whitespace) as a list separator. The whitespace is
+#   required so a date or time (``13.10:``) never reads as two lines.
+# * a single code followed by ``Rufbus X`` — pre-fix the list needed two
+#   codes before the Rufbus token.
+_LIST_SEP = r"(?:\s*,\s*|\.\s+)"
 LINES_COMPLEX_PREFIX_RE = re.compile(
-    r"^\s*[A-Za-z0-9]+(?:\s*,\s*[A-Za-z0-9]+)+"
+    r"^\s*[A-Za-z0-9]+"
+    rf"(?:(?:{_LIST_SEP}[A-Za-z0-9]+)+"
     r"(?:\s*,?\s*(?:und\s+)?Rufbus\s+[A-Za-z0-9]+)?"
+    r"|\s*,?\s*(?:und\s+)?Rufbus\s+[A-Za-z0-9]+)"
     r"(?:\s*\([^)]+\))?\s*:(?:\s+|$)",
     re.IGNORECASE,
 )
@@ -166,6 +178,18 @@ def _strip_redundant_line_token(body: str, lines: list[str]) -> str:
     return remainder
 
 
+def _is_rufbus_twin(token: str, text: str, known: set[str]) -> bool:
+    """True when *token* is ``Rufbus X`` in *text* and ``XR`` is already known.
+
+    WL's ``relatedLines`` names the on-demand bus ``N68`` as ``N68R`` while
+    the title text says ``Rufbus N68``. Both are one line; without this
+    check the prefix read ``N66/N68R/N68``.
+    """
+    if f"{token}R" not in known:
+        return False
+    return any(_clean_line_token(m) == token for m in RUF_BUS_RE.findall(text))
+
+
 def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
     """Strip leading line prefix(es) and return (body, lines_in_order).
 
@@ -205,7 +229,7 @@ def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
         if match:
             block = body[: match.end()].rstrip(": \t")
             candidates: list[str] = []
-            for tok in re.split(r"[,/+]", block):
+            for tok in re.split(r"[,/+]|\.\s+", block):
                 # Strip a parenthetical qualifier like ``(Schulkurs)``
                 # before token-cleaning — the qualifier is sub-line
                 # classification, not part of the line code itself.
@@ -222,7 +246,7 @@ def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
             # (``17:30``) and stripping it would mangle the title.
             if candidates and all(_STRICT_LINE_TOKEN_RE.match(c) for c in candidates):
                 for cleaned in candidates:
-                    if cleaned not in seen:
+                    if cleaned not in seen and not _is_rufbus_twin(cleaned, block, seen):
                         seen.add(cleaned)
                         lines.append(cleaned)
                 body = body[match.end():].strip()
@@ -272,11 +296,11 @@ def _ensure_line_prefix(title: str, lines_disp: list[str]) -> str:
     # first (typically already sorted by the caller) and append any
     # extra lines from the existing prefix in their original title-order
     # so ``41E/10A:`` round-trips unchanged.
-    seen = set()
+    seen: set[str] = set()
     merged: list[str] = []
     for tok in list(lines_disp) + list(existing_lines):
         cleaned = _clean_line_token(tok)
-        if cleaned and cleaned not in seen:
+        if cleaned and cleaned not in seen and not _is_rufbus_twin(cleaned, title, seen):
             seen.add(cleaned)
             merged.append(cleaned)
 
