@@ -797,6 +797,12 @@ def _mark_upstream_truncation(title: str) -> str:
     NICHT für die GUID verwenden: Die leitet sich weiterhin vom ROHTITEL ab
     (s. :func:`_feature_to_event`), sonst verschöbe diese Kosmetik die
     Identität der Baustelle und setzte ihr ``first_seen`` zurück.
+
+    Was sich doch zurückholen lässt, holt die Feed-Seite: ein Wort, das die
+    Beschreibung desselben Items eindeutig vervollständigt („… bis Rad…" →
+    „… bis Radetzkybrücke"), ergänzt ``_repair_baustellen_title`` in
+    ``src/build_feed.py`` beim Bauen des Feeds; der Cache bleibt die
+    unveränderte Quelle.
     """
     if not title:
         return title
