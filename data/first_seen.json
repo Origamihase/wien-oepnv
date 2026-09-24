@@ -4558,12 +4558,15 @@
     "translations": {
       "en": {
         "summary": "stop relocation of line N66 towards Oper, Karlsplatz and the call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 im Zuge \u2026",
-        "title": "N66/N68R: N66, N68: Quellenplatz"
+        "title": "N66/N68R: Quellenplatz"
       },
       "en_src": {
         "summary": "e04186292fa543bc",
-        "title": "7609c4b1b4b9907f"
+        "title": "e1571e8841a1bce3"
       },
+      "en_verbatim": [
+        "title"
+      ],
       "epoch": 15
     }
   },
@@ -10811,7 +10814,13 @@
   "753a0ee3d3a4cdb9b477d6436109d37356afd120f5fc68c2566552b5c8d58086": {
     "first_seen": "2026-09-24T13:01:01.886433+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "9: third-party accident service from Rosensteingasse"
+      },
+      "en_src": {
+        "title": "f7cef499900eda65"
+      },
+      "epoch": 15
     }
   },
   "7577d319b274c1c6fe7729764f297b579c9b84be50fdda64b446b68b6296b1ee": {
@@ -16167,7 +16176,13 @@
   "aaf10c0043ff3525523907828e7103a41ee233d7b98cec21dbe76fd3df2b1c5c": {
     "first_seen": "2026-09-24T13:01:01.886433+00:00",
     "translations": {
-      "en": {}
+      "en": {
+        "title": "9: third-party accident diversion to Wattgasse, 10A"
+      },
+      "en_src": {
+        "title": "8ca38cc670f91e8c"
+      },
+      "epoch": 15
     }
   },
   "aafcc4807c3bd89ccccac1f40288722310ef09e8d062f945c0c5ee8c7fbd753c": {
