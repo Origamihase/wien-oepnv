@@ -904,6 +904,11 @@ Nicht jeder Text gehört in ein NMT-Modell:
   `_split_label_record` sie ab und `_render_label_record` setzt sie **ohne
   Modell** aus dem Glossar zusammen. Nur die Prosa davor geht durch Marian.
   Ein Modell, das eine Tabelle als Satz liest, erfindet Zusammenhänge.
+  Die *Werte* setzt `_gloss_record_values` um — eine eigene, nur hier
+  wirkende Wortliste für die kleine Grammatik hinter `Dauer:` und
+  `Nach:` (Datumspräposition an eine Ziffer gebunden, Monatsnamen, „etwa",
+  „bis auf Widerruf", „Meter in Richtung"). Nicht im Glossar, weil „ab",
+  „bis", „vor", „nach" in Prosa gewöhnliches Deutsch sind.
 * **Nicht-übersetzbarer Inhalt.** `_is_non_translatable_content` erkennt
   maskierte Texte, in denen nach dem Maskieren nichts mehr steht, was ein
   Modell übersetzen könnte (reine Linien- und Stationsfolgen).
