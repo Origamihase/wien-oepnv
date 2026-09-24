@@ -452,7 +452,7 @@
     "guid": "af5d8f61bc5111287ef09cb5e94750b3d6f7ab1b7f9704ff22ee3df4e5e09d5a",
     "pubDate": "2026-09-24T11:12:00+02:00",
     "starts_at": "2026-09-24T11:12:00+02:00",
-    "ends_at": "2026-09-24T23:55:00+02:00",
+    "ends_at": "2026-09-24T12:09:00+02:00",
     "_identity": "wl|störung|L=10|D=2026-09-24|TK=10 schadhafter pkw"
   },
   {
@@ -710,6 +710,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "42A: Rettungseinsatz",
+    "description": "Linie 42A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "47e44ab1bae8d36ee4e013c419b553078ea16508408126f99979be892e409fca",
+    "pubDate": "2026-09-24T11:32:00+02:00",
+    "starts_at": "2026-09-24T11:32:00+02:00",
+    "ends_at": "2026-09-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=42A|D=2026-09-24|TK=rettungseinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -728,7 +740,7 @@
     "guid": "ca37a3c3365726d1c449c7aa2c37e1b237568b270cf6b0e362c5e0777696d40b",
     "pubDate": "2026-09-24T11:12:00+02:00",
     "starts_at": "2026-09-24T11:12:00+02:00",
-    "ends_at": "2026-09-24T23:55:00+02:00",
+    "ends_at": "2026-09-24T12:34:00+02:00",
     "_identity": "wl|störung|L=60|D=2026-09-24|TK=60 schadhafter pkw"
   },
   {
