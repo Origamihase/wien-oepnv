@@ -7891,11 +7891,11 @@
     "first_seen": "2026-09-24T04:00:49.480542+00:00",
     "translations": {
       "en": {
-        "summary": "Operation only between Stadion U and Schmelz, Gablenzgasse and Fendigasse.",
+        "summary": "After a service obstruction there are different intervals.",
         "title": "12A: service obstruction illegally parked vehicle"
       },
       "en_src": {
-        "summary": "3b4f0dbfdc7be12b",
+        "summary": "eb1bdc2703fe6f1b",
         "title": "a92ed36782451092"
       },
       "epoch": 15
@@ -9517,6 +9517,18 @@
         "title": "26: service obstruction Soft Damage"
       },
       "epoch": 3
+    }
+  },
+  "688c2afa5c3ca0e2de73f2a29ab94225a69ba514eb6ece5874d0ae1df2ec8b46": {
+    "first_seen": "2026-09-24T04:30:59.275107+00:00",
+    "translations": {
+      "en": {
+        "title": "11: traffic accident service from Enkplatz U, Grillgasse"
+      },
+      "en_src": {
+        "title": "45c0190cacb7b1c9"
+      },
+      "epoch": 15
     }
   },
   "697a3f54961e5d8ef26d6296646ba39567e860f6593279599792b54517de962a": {
