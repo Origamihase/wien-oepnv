@@ -434,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "caad9e268eb418676c7db56fdc61da1e782e3e71b8255532134411fde04028b5",
-    "pubDate": "2026-09-25T16:51:11+02:00",
-    "starts_at": "2026-09-25T16:51:13+02:00",
-    "ends_at": "2026-09-25T17:50:00+02:00",
-    "_identity": "wl|störung|L=11A|D=2026-09-25|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -470,18 +458,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Betriebsstörung",
-    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4bccd270d21771774d4ca838728725fa0ea7e820f6df0daa4fda5461b7a78c07",
-    "pubDate": "2026-09-25T15:24:00+02:00",
-    "starts_at": "2026-09-25T15:24:00+02:00",
-    "ends_at": "2026-09-25T17:31:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-09-25|TK=12a betriebsstörung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Veranstaltung Busse halten bei der Linie 14A",
     "description": "Linie 13A: Betrieb nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52, 48A aus. Voraussichtliche Dauer: bis 22:00 Uhr. Grund: Veranstaltung im Bereich Neubaugasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -490,30 +466,6 @@
     "starts_at": "2026-09-25T05:48:32+02:00",
     "ends_at": "2026-09-25T22:15:00+02:00",
     "_identity": "wl|störung|L=13A|D=2026-09-25|TK=veranstaltung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Rettungseinsatz",
-    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac",
-    "pubDate": "2026-09-25T16:01:00+02:00",
-    "starts_at": "2026-09-25T16:01:00+02:00",
-    "ends_at": "2026-09-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=14A|D=2026-09-25|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "16A: Rettungseinsatz",
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5a34fd9d1d85761937e73cc1505db5c332e3d5fe85c5450ebb4c6466c12885ea",
-    "pubDate": "2026-09-25T14:50:00+02:00",
-    "starts_at": "2026-09-25T14:50:00+02:00",
-    "ends_at": "2026-09-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=16A|D=2026-09-25|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -530,42 +482,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Verkehrsunfall",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f",
-    "pubDate": "2026-09-25T16:46:00+02:00",
-    "starts_at": "2026-09-25T16:46:00+02:00",
-    "ends_at": "2026-09-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-25|TK=18 verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "75c314f681fe756a41036cc506d4e269bf917e5d515c978c03f60c4402399a79",
-    "pubDate": "2026-09-25T16:49:41+02:00",
-    "starts_at": "2026-09-25T16:49:41+02:00",
-    "ends_at": "2026-09-25T17:49:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-25|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Verkehrsunfall Betrieb ab Ernst-Happel-Stadion",
-    "description": "Verkehrsunfall\nBetrieb ab Ernst-Happel-Stadion",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "210747fa2854ba46628c0d1ae48a0c9576348c061927df64a107a4dbad981837",
-    "pubDate": "2026-09-25T16:50:41+02:00",
-    "starts_at": "2026-09-25T16:50:41+02:00",
-    "ends_at": "2026-09-25T17:49:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-25|TK=verkehrsunfall betrieb ab ernst happel stadion"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -574,30 +490,6 @@
     "starts_at": "2026-09-25T05:00:28+02:00",
     "ends_at": "2026-09-25T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-09-25|TK=bhf hütteldorf öbb ersatzbus für 80"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Rettungseinsatz",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
-    "pubDate": "2026-09-25T15:21:00+02:00",
-    "starts_at": "2026-09-25T15:21:00+02:00",
-    "ends_at": "2026-09-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-09-25|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "24A: Fremder Verkehrsunfall",
-    "description": "Linie 24A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b064d7a77a5435dbeaf58c524f631363e605bf4552527a87d27048cfd84e4a9e",
-    "pubDate": "2026-09-25T14:07:00+02:00",
-    "starts_at": "2026-09-25T14:07:00+02:00",
-    "ends_at": "2026-09-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=24A|D=2026-09-25|TK=24a fremder verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -838,18 +730,6 @@
     "starts_at": "2026-09-25T00:00:29+02:00",
     "ends_at": "2026-09-25T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-25|TK=einstieg leberstrasse vor s bahn gebäude"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "85A: Fremder Verkehrsunfall",
-    "description": "Linie 85A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "27ff02151cbdd38b88e5929a81b840a9833ad533072427c7e4a737d7aa75172e",
-    "pubDate": "2026-09-25T14:07:00+02:00",
-    "starts_at": "2026-09-25T14:07:00+02:00",
-    "ends_at": "2026-09-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=85A|D=2026-09-25|TK=85a fremder verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
