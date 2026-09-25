@@ -15,8 +15,12 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   August waren Entwarnungen („Aufhebung Verkehrseinschränkung: Wien
   Handelskai"); ein Präfix, das mit „Aufhebung" beginnt, gilt nicht mehr als
   verwerfbare Kategorie, sonst läse sich die Entwarnung wie eine laufende
-  Störung. `_post_filter_oebb` repariert gecachte Titel beim Bauen; die GUID
-  folgt weiter dem Rohtitel. Tests: `tests/test_oebb_update_prefix.py`.
+  Störung. Das Label wird dabei abgetrennt, der Ort dahinter normal
+  bereinigt und das Label wieder vorangestellt: „Update 5 (…) Aufhebung
+  Verkehrseinschränkung: St.Pölten" wird „Aufhebung Verkehrseinschränkung:
+  St. Pölten Hauptbahnhof". `_post_filter_oebb` repariert gecachte Titel
+  beim Bauen; die GUID folgt weiter dem Rohtitel. Tests:
+  `tests/test_oebb_update_prefix.py`.
 * **DE-Feed: abgeschnittene Baustellen-Titel aus der Beschreibung vervollständigt (2026-09-24)**:
   Item 8 lautete „U4: Vordere Zollamtsstraße von Marxergasse und Kleine
   Marxerbrücke bis Unbenannte Verkehrsfläche und Rad…" — die Stadt Wien

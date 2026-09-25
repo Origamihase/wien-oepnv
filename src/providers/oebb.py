@@ -375,7 +375,32 @@ _UPDATE_PREFIX_RE = re.compile(
 # would drop it as a plain category prefix and leave only "Wien Handelskai" —
 # an all-clear that reads like a running disruption. Three of the four
 # update-prefixed titles since August were all-clears; the label stays.
+#
+# The label is split off like the line prefix, the place behind it goes
+# through the normal cleanup, and the label is put back in front. Kept whole,
+# the place would skip the cleanup: published 2026-09-25 11:01 as
+# "Update 5 (25.09.2026 10:48) Aufhebung Verkehrseinschränkung: St.Pölten",
+# the missing space would have survived the prefix fix.
 _ALL_CLEAR_PREFIX_RE = re.compile(r"^\s*Aufhebung\b", re.IGNORECASE)
+_ALL_CLEAR_LABEL_RE = re.compile(r"^\s*(Aufhebung\b[^:]*?)\s*:(?!\d)\s*", re.IGNORECASE)
+
+
+def _split_all_clear_label(title: str) -> tuple[str, str]:
+    """Split ``"Aufhebung …: Ort"`` into ``("Aufhebung …", "Ort")``.
+
+    Returns ``("", title)`` when the title carries no all-clear label.
+    """
+    match = _ALL_CLEAR_LABEL_RE.match(title)
+    if not match:
+        return "", title
+    return match.group(1).strip(), title[match.end():]
+
+
+def _join_label(label: str, rest: str) -> str:
+    """Put a split-off ``label`` back in front of ``rest`` as ``"label: rest"``."""
+    if not label:
+        return rest
+    return f"{label}: {rest}" if rest else label
 
 
 def _strip_update_prefix(title: str) -> str:
@@ -397,6 +422,8 @@ def _clean_title_keep_places(t: str) -> str:
     if line_match:
         line_prefix = line_match.group(1).strip()
         t = t[line_match.end():]
+
+    all_clear_label, t = _split_all_clear_label(t)
 
     t = _drop_redundant_suffix(t)
 
@@ -496,6 +523,7 @@ def _clean_title_keep_places(t: str) -> str:
     t = re.sub(r"\s{2,}", " ", t)
     t = re.sub(r"&lt;|&gt;|&#60;|&#x3C;|&#62;|&#x3E;|[<>«»‹›]+", "", t)
     t = t.strip()
+    t = _join_label(all_clear_label, t)
     # Re-attach the leading line prefix that was split off above so
     # downstream consumers (``_extract_line_prefix``) still recognise it.
     if line_prefix and t:

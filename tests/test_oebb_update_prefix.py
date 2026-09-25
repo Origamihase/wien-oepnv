@@ -21,6 +21,8 @@ Mutations checked against this file (each one caught, by the test named):
   ``test_the_cached_title_is_repaired_at_build_time``.
 * the prefix regex loses its ``Update N (`` anchor (any leading
   parenthesis stripped) → ``test_other_titles_are_untouched``.
+* the all-clear label is not split off (the place skips the cleanup) →
+  ``test_the_live_titles`` (the St. Pölten all-clear).
 """
 
 from __future__ import annotations
@@ -48,6 +50,12 @@ from src.providers.oebb import _clean_title_keep_places, _derive_guid, _strip_up
         (
             "Update 2 (12.09.2026 23:15) Aufhebung Streckenunterbrechung: Wien Meidling",
             "Aufhebung Streckenunterbrechung: Wien Meidling",
+        ),
+        # Published 2026-09-25 11:01: the place behind an all-clear label is
+        # cleaned like any other ÖBB place.
+        (
+            "Update 5 (25.09.2026 10:48) Aufhebung Verkehrseinschränkung: St.Pölten",
+            "Aufhebung Verkehrseinschränkung: St. Pölten Hauptbahnhof",
         ),
     ],
 )
@@ -118,6 +126,12 @@ def test_the_cached_title_is_repaired_at_build_time() -> None:
     cached = "Update 4 (25.09.2026 09:59) Verkehrseinschränkung: St.Pölten"
     out = _post_filter_oebb([_cached_item(cached)])
     assert [i["title"] for i in out] == ["St. Pölten Hauptbahnhof"]
+
+
+def test_a_cached_all_clear_is_repaired_at_build_time() -> None:
+    cached = "Update 5 (25.09.2026 10:48) Aufhebung Verkehrseinschränkung: St.Pölten"
+    out = _post_filter_oebb([_cached_item(cached)])
+    assert [i["title"] for i in out] == ["Aufhebung Verkehrseinschränkung: St. Pölten Hauptbahnhof"]
 
 
 def test_the_cached_item_is_not_mutated() -> None:
