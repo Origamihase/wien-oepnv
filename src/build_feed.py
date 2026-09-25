@@ -439,6 +439,43 @@ def _strip_trailing_directional_marker(summary: str) -> str:
     return summary.rstrip(_TRAILING_DIRECTIONAL_CHARS)
 
 
+# WL's display boards show the S-Bahn logo as a glyph that reaches the data as
+# "<": "Bhf. Hütteldorf / ÖBB-Ersatzbus für <80", published daily since
+# 2026-09-12 with ``relatedLines`` "1". Tram line 1 does not serve Hütteldorf
+# (operator, 2026-09-25); an ÖBB replacement bus replaces an ÖBB line, and 80
+# is the S80, which starts at Hütteldorf. Only Vienna's S-Bahn numbers count.
+_VIENNA_S_BAHN_NUMBERS: frozenset[str] = frozenset(
+    {"1", "2", "3", "4", "7", "40", "45", "50", "60", "80"}
+)
+_OBB_REPLACEMENT_BUS_RE = re.compile(r"ÖBB-Ersatzbus\s+für\s+(?:<\s*|S\s?)?(\d{1,2})\b")
+
+
+def _attribute_obb_replacement_bus(item: dict[str, Any]) -> dict[str, Any]:
+    """``1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80`` → ``S80: ÖBB-Ersatzbus``.
+
+    The title takes the S-Bahn line the text names instead of WL's line and
+    says what it is; the place goes into the description (operator decision
+    2026-09-25): ``S80: ÖBB-Ersatzbus`` over ``Bhf. Hütteldorf``. Whatever
+    else WL's description says stays; only the "ÖBB-Ersatzbus für …" phrase
+    the title now carries is taken out of it.
+    """
+    title = item.get("title")
+    if not isinstance(title, str):
+        return item
+    desc = item.get("description")
+    desc_text = desc if isinstance(desc, str) else ""
+    match = _OBB_REPLACEMENT_BUS_RE.search(f"{title}\n{desc_text}")
+    if match is None or match.group(1) not in _VIENNA_S_BAHN_NUMBERS:
+        return item
+    body = title.split(":", 1)[1] if ":" in title else title
+    place = body.split("ÖBB-Ersatzbus", 1)[0].strip(" -–:/")
+    rest = re.sub(r"\s+", " ", _OBB_REPLACEMENT_BUS_RE.sub(" ", desc_text)).strip(" -–:/")
+    fixed = dict(item)
+    fixed["title"] = f"S{match.group(1)}: ÖBB-Ersatzbus"
+    fixed["description"] = rest or place
+    return fixed
+
+
 def _post_filter_wl(items: list[Any]) -> list[Any]:
     """Defence-in-depth: normalise / drop bad WL items loaded from cache.
 
@@ -473,7 +510,7 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
         if not isinstance(original, dict):
             out.append(original)
             continue
-        item = original
+        item = _attribute_obb_replacement_bus(original)
         prefix_lines: list[str] = []
         title = item.get("title")
         if isinstance(title, str) and title:
