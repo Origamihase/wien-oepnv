@@ -5,6 +5,18 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE- und EN-Feed: „Fahrtbehinderung <Ursache>“ zeigt die Ursache im Titel (2026-09-25)**:
+  Um 17:35 stand „11A: Fahrtbehinderung Verkehrsunfall“ im Feed, zwei
+  aneinandergeklebte Substantive über einem nackten Datum (106 Titel dieser
+  Form seit Juni). Betreiberentscheidung (Audit A.13, Variante a): Der
+  Titel lautet „11A: Verkehrsunfall“, „Fahrtbehinderung“ füllt die sonst
+  leere Beschreibung. „31: Fahrtbehinderung wegen Polizeieinsatz“ wird zu
+  „31: Polizeieinsatz“. Eine eigene Beschreibung von WL bleibt unverändert.
+  Kollisionsregel verfeinert: Bei gleichem Kurztitel wird der am höchsten
+  platzierte Ticker kurz, die übrigen bleiben lang (vorher alle lang). Live
+  hätte das „18: Verkehrsunfall“ über „Betrieb ab Ernst-Happel-Stadion“
+  sonst auf die lange Form mit leerer Beschreibung zurückgeworfen. Tests:
+  `tests/test_ticker_title_split.py`.
 * **DE- und EN-Feed: WL-Ticker mit Ursache im Titel, Folge in der Beschreibung (2026-09-25)**:
   Wunsch des Betreibers zum Live-Item „14A: Rettungseinsatz – Betrieb ab
   Laxenburger Straße / Gudrunstraße“, dessen Beschreibung nur „[Am

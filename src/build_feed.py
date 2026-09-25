@@ -11,7 +11,7 @@ import string
 import secrets
 import sys
 import xml.etree.ElementTree as ET  # nosec B405
-from collections import Counter, defaultdict
+from collections import defaultdict
 from collections.abc import Callable, Sequence
 from concurrent.futures import (
     FIRST_COMPLETED,
@@ -5559,6 +5559,12 @@ _INCIDENT_REASON_WORDS: frozenset[str] = frozenset({
     "polizeiübung",
     "gleisschaden",
     "oberleitungsgebrechen",
+    # Not a cause but the kind of hindrance WL puts in front of one
+    # ("Fahrtbehinderung Verkehrsunfall"). Here so the dash of a long title
+    # (``18: Fahrtbehinderung – Verkehrsunfall``, kept where the short one
+    # would collide) is known to the English splitter too. The short title
+    # takes the cause — see ``_HINDRANCE_RE``.
+    "fahrtbehinderung",
 })
 # Every word the separator puts a dash behind. ``_split_reason_title`` must
 # know the same set: a dashed title it does not recognise goes to the model
@@ -5651,6 +5657,13 @@ _CONSEQUENCE_START_RE = re.compile(
 )
 _CONSEQUENCE_CAUSE_MAX_WORDS = 3
 
+# WL's tickers name the kind of hindrance before the cause: "Fahrtbehinderung
+# Verkehrsunfall", "Fahrtbehinderung wegen Polizeieinsatz" (106 titles since
+# June). Operator decision 2026-09-25 (audit A.13): the cause goes into the
+# title, "Fahrtbehinderung" into the description.
+_HINDRANCE = "Fahrtbehinderung"
+_HINDRANCE_RE = re.compile(r"^Fahrtbehinderung\s+(?:–\s+)?(?:wegen\s+)?(?P<rest>[A-ZÄÖÜ].*)$")
+
 
 def _reason_and_fragment(title_out: str) -> tuple[str, str] | None:
     """``14A: Rettungseinsatz Betrieb ab …`` → (``14A: Rettungseinsatz``, ``Betrieb ab …``).
@@ -5672,6 +5685,12 @@ def _reason_and_fragment(title_out: str) -> tuple[str, str] | None:
     match = _TITLE_BODY_RE.match(dashed)
     body = match.group(1) if match else dashed
     prefix = dashed[: match.start(1)] if match else ""
+    hindrance = _HINDRANCE_RE.match(body)
+    if hindrance is not None:
+        # The cause follows the hindrance, possibly with a consequence of its
+        # own ("Fahrtbehinderung Verkehrsunfall Betrieb ab …").
+        cause_title = f"{prefix}{hindrance.group('rest').strip()}"
+        return _reason_and_fragment(cause_title) or (cause_title, _HINDRANCE)
     reason, dash, fragment = body.partition(" – ")
     if dash and reason.casefold() in _TITLE_REASON_WORDS and fragment.strip():
         return f"{prefix}{reason}", fragment.strip()
@@ -5721,7 +5740,10 @@ def _finish_reason_title(
     rest = _drop_category_word(summary, _title_body(short_title))
     if not rest or rest.casefold() in fragment.casefold():
         return short_title, _truncate_summary_180(fragment)
-    if fragment.casefold() in uncut_summary.casefold():
+    # "Fahrtbehinderung" says less than any description WL writes ("Nach
+    # einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.");
+    # it only fills an empty one.
+    if fragment == _HINDRANCE or fragment.casefold() in uncut_summary.casefold():
         return short_title, summary
     return short_title, _lead_with_fragment(fragment, uncut_summary)
 
@@ -5797,8 +5819,15 @@ def _short_title_collisions(items: Sequence[FeedItem]) -> set[int]:
 
     Shortened, three slots on the display would read ``49: Gleisschaden``
     (feed history since June: 18 of 314 sampled feeds had such a group).
-    Items that would shorten onto a title another visible item has keep
-    the dashed long form instead, so every title stays distinct.
+    So per short title:
+
+    * another visible item already carries it as its own title → every
+      ticker that would shorten onto it keeps the dashed long form;
+    * otherwise the highest-placed ticker shortens and the others keep the
+      long form — ``18: Verkehrsunfall`` over "Betrieb ab
+      Ernst-Happel-Stadion", then ``18: Fahrtbehinderung – Verkehrsunfall``
+      (live 2026-09-25), rather than both long with the first one's
+      consequence back in the title and its description empty.
     """
     keys: list[tuple[str, bool]] = []
     for item in items:
@@ -5808,8 +5837,15 @@ def _short_title_collisions(items: Sequence[FeedItem]) -> set[int]:
             (parts[0].casefold(), True) if parts
             else (_separate_reason_word(title).casefold(), False)
         )
-    counts = Counter(key for key, _ in keys)
-    return {i for i, (key, shortened) in enumerate(keys) if shortened and counts[key] > 1}
+    taken = {key for key, shortened in keys if not shortened}
+    keep_long: set[int] = set()
+    for index, (key, shortened) in enumerate(keys):
+        if not shortened:
+            continue
+        if key in taken:
+            keep_long.add(index)
+        taken.add(key)
+    return keep_long
 
 
 def _is_wl_ticker(item: FeedItem) -> bool:
