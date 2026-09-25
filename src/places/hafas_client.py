@@ -264,15 +264,20 @@ def _build_envelope(
     }
 
 
-def loc_match_request(station_name: str) -> dict[str, object]:
-    """Return the ``LocMatch`` service request for *station_name*."""
+def loc_match_request(station_name: str, max_locations: int = 1) -> dict[str, object]:
+    """Return the ``LocMatch`` service request for *station_name*.
+
+    *max_locations* (``maxLoc``) is 1 for the coordinate enrichment; callers
+    that must choose among same-named stops (a tram stop and the railway
+    station of one name) ask for more.
+    """
     return {
         "meth": "LocMatch",
         "req": {
             "input": {
                 "field": "S",
                 "loc": {"name": station_name, "type": "S"},
-                "maxLoc": 1,
+                "maxLoc": max_locations,
             },
         },
     }

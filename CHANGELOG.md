@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stufe 2: ÖBB-Bahnhöfe werden dem richtigen HAFAS-Halt zugeordnet (2026-09-26)**:
+  Der erste Lauf (158 von 162 Bahnhöfen mit Antwort, 794 Anfragen, keine
+  Fehler) nahm je Bahnhof den ersten HAFAS-Treffer nach Namen im Umkreis
+  von 2 km. Wien Mitte-Landstraße, Rennweg und Quartier Belvedere bekamen
+  so vermutlich die gleichnamige Straßenbahn- bzw. U-Bahn-Haltestelle und
+  keine Bahnlinien. Jetzt: bis zu acht Kandidaten, der nächstgelegene mit
+  Bahnklassen (`pCls`) im Umkreis von 800 m; alte Zuordnungen werden
+  einmal neu ermittelt, jede Zuordnung steht im Log. Dazu der CodeQL-Befund
+  „Modul mit `import` und `import from` eingebunden“ im Skript behoben.
 * **Stufe 2 der Linien-Prüfung: Bahnlinien je ÖBB-Bahnhof (2026-09-25)**:
   Neu `scripts/update_oebb_station_lines.py`, wöchentlich in
   `update-stations.yml`. Für 162 ÖBB-Bahnhöfe in Wien und im Pendlerraum

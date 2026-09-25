@@ -415,9 +415,15 @@ flowchart LR
 schreibt ausschließlich `data/oebb_station_lines.json`:
 
 - Umfang: die ÖBB-Bahnhöfe (`bst_id`) in Wien und im Pendlerraum, derzeit
-  162. Die HAFAS-Stations-ID ermittelt einmalig `LocMatch` über
-  `enrich_station_with_hafas`; ein Treffer weiter als 2 km von den
-  Koordinaten des Bahnhofs wird verworfen. Die ID bleibt in der Datei.
+  162. Die HAFAS-Stations-ID ermittelt einmalig `LocMatch` mit bis zu acht
+  Kandidaten (`pick_rail_location`): Es zählt der nächstgelegene Kandidat,
+  dessen Produktklassen (`pCls`) Bahn enthalten und der höchstens 800 m
+  entfernt liegt. Gespeichert werden ID, HAFAS-Name, Klassen und Abstand.
+  Der erste Lauf (2026-09-25) nahm den ersten Treffer nach Namen mit 2 km
+  Radius; dabei landeten Wien Mitte-Landstraße, Rennweg und Quartier
+  Belvedere vermutlich auf der gleichnamigen Straßenbahn- bzw.
+  U-Bahn-Haltestelle, ihre Bahn-Abfahrtstafeln blieben leer. IDs ohne
+  gespeicherte Klassen werden deshalb einmal neu ermittelt.
 - Je Bahnhof und Lauf vier `StationBoard`-Anfragen: nächster Dienstag und
   der Dienstag fünf Wochen später, jeweils 06:00–09:00 und 15:00–18:00,
   nur Bahnklassen (Filter 4159), `maxJny` 400. Ohne `maxJny` lieferte
