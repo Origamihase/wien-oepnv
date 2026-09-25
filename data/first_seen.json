@@ -5666,11 +5666,11 @@
     "first_seen": "2026-09-24T06:30:59.829985+00:00",
     "translations": {
       "en": {
-        "summary": "Line U1 currently operates at Gro\u00dffeldsiedlung in both directions via 1. expected duration: end of service.",
+        "summary": "Line U1 currently runs at Gro\u00dffeldsiedlung in both directions via 1. expected duration: Sunday end of service.",
         "title": "U1: Soft damage"
       },
       "en_src": {
-        "summary": "d55078e2ce35ab71",
+        "summary": "d1f2c03113f1d004",
         "title": "70025aaf7017f502"
       },
       "epoch": 17
@@ -10911,6 +10911,17 @@
         "title": "18: service obstruction traffic accident"
       },
       "epoch": 3
+    }
+  },
+  "75e60c1e1fa31d4ad5ba13db92bbee5a4346e5ee92d500dd0022673f0c665745": {
+    "first_seen": "2026-09-25T04:00:58.381869+00:00",
+    "translations": {
+      "en": {
+        "title": "13A: event \u2013 Buses stop at the 14A line"
+      },
+      "en_src": {
+        "title": "dd83d8f3f925b9d2"
+      }
     }
   },
   "75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35": {
