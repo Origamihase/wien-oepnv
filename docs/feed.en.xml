@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 25 Sep 2026 09:01:23 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 09:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Update 1 (25.09.2026 08:26) Traffic restriction: St.Pölten]]></title>
+      <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;914606</guid>
+      <pubDate>Fri, 25 Sep 2026 09:21:57 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Due to damage to the track, train journeys between Wien Meidling station (U) and Wien Liesing station are currently only limited. [On 25.09.2026]</description>
+      <content:encoded><![CDATA[Due to damage to the track, train journeys between Wien Meidling station (U) and Wien Liesing station are currently only limited.<br/>[On 25.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
+      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
+      <description>Der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. [25.09.2026 – 12.12.2026]</description>
+      <content:encoded><![CDATA[Der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Update 3 (25.09.2026 09:26) Traffic restriction: St.Pölten]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;914584</guid>
-      <pubDate>Fri, 25 Sep 2026 08:26:33 +0200</pubDate>
+      <pubDate>Fri, 25 Sep 2026 09:26:29 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 08:30:55 +0200</ext:first_seen>
       <ext:starts_at>Fri, 25 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 25 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Due to a switch fault, train journeys to expected 09:00 are limited in St.Pölten Hbf. [On 25.09.2026]</description>
-      <content:encoded><![CDATA[Due to a switch fault, train journeys to expected 09:00 are limited in St.Pölten Hbf.<br/>[On 25.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[47A: Foreign traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cb7f4e7f09aee5cf6261e666ccb189a312683604df3dfa6fd094a27b76e7c453</guid>
-      <pubDate>Fri, 25 Sep 2026 06:37:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 07:01:13 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 06:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: Foreigner traffic accident. [On 25.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: Foreigner traffic accident.<br/>[On 25.09.2026]]]></content:encoded>
+      <description>Due to a switch fault, trains to expected 10:00 are only limited in St.Pölten Hbf trains. [On 25.09.2026]</description>
+      <content:encoded><![CDATA[Due to a switch fault, trains to expected 10:00 are only limited in St.Pölten Hbf trains.<br/>[On 25.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Event – Buses stop at the 14A line]]></title>
@@ -41,28 +52,6 @@
       <ext:ends_at>Fri, 25 Sep 2026 22:15:00 +0200</ext:ends_at>
       <description>Operating only between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52, 48A. expected duration: up to 22:00 … [On 25.09.2026]</description>
       <content:encoded><![CDATA[Operating only between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52, 48A. expected duration: up to 22:00 …<br/>[On 25.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36B: Burst water pipe]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a069557877478b1ee895eb5ea25060921e53c7a8e9afba15571abca618d11c58</guid>
-      <pubDate>Fri, 25 Sep 2026 05:12:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 05:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 05:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 25.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 25.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36A: Burst water pipe]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d039bb83aaf11f97629558899251911fe1b70677ddba088239ab956654e49b54</guid>
-      <pubDate>Fri, 25 Sep 2026 05:12:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 05:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 05:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 25.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 25.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 21 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse Stop: An den Steinfeldern From: Perfektastraße 89 To: Approx. 20 metres towards … [21.09.2026 – 21.09.2027]</description>
       <content:encoded><![CDATA[Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse Stop: An den Steinfeldern From: Perfektastraße 89 To: Approx. 20 metres towards …<br/>[21.09.2026 – 21.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[72A: Kraftwerk Simmering]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">35bf402812b713b3ca2cfb4047d0416c127ab0dbb7894e5338139bfc3a930f18</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 14:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 18 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop relocation of line 72A towards Hasenleiten Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 To: 1. Haidequerstraße 510 Duration: From 22 September … [18.09.2026 – 18.09.2027]</description>
+      <content:encoded><![CDATA[Stop relocation of line 72A towards Hasenleiten Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 To: 1. Haidequerstraße 510 Duration: From 22 September …<br/>[18.09.2026 – 18.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

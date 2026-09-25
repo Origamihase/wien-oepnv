@@ -20445,6 +20445,17 @@
       }
     }
   },
+  "dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00": {
+    "first_seen": "2026-09-25T07:30:54.007911+00:00",
+    "translations": {
+      "en": {
+        "summary": "The 26E does not have the same capacity as a tram."
+      },
+      "en_src": {
+        "summary": "964ae12d5d017b7e"
+      }
+    }
+  },
   "dae0c7592c89203fb55f02e45f7658d5f5e1259b7921dad65d61e057a48d1302": {
     "first_seen": "2026-05-26T23:30:50.121896+00:00",
     "translations": {
@@ -26337,13 +26348,30 @@
     "first_seen": "2026-09-25T06:30:55.399048+00:00",
     "translations": {
       "en": {
-        "summary": "Due to a switch fault, train journeys to expected 09:00 are limited in St.P\u00f6lten Hbf.",
-        "title": "Update 1 (25.09.2026 08:26) Traffic restriction: St.P\u00f6lten"
+        "summary": "Due to a switch fault, trains to expected 10:00 are only limited in St.P\u00f6lten Hbf trains.",
+        "title": "Update 3 (25.09.2026 09:26) Traffic restriction: St.P\u00f6lten"
       },
       "en_src": {
-        "summary": "4510af2f237509b2",
-        "title": "220b3f353edffed4"
+        "summary": "91cd4dc84fb29fb8",
+        "title": "6e81c0d23068f7cc"
       },
+      "epoch": 17
+    }
+  },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&914606": {
+    "first_seen": "2026-09-25T07:30:54.007911+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to damage to the track, train journeys between Wien Meidling station (U) and Wien Liesing station are currently only limited.",
+        "title": "Wien Meidling \u2194 Wien Liesing"
+      },
+      "en_src": {
+        "summary": "b53fe98549951ce6",
+        "title": "741486e541917e92"
+      },
+      "en_verbatim": [
+        "title"
+      ],
       "epoch": 17
     }
   },
