@@ -1,0 +1,54 @@
+name: Probe HAFAS lines (manual)
+
+# Manual diagnostic for stage 2 of the line plausibility check (audit
+# 2026-09-25, A.14): which lines serve an ÖBB station, and how does HAFAS
+# name them? The development sandbox cannot reach ``fahrplan.oebb.at``, so
+# ``scripts/probe_hafas_lines.py`` runs here and prints a summary of the
+# response shape (never the raw payload) to the job log. Four HAFAS
+# requests per run, read-only, nothing is committed.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: probe-hafas-lines
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    # Four small HTTP requests plus dependency install; 10 min catches a hang.
+    timeout-minutes: 10
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      PYTHONPATH: src
+    steps:
+      # Workaround for actions/checkout#2351 (sporadic includeIf credential
+      # race on v6 → "could not read Username, terminal prompts disabled").
+      # Two attempts; remove once v6.0.3+ is pinned.
+      - name: Check out repository (attempt 1/2)
+        id: checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        continue-on-error: true
+
+      - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
+        if: steps.checkout.outcome == 'failure'
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      - name: Synchronize HAFAS Profile
+        # Same refresh the weekly station workflow runs, so the probe uses
+        # the current ``ver`` / ``aid``. The refreshed file is not committed.
+        run: python scripts/sync_hafas_profile.py
+
+      - name: Probe HAFAS
+        run: python scripts/probe_hafas_lines.py

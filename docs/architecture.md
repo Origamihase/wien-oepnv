@@ -396,6 +396,14 @@ flowchart LR
   öffentlichen Einstiegspunkt zu `None` konvertiert: ein
   HAFAS-Schluckauf crasht das Skript nicht, und der
   Google-Places-Fallback läuft trotzdem für die verbliebene Restmenge.
+  Den Transport (Profil, Umschlag, MAC, `request_safe`, JSON-Hooks)
+  kapselt seit 2026-09-25 `post_mgate(svcReqL, max_bytes=…)`, damit
+  weitere Mgate-Methoden (z. B. `StationBoard` für die Linien je
+  ÖBB-Bahnhof, Stufe 2 der Linien-Prüfung aus A.14) denselben Weg
+  nehmen; der Circuit Breaker bleibt Sache des jeweiligen Aufrufers.
+  Die Antwortform dafür erhebt das manuelle Diagnoseskript
+  `scripts/probe_hafas_lines.py` im Workflow `probe-hafas-lines.yml`
+  (nur `workflow_dispatch`, vier Anfragen, schreibt nichts).
 
 **Warum Google Places die Notfall-Stufe ist:**
 

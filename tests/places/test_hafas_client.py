@@ -343,3 +343,26 @@ def test_enrich_propagates_open_breaker_as_none(
         hafas_client._BREAKER, "call", side_effect=CircuitBreakerOpen("open")
     ):
         assert enrich_station_with_hafas("Wien Hauptbahnhof") is None
+
+
+def test_post_mgate_sends_the_given_service_requests(
+    reset_module: None, profile_no_salt: HafasProfile
+) -> None:
+    board: dict[str, object] = {"meth": "StationBoard", "req": {"type": "DEP"}}
+    response = MagicMock(spec=requests.Response)
+    response.json.return_value = {"svcResL": [{"meth": "StationBoard", "err": "OK"}]}
+    with patch.object(hafas_client, "_get_profile", return_value=profile_no_salt):
+        with patch.object(hafas_client, "request_safe", return_value=response) as rs:
+            result = hafas_client.post_mgate([board], max_bytes=1234)
+    assert result == {"svcResL": [{"meth": "StationBoard", "err": "OK"}]}
+    call_args: Any = rs.call_args
+    sent = json.loads(call_args.kwargs["data"].decode("utf-8"))
+    assert sent["svcReqL"] == [board]
+    assert sent["auth"] == {"type": "AID", "aid": "OWDL4fE4ixNiPBBm"}
+    assert call_args.kwargs["max_bytes"] == 1234
+
+
+def test_post_mgate_raises_without_profile(reset_module: None) -> None:
+    with patch.object(hafas_client, "_get_profile", return_value=None):
+        with pytest.raises(HafasProfileError):
+            hafas_client.post_mgate([hafas_client.loc_match_request("Wien Meidling")])
