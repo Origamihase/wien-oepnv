@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 25 Sep 2026 21:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 22:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U6: Service disruption]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: service disruption. [On 25.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[On 25.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;914713</guid>
-      <pubDate>Fri, 25 Sep 2026 20:43:52 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 17:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Due to damage to the track, only limited journeys were possible between Wien Meidling station (U) and Wien Liesing station to 20:25. [On 25.09.2026]</description>
-      <content:encoded><![CDATA[Due to damage to the track, only limited journeys were possible between Wien Meidling station (U) and Wien Liesing station to 20:25.<br/>[On 25.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26E: Track construction works]]></title>
@@ -57,12 +46,12 @@
       <title><![CDATA[13A: Event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">75e60c1e1fa31d4ad5ba13db92bbee5a4346e5ee92d500dd0022673f0c665745</guid>
-      <pubDate>Fri, 25 Sep 2026 05:44:00 +0200</pubDate>
+      <pubDate>Fri, 25 Sep 2026 05:47:02 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 06:00:58 +0200</ext:first_seen>
       <ext:starts_at>Fri, 25 Sep 2026 05:48:32 +0200</ext:starts_at>
       <ext:ends_at>Fri, 25 Sep 2026 22:15:00 +0200</ext:ends_at>
-      <description>Buses stop on line 14A. Only operate between Hauptbahnhof S U and Neubaugasse U. Switch to line U3, 5, 12, 46, 52, 48A. [On 25.09.2026]</description>
-      <content:encoded><![CDATA[Buses stop on line 14A. Only operate between Hauptbahnhof S U and Neubaugasse U. Switch to line U3, 5, 12, 46, 52, 48A.<br/>[On 25.09.2026]]]></content:encoded>
+      <description>Buses stop at line 14A [On 25.09.2026]</description>
+      <content:encoded><![CDATA[Buses stop at line 14A<br/>[On 25.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB-replacement bus]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
       <description>Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before … [24.09.2026 – 02.10.2026]</description>
       <content:encoded><![CDATA[Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N66/N68R: Quellenplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">31d6ac9f73525f3feaa44bb3eb6fdafe467567211114f38f99f0fbe41a2e441e</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 15:00:00 +0200</ext:ends_at>
+      <description>Stop relocation of line N66 towards Oper, Karlsplatz and the call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along … [24.09.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Stop relocation of line N66 towards Oper, Karlsplatz and the call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
