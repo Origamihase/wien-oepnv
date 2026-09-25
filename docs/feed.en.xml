@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 25 Sep 2026 16:44:33 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 17:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[18: Traffic accident – service from Ernst-Happel-Stadion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">210747fa2854ba46628c0d1ae48a0c9576348c061927df64a107a4dbad981837</guid>
+      <pubDate>Fri, 25 Sep 2026 16:50:41 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 17:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 16:50:41 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 17:49:00 +0200</ext:ends_at>
+      <description>[On 25.09.2026]</description>
+      <content:encoded><![CDATA[[On 25.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Service obstruction traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">caad9e268eb418676c7db56fdc61da1e782e3e71b8255532134411fde04028b5</guid>
+      <pubDate>Fri, 25 Sep 2026 16:51:11 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 16:51:11 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 16:51:13 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 17:50:00 +0200</ext:ends_at>
+      <description>[On 25.09.2026]</description>
+      <content:encoded><![CDATA[[On 25.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Service obstruction traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f</guid>
+      <pubDate>Fri, 25 Sep 2026 16:49:41 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 16:46:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 16:46:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Operation only between Burggasse, Stadthalle U and Ernst-Happel-Stadion. Duration: 17:15. Reason: traffic accident im Haltestellenbereich Stadion U. [On 25.09.2026]</description>
+      <content:encoded><![CDATA[Operation only between Burggasse, Stadthalle U and Ernst-Happel-Stadion. Duration: 17:15. Reason: traffic accident im Haltestellenbereich Stadion U.<br/>[On 25.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[85A: Foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,12 +54,12 @@
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 25.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[14A: Rescue operation – service from Laxenburger Straße / Gudrunstraße]]></title>
+      <title><![CDATA[14A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac</guid>
-      <pubDate>Fri, 25 Sep 2026 15:59:33 +0200</pubDate>
+      <pubDate>Fri, 25 Sep 2026 16:01:00 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 15:59:33 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 16:01:03 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 25 Sep 2026 16:01:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 25.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 25.09.2026]]]></content:encoded>
@@ -85,39 +118,6 @@
       <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
       <description>The 26E does not have the same capacity as a tram. [25.09.2026 – 12.12.2026]</description>
       <content:encoded><![CDATA[The 26E does not have the same capacity as a tram.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Switch fault]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3169c7392ae5bf8671badefab08375f7a1babfb42f658591deb18bc6c7b7e6c0</guid>
-      <pubDate>Fri, 25 Sep 2026 07:53:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 07:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 07:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: switch fault in the stop area Großfeldsiedlung. [On 25.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: switch fault in the stop area Großfeldsiedlung.<br/>[On 25.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Event – Buses stop at the 14A line]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">75e60c1e1fa31d4ad5ba13db92bbee5a4346e5ee92d500dd0022673f0c665745</guid>
-      <pubDate>Fri, 25 Sep 2026 05:44:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 06:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 05:48:32 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 22:15:00 +0200</ext:ends_at>
-      <description>Operating only between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52, 48A. expected duration: up to 22:00 … [On 25.09.2026]</description>
-      <content:encoded><![CDATA[Operating only between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52, 48A. expected duration: up to 22:00 …<br/>[On 25.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Bhf. Hütteldorf ÖBB-replacement bus for 80]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Fri, 25 Sep 2026 05:00:28 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 05:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>[On 25.09.2026]</description>
-      <content:encoded><![CDATA[[On 25.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
