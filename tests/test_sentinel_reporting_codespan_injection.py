@@ -163,13 +163,13 @@ def _post_issue_capture_body(
     """Stand up the auto-issue submitter and return the captured body.
 
     Mirrors the existing pattern from ``test_reporting_github.py`` —
-    monkeypatches the SSRF guard, registers a responses URL, and
-    triggers ``report.log_results()`` (which calls ``_submit_github_issue``).
+    relies on the ``stub_public_dns`` fixture (callers must request it) for
+    DNS, registers a responses URL, and triggers ``report.log_results()``
+    (which calls ``_submit_github_issue``).
     """
     monkeypatch.setenv("FEED_GITHUB_CREATE_ISSUES", "1")
     monkeypatch.setenv("FEED_GITHUB_REPOSITORY", "demo/repo")
     monkeypatch.setenv("FEED_GITHUB_TOKEN", "secret-token")
-    monkeypatch.setattr("src.utils.http.validate_http_url", lambda url, **kw: url)
 
     import sys
     for module_name in ["src.utils.http", "utils.http"]:
@@ -188,6 +188,7 @@ def _post_issue_capture_body(
 
 
 @responses.activate
+@pytest.mark.usefixtures("stub_public_dns")
 def test_github_issue_body_feed_path_backtick_breaks_inline_code_span(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -213,6 +214,7 @@ def test_github_issue_body_feed_path_backtick_breaks_inline_code_span(
 
 
 @responses.activate
+@pytest.mark.usefixtures("stub_public_dns")
 def test_github_issue_body_error_log_path_backtick_breaks_inline_code_span(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -252,6 +254,7 @@ def test_github_issue_body_error_log_path_backtick_breaks_inline_code_span(
 
 
 @responses.activate
+@pytest.mark.usefixtures("stub_public_dns")
 def test_github_issue_body_feed_path_fence_break_via_newline(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:

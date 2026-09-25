@@ -9,6 +9,11 @@ import responses
 
 from src.feed.reporting import RunReport, _is_trusted_github_api
 
+# Stub the resolver so a "no request was sent" assertion is proven to come
+# from the trust guard: without it, a DNS outage would also block the POST
+# and these negative tests would pass for the wrong reason.
+pytestmark = pytest.mark.usefixtures("stub_public_dns")
+
 
 @pytest.mark.parametrize(
     "url",
