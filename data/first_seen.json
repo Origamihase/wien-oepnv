@@ -20449,11 +20449,14 @@
     "first_seen": "2026-09-25T07:30:54.007911+00:00",
     "translations": {
       "en": {
-        "summary": "The 26E does not have the same capacity as a tram."
+        "summary": "The 26E does not have the same capacity as a tram.",
+        "title": "26E: track construction works"
       },
       "en_src": {
-        "summary": "964ae12d5d017b7e"
-      }
+        "summary": "964ae12d5d017b7e",
+        "title": "d1ae50c1eba478e7"
+      },
+      "epoch": 17
     }
   },
   "dae0c7592c89203fb55f02e45f7658d5f5e1259b7921dad65d61e057a48d1302": {
@@ -26348,12 +26351,12 @@
     "first_seen": "2026-09-25T06:30:55.399048+00:00",
     "translations": {
       "en": {
-        "summary": "Due to a switch fault, trains to expected 10:00 are only limited in St.P\u00f6lten Hbf trains.",
-        "title": "Update 3 (25.09.2026 09:26) Traffic restriction: St.P\u00f6lten"
+        "summary": "Due to a switch fault, trains to expected 11:00 are only limited in St.P\u00f6lten.",
+        "title": "Update 4 (25.09.2026 09:59) Traffic restriction: St.P\u00f6lten"
       },
       "en_src": {
-        "summary": "91cd4dc84fb29fb8",
-        "title": "6e81c0d23068f7cc"
+        "summary": "29f0d77838f51109",
+        "title": "b96d6071f1575226"
       },
       "epoch": 17
     }
@@ -26362,11 +26365,11 @@
     "first_seen": "2026-09-25T07:30:54.007911+00:00",
     "translations": {
       "en": {
-        "summary": "Due to damage to the track, train journeys between Wien Meidling station (U) and Wien Liesing station are currently only limited.",
+        "summary": "Due to damage to the track between Wien Meidling Train Station (U) and Wien Liesing Train Station Train journeys to expected 10:00 are limited.",
         "title": "Wien Meidling \u2194 Wien Liesing"
       },
       "en_src": {
-        "summary": "b53fe98549951ce6",
+        "summary": "971462108863031b",
         "title": "741486e541917e92"
       },
       "en_verbatim": [
