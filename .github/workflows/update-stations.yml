@@ -9,7 +9,9 @@ name: Update station directory
 #   run, with atomic-write of a cached snapshot to
 #   ``data/oebb-verkehrsstationen.xlsx`` for soft-fail fallback on a
 #   transient outage; free open data, no auth.
-# * Wien OGD ``wienerlinien-ogd-haltestellen``/``-haltepunkte`` CSVs —
+# * Wien OGD ``wienerlinien-ogd-haltestellen``/``-haltepunkte`` CSVs
+#   (plus ``-linien``/``-fahrwegverlaeufe`` for each station's
+#   ``wl_lines``) —
 #   ``update_wl_stations.py`` downloads the latest snapshot from
 #   the canonical Wiener Linien OGD host
 #   (``www.wienerlinien.at/ogd_realtime/doku/ogd/``) on every run
