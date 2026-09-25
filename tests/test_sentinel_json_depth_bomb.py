@@ -78,6 +78,7 @@ def test_precondition_recursion_error_not_caught_by_value_error() -> None:
 # decode-failure fallback as malformed JSON.
 
 @responses.activate
+@pytest.mark.usefixtures("stub_public_dns")
 def test_reporter_handles_github_response_depth_bomb_on_error_status(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
@@ -124,6 +125,7 @@ def test_reporter_handles_github_response_depth_bomb_on_error_status(
 
 
 @responses.activate
+@pytest.mark.usefixtures("stub_public_dns")
 def test_reporter_handles_github_response_depth_bomb_on_success_status(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,

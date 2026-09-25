@@ -368,6 +368,59 @@ def reset_circuit_breakers() -> Iterator[None]:
 
 
 # ---------------------------------------------------------------------------
+# Deterministic DNS for mocked-HTTP tests
+#
+# ``request_safe`` and ``validate_http_url`` resolve every hostname through
+# :func:`src.utils.http._resolve_hostname_safe` (real DNS via dnspython) and
+# pin the connection to the vetted IP. The ``responses`` library only mocks
+# the HTTP layer, so a test that POSTs to ``https://api.github.com/...``
+# still needs a working resolver: when DNS times out, the SSRF guard
+# rejects the URL and the test fails with "No safe IP resolved" instead of
+# exercising the code under test.
+# ---------------------------------------------------------------------------
+
+#: Public (``is_ip_safe``-accepted) address returned by :func:`stub_public_dns`.
+#: The ``responses`` mock intercepts the request before any socket is opened,
+#: so no traffic ever reaches it. Documentation ranges (TEST-NET-1/2/3) cannot
+#: be used here because the production guard rejects them as non-global.
+STUB_PUBLIC_IP = "140.82.121.6"
+
+
+@pytest.fixture
+def stub_public_dns(monkeypatch: pytest.MonkeyPatch) -> str:
+    """Resolve every hostname to :data:`STUB_PUBLIC_IP` without real DNS.
+
+    Replaces only the resolver (``_resolve_hostname_safe``); the production
+    SSRF checks (``is_ip_safe``, IP pinning, redirect re-validation) still
+    run against the returned address. Patched on both import aliases
+    (``src.utils.http`` and ``utils.http``) because some provider modules
+    import the package without the ``src.`` prefix.
+
+    Returns:
+        The stubbed IP, so tests can assert on the pinned address.
+    """
+    import socket
+    from typing import Any
+
+    import src.utils.http as http_utils
+
+    # Guard: the stub must survive the real safety check, otherwise every
+    # test using it would fail for the wrong reason. (Bound to a name first
+    # so the ``TypeGuard`` does not narrow the ``str`` constant to an IP type.)
+    stub_is_safe = http_utils.is_ip_safe(STUB_PUBLIC_IP)
+    assert stub_is_safe, f"{STUB_PUBLIC_IP} must pass is_ip_safe()"
+
+    def _resolve(hostname: str) -> list[tuple[Any, ...]]:
+        return [(socket.AF_INET, socket.SOCK_STREAM, 6, "", (STUB_PUBLIC_IP, 0))]
+
+    for module_name in ("src.utils.http", "utils.http"):
+        module = sys.modules.get(module_name)
+        if module is not None:
+            monkeypatch.setattr(module, "_resolve_hostname_safe", _resolve)
+    return STUB_PUBLIC_IP
+
+
+# ---------------------------------------------------------------------------
 # Coordinate-proximity test helper
 #
 # Replacement for the brittle ``pytest.approx(<lat>) ; pytest.approx(<lon>)``

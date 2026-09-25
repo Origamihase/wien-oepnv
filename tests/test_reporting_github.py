@@ -6,14 +6,16 @@ import responses
 
 from src.feed.reporting import RunReport
 
+# ``request_safe`` resolves api.github.com before ``responses`` sees the
+# request; stub the resolver so these tests never depend on real DNS.
+pytestmark = pytest.mark.usefixtures("stub_public_dns")
+
 
 @responses.activate
 def test_run_report_creates_github_issue(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("FEED_GITHUB_CREATE_ISSUES", "1")
     monkeypatch.setenv("FEED_GITHUB_REPOSITORY", "demo/repo")
     monkeypatch.setenv("FEED_GITHUB_TOKEN", "secret-token")
-    # Bypass DNS check in test environment
-    monkeypatch.setattr("src.utils.http.validate_http_url", lambda url, **kw: url)
 
     # Robustly patch verify_response_ip in all loaded modules where it might be used
     # This handles aliasing (src.utils vs utils) and imports in feed.reporting
@@ -246,3 +248,51 @@ def test_run_report_rejects_non_string_html_url(
         message.endswith("Automatisches GitHub-Issue erstellt.")
         for message in info_messages
     ), f"Expected URL-less success log, got: {info_messages}"
+
+
+@responses.activate
+def test_run_report_submits_issue_without_real_dns(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Regression: the issue POST must not depend on a working resolver.
+
+    A full local run once failed ``test_run_report_rejects_non_string_html_url``
+    with "No safe IP resolved" because DNS for api.github.com timed out.
+    Make every real lookup raise; ``stub_public_dns`` (module ``pytestmark``)
+    must still let the
+    (unmodified) SSRF guard and IP pinning accept the request.
+    """
+    import socket
+    import sys
+
+    import dns.exception
+    import dns.resolver
+
+    def _dns_down(*_args: object, **_kwargs: object) -> None:
+        raise dns.exception.Timeout
+
+    def _getaddrinfo_down(*_args: object, **_kwargs: object) -> None:
+        raise socket.gaierror("DNS unavailable in test")
+
+    monkeypatch.setattr(dns.resolver.Resolver, "resolve", _dns_down)
+    monkeypatch.setattr(socket, "getaddrinfo", _getaddrinfo_down)
+
+    monkeypatch.setenv("FEED_GITHUB_CREATE_ISSUES", "1")
+    monkeypatch.setenv("FEED_GITHUB_REPOSITORY", "demo/repo")
+    monkeypatch.setenv("FEED_GITHUB_TOKEN", "secret-token")
+    for module_name in ["src.utils.http", "utils.http"]:
+        if module_name in sys.modules:
+            monkeypatch.setattr(sys.modules[module_name], "verify_response_ip", lambda _: None)
+
+    responses.post(
+        "https://api.github.com/repos/demo/repo/issues",
+        json={"html_url": "https://github.com/demo/repo/issues/1"},
+        status=201,
+    )
+
+    report = RunReport([("wl", True)])
+    report.provider_error("wl", "DNS-unabhängiger Testlauf")
+    report.finish(build_successful=False)
+    report.log_results()
+
+    assert len(responses.calls) == 1
