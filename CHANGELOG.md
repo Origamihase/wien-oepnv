@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE- und EN-Feed: WL-Ticker mit Ursache im Titel, Folge in der Beschreibung (2026-09-25)**:
+  Wunsch des Betreibers zum Live-Item „14A: Rettungseinsatz – Betrieb ab
+  Laxenburger Straße / Gudrunstraße“, dessen Beschreibung nur „[Am
+  25.09.2026]“ zeigte: Der Titel lautet jetzt „14A: Rettungseinsatz“, die
+  Beschreibung „Betrieb ab Laxenburger Straße / Gudrunstraße [Am
+  25.09.2026]“. Das gilt für alle WL-Störungen dieser Form. Die Ursache
+  kommt aus `_TITLE_REASON_WORDS` oder, neu, aus dem Anfang der Folge
+  („Betrieb ab …“, „Züge halten …“, „Umleitung …“, „Kein Betrieb“). So
+  werden auch „O: Schadhafter Zug“, „5: Stromstörung“ oder „6: PKW im
+  Gleis“ getrennt (13 weitere Titel seit Juni). Hat die Beschreibung eigenen
+  Inhalt, steht die Folge davor, gekürzt wird hinter dem letzten ganzen
+  Satz. Hinweise („D: Gleisbauarbeiten – Althanstraße“) behalten den Ort im
+  Titel. Würden zwei sichtbare Items denselben kurzen Titel bekommen (drei
+  Ticker „49: Gleisschaden …“ zu einem Vorfall), behalten sie die lange
+  Form mit Strich. Tests: `tests/test_ticker_title_split.py`.
 * **EN-Feed: Titel aus Linie und Glossar-Begriff ohne Modell übersetzt (2026-09-25)**:
   In den Builds um 15:53 und 16:01 standen im EN-Feed „94A:
   Verkehrsunfall“, „U1: Weichenstörung“, „U2: Polizeieinsatz“, „5:

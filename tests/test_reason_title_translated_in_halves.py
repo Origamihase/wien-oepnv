@@ -211,6 +211,9 @@ def test_the_model_never_sees_the_dash_end_to_end(monkeypatch: pytest.MonkeyPatc
         ends_at=datetime(2026, 9, 19, 21, 55, tzinfo=UTC),
         lang="en",
         state={},
+        # The dashed title only survives where the short one would collide
+        # with another visible item's (``_short_title_collisions``).
+        split_reason=False,
     )
     assert formatted.title_cdata == "31: Demonstration – service from Wallensteinstraße"
     assert received, "the fake model was not consulted"

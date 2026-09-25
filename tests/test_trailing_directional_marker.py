@@ -37,7 +37,7 @@ from src import build_feed
 from src.feed_types import FeedItem
 
 
-def _format(raw_title: str, raw_desc: str) -> tuple[str, str]:
+def _format(raw_title: str, raw_desc: str, *, split_reason: bool = True) -> tuple[str, str]:
     item = cast(
         FeedItem,
         {
@@ -51,7 +51,7 @@ def _format(raw_title: str, raw_desc: str) -> tuple[str, str]:
     )
     now = datetime(2026, 5, 16, 12, 0, tzinfo=UTC)
     formatted = build_feed._format_item_content(
-        item, ident="t", starts_at=now, ends_at=None
+        item, ident="t", starts_at=now, ends_at=None, split_reason=split_reason
     )
     return formatted.title_out, formatted.desc_text_truncated
 
@@ -94,9 +94,16 @@ class TestTrailingDirectionalMarkerStripped:
         """
         title = "2: Veranstaltung Betrieb ab Ring, Volkstheater"
         desc = "Veranstaltung\nBetrieb ab Ring, Volkstheater >"
-        _, out = _format(title, desc)
+        # The colliding-title path, where the dedupe decides.
+        _, out = _format(title, desc, split_reason=False)
         assert "Volkstheater" not in out
         assert out.strip().startswith("["), out
+        # Published since 2026-09-25: the consequence moves under the short
+        # title, once, and without the marker.
+        short, out = _format(title, desc)
+        assert short == "2: Veranstaltung"
+        assert out.startswith("Betrieb ab Ring, Volkstheater [")
+        assert ">" not in out
 
     def test_thaliastrasse_marker_strip_enables_dedup(self) -> None:
         # Stripping the trailing ">" makes the summary match the title body

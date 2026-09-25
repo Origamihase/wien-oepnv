@@ -11,7 +11,7 @@ import string
 import secrets
 import sys
 import xml.etree.ElementTree as ET  # nosec B405
-from collections import defaultdict
+from collections import Counter, defaultdict
 from collections.abc import Callable, Sequence
 from concurrent.futures import (
     FIRST_COMPLETED,
@@ -5639,6 +5639,192 @@ def _separate_reason_word(title_out: str) -> str:
     return f"{prefix}{words[0]} – {words[1]}"
 
 
+# The consequences a WL ticker announces after its cause, measured over the
+# cache since June (87 split titles: "Betrieb ab" 44, "Züge halten" 17,
+# "Umleitung …" 9, "Kein Betrieb" 5, "Betrieb nur" 4, "Busse halten" 2, …).
+# The cause in front: one to three words, capitalised, no digit — "Schadhafter
+# Zug", "Signalstörung", "PKW im Gleis", but not "Linien 25 und 26" or
+# "3A Netzänderung", where the digits show it is not a cause.
+_CONSEQUENCE_START_RE = re.compile(
+    r"^(?P<cause>[A-ZÄÖÜ][^\d:–]*?)\s+(?P<fragment>(?:Kein Betrieb|Betrieb (?:ab|nur|über|zwischen|bis)"
+    r"|Züge halten|Busse halten|Umleitung)\b.*)$"
+)
+_CONSEQUENCE_CAUSE_MAX_WORDS = 3
+
+
+def _reason_and_fragment(title_out: str) -> tuple[str, str] | None:
+    """``14A: Rettungseinsatz Betrieb ab …`` → (``14A: Rettungseinsatz``, ``Betrieb ab …``).
+
+    Two ways to find the joint between cause and consequence:
+
+    * the cause is a word of ``_TITLE_REASON_WORDS`` — the joint
+      :func:`_separate_reason_word` puts its dash on (a title that already
+      carries the dash is accepted too);
+    * otherwise the consequence opens with a phrase WL's tickers use for it
+      (:data:`_CONSEQUENCE_START_RE`), after a short cause the word list does
+      not know: ``O: Schadhafter Zug Betrieb ab Quartier Belvedere``,
+      ``5: Stromstörung Betrieb ab Rosensteingasse`` (13 such titles since
+      June).
+
+    ``None`` when neither applies.
+    """
+    dashed = _separate_reason_word(title_out)
+    match = _TITLE_BODY_RE.match(dashed)
+    body = match.group(1) if match else dashed
+    prefix = dashed[: match.start(1)] if match else ""
+    reason, dash, fragment = body.partition(" – ")
+    if dash and reason.casefold() in _TITLE_REASON_WORDS and fragment.strip():
+        return f"{prefix}{reason}", fragment.strip()
+    consequence = _CONSEQUENCE_START_RE.match(body)
+    if consequence is None:
+        return None
+    cause = consequence.group("cause").strip()
+    if len(cause.split()) > _CONSEQUENCE_CAUSE_MAX_WORDS:
+        return None
+    return f"{prefix}{cause}", consequence.group("fragment").strip()
+
+
+def _finish_reason_title(
+    title_out: str, summary: str, uncut_summary: str, *, split: bool
+) -> tuple[str, str]:
+    """Final title and summary of a WL ticker ``Linie: Ursache Folge``.
+
+    With ``split`` (a disruption, and no other visible item would end up
+    with the same short title — see :func:`_short_title_collisions`) the
+    title keeps only the line and the cause, and the consequence opens
+    the summary::
+
+        T: 14A: Rettungseinsatz
+        D: Betrieb ab Laxenburger Straße / Gudrunstraße [Am 25.09.2026]
+
+    Operator request 2026-09-25: until then the title carried both halves
+    (``14A: Rettungseinsatz – Betrieb ab …``) and the description only the
+    date, because WL's ticker description repeats the title word for word
+    and the duplicate check emptied it. A read-out-from-afar title is the
+    cause; what the rider has to do belongs underneath. When the summary
+    already says the consequence it is left as it is; otherwise the
+    consequence goes in front of it and the 180-character budget applies
+    to both together.
+
+    Without ``split`` (a notice, whose second half is a place —
+    ``D: Gleisbauarbeiten – Althanstraße`` — or a colliding short title)
+    the title gets the dash of :func:`_separate_reason_word` as before.
+    """
+    parts = _reason_and_fragment(title_out) if split else None
+    if parts is None:
+        return _separate_reason_word(title_out), summary
+    short_title, fragment = parts
+    # WL's ticker description is often cause and consequence once more
+    # ("Betriebsstörung\nKein Betrieb" under "13A: Betriebsstörung Kein
+    # Betrieb ab 10 Uhr"). With the cause now in the title, what is left
+    # of such a summary says nothing the consequence does not.
+    rest = _drop_category_word(summary, _title_body(short_title))
+    if not rest or rest.casefold() in fragment.casefold():
+        return short_title, _truncate_summary_180(fragment)
+    if fragment.casefold() in uncut_summary.casefold():
+        return short_title, summary
+    return short_title, _lead_with_fragment(fragment, uncut_summary)
+
+
+def _lead_with_fragment(fragment: str, uncut_summary: str) -> str:
+    """``fragment`` in front of the summary, cut behind a whole sentence.
+
+    The consequence in front costs the summary room: "Busse halten bei der
+    Linie 14A." pushed the 13A summary past 180 characters, and a plain cut
+    ended it on "… 48A aus. Voraussichtliche …". Over budget, the text ends
+    behind the last sentence that fits (:func:`_last_sentence_end`); only
+    when none does is it cut mid-sentence as before.
+    """
+    text = fragment if fragment.endswith((".", "!", "?", "…")) else f"{fragment}."
+    text = f"{text} {uncut_summary}"
+    if len(text) > 180:
+        end = _last_sentence_end(text, 180, start=len(fragment))
+        if end is not None:
+            text = text[:end]
+    return _strip_trailing_directional_marker(_truncate_summary_180(text))
+
+
+# A period between a word and a capitalised word, as candidates for a
+# sentence end in :func:`_last_sentence_end`.
+_LOOSE_SENTENCE_END_RE = re.compile(r"(?<=\w)\.(?=\s+[A-ZÄÖÜ])")
+_WORD_BEFORE_PERIOD_RE = re.compile(r"(\w+)$")
+# Abbreviations of three letters or more that WL texts put before a
+# capitalised word ("Bahnhst bzw. Gerasdorf", "Wien Hbf. Richtung …").
+_NOT_A_SENTENCE_END: frozenset[str] = frozenset({
+    "bzw", "usw", "ggf", "ggü", "etc", "vgl", "sog", "evtl", "inkl", "hbf", "str",
+})
+
+
+def _last_sentence_end(text: str, limit: int, *, start: int = 0) -> int | None:
+    """End (after the period) of the last sentence in ``text[start:limit]``.
+
+    Looser than :data:`_SENTENCE_SPLIT_RE`: three letters before the period
+    suffice ("aus.", "Uhr."), because this only picks where to cut an
+    over-long text. Numbers ("17. Februar"), one- and two-letter
+    abbreviations ("U.", "b.", "Nr.") and :data:`_NOT_A_SENTENCE_END` never
+    end a sentence.
+    """
+    best: int | None = None
+    for match in _LOOSE_SENTENCE_END_RE.finditer(text, start, limit):
+        word = _WORD_BEFORE_PERIOD_RE.search(text, 0, match.start())
+        if word is None:
+            continue
+        token = word.group(1)
+        if len(token) < 3 or token.isdigit() or token.casefold() in _NOT_A_SENTENCE_END:
+            continue
+        best = match.end()
+    return best
+
+
+def _rendered_title(item: FeedItem) -> str:
+    """``item``'s German title as :func:`_format_item_content` renders it,
+    up to the reason/fragment step."""
+    title = _sanitize_text(item.get("title") or "Mitteilung")
+    if len(title) > feed_config.TITLE_CHAR_LIMIT:
+        title = title[: feed_config.TITLE_CHAR_LIMIT].rstrip() + " …"
+    return _WHITESPACE_RE.sub(" ", title).strip()
+
+
+def _short_title_collisions(items: Sequence[FeedItem]) -> set[int]:
+    """Indices in ``items`` that must keep the long ``Ursache – Folge`` title.
+
+    Shortening is only safe while the short title is unique among the
+    visible items. WL often sends several tickers for one incident::
+
+        49: Gleisschaden
+        49: Gleisschaden Betrieb ab Urban-Loritz-Platz
+        49: Gleisschaden Betrieb ab Hütteldorfer Straße
+
+    Shortened, three slots on the display would read ``49: Gleisschaden``
+    (feed history since June: 18 of 314 sampled feeds had such a group).
+    Items that would shorten onto a title another visible item has keep
+    the dashed long form instead, so every title stays distinct.
+    """
+    keys: list[tuple[str, bool]] = []
+    for item in items:
+        title = _rendered_title(item)
+        parts = _reason_and_fragment(title) if _is_wl_ticker(item) else None
+        keys.append(
+            (parts[0].casefold(), True) if parts
+            else (_separate_reason_word(title).casefold(), False)
+        )
+    counts = Counter(key for key, _ in keys)
+    return {i for i, (key, shortened) in enumerate(keys) if shortened and counts[key] > 1}
+
+
+def _is_wl_ticker(item: FeedItem) -> bool:
+    """A Wiener-Linien disruption, whose title is a display-board ticker.
+
+    Notices (``Hinweis``) put a place behind the cause, not a consequence
+    (``D: Gleisbauarbeiten Althanstraße``). ÖBB and the Stammstrecke
+    monitor file under ``Störung`` too, but their titles are routes.
+    """
+    return (
+        str(item.get("source") or "").strip().casefold() == "wiener linien"
+        and str(item.get("category") or "").strip().casefold() == "störung"
+    )
+
+
 def _reason_only_summary(category_word: str) -> str:
     """Rettet den Grund, wenn sonst ein leerer Rumpf übrig bliebe.
 
@@ -6120,6 +6306,7 @@ def _format_item_content(
     *,
     lang: str = "de",
     state: dict[str, dict[str, Any]] | None = None,
+    split_reason: bool = True,
 ) -> FormattedContent:
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
@@ -6232,6 +6419,7 @@ def _format_item_content(
     # Tokens, unbalancierte Klammer) wurde in :func:`_truncate_summary_180`
     # extrahiert, damit die C901-Komplexitätsgrenze (Baseline 31) Platz
     # für den lang/state-Overlay behält.
+    uncut_summary = summary
     summary = _truncate_summary_180(summary)
 
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
@@ -6293,15 +6481,18 @@ def _format_item_content(
         # die sie streicht, ändert das Verhalten nicht.
         summary = ""
 
+    # Last, after every comparison of the summary against the title body:
+    # a ticker's consequence moves into the summary, or the joint between
+    # cause and consequence gets its dash — see ``_finish_reason_title``.
+    title_out, summary = _finish_reason_title(
+        title_out, summary, uncut_summary, split=split_reason and _is_wl_ticker(it)
+    )
+    title_cdata = _cdata_content(title_out)
+
     desc_text_truncated, desc_html = _compose_description(summary, time_line)
 
     # Prepare CDATA content (handle ]]> in content)
     desc_cdata = _cdata_content(desc_html)
-
-    # Last, after every comparison of the summary against the title body:
-    # the joint between reason word and ticker fragment gets its dash.
-    title_out = _separate_reason_word(title_out)
-    title_cdata = _cdata_content(title_out)
 
     base = FormattedContent(
         guid, link, title_cdata, desc_text_truncated, desc_cdata,
@@ -6354,6 +6545,7 @@ def _emit_item(
     state: dict[str, dict[str, Any]],
     *,
     lang: str = "de",
+    split_reason: bool = True,
 ) -> tuple[str, ET.Element, dict[str, str]]:
     """Convert a normalized item dictionary into an RSS <item> element and CDATA replacements.
 
@@ -6364,6 +6556,9 @@ def _emit_item(
         lang: Target output language (``"de"`` or ``"en"``). When ``"en"``
             the formatter applies a translation overlay (cached in
             ``state[ident]["translations"]["en"]``).
+        split_reason: Whether a WL ticker title may shrink to its cause
+            (see :func:`_finish_reason_title`); ``False`` for an item whose
+            short title another visible item already has.
 
     Returns:
         A tuple containing:
@@ -6385,6 +6580,7 @@ def _emit_item(
         ends_at if isinstance(ends_at, datetime) else None,
         lang=lang,
         state=state,
+        split_reason=split_reason,
     )
 
     if not isinstance(pubDate, datetime) and feed_config.FRESH_PUBDATE_WINDOW_MIN > 0:
@@ -6572,14 +6768,16 @@ def _make_rss(
     ET.SubElement(channel, "ttl").text = str(feed_config.FEED_TTL)
 
     item_replacements: dict[str, str] = {}
-    emitted = 0
-    for it in items:
-        if emitted >= feed_config.MAX_ITEMS:
-            break
-        _ident, elem, repl = _emit_item(it, now, state, lang=lang)
+    shown = items[: max(feed_config.MAX_ITEMS, 0)]
+    # Decided on the visible items together, from the German titles, so DE
+    # and EN shorten the same items.
+    keep_long = _short_title_collisions(shown)
+    for index, it in enumerate(shown):
+        _ident, elem, repl = _emit_item(
+            it, now, state, lang=lang, split_reason=index not in keep_long
+        )
         channel.append(elem)
         item_replacements.update(repl)
-        emitted += 1
 
     # Pretty print the tree
     if hasattr(ET, "indent"):

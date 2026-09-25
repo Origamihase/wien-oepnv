@@ -30,7 +30,7 @@ from src.feed.merge import _trim_trailing_directional
 from src.feed_types import FeedItem
 
 
-def _render(raw_title: str, raw_desc: str) -> str:
+def _render(raw_title: str, raw_desc: str, *, split_reason: bool = True) -> str:
     item = cast(
         FeedItem,
         {
@@ -47,6 +47,7 @@ def _render(raw_title: str, raw_desc: str) -> str:
         ident="t",
         starts_at=datetime(2026, 9, 19, 11, 0, tzinfo=UTC),
         ends_at=datetime(2026, 9, 19, 21, 55, tzinfo=UTC),
+        split_reason=split_reason,
     )
     return formatted.desc_text_truncated
 
@@ -55,11 +56,16 @@ def _render(raw_title: str, raw_desc: str) -> str:
 
 
 def test_the_published_item_shows_no_arrow_and_no_repeat() -> None:
-    assert _render("74A: Demonstration Betrieb ab Landstraße", "Demonstration\nBetrieb ab Landstraße < >") == "[Am 19.09.2026]"
+    # Published since 2026-09-25: title "74A: Demonstration", the consequence
+    # underneath, once. ``split_reason=False`` is the colliding-title path.
+    title, desc = "74A: Demonstration Betrieb ab Landstraße", "Demonstration\nBetrieb ab Landstraße < >"
+    assert _render(title, desc) == "Betrieb ab Landstraße [Am 19.09.2026]"
+    assert _render(title, desc, split_reason=False) == "[Am 19.09.2026]"
 
 
 def test_a_bare_repeat_without_the_reason_word_is_dropped() -> None:
-    assert _render("1A: Veranstaltung Kein Betrieb", "Kein Betrieb") == "[Am 19.09.2026]"
+    assert _render("1A: Veranstaltung Kein Betrieb", "Kein Betrieb") == "Kein Betrieb [Am 19.09.2026]"
+    assert _render("1A: Veranstaltung Kein Betrieb", "Kein Betrieb", split_reason=False) == "[Am 19.09.2026]"
 
 
 def test_text_with_content_of_its_own_stays_but_loses_the_arrows() -> None:
