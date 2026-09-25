@@ -948,7 +948,19 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Urban-Loritz-Platz`, `… Betrieb ab Hütteldorfer Straße`), und drei gleiche
   Zeilen auf dem Display wären schlechter als drei lange
   (`_short_title_collisions`, entschieden in `_make_rss` für DE und EN
-  gemeinsam).
+  gemeinsam). Trägt ein anderes sichtbares Item den kurzen Titel schon als
+  eigenen, bleiben alle lang. Sonst wird der am höchsten platzierte Ticker
+  kurz, die übrigen bleiben lang.
+* **„Fahrtbehinderung <Ursache>“ (seit 2026-09-25).** WL setzt die Art der
+  Behinderung vor die Ursache („11A: Fahrtbehinderung Verkehrsunfall“,
+  „31: Fahrtbehinderung wegen Polizeieinsatz“; 106 Titel seit Juni).
+  Betreiberentscheidung (Audit A.13): Die Ursache kommt in den Titel
+  („11A: Verkehrsunfall“), „Fahrtbehinderung“ füllt eine sonst leere
+  Beschreibung. Eine eigene Beschreibung von WL bleibt unverändert, weil sie
+  mehr sagt (`_HINDRANCE_RE` in `_reason_and_fragment`). Folgt auf die
+  Ursache noch eine Folge, gewinnt die Folge die Beschreibung. Die lange
+  Form bei Kollisionen lautet `18: Fahrtbehinderung – Verkehrsunfall`;
+  „fahrtbehinderung“ steht dafür in `_INCIDENT_REASON_WORDS`.
 
 ### Die Platzhalter
 

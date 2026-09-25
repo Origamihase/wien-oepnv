@@ -249,3 +249,89 @@ def test_collisions_by_index() -> None:
         _item("D: Gleisbauarbeiten Währinger Straße", "x", category="Hinweis"),
     ]
     assert bf._short_title_collisions(items) == {1, 2}
+
+
+# ---------------- "Fahrtbehinderung <Ursache>" (audit A.13, option a) ----------------
+
+
+@pytest.mark.parametrize(
+    ("title", "expected"),
+    [
+        ("11A: Fahrtbehinderung Verkehrsunfall", ("11A: Verkehrsunfall", "Fahrtbehinderung")),
+        ("31: Fahrtbehinderung wegen Polizeieinsatz", ("31: Polizeieinsatz", "Fahrtbehinderung")),
+        ("9: Fahrtbehinderung Fremder Verkehrsunfall", ("9: Fremder Verkehrsunfall", "Fahrtbehinderung")),
+        ("O: Fahrtbehinderung Schadhafter Zug", ("O: Schadhafter Zug", "Fahrtbehinderung")),
+        # a consequence behind the cause wins the description
+        ("18: Fahrtbehinderung Verkehrsunfall Betrieb ab Stadion", ("18: Verkehrsunfall", "Betrieb ab Stadion")),
+    ],
+)
+def test_the_cause_behind_the_hindrance(title: str, expected: tuple[str, str]) -> None:
+    assert bf._reason_and_fragment(title) == expected
+
+
+@pytest.mark.parametrize("title", ["12: Fahrtbehinderung", "12: Fahrtbehinderung wegen eines Unfalls"])
+def test_no_cause_behind_the_hindrance(title: str) -> None:
+    assert bf._reason_and_fragment(title) is None
+
+
+def test_the_live_item_of_1735() -> None:
+    title, desc = _format(_item("11A: Fahrtbehinderung Verkehrsunfall", "Fahrtbehinderung\nVerkehrsunfall"))
+    assert (title, desc) == ("11A: Verkehrsunfall", "Fahrtbehinderung [Am 25.09.2026]")
+
+
+def test_a_description_of_its_own_is_not_prefixed_with_the_hindrance() -> None:
+    title, desc = _format(
+        _item(
+            "31: Fahrtbehinderung wegen Polizeieinsatz",
+            "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+        )
+    )
+    assert title == "31: Polizeieinsatz"
+    assert desc == "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.09.2026]"
+    title, desc = _format(
+        _item("12A: Fahrtbehinderung Falschparker", "Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.")
+    )
+    assert title == "12A: Falschparker"
+    assert desc.startswith("Unregelmäßige Intervalle in beiden Richtungen.")
+
+
+def test_a_colliding_hindrance_title_keeps_a_readable_long_form(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Live at 17:35: both would shorten to "18: Verkehrsunfall". The first
+    # keeps the short title (and its consequence underneath), the second
+    # the long form.
+    titles = _render_titles(
+        [
+            _item("18: Verkehrsunfall Betrieb ab Ernst-Happel-Stadion", "x"),
+            _item("18: Fahrtbehinderung Verkehrsunfall", "x"),
+        ],
+        monkeypatch,
+    )
+    assert titles == ["18: Verkehrsunfall", "18: Fahrtbehinderung – Verkehrsunfall"]
+
+
+def test_of_two_tickers_the_higher_placed_one_shortens(monkeypatch: pytest.MonkeyPatch) -> None:
+    titles = _render_titles(
+        [
+            _item("49: Gleisschaden Betrieb ab Urban-Loritz-Platz", "x"),
+            _item("49: Gleisschaden Betrieb ab Hütteldorfer Straße", "x"),
+        ],
+        monkeypatch,
+    )
+    assert titles == ["49: Gleisschaden", "49: Gleisschaden – Betrieb ab Hütteldorfer Straße"]
+
+
+def test_the_english_item_needs_no_model(monkeypatch: pytest.MonkeyPatch) -> None:
+    def no_model(*_: object, **__: object) -> list[dict[str, str]]:
+        raise AssertionError("the model must not run")
+
+    monkeypatch.setattr(bf, "_get_translation_pipeline", lambda: no_model)
+    formatted = bf._format_item_content(
+        _item("11A: Fahrtbehinderung Verkehrsunfall", "Fahrtbehinderung\nVerkehrsunfall", guid="t-en"),
+        ident="t-en",
+        starts_at=START,
+        ends_at=END,
+        lang="en",
+        state={},
+    )
+    assert formatted.title_out == "11A: Traffic accident"
+    assert formatted.desc_text_truncated.startswith("Service obstruction")
