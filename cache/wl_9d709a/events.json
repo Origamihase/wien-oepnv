@@ -486,9 +486,9 @@
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
-    "pubDate": "2026-09-25T00:30:03+02:00",
-    "starts_at": "2026-09-25T00:30:03+02:00",
-    "ends_at": "2026-09-25T04:59:00+02:00",
+    "pubDate": "2026-09-25T05:00:28+02:00",
+    "starts_at": "2026-09-25T05:00:28+02:00",
+    "ends_at": "2026-09-25T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-09-25|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
@@ -686,14 +686,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Kranarbeiten Haltestelle aufgelassen",
-    "description": "Kranarbeiten\nHaltestelle aufgelassen",
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ac6b069ef56deca7e0a374d0b7149945daf3fb039b7e4184337ce805ac46217b",
-    "pubDate": "2026-09-24T20:00:07+02:00",
-    "starts_at": "2026-09-24T20:00:07+02:00",
-    "ends_at": "2026-09-25T05:00:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-09-24|TK=kranarbeiten haltestelle aufgelassen"
+    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
+    "pubDate": "2026-09-25T04:40:27+02:00",
+    "starts_at": "2026-09-25T04:40:27+02:00",
+    "ends_at": "2026-09-26T01:00:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-09-25|TK=busse halten salvatorianerplatz"
   },
   {
     "source": "Wiener Linien",
@@ -718,30 +718,6 @@
     "starts_at": "2026-09-25T00:00:29+02:00",
     "ends_at": "2026-09-25T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-25|TK=einstieg leberstrasse vor s bahn gebäude"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten auf der Hauptfahrbahn",
-    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae",
-    "pubDate": "2026-09-25T01:16:10+02:00",
-    "starts_at": "2026-09-25T01:16:10+02:00",
-    "ends_at": "2026-09-25T04:52:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2026-09-25|TK=busse halten auf der hauptfahrbahn"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten Bessemerstraße 1-3",
-    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f3142d4f32419f4772ec66186ea9d3101fb32548016973434774ef3660ca4236",
-    "pubDate": "2026-09-25T01:30:12+02:00",
-    "starts_at": "2026-09-25T01:30:12+02:00",
-    "ends_at": "2026-09-25T04:35:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2026-09-25|TK=busse halten bessemerstrasse 1 3"
   },
   {
     "source": "Wiener Linien",
@@ -790,6 +766,18 @@
     "starts_at": "2026-09-25T00:54:05+02:00",
     "ends_at": "2026-09-25T05:04:00+02:00",
     "_identity": "wl|störung|L=N6|D=2026-09-25|TK=busse halten quellenstrasse 189"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Weichenschaden",
+    "description": "Die Linie U1 fährt derzeit in der Station Großfeldsiedlung in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: Betriebsschluss. Grund: Weichenschaden im Haltestellenbereich Großfeldsiedlung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3db8ab459748c9d67da1476756bb39afee07ca14c61c28889f2f246798f15b23",
+    "pubDate": "2026-09-25T04:38:00+02:00",
+    "starts_at": "2026-09-25T04:38:00+02:00",
+    "ends_at": "2026-09-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-09-25|TK=u1 weichenschaden"
   },
   {
     "source": "Wiener Linien",
