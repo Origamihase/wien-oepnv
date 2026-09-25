@@ -2894,17 +2894,21 @@ def _is_non_translatable_content(masked_text: str) -> bool:
     ``True`` the caller skips the model and unmasks the masked text directly,
     reproducing the correct, language-neutral surface forms.
 
-    Returns ``True`` only when — after removing every entity placeholder — the
-    remainder carries no alphabetic character, AND no glossary (``XGLO``)
-    placeholder is present. ``XGLO`` placeholders stand in for German jargon the
-    model still has to translate into English, so their presence forces the full
-    pipeline.
+    Returns ``True`` only when — after removing every entity AND glossary
+    placeholder — the remainder carries no alphabetic character. A glossary
+    (``XGLO``) placeholder already maps to its English term, so unmasking alone
+    renders it: ``94A: Verkehrsunfall`` masks to ``XENT…X0X: XGLO…X0X`` and
+    unmasks to ``94A: traffic accident``. The model has nothing left to do
+    there, but it could still mangle the two placeholders. On 2026-09-25 the
+    builds at 15:53 and 16:01 did exactly that for every such title (94A, U1,
+    U2, 5, 1), and those items stood in German in the EN feed. Glossary
+    placeholders used to force the full pipeline on the assumption that they
+    still needed translating. As soon as any German word is left, the
+    remainder has letters and the model runs as before.
     """
     if not masked_text.strip():
         return False
-    if "XGLO" in masked_text:
-        return False
-    remaining = _ENTITY_PLACEHOLDER_RE.sub("", masked_text)
+    remaining = _UNMASK_PLACEHOLDER_RE.sub("", masked_text)
     return not any(ch.isalpha() for ch in remaining)
 
 
@@ -5252,6 +5256,44 @@ def _defer_repeated_route_titles(items: list[FeedItem]) -> list[FeedItem]:
     return kept + deferred
 
 
+# An all-clear title: "Aufhebung Verkehrseinschränkung: …" or "Aufhebung
+# Streckenunterbrechung: …", optionally behind a line label ("REX 50: …") or
+# a raw ÖBB update prefix ("Update 5 (25.09.2026 10:48) …") that a cleaning
+# step missed. ``\b`` keeps "Aufhebungen" and similar words out.
+_ALL_CLEAR_TITLE_RE = re.compile(
+    r"^\s*(?:Update\s+\d+\s*\([^)]*\)\s*[:\-–]?\s*)?(?:[^:]{1,40}:\s*)?Aufhebung\b",
+    re.IGNORECASE,
+)
+
+
+def _is_all_clear(item: FeedItem) -> bool:
+    """Whether ``item`` reports the end of a disruption rather than one."""
+    return bool(_ALL_CLEAR_TITLE_RE.match(str(item.get("title") or "")))
+
+
+def _defer_all_clear_items(items: list[FeedItem]) -> list[FeedItem]:
+    """Let an all-clear take only a slot nothing else needs.
+
+    ÖBB publishes the end of a disruption as its own message ("Aufhebung
+    Verkehrseinschränkung: St. Pölten Hauptbahnhof"). It is new, so the FIFO
+    sort puts it on top, and on a display with ten slots it held one for about
+    an hour, in place of a running disruption (audit 2026-09-25, A.2: three
+    such items since August).
+
+    Operator decision 2026-09-25: a running disruption matters more than an
+    all-clear, but an all-clear is better than an empty slot. So every
+    all-clear moves behind the whole field, in its original order — after the
+    items :func:`_defer_repeated_route_titles` and :func:`_apply_topic_budget`
+    moved back, too. Nothing is dropped: with fewer than ``MAX_ITEMS`` other
+    items the all-clear still fills a slot.
+    """
+    deferred = [item for item in items if _is_all_clear(item)]
+    if not deferred:
+        return items
+    log.info("Entwarnungen: %d hinter das Feld gestellt.", len(deferred))
+    return [item for item in items if not _is_all_clear(item)] + deferred
+
+
 def _recency_sort_key(
     item: FeedItem, state: dict[str, dict[str, Any]], now_utc: datetime
 ) -> tuple[float, int, float, str]:
@@ -6807,6 +6849,9 @@ def main() -> int:
         items = _defer_repeated_route_titles(items)
         # One event must not take every slot — see ``_apply_topic_budget``.
         items = _apply_topic_budget(items, feed_config.MAX_ITEMS_PER_TOPIC)
+        # An all-clear only fills a slot nothing else needs — see
+        # ``_defer_all_clear_items``.
+        items = _defer_all_clear_items(items)
 
         new_items_count = _count_new_items(items, state)
 

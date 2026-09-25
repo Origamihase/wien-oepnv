@@ -297,18 +297,20 @@ def test_cache_repair_after_sticky_german(
         "wl-cov-3": {
             "first_seen": "2026-05-01T00:00:00+00:00",
             "translations": {
-                "en": {"title": "Verspätung"},  # stale: equals source
+                "en": {"title": "Züge verspätet"},  # stale: equals source
             },
         },
     }
-    # Healthy pipeline now produces a real translation.
+    # Healthy pipeline now produces a real translation. The source needs the
+    # model: a lone glossary term ("Verspätung") is rendered from the glossary
+    # without it (see ``_is_non_translatable_content``).
     monkeypatch.setattr(
         build_feed,
         "_get_translation_pipeline",
         lambda: lambda text, **kwargs: [{"translation_text": "Delay"}],
     )
     text, succeeded = build_feed._cached_translation(
-        "Verspätung", "title", "wl-cov-3", state
+        "Züge verspätet", "title", "wl-cov-3", state
     )
     assert succeeded is True
     assert text == "Delay"

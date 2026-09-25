@@ -213,8 +213,8 @@ bis zum neuen Beginn da und behalten ihren Platz. ÖBB, Baustellen und
 Stammstrecke bleiben unberührt, denn dort ist `pubDate` kein Beginn eines
 Auftretens.
 
-Danach greifen zwei Regeln, die Plätze freihalten, ohne etwas zu
-löschen — beide stellen Items nur hinter das Feld, von wo sie nachrücken:
+Danach greifen drei Regeln, die Plätze freihalten, ohne etwas zu
+löschen. Alle drei stellen Items nur hinter das Feld, von wo sie nachrücken:
 
 1. `_defer_repeated_route_titles`: Von mehreren ÖBB-Items mit wortgleichem
    Titel (dieselbe Strecke in mehreren Bauphasen, z. B. dreimal
@@ -223,6 +223,12 @@ löschen — beide stellen Items nur hinter das Feld, von wo sie nachrücken:
    verschiedene Maßnahmen.
 2. `_apply_topic_budget`: höchstens `MAX_ITEMS_PER_TOPIC` Einträge je
    Ursachenwort und Tag in den vorderen Plätzen.
+3. `_defer_all_clear_items`: Entwarnungen der ÖBB („Aufhebung
+   Verkehrseinschränkung: …“, „Aufhebung Streckenunterbrechung: …“) stehen
+   hinter allen anderen Items. Betreiberentscheidung vom 25.09.2026: Eine
+   laufende Störung ist wichtiger als eine Entwarnung. Eine Entwarnung ist
+   aber besser als ein leerer Platz. Sie erscheint deshalb nur, wenn weniger
+   als `MAX_ITEMS` andere Items vorliegen.
 
 Erst dann schneidet `MAX_ITEMS` ab.
 

@@ -82,9 +82,18 @@ def test_non_translatable_false_when_prose_present() -> None:
     assert bf._is_non_translatable_content(masked) is False
 
 
-def test_non_translatable_false_when_glossary_present() -> None:
-    # XGLO placeholders stand in for German jargon that STILL needs the model.
+def test_non_translatable_line_and_glossary_term_only() -> None:
+    # "94A: Verkehrsunfall": a glossary placeholder already maps to English, so
+    # unmasking alone renders the title. Sending it through the model only
+    # risked mangling (live 2026-09-25, 15:53 and 16:01: every such title fell
+    # back to German).
     masked = f"{_ent(0)}: {_glo(0)}"
+    assert bf._is_non_translatable_content(masked) is True
+
+
+def test_non_translatable_false_when_glossary_term_has_prose() -> None:
+    # Any German word left beside the glossary term still needs the model.
+    masked = f"{_glo(0)} in beiden Richtungen. {_glo(1)} {_glo(2)}."
     assert bf._is_non_translatable_content(masked) is False
 
 
@@ -112,6 +121,20 @@ def test_entity_only_title_bypasses_model(monkeypatch: pytest.MonkeyPatch) -> No
 
     assert result == "86A/87A: Wiedgasse"
     pipe.assert_not_called()  # model never invoked for an all-entity title
+
+
+def test_line_and_glossary_title_bypasses_model(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Real masking, no stubs: the title reaches the bypass through the glossary
+    # and the entity masker exactly as in the build.
+    pipe = MagicMock(side_effect=AssertionError("model must not run"))
+    monkeypatch.setattr(bf, "_get_translation_pipeline", lambda: pipe)
+
+    result = bf._translate_text_attempt(
+        "94A: Verkehrsunfall", ident="bypass-2", source="Wiener Linien", category="Störung"
+    )
+
+    assert result == "94A: traffic accident"
+    pipe.assert_not_called()
 
 
 def test_residual_after_unmask_discards_translation(

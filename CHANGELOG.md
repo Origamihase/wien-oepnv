@@ -5,6 +5,28 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: Titel aus Linie und Glossar-Begriff ohne Modell übersetzt (2026-09-25)**:
+  In den Builds um 15:53 und 16:01 standen im EN-Feed „94A:
+  Verkehrsunfall“, „U1: Weichenstörung“, „U2: Polizeieinsatz“, „5:
+  Falschparker“ und „1: Rettungseinsatz“ auf Deutsch. Nach der
+  Maskierung bestehen solche Titel nur noch aus zwei Platzhaltern
+  (`XENT…X0X: XGLO…X0X`). Es bleibt also nichts zu übersetzen, und das
+  Modell hat die Platzhalter in beiden Builds beschädigt. Der Schnellweg
+  für nicht übersetzbare Inhalte (`_is_non_translatable_content`) schloss
+  Glossar-Platzhalter bisher aus, weil sie angeblich noch übersetzt werden
+  müssten. Tatsächlich stehen sie bereits für den englischen Begriff. Jetzt
+  läuft ein Text, der nur aus Platzhaltern und Satzzeichen besteht, ohne
+  Modell: „94A: traffic accident“. Texte mit deutschem Rest gehen
+  unverändert ans Modell. Tests: `tests/test_en_feed_placeholder_leak.py`.
+* **DE- und EN-Feed: Entwarnungen nur noch auf freien Plätzen (2026-09-25)**:
+  ÖBB-Entwarnungen („Aufhebung Verkehrseinschränkung: St. Pölten
+  Hauptbahnhof“) sind neue Meldungen und standen durch die FIFO-Sortierung
+  oben. Seit August belegten drei davon je etwa eine Stunde einen der zehn
+  Plätze, statt einer laufenden Störung. Betreiberentscheidung: Eine
+  laufende Störung ist wichtiger als eine Entwarnung, eine Entwarnung ist
+  besser als ein leerer Platz. Neu: `_defer_all_clear_items` stellt
+  Entwarnungen hinter alle anderen Items. Gelöscht wird nichts.
+  Tests: `tests/test_all_clear_deferral.py`.
 * **DE-Feed: Wiederkehrende WL-Störungen verdrängen nicht mehr sich selbst (2026-09-25)**:
   Um 15:01 fehlten sechs laufende Störungen im Feed: 94A, O, 5, 12, U2 und
   U1. Die zehn Plätze belegten stattdessen Haltestellenverlegungen vom 18.
