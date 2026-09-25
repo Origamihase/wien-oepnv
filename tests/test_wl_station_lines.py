@@ -193,3 +193,23 @@ def test_the_schema_accepts_wl_lines(wl_lines: list[str], valid: bool) -> None:
     }
     errors = list(jsonschema.Draft202012Validator(schema).iter_errors({"stations": [station]}))
     assert (not errors) is valid
+
+
+def test_the_pinned_ogd_files_answer_the_hutteldorf_question() -> None:
+    """The committed OGD snapshots (2026-09-25) in their real layout
+    (``SortingHelp`` header, CRLF): Bhf. Hütteldorf is served by the U4
+    and buses, and tram 1 — the line WL filed the S80 replacement bus
+    under (A.14) — stops elsewhere.
+    """
+    data = Path(__file__).resolve().parents[1] / "data"
+    line_texts = wl.load_line_texts(data / "wienerlinien-ogd-linien.csv")
+    lines_by_stop = wl.load_lines_by_stop(
+        data / "wienerlinien-ogd-fahrwegverlaeufe.csv", line_texts
+    )
+    stations = json.loads((data / "stations.json").read_text(encoding="utf-8"))["stations"]
+    (huetteldorf,) = (s for s in stations if s.get("wl_diva") == "60200560")
+    stop_ids = [str(stop["stop_id"]) for stop in huetteldorf["wl_stops"]]
+    lines = wl._station_lines(stop_ids, lines_by_stop)
+    assert "U4" in lines
+    assert "1" not in lines
+    assert any("1" in served for served in lines_by_stop.values())  # tram 1 exists

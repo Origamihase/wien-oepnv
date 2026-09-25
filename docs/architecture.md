@@ -516,7 +516,10 @@ Snapshot und läuft weiter.
    (je Zeile ein Halt eines Linienwegs: `LineID`, `StopID`); die
    `StopID` ist die der `wl_stops`. Die Liniendaten sind optionale
    Anreicherung: Fehlen die Dateien, bekommt keine Station `wl_lines`,
-   der Merge läuft weiter. Beim Co-Lokations-Merge werden die Linien
+   der Merge läuft weiter. Stand 2026-09-25: 205 Linien, 4461 von 4582
+   Haltepunkten liegen auf einem Linienweg. Die S-Bahn-Linien (`S1` …
+   `S80`, `ptTrainS`) stehen zwar in `linien.csv`, haben aber keine
+   Fahrwege; `wl_lines` enthält deshalb nie S-Bahn-Linien. Beim Co-Lokations-Merge werden die Linien
    vereinigt; ein ÖBB-Eintrag, in den ein WL-Payload gemergt wird, trägt
    genau die Linien dieses Laufs. Zweck: Grundlage einer
    Plausibilitätsprüfung „hält Linie X bei Y?“ für Störungsmeldungen
