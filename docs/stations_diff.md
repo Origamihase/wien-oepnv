@@ -1,12 +1,12 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-09-24T18:59:42+00:00_
+_Erzeugt am: 2026-09-25T19:59:27+00:00_
 
-**Stationen: 2243 → 2244 (Δ +1)**
+**Stationen: 2244 → 2244 (Δ +0)**
 
-## Hinzugefügt (1)
+## Hinzugefügt (0)
 
-- `name:Wien Stadion U, Handelskai (WL)` — Wien Stadion U, Handelskai \(WL\)
+_Keine._
 
 ## Entfernt (0)
 
@@ -16,8 +16,7 @@ _Keine._
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (3)
+## Koordinaten verschoben (≥ 100 m) (2)
 
-- `bst:1266` — Wien Leopoldau (190 m)
-- `bst:1348` — Wien Hetzendorf (189 m)
-- `bst:711` — Schwechat (159 m)
+- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
+- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)
