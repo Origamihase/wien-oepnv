@@ -175,7 +175,7 @@ schreibt. Die wichtigsten Parameter:
 | `WIEN_OEPNV_PROVIDER_PLUGINS` | Komma-separierte Liste optionaler Provider-Plugin-Module (siehe [`docs/how-to/provider_plugins.md`](how-to/provider_plugins.md)). Standard leer; nicht gesetzte Module werden ignoriert. |
 | `WIEN_OEPNV_ENV_FILES` | Komma-separierte Liste zusätzlicher `.env`-Dateien, die vor der Konfiguration eingelesen werden (`src/utils/env.py`). Standard liest `.env`, `data/secrets.env`, `config/secrets.env`. |
 | `LOG_LEVEL`, `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`, `LOG_FORMAT` | Steuerung der Logging-Ausgabe (`log/errors.log`, `log/diagnostics.log`). `LOG_LEVEL` Standard `INFO`; `LOG_FORMAT=json` aktiviert JSON-Logs. |
-| `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrungstage für `data/first_seen.json` (Standard 60 Tage).        |
+| `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrungstage für `data/first_seen.json` (Standard 600 Tage = absolute Altersgrenze 540 + 60; seit 2026-09-12, vorher 60). |
 | `WIEN_OEPNV_CACHE_PRETTY` | Steuert die Formatierung der Cache-Dateien (`1` = gut lesbar, `0` = kompakt). |
 | `WIEN_OEPNV_DEBUG`       | Auf `1` gesetzt zeigt die CLI (`python -m src.cli`) bei Fehlern den vollständigen Traceback; Standard verhält sich fail-secure (keine Trace-Ausgabe). |
 | `VOR_ACCESS_ID`          | **Pflicht-Secret** für den Stammstrecken-Monitor (VAO-Access-Token). Niemals committen — laden via `.env`, `data/secrets.env` oder `config/secrets.env`. Validierbar mit `python -m src.cli tokens verify vor`. |
@@ -196,7 +196,24 @@ Alle Pfade werden durch `resolve_env_path` (in `src/feed/config.py`) auf `docs/`
 
 Nach Altersfilter und beiden Dedupe-Stufen sortiert der Build die Items nach
 `first_seen` (neueste zuerst; Gleichstand: Störung vor Baustelle, dann
-`pubDate`). Danach greifen zwei Regeln, die Plätze freihalten, ohne etwas zu
+`pubDate`).
+
+Wiederkehrende WL-Meldungen: Die WL-GUID besteht aus Kategorie, Thema und
+Linien, ein Datum enthält sie nicht. „94A: Verkehrsunfall“ hat an jedem Tag
+dieselbe GUID. Ohne Gegenmaßnahme erbt ein neuer Unfall das `first_seen` des
+Unfalls vor Monaten und landet hinter allen Haltestellenverlegungen. Deshalb
+setzt `_restart_recurring_occurrences` vor dem Altersfilter `first_seen` auf
+den `pubDate` (Gültigkeitsbeginn) der Meldung, sobald zwei Bedingungen
+zutreffen: `first_seen` liegt vor diesem Beginn, und die Meldung fehlte
+zuletzt länger als `_OCCURRENCE_GAP` (2 h) in den Daten. Wann eine Meldung
+zuletzt da war, steht im State-Feld `last_seen`. Der Build stempelt es bei
+jedem Lauf für jedes WL-Item mit State-Eintrag. Laufende Maßnahmen, die WL
+täglich mit neuem Gültigkeitsfenster neu ausgibt („Busse halten …“), waren
+bis zum neuen Beginn da und behalten ihren Platz. ÖBB, Baustellen und
+Stammstrecke bleiben unberührt, denn dort ist `pubDate` kein Beginn eines
+Auftretens.
+
+Danach greifen zwei Regeln, die Plätze freihalten, ohne etwas zu
 löschen — beide stellen Items nur hinter das Feld, von wo sie nachrücken:
 
 1. `_defer_repeated_route_titles`: Von mehreren ÖBB-Items mit wortgleichem
@@ -356,7 +373,7 @@ Die wichtigsten Felder sind:
 | `pubDate`   | Veröffentlichungszeitpunkt der Meldung; `null`, wenn die Quelle keinen parsebaren Zeitstempel liefert (z. B. WL-Items ohne Zeitfeld). |
 | `starts_at` | Technischer Startzeitpunkt der Maßnahme (häufig identisch mit `pubDate`); `null`, wenn nicht ermittelbar.                    |
 | `ends_at`   | Optionales Ende der Maßnahme; `null`, wenn unbekannt oder bereits vergangen.                   |
-| `first_seen` | Zeitpunkt, an dem die Meldung erstmals im Feed erschien (projektintern via `data/first_seen.json` gepflegt).                |
+| `first_seen` | Zeitpunkt, an dem die Meldung erstmals im Feed erschien (projektintern via `data/first_seen.json` gepflegt). Bei einer wiederkehrenden WL-Meldung zählt der Beginn des aktuellen Auftretens (siehe „Reihenfolge im Feed“). |
 | `_identity` | Projektinterner Schlüssel zur Nachverfolgung des „first seen“-Zeitpunkts (optional vorhanden). |
 
 Eine formale Beschreibung steht als [JSON-Schema](schema/events.schema.json)

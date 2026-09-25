@@ -4851,6 +4851,25 @@ def _lookup_state(
     return key, entry
 
 
+def _parse_state_time(entry: dict[str, Any] | None, field: str) -> datetime | None:
+    """Return the UTC datetime stored under ``field`` of a state ``entry``.
+
+    ``None`` when the entry is absent or the field is missing/unparseable.
+    """
+    if not entry:
+        return None
+    raw = entry.get(field)
+    if raw is None:
+        return None
+    try:
+        parsed = datetime.fromisoformat(str(raw))
+    except (ValueError, TypeError):
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=UTC)
+    return _to_utc(parsed)
+
+
 def _parse_first_seen(
     entry: dict[str, Any] | None, fallback: datetime | None
 ) -> datetime | None:
@@ -4859,18 +4878,77 @@ def _parse_first_seen(
     Falls back to ``fallback`` when the entry is absent or its ``first_seen``
     is missing/unparseable.
     """
-    if not entry:
-        return fallback
-    raw = entry.get("first_seen")
-    if raw is None:
-        return fallback
-    try:
-        parsed = datetime.fromisoformat(str(raw))
-    except (ValueError, TypeError):
-        return fallback
-    if parsed.tzinfo is None:
-        parsed = parsed.replace(tzinfo=UTC)
-    return _to_utc(parsed)
+    parsed = _parse_state_time(entry, "first_seen")
+    return fallback if parsed is None else parsed
+
+
+# A Wiener-Linien message that was absent from the provider data for longer
+# than this before its new validity start is a new occurrence — see
+# :func:`_restart_recurring_occurrences`. Four update cycles: a message that
+# drops out of one or two fetches is still the same occurrence.
+_OCCURRENCE_GAP = timedelta(hours=2)
+
+
+def _restart_recurring_occurrences(
+    items: Sequence[FeedItem], state: dict[str, dict[str, Any]], now: datetime
+) -> int:
+    """Give a recurring Wiener-Linien disruption its own ``first_seen``.
+
+    The WL ``guid`` is category + topic + line set — no date. "94A:
+    Verkehrsunfall" on 2026-09-25 therefore carried the guid of the accident
+    on 2026-07-04 and inherited its ``first_seen``: the feed sorted a
+    disruption that had started minutes earlier as 83 days old, behind every
+    newer stop relocation, and it never reached the ``MAX_ITEMS`` slots
+    (six live disruptions missing from the feed at once that afternoon).
+
+    A WL ``pubDate`` is the start of the message's validity, and the provider
+    drops messages before that start — this occurrence cannot have been seen
+    earlier. An entry whose ``first_seen`` precedes the ``pubDate`` therefore
+    stems from an earlier occurrence, *unless* the message was in the data
+    right up to the new start: WL re-issues running measures ("Busse halten
+    …") with a fresh validity window every day or few days, and those must
+    keep their place ("man kennt die Meldung schon"). ``last_seen`` tells the
+    two apart — stamped here on every build for every WL item with an entry:
+
+    * last seen within ``_OCCURRENCE_GAP`` before the new start → the same
+      message continues, ``first_seen`` stays;
+    * last seen earlier, or never (entries from before ``last_seen``
+      existed) → a new occurrence, ``first_seen`` moves to the ``pubDate``.
+
+    The entry is moved, not dropped: without an entry an item ranks as unseen
+    in every build until it is emitted, which would rotate a batch of such
+    items through the feed one ``MAX_ITEMS`` page at a time. Other providers
+    are untouched — an ÖBB ``pubDate`` is the publication time of the latest
+    update, not the start of an occurrence.
+
+    Returns the number of entries moved.
+    """
+    now_utc = _to_utc(now)
+    stamp = now_utc.isoformat()
+    restarted = 0
+    for it in items:
+        if str(it.get("source") or "").strip().casefold() != "wiener linien":
+            continue
+        _, entry = _lookup_state(it, state)
+        if entry is None:
+            continue
+        first_seen = _parse_first_seen(entry, None)
+        pub = _parse_datetime(it.get("pubDate"))
+        if first_seen is not None and isinstance(pub, datetime):
+            pub_utc = _to_utc(pub)
+            last_seen = _parse_state_time(entry, "last_seen")
+            if first_seen < pub_utc <= now_utc and (
+                last_seen is None or last_seen < pub_utc - _OCCURRENCE_GAP
+            ):
+                entry["first_seen"] = pub_utc.isoformat()
+                restarted += 1
+        entry["last_seen"] = stamp
+    if restarted:
+        log.info(
+            "%d wiederkehrende WL-Meldung(en) als neues Auftreten eingeordnet.",
+            restarted,
+        )
+    return restarted
 
 
 def _summarize_duplicates(items: Sequence[FeedItem]) -> list[DuplicateSummary]:
@@ -6664,6 +6742,8 @@ def main() -> int:
         )
 
         filter_start = perf_counter()
+        # Before the age filter: it reads the same first_seen.
+        _restart_recurring_occurrences(items, state, now)
         items, dropped_ids = _drop_old_items(items, now, state)
         filter_duration = perf_counter() - filter_start
         filtered_count = len(items)
