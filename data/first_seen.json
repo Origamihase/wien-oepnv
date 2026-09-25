@@ -5666,12 +5666,14 @@
     "first_seen": "2026-09-24T06:30:59.829985+00:00",
     "translations": {
       "en": {
+        "summary": "Line U1 currently operates at Gro\u00dffeldsiedlung in both directions via 1. expected duration: end of service.",
         "title": "U1: Soft damage"
       },
       "en_src": {
+        "summary": "d55078e2ce35ab71",
         "title": "70025aaf7017f502"
       },
-      "epoch": 15
+      "epoch": 17
     }
   },
   "3dc5d07b47f95522229bc03f19d94a53206f0a58e8ccaa77f5330b522b32d175": {
@@ -15334,6 +15336,20 @@
       "epoch": 3
     }
   },
+  "a069557877478b1ee895eb5ea25060921e53c7a8e9afba15571abca618d11c58": {
+    "first_seen": "2026-09-25T03:30:51.302768+00:00",
+    "translations": {
+      "en": {
+        "summary": "After a service obstruction there are different intervals.",
+        "title": "36B: burst water pipe"
+      },
+      "en_src": {
+        "summary": "eb1bdc2703fe6f1b",
+        "title": "5e8a01e4085bd251"
+      },
+      "epoch": 17
+    }
+  },
   "a06acc16c23c6543c83f50a6ef6ed7242334e7a0d65a86f003e17dcdbe607a3d": {
     "first_seen": "2026-09-02T16:01:03.962298+00:00",
     "translations": {
@@ -19384,6 +19400,20 @@
         "title": "9/42: False Parker diversion to Volksoper via lines 9 and 42!"
       },
       "epoch": 3
+    }
+  },
+  "d039bb83aaf11f97629558899251911fe1b70677ddba088239ab956654e49b54": {
+    "first_seen": "2026-09-25T03:30:51.302768+00:00",
+    "translations": {
+      "en": {
+        "summary": "After a service obstruction there are different intervals.",
+        "title": "36A: burst water pipe"
+      },
+      "en_src": {
+        "summary": "eb1bdc2703fe6f1b",
+        "title": "1720cf8c44a075e6"
+      },
+      "epoch": 17
     }
   },
   "d04e68b2ef94b7dc9bb91400d755f8908352825a7ca33ed1d4d9139061bab951": {
