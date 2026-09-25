@@ -409,6 +409,34 @@ flowchart LR
   16 = R/REX, 256 = U-Bahn, 512 = Straßenbahn), keine Linien. Eine
   `StationBoard` mit `getPasslist` lehnt ÖBB mit `err=PARSE` ab.
 
+**ÖBB-Linien je Bahnhof (Stufe 2 der Linien-Prüfung, seit 2026-09-25).**
+`scripts/update_oebb_station_lines.py` läuft wöchentlich in
+`update-stations.yml` (eigener Schritt, `continue-on-error`, 25 Minuten) und
+schreibt ausschließlich `data/oebb_station_lines.json`:
+
+- Umfang: die ÖBB-Bahnhöfe (`bst_id`) in Wien und im Pendlerraum, derzeit
+  162. Die HAFAS-Stations-ID ermittelt einmalig `LocMatch` über
+  `enrich_station_with_hafas`; ein Treffer weiter als 2 km von den
+  Koordinaten des Bahnhofs wird verworfen. Die ID bleibt in der Datei.
+- Je Bahnhof und Lauf vier `StationBoard`-Anfragen: nächster Dienstag und
+  der Dienstag fünf Wochen später, jeweils 06:00–09:00 und 15:00–18:00,
+  nur Bahnklassen (Filter 4159), `maxJny` 400. Ohne `maxJny` lieferte
+  HAFAS im Messlauf nur rund 50 Abfahrten.
+- Linien stammen aus `prodCtx.lineId` (`at:obb:vor|S45:` → `S45`), sonst
+  aus `catOut` + `line`. Fernzüge (RJ, IC, WESTbahn) tragen nur
+  Zugnummern und zählen nicht; Schienenersatzverkehr (`catOut` Bus bzw.
+  „Schienenersatzverkehr“) zählt nie als Linie.
+- Jede Linie trägt das Datum, an dem sie zuletzt gesehen wurde, und fällt
+  erst nach 56 Tagen ohne Nachweis heraus. Ein Bahnhof ohne Antwort behält
+  seine Linien unverändert. Nach fünf Fehlschlägen in Folge endet der Lauf
+  und schreibt, was er hat. Zwischen den Anfragen liegen 0,5 Sekunden.
+- **Grenze:** Die Datei beschreibt, was derzeit fährt, nicht das geplante
+  Netz. Baustellen über Jahre verstecken eine Linie auch vor dem zweiten
+  Stichtag und der Frist (Messlauf 2026-09-25: keine S80 in Hütteldorf,
+  dafür ein Schienenersatzverkehr-Bus). Die Prüfung in Stufe 3 darf ein
+  Fehlen deshalb nie als Beweis lesen und braucht für solche Fälle eine
+  gepflegte Liste der planmäßigen Linien.
+
 **Warum Google Places die Notfall-Stufe ist:**
 
 - Nachdem OSM und HAFAS gelaufen sind, filtert

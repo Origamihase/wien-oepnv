@@ -24,6 +24,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, cast
 from xml.etree import ElementTree as ET
+from zoneinfo import ZoneInfo
 
 import pytest
 
@@ -190,6 +191,14 @@ def test_the_budget_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp
     """
     bf = _import_build_feed(monkeypatch)
     now = datetime.now(UTC)
+    # The budget counts per cause and *Vienna day*. The tickers span nine
+    # minutes; run within nine minutes after local midnight, they straddle two
+    # days and get two budgets (failed at 00:04 on 2026-09-26). Move them
+    # before midnight then, so all nine share one day.
+    local = now.astimezone(ZoneInfo("Europe/Vienna"))
+    since_midnight = local - local.replace(hour=0, minute=0, second=0, microsecond=0)
+    if since_midnight < timedelta(minutes=10):
+        now -= since_midnight + timedelta(minutes=1)
 
     def stamp(minutes: int) -> str:
         return (now - timedelta(minutes=minutes)).isoformat()

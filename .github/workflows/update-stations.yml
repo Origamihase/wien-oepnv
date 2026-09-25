@@ -57,7 +57,9 @@ jobs:
     # runaway HAFAS retry loop) quickly. Without the cap the workflow
     # inherits GitHub's 360-min default. Mirrors the canonical defence
     # shape established in update-cycle.yml.
-    timeout-minutes: 60
+    # +20 min since 2026-09-25 for the ÖBB station lines step below (its own
+    # 25-min step cap; ~650 paced HAFAS requests, ~12-15 min).
+    timeout-minutes: 80
     permissions:
       contents: write
 
@@ -125,6 +127,17 @@ jobs:
           WIEN_OEPNV_OSM_ENRICH: ${{ steps.overpass-smoke.outcome == 'success' && '1' || '0' }}
         run: python scripts/update_all_stations.py --verbose
 
+      - name: Refresh ÖBB station lines (HAFAS)
+        # Stage 2 of the line plausibility check (audit 2026-09-25, A.14):
+        # the rail lines serving each ÖBB station in Vienna and the commuter
+        # belt, from HAFAS departure boards, kept with a "last seen" date in
+        # ``data/oebb_station_lines.json``. Best effort: a HAFAS outage must
+        # not block the station directory commit, and the script keeps the
+        # previous state for every station that did not answer.
+        continue-on-error: true
+        timeout-minutes: 25
+        run: python scripts/update_oebb_station_lines.py --verbose
+
       - name: Regenerate validation report
         run: python -m src.cli stations validate --output docs/stations_validation_report.md
 
@@ -154,7 +167,9 @@ jobs:
           # Every file this job writes (stations.json, the validation report,
           # the HAFAS profile, the Places quota counter) is a full
           # regeneration, so on a conflict the locally built copy is
-          # authoritative.
+          # authoritative. ``data/oebb_station_lines.json`` accumulates, but
+          # only this job writes it and it starts from the checked-out copy,
+          # so the local copy wins there too.
           mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
           if [ "${#conflicts[@]}" -gt 0 ]; then
             echo "::warning title=reconcile::autostash re-apply conflicted on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"

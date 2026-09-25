@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stufe 2 der Linien-Prüfung: Bahnlinien je ÖBB-Bahnhof (2026-09-25)**:
+  Neu `scripts/update_oebb_station_lines.py`, wöchentlich in
+  `update-stations.yml`. Für 162 ÖBB-Bahnhöfe in Wien und im Pendlerraum
+  holt es aus HAFAS-Abfahrtstafeln (nächster Dienstag und fünf Wochen
+  später, 06–09 und 15–18 Uhr, nur Bahn) die Linien wie `S45`, `REX51`,
+  `CJX5` und speichert sie mit „zuletzt gesehen“ in
+  `data/oebb_station_lines.json`; nach 56 Tagen ohne Nachweis fällt eine
+  Linie heraus. Fernzüge und Schienenersatzverkehr zählen nicht. Die Datei
+  beschreibt, was derzeit fährt: Langjährige Baustellen verstecken Linien,
+  Stufe 3 braucht dafür eine gepflegte Liste. Feed unverändert. Tests:
+  `tests/test_update_oebb_station_lines.py`.
 * **HAFAS-Messlauf, zweite Runde (2026-09-25)**: Der erste Lauf zeigte:
   `LocMatch` liefert je Station nur Produktklassen (`pCls`), keine
   Linien; die Abfahrtstafel kam mit `err=PARSE` zurück. Ursache laut
