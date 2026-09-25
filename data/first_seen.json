@@ -26333,6 +26333,20 @@
       "epoch": 15
     }
   },
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&914584": {
+    "first_seen": "2026-09-25T06:30:55.399048+00:00",
+    "translations": {
+      "en": {
+        "summary": "Due to a switch fault, train journeys to expected 09:00 are limited in St.P\u00f6lten Hbf.",
+        "title": "Update 1 (25.09.2026 08:26) Traffic restriction: St.P\u00f6lten"
+      },
+      "en_src": {
+        "summary": "4510af2f237509b2",
+        "title": "220b3f353edffed4"
+      },
+      "epoch": 17
+    }
+  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&843950": {
     "first_seen": "2026-04-22T16:14:43.460282+00:00"
   },
