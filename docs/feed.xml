@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 25 Sep 2026 23:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 00:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[31A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b1b59ef91c7e5513a7a2362ffbc5f6ec21eb687935ff3e74c62591a531321745</guid>
-      <pubDate>Fri, 25 Sep 2026 23:04:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 23:04:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 23:04:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 25.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 25.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[26E: Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +19,6 @@
       <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
       <description>Der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. [25.09.2026 – 12.12.2026]</description>
       <content:encoded><![CDATA[Der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Weichenstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3169c7392ae5bf8671badefab08375f7a1babfb42f658591deb18bc6c7b7e6c0</guid>
-      <pubDate>Fri, 25 Sep 2026 07:53:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 07:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 07:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung im Haltestellenbereich Großfeldsiedlung. [Am 25.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung im Haltestellenbereich Großfeldsiedlung.<br/>[Am 25.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
@@ -60,9 +38,9 @@
       <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
       <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [Am 25.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Am 25.09.2026]]]></content:encoded>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [25.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
@@ -71,9 +49,9 @@
       <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
       <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [Am 25.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Am 25.09.2026]]]></content:encoded>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [25.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sun, 27 Sep 2026 22:00:00 +0200</ext:ends_at>
       <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U2 nicht ausgefahren werden. [23.09.2026 – 27.09.2026]</description>
       <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U2 nicht ausgefahren werden.<br/>[23.09.2026 – 27.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N49: Betrieb ab Johnstraße U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1963f82ac93d144e418b1738c647d7dac8d1d5dd078a20877ba74368c0ae79ae</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:29 +0200</pubDate>
+      <ext:first_seen>Wed, 23 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 23 Sep 2026 00:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Gleisbauarbeiten. [23.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Gleisbauarbeiten.<br/>[23.09.2026 – 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N49: Betrieb ab Schweglerstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2bb63e86a6366d616958e9c07d55e93631da5aea27e8aba60ef218fd8f38dca9</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:29 +0200</pubDate>
+      <ext:first_seen>Wed, 23 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 23 Sep 2026 00:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Gleisbauarbeiten. [23.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Gleisbauarbeiten.<br/>[23.09.2026 – 26.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
