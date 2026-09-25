@@ -710,6 +710,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Fremder Verkehrsunfall",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "67f6f340526dbbc6c28a07268bd4d4da5596272e34d03f234305749a96c6a33a",
+    "pubDate": "2026-09-25T11:32:00+02:00",
+    "starts_at": "2026-09-25T11:32:00+02:00",
+    "ends_at": "2026-09-25T13:01:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-09-25|TK=6 fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fremdunfall Züge halten bei der Linie O",
+    "description": "Fremdunfall\nZüge halten bei der Linie O",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9e6061b7bad8c5381f30d03c8425e22e5b922b1dc0cdebc952a9d2c652ed7594",
+    "pubDate": "2026-09-25T11:35:09+02:00",
+    "starts_at": "2026-09-25T11:35:09+02:00",
+    "ends_at": "2026-09-25T14:00:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-09-25|TK=fremdunfall züge halten bei der linie o"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -740,7 +764,7 @@
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
     "pubDate": "2026-09-25T10:24:00+02:00",
     "starts_at": "2026-09-25T10:24:00+02:00",
-    "ends_at": "2026-09-25T23:55:00+02:00",
+    "ends_at": "2026-09-25T12:17:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-09-25|TK=falschparker"
   },
   {
