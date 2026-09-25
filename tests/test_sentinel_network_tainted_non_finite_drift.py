@@ -263,11 +263,14 @@ def test_inventory_places_client_format_error_message_pins_hooks() -> None:
 def test_inventory_hafas_client_pins_hooks() -> None:
     from src.places import hafas_client
 
+    # The JSON decode moved from ``_fetch_hafas_location`` into the shared
+    # Mgate transport ``post_mgate`` (2026-09-25), which every HAFAS method
+    # (LocMatch, StationBoard) now goes through.
     _assert_non_finite_pin(
-        hafas_client._fetch_hafas_location,
+        hafas_client.post_mgate,
         where=(
-            "src/places/hafas_client.py:_fetch_hafas_location "
-            "(HAFAS Mgate LocMatch upstream)"
+            "src/places/hafas_client.py:post_mgate "
+            "(HAFAS Mgate upstream, all methods)"
         ),
     )
 

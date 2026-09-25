@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **HAFAS-Messlauf für die ÖBB-Linien je Bahnhof (2026-09-25)**: Vorbereitung
+  von Stufe 2 der Linien-Prüfung. `src/places/hafas_client.py` kapselt den
+  Mgate-Transport in `post_mgate`; die Koordinaten-Anreicherung nutzt ihn
+  unverändert. Neu: `scripts/probe_hafas_lines.py` und der nur manuell
+  startbare Workflow `probe-hafas-lines.yml`, der für zwei Bahnhöfe die Form
+  der HAFAS-Antworten (`LocMatch`, `StationBoard`) ins Log schreibt. Grund:
+  Die Entwicklungs-Sandbox erreicht `fahrplan.oebb.at` nicht. Feed und
+  Stationsverzeichnis ändern sich nicht. Tests:
+  `tests/test_probe_hafas_lines.py`, `tests/places/test_hafas_client.py`.
 * **Stationsverzeichnis: WL-Stationen kennen ihre Linien (`wl_lines`, 2026-09-25)**:
   Stufe 1 der Plausibilitätsprüfung „hält Linie X bei Y?“ (Anlass: A.14,
   Straßenbahn 1 in Hütteldorf). `scripts/update_wl_stations.py` lädt vom

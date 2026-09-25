@@ -64,6 +64,8 @@ __all__ = [
     "HafasProfile",
     "HafasProfileError",
     "enrich_station_with_hafas",
+    "loc_match_request",
+    "post_mgate",
 ]
 
 LOGGER = logging.getLogger("places.hafas")
@@ -244,15 +246,10 @@ def _get_profile() -> HafasProfile | None:
         return _ProfileState.cache
 
 
-def _build_loc_match_payload(profile: HafasProfile, station_name: str) -> dict[str, object]:
-    """Build the Mgate ``LocMatch`` request envelope for *station_name*.
-
-    The structure follows the canonical HAFAS Mgate contract used by
-    the public-transport/hafas-client community profile: a single
-    ``svcReqL`` entry asking for the top match of a station-typed
-    query. ``maxLoc=1`` keeps the response tiny — we only ever need
-    the first match for coordinate enrichment.
-    """
+def _build_envelope(
+    profile: HafasProfile, service_requests: list[dict[str, object]]
+) -> dict[str, object]:
+    """Wrap *service_requests* (``svcReqL``) in the Mgate request envelope."""
     return {
         "id": profile["client"].get("id", "OEBB"),
         "ver": profile["ver"],
@@ -263,19 +260,34 @@ def _build_loc_match_payload(profile: HafasProfile, station_name: str) -> dict[s
         },
         "client": dict(profile["client"]),
         "formatted": False,
-        "svcReqL": [
-            {
-                "meth": "LocMatch",
-                "req": {
-                    "input": {
-                        "field": "S",
-                        "loc": {"name": station_name, "type": "S"},
-                        "maxLoc": 1,
-                    },
-                },
-            },
-        ],
+        "svcReqL": service_requests,
     }
+
+
+def loc_match_request(station_name: str) -> dict[str, object]:
+    """Return the ``LocMatch`` service request for *station_name*."""
+    return {
+        "meth": "LocMatch",
+        "req": {
+            "input": {
+                "field": "S",
+                "loc": {"name": station_name, "type": "S"},
+                "maxLoc": 1,
+            },
+        },
+    }
+
+
+def _build_loc_match_payload(profile: HafasProfile, station_name: str) -> dict[str, object]:
+    """Build the Mgate ``LocMatch`` request envelope for *station_name*.
+
+    The structure follows the canonical HAFAS Mgate contract used by
+    the public-transport/hafas-client community profile: a single
+    ``svcReqL`` entry asking for the top match of a station-typed
+    query. ``maxLoc=1`` keeps the response tiny — we only ever need
+    the first match for coordinate enrichment.
+    """
+    return _build_envelope(profile, [loc_match_request(station_name)])
 
 
 def _serialise_payload(payload: dict[str, object]) -> str:
@@ -404,20 +416,28 @@ def _extract_first_location(payload: object) -> HafasLocation | None:
     return HafasLocation(name=name, extId=ext_id, lon=lon, lat=lat)
 
 
-def _fetch_hafas_location(station_name: str) -> HafasLocation | None:
-    """Issue a single Mgate ``LocMatch`` request and parse the response.
+def post_mgate(
+    service_requests: list[dict[str, object]],
+    *,
+    max_bytes: int = _MAX_RESPONSE_BYTES,
+) -> object:
+    """POST one Mgate request carrying *service_requests*; return the JSON.
 
-    Returns ``None`` when the upstream replied with no match. Raises
-    :class:`requests.RequestException` /
-    :class:`~src.places.hafas_client.HafasProfileError` on
-    infrastructure-level failures so the surrounding
-    :class:`CircuitBreaker` records the failure.
+    The shared transport for every HAFAS method: profile, optional mac,
+    ``request_safe`` (SSRF / DNS-rebinding / size / content-type guards)
+    and non-finite-number hooks on the JSON decoder. No circuit breaker
+    here — callers that run in the cron pipeline wrap it in one.
+
+    Raises:
+        HafasProfileError: the profile is not loaded.
+        requests.RequestException: network failure or a non-JSON body.
+        ValueError: ``request_safe`` rejected the request or response.
     """
     profile = _get_profile()
     if profile is None:
         raise HafasProfileError("HAFAS profile not loaded")
 
-    payload = _build_loc_match_payload(profile, station_name)
+    payload = _build_envelope(profile, service_requests)
     body = _serialise_payload(payload)
     mac = _compute_mac(body, profile["salt"])
     url = _build_request_url(mac)
@@ -432,7 +452,7 @@ def _fetch_hafas_location(station_name: str) -> HafasLocation | None:
             session,
             url,
             method="POST",
-            max_bytes=_MAX_RESPONSE_BYTES,
+            max_bytes=max_bytes,
             timeout=_REQUEST_TIMEOUT_S,
             allowed_content_types=("application/json",),
             headers={
@@ -464,13 +484,21 @@ def _fetch_hafas_location(station_name: str) -> HafasLocation | None:
         # as soft failures — the breaker counts the call as a failure
         # via the outer RequestException-shaped path used by callers
         # that want resilient behaviour.
-        LOGGER.warning(
-            "HAFAS returned non-JSON / depth-bomb payload for station: %s",
-            sanitize_log_arg(station_name),
-        )
+        LOGGER.warning("HAFAS returned a non-JSON / depth-bomb payload")
         raise requests.RequestException("HAFAS returned invalid JSON payload") from exc
+    return decoded
 
-    return _extract_first_location(decoded)
+
+def _fetch_hafas_location(station_name: str) -> HafasLocation | None:
+    """Issue a single Mgate ``LocMatch`` request and parse the response.
+
+    Returns ``None`` when the upstream replied with no match. Raises
+    :class:`requests.RequestException` /
+    :class:`~src.places.hafas_client.HafasProfileError` on
+    infrastructure-level failures so the surrounding
+    :class:`CircuitBreaker` records the failure.
+    """
+    return _extract_first_location(post_mgate([loc_match_request(station_name)]))
 
 
 def enrich_station_with_hafas(station_name: str) -> HafasLocation | None:
