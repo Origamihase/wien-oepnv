@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE- und EN-Feed: „ÖBB-Ersatzbus für <80“ ist die S80, nicht die Linie 1 (2026-09-25)**:
+  Seit dem 12.09. stand täglich „1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80“
+  im Feed. Beanstandung des Betreibers: Die Linien 1 und 80 fahren nicht
+  zum Bahnhof Hütteldorf, dort halten keine Straßenbahnen. WL liefert die
+  Meldung mit `relatedLines` „1“ und dem Text „ÖBB-Ersatzbus für <80“. Das
+  „<“ ist das S-Bahn-Logo der Anzeigetafeln, die Titelbereinigung hatte
+  es entfernt. Neu: `_attribute_obb_replacement_bus` setzt die S-Bahn-Linie
+  aus dem Text ein, nur für Wiener S-Bahn-Nummern. Ergebnis nach
+  Entscheidung des Betreibers: Titel „S80: ÖBB-Ersatzbus“, Beschreibung
+  „Bhf. Hütteldorf“. Tests: `tests/test_obb_replacement_bus.py`.
 * **DE- und EN-Feed: „Fahrtbehinderung <Ursache>“ zeigt die Ursache im Titel (2026-09-25)**:
   Um 17:35 stand „11A: Fahrtbehinderung Verkehrsunfall“ im Feed, zwei
   aneinandergeklebte Substantive über einem nackten Datum (106 Titel dieser

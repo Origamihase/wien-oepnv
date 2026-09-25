@@ -961,6 +961,15 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Ursache noch eine Folge, gewinnt die Folge die Beschreibung. Die lange
   Form bei Kollisionen lautet `18: Fahrtbehinderung – Verkehrsunfall`;
   „fahrtbehinderung“ steht dafür in `_INCIDENT_REASON_WORDS`.
+* **„ÖBB-Ersatzbus für <80“ (seit 2026-09-25).** Die Anzeigetafeln der WL
+  zeigen das S-Bahn-Logo als Zeichen, das in den Daten als „<“ ankommt.
+  Die Meldung „Bhf. Hütteldorf / ÖBB-Ersatzbus für <80“ kam täglich mit
+  `relatedLines` „1“ und erschien als „1: Bhf. Hütteldorf ÖBB-Ersatzbus für
+  80“. Die Straßenbahn 1 fährt nicht nach Hütteldorf; gemeint ist die S80.
+  `_attribute_obb_replacement_bus` (in `_post_filter_wl`) setzt die
+  S-Bahn-Linie aus dem Text als Linie ein und legt den Ort in die
+  Beschreibung: `S80: ÖBB-Ersatzbus` über „Bhf. Hütteldorf“. Das gilt nur für
+  die Wiener S-Bahn-Nummern (1, 2, 3, 4, 7, 40, 45, 50, 60, 80).
 
 ### Die Platzhalter
 
