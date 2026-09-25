@@ -99,7 +99,7 @@ sequenceDiagram
 - **Der Hinweis auf Apex-Phase-1** ist entscheidend: Ohne gedeckelte `wait()`-Timeouts würde die Schleife gegen `perf_counter()` busy-spinnen.
 - **`request_safe`** ist die Security-State-Machine — siehe Diagramm §2.
 - **`deduplicate_fuzzy`** ist Apex-Phase-2-Territorium: Der parallele `merged_cache` reduziert das O(n²)-Regex-Reparsing auf O(n).
-- **Nach der Dedupe** entscheidet die Reihenfolge, was die zehn Plätze bekommt: Sortierung nach `first_seen` (neueste zuerst; eine wiederkehrende WL-Meldung bekommt vorher über `_restart_recurring_occurrences` den Beginn ihres aktuellen Auftretens, die WL-GUID enthält kein Datum), dann `_defer_repeated_route_titles` (von wortgleichen ÖBB-Titeln bleibt nur das früheste Zeitfenster vorn) und `_apply_topic_budget` (höchstens `MAX_ITEMS_PER_TOPIC` je Ursachenwort und Tag). Beide Regeln löschen nichts, sie stellen hinter das Feld — siehe `docs/development.md`, „Reihenfolge im Feed".
+- **Nach der Dedupe** entscheidet die Reihenfolge, was die zehn Plätze bekommt: Sortierung nach `first_seen` (neueste zuerst; eine wiederkehrende WL-Meldung bekommt vorher über `_restart_recurring_occurrences` den Beginn ihres aktuellen Auftretens, die WL-GUID enthält kein Datum), dann `_defer_repeated_route_titles` (von wortgleichen ÖBB-Titeln bleibt nur das früheste Zeitfenster vorn), `_apply_topic_budget` (höchstens `MAX_ITEMS_PER_TOPIC` je Ursachenwort und Tag) und `_defer_all_clear_items` (ÖBB-Entwarnungen „Aufhebung …“ ganz nach hinten, Betreiberentscheidung 2026-09-25). Die Regeln löschen nichts, sie stellen hinter das Feld — siehe `docs/development.md`, „Reihenfolge im Feed".
 
 ---
 
@@ -912,7 +912,11 @@ Nicht jeder Text gehört in ein NMT-Modell:
   „bis", „vor", „nach" in Prosa gewöhnliches Deutsch sind.
 * **Nicht-übersetzbarer Inhalt.** `_is_non_translatable_content` erkennt
   maskierte Texte, in denen nach dem Maskieren nichts mehr steht, was ein
-  Modell übersetzen könnte (reine Linien- und Stationsfolgen).
+  Modell übersetzen könnte. Das sind reine Linien- und Stationsfolgen, seit
+  2026-09-25 auch Linie plus Glossar-Begriff: „94A: Verkehrsunfall“ →
+  `XENT…: XGLO…` → „94A: traffic accident“. Ein Glossar-Platzhalter steht
+  bereits für den englischen Begriff. Solche Texte gehen nicht mehr ans
+  Modell, das sie je nach Nonce verstümmelte.
 * **Der Gedankenstrich der Ticker-Titel.** `_separate_reason_word` schreibt
   `31: Demonstration – Betrieb ab Wallensteinstraße`. Der Strich ist ein
   geschütztes Zeichen und stünde im Modell als Platzhalter zwischen zwei
