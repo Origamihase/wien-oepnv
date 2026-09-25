@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 944,
+      "Meidling": 945,
       "Praterstern": 916
     },
     "by_hour": {
@@ -24,7 +24,7 @@
       "16": 89,
       "17": 107,
       "18": 106,
-      "19": 125,
+      "19": 126,
       "20": 105,
       "21": 107,
       "22": 98,
@@ -43,7 +43,7 @@
       "REX2277": 1,
       "REX3": 195,
       "REX92": 3,
-      "S1": 396,
+      "S1": 397,
       "S2": 300,
       "S27016": 1,
       "S28044": 1,
@@ -57,20 +57,20 @@
     "by_weekday": {
       "Di": 284,
       "Do": 321,
-      "Fr": 366,
+      "Fr": 367,
       "Mi": 299,
       "Mo": 280,
       "Sa": 150,
       "So": 160
     },
-    "total": 1860
+    "total": 1861
   },
-  "generated_at": "2026-09-25T19:01:20+02:00",
+  "generated_at": "2026-09-25T19:31:07+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.04,
     "by_direction": {
-      "Meidling": 5544,
+      "Meidling": 5545,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -93,7 +93,7 @@
       "16": 1.03,
       "17": 1.27,
       "18": 1.17,
-      "19": 1.2,
+      "19": 1.21,
       "20": 2.11,
       "21": 0.64,
       "22": 0.81,
@@ -112,13 +112,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-09-25T18:55:00+02:00",
+          "last_seen": "2026-09-25T19:25:00+02:00",
           "peer_rows_since": 0,
-          "rows_in_window": 1194
+          "rows_in_window": 1193
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 1694,
+          "peer_rows_since": 1695,
           "rows_in_window": 0
         }
       },
@@ -127,14 +127,14 @@
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 3.5,
+      "avg_delay_minutes": 7.5,
       "observations": 2,
       "window_minutes": 60
     },
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 121,
     "threshold_minutes": 9.0,
-    "total_observations": 9375
+    "total_observations": 9376
   },
   "stoerungen": {
     "by_hour": {
