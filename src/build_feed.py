@@ -564,7 +564,9 @@ def _post_filter_oebb(items: list[Any]) -> list[Any]:
     and other generic dictionaries aren't accidentally dropped.
     """
     from .providers.oebb import (  # local import: avoids circular at module load
+        _UPDATE_PREFIX_RE,
         _apply_route_title,
+        _clean_title_keep_places,
         _is_relevant,
     )
 
@@ -579,10 +581,15 @@ def _post_filter_oebb(items: list[Any]) -> list[Any]:
             # Stub / metadata item — leave it alone.
             out.append(item)
             continue
+        if _UPDATE_PREFIX_RE.match(title):
+            # A cached title still carrying ÖBB's "Update N (…)" headline
+            # predates the provider fix; clean it the way the provider now
+            # does, so the feed repairs without waiting for a cache refresh.
+            title = _clean_title_keep_places(title) or title
         if not _is_relevant(title, description):
             continue
-        rederived = _apply_route_title(title, description)
-        if rederived and rederived != title:
+        rederived = _apply_route_title(title, description) or title
+        if rederived != item.get("title"):
             item = dict(item)
             item["title"] = rederived
         out.append(item)

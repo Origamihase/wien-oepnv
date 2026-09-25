@@ -5,6 +5,18 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE-Feed: ÖBB-„Update N (…)"-Präfix entfernt, Entwarnungen behalten ihr Label (2026-09-25)**:
+  Platz 3 lautete „Update 4 (25.09.2026 09:59) Verkehrseinschränkung:
+  St.Pölten". Die Präfix-Schleife in `_clean_title_keep_places` trennt nur an
+  einem Doppelpunkt ohne folgende Ziffer (Uhrzeit-Schutz); der erste
+  Doppelpunkt stand in „09:59", der Titel blieb deshalb roh. Neu:
+  `_strip_update_prefix` entfernt „Update N (TT.MM.JJJJ hh:mm)" vorab, der
+  Titel wird „St. Pölten Hauptbahnhof". Drei der vier solchen Titel seit
+  August waren Entwarnungen („Aufhebung Verkehrseinschränkung: Wien
+  Handelskai"); ein Präfix, das mit „Aufhebung" beginnt, gilt nicht mehr als
+  verwerfbare Kategorie, sonst läse sich die Entwarnung wie eine laufende
+  Störung. `_post_filter_oebb` repariert gecachte Titel beim Bauen; die GUID
+  folgt weiter dem Rohtitel. Tests: `tests/test_oebb_update_prefix.py`.
 * **DE-Feed: abgeschnittene Baustellen-Titel aus der Beschreibung vervollständigt (2026-09-24)**:
   Item 8 lautete „U4: Vordere Zollamtsstraße von Marxergasse und Kleine
   Marxerbrücke bis Unbenannte Verkehrsfläche und Rad…" — die Stadt Wien

@@ -275,6 +275,7 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 - **Quelle**: Offizielle ÖBB-Störungsinformationen (RSS-Feed; Default-URL via `OEBB_RSS_URL` überschreibbar, validiert gegen die `fahrplan.oebb.at`-Allow-List).
 - **Cache**: `cache/oebb/events.json`.
 - **Routentitel**: Aus „zwischen A und B" bzw. „von A nach B" leitet der Provider `A ↔ B`-Titel ab. Ein großgeschriebener Ortszusatz mit „im"/„am" direkt vor `Bahnhof`/`Bf`/`Hbf` („Baumgarten im Bgld-Schattendorf Bahnhof") bleibt Teil des Endpunkts (`_with_place_qualifier`), sonst schrumpft der Endpunkt auf ein Wort und löst auf eine falsche Wiener Haltestelle auf.
+- **Update-Meldungen**: ÖBB veröffentlicht laufende Störungen als „Update N (TT.MM.JJJJ hh:mm) Kategorie: Ort". Das Präfix wird entfernt (`_strip_update_prefix`), die Kategorie wie bei jedem ÖBB-Titel verworfen — außer bei Entwarnungen: „Aufhebung …: Ort" bleibt vollständig stehen.
 
 ### Verkehrsverbund Ost-Region (VOR)
 
