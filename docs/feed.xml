@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 25 Sep 2026 14:40:23 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 15:01:19 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[16A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5a34fd9d1d85761937e73cc1505db5c332e3d5fe85c5450ebb4c6466c12885ea</guid>
+      <pubDate>Fri, 25 Sep 2026 14:50:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 15:01:19 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 14:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 25.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 25.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[24A/85A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f43aeb02230d91ddf9dc073c8e5132c9c41e20bae25b997975fcbcd09ee2c7d7</guid>
+      <pubDate>Fri, 25 Sep 2026 14:07:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 15:01:19 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 14:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie 24A wird in beiden Richtungen zwischen Breitenlee, Ziegelhofstraße und Breitenlee, Ort über Rautenweg umgeleitet. [Am 25.09.2026]</description>
+      <content:encoded><![CDATA[Die Linie 24A wird in beiden Richtungen zwischen Breitenlee, Ziegelhofstraße und Breitenlee, Ort über Rautenweg umgeleitet.<br/>[Am 25.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[26E: Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sat, 18 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 72A in Richtung Hasenleiten Haltestelle: Kraftwerk Simmering Von: 1. Haidequerstraße 2 Nach: 1. Haidequerstraße 510 Dauer: Ab 22. September … [18.09.2026 – 18.09.2027]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 72A in Richtung Hasenleiten Haltestelle: Kraftwerk Simmering Von: 1. Haidequerstraße 2 Nach: 1. Haidequerstraße 510 Dauer: Ab 22. September …<br/>[18.09.2026 – 18.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Gleisbauarbeiten – Althanstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b25a186e245503549fc296499ec26d8767efe4538f6a4c7ed75b7774611305b3</guid>
-      <pubDate>Tue, 15 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 23:01:11 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 15 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 07 Nov 2026 03:00:00 +0100</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt. Linie D: Betrieb nur zwischen Absberggasse und Börse sowie zwischen Augasse und Nußdorf. [15.09.2026 – 07.11.2026]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt. Linie D: Betrieb nur zwischen Absberggasse und Börse sowie zwischen Augasse und Nußdorf.<br/>[15.09.2026 – 07.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Vordere Zollamtsstraße von Marxergasse und Kleine Marxerbrücke bis Radetzkybrücke]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">35a2bf6293387737ed920111491ea53c3fd0c9e8f0003d6e2a69287d3ff60605</guid>
-      <pubDate>Sun, 01 Feb 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Thu, 17 Sep 2026 14:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 01 Feb 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
-      <description>Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener … [01.02.2026 – 30.11.2026]</description>
-      <content:encoded><![CDATA[Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
