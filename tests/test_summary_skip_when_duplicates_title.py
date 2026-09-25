@@ -27,7 +27,7 @@ from src import build_feed
 from src.feed_types import FeedItem
 
 
-def _format(raw_title: str, raw_desc: str) -> tuple[str, str]:
+def _format(raw_title: str, raw_desc: str, *, split_reason: bool = True) -> tuple[str, str]:
     item = cast(
         FeedItem,
         {
@@ -41,7 +41,7 @@ def _format(raw_title: str, raw_desc: str) -> tuple[str, str]:
     )
     now = datetime(2026, 5, 6, 12, 0, tzinfo=UTC)
     formatted = build_feed._format_item_content(
-        item, ident="t", starts_at=now, ends_at=None
+        item, ident="t", starts_at=now, ends_at=None, split_reason=split_reason
     )
     return formatted.title_out, formatted.desc_text_truncated
 
@@ -116,29 +116,44 @@ class TestCategoryWordOnBothSides:
     Counted over the published German feed: 12 of 222 unique items had
     exactly this shape, and in every one of them the only difference was
     that one word.
+
+    Since 2026-09-25 a WL ticker's title shrinks to the cause and the
+    consequence moves into the summary (``_finish_reason_title``), which
+    ends the repetition from the other side. ``split_reason=False`` is the
+    path an item takes when its short title would collide with another
+    visible item's; there the dedupe below still does the work.
     """
 
     def test_veranstaltung_on_both_sides_drops_the_summary(self) -> None:
         # Live in docs/feed.xml on 2026-09-18, item 5 of ten.
         title = "40/41/9/42: Veranstaltung Linien 40 und 41 Umleitung über Linien 9 und 42"
         desc = "Veranstaltung\nLinien 40 und 41\nUmleitung über\nLinien 9 und 42"
-        _, out = _format(title, desc)
+        _, out = _format(title, desc, split_reason=False)
         assert "Umleitung über" not in out
         assert out.strip().startswith("[")
+        short, out = _format(title, desc)
+        assert short == "40/41/9/42: Veranstaltung"
+        assert out.startswith("Linien 40 und 41 Umleitung über Linien 9 und 42 [")
 
     def test_the_shortest_case(self) -> None:
         title = "2A: Veranstaltung Kein Betrieb"
         desc = "Veranstaltung\nKein Betrieb"
-        _, out = _format(title, desc)
+        _, out = _format(title, desc, split_reason=False)
         assert "Kein Betrieb" not in out
         # Not "Grund: Veranstaltung." either — the headline says it already.
         assert "Grund" not in out
+        short, out = _format(title, desc)
+        assert (short, out) == ("2A: Veranstaltung", "Kein Betrieb [Seit 06.05.2026]")
 
     def test_demonstration_too_it_is_not_one_word(self) -> None:
         title = "71: Demonstration Umleitung bis St. Marx über Linie D und 18"
         desc = "Demonstration\nUmleitung bis St. Marx\nüber Linie D und 18"
-        _, out = _format(title, desc)
+        _, out = _format(title, desc, split_reason=False)
         assert "St. Marx" not in out
+        assert "Grund" not in out
+        short, out = _format(title, desc)
+        assert short == "71: Demonstration"
+        assert out.startswith("Umleitung bis St. Marx über Linie D und 18 [")
         assert "Grund" not in out
 
     def test_the_reason_rescue_is_untouched(self) -> None:
@@ -181,8 +196,13 @@ class TestCategoryWordOnBothSides:
         """
         title = "13A: Betriebsstörung Kein Betrieb ab 10 Uhr"
         desc = "Betriebsstörung\nKein Betrieb"
-        _, out = _format(title, desc)
+        _, out = _format(title, desc, split_reason=False)
         assert out.startswith("Betriebsstörung Kein Betrieb")
+        # Split, "Betriebsstörung" is the cause the title keeps, and "Kein
+        # Betrieb" is part of the consequence — the summary would only
+        # repeat both.
+        short, out = _format(title, desc)
+        assert (short, out) == ("13A: Betriebsstörung", "Kein Betrieb ab 10 Uhr [Seit 06.05.2026]")
 
 
 class TestMergeJoinerOnOneSideOnly:

@@ -929,6 +929,26 @@ Nicht jeder Text gehört in ein NMT-Modell:
   (geplante Arbeiten und Veranstaltungen plus Störungsursachen wie
   `Fremdunfall`); ein Wort, das nur der Trenner kennt, schickte den Strich
   wieder ins Modell.
+* **Ticker-Titel: Ursache oben, Folge darunter (seit 2026-09-25).** Bei
+  einer WL-Störung behält der Titel nur Linie und Ursache, die Folge wandert
+  an den Anfang der Beschreibung (`_finish_reason_title`):
+  `14A: Rettungseinsatz` über `Betrieb ab Laxenburger Straße / Gudrunstraße
+  [Am 25.09.2026]`. Die Ursache findet `_reason_and_fragment` auf zwei Wegen:
+  über `_TITLE_REASON_WORDS` oder, für Ursachen außerhalb der Liste
+  („Schadhafter Zug“, „Signalstörung“, „PKW im Gleis“), über den Anfang der
+  Folge (`_CONSEQUENCE_START_RE`: „Betrieb ab/nur/über“, „Kein Betrieb“,
+  „Züge/Busse halten“, „Umleitung“). Davor dürfen höchstens drei Wörter ohne
+  Ziffer stehen. Nennt die Beschreibung die Folge schon, bleibt sie, wie sie
+  ist. Wiederholt sie nur Ursache und Folge, ersetzt die Folge sie. Sonst
+  steht die Folge vorn, und gekürzt wird hinter dem letzten passenden Satz
+  (`_last_sentence_end`). Den Strich behalten Hinweise, deren zweite Hälfte
+  ein Ort ist (`D: Gleisbauarbeiten – Althanstraße`), sowie Ticker, deren
+  kurzer Titel unter den sichtbaren Items doppelt wäre. WL schickt zu einem
+  Vorfall oft mehrere Ticker (`49: Gleisschaden`, `… Betrieb ab
+  Urban-Loritz-Platz`, `… Betrieb ab Hütteldorfer Straße`), und drei gleiche
+  Zeilen auf dem Display wären schlechter als drei lange
+  (`_short_title_collisions`, entschieden in `_make_rss` für DE und EN
+  gemeinsam).
 
 ### Die Platzhalter
 

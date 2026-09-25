@@ -29,7 +29,7 @@ from src.build_feed import _separate_reason_word
 from src.feed_types import FeedItem
 
 
-def _format(raw_title: str, raw_desc: str) -> tuple[str, str]:
+def _format(raw_title: str, raw_desc: str, *, split_reason: bool = True) -> tuple[str, str]:
     item = cast(
         FeedItem,
         {
@@ -46,6 +46,7 @@ def _format(raw_title: str, raw_desc: str) -> tuple[str, str]:
         ident="t",
         starts_at=datetime(2026, 9, 19, 11, 0, tzinfo=UTC),
         ends_at=datetime(2026, 9, 19, 21, 55, tzinfo=UTC),
+        split_reason=split_reason,
     )
     return formatted.title_out, formatted.desc_text_truncated
 
@@ -113,10 +114,17 @@ def test_the_duplicate_check_still_empties_the_restated_ticker() -> None:
     reason word, so applying the dash earlier would pass this too — the
     "after the checks" placement is a design choice, not something a test
     can pin.)"""
-    title, desc = _format("1A: Veranstaltung Kein Betrieb", "Veranstaltung\nKein Betrieb")
+    # The dash survives where the short title would collide with another
+    # visible item's (``split_reason=False``); the default moves the
+    # consequence into the summary instead (operator request 2026-09-25).
+    title, desc = _format("1A: Veranstaltung Kein Betrieb", "Veranstaltung\nKein Betrieb", split_reason=False)
 
     assert title == "1A: Veranstaltung – Kein Betrieb"
     assert desc == "[Am 19.09.2026]"
+
+    title, desc = _format("1A: Veranstaltung Kein Betrieb", "Veranstaltung\nKein Betrieb")
+
+    assert (title, desc) == ("1A: Veranstaltung", "Kein Betrieb [Am 19.09.2026]")
 
 
 def test_the_published_item_end_to_end() -> None:
@@ -127,8 +135,10 @@ def test_the_published_item_end_to_end() -> None:
         "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     )
 
-    assert title == "31: Demonstration – Betrieb ab Wallensteinstraße"
-    assert desc.startswith("Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.")
+    assert title == "31: Demonstration"
+    assert desc.startswith(
+        "Betrieb ab Wallensteinstraße. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."
+    )
 
 
 def test_a_sentence_title_keeps_its_shape_end_to_end() -> None:
@@ -172,6 +182,8 @@ def test_the_english_title_reads_as_reason_and_consequence(
         ends_at=datetime(2026, 9, 19, 21, 55, tzinfo=UTC),
         lang="en",
         state=state,
+        # The dashed title — kept where the short one would collide.
+        split_reason=False,
     )
 
     assert formatted.title_out == "31: Demonstration – service from Wallensteinstraße", formatted.title_out
