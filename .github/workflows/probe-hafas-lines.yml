@@ -4,7 +4,7 @@ name: Probe HAFAS lines (manual)
 # 2026-09-25, A.14): which lines serve an ÖBB station, and how does HAFAS
 # name them? The development sandbox cannot reach ``fahrplan.oebb.at``, so
 # ``scripts/probe_hafas_lines.py`` runs here and prints a summary of the
-# response shape (never the raw payload) to the job log. Four HAFAS
+# response shape (never the raw payload) to the job log. At most six HAFAS
 # requests per run, read-only, nothing is committed.
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ concurrency:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    # Four small HTTP requests plus dependency install; 10 min catches a hang.
+    # A handful of HTTP requests plus dependency install; 10 min catches a hang.
     timeout-minutes: 10
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true

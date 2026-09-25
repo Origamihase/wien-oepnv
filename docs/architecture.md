@@ -403,7 +403,11 @@ flowchart LR
   nehmen; der Circuit Breaker bleibt Sache des jeweiligen Aufrufers.
   Die Antwortform dafür erhebt das manuelle Diagnoseskript
   `scripts/probe_hafas_lines.py` im Workflow `probe-hafas-lines.yml`
-  (nur `workflow_dispatch`, vier Anfragen, schreibt nichts).
+  (nur `workflow_dispatch`, höchstens sechs Anfragen, schreibt nichts).
+  Erster Lauf (2026-09-25): `LocMatch` liefert je Station nur die
+  Produktklassen (`pCls`, Bitmaske laut `hafas-client`: 32 = S-Bahn,
+  16 = R/REX, 256 = U-Bahn, 512 = Straßenbahn), keine Linien. Eine
+  `StationBoard` mit `getPasslist` lehnt ÖBB mit `err=PARSE` ab.
 
 **Warum Google Places die Notfall-Stufe ist:**
 

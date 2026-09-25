@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **HAFAS-Messlauf, zweite Runde (2026-09-25)**: Der erste Lauf zeigte:
+  `LocMatch` liefert je Station nur Produktklassen (`pCls`), keine
+  Linien; die Abfahrtstafel kam mit `err=PARSE` zurück. Ursache laut
+  `public-transport/hafas-client`: ÖBB unterstützt `getPasslist` nicht.
+  `scripts/probe_hafas_lines.py` fragt jetzt die Bahn-Abfahrten eines
+  ganzen Tages in der Form ab, die `hafas-client` für ÖBB sendet
+  (`stbLoc` `A=1@L=<extId>@`, Produktfilter 4159, kein `getPasslist`),
+  meldet `errTxt` und benennt die Produktklassen. Schlägt die Anfrage
+  fehl, folgt eine Ersatzanfrage zur Eingrenzung.
 * **HAFAS-Messlauf für die ÖBB-Linien je Bahnhof (2026-09-25)**: Vorbereitung
   von Stufe 2 der Linien-Prüfung. `src/places/hafas_client.py` kapselt den
   Mgate-Transport in `post_mgate`; die Koordinaten-Anreicherung nutzt ihn
