@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 25 Sep 2026 15:53:38 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 16:01:18 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[14A: Rettungseinsatz – Betrieb ab Laxenburger Straße / Gudrunstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac</guid>
+      <pubDate>Fri, 25 Sep 2026 15:59:33 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 15:59:33 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 15:59:33 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 16:58:00 +0200</ext:ends_at>
+      <description>[Am 25.09.2026]</description>
+      <content:encoded><![CDATA[[Am 25.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12A: Service disruption]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung im Haltestellenbereich Großfeldsiedlung. [Am 25.09.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung im Haltestellenbereich Großfeldsiedlung.<br/>[Am 25.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Event – Buses stop at the 14A line]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">75e60c1e1fa31d4ad5ba13db92bbee5a4346e5ee92d500dd0022673f0c665745</guid>
-      <pubDate>Fri, 25 Sep 2026 05:44:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 06:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 05:48:32 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 22:15:00 +0200</ext:ends_at>
-      <description>Operating only between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52, 48A. expected duration: up to 22:00 … [On 25.09.2026]</description>
-      <content:encoded><![CDATA[Operating only between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52, 48A. expected duration: up to 22:00 …<br/>[On 25.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
