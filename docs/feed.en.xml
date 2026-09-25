@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 25 Sep 2026 06:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 07:01:13 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[47A: Foreign traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cb7f4e7f09aee5cf6261e666ccb189a312683604df3dfa6fd094a27b76e7c453</guid>
+      <pubDate>Fri, 25 Sep 2026 06:37:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 07:01:13 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 06:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: Foreigner traffic accident. [On 25.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: Foreigner traffic accident.<br/>[On 25.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Event – Buses stop at the 14A line]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Tue, 21 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse Stop: An den Steinfeldern From: Perfektastraße 89 To: Approx. 20 metres towards … [21.09.2026 – 21.09.2027]</description>
       <content:encoded><![CDATA[Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse Stop: An den Steinfeldern From: Perfektastraße 89 To: Approx. 20 metres towards …<br/>[21.09.2026 – 21.09.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[72A: Kraftwerk Simmering]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">35bf402812b713b3ca2cfb4047d0416c127ab0dbb7894e5338139bfc3a930f18</guid>
-      <pubDate>Fri, 18 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 18 Sep 2026 14:31:03 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 18 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop relocation of line 72A towards Hasenleiten Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 To: 1. Haidequerstraße 510 Duration: From 22 September … [18.09.2026 – 18.09.2027]</description>
-      <content:encoded><![CDATA[Stop relocation of line 72A towards Hasenleiten Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 To: 1. Haidequerstraße 510 Duration: From 22 September …<br/>[18.09.2026 – 18.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
