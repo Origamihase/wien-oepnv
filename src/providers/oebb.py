@@ -354,9 +354,64 @@ def _drop_redundant_suffix(t: str) -> str:
     return t
 
 
+# ÖBB republishes a running disruption under a numbered update headline:
+#
+#     Update 4 (25.09.2026 09:59) Verkehrseinschränkung: St.Pölten
+#
+# Published verbatim on 2026-09-25 (``docs/feed.xml`` item 3): the prefix is
+# ~30 characters a display reader cannot use, and it also blocks the
+# category-prefix loop below — the first colon sits inside "09:59", which
+# the loop deliberately never splits (clock-time guard), so the title was
+# left untouched and "St.Pölten" kept its missing space. Without the prefix
+# the same loop yields "St. Pölten Hauptbahnhof". Four such titles reached
+# the feed since 2026-08-01, each for two to three cycles.
+_UPDATE_PREFIX_RE = re.compile(
+    r"^\s*Update\s+\d+\s*\(\s*\d{1,2}\.\d{1,2}\.\d{4}(?:,?\s+\d{1,2}:\d{2})?\s*\)\s*[:\-–]?\s*",
+    re.IGNORECASE,
+)
+
+# An all-clear ("Aufhebung Verkehrseinschränkung: Wien Handelskai") names the
+# end of a disruption. Its label contains a category word, so the loop below
+# would drop it as a plain category prefix and leave only "Wien Handelskai" —
+# an all-clear that reads like a running disruption. Three of the four
+# update-prefixed titles since August were all-clears; the label stays.
+#
+# The label is split off like the line prefix, the place behind it goes
+# through the normal cleanup, and the label is put back in front. Kept whole,
+# the place would skip the cleanup: published 2026-09-25 11:01 as
+# "Update 5 (25.09.2026 10:48) Aufhebung Verkehrseinschränkung: St.Pölten",
+# the missing space would have survived the prefix fix.
+_ALL_CLEAR_PREFIX_RE = re.compile(r"^\s*Aufhebung\b", re.IGNORECASE)
+_ALL_CLEAR_LABEL_RE = re.compile(r"^\s*(Aufhebung\b[^:]*?)\s*:(?!\d)\s*", re.IGNORECASE)
+
+
+def _split_all_clear_label(title: str) -> tuple[str, str]:
+    """Split ``"Aufhebung …: Ort"`` into ``("Aufhebung …", "Ort")``.
+
+    Returns ``("", title)`` when the title carries no all-clear label.
+    """
+    match = _ALL_CLEAR_LABEL_RE.match(title)
+    if not match:
+        return "", title
+    return match.group(1).strip(), title[match.end():]
+
+
+def _join_label(label: str, rest: str) -> str:
+    """Put a split-off ``label`` back in front of ``rest`` as ``"label: rest"``."""
+    if not label:
+        return rest
+    return f"{label}: {rest}" if rest else label
+
+
+def _strip_update_prefix(title: str) -> str:
+    """Remove ÖBB's ``Update N (TT.MM.JJJJ hh:mm)`` headline prefix."""
+    return _UPDATE_PREFIX_RE.sub("", title or "", count=1)
+
+
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
     t = html.unescape(t)
+    t = _strip_update_prefix(t)
 
     # Preserve a leading line marker (S40:, REX 7:, …) through the
     # cleanup. The endpoint-reordering logic below would otherwise
@@ -367,6 +422,8 @@ def _clean_title_keep_places(t: str) -> str:
     if line_match:
         line_prefix = line_match.group(1).strip()
         t = t[line_match.end():]
+
+    all_clear_label, t = _split_all_clear_label(t)
 
     t = _drop_redundant_suffix(t)
 
@@ -396,7 +453,7 @@ def _clean_title_keep_places(t: str) -> str:
                 break
 
             prefix = match.group(1).strip()
-            if _is_category(prefix):
+            if _is_category(prefix) and not _ALL_CLEAR_PREFIX_RE.match(prefix):
                 segment = segment[match.end():]
             else:
                 break
@@ -466,6 +523,7 @@ def _clean_title_keep_places(t: str) -> str:
     t = re.sub(r"\s{2,}", " ", t)
     t = re.sub(r"&lt;|&gt;|&#60;|&#x3C;|&#62;|&#x3E;|[<>«»‹›]+", "", t)
     t = t.strip()
+    t = _join_label(all_clear_label, t)
     # Re-attach the leading line prefix that was split off above so
     # downstream consumers (``_extract_line_prefix``) still recognise it.
     if line_prefix and t:
