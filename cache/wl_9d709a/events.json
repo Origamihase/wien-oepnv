@@ -434,6 +434,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10: Störung an einem Bahnübergang",
+    "description": "Linie 10: Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse. Voraussichtliche Dauer: 19:15 Uhr. Grund: Störung an einem Bahnübergang im Bereich Hietzinger Hauptstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "70fda55609c717c6e33b864081414fe454926fa86793b92ea1e0a1951b6b736d",
+    "pubDate": "2026-09-25T18:55:00+02:00",
+    "starts_at": "2026-09-25T18:55:00+02:00",
+    "ends_at": "2026-09-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=10|D=2026-09-25|TK=10 störung an einem bahnübergang"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -706,6 +718,18 @@
     "starts_at": "2026-09-25T04:40:27+02:00",
     "ends_at": "2026-09-26T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-09-25|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "69A: Polizeieinsatz",
+    "description": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "96f135154720252b723390157353648f6e722f3498310c762afbb7ad31588d1b",
+    "pubDate": "2026-09-25T18:30:00+02:00",
+    "starts_at": "2026-09-25T18:30:00+02:00",
+    "ends_at": "2026-09-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=69A|D=2026-09-25|TK=polizeieinsatz"
   },
   {
     "source": "Wiener Linien",

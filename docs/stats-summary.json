@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 943,
+      "Meidling": 944,
       "Praterstern": 916
     },
     "by_hour": {
@@ -23,7 +23,7 @@
       "15": 109,
       "16": 89,
       "17": 107,
-      "18": 105,
+      "18": 106,
       "19": 125,
       "20": 105,
       "21": 107,
@@ -43,7 +43,7 @@
       "REX2277": 1,
       "REX3": 195,
       "REX92": 3,
-      "S1": 395,
+      "S1": 396,
       "S2": 300,
       "S27016": 1,
       "S28044": 1,
@@ -57,20 +57,20 @@
     "by_weekday": {
       "Di": 284,
       "Do": 321,
-      "Fr": 365,
+      "Fr": 366,
       "Mi": 299,
       "Mo": 280,
       "Sa": 150,
       "So": 160
     },
-    "total": 1859
+    "total": 1860
   },
-  "generated_at": "2026-09-25T18:31:20+02:00",
+  "generated_at": "2026-09-25T19:01:20+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.04,
     "by_direction": {
-      "Meidling": 5543,
+      "Meidling": 5544,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -92,7 +92,7 @@
       "15": 1.4,
       "16": 1.03,
       "17": 1.27,
-      "18": 1.16,
+      "18": 1.17,
       "19": 1.2,
       "20": 2.11,
       "21": 0.64,
@@ -102,7 +102,7 @@
     "by_weekday_avg": {
       "Di": 1.12,
       "Do": 1.03,
-      "Fr": 0.95,
+      "Fr": 0.96,
       "Mi": 1.31,
       "Mo": 1.41,
       "Sa": 0.73,
@@ -112,13 +112,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-09-25T18:25:00+02:00",
+          "last_seen": "2026-09-25T18:55:00+02:00",
           "peer_rows_since": 0,
           "rows_in_window": 1194
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 1693,
+          "peer_rows_since": 1694,
           "rows_in_window": 0
         }
       },
@@ -127,14 +127,14 @@
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 6.0,
+      "avg_delay_minutes": 3.5,
       "observations": 2,
       "window_minutes": 60
     },
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 121,
     "threshold_minutes": 9.0,
-    "total_observations": 9374
+    "total_observations": 9375
   },
   "stoerungen": {
     "by_hour": {
