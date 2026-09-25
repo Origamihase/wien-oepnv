@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stationsverzeichnis: WL-Stationen kennen ihre Linien (`wl_lines`, 2026-09-25)**:
+  Stufe 1 der Plausibilitätsprüfung „hält Linie X bei Y?“ (Anlass: A.14,
+  Straßenbahn 1 in Hütteldorf). `scripts/update_wl_stations.py` lädt vom
+  bestehenden WL-OGD-Endpoint zusätzlich `wienerlinien-ogd-linien.csv` und
+  `wienerlinien-ogd-fahrwegverlaeufe.csv` und gibt jeder WL-Station die
+  Linien, die an einem ihrer Haltepunkte halten, in natürlicher
+  Reihenfolge. Optional: Fehlen die Dateien, läuft der Merge ohne Linien.
+  Schema (`docs/schema/stations.schema.json`) und Doku ergänzt. Der Feed
+  ändert sich nicht. Tests: `tests/test_wl_station_lines.py`.
 * **DE- und EN-Feed: „ÖBB-Ersatzbus für <80“ ist die S80, nicht die Linie 1 (2026-09-25)**:
   Seit dem 12.09. stand täglich „1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80“
   im Feed. Beanstandung des Betreibers: Die Linien 1 und 80 fahren nicht

@@ -479,9 +479,10 @@ Der historische Proxy `data.wien.gv.at/csv/` wurde in der 60.
 Wien-OGD-Phase (September 2025) ausgemustert; `haltepunkte.csv`
 lieferte dort HTTP 404. Die Migration ist in
 `scripts/update_wl_stations.py:OGD_HALTESTELLEN_URL` dokumentiert.
-Beide Dateien werden in jedem Cron-Tick frisch heruntergeladen
-(`--download` ist Default-on) und atomar nach
-`data/wienerlinien-ogd-{haltestellen,haltepunkte}.csv` geschrieben.
+Beide Dateien (seit 2026-09-25 zusätzlich `linien.csv` und
+`fahrwegverlaeufe.csv`, siehe Schritt 6 unten) werden in jedem Lauf frisch
+heruntergeladen (`--download` ist Default-on) und atomar nach
+`data/wienerlinien-ogd-*.csv` geschrieben.
 Bei Download-Fehlschlag behält die Pipeline den gepinnten lokalen
 Snapshot und läuft weiter.
 
@@ -507,6 +508,20 @@ Snapshot und läuft weiter.
    (PR #1443).
 5. Den Eintrag mit `wl_diva`, `wl_stops`, `aliases` bauen — ohne
    synthetische `bst_id`/`bst_code` (PR #1446-Redesign).
+6. `wl_lines` setzen (seit 2026-09-25): die Linien, die an mindestens
+   einem der `wl_stops` halten, in natürlicher Reihenfolge
+   (`5`, `13A`, `49`, `D`, `N49`, `U4`). Quelle sind zwei weitere
+   Dateien vom selben Endpoint: `wienerlinien-ogd-linien.csv`
+   (`LineID` → `LineText`) und `wienerlinien-ogd-fahrwegverlaeufe.csv`
+   (je Zeile ein Halt eines Linienwegs: `LineID`, `StopID`); die
+   `StopID` ist die der `wl_stops`. Die Liniendaten sind optionale
+   Anreicherung: Fehlen die Dateien, bekommt keine Station `wl_lines`,
+   der Merge läuft weiter. Beim Co-Lokations-Merge werden die Linien
+   vereinigt; ein ÖBB-Eintrag, in den ein WL-Payload gemergt wird, trägt
+   genau die Linien dieses Laufs. Zweck: Grundlage einer
+   Plausibilitätsprüfung „hält Linie X bei Y?“ für Störungsmeldungen
+   (Audit 2026-09-25, A.14: WL meldete „ÖBB-Ersatzbus für <80“ in
+   Hütteldorf unter der Straßenbahnlinie 1).
 
 **Co-lokierter-Haltestellen-Merge** (PR #1451): Ein Post-Build-Pass
 `_merge_colocated_duplicates` faltet Gruppen mit identischem

@@ -127,6 +127,16 @@
             "additionalProperties": false
           }
         },
+        "wl_lines": {
+          "type": "array",
+          "description": "Wiener-Linien-Linien, die an mindestens einem der wl_stops halten, in natürlicher Reihenfolge (z. B. ['10', '49', 'N49', 'U4']). Abgeleitet aus data/wienerlinien-ogd-linien.csv und data/wienerlinien-ogd-fahrwegverlaeufe.csv (Wiener Linien OGD, CC BY 4.0). Grundlage der Plausibilitätsprüfung ‚hält diese Linie hier?‘. Fehlt, wenn keine Liniendaten vorliegen.",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z0-9]{1,6}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
         "type": {
           "type": "string",
           "enum": ["manual_foreign_city", "manual_distant_at"],

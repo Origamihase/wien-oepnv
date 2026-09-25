@@ -10,7 +10,9 @@
 #   ``Verzeichnis der Verkehrsstationen`` workbook (free open data,
 #   no auth, no PII).
 # * ``data/wienerlinien-ogd-haltestellen.csv`` /
-#   ``data/wienerlinien-ogd-haltepunkte.csv`` — public Wiener Linien
+#   ``data/wienerlinien-ogd-haltepunkte.csv`` /
+#   ``data/wienerlinien-ogd-linien.csv`` /
+#   ``data/wienerlinien-ogd-fahrwegverlaeufe.csv`` — public Wiener Linien
 #   OGD-Echtzeit CSVs (free open data, no auth, no PII).
 # * ``data/vor-haltestellen.csv`` — public VOR stop list (manually
 #   refreshed snapshot, free open data).

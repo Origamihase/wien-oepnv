@@ -180,6 +180,8 @@ MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 MAX_WL_CSV_BYTES = 50 * 1024 * 1024
 DEFAULT_HALTEPUNKTE = BASE_DIR / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_HALTESTELLEN = BASE_DIR / "data" / "wienerlinien-ogd-haltestellen.csv"
+DEFAULT_LINIEN = BASE_DIR / "data" / "wienerlinien-ogd-linien.csv"
+DEFAULT_FAHRWEGVERLAEUFE = BASE_DIR / "data" / "wienerlinien-ogd-fahrwegverlaeufe.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_MAPPING = BASE_DIR / "data" / "vor-haltestellen.mapping.json"
 
@@ -191,6 +193,16 @@ DEFAULT_VOR_MAPPING = BASE_DIR / "data" / "vor-haltestellen.mapping.json"
 # host has served the same files under a URL pattern stable since 2022.
 OGD_HALTESTELLEN_URL = "https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-haltestellen.csv"
 OGD_HALTEPUNKTE_URL = "https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-haltepunkte.csv"
+# Lines and their routes (``Fahrwegverläufe``: which StopIDs each line
+# serves), same host and licence. They give every WL station its
+# ``wl_lines`` — the lines that actually stop there — so a disruption can
+# be checked for plausibility ("tram 1 does not stop at Bhf. Hütteldorf",
+# audit 2026-09-25, A.14). Optional: without them a station simply carries
+# no ``wl_lines``.
+OGD_LINIEN_URL = "https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-linien.csv"
+OGD_FAHRWEGVERLAEUFE_URL = (
+    "https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-fahrwegverlaeufe.csv"
+)
 OGD_DOWNLOAD_TIMEOUT_SECONDS = 30
 USER_AGENT = (
     "wien-oepnv station updater "
@@ -226,6 +238,18 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         help="Path to the haltestellen CSV export",
     )
     parser.add_argument(
+        "--linien",
+        type=Path,
+        default=DEFAULT_LINIEN,
+        help="Path to the linien CSV export (optional, for wl_lines)",
+    )
+    parser.add_argument(
+        "--fahrwegverlaeufe",
+        type=Path,
+        default=DEFAULT_FAHRWEGVERLAEUFE,
+        help="Path to the fahrwegverlaeufe CSV export (optional, for wl_lines)",
+    )
+    parser.add_argument(
         "--stations",
         type=Path,
         default=DEFAULT_STATIONS,
@@ -243,7 +267,8 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         action=argparse.BooleanOptionalAction,
         default=True,
         help=(
-            "Download the latest WL OGD haltestellen/haltepunkte CSVs from "
+            "Download the latest WL OGD haltestellen/haltepunkte/linien/"
+            "fahrwegverlaeufe CSVs from "
             "www.wienerlinien.at before merging (default: enabled). On failure, "
             "the existing local files are used as a fallback."
         ),
@@ -579,6 +604,80 @@ def load_haltepunkte(path: Path) -> list[Haltepunkt]:
     return haltepunkt_records
 
 
+# A WL line label as the OGD export spells it (``U4``, ``49``, ``13A``,
+# ``N25``, ``D``, ``WLB``), uppercased like the WL provider's
+# ``relatedLines`` tokens. Anything else is not a line and is dropped
+# rather than persisted into stations.json.
+_WL_LINE_TEXT_RE = re.compile(r"^[A-Z0-9]{1,6}$")
+_WL_LINE_PARTS_RE = re.compile(r"^([A-Z]*)(\d*)(.*)$")
+
+
+def _line_sort_key(line: str) -> tuple[str, int, str]:
+    """Natural order: ``5`` < ``13A`` < ``49`` < ``D`` < ``N25`` < ``U4``."""
+    match = _WL_LINE_PARTS_RE.match(line)
+    if match is None:  # pragma: no cover - the pattern matches every string
+        return (line, 0, "")
+    prefix, number, rest = match.groups()
+    return (prefix, int(number) if number else 0, rest)
+
+
+def load_line_texts(path: Path) -> dict[str, str]:
+    """Return ``LineID → LineText`` from ``wienerlinien-ogd-linien.csv``.
+
+    The lines are optional enrichment: a missing file yields ``{}`` and the
+    station merge carries on without ``wl_lines``.
+    """
+    mapping: dict[str, str] = {}
+    try:
+        for row in _dict_reader(path):
+            line_id = row.get("LineID", "LINIEN_ID")
+            text = row.get("LineText", "BEZEICHNUNG").strip().upper()
+            if line_id and _WL_LINE_TEXT_RE.match(text):
+                mapping[line_id] = text
+    except FileNotFoundError:
+        log.warning(
+            "WL linien CSV missing [path-sha256=%s]; stations get no wl_lines",
+            _path_fingerprint(path),
+        )
+        return {}
+    return mapping
+
+
+def load_lines_by_stop(path: Path, line_texts: Mapping[str, str]) -> dict[str, set[str]]:
+    """Return ``StopID → {LineText, …}`` from the Fahrwegverläufe CSV.
+
+    Every row of ``wienerlinien-ogd-fahrwegverlaeufe.csv`` is one stop of
+    one route pattern of one line; the StopID is the one ``wl_stops``
+    carries. A missing file, or no line texts, yields ``{}``.
+    """
+    if not line_texts:
+        return {}
+    by_stop: dict[str, set[str]] = {}
+    try:
+        for row in _dict_reader(path):
+            text = line_texts.get(row.get("LineID", "LINIEN_ID"))
+            stop_id = row.get("StopID", "STOP_ID")
+            if text and stop_id:
+                by_stop.setdefault(stop_id, set()).add(text)
+    except FileNotFoundError:
+        log.warning(
+            "WL fahrwegverlaeufe CSV missing [path-sha256=%s]; stations get no wl_lines",
+            _path_fingerprint(path),
+        )
+        return {}
+    return by_stop
+
+
+def _station_lines(
+    stop_ids: Iterable[str], lines_by_stop: Mapping[str, Iterable[str]]
+) -> list[str]:
+    """Return the lines serving any of *stop_ids*, in natural order."""
+    lines: set[str] = set()
+    for stop_id in stop_ids:
+        lines.update(lines_by_stop.get(stop_id, ()))
+    return sorted(lines, key=_line_sort_key)
+
+
 def _canonical_name(raw: str) -> str:
     cleaned = re.sub(r"\s+\([^)]*\)", "", raw).strip()
     cleaned = re.sub(r"\s{2,}", " ", cleaned)
@@ -870,6 +969,7 @@ def build_wl_entries(
     haltestellen: dict[str, Haltestelle],
     haltepunkte: Iterable[Haltepunkt],
     vor_mapping: Mapping[str, Mapping[str, object]] | None = None,
+    lines_by_stop: Mapping[str, Iterable[str]] | None = None,
 ) -> list[dict[str, object]]:
     grouped: dict[str, list[Haltepunkt]] = {}
     for halt in haltepunkte:
@@ -1066,6 +1166,9 @@ def build_wl_entries(
             vor_id = str(vor_entry.get("vor_id") or "").strip()
             if vor_id:
                 entry["vor_id"] = vor_id
+        lines = _station_lines((stop.stop_id for stop in stops), lines_by_stop or {})
+        if lines:
+            entry["wl_lines"] = lines
         entries.append(entry)
     entries.sort(key=lambda item: (str(item.get("name")), str(item.get("wl_diva"))))
     entries = _merge_colocated_duplicates(entries)
@@ -1312,6 +1415,15 @@ def _merge_entry_group(group: list[dict[str, object]]) -> dict[str, object]:
         combined_stops, key=lambda item: str(item.get("stop_id") or "")
     )
 
+    # Union wl_lines: the merged station is served by every member's lines
+    combined_lines: set[str] = set()
+    for entry in (primary, *extras):
+        lines = entry.get("wl_lines")
+        if isinstance(lines, list):
+            combined_lines.update(line for line in lines if isinstance(line, str))
+    if combined_lines:
+        merged["wl_lines"] = sorted(combined_lines, key=_line_sort_key)
+
     # Union aliases
     combined_aliases: set[str] = set()
     for entry in (primary, *extras):
@@ -1437,6 +1549,15 @@ def _merge_wl_payload(target: dict[str, object], payload: Mapping[str, object]) 
     wl_stops = payload.get("wl_stops")
     if isinstance(wl_stops, list):
         target["wl_stops"] = wl_stops
+
+    # Like the WL-only entries, which are rebuilt from scratch every run,
+    # a merged entry carries exactly this run's lines — none if WL's line
+    # data was unavailable.
+    wl_lines = payload.get("wl_lines")
+    if isinstance(wl_lines, list) and wl_lines:
+        target["wl_lines"] = wl_lines
+    else:
+        target.pop("wl_lines", None)
 
     target["source"] = _merge_sources(target.get("source"), payload.get("source"), "wl")
 
@@ -1892,6 +2013,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.download:
         _download_ogd_csv(OGD_HALTESTELLEN_URL, args.haltestellen)
         _download_ogd_csv(OGD_HALTEPUNKTE_URL, args.haltepunkte)
+        _download_ogd_csv(OGD_LINIEN_URL, args.linien)
+        _download_ogd_csv(OGD_FAHRWEGVERLAEUFE_URL, args.fahrwegverlaeufe)
 
     log.info(
         "Reading haltestellen: [path-sha256=%s]",
@@ -1923,8 +2046,23 @@ def main(argv: Sequence[str] | None = None) -> int:
     if vor_mapping:
         log.info("Loaded %d VOR mapping entries", len(vor_mapping))
 
-    wl_entries = build_wl_entries(haltestellen, haltepunkte, vor_mapping)
-    log.info("Prepared %d WL station entries", len(wl_entries))
+    line_texts = load_line_texts(args.linien)
+    lines_by_stop = load_lines_by_stop(args.fahrwegverlaeufe, line_texts)
+    log.info(
+        "Found %d WL lines serving %d haltepunkte", len(line_texts), len(lines_by_stop)
+    )
+    if line_texts and not lines_by_stop:
+        log.warning(
+            "WL lines loaded but no route rows matched them; "
+            "check the fahrwegverlaeufe CSV columns (LineID, StopID)"
+        )
+
+    wl_entries = build_wl_entries(haltestellen, haltepunkte, vor_mapping, lines_by_stop)
+    log.info(
+        "Prepared %d WL station entries (%d with wl_lines)",
+        len(wl_entries),
+        sum(1 for entry in wl_entries if entry.get("wl_lines")),
+    )
 
     # Abort before the costly reconcile + merge if the OGD load produced
     # nothing — merge_into_stations would otherwise wipe the WL layer.
