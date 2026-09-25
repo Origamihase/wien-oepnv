@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 25 Sep 2026 15:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 15:53:38 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[12A: Betriebsstörung]]></title>
@@ -19,6 +19,17 @@
       <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 25.09.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 25.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b</guid>
+      <pubDate>Fri, 25 Sep 2026 15:21:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 15:21:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 15:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 25.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 25.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[16A: Rettungseinsatz]]></title>
@@ -43,6 +54,39 @@
       <content:encoded><![CDATA[Die Linie 24A wird in beiden Richtungen zwischen Breitenlee, Ziegelhofstraße und Breitenlee, Ort über Rautenweg umgeleitet.<br/>[Am 25.09.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[94A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f0d634e8c64b753a861add399e7138caa8409a34cbca6326b25b7324feb41ede</guid>
+      <pubDate>Fri, 25 Sep 2026 14:43:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 14:43:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 14:43:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 25.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 25.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5</guid>
+      <pubDate>Fri, 25 Sep 2026 13:39:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 13:39:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 13:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3dd0ec36f6dc8594c9e37e23580bdcf5f82555521c07875e9f83c718912578fc</guid>
+      <pubDate>Fri, 25 Sep 2026 13:09:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 13:09:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 13:09:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.09.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[26E: Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
@@ -54,6 +98,17 @@
       <content:encoded><![CDATA[Der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[U1: Weichenstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3169c7392ae5bf8671badefab08375f7a1babfb42f658591deb18bc6c7b7e6c0</guid>
+      <pubDate>Fri, 25 Sep 2026 07:53:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 07:53:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 07:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung im Haltestellenbereich Großfeldsiedlung. [Am 25.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung im Haltestellenbereich Großfeldsiedlung.<br/>[Am 25.09.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[13A: Veranstaltung – Busse halten bei der Linie 14A]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">75e60c1e1fa31d4ad5ba13db92bbee5a4346e5ee92d500dd0022673f0c665745</guid>
@@ -63,61 +118,6 @@
       <ext:ends_at>Fri, 25 Sep 2026 22:15:00 +0200</ext:ends_at>
       <description>Betrieb nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52, 48A aus. Voraussichtliche Dauer: bis 22:00 … [Am 25.09.2026]</description>
       <content:encoded><![CDATA[Betrieb nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52, 48A aus. Voraussichtliche Dauer: bis 22:00 …<br/>[Am 25.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1d0ceb907a55f1c18e718c2a733505fd71b2504c90bdec3ef3210c2f644856ec</guid>
-      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 7A in Richtung Meidling Hauptstraße U sowie der Linien N65 und N66 in Richtung Liesing S Haltestelle: Arthaberplatz Von: Arthaberplatz vor … [24.09.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 7A in Richtung Meidling Hauptstraße U sowie der Linien N65 und N66 in Richtung Liesing S Haltestelle: Arthaberplatz Von: Arthaberplatz vor …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N66/N68R: Quellenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">31d6ac9f73525f3feaa44bb3eb6fdafe467567211114f38f99f0fbe41a2e441e</guid>
-      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 15:00:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie N66 in Richtung Oper, Karlsplatz und der Rufbuslinie N68 in Richtung Oberlaa U Haltestelle: Quellenplatz Von: Quellenplatz 4 im Zuge … [24.09.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie N66 in Richtung Oper, Karlsplatz und der Rufbuslinie N68 in Richtung Oberlaa U Haltestelle: Quellenplatz Von: Quellenplatz 4 im Zuge …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N31: Stammersdorf ersatzlos aufgelassen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c6414f05e0d7316905e3faa36cf0ae3462bb94b5012ef094ee688e0b738e70df</guid>
-      <pubDate>Wed, 23 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 23 Sep 2026 14:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 23 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 31 May 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenauflassung der Linie N31 in Richtung Schwedenplatz U Haltestelle: Stammersdorf Von: Brünnerstraße gegenüber 262 Ersatzlos aufgelassen Dauer: Ab 30. September … [23.09.2026 – 31.05.2027]</description>
-      <content:encoded><![CDATA[Haltestellenauflassung der Linie N31 in Richtung Schwedenplatz U Haltestelle: Stammersdorf Von: Brünnerstraße gegenüber 262 Ersatzlos aufgelassen Dauer: Ab 30. September …<br/>[23.09.2026 – 31.05.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Klapprampensperre am 27.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aa349c99b725b7354f26a3bd3546353bf0a484c4156d7642515ed8ae14d68e51</guid>
-      <pubDate>Wed, 23 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 23 Sep 2026 14:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 23 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U2 nicht ausgefahren werden. [23.09.2026 – 27.09.2026]</description>
-      <content:encoded><![CDATA[Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U2 nicht ausgefahren werden.<br/>[23.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: An den Steinfeldern]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8df3b12335fe71c52b1ef0f68fe79905d05a6ad07460dc067f07c6f064aaf585</guid>
-      <pubDate>Mon, 21 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 21 Sep 2026 16:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse Haltestelle: An den Steinfeldern Von: Perfektastraße 89 Nach: etwa 20 Meter in Richtung … [21.09.2026 – 21.09.2027]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse Haltestelle: An den Steinfeldern Von: Perfektastraße 89 Nach: etwa 20 Meter in Richtung …<br/>[21.09.2026 – 21.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
