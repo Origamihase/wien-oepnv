@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE-Feed: Wiederkehrende WL-Störungen verdrängen nicht mehr sich selbst (2026-09-25)**:
+  Um 15:01 fehlten sechs laufende Störungen im Feed: 94A, O, 5, 12, U2 und
+  U1. Die zehn Plätze belegten stattdessen Haltestellenverlegungen vom 18.
+  bis 24.09. Ursache: Die WL-GUID enthält kein Datum. „94A: Verkehrsunfall“
+  vom 25.09. erbte deshalb das `first_seen` des 94A-Unfalls vom 04.07. Die
+  FIFO-Sortierung stufte die Meldung als 83 Tage alt ein. Seit der
+  State-Aufbewahrung von 600 Tagen (12.09.) überleben solche Einträge
+  praktisch unbegrenzt. Neu: `_restart_recurring_occurrences` setzt
+  `first_seen` einer WL-Meldung auf ihren `pubDate` (Gültigkeitsbeginn),
+  wenn sie vorher länger als 2 h aus den Daten verschwunden war. Das hält
+  das neue State-Feld `last_seen` fest. Maßnahmen, die WL täglich mit
+  neuem Fenster neu ausgibt, behalten ihren Platz. ÖBB, Baustellen und
+  Stammstrecke bleiben unverändert. Tests:
+  `tests/test_recurring_wl_occurrence.py`.
 * **DE- und EN-Feed: Gedankenstrich auch nach Störungsursachen (2026-09-25)**:
   Platz 1 lautete „6: Fremdunfall Züge halten bei der Linie O". Der
   C.5-Trenner (`_separate_reason_word`) setzt einen Gedankenstrich zwischen
