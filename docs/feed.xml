@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 25 Sep 2026 22:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 22:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U6: Betriebsstörung]]></title>
+      <title><![CDATA[14A: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22</guid>
-      <pubDate>Fri, 25 Sep 2026 21:15:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 21:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 21:15:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc</guid>
+      <pubDate>Fri, 25 Sep 2026 22:06:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 22:06:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 22:06:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 25.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 25.09.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26E: Gleisbauarbeiten]]></title>
@@ -41,17 +41,6 @@
       <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung im Haltestellenbereich Großfeldsiedlung. [Am 25.09.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung im Haltestellenbereich Großfeldsiedlung.<br/>[Am 25.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Veranstaltung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">75e60c1e1fa31d4ad5ba13db92bbee5a4346e5ee92d500dd0022673f0c665745</guid>
-      <pubDate>Fri, 25 Sep 2026 05:47:02 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 06:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 05:48:32 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 22:15:00 +0200</ext:ends_at>
-      <description>Busse halten bei der Linie 14A [Am 25.09.2026]</description>
-      <content:encoded><![CDATA[Busse halten bei der Linie 14A<br/>[Am 25.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 02 Oct 2026 15:00:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie N66 in Richtung Oper, Karlsplatz und der Rufbuslinie N68 in Richtung Oberlaa U Haltestelle: Quellenplatz Von: Quellenplatz 4 im Zuge … [24.09.2026 – 02.10.2026]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie N66 in Richtung Oper, Karlsplatz und der Rufbuslinie N68 in Richtung Oberlaa U Haltestelle: Quellenplatz Von: Quellenplatz 4 im Zuge …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N31: Stammersdorf ersatzlos aufgelassen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c6414f05e0d7316905e3faa36cf0ae3462bb94b5012ef094ee688e0b738e70df</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 23 Sep 2026 14:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 23 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 31 May 2027 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenauflassung der Linie N31 in Richtung Schwedenplatz U Haltestelle: Stammersdorf Von: Brünnerstraße gegenüber 262 Ersatzlos aufgelassen Dauer: Ab 30. September … [23.09.2026 – 31.05.2027]</description>
+      <content:encoded><![CDATA[Haltestellenauflassung der Linie N31 in Richtung Schwedenplatz U Haltestelle: Stammersdorf Von: Brünnerstraße gegenüber 262 Ersatzlos aufgelassen Dauer: Ab 30. September …<br/>[23.09.2026 – 31.05.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
