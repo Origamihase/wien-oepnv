@@ -1619,6 +1619,9 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Weichenstörung": "switch fault",
     "Stellwerksstörung": "interlocking failure",
     "Oberleitungsstörung": "overhead-line fault",
+    # Spelled out from the WL ticker stub "Oberleitungsgebr" by
+    # ``_TICKER_ABBREVIATIONS``; same fault, Austrian wording.
+    "Oberleitungsgebrechen": "overhead-line fault",
     "Stromausfall": "power outage",
     "Verspätung": "delay",
     "Verspätungen": "delays",
@@ -3397,7 +3400,7 @@ def _split_reason_title(title: str) -> tuple[str, str] | None:
     """Split a ``<lines>: <Reason> – <fragment>`` title into its two halves.
 
     The shape is the one :func:`_separate_reason_word` produces: after the
-    line prefix, exactly one word from :data:`_CATEGORY_PREFIX_WORDS`, then
+    line prefix, exactly one word from :data:`_TITLE_REASON_WORDS`, then
     the en dash, then the ticker fragment. Anything else — no dash, a
     multi-word head, a head that is not a reason word (``Wien – Mödling``),
     an empty tail — returns ``None`` and is translated whole.
@@ -3412,7 +3415,7 @@ def _split_reason_title(title: str) -> tuple[str, str] | None:
     tail = tail.strip()
     if not head or not tail or " " in head:
         return None
-    if head.casefold() not in _CATEGORY_PREFIX_WORDS:
+    if head.casefold() not in _TITLE_REASON_WORDS:
         return None
     return f"{prefix}{head}", tail
 
@@ -5414,6 +5417,43 @@ _CATEGORY_PREFIX_WORDS: frozenset[str] = frozenset({
     "falschparker",
 })
 
+# Incident causes in front of a WL ticker fragment. They get the same en dash
+# as the planned-work words above, but only in the TITLE: the summary dedupe
+# and the topic budget keep working on ``_CATEGORY_PREFIX_WORDS`` alone.
+#
+# Published 2026-09-25 12:05, ``docs/feed.xml`` item 1::
+#
+#     6: Fremdunfall Züge halten bei der Linie O
+#
+# Measured over the WL cache since June 2026 (125 revisions, 455 distinct
+# titles): 30 titles open with one of these words directly followed by the
+# consequence ("Betrieb", "Umleitung", "Züge halten" …) — Fremdunfall 10,
+# Rettungseinsatz 7, Oberleitungsgebr(echen) 4, Polizeieinsatz 3,
+# Verkehrsunfall 2, Gleisschaden 2, Feuerwehreinsatz 1, Polizeiübung 1.
+_INCIDENT_REASON_WORDS: frozenset[str] = frozenset({
+    "fremdunfall",
+    "verkehrsunfall",
+    "rettungseinsatz",
+    "polizeieinsatz",
+    "feuerwehreinsatz",
+    "polizeiübung",
+    "gleisschaden",
+    "oberleitungsgebrechen",
+})
+# Every word the separator puts a dash behind. ``_split_reason_title`` must
+# know the same set: a dashed title it does not recognise goes to the model
+# whole, with the dash as a placeholder between two words — the shape that
+# produced "Demonstration –Xservice" on 2026-09-19.
+_TITLE_REASON_WORDS: frozenset[str] = _CATEGORY_PREFIX_WORDS | _INCIDENT_REASON_WORDS
+
+# WL's display-board tickers cut long words to fit. "Oberleitungsgebr" (4 of
+# the titles above) is "Oberleitungsgebrechen", a fault in the overhead line;
+# on a display the stub reads as a typo. Only abbreviations the cache history
+# shows, spelled out in full.
+_TICKER_ABBREVIATIONS: dict[str, str] = {
+    "oberleitungsgebr": "Oberleitungsgebrechen",
+}
+
 _TITLE_BODY_RE = re.compile(r"^[A-Za-z0-9/]+:\s*(\S.*)$")
 _DATE_RANGE_PREFIX_RE = re.compile(
     r"^\d{2}\.\d{2}\.\d{4}\s*-\s*\d{2}\.\d{2}\.\d{4}\s*•\s*"
@@ -5452,7 +5492,8 @@ def _separate_reason_word(title_out: str) -> str:
     longest 99 characters against a limit of 256.
 
     The joint gets an en dash when the title body opens with a word from
-    ``_CATEGORY_PREFIX_WORDS`` and the next word starts with a capital —
+    ``_TITLE_REASON_WORDS`` (planned work plus incident causes such as
+    ``Fremdunfall``) and the next word starts with a capital —
     a fragment, not prose (``Demonstration am 19.09.2026`` keeps its
     sentence). Applied to the finished German title, after the duplicate
     checks that compare summaries against the title body, so those see
@@ -5460,13 +5501,18 @@ def _separate_reason_word(title_out: str) -> str:
     (``_drop_category_word`` happens to tolerate one today — that is
     luck, not a contract). The English title is translated from the
     result and inherits the dash. Idempotent: an existing dash is not a
-    capital.
+    capital. A ticker abbreviation in the reason slot
+    (:data:`_TICKER_ABBREVIATIONS`) is spelled out first.
     """
     match = _TITLE_BODY_RE.match(title_out)
     body = match.group(1) if match else title_out
     prefix = title_out[: match.start(1)] if match else ""
     words = body.split(maxsplit=1)
-    if len(words) < 2 or words[0].casefold() not in _CATEGORY_PREFIX_WORDS:
+    if words and words[0].casefold() in _TICKER_ABBREVIATIONS:
+        body = _TICKER_ABBREVIATIONS[words[0].casefold()] + body[len(words[0]):]
+        title_out = f"{prefix}{body}"
+        words = body.split(maxsplit=1)
+    if len(words) < 2 or words[0].casefold() not in _TITLE_REASON_WORDS:
         return title_out
     if not words[1][:1].isupper():
         return title_out

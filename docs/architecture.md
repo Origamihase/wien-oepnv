@@ -921,6 +921,10 @@ Nicht jeder Text gehört in ein NMT-Modell:
   `_translate_title_attempt` solche Titel in zwei Hälften (`_split_reason_title`:
   Linienpräfix mit Ursachenwort, dann das Fragment) und setzt den Strich
   wörtlich wieder ein. Nur der Titel-Pfad des Caches nimmt diesen Weg.
+  Trenner und Zerlegung lesen dieselbe Wortmenge `_TITLE_REASON_WORDS`
+  (geplante Arbeiten und Veranstaltungen plus Störungsursachen wie
+  `Fremdunfall`); ein Wort, das nur der Trenner kennt, schickte den Strich
+  wieder ins Modell.
 
 ### Die Platzhalter
 
