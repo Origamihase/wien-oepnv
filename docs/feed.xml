@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 25 Sep 2026 03:31:24 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 04:01:11 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N66: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">61226b2ae8446ab184d18f5f3fd3a181783a5358bddb21635ca1ebbe708470c7</guid>
+      <pubDate>Fri, 25 Sep 2026 03:56:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 04:01:11 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 03:56:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit kommt es bei der Linie N66 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Polizeieinsatz im Haltestellenbereich Liesing. [Am 25.09.2026]</description>
+      <content:encoded><![CDATA[Derzeit kommt es bei der Linie N66 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Polizeieinsatz im Haltestellenbereich Liesing.<br/>[Am 25.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener … [01.02.2026 – 30.11.2026]</description>
       <content:encoded><![CDATA[Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener …<br/>[01.02.2026 – 30.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36A/36B: Straßenbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8632b64e4efeb1a364259797db1fbc82f206403be80c14079f5bced75a82388b</guid>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 16 Sep 2026 08:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 21 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 16 Sep 2027 11:11:00 +0200</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet. [21.09.2026 – 16.09.2027]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Justgasse / Ruthnergasse werden die Linien 36A und 36B umgeleitet.<br/>[21.09.2026 – 16.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
