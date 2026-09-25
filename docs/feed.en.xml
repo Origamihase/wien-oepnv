@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 25 Sep 2026 07:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 08:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[47A: Foreign traffic accident]]></title>
@@ -76,17 +76,6 @@
       <content:encoded><![CDATA[Stop relocation of line N66 towards Oper, Karlsplatz and the call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U1: Soft damage]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3db8ab459748c9d67da1476756bb39afee07ca14c61c28889f2f246798f15b23</guid>
-      <pubDate>Fri, 25 Sep 2026 04:38:00 +0200</pubDate>
-      <ext:first_seen>Thu, 24 Sep 2026 08:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 04:38:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Line U1 currently runs at Großfeldsiedlung in both directions via 1. expected duration: Sunday end of service. [On 25.09.2026]</description>
-      <content:encoded><![CDATA[Line U1 currently runs at Großfeldsiedlung in both directions via 1. expected duration: Sunday end of service.<br/>[On 25.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[N31: Stammersdorf closed without replacement]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c6414f05e0d7316905e3faa36cf0ae3462bb94b5012ef094ee688e0b738e70df</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 21 Sep 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse Stop: An den Steinfeldern From: Perfektastraße 89 To: Approx. 20 metres towards … [21.09.2026 – 21.09.2027]</description>
       <content:encoded><![CDATA[Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse Stop: An den Steinfeldern From: Perfektastraße 89 To: Approx. 20 metres towards …<br/>[21.09.2026 – 21.09.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[72A: Kraftwerk Simmering]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">35bf402812b713b3ca2cfb4047d0416c127ab0dbb7894e5338139bfc3a930f18</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 18 Sep 2026 14:31:03 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 18 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 18 Sep 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop relocation of line 72A towards Hasenleiten Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 To: 1. Haidequerstraße 510 Duration: From 22 September … [18.09.2026 – 18.09.2027]</description>
+      <content:encoded><![CDATA[Stop relocation of line 72A towards Hasenleiten Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 To: 1. Haidequerstraße 510 Duration: From 22 September …<br/>[18.09.2026 – 18.09.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
