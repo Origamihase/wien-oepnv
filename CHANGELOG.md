@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **DE- und EN-Feed: Gedankenstrich auch nach Störungsursachen (2026-09-25)**:
+  Platz 1 lautete „6: Fremdunfall Züge halten bei der Linie O". Der
+  C.5-Trenner (`_separate_reason_word`) setzt einen Gedankenstrich zwischen
+  Grund und Ticker-Fragment, kannte aber nur Wörter für geplante Arbeiten
+  und Veranstaltungen. Über 455 WL-Titel seit Juni beginnen 30 mit einer
+  Störungsursache: Fremdunfall, Rettungseinsatz, Oberleitungsgebr(echen),
+  Polizeieinsatz, Verkehrsunfall, Gleisschaden, Feuerwehreinsatz,
+  Polizeiübung. Neu: `_INCIDENT_REASON_WORDS`; Trenner und Zerlegung des
+  englischen Titels (`_split_reason_title`) nutzen gemeinsam
+  `_TITLE_REASON_WORDS`, sonst reiste der Strich als Platzhalter ins Modell
+  (Befund vom 19.09.). Beschreibungs-Dedupe und Themen-Budget bleiben bei
+  der bisherigen Liste. Der Ticker-Stumpf „Oberleitungsgebr" wird zu
+  „Oberleitungsgebrechen" (`_TICKER_ABBREVIATIONS`), Glossar: „overhead-line
+  fault". Tests: `tests/test_reason_word_incidents.py`.
 * **DE-Feed: ÖBB-„Update N (…)"-Präfix entfernt, Entwarnungen behalten ihr Label (2026-09-25)**:
   Platz 3 lautete „Update 4 (25.09.2026 09:59) Verkehrseinschränkung:
   St.Pölten". Die Präfix-Schleife in `_clean_title_keep_places` trennt nur an
