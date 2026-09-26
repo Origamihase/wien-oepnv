@@ -446,6 +446,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12: Verspätungen",
+    "description": "Linie 12: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8152569e3c97a3516c3d1e324d9792257f593704c09ec2b898cd21752e0f1c9a",
+    "pubDate": "2026-09-26T12:47:00+02:00",
+    "starts_at": "2026-09-26T12:47:00+02:00",
+    "ends_at": "2026-09-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-09-26|TK=12 verspätungen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "13A: Veranstaltung Busse halten Amerlingstraße 8-10",
     "description": "Die Linie 13A fährt derzeit nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52 und 48A aus. Voraussichtliche Dauer: ca. 22 Uhr. Grund: Veranstaltung im Bereich Neubaugasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -674,18 +686,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Verspätungen",
-    "description": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c253a40f688aeb266e06de3fa71ef50427179e6da4a3b72a66bbf7c31ae05b7",
-    "pubDate": "2026-09-26T10:40:00+02:00",
-    "starts_at": "2026-09-26T10:40:00+02:00",
-    "ends_at": "2026-09-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=38|D=2026-09-26|TK=38 verspätungen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: 3A Netzänderung Betrieb ab Riemergasse",
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -711,24 +711,24 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "40: Fahrtbehinderung Falschparker",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
     "pubDate": "2026-09-26T11:14:59+02:00",
     "starts_at": "2026-09-26T12:01:34+02:00",
-    "ends_at": "2026-09-26T23:55:00+02:00",
+    "ends_at": "2026-09-26T13:01:00+02:00",
     "_identity": "wl|störung|L=40|D=2026-09-26|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "41: Fahrtbehinderung Falschparker",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
     "pubDate": "2026-09-26T11:15:26+02:00",
     "starts_at": "2026-09-26T12:02:04+02:00",
-    "ends_at": "2026-09-26T23:55:00+02:00",
+    "ends_at": "2026-09-26T13:01:00+02:00",
     "_identity": "wl|störung|L=41|D=2026-09-26|TK=falschparker"
   },
   {
