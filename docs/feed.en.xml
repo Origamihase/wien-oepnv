@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 04:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 05:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Sat, 26 Sep 2026 04:40:21 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 04:40:21 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 04:40:21 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 27 Sep 2026 01:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [26.09.2026 – 27.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[26.09.2026 – 27.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Buses stop on line 14A. Line 13A currently only runs between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52 and 48A. [On 26.09.2026]</description>
       <content:encoded><![CDATA[Buses stop on line 14A. Line 13A currently only runs between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52 and 48A.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N20: Buses stop on the main carriageway, Bessemerstraße 1-3]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae</guid>
-      <pubDate>Sat, 26 Sep 2026 01:30:02 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 01:16:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 01:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 04:52:00 +0200</ext:ends_at>
-      <description>Reason: track construction works. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Reason: track construction works.<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N6: Buses stop Neilreichgasse 20-22, Quellenstraße 189]]></title>
@@ -57,10 +57,10 @@
       <title><![CDATA[S80: ÖBB-replacement bus]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Sat, 26 Sep 2026 00:30:26 +0200</pubDate>
+      <pubDate>Sat, 26 Sep 2026 05:00:21 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 00:30:26 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 04:59:00 +0200</ext:ends_at>
+      <ext:starts_at>Sat, 26 Sep 2026 05:00:21 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [On 26.09.2026]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[On 26.09.2026]]]></content:encoded>
     </item>
