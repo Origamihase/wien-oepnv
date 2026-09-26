@@ -1,6 +1,6 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-09-26T11:00:14+00:00_
+_Erzeugt am: 2026-09-26T12:00:06+00:00_
 
 **Stationen: 2244 → 2244 (Δ +0)**
 

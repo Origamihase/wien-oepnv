@@ -2026,11 +2026,17 @@
       "hafas_distance_m": 66
     },
     "4741048": {
-      "lines": {},
+      "lines": {
+        "R81": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX8": "2026-09-26",
+        "REX81": "2026-09-26",
+        "S80": "2026-09-26"
+      },
       "name": "Wien Simmering",
-      "hafas_ext_id": "1191101",
+      "hafas_ext_id": "1291103",
       "checked": "2026-09-26",
-      "hafas_name": "Simmering (Wien)",
+      "hafas_name": "Wien Simmering Bahnhof (U)",
       "hafas_classes": 880,
       "hafas_distance_m": 36
     },
