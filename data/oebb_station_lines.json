@@ -345,15 +345,15 @@
     },
     "528": {
       "lines": {
-        "REX7": "2026-09-25",
-        "S7": "2026-09-25"
+        "REX7": "2026-09-26",
+        "S7": "2026-09-26"
       },
       "name": "Flughafen Wien",
-      "hafas_ext_id": "1332474",
+      "hafas_ext_id": "1293001",
       "checked": "2026-09-26",
-      "hafas_name": "Flughafen Wien Busterminal",
-      "hafas_classes": 1090,
-      "hafas_distance_m": 15
+      "hafas_name": "Flughafen Wien Bahnhof",
+      "hafas_classes": 63,
+      "hafas_distance_m": 62
     },
     "547": {
       "lines": {
@@ -536,11 +536,7 @@
     "806": {
       "lines": {},
       "name": "Wien Speising",
-      "hafas_ext_id": "1191303",
-      "checked": "2026-09-26",
-      "hafas_name": "Speising (Wien)",
-      "hafas_classes": 578,
-      "hafas_distance_m": 131
+      "checked": "2026-09-26"
     },
     "807": {
       "lines": {
@@ -1783,8 +1779,31 @@
       "hafas_distance_m": 3
     },
     "900100": {
-      "lines": {},
-      "name": "Wien Hauptbahnhof"
+      "lines": {
+        "CJX9": "2026-09-26",
+        "R81": "2026-09-26",
+        "R95": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX3": "2026-09-26",
+        "REX6": "2026-09-26",
+        "REX62": "2026-09-26",
+        "REX63": "2026-09-26",
+        "REX64": "2026-09-26",
+        "REX65": "2026-09-26",
+        "REX7": "2026-09-26",
+        "REX8": "2026-09-26",
+        "REX92": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S60": "2026-09-26",
+        "S80": "2026-09-26"
+      },
+      "name": "Wien Hauptbahnhof",
+      "hafas_ext_id": "1290401",
+      "hafas_name": "Wien Hbf (U)",
+      "hafas_classes": 6015,
+      "hafas_distance_m": 292,
+      "checked": "2026-09-26"
     },
     "900101": {
       "lines": {},
