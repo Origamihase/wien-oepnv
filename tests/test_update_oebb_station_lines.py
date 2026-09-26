@@ -558,6 +558,114 @@ def test_boards_without_a_line_after_a_lookup_log_the_candidates(caplog: pytest.
     assert "Wien Hütteldorf (Straßenbahn) (1391999, pCls 576, " in caplog.text
 
 
+SIMMERING = {**HUETTELDORF, "bst_id": "4741048", "name": "Wien Simmering", "latitude": 48.1700, "longitude": 16.4200}
+# HAFAS, 2026-09-26: two stops at the same coordinates, 36 m from the station;
+# the first one's boards were empty.
+SIMMERING_META = _loc("Simmering (Wien)", "1191101", 880, 48.1703, 16.4201)
+SIMMERING_RAIL = _loc("Wien Simmering Bahnhof (U)", "1291103", 880, 48.1703, 16.4201)
+S80 = _product("S 80", 32, line="80", lineId="at:obb:vor|S80:", catOut="S", catOutL="S-Bahn")
+EMPTY = _board([], journeys=0)
+
+
+def _post_by_stop(loc_match: object, boards: dict[str, object], calls: list[str]) -> Any:
+    def post(service_requests: list[Any], **_kwargs: Any) -> object:
+        request = service_requests[0]
+        if request["meth"] == "LocMatch":
+            calls.append("LocMatch")
+            return loc_match
+        lid = request["req"]["stbLoc"]["lid"]
+        calls.append(lid)
+        return boards[lid]
+
+    return post
+
+
+def test_a_stop_at_the_same_place_with_lines_replaces_an_empty_one(caplog: pytest.LogCaptureFixture) -> None:
+    calls: list[str] = []
+    post = _post_by_stop(
+        _loc_match(SIMMERING_META, SIMMERING_RAIL),
+        {"A=1@L=1191101@": EMPTY, "A=1@L=1291103@": _board([S80])},
+        calls,
+    )
+    state: dict[str, Any] = {}
+    with caplog.at_level("INFO", logger="oebb_station_lines"):
+        result = ul.refresh(ul.select_stations([SIMMERING]), state, date(2026, 9, 27), post=post, pause=0)
+    assert calls == ["LocMatch"] + ["A=1@L=1191101@"] * 4 + ["A=1@L=1291103@"] * 4
+    assert result.checked == 1
+    entry = state["4741048"]
+    assert (entry["hafas_ext_id"], entry["hafas_name"], entry["hafas_classes"]) == (
+        "1291103",
+        "Wien Simmering Bahnhof (U)",
+        880,
+    )
+    assert entry["lines"] == {"S80": "2026-09-27"}
+    assert (
+        "Wien Simmering: no line at Simmering (Wien) (1191101), "
+        "lines at Wien Simmering Bahnhof (U) (1291103, pCls 880, " in caplog.text
+    )
+    assert "No line on the boards" not in caplog.text
+
+
+def test_when_no_stop_at_the_place_has_a_line_the_first_stays(caplog: pytest.LogCaptureFixture) -> None:
+    post = _post_by_stop(
+        _loc_match(SIMMERING_META, SIMMERING_RAIL),
+        {"A=1@L=1191101@": EMPTY, "A=1@L=1291103@": EMPTY},
+        [],
+    )
+    state: dict[str, Any] = {}
+    with caplog.at_level("INFO", logger="oebb_station_lines"):
+        ul.refresh(ul.select_stations([SIMMERING]), state, date(2026, 9, 27), post=post, pause=0)
+    assert state["4741048"]["hafas_ext_id"] == "1191101"
+    assert state["4741048"]["lines"] == {}
+    assert "; also without a line: Wien Simmering Bahnhof (U) (1291103)" in caplog.text
+
+
+def test_a_stop_farther_than_the_same_place_is_not_tried() -> None:
+    # Quartier Belvedere is closed (Stammstrecke, phase 2); the Hbf lies
+    # within 800 m of it but is another station, whose lines must not move over.
+    belvedere = {**HUETTELDORF, "bst_id": "1351", "name": "Wien Quartier Belvedere", "latitude": 48.1912, "longitude": 16.3775}
+    belvedere_stop = _loc("Wien Quartier Belvedere Bahnhst", "8101473", 608, 48.1909, 16.3771)
+    calls: list[str] = []
+    post = _post_by_stop(_loc_match(belvedere_stop, HBF), {"A=1@L=8101473@": EMPTY}, calls)
+    state: dict[str, Any] = {}
+    ul.refresh(ul.select_stations([belvedere]), state, date(2026, 9, 27), post=post, pause=0)
+    assert calls == ["LocMatch"] + ["A=1@L=8101473@"] * 4
+    assert state["1351"]["hafas_ext_id"] == "8101473"
+
+
+def test_same_place_stops_are_capped() -> None:
+    (station,) = ul.select_stations([SIMMERING])
+    extra = [_loc(f"Simmering {n}", f"99{n}", 32, 48.1703, 16.4201) for n in range(4)]
+    stops = ul.same_place_stops(_loc_match(SIMMERING_META, *extra), station, "1191101")
+    assert [stop.ext_id for stop in stops] == ["990", "991"]
+    assert ul.same_place_stops(_loc_match(SIMMERING_META), station, "1291103") == []
+
+
+def test_no_same_place_trial_without_a_lookup_this_run() -> None:
+    # A station with lines is not looked up, so there are no candidates to try.
+    calls: list[str] = []
+    post = _post_by_stop(pytest.fail, {"A=1@L=1191101@": EMPTY}, calls)
+    state: dict[str, Any] = {
+        "4741048": {"hafas_ext_id": "1191101", "hafas_classes": 880, "lines": {"S80": "2026-09-20"}}
+    }
+    ul.refresh(ul.select_stations([SIMMERING]), state, date(2026, 9, 27), post=post, pause=0)
+    assert calls == ["A=1@L=1191101@"] * 4
+
+
+def test_failures_while_trying_the_same_place_stop_the_run() -> None:
+    third = _loc("Simmering Nord", "1291199", 32, 48.1703, 16.4201)
+    failed = _board([], err="FAIL")
+    post = _post_by_stop(
+        _loc_match(SIMMERING_META, SIMMERING_RAIL, third),
+        {"A=1@L=1191101@": EMPTY, "A=1@L=1291103@": failed, "A=1@L=1291199@": failed},
+        [],
+    )
+    state: dict[str, Any] = {}
+    result = ul.refresh(ul.select_stations([SIMMERING]), state, date(2026, 9, 27), post=post, pause=0)
+    assert result.aborted
+    assert "checked" not in state["4741048"]
+
+
 def test_boards_with_lines_log_nothing_extra(caplog: pytest.LogCaptureFixture) -> None:
     state: dict[str, Any] = {"804": dict(RESOLVED)}
     with caplog.at_level("INFO", logger="oebb_station_lines"):
