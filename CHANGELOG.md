@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Gepflegte Linienliste mit ÖBB-Unterlagen belegt (2026-09-26)**:
+  `data/planned_station_lines.json` nennt jetzt für jeden Eintrag die
+  Quelle. Die S80 in Hütteldorf und Speising gilt bis 11.12.2027 statt
+  offen (Verbindungsbahn bis Ende 2027, SNNB-Anhang 2.5.1 bis 09.12.2027).
+  Die Sperre der Stammstrecke endet laut SNNB-Anhang am 29.10.2027, laut
+  Folder „Ende Oktober 2027“; der Eintrag bleibt bis 31.10.2027. Himberg:
+  Der Bahnhof wird umgebaut (Rahmenplan, Inbetriebnahme 2026). Im Audit
+  ist Befund B.1 (Nordrichtung des Stammstrecken-Monitors ohne Messwerte
+  seit 14.08.) geklärt: ein Kabelbrand am Stellwerk Praterstern, danach
+  die Hauptsperre ab 07.09.2026.
 * **Testmeldungen der Anbieter kommen nicht mehr in den Feed (2026-09-26)**:
   Am 23.09. standen zwei Testmeldungen der Wiener Linien je einen Zyklus im
   deutschen Feed („71/72: Dies ist eine Testmeldung“, „62: F57f Test“) und
