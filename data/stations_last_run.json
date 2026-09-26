@@ -13,27 +13,27 @@
   },
   "sub_scripts": [
     {
-      "duration_s": 23.62,
+      "duration_s": 54.77,
       "exit_code": 0,
       "name": "update_station_directory.py"
     },
     {
-      "duration_s": 57.49,
+      "duration_s": 59.21,
       "exit_code": 0,
       "name": "update_wl_stations.py"
     },
     {
-      "duration_s": 16.26,
+      "duration_s": 14.34,
       "exit_code": 0,
       "name": "enrich_station_aliases.py"
     },
     {
-      "duration_s": 0.77,
+      "duration_s": 0.72,
       "exit_code": 0,
       "name": "apply_station_overrides.py"
     }
   ],
-  "timestamp": "2026-09-26T08:34:17+00:00",
+  "timestamp": "2026-09-26T09:37:05+00:00",
   "validation": {
     "alias_collision_issues": 1,
     "alias_issues": 0,
