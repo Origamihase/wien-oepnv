@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 09:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 10:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b</guid>
+      <pubDate>Sat, 26 Sep 2026 09:46:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 09:46:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 09:59:21 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Prater Hauptallee. Duration: 10:10. Reason: rescue operation im Haltestellenbereich Stefan-Fadinger-Platz. [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Service obstruction towards Prater Hauptallee. Duration: 10:10. Reason: rescue operation im Haltestellenbereich Stefan-Fadinger-Platz.<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
+      <pubDate>Sat, 26 Sep 2026 09:33:47 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 09:33:47 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 09:33:49 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 10:33:00 +0200</ext:ends_at>
+      <description>Service obstruction [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Service obstruction<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,15 +54,15 @@
       <content:encoded><![CDATA[Reason: construction works.<br/>[26.09.2026 – 27.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[13A: Event]]></title>
+      <title><![CDATA[13A: Veranstaltung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">75e60c1e1fa31d4ad5ba13db92bbee5a4346e5ee92d500dd0022673f0c665745</guid>
       <pubDate>Sat, 26 Sep 2026 04:30:00 +0200</pubDate>
       <ext:first_seen>Sat, 26 Sep 2026 04:30:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 26 Sep 2026 04:30:21 +0200</ext:starts_at>
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Buses stop on line 14A. Line 13A currently only runs between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52 and 48A. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Buses stop on line 14A. Line 13A currently only runs between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52 and 48A.<br/>[On 26.09.2026]]]></content:encoded>
+      <description>Busse halten Amerlingstraße 8-10. Die Linie 13A fährt derzeit nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52 und … [Am 26.09.2026]</description>
+      <content:encoded><![CDATA[Busse halten Amerlingstraße 8-10. Die Linie 13A fährt derzeit nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52 und …<br/>[Am 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26E: Track construction works]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
       <description>Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before … [24.09.2026 – 02.10.2026]</description>
       <content:encoded><![CDATA[Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N66/N68R: Quellenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">31d6ac9f73525f3feaa44bb3eb6fdafe467567211114f38f99f0fbe41a2e441e</guid>
-      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 15:00:00 +0200</ext:ends_at>
-      <description>Stop relocation of line N66 towards Oper, Karlsplatz and the call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along … [24.09.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Stop relocation of line N66 towards Oper, Karlsplatz and the call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N31: Stammersdorf closed without replacement]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c6414f05e0d7316905e3faa36cf0ae3462bb94b5012ef094ee688e0b738e70df</guid>
-      <pubDate>Wed, 23 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 23 Sep 2026 14:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 23 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 31 May 2027 11:11:00 +0200</ext:ends_at>
-      <description>Stop closure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without replacement Duration: From 30 September … [23.09.2026 – 31.05.2027]</description>
-      <content:encoded><![CDATA[Stop closure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without replacement Duration: From 30 September …<br/>[23.09.2026 – 31.05.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
