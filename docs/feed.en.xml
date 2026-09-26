@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 22:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 23:01:12 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9</guid>
+      <pubDate>Sat, 26 Sep 2026 22:45:10 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 22:45:10 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 22:45:10 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:44:00 +0200</ext:ends_at>
+      <description>Service obstruction [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Service obstruction<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789</guid>
+      <pubDate>Sat, 26 Sep 2026 22:35:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 22:35:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 22:43:10 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:42:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62: ÖBB construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -41,17 +63,6 @@
       <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
       <description>The capacities of the replacement line 26E are not comparable to those of a tram. [25.09.2026 – 12.12.2026]</description>
       <content:encoded><![CDATA[The capacities of the replacement line 26E are not comparable to those of a tram.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB replacement bus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Sat, 26 Sep 2026 05:00:21 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 05:00:21 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[74A: Boarding Leberstraße before S-Bahn building]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 31 May 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop closure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without replacement Duration: From 30 September … [23.09.2026 – 31.05.2027]</description>
       <content:encoded><![CDATA[Stop closure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without replacement Duration: From 30 September …<br/>[23.09.2026 – 31.05.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Folding ramps out of service on 27.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aa349c99b725b7354f26a3bd3546353bf0a484c4156d7642515ed8ae14d68e51</guid>
-      <pubDate>Wed, 23 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 23 Sep 2026 14:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 23 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the U2 underground trains cannot be extended. [23.09.2026 – 27.09.2026]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U2 underground trains cannot be extended.<br/>[23.09.2026 – 27.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
