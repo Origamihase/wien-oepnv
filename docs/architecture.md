@@ -1146,7 +1146,37 @@ Nicht jeder Text gehört in ein NMT-Modell:
   (`_short_title_collisions`, entschieden in `_make_rss` für DE und EN
   gemeinsam). Trägt ein anderes sichtbares Item den kurzen Titel schon als
   eigenen, bleiben alle lang. Sonst wird der am höchsten platzierte Ticker
-  kurz, die übrigen bleiben lang.
+  kurz, die übrigen bleiben lang. Seit 2026-09-26 kommen solche Gruppen
+  meist gar nicht mehr so weit (nächster Punkt).
+* **Ein Vorfall, ein Platz (seit 2026-09-26, Betreiberentscheidung).** Am
+  26.09. belegte die Linie 62 drei der zehn Plätze mit drei Tickern aus 86
+  Sekunden („ÖBB Bauarbeiten Betrieb ab Kliebergasse“, „Züge halte bei
+  Linie 18, Richtung Burggasse“, „ÖBB Bauarbeiten Kein Betrieb“). Rückschau
+  über 693 Feed-Stände: 242 mit einer solchen Gruppe, zusammen 485 Plätze.
+  `_merge_wl_ticker_clusters` legt WL-Störungen derselben Linien, die
+  innerhalb von `WL_TICKER_CLUSTER_SECONDS` (600 s) nach der ersten
+  erscheinen, zu einem Eintrag zusammen, nach der Duplikatprüfung und vor
+  Sortierung und Platzvergabe (`main` und `lint`):
+  - Titel: Linie und die häufigste Ursache der Gruppe; ohne Ursache der
+    Titel der ersten Meldung. Die Ursache kommt aus dem Titel
+    (`_reason_and_fragment`), aus einem Langtext („Linie 37: …“) oder aus
+    der ersten Zeile der Tafel („Gleisbauarbeiten / Betrieb ab Johnstraße U“).
+  - Beschreibung: alle Folgen in der Reihenfolge, in der WL sie
+    veröffentlicht hat, mit „;“ zu einem Satz verbunden, weil die
+    Beschreibung höchstens zwei Sätze übernimmt. Eine andere Ursache behält
+    WLs Wortlaut („Fahrtbehinderung wegen Rettungseinsatz“). Was der Titel
+    oder eine andere Meldung der Gruppe schon sagt, fällt weg; WLs
+    Standardsatz „Nach einer Fahrtbehinderung …“ weicht allem Konkreten.
+  - Der Eintrag behält GUID und Identität der zuerst veröffentlichten
+    Meldung, den frühesten Beginn und das späteste Ende; ein offenes Ende
+    bleibt offen.
+  - `62: ÖBB Bauarbeiten` über „Betrieb ab Kliebergasse; Züge halte bei
+    Linie 18, Richtung Burggasse; Kein Betrieb.“
+  - Grenzen: Andere Linienmengen („62/18“), Hinweise und andere Quellen
+    bleiben getrennt. Um Mitternacht veröffentlicht WL die Meldungen des
+    Tages neu, dann können zwei Ereignisse einer Linie in einen Eintrag
+    fallen; die Beschreibung ist auf 180 Zeichen begrenzt. Die
+    Störungsstatistik zählt einen zusammengelegten Vorfall einmal.
 * **„Fahrtbehinderung <Ursache>“ (seit 2026-09-25).** WL setzt die Art der
   Behinderung vor die Ursache („11A: Fahrtbehinderung Verkehrsunfall“,
   „31: Fahrtbehinderung wegen Polizeieinsatz“; 106 Titel seit Juni).

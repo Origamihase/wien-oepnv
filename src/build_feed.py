@@ -6008,6 +6008,209 @@ def _is_wl_ticker(item: FeedItem) -> bool:
     )
 
 
+# --- One incident, one slot (operator decision 2026-09-26) -----------------
+#
+# WL sends one display-board ticker per consequence of an incident. On
+# 2026-09-26 line 62 took three of the ten slots within 86 seconds::
+#
+#     15:10:21  62: ÖBB Bauarbeiten Betrieb ab Kliebergasse
+#     15:10:51  62: Züge halte bei Linie 18, Richtung Burggasse
+#     15:11:47  62: ÖBB Bauarbeiten Kein Betrieb
+#
+# Over 693 feed versions 242 carried such a group, 485 slots in all. The
+# provider folds a ticker into a long message that already says it
+# (``_fold_display_tickers``), and ``_short_title_collisions`` keeps equal
+# short titles apart; tickers among themselves were never joined. Now WL
+# disruptions of the same lines published within WL_TICKER_CLUSTER_SECONDS of
+# the first one become one item: the most frequent cause in the title, every
+# consequence in the description, in the order WL published them::
+#
+#     62: ÖBB Bauarbeiten
+#     Betrieb ab Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein Betrieb.
+#
+# Nothing a ticker says is dropped unless another one of the group, or the
+# title, already says it; WL's stock sentence gives way to anything concrete.
+WL_TICKER_CLUSTER_SECONDS = 600
+
+# WL's long message (``stoerunglang``) opens its text with the line label.
+_LONG_MESSAGE_RE = re.compile(r"^Linien?\s+[^:]{1,60}:\s*")
+_WL_STOCK_SENTENCE_RE = re.compile(
+    r"^Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen\.?$", re.IGNORECASE
+)
+_TICKER_ARROWS = " <>"  # a ticker line may end in the display's arrow
+_MAX_CAUSE_WORDS = 3
+
+
+class _TickerPart(NamedTuple):
+    """What one WL disruption contributes to its group."""
+
+    cause: str  # "" when it names none
+    body: str  # the title without the line prefix, as WL wrote it
+    consequence: str  # "" for a message that only names its cause
+    extra: str  # text beyond the title (a long message's sentence)
+
+
+def _ticker_prefix(title: str) -> str:
+    """``62: ÖBB Bauarbeiten`` → ``62: `` (empty without a line prefix)."""
+    match = _TITLE_BODY_RE.match(title)
+    return title[: match.start(1)] if match else ""
+
+
+def _ticker_part(item: FeedItem) -> _TickerPart:
+    """Split one WL disruption into cause, consequence and further text."""
+    title = _rendered_title(item)
+    prefix = _ticker_prefix(title)
+    body = title[len(prefix):].strip()
+    # The display's arrows ("Hütteldorfer Straße > mit Linie 46") point, they say nothing.
+    text = " ".join(
+        word for word in html_to_text(str(item.get("description") or "")).split() if word not in ("<", ">")
+    )
+    long_text = _LONG_MESSAGE_RE.match(text)
+    if long_text is not None:
+        split = _reason_and_fragment(title)
+        extra = text[long_text.end():].strip()
+        if split is not None:
+            return _TickerPart(split[0][len(_ticker_prefix(split[0])):], body, split[1], extra)
+        return _TickerPart(body, body, "", extra)
+    split = _reason_and_fragment(title)
+    if split is not None:
+        return _TickerPart(split[0][len(_ticker_prefix(split[0])):], body, split[1], "")
+    shown = text
+    if shown.casefold().endswith(body.casefold()):
+        # The display's first line is the cause when the title left it out:
+        # "Gleisbauarbeiten / Betrieb ab Johnstraße U" under "12A: Betrieb ab Johnstraße U".
+        lead = shown[: len(shown) - len(body)].strip(" -–:")
+        words = lead.split()
+        if 0 < len(words) <= _MAX_CAUSE_WORDS and lead[:1].isupper() and not any(ch.isdigit() for ch in lead):
+            return _TickerPart(lead, body, body, "")
+        return _TickerPart("", body, body, "")
+    return _TickerPart("", body, body, text)
+
+
+def _message_tokens(text: str) -> frozenset[str]:
+    return frozenset(re.findall(r"\w+", text.casefold()))
+
+
+def _distinct_messages(candidates: Sequence[str], title: str) -> list[str]:
+    """*candidates* without what the title or a fuller candidate already says."""
+    title_tokens = _message_tokens(title[len(_ticker_prefix(title)):])
+    texts = [c.strip().rstrip(_TICKER_ARROWS).strip() for c in candidates]
+    texts = [t for t in texts if t and not _message_tokens(t) <= title_tokens]
+    kept: list[str] = []
+    for index, text in enumerate(texts):
+        tokens = _message_tokens(text)
+        covered = any(
+            tokens < _message_tokens(other) or (tokens == _message_tokens(other) and other_index < index)
+            for other_index, other in enumerate(texts)
+            if other_index != index
+        )
+        if not covered:
+            kept.append(text)
+    concrete = [t for t in kept if not _WL_STOCK_SENTENCE_RE.match(t)]
+    return concrete or kept
+
+
+def _without_cause(text: str, cause: str) -> str:
+    """Drop the title's cause from the front of a consequence the split missed.
+
+    "Stromstörung Züge fahren bis Johann-Nepomuk-Berger-Platz" under
+    ``43: Stromstörung`` reads "Züge fahren bis …".
+    """
+    if cause and text.casefold().startswith(f"{cause} "):
+        return text[len(cause):].strip(" –-:")
+    return text
+
+
+def _ticker_time(item: FeedItem) -> datetime | None:
+    when = item.get("pubDate") or item.get("starts_at")
+    return _to_utc(when) if isinstance(when, datetime) else None
+
+
+def _ticker_clusters(items: Sequence[FeedItem]) -> list[list[int]]:
+    """Indices of WL disruptions that report one incident, two or more each."""
+    by_lines: dict[str, list[tuple[datetime, int, str, int]]] = defaultdict(list)
+    for index, item in enumerate(items):
+        if not _is_wl_ticker(item):
+            continue
+        prefix = _ticker_prefix(_rendered_title(item)).strip().rstrip(":").casefold()
+        when = _ticker_time(item)
+        if not prefix or when is None:
+            continue
+        long_first = 0 if _LONG_MESSAGE_RE.match(html_to_text(str(item.get("description") or ""))) else 1
+        by_lines[prefix].append((when, long_first, str(item.get("guid") or ""), index))
+    clusters: list[list[int]] = []
+    for members in by_lines.values():
+        members.sort()
+        start: datetime | None = None
+        for when, _long_first, _guid, index in members:
+            if start is None or (when - start).total_seconds() > WL_TICKER_CLUSTER_SECONDS:
+                clusters.append([])
+                start = when
+            clusters[-1].append(index)
+    return [cluster for cluster in clusters if len(cluster) > 1]
+
+
+def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
+    """One item for the WL disruptions *members* (publication order, lead first)."""
+    parts = [_ticker_part(member) for member in members]
+    counts: dict[str, int] = defaultdict(int)
+    for part in parts:
+        if part.cause:
+            counts[part.cause.casefold()] += 1
+    order = [part.cause.casefold() for part in parts if part.cause]
+    chosen = max(counts, key=lambda cause: (counts[cause], -order.index(cause)), default="")
+    lead = members[0]
+    lead_title = _rendered_title(lead)
+    if chosen:
+        cause = next(part.cause for part in parts if part.cause.casefold() == chosen)
+        title = f"{_ticker_prefix(lead_title)}{cause}"
+    else:
+        title = lead_title
+    candidates: list[str] = []
+    for part in parts:
+        if part.cause and part.cause.casefold() != chosen:
+            candidates.append(part.body)  # WL's wording keeps the other cause with its consequence
+        elif part.consequence:
+            candidates.append(_without_cause(part.consequence, chosen))
+        if part.extra:
+            candidates.append(part.extra)
+    messages = _distinct_messages(candidates, title)
+    merged = cast(FeedItem, dict(lead))
+    merged["title"] = title
+    # One sentence: the summary keeps at most two (``_SENTENCE_SPLIT_RE``), and
+    # three short consequences would lose the third. The 180-character cap
+    # still applies; the order is WL's.
+    merged["description"] = "; ".join(m.rstrip(" .") for m in messages) + ("." if messages else "")
+    starts = [s for s in (m.get("starts_at") for m in members) if isinstance(s, datetime)]
+    if starts:
+        merged["starts_at"] = min(starts, key=_to_utc)
+    ends = [e for e in (m.get("ends_at") for m in members) if isinstance(e, datetime)]
+    # An open end of one member keeps the incident open.
+    merged["ends_at"] = max(ends, key=_to_utc) if len(ends) == len(members) else None
+    published = [p for p in (m.get("pubDate") for m in members) if isinstance(p, datetime)]
+    if published:
+        merged["pubDate"] = min(published, key=_to_utc)
+    return merged
+
+
+def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
+    """Join the WL disruptions of one incident into one item (see above)."""
+    replaced: dict[int, FeedItem] = {}
+    dropped: set[int] = set()
+    for cluster in _ticker_clusters(items):
+        members = [items[index] for index in cluster]
+        replaced[cluster[0]] = _merged_ticker(members)
+        dropped.update(cluster[1:])
+        log.info(
+            "WL-Kurzmeldungen zusammengelegt: %s ← %s",
+            sanitize_log_arg(replaced[cluster[0]]["title"]),
+            sanitize_log_arg(" | ".join(_rendered_title(member) for member in members)),
+        )
+    if not dropped:
+        return items
+    return [replaced.get(index, item) for index, item in enumerate(items) if index not in dropped]
+
+
 def _reason_only_summary(category_word: str) -> str:
     """Rettet den Grund, wenn sonst ein leerer Rumpf übrig bliebe.
 
@@ -7012,9 +7215,11 @@ def lint() -> int:
         duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
 
         deduped_items = _dedupe_items(list(filtered_items))
-        deduped_items = cast(
-            list[FeedItem],
-            deduplicate_fuzzy(cast(list[dict[str, Any]], deduped_items)),
+        deduped_items = _merge_wl_ticker_clusters(
+            cast(
+                list[FeedItem],
+                deduplicate_fuzzy(cast(list[dict[str, Any]], deduped_items)),
+            )
         )
         deduped_count = len(deduped_items)
         new_items_count = _count_new_items(deduped_items, state)
@@ -7221,7 +7426,8 @@ def main() -> int:
                 len(deduped),
             )
 
-        items = fuzzy_deduped
+        # One WL incident, one slot — see ``_merge_wl_ticker_clusters``.
+        items = _merge_wl_ticker_clusters(fuzzy_deduped)
         deduped_count = len(items)
         duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
         if not items:

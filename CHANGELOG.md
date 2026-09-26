@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Ein WL-Vorfall belegt nur noch einen Platz im Feed (2026-09-26)**: Die
+  Wiener Linien schicken je Folge einer Störung eine eigene
+  Anzeigetafel-Meldung; am 26.09. belegte die Linie 62 so drei der zehn
+  Plätze. `_merge_wl_ticker_clusters` in `src/build_feed.py` legt
+  WL-Störungen derselben Linien, die innerhalb von zehn Minuten erscheinen,
+  zu einem Eintrag zusammen: Linie und häufigste Ursache im Titel, alle
+  Folgen in der Beschreibung („62: ÖBB Bauarbeiten“ über „Betrieb ab
+  Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein
+  Betrieb.“). Rückschau: In 242 von 693 Feed-Ständen standen solche
+  Gruppen, zusammen 485 Plätze. Die Störungsstatistik zählt einen
+  zusammengelegten Vorfall einmal.
 * **EN-Feed: vier Glossar-Fehler behoben (2026-09-26)**: „bis
   voraussichtlich“ wird zu „until approx.“ statt „to expected“ bzw. „until
   expected“ (A.3); ein Glossar-Begriff am Satzanfang mitten im Text wird

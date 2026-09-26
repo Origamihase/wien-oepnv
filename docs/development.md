@@ -202,9 +202,14 @@ je einen Zyklus im Feed („71/72: Dies ist eine Testmeldung“, „62: F57f
 Test“). In 488 Meldungen des Feeds und 952 der Caches trifft die Regel nur
 diese beiden; „Haltestelle“ oder „Testbetrieb“ enthalten das Wort nicht.
 
-Nach Altersfilter und beiden Dedupe-Stufen sortiert der Build die Items nach
-`first_seen` (neueste zuerst; Gleichstand: Störung vor Baustelle, dann
-`pubDate`).
+Nach Altersfilter und beiden Dedupe-Stufen legt `_merge_wl_ticker_clusters`
+die WL-Störungen eines Vorfalls zusammen: dieselben Linien, veröffentlicht
+innerhalb von zehn Minuten nach der ersten. Titel ist Linie plus häufigste
+Ursache, die Beschreibung sammelt alle Folgen („62: ÖBB Bauarbeiten“ über
+„Betrieb ab Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein
+Betrieb.“; Details in `docs/architecture.md`). Danach sortiert der Build die
+Items nach `first_seen` (neueste zuerst; Gleichstand: Störung vor Baustelle,
+dann `pubDate`).
 
 Wiederkehrende WL-Meldungen: Die WL-GUID besteht aus Kategorie, Thema und
 Linien, ein Datum enthält sie nicht. „94A: Verkehrsunfall“ hat an jedem Tag
