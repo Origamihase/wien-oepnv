@@ -19,7 +19,7 @@ years — still hides its line. The stage-3 check must therefore never read
 "HAFAS has no S80 at Hütteldorf" as proof that the S80 does not stop there.
 
 Per station and run: one ``LocMatch`` the first time (the HAFAS station id
-is kept and checked against the station's coordinates), then two windows
+is kept; see :func:`pick_rail_location` for which hit counts), then two windows
 (06:00–09:00 and 15:00–18:00) on each date, rail classes only, in the
 request form ``public-transport/hafas-client`` uses for ÖBB (probe runs of
 2026-09-25). Requests are paced; five consecutive failures stop the run
@@ -30,13 +30,15 @@ from __future__ import annotations
 
 import argparse
 import json
-import logging
 import re
 import sys
 import time
+import math
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
 from datetime import date, timedelta
+from itertools import product
+from logging import DEBUG, INFO, getLogger
 from pathlib import Path
 from typing import Any
 
@@ -47,18 +49,13 @@ if __package__ in (None, ""):
 
 from src.feed.config import validate_path
 from src.feed.logging_safe import setup_script_logging
-from src.places.hafas_client import (
-    HafasLocation,
-    HafasProfileError,
-    enrich_station_with_hafas,
-    post_mgate,
-)
+from src.places.hafas_client import HafasProfileError, loc_match_request, post_mgate
 from src.utils.files import atomic_write, read_capped_json
 from src.utils.geo import calculate_distance_meters
 from src.utils.logging import sanitize_log_arg
 from src.utils.serialize import scrub_trojan_source_primitives
 
-LOGGER = logging.getLogger("oebb_station_lines")
+LOGGER = getLogger("oebb_station_lines")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_STATIONS = REPO_ROOT / "data" / "stations.json"
@@ -77,8 +74,13 @@ RAIL_CLASSES = 1 | 2 | 4 | 8 | 16 | 32 | 4096
 BOARD_MAX_BYTES = 5 * 1024 * 1024
 PAUSE_SECONDS = 0.5
 MAX_CONSECUTIVE_FAILURES = 5
-# A LocMatch hit further away than this is a different place of that name.
-MAX_MATCH_DISTANCE_M = 2000.0
+# LocMatch candidates to choose from, and how far the chosen one may lie from
+# the station. 800 m, not more: Karlsplatz lies 1.4 km from the Rennweg
+# S-Bahn station, Stephansplatz 1.1 km from Wien Mitte.
+LOC_MATCH_CANDIDATES = 8
+MAX_MATCH_DISTANCE_M = 800.0
+# HAFAS coordinates are integers in millionths of a degree.
+_HAFAS_COORD_SCALE = 1_000_000.0
 MAX_STATE_BYTES = 5 * 1024 * 1024
 
 # ``at:obb:vor|S45:`` → ``S45``
@@ -182,8 +184,8 @@ def line_token(product: object) -> str | None:
     return token if _LINE_TOKEN_RE.match(token) else None
 
 
-def lines_from_board(payload: object) -> set[str] | None:
-    """The lines on a ``StationBoard`` answer, or ``None`` if it failed."""
+def _answer(payload: object) -> dict[str, Any] | None:
+    """The ``res`` of a successful first service, ``None`` if it failed."""
     if not isinstance(payload, dict):
         return None
     services = payload.get("svcResL")
@@ -193,8 +195,14 @@ def lines_from_board(payload: object) -> set[str] | None:
     if service.get("err") != "OK":
         return None
     res = service.get("res")
-    if not isinstance(res, dict):
-        return set()
+    return res if isinstance(res, dict) else {}
+
+
+def lines_from_board(payload: object) -> set[str] | None:
+    """The lines on a ``StationBoard`` answer, or ``None`` if it failed."""
+    res = _answer(payload)
+    if res is None:
+        return None
     journeys = res.get("jnyL")
     if isinstance(journeys, list) and len(journeys) >= MAX_JOURNEYS:
         LOGGER.warning("StationBoard hit maxJny=%d; later departures are missing", MAX_JOURNEYS)
@@ -222,17 +230,98 @@ def merge_lines(
     return dict(sorted(merged.items()))
 
 
-def _matches_station(station: Station, location: HafasLocation) -> bool:
-    if station.latitude is None or station.longitude is None:
-        return False
-    distance = calculate_distance_meters(
-        station.latitude, station.longitude, location["lat"], location["lon"]
-    )
-    return distance <= MAX_MATCH_DISTANCE_M
+@dataclass(frozen=True)
+class RailLocation:
+    """The HAFAS stop chosen for a station."""
+
+    ext_id: str
+    name: str
+    classes: int
+    distance_m: float
+
+
+def _rail_candidate(location: object) -> tuple[str, str, int, float, float] | None:
+    """``(extId, name, pCls, lat, lon)`` of a rail-serving candidate, else ``None``."""
+    if not isinstance(location, dict):
+        return None
+    ext_id = location.get("extId")
+    classes = location.get("pCls")
+    coords = location.get("crd")
+    if not isinstance(ext_id, str) or not ext_id.strip() or not isinstance(coords, dict):
+        return None
+    if not isinstance(classes, int) or isinstance(classes, bool) or not classes & RAIL_CLASSES:
+        return None
+    x, y = coords.get("x"), coords.get("y")
+    if not isinstance(x, int | float) or not isinstance(y, int | float):
+        return None
+    if isinstance(x, bool) or isinstance(y, bool):
+        return None
+    lat, lon = y / _HAFAS_COORD_SCALE, x / _HAFAS_COORD_SCALE
+    if not (math.isfinite(lat) and math.isfinite(lon) and -90 <= lat <= 90 and -180 <= lon <= 180):
+        return None
+    return ext_id.strip(), str(location.get("name", "")), classes, lat, lon
+
+
+def pick_rail_location(payload: object, station: Station) -> RailLocation | None:
+    """The nearest ``LocMatch`` candidate that serves rail, within 800 m.
+
+    The first run (2026-09-25) took HAFAS's top hit by name. For some
+    stations that is the tram or U-Bahn stop of the same name: Wien
+    Mitte-Landstraße, Rennweg and Quartier Belvedere got empty rail boards
+    although S-Bahn trains stop there. A candidate counts only if its product
+    classes (``pCls``) include rail.
+    """
+    res = _answer(payload)
+    if res is None or station.latitude is None or station.longitude is None:
+        return None
+    match = res.get("match")
+    locations = match.get("locL") if isinstance(match, dict) else None
+    best: RailLocation | None = None
+    for location in locations if isinstance(locations, list) else []:
+        candidate = _rail_candidate(location)
+        if candidate is None:
+            continue
+        ext_id, name, classes, lat, lon = candidate
+        distance = calculate_distance_meters(station.latitude, station.longitude, lat, lon)
+        if distance <= MAX_MATCH_DISTANCE_M and (best is None or distance < best.distance_m):
+            best = RailLocation(ext_id, name, classes, distance)
+    return best
+
+
+def _is_resolved(entry: Mapping[str, Any]) -> bool:
+    """Resolved by :func:`pick_rail_location` (it records ``hafas_classes``).
+
+    Ids from the first run, which took the top hit by name, lack it and are
+    resolved again once.
+    """
+    ext_id = entry.get("hafas_ext_id")
+    return isinstance(ext_id, str) and bool(ext_id) and isinstance(entry.get("hafas_classes"), int)
 
 
 Post = Callable[..., object]
-Locate = Callable[[str], HafasLocation | None]
+
+
+class _FailureRun:
+    """Counts failed requests in a row; five stop the run."""
+
+    def __init__(self) -> None:
+        self.in_a_row = 0
+
+    def record(self, ok: bool) -> bool:
+        """Record one request; ``True`` when the run must stop."""
+        self.in_a_row = 0 if ok else self.in_a_row + 1
+        return self.in_a_row >= MAX_CONSECUTIVE_FAILURES
+
+
+def _call(post: Post, request: dict[str, object], pause: float, label: str, **kwargs: Any) -> object:
+    """One paced request; ``None`` if it raised."""
+    try:
+        return post([request], **kwargs)
+    except (HafasProfileError, requests.RequestException, ValueError) as exc:
+        LOGGER.warning("%s failed for %s: %s", request.get("meth"), _clean(label), _clean(type(exc).__name__))
+        return None
+    finally:
+        time.sleep(pause)
 
 
 @dataclass
@@ -243,18 +332,39 @@ class RefreshResult:
     aborted: bool = False
 
 
+def _resolve(station: Station, entry: dict[str, Any], location: RailLocation | None) -> bool:
+    """Record *location* for *station*; ``False`` (and forget any old id) if none."""
+    if location is None:
+        for key in ("hafas_ext_id", "hafas_name", "hafas_classes", "hafas_distance_m"):
+            entry.pop(key, None)
+        LOGGER.info("No rail stop within %d m for %s", int(MAX_MATCH_DISTANCE_M), _clean(station.name))
+        return False
+    entry["hafas_ext_id"] = location.ext_id
+    entry["hafas_name"] = location.name
+    entry["hafas_classes"] = location.classes
+    entry["hafas_distance_m"] = round(location.distance_m)
+    LOGGER.info(
+        "%s → %s (%s, pCls %d, %d m)",
+        _clean(station.name),
+        _clean(location.name),
+        _clean(location.ext_id),
+        location.classes,
+        round(location.distance_m),
+    )
+    return True
+
+
 def refresh(
     stations: Sequence[Station],
     state: dict[str, Any],
     today: date,
     *,
     post: Post = post_mgate,
-    locate: Locate = enrich_station_with_hafas,
     pause: float = PAUSE_SECONDS,
 ) -> RefreshResult:
     """Update *state* (``{bst_id: entry}``) in place for *stations*."""
     result = RefreshResult()
-    failures_in_a_row = 0
+    failures = _FailureRun()
     dates = sample_dates(today)
     in_scope = {station.bst_id for station in stations}
     for stale in [key for key in state if key not in in_scope]:
@@ -263,49 +373,34 @@ def refresh(
     for station in stations:
         entry = state.setdefault(station.bst_id, {"lines": {}})
         entry["name"] = station.name
-        ext_id = entry.get("hafas_ext_id")
-        if not isinstance(ext_id, str) or not ext_id:
-            location = locate(station.name)
-            time.sleep(pause)
-            if location is None or not _matches_station(station, location):
+        if not _is_resolved(entry):
+            answer = _call(post, loc_match_request(station.name, LOC_MATCH_CANDIDATES), pause, station.name)
+            if failures.record(_answer(answer) is not None):
+                result.aborted = True
+                break
+            if not _resolve(station, entry, pick_rail_location(answer, station)):
                 result.unresolved += 1
-                LOGGER.info("No HAFAS match near %s", _clean(station.name))
                 continue
-            ext_id = location["extId"]
-            entry["hafas_ext_id"] = ext_id
 
         seen: set[str] = set()
         answered = False
-        for day in dates:
-            for start, minutes in SAMPLE_WINDOWS:
-                try:
-                    payload = post(
-                        [board_request(ext_id, day, start, minutes)],
-                        max_bytes=BOARD_MAX_BYTES,
-                    )
-                except (HafasProfileError, requests.RequestException, ValueError) as exc:
-                    payload = None
-                    LOGGER.warning(
-                        "StationBoard failed for %s: %s",
-                        _clean(station.name),
-                        _clean(type(exc).__name__),
-                    )
-                time.sleep(pause)
-                lines = lines_from_board(payload)
-                if lines is None:
-                    failures_in_a_row += 1
-                    if failures_in_a_row >= MAX_CONSECUTIVE_FAILURES:
-                        LOGGER.error(
-                            "%d HAFAS failures in a row; stopping, keeping what was collected",
-                            failures_in_a_row,
-                        )
-                        result.aborted = True
-                        return result
-                    continue
-                failures_in_a_row = 0
+        for day, (start, minutes) in product(dates, SAMPLE_WINDOWS):
+            board = _call(
+                post,
+                board_request(entry["hafas_ext_id"], day, start, minutes),
+                pause,
+                station.name,
+                max_bytes=BOARD_MAX_BYTES,
+            )
+            lines = lines_from_board(board)
+            if failures.record(lines is not None):
+                result.aborted = True
+                break
+            if lines is not None:
                 answered = True
                 seen |= lines
-
+        if result.aborted:
+            break
         if not answered:
             result.failed += 1
             continue
@@ -313,6 +408,11 @@ def refresh(
         entry["lines"] = merge_lines(known if isinstance(known, dict) else {}, seen, today)
         entry["checked"] = today.isoformat()
         result.checked += 1
+    if result.aborted:
+        LOGGER.error(
+            "%d HAFAS failures in a row; stopped, keeping what was collected",
+            MAX_CONSECUTIVE_FAILURES,
+        )
     return result
 
 
@@ -355,7 +455,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--limit", type=int, default=0, help="only the first N stations (0 = all)")
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args(argv)
-    setup_script_logging(logging.DEBUG if args.verbose else logging.INFO)
+    setup_script_logging(DEBUG if args.verbose else INFO)
 
     output = validate_path(args.output, "--output")
     directory = read_capped_json(args.stations, label="Stations", logger=LOGGER)
