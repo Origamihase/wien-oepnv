@@ -20,12 +20,18 @@ import pytest
 import requests
 import responses
 
-import src.utils.http as http
 from scripts import sync_hafas_profile, update_baustellen_cache, update_station_directory, update_wl_stations
 from src.places import client as places_client
 from src.places import hafas_client, osm_client
 from src.providers import oebb, vor, wl_fetch
-from src.utils.http import PROXY_TRUSTED_HOSTS, TimeoutHTTPAdapter, request_safe, session_with_retries, verify_response_ip
+from src.utils.http import (
+    PROXY_TRUSTED_HOSTS,
+    TimeoutHTTPAdapter,
+    is_ip_safe,
+    request_safe,
+    session_with_retries,
+    verify_response_ip,
+)
 
 PROXY = "http://proxy.invalid:3128"
 
@@ -175,4 +181,4 @@ def test_every_trusted_host_is_an_upstream() -> None:
 def test_the_trusted_hosts_are_plain_hostnames() -> None:
     for host in PROXY_TRUSTED_HOSTS:
         assert host == host.lower().strip(".") and "/" not in host and ":" not in host
-        assert not http.is_ip_safe(host)
+        assert not is_ip_safe(host)
