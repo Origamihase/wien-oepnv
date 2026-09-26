@@ -7,7 +7,7 @@ Wien Hütteldorf and Wien Meidling (``prodCtx`` fields, ``lineId``).
 from __future__ import annotations
 
 import json
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -140,10 +140,19 @@ def test_select_stations() -> None:
 
 def test_merge_lines_stamps_and_expires() -> None:
     today = date(2026, 9, 29)
-    known = {"S45": "2026-09-01", "S80": "2026-08-04", "REX7": "2026-08-03", "X": "garbage"}
+    oldest = (today - timedelta(days=ul.RETENTION_DAYS)).isoformat()
+    too_old = (today - timedelta(days=ul.RETENTION_DAYS + 1)).isoformat()
+    known = {"S45": "2026-09-01", "S80": oldest, "REX7": too_old, "X": "garbage"}
     merged = ul.merge_lines(known, {"S50"}, today)
     # S80 is exactly RETENTION_DAYS old and stays; REX7 is one day older and goes.
-    assert merged == {"S45": "2026-09-01", "S50": "2026-09-29", "S80": "2026-08-04"}
+    assert merged == {"S45": "2026-09-01", "S50": "2026-09-29", "S80": oldest}
+
+
+def test_a_line_outlasts_the_stammstrecke_closure() -> None:
+    # Last seen the day before the closure of 2026-09-07; the line returns
+    # in November 2027 and must still be known on the last day of October.
+    merged = ul.merge_lines({"S1": "2026-09-06"}, set(), date(2027, 10, 31))
+    assert merged == {"S1": "2026-09-06"}
 
 
 def _loc(name: str, ext_id: str, classes: int, lat: float, lon: float) -> dict[str, Any]:

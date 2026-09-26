@@ -5,6 +5,19 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Linien-Prüfung: allgemeine Regeln statt Einträge je Bahnhof, Sammlung
+  der Auffälligkeiten (2026-09-26)**: Stufe 2 merkt sich eine Linie jetzt
+  drei Jahre nach der letzten Sichtung statt 56 Tage, damit lange Sperren
+  sie nicht löschen. Stufe 3 bewertet eine Zuglinie nur an Bahnhöfen, an
+  denen je ein Zug gesehen wurde („not judged“ statt Fehlalarm; Wiener-
+  Linien-Linien werden weiter bewertet). Die gepflegte Liste
+  `data/planned_station_lines.json` behält nur die S80 in Hütteldorf; die
+  Einträge für Stammstrecke, Speising und Himberg entfallen. Ein
+  abgelaufener Eintrag warnt nur, solange HAFAS seine Linien noch nicht
+  zeigt. Neu `data/feed_line_anomalies.json`: Befunde, „not judged“ und
+  offene abgelaufene Einträge mit erstem und letztem Tag, zur späteren
+  Auswertung. Der Schritt läuft dafür vor dem Veröffentlichen, damit die
+  Sammlung im selben Commit landet. Der Feed ändert sich nicht.
 * **Gepflegte Linienliste mit ÖBB-Unterlagen belegt (2026-09-26)**:
   `data/planned_station_lines.json` nennt jetzt für jeden Eintrag die
   Quelle. Die S80 in Hütteldorf und Speising gilt bis 11.12.2027 statt

@@ -7,16 +7,18 @@ routes for S-Bahn lines, so the ÖBB stations of Vienna and the commuter
 belt get theirs from HAFAS departure boards.
 
 What this records is what *currently runs*: HAFAS answers with the
-timetable in force, construction included. Two measures keep a short
-closure from erasing a line:
+timetable in force, construction included. Two measures keep a closure
+from erasing a line:
 
 * two sample dates, the next Tuesday and the Tuesday five weeks later;
 * every line keeps the date it was last seen and is dropped only after
-  :data:`RETENTION_DAYS` without a sighting.
+  :data:`RETENTION_DAYS` (three years) without a sighting.
 
-A closure lasting longer than that — the operator notes that some run for
-years — still hides its line. The stage-3 check must therefore never read
-"HAFAS has no S80 at Hütteldorf" as proof that the S80 does not stop there.
+A line is only remembered once it has been seen: a closure that began
+before this script first saw the line still hides it (the S80 at
+Hütteldorf, closed since 2026-09-07). The stage-3 check must therefore
+never read "HAFAS has no S80 at Hütteldorf" as proof that the S80 does not
+stop there.
 
 Per station and run: one ``LocMatch`` the first time, and again on every
 run while the station has no line (the HAFAS station id is kept; see
@@ -66,7 +68,12 @@ DEFAULT_STATIONS = REPO_ROOT / "data" / "stations.json"
 DEFAULT_OUTPUT = REPO_ROOT / "data" / "oebb_station_lines.json"
 STATE_VERSION = 1
 
-RETENTION_DAYS = 56
+# Three years: long closures are the rule, not the exception (the
+# Stammstrecke is closed from 2026-09-07 to the end of October 2027, the
+# Verbindungsbahn until the end of 2027). A line that really goes stays
+# known that long; the stage-3 check then misses a finding, it never
+# raises a false one.
+RETENTION_DAYS = 3 * 365
 SECOND_DATE_OFFSET_DAYS = 35
 # (start time, duration in minutes)
 SAMPLE_WINDOWS: tuple[tuple[str, int], ...] = (("060000", 180), ("150000", 180))

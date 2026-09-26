@@ -454,12 +454,18 @@ schreibt ausschließlich `data/oebb_station_lines.json`:
   Zugnummern und zählen nicht; Schienenersatzverkehr (`catOut` Bus bzw.
   „Schienenersatzverkehr“) zählt nie als Linie.
 - Jede Linie trägt das Datum, an dem sie zuletzt gesehen wurde, und fällt
-  erst nach 56 Tagen ohne Nachweis heraus. Ein Bahnhof ohne Antwort behält
-  seine Linien unverändert. Nach fünf Fehlschlägen in Folge endet der Lauf
-  und schreibt, was er hat. Zwischen den Anfragen liegen 0,5 Sekunden.
-- **Grenze:** Die Datei beschreibt, was derzeit fährt, nicht das geplante
-  Netz. Baustellen über Jahre verstecken eine Linie auch vor dem zweiten
-  Stichtag und der Frist. Belegt: keine S80 in Hütteldorf und Speising
+  erst nach drei Jahren ohne Nachweis heraus (bis 2026-09-26: 56 Tage).
+  Lange Sperren sind die Regel, eine Linie soll sie überdauern. Fällt eine
+  Linie wirklich weg, bleibt sie so lange bekannt; Stufe 3 übersieht dann
+  höchstens einen Befund, einen falschen erzeugt das nicht. Ein Bahnhof
+  ohne Antwort behält seine Linien unverändert. Nach fünf Fehlschlägen in
+  Folge endet der Lauf und schreibt, was er hat. Zwischen den Anfragen
+  liegen 0,5 Sekunden.
+- **Grenze:** Die Datei beschreibt, was fährt oder in den letzten drei
+  Jahren gefahren ist, nicht das geplante Netz. Eine Sperre, die begann,
+  bevor Stufe 2 die Linie je gesehen hat, versteckt sie ganz. Das betrifft
+  die Sperren, die vor dem ersten Lauf (September 2026) begannen. Belegt:
+  keine S80 in Hütteldorf und Speising
   (Schienenersatzverkehr auf der Verbindungsbahn bis Ende 2027); keine
   Linie in Wien Mitte-Landstraße, Rennweg und Quartier Belvedere, weil die
   Stammstrecke zwischen Praterstern und Hauptbahnhof/St. Marx vom
@@ -467,14 +473,15 @@ schreibt ausschließlich `data/oebb_station_lines.json`:
   Wien Stammstrecke 2026/27“, SNNB-Anhang 2.5.1; in Wien Mitte fährt „CAT
   by bus“); keine Linie in Himberg, dessen Bahnhof umgebaut wird
   (ÖBB-Rahmenplan: Inbetriebnahme 2026). Die Prüfung in Stufe 3
-  darf ein Fehlen deshalb nie als Beweis lesen und braucht für solche
-  Fälle eine gepflegte Liste der planmäßigen Linien.
+  liest ein Fehlen deshalb nie als Beweis (siehe dort, „Unbekannt ist nicht
+  falsch“).
 
 **Linien-Prüfung des Feeds (Stufe 3, seit 2026-09-26).**
-`scripts/check_feed_lines.py` läuft als letzter Schritt von
-`update-cycle.yml` (`continue-on-error`, 2 Minuten, nach dem Veröffentlichen)
-und prüft `docs/feed.xml`. Nur Bericht: Das Skript liest Dateien, schreibt
-nichts und ändert nie eine Meldung.
+`scripts/check_feed_lines.py` läuft in `update-cycle.yml` nach der
+Statistik und vor dem Veröffentlichen (`continue-on-error`, 1 Minute; es
+braucht rund eine Sekunde) und prüft `docs/feed.xml`. Nur Bericht: Das
+Skript ändert nie eine Meldung. Es schreibt nur seine Sammlung
+`data/feed_line_anomalies.json`, die im selben Commit wie der Feed landet.
 
 - Geprüft werden Meldungen mit Linien-Präfix (`7A/N65/N66: …`). Erstens:
   Gibt es die Linie? Bekannt sind die Linien der Wiener Linien
@@ -496,19 +503,45 @@ nichts und ändert nie eine Meldung.
   vier Zeichen, reine Nummern, allgemeine Wörter („Hauptbahnhof“) und
   mehrdeutige Namen zählen nicht, ebenso ein Name direkt nach „Richtung“:
   Er nennt das Ziel, keinen Halt.
-- Die gepflegte Liste nennt je Bahnhof Linien, die HAFAS wegen einer
-  Baustelle nicht zeigt, mit Grund, Quelle und Enddatum (`until`, `null` =
-  offen). Die Enddaten stammen aus den ÖBB-Unterlagen: SNNB-Anhang 2.5.1
-  „Übersichtsdarstellung zu ausgewählten baubedingten
-  Betriebseinschränkungen 2027“ (Stand 02.06.2026), Folder „Sperren S-Bahn
-  Wien Stammstrecke 2026/27“ (Mai 2026), Rahmenplan 2027–2032. Abgelaufene
-  Einträge zählen nicht mehr und stehen als Warnung im Log.
+- **Unbekannt ist nicht falsch** (seit 2026-09-26, Betreiberentscheidung).
+  Eine Zuglinie, also eine Linie, die HAFAS oder die gepflegte Liste an
+  irgendeinem Bahnhof kennt, wird an einem Bahnhof nur bewertet, wenn dort
+  je ein Zug gesehen wurde. Ein Bahnhof ohne jede bekannte Linie wird gar
+  nicht bewertet. Das Ergebnis heißt dann „not judged“ und ist kein
+  Befund. Die Regel gilt für alle Bahnhöfe gleich und braucht keine
+  Einträge: Himberg, Wien Mitte-Landstraße, Rennweg, Quartier Belvedere
+  und Speising fallen darunter, solange HAFAS dort keinen Zug zeigt.
+  Wiener-Linien-Linien werden dort weiter bewertet. Der Preis: Eine
+  falsche Zuglinie an einem solchen Bahnhof fällt nicht auf, ebenso an
+  Bahnhöfen ohne Bahnverkehr (Karlsplatz, Schottentor, Stephansplatz,
+  Siebenhirten).
+- Die gepflegte Liste ist nur noch Starthilfe: Sie nennt Linien, die
+  Stufe 2 an einem Bahnhof nie gesehen hat, an dem andere Züge fahren. Das
+  betrifft nur Sperren, die vor dem ersten Lauf begannen. Einziger Eintrag:
+  S80 in Hütteldorf bis 11.12.2027 (Verbindungsbahn; ÖBB-Folder „Sperren
+  S-Bahn Wien Stammstrecke 2026/27“, SNNB-Anhang 2.5.1, B-92487). Die
+  Einträge für Stammstrecke, Speising und Himberg sind seit 2026-09-26
+  entfallen, ihre Quellen stehen im Audit vom 26.09. (Update 16:40).
+  Ein abgelaufener Eintrag zählt nicht mehr. Eine Warnung im Log und in
+  der Sammlung gibt es nur, solange HAFAS seine Linien am Bahnhof noch
+  nicht zeigt; fährt die Linie wieder, genügt eine Info-Zeile.
 - Befunde lauten „not confirmed“, nie „falsch“, und stehen im Log des
   Schritts. Rückschau über 678 Stände des Feeds (482 verschiedene
   Meldungen, 432 mit Präfix): drei Befunde, alle berechtigt. „1: Bhf.
   Hütteldorf ÖBB-Ersatzbus für 80“ (der Anlass der Prüfung), „71/72: Dies
   ist eine Testmeldung“ (keine Linie 72) und „66A: Demonstration Betrieb
-  ab Quartier Belvedere“.
+  ab Quartier Belvedere“. Mit den Regeln vom 26.09. ergibt die Rückschau
+  über 685 Stände dieselben drei Befunde und kein „not judged“.
+- **Sammlung zur späteren Auswertung:** `data/feed_line_anomalies.json`
+  hält jede Auffälligkeit als Datensatz: `kind` (`unknown_line`,
+  `not_confirmed`, `not_judged`, `planned_expired`), `subject` (Linie oder
+  Bahnhof), `title` (Titel der Meldung), `detail`, `first_seen`,
+  `last_seen` und `days_seen` (Tage in Europe/Vienna). Dieselbe
+  Auffälligkeit zählt je Tag einmal, weitere Zyklen desselben Tages ändern
+  die Datei nicht. Datensätze bleiben, auch wenn die Meldung verschwindet;
+  über 1000 fallen die am längsten nicht mehr gesehenen weg. Titel und
+  Text sind auf 300 Zeichen gekürzt. `--no-record` prüft nur, etwa für
+  Rückschauen über alte Feed-Stände.
 
 **Warum Google Places die Notfall-Stufe ist:**
 

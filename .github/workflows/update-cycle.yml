@@ -56,7 +56,9 @@ name: Update cycle
 #      + appends to ``data/stats/stoerungen_<YYYY>.csv`` (step-capped)
 #   7. ``generate_markdown_stats.py`` patches the README markers and
 #      regenerates ``docs/statistik.md`` (best-effort, continue-on-error:
-#      a cosmetic stats failure must NEVER block the feed publish)
+#      a cosmetic stats failure must NEVER block the feed publish); then
+#      ``check_feed_lines.py`` logs the line check and collects its
+#      anomalies in ``data/feed_line_anomalies.json`` (same guard)
 #   8. validate the built feed XML, then a single inline ``git commit``
 #      + retrying, never-fail ``git push`` (reconcile onto concurrent
 #      pushes is folded into the push loop; no external commit action —
@@ -516,6 +518,21 @@ jobs:
             python scripts/generate_markdown_stats.py --skip-dashboard
           fi
 
+      # Stage 3 of the line check (audit 2026-09-25, A.14): compares the lines
+      # of the German feed with the station directory and logs what it cannot
+      # confirm ("not confirmed", never "wrong": HAFAS hides lines during long
+      # closures). Report only: never touches the feed. It collects its
+      # anomalies in ``data/feed_line_anomalies.json`` for later review (audit
+      # 2026-09-26) and therefore runs before the publish, like the statistics
+      # step, so the collection rides the same commit. It takes about a
+      # second; ``continue-on-error`` and the 1-minute limit keep a failure or
+      # a hang from blocking the feed.
+      - name: Check feed lines (report only)
+        if: steps.freshness.outputs.should_run == 'true'
+        continue-on-error: true
+        timeout-minutes: 1
+        run: python scripts/check_feed_lines.py
+
       # ----- Validate + single atomic publish ----------------------------
 
       # ONE never-fail step does the whole publish: validate the built
@@ -641,14 +658,3 @@ jobs:
             attempt=$((attempt + 1))
             delay=$((delay * 2))
           done
-
-      # Stage 3 of the line check (audit 2026-09-25, A.14): compares the lines
-      # of the German feed with the station directory and logs what it cannot
-      # confirm ("not confirmed", never "wrong": HAFAS hides lines during long
-      # closures). Report only: reads files, writes nothing, never touches the
-      # feed, and runs after the publish so it can never delay it.
-      - name: Check feed lines (report only)
-        if: steps.freshness.outputs.should_run == 'true'
-        continue-on-error: true
-        timeout-minutes: 2
-        run: python scripts/check_feed_lines.py

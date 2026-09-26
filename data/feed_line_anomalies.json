@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "description": "Anomalies of the report-only line check (scripts/check_feed_lines.py), collected for later review: findings (unknown_line, not_confirmed), blind spots (not_judged) and expired planned entries whose lines HAFAS still does not show (planned_expired). One record per kind, subject and feed title; days in Europe/Vienna. The feed is never changed.",
+  "anomalies": []
+}

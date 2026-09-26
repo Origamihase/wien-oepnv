@@ -3,7 +3,9 @@
 The places and distances mirror the real directory: "Wien Bhf. Hütteldorf
 (WL)" lies 126 m from the ÖBB station, "Meidling Hauptstraße" 1 km from
 Bahnhof Meidling, and Pasettistraße (a temporary stop in a real 37A item)
-is no railway station at all.
+is no railway station at all. Rennweg and Himberg are closed: HAFAS shows
+no train there (2026-09-26), Rennweg has tram stops next to it, Himberg
+nothing at all.
 """
 
 from __future__ import annotations
@@ -62,14 +64,47 @@ PASETTISTRASSE = {
     "latitude": 48.2361,
     "longitude": 16.3858,
 }
-ENTRIES = [HUETTELDORF, HUETTELDORF_WL, HUETTELDORF_FAR, MEIDLING, MEIDLING_HAUPTSTRASSE, PASETTISTRASSE]
-OEBB_LINES = {
+RENNWEG = {
+    "bst_id": "1352",
+    "name": "Wien Rennweg",
+    "aliases": ["Rennweg", "Bahnhof Rennweg"],
+    "latitude": 48.1968,
+    "longitude": 16.3838,
+}
+RENNWEG_WL = {
+    "name": "Wien Rennweg (WL)",
+    "aliases": ["Rennweg (WL)"],
+    "wl_lines": ["71", "O"],
+    "latitude": 48.1972,
+    "longitude": 16.3842,  # ~50 m
+}
+HIMBERG = {"bst_id": "835", "name": "Himberg", "aliases": ["Himberg"], "latitude": 48.0836, "longitude": 16.4401}
+ENTRIES = [
+    HUETTELDORF,
+    HUETTELDORF_WL,
+    HUETTELDORF_FAR,
+    MEIDLING,
+    MEIDLING_HAUPTSTRASSE,
+    PASETTISTRASSE,
+    RENNWEG,
+    RENNWEG_WL,
+    HIMBERG,
+]
+OEBB_LINES: dict[str, Any] = {
     "804": {"lines": {"S45": "2026-09-26", "S50": "2026-09-26"}},
     "1410": {"lines": {"S1": "2026-09-26"}},
+    "1352": {"lines": {}},
+    "835": {"lines": {}},
 }
 PLANNED = {"stations": [{"bst_id": "804", "name": "Wien Hütteldorf", "lines": ["S80"], "until": None}]}
 WL_NAMES = {"U4", "U6", "49A", "5A", "7A", "37A", "1", "99A", "S80"}
 TODAY = date(2026, 9, 27)
+
+
+@pytest.fixture(autouse=True)
+def _keep_the_real_collection(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    # A test that reaches the default path must not touch data/feed_line_anomalies.json.
+    monkeypatch.setattr(cl, "DEFAULT_ANOMALIES", tmp_path / "default" / "feed_line_anomalies.json")
 
 
 def _directory(entries: list[dict[str, Any]] = ENTRIES, planned: object = PLANNED) -> cl.Directory:
@@ -113,7 +148,44 @@ def test_an_expired_planned_line_no_longer_confirms() -> None:
     assert _check("S80: ÖBB-Ersatzbus", "Bhf. Hütteldorf", directory) == [
         "S80 at Wien Hütteldorf not confirmed (known there: 49A, S45, S50, U4)"
     ]
-    assert cl.parse_planned(expired, TODAY) == ([], ["Wien Hütteldorf"])
+    assert cl.parse_planned(expired, TODAY) == (
+        [],
+        [cl.PlannedLines("804", frozenset({"S80"}), date(2026, 9, 26), "Wien Hütteldorf")],
+    )
+
+
+def test_a_train_line_is_not_judged_where_no_train_was_seen() -> None:
+    # Rennweg: the Stammstrecke is closed, HAFAS shows no train, only the
+    # trams next door are known. Unknown is not wrong.
+    assert _check("S1: Störung", "Bahnhof Rennweg") == ["S1 at Wien Rennweg not judged (no train seen there)"]
+    assert _check("S1/S45: Störung", "Rennweg") == ["S1/S45 at Wien Rennweg not judged (no train seen there)"]
+
+
+def test_other_lines_are_still_judged_where_no_train_was_seen() -> None:
+    assert _check("71: Umleitung", "Rennweg") == []
+    assert _check("7A: Demonstration", "Betrieb ab Rennweg") == [
+        "7A at Wien Rennweg not confirmed (known there: 71, O)"
+    ]
+    # A line the WL list knows but no station's trains: judged like a bus.
+    assert _check("U6: Störung", "Rennweg") == ["U6 at Wien Rennweg not confirmed (known there: 71, O)"]
+    # One line that can be judged is enough to judge the item.
+    assert _check("S1/7A: Störung", "Rennweg") == ["S1/7A at Wien Rennweg not confirmed (known there: 71, O)"]
+
+
+def test_a_station_without_any_known_line_is_not_judged() -> None:
+    # Himberg: HAFAS shows no train and no WL stop lies within 200 m.
+    assert _check("S45: Umbau", "Himberg") == ["S45 at Himberg not judged (no line known there)"]
+    assert _check("99A: Umleitung", "Himberg") == ["99A at Himberg not judged (no line known there)"]
+
+
+def test_a_train_line_is_judged_where_trains_run() -> None:
+    assert _check("S45: Störung", "Bahnhof Meidling") == ["S45 at Wien Meidling not confirmed (known there: S1)"]
+
+
+def test_the_directory_knows_the_train_lines() -> None:
+    assert _directory().rail_lines == {"S1", "S45", "S50", "S80"}
+    rennweg = _directory().stations_in("Rennweg")[0]
+    assert (rennweg.lines, rennweg.rail_lines) == (frozenset({"71", "O"}), frozenset[str]())
 
 
 def test_a_wl_stop_counts_only_within_200_m() -> None:
@@ -218,7 +290,105 @@ def test_planned_payload_shapes() -> None:
     assert cl.parse_planned(None, TODAY) == ([], [])
     assert cl.parse_planned({"stations": "x"}, TODAY) == ([], [])
     (entry,), _ = cl.parse_planned({"stations": [{"bst_id": "1", "lines": ["S1"], "until": "2026-09-27"}]}, TODAY)
-    assert entry == cl.PlannedLines("1", frozenset({"S1"}), date(2026, 9, 27))  # in force on its last day
+    assert entry == cl.PlannedLines("1", frozenset({"S1"}), date(2026, 9, 27), "1")  # in force on its last day
+
+
+def _planned(until: str) -> cl.PlannedLines:
+    return cl.PlannedLines("804", frozenset({"S80"}), date.fromisoformat(until), "Wien Hütteldorf")
+
+
+def test_an_expired_entry_needs_review_only_while_hafas_lacks_its_lines() -> None:
+    expired = [_planned("2027-12-11")]
+    (finding,) = cl.expired_findings(expired, OEBB_LINES)
+    assert (finding.kind, finding.subject, finding.text, finding.is_finding) == (
+        "planned_expired",
+        "Wien Hütteldorf",
+        "planned S80 expired on 2027-12-11; HAFAS shows no S80 there",
+        False,
+    )
+    back = {**OEBB_LINES, "804": {"lines": {"S45": "2027-12-19", "S80": "2027-12-19"}}}
+    assert cl.expired_findings(expired, back) == []
+
+
+def _record(**fields: Any) -> dict[str, Any]:
+    record = {
+        "kind": "not_confirmed",
+        "subject": "Wien Hütteldorf",
+        "title": "1: Bhf. Hütteldorf",
+        "first_seen": "2026-09-25",
+        "last_seen": "2026-09-25",
+        "days_seen": 1,
+        "detail": "1 at Wien Hütteldorf not confirmed",
+    }
+    return {**record, **fields}
+
+
+def _finding(title: str = "1: Bhf. Hütteldorf", text: str = "1 at Wien Hütteldorf not confirmed (new)") -> cl.Finding:
+    return cl.Finding(title, text, "not_confirmed", "Wien Hütteldorf")
+
+
+def test_a_new_anomaly_starts_a_record() -> None:
+    assert cl.merge_anomalies([], [_finding()], TODAY) == [
+        _record(first_seen="2026-09-27", last_seen="2026-09-27", detail="1 at Wien Hütteldorf not confirmed (new)")
+    ]
+
+
+def test_a_known_anomaly_counts_each_day_once() -> None:
+    merged = cl.merge_anomalies([_record()], [_finding(), _finding()], TODAY)
+    assert merged == [_record(last_seen="2026-09-27", days_seen=2, detail="1 at Wien Hütteldorf not confirmed (new)")]
+    # Every cycle of the same day: nothing changes.
+    assert cl.merge_anomalies(merged, [_finding()], TODAY) == merged
+
+
+def test_records_are_kept_while_the_anomaly_is_gone() -> None:
+    assert cl.merge_anomalies([_record()], [], TODAY) == [_record()]
+
+
+@pytest.mark.parametrize(
+    "record",
+    [
+        _record(kind="wrong"),
+        _record(subject=None),
+        _record(title=7),
+        _record(days_seen=0),
+        _record(days_seen=True),
+        _record(first_seen="gestern"),
+        _record(last_seen=None),
+        _record(last_seen="20260925"),  # fromisoformat accepts it, the order would break
+        "junk",
+    ],
+)
+def test_invalid_records_are_dropped(record: object) -> None:
+    assert cl.merge_anomalies([record], [], TODAY) == []
+
+
+def test_the_collection_keeps_the_most_recent_records(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(cl, "MAX_ANOMALY_RECORDS", 2)
+    old = [
+        _record(title="1: seit Langem", first_seen="2026-09-21", last_seen="2026-09-26"),
+        _record(title="2: vorbei", first_seen="2026-09-22", last_seen="2026-09-22"),
+        _record(title="3: vorbei", first_seen="2026-09-23", last_seen="2026-09-23"),
+    ]
+    merged = cl.merge_anomalies(old, [], TODAY)
+    # The one seen longest ago goes, whenever it started.
+    assert [record["title"] for record in merged] == ["1: seit Langem", "3: vorbei"]
+
+
+def test_a_title_with_hidden_characters_stays_one_record(tmp_path: Path) -> None:
+    # The writer scrubs Trojan-Source characters; the key must match what it wrote.
+    path = tmp_path / "anomalies.json"
+    finding = _finding("1: Bhf.\u200b Hütteldorf")
+    assert cl.record_anomalies(path, [finding], TODAY) == 1
+    before = path.read_bytes()
+    assert cl.record_anomalies(path, [finding], TODAY) == 0
+    assert path.read_bytes() == before
+    (record,) = json.loads(before)["anomalies"]
+    assert record["title"] == "1: Bhf. Hütteldorf"
+
+
+def test_long_texts_are_cut() -> None:
+    (record,) = cl.merge_anomalies([], [_finding("7A: " + "x" * 400, "y" * 400)], TODAY)
+    assert (len(record["title"]), len(record["detail"])) == (cl.MAX_RECORD_TEXT, cl.MAX_RECORD_TEXT)
 
 
 def test_load_wl_line_names(tmp_path: Path) -> None:
@@ -242,7 +412,7 @@ def _feed(tmp_path: Path, *items: tuple[str, str]) -> Path:
     return path
 
 
-def _main_args(tmp_path: Path, feed: Path) -> list[str]:
+def _main_args(tmp_path: Path, feed: Path, record: Path | None = None) -> list[str]:
     stations = tmp_path / "stations.json"
     stations.write_text(json.dumps({"stations": ENTRIES}), encoding="utf-8")
     oebb = tmp_path / "oebb.json"
@@ -254,6 +424,7 @@ def _main_args(tmp_path: Path, feed: Path) -> list[str]:
     return [
         *("--feed", str(feed), "--stations", str(stations), "--oebb-lines", str(oebb)),
         *("--planned", str(planned), "--wl-lines", str(wl)),
+        *(("--no-record",) if record is None else ("--anomalies", str(record))),
     ]
 
 
@@ -268,8 +439,107 @@ def test_main_reports_and_leaves_everything_unchanged(tmp_path: Path, caplog: py
     with caplog.at_level("INFO", logger="feed_line_check"):
         assert cl.main(_main_args(tmp_path, feed)) == 0
     assert "Line check: 1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80: 1 at Wien Hütteldorf not confirmed" in caplog.text
-    assert "Line check: 3 items, 2 with a line prefix, 1 findings" in caplog.text
+    assert "Line check: 3 items, 2 with a line prefix, 1 findings, 0 not judged" in caplog.text
     assert feed.read_bytes() == before
+
+
+def _collection(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    # Writes are confined to data/, docs/ and log/ (validate_path).
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(cl, "_today", lambda: TODAY)
+    (tmp_path / "data").mkdir()
+    return tmp_path / "data" / "feed_line_anomalies.json"
+
+
+def test_main_collects_the_anomalies(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture) -> None:
+    record = _collection(tmp_path, monkeypatch)
+    feed = _feed(
+        tmp_path,
+        ("1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80", "Bhf. Hütteldorf"),
+        ("S1: Störung", "Rennweg"),
+        ("X9: Störung", ""),
+        ("S80: ÖBB-Ersatzbus", "Bhf. Hütteldorf"),
+    )
+    with caplog.at_level("INFO", logger="feed_line_check"):
+        assert cl.main(_main_args(tmp_path, feed, record)) == 0
+    assert "4 items, 4 with a line prefix, 2 findings, 1 not judged" in caplog.text
+    assert "Line check: 3 new anomalies, collected in feed_line_anomalies.json" in caplog.text
+    document = json.loads(record.read_text(encoding="utf-8"))
+    assert [(r["kind"], r["subject"], r["title"], r["first_seen"], r["days_seen"]) for r in document["anomalies"]] == [
+        ("not_confirmed", "Wien Hütteldorf", "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80", "2026-09-27", 1),
+        ("not_judged", "Wien Rennweg", "S1: Störung", "2026-09-27", 1),
+        ("unknown_line", "X9", "X9: Störung", "2026-09-27", 1),
+    ]
+    # The next cycle of the same day finds the same: the file stays as it is.
+    before = record.read_bytes()
+    caplog.clear()
+    with caplog.at_level("INFO", logger="feed_line_check"):
+        assert cl.main(_main_args(tmp_path, feed, record)) == 0
+    assert record.read_bytes() == before
+    assert "Line check: 0 new anomalies" in caplog.text
+
+
+def test_main_collects_expired_planned_lines(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    record = _collection(tmp_path, monkeypatch)
+    args = _main_args(tmp_path, _feed(tmp_path), record)
+    (tmp_path / "planned.json").write_text(
+        json.dumps({"stations": [{**PLANNED["stations"][0], "until": "2026-09-26"}]}), encoding="utf-8"
+    )
+    with caplog.at_level("INFO", logger="feed_line_check"):
+        assert cl.main(args) == 0
+    assert "Planned lines for Wien Hütteldorf: planned S80 expired on 2026-09-26" in caplog.text
+    (entry,) = json.loads(record.read_text(encoding="utf-8"))["anomalies"]
+    assert (entry["kind"], entry["subject"], entry["title"]) == ("planned_expired", "Wien Hütteldorf", "")
+
+    # Once HAFAS shows the S80 again, the expired entry needs no review.
+    (tmp_path / "oebb.json").write_text(
+        json.dumps({"stations": {**OEBB_LINES, "804": {"lines": {"S80": "2026-09-27"}}}}), encoding="utf-8"
+    )
+    caplog.clear()
+    with caplog.at_level("INFO", logger="feed_line_check"):
+        assert cl.main(args) == 0
+    assert "Planned lines for Wien Hütteldorf have expired; HAFAS shows them again" in caplog.text
+    assert "review data/planned_station_lines.json" not in caplog.text
+
+
+def test_main_starts_the_collection_without_anomalies(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    record = _collection(tmp_path, monkeypatch)
+    assert cl.main(_main_args(tmp_path, _feed(tmp_path, ("U4: Störung", "Bhf. Hütteldorf")), record)) == 0
+    assert json.loads(record.read_text(encoding="utf-8"))["anomalies"] == []
+
+
+def test_main_without_record_writes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    record = _collection(tmp_path, monkeypatch)
+    args = _main_args(tmp_path, _feed(tmp_path, ("X9: Störung", "")), record)
+    assert cl.main([*args, "--no-record"]) == 0
+    assert not record.exists()
+
+
+def test_main_refuses_a_collection_outside_the_allowed_roots(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    _collection(tmp_path, monkeypatch)
+    feed = _feed(tmp_path, ("X9: Störung", ""))
+    assert cl.main(_main_args(tmp_path, feed, tmp_path / "anomalies.json")) == 1
+    assert not (tmp_path / "anomalies.json").exists()
+
+
+def test_main_starts_over_from_a_broken_collection(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    record = _collection(tmp_path, monkeypatch)
+    record.write_text("{not json", encoding="utf-8")
+    assert cl.main(_main_args(tmp_path, _feed(tmp_path, ("X9: Störung", "")), record)) == 0
+    (entry,) = json.loads(record.read_text(encoding="utf-8"))["anomalies"]
+    assert entry["subject"] == "X9"
+
+
+def test_main_reports_a_failed_write(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    record = _collection(tmp_path, monkeypatch)
+
+    def broken(*_args: Any, **_kwargs: Any) -> None:
+        raise OSError("disk full")
+
+    monkeypatch.setattr(cl, "write_anomalies", broken)
+    assert cl.main(_main_args(tmp_path, _feed(tmp_path, ("X9: Störung", "")), record)) == 1
 
 
 def test_main_without_a_feed_fails(tmp_path: Path) -> None:
@@ -322,3 +592,8 @@ def test_the_real_directory_resolves_the_key_names() -> None:
     }
     assert _check("1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80", "Bhf. Hütteldorf", directory)
     assert not _check("S80: ÖBB-Ersatzbus", "Bhf. Hütteldorf", directory)
+    # Closed stations without a planned entry (2026-09-26): not judged.
+    assert _check("S1: Störung", "Wien Mitte-Landstraße", directory) == [
+        "S1 at Wien Mitte-Landstraße not judged (no train seen there)"
+    ]
+    assert _check("S60: Umbau", "Bahnhof Himberg", directory) == ["S60 at Himberg not judged (no line known there)"]

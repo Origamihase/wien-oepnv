@@ -1,48 +1,13 @@
 {
   "version": 1,
-  "description": "Lines that serve an ÖBB station according to the plan but that HAFAS does not show at the moment, mostly because of construction. Used only by the report-only line check (stage 3, scripts/check_feed_lines.py). An entry applies up to and including 'until'; null means the end is open. Expired entries are ignored and logged so they get reviewed.",
+  "description": "Lines that serve an ÖBB station according to the plan but that stage 2 has never seen there, at a station where other trains do run. Only needed for closures that began before stage 2 first looked (September 2026): stage 2 remembers a line it has seen for three years, and stage 3 does not judge train lines at a station where no train was ever seen. Used only by the report-only line check (stage 3, scripts/check_feed_lines.py). An entry applies up to and including 'until'; null means the end is open. An expired entry is logged for review only while HAFAS still does not show its lines.",
   "stations": [
-    {
-      "bst_id": "900102",
-      "name": "Wien Mitte-Landstraße",
-      "lines": ["S1", "S2", "S3", "S4", "S7", "REX1", "REX3", "REX7"],
-      "until": "2027-10-31",
-      "reason": "ÖBB-Infrastruktur, SNNB 2027 annex 2.5.1 (2026-06-02): Wien Praterstern – Wien Hbf closed, construction phase 7 from 2026-12-13, phases 8/9 until 2027-10-29 20:00 (B-74918, B-65391); ÖBB folder 'Sperren S-Bahn Wien Stammstrecke 2026/27' (May 2026): main closure Wien Hbf/St. Marx – Wien Praterstern 2026-09-07 to end of October 2027, S-Bahn and REX trains end at Praterstern or Wien Hbf/St. Marx. REX1 and REX3 stop on both sides of the closure even at small stations (Traisengasse, Matzleinsdorfer Platz); REX7 stops at St. Marx."
-    },
-    {
-      "bst_id": "1352",
-      "name": "Wien Rennweg",
-      "lines": ["S1", "S2", "S3", "S4", "S7", "REX1", "REX3", "REX7"],
-      "until": "2027-10-31",
-      "reason": "ÖBB-Infrastruktur, SNNB 2027 annex 2.5.1 (2026-06-02): Wien Praterstern – Wien Hbf closed, construction phase 7 from 2026-12-13, phases 8/9 until 2027-10-29 20:00 (B-74918, B-65391); ÖBB folder 'Sperren S-Bahn Wien Stammstrecke 2026/27' (May 2026): main closure Wien Hbf/St. Marx – Wien Praterstern 2026-09-07 to end of October 2027, S-Bahn and REX trains end at Praterstern or Wien Hbf/St. Marx. See Wien Mitte-Landstraße for REX1, REX3 and REX7."
-    },
-    {
-      "bst_id": "1351",
-      "name": "Wien Quartier Belvedere",
-      "lines": ["S1", "S2", "S3", "S4", "REX1", "REX3"],
-      "until": "2027-10-31",
-      "reason": "ÖBB-Infrastruktur, SNNB 2027 annex 2.5.1 (2026-06-02): Wien Praterstern – Wien Hbf closed, construction phase 7 from 2026-12-13, phases 8/9 until 2027-10-29 20:00 (B-74918, B-65391); ÖBB folder 'Sperren S-Bahn Wien Stammstrecke 2026/27' (May 2026): main closure Wien Hbf/St. Marx – Wien Praterstern 2026-09-07 to end of October 2027, S-Bahn and REX trains end at Praterstern or Wien Hbf/St. Marx. The S7 turns off at Rennweg towards St. Marx and does not serve Quartier Belvedere."
-    },
     {
       "bst_id": "804",
       "name": "Wien Hütteldorf",
       "lines": ["S80"],
       "until": "2027-12-11",
       "reason": "Verbindungsbahn: S80 cancelled between Wien Hütteldorf and Wien Meidling from 2026-09-07 to the end of 2027, rail replacement buses every 15 minutes (ÖBB folder, May 2026); SNNB 2027 annex 2.5.1: 'Attraktivierung Verbindungsbahn Phase 2+3' 2026-12-13 to 2027-12-09 (B-92487)."
-    },
-    {
-      "bst_id": "806",
-      "name": "Wien Speising",
-      "lines": ["S80"],
-      "until": "2027-12-11",
-      "reason": "Verbindungsbahn: S80 cancelled between Wien Hütteldorf and Wien Meidling until the end of 2027; the rail replacement buses stop at Hietzinger Hauptstraße and Wien Speising (ÖBB folder, May 2026; SNNB 2027 annex 2.5.1, B-92487 until 2027-12-09). HAFAS shows only BusSV910 (2026-09-26)."
-    },
-    {
-      "bst_id": "835",
-      "name": "Himberg",
-      "lines": ["S60"],
-      "until": "2026-12-12",
-      "reason": "Station rebuild: ÖBB Rahmenplan 2027–2032 lists 'Bahnhof Himberg (NÖ) Inbetriebnahme 2026'. HAFAS shows no departures at either stop (sample dates 2026-09-29 and 2026-11-03); the neighbours Lanzendorf-Rannersdorf and Gramatneusiedl have the S60, and the station lies on the Ostbahn (line 11801). Review at the timetable change."
     }
   ]
 }
