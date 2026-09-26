@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 22:28:45 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 22:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U4: Police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a</guid>
-      <pubDate>Sat, 26 Sep 2026 21:31:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 21:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 21:31:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: ÖBB Bauarbeiten]]></title>
+      <title><![CDATA[62: ÖBB construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f1211a449fbf3c33db7148e88a4aa9b4640e76ef8b9024ed6420214ef195eae8</guid>
       <pubDate>Sat, 26 Sep 2026 15:10:21 +0200</pubDate>
       <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
       <ext:starts_at>Sat, 26 Sep 2026 15:10:21 +0200</ext:starts_at>
       <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Betrieb ab Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein Betrieb. [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein Betrieb.<br/>[Am 26.09.2026]]]></content:encoded>
+      <description>Service from Kliebergasse; trains stop at line 18, direction Burggasse; no operation. [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Service from Kliebergasse; trains stop at line 18, direction Burggasse; no operation.<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -41,17 +30,6 @@
       <ext:ends_at>Sun, 27 Sep 2026 01:00:00 +0200</ext:ends_at>
       <description>Reason: construction works. [26.09.2026 – 27.09.2026]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[26.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Event]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">75e60c1e1fa31d4ad5ba13db92bbee5a4346e5ee92d500dd0022673f0c665745</guid>
-      <pubDate>Sat, 26 Sep 2026 04:30:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 04:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 04:30:21 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Buses stop at Amerlingstraße 8-10. Operating only between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52 and 48A. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Buses stop at Amerlingstraße 8-10. Operating only between Hauptbahnhof S U and Neubaugasse U. Switch to lines U3, 5, 12, 46, 52 and 48A.<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26E: Track construction works]]></title>
@@ -116,8 +94,30 @@
       <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
       <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 02 Oct 2026 15:00:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie N66 in Richtung Oper, Karlsplatz und der Rufbuslinie N68 in Richtung Oberlaa U Haltestelle: Quellenplatz Von: Quellenplatz 4 im Zuge … [24.09.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie N66 in Richtung Oper, Karlsplatz und der Rufbuslinie N68 in Richtung Oberlaa U Haltestelle: Quellenplatz Von: Quellenplatz 4 im Zuge …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
+      <description>Stop relocation of line N66 towards Oper, Karlsplatz and call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along … [24.09.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Stop relocation of line N66 towards Oper, Karlsplatz and call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N31: Stammersdorf closed without replacement]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c6414f05e0d7316905e3faa36cf0ae3462bb94b5012ef094ee688e0b738e70df</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 23 Sep 2026 14:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 23 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 31 May 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop closure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without replacement Duration: From 30 September … [23.09.2026 – 31.05.2027]</description>
+      <content:encoded><![CDATA[Stop closure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without replacement Duration: From 30 September …<br/>[23.09.2026 – 31.05.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Folding ramps out of service on 27.09.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">aa349c99b725b7354f26a3bd3546353bf0a484c4156d7642515ed8ae14d68e51</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 23 Sep 2026 14:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 23 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 27 Sep 2026 22:00:00 +0200</ext:ends_at>
+      <description>Due to the high passenger volume associated with an event, the folding ramps of the U2 underground trains cannot be extended. [23.09.2026 – 27.09.2026]</description>
+      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U2 underground trains cannot be extended.<br/>[23.09.2026 – 27.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
