@@ -641,3 +641,14 @@ jobs:
             attempt=$((attempt + 1))
             delay=$((delay * 2))
           done
+
+      # Stage 3 of the line check (audit 2026-09-25, A.14): compares the lines
+      # of the German feed with the station directory and logs what it cannot
+      # confirm ("not confirmed", never "wrong": HAFAS hides lines during long
+      # closures). Report only: reads files, writes nothing, never touches the
+      # feed, and runs after the publish so it can never delay it.
+      - name: Check feed lines (report only)
+        if: steps.freshness.outputs.should_run == 'true'
+        continue-on-error: true
+        timeout-minutes: 2
+        run: python scripts/check_feed_lines.py

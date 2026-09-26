@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stufe 3 der Linien-Prüfung: Bericht über den deutschen Feed (2026-09-26)**:
+  Neu `scripts/check_feed_lines.py`, als letzter Schritt von
+  `update-cycle.yml`. Für jede Meldung mit Linien-Präfix prüft es, ob es die
+  Linie gibt und ob sie die genannten ÖBB-Bahnhöfe bedient, und schreibt,
+  was es nicht bestätigen kann, ins Log. Der Feed bleibt unverändert. Neu
+  `data/planned_station_lines.json`: Linien, die HAFAS wegen Baustellen
+  nicht zeigt (Stammstrecke bis Oktober 2027, S80 an der Verbindungsbahn,
+  S60 in Himberg). Die Rückschau über 678 Feed-Stände ergibt drei
+  berechtigte Befunde, darunter eine Testmeldung der Wiener Linien vom
+  23.09.
 * **Stufe 2: Halte am selben Ort (2026-09-26)**: Der vierte Lauf ordnete den
   Hauptbahnhof zu („Wien Hbf (U)“, 17 Linien) und den Flughafen dem Bahnhof
   (S7, REX7); 152 Bahnhöfe haben Linien. Simmering und Himberg blieben leer:
