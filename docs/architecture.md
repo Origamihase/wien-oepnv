@@ -415,20 +415,26 @@ flowchart LR
 schreibt ausschließlich `data/oebb_station_lines.json`:
 
 - Umfang: die ÖBB-Bahnhöfe (`bst_id`) in Wien und im Pendlerraum, derzeit
-  162. Die HAFAS-Stations-ID ermittelt einmalig `LocMatch` mit bis zu acht
+  162. Die HAFAS-Stations-ID ermittelt `LocMatch` mit bis zu acht
   Kandidaten (`pick_rail_location`): Es zählt der nächstgelegene Kandidat,
-  dessen Produktklassen (`pCls`) Bahn enthalten und der höchstens 800 m
-  entfernt liegt. Gespeichert werden ID, HAFAS-Name, Klassen und Abstand.
-  Der erste Lauf (2026-09-25) nahm den ersten Treffer nach Namen mit 2 km
-  Radius; IDs ohne gespeicherte Klassen werden einmal neu ermittelt. Das
-  brachte Breitensee, Zentralfriedhof und Krems a.d. Donau ihre Linien.
-  Wien Mitte-Landstraße, Rennweg und Quartier Belvedere dagegen waren
-  schon im ersten Lauf dem Bahnhof zugeordnet (gleiche IDs, S-Bahn-Klasse,
-  unter 150 m); ihre Abfahrtstafeln liefern trotzdem keine Linie, Ursache
-  offen. Für solche Fälle schreibt das Skript Diagnose ins Log: ohne
-  Bahn-Halt alle `LocMatch`-Kandidaten (`describe_candidates`), bei Tafeln
+  dessen Produktklassen (`pCls`) R/REX oder S-Bahn enthalten (16 | 32) und
+  der höchstens 800 m entfernt liegt. Nur diese Züge tragen Liniennummern.
+  Irgendeine Bahnklasse reichte nicht: Sie ließ am 26.09. das Busterminal
+  am Flughafen Wien (pCls 1090, „CAT by bus“) vor dem Bahnhof gewinnen.
+  Findet der volle Name keinen Bahn-Halt, folgt eine zweite Anfrage mit
+  der ÖBB-Abkürzung (`short_name`: „Wien Hauptbahnhof“ → „Wien Hbf“);
+  „Wien Hauptbahnhof“ lieferte nur Meidling, Floridsdorf, Hütteldorf und
+  den Flughafen. Der Ort bleibt in der Anfrage, und der 800-m-Umkreis um
+  die eigenen Koordinaten schließt jeden anderen Hauptbahnhof aus
+  (St. Pölten: 56 km). Ein Treffer der zweiten Anfrage muss außerdem „Hbf“
+  im Namen tragen: Quartier Belvedere liegt 526 m vom Hauptbahnhof.
+  Gespeichert werden ID, HAFAS-Name, Klassen und Abstand.
+  Zuordnungen nach älteren Regeln werden einmal neu ermittelt, ein
+  Bahnhof ohne Linie bei jedem Lauf.
+- Diagnose im Log: jede Zuordnung mit Name, Klassen und Abstand; ohne
+  Bahn-Halt alle `LocMatch`-Kandidaten (`describe_candidates`); bei Tafeln
   ohne Linie je Zeitfenster Abfahrten, Produkte und deren `catOut`/`line`/
-  `lineId` (`board_summary`).
+  `lineId` (`board_summary`), dazu die Kandidaten.
 - Je Bahnhof und Lauf vier `StationBoard`-Anfragen: nächster Dienstag und
   der Dienstag fünf Wochen später, jeweils 06:00–09:00 und 15:00–18:00,
   nur Bahnklassen (Filter 4159), `maxJny` 400. Ohne `maxJny` lieferte
@@ -443,10 +449,14 @@ schreibt ausschließlich `data/oebb_station_lines.json`:
   und schreibt, was er hat. Zwischen den Anfragen liegen 0,5 Sekunden.
 - **Grenze:** Die Datei beschreibt, was derzeit fährt, nicht das geplante
   Netz. Baustellen über Jahre verstecken eine Linie auch vor dem zweiten
-  Stichtag und der Frist (Messlauf 2026-09-25: keine S80 in Hütteldorf,
-  dafür ein Schienenersatzverkehr-Bus). Die Prüfung in Stufe 3 darf ein
-  Fehlen deshalb nie als Beweis lesen und braucht für solche Fälle eine
-  gepflegte Liste der planmäßigen Linien.
+  Stichtag und der Frist. Belegt: keine S80 in Hütteldorf und Speising
+  (Schienenersatzverkehr auf der Verbindungsbahn); keine Linie in Wien
+  Mitte-Landstraße, Rennweg und Quartier Belvedere, weil die Stammstrecke
+  zwischen Praterstern und Hauptbahnhof/St. Marx vom 07.09.2026 bis
+  Oktober 2027 gesperrt ist (Wiener Linien, „S-Bahn-Stammstrecke
+  (Phase 2)“; in Wien Mitte fährt „CAT by bus“). Die Prüfung in Stufe 3
+  darf ein Fehlen deshalb nie als Beweis lesen und braucht für solche
+  Fälle eine gepflegte Liste der planmäßigen Linien.
 
 **Warum Google Places die Notfall-Stufe ist:**
 

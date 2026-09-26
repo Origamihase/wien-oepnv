@@ -170,7 +170,8 @@ def _post(loc_match: object, board: object, calls: list[Any] | None = None) -> A
     return post
 
 
-RESOLVED = {"hafas_ext_id": "1191401", "hafas_classes": 4479, "lines": {}}
+# A stop resolved under the current rule, with a line: not looked up again.
+RESOLVED = {"hafas_ext_id": "1191401", "hafas_classes": 4479, "lines": {"S45": "2026-09-20"}}
 
 
 def test_the_nearest_rail_candidate_is_chosen() -> None:
@@ -188,6 +189,25 @@ def test_a_tram_stop_of_the_same_name_is_not_a_railway_station() -> None:
     # came back empty.
     (station,) = ul.select_stations([HUETTELDORF])
     assert ul.pick_rail_location(_loc_match(TRAM_HUETTELDORF), station) is None
+
+
+def test_a_bus_terminal_with_an_ic_class_is_not_the_station() -> None:
+    # Run of 2026-09-26: "Flughafen Wien Busterminal" (pCls 1090: IC/EC,
+    # bus, 1024) lay 15 m from the station and won under the any-rail rule;
+    # its boards showed only "CAT by bus".
+    airport = {**HUETTELDORF, "bst_id": "528", "name": "Flughafen Wien", "latitude": 48.1209, "longitude": 16.5634}
+    terminal = _loc("Flughafen Wien Busterminal", "1332474", 1090, 48.1210, 16.5635)
+    station_stop = _loc("Flughafen Wien Bahnhof", "1293001", 63, 48.1204, 16.5626)
+    (station,) = ul.select_stations([airport])
+    chosen = ul.pick_rail_location(_loc_match(terminal, station_stop), station)
+    assert chosen is not None and chosen.ext_id == "1293001"
+
+
+@pytest.mark.parametrize(("classes", "counts"), [(16, True), (32, True), (1 | 2 | 4 | 8 | 4096, False)])
+def test_only_regional_rail_and_s_bahn_count(classes: int, counts: bool) -> None:
+    (station,) = ul.select_stations([HUETTELDORF])
+    chosen = ul.pick_rail_location(_loc_match({**RAIL_HUETTELDORF, "pCls": classes}), station)
+    assert (chosen is not None) is counts
 
 
 def test_a_railway_station_too_far_away_is_rejected() -> None:
@@ -268,6 +288,137 @@ def test_an_id_from_the_first_run_is_resolved_again() -> None:
     ul.refresh(ul.select_stations([HUETTELDORF]), state, date(2026, 9, 27), post=post, pause=0)
     assert calls[0][0]["meth"] == "LocMatch"
     assert (state["804"]["hafas_ext_id"], state["804"]["hafas_classes"]) == ("1191401", 4479)
+
+
+def test_a_stop_from_the_any_rail_rule_is_resolved_again() -> None:
+    # The bus terminal (1090) was stored with lines from an earlier match.
+    state: dict[str, Any] = {
+        "804": {"hafas_ext_id": "1332474", "hafas_classes": 1090, "lines": {"S7": "2026-09-25"}}
+    }
+    calls: list[Any] = []
+    post = _post(_loc_match(RAIL_HUETTELDORF), _board([S45]), calls)
+    ul.refresh(ul.select_stations([HUETTELDORF]), state, date(2026, 9, 27), post=post, pause=0)
+    assert calls[0][0]["meth"] == "LocMatch"
+    assert state["804"]["hafas_ext_id"] == "1191401"
+
+
+def test_a_station_without_lines_is_looked_up_again() -> None:
+    calls: list[Any] = []
+    state: dict[str, Any] = {"804": {**RESOLVED, "lines": {}}}
+    post = _post(_loc_match(RAIL_HUETTELDORF), _board([S45]), calls)
+    ul.refresh(ul.select_stations([HUETTELDORF]), state, date(2026, 9, 27), post=post, pause=0)
+    assert [c[0]["meth"] for c in calls] == ["LocMatch"] + ["StationBoard"] * 4
+    assert state["804"]["lines"] == {"S45": "2026-09-27"}
+
+
+def test_a_failed_lookup_keeps_a_known_stop() -> None:
+    calls: list[Any] = []
+    state: dict[str, Any] = {"804": {**RESOLVED, "lines": {}}}
+    post = _post(_loc_match(err="FAIL"), _board([S45]), calls)
+    result = ul.refresh(ul.select_stations([HUETTELDORF]), state, date(2026, 9, 27), post=post, pause=0)
+    assert (result.checked, result.failed, result.unresolved) == (1, 0, 0)
+    assert state["804"]["hafas_ext_id"] == "1191401"
+    assert all(c[0]["req"]["stbLoc"]["lid"] == "A=1@L=1191401@" for c in calls[1:])
+
+
+def test_a_failed_lookup_without_a_stop_counts_as_failed() -> None:
+    post = _post(_loc_match(err="FAIL"), pytest.fail)
+    result = ul.refresh(ul.select_stations([HUETTELDORF]), {}, date(2026, 9, 27), post=post, pause=0)
+    assert (result.checked, result.failed, result.unresolved) == (0, 1, 0)
+
+
+@pytest.mark.parametrize(
+    ("name", "short"),
+    [
+        ("Wien Hauptbahnhof", "Wien Hbf"),
+        ("St. Pölten Hauptbahnhof", "St. Pölten Hbf"),
+        ("Wien Meidling", None),
+        ("Wien Hauptbahnhofstraße", None),
+    ],
+)
+def test_short_name(name: str, short: str | None) -> None:
+    assert ul.short_name(name) == short
+
+
+HAUPTBAHNHOF = {
+    **HUETTELDORF,
+    "bst_id": "900100",
+    "name": "Wien Hauptbahnhof",
+    "latitude": 48.186116,
+    "longitude": 16.374399,
+}
+# What "Wien Hauptbahnhof" offered on 2026-09-26: big stations elsewhere.
+MEIDLING = _loc("Meidling (Wien)", "1191201", 4991, 48.174, 16.334)  # 3.3 km away
+HBF = _loc("Wien Hbf (U)", "1290401", 4991, 48.1851, 16.3762)
+
+
+def _loc_match_by_name(answers: dict[str, object], calls: list[Any]) -> Any:
+    def post(service_requests: list[Any], **_kwargs: Any) -> object:
+        request = service_requests[0]
+        if request["meth"] != "LocMatch":
+            return _board([S45])
+        query = request["req"]["input"]["loc"]["name"]
+        calls.append(query)
+        return answers[query]
+
+    return post
+
+
+def test_the_hauptbahnhof_is_found_by_its_short_name(caplog: pytest.LogCaptureFixture) -> None:
+    queries: list[str] = []
+    post = _loc_match_by_name({"Wien Hauptbahnhof": _loc_match(MEIDLING), "Wien Hbf": _loc_match(MEIDLING, HBF)}, queries)
+    state: dict[str, Any] = {}
+    with caplog.at_level("INFO", logger="oebb_station_lines"):
+        result = ul.refresh(ul.select_stations([HAUPTBAHNHOF]), state, date(2026, 9, 27), post=post, pause=0)
+    assert queries == ["Wien Hauptbahnhof", "Wien Hbf"]
+    assert (result.checked, result.unresolved) == (1, 0)
+    assert state["900100"]["hafas_ext_id"] == "1290401"
+    assert "No rail stop within 800 m for Wien Hauptbahnhof; candidates: Meidling (Wien)" in caplog.text
+    assert "Wien Hauptbahnhof (as Wien Hbf) → Wien Hbf (U) (1290401, pCls 4991, " in caplog.text
+
+
+def test_another_towns_hauptbahnhof_is_never_taken() -> None:
+    # "Wien Hbf" keeps the town, and the radius is measured from Wien
+    # Hauptbahnhof's own coordinates: St. Pölten Hbf, 56 km away, never counts.
+    st_poelten = _loc("St.Pölten Hbf", "1130165", 4991, 48.2079, 15.6243)
+    queries: list[str] = []
+    post = _loc_match_by_name(
+        {"Wien Hauptbahnhof": _loc_match(MEIDLING), "Wien Hbf": _loc_match(st_poelten)}, queries
+    )
+    state: dict[str, Any] = {}
+    result = ul.refresh(ul.select_stations([HAUPTBAHNHOF]), state, date(2026, 9, 27), post=post, pause=0)
+    assert result.unresolved == 1
+    assert "hafas_ext_id" not in state["900100"]
+
+
+def test_under_the_short_name_only_a_hbf_counts() -> None:
+    # Quartier Belvedere lies 526 m from Wien Hauptbahnhof, inside the radius.
+    # Found by "Wien Hbf" without the Hbf itself, it must not become the Hbf.
+    belvedere = _loc("Wien Quartier Belvedere Bahnhst", "8101473", 608, 48.1909, 16.3771)
+    queries: list[str] = []
+    post = _loc_match_by_name(
+        {"Wien Hauptbahnhof": _loc_match(MEIDLING), "Wien Hbf": _loc_match(belvedere)}, queries
+    )
+    state: dict[str, Any] = {}
+    result = ul.refresh(ul.select_stations([HAUPTBAHNHOF]), state, date(2026, 9, 27), post=post, pause=0)
+    assert result.unresolved == 1
+    assert "hafas_ext_id" not in state["900100"]
+    # The full name is not held to it: there the name already matched.
+    (station,) = ul.select_stations([HAUPTBAHNHOF])
+    assert ul.pick_rail_location(_loc_match(belvedere), station) is not None
+
+
+def test_the_short_name_is_not_queried_after_a_match_or_a_failure() -> None:
+    queries: list[str] = []
+    post = _loc_match_by_name({"Wien Hauptbahnhof": _loc_match(HBF)}, queries)
+    ul.refresh(ul.select_stations([HAUPTBAHNHOF]), {}, date(2026, 9, 27), post=post, pause=0)
+    assert queries == ["Wien Hauptbahnhof"]
+
+    queries.clear()
+    post = _loc_match_by_name({"Wien Hauptbahnhof": _loc_match(err="FAIL")}, queries)
+    result = ul.refresh(ul.select_stations([HAUPTBAHNHOF]), {}, date(2026, 9, 27), post=post, pause=0)
+    assert queries == ["Wien Hauptbahnhof"]
+    assert result.failed == 1
 
 
 def test_without_a_rail_match_the_old_id_is_forgotten() -> None:
@@ -396,6 +547,15 @@ def test_boards_without_a_line_are_logged(caplog: pytest.LogCaptureFixture) -> N
         ul.refresh(ul.select_stations([HUETTELDORF]), state, date(2026, 9, 27), post=post, pause=0)
     assert "No line on the boards of Wien Hütteldorf: 29.09. 06h jny 4, prod 1: RJ 820 [RJ//]" in caplog.text
     assert caplog.text.count(" | ") == 3  # four windows
+
+
+def test_boards_without_a_line_after_a_lookup_log_the_candidates(caplog: pytest.LogCaptureFixture) -> None:
+    state: dict[str, Any] = {"804": {**RESOLVED, "lines": {}}}
+    post = _post(_loc_match(RAIL_HUETTELDORF, TRAM_HUETTELDORF), _board([], journeys=0))
+    with caplog.at_level("INFO", logger="oebb_station_lines"):
+        ul.refresh(ul.select_stations([HUETTELDORF]), state, date(2026, 9, 27), post=post, pause=0)
+    assert "03.11. 15h jny 0, prod 0; candidates: Hütteldorf (Wien) (1191401, pCls 4479, " in caplog.text
+    assert "Wien Hütteldorf (Straßenbahn) (1391999, pCls 576, " in caplog.text
 
 
 def test_boards_with_lines_log_nothing_extra(caplog: pytest.LogCaptureFixture) -> None:
