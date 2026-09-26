@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 26 Sep 2026 20:46:59 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 21:01:11 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[13A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
-      <pubDate>Sat, 26 Sep 2026 19:48:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 19:48:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 19:48:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682</guid>
-      <pubDate>Sat, 26 Sep 2026 19:40:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 19:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 19:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in Richtung Hütteldorf. Grund: Betriebsstörung. [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Hütteldorf. Grund: Betriebsstörung.<br/>[Am 26.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[62: ÖBB Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [25.09.2026 – 26.09.2026]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [25.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1d0ceb907a55f1c18e718c2a733505fd71b2504c90bdec3ef3210c2f644856ec</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 7A in Richtung Meidling Hauptstraße U sowie der Linien N65 und N66 in Richtung Liesing S Haltestelle: Arthaberplatz Von: Arthaberplatz vor … [24.09.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 7A in Richtung Meidling Hauptstraße U sowie der Linien N65 und N66 in Richtung Liesing S Haltestelle: Arthaberplatz Von: Arthaberplatz vor …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
