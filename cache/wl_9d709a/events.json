@@ -471,12 +471,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
-    "pubDate": "2026-09-26T16:58:34+02:00",
-    "starts_at": "2026-09-26T16:58:34+02:00",
-    "ends_at": "2026-09-26T17:58:00+02:00",
+    "pubDate": "2026-09-26T16:56:00+02:00",
+    "starts_at": "2026-09-26T17:02:35+02:00",
+    "ends_at": "2026-09-26T23:55:00+02:00",
     "_identity": "wl|störung|L=18|D=2026-09-26|TK=rettungseinsatz"
   },
   {
@@ -662,42 +662,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Verkehrsunfall",
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "469b9778d4214dbbbd09d8ed008c51981bf9682b6a81d9e95d111392e71be734",
-    "pubDate": "2026-09-26T16:22:00+02:00",
-    "starts_at": "2026-09-26T16:22:00+02:00",
-    "ends_at": "2026-09-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-09-26|TK=37 verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a256ddc9071e1be270714d5f6be746d8db040a3968d1eb9ae42aab06ab94ad4",
-    "pubDate": "2026-09-26T16:23:01+02:00",
-    "starts_at": "2026-09-26T16:30:02+02:00",
-    "ends_at": "2026-09-26T17:29:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-09-26|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Verkehrsunfall Betrieb ab Nußdorfer Straße",
-    "description": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße >",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "14043cd0b8d59e5b94904b7187111440eeea20ab95e68c8fc3e2fa20884955d9",
-    "pubDate": "2026-09-26T16:23:01+02:00",
-    "starts_at": "2026-09-26T16:29:31+02:00",
-    "ends_at": "2026-09-26T17:29:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-09-26|TK=verkehrsunfall betrieb ab nussdorfer strasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37: Züge halten Währigner Gürtel 164",
     "description": "Züge halten\nWährigner Gürtel 164",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -734,18 +698,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Falschparker",
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2026-09-26T15:54:00+02:00",
-    "starts_at": "2026-09-26T15:54:00+02:00",
-    "ends_at": "2026-09-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=42|D=2026-09-26|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -758,24 +710,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60A: Verspätungen",
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "33fd85bcd4fdfb9d66b76c18d72c48cd932cdcd905b6b00f0cfd68bd83e20960",
-    "pubDate": "2026-09-26T16:30:00+02:00",
-    "starts_at": "2026-09-26T16:30:00+02:00",
-    "ends_at": "2026-09-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=60A|D=2026-09-26|TK=60a verspätungen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 62: Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße. Voraussichtliche Dauer: 17:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Versorgungsheimplatz.",
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
     "pubDate": "2026-09-26T16:49:00+02:00",
-    "starts_at": "2026-09-26T16:58:34+02:00",
+    "starts_at": "2026-09-26T17:02:05+02:00",
     "ends_at": "2026-09-26T23:55:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-09-26|TK=rettungseinsatz"
   },
@@ -831,12 +771,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "6: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
-    "pubDate": "2026-09-26T16:58:04+02:00",
-    "starts_at": "2026-09-26T16:58:04+02:00",
-    "ends_at": "2026-09-26T17:57:00+02:00",
+    "pubDate": "2026-09-26T16:56:00+02:00",
+    "starts_at": "2026-09-26T17:02:04+02:00",
+    "ends_at": "2026-09-26T23:55:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-09-26|TK=rettungseinsatz"
   },
   {
@@ -866,26 +806,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 17:15 Uhr. Grund: Falschparker im Bereich Hormayrgasse .",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
     "pubDate": "2026-09-26T16:53:00+02:00",
-    "starts_at": "2026-09-26T16:53:00+02:00",
+    "starts_at": "2026-09-26T17:19:08+02:00",
     "ends_at": "2026-09-26T23:55:00+02:00",
     "_identity": "wl|störung|L=9|D=2026-09-26|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
-    "pubDate": "2026-09-26T16:56:04+02:00",
-    "starts_at": "2026-09-26T16:59:04+02:00",
-    "ends_at": "2026-09-26T17:58:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-09-26|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -910,18 +838,6 @@
     "starts_at": "2026-09-23T00:00:29+02:00",
     "ends_at": "2026-09-26T23:59:59+02:00",
     "_identity": "wl|störung|L=N49|D=2026-09-23|TK=betrieb ab schweglerstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-09-26T15:39:00+02:00",
-    "starts_at": "2026-09-26T15:39:00+02:00",
-    "ends_at": "2026-09-26T16:59:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-09-26|TK=u2 betriebsstörung"
   },
   {
     "source": "Wiener Linien",
