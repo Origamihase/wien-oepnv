@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 10:31:19 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 11:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0c253a40f688aeb266e06de3fa71ef50427179e6da4a3b72a66bbf7c31ae05b7</guid>
+      <pubDate>Sat, 26 Sep 2026 10:40:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 11:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 10:40:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Sat, 26 Sep 2026 10:57:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 10:57:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 10:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 11:14:00 +0200</ext:ends_at>
+      <description>Irregular intervals towards Simmering. Reason: defective vehicle. [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals towards Simmering. Reason: defective vehicle.<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +41,6 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
-      <pubDate>Sat, 26 Sep 2026 09:33:47 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 09:33:47 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 09:33:49 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 10:33:00 +0200</ext:ends_at>
-      <description>Service obstruction [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Service obstruction<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
       <description>Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before … [24.09.2026 – 02.10.2026]</description>
       <content:encoded><![CDATA[Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N66/N68R: Quellenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">31d6ac9f73525f3feaa44bb3eb6fdafe467567211114f38f99f0fbe41a2e441e</guid>
-      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 15:00:00 +0200</ext:ends_at>
-      <description>Stop relocation of line N66 towards Oper, Karlsplatz and the call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along … [24.09.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Stop relocation of line N66 towards Oper, Karlsplatz and the call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
