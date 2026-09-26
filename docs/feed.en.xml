@@ -7,59 +7,15 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 09:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 09:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U2: Polizeieinsatz]]></title>
+      <title><![CDATA[U2: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3dd0ec36f6dc8594c9e37e23580bdcf5f82555521c07875e9f83c718912578fc</guid>
       <pubDate>Sat, 26 Sep 2026 08:44:00 +0200</pubDate>
       <ext:first_seen>Sat, 26 Sep 2026 08:44:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 26 Sep 2026 08:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
-      <pubDate>Sat, 26 Sep 2026 07:59:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 07:59:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 07:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9</guid>
-      <pubDate>Sat, 26 Sep 2026 07:52:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 07:53:42 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 08:05:13 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service from Penzinger Straße. After a service obstruction there are different intervals. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Service from Penzinger Straße. After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3</guid>
-      <pubDate>Sat, 26 Sep 2026 07:42:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 07:42:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 07:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">73357b6320dfec1f26a86c63469d119b40e8f17ed69fcf1491dd8ae09deab193</guid>
-      <pubDate>Sat, 26 Sep 2026 07:42:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 07:42:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 07:42:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
@@ -118,6 +74,50 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Reason: construction works. [25.09.2026 – 26.09.2026]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Buses stop Pasettistraße before Hellwagstraße (for line 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: construction works. [25.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1d0ceb907a55f1c18e718c2a733505fd71b2504c90bdec3ef3210c2f644856ec</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
+      <description>Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before … [24.09.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N66/N68R: Quellenplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">31d6ac9f73525f3feaa44bb3eb6fdafe467567211114f38f99f0fbe41a2e441e</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 15:00:00 +0200</ext:ends_at>
+      <description>Stop relocation of line N66 towards Oper, Karlsplatz and the call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along … [24.09.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Stop relocation of line N66 towards Oper, Karlsplatz and the call bus line N68 towards Oberlaa U Stop: Quellenplatz From: Quellenplatz 4 along …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N31: Stammersdorf closed without replacement]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c6414f05e0d7316905e3faa36cf0ae3462bb94b5012ef094ee688e0b738e70df</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 23 Sep 2026 14:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 23 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 31 May 2027 11:11:00 +0200</ext:ends_at>
+      <description>Stop closure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without replacement Duration: From 30 September … [23.09.2026 – 31.05.2027]</description>
+      <content:encoded><![CDATA[Stop closure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without replacement Duration: From 30 September …<br/>[23.09.2026 – 31.05.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
