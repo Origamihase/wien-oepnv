@@ -6032,11 +6032,6 @@ def _is_wl_ticker(item: FeedItem) -> bool:
 # title, already says it; WL's stock sentence gives way to anything concrete.
 WL_TICKER_CLUSTER_SECONDS = 600
 
-# A consequence a ticker can carry without a cause ("12A: Betrieb ab
-# Johnstraße U"). "halte" is WL's own typo of 2026-09-26.
-_CONSEQUENCE_ONLY_RE = re.compile(
-    r"^(?:Kein Betrieb|Betrieb (?:ab|nur|über|zwischen|bis)|Züge halten?|Busse halten?|Umleitung)\b"
-)
 # WL's long message (``stoerunglang``) opens its text with the line label.
 _LONG_MESSAGE_RE = re.compile(r"^Linien?\s+[^:]{1,60}:\s*")
 _WL_STOCK_SENTENCE_RE = re.compile(
